@@ -592,6 +592,19 @@ body{background:radial-gradient(circle at 82% -5%,rgba(85,106,230,.13),transpare
 #sec-f .f-detail-table th,#sec-f .f-detail-table td{padding:10px 9px}
 @media(max-width:760px){#sec-f .hgrid{grid-template-columns:1fr;gap:12px}#sec-f .hchart{height:218px}#sec-f .hgrid .card{padding:13px 14px}}
 </style>
+<style id="v47-finance-palette">
+#sec-f .panel{background:linear-gradient(145deg,#f9fbfd 0%,#ffffff 48%,#fbfcfa 100%);border-color:#dce5eb}
+#sec-f .tog.on,#sec-f .btn.primary{background:#1f4e79!important;border-color:#1f4e79!important;box-shadow:0 5px 14px rgba(31,78,121,.18)!important}
+#sec-f .tog:hover,#sec-f .btn:hover{border-color:#527a9f}
+#sec-f .hgrid .card{background:#fff;border-color:#dfe7ec;box-shadow:0 8px 20px rgba(30,62,92,.055)}
+#sec-f .hgrid .card h3{color:#183b5b}
+#sec-f .hgrid .card h3 .note{color:#7f8f99}
+#sec-f .f-table-head{background:linear-gradient(100deg,rgba(31,78,121,.075),rgba(40,117,107,.035) 54%,transparent 78%)}
+#sec-f .f-table-count{background:#e8f0f5;color:#1f4e79}
+#sec-f .f-detail-table th{background:#f3f7f9;color:#46657a}
+#sec-f .f-detail-table th.f-period{background:#f3f7f9}
+#sec-f .f-detail-table tbody tr:hover td,#sec-f .f-detail-table tbody tr:hover .f-period{background:#f4f8f8}
+</style>
 </head>
 <body data-page-node-id="2cpRFEmUhw5WL9afeNglP5">
 <a class="skip-link" href="#sec-over">跳到主要内容</a>
@@ -1752,37 +1765,37 @@ function fDrawCharts(rows,chartsBox){
   if(!window.Chart)return;
   /* 营业收入 */
   FC.c.fcRev=new Chart($("fcRev"),{type:'bar',data:{labels:labels,datasets:[
-    {type:'bar',label:'营业收入(亿元)',data:col("营业收入(亿元)"),backgroundColor:'#372fa2',borderRadius:4,maxBarThickness:34},
-    {type:'line',label:'营收同比(%)',data:col("营收同比(%)"),borderColor:'#c83c3c',backgroundColor:'transparent',borderWidth:2,tension:.25,pointRadius:2.5,pointHoverRadius:4,yAxisID:'y2',spanGaps:true}
+    {type:'bar',label:'营业收入(亿元)',data:col("营业收入(亿元)"),backgroundColor:'#1f4e79',borderRadius:4,maxBarThickness:34},
+    {type:'line',label:'营收同比(%)',data:col("营收同比(%)"),borderColor:'#b65b49',backgroundColor:'transparent',borderWidth:2,tension:.25,pointRadius:2.5,pointHoverRadius:4,yAxisID:'y2',spanGaps:true}
   ]},options:fOpts(true)});
   /* 归母净利润 */
   FC.c.fcNp=new Chart($("fcNp"),{type:'bar',data:{labels:labels,datasets:[
-    {type:'bar',label:'归母净利润(亿元)',data:col("归母净利润(亿元)"),backgroundColor:'#2e8c6d',borderRadius:4,maxBarThickness:34},
-    {type:'line',label:'归母同比(%)',data:col("归母同比(%)"),borderColor:'#c83c3c',backgroundColor:'transparent',borderWidth:2,tension:.25,pointRadius:2.5,pointHoverRadius:4,yAxisID:'y2',spanGaps:true}
+    {type:'bar',label:'归母净利润(亿元)',data:col("归母净利润(亿元)"),backgroundColor:'#28756b',borderRadius:4,maxBarThickness:34},
+    {type:'line',label:'归母同比(%)',data:col("归母同比(%)"),borderColor:'#b65b49',backgroundColor:'transparent',borderWidth:2,tension:.25,pointRadius:2.5,pointHoverRadius:4,yAxisID:'y2',spanGaps:true}
   ]},options:fOpts(true)});
   /* 盈利能力 / 费用率 */
   if(true){
     FC.c.fcMargin=new Chart($("fcMargin"),{type:'line',data:{labels:labels,datasets:[
-      {label:'毛利率(%)',data:col("毛利率(%)"),borderColor:'#d9882b',backgroundColor:'transparent',borderWidth:2,tension:.25,pointRadius:2.5,pointHoverRadius:4,spanGaps:true},
-      {label:'净利率(%)',data:col("净利率(%)"),borderColor:'#372fa2',backgroundColor:'transparent',borderWidth:2,tension:.25,pointRadius:2.5,pointHoverRadius:4,spanGaps:true}
+      {label:'毛利率(%)',data:col("毛利率(%)"),borderColor:'#c38b3c',backgroundColor:'transparent',borderWidth:2,tension:.25,pointRadius:2.5,pointHoverRadius:4,spanGaps:true},
+      {label:'净利率(%)',data:col("净利率(%)"),borderColor:'#34699a',backgroundColor:'transparent',borderWidth:2,tension:.25,pointRadius:2.5,pointHoverRadius:4,spanGaps:true}
     ]},options:fOpts(false)});
     FC.c.fcFee=new Chart($("fcFee"),{type:'line',data:{labels:labels,datasets:[
-      {label:'销售费用率(%)',data:col("销售费用率(%)"),borderColor:'#c83c3c',backgroundColor:'transparent',borderWidth:2,tension:.25,pointRadius:2.5,pointHoverRadius:4,spanGaps:true},
-      {label:'管理费用率(%)',data:col("管理费用率(%)"),borderColor:'#d9882b',backgroundColor:'transparent',borderWidth:2,tension:.25,pointRadius:2.5,pointHoverRadius:4,spanGaps:true},
-      {label:'财务费用率(%)',data:col("财务费用率(%)"),borderColor:'#372fa2',backgroundColor:'transparent',borderWidth:2,tension:.25,pointRadius:2.5,pointHoverRadius:4,spanGaps:true}
+      {label:'销售费用率(%)',data:col("销售费用率(%)"),borderColor:'#b65b49',backgroundColor:'transparent',borderWidth:2,tension:.25,pointRadius:2.5,pointHoverRadius:4,spanGaps:true},
+      {label:'管理费用率(%)',data:col("管理费用率(%)"),borderColor:'#c38b3c',backgroundColor:'transparent',borderWidth:2,tension:.25,pointRadius:2.5,pointHoverRadius:4,spanGaps:true},
+      {label:'财务费用率(%)',data:col("财务费用率(%)"),borderColor:'#34699a',backgroundColor:'transparent',borderWidth:2,tension:.25,pointRadius:2.5,pointHoverRadius:4,spanGaps:true}
     ]},options:fOpts(false)});
   }
   /* 现金流 */
   FC.c.fcCf=new Chart($("fcCf"),{type:'bar',data:{labels:labels,datasets:[
-    {label:'经营现金流净额',data:col("经营现金流净额(亿元)"),backgroundColor:'#2e8c6d',borderRadius:3,maxBarThickness:26},
-    {label:'投资现金流净额',data:col("投资现金流净额(亿元)"),backgroundColor:'#c83c3c',borderRadius:3,maxBarThickness:26},
-    {label:'筹资现金流净额',data:col("筹资现金流净额(亿元)"),backgroundColor:'#d9882b',borderRadius:3,maxBarThickness:26}
+    {label:'经营现金流净额',data:col("经营现金流净额(亿元)"),backgroundColor:'#28756b',borderRadius:3,maxBarThickness:26},
+    {label:'投资现金流净额',data:col("投资现金流净额(亿元)"),backgroundColor:'#a55a52',borderRadius:3,maxBarThickness:26},
+    {label:'筹资现金流净额',data:col("筹资现金流净额(亿元)"),backgroundColor:'#c38b3c',borderRadius:3,maxBarThickness:26}
   ]},options:fOpts(false)});
   /* 资产与负债 */
   FC.c.fcBs=new Chart($("fcBs"),{type:'bar',data:{labels:labels,datasets:[
-    {type:'bar',label:'总资产(亿元)',data:col("总资产(亿元)"),backgroundColor:'#372fa2',borderRadius:3,maxBarThickness:26},
-    {type:'bar',label:'归母净资产(亿元)',data:col("归母净资产(亿元)"),backgroundColor:'#45aa88',borderRadius:3,maxBarThickness:26},
-    {type:'line',label:'资产负债率(%)',data:col("资产负债率(%)"),borderColor:'#c83c3c',backgroundColor:'transparent',borderWidth:2,tension:.25,pointRadius:2.5,pointHoverRadius:4,yAxisID:'y2',spanGaps:true}
+    {type:'bar',label:'总资产(亿元)',data:col("总资产(亿元)"),backgroundColor:'#1f4e79',borderRadius:3,maxBarThickness:26},
+    {type:'bar',label:'归母净资产(亿元)',data:col("归母净资产(亿元)"),backgroundColor:'#6c9b91',borderRadius:3,maxBarThickness:26},
+    {type:'line',label:'资产负债率(%)',data:col("资产负债率(%)"),borderColor:'#b65b49',backgroundColor:'transparent',borderWidth:2,tension:.25,pointRadius:2.5,pointHoverRadius:4,yAxisID:'y2',spanGaps:true}
   ]},options:fOpts(true)});
 }
 /* ---------- 财务明细表：与当前图表同口径，最新报告期优先 ---------- */
