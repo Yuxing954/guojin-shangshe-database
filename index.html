@@ -457,8 +457,64 @@ svg{display:block}
 }
 
 </style>
+<style id="v40-ui-refresh">
+:root{
+  --brand:#2457d6;--brand-strong:#173fa8;--paper:#f5f7fb;--card:#ffffff;--card2:#f8fafc;
+  --line:#e5e9f2;--line2:#d9deea;--ink:#172033;--ink2:#5d687c;--mut:#8b96a8;
+  --accent:#b42332;--r:16px;--shadow:0 1px 2px rgba(16,24,40,.04),0 10px 30px rgba(30,50,90,.06)
+}
+html{scroll-behavior:smooth;scroll-padding-top:20px}
+body{background:linear-gradient(180deg,#f8faff 0,#f5f7fb 320px);letter-spacing:.005em}
+.skip-link{position:fixed;left:16px;top:12px;z-index:9999;transform:translateY(-150%);background:#172033;color:#fff;padding:10px 14px;border-radius:10px;text-decoration:none}
+.skip-link:focus{transform:none}
+.shell{max-width:1500px;margin:auto;gap:0}
+.sidebar{background:rgba(255,255,255,.92);backdrop-filter:blur(18px);border-color:var(--line);padding:24px 14px}
+.side-head{padding:2px 12px 18px}.side-head .t{font-size:17px}.side-head .s{margin-top:4px}
+.side-item{border-radius:10px;padding:9px 11px}.side-item.on{box-shadow:0 6px 16px rgba(36,87,214,.22)}
+.main{padding:0 30px 84px;max-width:1240px;margin:0 auto}
+.masthead{position:sticky;top:0;z-index:30;margin:0 -8px;padding:22px 8px 15px;background:rgba(248,250,255,.9);backdrop-filter:blur(18px);border-color:var(--line)}
+h1.brand-name{font-size:23px}.brand-sub{color:var(--ink2)}
+.readonly-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border:1px solid #cfd8ee;background:#eef3ff;color:#3157aa;border-radius:999px;font-size:12px}
+.kpis{gap:14px;margin-top:22px}.kpi,.card,.panel,.fcard{background:#fff;border-color:var(--line);box-shadow:var(--shadow)}
+.kpi{position:relative;overflow:hidden;transition:transform .18s ease,box-shadow .18s ease}
+.kpi:before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:var(--brand);opacity:.75}
+.kpi:hover,.card:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(30,50,90,.10)}
+section{scroll-margin-top:92px;content-visibility:auto;contain-intrinsic-size:520px}
+.sec-h{padding-top:4px}.sec-h h2{font-size:19px}.sec-h .sub{color:var(--ink2)}
+.panel{padding:18px}.filters{padding:4px 0 2px}
+.tblwrap{border:1px solid var(--line);border-radius:12px;background:#fff}
+.tbl th{background:#f8fafc;color:#69758a;font-weight:600;z-index:1}
+.tbl tbody tr:nth-child(even) td{background:#fbfcfe}
+.tbl tr:hover td{background:#f2f6ff!important}
+.btn{font-weight:600}.btn.primary{background:var(--brand);border-color:var(--brand)}.btn.primary:hover{background:var(--brand-strong);border-color:var(--brand-strong)}
+:focus-visible{outline:3px solid rgba(36,87,214,.28);outline-offset:2px}
+.csv-mode .acts,.csv-mode .iconbtn.del,.csv-mode button[onclick*="openModal"],.csv-mode #v37mgmt{display:none!important}
+.back-top{position:fixed;right:22px;bottom:22px;z-index:50;width:44px;height:44px;border:1px solid var(--line2);border-radius:14px;background:rgba(255,255,255,.94);color:var(--ink);box-shadow:var(--shadow);cursor:pointer;opacity:0;transform:translateY(10px);pointer-events:none;transition:.18s}
+.back-top.on{opacity:1;transform:none;pointer-events:auto}
+.data-meta{font-size:11px;color:var(--mut);margin-top:3px;text-align:right}
+@media(max-width:900px){
+  .shell{display:block}.sidebar{position:sticky;top:0;z-index:50;width:100%;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:8px 10px}
+  .sidebar .side-head,.side-group,.side-foot{display:none!important}
+  .side-nav{display:flex!important;flex-flow:row nowrap!important;overflow-x:auto;gap:5px;scrollbar-width:none;padding:2px}
+  .side-nav::-webkit-scrollbar{display:none}.side-sub{display:contents!important}.side-item,.side-item.sub{flex:0 0 auto;padding:8px 11px;font-size:12.5px}
+  .main{padding:0 14px 72px}.masthead{position:relative;margin:0;padding:16px 0 12px}.brand{max-width:100%}
+  h1.brand-name{font-size:19px}.mhead-meta{width:100%;justify-content:space-between}.data-meta{text-align:left}
+  section{scroll-margin-top:70px}
+  #sec-hotel .hgrid,#sec-hotel .hkps,#sec-hotel .panel,#sec-dining .hgrid,#sec-dining .hkps,
+  #sec-gold .g-kpis,#sec-gold .g-chart,#sec-gold .g-hm,#sec-gold .g-empty{display:grid!important}
+  #sec-hotel::before,#sec-taxfree::before,#sec-gold::before,#sec-dining::before{display:none!important}
+  .hgrid,.ovgrid{grid-template-columns:1fr!important}.panel{padding:13px}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:520px){
+  .kpis{grid-template-columns:1fr}.kpi .val{font-size:21px}.sec-h h2{font-size:17px}
+  .sync{max-width:100%;white-space:normal}.back-top{right:14px;bottom:14px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.kpi,.card,.back-top{transition:none!important}}
+@media print{.sidebar,.mhead-meta,.back-top,.btn,.acts{display:none!important}.main{max-width:none;padding:0}.masthead{position:static}.card,.panel,.kpi{box-shadow:none;break-inside:avoid}section{content-visibility:visible}}
+</style>
 </head>
 <body data-page-node-id="2cpRFEmUhw5WL9afeNglP5">
+<a class="skip-link" href="#sec-over">跳到主要内容</a>
 <div data-page-node-id="CDH1zYITYIaRsFJeSAJdJ5" class="shell">
 
   <aside data-page-node-id="NOISa7yA9V6272VuYrHFOC" class="sidebar" id="sidebar">
@@ -495,6 +551,7 @@ svg{display:block}
       <div data-page-node-id="yH7WUugjwFYwoiFLG4Zxkl" class="brand-sub"><!--pnid:uXefjZ5VJyME4Gtf4a7cC5-->商贸零售 + 社会服务｜标的 · 业绩 · 观点 一体化跟踪</div>
     </div>
     <div data-page-node-id="GjSy9AGLUukOsIzY2Qdokg" class="mhead-meta">
+      <span class="readonly-badge" title="页面数据来自仓库 CSV">只读数据看板</span>
       <span data-page-node-id="TgS1ncSbpHFrAriYo9ewrU" class="sync" id="sync"><span data-page-node-id="HObYLdbQrfgdbtgfEERUCn" class="dot busy" id="dot"></span><span data-page-node-id="ZihhnHUX6Bfjzdv34O4Pkd" id="syncTxt"><!--pnid:S27EMLL4hwjx4gLv0APNYi-->正在读取仓库 CSV…</span></span>
       <button data-page-node-id="AvGSoNASBTBLsNGdObudDO" class="btn primary" onclick="openModal('u',null)" style="min-height:40px; padding:8px 16px"><!--pnid:nwC2KViVfWZhtYrGXrC8Zf-->＋ 新增标的</button>
     </div>
@@ -2100,6 +2157,30 @@ else { document.addEventListener("DOMContentLoaded", boot); }
 })();
 </script>
 
+<button class="back-top" id="backTop" type="button" aria-label="返回顶部" title="返回顶部">↑</button>
+<script id="v40-ux">
+(function(){
+"use strict";
+document.body.classList.add("csv-mode");
+var nav=document.getElementById("sideNav");
+if(nav)nav.setAttribute("aria-label","页面模块导航");
+var sidebar=document.getElementById("sidebar");
+if(sidebar)sidebar.setAttribute("aria-label","主导航");
+var main=document.getElementById("mainContent");
+if(main)main.setAttribute("tabindex","-1");
+document.querySelectorAll("a.side-item[data-sec]").forEach(function(a){
+  a.addEventListener("click",function(){document.querySelectorAll("a.side-item").forEach(function(x){x.classList.remove("on");x.removeAttribute("aria-current");});a.classList.add("on");a.setAttribute("aria-current","page");});
+});
+var topBtn=document.getElementById("backTop");
+function toggleTop(){if(topBtn)topBtn.classList.toggle("on",window.scrollY>700);}
+window.addEventListener("scroll",toggleTop,{passive:true});toggleTop();
+if(topBtn)topBtn.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});
+var meta=document.createElement("div");meta.className="data-meta";meta.textContent="数据清单读取中…";
+var host=document.querySelector(".mhead-meta");if(host)host.appendChild(meta);
+if(window.__CSV_DATA__&&window.__CSV_DATA__.manifest){window.__CSV_DATA__.manifest().then(function(m){meta.textContent="数据更新："+(m.updatedAt||"—")+" · "+((m.datasets||[]).length)+" 个数据集";}).catch(function(){meta.textContent="数据清单读取失败";});}
+document.querySelectorAll('a[href*="workbuddy.cn"]').forEach(function(a){a.style.display="none";});
+})();
+</script>
 </body>
 
 </html>
