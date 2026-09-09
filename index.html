@@ -95,9 +95,11 @@ window.__SMART_PAGE__={database:database};
   --ink:#18181b; --ink2:#71717a; --mut:#a1a1aa;
   --red:#c83c3c; --redbg:#f9e9e7; --green:#2e8c6d; --greenbg:#e7f3ec;
   --amber:#d9882b; --amberbg:#fafafa; --blue:#372fa2; --bluebg:#fafafa;
-  --accent:#a83030; --serif:"Inter","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
-  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","PingFang SC","Microsoft YaHei",Roboto,Arial,sans-serif;
-  --mono:"SF Mono",ui-monospace,"Cascadia Code",Menlo,Consolas,monospace;
+  --accent:#a83030; --font-ui:"PingFang SC","Microsoft YaHei","Noto Sans SC","Source Han Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  --font-number:"DIN Alternate","Arial Narrow","Roboto Condensed",var(--font-ui);
+  --serif:var(--font-ui);
+  --sans:var(--font-ui);
+  --mono:"SF Mono","Cascadia Code",ui-monospace,Consolas,monospace;
   --r:14px; --shadow:0 1px 2px rgba(64, 42, 16, .04),0 6px 18px -10px rgba(64, 42, 16, .10);
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -1276,8 +1278,12 @@ var ITEMS={taxfree:{title:'免税板块跟踪看板',html:window.TF_BOARD_HTML},
   var BYSEC={'sec-taxfree':'taxfree','sec-gold':'gold','sec-overseas':'oversea','sec-hotel':'hotel','sec-mkt':'mkt','sec-r':'report','sec-m':'minutes'};
   var cur='';
   var SHARED_CHILD_THEME=`<style id="sinolink-child-theme">
-:root{--brand:#3157d5!important;--brand-strong:#2443ac!important;--bg:#f3f5fa!important;--paper:#f3f5fa!important;--card:#fff!important;--panel:#fff!important;--panel-2:#f8faff!important;--line:#e3e7f0!important;--ink:#151c2c!important;--text:#151c2c!important;--text-2:#5b677b!important;--text-3:#8b96a8!important;--radius:16px!important;--radius-lg:18px!important}
+:root{--brand:#3157d5!important;--brand-strong:#2443ac!important;--bg:#f3f5fa!important;--paper:#f3f5fa!important;--card:#fff!important;--panel:#fff!important;--panel-2:#f8faff!important;--line:#e3e7f0!important;--ink:#151c2c!important;--text:#151c2c!important;--text-2:#5b677b!important;--text-3:#8b96a8!important;--radius:16px!important;--radius-lg:18px!important;--font-ui:"PingFang SC","Microsoft YaHei","Noto Sans SC","Source Han Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;--sans:var(--font-ui)!important;--serif:var(--font-ui)!important}
 html{scroll-behavior:smooth}
+body,button,input,select,textarea,option{font-family:var(--font-ui)!important}
+h1,h2,h3,h4,h5,h6{font-family:var(--font-ui)!important;font-weight:650!important}
+button,.btn,.tab,.badge,.tag,.chip,th{font-weight:600!important}
+.num,.number,.value,.metric,.kpi-value{font-variant-numeric:tabular-nums}
 body{background:radial-gradient(circle at 88% 0,rgba(49,87,213,.10),transparent 26rem),#f3f5fa!important;color:#151c2c!important}
 .wrap{max-width:1240px!important;padding:26px 24px 72px!important}
 .mast,.head,.hero{margin-bottom:20px!important}
