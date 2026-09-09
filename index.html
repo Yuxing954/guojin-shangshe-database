@@ -605,6 +605,25 @@ body{background:radial-gradient(circle at 82% -5%,rgba(85,106,230,.13),transpare
 #sec-f .f-detail-table th.f-period{background:#f3f7f9}
 #sec-f .f-detail-table tbody tr:hover td,#sec-f .f-detail-table tbody tr:hover .f-period{background:#f4f8f8}
 </style>
+<style id="v48-finance-table-template">
+#sec-f .hgrid>.card:nth-child(1),#sec-f .hgrid>.card:nth-child(2){grid-column:auto!important}
+#sec-f .f-detail-table{min-width:1000px;table-layout:fixed}
+#sec-f .f-detail-table .f-group-row th{top:0;height:31px;padding:7px 8px;text-align:center;font-size:11px;letter-spacing:.04em;border-bottom:1px solid #dfe7ec}
+#sec-f .f-detail-table .f-field-row th{top:31px;height:38px;padding:9px 8px;text-align:right}
+#sec-f .f-detail-table .f-group-row .f-period{width:114px;text-align:left;vertical-align:middle}
+#sec-f .f-detail-table .f-group{border-left:1px solid #dfe7ec}
+#sec-f .f-detail-table .f-core{background:#eef4f8;color:#1f4e79}
+#sec-f .f-detail-table .f-margin{background:#f3f6ef;color:#61733e}
+#sec-f .f-detail-table .f-cash{background:#edf6f4;color:#28756b}
+#sec-f .f-detail-table .f-balance{background:#f6f2eb;color:#80683d}
+#sec-f .f-detail-table .f-field-row th:nth-child(1),#sec-f .f-detail-table .f-field-row th:nth-child(5),#sec-f .f-detail-table .f-field-row th:nth-child(7),#sec-f .f-detail-table .f-field-row th:nth-child(10){border-left:1px solid #dfe7ec}
+#sec-f .f-detail-table tbody td:nth-child(2),#sec-f .f-detail-table tbody td:nth-child(6),#sec-f .f-detail-table tbody td:nth-child(8),#sec-f .f-detail-table tbody td:nth-child(11){border-left:1px solid #edf0f2}
+#sec-f .f-detail-table .f-latest td{background:#fbfdfd;font-weight:550}
+#sec-f .f-detail-table .f-latest .f-period{background:#edf6f4;border-left:3px solid #28756b}
+#sec-f .f-detail-table .f-period em{display:inline-block;margin-left:6px;padding:1px 5px;border-radius:999px;background:#dcefea;color:#28756b;font-size:9px;font-style:normal;font-weight:650;vertical-align:1px}
+#sec-f .f-table-scroll{scrollbar-color:#b8c7d1 transparent}
+@media(max-width:760px){#sec-f .hgrid>.card:nth-child(1),#sec-f .hgrid>.card:nth-child(2){grid-column:1!important}}
+</style>
 </head>
 <body data-page-node-id="2cpRFEmUhw5WL9afeNglP5">
 <a class="skip-link" href="#sec-over">跳到主要内容</a>
@@ -1810,12 +1829,13 @@ function fRenderTable(rows){
   function cell(r,k,delta){ return '<td>'+n(r,k,delta)+'</td>'; }
   var html='<div class="f-table-head"><div><h3>财务明细</h3><p>与上方图表保持同一公司、同一口径；最新报告期置顶，金额单位为亿元</p></div><span class="f-table-count">共 '+list.length+' 期</span></div>';
   if(!list.length){el.innerHTML=html+'<div class="statebox">暂无可展示的财务明细</div>';return;}
-  html+='<div class="f-table-scroll"><table class="f-detail-table"><thead><tr>'
-    +'<th class="f-period">报告期</th><th>营业收入</th><th>营收同比</th><th>归母净利润</th><th>归母同比</th><th>毛利率</th><th>净利率</th>'
-    +'<th>经营现金流</th><th>投资现金流</th><th>筹资现金流</th><th>总资产</th><th>归母净资产</th><th>资产负债率</th>'
-    +'</tr></thead><tbody>';
-  list.forEach(function(r){
-    html+='<tr><td class="f-period"><strong>'+esc(r["财报期"]||"—")+'</strong><small>'+esc(r["子行业"]||"")+'</small></td>'
+  html+='<div class="f-table-scroll"><table class="f-detail-table"><thead>'
+    +'<tr class="f-group-row"><th class="f-period" rowspan="2">报告期</th><th class="f-group f-core" colspan="4">核心业绩</th><th class="f-group f-margin" colspan="2">盈利能力</th><th class="f-group f-cash" colspan="3">现金流</th><th class="f-group f-balance" colspan="3">资产负债</th></tr>'
+    +'<tr class="f-field-row"><th>营业收入</th><th>营收同比</th><th>归母净利润</th><th>归母同比</th><th>毛利率</th><th>净利率</th>'
+    +'<th>经营净额</th><th>投资净额</th><th>筹资净额</th><th>总资产</th><th>归母净资产</th><th>负债率</th></tr>'
+    +'</thead><tbody>';
+  list.forEach(function(r,idx){
+    html+='<tr'+(idx===0?' class="f-latest"':'')+'><td class="f-period"><strong>'+esc(r["财报期"]||"—")+'</strong>'+(idx===0?'<em>最新</em>':'')+'<small>'+esc(r["子行业"]||"")+'</small></td>'
       +cell(r,"营业收入(亿元)")+cell(r,"营收同比(%)",true)+cell(r,"归母净利润(亿元)")+cell(r,"归母同比(%)",true)
       +cell(r,"毛利率(%)")+cell(r,"净利率(%)")+cell(r,"经营现金流净额(亿元)")+cell(r,"投资现金流净额(亿元)")
       +cell(r,"筹资现金流净额(亿元)")+cell(r,"总资产(亿元)")+cell(r,"归母净资产(亿元)")+cell(r,"资产负债率(%)")+'</tr>';
