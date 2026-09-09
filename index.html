@@ -709,6 +709,10 @@ body.research-center{--brand:#17212d!important;--brand-strong:#0d141c!important;
 @media(max-width:850px){#wind-overview{padding:0}.wind-grid{grid-template-columns:1fr}.wind-bench{border-right:0;border-bottom:1px solid var(--line)}.wind-index{padding:13px 10px}.wind-index .price{font-size:16px}}
 @media(max-width:560px){.wind-bench{grid-template-columns:repeat(3,1fr)}.wind-index:nth-child(n+4){display:none}.wind-head p{display:none}}
 </style>
+<style id="v52-tencent-live">
+.wind-head p{transition:color .2s ease}
+.wind-head p::before{content:"";display:inline-block;width:5px;height:5px;margin:0 5px 1px 0;border-radius:50%;background:#28756b}
+</style>
 </head>
 <body data-page-node-id="2cpRFEmUhw5WL9afeNglP5">
 <a class="skip-link" href="#sec-over">跳到主要内容</a>
@@ -784,13 +788,44 @@ body.research-center{--brand:#17212d!important;--brand-strong:#0d141c!important;
   fetch("data/wind-market-snapshot.json?ts="+Date.now()).then(function(r){return r.json();}).then(function(d){
     var meta=document.getElementById("wind-meta");if(meta)meta.textContent=d.asOf+" 收盘 · Wind Alice";
     var bench=document.getElementById("wind-bench");
-    if(bench)bench.innerHTML=(d.benchmarks||[]).map(function(x){var v=Number(x.change)||0;return '<div class="wind-index"><div class="name">'+esc(x.name)+'</div><div class="price">'+Number(x.price).toLocaleString("zh-CN",{minimumFractionDigits:2,maximumFractionDigits:2})+'</div><div class="chg '+(v>0?"up":v<0?"down":"flat")+'">'+chg(v)+'</div></div>';}).join("");
+    if(bench)bench.innerHTML=(d.benchmarks||[]).map(function(x){var v=Number(x.change)||0;return '<div class="wind-index" data-wind-code="'+esc(x.code)+'"><div class="name">'+esc(x.name)+'</div><div class="price">'+Number(x.price).toLocaleString("zh-CN",{minimumFractionDigits:2,maximumFractionDigits:2})+'</div><div class="chg '+(v>0?"up":v<0?"down":"flat")+'">'+chg(v)+'</div></div>';}).join("");
     var b=d.breadth||{},total=Number(b.total)||1,up=Number(b.up)||0,down=Number(b.down)||0,flat=Number(b.flat)||0;
     var el=document.getElementById("wind-breadth");if(el)el.textContent=up+" 涨 / "+down+" 跌";
     el=document.getElementById("wind-breadth-detail");if(el)el.textContent="覆盖池 "+total+" 只";
     [["wind-up",up],["wind-down",down],["wind-flat",flat]].forEach(function(x){var e=document.getElementById(x[0]);if(e)e.style.width=(x[1]/total*100)+"%";});
-    el=document.getElementById("wind-leaders");if(el)el.innerHTML=(d.leaders||[]).map(function(x){var v=Number(x.change)||0;return '<span class="wind-leader">'+esc(x.name)+'<b class="'+(v>0?"up":v<0?"down":"flat")+'">'+chg(v)+'</b></span>';}).join("");
+    el=document.getElementById("wind-leaders");if(el)el.innerHTML=(d.leaders||[]).map(function(x){var v=Number(x.change)||0;return '<span class="wind-leader" data-wind-code="'+esc(x.code)+'">'+esc(x.name)+'<b class="'+(v>0?"up":v<0?"down":"flat")+'">'+chg(v)+'</b></span>';}).join("");
   }).catch(function(){var m=document.getElementById("wind-meta");if(m)m.textContent="Wind 快照暂不可用";});
+  function tqCode(code){
+    code=String(code||"");var p=code.split(".");
+    if(code==="HSI.HI")return "hkHSI";
+    if(p.length<2)return "";
+    if(p[1]==="SH")return "sh"+p[0];
+    if(p[1]==="SZ")return "sz"+p[0];
+    if(p[1]==="HK")return "hk"+("00000"+p[0]).slice(-5);
+    return "";
+  }
+  function tqNum(v){var n=parseFloat(v);return isFinite(n)?n:null;}
+  function updateTencent(){
+    var els=[].slice.call(document.querySelectorAll("[data-wind-code]")),map={},qs=[];
+    els.forEach(function(el){var q=tqCode(el.getAttribute("data-wind-code"));if(q&&!map[q]){map[q]=1;qs.push(q);}});
+    if(!qs.length)return;
+    var tag=document.createElement("script");tag.charset="gbk";tag.src="https://qt.gtimg.cn/q="+qs.join(",")+"&_="+Date.now();
+    tag.onload=function(){
+      els.forEach(function(el){
+        var q=tqCode(el.getAttribute("data-wind-code")),raw=window["v_"+q];
+        if(typeof raw!=="string")return;
+        var f=raw.split("~"),price=tqNum(f[3]),pct=tqNum(f[32]);if(price==null||pct==null)return;
+        var pe=el.querySelector(".price"),ce=el.querySelector(".chg"),be=el.querySelector("b");
+        if(pe)pe.textContent=price.toLocaleString("zh-CN",{minimumFractionDigits:2,maximumFractionDigits:2});
+        var target=ce||be;if(target){target.textContent=chg(pct);target.classList.remove("up","down","flat");target.classList.add(pct>0?"up":pct<0?"down":"flat");}
+      });
+      var m=document.getElementById("wind-meta");if(m)m.textContent="实时行情 · 腾讯财经 · "+new Date().toLocaleTimeString("zh-CN",{hour:"2-digit",minute:"2-digit",second:"2-digit"});
+      tag.remove();
+    };
+    tag.onerror=function(){tag.remove();};
+    document.head.appendChild(tag);
+  }
+  updateTencent();setInterval(updateTencent,30000);
 })();
 </script>
 <section data-page-node-id="a4KQSaC1mt3HZZ9uiCRbY5" id="sec-over">
