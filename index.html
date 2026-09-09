@@ -720,9 +720,9 @@ body.research-center{--brand:#17212d!important;--brand-strong:#0d141c!important;
 .coverage-head h3{font-size:14px;color:var(--ink)}.coverage-head p{font-size:11px;color:var(--mut);margin-top:3px}
 #coverage-count{padding:4px 9px;border-radius:999px;background:#eef3f8;color:#315a7d;font-size:11px;font-weight:650}
 .coverage-list{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0}
-.coverage-item{cursor:pointer;transition:background .15s ease,transform .15s ease;display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:8px;min-height:45px;padding:10px 12px;border-right:1px solid #edf0f4;border-bottom:1px solid #edf0f4}
+.coverage-item{cursor:pointer;transition:background .15s ease,transform .15s ease;display:grid;grid-template-columns:minmax(0,1fr) auto auto auto;align-items:center;gap:8px;min-height:45px;padding:10px 12px;border-right:1px solid #edf0f4;border-bottom:1px solid #edf0f4}
 .coverage-item:hover{background:#f1f5f9}.coverage-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px;color:#38475b}
-.coverage-price{font:500 11px var(--font-number);color:#7b8795}.coverage-chg{font:600 11px var(--font-number);min-width:52px;text-align:right}
+.coverage-kline-btn{border:1px solid #dbe3ec;background:#fff;color:#315a7d;border-radius:7px;padding:3px 7px;font:600 10px var(--font-ui);cursor:pointer;white-space:nowrap}.coverage-kline-btn:hover{background:#315a7d;color:#fff;border-color:#315a7d}.coverage-price{font:500 11px var(--font-number);color:#7b8795}.coverage-chg{font:600 11px var(--font-number);min-width:52px;text-align:right}
 .coverage-chg.up{color:var(--red)}.coverage-chg.down{color:var(--green)}.coverage-chg.flat{color:var(--mut)}
 .coverage-loading{grid-column:1/-1;padding:18px;color:var(--mut);font-size:12px;text-align:center}
 @media(max-width:1000px){.coverage-list{grid-template-columns:repeat(4,minmax(0,1fr))}}
@@ -833,7 +833,7 @@ body.research-center{--brand:#17212d!important;--brand-strong:#0d141c!important;
     if(bench)bench.innerHTML=(d.benchmarks||[]).map(function(x){var v=Number(x.change)||0;return '<div class="wind-index" data-wind-code="'+esc(x.code)+'"><div class="name">'+esc(x.name)+'</div><div class="price">'+Number(x.price).toLocaleString("zh-CN",{minimumFractionDigits:2,maximumFractionDigits:2})+'</div><div class="chg '+(v>0?"up":v<0?"down":"flat")+'">'+chg(v)+'</div></div>';}).join("");
     var cov=document.getElementById("coverage-list"),cc=document.getElementById("coverage-count"),items=d.coverage||[];
     if(cc)cc.textContent=items.length+" 家";
-    if(cov)cov.innerHTML=items.map(function(x){return '<div class="coverage-item" role="button" tabindex="0" onclick="window.openCoverageKline(this)" data-wind-code="'+esc(x.code)+'"><span class="coverage-name">'+esc(x.name)+'</span><span class="coverage-price price">—</span><b class="coverage-chg chg flat">—</b></div>';}).join("");
+    if(cov)cov.innerHTML=items.map(function(x){return '<div class="coverage-item" role="button" tabindex="0" onclick="window.openCoverageKline(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.openCoverageKline(this)}" data-wind-code="'+esc(x.code)+'"><span class="coverage-name">'+esc(x.name)+'</span><span class="coverage-price price">—</span><b class="coverage-chg chg flat">—</b><button class="coverage-kline-btn" type="button" onclick="event.stopPropagation();window.openCoverageKline(this.parentNode)">K线</button></div>';}).join("");
     updateTencent();
     var b=d.breadth||{},total=Number(b.total)||1,up=Number(b.up)||0,down=Number(b.down)||0,flat=Number(b.flat)||0;
     var el=document.getElementById("wind-breadth");if(el)el.textContent=up+" 涨 / "+down+" 跌";
