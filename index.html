@@ -813,6 +813,7 @@ body.research-center{--brand:#17212d!important;--brand-strong:#0d141c!important;
     var cov=document.getElementById("coverage-list"),cc=document.getElementById("coverage-count"),items=d.coverage||[];
     if(cc)cc.textContent=items.length+" 家";
     if(cov)cov.innerHTML=items.map(function(x){return '<div class="coverage-item" data-wind-code="'+esc(x.code)+'"><span class="coverage-name">'+esc(x.name)+'</span><span class="coverage-price price">—</span><b class="coverage-chg chg flat">—</b></div>';}).join("");
+    updateTencent();
     var b=d.breadth||{},total=Number(b.total)||1,up=Number(b.up)||0,down=Number(b.down)||0,flat=Number(b.flat)||0;
     var el=document.getElementById("wind-breadth");if(el)el.textContent=up+" 涨 / "+down+" 跌";
     el=document.getElementById("wind-breadth-detail");if(el)el.textContent="覆盖池 "+total+" 只";
