@@ -25,6 +25,25 @@ def parse_time(s):
     return datetime.datetime.strptime(s, "%Y-%m-%dT%H:%M:%S.%f%z")
 
 # ---------- 1. 抓取 ----------
+def ensure_zsxq_auth():
+    """预检 zsxq-cli 登录态；失效时自动从 zsxq_auth_backup.json 恢复（同机同用户）。"""
+    r = subprocess.run([ZSXQ, "auth", "status"], capture_output=True, text=True,
+                       encoding="utf-8", timeout=30, shell=(os.name == "nt"))
+    out = (r.stdout or "") + (r.stderr or "")
+    if r.returncode == 0 and "Logged in as" in out:
+        print(f"  zsxq-cli 登录态正常（{out.strip().splitlines()[0].lstrip('✓ ')}）")
+        return
+    bk = os.path.join(HERE, "zsxq_auth_backup.json")
+    if not os.path.exists(bk):
+        sys.exit("✗ zsxq-cli 未登录且无备份可恢复，请先扫码授权：zsxq-cli auth login")
+    print("  ⚠ zsxq-cli 登录态失效，尝试从备份恢复…")
+    rr = subprocess.run([sys.executable, os.path.join(HERE, "restore_zsxq_auth.py"), "-f", bk],
+                        capture_output=True, text=True, encoding="utf-8", timeout=60)
+    print("  " + ((rr.stdout or "") + (rr.stderr or "")).strip().replace("\n", "\n  "))
+    if rr.returncode != 0:
+        sys.exit("✗ 自动恢复失败（备份可能过旧或跨机器），请重新扫码授权：zsxq-cli auth login")
+
+
 def fetch_since(cutoff):
     topics, end_time, page = [], None, 0
     while True:
@@ -131,6 +150,8 @@ def main():
     if args.skip_fetch:
         csv_text = open(local_csv, encoding="utf-8-sig").read()
     else:
+        # 0) zsxq-cli 登录态预检（失效自动恢复）
+        ensure_zsxq_auth()
         # 1) 线上表现状
         if not args.skip_lib:
             d = lib_call("space.database.get-database-content",
