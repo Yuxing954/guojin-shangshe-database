@@ -1,0 +1,69 @@
+{
+  "asOf": "2026-09-09",
+  "source": "Wind Alice 万得金融数据服务",
+  "benchmarks": [
+    {
+      "name": "上证综指",
+      "code": "000001.SH",
+      "price": 3951.51,
+      "change": 0.28
+    },
+    {
+      "name": "沪深300",
+      "code": "000300.SH",
+      "price": 4572.6,
+      "change": 0.3
+    },
+    {
+      "name": "中证500",
+      "code": "000905.SH",
+      "price": 7768.11,
+      "change": -0.03
+    },
+    {
+      "name": "创业板指",
+      "code": "399006.SZ",
+      "price": 3354.97,
+      "change": -0.14
+    },
+    {
+      "name": "恒生指数",
+      "code": "HSI.HI",
+      "price": 25274.96,
+      "change": -0.17
+    }
+  ],
+  "breadth": {
+    "total": 20,
+    "up": 3,
+    "down": 17,
+    "flat": 0
+  },
+  "leaders": [
+    {
+      "name": "海澜之家",
+      "code": "600612.SH",
+      "change": 0.84
+    },
+    {
+      "name": "锦江酒店",
+      "code": "600754.SH",
+      "change": 0.05
+    },
+    {
+      "name": "中国中免",
+      "code": "601888.SH",
+      "change": -1.56
+    },
+    {
+      "name": "首旅酒店",
+      "code": "600258.SH",
+      "change": -1.25
+    },
+    {
+      "name": "海底捞",
+      "code": "6862.HK",
+      "change": -9.14
+    }
+  ]
+}
