@@ -682,6 +682,33 @@ body.research-center{--brand:#17212d!important;--brand-strong:#0d141c!important;
 .research-center .foot{margin-top:34px!important;border-color:#d8d4cb!important;color:#a29f98!important;text-align:center}
 @media(max-width:700px){.research-center .wrap{padding:24px 14px 54px!important}.research-center h1{font-size:25px!important}.research-center .tabs{gap:18px!important;overflow-x:auto;flex-wrap:nowrap!important}.research-center .tab{white-space:nowrap}.research-center .toolrow{padding:7px}.research-center .crd{padding:17px 16px 16px!important}}
 </style>
+<style id="v51-wind-overview">
+#wind-overview{margin:0 0 18px;padding:0 18px}
+.wind-board{border:1px solid var(--line);border-radius:14px;background:linear-gradient(145deg,#fbfcfd,#fff);box-shadow:0 8px 22px rgba(24,42,82,.045);overflow:hidden}
+.wind-head{display:flex;align-items:center;gap:10px;padding:14px 17px;border-bottom:1px solid var(--line)}
+.wind-head h3{font-size:14px;color:var(--ink);letter-spacing:.01em}
+.wind-head p{font-size:11px;color:var(--mut);margin-left:auto}
+.wind-live{width:7px;height:7px;border-radius:50%;background:#28756b;box-shadow:0 0 0 4px rgba(40,117,107,.10)}
+.wind-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(250px,.8fr);gap:0}
+.wind-bench{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-right:1px solid var(--line)}
+.wind-index{padding:15px 14px;border-right:1px solid #edf0f4}
+.wind-index:last-child{border-right:0}
+.wind-index .name{font-size:11px;color:var(--mut);white-space:nowrap}
+.wind-index .price{margin-top:7px;font:600 18px/1.2 var(--font-number);color:var(--ink)}
+.wind-index .chg{margin-top:4px;font:600 12px/1 var(--font-number)}
+.wind-index .up,.wind-leader .up{color:var(--red)}.wind-index .down,.wind-leader .down{color:var(--green)}.wind-index .flat{color:var(--mut)}
+.wind-side{padding:15px 17px}
+.wind-side-title{font-size:11px;color:var(--mut)}
+.wind-breadth{display:flex;align-items:baseline;gap:10px;margin-top:7px}
+.wind-breadth strong{font:650 24px/1 var(--font-number);color:var(--ink)}
+.wind-breadth span{font-size:11px;color:var(--mut)}
+.wind-bar{display:flex;height:5px;margin-top:12px;border-radius:99px;overflow:hidden;background:#eef1f4}
+.wind-bar i{display:block}.wind-bar .up{background:#c86b5d}.wind-bar .down{background:#4b927f}.wind-bar .flat{background:#c9ced4}
+.wind-leaders{display:flex;gap:7px 14px;flex-wrap:wrap;margin-top:12px;padding-top:11px;border-top:1px solid #edf0f4}
+.wind-leader{font-size:11px;color:var(--mut);white-space:nowrap}.wind-leader b{margin-left:4px;font:600 11px var(--font-number)}
+@media(max-width:850px){#wind-overview{padding:0}.wind-grid{grid-template-columns:1fr}.wind-bench{border-right:0;border-bottom:1px solid var(--line)}.wind-index{padding:13px 10px}.wind-index .price{font-size:16px}}
+@media(max-width:560px){.wind-bench{grid-template-columns:repeat(3,1fr)}.wind-index:nth-child(n+4){display:none}.wind-head p{display:none}}
+</style>
 </head>
 <body data-page-node-id="2cpRFEmUhw5WL9afeNglP5">
 <a class="skip-link" href="#sec-over">跳到主要内容</a>
@@ -736,6 +763,36 @@ body.research-center{--brand:#17212d!important;--brand-strong:#0d141c!important;
   </div>
 
   
+<section id="wind-overview" aria-label="Wind市场环境">
+  <div class="wind-board">
+    <div class="wind-head"><i class="wind-live"></i><h3>Wind 市场环境</h3><p id="wind-meta">读取中 · Wind Alice</p></div>
+    <div class="wind-grid">
+      <div class="wind-bench" id="wind-bench"></div>
+      <div class="wind-side">
+        <div class="wind-side-title">覆盖池当日涨跌广度</div>
+        <div class="wind-breadth"><strong id="wind-breadth">—</strong><span id="wind-breadth-detail">—</span></div>
+        <div class="wind-bar"><i class="up" id="wind-up"></i><i class="down" id="wind-down"></i><i class="flat" id="wind-flat"></i></div>
+        <div class="wind-leaders" id="wind-leaders"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+(function(){
+  function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+  function chg(v){v=Number(v)||0;return (v>0?"+":"")+v.toFixed(2)+"%";}
+  fetch("data/wind-market-snapshot.json?ts="+Date.now()).then(function(r){return r.json();}).then(function(d){
+    var meta=document.getElementById("wind-meta");if(meta)meta.textContent=d.asOf+" 收盘 · Wind Alice";
+    var bench=document.getElementById("wind-bench");
+    if(bench)bench.innerHTML=(d.benchmarks||[]).map(function(x){var v=Number(x.change)||0;return '<div class="wind-index"><div class="name">'+esc(x.name)+'</div><div class="price">'+Number(x.price).toLocaleString("zh-CN",{minimumFractionDigits:2,maximumFractionDigits:2})+'</div><div class="chg '+(v>0?"up":v<0?"down":"flat")+'">'+chg(v)+'</div></div>';}).join("");
+    var b=d.breadth||{},total=Number(b.total)||1,up=Number(b.up)||0,down=Number(b.down)||0,flat=Number(b.flat)||0;
+    var el=document.getElementById("wind-breadth");if(el)el.textContent=up+" 涨 / "+down+" 跌";
+    el=document.getElementById("wind-breadth-detail");if(el)el.textContent="覆盖池 "+total+" 只";
+    [["wind-up",up],["wind-down",down],["wind-flat",flat]].forEach(function(x){var e=document.getElementById(x[0]);if(e)e.style.width=(x[1]/total*100)+"%";});
+    el=document.getElementById("wind-leaders");if(el)el.innerHTML=(d.leaders||[]).map(function(x){var v=Number(x.change)||0;return '<span class="wind-leader">'+esc(x.name)+'<b class="'+(v>0?"up":v<0?"down":"flat")+'">'+chg(v)+'</b></span>';}).join("");
+  }).catch(function(){var m=document.getElementById("wind-meta");if(m)m.textContent="Wind 快照暂不可用";});
+})();
+</script>
 <section data-page-node-id="a4KQSaC1mt3HZZ9uiCRbY5" id="sec-over">
     <div data-page-node-id="nYlqkhCiMOVAHQ7CezZpzw" class="sec-h"><h2 data-page-node-id="Ln8izzSZJUvCTIKE2lXZcu"><!--pnid:HWwIJf7tigtv9VJLuVZuGF-->总览</h2><span data-page-node-id="J9jNQOdok1HCTm6WctZt0x" class="sub"><!--pnid:mLwK9FXVQntQ3E17yCYRXc-->覆盖池画像 · 行情表现</span><span data-page-node-id="JUffKKy4iLwLZjqKWGkPpH" class="spacer"></span></div>
     <div data-page-node-id="pUoU5GW32bLzeeH310PR6p" class="ovgrid">
