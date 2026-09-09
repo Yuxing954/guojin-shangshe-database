@@ -713,6 +713,21 @@ body.research-center{--brand:#17212d!important;--brand-strong:#0d141c!important;
 .wind-head p{transition:color .2s ease}
 .wind-head p::before{content:"";display:inline-block;width:5px;height:5px;margin:0 5px 1px 0;border-radius:50%;background:#28756b}
 </style>
+<style id="v53-coverage-live">
+#coverage-live{margin:0 0 18px;padding:0 18px}
+.coverage-board{border:1px solid var(--line);border-radius:14px;background:#fff;box-shadow:0 8px 22px rgba(24,42,82,.04);overflow:hidden}
+.coverage-head{display:flex;align-items:center;justify-content:space-between;padding:14px 17px;border-bottom:1px solid var(--line);background:linear-gradient(100deg,rgba(49,87,213,.04),transparent)}
+.coverage-head h3{font-size:14px;color:var(--ink)}.coverage-head p{font-size:11px;color:var(--mut);margin-top:3px}
+#coverage-count{padding:4px 9px;border-radius:999px;background:#eef3f8;color:#315a7d;font-size:11px;font-weight:650}
+.coverage-list{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0}
+.coverage-item{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:8px;min-height:45px;padding:10px 12px;border-right:1px solid #edf0f4;border-bottom:1px solid #edf0f4}
+.coverage-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px;color:#38475b}
+.coverage-price{font:500 11px var(--font-number);color:#7b8795}.coverage-chg{font:600 11px var(--font-number);min-width:52px;text-align:right}
+.coverage-chg.up{color:var(--red)}.coverage-chg.down{color:var(--green)}.coverage-chg.flat{color:var(--mut)}
+.coverage-loading{grid-column:1/-1;padding:18px;color:var(--mut);font-size:12px;text-align:center}
+@media(max-width:1000px){.coverage-list{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:760px){#coverage-live{padding:0}.coverage-list{grid-template-columns:repeat(2,minmax(0,1fr))}.coverage-item{padding:9px 10px}}
+</style>
 </head>
 <body data-page-node-id="2cpRFEmUhw5WL9afeNglP5">
 <a class="skip-link" href="#sec-over">跳到主要内容</a>
@@ -781,6 +796,12 @@ body.research-center{--brand:#17212d!important;--brand-strong:#0d141c!important;
     </div>
   </div>
 </section>
+<section id="coverage-live" aria-label="覆盖公司实时涨跌">
+  <div class="coverage-board">
+    <div class="coverage-head"><div><h3>覆盖公司实时涨跌</h3><p>腾讯财经 · 约 30 秒刷新 · 点击公司进入对应行业模块</p></div><span id="coverage-count">—</span></div>
+    <div class="coverage-list" id="coverage-list"><div class="coverage-loading">正在读取覆盖池…</div></div>
+  </div>
+</section>
 <script>
 (function(){
   function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
@@ -789,6 +810,9 @@ body.research-center{--brand:#17212d!important;--brand-strong:#0d141c!important;
     var meta=document.getElementById("wind-meta");if(meta)meta.textContent=d.asOf+" 收盘 · Wind Alice";
     var bench=document.getElementById("wind-bench");
     if(bench)bench.innerHTML=(d.benchmarks||[]).map(function(x){var v=Number(x.change)||0;return '<div class="wind-index" data-wind-code="'+esc(x.code)+'"><div class="name">'+esc(x.name)+'</div><div class="price">'+Number(x.price).toLocaleString("zh-CN",{minimumFractionDigits:2,maximumFractionDigits:2})+'</div><div class="chg '+(v>0?"up":v<0?"down":"flat")+'">'+chg(v)+'</div></div>';}).join("");
+    var cov=document.getElementById("coverage-list"),cc=document.getElementById("coverage-count"),items=d.coverage||[];
+    if(cc)cc.textContent=items.length+" 家";
+    if(cov)cov.innerHTML=items.map(function(x){return '<div class="coverage-item" data-wind-code="'+esc(x.code)+'"><span class="coverage-name">'+esc(x.name)+'</span><span class="coverage-price price">—</span><b class="coverage-chg chg flat">—</b></div>';}).join("");
     var b=d.breadth||{},total=Number(b.total)||1,up=Number(b.up)||0,down=Number(b.down)||0,flat=Number(b.flat)||0;
     var el=document.getElementById("wind-breadth");if(el)el.textContent=up+" 涨 / "+down+" 跌";
     el=document.getElementById("wind-breadth-detail");if(el)el.textContent="覆盖池 "+total+" 只";
