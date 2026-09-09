@@ -116,6 +116,16 @@ def main():
     ap.add_argument("--skip-fetch", action="store_true", help="跳过抓取，直接用本地 CSV 推 GitHub")
     args = ap.parse_args()
 
+    # op_ token 自动铸造：不传 --lib-token 时现场铸一个（30 分钟 TTL，即用即铸永不过期）
+    if not args.skip_lib and not args.lib_token:
+        try:
+            sys.path.insert(0, HERE)
+            from get_lib_token import mint_token
+            args.lib_token = mint_token()
+            print("① 自动铸造资料库 op_ token ✓（30 分钟内有效）")
+        except Exception as e:
+            sys.exit(f"未提供 --lib-token 且自动铸造失败：{e}\n（请确认在 WorkBuddy 会话内运行，或手动传 --lib-token）")
+
     local_csv = os.path.normpath(os.path.join(HERE, CFG["local_csv"]))
 
     if args.skip_fetch:
