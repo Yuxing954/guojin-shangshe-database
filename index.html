@@ -762,6 +762,7 @@ body.research-center{--brand:#17212d!important;--brand-strong:#0d141c!important;
     <nav data-page-node-id="pUQaH5toIyms285pf1ji0D" class="side-nav" id="sideNav">
       <div data-page-node-id="Ke8Pz5nnT1PXcxnhXRzj9i" class="side-group"><!--pnid:Jv3jFQSagTjPQTV6ITI1XY-->功能区</div>
       <a data-page-node-id="hm0PnRfHSCMZlF9AWp2uvH" class="side-item on" data-sec="sec-over" href="#sec-over"><!--pnid:CnWrBebCYtj0Oo8yTVpYnZ-->总览</a>
+      <a class="side-item" data-sec="coverage-live" href="#coverage-live">实时行情</a>
       <a data-page-node-id="uRMlPVF719Cu7nxCU9qVCc" class="side-item" data-sec="sec-f" href="#sec-f"><!--pnid:5aGSSsLIOYUmWe8HSsRM39-->业绩与财务</a>
       <a data-page-node-id="cdVQpXwJfOWPd0sWi48rhc" class="side-item" data-sec="sec-r" href="#sec-r"><!--pnid:s5P9dQNxFKMBAflcOQWBw6-->研报与事件</a>
       <a data-page-node-id="sV56pSiSjl9PyzC0nlQXla" class="side-item" data-sec="sec-mkt" href="#sec-mkt"><!--pnid:NCoe92Vz95g142XTBmd3oP-->市场观点</a>
@@ -2373,7 +2374,7 @@ function setupSidebar(){
   if(grp&&sub){
     grp.addEventListener('click',function(){ sub.classList.toggle('collapsed'); grp.classList.toggle('collapsed'); });
   }
-  var order=['sec-over','sec-f','sec-r','sec-mkt','sec-m','sec-hotel','sec-taxfree','sec-gold','sec-overseas','sec-dining'];
+  var order=['sec-over','coverage-live','sec-f','sec-r','sec-mkt','sec-m','sec-hotel','sec-taxfree','sec-gold','sec-overseas','sec-dining'];
   var secs=[]; order.forEach(function(id){ var el=document.getElementById(id); if(el)secs.push(el); });
   function topOf(el){ return el.getBoundingClientRect().top + (window.scrollY||document.documentElement.scrollTop||0); }
   function spy(){
