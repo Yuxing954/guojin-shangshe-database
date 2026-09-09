@@ -741,7 +741,7 @@ body.research-center{--brand:#17212d!important;--brand-strong:#0d141c!important;
 .kline-tabs{display:flex;gap:8px;margin-bottom:14px}
 .kline-tab{border:1px solid #e2e8f0;background:#fff;color:#475569;border-radius:999px;padding:8px 18px;cursor:pointer;font:inherit;font-size:13px}
 .kline-tab.active{background:#312e81;border-color:#312e81;color:#fff}
-.kline-stage{height:390px;border:1px solid #e2e8f0;border-radius:14px;background:linear-gradient(180deg,#fff 0%,#f8fafc 100%);position:relative;padding:8px}
+.kline-range{display:flex;align-items:end;gap:9px;flex-wrap:wrap;margin-bottom:14px;padding:11px 12px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px}.kline-range label{display:flex;flex-direction:column;gap:4px;font-size:11px;color:#64748b}.kline-range input{min-height:34px;height:34px;padding:5px 8px;font-size:12px;background:#fff}.kline-range-sep{padding-bottom:7px;color:#94a3b8}.kline-quick{display:flex;gap:5px;flex-wrap:wrap;margin-left:auto}.kline-quick button{height:34px;padding:0 10px;border:1px solid #dbe3ec;background:#fff;border-radius:8px;color:#475569;font:500 11px var(--font-ui);cursor:pointer}.kline-quick button:hover{background:#eef2ff;color:#312e81;border-color:#c7d2fe}.kline-stage{height:390px;border:1px solid #e2e8f0;border-radius:14px;background:linear-gradient(180deg,#fff 0%,#f8fafc 100%);position:relative;padding:8px}
 #kline-canvas{width:100%;height:100%;display:block}
 #kline-status{font-size:13px;color:#64748b;min-height:22px;margin-top:10px}
 .kline-legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:#64748b;margin-top:8px}
@@ -2565,7 +2565,13 @@ document.querySelectorAll('a[href*="workbuddy.cn"]').forEach(function(a){a.style
 <div id="kline-mask" role="dialog" aria-modal="true" aria-labelledby="kline-title">
   <div class="kline-dialog">
     <div class="kline-head"><div><div class="kline-title" id="kline-title">公司 K 线</div><div class="kline-sub" id="kline-sub">腾讯财经 · 前复权</div></div><button class="kline-close" id="kline-close" type="button" aria-label="关闭">×</button></div>
-    <div class="kline-tabs" id="kline-tabs"><button class="kline-tab active" data-period="day" type="button">日 K</button><button class="kline-tab" data-period="week" type="button">周 K</button><button class="kline-tab" data-period="month" type="button">月 K</button></div>
+    <div class="kline-tabs" id="kline-tabs"><button class="kline-tab active" data-period="m5" type="button">日内 K</button><button class="kline-tab" data-period="day" type="button">日 K</button><button class="kline-tab" data-period="week" type="button">周 K</button><button class="kline-tab" data-period="month" type="button">月 K</button></div>
+    <div class="kline-range">
+      <label>开始日期<input id="kline-start" type="date"></label>
+      <span class="kline-range-sep">至</span>
+      <label>结束日期<input id="kline-end" type="date"></label>
+      <div class="kline-quick"><button type="button" data-days="5">近 5 日</button><button type="button" data-days="30">近 1 月</button><button type="button" data-days="90">近 3 月</button><button type="button" data-days="365">近 1 年</button><button type="button" data-days="all">全部</button></div>
+    </div>
     <div class="kline-stage"><canvas id="kline-canvas"></canvas></div>
     <div id="kline-status">选择周期后加载行情…</div>
     <div class="kline-legend"><span class="up"><i></i>上涨</span><span class="down"><i></i>下跌</span><span class="vol"><i></i>成交量</span></div>
@@ -2573,38 +2579,47 @@ document.querySelectorAll('a[href*="workbuddy.cn"]').forEach(function(a){a.style
 </div><script id="v54-kline">
 (function(){
 "use strict";
-var mask=document.getElementById("kline-mask"),canvas=document.getElementById("kline-canvas"),status=document.getElementById("kline-status"),title=document.getElementById("kline-title"),sub=document.getElementById("kline-sub"),current={code:"",name:"",period:"day"},cache={};
+var mask=document.getElementById("kline-mask"),canvas=document.getElementById("kline-canvas"),status=document.getElementById("kline-status"),title=document.getElementById("kline-title"),sub=document.getElementById("kline-sub"),startInput=document.getElementById("kline-start"),endInput=document.getElementById("kline-end"),current={code:"",name:"",period:"m5",raw:[]},cache={};
 if(!mask||!canvas)return;
 function qcode(code){code=String(code||"").toUpperCase();if(code==="HSI.HI")return"hkHSI";var p=code.split(".");return p[1]==="SH"?"sh"+p[0]:p[1]==="SZ"?"sz"+p[0]:p[1]==="HK"?"hk"+String(parseInt(p[0],10)||0).padStart(5,"0"):code.toLowerCase();}
-function payloadArray(obj,period){var d=obj&&obj.data;if(!d)return[];var k=Object.keys(d)[0],x=d[k]||{},a=x["qfq"+period]||x[period]||x["fq"+period]||[];return Array.isArray(a)?a:[];}
+function payloadArray(obj,period){var d=obj&&obj.data;if(!d)return[];var k=Object.keys(d)[0],x=d[k]||{};if(period==="m5")return Array.isArray(x.m5)?x.m5:[];var a=x["qfq"+period]||x[period]||x["fq"+period]||[];return Array.isArray(a)?a:[];}
 function request(period,code){
  var key=code+"_"+period;if(cache[key])return Promise.resolve(cache[key]);
- var param=qcode(code)+","+period+",,,120,qfq",url="https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param="+encodeURIComponent(param);
+ var qc=qcode(code),param,url;
+ if(period==="m5"){param=qc+",m5,,1200";url="https://ifzq.gtimg.cn/appstock/app/kline/mkline?param="+encodeURIComponent(param);}
+ else{var count=period==="day"?1000:(period==="week"?520:240);param=qc+","+period+",,,"+count+",qfq";url="https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param="+encodeURIComponent(param);}
  return fetch(url,{mode:"cors",cache:"no-store"}).then(function(r){if(!r.ok)throw Error("HTTP "+r.status);return r.json();}).then(function(o){var a=payloadArray(o,period);if(!a.length)throw Error("暂无 K 线数据");cache[key]=a;return a;}).catch(function(){
-   return new Promise(function(resolve,reject){var vn="__kline_"+Date.now()+"_"+Math.floor(Math.random()*9999),s=document.createElement("script");window[vn]=null;s.charset="gbk";s.src="https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?_var="+vn+"&param="+encodeURIComponent(param)+"&r="+Date.now();s.onload=function(){var a=payloadArray(window[vn],period);try{delete window[vn];}catch(e){}s.remove();if(a.length){cache[key]=a;resolve(a);}else reject(Error("暂无 K 线数据"));};s.onerror=function(){s.remove();reject(Error("行情接口暂时不可用"));};document.head.appendChild(s);});
+   return new Promise(function(resolve,reject){var vn="__kline_"+Date.now()+"_"+Math.floor(Math.random()*9999),s=document.createElement("script");window[vn]=null;s.charset="gbk";s.src=(period==="m5"?"https://ifzq.gtimg.cn/appstock/app/kline/mkline":"https://web.ifzq.gtimg.cn/appstock/app/fqkline/get")+"?_var="+vn+"&param="+encodeURIComponent(param)+"&r="+Date.now();s.onload=function(){var a=payloadArray(window[vn],period);try{delete window[vn];}catch(e){}s.remove();if(a.length){cache[key]=a;resolve(a);}else reject(Error("暂无 K 线数据"));};s.onerror=function(){s.remove();reject(Error("行情接口暂时不可用"));};document.head.appendChild(s);});
  });
 }
+function rowDate(r){var s=String(r[0]||"");return /^\d{12}$/.test(s)?s.slice(0,4)+"-"+s.slice(4,6)+"-"+s.slice(6,8):s.slice(0,10);}
+function displayDate(r){var s=String(r[0]||"");return /^\d{12}$/.test(s)?s.slice(0,4)+"-"+s.slice(4,6)+"-"+s.slice(6,8)+" "+s.slice(8,10)+":"+s.slice(10,12):s.slice(0,10);}
+function filtered(){var a=current.raw||[],s=startInput.value,e=endInput.value;return a.filter(function(r){var d=rowDate(r);return(!s||d>=s)&&(!e||d<=e);});}
+function syncRange(rows,reset){if(!rows.length)return;var lo=rowDate(rows[0]),hi=rowDate(rows[rows.length-1]);startInput.min=lo;startInput.max=hi;endInput.min=lo;endInput.max=hi;if(reset){endInput.value=hi;var days=current.period==="m5"?30:(current.period==="day"?180:(current.period==="week"?730:1825)),d=new Date(hi+"T00:00:00");d.setDate(d.getDate()-days);startInput.value=d.toISOString().slice(0,10)<lo?lo:d.toISOString().slice(0,10);}}
 function draw(rows){
- var box=canvas.parentElement,w=Math.max(320,box.clientWidth-16),h=Math.max(220,box.clientHeight-16),dpr=window.devicePixelRatio||1;canvas.width=w*dpr;canvas.height=h*dpr;canvas.style.width=w+"px";canvas.style.height=h+"px";var c=canvas.getContext("2d");c.scale(dpr,dpr);c.clearRect(0,0,w,h);
- var left=52,right=14,top=18,bottom=38,volH=52,chartH=h-top-bottom-volH,gap=Math.max(2,(w-left-right)/rows.length*.22),cw=Math.max(2,(w-left-right)/rows.length-gap),max=-Infinity,min=Infinity,vmax=0;
+ var box=canvas.parentElement,w=Math.max(320,box.clientWidth-16),h=Math.max(220,box.clientHeight-16),dpr=window.devicePixelRatio||1;canvas.width=w*dpr;canvas.height=h*dpr;canvas.style.width=w+"px";canvas.style.height=h+"px";var c=canvas.getContext("2d");c.scale(dpr,dpr);c.clearRect(0,0,w,h);if(!rows.length)return;
+ var left=52,right=14,top=18,bottom=38,volH=52,chartH=h-top-bottom-volH,gap=Math.max(.5,(w-left-right)/rows.length*.18),cw=Math.max(1,(w-left-right)/rows.length-gap),max=-Infinity,min=Infinity,vmax=0;
  rows.forEach(function(r){var hi=+r[3],lo=+r[4],v=+r[5]||0;if(isFinite(hi))max=Math.max(max,hi);if(isFinite(lo))min=Math.min(min,lo);vmax=Math.max(vmax,v);});if(!isFinite(max)||!isFinite(min))return;var pad=(max-min||1)*.08;max+=pad;min-=pad;
  function y(v){return top+(max-v)/(max-min)*chartH;}function x(i){return left+(i+.5)*(w-left-right)/rows.length;}
  c.font="11px Arial";c.textAlign="right";c.textBaseline="middle";c.strokeStyle="#e2e8f0";c.fillStyle="#64748b";c.lineWidth=1;
  for(var g=0;g<4;g++){var gy=top+chartH*g/3;c.beginPath();c.moveTo(left,gy+.5);c.lineTo(w-right,gy+.5);c.stroke();c.fillText((max-(max-min)*g/3).toFixed(2),left-8,gy);}
- rows.forEach(function(r,i){var o=+r[1],cl=+r[2],hi=+r[3],lo=+r[4],up=cl>=o,col=up?"#d14b4b":"#27856b",xx=x(i),yy=Math.min(y(o),y(cl)),bh=Math.max(1,Math.abs(y(o)-y(cl)));c.strokeStyle=col;c.fillStyle=col;c.beginPath();c.moveTo(xx,y(hi));c.lineTo(xx,y(lo));c.stroke();c.fillRect(xx-cw/2,yy,cw,bh);var vh=vmax?((+r[5]||0)/vmax)*volH:0;c.globalAlpha=.45;c.fillRect(xx-cw/2,top+chartH+bottom+volH-vh,cw,vh);c.globalAlpha=1;});
- c.fillStyle="#64748b";c.textAlign="center";c.textBaseline="top";var step=Math.max(1,Math.ceil(rows.length/6));for(var i=0;i<rows.length;i+=step)c.fillText(String(rows[i][0]).slice(5,10),x(i),top+chartH+bottom+volH+5);
+ rows.forEach(function(r,i){var o=+r[1],cl=+r[2],hi=+r[3],lo=+r[4],up=cl>=o,col=up?"#d14b4b":"#27856b",xx=x(i),yy=Math.min(y(o),y(cl)),bh=Math.max(1,Math.abs(y(o)-y(cl)));c.strokeStyle=col;c.fillStyle=col;c.beginPath();c.moveTo(xx,y(hi));c.lineTo(xx,y(lo));c.stroke();c.fillRect(xx-cw/2,yy,cw,bh);var vh=vmax?((+r[5]||0)/vmax)*volH:0;c.globalAlpha=.42;c.fillRect(xx-cw/2,top+chartH+bottom+volH-vh,cw,vh);c.globalAlpha=1;});
+ c.fillStyle="#64748b";c.textAlign="center";c.textBaseline="top";var step=Math.max(1,Math.ceil(rows.length/6));for(var i=0;i<rows.length;i+=step){var s=String(rows[i][0]||""),lab=current.period==="m5"?(s.slice(4,8)+" "+s.slice(8,12)):s.slice(5,10);c.fillText(lab,x(i),top+chartH+bottom+volH+5);}
 }
+function renderRange(){var rows=filtered();if(!rows.length){status.textContent="所选日期区间内暂无数据";draw([]);return;}draw(rows);var last=rows[rows.length-1],first=rows[0],chg=((+last[2]-+first[1])/(+first[1]||1)*100);status.textContent="区间 "+displayDate(first)+" 至 "+displayDate(last)+" · "+rows.length+" 根 K 线 · 最新收盘 "+(+last[2]).toFixed(2)+" · 区间涨跌 "+(chg>=0?"+":"")+chg.toFixed(2)+"%";}
 function load(period){
- current.period=period;status.textContent="正在加载 "+({day:"日 K",week:"周 K",month:"月 K"}[period])+"…";document.querySelectorAll(".kline-tab").forEach(function(b){b.classList.toggle("active",b.getAttribute("data-period")===period);});
- request(period,current.code).then(function(rows){draw(rows);var last=rows[rows.length-1],first=rows[0],chg=((+last[2]-+first[1])/(+first[1]||1)*100);status.textContent="区间 "+first[0]+" 至 "+last[0]+" · 最新收盘 "+(+last[2]).toFixed(2)+" · 区间涨跌 "+(chg>=0?"+":"")+chg.toFixed(2)+"%";}).catch(function(e){status.textContent=e.message||"行情加载失败";var c=canvas.getContext("2d");c.clearRect(0,0,canvas.width,canvas.height);});
+ current.period=period;status.textContent="正在加载 "+({m5:"日内 5 分钟 K",day:"日 K",week:"周 K",month:"月 K"}[period])+"…";document.querySelectorAll(".kline-tab").forEach(function(b){b.classList.toggle("active",b.getAttribute("data-period")===period);});
+ request(period,current.code).then(function(rows){current.raw=rows;syncRange(rows,true);renderRange();}).catch(function(e){status.textContent=e.message||"行情加载失败";draw([]);});
 }
 window.openCoverageKline=open;
-function open(item){current.code=item.getAttribute("data-wind-code")||"";current.name=(item.querySelector(".coverage-name")||{}).textContent||current.code;title.textContent=current.name+" · K 线";sub.textContent=current.code+" · 腾讯财经 · 前复权";mask.classList.add("open");document.body.style.overflow="hidden";load(current.period);}
+function open(item){current.code=item.getAttribute("data-wind-code")||"";current.name=(item.querySelector(".coverage-name")||{}).textContent||current.code;title.textContent=current.name+" · K 线";sub.textContent=current.code+" · 腾讯财经 · 日内为 5 分钟 K，其余前复权";mask.classList.add("open");document.body.style.overflow="hidden";load(current.period);}
 document.getElementById("coverage-list")&&document.getElementById("coverage-list").addEventListener("click",function(e){var item=e.target.closest(".coverage-item");if(item)open(item);});
 document.getElementById("kline-close").addEventListener("click",function(){mask.classList.remove("open");document.body.style.overflow="";});
 mask.addEventListener("click",function(e){if(e.target===mask){mask.classList.remove("open");document.body.style.overflow="";}});
 document.getElementById("kline-tabs").addEventListener("click",function(e){var b=e.target.closest(".kline-tab");if(b)load(b.getAttribute("data-period"));});
-window.addEventListener("resize",function(){if(mask.classList.contains("open")&&cache[current.code+"_"+current.period])draw(cache[current.code+"_"+current.period]);});
+[startInput,endInput].forEach(function(el){el.addEventListener("change",renderRange);});
+document.querySelector(".kline-quick").addEventListener("click",function(e){var b=e.target.closest("button[data-days]");if(!b||!current.raw.length)return;var hi=rowDate(current.raw[current.raw.length-1]);endInput.value=hi;if(b.getAttribute("data-days")==="all")startInput.value=rowDate(current.raw[0]);else{var d=new Date(hi+"T00:00:00");d.setDate(d.getDate()-Number(b.getAttribute("data-days")));startInput.value=d.toISOString().slice(0,10)<rowDate(current.raw[0])?rowDate(current.raw[0]):d.toISOString().slice(0,10);}renderRange();});
+window.addEventListener("resize",function(){if(mask.classList.contains("open"))renderRange();});
 document.addEventListener("keydown",function(e){if(e.key==="Escape"&&mask.classList.contains("open")){mask.classList.remove("open");document.body.style.overflow="";}});
 })();
 </script>
