@@ -1246,14 +1246,16 @@ else { document.addEventListener("DOMContentLoaded", boot); }
   </div><!--pnid:s7m0ueqw5TpbYTIuW5NOQt--><!-- /.main -->
 <!--pnid:HFsnKlsHljBqBA9g2Sr9fB--><!-- tfov-injected: 沉浸查看器（板块 + 功能库，滚动隔离，Esc 退出） -->
 <style data-page-node-id="V91WyL5yEColGFUuS9ZssX" data-pnid-children="Qk7kHnKXKJnG5VdWsw4wBE">
-#tfov{display:none;position:fixed;inset:0;z-index:10000;background:rgba(12, 10, 42, .74);backdrop-filter:blur(2px)}
-#tfov.on{display:flex;flex-direction:column}
-#tfov .tf-bar{display:flex;align-items:center;gap:12px;padding:10px 18px;background:linear-gradient(120deg,#18181b,#18181b);color:#ffffff;flex:0 0 auto}
-#tfov .tf-bar b#tfTitle{font-size:15px}
-#tfov .tf-bar span{font-size:12px;color:#71717a;flex:1}
-#tfov .tf-bar button{background:rgba(255, 255, 255, .14);border:1px solid rgba(255, 255, 255, .4);color:#ffffff;border-radius:7px;padding:5px 14px;cursor:pointer;font-size:12.5px}
-#tfov .tf-frame{flex:1 1 auto;margin:0 16px 16px;background:#ffffff;border-radius:10px;overflow:hidden;box-shadow:0 6px 30px rgba(24, 24, 27, .3)}
+#tfov{display:none;position:fixed;inset:0;z-index:10000;background:rgba(14,23,45,.50);backdrop-filter:blur(8px)}
+#tfov.on{display:flex;flex-direction:column;padding:14px}
+#tfov .tf-bar{display:flex;align-items:center;gap:12px;min-height:54px;padding:0 18px;background:linear-gradient(112deg,#142754,#3157d5);color:#fff;flex:0 0 auto;border:1px solid rgba(255,255,255,.15);border-bottom:0;border-radius:18px 18px 0 0;box-shadow:0 10px 28px rgba(20,39,84,.18)}
+#tfov .tf-bar b#tfTitle{font-size:16px;letter-spacing:.01em}
+#tfov .tf-bar span{font-size:12px;color:rgba(255,255,255,.72);flex:1}
+#tfov .tf-bar button{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.38);color:#fff;border-radius:9px;padding:7px 13px;cursor:pointer;font-size:12.5px;transition:background .18s ease,transform .18s ease}
+#tfov .tf-bar button:hover{background:rgba(255,255,255,.22);transform:translateY(-1px)}
+#tfov .tf-frame{flex:1 1 auto;margin:0;background:#f3f5fa;border:1px solid rgba(255,255,255,.42);border-radius:0 0 18px 18px;overflow:hidden;box-shadow:0 20px 50px rgba(14,23,45,.25)}
 #tfov iframe{width:100%;height:100%;border:0;display:block}
+@media(max-width:700px){#tfov.on{padding:0}#tfov .tf-bar{min-height:50px;padding:0 12px;border-radius:0}#tfov .tf-bar span{display:none}#tfov .tf-frame{border-radius:0;border-left:0;border-right:0}}
 </style>
 <div data-page-node-id="juON8tAjEIPkz3m7cUigXV" aria-hidden="true" id="tfov">
   <div data-page-node-id="hltDNKDDVbPQQ7TSuhd0ru" class="tf-bar"><b data-page-node-id="bCNVAQ0L3yosEXSPz3f4m5" id="tfTitle"><!--pnid:W5TcdBAbzblCesDVV159wW-->沉浸视图</b><span data-page-node-id="yLnuKQ93IP7dpjZdNrhedz"><!--pnid:2g8fnwNbpElUfvp5y3mCgA-->上下拖动仅在本区内滚动、不会进入其它板块/功能区，按 Esc 或「退出」返回导航</span><button data-page-node-id="qPPAULDD74d324N2Rju8qO" id="tfExit" type="button"><!--pnid:HSfRgWgOZvUzHcArqK92FD-->退出（Esc）</button></div>
@@ -1273,7 +1275,31 @@ window.GJGD_BOARD_HTML="<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta ch
 var ITEMS={taxfree:{title:'免税板块跟踪看板',html:window.TF_BOARD_HTML},gold:{title:'黄金珠宝板块跟踪看板',html:window.GOLD_BOARD_HTML},oversea:{title:'跨境电商板块跟踪看板',html:window.OV_BOARD_HTML},hotel:{title:'酒店板块跟踪看板',html:window.HOTEL_BOARD_HTML},report:{title:'观点与事件中心',html:window.CENTER_BOARD_HTML},mkt:{title:'观点与事件中心',html:window.CENTER_BOARD_HTML},minutes:{title:'观点与事件中心',html:window.CENTER_BOARD_HTML},gjgd:{title:'观点与事件中心',html:window.CENTER_BOARD_HTML}};
   var BYSEC={'sec-taxfree':'taxfree','sec-gold':'gold','sec-overseas':'oversea','sec-hotel':'hotel','sec-mkt':'mkt','sec-r':'report','sec-m':'minutes'};
   var cur='';
-  function bridge(h){ return "<script>try{var w=window;if(!(w.__SMART_PAGE__&&w.__SMART_PAGE__.database)){var p=w.parent;if(p&&p.__SMART_PAGE__&&p.__SMART_PAGE__.database){w.__SMART_PAGE__=p.__SMART_PAGE__;}}}catch(e){}</scr"+"ipt>\n"+h; }
+  var SHARED_CHILD_THEME=`<style id="sinolink-child-theme">
+:root{--brand:#3157d5!important;--brand-strong:#2443ac!important;--bg:#f3f5fa!important;--paper:#f3f5fa!important;--card:#fff!important;--panel:#fff!important;--panel-2:#f8faff!important;--line:#e3e7f0!important;--ink:#151c2c!important;--text:#151c2c!important;--text-2:#5b677b!important;--text-3:#8b96a8!important;--radius:16px!important;--radius-lg:18px!important}
+html{scroll-behavior:smooth}
+body{background:radial-gradient(circle at 88% 0,rgba(49,87,213,.10),transparent 26rem),#f3f5fa!important;color:#151c2c!important}
+.wrap{max-width:1240px!important;padding:26px 24px 72px!important}
+.mast,.head,.hero{margin-bottom:20px!important}
+.mast h1,.head h1,.hero h1,h1{color:#151c2c!important;letter-spacing:-.025em}
+.mast p,.head p,.hero p,.sub,.muted{color:#657188!important}
+.card,.panel,.crd,.kpi-card,.trend-card,.cat-panel,.hm-panel,.hero-card,.g-kpi,.fcard{background:#fff!important;border:1px solid #e3e7f0!important;border-radius:16px!important;box-shadow:0 8px 24px rgba(24,42,82,.055)!important}
+.card:hover,.crd:hover,.kpi-card:hover{box-shadow:0 13px 30px rgba(24,42,82,.10)!important}
+button,.btn,.tab,.tog,.pager button{border-radius:9px!important;transition:transform .16s ease,box-shadow .16s ease,background .16s ease!important}
+button:hover,.btn:hover,.pager button:hover{transform:translateY(-1px)}
+button.primary,.btn.primary,.tab.active,.tab.on,.tog.on{background:#3157d5!important;border-color:#3157d5!important;color:#fff!important;box-shadow:0 5px 14px rgba(49,87,213,.20)!important}
+input,select,textarea{background:#fff!important;border:1px solid #dfe5f0!important;border-radius:9px!important;color:#151c2c!important;box-shadow:none!important}
+input:focus,select:focus,textarea:focus{outline:0!important;border-color:#3157d5!important;box-shadow:0 0 0 3px rgba(49,87,213,.12)!important}
+.tabs,.filters,.toolrow,.toolbar,.filterbar{gap:10px!important}
+table{background:#fff!important;border-color:#e3e7f0!important}
+th{background:#f5f7fc!important;color:#52617a!important;border-color:#e3e7f0!important}
+td{border-color:#edf0f5!important;color:#27344a!important}
+tr:hover td{background:#f8faff!important}
+.badge,.tag,.chip{border-radius:999px!important}
+.empty,.no-data{border:1px dashed #cad4e5!important;border-radius:14px!important;background:#fafcff!important;color:#718096!important}
+@media(max-width:700px){.wrap{padding:18px 14px 44px!important}.mast,.head,.hero{margin-bottom:14px!important}.card,.panel,.crd,.kpi-card,.trend-card,.cat-panel,.hm-panel{border-radius:13px!important}h1{font-size:24px!important}}
+</style>`;
+  function bridge(h){ h=String(h||'').replace(/<\/head>/i,SHARED_CHILD_THEME+'</head>'); return "<script>try{var w=window;if(!(w.__SMART_PAGE__&&w.__SMART_PAGE__.database)){var p=w.parent;if(p&&p.__SMART_PAGE__&&p.__SMART_PAGE__.database){w.__SMART_PAGE__=p.__SMART_PAGE__;}}}catch(e){}</scr"+"ipt>\n"+h; }
   function open(key){ var it=ITEMS[key],ov=document.getElementById('tfov'),fr=document.getElementById('tfFrame');
     if(!it||!ov||!fr)return; if(cur!==key){cur=key;fr.srcdoc=bridge(it.html);} var t=document.getElementById('tfTitle'); if(t)t.textContent=it.title;
     document.body.style.overflow='hidden';ov.classList.add('on');ov.setAttribute('aria-hidden','false');
