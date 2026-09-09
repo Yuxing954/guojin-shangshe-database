@@ -560,6 +560,26 @@ body{background:radial-gradient(circle at 82% -5%,rgba(85,106,230,.13),transpare
 #sec-mkt .mkt-source{min-height:20px}.mkt-source span{font-size:11px}
 #sec-mkt .mkt-actions{justify-content:flex-end}#sec-mkt .mkt-actions a{display:none!important}
 </style>
+<style id="v45-finance-table">
+#sec-f .f-table-wrap{margin-top:18px;border:1px solid var(--line);border-radius:14px;background:var(--card);overflow:hidden}
+#sec-f .f-table-head{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px 17px 13px;border-bottom:1px solid var(--line);background:linear-gradient(100deg,rgba(49,87,213,.055),transparent 52%)}
+#sec-f .f-table-head h3{font-size:14px;color:var(--ink)}
+#sec-f .f-table-head p{margin-top:3px;font-size:12px;color:var(--ink2)}
+#sec-f .f-table-count{flex:0 0 auto;padding:4px 9px;border-radius:999px;background:var(--bluebg);color:var(--blue);font-size:12px;font-weight:600}
+#sec-f .f-table-scroll{overflow:auto;max-height:460px}
+#sec-f .f-detail-table{width:100%;min-width:1220px;border-collapse:separate;border-spacing:0;font-size:12.5px}
+#sec-f .f-detail-table th{position:sticky;top:0;z-index:2;padding:11px 12px;background:#f5f7fc;color:#53617a;text-align:right;white-space:nowrap;font-size:11.5px;font-weight:650;border-bottom:1px solid var(--line)}
+#sec-f .f-detail-table td{padding:11px 12px;text-align:right;white-space:nowrap;border-bottom:1px solid #edf0f5;color:var(--ink)}
+#sec-f .f-detail-table tbody tr:hover td{background:#f8faff}
+#sec-f .f-detail-table .f-period{position:sticky;left:0;z-index:1;text-align:left;min-width:118px;background:var(--card);box-shadow:1px 0 0 var(--line)}
+#sec-f .f-detail-table th.f-period{z-index:3;background:#f5f7fc}
+#sec-f .f-detail-table tbody tr:hover .f-period{background:#f8faff}
+#sec-f .f-detail-table small{display:block;margin-top:2px;color:var(--mut);font-size:10.5px;font-weight:400}
+#sec-f .f-detail-table .up{color:var(--red);font-weight:650}
+#sec-f .f-detail-table .down{color:var(--green);font-weight:650}
+#sec-f .f-detail-table .fna{color:var(--mut)}
+@media(max-width:700px){#sec-f .f-table-head{padding:13px 14px}#sec-f .f-table-head p{display:none}#sec-f .f-table-scroll{max-height:390px}}
+</style>
 </head>
 <body data-page-node-id="2cpRFEmUhw5WL9afeNglP5">
 <a class="skip-link" href="#sec-over">跳到主要内容</a>
@@ -639,6 +659,7 @@ body{background:radial-gradient(circle at 82% -5%,rgba(85,106,230,.13),transpare
         <div data-page-node-id="0w2UsUrUov6t72tMP0Q7UJ" id="f-kpis"></div>
         <div data-page-node-id="WOFGycibFS1qG48CAFEw2I" id="f-comment"></div>
         <div data-page-node-id="ZFn8eJr8L4F2UkmJ4TpeXb" class="hgrid" id="f-charts" style="margin-top:14px"></div>
+        <div id="f-table" class="f-table-wrap"></div>
       </div>
     </div>
   </section>
@@ -1691,6 +1712,7 @@ function renderF(){
     +'</div>'
     :"";
   fDrawCharts(rows,chartsBox);
+  fRenderTable(rows);
 }
 function fDrawCharts(rows,chartsBox){
   fKill();
@@ -1740,6 +1762,30 @@ function fDrawCharts(rows,chartsBox){
     {type:'bar',label:'归母净资产(亿元)',data:col("归母净资产(亿元)"),backgroundColor:'#45aa88',borderRadius:3,maxBarThickness:26},
     {type:'line',label:'资产负债率(%)',data:col("资产负债率(%)"),borderColor:'#c83c3c',backgroundColor:'transparent',borderWidth:2,tension:.25,pointRadius:2.5,pointHoverRadius:4,yAxisID:'y2',spanGaps:true}
   ]},options:fOpts(true)});
+}
+/* ---------- 财务明细表：与当前图表同口径，最新报告期优先 ---------- */
+function fRenderTable(rows){
+  var el=$("f-table"); if(!el)return;
+  var list=rows.slice().sort(function(a,b){return fPeriodKey(b["财报期"])-fPeriodKey(a["财报期"]);});
+  function n(r,k,d){
+    var v=numOrEmpty(r[k]); if(v==null)return '<span class="fna">—</span>';
+    var cls=(d&&v!==0)?(v>0?"up":"down"):"", isPct=k.indexOf("(%)")>=0;
+    return '<span class="'+cls+'">'+(d&&v>0?"+":"")+(isPct?v.toFixed(1)+"%":v.toFixed(2))+'</span>';
+  }
+  function cell(r,k,delta){ return '<td>'+n(r,k,delta)+'</td>'; }
+  var html='<div class="f-table-head"><div><h3>财务明细</h3><p>与上方图表保持同一公司、同一口径；最新报告期置顶，金额单位为亿元</p></div><span class="f-table-count">共 '+list.length+' 期</span></div>';
+  if(!list.length){el.innerHTML=html+'<div class="statebox">暂无可展示的财务明细</div>';return;}
+  html+='<div class="f-table-scroll"><table class="f-detail-table"><thead><tr>'
+    +'<th class="f-period">报告期</th><th>营业收入</th><th>营收同比</th><th>归母净利润</th><th>归母同比</th><th>毛利率</th><th>净利率</th>'
+    +'<th>经营现金流</th><th>投资现金流</th><th>筹资现金流</th><th>总资产</th><th>归母净资产</th><th>资产负债率</th>'
+    +'</tr></thead><tbody>';
+  list.forEach(function(r){
+    html+='<tr><td class="f-period"><strong>'+esc(r["财报期"]||"—")+'</strong><small>'+esc(r["子行业"]||"")+'</small></td>'
+      +cell(r,"营业收入(亿元)")+cell(r,"营收同比(%)",true)+cell(r,"归母净利润(亿元)")+cell(r,"归母同比(%)",true)
+      +cell(r,"毛利率(%)")+cell(r,"净利率(%)")+cell(r,"经营现金流净额(亿元)")+cell(r,"投资现金流净额(亿元)")
+      +cell(r,"筹资现金流净额(亿元)")+cell(r,"总资产(亿元)")+cell(r,"归母净资产(亿元)")+cell(r,"资产负债率(%)")+'</tr>';
+  });
+  el.innerHTML=html+'</tbody></table></div>';
 }
 /* ---------- 累计 / 单季 视图与单季换算 ---------- */
 var FVIEW="yr", SQ_ROWS=[], SQ_SRC=null, FRANGE="5y";
