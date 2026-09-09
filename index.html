@@ -19,7 +19,7 @@ function parseCSV(text){
   if(!rows.length)return [];
   var head=rows.shift().map(function(x){return x.replace(/^\uFEFF/,"").trim();});
   return rows.filter(function(r){return r.some(function(v){return String(v).trim()!=="";});}).map(function(r,ri){
-    var o={id:"csv-"+ri};
+    var o={id:"csv-"+ri,_id:"csv-"+ri};
     head.forEach(function(k,j){var v=(r[j]==null?"":r[j]).trim();
       if(v===""){o[k]=null;}
       else if(/^[-+]?\d+(?:\.\d+)?$/.test(v)){o[k]=Number(v);}
@@ -28,11 +28,24 @@ function parseCSV(text){
     }); return o;
   });
 }
+function adapt(id,rows){
+  rows.forEach(function(r){
+    if(typeof r["覆盖板块"]==="string")r["覆盖板块"]=r["覆盖板块"].split(/[，,]/).map(function(x){return x.trim();}).filter(Boolean);
+    if(id==="announcements"){
+      r["标题"]=r["标题"]||r["公告标题"]||"";
+      r["日期"]=r["日期"]||r["公告日期"]||"";
+      r["类型"]=r["类型"]||"公司公告";
+      r["覆盖板块"]=r["覆盖板块"]||(r["板块"]?[r["板块"]]:[]);
+      r["相关标的"]=r["相关标的"]||[r["公司名称"],r["证券代码"]].filter(Boolean).join(" ");
+      r["核心结论"]=r["核心结论"]||r["摘要"]||"";
+    }
+  });return rows;
+}
 function manifest(){return manifestPromise||(manifestPromise=fetch("data-manifest.json",{cache:"no-store"}).then(function(r){if(!r.ok)throw Error("manifest "+r.status);return r.json();}));}
 function dataset(id){
   if(cache[id])return cache[id];
   cache[id]=manifest().then(function(m){var d=(m.datasets||[]).filter(function(x){return x.id===id;})[0];if(!d)throw Error("未配置数据集: "+id);
-    return fetch(d.file,{cache:"no-store"}).then(function(r){if(!r.ok)throw Error(d.file+" "+r.status);return r.text();}).then(function(t){return parseCSV(t);});
+    return fetch(d.file,{cache:"no-store"}).then(function(r){if(!r.ok)throw Error(d.file+" "+r.status);return r.text();}).then(function(t){return adapt(id,parseCSV(t));});
   }); return cache[id];
 }
 function compare(a,b){if(a==null&&b==null)return 0;if(a==null)return 1;if(b==null)return -1;return a<b?-1:(a>b?1:0);}
@@ -609,7 +622,7 @@ window.mktLoad=function(force){
   var db=window.__SMART_PAGE__&&window.__SMART_PAGE__.database;
   if(!db){ msg('<div class="statebox"><div class="msg">未检测到在线数据环境：请用在线链接在浏览器打开</div></div>'); return; }
   if(loaded&&!force) return;
-  msg('<div class="statebox"><div class="msg">正在读取线上数据…</div></div>');
+  msg('<div class="statebox"><div class="msg">正在读取仓库 CSV…</div></div>');
   rows=[]; loaded=false;
   var start=null, guard=0;
   function page(){
@@ -1293,7 +1306,7 @@ function loadAll(key){
   state.load[key]=false; state.err[key]=null;
   renderState(key);
   markSync();
-  if(!db){ state.err[key]="当前环境未注入数据 SDK（本地打开 HTML 无法读写线上数据，请通过在线链接访问）"; state.load[key]=true; renderState(key); markSync(); return; }
+  if(!db){ state.err[key]="CSV 数据适配层未加载，请通过 HTTP(S) 页面访问"; state.load[key]=true; renderState(key); markSync(); return; }
   var acc=[], start, guard=0, api=API[key];
   function page(){
     withTimeout(api.query(start),15000).then(function(r){
@@ -1311,8 +1324,8 @@ function loadAll(key){
 }
 function markSync(){
   var all=true, any=false, anyErr=false;
-  ["u","f","i","r","m"].forEach(function(k){ if(!state.load[k])all=false; else{any=true;} if(state.err[k])anyErr=true; });
-  if(!anyErr && all){ $("dot").className="dot ok"; $("syncTxt").textContent="已同步 · 云端在线"; }
+  ["u","f","r","m"].forEach(function(k){ if(!state.load[k])all=false; else{any=true;} if(state.err[k])anyErr=true; });
+  if(!anyErr && all){ $("dot").className="dot ok"; $("syncTxt").textContent="已同步 · 仓库 CSV"; }
   else if(anyErr){ $("dot").className="dot err"; $("syncTxt").textContent="部分数据读取失败，请点重试"; }
   else { $("dot").className="dot busy"; $("syncTxt").textContent="正在读取仓库 CSV…"; }
 }
@@ -1338,7 +1351,7 @@ function renderState(key){
   if(!st)return;
   if(state.err[key]){ st.innerHTML='<div class="statebox"><div class="msg">'+esc(state.err[key])+'</div><button class="btn primary" onclick="retryLoad(\''+key+'\')">重试</button></div>'; if(wr)wr.classList.add("hidden"); }
   else if(state.load[key] && !state.rows[key].length){ st.innerHTML='<div class="statebox"><div class="msg">该表暂无数据，点右上角「新增」开始录入</div></div>'; if(wr)wr.classList.add("hidden"); }
-  else if(!state.load[key]){ st.innerHTML='<div class="statebox"><div class="msg">正在读取线上数据…</div></div>'; if(wr)wr.classList.add("hidden"); }
+  else if(!state.load[key]){ st.innerHTML='<div class="statebox"><div class="msg">正在读取仓库 CSV…</div></div>'; if(wr)wr.classList.add("hidden"); }
   else { st.innerHTML=""; if(wr)wr.classList.remove("hidden"); }
 }
 
