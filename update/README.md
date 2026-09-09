@@ -24,17 +24,17 @@
 ## 前置条件
 
 1. **zsxq-cli 已登录**：`zsxq-cli auth login`（OAuth 设备码授权，约 30 天有效）
-2. **资料库 op_ token**：WorkBuddy 会话内获取，约 30 分钟过期；过期表现为 503/TEMPORARY_ERROR，重取即可
+2. **资料库 op_ token**：**无需手动传**——脚本会自动调用 `get_lib_token.py` 现场铸造（30 分钟 TTL，即用即铸，永不过期）；仅在 WorkBuddy 会话内可用（依赖 `CODEBUDDY_MCP_CONFIG` 环境变量），WorkBuddy 重启后需在新会话里重跑
 3. **GitHub PAT**：需 `Contents: Read and write` 权限（注意：WorkBuddy GitHub 连接器的集成 token 对本仓库只读，Contents 写入会 403，须用 PAT）
 
 ## 用法
 
 ```bash
 # 全流程（抓取 + 入库 + 导出 + 推送）
-python update/zsxq_update.py --lib-token op_xxx --github-token ghp_xxx
+python update/zsxq_update.py --github-token ghp_xxx
 
 # 只更新资料库，不推 GitHub
-python update/zsxq_update.py --lib-token op_xxx --skip-push
+python update/zsxq_update.py --skip-push
 
 # 只把本地 data/商社-市场观点.csv 推上 GitHub
 python update/zsxq_update.py --github-token ghp_xxx --skip-fetch
