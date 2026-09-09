@@ -529,6 +529,29 @@ body{background:radial-gradient(circle at 82% -5%,rgba(85,106,230,.13),transpare
 @media(max-width:900px){.sidebar{background:rgba(17,26,48,.96);backdrop-filter:blur(18px);box-shadow:0 8px 22px rgba(18,28,52,.16)}.side-item{color:#b8c4dc}.side-item.on:before{display:none}.masthead{border-radius:0;background:transparent;box-shadow:none}h1.brand-name{font-size:20px}.kpi:hover,.card:hover,.panel:hover{transform:none}}
 @media(max-width:520px){body{background:linear-gradient(180deg,#f8f9fd,#f3f5fa 28rem)}.kpi{padding:15px 16px}.panel{border-radius:14px}.sec-h h2{font-size:18px}.readonly-badge{display:none}}
 </style>
+<style id="v42-market-views">
+#sec-mkt .panel{background:transparent;border:0;box-shadow:none;padding:0}
+#sec-mkt .filters{position:sticky;top:82px;z-index:12;background:rgba(248,250,255,.92);backdrop-filter:blur(16px);box-shadow:0 8px 24px rgba(31,48,84,.07)}
+#sec-mkt .filters input{min-width:280px}
+.mkt-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}
+.mkt-summary>div{background:linear-gradient(145deg,#fff,#f8faff);border:1px solid var(--line);border-radius:14px;padding:13px 15px;box-shadow:0 5px 16px rgba(31,48,84,.04)}
+.mkt-summary b{display:block;font-family:var(--mono);font-size:19px;color:#263f9b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.mkt-summary span{font-size:11px;color:var(--mut)}
+.mkt-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.mkt-card{display:flex;flex-direction:column;min-width:0;background:#fff;border:1px solid var(--line);border-radius:17px;padding:17px 18px;box-shadow:var(--shadow);transition:.2s}
+.mkt-card:hover{transform:translateY(-3px);border-color:#cbd5ed;box-shadow:var(--shadow-hover)}
+.mkt-card-head{display:flex;align-items:center;gap:10px}
+.mkt-avatar{width:34px;height:34px;display:grid;place-items:center;flex:none;border-radius:11px;color:#fff;font-weight:700;background:linear-gradient(135deg,#4f70e5,#3157d5);box-shadow:0 6px 14px rgba(49,87,213,.2)}
+.mkt-source{display:flex;flex-direction:column;min-width:0}.mkt-source b{font-size:12.5px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.mkt-source span{font-size:10.5px;color:var(--mut);font-family:var(--mono)}
+.mkt-hot{margin-left:auto;flex:none;padding:3px 8px;border-radius:999px;background:#fff5e9;color:#a6641d;font-size:10.5px;border:1px solid #f5dfc3}
+.mkt-card h3{font-size:15.5px;line-height:1.5;color:#202a40;margin:14px 0 8px;letter-spacing:-.01em}
+.mkt-excerpt{font-size:12.8px;line-height:1.78;color:#647086;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:5;overflow:hidden;white-space:pre-wrap}
+.mkt-expand{align-self:flex-start;margin:7px 0 0;border:0;background:transparent;color:var(--brand);font-size:12px;cursor:pointer;padding:2px 0}
+.mkt-card-foot{margin-top:auto;padding-top:14px}.mkt-tags{display:flex;gap:6px;flex-wrap:wrap}.mkt-tags button{border:0;border-radius:999px;background:#f0f3fb;color:#536485;padding:4px 8px;font-size:10.5px;cursor:pointer}.mkt-tags button:hover{background:#e7edff;color:var(--brand)}
+.mkt-actions{display:flex;align-items:center;gap:10px;margin-top:12px;padding-top:10px;border-top:1px solid #edf0f5;font-size:10.5px;color:var(--mut)}.mkt-actions a{margin-left:auto;color:var(--brand);font-weight:650;text-decoration:none}
+.mkt-more-wrap{grid-column:1/-1;display:flex;justify-content:center;align-items:center;gap:12px;padding:14px;color:var(--mut);font-size:11px}
+@media(max-width:900px){#sec-mkt .filters{top:53px}.mkt-grid{grid-template-columns:1fr}.mkt-summary{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){#sec-mkt .filters{position:relative;top:0}#sec-mkt .filters input,#sec-mkt .filters select{width:100%;min-width:0}.mkt-card{padding:15px}.mkt-summary>div{padding:11px 12px}.mkt-actions{gap:7px;flex-wrap:wrap}.mkt-actions a{margin-left:0;width:100%}}
+</style>
 </head>
 <body data-page-node-id="2cpRFEmUhw5WL9afeNglP5">
 <a class="skip-link" href="#sec-over">跳到主要内容</a>
@@ -675,10 +698,13 @@ body{background:radial-gradient(circle at 82% -5%,rgba(85,106,230,.13),transpare
 <div data-page-node-id="XxQlvGbctXxftWu9tQz6NX" class="panel">
   <div data-page-node-id="oaeuU5UKWG015x02kxCOiC" class="filters">
     <input data-page-node-id="2HoztADgzv7QEoM6LoMUIL" id="f-mkt-q" oninput="mktApply()" placeholder="搜索标题 / 内容 / 标的 / 关键词" type="search" style="flex:1; min-width:220px">
-    <select data-page-node-id="1xQpqrVAqeY3mWJs5ZJ3l4" id="f-mkt-m" onchange="mktApply()"><option data-page-node-id="weV84gwccx6NrKskOCMorS" value><!--pnid:nguTVLyjRyg0hEDenVyKYI-->全部月份</option><option data-page-node-id="hwHXAksXizsXLs9aezRLQW" value="8月"><!--pnid:CpjsA73hWWRC6MSOJRbyxe-->8月</option><option data-page-node-id="C9WLTwz3bjBaO2dQq6uTXd" value="9月"><!--pnid:POIgqGib6b2cOTrMUttJfn-->9月</option></select>
+    <select id="f-mkt-m" onchange="mktApply()"><option value="">全部月份</option></select>
+    <select id="f-mkt-author" onchange="mktApply()"><option value="">全部来源</option></select>
+    <select id="f-mkt-sort" onchange="mktApply()"><option value="time">最新优先</option><option value="hot">热度优先</option><option value="read">阅读最多</option></select>
     <button data-page-node-id="SMNi32hm3tTwJsi979S8wv" class="btn" onclick="mktLoad(true)"><!--pnid:EGp9fyRszk58UUJz1mEh43-->刷新</button>
     <button data-page-node-id="2jGxv8Z6zEGIi6LtQlIfLG" class="btn" onclick="mktCsv()"><!--pnid:5ukn0FCCSjFPh4y0BEUHdZ-->导出CSV</button>
   </div>
+  <div id="mkt-summary" class="mkt-summary"></div>
   <div data-page-node-id="UUNfHijsPlNZxd6esR7CFQ" id="mkt-state"></div>
   <div data-page-node-id="dm42DOJMF8SLuezvHCQx2s" class="tl" id="mkt-body" style="margin-top:8px"></div>
 </div>
@@ -717,48 +743,53 @@ window.mktLoad=function(force){
   }
   page();
 };
+var mktVisible=36,mktSig="";
+function cleanTitle(s){return String(s||"（无标题）").replace(/^\s*[#＃]+\s*/,"").replace(/\s*\.\.\.$/,"").trim();}
+function plainText(s){return String(s||"").replace(/[#*_>]+/g," ").replace(/\s+/g," ").trim();}
+function hotScore(r){return num(r["阅读"])+num(r["点赞"])*18+num(r["评论"])*12;}
+function initials(s){var t=String(s||"观点").trim();return esc(t.slice(0,1));}
+function fillMktOptions(){
+  var ms={},as={};rows.forEach(function(r){if(r["月份"])ms[r["月份"]]=1;if(r["作者"])as[r["作者"]]=1;});
+  var msel=$("f-mkt-m"),asel=$("f-mkt-author"),mv=msel.value,av=asel.value;
+  msel.innerHTML='<option value="">全部月份</option>'+Object.keys(ms).sort().reverse().map(function(x){return '<option value="'+esc(x)+'">'+esc(x)+'</option>';}).join("");
+  asel.innerHTML='<option value="">全部来源</option>'+Object.keys(as).sort().map(function(x){return '<option value="'+esc(x)+'">'+esc(x)+'</option>';}).join("");
+  msel.value=mv;asel.value=av;
+}
 window.mktApply=function(){
-  var q=($( "f-mkt-q").value||"").trim().toLowerCase();
-  var m=$( "f-mkt-m").value;
+  fillMktOptions();
+  var q=($("f-mkt-q").value||"").trim().toLowerCase(),m=$("f-mkt-m").value,a=$("f-mkt-author").value,sort=$("f-mkt-sort").value;
+  var sig=[q,m,a,sort].join("|");if(sig!==mktSig){mktVisible=36;mktSig=sig;}
   var list=rows.filter(function(r){
-    if(m&&r["月份"]!==m)return false;
-    if(q){ var hay=((r["标题"]||"")+" "+(r["内容"]||"")+" "+(r["作者"]||"")+" "+(r["命中关键词"]||"")).toLowerCase(); if(hay.indexOf(q)<0)return false; }
-    return true;
-  }).slice().sort(function(a,b){ return String(b["时间"]||"").localeCompare(String(a["时间"]||"")); });
-  $( "c-mkt").textContent=rows.length;
-  var el=$( "mkt-body");
-  if(!list.length){ el.innerHTML='<div class="statebox"><div class="msg">当前筛选无内容</div></div>'; return; }
-  var h="";
-  for(var i=0;i<list.length;i++){
-    (function(r,idx){
-      var tags=String(r["命中关键词"]||"").split("|").filter(Boolean);
-      var chips=tags.map(function(t){return '<span class="chip gray" style="margin-right:4px">'+esc(t)+'</span>';}).join("");
-      var body=String(r["内容"]||""); var longb=body.length>260;
-      var link=urlOf(r["原文链接"]);
-      h+='<div class="tli"><div class="box">'
-        +'<div class="top"><span class="date">'+esc(timeDisp(r["时间"]))+'</span><span class="chip">'+esc(r["月份"]||"—")+'</span><span class="t">'+esc(r["标题"]||"（无标题）")+'</span></div>'
-        +'<div class="mkt-body" style="white-space:pre-wrap;line-height:1.7;font-size:13px;color:#71717a;'+(longb?'max-height:130px;overflow:hidden;':'')+'">'+esc(body)+'</div>'
-        +(longb?'<div style="margin-top:6px"><a class="mini" data-mkt-tog="1" style="cursor:pointer;color:#9c3852;text-decoration:none" onclick="mktTog('+idx+')">展开全文 ▾</a></div>':"")
-        +'<div style="margin-top:8px;display:flex;align-items:center;flex-wrap:wrap;gap:8px">'+chips
-        +(link?'<a href="'+esc(link)+'" target="_blank" rel="noopener" class="mini" style="margin-left:auto;color:#9c3852;text-decoration:none">原文 ↗</a>':"")
-        +'<span class="mini">👍'+num(r["点赞"])+'　👁'+num(r["阅读"])+'　💬'+num(r["评论"])+'</span></div>'
-        +'</div></div>';
-    })(list[i],i);
-  }
-  el.innerHTML=h;
-  var tls=el.querySelectorAll(".tli");
-  for(var k=0;k<tls.length;k++){
-    var bd2=tls[k].querySelector(".mkt-body"), a2=tls[k].querySelector(".mini[data-mkt-tog]");
-    if(bd2&&a2&&bd2.scrollHeight<=bd2.clientHeight+1&&a2.parentNode&&a2.parentNode.parentNode){ a2.parentNode.parentNode.removeChild(a2.parentNode); }
-  }
+    if(m&&r["月份"]!==m)return false;if(a&&r["作者"]!==a)return false;
+    if(q){var hay=((r["标题"]||"")+" "+(r["内容"]||"")+" "+(r["作者"]||"")+" "+(r["命中关键词"]||"")).toLowerCase();if(hay.indexOf(q)<0)return false;}return true;
+  });
+  list.sort(function(x,y){if(sort==="hot")return hotScore(y)-hotScore(x);if(sort==="read")return num(y["阅读"])-num(x["阅读"]);return String(y["时间"]||"").localeCompare(String(x["时间"]||""));});
+  $("c-mkt").textContent=list.length;
+  var totalRead=list.reduce(function(s,r){return s+num(r["阅读"]);},0),sources={},keywords={};
+  list.forEach(function(r){if(r["作者"])sources[r["作者"]]=1;String(r["命中关键词"]||"").split("|").forEach(function(k){k=k.trim();if(k)keywords[k]=(keywords[k]||0)+1;});});
+  var topKey=Object.keys(keywords).sort(function(x,y){return keywords[y]-keywords[x];})[0]||"—";
+  $("mkt-summary").innerHTML='<div><b>'+list.length+'</b><span>匹配观点</span></div><div><b>'+Object.keys(sources).length+'</b><span>信息来源</span></div><div><b>'+totalRead.toLocaleString("zh-CN")+'</b><span>累计阅读</span></div><div><b>'+esc(topKey)+'</b><span>高频关键词</span></div>';
+  var el=$("mkt-body");if(!list.length){el.innerHTML='<div class="statebox"><div class="msg">没有找到匹配观点，试试更短的关键词</div></div>';return;}
+  var shown=list.slice(0,mktVisible),out="";
+  shown.forEach(function(r,idx){
+    var tags=String(r["命中关键词"]||"").split("|").map(function(x){return x.trim();}).filter(Boolean).slice(0,5);
+    var body=plainText(r["内容"]),link=urlOf(r["原文链接"]),score=hotScore(r);
+    out+='<article class="mkt-card" data-mkt-card="'+idx+'"><header class="mkt-card-head"><span class="mkt-avatar">'+initials(r["作者"])+'</span><div class="mkt-source"><b>'+esc(r["作者"]||"未知来源")+'</b><span>'+esc(timeDisp(r["时间"]))+'</span></div><span class="mkt-hot" title="综合阅读、点赞和评论">热度 '+score.toLocaleString("zh-CN")+'</span></header>'
+      +'<h3>'+esc(cleanTitle(r["标题"]))+'</h3>'
+      +'<div class="mkt-excerpt">'+esc(body)+'</div>'
+      +(body.length>190?'<button class="mkt-expand" type="button" onclick="mktTog('+idx+')">展开全文</button>':"")
+      +'<footer class="mkt-card-foot"><div class="mkt-tags">'+tags.map(function(t){return '<button type="button" onclick="mktKeyword(\''+esc(t).replace(/'/g,"&#39;")+'\')"># '+esc(t)+'</button>';}).join("")+'</div>'
+      +'<div class="mkt-actions"><span>👁 '+num(r["阅读"]).toLocaleString("zh-CN")+'</span><span>赞 '+num(r["点赞"])+'</span><span>评 '+num(r["评论"])+'</span>'+(link?'<a href="'+esc(link)+'" target="_blank" rel="noopener">查看原文 ↗</a>':"")+'</div></footer></article>';
+  });
+  if(shown.length<list.length)out+='<div class="mkt-more-wrap"><button class="btn" type="button" onclick="mktMore()">再加载 '+Math.min(36,list.length-shown.length)+' 条</button><span>已显示 '+shown.length+' / '+list.length+'</span></div>';
+  el.innerHTML='<div class="mkt-grid">'+out+'</div>';
 };
+window.mktMore=function(){mktVisible+=36;mktApply();};
+window.mktKeyword=function(k){$("f-mkt-q").value=k;mktApply();};
 window.mktTog=function(idx){
-  var tli=$( "mkt-body").querySelectorAll(".tli")[idx];
-  if(!tli)return;
-  var bd=tli.querySelector(".mkt-body"), a=tli.querySelector(".mini[data-mkt-tog]");
-  var open=bd.style.maxHeight!=="none";
-  bd.style.maxHeight=open?"none":"130px";
-  if(a){ a.textContent=open?"收起 ▴":"展开全文 ▾"; }
+  var card=$("mkt-body").querySelector('[data-mkt-card="'+idx+'"]');if(!card)return;
+  var body=card.querySelector(".mkt-excerpt"),btn=card.querySelector(".mkt-expand"),open=card.classList.toggle("open");
+  if(body)body.style.webkitLineClamp=open?"unset":"5";if(btn)btn.textContent=open?"收起":"展开全文";
 };
 window.mktCsv=function(){
   var cols=["时间","月份","标题","内容","点赞","评论","阅读","命中关键词","原文链接"];
