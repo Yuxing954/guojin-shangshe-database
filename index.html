@@ -720,7 +720,7 @@ body.research-center{--brand:#17212d!important;--brand-strong:#0d141c!important;
 .coverage-head h3{font-size:14px;color:var(--ink)}.coverage-head p{font-size:11px;color:var(--mut);margin-top:3px}
 #coverage-count{padding:4px 9px;border-radius:999px;background:#eef3f8;color:#315a7d;font-size:11px;font-weight:650}
 .coverage-list{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0}
-.coverage-item{cursor:pointer;transition:background .15s ease,transform .15s ease;display:grid;grid-template-columns:minmax(0,1fr) auto auto auto;align-items:center;gap:8px;min-height:45px;padding:10px 12px;border-right:1px solid #edf0f4;border-bottom:1px solid #edf0f4}
+.coverage-item{cursor:pointer;transition:background .15s ease,transform .15s ease;display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:8px;min-height:45px;padding:10px 12px;border-right:1px solid #edf0f4;border-bottom:1px solid #edf0f4}
 .coverage-item:hover{background:#f1f5f9}.coverage-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px;color:#38475b}
 .coverage-kline-btn{border:1px solid #dbe3ec;background:#fff;color:#315a7d;border-radius:7px;padding:3px 7px;font:600 10px var(--font-ui);cursor:pointer;white-space:nowrap}.coverage-kline-btn:hover{background:#315a7d;color:#fff;border-color:#315a7d}.coverage-price{font:500 11px var(--font-number);color:#7b8795}.coverage-chg{font:600 11px var(--font-number);min-width:52px;text-align:right}
 .coverage-chg.up{color:var(--red)}.coverage-chg.down{color:var(--green)}.coverage-chg.flat{color:var(--mut)}
@@ -806,9 +806,9 @@ body.research-center{--brand:#17212d!important;--brand-strong:#0d141c!important;
   </div>
 
   
-<section id="wind-overview" aria-label="Wind市场环境">
+<section id="wind-overview" aria-label="腾讯财经实时市场环境">
   <div class="wind-board">
-    <div class="wind-head"><i class="wind-live"></i><h3>Wind 市场环境</h3><p id="wind-meta">读取中 · Wind Alice</p></div>
+    <div class="wind-head"><i class="wind-live"></i><h3>实时市场环境</h3><p id="wind-meta">腾讯财经 · 约 30 秒刷新</p></div>
     <div class="wind-grid">
       <div class="wind-bench" id="wind-bench"></div>
       <div class="wind-side">
@@ -822,7 +822,7 @@ body.research-center{--brand:#17212d!important;--brand-strong:#0d141c!important;
 </section>
 <section id="coverage-live" aria-label="覆盖公司实时涨跌">
   <div class="coverage-board">
-    <div class="coverage-head"><div><h3>覆盖公司实时涨跌</h3><p>腾讯财经 · 约 30 秒刷新 · 点击公司进入对应行业模块</p></div><span id="coverage-count">—</span></div>
+    <div class="coverage-head"><div><h3>覆盖公司实时涨跌</h3><p>腾讯财经 · 约 30 秒刷新 · 点击公司查看价格走势</p></div><span id="coverage-count">—</span></div>
     <div class="coverage-list" id="coverage-list"><div class="coverage-loading">正在读取覆盖池…</div></div>
   </div>
 </section>
@@ -831,19 +831,19 @@ body.research-center{--brand:#17212d!important;--brand-strong:#0d141c!important;
   function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
   function chg(v){v=Number(v)||0;return (v>0?"+":"")+v.toFixed(2)+"%";}
   fetch("data/wind-market-snapshot.json?ts="+Date.now()).then(function(r){return r.json();}).then(function(d){
-    var meta=document.getElementById("wind-meta");if(meta)meta.textContent=d.asOf+" 收盘 · Wind Alice";
+    var meta=document.getElementById("wind-meta");if(meta)meta.textContent="腾讯财经 · 正在同步实时行情";
     var bench=document.getElementById("wind-bench");
     if(bench)bench.innerHTML=(d.benchmarks||[]).map(function(x){var v=Number(x.change)||0;return '<div class="wind-index" data-wind-code="'+esc(x.code)+'"><div class="name">'+esc(x.name)+'</div><div class="price">'+Number(x.price).toLocaleString("zh-CN",{minimumFractionDigits:2,maximumFractionDigits:2})+'</div><div class="chg '+(v>0?"up":v<0?"down":"flat")+'">'+chg(v)+'</div></div>';}).join("");
     var cov=document.getElementById("coverage-list"),cc=document.getElementById("coverage-count"),items=d.coverage||[];
     if(cc)cc.textContent=items.length+" 家";
-    if(cov)cov.innerHTML=items.map(function(x){return '<div class="coverage-item" role="button" tabindex="0" onclick="window.openCoverageKline(this)" data-wind-code="'+esc(x.code)+'"><span class="coverage-name">'+esc(x.name)+'</span><span class="coverage-price price">—</span><b class="coverage-chg chg flat">—</b><button class="coverage-kline-btn" type="button" onclick="event.stopPropagation();window.openCoverageKline(this.parentNode)">K线</button></div>';}).join("");
+    if(cov)cov.innerHTML=items.map(function(x){return '<div class="coverage-item" role="button" tabindex="0" onclick="window.openCoverageKline(this)" data-wind-code="'+esc(x.code)+'"><span class="coverage-name">'+esc(x.name)+'</span><span class="coverage-price price">—</span><b class="coverage-chg chg flat">—</b></div>';}).join("");
     updateTencent();
     var b=d.breadth||{},total=Number(b.total)||1,up=Number(b.up)||0,down=Number(b.down)||0,flat=Number(b.flat)||0;
     var el=document.getElementById("wind-breadth");if(el)el.textContent=up+" 涨 / "+down+" 跌";
     el=document.getElementById("wind-breadth-detail");if(el)el.textContent="覆盖池 "+total+" 只";
     [["wind-up",up],["wind-down",down],["wind-flat",flat]].forEach(function(x){var e=document.getElementById(x[0]);if(e)e.style.width=(x[1]/total*100)+"%";});
     el=document.getElementById("wind-leaders");if(el)el.innerHTML=(d.leaders||[]).map(function(x){var v=Number(x.change)||0;return '<span class="wind-leader" data-wind-code="'+esc(x.code)+'">'+esc(x.name)+'<b class="'+(v>0?"up":v<0?"down":"flat")+'">'+chg(v)+'</b></span>';}).join("");
-  }).catch(function(){var m=document.getElementById("wind-meta");if(m)m.textContent="Wind 快照暂不可用";});
+  }).catch(function(){var m=document.getElementById("wind-meta");if(m)m.textContent="实时行情基础配置暂不可用";});
   function tqCode(code){
     code=String(code||"");var p=code.split(".");
     if(code==="HSI.HI")return "hkHSI";
@@ -860,6 +860,7 @@ body.research-center{--brand:#17212d!important;--brand-strong:#0d141c!important;
     if(!qs.length)return;
     var tag=document.createElement("script");tag.charset="gbk";tag.src="https://qt.gtimg.cn/q="+qs.join(",")+"&_="+Date.now();
     tag.onload=function(){
+      var live=[];
       els.forEach(function(el){
         var q=tqCode(el.getAttribute("data-wind-code")),raw=window["v_"+q];
         if(typeof raw!=="string")return;
@@ -867,7 +868,16 @@ body.research-center{--brand:#17212d!important;--brand-strong:#0d141c!important;
         var pe=el.querySelector(".price"),ce=el.querySelector(".chg"),be=el.querySelector("b");
         if(pe)pe.textContent=price.toLocaleString("zh-CN",{minimumFractionDigits:2,maximumFractionDigits:2});
         var target=ce||be;if(target){target.textContent=chg(pct);target.classList.remove("up","down","flat");target.classList.add(pct>0?"up":pct<0?"down":"flat");}
+        if(el.classList.contains("coverage-item"))live.push({name:(el.querySelector(".coverage-name")||{}).textContent||q,code:el.getAttribute("data-wind-code"),pct:pct});
       });
+      if(live.length){
+        var up=live.filter(function(x){return x.pct>0;}).length,down=live.filter(function(x){return x.pct<0;}).length,flat=live.length-up-down,total=live.length;
+        var e=document.getElementById("wind-breadth");if(e)e.textContent=up+" 涨 / "+down+" 跌";
+        e=document.getElementById("wind-breadth-detail");if(e)e.textContent="实时覆盖池 "+total+" 只";
+        [["wind-up",up],["wind-down",down],["wind-flat",flat]].forEach(function(x){var n=document.getElementById(x[0]);if(n)n.style.width=(x[1]/total*100)+"%";});
+        var movers=live.slice().sort(function(a,b){return Math.abs(b.pct)-Math.abs(a.pct);}).slice(0,4);
+        e=document.getElementById("wind-leaders");if(e)e.innerHTML=movers.map(function(x){return '<span class="wind-leader" data-wind-code="'+esc(x.code)+'">'+esc(x.name)+'<b class="'+(x.pct>0?"up":x.pct<0?"down":"flat")+'">'+chg(x.pct)+'</b></span>';}).join("");
+      }
       var m=document.getElementById("wind-meta");if(m)m.textContent="实时行情 · 腾讯财经 · "+new Date().toLocaleTimeString("zh-CN",{hour:"2-digit",minute:"2-digit",second:"2-digit"});
       tag.remove();
     };
