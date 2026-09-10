@@ -2735,6 +2735,28 @@ setInterval(stats,2000);
 if(window.__CSV_DATA__)window.__CSV_DATA__.dataset("valuation").then(boot).catch(function(){document.getElementById("watch-groups").innerHTML='<div class="watch-empty">标的池读取失败，请刷新重试</div>';});
 })();
 </script>
+<script id="v61-immersion-repair">
+(function(){
+"use strict";
+var ITEMS={
+ taxfree:{title:"免税板块跟踪看板",html:window.TF_BOARD_HTML},
+ gold:{title:"黄金珠宝板块跟踪看板",html:window.GOLD_BOARD_HTML},
+ oversea:{title:"跨境电商板块跟踪看板",html:window.OV_BOARD_HTML},
+ hotel:{title:"酒店板块跟踪看板",html:window.HOTEL_BOARD_HTML},
+ report:{title:"公司公告中心",html:window.REPORT_BOARD_HTML||window.CENTER_BOARD_HTML},
+ mkt:{title:"市场观点中心",html:window.MKT_BOARD_HTML||window.CENTER_BOARD_HTML},
+ minutes:{title:"纪要文库",html:window.MINUTES_BOARD_HTML||window.CENTER_BOARD_HTML},
+ gjgd:{title:"国金观点",html:window.GJGD_BOARD_HTML||window.CENTER_BOARD_HTML}
+};
+var BYSEC={"sec-taxfree":"taxfree","sec-gold":"gold","sec-overseas":"oversea","sec-hotel":"hotel","sec-mkt":"mkt","sec-r":"report","sec-m":"minutes"},cur="";
+function bridge(html){return '<script>try{if(!(window.__SMART_PAGE__&&window.__SMART_PAGE__.database)&&parent.__SMART_PAGE__)window.__SMART_PAGE__=parent.__SMART_PAGE__;}catch(e){}<\/script>'+String(html||"");}
+function open(key){var it=ITEMS[key],ov=document.getElementById("tfov"),fr=document.getElementById("tfFrame");if(!it||!it.html||!ov||!fr)return false;if(cur!==key){cur=key;fr.srcdoc=bridge(it.html);}var t=document.getElementById("tfTitle");if(t)t.textContent=it.title;document.body.style.overflow="hidden";ov.classList.add("on");ov.setAttribute("aria-hidden","false");return true;}
+function close(){var ov=document.getElementById("tfov");if(ov){ov.classList.remove("on");ov.setAttribute("aria-hidden","true");}document.body.style.overflow="";}
+document.addEventListener("click",function(e){var t=e.target;if(!t||!t.closest)return;var key="",direct=t.closest("[data-open-imm]"),nav=t.closest("[data-sec]");if(direct)key=direct.getAttribute("data-open-imm");else if(t.closest("[data-tf-open]"))key="taxfree";else if(nav)key=BYSEC[nav.getAttribute("data-sec")]||"";if(key&&open(key)){e.preventDefault();e.stopImmediatePropagation();return;}if(t.closest("#tfExit")){e.preventDefault();close();}},true);
+document.addEventListener("keydown",function(e){if(e.key==="Escape")close();});
+window.immersionOpen=open;window.immersionClose=close;
+})();
+</script>
 </body>
 
 </html>
