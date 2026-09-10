@@ -2395,7 +2395,7 @@ function setupSidebar(){
   if(grp&&sub){
     grp.addEventListener('click',function(){ sub.classList.toggle('collapsed'); grp.classList.toggle('collapsed'); });
   }
-  var order=['sec-over','coverage-live','consumer-focus','watch-assistant','sec-f','sec-r','sec-mkt','sec-m','sec-hotel','sec-taxfree','sec-gold','sec-overseas','sec-dining'];
+  var order=['coverage-live','consumer-focus','watch-assistant','sec-over','sec-f','sec-r','sec-mkt','sec-m','sec-hotel','sec-taxfree','sec-gold','sec-overseas','sec-dining'];
   var secs=[]; order.forEach(function(id){ var el=document.getElementById(id); if(el)secs.push(el); });
   function topOf(el){ return el.getBoundingClientRect().top + (window.scrollY||document.documentElement.scrollTop||0); }
   function spy(){
