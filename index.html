@@ -1886,23 +1886,7 @@ function renderState(key){
 }
 
 /* ---------- overview ---------- */
-function renderKpi(){
-  if(!$("k-u"))return;
-  var u=state.rows.u;
-  $("k-u").textContent=u.length;
-  var subs={}; u.forEach(function(r){ var s=r["子行业"]||"其他"; subs[s]=(subs[s]||0)+1; });
-  $("k-sub").textContent=Object.keys(subs).length;
-  var core=u.filter(function(r){return r["覆盖级别"]==="核心推荐";}).length;
-  $("k-core").textContent=core;
-  var rise=u.filter(function(r){return (r["年初至今涨跌(%)"]||0)>0;}).length;
-  var fall=u.filter(function(r){return (r["年初至今涨跌(%)"]||0)<0;}).length;
-  $("k-rise").textContent=rise; $("k-fall").textContent=fall;
-  if(u.length){ var mx=null,mn=null; u.forEach(function(r){var v=numOrEmpty(r["年初至今涨跌(%)"]); if(v==null)return; if(!mx||v>mx.v){mx={r:r,v:v};} if(!mn||v<mn.v){mn={r:r,v:v};}});
-    var snap="领涨 "+(mx?(mx.r["公司名称"]+" "+(mx.v>0?"+":"")+mx.v.toFixed(1)+"%"):"—")+" ｜ 领跌 "+(mn?(mn.r["公司名称"]+" "+(mn.v>0?"+":"")+mn.v.toFixed(1)+"%"):"—");
-    $("k-snap").textContent=snap; } else { $("k-snap").textContent="行情快照待录入"; }
-  $("k-r").textContent=state.rows.r.length;
-  $("k-m").textContent=state.rows.m.length;
-}
+function renderKpi(){ return; }
 
 function renderDonut(){
   var el=$("chart-donut"); var u=state.rows.u;
