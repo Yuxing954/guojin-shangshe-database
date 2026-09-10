@@ -821,6 +821,19 @@ body.research-center{--brand:#17212d!important;--brand-strong:#0d141c!important;
 @media(max-width:900px){.coverage-heatmap{grid-template-columns:repeat(5,minmax(0,1fr))}}
 @media(max-width:620px){.coverage-heatmap{grid-template-columns:repeat(2,minmax(0,1fr))}.heat-stock{min-height:78px}}
 </style>
+<style id="v72-market-font-mini">
+#wind-overview,#coverage-live,#wind-overview button,#coverage-live button{font-family:var(--font-ui)!important}
+.wind-head h3,.market-heat-head h3,.wind-index .name,.heat-stock .coverage-name{font-family:var(--font-ui)!important;font-weight:650;letter-spacing:-.01em}
+.wind-index .price,.wind-index .chg,.heat-stock .coverage-chg,.wind-breadth strong{font-family:var(--font-ui)!important;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.wind-index{display:flex;flex-direction:column;min-height:132px;padding:14px 14px 10px}
+.wind-index .price{font-size:17px}.wind-index .chg{font-size:11px}
+.mini-chart{display:block;width:100%;height:36px;margin-top:auto;overflow:visible}
+.mini-chart .mini-zero{stroke:#e5e9ee;stroke-width:1;stroke-dasharray:2 3}
+.mini-chart .mini-line{fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.mini-chart .mini-area{opacity:.10}
+.mini-chart-loading{font-size:9px;color:#adb5bf;margin-top:auto}
+@media(max-width:880px){.wind-index{min-height:118px}.mini-chart{height:30px}}
+</style>
 </head>
 <body data-page-node-id="2cpRFEmUhw5WL9afeNglP5">
 <a class="skip-link" href="#sec-over">跳到主要内容</a>
@@ -897,7 +910,7 @@ body.research-center{--brand:#17212d!important;--brand-strong:#0d141c!important;
   fetch("data/wind-market-snapshot.json?ts="+Date.now()).then(function(r){return r.json();}).then(function(d){
     var meta=document.getElementById("wind-meta");if(meta)meta.textContent="腾讯财经 · 正在同步实时行情";
     var bench=document.getElementById("wind-bench");
-    if(bench)bench.innerHTML=(d.benchmarks||[]).map(function(x){var v=Number(x.change)||0;return '<div class="wind-index" role="button" tabindex="0" onclick="window.openCoverageKline(this)" data-wind-code="'+esc(x.code)+'"><div class="name">'+esc(x.name)+'</div><div class="price">'+Number(x.price).toLocaleString("zh-CN",{minimumFractionDigits:2,maximumFractionDigits:2})+'</div><div class="chg '+(v>0?"up":v<0?"down":"flat")+'">'+chg(v)+'</div></div>';}).join("");
+    if(bench)bench.innerHTML=(d.benchmarks||[]).map(function(x){var v=Number(x.change)||0;return '<div class="wind-index" role="button" tabindex="0" onclick="window.openCoverageKline(this)" data-wind-code="'+esc(x.code)+'"><div class="name">'+esc(x.name)+'</div><div class="price">'+Number(x.price).toLocaleString("zh-CN",{minimumFractionDigits:2,maximumFractionDigits:2})+'</div><div class="chg '+(v>0?"up":v<0?"down":"flat")+'">'+chg(v)+'</div><div class="mini-chart-loading">载入日内走势…</div><svg class="mini-chart" viewBox="0 0 160 36" preserveAspectRatio="none" aria-label="当日日内走势"></svg></div>';}).join("");
     var cov=document.getElementById("coverage-list"),cc=document.getElementById("coverage-count"),items=d.coverage||[];
     if(cc)cc.textContent=items.length+" 家";
     if(cov&&!cov.dataset.heatmapReady)cov.innerHTML=items.map(function(x){return '<div class="coverage-item heat-stock heat-flat" role="button" tabindex="0" data-wind-code="'+esc(x.code)+'"><span class="coverage-name">'+esc(x.name)+'</span><span class="coverage-price price">—</span><b class="coverage-chg chg flat">—</b></div>';}).join("");
@@ -949,6 +962,17 @@ body.research-center{--brand:#17212d!important;--brand-strong:#0d141c!important;
     document.head.appendChild(tag);
   }
   window.refreshTencentMarket=updateTencent;updateTencent();setInterval(updateTencent,30000);
+})();
+</script>
+<script id="v72-index-mini-chart">
+(function(){
+"use strict";
+function qc(code){code=String(code||"").toUpperCase();if(code==="HSI.HI")return"hkHSI";var p=code.split(".");return p[1]==="SH"?"sh"+p[0]:p[1]==="SZ"?"sz"+p[0]:"";}
+function points(obj){var d=obj&&obj.data;if(!d)return[];var x=d[Object.keys(d)[0]]||{};if(Array.isArray(x.m5))return x.m5.map(function(r){return Number(r[2]);}).filter(isFinite);var md=x.data||{},raw=md.data||[];return raw.map(function(line){return Number(String(line).split(" ")[1]);}).filter(isFinite);}
+function draw(el,vals){var svg=el.querySelector(".mini-chart"),label=el.querySelector(".mini-chart-loading");if(!svg)return;if(vals.length<2){if(label)label.textContent="暂无日内数据";return;}if(label)label.remove();var min=Math.min.apply(null,vals),max=Math.max.apply(null,vals),span=max-min||1,w=160,h=34,pad=2,path=vals.map(function(v,i){var x=pad+i/(vals.length-1)*(w-pad*2),y=pad+(max-v)/span*(h-pad*2);return(i?"L":"M")+x.toFixed(1)+" "+y.toFixed(1);}).join(" "),last=path.slice(path.lastIndexOf("L")+1),pct=parseFloat((el.querySelector(".chg")||{}).textContent),color=pct>0?"#c44545":pct<0?"#278067":"#8a96a6",area=path+" L "+last.split(" ")[0]+" 36 L 2 36 Z";svg.innerHTML='<line class="mini-zero" x1="2" y1="18" x2="158" y2="18"></line><path class="mini-area" d="'+area+'" fill="'+color+'"></path><path class="mini-line" d="'+path+'" stroke="'+color+'"></path>';}
+function load(el){var code=el.getAttribute("data-wind-code"),q=qc(code);if(!q)return;var hk=code==="HSI.HI",vn="__mini_"+Date.now()+"_"+Math.floor(Math.random()*99999),s=document.createElement("script"),param=q+",m5,,1200";window[vn]=null;s.charset="utf-8";s.src=hk?"https://web.ifzq.gtimg.cn/appstock/app/minute/query?_var="+vn+"&code="+encodeURIComponent(q)+"&r="+Date.now():"https://proxy.finance.qq.com/ifzqgtimg/appstock/app/kline/mkline?_var="+vn+"&param="+encodeURIComponent(param)+"&r="+Date.now();s.onload=function(){draw(el,points(window[vn]));try{delete window[vn];}catch(e){}s.remove();};s.onerror=function(){var t=el.querySelector(".mini-chart-loading");if(t)t.textContent="日内数据暂不可用";s.remove();};document.head.appendChild(s);}
+function refresh(){document.querySelectorAll("#wind-bench .wind-index").forEach(load);}
+var timer=setInterval(function(){if(document.querySelectorAll("#wind-bench .wind-index").length){clearInterval(timer);refresh();setInterval(refresh,30000);}},300);
 })();
 </script>
 <section data-page-node-id="a4KQSaC1mt3HZZ9uiCRbY5" id="sec-over">
