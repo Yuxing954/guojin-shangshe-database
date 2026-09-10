@@ -1514,7 +1514,7 @@ function buildHmRow(G,g,maxLen,tip){
   return row;
 }
 function renderHeatmap(G){
-  var host=$("gkHm"); host.innerHTML="";
+  var host=$("gkHm"); if(!host)return; host.innerHTML="";
   var series=[];
   CAT_ORDER.forEach(function(cat){ catGroups(G,cat).forEach(function(g){ if(g.series.length>=6) series.push(g); }); });
   setInfo("gkHmInfo","左旧右新 · 日/周频=环比 · 月/季频=同比 · 共 "+series.length+" 项序列");
@@ -1887,6 +1887,7 @@ function renderState(key){
 
 /* ---------- overview ---------- */
 function renderKpi(){
+  if(!$("k-u"))return;
   var u=state.rows.u;
   $("k-u").textContent=u.length;
   var subs={}; u.forEach(function(r){ var s=r["子行业"]||"其他"; subs[s]=(subs[s]||0)+1; });
