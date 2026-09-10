@@ -2,6 +2,10 @@
   "updatedAt": "2026-09-08",
   "datasets": [
     {"id":"hotel","name":"酒店板块跟踪数据","file":"data/酒店板块跟踪数据_2026-09-08.csv","category":"行业高频"},
+    {"id":"hotel_industry_weekly","name":"酒店行业周度经营","file":"data/hotel_industry_weekly.csv","category":"酒店"},
+    {"id":"hotel_group_weekly","name":"酒店集团周度经营","file":"data/hotel_group_weekly.csv","category":"酒店"},
+    {"id":"hotel_supply_weekly","name":"酒店供给结构","file":"data/hotel_supply_weekly.csv","category":"酒店"},
+    {"id":"hotel_market_share_annual","name":"酒店集团市占率","file":"data/hotel_market_share_annual.csv","category":"酒店"},
     {"id":"taxfree","name":"免税板块跟踪数据","file":"data/免税板块跟踪数据_2026-09-08.csv","category":"行业高频"},
     {"id":"crossborder","name":"跨境电商板块跟踪数据","file":"data/跨境电商板块跟踪数据_2026-09-08.csv","category":"行业高频"},
     {"id":"gold","name":"黄金珠宝板块跟踪数据","file":"data/黄金珠宝板块跟踪数据_2026-09-08.csv","category":"行业高频"},
