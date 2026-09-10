@@ -2,7 +2,7 @@
 """
 自动铸造新鲜的资料库 op_ token（绕过 30 分钟过期的正确姿势：不缓存，即用即铸）。
 
-原理：WorkBuddy 会话内环境变量 CODEBUDDY_MCP_CONFIG 里有本地连接器代理
+原理：运行环境变量 CODEBUDDY_MCP_CONFIG 中包含本地连接器代理
 （127.0.0.1:58845）的地址与鉴权头，代理可调用内置工具 connect_open_platform，
 每次返回一个全新的 op_ token（TTL 30 分钟，从铸造时刻起算）。
 
@@ -10,15 +10,15 @@
   python get_lib_token.py          # stdout 输出 op_ token（单行）
   失败时 exit 1 并输出中文错误到 stderr
 
-限制：仅在 WorkBuddy 会话内可用（依赖 CODEBUDDY_MCP_CONFIG 环境变量）；
-WorkBuddy 重启后旧代理地址/凭据失效，需在新会话里重跑。
+限制：仅在配置了 CODEBUDDY_MCP_CONFIG 环境变量的运行环境中可用；
+运行环境重启后，旧代理地址或凭据可能失效，需重新运行。
 """
 import json, os, sys, urllib.request
 
 def get_proxy_config():
     raw = os.environ.get("CODEBUDDY_MCP_CONFIG")
     if not raw:
-        raise RuntimeError("CODEBUDDY_MCP_CONFIG 环境变量不存在——请在 WorkBuddy 会话内运行（外部脚本无法铸造 op_ token）")
+        raise RuntimeError("CODEBUDDY_MCP_CONFIG 环境变量不存在——请在已配置的运行环境中执行，或手动提供 op_ token")
     cfg = json.loads(raw)
     proxy = (cfg.get("mcpServers") or {}).get("connector-proxy")
     if not proxy:
