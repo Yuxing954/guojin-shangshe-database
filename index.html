@@ -777,11 +777,11 @@ body.research-center{--brand:#17212d!important;--brand-strong:#0d141c!important;
 @media(max-width:850px){.watch-groups{grid-template-columns:1fr}.watch-top{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.watch-stocks{grid-template-columns:1fr}.focus-head,.watch-head{align-items:flex-start;flex-direction:column}}
 </style><style id="v62-sector-split">
-.side-sector-row{display:grid;grid-template-columns:minmax(0,1fr) 42px;gap:0;align-items:center}
-.side-sector-row .sector-main{min-width:0;margin:0}
-.sector-logo{width:30px;height:30px;justify-self:start;transform:translateX(-6px);border:1px solid transparent;border-radius:9px;display:grid;place-items:center;font:650 11px var(--font-ui);cursor:pointer;transition:transform .15s ease,box-shadow .15s ease,filter .15s ease}
-.sector-logo:hover{transform:translate(-6px,-1px);filter:saturate(1.12);box-shadow:0 5px 12px rgba(15,23,42,.12)}
-.sector-logo svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}.sector-logo.hotel{color:#315a7d;background:#eaf2f8;border-color:#d5e4ef}.sector-logo.taxfree{color:#6941a5;background:#f2edfa;border-color:#e4daf5}
+.side-sector-row{display:flex;align-items:center;gap:3px;padding-right:6px}
+.side-sector-row .sector-main{flex:0 1 auto;min-width:0;margin:0;padding-right:7px}
+.sector-logo{width:25px;height:25px;flex:0 0 25px;border:1px solid transparent;border-radius:7px;display:grid;place-items:center;font:650 11px var(--font-ui);cursor:pointer;transition:transform .15s ease,box-shadow .15s ease,filter .15s ease}
+.sector-logo:hover{transform:translateY(-1px) scale(1.04);filter:saturate(1.12);box-shadow:0 4px 10px rgba(15,23,42,.10)}
+.sector-logo svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.sector-logo.hotel{color:#315a7d;background:#eaf2f8;border-color:#d5e4ef}.sector-logo.taxfree{color:#6941a5;background:#f2edfa;border-color:#e4daf5}
 .sector-logo.gold{color:#94661d;background:#fbf3df;border-color:#f0dfb8}.sector-logo.oversea{color:#23766a;background:#e7f4f1;border-color:#cee8e2}
 .sector-logo.dining{color:#a34f3d;background:#faece8;border-color:#f1d5ce}
 </style></head>
