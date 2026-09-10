@@ -1,6 +1,6 @@
 {
   "asOf": "2026-09-09",
-  "source": "Wind Alice 万得金融数据服务",
+  "source": "实时行情：腾讯财经；行业观察池配置：Wind 万得金融数据服务",
   "benchmarks": [
     {
       "name": "上证综指",
@@ -69,131 +69,253 @@
   "coverage": [
     {
       "name": "锦江酒店",
-      "code": "600754.SH"
+      "code": "600754.SH",
+      "industry": "酒店旅游"
     },
     {
       "name": "首旅酒店",
-      "code": "600258.SH"
+      "code": "600258.SH",
+      "industry": "酒店旅游"
     },
     {
       "name": "君亭酒店",
-      "code": "301073.SZ"
+      "code": "301073.SZ",
+      "industry": "酒店旅游"
     },
     {
       "name": "亚朵集团",
-      "code": "ATAT.O"
+      "code": "ATAT.O",
+      "industry": "酒店旅游"
     },
     {
       "name": "华住集团-S",
-      "code": "1179.HK"
+      "code": "1179.HK",
+      "industry": "酒店旅游"
     },
     {
       "name": "中国中免",
-      "code": "601888.SH"
+      "code": "601888.SH",
+      "industry": "免税出行"
     },
     {
       "name": "携程集团-S",
-      "code": "9961.HK"
+      "code": "9961.HK",
+      "industry": "免税出行"
     },
     {
       "name": "同程旅行",
-      "code": "0780.HK"
+      "code": "0780.HK",
+      "industry": "免税出行"
     },
     {
       "name": "丽江股份",
-      "code": "002033.SZ"
+      "code": "002033.SZ",
+      "industry": "酒店旅游"
     },
     {
       "name": "长白山",
-      "code": "603099.SH"
+      "code": "603099.SH",
+      "industry": "酒店旅游"
     },
     {
       "name": "海底捞",
-      "code": "6862.HK"
+      "code": "6862.HK",
+      "industry": "餐饮茶饮"
     },
     {
       "name": "百胜中国",
-      "code": "9987.HK"
+      "code": "9987.HK",
+      "industry": "餐饮茶饮"
     },
     {
       "name": "九毛九",
-      "code": "9922.HK"
+      "code": "9922.HK",
+      "industry": "餐饮茶饮"
     },
     {
       "name": "蜜雪集团",
-      "code": "2097.HK"
+      "code": "2097.HK",
+      "industry": "餐饮茶饮"
     },
     {
       "name": "古茗",
-      "code": "1364.HK"
+      "code": "1364.HK",
+      "industry": "餐饮茶饮"
     },
     {
       "name": "中公教育",
-      "code": "002607.SZ"
+      "code": "002607.SZ",
+      "industry": "人服教育"
     },
     {
       "name": "华图山鼎",
-      "code": "300492.SZ"
+      "code": "300492.SZ",
+      "industry": "人服教育"
     },
     {
       "name": "行动教育",
-      "code": "605098.SH"
+      "code": "605098.SH",
+      "industry": "人服教育"
     },
     {
       "name": "中国东方教育",
-      "code": "0667.HK"
+      "code": "0667.HK",
+      "industry": "人服教育"
     },
     {
       "name": "老凤祥",
-      "code": "600612.SH"
+      "code": "600612.SH",
+      "industry": "黄金珠宝"
     },
     {
       "name": "潮宏基",
-      "code": "002345.SZ"
+      "code": "002345.SZ",
+      "industry": "黄金珠宝"
     },
     {
       "name": "周大生",
-      "code": "002867.SZ"
+      "code": "002867.SZ",
+      "industry": "黄金珠宝"
     },
     {
       "name": "老铺黄金",
-      "code": "6181.HK"
+      "code": "6181.HK",
+      "industry": "黄金珠宝"
     },
     {
       "name": "豫园股份",
-      "code": "600655.SH"
+      "code": "600655.SH",
+      "industry": "黄金珠宝"
     },
     {
       "name": "安克创新",
-      "code": "300866.SZ"
+      "code": "300866.SZ",
+      "industry": "跨境电商"
     },
     {
       "name": "小商品城",
-      "code": "600415.SH"
+      "code": "600415.SH",
+      "industry": "跨境电商"
     },
     {
       "name": "赛维时代",
-      "code": "301381.SZ"
+      "code": "301381.SZ",
+      "industry": "跨境电商"
     },
     {
       "name": "永辉超市",
-      "code": "601933.SH"
+      "code": "601933.SH",
+      "industry": "零售"
     },
     {
       "name": "重百集团",
-      "code": "600729.SH"
+      "code": "600729.SH",
+      "industry": "零售"
     },
     {
       "name": "步步高",
-      "code": "002251.SZ"
+      "code": "002251.SZ",
+      "industry": "零售"
     },
     {
       "name": "科锐国际",
-      "code": "300662.SZ"
+      "code": "300662.SZ",
+      "industry": "人服教育"
     },
     {
       "name": "北京人力",
-      "code": "600861.SH"
+      "code": "600861.SH",
+      "industry": "人服教育"
+    },
+    {
+      "industry": "食品饮料",
+      "name": "贵州茅台",
+      "code": "600519.SH"
+    },
+    {
+      "industry": "食品饮料",
+      "name": "五粮液",
+      "code": "000858.SZ"
+    },
+    {
+      "industry": "食品饮料",
+      "name": "泸州老窖",
+      "code": "000568.SZ"
+    },
+    {
+      "industry": "食品饮料",
+      "name": "伊利股份",
+      "code": "600887.SH"
+    },
+    {
+      "industry": "食品饮料",
+      "name": "海天味业",
+      "code": "603288.SH"
+    },
+    {
+      "industry": "食品饮料",
+      "name": "山西汾酒",
+      "code": "600809.SH"
+    },
+    {
+      "industry": "食品饮料",
+      "name": "东鹏饮料",
+      "code": "605499.SH"
+    },
+    {
+      "industry": "食品饮料",
+      "name": "安井食品",
+      "code": "603345.SH"
+    },
+    {
+      "industry": "食品饮料",
+      "name": "双汇发展",
+      "code": "000895.SZ"
+    },
+    {
+      "industry": "农林牧渔",
+      "name": "牧原股份",
+      "code": "002714.SZ"
+    },
+    {
+      "industry": "农林牧渔",
+      "name": "温氏股份",
+      "code": "300498.SZ"
+    },
+    {
+      "industry": "农林牧渔",
+      "name": "海大集团",
+      "code": "002311.SZ"
+    },
+    {
+      "industry": "农林牧渔",
+      "name": "新希望",
+      "code": "000876.SZ"
+    },
+    {
+      "industry": "家居美护",
+      "name": "珀莱雅",
+      "code": "603605.SH"
+    },
+    {
+      "industry": "家居美护",
+      "name": "贝泰妮",
+      "code": "300957.SZ"
+    },
+    {
+      "industry": "家居美护",
+      "name": "欧派家居",
+      "code": "603833.SH"
+    },
+    {
+      "industry": "家居美护",
+      "name": "顾家家居",
+      "code": "603816.SH"
+    },
+    {
+      "industry": "家居美护",
+      "name": "福耀玻璃",
+      "code": "600660.SH"
     }
   ]
 }
