@@ -927,7 +927,8 @@ body.research-center{--brand:#17212d!important;--brand-strong:#0d141c!important;
     if(p.length<2)return "";
     if(p[1]==="SH")return "sh"+p[0];
     if(p[1]==="SZ")return "sz"+p[0];
-    if(p[1]==="HK")return "hk"+("00000"+p[0]).slice(-5);\n    if(p[1]==="O"||p[1]==="N")return "us"+p[0].toUpperCase();
+    if(p[1]==="HK")return "hk"+("00000"+p[0]).slice(-5);
+    if(p[1]==="O"||p[1]==="N")return "us"+p[0].toUpperCase();
     return "";
   }
   function tqNum(v){var n=parseFloat(v);return isFinite(n)?n:null;}
