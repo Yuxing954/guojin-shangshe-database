@@ -5,7 +5,7 @@
 
 前置条件：
   1. zsxq-cli 已登录：zsxq-cli auth login
-  2. 资料库 op_ token：--lib-token 传入（WorkBuddy 会话内获取，30 分钟有效；
+  2. 资料库 op_ token：--lib-token 传入（运行环境中自动获取，30 分钟有效；
      只推 GitHub 不更新资料库时可用 --skip-lib 跳过）
   3. GitHub PAT（需 Contents 写权限）：--github-token 传入（用完即弃，不落盘）
 
@@ -143,7 +143,7 @@ def main():
             args.lib_token = mint_token()
             print("① 自动铸造资料库 op_ token ✓（30 分钟内有效）")
         except Exception as e:
-            sys.exit(f"未提供 --lib-token 且自动铸造失败：{e}\n（请确认在 WorkBuddy 会话内运行，或手动传 --lib-token）")
+            sys.exit(f"未提供 --lib-token 且自动铸造失败：{e}\n（请确认运行环境配置正确，或手动传 --lib-token）")
 
     local_csv = os.path.normpath(os.path.join(HERE, CFG["local_csv"]))
 
