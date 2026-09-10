@@ -784,7 +784,30 @@ body.research-center{--brand:#17212d!important;--brand-strong:#0d141c!important;
 .sector-logo svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.sector-logo.hotel{color:#315a7d;background:#eaf2f8;border-color:#d5e4ef}.sector-logo.taxfree{color:#6941a5;background:#f2edfa;border-color:#e4daf5}
 .sector-logo.gold{color:#94661d;background:#fbf3df;border-color:#f0dfb8}.sector-logo.oversea{color:#23766a;background:#e7f4f1;border-color:#cee8e2}
 .sector-logo.dining{color:#a34f3d;background:#faece8;border-color:#f1d5ce}
-</style></head>
+</style><style id="v70-market-workbench">
+#coverage-live{scroll-margin-top:28px}
+.market-heat-board{background:#fff;border:1px solid #e2e7ed;border-radius:16px;overflow:hidden;box-shadow:0 12px 36px -28px rgba(22,35,55,.38)}
+.market-heat-head{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px 20px;border-bottom:1px solid #edf0f4}
+.market-heat-head h3{font-size:16px;color:#172033;letter-spacing:-.01em}.market-heat-head p{font-size:11px;color:#7b8795;margin-top:4px}
+.market-enter{border:1px solid #cfd8e3;background:#172b3f;color:#fff;border-radius:9px;padding:8px 13px;font:600 11px var(--font-ui);cursor:pointer}.market-enter:hover{background:#234158}
+.coverage-heatmap{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:5px;padding:12px;background:#f5f7f9}
+.heat-stock{position:relative;min-height:78px;padding:11px 10px;border:1px solid rgba(255,255,255,.42);border-radius:7px;cursor:pointer;overflow:hidden;transition:transform .16s ease,box-shadow .16s ease;background:#e9edf1;color:#26384a}
+.heat-stock:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(23,43,63,.16);z-index:2}.heat-stock .coverage-name{display:block;font-size:11px;font-weight:650;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.heat-stock .coverage-price{display:block;font:500 10px var(--font-number);opacity:.72;margin-top:10px}.heat-stock .coverage-chg{display:block;font:700 15px var(--font-number);margin-top:2px}.heat-stock .heat-sector{position:absolute;right:7px;bottom:6px;font-size:9px;opacity:.58}
+.heat-stock.heat-up{background:var(--heat-bg,#ead0d0);color:#641d25}.heat-stock.heat-down{background:var(--heat-bg,#cae1da);color:#155744}.heat-stock.heat-flat{background:#e9edf1;color:#4c5d6e}
+.heat-legend{display:flex;align-items:center;gap:8px;padding:0 18px 13px;background:#f5f7f9;color:#84909d;font-size:10px}.heat-legend i{width:34px;height:6px;border-radius:999px;background:linear-gradient(90deg,#287b65,#edf0f2,#b8454b)}
+#watch-assistant{display:none;position:fixed;inset:0;z-index:110;background:#eef1f5;padding:14px}
+#watch-assistant.open{display:flex;flex-direction:column}
+#watch-assistant .watch-board{width:100%;height:100%;border-radius:14px;display:flex;flex-direction:column;box-shadow:0 24px 70px rgba(15,28,43,.22)}
+#watch-assistant .watch-head{flex:0 0 auto;padding:14px 18px}.watch-head-actions{display:flex;align-items:center;gap:8px}.watch-close{border:1px solid #d5dde6;background:#fff;color:#405166;border-radius:8px;padding:7px 12px;cursor:pointer}
+.watch-workbench{display:grid;grid-template-columns:240px minmax(0,1fr);min-height:0;flex:1;background:#f4f6f8}
+.watch-sectors{border-right:1px solid #dde3ea;background:#fff;overflow:auto;padding:10px}.watch-sector-caption{padding:7px 9px 10px;font-size:10px;color:#8a96a6;letter-spacing:.05em}
+.watch-sector{width:100%;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 8px;text-align:left;border:0;background:transparent;padding:10px 9px;border-radius:8px;cursor:pointer;color:#34475b}.watch-sector:hover{background:#f3f6f8}.watch-sector.on{background:#eaf0f5;color:#142e45}.watch-sector strong{font-size:12px}.watch-sector .sector-pct{font:650 11px var(--font-number)}.watch-sector small{font-size:9px;color:#8a96a6;grid-column:1/-1}.watch-sector .up{color:#b33d45}.watch-sector .down{color:#23745f}
+.watch-main{min-width:0;overflow:auto;padding:14px 16px}.watch-summary{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin-bottom:12px}.watch-summary h4{font-size:18px;color:#172033}.watch-summary p{font-size:10px;color:#84909d;margin-top:4px}.watch-top{width:min(560px,100%);border:1px solid #e2e7ed;border-radius:10px;overflow:hidden;background:#fff}
+.watch-stock-table{background:#fff;border:1px solid #e1e6ec;border-radius:11px;overflow:hidden}.watch-stock-row{display:grid;grid-template-columns:minmax(150px,1.5fr) .7fr .7fr .7fr .7fr;align-items:center;gap:12px;padding:12px 14px;border-bottom:1px solid #edf0f4;cursor:pointer}.watch-stock-row:last-child{border-bottom:0}.watch-stock-row:hover{background:#f6f8fa}.watch-stock-row.head{position:sticky;top:0;z-index:2;background:#f7f9fb;color:#7c8998;font-size:10px;cursor:default}.watch-stock-row .watch-name{font-size:12px;font-weight:650;color:#23364a}.watch-stock-row .watch-name small{display:block;font:400 9px var(--font-number);color:#9aa5b2;margin-top:3px}.watch-stock-row .price,.watch-stock-row .chg,.watch-stock-row .pe{text-align:right;font-family:var(--font-number)}.watch-stock-row .chg{font-weight:700}.watch-stock-row .up{color:#b43d45}.watch-stock-row .down{color:#23745f}
+@media(max-width:1100px){.coverage-heatmap{grid-template-columns:repeat(6,minmax(0,1fr))}}
+@media(max-width:760px){.coverage-heatmap{grid-template-columns:repeat(3,minmax(0,1fr))}.market-heat-head{align-items:flex-start}.watch-workbench{grid-template-columns:1fr}.watch-sectors{display:flex;gap:6px;border-right:0;border-bottom:1px solid #dde3ea;overflow:auto;padding:8px}.watch-sector-caption{display:none}.watch-sector{min-width:112px}.watch-stock-row{grid-template-columns:minmax(110px,1.4fr) .8fr .8fr}.watch-stock-row>*:nth-child(4),.watch-stock-row>*:nth-child(5){display:none}#watch-assistant{padding:0}#watch-assistant .watch-board{border-radius:0}}
+</style>
+</head>
 <body data-page-node-id="2cpRFEmUhw5WL9afeNglP5">
 <a class="skip-link" href="#sec-over">跳到主要内容</a>
 <div data-page-node-id="CDH1zYITYIaRsFJeSAJdJ5" class="shell">
@@ -800,7 +823,7 @@ body.research-center{--brand:#17212d!important;--brand-strong:#0d141c!important;
       <a data-page-node-id="hm0PnRfHSCMZlF9AWp2uvH" class="side-item on" data-sec="sec-over" href="#sec-over"><!--pnid:CnWrBebCYtj0Oo8yTVpYnZ-->总览</a>
       <a class="side-item" data-sec="coverage-live" href="#coverage-live">实时行情</a>
       <a class="side-item" data-sec="consumer-focus" href="#consumer-focus">重点公司</a>
-      <a class="side-item" data-sec="watch-assistant" href="#watch-assistant">盯盘助手</a>
+      <a class="side-item" data-open-watch="1" href="#watch-assistant">盯盘助手</a>
       <a data-page-node-id="uRMlPVF719Cu7nxCU9qVCc" class="side-item" data-sec="sec-f" href="#sec-f"><!--pnid:5aGSSsLIOYUmWe8HSsRM39-->业绩与财务</a>
       <a data-page-node-id="cdVQpXwJfOWPd0sWi48rhc" class="side-item" data-sec="sec-r" href="#sec-r"><!--pnid:s5P9dQNxFKMBAflcOQWBw6-->研报与事件</a>
       <a data-page-node-id="sV56pSiSjl9PyzC0nlQXla" class="side-item" data-sec="sec-mkt" href="#sec-mkt"><!--pnid:NCoe92Vz95g142XTBmd3oP-->市场观点</a>
@@ -855,10 +878,11 @@ body.research-center{--brand:#17212d!important;--brand-strong:#0d141c!important;
     </div>
   </div>
 </section>
-<section id="coverage-live" aria-label="覆盖公司实时涨跌">
-  <div class="coverage-board">
-    <div class="coverage-head"><div><h3>覆盖公司实时涨跌</h3><p>腾讯财经 · 约 30 秒刷新 · 点击公司查看价格走势</p></div><span id="coverage-count">—</span></div>
-    <div class="coverage-list" id="coverage-list"><div class="coverage-loading">正在读取覆盖池…</div></div>
+<section id="coverage-live" aria-label="覆盖公司当日涨跌热力图">
+  <div class="market-heat-board">
+    <div class="market-heat-head"><div><h3>覆盖公司当日涨跌热力图</h3><p>腾讯财经 · 约 30 秒刷新 · 点击任一公司进入对应板块盯盘</p></div><button class="market-enter" type="button" data-open-watch="1">进入盯盘助手</button></div>
+    <div class="coverage-heatmap" id="coverage-list"><div class="coverage-loading">正在读取覆盖池…</div></div>
+    <div class="heat-legend"><span>跌</span><i></i><span>涨</span><span id="coverage-count">—</span></div>
   </div>
 </section>
 <script>
@@ -871,7 +895,7 @@ body.research-center{--brand:#17212d!important;--brand-strong:#0d141c!important;
     if(bench)bench.innerHTML=(d.benchmarks||[]).map(function(x){var v=Number(x.change)||0;return '<div class="wind-index" role="button" tabindex="0" onclick="window.openCoverageKline(this)" data-wind-code="'+esc(x.code)+'"><div class="name">'+esc(x.name)+'</div><div class="price">'+Number(x.price).toLocaleString("zh-CN",{minimumFractionDigits:2,maximumFractionDigits:2})+'</div><div class="chg '+(v>0?"up":v<0?"down":"flat")+'">'+chg(v)+'</div></div>';}).join("");
     var cov=document.getElementById("coverage-list"),cc=document.getElementById("coverage-count"),items=d.coverage||[];
     if(cc)cc.textContent=items.length+" 家";
-    if(cov)cov.innerHTML=items.map(function(x){return '<div class="coverage-item" role="button" tabindex="0" onclick="window.openCoverageKline(this)" data-wind-code="'+esc(x.code)+'"><span class="coverage-name">'+esc(x.name)+'</span><span class="coverage-price price">—</span><b class="coverage-chg chg flat">—</b></div>';}).join("");
+    if(cov&&!cov.dataset.heatmapReady)cov.innerHTML=items.map(function(x){return '<div class="coverage-item heat-stock heat-flat" role="button" tabindex="0" data-wind-code="'+esc(x.code)+'"><span class="coverage-name">'+esc(x.name)+'</span><span class="coverage-price price">—</span><b class="coverage-chg chg flat">—</b></div>';}).join("");
     updateTencent();
     var b=d.breadth||{},total=Number(b.total)||1,up=Number(b.up)||0,down=Number(b.down)||0,flat=Number(b.flat)||0;
     var el=document.getElementById("wind-breadth");if(el)el.textContent=up+" 涨 / "+down+" 跌";
@@ -1547,11 +1571,18 @@ else { document.addEventListener("DOMContentLoaded", boot); }
     <div class="focus-table-wrap"><table class="focus-table"><thead><tr><th>子行业</th><th>公司</th><th>市场</th><th>覆盖级别</th><th class="num">最新价</th><th class="num">当日涨跌</th><th class="num">PE(TTM)</th><th>核心逻辑</th></tr></thead><tbody id="focus-body"><tr><td colspan="8" class="watch-empty">正在读取重点公司…</td></tr></tbody></table></div>
   </div>
 </section>
-<section id="watch-assistant" aria-label="大消费盯盘助手">
+<section id="watch-assistant" aria-label="大消费盯盘助手" aria-hidden="true">
   <div class="watch-board">
-    <div class="watch-head"><div><h3>大消费盯盘助手</h3><p>按子板块观察市场广度与公司涨跌 · 约 30 秒刷新</p></div><div class="watch-filters" id="watch-filters"><button class="watch-filter on" data-view="all" type="button">全部</button><button class="watch-filter" data-view="up" type="button">上涨</button><button class="watch-filter" data-view="down" type="button">下跌</button></div></div>
-    <div class="watch-top"><div class="watch-kpi"><span>覆盖公司</span><strong id="watch-total">—</strong></div><div class="watch-kpi"><span>上涨</span><strong class="up" id="watch-up">—</strong></div><div class="watch-kpi"><span>下跌</span><strong class="down" id="watch-down">—</strong></div><div class="watch-kpi"><span>上涨占比</span><strong id="watch-ratio">—</strong></div></div>
-    <div class="watch-groups" id="watch-groups"><div class="watch-empty">正在建立消费行业盯盘池…</div></div>
+    <div class="watch-head"><div><h3>大消费盯盘助手</h3><p>先选择子板块，再查看公司实时表现 · 腾讯财经约 30 秒刷新</p></div><div class="watch-head-actions"><span id="watch-live-time"></span><button class="watch-close" id="watch-close" type="button">退出（Esc）</button></div></div>
+    <div class="watch-workbench">
+      <aside class="watch-sectors"><div class="watch-sector-caption">消费子板块</div><div id="watch-sector-list"></div></aside>
+      <main class="watch-main">
+        <div class="watch-summary"><div><h4 id="watch-sector-title">—</h4><p id="watch-sector-meta">选择左侧板块查看覆盖公司</p></div>
+          <div class="watch-top"><div class="watch-kpi"><span>覆盖公司</span><strong id="watch-total">—</strong></div><div class="watch-kpi"><span>上涨</span><strong class="up" id="watch-up">—</strong></div><div class="watch-kpi"><span>下跌</span><strong class="down" id="watch-down">—</strong></div><div class="watch-kpi"><span>平均涨跌</span><strong id="watch-ratio">—</strong></div></div>
+        </div>
+        <div class="watch-stock-table"><div class="watch-stock-row head"><span>公司</span><span style="text-align:right">最新价</span><span style="text-align:right">涨跌幅</span><span style="text-align:right">PE(TTM)</span><span style="text-align:right">覆盖级别</span></div><div id="watch-groups"><div class="watch-empty">正在建立消费行业盯盘池…</div></div></div>
+      </main>
+    </div>
   </div>
 </section>
 
@@ -2704,31 +2735,27 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape"&&mask.classL
 <script id="v60-watch-assistant">
 (function(){
 "use strict";
-var rows=[],focusSector="全部",watchView="all";
+var rows=[],selected="",lastStamp="";
 function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
-function n(v,d){var x=Number(v);return isFinite(x)?x.toLocaleString("zh-CN",{minimumFractionDigits:d||0,maximumFractionDigits:d==null?1:d}):"—";}
+function num(v,d){var x=Number(v);return isFinite(x)?x.toLocaleString("zh-CN",{minimumFractionDigits:d||0,maximumFractionDigits:d==null?1:d}):"—";}
+function pctText(v){return isFinite(v)?(v>0?"+":"")+v.toFixed(2)+"%":"—";}
 function priority(r){return r["覆盖级别"]==="核心推荐"||r["覆盖级别"]==="重点跟踪";}
-function sectors(data){var seen={},out=[];data.forEach(function(r){var s=String(r["子行业"]||"其他");if(!seen[s]){seen[s]=1;out.push(s);}});return out;}
-function focus(){
- var body=document.getElementById("focus-body"),data=rows.filter(priority).filter(function(r){return focusSector==="全部"||r["子行业"]===focusSector;});
- body.innerHTML=data.map(function(r){var code=esc(r["证券代码"]),lvl=String(r["覆盖级别"]||"");return '<tr data-wind-code="'+code+'" onclick="window.openCoverageKline(this)"><td>'+esc(r["子行业"])+'</td><td class="company coverage-name">'+esc(r["公司名称"])+'<div class="mini">'+code+'</div></td><td>'+esc(r["市场"])+'</td><td><span class="focus-level '+(lvl==="核心推荐"?"core":"")+'">'+esc(lvl)+'</span></td><td class="num price">'+n(r["现价(元)"],2)+'</td><td class="num chg flat">—</td><td class="num">'+n(r["PE(TTM)"],1)+'</td><td class="logic" title="'+esc(r["核心逻辑"])+'">'+esc(r["核心逻辑"])+'</td></tr>';}).join("")||'<tr><td colspan="8" class="watch-empty">该板块暂无重点公司</td></tr>';
-}
-function groups(){
- var host=document.getElementById("watch-groups"),ss=sectors(rows);host.innerHTML=ss.map(function(s){var list=rows.filter(function(r){return r["子行业"]===s;});return '<div class="watch-group" data-watch-sector="'+esc(s)+'"><div class="watch-group-head"><strong>'+esc(s)+'</strong><span>'+list.length+' 家</span></div><div class="watch-stocks">'+list.map(function(r){return '<div class="watch-stock" data-wind-code="'+esc(r["证券代码"])+'" onclick="window.openCoverageKline(this)"><span class="watch-name coverage-name">'+esc(r["公司名称"])+'</span><span class="price">—</span><b class="chg flat">—</b></div>';}).join("")+'</div></div>';}).join("");
-}
-function stats(){
- var items=[].slice.call(document.querySelectorAll(".watch-stock")),up=0,down=0,visible=0;
- items.forEach(function(el){var t=(el.querySelector(".chg")||{}).textContent||"",v=parseFloat(t);if(v>0)up++;else if(v<0)down++;var show=watchView==="all"||(watchView==="up"&&v>0)||(watchView==="down"&&v<0);el.style.display=show?"grid":"none";if(show)visible++;});
- document.getElementById("watch-total").textContent=items.length;document.getElementById("watch-up").textContent=up;document.getElementById("watch-down").textContent=down;document.getElementById("watch-ratio").textContent=items.length?Math.round(up/items.length*100)+"%":"—";
- document.querySelectorAll(".watch-group").forEach(function(g){g.style.display=[].some.call(g.querySelectorAll(".watch-stock"),function(x){return x.style.display!=="none";})?"block":"none";});
-}
-function boot(data){
- rows=data.filter(function(r){return r["证券代码"]&&r["公司名称"];});var fs=document.getElementById("focus-filters");fs.innerHTML=['全部'].concat(sectors(rows.filter(priority))).map(function(s,i){return '<button class="focus-filter '+(i===0?"on":"")+'" data-sector="'+esc(s)+'" type="button">'+esc(s)+'</button>';}).join("");focus();groups();if(window.refreshTencentMarket)window.refreshTencentMarket();setTimeout(stats,1800);
-}
-document.getElementById("focus-filters").addEventListener("click",function(e){var b=e.target.closest("[data-sector]");if(!b)return;focusSector=b.getAttribute("data-sector");this.querySelectorAll("button").forEach(function(x){x.classList.toggle("on",x===b);});focus();if(window.refreshTencentMarket)window.refreshTencentMarket();});
-document.getElementById("watch-filters").addEventListener("click",function(e){var b=e.target.closest("[data-view]");if(!b)return;watchView=b.getAttribute("data-view");this.querySelectorAll("button").forEach(function(x){x.classList.toggle("on",x===b);});stats();});
-setInterval(stats,2000);
-if(window.__CSV_DATA__)window.__CSV_DATA__.dataset("valuation").then(boot).catch(function(){document.getElementById("watch-groups").innerHTML='<div class="watch-empty">标的池读取失败，请刷新重试</div>';});
+function sectors(){var seen={},out=[];rows.forEach(function(r){var s=String(r["子行业"]||"其他");if(!seen[s]){seen[s]=1;out.push(s);}});return out;}
+function quoteMap(){var m={};document.querySelectorAll("#coverage-list .heat-stock").forEach(function(el){var v=parseFloat((el.querySelector(".chg")||{}).textContent);m[el.getAttribute("data-wind-code")]={pct:isFinite(v)?v:NaN,price:(el.querySelector(".price")||{}).textContent||"—"};});return m;}
+function renderFocus(){var body=document.getElementById("focus-body");if(!body)return;var data=rows.filter(priority);body.innerHTML=data.map(function(r){var code=esc(r["证券代码"]),lvl=String(r["覆盖级别"]||"");return '<tr data-wind-code="'+code+'" onclick="window.openCoverageKline(this)"><td>'+esc(r["子行业"])+'</td><td class="company coverage-name">'+esc(r["公司名称"])+'<div class="mini">'+code+'</div></td><td>'+esc(r["市场"])+'</td><td><span class="focus-level '+(lvl==="核心推荐"?"core":"")+'">'+esc(lvl)+'</span></td><td class="num price">'+num(r["现价(元)"],2)+'</td><td class="num chg flat">—</td><td class="num">'+num(r["PE(TTM)"],1)+'</td><td class="logic" title="'+esc(r["核心逻辑"])+'">'+esc(r["核心逻辑"])+'</td></tr>';}).join("");}
+function renderHeat(){var host=document.getElementById("coverage-list");host.dataset.heatmapReady="1";host.innerHTML=rows.map(function(r){return '<div class="coverage-item heat-stock heat-flat" role="button" tabindex="0" data-sector="'+esc(r["子行业"]||"其他")+'" data-wind-code="'+esc(r["证券代码"])+'"><span class="coverage-name">'+esc(r["公司名称"])+'</span><span class="coverage-price price">—</span><b class="coverage-chg chg flat">—</b><span class="heat-sector">'+esc(r["子行业"]||"其他")+'</span></div>';}).join("");document.getElementById("coverage-count").textContent=rows.length+" 家覆盖公司";}
+function renderSectors(){var q=quoteMap(),host=document.getElementById("watch-sector-list");host.innerHTML=sectors().map(function(s){var list=rows.filter(function(r){return (r["子行业"]||"其他")===s;}),vals=list.map(function(r){return (q[r["证券代码"]]||{}).pct;}).filter(isFinite),avg=vals.length?vals.reduce(function(a,b){return a+b;},0)/vals.length:NaN,up=vals.filter(function(v){return v>0;}).length;return '<button class="watch-sector '+(s===selected?"on":"")+'" type="button" data-sector="'+esc(s)+'"><strong>'+esc(s)+'</strong><span class="sector-pct '+(avg>0?"up":avg<0?"down":"")+'">'+pctText(avg)+'</span><small>'+list.length+' 家 · '+up+' 涨 / '+(vals.length-up)+' 跌</small></button>';}).join("");}
+function renderStocks(){var q=quoteMap(),list=rows.filter(function(r){return (r["子行业"]||"其他")===selected;});list.sort(function(a,b){var av=(q[a["证券代码"]]||{}).pct,bv=(q[b["证券代码"]]||{}).pct;return (isFinite(bv)?bv:-999)-(isFinite(av)?av:-999);});var vals=list.map(function(r){return (q[r["证券代码"]]||{}).pct;}).filter(isFinite),up=vals.filter(function(v){return v>0;}).length,down=vals.filter(function(v){return v<0;}).length,avg=vals.length?vals.reduce(function(a,b){return a+b;},0)/vals.length:NaN;document.getElementById("watch-sector-title").textContent=selected;document.getElementById("watch-sector-meta").textContent="按当日涨跌幅排序 · 点击公司查看价格走势";document.getElementById("watch-total").textContent=list.length;document.getElementById("watch-up").textContent=up;document.getElementById("watch-down").textContent=down;document.getElementById("watch-ratio").textContent=pctText(avg);document.getElementById("watch-groups").innerHTML=list.map(function(r){var z=q[r["证券代码"]]||{},v=z.pct;return '<div class="watch-stock-row" data-wind-code="'+esc(r["证券代码"])+'"><span class="watch-name coverage-name">'+esc(r["公司名称"])+'<small>'+esc(r["证券代码"])+' · '+esc(r["市场"])+'</small></span><span class="price">'+(z.price||"—")+'</span><b class="chg '+(v>0?"up":v<0?"down":"flat")+'">'+pctText(v)+'</b><span class="pe">'+num(r["PE(TTM)"],1)+'</span><span class="pe">'+esc(r["覆盖级别"]||"—")+'</span></div>';}).join("")||'<div class="watch-empty">该板块暂无覆盖公司</div>';}
+function paint(){var vals=[];document.querySelectorAll("#coverage-list .heat-stock").forEach(function(el){var v=parseFloat((el.querySelector(".chg")||{}).textContent);el.classList.remove("heat-up","heat-down","heat-flat");if(!isFinite(v)){el.classList.add("heat-flat");return;}vals.push(v);var alpha=Math.min(.86,.25+Math.abs(v)*.10);el.classList.add(v>0?"heat-up":v<0?"heat-down":"heat-flat");el.style.setProperty("--heat-bg",v>0?"rgba(190,63,72,"+alpha+")":v<0?"rgba(39,128,102,"+alpha+")":"#e9edf1");if(Math.abs(v)>3)el.style.color="#fff";else el.style.removeProperty("color");});if(vals.length){lastStamp=new Date().toLocaleTimeString("zh-CN",{hour:"2-digit",minute:"2-digit",second:"2-digit"});var e=document.getElementById("watch-live-time");if(e)e.textContent="更新 "+lastStamp;}}
+function sync(){paint();if(document.getElementById("watch-assistant").classList.contains("open")){renderSectors();renderStocks();if(window.refreshTencentMarket)window.refreshTencentMarket();}}
+function openWatch(sector){selected=sector&&sectors().indexOf(sector)>-1?sector:(selected||sectors()[0]||"");var mask=document.getElementById("watch-assistant");mask.classList.add("open");mask.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";renderSectors();renderStocks();if(window.refreshTencentMarket)window.refreshTencentMarket();}
+function closeWatch(){var mask=document.getElementById("watch-assistant");mask.classList.remove("open");mask.setAttribute("aria-hidden","true");document.body.style.overflow="";}
+window.openMarketWatch=openWatch;
+document.addEventListener("click",function(e){var heat=e.target.closest("#coverage-list .heat-stock");if(heat){openWatch(heat.getAttribute("data-sector"));return;}var open=e.target.closest("[data-open-watch]");if(open){e.preventDefault();openWatch();return;}var sec=e.target.closest("#watch-sector-list [data-sector]");if(sec){selected=sec.getAttribute("data-sector");renderSectors();renderStocks();if(window.refreshTencentMarket)window.refreshTencentMarket();return;}var stock=e.target.closest("#watch-groups .watch-stock-row");if(stock&&window.openCoverageKline)window.openCoverageKline(stock);});
+document.getElementById("watch-close").addEventListener("click",closeWatch);
+document.addEventListener("keydown",function(e){if(e.key==="Escape"&&document.getElementById("watch-assistant").classList.contains("open")&&!document.querySelector("#kline-mask.open"))closeWatch();});
+function boot(data){rows=data.filter(function(r){return r["证券代码"]&&r["公司名称"];});renderFocus();renderHeat();selected=sectors()[0]||"";renderSectors();if(window.refreshTencentMarket)window.refreshTencentMarket();setTimeout(sync,1800);setInterval(sync,5000);}
+if(window.__CSV_DATA__)window.__CSV_DATA__.dataset("valuation").then(boot).catch(function(){document.getElementById("coverage-list").innerHTML='<div class="watch-empty">覆盖池读取失败，请刷新重试</div>';});
 })();
 </script>
 <script id="v62-dining-immersion">
