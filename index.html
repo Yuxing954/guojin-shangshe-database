@@ -776,6 +776,14 @@ body.research-center{--brand:#17212d!important;--brand-strong:#0d141c!important;
 .watch-empty{padding:30px;text-align:center;color:#7b8795;grid-column:1/-1}
 @media(max-width:850px){.watch-groups{grid-template-columns:1fr}.watch-top{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.watch-stocks{grid-template-columns:1fr}.focus-head,.watch-head{align-items:flex-start;flex-direction:column}}
+</style><style id="v62-sector-split">
+.side-sector-row{display:grid;grid-template-columns:minmax(0,1fr) 32px;gap:4px;align-items:center}
+.side-sector-row .sector-main{min-width:0;margin:0}
+.sector-logo{width:30px;height:30px;border:1px solid transparent;border-radius:9px;display:grid;place-items:center;font:650 11px var(--font-ui);cursor:pointer;transition:transform .15s ease,box-shadow .15s ease,filter .15s ease}
+.sector-logo:hover{transform:translateY(-1px);filter:saturate(1.12);box-shadow:0 5px 12px rgba(15,23,42,.12)}
+.sector-logo.hotel{color:#315a7d;background:#eaf2f8;border-color:#d5e4ef}.sector-logo.taxfree{color:#6941a5;background:#f2edfa;border-color:#e4daf5}
+.sector-logo.gold{color:#94661d;background:#fbf3df;border-color:#f0dfb8}.sector-logo.oversea{color:#23766a;background:#e7f4f1;border-color:#cee8e2}
+.sector-logo.dining{color:#a34f3d;background:#faece8;border-color:#f1d5ce}
 </style></head>
 <body data-page-node-id="2cpRFEmUhw5WL9afeNglP5">
 <a class="skip-link" href="#sec-over">跳到主要内容</a>
@@ -800,11 +808,11 @@ body.research-center{--brand:#17212d!important;--brand-strong:#0d141c!important;
 
       <div data-page-node-id="zPy2CIsUpd9AOmEa3kLPKO" class="side-group" id="indGroup"><span data-page-node-id="GnuLdKIJtkD7Yz4bOi3i3C"><!--pnid:TdSaGr5TZwJBYRolJW4Tod-->行业数据</span><span data-page-node-id="NyxsuhVzrpaGZmUNI15Wce" class="caret"><!--pnid:OyHGbevvQOKuzF3XxxOLlj-->▾</span></div>
       <div data-page-node-id="nsh4C6bG2o4RYdxBd0j0zU" class="side-sub" id="indSub">
-        <a data-page-node-id="rnYEzMro7o2HxnfESkNUqL" class="side-item sub" data-sec="sec-hotel" href="#sec-hotel"><!--pnid:9HRQBZQi2n22SJsRNGan89-->酒店</a>
-        <a data-page-node-id="4hq4Q4Vic6brRaeXUg3LfU" class="side-item sub" data-sec="sec-taxfree" href="#sec-taxfree"><!--pnid:aEI3W8jjHb2l0QWDJLM4OB-->免税</a>
-        <a data-page-node-id="E5XI6JC3SRZYZwiQ7M9IFf" class="side-item sub" data-sec="sec-gold" href="#sec-gold"><!--pnid:v6ZoPLqfNn1pzeo6SfKdYi-->黄金</a>
-        <a data-page-node-id="69hqbtRxBWEAPRu22VjWz4" class="side-item sub" data-sec="sec-overseas" href="#sec-overseas"><!--pnid:UmlufN9xQvlULNfzFuVvJX-->出海</a>
-        <a data-page-node-id="I5RNTjqQY5RoBqmUl3IryY" class="side-item sub" data-sec="sec-dining" href="#sec-dining"><!--pnid:TztrxcjrNeZjb0jW0YhJAz-->餐饮</a>
+        <div class="side-sector-row"><a data-page-node-id="rnYEzMro7o2HxnfESkNUqL" class="side-item sub sector-main" data-sector-main="1" data-sec="sec-hotel" href="#sec-hotel"><!--pnid:9HRQBZQi2n22SJsRNGan89-->酒店</a><button class="sector-logo hotel" data-open-imm="hotel" type="button" title="打开酒店沉浸看板" aria-label="打开酒店沉浸看板">旅</button></div>
+        <div class="side-sector-row"><a data-page-node-id="4hq4Q4Vic6brRaeXUg3LfU" class="side-item sub sector-main" data-sector-main="1" data-sec="sec-taxfree" href="#sec-taxfree"><!--pnid:aEI3W8jjHb2l0QWDJLM4OB-->免税</a><button class="sector-logo taxfree" data-open-imm="taxfree" type="button" title="打开免税沉浸看板" aria-label="打开免税沉浸看板">免</button></div>
+        <div class="side-sector-row"><a data-page-node-id="E5XI6JC3SRZYZwiQ7M9IFf" class="side-item sub sector-main" data-sector-main="1" data-sec="sec-gold" href="#sec-gold"><!--pnid:v6ZoPLqfNn1pzeo6SfKdYi-->黄金</a><button class="sector-logo gold" data-open-imm="gold" type="button" title="打开黄金沉浸看板" aria-label="打开黄金沉浸看板">金</button></div>
+        <div class="side-sector-row"><a data-page-node-id="69hqbtRxBWEAPRu22VjWz4" class="side-item sub sector-main" data-sector-main="1" data-sec="sec-overseas" href="#sec-overseas"><!--pnid:UmlufN9xQvlULNfzFuVvJX-->出海</a><button class="sector-logo oversea" data-open-imm="oversea" type="button" title="打开出海沉浸看板" aria-label="打开出海沉浸看板">海</button></div>
+        <div class="side-sector-row"><a data-page-node-id="I5RNTjqQY5RoBqmUl3IryY" class="side-item sub sector-main" data-sector-main="1" data-sec="sec-dining" href="#sec-dining"><!--pnid:TztrxcjrNeZjb0jW0YhJAz-->餐饮</a><button class="sector-logo dining" data-open-live="dining" type="button" title="打开餐饮沉浸看板" aria-label="打开餐饮沉浸看板">餐</button></div>
       </div>
     </nav>
   </aside>
@@ -1626,7 +1634,7 @@ tr:hover td{background:#f8faff!important}
   function onDoc(e){ var t=e.target; if(!t||!t.closest)return; var k='';
     var d=t.closest('[data-open-imm]'); if(d){k=d.getAttribute('data-open-imm');}
     else if(t.closest('[data-tf-open]')){k='taxfree';}
-    else { var se=t.closest('[data-sec]'); if(se){k=BYSEC[se.getAttribute('data-sec')]||'';} }
+    else { var se=t.closest('[data-sec]'); if(se&&!t.closest('[data-sector-main]')){k=BYSEC[se.getAttribute('data-sec')]||'';} }
     if(k&&ITEMS[k]){e.preventDefault();open(k);return;} if(t.closest('#tfExit')){e.preventDefault();close();} }
   document.addEventListener('click',onDoc,true);
   document.addEventListener('keydown',function(e){if(e.key==='Escape'||e.keyCode===27)close();});
@@ -2721,6 +2729,16 @@ document.getElementById("focus-filters").addEventListener("click",function(e){va
 document.getElementById("watch-filters").addEventListener("click",function(e){var b=e.target.closest("[data-view]");if(!b)return;watchView=b.getAttribute("data-view");this.querySelectorAll("button").forEach(function(x){x.classList.toggle("on",x===b);});stats();});
 setInterval(stats,2000);
 if(window.__CSV_DATA__)window.__CSV_DATA__.dataset("valuation").then(boot).catch(function(){document.getElementById("watch-groups").innerHTML='<div class="watch-empty">标的池读取失败，请刷新重试</div>';});
+})();
+</script>
+<script id="v62-dining-immersion">
+(function(){
+"use strict";
+var active=null,mark=null,oldStyle="";
+function restore(){if(active&&mark&&mark.parentNode){active.style.cssText=oldStyle;mark.parentNode.insertBefore(active,mark);mark.remove();}active=null;mark=null;}
+function openDining(){var src=document.getElementById("sec-dining"),ov=document.getElementById("tfov"),frame=document.querySelector("#tfov .tf-frame"),iframe=document.getElementById("tfFrame");if(!src||!ov||!frame)return;if(iframe)iframe.style.display="none";var host=document.getElementById("diningImmHost");if(!host){host=document.createElement("div");host.id="diningImmHost";host.style.cssText="height:100%;overflow:auto;background:#f7f9fc;padding:22px";frame.appendChild(host);}restore();mark=document.createComment("dining-home");src.parentNode.insertBefore(mark,src);active=src;oldStyle=src.style.cssText;host.innerHTML="";host.appendChild(src);src.style.cssText+=";margin:0 auto;max-width:1280px";var t=document.getElementById("tfTitle");if(t)t.textContent="餐饮板块跟踪看板";document.body.style.overflow="hidden";ov.classList.add("on");ov.setAttribute("aria-hidden","false");host.scrollTop=0;}
+document.addEventListener("click",function(e){if(e.target.closest&&e.target.closest('[data-open-live="dining"]')){e.preventDefault();openDining();return;}if(e.target.closest&&e.target.closest("#tfExit"))restore();},true);
+document.addEventListener("keydown",function(e){if(e.key==="Escape")restore();});
 })();
 </script>
 </body>
