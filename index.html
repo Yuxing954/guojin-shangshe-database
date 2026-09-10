@@ -807,6 +807,20 @@ body.research-center{--brand:#17212d!important;--brand-strong:#0d141c!important;
 @media(max-width:1100px){.coverage-heatmap{grid-template-columns:repeat(6,minmax(0,1fr))}}
 @media(max-width:760px){.coverage-heatmap{grid-template-columns:repeat(3,minmax(0,1fr))}.market-heat-head{align-items:flex-start}.watch-workbench{grid-template-columns:1fr}.watch-sectors{display:flex;gap:6px;border-right:0;border-bottom:1px solid #dde3ea;overflow:auto;padding:8px}.watch-sector-caption{display:none}.watch-sector{min-width:112px}.watch-stock-row{grid-template-columns:minmax(110px,1.4fr) .8fr .8fr}.watch-stock-row>*:nth-child(4),.watch-stock-row>*:nth-child(5){display:none}#watch-assistant{padding:0}#watch-assistant .watch-board{border-radius:0}}
 </style>
+<style id="v71-market-cleanup">
+#wind-overview,#coverage-live{padding-left:0!important;padding-right:0!important}
+.coverage-heatmap{grid-template-columns:repeat(9,minmax(0,1fr));gap:9px;padding:14px 10px 10px;background:#fff}
+.heat-stock{min-height:86px;padding:11px 13px;border-radius:10px;border:0;box-shadow:none;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start}
+.heat-stock .coverage-name{font-size:13px;font-weight:700;white-space:normal;overflow:visible;text-overflow:clip;line-height:1.25;width:100%;min-height:16px}
+.heat-stock .coverage-price{display:none}
+.heat-stock .coverage-chg{font-size:15px;margin-top:7px;line-height:1}
+.heat-stock .heat-sector{position:static;font-size:10px;margin-top:auto;opacity:.64}
+.heat-legend{padding:4px 12px 14px;background:#fff}.market-heat-head{padding:17px 10px 14px;border-bottom:0}
+.market-heat-board{border-color:#dce3ea;box-shadow:0 8px 24px -22px rgba(15,23,42,.28)}
+@media(max-width:1250px){.coverage-heatmap{grid-template-columns:repeat(7,minmax(0,1fr))}}
+@media(max-width:900px){.coverage-heatmap{grid-template-columns:repeat(5,minmax(0,1fr))}}
+@media(max-width:620px){.coverage-heatmap{grid-template-columns:repeat(2,minmax(0,1fr))}.heat-stock{min-height:78px}}
+</style>
 </head>
 <body data-page-node-id="2cpRFEmUhw5WL9afeNglP5">
 <a class="skip-link" href="#sec-over">跳到主要内容</a>
@@ -855,16 +869,7 @@ body.research-center{--brand:#17212d!important;--brand-strong:#0d141c!important;
     </div>
   </header>
 
-  <div data-page-node-id="3Vz8uXeT4Ezg1gN4SM0bhh" class="kpis" id="kpis">
-    <div data-page-node-id="cOl6B5SwvUVL3VNSDxdl0N" class="kpi"><div data-page-node-id="3mg4gjNK9JcNNkskMrVUhH" class="lbl"><!--pnid:c9lhQp2sqZ6IN3UIX4R0pW-->覆盖标的</div><div data-page-node-id="u4wX0yBZpTzfeAyBstYCKG" class="val"><span data-page-node-id="lLlkZq0kIUQuX0Qm1bIWCC" data-sp-bindable="database" data-sp-database-id="valuation" id="k-u"><!--pnid:SmiFPYBQc7Rz5N6GEFsbSR-->—</span></div><div data-page-node-id="cDUvhGkQ2NOgm6HPToAfeQ" class="foot"><!--pnid:eCN7i8h0LCvbTHxW2RlQTk-->重点跟踪池</div></div>
-    <div data-page-node-id="O0GVasJXTZiPKw5PfWa5yw" class="kpi"><div data-page-node-id="gqvwoJKaWpEBJpLepJm2JW" class="lbl"><!--pnid:dYUHwUngMZE0bRhWUPzqvR-->子行业覆盖</div><div data-page-node-id="LWTAyTPntUm6x1GSmr6Xbp" class="val"><span data-page-node-id="qUelnAtWSWqvKRKWQAHWNo" data-sp-bindable="database" data-sp-database-id="valuation" id="k-sub"><!--pnid:K8EiMPI4ZjxhjFmtVQVIHO-->—</span></div><div data-page-node-id="INegHQh8NuQX98V3S6am1X" class="foot"><!--pnid:T8HVJOE9hoLhvrbhvrwXN8-->商社板块口径</div></div>
-    <div data-page-node-id="Co0d7JPszQQFUPufK8r9hx" class="kpi"><div data-page-node-id="NFFkIyh4oYaWFp8hGqhyrT" class="lbl"><!--pnid:X1LJVrPWRG0YDZ76yBl4B5-->核心推荐</div><div data-page-node-id="6BnBJieK0vAKXk9svxgQED" class="val"><span data-page-node-id="wWGkjLPQ8ZQAZcJEfoxClK" data-sp-bindable="database" data-sp-database-id="valuation" id="k-core"><!--pnid:laTC3fR9WGqWLJvFDmzDOY-->—</span></div><div data-page-node-id="HCNgqn470ynISQ27tBaG6j" class="foot"><!--pnid:yVAX034CBG7r82x1MfgajT-->国金主线+个人核心</div></div>
-    <div data-page-node-id="knxSFtsXGTmKVmmLAP77o8" class="kpi"><div data-page-node-id="ZSHENHqHXV1Wd1GuAemAmJ" class="lbl"><!--pnid:EYTXXQkVEh2Py2NBWg2pl5-->YTD 上涨 / 下跌</div><div data-page-node-id="hfNoUirsQISWzgF4AW60sY" class="val sm"><span data-page-node-id="sFJ5UHWVE25hm4yvAAVVuU" data-sp-bindable="database" data-sp-database-id="valuation" id="k-rise"><!--pnid:YI420ZeCzCW5eQq9Rc3qc3-->—</span><!--pnid:OYSrdj2BE7WX0UNOQTruhK--> / <span data-page-node-id="7jwCy6UneCauUuOPu3hC10" data-sp-bindable="database" data-sp-database-id="valuation" id="k-fall"><!--pnid:wMXuJwZeMimCWpXTTVD8wx-->—</span></div><div data-page-node-id="tnW3NRVsOYzUfhUvefSLpc" class="foot" id="k-snap"><!--pnid:PQ9hueTL5tpYfeCCjvG8fF-->行情快照加载中</div></div>
-    <div data-page-node-id="pm8MZIg6pxbkhIO3qdIVvv" class="kpi"><div data-page-node-id="6ZrjqpkMHWB3FEXCnPUag9" class="lbl"><!--pnid:1RjXkqufTT4MC7ELIY3pn8-->研报 / 纪要</div><div data-page-node-id="XIIJHZsvKX8rnniuKhDFf1" class="val sm"><span data-page-node-id="SbpEUolpUDdb7cnQsM8dHy" data-sp-bindable="database" data-sp-database-id="announcements" id="k-r"><!--pnid:fvGu16JQxmb38jBt64fgBp-->—</span><!--pnid:JVhLMO7Zy3HngByoiobg2W--> / <span data-page-node-id="oKWic6R2zlJOLTC1aNwSid" data-sp-bindable="database" data-sp-database-id="minutes" id="k-m"><!--pnid:7JdaNb9UqgtwjhwlDoEYMx-->—</span></div><div data-page-node-id="h5vrMHmeRu4imIYIhpzdKR" class="foot"><!--pnid:Kogm324kLiFhPAYgZCg41d-->观点 / 纪要文库</div></div>
-  </div>
-
-  
-<section id="wind-overview" aria-label="腾讯财经实时市场环境">
+  <section id="wind-overview" aria-label="腾讯财经实时市场环境">
   <div class="wind-board">
     <div class="wind-head"><i class="wind-live"></i><h3>实时市场环境</h3><p id="wind-meta">腾讯财经 · 约 30 秒刷新</p></div>
     <div class="wind-grid">
@@ -951,8 +956,7 @@ body.research-center{--brand:#17212d!important;--brand-strong:#0d141c!important;
     <div data-page-node-id="pUoU5GW32bLzeeH310PR6p" class="ovgrid">
       <div data-page-node-id="JAN1GAxFZaSLF4rTisBMJi" class="card"><h3 data-page-node-id="pEkS8aJdhj9Nz3jrQ6QEk4"><!--pnid:UH72bNNDNaWR6o0dR068Ly-->覆盖分布（按子行业）<span data-page-node-id="aSKH20I8W6DAUJTA1rpuWp" class="note"><!--pnid:1nSbAI05BbTGUirOUajgPQ-->标的池</span></h3><div data-page-node-id="dWcJ0jR4uQJevNXc8xyIU0" class="donut-wrap" id="chart-donut"><div data-page-node-id="eiFQqC7DPzaRzM5ywzBKsH" class="statebox" style="width:100%"><!--pnid:o1fuyeU39Pnzfu9NqiMR1c-->加载中…</div></div></div>
       <div data-page-node-id="qzX1eSty0A1siI0v8sjWof" class="card"><h3 data-page-node-id="LMuSnw3wfeNt5v3cKKhJUH"><!--pnid:Cpoqs2eO2gYC9EIIFj50yZ-->总市值 Top 10<span data-page-node-id="3JpNBtjndglKRSpgrEnSUO" class="note"><!--pnid:PYM26yCC99uTlVqATrqosF-->折人民币·亿元</span></h3><div data-page-node-id="OZOxAfD7hV2GNNMRVCFQnE" class="svgbox" id="chart-cap"></div></div>
-      <div data-page-node-id="n0wi57JAM0vWrGcaboJD1e" class="card full" style="grid-column:1/-1"><h3 data-page-node-id="esuOfrBu0iIkUBkcO2I1ie"><!--pnid:hMSHOHZaW3apbwA3aKjo9g-->本周行情热力图<span data-page-node-id="oSAmb4Hikbu64cwQ8Pm35j" class="note"><!--pnid:LRfffIuOOufNO96gveStEr-->周涨跌幅% · 红涨绿跌 · 数据源：覆盖标的本周行情表（Wind 周度更新）</span></h3><div data-page-node-id="8MIYqkwOqOIGM0fzCDOEA5" class="svgbox" id="chart-wk"></div></div>
-    </div>
+          </div>
   </section>
 <section data-page-node-id="LtwiPbLeRZeLLJ07hkMsM5" id="sec-f">
     <div data-page-node-id="351D9JlN2RndEAdBPmVN4F" class="sec-h"><h2 data-page-node-id="yF4iAm09I35SyDNaujngbs"><!--pnid:Gwwqjwl56CT2IPBEQg6VLh-->业绩与财务跟踪</h2><span data-page-node-id="XJYtwtQI0AMvxCrNn0Odns" class="sub" id="sub-f"><!--pnid:Ctpwa19CezcMGh8nbLFKdH-->单公司图表视图 · 财报期口径</span><span data-page-node-id="sEfpWytt2gcoEVrAnExOSZ" class="spacer"></span><span data-page-node-id="ommapUEXt5XmyBwb1k1vLX" class="cnt"><!--pnid:nd4LuyjHNlwZKGUSiMEKdb-->记录 <span data-page-node-id="b5YM8Q4L22JJgqTw7M3Sfi" data-sp-bindable="database" data-sp-database-id="financials" id="c-f"><!--pnid:ycaPfpwN0XqtuT28xAfYh8-->0</span><!--pnid:akmKrSNT44PWZpcsZzUxnO--> 条</span></div>
