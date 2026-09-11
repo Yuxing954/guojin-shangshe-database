@@ -1,17 +1,378 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>离岛免税经营看板</title><style>
-:root{--bg:#f4f6f8;--card:#fff;--ink:#172536;--mut:#748194;--line:#e1e6eb;--navy:#18374f;--blue:#3d708e;--teal:#2d7b70;--amber:#b47a3d;--red:#bd4a4c;--green:#278069;--font:"PingFang SC","Noto Sans SC","Microsoft YaHei UI",sans-serif}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px var(--font);font-feature-settings:"tnum" 1}.wrap{max-width:1180px;margin:auto;padding:24px 22px 52px}.hero{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:15px}.eyebrow{font-size:9px;color:var(--blue);font-weight:700;letter-spacing:.16em}.hero h1{margin:5px 0 3px;font-size:25px;letter-spacing:-.035em}.hero p,.asof{margin:0;color:var(--mut);font-size:11px}.tabs{display:flex;gap:4px;padding:4px;background:#e8edf1;border-radius:9px;width:max-content;margin-bottom:12px}.tab{border:0;background:transparent;padding:8px 14px;border-radius:6px;color:#596a7c;font:11px var(--font);cursor:pointer}.tab.on{background:#fff;color:var(--navy);font-weight:600;box-shadow:0 1px 4px #16304714}.panel{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:12px;box-shadow:0 8px 24px -25px #17344b}.panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 16px;border-bottom:1px solid #e9edf1}.panel-head h2{font-size:14px;margin:0}.panel-head p{font-size:10px;color:var(--mut);margin:3px 0 0}.controls select{border:1px solid #d5dde5;background:#fff;border-radius:6px;padding:6px 9px;color:#46576a;font:11px var(--font)}.kpis{display:grid;grid-template-columns:repeat(4,1fr)}.kpi{padding:15px 17px;border-right:1px solid #e9edf1}.kpi:last-child{border:0}.kpi span{font-size:10px;color:var(--mut)}.kpi strong{display:block;font-size:22px;margin:3px 0 5px}.kpi small{font-size:9px}.up{color:var(--red)!important}.down{color:var(--green)!important}.signal{display:grid;grid-template-columns:90px 1fr auto;gap:12px;padding:11px 16px;background:#f8fafb;border-top:1px solid #edf0f3;font-size:11px;align-items:center}.signal span{color:#56677a}.pill{background:#e8f1ef;color:var(--teal);border-radius:99px;padding:4px 8px;font-size:9px}.chart-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:12px}.chart{padding:14px 15px;position:relative}.chart.wide{grid-column:1/-1}.chart-head{display:flex;justify-content:space-between;align-items:center}.chart h3{font-size:11px;margin:0}.legend{display:flex;gap:10px;color:var(--mut);font-size:9px}.dot{width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:4px}.chart svg{width:100%;height:230px}.gridline{stroke:#edf0f3}.axis{fill:#8a96a4;font-size:8px}.line{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}.tooltip{display:none;position:absolute;z-index:4;background:#14293a;color:#fff;padding:8px 10px;border-radius:6px;font-size:10px;line-height:1.55;pointer-events:none}.holiday-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:12px}.holiday-bars{padding:14px 16px}.hrow{display:grid;grid-template-columns:72px 1fr 62px 70px;gap:10px;align-items:center;margin:11px 0;font-size:11px}.bar{height:10px;background:#edf1f4;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:var(--blue);border-radius:99px}.table{width:100%;border-collapse:collapse}.table th{padding:8px 11px;background:#f7f8fa;color:#7c8897;font-size:9px;text-align:left}.table td{padding:10px 11px;border-top:1px solid #edf0f3;font-size:11px}.num{text-align:right}.season{padding:14px}.season-grid{display:grid;grid-template-columns:70px repeat(12,1fr);gap:4px}.season-cell{min-height:46px;border-radius:6px;background:#eef2f4;padding:6px;font-size:9px;color:#607084}.season-cell b{display:block;color:#273a4e;font-size:11px}.season-head{min-height:auto;text-align:center;background:transparent;color:#8290a0}.season-year{display:flex;align-items:center;background:transparent;font-weight:600}.view{display:none}.view.on{display:block}.note{padding:10px 15px;background:#fafbfc;border-top:1px solid #edf0f3;color:var(--mut);font-size:10px}.fresh{display:flex;justify-content:space-between;color:var(--mut);font-size:9px;margin-top:10px}.empty{padding:30px;text-align:center;color:var(--mut)}
-@media(max-width:800px){.wrap{padding:16px 10px}.hero{flex-direction:column;align-items:flex-start}.tabs{width:100%;overflow:auto}.tab{white-space:nowrap}.kpis{grid-template-columns:repeat(2,1fr)}.kpi:nth-child(2){border-right:0}.chart-grid,.holiday-grid{grid-template-columns:1fr}.chart.wide{grid-column:auto}.signal{grid-template-columns:1fr}.season{overflow:auto}.season-grid{min-width:800px}}
-</style></head><body><div class="wrap"><header class="hero"><div><div class="eyebrow">GUOJIN · DUTY FREE RESEARCH</div><h1>离岛免税经营看板</h1><p>月度销售、消费行为和主要假期表现</p></div><div class="asof" id="asof">读取数据中…</div></header><nav class="tabs"><button class="tab on" data-view="monthly">月度经营</button><button class="tab" data-view="growth">增长趋势</button><button class="tab" data-view="holiday">主要假期</button><button class="tab" data-view="season">月度季节性</button></nav>
-<section class="view on" id="view-monthly"><div class="panel"><div class="panel-head"><div><h2>最新月度经营快照</h2><p id="period"></p></div><div class="controls"><select id="range"><option value="12">近12个月</option><option value="24" selected>近24个月</option><option value="60">近5年</option><option value="9999">全部</option></select></div></div><div class="kpis"><div class="kpi"><span>购物金额（亿元）</span><strong id="sales">—</strong><small id="sales-yoy"></small></div><div class="kpi"><span>购物人次（万人次）</span><strong id="shoppers">—</strong><small id="shoppers-yoy"></small></div><div class="kpi"><span>客单价（元）</span><strong id="spend">—</strong><small id="spend-yoy"></small></div><div class="kpi"><span>购物件数（万件）</span><strong id="items">—</strong><small id="items-yoy"></small></div></div><div class="signal"><b>经营拆分</b><span id="signal"></span><em class="pill" id="driver"></em></div></div><div class="chart-grid"><div class="panel chart"><div class="chart-head"><h3>购物金额与购物人次</h3><div class="legend"><span><i class="dot" style="background:#3d708e"></i>金额</span><span><i class="dot" style="background:#b47a3d"></i>人次</span></div></div><svg id="scale-chart"></svg><div class="tooltip"></div></div><div class="panel chart"><div class="chart-head"><h3>客单价与单件均价</h3><div class="legend"><span><i class="dot" style="background:#2d7b70"></i>客单价</span><span><i class="dot" style="background:#8a6884"></i>单件均价</span></div></div><svg id="price-chart"></svg><div class="tooltip"></div></div></div></section>
-<section class="view" id="view-growth"><div class="chart-grid"><div class="panel chart wide"><div class="chart-head"><h3>购物金额、购物人次和购物件数同比（%）</h3></div><svg id="growth-chart"></svg><div class="tooltip"></div></div><div class="panel chart wide"><div class="chart-head"><h3>客单价同比（%）</h3></div><svg id="spend-chart"></svg><div class="tooltip"></div></div></div></section>
-<section class="view" id="view-holiday"><div class="holiday-grid"><div class="panel"><div class="panel-head"><div><h2>2026 年主要假期日均销售</h2><p>亿元/日，按当前可得假期排序</p></div></div><div class="holiday-bars" id="holiday-bars"></div></div><div class="panel"><div class="panel-head"><div><h2>假期同比对比</h2><p>红涨绿跌</p></div></div><table class="table"><thead><tr><th>假期</th><th class="num">2025</th><th class="num">2026</th><th class="num">同比</th></tr></thead><tbody id="holiday-table"></tbody></table></div></div></section>
-<section class="view" id="view-season"><div class="panel"><div class="panel-head"><div><h2>购物金额月度季节性</h2><p>单位：亿元；颜色深浅反映同一年内相对水平</p></div></div><div class="season"><div class="season-grid" id="season-grid"></div></div></div></section>
-<div class="fresh"><span>来源：海口海关、海南省统计局、同花顺 iFinD</span><span id="rows-note"></span></div></div><script>
-function csv(t){let a=[],r=[],v='',q=false;for(let i=0;i<t.length;i++){let c=t[i],n=t[i+1];if(q){if(c==='"'&&n==='"'){v+='"';i++}else if(c==='"')q=false;else v+=c}else if(c==='"')q=true;else if(c===','){r.push(v);v=''}else if(c==='\n'){r.push(v.replace(/\r$/,''));a.push(r);r=[];v=''}else v+=c}if(v||r.length){r.push(v);a.push(r)}let h=a.shift().map(x=>x.replace(/^\ufeff/,''));return a.filter(x=>x.some(Boolean)).map(x=>Object.fromEntries(h.map((k,i)=>[k,x[i]])))}const N=x=>{let n=Number(x);return isFinite(n)&&x!==''?n:null},F=(x,d=1)=>N(x)==null?'—':N(x).toLocaleString('zh-CN',{minimumFractionDigits:d,maximumFractionDigits:d}),C=v=>v>0?'up':v<0?'down':'',P=(v,d=1)=>N(v)==null?'—':`${v>0?'+':''}${F(v,d)}%`,W=v=>`<span class="${C(v)}">${P(v)}</span>`;let D={};Promise.all([['m','data/dutyfree_monthly.csv'],['h','data/dutyfree_holiday.csv']].map(([k,u])=>fetch(u).then(r=>r.text()).then(t=>D[k]=csv(t)))).then(init).catch(()=>document.body.innerHTML='<div class="empty">免税数据读取失败，请刷新重试</div>');
-function draw(svg,rows,series,zero=false){let w=620,h=220,l=38,r=12,t=17,b=25,all=series.flatMap(s=>rows.map(s.get)).filter(Number.isFinite);if(!all.length)return;let mi=Math.min(...all),ma=Math.max(...all),pad=(ma-mi)*.12||1;mi-=pad;ma+=pad;if(zero){mi=Math.min(mi,0);ma=Math.max(ma,0)}let x=i=>l+i/Math.max(1,rows.length-1)*(w-l-r),y=v=>t+(ma-v)/(ma-mi)*(h-t-b),html='';for(let j=0;j<4;j++){let v=ma-j*(ma-mi)/3,yy=y(v);html+=`<line class="gridline" x1="${l}" y1="${yy}" x2="${w-r}" y2="${yy}"/><text class="axis" x="${l-5}" y="${yy+3}" text-anchor="end">${F(v,0)}</text>`}if(mi<0&&ma>0)html+=`<line x1="${l}" y1="${y(0)}" x2="${w-r}" y2="${y(0)}" stroke="#aeb8c2"/>`;[0,Math.floor((rows.length-1)/2),rows.length-1].forEach(i=>html+=`<text class="axis" x="${x(i)}" y="${h-6}" text-anchor="middle">${rows[i].period_id}</text>`);series.forEach(s=>{let pts=rows.map((z,i)=>({v:s.get(z),i})).filter(o=>Number.isFinite(o.v));html+=`<path class="line" d="${pts.map((o,j)=>(j?'L':'M')+x(o.i)+' '+y(o.v)).join(' ')}" stroke="${s.color}"/>`});html+=`<rect class="hit" x="${l}" y="${t}" width="${w-l-r}" height="${h-t-b}" fill="transparent"/>`;svg.setAttribute('viewBox',`0 0 ${w} ${h}`);svg.innerHTML=html;let hit=svg.querySelector('.hit'),tip=svg.parentElement.querySelector('.tooltip');hit.onmousemove=e=>{let box=svg.getBoundingClientRect(),px=(e.clientX-box.left)/box.width*w,i=Math.max(0,Math.min(rows.length-1,Math.round((px-l)/(w-l-r)*(rows.length-1)))),row=rows[i];tip.innerHTML=`<b>${row.period_id}</b><br>${series.map(s=>`${s.name}：${F(s.get(row),1)}${s.unit||''}`).join('<br>')}`;tip.style.display='block';tip.style.left=Math.min(e.offsetX+12,svg.clientWidth-130)+'px';tip.style.top=Math.max(8,e.offsetY-15)+'px'};hit.onmouseleave=()=>tip.style.display='none'}
-function monthly(){let z=D.m.at(-1),rows=D.m.slice(-+range.value);asof.textContent='月度数据截至 '+z.period_id;period.textContent=z.period_id+' · 官方月度数据';sales.textContent=F(z.shopping_sales_cny_100m,2);shoppers.textContent=F(z.shoppers_10k,2);spend.textContent=F(z.spend_per_shopper_cny,0);items.textContent=F(z.items_10k,1);document.getElementById('sales-yoy').innerHTML='同比 '+W(N(z.sales_yoy_pct));document.getElementById('shoppers-yoy').innerHTML='同比 '+W(N(z.shoppers_yoy_pct));document.getElementById('spend-yoy').innerHTML='同比 '+W(N(z.spend_per_shopper_yoy_pct));document.getElementById('items-yoy').innerHTML='同比 '+W(N(z.items_yoy_pct));let qty=N(z.shoppers_yoy_pct),price=N(z.spend_per_shopper_yoy_pct),d=Math.abs(qty)>Math.abs(price)?'人次':'客单价';signal.innerHTML=`购物金额同比 ${W(N(z.sales_yoy_pct))}，购物人次同比 ${W(qty)}，客单价同比 ${W(price)}；购物件数同比 ${W(N(z.items_yoy_pct))}。`;driver.textContent=d+'贡献更高';draw(document.getElementById('scale-chart'),rows,[{name:'金额',get:x=>N(x.shopping_sales_cny_100m),color:'#3d708e',unit:'亿元'},{name:'人次',get:x=>N(x.shoppers_10k),color:'#b47a3d',unit:'万人次'}]);draw(document.getElementById('price-chart'),rows,[{name:'客单价',get:x=>N(x.spend_per_shopper_cny),color:'#2d7b70',unit:'元'},{name:'单件均价',get:x=>N(x.unit_price_cny),color:'#8a6884',unit:'元'}]);draw(document.getElementById('growth-chart'),rows,[{name:'金额同比',get:x=>N(x.sales_yoy_pct),color:'#3d708e',unit:'%'},{name:'人次同比',get:x=>N(x.shoppers_yoy_pct),color:'#b47a3d',unit:'%'},{name:'件数同比',get:x=>N(x.items_yoy_pct),color:'#2d7b70',unit:'%'}],true);draw(document.getElementById('spend-chart'),rows,[{name:'客单价同比',get:x=>N(x.spend_per_shopper_yoy_pct),color:'#8a6884',unit:'%'}],true)}
-function holidays(){let y=Math.max(...D.h.map(x=>+x.year)),a=D.h.filter(x=>+x.year===y),max=Math.max(...a.map(x=>N(x.daily_sales_cny_100m)));document.getElementById('holiday-bars').innerHTML=a.slice().sort((x,z)=>N(z.daily_sales_cny_100m)-N(x.daily_sales_cny_100m)).map(x=>`<div class="hrow"><span>${x.holiday}</span><div class="bar"><i style="width:${N(x.daily_sales_cny_100m)/max*100}%"></i></div><b>${F(x.daily_sales_cny_100m,2)}</b><span class="${C(N(x.yoy_pct))}">${P(N(x.yoy_pct))}</span></div>`).join('');let names=[...new Set(D.h.map(x=>x.holiday))];document.getElementById('holiday-table').innerHTML=names.map(n=>{let a=D.h.find(x=>+x.year===2025&&x.holiday===n),b=D.h.find(x=>+x.year===2026&&x.holiday===n);return `<tr><td>${n}</td><td class="num">${a?F(a.daily_sales_cny_100m,2):'—'}</td><td class="num">${b?F(b.daily_sales_cny_100m,2):'—'}</td><td class="num ${C(b&&N(b.yoy_pct))}">${b?P(N(b.yoy_pct)):'—'}</td></tr>`}).join('')}
-function season(){let years=[...new Set(D.m.map(x=>+x.year))].filter(y=>y>=2021),html='<div></div>'+Array.from({length:12},(_,i)=>`<div class="season-cell season-head">${i+1}月</div>`).join('');years.forEach(y=>{let a=D.m.filter(x=>+x.year===y),max=Math.max(...a.map(x=>N(x.shopping_sales_cny_100m)||0));html+=`<div class="season-cell season-year">${y}</div>`+Array.from({length:12},(_,i)=>{let z=a.find(x=>+x.month===i+1),v=z&&N(z.shopping_sales_cny_100m),o=v==null?0:.12+.58*v/max;return `<div class="season-cell" style="background:rgba(61,112,142,${o})"><b>${v==null?'—':F(v,1)}</b></div>`}).join('')});document.getElementById('season-grid').innerHTML=html}
-function init(){monthly();holidays();season();document.getElementById('rows-note').textContent=`月度 ${D.m.length} 条 · 假期 ${D.h.length} 条`;document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab,.view').forEach(x=>x.classList.remove('on'));b.classList.add('on');document.getElementById('view-'+b.dataset.view).classList.add('on')});range.onchange=monthly}
-</script></body></html>
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>免税行业数据库 · 国金商社</title><style>
+:root{--bg:#f4f6f8;--card:#fff;--ink:#172536;--mut:#748194;--line:#e1e6eb;--navy:#18374f;--blue:#3d708e;--teal:#2d7b70;--amber:#b47a3d;--red:#bd4a4c;--green:#278069;--font:"PingFang SC","Noto Sans SC","Microsoft YaHei UI",sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px var(--font);font-feature-settings:"tnum" 1}
+.wrap{max-width:1240px;margin:auto;padding:22px 20px 50px}
+.hero{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:14px}
+.eyebrow{font-size:9px;color:var(--blue);font-weight:700;letter-spacing:.16em}
+.hero h1{margin:5px 0 3px;font-size:24px;letter-spacing:-.03em}
+.hero p,.asof{margin:0;color:var(--mut);font-size:11px}
+.crumbs{font-size:10px;color:var(--mut);margin-bottom:10px}.crumbs a{color:var(--blue);text-decoration:none}
+.tabs{display:flex;gap:3px;padding:4px;background:#e8edf1;border-radius:8px;margin-bottom:14px;overflow:auto}
+.tab{border:0;background:transparent;padding:8px 13px;border-radius:6px;color:#596a7c;font:11px var(--font);cursor:pointer;white-space:nowrap}
+.tab.on{background:#fff;color:var(--navy);font-weight:600;box-shadow:0 1px 4px #16304714}
+.view{display:none}.view.on{display:block}
+.panel{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:12px;box-shadow:0 8px 24px -25px #17344b}
+.panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid #e9edf1;flex-wrap:wrap}
+.panel-head h2{font-size:14px;margin:0}.panel-head p{font-size:10px;color:var(--mut);margin:3px 0 0}
+.controls select{border:1px solid #d5dde5;background:#fff;border-radius:6px;padding:6px 9px;color:#46576a;font:11px var(--font)}
+.kpis{display:grid;grid-template-columns:repeat(5,1fr)}
+.kpi{padding:13px 15px;border-right:1px solid #eef1f4;border-bottom:1px solid #eef1f4;cursor:help}
+.kpi:nth-child(5n){border-right:0}
+.kpi span{font-size:10px;color:var(--mut);display:block}
+.kpi strong{display:block;font-size:20px;margin:3px 0 4px;font-weight:600}
+.kpi strong em{font-style:normal;font-size:11px;color:var(--mut);font-weight:400}
+.kpi small{font-size:9px}
+.kpi .src{color:var(--blue)}
+.up{color:var(--red)!important}.down{color:var(--green)!important}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.chart{padding:6px 8px 10px}
+.chart-head{display:flex;justify-content:space-between;align-items:center;padding:8px 12px 2px}
+.chart-head h3{font-size:12px;margin:0;font-weight:600}
+.legend{display:flex;gap:11px;font-size:10px;color:var(--mut)}
+.legend i.dot{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:4px}
+svg{width:100%;height:auto;display:block}
+.line{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.bar{fill:#3d708e}
+.gridline{stroke:#edf1f4;stroke-width:1}
+.axis{font-size:8px;fill:#8b98a5}
+.tooltip{position:absolute;display:none;background:#fff;border:1px solid var(--line);border-radius:7px;padding:8px 10px;font-size:10px;box-shadow:0 8px 22px -14px rgba(23,52,75,.4);pointer-events:none;z-index:9;line-height:1.7}
+.panel.chart{position:relative}
+.table{width:100%;border-collapse:collapse;font-size:11px}
+.table th{background:var(--navy);color:#fff;text-align:left;padding:8px 11px;font-weight:600;font-size:10px;position:sticky;top:0;cursor:pointer;white-space:nowrap}
+.table th .arr{color:#9db6c6;font-size:8px}
+.table td{padding:7px 11px;border-bottom:1px solid #eef1f4;color:#33424f;white-space:nowrap}
+.table tr:hover td{background:#f7fafc}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+.tablewrap{overflow:auto;max-height:440px}
+.tag{display:inline-block;font-size:8px;padding:1px 6px;border-radius:4px;background:#eef3f6;color:var(--blue);margin-left:4px}
+.tag.est{background:#fbF3ea;color:var(--amber)}
+.pill{font-style:normal;font-size:9px;background:#eaf6f2;color:var(--teal);padding:3px 9px;border-radius:20px;font-weight:600}
+.fresh{display:flex;justify-content:space-between;gap:12px;font-size:9px;color:var(--mut);padding:11px 5px;flex-wrap:wrap}
+.srcbtn{border:1px solid var(--line);background:#f6f9fb;color:var(--blue);border-radius:5px;font-size:9px;padding:2px 8px;cursor:pointer}
+.srcbtn:hover{background:#eaf1f6}
+.tl{position:relative;padding:6px 0 6px 18px;border-left:2px solid #dbe6ee}
+.tl-item{position:relative;padding:10px 0 14px}
+.tl-item::before{content:'';position:absolute;left:-22px;top:15px;width:8px;height:8px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 3px #eaf1f6}
+.tl-date{font-size:9px;color:var(--blue);font-weight:700;letter-spacing:.05em}
+.tl-title{font-size:13px;font-weight:600;margin:3px 0}
+.tl-body{font-size:11px;color:#46576a;line-height:1.7}
+.tl-impact{font-size:10px;color:var(--teal);margin-top:4px}
+.tl .srcbtn{margin-top:4px}
+.card{background:#f8fafb;border:1px solid #edf1f4;border-radius:8px;padding:12px 14px}
+.card h4{font-size:12px;margin:0 0 8px}
+.donut-wrap{display:flex;gap:18px;align-items:center;flex-wrap:wrap;padding:10px 16px}
+.donut-legend{font-size:11px;line-height:2}
+.donut-legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px}
+.signal{display:grid;grid-template-columns:96px 1fr auto;gap:12px;padding:11px 16px;background:#f8fafb;border-top:1px solid #edf0f3;font-size:11px;align-items:center}
+.signal b{font-size:10px;color:var(--mut)}
+.srchost{position:relative}
+.srcmodal{position:fixed;inset:0;background:rgba(20,35,50,.4);display:none;align-items:center;justify-content:center;z-index:99}
+.srcmodal.on{display:flex}
+.srcbox{background:#fff;border-radius:10px;padding:20px 22px;max-width:420px;width:90%;font-size:11px;line-height:1.8}
+.srcbox h3{margin:0 0 10px;font-size:14px}
+.srcbox .row{display:grid;grid-template-columns:80px 1fr;gap:8px;padding:3px 0;border-bottom:1px dashed #edf1f4}
+.srcbox .closebtn{margin-top:12px;text-align:right}
+.empty{padding:40px;text-align:center;color:var(--mut);font-size:12px}
+.muted{color:var(--mut);font-size:10px}
+@media(max-width:960px){.kpis{grid-template-columns:repeat(3,1fr)}.kpi:nth-child(5n){border-right:1px solid #eef1f4}.grid2,.grid3{grid-template-columns:1fr}}
+@media(max-width:640px){.wrap{padding:14px 10px}.hero{flex-direction:column;align-items:flex-start}.kpis{grid-template-columns:repeat(2,1fr)}.kpi{border-right:0}.signal{grid-template-columns:1fr}.hero h1{font-size:20px}}
+</style></head><body><div class="wrap">
+<div class="crumbs"><a href="index.html">国金商社数据库</a> / 免税板块</div>
+<header class="hero"><div><div class="eyebrow">GUOJIN · DUTY FREE RESEARCH DATABASE</div><h1>免税行业数据库</h1><p>行业总览 · 海南离岛 · 中国中免 · 政策 · 渠道 · 品类 · 同业</p></div><div class="asof" id="asof">读取数据中…</div></header>
+<nav class="tabs" id="tabs">
+<button class="tab on" data-view="overview">行业总览</button>
+<button class="tab" data-view="hainan">海南离岛免税</button>
+<button class="tab" data-view="ctg">中国中免</button>
+<button class="tab" data-view="airport">机场免税</button>
+<button class="tab" data-view="city">市内免税</button>
+<button class="tab" data-view="policy">免税政策</button>
+<button class="tab" data-view="category">品类结构</button>
+<button class="tab" data-view="members">会员体系</button>
+<button class="tab" data-view="channel">渠道</button>
+<button class="tab" data-view="companies">同业对比</button>
+<button class="tab" data-view="events">行业事件</button>
+<button class="tab" data-view="datacenter">数据中心</button>
+</nav>
 
+<!-- 行业总览 -->
+<section class="view on" id="view-overview">
+<div class="panel"><div class="panel-head"><div><h2>免税行业核心指标 Dashboard</h2><p>当前值 / 同比 / 数据截止日期 · 悬浮查看来源 · 点击跳转对应模块</p></div></div>
+<div class="kpis" id="kpi-grid"></div></div>
+<div class="grid2">
+<div class="panel chart"><div class="chart-head"><h3>离岛免税销售额月度趋势（亿元）</h3><div class="legend"><span><i class="dot" style="background:#3d708e"></i>销售额</span></div></div><svg id="ov-sales"></svg><div class="tooltip"></div></div>
+<div class="panel chart"><div class="chart-head"><h3>中国中免收入与归母净利润</h3><div class="legend"><span><i class="dot" style="background:#3d708e"></i>收入</span><span><i class="dot" style="background:#b47a3d"></i>归母净利</span></div></div><div class="donut-wrap" id="ctg-bars" style="flex-direction:column;align-items:stretch"></div></div>
+</div>
+</section>
+
+<!-- 海南离岛免税 -->
+<section class="view" id="view-hainan">
+<div class="panel"><div class="panel-head"><div><h2>海南离岛免税经营</h2><p id="hn-period"></p></div><div class="controls"><select id="hn-range"><option value="12">近12个月</option><option value="24" selected>近24个月</option><option value="2024">2024</option><option value="2025">2025</option><option value="2026">2026</option><option value="9999">全部</option></select></div></div>
+<div class="kpis" style="grid-template-columns:repeat(4,1fr)"><div class="kpi"><span>购物金额（亿元）</span><strong id="hn-sales">—</strong><small id="hn-sales-yoy"></small></div><div class="kpi"><span>购物人数（万人次）</span><strong id="hn-shoppers">—</strong><small id="hn-shoppers-yoy"></small></div><div class="kpi"><span>购物件数（万件）</span><strong id="hn-items">—</strong><small id="hn-items-yoy"></small></div><div class="kpi"><span>客单价（元）</span><strong id="hn-spend">—</strong><small id="hn-spend-yoy"></small></div></div>
+<div class="signal"><b>经营拆分</b><span id="hn-signal"></span><em class="pill" id="hn-driver"></em></div></div>
+<div class="grid2">
+<div class="panel chart"><div class="chart-head"><h3>销售额与购物人数</h3><div class="legend"><span><i class="dot" style="background:#3d708e"></i>金额</span><span><i class="dot" style="background:#b47a3d"></i>人数</span></div></div><svg id="hn-scale"></svg><div class="tooltip"></div></div>
+<div class="panel chart"><div class="chart-head"><h3>客单价与单件均价</h3><div class="legend"><span><i class="dot" style="background:#2d7b70"></i>客单价</span><span><i class="dot" style="background:#8a6884"></i>单件均价</span></div></div><svg id="hn-price"></svg><div class="tooltip"></div></div>
+</div>
+<div class="panel chart"><div class="chart-head"><h3>购物金额 / 人数 / 件数同比（%）</h3></div><svg id="hn-growth"></svg><div class="tooltip"></div></div>
+<div class="panel"><div class="panel-head"><div><h2>原始历史数据表</h2><p>点击表头排序 · 显示时间区间内全部月度数据</p></div></div><div class="tablewrap"><table class="table" id="hn-table"></table></div></div>
+</section>
+
+<!-- 中国中免 -->
+<section class="view" id="view-ctg">
+<div class="panel"><div class="panel-head"><div><h2>中国中免 · 财务表现</h2><p id="ctg-note"></p></div><div class="controls"><select id="ctg-type"><option value="all">全部</option><option value="year">年度</option><option value="half">半年度</option><option value="quarter">单季度</option></select></div></div>
+<div class="tablewrap"><table class="table" id="ctg-table"></table></div></div>
+<div class="grid2">
+<div class="panel chart"><div class="chart-head"><h3>收入与归母净利润同比（%）</h3><div class="legend"><span><i class="dot" style="background:#3d708e"></i>收入同比</span><span><i class="dot" style="background:#b47a3d"></i>净利同比</span></div></div><svg id="ctg-yoy"></svg><div class="tooltip"></div></div>
+<div class="panel chart"><div class="chart-head"><h3>毛利率（%）</h3><div class="legend"><span><i class="dot" style="background:#2d7b70"></i>毛利率</span></div></div><svg id="ctg-gpm"></svg><div class="tooltip"></div></div>
+</div>
+<div class="panel"><div class="panel-head"><div><h2>海南业务</h2><p>海南地区收入 / 同比 / 毛利率 / 占比</p></div></div>
+<div class="tablewrap"><table class="table" id="ctg-hn-table"></table></div></div>
+</section>
+
+<!-- 机场免税 -->
+<section class="view" id="view-airport">
+<div class="panel"><div class="panel-head"><div><h2>机场免税数据库</h2><p>扣点率 / 租金模式 / 国际客流 / 销售额 / 客单价 · 字段预留待补</p></div></div>
+<div class="tablewrap"><table class="table" id="airport-table"></table></div>
+<div class="fresh"><span>来源：机场公告、航班管家DAST、国金证券整理</span><span class="muted">空白字段表示暂无可靠数据</span></div></div>
+</section>
+
+<!-- 市内免税 -->
+<section class="view" id="view-city">
+<div class="panel"><div class="panel-head"><div><h2>市内免税数据库</h2><p>城市 / 门店 / 运营商 / 提货模式 / 政策依据 · 字段预留待补</p></div></div>
+<div class="tablewrap"><table class="table" id="city-table"></table></div>
+<div class="fresh"><span>来源：财政部、公司公告、国金证券整理</span><span class="muted">空白字段表示暂无可靠数据</span></div></div>
+</section>
+
+<!-- 免税政策 -->
+<section class="view" id="view-policy">
+<div class="panel"><div class="panel-head"><div><h2>免税政策时间轴</h2><p>海南离岛 / 市内 / 进境 / 额度 / 品类 / 提货方式</p></div></div>
+<div style="padding:16px"><div class="tl" id="policy-tl"></div></div></div>
+</section>
+
+<!-- 品类结构 -->
+<section class="view" id="view-category">
+<div class="grid2">
+<div class="panel"><div class="panel-head"><div><h2>品类结构（环形）</h2><p>区间取中值绘制，估算标注『约』</p></div></div><div class="donut-wrap"><svg id="cat-donut" viewBox="0 0 200 200" style="width:220px"></svg><div class="donut-legend" id="cat-legend"></div></div></div>
+<div class="panel"><div class="panel-head"><div><h2>品类结构（条形）</h2><p>占比 %</p></div></div><div style="padding:14px" id="cat-bars"></div></div>
+</div>
+<div class="panel"><div class="panel-head"><div><h2>品类结构数据表</h2><p>区间与估算标识</p></div></div><div class="tablewrap"><table class="table" id="cat-table"></table></div></div>
+</section>
+
+<!-- 会员体系 -->
+<section class="view" id="view-members">
+<div class="panel"><div class="panel-head"><div><h2>中国中免会员体系</h2><p id="mb-period"></p></div></div>
+<div class="kpis" style="grid-template-columns:repeat(3,1fr)" id="mb-kpis"></div></div>
+<div class="grid3">
+<div class="panel"><div class="panel-head"><div><h2>复购贡献</h2></div></div><div class="card" id="mb-repo" style="margin:12px"></div></div>
+<div class="panel"><div class="panel-head"><div><h2>年龄结构</h2></div></div><div class="card" id="mb-age" style="margin:12px"></div></div>
+<div class="panel"><div class="panel-head"><div><h2>城市层级</h2></div></div><div class="card" id="mb-city" style="margin:12px"></div></div>
+</div>
+<div class="panel"><div class="panel-head"><div><h2>会员规模趋势</h2><p>历史数据待补充，当前展示最新时点</p></div></div><div class="panel chart"><svg id="mb-trend"></svg><div class="tooltip"></div></div></div>
+</section>
+
+<!-- 渠道 -->
+<section class="view" id="view-channel">
+<div class="grid3" id="channel-cards"></div>
+<div class="panel"><div class="panel-head"><div><h2>渠道重大变化时间轴</h2></div></div><div style="padding:16px"><div class="tl" id="channel-tl"></div></div></div>
+</section>
+
+<!-- 同业对比 -->
+<section class="view" id="view-companies">
+<div class="panel"><div class="panel-head"><div><h2>免税公司同业对比</h2><p>多币种：originalValue/rmbValue 分列 · 点击表头排序</p></div></div>
+<div class="tablewrap"><table class="table" id="co-table"></table></div>
+<div class="fresh"><span>来源：公司公告、公司财报、国金证券整理</span><span class="muted">空白字段表示暂无可靠数据</span></div></div>
+</section>
+
+<!-- 行业事件 -->
+<section class="view" id="view-events">
+<div class="panel"><div class="panel-head"><div><h2>免税行业重大事件</h2><p>并购 / 机场合同 / 政策变更 / 渠道变化</p></div></div>
+<div style="padding:16px"><div class="tl" id="events-tl"></div></div></div>
+</section>
+
+<!-- 数据中心 -->
+<section class="view" id="view-datacenter">
+<div class="panel"><div class="panel-head"><div><h2>数据来源系统</h2><p>每条核心数据可追溯来源</p></div></div>
+<div class="tablewrap"><table class="table" id="src-table"></table></div></div>
+<div class="panel"><div class="panel-head"><div><h2>数据文件</h2><p>本页全部数据来自以下文件，修改即可更新页面</p></div></div>
+<div class="tablewrap"><table class="table" id="files-table"></table></div></div>
+</section>
+
+<div class="fresh"><span>来源：海口海关、海南省统计局、公司公告/财报、财政部、同花顺iFinD、国金证券整理</span><span id="rows-note"></span></div>
+</div>
+
+<!-- 来源弹窗 -->
+<div class="srcmodal" id="srcmodal"><div class="srcbox" id="srcbox"></div></div>
+
+<script>
+/* ---------- 工具 ---------- */
+function csv(t){let a=[],r=[],v='',q=false;for(let i=0;i<t.length;i++){let c=t[i],n=t[i+1];if(q){if(c==='"'&&n==='"'){v+='"';i++}else if(c==='"')q=false;else v+=c}else if(c==='"')q=true;else if(c===','){r.push(v);v=''}else if(c==='\n'){r.push(v.replace(/\r$/,''));a.push(r);r=[];v=''}else v+=c}if(v||r.length){r.push(v);a.push(r)}let h=a.shift().map(x=>x.replace(/^\ufeff/,''));return a.filter(x=>x.some(Boolean)).map(x=>Object.fromEntries(h.map((k,i)=>[k,x[i]])))}
+const N=x=>{let n=Number(x);return isFinite(n)&&x!==''&&x!=null?n:null},F=(x,d=1)=>N(x)==null?'—':N(x).toLocaleString('zh-CN',{minimumFractionDigits:d,maximumFractionDigits:d});
+const C=v=>v>0?'up':v<0?'down':'',P=(v,d=1)=>N(v)==null?'—':`${v>0?'+':''}${F(v,d)}%`,Pf=(v,d=1,ty)=>N(v)==null?'—':(ty==='pct'?`${v>0?'+':''}${F(v,d)}pct`:P(v,d));
+const W=(v,d=1,ty)=>`<span class="${C(v)}">${Pf(v,d,ty)}</span>`,Dash=v=>v==null||v===''||v==='—'?'—':v;
+let DB={},SRC={};
+const jf=u=>fetch(u,{cache:'no-store'}).then(r=>r.json());
+Promise.all([
+ ['ov','data/dutyfree/overview.json'],['ctg','data/dutyfree/ctg_dutyfree.json'],['airport','data/dutyfree/airport.json'],
+ ['city','data/dutyfree/city_dutyfree.json'],['policy','data/dutyfree/policy.json'],['members','data/dutyfree/members.json'],
+ ['cat','data/dutyfree/category.json'],['channel','data/dutyfree/channel.json'],['companies','data/dutyfree/companies.json'],
+ ['events','data/dutyfree/events.json'],['sources','data/dutyfree/sources.json'],['manifest','data/dutyfree/manifest.json']
+].map(([k,u])=>jf(u).then(d=>DB[k]=d)).concat([
+ fetch('data/dutyfree_monthly.csv').then(r=>r.text()).then(t=>DB.m=csv(t)),
+ fetch('data/dutyfree_holiday.csv').then(r=>r.text()).then(t=>DB.h=csv(t))
+])).then(()=>{SRC=DB.sources.sources||{};init()}).catch(e=>{document.getElementById('asof').textContent='数据读取失败';console.log(e)});
+
+function showSrc(key){let s=SRC[key];let b=document.getElementById('srcbox');
+ if(!s){b.innerHTML='<h3>数据来源</h3><div class="muted">暂无来源信息</div><div class="closebtn"><button class="srcbtn" onclick="document.getElementById(\'srcmodal\').classList.remove(\'on\')">关闭</button></div>';}
+ else{b.innerHTML=`<h3>数据来源</h3>
+ <div class="row"><b>来源名称</b><span>${Dash(s.sourceName)}</span></div>
+ <div class="row"><b>来源类型</b><span>${Dash(s.sourceType)}</span></div>
+ <div class="row"><b>报告日期</b><span>${Dash(s.reportDate)}</span></div>
+ <div class="row"><b>页码</b><span>${Dash(s.page)}</span></div>
+ <div class="row"><b>链接</b><span>${s.url?`<a href="${s.url}" target="_blank" style="color:var(--blue)">原文链接</a>`:'—'}</span></div>
+ <div class="row"><b>备注</b><span>${Dash(s.note)}</span></div>
+ <div class="closebtn"><button class="srcbtn" onclick="document.getElementById('srcmodal').classList.remove('on')">关闭</button></div>`;}
+ document.getElementById('srcmodal').classList.add('on')}
+document.getElementById('srcmodal').addEventListener('click',e=>{if(e.target.id==='srcmodal')e.target.classList.remove('on')});
+
+/* ---------- SVG 绘图 ---------- */
+function draw(svg,rows,series,zero=false){if(!svg||!rows||!rows.length){if(svg){svg.setAttribute('viewBox','0 0 620 210');svg.innerHTML='<text x="310" y="110" text-anchor="middle" class="axis">暂无数据</text>'}return}
+try{let w=620,h=210,l=38,r=12,t=16,b=24,all=series.flatMap(s=>rows.map(s.get)).filter(Number.isFinite);if(!all.length){svg.innerHTML='<text x="310" y="110" text-anchor="middle" class="axis">暂无数据</text>';return}
+let mi=Math.min(...all),ma=Math.max(...all),pad=(ma-mi)*.12||1;mi-=pad;ma+=pad;if(zero){mi=Math.min(mi,0);ma=Math.max(ma,0)}
+let x=i=>l+i/Math.max(1,rows.length-1)*(w-l-r),y=v=>t+(ma-v)/(ma-mi)*(h-t-b),html='';
+for(let j=0;j<4;j++){let v=ma-j*(ma-mi)/3,yy=y(v);html+=`<line class="gridline" x1="${l}" y1="${yy}" x2="${w-r}" y2="${yy}"/><text class="axis" x="${l-5}" y="${yy+3}" text-anchor="end">${F(v,0)}</text>`}
+if(mi<0&&ma>0)html+=`<line x1="${l}" y1="${y(0)}" x2="${w-r}" y2="${y(0)}" stroke="#aeb8c2"/>`;
+let lbl=[0,Math.floor((rows.length-1)/2),rows.length-1].filter((q,i,a)=>a.indexOf(q)===i);
+lbl.forEach(i=>{if(rows[i])html+=`<text class="axis" x="${x(i)}" y="${h-6}" text-anchor="middle">${rows[i].period_id||rows[i].period||''}</text>`});
+series.forEach(s=>{let pts=rows.map((z,i)=>({v:s.get(z),i})).filter(o=>Number.isFinite(o.v));html+=`<path class="line" d="${pts.map((o,j)=>(j?'L':'M')+x(o.i)+' '+y(o.v)).join(' ')}" stroke="${s.color}"/>`});
+html+=`<rect class="hit" x="${l}" y="${t}" width="${w-l-r}" height="${h-t-b}" fill="transparent"/>`;
+svg.setAttribute('viewBox',`0 0 ${w} ${h}`);svg.innerHTML=html;
+let hit=svg.querySelector('.hit'),tip=svg.parentElement.querySelector('.tooltip');
+if(hit&&tip){hit.onmousemove=e=>{let box=svg.getBoundingClientRect(),px=(e.clientX-box.left)/box.width*w,i=Math.max(0,Math.min(rows.length-1,Math.round((px-l)/(w-l-r)*(rows.length-1)))),row=rows[i];tip.innerHTML=`<b>${row.period_id||row.period}</b><br>${series.map(s=>`${s.name}：${F(s.get(row),1)}${s.unit||''}`).join('<br>')}`;tip.style.display='block';tip.style.left=Math.min(e.offsetX+12,svg.clientWidth-140)+'px';tip.style.top=Math.max(8,e.offsetY-15)+'px'};hit.onmouseleave=()=>tip.style.display='none'}}catch(e){console.log('draw err',e)}}
+function drawBar(svg,rows,series){if(!svg||!rows||!rows.length){if(svg){svg.setAttribute('viewBox','0 0 620 210');svg.innerHTML='<text x="310" y="110" text-anchor="middle" class="axis">暂无数据</text>'}return}try{let w=620,h=210,l=38,r=12,t=16,b=24,all=series.flatMap(s=>rows.map(s.get)).filter(Number.isFinite);if(!all.length){svg.innerHTML='<text x="310" y="110" text-anchor="middle" class="axis">暂无数据</text>';return}
+let mi=Math.min(0,...all),ma=Math.max(0,...all),pad=(ma-mi)*.12||1;ma+=pad;mi-=pad;let x=i=>l+i/rows.length*(w-l-r),bw=(w-l-r)/rows.length*.6/series.length,y=v=>t+(ma-v)/(ma-mi)*(h-t-b),html='';
+for(let j=0;j<4;j++){let v=ma-j*(ma-mi)/3,yy=y(v);html+=`<line class="gridline" x1="${l}" y1="${yy}" x2="${w-r}" y2="${yy}"/><text class="axis" x="${l-5}" y="${yy+3}" text-anchor="end">${F(v,0)}</text>`}
+rows.forEach((row,i)=>{html+=`<text class="axis" x="${x(i)+bw*series.length/2}" y="${h-6}" text-anchor="middle">${row.period}</text>`;series.forEach((s,k)=>{let v=s.get(row);if(Number.isFinite(v)){let yy=y(Math.max(0,v)),hh=Math.abs(y(v)-y(0));html+=`<rect x="${x(i)+k*bw}" y="${yy}" width="${bw-2}" height="${hh}" fill="${s.color}" rx="1"/>`}})});
+if(mi<0)html+=`<line x1="${l}" y1="${y(0)}" x2="${w-r}" y2="${y(0)}" stroke="#aeb8c2"/>`;
+svg.setAttribute('viewBox',`0 0 ${w} ${h}`);svg.innerHTML=html}catch(e){console.log('drawBar err',e)}}
+
+/* ---------- 行业总览 ---------- */
+function renderOverview(){let g=document.getElementById('kpi-grid');
+g.innerHTML=DB.ov.kpis.map(k=>{let yoy=k.yoy==null?'<span class="muted">暂无同比</span>':`同比 ${W(k.yoy,1,k.yoyType)}`;
+let approx=k.isApprox?'<span class="tag est">约</span>':'';
+return `<div class="kpi" onclick="go('${k.target}')" title="来源：${(SRC[k.source]||{}).sourceName||'—'}" style="cursor:pointer"><span>${k.label}${approx}</span><strong>${F(k.value,k.unit==='%'?2:(k.unit==='元'?0:2))}<em> ${k.unit}</em></strong><small>${yoy} · ${k.period}</small><br><small class="src">查看来源 ›</small></div>`}).join('');
+document.getElementById('asof').textContent='数据截至 '+ (DB.ov.kpis[0]||{}).period +' · 更新 '+DB.ov.updatedAt;
+draw(document.getElementById('ov-sales'),DB.m.slice(-36),[{name:'销售额',get:x=>N(x.shopping_sales_cny_100m),color:'#3d708e',unit:'亿元'}]);
+let cb=document.getElementById('ctg-bars');let ps=DB.ctg.periods;
+cb.innerHTML=`<div style="display:grid;grid-template-columns:repeat(${ps.length},1fr);gap:14px;padding:6px 4px">`+ps.map(p=>`<div style="text-align:center"><div style="font-size:9px;color:var(--mut)">${p.period}</div>
+<div style="height:110px;display:flex;align-items:flex-end;justify-content:center;gap:12px">
+<div style="text-align:center"><div style="width:36px;background:#3d708e;border-radius:2px 2px 0 0;height:${Math.abs(p.revenue)/300*100}px"></div><div style="font-size:9px">${F(p.revenue,0)}</div></div>
+<div style="text-align:center"><div style="width:36px;background:#b47a3d;border-radius:2px 2px 0 0;height:${Math.abs(p.net_profit)/300*100}px"></div><div style="font-size:9px">${F(p.net_profit,1)}</div></div>
+</div><div style="font-size:9px;color:var(--mut)">收入 ${W(p.revenue_yoy)} | 净利 ${W(p.net_profit_yoy)}</div></div>`).join('')+'</div>'}
+function go(t){document.querySelectorAll('.tab,.view').forEach(x=>x.classList.remove('on'));let b=document.querySelector(`.tab[data-view="${t}"]`);if(b)b.classList.add('on');let v=document.getElementById('view-'+t);if(v)v.classList.add('on')}
+
+/* ---------- 海南 ---------- */
+let hnSort={key:'period_id',dir:-1};
+function renderHainan(){let rv=document.getElementById('hn-range').value,rows;
+if(['2024','2025','2026'].includes(rv))rows=DB.m.filter(x=>String(x.year)===rv);else rows=DB.m.slice(-+rv);
+if(!rows.length){rows=DB.m.slice(-24)}
+let z=DB.m.at(-1);
+document.getElementById('hn-period').textContent=z.period_id+' · 官方月度数据 · 来源：'+(DB.hainan?DB.hainan.source.name:'海口海关');
+document.getElementById('hn-sales').innerHTML=F(z.shopping_sales_cny_100m,2);document.getElementById('hn-shoppers').innerHTML=F(z.shoppers_10k,2);
+document.getElementById('hn-items').innerHTML=F(z.items_10k,1);document.getElementById('hn-spend').innerHTML=F(z.spend_per_shopper_cny,0);
+document.getElementById('hn-sales-yoy').innerHTML='同比 '+W(N(z.sales_yoy_pct));document.getElementById('hn-shoppers-yoy').innerHTML='同比 '+W(N(z.shoppers_yoy_pct));
+document.getElementById('hn-items-yoy').innerHTML='同比 '+W(N(z.items_yoy_pct));document.getElementById('hn-spend-yoy').innerHTML='同比 '+W(N(z.spend_per_shopper_yoy_pct));
+let qty=N(z.shoppers_yoy_pct),price=N(z.spend_per_shopper_yoy_pct);
+document.getElementById('hn-signal').innerHTML=`购物金额同比 ${W(N(z.sales_yoy_pct))}，购物人次同比 ${W(qty)}，客单价同比 ${W(price)}；购物件数同比 ${W(N(z.items_yoy_pct))}。`;
+document.getElementById('hn-driver').textContent=(Math.abs(qty)>Math.abs(price)?'人次':'客单价')+'贡献更高';
+draw(document.getElementById('hn-scale'),rows,[{name:'金额',get:x=>N(x.shopping_sales_cny_100m),color:'#3d708e',unit:'亿元'},{name:'人次',get:x=>N(x.shoppers_10k),color:'#b47a3d',unit:'万人次'}]);
+draw(document.getElementById('hn-price'),rows,[{name:'客单价',get:x=>N(x.spend_per_shopper_cny),color:'#2d7b70',unit:'元'},{name:'单件均价',get:x=>N(x.unit_price_cny),color:'#8a6884',unit:'元'}]);
+draw(document.getElementById('hn-growth'),rows,[{name:'金额同比',get:x=>N(x.sales_yoy_pct),color:'#3d708e',unit:'%'},{name:'人次同比',get:x=>N(x.shoppers_yoy_pct),color:'#b47a3d',unit:'%'},{name:'件数同比',get:x=>N(x.items_yoy_pct),color:'#2d7b70',unit:'%'}],true);
+renderHnTable(rows)}
+function renderHnTable(rows){let cols=[['period_id','月份'],['shopping_sales_cny_100m','销售额(亿)'],['sales_yoy_pct','金额同比%'],['shoppers_10k','人数(万)'],['shoppers_yoy_pct','人数同比%'],['items_10k','件数(万)'],['spend_per_shopper_cny','客单价(元)'],['unit_price_cny','单件均价(元)']];
+let s=rows.slice().sort((a,b)=>{let av=a[hnSort.key],bv=b[hnSort.key],r=(N(av)!=null&&N(bv)!=null)?N(av)-N(bv):String(av).localeCompare(String(bv));return hnSort.dir*r});
+document.getElementById('hn-table').innerHTML='<thead><tr>'+cols.map(([k,l])=>`<th data-k="${k}">${l}<span class="arr">${hnSort.key===k?(hnSort.dir>0?' ▲':' ▼'):''}</span></th>`).join('')+'</tr></thead><tbody>'+
+s.map(r=>'<tr>'+cols.map(([k,l])=>{let v=r[k];let disp=(k.includes('yoy'))?`<span class="${C(N(v))}">${P(N(v))}</span>`:(N(v)!=null?F(v,2):Dash(v));return `<td class="${k==='period_id'?'':'num'}">${k==='period_id'?v:disp}</td>`}).join('')+'</tr>').join('')+'</tbody>';
+document.querySelectorAll('#hn-table th').forEach(th=>th.onclick=()=>{let k=th.dataset.k;if(hnSort.key===k)hnSort.dir*=-1;else{hnSort.key=k;hnSort.dir=1}renderHnTable(rows)})}
+
+/* ---------- 中免 ---------- */
+let ctgSort={key:'period',dir:-1};
+function renderCtg(){let ty=document.getElementById('ctg-type').value;
+let ps=DB.ctg.periods.filter(p=>ty==='all'||p.type===ty);
+document.getElementById('ctg-note').textContent=DB.ctg.company+' · 单位：亿元 · 来源：公司财报';
+document.getElementById('ctg-table').innerHTML='<thead><tr><th>期间</th><th class="num">营业收入</th><th class="num">收入同比</th><th class="num">归母净利润</th><th class="num">净利同比</th><th class="num">毛利率</th><th class="num">毛利率同比</th><th class="num">净利率</th><th class="num">少数股东损益</th><th>来源</th></tr></thead><tbody>'+
+ps.map(p=>`<tr><td>${p.period}<span class="tag">${{year:'年度',half:'半年度',quarter:'单季度'}[p.type]||p.type}</span></td><td class="num">${F(p.revenue,2)}</td><td class="num ${C(p.revenue_yoy)}">${P(p.revenue_yoy)}</td><td class="num">${F(p.net_profit,2)}</td><td class="num ${C(p.net_profit_yoy)}">${P(p.net_profit_yoy)}</td><td class="num">${F(p.gross_margin,2)}%</td><td class="num ${C(p.gpm_yoy_pct)}">${p.gpm_yoy_pct==null?'—':(p.gpm_yoy_pct>0?'+':'')+F(p.gpm_yoy_pct,2)+'pct'}</td><td class="num">${p.net_margin==null?'—':F(p.net_margin,2)+'%'}</td><td class="num">${p.minority_pnl==null?'—':F(p.minority_pnl,2)}</td><td><button class="srcbtn" onclick="showSrc('${p.source}')">来源</button></td></tr>`).join('')+'</tbody>';
+let all=DB.ctg.periods;
+draw(document.getElementById('ctg-yoy'),all.map(p=>({period_id:p.period,revenue_yoy:p.revenue_yoy,net_profit_yoy:p.net_profit_yoy})),[{name:'收入同比',get:x=>N(x.revenue_yoy),color:'#3d708e',unit:'%'},{name:'净利同比',get:x=>N(x.net_profit_yoy),color:'#b47a3d',unit:'%'}],true);
+draw(document.getElementById('ctg-gpm'),all.map(p=>({period_id:p.period,gpm:p.gross_margin})),[{name:'毛利率',get:x=>N(x.gpm),color:'#2d7b70',unit:'%'}]);
+document.getElementById('ctg-hn-table').innerHTML='<thead><tr><th>期间</th><th class="num">海南收入(亿)</th><th class="num">同比</th><th class="num">海南毛利率</th><th class="num">毛利率同比</th><th class="num">占公司收入</th><th>来源</th></tr></thead><tbody>'+
+DB.ctg.hainan.map(h=>{let share=h.hainan_rev_share;let co=DB.ctg.periods.find(p=>p.period===h.period);if(share==null&&co&&co.revenue)share=h.hainan_revenue/co.revenue*100;
+return `<tr><td>${h.period}</td><td class="num">${F(h.hainan_revenue,2)}</td><td class="num ${C(h.hainan_revenue_yoy)}">${P(h.hainan_revenue_yoy)}</td><td class="num">${F(h.hainan_gross_margin,2)}%</td><td class="num ${C(h.hainan_gpm_yoy_pct)}">${h.hainan_gpm_yoy_pct==null?'—':(h.hainan_gpm_yoy_pct>0?'+':'')+F(h.hainan_gpm_yoy_pct,2)+'pct'}</td><td class="num">${share==null?'—':F(share,1)+'%'}</td><td><button class="srcbtn" onclick="showSrc('${h.source}')">来源</button></td></tr>`}).join('')+'</tbody>'}
+
+/* ---------- 机场/市内 ---------- */
+function renderAirport(){let cols=[['airport','机场'],['operator','运营商'],['contractPeriod','合同期限'],['debitRate','扣点率%'],['rentModel','租金模式'],['intlPax','国际旅客(万)'],['intlPaxYoy','客流同比%'],['sales','销售额(亿)'],['spendPerPax','客单价'],['commercialArea','商业面积'],['contractEvent','合同事件']];
+document.getElementById('airport-table').innerHTML='<thead><tr>'+cols.map(c=>`<th>${c[1]}</th>`).join('')+'</tr></thead><tbody>'+
+DB.airport.airports.map(a=>'<tr>'+cols.map(c=>`<td class="${c[0]==='airport'?'':'num'}">${Dash(a[c[0]])}</td>`).join('')+'</tr>').join('')+'</tbody>'}
+function renderCity(){let cols=[['city','城市'],['store','门店'],['operator','运营商'],['openDate','开业时间'],['area','面积'],['pickupMode','提货模式'],['targetCustomer','面向人群'],['categories','品类'],['policyBasis','政策依据'],['status','当前状态']];
+document.getElementById('city-table').innerHTML='<thead><tr>'+cols.map(c=>`<th>${c[1]}</th>`).join('')+'</tr></thead><tbody>'+
+DB.city.stores.map(a=>'<tr>'+cols.map(c=>`<td>${Dash(a[c[0]])}</td>`).join('')+'</tr>').join('')+'</tbody>'}
+
+/* ---------- 政策 ---------- */
+function renderPolicy(){document.getElementById('policy-tl').innerHTML=DB.policy.policies.slice().sort((a,b)=>b.date.localeCompare(a.date)).map(p=>`<div class="tl-item"><div class="tl-date">【${p.date}】 <span class="tag">${p.policyType}</span></div><div class="tl-title">【${p.title}】</div><div class="tl-body">【核心内容】${p.summary}${p.detail?' '+p.detail:''}</div><div class="tl-impact">【影响判断】${Dash(p.impact)}</div>${p.officialLink?`<div><a class="srcbtn" href="${p.officialLink}" target="_blank">原文链接</a></div>`:''}<button class="srcbtn" onclick="showSrc('${p.source}')">来源</button></div>`).join('')}
+
+/* ---------- 品类 ---------- */
+const CATCOL=['#3d708e','#b47a3d','#2d7b70','#8a6884','#bd4a4c','#748194'];
+function catDisp(c){let est=c.isEstimate?'<span class="tag est">约</span>':'';let v;
+if(c.valueMin!=null&&c.valueMax!=null)v=`${c.valueMin}%–${c.valueMax}%`;else if(c.value!=null)v=`${c.value}%`;else v='—';return v+est}
+function catMid(c){if(c.value!=null)return c.value;if(c.valueMin!=null&&c.valueMax!=null)return(c.valueMin+c.valueMax)/2;return 0}
+function renderCategory(){let cats=DB.cat.categories,tot=cats.reduce((s,c)=>s+catMid(c),0),cx=100,cy=100,r=80,ir=48,a0=-90;
+let paths=cats.map((c,i)=>{let v=catMid(c),a1=a0+v/tot*360,l=a1-a0>180?1:0,a0r=a0*Math.PI/180,a1r=a1*Math.PI/180;
+let p=`M${cx+r*Math.cos(a0r)} ${cy+r*Math.sin(a0r)}A${r} ${r} 0 ${l} 1 ${cx+r*Math.cos(a1r)} ${cy+r*Math.sin(a1r)}L${cx+ir*Math.cos(a1r)} ${cy+ir*Math.sin(a1r)}A${ir} ${ir} 0 ${l} 0 ${cx+ir*Math.cos(a0r)} ${cy+ir*Math.sin(a0r)}Z`;
+a0=a1;return `<path d="${p}" fill="${CATCOL[i%6]}"/>`}).join('');
+document.getElementById('cat-donut').innerHTML=paths+`<text x="100" y="104" text-anchor="middle" font-size="11" fill="var(--mut)">品类结构</text>`;
+document.getElementById('cat-legend').innerHTML=cats.map((c,i)=>`<div><i style="background:${CATCOL[i%6]}"></i>${c.name} ${catDisp(c)}${c.note?` <span class="muted">(${c.note})</span>`:''}</div>`).join('');
+let mx=Math.max(...cats.map(catMid));
+document.getElementById('cat-bars').innerHTML=cats.map((c,i)=>{let v=catMid(c);return `<div style="margin-bottom:11px"><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px"><span>${c.name}</span><b>${catDisp(c)}</b></div><div style="background:#eef1f4;border-radius:3px;height:9px"><div style="width:${v/mx*100}%;background:${CATCOL[i%6]};height:100%;border-radius:3px"></div></div></div>`}).join('');
+document.getElementById('cat-table').innerHTML='<thead><tr><th>品类</th><th class="num">占比</th><th>类型</th><th class="num">期间</th><th>来源</th></tr></thead><tbody>'+cats.map(c=>`<tr><td>${c.name}</td><td class="num">${catDisp(c)}</td><td>${c.isEstimate?'<span class="tag est">估算</span>':'<span class="tag">精确</span>'}</td><td class="num">${c.period}</td><td><button class="srcbtn" onclick="showSrc('${c.source}')">来源</button></td></tr>`).join('')+'</tbody>'}
+
+/* ---------- 会员 ---------- */
+function renderMembers(){let m=DB.members.current,d=v=>v==null?'—':F(v,0);
+document.getElementById('mb-period').textContent='截至 '+m.period+' · 来源：公司财报';
+document.getElementById('mb-kpis').innerHTML=[['会员总数',m.total_members_wan,'万'],['年消费会员',m.active_members_wan,'万'],['复购会员',m.repurchase_members_wan,'万'],['复购贡献会员消费',m.repurchase_contribution_pct,'%'],['40岁以下会员占比',m.under40_pct,'%'],['二线及以下城市占比',m.tier2_below_pct,'%']].map(([l,v,u])=>`<div class="kpi"><span>${l}${m.isApprox&&u==='万'?'<span class="tag est">约</span>':''}</span><strong>${F(v,0)}<em> ${u}</em></strong></div>`).join('');
+document.getElementById('mb-repo').innerHTML=`<h4>复购会员贡献</h4><div style="font-size:22px;font-weight:600;color:var(--teal)">${m.repurchase_contribution_pct}%</div><div class="muted">消费占比</div>`;
+document.getElementById('mb-age').innerHTML=`<h4>40岁以下会员</h4><div style="font-size:22px;font-weight:600;color:var(--blue)">${m.under40_pct}%</div>`;
+document.getElementById('mb-city').innerHTML=`<h4>二线及以下城市</h4><div style="font-size:22px;font-weight:600;color:var(--amber)">${m.tier2_below_pct}%</div>`;
+let h=DB.members.history;
+let svg=document.getElementById('mb-trend');
+if(!h.length){svg.setAttribute('viewBox','0 0 620 210');svg.innerHTML='<text x="310" y="110" text-anchor="middle" class="axis" style="font-size:12px">历史数据待补充 · 当前截至 '+m.period+'：会员总数 '+F(m.total_members_wan,0)+'万</text>'}
+else draw(svg,h,[{name:'会员总数',get:x=>N(x.total),color:'#3d708e',unit:'万'}])}
+
+/* ---------- 渠道 ---------- */
+function renderChannel(){let cols=['#3d708e','#b47a3d','#2d7b70','#8a6884','#bd4a4c','#748194'];
+document.getElementById('channel-cards').innerHTML=DB.channel.channels.map((c,i)=>`<div class="panel"><div style="padding:14px 16px;border-left:3px solid ${cols[i%6]}"><h4 style="margin:0 0 6px;font-size:13px">${c.name}</h4><div class="muted">${c.note}</div></div></div>`).join('');
+document.getElementById('channel-tl').innerHTML=DB.channel.timeline.map(t=>`<div class="tl-item"><div class="tl-date">【${t.date}】 <span class="tag">${t.category}</span></div><div class="tl-title">${t.title}</div><div class="tl-body">${t.description}</div><div class="tl-impact">【影响】${Dash(t.impact)}</div><button class="srcbtn" onclick="showSrc('${t.source}')">来源</button></div>`).join('')}
+
+/* ---------- 同业 ---------- */
+let coSort={key:'name',dir:1};
+function renderCompanies(){let cols=[['name','公司'],['ticker','代码'],['regions','重点区域'],['channels','核心渠道'],['marketShare','市占率%'],['members_wan','会员(万)'],['currency','币种'],['originalValue','原始值'],['rmbValue','人民币值'],['fxRate','汇率']];
+let rows=DB.companies.companies.slice().sort((a,b)=>{let av=a[coSort.key],bv=b[coSort.key];let r=(N(av)!=null&&N(bv)!=null)?N(av)-N(bv):String(Dash(av)).localeCompare(String(Dash(bv)));return coSort.dir*r});
+document.getElementById('co-table').innerHTML='<thead><tr>'+cols.map(c=>`<th data-k="${c[0]}">${c[1]}<span class="arr">${coSort.key===c[0]?(coSort.dir>0?' ▲':' ▼'):''}</span></th>`).join('')+'</tr></thead><tbody>'+
+rows.map(r=>'<tr>'+cols.map(c=>`<td class="${['name','regions','channels','currency','ticker'].includes(c[0])?'':'num'}">${Dash(r[c[0]])}</td>`).join('')+'</tr>').join('')+'</tbody>';
+document.querySelectorAll('#co-table th').forEach(th=>th.onclick=()=>{let k=th.dataset.k;if(coSort.key===k)coSort.dir*=-1;else{coSort.key=k;coSort.dir=1}renderCompanies()})}
+
+/* ---------- 事件 ---------- */
+function renderEvents(){document.getElementById('events-tl').innerHTML=DB.events.events.map(e=>`<div class="tl-item"><div class="tl-date">【${e.date}】 <span class="tag est">${e.eventType}</span></div><div class="tl-title">${e.company} · ${e.target}</div><div class="tl-body">${e.description}${e.dealValue?` <b>对价：不超过 ${e.dealValue} ${e.currency}</b>`:''}</div><div class="tl-impact">【战略影响】${Dash(e.strategicImpact)}</div><button class="srcbtn" onclick="showSrc('${e.source}')">来源</button></div>`).join('')}
+
+/* ---------- 数据中心 ---------- */
+function renderDatacenter(){document.getElementById('src-table').innerHTML='<thead><tr><th>键</th><th>来源名称</th><th>类型</th><th>报告日期</th><th>备注</th></tr></thead><tbody>'+
+Object.entries(SRC).map(([k,s])=>`<tr><td>${k}</td><td>${Dash(s.sourceName)}</td><td><span class="tag">${Dash(s.sourceType)}</span></td><td class="num">${Dash(s.reportDate)}</td><td>${Dash(s.note)}</td></tr>`).join('')+'</tbody>';
+let files=Object.entries(DB.manifest.files).concat(Object.entries(DB.manifest.legacy||{}));
+document.getElementById('files-table').innerHTML='<thead><tr><th>模块</th><th>文件路径</th></tr></thead><tbody>'+files.map(([k,f])=>`<tr><td>${k}</td><td style="font-family:monospace;font-size:10px">${f}</td></tr>`).join('')+'</tbody>'}
+
+/* ---------- 初始化 ---------- */
+function init(){[renderOverview,renderHainan,renderCtg,renderAirport,renderCity,renderPolicy,renderCategory,renderMembers,renderChannel,renderCompanies,renderEvents,renderDatacenter].forEach(f=>{try{f()}catch(e){console.log('render err',f.name,e)}});
+document.getElementById('rows-note').textContent=`月度 ${DB.m.length} 条 · 假期 ${DB.h.length} 条`;
+document.querySelectorAll('#tabs .tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab,.view').forEach(x=>x.classList.remove('on'));b.classList.add('on');let v=document.getElementById('view-'+b.dataset.view);v.classList.add('on');window.scrollTo({top:0})});
+document.getElementById('hn-range').onchange=renderHainan;
+document.getElementById('ctg-type').onchange=renderCtg}
+</script></body></html>
