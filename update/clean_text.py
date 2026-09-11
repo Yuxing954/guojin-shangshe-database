@@ -27,9 +27,31 @@ def clean_markup(s: str) -> str:
     return s
 
 
+# 知识星球自动附加的水印/来源标注（富文本标签清洗后会残留成文本）
+WATERMARK_PATTERNS = [
+    r'知识星球[-—\s]*安全中心',
+    r'知识星球官方[-—\s]*安全中心',
+    r'来自知识星球',
+    r'知识星球APP',
+]
+_WATERMARK_RE = re.compile('|'.join(WATERMARK_PATTERNS))
+
+
+def strip_watermark(s: str) -> str:
+    """移除平台自动附加的水印/来源标注行"""
+    lines = []
+    for ln in s.split('\n'):
+        cleaned = _WATERMARK_RE.sub('', ln).strip()
+        # 整行只有水印的（清洗后为空）直接丢弃
+        if ln.strip() and not cleaned:
+            continue
+        lines.append(re.sub(r'\s{2,}', ' ', cleaned) if cleaned != ln.strip() else ln)
+    return '\n'.join(lines)
+
+
 def normalize_content(s: str) -> str:
-    """清洗标签 + 折叠连续重复行 + 规整多余空行"""
-    s = clean_markup(s or '')
+    """清洗标签 + 去水印 + 折叠连续重复行 + 规整多余空行"""
+    s = strip_watermark(clean_markup(s or ''))
     out = []
     for ln in [l.rstrip() for l in s.split('\n')]:
         if out and ln.strip() and ln.strip() == out[-1].strip():
