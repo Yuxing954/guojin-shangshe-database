@@ -7,6 +7,9 @@ assert.equal(K.marketOf("ATAT.O"),"US");
 assert.equal(K.calendarDate("1179.HK",new Date("2026-09-10T16:30:00Z")),"2026-09-11");
 assert.equal(K.calendarDate("ATAT.O",new Date("2026-09-11T01:00:00Z")),"2026-09-10");
 assert.equal(K.tradingDate("1179.HK",new Date("2026-09-12T04:00:00Z")),"2026-09-11");
+assert.deepEqual(K.sessionAxis("600754.SH",["202609111030"]),{minute:60,total:255});
+assert.deepEqual(K.sessionAxis("600754.SH",["202609111400"]),{minute:195,total:255});
+assert.deepEqual(K.sessionAxis("1179.HK",["202609111430"]),{minute:255,total:345});
 
 const mixed=[
   ["202609101500",10,10.1,10.2,9.9,100],
