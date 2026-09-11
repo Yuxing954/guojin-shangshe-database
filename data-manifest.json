@@ -50,6 +50,78 @@
       "category": "免税"
     },
     {
+      "id": "dutyfree_db",
+      "name": "免税行业数据库",
+      "file": "data/dutyfree/manifest.json",
+      "category": "免税"
+    },
+    {
+      "id": "dutyfree_overview",
+      "name": "免税行业总览指标",
+      "file": "data/dutyfree/overview.json",
+      "category": "免税"
+    },
+    {
+      "id": "dutyfree_ctg",
+      "name": "中国中免经营跟踪",
+      "file": "data/dutyfree/ctg_dutyfree.json",
+      "category": "免税"
+    },
+    {
+      "id": "dutyfree_airport",
+      "name": "机场免税数据库",
+      "file": "data/dutyfree/airport.json",
+      "category": "免税"
+    },
+    {
+      "id": "dutyfree_city",
+      "name": "市内免税数据库",
+      "file": "data/dutyfree/city_dutyfree.json",
+      "category": "免税"
+    },
+    {
+      "id": "dutyfree_policy",
+      "name": "免税政策时间轴",
+      "file": "data/dutyfree/policy.json",
+      "category": "免税"
+    },
+    {
+      "id": "dutyfree_members",
+      "name": "中免会员体系",
+      "file": "data/dutyfree/members.json",
+      "category": "免税"
+    },
+    {
+      "id": "dutyfree_category",
+      "name": "免税品类结构",
+      "file": "data/dutyfree/category.json",
+      "category": "免税"
+    },
+    {
+      "id": "dutyfree_channel",
+      "name": "中免渠道结构",
+      "file": "data/dutyfree/channel.json",
+      "category": "免税"
+    },
+    {
+      "id": "dutyfree_companies",
+      "name": "免税同业对比",
+      "file": "data/dutyfree/companies.json",
+      "category": "免税"
+    },
+    {
+      "id": "dutyfree_events",
+      "name": "免税行业事件",
+      "file": "data/dutyfree/events.json",
+      "category": "免税"
+    },
+    {
+      "id": "dutyfree_sources",
+      "name": "免税数据来源",
+      "file": "data/dutyfree/sources.json",
+      "category": "免税"
+    },
+    {
       "id": "crossborder",
       "name": "跨境电商板块跟踪数据",
       "file": "data/跨境电商板块跟踪数据_2026-09-08.csv",
