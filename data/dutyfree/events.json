@@ -1,0 +1,17 @@
+{
+  "updatedAt": "2026-09-11",
+  "note": "免税行业重大事件数据库（并购/机场合同/政策变更/渠道变化）。dealValue 为对价，currency 为币种。可持续追加。",
+  "events": [
+    {
+      "date": "2026",
+      "company": "中国中免",
+      "eventType": "并购",
+      "target": "DFS",
+      "dealValue": 3.95,
+      "currency": "USD",
+      "description": "中国中免拟并购 DFS，交易对价不超过3.95亿美元。",
+      "strategicImpact": "加速海外布局，补强市内/机场渠道与高端品牌矩阵",
+      "source": "ctg_notice"
+    }
+  ]
+}
