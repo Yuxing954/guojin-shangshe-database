@@ -7,7 +7,9 @@
 | 文件 | 作用 |
 |---|---|
 | `config.json` | 星球 ID / 资料库表 ID / 仓库信息 / 关键词池（三层过滤：关键词池 + 泛词表 + 标题噪音词） |
-| `zsxq_update.py` | 一站式更新脚本：抓取增量 → 过滤 → 入库 → 导出 CSV → 推 GitHub（含登录态预检自动恢复） |
+| `zsxq_update.py` | 一站式更新脚本：抓取增量 → 过滤 → 清洗 → 入库 → 导出 CSV → 推 GitHub（含登录态预检自动恢复） |
+| `clean_text.py` | 文本清洗（共用）：知识星球标签 `<e .../>` 转可读文本、折叠连续重复行、标题取首行 |
+| `fix_market_view.py` | 存量数据修复：对整个「商社·市场观点」表做清洗与标题规范化回写（支持 `--dry-run` 预览） |
 | `get_lib_token.py` | 自动铸造资料库 op_ token（无需手动传） |
 | `backup_zsxq_auth.py` | 备份 zsxq-cli 登录凭据（DPAPI 密文）到 `zsxq_auth_backup.json` |
 | `restore_zsxq_auth.py` | 从备份恢复登录凭据，免重新扫码 |
