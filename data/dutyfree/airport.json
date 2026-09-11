@@ -1,0 +1,12 @@
+{
+  "updatedAt": "2026-09-11",
+  "note": "机场免税数据库。字段预留，null=暂无可靠数据；debitRate=扣点率(%)，rentModel=租金模式。可持续追加机场。",
+  "airports": [
+    { "airport": "上海浦东机场", "operator": null, "contractPeriod": null, "debitRate": null, "rentModel": null, "intlPax": null, "intlPaxYoy": null, "sales": null, "spendPerPax": null, "commercialArea": null, "contractEvent": null, "source": null },
+    { "airport": "北京首都机场", "operator": null, "contractPeriod": null, "debitRate": null, "rentModel": null, "intlPax": null, "intlPaxYoy": null, "sales": null, "spendPerPax": null, "commercialArea": null, "contractEvent": null, "source": null },
+    { "airport": "北京大兴机场", "operator": null, "contractPeriod": null, "debitRate": null, "rentModel": null, "intlPax": null, "intlPaxYoy": null, "sales": null, "spendPerPax": null, "commercialArea": null, "contractEvent": null, "source": null },
+    { "airport": "广州白云机场", "operator": null, "contractPeriod": null, "debitRate": null, "rentModel": null, "intlPax": null, "intlPaxYoy": null, "sales": null, "spendPerPax": null, "commercialArea": null, "contractEvent": null, "source": null },
+    { "airport": "深圳机场", "operator": null, "contractPeriod": null, "debitRate": null, "rentModel": null, "intlPax": null, "intlPaxYoy": null, "sales": null, "spendPerPax": null, "commercialArea": null, "contractEvent": null, "source": null },
+    { "airport": "香港机场", "operator": null, "contractPeriod": null, "debitRate": null, "rentModel": null, "intlPax": null, "intlPaxYoy": null, "sales": null, "spendPerPax": null, "commercialArea": null, "contractEvent": null, "source": null }
+  ]
+}
