@@ -5,7 +5,7 @@
 
 前置条件：
   1. zsxq-cli 已登录：zsxq-cli auth login
-  2. 资料库 op_ token：--lib-token 传入（运行环境中自动获取，30 分钟有效；
+  2. 资料库 op_ token：--lib-token 传入（WorkBuddy 会话内获取，30 分钟有效；
      只推 GitHub 不更新资料库时可用 --skip-lib 跳过）
   3. GitHub PAT（需 Contents 写权限）：--github-token 传入（用完即弃，不落盘）
 
@@ -19,6 +19,9 @@ import argparse, base64, csv, datetime, io, json, os, subprocess, sys, time, url
 HERE = os.path.dirname(os.path.abspath(__file__))
 CFG = json.load(open(os.path.join(HERE, "config.json"), encoding="utf-8"))
 ZSXQ = os.environ.get("ZSXQ_CLI", "zsxq-cli")
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from clean_text import normalize_content, make_title  # noqa: E402
 LIB_API = os.environ.get("LIB_SPACE_API", "")
 
 def parse_time(s):
@@ -66,7 +69,7 @@ def fetch_since(cutoff):
 
 # ---------- 2. 资料库 ----------
 def lib_call(method, args, token, stdin_data=None):
-    cmd = [LIB_API, method, "--token-stdin"] + args
+    cmd = [sys.executable, LIB_API, method, "--token-stdin"] + args
     r = subprocess.run(cmd, input=token, capture_output=True, text=True,
                        encoding="utf-8", timeout=120)
     return json.loads(r.stdout)
@@ -143,7 +146,7 @@ def main():
             args.lib_token = mint_token()
             print("① 自动铸造资料库 op_ token ✓（30 分钟内有效）")
         except Exception as e:
-            sys.exit(f"未提供 --lib-token 且自动铸造失败：{e}\n（请确认运行环境配置正确，或手动传 --lib-token）")
+            sys.exit(f"未提供 --lib-token 且自动铸造失败：{e}\n（请确认在 WorkBuddy 会话内运行，或手动传 --lib-token）")
 
     local_csv = os.path.normpath(os.path.join(HERE, CFG["local_csv"]))
 
@@ -182,6 +185,8 @@ def main():
                 continue
             c = t.get("counts") or {}
             link = f"https://wx.zsxq.com/group/{CFG['group_id']}/topic/{t['topic_id']}"
+            body = normalize_content(body)          # 清洗标签残留 + 折叠重复行
+            title = make_title(body or title)       # 标题取内容首行，避免与正文重复
             new_recs.append({
                 "时间": {"text": t["create_time"]}, "月份": {"select": f"{ct.month}月"},
                 "标题": {"text": title}, "内容": {"text": body},
