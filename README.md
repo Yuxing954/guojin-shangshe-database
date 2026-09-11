@@ -26,7 +26,8 @@
 ├── dashboard.html      # 实时市场与分时/K 线展示
 ├── data-manifest.json  # 数据集目录
 ├── data/               # CSV 数据表及市场快照
-└── update/             # 知识星球增量同步工具
+├── update/             # 知识星球增量同步工具
+└── .workbuddy/skills/  # WorkBuddy 项目技能与自动化操作规程
 ```
 
 ## 数据来源与更新
@@ -44,6 +45,18 @@
 ## 更新工具
 
 `update/` 用于将知识星球的商社相关内容增量抓取、筛选、写入资料库并导出至本仓库。使用方式及依赖见 [update/README.md](./update/README.md)。
+
+## WorkBuddy 项目技能
+
+项目内置 WorkBuddy Skill：[`guojin-shangshe-zsxq-sync`](./.workbuddy/skills/guojin-shangshe-zsxq-sync/SKILL.md)。
+
+该 skill 固化知识星球「水木调研纪要-2.0」双线同步流程：
+
+- **商社观点 / 精选线**：按商社关键词池筛选，写入资料库「商社·市场观点」表，并导出 `data/商社-市场观点.csv`。
+- **市场观点 / 段子线**：先剔除与商社观点重复的内容，再保留真正有信息量的调研纪要、行业观点和数据点评短文，导出 `data/全部-市场观点.csv`。
+- 两条线统一执行清洗、去重、按发布时间降序、GitHub 推送与回读验收。
+
+使用 WorkBuddy 时可直接说「更新商社观点和市场观点」或「按规则同步知识星球数据」。
 
 ## 安全说明
 
