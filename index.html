@@ -899,7 +899,7 @@ body.research-center{--brand:#17212d!important;--brand-strong:#0d141c!important;
 
   <section id="wind-overview" aria-label="腾讯财经实时市场环境">
   <div class="wind-board">
-    <div class="wind-head"><i class="wind-live"></i><h3>实时市场环境</h3><p id="wind-meta">腾讯财经 · 约 30 秒刷新</p></div>
+    <div class="wind-head"><i class="wind-live"></i><h3>实时市场环境</h3><p id="wind-meta">腾讯财经 · 约 5 秒刷新</p></div>
     <div class="wind-grid">
       <div class="wind-bench" id="wind-bench"></div>
       <div class="wind-side">
@@ -913,7 +913,7 @@ body.research-center{--brand:#17212d!important;--brand-strong:#0d141c!important;
 </section>
 <section id="coverage-live" aria-label="覆盖公司当日涨跌热力图">
   <div class="market-heat-board">
-    <div class="market-heat-head"><div><h3>覆盖公司当日涨跌热力图</h3><p>腾讯财经 · 约 30 秒刷新 · 按涨跌幅实时排序 · 点击公司直接查看 K 线</p></div><button class="market-enter" type="button" data-open-watch="1">进入盯盘助手</button></div>
+    <div class="market-heat-head"><div><h3>覆盖公司当日涨跌热力图</h3><p>腾讯财经 · 约 5 秒刷新 · 按涨跌幅实时排序 · 点击公司直接查看 K 线</p></div><button class="market-enter" type="button" data-open-watch="1">进入盯盘助手</button></div>
     <div class="coverage-heatmap" id="coverage-list"><div class="coverage-loading">正在读取覆盖池…</div></div>
     <div class="heat-legend"><span>跌</span><i></i><span>涨</span><span id="coverage-count">—</span></div>
   </div>
@@ -977,7 +977,7 @@ body.research-center{--brand:#17212d!important;--brand-strong:#0d141c!important;
     tag.onerror=function(){tag.remove();};
     document.head.appendChild(tag);
   }
-  window.refreshTencentMarket=updateTencent;updateTencent();setInterval(updateTencent,30000);
+  window.refreshTencentMarket=updateTencent;updateTencent();setInterval(updateTencent,5000);
 })();
 </script>
 <script src="scripts/market-kline.js?v=20260911-3"></script>
@@ -989,7 +989,7 @@ function points(obj,code){var rows=window.SinolinkKline.normalize(obj,"m5"),clea
 function draw(el,rows,code){var svg=el.querySelector(".mini-chart"),label=el.querySelector(".mini-chart-loading");if(!svg)return;var data=rows.map(function(r){return{row:r,value:Number(r[2])};}).filter(function(x){return isFinite(x.value);});if(data.length<2){if(label)label.textContent="暂无日内数据";return;}if(label)label.remove();var vals=data.map(function(x){return x.value;}),min=Math.min.apply(null,vals),max=Math.max.apply(null,vals),span=max-min||1,w=160,h=34,pad=2,coords=data.map(function(d){var axis=window.SinolinkKline.sessionAxis(code,d.row),x=pad+axis.minute/axis.total*(w-pad*2),y=pad+(max-d.value)/span*(h-pad*2);return{x:x,y:y};}),path=coords.map(function(p,i){return(i?"L":"M")+p.x.toFixed(1)+" "+p.y.toFixed(1);}).join(" "),first=coords[0],last=coords[coords.length-1],pct=parseFloat((el.querySelector(".chg")||{}).textContent),color=pct>0?"#c44545":pct<0?"#278067":"#8a96a6",area=path+" L "+last.x.toFixed(1)+" 36 L "+first.x.toFixed(1)+" 36 Z";svg.innerHTML='<line class="mini-zero" x1="2" y1="18" x2="158" y2="18"></line><path class="mini-area" d="'+area+'" fill="'+color+'"></path><path class="mini-line" d="'+path+'" stroke="'+color+'"></path>';}
 function load(el){var code=el.getAttribute("data-wind-code"),q=qc(code);if(!q)return;window.SinolinkKline.checkRollover(code);var vn="__mini_"+Date.now()+"_"+Math.floor(Math.random()*99999),s=document.createElement("script");window[vn]=null;s.charset="utf-8";s.src="https://web.ifzq.gtimg.cn/appstock/app/minute/query?_var="+vn+"&code="+encodeURIComponent(q)+"&r="+Date.now();s.onload=function(){draw(el,points(window[vn],code),code);try{delete window[vn];}catch(e){}s.remove();};s.onerror=function(){var t=el.querySelector(".mini-chart-loading");if(t)t.textContent="日内数据暂不可用";s.remove();};document.head.appendChild(s);}
 function refresh(){document.querySelectorAll("#wind-bench .wind-index").forEach(load);}
-var timer=setInterval(function(){if(document.querySelectorAll("#wind-bench .wind-index").length){clearInterval(timer);refresh();setInterval(refresh,30000);}},300);
+var timer=setInterval(function(){if(document.querySelectorAll("#wind-bench .wind-index").length){clearInterval(timer);refresh();setInterval(refresh,5000);}},300);
 })();
 </script>
 <section data-page-node-id="LtwiPbLeRZeLLJ07hkMsM5" id="sec-f">
@@ -1536,7 +1536,7 @@ else { document.addEventListener("DOMContentLoaded", boot); }
 </section>
 <section id="watch-assistant" aria-label="大消费盯盘助手" aria-hidden="true">
   <div class="watch-board">
-    <div class="watch-head"><div><h3>大消费盯盘助手</h3><p>盯三大板块：社会服务 · 商贸零售 · 餐饮茶饮 · 腾讯财经约 30 秒刷新</p></div><div class="watch-head-actions"><span id="watch-live-time"></span><button class="watch-close" id="watch-close" type="button">退出（Esc）</button></div></div>
+    <div class="watch-head"><div><h3>大消费盯盘助手</h3><p>盯三大板块：社会服务 · 商贸零售 · 餐饮茶饮 · 腾讯财经约 5 秒刷新</p></div><div class="watch-head-actions"><span id="watch-live-time"></span><button class="watch-close" id="watch-close" type="button">退出（Esc）</button></div></div>
     <div class="watch-workbench">
       <aside class="watch-sectors"><div class="watch-sector-caption">消费子板块</div><div id="watch-sector-list"></div></aside>
       <main class="watch-main">
