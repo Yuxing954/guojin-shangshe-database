@@ -1,0 +1,12 @@
+{
+  "updatedAt": "2026-09-11",
+  "note": "数据来源系统。每条核心数据通过 source 键引用本表。sourceType 枚举：公司公告/公司财报/业绩会/海关总署/海南省政府/海口海关/财政部/商务部/机场公告/行业协会/第三方数据/国金证券整理。",
+  "sources": {
+    "ctg_report": { "sourceName": "中国中免2026年半年度报告", "sourceType": "公司财报", "reportDate": "2026-08", "page": null, "url": null, "note": "收入/利润/毛利率/海南分部/会员" },
+    "ctg_notice": { "sourceName": "中国中免公司公告", "sourceType": "公司公告", "reportDate": "2026", "page": null, "url": null, "note": "DFS并购、线上渠道更名" },
+    "haikou_customs": { "sourceName": "海口海关", "sourceType": "海口海关", "reportDate": "2026-09", "page": null, "url": null, "note": "离岛免税月度销售额/购物人数/件数" },
+    "mof": { "sourceName": "财政部等", "sourceType": "财政部", "reportDate": "2025", "page": null, "url": null, "note": "离岛免税/市内免税政策" },
+    "gj_estimate": { "sourceName": "国金证券整理", "sourceType": "国金证券整理", "reportDate": "2026-09", "page": null, "url": null, "note": "品类结构等为估算区间" },
+    "ifind": { "sourceName": "同花顺iFinD", "sourceType": "第三方数据", "reportDate": "2026-09", "page": null, "url": null, "note": "行情与宏观数据" }
+  }
+}
