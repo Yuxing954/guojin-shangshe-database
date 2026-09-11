@@ -1,0 +1,15 @@
+{
+  "updatedAt": "2026-09-11",
+  "kpis": [
+    { "key": "hainan_sales", "label": "海南离岛免税销售额", "value": 21.39, "unit": "亿元", "period": "2026-08", "yoy": 1.61, "qoq": null, "target": "hainan", "source": "haikou_customs" },
+    { "key": "hainan_shoppers", "label": "海南离岛免税购物人数", "value": 37.24, "unit": "万人次", "period": "2026-08", "yoy": 0.81, "qoq": null, "target": "hainan", "source": "haikou_customs" },
+    { "key": "hainan_items", "label": "海南离岛免税购物件数", "value": 212.07, "unit": "万件", "period": "2026-08", "yoy": -1.88, "qoq": null, "target": "hainan", "source": "haikou_customs" },
+    { "key": "hainan_spend", "label": "客单价", "value": 5745, "unit": "元", "period": "2026-08", "yoy": 0.79, "qoq": null, "target": "hainan", "source": "haikou_customs" },
+    { "key": "ctg_revenue", "label": "中国中免收入", "value": 276.55, "unit": "亿元", "period": "2026H1", "yoy": -1.76, "qoq": null, "target": "ctg", "source": "ctg_report" },
+    { "key": "ctg_profit", "label": "中国中免归母净利润", "value": 31.06, "unit": "亿元", "period": "2026H1", "yoy": 19.49, "qoq": null, "target": "ctg", "source": "ctg_report" },
+    { "key": "ctg_gpm", "label": "中国中免毛利率", "value": 33.90, "unit": "%", "period": "2026H1", "yoy": 1.14, "yoyType": "pct", "qoq": null, "target": "ctg", "source": "ctg_report" },
+    { "key": "ctg_hainan_rev", "label": "海南地区收入", "value": 185.54, "unit": "亿元", "period": "2026H1", "yoy": 23.44, "qoq": null, "target": "ctg", "source": "ctg_report" },
+    { "key": "ctg_hainan_gpm", "label": "海南地区毛利率", "value": 22.77, "unit": "%", "period": "2026H1", "yoy": 2.42, "yoyType": "pct", "qoq": null, "target": "ctg", "source": "ctg_report" },
+    { "key": "ctg_members", "label": "中免会员人数", "value": 5600, "unit": "万", "period": "2025年末", "yoy": null, "qoq": null, "isApprox": true, "target": "members", "source": "ctg_report" }
+  ]
+}
