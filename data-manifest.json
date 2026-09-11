@@ -1,24 +1,113 @@
 {
-  "updatedAt": "2026-09-08",
+  "updatedAt": "2026-09-11",
   "datasets": [
-    {"id":"hotel","name":"酒店板块跟踪数据","file":"data/酒店板块跟踪数据_2026-09-08.csv","category":"行业高频"},
-    {"id":"hotel_industry_weekly","name":"酒店行业周度经营","file":"data/hotel_industry_weekly.csv","category":"酒店"},
-    {"id":"hotel_group_weekly","name":"酒店集团周度经营","file":"data/hotel_group_weekly.csv","category":"酒店"},
-    {"id":"hotel_supply_weekly","name":"酒店供给结构","file":"data/hotel_supply_weekly.csv","category":"酒店"},
-    {"id":"hotel_market_share_annual","name":"酒店集团市占率","file":"data/hotel_market_share_annual.csv","category":"酒店"},
-    {"id":"taxfree","name":"免税板块跟踪数据","file":"data/免税板块跟踪数据_2026-09-08.csv","category":"行业高频"},
-    {"id":"dutyfree_monthly","name":"离岛免税月度经营","file":"data/dutyfree_monthly.csv","category":"免税"},
-    {"id":"dutyfree_holiday","name":"离岛免税主要假期","file":"data/dutyfree_holiday.csv","category":"免税"},
-    {"id":"crossborder","name":"跨境电商板块跟踪数据","file":"data/跨境电商板块跟踪数据_2026-09-08.csv","category":"行业高频"},
-    {"id":"gold","name":"黄金珠宝板块跟踪数据","file":"data/黄金珠宝板块跟踪数据_2026-09-08.csv","category":"行业高频"},
-    {"id":"dining","name":"餐饮茶饮板块跟踪数据","file":"data/餐饮茶饮板块跟踪数据_2026-09-08.csv","category":"行业高频"},
-    {"id":"weekly","name":"覆盖标的本周行情","file":"data/商社-覆盖标的本周行情.csv","category":"市场"},
-    {"id":"views","name":"市场观点","file":"data/商社-市场观点.csv","category":"研究"},
-    {"id":"all_views","name":"全部市场观点","file":"data/全部-市场观点.csv","category":"研究"},
-    {"id":"minutes","name":"纪要文库","file":"data/商社-纪要文库.csv","category":"研究"},
-    {"id":"announcements","name":"公司公告","file":"data/商社-公司公告.csv","category":"研究"},
-    {"id":"prosperity","name":"行业景气数据","file":"data/商社-行业景气数据.csv","category":"行业"},
-    {"id":"financials","name":"业绩与财务跟踪","file":"data/商社-业绩与财务跟踪.csv","category":"公司"},
-    {"id":"valuation","name":"标的池与估值跟踪","file":"data/商社-标的池与估值跟踪.csv","category":"公司"}
+    {
+      "id": "hotel",
+      "name": "酒店板块跟踪数据",
+      "file": "data/酒店板块跟踪数据_2026-09-08.csv",
+      "category": "行业高频"
+    },
+    {
+      "id": "hotel_industry_weekly",
+      "name": "酒店行业周度经营",
+      "file": "data/hotel_industry_weekly.csv",
+      "category": "酒店"
+    },
+    {
+      "id": "hotel_group_weekly",
+      "name": "酒店集团周度经营",
+      "file": "data/hotel_group_weekly.csv",
+      "category": "酒店"
+    },
+    {
+      "id": "hotel_supply_weekly",
+      "name": "酒店供给结构",
+      "file": "data/hotel_supply_weekly.csv",
+      "category": "酒店"
+    },
+    {
+      "id": "hotel_market_share_annual",
+      "name": "酒店集团市占率",
+      "file": "data/hotel_market_share_annual.csv",
+      "category": "酒店"
+    },
+    {
+      "id": "taxfree",
+      "name": "免税板块跟踪数据",
+      "file": "data/免税板块跟踪数据_2026-09-08.csv",
+      "category": "行业高频"
+    },
+    {
+      "id": "dutyfree_monthly",
+      "name": "离岛免税月度经营",
+      "file": "data/dutyfree_monthly.csv",
+      "category": "免税"
+    },
+    {
+      "id": "dutyfree_holiday",
+      "name": "离岛免税主要假期",
+      "file": "data/dutyfree_holiday.csv",
+      "category": "免税"
+    },
+    {
+      "id": "crossborder",
+      "name": "跨境电商板块跟踪数据",
+      "file": "data/跨境电商板块跟踪数据_2026-09-08.csv",
+      "category": "行业高频"
+    },
+    {
+      "id": "gold",
+      "name": "黄金珠宝板块跟踪数据",
+      "file": "data/黄金珠宝板块跟踪数据_2026-09-08.csv",
+      "category": "行业高频"
+    },
+    {
+      "id": "dining",
+      "name": "餐饮茶饮板块跟踪数据",
+      "file": "data/餐饮茶饮板块跟踪数据_2026-09-08.csv",
+      "category": "行业高频"
+    },
+    {
+      "id": "weekly",
+      "name": "覆盖标的本周行情",
+      "file": "data/商社-覆盖标的本周行情.csv",
+      "category": "市场"
+    },
+    {
+      "id": "views",
+      "name": "市场观点",
+      "file": "data/商社-市场观点.csv",
+      "category": "研究"
+    },
+    {
+      "id": "all_views",
+      "name": "全部市场观点",
+      "file": "data/全部-市场观点.csv",
+      "category": "研究"
+    },
+    {
+      "id": "minutes",
+      "name": "纪要文库",
+      "file": "data/商社-纪要文库.csv",
+      "category": "研究"
+    },
+    {
+      "id": "prosperity",
+      "name": "行业景气数据",
+      "file": "data/商社-行业景气数据.csv",
+      "category": "行业"
+    },
+    {
+      "id": "financials",
+      "name": "业绩与财务跟踪",
+      "file": "data/商社-业绩与财务跟踪.csv",
+      "category": "公司"
+    },
+    {
+      "id": "valuation",
+      "name": "标的池与估值跟踪",
+      "file": "data/商社-标的池与估值跟踪.csv",
+      "category": "公司"
+    }
   ]
 }
