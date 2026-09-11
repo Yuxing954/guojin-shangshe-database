@@ -1,0 +1,16 @@
+{
+  "updatedAt": "2026-09-11",
+  "note": "中国中免会员体系。isApprox=true 表示官方披露的约数（万+）。历史序列预留 history 数组，待补充可靠数据后填入。",
+  "current": {
+    "period": "2025年末",
+    "total_members_wan": 5600,
+    "active_members_wan": 1300,
+    "repurchase_members_wan": 805,
+    "repurchase_contribution_pct": 68,
+    "under40_pct": 77,
+    "tier2_below_pct": 64,
+    "isApprox": true,
+    "source": "ctg_report"
+  },
+  "history": []
+}
