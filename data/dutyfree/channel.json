@@ -1,0 +1,15 @@
+{
+  "updatedAt": "2026-09-11",
+  "note": "中免渠道结构。timeline 记录渠道重大变化事件。",
+  "channels": [
+    { "key": "hainan", "name": "海南离岛免税", "note": "核心渠道，贡献主要收入" },
+    { "key": "airport", "name": "机场免税", "note": "口岸出入境免税店" },
+    { "key": "city", "name": "市内免税", "note": "市内免税店，含进境提货模式" },
+    { "key": "online", "name": "线上免税", "note": "cdf 线上官方商城" },
+    { "key": "taxed", "name": "有税零售", "note": "有税渠道零售业务" },
+    { "key": "overseas", "name": "海外业务", "note": "境外免税及 DFS 并购布局" }
+  ],
+  "timeline": [
+    { "date": "2026-07-22", "category": "线上渠道", "title": "cdf中免海南官方商城更名", "description": "“cdf中免海南官方商城”更名为“cdf中免”，线上渠道进一步整合。", "impact": "线上渠道品牌统一，整合会员与流量入口", "source": "ctg_notice" }
+  ]
+}
