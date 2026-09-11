@@ -98,6 +98,20 @@ def lib_export_csv(token):
                  ["--database-id", CFG["database_id"]], token)
     return d["data"]["content"]
 
+def sort_csv_desc(csv_text, key="时间"):
+    """整表按发布时间降序重排。看板前端按「时间」降序渲染，源文件保持同向，
+    避免增量追加后行序与视图不一致。"""
+    rows = list(csv.DictReader(io.StringIO(csv_text)))
+    if not rows:
+        return csv_text
+    fields = list(rows[0].keys())
+    rows.sort(key=lambda r: r.get(key) or "", reverse=True)
+    buf = io.StringIO()
+    w = csv.DictWriter(buf, fieldnames=fields, lineterminator="\n")
+    w.writeheader()
+    w.writerows(rows)
+    return buf.getvalue()
+
 # ---------- 3. GitHub ----------
 def gh(method, url, pat, payload=None, retries=3):
     req = urllib.request.Request(url, method=method,
@@ -161,11 +175,13 @@ def main():
                          ["--database-id", CFG["database_id"]], args.lib_token)
             rows = list(csv.DictReader(io.StringIO(d["data"]["content"])))
             cutoff = max(r["时间"] for r in rows)
-            existing = {(r["时间"], r["标题"]) for r in rows}
+            # 去重集合同时覆盖「线上已有」与「本批已收录」：分页重叠会让同一主题在增量里出现两次，
+            # 只比对线上旧数据时会把重复条目一并入库。
+            seen = {(r["时间"], r["标题"]) for r in rows}
             print(f"① 线上表 {len(rows)} 条，最新 {cutoff}")
         else:
             cutoff = "2026-01-01T00:00:00.000+0800"
-            existing = set()
+            seen = set()
 
         # 2) 抓取增量
         print("② 抓取知识星球增量…")
@@ -179,7 +195,7 @@ def main():
             ct = parse_time(t["create_time"])
             title, body = t.get("title") or "", t.get("content") or ""
             hits = [k for k in pool if k.lower() in (title + "\n" + body).lower()]
-            if not hits or (t["create_time"], title) in existing:
+            if not hits or (t["create_time"], title) in seen:
                 continue
             if any(w in title for w in CFG["noise_title_words"]) and all(h in generic for h in hits):
                 continue
@@ -187,6 +203,7 @@ def main():
             link = f"https://wx.zsxq.com/group/{CFG['group_id']}/topic/{t['topic_id']}"
             body = normalize_content(body)          # 清洗标签残留 + 折叠重复行
             title = make_title(body or title)       # 标题取内容首行，避免与正文重复
+            seen.add((t["create_time"], title))     # 同批内去重：清洗后的标题才是最终入库值
             new_recs.append({
                 "时间": {"text": t["create_time"]}, "月份": {"select": f"{ct.month}月"},
                 "标题": {"text": title}, "内容": {"text": body},
@@ -203,10 +220,10 @@ def main():
             n = lib_batch_add(args.lib_token, new_recs)
             print(f"   写入 {n}/{len(new_recs)}")
 
-        # 5) 导出 CSV 落盘
+        # 5) 导出 CSV 落盘（按发布时间降序）
         if not args.skip_lib:
-            print("⑤ 导出 CSV…")
-            csv_text = lib_export_csv(args.lib_token)
+            print("⑤ 导出 CSV（按发布时间降序）…")
+            csv_text = sort_csv_desc(lib_export_csv(args.lib_token))
             os.makedirs(os.path.dirname(local_csv), exist_ok=True)
             with open(local_csv, "w", encoding="utf-8-sig", newline="") as f:
                 f.write(csv_text)
