@@ -1,0 +1,11 @@
+{
+  "updatedAt": "2026-09-11",
+  "note": "免税销售品类结构（占比，%）。部分为区间/估算：valueMin/valueMax 表示区间，isEstimate=true 表示估算值，展示时标注『约』。null=暂无。",
+  "categories": [
+    { "name": "香化", "value": null, "valueMin": 35, "valueMax": 40, "isEstimate": true, "period": "2026", "source": "gj_estimate" },
+    { "name": "珠宝腕表", "value": 30, "valueMin": null, "valueMax": null, "isEstimate": true, "period": "2026", "source": "gj_estimate" },
+    { "name": "精品", "value": 20, "valueMin": null, "valueMax": null, "isEstimate": true, "period": "2026", "source": "gj_estimate" },
+    { "name": "3C", "value": null, "valueMin": 14, "valueMax": 15, "isEstimate": true, "period": "2026", "source": "gj_estimate" },
+    { "name": "黄金", "value": null, "valueMin": 1, "valueMax": 9, "isEstimate": true, "period": "2026", "note": "个位数占比", "source": "gj_estimate" }
+  ]
+}
