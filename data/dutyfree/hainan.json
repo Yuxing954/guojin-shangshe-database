@@ -1,0 +1,19 @@
+{
+  "updatedAt": "2026-09-11",
+  "note": "海南离岛免税模块元数据。月度/季度/年度趋势数据来自既有 dutyfree_monthly.csv（含销售额/购物人数/件数/客单价/同比），本文件记录口径说明与年度汇总预留。null=暂无。",
+  "source": { "name": "海口海关、海南省统计局、同花顺iFinD", "type": "海关总署" },
+  "annual": [
+    { "year": 2024, "sales": null, "shoppers": null, "items": null, "sales_yoy": null },
+    { "year": 2025, "sales": null, "shoppers": null, "items": null, "sales_yoy": null }
+  ],
+  "fieldMap": {
+    "sales": "shopping_sales_cny_100m",
+    "shoppers": "shoppers_10k",
+    "items": "items_10k",
+    "spend": "spend_per_shopper_cny",
+    "sales_yoy": "sales_yoy_pct",
+    "shoppers_yoy": "shoppers_yoy_pct",
+    "items_yoy": "items_yoy_pct",
+    "spend_yoy": "spend_per_shopper_yoy_pct"
+  }
+}
