@@ -22,6 +22,17 @@
 | `restore_zsxq_auth.py` | 从备份恢复登录凭据，免重新扫码 |
 | `zsxq_auth_backup.json` | 登录凭据备份文件（见下方「登录凭据备份」说明） |
 
+## WorkBuddy Skill
+
+仓库已内置项目 skill：[`../.workbuddy/skills/guojin-shangshe-zsxq-sync/SKILL.md`](../.workbuddy/skills/guojin-shangshe-zsxq-sync/SKILL.md)。
+
+该 skill 是本目录脚本的操作规程，重点补充两点人工规则：
+
+1. **双线同步顺序**：先更新商社观点精选线，形成 `commercial_keys`；再更新市场观点段子线，市场观点必须先排除与商社观点重复的 topic / 标题 / 正文。
+2. **市场观点筛选口径**：只保留真正有信息量的调研纪要、行业观点、数据点评短文；剔除研报发布、附件/PDF 贴、会议预告、直播通知、广告运营、纯图片/文件/标签贴。
+
+后续在 WorkBuddy 中执行「更新商社观点和市场观点」时，应优先按该 skill 的验收清单输出：商社新增、市场观点候选、商社重复剔除、非段子剔除原因、最终条数、GitHub commit。
+
 ## 段子筛选规则（segment_filter.py）
 
 「段子」= 有实质信息量的调研纪要 / 行业观点 / 数据点评短文。判定按「宁可放过可疑，不可错杀干货」原则，依次执行：
