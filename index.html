@@ -2607,7 +2607,7 @@ document.querySelectorAll('a[href*="workbuddy.cn"]').forEach(function(a){a.style
       <label>开始日期<input id="kline-start" type="date"></label>
       <span class="kline-range-sep">至</span>
       <label>结束日期<input id="kline-end" type="date"></label>
-      <div class="kline-quick"><button type="button" data-days="0">当日</button><button type="button" data-days="5">近 5 日</button><button type="button" data-days="30">近 1 月</button><button type="button" data-days="90">近 3 月</button><button type="button" data-days="365">近 1 年</button><button type="button" data-days="all">全部</button></div>
+      <div class="kline-quick" id="kline-quick"></div>
     </div>
     <div class="kline-stage"><canvas id="kline-canvas"></canvas><div class="kline-cross" id="kline-cross"></div><div class="kline-tip" id="kline-tip"></div></div>
     <div id="kline-status">选择周期后加载行情…</div>
@@ -2634,6 +2634,8 @@ function rowDate(r){return K.rowDate(r);}
 function displayDate(r){var s=String(r[0]||"");return /^\d{12}$/.test(s)?s.slice(0,4)+"-"+s.slice(4,6)+"-"+s.slice(6,8)+" "+s.slice(8,10)+":"+s.slice(10,12):s.slice(0,10);}
 function filtered(){var a=current.raw||[],s=startInput.value,e=endInput.value;return a.filter(function(r){var d=rowDate(r);return(!s||d>=s)&&(!e||d<=e);});}
 function syncRange(rows,reset){if(!rows.length)return;var lo=rowDate(rows[0]),hi=rowDate(rows[rows.length-1]);startInput.min=lo;startInput.max=hi;endInput.min=lo;endInput.max=hi;if(reset){endInput.value=hi;var days=current.period==="m5"?0:(current.period==="day"?180:(current.period==="week"?730:1825)),d=new Date(hi+"T00:00:00");d.setDate(d.getDate()-days);startInput.value=d.toISOString().slice(0,10)<lo?lo:d.toISOString().slice(0,10);}}
+var QUICK={m5:[["当日",0]],day:[["近 1 月",30],["近 3 月",90],["近 6 月",180],["近 1 年",365],["近 3 年",1095],["全部","all"]],week:[["近 3 月",90],["近 6 月",180],["近 1 年",365],["近 3 年",1095],["近 5 年",1825],["全部","all"]],month:[["近 1 年",365],["近 3 年",1095],["近 5 年",1825],["近 10 年",3650],["全部","all"]]};
+function renderQuick(){var host=document.getElementById("kline-quick");if(!host)return;host.innerHTML=(QUICK[current.period]||[]).map(function(o){return '<button type="button" data-days="'+o[1]+'">'+o[0]+"</button>";}).join("");}
 function draw(rows){
  var box=canvas.parentElement,w=Math.max(320,box.clientWidth-16),h=Math.max(220,box.clientHeight-16),dpr=window.devicePixelRatio||1;canvas.width=w*dpr;canvas.height=h*dpr;canvas.style.width=w+"px";canvas.style.height=h+"px";var c=canvas.getContext("2d");c.scale(dpr,dpr);c.clearRect(0,0,w,h);current.plot=null;if(!rows.length)return;
  var left=52,right=14,top=18,bottom=38,volH=52,chartH=h-top-bottom-volH,dateSet={},isHK=/\.HK$/i.test(current.code)||String(current.code).toUpperCase()==="HSI.HI";rows.forEach(function(r){dateSet[rowDate(r)]=1;});var fixedSession=current.period==="m5"&&Object.keys(dateSet).length===1,sessionTotal=isHK?345:255,gap=Math.max(.5,(w-left-right)/rows.length*.18),cw=fixedSession?Math.max(2,(w-left-right)/(sessionTotal/5)*.68):Math.max(1,(w-left-right)/rows.length-gap),max=-Infinity,min=Infinity,vmax=0;
@@ -2659,10 +2661,10 @@ function draw(rows){
 function renderRange(){var rows=filtered();if(!rows.length){status.textContent="所选日期区间内暂无数据";draw([]);return;}draw(rows);var last=rows[rows.length-1],first=rows[0],chg=((+last[2]-+first[1])/(+first[1]||1)*100);status.textContent=(current.period==="m5"?"当日完整时段 ":"区间 ")+displayDate(first)+" 至 "+displayDate(last)+" · "+rows.length+" 根 K 线 · 最新收盘 "+(+last[2]).toFixed(2)+" · 区间涨跌 "+(chg>=0?"+":"")+chg.toFixed(2)+"%";}
 function load(period){
  var requestId=++current.requestId;current.period=period;if(period==="m5")K.checkRollover(current.code);status.textContent="正在加载 "+({m5:"日内 5 分钟 K",day:"日 K",week:"周 K",month:"月 K"}[period])+"…";document.querySelectorAll(".kline-tab").forEach(function(b){b.classList.toggle("active",b.getAttribute("data-period")===period);});
- request(period,current.code).then(function(rows){if(requestId!==current.requestId)return;current.raw=period==="m5"?K.sanitizeIntraday(current.code,rows).rows:rows;syncRange(current.raw,true);renderRange();}).catch(function(e){if(requestId!==current.requestId)return;current.raw=[];startInput.value=endInput.value="";status.textContent=e.message||"行情加载失败";draw([]);});
+ request(period,current.code).then(function(rows){if(requestId!==current.requestId)return;current.raw=period==="m5"?K.sanitizeIntraday(current.code,rows).rows:rows;syncRange(current.raw,true);renderQuick();renderRange();}).catch(function(e){if(requestId!==current.requestId)return;current.raw=[];startInput.value=endInput.value="";status.textContent=e.message||"行情加载失败";draw([]);});
 }
 window.openCoverageKline=open;
-function open(item){var next=item.getAttribute("data-wind-code")||"";if(next!==current.code){current.raw=[];current.plot=null;}current.code=next;current.name=(item.querySelector(".coverage-name,.name")||{}).textContent||current.code;title.textContent=current.name+" · K 线";sub.textContent=current.code+" · 腾讯财经 · 日内按行情市场交易日刷新，其余前复权";mask.classList.add("open");document.body.style.overflow="hidden";load(current.period);}
+function open(item){var next=item.getAttribute("data-wind-code")||"";if(next!==current.code){current.raw=[];current.plot=null;}current.code=next;current.name=(item.querySelector(".coverage-name,.name")||{}).textContent||current.code;title.textContent=current.name;sub.textContent=current.code+" · 腾讯财经 · 日内按行情市场交易日刷新，其余前复权";mask.classList.add("open");document.body.style.overflow="hidden";load(current.period);}
 document.getElementById("coverage-list")&&document.getElementById("coverage-list").addEventListener("click",function(e){var item=e.target.closest(".coverage-item");if(item)open(item);});
 document.getElementById("kline-close").addEventListener("click",function(){mask.classList.remove("open");document.body.style.overflow="";});
 mask.addEventListener("click",function(e){if(e.target===mask){mask.classList.remove("open");document.body.style.overflow="";}});
@@ -2674,7 +2676,7 @@ canvas.addEventListener("pointerleave",function(){tip.style.display="none";cross
 document.querySelector(".kline-quick").addEventListener("click",function(e){var b=e.target.closest("button[data-days]");if(!b||!current.raw.length)return;var hi=rowDate(current.raw[current.raw.length-1]);endInput.value=hi;if(b.getAttribute("data-days")==="all")startInput.value=rowDate(current.raw[0]);else{var d=new Date(hi+"T00:00:00");d.setDate(d.getDate()-Number(b.getAttribute("data-days")));startInput.value=d.toISOString().slice(0,10)<rowDate(current.raw[0])?rowDate(current.raw[0]):d.toISOString().slice(0,10);}renderRange();});
 window.addEventListener("resize",function(){if(mask.classList.contains("open"))renderRange();});
 K.onTradingDayChange(function(e){if(mask.classList.contains("open")&&K.marketOf(current.code)===e.market&&current.period==="m5"){current.raw=[];current.plot=null;draw([]);status.textContent="检测到新交易日，正在加载当天分钟 K…";load("m5");}});
-setInterval(function(){if(!current.code)return;var changed=K.checkRollover(current.code);if(mask.classList.contains("open")&&current.period==="m5"&&!changed)load("m5");},30000);
+setInterval(function(){if(!current.code)return;var changed=K.checkRollover(current.code);if(mask.classList.contains("open")&&current.period==="m5"&&!changed)load("m5");},60000);
 document.addEventListener("visibilitychange",function(){if(!document.hidden&&mask.classList.contains("open")&&current.period==="m5"){K.checkRollover(current.code);load("m5");}});
 window.addEventListener("focus",function(){if(mask.classList.contains("open")&&current.period==="m5"){K.checkRollover(current.code);load("m5");}});
 document.addEventListener("keydown",function(e){if(e.key==="Escape"&&mask.classList.contains("open")){mask.classList.remove("open");document.body.style.overflow="";}});
