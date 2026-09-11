@@ -1,0 +1,12 @@
+{
+  "updatedAt": "2026-09-11",
+  "company": "中国旅游集团中免股份有限公司（中国中免, 601888.SH / 1880.HK）",
+  "note": "单位：亿元人民币；毛利率/净利率为 %；yoy 为同比百分数；gpm_yoy_pct 为毛利率同比变化（百分点）。null=暂无可靠数据。",
+  "periods": [
+    { "period": "2026Q2", "type": "quarter", "revenue": 107.49, "revenue_yoy": -5.75, "net_profit": 7.58, "net_profit_yoy": 14.54, "gross_margin": 34.32, "gpm_yoy_pct": 1.87, "net_margin": null, "minority_pnl": null, "source": "ctg_report" },
+    { "period": "2026H1", "type": "half", "revenue": 276.55, "revenue_yoy": -1.76, "net_profit": 31.06, "net_profit_yoy": 19.49, "gross_margin": 33.90, "gpm_yoy_pct": 1.14, "net_margin": null, "minority_pnl": -0.62, "source": "ctg_report" }
+  ],
+  "hainan": [
+    { "period": "2026H1", "type": "half", "hainan_revenue": 185.54, "hainan_revenue_yoy": 23.44, "hainan_gross_margin": 22.77, "hainan_gpm_yoy_pct": 2.42, "hainan_rev_share": null, "source": "ctg_report" }
+  ]
+}
