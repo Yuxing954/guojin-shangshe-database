@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>观点与纪要中心 · 国金商社</title><link rel="stylesheet" href="scripts/earnings.css?v=2">
+<style>
+
+  :root{--brand:#4f46e5;--navy:#18181b;--navy2:#18181b;--ink:#18181b;--sub:#71717a;--line:#fafafa;--bg:#ffffff;--card:#ffffff;
+   --rep:#372eb0;--repBg:#fafafa;--mkt:#1f7a5c;--mktBg:#e7f5ef;--min:#a5661f;--minBg:#fafafa;--pink:#b23a64;--pinkBg:#fafafa}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;font-size:14px}
+  a{color:var(--navy);text-decoration:none}
+  .wrap{max-width:980px;margin:0 auto;padding:14px 18px 60px}
+  .mast{display:flex;flex-direction:column;gap:3px;padding:6px 2px 2px}
+  .kicker{font-size:11.5px;letter-spacing:.14em;color:var(--sub)}
+  h1{font-size:22px;font-weight:700;color:var(--navy2)}
+  .lede{font-size:13px;color:var(--sub)}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px;align-items:center}
+  .tab{border:1px solid var(--line);background:#ffffff;padding:6px 16px;border-radius:999px;cursor:pointer;font-size:13px;color:#221d66;user-select:none}
+  .tab.on{background:var(--brand);color:#ffffff;border-color:var(--brand)}
+  .toolrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0 2px}
+  .cnt{font-size:12.5px;color:var(--sub);margin-left:auto}
+  .toolrow select,.toolrow input{border:1px solid var(--line);border-radius:8px;padding:6px 9px;font-size:12.6px;background:#ffffff;color:#1d1955}
+  input[type=search]{flex:1;min-width:200px}
+  .date-tools{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .date-tools label{font-size:12px;color:var(--sub);white-space:nowrap}
+  .date-tools input[type=date]{min-width:132px}
+  .date-tools .clear-date{border:0;background:transparent;color:var(--brand);font-size:12px;cursor:pointer;padding:5px 2px}
+  @media(max-width:720px){.date-tools{width:100%}.date-tools input[type=date],.date-tools select{flex:1;min-width:0}}
+  .preview-note{margin-top:10px;background:#fafafa;border:1px dashed #edc699;color:#96652c;font-size:12.5px;padding:8px 12px;border-radius:8px;display:none}
+  .list{margin-top:12px}
+  .crd{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 16px;margin-bottom:10px;border-left:4px solid var(--cc,#a1a1aa)}
+  .crd.k-shop{--cc:var(--mkt)} .crd.k-allviews{--cc:#6b668f} .crd.k-min{--cc:var(--min)}
+  .crd .l1{display:flex;align-items:center;flex-wrap:wrap;gap:6px 10px}
+  .lib{font-size:11px;color:#ffffff;padding:1px 8px;border-radius:999px;font-weight:500}
+  .k-shop .lib{background:var(--mkt)} .k-allviews .lib{background:#6b668f} .k-min .lib{background:var(--min)}
+  .when{font-size:12px;color:var(--sub)}
+  .meta{font-size:12px;color:var(--sub);display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:3px}
+  .meta b{color:#71717a;font-weight:600}
+  .ttl{font-size:15.5px;font-weight:650;color:#18181b;margin-top:5px;line-height:1.45}
+  .subline{font-size:13px;color:#4d5d73;margin-top:6px;white-space:pre-wrap;word-break:break-word;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;max-height:7.2em;overflow:hidden}
+  .crd.expanded .subline{display:block;-webkit-line-clamp:unset;max-height:none;overflow:visible}
+  .readall{margin-top:8px;border:0;background:transparent;color:var(--brand);font-size:12.5px;font-weight:600;cursor:pointer;padding:2px 0}
+  .tags{margin-top:8px;display:flex;flex-wrap:wrap;gap:5px}
+  .tg{background:#fafafa;color:#332aae;border-radius:6px;padding:1px 8px;font-size:11.5px}
+  .tg.mkt{background:var(--mktBg);color:var(--mkt)}
+  .tg.min{background:var(--minBg);color:var(--min)}
+  .act{margin-top:9px;font-size:12.5px;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center}
+  .act a.b{color:var(--navy)}
+  .go{margin-left:auto;font-size:12.5px;cursor:pointer;color:var(--navy)}
+  .eng{margin-left:auto;font-size:12.5px;color:var(--sub);cursor:pointer}
+  .eng:hover{color:var(--navy)}
+  .empty{color:var(--sub);text-align:center;padding:50px 0}
+  .pager{display:flex;gap:6px;margin-top:14px;flex-wrap:wrap}
+  .pager button{min-width:28px;height:28px;border:1px solid var(--line);background:#ffffff;border-radius:7px;cursor:pointer;font-size:12.5px}
+  .pager button.on{background:var(--brand);color:#ffffff;border-color:var(--brand)}
+  .pager button:disabled{opacity:.4}
+  .foot{margin-top:26px;padding-top:12px;border-top:1px solid var(--line);font-size:11.5px;color:#a1a1aa}
+  .market-subtabs{display:none;gap:6px;margin-top:8px;padding-left:2px}.market-subtabs .tab{font-size:11px;padding:5px 11px}
+
+
+/* ---- 独立页适配：覆盖 earnings.css 的全局表单样式 ---- */
+.toolrow select,.toolrow input{width:auto}
+.toolrow input[type=search]{width:auto;flex:1;min-width:200px}
+.date-tools label{display:inline}
+.date-tools input[type=date]{width:132px}
+main .wrap{max-width:1040px;margin:0 auto}
+.mast{padding-top:2px}
+</style></head>
+<body>
+<aside><a class="brand" href="index.html">SINOLINK<span>国金商社数据库</span></a><nav><a href="index.html">← 返回数据库</a><a href="index.html#coverage-live">实时行情</a><a href="index.html#consumer-focus">重点公司</a><a href="index.html#sec-f">业绩与财务</a><a href="earnings.html">财报季工作台</a><a class="active" href="research.html">观点与纪要</a></nav><div class="aside-foot">RESEARCH OPERATIONS<br>商贸零售 · 社会服务</div></aside>
+<main>
+<div class="wrap">
+  <div class="mast">
+    <div class="kicker">国金商社 · 研究功能中心</div>
+    <h1>观点与纪要中心</h1>
+    <div class="lede">国金观点、市场观点与纪要文库统一浏览；国金观点等待独立 CSV 接入</div>
+  </div>
+  <div class="tabs" id="tabs"></div>
+  <div class="market-subtabs" id="marketSubtabs"><span class="tab on" data-ms="shop">商社观点</span><span class="tab" data-ms="allviews">全部观点</span></div>
+  <div class="toolrow">
+    <input id="kw" type="search" placeholder="关键词搜索标题 / 内容 / 结论 / 标的">
+    <select id="scope"><option value="">全部来源</option></select>
+    <div class="date-tools" id="dateTools">
+      <label for="dateFrom">从</label><input id="dateFrom" type="date" aria-label="开始日期">
+      <label for="dateTo">到</label><input id="dateTo" type="date" aria-label="结束日期">
+      <select id="timeSort" aria-label="时间排序"><option value="desc">时间：最新在前</option><option value="asc">时间：最早在前</option></select>
+      <button class="clear-date" id="clearDate" type="button">清除时间</button>
+    </div>
+    <span class="cnt" id="mCount"></span>
+  </div>
+  <div class="preview-note" id="previewNote"><b>本地预览：</b>将显示内置示例；上线后自动读取在线三库。</div>
+  <div class="list" id="list"></div>
+  <div class="pager" id="pager"></div>
+  <div class="foot">数据来源：商社市场观点 / 全部市场观点 / 纪要文库。国金观点将在独立 CSV 建立后接入。</div>
+</div>
+</main>
+<script id="csv-data-adapter">
+(function(){
+"use strict";
+var cache={}, manifestPromise=null, listeners=[];
+function parseCSV(text){
+  text=String(text||"").replace(/^\uFEFF/,"");
+  var rows=[],row=[],cell="",quoted=false,i,c,next;
+  for(i=0;i<text.length;i++){c=text[i];next=text[i+1];
+    if(quoted){if(c==='"'&&next==='"'){cell+='"';i++;}else if(c==='"'){quoted=false;}else{cell+=c;}}
+    else if(c==='"'){quoted=true;}
+    else if(c===","){row.push(cell);cell="";}
+    else if(c==="\n"){row.push(cell.replace(/\r$/,""));rows.push(row);row=[];cell="";}
+    else{cell+=c;}
+  }
+  if(cell||row.length){row.push(cell.replace(/\r$/,""));rows.push(row);}
+  if(!rows.length)return [];
+  var head=rows.shift().map(function(x){return x.replace(/^\uFEFF/,"").trim();});
+  return rows.filter(function(r){return r.some(function(v){return String(v).trim()!=="";});}).map(function(r,ri){
+    var o={id:"csv-"+ri,_id:"csv-"+ri};
+    head.forEach(function(k,j){var v=(r[j]==null?"":r[j]).trim();
+      if(v===""){o[k]=null;}
+      else if(/^[-+]?\d+(?:\.\d+)?$/.test(v)){o[k]=Number(v);}
+      else if((v[0]==="{"&&v[v.length-1]==="}")||(v[0]==="["&&v[v.length-1]==="]")){try{o[k]=JSON.parse(v);}catch(e){o[k]=v;}}
+      else{o[k]=v;}
+    }); return o;
+  });
+}
+function adapt(id,rows){
+  rows.forEach(function(r){
+    if(typeof r["覆盖板块"]==="string")r["覆盖板块"]=r["覆盖板块"].split(/[，,]/).map(function(x){return x.trim();}).filter(Boolean);
+    if(id==="announcements"){
+      r["标题"]=r["标题"]||r["公告标题"]||"";
+      r["日期"]=r["日期"]||r["公告日期"]||"";
+      r["类型"]=r["类型"]||"公司公告";
+      r["覆盖板块"]=r["覆盖板块"]||(r["板块"]?[r["板块"]]:[]);
+      r["相关标的"]=r["相关标的"]||[r["公司名称"],r["证券代码"]].filter(Boolean).join(" ");
+      r["核心结论"]=r["核心结论"]||r["摘要"]||"";
+    }
+  });return rows;
+}
+function manifest(){return manifestPromise||(manifestPromise=fetch("data-manifest.json",{cache:"no-store"}).then(function(r){if(!r.ok)throw Error("manifest "+r.status);return r.json();}));}
+function dataset(id){
+  if(cache[id])return cache[id];
+  cache[id]=manifest().then(function(m){var d=(m.datasets||[]).filter(function(x){return x.id===id;})[0];if(!d)throw Error("未配置数据集: "+id);
+    return fetch(d.file,{cache:"no-store"}).then(function(r){if(!r.ok)throw Error(d.file+" "+r.status);return r.text();}).then(function(t){return adapt(id,parseCSV(t));});
+  }); return cache[id];
+}
+function compare(a,b){if(a==null&&b==null)return 0;if(a==null)return 1;if(b==null)return -1;return a<b?-1:(a>b?1:0);}
+function matchFilter(row,f){
+  if(!f)return true;
+  if(Array.isArray(f))return f.every(function(x){return matchFilter(row,x);});
+  if(f.and)return f.and.every(function(x){return matchFilter(row,x);});
+  if(f.or)return f.or.some(function(x){return matchFilter(row,x);});
+  var key=f.property||f.field||f.name, val=key?row[key]:null, want=("value" in f)?f.value:f.values, op=f.operator||f.condition||"equals";
+  if(op==="equals"||op==="eq")return Array.isArray(want)?want.indexOf(val)>=0:String(val)==String(want);
+  if(op==="notEquals"||op==="neq")return String(val)!=String(want);
+  if(op==="contains")return String(val==null?"":val).indexOf(String(want))>=0;
+  if(op==="isNotEmpty")return val!=null&&val!=="";
+  if(op==="isEmpty")return val==null||val==="";
+  if(op==="greaterThan"||op==="gt")return val>want;
+  if(op==="lessThan"||op==="lt")return val<want;
+  return true;
+}
+var database={
+  query:function(q){q=q||{};return dataset(q.databaseId).then(function(src){var rows=src.slice();
+    if(q.filter||q.filters)rows=rows.filter(function(r){return matchFilter(r,q.filter||q.filters);});
+    (q.sorts||[]).slice().reverse().forEach(function(s){rows.sort(function(a,b){var n=compare(a[s.property],b[s.property]);return s.direction==="descending"?-n:n;});});
+    var size=Math.max(1,Math.min(Number(q.pageSize)||200,1000)),start=Number(q.startCursor)||0,end=start+size;
+    return {results:rows.slice(start,end),hasMore:end<rows.length,nextCursor:end<rows.length?String(end):null,total:rows.length};
+  });},
+  getSchema:function(q){return dataset(q.databaseId).then(function(rows){var keys=rows.length?Object.keys(rows[0]).filter(function(k){return k!=="id";}):[];
+    return {properties:keys.map(function(k){var vals=[],seen={};rows.forEach(function(r){var v=r[k];if(v!=null&&v!==""&&!seen[String(v)]){seen[String(v)]=1;vals.push(v);}});
+      return {name:k,type:vals.every(function(v){return typeof v==="number";})?"number":"text",config:{options:vals.length<=50?vals.map(function(v,i){return{id:k+"-"+i,text:String(v)};}):[]}};
+    })};
+  });},
+  onUpdated:function(fn){if(typeof fn==="function")listeners.push(fn);},
+  addRecord:function(){return Promise.reject(Error("CSV 直连模式为只读，请更新仓库 data/*.csv"));},
+  updateRecord:function(){return Promise.reject(Error("CSV 直连模式为只读，请更新仓库 data/*.csv"));},
+  deleteRecord:function(){return Promise.reject(Error("CSV 直连模式为只读，请更新仓库 data/*.csv"));}
+};
+window.__CSV_DATA__={manifest:manifest,dataset:dataset,parseCSV:parseCSV,cache:cache};
+window.__SMART_PAGE__={database:database};
+})();
+</script>
+<script>
+window.BROWSE_DBS=[{"id":"views","title":"商社观点","k":"shop"},{"id":"all_views","title":"全部观点","k":"allviews"},{"id":"minutes","title":"纪要文库","k":"min"}];
+window.CENTER_EMBED=(function(){try{return window.self!==window.top;}catch(e){return true;}})();
+var KF={shop:["商社观点","#1f7a5c","#e7f5ef"],allviews:["全部观点","#6b668f","#f0eef8"],min:["纪要","#a5661f","#fafafa"]};
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+function getDb(){try{if(window.__SMART_PAGE__&&window.__SMART_PAGE__.database)return window.__SMART_PAGE__.database;}catch(e){}try{var p=window.parent;if(p&&p.__SMART_PAGE__&&p.__SMART_PAGE__.database)return p.__SMART_PAGE__.database;}catch(e){}return null;}
+var DB_API=getDb();
+function loadAll(dbid,c,acc,g){acc=acc||[];g=g||0;if(g>60)return Promise.resolve(acc);return DB_API.query({databaseId:dbid,pageSize:200,startCursor:c}).then(function(r){acc=acc.concat(r.results||[]);var n=r.nextCursor;if(r.hasMore&&n&&n!==c&&(r.results||[]).length)return loadAll(dbid,n,acc,g+1);return acc;});}
+function sv(v){if(v==null)return"";if(typeof v==="object"){if(Array.isArray(v))return v.map(function(x){return x&&x.text!=null?x.text:String(x);}).join(",");if(v.text!=null)return v.text;if(v.link)return v.link;try{return JSON.stringify(v);}catch(e){return"";}}return String(v);}
+function linkOf(v){if(!v)return"";if(typeof v==="object"){if(Array.isArray(v)){for(var i=0;i<v.length;i++){if(v[i]&&v[i].link)return v[i].link;}return v[0]&&(v[0].link||v[0].text)||"";}if(v.link)return v.link;if(v.text)return v.text;return"";}return String(v);}
+function dateKey(r,k){var s=sv(r[k]||r["日期"]||r["时间"]||"");var m=s.match(/(\d{4})[-/.年](\d{1,2})[-/.月](\d{1,2})(?:日)?(?:[T\s]+(\d{1,2}):(\d{2}))?/);if(!m)return"";return m[1]+m[2].padStart(2,"0")+m[3].padStart(2,"0")+(m[4]||"00").padStart(2,"0")+(m[5]||"00");}
+var state={tab:"",marketScope:"shop",kw:"",scope:"",dateFrom:"",dateTo:"",timeSort:"desc",page:1,size:14};
+var E=[];
+var DEMO=[
+ {k:"rep",ttl:"商社板块2026年度策略：内需看高端消费顺周期，出海关注龙头",when:"2026-01-05",sub:"内需：扩内需为首要战略、服务消费是重点，出行链优先（航空>酒店>旅游）；高端消费看免税、黄金珠宝（估值与格局）。",tags:[["tg","年度策略"],["tg","覆盖:商社综合"]],meta:[["分析师","于健"],["标的","中国中免/华住/锦江"],["状态","重点"]],url:"",act2:""},
+ {k:"mkt",ttl:"泡泡玛特8月月刊【东财新消费·刘嘉仁团队】20260907",when:"2026-09-07 19:53",sub:"泡泡玛特8月经营要点：IP新品周期、海外高增、店效表现……",tags:[["tg mkt","泡泡玛特"]],meta:[["作者","水木调研纪要"],["月份","9月"]],url:"https://wx.zsxq.com",act2:"👍1　👁429　💬0"},
+ {k:"min",ttl:"20260903 锦江酒店26H1业绩交流会",when:"2026-09-03",sub:"26H1营收68.01亿/+4.21%，归母净利5.45亿/+47.05%，经营现金流21.03亿/+57.95%；境内有限服务型收入47.48亿/+6.65%。",tags:[["tg min","业绩会"],["tg","覆盖:酒店"]],meta:[["标的","锦江酒店 600754.SH"]],url:"https://example.com/dl",act2:"20260903 锦江酒店26H1业绩交流会.docx"}
+];
+function seedDemo(){
+  window.BROWSE_DBS.forEach(function(e){DEMO.forEach(function(d){var libk={rep:"rep",mkt:"mkt",min:"min"}[e.k];if(libk!==d.k)return;E.push({e:{k:e.k,title:e.title,id:e.id},r:{},m:{lib:KF[d.k][0],when:d.when,ttl:d.ttl,sub:d.sub,tags:d.tags.map(function(t){return{c:t[0],t:t[1]};}),meta:d.meta,url:d.url,act2:d.act2},key:d.when.slice(0,4)+d.when.slice(5,7)+d.when.slice(8,10)});});});
+}
+function typeMeta(x){
+  var e=x.e,r=x.r;var out={lib:e.k,when:sv(r["日期"]||r["时间"]).slice(0,16),ttl:sv(r["标题"]),tags:[],meta:[],sub:"",url:"",act2:""};
+  if(e.k==="rep"){out.tags.push({c:"tg",t:sv(r["类型"])});if(sv(r["分析师"]))out.meta.push(["分析师",sv(r["分析师"])]);if(sv(r["覆盖板块"]))out.tags.push({c:"tg",t:"覆盖:"+sv(r["覆盖板块"]).replace(/^\[|\]$/g,"")});out.sub=sv(r["核心结论"]);if(sv(r["相关标的"]))out.meta.push(["标的",sv(r["相关标的"])]);if(sv(r["状态"]))out.meta.push(["状态",sv(r["状态"])]);
+    out.act2=sv(r["覆盖板块"]);}
+  if(e.k==="shop"||e.k==="allviews"){out.when=sv(r["时间"]).replace("T"," ").slice(0,16);out.sub=sv(r["内容"]);var kwk=String(r["命中关键词"]||"").split("|").filter(Boolean);kwk.forEach(function(t){out.tags.push({c:"tg mkt",t:t});});
+    out.url="";out.act2="👍"+sv(r["点赞"])+"　👁"+sv(r["阅读"])+"　💬"+sv(r["评论"]);}
+  if(e.k==="min"){out.tags.push({c:"tg min",t:sv(r["类型"])});if(sv(r["覆盖板块"]))out.tags.push({c:"tg",t:"覆盖:"+sv(r["覆盖板块"]).replace(/^\[|\]$/g,"")});out.sub=sv(r["摘要"]);if(sv(r["相关标的"]))out.meta.push(["标的",sv(r["相关标的"])]);out.url=linkOf(r["下载链接"]);out.act2=sv(r["文件名"]);}
+  return out;
+}
+function centerTitle(t,s){t=sv(t);s=sv(s);var base=t.replace(/(?:\.\.\.|…)+$/,"").trim();if(base===t)return t;var lines=s.split(/\r?\n/);for(var i=0;i<lines.length;i++){var line=lines[i].replace(/^[#＃\s]+/,"").trim();if(line&&line.length>base.length&&line.indexOf(base.slice(0,Math.min(8,base.length)))>=0)return line;}return base;}
+function render(){
+  var kws=(state.kw||"").toLowerCase();
+  var scope=state.scope,tab=state.tab;
+  var all=E.filter(function(x){
+    if(tab==="gj")return false;if(tab==="mkt"&&x.e.k!==state.marketScope)return false;if(tab&&tab!=="mkt"&&x.e.k!==tab)return false;
+    if(scope&&x.e.k!==scope)return false;
+    if(kws){var hay=(x.m.ttl+" "+x.m.sub+" "+x.m.meta.map(function(k){return k[1];}).join(" ")+" "+x.m.act2).toLowerCase();if(hay.indexOf(kws)<0)return false;}
+    var day=(x.key||"").slice(0,8),from=state.dateFrom.replace(/-/g,""),to=state.dateTo.replace(/-/g,"");
+    if(from&&(!day||day<from))return false;if(to&&(!day||day>to))return false;
+    return true;
+  });
+  all.sort(function(a,b){var c=(a.key||"").localeCompare(b.key||"");if(!c)c=(a.m.ttl||"").localeCompare(b.m.ttl||"");return state.timeSort==="asc"?c:-c;});
+  var total=all.length,pages=Math.max(1,Math.ceil(total/state.size));if(state.page>pages)state.page=pages;
+  var slice=all.slice((state.page-1)*state.size,state.page*state.size);
+  var mc=document.getElementById("mCount");if(mc)mc.innerHTML="共 <b>"+total+"</b> 条";
+  var list=document.getElementById("list");
+  if(!slice.length){list.innerHTML='<div class="empty">'+(state.tab==="gj"?"国金观点 CSV 尚未接入":"当前筛选无内容")+'</div>';renderPager(pages);return;}
+  list.innerHTML=slice.map(function(x){var m=x.m;var mt=m.meta.map(function(k){return "<span>"+esc(k[0])+": <b>"+esc(String(k[1]).slice(0,80))+"</b></span>";}).join("");
+    var tg=m.tags.map(function(t){return '<span class="'+t.c+'">'+esc(t.t)+"</span>";}).join("");
+    var act='';if(m.url){act+='<a class="b" href="'+esc(m.url)+'" target="_blank" rel="noopener">'+(x.e.k==="min"?"下载纪要 ↗":"原文 ↗")+"</a>";}if(m.act2)act+='<span class="eng">'+esc(m.act2)+"</span>";
+    var sub=m.sub?'<div class="subline">'+esc(m.sub)+"</div>":"";
+    var more=m.sub&&m.sub.length>180?'<button class="readall" type="button" onclick="toggleFull(this)">查看全文</button>':"";
+    return '<div class="crd k-'+x.e.k+'"><div class="l1"><span class="lib">'+esc(KF[x.e.k][0])+"</span><span class=\"when\">"+esc(m.when)+"</span>"+mt+'</div><div class="ttl">'+esc(centerTitle(m.ttl,m.sub))+"</div>"+sub+more+tg+'<div class="act">'+act+"</div></div>";
+  }).join("");
+  renderPager(pages);
+}
+function toggleFull(btn){var card=btn&&btn.closest?btn.closest(".crd"):null;if(!card)return;var open=card.classList.toggle("expanded");btn.textContent=open?"收起全文":"查看全文";}
+function renderPager(pages){var pager=document.getElementById("pager"),h="",i;h+='<button '+(state.page<=1?"disabled":"")+' onclick="state.page--;render()">‹</button>';for(i=Math.max(1,state.page-2);i<=Math.min(pages,state.page+2);i++)h+='<button class="'+(i===state.page?"on":"")+'" onclick="state.page='+i+";render()"+'">'+i+"</button>";h+='<button '+(state.page>=pages?"disabled":"")+' onclick="state.page++;render()">›</button>';pager.innerHTML=h;}
+function boot(){
+  if(!DB_API){document.getElementById("previewNote").style.display="block";seedDemo();buildTabs();return;}
+  var jobs=window.BROWSE_DBS.map(function(e){return loadAll(e.id).then(function(rows){rows.forEach(function(r){var m=typeMeta({e:e,r:r});if(!m.ttl&&!m.sub)return;E.push({e:e,r:r,m:m,key:dateKey(r)||"00000000"});});});});
+  Promise.all(jobs).then(function(){buildTabs();}).catch(function(){document.getElementById("previewNote").style.display="block";seedDemo();buildTabs();});
+}
+function buildTabs(){
+  var tb=document.getElementById("tabs");if(!tb)return;
+  var labels=[["","全部"],["gj","国金观点"],["mkt","市场观点"],["min","纪要文库"]];
+  var h='';labels.forEach(function(t){h+='<span class="tab'+(state.tab===t[0]?" on":"")+'" data-k="'+t[0]+'">'+esc(t[1])+"</span>";});tb.innerHTML=h;
+  tb.addEventListener("click",function(ev){var c=ev.target.closest(".tab");if(!c)return;Array.prototype.forEach.call(tb.querySelectorAll(".tab"),function(x){x.classList.remove("on");});c.classList.add("on");state.tab=c.getAttribute("data-k");state.page=1;document.getElementById("marketSubtabs").style.display=state.tab==="mkt"?"flex":"none";render();});
+  var ms=document.getElementById("marketSubtabs");if(ms)ms.addEventListener("click",function(ev){var c=ev.target.closest("[data-ms]");if(!c)return;Array.prototype.forEach.call(ms.querySelectorAll("[data-ms]"),function(x){x.classList.remove("on")});c.classList.add("on");state.marketScope=c.getAttribute("data-ms");state.page=1;render();});var sc=document.getElementById("scope");if(sc){sc.innerHTML='<option value="">全部来源</option>'+window.BROWSE_DBS.map(function(e){return '<option value="'+e.k+'">'+esc(e.title)+"</option>";}).join("");sc.addEventListener("change",function(){state.scope=sc.value;state.page=1;render();});}
+  var kw=document.getElementById("kw");if(kw){kw.addEventListener("input",(function(){var t=null;return function(){clearTimeout(t);var self=this;t=setTimeout(function(){state.kw=self.value;state.page=1;render();},250);};})());}
+  var df=document.getElementById("dateFrom"),dt=document.getElementById("dateTo"),ts=document.getElementById("timeSort"),cd=document.getElementById("clearDate");
+  function applyTime(){state.dateFrom=df.value;state.dateTo=dt.value;state.timeSort=ts.value;state.page=1;render();}
+  [df,dt,ts].forEach(function(el){el.addEventListener("change",applyTime);});
+  cd.addEventListener("click",function(){df.value=dt.value="";state.dateFrom=state.dateTo="";state.page=1;render();});
+  render();
+}
+document.addEventListener("DOMContentLoaded",boot);
+</script>
+</body></html>
