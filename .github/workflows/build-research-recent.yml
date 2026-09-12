@@ -1,0 +1,38 @@
+name: Build research recent.json
+
+on:
+  schedule:
+    # 每天 02:30 UTC（北京时间 10:30）跑一次，赶在盘前
+    - cron: "30 2 * * *"
+  workflow_dispatch:           # 允许手动触发
+
+permissions:
+  contents: write              # GITHUB_TOKEN 需要写权限才能 push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build data/research/recent.json
+        run: |
+          python scripts/build_research_recent.py
+
+      - name: Commit & push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/research/recent.json
+          if git diff --staged --quiet; then
+            echo "no change"
+            exit 0
+          fi
+          git commit -m "data(research): refresh recent.json $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git push
