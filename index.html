@@ -2389,7 +2389,7 @@ function setupSidebar(){
   function topOf(el){ return el.getBoundingClientRect().top + (window.scrollY||document.documentElement.scrollTop||0); }
   function spy(){
     var y=(window.scrollY||document.documentElement.scrollTop||0), cur=null, first=null;
-    for(var i=0;i<order.length;i++){ var el=document.getElementById(order[i]); if(!el)continue; if(!first)first=order[i]; if(topOf(el)-150<=y) cur=order[i]; }
+    for(var i=0;i<order.length;i++){ var el=document.getElementById(order[i]); if(!el||el.offsetParent===null)continue; if(!first)first=order[i]; if(topOf(el)-150<=y) cur=order[i]; }
     if(!cur)cur=first;
     setOn(cur);
   }
