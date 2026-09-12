@@ -22,11 +22,19 @@
   function sessionAxis(code,row){var market=marketOf(code),s=String(row&&row[0]||""),hh=Number(s.slice(8,10)),mm=Number(s.slice(10,12)),t=hh*60+mm;if(market==="HK"){if(t<=720)return{minute:Math.max(0,t-570),total:345};if(t<780)return{minute:150,total:345};return{minute:Math.min(345,165+t-780),total:345};}if(market==="CN"){if(t<=690)return{minute:Math.max(0,t-570),total:255};if(t<780)return{minute:120,total:255};return{minute:Math.min(255,135+t-780),total:255};}return{minute:Math.max(0,Math.min(390,t-570)),total:390};}
   function normalize(obj,period){var d=obj&&obj.data;if(!d)return[];var k=Object.keys(d)[0],x=d[k]||{};if(period==="m1"||period==="m5"){if(Array.isArray(x[period]))return x[period];var md=x.data||{},pts=md.data||[],date=compactDate(md.date),out=[],bucket=null,prevVol=0,stepB=period==="m1"?1:5;pts.forEach(function(line,i){var p=String(line).split(" "),tm=p[0],price=Number(p[1]),cum=Number(p[2])||prevVol,vol=Math.max(0,cum-prevVol);prevVol=cum;if(!isFinite(price))return;if(!bucket||i%stepB===0){if(bucket)out.push(bucket);bucket=[date+tm,price,price,price,price,vol];}else{bucket[2]=price;bucket[3]=Math.max(bucket[3],price);bucket[4]=Math.min(bucket[4],price);bucket[5]+=vol;}});if(bucket)out.push(bucket);return out;}var a=x["qfq"+period]||x[period]||x["fq"+period]||[];return Array.isArray(a)?a:[];}
   function sanitizeIntraday(code,rows,now){var marketDate=tradingDate(code,now),dataSession=latestSession(rows);if(!dataSession)return{rows:[],marketDate:marketDate,session:""};/* Before a new session has published its first tick, never relabel or append the prior session. */return{rows:dataSession===marketDate?onlySession(rows,marketDate):[],marketDate:marketDate,session:dataSession};}
+  function sessionOpen(rows,row){
+    var date=rowDate(row),first=null;
+    rows.forEach(function(r){if(rowDate(r)===date&&(!first||String(r[0])<String(first[0])))first=r;});
+    if(!first)return null;
+    // A truncated minute window cannot establish the day's opening price.
+    var time=String(first[0]).slice(8,12),open=Number(first[1]);
+    return (time==="0930"||time==="0931")&&isFinite(open)&&open>0?open:null;
+  }
   function clearIntraday(code){Object.keys(intradayCache).forEach(function(k){if(!code||k.indexOf(String(code).toUpperCase()+"|")===0)delete intradayCache[k];});}
   function checkRollover(code,now){var market=marketOf(code),next=tradingDate(code,now),prev=lastDates[market];lastDates[market]=next;if(prev&&prev!==next){clearIntraday();listeners.slice().forEach(function(fn){fn({market:market,previous:prev,current:next});});return true;}return false;}
   function onTradingDayChange(fn){listeners.push(fn);return function(){listeners=listeners.filter(function(x){return x!==fn;});};}
   function minuteCacheKey(code,now){return String(code||"").toUpperCase()+"|m5|"+tradingDate(code,now);}
   function getIntradayCache(code,now,maxAge){checkRollover(code,now);var x=intradayCache[minuteCacheKey(code,now)];return x&&Date.now()-x.at<=(maxAge==null?25000:maxAge)?x.rows:null;}
   function setIntradayCache(code,rows,now){var clean=sanitizeIntraday(code,rows,now);intradayCache[minuteCacheKey(code,now)]={at:Date.now(),rows:clean.rows};return clean;}
-  return{MARKETS:MARKETS,marketOf:marketOf,quoteCode:quoteCode,calendarDate:calendarDate,tradingDate:tradingDate,rowDate:rowDate,latestSession:latestSession,sessionAxis:sessionAxis,normalize:normalize,sanitizeIntraday:sanitizeIntraday,checkRollover:checkRollover,onTradingDayChange:onTradingDayChange,clearIntraday:clearIntraday,getIntradayCache:getIntradayCache,setIntradayCache:setIntradayCache};
+  return{MARKETS:MARKETS,marketOf:marketOf,quoteCode:quoteCode,calendarDate:calendarDate,tradingDate:tradingDate,rowDate:rowDate,latestSession:latestSession,sessionAxis:sessionAxis,sessionOpen:sessionOpen,normalize:normalize,sanitizeIntraday:sanitizeIntraday,checkRollover:checkRollover,onTradingDayChange:onTradingDayChange,clearIntraday:clearIntraday,getIntradayCache:getIntradayCache,setIntradayCache:setIntradayCache};
 });
