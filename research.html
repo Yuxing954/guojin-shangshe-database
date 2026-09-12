@@ -134,10 +134,35 @@ function adapt(id,rows){
   });return rows;
 }
 function manifest(){return manifestPromise||(manifestPromise=fetch("data-manifest.json",{cache:"no-store"}).then(function(r){if(!r.ok)throw Error("manifest "+r.status);return r.json();}));}
+/* 预聚合 recent.json：服务端每日把 views/all_views/minutes 三个库
+   截为最近 90 天、最多 400 条/库、单条 1200 字，页面只读小 JSON。
+   若 recent.json 缺失或不含本库，降级回原始 CSV 全量加载。 */
+var RECENT_JSON_URL="data/research/recent.json";
+var recentCachePromise=null;
+function recentAll(){
+  if(recentCachePromise)return recentCachePromise;
+  recentCachePromise=fetch(RECENT_JSON_URL,{cache:"no-store"}).then(function(r){
+    if(!r.ok)return null;
+    return r.json();
+  }).then(function(payload){
+    if(!payload||!payload.dbs)return null;
+    var map={};
+    for(var i=0;i<payload.dbs.length;i++){
+      var d=payload.dbs[i];
+      if(d&&d.id&&Array.isArray(d.rows))map[d.id]=d.rows;
+    }
+    return map;
+  }).catch(function(){return null;});
+  return recentCachePromise;
+}
 function dataset(id){
   if(cache[id])return cache[id];
-  cache[id]=manifest().then(function(m){var d=(m.datasets||[]).filter(function(x){return x.id===id;})[0];if(!d)throw Error("未配置数据集: "+id);
-    return fetch(d.file,{cache:"no-store"}).then(function(r){if(!r.ok)throw Error(d.file+" "+r.status);return r.text();}).then(function(t){return adapt(id,parseCSV(t));});
+  cache[id]=recentAll().then(function(map){
+    if(map&&map[id])return adapt(id,map[id]);
+    /* 降级：原始 CSV 全量 */
+    return manifest().then(function(m){var d=(m.datasets||[]).filter(function(x){return x.id===id;})[0];if(!d)throw Error("未配置数据集: "+id);
+      return fetch(d.file,{cache:"no-store"}).then(function(r){if(!r.ok)throw Error(d.file+" "+r.status);return r.text();}).then(function(t){return adapt(id,parseCSV(t));});
+    });
   }); return cache[id];
 }
 function compare(a,b){if(a==null&&b==null)return 0;if(a==null)return 1;if(b==null)return -1;return a<b?-1:(a>b?1:0);}
