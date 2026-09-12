@@ -867,11 +867,11 @@ body.research-center{--brand:#17212d!important;--brand-strong:#0d141c!important;
     <nav data-page-node-id="pUQaH5toIyms285pf1ji0D" class="side-nav" id="sideNav">
       <div data-page-node-id="Ke8Pz5nnT1PXcxnhXRzj9i" class="side-group"><!--pnid:Jv3jFQSagTjPQTV6ITI1XY-->功能区</div>
       <a class="side-item on" data-sec="coverage-live" href="#coverage-live">实时行情</a>
+      <a class="side-item" href="research.html">观点与纪要</a>
       <a class="side-item" data-sec="consumer-focus" href="#consumer-focus">重点公司</a>
       <a class="side-item" data-open-watch="1" href="#watch-assistant">盯盘助手</a>
       <a data-page-node-id="uRMlPVF719Cu7nxCU9qVCc" class="side-item" data-sec="sec-f" href="#sec-f"><!--pnid:5aGSSsLIOYUmWe8HSsRM39-->业绩与财务</a>
       <a class="side-item" href="earnings.html">财报季工作台</a>
-      <a class="side-item research-center-link" data-sec="v37cwrap" href="#v37cwrap">观点与纪要</a>
       <div data-page-node-id="zPy2CIsUpd9AOmEa3kLPKO" class="side-group" id="indGroup"><span data-page-node-id="GnuLdKIJtkD7Yz4bOi3i3C"><!--pnid:TdSaGr5TZwJBYRolJW4Tod-->行业数据</span><span data-page-node-id="NyxsuhVzrpaGZmUNI15Wce" class="caret"><!--pnid:OyHGbevvQOKuzF3XxxOLlj-->▾</span></div>
       <div data-page-node-id="nsh4C6bG2o4RYdxBd0j0zU" class="side-sub" id="indSub">
         <div class="side-sector-row"><a data-page-node-id="rnYEzMro7o2HxnfESkNUqL" class="side-item sub sector-main" data-sector-main="1" data-sec="sec-hotel" href="#sec-hotel"><!--pnid:9HRQBZQi2n22SJsRNGan89-->酒店</a><button class="sector-logo hotel" data-open-imm="hotel" type="button" title="打开酒店沉浸看板" aria-label="打开酒店沉浸看板"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V5.5A1.5 1.5 0 0 1 6.5 4h8A1.5 1.5 0 0 1 16 5.5V20M16 9h2.5A1.5 1.5 0 0 1 20 10.5V20M3 20h19M8 8h2m2 0h2m-6 4h2m2 0h2m-6 4h2m2 0h2"/></svg></button></div>
@@ -1047,7 +1047,7 @@ var timer=setInterval(function(){if(document.querySelectorAll("#wind-bench .wind
   <div data-page-node-id="mD0rDMfiVML46il5z1MpJI" class="v37rows" id="v37rows"></div>
   <div data-page-node-id="vZoMWBxPUmI3iuBdDi3oRy" class="v37more"><span data-page-node-id="gEywEBLJmv1hzrJCYRcRJe" class="v37mini" id="v37note"><!--pnid:ZRiksNLV8UT7r1rEZ8uYJh-->加载中…</span><button data-page-node-id="LcLOuKRyMtLQdxUbSZ6ZO7" class="v37btn ghost" id="v37mgmt" type="button"><!--pnid:ZvgS2qHVOm8aZ5gRpDQ2W0-->维护管理模式</button></div>
 </div></div>
-<script id="v37js">(function(){function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}function sv(v){if(v==null)return"";if(typeof v==="object"){if(Array.isArray(v))return v.map(function(x){return x&&x.text!=null?x.text:String(x)}).join(",");if(v.text!=null)return v.text;return""}return String(v)}function dkey(r){var x=sv(r["日期"]||r["时间"]),m=x.match(/(\d{4})[-/.](\d{1,2})[-/.](\d{1,2})/);return m?m[1]+m[2].padStart(2,"0")+m[3].padStart(2,"0"):"00000000"}var DB=[{id:"views",k:"shop",label:"商社观点"},{id:"all_views",k:"allviews",label:"全部观点"},{id:"minutes",k:"mn",label:"纪要"}],all=[],filter="all",market="shop",note=document.getElementById("v37note");function match(x){if(filter==="all")return true;if(filter==="gj")return false;if(filter==="market")return x.d.k===market;return x.d.k===filter}function render(){var rows=document.getElementById("v37rows"),list=all.filter(match).slice(0,7);rows.innerHTML=list.length?list.map(function(x){return'<div class="v37row" data-imm><span class="v37lib '+x.d.k+'">'+x.d.label+'</span><span class="v37when">'+x.key.slice(4,6)+'-'+x.key.slice(6,8)+'</span><span class="v37ttl">'+esc(x.ttl)+'</span></div>'}).join(""):'<div class="v37empty">'+(filter==="gj"?"国金观点 CSV 尚未接入":"该分类暂无内容")+'</div>';if(note)note.textContent=(filter==="all"?"全部内容":filter==="market"?(market==="shop"?"商社观点":"全部观点"):filter==="gj"?"等待独立 CSV":"纪要文库")+" · 显示最近 "+list.length+" 条"}function load(){var api=window.__SMART_PAGE__&&window.__SMART_PAGE__.database;Promise.all(DB.map(function(d){return api.query({databaseId:d.id,pageSize:300}).then(function(r){(r.results||[]).forEach(function(rec){var t=sv(rec["标题"]);if(t)all.push({d:d,ttl:t,key:dkey(rec)})})})})).then(function(){all.sort(function(a,b){return a.key<b.key?1:-1});render()}).catch(function(){note.textContent="研究数据读取失败"})}function openImm(){try{if(typeof window.immersionOpen==="function")window.immersionOpen("report")}catch(e){}}document.getElementById("v37go").onclick=openImm;document.getElementById("v37cwrap").addEventListener("click",function(e){var x=e.target.closest("[data-v37-filter]");if(x){filter=x.dataset.v37Filter;document.querySelectorAll("[data-v37-filter]").forEach(function(q){q.classList.toggle("on",q===x)});document.getElementById("v37market").classList.toggle("show",filter==="market");render();return}var m=e.target.closest("[data-v37-market]");if(m){market=m.dataset.v37Market;document.querySelectorAll("[data-v37-market]").forEach(function(q){q.classList.toggle("on",q===m)});render();return}if(e.target.closest("[data-imm]"))openImm()});load()})();</script>
+<script id="v37js">(function(){function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}function sv(v){if(v==null)return"";if(typeof v==="object"){if(Array.isArray(v))return v.map(function(x){return x&&x.text!=null?x.text:String(x)}).join(",");if(v.text!=null)return v.text;return""}return String(v)}function dkey(r){var x=sv(r["日期"]||r["时间"]),m=x.match(/(\d{4})[-/.](\d{1,2})[-/.](\d{1,2})/);return m?m[1]+m[2].padStart(2,"0")+m[3].padStart(2,"0"):"00000000"}var DB=[{id:"views",k:"shop",label:"商社观点"},{id:"all_views",k:"allviews",label:"全部观点"},{id:"minutes",k:"mn",label:"纪要"}],all=[],filter="all",market="shop",note=document.getElementById("v37note");function match(x){if(filter==="all")return true;if(filter==="gj")return false;if(filter==="market")return x.d.k===market;return x.d.k===filter}function render(){var rows=document.getElementById("v37rows"),list=all.filter(match).slice(0,7);rows.innerHTML=list.length?list.map(function(x){return'<div class="v37row" data-imm><span class="v37lib '+x.d.k+'">'+x.d.label+'</span><span class="v37when">'+x.key.slice(4,6)+'-'+x.key.slice(6,8)+'</span><span class="v37ttl">'+esc(x.ttl)+'</span></div>'}).join(""):'<div class="v37empty">'+(filter==="gj"?"国金观点 CSV 尚未接入":"该分类暂无内容")+'</div>';if(note)note.textContent=(filter==="all"?"全部内容":filter==="market"?(market==="shop"?"商社观点":"全部观点"):filter==="gj"?"等待独立 CSV":"纪要文库")+" · 显示最近 "+list.length+" 条"}function load(){var api=window.__SMART_PAGE__&&window.__SMART_PAGE__.database;Promise.all(DB.map(function(d){return api.query({databaseId:d.id,pageSize:300}).then(function(r){(r.results||[]).forEach(function(rec){var t=sv(rec["标题"]);if(t)all.push({d:d,ttl:t,key:dkey(rec)})})})})).then(function(){all.sort(function(a,b){return a.key<b.key?1:-1});render()}).catch(function(){note.textContent="研究数据读取失败"})}function openImm(){try{if(typeof window.immersionOpen==="function")window.immersionOpen("report")}catch(e){}}document.getElementById("v37go").onclick=function(){location.href="research.html";};document.getElementById("v37cwrap").addEventListener("click",function(e){var x=e.target.closest("[data-v37-filter]");if(x){filter=x.dataset.v37Filter;document.querySelectorAll("[data-v37-filter]").forEach(function(q){q.classList.toggle("on",q===x)});document.getElementById("v37market").classList.toggle("show",filter==="market");render();return}var m=e.target.closest("[data-v37-market]");if(m){market=m.dataset.v37Market;document.querySelectorAll("[data-v37-market]").forEach(function(q){q.classList.toggle("on",q===m)});render();return}if(e.target.closest("[data-imm]")){location.href="research.html";}});load()})();</script>
 
 
 
@@ -2385,7 +2385,7 @@ function setupSidebar(){
   if(grp&&sub){
     grp.addEventListener('click',function(){ sub.classList.toggle('collapsed'); grp.classList.toggle('collapsed'); });
   }
-  var order=['coverage-live','sec-f','v37cwrap','sec-hotel','sec-taxfree','sec-gold','sec-overseas','sec-dining','consumer-focus','watch-assistant'];
+  var order=['coverage-live','sec-f','sec-hotel','sec-taxfree','sec-gold','sec-overseas','sec-dining','consumer-focus','watch-assistant'];
   var secs=[]; order.forEach(function(id){ var el=document.getElementById(id); if(el)secs.push(el); });
   function topOf(el){ return el.getBoundingClientRect().top + (window.scrollY||document.documentElement.scrollTop||0); }
   function spy(){
@@ -2396,6 +2396,16 @@ function setupSidebar(){
   var t=null;
   window.addEventListener('scroll',function(){ if(t)return; t=setTimeout(function(){ t=null; spy(); },80); },{passive:true});
   spy();
+  window.__secSpy=spy;
+  window.addEventListener('load',function(){
+    [0,800,2000,4000].forEach(function(ms){setTimeout(function(){
+      var h=(location.hash||'').replace('#','');
+      if(h){var el=document.getElementById(h);
+        if(el){var y=window.scrollY||0,t=el.getBoundingClientRect().top+y,d=t-y;
+          if(d>40&&d<1500){try{el.scrollIntoView();}catch(e){}}}}
+      spy();
+    },ms);});
+  });
 }
 function getSchemas(done){
   var keys=["u","f","m"]; var n=0;
