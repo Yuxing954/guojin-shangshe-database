@@ -32,7 +32,7 @@ const normalized=K.normalize({data:{sh600754:{data:{date:"20260911",data:["0930 
 assert.deepEqual(normalized[0],["202609110930",10,10,11,9,210]);
 const sessions=[["202609100930",100,101,101,100,10],["202609110930",110,111,111,110,10],["202609110931",111,121,121,111,10]];
 assert.equal(K.sessionOpen(sessions,sessions[2]),110,"intraday uses same-day opening price, not previous minute or previous day");
-assert.equal((sessions[2][2]/K.sessionOpen(sessions,sessions[2])-1)*100,10.000000000000009);
+assert.ok(Math.abs((sessions[2][2]/K.sessionOpen(sessions,sessions[2])-1)*100-10)<1e-9);
 assert.equal(K.sessionOpen([["202609111000",111,121]],sessions[2]),null,"missing opening data must not be fabricated");
 assert.equal(K.sessionOpen([["202609110931",0,121]],sessions[2]),null);
 console.log("market-kline tests passed");
