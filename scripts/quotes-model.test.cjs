@@ -18,4 +18,6 @@ assert.deepEqual(M.candles([['2026-10-01',10,11,12,9],['2026-10-02',10,11,8,9],[
 assert.deepEqual(M.intraday([['202609301500',1,10],['202610071000',1,11],['202610071001',1,12]]).map(r=>r[0]),['202610071000','202610071001']);
 assert.deepEqual(M.intraday([['202609301500',1,10],['202609301530',1,10],['202609301230',1,10]],'600754.SH').map(r=>r[0]),['202609301500'],'exclude lunch and post-session minutes instead of clamping them onto the closing point');
 assert.deepEqual(M.intraday([['202610071559',1,10],['202610072000',1,12]],'ATAT.O').map(r=>r[0]),['202610071559']);
+assert.equal(M.adjustment({data:{usATAT:{day:[['2026-10-07',32.3,31.92,32.48,31.62]]}}},'usATAT','day',false),'源数据','requesting qfq does not prove the returned raw series is adjusted');
+assert.equal(M.adjustment({data:{sh600754:{qfqday:[['2026-09-30',17.89,18.05,18.09,17.73]]}}},'sh600754','day',false),'前复权');assert.equal(M.adjustment({},'hkHSI','day',true),'指数');
 console.log('quotes-model: quote times, failures, missing values, market filters and chart history passed');
