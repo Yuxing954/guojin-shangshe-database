@@ -1,10 +1,21 @@
-name: Check daily research home
+name: Check research website
 
 on:
   pull_request:
     paths:
       - "index.html"
+      - "industry.html"
+      - "companies.html"
+      - "research.html"
+      - "hotel-dashboard.html"
+      - "dutyfree-dashboard.html"
+      - "earnings.html"
+      - "dashboard.html"
       - "database.html"
+      - "scripts/site*"
+      - "scripts/industry.js"
+      - "scripts/companies.js"
+      - "scripts/research.js"
       - "scripts/home.*"
       - "scripts/build_home_snapshot.py"
       - "scripts/test_home_snapshot.py"
@@ -26,6 +37,11 @@ jobs:
         run: |
           python scripts/test_home_snapshot.py
           node --check scripts/home.js
+          node --check scripts/site-shell.js
+          node --check scripts/industry.js
+          node --check scripts/companies.js
+          node --check scripts/research.js
+          node scripts/site-data.test.cjs
       - name: Check existing market and earnings logic
         run: |
           node scripts/market-kline.test.js

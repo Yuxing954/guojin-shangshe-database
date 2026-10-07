@@ -6,7 +6,7 @@
 
 首页仅请求 `data/home-snapshot.json`，不加载全量研究 CSV、图表库或实时行情接口。行情、财报日历及公司完整数据在底部折叠入口按需打开。
 
-原完整看板保存在 `database.html`，独立酒店、免税、研究文库和财报日历继续使用。原 `index.html#sec-*` 等模块链接会跳转到完整看板的同名锚点。
+行业和公司一级入口分别使用 `industry.html` 与 `companies.html`，观点纪要使用重做的 `research.html`。酒店、免税、财报日历以及行情工具统一使用全站导航与主题。旧首页锚点会跳转至对应新入口，行情锚点继续进入 `database.html`。全站交互见 [网站设计说明](website-design.md)。
 
 更新仓库数据后运行：
 

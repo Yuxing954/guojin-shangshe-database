@@ -3,7 +3,10 @@
 消费零售、社会服务与电商行业的研究数据看板，覆盖酒店、免税、OTA、旅游、餐饮、教育、黄金珠宝、跨境电商、零售及人力资源等板块。
 
 - 研究首页：[index.html](./index.html)；展示研究重点、行业关键指标和最新观点纪要
-- 完整数据库：[database.html](./database.html)；行业、公司财务及实时行情
+- 行业数据：[industry.html](./industry.html)；五个行业的指标趋势与历史记录
+- 公司数据：[companies.html](./companies.html)；公司搜索、估值与财务详情
+- 观点纪要：[research.html](./research.html)；检索、正文阅读与纪要下载
+- 行情与工具：[database.html](./database.html)；按模块查看原有功能
 - 通用数据浏览器：[dashboard.html](./dashboard.html)
 - 各项指标旁标注源数据日期，摘要生成时间不代表上游数据已更新
 - 视觉规范：浅色 paper 主题；A 股惯例为涨红跌绿
@@ -17,13 +20,15 @@
 | 研究 | 市场观点、纪要文库 | 券商观点、调研纪要 |
 | 行业与公司 | 行业景气、业绩与财务、标的池与估值 | 月度景气指标、定期报告表现及估值跟踪 |
 
-数据清单见 [data-manifest.json](./data-manifest.json)。首页入口与摘要更新方式见 [每日研究首页说明](./docs/daily-home.md)。
+数据清单见 [data-manifest.json](./data-manifest.json)。首页入口与摘要更新方式见 [每日研究首页说明](./docs/daily-home.md)，全站交互与数据口径见 [网站设计说明](./docs/website-design.md)。
 
 ## 项目结构
 
 ```text
 .
 ├── index.html          # 每日研究首页：3 条重点、4 张行业卡、5 条研究
+├── industry.html       # 行业选择、指标趋势与历史记录
+├── companies.html      # 公司目录、估值与财务详情
 ├── database.html       # 原完整看板：行业、公司、行情与 K 线
 ├── research.html       # 观点与纪要中心
 ├── earnings.html       # 财报日历

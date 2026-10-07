@@ -110,16 +110,16 @@ def build(root=ROOT, now=None):
          "source": dutyfree["source"], "sourceFile": paths["dutyfree_monthly"], "href": "dutyfree-dashboard.html"},
         {"id": "gold", "name": "黄金珠宝", "metric": "上海 Au9999 现货收盘价", "value": numeric(g["数值"]), "unit": g["单位"],
          "change": rate(g["数值"], g_previous.get("数值")), "changeLabel": "较前一记录日", "period": "日度", "asOf": g["数据日期"][:10], "freshnessDays": 7,
-         "source": g["数据来源"], "sourceFile": paths["gold"], "href": "database.html#sec-gold"},
+         "source": g["数据来源"], "sourceFile": paths["gold"], "href": "industry.html#gold"},
         {"id": "dining", "name": "餐饮", "metric": "全国餐饮收入", "value": numeric(dining["餐饮收入(亿元)"]), "unit": "亿元",
          "change": numeric(dining["餐饮收入同比增速(%)"]), "period": dining["月份"], "asOf": month_end(dining["月份"]), "freshnessDays": 50,
-         "source": dining["数据来源"], "sourceFile": paths["dining"], "href": "database.html#sec-dining"},
+         "source": dining["数据来源"], "sourceFile": paths["dining"], "href": "industry.html#dining"},
     ]
     d_change = numeric(dutyfree["sales_yoy_pct"])
     focus = [
         {"sector": "酒店经营", "title": "关注酒店经营的量价变化", "summary": f"全国 RevPAR 为 {numeric(h['revpar']):.1f} 元，同比 {signed(h_change)}。结合入住率与房价查看变化来源。", "asOf": h["end_date"], "href": "hotel-dashboard.html"},
         {"sector": "免税消费", "title": "对照销售额与购物人次", "summary": f"离岛免税销售额 {numeric(dutyfree['shopping_sales_cny_100m']):.2f} 亿元，同比 {signed(d_change)}；购物人次同比 {signed(numeric(dutyfree['shoppers_yoy_pct']))}。", "asOf": month_end(dutyfree["period_id"]), "href": "dutyfree-dashboard.html"},
-        {"sector": "餐饮需求", "title": "跟踪餐饮收入增速", "summary": f"全国餐饮收入同比 {signed(numeric(dining['餐饮收入同比增速(%)']))}，限额以上餐饮同比 {signed(numeric(dining['限额以上同比增速(%)']))}。查看两种口径的趋势。", "asOf": month_end(dining["月份"]), "href": "database.html#sec-dining"},
+        {"sector": "餐饮需求", "title": "跟踪餐饮收入增速", "summary": f"全国餐饮收入同比 {signed(numeric(dining['餐饮收入同比增速(%)']))}，限额以上餐饮同比 {signed(numeric(dining['限额以上同比增速(%)']))}。查看两种口径的趋势。", "asOf": month_end(dining["月份"]), "href": "industry.html#dining"},
     ]
     recent = json.loads((root / "data/research/recent.json").read_text(encoding="utf-8"))
     research = research_items(recent)

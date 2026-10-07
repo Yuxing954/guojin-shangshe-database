@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-07T17:20:21+08:00",
+  "generatedAt": "2026-10-07T17:37:44+08:00",
   "industries": [
     {
       "id": "hotel",
@@ -44,7 +44,7 @@
       "freshnessDays": 7,
       "source": "上海黄金交易所",
       "sourceFile": "data/黄金珠宝板块跟踪数据_2026-09-08.csv",
-      "href": "database.html#sec-gold"
+      "href": "industry.html#gold"
     },
     {
       "id": "dining",
@@ -58,7 +58,7 @@
       "freshnessDays": 50,
       "source": "Wind EDB·国家统计局",
       "sourceFile": "data/餐饮茶饮板块跟踪数据_2026-09-08.csv",
-      "href": "database.html#sec-dining"
+      "href": "industry.html#dining"
     }
   ],
   "focus": [
@@ -81,7 +81,7 @@
       "title": "跟踪餐饮收入增速",
       "summary": "全国餐饮收入同比 +1.4%，限额以上餐饮同比 +0.0%。查看两种口径的趋势。",
       "asOf": "2026-07-31",
-      "href": "database.html#sec-dining"
+      "href": "industry.html#dining"
     }
   ],
   "research": [
