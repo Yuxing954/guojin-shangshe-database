@@ -1,20 +1,21 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-07T19:02:29+08:00",
+  "generatedAt": "2026-10-08T07:17:46+08:00",
   "industries": [
     {
       "id": "hotel",
       "name": "酒店",
       "metric": "全国 RevPAR",
-      "value": 108.32828000000002,
+      "value": 195.341588,
       "unit": "元",
-      "change": 8.124796701343872,
-      "period": "2026W36",
-      "asOf": "2026-09-06",
+      "change": -2.1759950216429402,
+      "period": "2026W40",
+      "asOf": "2026-10-04",
       "freshnessDays": 14,
       "source": "酒店之家",
       "sourceFile": "data/hotel_industry_weekly.csv",
-      "href": "hotel-dashboard.html"
+      "href": "hotel-dashboard.html",
+      "changeLabel": "同周号同比，未作节假日错期调整"
     },
     {
       "id": "dutyfree",
@@ -65,8 +66,8 @@
     {
       "sector": "酒店经营",
       "title": "关注酒店经营的量价变化",
-      "summary": "全国 RevPAR 为 108.3 元，同比 +8.1%。结合入住率与房价查看变化来源。",
-      "asOf": "2026-09-06",
+      "summary": "全国 RevPAR 为 195.3 元，同周号同比 -2.2%（未作节假日错期调整）。结合入住率与房价查看变化来源。",
+      "asOf": "2026-10-04",
       "href": "hotel-dashboard.html"
     },
     {
