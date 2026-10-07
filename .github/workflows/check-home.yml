@@ -13,7 +13,11 @@ on:
       - "dashboard.html"
       - "database.html"
       - "scripts/site*"
-      - "scripts/industry.js"
+      - "scripts/industry*"
+      - "scripts/build_industry_snapshot.py"
+      - "scripts/import_miaoxiang_industry.py"
+      - "scripts/test_industry_snapshot.py"
+      - "data/industry/**"
       - "scripts/companies.js"
       - "scripts/research*"
       - "scripts/research_sources*"
@@ -40,6 +44,8 @@ jobs:
           python-version: "3.12"
       - name: Check homepage data and JavaScript
         run: |
+          python scripts/test_industry_snapshot.py
+          python scripts/build_industry_snapshot.py
           python scripts/test_home_snapshot.py
           python scripts/research_sources_test.py
           python -m py_compile scripts/import_research_topics.py
@@ -49,6 +55,8 @@ jobs:
           node --check scripts/home.js
           node --check scripts/site-shell.js
           node --check scripts/industry.js
+          node --check scripts/industry-model.js
+          node scripts/industry-model.test.cjs
           node --check scripts/companies.js
           node --check scripts/research.js
           node --check scripts/research-model.js

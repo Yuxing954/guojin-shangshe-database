@@ -79,7 +79,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font
     <div>
       <div class="eyebrow">HOTEL TRACKER · 国金商社</div>
       <h1>酒店板块数据看板</h1>
-      <p>全国 / 上海 · 周度经营 · 分档次 · 集团 · 供给结构 · 市占率 ｜ 数值与同比增速联动展示（A股惯例：涨红跌绿）</p>
+      <p>全国 · 周度经营 · 分档次 · 集团 · 供给结构 · 市占率 ｜ 数值与同比增速联动展示（A股惯例：涨红跌绿）</p>
     </div>
   </div>
 
@@ -132,7 +132,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font
     <div class="card">
       <div class="panel-head"><div><h2>集团经营核心指标</h2><p id="grp-period">最新周 · 同比口径为去年同期同周</p></div></div>
       <div style="overflow-x:auto"><table class="table" id="grp-table"></table></div>
-      <div class="note">ADR 为平均客房价（按入住日期统计口径）；同比为百分比增速。集团周度数据自 2024 年起披露。</div>
+      <div class="note">ADR 按源表平均房价展示；入住日期与预订日期的口径待核对。同比为百分比增速。集团周度数据自 2024 年起披露。</div>
     </div>
     <div class="grid2">
       <div class="card"><div class="chart"><h3>集团 ADR 走势（元）</h3><div id="ch-grp-adr"></div></div></div>
@@ -320,7 +320,7 @@ function renderOverview(ind){
     {label:"全国酒店房量",val:num(latest.room_count),unit:"间",dec:0,field:"room_count",isPct:false}
   ];
   document.getElementById("ov-kpis").innerHTML=metrics.map(function(m){
-    var d=yoy(all,m.val,per,m.field,m.isPct);
+    var d=yoy(all,num(latest[m.field]),per,m.field,m.isPct);
     return '<div class="kpi"><span>'+m.label+'</span><strong>'+f(m.val,m.dec)+(m.unit==="%"?"%":"")+'</strong><small>'+deltaHtml(d,m.isPct)+' · '+m.unit+'</small></div>';
   }).join("");
 
@@ -479,6 +479,13 @@ function renderShare(shr){
     var pri=shr.filter(function(r){return r.group===g&&r.year===prior;})[0];
     return{g:g,v:cur?num(cur.market_share_pct):null,d:(cur&&pri)?num(cur.market_share_pct)-num(pri.market_share_pct):null};
   }).filter(function(x){return x.v!=null;}).sort(function(a,b){return b.v-a.v;});
+  var shareSum=latestRows.reduce(function(total,x){return total+x.v;},0);
+  if(shareSum>100.01||latestRows.some(function(x){return x.v<0||x.v>100;})){
+    document.getElementById("shr-period").textContent="最新年度 "+latest+" · 口径待核验";
+    document.getElementById("shr-bars").textContent="同一市场口径下集团市占率合计应不超过100%。当前源表合计 "+f(shareSum,2)+"%，需回查分母，暂不展示比例。";
+    document.getElementById("ch-share").textContent="市占率分母尚未核对，暂不展示走势。原始数据保留在数据中心。";
+    return;
+  }
   var maxV=Math.max.apply(null,latestRows.map(function(x){return x.v;}));
   document.getElementById("shr-bars").innerHTML=latestRows.map(function(x,i){
     return '<div class="bar-row"><span>'+esc(x.g)+'</span><div class="bar-track"><div class="bar-fill" style="width:'+(x.v/maxV*100).toFixed(1)+'%;background:'+PAL[i%PAL.length]+'"></div></div><span>'+f(x.v,1)+'% '+deltaHtml(x.d,true)+'</span></div>';

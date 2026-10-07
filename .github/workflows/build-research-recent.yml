@@ -7,6 +7,9 @@ on:
       - "data/**/*.csv"
       - "data-manifest.json"
       - "scripts/build_home_snapshot.py"
+      - "scripts/build_industry_snapshot.py"
+      - "data/industry/miaoxiang-*.json"
+      - "data/industry/verified-*.json"
       - "scripts/build_research_recent.py"
       - "scripts/research_sources.py"
       - "data/research/updates/manifest.json"
@@ -34,13 +37,14 @@ jobs:
       - name: Build data/research/recent.json
         run: |
           python scripts/build_research_recent.py
+          python scripts/build_industry_snapshot.py
           python scripts/build_home_snapshot.py
 
       - name: Commit & push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/research/recent.json data/home-snapshot.json
+          git add data/research/recent.json data/home-snapshot.json data/industry/overview.json
           if git diff --staged --quiet; then
             echo "no change"
             exit 0

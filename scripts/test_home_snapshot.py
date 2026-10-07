@@ -1,5 +1,6 @@
 import datetime as dt
 import unittest
+from urllib.parse import urlparse
 from build_home_snapshot import build, numeric, rate, research_items, ROOT, TZ
 
 
@@ -26,7 +27,7 @@ class HomeSnapshotTests(unittest.TestCase):
     def test_actual_snapshot_dates_and_sources(self):
         payload = build(ROOT, dt.datetime(2099, 10, 7, 12, tzinfo=TZ))
         self.assertEqual(len(payload["focus"]), 3)
-        self.assertEqual(len(payload["industries"]), 4)
+        self.assertEqual(len(payload["industries"]), 5)
         self.assertLessEqual(len(payload["research"]), 5)
         hotel = payload["industries"][0]
         self.assertIsNotNone(hotel["value"])
@@ -34,8 +35,15 @@ class HomeSnapshotTests(unittest.TestCase):
         self.assertEqual(payload["researchAsOf"], max((item["date"] for item in payload["research"]), default=None))
         self.assertNotEqual(payload["researchAsOf"], payload["generatedAt"][:10])
         for item in payload["industries"]:
-            self.assertTrue((ROOT / item["sourceFile"]).is_file())
+            source = item["sourceFile"]
+            if source.startswith('https://'):
+                self.assertIn(urlparse(source).hostname, ('www.stats.gov.cn', 'www.sge.com.cn', 'www.cngold.org.cn', 'choicew2z.eastmoney.com'))
+            else:
+                self.assertTrue((ROOT / source.split('#')[0]).is_file())
             self.assertTrue((ROOT / item["href"].split("#")[0]).is_file())
+        crossborder = next(item for item in payload['industries'] if item['id'] == 'overseas')
+        self.assertIsNone(crossborder['value'])
+        self.assertEqual(crossborder['href'], 'industry.html#overseas')
 
     def test_home_keeps_latest_classified_research(self):
         payload={"dbs":[{"id":"views","rows":[

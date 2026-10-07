@@ -121,6 +121,25 @@ def build(root=ROOT, now=None):
         {"sector": "免税消费", "title": "对照销售额与购物人次", "summary": f"离岛免税销售额 {numeric(dutyfree['shopping_sales_cny_100m']):.2f} 亿元，同比 {signed(d_change)}；购物人次同比 {signed(numeric(dutyfree['shoppers_yoy_pct']))}。", "asOf": month_end(dutyfree["period_id"]), "href": "dutyfree-dashboard.html"},
         {"sector": "餐饮需求", "title": "跟踪餐饮收入增速", "summary": f"全国餐饮收入同比 {signed(numeric(dining['餐饮收入同比增速(%)']))}，限额以上餐饮同比 {signed(numeric(dining['限额以上同比增速(%)']))}。查看两种口径的趋势。", "asOf": month_end(dining["月份"]), "href": "industry.html#dining"},
     ]
+    # The new industry page and homepage must use the same selected release.
+    overview_path = root / "data/industry/overview.json"
+    if overview_path.exists():
+        overview = json.loads(overview_path.read_text(encoding="utf-8"))
+        provenance = {s["id"]: s for s in overview["sources"]}
+        selected = {m["id"]: m for s in overview["sectors"] for m in s["metrics"]}
+        home_metrics = {"hotel": "hotel_revpar", "dutyfree": "dutyfree_sales", "gold": "gold_price", "overseas": "crossborder_exports", "dining": "dining_revenue"}
+        industries = []
+        for sector in overview["sectors"]:
+            metric = selected[home_metrics[sector["id"]]]
+            point = metric["points"][-1] if metric["points"] else {}
+            source = provenance.get(point.get("sourceId"), {})
+            industries.append({"id": sector["id"], "name": sector["name"], "metric": metric["label"], "value": point.get("value"), "unit": metric["unit"], "precision": metric["precision"], "change": point.get("change"), "changeLabel": point.get("changeLabel", "同比"), "period": point.get("periodLabel", "全行业口径待补齐"), "asOf": point.get("endDate", ""), "freshnessDays": 14 if metric["frequency"] == "周度" else 50 if metric["frequency"] == "月度" else 10, "source": source.get("name", "暂无可用来源"), "sourceFile": source.get("url") or source.get("file", "industry.html#" + sector["id"]), "href": "industry.html#" + sector["id"]})
+        h_now, d_now, food_now = (next(item for item in industries if item["id"] == id) for id in ("hotel", "dutyfree", "dining"))
+        shoppers_now = selected["dutyfree_shoppers"]["points"][-1]
+        food_above = selected["dining_above_yoy"]["points"][-1]
+        focus[0].update(summary=f"全国 RevPAR 为 {h_now['value']:.1f} 元，去年同周 {signed(h_now['change'])}。结合入住率与房价查看变化来源。", asOf=h_now["asOf"], href=h_now["href"])
+        focus[1].update(summary=f"离岛免税购物金额 {d_now['value']:.2f} 亿元，购物人次 {shoppers_now['value']:.2f} 万人次。对照每购物人次金额查看消费变化。", asOf=d_now["asOf"], href=d_now["href"])
+        focus[2].update(summary=f"全国餐饮收入同比 {signed(food_now['change'])}，限额以上餐饮同比 {signed(food_above['value'])}。查看两种口径的趋势。", asOf=food_now["asOf"], href=food_now["href"])
     recent = json.loads((root / "data/research/recent.json").read_text(encoding="utf-8"))
     research = research_items(recent)
     moment = now or dt.datetime.now(TZ)
