@@ -1,0 +1,33 @@
+name: Check daily research home
+
+on:
+  pull_request:
+    paths:
+      - "index.html"
+      - "database.html"
+      - "scripts/home.*"
+      - "scripts/build_home_snapshot.py"
+      - "scripts/test_home_snapshot.py"
+      - "data/home-snapshot.json"
+      - ".github/workflows/check-home.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check homepage data and JavaScript
+        run: |
+          python scripts/test_home_snapshot.py
+          node --check scripts/home.js
+      - name: Check existing market and earnings logic
+        run: |
+          node scripts/market-kline.test.js
+          node scripts/earnings-calendar.test.cjs
+          node scripts/earnings.test.cjs
