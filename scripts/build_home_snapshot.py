@@ -68,7 +68,7 @@ def research_items(payload):
             title = str(row.get("标题") or "").strip()
             if not title or not when:
                 continue
-            if not minutes and not any(term in title for term in RESEARCH_TERMS):
+            if not minutes and not row.get("更新批次") and not any(term in title for term in RESEARCH_TERMS):
                 continue
             href = link(row.get("下载链接") if minutes else row.get("原文链接"))
             key = (when[:10], title)
@@ -77,7 +77,7 @@ def research_items(payload):
             seen.add(key)
             items.append({"title": title, "date": when[:10], "sortTime": when[:19],
                           "kind": "minutes" if minutes else "views",
-                          "label": "纪要" if minutes else "商社观点",
+                          "label": (row.get("类型") or "纪要") if minutes else "商社观点",
                           "author": row.get("相关标的") if minutes else row.get("作者"),
                           "href": href})
     items.sort(key=lambda r: r["sortTime"], reverse=True)

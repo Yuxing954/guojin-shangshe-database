@@ -37,6 +37,17 @@ class HomeSnapshotTests(unittest.TestCase):
             self.assertTrue((ROOT / item["sourceFile"]).is_file())
             self.assertTrue((ROOT / item["href"].split("#")[0]).is_file())
 
+    def test_home_keeps_latest_classified_research(self):
+        payload={"dbs":[{"id":"views","rows":[
+            {"标题":"县域文旅表现","时间":"2026-10-07T12:13:56","更新批次":"data/research/updates/views.csv"},
+            {"标题":"东方甄选月度更新","时间":"2026-10-07T11:48:02","更新批次":"data/research/updates/views.csv"},
+            {"标题":"酒店观点","时间":"2026-10-05T10:00:00"},
+        ]},{"id":"minutes","rows":[{"标题":"开市客音频","日期":"2026-09-28","类型":"会议音频"}]}]}
+        result=research_items(payload)
+        self.assertEqual(result[0]['date'],'2026-10-07')
+        self.assertEqual(result[1]['title'],'东方甄选月度更新')
+        self.assertEqual(result[-1]['label'],'会议音频')
+
 
 if __name__ == "__main__":
     unittest.main()
