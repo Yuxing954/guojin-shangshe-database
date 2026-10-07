@@ -8,6 +8,8 @@ on:
       - "data-manifest.json"
       - "scripts/build_home_snapshot.py"
       - "scripts/build_research_recent.py"
+      - "scripts/research_sources.py"
+      - "data/research/updates/manifest.json"
       - ".github/workflows/build-research-recent.yml"
   schedule:
     # 每天 02:30 UTC（北京时间 10:30）；仅整理仓库已有的数据

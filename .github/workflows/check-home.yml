@@ -16,6 +16,11 @@ on:
       - "scripts/industry.js"
       - "scripts/companies.js"
       - "scripts/research.js"
+      - "scripts/research_sources*"
+      - "scripts/test_research_updates.py"
+      - "scripts/import_research_topics.py"
+      - "scripts/build_research_recent.py"
+      - "data/research/**"
       - "scripts/home.*"
       - "scripts/build_home_snapshot.py"
       - "scripts/test_home_snapshot.py"
@@ -36,6 +41,11 @@ jobs:
       - name: Check homepage data and JavaScript
         run: |
           python scripts/test_home_snapshot.py
+          python scripts/research_sources_test.py
+          python -m py_compile scripts/import_research_topics.py
+          python scripts/build_research_recent.py
+          python scripts/build_home_snapshot.py
+          python scripts/test_research_updates.py
           node --check scripts/home.js
           node --check scripts/site-shell.js
           node --check scripts/industry.js

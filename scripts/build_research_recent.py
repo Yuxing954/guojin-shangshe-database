@@ -11,6 +11,7 @@ build_research_recent.py
 """
 import sys, os, csv, json, io, argparse, datetime as dt
 from pathlib import Path
+from research_sources import merge_rows, update_rows, archive_rows
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -45,6 +46,7 @@ def parse_time(s):
     s = str(s).strip()
     for fmt in ("%Y-%m-%dT%H:%M:%S.%f%z",
                 "%Y-%m-%dT%H:%M:%S%z",
+                "%Y-%m-%dT%H:%M:%S",
                 "%Y-%m-%d %H:%M:%S",
                 "%Y-%m-%d %H:%M",
                 "%Y-%m-%d",
@@ -94,6 +96,10 @@ def normalize_row(dbid, k, row):
             "下载链接": row.get("下载链接", "") or "",
             "文件名": row.get("文件名", ""),
             "覆盖板块": row.get("覆盖板块", ""),
+            "时间": row.get("时间", ""),
+            "原文链接": row.get("原文链接", ""),
+            "内容状态": row.get("内容状态", ""),
+            "更新批次": row.get("更新批次", ""),
         }
     else:
         return {
@@ -107,6 +113,8 @@ def normalize_row(dbid, k, row):
             "评论": row.get("评论", "") or "0",
             "阅读": row.get("阅读", "") or "0",
             "原文链接": row.get("原文链接", ""),
+            "更新批次": row.get("更新批次", ""),
+            "正文已截断": len(row.get("内容", "")) > SUB_LEN,
         }
 
 
@@ -121,6 +129,7 @@ def main():
     ap.add_argument("--per-db", type=int, default=MAX_PER_DB)
     ap.add_argument("--sub-len", type=int, default=SUB_LEN)
     ap.add_argument("--full", action="store_true", help="不截断（默认截断长文本）")
+    ap.add_argument("--use-existing-index", action="store_true", help="本地缺少历史 CSV 时，使用现有索引补充预览；正式构建仍读取完整历史")
     args = ap.parse_args()
 
     if args.full:
@@ -139,8 +148,21 @@ def main():
 
     total = 0
     total_bytes = 0
+    previous = json.loads(out_json.read_text(encoding='utf-8')) if args.use_existing_index and out_json.exists() else {}
     for dbid, k, fname, time_keys in SOURCES:
-        rows = read_csv_rows(DATA / fname)
+        source = DATA / fname
+        incoming = update_rows(ROOT, dbid)
+        old_db = next((d for d in previous.get('dbs', []) if d['id'] == dbid), {})
+        if source.exists():
+            base = archive_rows(ROOT, dbid, read_csv_rows(source))
+            rows = merge_rows(base, incoming)
+            source_count = len(rows)
+        elif args.use_existing_index and old_db:
+            base = archive_rows(ROOT, dbid, old_db.get('rows', []))
+            rows = merge_rows(base, incoming)
+            source_count = None  # The full archive is unavailable locally; never invent its total.
+        else:
+            raise FileNotFoundError(source)
         fresh = []
         for r in rows:
             t = parse_time(pick(r, time_keys))
@@ -155,10 +177,10 @@ def main():
         norm = [normalize_row(dbid, k, r) for _, r in fresh]
         kept = len(norm)
         total += kept
-        total_bytes += os.path.getsize(DATA / fname)
+        total_bytes += source.stat().st_size if source.exists() else 0
         payload["dbs"].append({
             "id": dbid, "k": k, "source": f"data/{fname}",
-            "sourceRows": len(rows), "keptRows": kept,
+            "sourceRows": source_count, "keptRows": kept,
             "oldestKept": (fresh[-1][0].strftime("%Y-%m-%d") if fresh else ""),
             "newestKept": (fresh[0][0].strftime("%Y-%m-%d") if fresh else ""),
             "rows": norm,

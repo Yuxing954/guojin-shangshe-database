@@ -64,7 +64,7 @@ def research_items(payload):
             continue
         minutes = db["id"] == "minutes"
         for row in db.get("rows", []):
-            when = str(row.get("日期") or row.get("时间") or "")
+            when = str(row.get("时间") or row.get("日期") or "")
             title = str(row.get("标题") or "").strip()
             if not title or not when:
                 continue
