@@ -74,7 +74,7 @@ def definitions():
         metric('dining_above_revenue', '限额以上餐饮收入', '亿元', '月度', '限额以上单位；1—2月合并发布', precision=0, changeMetric='dining_above_yoy'),
     ]
     configs = [
-        ('hotel', '酒店', '看入住率与房价，拆解每间客房的收入变化。', hotel, 'hotel_revpar', 'travel', '酒店', 'hotel-dashboard.html', '周度样本截至9月6日，妙想未返回可接续样本，仍需更新原始周报。'),
+        ('hotel', '酒店', '看入住率与房价，拆解每间客房的收入变化。', hotel, 'hotel_revpar', 'travel', '酒店', 'hotel-dashboard.html', ''),
         ('dutyfree', '免税', '看购物金额、人次与每人次消费，识别增长来源。', dutyfree, 'dutyfree_sales', 'dutyfree', '免税', 'dutyfree-dashboard.html', '人次口径跟随海关披露；机场与市内免税单独查看。'),
         ('gold', '黄金珠宝', '分开看金价、名义零售与首饰消费量。', gold, 'gold_retail_yoy', 'gold', '黄金珠宝', '', '消费量为年初累计；名义零售额增速不能直接当作销量增长。'),
         ('overseas', '跨境电商', '看行业出口，再看汇率和物流成本。', overseas, 'crossborder_fx', 'commerce', '跨境电商与出海', '', '全行业出口暂缺。汇率与运价用于观察经营环境，B2B简化申报数据仅为子集。'),
@@ -112,6 +112,10 @@ def build(root=ROOT):
 
     source('legacy-hotel', files['hotel_industry_weekly'], '酒店之家 / 仓库周度样本')
     hotel = [r for r in rows('hotel_industry_weekly') if r['region'] == '全国' and r['segment'] == '全部']
+    latest_hotel_date = max(r['end_date'] for r in hotel) if hotel else '暂无数据'
+    sectors[0]['note'] = f'全国周度样本截至{latest_hotel_date}；同周号同比，未作节假日错期调整。完整城市、集团与供给结构见酒店专题。'
+    for item in sectors[0]['metrics']:
+        item['scopeNote'] = '同比按去年相同周号比较，未作节假日错期调整。'
     hotel_index = {(int(r['year']), int(r['week'])): r for r in hotel}
     for row in hotel:
         for item in sectors[0]['metrics']:

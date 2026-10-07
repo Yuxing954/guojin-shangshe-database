@@ -1,4 +1,5 @@
 import copy
+import csv
 import json
 import unittest
 from datetime import date
@@ -15,10 +16,25 @@ class IndustrySnapshotTests(unittest.TestCase):
 
     def test_hotel_occupancy_changes_in_percentage_points(self):
         metric = self.metrics['hotel_occ']
-        latest = metric['points'][-1]
-        self.assertAlmostEqual(latest['value'], 55.61)
-        self.assertAlmostEqual(latest['change'], 2.62)
+        historical = next(p for p in metric['points'] if p['period'] == '2026-09-06')
+        self.assertAlmostEqual(historical['value'], 55.61)
+        self.assertAlmostEqual(historical['change'], 2.62)
         self.assertEqual(metric['changeUnit'], '百分点')
+
+    def test_hotel_latest_matches_current_national_source(self):
+        with (ROOT / 'data/hotel_industry_weekly.csv').open(encoding='utf-8-sig', newline='') as handle:
+            rows = [r for r in csv.DictReader(handle) if r['region'] == '全国' and r['segment'] == '全部']
+        latest = max(rows, key=lambda r: r['end_date'])
+        self.assertGreaterEqual(latest['end_date'], '2026-10-04')
+        prior = next(r for r in rows if int(r['year']) == int(latest['year']) - 1 and r['week'] == latest['week'])
+        for metric_id, field in [('hotel_occ', 'occupancy_rate'), ('hotel_adr', 'adr'), ('hotel_revpar', 'revpar')]:
+            point = self.metrics[metric_id]['points'][-1]
+            value, old = float(latest[field]), float(prior[field])
+            occupancy = metric_id == 'hotel_occ'
+            self.assertEqual(point['period'], latest['end_date'])
+            self.assertAlmostEqual(point['value'], value * 100 if occupancy else value)
+            self.assertAlmostEqual(point['change'], (value - old) * 100 if occupancy else (value / old - 1) * 100)
+        self.assertIn(latest['end_date'], self.data['sectors'][0]['note'])
 
     def test_dutyfree_spend_uses_matching_release_and_units(self):
         value = self.metrics['dutyfree_spend']['points'][-1]

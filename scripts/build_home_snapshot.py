@@ -103,7 +103,7 @@ def build(root=ROOT, now=None):
     dining = latest(rows(root, paths["dining"]), "月份", "餐饮收入(亿元)")
     industries = [
         {"id": "hotel", "name": "酒店", "metric": "全国 RevPAR", "value": numeric(h["revpar"]), "unit": "元",
-         "change": h_change, "period": h["period_id"], "asOf": h["end_date"], "freshnessDays": 14,
+         "change": h_change, "changeLabel": "同周号同比，未作节假日错期调整", "period": h["period_id"], "asOf": h["end_date"], "freshnessDays": 14,
          "source": h["source"], "sourceFile": paths["hotel_industry_weekly"], "href": "hotel-dashboard.html"},
         {"id": "dutyfree", "name": "免税", "metric": "离岛免税销售额", "value": numeric(dutyfree["shopping_sales_cny_100m"]), "unit": "亿元", "precision": 2,
          "change": numeric(dutyfree["sales_yoy_pct"]), "period": dutyfree["period_id"], "asOf": month_end(dutyfree["period_id"]), "freshnessDays": 50,
@@ -117,7 +117,7 @@ def build(root=ROOT, now=None):
     ]
     d_change = numeric(dutyfree["sales_yoy_pct"])
     focus = [
-        {"sector": "酒店经营", "title": "关注酒店经营的量价变化", "summary": f"全国 RevPAR 为 {numeric(h['revpar']):.1f} 元，同比 {signed(h_change)}。结合入住率与房价查看变化来源。", "asOf": h["end_date"], "href": "hotel-dashboard.html"},
+        {"sector": "酒店经营", "title": "关注酒店经营的量价变化", "summary": f"全国 RevPAR 为 {numeric(h['revpar']):.1f} 元，同周号同比 {signed(h_change)}（未作节假日错期调整）。结合入住率与房价查看变化来源。", "asOf": h["end_date"], "href": "hotel-dashboard.html"},
         {"sector": "免税消费", "title": "对照销售额与购物人次", "summary": f"离岛免税销售额 {numeric(dutyfree['shopping_sales_cny_100m']):.2f} 亿元，同比 {signed(d_change)}；购物人次同比 {signed(numeric(dutyfree['shoppers_yoy_pct']))}。", "asOf": month_end(dutyfree["period_id"]), "href": "dutyfree-dashboard.html"},
         {"sector": "餐饮需求", "title": "跟踪餐饮收入增速", "summary": f"全国餐饮收入同比 {signed(numeric(dining['餐饮收入同比增速(%)']))}，限额以上餐饮同比 {signed(numeric(dining['限额以上同比增速(%)']))}。查看两种口径的趋势。", "asOf": month_end(dining["月份"]), "href": "industry.html#dining"},
     ]

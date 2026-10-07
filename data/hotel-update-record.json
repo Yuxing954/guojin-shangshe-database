@@ -1,0 +1,134 @@
+{
+  "importedAt": "2026-10-08T07:17:46+08:00",
+  "sources": [
+    {
+      "file": "【国金商社】酒店之家数据库 20261005.xlsx",
+      "sha256": "73722f3c370c204309e1a5f092c7a78bfa7431556fd54138a43e2a13fe462721",
+      "rows": {
+        "hotel_industry_weekly.csv": 3205,
+        "hotel_group_weekly.csv": 540,
+        "hotel_supply_weekly.csv": 1166,
+        "hotel_market_share_annual.csv": 71
+      }
+    },
+    {
+      "file": "全国酒店数据_20261008.xlsx",
+      "sha256": "212f7ae0492edbf2bb56c4c3a5e87ab130226c49a99e1bf170d518a9c4ce086f",
+      "rows": {
+        "hotel_industry_weekly.csv": 120,
+        "hotel_group_weekly.csv": 0,
+        "hotel_supply_weekly.csv": 144,
+        "hotel_market_share_annual.csv": 0
+      }
+    },
+    {
+      "file": "城市酒店数据_全部20城_20261008.xlsx",
+      "sha256": "5905e6d7ec366a2772c57941f36ddb919025b2bfa7868bb314c2f9ea8f6dcc50",
+      "rows": {
+        "hotel_industry_weekly.csv": 2400,
+        "hotel_group_weekly.csv": 0,
+        "hotel_supply_weekly.csv": 2880,
+        "hotel_market_share_annual.csv": 0
+      }
+    },
+    {
+      "file": "集团酒店数据_全国4集团_20261008.xlsx",
+      "sha256": "008862263a5da72598b0e8feb5626db696859be153edfd284fbda49ddafbbdf6",
+      "rows": {
+        "hotel_industry_weekly.csv": 0,
+        "hotel_group_weekly.csv": 96,
+        "hotel_supply_weekly.csv": 0,
+        "hotel_market_share_annual.csv": 0
+      }
+    }
+  ],
+  "datasets": {
+    "hotel_industry_weekly.csv": {
+      "rowCount": 5540,
+      "previousRowCount": 3185,
+      "added": 2355,
+      "revised": 0,
+      "removed": 0,
+      "latestPeriod": "2026W40",
+      "asOf": "2026-10-04",
+      "regions": [
+        "上海",
+        "东莞",
+        "佛山",
+        "全国",
+        "北京",
+        "南京",
+        "合肥",
+        "天津",
+        "广州",
+        "成都",
+        "昆明",
+        "杭州",
+        "武汉",
+        "沈阳",
+        "深圳",
+        "苏州",
+        "西安",
+        "郑州",
+        "重庆",
+        "长沙",
+        "青岛"
+      ]
+    },
+    "hotel_group_weekly.csv": {
+      "rowCount": 576,
+      "previousRowCount": 540,
+      "added": 36,
+      "revised": 0,
+      "removed": 0,
+      "latestPeriod": "2026W40",
+      "asOf": "2026-10-04",
+      "regions": [
+        "全国"
+      ]
+    },
+    "hotel_supply_weekly.csv": {
+      "rowCount": 4125,
+      "previousRowCount": 1166,
+      "added": 2959,
+      "revised": 0,
+      "removed": 0,
+      "latestPeriod": "2026W40",
+      "asOf": "2026-10-04",
+      "regions": [
+        "上海",
+        "东莞",
+        "佛山",
+        "全国",
+        "北京",
+        "南京",
+        "合肥",
+        "天津",
+        "广州",
+        "成都",
+        "昆明",
+        "杭州",
+        "武汉",
+        "沈阳",
+        "深圳",
+        "苏州",
+        "西安",
+        "郑州",
+        "重庆",
+        "长沙",
+        "青岛"
+      ]
+    },
+    "hotel_market_share_annual.csv": {
+      "rowCount": 71,
+      "previousRowCount": 71,
+      "added": 0,
+      "revised": 31,
+      "removed": 0,
+      "latestPeriod": "2025",
+      "asOf": "2025-12-31",
+      "regions": []
+    }
+  },
+  "comparisonPolicy": "Default YoY matches source year/week; no automatic holiday shift. Comparable holiday periods must be explicitly mapped and labelled."
+}

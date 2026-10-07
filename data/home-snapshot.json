@@ -1,18 +1,18 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-07T23:14:55+08:00",
+  "generatedAt": "2026-10-08T07:41:01+08:00",
   "industries": [
     {
       "id": "hotel",
       "name": "酒店",
       "metric": "每间可售客房收入",
-      "value": 108.32828000000002,
+      "value": 195.341588,
       "unit": "元",
       "precision": 2,
-      "change": 8.124796701343872,
+      "change": -2.1759950216429402,
       "changeLabel": "去年同周",
-      "period": "2026W36 · 2026-09-06",
-      "asOf": "2026-09-06",
+      "period": "2026W40 · 2026-10-04",
+      "asOf": "2026-10-04",
       "freshnessDays": 14,
       "source": "酒店之家 / 仓库周度样本",
       "sourceFile": "data/hotel_industry_weekly.csv",
@@ -87,8 +87,8 @@
     {
       "sector": "酒店经营",
       "title": "关注酒店经营的量价变化",
-      "summary": "全国 RevPAR 为 108.3 元，去年同周 +8.1%。结合入住率与房价查看变化来源。",
-      "asOf": "2026-09-06",
+      "summary": "全国 RevPAR 为 195.3 元，去年同周 -2.2%。结合入住率与房价查看变化来源。",
+      "asOf": "2026-10-04",
       "href": "industry.html#hotel"
     },
     {

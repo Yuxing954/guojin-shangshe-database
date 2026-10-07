@@ -2,7 +2,7 @@
   'use strict';
   const D=SiteData,M=QuotesModel,K=SinolinkKline,$=id=>document.getElementById(id),esc=D.esc,params=new URLSearchParams(location.search);
   const benchmarks=[{code:'000001.SH',name:'上证指数',index:true},{code:'399006.SZ',name:'创业板指',index:true},{code:'HSI.HI',name:'恒生指数',index:true}];
-  const industryIds={'酒店':'hotel','免税':'dutyfree','黄金珠宝':'gold','跨境电商与出海':'crossborder','餐饮':'dining','茶饮':'dining'};
+  const industryIds={'酒店':'hotel','免税':'dutyfree','黄金珠宝':'gold','跨境电商与出海':'overseas','餐饮':'dining','茶饮':'dining'};
   const groupSectors=['酒店','免税','黄金珠宝','跨境电商与出海','餐饮'];
   const storageKey='sinolink.quotes.watchlist.v1',preferencesKey='sinolink.quotes.preferences.v1',cache=new Map();
   let companies=[],quotes={},filtered=[],watch=[],onlyWatch=params.get('group')==='watch',view=params.get('view')==='heat'?'heat':'list',pending=false,timer=null,selected=null;

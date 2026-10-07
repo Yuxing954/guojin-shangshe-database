@@ -79,10 +79,11 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font
     <div>
       <div class="eyebrow">HOTEL TRACKER · 国金商社</div>
       <h1>酒店板块数据看板</h1>
-      <p>全国 · 周度经营 · 分档次 · 集团 · 供给结构 · 市占率 ｜ 数值与同比增速联动展示（A股惯例：涨红跌绿）</p>
+      <p>全国及20城 · 周度经营 · 分档次 · 全国集团与供给结构 · 市占率 ｜ 同周号同比，未作节假日错期调整</p>
     </div>
   </div>
 
+  <label>经营地区（总览 / 分档次）：<select id="region-select" style="margin:0 0 16px 8px;padding:6px 12px;border:1px solid #d9e2e8;border-radius:6px;background:#fff"><option>全国</option></select></label>
   <div class="tabs" id="tabs">
     <button class="tab on" data-view="overview">总览</button>
     <button class="tab" data-view="segment">分档次经营</button>
@@ -94,7 +95,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font
   <!-- ============ 总览 ============ -->
   <div class="view on" id="view-overview">
     <div class="card">
-      <div class="panel-head"><div><h2>全国经营核心指标</h2><p id="ov-period">最新周 · 同比口径为去年同期同周</p></div></div>
+      <div class="panel-head"><div><h2 id="ov-title">全国经营核心指标</h2><p id="ov-period">最新周 · 同周号同比，未作节假日错期调整</p></div></div>
       <div class="kpis" id="ov-kpis"><div class="loading" style="grid-column:1/-1">加载中…</div></div>
     </div>
     <div class="grid2">
@@ -106,7 +107,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font
       <div class="card"><div class="chart"><h3>平均房价 ADR 走势（元）</h3><div id="ch-adr" class="chartbox"></div></div></div>
     </div>
     <div class="card">
-      <div class="panel-head"><div><h2>最新周分档次速览</h2><p>全国 · 各档次最新周经营与同比</p></div></div>
+    <div class="panel-head"><div><h2>最新周分档次速览</h2><p id="ov-seg-note">全国 · 各档次最新周经营与同比</p></div></div>
       <div style="padding:14px"><div class="seg-cards" id="ov-segs"></div></div>
     </div>
   </div>
@@ -132,7 +133,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font
     <div class="card">
       <div class="panel-head"><div><h2>集团经营核心指标</h2><p id="grp-period">最新周 · 同比口径为去年同期同周</p></div></div>
       <div style="overflow-x:auto"><table class="table" id="grp-table"></table></div>
-      <div class="note">ADR 按源表平均房价展示；入住日期与预订日期的口径待核对。同比为百分比增速。集团周度数据自 2024 年起披露。</div>
+      <div class="note">ADR 为平均客房价（按入住日期统计口径）；同比为百分比增速。集团周度数据自 2024 年起披露。</div>
     </div>
     <div class="grid2">
       <div class="card"><div class="chart"><h3>集团 ADR 走势（元）</h3><div id="ch-grp-adr"></div></div></div>
@@ -144,7 +145,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font
   <!-- ============ 供给 ============ -->
   <div class="view" id="view-supply">
     <div class="card">
-      <div class="panel-head"><div><h2>房量供给结构</h2><p id="sup-period">最新周 · 按房量区间</p></div></div>
+      <div class="panel-head"><div><h2>全国房量供给结构</h2><p id="sup-period">最新周 · 按房量区间</p></div></div>
       <div style="padding:14px" id="sup-bars"></div>
       <div class="note">占比为该房量区间酒店房量占全国总房量比重；连锁率 = 连锁房量 / 区间总房量。</div>
     </div>
@@ -162,7 +163,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font
     <div class="card">
       <div class="panel-head"><div><h2>集团房间数市占率（年度）</h2><p id="shr-period">六大集团 · 单位 %</p></div></div>
       <div style="padding:14px" id="shr-bars"></div>
-      <div class="note">口径：各集团房间数占六大集团合计房间数比重；同比为 pct-pt 变化。</div>
+      <div class="note">口径：采用源表六大集团年度市占率原值，六家份额不作归一化；同比为 pct-pt 变化。</div>
     </div>
     <div class="card">
       <div class="panel-head"><div><h2>市占率年度走势</h2><p>2013 – 2025</p></div></div>
@@ -175,6 +176,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font
 (function(){
 "use strict";
 var DATA={};
+var CURRENT_REGION="全国";
 var SEGS=["经济型","中档型","高档型","豪华型"];
 var GROUPS=["华住","首旅如家","锦江酒店（中国区）","亚朵"];
 var PAL=["#3f718d","#2f7d71","#b67a37","#bc4949","#7a6fa8","#4f8a5f"];
@@ -282,18 +284,22 @@ Promise.all([
 /* 排序辅助 */
 function sortByPeriod(rows){return rows.slice().sort(function(a,b){return a.period_id.localeCompare(b.period_id);});}
 function latestPeriod(rows){var p=sortByPeriod(rows);return p.length?p[p.length-1].period_id:null;}
-function nat(series,segment){return sortByPeriod(series.filter(function(r){return r.region==="全国"&&r.segment===segment;}));}
+function nat(series,segment){return sortByPeriod(series.filter(function(r){return r.region===CURRENT_REGION&&r.segment===segment;}));}
 function takeLast(rows,n){return rows.slice(Math.max(0,rows.length-n));}
 
 function init(){
   var ind=DATA.industry,grp=DATA.group,sup=DATA.supply,shr=DATA.share;
+  var regions=Array.from(new Set(ind.map(function(r){return r.region;}))).sort();
+  var selector=document.getElementById("region-select");
+  selector.innerHTML=["全国"].concat(regions.filter(function(r){return r!=="全国";})).map(function(r){return '<option value="'+esc(r)+'">'+esc(r)+'</option>';}).join("");
+  selector.onchange=function(){CURRENT_REGION=this.value;renderOverview(ind);renderSegment(ind);};
   var ovAll=nat(ind,"全部");
   var latest=ovAll[ovAll.length-1];
   document.getElementById("asof").textContent="行业数据更新至 "+latest.period_id+"（"+latest.start_date+" ~ "+latest.end_date+"）";
   renderOverview(ind);
   renderSegment(ind);
   renderGroup(grp);
-  renderSupply(sup);
+  renderSupply(sup.filter(function(r){return r.region==="全国";}));
   renderShare(shr);
   bindTabs();
 }
@@ -312,12 +318,14 @@ function bindTabs(){
 function renderOverview(ind){
   var all=nat(ind,"全部"),latest=all[all.length-1];
   var per={year:latest.year,week:latest.week};
-  document.getElementById("ov-period").textContent="最新周 "+latest.period_id+"（"+latest.start_date+" ~ "+latest.end_date+"）· 同比为去年同期同周";
+  document.getElementById("ov-title").textContent=CURRENT_REGION+"经营核心指标";
+  document.getElementById("ov-seg-note").textContent=CURRENT_REGION+" · 各档次最新周经营与同比";
+  document.getElementById("ov-period").textContent="最新周 "+latest.period_id+"（"+latest.start_date+" ~ "+latest.end_date+"）· 同周号同比，未作节假日错期调整 · ADR按入住日期";
   var metrics=[
     {label:"入住率 OCC",val:num(latest.occupancy_rate)*100,unit:"%",dec:1,field:"occupancy_rate",isPct:true},
     {label:"平均房价 ADR",val:num(latest.adr),unit:"元",dec:1,field:"adr",isPct:false},
     {label:"RevPAR",val:num(latest.revpar),unit:"元",dec:1,field:"revpar",isPct:false},
-    {label:"全国酒店房量",val:num(latest.room_count),unit:"间",dec:0,field:"room_count",isPct:false}
+    {label:"酒店房量",val:num(latest.room_count),unit:"间",dec:0,field:"room_count",isPct:false}
   ];
   document.getElementById("ov-kpis").innerHTML=metrics.map(function(m){
     var d=yoy(all,num(latest[m.field]),per,m.field,m.isPct);
@@ -371,7 +379,7 @@ var SEG_METRICS=[
 ];
 function renderSegment(ind){
   var latest=latestPeriod(nat(ind,"全部"));
-  document.getElementById("seg-period").textContent="最新周 "+latest+" · 数值与同比";
+  document.getElementById("seg-period").textContent=CURRENT_REGION+" · 最新周 "+latest+" · 同周号同比，未作节假日错期调整";
   /* chips */
   var chipHost=document.getElementById("seg-metric-chips");
   chipHost.innerHTML=SEG_METRICS.map(function(m,i){return '<button class="chip'+(i===0?" on":"")+'" data-m="'+m.key+'">'+m.label+'</button>';}).join("");
@@ -418,25 +426,25 @@ function renderSegment(ind){
 function renderGroup(grp){
   var byG={};GROUPS.forEach(function(g){byG[g]=sortByPeriod(grp.filter(function(r){return r.group===g;}));});
   var latest=latestPeriod(grp);
-  document.getElementById("grp-period").textContent="最新周 "+latest+" · 同比为去年同期同周";
+  document.getElementById("grp-period").textContent="全国 · 最新周 "+latest+" · ADR及指数按入住日期 · 同周号同比，未作节假日错期调整";
   /* 明细表 */
   var head="<thead><tr><th>集团</th><th>酒店数（家）</th><th>房量（间）</th><th>ADR（元）</th><th>ADR 同比</th><th>价格指数</th><th>市场热度</th></tr></thead>";
   var body="<tbody>"+GROUPS.map(function(g){
     var s=byG[g],r=null;for(var i=s.length-1;i>=0;i--)if(s[i].period_id===latest){r=s[i];break;}
     if(!r)return"";
     var per={year:r.year,week:r.week};
-    var adrD=yoy(s,num(r.adr),per,"adr",false);
-    return "<tr><td><b>"+esc(g)+"</b></td><td>"+f(num(r.hotel_count),0)+"</td><td>"+f(num(r.room_count),0)+"</td><td>"+f(num(r.adr),0)+"</td><td>"+deltaHtml(adrD,false)+"</td><td>"+f(num(r.price_index),2)+"</td><td>"+f(num(r.heat_index),2)+"</td></tr>";
+    var adrD=yoy(s,num(r.stay_adr),per,"stay_adr",false);
+    return "<tr><td><b>"+esc(g)+"</b></td><td>"+f(num(r.hotel_count),0)+"</td><td>"+f(num(r.room_count),0)+"</td><td>"+f(num(r.stay_adr),0)+"</td><td>"+deltaHtml(adrD,false)+"</td><td>"+f(num(r.stay_price_index),2)+"</td><td>"+f(num(r.stay_heat_index),2)+"</td></tr>";
   }).join("")+"</tbody>";
   document.getElementById("grp-table").innerHTML=head+body;
 
   /* ADR 走势 + 同比 */
-  var adrSeries=GROUPS.map(function(g,i){var s=takeLast(byG[g],40);return{name:g,color:PAL[i],pts:s.map(function(r){return{x:r.period_id,y:num(r.adr)};})};});
+  var adrSeries=GROUPS.map(function(g,i){var s=takeLast(byG[g],40);return{name:g,color:PAL[i],pts:s.map(function(r){return{x:r.period_id,y:num(r.stay_adr)};})};});
   lineChart("ch-grp-adr",adrSeries,{dec:0});
   var yoySeries=GROUPS.map(function(g,i){
     var full=byG[g],s=takeLast(full,40);
     return{name:g,color:PAL[i],pts:s.map(function(r){
-      var pr=yoyVal(full,r,"adr");return{x:r.period_id,y:(pr!=null&&num(r.adr)!=null)?(num(r.adr)/pr-1)*100:null};})};});
+      var pr=yoyVal(full,r,"stay_adr");return{x:r.period_id,y:(pr!=null&&pr!==0&&num(r.stay_adr)!=null)?(num(r.stay_adr)/pr-1)*100:null};})};});
   lineChart("ch-grp-adryoy",yoySeries,{dec:1,zero:true});
   function yoyVal(series,row,field){
     for(var i=0;i<series.length;i++){var p=series[i];
@@ -481,9 +489,9 @@ function renderShare(shr){
   }).filter(function(x){return x.v!=null;}).sort(function(a,b){return b.v-a.v;});
   var shareSum=latestRows.reduce(function(total,x){return total+x.v;},0);
   if(shareSum>100.01||latestRows.some(function(x){return x.v<0||x.v>100;})){
-    document.getElementById("shr-period").textContent="最新年度 "+latest+" · 口径待核验";
-    document.getElementById("shr-bars").textContent="同一市场口径下集团市占率合计应不超过100%。当前源表合计 "+f(shareSum,2)+"%，需回查分母，暂不展示比例。";
-    document.getElementById("ch-share").textContent="市占率分母尚未核对，暂不展示走势。原始数据保留在数据中心。";
+    document.getElementById("shr-period").textContent="市占率口径待核验";
+    document.getElementById("shr-bars").textContent="源数据市占率合计或单项超出有效范围，请先核验统计口径。";
+    document.getElementById("ch-share").textContent="暂无可展示的有效数据";
     return;
   }
   var maxV=Math.max.apply(null,latestRows.map(function(x){return x.v;}));
@@ -499,4 +507,3 @@ function renderShare(shr){
 </script>
 </body>
 </html>
-

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-11",
+  "updatedAt": "2026-10-08",
   "datasets": [
     {
       "id": "hotel",
@@ -11,25 +11,41 @@
       "id": "hotel_industry_weekly",
       "name": "酒店行业周度经营",
       "file": "data/hotel_industry_weekly.csv",
-      "category": "酒店"
+      "category": "酒店",
+      "asOf": "2026-10-04",
+      "latestPeriod": "2026W40",
+      "rowCount": 5540,
+      "updateRecord": "data/hotel-update-record.json"
     },
     {
       "id": "hotel_group_weekly",
       "name": "酒店集团周度经营",
       "file": "data/hotel_group_weekly.csv",
-      "category": "酒店"
+      "category": "酒店",
+      "asOf": "2026-10-04",
+      "latestPeriod": "2026W40",
+      "rowCount": 576,
+      "updateRecord": "data/hotel-update-record.json"
     },
     {
       "id": "hotel_supply_weekly",
       "name": "酒店供给结构",
       "file": "data/hotel_supply_weekly.csv",
-      "category": "酒店"
+      "category": "酒店",
+      "asOf": "2026-10-04",
+      "latestPeriod": "2026W40",
+      "rowCount": 4125,
+      "updateRecord": "data/hotel-update-record.json"
     },
     {
       "id": "hotel_market_share_annual",
       "name": "酒店集团市占率",
       "file": "data/hotel_market_share_annual.csv",
-      "category": "酒店"
+      "category": "酒店",
+      "asOf": "2025-12-31",
+      "latestPeriod": "2025",
+      "rowCount": 71,
+      "updateRecord": "data/hotel-update-record.json"
     },
     {
       "id": "taxfree",
