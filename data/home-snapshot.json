@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-08T07:17:46+08:00",
+  "generatedAt": "2026-10-08T07:22:35+08:00",
   "industries": [
     {
       "id": "hotel",
@@ -9,13 +9,13 @@
       "value": 195.341588,
       "unit": "元",
       "change": -2.1759950216429402,
+      "changeLabel": "同周号同比，未作节假日错期调整",
       "period": "2026W40",
       "asOf": "2026-10-04",
       "freshnessDays": 14,
       "source": "酒店之家",
       "sourceFile": "data/hotel_industry_weekly.csv",
-      "href": "hotel-dashboard.html",
-      "changeLabel": "同周号同比，未作节假日错期调整"
+      "href": "hotel-dashboard.html"
     },
     {
       "id": "dutyfree",
