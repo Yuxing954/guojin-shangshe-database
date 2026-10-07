@@ -1,0 +1,21 @@
+const assert=require('node:assert/strict'),M=require('./quotes-model.js');
+function raw(time,price='18.05',pct='1.12'){const f=Array(50).fill('');Object.assign(f,{1:'测试证券',3:price,4:'17.85',5:'17.89',30:time,31:'0.20',32:pct,33:'18.09',34:'17.73'});return f.join('~');}
+const received='2026-10-08T01:00:00Z',cn=M.parse(raw('20260930161446'),'600754.SH',received),hk=M.parse(raw('2026/10/07 16:08:59','9.210','-0.16'),'6862.HK',received),us=M.parse(raw('2026-10-07 16:00:01','31.92','-0.90'),'ATAT.O',received);
+assert.equal(cn.asOf,'2026-09-30 16:14:46');assert.equal(hk.asOf,'2026-10-07 16:08:59');assert.equal(us.market,'US');assert.equal(cn.retrievedAt,received);
+assert.equal(M.state(cn,new Date(received)),'上次报价','successful polling must not relabel an old tick as today');
+assert.equal(M.state({...cn,failed:true},new Date(received)),'读取失败 · 上次报价');
+assert.equal(M.parse(raw('20260930161446','0'),'600754.SH',received),null);assert.equal(M.parse(raw(''),'600754.SH',received),null);
+assert.equal(M.timestamp('2026-02-30 12:00:00'),'');assert.equal(M.timestamp('20261008129900'),'');
+assert.equal(M.parse(raw('20260930161446','18',''),'600754.SH',received).percent,null);assert.equal(M.parse(raw('20260930161446','18','0'),'600754.SH',received).percent,0);
+assert.equal(M.dayFor('ATAT.O',new Date(received)),'2026-10-07');assert.equal(M.dayFor('600754.SH',new Date(received)),'2026-10-08');
+const usFields=raw('2026-10-07 16:00:01','31.92','-0.90').split('~');usFields[2]='ATAT.OQ';assert.equal(M.parse(usFields.join('~'),'ATAT.O',received).providerCode,'usATAT.OQ','US chart requests must use the exchange-qualified symbol supplied by Tencent');usFields[2]='OTHER.OQ';assert.equal(M.parse(usFields.join('~'),'ATAT.O',received).providerCode,null);
+const pool=[{code:'600754.SH',name:'锦江酒店',sector:'酒店'},{code:'6862.HK',name:'海底捞',sector:'餐饮'},{code:'ATAT.O',name:'亚朵集团',sector:'酒店'},{code:'1179.HK',name:'华住集团',sector:'酒店'}],quotes={'600754.SH':cn,'6862.HK':hk,'ATAT.O':us};
+assert.deepEqual(M.filter(pool,quotes,{market:'US',sort:'change-desc'}).map(r=>r.code),['ATAT.O']);assert.equal(M.filter(pool,quotes,{q:'海底捞',sector:'餐饮'}).length,1);
+assert.equal(M.filter(pool,quotes,{sort:'change-desc'}).at(-1).code,'1179.HK');assert.equal(M.filter(pool,quotes,{sort:'change-asc'}).at(-1).code,'1179.HK');
+assert.deepEqual(M.breadth(pool,quotes),{total:4,valid:3,up:1,down:2,flat:0,missing:1,percentMissing:0});
+assert.equal(M.breadth(pool,{'600754.SH':{...cn,percent:null}}).flat,0,'unknown change must not count as flat');
+assert.deepEqual(M.candles([['2026-10-01',10,11,12,9],['2026-10-02',10,11,8,9],['2026-10-03',0,11,12,9]]),[['2026-10-01',10,11,12,9]]);
+assert.deepEqual(M.intraday([['202609301500',1,10],['202610071000',1,11],['202610071001',1,12]]).map(r=>r[0]),['202610071000','202610071001']);
+assert.deepEqual(M.intraday([['202609301500',1,10],['202609301530',1,10],['202609301230',1,10]],'600754.SH').map(r=>r[0]),['202609301500'],'exclude lunch and post-session minutes instead of clamping them onto the closing point');
+assert.deepEqual(M.intraday([['202610071559',1,10],['202610072000',1,12]],'ATAT.O').map(r=>r[0]),['202610071559']);
+console.log('quotes-model: quote times, failures, missing values, market filters and chart history passed');
