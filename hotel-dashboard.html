@@ -67,7 +67,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font
 .note{font-size:10px;color:var(--mut);padding:10px 16px;border-top:1px solid #edf1f4}
 .loading{padding:30px;text-align:center;color:var(--mut);font-size:11px}
 </style>
-<link rel="stylesheet" href="scripts/site.css?v=2"><script defer src="scripts/site-shell.js?v=2"></script></head>
+<link rel="stylesheet" href="scripts/site.css?v=5"><script defer src="scripts/site-shell.js?v=3"></script></head>
 <body>
 <div class="wrap">
   <div class="topbar">
@@ -487,6 +487,13 @@ function renderShare(shr){
     var pri=shr.filter(function(r){return r.group===g&&r.year===prior;})[0];
     return{g:g,v:cur?num(cur.market_share_pct):null,d:(cur&&pri)?num(cur.market_share_pct)-num(pri.market_share_pct):null};
   }).filter(function(x){return x.v!=null;}).sort(function(a,b){return b.v-a.v;});
+  var shareSum=latestRows.reduce(function(total,x){return total+x.v;},0);
+  if(shareSum>100.01||latestRows.some(function(x){return x.v<0||x.v>100;})){
+    document.getElementById("shr-period").textContent="市占率口径待核验";
+    document.getElementById("shr-bars").textContent="源数据市占率合计或单项超出有效范围，请先核验统计口径。";
+    document.getElementById("ch-share").textContent="暂无可展示的有效数据";
+    return;
+  }
   var maxV=Math.max.apply(null,latestRows.map(function(x){return x.v;}));
   document.getElementById("shr-bars").innerHTML=latestRows.map(function(x,i){
     return '<div class="bar-row"><span>'+esc(x.g)+'</span><div class="bar-track"><div class="bar-fill" style="width:'+(x.v/maxV*100).toFixed(1)+'%;background:'+PAL[i%PAL.length]+'"></div></div><span>'+f(x.v,1)+'% '+deltaHtml(x.d,true)+'</span></div>';

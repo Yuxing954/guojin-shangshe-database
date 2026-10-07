@@ -1,1 +1,38 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>行业数据 · 国金商社</title><link rel="stylesheet" href="scripts/site.css?v=2"><script defer src="scripts/site-data.js?v=2"></script><script defer src="scripts/site-shell.js?v=2"></script><script defer src="scripts/industry.js?v=2"></script></head><body><main id="main"><header class="portal-header"><div><p class="eyebrow">RESEARCH / INDUSTRY</p><h1 id="page-title">行业数据</h1><p>从关键指标出发，查看一个行业的历史变化。</p></div><a class="portal-top-link" href="companies.html">查看公司数据 ↗</a></header><div class="portal-status" id="status" role="status">正在读取仓库数据…</div><div class="portal-tabs" id="sector-tabs" aria-label="行业筛选"><button data-key="hotel" aria-pressed="false">酒店</button><button data-key="dutyfree" aria-pressed="false">免税</button><button data-key="gold" aria-pressed="false">黄金珠宝</button><button data-key="dining" aria-pressed="false">餐饮茶饮</button><button data-key="overseas" aria-pressed="false">跨境出海</button></div><div id="content" hidden><div class="portal-grid" id="stats"></div><section class="portal-panel"><div class="portal-panel-head"><div><h2 id="metric-title"></h2><span class="portal-note" id="metric-note"></span></div><a id="specialist" href="hotel-dashboard.html">进入专题 ↗</a></div><div class="portal-filter"><label>指标 <select id="metric" aria-label="选择指标"></select></label><label>区间 <select id="range" aria-label="观察区间"><option value="24">最近 24 条</option><option value="12">最近 12 条</option><option value="0">全部记录</option></select></label></div><div id="chart"></div></section><section class="portal-panel"><div class="portal-panel-head"><h2>历史记录</h2><a id="download" href="#">查看原始数据 ↗</a></div><div class="portal-table-scroll"><table class="portal-table"><thead><tr><th>日期</th><th>数值</th><th>同比 %</th><th>来源</th></tr></thead><tbody id="history"></tbody></table></div><div class="portal-pager"><span id="page-label"></span><div><button id="prev" aria-label="上一页">上一页</button> <button id="next" aria-label="下一页">下一页</button></div></div></section></div><p class="portal-subtle">数据日期来自源表；缺失值显示为 —，各指标遵循原始数据口径。</p></main></body></html>
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>行业数据 · 国金商社</title>
+  <link rel="stylesheet" href="scripts/site.css?v=5"><link rel="stylesheet" href="scripts/industry.css?v=3">
+  <script defer src="scripts/site-data.js?v=2"></script><script defer src="scripts/research-model.js?v=2"></script>
+  <script defer src="scripts/industry-model.js?v=3"></script><script defer src="scripts/site-shell.js?v=3"></script><script defer src="scripts/industry.js?v=3"></script>
+</head>
+<body class="site-page" data-site-section="industry">
+<main class="site-main">
+  <header class="portal-header"><div><p class="eyebrow">行业数据</p><h1 id="page-title">酒店</h1><p id="page-subtitle">看入住率与房价，拆解每间客房的收入变化。</p></div><a class="portal-top-link" href="companies.html">公司数据 →</a></header>
+  <nav class="portal-tabs industry-tabs" id="sector-tabs" aria-label="选择行业">
+    <button data-key="hotel" aria-pressed="true">酒店</button><button data-key="dutyfree" aria-pressed="false">免税</button><button data-key="gold" aria-pressed="false">黄金珠宝</button><button data-key="overseas" aria-pressed="false">跨境电商</button><button data-key="dining" aria-pressed="false">餐饮</button>
+  </nav>
+  <div id="status" class="portal-status" role="status">正在读取行业数据…</div>
+  <div id="content" hidden>
+    <div id="stats" class="industry-core" aria-label="核心指标"></div><p id="sector-note" class="industry-context"></p>
+    <section class="portal-panel industry-trend" aria-labelledby="metric-title">
+      <div class="portal-panel-head"><div><p class="eyebrow">核心趋势</p><h2 id="metric-title"></h2></div><p class="portal-note" id="coverage"></p></div>
+      <div class="industry-controls"><label>指标 <select id="metric"></select></label><label>口径 <select id="chart-mode"><option value="value">原始值</option><option value="change">同比变化</option></select></label><div id="ranges" class="industry-ranges" aria-label="趋势范围"><button data-years="1" aria-pressed="false">近1年</button><button data-years="3" aria-pressed="true">近3年</button><button data-years="0" aria-pressed="false">全部</button></div></div>
+      <p id="metric-note" class="portal-note"></p><div id="chart"></div><p id="chart-note" class="portal-note"></p>
+    </section>
+    <div class="industry-related">
+      <section class="portal-panel" aria-labelledby="company-heading"><div class="portal-panel-head"><h2 id="company-heading">重点公司</h2><a id="company-all" href="companies.html">全部公司 →</a></div><div id="company-links"></div><p class="portal-note">进入公司页核对收入、利润与相关纪要。</p></section>
+      <section class="portal-panel" aria-labelledby="research-heading"><div class="portal-panel-head"><h2 id="research-heading">最新观点与纪要</h2><a id="research-all" href="research.html">全部研究 →</a></div><div id="research-links"></div></section>
+    </div>
+    <details class="portal-panel industry-details" id="history-details"><summary><span>历史数据与来源</span><span class="portal-note">口径说明 · 明细 · 下载</span></summary><div class="industry-detail-body">
+      <p id="definition" class="portal-note"></p><div class="portal-table-scroll"><table class="portal-table"><thead><tr><th>数据期间</th><th id="value-heading">数值</th><th id="change-heading">变化</th><th>来源与状态</th></tr></thead><tbody id="history"></tbody></table></div>
+      <div class="portal-pager"><span id="page-label"></span><div><button id="prev">上一页</button> <button id="next">下一页</button></div></div>
+      <div class="industry-downloads"><button id="download" class="portal-button">下载当前指标 CSV</button><a id="specialist" hidden>进入专题 →</a></div>
+      <h3>来源记录</h3><div id="sources"></div><details class="industry-revisions"><summary id="revision-label">来源差异与修订记录</summary><div id="revisions"></div></details>
+    </div></details>
+    <p class="portal-subtle" id="snapshot-note"></p>
+  </div>
+</main>
+</body>
+</html>

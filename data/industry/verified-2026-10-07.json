@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "checkedAt": "2026-10-07",
+  "sources": [
+    {"id":"nbs-202608", "name":"国家统计局", "provider":"原始披露", "url":"https://www.stats.gov.cn/sj/zxfb/202609/t20260915_1965311.html", "publishedAt":"2026-09-15", "retrievedAt":"2026-10-07", "locator":"2026年8月份社会消费品零售总额主要数据：餐饮收入、限额以上单位餐饮收入、金银珠宝类", "quality":"primary"},
+    {"id":"sge-20260930", "name":"上海黄金交易所", "provider":"原始披露", "url":"https://www.sge.com.cn/h5_sjzx/quotationdailynew?end_date=2026-09-30&start_date=2026-09-30", "publishedAt":"2026-09-30", "retrievedAt":"2026-10-07", "locator":"每日行情 Au99.99 行，收盘价列；元/克", "quality":"primary"},
+    {"id":"cga-2026h1", "name":"中国黄金协会", "provider":"原始披露", "url":"https://www.cngold.org.cn/news/show-9500.html", "publishedAt":"2026-08-06", "retrievedAt":"2026-10-07", "locator":"2026年上半年消费分类：黄金首饰132.133吨，同比下降33.88%", "quality":"primary"}
+  ],
+  "records": [
+    {"metricId":"dining_revenue", "period":"2026-08", "value":4544, "sourceId":"nbs-202608", "basis":"monthly", "quality":"primary"},
+    {"metricId":"dining_revenue_yoy", "period":"2026-08", "value":1.1, "sourceId":"nbs-202608", "basis":"monthly", "quality":"primary"},
+    {"metricId":"dining_above_revenue", "period":"2026-08", "value":1387, "sourceId":"nbs-202608", "basis":"monthly", "quality":"primary"},
+    {"metricId":"dining_above_yoy", "period":"2026-08", "value":-0.7, "sourceId":"nbs-202608", "basis":"monthly", "quality":"primary"},
+    {"metricId":"gold_retail", "period":"2026-08", "value":247, "sourceId":"nbs-202608", "basis":"monthly", "quality":"primary"},
+    {"metricId":"gold_retail_yoy", "period":"2026-08", "value":-17.5, "sourceId":"nbs-202608", "basis":"monthly", "quality":"primary"},
+    {"metricId":"gold_price", "period":"2026-09-30", "value":907.32, "change":1.09, "changeLabel":"当日涨跌", "sourceId":"sge-20260930", "basis":"point", "quality":"primary"},
+    {"metricId":"gold_jewelry_volume", "period":"2026-Q2", "value":132.133, "change":-33.88, "changeLabel":"累计同比", "sourceId":"cga-2026h1", "basis":"cumulative", "quality":"primary"}
+  ]
+}

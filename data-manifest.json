@@ -196,6 +196,27 @@
       "name": "标的池与估值跟踪",
       "file": "data/商社-标的池与估值跟踪.csv",
       "category": "公司"
+    },
+    {
+      "id": "industry_overview",
+      "name": "五大行业核心指标与来源",
+      "file": "data/industry/overview.json",
+      "category": "行业核心",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "id": "industry_miaoxiang",
+      "name": "妙想指标选录与来源记录",
+      "file": "data/industry/miaoxiang-2026-10-07.json",
+      "category": "行业来源",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "id": "industry_verified",
+      "name": "原始披露核对记录",
+      "file": "data/industry/verified-2026-10-07.json",
+      "category": "行业来源",
+      "checkedAt": "2026-10-07"
     }
   ]
 }
