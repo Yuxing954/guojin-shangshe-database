@@ -5,7 +5,7 @@
 - 研究首页：[index.html](./index.html)；展示研究重点、行业关键指标和最新观点纪要
 - 行业数据：[industry.html](./industry.html)；五个行业的指标趋势与历史记录
 - 公司数据：[companies.html](./companies.html)；公司搜索、估值与财务详情
-- 观点纪要：[research.html](./research.html)；检索、正文阅读与纪要下载
+- 观点纪要：[research.html](./research.html)；公司与板块检索、近7天/30天筛选、站内观点阅读及纪要附件入口；区分纪要摘要、文档附件和未转写音频
 - 行情与工具：[database.html](./database.html)；按模块查看原有功能
 - 通用数据浏览器：[dashboard.html](./dashboard.html)
 - 各项指标旁标注源数据日期，摘要生成时间不代表上游数据已更新

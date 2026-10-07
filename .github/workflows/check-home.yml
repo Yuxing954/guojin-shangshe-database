@@ -15,7 +15,7 @@ on:
       - "scripts/site*"
       - "scripts/industry.js"
       - "scripts/companies.js"
-      - "scripts/research.js"
+      - "scripts/research*"
       - "scripts/research_sources*"
       - "scripts/test_research_updates.py"
       - "scripts/import_research_topics.py"
@@ -51,6 +51,8 @@ jobs:
           node --check scripts/industry.js
           node --check scripts/companies.js
           node --check scripts/research.js
+          node --check scripts/research-model.js
+          node scripts/research-model.test.cjs
           node scripts/site-data.test.cjs
       - name: Check existing market and earnings logic
         run: |
