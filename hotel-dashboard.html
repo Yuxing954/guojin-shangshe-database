@@ -67,11 +67,11 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font
 .note{font-size:10px;color:var(--mut);padding:10px 16px;border-top:1px solid #edf1f4}
 .loading{padding:30px;text-align:center;color:var(--mut);font-size:11px}
 </style>
-</head>
+<link rel="stylesheet" href="scripts/site.css?v=2"><script defer src="scripts/site-shell.js?v=2"></script></head>
 <body>
 <div class="wrap">
   <div class="topbar">
-    <a class="back" href="index.html#sec-hotel">← 返回主看板</a>
+    <a class="back" href="industry.html#hotel">← 行业数据</a>
     <span class="asof" id="asof">读取数据中…</span>
   </div>
 
@@ -188,7 +188,7 @@ if(v||r.length){r.push(v);a.push(r);}
 var h=a.shift().map(function(x){return x.replace(/^﻿/,"");});
 return a.filter(function(x){return x.some(Boolean);}).map(function(x){var o={};h.forEach(function(k,j){o[k]=x[j];});return o;});}
 
-function num(v){v=Number(v);return isFinite(v)&&v!==0?v:null;}
+function num(v){return v==null||String(v).trim()===""?null:(isFinite(Number(v))?Number(v):null);}
 function f(v,d){return num(v)==null?"—":num(v).toLocaleString("zh-CN",{minimumFractionDigits:d,maximumFractionDigits:d});}
 function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
 
@@ -197,7 +197,7 @@ function yoy(series,val,period,field,isPct){
   var prior=null;
   for(var i=0;i<series.length;i++){var r=series[i];
     if(Number(r.year)===Number(period.year)-1&&Number(r.week)===Number(period.week)){prior=r;break;}}
-  if(!prior||num(prior[field])==null||num(val)==null)return null;
+  if(!prior||num(prior[field])==null||num(prior[field])===0||num(val)==null)return null;
   return isPct? (num(val)-num(prior[field]))*100 : (num(val)/num(prior[field])-1)*100;
 }
 function deltaHtml(v,isPt){
@@ -492,3 +492,4 @@ function renderShare(shr){
 </script>
 </body>
 </html>
+

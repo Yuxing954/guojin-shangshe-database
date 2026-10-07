@@ -1,0 +1,130 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-07T18:44:59+08:00",
+  "industries": [
+    {
+      "id": "hotel",
+      "name": "酒店",
+      "metric": "全国 RevPAR",
+      "value": 108.32828000000002,
+      "unit": "元",
+      "change": 8.124796701343872,
+      "period": "2026W36",
+      "asOf": "2026-09-06",
+      "freshnessDays": 14,
+      "source": "酒店之家",
+      "sourceFile": "data/hotel_industry_weekly.csv",
+      "href": "hotel-dashboard.html"
+    },
+    {
+      "id": "dutyfree",
+      "name": "免税",
+      "metric": "离岛免税销售额",
+      "value": 21.3928,
+      "unit": "亿元",
+      "precision": 2,
+      "change": 1.612091,
+      "period": "2026-08",
+      "asOf": "2026-08-31",
+      "freshnessDays": 50,
+      "source": "海口海关/海南省统计局/同花顺iFinD",
+      "sourceFile": "data/dutyfree_monthly.csv",
+      "href": "dutyfree-dashboard.html"
+    },
+    {
+      "id": "gold",
+      "name": "黄金珠宝",
+      "metric": "上海 Au9999 现货收盘价",
+      "value": 949.6,
+      "unit": "元/克",
+      "change": -1.692634194316478,
+      "changeLabel": "较前一记录日",
+      "period": "日度",
+      "asOf": "2026-09-07",
+      "freshnessDays": 7,
+      "source": "上海黄金交易所",
+      "sourceFile": "data/黄金珠宝板块跟踪数据_2026-09-08.csv",
+      "href": "industry.html#gold"
+    },
+    {
+      "id": "dining",
+      "name": "餐饮",
+      "metric": "全国餐饮收入",
+      "value": 4567.2,
+      "unit": "亿元",
+      "change": 1.4,
+      "period": "2026-07",
+      "asOf": "2026-07-31",
+      "freshnessDays": 50,
+      "source": "Wind EDB·国家统计局",
+      "sourceFile": "data/餐饮茶饮板块跟踪数据_2026-09-08.csv",
+      "href": "industry.html#dining"
+    }
+  ],
+  "focus": [
+    {
+      "sector": "酒店经营",
+      "title": "关注酒店经营的量价变化",
+      "summary": "全国 RevPAR 为 108.3 元，同比 +8.1%。结合入住率与房价查看变化来源。",
+      "asOf": "2026-09-06",
+      "href": "hotel-dashboard.html"
+    },
+    {
+      "sector": "免税消费",
+      "title": "对照销售额与购物人次",
+      "summary": "离岛免税销售额 21.39 亿元，同比 +1.6%；购物人次同比 +0.8%。",
+      "asOf": "2026-08-31",
+      "href": "dutyfree-dashboard.html"
+    },
+    {
+      "sector": "餐饮需求",
+      "title": "跟踪餐饮收入增速",
+      "summary": "全国餐饮收入同比 +1.4%，限额以上餐饮同比 +0.0%。查看两种口径的趋势。",
+      "asOf": "2026-07-31",
+      "href": "industry.html#dining"
+    }
+  ],
+  "research": [
+    {
+      "title": "【长江宏观宋筱筱团队】国庆假期文旅表现一张图（2026.10.07）",
+      "date": "2026-10-07",
+      "kind": "views",
+      "label": "商社观点",
+      "author": "水木调研纪要",
+      "href": "https://wx.zsxq.com/group/88888142214212/topic/82258225821415152"
+    },
+    {
+      "title": "东方甄选9月数据更新：自营爆品+渠道扩张+用户拉新驱动增长提速",
+      "date": "2026-10-07",
+      "kind": "views",
+      "label": "商社观点",
+      "author": "水木调研纪要",
+      "href": "https://wx.zsxq.com/group/88888142214212/topic/55521552155481854"
+    },
+    {
+      "title": "野村——中国互联网与新媒体——月度应用追踪（2026年8月）：字节跳动时长份额大幅跃升",
+      "date": "2026-10-06",
+      "kind": "views",
+      "label": "商社观点",
+      "author": "水木调研纪要",
+      "href": "https://wx.zsxq.com/group/88888142214212/topic/22258225515255851"
+    },
+    {
+      "title": "🎁【长江社零】2026年国庆消费数据高频监测",
+      "date": "2026-10-05",
+      "kind": "views",
+      "label": "商社观点",
+      "author": "水木调研纪要",
+      "href": "https://wx.zsxq.com/group/88888142214212/topic/55521518855422184"
+    },
+    {
+      "title": "【国泰海通商社·国庆假期·10月4日】",
+      "date": "2026-10-05",
+      "kind": "views",
+      "label": "商社观点",
+      "author": "水木调研纪要",
+      "href": "https://wx.zsxq.com/group/88888142214212/topic/22258281122228421"
+    }
+  ],
+  "researchAsOf": "2026-10-07"
+}

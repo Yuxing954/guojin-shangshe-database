@@ -1,0 +1,61 @@
+name: Check research website
+
+on:
+  pull_request:
+    paths:
+      - "index.html"
+      - "industry.html"
+      - "companies.html"
+      - "research.html"
+      - "hotel-dashboard.html"
+      - "dutyfree-dashboard.html"
+      - "earnings.html"
+      - "dashboard.html"
+      - "database.html"
+      - "scripts/site*"
+      - "scripts/industry.js"
+      - "scripts/companies.js"
+      - "scripts/research*"
+      - "scripts/research_sources*"
+      - "scripts/test_research_updates.py"
+      - "scripts/import_research_topics.py"
+      - "scripts/build_research_recent.py"
+      - "data/research/**"
+      - "scripts/home.*"
+      - "scripts/build_home_snapshot.py"
+      - "scripts/test_home_snapshot.py"
+      - "data/home-snapshot.json"
+      - ".github/workflows/check-home.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check homepage data and JavaScript
+        run: |
+          python scripts/test_home_snapshot.py
+          python scripts/research_sources_test.py
+          python -m py_compile scripts/import_research_topics.py
+          python scripts/build_research_recent.py
+          python scripts/build_home_snapshot.py
+          python scripts/test_research_updates.py
+          node --check scripts/home.js
+          node --check scripts/site-shell.js
+          node --check scripts/industry.js
+          node --check scripts/companies.js
+          node --check scripts/research.js
+          node --check scripts/research-model.js
+          node scripts/research-model.test.cjs
+          node scripts/site-data.test.cjs
+      - name: Check existing market and earnings logic
+        run: |
+          node scripts/market-kline.test.js
+          node scripts/earnings-calendar.test.cjs
+          node scripts/earnings.test.cjs
