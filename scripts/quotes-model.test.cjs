@@ -21,3 +21,15 @@ assert.deepEqual(M.intraday([['202610071559',1,10],['202610072000',1,12]],'ATAT.
 assert.equal(M.adjustment({data:{usATAT:{day:[['2026-10-07',32.3,31.92,32.48,31.62]]}}},'usATAT','day',false),'源数据','requesting qfq does not prove the returned raw series is adjusted');
 assert.equal(M.adjustment({data:{sh600754:{qfqday:[['2026-09-30',17.89,18.05,18.09,17.73]]}}},'sh600754','day',false),'前复权');assert.equal(M.adjustment({},'hkHSI','day',true),'指数');
 console.log('quotes-model: quote times, failures, missing values, market filters and chart history passed');
+assert.deepEqual(M.watchlist(['600754.SH','600754.SH','unknown',null,{}],pool),['600754.SH']);
+assert.deepEqual(M.watchlist({codes:['600754.SH']},pool),[],'malformed saved settings must not break quote loading');
+assert.deepEqual(M.filter(pool,quotes,{onlyWatch:true,watchlist:['600754.SH','ATAT.O'],market:'US',sector:'酒店'}).map(c=>c.code),['ATAT.O']);
+assert.equal(M.filter(pool,quotes,{onlyWatch:true,watchlist:[]}).length,0,'an empty watchlist must not show all companies');
+assert.deepEqual(M.movingAverage([['a',1,10],['b',1,20],['c',1,30],['d',1,40]],3),[null,null,20,30]);
+assert.deepEqual(M.movingAverage([['a',1,10],['b',1,''],['c',1,30],['d',1,40]],2),[null,null,null,35],'missing closing prices must not be counted as zero');
+const historical=Array.from({length:25},(_,i)=>['d'+i,1,i+1]);
+assert.equal(M.movingAverage(historical,20).slice(-5)[0],11.5,'changing the displayed range must retain earlier prices when calculating MA');
+const research=[{id:'views',rows:[{'标题':'华住经营更新','时间':'2026-10-01','原文链接':'same'},{'标题':'亚朵专题','时间':'2026-10-07'},{'标题':'中国旅游综述','时间':'2026-10-08'}]},{id:'all_views',rows:[{'标题':'华住经营更新','时间':'2026-10-01','原文链接':'same'},{'标题':'酒店概览','相关标的':'华住集团','时间':'2026-10-05'}]}];
+assert.deepEqual(M.relatedResearch(research,{name:'华住集团-S'}).map(r=>r.title),['酒店概览','华住经营更新'],'match known company aliases, order by source date and deduplicate the same source');
+assert.equal(M.relatedResearch(research,{name:'中国中免'}).length,0,'do not match generic words such as China');
+console.log('quotes-model: watchlists, intersecting filters, moving averages and research matching passed');
