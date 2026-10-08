@@ -83,6 +83,7 @@ def import_catalog(catalog_path, source_path, root=ROOT):
                                        'summaryHash': hashlib.sha256(json.dumps([item['summary'], item['followUp'], evidence, issues, date], ensure_ascii=False).encode()).hexdigest(),
                                        'updatedAt': catalog['processedAt']}})
         processed[asset_id] = {'assetId': asset_id, 'type': 'meeting_summary', 'reviewed': False,
+                               'preview': source['text'].strip()[:500], 'previewTruncated': len(source['text'].strip()) > 500,
                                'company': item['company'], 'documentType': item['documentType'],
                                'summary': item['summary'], 'watch': item['followUp'],
                                'note': '根据所提供Word纪要整理，摘要待审阅；未独立核对公告或原录音。历史预测、目标和计划保留当时语境。',
@@ -146,3 +147,4 @@ if __name__ == '__main__':
     parser.add_argument('--root', default=ROOT, type=Path)
     args = parser.parse_args()
     print(json.dumps(import_catalog(args.catalog, args.source_texts, args.root), ensure_ascii=False))
+
