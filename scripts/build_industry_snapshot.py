@@ -42,9 +42,9 @@ def metric(id, label, unit, frequency, scope, **extra):
 
 def definitions():
     hotel = [
-        metric('hotel_revpar', '每间可售客房收入', '元', '周度', '全国 / 全部档次', shortLabel='RevPAR', yoyLabel='去年同周', formula='同一周、同一样本：平均房价 × 入住率（小数）', field='revpar'),
-        metric('hotel_adr', '平均房价', '元', '周度', '全国 / 全部档次', shortLabel='ADR', yoyLabel='去年同周', field='adr'),
-        metric('hotel_occ', '入住率', '%', '周度', '全国 / 全部档次', precision=1, yoyLabel='去年同周', changeUnit='百分点', field='occupancy_rate'),
+        metric('hotel_revpar', '每间可售客房收入', '元', '周度', '全国 / 全部档次', shortLabel='RevPAR', yoyLabel='同比', formula='同一周、同一样本：平均房价 × 入住率（小数）', field='revpar'),
+        metric('hotel_adr', '平均房价', '元', '周度', '全国 / 全部档次', shortLabel='ADR', yoyLabel='同比', field='adr'),
+        metric('hotel_occ', '入住率', '%', '周度', '全国 / 全部档次', precision=1, yoyLabel='同比', changeUnit='百分点', field='occupancy_rate'),
     ]
     dutyfree = [
         metric('dutyfree_sales', '离岛免税购物金额', '亿元', '月度', '海南离岛免税海关监管口径', changeMetric='dutyfree_sales_yoy'),
@@ -126,7 +126,7 @@ def build(root=ROOT):
             prior = hotel_index.get((int(row['year']) - 1, week)) if week <= 52 else None
             old = number(prior.get(item['field'])) if prior else None
             change = (raw - old) * 100 if item['id'] == 'hotel_occ' and old is not None else (raw / old - 1) * 100 if old else None
-            add({'metricId': item['id'], 'period': row['end_date'], 'periodLabel': row['period_id'] + ' · ' + row['end_date'], 'startDate': row.get('start_date', row['end_date']), 'value': raw * 100 if item['id'] == 'hotel_occ' else raw, 'change': change, 'changeLabel': '去年同周', 'sourceId': 'legacy-hotel', 'basis': 'point', 'quality': 'legacy'})
+            add({'metricId': item['id'], 'period': row['end_date'], 'periodLabel': row['period_id'] + ' · ' + row['end_date'], 'startDate': row.get('start_date', row['end_date']), 'value': raw * 100 if item['id'] == 'hotel_occ' else raw, 'change': change, 'changeLabel': '同比', 'sourceId': 'legacy-hotel', 'basis': 'point', 'quality': 'legacy'})
 
     source('legacy-dutyfree', files['dutyfree_monthly'], '海口海关 / 海南统计 / iFinD 历史整理')
     provenance_file = root / 'data/dutyfree/monthly-provenance.json'

@@ -103,7 +103,7 @@ def build(root=ROOT, now=None):
     dining = latest(rows(root, paths["dining"]), "月份", "餐饮收入(亿元)")
     industries = [
         {"id": "hotel", "name": "酒店", "metric": "全国 RevPAR", "value": numeric(h["revpar"]), "unit": "元",
-         "change": h_change, "changeLabel": "同周号同比，未作节假日错期调整", "period": h["period_id"], "asOf": h["end_date"], "freshnessDays": 14,
+         "change": h_change, "changeLabel": "同比", "period": h["period_id"], "asOf": h["end_date"], "freshnessDays": 14,
          "source": h["source"], "sourceFile": paths["hotel_industry_weekly"], "href": "hotel-dashboard.html"},
         {"id": "dutyfree", "name": "免税", "metric": "离岛免税销售额", "value": numeric(dutyfree["shopping_sales_cny_100m"]), "unit": "亿元", "precision": 2,
          "change": numeric(dutyfree["sales_yoy_pct"]), "period": dutyfree["period_id"], "asOf": month_end(dutyfree["period_id"]), "freshnessDays": 50,
@@ -137,7 +137,7 @@ def build(root=ROOT, now=None):
         h_now, d_now, food_now = (next(item for item in industries if item["id"] == id) for id in ("hotel", "dutyfree", "dining"))
         shoppers_now = selected["dutyfree_shoppers"]["points"][-1]
         food_above = selected["dining_above_yoy"]["points"][-1]
-        focus[0].update(summary=f"全国 RevPAR 为 {h_now['value']:.1f} 元，去年同周 {signed(h_now['change'])}。结合入住率与房价查看变化来源。", asOf=h_now["asOf"], href=h_now["href"])
+        focus[0].update(summary=f"全国 RevPAR 为 {h_now['value']:.1f} 元，同比 {signed(h_now['change'])}。结合入住率与房价查看变化来源。", asOf=h_now["asOf"], href=h_now["href"])
         focus[1].update(summary=f"离岛免税购物金额 {d_now['value']:.2f} 亿元，购物人次 {shoppers_now['value']:.2f} 万人次。对照每购物人次金额查看消费变化。", asOf=d_now["asOf"], href=d_now["href"])
         focus[2].update(summary=f"全国餐饮收入同比 {signed(food_now['change'])}，限额以上餐饮同比 {signed(food_above['value'])}。查看两种口径的趋势。", asOf=food_now["asOf"], href=food_now["href"])
     recent = json.loads((root / "data/research/recent.json").read_text(encoding="utf-8"))
