@@ -37,3 +37,10 @@ assert.equal(L.storageLink({...shared,storage:{...shared.storage,downloadAllowed
 assert.equal(L.storageLink({...shared,storage:{...shared.storage,expiresAt:'2000-01-01T00:00:00Z'}}),'');
 assert.equal(L.storageLink({...shared,storage:{...shared.storage,expiresAt:'invalid-date'}}),'');
 console.log('Blocked and expired customer downloads stay hidden.');
+const metadataOnly={...file,sha256:'',storage:{provider:'onedrive',status:'uploaded',metadataVerified:true,verificationMethod:'provider_metadata_version',cloudVersion:'c'.repeat(64),audience:'public',permissionsReviewed:true,downloadAllowed:true,openUrl:'https://1drv.ms/b/checked'}};
+assert(L.hasStoredOriginal(metadataOnly));assert.equal(L.storageLink(metadataOnly),'https://1drv.ms/b/checked');
+assert(!L.hasStoredOriginal({...metadataOnly,storage:{...metadataOnly.storage,metadataVerified:false}}));
+assert(!L.hasStoredOriginal({...metadataOnly,storage:{...metadataOnly.storage,cloudVersion:''}}));
+assert(!L.hasStoredOriginal({...metadataOnly,sha256:'d'.repeat(64)}));
+console.log('Metadata-only originals retain permission checks and do not pretend to verify file bytes.');
+
