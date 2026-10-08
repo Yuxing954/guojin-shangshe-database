@@ -222,7 +222,7 @@ Promise.all([
  ['events','data/dutyfree/events.json'],['sources','data/dutyfree/sources.json'],['manifest','data/dutyfree/manifest.json']
 ].map(([k,u])=>jf(u).then(d=>DB[k]=d)).concat([
  fetch('data/dutyfree_monthly.csv').then(r=>r.text()).then(t=>DB.m=csv(t)),
- fetch('data/dutyfree_holiday.csv').then(r=>r.text()).then(t=>DB.h=csv(t))
+ fetch('data/dutyfree_holiday.csv',{cache:'no-store'}).then(r=>r.text()).then(t=>DB.h=csv(t))
 ])).then(()=>{SRC=DB.sources.sources||{};init()}).catch(e=>{document.getElementById('asof').textContent='数据读取失败';console.log(e)});
 
 function showSrc(key){let s=SRC[key];let b=document.getElementById('srcbox');
