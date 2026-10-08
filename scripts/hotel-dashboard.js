@@ -2,6 +2,7 @@
   'use strict';
   var M = HotelMetrics, data = {}, ix = {}, periods = new Map(), regions = [];
   var state = { view: 'overview', region: '全国', week: '', base: 'auto', window: '52', metric: 'revpar', mode: 'value' };
+  var followLatest = true, latestWeek = '';
   var SEGS = ['经济型', '中档型', '高档型', '豪华型'];
   var GROUPS = ['华住', '首旅如家', '锦江酒店（中国区）', '亚朵'];
   var BANDS = ['15间以下', '15-29间', '30-69间', '70-149间', '150间及以上'];
@@ -30,7 +31,7 @@
       return r.text();
     }).then(function (text) { var rows = M.csv(text); if (!rows.length) throw new Error('没有有效记录'); return rows; });
   }
-  function saveState() { history.replaceState(null, '', '#' + new URLSearchParams(state).toString()); }
+  function saveState() { var saved = Object.assign({}, state, { week: followLatest ? 'latest' : state.week }); history.replaceState(null, '', '#' + new URLSearchParams(saved).toString()); }
   function switchView(view) {
     state.view = view;
     document.querySelectorAll('.hd-tab').forEach(function (b) { var active = b.dataset.view === view; b.classList.toggle('active', active); b.setAttribute('aria-pressed', active); });
@@ -190,21 +191,21 @@
     M.sorted(rows.filter(function (r) { return r.segment === '全部'; })).forEach(function (r) { periods.set(r.period_id, r); });
     regions = Array.from(new Set(rows.map(function (r) { return r.region; }))).filter(function (r) { return r !== '全国'; }).sort(function (a, b) { return a.localeCompare(b, 'zh-CN'); }); regions.unshift('全国');
     var latest = M.sorted(rows.filter(function (r) { return r.region === '全国' && r.segment === '全部'; })).pop();
-    state.week = latest.period_id;
+    latestWeek = latest.period_id; state.week = latestWeek;
     var saved = new URLSearchParams(location.hash.slice(1));
     if (regions.includes(saved.get('region'))) state.region = saved.get('region');
-    if (periods.has(saved.get('week'))) state.week = saved.get('week');
+    if (periods.has(saved.get('week'))) { state.week = saved.get('week'); followLatest = false; }
     if (['overview', 'cities', 'structure'].includes(saved.get('view'))) state.view = saved.get('view');
     if (['52', '156', 'all'].includes(saved.get('window'))) state.window = saved.get('window');
     if (META[saved.get('metric')]) state.metric = saved.get('metric');
     if (['value', 'change'].includes(saved.get('mode'))) state.mode = saved.get('mode');
     if (periods.has(saved.get('base'))) state.base = saved.get('base');
     $('asof').innerHTML = '最新数据截至<b>' + esc(latest.end_date) + ' · ' + esc(latest.period_id) + '</b>';
-    $('week-select').innerHTML = Array.from(periods.values()).reverse().map(function (r) { return option(r.period_id, r.period_id + ' · ' + r.end_date); }).join('');
-    $('week-select').value = state.week; $('region-select').innerHTML = regions.map(function (r) { return option(r, r); }).join(''); $('history-start').value = state.window;
+    $('week-select').innerHTML = option('latest', '最新周 · ' + latestWeek + ' · ' + latest.end_date) + Array.from(periods.values()).reverse().map(function (r) { return option(r.period_id, r.period_id + ' · ' + r.end_date); }).join('');
+    $('week-select').value = followLatest ? 'latest' : state.week; $('region-select').innerHTML = regions.map(function (r) { return option(r, r); }).join(''); $('history-start').value = state.window;
     compareOptions(); $('dashboard').hidden = false;
     document.querySelectorAll('.hd-tab').forEach(function (b) { b.onclick = function () { switchView(b.dataset.view); }; });
-    $('week-select').onchange = function () { state.week = this.value; state.base = 'auto'; compareOptions(); refresh(); };
+    $('week-select').onchange = function () { followLatest = this.value === 'latest'; state.week = followLatest ? latestWeek : this.value; state.base = 'auto'; compareOptions(); refresh(); };
     $('compare-select').onchange = function () { state.base = this.value; refresh(); };
     $('region-select').onchange = function () { state.region = this.value; renderOverview(); saveState(); };
     function setWindow() { state.window = this.value; ['history-start','group-window','supply-window'].forEach(function (id) { $(id).value = state.window; }); renderTrend(); drawSegments(); drawGroups(); drawSupply(); saveState(); }
