@@ -1,7 +1,7 @@
 (function () {
   'use strict';
   var M = HotelMetrics, data = {}, ix = {}, periods = new Map(), regions = [];
-  var state = { view: 'overview', region: '全国', week: '', base: 'auto', window: '52', metric: 'revpar', mode: 'value' };
+  var state = { view: 'overview', region: '全国', week: '', base: 'auto', window: '52', metric: 'revpar', mode: 'change' };
   var followLatest = true, latestWeek = '';
   var SEGS = ['经济型', '中档型', '高档型', '豪华型'];
   var GROUPS = ['华住', '首旅如家', '锦江酒店（中国区）', '亚朵'];
@@ -18,6 +18,7 @@
     return '<span class="' + (v > 0 ? 'hd-positive' : v < 0 ? 'hd-negative' : 'hd-neutral') + '">' + (v > 0 ? '+' : '') + fmt(v, 1) + unit + '</span>';
   }
   function labelChange() { return state.base === 'auto' ? '同比' : '对比变化'; }
+  function valueUnit(field) { return field === 'occupancy_rate' ? '%' : field === 'hotel_count' ? '家' : field === 'room_count' ? '间' : '元'; }
   function row(region, segment, week) { return ix.industry.get(region + '|' + segment + '|' + week); }
   function series(region, segment) { return data.industry.filter(function (r) { return r.region === region && r.segment === segment; }); }
   function calendar() { return M.windowRows(Array.from(periods.values()), state.week, state.window); }
@@ -53,6 +54,7 @@
     $('period-note').innerHTML = '数据周：' + esc(periodLabel(periods.get(state.week))) + '<br>比较基周：' +
       esc(base ? periodLabel(base) : baseWeek() + '（无基周记录）') +
       (state.base === 'auto' ? ' · 同周号同比，未作节假日错期调整' : ' · <span class="hd-manual">手动基周 · 对比变化</span>');
+    $('mode-switch').querySelector('[data-mode="change"]').textContent = state.base === 'auto' ? '同比增速' : '对比变化';
   }
   function renderOverview() {
     var r = row(state.region, '全部', state.week), base = row(state.region, '全部', baseWeek());
@@ -60,7 +62,10 @@
     $('region-select').value = state.region;
     $('core-kpis').innerHTML = ['revpar', 'occupancy_rate', 'adr'].map(function (field, i) {
       var meta = META[field], v = display(r, field), change = M.change(r, base, field);
-      return '<article class="hd-stat' + (i === 0 ? ' primary' : '') + '"><div class="hd-stat-label">' + meta.label + ' <span>' + meta.abbr + '</span></div><div class="hd-stat-value">' + fmt(v, 1) + '<small>' + meta.unit + '</small></div><div class="hd-stat-change"><span>' + labelChange() + '</span>' + delta(change, field) + '</div></article>';
+      var isChange = state.mode === 'change', main = isChange ? change : v;
+      var unit = isChange ? (field === 'occupancy_rate' ? '百分点' : '%') : meta.unit;
+      var cls = isChange && main != null ? (main > 0 ? ' hd-positive' : main < 0 ? ' hd-negative' : ' hd-neutral') : '';
+      return '<article class="hd-stat' + (i === 0 ? ' primary' : '') + '"><div class="hd-stat-label">' + meta.label + ' <span>' + meta.abbr + '</span>' + (isChange ? ' · ' + labelChange() : '') + '</div><div class="hd-stat-value' + cls + '">' + (isChange && main > 0 ? '+' : '') + fmt(main, 1) + '<small>' + unit + '</small></div><div class="hd-stat-change">' + (isChange ? '<span>本周</span>' + fmt(v, 1) + ' ' + meta.unit : '<span>' + labelChange() + '</span>' + delta(change, field)) + '</div></article>';
     }).join('');
     if (!r) $('takeaway').textContent = state.region + '在所选周暂无经营记录。可切换数据周查看。';
     else if (!base) $('takeaway').textContent = '比较基周暂无该地区记录；当前值保留，变化不计算。';
@@ -82,20 +87,26 @@
     var rows = calendar(), field = state.metric, meta = META[field];
     var current = rows.map(function (r) { return { x: r.period_id, date: r.start_date + ' — ' + r.end_date,
       y: state.mode === 'value' ? display(row(state.region, '全部', r.period_id), field) : M.change(row(state.region, '全部', r.period_id), row(state.region, '全部', M.priorPeriod(r)), field) }; });
-    var lines = [{ name: state.mode === 'value' ? state.region + ' · 本期' : '同周同比', color: COLORS[0], pts: current }];
+    var lines = [{ name: state.region + (state.mode === 'value' ? ' · 本期' : ' · 同周同比'), color: COLORS[0], pts: current }];
     if (state.mode === 'value') lines.push({ name: '去年同周号', color: '#aab0c9', dash: true, pts: rows.map(function (r) {
       return { x: r.period_id, y: display(row(state.region, '全部', M.priorPeriod(r)), field) };
     }) });
     var unit = state.mode === 'change' ? (field === 'occupancy_rate' ? '百分点' : '%') : meta.unit;
     $('trend-caption').textContent = meta.label + '（' + meta.abbr + '） · ' + unit + (state.mode === 'change' ? ' · 未作节假日错期调整' : ' · 虚线为去年同周号');
+    $('chart-mode-note').textContent = state.mode === 'change' ? '同周同比 · 入住率用百分点' : '绝对值 · 对照去年同周';
     lineChart('main-chart', lines, { unit: unit, occupancy: state.mode === 'value' && field === 'occupancy_rate', zero: state.mode === 'change' });
     $('history-note').textContent = rows.length ? '展示 ' + rows[0].period_id + ' — ' + rows[rows.length - 1].period_id + ' · ' + rows.length + '周 · 范围截止所选周；缺失值留空，折线断开。' : '所选范围暂无数据。';
   }
   function metricCell(r, base, field) {
-    var v = display(r, field);
-    return '<td><strong>' + fmt(v, 1) + (field === 'occupancy_rate' && v != null ? '%' : '') + '</strong><small>' + delta(M.change(r, base, field), field) + '</small></td>';
+    var v = display(r, field), change = M.change(r, base, field);
+    if (state.mode === 'change') return '<td><strong>' + delta(change, field) + '</strong><small>本周 ' + fmt(v, 1) + ' ' + valueUnit(field) + '</small></td>';
+    return '<td><strong>' + fmt(v, 1) + (field === 'occupancy_rate' && v != null ? '%' : '') + '</strong><small>' + labelChange() + ' ' + delta(change, field) + '</small></td>';
   }
-  function operatingHead(first) { return '<thead><tr><th>' + first + '</th><th>每房收入（元）<br>' + labelChange() + '（%）</th><th>入住率<br>' + labelChange() + '（百分点）</th><th>房价（元）<br>' + labelChange() + '（%）</th></tr></thead>'; }
+  function metricHead(field, title) {
+    var changeUnit = field === 'occupancy_rate' ? '百分点' : '%';
+    return '<th>' + title + (state.mode === 'change' ? labelChange() + '（' + changeUnit + '）<br>本周（' + valueUnit(field) + '）' : '（' + valueUnit(field) + '）<br>' + labelChange() + '（' + changeUnit + '）') + '</th>';
+  }
+  function operatingHead(first) { return '<thead><tr><th>' + first + '</th>' + metricHead('revpar', '每房收入') + metricHead('occupancy_rate', '入住率') + metricHead('adr', '房价') + '</tr></thead>'; }
   function renderSegments() {
     $('segment-table').innerHTML = operatingHead('档次') + '<tbody>' + SEGS.map(function (seg) {
       var r = row(state.region, seg, state.week), b = row(state.region, seg, baseWeek());
@@ -104,21 +115,24 @@
     drawSegments();
   }
   function drawSegments() {
-    var selected = $('segment-metric').value, field = selected === 'revpar_yoy' ? 'revpar' : selected, isChange = selected === 'revpar_yoy';
+    var field = $('segment-metric').value, isChange = state.mode === 'change';
+    var unit = isChange ? (field === 'occupancy_rate' ? '百分点' : '%') : META[field].unit;
+    $('segment-chart-caption').textContent = META[field].label + ' · ' + (isChange ? '同周同比（' + unit + '），未作节假日错期调整' : '绝对值（' + unit + '）');
     lineChart('segment-chart', SEGS.map(function (seg, i) { return { name: seg, color: COLORS[i], pts: calendar().map(function (r) {
       var s = row(state.region, seg, r.period_id);
       return { x: r.period_id, y: isChange ? M.change(s, row(state.region, seg, M.priorPeriod(r)), field) : display(s, field) };
-    }) }; }), { unit: isChange ? '%' : META[field].unit, zero: isChange, occupancy: field === 'occupancy_rate' });
+    }) }; }), { unit: unit, zero: isChange, occupancy: !isChange && field === 'occupancy_rate' });
   }
   function renderCities() {
     var all = regions.filter(function (r) { return r !== '全国'; }).map(function (region) {
       var r = row(region, '全部', state.week), b = row(region, '全部', baseWeek());
-      return { region: region, row: r, base: b, revpar: M.metric(r, 'revpar'), occupancy_rate: M.metric(r, 'occupancy_rate'), adr: M.metric(r, 'adr'), revChange: M.change(r, b, 'revpar') };
+      return { region: region, row: r, base: b, revpar: M.metric(r, 'revpar'), occupancy_rate: M.metric(r, 'occupancy_rate'), adr: M.metric(r, 'adr'), revChange: M.change(r, b, 'revpar'), occChange: M.change(r, b, 'occupancy_rate'), adrChange: M.change(r, b, 'adr') };
     });
     var national = row('全国', '全部', state.week), nationalBase = row('全国', '全部', baseWeek()), nationalChange = M.change(national, nationalBase, 'revpar');
     var comparable = all.filter(function (c) { return c.revChange != null; });
     var higher = nationalChange == null ? null : comparable.filter(function (c) { return c.revChange > nationalChange; }).length;
     $('city-summary').innerHTML = '<span>全国每房收入' + labelChange() + ' <b>' + delta(nationalChange, 'revpar') + '</b></span><span>有可比数据 <b>' + comparable.length + ' / ' + all.length + ' 城</b></span><span>增幅高于全国 <b>' + (higher == null ? '—' : higher + ' 城') + '</b></span>';
+    [['revChange','每房收入'],['occChange','入住率'],['adrChange','房价']].forEach(function (o) { $('city-sort').querySelector('[value="' + o[0] + '"]').textContent = o[1] + labelChange() + ' · 从高到低'; });
     var sorted = M.rank(all, $('city-sort').value), query = $('city-search').value.trim();
     var shown = sorted.map(function (c, i) { c.rank = i + 1; return c; }).filter(function (c) { return c.region.includes(query); });
     function tr(region, r, b, rank) {
@@ -132,23 +146,25 @@
     var rows = GROUPS.map(function (g) { return ix.group.get(g + '|全国|' + state.week); });
     if (!rows.some(Boolean)) { blankTable('group-table', '所选周暂无集团记录；集团周度数据自2024年起。', 6); }
     else {
-      $('group-table').innerHTML = '<thead><tr><th>集团</th><th>房价（元）<br>' + labelChange() + '（%）</th><th>酒店数（家）</th><th>房量（间）</th><th>价格指数</th><th>热度指数</th></tr></thead><tbody>' + GROUPS.map(function (g) {
+      $('group-table').innerHTML = '<thead><tr><th>集团</th>' + metricHead('stay_adr', '房价') + '<th>酒店数（家）</th><th>房量（间）</th><th>价格指数</th><th>热度指数</th></tr></thead><tbody>' + GROUPS.map(function (g) {
         var r = ix.group.get(g + '|全国|' + state.week), b = ix.group.get(g + '|全国|' + baseWeek());
-        return '<tr><td>' + esc(g) + '</td><td><strong>' + fmt(M.metric(r, 'stay_adr'), 1) + '</strong><small>' + delta(M.change(r, b, 'stay_adr'), 'stay_adr') + '</small></td><td>' + fmt(M.metric(r, 'hotel_count'), 0) + '</td><td>' + fmt(M.metric(r, 'room_count'), 0) + '</td><td>' + fmt(M.metric(r, 'stay_price_index'), 2) + '</td><td>' + fmt(M.metric(r, 'stay_heat_index'), 2) + '</td></tr>';
+        return '<tr><td>' + esc(g) + '</td>' + metricCell(r, b, 'stay_adr') + '<td>' + fmt(M.metric(r, 'hotel_count'), 0) + '</td><td>' + fmt(M.metric(r, 'room_count'), 0) + '</td><td>' + fmt(M.metric(r, 'stay_price_index'), 2) + '</td><td>' + fmt(M.metric(r, 'stay_heat_index'), 2) + '</td></tr>';
       }).join('') + '</tbody>';
     }
     drawGroups();
   }
   function drawGroups() {
     if (!data.group) return;
-    var selected = $('group-metric').value, isChange = selected === 'stay_adr_yoy', field = isChange ? 'stay_adr' : selected;
+    var field = $('group-metric').value, isChange = state.mode === 'change';
+    var unit = isChange ? '%' : valueUnit(field), title = field === 'stay_adr' ? '入住日期房价' : field === 'hotel_count' ? '酒店数量' : '房间数量';
+    $('group-chart-caption').textContent = title + ' · ' + (isChange ? '同周同比（%），未作节假日错期调整' : '绝对值（' + unit + '）');
     lineChart('group-chart', GROUPS.map(function (g, i) {
       var full = M.sorted(data.group.filter(function (r) { return r.group === g && r.region === '全国'; }));
       return { name: g, color: COLORS[i], pts: calendar().filter(function (r) { return full.length && r.period_id >= full[0].period_id; }).map(function (r) {
         var current = ix.group.get(g + '|全国|' + r.period_id);
         return { x: r.period_id, y: isChange ? M.change(current, ix.group.get(g + '|全国|' + M.priorPeriod(r)), field) : M.metric(current, field) };
       }) };
-    }), { unit: isChange ? '%' : field === 'stay_adr' ? '元' : field === 'hotel_count' ? '家' : '间', zero: isChange });
+    }), { unit: unit, zero: isChange });
   }
   function renderSupply() {
     if (!data.supply) return;
@@ -204,6 +220,7 @@
     $('week-select').innerHTML = option('latest', '最新周 · ' + latestWeek + ' · ' + latest.end_date) + Array.from(periods.values()).reverse().map(function (r) { return option(r.period_id, r.period_id + ' · ' + r.end_date); }).join('');
     $('week-select').value = followLatest ? 'latest' : state.week; $('region-select').innerHTML = regions.map(function (r) { return option(r, r); }).join(''); $('history-start').value = state.window;
     compareOptions(); $('dashboard').hidden = false;
+    if (state.mode === 'value') $('city-sort').value = 'revpar';
     document.querySelectorAll('.hd-tab').forEach(function (b) { b.onclick = function () { switchView(b.dataset.view); }; });
     $('week-select').onchange = function () { followLatest = this.value === 'latest'; state.week = followLatest ? latestWeek : this.value; state.base = 'auto'; compareOptions(); refresh(); };
     $('compare-select').onchange = function () { state.base = this.value; refresh(); };
@@ -213,7 +230,14 @@
     function bindSwitch(id, attr) {
       var buttons = $(id).querySelectorAll('button');
       function active() { buttons.forEach(function (b) { var isActive = b.dataset[attr] === state[attr]; b.classList.toggle('active', isActive); b.setAttribute('aria-pressed', isActive); }); }
-      buttons.forEach(function (b) { b.onclick = function () { state[attr] = b.dataset[attr]; active(); renderTrend(); saveState(); }; }); active();
+      buttons.forEach(function (b) { b.onclick = function () {
+        state[attr] = b.dataset[attr]; active();
+        if (attr === 'mode') {
+          var changeFields = { revpar: 'revChange', occupancy_rate: 'occChange', adr: 'adrChange' }, valueFields = { revChange: 'revpar', occChange: 'occupancy_rate', adrChange: 'adr' };
+          $('city-sort').value = (state.mode === 'change' ? changeFields[$('city-sort').value] : valueFields[$('city-sort').value]) || $('city-sort').value;
+          refresh();
+        } else { renderTrend(); saveState(); }
+      }; }); active();
     }
     bindSwitch('metric-switch', 'metric'); bindSwitch('mode-switch', 'mode');
     $('segment-metric').onchange = drawSegments; $('group-metric').onchange = drawGroups; $('supply-metric').onchange = drawSupply;
@@ -258,7 +282,7 @@
     var values = lines.flatMap(function (s) { return s.pts.map(function (p) { return M.num(p.y); }); }).filter(function (v) { return v != null; });
     if (!values.length) { host.innerHTML = '<div class="hd-empty">所选范围暂无有效数据</div>'; return; }
     var W = Math.max(300, $('dashboard').clientWidth - 40), H = 280, L = 54, R = 22, T = 14, B = 32, min = Math.min.apply(null, values), max = Math.max.apply(null, values);
-    if (opt.zero) min = Math.min(0, min);
+    if (opt.zero) { min = Math.min(0, min); max = Math.max(0, max); }
     var padding = (max - min) * .12 || 1; min -= padding; max += padding;
     if (opt.occupancy) { min = Math.max(0, min); max = Math.min(100, max); }
     if (max === min) max = min + 1;
