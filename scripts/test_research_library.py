@@ -13,6 +13,9 @@ class LibraryTests(unittest.TestCase):
         self.assertIn('commerce', sector_ids('AI-电商-从技术叙事到业绩兑现.pdf'))
         self.assertEqual(sector_ids('消费电子产业链.pdf'), [])
         self.assertNotIn('gold', sector_ids('黄金周旅游.mp3'))
+        for name in ['新能源汽车周报-零售订单.pdf', 'Power Transformer Export Total.pdf', '消费级AI金融服务.pdf', '全栈AI-阿里字节.pdf', 'Nyota technology.pdf', '阿里巴巴云栖大会.pdf', '消费者信心与油价.mp3']:
+            self.assertEqual(sector_ids(name), [], name)
+        self.assertIn('travel', sector_ids('OTA酒店预订.pdf'))
 
     def test_mixed_topic_deduplicates_each_file_and_strips_urls(self):
         with tempfile.TemporaryDirectory() as directory:
