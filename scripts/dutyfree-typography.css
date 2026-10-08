@@ -1,0 +1,77 @@
+/* Match the site font across the specialist page, including controls and SVG. */
+body.dutyfree-page {
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 1.65;
+}
+.dutyfree-page .wrap *,
+.dutyfree-page .srcmodal * {
+  font-family: inherit;
+}
+.dutyfree-page button,
+.dutyfree-page select,
+.dutyfree-page input {
+  font-family: var(--font);
+}
+.dutyfree-page .panel-head h2,
+.dutyfree-page .dh-panel h2,
+.dutyfree-page .srcbox h3 {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.dutyfree-page .chart-head h3,
+.dutyfree-page .dh-panel h3,
+.dutyfree-page .card h4 {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.dutyfree-page .kpi span,
+.dutyfree-page .dh-cards span {
+  font-size: 13px;
+  line-height: 1.6;
+}
+.dutyfree-page .kpi strong,
+.dutyfree-page .dh-cards strong {
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
+}
+.dutyfree-page .kpi strong em,
+.dutyfree-page .kpi small,
+.dutyfree-page .crumbs,
+.dutyfree-page .asof,
+.dutyfree-page .eyebrow,
+.dutyfree-page .legend,
+.dutyfree-page .fresh,
+.dutyfree-page .muted,
+.dutyfree-page .srcbtn,
+.dutyfree-page .dh-cards small {
+  font-size: 12px;
+  line-height: 1.65;
+}
+.dutyfree-page .axis {
+  font-size: 11px;
+}
+.dutyfree-page .table,
+.dutyfree-page .tooltip,
+.dutyfree-page .signal,
+.dutyfree-page .srcbox {
+  font-size: 13px;
+  line-height: 1.65;
+}
+.dutyfree-page table th {
+  font-size: 12px !important;
+  font-weight: 600;
+}
+.dutyfree-page table td {
+  font-size: 13px !important;
+}
+.dutyfree-page .signal b,
+.dutyfree-page .tag,
+.dutyfree-page .pill {
+  font-size: 12px;
+}
