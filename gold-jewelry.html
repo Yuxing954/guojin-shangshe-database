@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>黄金珠宝专题 · 国金商社</title>
+<link rel="stylesheet" href="scripts/site.css?v=5">
+<script defer src="scripts/site-data.js?v=2"></script><script defer src="scripts/site-shell.js?v=3"></script>
+<script defer src="scripts/gold-jewelry-model.js?v=1"></script><script defer src="scripts/gold-jewelry.js?v=1"></script>
+<style>
+.gold-layout{display:grid;gap:22px}.gold-layout[hidden]{display:none!important}.gold-controls{display:flex;gap:16px;flex-wrap:wrap;align-items:end;margin:16px 0}.gold-controls label{display:grid;gap:6px}.gold-controls select,.gold-controls input{padding:9px;border:1px solid #d8dbe1;border-radius:6px;background:#fff;font:inherit}.gold-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}.gold-kpi{border:1px solid #e3e4e8;border-radius:10px;padding:18px;background:#fff}.gold-kpi strong{display:block;font-size:26px;margin:10px 0}.gold-meta{font-size:12px;color:#657080}.gold-warning{padding:14px 18px;background:#faf4e8;border-left:3px solid #a78238;line-height:1.7}.gold-links{display:flex;gap:18px;flex-wrap:wrap}.gold-source{border-top:1px solid #e3e4e8;padding:12px 0}.gold-source p{margin:6px 0;line-height:1.6}.gold-empty{padding:20px;color:#657080}.gold-table td,.gold-table th{white-space:nowrap}.gold-table td:last-child{white-space:normal;min-width:220px}.gold-panel{padding:22px}.gold-quality{font-size:12px;color:#7c581e}.gold-subtle{color:#657080;font-size:13px;line-height:1.7}
+</style>
+</head>
+<body class="site-page" data-site-section="industry">
+<main class="site-main gold-layout">
+<header class="portal-header"><div><p class="eyebrow">行业专题 / 黄金珠宝</p><h1>从品牌金价到经营表现</h1><p>分开看牌价、原料价格、需求与公司经营；每条数据保留口径和来源。</p></div><a class="portal-top-link" href="industry.html#gold">返回行业趋势 →</a></header>
+<div class="gold-links"><a href="#brand-panel">品牌金价</a><a href="#benchmark-panel">原料金价</a><a href="#industry-panel">行业需求</a><a href="#company-panel">公司经营</a><a href="#source-panel">来源与缺口</a></div>
+<div id="gold-status" class="portal-status" role="status">正在读取黄金珠宝数据库…</div>
+<div id="gold-body" class="gold-layout" hidden>
+<p class="gold-warning">品牌牌价不等于成交价，挂牌价差不等于毛利率。第三方报价保持待复核状态；不同日期、币种、品类或纯度不直接拼接。</p>
+<div id="gold-kpis" class="gold-kpis"></div>
+<section id="brand-panel" class="portal-panel gold-panel"><div class="portal-panel-head"><h2>品牌金价明细</h2><button id="gold-export" class="portal-button">导出筛选结果 CSV</button></div>
+<div class="gold-controls"><label>品牌<select id="gold-brand"><option value="">全部品牌</option></select></label><label>报价日期<select id="gold-date"><option value="">全部日期</option></select></label><label>核验状态<select id="gold-quality"><option value="">全部状态</option><option value="verified_primary">原始来源已核验</option><option value="pending_primary">第三方转引·待复核</option></select></label></div>
+<p id="gold-row-count" class="gold-meta"></p><div class="portal-table-scroll"><table class="portal-table gold-table"><thead><tr><th>品牌</th><th>报价日期</th><th>挂牌价</th><th>单位 / 口径</th><th>同日基准参考差</th><th>来源与核验</th></tr></thead><tbody id="gold-quotes"></tbody></table></div></section>
+<section id="benchmark-panel" class="portal-panel gold-panel"><h2>原料金价 · 原始披露</h2><p class="gold-subtle">以下是实际收录的交易日数据，不等于实时行情。上金所收盘价与加权平均价应分列存储。</p><div class="portal-table-scroll"><table class="portal-table"><thead><tr><th>交易日期</th><th>合约</th><th>价格口径</th><th>价格</th><th>原始来源</th></tr></thead><tbody id="gold-benchmarks"></tbody></table></div></section>
+<section id="industry-panel" class="portal-panel gold-panel"><div class="portal-panel-head"><h2>行业需求与经营环境</h2><a href="industry.html#gold">查看完整趋势 →</a></div><p class="gold-subtle">复用现有行业数据库，不另造历史序列。原始披露、妙想平台转引、历史整理与计算值分别保留。</p><div class="gold-controls"><label>指标<select id="gold-metric"></select></label></div><p id="gold-metric-note" class="gold-subtle"></p><div class="portal-table-scroll"><table class="portal-table"><thead><tr><th>数据期间</th><th>数值</th><th>变化</th><th>统计口径</th><th>来源状态</th></tr></thead><tbody id="gold-industry"></tbody></table></div></section>
+<section id="company-panel" class="portal-panel gold-panel"><h2>公司经营与产品跟踪</h2><p class="gold-subtle">公司财务详情和纪要沿用原站。新增标准化重点：门店净增、同店销售额与销量、定价黄金占比、库存与周转、毛利率；本版不声称已经补齐这些字段。</p><div class="gold-links"><a id="gold-company-all" href="companies.html">公司财务与估值 →</a><a id="gold-research-all" href="research.html">黄金珠宝研究 →</a></div><div id="gold-companies" class="gold-links" style="margin-top:16px"></div><p class="gold-warning">老铺黄金等定价产品另建固定SKU篮子：价格、克重、材质、折扣、调价日及新旧规格。不能与按克牌价混成一个行业金价。</p></section>
+<section id="source-panel" class="portal-panel gold-panel"><h2>来源、采集状态与缺口</h2><p id="gold-checked" class="gold-subtle"></p><div id="gold-gaps"></div><details><summary>本批来源记录</summary><div id="gold-sources"></div></details><p class="gold-links"><a href="data/gold-jewelry/observations.json">本批原始结构化记录</a><a href="data/industry/miaoxiang-2026-10-07.json">仓库已有妙想归档</a><a href="data/gold-jewelry/mx-queries.json">只读查数任务配置</a><a href="docs/gold-jewelry-database.md">数据库建设说明</a></p></section>
+</div>
+</main>
+</body></html>

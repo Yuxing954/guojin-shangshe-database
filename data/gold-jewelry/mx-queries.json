@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "allowedTools": ["mx_data", "mx_search"],
+  "upstreamReference": "https://github.com/jm12138/eastmoney-mx-finance-mcp-server/blob/main/server.py",
+  "note": "MCP工具调用与API回退使用同一只读查数业务。API回退不是已连接MCP的证明。逐月/逐公司分批，返回后校验指标身份与单位；不将生成式回答直接发布为数值。",
+  "queries": [
+    {"id":"jewelry_retail","tool":"mx_data","frequency":"monthly","query":"截至{as_of}，查询{start}起国家统计局限额以上单位金银珠宝类零售额，当期金额、官方当期同比、累计金额和累计同比分列。1—2月是合并期间，不拆出单月；不要全社会珠宝市场规模。返回原始指标代码、完整指标名称、单位、统计期间起止、期间类型、发布日期、原始来源URL；未发布留空。"},
+    {"id":"gold_consumption","tool":"mx_data","frequency":"quarterly","query":"截至{as_of}，查询{start}起中国黄金协会全国黄金消费量，分黄金首饰、金条及金币、工业及其他用金；保留原始累计期间、吨及官方同比。不要与世界黄金协会口径拼接，单季值仅由同口径同年度累计量差分，缺数留空。附指标代码、原始来源URL、发布日期。"},
+    {"id":"gold_benchmark","tool":"mx_data","frequency":"daily","query":"截至{as_of}，查询{start}起上海黄金交易所Au99.99每日收盘价和加权平均价，元/克，分列交易日期。不得用Au(T+D)、期货、上海金午盘定盘价、盘中现价替换。返回指标代码、交易日期、收盘是否已形成、原始来源URL。"},
+    {"id":"company_financials","tool":"mx_data","frequency":"disclosure","query":"截至{as_of}，查询{company}自{start}起定期报告披露的收入、归母净利润、毛利额、毛利率、存货、经营现金流。每个指标附币种和单位、报告期起止、自然年/财年、当期/累计口径、合并范围、公告名称、发布日期、原始公告URL与页码。不要预测值、不要以珠宝零售额代替公司收入。未披露留空。"},
+    {"id":"company_operations","tool":"mx_search","frequency":"disclosure","query":"查找{company}在{start}至{as_of}已发布的官方经营公告与业绩材料，关注期末门店、新开、关闭、直营加盟、同店销售额/销量、按克/定价黄金占比及客单。只返回原始公告或公司IR链接、报告期、披露日期和原文位置；将未披露与不适用分开。"}
+  ]
+}

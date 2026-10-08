@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-08",
+  "coverage": "首批真实观测；不是完整历史，也不是实时行情。",
+  "liveMiaoxiangStatus": "not_verified_in_this_session",
+  "reuse": {"industry":"data/industry/overview.json","miaoxiangArchive":"data/industry/miaoxiang-2026-10-07.json","legacy":"data/黄金珠宝板块跟踪数据_2026-09-08.csv","companyManifest":"data-manifest.json"},
+  "sources": [
+    {"id":"jinjia-20261008","name":"金价网·品牌金店报价表","provider":"金价网","kind":"aggregator","url":"https://www.jinjia.com.cn/","capturedDate":"2026-10-08","publishedAt":null,"captureMethod":"web_parsed_table","rawArchive":null,"note":"已核对网页表格转录，尚未与品牌官网复核。网页没有披露城市、具体时刻、纯度、工费或含税口径；缺失字段保持为空。只采集品牌报价表，不使用相对时间的盘中行情。"},
+    {"id":"sge-20260928","name":"上海黄金交易所·每日行情","provider":"上海黄金交易所","kind":"primary","url":"https://www.sge.com.cn/sjzx/quotation_daily_new?end_date=2026-09-28&start_date=2026-09-28","capturedDate":"2026-10-08","publishedAt":null,"captureMethod":"web_parsed_table","rawArchive":null,"note":"Au99.99 行、收盘价列。交易日期2026-09-28；不是采集日价格。"},
+    {"id":"sge-20260930","name":"上海黄金交易所·每日行情","provider":"上海黄金交易所","kind":"primary","url":"https://www.sge.com.cn/sjzx/quotation_daily_new?end_date=2026-09-30&start_date=2026-09-30","capturedDate":"2026-10-08","publishedAt":null,"captureMethod":"web_parsed_table","rawArchive":null,"note":"Au99.99 行、收盘价列。交易日期2026-09-30；不是10月8日收盘价。"},
+    {"id":"css-official","name":"周生生官网·Gold Price","provider":"周生生","kind":"primary","url":"https://www.chowsangsang.com/en/gold-price","capturedDate":"2026-10-08","publishedAt":null,"captureMethod":"web_inspection","rawArchive":null,"note":"仅确认来源入口。价格表返回“-”，更新时间为空；不提取通知弹窗示例数字。香港报价不得代替内地报价。"},
+    {"id":"ctf-official","name":"周大福官网","provider":"周大福","kind":"primary","url":"https://www.chowtaifook.com/zh-hk","capturedDate":"2026-10-08","publishedAt":null,"captureMethod":"web_inspection","rawArchive":null,"note":"仅确认来源入口。静态响应含价格模板变量，不能据此入库；香港与内地市场分开。"}
+  ],
+  "brands": [{"id":"ctf","name":"周大福"},{"id":"lfx","name":"老凤祥"},{"id":"zlf","name":"周六福"},{"id":"css","name":"周生生"},{"id":"cds","name":"周大生"},{"id":"lukfook","name":"六福珠宝"},{"id":"laomiao","name":"老庙"},{"id":"caibai","name":"菜百"},{"id":"3dgold","name":"金至尊"},{"id":"chj","name":"潮宏基"}],
+  "quotes": [
+    {"id":"ctf-20261008-jinjia","brandId":"ctf","quoteDate":"2026-10-08","quoteTime":null,"market":"CN","city":null,"currency":"CNY","unit":"CNY/g","product":"gold_ornament","priceBasis":"posted_per_gram","purity":null,"includesLabor":null,"includesTax":null,"price":1249,"sourceId":"jinjia-20261008","verification":"pending_primary"},
+    {"id":"lfx-20261008-jinjia","brandId":"lfx","quoteDate":"2026-10-08","quoteTime":null,"market":"CN","city":null,"currency":"CNY","unit":"CNY/g","product":"gold_ornament","priceBasis":"posted_per_gram","purity":null,"includesLabor":null,"includesTax":null,"price":1247,"sourceId":"jinjia-20261008","verification":"pending_primary"},
+    {"id":"zlf-20261008-jinjia","brandId":"zlf","quoteDate":"2026-10-08","quoteTime":null,"market":"CN","city":null,"currency":"CNY","unit":"CNY/g","product":"gold_ornament","priceBasis":"posted_per_gram","purity":null,"includesLabor":null,"includesTax":null,"price":1244,"sourceId":"jinjia-20261008","verification":"pending_primary"},
+    {"id":"css-20261008-jinjia","brandId":"css","quoteDate":"2026-10-08","quoteTime":null,"market":"CN","city":null,"currency":"CNY","unit":"CNY/g","product":"gold_ornament","priceBasis":"posted_per_gram","purity":null,"includesLabor":null,"includesTax":null,"price":1248,"sourceId":"jinjia-20261008","verification":"pending_primary"},
+    {"id":"cds-20261008-jinjia","brandId":"cds","quoteDate":"2026-10-08","quoteTime":null,"market":"CN","city":null,"currency":"CNY","unit":"CNY/g","product":"gold_ornament","priceBasis":"posted_per_gram","purity":null,"includesLabor":null,"includesTax":null,"price":1249,"sourceId":"jinjia-20261008","verification":"pending_primary"},
+    {"id":"lukfook-20261008-jinjia","brandId":"lukfook","quoteDate":"2026-10-08","quoteTime":null,"market":"CN","city":null,"currency":"CNY","unit":"CNY/g","product":"gold_ornament","priceBasis":"posted_per_gram","purity":null,"includesLabor":null,"includesTax":null,"price":1247,"sourceId":"jinjia-20261008","verification":"pending_primary"},
+    {"id":"laomiao-20261008-jinjia","brandId":"laomiao","quoteDate":"2026-10-08","quoteTime":null,"market":"CN","city":null,"currency":"CNY","unit":"CNY/g","product":"gold_ornament","priceBasis":"posted_per_gram","purity":null,"includesLabor":null,"includesTax":null,"price":1243,"sourceId":"jinjia-20261008","verification":"pending_primary"},
+    {"id":"caibai-20261008-jinjia","brandId":"caibai","quoteDate":"2026-10-08","quoteTime":null,"market":"CN","city":null,"currency":"CNY","unit":"CNY/g","product":"gold_ornament","priceBasis":"posted_per_gram","purity":null,"includesLabor":null,"includesTax":null,"price":1242,"sourceId":"jinjia-20261008","verification":"pending_primary"},
+    {"id":"3dgold-20261008-jinjia","brandId":"3dgold","quoteDate":"2026-10-08","quoteTime":null,"market":"CN","city":null,"currency":"CNY","unit":"CNY/g","product":"gold_ornament","priceBasis":"posted_per_gram","purity":null,"includesLabor":null,"includesTax":null,"price":1247,"sourceId":"jinjia-20261008","verification":"pending_primary"},
+    {"id":"chj-20261008-jinjia","brandId":"chj","quoteDate":"2026-10-08","quoteTime":null,"market":"CN","city":null,"currency":"CNY","unit":"CNY/g","product":"gold_ornament","priceBasis":"posted_per_gram","purity":null,"includesLabor":null,"includesTax":null,"price":1249,"sourceId":"jinjia-20261008","verification":"pending_primary"}
+  ],
+  "benchmarks": [
+    {"id":"sge-au9999-2026-09-28","instrument":"Au99.99","quoteDate":"2026-09-28","quoteTime":null,"market":"CN","currency":"CNY","unit":"CNY/g","purity":0.9999,"priceType":"close","price":900.89,"sourceId":"sge-20260928","verification":"primary"},
+    {"id":"sge-au9999-2026-09-30","instrument":"Au99.99","quoteDate":"2026-09-30","quoteTime":null,"market":"CN","currency":"CNY","unit":"CNY/g","purity":0.9999,"priceType":"close","price":907.32,"sourceId":"sge-20260930","verification":"primary"}
+  ],
+  "revisions": [],
+  "gaps": ["品牌报价只有2026-10-08首批观测，未接通历史回填。","10月8日上金所收盘基准未收录，不用9月30日价格冒充当日价格。","品牌纯度、工费、促销及实际成交价尚未取得；品牌牌价不是成交价，牌价差不是毛利率。","本次未实时调用妙想；行业页复用仓库既有归一化指标及来源标记。","尚未开启计划任务；未确认数据授权前，不向公开仓库自动发布平台原始响应。","原始网页字节未归档；本批captureMethod为web_parsed_table，不声称已有原页截图。"]
+}

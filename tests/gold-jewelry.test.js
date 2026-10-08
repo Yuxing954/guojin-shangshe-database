@@ -1,0 +1,14 @@
+'use strict';
+const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
+const M=require('../scripts/gold-jewelry-model.js');
+const original=JSON.parse(fs.readFileSync(path.join(__dirname,'../data/gold-jewelry/observations.json'),'utf8'));
+const clone=()=>structuredClone(original);
+test('observed seed validates: 10 brand quotes and 2 dated benchmark observations',()=>{assert.deepEqual(M.validate(original),[]);assert.equal(original.quotes.length,10);assert.equal(original.benchmarks.length,2);});
+test('calendar dates, nulls and NaN are not valid prices',()=>{assert.equal(M.validDate('2026-02-30'),false);assert.equal(M.numeric(null),false);for(const x of [null,NaN,Infinity,true,0]){const d=clone();d.quotes[0].price=x;assert.ok(M.validate(d).length);}});
+test('missing brand/source, dates in future and duplicate rows are rejected',()=>{for(const mutate of [d=>delete d.quotes[0].brandId,d=>d.quotes[0].sourceId='missing',d=>d.quotes[0].quoteDate='2026-10-09',d=>d.quotes.push({...d.quotes[0],id:'duplicate'}),d=>d.benchmarks.push({...d.benchmarks[0],id:'duplicate'})]){const d=clone();mutate(d);assert.ok(M.validate(d).length);}});
+test('aggregator cannot be promoted to primary and unknown fee status is not false',()=>{const d=clone();d.quotes[0].verification='verified_primary';assert.ok(M.validate(d).length);const e=clone();e.quotes[0].includesLabor='no';assert.ok(M.validate(e).length);});
+test('September close never fills October 8 spread',()=>{for(const q of original.quotes)assert.equal(M.spread(q,original.benchmarks).value,null);});
+// Synthetic numbers below are isolated TEST FIXTURES, not disclosure observations.
+function fixture(){return [{brandId:'fixture',quoteDate:'2026-01-06',currency:'CNY',unit:'CNY/g',market:'CN',price:1100,purity:0.9999,includesTax:true,includesLabor:false,priceBasis:'posted_per_gram',verification:'verified_primary'},[{id:'fixture-benchmark',quoteDate:'2026-01-06',instrument:'Au99.99',priceType:'close',currency:'CNY',unit:'CNY/g',market:'CN',price:1000,purity:0.9999,verification:'primary'}]];}
+test('same-date reference spread has explicit restrictions',()=>{const [q,b]=fixture();assert.equal(M.spread(q,b).value,100);assert.ok(Math.abs(M.spread(q,b).ratio-10)<1e-10);for(const patch of [{currency:'HKD'},{unit:'HKD/tael'},{market:'HK'},{quoteDate:'2026-01-07'},{verification:'pending_primary'},{priceBasis:'fixed_price'},{purity:null},{includesLabor:null},{includesTax:null}])assert.equal(M.spread({...q,...patch},b).value,null);assert.equal(M.spread(q,[...b,...b]).value,null);});
+test('CSV keeps unknown values empty and protects spreadsheet formula strings',()=>{const out=M.csv([{brandName:'=HYPERLINK("test")',price:1249,purity:null,quoteDate:'2026-10-08'}]);assert.ok(out.includes('"\'=HYPERLINK'));assert.ok(out.includes('"1249"'));assert.ok(!out.includes('"null"'));});
