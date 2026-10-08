@@ -16,6 +16,10 @@ on:
       - "database.html"
       - "scripts/site*"
       - "scripts/industry*"
+      - "scripts/dutyfree-holidays.*"
+      - "tests/dutyfree-holidays.test.cjs"
+      - "data/dutyfree/**"
+      - "data/dutyfree_holiday.csv"
       - "scripts/build_industry_snapshot.py"
       - "scripts/import_miaoxiang_industry.py"
       - "scripts/test_industry_snapshot.py"
@@ -62,6 +66,8 @@ jobs:
           node --check scripts/industry.js
           node --check scripts/industry-model.js
           node scripts/industry-model.test.cjs
+          node --check scripts/dutyfree-holidays.js
+          node tests/dutyfree-holidays.test.cjs
           node --check scripts/companies.js
           node --check scripts/research.js
           node --check scripts/research-model.js

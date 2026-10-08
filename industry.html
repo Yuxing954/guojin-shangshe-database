@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="scripts/site.css?v=5"><link rel="stylesheet" href="scripts/industry.css?v=3">
   <script defer src="scripts/site-data.js?v=2"></script><script defer src="scripts/research-model.js?v=2"></script>
   <script defer src="scripts/industry-model.js?v=3"></script><script defer src="scripts/site-shell.js?v=3"></script><script defer src="scripts/industry.js?v=3"></script>
+  <link rel="stylesheet" href="scripts/dutyfree-holidays.css?v=1"><script defer src="scripts/dutyfree-holidays.js?v=1"></script>
 </head>
 <body class="site-page" data-site-section="industry">
 <main class="site-main">
@@ -21,6 +22,7 @@
       <div class="industry-controls"><label>指标 <select id="metric"></select></label><label>口径 <select id="chart-mode"><option value="value">原始值</option><option value="change">同比变化</option></select></label><div id="ranges" class="industry-ranges" aria-label="趋势范围"><button data-years="1" aria-pressed="false">近1年</button><button data-years="3" aria-pressed="true">近3年</button><button data-years="0" aria-pressed="false">全部</button></div></div>
       <p id="metric-note" class="portal-note"></p><div id="chart"></div><p id="chart-note" class="portal-note"></p>
     </section>
+    <section id="dutyfree-holidays" class="dh-panel" aria-label="离岛免税节假日数据" hidden></section>
     <div class="industry-related">
       <section class="portal-panel" aria-labelledby="company-heading"><div class="portal-panel-head"><h2 id="company-heading">重点公司</h2><a id="company-all" href="companies.html">全部公司 →</a></div><div id="company-links"></div><p class="portal-note">进入公司页核对收入、利润与相关纪要。</p></section>
       <section class="portal-panel" aria-labelledby="research-heading"><div class="portal-panel-head"><h2 id="research-heading">最新观点与纪要</h2><a id="research-all" href="research.html">全部研究 →</a></div><div id="research-links"></div></section>

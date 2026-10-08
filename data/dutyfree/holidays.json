@@ -1,0 +1,3158 @@
+{
+  "schemaVersion": 1,
+  "sourceFile": "【国金商社】离岛免税数据库 20260908.xlsx",
+  "sourceVersion": "2026-09-08",
+  "importedAt": "2026-10-08",
+  "source": "海口海关（Excel内标注），国金证券整理；本次按用户提供原表录入，未独立回查公告",
+  "notes": [
+    "金额单位：亿元；购物人次：万人次；客单价：元。",
+    "日均=同一期间总额/原表统计天数；不同假期天数比较优先看日均。",
+    "原表公式反推的历史数值保留标识，不当作独立披露；未发布或未填写值保持缺失。",
+    "阶段数据与假期总额存在重叠，不能加总。",
+    "原表假设测算区域未作为实际数据导入。"
+  ],
+  "records": [
+    {
+      "id": "2026-元旦-holiday-元旦假期-3-42",
+      "year": 2026,
+      "holiday": "元旦",
+      "kind": "holiday",
+      "period": "1.1-1.3",
+      "days": 3,
+      "sales": 7.12,
+      "shoppers": 8.35,
+      "spend": 8526.946107784432,
+      "daily_sales": 2.3733333333333335,
+      "daily_shoppers": 2.783333333333333,
+      "status": "available",
+      "quality": "原表录入值",
+      "sheet": "元旦假期",
+      "source_cells": {
+        "sales": {
+          "cell": "C42",
+          "value": "7.12",
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "C43",
+          "value": 8.35,
+          "formula": null
+        },
+        "spend": {
+          "cell": "C44",
+          "value": 8526.946107784432,
+          "formula": "=C42/C43*10000"
+        },
+        "days": {
+          "cell": "C10",
+          "value": 3,
+          "formula": null
+        },
+        "period": {
+          "cell": "C9",
+          "value": "1.1-1.3"
+        },
+        "source_daily_sales": {
+          "cell": "C11",
+          "value": 2.3733333333333335,
+          "formula": "=(C16+C21+C26)/3"
+        },
+        "source_daily_shoppers": {
+          "cell": "C12",
+          "value": 2.783333333333333,
+          "formula": "=(C17+C22+C27)/3"
+        },
+        "source_summary_spend": {
+          "cell": "C13",
+          "value": 8526.946107784432,
+          "formula": "=C11/C12*10000"
+        },
+        "daily_yoy": {
+          "cell": "J11",
+          "value": 0.832478087649402,
+          "formula": "=$C11/D11-1"
+        },
+        "shoppers_daily_yoy": {
+          "cell": "J12",
+          "value": 0.268156249999997,
+          "formula": "=$C12/D12-1"
+        },
+        "spend_yoy": {
+          "cell": "J13",
+          "value": 0.444993933239225,
+          "formula": "=$C13/D13-1"
+        }
+      },
+      "notes": [],
+      "daily_yoy": 83.2478087649402,
+      "shoppers_daily_yoy": 26.8156249999997,
+      "spend_yoy": 44.4993933239225,
+      "yoy_basis": "原表同比栏（当年公布口径）"
+    },
+    {
+      "id": "2025-元旦-holiday-元旦假期-4-42",
+      "year": 2025,
+      "holiday": "元旦",
+      "kind": "holiday",
+      "period": "1.1",
+      "days": 1,
+      "sales": 1.2951496388028896,
+      "shoppers": 2.1947873799725652,
+      "spend": 5901.025541795666,
+      "daily_sales": 1.2951496388028896,
+      "daily_shoppers": 2.1947873799725652,
+      "status": "available",
+      "quality": "原表公式值",
+      "sheet": "元旦假期",
+      "source_cells": {
+        "sales": {
+          "cell": "D16",
+          "value": 1.2951496388028896,
+          "formula": "=C16/(1+J16)"
+        },
+        "shoppers": {
+          "cell": "D17",
+          "value": 2.1947873799725652,
+          "formula": "=C17/(1+J17)"
+        },
+        "spend": {
+          "cell": "D18",
+          "value": 5901.025541795666,
+          "formula": "=D16/D17*10000"
+        },
+        "days": {
+          "cell": "D10",
+          "value": 1,
+          "formula": null
+        },
+        "period": {
+          "cell": "D9",
+          "value": "1.1"
+        },
+        "source_daily_sales": {
+          "cell": "D11",
+          "value": 1.29514963880289,
+          "formula": null
+        },
+        "source_daily_shoppers": {
+          "cell": "D12",
+          "value": 2.19478737997257,
+          "formula": null
+        },
+        "source_summary_spend": {
+          "cell": "D13",
+          "value": 5901.025541795655,
+          "formula": "=D11/D12*10000"
+        },
+        "daily_yoy": {
+          "sheet": "主要假期",
+          "cell": "D2",
+          "value": -0.18201075444027992,
+          "formula": -0.18201075444027992
+        }
+      },
+      "notes": [
+        "2025年元旦法定假期仅1天；1.1-1.3同日历窗口另列在阶段数据中。"
+      ],
+      "daily_yoy": -18.201075444027992,
+      "shoppers_daily_yoy": 0.21860182523130156,
+      "spend_yoy": -18.358805453850778,
+      "yoy_basis": "缺失同比按本表相同假期上一年计算；已有同比沿用原表"
+    },
+    {
+      "id": "2024-元旦-holiday-元旦假期-5-42",
+      "year": 2024,
+      "holiday": "元旦",
+      "kind": "holiday",
+      "period": "12.30-1.1",
+      "days": 3,
+      "sales": 4.75,
+      "shoppers": 6.57,
+      "spend": 7228,
+      "daily_sales": 1.5833333333333333,
+      "daily_shoppers": 2.19,
+      "status": "available",
+      "quality": "原表录入值",
+      "sheet": "元旦假期",
+      "source_cells": {
+        "sales": {
+          "cell": "E42",
+          "value": 4.75,
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "E43",
+          "value": 6.57,
+          "formula": null
+        },
+        "spend": {
+          "cell": "E44",
+          "value": 7228,
+          "formula": null
+        },
+        "days": {
+          "cell": "E10",
+          "value": 3,
+          "formula": null
+        },
+        "period": {
+          "cell": "E9",
+          "value": "12.30-1.1"
+        },
+        "source_daily_sales": {
+          "cell": "E11",
+          "value": 1.5833333333333333,
+          "formula": "=E42/3"
+        },
+        "source_daily_shoppers": {
+          "cell": "E12",
+          "value": 2.19,
+          "formula": "=E43/3"
+        },
+        "source_summary_spend": {
+          "cell": "E13",
+          "value": 7228,
+          "formula": null
+        }
+      },
+      "notes": [],
+      "daily_yoy": 12.559241706161139,
+      "shoppers_daily_yoy": 52.790697674418595,
+      "spend_yoy": -26.36511817440913,
+      "yoy_basis": "缺失同比按本表相同假期上一年计算；已有同比沿用原表"
+    },
+    {
+      "id": "2023-元旦-holiday-元旦假期-6-42",
+      "year": 2023,
+      "holiday": "元旦",
+      "kind": "holiday",
+      "period": "12.31-1.2",
+      "days": 3,
+      "sales": 4.22,
+      "shoppers": 4.3,
+      "spend": 9816,
+      "daily_sales": 1.4066666666666665,
+      "daily_shoppers": 1.4333333333333333,
+      "status": "available",
+      "quality": "原表录入值",
+      "sheet": "元旦假期",
+      "source_cells": {
+        "sales": {
+          "cell": "F42",
+          "value": 4.22,
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "F43",
+          "value": 4.3,
+          "formula": null
+        },
+        "spend": {
+          "cell": "F44",
+          "value": 9816,
+          "formula": null
+        },
+        "days": {
+          "cell": "F10",
+          "value": 3,
+          "formula": null
+        },
+        "period": {
+          "cell": "F9",
+          "value": "12.31-1.2"
+        },
+        "source_daily_sales": {
+          "cell": "F11",
+          "value": 1.4066666666666665,
+          "formula": "=F42/3"
+        },
+        "source_daily_shoppers": {
+          "cell": "F12",
+          "value": 1.4333333333333333,
+          "formula": "=F43/3"
+        },
+        "source_summary_spend": {
+          "cell": "F13",
+          "value": 7228,
+          "formula": null
+        }
+      },
+      "notes": [
+        "原表汇总客单价与总额区域不一致，采用总额区域对应口径，原值保留在来源明细。"
+      ],
+      "daily_yoy": -29.666666666666675,
+      "shoppers_daily_yoy": -30.196666666666673,
+      "spend_yoy": 0.7802874743326527,
+      "yoy_basis": "缺失同比按本表相同假期上一年计算；已有同比沿用原表"
+    },
+    {
+      "id": "2022-元旦-holiday-元旦假期-7-42",
+      "year": 2022,
+      "holiday": "元旦",
+      "kind": "holiday",
+      "period": "1.1-1.3",
+      "days": 3,
+      "sales": 6,
+      "shoppers": 6.160164271047228,
+      "spend": 9740,
+      "daily_sales": 2.0,
+      "daily_shoppers": 2.053388090349076,
+      "status": "available",
+      "quality": "原表公式值",
+      "sheet": "元旦假期",
+      "source_cells": {
+        "sales": {
+          "cell": "G42",
+          "value": 6,
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "G43",
+          "value": 6.160164271047228,
+          "formula": "=G42/G44*10000"
+        },
+        "spend": {
+          "cell": "G44",
+          "value": 9740,
+          "formula": null
+        },
+        "days": {
+          "cell": "G10",
+          "value": 3,
+          "formula": null
+        },
+        "period": {
+          "cell": "G9",
+          "value": "1.1-1.3"
+        },
+        "source_daily_sales": {
+          "cell": "G11",
+          "value": 2,
+          "formula": "=G42/3"
+        },
+        "source_daily_shoppers": {
+          "cell": "G12",
+          "value": 2.053388090349076,
+          "formula": "=G43/3"
+        },
+        "source_summary_spend": {
+          "cell": "G13",
+          "value": 7229,
+          "formula": null
+        }
+      },
+      "notes": [
+        "原表汇总客单价与总额区域不一致，采用总额区域对应口径，原值保留在来源明细。"
+      ],
+      "daily_yoy": 11.111111111111116,
+      "shoppers_daily_yoy": -18.94520695990488,
+      "spend_yoy": 37.08148148148147,
+      "yoy_basis": "缺失同比按本表相同假期上一年计算；已有同比沿用原表"
+    },
+    {
+      "id": "2021-元旦-holiday-元旦假期-8-42",
+      "year": 2021,
+      "holiday": "元旦",
+      "kind": "holiday",
+      "period": "1.1-1.3",
+      "days": 3,
+      "sales": 5.4,
+      "shoppers": 7.6,
+      "spend": 7105.263157894738,
+      "daily_sales": 1.8,
+      "daily_shoppers": 2.533333333333333,
+      "status": "available",
+      "quality": "原表录入值",
+      "sheet": "元旦假期",
+      "source_cells": {
+        "sales": {
+          "cell": "H42",
+          "value": 5.4,
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "H43",
+          "value": 7.6,
+          "formula": null
+        },
+        "spend": {
+          "cell": "H44",
+          "value": 7105.263157894738,
+          "formula": "=H42/H43*10000"
+        },
+        "days": {
+          "cell": "H10",
+          "value": 3,
+          "formula": null
+        },
+        "period": {
+          "cell": "H9",
+          "value": "1.1-1.3"
+        },
+        "source_daily_sales": {
+          "cell": "H11",
+          "value": 1.8,
+          "formula": "=H42/3"
+        },
+        "source_daily_shoppers": {
+          "cell": "H12",
+          "value": 2.533333333333333,
+          "formula": "=H43/3"
+        },
+        "source_summary_spend": {
+          "cell": "H13",
+          "value": 7230,
+          "formula": null
+        }
+      },
+      "notes": [
+        "原表汇总客单价与总额区域不一致，采用总额区域对应口径，原值保留在来源明细。"
+      ],
+      "daily_yoy": 195.16,
+      "shoppers_daily_yoy": 80.90000000000002,
+      "spend_yoy": 63.16196793808733,
+      "yoy_basis": "缺失同比按本表相同假期上一年计算；已有同比沿用原表"
+    },
+    {
+      "id": "2020-元旦-holiday-元旦假期-9-42",
+      "year": 2020,
+      "holiday": "元旦",
+      "kind": "holiday",
+      "period": "1.1-1.3",
+      "days": 3,
+      "sales": 1.8295161946063154,
+      "shoppers": 4.2012161415146485,
+      "spend": 4354.729994793191,
+      "daily_sales": 0.6098387315354384,
+      "daily_shoppers": 1.4004053805048828,
+      "status": "available",
+      "quality": "原表公式值",
+      "sheet": "元旦假期",
+      "source_cells": {
+        "sales": {
+          "cell": "I42",
+          "value": 1.8295161946063154,
+          "formula": "=H42/2.9516"
+        },
+        "shoppers": {
+          "cell": "I43",
+          "value": 4.2012161415146485,
+          "formula": "=7.6/1.809"
+        },
+        "spend": {
+          "cell": "I44",
+          "value": 4354.729994793191,
+          "formula": "=I42/I43*10000"
+        },
+        "days": {
+          "cell": "I10",
+          "value": 3,
+          "formula": null
+        },
+        "period": {
+          "cell": "I9",
+          "value": "1.1-1.3"
+        },
+        "source_daily_sales": {
+          "cell": "I11",
+          "value": 0.6098387315354384,
+          "formula": "=I42/3"
+        },
+        "source_daily_shoppers": {
+          "cell": "I12",
+          "value": 1.4004053805048828,
+          "formula": "=I43/3"
+        },
+        "source_summary_spend": {
+          "cell": "I13",
+          "value": 7231,
+          "formula": null
+        }
+      },
+      "notes": [
+        "原表汇总客单价与总额区域不一致，采用总额区域对应口径，原值保留在来源明细。"
+      ],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "yoy_basis": null
+    },
+    {
+      "id": "2026-春节-holiday-春节假期-3-17",
+      "year": 2026,
+      "holiday": "春节",
+      "kind": "holiday",
+      "period": "2.15-2.23",
+      "days": 9,
+      "sales": 27.2,
+      "shoppers": 32.5,
+      "spend": 8369.23076923077,
+      "daily_sales": 3.022222222222222,
+      "daily_shoppers": 3.611111111111111,
+      "status": "available",
+      "quality": "原表录入值",
+      "sheet": "春节假期",
+      "source_cells": {
+        "sales": {
+          "cell": "C17",
+          "value": 27.2,
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "C18",
+          "value": 32.5,
+          "formula": null
+        },
+        "spend": {
+          "cell": "C19",
+          "value": 8369.23076923077,
+          "formula": "=C17/C18*10000"
+        },
+        "days": {
+          "cell": "C10",
+          "value": 9,
+          "formula": null
+        },
+        "period": {
+          "cell": "C9",
+          "value": "2.15-2.23"
+        },
+        "source_daily_sales": {
+          "cell": "C11",
+          "value": 3.022222222222222,
+          "formula": "=C17/C$10"
+        },
+        "source_daily_shoppers": {
+          "cell": "C12",
+          "value": 3.611111111111111,
+          "formula": "=C18/C$10"
+        },
+        "source_summary_spend": {
+          "cell": "C13",
+          "value": 8369.23076923077,
+          "formula": "=C19"
+        },
+        "daily_yoy": {
+          "cell": "H11",
+          "value": 0.15462167038098262,
+          "formula": "=$C11/D11-1"
+        },
+        "shoppers_daily_yoy": {
+          "cell": "H12",
+          "value": 0.20120120120120122,
+          "formula": "=$C12/D12-1"
+        },
+        "spend_yoy": {
+          "cell": "H13",
+          "value": -0.038682429447419064,
+          "formula": "=$C13/D13-1"
+        }
+      },
+      "notes": [],
+      "daily_yoy": 15.462167038098261,
+      "shoppers_daily_yoy": 20.12012012012012,
+      "spend_yoy": -3.8682429447419064,
+      "yoy_basis": "原表同比栏（当年公布口径）"
+    },
+    {
+      "id": "2025-春节-holiday-春节假期-4-17",
+      "year": 2025,
+      "holiday": "春节",
+      "kind": "holiday",
+      "period": "1.28-2.4",
+      "days": 8,
+      "sales": 20.94,
+      "shoppers": 24.05,
+      "spend": 8706,
+      "daily_sales": 2.6175,
+      "daily_shoppers": 3.00625,
+      "status": "available",
+      "quality": "原表录入值",
+      "sheet": "春节假期",
+      "source_cells": {
+        "sales": {
+          "cell": "D17",
+          "value": 20.94,
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "D18",
+          "value": 24.05,
+          "formula": null
+        },
+        "spend": {
+          "cell": "D19",
+          "value": 8706,
+          "formula": null
+        },
+        "days": {
+          "cell": "D10",
+          "value": 8,
+          "formula": null
+        },
+        "period": {
+          "cell": "D9",
+          "value": "1.28-2.4"
+        },
+        "source_daily_sales": {
+          "cell": "D11",
+          "value": 2.6175,
+          "formula": "=D17/D$10"
+        },
+        "source_daily_shoppers": {
+          "cell": "D12",
+          "value": 3.00625,
+          "formula": "=D18/D$10"
+        },
+        "source_summary_spend": {
+          "cell": "D13",
+          "value": 8706,
+          "formula": "=D19"
+        },
+        "daily_yoy": {
+          "sheet": "主要假期",
+          "cell": "D3",
+          "value": -0.1586982723985536,
+          "formula": -0.1586982723985536
+        }
+      },
+      "notes": [],
+      "daily_yoy": -15.869827239855361,
+      "shoppers_daily_yoy": -19.213973799126638,
+      "spend_yoy": 4.163675520459442,
+      "yoy_basis": "缺失同比按本表相同假期上一年计算；已有同比沿用原表"
+    },
+    {
+      "id": "2024-春节-holiday-春节假期-5-17",
+      "year": 2024,
+      "holiday": "春节",
+      "kind": "holiday",
+      "period": "2.10-2.17",
+      "days": 8,
+      "sales": 24.89,
+      "shoppers": 29.77,
+      "spend": 8358,
+      "daily_sales": 3.11125,
+      "daily_shoppers": 3.72125,
+      "status": "available",
+      "quality": "原表录入值",
+      "sheet": "春节假期",
+      "source_cells": {
+        "sales": {
+          "cell": "E17",
+          "value": 24.89,
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "E18",
+          "value": 29.77,
+          "formula": null
+        },
+        "spend": {
+          "cell": "E19",
+          "value": 8358,
+          "formula": null
+        },
+        "days": {
+          "cell": "E10",
+          "value": 8,
+          "formula": null
+        },
+        "period": {
+          "cell": "E9",
+          "value": "2.10-2.17"
+        },
+        "source_daily_sales": {
+          "cell": "E11",
+          "value": 3.11125,
+          "formula": "=E17/E$10"
+        },
+        "source_daily_shoppers": {
+          "cell": "E12",
+          "value": 3.72125,
+          "formula": "=E18/E$10"
+        },
+        "source_summary_spend": {
+          "cell": "E13",
+          "value": 8358,
+          "formula": "=E19"
+        }
+      },
+      "notes": [],
+      "daily_yoy": 39.607371794871796,
+      "shoppers_daily_yoy": 65.9156050955414,
+      "spend_yoy": -16.075911236067874,
+      "yoy_basis": "缺失同比按本表相同假期上一年计算；已有同比沿用原表"
+    },
+    {
+      "id": "2023-春节-holiday-春节假期-6-17",
+      "year": 2023,
+      "holiday": "春节",
+      "kind": "holiday",
+      "period": "1.21-1.27",
+      "days": 7,
+      "sales": 15.6,
+      "shoppers": 15.7,
+      "spend": 9959,
+      "daily_sales": 2.2285714285714286,
+      "daily_shoppers": 2.242857142857143,
+      "status": "available",
+      "quality": "原表录入值",
+      "sheet": "春节假期",
+      "source_cells": {
+        "sales": {
+          "cell": "F17",
+          "value": 15.6,
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "F18",
+          "value": 15.7,
+          "formula": null
+        },
+        "spend": {
+          "cell": "F19",
+          "value": 9959,
+          "formula": null
+        },
+        "days": {
+          "cell": "F10",
+          "value": 7,
+          "formula": null
+        },
+        "period": {
+          "cell": "F9",
+          "value": "1.21-1.27"
+        },
+        "source_daily_sales": {
+          "cell": "F11",
+          "value": 2.2285714285714286,
+          "formula": "=F17/F$10"
+        },
+        "source_daily_shoppers": {
+          "cell": "F12",
+          "value": 2.242857142857143,
+          "formula": "=F18/F$10"
+        },
+        "source_summary_spend": {
+          "cell": "F13",
+          "value": 9959,
+          "formula": "=F19"
+        }
+      },
+      "notes": [],
+      "daily_yoy": 5.879999999999996,
+      "shoppers_daily_yoy": 9.51000000000002,
+      "spend_yoy": -3.093939178953331,
+      "yoy_basis": "缺失同比按本表相同假期上一年计算；已有同比沿用原表"
+    },
+    {
+      "id": "2022-春节-holiday-春节假期-7-17",
+      "year": 2022,
+      "holiday": "春节",
+      "kind": "holiday",
+      "period": "1.31-2.6",
+      "days": 7,
+      "sales": 14.733660748016623,
+      "shoppers": 14.336590265729157,
+      "spend": 10276.962984173888,
+      "daily_sales": 2.104808678288089,
+      "daily_shoppers": 2.0480843236755937,
+      "status": "available",
+      "quality": "原表公式值",
+      "sheet": "春节假期",
+      "source_cells": {
+        "sales": {
+          "cell": "G17",
+          "value": 14.733660748016623,
+          "formula": "=F17/1.0588"
+        },
+        "shoppers": {
+          "cell": "G18",
+          "value": 14.336590265729157,
+          "formula": "=F18/1.0951"
+        },
+        "spend": {
+          "cell": "G19",
+          "value": 10276.962984173888,
+          "formula": "=G17/G18*10000"
+        },
+        "days": {
+          "cell": "G10",
+          "value": 7,
+          "formula": null
+        },
+        "period": {
+          "cell": "G9",
+          "value": "1.31-2.6"
+        },
+        "source_daily_sales": {
+          "cell": "G11",
+          "value": 2.104808678288089,
+          "formula": "=G17/G$10"
+        },
+        "source_daily_shoppers": {
+          "cell": "G12",
+          "value": 2.0480843236755937,
+          "formula": "=G18/G$10"
+        },
+        "source_summary_spend": {
+          "cell": "G13",
+          "value": 10276.962984173888,
+          "formula": "=G19"
+        }
+      },
+      "notes": [],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "yoy_basis": null
+    },
+    {
+      "id": "2026-五一-holiday-五一假期-3-28",
+      "year": 2026,
+      "holiday": "五一",
+      "kind": "holiday",
+      "period": "5.1-5.5",
+      "days": 5,
+      "sales": 5.54,
+      "shoppers": 8.46,
+      "spend": 6548.463356973994,
+      "daily_sales": 1.108,
+      "daily_shoppers": 1.6920000000000002,
+      "status": "available",
+      "quality": "原表录入值",
+      "sheet": "五一假期",
+      "source_cells": {
+        "sales": {
+          "cell": "C28",
+          "value": 5.54,
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "C29",
+          "value": 8.46,
+          "formula": null
+        },
+        "spend": {
+          "cell": "C30",
+          "value": 6548.463356973994,
+          "formula": "=C28/C29*10000"
+        },
+        "days": {
+          "cell": "C10",
+          "value": 5,
+          "formula": null
+        },
+        "period": {
+          "cell": "C9",
+          "value": "5.1-5.5"
+        },
+        "source_daily_sales": {
+          "cell": "C11",
+          "value": 1.108,
+          "formula": "=C28/C$10"
+        },
+        "source_daily_shoppers": {
+          "cell": "C12",
+          "value": 1.6920000000000002,
+          "formula": "=C29/C$10"
+        },
+        "source_summary_spend": {
+          "cell": "C13",
+          "value": 6548.463356973994,
+          "formula": "=C30"
+        },
+        "daily_yoy": {
+          "cell": "J11",
+          "value": 0.0862745098039217,
+          "formula": "=$C11/D11-1"
+        },
+        "shoppers_daily_yoy": {
+          "cell": "J12",
+          "value": 0.06953223767383054,
+          "formula": "=$C12/D12-1"
+        },
+        "spend_yoy": {
+          "cell": "J13",
+          "value": 0.0156538265424373,
+          "formula": "=$C13/D13-1"
+        }
+      },
+      "notes": [],
+      "daily_yoy": 8.62745098039217,
+      "shoppers_daily_yoy": 6.953223767383054,
+      "spend_yoy": 1.56538265424373,
+      "yoy_basis": "原表同比栏（当年公布口径）"
+    },
+    {
+      "id": "2025-五一-holiday-五一假期-4-28",
+      "year": 2025,
+      "holiday": "五一",
+      "kind": "holiday",
+      "period": "5.1-5.5",
+      "days": 5,
+      "sales": 5.1,
+      "shoppers": 7.91,
+      "spend": 6447.534766118836,
+      "daily_sales": 1.02,
+      "daily_shoppers": 1.582,
+      "status": "available",
+      "quality": "原表录入值",
+      "sheet": "五一假期",
+      "source_cells": {
+        "sales": {
+          "cell": "D28",
+          "value": 5.1,
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "D29",
+          "value": 7.91,
+          "formula": null
+        },
+        "spend": {
+          "cell": "D30",
+          "value": 6447.534766118836,
+          "formula": "=D28/D29*10000"
+        },
+        "days": {
+          "cell": "D10",
+          "value": 5,
+          "formula": null
+        },
+        "period": {
+          "cell": "D9",
+          "value": "5.1-5.5"
+        },
+        "source_daily_sales": {
+          "cell": "D11",
+          "value": 1.02,
+          "formula": "=D28/D$10"
+        },
+        "source_daily_shoppers": {
+          "cell": "D12",
+          "value": 1.582,
+          "formula": "=D29/D$10"
+        },
+        "source_summary_spend": {
+          "cell": "D13",
+          "value": 6447.534766118836,
+          "formula": "=D30"
+        },
+        "daily_yoy": {
+          "sheet": "主要假期",
+          "cell": "D4",
+          "value": -0.06764168190127962,
+          "formula": -0.06764168190127962
+        }
+      },
+      "notes": [],
+      "daily_yoy": -6.764168190127961,
+      "shoppers_daily_yoy": -7.808857808857805,
+      "spend_yoy": 1.0902283806653479,
+      "yoy_basis": "缺失同比按本表相同假期上一年计算；已有同比沿用原表"
+    },
+    {
+      "id": "2024-五一-holiday-五一假期-5-28",
+      "year": 2024,
+      "holiday": "五一",
+      "kind": "holiday",
+      "period": "5.1-5.5",
+      "days": 5,
+      "sales": 5.47,
+      "shoppers": 8.58,
+      "spend": 6378,
+      "daily_sales": 1.0939999999999999,
+      "daily_shoppers": 1.716,
+      "status": "available",
+      "quality": "原表录入值",
+      "sheet": "五一假期",
+      "source_cells": {
+        "sales": {
+          "cell": "E28",
+          "value": 5.47,
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "E29",
+          "value": 8.58,
+          "formula": null
+        },
+        "spend": {
+          "cell": "E30",
+          "value": 6378,
+          "formula": null
+        },
+        "days": {
+          "cell": "E10",
+          "value": 5,
+          "formula": null
+        },
+        "period": {
+          "cell": "E9",
+          "value": "5.1-5.5"
+        },
+        "source_daily_sales": {
+          "cell": "E11",
+          "value": 1.0939999999999999,
+          "formula": "=E28/E$10"
+        },
+        "source_daily_shoppers": {
+          "cell": "E12",
+          "value": 1.716,
+          "formula": "=E29/E$10"
+        },
+        "source_summary_spend": {
+          "cell": "E13",
+          "value": 6378,
+          "formula": "=E30"
+        }
+      },
+      "notes": [],
+      "daily_yoy": -38.05209513023783,
+      "shoppers_daily_yoy": -21.28440366972478,
+      "spend_yoy": -21.268979138377976,
+      "yoy_basis": "缺失同比按本表相同假期上一年计算；已有同比沿用原表"
+    },
+    {
+      "id": "2023-五一-holiday-五一假期-6-28",
+      "year": 2023,
+      "holiday": "五一",
+      "kind": "holiday",
+      "period": "4.29-5.3",
+      "days": 5,
+      "sales": 8.83,
+      "shoppers": 10.9,
+      "spend": 8101,
+      "daily_sales": 1.766,
+      "daily_shoppers": 2.18,
+      "status": "available",
+      "quality": "原表录入值",
+      "sheet": "五一假期",
+      "source_cells": {
+        "sales": {
+          "cell": "F28",
+          "value": 8.83,
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "F29",
+          "value": 10.9,
+          "formula": null
+        },
+        "spend": {
+          "cell": "F30",
+          "value": 8101,
+          "formula": null
+        },
+        "days": {
+          "cell": "F10",
+          "value": 5,
+          "formula": null
+        },
+        "period": {
+          "cell": "F9",
+          "value": "4.29-5.3"
+        },
+        "source_daily_sales": {
+          "cell": "F11",
+          "value": 1.766,
+          "formula": "=F28/F$10"
+        },
+        "source_daily_shoppers": {
+          "cell": "F12",
+          "value": 2.18,
+          "formula": "=F29/F$10"
+        },
+        "source_summary_spend": {
+          "cell": "F13",
+          "value": 8101,
+          "formula": "=F30"
+        }
+      },
+      "notes": [],
+      "daily_yoy": 120.00000000000001,
+      "shoppers_daily_yoy": 158.0,
+      "spend_yoy": -14.727813040462824,
+      "yoy_basis": "缺失同比按本表相同假期上一年计算；已有同比沿用原表"
+    },
+    {
+      "id": "2022-五一-holiday-五一假期-7-28",
+      "year": 2022,
+      "holiday": "五一",
+      "kind": "holiday",
+      "period": "5.1-5.5",
+      "days": 5,
+      "sales": 4.013636363636364,
+      "shoppers": 4.224806201550388,
+      "spend": 9500.166805671392,
+      "daily_sales": 0.8027272727272727,
+      "daily_shoppers": 0.8449612403100776,
+      "status": "available",
+      "quality": "原表公式值",
+      "sheet": "五一假期",
+      "source_cells": {
+        "sales": {
+          "cell": "G28",
+          "value": 4.013636363636364,
+          "formula": "=F28/2.2"
+        },
+        "shoppers": {
+          "cell": "G29",
+          "value": 4.224806201550388,
+          "formula": "=F29/2.58"
+        },
+        "spend": {
+          "cell": "G30",
+          "value": 9500.166805671392,
+          "formula": "=G28/G29*10000"
+        },
+        "days": {
+          "cell": "G10",
+          "value": 5,
+          "formula": null
+        },
+        "period": {
+          "cell": "G9",
+          "value": "5.1-5.5"
+        },
+        "source_daily_sales": {
+          "cell": "G11",
+          "value": 0.8027272727272727,
+          "formula": "=G28/G$10"
+        },
+        "source_daily_shoppers": {
+          "cell": "G12",
+          "value": 0.8449612403100776,
+          "formula": "=G29/G$10"
+        },
+        "source_summary_spend": {
+          "cell": "G13",
+          "value": 9500.166805671392,
+          "formula": "=G30"
+        }
+      },
+      "notes": [],
+      "daily_yoy": -59.580701272544175,
+      "shoppers_daily_yoy": -65.08424626817862,
+      "spend_yoy": 15.76235483245101,
+      "yoy_basis": "缺失同比按本表相同假期上一年计算；已有同比沿用原表"
+    },
+    {
+      "id": "2021-五一-holiday-五一假期-8-28",
+      "year": 2021,
+      "holiday": "五一",
+      "kind": "holiday",
+      "period": "5.1-5.5",
+      "days": 5,
+      "sales": 9.93,
+      "shoppers": 12.1,
+      "spend": 8206.611570247933,
+      "daily_sales": 1.986,
+      "daily_shoppers": 2.42,
+      "status": "available",
+      "quality": "原表录入值",
+      "sheet": "五一假期",
+      "source_cells": {
+        "sales": {
+          "cell": "H28",
+          "value": 9.93,
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "H29",
+          "value": 12.1,
+          "formula": null
+        },
+        "spend": {
+          "cell": "H30",
+          "value": 8206.611570247933,
+          "formula": "=H28/H29*10000"
+        },
+        "days": {
+          "cell": "H10",
+          "value": 5,
+          "formula": null
+        },
+        "period": {
+          "cell": "H9",
+          "value": "5.1-5.5"
+        },
+        "source_daily_sales": {
+          "cell": "H11",
+          "value": 1.986,
+          "formula": "=H28/H$10"
+        },
+        "source_daily_shoppers": {
+          "cell": "H12",
+          "value": 2.42,
+          "formula": "=H29/H$10"
+        },
+        "source_summary_spend": {
+          "cell": "H13",
+          "value": 8206.611570247933,
+          "formula": "=H30"
+        }
+      },
+      "notes": [],
+      "daily_yoy": 248.0,
+      "shoppers_daily_yoy": 141.0,
+      "spend_yoy": 44.39834024896261,
+      "yoy_basis": "缺失同比按本表相同假期上一年计算；已有同比沿用原表"
+    },
+    {
+      "id": "2020-五一-holiday-五一假期-9-28",
+      "year": 2020,
+      "holiday": "五一",
+      "kind": "holiday",
+      "period": "5.1-5.5",
+      "days": 5,
+      "sales": 2.853448275862069,
+      "shoppers": 5.020746887966805,
+      "spend": 5683.314334568254,
+      "daily_sales": 0.5706896551724138,
+      "daily_shoppers": 1.004149377593361,
+      "status": "available",
+      "quality": "原表公式值",
+      "sheet": "五一假期",
+      "source_cells": {
+        "sales": {
+          "cell": "I28",
+          "value": 2.853448275862069,
+          "formula": "=H28/3.48"
+        },
+        "shoppers": {
+          "cell": "I29",
+          "value": 5.020746887966805,
+          "formula": "=H29/2.41"
+        },
+        "spend": {
+          "cell": "I30",
+          "value": 5683.314334568254,
+          "formula": "=I28/I29*10000"
+        },
+        "days": {
+          "cell": "I10",
+          "value": 5,
+          "formula": null
+        },
+        "period": {
+          "cell": "I9",
+          "value": "5.1-5.5"
+        },
+        "source_daily_sales": {
+          "cell": "I11",
+          "value": 0.5706896551724138,
+          "formula": "=I28/I$10"
+        },
+        "source_daily_shoppers": {
+          "cell": "I12",
+          "value": 1.004149377593361,
+          "formula": "=I29/I$10"
+        },
+        "source_summary_spend": {
+          "cell": "I13",
+          "value": 5683.314334568254,
+          "formula": "=I30"
+        }
+      },
+      "notes": [],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "yoy_basis": null
+    },
+    {
+      "id": "2026-清明-holiday-清明假期-3-22",
+      "year": 2026,
+      "holiday": "清明",
+      "kind": "holiday",
+      "period": "4.4-4.6",
+      "days": 3,
+      "sales": 2.79,
+      "shoppers": 4.76,
+      "spend": 5861.344537815126,
+      "daily_sales": 0.93,
+      "daily_shoppers": 1.5866666666666667,
+      "status": "available",
+      "quality": "原表录入值",
+      "sheet": "清明假期",
+      "source_cells": {
+        "sales": {
+          "cell": "C22",
+          "value": 2.79,
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "C23",
+          "value": 4.76,
+          "formula": null
+        },
+        "spend": {
+          "cell": "C24",
+          "value": 5861.344537815126,
+          "formula": "=C22/C23*10000"
+        },
+        "days": {
+          "cell": "C10",
+          "value": 3,
+          "formula": null
+        },
+        "period": {
+          "cell": "C9",
+          "value": "4.4-4.6"
+        },
+        "source_daily_sales": {
+          "cell": "C11",
+          "value": 0.93,
+          "formula": "=C22/C$10"
+        },
+        "source_daily_shoppers": {
+          "cell": "C12",
+          "value": 1.5866666666666667,
+          "formula": "=C23/C$10"
+        },
+        "source_summary_spend": {
+          "cell": "C13",
+          "value": 5861.344537815126,
+          "formula": "=C24"
+        },
+        "daily_yoy": {
+          "cell": "F11",
+          "value": 0.148,
+          "formula": null
+        },
+        "shoppers_daily_yoy": {
+          "cell": "F12",
+          "value": 0.196,
+          "formula": null
+        }
+      },
+      "notes": [],
+      "daily_yoy": 14.799999999999999,
+      "shoppers_daily_yoy": 19.6,
+      "spend_yoy": null,
+      "yoy_basis": "原表同比栏（当年公布口径）"
+    },
+    {
+      "id": "2024-清明-holiday-清明假期-5-22",
+      "year": 2024,
+      "holiday": "清明",
+      "kind": "holiday",
+      "period": "4.4-4.6",
+      "days": 3,
+      "sales": 2.71,
+      "shoppers": 4.7,
+      "spend": 5767,
+      "daily_sales": 0.9033333333333333,
+      "daily_shoppers": 1.5666666666666667,
+      "status": "available",
+      "quality": "原表录入值",
+      "sheet": "清明假期",
+      "source_cells": {
+        "sales": {
+          "cell": "E22",
+          "value": 2.71,
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "E23",
+          "value": 4.7,
+          "formula": null
+        },
+        "spend": {
+          "cell": "E24",
+          "value": 5767,
+          "formula": null
+        },
+        "days": {
+          "cell": "E10",
+          "value": 3,
+          "formula": null
+        },
+        "period": {
+          "cell": "E9",
+          "value": "4.4-4.6"
+        },
+        "source_daily_sales": {
+          "cell": "E11",
+          "value": 0.9033333333333333,
+          "formula": "=E22/E$10"
+        },
+        "source_daily_shoppers": {
+          "cell": "E12",
+          "value": 1.5666666666666667,
+          "formula": "=E23/E$10"
+        },
+        "source_summary_spend": {
+          "cell": "E13",
+          "value": 5767,
+          "formula": "=E24"
+        }
+      },
+      "notes": [],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "yoy_basis": null
+    },
+    {
+      "id": "2026-端午-holiday-端午假期-3-22",
+      "year": 2026,
+      "holiday": "端午",
+      "kind": "holiday",
+      "period": "6.19-6.21",
+      "days": 3,
+      "sales": 2.02,
+      "shoppers": 3.47,
+      "spend": 5821.325648414985,
+      "daily_sales": 0.6733333333333333,
+      "daily_shoppers": 1.1566666666666667,
+      "status": "available",
+      "quality": "原表录入值",
+      "sheet": "端午假期",
+      "source_cells": {
+        "sales": {
+          "cell": "C22",
+          "value": 2.02,
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "C23",
+          "value": 3.47,
+          "formula": null
+        },
+        "spend": {
+          "cell": "C24",
+          "value": 5821.325648414985,
+          "formula": "=C22/C23*10000"
+        },
+        "days": {
+          "cell": "C10",
+          "value": 3,
+          "formula": null
+        },
+        "period": {
+          "cell": "C9",
+          "value": "6.19-6.21"
+        },
+        "source_daily_sales": {
+          "cell": "C11",
+          "value": 0.6733333333333333,
+          "formula": "=C22/C$10"
+        },
+        "source_daily_shoppers": {
+          "cell": "C12",
+          "value": 1.1566666666666667,
+          "formula": "=C23/C$10"
+        },
+        "source_summary_spend": {
+          "cell": "C13",
+          "value": 5821.325648414985,
+          "formula": "=C24"
+        },
+        "daily_yoy": {
+          "cell": "F11",
+          "value": 0.08021390374331538,
+          "formula": "=$C11/D11-1"
+        },
+        "shoppers_daily_yoy": {
+          "cell": "F12",
+          "value": 0.10862619808306717,
+          "formula": "=$C12/D12-1"
+        },
+        "spend_yoy": {
+          "cell": "F13",
+          "value": -0.025628380773320858,
+          "formula": "=$C13/D13-1"
+        }
+      },
+      "notes": [],
+      "daily_yoy": 8.021390374331538,
+      "shoppers_daily_yoy": 10.862619808306718,
+      "spend_yoy": -2.562838077332086,
+      "yoy_basis": "原表同比栏（当年公布口径）"
+    },
+    {
+      "id": "2025-端午-holiday-端午假期-4-22",
+      "year": 2025,
+      "holiday": "端午",
+      "kind": "holiday",
+      "period": "5.31-6.2",
+      "days": 3,
+      "sales": 1.87,
+      "shoppers": 3.13,
+      "spend": 5974.440894568691,
+      "daily_sales": 0.6233333333333334,
+      "daily_shoppers": 1.0433333333333332,
+      "status": "available",
+      "quality": "原表录入值",
+      "sheet": "端午假期",
+      "source_cells": {
+        "sales": {
+          "cell": "D22",
+          "value": 1.87,
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "D23",
+          "value": 3.13,
+          "formula": null
+        },
+        "spend": {
+          "cell": "D24",
+          "value": 5974.440894568691,
+          "formula": "=D22/D23*10000"
+        },
+        "days": {
+          "cell": "D10",
+          "value": 3,
+          "formula": null
+        },
+        "period": {
+          "cell": "D9",
+          "value": "5.31-6.2"
+        },
+        "source_daily_sales": {
+          "cell": "D11",
+          "value": 0.6233333333333334,
+          "formula": "=D22/D$10"
+        },
+        "source_daily_shoppers": {
+          "cell": "D12",
+          "value": 1.0433333333333332,
+          "formula": "=D23/D$10"
+        },
+        "source_summary_spend": {
+          "cell": "D13",
+          "value": 5974.440894568691,
+          "formula": "=D24"
+        },
+        "daily_yoy": {
+          "sheet": "主要假期",
+          "cell": "D5",
+          "value": -0.08780487804878023,
+          "formula": -0.08780487804878023
+        }
+      },
+      "notes": [],
+      "daily_yoy": -8.780487804878023,
+      "shoppers_daily_yoy": -18.911917098445596,
+      "spend_yoy": 12.494350502610473,
+      "yoy_basis": "缺失同比按本表相同假期上一年计算；已有同比沿用原表"
+    },
+    {
+      "id": "2024-端午-holiday-端午假期-5-22",
+      "year": 2024,
+      "holiday": "端午",
+      "kind": "holiday",
+      "period": "6.8-6.10",
+      "days": 3,
+      "sales": 2.05,
+      "shoppers": 3.86,
+      "spend": 5310.880829015544,
+      "daily_sales": 0.6833333333333332,
+      "daily_shoppers": 1.2866666666666666,
+      "status": "available",
+      "quality": "原表录入值",
+      "sheet": "端午假期",
+      "source_cells": {
+        "sales": {
+          "cell": "E22",
+          "value": 2.05,
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "E23",
+          "value": 3.86,
+          "formula": null
+        },
+        "spend": {
+          "cell": "E24",
+          "value": 5310.880829015544,
+          "formula": "=E22/E23*10000"
+        },
+        "days": {
+          "cell": "E10",
+          "value": 3,
+          "formula": null
+        },
+        "period": {
+          "cell": "E9",
+          "value": "6.8-6.10"
+        },
+        "source_daily_sales": {
+          "cell": "E11",
+          "value": 0.6833333333333332,
+          "formula": "=E22/E$10"
+        },
+        "source_daily_shoppers": {
+          "cell": "E12",
+          "value": 1.2866666666666666,
+          "formula": "=E23/E$10"
+        },
+        "source_summary_spend": {
+          "cell": "E13",
+          "value": 5310.880829015544,
+          "formula": "=E24"
+        }
+      },
+      "notes": [],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "yoy_basis": null
+    },
+    {
+      "id": "2026-中秋-holiday-国庆中秋假期-3-30",
+      "year": 2026,
+      "holiday": "中秋",
+      "kind": "holiday",
+      "period": "9.25-9.27",
+      "days": 3,
+      "sales": null,
+      "shoppers": null,
+      "spend": null,
+      "daily_sales": null,
+      "daily_shoppers": null,
+      "status": "pending",
+      "quality": "原表录入值",
+      "sheet": "国庆中秋假期",
+      "source_cells": {
+        "sales": {
+          "cell": "C30",
+          "value": null,
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "C31",
+          "value": null,
+          "formula": null
+        },
+        "spend": {
+          "cell": "C32",
+          "value": null,
+          "formula": null
+        },
+        "days": {
+          "cell": "C10",
+          "value": 3,
+          "formula": null
+        },
+        "period": {
+          "cell": "C9",
+          "value": "9.25-9.27"
+        },
+        "source_daily_sales": {
+          "cell": "C11",
+          "value": 0,
+          "formula": "=C30/C$10"
+        },
+        "source_daily_shoppers": {
+          "cell": "C12",
+          "value": 0,
+          "formula": "=C31/C$10"
+        },
+        "source_summary_spend": {
+          "cell": "C13",
+          "value": 0,
+          "formula": "=C32"
+        }
+      },
+      "notes": [
+        "原表总额空缺；日均及同比公式的0或-100%不作为已披露数据。"
+      ],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "yoy_basis": null
+    },
+    {
+      "id": "2024-中秋-holiday-国庆中秋假期-5-30",
+      "year": 2024,
+      "holiday": "中秋",
+      "kind": "holiday",
+      "period": "9.15-9.17",
+      "days": 3,
+      "sales": 2.06,
+      "shoppers": 3.47,
+      "spend": 5943,
+      "daily_sales": 0.6866666666666666,
+      "daily_shoppers": 1.1566666666666667,
+      "status": "available",
+      "quality": "原表录入值",
+      "sheet": "国庆中秋假期",
+      "source_cells": {
+        "sales": {
+          "cell": "E30",
+          "value": 2.06,
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "E31",
+          "value": 3.47,
+          "formula": null
+        },
+        "spend": {
+          "cell": "E32",
+          "value": 5943,
+          "formula": null
+        },
+        "days": {
+          "cell": "E10",
+          "value": 3,
+          "formula": null
+        },
+        "period": {
+          "cell": "E9",
+          "value": "9.15-9.17"
+        },
+        "source_daily_sales": {
+          "cell": "E11",
+          "value": 0.6866666666666666,
+          "formula": "=E30/E$10"
+        },
+        "source_daily_shoppers": {
+          "cell": "E12",
+          "value": 1.1566666666666667,
+          "formula": "=E31/E$10"
+        },
+        "source_summary_spend": {
+          "cell": "E13",
+          "value": 5943,
+          "formula": "=E32"
+        }
+      },
+      "notes": [],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "yoy_basis": null
+    },
+    {
+      "id": "2026-国庆-holiday-国庆中秋假期-3-34",
+      "year": 2026,
+      "holiday": "国庆",
+      "kind": "holiday",
+      "period": "10.1-10.7",
+      "days": 7,
+      "sales": null,
+      "shoppers": null,
+      "spend": null,
+      "daily_sales": null,
+      "daily_shoppers": null,
+      "status": "pending",
+      "quality": "原表录入值",
+      "sheet": "国庆中秋假期",
+      "source_cells": {
+        "sales": {
+          "cell": "C34",
+          "value": null,
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "C35",
+          "value": null,
+          "formula": null
+        },
+        "spend": {
+          "cell": "C36",
+          "value": null,
+          "formula": null
+        },
+        "days": {
+          "cell": "C18",
+          "value": 7,
+          "formula": null
+        },
+        "period": {
+          "cell": "C17",
+          "value": "10.1-10.7"
+        },
+        "source_daily_sales": {
+          "cell": "C19",
+          "value": 0,
+          "formula": "=C38/C$10"
+        },
+        "source_daily_shoppers": {
+          "cell": "C20",
+          "value": 0,
+          "formula": "=C39/C$10"
+        },
+        "source_summary_spend": {
+          "cell": "C21",
+          "value": 0,
+          "formula": "=C40"
+        }
+      },
+      "notes": [
+        "原表总额空缺；日均及同比公式的0或-100%不作为已披露数据。"
+      ],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "yoy_basis": null,
+      "comparison_group": "国庆及中秋国庆"
+    },
+    {
+      "id": "2025-国庆中秋-holiday-国庆中秋假期-4-34",
+      "year": 2025,
+      "holiday": "国庆中秋",
+      "kind": "holiday",
+      "period": "10.1-10.8",
+      "days": 8,
+      "sales": 9.44,
+      "shoppers": 12.29,
+      "spend": 7685,
+      "daily_sales": 1.18,
+      "daily_shoppers": 1.53625,
+      "status": "available",
+      "quality": "原表录入值",
+      "sheet": "国庆中秋假期",
+      "source_cells": {
+        "sales": {
+          "cell": "D34",
+          "value": 9.44,
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "D35",
+          "value": 12.29,
+          "formula": null
+        },
+        "spend": {
+          "cell": "D36",
+          "value": 7685,
+          "formula": null
+        },
+        "days": {
+          "cell": "D18",
+          "value": 8,
+          "formula": null
+        },
+        "period": {
+          "cell": "D17",
+          "value": "10.1-10.8"
+        },
+        "source_daily_sales": {
+          "cell": "D19",
+          "value": 1.18,
+          "formula": "=D34/D$18"
+        },
+        "source_daily_shoppers": {
+          "cell": "D20",
+          "value": 1.53625,
+          "formula": "=D35/D$18"
+        },
+        "source_summary_spend": {
+          "cell": "D21",
+          "value": 7685,
+          "formula": "=D36"
+        },
+        "daily_yoy": {
+          "sheet": "主要假期",
+          "cell": "D6",
+          "value": 0.05222929936305731,
+          "formula": 0.05222929936305731
+        }
+      },
+      "notes": [],
+      "daily_yoy": 5.222929936305731,
+      "shoppers_daily_yoy": -2.4160617059891143,
+      "spend_yoy": 7.874789444132513,
+      "yoy_basis": "缺失同比按本表相同假期上一年计算；已有同比沿用原表",
+      "comparison_group": "国庆及中秋国庆"
+    },
+    {
+      "id": "2024-国庆-holiday-国庆中秋假期-5-34",
+      "year": 2024,
+      "holiday": "国庆",
+      "kind": "holiday",
+      "period": "10.1-10.7",
+      "days": 7,
+      "sales": 7.85,
+      "shoppers": 11.02,
+      "spend": 7124,
+      "daily_sales": 1.1214285714285714,
+      "daily_shoppers": 1.5742857142857143,
+      "status": "available",
+      "quality": "原表录入值",
+      "sheet": "国庆中秋假期",
+      "source_cells": {
+        "sales": {
+          "cell": "E34",
+          "value": 7.85,
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "E35",
+          "value": 11.02,
+          "formula": null
+        },
+        "spend": {
+          "cell": "E36",
+          "value": 7124,
+          "formula": null
+        },
+        "days": {
+          "cell": "E18",
+          "value": 7,
+          "formula": null
+        },
+        "period": {
+          "cell": "E17",
+          "value": "10.1-10.7"
+        },
+        "source_daily_sales": {
+          "cell": "E19",
+          "value": 1.1214285714285714,
+          "formula": "=E34/E$18"
+        },
+        "source_daily_shoppers": {
+          "cell": "E20",
+          "value": 1.5742857142857143,
+          "formula": "=E35/E$18"
+        },
+        "source_summary_spend": {
+          "cell": "E21",
+          "value": 7124,
+          "formula": "=E36"
+        }
+      },
+      "notes": [],
+      "daily_yoy": -32.54564983888293,
+      "shoppers_daily_yoy": -25.915966386554622,
+      "spend_yoy": -8.941353383458639,
+      "yoy_basis": "缺失同比按本表相同假期上一年计算；已有同比沿用原表",
+      "comparison_group": "国庆及中秋国庆"
+    },
+    {
+      "id": "2023-国庆中秋-holiday-国庆中秋假期-6-34",
+      "year": 2023,
+      "holiday": "国庆中秋",
+      "kind": "holiday",
+      "period": "9.29-10.6",
+      "days": 8,
+      "sales": 13.3,
+      "shoppers": 17,
+      "spend": 7823.529411764705,
+      "daily_sales": 1.6625,
+      "daily_shoppers": 2.125,
+      "status": "available",
+      "quality": "原表录入值",
+      "sheet": "国庆中秋假期",
+      "source_cells": {
+        "sales": {
+          "cell": "F34",
+          "value": 13.3,
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "F35",
+          "value": 17,
+          "formula": null
+        },
+        "spend": {
+          "cell": "F36",
+          "value": 7823.529411764705,
+          "formula": "=F34/F35*10000"
+        },
+        "days": {
+          "cell": "F18",
+          "value": 8,
+          "formula": null
+        },
+        "period": {
+          "cell": "F17",
+          "value": "9.29-10.6"
+        },
+        "source_daily_sales": {
+          "cell": "F19",
+          "value": 1.6625,
+          "formula": "=F34/F$18"
+        },
+        "source_daily_shoppers": {
+          "cell": "F20",
+          "value": 2.125,
+          "formula": "=F35/F$18"
+        },
+        "source_summary_spend": {
+          "cell": "F21",
+          "value": 7823.529411764705,
+          "formula": "=F36"
+        }
+      },
+      "notes": [],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": -10.699588477366273,
+      "yoy_basis": "缺失同比按本表相同假期上一年计算；已有同比沿用原表",
+      "comparison_group": "国庆及中秋国庆"
+    },
+    {
+      "id": "2022-国庆-holiday-国庆中秋假期-7-34",
+      "year": 2022,
+      "holiday": "国庆",
+      "kind": "holiday",
+      "period": "9.29-10.6",
+      "days": null,
+      "sales": 6.129032258064517,
+      "shoppers": 6.995884773662551,
+      "spend": 8760.91081593928,
+      "daily_sales": null,
+      "daily_shoppers": null,
+      "status": "available",
+      "quality": "原表公式值",
+      "sheet": "国庆中秋假期",
+      "source_cells": {
+        "sales": {
+          "cell": "G34",
+          "value": 6.129032258064517,
+          "formula": "=F34/2.17"
+        },
+        "shoppers": {
+          "cell": "G35",
+          "value": 6.995884773662551,
+          "formula": "=F35/2.43"
+        },
+        "spend": {
+          "cell": "G36",
+          "value": 8760.91081593928,
+          "formula": "=G34/G35*10000"
+        },
+        "period": {
+          "cell": "G33",
+          "value": "9.29-10.6"
+        }
+      },
+      "notes": [
+        "原表日期为9.29-10.6，与年份对应关系待核验；未推定统计天数。"
+      ],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "yoy_basis": null,
+      "comparison_group": "国庆及中秋国庆"
+    },
+    {
+      "id": "2026-元旦首日-detail-元旦假期-3-16",
+      "year": 2026,
+      "holiday": "元旦首日",
+      "kind": "detail",
+      "period": "1.1",
+      "days": 1,
+      "sales": 2.51,
+      "shoppers": 3.2,
+      "spend": 7843.749999999999,
+      "daily_sales": 2.51,
+      "daily_shoppers": 3.2,
+      "status": "available",
+      "quality": "原表录入值",
+      "sheet": "元旦假期",
+      "source_cells": {
+        "sales": {
+          "cell": "C16",
+          "value": 2.51,
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "C17",
+          "value": 3.2,
+          "formula": null
+        },
+        "spend": {
+          "cell": "C18",
+          "value": 7843.749999999999,
+          "formula": "=C16/C17*10000"
+        },
+        "period": {
+          "cell": "C15",
+          "value": "1.1"
+        }
+      },
+      "notes": [
+        "阶段数据不可与完整假期加总。"
+      ],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "yoy_basis": null,
+      "holiday_group": "元旦"
+    },
+    {
+      "id": "2026-元旦第二日-detail-元旦假期-3-21",
+      "year": 2026,
+      "holiday": "元旦第二日",
+      "kind": "detail",
+      "period": "1.2",
+      "days": 1,
+      "sales": 2.54,
+      "shoppers": 3.3,
+      "spend": 7696.969696969698,
+      "daily_sales": 2.54,
+      "daily_shoppers": 3.3,
+      "status": "available",
+      "quality": "原表公式值",
+      "sheet": "元旦假期",
+      "source_cells": {
+        "sales": {
+          "cell": "C21",
+          "value": 2.54,
+          "formula": "=C47-C16"
+        },
+        "shoppers": {
+          "cell": "C22",
+          "value": 3.3,
+          "formula": "=C48-C17"
+        },
+        "spend": {
+          "cell": "C23",
+          "value": 7696.969696969698,
+          "formula": "=C21/C22*10000"
+        },
+        "period": {
+          "cell": "C20",
+          "value": "1.2"
+        }
+      },
+      "notes": [
+        "阶段数据不可与完整假期加总。"
+      ],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "yoy_basis": null,
+      "holiday_group": "元旦"
+    },
+    {
+      "id": "2026-元旦第三日-detail-元旦假期-3-26",
+      "year": 2026,
+      "holiday": "元旦第三日",
+      "kind": "detail",
+      "period": "1.3",
+      "days": 1,
+      "sales": 2.0700000000000003,
+      "shoppers": 1.8499999999999996,
+      "spend": 11189.189189189192,
+      "daily_sales": 2.0700000000000003,
+      "daily_shoppers": 1.8499999999999996,
+      "status": "available",
+      "quality": "原表公式值",
+      "sheet": "元旦假期",
+      "source_cells": {
+        "sales": {
+          "cell": "C26",
+          "value": 2.0700000000000003,
+          "formula": "=C42-C16-C21"
+        },
+        "shoppers": {
+          "cell": "C27",
+          "value": 1.8499999999999996,
+          "formula": "=C43-C17-C22"
+        },
+        "spend": {
+          "cell": "C28",
+          "value": 11189.189189189192,
+          "formula": "=C26/C27*10000"
+        },
+        "period": {
+          "cell": "C25",
+          "value": "1.3"
+        }
+      },
+      "notes": [
+        "阶段数据不可与完整假期加总。"
+      ],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "yoy_basis": null,
+      "holiday_group": "元旦"
+    },
+    {
+      "id": "2026-元旦首周-detail-元旦假期-3-36",
+      "year": 2026,
+      "holiday": "元旦首周",
+      "kind": "detail",
+      "period": "1.1-1.7",
+      "days": 7,
+      "sales": 12.1,
+      "shoppers": 14.9,
+      "spend": 8120.805369127516,
+      "daily_sales": 1.7285714285714284,
+      "daily_shoppers": 2.1285714285714286,
+      "status": "available",
+      "quality": "原表录入值",
+      "sheet": "元旦假期",
+      "source_cells": {
+        "sales": {
+          "cell": "C36",
+          "value": 12.1,
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "C37",
+          "value": 14.9,
+          "formula": null
+        },
+        "spend": {
+          "cell": "C38",
+          "value": 8120.805369127516,
+          "formula": "=C36/C37*10000"
+        },
+        "period": {
+          "cell": "C35",
+          "value": "1.1-1.7"
+        }
+      },
+      "notes": [
+        "阶段数据不可与完整假期加总。"
+      ],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "yoy_basis": null,
+      "holiday_group": "元旦"
+    },
+    {
+      "id": "2026-元旦同日历三天-detail-元旦假期-3-42",
+      "year": 2026,
+      "holiday": "元旦同日历三天",
+      "kind": "detail",
+      "period": "1.1-1.3",
+      "days": 3,
+      "sales": 7.12,
+      "shoppers": 8.35,
+      "spend": 8526.946107784432,
+      "daily_sales": 2.3733333333333335,
+      "daily_shoppers": 2.783333333333333,
+      "status": "available",
+      "quality": "原表录入值",
+      "sheet": "元旦假期",
+      "source_cells": {
+        "sales": {
+          "cell": "C42",
+          "value": "7.12",
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "C43",
+          "value": 8.35,
+          "formula": null
+        },
+        "spend": {
+          "cell": "C44",
+          "value": 8526.946107784432,
+          "formula": "=C42/C43*10000"
+        },
+        "period": {
+          "cell": "C41",
+          "value": "1.1-1.3"
+        }
+      },
+      "notes": [
+        "阶段数据不可与完整假期加总。"
+      ],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "yoy_basis": null,
+      "holiday_group": "元旦"
+    },
+    {
+      "id": "2026-元旦前两天-detail-元旦假期-3-47",
+      "year": 2026,
+      "holiday": "元旦前两天",
+      "kind": "detail",
+      "period": "1.1-1.2",
+      "days": 2,
+      "sales": 5.05,
+      "shoppers": 6.5,
+      "spend": 7769.2307692307695,
+      "daily_sales": 2.525,
+      "daily_shoppers": 3.25,
+      "status": "available",
+      "quality": "原表录入值",
+      "sheet": "元旦假期",
+      "source_cells": {
+        "sales": {
+          "cell": "C47",
+          "value": 5.05,
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "C48",
+          "value": 6.5,
+          "formula": null
+        },
+        "spend": {
+          "cell": "C49",
+          "value": 7769.2307692307695,
+          "formula": "=C47/C48*10000"
+        },
+        "period": {
+          "cell": "C46",
+          "value": "1.1-1.2"
+        }
+      },
+      "notes": [
+        "阶段数据不可与完整假期加总。"
+      ],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "yoy_basis": null,
+      "holiday_group": "元旦"
+    },
+    {
+      "id": "2025-元旦首日-detail-元旦假期-4-16",
+      "year": 2025,
+      "holiday": "元旦首日",
+      "kind": "detail",
+      "period": "1.1（假期）",
+      "days": 1,
+      "sales": 1.2951496388028896,
+      "shoppers": 2.1947873799725652,
+      "spend": 5901.025541795666,
+      "daily_sales": 1.2951496388028896,
+      "daily_shoppers": 2.1947873799725652,
+      "status": "available",
+      "quality": "原表公式值",
+      "sheet": "元旦假期",
+      "source_cells": {
+        "sales": {
+          "cell": "D16",
+          "value": 1.2951496388028896,
+          "formula": "=C16/(1+J16)"
+        },
+        "shoppers": {
+          "cell": "D17",
+          "value": 2.1947873799725652,
+          "formula": "=C17/(1+J17)"
+        },
+        "spend": {
+          "cell": "D18",
+          "value": 5901.025541795666,
+          "formula": "=D16/D17*10000"
+        },
+        "period": {
+          "cell": "D15",
+          "value": "1.1（假期）"
+        }
+      },
+      "notes": [
+        "阶段数据不可与完整假期加总。"
+      ],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "yoy_basis": null,
+      "holiday_group": "元旦"
+    },
+    {
+      "id": "2025-元旦第二日-detail-元旦假期-4-21",
+      "year": 2025,
+      "holiday": "元旦第二日",
+      "kind": "detail",
+      "period": "1.2（工作日）",
+      "days": 1,
+      "sales": 0.989867498051442,
+      "shoppers": 1.858108108108108,
+      "spend": 5327.286898604126,
+      "daily_sales": 0.989867498051442,
+      "daily_shoppers": 1.858108108108108,
+      "status": "available",
+      "quality": "原表公式值",
+      "sheet": "元旦假期",
+      "source_cells": {
+        "sales": {
+          "cell": "D21",
+          "value": 0.989867498051442,
+          "formula": "=C21/(1+J21)"
+        },
+        "shoppers": {
+          "cell": "D22",
+          "value": 1.858108108108108,
+          "formula": "=C22/(1+J22)"
+        },
+        "spend": {
+          "cell": "D23",
+          "value": 5327.286898604126,
+          "formula": "=D21/D22*10000"
+        },
+        "period": {
+          "cell": "D20",
+          "value": "1.2（工作日）"
+        }
+      },
+      "notes": [
+        "阶段数据不可与完整假期加总。"
+      ],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "yoy_basis": null,
+      "holiday_group": "元旦"
+    },
+    {
+      "id": "2025-元旦第三日-detail-元旦假期-4-26",
+      "year": 2025,
+      "holiday": "元旦第三日",
+      "kind": "detail",
+      "period": "1.3（工作日）",
+      "days": 1,
+      "sales": 0.82551147826144,
+      "shoppers": 1.1366632440510855,
+      "spend": 7262.586193244924,
+      "daily_sales": 0.82551147826144,
+      "daily_shoppers": 1.1366632440510855,
+      "status": "available",
+      "quality": "原表公式值",
+      "sheet": "元旦假期",
+      "source_cells": {
+        "sales": {
+          "cell": "D26",
+          "value": 0.82551147826144,
+          "formula": "=D42-D16-D21"
+        },
+        "shoppers": {
+          "cell": "D27",
+          "value": 1.1366632440510855,
+          "formula": "=D43-D17-D22"
+        },
+        "spend": {
+          "cell": "D28",
+          "value": 7262.586193244924,
+          "formula": "=D26/D27*10000"
+        },
+        "period": {
+          "cell": "D25",
+          "value": "1.3（工作日）"
+        }
+      },
+      "notes": [
+        "阶段数据不可与完整假期加总。"
+      ],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "yoy_basis": null,
+      "holiday_group": "元旦"
+    },
+    {
+      "id": "2025-元旦首周-detail-元旦假期-4-36",
+      "year": 2025,
+      "holiday": "元旦首周",
+      "kind": "detail",
+      "period": "1.1-1.7",
+      "days": 7,
+      "sales": 6.4361702127659575,
+      "shoppers": 10.773680404916847,
+      "spend": 5973.9754390975295,
+      "daily_sales": 0.9194528875379939,
+      "daily_shoppers": 1.5390972007024069,
+      "status": "available",
+      "quality": "原表公式值",
+      "sheet": "元旦假期",
+      "source_cells": {
+        "sales": {
+          "cell": "D36",
+          "value": 6.4361702127659575,
+          "formula": "=C36/(1+J36)"
+        },
+        "shoppers": {
+          "cell": "D37",
+          "value": 10.773680404916847,
+          "formula": "=C37/(1+J37)"
+        },
+        "spend": {
+          "cell": "D38",
+          "value": 5973.9754390975295,
+          "formula": "=D36/D37*10000"
+        },
+        "period": {
+          "cell": "D35",
+          "value": "1.1-1.7"
+        }
+      },
+      "notes": [
+        "阶段数据不可与完整假期加总。"
+      ],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "yoy_basis": null,
+      "holiday_group": "元旦"
+    },
+    {
+      "id": "2025-元旦同日历三天-detail-元旦假期-4-42",
+      "year": 2025,
+      "holiday": "元旦同日历三天",
+      "kind": "detail",
+      "period": "1.1-1.3",
+      "days": 3,
+      "sales": 3.1105286151157716,
+      "shoppers": 5.189558732131759,
+      "spend": 5993.821008049434,
+      "daily_sales": 1.0368428717052571,
+      "daily_shoppers": 1.7298529107105862,
+      "status": "available",
+      "quality": "原表录入值",
+      "sheet": "元旦假期",
+      "source_cells": {
+        "sales": {
+          "cell": "D42",
+          "value": 3.1105286151157716,
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "D43",
+          "value": 5.189558732131759,
+          "formula": null
+        },
+        "spend": {
+          "cell": "D44",
+          "value": 5993.821008049434,
+          "formula": null
+        },
+        "period": {
+          "cell": "D41",
+          "value": "1.1-1.3"
+        }
+      },
+      "notes": [
+        "阶段数据不可与完整假期加总。"
+      ],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "yoy_basis": null,
+      "holiday_group": "元旦"
+    },
+    {
+      "id": "2025-元旦前两天-detail-元旦假期-4-47",
+      "year": 2025,
+      "holiday": "元旦前两天",
+      "kind": "detail",
+      "period": "1.1-1.2",
+      "days": 2,
+      "sales": 2.2799097065462757,
+      "shoppers": 4.039776258545681,
+      "spend": 5643.653412050704,
+      "daily_sales": 1.1399548532731378,
+      "daily_shoppers": 2.0198881292728403,
+      "status": "available",
+      "quality": "原表录入值",
+      "sheet": "元旦假期",
+      "source_cells": {
+        "sales": {
+          "cell": "D47",
+          "value": 2.2799097065462757,
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "D48",
+          "value": 4.039776258545681,
+          "formula": null
+        },
+        "spend": {
+          "cell": "D49",
+          "value": 5643.653412050704,
+          "formula": null
+        },
+        "period": {
+          "cell": "D46",
+          "value": "1.1-1.2"
+        }
+      },
+      "notes": [
+        "阶段数据不可与完整假期加总。"
+      ],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "yoy_basis": null,
+      "holiday_group": "元旦"
+    },
+    {
+      "id": "2026-春节首日-detail-春节假期-3-24",
+      "year": 2026,
+      "holiday": "春节首日",
+      "kind": "detail",
+      "period": "2.15",
+      "days": 1,
+      "sales": 2.57,
+      "shoppers": 3.86,
+      "spend": 6658.031088082902,
+      "daily_sales": 2.57,
+      "daily_shoppers": 3.86,
+      "status": "available",
+      "quality": "原表录入值",
+      "sheet": "春节假期",
+      "source_cells": {
+        "sales": {
+          "cell": "C24",
+          "value": 2.57,
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "C25",
+          "value": 3.86,
+          "formula": null
+        },
+        "spend": {
+          "cell": "C26",
+          "value": 6658.031088082902,
+          "formula": "=C24/C25*10000"
+        },
+        "period": {
+          "cell": "C22",
+          "value": "2.15"
+        }
+      },
+      "notes": [
+        "阶段数据不可与完整假期加总。"
+      ],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "yoy_basis": null,
+      "holiday_group": "春节"
+    },
+    {
+      "id": "2026-春节前三天-detail-春节假期-3-29",
+      "year": 2026,
+      "holiday": "春节前三天",
+      "kind": "detail",
+      "period": "2.15-2.17",
+      "days": 3,
+      "sales": 6.8,
+      "shoppers": null,
+      "spend": null,
+      "daily_sales": 2.2666666666666666,
+      "daily_shoppers": null,
+      "status": "available",
+      "quality": "原表录入值",
+      "sheet": "春节假期",
+      "source_cells": {
+        "sales": {
+          "cell": "C29",
+          "value": 6.8,
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "C30",
+          "value": null,
+          "formula": null
+        },
+        "spend": {
+          "cell": "C31",
+          "value": null,
+          "formula": null
+        },
+        "period": {
+          "cell": "C28",
+          "value": "2.15-2.17"
+        }
+      },
+      "notes": [
+        "阶段数据不可与完整假期加总。"
+      ],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "yoy_basis": null,
+      "holiday_group": "春节"
+    },
+    {
+      "id": "2026-春节前四天-detail-春节假期-3-34",
+      "year": 2026,
+      "holiday": "春节前四天",
+      "kind": "detail",
+      "period": "2.15-2.18",
+      "days": 4,
+      "sales": 10.3,
+      "shoppers": 13.7,
+      "spend": 7518.248175182483,
+      "daily_sales": 2.575,
+      "daily_shoppers": 3.425,
+      "status": "available",
+      "quality": "原表录入值",
+      "sheet": "春节假期",
+      "source_cells": {
+        "sales": {
+          "cell": "C34",
+          "value": 10.3,
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "C35",
+          "value": 13.7,
+          "formula": null
+        },
+        "spend": {
+          "cell": "C36",
+          "value": 7518.248175182483,
+          "formula": "=C34/C35*10000"
+        },
+        "period": {
+          "cell": "C33",
+          "value": "2.15-2.18"
+        }
+      },
+      "notes": [
+        "阶段数据不可与完整假期加总。"
+      ],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "yoy_basis": null,
+      "holiday_group": "春节"
+    },
+    {
+      "id": "2026-春节前五天-detail-春节假期-3-39",
+      "year": 2026,
+      "holiday": "春节前五天",
+      "kind": "detail",
+      "period": "2.15-2.19",
+      "days": 5,
+      "sales": 13.8,
+      "shoppers": 17.7,
+      "spend": 7796.610169491526,
+      "daily_sales": 2.7600000000000002,
+      "daily_shoppers": 3.54,
+      "status": "available",
+      "quality": "原表录入值",
+      "sheet": "春节假期",
+      "source_cells": {
+        "sales": {
+          "cell": "C39",
+          "value": 13.8,
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "C40",
+          "value": 17.7,
+          "formula": null
+        },
+        "spend": {
+          "cell": "C41",
+          "value": 7796.610169491526,
+          "formula": "=C39/C40*10000"
+        },
+        "period": {
+          "cell": "C38",
+          "value": "2.15-2.19"
+        }
+      },
+      "notes": [
+        "阶段数据不可与完整假期加总。"
+      ],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "yoy_basis": null,
+      "holiday_group": "春节"
+    },
+    {
+      "id": "2026-春运期间-detail-春节假期-3-45",
+      "year": 2026,
+      "holiday": "春运期间",
+      "kind": "detail",
+      "period": "2.2-3.12",
+      "days": null,
+      "sales": 74.9,
+      "shoppers": 93.7,
+      "spend": 7993.5965848452515,
+      "daily_sales": null,
+      "daily_shoppers": null,
+      "status": "available",
+      "quality": "原表录入值",
+      "sheet": "春节假期",
+      "source_cells": {
+        "sales": {
+          "cell": "C45",
+          "value": 74.9,
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "C46",
+          "value": 93.7,
+          "formula": null
+        },
+        "spend": {
+          "cell": "C47",
+          "value": 7993.5965848452515,
+          "formula": "=C45/C46*10000"
+        },
+        "period": {
+          "cell": "C44",
+          "value": "2.2-3.12"
+        }
+      },
+      "notes": [
+        "阶段数据不可与完整假期加总。"
+      ],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "yoy_basis": null,
+      "holiday_group": "春节"
+    },
+    {
+      "id": "2025-春节首日-detail-春节假期-4-24",
+      "year": 2025,
+      "holiday": "春节首日",
+      "kind": "detail",
+      "period": "1.28",
+      "days": 1,
+      "sales": 1.0899067005937233,
+      "shoppers": 1.800373134328358,
+      "spend": 6053.782295525759,
+      "daily_sales": 1.0899067005937233,
+      "daily_shoppers": 1.800373134328358,
+      "status": "available",
+      "quality": "原表公式值",
+      "sheet": "春节假期",
+      "source_cells": {
+        "sales": {
+          "cell": "D24",
+          "value": 1.0899067005937233,
+          "formula": "=C24/(1+E24)"
+        },
+        "shoppers": {
+          "cell": "D25",
+          "value": 1.800373134328358,
+          "formula": "=C25/(1+E25)"
+        },
+        "spend": {
+          "cell": "D26",
+          "value": 6053.782295525759,
+          "formula": "=D24/D25*10000"
+        },
+        "period": {
+          "cell": "D22",
+          "value": "1.28"
+        }
+      },
+      "notes": [
+        "阶段数据不可与完整假期加总。"
+      ],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "yoy_basis": null,
+      "holiday_group": "春节"
+    },
+    {
+      "id": "2025-春节前三天-detail-春节假期-4-29",
+      "year": 2025,
+      "holiday": "春节前三天",
+      "kind": "detail",
+      "period": "1.28-1.30",
+      "days": 3,
+      "sales": 5.719091673675357,
+      "shoppers": null,
+      "spend": null,
+      "daily_sales": 1.906363891225119,
+      "daily_shoppers": null,
+      "status": "available",
+      "quality": "原表公式值",
+      "sheet": "春节假期",
+      "source_cells": {
+        "sales": {
+          "cell": "D29",
+          "value": 5.719091673675357,
+          "formula": "=C29/(1+E29)"
+        },
+        "shoppers": {
+          "cell": "D30",
+          "value": null,
+          "formula": null
+        },
+        "spend": {
+          "cell": "D31",
+          "value": null,
+          "formula": null
+        },
+        "period": {
+          "cell": "D28",
+          "value": "1.28-1.30"
+        }
+      },
+      "notes": [
+        "阶段数据不可与完整假期加总。"
+      ],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "yoy_basis": null,
+      "holiday_group": "春节"
+    },
+    {
+      "id": "2025-春节前四天-detail-春节假期-4-34",
+      "year": 2025,
+      "holiday": "春节前四天",
+      "kind": "detail",
+      "period": "1.28-1.31",
+      "days": 4,
+      "sales": 8.519437551695617,
+      "shoppers": 10.898965791567221,
+      "spend": 7816.73941786963,
+      "daily_sales": 2.1298593879239043,
+      "daily_shoppers": 2.7247414478918053,
+      "status": "available",
+      "quality": "原表公式值",
+      "sheet": "春节假期",
+      "source_cells": {
+        "sales": {
+          "cell": "D34",
+          "value": 8.519437551695617,
+          "formula": "=C34/(1+E34)"
+        },
+        "shoppers": {
+          "cell": "D35",
+          "value": 10.898965791567221,
+          "formula": "=C35/(1+E35)"
+        },
+        "spend": {
+          "cell": "D36",
+          "value": 7816.73941786963,
+          "formula": "=D34/D35*10000"
+        },
+        "period": {
+          "cell": "D33",
+          "value": "1.28-1.31"
+        }
+      },
+      "notes": [
+        "阶段数据不可与完整假期加总。"
+      ],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "yoy_basis": null,
+      "holiday_group": "春节"
+    },
+    {
+      "id": "2025-春节前五天-detail-春节假期-4-39",
+      "year": 2025,
+      "holiday": "春节前五天",
+      "kind": "detail",
+      "period": "1.28-2.1",
+      "days": 5,
+      "sales": 11.596638655462186,
+      "shoppers": 14.20545746388443,
+      "spend": 8163.509471585246,
+      "daily_sales": 2.319327731092437,
+      "daily_shoppers": 2.841091492776886,
+      "status": "available",
+      "quality": "原表公式值",
+      "sheet": "春节假期",
+      "source_cells": {
+        "sales": {
+          "cell": "D39",
+          "value": 11.596638655462186,
+          "formula": "=C39/(1+E39)"
+        },
+        "shoppers": {
+          "cell": "D40",
+          "value": 14.20545746388443,
+          "formula": "=C40/(1+E40)"
+        },
+        "spend": {
+          "cell": "D41",
+          "value": 8163.509471585246,
+          "formula": "=D39/D40*10000"
+        },
+        "period": {
+          "cell": "D38",
+          "value": "1.28-2.1"
+        }
+      },
+      "notes": [
+        "阶段数据不可与完整假期加总。"
+      ],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "yoy_basis": null,
+      "holiday_group": "春节"
+    },
+    {
+      "id": "2025-春运期间-detail-春节假期-4-45",
+      "year": 2025,
+      "holiday": "春运期间",
+      "kind": "detail",
+      "period": "1.14-2.22",
+      "days": null,
+      "sales": 53.576537911301855,
+      "shoppers": 71.80076628352491,
+      "spend": 7461.8337219049,
+      "daily_sales": null,
+      "daily_shoppers": null,
+      "status": "available",
+      "quality": "原表公式值",
+      "sheet": "春节假期",
+      "source_cells": {
+        "sales": {
+          "cell": "D45",
+          "value": 53.576537911301855,
+          "formula": "=C45/(1+E45)"
+        },
+        "shoppers": {
+          "cell": "D46",
+          "value": 71.80076628352491,
+          "formula": "=C46/(1+E46)"
+        },
+        "spend": {
+          "cell": "D47",
+          "value": 7461.8337219049,
+          "formula": "=D45/D46*10000"
+        },
+        "period": {
+          "cell": "D44",
+          "value": "1.14-2.22"
+        }
+      },
+      "notes": [
+        "阶段数据不可与完整假期加总。"
+      ],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "yoy_basis": null,
+      "holiday_group": "春节"
+    },
+    {
+      "id": "2024-五一首日-detail-五一假期-5-17",
+      "year": 2024,
+      "holiday": "五一首日",
+      "kind": "detail",
+      "period": "5.1",
+      "days": 1,
+      "sales": 1.15,
+      "shoppers": 2.13,
+      "spend": 5384,
+      "daily_sales": 1.15,
+      "daily_shoppers": 2.13,
+      "status": "available",
+      "quality": "原表录入值",
+      "sheet": "五一假期",
+      "source_cells": {
+        "sales": {
+          "cell": "E17",
+          "value": 1.15,
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "E18",
+          "value": 2.13,
+          "formula": null
+        },
+        "spend": {
+          "cell": "E19",
+          "value": 5384,
+          "formula": null
+        },
+        "period": {
+          "cell": "E16",
+          "value": "5.1"
+        }
+      },
+      "notes": [],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "yoy_basis": null,
+      "holiday_group": "五一"
+    },
+    {
+      "id": "2021-五一首日-detail-五一假期-8-17",
+      "year": 2021,
+      "holiday": "五一首日",
+      "kind": "detail",
+      "period": "5.1",
+      "days": 1,
+      "sales": 1.42,
+      "shoppers": 2.24,
+      "spend": 6339.285714285713,
+      "daily_sales": 1.42,
+      "daily_shoppers": 2.24,
+      "status": "available",
+      "quality": "原表录入值",
+      "sheet": "五一假期",
+      "source_cells": {
+        "sales": {
+          "cell": "H17",
+          "value": 1.42,
+          "formula": null
+        },
+        "shoppers": {
+          "cell": "H18",
+          "value": 2.24,
+          "formula": null
+        },
+        "spend": {
+          "cell": "H19",
+          "value": 6339.285714285713,
+          "formula": "=H17/H18*10000"
+        },
+        "period": {
+          "cell": "H16",
+          "value": "5.1"
+        }
+      },
+      "notes": [],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "yoy_basis": null,
+      "holiday_group": "五一"
+    },
+    {
+      "id": "2020-五一首日-detail-五一假期-9-17",
+      "year": 2020,
+      "holiday": "五一首日",
+      "kind": "detail",
+      "period": "5.1",
+      "days": 1,
+      "sales": 0.4585082337746206,
+      "shoppers": 0.8688906128782002,
+      "spend": 5276.9385119239805,
+      "daily_sales": 0.4585082337746206,
+      "daily_shoppers": 0.8688906128782002,
+      "status": "available",
+      "quality": "原表公式值",
+      "sheet": "五一假期",
+      "source_cells": {
+        "sales": {
+          "cell": "I17",
+          "value": 0.4585082337746206,
+          "formula": "=H17/3.097"
+        },
+        "shoppers": {
+          "cell": "I18",
+          "value": 0.8688906128782002,
+          "formula": "=H18/2.578"
+        },
+        "spend": {
+          "cell": "I19",
+          "value": 5276.9385119239805,
+          "formula": "=I17/I18*10000"
+        },
+        "period": {
+          "cell": "I16",
+          "value": "5.1"
+        }
+      },
+      "notes": [],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "yoy_basis": null,
+      "holiday_group": "五一"
+    }
+  ]
+}

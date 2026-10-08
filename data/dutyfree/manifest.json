@@ -1,9 +1,10 @@
 {
-  "updatedAt": "2026-09-11",
+  "updatedAt": "2026-10-08",
   "module": "免税行业数据库",
   "note": "免税板块数据目录。所有页面数据均来自本目录 JSON + 既有 dutyfree_monthly.csv / dutyfree_holiday.csv，无硬编码。金额单位统一为人民币亿元(100m CNY)，同比/利率为百分数(%)，null 表示暂无可靠数据。",
   "files": {
     "overview": "data/dutyfree/overview.json",
+    "holidays": "data/dutyfree/holidays.json",
     "hainan": "data/dutyfree/hainan.json",
     "ctg": "data/dutyfree/ctg_dutyfree.json",
     "airport": "data/dutyfree/airport.json",

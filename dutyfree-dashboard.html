@@ -77,12 +77,13 @@ svg{width:100%;height:auto;display:block}
 .muted{color:var(--mut);font-size:10px}
 @media(max-width:960px){.kpis{grid-template-columns:repeat(3,1fr)}.kpi:nth-child(5n){border-right:1px solid #eef1f4}.grid2,.grid3{grid-template-columns:1fr}}
 @media(max-width:640px){.wrap{padding:14px 10px}.hero{flex-direction:column;align-items:flex-start}.kpis{grid-template-columns:repeat(2,1fr)}.kpi{border-right:0}.signal{grid-template-columns:1fr}.hero h1{font-size:20px}}
-</style><link rel="stylesheet" href="scripts/site.css?v=5"><script defer src="scripts/site-shell.js?v=3"></script></head><body><div class="wrap">
+</style><link rel="stylesheet" href="scripts/site.css?v=5"><script defer src="scripts/site-shell.js?v=3"></script><link rel="stylesheet" href="scripts/dutyfree-holidays.css?v=1"><script defer src="scripts/dutyfree-holidays.js?v=1"></script></head><body><div class="wrap">
 <div class="crumbs"><a href="industry.html#dutyfree">行业数据</a> / 免税专题</div>
 <header class="hero"><div><div class="eyebrow">GUOJIN · DUTY FREE RESEARCH DATABASE</div><h1>免税行业数据库</h1><p>行业总览 · 海南离岛 · 中国中免 · 政策 · 渠道 · 品类 · 同业</p></div><div class="asof" id="asof">读取数据中…</div></header>
 <nav class="tabs" id="tabs">
 <button class="tab on" data-view="overview">行业总览</button>
 <button class="tab" data-view="hainan">海南离岛免税</button>
+<button class="tab" data-view="holidays">节假日数据</button>
 <button class="tab" data-view="ctg">中国中免</button>
 <button class="tab" data-view="airport">机场免税</button>
 <button class="tab" data-view="city">市内免税</button>
@@ -117,6 +118,8 @@ svg{width:100%;height:auto;display:block}
 <div class="panel chart"><div class="chart-head"><h3>购物金额 / 人数 / 件数同比（%）</h3></div><svg id="hn-growth"></svg><div class="tooltip"></div></div>
 <div class="panel"><div class="panel-head"><div><h2>原始历史数据表</h2><p>点击表头排序 · 显示时间区间内全部月度数据</p></div></div><div class="tablewrap"><table class="table" id="hn-table"></table></div></div>
 </section>
+
+<section class="view" id="view-holidays"><section id="dutyfree-holidays" class="dh-panel" aria-label="离岛免税节假日数据"></section></section>
 
 <!-- 中国中免 -->
 <section class="view" id="view-ctg">
@@ -372,7 +375,8 @@ document.getElementById('files-table').innerHTML='<thead><tr><th>模块</th><th>
 /* ---------- 初始化 ---------- */
 function init(){[renderOverview,renderHainan,renderCtg,renderAirport,renderCity,renderPolicy,renderCategory,renderMembers,renderChannel,renderCompanies,renderEvents,renderDatacenter].forEach(f=>{try{f()}catch(e){console.log('render err',f.name,e)}});
 document.getElementById('rows-note').textContent=`月度 ${DB.m.length} 条 · 假期 ${DB.h.length} 条`;
-document.querySelectorAll('#tabs .tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab,.view').forEach(x=>x.classList.remove('on'));b.classList.add('on');let v=document.getElementById('view-'+b.dataset.view);v.classList.add('on');window.scrollTo({top:0})});
+document.querySelectorAll('#tabs .tab').forEach(b=>b.onclick=()=>{go(b.dataset.view);location.hash=b.dataset.view;window.scrollTo({top:0})});
+const hashView=()=>{const key=location.hash.slice(1);if(document.querySelector('.tab[data-view="'+CSS.escape(key)+'"]'))go(key)};hashView();addEventListener('hashchange',hashView);
 document.getElementById('hn-range').onchange=renderHainan;
 document.getElementById('ctg-type').onchange=renderCtg}
 </script></body></html>
