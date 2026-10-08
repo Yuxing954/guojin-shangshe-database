@@ -1,0 +1,11 @@
+const assert=require('node:assert/strict'),L=require('./research-library-model.js');
+const file={name:'免税20260930.mp3',format:'audio',date:'2026-10-01',sectors:['dutyfree'],processing:{status:'awaiting_file',textAvailable:false}};
+assert(L.matches(file,{format:'audio',sector:'dutyfree',from:'2026-10-01',to:'2026-10-01'}));
+assert(!L.matches(file,{sector:'travel'}));assert(!L.matches(file,{state:'reviewed'}));
+assert(L.matches({...file,processing:{status:'transcript_draft',searchText:'购物人次的变化'}},{q:'人次',state:'transcript_draft'}));
+assert(!L.briefMatches({status:'draft',sector:'dutyfree',date:'2026-10-01'},{sector:'dutyfree'}));
+assert(L.briefMatches({status:'reviewed',sector:'dutyfree',date:'2026-10-01',watch:['购物人次']},{q:'人次'}));
+assert.equal(L.duration(3719),'61分59秒');assert.equal(L.bytes(1048576),'1.0 MB');
+assert(L.safeLocalPath('data/research/processed/zsxq-file-123.json'));
+for(const path of ['../private.json','https://example.com/a.json','data/research/processed/../secret.json','data/research/processed/a.json?token=x'])assert(!L.safeLocalPath(path));
+console.log('Consumption catalog filters, transcript search, draft visibility and safe content paths passed.');
