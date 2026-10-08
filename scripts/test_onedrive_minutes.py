@@ -96,7 +96,11 @@ class OneDriveMinutesTests(unittest.TestCase):
             self.assertEqual(content['type'], 'meeting_summary')
             self.assertEqual(content['reviewed'], record['processing']['status'] == 'reviewed')
             self.assertTrue(content['evidence'])
-            self.assertEqual(record['storage']['audience'], 'private')
-            self.assertNotIn('openUrl', record['storage'])
+            self.assertIn(record['storage']['audience'], ['private', 'public', 'clients'])
+            if record['storage']['audience'] == 'private':
+                self.assertNotIn('openUrl', record['storage'])
+            else:
+                self.assertTrue(record['storage']['permissionsReviewed'])
+                self.assertTrue(record['storage']['openUrl'].startswith('https://'))
 
 if __name__ == '__main__': unittest.main()

@@ -33,3 +33,7 @@ const mixed={...legacy,file:'会议.docx；未入库.docx'};
 const partial=L.mergeEntries([mixed],[imported],()=> '');
 assert.equal(partial.length,2);assert.equal(partial[0].file,'未入库.docx');assert(!partial.includes(mixed));
 console.log('Legacy meeting duplicates merge without publishing owner links or hiding unrelated attachments.');
+assert.equal(L.storageLink({...shared,storage:{...shared.storage,downloadAllowed:false}}),'');
+assert.equal(L.storageLink({...shared,storage:{...shared.storage,expiresAt:'2000-01-01T00:00:00Z'}}),'');
+assert.equal(L.storageLink({...shared,storage:{...shared.storage,expiresAt:'invalid-date'}}),'');
+console.log('Blocked and expired customer downloads stay hidden.');

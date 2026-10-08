@@ -100,6 +100,10 @@ def import_catalog(catalog_path, source_path, root=ROOT):
         if old:
             record['aliases'] = list(dict.fromkeys([record['id'], *old.get('aliases', [])]))
             record['sourceTopics'] = old.get('sourceTopics', [])
+            # Reimporting an unchanged source must not erase verified customer links.
+            if old.get('storage', {}).get('verifiedSha256') == record['sha256'] and old['storage'].get('permissionsReviewed'):
+                record['storage'] = old['storage']
+                processed[record['id']]['originalAccess'] = old['storage'].get('audience', 'private')
         if old and old.get('processing', {}).get('status') == 'reviewed' and old['processing'].get('summaryHash') == record['processing']['summaryHash']:
             record['processing']['status'] = 'reviewed'
             processed[record['id']]['reviewed'] = True

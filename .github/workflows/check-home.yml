@@ -30,6 +30,8 @@ on:
       - "scripts/import_research_attachment.py"
       - "scripts/import_onedrive_minutes.py"
       - "scripts/test_onedrive_minutes.py"
+      - "scripts/sync_research_library.py"
+      - "scripts/test_sync_research_library.py"
       - "scripts/test_research_library.py"
       - "requirements-research-media.txt"
       - "data/research/**"
@@ -64,6 +66,7 @@ jobs:
           python scripts/test_research_updates.py
           python scripts/test_research_library.py
           python scripts/test_onedrive_minutes.py
+          python scripts/test_sync_research_library.py
           node --check scripts/research-library-model.js
           node scripts/research-library-model.test.cjs
           node --check scripts/quotes.js
