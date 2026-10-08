@@ -77,9 +77,9 @@ svg{width:100%;height:auto;display:block}
 .muted{color:var(--mut);font-size:10px}
 @media(max-width:960px){.kpis{grid-template-columns:repeat(3,1fr)}.kpi:nth-child(5n){border-right:1px solid #eef1f4}.grid2,.grid3{grid-template-columns:1fr}}
 @media(max-width:640px){.wrap{padding:14px 10px}.hero{flex-direction:column;align-items:flex-start}.kpis{grid-template-columns:repeat(2,1fr)}.kpi{border-right:0}.signal{grid-template-columns:1fr}.hero h1{font-size:20px}}
-</style><link rel="stylesheet" href="scripts/site.css?v=5"><script defer src="scripts/site-shell.js?v=3"></script><link rel="stylesheet" href="scripts/dutyfree-holidays.css?v=1"><script defer src="scripts/dutyfree-holidays.js?v=1"></script><link rel="stylesheet" href="scripts/dutyfree-typography.css?v=1"></head><body class="dutyfree-page"><div class="wrap">
+</style><link rel="stylesheet" href="scripts/site.css?v=5"><script defer src="scripts/site-shell.js?v=3"></script><link rel="stylesheet" href="scripts/dutyfree-holidays.css?v=1"><script defer src="scripts/dutyfree-holidays.js?v=2"></script><link rel="stylesheet" href="scripts/dutyfree-typography.css?v=2"></head><body class="dutyfree-page"><div class="wrap">
 <div class="crumbs"><a href="industry.html#dutyfree">行业数据</a> / 免税专题</div>
-<header class="hero"><div><div class="eyebrow">GUOJIN · DUTY FREE RESEARCH DATABASE</div><h1>免税行业数据库</h1><p>海南离岛 · 月度经营 · 节假日数据 · 来源明细</p></div><div class="asof" id="asof">读取数据中…</div></header>
+<header class="hero"><div><div class="eyebrow">GUOJIN · DUTY FREE RESEARCH DATABASE</div><h1>免税行业数据库</h1><p>月度趋势 · 节假日表现</p></div><div class="asof" id="asof">读取数据中…</div></header>
 <nav class="tabs" id="tabs">
 <button class="tab on" data-view="overview">行业总览</button>
 <button class="tab" data-view="hainan">海南离岛免税</button>
@@ -98,25 +98,16 @@ svg{width:100%;height:auto;display:block}
 
 <!-- 行业总览 -->
 <section class="view on" id="view-overview">
-<div class="panel"><div class="panel-head"><div><h2>免税行业核心指标 Dashboard</h2><p>当前值 / 同比 / 数据截止日期 · 悬浮查看来源 · 点击跳转对应模块</p></div></div>
-<div class="kpis" id="kpi-grid"></div></div>
-<div class="grid2">
-<div class="panel chart"><div class="chart-head"><h3>离岛免税销售额月度趋势（亿元）</h3><div class="legend"><span><i class="dot" style="background:#3d708e"></i>销售额</span></div></div><svg id="ov-sales"></svg><div class="tooltip"></div></div>
-<div class="panel chart"><div class="chart-head"><h3>中国中免收入与归母净利润</h3><div class="legend"><span><i class="dot" style="background:#3d708e"></i>收入</span><span><i class="dot" style="background:#b47a3d"></i>归母净利</span></div></div><div class="donut-wrap" id="ctg-bars" style="flex-direction:column;align-items:stretch"></div></div>
-</div>
+<div class="panel"><div class="panel-head"><h2>最新经营</h2><button class="srcbtn" onclick="showSrc('provided_workbook_monthly')">来源</button></div><div class="kpis" id="kpi-grid"></div></div>
+<div class="panel chart"><div class="panel-head"><h3 id="ov-trend-title">购物金额同比增速（%）</h3><div class="trend-controls"><label class="visually-hidden" for="ov-metric">趋势指标</label><select id="ov-metric" aria-label="趋势指标"><option value="sales">购物金额</option><option value="shoppers">购物人次</option><option value="items">购物件数</option><option value="spend">每人次消费</option></select><div class="trend-modes" aria-label="显示方式"><button type="button" data-mode="value" aria-pressed="false">数值</button><button type="button" data-mode="yoy" aria-pressed="true">同比增速</button></div></div></div><svg id="ov-sales" role="img" aria-label="购物金额同比增速趋势"></svg><div class="tooltip"></div><p class="trend-caption">近12个月 · 同比为较上年同月变化</p></div>
 </section>
 
 <!-- 海南离岛免税 -->
 <section class="view" id="view-hainan">
-<div class="panel"><div class="panel-head"><div><h2>海南离岛免税经营</h2><p id="hn-period"></p></div><div class="controls"><select id="hn-range"><option value="12">近12个月</option><option value="24" selected>近24个月</option><option value="2024">2024</option><option value="2025">2025</option><option value="2026">2026</option><option value="9999">全部</option></select></div></div>
-<div class="kpis" style="grid-template-columns:repeat(4,1fr)"><div class="kpi"><span>购物金额（亿元）</span><strong id="hn-sales">—</strong><small id="hn-sales-yoy"></small></div><div class="kpi"><span>购物人数（万人次）</span><strong id="hn-shoppers">—</strong><small id="hn-shoppers-yoy"></small></div><div class="kpi"><span>购物件数（万件）</span><strong id="hn-items">—</strong><small id="hn-items-yoy"></small></div><div class="kpi"><span>客单价（元）</span><strong id="hn-spend">—</strong><small id="hn-spend-yoy"></small></div></div>
-<div class="signal"><b>经营拆分</b><span id="hn-signal"></span><em class="pill" id="hn-driver"></em></div></div>
-<div class="grid2">
-<div class="panel chart"><div class="chart-head"><h3>销售额与购物人数</h3><div class="legend"><span><i class="dot" style="background:#3d708e"></i>金额</span><span><i class="dot" style="background:#b47a3d"></i>人数</span></div></div><svg id="hn-scale"></svg><div class="tooltip"></div></div>
-<div class="panel chart"><div class="chart-head"><h3>客单价与单件均价</h3><div class="legend"><span><i class="dot" style="background:#2d7b70"></i>客单价</span><span><i class="dot" style="background:#8a6884"></i>单件均价</span></div></div><svg id="hn-price"></svg><div class="tooltip"></div></div>
-</div>
-<div class="panel chart"><div class="chart-head"><h3>购物金额 / 人数 / 件数同比（%）</h3></div><svg id="hn-growth"></svg><div class="tooltip"></div></div>
-<div class="panel"><div class="panel-head"><div><h2>原始历史数据表</h2><p>点击表头排序 · 显示时间区间内全部月度数据</p></div></div><div class="tablewrap"><table class="table" id="hn-table"></table></div></div>
+<div class="panel"><div class="panel-head"><div><h2>海南离岛免税</h2><p id="hn-period"></p></div><div class="controls"><label class="visually-hidden" for="hn-range">时间范围</label><select id="hn-range" aria-label="时间范围"><option value="12" selected>近12个月</option><option value="24">近24个月</option><option value="2024">2024</option><option value="2025">2025</option><option value="2026">2026</option><option value="9999">全部</option></select></div></div>
+<div class="kpis"><div class="kpi"><span>购物金额</span><strong><span id="hn-sales">—</span><em> 亿元</em></strong><small id="hn-sales-yoy"></small></div><div class="kpi"><span>购物人次</span><strong><span id="hn-shoppers">—</span><em> 万人次</em></strong><small id="hn-shoppers-yoy"></small></div><div class="kpi"><span>每人次消费</span><strong><span id="hn-spend">—</span><em> 元</em></strong><small id="hn-spend-yoy"></small></div></div></div>
+<div class="panel chart"><div class="panel-head"><h3 id="hn-trend-title">购物金额同比增速（%）</h3><div class="trend-controls"><label class="visually-hidden" for="hn-metric">趋势指标</label><select id="hn-metric" aria-label="趋势指标"><option value="sales">购物金额</option><option value="shoppers">购物人次</option><option value="items">购物件数</option><option value="spend">每人次消费</option></select><div class="trend-modes" aria-label="显示方式"><button type="button" data-mode="value" aria-pressed="false">数值</button><button type="button" data-mode="yoy" aria-pressed="true">同比增速</button></div></div></div><svg id="hn-growth" role="img" aria-label="购物金额同比增速趋势"></svg><div class="tooltip"></div><p class="trend-caption">同比为较上年同月变化；缺失值不作为0展示</p></div>
+<details class="panel monthly-details"><summary>历史数据与口径</summary><p class="trend-caption">原Excel月度整理数据；每人次消费=购物金额÷购物人次。同比分别沿用原表同月口径。</p><div class="tablewrap"><table class="table" id="hn-table"></table></div><button class="srcbtn" onclick="showSrc('provided_workbook_monthly')">查看来源</button></details>
 </section>
 
 <section class="view" id="view-holidays"><section id="dutyfree-holidays" class="dh-panel" aria-label="离岛免税节假日数据"></section></section>
@@ -201,7 +192,7 @@ svg{width:100%;height:auto;display:block}
 <div class="tablewrap"><table class="table" id="files-table"></table></div></div>
 </section>
 
-<div class="fresh"><span>来源：用户提供《【国金商社】离岛免税数据库 20260908.xlsx》，按原表核对</span><span id="rows-note"></span></div>
+<div class="fresh"><span>按用户提供原表整理</span><span id="rows-note"></span></div>
 </div>
 
 <!-- 来源弹窗 -->
@@ -260,40 +251,35 @@ if(mi<0)html+=`<line x1="${l}" y1="${y(0)}" x2="${w-r}" y2="${y(0)}" stroke="#ae
 svg.setAttribute('viewBox',`0 0 ${w} ${h}`);svg.innerHTML=html}catch(e){console.log('drawBar err',e)}}
 
 /* ---------- 行业总览 ---------- */
-function renderOverview(){let g=document.getElementById('kpi-grid');
-g.innerHTML=DB.ov.kpis.map(k=>{let yoy=k.yoy==null?'<span class="muted">暂无同比</span>':`同比 ${W(k.yoy,1,k.yoyType)}`;
-let approx=k.isApprox?'<span class="tag est">约</span>':'';
-return `<div class="kpi" onclick="go('${k.target}')" title="来源：${(SRC[k.source]||{}).sourceName||'—'}" style="cursor:pointer"><span>${k.label}${approx}</span><strong>${F(k.value,k.unit==='%'?2:(k.unit==='元'?0:2))}<em> ${k.unit}</em></strong><small>${yoy} · ${k.period}</small><br><small class="src">查看来源 ›</small></div>`}).join('');
-document.getElementById('asof').textContent='数据截至 '+ (DB.ov.kpis[0]||{}).period +' · 更新 '+DB.ov.updatedAt;
-draw(document.getElementById('ov-sales'),DB.m.slice(-36),[{name:'销售额',get:x=>N(x.shopping_sales_cny_100m),color:'#3d708e',unit:'亿元'}]);
-let cb=document.getElementById('ctg-bars');let ps=DB.ctg.periods;
-if(!ps.length){cb.closest('.panel').hidden=true;cb.closest('.grid2').style.gridTemplateColumns='1fr';return}
-cb.innerHTML=`<div style="display:grid;grid-template-columns:repeat(${ps.length},1fr);gap:14px;padding:6px 4px">`+ps.map(p=>`<div style="text-align:center"><div style="font-size:9px;color:var(--mut)">${p.period}</div>
-<div style="height:110px;display:flex;align-items:flex-end;justify-content:center;gap:12px">
-<div style="text-align:center"><div style="width:36px;background:#3d708e;border-radius:2px 2px 0 0;height:${Math.abs(p.revenue)/300*100}px"></div><div style="font-size:9px">${F(p.revenue,0)}</div></div>
-<div style="text-align:center"><div style="width:36px;background:#b47a3d;border-radius:2px 2px 0 0;height:${Math.abs(p.net_profit)/300*100}px"></div><div style="font-size:9px">${F(p.net_profit,1)}</div></div>
-</div><div style="font-size:9px;color:var(--mut)">收入 ${W(p.revenue_yoy)} | 净利 ${W(p.net_profit_yoy)}</div></div>`).join('')+'</div>'}
+const trendMetrics={
+sales:{label:'购物金额',field:'shopping_sales_cny_100m',yoy:'sales_yoy_pct',unit:'亿元',color:'#3d708e'},
+shoppers:{label:'购物人次',field:'shoppers_10k',yoy:'shoppers_yoy_pct',unit:'万人次',color:'#b47a3d'},
+items:{label:'购物件数',field:'items_10k',yoy:'items_yoy_pct',unit:'万件',color:'#2d7b70'},
+spend:{label:'每人次消费',field:'spend_per_shopper_cny',yoy:'spend_per_shopper_yoy_pct',unit:'元',color:'#8a6884'}
+};
+const trendModes={ov:'yoy',hn:'yoy'};
+function renderTrend(prefix,rows){
+const metric=trendMetrics[document.getElementById(prefix+'-metric').value],yoy=trendModes[prefix]==='yoy',title=metric.label+(yoy?'同比增速':'走势')+'（'+(yoy?'%':metric.unit)+'）';
+document.getElementById(prefix+'-trend-title').textContent=title;
+const svg=document.getElementById(prefix==='ov'?'ov-sales':'hn-growth');svg.setAttribute('aria-label',title);
+draw(svg,rows,[{name:metric.label+(yoy?'同比':''),get:r=>N(r[yoy?metric.yoy:metric.field]),color:metric.color,unit:yoy?'%':metric.unit}],yoy);
+}
+function renderOverview(){const latest=DB.m.at(-1);
+document.getElementById('kpi-grid').innerHTML=['sales','shoppers','spend'].map(key=>{const m=trendMetrics[key];return `<div class="kpi"><span>${m.label}</span><strong>${F(N(latest[m.field]),key==='spend'?0:2)}<em> ${m.unit}</em></strong><small>同比 ${W(N(latest[m.yoy]))}</small></div>`}).join('');
+document.getElementById('asof').textContent='数据截至 '+latest.period_id;
+renderTrend('ov',DB.m.slice(-12));
+}
 function go(t){document.querySelectorAll('.tab,.view').forEach(x=>x.classList.remove('on'));let b=document.querySelector(`.tab[data-view="${t}"]`);if(b)b.classList.add('on');let v=document.getElementById('view-'+t);if(v)v.classList.add('on')}
 
 /* ---------- 海南 ---------- */
 let hnSort={key:'period_id',dir:-1};
-function renderHainan(){let rv=document.getElementById('hn-range').value,rows;
-if(['2024','2025','2026'].includes(rv))rows=DB.m.filter(x=>String(x.year)===rv);else rows=DB.m.slice(-+rv);
-if(!rows.length){rows=DB.m.slice(-24)}
-let z=DB.m.at(-1);
-document.getElementById('hn-period').textContent=z.period_id+' · 原Excel月度整理数据 · 来源：'+DB.hainan.source.name;
-document.getElementById('hn-sales').innerHTML=F(z.shopping_sales_cny_100m,2);document.getElementById('hn-shoppers').innerHTML=F(z.shoppers_10k,2);
-document.getElementById('hn-items').innerHTML=F(z.items_10k,1);document.getElementById('hn-spend').innerHTML=F(z.spend_per_shopper_cny,0);
-document.getElementById('hn-sales-yoy').innerHTML='同比 '+W(N(z.sales_yoy_pct));document.getElementById('hn-shoppers-yoy').innerHTML='同比 '+W(N(z.shoppers_yoy_pct));
-document.getElementById('hn-items-yoy').innerHTML='同比 '+W(N(z.items_yoy_pct));document.getElementById('hn-spend-yoy').innerHTML='同比 '+W(N(z.spend_per_shopper_yoy_pct));
-let qty=N(z.shoppers_yoy_pct),price=N(z.spend_per_shopper_yoy_pct);
-document.getElementById('hn-signal').innerHTML=`购物金额同比 ${W(N(z.sales_yoy_pct))}，购物人次同比 ${W(qty)}，客单价同比 ${W(price)}；购物件数同比 ${W(N(z.items_yoy_pct))}。`;
-document.getElementById('hn-driver').textContent=(Math.abs(qty)>Math.abs(price)?'人次':'客单价')+'贡献更高';
-draw(document.getElementById('hn-scale'),rows,[{name:'金额',get:x=>N(x.shopping_sales_cny_100m),color:'#3d708e',unit:'亿元'},{name:'人次',get:x=>N(x.shoppers_10k),color:'#b47a3d',unit:'万人次'}]);
-draw(document.getElementById('hn-price'),rows,[{name:'客单价',get:x=>N(x.spend_per_shopper_cny),color:'#2d7b70',unit:'元'},{name:'单件均价',get:x=>N(x.unit_price_cny),color:'#8a6884',unit:'元'}]);
-draw(document.getElementById('hn-growth'),rows,[{name:'金额同比',get:x=>N(x.sales_yoy_pct),color:'#3d708e',unit:'%'},{name:'人次同比',get:x=>N(x.shoppers_yoy_pct),color:'#b47a3d',unit:'%'},{name:'件数同比',get:x=>N(x.items_yoy_pct),color:'#2d7b70',unit:'%'}],true);
-renderHnTable(rows)}
-function renderHnTable(rows){let cols=[['period_id','月份'],['shopping_sales_cny_100m','销售额(亿)'],['sales_yoy_pct','金额同比%'],['shoppers_10k','人数(万)'],['shoppers_yoy_pct','人数同比%'],['items_10k','件数(万)'],['spend_per_shopper_cny','客单价(元)'],['unit_price_cny','单件均价(元)']];
+function renderHainan(){const range=document.getElementById('hn-range').value;
+const rows=['2024','2025','2026'].includes(range)?DB.m.filter(r=>String(r.year)===range):DB.m.slice(-Number(range));
+const latest=rows.at(-1)||{};document.getElementById('hn-period').textContent=latest.period_id||'暂无数据';
+for(const key of ['sales','shoppers','spend']){const m=trendMetrics[key];document.getElementById('hn-'+key).textContent=F(N(latest[m.field]),key==='spend'?0:2);document.getElementById('hn-'+key+'-yoy').innerHTML='同比 '+W(N(latest[m.yoy]));}
+renderTrend('hn',rows);renderHnTable(rows);
+}
+function renderHnTable(rows){let cols=[['period_id','月份'],['shopping_sales_cny_100m','销售额(亿)'],['sales_yoy_pct','金额同比%'],['shoppers_10k','人次(万)'],['shoppers_yoy_pct','人数同比%'],['items_10k','件数(万)'],['spend_per_shopper_cny','每人次消费(元)'],['items_yoy_pct','件数同比%'],['spend_per_shopper_yoy_pct','每人次消费同比%']];
 let s=rows.slice().sort((a,b)=>{let av=a[hnSort.key],bv=b[hnSort.key],r=(N(av)!=null&&N(bv)!=null)?N(av)-N(bv):String(av).localeCompare(String(bv));return hnSort.dir*r});
 document.getElementById('hn-table').innerHTML='<thead><tr>'+cols.map(([k,l])=>`<th data-k="${k}">${l}<span class="arr">${hnSort.key===k?(hnSort.dir>0?' ▲':' ▼'):''}</span></th>`).join('')+'</tr></thead><tbody>'+
 s.map(r=>'<tr>'+cols.map(([k,l])=>{let v=r[k];let disp=(k.includes('yoy'))?`<span class="${C(N(v))}">${P(N(v))}</span>`:(N(v)!=null?F(v,2):Dash(v));return `<td class="${k==='period_id'?'':'num'}">${k==='period_id'?v:disp}</td>`}).join('')+'</tr>').join('')+'</tbody>';
@@ -382,7 +368,7 @@ document.getElementById('rows-note').textContent=`月度 ${DB.m.length} 条 · �
 document.querySelectorAll('#tabs .tab').forEach(b=>b.onclick=()=>{go(b.dataset.view);location.hash=b.dataset.view;window.scrollTo({top:0})});
 const hashView=()=>{const key=location.hash.slice(1);if(document.querySelector('.tab[data-view="'+CSS.escape(key)+'"]'))go(key)};hashView();addEventListener('hashchange',hashView);
 document.getElementById('hn-range').onchange=renderHainan;
+for(const prefix of ['ov','hn']){const render=prefix==='ov'?renderOverview:renderHainan;document.getElementById(prefix+'-metric').onchange=render;document.querySelectorAll('#'+prefix+'-metric + .trend-modes button').forEach(button=>button.onclick=()=>{trendModes[prefix]=button.dataset.mode;button.parentElement.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));render();});}
 const ctgType=document.getElementById('ctg-type');if(ctgType)ctgType.onchange=renderCtg}
 </script></body></html>
-
 
