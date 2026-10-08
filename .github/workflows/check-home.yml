@@ -3,6 +3,12 @@ name: Check research website
 on:
   pull_request:
     paths:
+      - "search.html"
+      - "scripts/resource*"
+      - "scripts/build_resource_index.py"
+      - "scripts/build_site_summaries.py"
+      - "scripts/summary_io.py"
+      - "scripts/test_summary_updates.py"
       - "index.html"
       - "industry.html"
       - "quotes.html"
@@ -65,6 +71,7 @@ jobs:
           python scripts/test_industry_snapshot.py
           python scripts/build_industry_snapshot.py
           python scripts/test_home_snapshot.py
+          python scripts/test_summary_updates.py
           python scripts/research_sources_test.py
           python -m py_compile scripts/import_research_topics.py
           python scripts/build_research_recent.py
@@ -87,6 +94,9 @@ jobs:
           node --check scripts/dutyfree-holidays.js
           node tests/dutyfree-holidays.test.cjs
           node --check scripts/companies.js
+          node --check scripts/resource-search.js
+          node --check scripts/resource-model.js
+          node scripts/resource-model.test.cjs
           node --check scripts/research.js
           node --check scripts/research-model.js
           node scripts/research-model.test.cjs
@@ -96,4 +106,5 @@ jobs:
           node scripts/market-kline.test.js
           node scripts/earnings-calendar.test.cjs
           node scripts/earnings.test.cjs
+
 

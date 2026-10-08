@@ -28,6 +28,7 @@ class OriginalIndexTests(unittest.TestCase):
             path.write_text(json.dumps({'verifiedAt': '2026-10-08', 'items': [receipt, receipt]}), encoding='utf-8')
             result = sync(private, root)
             self.assertEqual(result, {'mode': 'originals', 'indexed': 1, 'excludedDuplicates': 1,
+                                      'added': 1, 'updated': 0, 'unchanged': 0, 'websiteChanged': True,
                                       'summariesGenerated': 0, 'filesExtracted': 0})
             sync(private, root)
             data = read(root/'data/research/library.json')
@@ -92,6 +93,37 @@ class OriginalIndexTests(unittest.TestCase):
                 with self.assertRaises(ValueError): sync(private, root)
                 self.assertFalse((root/'data/research/library.json').exists())
 
+    def test_repeat_check_keeps_public_bytes_and_mtime_but_records_private_check(self):
+        with tempfile.TemporaryDirectory() as d:
+            private, root, receipt, path = self.fixture(d)
+            sync(private, root)
+            library = root/'data/research/library.json'
+            before, modified = library.read_bytes(), library.stat().st_mtime_ns
+            path.write_text(json.dumps({'verifiedAt': '2026-10-09', 'items': [receipt]}), encoding='utf-8')
+            result = sync(private, root)
+            self.assertEqual((result['added'], result['updated'], result['unchanged']), (0, 0, 1))
+            self.assertFalse(result['websiteChanged'])
+            self.assertEqual(library.read_bytes(), before)
+            self.assertEqual(library.stat().st_mtime_ns, modified)
+            self.assertEqual(next(iter(read(private/'website-import-map.json').values()))['permissionCheckedAt'], '2026-10-09')
+            receipt['permission']['link']['prevents_download'] = True
+            path.write_text(json.dumps({'verifiedAt': '2026-10-10', 'items': [receipt]}), encoding='utf-8')
+            with self.assertRaises(ValueError): sync(private, root)
+            self.assertEqual(library.read_bytes(), before)
+
+    def test_link_rotation_updates_only_the_existing_record(self):
+        with tempfile.TemporaryDirectory() as d:
+            private, root, receipt, path = self.fixture(d)
+            sync(private, root)
+            receipt['permission']['link']['web_url'] = 'https://1drv.ms/b/rotated-share'
+            path.write_text(json.dumps({'verifiedAt': '2026-10-09', 'items': [receipt]}), encoding='utf-8')
+            result = sync(private, root)
+            self.assertEqual((result['added'], result['updated'], result['unchanged']), (0, 1, 0))
+            records = read(root/'data/research/library.json')['records']
+            self.assertEqual(len(records), 1)
+            self.assertEqual(records[0]['storage']['openUrl'], 'https://1drv.ms/b/rotated-share')
+
 
 if __name__ == '__main__': unittest.main()
+
 

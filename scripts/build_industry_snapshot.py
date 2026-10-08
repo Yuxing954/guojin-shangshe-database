@@ -6,6 +6,7 @@ import json
 import math
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
+from summary_io import write_json_if_changed
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -211,7 +212,7 @@ def main():
     payload = build(args.root)
     path = args.root / 'data/industry/overview.json'
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(payload, ensure_ascii=False, separators=(',', ':')) + '\n', encoding='utf-8')
+    write_json_if_changed(path, payload, volatile={'generatedAt'})
     print('Industry snapshot:', len(payload['sectors']), 'sectors;', sum(len(m['points']) for s in payload['sectors'] for m in s['metrics']), 'observations;', len(payload['revisions']), 'retained source differences')
 
 
