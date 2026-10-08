@@ -6,6 +6,7 @@ assert(L.matches({...file,processing:{status:'transcript_draft',searchText:'购�
 assert(!L.briefMatches({status:'draft',sector:'dutyfree',date:'2026-10-01'},{sector:'dutyfree'}));
 assert(L.briefMatches({status:'reviewed',sector:'dutyfree',date:'2026-10-01',watch:['购物人次']},{q:'人次'}));
 assert.equal(L.duration(3719),'61分59秒');assert.equal(L.bytes(1048576),'1.0 MB');
+assert.equal(L.bytes(20480),'20 KB');
 assert(L.safeLocalPath('data/research/processed/zsxq-file-123.json'));
 for(const path of ['../private.json','https://example.com/a.json','data/research/processed/../secret.json','data/research/processed/a.json?token=x'])assert(!L.safeLocalPath(path));
 console.log('Consumption catalog filters, transcript search, draft visibility and safe content paths passed.');
@@ -17,3 +18,18 @@ for(const openUrl of ['javascript:alert(1)','https://1drv.ms.evil.example/file',
 assert(!L.hasStoredOriginal({...stored,sha256:'b'.repeat(64)}));
 assert.equal(L.storageLink({...shared,storage:{...shared.storage,permissionsReviewed:false}}),'');
 console.log('Private OneDrive originals, source checksum binding and approved share links passed.');
+assert(L.matches(stored,{scope:'archived'}));assert(!L.matches(file,{scope:'archived'}));
+const uncertain={...stored,date:'',dateStatus:'needs_review',company:'行动教育',processing:{status:'needs_review',summary:'收款与收入分开'}};
+assert(L.matches(uncertain,{q:'行动教育',scope:'archived'}));
+assert(!L.matches(uncertain,{to:'2026-10-08'}));assert(!L.matches(uncertain,{from:'2026-01-01'}));
+assert.equal(L.entry(uncertain).published,'');
+console.log('Archived-first scope, company search and uncertain date filters passed.');
+const legacy={kind:'minutes',title:'旧纪要标题',file:'会议.docx',url:'https://example.com/old.docx'};
+const imported=L.entry({...stored,id:'onedrive-docx-test',name:'会议.docx',sourceType:'onedrive_document',sourceTopics:[],published:'2026-09-18',sourceUrl:''});
+const merged=L.mergeEntries([legacy,{...legacy,file:'另一份.mp3',state:'会议音频，未转写'}],[imported],()=> '');
+assert.equal(merged.length,2);assert(merged.includes(imported));assert.deepEqual(imported.legacyTitles,['旧纪要标题']);
+assert.equal(imported.url,'');
+const mixed={...legacy,file:'会议.docx；未入库.docx'};
+const partial=L.mergeEntries([mixed],[imported],()=> '');
+assert.equal(partial.length,2);assert.equal(partial[0].file,'未入库.docx');assert(!partial.includes(mixed));
+console.log('Legacy meeting duplicates merge without publishing owner links or hiding unrelated attachments.');

@@ -1,0 +1,33 @@
+{
+  "assetId": "onedrive-docx-4490f04aa8e95cc83742",
+  "type": "meeting_summary",
+  "reviewed": false,
+  "company": "青木科技",
+  "documentType": "公司调研",
+  "summary": "轻资产代运营以服务费和佣金确认收入；增量来自品牌孵化、潮玩客户及Noromega整合。AI主要改善客服与设计效率。",
+  "watch": "跟踪代运营续约、品牌盈利及并表时间；2025—2026年利润预测保留为3月调研预期。",
+  "note": "根据所提供Word纪要整理，摘要待审阅；未独立核对公告或原录音。历史预测、目标和计划保留当时语境。",
+  "dateStatus": "filename_header_consistent",
+  "dateCandidates": [],
+  "qualityIssues": [
+    {
+      "type": "valuation_scope_check",
+      "detail": "Noromega段按母公司ToB口径为10倍PE、包含中国ToC约4倍；文末另称并购估值约30倍。可能对应不同标的、交易结构或口径，资料未说明，估值字段待核对。",
+      "line": 275
+    }
+  ],
+  "evidence": [
+    {
+      "line": 3,
+      "anchor": "公司主要以服务费和佣金作为收入确认口径",
+      "excerpt": "青木科技的代运营业务与行业内其他几家公司存在一定差异。青木的代运营业务整体属于较为轻资产的模式。公司主要以服务费和佣金作为收入确认口径，而不是按照零售额确认收入。因此公司本身不承担压货，也基本不存在垫资销售费用的情况。这是商业模式上的第一个显著差异。"
+    },
+    {
+      "line": 183,
+      "anchor": "并购Noromega",
+      "excerpt": "并购Noromega"
+    }
+  ],
+  "evidenceLocator": "连接器抽取文本行号，并非Word页码",
+  "originalAccess": "private"
+}

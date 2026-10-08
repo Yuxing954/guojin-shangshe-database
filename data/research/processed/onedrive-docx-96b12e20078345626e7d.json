@@ -1,0 +1,33 @@
+{
+  "assetId": "onedrive-docx-96b12e20078345626e7d",
+  "type": "meeting_summary",
+  "reviewed": false,
+  "company": "首旅酒店",
+  "documentType": "业绩交流",
+  "summary": "文档称2026H1营收35.80亿元、归母净利润4.41亿元；轻资产结构和成本改善支撑利润，成熟店RevPAR承压，自有渠道贡献改善。",
+  "watch": "分开全部店与成熟店；新开606家与标准300家、轻管理302家未完全勾稽，保留待核对。",
+  "note": "根据所提供Word纪要整理，摘要待审阅；未独立核对公告或原录音。历史预测、目标和计划保留当时语境。",
+  "dateStatus": "filename_header_consistent",
+  "dateCandidates": [],
+  "qualityIssues": [
+    {
+      "type": "category_reconciliation",
+      "detail": "新开总数606家，标准管理300家、轻管理302家，合计602家。尚余4家的类别未在已抽取段落说明，细分占比暂缓采信。",
+      "line": 5
+    }
+  ],
+  "evidence": [
+    {
+      "line": 11,
+      "anchor": "26H1营收35.80亿元",
+      "excerpt": "1）收入结构继续优化：26H1营收35.80亿元/-2.22%，其中酒店运营收入20.49亿元/-8.29%，主要受直营店净关店及有效房量同比减少9%影响；酒店管理收入12.42亿元/+9.82%，主要受益于特许酒店扩张及CRS渠道贡献提升；景区收入2.89亿元/-2.38%。"
+    },
+    {
+      "line": 4,
+      "anchor": "全部成熟酒店RevPAR",
+      "excerpt": "1）Q2经营小幅承压：26Q2全部酒店RevPAR 142元/-1.0%，ADR 224元/-0.2%，OCC 63.4%/-0.5pct；不含轻管理酒店RevPAR 163元/-1.2%，ADR 240元/-0.6%，OCC 67.8%/-0.4pct。全部成熟酒店RevPAR 142元/-5.9%，表现弱于全口径，主要受老店产品竞争力偏弱影响。"
+    }
+  ],
+  "evidenceLocator": "连接器抽取文本行号，并非Word页码",
+  "originalAccess": "private"
+}

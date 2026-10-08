@@ -16,6 +16,8 @@ SECTORS = [
     ('education', r'教育|人服|人力资源|招聘|培训|中公|科锐|行动教育|东方教育|新东方|好未来'),
     ('commerce', r'电商|出海|跨境|亚马逊|阿里|拼多多|京东|焦点科技|吉宏|安克|赛维|东方甄选'),
     ('food', r'食品饮料|白酒|啤酒|乳业|乳制品|茅台|五粮液|汾酒|伊利|蒙牛|农夫山泉|东鹏饮料|调味品'),
+    ('sports', r'体育|赛事|力盛|金陵|健身|运动场馆'),
+    ('brandservices', r'青木科技|代运营|品牌孵化|品牌服务'),
 ]
 
 
@@ -74,7 +76,10 @@ def build(topics_dir, root=ROOT):
             if record['id'] not in records or record['published'] > records[record['id']]['published']:
                 records[record['id']] = record
     for asset_id, old in previous_records.items():
-        if asset_id not in records and sector_ids(old.get('name', '')):
+        if asset_id not in records and old.get('sourceType') == 'onedrive_document':
+            # Manual content classification and unresolved dates must survive topic refreshes.
+            records[asset_id] = old
+        elif asset_id not in records and sector_ids(old.get('name', '')):
             records[asset_id] = {**old, 'sectors': sector_ids(old['name'])}
     ordered = sorted(records.values(), key=lambda item: (item['published'], item['id']), reverse=True)
     # The same bytes may be reposted under another file ID. Show one copy, retain all sources.
@@ -85,11 +90,12 @@ def build(topics_dir, root=ROOT):
     result = []
     for copies in groups.values():
         record = next((r for r in copies if r['processing'].get('textAvailable')), copies[0])
-        record['sourceTopics'] = list(dict.fromkeys(tid for r in copies for tid in r.get('sourceTopics', [r['topicId']])))
+        record['sourceTopics'] = list(dict.fromkeys(tid for r in copies for tid in r.get('sourceTopics', [r.get('topicId')]) if tid))
         record['aliases'] = list(dict.fromkeys(alias for r in copies for alias in r.get('aliases', [r['id']])))
         result.append(record)
     result.sort(key=lambda item: (item['published'], item['id']), reverse=True)
-    return {'schemaVersion': 1, 'generatedAt': datetime.now(timezone(timedelta(hours=8))).isoformat(timespec='seconds'),
+    return {**({'ingestedBatch': previous['ingestedBatch']} if previous.get('ingestedBatch') else {}),
+            'schemaVersion': 1, 'generatedAt': datetime.now(timezone(timedelta(hours=8))).isoformat(timespec='seconds'),
             'coverage': {'from': min('2026-09-03', previous.get('coverage', {}).get('from', '2026-09-03')),
                          'to': max(max(t['create_time'] for t in topics.values())[:19], previous.get('coverage', {}).get('to', '')),
                          'lastScanTopicCount': len(topics), 'completeArchive': False},

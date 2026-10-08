@@ -1,0 +1,33 @@
+{
+  "assetId": "onedrive-docx-8c9f44f18f2b96e25002",
+  "type": "meeting_summary",
+  "reviewed": false,
+  "company": "首旅酒店",
+  "documentType": "业绩交流",
+  "summary": "文档称2026Q1全部酒店RevPAR同比+0.8%、归母净利润1.69亿元。管理业务增长、直营店优化和关店减少是主要线索。",
+  "watch": "全口径、不含轻管理、直营店分别记录；房量及标准店比例存在待核对点，不直接进指标看板。",
+  "note": "根据所提供Word纪要整理，摘要待审阅；未独立核对公告或原录音。历史预测、目标和计划保留当时语境。",
+  "dateStatus": "filename_header_consistent",
+  "dateCandidates": [],
+  "qualityIssues": [
+    {
+      "type": "room_scope_check",
+      "detail": "Q1文档称7870家店、15.8万间房，未说明房量覆盖范围；H1另一份文档为8013家、56.2万间。差异较大，须回查公告或原录音，不自行用H1数字替换Q1。",
+      "line": 18
+    }
+  ],
+  "evidence": [
+    {
+      "line": 4,
+      "anchor": "26Q1全部酒店RevPAR 125元/+0.8%",
+      "excerpt": "1）经营趋势向好：26Q1全部酒店RevPAR 125元/+0.8%，ADR 214元/+0.8%，OCC 58.3%/持平。不含轻管理的全部酒店RevPAR 143元/+1.7%，ADR 228元/+0.2%，OCC 62.6%/+0.9pct。"
+    },
+    {
+      "line": 10,
+      "anchor": "归母净利润1.69亿元",
+      "excerpt": "2）利润显著增长：26Q1公司实现毛利润6.04亿元/+8.8%，毛利率由34.6%提升到37.4%。费用端，SG&A费用率20.6%/-0.2pct，销售费用略有增长，管理费用下降；财务费用降幅21.4%，主要因直营店关店、租赁合同优化和利率下行；归母净利润1.69亿元/+18.5%，归母净利率9.5%/+1.4pct；扣非归母净利润1.43亿，同比增长31.8%。"
+    }
+  ],
+  "evidenceLocator": "连接器抽取文本行号，并非Word页码",
+  "originalAccess": "private"
+}
