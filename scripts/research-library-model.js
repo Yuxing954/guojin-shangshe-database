@@ -24,6 +24,7 @@
   function briefMatches(r,f){const q=(f.q||'').trim().toLowerCase();return r.status==='reviewed'&&(!f.sector||r.sector===f.sector)&&(!f.from||r.date>=f.from)&&(!f.to||r.date<=f.to)&&(!q||[r.title,r.conclusion,r.boundary,...(r.watch||[]),...(r.evidence||[]).map(x=>x.text)].join(' ').toLowerCase().includes(q));}
   function topicHref(s){const q=new URLSearchParams({kind:s.kind||'views',topic:s.topicId});return 'research.html?'+q;}
   function safeLocalPath(path){return typeof path==='string'&&/^data\/research\/processed\/[A-Za-z0-9_-]+\.json$/.test(path);}
-  return {states,duration,bytes,entry,mergeEntries,matches,briefMatches,topicHref,safeLocalPath,hasStoredOriginal,storageLink};
+  function preview(data,limit=500){const raw=typeof data?.preview==='string'?data.preview:data?.type==='pdf'?(data.pages||[]).map(p=>p.text||'').join('\n\n'):['audio','transcript'].includes(data?.type)?(data.segments||[]).map(s=>s.text||'').join('\n'):'';const chars=Array.from(raw.trim());return {text:chars.slice(0,limit).join(''),truncated:chars.length>limit||data?.previewTruncated===true};}
+  return {states,duration,bytes,entry,mergeEntries,matches,briefMatches,topicHref,safeLocalPath,hasStoredOriginal,storageLink,preview};
 });
 
