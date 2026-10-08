@@ -35,7 +35,10 @@ def verified_share(item, receipt):
             'expiresAt': expiry}
 
 
-def sync(batch_dir, root=ROOT):
+def sync(batch_dir, root=ROOT, with_summaries=False):
+    if not with_summaries:
+        from import_onedrive_index import import_index
+        return import_index(batch_dir, root)
     batch_dir, root = Path(batch_dir).resolve(), Path(root).resolve()
     if batch_dir.is_relative_to(root):
         raise ValueError('Batch working files must remain outside the public website')
@@ -107,5 +110,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--batch-dir', required=True, type=Path)
     parser.add_argument('--root', default=ROOT, type=Path)
+    parser.add_argument('--with-summaries', action='store_true', help='Opt in to curated summaries and source-text validation')
     args = parser.parse_args()
-    print(json.dumps(sync(args.batch_dir, args.root), ensure_ascii=False))
+    print(json.dumps(sync(args.batch_dir, args.root, args.with_summaries), ensure_ascii=False))
+

@@ -26,7 +26,7 @@ class BatchReleaseTests(unittest.TestCase):
     def test_single_entry_publishes_verified_link_and_no_cloud_mapping(self):
         with tempfile.TemporaryDirectory() as directory:
             batch, root, _, _ = self.batch(directory)
-            result = sync(batch, root)
+            result = sync(batch, root, with_summaries=True)
             self.assertEqual(result['customerDownloads'], 1)
             record = read(root / 'data/research/library.json')['records'][0]
             self.assertEqual(record['storage']['audience'], 'public')
@@ -48,19 +48,19 @@ class BatchReleaseTests(unittest.TestCase):
                 if case == 'expired': broken['permission']['expiration_date_time'] = '2000-01-01T00:00:00Z'
                 if case == 'scope': broken['permission']['link']['scope'] = 'organization'
                 path.write_text(json.dumps({'verifiedAt': '2026-10-08', 'items': [broken]}), encoding='utf-8')
-                with self.assertRaises(ValueError): sync(batch, root)
+                with self.assertRaises(ValueError): sync(batch, root, with_summaries=True)
                 self.assertFalse((root / 'data/research/library.json').exists())
 
     def test_reimport_preserves_customer_downloads_and_review_state(self):
         with tempfile.TemporaryDirectory() as directory:
             batch, root, _, receipt_path = self.batch(directory)
-            sync(batch, root)
+            sync(batch, root, with_summaries=True)
             library_path = root / 'data/research/library.json'
             library = read(library_path)
             library['records'][0]['processing']['status'] = 'reviewed'
             library_path.write_text(json.dumps(library), encoding='utf-8')
             receipt_path.unlink()
-            result = sync(batch, root)
+            result = sync(batch, root, with_summaries=True)
             record = read(library_path)['records'][0]
             self.assertEqual(result['customerDownloads'], 1)
             self.assertEqual(record['processing']['status'], 'reviewed')
@@ -68,3 +68,4 @@ class BatchReleaseTests(unittest.TestCase):
 
 
 if __name__ == '__main__': unittest.main()
+
