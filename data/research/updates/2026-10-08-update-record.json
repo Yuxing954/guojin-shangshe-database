@@ -1965,5 +1965,31 @@
     "newRowsUniqueSortedAndSourceLinked": true,
     "newSummarySourcesPresent": true
   },
-  "fullArchiveVerification": "等待GitHub Actions读取完整历史CSV构建并回读确认"
+  "fullArchiveVerification": "GitHub Actions完整读取历史CSV合并成功；回读新索引确认本次229条正文全部入库。",
+  "githubVerification": {
+    "verifiedAt": "2026-10-08T08:27:20.133Z",
+    "dataCommit": "67dfeca6d4e85e6680137409b8c61085ba0921fc",
+    "indexCommit": "112d4d5fbe3b17995c7f6514a5dd370ed1756fd3",
+    "buildRunId": 37749732653,
+    "buildResult": "success",
+    "changedFilesReadback": "7/7 byte-for-byte text verified",
+    "indexAddedTopics": {
+      "views": {
+        "expected": 19,
+        "present": 19
+      },
+      "all_views": {
+        "expected": 210,
+        "present": 210
+      }
+    },
+    "sourceRowsBefore": {
+      "views": 4554,
+      "all_views": 34570
+    },
+    "sourceRowsAfter": {
+      "views": 4573,
+      "all_views": 34780
+    }
+  }
 }
