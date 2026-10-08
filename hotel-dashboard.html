@@ -1,520 +1,81 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>酒店板块沉浸看板 · 国金商社</title>
-<style>
-:root{
-  --bg:#f4f6f8;--card:#fff;--ink:#152435;--mut:#718094;--line:#dfe5eb;
-  --navy:#17354d;--blue:#3f718d;--teal:#2f7d71;--amber:#b67a37;
-  --up:#c13b3b;--down:#2e8b57;--flat:#8a96a4;
-  --font:"PingFang SC","Noto Sans SC","Microsoft YaHei UI",sans-serif
-}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:13px;line-height:1.5}
-.wrap{max-width:1180px;margin:0 auto;padding:22px 18px 60px}
-.topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:16px;flex-wrap:wrap}
-.back{font-size:11px;color:var(--blue);text-decoration:none;border:1px solid #d5dde5;border-radius:8px;padding:6px 12px;background:#fff}
-.back:hover{background:#f0f5f9}
-.asof{font-size:10px;color:var(--mut)}
-.hero{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin-bottom:16px;flex-wrap:wrap}
-.hero h1{margin:2px 0 4px;font-size:24px;letter-spacing:.01em}
-.hero p{margin:0;color:var(--mut);font-size:11px}
-.eyebrow{font-size:10px;color:var(--blue);letter-spacing:.16em;font-weight:700}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:4px 0 18px}
-.tab{border:1px solid #d5dde5;background:#fff;color:#405166;font-size:11px;padding:7px 14px;border-radius:999px;cursor:pointer;font-family:var(--font)}
-.tab.on{background:var(--navy);color:#fff;border-color:var(--navy)}
-.view{display:none}
-.view.on{display:block}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:14px}
-.panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 16px;border-bottom:1px solid #e9edf1}
-.panel-head h2{font-size:14px;margin:0}
-.panel-head p{font-size:10px;color:var(--mut);margin:3px 0 0}
-.kpis{display:grid;grid-template-columns:repeat(4,1fr)}
-.kpi{padding:15px 17px;border-right:1px solid #e9edf1}
-.kpi:last-child{border-right:0}
-.kpi span{display:block;color:var(--mut);font-size:10px}
-.kpi strong{display:block;font-size:22px;margin:4px 0 3px;letter-spacing:.01em}
-.kpi small{font-size:10px;color:var(--mut)}
-.up{color:var(--up)}.down{color:var(--down)}.flat{color:var(--flat)}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-@media(max-width:900px){.grid2{grid-template-columns:1fr}.kpis{grid-template-columns:1fr 1fr}.kpi{border-bottom:1px solid #e9edf1}}
-.chart{padding:14px 15px;position:relative}
-.chart h3{font-size:11px;margin:0 0 8px;color:var(--ink)}
-.chart svg{width:100%;height:250px;display:block}
-.chart .legend{display:flex;gap:14px;font-size:10px;color:var(--mut);margin-top:6px;flex-wrap:wrap}
-.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:-1px}
-.tip{position:absolute;pointer-events:none;background:#fff;border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:10px;color:var(--ink);box-shadow:0 4px 14px rgba(21,36,53,.12);display:none;z-index:5;max-width:230px}
-.table{width:100%;border-collapse:collapse;font-size:11px}
-.table th{background:#f6f8fa;color:#778598;font-size:9px;text-align:left;padding:8px 10px;white-space:nowrap;font-weight:600}
-.table td{padding:8px 10px;border-top:1px solid #edf1f4;white-space:nowrap}
-.table tr:hover td{background:#f8fafb}
-.seg-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-@media(max-width:900px){.seg-cards{grid-template-columns:1fr 1fr}}
-.segment{border:1px solid #e3e8ed;border-radius:9px;padding:12px;background:#fff}
-.segment h3{font-size:12px;margin:0 0 8px}
-.segment b{font-size:18px;display:block;margin-bottom:6px}
-.segment dl{display:grid;grid-template-columns:auto 1fr;gap:3px 10px;margin:0;font-size:10px}
-.segment dt{color:var(--mut)}
-.segment dd{margin:0;text-align:right}
-.seg-chips{display:flex;gap:8px;flex-wrap:wrap}
-.chip{border:1px solid #d5dde5;background:#fff;color:#405166;font-size:10px;padding:5px 12px;border-radius:999px;cursor:pointer;font-family:var(--font)}
-.chip.on{background:var(--blue);color:#fff;border-color:var(--blue)}
-.bar-row{display:grid;grid-template-columns:110px 1fr 120px;align-items:center;gap:10px;padding:6px 0;font-size:11px}
-.bar-track{height:14px;background:#edf1f4;border-radius:4px;overflow:hidden}
-.bar-fill{height:100%;border-radius:4px}
-.note{font-size:10px;color:var(--mut);padding:10px 16px;border-top:1px solid #edf1f4}
-.loading{padding:30px;text-align:center;color:var(--mut);font-size:11px}
-</style>
-<link rel="stylesheet" href="scripts/site.css?v=5"><script defer src="scripts/site-shell.js?v=3"></script></head>
-<body>
-<div class="wrap">
-  <div class="topbar">
-    <a class="back" href="industry.html#hotel">← 行业数据</a>
-    <span class="asof" id="asof">读取数据中…</span>
-  </div>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>酒店数据 · 国金商社</title>
+  <link rel="stylesheet" href="scripts/site.css?v=5">
+  <link rel="stylesheet" href="scripts/hotel-dashboard.css?v=20261008">
+  <script defer src="scripts/site-shell.js?v=3"></script>
+  <script defer src="scripts/hotel-metrics.js?v=20261008"></script>
+  <script defer src="scripts/hotel-dashboard.js?v=20261008"></script>
+</head>
+<body class="hotel-page">
+<main class="hd-wrap">
+  <header class="hd-header">
+    <div><a class="hd-back" href="industry.html#hotel">行业数据 / 酒店</a><h1>酒店数据</h1><p>先看经营变化，再看城市与结构。</p></div>
+    <div class="hd-updated" id="asof" aria-live="polite">正在读取数据…</div>
+  </header>
+  <div id="load-error" class="hd-error" role="alert" hidden></div>
+  <div id="dashboard" hidden>
+    <div class="hd-toolbar">
+      <label>数据周 <select id="week-select"></select></label>
+      <details class="hd-compare"><summary>同比口径与错期</summary><div class="hd-compare-body">
+        <label>比较基周 <select id="compare-select"></select></label>
+        <p>默认按去年同周号比较，未作节假日错期调整。可手动选择去年基周，选择后显示“对比变化”。</p>
+        <p>图表的同比走势始终按去年同周号计算。</p>
+      </div></details>
+    </div>
+    <p class="hd-period" id="period-note"></p>
+    <nav class="hd-tabs" aria-label="酒店数据视图">
+      <button type="button" class="hd-tab active" data-view="overview" aria-pressed="true">经营概览</button>
+      <button type="button" class="hd-tab" data-view="cities" aria-pressed="false">城市对比</button>
+      <button type="button" class="hd-tab" data-view="structure" aria-pressed="false">集团与供给</button>
+    </nav>
 
-  <div class="hero">
-    <div>
-      <div class="eyebrow">HOTEL TRACKER · 国金商社</div>
-      <h1>酒店板块数据看板</h1>
-      <p>全国及20城 · 周度经营 · 分档次 · 全国集团与供给结构 · 市占率 ｜ 同周号同比，未作节假日错期调整</p>
-    </div>
-  </div>
-
-  <label>经营地区（总览 / 分档次）：<select id="region-select" style="margin:0 0 16px 8px;padding:6px 12px;border:1px solid #d9e2e8;border-radius:6px;background:#fff"><option>全国</option></select></label>
-  <label style="margin-left:16px">趋势起点：<select id="history-start" style="margin:0 0 16px 8px;padding:6px 12px;border:1px solid #d9e2e8;border-radius:6px;background:#fff"><option value="recent">近期</option><option value="all">全部历史</option></select></label>
-  <p id="history-note" style="margin:0 0 16px;color:#687681;font-size:12px"></p>
-  <div class="tabs" id="tabs">
-    <button class="tab on" data-view="overview">总览</button>
-    <button class="tab" data-view="segment">分档次经营</button>
-    <button class="tab" data-view="group">酒店集团</button>
-    <button class="tab" data-view="supply">供给结构</button>
-    <button class="tab" data-view="share">市占率</button>
-  </div>
-
-  <!-- ============ 总览 ============ -->
-  <div class="view on" id="view-overview">
-    <div class="card">
-      <div class="panel-head"><div><h2 id="ov-title">全国经营核心指标</h2><p id="ov-period">最新周 · 同周号同比，未作节假日错期调整</p></div></div>
-      <div class="kpis" id="ov-kpis"><div class="loading" style="grid-column:1/-1">加载中…</div></div>
-    </div>
-    <div class="grid2">
-      <div class="card"><div class="chart"><h3>RevPAR 走势（元 / 周）</h3><div id="ch-rev" class="chartbox"></div></div></div>
-      <div class="card"><div class="chart"><h3>RevPAR 同比增速（%）</h3><div id="ch-revyoy" class="chartbox"></div></div></div>
-    </div>
-    <div class="grid2">
-      <div class="card"><div class="chart"><h3>入住率 OCC 走势（%）</h3><div id="ch-occ" class="chartbox"></div></div></div>
-      <div class="card"><div class="chart"><h3>平均房价 ADR 走势（元）</h3><div id="ch-adr" class="chartbox"></div></div></div>
-    </div>
-    <div class="card">
-    <div class="panel-head"><div><h2>最新周分档次速览</h2><p id="ov-seg-note">全国 · 各档次最新周经营与同比</p></div></div>
-      <div style="padding:14px"><div class="seg-cards" id="ov-segs"></div></div>
-    </div>
-  </div>
-
-  <!-- ============ 分档次 ============ -->
-  <div class="view" id="view-segment">
-    <div class="card">
-      <div class="panel-head"><div><h2>分档次经营对比</h2><p>切换指标查看各档次走势与同比 · 近期为近26周，可用上方趋势起点查看更早历史</p></div></div>
-      <div style="padding:14px">
-        <div class="seg-chips" id="seg-metric-chips"></div>
-        <div class="chart" style="padding:14px 0 0"><div id="ch-seg"></div></div>
+    <section id="view-overview" class="hd-view">
+      <div class="hd-section-head"><h2 id="overview-title">全国经营</h2><label>地区 <select id="region-select"></select></label></div>
+      <div class="hd-kpis" id="core-kpis"></div>
+      <p class="hd-takeaway" id="takeaway"></p>
+      <div class="hd-card">
+        <div class="hd-card-head"><h2>经营走势</h2><label>范围 <select id="history-start"><option value="52">近1年</option><option value="156">近3年</option><option value="all">全部历史</option></select></label></div>
+        <div class="hd-chart-controls">
+          <div class="hd-switch" id="metric-switch" aria-label="经营指标"><button type="button" data-metric="revpar" class="active" aria-pressed="true">每房收入</button><button type="button" data-metric="occupancy_rate" aria-pressed="false">入住率</button><button type="button" data-metric="adr" aria-pressed="false">房价</button></div>
+          <div class="hd-switch" id="mode-switch" aria-label="展示方式"><button type="button" data-mode="value" class="active" aria-pressed="true">数值</button><button type="button" data-mode="change" aria-pressed="false">同周同比</button></div>
+        </div>
+        <p class="hd-chart-caption" id="trend-caption"></p>
+        <div class="hd-chart" id="main-chart"></div>
+        <p class="hd-footnote" id="history-note"></p>
       </div>
-    </div>
-    <div class="card">
-      <div class="panel-head"><div><h2>最新周分档次明细</h2><p id="seg-period">数值与同比增速</p></div></div>
-      <div style="overflow-x:auto"><table class="table" id="seg-table"></table></div>
-      <div class="note">OCC 同比为百分点（pct-pt）变化；ADR / RevPAR 同比为百分比增速。房量为 15 间及以上口径。</div>
-    </div>
-  </div>
-
-  <!-- ============ 集团 ============ -->
-  <div class="view" id="view-group">
-    <div class="card">
-      <div class="panel-head"><div><h2>集团经营核心指标</h2><p id="grp-period">最新周 · 同比口径为去年同期同周</p></div></div>
-      <div style="overflow-x:auto"><table class="table" id="grp-table"></table></div>
-      <div class="note">ADR 为平均客房价（按入住日期统计口径）；同比为百分比增速。集团周度数据自 2024 年起披露。</div>
-    </div>
-    <div class="grid2">
-      <div class="card"><div class="chart"><h3>集团 ADR 走势（元）</h3><div id="ch-grp-adr"></div></div></div>
-      <div class="card"><div class="chart"><h3>集团 ADR 同比增速（%）</h3><div id="ch-grp-adryoy"></div></div></div>
-    </div>
-    <div class="card"><div class="chart"><h3>集团门店规模（酒店数量，家）</h3><div id="ch-grp-count"></div></div></div>
-  </div>
-
-  <!-- ============ 供给 ============ -->
-  <div class="view" id="view-supply">
-    <div class="card">
-      <div class="panel-head"><div><h2>全国房量供给结构</h2><p id="sup-period">最新周 · 按房量区间</p></div></div>
-      <div style="padding:14px" id="sup-bars"></div>
-      <div class="note">占比为该房量区间酒店房量占全国总房量比重；连锁率 = 连锁房量 / 区间总房量。</div>
-    </div>
-    <div class="card">
-      <div class="panel-head"><div><h2>供给规模走势</h2><p>全国酒店数量与房量（全部口径）</p></div></div>
-      <div class="grid2" style="padding:14px">
-        <div class="chart"><h3>酒店数量（家）</h3><div id="ch-sup-hotel"></div></div>
-        <div class="chart"><h3>酒店房量（间）</h3><div id="ch-sup-room"></div></div>
+      <div class="hd-card"><div class="hd-card-head"><h2>哪个档次表现更好</h2><span>所选地区 · 所选周</span></div><div class="hd-table-scroll" tabindex="0" aria-label="分档次经营表，可左右滚动"><table class="hd-table" id="segment-table"></table></div>
+        <details class="hd-detail"><summary>查看分档次历史走势</summary><label>指标 <select id="segment-metric"><option value="revpar">每房收入（元）</option><option value="occupancy_rate">入住率（%）</option><option value="adr">房价（元）</option><option value="revpar_yoy">每房收入同周同比（%）</option></select></label><div class="hd-chart" id="segment-chart"></div></details>
       </div>
-    </div>
+      <details class="hd-detail hd-plain"><summary>酒店与房间规模</summary><div id="region-supply"></div><div class="hd-table-scroll" tabindex="0" aria-label="分档次规模表，可左右滚动"><table class="hd-table" id="segment-scale-table"></table></div><p>“全部”包含15间以下酒店；分档次规模使用15间及以上口径。</p></details>
+    </section>
+
+    <section id="view-cities" class="hd-view" hidden>
+      <div class="hd-section-head"><div><h2>20个重点城市，放在一起看</h2><p>与全国使用同一数据周和比较基周。点击城市查看历史。</p></div></div>
+      <div class="hd-city-summary" id="city-summary"></div>
+      <div class="hd-card">
+        <div class="hd-city-controls"><label>搜索城市 <input id="city-search" type="search" placeholder="例如：杭州"></label><label>排序 <select id="city-sort"><option value="revChange">每房收入变化 · 从高到低</option><option value="revpar">每房收入 · 从高到低</option><option value="occupancy_rate">入住率 · 从高到低</option><option value="adr">房价 · 从高到低</option></select></label></div>
+        <div class="hd-table-scroll" tabindex="0" aria-label="重点城市经营表，可左右滚动"><table class="hd-table hd-city-table" id="city-table"></table></div><p class="hd-footnote">全国作为参照固定在首行，不参与城市排名；缺失值不参与比较。</p>
+      </div>
+    </section>
+
+    <section id="view-structure" class="hd-view" hidden>
+      <div class="hd-section-head"><div><h2>集团与供给</h2><p>本页均为全国口径；周度数据跟随上方数据周，市占率单独使用年度数据。</p></div></div>
+      <div class="hd-card"><div class="hd-card-head"><h2>集团经营与规模</h2><span id="group-period"></span></div><div class="hd-table-scroll" tabindex="0" aria-label="全国集团表，可左右滚动"><table class="hd-table" id="group-table"></table></div><p class="hd-footnote">房价、价格指数与热度指数均按入住日期统计；热度指数不等于实际入住率。</p>
+        <details class="hd-detail"><summary>查看集团历史走势</summary><label>指标 <select id="group-metric"><option value="stay_adr">房价（元）</option><option value="stay_adr_yoy">房价同周同比（%）</option><option value="hotel_count">酒店数量（家）</option><option value="room_count">房间数量（间）</option></select></label> <label>范围 <select id="group-window"><option value="52">近1年</option><option value="156">近3年</option><option value="all">全部历史</option></select></label><div class="hd-chart" id="group-chart"></div></details>
+      </div>
+      <div class="hd-card"><div class="hd-card-head"><h2>全国酒店供给</h2><span id="supply-period"></span></div><div class="hd-supply-stats" id="supply-stats"></div><div class="hd-table-scroll" tabindex="0" aria-label="供给结构表，可左右滚动"><table class="hd-table" id="supply-table"></table></div>
+        <details class="hd-detail"><summary>查看供给历史走势</summary><label>指标 <select id="supply-metric"><option value="room_count">房间数量（间）</option><option value="hotel_count">酒店数量（家）</option></select></label> <label>范围 <select id="supply-window"><option value="52">近1年</option><option value="156">近3年</option><option value="all">全部历史</option></select></label><div class="hd-chart" id="supply-chart"></div></details>
+      </div>
+      <details class="hd-detail hd-card hd-annual"><summary>集团市占率 · 年度数据 <span id="share-year"></span></summary><p>六大集团房间数份额，按源表原值展示，不归一化。</p><div class="hd-table-scroll" tabindex="0" aria-label="年度市占率表，可左右滚动"><table class="hd-table" id="share-table"></table></div><div class="hd-chart" id="share-chart"></div></details>
+    </section>
+
+    <details class="hd-detail hd-quality"><summary>数据来源、历史覆盖与计算口径</summary><div id="coverage-note"></div><p>数据来源：酒店之家。每房收入（RevPAR）＝入住率（OCC）×平均房价（ADR）；房价采用入住日期口径。入住率变化用“百分点”，房价与每房收入变化用“%”。同比缺少基期或基期为零时不计算增速。</p><p>不同指标起始周不同，缺失和异常值显示“—”，不补零。历史分档次异常入住率及其每房收入已在分析数据中留空，源值保留在异常记录。</p><p><a href="https://github.com/yuxing954/guojin-shangshe-database/blob/main/docs/hotel-data-update.md" target="_blank" rel="noopener">查看数据更新与口径说明 ↗</a> · <a href="data/hotel-source-anomalies.csv">异常记录</a></p></details>
+    <footer class="hd-footer">酒店之家 · 国金商社研究数据库 <span>数据周与比较基周见页首</span></footer>
   </div>
-
-  <!-- ============ 市占率 ============ -->
-  <div class="view" id="view-share">
-    <div class="card">
-      <div class="panel-head"><div><h2>集团房间数市占率（年度）</h2><p id="shr-period">六大集团 · 单位 %</p></div></div>
-      <div style="padding:14px" id="shr-bars"></div>
-      <div class="note">口径：采用源表六大集团年度市占率原值，六家份额不作归一化；同比为 pct-pt 变化。</div>
-    </div>
-    <div class="card">
-      <div class="panel-head"><div><h2>市占率年度走势</h2><p>2013 – 2025</p></div></div>
-      <div class="chart"><div id="ch-share"></div></div>
-    </div>
-  </div>
-</div>
-
-<script>
-(function(){
-"use strict";
-var DATA={};
-var CURRENT_REGION="全国";
-var TREND_START="recent";
-var SEGS=["经济型","中档型","高档型","豪华型"];
-var GROUPS=["华住","首旅如家","锦江酒店（中国区）","亚朵"];
-var PAL=["#3f718d","#2f7d71","#b67a37","#bc4949","#7a6fa8","#4f8a5f"];
-
-/* ---------- CSV ---------- */
-function csv(t){var a=[],r=[],v="",q=false;
-for(var i=0;i<t.length;i++){var c=t[i],n=t[i+1];
-if(q){if(c==='"'&&n==='"'){v+='"';i++;}else if(c==='"')q=false;else v+=c;}
-else if(c==='"')q=true;else if(c===","){r.push(v);v="";}else if(c==="\n"){r.push(v.replace(/\r$/,""));a.push(r);r=[];v="";}else v+=c;}
-if(v||r.length){r.push(v);a.push(r);}
-var h=a.shift().map(function(x){return x.replace(/^﻿/,"");});
-return a.filter(function(x){return x.some(Boolean);}).map(function(x){var o={};h.forEach(function(k,j){o[k]=x[j];});return o;});}
-
-function num(v){return v==null||String(v).trim()===""?null:(isFinite(Number(v))?Number(v):null);}
-function f(v,d){return num(v)==null?"—":num(v).toLocaleString("zh-CN",{minimumFractionDigits:d,maximumFractionDigits:d});}
-function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
-
-/* 同比：val vs 去年同期同周 */
-function yoy(series,val,period,field,isPct){
-  var prior=null;
-  for(var i=0;i<series.length;i++){var r=series[i];
-    if(Number(r.year)===Number(period.year)-1&&Number(r.week)===Number(period.week)){prior=r;break;}}
-  if(!prior||num(prior[field])==null||num(prior[field])===0||num(val)==null)return null;
-  return isPct? (num(val)-num(prior[field]))*100 : (num(val)/num(prior[field])-1)*100;
-}
-function deltaHtml(v,isPt){
-  if(v==null||!isFinite(v))return '<span class="flat">同比 —</span>';
-  var cls=v>0?"up":v<0?"down":"flat";
-  var arrow=v>0?"▲":v<0?"▼":"·";
-  var unit=isPt?"pct-pt":"%";
-  return '<span class="'+cls+'">'+arrow+' '+(v>0?"+":"")+f(Math.abs(v),1)+' '+unit+'</span>';
-}
-
-/* ---------- SVG 图表 ---------- */
-var UID=0;
-function svgEl(tag,attrs){var e=document.createElementNS("http://www.w3.org/2000/svg",tag);for(var k in attrs)e.setAttribute(k,attrs[k]);return e;}
-
-/* 多序列折线图。series:[{name,color,pts:[{x(label),y}],dash}] */
-function lineChart(elId,series,opt){
-  opt=opt||{};var host=document.getElementById(elId);if(!host)return;
-  host.innerHTML="";host.style.position="relative";
-  var W=560,H=opt.h||250,pl=46,pr=14,pt=14,pb=30;
-  var svg=svgEl("svg",{viewBox:"0 0 "+W+" "+H,preserveAspectRatio:"none"});host.appendChild(svg);
-  var xs=[],ymin=Infinity,ymax=-Infinity;
-  series.forEach(function(s){s.pts.forEach(function(p){xs.push(p.x);if(num(p.y)!=null){ymin=Math.min(ymin,p.y);ymax=Math.max(ymax,p.y);}});});
-  xs=Array.from(new Set(xs));
-  if(!xs.length||ymin===Infinity){svg.appendChild(svgEl("text",{x:W/2,y:H/2,"text-anchor":"middle","font-size":11,fill:"#98a4b1"})).textContent="暂无数据";return;}
-  if(opt.zero)ymin=Math.min(ymin,0);
-  var pad=(ymax-ymin)*0.12||1;ymin-=pad;ymax+=pad;
-  var xi=function(x){return pl+(xs.indexOf(x)/(Math.max(1,xs.length-1)))*(W-pl-pr);};
-  var yi=function(y){return pt+(1-(y-ymin)/(ymax-ymin))*(H-pt-pb);};
-  /* 网格与y轴 */
-  for(var g=0;g<=4;g++){var gy=pt+g*(H-pt-pb)/4,gv=ymax-g*(ymax-ymin)/4;
-    svg.appendChild(svgEl("line",{x1:pl,y1:gy,x2:W-pr,y2:gy,stroke:"#edf1f4","stroke-width":1}));
-    svg.appendChild(svgEl("text",{x:pl-6,y:gy+3,"text-anchor":"end","font-size":8.5,fill:"#8a96a4"})).textContent=f(gv,opt.dec==null?0:opt.dec);}
-  if(ymin<0&&ymax>0){var zy=yi(0);svg.appendChild(svgEl("line",{x1:pl,y1:zy,x2:W-pr,y2:zy,stroke:"#c9d2db","stroke-width":1.2,"stroke-dasharray":"3 3"}));}
-  /* x 轴刻度（抽稀） */
-  var step=Math.ceil(xs.length/8);
-  for(var t=0;t<xs.length;t+=step){svg.appendChild(svgEl("text",{x:xi(xs[t]),y:H-pb+14,"text-anchor":"middle","font-size":8.5,fill:"#8a96a4"})).textContent=xs[t];}
-  /* 序列 */
-  series.forEach(function(s){
-    var path="",started=false;
-    s.pts.forEach(function(p){if(num(p.y)==null){started=false;return;}
-      var X=xi(p.x),Y=yi(p.y);path+=(started?"L":"M")+X.toFixed(1)+" "+Y.toFixed(1);started=true;});
-    var attrs={d:path,fill:"none",stroke:s.color,"stroke-width":2,"stroke-linejoin":"round","stroke-linecap":"round"};
-    if(s.dash)attrs["stroke-dasharray"]="5 4";
-    svg.appendChild(svgEl("path",attrs));
-    var last=null;for(var i=s.pts.length-1;i>=0;i--){if(num(s.pts[i].y)!=null){last=s.pts[i];break;}}
-    if(last){svg.appendChild(svgEl("circle",{cx:xi(last.x),cy:yi(last.y),r:2.6,fill:s.color}));}
-  });
-  /* 图例 */
-  if(opt.legend!==false&&series.length>1){
-    var lg=document.createElement("div");lg.className="legend";
-    series.forEach(function(s){lg.innerHTML+='<span><i style="background:'+s.color+'"></i>'+esc(s.name)+"</span>";});
-    host.appendChild(lg);}
-  /* hover */
-  var tip=document.createElement("div");tip.className="tip";host.appendChild(tip);
-  var vline=svgEl("line",{y1:pt,y2:H-pb,stroke:"#b9c4cf","stroke-width":1,"stroke-dasharray":"3 3",visibility:"hidden"});svg.appendChild(vline);
-  svg.addEventListener("mousemove",function(ev){
-    var r=svg.getBoundingClientRect();
-    var mx=(ev.clientX-r.left)/r.width*W;
-    var idx=Math.round((mx-pl)/(W-pl-pr)*(xs.length-1));
-    idx=Math.max(0,Math.min(xs.length-1,idx));
-    var x=xs[idx];vline.setAttribute("x1",xi(x));vline.setAttribute("x2",xi(x));vline.setAttribute("visibility","visible");
-    var html="<b>"+esc(x)+"</b>";
-    series.forEach(function(s){var p=null;s.pts.forEach(function(q){if(q.x===x)p=q;});
-      if(p&&num(p.y)!=null)html+='<br><span style="color:'+s.color+'">●</span> '+esc(s.name)+"：<b>"+f(p.y,opt.dec==null?1:opt.dec)+"</b>";});
-    tip.innerHTML=html;tip.style.display="block";
-    var hostR=host.getBoundingClientRect();
-    tip.style.left=Math.min(hostR.width-150,Math.max(0,ev.clientX-hostR.left+12))+"px";
-    tip.style.top=Math.max(0,ev.clientY-hostR.top-10)+"px";});
-  svg.addEventListener("mouseleave",function(){tip.style.display="none";vline.setAttribute("visibility","hidden");});
-}
-
-/* ---------- 数据加载 ---------- */
-function load(name,url){return fetch(url,{cache:"no-store"}).then(function(r){if(!r.ok)throw 0;return r.text();}).then(csv).then(function(rows){DATA[name]=rows;});}
-
-Promise.all([
-  load("industry","data/hotel_industry_weekly.csv"),
-  load("group","data/hotel_group_weekly.csv"),
-  load("supply","data/hotel_supply_weekly.csv"),
-  load("share","data/hotel_market_share_annual.csv")
-]).then(init).catch(function(){document.getElementById("asof").textContent="数据读取失败，请检查 data/ 目录";});
-
-/* 排序辅助 */
-function sortByPeriod(rows){return rows.slice().sort(function(a,b){return a.period_id.localeCompare(b.period_id);});}
-function latestPeriod(rows){var p=sortByPeriod(rows);return p.length?p[p.length-1].period_id:null;}
-function nat(series,segment){return sortByPeriod(series.filter(function(r){return r.region===CURRENT_REGION&&r.segment===segment;}));}
-function takeLast(rows,n){return rows.slice(Math.max(0,rows.length-n));}
-function trendWindow(rows,n){return TREND_START==="recent"?takeLast(rows,n):(TREND_START==="all"?rows:rows.filter(function(r){return Number(r.year)>=Number(TREND_START);}));}
-function metricValue(row,field,isPct){var v=num(row[field]);return v==null?null:(isPct?v*100:v);}
-
-function init(){
-  var ind=DATA.industry,grp=DATA.group,sup=DATA.supply,shr=DATA.share;
-  var regions=Array.from(new Set(ind.map(function(r){return r.region;}))).sort();
-  var selector=document.getElementById("region-select");
-  selector.innerHTML=["全国"].concat(regions.filter(function(r){return r!=="全国";})).map(function(r){return '<option value="'+esc(r)+'">'+esc(r)+'</option>';}).join("");
-  selector.onchange=function(){CURRENT_REGION=this.value;renderOverview(ind);renderSegment(ind);};
-  var history=document.getElementById("history-start");
-  var years=Array.from(new Set(ind.map(function(r){return r.year;}))).sort();
-  history.innerHTML='<option value="recent">近期（总览52周 / 分档次26周）</option><option value="all">全部历史</option>'+years.map(function(y){return '<option value="'+esc(y)+'">'+esc(y)+'年至今</option>';}).join("");
-  history.onchange=function(){TREND_START=this.value;renderOverview(ind);renderSegment(ind);};
-  var ovAll=nat(ind,"全部");
-  var latest=ovAll[ovAll.length-1];
-  document.getElementById("asof").textContent="行业数据更新至 "+latest.period_id+"（"+latest.start_date+" ~ "+latest.end_date+"）";
-  renderOverview(ind);
-  renderSegment(ind);
-  renderGroup(grp);
-  renderSupply(sup.filter(function(r){return r.region==="全国";}));
-  renderShare(shr);
-  bindTabs();
-}
-
-/* ---------- Tab 切换 ---------- */
-function bindTabs(){
-  var tabs=document.querySelectorAll("#tabs .tab");
-  tabs.forEach(function(t){t.addEventListener("click",function(){
-    tabs.forEach(function(x){x.classList.remove("on");});t.classList.add("on");
-    document.querySelectorAll(".view").forEach(function(v){v.classList.remove("on");});
-    document.getElementById("view-"+t.dataset.view).classList.add("on");
-  });});
-}
-
-/* ---------- 总览 ---------- */
-function renderOverview(ind){
-  var all=nat(ind,"全部"),latest=all[all.length-1];
-  var per={year:latest.year,week:latest.week};
-  document.getElementById("ov-title").textContent=CURRENT_REGION+"经营核心指标";
-  document.getElementById("ov-seg-note").textContent=CURRENT_REGION+" · 各档次最新周经营与同比";
-  document.getElementById("ov-period").textContent="最新周 "+latest.period_id+"（"+latest.start_date+" ~ "+latest.end_date+"）· 同周号同比，未作节假日错期调整 · ADR按入住日期";
-  function firstValid(field){var r=all.filter(function(r){return num(r[field])!=null;})[0];return r?r.period_id:"暂无数据";}
-  document.getElementById("history-note").textContent=CURRENT_REGION+"历史覆盖："+all[0].period_id+"–"+latest.period_id+"（"+all.length+"周）；房价始于"+firstValid("adr")+"，入住率 / RevPAR始于"+firstValid("occupancy_rate")+"，酒店数量 / 房量始于"+firstValid("hotel_count")+"。缺失与异常值留空；顶部指标仍为最新周。";
-  var metrics=[
-    {label:"入住率 OCC",val:num(latest.occupancy_rate)*100,unit:"%",dec:1,field:"occupancy_rate",isPct:true},
-    {label:"平均房价 ADR",val:num(latest.adr),unit:"元",dec:1,field:"adr",isPct:false},
-    {label:"RevPAR",val:num(latest.revpar),unit:"元",dec:1,field:"revpar",isPct:false},
-    {label:"酒店房量",val:num(latest.room_count),unit:"间",dec:0,field:"room_count",isPct:false}
-  ];
-  document.getElementById("ov-kpis").innerHTML=metrics.map(function(m){
-    var d=yoy(all,num(latest[m.field]),per,m.field,m.isPct);
-    return '<div class="kpi"><span>'+m.label+'</span><strong>'+f(m.val,m.dec)+(m.unit==="%"?"%":"")+'</strong><small>'+deltaHtml(d,m.isPct)+' · '+m.unit+'</small></div>';
-  }).join("");
-
-  /* 走势范围由历史起点控制，顶部指标仍使用最新周。 */
-  var win=trendWindow(all,52);
-  function seriesFor(field,isPct,dec){
-    var cur={name:"本期",color:PAL[0],pts:win.map(function(r){return{x:r.period_id,y:metricValue(r,field,isPct)};})};
-    var y1=win.map(function(r){var v=yoyVal(all,r,field);return{x:r.period_id,y:isPct&&v!=null?v*100:v};});
-    var prior={name:"去年同期",color:PAL[3],dash:true,pts:y1};
-    return [cur,prior];
-  }
-  function yoyVal(series,row,field){
-    for(var i=0;i<series.length;i++){var p=series[i];
-      if(Number(p.year)===Number(row.year)-1&&Number(p.week)===Number(row.week))return num(p[field]);}
-    return null;
-  }
-  lineChart("ch-rev",seriesFor("revpar",false),{dec:0});
-  lineChart("ch-occ",seriesFor("occupancy_rate",true),{dec:1});
-  lineChart("ch-adr",seriesFor("adr",false),{dec:0});
-
-  /* RevPAR 同比增速 */
-  var yoyPts=win.map(function(r){var v=yoyVal(all,r,"revpar");return{x:r.period_id,y:(v!=null&&v!==0&&num(r.revpar)!=null)?(num(r.revpar)/v-1)*100:null};});
-  lineChart("ch-revyoy",[{name:"RevPAR 同比",color:PAL[2],pts:yoyPts}],{dec:1,zero:true,legend:false});
-
-  /* 最新周分档次卡片 */
-  var latestSegs=SEGS.map(function(seg){
-    var s=nat(ind,seg),r=null;
-    for(var i=s.length-1;i>=0;i--)if(s[i].period_id===latest.period_id){r=s[i];break;}
-    return{seg:seg,row:r,series:s};
-  }).filter(function(x){return x.row;});
-  document.getElementById("ov-segs").innerHTML=latestSegs.map(function(x){
-    var r=x.row,s=x.series,per={year:r.year,week:r.week};
-    var occD=yoy(s,num(r.occupancy_rate),per,"occupancy_rate",true);
-    var revD=yoy(s,num(r.revpar),per,"revpar",false);
-    return '<div class="segment"><h3>'+esc(x.seg)+'</h3><b>'+f(num(r.revpar),0)+' <small style="font-size:10px;color:var(--mut)">RevPAR 元</small></b>'+
-      '<dl><dt>OCC</dt><dd>'+f(num(r.occupancy_rate)*100,1)+'% '+deltaHtml(occD,true)+'</dd>'+
-      '<dt>ADR</dt><dd>'+f(num(r.adr),0)+' 元</dd>'+
-      '<dt>RevPAR 同比</dt><dd>'+deltaHtml(revD,false)+'</dd></dl></div>';
-  }).join("");
-}
-
-/* ---------- 分档次 ---------- */
-var SEG_METRICS=[
-  {key:"revpar",label:"RevPAR（元）",isPct:false,dec:0},
-  {key:"adr",label:"ADR（元）",isPct:false,dec:0},
-  {key:"occupancy_rate",label:"OCC（%）",isPct:true,dec:1},
-  {key:"revpar_yoy",label:"RevPAR 同比（%）",isPct:false,dec:1,yoy:true}
-];
-function renderSegment(ind){
-  var latest=latestPeriod(nat(ind,"全部"));
-  document.getElementById("seg-period").textContent=CURRENT_REGION+" · 最新周 "+latest+" · 同周号同比，未作节假日错期调整";
-  /* chips */
-  var chipHost=document.getElementById("seg-metric-chips");
-  chipHost.innerHTML=SEG_METRICS.map(function(m,i){return '<button class="chip'+(i===0?" on":"")+'" data-m="'+m.key+'">'+m.label+'</button>';}).join("");
-  function draw(metricKey){
-    var m=SEG_METRICS.filter(function(x){return x.key===metricKey;})[0];
-    var series=SEGS.map(function(seg,i){
-      var s=trendWindow(nat(ind,seg),26);
-      var pts=s.map(function(r){
-        var y;
-        if(m.yoy){var pr=yoyVal(nat(ind,seg),r,"revpar");y=(pr!=null&&pr!==0&&num(r.revpar)!=null)?(num(r.revpar)/pr-1)*100:null;}
-        else y=metricValue(r,m.key,m.isPct);
-        return{x:r.period_id,y:y};});
-      return{name:seg,color:PAL[i],pts:pts};
-    });
-    lineChart("ch-seg",series,{dec:m.dec,zero:m.yoy});
-  }
-  chipHost.querySelectorAll(".chip").forEach(function(c){c.addEventListener("click",function(){
-    chipHost.querySelectorAll(".chip").forEach(function(x){x.classList.remove("on");});c.classList.add("on");draw(c.dataset.m);});});
-  draw("revpar");
-  function yoyVal(series,row,field){
-    for(var i=0;i<series.length;i++){var p=series[i];
-      if(Number(p.year)===Number(row.year)-1&&Number(p.week)===Number(row.week))return num(p[field]);}
-    return null;}
-
-  /* 明细表 */
-  var rows=SEGS.map(function(seg){
-    var s=nat(ind,seg),r=null;
-    for(var i=s.length-1;i>=0;i--)if(s[i].period_id===latest){r=s[i];break;}
-    if(!r)return null;
-    var per={year:r.year,week:r.week};
-    return{seg:seg,r:r,
-      occD:yoy(s,num(r.occupancy_rate),per,"occupancy_rate",true),
-      adrD:yoy(s,num(r.adr),per,"adr",false),
-      revD:yoy(s,num(r.revpar),per,"revpar",false)};
-  }).filter(Boolean);
-  var head="<thead><tr><th>档次</th><th>OCC</th><th>OCC 同比</th><th>ADR（元）</th><th>ADR 同比</th><th>RevPAR（元）</th><th>RevPAR 同比</th><th>酒店数</th><th>房量</th></tr></thead>";
-  var body="<tbody>"+rows.map(function(x){
-    return "<tr><td><b>"+esc(x.seg)+"</b></td><td>"+f(num(x.r.occupancy_rate)*100,1)+"%</td><td>"+deltaHtml(x.occD,true)+"</td><td>"+f(num(x.r.adr),0)+"</td><td>"+deltaHtml(x.adrD,false)+"</td><td><b>"+f(num(x.r.revpar),0)+"</b></td><td>"+deltaHtml(x.revD,false)+"</td><td>"+f(num(x.r.hotel_count_15plus||x.r.hotel_count),0)+"</td><td>"+f(num(x.r.room_count_15plus||x.r.room_count),0)+"</td></tr>";
-  }).join("")+"</tbody>";
-  document.getElementById("seg-table").innerHTML=head+body;
-}
-
-/* ---------- 集团 ---------- */
-function renderGroup(grp){
-  var byG={};GROUPS.forEach(function(g){byG[g]=sortByPeriod(grp.filter(function(r){return r.group===g;}));});
-  var latest=latestPeriod(grp);
-  document.getElementById("grp-period").textContent="全国 · 最新周 "+latest+" · ADR及指数按入住日期 · 同周号同比，未作节假日错期调整";
-  /* 明细表 */
-  var head="<thead><tr><th>集团</th><th>酒店数（家）</th><th>房量（间）</th><th>ADR（元）</th><th>ADR 同比</th><th>价格指数</th><th>市场热度</th></tr></thead>";
-  var body="<tbody>"+GROUPS.map(function(g){
-    var s=byG[g],r=null;for(var i=s.length-1;i>=0;i--)if(s[i].period_id===latest){r=s[i];break;}
-    if(!r)return"";
-    var per={year:r.year,week:r.week};
-    var adrD=yoy(s,num(r.stay_adr),per,"stay_adr",false);
-    return "<tr><td><b>"+esc(g)+"</b></td><td>"+f(num(r.hotel_count),0)+"</td><td>"+f(num(r.room_count),0)+"</td><td>"+f(num(r.stay_adr),0)+"</td><td>"+deltaHtml(adrD,false)+"</td><td>"+f(num(r.stay_price_index),2)+"</td><td>"+f(num(r.stay_heat_index),2)+"</td></tr>";
-  }).join("")+"</tbody>";
-  document.getElementById("grp-table").innerHTML=head+body;
-
-  /* ADR 走势 + 同比 */
-  var adrSeries=GROUPS.map(function(g,i){var s=takeLast(byG[g],40);return{name:g,color:PAL[i],pts:s.map(function(r){return{x:r.period_id,y:num(r.stay_adr)};})};});
-  lineChart("ch-grp-adr",adrSeries,{dec:0});
-  var yoySeries=GROUPS.map(function(g,i){
-    var full=byG[g],s=takeLast(full,40);
-    return{name:g,color:PAL[i],pts:s.map(function(r){
-      var pr=yoyVal(full,r,"stay_adr");return{x:r.period_id,y:(pr!=null&&pr!==0&&num(r.stay_adr)!=null)?(num(r.stay_adr)/pr-1)*100:null};})};});
-  lineChart("ch-grp-adryoy",yoySeries,{dec:1,zero:true});
-  function yoyVal(series,row,field){
-    for(var i=0;i<series.length;i++){var p=series[i];
-      if(Number(p.year)===Number(row.year)-1&&Number(p.week)===Number(row.week))return num(p[field]);}
-    return null;}
-  var cntSeries=GROUPS.map(function(g,i){var s=takeLast(byG[g],40);return{name:g,color:PAL[i],pts:s.map(function(r){return{x:r.period_id,y:num(r.hotel_count)};})};});
-  lineChart("ch-grp-count",cntSeries,{dec:0});
-}
-
-/* ---------- 供给 ---------- */
-function renderSupply(sup){
-  var latest=latestPeriod(sup);
-  document.getElementById("sup-period").textContent="最新周 "+latest+" · 按房量区间";
-  var rows=sup.filter(function(r){return r.period_id===latest&&r.room_band!=="全部";});
-  var order=["15间以下","15-29间","30-69间","70-149间","150间及以上"];
-  rows.sort(function(a,b){return order.indexOf(a.room_band)-order.indexOf(b.room_band);});
-  var total=0;rows.forEach(function(r){total+=num(r.room_count)||0;});
-  document.getElementById("sup-bars").innerHTML=rows.map(function(r,i){
-    var room=num(r.room_count)||0,share=total?room/total*100:0;
-    var chain=num(r.chain_room_count),chainRate=(chain!=null&&room)?chain/room*100:null;
-    return '<div class="bar-row"><span>'+esc(r.room_band)+'</span><div class="bar-track"><div class="bar-fill" style="width:'+share.toFixed(1)+'%;background:'+PAL[i%PAL.length]+'"></div></div><span>'+f(room,0)+' 间 · '+f(share,1)+'% · 连锁 '+f(chainRate,1)+'%</span></div>';
-  }).join("");
-  /* 供给规模走势 */
-  var allSeries=sortByPeriod(sup.filter(function(r){return r.room_band==="全部";}));
-  var win=takeLast(allSeries,52);
-  lineChart("ch-sup-hotel",[{name:"酒店数量",color:PAL[0],pts:win.map(function(r){return{x:r.period_id,y:num(r.hotel_count)};})}],{dec:0,legend:false});
-  lineChart("ch-sup-room",[{name:"酒店房量",color:PAL[1],pts:win.map(function(r){return{x:r.period_id,y:num(r.room_count)};})}],{dec:0,legend:false});
-}
-
-/* ---------- 市占率 ---------- */
-function renderShare(shr){
-  var years=Array.from(new Set(shr.map(function(r){return r.year;}))).sort();
-  var latest=years[years.length-1];
-  var prior=years[years.length-2];
-  document.getElementById("shr-period").textContent="最新年度 "+latest+" · 同比为 pct-pt 变化";
-  var groups=Array.from(new Set(shr.map(function(r){return r.group;})));
-  /* 最新年度条形 */
-  var latestRows=groups.map(function(g){
-    var cur=shr.filter(function(r){return r.group===g&&r.year===latest;})[0];
-    var pri=shr.filter(function(r){return r.group===g&&r.year===prior;})[0];
-    return{g:g,v:cur?num(cur.market_share_pct):null,d:(cur&&pri)?num(cur.market_share_pct)-num(pri.market_share_pct):null};
-  }).filter(function(x){return x.v!=null;}).sort(function(a,b){return b.v-a.v;});
-  var shareSum=latestRows.reduce(function(total,x){return total+x.v;},0);
-  if(shareSum>100.01||latestRows.some(function(x){return x.v<0||x.v>100;})){
-    document.getElementById("shr-period").textContent="市占率口径待核验";
-    document.getElementById("shr-bars").textContent="源数据市占率合计或单项超出有效范围，请先核验统计口径。";
-    document.getElementById("ch-share").textContent="暂无可展示的有效数据";
-    return;
-  }
-  var maxV=Math.max.apply(null,latestRows.map(function(x){return x.v;}));
-  document.getElementById("shr-bars").innerHTML=latestRows.map(function(x,i){
-    return '<div class="bar-row"><span>'+esc(x.g)+'</span><div class="bar-track"><div class="bar-fill" style="width:'+(x.v/maxV*100).toFixed(1)+'%;background:'+PAL[i%PAL.length]+'"></div></div><span>'+f(x.v,1)+'% '+deltaHtml(x.d,true)+'</span></div>';
-  }).join("");
-  /* 走势 */
-  var series=groups.map(function(g,i){return{name:g,color:PAL[i%PAL.length],pts:years.map(function(y){
-    var r=shr.filter(function(x){return x.group===g&&x.year===y;})[0];return{x:y,y:r?num(r.market_share_pct):null};})};});
-  lineChart("ch-share",series,{dec:1});
-}
-})();
-</script>
+</main>
 </body>
 </html>
