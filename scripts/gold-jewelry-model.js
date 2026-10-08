@@ -69,5 +69,16 @@
   }
   function benchmarkSeries(rows,type){return rows.filter(r=>r.instrument==='Au99.99'&&r.priceType===type&&r.market==='CN'&&r.unit==='CNY/g'&&r.currency==='CNY').slice().sort((a,b)=>a.quoteDate.localeCompare(b.quoteDate));}
   function tableCsv(headers,rows){const safe=x=>{let s=String(x??'');if(typeof x==='string'&&/^\s*[=+\-@]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"';};return '\uFEFF'+[headers,...rows].map(r=>r.map(safe).join(',')).join('\r\n');}
-  return {numeric,validDate,quoteKey,validate,spread,csv,operationLabels,validateOperations,benchmarkSeries,tableCsv};
+  function historyWindow(rows,start='',end=''){
+    if((start&&!validDate(start))||(end&&!validDate(end))||(start&&end&&start>end))return {rows:[],error:'请输入有效区间，开始日期不得晚于结束日期。'};
+    return {rows:rows.filter(r=>(!start||r.quoteDate>=start)&&(!end||r.quoteDate<=end)).slice().sort((a,b)=>a.quoteDate.localeCompare(b.quoteDate)),error:''};
+  }
+  function historySummary(rows){
+    if(!rows.length)return null;
+    const ordered=rows.slice().sort((a,b)=>a.quoteDate.localeCompare(b.quoteDate)),first=ordered[0],last=ordered.at(-1);
+    if(ordered.some(r=>!numeric(r.price)||r.price<=0))return null;
+    const comparable=ordered.length>1&&first.quoteDate!==last.quoteDate;
+    return {count:ordered.length,start:first.quoteDate,end:last.quoteDate,first:first.price,last:last.price,min:Math.min(...ordered.map(r=>r.price)),max:Math.max(...ordered.map(r=>r.price)),change:comparable?last.price-first.price:null,percent:comparable?(last.price/first.price-1)*100:null};
+  }
+  return {numeric,validDate,quoteKey,validate,spread,csv,operationLabels,validateOperations,benchmarkSeries,tableCsv,historyWindow,historySummary};
 });

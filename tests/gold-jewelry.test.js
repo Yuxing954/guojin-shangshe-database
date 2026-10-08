@@ -17,3 +17,16 @@ test('operations retain official PDF identity, fiscal dates and scope',()=>{asse
 test('operations reject fake primary sources, impossible pages, negative end stores and duplicate scope',()=>{for(const change of [d=>d.sources[0].kind='aggregator',d=>d.records[0].pdfPage=999,d=>d.records[0].value=-1,d=>d.records[0].periodStart='2027-01-01',d=>d.records.push({...d.records[0],id:'different-id'})]){const d=structuredClone(operations);change(d);assert.ok(M.validateOperations(d).length);}});
 test('official brand observation never overwrites third-party identity or enables a spread with unknown fees',()=>{const official=original.quotes.filter(r=>r.verification==='verified_primary');assert.equal(official.length,1);assert.equal(official[0].purity,.999);assert.equal(original.quotes.find(r=>r.id==='zlf-20261008-jinjia').verification,'pending_primary');assert.equal(M.spread(official[0],original.benchmarks).value,null);});
 test('strict nullable fields and raw numeric CSV exports preserve unknowns',()=>{const d=clone();delete d.quotes[0].quoteTime;assert.ok(M.validate(d).length);assert.ok(M.tableCsv(['value','note'],[[-15,'@formula']]).includes('"-15","\'@formula"'));});
+test('history windows are inclusive, sorted and never fill absent endpoint dates',()=>{
+  const rows=M.benchmarkSeries(original.benchmarks,'close');
+  const result=M.historyWindow(rows.slice().reverse(),'2026-09-28','2026-10-01');
+  assert.equal(result.error,'');assert.equal(result.rows[0].quoteDate,'2026-09-28');assert.equal(result.rows.at(-1).quoteDate,'2026-09-30');
+  const s=M.historySummary(result.rows);assert.equal(s.end,'2026-09-30');assert.ok(Math.abs(s.change-6.43)<1e-8);
+  assert.deepEqual(M.historyWindow(rows,'2026-10-01','2026-10-01').rows,[]);assert.equal(M.historySummary([]),null);
+});
+test('invalid intervals do not export data and single observations have no change',()=>{
+  for(const [start,end] of [['2026-10-08','2026-09-01'],['2026-02-30',''],['bad','']]){const w=M.historyWindow(original.quotes,start,end);assert.ok(w.error);assert.equal(w.rows.length,0);}
+  const s=M.historySummary([original.quotes[0]]);assert.equal(s.change,null);assert.equal(s.percent,null);
+  const row=original.quotes[0];assert.equal(M.historySummary([row,{...row,price:row.price+1}]).change,null);
+  assert.equal(M.historySummary([{...row,price:null}]),null);
+});
