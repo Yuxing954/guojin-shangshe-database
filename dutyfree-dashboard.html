@@ -246,7 +246,7 @@ let x=i=>l+i/Math.max(1,rows.length-1)*(w-l-r),y=v=>t+(ma-v)/(ma-mi)*(h-t-b),htm
 for(let j=0;j<4;j++){let v=ma-j*(ma-mi)/3,yy=y(v);html+=`<line class="gridline" x1="${l}" y1="${yy}" x2="${w-r}" y2="${yy}"/><text class="axis" x="${l-5}" y="${yy+3}" text-anchor="end">${F(v,0)}</text>`}
 if(mi<0&&ma>0)html+=`<line x1="${l}" y1="${y(0)}" x2="${w-r}" y2="${y(0)}" stroke="#aeb8c2"/>`;
 let lbl=[0,Math.floor((rows.length-1)/2),rows.length-1].filter((q,i,a)=>a.indexOf(q)===i);
-lbl.forEach(i=>{if(rows[i])html+=`<text class="axis" x="${x(i)}" y="${h-6}" text-anchor="middle">${rows[i].period_id||rows[i].period||''}</text>`});
+lbl.forEach(i=>{if(rows[i])html+=`<text class="axis" x="${x(i)}" y="${h-6}" text-anchor="${i===0?'start':i===rows.length-1?'end':'middle'}">${rows[i].period_id||rows[i].period||''}</text>`});
 series.forEach(s=>{let pts=rows.map((z,i)=>({v:s.get(z),i})).filter(o=>Number.isFinite(o.v));html+=`<path class="line" d="${pts.map((o,j)=>(j?'L':'M')+x(o.i)+' '+y(o.v)).join(' ')}" stroke="${s.color}"/>`});
 html+=`<rect class="hit" x="${l}" y="${t}" width="${w-l-r}" height="${h-t-b}" fill="transparent"/>`;
 svg.setAttribute('viewBox',`0 0 ${w} ${h}`);svg.innerHTML=html;
@@ -384,4 +384,5 @@ const hashView=()=>{const key=location.hash.slice(1);if(document.querySelector('
 document.getElementById('hn-range').onchange=renderHainan;
 const ctgType=document.getElementById('ctg-type');if(ctgType)ctgType.onchange=renderCtg}
 </script></body></html>
+
 
