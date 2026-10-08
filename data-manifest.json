@@ -14,8 +14,10 @@
       "category": "酒店",
       "asOf": "2026-10-04",
       "latestPeriod": "2026W40",
-      "rowCount": 5540,
-      "updateRecord": "data/hotel-update-record.json"
+      "rowCount": 53434,
+      "updateRecord": "data/hotel-update-record.json",
+      "historyCoverage": "data/hotel-city-history-coverage.json",
+      "sourceAnomalies": "data/hotel-source-anomalies.csv"
     },
     {
       "id": "hotel_group_weekly",
@@ -34,8 +36,9 @@
       "category": "酒店",
       "asOf": "2026-10-04",
       "latestPeriod": "2026W40",
-      "rowCount": 4125,
-      "updateRecord": "data/hotel-update-record.json"
+      "rowCount": 27525,
+      "updateRecord": "data/hotel-update-record.json",
+      "historyCoverage": "data/hotel-city-history-coverage.json"
     },
     {
       "id": "hotel_market_share_annual",

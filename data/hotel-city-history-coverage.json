@@ -1,0 +1,1395 @@
+{
+  "verifiedAt": "2026-10-08T07:58:31.034014+08:00",
+  "asOf": "2026-10-04",
+  "sourceFileCount": 10,
+  "sourceFiles": [
+    {
+      "file": "城市酒店数据_20城_2017W02-2017W52_20261008.xlsx",
+      "sourceUrl": "https://yj.innhome.com.cn/module/home/city",
+      "downloadedAt": "2026-10-08T07:41:02.508588+08:00",
+      "sha256": "e7f94d57d9ad7ac41cc42f722af424aae16204811e796c1ff25396e1675d1c36",
+      "bytes": 252521,
+      "sheetCount": 20,
+      "cityCount": 20,
+      "periodCount": 51,
+      "firstPeriod": "2017W02",
+      "lastPeriod": "2017W52",
+      "startDate": "2017-01-02",
+      "endDate": "2017-12-24"
+    },
+    {
+      "file": "城市酒店数据_20城_2017W53-2018W51_20261008.xlsx",
+      "sourceUrl": "https://yj.innhome.com.cn/module/home/city",
+      "downloadedAt": "2026-10-08T07:43:49.472391+08:00",
+      "sha256": "547e13ef4f5682f1eb47ae966078fb4443dfb2ff93d955659df84f96e655b6d0",
+      "bytes": 256932,
+      "sheetCount": 20,
+      "cityCount": 20,
+      "periodCount": 52,
+      "firstPeriod": "2017W53",
+      "lastPeriod": "2018W51",
+      "startDate": "2017-12-25",
+      "endDate": "2018-12-23"
+    },
+    {
+      "file": "城市酒店数据_20城_2018W52-2019W51_20261008.xlsx",
+      "sourceUrl": "https://yj.innhome.com.cn/module/home/city",
+      "downloadedAt": "2026-10-08T07:44:36.166392+08:00",
+      "sha256": "c3d714db7420ca9d2e5be00fd700755442bae0615dfe3a05f52bf4eaa0cf57af",
+      "bytes": 280731,
+      "sheetCount": 20,
+      "cityCount": 20,
+      "periodCount": 52,
+      "firstPeriod": "2018W52",
+      "lastPeriod": "2019W51",
+      "startDate": "2018-12-24",
+      "endDate": "2019-12-22"
+    },
+    {
+      "file": "城市酒店数据_20城_2019W52-2020W51_20261008.xlsx",
+      "sourceUrl": "https://yj.innhome.com.cn/module/home/city",
+      "downloadedAt": "2026-10-08T07:45:42.548335+08:00",
+      "sha256": "e9d2f9cd4ff0bcce6d528887445deab3985e7d85910a2bbd0b7500d558556f82",
+      "bytes": 281299,
+      "sheetCount": 20,
+      "cityCount": 20,
+      "periodCount": 52,
+      "firstPeriod": "2019W52",
+      "lastPeriod": "2020W51",
+      "startDate": "2019-12-23",
+      "endDate": "2020-12-20"
+    },
+    {
+      "file": "城市酒店数据_20城_2020W52-2021W51_20261008.xlsx",
+      "sourceUrl": "https://yj.innhome.com.cn/module/home/city",
+      "downloadedAt": "2026-10-08T07:46:36.506926+08:00",
+      "sha256": "0626c6f04537445559902907ea47059d62f4a00128dbc0fe1046a44ef534197b",
+      "bytes": 281829,
+      "sheetCount": 20,
+      "cityCount": 20,
+      "periodCount": 52,
+      "firstPeriod": "2020W52",
+      "lastPeriod": "2021W51",
+      "startDate": "2020-12-21",
+      "endDate": "2021-12-19"
+    },
+    {
+      "file": "城市酒店数据_20城_2021W52-2022W51_20261008.xlsx",
+      "sourceUrl": "https://yj.innhome.com.cn/module/home/city",
+      "downloadedAt": "2026-10-08T07:47:23.091425+08:00",
+      "sha256": "f470357f314d451eb524b2487cca216e6812c796ae4630bc201c780d2c8f8fcd",
+      "bytes": 451750,
+      "sheetCount": 40,
+      "cityCount": 20,
+      "periodCount": 52,
+      "firstPeriod": "2021W52",
+      "lastPeriod": "2022W51",
+      "startDate": "2021-12-20",
+      "endDate": "2022-12-18"
+    },
+    {
+      "file": "城市酒店数据_20城_2022W52-2023W51_20261008.xlsx",
+      "sourceUrl": "https://yj.innhome.com.cn/module/home/city",
+      "downloadedAt": "2026-10-08T07:48:00.151958+08:00",
+      "sha256": "d9d9c698f2f5070ec5b1a3425ad1743a5738fdbbd54413ed111ce54ddb7bc7f4",
+      "bytes": 645555,
+      "sheetCount": 40,
+      "cityCount": 20,
+      "periodCount": 52,
+      "firstPeriod": "2022W52",
+      "lastPeriod": "2023W51",
+      "startDate": "2022-12-19",
+      "endDate": "2023-12-17"
+    },
+    {
+      "file": "城市酒店数据_20城_2023W52-2024W50_20261008.xlsx",
+      "sourceUrl": "https://yj.innhome.com.cn/module/home/city",
+      "downloadedAt": "2026-10-08T07:48:33.446082+08:00",
+      "sha256": "0302ff8f153f4d0b19e89cda36205d5706f2adbcc7dea9e20e3e10eb80d37e96",
+      "bytes": 645550,
+      "sheetCount": 40,
+      "cityCount": 20,
+      "periodCount": 52,
+      "firstPeriod": "2023W52",
+      "lastPeriod": "2024W50",
+      "startDate": "2023-12-18",
+      "endDate": "2024-12-15"
+    },
+    {
+      "file": "城市酒店数据_20城_2024W51-2025W50_20261008.xlsx",
+      "sourceUrl": "https://yj.innhome.com.cn/module/home/city",
+      "downloadedAt": "2026-10-08T07:49:15.954841+08:00",
+      "sha256": "1b195fa0f2b824d6501977a2dccf31cb7855178a2fe5927976615f2a90c2b006",
+      "bytes": 645586,
+      "sheetCount": 40,
+      "cityCount": 20,
+      "periodCount": 52,
+      "firstPeriod": "2024W51",
+      "lastPeriod": "2025W50",
+      "startDate": "2024-12-16",
+      "endDate": "2025-12-14"
+    },
+    {
+      "file": "城市酒店数据_20城_2025W51-2026W40_20261008.xlsx",
+      "sourceUrl": "https://yj.innhome.com.cn/module/home/city",
+      "downloadedAt": "2026-10-08T07:49:52.216827+08:00",
+      "sha256": "34327d5ec7a6bb1d4fed7b5ef7695a3e76e710b39fbacd46e6d5652d03f95ade",
+      "bytes": 538229,
+      "sheetCount": 40,
+      "cityCount": 20,
+      "periodCount": 42,
+      "firstPeriod": "2025W51",
+      "lastPeriod": "2026W40",
+      "startDate": "2025-12-15",
+      "endDate": "2026-10-04"
+    }
+  ],
+  "sourceRowsVerified": 77174,
+  "cityCount": 20,
+  "cityWeeks": 509,
+  "cityCoverage": [
+    {
+      "city": "上海",
+      "firstPeriod": "2017W02",
+      "lastPeriod": "2026W40",
+      "startDate": "2017-01-02",
+      "endDate": "2026-10-04",
+      "weeks": 509,
+      "industryRows": 2545,
+      "supplyRows": 1314,
+      "metrics": {
+        "adr": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "validWeeks": 509
+        },
+        "occupancy_rate": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "revpar": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "hotel_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "hotel_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        }
+      },
+      "supplyFirstPeriod": "2022W31",
+      "supplyWeeks": 219
+    },
+    {
+      "city": "东莞",
+      "firstPeriod": "2017W02",
+      "lastPeriod": "2026W40",
+      "startDate": "2017-01-02",
+      "endDate": "2026-10-04",
+      "weeks": 509,
+      "industryRows": 2545,
+      "supplyRows": 1314,
+      "metrics": {
+        "adr": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "validWeeks": 509
+        },
+        "occupancy_rate": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "revpar": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "hotel_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "hotel_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        }
+      },
+      "supplyFirstPeriod": "2022W31",
+      "supplyWeeks": 219
+    },
+    {
+      "city": "佛山",
+      "firstPeriod": "2017W02",
+      "lastPeriod": "2026W40",
+      "startDate": "2017-01-02",
+      "endDate": "2026-10-04",
+      "weeks": 509,
+      "industryRows": 2545,
+      "supplyRows": 1314,
+      "metrics": {
+        "adr": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "validWeeks": 509
+        },
+        "occupancy_rate": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "revpar": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "hotel_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "hotel_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        }
+      },
+      "supplyFirstPeriod": "2022W31",
+      "supplyWeeks": 219
+    },
+    {
+      "city": "北京",
+      "firstPeriod": "2017W02",
+      "lastPeriod": "2026W40",
+      "startDate": "2017-01-02",
+      "endDate": "2026-10-04",
+      "weeks": 509,
+      "industryRows": 2545,
+      "supplyRows": 1314,
+      "metrics": {
+        "adr": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "validWeeks": 509
+        },
+        "occupancy_rate": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "revpar": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "hotel_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "hotel_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        }
+      },
+      "supplyFirstPeriod": "2022W31",
+      "supplyWeeks": 219
+    },
+    {
+      "city": "南京",
+      "firstPeriod": "2017W02",
+      "lastPeriod": "2026W40",
+      "startDate": "2017-01-02",
+      "endDate": "2026-10-04",
+      "weeks": 509,
+      "industryRows": 2545,
+      "supplyRows": 1314,
+      "metrics": {
+        "adr": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "validWeeks": 509
+        },
+        "occupancy_rate": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "revpar": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "hotel_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "hotel_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        }
+      },
+      "supplyFirstPeriod": "2022W31",
+      "supplyWeeks": 219
+    },
+    {
+      "city": "合肥",
+      "firstPeriod": "2017W02",
+      "lastPeriod": "2026W40",
+      "startDate": "2017-01-02",
+      "endDate": "2026-10-04",
+      "weeks": 509,
+      "industryRows": 2545,
+      "supplyRows": 1314,
+      "metrics": {
+        "adr": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "validWeeks": 509
+        },
+        "occupancy_rate": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "revpar": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "hotel_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "hotel_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        }
+      },
+      "supplyFirstPeriod": "2022W31",
+      "supplyWeeks": 219
+    },
+    {
+      "city": "天津",
+      "firstPeriod": "2017W02",
+      "lastPeriod": "2026W40",
+      "startDate": "2017-01-02",
+      "endDate": "2026-10-04",
+      "weeks": 509,
+      "industryRows": 2545,
+      "supplyRows": 1314,
+      "metrics": {
+        "adr": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "validWeeks": 509
+        },
+        "occupancy_rate": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "revpar": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "hotel_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "hotel_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        }
+      },
+      "supplyFirstPeriod": "2022W31",
+      "supplyWeeks": 219
+    },
+    {
+      "city": "广州",
+      "firstPeriod": "2017W02",
+      "lastPeriod": "2026W40",
+      "startDate": "2017-01-02",
+      "endDate": "2026-10-04",
+      "weeks": 509,
+      "industryRows": 2545,
+      "supplyRows": 1314,
+      "metrics": {
+        "adr": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "validWeeks": 509
+        },
+        "occupancy_rate": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "revpar": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "hotel_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "hotel_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        }
+      },
+      "supplyFirstPeriod": "2022W31",
+      "supplyWeeks": 219
+    },
+    {
+      "city": "成都",
+      "firstPeriod": "2017W02",
+      "lastPeriod": "2026W40",
+      "startDate": "2017-01-02",
+      "endDate": "2026-10-04",
+      "weeks": 509,
+      "industryRows": 2545,
+      "supplyRows": 1314,
+      "metrics": {
+        "adr": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "validWeeks": 509
+        },
+        "occupancy_rate": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "revpar": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "hotel_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "hotel_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        }
+      },
+      "supplyFirstPeriod": "2022W31",
+      "supplyWeeks": 219
+    },
+    {
+      "city": "昆明",
+      "firstPeriod": "2017W02",
+      "lastPeriod": "2026W40",
+      "startDate": "2017-01-02",
+      "endDate": "2026-10-04",
+      "weeks": 509,
+      "industryRows": 2545,
+      "supplyRows": 1314,
+      "metrics": {
+        "adr": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "validWeeks": 509
+        },
+        "occupancy_rate": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "revpar": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "hotel_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "hotel_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        }
+      },
+      "supplyFirstPeriod": "2022W31",
+      "supplyWeeks": 219
+    },
+    {
+      "city": "杭州",
+      "firstPeriod": "2017W02",
+      "lastPeriod": "2026W40",
+      "startDate": "2017-01-02",
+      "endDate": "2026-10-04",
+      "weeks": 509,
+      "industryRows": 2545,
+      "supplyRows": 1314,
+      "metrics": {
+        "adr": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "validWeeks": 509
+        },
+        "occupancy_rate": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "revpar": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "hotel_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "hotel_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        }
+      },
+      "supplyFirstPeriod": "2022W31",
+      "supplyWeeks": 219
+    },
+    {
+      "city": "武汉",
+      "firstPeriod": "2017W02",
+      "lastPeriod": "2026W40",
+      "startDate": "2017-01-02",
+      "endDate": "2026-10-04",
+      "weeks": 509,
+      "industryRows": 2539,
+      "supplyRows": 1314,
+      "metrics": {
+        "adr": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "validWeeks": 509
+        },
+        "occupancy_rate": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "revpar": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "hotel_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "hotel_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        }
+      },
+      "supplyFirstPeriod": "2022W31",
+      "supplyWeeks": 219
+    },
+    {
+      "city": "沈阳",
+      "firstPeriod": "2017W02",
+      "lastPeriod": "2026W40",
+      "startDate": "2017-01-02",
+      "endDate": "2026-10-04",
+      "weeks": 509,
+      "industryRows": 2545,
+      "supplyRows": 1314,
+      "metrics": {
+        "adr": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "validWeeks": 509
+        },
+        "occupancy_rate": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "revpar": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "hotel_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "hotel_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        }
+      },
+      "supplyFirstPeriod": "2022W31",
+      "supplyWeeks": 219
+    },
+    {
+      "city": "深圳",
+      "firstPeriod": "2017W02",
+      "lastPeriod": "2026W40",
+      "startDate": "2017-01-02",
+      "endDate": "2026-10-04",
+      "weeks": 509,
+      "industryRows": 2545,
+      "supplyRows": 1314,
+      "metrics": {
+        "adr": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "validWeeks": 509
+        },
+        "occupancy_rate": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "revpar": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "hotel_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "hotel_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        }
+      },
+      "supplyFirstPeriod": "2022W31",
+      "supplyWeeks": 219
+    },
+    {
+      "city": "苏州",
+      "firstPeriod": "2017W02",
+      "lastPeriod": "2026W40",
+      "startDate": "2017-01-02",
+      "endDate": "2026-10-04",
+      "weeks": 509,
+      "industryRows": 2545,
+      "supplyRows": 1314,
+      "metrics": {
+        "adr": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "validWeeks": 509
+        },
+        "occupancy_rate": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "revpar": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "hotel_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "hotel_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        }
+      },
+      "supplyFirstPeriod": "2022W31",
+      "supplyWeeks": 219
+    },
+    {
+      "city": "西安",
+      "firstPeriod": "2017W02",
+      "lastPeriod": "2026W40",
+      "startDate": "2017-01-02",
+      "endDate": "2026-10-04",
+      "weeks": 509,
+      "industryRows": 2545,
+      "supplyRows": 1314,
+      "metrics": {
+        "adr": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "validWeeks": 509
+        },
+        "occupancy_rate": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "revpar": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "hotel_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "hotel_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        }
+      },
+      "supplyFirstPeriod": "2022W31",
+      "supplyWeeks": 219
+    },
+    {
+      "city": "郑州",
+      "firstPeriod": "2017W02",
+      "lastPeriod": "2026W40",
+      "startDate": "2017-01-02",
+      "endDate": "2026-10-04",
+      "weeks": 509,
+      "industryRows": 2545,
+      "supplyRows": 1314,
+      "metrics": {
+        "adr": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "validWeeks": 509
+        },
+        "occupancy_rate": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "revpar": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "hotel_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "hotel_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        }
+      },
+      "supplyFirstPeriod": "2022W31",
+      "supplyWeeks": 219
+    },
+    {
+      "city": "重庆",
+      "firstPeriod": "2017W02",
+      "lastPeriod": "2026W40",
+      "startDate": "2017-01-02",
+      "endDate": "2026-10-04",
+      "weeks": 509,
+      "industryRows": 2545,
+      "supplyRows": 1314,
+      "metrics": {
+        "adr": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "validWeeks": 509
+        },
+        "occupancy_rate": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "revpar": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "hotel_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "hotel_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        }
+      },
+      "supplyFirstPeriod": "2022W31",
+      "supplyWeeks": 219
+    },
+    {
+      "city": "长沙",
+      "firstPeriod": "2017W02",
+      "lastPeriod": "2026W40",
+      "startDate": "2017-01-02",
+      "endDate": "2026-10-04",
+      "weeks": 509,
+      "industryRows": 2545,
+      "supplyRows": 1314,
+      "metrics": {
+        "adr": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "validWeeks": 509
+        },
+        "occupancy_rate": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "revpar": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "hotel_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "hotel_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        }
+      },
+      "supplyFirstPeriod": "2022W31",
+      "supplyWeeks": 219
+    },
+    {
+      "city": "青岛",
+      "firstPeriod": "2017W02",
+      "lastPeriod": "2026W40",
+      "startDate": "2017-01-02",
+      "endDate": "2026-10-04",
+      "weeks": 509,
+      "industryRows": 2545,
+      "supplyRows": 1314,
+      "metrics": {
+        "adr": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "validWeeks": 509
+        },
+        "occupancy_rate": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "revpar": {
+          "firstPeriod": "2019W01",
+          "lastPeriod": "2026W40",
+          "validWeeks": 405
+        },
+        "hotel_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "hotel_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        },
+        "room_count_15plus": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "validWeeks": 219
+        }
+      },
+      "supplyFirstPeriod": "2022W31",
+      "supplyWeeks": 219
+    }
+  ],
+  "missingSourceTierRows": [
+    {
+      "city": "武汉",
+      "period": "2020W07",
+      "missing": [
+        "高档型"
+      ]
+    },
+    {
+      "city": "武汉",
+      "period": "2020W08",
+      "missing": [
+        "中档型",
+        "高档型"
+      ]
+    },
+    {
+      "city": "武汉",
+      "period": "2020W09",
+      "missing": [
+        "中档型",
+        "高档型"
+      ]
+    },
+    {
+      "city": "武汉",
+      "period": "2020W10",
+      "missing": [
+        "高档型"
+      ]
+    }
+  ],
+  "sourceOccupancyAnomalies": 59,
+  "currentYoY": [
+    {
+      "city": "上海",
+      "period": "2026W40",
+      "baseline": "2025W40",
+      "currentStartDate": "2026-09-28",
+      "baselineStartDate": "2025-09-29",
+      "adrYoYPercent": -3.5603883073919373,
+      "occYoYPercentagePoints": 1.22000000000001,
+      "revparYoYPercent": -1.8771790618271056,
+      "comparisonPolicy": "同周号同比，未作节假日错期调整"
+    },
+    {
+      "city": "东莞",
+      "period": "2026W40",
+      "baseline": "2025W40",
+      "currentStartDate": "2026-09-28",
+      "baselineStartDate": "2025-09-29",
+      "adrYoYPercent": -0.5787541228452375,
+      "occYoYPercentagePoints": -1.3699999999999934,
+      "revparYoYPercent": -2.6475133399123885,
+      "comparisonPolicy": "同周号同比，未作节假日错期调整"
+    },
+    {
+      "city": "佛山",
+      "period": "2026W40",
+      "baseline": "2025W40",
+      "currentStartDate": "2026-09-28",
+      "baselineStartDate": "2025-09-29",
+      "adrYoYPercent": 4.149432368212613,
+      "occYoYPercentagePoints": 0.8799999999999919,
+      "revparYoYPercent": 5.544644736670956,
+      "comparisonPolicy": "同周号同比，未作节假日错期调整"
+    },
+    {
+      "city": "北京",
+      "period": "2026W40",
+      "baseline": "2025W40",
+      "currentStartDate": "2026-09-28",
+      "baselineStartDate": "2025-09-29",
+      "adrYoYPercent": -7.174400926663282,
+      "occYoYPercentagePoints": 0.6000000000000005,
+      "revparYoYPercent": -6.349895235412328,
+      "comparisonPolicy": "同周号同比，未作节假日错期调整"
+    },
+    {
+      "city": "南京",
+      "period": "2026W40",
+      "baseline": "2025W40",
+      "currentStartDate": "2026-09-28",
+      "baselineStartDate": "2025-09-29",
+      "adrYoYPercent": -6.367256849479396,
+      "occYoYPercentagePoints": -0.7399999999999962,
+      "revparYoYPercent": -7.29443776653258,
+      "comparisonPolicy": "同周号同比，未作节假日错期调整"
+    },
+    {
+      "city": "合肥",
+      "period": "2026W40",
+      "baseline": "2025W40",
+      "currentStartDate": "2026-09-28",
+      "baselineStartDate": "2025-09-29",
+      "adrYoYPercent": 4.90032031362051,
+      "occYoYPercentagePoints": -1.1199999999999988,
+      "revparYoYPercent": 3.3011865345099034,
+      "comparisonPolicy": "同周号同比，未作节假日错期调整"
+    },
+    {
+      "city": "天津",
+      "period": "2026W40",
+      "baseline": "2025W40",
+      "currentStartDate": "2026-09-28",
+      "baselineStartDate": "2025-09-29",
+      "adrYoYPercent": -11.889669805065639,
+      "occYoYPercentagePoints": -1.2199999999999989,
+      "revparYoYPercent": -13.382650400035356,
+      "comparisonPolicy": "同周号同比，未作节假日错期调整"
+    },
+    {
+      "city": "广州",
+      "period": "2026W40",
+      "baseline": "2025W40",
+      "currentStartDate": "2026-09-28",
+      "baselineStartDate": "2025-09-29",
+      "adrYoYPercent": 5.65551792266441,
+      "occYoYPercentagePoints": 4.259999999999997,
+      "revparYoYPercent": 12.622894181960852,
+      "comparisonPolicy": "同周号同比，未作节假日错期调整"
+    },
+    {
+      "city": "成都",
+      "period": "2026W40",
+      "baseline": "2025W40",
+      "currentStartDate": "2026-09-28",
+      "baselineStartDate": "2025-09-29",
+      "adrYoYPercent": -1.6947919697410385,
+      "occYoYPercentagePoints": -1.6900000000000026,
+      "revparYoYPercent": -3.990753848833628,
+      "comparisonPolicy": "同周号同比，未作节假日错期调整"
+    },
+    {
+      "city": "昆明",
+      "period": "2026W40",
+      "baseline": "2025W40",
+      "currentStartDate": "2026-09-28",
+      "baselineStartDate": "2025-09-29",
+      "adrYoYPercent": 0.573846228663144,
+      "occYoYPercentagePoints": -0.7299999999999973,
+      "revparYoYPercent": -0.5300315002035649,
+      "comparisonPolicy": "同周号同比，未作节假日错期调整"
+    },
+    {
+      "city": "杭州",
+      "period": "2026W40",
+      "baseline": "2025W40",
+      "currentStartDate": "2026-09-28",
+      "baselineStartDate": "2025-09-29",
+      "adrYoYPercent": -4.315923428911816,
+      "occYoYPercentagePoints": -1.1599999999999944,
+      "revparYoYPercent": -5.883407242249805,
+      "comparisonPolicy": "同周号同比，未作节假日错期调整"
+    },
+    {
+      "city": "武汉",
+      "period": "2026W40",
+      "baseline": "2025W40",
+      "currentStartDate": "2026-09-28",
+      "baselineStartDate": "2025-09-29",
+      "adrYoYPercent": -1.3152036168099568,
+      "occYoYPercentagePoints": -2.529999999999999,
+      "revparYoYPercent": -4.752798754486809,
+      "comparisonPolicy": "同周号同比，未作节假日错期调整"
+    },
+    {
+      "city": "沈阳",
+      "period": "2026W40",
+      "baseline": "2025W40",
+      "currentStartDate": "2026-09-28",
+      "baselineStartDate": "2025-09-29",
+      "adrYoYPercent": -7.590149516270905,
+      "occYoYPercentagePoints": -0.07000000000000339,
+      "revparYoYPercent": -7.678290809823974,
+      "comparisonPolicy": "同周号同比，未作节假日错期调整"
+    },
+    {
+      "city": "深圳",
+      "period": "2026W40",
+      "baseline": "2025W40",
+      "currentStartDate": "2026-09-28",
+      "baselineStartDate": "2025-09-29",
+      "adrYoYPercent": 7.897597755567265,
+      "occYoYPercentagePoints": 1.7199999999999993,
+      "revparYoYPercent": 10.620765299801672,
+      "comparisonPolicy": "同周号同比，未作节假日错期调整"
+    },
+    {
+      "city": "苏州",
+      "period": "2026W40",
+      "baseline": "2025W40",
+      "currentStartDate": "2026-09-28",
+      "baselineStartDate": "2025-09-29",
+      "adrYoYPercent": 2.6249540350182565,
+      "occYoYPercentagePoints": -1.0499999999999954,
+      "revparYoYPercent": 1.0873370011031502,
+      "comparisonPolicy": "同周号同比，未作节假日错期调整"
+    },
+    {
+      "city": "西安",
+      "period": "2026W40",
+      "baseline": "2025W40",
+      "currentStartDate": "2026-09-28",
+      "baselineStartDate": "2025-09-29",
+      "adrYoYPercent": -3.188395996754123,
+      "occYoYPercentagePoints": 1.2800000000000034,
+      "revparYoYPercent": -1.5026545585259288,
+      "comparisonPolicy": "同周号同比，未作节假日错期调整"
+    },
+    {
+      "city": "郑州",
+      "period": "2026W40",
+      "baseline": "2025W40",
+      "currentStartDate": "2026-09-28",
+      "baselineStartDate": "2025-09-29",
+      "adrYoYPercent": 6.67149124790809,
+      "occYoYPercentagePoints": 6.490000000000007,
+      "revparYoYPercent": 17.1863451087666,
+      "comparisonPolicy": "同周号同比，未作节假日错期调整"
+    },
+    {
+      "city": "重庆",
+      "period": "2026W40",
+      "baseline": "2025W40",
+      "currentStartDate": "2026-09-28",
+      "baselineStartDate": "2025-09-29",
+      "adrYoYPercent": -6.473426668478988,
+      "occYoYPercentagePoints": -2.729999999999999,
+      "revparYoYPercent": -9.900642040224671,
+      "comparisonPolicy": "同周号同比，未作节假日错期调整"
+    },
+    {
+      "city": "长沙",
+      "period": "2026W40",
+      "baseline": "2025W40",
+      "currentStartDate": "2026-09-28",
+      "baselineStartDate": "2025-09-29",
+      "adrYoYPercent": -0.7900677200902928,
+      "occYoYPercentagePoints": -1.1600000000000055,
+      "revparYoYPercent": -2.2484826414525427,
+      "comparisonPolicy": "同周号同比，未作节假日错期调整"
+    },
+    {
+      "city": "青岛",
+      "period": "2026W40",
+      "baseline": "2025W40",
+      "currentStartDate": "2026-09-28",
+      "baselineStartDate": "2025-09-29",
+      "adrYoYPercent": 10.868658790826968,
+      "occYoYPercentagePoints": 3.169999999999995,
+      "revparYoYPercent": 16.227000738790398,
+      "comparisonPolicy": "同周号同比，未作节假日错期调整"
+    }
+  ],
+  "validation": {
+    "existingRowsPreserved": true,
+    "sourceValuesReconciled": true,
+    "continuousCityWeeks": true,
+    "supplyBandsReconciled": true,
+    "currentYoYBaselinesAvailableForAllCities": true,
+    "homeAndOtherDatasetsUnchanged": true
+  }
+}

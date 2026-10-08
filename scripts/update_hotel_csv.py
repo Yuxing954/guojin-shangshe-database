@@ -28,7 +28,7 @@ def number(value,occupancy=False):
  if occupancy and not 0<=result<=1:raise ValueError(f'Occupancy outside 0–1: {value}')
  return int(result) if result.is_integer() else result
 
-def collect(workbook):
+def collect(workbook,anomalies=None,source_file=None):
  result={name:[] for name in HEADERS}
  for ws in workbook:
   values=iter(ws.values); header=next(values,())
@@ -37,7 +37,11 @@ def collect(workbook):
    p=period(row[0])
    if not p:continue
    if len(header)>=10 and header[2]=='酒店类型':
-    occ=number(row[7],True);adr=number(row[9])
+    occ=number(row[7]);adr=number(row[9])
+    if occ is not None and not 0<=occ<=1:
+     if anomalies is None:raise ValueError(f'Occupancy outside 0–1: {row[7]}')
+     anomalies.append({'period_id':p[0],'region':row[1],'segment':row[2],'field':'occupancy_rate','raw_value':str(row[7]),'source_file':source_file,'sheet':ws.title,'reason':'Source occupancy outside 0–100%; analytical OCC and RevPAR left empty pending source correction'})
+     occ=None
     if adr is None:adr=number(row[8])
     # Missing OCC stays missing; use stay-date ADR consistently for RevPAR.
     rev=round(occ*adr,8) if occ is not None and adr is not None else None
@@ -106,35 +110,63 @@ def update_metadata(out,report):
   home['generatedAt']=report['importedAt'];path.write_text(json.dumps(home,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 
 def main():
- parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('source',type=Path);parser.add_argument('output',type=Path);parser.add_argument('--exports-dir',type=Path);args=parser.parse_args()
- paths=[args.source]+(sorted(args.exports_dir.glob('*.xlsx')) if args.exports_dir else [])
- incoming={name:[] for name in HEADERS};sources=[]
+ parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('source',type=Path);parser.add_argument('output',type=Path);parser.add_argument('--exports-dir',type=Path);parser.add_argument('--backfill',action='store_true',help='Add missing historical keys while preserving every existing record');args=parser.parse_args()
+ paths=list(dict.fromkeys([args.source.resolve()]+([p.resolve() for p in sorted(args.exports_dir.glob('*.xlsx'))] if args.exports_dir else [])))
+ incoming={name:[] for name in HEADERS};sources=[];anomalies=[]
  for path in paths:
-  wb=load_workbook(path,data_only=True,read_only=True);content=collect(wb);wb.close()
+  wb=load_workbook(path,data_only=True,read_only=True);content=collect(wb,anomalies if args.backfill else None,path.name);wb.close()
   for name,rows in content.items():incoming[name].extend(dict(zip(HEADERS[name],map(text,row))) for row in rows)
   sources.append({'file':path.name,'sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'rows':{name:len(rows) for name,rows in content.items()}})
  args.output.mkdir(parents=True,exist_ok=True)
- report={'importedAt':dt.datetime.now(dt.timezone(dt.timedelta(hours=8))).isoformat(timespec='seconds'),'sources':sources,'datasets':{},'comparisonPolicy':'Default YoY matches source year/week; no automatic holiday shift. Comparable holiday periods must be explicitly mapped and labelled.'};staged={}
+ report={'importedAt':dt.datetime.now(dt.timezone(dt.timedelta(hours=8))).isoformat(timespec='seconds'),'mode':'historical-backfill' if args.backfill else 'weekly-update','sources':sources,'datasets':{},'comparisonPolicy':'Default YoY matches source year/week; no automatic holiday shift. Comparable holiday periods must be explicitly mapped and labelled.'};staged={}
  for name,header in HEADERS.items():
   old=read_csv(args.output/name);original={key(name,r):r for r in old}
   if len(original)!=len(old):raise ValueError(f'Duplicate existing keys: {name}')
   field='year' if 'annual' in name else 'period_id'
-  if old and incoming[name] and max(r[field] for r in incoming[name])<max(r[field] for r in old):raise ValueError(f'Source latest period predates repository: {name}')
+  if not args.backfill and old and incoming[name] and max(r[field] for r in incoming[name])<max(r[field] for r in old):raise ValueError(f'Source latest period predates repository: {name}')
   merged=original.copy()
-  if name=='hotel_market_share_annual.csv' and incoming[name]:
+  if not args.backfill and name=='hotel_market_share_annual.csv' and incoming[name]:
    years={r['year'] for r in incoming[name]};merged={k:r for k,r in merged.items() if r['year'] not in years}
-  for row in incoming[name]:merged[key(name,row)]=row
+  for row in incoming[name]:
+   if args.backfill and key(name,row) in original:continue
+   merged[key(name,row)]=row
   rows=sorted(merged.values(),key=lambda r:key(name,r));validate(name,rows)
+  if not rows:continue
   latest=max(r[field] for r in rows)
   if old and latest<max(r[field] for r in old):raise ValueError(f'Latest period would regress: {name}')
   asof=f'{latest}-12-31' if field=='year' else max(r['end_date'] for r in rows)
   report['datasets'][name]={'rowCount':len(rows),'previousRowCount':len(old),'added':sum(key(name,r) not in original for r in rows),'revised':sum(key(name,r) in original and any(not same(original[key(name,r)][f],r[f]) for f in header) for r in rows),'removed':len(set(original)-set(merged)),'latestPeriod':latest,'asOf':asof,'regions':sorted({r['region'] for r in rows if 'region' in r})};staged[name]=rows
  # Validate all four tables before any write.
+ if args.backfill:
+  report['sourceAnomalyCount']=len(anomalies);report['sourceAnomalyFile']='data/hotel-source-anomalies.csv'
+  report['historicalCoverage']={}
+  for name,rows in staged.items():
+   if 'region' not in HEADERS[name]:continue
+   metrics=[f for f in HEADERS[name] if f in ('occupancy_rate','adr','revpar','hotel_count','room_count','hotel_count_15plus','room_count_15plus','chain_hotel_count','chain_room_count')]
+   report['historicalCoverage'][name]={}
+   for region in sorted({r['region'] for r in rows}):
+    region_rows=[r for r in rows if r['region']==region];periods={r['period_id'] for r in region_rows}
+    report['historicalCoverage'][name][region]={'firstPeriod':min(periods),'lastPeriod':max(periods),'periodCount':len(periods),'metrics':{f:{'firstPeriod':min(r['period_id'] for r in region_rows if r[f]!=''),'lastPeriod':max(r['period_id'] for r in region_rows if r[f]!=''),'periodCount':len({r['period_id'] for r in region_rows if r[f]!=''})} for f in metrics if any(r[f]!='' for r in region_rows)}}
  for name,rows in staged.items():
   with (args.output/name).open('w',encoding='utf-8-sig',newline='') as f:
    writer=csv.DictWriter(f,fieldnames=HEADERS[name]);writer.writeheader();writer.writerows(rows)
- update_metadata(args.output,report)
+ if args.backfill:
+  # A city-only historical backfill must not regenerate unrelated home summaries.
+  path=args.output.parent/'data-manifest.json'
+  if path.exists():
+   manifest=json.loads(path.read_text(encoding='utf-8-sig'));manifest['updatedAt']=report['importedAt'][:10]
+   for item in manifest['datasets']:
+    name=Path(item['file']).name
+    if name in report['datasets']:
+     item.update({k:report['datasets'][name][k] for k in ('asOf','latestPeriod','rowCount')});item['updateRecord']='data/hotel-update-record.json'
+   path.write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+ else:update_metadata(args.output,report)
  (args.output/'hotel-update-record.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+ if anomalies:
+  fields=['period_id','region','segment','field','raw_value','source_file','sheet','reason'];path=args.output/'hotel-source-anomalies.csv'
+  old=read_csv(path);merged={tuple(r[k] for k in fields[:4]):r for r in old+anomalies}
+  with path.open('w',encoding='utf-8-sig',newline='') as f:
+   writer=csv.DictWriter(f,fieldnames=fields);writer.writeheader();writer.writerows(sorted(merged.values(),key=lambda r:tuple(r[k] for k in fields[:4])))
  print(json.dumps(report['datasets'],ensure_ascii=False,indent=2))
 
 if __name__=='__main__':main()

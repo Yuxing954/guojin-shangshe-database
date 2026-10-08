@@ -84,6 +84,8 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font
   </div>
 
   <label>经营地区（总览 / 分档次）：<select id="region-select" style="margin:0 0 16px 8px;padding:6px 12px;border:1px solid #d9e2e8;border-radius:6px;background:#fff"><option>全国</option></select></label>
+  <label style="margin-left:16px">趋势起点：<select id="history-start" style="margin:0 0 16px 8px;padding:6px 12px;border:1px solid #d9e2e8;border-radius:6px;background:#fff"><option value="recent">近期</option><option value="all">全部历史</option></select></label>
+  <p id="history-note" style="margin:0 0 16px;color:#687681;font-size:12px"></p>
   <div class="tabs" id="tabs">
     <button class="tab on" data-view="overview">总览</button>
     <button class="tab" data-view="segment">分档次经营</button>
@@ -115,7 +117,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font
   <!-- ============ 分档次 ============ -->
   <div class="view" id="view-segment">
     <div class="card">
-      <div class="panel-head"><div><h2>分档次经营对比</h2><p>切换指标查看各档次走势与同比 · 默认近 26 周</p></div></div>
+      <div class="panel-head"><div><h2>分档次经营对比</h2><p>切换指标查看各档次走势与同比 · 近期为近26周，可用上方趋势起点查看更早历史</p></div></div>
       <div style="padding:14px">
         <div class="seg-chips" id="seg-metric-chips"></div>
         <div class="chart" style="padding:14px 0 0"><div id="ch-seg"></div></div>
@@ -177,6 +179,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font
 "use strict";
 var DATA={};
 var CURRENT_REGION="全国";
+var TREND_START="recent";
 var SEGS=["经济型","中档型","高档型","豪华型"];
 var GROUPS=["华住","首旅如家","锦江酒店（中国区）","亚朵"];
 var PAL=["#3f718d","#2f7d71","#b67a37","#bc4949","#7a6fa8","#4f8a5f"];
@@ -286,6 +289,8 @@ function sortByPeriod(rows){return rows.slice().sort(function(a,b){return a.peri
 function latestPeriod(rows){var p=sortByPeriod(rows);return p.length?p[p.length-1].period_id:null;}
 function nat(series,segment){return sortByPeriod(series.filter(function(r){return r.region===CURRENT_REGION&&r.segment===segment;}));}
 function takeLast(rows,n){return rows.slice(Math.max(0,rows.length-n));}
+function trendWindow(rows,n){return TREND_START==="recent"?takeLast(rows,n):(TREND_START==="all"?rows:rows.filter(function(r){return Number(r.year)>=Number(TREND_START);}));}
+function metricValue(row,field,isPct){var v=num(row[field]);return v==null?null:(isPct?v*100:v);}
 
 function init(){
   var ind=DATA.industry,grp=DATA.group,sup=DATA.supply,shr=DATA.share;
@@ -293,6 +298,10 @@ function init(){
   var selector=document.getElementById("region-select");
   selector.innerHTML=["全国"].concat(regions.filter(function(r){return r!=="全国";})).map(function(r){return '<option value="'+esc(r)+'">'+esc(r)+'</option>';}).join("");
   selector.onchange=function(){CURRENT_REGION=this.value;renderOverview(ind);renderSegment(ind);};
+  var history=document.getElementById("history-start");
+  var years=Array.from(new Set(ind.map(function(r){return r.year;}))).sort();
+  history.innerHTML='<option value="recent">近期（总览52周 / 分档次26周）</option><option value="all">全部历史</option>'+years.map(function(y){return '<option value="'+esc(y)+'">'+esc(y)+'年至今</option>';}).join("");
+  history.onchange=function(){TREND_START=this.value;renderOverview(ind);renderSegment(ind);};
   var ovAll=nat(ind,"全部");
   var latest=ovAll[ovAll.length-1];
   document.getElementById("asof").textContent="行业数据更新至 "+latest.period_id+"（"+latest.start_date+" ~ "+latest.end_date+"）";
@@ -321,6 +330,8 @@ function renderOverview(ind){
   document.getElementById("ov-title").textContent=CURRENT_REGION+"经营核心指标";
   document.getElementById("ov-seg-note").textContent=CURRENT_REGION+" · 各档次最新周经营与同比";
   document.getElementById("ov-period").textContent="最新周 "+latest.period_id+"（"+latest.start_date+" ~ "+latest.end_date+"）· 同周号同比，未作节假日错期调整 · ADR按入住日期";
+  function firstValid(field){var r=all.filter(function(r){return num(r[field])!=null;})[0];return r?r.period_id:"暂无数据";}
+  document.getElementById("history-note").textContent=CURRENT_REGION+"历史覆盖："+all[0].period_id+"–"+latest.period_id+"（"+all.length+"周）；房价始于"+firstValid("adr")+"，入住率 / RevPAR始于"+firstValid("occupancy_rate")+"，酒店数量 / 房量始于"+firstValid("hotel_count")+"。缺失与异常值留空；顶部指标仍为最新周。";
   var metrics=[
     {label:"入住率 OCC",val:num(latest.occupancy_rate)*100,unit:"%",dec:1,field:"occupancy_rate",isPct:true},
     {label:"平均房价 ADR",val:num(latest.adr),unit:"元",dec:1,field:"adr",isPct:false},
@@ -332,10 +343,10 @@ function renderOverview(ind){
     return '<div class="kpi"><span>'+m.label+'</span><strong>'+f(m.val,m.dec)+(m.unit==="%"?"%":"")+'</strong><small>'+deltaHtml(d,m.isPct)+' · '+m.unit+'</small></div>';
   }).join("");
 
-  /* 走势：近 52 周值 + 去年同期虚线 */
-  var win=takeLast(all,52);
+  /* 走势范围由历史起点控制，顶部指标仍使用最新周。 */
+  var win=trendWindow(all,52);
   function seriesFor(field,isPct,dec){
-    var cur={name:"本期",color:PAL[0],pts:win.map(function(r){return{x:r.period_id,y:isPct?num(r[field])*100:num(r[field])};})};
+    var cur={name:"本期",color:PAL[0],pts:win.map(function(r){return{x:r.period_id,y:metricValue(r,field,isPct)};})};
     var y1=win.map(function(r){var v=yoyVal(all,r,field);return{x:r.period_id,y:isPct&&v!=null?v*100:v};});
     var prior={name:"去年同期",color:PAL[3],dash:true,pts:y1};
     return [cur,prior];
@@ -350,7 +361,7 @@ function renderOverview(ind){
   lineChart("ch-adr",seriesFor("adr",false),{dec:0});
 
   /* RevPAR 同比增速 */
-  var yoyPts=win.map(function(r){var v=yoyVal(all,r,"revpar");return{x:r.period_id,y:(v!=null&&num(r.revpar)!=null)?(num(r.revpar)/v-1)*100:null};});
+  var yoyPts=win.map(function(r){var v=yoyVal(all,r,"revpar");return{x:r.period_id,y:(v!=null&&v!==0&&num(r.revpar)!=null)?(num(r.revpar)/v-1)*100:null};});
   lineChart("ch-revyoy",[{name:"RevPAR 同比",color:PAL[2],pts:yoyPts}],{dec:1,zero:true,legend:false});
 
   /* 最新周分档次卡片 */
@@ -386,11 +397,11 @@ function renderSegment(ind){
   function draw(metricKey){
     var m=SEG_METRICS.filter(function(x){return x.key===metricKey;})[0];
     var series=SEGS.map(function(seg,i){
-      var s=takeLast(nat(ind,seg),26);
+      var s=trendWindow(nat(ind,seg),26);
       var pts=s.map(function(r){
         var y;
-        if(m.yoy){var pr=yoyVal(nat(ind,seg),r,"revpar");y=(pr!=null&&num(r.revpar)!=null)?(num(r.revpar)/pr-1)*100:null;}
-        else y=m.isPct?num(r[m.key])*100:num(r[m.key]);
+        if(m.yoy){var pr=yoyVal(nat(ind,seg),r,"revpar");y=(pr!=null&&pr!==0&&num(r.revpar)!=null)?(num(r.revpar)/pr-1)*100:null;}
+        else y=metricValue(r,m.key,m.isPct);
         return{x:r.period_id,y:y};});
       return{name:seg,color:PAL[i],pts:pts};
     });
