@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SECTORS = [
     ('travel', r'酒店|旅游|文旅|携程|同程|首旅|锦江|华住|亚朵|宋城|景区|\bOTA\b'),
     ('dutyfree', r'免税|中免|海旅|海汽'),
-    ('gold', r'黄金(?!周)|珠宝|老铺|老凤祥|周大福|周大生|潮宏基'),
+    ('gold', r'珠宝|黄金(?:首饰|饰品|消费|零售)|中国黄金(?!周)|老铺|老凤祥|周大福|周大生|潮宏基|菜百|周六福|周生生|六福|梦金园'),
     ('dining', r'餐饮|茶饮|海底捞|小菜园|蜜雪|古茗|奈雪|瑞幸|百胜|九毛九|星巴克|麦当劳|霸王茶姬|达势|茶百道'),
     ('retail', r'零售|美护|美妆|医美|化妆品|开市客|山姆|永辉|泡泡玛特|毛戈平|珀莱雅|华熙|爱美客|贝泰妮|上美|巨子生物|名创优品|万辰|若羽臣|零食|消费(?!者|电子|级?AI|级?3D|级?人工智能)'),
     ('education', r'教育|人服|人力资源|招聘|培训|中公|科锐|行动教育|东方教育|新东方|好未来'),
@@ -67,6 +67,8 @@ def build(topics_dir, root=ROOT):
             old = previous_records.get(record['id'])
             if old and record['sha256'] and old.get('sha256') == record['sha256']:
                 record['processing'] = old['processing']
+                record['aliases'] = list(dict.fromkeys([record['id'], *old.get('aliases', [])]))
+                record['sourceTopics'] = list(dict.fromkeys([tid, *old.get('sourceTopics', [])]))
             if record['id'] not in records or record['published'] > records[record['id']]['published']:
                 records[record['id']] = record
     for asset_id, old in previous_records.items():

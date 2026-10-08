@@ -13,6 +13,10 @@ class LibraryTests(unittest.TestCase):
         self.assertIn('commerce', sector_ids('AI-电商-从技术叙事到业绩兑现.pdf'))
         self.assertEqual(sector_ids('消费电子产业链.pdf'), [])
         self.assertNotIn('gold', sector_ids('黄金周旅游.mp3'))
+        self.assertNotIn('gold', sector_ids('中国黄金周初步观察.pdf'))
+        self.assertNotIn('gold', sector_ids('服务消费迎来黄金十年.pdf'))
+        self.assertEqual(sector_ids('黄金期货与加息.pdf'), [])
+        self.assertIn('gold', sector_ids('中国黄金20260923.pdf'))
         for name in ['新能源汽车周报-零售订单.pdf', 'Power Transformer Export Total.pdf', '消费级AI金融服务.pdf', '全栈AI-阿里字节.pdf', 'Nyota technology.pdf', '阿里巴巴云栖大会.pdf', '消费者信心与油价.mp3']:
             self.assertEqual(sector_ids(name), [], name)
         self.assertIn('travel', sector_ids('OTA酒店预订.pdf'))
@@ -84,6 +88,19 @@ class LibraryTests(unittest.TestCase):
                     read_transcript(path, 60)
             path.write_text(json.dumps({'segments': [{'start': 0, 'end': 10, 'text': 'actual transcript'}]}), encoding='utf-8')
             self.assertEqual(read_transcript(path, 60)[0]['start'], 0)
+
+    def test_partial_refresh_preserves_aliases_and_rechecks_old_tags(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / 'data/research').mkdir(parents=True)
+            old = {'records': [{'id': 'zsxq-file-1', 'name': '古茗.pdf', 'sha256': 'same', 'aliases': ['zsxq-file-1', 'zsxq-file-2'], 'sourceTopics': ['123', '122'], 'processing': {'status': 'extracted', 'textAvailable': True}}, {'id': 'zsxq-file-3', 'name': '服务消费迎来黄金十年.pdf', 'sha256': '', 'extension': 'pdf', 'format': 'document', 'published': '2026-09-01', 'topicId': '121', 'sectors': ['gold', 'retail'], 'processing': {'status': 'awaiting_file'}}]}
+            (root / 'data/research/library.json').write_text(json.dumps(old), encoding='utf-8')
+            topic = {'topic_id': '123', 'create_time': '2026-10-01T12:00:00', 'group': {'group_id': '88888142214212'}, 'files': [{'file_id': '1', 'name': '古茗.pdf', 'hash': 'same'}]}
+            (root / 'page-001.json').write_text(json.dumps([topic]), encoding='utf-8')
+            data = {r['id']: r for r in build(root, root)['records']}
+            self.assertEqual(set(data['zsxq-file-1']['aliases']), {'zsxq-file-1', 'zsxq-file-2'})
+            self.assertEqual(set(data['zsxq-file-1']['sourceTopics']), {'123', '122'})
+            self.assertEqual(data['zsxq-file-3']['sectors'], ['retail'])
 
     def test_curated_claims_reference_existing_source_records(self):
         import csv
