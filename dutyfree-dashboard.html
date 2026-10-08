@@ -99,14 +99,14 @@ svg{width:100%;height:auto;display:block}
 <!-- 行业总览 -->
 <section class="view on" id="view-overview">
 <div class="panel"><div class="panel-head"><h2>最新经营</h2><button class="srcbtn" onclick="showSrc('provided_workbook_monthly')">来源</button></div><div class="kpis" id="kpi-grid"></div></div>
-<div class="panel chart"><div class="panel-head"><h3 id="ov-trend-title">购物金额同比增速（%）</h3><div class="trend-controls"><label class="visually-hidden" for="ov-metric">趋势指标</label><select id="ov-metric" aria-label="趋势指标"><option value="sales">购物金额</option><option value="shoppers">购物人次</option><option value="items">购物件数</option><option value="spend">每人次消费</option></select><div class="trend-modes" aria-label="显示方式"><button type="button" data-mode="value" aria-pressed="false">数值</button><button type="button" data-mode="yoy" aria-pressed="true">同比增速</button></div></div></div><svg id="ov-sales" role="img" aria-label="购物金额同比增速趋势"></svg><div class="tooltip"></div><p class="trend-caption">近12个月 · 同比为较上年同月变化</p></div>
+<div class="panel chart"><div class="panel-head"><h3 id="ov-trend-title">购物金额同比增速（%）</h3><div class="trend-controls"><label class="visually-hidden" for="ov-metric">趋势指标</label><select id="ov-metric" aria-label="趋势指标"><option value="sales">购物金额</option><option value="shoppers">购物人次</option><option value="items">购物件数</option><option value="spend">每人次消费</option></select><div class="trend-modes" aria-label="显示方式"><button type="button" data-mode="combo" aria-pressed="true">数值＋同比</button><button type="button" data-mode="value" aria-pressed="false">数值</button><button type="button" data-mode="yoy" aria-pressed="false">同比增速</button></div></div></div><svg id="ov-sales" role="img" aria-label="购物金额同比增速趋势"></svg><div class="tooltip"></div><p class="trend-caption">近12个月 · 同比为较上年同月变化</p></div>
 </section>
 
 <!-- 海南离岛免税 -->
 <section class="view" id="view-hainan">
 <div class="panel"><div class="panel-head"><div><h2>海南离岛免税</h2><p id="hn-period"></p></div><div class="controls"><label class="visually-hidden" for="hn-range">时间范围</label><select id="hn-range" aria-label="时间范围"><option value="12" selected>近12个月</option><option value="24">近24个月</option><option value="2024">2024</option><option value="2025">2025</option><option value="2026">2026</option><option value="9999">全部</option></select></div></div>
 <div class="kpis"><div class="kpi"><span>购物金额</span><strong><span id="hn-sales">—</span><em> 亿元</em></strong><small id="hn-sales-yoy"></small></div><div class="kpi"><span>购物人次</span><strong><span id="hn-shoppers">—</span><em> 万人次</em></strong><small id="hn-shoppers-yoy"></small></div><div class="kpi"><span>每人次消费</span><strong><span id="hn-spend">—</span><em> 元</em></strong><small id="hn-spend-yoy"></small></div></div></div>
-<div class="panel chart"><div class="panel-head"><h3 id="hn-trend-title">购物金额同比增速（%）</h3><div class="trend-controls"><label class="visually-hidden" for="hn-metric">趋势指标</label><select id="hn-metric" aria-label="趋势指标"><option value="sales">购物金额</option><option value="shoppers">购物人次</option><option value="items">购物件数</option><option value="spend">每人次消费</option></select><div class="trend-modes" aria-label="显示方式"><button type="button" data-mode="value" aria-pressed="false">数值</button><button type="button" data-mode="yoy" aria-pressed="true">同比增速</button></div></div></div><svg id="hn-growth" role="img" aria-label="购物金额同比增速趋势"></svg><div class="tooltip"></div><p class="trend-caption">同比为较上年同月变化；缺失值不作为0展示</p></div>
+<div class="panel chart"><div class="panel-head"><h3 id="hn-trend-title">购物金额同比增速（%）</h3><div class="trend-controls"><label class="visually-hidden" for="hn-metric">趋势指标</label><select id="hn-metric" aria-label="趋势指标"><option value="sales">购物金额</option><option value="shoppers">购物人次</option><option value="items">购物件数</option><option value="spend">每人次消费</option></select><div class="trend-modes" aria-label="显示方式"><button type="button" data-mode="combo" aria-pressed="true">数值＋同比</button><button type="button" data-mode="value" aria-pressed="false">数值</button><button type="button" data-mode="yoy" aria-pressed="false">同比增速</button></div></div></div><svg id="hn-growth" role="img" aria-label="购物金额同比增速趋势"></svg><div class="tooltip"></div><p class="trend-caption">同比为较上年同月变化；缺失值不作为0展示</p></div>
 <details class="panel monthly-details"><summary>历史数据与口径</summary><p class="trend-caption">原Excel月度整理数据；每人次消费=购物金额÷购物人次。同比分别沿用原表同月口径。</p><div class="tablewrap"><table class="table" id="hn-table"></table></div><button class="srcbtn" onclick="showSrc('provided_workbook_monthly')">查看来源</button></details>
 </section>
 
@@ -257,11 +257,32 @@ shoppers:{label:'购物人次',field:'shoppers_10k',yoy:'shoppers_yoy_pct',unit:
 items:{label:'购物件数',field:'items_10k',yoy:'items_yoy_pct',unit:'万件',color:'#2d7b70'},
 spend:{label:'每人次消费',field:'spend_per_shopper_cny',yoy:'spend_per_shopper_yoy_pct',unit:'元',color:'#8a6884'}
 };
-const trendModes={ov:'yoy',hn:'yoy'};
+function drawCombo(svg,rows,metric){
+const w=680,h=260,l=58,r=58,t=32,b=30,barColor='#3d708e',lineColor='#b47a3d';
+svg.setAttribute('viewBox',`0 0 ${w} ${h}`);
+const values=rows.map(row=>N(row[metric.field])),growth=rows.map(row=>N(row[metric.yoy]));
+if(!rows.length||!values.some(Number.isFinite)&&!growth.some(Number.isFinite)){svg.innerHTML='<text class="axis" x="340" y="130" text-anchor="middle">暂无数据</text>';return;}
+const maxValue=Math.max(0,...values.filter(Number.isFinite))*1.12||1;
+let lo=Math.min(0,...growth.filter(Number.isFinite)),hi=Math.max(0,...growth.filter(Number.isFinite));const pad=(hi-lo)*.08||1;lo-=pad;hi+=pad;
+const step=(w-l-r)/rows.length,x=i=>l+(i+.5)*step,yValue=v=>h-b-v/maxValue*(h-t-b),yGrowth=v=>t+(hi-v)/(hi-lo)*(h-t-b),width=Math.min(24,step*.6);
+const escape=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const title=i=>escape(`${rows[i].period_id}：${metric.label} ${F(values[i],metric.unit==='元'?0:2)} ${metric.unit}；同比 ${P(growth[i])}`);
+let html=`<text class="axis" x="${l}" y="16" style="fill:${barColor}">柱：${metric.label}（${metric.unit}）</text><text class="axis" x="${w-r}" y="16" text-anchor="end" style="fill:${lineColor}">线：同比增速（%）</text>`;
+for(let j=0;j<4;j++){const yy=t+j*(h-t-b)/3;html+=`<line class="gridline" x1="${l}" x2="${w-r}" y1="${yy}" y2="${yy}"/><text class="axis" x="${l-8}" y="${yy+4}" text-anchor="end">${F(maxValue*(1-j/3),0)}</text><text class="axis" x="${w-r+8}" y="${yy+4}" style="fill:${lineColor}">${F(hi-j*(hi-lo)/3,1)}%</text>`;}
+html+=`<line x1="${l}" x2="${w-r}" y1="${yGrowth(0)}" y2="${yGrowth(0)}" stroke="${lineColor}" stroke-dasharray="3 4" opacity=".35"/>`;
+values.forEach((v,i)=>{if(Number.isFinite(v))html+=`<rect class="combo-bar" x="${x(i)-width/2}" y="${yValue(v)}" width="${width}" height="${h-b-yValue(v)}" fill="${barColor}" opacity=".7" rx="2"><title>${title(i)}</title></rect>`;});
+let path='',connected=false;growth.forEach((v,i)=>{if(!Number.isFinite(v)){connected=false;return;}path+=(connected?'L':'M')+x(i)+' '+yGrowth(v)+' ';connected=true;});
+html+=`<path class="line combo-line" d="${path}" stroke="${lineColor}"/>`;
+growth.forEach((v,i)=>{if(Number.isFinite(v))html+=`<circle cx="${x(i)}" cy="${yGrowth(v)}" r="3" fill="${lineColor}"><title>${title(i)}</title></circle>`;});
+[...new Set([0,Math.floor((rows.length-1)/2),rows.length-1])].forEach(i=>{html+=`<text class="axis" x="${x(i)}" y="${h-7}" text-anchor="${i===0?'start':i===rows.length-1?'end':'middle'}">${escape(rows[i].period_id)}</text>`;});
+svg.innerHTML=html;
+}
+const trendModes={ov:'combo',hn:'combo'};
 function renderTrend(prefix,rows){
-const metric=trendMetrics[document.getElementById(prefix+'-metric').value],yoy=trendModes[prefix]==='yoy',title=metric.label+(yoy?'同比增速':'走势')+'（'+(yoy?'%':metric.unit)+'）';
+const metric=trendMetrics[document.getElementById(prefix+'-metric').value],combo=trendModes[prefix]==='combo',yoy=trendModes[prefix]==='yoy',title=metric.label+(combo?'与同比增速':yoy?'同比增速':'走势')+(combo?'':'（'+(yoy?'%':metric.unit)+'）');
 document.getElementById(prefix+'-trend-title').textContent=title;
 const svg=document.getElementById(prefix==='ov'?'ov-sales':'hn-growth');svg.setAttribute('aria-label',title);
+if(combo){drawCombo(svg,rows,metric);return;}
 draw(svg,rows,[{name:metric.label+(yoy?'同比':''),get:r=>N(r[yoy?metric.yoy:metric.field]),color:metric.color,unit:yoy?'%':metric.unit}],yoy);
 }
 function renderOverview(){const latest=DB.m.at(-1);
@@ -371,4 +392,5 @@ document.getElementById('hn-range').onchange=renderHainan;
 for(const prefix of ['ov','hn']){const render=prefix==='ov'?renderOverview:renderHainan;document.getElementById(prefix+'-metric').onchange=render;document.querySelectorAll('#'+prefix+'-metric + .trend-modes button').forEach(button=>button.onclick=()=>{trendModes[prefix]=button.dataset.mode;button.parentElement.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));render();});}
 const ctgType=document.getElementById('ctg-type');if(ctgType)ctgType.onchange=renderCtg}
 </script></body></html>
+
 
