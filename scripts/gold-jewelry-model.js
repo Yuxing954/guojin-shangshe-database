@@ -18,6 +18,7 @@
       if(!q.currency||!q.unit||!q.market)errors.push('缺少币种/单位/市场: '+q.id);
       if(q.purity!==null&&(!numeric(q.purity)||q.purity<=0||q.purity>1))errors.push('纯度必须为0—1或null: '+q.id);
       if(type==='quote'){
+        for(const field of ['quoteTime','city','purity','includesLabor','includesTax'])if(!(field in q))errors.push('缺少明确的可空字段: '+field+': '+q.id);
         if(!brandIds.has(q.brandId))errors.push('未知品牌: '+q.id);
         if(!q.product||!q.priceBasis)errors.push('缺少产品/计价方式: '+q.id);
         const key=quoteKey(q);if(keys.has(key))errors.push('同来源同口径重复报价: '+q.id);keys.add(key);
@@ -38,7 +39,7 @@
     const b=candidates[0];
     if(q.verification!=='verified_primary'||b.verification!=='primary')return {value:null,ratio:null,reason:'品牌牌价尚未通过原始来源复核'};
     if(q.priceBasis!=='posted_per_gram')return {value:null,ratio:null,reason:'一口价/回收价/其他报价不得并入按克牌价比较'};
-    if(q.includesLabor===null||q.includesTax===null||q.purity===null||q.purity!==b.purity)return {value:null,ratio:null,reason:'纯度、工费或税口径未核清'};
+    if(typeof q.includesLabor!=='boolean'||typeof q.includesTax!=='boolean'||!numeric(q.purity)||q.purity!==b.purity)return {value:null,ratio:null,reason:'纯度、工费或税口径未核清'};
     if(!numeric(q.price)||!numeric(b.price)||b.price<=0)return {value:null,ratio:null,reason:'价格缺失或无效'};
     return {value:q.price-b.price,ratio:(q.price/b.price-1)*100,benchmarkId:b.id,reason:'同日收盘参考差，报价时刻未必同步；不是成交价差或毛利率'};
   }
@@ -47,5 +48,26 @@
     const safe=x=>{let s=String(x??'');if(typeof x==='string'&&/^[\s]*[=+\-@]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"';};
     return '\uFEFF'+[headers,...rows.map(q=>[q.brandName,q.quoteDate,q.quoteTime,q.market,q.city,q.product,q.priceBasis,q.purity,q.includesLabor,q.includesTax,q.currency,q.unit,q.price,q.verification,q.sourceName,q.sourceUrl,q.capturedDate])].map(r=>r.map(safe).join(',')).join('\r\n');
   }
-  return {numeric,validDate,quoteKey,validate,spread,csv};
+  const operationLabels={stores_end:'期末门店',stores_opened:'新开门店',stores_closed:'关闭门店',stores_net:'门店净增',sss_amount_yoy:'同店销售金额同比',sss_weight_yoy:'同店黄金重量同比',fixed_price_gold_rsv_share:'定价黄金零售值占比',fixed_price_jewelry_rsv_share:'定价首饰零售值占比'};
+  function validateOperations(data){
+    const errors=[],ids=new Set(),keys=new Set(),companies=new Set((data.companies||[]).map(c=>c.id)),sources=new Map((data.sources||[]).map(s=>[s.id,s]));
+    if(data.schemaVersion!==1||!validDate(data.checkedAt))errors.push('公司数据版本或核对日期无效');
+    if(companies.size!==(data.companies||[]).length||sources.size!==(data.sources||[]).length)errors.push('公司或来源重复');
+    for(const r of data.records||[]){
+      const s=sources.get(r.sourceId);
+      if(!r.id||ids.has(r.id))errors.push('经营记录id重复或缺失');ids.add(r.id);
+      if(!companies.has(r.companyId)||!s||s.kind!=='primary'||r.verification!=='primary'||!/^https:\/\//.test(s.url)||!validDate(s.publishedAt)||s.publishedAt>data.checkedAt)errors.push('缺少经营指标原始公告');
+      if(!Number.isInteger(r.pdfPage)||r.pdfPage<1||r.pdfPage>s?.pageCount)errors.push('经营指标PDF页码无效');
+      if(!validDate(r.periodStart)||!validDate(r.periodEnd)||r.periodStart>r.periodEnd||r.periodEnd>data.checkedAt||!['quarter','fiscal_year'].includes(r.periodType))errors.push('经营期间无效');
+      if(!r.region||!r.channel||!r.scope||!r.fiscalLabel||r.basis!=='disclosed')errors.push('经营口径缺失');
+      if(!operationLabels[r.metric]||!numeric(r.value))errors.push('经营指标或数值无效');
+      if(r.metric?.startsWith('stores_')&&(r.unit!=='家'||!Number.isInteger(r.value)||(r.metric!=='stores_net'&&r.value<0)))errors.push('门店单位或数值无效');
+      if(!r.metric?.startsWith('stores_')&&(r.unit!=='%'||r.value< -100||(r.metric?.endsWith('_share')&&(r.value<0||r.value>100))))errors.push('经营比例口径或数值无效');
+      const k=JSON.stringify(['companyId','metric','region','channel','scope','periodStart','periodEnd','sourceId'].map(x=>r[x]));if(keys.has(k))errors.push('经营记录口径重复');keys.add(k);
+    }
+    return errors;
+  }
+  function benchmarkSeries(rows,type){return rows.filter(r=>r.instrument==='Au99.99'&&r.priceType===type&&r.market==='CN'&&r.unit==='CNY/g'&&r.currency==='CNY').slice().sort((a,b)=>a.quoteDate.localeCompare(b.quoteDate));}
+  function tableCsv(headers,rows){const safe=x=>{let s=String(x??'');if(typeof x==='string'&&/^\s*[=+\-@]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"';};return '\uFEFF'+[headers,...rows].map(r=>r.map(safe).join(',')).join('\r\n');}
+  return {numeric,validDate,quoteKey,validate,spread,csv,operationLabels,validateOperations,benchmarkSeries,tableCsv};
 });

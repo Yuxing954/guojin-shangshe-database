@@ -14,7 +14,8 @@ class GoldTests(unittest.TestCase):
     def setUp(self): self.data=g.read_json(ROOT/'data/gold-jewelry/observations.json')
     def test_real_seed(self):
         self.assertEqual(g.validate(self.data),[])
-        self.assertEqual(len(self.data['quotes']),10)
+        self.assertEqual(len(self.data['brands']),10)
+        self.assertEqual(len([q for q in self.data['quotes'] if q['id'].endswith('-20261008-jinjia')]),10)
     def test_bad_dates_and_prices(self):
         self.assertFalse(g.is_date('2026-02-30'))
         for value in (None,True,float('nan'),float('inf'),0,-1):

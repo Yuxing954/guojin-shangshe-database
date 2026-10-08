@@ -223,10 +223,11 @@ def main() -> int:
             if not key: raise ValueError('MX_APIKEY is not configured in this execution environment; no live query was made')
             if not is_date(args.start) or args.start>args.as_of: raise ValueError('Invalid query period')
             spec=next((x for x in read_json(PLAN)['queries'] if x['id']==args.query_id),None)
-            if not spec or spec['tool'] not in ('mx_data','mx_search'): raise ValueError('Unknown or non-read-only query')
+            legacy_tool=spec.get('legacyTool',spec['tool']) if spec else None
+            if legacy_tool not in ('mx_data','mx_search'): raise ValueError('Unknown or non-read-only query')
             if '{company}' in spec['query'] and not args.company.strip(): raise ValueError('--company is required')
             query=spec['query'].format(as_of=args.as_of,start=args.start,company=args.company)
-            endpoint,field=('/query','toolQuery') if spec['tool']=='mx_data' else ('/news-search','query')
+            endpoint,field=('/query','toolQuery') if legacy_tool=='mx_data' else ('/news-search','query')
             raw=request_bytes(MX_BASE+endpoint,{field:query},key)
             body=json.loads(raw)
             if not isinstance(body,dict): raise ValueError('Provider response must be an object; no canonical data imported')
