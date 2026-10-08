@@ -15,7 +15,7 @@
     const briefs=invalid?[]:briefData.briefs.filter(r=>L.briefMatches(r,f)).sort((a,b)=>$('sort').value==='asc'?M.publicationTime(briefPublished(a)).localeCompare(M.publicationTime(briefPublished(b))):M.publicationTime(briefPublished(b)).localeCompare(M.publicationTime(briefPublished(a))));
     $('count').textContent=briefs.length+' 条已整理观点 · 每条可追溯原文';
     $('digest-note').textContent=(briefData.note||'摘要暂未整理；可切换到观点原文。')+' 原文发布时间均为北京时间。';
-    $('briefs').innerHTML=briefs.map(r=>'<article class="research-brief"><div class="portal-research-meta"><span class="portal-tag">'+D.esc(M.sectors.find(s=>s[0]===r.sector)?.[1]||r.sector)+'</span><time datetime="'+D.esc(briefPublished(r))+'">'+D.esc('原文发布：'+M.publicationTime(briefPublished(r)))+'</time></div><h2>'+D.esc(r.title)+'</h2><p>'+D.esc(r.conclusion)+'</p><ul class="brief-evidence">'+r.evidence.map(e=>'<li>'+D.esc(e.text)+'</li>').join('')+'</ul><p class="brief-boundary"><strong>分歧 / 边界</strong> '+D.esc(r.boundary)+'</p><div class="brief-watch" aria-label="后续验证指标">'+r.watch.map(w=>'<span>'+D.esc(w)+'</span>').join('')+'</div><div class="brief-sources">'+r.sources.map(s=>'<a href="'+D.esc(L.topicHref(s))+'">阅读原文：'+D.esc(s.title)+' · '+D.esc('发布 '+M.publicationTime(s.publishedAt||s.date))+' →</a>').join('')+'</div></article>').join('')||'<div class="portal-empty"><p>'+(invalid?'开始日期不能晚于结束日期':'这个范围暂无已整理摘要')+'</p><p class="portal-note">可查看观点原文或消费资料，已收录资料不会被自动当成市场共识。</p><button class="portal-button" data-go-kind="views">查看观点原文</button> <button class="portal-button" data-go-kind="minutes">查看消费资料</button></div>';
+    $('briefs').innerHTML=briefs.map(r=>'<article class="research-brief"><div class="portal-research-meta"><span class="portal-tag">'+D.esc(M.sectors.find(s=>s[0]===r.sector)?.[1]||r.sector)+'</span><time datetime="'+D.esc(briefPublished(r))+'">'+D.esc('原文发布：'+M.publicationTime(briefPublished(r)))+'</time></div><h2>'+D.esc(r.title)+'</h2><p>'+D.esc(r.conclusion)+'</p><ul class="brief-evidence">'+r.evidence.map(e=>'<li>'+D.esc(e.text)+'</li>').join('')+'</ul><p class="brief-boundary"><strong>分歧 / 边界</strong> '+D.esc(r.boundary)+'</p><div class="brief-watch" aria-label="后续验证指标">'+r.watch.map(w=>'<span>'+D.esc(w)+'</span>').join('')+'</div><div class="brief-sources">'+r.sources.map(s=>'<a href="'+D.esc(L.topicHref(s))+'">阅读原文：'+D.esc(s.title)+' · '+D.esc('发布 '+M.publicationTime(s.publishedAt||s.date))+' →</a>').join('')+'</div></article>').join('')||'<div class="portal-empty"><p>'+(invalid?'开始日期不能晚于结束日期':'这个范围暂无已整理摘要')+'</p><p class="portal-note">可查看观点原文，已收录资料不会被自动当成市场共识。</p><button class="portal-button" data-go-kind="views">查看观点原文</button></div>';
     $('freshness').textContent='最近整理 '+(briefData.updatedAt||'暂无');
   }
   function render(){
@@ -23,8 +23,6 @@
     $('library-scope').hidden=kind!=='minutes';
     $('library-scope').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.scope===libraryScope)));
     const batch=library.ingestedBatch;
-    $('ingestion-note').hidden=!batch||kind!=='digest';
-    if(batch){const downloads=(library.records||[]).filter(r=>L.storageLink(r)).length;$('ingestion-note').innerHTML='<span><strong>'+D.esc(batch.originals)+' 份纪要</strong> · '+D.esc(downloads)+' 份可下载</span>'+(kind==='digest'?'<button class="research-reset" data-open-minutes>进入纪要文库 →</button>':'<span>'+D.esc(batch.date)+' 更新</span>');}
     document.querySelector('main').classList.toggle('research-summary-mode',kind==='digest');
     document.querySelector('main').classList.toggle('research-minutes-mode',kind==='minutes');
     $('briefs').hidden=$('digest-note').hidden=kind!=='digest';$('results').hidden=kind==='digest';
@@ -127,7 +125,6 @@
   $('search').oninput=()=>{page=1;render();};
   ['sector','format','processing-state','sort'].forEach(id=>$(id).onchange=()=>{if(id==='processing-state'&&$('processing-state').value==='awaiting_file')libraryScope='all';page=1;render();});
   $('library-scope').onclick=e=>{const b=e.target.closest('[data-scope]');if(b){libraryScope=b.dataset.scope;page=1;render();}};
-  $('ingestion-note').onclick=e=>{if(e.target.closest('[data-open-minutes]')){reset();select('minutes');}};
   $('briefs').onclick=e=>{const b=e.target.closest('[data-go-kind]');if(b)select(b.dataset.goKind);};
   ['from','to'].forEach(id=>$(id).onchange=()=>{range=$('from').value||$('to').value?'custom':'';page=1;render();});
   $('ranges').onclick=e=>{const b=e.target.closest('[data-range]');if(!b)return;range=b.dataset.range;$('from').value=range?M.lowerDate(today,range):'';$('to').value=range?today:'';page=1;render();};
