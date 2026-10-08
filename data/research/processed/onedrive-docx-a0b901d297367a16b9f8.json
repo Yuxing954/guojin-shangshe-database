@@ -1,0 +1,36 @@
+{
+  "assetId": "onedrive-docx-a0b901d297367a16b9f8",
+  "type": "meeting_summary",
+  "reviewed": false,
+  "company": "OTA与酒店行业",
+  "documentType": "专家交流",
+  "summary": "专家认为佣金及定价规则调整有利于头部连锁、强化产品竞争，并可能改变OTA与直销渠道的成本差距。",
+  "watch": "先核对会议日期；仅作为专家判断，和9月华住专家不同解读并列，规则执行及影响另行验证。",
+  "note": "根据所提供Word纪要整理，摘要待审阅；未独立核对公告或原录音。历史预测、目标和计划保留当时语境。",
+  "dateStatus": "needs_review",
+  "dateCandidates": [
+    "20260807",
+    "20260806"
+  ],
+  "qualityIssues": [
+    {
+      "type": "date_conflict",
+      "detail": "文件名为20260807，正文标题为20260806。会议日期待确认，目录保留两个候选值。",
+      "line": 1
+    }
+  ],
+  "evidence": [
+    {
+      "line": 1,
+      "anchor": "20260806 OTA专家携程反垄断交流",
+      "excerpt": "20260806 OTA专家携程反垄断交流"
+    },
+    {
+      "line": 2,
+      "anchor": "携程新规整体利好头部连锁",
+      "excerpt": "1、携程新规整体利好头部连锁，行业加速优胜劣汰。"
+    }
+  ],
+  "evidenceLocator": "连接器抽取文本行号，并非Word页码",
+  "originalAccess": "public"
+}

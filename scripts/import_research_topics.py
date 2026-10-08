@@ -98,4 +98,7 @@ for kind in rows:
     manifest['counts'][kind]=len(merged)
     manifest['latest'][kind]=max((r.get('时间') or r.get('日期') for r in merged),default='')
 (out/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding='utf-8')
-print(json.dumps({k:manifest[k] for k in ['counts','latest','oldestFetched','fetchedTopics']},ensure_ascii=False))
+from build_research_library import build as build_library
+library = build_library(HERE, ROOT)
+(ROOT / 'data/research/library.json').write_text(json.dumps(library,ensure_ascii=False,separators=(',',':'))+'\n',encoding='utf-8')
+print(json.dumps({**{k:manifest[k] for k in ['counts','latest','oldestFetched','fetchedTopics']}, 'consumptionAttachments':len(library['records'])},ensure_ascii=False))

@@ -1,0 +1,33 @@
+{
+  "assetId": "onedrive-docx-6810093710e4755b4ff6",
+  "type": "meeting_summary",
+  "reviewed": false,
+  "company": "华住酒店样本",
+  "documentType": "专家交流",
+  "summary": "专家样本认为旅游需求弱于商务，老店面临新供给分流；供应链集采和下沉开店是经营重点。其渠道规则解读与8月OTA专家存在差异。",
+  "watch": "8月RevPAR、ADR和OCC无法勾稽，三项均暂缓结构化采信；样本不代表华住集团整体披露。",
+  "note": "根据所提供Word纪要整理，摘要待审阅；未独立核对公告或原录音。历史预测、目标和计划保留当时语境。",
+  "dateStatus": "filename_header_consistent",
+  "dateCandidates": [],
+  "qualityIssues": [
+    {
+      "type": "metric_identity_check",
+      "detail": "同段8月RevPAR 266元、ADR 368元、OCC 86.6%。若同一酒店范围和期间，ADR×OCC=318.688元；266/368隐含OCC约72.28%。缺少一致口径，三项暂缓进看板。",
+      "line": 4
+    }
+  ],
+  "evidence": [
+    {
+      "line": 4,
+      "anchor": "RevPAR 266元、ADR 368元、OCC 86.6%",
+      "excerpt": "2026年8月RevPAR 266元、ADR 368元、OCC 86.6%，同比接近持平、略差一点；7月受台风等天气影响，RevPAR同比下滑约6%，与行业大致相当。三季度开店预计与去年不会差太多。"
+    },
+    {
+      "line": 14,
+      "anchor": "谁给的钱多谁有流量",
+      "excerpt": "携程9月新规明面上取消金牌、特牌并限制佣金率上限，但金字塔、点击流量等仍存在，谁给的钱多谁有流量，本质没有变化，对连锁酒店集团影响不大。商旅相关订单占比20%多，其中明确走企业差旅渠道的不到20%，估计约70%的客源以商务出行为主；商旅今年没有明显下降，是未来的放量重点。"
+    }
+  ],
+  "evidenceLocator": "连接器抽取文本行号，并非Word页码",
+  "originalAccess": "public"
+}
