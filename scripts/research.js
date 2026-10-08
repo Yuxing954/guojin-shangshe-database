@@ -29,7 +29,7 @@
     $('results').innerHTML=filtered.slice((page-1)*size,page*size).map((r,i)=>{
       const type=M.format(r),sectors=M.sectorIds(r).map(id=>M.sectors.find(s=>s[0]===id)[1]);
       const tag=kind==='minutes'?M.labels[type]:sectors.slice(0,2).join(' / ');
-      const summary=r.library?[type==='audio'?'会议录音':'研究文档',L.duration(r.library.durationSeconds),L.bytes(r.library.bytes),r.library.processing?.summary||'原文件尚未获取；可查看来源和处理进度。'].filter(Boolean).join(' · '):kind==='minutes'?(type==='audio'?'会议录音 · 尚未转写，打开来源收听':type==='document'?'研究文档 · 打开来源查看附件':M.preview(r)||'纪要摘要，可在站内阅读'):M.preview(r);
+      const summary=r.library?[type==='audio'?'会议录音':'研究文档',L.duration(r.library.durationSeconds),L.bytes(r.library.bytes),r.library.processing?.summary||(L.hasStoredOriginal(r.library)?'原件已存 OneDrive；文字内容按处理状态核对。':'原文件尚未获取；可查看来源和处理进度。')].filter(Boolean).join(' · '):kind==='minutes'?(type==='audio'?'会议录音 · 尚未转写，打开来源收听':type==='document'?'研究文档 · 打开来源查看附件':M.preview(r)||'纪要摘要，可在站内阅读'):M.preview(r);
       const state=r.library?'<span class="library-state '+(r.library.processing.textAvailable?'library-ready':'')+'">'+D.esc(L.states[r.library.processing.status]||'处理状态待核对')+'</span>':'';
       return '<article class="portal-research-item"><div class="research-item-main"><div class="portal-research-meta"><time datetime="'+D.esc(r.published)+'">'+D.esc(r.date||'日期待补充')+'</time>'+(r.author?'<span>'+D.esc(r.author)+'</span>':'')+(tag?'<span class="portal-tag">'+D.esc(tag)+'</span>':'')+state+'</div><button class="portal-research-title" data-entry="'+((page-1)*size+i)+'">'+D.esc(r.title||'未命名内容')+'</button><p class="portal-research-summary">'+D.esc(summary)+'</p></div><button class="research-read" data-entry="'+((page-1)*size+i)+'" aria-label="'+D.esc((type==='view'||type==='text'?'阅读':'查看资料')+'：'+r.title)+'">'+(r.library?.processing.textAvailable?'阅读整理':type==='view'||type==='text'?'阅读':'查看资料')+' →</button></article>';
     }).join('')||'<div class="portal-empty"><p>'+(invalid?'开始日期不能晚于结束日期':kind==='minutes'&&f.state?'当前范围暂无这种处理状态的资料':'没有找到匹配内容')+'</p><p class="portal-note">'+(kind==='minutes'?'试试更换行业、资料类型或处理状态。未读取的附件不作为已整理纪要。':'试试更换关键词、放宽时间，或加载更早观点。')+'</p><button class="portal-button" data-reset>重置筛选</button></div>';
@@ -49,8 +49,11 @@
     const type=M.format(r),attachment=type==='audio'||type==='document';
     if(r.library){
       $('article-body').textContent='';$('article-files').hidden=false;
-      $('article-note').textContent=r.library.processing.textAvailable?'已获取文字；提取或转写内容保留原始页码、时间段，观点总结须另行核对。':'当前是附件索引，未读取原文件，尚无可用正文或转写。';
+      $('article-note').textContent=r.library.processing.textAvailable?'已获取文字；提取或转写内容保留原始页码、时间段，观点总结须另行核对。':L.hasStoredOriginal(r.library)?'原件已存 OneDrive，文字尚未整理；客户访问范围由 OneDrive 权限决定。':'当前是附件索引，未读取原文件，尚无可用正文或转写。';
       $('article-files').innerHTML='<div class="library-detail-summary"><span>'+D.esc(r.library.extension.toUpperCase())+'</span><span>'+D.esc(L.bytes(r.library.bytes))+'</span><span>'+D.esc(L.duration(r.library.durationSeconds))+'</span><span>'+D.esc(L.states[r.library.processing.status]||'待核对')+'</span></div><p class="library-file-note">'+D.esc(r.file)+'</p><p class="library-prep">'+(type==='audio'?'处理路径：获取录音 → 转写并保留时间段 → 核对数字与说话人 → 整理观点。':'处理路径：获取PDF → 提取正文并保留页码 → 核对表格与数据 → 整理观点。')+'</p><div id="processed-content"></div><div class="library-action-links">'+M.sectorIds(r).map(id=>'<a href="research.html?sector='+encodeURIComponent(id)+'">查看'+D.esc(M.sectors.find(s=>s[0]===id)?.[1]||id)+'市场观点 →</a>').join('')+'</div>';
+      const originalUrl=L.storageLink(r.library);
+      if(originalUrl)$('article-files').insertAdjacentHTML('afterbegin','<p><a class="portal-button" href="'+D.esc(originalUrl)+'" target="_blank" rel="noopener noreferrer">查看 OneDrive 原件 ↗</a></p>');
+      else if(L.hasStoredOriginal(r.library))$('article-files').insertAdjacentHTML('afterbegin','<p class="portal-note">原件已入库，客户原件入口尚未开放。</p>');
       return;
     }
     $('article-body').textContent=attachment?'':r.content||'此条记录尚无正文，请查看原始来源。';

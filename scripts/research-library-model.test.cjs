@@ -9,3 +9,11 @@ assert.equal(L.duration(3719),'61分59秒');assert.equal(L.bytes(1048576),'1.0 M
 assert(L.safeLocalPath('data/research/processed/zsxq-file-123.json'));
 for(const path of ['../private.json','https://example.com/a.json','data/research/processed/../secret.json','data/research/processed/a.json?token=x'])assert(!L.safeLocalPath(path));
 console.log('Consumption catalog filters, transcript search, draft visibility and safe content paths passed.');
+const stored={...file,sha256:'a'.repeat(64),storage:{provider:'onedrive',status:'uploaded',verifiedSha256:'a'.repeat(64),audience:'private',openUrl:'https://1drv.ms/b/example'}};
+assert(L.hasStoredOriginal(stored));assert.equal(L.storageLink(stored),'');
+const shared={...stored,storage:{...stored.storage,audience:'clients',permissionsReviewed:true}};
+assert.equal(L.storageLink(shared),'https://1drv.ms/b/example');
+for(const openUrl of ['javascript:alert(1)','https://1drv.ms.evil.example/file','https://graph.microsoft.com/file?token=secret','https://onedrive.live.com/file?download=1','https://name:secret@1drv.ms/file'])assert.equal(L.storageLink({...shared,storage:{...shared.storage,openUrl}}),'');
+assert(!L.hasStoredOriginal({...stored,sha256:'b'.repeat(64)}));
+assert.equal(L.storageLink({...shared,storage:{...shared.storage,permissionsReviewed:false}}),'');
+console.log('Private OneDrive originals, source checksum binding and approved share links passed.');

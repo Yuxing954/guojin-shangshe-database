@@ -67,6 +67,8 @@ def build(topics_dir, root=ROOT):
             old = previous_records.get(record['id'])
             if old and record['sha256'] and old.get('sha256') == record['sha256']:
                 record['processing'] = old['processing']
+                if old.get('storage'):
+                    record['storage'] = old['storage']
                 record['aliases'] = list(dict.fromkeys([record['id'], *old.get('aliases', [])]))
                 record['sourceTopics'] = list(dict.fromkeys([tid, *old.get('sourceTopics', [])]))
             if record['id'] not in records or record['published'] > records[record['id']]['published']:

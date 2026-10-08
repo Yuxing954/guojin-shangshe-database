@@ -5,6 +5,7 @@ import unittest
 from pathlib import Path
 from build_research_library import ROOT, build, sector_ids
 from import_research_attachment import import_asset, read_transcript
+from register_research_onedrive import register
 
 
 class LibraryTests(unittest.TestCase):
@@ -59,15 +60,55 @@ class LibraryTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             (root / 'data/research').mkdir(parents=True)
-            old = {'records': [{'id': 'zsxq-file-1', 'sha256': 'source-hash', 'processing': {'status': 'reviewed', 'textAvailable': True}}]}
+            old = {'records': [{'id': 'zsxq-file-1', 'sha256': 'source-hash', 'storage': {'provider': 'onedrive', 'audience': 'private'}, 'processing': {'status': 'reviewed', 'textAvailable': True}}]}
             (root / 'data/research/library.json').write_text(json.dumps(old), encoding='utf-8')
             topic = {'topic_id': '123', 'create_time': '2026-10-01T12:00:00', 'group': {'group_id': '88888142214212'}, 'files': [{'file_id': '1', 'name': '酒店.pdf', 'hash': 'source-hash'}]}
             (root / 'page-001.json').write_text(json.dumps([topic]), encoding='utf-8')
             refreshed = build(root, root)
             self.assertEqual(refreshed['records'][0]['processing']['status'], 'reviewed')
+            self.assertEqual(refreshed['records'][0]['storage']['provider'], 'onedrive')
             topic['files'][0]['hash'] = 'replaced-original'
             (root / 'page-001.json').write_text(json.dumps([topic]), encoding='utf-8')
-            self.assertEqual(build(root, root)['records'][0]['processing']['status'], 'awaiting_file')
+            replaced = build(root, root)['records'][0]
+            self.assertEqual(replaced['processing']['status'], 'awaiting_file')
+            self.assertNotIn('storage', replaced)
+
+    def test_onedrive_private_registration_keeps_cloud_ids_out_of_site(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            original = root / 'source.pdf'
+            original.write_bytes(b'checksum fixture only; not a published research PDF')
+            library = root / 'library.json'
+            library.write_text(json.dumps({'records': [{'id': 'zsxq-file-123', 'sha256': hashlib.sha256(original.read_bytes()).hexdigest(), 'processing': {'status': 'awaiting_file', 'textAvailable': False}}]}), encoding='utf-8')
+            receipt = {'id': 'private-cloud-file', 'name': original.name, 'size': original.stat().st_size, 'file': {'mimeType': 'application/pdf'}, 'parent_reference': {'drive_id': 'private-drive'}}
+            result = register(library, 'zsxq-file-123', original, receipt, root / 'private')
+            public = library.read_text(encoding='utf-8')
+            self.assertFalse(result['customerLinkEnabled'])
+            self.assertNotIn('private-cloud-file', public)
+            self.assertNotIn('private-drive', public)
+            self.assertEqual(json.loads(public)['records'][0]['processing']['status'], 'awaiting_text')
+            self.assertEqual(json.loads((root / 'private/zsxq-file-123.json').read_text())['itemId'], 'private-cloud-file')
+
+    def test_onedrive_rejects_mismatched_upload_and_unreviewed_sharing(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            original = root / 'source.mp3'
+            original.write_bytes(b'source bytes')
+            library = root / 'library.json'
+            library.write_text(json.dumps({'records': [{'id': 'zsxq-file-123', 'sha256': hashlib.sha256(original.read_bytes()).hexdigest(), 'processing': {'status': 'awaiting_file'}}]}), encoding='utf-8')
+            receipt = {'id': 'file', 'name': original.name, 'size': original.stat().st_size, 'file': {}, 'parent_reference': {'drive_id': 'drive'}}
+            good = {**receipt, 'file': {'mimeType': 'audio/mpeg'}}
+            for bad in [receipt, {**good, 'size': 1}, {**good, 'name': 'other.mp3'}]:
+                with self.assertRaises(ValueError):
+                    register(library, 'zsxq-file-123', original, bad, root / 'private')
+            for url, checked in [('https://1drv.ms/b/sample', False), ('https://evil.example/file', True), ('https://onedrive.live.com/file?token=secret', True)]:
+                with self.assertRaises(ValueError):
+                    register(library, 'zsxq-file-123', original, good, root / 'private', 'clients', url, checked)
+            with self.assertRaises(ValueError):
+                register(library, 'zsxq-file-123', original, good, ROOT / 'data/private')
+            original.write_bytes(b'wrong source bytes')
+            with self.assertRaises(ValueError):
+                register(library, 'zsxq-file-123', original, good, root / 'private')
 
     def test_reposts_share_one_file_and_keep_source_links(self):
         with tempfile.TemporaryDirectory() as directory:
