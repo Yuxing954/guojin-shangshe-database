@@ -107,11 +107,24 @@ for r in records:
         for field,key in [('daily_sales','daily_yoy'),('daily_shoppers','shoppers_daily_yoy'),('spend','spend_yoy')]:
             if r[key] is None and r[field] is not None and prev[field]:r[key]=(r[field]/prev[field]-1)*100;r['yoy_basis']='缺失同比按本表相同假期上一年计算；已有同比沿用原表'
 data={'schemaVersion':1,'sourceFile':SOURCE.name,'sourceVersion':args.source_version,'importedAt':args.imported_at,'source':'海口海关（Excel内标注），国金证券整理；本次按用户提供原表录入，未独立回查公告','notes':['金额单位：亿元；购物人次：万人次；客单价：元。','日均=同一期间总额/原表统计天数；不同假期天数比较优先看日均。','原表公式反推的历史数值保留标识，不当作独立披露；未发布或未填写值保持缺失。','阶段数据与假期总额存在重叠，不能加总。','原表假设测算区域未作为实际数据导入。'],'records':records}
+# Retain independently sourced public updates when refreshing the older workbook.
+existing_path=ROOT/'data/dutyfree/holidays.json'
+if existing_path.exists():
+    existing=json.loads(existing_path.read_text(encoding='utf-8'))
+    public={r['id']:r for r in existing.get('records',[]) if r.get('web_source')}
+    if public:
+        data['records']=[public.pop(r['id'],r) for r in records]+list(public.values())
+        records=data['records']
+        data['updatedAt']=existing.get('updatedAt',args.imported_at)
+        data['source']=existing['source']
+        for r in records:
+            if r.get('comparison_group')=='国庆及中秋国庆':r['comparison_group']='国庆'
+            if r['holiday']=='国庆中秋':r['holiday']='中秋国庆'
 (ROOT/'data/dutyfree/holidays.json').write_text(json.dumps(data,ensure_ascii=False,indent=2,allow_nan=False)+'\n',encoding='utf-8')
 fields=['year','holiday','daily_sales_cny_100m','yoy_pct','source','period','days','sales_cny_100m','shoppers_10k','spend_per_shopper_cny','daily_shoppers_10k','status','quality','source_sheet','source_sales_cell']
 with (ROOT/'data/dutyfree_holiday.csv').open('w',encoding='utf-8',newline='') as out:
     writer=csv.DictWriter(out,fieldnames=fields,lineterminator='\n');writer.writeheader()
     for r in records:
         if r['kind']!='holiday':continue
-        writer.writerow(dict(zip(fields,[r['year'],r['holiday'],r['daily_sales'],r['daily_yoy'],SOURCE.name,r['period'],r['days'],r['sales'],r['shoppers'],r['spend'],r['daily_shoppers'],r['status'],r['quality'],r['sheet'],r['source_cells']['sales']['cell']])))
+        writer.writerow(dict(zip(fields,[r['year'],r['holiday'],r['daily_sales'],r['daily_yoy'],r.get('web_source',{}).get('url',SOURCE.name),r['period'],r['days'],r['sales'],r['shoppers'],r['spend'],r['daily_shoppers'],r['status'],r['quality'],r['sheet'],r['source_cells'].get('sales',{}).get('cell','')])))
 print(json.dumps({'total':len(records),'holidays':sum(r['kind']=='holiday' for r in records),'available_holidays':sum(r['kind']=='holiday' and r['status']=='available' for r in records),'pending':[f"{r['year']}{r['holiday']}" for r in records if r['status']=='pending']},ensure_ascii=False))
