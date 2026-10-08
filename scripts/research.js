@@ -42,7 +42,7 @@
       const tag=kind==='minutes'?sectors.slice(0,2).join(' / ')||M.labels[type]:sectors.slice(0,2).join(' / ');
       const summary=r.library?.processing.summaryOnly?r.library.processing.summary:r.library?[type==='audio'?'会议录音':'研究文档',L.duration(r.library.durationSeconds),L.bytes(r.library.bytes),r.library.processing?.summary||'原文件尚未整理；可查看来源和处理进度。'].filter(Boolean).join(' · '):kind==='minutes'?(type==='audio'?'会议录音 · 原件待获取，尚未转写':type==='document'?'研究文档 · 原件待获取':M.preview(r)||'纪要摘要，可在站内阅读'):M.preview(r);
       const state=r.library?'<span class="library-state '+(r.library.processing.status==='needs_review'?'library-warning':r.library.processing.status==='reviewed'?'library-ready':'')+'">'+D.esc(r.library.processing.summaryOnly?(r.library.processing.status==='needs_review'?'有口径待核对':r.library.processing.status==='reviewed'?'已审阅摘要':'摘要初稿'):L.states[r.library.processing.status]||'处理状态待核对')+'</span>':kind==='minutes'&&r.state?'<span class="library-state">待获取原件</span>':'';
-      const title=r.library?.processing.summaryOnly?r.title.replace(/^\d{8}\s*/, '').replace(/\.docx$/i,''):r.title;
+      const title=r.title;
       const download=r.library&&L.storageLink(r.library);
       const actions='<button class="research-read" data-entry="'+((page-1)*size+i)+'" aria-label="'+D.esc((r.library?.processing.textAvailable?'阅读摘要':type==='view'||type==='text'?'阅读':'查看资料')+'：'+r.title)+'">'+(r.library?.processing.textAvailable?'阅读摘要':type==='view'||type==='text'?'阅读':'查看资料')+' →</button>'+(download?'<a class="minute-download" href="'+D.esc(download)+'" target="_blank" rel="noopener noreferrer" aria-label="'+D.esc('下载原件：'+r.title)+'">下载原件 ↗</a>':'');
       return '<article class="portal-research-item"><div class="research-item-main"><div class="portal-research-meta"><time datetime="'+D.esc(r.published)+'">'+D.esc(r.library?.dateStatus==='needs_review'?'会议日期待核对':kind==='minutes'?r.date||'日期待补充':'发布 '+M.publicationTime(r.published))+'</time>'+(kind!=='minutes'&&r.author?'<span>'+D.esc(r.author)+'</span>':'')+(tag?'<span class="portal-tag">'+D.esc(tag)+'</span>':'')+state+(r.library?.documentType?'<span>'+D.esc(r.library.documentType)+'</span>':'')+'</div><button class="portal-research-title" data-entry="'+((page-1)*size+i)+'">'+D.esc(title||'未命名内容')+'</button><p class="portal-research-summary">'+D.esc(summary)+'</p></div><div class="minute-actions">'+actions+'</div></article>';
@@ -62,7 +62,7 @@
   }
   function minuteRow(r,index){
     const original=r.library&&L.storageLink(r.library),readable=!!(r.library?.processing.preview||r.library?.processing.textAvailable)||M.format(r)==='text';
-    const title=r.title.replace(/^\d{8}\s*/, '').replace(/\.(docx?|pdf|mp3|m4a|wav|aac|flac|ogg|wma|mp4)$/i,'');
+    const title=r.title;
     const date=r.library?.dateStatus==='needs_review'?'日期待核对':r.date||'暂无日期';
     const sectors=M.sectorIds(r).map(id=>M.sectors.find(s=>s[0]===id)?.[1]||id).slice(0,2).join(' / ')||'未分类';
     const name=readable?'<button class="minute-title" data-entry="'+index+'" aria-label="'+D.esc('查看纪要：'+r.title)+'">'+D.esc(title)+'</button>':'<span class="minute-title">'+D.esc(title)+'</span>';
@@ -79,7 +79,7 @@
   }
   async function openMinute(r,request){
     $('article-kind').hidden=true;
-    $('article-title').textContent=r.title.replace(/^\d{8}\s*/, '').replace(/\.(docx?|pdf|mp3|m4a|wav|aac|flac|ogg|wma|mp4)$/i,'');
+    $('article-title').textContent=r.title;
     $('article-meta').textContent=r.library?.dateStatus==='needs_review'?'日期待确认':r.date||'';
     $('article-files').hidden=true;$('article-files').innerHTML='';
     $('article-body').textContent='正在读取原文预览…';$('article-note').hidden=true;
