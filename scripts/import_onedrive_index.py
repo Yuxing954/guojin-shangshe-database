@@ -11,6 +11,7 @@ from datetime import date, datetime, timezone, timedelta
 from pathlib import Path
 from import_onedrive_minutes import read
 from register_research_onedrive import approved_share_url
+from summary_io import write_json_if_changed
 
 
 def filename_date(name):
@@ -37,6 +38,7 @@ def import_index(batch_dir, root):
     mappings = read(map_path) if map_path.exists() else {}
     by_item = {(m['driveId'], m['itemId']): asset for asset, m in mappings.items() if m.get('driveId') and m.get('itemId')}
     seen, imported, duplicates = set(), [], 0
+    added, updated, unchanged_count = 0, 0, 0
     for receipt in receipts['items']:
         metadata, permission = receipt['metadata'], receipt['permission']
         drive, item = receipt['driveId'], receipt['itemId']
@@ -93,26 +95,43 @@ def import_index(batch_dir, root):
                              'audience': 'public', 'permissionsReviewed': True, 'downloadAllowed': True,
                              'openUrl': url, 'shareType': 'view', 'expiresAt': expiry,
                              'permissionCheckedAt': receipts['verifiedAt'], 'metadataVerified': True,
-                             'cloudVersion': version_key, 'verifiedSha256': digest,
+                             'cloudVersion': old.get('storage', {}).get('cloudVersion', version_key) if unchanged and digest else version_key,
+                             'verifiedSha256': digest,
                              'verificationMethod': 'provider_metadata_hash' if digest else 'provider_metadata_version'}
+        # Refresh checks privately; a check timestamp alone must not republish the library.
+        comparable = lambda r: {**r, 'storage': {k: v for k, v in r.get('storage', {}).items()
+                                               if k != 'permissionCheckedAt'}}
+        changed = not old or comparable(record) != comparable(old)
+        if not changed:
+            record = old
+            unchanged_count += 1
+        elif old:
+            updated += 1
+        else:
+            added += 1
         if old_id and old_id != asset_id:
             record['aliases'] = list(dict.fromkeys([asset_id, old_id, *records.get(old_id, {}).get('aliases', [])]))
             records.pop(old_id, None)
             mappings.pop(old_id, None)
         records[asset_id] = record
         mappings[asset_id] = {**mappings.get(asset_id, {}), 'driveId': drive, 'itemId': item,
-                              'name': name, 'cloudVersion': version_key, 'sha256': digest, 'size': metadata['size']}
-        imported.append(asset_id)
+                              'name': name, 'cloudVersion': version_key, 'sha256': digest, 'size': metadata['size'],
+                              'permissionCheckedAt': receipts['verifiedAt']}
+        if changed:
+            imported.append(asset_id)
     library['records'] = sorted(records.values(), key=lambda r: (r.get('sortDate') or r.get('published', ''), r['id']), reverse=True)
     library['counts'] = dict(Counter(r['format'] for r in library['records']))
-    library['generatedAt'] = datetime.now(timezone(timedelta(hours=8))).isoformat(timespec='seconds')
-    library['indexUpdatedAt'] = receipts['verifiedAt']
+    if imported:
+        library['generatedAt'] = datetime.now(timezone(timedelta(hours=8))).isoformat(timespec='seconds')
+        library['indexUpdatedAt'] = receipts['verifiedAt']
     # Keep earlier curated batch statistics and processed files; indexing does not review summaries.
     report = {'mode': 'originals', 'indexed': len(imported), 'excludedDuplicates': duplicates,
+              'added': added, 'updated': updated, 'unchanged': unchanged_count,
               'summariesGenerated': 0, 'filesExtracted': 0}
     library_path.parent.mkdir(parents=True, exist_ok=True)
-    library_path.write_text(json.dumps(library, ensure_ascii=False, separators=(',', ':')) + '\n', encoding='utf-8')
-    map_path.write_text(json.dumps(mappings, ensure_ascii=False, indent=2), encoding='utf-8')
+    report['websiteChanged'] = write_json_if_changed(library_path, library)
+    write_json_if_changed(map_path, mappings, indent=2)
     (batch_dir / '入库结果.json').write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding='utf-8')
     return report
+
 

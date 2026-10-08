@@ -11,6 +11,7 @@ build_research_recent.py
 """
 import sys, os, csv, json, io, argparse, datetime as dt
 from pathlib import Path
+from summary_io import write_json_if_changed
 from research_sources import merge_rows, update_rows, archive_rows
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -124,25 +125,32 @@ def sort_key(row):
 
 
 def main():
+    global ROOT, DATA
     ap = argparse.ArgumentParser()
+    ap.add_argument("--root", type=Path, default=ROOT)
+    ap.add_argument("--as-of", type=dt.date.fromisoformat, help="Calendar day in Asia/Shanghai")
     ap.add_argument("--days",   type=int, default=MAX_DAYS)
     ap.add_argument("--per-db", type=int, default=MAX_PER_DB)
     ap.add_argument("--sub-len", type=int, default=SUB_LEN)
     ap.add_argument("--full", action="store_true", help="不截断（默认截断长文本）")
     ap.add_argument("--use-existing-index", action="store_true", help="本地缺少历史 CSV 时，使用现有索引补充预览；正式构建仍读取完整历史")
     args = ap.parse_args()
+    ROOT, DATA = args.root.resolve(), args.root.resolve() / "data"
 
     if args.full:
         args.sub_len = 10 ** 9
 
     _set_sub_len(args.sub_len)
 
-    cutoff = dt.datetime.now() - dt.timedelta(days=args.days)
+    tz = dt.timezone(dt.timedelta(hours=8))
+    moment = dt.datetime.now(tz)
+    day = args.as_of or moment.date()
+    cutoff = dt.datetime.combine(day, dt.time()) - dt.timedelta(days=args.days)
     out_root = DATA / "research"
     out_root.mkdir(parents=True, exist_ok=True)
     out_json = out_root / "recent.json"
 
-    payload = {"updatedAt": dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+    payload = {"updatedAt": moment.strftime("%Y-%m-%d %H:%M:%S"),
                "windowDays": args.days,
                "dbs": []}
 
@@ -186,9 +194,8 @@ def main():
             "rows": norm,
         })
 
-    out_json.write_text(json.dumps(payload, ensure_ascii=False, separators=(",", ":")),
-                        encoding="utf-8")
-    print(f"OK  wrote {out_json.relative_to(ROOT)}  "
+    changed = write_json_if_changed(out_json, payload, volatile={"updatedAt"})
+    print(f"OK  {'wrote' if changed else 'unchanged'} {out_json.relative_to(ROOT)}  "
           f"total kept={total}  json_size={out_json.stat().st_size}B  "
           f"src_total={total_bytes/1024:.0f}KB")
 
