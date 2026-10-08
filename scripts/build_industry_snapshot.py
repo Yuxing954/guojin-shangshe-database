@@ -129,6 +129,10 @@ def build(root=ROOT):
             add({'metricId': item['id'], 'period': row['end_date'], 'periodLabel': row['period_id'] + ' · ' + row['end_date'], 'startDate': row.get('start_date', row['end_date']), 'value': raw * 100 if item['id'] == 'hotel_occ' else raw, 'change': change, 'changeLabel': '去年同周', 'sourceId': 'legacy-hotel', 'basis': 'point', 'quality': 'legacy'})
 
     source('legacy-dutyfree', files['dutyfree_monthly'], '海口海关 / 海南统计 / iFinD 历史整理')
+    provenance_file = root / 'data/dutyfree/monthly-provenance.json'
+    if provenance_file.exists():
+        provenance = json.loads(provenance_file.read_text(encoding='utf-8-sig'))
+        sources['legacy-dutyfree'].update(name=provenance['sourceFile'], provider='用户提供原Excel', url='https://yuxing954.github.io/guojin-shangshe-database/data/dutyfree/monthly-provenance.json', retrievedAt=provenance['checkedAt'], locator='月度数据工作表 O9:AE193；对应月份行号和指标列见来源文件。按原表逐值核对，未独立回查公告。')
     dutyfree_fields = {'dutyfree_sales': 'shopping_sales_cny_100m', 'dutyfree_shoppers': 'shoppers_10k', 'dutyfree_items': 'items_10k', 'dutyfree_sales_yoy': 'sales_yoy_pct', 'dutyfree_shoppers_yoy': 'shoppers_yoy_pct'}
     for row in rows('dutyfree_monthly'):
         for id, field in dutyfree_fields.items():

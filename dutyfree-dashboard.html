@@ -79,7 +79,7 @@ svg{width:100%;height:auto;display:block}
 @media(max-width:640px){.wrap{padding:14px 10px}.hero{flex-direction:column;align-items:flex-start}.kpis{grid-template-columns:repeat(2,1fr)}.kpi{border-right:0}.signal{grid-template-columns:1fr}.hero h1{font-size:20px}}
 </style><link rel="stylesheet" href="scripts/site.css?v=5"><script defer src="scripts/site-shell.js?v=3"></script><link rel="stylesheet" href="scripts/dutyfree-holidays.css?v=1"><script defer src="scripts/dutyfree-holidays.js?v=1"></script></head><body><div class="wrap">
 <div class="crumbs"><a href="industry.html#dutyfree">行业数据</a> / 免税专题</div>
-<header class="hero"><div><div class="eyebrow">GUOJIN · DUTY FREE RESEARCH DATABASE</div><h1>免税行业数据库</h1><p>行业总览 · 海南离岛 · 中国中免 · 政策 · 渠道 · 品类 · 同业</p></div><div class="asof" id="asof">读取数据中…</div></header>
+<header class="hero"><div><div class="eyebrow">GUOJIN · DUTY FREE RESEARCH DATABASE</div><h1>免税行业数据库</h1><p>海南离岛 · 月度经营 · 节假日数据 · 来源明细</p></div><div class="asof" id="asof">读取数据中…</div></header>
 <nav class="tabs" id="tabs">
 <button class="tab on" data-view="overview">行业总览</button>
 <button class="tab" data-view="hainan">海南离岛免税</button>
@@ -201,7 +201,7 @@ svg{width:100%;height:auto;display:block}
 <div class="tablewrap"><table class="table" id="files-table"></table></div></div>
 </section>
 
-<div class="fresh"><span>来源：海口海关、海南省统计局、公司公告/财报、财政部、同花顺iFinD、国金证券整理</span><span id="rows-note"></span></div>
+<div class="fresh"><span>来源：用户提供《【国金商社】离岛免税数据库 20260908.xlsx》，按原表核对</span><span id="rows-note"></span></div>
 </div>
 
 <!-- 来源弹窗 -->
@@ -216,12 +216,12 @@ const W=(v,d=1,ty)=>`<span class="${C(v)}">${Pf(v,d,ty)}</span>`,Dash=v=>v==null
 let DB={},SRC={};
 const jf=u=>fetch(u,{cache:'no-store'}).then(r=>r.json());
 Promise.all([
- ['ov','data/dutyfree/overview.json'],['ctg','data/dutyfree/ctg_dutyfree.json'],['airport','data/dutyfree/airport.json'],
+ ['ov','data/dutyfree/overview.json'],['hainan','data/dutyfree/hainan.json'],['ctg','data/dutyfree/ctg_dutyfree.json'],['airport','data/dutyfree/airport.json'],
  ['city','data/dutyfree/city_dutyfree.json'],['policy','data/dutyfree/policy.json'],['members','data/dutyfree/members.json'],
  ['cat','data/dutyfree/category.json'],['channel','data/dutyfree/channel.json'],['companies','data/dutyfree/companies.json'],
  ['events','data/dutyfree/events.json'],['sources','data/dutyfree/sources.json'],['manifest','data/dutyfree/manifest.json']
 ].map(([k,u])=>jf(u).then(d=>DB[k]=d)).concat([
- fetch('data/dutyfree_monthly.csv').then(r=>r.text()).then(t=>DB.m=csv(t)),
+ fetch('data/dutyfree_monthly.csv',{cache:'no-store'}).then(r=>r.text()).then(t=>DB.m=csv(t)),
  fetch('data/dutyfree_holiday.csv',{cache:'no-store'}).then(r=>r.text()).then(t=>DB.h=csv(t))
 ])).then(()=>{SRC=DB.sources.sources||{};init()}).catch(e=>{document.getElementById('asof').textContent='数据读取失败';console.log(e)});
 
@@ -267,6 +267,7 @@ return `<div class="kpi" onclick="go('${k.target}')" title="来源：${(SRC[k.so
 document.getElementById('asof').textContent='数据截至 '+ (DB.ov.kpis[0]||{}).period +' · 更新 '+DB.ov.updatedAt;
 draw(document.getElementById('ov-sales'),DB.m.slice(-36),[{name:'销售额',get:x=>N(x.shopping_sales_cny_100m),color:'#3d708e',unit:'亿元'}]);
 let cb=document.getElementById('ctg-bars');let ps=DB.ctg.periods;
+if(!ps.length){cb.closest('.panel').hidden=true;cb.closest('.grid2').style.gridTemplateColumns='1fr';return}
 cb.innerHTML=`<div style="display:grid;grid-template-columns:repeat(${ps.length},1fr);gap:14px;padding:6px 4px">`+ps.map(p=>`<div style="text-align:center"><div style="font-size:9px;color:var(--mut)">${p.period}</div>
 <div style="height:110px;display:flex;align-items:flex-end;justify-content:center;gap:12px">
 <div style="text-align:center"><div style="width:36px;background:#3d708e;border-radius:2px 2px 0 0;height:${Math.abs(p.revenue)/300*100}px"></div><div style="font-size:9px">${F(p.revenue,0)}</div></div>
@@ -280,7 +281,7 @@ function renderHainan(){let rv=document.getElementById('hn-range').value,rows;
 if(['2024','2025','2026'].includes(rv))rows=DB.m.filter(x=>String(x.year)===rv);else rows=DB.m.slice(-+rv);
 if(!rows.length){rows=DB.m.slice(-24)}
 let z=DB.m.at(-1);
-document.getElementById('hn-period').textContent=z.period_id+' · 官方月度数据 · 来源：'+(DB.hainan?DB.hainan.source.name:'海口海关');
+document.getElementById('hn-period').textContent=z.period_id+' · 原Excel月度整理数据 · 来源：'+DB.hainan.source.name;
 document.getElementById('hn-sales').innerHTML=F(z.shopping_sales_cny_100m,2);document.getElementById('hn-shoppers').innerHTML=F(z.shoppers_10k,2);
 document.getElementById('hn-items').innerHTML=F(z.items_10k,1);document.getElementById('hn-spend').innerHTML=F(z.spend_per_shopper_cny,0);
 document.getElementById('hn-sales-yoy').innerHTML='同比 '+W(N(z.sales_yoy_pct));document.getElementById('hn-shoppers-yoy').innerHTML='同比 '+W(N(z.shoppers_yoy_pct));
@@ -373,11 +374,14 @@ let files=Object.entries(DB.manifest.files).concat(Object.entries(DB.manifest.le
 document.getElementById('files-table').innerHTML='<thead><tr><th>模块</th><th>文件路径</th></tr></thead><tbody>'+files.map(([k,f])=>`<tr><td>${k}</td><td style="font-family:monospace;font-size:10px">${f}</td></tr>`).join('')+'</tbody>'}
 
 /* ---------- 初始化 ---------- */
-function init(){[renderOverview,renderHainan,renderCtg,renderAirport,renderCity,renderPolicy,renderCategory,renderMembers,renderChannel,renderCompanies,renderEvents,renderDatacenter].forEach(f=>{try{f()}catch(e){console.log('render err',f.name,e)}});
+function init(){
+const modules=[['ctg',DB.ctg.periods.length+DB.ctg.hainan.length,renderCtg],['airport',DB.airport.airports.length,renderAirport],['city',DB.city.stores.length,renderCity],['policy',DB.policy.policies.length,renderPolicy],['category',DB.cat.categories.length,renderCategory],['members',DB.members.current?1:DB.members.history.length,renderMembers],['channel',DB.channel.channels.length+DB.channel.timeline.length,renderChannel],['companies',DB.companies.companies.length,renderCompanies],['events',DB.events.events.length,renderEvents]];
+[renderOverview,renderHainan,renderDatacenter].forEach(f=>f());
+modules.forEach(([key,count,render])=>{if(count){render()}else{document.querySelector('.tab[data-view="'+key+'"]').hidden=true;document.getElementById('view-'+key).innerHTML='<div class="panel"><div class="empty">暂无可追溯来源的数据。缺少出处的记录已撤下，补齐原文后再收录。</div></div>'}});
 document.getElementById('rows-note').textContent=`月度 ${DB.m.length} 条 · 假期 ${DB.h.length} 条`;
 document.querySelectorAll('#tabs .tab').forEach(b=>b.onclick=()=>{go(b.dataset.view);location.hash=b.dataset.view;window.scrollTo({top:0})});
 const hashView=()=>{const key=location.hash.slice(1);if(document.querySelector('.tab[data-view="'+CSS.escape(key)+'"]'))go(key)};hashView();addEventListener('hashchange',hashView);
 document.getElementById('hn-range').onchange=renderHainan;
-document.getElementById('ctg-type').onchange=renderCtg}
+const ctgType=document.getElementById('ctg-type');if(ctgType)ctgType.onchange=renderCtg}
 </script></body></html>
 
