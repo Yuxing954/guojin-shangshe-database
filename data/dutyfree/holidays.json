@@ -3,7 +3,7 @@
   "sourceFile": "【国金商社】离岛免税数据库 20260908.xlsx",
   "sourceVersion": "2026-09-08",
   "importedAt": "2026-10-08",
-  "source": "历史数据按用户提供原表整理；2026中秋、国庆及国庆前五天按海口海关公开统计报道更新，逐条保留网页来源。",
+  "source": "历史数据保留原表单元格；经核验的公开披露逐条补录。披露同比与按本表计算的日均同比分别保留。",
   "notes": [
     "金额单位：亿元；购物人次：万人次；客单价：元。",
     "原表公式反推的历史数值保留标识，不当作独立披露；未发布或未填写值保持缺失。",
@@ -362,7 +362,7 @@
       "daily_sales": 1.8,
       "daily_shoppers": 2.533333333333333,
       "status": "available",
-      "quality": "原表录入值",
+      "quality": "公开披露＋计算值",
       "sheet": "元旦假期",
       "source_cells": {
         "sales": {
@@ -406,27 +406,114 @@
         }
       },
       "notes": [
-        "原表汇总客单价与总额区域不一致，采用总额区域对应口径，原值保留在来源明细。"
+        "原表汇总客单价与总额区域不一致，采用总额区域对应口径，原值保留在来源明细。",
+        "原文披露同比单列保留；本表日均按2021年3天与2020年法定元旦1天计算。原表195.16%及公式三天窗口保留在原表基线/阶段区。"
       ],
-      "daily_yoy": 195.16,
-      "shoppers_daily_yoy": 80.90000000000002,
-      "spend_yoy": 63.16196793808733,
-      "yoy_basis": "缺失同比按本表相同假期上一年计算；已有同比沿用原表"
+      "daily_yoy": 233.33333333333331,
+      "shoppers_daily_yoy": 48.14814814814814,
+      "spend_yoy": 125.0,
+      "yoy_basis": "缺失同比按连续上一年同组假期的日均/每人次金额计算；原文披露同比单列保留。",
+      "workbook_baseline": {
+        "id": "2021-元旦-holiday-元旦假期-8-42",
+        "year": 2021,
+        "holiday": "元旦",
+        "kind": "holiday",
+        "period": "1.1-1.3",
+        "days": 3,
+        "sales": 5.4,
+        "shoppers": 7.6,
+        "spend": 7105.263157894738,
+        "daily_sales": 1.8,
+        "daily_shoppers": 2.533333333333333,
+        "status": "available",
+        "quality": "原表录入值",
+        "sheet": "元旦假期",
+        "source_cells": {
+          "sales": {
+            "cell": "H42",
+            "value": 5.4,
+            "formula": null
+          },
+          "shoppers": {
+            "cell": "H43",
+            "value": 7.6,
+            "formula": null
+          },
+          "spend": {
+            "cell": "H44",
+            "value": 7105.263157894738,
+            "formula": "=H42/H43*10000"
+          },
+          "days": {
+            "cell": "H10",
+            "value": 3,
+            "formula": null
+          },
+          "period": {
+            "cell": "H9",
+            "value": "1.1-1.3"
+          },
+          "source_daily_sales": {
+            "cell": "H11",
+            "value": 1.8,
+            "formula": "=H42/3"
+          },
+          "source_daily_shoppers": {
+            "cell": "H12",
+            "value": 2.533333333333333,
+            "formula": "=H43/3"
+          },
+          "source_summary_spend": {
+            "cell": "H13",
+            "value": 7230,
+            "formula": null
+          }
+        },
+        "notes": [
+          "原表汇总客单价与总额区域不一致，采用总额区域对应口径，原值保留在来源明细。"
+        ],
+        "daily_yoy": 195.16,
+        "shoppers_daily_yoy": 80.90000000000002,
+        "spend_yoy": 63.16196793808733,
+        "yoy_basis": "缺失同比按本表相同假期上一年计算；已有同比沿用原表"
+      },
+      "items": 66.9,
+      "reported_sales_yoy": 195.16,
+      "reported_shoppers_yoy": 80.9,
+      "reported_items_yoy": 200,
+      "web_source": {
+        "title": "海南元旦假期离岛免税销售金额达5.4亿元",
+        "url": "https://www.xinhuanet.com/2021-01/04/c_1126945053.htm",
+        "publishedAt": "2021-01-04",
+        "publisher": "新华网",
+        "authority": "海口海关统计",
+        "locator": "正文第二段：66.9万件、7.6万人次、5.4亿元及同比",
+        "periodUrl": "https://app.www.gov.cn/govdata/gov/202011/25/465322/article.html",
+        "checkedAt": "2026-10-09"
+      },
+      "calculations": {
+        "spend": "购物金额（亿元）/购物人次（万人次）×10000",
+        "daily_sales": "购物金额/统计天数",
+        "daily_shoppers": "购物人次/统计天数",
+        "daily_yoy": "2021年daily_sales/2020年daily_sales−1，乘100",
+        "shoppers_daily_yoy": "2021年daily_shoppers/2020年daily_shoppers−1，乘100",
+        "spend_yoy": "2021年spend/2020年spend−1，乘100"
+      }
     },
     {
       "id": "2020-元旦-holiday-元旦假期-9-42",
       "year": 2020,
       "holiday": "元旦",
       "kind": "holiday",
-      "period": "1.1-1.3",
-      "days": 3,
-      "sales": 1.8295161946063154,
-      "shoppers": 4.2012161415146485,
-      "spend": 4354.729994793191,
-      "daily_sales": 0.6098387315354384,
-      "daily_shoppers": 1.4004053805048828,
+      "period": "1.1",
+      "days": 1,
+      "sales": 0.54,
+      "shoppers": 1.71,
+      "spend": 3157.8947368421054,
+      "daily_sales": 0.54,
+      "daily_shoppers": 1.71,
       "status": "available",
-      "quality": "原表公式值",
+      "quality": "公开披露＋计算值",
       "sheet": "元旦假期",
       "source_cells": {
         "sales": {
@@ -470,12 +557,96 @@
         }
       },
       "notes": [
-        "原表汇总客单价与总额区域不一致，采用总额区域对应口径，原值保留在来源明细。"
+        "原表汇总客单价与总额区域不一致，采用总额区域对应口径，原值保留在来源明细。",
+        "2020年法定元旦仅1天；原表1月1日至3日的公式反推窗口转存阶段记录，不与实际元旦1天混用。"
       ],
       "daily_yoy": null,
       "shoppers_daily_yoy": null,
       "spend_yoy": null,
-      "yoy_basis": null
+      "yoy_basis": "未取得可比同比，保持缺失；披露同比单列保留",
+      "workbook_baseline": {
+        "id": "2020-元旦-holiday-元旦假期-9-42",
+        "year": 2020,
+        "holiday": "元旦",
+        "kind": "holiday",
+        "period": "1.1-1.3",
+        "days": 3,
+        "sales": 1.8295161946063154,
+        "shoppers": 4.2012161415146485,
+        "spend": 4354.729994793191,
+        "daily_sales": 0.6098387315354384,
+        "daily_shoppers": 1.4004053805048828,
+        "status": "available",
+        "quality": "原表公式值",
+        "sheet": "元旦假期",
+        "source_cells": {
+          "sales": {
+            "cell": "I42",
+            "value": 1.8295161946063154,
+            "formula": "=H42/2.9516"
+          },
+          "shoppers": {
+            "cell": "I43",
+            "value": 4.2012161415146485,
+            "formula": "=7.6/1.809"
+          },
+          "spend": {
+            "cell": "I44",
+            "value": 4354.729994793191,
+            "formula": "=I42/I43*10000"
+          },
+          "days": {
+            "cell": "I10",
+            "value": 3,
+            "formula": null
+          },
+          "period": {
+            "cell": "I9",
+            "value": "1.1-1.3"
+          },
+          "source_daily_sales": {
+            "cell": "I11",
+            "value": 0.6098387315354384,
+            "formula": "=I42/3"
+          },
+          "source_daily_shoppers": {
+            "cell": "I12",
+            "value": 1.4004053805048828,
+            "formula": "=I43/3"
+          },
+          "source_summary_spend": {
+            "cell": "I13",
+            "value": 7231,
+            "formula": null
+          }
+        },
+        "notes": [
+          "原表汇总客单价与总额区域不一致，采用总额区域对应口径，原值保留在来源明细。"
+        ],
+        "daily_yoy": null,
+        "shoppers_daily_yoy": null,
+        "spend_yoy": null,
+        "yoy_basis": null
+      },
+      "items": 7.01,
+      "reported_sales_yoy": 19.69,
+      "reported_shoppers_yoy": 47.38,
+      "reported_items_yoy": 35.91,
+      "web_source": {
+        "title": "‘元旦’期间海关监管海南离岛免税销售再创新高",
+        "url": "https://www.chinanews.com/cj/2020/01-02/9049789.shtml",
+        "publishedAt": "2020-01-02",
+        "publisher": "中国新闻网",
+        "authority": "海口海关统计",
+        "locator": "正文首段明确2020年1月1日及三项指标",
+        "periodUrl": "https://app.www.gov.cn/govdata/gov/201911/21/451111/article.html",
+        "checkedAt": "2026-10-09"
+      },
+      "calculations": {
+        "spend": "购物金额（亿元）/购物人次（万人次）×10000",
+        "daily_sales": "购物金额/统计天数",
+        "daily_shoppers": "购物人次/统计天数"
+      }
     },
     {
       "id": "2026-春节-holiday-春节假期-3-17",
@@ -821,7 +992,7 @@
       "daily_sales": 1.108,
       "daily_shoppers": 1.6920000000000002,
       "status": "available",
-      "quality": "原表录入值",
+      "quality": "公开披露＋计算值",
       "sheet": "五一假期",
       "source_cells": {
         "sales": {
@@ -879,11 +1050,108 @@
           "formula": "=$C13/D13-1"
         }
       },
-      "notes": [],
+      "notes": [
+        "披露销售同比10.4%与本表金额计算的日均同比不同；披露值与计算值分别保留。"
+      ],
       "daily_yoy": 8.62745098039217,
       "shoppers_daily_yoy": 6.953223767383054,
       "spend_yoy": 1.56538265424373,
-      "yoy_basis": "原表同比栏（当年公布口径）"
+      "yoy_basis": "原表同比栏（当年公布口径）",
+      "workbook_baseline": {
+        "id": "2026-五一-holiday-五一假期-3-28",
+        "year": 2026,
+        "holiday": "五一",
+        "kind": "holiday",
+        "period": "5.1-5.5",
+        "days": 5,
+        "sales": 5.54,
+        "shoppers": 8.46,
+        "spend": 6548.463356973994,
+        "daily_sales": 1.108,
+        "daily_shoppers": 1.6920000000000002,
+        "status": "available",
+        "quality": "原表录入值",
+        "sheet": "五一假期",
+        "source_cells": {
+          "sales": {
+            "cell": "C28",
+            "value": 5.54,
+            "formula": null
+          },
+          "shoppers": {
+            "cell": "C29",
+            "value": 8.46,
+            "formula": null
+          },
+          "spend": {
+            "cell": "C30",
+            "value": 6548.463356973994,
+            "formula": "=C28/C29*10000"
+          },
+          "days": {
+            "cell": "C10",
+            "value": 5,
+            "formula": null
+          },
+          "period": {
+            "cell": "C9",
+            "value": "5.1-5.5"
+          },
+          "source_daily_sales": {
+            "cell": "C11",
+            "value": 1.108,
+            "formula": "=C28/C$10"
+          },
+          "source_daily_shoppers": {
+            "cell": "C12",
+            "value": 1.6920000000000002,
+            "formula": "=C29/C$10"
+          },
+          "source_summary_spend": {
+            "cell": "C13",
+            "value": 6548.463356973994,
+            "formula": "=C30"
+          },
+          "daily_yoy": {
+            "cell": "J11",
+            "value": 0.0862745098039217,
+            "formula": "=$C11/D11-1"
+          },
+          "shoppers_daily_yoy": {
+            "cell": "J12",
+            "value": 0.06953223767383054,
+            "formula": "=$C12/D12-1"
+          },
+          "spend_yoy": {
+            "cell": "J13",
+            "value": 0.0156538265424373,
+            "formula": "=$C13/D13-1"
+          }
+        },
+        "notes": [],
+        "daily_yoy": 8.62745098039217,
+        "shoppers_daily_yoy": 6.953223767383054,
+        "spend_yoy": 1.56538265424373,
+        "yoy_basis": "原表同比栏（当年公布口径）"
+      },
+      "items": 44.17,
+      "reported_sales_yoy": 10.4,
+      "reported_shoppers_yoy": 7.4,
+      "reported_items_yoy": 3.8,
+      "web_source": {
+        "title": "‘五一’假期海南离岛免税购物金额5.54亿元",
+        "url": "https://www.stcn.com/article/detail/3895504.html",
+        "publishedAt": "2026-05-06",
+        "publisher": "证券时报（央视新闻）",
+        "authority": "海口海关统计",
+        "locator": "正文首段：5月1日至5日三项指标与同比",
+        "checkedAt": "2026-10-09"
+      },
+      "calculations": {
+        "spend": "购物金额（亿元）/购物人次（万人次）×10000",
+        "daily_sales": "购物金额/统计天数",
+        "daily_shoppers": "购物人次/统计天数"
+      }
     },
     {
       "id": "2025-五一-holiday-五一假期-4-28",
@@ -1276,7 +1544,7 @@
       "daily_sales": 0.93,
       "daily_shoppers": 1.5866666666666667,
       "status": "available",
-      "quality": "原表录入值",
+      "quality": "公开披露＋计算值",
       "sheet": "清明假期",
       "source_cells": {
         "sales": {
@@ -1329,11 +1597,103 @@
           "formula": null
         }
       },
-      "notes": [],
+      "notes": [
+        "购物件数与购物人数同比按公开报道补录；2025年清明总额未独立核验，不反推补录。"
+      ],
       "daily_yoy": 14.799999999999999,
       "shoppers_daily_yoy": 19.6,
       "spend_yoy": null,
-      "yoy_basis": "原表同比栏（当年公布口径）"
+      "yoy_basis": "原表同比栏（当年公布口径）",
+      "workbook_baseline": {
+        "id": "2026-清明-holiday-清明假期-3-22",
+        "year": 2026,
+        "holiday": "清明",
+        "kind": "holiday",
+        "period": "4.4-4.6",
+        "days": 3,
+        "sales": 2.79,
+        "shoppers": 4.76,
+        "spend": 5861.344537815126,
+        "daily_sales": 0.93,
+        "daily_shoppers": 1.5866666666666667,
+        "status": "available",
+        "quality": "原表录入值",
+        "sheet": "清明假期",
+        "source_cells": {
+          "sales": {
+            "cell": "C22",
+            "value": 2.79,
+            "formula": null
+          },
+          "shoppers": {
+            "cell": "C23",
+            "value": 4.76,
+            "formula": null
+          },
+          "spend": {
+            "cell": "C24",
+            "value": 5861.344537815126,
+            "formula": "=C22/C23*10000"
+          },
+          "days": {
+            "cell": "C10",
+            "value": 3,
+            "formula": null
+          },
+          "period": {
+            "cell": "C9",
+            "value": "4.4-4.6"
+          },
+          "source_daily_sales": {
+            "cell": "C11",
+            "value": 0.93,
+            "formula": "=C22/C$10"
+          },
+          "source_daily_shoppers": {
+            "cell": "C12",
+            "value": 1.5866666666666667,
+            "formula": "=C23/C$10"
+          },
+          "source_summary_spend": {
+            "cell": "C13",
+            "value": 5861.344537815126,
+            "formula": "=C24"
+          },
+          "daily_yoy": {
+            "cell": "F11",
+            "value": 0.148,
+            "formula": null
+          },
+          "shoppers_daily_yoy": {
+            "cell": "F12",
+            "value": 0.196,
+            "formula": null
+          }
+        },
+        "notes": [],
+        "daily_yoy": 14.799999999999999,
+        "shoppers_daily_yoy": 19.6,
+        "spend_yoy": null,
+        "yoy_basis": "原表同比栏（当年公布口径）"
+      },
+      "items": 22.42,
+      "reported_sales_yoy": 14.8,
+      "reported_shoppers_yoy": 19.6,
+      "reported_items_yoy": 10.1,
+      "web_source": {
+        "title": "今年清明假期海南离岛免税购物金额同比增长14.8%",
+        "url": "https://news.cnr.cn/native/gd/kx/20260407/t20260407_527576041.shtml",
+        "publishedAt": "2026-04-07",
+        "publisher": "央广网（央视新闻客户端）",
+        "authority": "央视报道海南离岛免税统计",
+        "locator": "正文首段：4月4日至6日三项指标与同比",
+        "checkedAt": "2026-10-09"
+      },
+      "calculations": {
+        "spend": "购物金额（亿元）/购物人次（万人次）×10000",
+        "daily_sales": "购物金额/统计天数",
+        "daily_shoppers": "购物人次/统计天数"
+      }
     },
     {
       "id": "2024-清明-holiday-清明假期-5-22",
@@ -1410,7 +1770,7 @@
       "daily_sales": 0.6733333333333333,
       "daily_shoppers": 1.1566666666666667,
       "status": "available",
-      "quality": "原表录入值",
+      "quality": "公开披露＋计算值",
       "sheet": "端午假期",
       "source_cells": {
         "sales": {
@@ -1468,11 +1828,108 @@
           "formula": "=$C13/D13-1"
         }
       },
-      "notes": [],
+      "notes": [
+        "披露销售同比8.6%与本表已收录金额计算的日均同比不同；披露值与计算值分别保留。"
+      ],
       "daily_yoy": 8.021390374331538,
       "shoppers_daily_yoy": 10.862619808306718,
       "spend_yoy": -2.562838077332086,
-      "yoy_basis": "原表同比栏（当年公布口径）"
+      "yoy_basis": "原表同比栏（当年公布口径）",
+      "workbook_baseline": {
+        "id": "2026-端午-holiday-端午假期-3-22",
+        "year": 2026,
+        "holiday": "端午",
+        "kind": "holiday",
+        "period": "6.19-6.21",
+        "days": 3,
+        "sales": 2.02,
+        "shoppers": 3.47,
+        "spend": 5821.325648414985,
+        "daily_sales": 0.6733333333333333,
+        "daily_shoppers": 1.1566666666666667,
+        "status": "available",
+        "quality": "原表录入值",
+        "sheet": "端午假期",
+        "source_cells": {
+          "sales": {
+            "cell": "C22",
+            "value": 2.02,
+            "formula": null
+          },
+          "shoppers": {
+            "cell": "C23",
+            "value": 3.47,
+            "formula": null
+          },
+          "spend": {
+            "cell": "C24",
+            "value": 5821.325648414985,
+            "formula": "=C22/C23*10000"
+          },
+          "days": {
+            "cell": "C10",
+            "value": 3,
+            "formula": null
+          },
+          "period": {
+            "cell": "C9",
+            "value": "6.19-6.21"
+          },
+          "source_daily_sales": {
+            "cell": "C11",
+            "value": 0.6733333333333333,
+            "formula": "=C22/C$10"
+          },
+          "source_daily_shoppers": {
+            "cell": "C12",
+            "value": 1.1566666666666667,
+            "formula": "=C23/C$10"
+          },
+          "source_summary_spend": {
+            "cell": "C13",
+            "value": 5821.325648414985,
+            "formula": "=C24"
+          },
+          "daily_yoy": {
+            "cell": "F11",
+            "value": 0.08021390374331538,
+            "formula": "=$C11/D11-1"
+          },
+          "shoppers_daily_yoy": {
+            "cell": "F12",
+            "value": 0.10862619808306717,
+            "formula": "=$C12/D12-1"
+          },
+          "spend_yoy": {
+            "cell": "F13",
+            "value": -0.025628380773320858,
+            "formula": "=$C13/D13-1"
+          }
+        },
+        "notes": [],
+        "daily_yoy": 8.021390374331538,
+        "shoppers_daily_yoy": 10.862619808306718,
+        "spend_yoy": -2.562838077332086,
+        "yoy_basis": "原表同比栏（当年公布口径）"
+      },
+      "items": 15.9,
+      "reported_sales_yoy": 8.6,
+      "reported_shoppers_yoy": 11.2,
+      "reported_items_yoy": 1.9,
+      "web_source": {
+        "title": "端午期间海南离岛免税购物金额超2亿元",
+        "url": "https://www.stcn.com/article/detail/3971332.html",
+        "publishedAt": "2026-06-22",
+        "publisher": "证券时报（央视新闻）",
+        "authority": "海口海关统计",
+        "locator": "正文海关统计段：6月19日至21日三项指标与同比",
+        "checkedAt": "2026-10-09"
+      },
+      "calculations": {
+        "spend": "购物金额（亿元）/购物人次（万人次）×10000",
+        "daily_sales": "购物金额/统计天数",
+        "daily_shoppers": "购物人次/统计天数"
+      }
     },
     {
       "id": "2025-端午-holiday-端午假期-4-22",
@@ -1599,10 +2056,15 @@
         }
       },
       "notes": [],
-      "daily_yoy": null,
-      "shoppers_daily_yoy": null,
-      "spend_yoy": null,
-      "yoy_basis": null
+      "daily_yoy": -21.153846153846168,
+      "shoppers_daily_yoy": -11.670480549199091,
+      "spend_yoy": -10.736349143084901,
+      "yoy_basis": "缺失同比按连续上一年同组假期的日均/每人次金额计算；原文披露同比单列保留。",
+      "calculations": {
+        "daily_yoy": "2024年daily_sales/2023年daily_sales−1，乘100",
+        "shoppers_daily_yoy": "2024年daily_shoppers/2023年daily_shoppers−1，乘100",
+        "spend_yoy": "2024年spend/2023年spend−1，乘100"
+      }
     },
     {
       "id": "2026-中秋-holiday-国庆中秋假期-3-30",
@@ -1765,7 +2227,8 @@
       "sheet": "",
       "source_cells": {},
       "notes": [
-        "2026年国庆7天；2025年中秋国庆连休8天。图表比较日均；总额同比不直接用于日均同比。"
+        "2026年国庆7天；2025年中秋国庆连休8天。图表比较日均；总额同比不直接用于日均同比。",
+        "国庆购物件数按新华社69.68万件补齐；原文近70万件描述保留于既有央视来源。购物人次同比10.41%仍沿用既有央视报道，未替换为新华社披露。"
       ],
       "daily_yoy": 3.510895883777243,
       "shoppers_daily_yoy": 14.378705102871114,
@@ -1817,7 +2280,7 @@
         },
         "status": "pending"
       },
-      "items": null,
+      "items": 69.68,
       "web_source": {
         "title": "海南封关运作后首个国庆假期 迎来免税消费热",
         "url": "https://china.zjol.com.cn/gnxw/202610/t20261008_31953226.shtml",
@@ -1830,8 +2293,22 @@
         "daily_sales": "购物金额/统计天数",
         "daily_shoppers": "购物人次/统计天数"
       },
-      "items_text": "近70万件",
-      "reported_shoppers_yoy": 10.41
+      "items_text": null,
+      "reported_shoppers_yoy": 10.41,
+      "field_sources": {
+        "items": "https://www.xinhuanet.com/photo/20261008/612a8afa84d144c78bc2e3e6dece4d52/c.html"
+      },
+      "additional_sources": [
+        {
+          "title": "国庆期间海南离岛免税市场销售火热",
+          "url": "https://www.xinhuanet.com/photo/20261008/612a8afa84d144c78bc2e3e6dece4d52/c.html",
+          "publishedAt": "2026-10-08",
+          "checkedAt": "2026-10-09",
+          "publisher": "新华网",
+          "authority": "海口海关统计",
+          "locator": "首张照片说明，明确10月1日至7日金额、人数、件数"
+        }
+      ]
     },
     {
       "id": "2025-国庆中秋-holiday-国庆中秋假期-4-34",
@@ -3232,7 +3709,376 @@
       "reported_sales_yoy": 4.99,
       "reported_shoppers_yoy": 13.35,
       "reported_items_yoy": 7.76
+    },
+    {
+      "id": "2019-端午-holiday-public",
+      "sheet": "",
+      "source_cells": {},
+      "notes": [
+        "原文9526.61万元换算为0.952661亿元；假期日期按国务院2019年安排核验。"
+      ],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "year": 2019,
+      "holiday": "端午",
+      "kind": "holiday",
+      "period": "6.7-6.9",
+      "days": 3,
+      "sales": 0.952661,
+      "shoppers": 2.81,
+      "items": 13.71,
+      "reported_sales_yoy": 51.18,
+      "reported_shoppers_yoy": 34.62,
+      "reported_items_yoy": 49.88,
+      "web_source": {
+        "title": "海南端午免税品销售额9526万元 同比增长过半",
+        "url": "https://travel.china.com.cn/txt/2019-06/11/content_74875824.html",
+        "publishedAt": "2019-06-11",
+        "publisher": "中国网（海南日报）",
+        "authority": "海口海关初步统计",
+        "locator": "正文首段：销售金额、购物人数及购物件数",
+        "periodUrl": "https://app.www.gov.cn/govdata/gov/201812/06/432792/article.html",
+        "checkedAt": "2026-10-09"
+      },
+      "status": "available",
+      "quality": "公开披露＋计算值",
+      "spend": 3390.252669039146,
+      "daily_sales": 0.3175536666666667,
+      "daily_shoppers": 0.9366666666666666,
+      "calculations": {
+        "spend": "购物金额（亿元）/购物人次（万人次）×10000",
+        "daily_sales": "购物金额/统计天数",
+        "daily_shoppers": "购物人次/统计天数"
+      },
+      "yoy_basis": "未取得可比同比，保持缺失；披露同比单列保留"
+    },
+    {
+      "id": "2020-中秋国庆-holiday-public",
+      "sheet": "",
+      "source_cells": {},
+      "notes": [
+        "采用海关总署发布并由央视报道的10.4亿元精度，不混入商务厅含有税销售额12.2亿元。"
+      ],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "year": 2020,
+      "holiday": "中秋国庆",
+      "comparison_group": "国庆",
+      "kind": "holiday",
+      "period": "10.1-10.8",
+      "days": 8,
+      "sales": 10.4,
+      "shoppers": 14.68,
+      "items": 99.89,
+      "reported_sales_yoy": 148.7,
+      "reported_shoppers_yoy": 43.9,
+      "reported_items_yoy": 97.2,
+      "web_source": {
+        "title": "海南离岛免税8天销售10.4亿！中秋国庆假期数据来了",
+        "url": "https://www.itaiwannews.cn/20201009/7fcef3cd-4004-c9b1-321d-206cdf662be5.html",
+        "publishedAt": "2020-10-09",
+        "publisher": "海峡飞虹（央视新闻客户端）",
+        "authority": "海关总署、海口海关",
+        "locator": "正文首段：中秋国庆长假金额、旅客及件数",
+        "periodUrl": "https://app.www.gov.cn/govdata/gov/201911/21/451111/article.html",
+        "checkedAt": "2026-10-09"
+      },
+      "status": "available",
+      "quality": "公开披露＋计算值",
+      "spend": 7084.4686648501365,
+      "daily_sales": 1.3,
+      "daily_shoppers": 1.835,
+      "calculations": {
+        "spend": "购物金额（亿元）/购物人次（万人次）×10000",
+        "daily_sales": "购物金额/统计天数",
+        "daily_shoppers": "购物人次/统计天数"
+      },
+      "yoy_basis": "未取得可比同比，保持缺失；披露同比单列保留"
+    },
+    {
+      "id": "2021-国庆-holiday-public",
+      "sheet": "",
+      "source_cells": {},
+      "notes": [
+        "披露同比为海关原文口径；日均同比按本表2021年7天与2020年8天计算，两者分别保留。"
+      ],
+      "daily_yoy": 61.53846153846154,
+      "shoppers_daily_yoy": 40.13234721681589,
+      "spend_yoy": 15.275641025641029,
+      "year": 2021,
+      "holiday": "国庆",
+      "kind": "holiday",
+      "period": "10.1-10.7",
+      "days": 7,
+      "sales": 14.7,
+      "shoppers": 18,
+      "items": 200,
+      "reported_sales_yoy": 66.9,
+      "reported_shoppers_yoy": 61.6,
+      "reported_items_yoy": 136,
+      "web_source": {
+        "title": "海南国庆假期接待游客370.22万人次 揽金超58亿元",
+        "url": "https://www.cnr.cn/hn/jrhn/20211008/t20211008_525627241.shtml",
+        "publishedAt": "2021-10-08",
+        "publisher": "央广网",
+        "authority": "海口海关统计",
+        "locator": "正文‘免税购物持续发力’段，10月1日至7日海关数据",
+        "checkedAt": "2026-10-09"
+      },
+      "status": "available",
+      "quality": "公开披露＋计算值",
+      "spend": 8166.666666666667,
+      "daily_sales": 2.1,
+      "daily_shoppers": 2.5714285714285716,
+      "calculations": {
+        "spend": "购物金额（亿元）/购物人次（万人次）×10000",
+        "daily_sales": "购物金额/统计天数",
+        "daily_shoppers": "购物人次/统计天数"
+      },
+      "yoy_basis": "缺失同比按连续上一年同组假期的日均/每人次金额计算；原文披露同比单列保留。"
+    },
+    {
+      "id": "2023-端午-holiday-public",
+      "sheet": "",
+      "source_cells": {},
+      "notes": [
+        "该报道未披露购物件数及同比，保持缺失；不按后年同比反推。"
+      ],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "year": 2023,
+      "holiday": "端午",
+      "kind": "holiday",
+      "period": "6.22-6.24",
+      "days": 3,
+      "sales": 2.6,
+      "shoppers": 4.37,
+      "web_source": {
+        "title": "端午节期间海南离岛免税‘揽金’2.6亿元",
+        "url": "https://news.hainan.net/hainan/minsheng/minshengliebiao/2023/06/25/4750199.shtml",
+        "publishedAt": "2023-06-25",
+        "publisher": "海南在线（椰网/海拔新闻）",
+        "authority": "海口海关统计",
+        "locator": "正文首段：6月22日至24日金额及购物人数",
+        "checkedAt": "2026-10-09"
+      },
+      "status": "available",
+      "quality": "公开披露＋计算值",
+      "spend": 5949.656750572082,
+      "daily_sales": 0.8666666666666667,
+      "daily_shoppers": 1.4566666666666668,
+      "calculations": {
+        "spend": "购物金额（亿元）/购物人次（万人次）×10000",
+        "daily_sales": "购物金额/统计天数",
+        "daily_shoppers": "购物人次/统计天数"
+      },
+      "yoy_basis": "未取得可比同比，保持缺失；披露同比单列保留"
+    },
+    {
+      "id": "2020-元旦同日历三天-detail-public-baseline",
+      "year": 2020,
+      "holiday": "元旦同日历三天",
+      "kind": "detail",
+      "period": "1.1-1.3",
+      "days": 3,
+      "sales": 1.8295161946063154,
+      "shoppers": 4.2012161415146485,
+      "spend": 4354.729994793191,
+      "daily_sales": 0.6098387315354384,
+      "daily_shoppers": 1.4004053805048828,
+      "status": "available",
+      "quality": "原表公式值",
+      "sheet": "元旦假期",
+      "source_cells": {
+        "sales": {
+          "cell": "I42",
+          "value": 1.8295161946063154,
+          "formula": "=H42/2.9516"
+        },
+        "shoppers": {
+          "cell": "I43",
+          "value": 4.2012161415146485,
+          "formula": "=7.6/1.809"
+        },
+        "spend": {
+          "cell": "I44",
+          "value": 4354.729994793191,
+          "formula": "=I42/I43*10000"
+        },
+        "days": {
+          "cell": "I10",
+          "value": 3,
+          "formula": null
+        },
+        "period": {
+          "cell": "I9",
+          "value": "1.1-1.3"
+        },
+        "source_daily_sales": {
+          "cell": "I11",
+          "value": 0.6098387315354384,
+          "formula": "=I42/3"
+        },
+        "source_daily_shoppers": {
+          "cell": "I12",
+          "value": 1.4004053805048828,
+          "formula": "=I43/3"
+        },
+        "source_summary_spend": {
+          "cell": "I13",
+          "value": 7231,
+          "formula": null
+        }
+      },
+      "notes": [
+        "原表汇总客单价与总额区域不一致，采用总额区域对应口径，原值保留在来源明细。",
+        "1月2日、3日为工作日；该三天窗口由原表公式反推，非独立公开披露。"
+      ],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "yoy_basis": "原表公式反推的同日历窗口，不能作为法定假期",
+      "holiday_group": "元旦"
+    },
+    {
+      "id": "2026-端午前两天-detail-public",
+      "sheet": "",
+      "source_cells": {},
+      "notes": [
+        "阶段记录与端午完整假期重叠，不加总。"
+      ],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "year": 2026,
+      "holiday": "端午前两天",
+      "holiday_group": "端午",
+      "kind": "detail",
+      "period": "6.19-6.20",
+      "days": 2,
+      "sales": 1.46,
+      "shoppers": 2.43,
+      "items": 11,
+      "reported_sales_yoy": 41.7,
+      "reported_shoppers_yoy": 13,
+      "reported_items_yoy": 8.9,
+      "web_source": {
+        "title": "海南自贸港政策红利持续释放 端午消费热度攀升",
+        "url": "https://news.cnr.cn/kuaixun/20260621/t20260621_527670381.shtml",
+        "publishedAt": "2026-06-21",
+        "publisher": "央广网",
+        "authority": "海口海关统计",
+        "locator": "正文‘据海口海关统计，今年端午节前两天’段",
+        "checkedAt": "2026-10-09"
+      },
+      "status": "available",
+      "quality": "公开披露＋计算值",
+      "spend": 6008.230452674897,
+      "daily_sales": 0.73,
+      "daily_shoppers": 1.215,
+      "calculations": {
+        "spend": "购物金额（亿元）/购物人次（万人次）×10000",
+        "daily_sales": "购物金额/统计天数",
+        "daily_shoppers": "购物人次/统计天数"
+      },
+      "yoy_basis": "未取得可比同比，保持缺失；披露同比单列保留"
+    },
+    {
+      "id": "2026-国庆首日-detail-public",
+      "sheet": "",
+      "source_cells": {},
+      "notes": [
+        "阶段记录与国庆前三天、前五天及完整假期重叠，不加总。"
+      ],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "year": 2026,
+      "holiday": "国庆首日",
+      "holiday_group": "国庆",
+      "kind": "detail",
+      "period": "10.1",
+      "days": 1,
+      "sales": 1.07,
+      "shoppers": 1.89,
+      "items": 8.3,
+      "reported_sales_yoy": 21.17,
+      "reported_shoppers_yoy": 13.81,
+      "reported_items_yoy": 11.24,
+      "web_source": {
+        "title": "国庆假期首日 海南离岛免税购物金额超1亿元",
+        "url": "https://www.stcn.com/article/detail/4205828.html",
+        "publishedAt": "2026-10-02",
+        "publisher": "证券时报（央视新闻）",
+        "authority": "海口海关统计",
+        "locator": "正文首段：国庆首日金额、人数、件数及同比",
+        "checkedAt": "2026-10-09"
+      },
+      "status": "available",
+      "quality": "公开披露＋计算值",
+      "spend": 5661.375661375661,
+      "daily_sales": 1.07,
+      "daily_shoppers": 1.89,
+      "calculations": {
+        "spend": "购物金额（亿元）/购物人次（万人次）×10000",
+        "daily_sales": "购物金额/统计天数",
+        "daily_shoppers": "购物人次/统计天数"
+      },
+      "yoy_basis": "未取得可比同比，保持缺失；披露同比单列保留"
+    },
+    {
+      "id": "2026-国庆前三天-detail-public",
+      "sheet": "",
+      "source_cells": {},
+      "notes": [
+        "阶段记录与国庆首日、前五天及完整假期重叠，不加总。"
+      ],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "year": 2026,
+      "holiday": "国庆前三天",
+      "holiday_group": "国庆",
+      "kind": "detail",
+      "period": "10.1-10.3",
+      "days": 3,
+      "sales": 3.58,
+      "shoppers": 5.51,
+      "items": 27.7,
+      "reported_sales_yoy": 8.85,
+      "reported_shoppers_yoy": 12.9,
+      "reported_items_yoy": 8.02,
+      "web_source": {
+        "title": "国庆假期前三天 海南离岛免税购物金额超3.5亿元",
+        "url": "https://www.stcn.com/article/detail/4206184.html",
+        "publishedAt": "2026-10-04",
+        "publisher": "证券时报（央视新闻）",
+        "authority": "海口海关统计",
+        "locator": "正文首段：10月1日至3日三项指标与同比",
+        "checkedAt": "2026-10-09"
+      },
+      "status": "available",
+      "quality": "公开披露＋计算值",
+      "spend": 6497.277676950999,
+      "daily_sales": 1.1933333333333334,
+      "daily_shoppers": 1.8366666666666667,
+      "calculations": {
+        "spend": "购物金额（亿元）/购物人次（万人次）×10000",
+        "daily_sales": "购物金额/统计天数",
+        "daily_shoppers": "购物人次/统计天数"
+      },
+      "yoy_basis": "未取得可比同比，保持缺失；披露同比单列保留"
     }
   ],
-  "updatedAt": "2026-10-08"
+  "updatedAt": "2026-10-09",
+  "coverageNotes": [
+    "月度核心金额、人次、件数已收录至2026年8月；2026年9月单月尚未独立核验，不用中秋或暑期数据代替。",
+    "2025年清明缺少独立核验的假期总额，保留缺失；2026年清明披露同比可单独展示。",
+    "2022年国庆原表日期与年份不一致，总额为公式反推；未核验实际期间，不推定天数或日均。",
+    "2025年中秋与国庆连休，无独立中秋总额；2026年中秋无可比上一年独立假期同比。",
+    "月度旅游人次、转化率的部分早期及2026年记录缺少可核验原始口径，保留空值；首年同月基数不存在的同比不补0。"
+  ]
 }
