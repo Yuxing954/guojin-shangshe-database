@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>黄金珠宝数据 · 国金商社</title>
+  <link rel="stylesheet" href="scripts/site.css?v=5"><link rel="stylesheet" href="scripts/gold-jewelry.css?v=20261009macro">
+  <script defer src="scripts/site-shell.js?v=3"></script><script defer src="scripts/gold-jewelry-model.js?v=3"></script><script defer src="scripts/gold-research-model.js?v=20261009"></script><script defer src="scripts/gold-macro-model.js?v=20261009macro"></script><script defer src="scripts/gold-jewelry.js?v=20261009macro"></script>
+</head>
+<body class="gold-page" data-site-section="industry">
+<main class="gj-wrap">
+  <header class="gj-header"><div><a class="gj-back" href="industry.html#gold">行业数据 / 黄金珠宝</a><h1>黄金珠宝数据</h1><p>跟踪金价驱动、珠宝需求与公司经营。</p></div><div class="gj-updated" id="asof">正在读取数据…</div></header>
+  <div id="load-error" class="gj-error" role="alert" hidden></div>
+  <div id="dashboard" hidden>
+    <nav class="gj-tabs" aria-label="黄金珠宝数据视图"><button class="active" data-view="overview" aria-pressed="true">金价驱动</button><button data-view="demand" aria-pressed="false">终端需求</button><button data-view="companies" aria-pressed="false">公司经营</button><button data-view="prices" aria-pressed="false">金价与品牌</button><button data-view="sources" aria-pressed="false">数据与口径</button></nav>
+    <section id="view-overview" class="gj-view">
+      <div class="gj-section-head"><div><h2>金价驱动与政策预期</h2><p>先看利率和美元，再看投资资金、央行购金与下一次预期重定价。</p></div><button class="gj-button" id="macro-export">导出驱动数据</button></div>
+      <div id="core-kpis" class="gj-kpis"></div>
+      <div class="gj-grid">
+        <article class="gj-card"><div class="gj-card-head"><div><h2>美联储：市场在定价什么</h2><p id="policy-current"></p></div><label>会议 <select id="fed-meeting"></select></label></div><div id="fed-probability" class="gj-fed"></div><details class="gj-detail"><summary>利率区间概率与历史对比</summary><div class="gj-table-scroll" tabindex="0"><table id="fed-history-table" class="gj-table"></table></div></details><details class="gj-detail"><summary>联储官员的年末利率预测 · SEP</summary><div id="policy-sep" class="gj-sep"></div></details><p id="fed-source" class="gj-footnote"></p></article>
+        <article class="gj-card"><div class="gj-card-head"><div><h2>利率、美元与成本传导</h2><p id="macro-caption"></p></div><label>指标 <select id="macro-indicator"></select></label></div><div class="gj-controls"><div id="macro-latest" class="gj-macro-latest"></div><label>范围 <select id="macro-window"><option value="all">全部已收录</option><option value="30">近30天</option></select></label></div><div id="macro-chart" class="gj-chart"></div><p id="macro-mechanism" class="gj-footnote"></p></article>
+        <article class="gj-card"><div class="gj-card-head"><div><h2>投资资金与央行购金</h2><p>资金流入与仓位变化分开，月度和周度使用各自时点。</p></div></div><div id="gold-flows" class="gj-flow-grid"></div><div class="gj-table-scroll" tabindex="0"><table id="position-table" class="gj-table"></table></div><p class="gj-footnote">ETF为实物支持产品；央行数为已报告净买入，有披露滞后。期货仓位为世界黄金协会转引CFTC，保留转引状态。</p></article>
+        <article class="gj-card"><div class="gj-card-head"><div><h2>接下来哪些数据会改变预期</h2><p>按北京时间排列 · 美国官方发布日历</p></div></div><div id="macro-events" class="gj-events"></div><p class="gj-footnote">9月PCE在10月FOMC之后发布；11月非农会影响12月路径。日程可能调整，点击回到官方日历。</p></article>
+      </div>
+      <article class="gj-card"><div class="gj-card-head"><div><h2>通胀与就业：政策判断的输入</h2><p>最新已发布值；月份与发布日期分别标注，尚未发布月份留空。</p></div></div><div id="macro-releases" class="gj-release-grid"></div><p class="gj-footnote">CPI同比为未季调、就业为季调。缺少可核验的市场一致预期时，仅展示实际值，不计算“超预期”。通胀、避险与紧缩可能同时作用，不机械推导金价涨跌。</p></article>
+    </section>
+    <section id="view-demand" class="gj-view" hidden>
+      <div class="gj-section-head"><div><h2>零售金额与实物消费</h2><p>两组数据分别回答消费金额与用金量的问题，统计范围不同。</p></div><button class="gj-button" id="demand-export">导出当前需求数据</button></div>
+      <div id="demand-kpis" class="gj-kpis"></div>
+      <article class="gj-card"><div class="gj-card-head"><div><h2>金银珠宝类零售额</h2><p>全国限额以上单位 · 月度</p></div><label>范围 <select id="retail-window"><option value="all">全部已收录</option><option value="12">近12个月</option><option value="2026">2026年</option></select></label></div><div class="gj-controls"><div class="gj-switch" id="retail-mode"><button data-mode="yoy" class="active" aria-pressed="true">当月同比</button><button data-mode="amount" aria-pressed="false">当月金额</button><button data-mode="ytdYoy" aria-pressed="false">累计同比</button></div><span id="retail-caption"></span></div><div id="retail-chart" class="gj-chart"></div><details class="gj-detail"><summary>查看月度明细与来源</summary><div class="gj-table-scroll" tabindex="0"><table id="retail-table" class="gj-table"></table></div></details><p class="gj-footnote">1—2月金额为两月合计；不拆月、不补零。同比使用原始发布值，不由跨年绝对额重新计算。</p></article>
+      <article class="gj-card"><div class="gj-card-head"><div><h2>金饰消费与投资需求</h2><p>黄金首饰 / 金条及金币 / 工业及其他用金</p></div><label>显示 <select id="volume-mode"><option value="quarter-yoy">单季同比 · 计算值</option><option value="quarter-value">单季吨数 · 累计作差</option><option value="cumulative-yoy">累计同比 · 原始披露</option><option value="cumulative-value">累计吨数 · 原始披露</option></select></label></div><div id="volume-chart" class="gj-chart"></div><details class="gj-detail"><summary>查看消费量、期间与计算依据</summary><div class="gj-table-scroll" tabindex="0"><table id="volume-table" class="gj-table"></table></div></details><p class="gj-footnote" id="volume-note"></p></article>
+      <article class="gj-card"><div class="gj-card-head"><div><h2>全年用金结构</h2><p>完整年度披露 · 吨</p></div><span class="gj-tag">2023—2025</span></div><div id="annual-composition" class="gj-composition"></div><p class="gj-footnote">采用Q4累计量作为全年值，金条金币不并入金饰。</p></article>
+    </section>
+    <section id="view-companies" class="gj-view" hidden>
+      <div class="gj-section-head"><div><h2>增长来源与盈利质量</h2><p>先对齐报告期间、原币与利润口径，再比较经营变化。</p></div><button class="gj-button" id="finance-export">导出财务对比</button></div>
+      <article class="gj-card"><div class="gj-card-head"><div><h2>五家公司 · 2026年上半年</h2><p>收入与归母利润为1—6月流量，存货为6月末余额；人民币亿元。</p></div></div><div class="gj-table-scroll" tabindex="0"><table id="finance-table" class="gj-table"></table></div><p class="gj-footnote">直营、加盟、批发和投资金业务结构不同，毛利率不作品牌定价能力排名。“—”表示未收录，现金余额不代替经营现金流。</p></article>
+<details class="gj-detail gj-card"><summary>公司附加披露与逐字段来源</summary><div class="gj-card-head"><label>公司 <select id="company-select"></select></label></div><div id="company-focus" class="gj-table-scroll" tabindex="0"></div></details>
+      <article class="gj-card"><div class="gj-card-head"><div><h2>门店调整与同店量价</h2><p>港股财年与自然年财务单独展示，金额与黄金重量分开。</p></div><button class="gj-button" id="operations-export">导出所选经营指标</button></div><div class="gj-controls"><label>公司 <select id="operation-company"></select></label><label>报告期间 <select id="operation-period"></select></label></div><div id="operations-summary" class="gj-mini-kpis"></div><div class="gj-table-scroll" tabindex="0"><table id="operations-table" class="gj-table"></table></div><p class="gj-footnote">六福FY2026为2025.04—2026.03，Q4为2026.01—03；周大福同财年。六福定价黄金、周大福定价首饰的占比保留各自产品范围。</p></article>
+    </section>
+    <section id="view-prices" class="gj-view" hidden>
+      <div class="gj-section-head"><div><h2>原料金价与品牌报价</h2><p>用于观察成本环境和报价变化；报价不等于实际成交价。</p></div></div>
+      <div class="gj-price-range"><label>历史开始 <input id="price-start" type="date"></label><label>历史结束 <input id="price-end" type="date"></label><button id="price-reset" class="gj-button">全部历史</button><span id="price-range-note" aria-live="polite">区间用于两组历史与报价表，缺日不补价格。</span></div>
+      <article class="gj-card"><div class="gj-card-head"><div><h2>上金所 Au99.99</h2><p>官方交易日披露 · 元/克</p></div><button class="gj-button" id="benchmark-export">导出上金所数据</button></div><div class="gj-controls"><label>价格口径 <select id="benchmark-type"><option value="close">收盘价</option><option value="weighted_average">加权平均价</option></select></label><span id="benchmark-caption"></span></div><div id="benchmark-chart" class="gj-chart"></div><details class="gj-detail"><summary>查看交易日明细</summary><div class="gj-table-scroll" tabindex="0"><table id="benchmark-table" class="gj-table"></table></div></details><p class="gj-footnote">仅展示已收录交易日，未返回观测的日期不补价格。本批覆盖2026.09.01—10.08，扩展长期序列尚待采集。</p></article>
+      <article class="gj-card"><div class="gj-card-head"><div><h2>品牌按克牌价</h2><p>历史序列固定来源和口径；下面的报价表可作同日比较。</p></div><div class="gj-export-actions"><button class="gj-button" id="brand-history-export">导出所选历史</button><button class="gj-button" id="quotes-export">导出报价表</button></div></div><div class="gj-controls"><label>历史序列 <select id="brand-series"></select></label></div><div id="brand-chart" class="gj-chart"></div><div class="gj-controls"><label>报价表品牌 <select id="quote-brand"></select></label><label>报价日期 <select id="quote-date"></select></label></div><div class="gj-table-scroll" tabindex="0"><table id="quotes-table" class="gj-table"></table></div><p class="gj-footnote">周六福收录1条官方指导价，其余报价为第三方转引。纯度、工费与税口径未核清时不计算与上金所的参考价差。定价产品需固定SKU、重量与渠道另建产品篮子。</p></article>
+    </section>
+    <section id="view-sources" class="gj-view" hidden>
+      <div class="gj-section-head"><div><h2>来源与口径</h2><p>原始披露、平台转引与统计机构转引分别标识；每项保留期间和来源。</p></div></div>
+      <details class="gj-detail gj-card"><summary>金价驱动的来源清单</summary><div class="gj-table-scroll" tabindex="0"><table id="macro-sources-table" class="gj-table"></table></div></details>
+      <details class="gj-detail gj-card"><summary>需求与财务的来源清单</summary><div class="gj-table-scroll" tabindex="0"><table id="sources-table" class="gj-table"></table></div></details>
+      <details class="gj-detail gj-card"><summary>10品牌官方来源核验记录</summary><div class="gj-table-scroll" tabindex="0"><table id="audit-table" class="gj-table"></table></div></details>
+      <details class="gj-detail gj-card"><summary>需求与财务的计算口径</summary><ul id="method-notes" class="gj-notes"></ul></details>
+      <p class="gj-downloads"><a href="data/gold-jewelry/macro.json">金价驱动数据</a><a href="data/gold-jewelry/research.json">需求与财务数据</a><a href="data/gold-jewelry/company-operations.json">公司公告字段</a><a href="data/gold-jewelry/observations.json">金价与品牌报价</a></p>
+    </section>
+    <footer class="gj-footer"><span>国金商社研究数据库 · 黄金珠宝</span><span>不同频率使用各自披露期间，缺失值留空。</span></footer>
+  </div>
+</main>
+</body></html>

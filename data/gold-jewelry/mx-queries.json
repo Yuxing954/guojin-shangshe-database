@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "allowedTools": [
+    "mx_macro_data",
+    "mx_ashare_finance_data",
+    "mx_hk_finance_data",
+    "mx_finance_search_notice",
+    "mx_finance_search_news"
+  ],
+  "note": "官方MCP实测后更新工具名。API备用接口仅保留兼容，不代表MCP工具。响应保留私有，指标身份/频率/精度/原文均核验后才能入库。",
+  "queries": [
+    {
+      "id": "jewelry_retail",
+      "tool": "mx_macro_data",
+      "frequency": "monthly",
+      "query": "截至{as_of}，查询{start}起国家统计局限额以上单位金银珠宝类零售额，当期金额、官方当期同比、累计金额和累计同比分列。1—2月是合并期间，不拆出单月；不要全社会珠宝市场规模。返回原始指标代码、完整指标名称、单位、统计期间起止、期间类型、发布日期、原始来源URL；未发布留空。",
+      "legacyTool": "mx_data"
+    },
+    {
+      "id": "gold_consumption",
+      "tool": "mx_macro_data",
+      "frequency": "quarterly",
+      "query": "截至{as_of}，查询{start}起中国黄金协会全国黄金消费量，分黄金首饰、金条及金币、工业及其他用金；保留原始累计期间、吨及官方同比。不要与世界黄金协会口径拼接，单季值仅由同口径同年度累计量差分，缺数留空。附指标代码、原始来源URL、发布日期。",
+      "legacyTool": "mx_data"
+    },
+    {
+      "id": "gold_benchmark",
+      "tool": "mx_macro_data",
+      "frequency": "daily",
+      "query": "截至{as_of}，查询{start}起上海黄金交易所Au99.99每日收盘价和加权平均价，元/克，分列交易日期。不得用Au(T+D)、期货、上海金午盘定盘价、盘中现价替换。返回指标代码、交易日期、收盘是否已形成、原始来源URL。",
+      "legacyTool": "mx_data"
+    },
+    {
+      "id": "company_financials",
+      "tool": "mx_ashare_finance_data",
+      "frequency": "disclosure",
+      "query": "截至{as_of}，查询{company}自{start}起定期报告披露的收入、归母净利润、毛利额、毛利率、存货、经营现金流。每个指标附币种和单位、报告期起止、自然年/财年、当期/累计口径、合并范围、公告名称、发布日期、原始公告URL与页码。不要预测值、不要以珠宝零售额代替公司收入。未披露留空。",
+      "legacyTool": "mx_data"
+    },
+    {
+      "id": "company_operations",
+      "tool": "mx_finance_search_notice",
+      "frequency": "disclosure",
+      "query": "查找{company}在{start}至{as_of}已发布的官方经营公告与业绩材料，关注期末门店、新开、关闭、直营加盟、同店销售额/销量、按克/定价黄金占比及客单。只返回原始公告或公司IR链接、报告期、披露日期和原文位置；将未披露与不适用分开。",
+      "legacyTool": "mx_search"
+    },
+    {
+      "id": "company_financials_hk",
+      "tool": "mx_hk_finance_data",
+      "frequency": "disclosure",
+      "query": "截至{as_of}，查询{company}自{start}起定期报告披露的收入、归母净利润、毛利额、毛利率、存货、经营现金流。每个指标附币种和单位、报告期起止、自然年/财年、当期/累计口径、合并范围、公告名称、发布日期、原始公告URL与页码。不要预测值、不要以珠宝零售额代替公司收入。未披露留空。",
+      "legacyTool": "mx_data"
+    },
+    {
+      "id": "gold_macro_drivers",
+      "tool": "mx_macro_data",
+      "frequency": "daily",
+      "query": "截至{as_of}，逐项查询{start}起美国10年TIPS实际收益率、DXY美元指数、美元兑人民币中间价及EIA欧洲布伦特FOB现货日频历史。准确指标全名、代码、单位、原始机构、日期和数值分列。不以政策利率/广义美元指数/即期汇率/期货替代；返回被截断时注明真实覆盖。"
+    },
+    {
+      "id": "fedwatch_expectations",
+      "tool": "mx_finance_search_news",
+      "frequency": "snapshot",
+      "query": "截至{as_of}，检索CME FedWatch下一次与年末FOMC会议目标利率区间完整概率，附原始页面、观测时刻及时区、会议日期、当前政策利率基准；转引稿另标发布日期。缺原始时刻不标为CME原始快照；点阵图与政策事实分别列。"
+    },
+    {
+      "id": "us_inflation_employment",
+      "tool": "mx_macro_data",
+      "frequency": "monthly",
+      "query": "截至{as_of}，查询{start}起美国CPI-U及核心CPI同比、核心PCE同比、新增非农就业季调当月值、U3失业率季调。明确指标、单位、统计期和发布日期，未来未发布月份留空；不混中国指标、失业率未季调/U6，不以非农总人数代替新增人数。附BLS/BEA原始发布，预期与实际分别标记。"
+    }
+  ],
+  "endpoint": "https://mxapi.eastmoney.com/mxds/mcp",
+  "transport": "StreamableHttp",
+  "authenticationHeader": "em_api_key",
+  "documentation": "https://mxapi.eastmoney.com/mxds/doc/mcp-install.md",
+  "legacyApiReference": "https://github.com/jm12138/eastmoney-mx-finance-mcp-server/blob/main/server.py"
+}

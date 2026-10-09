@@ -1,0 +1,45 @@
+name: Check gold jewelry database
+on:
+  pull_request:
+    paths:
+      - 'gold-jewelry.html'
+      - 'scripts/gold*.js'
+      - 'scripts/gold-jewelry.css'
+      - 'data/gold-jewelry/**'
+      - 'update/gold*.py'
+      - 'update/miaoxiang_mcp.py'
+      - 'tests/*gold*'
+      - '.github/workflows/check-gold-jewelry.yml'
+  push:
+    branches: ['feat/gold-jewelry-database-20261008']
+    paths:
+      - 'gold-jewelry.html'
+      - 'scripts/gold*.js'
+      - 'scripts/gold-jewelry.css'
+      - 'data/gold-jewelry/**'
+      - 'update/gold*.py'
+      - 'update/miaoxiang_mcp.py'
+      - 'tests/*gold*'
+      - '.github/workflows/check-gold-jewelry.yml'
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate data and guards without live credentials
+        run: |
+          node --check scripts/gold-jewelry.js
+          node --check scripts/gold-jewelry-history.js
+          node --check scripts/gold-research-model.js
+          node --check scripts/gold-macro-model.js
+          node --test tests/gold*.test.js
+          python -m unittest discover -s tests -p 'test_gold*.py' -v
+          python update/gold_jewelry.py validate
