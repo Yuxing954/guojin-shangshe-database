@@ -18,6 +18,8 @@ jobs:
           node-version: '22'
       - run: |
           node --check scripts/macro.js
+          node --check scripts/macro-dashboard-model.js
+          node --test tests/macro-dashboard.test.cjs
           node --check scripts/prediction-model.js
           node --check scripts/research-chart.js
           node --test tests/macro-refinement.test.cjs
@@ -28,4 +30,18 @@ jobs:
           node --test tests/consumption-macro.test.cjs
           node scripts/site-data.test.cjs
           node scripts/industry-model.test.cjs
+      - name: Install browser test dependency
+        run: |
+          npm install --no-save --package-lock=false playwright@1.62.1
+          npx playwright install --with-deps chromium
+      - name: Verify macro dashboard in browser
+        env:
+          MACRO_SCREENSHOT_DIR: artifacts/macro
+        run: node tests/macro-dashboard.browser.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: macro-dashboard-previews
+          path: artifacts/macro
+          if-no-files-found: ignore
 
