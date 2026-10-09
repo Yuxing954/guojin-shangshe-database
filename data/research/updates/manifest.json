@@ -1,11 +1,11 @@
 {
-  "syncedAt": "2026-10-09T13:21:05+08:00",
+  "syncedAt": "2026-10-09T14:00:34+08:00",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
   "coverageFrom": "2026-09-03",
-  "coverageTo": "2026-10-09T13:15:29.168+0800",
+  "coverageTo": "2026-10-09T13:58:41.718+0800",
   "oldestFetched": "2026-09-02T23:59:36.211+0800",
-  "fetchedTopics": 5163,
+  "fetchedTopics": 5177,
   "files": {
     "views": [
       "data/research/updates/2026-10-09-views-002.csv",
@@ -15,6 +15,7 @@
       "data/research/updates/2026-10-07-views-002.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-10-09-all_views-004.csv",
       "data/research/updates/2026-10-09-all_views-003.csv",
       "data/research/updates/2026-10-09-all_views-001.csv",
       "data/research/updates/2026-10-09-all_views-002.csv",
@@ -58,19 +59,19 @@
   },
   "counts": {
     "views": 203,
-    "all_views": 3874,
+    "all_views": 3886,
     "minutes": 99
   },
   "latest": {
     "views": "2026-10-09T13:11:48",
-    "all_views": "2026-10-09T13:13:58",
+    "all_views": "2026-10-09T13:58:41",
     "minutes": "2026-09-28T13:18:13"
   },
   "excluded": {
-    "附件标题": 1005,
+    "附件标题": 1006,
     "内容过短且无信息量（24字）": 1,
     "内容过短（7字）": 2,
-    "图片贴（仅标题文字）": 148,
+    "图片贴（仅标题文字）": 149,
     "纯图片贴（无文字）": 76,
     "内容过短（10字）": 6,
     "内容过短（5字）": 4,
@@ -4229,21 +4230,33 @@
       "82258842251215152",
       "82258842251828522",
       "45548825541854248",
-      "22258842251884481"
+      "22258842251884481",
+      "14425445544525542",
+      "82258228828428582",
+      "45548558858282588",
+      "45548558858285118",
+      "14425445545418212",
+      "22258228828242451",
+      "22258228828242581",
+      "55521551151541824",
+      "45548558858524518",
+      "14425445545412242",
+      "45548558858551258",
+      "45548558858552818"
     ]
   },
   "lastRun": {
-    "runId": "2026-10-09-manual-2",
-    "syncedAt": "2026-10-09T13:21:05+08:00",
-    "previousCoverageTo": "2026-10-09T11:07:35.229+0800",
-    "fetchedUniqueTopics": 59,
-    "newSourceTopics": 33,
+    "runId": "2026-10-09-hourly-1400",
+    "syncedAt": "2026-10-09T14:00:34+08:00",
+    "previousCoverageTo": "2026-10-09T13:15:29.168+0800",
+    "fetchedUniqueTopics": 30,
+    "newSourceTopics": 14,
     "added": {
-      "views": 4,
-      "all_views": 22
+      "views": 0,
+      "all_views": 12
     },
-    "excluded": 7,
+    "excluded": 2,
     "duplicates": 0,
-    "record": "data/research/updates/2026-10-09-update-record-2.json"
+    "record": "data/research/updates/2026-10-09-update-record-3.json"
   }
 }

@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "runId": "2026-10-09-hourly-1400",
+  "syncedAt": "2026-10-09T14:00:34+08:00",
+  "previousCoverageTo": "2026-10-09T13:15:29.168+0800",
+  "fetchedUniqueTopics": 30,
+  "newSourceTopics": 14,
+  "added": {
+    "views": 0,
+    "all_views": 12
+  },
+  "excluded": 2,
+  "duplicates": 0,
+  "record": "data/research/updates/2026-10-09-update-record-3.json",
+  "sourceGroup": "88888142214212",
+  "sourceName": "水木调研纪要-2.0",
+  "fetchedThrough": "2026-10-09T13:58:41.718+0800",
+  "oldestFetchedThisRun": "2026-10-09T12:25:14.156+0800",
+  "rawPageRecords": 30,
+  "paginationDuplicates": 0,
+  "overlapTopics": 16,
+  "pages": [
+    {
+      "page": "page-001.json",
+      "count": 30,
+      "newest": "2026-10-09T13:58:41.718+0800",
+      "oldest": "2026-10-09T12:25:14.156+0800"
+    }
+  ],
+  "duplicateScope": "按 topic_id 对照既有分配集合与近期索引；清洗正文后比对近期索引及本批新增正文。完整历史 CSV 在 GitHub 构建中再次按主题、时间标题和正文指纹去重。",
+  "excludedReasonCounts": {
+    "附件标题": 1,
+    "图片贴（仅标题文字）": 1
+  },
+  "excludedTopics": [
+    {
+      "topicId": "45548558855848488",
+      "publishedAt": "2026-10-09T13:58:28.294+0800",
+      "title": "「文件」",
+      "reason": "附件标题"
+    },
+    {
+      "topicId": "45548558881288418",
+      "publishedAt": "2026-10-09T13:18:16.414+0800",
+      "title": "OpenAI 的承诺金额也就 ...",
+      "reason": "图片贴（仅标题文字）"
+    }
+  ],
+  "duplicatesDropped": [],
+  "unreadCommercialAttachments": [],
+  "addedTopics": {
+    "views": [],
+    "all_views": [
+      {
+        "topicId": "14425445544525542",
+        "publishedAt": "2026-10-09T13:58:41.718+0800",
+        "title": "🍁🍁🍁HCDX：金冠电气主业交付提速，海外与陶瓷业务孕育新增长",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/14425445544525542"
+      },
+      {
+        "topicId": "82258228828428582",
+        "publishedAt": "2026-10-09T13:34:11.052+0800",
+        "title": "[烟花]盛航股份：东亚化学品运价涨20%，利润有望增40%",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/82258228828428582"
+      },
+      {
+        "topicId": "45548558858282588",
+        "publishedAt": "2026-10-09T13:33:08.689+0800",
+        "title": "🔥重视【AI安全】  AI Agent风险加速暴露+巨头下场建设安全基础设施，AI安全进入产业兑现期｜中信证券计算机",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/45548558858282588"
+      },
+      {
+        "topicId": "45548558858285118",
+        "publishedAt": "2026-10-09T13:32:48.555+0800",
+        "title": "[拳头]IEA下调原油供需预期，地缘扰动加剧石化行业高景气持续——石油化工行业周观点【光大能源化工与新材料团队】",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/45548558858285118"
+      },
+      {
+        "topicId": "14425445545418212",
+        "publishedAt": "2026-10-09T13:32:17.166+0800",
+        "title": "高争民爆/西藏地矿/西藏铜矿资料梳理——当前位置坚定看好【高争民爆】中长期逻辑，西藏铜矿+大基建双β加速向上的唯一核心受益标的，想象空间巨大",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/14425445545418212"
+      },
+      {
+        "topicId": "22258228828242451",
+        "publishedAt": "2026-10-09T13:31:46.901+0800",
+        "title": "【中泰电新】海风板块波动点评",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/22258228828242451"
+      },
+      {
+        "topicId": "22258228828242581",
+        "publishedAt": "2026-10-09T13:31:21.621+0800",
+        "title": "10月电子布价格更新",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/22258228828242581"
+      },
+      {
+        "topicId": "55521551151541824",
+        "publishedAt": "2026-10-09T13:31:08.375+0800",
+        "title": "[红包][红包][红包]【开源化工】粘胶长丝行业信息更新：需求正旺时，行业龙头停产3.12万吨产能，价格或将上涨",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/55521551151541824"
+      },
+      {
+        "topicId": "45548558858524518",
+        "publishedAt": "2026-10-09T13:30:51.173+0800",
+        "title": "[红包]【CT交运观点】要安全边际，也要高弹性，既要又要可以在交运里选标的！#高安全边际（低估值+股东回报）+高业绩弹性+高成长性标的 已为大家做了全面筛选，全是底部#推荐加自选~# #昨日&早盘普遍",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/45548558858524518"
+      },
+      {
+        "topicId": "14425445545412242",
+        "publishedAt": "2026-10-09T13:30:35.043+0800",
+        "title": "【广发机械】松发股份调整点评20261009",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/14425445545412242"
+      },
+      {
+        "topicId": "45548558858551258",
+        "publishedAt": "2026-10-09T13:30:20.661+0800",
+        "title": "【风电板块异动点评】",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/45548558858551258"
+      },
+      {
+        "topicId": "45548558858552818",
+        "publishedAt": "2026-10-09T13:30:02.174+0800",
+        "title": "【东吴电新】锂电：10月延续高景气，Q3业绩稳定亮眼，估值低位看好板块反弹，推荐核心标的！",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/45548558858552818"
+      }
+    ]
+  }
+}
