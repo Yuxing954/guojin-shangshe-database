@@ -4,6 +4,7 @@
 
 - 研究首页：[index.html](./index.html)；展示研究重点、行业关键指标和最新观点纪要
 - 行业数据：[industry.html](./industry.html)；五个行业的指标趋势与历史记录
+- 消费宏观：[consumption-macro.html](./consumption-macro.html)；社零及分品类、线上零售、服务消费、价格、居民收支、旅游与假期出行；按官方口径筛选、查看趋势及导出，区分已接入和待接入
 - 公司数据：[companies.html](./companies.html)；公司搜索、估值与财务详情
 - 观点纪要：[research.html](./research.html)；公司与板块检索、近7天/30天筛选、站内观点阅读及纪要附件入口；区分纪要摘要、文档附件和未转写音频
 - 行情与工具：[database.html](./database.html)；按模块查看原有功能
@@ -72,3 +73,5 @@
 本仓库当前为**公开仓库**。请勿提交访问令牌、Cookie、私钥或任何可恢复的登录凭据。用于本地自动化的认证备份应仅保留在受控设备中，并加入 `.gitignore`。
 
 > 仅供研究与内部交流使用；使用者应自行核验数据的准确性和时效性。
+
+消费宏观数据覆盖、来源和更新规程见 [消费宏观说明](./docs/consumption-macro.md)。

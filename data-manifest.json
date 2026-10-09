@@ -220,6 +220,16 @@
       "file": "data/industry/verified-2026-10-07.json",
       "category": "行业来源",
       "checkedAt": "2026-10-07"
+    },
+    {
+      "id": "consumption_macro",
+      "name": "消费宏观官方披露数据",
+      "file": "data/consumption-macro/observations.json",
+      "category": "消费宏观",
+      "asOf": "2026-10-09",
+      "rowCount": 1144,
+      "updateRecord": "data/consumption-macro/sources.json",
+      "evidence": "data/consumption-macro/evidence.json"
     }
   ]
 }

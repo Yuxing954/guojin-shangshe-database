@@ -1,0 +1,830 @@
+[
+  {
+    "id": "retail-2023-12",
+    "title": "2023年12月份社会消费品零售总额增长7.4%",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202401/t20240116_1946619.html",
+    "kind": "retail",
+    "period": "2023-12",
+    "publisher": "国家统计局",
+    "publishedAt": "2024-01-16",
+    "quality": "official"
+  },
+  {
+    "id": "household-2024-Q1",
+    "title": "2024年一季度居民收入和消费支出情况",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202404/t20240416_1948580.html",
+    "kind": "household",
+    "period": "2024-Q1",
+    "publisher": "国家统计局",
+    "publishedAt": "2024-04-16",
+    "quality": "official"
+  },
+  {
+    "id": "household-2024-Q2",
+    "title": "2024年上半年居民收入和消费支出情况",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202407/t20240715_1955615.html",
+    "kind": "household",
+    "period": "2024-Q2",
+    "publisher": "国家统计局",
+    "publishedAt": "2024-07-15",
+    "quality": "official"
+  },
+  {
+    "id": "household-2024-Q3",
+    "title": "2024年前三季度居民收入和消费支出情况",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202410/t20241018_1957037.html",
+    "kind": "household",
+    "period": "2024-Q3",
+    "publisher": "国家统计局",
+    "publishedAt": "2024-10-18",
+    "quality": "official"
+  },
+  {
+    "id": "household-2024",
+    "title": "2024年居民收入和消费支出情况",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202501/t20250117_1958325.html",
+    "kind": "household",
+    "period": "2024",
+    "publisher": "国家统计局",
+    "publishedAt": "2025-01-17",
+    "quality": "official"
+  },
+  {
+    "id": "retail-2024-12",
+    "title": "2024年12月份社会消费品零售总额增长3.7%",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202501/t20250117_1958327.html",
+    "kind": "retail",
+    "period": "2024-12",
+    "publisher": "国家统计局",
+    "publishedAt": "2025-01-17",
+    "quality": "official"
+  },
+  {
+    "id": "cpi-2025-01",
+    "title": "2025年1月份居民消费价格同比上涨0.5%",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202502/t20250209_1958646.html",
+    "kind": "cpi",
+    "period": "2025-01",
+    "publisher": "国家统计局",
+    "publishedAt": "2025-02-09",
+    "quality": "official"
+  },
+  {
+    "id": "retail-2025-02",
+    "title": "2025年1—2月份社会消费品零售总额增长4.0%",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202503/t20250317_1959014.html",
+    "kind": "retail",
+    "period": "2025-02",
+    "publisher": "国家统计局",
+    "publishedAt": "2025-03-17",
+    "quality": "official"
+  },
+  {
+    "id": "cpi-2025-03",
+    "title": "2025年3月份居民消费价格同比下降0.1%",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202504/t20250410_1959261.html",
+    "kind": "cpi",
+    "period": "2025-03",
+    "publisher": "国家统计局",
+    "publishedAt": "2025-04-10",
+    "quality": "official"
+  },
+  {
+    "id": "household-2025-Q1",
+    "title": "2025年一季度居民收入和消费支出情况",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202504/t20250416_1959322.html",
+    "kind": "household",
+    "period": "2025-Q1",
+    "publisher": "国家统计局",
+    "publishedAt": "2025-04-16",
+    "quality": "official"
+  },
+  {
+    "id": "retail-2025-03",
+    "title": "2025年3月份社会消费品零售总额增长5.9%",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202504/t20250416_1959317.html",
+    "kind": "retail",
+    "period": "2025-03",
+    "publisher": "国家统计局",
+    "publishedAt": "2025-04-16",
+    "quality": "official"
+  },
+  {
+    "id": "tour-2025-Q1",
+    "title": "2025年一季度国内出游数据情况",
+    "url": "https://zwgk.mct.gov.cn/zfxxgkml/tjxx/202504/t20250423_959574.html",
+    "kind": "reviewed",
+    "publisher": "文化和旅游部",
+    "publishedAt": "2025-04-23",
+    "quality": "official",
+    "records": [
+      {
+        "id": "tour_trips",
+        "name": "国内居民出游人次",
+        "group": "国内旅游",
+        "unit": "亿人次",
+        "definition": "全国国内居民出游抽样调查；人次非去重人数；花费按原文万亿元保留精度",
+        "valueLabel": "出游人次",
+        "period": "2025-Q1",
+        "frequency": "quarterly",
+        "basis": "ytd",
+        "value": 17.94,
+        "yoy": 26.4
+      },
+      {
+        "id": "tour_spend",
+        "name": "国内居民出游花费",
+        "group": "国内旅游",
+        "unit": "万亿元",
+        "definition": "全国国内居民出游抽样调查；人次非去重人数；花费按原文万亿元保留精度",
+        "valueLabel": "花费",
+        "period": "2025-Q1",
+        "frequency": "quarterly",
+        "basis": "ytd",
+        "value": 1.8,
+        "yoy": 18.6
+      }
+    ]
+  },
+  {
+    "id": "cpi-2025-04",
+    "title": "2025年4月份居民消费价格同比下降0.1%",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202505/t20250510_1959771.html",
+    "kind": "cpi",
+    "period": "2025-04",
+    "publisher": "国家统计局",
+    "publishedAt": "2025-05-10",
+    "quality": "official"
+  },
+  {
+    "id": "cpi-2025-05",
+    "title": "2025年5月份居民消费价格同比下降0.1%",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202506/t20250609_1960094.html",
+    "kind": "cpi",
+    "period": "2025-05",
+    "publisher": "国家统计局",
+    "publishedAt": "2025-06-09",
+    "quality": "official"
+  },
+  {
+    "id": "retail-2025-05",
+    "title": "2025年5月份社会消费品零售总额增长6.4%",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202506/t20250616_1960169.html",
+    "kind": "retail",
+    "period": "2025-05",
+    "publisher": "国家统计局",
+    "publishedAt": "2025-06-16",
+    "quality": "official"
+  },
+  {
+    "id": "household-2025-Q2",
+    "title": "2025年上半年居民收入和消费支出情况",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202507/t20250715_1960406.html",
+    "kind": "household",
+    "period": "2025-Q2",
+    "publisher": "国家统计局",
+    "publishedAt": "2025-07-15",
+    "quality": "official"
+  },
+  {
+    "id": "retail-2025-06",
+    "title": "2025年6月份社会消费品零售总额增长4.8%",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202507/t20250715_1960409.html",
+    "kind": "retail",
+    "period": "2025-06",
+    "publisher": "国家统计局",
+    "publishedAt": "2025-07-15",
+    "quality": "official"
+  },
+  {
+    "id": "tour-2025-Q2",
+    "title": "2025年上半年国内居民出游数据情况",
+    "url": "https://zwgk.mct.gov.cn/zfxxgkml/tjxx/202508/t20250801_961544.html",
+    "kind": "reviewed",
+    "publisher": "文化和旅游部",
+    "publishedAt": "2025-08-01",
+    "quality": "official",
+    "records": [
+      {
+        "id": "tour_trips",
+        "name": "国内居民出游人次",
+        "group": "国内旅游",
+        "unit": "亿人次",
+        "definition": "全国国内居民出游抽样调查；人次非去重人数；花费按原文万亿元保留精度",
+        "valueLabel": "出游人次",
+        "period": "2025-Q2",
+        "frequency": "quarterly",
+        "basis": "ytd",
+        "value": 32.85,
+        "yoy": 20.6
+      },
+      {
+        "id": "tour_spend",
+        "name": "国内居民出游花费",
+        "group": "国内旅游",
+        "unit": "万亿元",
+        "definition": "全国国内居民出游抽样调查；人次非去重人数；花费按原文万亿元保留精度",
+        "valueLabel": "花费",
+        "period": "2025-Q2",
+        "frequency": "quarterly",
+        "basis": "ytd",
+        "value": 3.15,
+        "yoy": 15.2
+      }
+    ]
+  },
+  {
+    "id": "cpi-2025-07",
+    "title": "2025年7月份居民消费价格同比持平",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202508/t20250809_1960635.html",
+    "kind": "cpi",
+    "period": "2025-07",
+    "publisher": "国家统计局",
+    "publishedAt": "2025-08-09",
+    "quality": "official"
+  },
+  {
+    "id": "retail-2025-07",
+    "title": "2025年7月份社会消费品零售总额增长3.7%",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202508/t20250815_1960783.html",
+    "kind": "retail",
+    "period": "2025-07",
+    "publisher": "国家统计局",
+    "publishedAt": "2025-08-15",
+    "quality": "official"
+  },
+  {
+    "id": "cpi-2025-08",
+    "title": "2025年8月份居民消费价格同比下降0.4% 环比持平",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202509/t20250910_1961112.html",
+    "kind": "cpi",
+    "period": "2025-08",
+    "publisher": "国家统计局",
+    "publishedAt": "2025-09-10",
+    "quality": "official"
+  },
+  {
+    "id": "retail-2025-08",
+    "title": "2025年8月份社会消费品零售总额增长3.4%",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202509/t20250915_1961177.html",
+    "kind": "retail",
+    "period": "2025-08",
+    "publisher": "国家统计局",
+    "publishedAt": "2025-09-15",
+    "quality": "official"
+  },
+  {
+    "id": "holiday-2025-national",
+    "title": "2025年国庆中秋假期国内出游8.88亿人次",
+    "url": "https://www.mct.gov.cn/preview/whzx/whyw/202510/t20251009_962532.htm",
+    "kind": "reviewed",
+    "publisher": "文化和旅游部",
+    "publishedAt": "2025-10-09",
+    "quality": "official",
+    "records": [
+      {
+        "id": "holiday_trips",
+        "name": "假期国内出游人次",
+        "group": "假期旅游",
+        "unit": "亿人次",
+        "definition": "文旅部全国假期测算；假期天数可能不同；保留官方可比同比，不按总量重算",
+        "valueLabel": "出游人次",
+        "period": "2025-国庆中秋",
+        "frequency": "holiday",
+        "basis": "holiday",
+        "value": 8.88,
+        "yoy": null,
+        "note": "国庆中秋 · 8天",
+        "endDate": "2025-10-08"
+      },
+      {
+        "id": "holiday_spend",
+        "name": "假期国内出游花费",
+        "group": "假期旅游",
+        "unit": "亿元",
+        "definition": "文旅部全国假期测算；假期天数可能不同；保留官方可比同比，不按总量重算",
+        "valueLabel": "花费",
+        "period": "2025-国庆中秋",
+        "frequency": "holiday",
+        "basis": "holiday",
+        "value": 8090.06,
+        "yoy": null,
+        "note": "国庆中秋 · 8天",
+        "endDate": "2025-10-08"
+      }
+    ]
+  },
+  {
+    "id": "cpi-2025-09",
+    "title": "2025年9月份居民消费价格同比下降0.3% 环比上涨0.1%",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202510/t20251015_1961521.html",
+    "kind": "cpi",
+    "period": "2025-09",
+    "publisher": "国家统计局",
+    "publishedAt": "2025-10-15",
+    "quality": "official"
+  },
+  {
+    "id": "household-2025-Q3",
+    "title": "2025年前三季度居民收入和消费支出情况",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202510/t20251020_1961604.html",
+    "kind": "household",
+    "period": "2025-Q3",
+    "publisher": "国家统计局",
+    "publishedAt": "2025-10-20",
+    "quality": "official"
+  },
+  {
+    "id": "retail-2025-09",
+    "title": "2025年9月份社会消费品零售总额增长3.0%",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202510/t20251020_1961606.html",
+    "kind": "retail",
+    "period": "2025-09",
+    "publisher": "国家统计局",
+    "publishedAt": "2025-10-20",
+    "quality": "official"
+  },
+  {
+    "id": "cpi-2025-10",
+    "title": "2025年10月份居民消费价格同比上涨0.2%",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202511/t20251109_1961826.html",
+    "kind": "cpi",
+    "period": "2025-10",
+    "publisher": "国家统计局",
+    "publishedAt": "2025-11-09",
+    "quality": "official"
+  },
+  {
+    "id": "retail-2025-10",
+    "title": "2025年10月份社会消费品零售总额增长2.9%",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202511/t20251114_1961852.html",
+    "kind": "retail",
+    "period": "2025-10",
+    "publisher": "国家统计局",
+    "publishedAt": "2025-11-14",
+    "quality": "official"
+  },
+  {
+    "id": "cpi-2025-11",
+    "title": "2025年11月份居民消费价格同比上涨0.7%",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202512/t20251210_1962015.html",
+    "kind": "cpi",
+    "period": "2025-11",
+    "publisher": "国家统计局",
+    "publishedAt": "2025-12-10",
+    "quality": "official"
+  },
+  {
+    "id": "retail-2025-11",
+    "title": "2025年11月份社会消费品零售总额增长1.3%",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202512/t20251215_1962071.html",
+    "kind": "retail",
+    "period": "2025-11",
+    "publisher": "国家统计局",
+    "publishedAt": "2025-12-15",
+    "quality": "official"
+  },
+  {
+    "id": "cpi-2025-12",
+    "title": "2025年12月份居民消费价格同比上涨0.8%",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202601/t20260109_1962273.html",
+    "kind": "cpi",
+    "period": "2025-12",
+    "publisher": "国家统计局",
+    "publishedAt": "2026-01-09",
+    "quality": "official"
+  },
+  {
+    "id": "household-2025",
+    "title": "2025年居民收入和消费支出情况",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202601/t20260119_1962321.html",
+    "kind": "household",
+    "period": "2025",
+    "publisher": "国家统计局",
+    "publishedAt": "2026-01-19",
+    "quality": "official"
+  },
+  {
+    "id": "retail-2025-12",
+    "title": "2025年12月份社会消费品零售总额增长0.9%",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202601/t20260119_1962323.html",
+    "kind": "retail",
+    "period": "2025-12",
+    "publisher": "国家统计局",
+    "publishedAt": "2026-01-19",
+    "quality": "official"
+  },
+  {
+    "id": "tour-2025-year",
+    "title": "2025年国内居民出游数据情况",
+    "url": "https://zwgk.mct.gov.cn/zfxxgkml/tjxx/202601/t20260126_964367.html",
+    "kind": "reviewed",
+    "publisher": "文化和旅游部",
+    "publishedAt": "2026-01-26",
+    "quality": "official",
+    "records": [
+      {
+        "id": "tour_trips",
+        "name": "国内居民出游人次",
+        "group": "国内旅游",
+        "unit": "亿人次",
+        "definition": "全国国内居民出游抽样调查；人次非去重人数；花费按原文万亿元保留精度",
+        "valueLabel": "出游人次",
+        "period": "2025",
+        "frequency": "annual",
+        "basis": "year",
+        "value": 65.22,
+        "yoy": 16.2
+      },
+      {
+        "id": "tour_spend",
+        "name": "国内居民出游花费",
+        "group": "国内旅游",
+        "unit": "万亿元",
+        "definition": "全国国内居民出游抽样调查；人次非去重人数；花费按原文万亿元保留精度",
+        "valueLabel": "花费",
+        "period": "2025",
+        "frequency": "annual",
+        "basis": "year",
+        "value": 6.3,
+        "yoy": 9.5
+      }
+    ]
+  },
+  {
+    "id": "cpi-2026-01",
+    "title": "2026年1月份居民消费价格同比上涨0.2%",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202602/t20260211_1962588.html",
+    "kind": "cpi",
+    "period": "2026-01",
+    "publisher": "国家统计局",
+    "publishedAt": "2026-02-11",
+    "quality": "official"
+  },
+  {
+    "id": "cpi-2026-02",
+    "title": "2026年2月份居民消费价格同比上涨1.3%",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202603/t20260309_1962732.html",
+    "kind": "cpi",
+    "period": "2026-02",
+    "publisher": "国家统计局",
+    "publishedAt": "2026-03-09",
+    "quality": "official"
+  },
+  {
+    "id": "retail-2026-02",
+    "title": "2026年1—2月份社会消费品零售总额增长2.8%",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202603/t20260316_1962786.html",
+    "kind": "retail",
+    "period": "2026-02",
+    "publisher": "国家统计局",
+    "publishedAt": "2026-03-16",
+    "quality": "official"
+  },
+  {
+    "id": "cpi-2026-03",
+    "title": "2026年3月份居民消费价格同比上涨1.0%",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202604/t20260410_1963264.html",
+    "kind": "cpi",
+    "period": "2026-03",
+    "publisher": "国家统计局",
+    "publishedAt": "2026-04-10",
+    "quality": "official"
+  },
+  {
+    "id": "household-2026-Q1",
+    "title": "2026年一季度居民收入和消费支出情况",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202604/t20260416_1963323.html",
+    "kind": "household",
+    "period": "2026-Q1",
+    "publisher": "国家统计局",
+    "publishedAt": "2026-04-16",
+    "quality": "official"
+  },
+  {
+    "id": "retail-2026-03",
+    "title": "2026年3月份社会消费品零售总额增长1.7%",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202604/t20260416_1963325.html",
+    "kind": "retail",
+    "period": "2026-03",
+    "publisher": "国家统计局",
+    "publishedAt": "2026-04-16",
+    "quality": "official"
+  },
+  {
+    "id": "tour-2026-Q1",
+    "title": "2026年一季度国内居民出游数据情况",
+    "url": "https://zwgk.mct.gov.cn/zfxxgkml/tjxx/202604/t20260429_965662.html",
+    "kind": "reviewed",
+    "publisher": "文化和旅游部",
+    "publishedAt": "2026-04-29",
+    "quality": "official",
+    "records": [
+      {
+        "id": "tour_trips",
+        "name": "国内居民出游人次",
+        "group": "国内旅游",
+        "unit": "亿人次",
+        "definition": "全国国内居民出游抽样调查；人次非去重人数；花费按原文万亿元保留精度",
+        "valueLabel": "出游人次",
+        "period": "2026-Q1",
+        "frequency": "quarterly",
+        "basis": "ytd",
+        "value": 19.01,
+        "yoy": 6.0
+      },
+      {
+        "id": "tour_spend",
+        "name": "国内居民出游花费",
+        "group": "国内旅游",
+        "unit": "万亿元",
+        "definition": "全国国内居民出游抽样调查；人次非去重人数；花费按原文万亿元保留精度",
+        "valueLabel": "花费",
+        "period": "2026-Q1",
+        "frequency": "quarterly",
+        "basis": "ytd",
+        "value": 1.86,
+        "yoy": 2.9
+      }
+    ]
+  },
+  {
+    "id": "holiday-2026-labor",
+    "title": "2026年五一假期国内出游3.25亿人次",
+    "url": "https://www.mct.gov.cn/whzx/whyw/202605/t20260506_965708.htm",
+    "kind": "reviewed",
+    "publisher": "文化和旅游部",
+    "publishedAt": "2026-05-07",
+    "quality": "official",
+    "records": [
+      {
+        "id": "holiday_trips",
+        "name": "假期国内出游人次",
+        "group": "假期旅游",
+        "unit": "亿人次",
+        "definition": "文旅部全国假期测算；假期天数可能不同；保留官方可比同比，不按总量重算",
+        "valueLabel": "出游人次",
+        "period": "2026-五一",
+        "frequency": "holiday",
+        "basis": "holiday",
+        "value": 3.25,
+        "yoy": 3.6,
+        "note": "五一 · 5天",
+        "endDate": "2026-05-05"
+      },
+      {
+        "id": "holiday_spend",
+        "name": "假期国内出游花费",
+        "group": "假期旅游",
+        "unit": "亿元",
+        "definition": "文旅部全国假期测算；假期天数可能不同；保留官方可比同比，不按总量重算",
+        "valueLabel": "花费",
+        "period": "2026-五一",
+        "frequency": "holiday",
+        "basis": "holiday",
+        "value": 1854.92,
+        "yoy": 2.9,
+        "note": "五一 · 5天",
+        "endDate": "2026-05-05"
+      }
+    ]
+  },
+  {
+    "id": "cpi-2026-04",
+    "title": "2026年4月份居民消费价格同比上涨1.2%",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202605/t20260511_1963659.html",
+    "kind": "cpi",
+    "period": "2026-04",
+    "publisher": "国家统计局",
+    "publishedAt": "2026-05-11",
+    "quality": "official"
+  },
+  {
+    "id": "retail-2026-04",
+    "title": "2026年1—4月份社会消费品零售总额增长1.9%",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202605/t20260518_1963727.html",
+    "kind": "retail",
+    "period": "2026-04",
+    "publisher": "国家统计局",
+    "publishedAt": "2026-05-18",
+    "quality": "official"
+  },
+  {
+    "id": "cpi-2026-05",
+    "title": "2026年5月份居民消费价格同比上涨1.2%",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202606/t20260610_1963923.html",
+    "kind": "cpi",
+    "period": "2026-05",
+    "publisher": "国家统计局",
+    "publishedAt": "2026-06-10",
+    "quality": "official"
+  },
+  {
+    "id": "retail-2026-05",
+    "title": "2026年1—5月份社会消费品零售总额增长1.4%",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202606/t20260616_1963949.html",
+    "kind": "retail",
+    "period": "2026-05",
+    "publisher": "国家统计局",
+    "publishedAt": "2026-06-16",
+    "quality": "official"
+  },
+  {
+    "id": "holiday-2026-dragon",
+    "title": "2026年端午节假期国内出游1.24亿人次",
+    "url": "https://www.mct.gov.cn/whzx/whyw/202606/t20260622_966305.htm",
+    "kind": "reviewed",
+    "publisher": "文化和旅游部",
+    "publishedAt": "2026-06-22",
+    "quality": "official",
+    "records": [
+      {
+        "id": "holiday_trips",
+        "name": "假期国内出游人次",
+        "group": "假期旅游",
+        "unit": "亿人次",
+        "definition": "文旅部全国假期测算；假期天数可能不同；保留官方可比同比，不按总量重算",
+        "valueLabel": "出游人次",
+        "period": "2026-端午",
+        "frequency": "holiday",
+        "basis": "holiday",
+        "value": 1.24,
+        "yoy": 4.4,
+        "note": "端午 · 3天",
+        "endDate": "2026-06-21"
+      },
+      {
+        "id": "holiday_spend",
+        "name": "假期国内出游花费",
+        "group": "假期旅游",
+        "unit": "亿元",
+        "definition": "文旅部全国假期测算；假期天数可能不同；保留官方可比同比，不按总量重算",
+        "valueLabel": "花费",
+        "period": "2026-端午",
+        "frequency": "holiday",
+        "basis": "holiday",
+        "value": 444.56,
+        "yoy": 4.0,
+        "note": "端午 · 3天",
+        "endDate": "2026-06-21"
+      }
+    ]
+  },
+  {
+    "id": "cpi-2026-06",
+    "title": "2026年6月份居民消费价格同比上涨1.0%",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202607/t20260709_1964084.html",
+    "kind": "cpi",
+    "period": "2026-06",
+    "publisher": "国家统计局",
+    "publishedAt": "2026-07-09",
+    "quality": "official"
+  },
+  {
+    "id": "household-2026-Q2",
+    "title": "2026年上半年居民收入和消费支出情况",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202607/t20260715_1964129.html",
+    "kind": "household",
+    "period": "2026-Q2",
+    "publisher": "国家统计局",
+    "publishedAt": "2026-07-15",
+    "quality": "official"
+  },
+  {
+    "id": "retail-2026-06",
+    "title": "2026年上半年社会消费品零售总额增长1.3%",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202607/t20260715_1964127.html",
+    "kind": "retail",
+    "period": "2026-06",
+    "publisher": "国家统计局",
+    "publishedAt": "2026-07-15",
+    "quality": "official"
+  },
+  {
+    "id": "tour-2026-Q2",
+    "title": "2026年上半年国内居民出游数据情况",
+    "url": "https://zwgk.mct.gov.cn/zfxxgkml/tjxx/202608/t20260807_966808.html",
+    "kind": "reviewed",
+    "publisher": "文化和旅游部",
+    "publishedAt": "2026-08-07",
+    "quality": "official",
+    "records": [
+      {
+        "id": "tour_trips",
+        "name": "国内居民出游人次",
+        "group": "国内旅游",
+        "unit": "亿人次",
+        "definition": "全国国内居民出游抽样调查；人次非去重人数；花费按原文万亿元保留精度",
+        "valueLabel": "出游人次",
+        "period": "2026-Q2",
+        "frequency": "quarterly",
+        "basis": "ytd",
+        "value": 34.63,
+        "yoy": 5.4
+      },
+      {
+        "id": "tour_spend",
+        "name": "国内居民出游花费",
+        "group": "国内旅游",
+        "unit": "万亿元",
+        "definition": "全国国内居民出游抽样调查；人次非去重人数；花费按原文万亿元保留精度",
+        "valueLabel": "花费",
+        "period": "2026-Q2",
+        "frequency": "quarterly",
+        "basis": "ytd",
+        "value": 3.21,
+        "yoy": 2.0
+      }
+    ]
+  },
+  {
+    "id": "cpi-2026-07",
+    "title": "2026年7月份居民消费价格同比上涨0.5%",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202608/t20260809_1965008.html",
+    "kind": "cpi",
+    "period": "2026-07",
+    "publisher": "国家统计局",
+    "publishedAt": "2026-08-09",
+    "quality": "official"
+  },
+  {
+    "id": "retail-2026-07",
+    "title": "2026年1—7月份社会消费品零售总额增长1.2%",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202608/t20260817_1965052.html",
+    "kind": "retail",
+    "period": "2026-07",
+    "publisher": "国家统计局",
+    "publishedAt": "2026-08-17",
+    "quality": "official"
+  },
+  {
+    "id": "cpi-2026-08",
+    "title": "2026年8月份居民消费价格同比上涨0.8%",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202609/t20260909_1965263.html",
+    "kind": "cpi",
+    "period": "2026-08",
+    "publisher": "国家统计局",
+    "publishedAt": "2026-09-09",
+    "quality": "official"
+  },
+  {
+    "id": "retail-2026-08",
+    "title": "2026年1—8月份社会消费品零售总额增长1.1%",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202609/t20260915_1965311.html",
+    "kind": "retail",
+    "period": "2026-08",
+    "publisher": "国家统计局",
+    "publishedAt": "2026-09-15",
+    "quality": "official"
+  },
+  {
+    "id": "service-2026-08",
+    "title": "消费市场平稳运行 扩容提质态势延续",
+    "url": "https://www.stats.gov.cn/xxgk/jd/sjjd2020/202609/t20260915_1965328.html",
+    "kind": "reviewed",
+    "publisher": "国家统计局",
+    "publishedAt": "2026-09-15",
+    "quality": "official",
+    "records": [
+      {
+        "id": "service_retail",
+        "name": "服务零售额",
+        "group": "服务消费",
+        "unit": "%",
+        "definition": "全国服务零售；年初累计同比；原文仅披露增速，金额未披露",
+        "valueLabel": "累计同比",
+        "period": "2026-08",
+        "frequency": "monthly",
+        "basis": "ytd",
+        "value": 4.9
+      }
+    ]
+  },
+  {
+    "id": "travel-2026-national",
+    "title": "国庆假期超21亿人次跨区域流动",
+    "url": "https://www.mot.gov.cn/xinwen/jiaotongyaowen/202610/t20261008_4225492.html",
+    "kind": "reviewed",
+    "publisher": "交通运输部网站 · 中国交通新闻网",
+    "publishedAt": "2026-10-08",
+    "quality": "estimate",
+    "records": [
+      {
+        "id": "holiday_travel",
+        "name": "假期跨区域人员流动量",
+        "group": "假期出行",
+        "unit": "亿人次",
+        "definition": "全社会跨区域人员流动；非旅游人数；保留预计状态；同比为日均同比",
+        "valueLabel": "流动人次",
+        "period": "2026-国庆",
+        "frequency": "holiday",
+        "basis": "holiday",
+        "value": 21.44,
+        "yoy": null,
+        "note": "国庆 · 7天 · 预计；日均同比 +0.7%",
+        "quality": "estimate",
+        "endDate": "2026-10-07"
+      }
+    ]
+  }
+]
