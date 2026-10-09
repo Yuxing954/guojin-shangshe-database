@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "runId": "2026-10-09-hourly-2158",
+  "syncedAt": "2026-10-09T21:58:12+08:00",
+  "previousCoverageTo": "2026-10-09T20:24:56.902+0800",
+  "fetchedUniqueTopics": 30,
+  "newSourceTopics": 9,
+  "added": {
+    "views": 1,
+    "all_views": 7
+  },
+  "excluded": 0,
+  "duplicates": 1,
+  "record": "data/research/updates/2026-10-09-update-record-5.json",
+  "sourceGroup": "88888142214212",
+  "sourceName": "水木调研纪要-2.0",
+  "fetchedThrough": "2026-10-09T21:27:44.255+0800",
+  "oldestFetchedThisRun": "2026-10-09T18:40:47.331+0800",
+  "rawPageRecords": 30,
+  "paginationDuplicates": 0,
+  "overlapTopics": 21,
+  "pages": [
+    {
+      "page": "zsxq-page-001",
+      "count": 30,
+      "newest": "2026-10-09T21:27:44.255+0800",
+      "oldest": "2026-10-09T18:40:47.331+0800"
+    }
+  ],
+  "duplicateScope": "按 topic_id 对照 manifest 分配集合及近期索引；清洗正文后与既有增量记录、近期索引及本批新增正文比对。完整历史 CSV 在 GitHub 构建中再次按主题、时间标题和正文指纹去重。",
+  "excludedReasonCounts": {},
+  "excludedTopics": [],
+  "duplicatesDropped": [
+    {
+      "topicId": "82258228811555182",
+      "publishedAt": "2026-10-09T21:26:25.445+0800",
+      "title": "[红包]【国泰海通传媒】继续推荐AI视频板块",
+      "reason": "正文与已有市场观点重复",
+      "matchedExistingTopicId": "55521551145482254"
+    }
+  ],
+  "unreadCommercialAttachments": [],
+  "addedTopics": {
+    "views": [
+      {
+        "topicId": "22258228811555111",
+        "publishedAt": "2026-10-09T21:26:32.194+0800",
+        "title": "Meta MUSE专家交流",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/22258228811555111"
+      }
+    ],
+    "all_views": [
+      {
+        "topicId": "22258228811554581",
+        "publishedAt": "2026-10-09T21:27:44.255+0800",
+        "title": "思源电气基本面更新：海外接单保持高增趋势，新产品实现突破-2…",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/22258228811554581"
+      },
+      {
+        "topicId": "22258228811552141",
+        "publishedAt": "2026-10-09T21:27:37.514+0800",
+        "title": "⛵️中谷物流：Q3 红海运价涨 180%，利润增 160%",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/22258228811552141"
+      },
+      {
+        "topicId": "45548558811445528",
+        "publishedAt": "2026-10-09T21:27:13.525+0800",
+        "title": "【长江电子杨洋团队】#小PCB公司们的8月单月业绩#",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/45548558811445528"
+      },
+      {
+        "topicId": "45548558811445588",
+        "publishedAt": "2026-10-09T21:27:06.484+0800",
+        "title": "首华燃气：q3沃邦持股比例（二季度五月开始增）提升5pct+…",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/45548558811445588"
+      },
+      {
+        "topicId": "55521551188222244",
+        "publishedAt": "2026-10-09T21:25:51.436+0800",
+        "title": "巴比食品近况更新（20261009）",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/55521551188222244"
+      },
+      {
+        "topicId": "22258228814114541",
+        "publishedAt": "2026-10-09T21:24:33.919+0800",
+        "title": "中国巨石预告点评：扣非表现好于预期（激励费环比增长），预计 …",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/22258228814114541"
+      },
+      {
+        "topicId": "14425445584541252",
+        "publishedAt": "2026-10-09T21:24:14.440+0800",
+        "title": "【长城机械】瑞晨环保：电解铝+矿山两大增量蓝海贡献弹性",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/14425445584541252"
+      }
+    ]
+  }
+}
