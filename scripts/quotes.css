@@ -39,3 +39,6 @@
 .quotes-table-scroll{height:496px}.quotes-heatmap{height:466px;max-height:466px;overflow:auto;align-content:start;grid-template-columns:repeat(3,minmax(0,1fr))}.quotes-heat-legend{height:18px;margin-bottom:12px}.quotes-heat-tile{min-width:0}.quotes-name{font-size:13px}.site-page .quotes-table td{padding:8px 4px!important}
 @media(max-width:1000px){.quotes-table-scroll{height:400px}.quotes-heatmap{height:370px;max-height:370px}}
 @media(max-width:760px){.quotes-table-scroll{height:365px}.quotes-heatmap{height:335px;max-height:335px}.site-page .quotes-table td{padding:7px 2px!important}}
+/* Compact overview: all 32 covered companies fit in the shared panel. */
+.quotes-heatmap{grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}.quotes-heat-tile{min-height:0;height:50px;padding:6px;border-radius:4px}.quotes-heat-tile strong{font-size:11px;line-height:1.25}.quotes-heat-tile span{font-size:18px;line-height:1.2;margin:2px 0 0}.quotes-heat-tile small{display:none}
+@media(max-width:760px){.quotes-heatmap{grid-template-columns:repeat(4,minmax(0,1fr));gap:3px}.quotes-heat-tile{height:38px;padding:3px 4px}.quotes-heat-tile strong{font-size:10px;line-height:1.2}.quotes-heat-tile span{font-size:16px;line-height:1.1;margin:1px 0 0}}
