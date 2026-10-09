@@ -5,7 +5,7 @@
   const industryIds={'酒店':'hotel','免税':'dutyfree','黄金珠宝':'gold','跨境电商与出海':'overseas','餐饮':'dining','茶饮':'dining'};
   const groupSectors=['酒店','免税','黄金珠宝','跨境电商与出海','餐饮'];
   const storageKey='sinolink.quotes.watchlist.v1',preferencesKey='sinolink.quotes.preferences.v1',cache=new Map();
-  let companies=[],quotes={},filtered=[],watch=[],onlyWatch=params.get('group')==='watch',view=params.get('view')==='heat'?'heat':'list',pending=false,selected=null;
+  let companies=[],quotes={},filtered=[],watch=[],onlyWatch=params.get('group')==='watch',view=params.get('view')==='list'?'list':'heat',pending=false,selected=null;
   let period=['day','week','minute'].includes(params.get('period'))?params.get('period'):'day',chartRequest=0,lastRead='',failed=false,initialized=false,chartData=null,chartSelection=0,pageActive=true,chartPending=new Map(),chartNextAt=new Map(),chartCancels=new Set(),noticeTimer=null,benchmarkBuilt=false,miniCache=new Map(),miniPending=new Set();
   const tone=v=>Number.isFinite(v)?v>0?'quotes-up':v<0?'quotes-down':'quotes-flat':'quotes-flat';
   const fmt=(v,n=2)=>v==null?'—':Number(v).toLocaleString('zh-CN',{minimumFractionDigits:n,maximumFractionDigits:n}),signed=(v,suffix='',n=2)=>v==null?'—':(v>0?'+':'')+fmt(v,n)+suffix;
@@ -17,7 +17,7 @@
   function filters(){return {q:$('search').value,market:$('market').value,sector:$('sector').value,sort:$('sort').value,onlyWatch,watchlist:watch};}
   function saveUrl(){
     const f=filters(),p=new URLSearchParams();for(const key of ['q','market','sector'])if(f[key])p.set(key,f[key]);if(f.sort!=='change-desc')p.set('sort',f.sort);
-    if(onlyWatch)p.set('group','watch');if(view!=='list')p.set('view',view);if(selected)p.set('symbol',selected.code);else if(!initialized&&params.get('symbol'))p.set('symbol',params.get('symbol'));
+    if(onlyWatch)p.set('group','watch');if(view!=='heat')p.set('view',view);if(selected)p.set('symbol',selected.code);else if(!initialized&&params.get('symbol'))p.set('symbol',params.get('symbol'));
     if(period!=='day')p.set('period',period);history.replaceState(null,'',location.pathname+(p.size?'?'+p:''));
   }
   function timeText(q){return q?esc(q.asOf.slice(5))+(q.failed?'<small>读取失败</small>':''):'—<small>暂无报价</small>';}
