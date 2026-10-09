@@ -1,0 +1,300 @@
+{
+  "schemaVersion": 1,
+  "runId": "2026-10-09-manual-2",
+  "syncedAt": "2026-10-09T13:21:05+08:00",
+  "previousCoverageTo": "2026-10-09T11:07:35.229+0800",
+  "fetchedUniqueTopics": 59,
+  "newSourceTopics": 33,
+  "added": {
+    "views": 4,
+    "all_views": 22
+  },
+  "excluded": 7,
+  "duplicates": 0,
+  "record": "data/research/updates/2026-10-09-update-record-2.json",
+  "sourceGroup": "88888142214212",
+  "sourceName": "水木调研纪要-2.0",
+  "fetchedThrough": "2026-10-09T13:15:29.168+0800",
+  "oldestFetchedThisRun": "2026-10-09T09:45:35.087+0800",
+  "rawPageRecords": 60,
+  "paginationDuplicates": 1,
+  "overlapTopics": 26,
+  "pages": [
+    {
+      "page": "page-001.json",
+      "count": 30,
+      "newest": "2026-10-09T13:15:29.168+0800",
+      "oldest": "2026-10-09T11:53:22.362+0800"
+    },
+    {
+      "page": "page-002.json",
+      "count": 30,
+      "newest": "2026-10-09T11:53:22.362+0800",
+      "oldest": "2026-10-09T09:45:35.087+0800"
+    }
+  ],
+  "duplicateScope": "主题ID覆盖既有分配集合；正文指纹覆盖已入库增量及近期索引。完整历史CSV由GitHub Actions合并去重，尚未在本机读取。",
+  "excludedReasonCounts": {
+    "内容过短（10字）": 1,
+    "附件标题": 5,
+    "内容过短（13字）": 1
+  },
+  "excludedTopics": [
+    {
+      "topicId": "55521551118422244",
+      "publishedAt": "2026-10-09T13:15:29.168+0800",
+      "title": "德意志银行谈铜周期：",
+      "reason": "内容过短（10字）"
+    },
+    {
+      "topicId": "14425445558421542",
+      "publishedAt": "2026-10-09T13:11:57.646+0800",
+      "title": "海外投行报告#",
+      "reason": "附件标题"
+    },
+    {
+      "topicId": "22258228881252221",
+      "publishedAt": "2026-10-09T13:11:23.866+0800",
+      "title": "海外投行报告#",
+      "reason": "附件标题"
+    },
+    {
+      "topicId": "82258228881252882",
+      "publishedAt": "2026-10-09T13:11:10.225+0800",
+      "title": "海外投行报告#",
+      "reason": "附件标题"
+    },
+    {
+      "topicId": "22258228881255281",
+      "publishedAt": "2026-10-09T13:10:09.357+0800",
+      "title": "海外投行报告#",
+      "reason": "附件标题"
+    },
+    {
+      "topicId": "82258228881824242",
+      "publishedAt": "2026-10-09T13:02:06.138+0800",
+      "title": "A股市场午评#外资交易台#",
+      "reason": "内容过短（13字）"
+    },
+    {
+      "topicId": "45548558885245228",
+      "publishedAt": "2026-10-09T11:46:33.079+0800",
+      "title": "「文件」",
+      "reason": "附件标题"
+    }
+  ],
+  "duplicatesDropped": [],
+  "unreadCommercialAttachments": [],
+  "addedTopics": {
+    "views": [
+      {
+        "topicId": "45548558881542488",
+        "publishedAt": "2026-10-09T13:11:48.897+0800",
+        "title": "若羽臣：关注短期超跌机会，看好斐萃新品放量+奥伦纳素调整成效！",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/45548558881542488"
+      },
+      {
+        "topicId": "22258228884242541",
+        "publishedAt": "2026-10-09T12:24:52.706+0800",
+        "title": "紫江企业：穿越周期的饮料包装龙头，低估值高股息，兼具多维向上期权",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/22258228884242541"
+      },
+      {
+        "topicId": "82258228884245482",
+        "publishedAt": "2026-10-09T12:24:18.431+0800",
+        "title": "【国泰海通食饮】推荐宝立食品！价值低估，BC亮点纷呈",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/82258228884245482"
+      },
+      {
+        "topicId": "45548558882524528",
+        "publishedAt": "2026-10-09T12:24:10.376+0800",
+        "title": "【东财医药唐爱金团队】当前重点推荐“低估值+账上现金多+回购”的健康消费——“互联网电商平台+家用品牌器械”",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/45548558882524528"
+      }
+    ],
+    "all_views": [
+      {
+        "topicId": "55521551118581124",
+        "publishedAt": "2026-10-09T13:13:58.014+0800",
+        "title": "能源充裕：中国难以充分利用其绿色能源。",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/55521551118581124"
+      },
+      {
+        "topicId": "82258228881251252",
+        "publishedAt": "2026-10-09T13:12:16.367+0800",
+        "title": "【国泰海通电新徐强团队】锂电更新：情绪修正，配置价值凸显",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/82258228881251252"
+      },
+      {
+        "topicId": "14425445558424422",
+        "publishedAt": "2026-10-09T13:11:20.403+0800",
+        "title": "【广发建筑 耿鹏智团队】# 山东路桥 近期连续大涨超20%，大股东增持彰显信心，在手订单充足业绩有望稳健，继续强推！📈📈",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/14425445558424422"
+      },
+      {
+        "topicId": "55521551118521184",
+        "publishedAt": "2026-10-09T13:11:04.149+0800",
+        "title": "调整即是机会！🔥【中泰医药祝嘉琦、崔少煜】持续重点推荐创新产业链、景气持续验证、AI4S驱动估值重塑、积极把握新一轮研发生产扩张周期！",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/55521551118521184"
+      },
+      {
+        "topicId": "22258228881255151",
+        "publishedAt": "2026-10-09T13:10:31.340+0800",
+        "title": "【大金重工】欧盟此前对于来自中国的风电塔筒一直有关税，今年12月17日到期，到期后可能取消，若取消则是利好！跟管桩没有关系！公司上午盘中被错杀，中长期坚定看好，短期机构普遍反馈涨太快或者担心Q3业绩，…",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/22258228881255151"
+      },
+      {
+        "topicId": "22258228881522821",
+        "publishedAt": "2026-10-09T12:54:48.872+0800",
+        "title": "安井食品更新推荐：提价落地顺利传导成本，基本面稳健，把握低位超额收益机会",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/22258228881522821"
+      },
+      {
+        "topicId": "45548558882128418",
+        "publishedAt": "2026-10-09T12:49:28.260+0800",
+        "title": "美债",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/45548558882128418"
+      },
+      {
+        "topicId": "45548558882148188",
+        "publishedAt": "2026-10-09T12:39:16.337+0800",
+        "title": "【华创机械】Q3绩优股重点推荐：工业气体龙头杭氧股份、空分出海龙头福斯达🚀",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/45548558882148188"
+      },
+      {
+        "topicId": "14425445551414452",
+        "publishedAt": "2026-10-09T12:25:14.156+0800",
+        "title": "当前必选消费赚什么钱？风格+预期+个股阿尔法的钱",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/14425445551414452"
+      },
+      {
+        "topicId": "82258228884248152",
+        "publishedAt": "2026-10-09T12:24:38.021+0800",
+        "title": "🌸【中金机械】固态电池：政策加码，低位轮动",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/82258228884248152"
+      },
+      {
+        "topicId": "45548558882528258",
+        "publishedAt": "2026-10-09T12:24:32.907+0800",
+        "title": "各位领导，补充一下：",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/45548558882528258"
+      },
+      {
+        "topicId": "45548558882524888",
+        "publishedAt": "2026-10-09T12:23:57.337+0800",
+        "title": "[红包]【开源中小盘】联检科技：稀缺检测转型平台再落一子，控股华周智能布局# 机器视觉",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/45548558882524888"
+      },
+      {
+        "topicId": "45548558885188218",
+        "publishedAt": "2026-10-09T11:57:00.259+0800",
+        "title": "影视公司AI内容布局及重点项目梳理【中信传媒】",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/45548558885188218"
+      },
+      {
+        "topicId": "22258228882188221",
+        "publishedAt": "2026-10-09T11:56:40.844+0800",
+        "title": "化工复盘：本轮景气与历次有何不同？",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/22258228882188221"
+      },
+      {
+        "topicId": "22258228882185121",
+        "publishedAt": "2026-10-09T11:56:12.885+0800",
+        "title": "AI医疗：# Anthropic加码医疗临床平台，大模型竞争开启“数据入口与场景”新纪元【东北计算机】",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/22258228882185121"
+      },
+      {
+        "topicId": "22258228882151411",
+        "publishedAt": "2026-10-09T11:55:54.539+0800",
+        "title": "TIM材料，技术升级明确，大陆厂商加速突围",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/22258228882151411"
+      },
+      {
+        "topicId": "45548558885145558",
+        "publishedAt": "2026-10-09T11:54:06.057+0800",
+        "title": "油运周期周谈：关键矛盾再迎向上驱动，扩大贴水刺激货盘",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/45548558885145558"
+      },
+      {
+        "topicId": "55521551115825144",
+        "publishedAt": "2026-10-09T11:53:57.383+0800",
+        "title": "【创新药旗手】复宏汉霖HLX37启动一线NSCLC头对头注册！II/III期合计1618例头对头K药+化疗标准疗法，IO 2.0矩阵浮出水面【支持东吴医药朱国广团队】",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/55521551115825144"
+      },
+      {
+        "topicId": "82258228882158142",
+        "publishedAt": "2026-10-09T11:53:33.299+0800",
+        "title": "【开源医疗】可孚医疗：核心产品线增长态势良好，多款新品梯度上市，成长空间巨大",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/82258228882158142"
+      },
+      {
+        "topicId": "22258228882158411",
+        "publishedAt": "2026-10-09T11:53:22.362+0800",
+        "title": "🧧算力投产的时间约束：SOFC产业化加速启航【SOFC深度报告|中泰电新】",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/22258228882158411"
+      },
+      {
+        "topicId": "14425445554525852",
+        "publishedAt": "2026-10-09T11:18:58.416+0800",
+        "title": "＃浪潮信息：90亿元定增预案获股东会审议通过、抢占超节点先机",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/14425445554525852"
+      },
+      {
+        "topicId": "14425445554525452",
+        "publishedAt": "2026-10-09T11:18:23.991+0800",
+        "title": "恒力重工（松发股份）今日调整点评",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/14425445554525452"
+      }
+    ]
+  },
+  "dataLimitations": [
+    "仅使用星球实际返回正文，不推断附件或图片内容。",
+    "转载行情、经营数据、渠道反馈及预测未经独立核验。",
+    "本次仅更新GitHub数据库，未写入WorkBuddy团队资料库。"
+  ],
+  "files": [
+    "data/research/updates/2026-10-09-views-002.csv",
+    "data/research/updates/2026-10-09-all_views-003.csv"
+  ],
+  "manualClassification": {
+    "views": [],
+    "all_views": [],
+    "reason": "无人工改判；按正文主营方向和数据库分类规则归档。"
+  },
+  "cleaningNotes": [
+    "移除标签、水印及连续重复行；标题来自正文首个可读段落。",
+    "公开增量正文不保留会议密码和参会接入尾注，完整来源仍可从主题链接核对。",
+    "正文指纹去重同时消除空白字符差异。",
+    "4条商社观点逐条读取主题详情，主题ID、发布时间和来源星球与分页列表一致。"
+  ],
+  "sourceDetailVerification": {
+    "checked": 4,
+    "allMatchFetchedTopicIdTimeAndSourceGroup": true,
+    "topics": [
+      {
+        "topicId": "22258228884242541",
+        "publishedAt": "2026-10-09T12:24:52.706+0800",
+        "groupId": "88888142214212",
+        "success": true
+      },
+      {
+        "topicId": "45548558881542488",
+        "publishedAt": "2026-10-09T13:11:48.897+0800",
+        "groupId": "88888142214212",
+        "success": true
+      },
+      {
+        "topicId": "45548558882524528",
+        "publishedAt": "2026-10-09T12:24:10.376+0800",
+        "groupId": "88888142214212",
+        "success": true
+      },
+      {
+        "topicId": "82258228884245482",
+        "publishedAt": "2026-10-09T12:24:18.431+0800",
+        "groupId": "88888142214212",
+        "success": true
+      }
+    ]
+  }
+}

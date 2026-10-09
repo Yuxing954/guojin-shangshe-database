@@ -1,19 +1,21 @@
 {
-  "syncedAt": "2026-10-09T11:16:58+08:00",
+  "syncedAt": "2026-10-09T13:21:05+08:00",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
   "coverageFrom": "2026-09-03",
-  "coverageTo": "2026-10-09T11:07:35.229+0800",
+  "coverageTo": "2026-10-09T13:15:29.168+0800",
   "oldestFetched": "2026-09-02T23:59:36.211+0800",
   "fetchedTopics": 5163,
   "files": {
     "views": [
+      "data/research/updates/2026-10-09-views-002.csv",
       "data/research/updates/2026-10-09-views-001.csv",
       "data/research/updates/2026-10-08-views-001.csv",
       "data/research/updates/2026-10-07-views-001.csv",
       "data/research/updates/2026-10-07-views-002.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-10-09-all_views-003.csv",
       "data/research/updates/2026-10-09-all_views-001.csv",
       "data/research/updates/2026-10-09-all_views-002.csv",
       "data/research/updates/2026-10-08-all_views-001.csv",
@@ -55,13 +57,13 @@
     ]
   },
   "counts": {
-    "views": 199,
-    "all_views": 3852,
+    "views": 203,
+    "all_views": 3874,
     "minutes": 99
   },
   "latest": {
-    "views": "2026-10-09T10:42:05",
-    "all_views": "2026-10-09T11:07:35",
+    "views": "2026-10-09T13:11:48",
+    "all_views": "2026-10-09T13:13:58",
     "minutes": "2026-09-28T13:18:13"
   },
   "excluded": {
@@ -91,6 +93,10 @@
   },
   "assignedTopics": {
     "views": [
+      "45548558881542488",
+      "22258228884242541",
+      "82258228884245482",
+      "45548558882524528",
       "82258228851125882",
       "22258228858845411",
       "55521551121112454",
@@ -293,6 +299,28 @@
       "45548825588821528"
     ],
     "all_views": [
+      "55521551118581124",
+      "82258228881251252",
+      "14425445558424422",
+      "55521551118521184",
+      "22258228881255151",
+      "22258228881522821",
+      "45548558882128418",
+      "45548558882148188",
+      "14425445551414452",
+      "82258228884248152",
+      "45548558882528258",
+      "45548558882524888",
+      "45548558885188218",
+      "22258228882188221",
+      "22258228882185121",
+      "22258228882151411",
+      "45548558885145558",
+      "55521551115825144",
+      "82258228882158142",
+      "22258228882158411",
+      "14425445554525852",
+      "14425445554525452",
       "82258228885254212",
       "22258228851188111",
       "14425445528248522",
@@ -4205,18 +4233,17 @@
     ]
   },
   "lastRun": {
-    "runId": "2026-10-09-manual",
-    "syncedAt": "2026-10-09T11:16:58+08:00",
-    "previousCoverageTo": "2026-10-08T16:03:00.288+0800",
-    "fetchedUniqueTopics": 175,
-    "newSourceTopics": 165,
+    "runId": "2026-10-09-manual-2",
+    "syncedAt": "2026-10-09T13:21:05+08:00",
+    "previousCoverageTo": "2026-10-09T11:07:35.229+0800",
+    "fetchedUniqueTopics": 59,
+    "newSourceTopics": 33,
     "added": {
-      "views": 11,
-      "all_views": 100
+      "views": 4,
+      "all_views": 22
     },
-    "excluded": 52,
-    "duplicates": 2,
-    "record": "data/research/updates/2026-10-09-update-record.json",
-    "briefsAdded": 10
+    "excluded": 7,
+    "duplicates": 0,
+    "record": "data/research/updates/2026-10-09-update-record-2.json"
   }
 }
