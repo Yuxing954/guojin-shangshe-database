@@ -3,7 +3,8 @@ on:
   pull_request:
     paths:
       - 'gold-jewelry.html'
-      - 'scripts/gold-jewelry*.js'
+      - 'scripts/gold*.js'
+      - 'scripts/gold-jewelry.css'
       - 'data/gold-jewelry/**'
       - 'update/gold*.py'
       - 'update/miaoxiang_mcp.py'
@@ -13,7 +14,8 @@ on:
     branches: ['feat/gold-jewelry-database-20261008']
     paths:
       - 'gold-jewelry.html'
-      - 'scripts/gold-jewelry*.js'
+      - 'scripts/gold*.js'
+      - 'scripts/gold-jewelry.css'
       - 'data/gold-jewelry/**'
       - 'update/gold*.py'
       - 'update/miaoxiang_mcp.py'
@@ -36,6 +38,7 @@ jobs:
         run: |
           node --check scripts/gold-jewelry.js
           node --check scripts/gold-jewelry-history.js
-          node --test tests/gold-jewelry.test.js
+          node --check scripts/gold-research-model.js
+          node --test tests/gold*.test.js
           python -m unittest discover -s tests -p 'test_gold*.py' -v
           python update/gold_jewelry.py validate

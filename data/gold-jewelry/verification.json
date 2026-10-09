@@ -350,7 +350,25 @@
       }
     ],
     "desktopToolLoadedInCurrentConversation": false,
-    "rawResponses": "private_local_archive_only"
+    "rawResponses": "private_local_archive_only",
+    "researchReview": {
+      "checkedAt": "2026-10-09",
+      "calls": 8,
+      "tools": [
+        "mx_macro_data",
+        "mx_ashare_finance_data",
+        "mx_hk_finance_data"
+      ],
+      "accepted": "Selected A-share 2026H1 financial fields retain provider quality; demand and Laopu use separately verified primary releases.",
+      "excluded": [
+        "Jilin growth returned alongside national retail",
+        "cash and cash-equivalent balances returned instead of operating cashflow",
+        "Laopu converted HKD summary",
+        "diamond-focused company excluded from gold research comparison"
+      ],
+      "primaryDemandReleases": 29,
+      "financialCompanies": 5
+    }
   },
   "recheckedSeed": [
     {
