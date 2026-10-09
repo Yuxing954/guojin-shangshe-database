@@ -5,7 +5,7 @@
   let entries=[],filtered=[],kind=['digest','views','minutes','all_views'].includes(params.get('kind'))?params.get('kind'):params.get('asset')?'minutes':params.get('topic')||params.get('record')?'views':'digest',page=1,manifest,sync={},range='',articleRequest=0,library={},briefData={briefs:[]};
   const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
   let libraryScope=params.get('scope')==='all'||params.get('state')==='awaiting_file'?'all':'archived';
-  function entry(r,k){const published=r['原始发布时间']||r['时间']||r['日期']||'';return {kind:k,title:r['标题']||'',published,date:published.slice(0,10),content:r['内容']||r['摘要']||'',author:r['作者']||'',sector:r['覆盖板块']||'',company:r['相关标的']||'',url:D.link(r['原文链接']||r['下载链接']),file:r['文件名']||'',batch:r['更新批次']||'',truncated:!!r['正文已截断'],state:r['内容状态']||''};}
+  function entry(r,k,sourceKind=k){const published=r['原始发布时间']||r['时间']||r['日期']||'';return {kind:k,sourceKind,title:r['标题']||'',published,date:published.slice(0,10),content:r['内容']||r['摘要']||'',author:r['作者']||'',sector:r['覆盖板块']||'',company:r['相关标的']||'',url:D.link(r['原文链接']||r['下载链接']),file:r['文件名']||'',batch:r['更新批次']||'',truncated:!!r['正文已截断'],state:r['内容状态']||''};}
   function unique(records){const seen=new Set();return records.filter(r=>{const key=(r.url||r.published+'|'+r.title)+'|'+r.file;if(seen.has(key))return false;seen.add(key);return true;});}
   function briefPublished(r){return (r.sources||[]).map(s=>s.publishedAt).filter(Boolean).sort((a,b)=>M.publicationTime(a).localeCompare(M.publicationTime(b))).at(-1)||r.date||'';}
   async function batchRows(path){if(!batches.has(path))batches.set(path,D.table(path).catch(e=>{batches.delete(path);throw e;}));return batches.get(path);}
@@ -103,13 +103,13 @@
     $('article-dialog').classList.toggle('minute-preview-dialog',r.kind==='minutes');
     if(r.kind==='minutes')return openMinute(r,request);
     $('article-kind').hidden=false;$('article-note').hidden=false;
-    $('article-title').textContent=r.title;$('article-kind').textContent=kind==='all_views'?'其他市场观点':M.labels[M.format(r)];
+    $('article-title').textContent=r.title;$('article-kind').textContent=kind==='all_views'?(r.sourceKind==='views'?'板块观点':'市场观点'):M.labels[M.format(r)];
     $('article-meta').textContent=[r.library?.dateStatus==='needs_review'?'会议日期待核对':'发布 '+M.publicationTime(r.published)+'（北京时间）',r.author,r.company].filter(Boolean).join(' · ');
     showBody(r,false);$('article-source').hidden=!r.url;$('article-source').href=r.url||'#';
     $('article-source').textContent=r.kind==='minutes'?(M.format(r)==='text'?'下载完整纪要 ↗':'进入来源查看附件 ↗'):'查看原始来源 ↗';
     $('article-dialog').showModal();$('article-dialog').scrollTop=0;saveUrl(r);
     if(r.batch&&Object.values(sync.files||{}).flat().includes(r.batch)&&M.format(r)==='view'){
-      try{const rows=await batchRows(r.batch);const full=rows.map(row=>entry(row,r.kind)).find(row=>row.url===r.url&&row.file===r.file);if(request!==articleRequest)return;if(!full)throw Error('record missing');showBody(full,true);}
+      try{const rows=await batchRows(r.batch);const full=rows.map(row=>entry(row,r.sourceKind||r.kind,r.sourceKind||r.kind)).find(row=>row.url===r.url&&row.file===r.file);if(request!==articleRequest)return;if(!full)throw Error('record missing');showBody(full,true);}
       catch(e){if(request===articleRequest)$('article-note').textContent='完整正文暂时无法读取，当前显示内容预览，可查看原始来源。';}
     }
   }
@@ -135,11 +135,14 @@
   function move(delta){page+=delta;render();$('results').scrollIntoView({block:'start',behavior:'smooth'});}
   $('prev').onclick=()=>move(-1);$('next').onclick=()=>move(1);
   async function loadArchive(requested){
-    const source=manifest.datasets.find(d=>d.id===requested);
-    const [all,...updates]=await Promise.all([D.table(source.file),...(sync.files?.[requested]||[]).map(batchRows)]);
-    const reassigned=new Set(sync.assignedTopics?.[requested==='views'?'all_views':'views']||[]);
-    const combined=unique(updates.flat().concat(all.filter(r=>!reassigned.has((D.link(r['原文链接']).match(/\/topic\/(\d+)/)||[])[1]))).map(r=>entry(r,requested)));
-    entries=entries.filter(r=>r.kind!==requested).concat(combined);archive.add(requested);
+    const sourceIds=requested==='all_views'?['views','all_views']:[requested];
+    const loaded=await Promise.all(sourceIds.map(async id=>{
+      const source=manifest.datasets.find(d=>d.id===id);
+      const [all,...updates]=await Promise.all([D.table(source.file),...(sync.files?.[id]||[]).map(batchRows)]);
+      const reassigned=new Set(sync.assignedTopics?.[id==='views'?'all_views':'views']||[]);
+      return updates.flat().concat(all.filter(r=>!reassigned.has((D.link(r['原文链接']).match(/\/topic\/(\d+)/)||[])[1]))).map(r=>entry(r,requested,id));
+    }));
+    entries=entries.filter(r=>r.kind!==requested).concat(unique(loaded.flat()));archive.add(requested);
   }
   $('archive').onclick=async()=>{const requested=kind,button=$('archive');button.disabled=true;button.textContent='正在加载历史观点…';$('status').textContent='';try{await loadArchive(requested);render();}catch(e){$('status').textContent='历史观点暂时无法加载，可重试；近期内容仍可浏览。';}finally{button.disabled=false;button.textContent='加载更早观点';}};
   try{
@@ -147,7 +150,8 @@
     const [recent,minutes,updates,libraryResult,briefResult]=await Promise.all([D.json('data/research/recent.json'),D.table(manifest.datasets.find(d=>d.id==='minutes').file),D.json('data/research/updates/manifest.json'),D.json('data/research/library.json').catch(()=>null),D.json('data/research/market-briefs.json').catch(()=>null)]);
     if(libraryResult)library=libraryResult;if(briefResult)briefData=briefResult;
     sync=updates;const minuteUpdates=(await Promise.all((sync.files?.minutes||[]).map(batchRows))).flat();
-    entries=recent.dbs.filter(db=>db.id!=='minutes').flatMap(db=>db.rows.map(r=>entry(r,db.id))).concat(unique(minuteUpdates.concat(minutes).map(r=>entry(r,'minutes'))));
+    entries=recent.dbs.filter(db=>db.id!=='minutes').flatMap(db=>db.rows.flatMap(r=>db.id==='views'?[entry(r,'views'),entry(r,'all_views','views')]:[entry(r,db.id)])).concat(unique(minuteUpdates.concat(minutes).map(r=>entry(r,'minutes'))));
+    entries=entries.filter(r=>r.kind!=='all_views').concat(unique(entries.filter(r=>r.kind==='all_views')));
     if(library.records)entries=L.mergeEntries(entries,library.records.map(L.entry),M.topic);
     if(!libraryResult||!briefResult)$('status').textContent='部分整理数据暂时无法读取，现有观点原文仍可浏览。';
     if(libraryResult&&briefResult)$('status').textContent='';$('content').hidden=false;select(kind);
