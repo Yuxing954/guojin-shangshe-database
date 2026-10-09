@@ -8,6 +8,12 @@ from macro_data import fetch
 
 ROOT=Path(__file__).resolve().parents[1]
 TARGET=ROOT/'data/macro/predictions.json'
+TRANSLATIONS=json.loads((ROOT/'data/macro/prediction-translations.json').read_text(encoding='utf-8'))
+
+def localize(market):
+    # Exact original-title matching prevents a changed contract from inheriting an old translation.
+    return {**market, 'questionZh': TRANSLATIONS['questions'].get(market['question']),
+        'outcomes': [{**o, 'nameZh': TRANSLATIONS['outcomes'].get(o['name'])} for o in market['outcomes']]}
 THEMES=[
  ('经济与利率',r'\b(fed|fomc|interest rates?|rate cuts?|rate hikes?|inflation|recession|gdp|unemployment|cpi|pce|tariffs?|treasury|government shutdown)\b'),
  ('金融市场',r'\b(s&p|nasdaq|stock market|bitcoin|ethereum|gold price|oil price|crude oil|dollar index)\b'),
@@ -81,7 +87,7 @@ def main():
                 except (ValueError,KeyError,TypeError):continue
                 if market:candidates.append(market)
             if len(body)<100:break
-        markets=select(candidates)
+        markets=[localize(market) for market in select(candidates)]
         if not markets:raise ValueError('No valid relevant markets')
         output=dict(version=1,status='ready',fetchedAt=stamp,checkedAt=stamp,markets=markets,receipts=receipts,
             selectionNote=f'扫描成交量排名前{scanned}个公开活跃合约，按关键词筛选三类主题；非全市场覆盖，每类最多8个。')
