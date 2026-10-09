@@ -12,6 +12,18 @@ class AutomaticMacroTests(unittest.TestCase):
         self.assertEqual(M.numeric('2.7万亿'),(2.7e12,True));self.assertEqual(M.numeric('0'),(0,False));self.assertIsNone(M.numeric('--'))
         for value in ['3%',True,'NaN','=1+2']:
             with self.assertRaises(ValueError):M.numeric(value)
+    def test_reviewed_bounds_combined_months_and_empty_coverage(self):
+        spec={**self.spec,'offset':0,'combinedMonths':[2],'minValue':0,'maxValue':200}
+        t=copy.deepcopy(self.table);t['columns'][2]='2025-02'
+        result=M.normalize({'data':[t]},spec,'2026-10-09')
+        self.assertEqual(result['observations'][0]['basis'],'jan_feb')
+        t['items'][0][2]='201'
+        with self.assertRaises(ValueError):M.normalize({'data':[t]},spec,'2026-10-09')
+        self.assertFalse(M.coverage([],spec)['complete'])
+    def test_consumption_mapping_changes_reject_history_merge(self):
+        spec={**self.spec,'consumerId':'cpi','basis':'month'}
+        old=M.merge_history({},M.normalize({'data':[self.table]},spec,'2026-10-09'),spec,'2026-10-09')
+        with self.assertRaises(ValueError):M.merge_history(old,old,{**spec,'basis':'ytd'},'2026-10-10')
     def test_rate_limit_business_message_is_not_an_empty_success(self):
         with self.assertRaises(M.RateLimitError):M.body_of({'content':[{'type':'text','text':'{"message":"操作过于频繁"}'}]})
     def test_exact_identity_source_code_frequency(self):

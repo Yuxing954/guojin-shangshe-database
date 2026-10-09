@@ -65,6 +65,14 @@ class ConsumptionEvidenceTest(unittest.TestCase):
         rows=[r for r in self.data['observations'] if r['indicatorId']=='income_national']
         self.assertTrue(all(r['basis'] in ('ytd','year') for r in rows))
         self.assertTrue(any(r['period']=='2024' and r['basis']=='year' for r in rows))
+        self.assertEqual(next(r['value'] for r in rows if r['period']=='2024'),41314)
+        self.assertEqual(next(r['value'] for r in rows if r['period']=='2025'),43377)
+    def test_household_table_must_agree_with_nationwide_narrative(self):
+        source=next(s for s in self.sources if s['id']=='household-2025')
+        bad=copy.deepcopy(self.evidence);e=bad[source['id']]
+        row=next(r for r in e['rows'] if len(r)==3 and '全国居民人均可支配收入' in r[0] and '中位数' not in r[0]);row[1]='12179'
+        e['sha256']=module.evidence_hash(e['rows'],e['paragraphs'])
+        with self.assertRaisesRegex(ValueError,'narrative/table mismatch'):module.compile_data([source],bad,'2026-10-09')
 
 
 if __name__=='__main__':unittest.main()
