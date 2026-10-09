@@ -1,0 +1,52 @@
+name: Refresh macro and important predictions
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: write
+concurrency:
+  group: refresh-macro
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Refresh official indicators
+        id: macro
+        continue-on-error: true
+        env:
+          BLS_API_KEY: ${{ secrets.BLS_API_KEY }}
+        run: python update/macro_data.py
+      - name: Refresh prediction snapshot
+        id: predictions
+        continue-on-error: true
+        run: python update/polymarket_data.py
+      - name: Validate snapshots
+        run: |
+          node --test tests/macro.test.cjs
+          python tests/test_macro_data.py
+      - name: Propose reviewed data update
+        env:
+          GH_TOKEN: ${{ github.token }}
+          UPDATE_BRANCH: data/macro-${{ github.run_id }}
+        run: |
+          if git diff --quiet -- data/macro; then exit 0; fi
+          git checkout -b "$UPDATE_BRANCH"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/macro/snapshot.json data/macro/predictions.json
+          git commit -m 'data: refresh official macro and prediction snapshots'
+          git push origin "$UPDATE_BRANCH"
+          gh pr create --base main --head "$UPDATE_BRANCH" --title '更新宏观与预测快照' --body '更新官方宏观数据及Polymarket快照。请核对数据期间、来源、缺失值与更新状态；接口失败时保留上次成功值并标明错误。'
+      - name: Report upstream failures
+        if: steps.macro.outcome == 'failure' || steps.predictions.outcome == 'failure'
+        run: |
+          echo 'One or more upstream refreshes failed. Explicit failure statuses have been retained for review.'
+          exit 1
