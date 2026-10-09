@@ -71,5 +71,11 @@
     const body=rows.map(r=>{const i=indicators.get(r.indicatorId),s=sources.get(r.sourceId);return [i.name,i.group,frequencies[r.frequency],r.period,r.endDate,bases[r.basis]+'；'+i.definition,i.valueLabel,r.value,i.unit,r.yoy,r.mom,r.realYoy,r.note,r.quality==='estimate'?'预计':'官方披露',s.publishedAt,s.publisher,s.title,s.url,sources.get(r.supplementSourceId)?.url];});
     return '\ufeff'+[headers,...body].map(row=>row.map(csvCell).join(',')).join('\r\n');
   }
-  return {important,licensedSource,mergeAutomatic,finite,frequencies,bases,official,validate,records,defaultScope,latest,directory,segments,csv};
+  function retailBreakdown(data,{basis='month',period='',group='categories'}={}){
+    const reference=records(data,'retail',{frequency:'monthly',basis}).filter(r=>!period||r.period===period).at(-1);
+    const ids=group==='categories'?data.indicators.filter(i=>i.group==='社零分品类').map(i=>i.id):group==='structure'?['retail','goods','catering','above_total','above_goods','above_catering']:['retail_urban','retail_rural','retail_ex_auto','online_goods','online_total','online_services'];
+    return {reference,items:ids.map(id=>({indicator:data.indicators.find(i=>i.id===id),row:reference?data.observations.find(r=>r.indicatorId===id&&r.frequency===reference.frequency&&r.basis===reference.basis&&r.period===reference.period)||null:null})).filter(x=>x.indicator)};
+  }
+  return {retailBreakdown,important,licensedSource,mergeAutomatic,finite,frequencies,bases,official,validate,records,defaultScope,latest,directory,segments,csv};
 });
+

@@ -4,14 +4,14 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="中美核心宏观指标、历史走势及重要预测。">
   <title>宏观数据 · 国金商社</title>
-  <link rel="stylesheet" href="scripts/site.css?v=8"><link rel="stylesheet" href="scripts/macro.css?v=4">
-  <script defer src="scripts/site-shell.js?v=9"></script><script defer src="scripts/macro-model.js?v=4"></script><script defer src="scripts/macro.js?v=4"></script>
-</head>
+  <link rel="stylesheet" href="scripts/site.css?v=8"><link rel="stylesheet" href="scripts/macro.css?v=5">
+  <script defer src="scripts/site-shell.js?v=11"></script><script defer src="scripts/macro-model.js?v=4"></script><script defer src="scripts/macro.js?v=5"></script>
+<link rel="stylesheet" href="scripts/research-chart.css?v=1"><script defer src="scripts/research-chart.js?v=1"></script><script defer src="scripts/prediction-model.js?v=1"></script><script>if(!location.search)location.replace("consumption-macro.html"+location.hash);</script><link rel="stylesheet" href="scripts/macro-refinements.css?v=1"></head>
 <body class="site-page" data-site-section="macro">
 <a class="macro-skip" href="#main">跳至主要内容</a>
 <main id="main" class="site-main" tabindex="-1">
   <header class="portal-header"><h1>宏观数据</h1><a href="docs/macro-data.md" class="portal-top-link">数据说明 ↗</a></header>
-  <div class="macro-toolbar"><nav class="portal-tabs" aria-label="数据视图"><button data-view="indicators" aria-pressed="true">核心指标</button><a class="macro-subtab" href="consumption-macro.html">消费专题</a><button data-view="predictions" aria-pressed="false">重要预测</button></nav><nav id="countries" class="portal-tabs" aria-label="选择国家"><button data-country="CN" aria-pressed="true">中国</button><button data-country="US" aria-pressed="false">美国</button></nav></div>
+  <div class="macro-toolbar"><nav class="portal-tabs" aria-label="数据视图"><a class="macro-subtab" href="consumption-macro.html">消费专题</a><button data-view="indicators" aria-pressed="true">核心指标</button><button data-view="predictions" aria-pressed="false">重要预测</button></nav><nav id="countries" class="portal-tabs" aria-label="选择国家"><button data-country="CN" aria-pressed="true">中国</button><button data-country="US" aria-pressed="false">美国</button></nav></div>
   <div id="load-state" class="portal-status" role="status">正在读取宏观数据…</div><button id="retry" class="portal-button" hidden>重试读取</button>
   <section id="indicators" hidden>
     <nav id="groups" class="macro-groups" aria-label="指标分类"></nav>
@@ -25,8 +25,9 @@
     <div class="portal-panel-head"><h2 id="prediction-heading">重要预测</h2><button id="prediction-download" class="portal-button" disabled>下载 CSV</button></div>
     <div id="prediction-status" class="portal-note" role="status"></div>
     <div class="portal-filter"><input id="prediction-search" type="search" aria-label="搜索预测事件" placeholder="搜索预测（中文或英文）"><label>主题 <select id="prediction-category"><option value="">全部主题</option><option>经济与利率</option><option>金融市场</option><option>政治与地缘</option></select></label></div>
-    <div id="prediction-list" class="prediction-grid"></div>
+    <p class="prediction-intro">同一事件集中展示，数值为市场隐含概率；仅列已收录合约。</p><div id="prediction-list" class="prediction-grid"></div><button id="prediction-more" class="portal-button" hidden>显示全部事件</button>
     <details class="macro-method"><summary>概率、筛选与来源</summary><p>市场隐含概率来自 Polymarket 合约价格，不是官方统计。按成交量筛选经济、金融与地缘主题，结算以原始合约为准。</p><p id="prediction-selection"></p><p>公开 Gamma API 无需密钥，使用及再分发须遵循其条款。<a href="https://docs.polymarket.com/market-data/overview" target="_blank" rel="noopener">官方文档</a> · <a href="https://polymarket.com/tos" target="_blank" rel="noopener">使用条款</a></p></details>
   </section>
 </main>
 </body></html>
+
