@@ -141,3 +141,7 @@ python update/zsxq_dump_all.py --days 30 --keep-dup
 - 池子初始 84 词来自历史数据「命中关键词」列反推，另补充约 70 个商社核心标的
 - 新增关键词：直接编辑 `config.json` 的 `pool` 数组即可
 - 食饮等噪音板块（无商社标的命中）会被自然过滤；若泛词误入，加进 `generic` 或 `noise_title_words`
+
+## 宏观与消费专题更新
+
+使用`macro_auto.py`更新Choice及BEA/BLS/Census官方历史，核心页与消费专题共用数据。后续AI请先阅读[完整更新指引](../docs/macro-update-guide.md)，按指引完成凭证检查、增量抓取、口径与缺期校验、测试及提交发布。此流程与本页知识星球双线更新独立。
