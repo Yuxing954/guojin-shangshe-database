@@ -37,7 +37,7 @@
     const nameSort=sort.startsWith('name'),percentSort=sort.startsWith('change');
     $('table-head').innerHTML='<tr><th><span aria-label="自选">☆</span></th><th aria-sort="'+(nameSort?(sort==='name'?'ascending':'descending'):'none')+'"><button type="button" class="quotes-sort" data-sort="name" aria-pressed="'+nameSort+'">公司 '+(nameSort?(sort==='name'?'↑':'↓'):'↕')+'</button></th><th>最新价</th><th aria-sort="'+(percentSort?(sort==='change-asc'?'ascending':'descending'):'none')+'"><button type="button" class="quotes-sort" data-sort="percent" aria-pressed="'+percentSort+'">涨跌幅 '+(percentSort?(sort==='change-asc'?'↑':'↓'):'↕')+'</button></th>'+(full?['涨跌额','开盘','最高','最低'].map(t=>'<th>'+t+'</th>').join(''):'')+'<th>报价时间</th></tr>';
     const focused=document.activeElement,focusCode=focused?.dataset.code,focusWatch=focused?.dataset.watch,scroll=$('table-scroll').scrollTop;
-    $('rows').innerHTML=filtered.map(c=>{const q=quotes[c.code],info=meta(c);return '<tr data-company="'+esc(c.code)+'" data-selected="'+(selected?.code===c.code)+'"><td>'+star(c)+'</td><td><button class="quotes-name" data-code="'+esc(c.code)+'" type="button" aria-pressed="'+(selected?.code===c.code)+'">'+esc(c.name)+'</button><small class="quotes-symbol" title="'+esc(info.label+' · '+c.sector)+'">'+esc(c.code)+'</small><span class="quotes-row-periods">'+['minute','day','week'].map(p=>'<button type="button" data-row-period="'+p+'">'+({minute:'分时',day:'日K',week:'周K'}[p])+'</button>').join('')+'</span></td><td><span class="quotes-price">'+price(q,c)+'<small>'+info.currency+'</small></span></td><td class="quotes-percent '+tone(q?.percent)+'">'+signed(q?.percent,'%')+'</td>'+(full?'<td class="'+tone(q?.change)+'">'+signed(q?.change,'',precision(c))+'</td>'+[q?.open,q?.high,q?.low].map(v=>'<td>'+fmt(v,precision(c))+'</td>').join(''):'')+'<td class="quotes-time" data-failed="'+!!q?.failed+'">'+timeText(q)+'</td></tr>';}).join('')||'<tr><td colspan="'+(full?9:5)+'" class="quotes-empty">'+(onlyWatch&&!watch.length?'还没有自选公司。点击列表中的 ☆，加入你关注的公司。':'没有符合条件的公司，请调整或重置筛选。')+'</td></tr>';
+    $('rows').innerHTML=filtered.map(c=>{const q=quotes[c.code],info=meta(c);return '<tr data-company="'+esc(c.code)+'" data-selected="'+(selected?.code===c.code)+'"><td>'+star(c)+'</td><td><button class="quotes-name" data-code="'+esc(c.code)+'" type="button" aria-pressed="'+(selected?.code===c.code)+'">'+esc(c.name)+'</button><small class="quotes-symbol" title="'+esc(info.label+' · '+c.sector)+'">'+esc(c.code)+'</small></td><td><span class="quotes-price">'+price(q,c)+'<small>'+info.currency+'</small></span></td><td class="quotes-percent '+tone(q?.percent)+'">'+signed(q?.percent,'%')+'</td>'+(full?'<td class="'+tone(q?.change)+'">'+signed(q?.change,'',precision(c))+'</td>'+[q?.open,q?.high,q?.low].map(v=>'<td>'+fmt(v,precision(c))+'</td>').join(''):'')+'<td class="quotes-time" data-failed="'+!!q?.failed+'">'+timeText(q)+'</td></tr>';}).join('')||'<tr><td colspan="'+(full?9:5)+'" class="quotes-empty">'+(onlyWatch&&!watch.length?'还没有自选公司。点击列表中的 ☆，加入你关注的公司。':'没有符合条件的公司，请调整或重置筛选。')+'</td></tr>';
     $('table-scroll').scrollTop=scroll;
     if(focusCode||focusWatch){const buttons=[...$('rows').querySelectorAll('button')],target=buttons.find(button=>focusWatch?button.dataset.watch===focusWatch:button.dataset.code===focusCode);target?.focus({preventScroll:true});}
     $('heatmap').innerHTML=filtered.map(c=>{const q=quotes[c.code],pct=q?.percent,style=heatStyle(pct);return '<button class="quotes-heat-tile" style="background:'+style.background+';color:'+style.color+'" data-code="'+esc(c.code)+'" data-selected="'+(selected?.code===c.code)+'" type="button" title="'+esc(c.name+' · '+c.code+' · '+infoLabel(c)+' · '+price(q,c)+(q?' · '+q.asOf:' · 暂无报价'))+'"><strong>'+esc(c.name)+(watch.includes(c.code)?' ★':'')+'</strong><span>'+signed(pct,'%')+'</span><small>'+price(q,c)+' '+meta(c).currency+'</small></button>';}).join('')||'<p class="quotes-empty">当前分组没有公司，请调整筛选或先添加自选。</p>';
@@ -51,7 +51,8 @@
     for(const el of $('benchmarks').querySelectorAll('[data-code]')){const c=benchmarks.find(c=>c.code===el.dataset.code),q=quotes[c.code];el.querySelector('strong').textContent=price(q,c);const pct=el.querySelector('.quotes-percent');pct.textContent=signed(q?.percent,'%');pct.className='quotes-percent '+tone(q?.percent);el.querySelector('small').textContent=q?q.asOf.slice(5):'暂无报价';}
   }
   function updateQuotes(){
-    // Keep row identity, order, focus, scroll, company controls and charts intact.
+    // Update existing nodes; change their order only when the selected ranking changes.
+    const ranked=M.filter(companies,quotes,filters());filtered=ranked;
     const full=$('columns').value==='full';
     for(const row of $('rows').querySelectorAll('tr[data-company]')){const c=companies.find(c=>c.code===row.dataset.company),q=quotes[c.code],td=row.children;if(!c)continue;
       td[2].innerHTML='<span class="quotes-price">'+price(q,c)+'<small>'+meta(c).currency+'</small></span>';td[3].textContent=signed(q?.percent,'%');td[3].className='quotes-percent '+tone(q?.percent);
@@ -59,6 +60,8 @@
       const time=td[full?8:4];time.innerHTML=timeText(q);time.dataset.failed=String(!!q?.failed);
     }
     for(const tile of $('heatmap').querySelectorAll('[data-code]')){const c=companies.find(c=>c.code===tile.dataset.code),q=quotes[c.code];tile.querySelector('span').textContent=signed(q?.percent,'%');tile.querySelector('small').textContent=price(q,c)+' '+meta(c).currency;paintHeat(tile,q,c);}
+    for(const [id,selector,key] of [['rows','tr[data-company]','company'],['heatmap','[data-code]','code']]){const host=$(id),nodes=[...host.querySelectorAll(selector)],byCode=new Map(nodes.map(n=>[n.dataset[key],n]));if(nodes.some((n,i)=>n.dataset[key]!==ranked[i]?.code))for(const c of ranked){const n=byCode.get(c.code);if(n)host.appendChild(n);}}
+    detailNavigation();
     const b=M.breadth(filtered,quotes);$('range-summary').textContent=filtered.length+' 家 · '+b.valid+' 家有报价 · '+b.up+'涨 / '+b.down+'跌 / '+b.flat+'平';updateBenchmarks();if(selected)renderOverview();
   }
   function miniSvg(rows,name){const w=160,h=44,lo=Math.min(...rows.map(r=>+r[4])),hi=Math.max(...rows.map(r=>+r[3])),y=v=>3+(hi-v)/(hi-lo||1)*38,step=w/rows.length;
@@ -161,13 +164,13 @@
   function selectCompany(code,scrollDetail=false){
     const c=companies.concat(benchmarks).find(c=>c.code===code);if(!c)return;selected=c;chartData=null;$('quote-title').textContent=c.name;$('quote-subtitle').textContent=c.code+' · '+infoLabel(c)+(c.sector?' · '+c.sector:'');
     $('quote-detail').hidden=false;$('detail-empty').hidden=true;render();preferences();loadChart();
-    if(scrollDetail&&(view==='heat'||matchMedia('(max-width:1000px)').matches))$('quote-detail').scrollIntoView({behavior:'smooth',block:'start'});
+    if(scrollDetail&&matchMedia('(max-width:1000px)').matches)$('quote-detail').scrollIntoView({behavior:'smooth',block:'start'});
   }
   function moveCompany(delta,focus=false){
     const index=filtered.findIndex(c=>c.code===selected?.code),next=filtered[index+delta];if(index<0||!next)return;selectCompany(next.code);
     const button=[...$('rows').querySelectorAll('[data-code]')].find(b=>b.dataset.code===next.code);button?.scrollIntoView({block:'nearest'});if(focus)button?.focus({preventScroll:true});
   }
-  $('rows').onclick=e=>{const favorite=e.target.closest('[data-watch]');if(favorite){toggleWatch(favorite.dataset.watch);return;}const row=e.target.closest('tr[data-company]');if(row){const choice=e.target.closest('[data-row-period]');if(choice)period=choice.dataset.rowPeriod;selectCompany(row.dataset.company,true);}};
+  $('rows').onclick=e=>{const favorite=e.target.closest('[data-watch]');if(favorite){toggleWatch(favorite.dataset.watch);return;}const row=e.target.closest('tr[data-company]');if(row){selectCompany(row.dataset.company,true);}};
   $('heatmap').onclick=$('benchmarks').onclick=e=>{const button=e.target.closest('[data-code]');if(button)selectCompany(button.dataset.code,true);};
   $('rows').onkeydown=e=>{if(!e.target.matches('[data-code]')||!['ArrowUp','ArrowDown'].includes(e.key))return;e.preventDefault();if(selected?.code!==e.target.dataset.code)selectCompany(e.target.dataset.code);moveCompany(e.key==='ArrowUp'?-1:1,true);};
   $('table-head').onclick=e=>{const b=e.target.closest('[data-sort]');if(!b)return;$('sort').value=b.dataset.sort==='name'?($('sort').value==='name'?'name-desc':'name'):($('sort').value==='change-desc'?'change-asc':'change-desc');applyFilters();};

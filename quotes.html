@@ -3,9 +3,9 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="国金商社行情工作台：腾讯报价、自选公司、行业分组和走势与研究联动。">
 <title>实时行情 · 国金商社</title>
-<link rel="stylesheet" href="scripts/site.css?v=7"><link rel="stylesheet" href="scripts/quotes.css?v=8">
+<link rel="stylesheet" href="scripts/site.css?v=7"><link rel="stylesheet" href="scripts/quotes.css?v=9">
 <script defer src="scripts/site-data.js?v=2"></script><script defer src="scripts/market-kline.js?v=20261009-3"></script>
-<script defer src="scripts/quotes-model.js?v=6"></script><script defer src="scripts/site-shell.js?v=6"></script><script defer src="scripts/quotes-poller.js?v=2"></script><script defer src="scripts/quotes.js?v=12"></script>
+<script defer src="scripts/quotes-model.js?v=6"></script><script defer src="scripts/site-shell.js?v=6"></script><script defer src="scripts/quotes-poller.js?v=2"></script><script defer src="scripts/quotes.js?v=13"></script>
 </head><body><main id="main">
 <header class="portal-header quotes-header"><div><p class="eyebrow">MARKET / RESEARCH DESK</p><h1>实时行情</h1><p>先选板块，再看公司价格和走势。</p></div><div class="quotes-actions"><button class="portal-button" id="refresh" type="button">刷新报价</button></div></header>
 <div id="status" class="quotes-status" role="status" aria-live="polite">正在读取覆盖公司…</div>
@@ -18,7 +18,7 @@
 <div class="quotes-workspace" id="workspace">
 <section class="quotes-board" aria-labelledby="board-title">
 <div class="quotes-board-head"><div><h2 id="board-title">全部覆盖</h2><p id="range-summary"></p></div><div class="quotes-view" id="views" aria-label="展示方式"><button type="button" data-view="list" aria-pressed="true">列表</button><button type="button" data-view="heat" aria-pressed="false">热力图</button></div></div>
-<div class="quotes-table-tools" id="table-tools"><span>点击整行或直接选择分时 / 日K / 周K · ☆ 加入自选</span><label>报价字段 <select id="columns" aria-label="报价字段"><option value="compact">核心报价</option><option value="full">完整报价</option></select></label></div>
+<div class="quotes-table-tools" id="table-tools"><span>点击整行查看走势 · ☆ 加入自选</span><label>报价字段 <select id="columns" aria-label="报价字段"><option value="compact">核心报价</option><option value="full">完整报价</option></select></label></div>
 <div id="list-view" class="quotes-table-wrap"><div class="quotes-table-scroll" id="table-scroll"><table class="quotes-table" id="quote-table"><thead id="table-head"></thead><tbody id="rows"></tbody></table></div></div>
 <div id="heat-view" hidden><div class="quotes-heat-legend" aria-label="涨跌颜色：绿跌红涨，颜色越深幅度越大"><span>−5%及以下</span><i></i><span>0</span><i></i><span>+5%及以上</span></div><div id="heatmap" class="quotes-heatmap"></div></div><div id="list-note" class="quotes-list-note"></div>
 </section>
