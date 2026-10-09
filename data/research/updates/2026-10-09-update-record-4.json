@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "runId": "2026-10-09-hourly-2101",
+  "syncedAt": "2026-10-09T21:01:11+08:00",
+  "previousCoverageTo": "2026-10-09T19:45:45.398+0800",
+  "fetchedUniqueTopics": 30,
+  "newSourceTopics": 11,
+  "added": {
+    "views": 0,
+    "all_views": 7
+  },
+  "excluded": 4,
+  "duplicates": 0,
+  "record": "data/research/updates/2026-10-09-update-record-4.json",
+  "sourceGroup": "88888142214212",
+  "sourceName": "水木调研纪要-2.0",
+  "fetchedThrough": "2026-10-09T20:24:56.902+0800",
+  "oldestFetchedThisRun": "2026-10-09T17:48:06.208+0800",
+  "rawPageRecords": 30,
+  "paginationDuplicates": 0,
+  "overlapTopics": 19,
+  "pages": [
+    {
+      "page": "zsxq-page-001",
+      "count": 30,
+      "newest": "2026-10-09T20:24:56.902+0800",
+      "oldest": "2026-10-09T17:48:06.208+0800"
+    }
+  ],
+  "duplicateScope": "按 topic_id 对照既有分配集合与近期索引；清洗正文后比对近期索引及本批新增正文。完整历史 CSV 在 GitHub 构建中再次按主题、时间标题和正文指纹去重。",
+  "excludedReasonCounts": {
+    "附件标题": 4
+  },
+  "excludedTopics": [
+    {
+      "topicId": "14425445585582582",
+      "publishedAt": "2026-10-09T20:14:32.104+0800",
+      "title": "海外投行报告#",
+      "reason": "附件标题；未读取附件，未据此推断观点"
+    },
+    {
+      "topicId": "45548558818888448",
+      "publishedAt": "2026-10-09T20:12:59.607+0800",
+      "title": "纪要&报告#",
+      "reason": "附件标题；未读取附件，未据此推断观点"
+    },
+    {
+      "topicId": "82258228818851442",
+      "publishedAt": "2026-10-09T20:12:16.669+0800",
+      "title": "纪要&报告#",
+      "reason": "附件标题；未读取附件，未据此推断观点"
+    },
+    {
+      "topicId": "82258228818852212",
+      "publishedAt": "2026-10-09T20:10:37.477+0800",
+      "title": "纪要&报告#",
+      "reason": "附件标题；未读取附件，未据此推断观点"
+    }
+  ],
+  "duplicatesDropped": [],
+  "unreadCommercialAttachments": [],
+  "addedTopics": {
+    "views": [],
+    "all_views": [
+      {
+        "topicId": "82258228818285182",
+        "publishedAt": "2026-10-09T20:24:56.902+0800",
+        "title": "【mlcc更新】关于市场对于mlcc价格的过度恐慌，又找经销…",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/82258228818285182"
+      },
+      {
+        "topicId": "82258228818251222",
+        "publishedAt": "2026-10-09T20:24:24.295+0800",
+        "title": "【华创传媒互联网】Meta限制TikTok广告投放，利好独立…",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/82258228818251222"
+      },
+      {
+        "topicId": "22258228818251511",
+        "publishedAt": "2026-10-09T20:23:51.618+0800",
+        "title": "讲讲牧场，其实周周谈都讲完了：现在是右侧三大阶段的第二阶段—…",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/22258228818251511"
+      },
+      {
+        "topicId": "55521551181524844",
+        "publishedAt": "2026-10-09T20:23:38.144+0800",
+        "title": "【广发电子】继续推荐英集芯，独立的α逻辑。26Q3，移动电源…",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/55521551181524844"
+      },
+      {
+        "topicId": "82258228818254252",
+        "publishedAt": "2026-10-09T20:22:52.163+0800",
+        "title": "近期板块观点，圣泉集团、鸿路钢构、安徽建工、山东路桥、东华科…",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/82258228818254252"
+      },
+      {
+        "topicId": "22258228818252221",
+        "publishedAt": "2026-10-09T20:22:31.804+0800",
+        "title": "❗️美盈森：TIM材料预期差极大，导热凝胶龙头+垫片批量在即",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/22258228818252221"
+      },
+      {
+        "topicId": "82258228818252542",
+        "publishedAt": "2026-10-09T20:22:04.690+0800",
+        "title": "[红包] 【国金金属】金钼股份：钼矿、钼粉双龙头！ 1009",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/82258228818252542"
+      }
+    ]
+  }
+}
