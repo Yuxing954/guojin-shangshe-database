@@ -4,6 +4,9 @@ on:
     paths:
       - 'consumption-macro.html'
       - 'scripts/consumption-macro*'
+      - 'scripts/research-chart*'
+      - 'scripts/macro-refinements.css'
+      - 'tests/macro-refinement.test.cjs'
       - 'scripts/import_consumption_macro.py'
       - 'scripts/site-shell.js'
       - 'data/consumption-macro/**'
@@ -16,6 +19,9 @@ on:
     paths:
       - 'consumption-macro.html'
       - 'scripts/consumption-macro*'
+      - 'scripts/research-chart*'
+      - 'scripts/macro-refinements.css'
+      - 'tests/macro-refinement.test.cjs'
       - 'scripts/import_consumption_macro.py'
       - 'data/consumption-macro/**'
       - 'data/macro/automatic-series.json'
@@ -36,6 +42,9 @@ jobs:
       - name: Validate official data and dashboard
         run: |
           node --check scripts/consumption-macro.js
+          node --check scripts/research-chart.js
+          node --test tests/macro-refinement.test.cjs
           node --check scripts/site-shell.js
           node --test tests/consumption-macro.test.cjs
           python -m unittest discover -s tests -p 'test_consumption_macro.py' -v
+
