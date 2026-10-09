@@ -24,6 +24,8 @@ GDP和PPI上年同期100指数明确减100转换为同比涨跌幅。当月、�
 
 ## 更新
 
+后续AI操作请阅读[宏观数据更新指引](macro-update-guide.md)，包含可执行命令、MCP补查、限流处理、测试和发布步骤。
+
 本机后台运行：`python update/macro_auto.py --codex-config <本机配置文件>`。不提交本机配置、EM_API_KEY或原始认证请求。凭证可由环境变量EM_API_KEY提供，离线回执仅供审核重放，日常更新不使用旧回执。自动任务使用现有本机连接，核验后仅提交宏观数据文件并通过测试合并，沿用GitHub Pages部署。此类本机自动任务需要Codex和电脑运行；不会把本机密钥复制到GitHub。
 
 GitHub的`refresh-macro.yml`仍是原有人工触发官方宏观/预测快照更新，不代表Choice已在GitHub托管运行。当前Choice自动更新由本机定时任务负责。
