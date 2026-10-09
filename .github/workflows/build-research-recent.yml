@@ -13,11 +13,20 @@ on:
       - "scripts/build_research_recent.py"
       - "scripts/research_sources.py"
       - "data/research/updates/manifest.json"
+      - "scripts/build_site_summaries.py"
+      - "scripts/build_resource_index.py"
+      - "scripts/summary_io.py"
+      - "data/research/library.json"
+      - "data/industry/overview.json"
       - ".github/workflows/build-research-recent.yml"
   schedule:
     # 每天 02:30 UTC（北京时间 10:30）；仅整理仓库已有的数据
     - cron: "30 2 * * *"
   workflow_dispatch:           # 允许手动触发
+
+concurrency:
+  group: research-summaries-${{ github.ref }}
+  cancel-in-progress: false
 
 permissions:
   contents: write              # GITHUB_TOKEN 需要写权限才能 push
@@ -34,17 +43,20 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Build data/research/recent.json
-        run: |
-          python scripts/build_research_recent.py
-          python scripts/build_industry_snapshot.py
-          python scripts/build_home_snapshot.py
+      - uses: actions/cache@v4
+        with:
+          path: .cache/research-build.json
+          key: summaries-${{ runner.os }}-${{ github.ref_name }}-${{ github.run_id }}
+          restore-keys: summaries-${{ runner.os }}-${{ github.ref_name }}-
+
+      - name: Build only changed summaries and resource directory
+        run: python scripts/build_site_summaries.py
 
       - name: Commit & push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/research/recent.json data/home-snapshot.json data/industry/overview.json
+          git add data/research/recent.json data/home-snapshot.json data/industry/overview.json data/research/resource-index.json
           if git diff --staged --quiet; then
             echo "no change"
             exit 0

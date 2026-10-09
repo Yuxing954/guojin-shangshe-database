@@ -76,123 +76,24 @@ svg{width:100%;height:auto;display:block}
 .empty{padding:40px;text-align:center;color:var(--mut);font-size:12px}
 .muted{color:var(--mut);font-size:10px}
 @media(max-width:960px){.kpis{grid-template-columns:repeat(3,1fr)}.kpi:nth-child(5n){border-right:1px solid #eef1f4}.grid2,.grid3{grid-template-columns:1fr}}
+#view-monthly .controls{flex-wrap:wrap;gap:8px}#view-monthly .controls .srcbtn{font-size:12px;padding:6px 9px}
 @media(max-width:640px){.wrap{padding:14px 10px}.hero{flex-direction:column;align-items:flex-start}.kpis{grid-template-columns:repeat(2,1fr)}.kpi{border-right:0}.signal{grid-template-columns:1fr}.hero h1{font-size:20px}}
-</style><link rel="stylesheet" href="scripts/site.css?v=5"><script defer src="scripts/site-shell.js?v=3"></script><link rel="stylesheet" href="scripts/dutyfree-holidays.css?v=1"><script defer src="scripts/dutyfree-holidays.js?v=2"></script><link rel="stylesheet" href="scripts/dutyfree-typography.css?v=3"></head><body class="dutyfree-page"><div class="wrap">
+</style><link rel="stylesheet" href="scripts/site.css?v=5"><script defer src="scripts/site-shell.js?v=4"></script><link rel="stylesheet" href="scripts/dutyfree-holidays.css?v=2"><script defer src="scripts/dutyfree-holidays.js?v=4"></script><link rel="stylesheet" href="scripts/dutyfree-typography.css?v=3"></head><body class="dutyfree-page"><div class="wrap">
 <div class="crumbs"><a href="industry.html#dutyfree">行业数据</a> / 免税专题</div>
 <header class="hero"><div><div class="eyebrow">GUOJIN · DUTY FREE RESEARCH DATABASE</div><h1>免税行业数据库</h1><p>月度趋势 · 节假日表现</p></div><div class="asof" id="asof">读取数据中…</div></header>
-<nav class="tabs" id="tabs">
-<button class="tab on" data-view="overview">行业总览</button>
-<button class="tab" data-view="hainan">海南离岛免税</button>
-<button class="tab" data-view="holidays">节假日数据</button>
-<button class="tab" data-view="ctg">中国中免</button>
-<button class="tab" data-view="airport">机场免税</button>
-<button class="tab" data-view="city">市内免税</button>
-<button class="tab" data-view="policy">免税政策</button>
-<button class="tab" data-view="category">品类结构</button>
-<button class="tab" data-view="members">会员体系</button>
-<button class="tab" data-view="channel">渠道</button>
-<button class="tab" data-view="companies">同业对比</button>
-<button class="tab" data-view="events">行业事件</button>
-<button class="tab" data-view="datacenter">数据中心</button>
-</nav>
-
-<!-- 行业总览 -->
-<section class="view on" id="view-overview">
-<div class="panel"><div class="panel-head"><h2>最新经营</h2><button class="srcbtn" onclick="showSrc('provided_workbook_monthly')">来源</button></div><div class="kpis" id="kpi-grid"></div></div>
-<div class="panel chart"><div class="panel-head"><h3 id="ov-trend-title">购物金额同比增速（%）</h3><div class="trend-controls"><label class="visually-hidden" for="ov-metric">趋势指标</label><select id="ov-metric" aria-label="趋势指标"><option value="sales">购物金额</option><option value="shoppers">购物人次</option><option value="items">购物件数</option><option value="spend">每人次消费</option></select><div class="trend-modes" aria-label="显示方式"><button type="button" data-mode="combo" aria-pressed="true">数值＋同比</button><button type="button" data-mode="value" aria-pressed="false">数值</button><button type="button" data-mode="yoy" aria-pressed="false">同比增速</button></div></div></div><svg id="ov-sales" role="img" aria-label="购物金额同比增速趋势"></svg><div class="tooltip"></div><p class="trend-caption">近12个月 · 同比为较上年同月变化</p></div>
-</section>
+<nav class="tabs" id="tabs"><button class="tab on" data-view="monthly">月度数据</button><button class="tab" data-view="holidays">节假日数据</button></nav>
 
 <!-- 海南离岛免税 -->
-<section class="view" id="view-hainan">
-<div class="panel"><div class="panel-head"><div><h2>海南离岛免税</h2><p id="hn-period"></p></div><div class="controls"><label class="visually-hidden" for="hn-range">时间范围</label><select id="hn-range" aria-label="时间范围"><option value="12" selected>近12个月</option><option value="24">近24个月</option><option value="2024">2024</option><option value="2025">2025</option><option value="2026">2026</option><option value="9999">全部</option></select></div></div>
+<section class="view on" id="view-monthly">
+<div class="panel"><div class="panel-head"><div><h2>海南离岛免税 · 月度数据</h2><p id="hn-period"></p></div><div class="controls"><button class="srcbtn" type="button" onclick="showSrc('provided_workbook_monthly')">来源</button><button class="srcbtn" type="button" id="monthly-download">下载当前范围 CSV</button><label class="visually-hidden" for="hn-range">时间范围</label><select id="hn-range" aria-label="时间范围"><option value="12" selected>近12个月</option><option value="24">近24个月</option><option value="2024">2024</option><option value="2025">2025</option><option value="2026">2026</option><option value="9999">全部</option></select></div></div>
 <div class="kpis"><div class="kpi"><span>购物金额</span><strong><span id="hn-sales">—</span><em> 亿元</em></strong><small id="hn-sales-yoy"></small></div><div class="kpi"><span>购物人次</span><strong><span id="hn-shoppers">—</span><em> 万人次</em></strong><small id="hn-shoppers-yoy"></small></div><div class="kpi"><span>每人次消费</span><strong><span id="hn-spend">—</span><em> 元</em></strong><small id="hn-spend-yoy"></small></div></div></div>
 <div class="panel chart"><div class="panel-head"><h3 id="hn-trend-title">购物金额同比增速（%）</h3><div class="trend-controls"><label class="visually-hidden" for="hn-metric">趋势指标</label><select id="hn-metric" aria-label="趋势指标"><option value="sales">购物金额</option><option value="shoppers">购物人次</option><option value="items">购物件数</option><option value="spend">每人次消费</option></select><div class="trend-modes" aria-label="显示方式"><button type="button" data-mode="combo" aria-pressed="true">数值＋同比</button><button type="button" data-mode="value" aria-pressed="false">数值</button><button type="button" data-mode="yoy" aria-pressed="false">同比增速</button></div></div></div><svg id="hn-growth" role="img" aria-label="购物金额同比增速趋势"></svg><div class="tooltip"></div><p class="trend-caption">同比为较上年同月变化；缺失值不作为0展示</p></div>
-<details class="panel monthly-details"><summary>历史数据与口径</summary><p class="trend-caption">原Excel月度整理数据；每人次消费=购物金额÷购物人次。同比分别沿用原表同月口径。</p><div class="tablewrap"><table class="table" id="hn-table"></table></div><button class="srcbtn" onclick="showSrc('provided_workbook_monthly')">查看来源</button></details>
+<details class="panel monthly-details"><summary>历史数据与口径</summary><p class="trend-caption">原Excel月度整理数据；每人次消费=购物金额÷购物人次。同比分别沿用原表同月口径。</p><div class="tablewrap"><table class="table" id="hn-table"></table></div><button class="srcbtn" onclick="showSrc('provided_workbook_monthly')">查看来源</button><p class="trend-caption"><a href="data/dutyfree_monthly.csv" download>下载完整月度 CSV</a> · <a href="data/dutyfree/monthly-provenance.json" download>下载来源与单元格记录</a></p></details>
 </section>
 
 <section class="view" id="view-holidays"><section id="dutyfree-holidays" class="dh-panel" aria-label="离岛免税节假日数据"></section></section>
 
-<!-- 中国中免 -->
-<section class="view" id="view-ctg">
-<div class="panel"><div class="panel-head"><div><h2>中国中免 · 财务表现</h2><p id="ctg-note"></p></div><div class="controls"><select id="ctg-type"><option value="all">全部</option><option value="year">年度</option><option value="half">半年度</option><option value="quarter">单季度</option></select></div></div>
-<div class="tablewrap"><table class="table" id="ctg-table"></table></div></div>
-<div class="grid2">
-<div class="panel chart"><div class="chart-head"><h3>收入与归母净利润同比（%）</h3><div class="legend"><span><i class="dot" style="background:#3d708e"></i>收入同比</span><span><i class="dot" style="background:#b47a3d"></i>净利同比</span></div></div><svg id="ctg-yoy"></svg><div class="tooltip"></div></div>
-<div class="panel chart"><div class="chart-head"><h3>毛利率（%）</h3><div class="legend"><span><i class="dot" style="background:#2d7b70"></i>毛利率</span></div></div><svg id="ctg-gpm"></svg><div class="tooltip"></div></div>
-</div>
-<div class="panel"><div class="panel-head"><div><h2>海南业务</h2><p>海南地区收入 / 同比 / 毛利率 / 占比</p></div></div>
-<div class="tablewrap"><table class="table" id="ctg-hn-table"></table></div></div>
-</section>
-
-<!-- 机场免税 -->
-<section class="view" id="view-airport">
-<div class="panel"><div class="panel-head"><div><h2>机场免税数据库</h2><p>扣点率 / 租金模式 / 国际客流 / 销售额 / 客单价 · 字段预留待补</p></div></div>
-<div class="tablewrap"><table class="table" id="airport-table"></table></div>
-<div class="fresh"><span>来源：机场公告、航班管家DAST、国金证券整理</span><span class="muted">空白字段表示暂无可靠数据</span></div></div>
-</section>
-
-<!-- 市内免税 -->
-<section class="view" id="view-city">
-<div class="panel"><div class="panel-head"><div><h2>市内免税数据库</h2><p>城市 / 门店 / 运营商 / 提货模式 / 政策依据 · 字段预留待补</p></div></div>
-<div class="tablewrap"><table class="table" id="city-table"></table></div>
-<div class="fresh"><span>来源：财政部、公司公告、国金证券整理</span><span class="muted">空白字段表示暂无可靠数据</span></div></div>
-</section>
-
-<!-- 免税政策 -->
-<section class="view" id="view-policy">
-<div class="panel"><div class="panel-head"><div><h2>免税政策时间轴</h2><p>海南离岛 / 市内 / 进境 / 额度 / 品类 / 提货方式</p></div></div>
-<div style="padding:16px"><div class="tl" id="policy-tl"></div></div></div>
-</section>
-
-<!-- 品类结构 -->
-<section class="view" id="view-category">
-<div class="grid2">
-<div class="panel"><div class="panel-head"><div><h2>品类结构（环形）</h2><p>区间取中值绘制，估算标注『约』</p></div></div><div class="donut-wrap"><svg id="cat-donut" viewBox="0 0 200 200" style="width:220px"></svg><div class="donut-legend" id="cat-legend"></div></div></div>
-<div class="panel"><div class="panel-head"><div><h2>品类结构（条形）</h2><p>占比 %</p></div></div><div style="padding:14px" id="cat-bars"></div></div>
-</div>
-<div class="panel"><div class="panel-head"><div><h2>品类结构数据表</h2><p>区间与估算标识</p></div></div><div class="tablewrap"><table class="table" id="cat-table"></table></div></div>
-</section>
-
-<!-- 会员体系 -->
-<section class="view" id="view-members">
-<div class="panel"><div class="panel-head"><div><h2>中国中免会员体系</h2><p id="mb-period"></p></div></div>
-<div class="kpis" style="grid-template-columns:repeat(3,1fr)" id="mb-kpis"></div></div>
-<div class="grid3">
-<div class="panel"><div class="panel-head"><div><h2>复购贡献</h2></div></div><div class="card" id="mb-repo" style="margin:12px"></div></div>
-<div class="panel"><div class="panel-head"><div><h2>年龄结构</h2></div></div><div class="card" id="mb-age" style="margin:12px"></div></div>
-<div class="panel"><div class="panel-head"><div><h2>城市层级</h2></div></div><div class="card" id="mb-city" style="margin:12px"></div></div>
-</div>
-<div class="panel"><div class="panel-head"><div><h2>会员规模趋势</h2><p>历史数据待补充，当前展示最新时点</p></div></div><div class="panel chart"><svg id="mb-trend"></svg><div class="tooltip"></div></div></div>
-</section>
-
-<!-- 渠道 -->
-<section class="view" id="view-channel">
-<div class="grid3" id="channel-cards"></div>
-<div class="panel"><div class="panel-head"><div><h2>渠道重大变化时间轴</h2></div></div><div style="padding:16px"><div class="tl" id="channel-tl"></div></div></div>
-</section>
-
-<!-- 同业对比 -->
-<section class="view" id="view-companies">
-<div class="panel"><div class="panel-head"><div><h2>免税公司同业对比</h2><p>多币种：originalValue/rmbValue 分列 · 点击表头排序</p></div></div>
-<div class="tablewrap"><table class="table" id="co-table"></table></div>
-<div class="fresh"><span>来源：公司公告、公司财报、国金证券整理</span><span class="muted">空白字段表示暂无可靠数据</span></div></div>
-</section>
-
-<!-- 行业事件 -->
-<section class="view" id="view-events">
-<div class="panel"><div class="panel-head"><div><h2>免税行业重大事件</h2><p>并购 / 机场合同 / 政策变更 / 渠道变化</p></div></div>
-<div style="padding:16px"><div class="tl" id="events-tl"></div></div></div>
-</section>
-
-<!-- 数据中心 -->
-<section class="view" id="view-datacenter">
-<div class="panel"><div class="panel-head"><div><h2>数据来源系统</h2><p>每条核心数据可追溯来源</p></div></div>
-<div class="tablewrap"><table class="table" id="src-table"></table></div></div>
-<div class="panel"><div class="panel-head"><div><h2>数据文件</h2><p>本页全部数据来自以下文件，修改即可更新页面</p></div></div>
-<div class="tablewrap"><table class="table" id="files-table"></table></div></div>
-</section>
-
-<div class="fresh"><span>按用户提供原表整理</span><span id="rows-note"></span></div>
+<div class="fresh"><span>月度按原表整理 · 假期补充公开来源</span><span id="rows-note"></span></div>
 </div>
 
 <!-- 来源弹窗 -->
@@ -207,14 +108,10 @@ const W=(v,d=1,ty)=>`<span class="${C(v)}">${Pf(v,d,ty)}</span>`,Dash=v=>v==null
 let DB={},SRC={};
 const jf=u=>fetch(u,{cache:'no-store'}).then(r=>r.json());
 Promise.all([
- ['ov','data/dutyfree/overview.json'],['hainan','data/dutyfree/hainan.json'],['ctg','data/dutyfree/ctg_dutyfree.json'],['airport','data/dutyfree/airport.json'],
- ['city','data/dutyfree/city_dutyfree.json'],['policy','data/dutyfree/policy.json'],['members','data/dutyfree/members.json'],
- ['cat','data/dutyfree/category.json'],['channel','data/dutyfree/channel.json'],['companies','data/dutyfree/companies.json'],
- ['events','data/dutyfree/events.json'],['sources','data/dutyfree/sources.json'],['manifest','data/dutyfree/manifest.json']
-].map(([k,u])=>jf(u).then(d=>DB[k]=d)).concat([
+ jf('data/dutyfree/sources.json').then(d=>DB.sources=d),
  fetch('data/dutyfree_monthly.csv',{cache:'no-store'}).then(r=>r.text()).then(t=>DB.m=csv(t)),
  fetch('data/dutyfree_holiday.csv',{cache:'no-store'}).then(r=>r.text()).then(t=>DB.h=csv(t))
-])).then(()=>{SRC=DB.sources.sources||{};init()}).catch(e=>{document.getElementById('asof').textContent='数据读取失败';console.log(e)});
+]).then(()=>{SRC=DB.sources.sources||{};init()}).catch(e=>{document.getElementById('asof').textContent='数据读取失败';console.log(e)});
 
 function showSrc(key){let s=SRC[key];let b=document.getElementById('srcbox');
  if(!s){b.innerHTML='<h3>数据来源</h3><div class="muted">暂无来源信息</div><div class="closebtn"><button class="srcbtn" onclick="document.getElementById(\'srcmodal\').classList.remove(\'on\')">关闭</button></div>';}
@@ -288,7 +185,7 @@ const show=i=>{focus.setAttribute('x',l+i*step);focus.setAttribute('visibility',
 const hide=()=>{focus.setAttribute('visibility','hidden');crosshair.setAttribute('visibility','hidden');if(tip)tip.style.display='none';};
 svg.querySelectorAll('.combo-hit').forEach(hit=>{const i=Number(hit.dataset.index);hit.onmouseenter=()=>show(i);hit.onfocus=()=>show(i);hit.onmouseleave=hide;hit.onblur=hide;});
 }
-const trendModes={ov:'combo',hn:'combo'};
+const trendModes={hn:'combo'};
 function renderTrend(prefix,rows){
 const metric=trendMetrics[document.getElementById(prefix+'-metric').value],combo=trendModes[prefix]==='combo',yoy=trendModes[prefix]==='yoy',title=metric.label+(combo?'与同比增速':yoy?'同比增速':'走势')+(combo?'':'（'+(yoy?'%':metric.unit)+'）');
 document.getElementById(prefix+'-trend-title').textContent=title;
@@ -296,11 +193,6 @@ const svg=document.getElementById(prefix==='ov'?'ov-sales':'hn-growth');svg.setA
 const oldLegend=svg.closest('.chart').querySelector('.combo-legend');if(!combo&&oldLegend)oldLegend.remove();
 if(combo){drawCombo(svg,rows,metric);return;}
 draw(svg,rows,[{name:metric.label+(yoy?'同比':''),get:r=>N(r[yoy?metric.yoy:metric.field]),color:metric.color,unit:yoy?'%':metric.unit}],yoy);
-}
-function renderOverview(){const latest=DB.m.at(-1);
-document.getElementById('kpi-grid').innerHTML=['sales','shoppers','spend'].map(key=>{const m=trendMetrics[key];return `<div class="kpi"><span>${m.label}</span><strong>${F(N(latest[m.field]),key==='spend'?0:2)}<em> ${m.unit}</em></strong><small>同比 ${W(N(latest[m.yoy]))}</small></div>`}).join('');
-document.getElementById('asof').textContent='数据截至 '+latest.period_id;
-renderTrend('ov',DB.m.slice(-12));
 }
 function go(t){document.querySelectorAll('.tab,.view').forEach(x=>x.classList.remove('on'));let b=document.querySelector(`.tab[data-view="${t}"]`);if(b)b.classList.add('on');let v=document.getElementById('view-'+t);if(v)v.classList.add('on')}
 
@@ -318,90 +210,23 @@ document.getElementById('hn-table').innerHTML='<thead><tr>'+cols.map(([k,l])=>`<
 s.map(r=>'<tr>'+cols.map(([k,l])=>{let v=r[k];let disp=(k.includes('yoy'))?`<span class="${C(N(v))}">${P(N(v))}</span>`:(N(v)!=null?F(v,2):Dash(v));return `<td class="${k==='period_id'?'':'num'}">${k==='period_id'?v:disp}</td>`}).join('')+'</tr>').join('')+'</tbody>';
 document.querySelectorAll('#hn-table th').forEach(th=>th.onclick=()=>{let k=th.dataset.k;if(hnSort.key===k)hnSort.dir*=-1;else{hnSort.key=k;hnSort.dir=1}renderHnTable(rows)})}
 
-/* ---------- 中免 ---------- */
-let ctgSort={key:'period',dir:-1};
-function renderCtg(){let ty=document.getElementById('ctg-type').value;
-let ps=DB.ctg.periods.filter(p=>ty==='all'||p.type===ty);
-document.getElementById('ctg-note').textContent=DB.ctg.company+' · 单位：亿元 · 来源：公司财报';
-document.getElementById('ctg-table').innerHTML='<thead><tr><th>期间</th><th class="num">营业收入</th><th class="num">收入同比</th><th class="num">归母净利润</th><th class="num">净利同比</th><th class="num">毛利率</th><th class="num">毛利率同比</th><th class="num">净利率</th><th class="num">少数股东损益</th><th>来源</th></tr></thead><tbody>'+
-ps.map(p=>`<tr><td>${p.period}<span class="tag">${{year:'年度',half:'半年度',quarter:'单季度'}[p.type]||p.type}</span></td><td class="num">${F(p.revenue,2)}</td><td class="num ${C(p.revenue_yoy)}">${P(p.revenue_yoy)}</td><td class="num">${F(p.net_profit,2)}</td><td class="num ${C(p.net_profit_yoy)}">${P(p.net_profit_yoy)}</td><td class="num">${F(p.gross_margin,2)}%</td><td class="num ${C(p.gpm_yoy_pct)}">${p.gpm_yoy_pct==null?'—':(p.gpm_yoy_pct>0?'+':'')+F(p.gpm_yoy_pct,2)+'pct'}</td><td class="num">${p.net_margin==null?'—':F(p.net_margin,2)+'%'}</td><td class="num">${p.minority_pnl==null?'—':F(p.minority_pnl,2)}</td><td><button class="srcbtn" onclick="showSrc('${p.source}')">来源</button></td></tr>`).join('')+'</tbody>';
-let all=DB.ctg.periods;
-draw(document.getElementById('ctg-yoy'),all.map(p=>({period_id:p.period,revenue_yoy:p.revenue_yoy,net_profit_yoy:p.net_profit_yoy})),[{name:'收入同比',get:x=>N(x.revenue_yoy),color:'#3d708e',unit:'%'},{name:'净利同比',get:x=>N(x.net_profit_yoy),color:'#b47a3d',unit:'%'}],true);
-draw(document.getElementById('ctg-gpm'),all.map(p=>({period_id:p.period,gpm:p.gross_margin})),[{name:'毛利率',get:x=>N(x.gpm),color:'#2d7b70',unit:'%'}]);
-document.getElementById('ctg-hn-table').innerHTML='<thead><tr><th>期间</th><th class="num">海南收入(亿)</th><th class="num">同比</th><th class="num">海南毛利率</th><th class="num">毛利率同比</th><th class="num">占公司收入</th><th>来源</th></tr></thead><tbody>'+
-DB.ctg.hainan.map(h=>{let share=h.hainan_rev_share;let co=DB.ctg.periods.find(p=>p.period===h.period);if(share==null&&co&&co.revenue)share=h.hainan_revenue/co.revenue*100;
-return `<tr><td>${h.period}</td><td class="num">${F(h.hainan_revenue,2)}</td><td class="num ${C(h.hainan_revenue_yoy)}">${P(h.hainan_revenue_yoy)}</td><td class="num">${F(h.hainan_gross_margin,2)}%</td><td class="num ${C(h.hainan_gpm_yoy_pct)}">${h.hainan_gpm_yoy_pct==null?'—':(h.hainan_gpm_yoy_pct>0?'+':'')+F(h.hainan_gpm_yoy_pct,2)+'pct'}</td><td class="num">${share==null?'—':F(share,1)+'%'}</td><td><button class="srcbtn" onclick="showSrc('${h.source}')">来源</button></td></tr>`}).join('')+'</tbody>'}
-
-/* ---------- 机场/市内 ---------- */
-function renderAirport(){let cols=[['airport','机场'],['operator','运营商'],['contractPeriod','合同期限'],['debitRate','扣点率%'],['rentModel','租金模式'],['intlPax','国际旅客(万)'],['intlPaxYoy','客流同比%'],['sales','销售额(亿)'],['spendPerPax','客单价'],['commercialArea','商业面积'],['contractEvent','合同事件']];
-document.getElementById('airport-table').innerHTML='<thead><tr>'+cols.map(c=>`<th>${c[1]}</th>`).join('')+'</tr></thead><tbody>'+
-DB.airport.airports.map(a=>'<tr>'+cols.map(c=>`<td class="${c[0]==='airport'?'':'num'}">${Dash(a[c[0]])}</td>`).join('')+'</tr>').join('')+'</tbody>'}
-function renderCity(){let cols=[['city','城市'],['store','门店'],['operator','运营商'],['openDate','开业时间'],['area','面积'],['pickupMode','提货模式'],['targetCustomer','面向人群'],['categories','品类'],['policyBasis','政策依据'],['status','当前状态']];
-document.getElementById('city-table').innerHTML='<thead><tr>'+cols.map(c=>`<th>${c[1]}</th>`).join('')+'</tr></thead><tbody>'+
-DB.city.stores.map(a=>'<tr>'+cols.map(c=>`<td>${Dash(a[c[0]])}</td>`).join('')+'</tr>').join('')+'</tbody>'}
-
-/* ---------- 政策 ---------- */
-function renderPolicy(){document.getElementById('policy-tl').innerHTML=DB.policy.policies.slice().sort((a,b)=>b.date.localeCompare(a.date)).map(p=>`<div class="tl-item"><div class="tl-date">【${p.date}】 <span class="tag">${p.policyType}</span></div><div class="tl-title">【${p.title}】</div><div class="tl-body">【核心内容】${p.summary}${p.detail?' '+p.detail:''}</div><div class="tl-impact">【影响判断】${Dash(p.impact)}</div>${p.officialLink?`<div><a class="srcbtn" href="${p.officialLink}" target="_blank">原文链接</a></div>`:''}<button class="srcbtn" onclick="showSrc('${p.source}')">来源</button></div>`).join('')}
-
-/* ---------- 品类 ---------- */
-const CATCOL=['#3d708e','#b47a3d','#2d7b70','#8a6884','#bd4a4c','#748194'];
-function catDisp(c){let est=c.isEstimate?'<span class="tag est">约</span>':'';let v;
-if(c.valueMin!=null&&c.valueMax!=null)v=`${c.valueMin}%–${c.valueMax}%`;else if(c.value!=null)v=`${c.value}%`;else v='—';return v+est}
-function catMid(c){if(c.value!=null)return c.value;if(c.valueMin!=null&&c.valueMax!=null)return(c.valueMin+c.valueMax)/2;return 0}
-function renderCategory(){let cats=DB.cat.categories,tot=cats.reduce((s,c)=>s+catMid(c),0),cx=100,cy=100,r=80,ir=48,a0=-90;
-let paths=cats.map((c,i)=>{let v=catMid(c),a1=a0+v/tot*360,l=a1-a0>180?1:0,a0r=a0*Math.PI/180,a1r=a1*Math.PI/180;
-let p=`M${cx+r*Math.cos(a0r)} ${cy+r*Math.sin(a0r)}A${r} ${r} 0 ${l} 1 ${cx+r*Math.cos(a1r)} ${cy+r*Math.sin(a1r)}L${cx+ir*Math.cos(a1r)} ${cy+ir*Math.sin(a1r)}A${ir} ${ir} 0 ${l} 0 ${cx+ir*Math.cos(a0r)} ${cy+ir*Math.sin(a0r)}Z`;
-a0=a1;return `<path d="${p}" fill="${CATCOL[i%6]}"/>`}).join('');
-document.getElementById('cat-donut').innerHTML=paths+`<text x="100" y="104" text-anchor="middle" font-size="11" fill="var(--mut)">品类结构</text>`;
-document.getElementById('cat-legend').innerHTML=cats.map((c,i)=>`<div><i style="background:${CATCOL[i%6]}"></i>${c.name} ${catDisp(c)}${c.note?` <span class="muted">(${c.note})</span>`:''}</div>`).join('');
-let mx=Math.max(...cats.map(catMid));
-document.getElementById('cat-bars').innerHTML=cats.map((c,i)=>{let v=catMid(c);return `<div style="margin-bottom:11px"><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px"><span>${c.name}</span><b>${catDisp(c)}</b></div><div style="background:#eef1f4;border-radius:3px;height:9px"><div style="width:${v/mx*100}%;background:${CATCOL[i%6]};height:100%;border-radius:3px"></div></div></div>`}).join('');
-document.getElementById('cat-table').innerHTML='<thead><tr><th>品类</th><th class="num">占比</th><th>类型</th><th class="num">期间</th><th>来源</th></tr></thead><tbody>'+cats.map(c=>`<tr><td>${c.name}</td><td class="num">${catDisp(c)}</td><td>${c.isEstimate?'<span class="tag est">估算</span>':'<span class="tag">精确</span>'}</td><td class="num">${c.period}</td><td><button class="srcbtn" onclick="showSrc('${c.source}')">来源</button></td></tr>`).join('')+'</tbody>'}
-
-/* ---------- 会员 ---------- */
-function renderMembers(){let m=DB.members.current,d=v=>v==null?'—':F(v,0);
-document.getElementById('mb-period').textContent='截至 '+m.period+' · 来源：公司财报';
-document.getElementById('mb-kpis').innerHTML=[['会员总数',m.total_members_wan,'万'],['年消费会员',m.active_members_wan,'万'],['复购会员',m.repurchase_members_wan,'万'],['复购贡献会员消费',m.repurchase_contribution_pct,'%'],['40岁以下会员占比',m.under40_pct,'%'],['二线及以下城市占比',m.tier2_below_pct,'%']].map(([l,v,u])=>`<div class="kpi"><span>${l}${m.isApprox&&u==='万'?'<span class="tag est">约</span>':''}</span><strong>${F(v,0)}<em> ${u}</em></strong></div>`).join('');
-document.getElementById('mb-repo').innerHTML=`<h4>复购会员贡献</h4><div style="font-size:22px;font-weight:600;color:var(--teal)">${m.repurchase_contribution_pct}%</div><div class="muted">消费占比</div>`;
-document.getElementById('mb-age').innerHTML=`<h4>40岁以下会员</h4><div style="font-size:22px;font-weight:600;color:var(--blue)">${m.under40_pct}%</div>`;
-document.getElementById('mb-city').innerHTML=`<h4>二线及以下城市</h4><div style="font-size:22px;font-weight:600;color:var(--amber)">${m.tier2_below_pct}%</div>`;
-let h=DB.members.history;
-let svg=document.getElementById('mb-trend');
-if(!h.length){svg.setAttribute('viewBox','0 0 620 210');svg.innerHTML='<text x="310" y="110" text-anchor="middle" class="axis" style="font-size:12px">历史数据待补充 · 当前截至 '+m.period+'：会员总数 '+F(m.total_members_wan,0)+'万</text>'}
-else draw(svg,h,[{name:'会员总数',get:x=>N(x.total),color:'#3d708e',unit:'万'}])}
-
-/* ---------- 渠道 ---------- */
-function renderChannel(){let cols=['#3d708e','#b47a3d','#2d7b70','#8a6884','#bd4a4c','#748194'];
-document.getElementById('channel-cards').innerHTML=DB.channel.channels.map((c,i)=>`<div class="panel"><div style="padding:14px 16px;border-left:3px solid ${cols[i%6]}"><h4 style="margin:0 0 6px;font-size:13px">${c.name}</h4><div class="muted">${c.note}</div></div></div>`).join('');
-document.getElementById('channel-tl').innerHTML=DB.channel.timeline.map(t=>`<div class="tl-item"><div class="tl-date">【${t.date}】 <span class="tag">${t.category}</span></div><div class="tl-title">${t.title}</div><div class="tl-body">${t.description}</div><div class="tl-impact">【影响】${Dash(t.impact)}</div><button class="srcbtn" onclick="showSrc('${t.source}')">来源</button></div>`).join('')}
-
-/* ---------- 同业 ---------- */
-let coSort={key:'name',dir:1};
-function renderCompanies(){let cols=[['name','公司'],['ticker','代码'],['regions','重点区域'],['channels','核心渠道'],['marketShare','市占率%'],['members_wan','会员(万)'],['currency','币种'],['originalValue','原始值'],['rmbValue','人民币值'],['fxRate','汇率']];
-let rows=DB.companies.companies.slice().sort((a,b)=>{let av=a[coSort.key],bv=b[coSort.key];let r=(N(av)!=null&&N(bv)!=null)?N(av)-N(bv):String(Dash(av)).localeCompare(String(Dash(bv)));return coSort.dir*r});
-document.getElementById('co-table').innerHTML='<thead><tr>'+cols.map(c=>`<th data-k="${c[0]}">${c[1]}<span class="arr">${coSort.key===c[0]?(coSort.dir>0?' ▲':' ▼'):''}</span></th>`).join('')+'</tr></thead><tbody>'+
-rows.map(r=>'<tr>'+cols.map(c=>`<td class="${['name','regions','channels','currency','ticker'].includes(c[0])?'':'num'}">${Dash(r[c[0]])}</td>`).join('')+'</tr>').join('')+'</tbody>';
-document.querySelectorAll('#co-table th').forEach(th=>th.onclick=()=>{let k=th.dataset.k;if(coSort.key===k)coSort.dir*=-1;else{coSort.key=k;coSort.dir=1}renderCompanies()})}
-
-/* ---------- 事件 ---------- */
-function renderEvents(){document.getElementById('events-tl').innerHTML=DB.events.events.map(e=>`<div class="tl-item"><div class="tl-date">【${e.date}】 <span class="tag est">${e.eventType}</span></div><div class="tl-title">${e.company} · ${e.target}</div><div class="tl-body">${e.description}${e.dealValue?` <b>对价：不超过 ${e.dealValue} ${e.currency}</b>`:''}</div><div class="tl-impact">【战略影响】${Dash(e.strategicImpact)}</div><button class="srcbtn" onclick="showSrc('${e.source}')">来源</button></div>`).join('')}
-
-/* ---------- 数据中心 ---------- */
-function renderDatacenter(){document.getElementById('src-table').innerHTML='<thead><tr><th>键</th><th>来源名称</th><th>类型</th><th>报告日期</th><th>备注</th></tr></thead><tbody>'+
-Object.entries(SRC).map(([k,s])=>`<tr><td>${k}</td><td>${Dash(s.sourceName)}</td><td><span class="tag">${Dash(s.sourceType)}</span></td><td class="num">${Dash(s.reportDate)}</td><td>${Dash(s.note)}</td></tr>`).join('')+'</tbody>';
-let files=Object.entries(DB.manifest.files).concat(Object.entries(DB.manifest.legacy||{}));
-document.getElementById('files-table').innerHTML='<thead><tr><th>模块</th><th>文件路径</th></tr></thead><tbody>'+files.map(([k,f])=>`<tr><td>${k}</td><td class="file-path">${f}</td></tr>`).join('')+'</tbody>'}
-
-/* ---------- 初始化 ---------- */
+function monthlyRows(){const range=document.getElementById('hn-range').value;return ['2024','2025','2026'].includes(range)?DB.m.filter(r=>String(r.year)===range):DB.m.slice(-Number(range));}
+function downloadMonthly(){
+const rows=monthlyRows();if(!rows.length)return;
+const keys=Object.keys(DB.m[0]),quote=v=>'"'+String(v??'').replace(/"/g,'""')+'"';
+const content='\ufeff'+[keys,...rows.map(r=>keys.map(k=>r[k]))].map(r=>r.map(quote).join(',')).join('\r\n');
+const url=URL.createObjectURL(new Blob([content],{type:'text/csv;charset=utf-8'})),a=document.createElement('a');a.href=url;a.download='离岛免税月度-'+document.getElementById('hn-range').value+'.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
 function init(){
-const modules=[['ctg',DB.ctg.periods.length+DB.ctg.hainan.length,renderCtg],['airport',DB.airport.airports.length,renderAirport],['city',DB.city.stores.length,renderCity],['policy',DB.policy.policies.length,renderPolicy],['category',DB.cat.categories.length,renderCategory],['members',DB.members.current?1:DB.members.history.length,renderMembers],['channel',DB.channel.channels.length+DB.channel.timeline.length,renderChannel],['companies',DB.companies.companies.length,renderCompanies],['events',DB.events.events.length,renderEvents]];
-[renderOverview,renderHainan,renderDatacenter].forEach(f=>f());
-modules.forEach(([key,count,render])=>{if(count){render()}else{document.querySelector('.tab[data-view="'+key+'"]').hidden=true;document.getElementById('view-'+key).innerHTML='<div class="panel"><div class="empty">暂无可追溯来源的数据。缺少出处的记录已撤下，补齐原文后再收录。</div></div>'}});
+document.getElementById('asof').textContent='月度截至 '+DB.m.at(-1).period_id;
+renderHainan();
 document.getElementById('rows-note').textContent=`月度 ${DB.m.length} 条 · 假期 ${DB.h.length} 条`;
 document.querySelectorAll('#tabs .tab').forEach(b=>b.onclick=()=>{go(b.dataset.view);location.hash=b.dataset.view;window.scrollTo({top:0})});
-const hashView=()=>{const key=location.hash.slice(1);if(document.querySelector('.tab[data-view="'+CSS.escape(key)+'"]'))go(key)};hashView();addEventListener('hashchange',hashView);
+const hashView=()=>{let key=location.hash.slice(1);if(['overview','hainan','datacenter'].includes(key)){key='monthly';history.replaceState(null,'',location.pathname+location.search+'#monthly');}go(key==='holidays'?'holidays':'monthly');};hashView();addEventListener('hashchange',hashView);
 document.getElementById('hn-range').onchange=renderHainan;
-for(const prefix of ['ov','hn']){const render=prefix==='ov'?renderOverview:renderHainan;document.getElementById(prefix+'-metric').onchange=render;document.querySelectorAll('#'+prefix+'-metric + .trend-modes button').forEach(button=>button.onclick=()=>{trendModes[prefix]=button.dataset.mode;button.parentElement.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));render();});}
-const ctgType=document.getElementById('ctg-type');if(ctgType)ctgType.onchange=renderCtg}
+document.getElementById('monthly-download').onclick=downloadMonthly;
+document.getElementById('hn-metric').onchange=renderHainan;
+document.querySelectorAll('#hn-metric + .trend-modes button').forEach(button=>button.onclick=()=>{trendModes.hn=button.dataset.mode;button.parentElement.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));renderHainan();});
+}
 </script></body></html>
 

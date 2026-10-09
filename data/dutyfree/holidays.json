@@ -3,13 +3,13 @@
   "sourceFile": "【国金商社】离岛免税数据库 20260908.xlsx",
   "sourceVersion": "2026-09-08",
   "importedAt": "2026-10-08",
-  "source": "海口海关（Excel内标注），国金证券整理；本次按用户提供原表录入，未独立回查公告",
+  "source": "历史数据按用户提供原表整理；2026中秋、国庆及国庆前五天按海口海关公开统计报道更新，逐条保留网页来源。",
   "notes": [
     "金额单位：亿元；购物人次：万人次；客单价：元。",
-    "日均=同一期间总额/原表统计天数；不同假期天数比较优先看日均。",
     "原表公式反推的历史数值保留标识，不当作独立披露；未发布或未填写值保持缺失。",
     "阶段数据与假期总额存在重叠，不能加总。",
-    "原表假设测算区域未作为实际数据导入。"
+    "原表假设测算区域未作为实际数据导入。",
+    "日均=同一统计期间总额/实际统计天数；2026年中秋与国庆分开，历史中秋国庆连休保留原名和天数。"
   ],
   "records": [
     {
@@ -1611,62 +1611,80 @@
       "kind": "holiday",
       "period": "9.25-9.27",
       "days": 3,
-      "sales": null,
-      "shoppers": null,
-      "spend": null,
-      "daily_sales": null,
-      "daily_shoppers": null,
-      "status": "pending",
-      "quality": "原表录入值",
-      "sheet": "国庆中秋假期",
-      "source_cells": {
-        "sales": {
-          "cell": "C30",
-          "value": null,
-          "formula": null
-        },
-        "shoppers": {
-          "cell": "C31",
-          "value": null,
-          "formula": null
-        },
-        "spend": {
-          "cell": "C32",
-          "value": null,
-          "formula": null
-        },
-        "days": {
-          "cell": "C10",
-          "value": 3,
-          "formula": null
-        },
-        "period": {
-          "cell": "C9",
-          "value": "9.25-9.27"
-        },
-        "source_daily_sales": {
-          "cell": "C11",
-          "value": 0,
-          "formula": "=C30/C$10"
-        },
-        "source_daily_shoppers": {
-          "cell": "C12",
-          "value": 0,
-          "formula": "=C31/C$10"
-        },
-        "source_summary_spend": {
-          "cell": "C13",
-          "value": 0,
-          "formula": "=C32"
-        }
-      },
+      "sales": 2.31,
+      "shoppers": 3.86,
+      "spend": 5984.455958549223,
+      "daily_sales": 0.77,
+      "daily_shoppers": 1.2866666666666666,
+      "status": "available",
+      "quality": "公开披露＋计算值",
+      "sheet": "",
+      "source_cells": {},
       "notes": [
-        "原表总额空缺；日均及同比公式的0或-100%不作为已披露数据。"
+        "2025年中秋与国庆连休，原表无独立中秋假期数据，不计算2026年中秋同比。"
       ],
       "daily_yoy": null,
       "shoppers_daily_yoy": null,
       "spend_yoy": null,
-      "yoy_basis": null
+      "yoy_basis": "未取得可比同比，保持缺失",
+      "workbook_baseline": {
+        "sheet": "国庆中秋假期",
+        "source_cells": {
+          "sales": {
+            "cell": "C30",
+            "value": null,
+            "formula": null
+          },
+          "shoppers": {
+            "cell": "C31",
+            "value": null,
+            "formula": null
+          },
+          "spend": {
+            "cell": "C32",
+            "value": null,
+            "formula": null
+          },
+          "days": {
+            "cell": "C10",
+            "value": 3,
+            "formula": null
+          },
+          "period": {
+            "cell": "C9",
+            "value": "9.25-9.27"
+          },
+          "source_daily_sales": {
+            "cell": "C11",
+            "value": 0,
+            "formula": "=C30/C$10"
+          },
+          "source_daily_shoppers": {
+            "cell": "C12",
+            "value": 0,
+            "formula": "=C31/C$10"
+          },
+          "source_summary_spend": {
+            "cell": "C13",
+            "value": 0,
+            "formula": "=C32"
+          }
+        },
+        "status": "pending"
+      },
+      "items": 17.9,
+      "web_source": {
+        "title": "中秋假期海南离岛免税购物金额2.31亿元",
+        "url": "https://www.chinanews.com/cj/2026/09-29/10705342.shtml",
+        "publishedAt": "2026-09-29",
+        "publisher": "中国新闻网",
+        "authority": "海口海关统计"
+      },
+      "calculations": {
+        "spend": "购物金额（亿元）/购物人次（万人次）×10000",
+        "daily_sales": "购物金额/统计天数",
+        "daily_shoppers": "购物人次/统计天数"
+      }
     },
     {
       "id": "2024-中秋-holiday-国庆中秋假期-5-30",
@@ -1737,68 +1755,88 @@
       "kind": "holiday",
       "period": "10.1-10.7",
       "days": 7,
-      "sales": null,
-      "shoppers": null,
-      "spend": null,
-      "daily_sales": null,
-      "daily_shoppers": null,
-      "status": "pending",
-      "quality": "原表录入值",
-      "sheet": "国庆中秋假期",
-      "source_cells": {
-        "sales": {
-          "cell": "C34",
-          "value": null,
-          "formula": null
-        },
-        "shoppers": {
-          "cell": "C35",
-          "value": null,
-          "formula": null
-        },
-        "spend": {
-          "cell": "C36",
-          "value": null,
-          "formula": null
-        },
-        "days": {
-          "cell": "C18",
-          "value": 7,
-          "formula": null
-        },
-        "period": {
-          "cell": "C17",
-          "value": "10.1-10.7"
-        },
-        "source_daily_sales": {
-          "cell": "C19",
-          "value": 0,
-          "formula": "=C38/C$10"
-        },
-        "source_daily_shoppers": {
-          "cell": "C20",
-          "value": 0,
-          "formula": "=C39/C$10"
-        },
-        "source_summary_spend": {
-          "cell": "C21",
-          "value": 0,
-          "formula": "=C40"
-        }
-      },
+      "sales": 8.55,
+      "shoppers": 12.3,
+      "spend": 6951.219512195123,
+      "daily_sales": 1.2214285714285715,
+      "daily_shoppers": 1.7571428571428573,
+      "status": "available",
+      "quality": "公开披露＋计算值",
+      "sheet": "",
+      "source_cells": {},
       "notes": [
-        "原表总额空缺；日均及同比公式的0或-100%不作为已披露数据。"
+        "2026年国庆7天；2025年中秋国庆连休8天。图表比较日均；总额同比不直接用于日均同比。"
       ],
-      "daily_yoy": null,
-      "shoppers_daily_yoy": null,
-      "spend_yoy": null,
-      "yoy_basis": null,
-      "comparison_group": "国庆及中秋国庆"
+      "daily_yoy": 3.510895883777243,
+      "shoppers_daily_yoy": 14.378705102871114,
+      "spend_yoy": -9.548217147753768,
+      "yoy_basis": "日均/客单同比按2026国庆7天与2025中秋国庆8天计算；海关披露购物人次同比10.41%为原文口径，单列保留。",
+      "comparison_group": "国庆",
+      "workbook_baseline": {
+        "sheet": "国庆中秋假期",
+        "source_cells": {
+          "sales": {
+            "cell": "C34",
+            "value": null,
+            "formula": null
+          },
+          "shoppers": {
+            "cell": "C35",
+            "value": null,
+            "formula": null
+          },
+          "spend": {
+            "cell": "C36",
+            "value": null,
+            "formula": null
+          },
+          "days": {
+            "cell": "C18",
+            "value": 7,
+            "formula": null
+          },
+          "period": {
+            "cell": "C17",
+            "value": "10.1-10.7"
+          },
+          "source_daily_sales": {
+            "cell": "C19",
+            "value": 0,
+            "formula": "=C38/C$10"
+          },
+          "source_daily_shoppers": {
+            "cell": "C20",
+            "value": 0,
+            "formula": "=C39/C$10"
+          },
+          "source_summary_spend": {
+            "cell": "C21",
+            "value": 0,
+            "formula": "=C40"
+          }
+        },
+        "status": "pending"
+      },
+      "items": null,
+      "web_source": {
+        "title": "海南封关运作后首个国庆假期 迎来免税消费热",
+        "url": "https://china.zjol.com.cn/gnxw/202610/t20261008_31953226.shtml",
+        "publishedAt": "2026-10-08",
+        "publisher": "浙江在线（转载央视新闻客户端）",
+        "authority": "海口海关统计"
+      },
+      "calculations": {
+        "spend": "购物金额（亿元）/购物人次（万人次）×10000",
+        "daily_sales": "购物金额/统计天数",
+        "daily_shoppers": "购物人次/统计天数"
+      },
+      "items_text": "近70万件",
+      "reported_shoppers_yoy": 10.41
     },
     {
       "id": "2025-国庆中秋-holiday-国庆中秋假期-4-34",
       "year": 2025,
-      "holiday": "国庆中秋",
+      "holiday": "中秋国庆",
       "kind": "holiday",
       "period": "10.1-10.8",
       "days": 8,
@@ -1862,7 +1900,7 @@
       "shoppers_daily_yoy": -2.4160617059891143,
       "spend_yoy": 7.874789444132513,
       "yoy_basis": "缺失同比按本表相同假期上一年计算；已有同比沿用原表",
-      "comparison_group": "国庆及中秋国庆"
+      "comparison_group": "国庆"
     },
     {
       "id": "2024-国庆-holiday-国庆中秋假期-5-34",
@@ -1925,12 +1963,12 @@
       "shoppers_daily_yoy": -25.915966386554622,
       "spend_yoy": -8.941353383458639,
       "yoy_basis": "缺失同比按本表相同假期上一年计算；已有同比沿用原表",
-      "comparison_group": "国庆及中秋国庆"
+      "comparison_group": "国庆"
     },
     {
       "id": "2023-国庆中秋-holiday-国庆中秋假期-6-34",
       "year": 2023,
-      "holiday": "国庆中秋",
+      "holiday": "中秋国庆",
       "kind": "holiday",
       "period": "9.29-10.6",
       "days": 8,
@@ -1988,7 +2026,7 @@
       "shoppers_daily_yoy": null,
       "spend_yoy": -10.699588477366273,
       "yoy_basis": "缺失同比按本表相同假期上一年计算；已有同比沿用原表",
-      "comparison_group": "国庆及中秋国庆"
+      "comparison_group": "国庆"
     },
     {
       "id": "2022-国庆-holiday-国庆中秋假期-7-34",
@@ -2033,7 +2071,7 @@
       "shoppers_daily_yoy": null,
       "spend_yoy": null,
       "yoy_basis": null,
-      "comparison_group": "国庆及中秋国庆"
+      "comparison_group": "国庆"
     },
     {
       "id": "2026-元旦首日-detail-元旦假期-3-16",
@@ -3153,6 +3191,48 @@
       "spend_yoy": null,
       "yoy_basis": null,
       "holiday_group": "五一"
+    },
+    {
+      "id": "2026-国庆-detail-前五天-public",
+      "year": 2026,
+      "holiday": "国庆前五天",
+      "holiday_group": "国庆",
+      "kind": "detail",
+      "sales": 6.48,
+      "shoppers": 9.4,
+      "days": 5,
+      "period": "10.1-10.5",
+      "items": 51.32,
+      "spend": 6893.617021276596,
+      "daily_sales": 1.296,
+      "daily_shoppers": 1.8800000000000001,
+      "status": "available",
+      "quality": "公开披露＋计算值",
+      "sheet": "",
+      "source_cells": {},
+      "web_source": {
+        "title": "海南自贸港封关后首个国庆假期：离岛免税购物热力全开",
+        "url": "https://www.chinanews.com/cj/shipin/cns/2026/10-07/news1071111.shtml",
+        "publishedAt": "2026-10-07",
+        "publisher": "中国新闻网",
+        "authority": "海口海关统计"
+      },
+      "notes": [
+        "阶段数据与国庆完整假期重叠，不能加总；原文销售额/购物人次/件数同比为4.99%/13.35%/7.76%。"
+      ],
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
+      "spend_yoy": null,
+      "yoy_basis": "未取得可比同比，保持缺失",
+      "calculations": {
+        "spend": "购物金额（亿元）/购物人次（万人次）×10000",
+        "daily_sales": "购物金额/统计天数",
+        "daily_shoppers": "购物人次/统计天数"
+      },
+      "reported_sales_yoy": 4.99,
+      "reported_shoppers_yoy": 13.35,
+      "reported_items_yoy": 7.76
     }
-  ]
+  ],
+  "updatedAt": "2026-10-08"
 }

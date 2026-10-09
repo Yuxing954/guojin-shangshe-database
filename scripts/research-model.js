@@ -18,7 +18,18 @@
   function preview(r){const normal=s=>s.replace(/[\s#【】\[\]⚡🔥📌]/gu,'');const title=normal(r.title||'');return String(r.content||'').split(/\r?\n/).map(s=>s.trim()).filter(s=>s&&normal(s)!==title&&!/^(联系人|联系方式|联系电话|免责声明)[：:]/.test(s)).join(' ').slice(0,240);}
   function lowerDate(today,days){const d=new Date(today+'T00:00:00Z');d.setUTCDate(d.getUTCDate()-Number(days)+1);return d.toISOString().slice(0,10);}
   function matches(r,f){const kw=(f.q||'').trim().toLowerCase();return r.kind===f.kind&&(!kw||[r.title,r.content,r.company,r.sector].join(' ').toLowerCase().includes(kw))&&(!f.sector||sectorIds(r).includes(f.sector))&&(!f.format||format(r)===f.format)&&(!f.from||r.date>=f.from)&&(!f.to||r.date<=f.to);}
+  function publicationTime(value){
+    const raw=String(value||'').trim();
+    if(/^\d{4}-\d{2}-\d{2}$/.test(raw))return raw+'（发布时间待补充）';
+    if(!/^\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}/.test(raw))return '发布时间暂无';
+    const iso=raw.replace(' ','T').replace(/([+-]\d{2})(\d{2})$/,'$1:$2');
+    const instant=new Date(/[zZ]$|[+-]\d{2}:\d{2}$/.test(iso)?iso:iso+'+08:00');
+    if(!Number.isFinite(instant.getTime()))return '发布时间暂无';
+    const parts=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(instant);
+    const p=Object.fromEntries(parts.map(x=>[x.type,x.value]));
+    return p.year+'-'+p.month+'-'+p.day+' '+p.hour+':'+p.minute;
+  }
   function topic(r){return (String(r.url||'').match(/\/topic\/(\d+)/)||[])[1]||'';}
   function href(r){const q=new URLSearchParams({kind:r.kind||'views'});const id=topic(r);if(id)q.set('topic',id);else {q.set('q',r.title||'');q.set('record',r.title||'');}if(r.file)q.set('file',r.file);return 'research.html?'+q;}
-  return {sectors,format,labels,sectorIds,preview,lowerDate,matches,topic,href};
+  return {sectors,format,labels,sectorIds,preview,lowerDate,matches,topic,href,publicationTime};
 });
