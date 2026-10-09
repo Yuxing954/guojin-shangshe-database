@@ -241,6 +241,16 @@
       "file": "data/macro/predictions.json",
       "category": "预测市场",
       "page": "macro.html?view=predictions"
+    },
+    {
+      "id": "consumption_macro",
+      "name": "消费宏观官方披露数据",
+      "file": "data/consumption-macro/observations.json",
+      "category": "消费宏观",
+      "asOf": "2026-10-09",
+      "rowCount": 1144,
+      "updateRecord": "data/consumption-macro/sources.json",
+      "evidence": "data/consumption-macro/evidence.json"
     }
   ]
 }

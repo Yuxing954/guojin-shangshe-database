@@ -93,7 +93,11 @@ class OneDriveMinutesTests(unittest.TestCase):
         for record in records:
             content = json.loads((ROOT / record['processing']['contentPath']).read_text(encoding='utf-8'))
             self.assertEqual(content['assetId'], record['id'])
-            self.assertEqual(content['type'], 'meeting_summary')
+            self.assertIn(content['type'], ['meeting_summary', 'work_minutes'])
+            if content['type'] == 'work_minutes':
+                self.assertTrue(content.get('body', '').strip())
+                self.assertEqual(content['date'], record['date'])
+                self.assertTrue(content.get('title', '').strip())
             self.assertEqual(content['reviewed'], record['processing']['status'] == 'reviewed')
             self.assertTrue(content['evidence'])
             self.assertIn(record['storage']['audience'], ['private', 'public', 'clients'])
