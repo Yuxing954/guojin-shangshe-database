@@ -29,7 +29,7 @@
     if(previous.value<=0)return null;
     return Number(((row.value/previous.value-1)*100).toFixed(10));
   }
-  function changeUnit(spec){return spec.kind==='rate'?'百分点':spec.kind==='balance'?spec.unit:'%';}
+  function changeUnit(spec){return spec.kind==='rate'?(spec.unit==='点'?'点':'百分点'):spec.kind==='balance'?spec.unit:'%';}
   function changeLabel(spec,mode){
     if(spec.id==='cn-retail'&&spec.kind==='level'&&mode==='yoy')return '同比（官方口径）';
     if(mode==='mom'&&spec.frequency==='annual')return '环比（不适用）';
