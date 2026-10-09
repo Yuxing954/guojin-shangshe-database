@@ -161,7 +161,7 @@
   function selectCompany(code,scrollDetail=false){
     const c=companies.concat(benchmarks).find(c=>c.code===code);if(!c)return;selected=c;chartData=null;$('quote-title').textContent=c.name;$('quote-subtitle').textContent=c.code+' · '+infoLabel(c)+(c.sector?' · '+c.sector:'');
     $('quote-detail').hidden=false;$('detail-empty').hidden=true;render();preferences();loadChart();
-    if(scrollDetail&&matchMedia('(max-width:1000px)').matches)$('quote-detail').scrollIntoView({behavior:'smooth',block:'start'});
+    if(scrollDetail&&(view==='heat'||matchMedia('(max-width:1000px)').matches))$('quote-detail').scrollIntoView({behavior:'smooth',block:'start'});
   }
   function moveCompany(delta,focus=false){
     const index=filtered.findIndex(c=>c.code===selected?.code),next=filtered[index+delta];if(index<0||!next)return;selectCompany(next.code);
