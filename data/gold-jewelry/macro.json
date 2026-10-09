@@ -1,0 +1,1322 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-09",
+  "policy": {
+    "range": [
+      3.75,
+      4
+    ],
+    "decisionDate": "2026-09-16",
+    "sourceId": "fed-policy-20260916",
+    "quality": "primary",
+    "unit": "%"
+  },
+  "projections": {
+    "basis": "sep_year_end_midpoint",
+    "asOf": "2026-09-16",
+    "sourceId": "fed-sep-20260916",
+    "quality": "primary",
+    "points": [
+      {
+        "year": 2026,
+        "value": 4.1
+      },
+      {
+        "year": 2027,
+        "value": 4.1
+      },
+      {
+        "year": 2028,
+        "value": 3.9
+      },
+      {
+        "year": 2029,
+        "value": 3.6
+      }
+    ],
+    "unit": "%"
+  },
+  "meetings": [
+    {
+      "meetingDate": "2026-10-28",
+      "snapshots": [
+        {
+          "observedDate": "2026-10-01",
+          "observedAt": null,
+          "timezone": "America/Chicago",
+          "sourceId": "cme-oct",
+          "quality": "primary",
+          "ranges": [
+            {
+              "lower": 3.5,
+              "upper": 3.75,
+              "probability": 0
+            },
+            {
+              "lower": 3.75,
+              "upper": 4.0,
+              "probability": 75.6
+            },
+            {
+              "lower": 4.0,
+              "upper": 4.25,
+              "probability": 24.4
+            }
+          ],
+          "probabilityUnit": "%"
+        },
+        {
+          "observedDate": "2026-10-07",
+          "observedAt": null,
+          "timezone": "America/Chicago",
+          "sourceId": "cme-oct",
+          "quality": "primary",
+          "ranges": [
+            {
+              "lower": 3.5,
+              "upper": 3.75,
+              "probability": 0
+            },
+            {
+              "lower": 3.75,
+              "upper": 4.0,
+              "probability": 82.3
+            },
+            {
+              "lower": 4.0,
+              "upper": 4.25,
+              "probability": 17.7
+            }
+          ],
+          "probabilityUnit": "%"
+        },
+        {
+          "observedDate": "2026-10-08",
+          "observedAt": "2026-10-08T09:03:53-05:00",
+          "timezone": "America/Chicago",
+          "sourceId": "cme-oct",
+          "quality": "primary",
+          "ranges": [
+            {
+              "lower": 3.5,
+              "upper": 3.75,
+              "probability": 0
+            },
+            {
+              "lower": 3.75,
+              "upper": 4.0,
+              "probability": 82.8
+            },
+            {
+              "lower": 4.0,
+              "upper": 4.25,
+              "probability": 17.2
+            }
+          ],
+          "probabilityUnit": "%"
+        }
+      ],
+      "rateUnit": "%"
+    },
+    {
+      "meetingDate": "2026-12-09",
+      "snapshots": [
+        {
+          "observedDate": "2026-10-01",
+          "observedAt": null,
+          "timezone": "America/Chicago",
+          "sourceId": "cme-dec",
+          "quality": "primary",
+          "ranges": [
+            {
+              "lower": 3.5,
+              "upper": 3.75,
+              "probability": 0
+            },
+            {
+              "lower": 3.75,
+              "upper": 4.0,
+              "probability": 20.2
+            },
+            {
+              "lower": 4.0,
+              "upper": 4.25,
+              "probability": 61.9
+            },
+            {
+              "lower": 4.25,
+              "upper": 4.5,
+              "probability": 17.8
+            }
+          ],
+          "probabilityUnit": "%"
+        },
+        {
+          "observedDate": "2026-10-07",
+          "observedAt": null,
+          "timezone": "America/Chicago",
+          "sourceId": "cme-dec",
+          "quality": "primary",
+          "ranges": [
+            {
+              "lower": 3.5,
+              "upper": 3.75,
+              "probability": 0
+            },
+            {
+              "lower": 3.75,
+              "upper": 4.0,
+              "probability": 20.4
+            },
+            {
+              "lower": 4.0,
+              "upper": 4.25,
+              "probability": 66.3
+            },
+            {
+              "lower": 4.25,
+              "upper": 4.5,
+              "probability": 13.3
+            }
+          ],
+          "probabilityUnit": "%"
+        },
+        {
+          "observedDate": "2026-10-08",
+          "observedAt": "2026-10-08T09:09:01-05:00",
+          "timezone": "America/Chicago",
+          "sourceId": "cme-dec",
+          "quality": "primary",
+          "ranges": [
+            {
+              "lower": 3.5,
+              "upper": 3.75,
+              "probability": 0
+            },
+            {
+              "lower": 3.75,
+              "upper": 4.0,
+              "probability": 17.2
+            },
+            {
+              "lower": 4.0,
+              "upper": 4.25,
+              "probability": 69.2
+            },
+            {
+              "lower": 4.25,
+              "upper": 4.5,
+              "probability": 13.6
+            }
+          ],
+          "probabilityUnit": "%"
+        }
+      ],
+      "rateUnit": "%"
+    }
+  ],
+  "series": [
+    {
+      "id": "real10",
+      "originalName": "美国:国债实际收益率(以通胀为标的):10年(%)",
+      "reportedPublisher": "美联储",
+      "unit": "%",
+      "frequency": "daily",
+      "quality": "provider",
+      "observations": [
+        {
+          "date": "2026-07-01",
+          "value": 2.25
+        },
+        {
+          "date": "2026-07-02",
+          "value": 2.26
+        },
+        {
+          "date": "2026-07-06",
+          "value": 2.24
+        },
+        {
+          "date": "2026-07-07",
+          "value": 2.3
+        },
+        {
+          "date": "2026-07-08",
+          "value": 2.31
+        },
+        {
+          "date": "2026-07-09",
+          "value": 2.31
+        },
+        {
+          "date": "2026-07-10",
+          "value": 2.32
+        },
+        {
+          "date": "2026-07-13",
+          "value": 2.36
+        },
+        {
+          "date": "2026-07-14",
+          "value": 2.33
+        },
+        {
+          "date": "2026-07-15",
+          "value": 2.32
+        },
+        {
+          "date": "2026-07-16",
+          "value": 2.35
+        },
+        {
+          "date": "2026-07-17",
+          "value": 2.31
+        },
+        {
+          "date": "2026-07-20",
+          "value": 2.35
+        },
+        {
+          "date": "2026-07-21",
+          "value": 2.37
+        },
+        {
+          "date": "2026-07-22",
+          "value": 2.39
+        },
+        {
+          "date": "2026-07-23",
+          "value": 2.43
+        },
+        {
+          "date": "2026-07-24",
+          "value": 2.43
+        },
+        {
+          "date": "2026-07-27",
+          "value": 2.44
+        },
+        {
+          "date": "2026-07-28",
+          "value": 2.41
+        },
+        {
+          "date": "2026-07-29",
+          "value": 2.41
+        },
+        {
+          "date": "2026-07-30",
+          "value": 2.41
+        },
+        {
+          "date": "2026-07-31",
+          "value": 2.47
+        },
+        {
+          "date": "2026-08-03",
+          "value": 2.43
+        },
+        {
+          "date": "2026-08-04",
+          "value": 2.4
+        },
+        {
+          "date": "2026-08-05",
+          "value": 2.41
+        },
+        {
+          "date": "2026-08-06",
+          "value": 2.43
+        },
+        {
+          "date": "2026-08-07",
+          "value": 2.4
+        },
+        {
+          "date": "2026-08-10",
+          "value": 2.43
+        },
+        {
+          "date": "2026-08-11",
+          "value": 2.43
+        },
+        {
+          "date": "2026-08-12",
+          "value": 2.42
+        },
+        {
+          "date": "2026-08-13",
+          "value": 2.39
+        },
+        {
+          "date": "2026-08-14",
+          "value": 2.41
+        },
+        {
+          "date": "2026-08-17",
+          "value": 2.44
+        },
+        {
+          "date": "2026-08-18",
+          "value": 2.41
+        },
+        {
+          "date": "2026-08-19",
+          "value": 2.35
+        },
+        {
+          "date": "2026-08-20",
+          "value": 2.35
+        },
+        {
+          "date": "2026-08-21",
+          "value": 2.4
+        },
+        {
+          "date": "2026-08-24",
+          "value": 2.38
+        },
+        {
+          "date": "2026-08-25",
+          "value": 2.32
+        },
+        {
+          "date": "2026-08-26",
+          "value": 2.34
+        },
+        {
+          "date": "2026-08-27",
+          "value": 2.34
+        },
+        {
+          "date": "2026-08-28",
+          "value": 2.42
+        },
+        {
+          "date": "2026-08-31",
+          "value": 2.44
+        },
+        {
+          "date": "2026-09-01",
+          "value": 2.44
+        },
+        {
+          "date": "2026-09-02",
+          "value": 2.45
+        },
+        {
+          "date": "2026-09-03",
+          "value": 2.42
+        },
+        {
+          "date": "2026-09-04",
+          "value": 2.43
+        },
+        {
+          "date": "2026-09-08",
+          "value": 2.43
+        },
+        {
+          "date": "2026-09-09",
+          "value": 2.46
+        },
+        {
+          "date": "2026-09-10",
+          "value": 2.55
+        },
+        {
+          "date": "2026-09-11",
+          "value": 2.6
+        },
+        {
+          "date": "2026-09-14",
+          "value": 2.6
+        },
+        {
+          "date": "2026-09-15",
+          "value": 2.62
+        },
+        {
+          "date": "2026-09-16",
+          "value": 2.68
+        },
+        {
+          "date": "2026-09-17",
+          "value": 2.61
+        },
+        {
+          "date": "2026-09-18",
+          "value": 2.68
+        },
+        {
+          "date": "2026-09-21",
+          "value": 2.62
+        },
+        {
+          "date": "2026-09-22",
+          "value": 2.63
+        },
+        {
+          "date": "2026-09-23",
+          "value": 2.76
+        },
+        {
+          "date": "2026-09-24",
+          "value": 2.85
+        },
+        {
+          "date": "2026-09-25",
+          "value": 2.83
+        },
+        {
+          "date": "2026-09-28",
+          "value": 2.9
+        },
+        {
+          "date": "2026-09-29",
+          "value": 2.91
+        },
+        {
+          "date": "2026-09-30",
+          "value": 2.93
+        },
+        {
+          "date": "2026-10-01",
+          "value": 2.88
+        },
+        {
+          "date": "2026-10-02",
+          "value": 2.92
+        },
+        {
+          "date": "2026-10-05",
+          "value": 2.95
+        },
+        {
+          "date": "2026-10-06",
+          "value": 2.91
+        },
+        {
+          "date": "2026-10-07",
+          "value": 2.92
+        },
+        {
+          "date": "2026-10-08",
+          "value": 2.87
+        }
+      ],
+      "name": "美国10年实际利率",
+      "mechanism": "TIPS实际收益率上升通常提高持有黄金的机会成本；变化用基点表示。",
+      "sourceId": "choice-real10"
+    },
+    {
+      "id": "dxy",
+      "originalName": "美元指数",
+      "reportedPublisher": "NYCE",
+      "unit": "指数",
+      "frequency": "daily",
+      "quality": "provider",
+      "observations": [
+        {
+          "date": "2026-07-01",
+          "value": 101.4198
+        },
+        {
+          "date": "2026-07-02",
+          "value": 100.8699
+        },
+        {
+          "date": "2026-07-03",
+          "value": 100.8738
+        },
+        {
+          "date": "2026-07-06",
+          "value": 100.8703
+        },
+        {
+          "date": "2026-07-07",
+          "value": 101.0908
+        },
+        {
+          "date": "2026-07-08",
+          "value": 101.0769
+        },
+        {
+          "date": "2026-07-09",
+          "value": 100.9373
+        },
+        {
+          "date": "2026-07-10",
+          "value": 100.9961
+        },
+        {
+          "date": "2026-07-13",
+          "value": 101.3041
+        },
+        {
+          "date": "2026-07-14",
+          "value": 100.9293
+        },
+        {
+          "date": "2026-07-15",
+          "value": 100.5118
+        },
+        {
+          "date": "2026-07-16",
+          "value": 100.7196
+        },
+        {
+          "date": "2026-07-17",
+          "value": 100.7469
+        },
+        {
+          "date": "2026-07-20",
+          "value": 100.9615
+        },
+        {
+          "date": "2026-07-21",
+          "value": 101.2025
+        },
+        {
+          "date": "2026-07-22",
+          "value": 101.1198
+        },
+        {
+          "date": "2026-07-23",
+          "value": 101.4445
+        },
+        {
+          "date": "2026-07-24",
+          "value": 101.4641
+        },
+        {
+          "date": "2026-07-27",
+          "value": 101.534
+        },
+        {
+          "date": "2026-07-28",
+          "value": 101.4165
+        },
+        {
+          "date": "2026-07-29",
+          "value": 100.808
+        },
+        {
+          "date": "2026-07-30",
+          "value": 99.979
+        },
+        {
+          "date": "2026-07-31",
+          "value": 99.802
+        },
+        {
+          "date": "2026-08-03",
+          "value": 99.963
+        },
+        {
+          "date": "2026-08-04",
+          "value": 99.87
+        },
+        {
+          "date": "2026-08-05",
+          "value": 99.689
+        },
+        {
+          "date": "2026-08-06",
+          "value": 99.943
+        },
+        {
+          "date": "2026-08-07",
+          "value": 99.6158
+        },
+        {
+          "date": "2026-08-10",
+          "value": 99.816
+        },
+        {
+          "date": "2026-08-11",
+          "value": 99.8177
+        },
+        {
+          "date": "2026-08-12",
+          "value": 99.974
+        },
+        {
+          "date": "2026-08-13",
+          "value": 99.96
+        },
+        {
+          "date": "2026-08-14",
+          "value": 99.635
+        },
+        {
+          "date": "2026-08-17",
+          "value": 99.575
+        },
+        {
+          "date": "2026-08-18",
+          "value": 99.652
+        },
+        {
+          "date": "2026-08-19",
+          "value": 98.796
+        },
+        {
+          "date": "2026-08-20",
+          "value": 98.872
+        },
+        {
+          "date": "2026-08-21",
+          "value": 98.833
+        },
+        {
+          "date": "2026-08-24",
+          "value": 98.993
+        },
+        {
+          "date": "2026-08-25",
+          "value": 98.914
+        },
+        {
+          "date": "2026-08-26",
+          "value": 99.143
+        },
+        {
+          "date": "2026-08-27",
+          "value": 99.1334
+        },
+        {
+          "date": "2026-08-28",
+          "value": 99.683
+        },
+        {
+          "date": "2026-08-31",
+          "value": 99.415
+        },
+        {
+          "date": "2026-09-01",
+          "value": 99.663
+        },
+        {
+          "date": "2026-09-02",
+          "value": 99.559
+        },
+        {
+          "date": "2026-09-03",
+          "value": 98.997
+        },
+        {
+          "date": "2026-09-04",
+          "value": 99.1554
+        },
+        {
+          "date": "2026-09-07",
+          "value": 98.9171
+        },
+        {
+          "date": "2026-09-08",
+          "value": 98.859
+        },
+        {
+          "date": "2026-09-09",
+          "value": 98.786
+        },
+        {
+          "date": "2026-09-10",
+          "value": 99.069
+        },
+        {
+          "date": "2026-09-11",
+          "value": 99.095
+        },
+        {
+          "date": "2026-09-14",
+          "value": 99.482
+        },
+        {
+          "date": "2026-09-15",
+          "value": 99.624
+        },
+        {
+          "date": "2026-09-16",
+          "value": 100.321
+        },
+        {
+          "date": "2026-09-17",
+          "value": 100.229
+        },
+        {
+          "date": "2026-09-18",
+          "value": 100.216
+        },
+        {
+          "date": "2026-09-21",
+          "value": 100.425
+        },
+        {
+          "date": "2026-09-22",
+          "value": 100.542
+        },
+        {
+          "date": "2026-09-23",
+          "value": 101.1277
+        },
+        {
+          "date": "2026-09-24",
+          "value": 101.242
+        },
+        {
+          "date": "2026-09-25",
+          "value": 101.035
+        },
+        {
+          "date": "2026-09-28",
+          "value": 101.188
+        },
+        {
+          "date": "2026-09-29",
+          "value": 101.3918
+        },
+        {
+          "date": "2026-09-30",
+          "value": 101.475
+        },
+        {
+          "date": "2026-10-01",
+          "value": 102.0279
+        },
+        {
+          "date": "2026-10-02",
+          "value": 101.9162
+        },
+        {
+          "date": "2026-10-05",
+          "value": 102.112
+        },
+        {
+          "date": "2026-10-06",
+          "value": 101.84
+        },
+        {
+          "date": "2026-10-07",
+          "value": 102.276
+        },
+        {
+          "date": "2026-10-08",
+          "value": 102.123
+        }
+      ],
+      "name": "美元指数 DXY",
+      "mechanism": "美元走强通常对美元计价黄金形成压力；与实际利率和资金流一起观察。",
+      "sourceId": "choice-dxy"
+    },
+    {
+      "id": "usdcny",
+      "originalName": "中间价:美元兑人民币",
+      "reportedPublisher": "中国人民银行",
+      "unit": "CNY/USD",
+      "frequency": "daily",
+      "quality": "provider",
+      "observations": [
+        {
+          "date": "2026-09-09",
+          "value": 6.7769
+        },
+        {
+          "date": "2026-09-10",
+          "value": 6.7766
+        },
+        {
+          "date": "2026-09-11",
+          "value": 6.7743
+        },
+        {
+          "date": "2026-09-14",
+          "value": 6.7698
+        },
+        {
+          "date": "2026-09-15",
+          "value": 6.767
+        },
+        {
+          "date": "2026-09-16",
+          "value": 6.7628
+        },
+        {
+          "date": "2026-09-17",
+          "value": 6.758
+        },
+        {
+          "date": "2026-09-18",
+          "value": 6.7521
+        },
+        {
+          "date": "2026-09-21",
+          "value": 6.7487
+        },
+        {
+          "date": "2026-09-22",
+          "value": 6.7459
+        },
+        {
+          "date": "2026-09-23",
+          "value": 6.7468
+        },
+        {
+          "date": "2026-09-24",
+          "value": 6.7489
+        },
+        {
+          "date": "2026-09-28",
+          "value": 6.7399
+        },
+        {
+          "date": "2026-09-29",
+          "value": 6.7411
+        },
+        {
+          "date": "2026-09-30",
+          "value": 6.7351
+        },
+        {
+          "date": "2026-10-08",
+          "value": 6.7367
+        }
+      ],
+      "name": "美元兑人民币中间价",
+      "mechanism": "同样的美元金价下，人民币贬值会抬高人民币计价成本；中间价不是即期成交汇率。",
+      "sourceId": "choice-usdcny"
+    },
+    {
+      "id": "brent",
+      "originalName": "日现货FOB价:欧洲布伦特原油(美元/桶)",
+      "reportedPublisher": "EIA",
+      "unit": "USD/桶",
+      "frequency": "daily",
+      "quality": "provider",
+      "observations": [
+        {
+          "date": "2026-09-01",
+          "value": 96.02
+        },
+        {
+          "date": "2026-09-02",
+          "value": 97.59
+        },
+        {
+          "date": "2026-09-03",
+          "value": 100.5
+        },
+        {
+          "date": "2026-09-04",
+          "value": 102.2
+        },
+        {
+          "date": "2026-09-07",
+          "value": 104.5
+        },
+        {
+          "date": "2026-09-08",
+          "value": 106.1
+        },
+        {
+          "date": "2026-09-09",
+          "value": 109.5
+        },
+        {
+          "date": "2026-09-10",
+          "value": 121.0
+        },
+        {
+          "date": "2026-09-11",
+          "value": 118.1
+        },
+        {
+          "date": "2026-09-14",
+          "value": 121.3
+        },
+        {
+          "date": "2026-09-15",
+          "value": 130.8
+        },
+        {
+          "date": "2026-09-16",
+          "value": 127.8
+        },
+        {
+          "date": "2026-09-17",
+          "value": 121.2
+        },
+        {
+          "date": "2026-09-18",
+          "value": 119.7
+        },
+        {
+          "date": "2026-09-21",
+          "value": 116.2
+        },
+        {
+          "date": "2026-09-22",
+          "value": 114.9
+        },
+        {
+          "date": "2026-09-23",
+          "value": 117.5
+        },
+        {
+          "date": "2026-09-24",
+          "value": 120.9
+        },
+        {
+          "date": "2026-09-25",
+          "value": 116.0
+        },
+        {
+          "date": "2026-09-28",
+          "value": 120.0
+        },
+        {
+          "date": "2026-09-29",
+          "value": 114.0
+        },
+        {
+          "date": "2026-09-30",
+          "value": 115.9
+        },
+        {
+          "date": "2026-10-01",
+          "value": 114.8
+        },
+        {
+          "date": "2026-10-02",
+          "value": 135.5
+        },
+        {
+          "date": "2026-10-05",
+          "value": 125.5
+        },
+        {
+          "date": "2026-10-06",
+          "value": 125.4
+        }
+      ],
+      "name": "布伦特原油现货",
+      "mechanism": "能源冲击同时影响通胀、政策收紧和避险需求，油价上涨不能直接推导黄金上涨。",
+      "sourceId": "choice-brent"
+    }
+  ],
+  "releases": [
+    {
+      "id": "cpi",
+      "name": "CPI同比",
+      "value": 3.4,
+      "unit": "%",
+      "periodEnd": "2026-08-31",
+      "publishedAt": "2026-09-11",
+      "sourceId": "us-cpi-202608",
+      "basis": "CPI-U NSA yoy",
+      "note": "8月环比+0.4%（季调）；整体同比为未季调口径。",
+      "quality": "primary"
+    },
+    {
+      "id": "corecpi",
+      "name": "核心CPI同比",
+      "value": 2.4,
+      "unit": "%",
+      "periodEnd": "2026-08-31",
+      "publishedAt": "2026-09-11",
+      "sourceId": "us-cpi-202608",
+      "basis": "CPI-U ex food energy NSA yoy",
+      "note": "8月环比+0.3%（季调）；剔除食品和能源。",
+      "quality": "primary"
+    },
+    {
+      "id": "corepce",
+      "name": "核心PCE同比",
+      "value": 3.0,
+      "unit": "%",
+      "periodEnd": "2026-08-31",
+      "publishedAt": "2026-09-30",
+      "sourceId": "us-pce-202608",
+      "basis": "PCE ex food energy yoy",
+      "note": "8月环比+0.2%；不能与CPI通胀目标直接混用。",
+      "quality": "primary"
+    },
+    {
+      "id": "payroll",
+      "name": "新增非农就业",
+      "value": 29,
+      "unit": "千人",
+      "periodEnd": "2026-09-30",
+      "publishedAt": "2026-10-02",
+      "sourceId": "us-employment-202609",
+      "basis": "SA monthly change",
+      "note": "9月初值；7月修订为−10千人，8月修订为+133千人。",
+      "quality": "primary"
+    },
+    {
+      "id": "unemployment",
+      "name": "失业率",
+      "value": 4.2,
+      "unit": "%",
+      "periodEnd": "2026-09-30",
+      "publishedAt": "2026-10-02",
+      "sourceId": "us-employment-202609",
+      "basis": "U3 SA",
+      "note": "季调U3；不采用4.0%的未季调失业率。",
+      "quality": "primary"
+    }
+  ],
+  "flows": [
+    {
+      "id": "etf-flows",
+      "name": "全球黄金ETF净流入",
+      "value": 100,
+      "unit": "亿美元",
+      "periodEnd": "2026-09-30",
+      "publishedAt": "2026-10-07",
+      "sourceId": "wgc-etf-202609",
+      "basis": "monthly_net_flow",
+      "note": "全球实物支持黄金ETF；金额是美元资金流。",
+      "quality": "primary"
+    },
+    {
+      "id": "etf-holdings",
+      "name": "全球黄金ETF持仓",
+      "value": 4256,
+      "unit": "吨",
+      "periodEnd": "2026-09-30",
+      "publishedAt": "2026-10-07",
+      "sourceId": "wgc-etf-202609",
+      "basis": "month_end_holdings",
+      "note": "9月持仓增加67吨；持仓量与资金流金额分开。",
+      "quality": "primary"
+    },
+    {
+      "id": "central-banks",
+      "name": "全球央行已报告净购金",
+      "value": 39,
+      "unit": "吨",
+      "periodEnd": "2026-08-31",
+      "publishedAt": "2026-10-06",
+      "sourceId": "wgc-central-bank-202608",
+      "basis": "reported_monthly_net_purchases",
+      "note": "已报告交易，存在披露滞后；不等同于包含未报告交易的需求估算。",
+      "quality": "primary"
+    },
+    {
+      "id": "managed-money",
+      "name": "COMEX管理资金净多头",
+      "value": 387,
+      "unit": "吨",
+      "periodEnd": "2026-09-29",
+      "publishedAt": "2026-10-07",
+      "sourceId": "wgc-position-20260929",
+      "basis": "managed_money_net_long",
+      "note": "世界黄金协会转引CFTC，9月减少84吨；尚未逐项核验CFTC原表。",
+      "quality": "compiled"
+    }
+  ],
+  "events": [
+    {
+      "name": "美国9月CPI",
+      "period": "2026-09",
+      "scheduledAt": "2026-10-14T08:30:00-04:00",
+      "sourceId": "bls-calendar",
+      "watch": "核心环比与能源分项，观察加息预期是否重定价。"
+    },
+    {
+      "name": "FOMC利率决议",
+      "period": "2026-10-27 / 28",
+      "scheduledAt": "2026-10-28T14:00:00-04:00",
+      "sourceId": "fed-calendar",
+      "watch": "实际决议与会前期货定价的差异；14:00为常规发布时刻。"
+    },
+    {
+      "name": "美国9月PCE",
+      "period": "2026-09",
+      "scheduledAt": "2026-10-29T08:30:00-04:00",
+      "sourceId": "bea-calendar",
+      "watch": "核心PCE、消费与收入；本次发布在10月FOMC之后。"
+    },
+    {
+      "name": "美国10月非农",
+      "period": "2026-10",
+      "scheduledAt": "2026-11-06T08:30:00-05:00",
+      "sourceId": "us-employment-202609",
+      "watch": "新增就业、失业率与前两个月修订，影响12月政策路径。"
+    }
+  ],
+  "sources": [
+    {
+      "id": "fed-policy-20260916",
+      "name": "美联储9月议息声明",
+      "quality": "primary",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
+      "sha256": "85af733e2bf3839890002b8a877eaa2b330b8a1456e2bb587b91f31b07440c40",
+      "retrieval": "curl_original",
+      "checkedAt": "2026-10-09",
+      "publishedAt": "2026-09-16"
+    },
+    {
+      "id": "fed-sep-20260916",
+      "name": "美联储9月SEP",
+      "quality": "primary",
+      "url": "https://www.federalreserve.gov/monetarypolicy/fomcprojtabl20260916.htm",
+      "sha256": "839e268f93ac815304b0bdda871ce42b57db7a73df9970349300dd64310957af",
+      "retrieval": "curl_original",
+      "checkedAt": "2026-10-09",
+      "publishedAt": "2026-09-16"
+    },
+    {
+      "id": "fed-calendar",
+      "name": "美联储会议日历",
+      "quality": "primary",
+      "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+      "sha256": "0a1645f93d8a64d2042cd89a3e10bfb90f3d2f2bc047dcf37d551039a67f0d40",
+      "retrieval": "curl_original",
+      "checkedAt": "2026-10-09",
+      "publishedAt": null
+    },
+    {
+      "id": "wgc-etf-202609",
+      "name": "世界黄金协会 · 9月ETF统计",
+      "quality": "primary",
+      "url": "https://www.gold.org/goldhub/data/global-gold-backed-etf-holdings-and-flows",
+      "sha256": "6dbfd44732a939d81e90d2533fd65f3a9f08b9ba1b4b4e370d4c7bc7ca826e2a",
+      "retrieval": "curl_original",
+      "checkedAt": "2026-10-09",
+      "publishedAt": "2026-10-07"
+    },
+    {
+      "id": "wgc-central-bank-202608",
+      "name": "世界黄金协会 · 8月央行购金",
+      "quality": "primary",
+      "url": "https://www.gold.org/goldhub/gold-focus/2026/10/central-bank-gold-statistics-central-banks-continue-summer-spree-august",
+      "sha256": "6e60abb5bf738c5065a998ba8595ea2f7d7f2bb20e4778c0182d2d96a817f1b2",
+      "retrieval": "curl_original",
+      "checkedAt": "2026-10-09",
+      "publishedAt": "2026-10-06"
+    },
+    {
+      "id": "wgc-position-20260929",
+      "name": "世界黄金协会转引CFTC · 管理资金净多头",
+      "quality": "compiled",
+      "url": "https://www.gold.org/goldhub/data/global-gold-backed-etf-holdings-and-flows",
+      "sha256": "6dbfd44732a939d81e90d2533fd65f3a9f08b9ba1b4b4e370d4c7bc7ca826e2a",
+      "retrieval": "curl_original",
+      "checkedAt": "2026-10-09",
+      "publishedAt": "2026-10-07"
+    },
+    {
+      "id": "us-employment-202609",
+      "name": "BLS · 9月就业报告",
+      "quality": "primary",
+      "url": "https://www.bls.gov/news.release/archives/empsit_10022026.htm",
+      "sha256": null,
+      "retrieval": "web_primary_checked",
+      "checkedAt": "2026-10-09",
+      "publishedAt": "2026-10-02"
+    },
+    {
+      "id": "us-cpi-202608",
+      "name": "BLS · 8月CPI",
+      "quality": "primary",
+      "url": "https://www.bls.gov/news.release/archives/cpi_09112026.htm",
+      "sha256": null,
+      "retrieval": "web_primary_checked",
+      "checkedAt": "2026-10-09",
+      "publishedAt": "2026-09-11"
+    },
+    {
+      "id": "us-pce-202608",
+      "name": "BEA · 8月PCE",
+      "quality": "primary",
+      "url": "https://www.bea.gov/news/2026/personal-income-and-outlays-august-2026",
+      "sha256": null,
+      "retrieval": "web_primary_checked",
+      "checkedAt": "2026-10-09",
+      "publishedAt": "2026-09-30"
+    },
+    {
+      "id": "bls-calendar",
+      "name": "BLS发布日历",
+      "quality": "primary",
+      "url": "https://www.bls.gov/schedule/2026/10_sched.htm",
+      "sha256": null,
+      "retrieval": "web_primary_checked",
+      "checkedAt": "2026-10-09",
+      "publishedAt": null
+    },
+    {
+      "id": "bea-calendar",
+      "name": "BEA发布日历",
+      "quality": "primary",
+      "url": "https://www.bea.gov/news/schedule",
+      "sha256": null,
+      "retrieval": "web_primary_checked",
+      "checkedAt": "2026-10-09",
+      "publishedAt": null
+    },
+    {
+      "id": "cme-oct",
+      "name": "CME FedWatch · 10月会议",
+      "quality": "primary",
+      "url": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html",
+      "sha256": "b56a9ce19bf7b2ebf9469cad49fe6151a207040b6370c8ecc4729abe7d796532",
+      "retrieval": "browser_dom_excerpt",
+      "checkedAt": "2026-10-09",
+      "publishedAt": null
+    },
+    {
+      "id": "cme-dec",
+      "name": "CME FedWatch · 12月会议",
+      "quality": "primary",
+      "url": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html",
+      "sha256": "dc0e3e923150b8e11fb84b0a812538157082b4f16a04b1c2a1cb167bda831fd5",
+      "retrieval": "browser_dom_excerpt",
+      "checkedAt": "2026-10-09",
+      "publishedAt": null
+    },
+    {
+      "id": "choice-real10",
+      "name": "妙想 / Choice · 美国10年实际利率",
+      "quality": "provider",
+      "url": "https://choicew2z.eastmoney.com/dataDisplay/macroEDB/#/index?macroids=E1003243",
+      "sha256": "dbc77fa29ec9baf369a6a098753d578ffeb26465a5f05515afbfa574135a3ef5",
+      "retrieval": "native_mcp",
+      "checkedAt": "2026-10-09",
+      "publishedAt": null
+    },
+    {
+      "id": "choice-dxy",
+      "name": "妙想 / Choice · 美元指数 DXY",
+      "quality": "provider",
+      "url": "https://choicew2z.eastmoney.com/dataDisplay/macroEDB/#/index?macroids=EMG00001435",
+      "sha256": "dbc77fa29ec9baf369a6a098753d578ffeb26465a5f05515afbfa574135a3ef5",
+      "retrieval": "native_mcp",
+      "checkedAt": "2026-10-09",
+      "publishedAt": null
+    },
+    {
+      "id": "choice-usdcny",
+      "name": "妙想 / Choice · 美元兑人民币中间价",
+      "quality": "provider",
+      "url": "https://choicew2z.eastmoney.com/dataDisplay/macroEDB/#/index?macroids=EMM00058124",
+      "sha256": "ee2d3a83daec141a059f8197a61439759a1e3f8e9f326783e79e420eed12c58e",
+      "retrieval": "native_mcp",
+      "checkedAt": "2026-10-09",
+      "publishedAt": null
+    },
+    {
+      "id": "choice-brent",
+      "name": "妙想 / Choice · 布伦特原油现货",
+      "quality": "provider",
+      "url": "https://choicew2z.eastmoney.com/dataDisplay/macroEDB/#/index?macroids=EMI00531921",
+      "sha256": "9831bcf9647c04520f8186caf2ff42ea77c2c54be5d4066f13dc57b72c94822b",
+      "retrieval": "native_mcp",
+      "checkedAt": "2026-10-09",
+      "publishedAt": null
+    }
+  ]
+}

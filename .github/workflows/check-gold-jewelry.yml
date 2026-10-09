@@ -39,6 +39,7 @@ jobs:
           node --check scripts/gold-jewelry.js
           node --check scripts/gold-jewelry-history.js
           node --check scripts/gold-research-model.js
+          node --check scripts/gold-macro-model.js
           node --test tests/gold*.test.js
           python -m unittest discover -s tests -p 'test_gold*.py' -v
           python update/gold_jewelry.py validate

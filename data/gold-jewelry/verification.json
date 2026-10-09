@@ -349,7 +349,7 @@
         "assessment": "返回股份月报和第三季公告，未命中目标年报；仅可用于检索线索。"
       }
     ],
-    "desktopToolLoadedInCurrentConversation": false,
+    "desktopToolLoadedInCurrentConversation": true,
     "rawResponses": "private_local_archive_only",
     "researchReview": {
       "checkedAt": "2026-10-09",
@@ -368,6 +368,23 @@
       ],
       "primaryDemandReleases": 29,
       "financialCompanies": 5
+    },
+    "macroReview": {
+      "checkedAt": "2026-10-09",
+      "nativeCalls": 5,
+      "tools": [
+        "mx_macro_data",
+        "mx_finance_search_news"
+      ],
+      "acceptedDailySeries": 4,
+      "policyAndFedWatch": "Separately checked against original Federal Reserve releases and rendered CME iframe.",
+      "excluded": [
+        "CME probabilities reported by news at different times are not spliced into original snapshots.",
+        "Non-seasonally-adjusted unemployment is not substituted for U3 seasonally adjusted.",
+        "Monthly gold price supplied by the Ministry of Commerce is not relabelled as daily LBMA gold.",
+        "Unreleased September CPI and PCE remain absent."
+      ],
+      "sources": 17
     }
   },
   "recheckedSeed": [
