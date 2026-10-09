@@ -6,7 +6,25 @@
   const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
   let libraryScope=params.get('scope')==='all'||params.get('state')==='awaiting_file'?'all':'archived';
   function entry(r,k,sourceKind=k){const published=r['原始发布时间']||r['时间']||r['日期']||'';return {kind:k,sourceKind,title:r['标题']||'',published,date:published.slice(0,10),content:r['内容']||r['摘要']||'',author:r['作者']||'',sector:r['覆盖板块']||'',company:r['相关标的']||'',url:D.link(r['原文链接']||r['下载链接']),file:r['文件名']||'',batch:r['更新批次']||'',truncated:!!r['正文已截断'],state:r['内容状态']||''};}
-  function unique(records){const seen=new Set();return records.filter(r=>{const key=(r.url||r.published+'|'+r.title)+'|'+r.file;if(seen.has(key))return false;seen.add(key);return true;});}
+  function unique(records){
+    const seen=new Set(),seenStampTitle=new Set(),seenBody=new Set();
+    return records.filter(r=>{
+      const market=r.kind==='views'||r.kind==='all_views';
+      const topic=String(r.url||'').match(/\/topic\/(\d+)/)?.[1]||'';
+      const key=topic?'topic:'+topic:(r.url||((r.published||'')+'|'+(r.title||'')))+'|'+(r.file||'');
+      if(seen.has(key))return false;
+      if(market){
+        const stampTitle=(r.published||'')+'|'+(r.title||'');
+        const body=String(r.content||'').replace(/\r\n?/g,'\n').trim();
+        if(seenStampTitle.has(stampTitle)||(body&&seenBody.has(body)))return false;
+        seenStampTitle.add(stampTitle);
+        if(body)seenBody.add(body);
+      }
+      seen.add(key);
+      return true;
+    });
+  }
+
   function briefPublished(r){return (r.sources||[]).map(s=>s.publishedAt).filter(Boolean).sort((a,b)=>M.publicationTime(a).localeCompare(M.publicationTime(b))).at(-1)||r.date||'';}
   async function batchRows(path){if(!batches.has(path))batches.set(path,D.table(path).catch(e=>{batches.delete(path);throw e;}));return batches.get(path);}
   function filters(){return {kind,q:$('search').value,sector:$('sector').value,format:kind==='minutes'?$('format').value:'',state:kind==='minutes'?$('processing-state').value:'',scope:kind==='minutes'?libraryScope:'',from:$('from').value,to:$('to').value};}
