@@ -1,7 +1,7 @@
 name: Check macro and predictions
 on:
   pull_request:
-    paths: ['macro.html', 'scripts/macro*', 'scripts/site*', 'data/macro/**', 'update/macro_data.py', 'update/polymarket_data.py', 'tests/*macro*', '.github/workflows/check-macro.yml']
+    paths: ['macro.html', 'scripts/macro*', 'scripts/site*', 'data/macro/**', 'data/consumption-macro/**', 'update/macro_data.py', 'update/polymarket_data.py', 'tests/*macro*', '.github/workflows/check-macro.yml']
   workflow_dispatch:
 permissions:
   contents: read
