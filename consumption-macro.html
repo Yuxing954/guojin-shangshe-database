@@ -2,23 +2,23 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>消费宏观 · 国金商社</title>
-  <link rel="stylesheet" href="scripts/site.css?v=20261009consumption"><link rel="stylesheet" href="scripts/consumption-macro.css?v=1">
-  <script defer src="scripts/site-shell.js?v=20261009consumption"></script><script defer src="scripts/consumption-macro-model.js?v=1"></script><script defer src="scripts/consumption-macro.js?v=1"></script>
+  <title>宏观数据 · 消费专题</title>
+  <link rel="stylesheet" href="scripts/site.css?v=8"><link rel="stylesheet" href="scripts/consumption-macro.css?v=1">
+  <script defer src="scripts/site-shell.js?v=9"></script><script defer src="scripts/consumption-macro-model.js?v=2"></script><script defer src="scripts/consumption-macro.js?v=2"></script>
 </head>
 <body class="site-page" data-site-section="macro">
 <main class="site-main cm-main">
-  <header class="portal-header"><div><p class="eyebrow">CONSUMPTION / CHINA</p><h1>消费宏观</h1></div><span id="asof" class="portal-note"></span></header>
-  <p id="status" class="portal-status" role="status">正在读取消费宏观数据…</p>
+  <header class="portal-header"><div><h1>宏观数据</h1></div><span id="asof" class="portal-note"></span></header>
+  <nav class="portal-tabs" aria-label="宏观数据子栏目"><a href="macro.html">核心指标</a><a href="consumption-macro.html" class="current" aria-current="page">消费专题</a><a href="macro.html?view=predictions">重要预测</a></nav><p id="status" class="portal-status" role="status">正在读取消费宏观数据…</p>
   <div id="content" hidden>
     <section aria-label="核心指标 · 各自最新已收录"><div class="cm-section-head"><h2>消费全景</h2><span class="portal-note">各自最新已收录</span></div><div class="cm-kpis" id="kpis"></div></section>
     <section class="portal-panel cm-directory" aria-labelledby="directory-title">
       <div class="portal-panel-head"><h2 id="directory-title">指标总览</h2><span id="coverage" class="portal-note"></span></div>
       <div class="portal-filter cm-filter">
         <label>类别 <select id="group"><option value="">全部类别</option></select></label>
-        <label>频率 <select id="frequency"><option value="">全部频率</option><option value="monthly">月度</option><option value="quarterly">季度</option><option value="annual">年度</option><option value="holiday">假期</option></select></label>
-        <label>状态 <select id="connection"><option value="">全部状态</option><option value="connected">已接入</option><option value="pending">待接入</option></select></label>
-        <input id="query" type="search" aria-label="搜索消费指标" placeholder="社零、化妆品、收入…">
+        <label>频率 <select id="frequency"><option value="">全部频率</option><option value="monthly">月度</option><option value="quarterly">季度</option><option value="annual">年度</option></select></label>
+        <label hidden>状态 <select id="connection"><option value="">全部状态</option><option value="connected">已接入</option><option value="pending">待接入</option></select></label>
+        <input id="query" type="search" aria-label="搜索消费指标" placeholder="社零、餐饮、收入…">
         <button id="reset" class="portal-button">重置</button>
       </div>
       <div class="portal-table-scroll" tabindex="0" role="region" aria-label="指标总览表"><table class="portal-table cm-table"><thead><tr><th scope="col">指标</th><th scope="col">最新已收录值</th><th scope="col">同比</th><th scope="col">数据期间 / 口径</th><th scope="col">发布日期 / 来源</th><th scope="col">状态</th></tr></thead><tbody id="directory"></tbody></table></div>
@@ -36,7 +36,7 @@
       </div>
       <p id="series-definition" class="portal-note"></p><div id="range-error" class="cm-error" role="alert" hidden></div>
       <div id="chart" class="cm-chart"></div><p id="chart-caption" class="portal-note" aria-live="polite"></p>
-      <details class="cm-details" open><summary>历史数据与来源</summary>
+      <details class="cm-details"><summary>历史数据与来源</summary>
         <div class="portal-table-scroll" tabindex="0" role="region" aria-label="历史数据表"><table class="portal-table cm-table"><thead><tr><th scope="col">数据期间</th><th scope="col">口径</th><th scope="col" id="value-heading">数值</th><th scope="col">同比</th><th scope="col">备注 / 其他增速</th><th scope="col">发布日期</th><th scope="col">原始来源</th></tr></thead><tbody id="history"></tbody></table></div>
       </details>
     </section>

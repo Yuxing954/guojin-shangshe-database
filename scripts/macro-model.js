@@ -31,7 +31,7 @@
   }
   function changeUnit(spec){return spec.kind==='rate'?'百分点':spec.kind==='balance'?spec.unit:'%';}
   function changeLabel(spec,mode){
-    if(spec.id==='cn-retail'&&mode==='yoy')return '同比（官方口径）';
+    if(spec.id==='cn-retail'&&spec.kind==='level'&&mode==='yoy')return '同比（官方口径）';
     if(mode==='mom'&&spec.frequency==='annual')return '环比（不适用）';
     const base=mode==='yoy'?'较上年同期':spec.frequency==='quarterly'?'较上季':'较上月';
     return base+(spec.kind==='rate'||spec.kind==='balance'?'差值':'变化');
@@ -69,9 +69,9 @@
   const groups=[
     {id:'growth',label:'增长消费',CN:['gdp-quarter','pmi','retail','industrial-growth','disposable-income'],US:['gdp-quarter','retail','personal-income','industrial-production']},
     {id:'prices',label:'通胀就业',CN:['cpi','ppi','unemployment'],US:['cpi','core-cpi','pce','payroll','unemployment','earnings']},
-    {id:'property',label:'地产投资',CN:['property-sales','property-investment','fixed-investment'],US:['housing-starts','building-permits','durable-orders']},
-    {id:'money',label:'货币金融',CN:['m2','tsf','lpr','usdcny','csi300'],US:['fed-rate','treasury10','m2','dollar-index','sp500']},
-    {id:'external',label:'外贸财政',CN:['exports-monthly','imports-monthly','fiscal-revenue','fiscal-spending'],US:['trade-balance','debt']}
+    {id:'property',label:'地产投资',CN:['property-sales','property-investment','fixed-investment'],US:['housing-starts']},
+    {id:'money',label:'货币利率',CN:['m2','tsf','lpr','usdcny'],US:['fed-rate','treasury10']},
+    {id:'external',label:'外贸收支',CN:['exports-monthly','imports-monthly'],US:['trade-balance']}
   ];
   const references={growth:['gdp-growth'],prices:['cpi-annual']};
   function curated(series,state,snapshot){
@@ -81,7 +81,7 @@
     const matches=s=>s&&(!q||[s.name,s.code||'',s.category].join(' ').toLocaleLowerCase().includes(q));
     const core=chosen.flatMap(g=>g[country].map(find)).filter(matches);
     const annual=chosen.flatMap(g=>(references[g.id]||[]).map(find)).filter(matches);
-    return {core,available:core.filter(s=>rows(snapshot.series[s.id]).length),pending:core.filter(s=>!rows(snapshot.series[s.id]).length),references:annual.filter(s=>rows(snapshot.series[s.id]).length)};
+    return {core,available:core.filter(s=>rows(snapshot.series[s.id]).length),pending:core.filter(s=>!rows(snapshot.series[s.id]).length),references:[]};
   }
   function groupOf(id){return groups.find(g=>['CN','US'].some(c=>g[c].some(key=>c.toLowerCase()+'-'+key===id)||(references[g.id]||[]).some(key=>c.toLowerCase()+'-'+key===id)));}
   function mergeConsumption(catalog,snapshot,feed){
@@ -107,14 +107,26 @@
   }
   function headline(spec,data){
     const list=rows(data),latest=list.at(-1);if(!latest)return {value:null,unit:spec.unit,label:''};
-    if(['us-cpi','us-core-cpi'].includes(spec.id))return {value:compare(spec,list,latest,'yoy'),unit:'%',label:'同比'};
-    if(spec.id==='us-payroll'){
+    if(['us-cpi','us-core-cpi'].includes(spec.id)&&spec.kind!=='rate')return {value:compare(spec,list,latest,'yoy'),unit:'%',label:'同比'};
+    if(spec.id==='us-payroll'&&data.metric!=='monthly-change'){
       const previous=list.find(r=>r.period===priorPeriod(latest.period,'monthly','mom'));
       return {value:previous?latest.value-previous.value:null,unit:spec.unit,label:'较上月增减'};
     }
     if(['cn-retail','cn-disposable-income'].includes(spec.id)&&finite(latest.officialYoy))return {value:latest.officialYoy,unit:'%',label:spec.kind==='cumulative'?'累计同比':'官方同比'};
     return {value:latest.value,unit:spec.unit,label:''};
   }
-  const api={finite,frequency,dateOf,rows,compare,status,filter,chartRows,changeUnit,changeLabel,csv,csvCell,safeUrl,groups,curated,groupOf,headline,mergeConsumption};
+  function mergeAutomatic(catalog,snapshot,feed){
+    if(feed?.version!==1||!feed.series||feed.publicRedistributionApproved!==true)throw new Error('自动数据格式或授权错误');
+    for(const [id,data] of Object.entries(feed.series)){
+      const spec=catalog.series.find(s=>s.id===id);if(!spec||!rows(data).length)continue;
+      const previous=new Map(rows(snapshot.series[id]).map(r=>[r.period,r]));
+      const observations=rows(data).map(r=>{const known=previous.get(r.period);return {...r,releaseDate:r.releaseDate||(known?.value===r.value?known.releaseDate:null),originalSourceUrl:known?.value===r.value?known.sourceUrl:null};});
+      if(data.spec)Object.assign(spec,data.spec);
+      snapshot.series[id]={...data,observations};
+    }
+    if(feed.cutoff>snapshot.cutoff)snapshot.cutoff=feed.cutoff;
+    return snapshot;
+  }
+  const api={finite,frequency,dateOf,rows,compare,status,filter,chartRows,changeUnit,changeLabel,csv,csvCell,safeUrl,groups,curated,groupOf,headline,mergeConsumption,mergeAutomatic};
   if(typeof module==='object'&&module.exports)module.exports=api;else root.MacroModel=api;
 })(typeof window==='object'?window:globalThis);

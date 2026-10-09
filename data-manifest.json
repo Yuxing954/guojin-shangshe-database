@@ -246,11 +246,20 @@
       "id": "consumption_macro",
       "name": "消费宏观官方披露数据",
       "file": "data/consumption-macro/observations.json",
-      "category": "消费宏观",
+      "category": "宏观数据",
       "asOf": "2026-10-09",
       "rowCount": 1144,
       "updateRecord": "data/consumption-macro/sources.json",
-      "evidence": "data/consumption-macro/evidence.json"
+      "evidence": "data/consumption-macro/evidence.json",
+      "page": "consumption-macro.html"
+    },
+    {
+      "id": "macro_automatic",
+      "name": "中美核心宏观与消费历史",
+      "file": "data/macro/automatic-series.json",
+      "category": "宏观数据",
+      "page": "macro.html",
+      "coverage": "data/macro/coverage.json"
     }
   ]
 }

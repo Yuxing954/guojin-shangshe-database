@@ -1,0 +1,467 @@
+{
+  "version": 1,
+  "publicRedistributionApproved": true,
+  "authorizationBasis": "用户于2026-10-09明确确认允许本网站公开展示和下载Choice数据。",
+  "series": [
+    {
+      "id": "cn-cpi",
+      "originalName": "中国:CPI:同比(%)",
+      "publisher": "国家统计局",
+      "unit": "%",
+      "kind": "rate",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "code": "EMM00072301",
+      "name": "CPI同比",
+      "adjustment": "当月同比，未季调"
+    },
+    {
+      "id": "cn-ppi",
+      "originalName": "中国:PPI:全部工业品:同比",
+      "publisher": "国家统计局",
+      "unit": "%",
+      "kind": "rate",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "code": "EMM00073386",
+      "offset": -100,
+      "name": "PPI同比",
+      "adjustment": "上年同期=100指数减100，得到同比涨跌幅"
+    },
+    {
+      "id": "cn-pmi",
+      "originalName": "中国:PMI(%)",
+      "publisher": "国家统计局",
+      "unit": "点",
+      "kind": "rate",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "code": "EMM00121996",
+      "name": "制造业PMI",
+      "adjustment": "原始景气指数；50为荣枯线"
+    },
+    {
+      "id": "cn-unemployment",
+      "originalName": "城镇调查失业率:全国(%)",
+      "publisher": "国家统计局",
+      "unit": "%",
+      "kind": "rate",
+      "frequency": "monthly",
+      "start": "2018-01-01",
+      "name": "城镇调查失业率",
+      "adjustment": "全国当月值",
+      "codeCandidates": [
+        "EMM00631597",
+        "EMM00877661"
+      ],
+      "codeMapping": "表级代码集合，接口未返回单指标代码映射；不按顺序配对"
+    },
+    {
+      "id": "cn-industrial-growth",
+      "originalName": "中国:工业增加值:同比(%)",
+      "publisher": "国家统计局",
+      "unit": "%",
+      "kind": "rate",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "expectedMissingMonths": [
+        1,
+        2
+      ],
+      "name": "规模以上工业增加值同比",
+      "adjustment": "当月同比；1—2月无单月发布",
+      "code": "EMM00008445"
+    },
+    {
+      "id": "cn-retail",
+      "originalName": "中国:社会消费品零售总额:同比(%)",
+      "publisher": "国家统计局",
+      "unit": "%",
+      "kind": "rate",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "code": "EMI00135323",
+      "expectedMissingMonths": [
+        1,
+        2
+      ],
+      "name": "社零当月同比",
+      "adjustment": "官方同比；1—2月单独合并发布"
+    },
+    {
+      "id": "cn-disposable-income",
+      "originalName": "中国:居民人均可支配收入:名义累计同比(%)",
+      "publisher": "国家统计局",
+      "unit": "%",
+      "kind": "rate",
+      "frequency": "quarterly",
+      "start": "2016-01-01",
+      "code": "EMM00597042",
+      "name": "居民收入累计同比",
+      "adjustment": "全国人均名义收入累计同比，非单季"
+    },
+    {
+      "id": "cn-fixed-investment",
+      "originalName": "中国:固定资产投资完成额:累计同比(%)",
+      "publisher": "国家统计局",
+      "unit": "%",
+      "kind": "rate",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "expectedMissingMonths": [
+        1
+      ],
+      "name": "固定资产投资累计同比",
+      "adjustment": "年初累计同比，非单月",
+      "codeCandidates": [
+        "EMM00588940",
+        "EMM00590832",
+        "EMM01013020",
+        "EMM02713099"
+      ],
+      "codeMapping": "表级代码集合，接口未返回单指标代码映射；不按顺序配对"
+    },
+    {
+      "id": "cn-m2",
+      "originalName": "中国:M2:同比(%)",
+      "publisher": "中国人民银行",
+      "unit": "%",
+      "kind": "rate",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "name": "M2同比",
+      "adjustment": "月末余额官方同比",
+      "codeCandidates": [
+        "EMM00087085",
+        "EMM00087086"
+      ],
+      "codeMapping": "表级代码集合，接口未返回单指标代码映射；不按顺序配对"
+    },
+    {
+      "id": "cn-tsf",
+      "originalName": "中国:社会融资规模存量:同比(%)",
+      "publisher": "中国人民银行",
+      "unit": "%",
+      "kind": "rate",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "name": "社融存量同比",
+      "adjustment": "月末存量官方同比",
+      "codeCandidates": [
+        "EMM00634713",
+        "EMM00634721"
+      ],
+      "codeMapping": "表级代码集合，接口未返回单指标代码映射；不按顺序配对"
+    },
+    {
+      "id": "cn-lpr",
+      "originalName": "贷款市场报价利率(LPR):1年(%)",
+      "publisher": "中国人民银行",
+      "unit": "%",
+      "kind": "rate",
+      "frequency": "monthly",
+      "start": "2019-08-01",
+      "name": "1年期LPR",
+      "adjustment": "每月官方报价"
+    },
+    {
+      "id": "cn-usdcny",
+      "originalName": "平均汇率:美元兑人民币",
+      "publisher": "中国外汇交易中心",
+      "unit": "人民币/美元",
+      "kind": "level",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "name": "美元兑人民币月均汇率",
+      "adjustment": "月平均值，非当日中间价"
+    },
+    {
+      "id": "us-pce",
+      "originalName": "美国:核心PCE物价指数:同比(%)",
+      "publisher": "美国国家经济分析局",
+      "unit": "%",
+      "kind": "rate",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "name": "核心PCE同比",
+      "adjustment": "不含食品能源；同比",
+      "codeCandidates": [
+        "EMG00157776",
+        "EMG00353675"
+      ],
+      "codeMapping": "表级代码集合，接口未返回单指标代码映射；不按顺序配对"
+    },
+    {
+      "id": "us-retail",
+      "originalName": "美国:零售商销售额:季调:环比(%)",
+      "publisher": "美国人口普查局",
+      "unit": "%",
+      "kind": "rate",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "name": "零售销售环比",
+      "adjustment": "季调月环比",
+      "code": "EMG04147513"
+    },
+    {
+      "id": "us-industrial-production",
+      "originalName": "美国:工业生产指数:总指数:季调",
+      "publisher": "美联储",
+      "unit": "指数（2017=100）",
+      "kind": "level",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "code": "EMG01385219",
+      "name": "工业生产指数",
+      "adjustment": "季调，2017=100"
+    },
+    {
+      "id": "us-fed-rate",
+      "originalName": "美国:联邦基金有效利率EFFR:月均值(%)",
+      "publisher": "Choice数据",
+      "unit": "%",
+      "kind": "rate",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "code": "EMG01420755",
+      "name": "联邦基金有效利率",
+      "adjustment": "月平均值，非当日利率"
+    },
+    {
+      "id": "us-treasury10",
+      "originalName": "美国:国债收益率:10年(%)",
+      "publisher": "美联储",
+      "unit": "%",
+      "kind": "rate",
+      "frequency": "daily",
+      "start": "2016-01-01",
+      "name": "10年期国债收益率",
+      "adjustment": "日度；交易日口径",
+      "lookbackYears": 5,
+      "code": "E1003238"
+    },
+    {
+      "id": "cn-gdp-quarter",
+      "originalName": "中国:GDP指数",
+      "publisher": "国家统计局",
+      "unit": "%",
+      "kind": "rate",
+      "frequency": "quarterly",
+      "start": "2016-01-01",
+      "code": "EMM01014342",
+      "offset": -100,
+      "name": "实际GDP当季同比",
+      "adjustment": "上年同期=100的GDP指数减100；不采用现价名义增速"
+    },
+    {
+      "id": "cn-property-sales",
+      "originalName": "商品房销售面积:当月值(平方米)",
+      "publisher": "国家统计局",
+      "unit": "万平方米",
+      "kind": "level",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "scale": 0.0001,
+      "code": "EMI01523153",
+      "expectedMissingMonths": [
+        1,
+        2
+      ],
+      "name": "商品房销售面积",
+      "adjustment": "当月面积；1—2月不拆分"
+    },
+    {
+      "id": "cn-property-investment",
+      "originalName": "中国:房地产开发投资完成额(元)",
+      "publisher": "国家统计局",
+      "unit": "亿元",
+      "kind": "level",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "scale": 1e-08,
+      "code": "EMI01523073",
+      "expectedMissingMonths": [
+        1,
+        2
+      ],
+      "name": "房地产开发投资",
+      "adjustment": "当月金额；接口金额保留原始舍入精度"
+    },
+    {
+      "id": "cn-exports-monthly",
+      "originalName": "中国:出口金额(按美元):当月同比(%)",
+      "publisher": "海关总署",
+      "unit": "%",
+      "kind": "rate",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "name": "货物出口同比（美元）",
+      "adjustment": "美元计价当月同比"
+    },
+    {
+      "id": "cn-imports-monthly",
+      "originalName": "中国:进口金额(按美元):当月同比(%)",
+      "publisher": "海关总署",
+      "unit": "%",
+      "kind": "rate",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "name": "货物进口同比（美元）",
+      "adjustment": "美元计价当月同比"
+    },
+    {
+      "id": "us-trade-balance",
+      "originalName": "美国:贸易差额:季调(美元)",
+      "publisher": "美国国家经济分析局",
+      "unit": "亿美元",
+      "kind": "balance",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "scale": 1e-08,
+      "code": "EMG00000700",
+      "name": "贸易差额",
+      "adjustment": "季调当月货物与服务贸易差额"
+    },
+    {
+      "id": "us-personal-income",
+      "originalName": "美国:个人收入:总计:季调(美元)",
+      "publisher": "美国国家经济分析局",
+      "unit": "十亿美元",
+      "kind": "level",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "code": "EMG01355356",
+      "name": "个人收入",
+      "adjustment": "季调折年额；接口金额保留原始舍入精度",
+      "scale": 1e-09
+    },
+    {
+      "id": "consumer-core-cpi",
+      "originalName": "中国:CPI:不包括食品和能源:同比(%)",
+      "publisher": "国家统计局",
+      "unit": "%",
+      "kind": "rate",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "code": "EMM00167901",
+      "consumerId": "core_cpi",
+      "basis": "month"
+    },
+    {
+      "id": "consumer-cpi",
+      "originalName": "中国:CPI:同比(%)",
+      "publisher": "国家统计局",
+      "unit": "%",
+      "kind": "rate",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "code": "EMM00072301",
+      "consumerId": "cpi",
+      "basis": "month"
+    },
+    {
+      "id": "consumer-retail",
+      "originalName": "中国:社会消费品零售总额:同比(%)",
+      "publisher": "国家统计局",
+      "unit": "%",
+      "kind": "rate",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "code": "EMI00135323",
+      "consumerId": "retail",
+      "basis": "month",
+      "consumerMeasure": "yoy",
+      "expectedMissingMonths": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "consumer-catering",
+      "originalName": "中国:社会消费品零售总额:餐饮收入(元)",
+      "publisher": "国家统计局",
+      "unit": "亿元",
+      "kind": "level",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "scale": 1e-08,
+      "consumerId": "catering",
+      "basis": "month",
+      "expectedMissingMonths": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "consumer-online",
+      "originalName": "中国:社会消费品零售总额:网上零售:网上商品:累计值(元)",
+      "publisher": "国家统计局",
+      "unit": "亿元",
+      "kind": "cumulative",
+      "frequency": "monthly",
+      "start": "2019-01-01",
+      "scale": 1e-08,
+      "consumerId": "online_goods",
+      "basis": "ytd",
+      "expectedMissingMonths": [
+        1
+      ]
+    },
+    {
+      "id": "consumer-income",
+      "originalName": "中国:居民人均可支配收入:累计值(元)",
+      "publisher": "国家统计局",
+      "unit": "元",
+      "kind": "cumulative",
+      "frequency": "quarterly",
+      "start": "2016-01-01",
+      "code": "EMM00597041",
+      "consumerId": "income_national",
+      "basis": "ytd"
+    },
+    {
+      "id": "consumer-spending",
+      "originalName": "中国:居民人均消费支出:累计值(元)",
+      "publisher": "国家统计局",
+      "unit": "元",
+      "kind": "cumulative",
+      "frequency": "quarterly",
+      "start": "2016-01-01",
+      "code": "EMM00651669",
+      "consumerId": "spending_national",
+      "basis": "ytd"
+    },
+    {
+      "id": "consumer-retail-amount",
+      "originalName": "中国:社会消费品零售总额(元)",
+      "publisher": "国家统计局",
+      "unit": "亿元",
+      "kind": "level",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "code": "EMI00135328",
+      "scale": 1e-08,
+      "consumerId": "retail",
+      "basis": "month",
+      "expectedMissingMonths": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "consumer-service",
+      "originalName": "中国:服务零售额:累计同比(%)",
+      "publisher": "国家统计局",
+      "unit": "%",
+      "kind": "cumulative",
+      "frequency": "monthly",
+      "start": "2023-07-01",
+      "code": "EMM01850623",
+      "consumerId": "service_retail",
+      "basis": "ytd",
+      "expectedMissingMonths": [
+        1
+      ]
+    }
+  ]
+}
