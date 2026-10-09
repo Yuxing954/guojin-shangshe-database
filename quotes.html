@@ -4,10 +4,10 @@
 <meta name="description" content="国金商社行情工作台：腾讯报价、自选公司、行业分组和走势与研究联动。">
 <title>实时行情 · 国金商社</title>
 <link rel="stylesheet" href="scripts/site.css?v=6"><link rel="stylesheet" href="scripts/quotes.css?v=4">
-<script defer src="scripts/site-data.js?v=2"></script><script defer src="scripts/market-kline.js?v=20260912-1"></script>
-<script defer src="scripts/quotes-model.js?v=4"></script><script defer src="scripts/site-shell.js?v=5"></script><script defer src="scripts/quotes.js?v=5"></script>
+<script defer src="scripts/site-data.js?v=2"></script><script defer src="scripts/market-kline.js?v=20261009-2"></script>
+<script defer src="scripts/quotes-model.js?v=6"></script><script defer src="scripts/site-shell.js?v=5"></script><script defer src="scripts/quotes-poller.js?v=1"></script><script defer src="scripts/quotes.js?v=7"></script>
 </head><body><main id="main">
-<header class="portal-header quotes-header"><div><p class="eyebrow">MARKET / RESEARCH DESK</p><h1>实时行情</h1><p>先选板块，再看公司。报价、走势与研究放在一起。</p></div><div class="quotes-actions"><label><input id="auto-refresh" type="checkbox" checked> 自动刷新</label><button class="portal-button" id="refresh" type="button">刷新报价</button></div></header>
+<header class="portal-header quotes-header"><div><p class="eyebrow">MARKET / RESEARCH DESK</p><h1>实时行情</h1><p>先选板块，再看公司。报价、走势与研究放在一起。</p></div><div class="quotes-actions"><label><input id="auto-refresh" type="checkbox" checked> 每秒检查</label><button class="portal-button" id="refresh" type="button">刷新报价</button></div></header>
 <div id="status" class="quotes-status" role="status" aria-live="polite">正在读取覆盖公司…</div>
 <div id="content" hidden>
 <section id="benchmarks" class="quotes-benchmarks" aria-label="市场指数"></section>
@@ -34,6 +34,6 @@
 </section><div id="detail-empty" class="quotes-detail-empty">选择一家覆盖公司，查看走势与研究。</div>
 </div>
 <p class="quotes-context quotes-footnote">涨跌幅相对各证券前收盘价；A股、港股、美股时点不同，按本币展示。报价可能延迟，以各证券来源时间为准。</p>
-<details class="quotes-source"><summary>来源、时间与自选说明</summary><p>报价与走势来自腾讯行情。每15秒请求，后台暂停；“最近读取”是读取时间，各证券单独展示报价时间。旧报价不以本地时间改写，连接失败保留原值并注明状态。</p><p>自选只保存在当前浏览器。相关研究来自本站已收录内容，不代表实时新闻。均线按同一来源序列计算，只有来源明确返回前复权序列才标注前复权。本页不混用历史PE、市值和新股价。</p><a href="https://gu.qq.com/" target="_blank" rel="noopener">腾讯自选股 ↗</a></details>
+<details class="quotes-source"><summary>来源、时间与自选说明</summary><p>报价与走势来自腾讯行情。每1秒检查界面，报价请求至少间隔15秒，失败后延长等待；页面隐藏或离开时暂停。上游秒级额度未确认，实际更新以来源为准；“最近读取”是读取时间，各证券单独展示报价时间。旧报价不以本地时间改写，连接失败保留原值并注明状态。</p><p>自选只保存在当前浏览器。相关研究来自本站已收录内容，不代表实时新闻。均线按同一来源序列计算，只有来源明确返回前复权序列才标注前复权。本页不混用历史PE、市值和新股价。</p><a href="https://gu.qq.com/" target="_blank" rel="noopener">腾讯自选股 ↗</a></details>
 </div><p id="preference-status" class="quotes-preference-status" role="status" aria-live="polite" hidden></p>
 </main></body></html>
