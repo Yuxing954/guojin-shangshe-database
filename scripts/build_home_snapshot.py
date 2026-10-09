@@ -118,9 +118,9 @@ def legacy_fields(root):
     ]
     d_change = numeric(dutyfree["sales_yoy_pct"])
     focus = [
-        {"sector": "酒店经营", "title": "关注酒店经营的量价变化", "summary": f"全国 RevPAR 为 {numeric(h['revpar']):.1f} 元，同周号同比 {signed(h_change)}（未作节假日错期调整）。结合入住率与房价查看变化来源。", "asOf": h["end_date"], "href": "hotel-dashboard.html"},
-        {"sector": "免税消费", "title": "对照销售额与购物人次", "summary": f"离岛免税销售额 {numeric(dutyfree['shopping_sales_cny_100m']):.2f} 亿元，同比 {signed(d_change)}；购物人次同比 {signed(numeric(dutyfree['shoppers_yoy_pct']))}。", "asOf": month_end(dutyfree["period_id"]), "href": "dutyfree-dashboard.html"},
-        {"sector": "餐饮需求", "title": "跟踪餐饮收入增速", "summary": f"全国餐饮收入同比 {signed(numeric(dining['餐饮收入同比增速(%)']))}，限额以上餐饮同比 {signed(numeric(dining['限额以上同比增速(%)']))}。查看两种口径的趋势。", "asOf": month_end(dining["月份"]), "href": "industry.html#dining"},
+        {"sector": "酒店经营", "title": "酒店量价", "summary": f"全国 RevPAR 为 {numeric(h['revpar']):.1f} 元，同周号同比 {signed(h_change)}（未作节假日错期调整）。", "asOf": h["end_date"], "href": "hotel-dashboard.html"},
+        {"sector": "免税消费", "title": "免税销售与客流", "summary": f"离岛免税销售额 {numeric(dutyfree['shopping_sales_cny_100m']):.2f} 亿元，同比 {signed(d_change)}；购物人次同比 {signed(numeric(dutyfree['shoppers_yoy_pct']))}。", "asOf": month_end(dutyfree["period_id"]), "href": "dutyfree-dashboard.html"},
+        {"sector": "餐饮需求", "title": "餐饮收入增速", "summary": f"全国餐饮收入同比 {signed(numeric(dining['餐饮收入同比增速(%)']))}，限额以上餐饮同比 {signed(numeric(dining['限额以上同比增速(%)']))}。", "asOf": month_end(dining["月份"]), "href": "industry.html#dining"},
     ]
     return industries, focus
 
@@ -130,9 +130,9 @@ def build(root=ROOT, now=None):
     overview_path = root / "data/industry/overview.json"
     if overview_path.exists():
         focus = [
-            {"sector": "酒店经营", "title": "关注酒店经营的量价变化"},
-            {"sector": "免税消费", "title": "对照销售额与购物人次"},
-            {"sector": "餐饮需求", "title": "跟踪餐饮收入增速"},
+            {"sector": "酒店经营", "title": "酒店量价"},
+            {"sector": "免税消费", "title": "免税销售与客流"},
+            {"sector": "餐饮需求", "title": "餐饮收入增速"},
         ]
         overview = json.loads(overview_path.read_text(encoding="utf-8"))
         provenance = {s["id"]: s for s in overview["sources"]}
@@ -147,9 +147,9 @@ def build(root=ROOT, now=None):
         h_now, d_now, food_now = (next(item for item in industries if item["id"] == id) for id in ("hotel", "dutyfree", "dining"))
         shoppers_now = selected["dutyfree_shoppers"]["points"][-1]
         food_above = selected["dining_above_yoy"]["points"][-1]
-        focus[0].update(summary=f"全国 RevPAR 为 {h_now['value']:.1f} 元，同比 {signed(h_now['change'])}。结合入住率与房价查看变化来源。", asOf=h_now["asOf"], href=h_now["href"])
-        focus[1].update(summary=f"离岛免税购物金额 {d_now['value']:.2f} 亿元，购物人次 {shoppers_now['value']:.2f} 万人次。对照每购物人次金额查看消费变化。", asOf=d_now["asOf"], href=d_now["href"])
-        focus[2].update(summary=f"全国餐饮收入同比 {signed(food_now['change'])}，限额以上餐饮同比 {signed(food_above['value'])}。查看两种口径的趋势。", asOf=food_now["asOf"], href=food_now["href"])
+        focus[0].update(summary=f"全国 RevPAR 为 {h_now['value']:.1f} 元，同比 {signed(h_now['change'])}。", asOf=h_now["asOf"], href=h_now["href"])
+        focus[1].update(summary=f"离岛免税购物金额 {d_now['value']:.2f} 亿元，购物人次 {shoppers_now['value']:.2f} 万人次。", asOf=d_now["asOf"], href=d_now["href"])
+        focus[2].update(summary=f"全国餐饮收入同比 {signed(food_now['change'])}，限额以上餐饮同比 {signed(food_above['value'])}。", asOf=food_now["asOf"], href=food_now["href"])
     else:
         industries, focus = legacy_fields(root)
     recent = json.loads((root / "data/research/recent.json").read_text(encoding="utf-8"))

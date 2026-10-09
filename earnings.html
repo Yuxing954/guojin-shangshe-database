@@ -4,13 +4,13 @@
 <body>
 <aside><a class="brand" href="index.html">SINOLINK<span>国金商社数据库</span></a><nav><a href="index.html">← 返回数据库</a><a href="index.html#coverage-live">实时行情</a><a href="index.html#consumer-focus">重点公司</a><a href="index.html#sec-f">业绩与财务</a><a class="active" href="earnings.html">财报季工作台</a><a href="research.html">观点与纪要</a></nav><div class="aside-foot">RESEARCH OPERATIONS<br>商贸零售 · 社会服务</div></aside>
 <main>
-<header><div><div class="eyebrow">RESEARCH / EARNINGS CALENDAR</div><h1>财报季日历</h1><p>选择财报季，直接看披露日和业绩会。</p></div></header>
+<header><div><div class="eyebrow">RESEARCH / EARNINGS CALENDAR</div><h1>财报季日历</h1></div></header>
 <div class="notice"><span id="sourceStatus">正在读取财报日期…</span><span><i class="report-dot"></i> 财报披露　<i class="meeting-dot"></i> 业绩会</span></div>
 <section class="board">
 <div class="calendar-toolbar simple"><label>财报季<select id="period"><option value="2026H1">2026 中报 / 二季度</option><option value="2026Q3">2026 三季报</option><option value="2026FY">2026 年报</option><option value="2025FY">2025 年报</option></select></label></div>
 <div class="calendar-nav"><button id="prevMonth" aria-label="上个月">‹</button><h2 id="monthTitle">—</h2><button id="nextMonth" aria-label="下个月">›</button><button id="todayMonth">回到本月</button><span id="count"></span></div>
 <div class="calendar-layout"><div class="month-wrap"><div class="weekdays"><span>周一</span><span>周二</span><span>周三</span><span>周四</span><span>周五</span><span>周六</span><span>周日</span></div><div class="month-grid" id="monthGrid"><div class="calendar-loading">正在加载财报日历…</div></div></div><aside class="day-panel"><div class="day-panel-head"><span id="selectedWeek">选择日期</span><strong id="selectedDate">—</strong></div><div id="dayEvents" class="day-events"><div class="day-empty">点击日历日期查看当天安排</div></div><div class="unknown"><b>披露日期待核实</b><div id="unknownList"></div></div></aside></div>
-</section><p class="foot">公开披露日期来自东方财富妙想 MCP；业绩会日期可点击公司后补充。</p>
+</section><p class="foot">披露日：妙想 · 业绩会：手工维护</p>
 </main>
 <dialog id="editor"><form id="editForm"><div class="drawer-head"><div><small id="editPeriod"></small><h2 id="editTitle"></h2></div><button type="button" id="close" aria-label="关闭">×</button></div><div class="drawer-body"><div class="form-grid"><label>财报披露日期<input name="actual" type="date"></label><label>业绩会时间（北京时间）<input name="meeting" type="datetime-local"></label></div></div><div class="drawer-foot"><span id="saveState"></span><button type="submit" class="primary">保存</button></div></form></dialog><div id="toast" role="status" aria-live="polite"></div>
 </body></html>
