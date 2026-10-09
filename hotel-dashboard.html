@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>酒店数据 · 国金商社</title>
-  <link rel="stylesheet" href="scripts/site.css?v=5">
+  <link rel="stylesheet" href="scripts/site.css?v=7">
   <link rel="stylesheet" href="scripts/hotel-dashboard.css?v=20261008yoy">
-  <script defer src="scripts/site-shell.js?v=4"></script>
+  <script defer src="scripts/site-shell.js?v=12"></script>
   <script defer src="scripts/hotel-metrics.js?v=20261008"></script>
-  <script defer src="scripts/hotel-dashboard.js?v=20261009copy"></script>
-</head>
+  <script defer src="scripts/hotel-dashboard.js?v=20261009mergedcopy"></script>
+<link rel="stylesheet" href="scripts/site-polish.css?v=1"></head>
 <body class="hotel-page">
 <main class="hd-wrap">
   <header class="hd-header">
@@ -55,7 +55,7 @@
     </section>
 
     <section id="view-cities" class="hd-view" hidden>
-      <div class="hd-section-head"><div><h2>重点城市</h2></div></div>
+      <div class="hd-section-head"><div><h2>城市经营</h2></div></div>
       <div class="hd-city-summary" id="city-summary"></div>
       <div class="hd-card">
         <div class="hd-city-controls"><label>搜索城市 <input id="city-search" type="search" placeholder="例如：杭州"></label><label>排序 <select id="city-sort"><option value="revChange">每房收入同比 · 从高到低</option><option value="occChange">入住率同比 · 从高到低</option><option value="adrChange">房价同比 · 从高到低</option><option value="revpar">每房收入绝对值 · 从高到低</option><option value="occupancy_rate">入住率绝对值 · 从高到低</option><option value="adr">房价绝对值 · 从高到低</option></select></label></div>
@@ -80,3 +80,4 @@
 </main>
 </body>
 </html>
+

@@ -44,10 +44,14 @@ assert(!L.hasStoredOriginal({...metadataOnly,storage:{...metadataOnly.storage,cl
 assert(!L.hasStoredOriginal({...metadataOnly,sha256:'d'.repeat(64)}));
 console.log('Metadata-only originals retain permission checks and do not pretend to verify file bytes.');
 assert.deepEqual(L.preview({preview:'原文开头'}),{text:'原文开头',truncated:false});
+const workText={...file,id:'work-minutes-test',sha256:'a'.repeat(64),processing:{status:'source_extracted',textAvailable:true,bodyAvailable:true,bodySha256:'b'.repeat(64),contentPath:'data/research/processed/work-minutes-test.json'}};
+assert(L.hasPublishedText(workText));assert(L.matches(workText,{scope:'archived'}));
+assert(!L.hasStoredOriginal(workText));assert.equal(L.storageLink(workText),'');
+assert(!L.hasPublishedText({...workText,processing:{...workText.processing,bodySha256:''}}));
+assert(!L.hasPublishedText({...workText,processing:{...workText.processing,contentPath:'../private.json'}}));
 assert.equal(Array.from(L.preview({preview:'😀'.repeat(510)}).text).length,500);
 assert(L.preview({preview:'原文',previewTruncated:true}).truncated);
 assert.equal(L.preview({type:'meeting_summary',summary:'生成的摘要'}).text,'');
 assert.equal(L.preview({type:'pdf',pages:[{text:'第一段'},{text:'第二段'}]}).text,'第一段\n\n第二段');
 assert.equal(L.preview({type:'transcript',segments:[{text:'实际转写'}]}).text,'实际转写');
 console.log('Minute previews use source text, stop at 500 characters and never substitute a generated summary.');
-

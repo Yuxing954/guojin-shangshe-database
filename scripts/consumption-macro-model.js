@@ -1,0 +1,111 @@
+(function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.ConsumptionMacro=api;})(typeof globalThis!=='undefined'?globalThis:this,function(){
+  'use strict';
+  const finite=v=>typeof v==='number'&&Number.isFinite(v);
+  const frequencies={monthly:'月度',quarterly:'季度',annual:'年度',holiday:'假期'};
+  const bases={month:'当月',jan_feb:'1—2月合并',ytd:'年初累计',quarter:'单季',year:'全年',holiday:'假期合计'};
+  const official=url=>{try{const u=new URL(url);return u.protocol==='https:'&&['stats.gov.cn','mct.gov.cn','mot.gov.cn','mofcom.gov.cn'].some(d=>u.hostname===d||u.hostname.endsWith('.'+d));}catch{return false;}};
+  function validate(data){
+    const errors=[];if(data?.schemaVersion!==1||!Array.isArray(data.indicators)||!Array.isArray(data.observations)||!Array.isArray(data.sources))return ['数据结构无效'];
+    const ids=new Map(),sources=new Map(),keys=new Set(),count=new Map();
+    for(const i of data.indicators){if(ids.has(i.id)||!['connected','pending'].includes(i.status)||!i.name||!i.unit||!i.definition)errors.push('指标定义无效：'+i.id);ids.set(i.id,i);if(i.status==='pending'&&(!official(i.sourceUrl)||!i.pendingReason))errors.push('待接入来源无效：'+i.id);}
+    for(const s of data.sources){if(sources.has(s.id)||!official(s.url)||!/^\d{4}-\d{2}-\d{2}$/.test(s.publishedAt)||s.publishedAt>data.checkedAt)errors.push('来源无效：'+s.id);sources.set(s.id,s);}
+    for(const r of data.observations){
+      const i=ids.get(r.indicatorId),s=sources.get(r.sourceId),key=[r.indicatorId,r.frequency,r.basis,r.period].join('|');
+      if(!i||i.status!=='connected'||!s||!frequencies[r.frequency]||!bases[r.basis]||keys.has(key))errors.push('记录归属或重复：'+key);
+      keys.add(key);count.set(r.indicatorId,(count.get(r.indicatorId)||0)+1);
+      if(!/^\d{4}-\d{2}-\d{2}$/.test(r.endDate)||r.endDate>s?.publishedAt)errors.push('期间与发布日期无效：'+key);
+      if((r.value!==null&&!finite(r.value))||(r.yoy!==null&&!finite(r.yoy))||(r.value===null&&r.yoy===null))errors.push('数值无效：'+key);
+      if(r.frequency==='monthly'&&(!/^\d{4}-(0[1-9]|1[0-2])$/.test(r.period)||(r.basis==='jan_feb'&&!r.period.endsWith('-02'))))errors.push('月度期间无效：'+key);
+      if(r.frequency==='quarterly'&&!/^\d{4}-Q[1-4]$/.test(r.period))errors.push('季度期间无效：'+key);
+      if(r.frequency==='annual'&&!/^\d{4}$/.test(r.period))errors.push('年度期间无效：'+key);
+    }
+    for(const i of ids.values())if(i.status==='connected'&&!count.has(i.id))errors.push('已接入指标没有记录：'+i.id);
+    return errors;
+  }
+  const sorted=rows=>rows.slice().sort((a,b)=>a.endDate.localeCompare(b.endDate)||a.period.localeCompare(b.period,'zh-CN'));
+  function records(data,id,{frequency='',basis='',from='',to=''}={}){return sorted(data.observations.filter(r=>r.indicatorId===id&&(!frequency||r.frequency===frequency)&&(!basis||(basis==='month'?['month','jan_feb'].includes(r.basis):r.basis===basis))&&(!from||r.endDate>=from)&&(!to||r.endDate<=to)));}
+  function defaultScope(data,id,frequency=''){
+    const rows=records(data,id,{frequency});const last=rows.at(-1);if(!last)return null;
+    const f=frequency||last.frequency,available=rows.filter(r=>r.frequency===f),basis=available.some(r=>r.basis==='month'||r.basis==='jan_feb')?'month':last.basis;
+    return {frequency:f,basis};
+  }
+  function latest(data,id,frequency=''){const scope=defaultScope(data,id,frequency);return scope?records(data,id,scope).at(-1):null;}
+  function directory(data,{group='',frequency='',status='',query=''}={}){const q=query.trim().toLowerCase();return data.indicators.filter(i=>(!group||i.group===group)&&(!status||i.status===status)&&(!q||[i.name,i.group,i.definition].join(' ').toLowerCase().includes(q))&&(!frequency||(i.status==='pending'?(i.frequencies||[]).includes(frequency):data.observations.some(r=>r.indicatorId===i.id&&r.frequency===frequency))));}
+  function segments(rows,field='value'){
+    let segment=[],out=[];const push=()=>{if(segment.length)out.push(segment);segment=[];};
+    for(const r of sorted(rows)){
+      if(!finite(r[field])){push();continue;}
+      const prev=segment.at(-1);
+      if(prev){const a=Number(prev.period.slice(0,4))*12+Number(prev.period.slice(5)),b=Number(r.period.slice(0,4))*12+Number(r.period.slice(5));
+        const quarterIndex=p=>Number(p.slice(0,4))*4+Number(p.at(-1));
+        if(r.frequency!==prev.frequency||r.basis!==prev.basis||(r.frequency==='monthly'&&b-a!==1)||(r.frequency==='quarterly'&&quarterIndex(r.period)-quarterIndex(prev.period)!==1)||(r.frequency==='annual'&&Number(r.period)-Number(prev.period)!==1)||(r.basis==='ytd'&&r.period.slice(0,4)!==prev.period.slice(0,4)))push();
+      }
+      segment.push(r);
+    }push();return out;
+  }
+  const important=['retail','catering','online_goods','cpi','core_cpi','income_national','spending_national','service_retail'];
+  const licensedSource=s=>Boolean(s?.licensedChoice&&s.publicRedistributionApproved&&/^https:\/\/choicew2z\.eastmoney\.com\//.test(s.url));
+  function annualRows(series){
+    if(series.basis!=='ytd')return [];
+    return series.observations.filter(r=>r.period.endsWith(series.spec.frequency==='quarterly'?'-Q4':'-12')).map(r=>({...r,period:r.period.slice(0,4),frequency:'annual',basis:'year',footnotes:[...(r.footnotes||[]),'年末累计原披露映射全年；未加总、未计算平均值']}));
+  }
+  function mergeAutomatic(data,feed){
+    if(feed?.version!==1||feed.publicRedistributionApproved!==true||!feed.series)throw new Error('自动数据授权或格式错误');
+    data=JSON.parse(JSON.stringify(data));
+    const keys=new Map(data.observations.map(r=>[[r.indicatorId,r.frequency,r.basis,r.period].join('|'),r]));
+    for(const [id,series] of Object.entries(feed.series)){
+      const indicator=data.indicators.find(i=>i.id===series.consumerId);if(!indicator)continue;
+      if(!Array.isArray(series.observations)||!['monthly','quarterly'].includes(series.spec?.frequency)||!['month','ytd'].includes(series.basis)||series.spec.unit!==(series.consumerMeasure==='yoy'?'%':indicator.unit))throw new Error('自动数据口径错误');
+      const source={id:'choice-'+id,publisher:series.sourceOrganization+' · Choice',url:series.sourceUrl,title:indicator.name+'历史序列',publishedAt:null,quality:'official',licensedChoice:true,publicRedistributionApproved:true};
+      if(!licensedSource(source))throw new Error('自动数据来源错误');data.sources.push(source);
+      for(const row of series.observations){
+        if(row.frequency||!(series.spec.frequency==='monthly'?/^\d{4}-(?:0[1-9]|1[0-2])$/:/^\d{4}-Q[1-4]$/).test(row.period)||!finite(row.value)||row.value<(series.spec.minValue??-Infinity)||row.value>(series.spec.maxValue??Infinity))throw new Error('自动历史记录错误');
+        if(row.basis&&!(row.basis==='jan_feb'&&series.spec.frequency==='monthly'&&series.basis==='month'&&series.spec.combinedMonths?.includes(2)&&row.period.endsWith('-02')))throw new Error('自动合并期间错误');
+      }
+      const seen=new Set();
+      for(const row of [...series.observations,...annualRows(series)]){
+        const frequency=row.frequency||series.spec.frequency,basis=row.basis||series.basis;
+        const validPeriod=frequency==='annual'?/^\d{4}$/:frequency==='monthly'?/^\d{4}-(?:0[1-9]|1[0-2])$/:/^\d{4}-Q[1-4]$/;
+        if(!finite(row.value)||!validPeriod.test(row.period)||(basis==='jan_feb'&&!(frequency==='monthly'&&row.period.endsWith('-02')))||!['month','ytd','jan_feb','year'].includes(basis))throw new Error('自动历史记录错误');
+        const year=Number(row.period.slice(0,4)),month=frequency==='annual'?12:row.period.includes('Q')?Number(row.period.at(-1))*3:Number(row.period.slice(-2));
+        const endDate=new Date(Date.UTC(year,month,0)).toISOString().slice(0,10),key=[indicator.id,frequency,basis,row.period].join('|');
+        if(seen.has(key)||endDate>feed.cutoff||(row.releaseDate&&(row.releaseDate<endDate||row.releaseDate>feed.cutoff)))throw new Error('自动历史日期或重复错误');seen.add(key);
+        const existing=keys.get(key);
+        const field=series.consumerMeasure==='yoy'?'yoy':'value';
+        // Preserve exact official amounts and their publication dates; fill only genuinely absent fields.
+        if(existing){if(existing[field]===null){existing[field]=row.value;existing.supplementSourceId=source.id;existing.fieldSources={...existing.fieldSources,[field]:source.id};existing.note=[existing.note,'Choice补充'+(field==='value'?'金额':'同比'),...(row.footnotes||[])].filter(Boolean).join('；');}continue;}
+        const record={indicatorId:indicator.id,sourceId:source.id,frequency,basis,period:row.period,endDate,value:field==='value'?row.value:null,yoy:field==='yoy'?row.value:null,mom:null,realYoy:null,note:(row.footnotes||[]).join('；'),quality:'official',releaseDate:row.releaseDate||null,fieldSources:{[field]:source.id}};
+        data.observations.push(record);keys.set(key,record);
+      }
+      if(series.observations.length)indicator.status='connected';
+      indicator.automaticSeries=[...(indicator.automaticSeries||[]),{id,measure:series.consumerMeasure||'value',status:series.status,coverage:series.coverage,checkedAt:series.checkedAt,error:series.error||''}];
+      indicator.automaticCoverage=series.coverage;indicator.updateStatus=indicator.automaticSeries.some(s=>s.status==='error')?'error':series.status;indicator.checkedAt=series.checkedAt;
+    }
+    data.automaticCheckedAt=feed.checkedAt;return data;
+  }
+  function scopeCoverage(data,id,scope=defaultScope(data,id)){
+    if(!scope)return null;const rows=records(data,id,scope);if(!rows.length)return null;
+    const missing=[],structural=[],actual=new Set(rows.map(r=>r.period)),frequency=scope.frequency,years=new Set(records(data,id,{frequency:'annual',basis:'year'}).map(r=>r.period));
+    const index=r=>Number(r.period.slice(0,4))*(frequency==='monthly'?12:frequency==='quarterly'?4:1)+(frequency==='monthly'?Number(r.period.slice(-2))-1:frequency==='quarterly'?Number(r.period.at(-1))-1:0);
+    const allowJan=frequency==='monthly'&&!['cpi','core_cpi','confidence'].includes(id);
+    if(frequency!=='holiday')for(let k=index(rows[0]);k<=index(rows.at(-1));k++){
+      const divisor=frequency==='monthly'?12:frequency==='quarterly'?4:1,year=Math.floor(k/divisor),part=k%divisor;
+      const period=frequency==='monthly'?year+'-'+String(part+1).padStart(2,'0'):frequency==='quarterly'?year+'-Q'+(part+1):String(year);
+      if(!actual.has(period)&&frequency==='quarterly'&&scope.basis==='ytd'&&part===3&&years.has(String(year)))structural.push(period);
+      else if(!actual.has(period)&&!(allowJan&&part===0)&&!(allowJan&&scope.basis==='month'&&part===1))missing.push(period);
+    }
+    return {start:rows[0].period,end:rows.at(-1).period,count:rows.length,missingPeriods:missing,structuralPeriods:structural,valueMissing:rows.filter(r=>!finite(r.value)).length,yoyMissing:rows.filter(r=>!finite(r.yoy)).length};
+  }
+  function csvCell(v){let s=v==null?'':String(v);if(/^[\s]*[=+@]/.test(s)||(/^[\s]*-/.test(s)&&!/^-[\d.]+$/.test(s.trim())))s="'"+s;return '"'+s.replace(/"/g,'""')+'"';}
+  function csv(data,rows){const indicators=new Map(data.indicators.map(i=>[i.id,i])),sources=new Map(data.sources.map(s=>[s.id,s]));
+    const headers=['指标','分组','频率','数据期间','期间末日','统计口径','数值含义','数值','单位','同比%','环比%','实际同比%','备注','数据状态','发布日期','发布机构','原始报告','来源链接','补充字段来源','数值来源','同比来源'];
+    const body=rows.map(r=>{const i=indicators.get(r.indicatorId),s=sources.get(r.sourceId);return [i.name,i.group,frequencies[r.frequency],r.period,r.endDate,bases[r.basis]+'；'+i.definition,i.valueLabel,r.value,i.unit,r.yoy,r.mom,r.realYoy,r.note,r.quality==='estimate'?'预计':'官方披露',s.publishedAt||r.releaseDate,s.publisher,s.title,s.url,sources.get(r.supplementSourceId)?.url,finite(r.value)?sources.get(r.fieldSources?.value||r.sourceId)?.url:'',finite(r.yoy)?sources.get(r.fieldSources?.yoy||r.sourceId)?.url:''];});
+    return '\ufeff'+[headers,...body].map(row=>row.map(csvCell).join(',')).join('\r\n');
+  }
+  function retailBreakdown(data,{basis='month',period='',group='categories'}={}){
+    const reference=records(data,'retail',{frequency:basis==='year'?'annual':'monthly',basis}).filter(r=>!period||r.period===period).at(-1);
+    const ids=group==='categories'?data.indicators.filter(i=>i.group==='社零分品类').map(i=>i.id):group==='structure'?['retail','goods','catering','above_total','above_goods','above_catering']:['retail_urban','retail_rural','retail_ex_auto','online_goods','online_total','online_services'];
+    return {reference,items:ids.map(id=>({indicator:data.indicators.find(i=>i.id===id),row:reference?data.observations.find(r=>r.indicatorId===id&&r.frequency===reference.frequency&&r.basis===reference.basis&&r.period===reference.period)||null:null})).filter(x=>x.indicator)};
+  }
+  return {scopeCoverage,annualRows,retailBreakdown,important,licensedSource,mergeAutomatic,finite,frequencies,bases,official,validate,records,defaultScope,latest,directory,segments,csv};
+});

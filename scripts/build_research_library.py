@@ -76,7 +76,7 @@ def build(topics_dir, root=ROOT):
             if record['id'] not in records or record['published'] > records[record['id']]['published']:
                 records[record['id']] = record
     for asset_id, old in previous_records.items():
-        if asset_id not in records and old.get('sourceType') == 'onedrive_document':
+        if asset_id not in records and old.get('sourceType') in ('onedrive_document', 'work_document'):
             # Manual content classification and unresolved dates must survive topic refreshes.
             records[asset_id] = old
         elif asset_id not in records and sector_ids(old.get('name', '')):

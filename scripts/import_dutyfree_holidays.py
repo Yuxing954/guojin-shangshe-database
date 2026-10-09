@@ -120,6 +120,9 @@ if existing_path.exists():
         for r in records:
             if r.get('comparison_group')=='国庆及中秋国庆':r['comparison_group']='国庆'
             if r['holiday']=='国庆中秋':r['holiday']='中秋国庆'
+from supplement_dutyfree_holidays import apply_updates
+data=apply_updates(data)
+records=data['records']
 (ROOT/'data/dutyfree/holidays.json').write_text(json.dumps(data,ensure_ascii=False,indent=2,allow_nan=False)+'\n',encoding='utf-8')
 fields=['year','holiday','daily_sales_cny_100m','yoy_pct','source','period','days','sales_cny_100m','shoppers_10k','spend_per_shopper_cny','daily_shoppers_10k','status','quality','source_sheet','source_sales_cell']
 with (ROOT/'data/dutyfree_holiday.csv').open('w',encoding='utf-8',newline='') as out:

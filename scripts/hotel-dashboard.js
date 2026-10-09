@@ -86,7 +86,7 @@
       return { x: r.period_id, y: display(row(state.region, '全部', M.priorPeriod(r)), field) };
     }) });
     var unit = state.mode === 'change' ? (field === 'occupancy_rate' ? '百分点' : '%') : meta.unit;
-    $('trend-caption').textContent = meta.label + '（' + meta.abbr + '） · ' + unit + (state.mode === 'change' ? '' : '');
+    $('trend-caption').textContent = meta.label + '（' + meta.abbr + '） · ' + unit ;
     $('chart-mode-note').textContent = state.mode === 'change' ? '同周同比 · 入住率用百分点' : '绝对值 · 对照去年同周';
     lineChart('main-chart', lines, { unit: unit, occupancy: state.mode === 'value' && field === 'occupancy_rate', zero: state.mode === 'change' });
     $('history-note').textContent = rows.length ? '展示 ' + rows[0].period_id + ' — ' + rows[rows.length - 1].period_id + ' · ' + rows.length + '周' : '所选范围暂无数据。';

@@ -90,7 +90,7 @@
 
   try{
 
-    snapshot=await D.json('data/industry/overview.json');sources=Object.fromEntries(snapshot.sources.map(s=>[s.id,s]));select();$('content').hidden=false;$('status').textContent='';$('snapshot-note').textContent='最近核对 '+(snapshot.checkedAt||'未记录')+'';
+    snapshot=await D.json('data/industry/overview.json');sources=Object.fromEntries(snapshot.sources.map(s=>[s.id,s]));select();$('content').hidden=false;$('status').textContent='';$('snapshot-note').textContent='最近核对 '+(snapshot.checkedAt||'未记录');
 
     const results=await Promise.allSettled([D.json('data-manifest.json').then(m=>D.table(m.datasets.find(d=>d.id==='valuation').file)),D.json('data/research/recent.json')]);
 

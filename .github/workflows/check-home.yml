@@ -13,6 +13,8 @@ on:
       - "industry.html"
       - "quotes.html"
       - "scripts/quotes*"
+      - "tests/fixtures/tencent-charts*"
+      - "scripts/market-kline*"
       - "companies.html"
       - "research.html"
       - "hotel-dashboard.html"
@@ -24,6 +26,9 @@ on:
       - "scripts/industry*"
       - "scripts/dutyfree-holidays.*"
       - "tests/dutyfree-holidays.test.cjs"
+      - "tests/test_dutyfree_supplements.py"
+      - "scripts/supplement_dutyfree_holidays.py"
+      - "scripts/import_dutyfree_holidays.py"
       - "data/dutyfree/**"
       - "data/dutyfree_holiday.csv"
       - "scripts/build_industry_snapshot.py"
@@ -86,6 +91,8 @@ jobs:
           node --check scripts/quotes.js
           node --check scripts/quotes-model.js
           node scripts/quotes-model.test.cjs
+          node --check scripts/quotes-poller.js
+          node --test scripts/quotes*.test.cjs
           node --check scripts/home.js
           node --check scripts/site-shell.js
           node --check scripts/industry.js
@@ -93,6 +100,7 @@ jobs:
           node scripts/industry-model.test.cjs
           node --check scripts/dutyfree-holidays.js
           node tests/dutyfree-holidays.test.cjs
+          python tests/test_dutyfree_supplements.py
           node --check scripts/companies.js
           node --check scripts/resource-search.js
           node --check scripts/resource-model.js
