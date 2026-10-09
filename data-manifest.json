@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-08",
+  "updatedAt": "2026-10-09",
   "datasets": [
     {
       "id": "hotel",
@@ -220,6 +220,27 @@
       "file": "data/industry/verified-2026-10-07.json",
       "category": "行业来源",
       "checkedAt": "2026-10-07"
+    },
+    {
+      "id": "macro_catalog",
+      "name": "中美宏观指标目录与来源授权",
+      "file": "data/macro/catalog.json",
+      "category": "宏观数据"
+    },
+    {
+      "id": "macro_snapshot",
+      "name": "中美官方宏观历史快照",
+      "file": "data/macro/snapshot.json",
+      "category": "宏观数据",
+      "asOf": "2026-10-09",
+      "page": "macro.html"
+    },
+    {
+      "id": "macro_predictions",
+      "name": "Polymarket重要预测快照",
+      "file": "data/macro/predictions.json",
+      "category": "预测市场",
+      "page": "macro.html?view=predictions"
     }
   ]
 }
