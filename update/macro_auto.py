@@ -77,7 +77,7 @@ def coverage(observations,spec):
             y,m=int(expected[:4]),int(expected[-2:]);expected=f'{y+1 if m==12 else y}-{1 if m==12 else m+1:02}'
     short=bool(expected and earliest and earliest>expected)
     return {'start':periods[0] if periods else None,'end':periods[-1] if periods else None,'count':len(periods),'requestedStart':requested,'historyShort':short,
-            'missingPeriods':missing,'structuralPeriods':structural,'complete':not missing and not short,
+            'missingPeriods':missing,'structuralPeriods':structural,'complete':bool(periods) and not missing and not short,
             'calendar': '交易日序列；不将周末及节假日算作缺失' if spec['frequency']=='daily' else '原始发布频率'}
 
 def normalize(receipt,spec,cutoff):
@@ -104,14 +104,16 @@ def normalize(receipt,spec,cutoff):
                 parsed=numeric(raw)
                 if parsed is None:continue
                 value,rounded=parsed;value=round(value*spec.get('scale',1)+spec.get('offset',0),10)
+                if not math.isfinite(value) or value < spec.get('minValue',-math.inf) or value > spec.get('maxValue',math.inf):raise ValueError('Observation outside reviewed bounds')
                 if period in observations and observations[period]['value']!=value:raise ValueError('Conflicting observations')
                 observations[period]={'period':period,'value':value,'releaseDate':None,'sourceUrl':next(iter(table_links),None),
+                    **({'basis':'jan_feb'} if spec.get('combinedMonths') and int(period[-2:]) in spec['combinedMonths'] else {}),
                     'footnotes':['源接口金额已舍入，保留原精度'] if rounded else []}
     if not matched or not observations:raise ValueError('No exact reviewed indicator')
     result={'status':'ready','observations':sorted(observations.values(),key=lambda r:r['period']),
         'sourceOrganization':spec['publisher'],'provider':'东方财富 Choice / 妙想 MCP','providerCodes':sorted(codes),
         'sourceUrl':sorted(links)[0],'receiptSha256':hashlib.sha256(json.dumps(receipt,ensure_ascii=False,sort_keys=True).encode()).hexdigest(),
-        'metric':spec.get('metric'), 'spec':{**{k:spec[k] for k in ('name','unit','kind','frequency','adjustment') if k in spec},'definition':spec.get('adjustment',spec['originalName'])},
+        'metric':spec.get('metric'), 'spec':{**{k:spec[k] for k in ('name','unit','kind','frequency','adjustment','combinedMonths','minValue','maxValue') if k in spec},'definition':spec.get('adjustment',spec['originalName'])},
         'registryId':spec['id'],'coverage':coverage(list(observations.values()),spec)}
     if spec.get('consumerId'):result.update(consumerId=spec['consumerId'],basis=spec['basis'],consumerMeasure=spec.get('consumerMeasure','value'))
     return result
@@ -120,6 +122,9 @@ def merge_history(previous,result,spec,now):
     # Same reviewed metric only: never join an old level with a newly selected growth rate.
     fingerprint=hashlib.sha256(json.dumps({k:spec.get(k) for k in ('id','originalName','publisher','unit','kind','frequency','code','scale','offset')},sort_keys=True).encode()).hexdigest()
     if previous.get('identitySha256') and previous['identitySha256']!=fingerprint:raise ValueError('Reviewed series definition changed')
+    mapping=hashlib.sha256(json.dumps({k:spec.get(k) for k in ('consumerId','consumerMeasure','basis','combinedMonths','adjustment')},sort_keys=True).encode()).hexdigest()
+    if previous.get('mappingSha256') and previous['mappingSha256']!=mapping:raise ValueError('Reviewed series definition changed')
+    if previous.get('consumerId') and any(previous.get(k,'value' if k=='consumerMeasure' else None)!=spec.get(k,'value' if k=='consumerMeasure' else None) for k in ('consumerId','consumerMeasure','basis')):raise ValueError('Reviewed series definition changed')
     old=previous.get('observations',[]) if previous.get('registryId')==spec['id'] else []
     rows={r['period']:r for r in old};revisions=0
     for row in result['observations']:
@@ -127,7 +132,7 @@ def merge_history(previous,result,spec,now):
         if existing and existing['value']!=row['value']:revisions+=1
         if existing and existing['value']==row['value'] and existing.get('releaseDate'):row={**row,'releaseDate':existing['releaseDate']}
         rows[row['period']]=row
-    result={**result,'identitySha256':fingerprint,'observations':sorted(rows.values(),key=lambda r:r['period']),'fetchedAt':now,'checkedAt':now,'revisedCount':revisions}
+    result={**result,'identitySha256':fingerprint,'mappingSha256':mapping,'observations':sorted(rows.values(),key=lambda r:r['period']),'fetchedAt':now,'checkedAt':now,'revisedCount':revisions}
     result['coverage']=coverage(result['observations'],spec)
     return result
 
@@ -192,12 +197,13 @@ def census_housing(cutoff):
 
 def main():
     ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--codex-config',type=Path);ap.add_argument('--receipts-dir',type=Path)
-    ap.add_argument('--cutoff',default=date.today().isoformat());ap.add_argument('--only',nargs='*');ap.add_argument('--skip-official',action='store_true');args=ap.parse_args()
+    ap.add_argument('--cutoff',default=date.today().isoformat());ap.add_argument('--only',nargs='*');ap.add_argument('--skip-official',action='store_true');ap.add_argument('--consumer-only',action='store_true',help='Refresh mapped consumption series only; leave unrelated official series untouched');args=ap.parse_args()
     date.fromisoformat(args.cutoff);registry=json.loads((DATA/'choice-registry.json').read_text(encoding='utf-8'))
     if registry.get('publicRedistributionApproved') is not True:raise ValueError('Publication authorization required')
     target=DATA/'automatic-series.json';previous=json.loads(target.read_text(encoding='utf-8')) if target.exists() else {'series':{}}
     values=dict(previous['series']);now=datetime.now(timezone.utc).isoformat(timespec='seconds');errors=[]
-    entries=[s for s in registry['series'] if not args.only or s['id'] in args.only]
+    if args.only and set(args.only)-{s['id'] for s in registry['series']}:raise ValueError('Unknown registry ID')
+    entries=[s for s in registry['series'] if (not args.only or s['id'] in args.only) and (not args.consumer_only or s.get('consumerId'))]
     key=os.environ.get('EM_API_KEY','')
     if not key and args.codex_config:
         server=tomllib.loads(args.codex_config.read_text(encoding='utf-8'))['mcp_servers']['mx-ds-mcp']
@@ -246,7 +252,7 @@ def main():
                 safe_reasons={'No exact reviewed indicator','MCP protocol error','Missing or ambiguous MCP response','Provider business error','Reviewed series definition changed','Indicator code mismatch'}
                 errors.append({'id':spec['id'],'errorType':type(exc).__name__,'reason':str(exc) if str(exc) in safe_reasons else '接口或数据校验失败'})
                 values[spec['id']]={**values.get(spec['id'],{}),'status':'error','checkedAt':now,'error':'接口返回未通过指标与口径校验，保留已有历史。'}
-    if not args.skip_official:
+    if not args.skip_official and not args.consumer_only:
         for name,fn in [('bea-real-gdp',lambda:{'us-gdp-quarter':bea_gdp(args.cutoff)}),('census-housing',lambda:{'us-housing-starts':census_housing(args.cutoff)}),('bls-history',lambda:bls_history(json.loads((DATA/'catalog.json').read_text(encoding='utf-8')),args.cutoff))]:
             try:
                 for id,result in fn().items():

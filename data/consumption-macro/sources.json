@@ -826,5 +826,338 @@
         "endDate": "2026-10-07"
       }
     ]
+  },
+  {
+    "id": "cpi-2025-02",
+    "kind": "cpi",
+    "period": "2025-02",
+    "publishedAt": "2025-03-09",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202503/t20250309_1958915.html",
+    "publisher": "国家统计局",
+    "title": "2025年2月份居民消费价格同比下降0.7%",
+    "quality": "official"
+  },
+  {
+    "id": "cpi-2025-06",
+    "kind": "cpi",
+    "period": "2025-06",
+    "publishedAt": "2025-07-09",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202507/t20250709_1960370.html",
+    "publisher": "国家统计局",
+    "title": "2025年6月份居民消费价格同比上涨0.1%",
+    "quality": "official"
+  },
+  {
+    "id": "retail-2017-12",
+    "kind": "retail",
+    "period": "2017-12",
+    "publishedAt": "2018-01-19",
+    "url": "https://www.stats.gov.cn/xxgk/sjfb/zxfb2020/201801/t20180119_1768008.html",
+    "publisher": "国家统计局",
+    "title": "2017年社会消费品零售总额主要数据",
+    "quality": "official"
+  },
+  {
+    "id": "retail-2018-12",
+    "kind": "retail",
+    "period": "2018-12",
+    "publishedAt": "2019-01-22",
+    "url": "https://www.stats.gov.cn/xxgk/sjfb/zxfb2020/201901/t20190122_1768272.html",
+    "publisher": "国家统计局",
+    "title": "2018年社会消费品零售总额主要数据",
+    "quality": "official"
+  },
+  {
+    "id": "retail-2019-12",
+    "kind": "retail",
+    "period": "2019-12",
+    "publishedAt": "2020-01-17",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202302/t20230203_1900598.html",
+    "publisher": "国家统计局",
+    "title": "2019年社会消费品零售总额主要数据",
+    "quality": "official"
+  },
+  {
+    "id": "retail-2020-12",
+    "kind": "retail",
+    "period": "2020-12",
+    "publishedAt": "2021-01-18",
+    "url": "https://www.stats.gov.cn/xxgk/sjfb/zxfb2020/202101/t20210118_1812462.html",
+    "publisher": "国家统计局",
+    "title": "2020年社会消费品零售总额主要数据",
+    "quality": "official"
+  },
+  {
+    "id": "retail-2021-12",
+    "kind": "retail",
+    "period": "2021-12",
+    "publishedAt": "2022-01-17",
+    "url": "https://www.stats.gov.cn/xxgk/sjfb/zxfb2020/202201/t20220117_1826441.html",
+    "publisher": "国家统计局",
+    "title": "2021年社会消费品零售总额主要数据",
+    "quality": "official"
+  },
+  {
+    "id": "retail-2022-12",
+    "kind": "retail",
+    "period": "2022-12",
+    "publishedAt": "2023-01-17",
+    "url": "https://www.stats.gov.cn/xxgk/sjfb/zxfb2020/202301/t20230117_1892127.html",
+    "publisher": "国家统计局",
+    "title": "2022年社会消费品零售总额主要数据",
+    "quality": "official"
+  },
+  {
+    "id": "retail-2025-04",
+    "kind": "retail",
+    "period": "2025-04",
+    "publishedAt": "2025-05-19",
+    "url": "https://www.stats.gov.cn/sj/zxfb/202505/t20250519_1959858.html",
+    "publisher": "国家统计局",
+    "title": "2025年4月份社会消费品零售总额增长5.1%",
+    "quality": "official"
+  },
+  {
+    "id": "mct-2026-national",
+    "kind": "reviewed",
+    "publisher": "文化和旅游部",
+    "title": "2026年国庆节假期国内出游8.26亿人次",
+    "publishedAt": "2026-10-09",
+    "url": "https://www.mct.gov.cn/whzx/whyw/202610/t20261009_967315.htm",
+    "records": [
+      {
+        "period": "2026-国庆",
+        "endDate": "2026-10-07",
+        "frequency": "holiday",
+        "basis": "holiday",
+        "yoy": null,
+        "group": "假期旅游",
+        "definition": "全国；国庆7天；文旅部假期测算",
+        "note": "文旅部数据中心测算；7天；原文日均同比：出游人次6.3%、花费4.3%；与2025年8天假期总量不可直接比较",
+        "quality": "official",
+        "id": "holiday_2026_national_trips",
+        "name": "2026国庆国内出游人次",
+        "unit": "亿人次",
+        "value": 8.26
+      },
+      {
+        "period": "2026-国庆",
+        "endDate": "2026-10-07",
+        "frequency": "holiday",
+        "basis": "holiday",
+        "yoy": null,
+        "group": "假期旅游",
+        "definition": "全国；国庆7天；文旅部假期测算",
+        "note": "文旅部数据中心测算；7天；原文日均同比：出游人次6.3%、花费4.3%；与2025年8天假期总量不可直接比较",
+        "quality": "official",
+        "id": "holiday_2026_national_spend",
+        "name": "2026国庆国内出游花费",
+        "unit": "亿元",
+        "value": 7383.75
+      }
+    ],
+    "excerpt": "2026年国庆节假期，全国文化和旅游市场平稳有序。经文化和旅游部数据中心测算，国庆节假期7天，全国国内出游8.26亿人次，国内出游总花费7383.75亿元，按可比口径（日均）同比2025年分别增长6.3%、4.3%。",
+    "rawHtmlSha256": "6695a889e3e7cc70c2c083c108e54057dfcd9d06d4cd58836479fb95c6b45395",
+    "quality": "official"
+  },
+  {
+    "id": "tour-2024-Q1",
+    "publishedAt": "2024-04-30",
+    "url": "https://zwgk.mct.gov.cn/zfxxgkml/tjxx/202404/t20240430_952635.html",
+    "title": "2024年一季度国内旅游数据情况",
+    "kind": "reviewed",
+    "publisher": "文化和旅游部",
+    "quality": "official",
+    "records": [
+      {
+        "id": "tour_trips",
+        "name": "国内居民出游人次",
+        "group": "国内旅游",
+        "unit": "亿人次",
+        "definition": "全国国内居民出游抽样调查；人次非去重人数；花费按原文万亿元保留精度",
+        "valueLabel": "出游人次",
+        "period": "2024-Q1",
+        "frequency": "quarterly",
+        "basis": "ytd",
+        "value": 14.19,
+        "yoy": 16.7
+      },
+      {
+        "id": "tour_spend",
+        "name": "国内居民出游花费",
+        "group": "国内旅游",
+        "unit": "万亿元",
+        "definition": "全国国内居民出游抽样调查；人次非去重人数；花费按原文万亿元保留精度",
+        "valueLabel": "花费",
+        "period": "2024-Q1",
+        "frequency": "quarterly",
+        "basis": "ytd",
+        "value": 1.52,
+        "yoy": 17.0
+      }
+    ],
+    "excerpt": "2024年一季度，国内出游人次14.19亿，同比增长16.7%；国内游客出游总花费1.52万亿元，同比增长17.0%。",
+    "retrievalMethod": "official_rendered_text",
+    "excerptSha256": "0c324851ff3e55315b9215f9251090792fe8e6802f6bd531555daca60546a6ad"
+  },
+  {
+    "id": "tour-2024-Q2",
+    "publishedAt": "2024-07-26",
+    "url": "https://zwgk.mct.gov.cn/zfxxgkml/tjxx/202407/t20240726_954368.html",
+    "title": "2024年上半年国内旅游数据情况",
+    "kind": "reviewed",
+    "publisher": "文化和旅游部",
+    "quality": "official",
+    "records": [
+      {
+        "id": "tour_trips",
+        "name": "国内居民出游人次",
+        "group": "国内旅游",
+        "unit": "亿人次",
+        "definition": "全国国内居民出游抽样调查；人次非去重人数；花费按原文万亿元保留精度",
+        "valueLabel": "出游人次",
+        "period": "2024-Q2",
+        "frequency": "quarterly",
+        "basis": "ytd",
+        "value": 27.25,
+        "yoy": 14.3
+      },
+      {
+        "id": "tour_spend",
+        "name": "国内居民出游花费",
+        "group": "国内旅游",
+        "unit": "万亿元",
+        "definition": "全国国内居民出游抽样调查；人次非去重人数；花费按原文万亿元保留精度",
+        "valueLabel": "花费",
+        "period": "2024-Q2",
+        "frequency": "quarterly",
+        "basis": "ytd",
+        "value": 2.73,
+        "yoy": 19.0
+      }
+    ],
+    "excerpt": "2024年上半年，国内出游人次27.25亿，同比增长14.3%；国内游客出游总花费2.73万亿元，同比增长19.0%。",
+    "retrievalMethod": "official_rendered_text",
+    "excerptSha256": "a7c56291ac329613e5acc7283c0b744545472efd99a8334bb9739ade9dd6b26b"
+  },
+  {
+    "id": "tour-2024",
+    "publishedAt": "2025-01-22",
+    "url": "https://zwgk.mct.gov.cn/zfxxgkml/tjxx/202501/t20250121_958012.html",
+    "title": "2024年度国内旅游数据情况",
+    "kind": "reviewed",
+    "publisher": "文化和旅游部",
+    "quality": "official",
+    "records": [
+      {
+        "id": "tour_trips",
+        "name": "国内居民出游人次",
+        "group": "国内旅游",
+        "unit": "亿人次",
+        "definition": "全国国内居民出游抽样调查；人次非去重人数；花费按原文万亿元保留精度",
+        "valueLabel": "出游人次",
+        "period": "2024",
+        "frequency": "annual",
+        "basis": "year",
+        "value": 56.15,
+        "yoy": 14.8
+      },
+      {
+        "id": "tour_spend",
+        "name": "国内居民出游花费",
+        "group": "国内旅游",
+        "unit": "万亿元",
+        "definition": "全国国内居民出游抽样调查；人次非去重人数；花费按原文万亿元保留精度",
+        "valueLabel": "花费",
+        "period": "2024",
+        "frequency": "annual",
+        "basis": "year",
+        "value": 5.75,
+        "yoy": 17.1
+      }
+    ],
+    "excerpt": "2024年，国内出游人次56.15亿，同比增长14.8%；国内游客出游总花费5.75万亿元，同比增长17.1%。",
+    "retrievalMethod": "official_rendered_text",
+    "excerptSha256": "6b308961134c0faca25d103f53ebcc455341a1a4125facbd50432509d3338273"
+  },
+  {
+    "id": "tour-2024-Q3",
+    "publishedAt": "2024-10-21",
+    "url": "https://zwgk.mct.gov.cn/zfxxgkml/tjxx/202410/t20241021_955808.html",
+    "title": "2024年前三季度国内旅游数据情况",
+    "kind": "reviewed",
+    "publisher": "文化和旅游部",
+    "quality": "official",
+    "records": [
+      {
+        "id": "tour_trips",
+        "name": "国内居民出游人次",
+        "group": "国内旅游",
+        "unit": "亿人次",
+        "definition": "全国国内居民出游抽样调查；人次非去重人数；花费按原文万亿元保留精度",
+        "valueLabel": "出游人次",
+        "period": "2024-Q3",
+        "frequency": "quarterly",
+        "basis": "ytd",
+        "value": 42.37,
+        "yoy": 15.3
+      },
+      {
+        "id": "tour_spend",
+        "name": "国内居民出游花费",
+        "group": "国内旅游",
+        "unit": "万亿元",
+        "definition": "全国国内居民出游抽样调查；人次非去重人数；花费按原文万亿元保留精度",
+        "valueLabel": "花费",
+        "period": "2024-Q3",
+        "frequency": "quarterly",
+        "basis": "ytd",
+        "value": 4.35,
+        "yoy": 17.9
+      }
+    ],
+    "excerpt": "2024年前三季度，国内出游人次42.37亿，同比增长15.3%；国内游客出游总花费4.35万亿元，同比增长17.9%。",
+    "retrievalMethod": "official_rendered_text",
+    "excerptSha256": "14941de092bee51e42f14641fc4c74ee2e178bc5eb857211f16499784724451a"
+  },
+  {
+    "id": "tour-2025-Q3",
+    "publishedAt": "2025-10-21",
+    "url": "https://zwgk.mct.gov.cn/zfxxgkml/tjxx/202510/t20251021_962874.html",
+    "title": "2025年前三季度国内旅游市场数据情况",
+    "kind": "reviewed",
+    "publisher": "文化和旅游部",
+    "quality": "official",
+    "records": [
+      {
+        "id": "tour_trips",
+        "name": "国内居民出游人次",
+        "group": "国内旅游",
+        "unit": "亿人次",
+        "definition": "全国国内居民出游抽样调查；人次非去重人数；花费按原文万亿元保留精度",
+        "valueLabel": "出游人次",
+        "period": "2025-Q3",
+        "frequency": "quarterly",
+        "basis": "ytd",
+        "value": 49.98,
+        "yoy": 18.0
+      },
+      {
+        "id": "tour_spend",
+        "name": "国内居民出游花费",
+        "group": "国内旅游",
+        "unit": "万亿元",
+        "definition": "全国国内居民出游抽样调查；人次非去重人数；花费按原文万亿元保留精度",
+        "valueLabel": "花费",
+        "period": "2025-Q3",
+        "frequency": "quarterly",
+        "basis": "ytd",
+        "value": 4.85,
+        "yoy": 11.5
+      }
+    ],
+    "excerpt": "2025年前三季度，国内居民出游人次49.98亿，同比增长18.0%；国内居民出游花费4.85万亿元，同比增长11.5%。",
+    "retrievalMethod": "official_rendered_text",
+    "excerptSha256": "67151550ef13a36f786f946877af5f6411e1f027ef499ef5f5b50fdeddb1ddc8"
   }
 ]

@@ -86,9 +86,12 @@ RETAIL = {
     '网上商品零售额': ('online_goods', '网上商品零售额', '线上零售'),
     '实物商品网上零售额': ('online_goods', '网上商品零售额', '线上零售'),
 }
+RETAIL['商品零售'] = RETAIL['商品零售额']
+RETAIL['限额以上单位商品零售'] = RETAIL['限额以上单位商品零售额']
 CATEGORIES = ['粮油、食品类', '饮料类', '烟酒类', '服装、鞋帽、针纺织品类', '化妆品类', '金银珠宝类', '日用品类', '体育、娱乐用品类', '家用电器和音像器材类', '中西药品类', '文化办公用品类', '家具类', '通讯器材类', '石油及制品类', '汽车类', '建筑及装潢材料类']
 for i, name in enumerate(CATEGORIES):
     RETAIL[name] = (f'category_{i}', name, '社零分品类')
+RETAIL['服装鞋帽、针纺织品类'] = RETAIL['服装、鞋帽、针纺织品类']
 
 
 def compile_data(sources, evidence, checked_at):
@@ -208,6 +211,10 @@ def compile_data(sources, evidence, checked_at):
             if set(seen) != {'cpi', 'core_cpi'}:
                 raise ValueError('CPI/core table incomplete: ' + s['id'])
         elif s['kind'] == 'household':
+            national = re.search(r'全国居民人均可支配收入([\d.]+)元', ''.join(paragraphs))
+            table_national = next((r for r in rows if len(r)==3 and '全国居民人均可支配收入' in r[0] and '中位数' not in r[0]), None)
+            if national and table_national and number(table_national[1]) != float(national[1]):
+                raise ValueError('household narrative/table mismatch: ' + s['id'])
             section, found = None, set()
             for row in rows:
                 if row and row[0].startswith('注'):
@@ -249,6 +256,8 @@ def compile_data(sources, evidence, checked_at):
         ('holiday_2026_national_trips', '2026国庆国内出游人次', '假期旅游', '亿人次', '全国；国庆7天；文旅部假期测算', 'https://www.mct.gov.cn/', '本次未取得可核验的2026国庆官方旅游披露'),
         ('holiday_2026_national_spend', '2026国庆国内出游花费', '假期旅游', '亿元', '全国；国庆7天；文旅部假期测算', 'https://www.mct.gov.cn/', '本次未取得可核验的2026国庆官方旅游披露'),
     ]:
+        if key in catalog:
+            continue  # Reviewed disclosure supersedes a former pending placeholder.
         catalog[key] = dict(id=key, name=name, group=group, unit=unit, definition=definition, valueLabel='数值', status='pending', sourceUrl=url, pendingReason=reason, frequencies=['monthly' if key=='confidence' else 'holiday'])
     keys = set()
     for r in observations:
@@ -286,12 +295,15 @@ def download(source):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--refresh', action='store_true')
+    parser.add_argument('--incremental', action='store_true', help='With --refresh, fetch only sources absent from the verified evidence cache')
     parser.add_argument('--checked-at', default=date.today().isoformat())
     args = parser.parse_args()
     sources = json.loads((FOLDER / 'sources.json').read_text(encoding='utf-8'))
     if args.refresh:
+        evidence = json.loads((FOLDER / 'evidence.json').read_text(encoding='utf-8')) if args.incremental else {}
+        wanted = [s for s in sources if s['kind'] != 'reviewed' and not (args.incremental and s['id'] in evidence and evidence[s['id']]['url']==s['url'] and evidence[s['id']]['sha256']==evidence_hash(evidence[s['id']]['rows'],evidence[s['id']]['paragraphs']))]
         with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
-            evidence = dict(pool.map(download, [s for s in sources if s['kind'] != 'reviewed']))
+            evidence.update(dict(pool.map(download, wanted)))
     else:
         evidence = json.loads((FOLDER / 'evidence.json').read_text(encoding='utf-8'))
     data = compile_data(sources, evidence, args.checked_at)

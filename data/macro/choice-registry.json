@@ -462,6 +462,504 @@
       "expectedMissingMonths": [
         1
       ]
+    },
+    {
+      "id": "consumer-category-7",
+      "consumerId": "category_7",
+      "originalName": "中国:限额以上企业(单位)商品零售类值:体育、娱乐用品类(元)",
+      "publisher": "国家统计局",
+      "name": "体育、娱乐用品类",
+      "unit": "亿元",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "kind": "level",
+      "basis": "month",
+      "minValue": 0,
+      "adjustment": "全国；名义金额及官方可比口径同比；未季调；限额以上单位，企业范围逐年调整",
+      "scale": 1e-08,
+      "expectedMissingMonths": [
+        1,
+        2
+      ],
+      "codeCandidates": [
+        "EMM02597018",
+        "EMI00135378",
+        "EMI00135374",
+        "EMM02622059",
+        "EMM02623346"
+      ],
+      "codeMapping": "表级代码集合，不按顺序配对"
+    },
+    {
+      "id": "consumer-category-8",
+      "consumerId": "category_8",
+      "originalName": "限额以上企业(单位)商品零售类值:家用电器和音像器材类:当月值(元)",
+      "publisher": "国家统计局",
+      "name": "家用电器和音像器材类",
+      "unit": "亿元",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "kind": "level",
+      "basis": "month",
+      "minValue": 0,
+      "adjustment": "全国；名义金额及官方可比口径同比；未季调；限额以上单位，企业范围逐年调整",
+      "scale": 1e-08,
+      "expectedMissingMonths": [
+        1,
+        2
+      ],
+      "codeCandidates": [
+        "EMM02597018",
+        "EMI00135378",
+        "EMI00135374",
+        "EMM02622059",
+        "EMM02623346"
+      ],
+      "codeMapping": "表级代码集合，不按顺序配对"
+    },
+    {
+      "id": "consumer-category-5",
+      "consumerId": "category_5",
+      "originalName": "限额以上企业(单位)商品零售类值:金银珠宝类:当月值(元)",
+      "publisher": "国家统计局",
+      "name": "金银珠宝类",
+      "unit": "亿元",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "kind": "level",
+      "basis": "month",
+      "minValue": 0,
+      "adjustment": "全国；名义金额及官方可比口径同比；未季调；限额以上单位，企业范围逐年调整",
+      "scale": 1e-08,
+      "expectedMissingMonths": [
+        1,
+        2
+      ],
+      "codeCandidates": [
+        "EMM02597018",
+        "EMI00135378",
+        "EMI00135374",
+        "EMM02622059",
+        "EMM02623346"
+      ],
+      "codeMapping": "表级代码集合，不按顺序配对"
+    },
+    {
+      "id": "consumer-category-0",
+      "consumerId": "category_0",
+      "originalName": "限额以上企业(单位)商品零售类值:粮油、食品类:当月值(1-2月合并)(元)",
+      "publisher": "国家统计局",
+      "name": "粮油、食品类",
+      "unit": "亿元",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "kind": "level",
+      "basis": "month",
+      "minValue": 0,
+      "adjustment": "全国；名义金额及官方可比口径同比；未季调；限额以上单位，企业范围逐年调整",
+      "scale": 1e-08,
+      "expectedMissingMonths": [
+        1
+      ],
+      "combinedMonths": [
+        2
+      ],
+      "code": "EMM02597002"
+    },
+    {
+      "id": "consumer-category-1",
+      "consumerId": "category_1",
+      "originalName": "限额以上企业(单位)商品零售类值:饮料类:当月值(元)",
+      "publisher": "国家统计局",
+      "name": "饮料类",
+      "unit": "亿元",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "kind": "level",
+      "basis": "month",
+      "minValue": 0,
+      "adjustment": "全国；名义金额及官方可比口径同比；未季调；限额以上单位，企业范围逐年调整",
+      "scale": 1e-08,
+      "expectedMissingMonths": [
+        1,
+        2
+      ],
+      "code": "EMM00063275"
+    },
+    {
+      "id": "consumer-category-13",
+      "consumerId": "category_13",
+      "originalName": "中国:限额以上企业(单位)商品零售类值:石油及制品类(元)",
+      "publisher": "国家统计局",
+      "name": "石油及制品类",
+      "unit": "亿元",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "kind": "level",
+      "basis": "month",
+      "minValue": 0,
+      "adjustment": "全国；名义金额及官方可比口径同比；未季调；限额以上单位，企业范围逐年调整",
+      "scale": 1e-08,
+      "expectedMissingMonths": [
+        1,
+        2
+      ],
+      "code": "EMI00135383"
+    },
+    {
+      "id": "consumer-category-15",
+      "consumerId": "category_15",
+      "originalName": "限额以上企业(单位)商品零售类值:建筑及装潢材料类:当月值(元)",
+      "publisher": "国家统计局",
+      "name": "建筑及装潢材料类",
+      "unit": "亿元",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "kind": "level",
+      "basis": "month",
+      "minValue": 0,
+      "adjustment": "全国；名义金额及官方可比口径同比；未季调；限额以上单位，企业范围逐年调整",
+      "scale": 1e-08,
+      "expectedMissingMonths": [
+        1,
+        2
+      ],
+      "code": "EMI00135384"
+    },
+    {
+      "id": "consumer-category-2",
+      "consumerId": "category_2",
+      "originalName": "限额以上企业(单位)商品零售类值:烟酒类:当月值(元)",
+      "publisher": "国家统计局",
+      "name": "烟酒类",
+      "unit": "亿元",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "kind": "level",
+      "basis": "month",
+      "minValue": 0,
+      "adjustment": "全国；名义金额及官方可比口径同比；未季调；限额以上单位，企业范围逐年调整",
+      "scale": 1e-08,
+      "expectedMissingMonths": [
+        1,
+        2
+      ],
+      "code": "EMM00063276"
+    },
+    {
+      "id": "consumer-category-3",
+      "consumerId": "category_3",
+      "originalName": "中国:限额以上企业(单位)商品零售类值:服装鞋帽、针、纺织品类(元)",
+      "publisher": "国家统计局",
+      "name": "服装、鞋帽、针纺织品类",
+      "unit": "亿元",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "kind": "level",
+      "basis": "month",
+      "minValue": 0,
+      "adjustment": "全国；名义金额及官方可比口径同比；未季调；限额以上单位，企业范围逐年调整",
+      "scale": 1e-08,
+      "expectedMissingMonths": [
+        1,
+        2
+      ],
+      "code": "EMI00135372"
+    },
+    {
+      "id": "consumer-category-4",
+      "consumerId": "category_4",
+      "originalName": "中国:限额以上企业(单位)商品零售类值:化妆品类(元)",
+      "publisher": "国家统计局",
+      "name": "化妆品类",
+      "unit": "亿元",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "kind": "level",
+      "basis": "month",
+      "minValue": 0,
+      "adjustment": "全国；名义金额及官方可比口径同比；未季调；限额以上单位，企业范围逐年调整",
+      "scale": 1e-08,
+      "expectedMissingMonths": [
+        1,
+        2
+      ],
+      "code": "EMI00135373"
+    },
+    {
+      "id": "consumer-category-6",
+      "consumerId": "category_6",
+      "originalName": "中国:限额以上企业(单位)商品零售类值:日用品类(元)",
+      "publisher": "国家统计局",
+      "name": "日用品类",
+      "unit": "亿元",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "kind": "level",
+      "basis": "month",
+      "minValue": 0,
+      "adjustment": "全国；名义金额及官方可比口径同比；未季调；限额以上单位，企业范围逐年调整",
+      "scale": 1e-08,
+      "expectedMissingMonths": [
+        1,
+        2
+      ],
+      "code": "EMI00135375"
+    },
+    {
+      "id": "consumer-category-9",
+      "consumerId": "category_9",
+      "originalName": "限额以上企业(单位)商品零售类值:中西药品类:当月值(元)",
+      "publisher": "国家统计局",
+      "name": "中西药品类",
+      "unit": "亿元",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "kind": "level",
+      "basis": "month",
+      "minValue": 0,
+      "adjustment": "全国；名义金额及官方可比口径同比；未季调；限额以上单位，企业范围逐年调整",
+      "scale": 1e-08,
+      "expectedMissingMonths": [
+        1,
+        2
+      ],
+      "code": "EMI00135379"
+    },
+    {
+      "id": "consumer-category-10",
+      "consumerId": "category_10",
+      "originalName": "限额以上企业(单位)商品零售类值:文化办公用品类:当月值(元)",
+      "publisher": "国家统计局",
+      "name": "文化办公用品类",
+      "unit": "亿元",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "kind": "level",
+      "basis": "month",
+      "minValue": 0,
+      "adjustment": "全国；名义金额及官方可比口径同比；未季调；限额以上单位，企业范围逐年调整",
+      "scale": 1e-08,
+      "expectedMissingMonths": [
+        1,
+        2
+      ],
+      "code": "EMI00135380"
+    },
+    {
+      "id": "consumer-category-11",
+      "consumerId": "category_11",
+      "originalName": "中国:限额以上企业(单位)商品零售类值:家具类(元)",
+      "publisher": "国家统计局",
+      "name": "家具类",
+      "unit": "亿元",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "kind": "level",
+      "basis": "month",
+      "minValue": 0,
+      "adjustment": "全国；名义金额及官方可比口径同比；未季调；限额以上单位，企业范围逐年调整",
+      "scale": 1e-08,
+      "expectedMissingMonths": [
+        1,
+        2
+      ],
+      "code": "EMI00135381"
+    },
+    {
+      "id": "consumer-category-12",
+      "consumerId": "category_12",
+      "originalName": "中国:限额以上企业(单位)商品零售类值:通讯器材类(元)",
+      "publisher": "国家统计局",
+      "name": "通讯器材类",
+      "unit": "亿元",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "kind": "level",
+      "basis": "month",
+      "minValue": 0,
+      "adjustment": "全国；名义金额及官方可比口径同比；未季调；限额以上单位，企业范围逐年调整",
+      "scale": 1e-08,
+      "expectedMissingMonths": [
+        1,
+        2
+      ],
+      "code": "EMI00135382"
+    },
+    {
+      "id": "consumer-confidence",
+      "consumerId": "confidence",
+      "originalName": "中国:消费者信心指数(%)",
+      "publisher": "国家统计局",
+      "name": "消费者信心指数",
+      "unit": "点",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "kind": "index",
+      "basis": "month",
+      "minValue": 0,
+      "adjustment": "消费者信心原始指数，0—200点，100为临界值；Choice原名标(%)，单位按统计局说明核定为点；不计算同比",
+      "maxValue": 200,
+      "definitionUrl": "https://www.stats.gov.cn/zs/tjws/tjfx/202301/t20230101_1903945.html",
+      "code": "EMM00122031"
+    },
+    {
+      "id": "consumer-income-urban",
+      "consumerId": "income_urban",
+      "originalName": "中国:城镇居民人均可支配收入:累计值(元)",
+      "publisher": "国家统计局",
+      "name": "城镇居民人均可支配收入",
+      "unit": "元",
+      "frequency": "quarterly",
+      "start": "2016-01-01",
+      "kind": "cumulative",
+      "basis": "ytd",
+      "minValue": 0,
+      "adjustment": "住户抽样调查；人均名义金额及同比；季度发布为年初累计，年度含自产自用",
+      "codeCandidates": [
+        "EMM00597046",
+        "EMM00597049",
+        "EMM00651724",
+        "EMM00651672"
+      ],
+      "codeMapping": "表级代码集合，不按顺序配对"
+    },
+    {
+      "id": "consumer-spending-rural",
+      "consumerId": "spending_rural",
+      "originalName": "中国:农村居民人均消费支出:累计值(元)",
+      "publisher": "国家统计局",
+      "name": "农村居民人均消费支出",
+      "unit": "元",
+      "frequency": "quarterly",
+      "start": "2016-01-01",
+      "kind": "cumulative",
+      "basis": "ytd",
+      "minValue": 0,
+      "adjustment": "住户抽样调查；人均名义金额及同比；季度发布为年初累计，年度含自产自用",
+      "codeCandidates": [
+        "EMM00597046",
+        "EMM00597049",
+        "EMM00651724",
+        "EMM00651672"
+      ],
+      "codeMapping": "表级代码集合，不按顺序配对"
+    },
+    {
+      "id": "consumer-income-rural",
+      "consumerId": "income_rural",
+      "originalName": "中国:农村居民人均可支配收入:累计值(元)",
+      "publisher": "国家统计局",
+      "name": "农村居民人均可支配收入",
+      "unit": "元",
+      "frequency": "quarterly",
+      "start": "2016-01-01",
+      "kind": "cumulative",
+      "basis": "ytd",
+      "minValue": 0,
+      "adjustment": "住户抽样调查；人均名义金额及同比；季度发布为年初累计，年度含自产自用",
+      "codeCandidates": [
+        "EMM00597046",
+        "EMM00597049",
+        "EMM00651724",
+        "EMM00651672"
+      ],
+      "codeMapping": "表级代码集合，不按顺序配对"
+    },
+    {
+      "id": "consumer-spending-urban",
+      "consumerId": "spending_urban",
+      "originalName": "中国:居民人均消费支出:城镇居民:累计值(元)",
+      "publisher": "国家统计局",
+      "name": "城镇居民人均消费支出",
+      "unit": "元",
+      "frequency": "quarterly",
+      "start": "2016-01-01",
+      "kind": "cumulative",
+      "basis": "ytd",
+      "minValue": 0,
+      "adjustment": "住户抽样调查；人均名义金额及同比；季度发布为年初累计，年度含自产自用",
+      "codeCandidates": [
+        "EMM00597046",
+        "EMM00597049",
+        "EMM00651724",
+        "EMM00651672"
+      ],
+      "codeMapping": "表级代码集合，不按顺序配对"
+    },
+    {
+      "id": "consumer-goods",
+      "consumerId": "goods",
+      "originalName": "中国:社会消费品零售总额:商品零售(元)",
+      "publisher": "国家统计局",
+      "name": "商品零售额",
+      "unit": "亿元",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "kind": "level",
+      "basis": "month",
+      "minValue": 0,
+      "adjustment": "全国；名义金额及官方可比口径同比；未季调",
+      "scale": 1e-08,
+      "expectedMissingMonths": [
+        1,
+        2
+      ],
+      "codeCandidates": [
+        "EMI00135326",
+        "EMI00135324"
+      ],
+      "codeMapping": "表级代码集合，不按顺序配对"
+    },
+    {
+      "id": "consumer-retail-urban",
+      "consumerId": "retail_urban",
+      "originalName": "中国:社会消费品零售总额:城镇(元)",
+      "publisher": "国家统计局",
+      "name": "城镇消费品零售额",
+      "unit": "亿元",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "kind": "level",
+      "basis": "month",
+      "minValue": 0,
+      "adjustment": "全国；名义金额及官方可比口径同比；未季调",
+      "scale": 1e-08,
+      "expectedMissingMonths": [
+        1,
+        2
+      ],
+      "codeCandidates": [
+        "EMI00135326",
+        "EMI00135324"
+      ],
+      "codeMapping": "表级代码集合，不按顺序配对"
+    },
+    {
+      "id": "consumer-sports-ytd",
+      "consumerId": "category_7",
+      "originalName": "中国:限额以上企业(单位)商品零售类值:体育、娱乐用品类:累计值(元)",
+      "publisher": "国家统计局",
+      "unit": "亿元",
+      "kind": "cumulative",
+      "frequency": "monthly",
+      "start": "2016-01-01",
+      "scale": 1e-08,
+      "basis": "ytd",
+      "expectedMissingMonths": [
+        1
+      ],
+      "name": "体育、娱乐用品类",
+      "minValue": 0,
+      "adjustment": "全国限额以上企业(单位)体育娱乐用品类零售额；名义累计，未季调，样本范围逐年调整；不计算同比",
+      "codeCandidates": [
+        "EMM02597018",
+        "EMI00135378",
+        "EMI00135374",
+        "EMM02622059",
+        "EMM02623346"
+      ],
+      "codeMapping": "表级代码集合，不按顺序配对"
     }
   ]
 }
