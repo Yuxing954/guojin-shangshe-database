@@ -1,0 +1,25 @@
+name: Check macro and predictions
+on:
+  pull_request:
+    paths: ['macro.html', 'scripts/macro*', 'scripts/site*', 'data/macro/**', 'update/macro_data.py', 'update/polymarket_data.py', 'tests/*macro*', '.github/workflows/check-macro.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: |
+          node --check scripts/macro.js
+          node --check scripts/site-shell.js
+          node --test tests/macro.test.cjs
+          python tests/test_macro_data.py
+          node scripts/site-data.test.cjs
+          node scripts/industry-model.test.cjs
