@@ -1,13 +1,14 @@
 {
-  "syncedAt": "2026-10-09T16:09:41+08:00",
+  "syncedAt": "2026-10-09T18:10:29+08:00",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
   "coverageFrom": "2026-08-09",
-  "coverageTo": "2026-10-09T14:56:56.227+0800",
+  "coverageTo": "2026-10-09T17:50:04.563+0800",
   "oldestFetched": "2026-08-08T22:08:04.080+0800",
-  "fetchedTopics": 11116,
+  "fetchedTopics": 11137,
   "files": {
     "views": [
+      "data/research/updates/2026-10-09-views-005.csv",
       "data/research/updates/2026-10-09-views-004.csv",
       "data/research/updates/2026-10-09-views-003.csv",
       "data/research/updates/2026-10-09-views-002.csv",
@@ -17,6 +18,7 @@
       "data/research/updates/2026-10-07-views-002.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-10-09-all_views-007.csv",
       "data/research/updates/2026-10-09-all_views-006.csv",
       "data/research/updates/2026-10-09-all_views-005.csv",
       "data/research/updates/2026-10-09-all_views-004.csv",
@@ -62,18 +64,18 @@
     ]
   },
   "counts": {
-    "views": 205,
-    "all_views": 3978,
+    "views": 207,
+    "all_views": 3964,
     "minutes": 99
   },
   "latest": {
-    "views": "2026-10-09T14:42:54",
-    "all_views": "2026-10-09T14:56:56",
+    "views": "2026-10-09T17:47:48",
+    "all_views": "2026-10-09T17:50:04",
     "minutes": "2026-09-28T13:18:13"
   },
   "excluded": {
-    "纯文件/图片占位": 728,
-    "图片贴（仅标题文字）": 160,
+    "纯文件/图片占位": 729,
+    "图片贴（仅标题文字）": 163,
     "纯符号内容": 402,
     "纯标签贴": 1402,
     "内容过短（13字）": 48,
@@ -306,7 +308,10 @@
       "45548825588248858",
       "14425514455488442",
       "45548825588821528",
-      "14425545214255122"
+      "14425545214255122",
+      "82258228842412542",
+      "14425445514182482",
+      "22258228842415281"
     ],
     "all_views": [
       "55521551154544514",
@@ -4343,7 +4348,21 @@
       "14422188554114212",
       "22255414115884251",
       "14422181818218122",
-      "82255414125881422"
+      "82255414125881422",
+      "82258228842155112",
+      "55521551145488824",
+      "14425445514188112",
+      "14425445514188482",
+      "55521551145488224",
+      "55521551145484824",
+      "82258228842412222",
+      "45548558825215548",
+      "22258228842412551",
+      "22258228842418151",
+      "14425445514182842",
+      "14425445514182852",
+      "55521551145482254",
+      "82258228842441142"
     ]
   },
   "lastRun": {
@@ -4359,5 +4378,24 @@
     "excluded": 2,
     "duplicates": 0,
     "record": "data/research/updates/2026-10-09-update-record-3.json"
-  }
+  },
+  "syncLog": [
+    {
+      "syncedAt": "2026-10-09T18:10:29+08:00",
+      "coverageFrom": "2026-10-09T14:56:56.227+0800",
+      "coverageTo": "2026-10-09T17:50:04.563+0800",
+      "pageTopicsRead": 30,
+      "newCoverageTopics": 21,
+      "added": {
+        "views": 3,
+        "all_views": 14
+      },
+      "removedDuplicateRows": {
+        "views": 1,
+        "all_views": 28
+      },
+      "skippedUnreadableImageTopics": 4,
+      "keptDuplicatePolicy": "同一类别中保留较新发布时间的记录"
+    }
+  ]
 }
