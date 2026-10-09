@@ -1,7 +1,7 @@
 name: Check macro and predictions
 on:
   pull_request:
-    paths: ['macro.html', 'scripts/macro*', 'scripts/site*', 'data/macro/**', 'data/consumption-macro/**', 'update/macro_data.py', 'update/polymarket_data.py', 'tests/*macro*', '.github/workflows/check-macro.yml']
+    paths: ['macro.html', 'scripts/macro*', 'scripts/site*', 'data/macro/**', 'data/consumption-macro/**', 'update/macro_auto.py', 'update/macro_data.py', 'update/polymarket_data.py', 'tests/*macro*', '.github/workflows/check-macro.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -21,5 +21,7 @@ jobs:
           node --check scripts/site-shell.js
           node --test tests/macro.test.cjs
           python tests/test_macro_data.py
+          python tests/test_macro_auto.py
+          node --test tests/consumption-macro.test.cjs
           node scripts/site-data.test.cjs
           node scripts/industry-model.test.cjs

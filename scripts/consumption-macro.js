@@ -7,7 +7,7 @@
   const tone=v=>M.finite(v)?v>0?'cm-up':v<0?'cm-down':'':'';
   const options=(id,values,chosen)=>{$(id).innerHTML=values.map(([v,t])=>`<option value="${esc(v)}">${esc(t)}</option>`).join('');if(values.some(([v])=>v===chosen))$(id).value=chosen;};
   let data,byId,sources,items=[],page=0,selected='',history=[];
-  const sourceLink=s=>s&&M.official(s.url)?`<a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer" title="${esc(s.title)}">${esc(s.publisher)} ↗</a>`:'—';
+  const sourceLink=s=>s&&(M.official(s.url)||M.licensedSource(s))?`<a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer" title="${esc(s.title)}">${esc(s.publisher)} ↗</a>`:'—';
   const value=(i,r)=>!r?'—':num(r.value)+(M.finite(r.value)?' '+esc(i.unit):'');
   const label=r=>r.basis==='jan_feb'?r.period.slice(0,4)+'年1—2月':r.period;
   function download(name,rows){if(!rows.length)return;const url=URL.createObjectURL(new Blob([M.csv(data,rows)],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
@@ -16,12 +16,12 @@
   function saveUrl(){const params=new URLSearchParams();for(const [key,id] of [['group','group'],['frequency','frequency'],['status','connection'],['q','query']])if($(id).value)params.set(key,$(id).value);if(selected)params.set('indicator',selected);window.history.replaceState(null,'',location.pathname+(params.size?'?'+params.toString():''));}
   function renderDirectory(){
     const count=items.length;page=Math.min(page,Math.max(0,Math.ceil(count/12)-1));
-    $('directory').innerHTML=items.slice(page*12,page*12+12).map(i=>{const r=latestRow(i),s=r?sources.get(r.sourceId):null;return `<tr><td><button class="cm-select" data-id="${esc(i.id)}" aria-pressed="${selected===i.id}">${esc(i.name)}</button><small>${esc(i.group)}</small></td><td>${value(i,r)}<small>${esc(i.valueLabel)}</small></td><td class="${tone(r?.yoy)}">${pct(r?.yoy)}</td><td>${r?esc(label(r))+'<small>'+esc(M.frequencies[r.frequency]+' · '+M.bases[r.basis])+'</small>':'—'}</td><td>${s?'<time>'+esc(s.publishedAt)+'</time><small>'+sourceLink(s)+'</small>':i.sourceUrl?'<a href="'+esc(i.sourceUrl)+'" target="_blank" rel="noopener noreferrer">官方入口 ↗</a>':'—'}</td><td><span class="cm-tag ${i.status==='pending'?'pending':''}">${i.status==='pending'?'待接入':'已接入'}</span>${r?.quality==='estimate'?'<small class="cm-tag estimate">预计</small>':''}</td></tr>`;}).join('')||'<tr><td colspan="6">没有符合筛选条件的指标</td></tr>';
+    $('directory').innerHTML=items.slice(page*12,page*12+12).map(i=>{const r=latestRow(i),s=r?sources.get(r.sourceId):null;return `<tr><td><button class="cm-select" data-id="${esc(i.id)}" aria-pressed="${selected===i.id}">${esc(i.name)}</button><small>${esc(i.group)}</small></td><td>${value(i,r)}<small>${esc(i.valueLabel)}</small></td><td class="${tone(r?.yoy)}">${pct(r?.yoy)}</td><td>${r?esc(label(r))+'<small>'+esc(M.frequencies[r.frequency]+' · '+M.bases[r.basis])+'</small>':'—'}</td><td>${s?'<time>'+esc(s.publishedAt||'来源未提供')+'</time><small>'+sourceLink(s)+'</small>':i.sourceUrl?'<a href="'+esc(i.sourceUrl)+'" target="_blank" rel="noopener noreferrer">官方入口 ↗</a>':'—'}</td><td><span class="cm-tag ${i.status==='pending'?'pending':''}">${i.status==='pending'?'待接入':i.updateStatus==='error'?'更新失败':'已接入'}</span>${r?.quality==='estimate'?'<small class="cm-tag estimate">预计</small>':''}</td></tr>`;}).join('')||'<tr><td colspan="6">没有符合筛选条件的指标</td></tr>';
     $('page-label').textContent=count?`${page*12+1}—${Math.min(page*12+12,count)} / ${count} 项指标`:'0 项指标';$('prev').disabled=page===0;$('next').disabled=(page+1)*12>=count;$('export-latest').disabled=!items.some(i=>latestRow(i));
     $('directory').querySelectorAll('[data-id]').forEach(b=>b.addEventListener('click',()=>choose(b.dataset.id,true)));
   }
   function choose(id,scroll=false){selected=id;$('indicator').value=id;configureFrequency();renderDirectory();saveUrl();if(scroll)$('trend-panel').scrollIntoView({behavior:'smooth',block:'start'});}
-  function applyFilters(){page=0;items=M.directory(data,filters());options('indicator',items.map(i=>[i.id,i.name]),selected);if(!items.some(i=>i.id===selected))selected=items[0]?.id||'';if(selected)$('indicator').value=selected;configureFrequency();renderDirectory();saveUrl();}
+  function applyFilters(){page=0;items=M.directory(data,filters()).filter(i=>M.important.includes(i.id));options('indicator',items.map(i=>[i.id,i.name]),selected);if(!items.some(i=>i.id===selected))selected=items[0]?.id||'';if(selected)$('indicator').value=selected;configureFrequency();renderDirectory();saveUrl();}
   function configureFrequency(){
     const available=[...new Set(M.records(data,selected).map(r=>r.frequency))];const global=$('frequency').value;
     const scope=M.defaultScope(data,selected,global);options('series-frequency',available.map(f=>[f,M.frequencies[f]]),scope?.frequency);$('series-frequency').disabled=!available.length;configureBasis();
@@ -50,7 +50,7 @@
     });
     const step=Math.max(1,Math.ceil(rows.length/Math.max(2,Math.floor(w/110))));rows.forEach((r,k)=>{if(holiday||k===0||k===rows.length-1||(k%step===0&&rows.length-k>step/2))svg+=`<text x="${xx(r)}" y="${h-14}" fill="#818897" text-anchor="${holiday?'middle':k===0?'start':k===rows.length-1?'end':'middle'}" font-size="11">${esc(label(r))}</text>`;});
     el.innerHTML=svg+'</svg><div class="cm-chart-tooltip" aria-live="polite"></div>';
-    const tip=el.querySelector('.cm-chart-tooltip');el.querySelectorAll('circle').forEach(p=>{const r=rows[Number(p.dataset.row)],show=()=>tip.textContent=label(r)+' · '+M.bases[r.basis]+' · '+num(r[field])+unit+' · 发布 '+sources.get(r.sourceId).publishedAt;p.addEventListener('mouseenter',show);p.addEventListener('focus',show);});
+    const tip=el.querySelector('.cm-chart-tooltip');el.querySelectorAll('circle').forEach(p=>{const r=rows[Number(p.dataset.row)],show=()=>tip.textContent=label(r)+' · '+M.bases[r.basis]+' · '+num(r[field])+unit+' · 发布 '+(sources.get(r.sourceId).publishedAt||'来源未提供');p.addEventListener('mouseenter',show);p.addEventListener('focus',show);});
   }
   function renderTrend(){
     const i=byId.get(selected),from=$('from').value,to=$('to').value,invalid=Boolean(from&&to&&from>to);
@@ -61,18 +61,19 @@
     if(!i||i.status==='pending'){ $('chart').innerHTML='<div class="cm-empty">'+(i?'待接入 · 无可核验序列':'请选择指标')+'</div>';}
     else drawChart(i,history,$('measure').value);
     $('value-heading').textContent=i?i.valueLabel+' / '+i.unit:'数值';
-    $('history').innerHTML=history.slice().reverse().map(r=>{const s=sources.get(r.sourceId),notes=[r.note,M.finite(r.mom)?'环比 '+pct(r.mom):'',M.finite(r.realYoy)?'实际同比 '+pct(r.realYoy):'',r.quality==='estimate'?'预计':''].filter(Boolean);return `<tr><td>${esc(label(r))}</td><td>${esc(M.bases[r.basis])}</td><td>${num(r.value)}</td><td class="${tone(r.yoy)}">${pct(r.yoy)}</td><td>${esc(notes.join('；')||'—')}</td><td><time>${esc(s.publishedAt)}</time></td><td>${sourceLink(s)}<small>${esc(s.title)}</small></td></tr>`;}).join('')||'<tr><td colspan="7">没有已收录数据</td></tr>';
+    $('history').innerHTML=history.slice().reverse().map(r=>{const s=sources.get(r.sourceId),notes=[r.note,M.finite(r.mom)?'环比 '+pct(r.mom):'',M.finite(r.realYoy)?'实际同比 '+pct(r.realYoy):'',r.quality==='estimate'?'预计':''].filter(Boolean);return `<tr><td>${esc(label(r))}</td><td>${esc(M.bases[r.basis])}</td><td>${num(r.value)}</td><td class="${tone(r.yoy)}">${pct(r.yoy)}</td><td>${esc(notes.join('；')||'—')}</td><td><time>${esc(s.publishedAt||'来源未提供')}</time></td><td>${sourceLink(s)}${r.supplementSourceId?' · '+sourceLink(sources.get(r.supplementSourceId)):''}<small>${esc(s.title)}</small></td></tr>`;}).join('')||'<tr><td colspan="7">没有已收录数据</td></tr>';
     $('chart-caption').textContent=history.length?`${history[0].period} — ${history.at(-1).period} · ${history.length} 条已收录 · ${M.bases[$('basis').value]||''}${$('basis').value==='month'?'；1—2月合并':''}${history[0].frequency==='holiday'?'；不同假期分别展示':'；缺期断线'}`:'';
   }
   try{
     const response=await fetch('data/consumption-macro/observations.json',{cache:'no-cache'});if(!response.ok)throw new Error('数据读取失败（'+response.status+'）');data=await response.json();const errors=M.validate(data);if(errors.length)throw new Error('数据校验失败：'+errors.slice(0,3).join('；'));
+    try{const automatic=await fetch('data/macro/automatic-series.json',{cache:'no-cache'});if(automatic.ok)data=M.mergeAutomatic(data,await automatic.json());}catch{console.warn('自动消费历史读取失败，保留官方记录');}
     byId=new Map(data.indicators.map(i=>[i.id,i]));sources=new Map(data.sources.map(s=>[s.id,s]));
-    $('asof').textContent='来源核验 '+data.checkedAt;
-    $('coverage').textContent=`已接入 ${data.indicators.filter(i=>i.status==='connected').length} · 待接入 ${data.indicators.filter(i=>i.status==='pending').length}`;
-    $('kpis').innerHTML=['retail','catering','online_goods','cpi','income_national','spending_national'].map(id=>{const i=byId.get(id),r=M.latest(data,id),s=sources.get(r.sourceId);return `<button class="cm-kpi" data-id="${id}"><span>${esc(i.name)}</span><strong>${num(r.value)}<small>${esc(i.unit)}</small></strong><em class="${id==='retail'?'':tone(r.yoy)}">${M.finite(r.yoy)?'同比 '+pct(r.yoy):esc(i.valueLabel)}</em><span class="cm-meta">${esc(label(r)+' · '+M.bases[r.basis])}</span><time>发布 ${esc(s.publishedAt)}</time></button>`;}).join('');
-    options('group',[['','全部类别'],...[...new Set(data.indicators.map(i=>i.group))].map(g=>[g,g])]);
+    $('asof').textContent='最近检查 '+(data.automaticCheckedAt||data.checkedAt).slice(0,10);
+    $('coverage').textContent=M.important.length+' 项核心消费指标';
+    $('kpis').innerHTML=['retail','catering','online_goods','cpi','income_national','spending_national'].map(id=>{const i=byId.get(id),r=M.latest(data,id),s=sources.get(r.sourceId);return `<button class="cm-kpi" data-id="${id}"><span>${esc(i.name)}</span><strong>${num(r.value)}<small>${esc(i.unit)}</small></strong><em class="${id==='retail'?'':tone(r.yoy)}">${M.finite(r.yoy)?'同比 '+pct(r.yoy):esc(i.valueLabel)}</em><span class="cm-meta">${esc(label(r)+' · '+M.bases[r.basis])}</span><time>发布 ${esc(s.publishedAt||'来源未提供')}</time></button>`;}).join('');
+    options('group',[['','全部类别'],...[...new Set(data.indicators.filter(i=>M.important.includes(i.id)).map(i=>i.group))].map(g=>[g,g])]);
     const params=new URLSearchParams(location.search);for(const [key,id] of [['group','group'],['frequency','frequency'],['status','connection']])if([...$(id).options].some(o=>o.value===params.get(key)))$(id).value=params.get(key);$('query').value=params.get('q')||'';selected=byId.has(params.get('indicator'))?params.get('indicator'):'retail';
-    $('coverage-notes').innerHTML='<p>官方来源 '+data.sources.length+' 份 · 记录 '+data.observations.length+' 条 · 核验 '+esc(data.checkedAt)+'</p><p>社零及CPI：2025—2026已披露期间；社零全年：2023—2025；居民收支：2024—2026。服务零售仅收录2026年1—8月。</p><p>历史抓取缺口：2025年2月、6月CPI；2025年4月社零。消费者信心、商务部重点监测及2026国庆旅游数据待接入。</p>';
+    $('coverage-notes').innerHTML=data.indicators.filter(i=>M.important.includes(i.id)&&i.automaticCoverage).map(i=>{const c=i.automaticCoverage;return '<p>'+esc(i.name+'：'+c.start+' — '+c.end+' · '+c.count+'期'+(c.historyShort?' · 历史覆盖不足':'')+(c.missingPeriods.length?' · 缺期 '+c.missingPeriods.join('、'):'')+' · 检查 '+i.checkedAt.slice(0,10))+'</p>';}).join('')+'<p>未披露的单月不补值；官方精确金额优先，Choice补充历史保持接口原精度。发布日期未返回时留空。</p>';
     $('content').hidden=false;$('status').hidden=true;
     for(const id of ['group','frequency','connection'])$(id).addEventListener('change',applyFilters);$('query').addEventListener('input',applyFilters);
     $('reset').addEventListener('click',()=>{for(const id of ['group','frequency','connection','query'])$(id).value='';applyFilters();});
