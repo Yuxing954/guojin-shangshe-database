@@ -1,0 +1,635 @@
+{
+  "version": 1,
+  "status": "ready",
+  "fetchedAt": "2026-10-09T05:58:23+00:00",
+  "checkedAt": "2026-10-09T05:58:23+00:00",
+  "markets": [
+    {
+      "id": "2589810",
+      "eventId": "606422",
+      "question": "Will the Fed decrease interest rates by 50+ bps after the October 2026 meeting?",
+      "category": "经济与利率",
+      "outcomes": [
+        {
+          "name": "Yes",
+          "probability": 0.0015,
+          "nameZh": "是"
+        },
+        {
+          "name": "No",
+          "probability": 0.9985,
+          "nameZh": "否"
+        }
+      ],
+      "volume24h": 807078.479668,
+      "liquidity": 1087515.78498,
+      "spread": 0.001,
+      "endDate": "2026-10-29T03:59:00Z",
+      "updatedAt": "2026-10-09T05:54:49.303706Z",
+      "url": "https://polymarket.com/event/fed-decision-in-october-20260617190323537",
+      "questionZh": "美联储是否会在2026年10月会议后降息至少50个基点？"
+    },
+    {
+      "id": "2589812",
+      "eventId": "606422",
+      "question": "Will there be no change in Fed interest rates after the October 2026 meeting?",
+      "category": "经济与利率",
+      "outcomes": [
+        {
+          "name": "Yes",
+          "probability": 0.845,
+          "nameZh": "是"
+        },
+        {
+          "name": "No",
+          "probability": 0.155,
+          "nameZh": "否"
+        }
+      ],
+      "volume24h": 458832.24311800016,
+      "liquidity": 600865.7672,
+      "spread": 0.01,
+      "endDate": "2026-10-29T03:59:00Z",
+      "updatedAt": "2026-10-09T05:54:49.303706Z",
+      "url": "https://polymarket.com/event/fed-decision-in-october-20260617190323537",
+      "questionZh": "美联储是否会在2026年10月会议后维持利率不变？"
+    },
+    {
+      "id": "2589813",
+      "eventId": "606422",
+      "question": "Will the Fed increase interest rates by 25 bps after the October 2026 meeting?",
+      "category": "经济与利率",
+      "outcomes": [
+        {
+          "name": "Yes",
+          "probability": 0.155,
+          "nameZh": "是"
+        },
+        {
+          "name": "No",
+          "probability": 0.845,
+          "nameZh": "否"
+        }
+      ],
+      "volume24h": 448859.91116899997,
+      "liquidity": 704770.9732,
+      "spread": 0.01,
+      "endDate": "2026-10-29T03:59:00Z",
+      "updatedAt": "2026-10-09T05:54:49.303706Z",
+      "url": "https://polymarket.com/event/fed-decision-in-october-20260617190323537",
+      "questionZh": "美联储是否会在2026年10月会议后加息25个基点？"
+    },
+    {
+      "id": "665374",
+      "eventId": "73130",
+      "question": "Will the U.S. invade Iran before 2027?",
+      "category": "政治与地缘",
+      "outcomes": [
+        {
+          "name": "Yes",
+          "probability": 0.165,
+          "nameZh": "是"
+        },
+        {
+          "name": "No",
+          "probability": 0.835,
+          "nameZh": "否"
+        }
+      ],
+      "volume24h": 295786.086465,
+      "liquidity": 838553.185,
+      "spread": 0.01,
+      "endDate": "2027-01-01T04:59:00Z",
+      "updatedAt": "2026-10-09T05:54:49.303706Z",
+      "url": "https://polymarket.com/event/will-the-us-invade-iran-before-2027",
+      "questionZh": "美国是否会在2027年之前入侵伊朗？"
+    },
+    {
+      "id": "562829",
+      "eventId": "32228",
+      "question": "2026 Balance of Power: D Senate, R House",
+      "category": "政治与地缘",
+      "outcomes": [
+        {
+          "name": "Yes",
+          "probability": 0.0085,
+          "nameZh": "是"
+        },
+        {
+          "name": "No",
+          "probability": 0.9915,
+          "nameZh": "否"
+        }
+      ],
+      "volume24h": 277344.386671,
+      "liquidity": 563002.09166,
+      "spread": 0.001,
+      "endDate": "2026-11-04T04:59:00Z",
+      "updatedAt": "2026-10-09T05:49:32.213519Z",
+      "url": "https://polymarket.com/event/balance-of-power-2026-midterms",
+      "questionZh": "2026年美国国会格局：民主党掌控参议院、共和党掌控众议院？"
+    },
+    {
+      "id": "4641065",
+      "eventId": "1038648",
+      "question": "US x Iran ceasefire continues through October 31?",
+      "category": "政治与地缘",
+      "outcomes": [
+        {
+          "name": "Yes",
+          "probability": 0.765,
+          "nameZh": "是"
+        },
+        {
+          "name": "No",
+          "probability": 0.235,
+          "nameZh": "否"
+        }
+      ],
+      "volume24h": 227237.12934900005,
+      "liquidity": 156743.5411,
+      "spread": 0.01,
+      "endDate": "2026-10-31T23:59:00Z",
+      "updatedAt": "2026-10-09T05:54:49.303706Z",
+      "url": "https://polymarket.com/event/us-iran-ceasefire-continues-throughptptpt",
+      "questionZh": "美国与伊朗的停火是否会持续至10月31日？"
+    },
+    {
+      "id": "562803",
+      "eventId": "32225",
+      "question": "Will the Republican Party control the House after the 2026 Midterm elections?",
+      "category": "政治与地缘",
+      "outcomes": [
+        {
+          "name": "Yes",
+          "probability": 0.095,
+          "nameZh": "是"
+        },
+        {
+          "name": "No",
+          "probability": 0.905,
+          "nameZh": "否"
+        }
+      ],
+      "volume24h": 209109.122326,
+      "liquidity": 2281849.3038,
+      "spread": 0.01,
+      "endDate": "2026-11-04T04:59:00Z",
+      "updatedAt": "2026-10-09T05:54:49.303706Z",
+      "url": "https://polymarket.com/event/which-party-will-win-the-house-in-2026",
+      "questionZh": "共和党是否会在2026年美国中期选举后掌控众议院？"
+    },
+    {
+      "id": "5130978",
+      "eventId": "1038648",
+      "question": "US x Iran ceasefire continues through October 15?",
+      "category": "政治与地缘",
+      "outcomes": [
+        {
+          "name": "Yes",
+          "probability": 0.925,
+          "nameZh": "是"
+        },
+        {
+          "name": "No",
+          "probability": 0.075,
+          "nameZh": "否"
+        }
+      ],
+      "volume24h": 201386.00720099997,
+      "liquidity": 189099.308,
+      "spread": 0.01,
+      "endDate": "2026-10-16T03:59:00Z",
+      "updatedAt": "2026-10-09T05:54:49.303706Z",
+      "url": "https://polymarket.com/event/us-iran-ceasefire-continues-throughptptpt",
+      "questionZh": "美国与伊朗的停火是否会持续至10月15日？"
+    },
+    {
+      "id": "562830",
+      "eventId": "32228",
+      "question": "2026 Balance of Power: R Senate, D House",
+      "category": "政治与地缘",
+      "outcomes": [
+        {
+          "name": "Yes",
+          "probability": 0.285,
+          "nameZh": "是"
+        },
+        {
+          "name": "No",
+          "probability": 0.715,
+          "nameZh": "否"
+        }
+      ],
+      "volume24h": 152256.683952,
+      "liquidity": 2275957.0055,
+      "spread": 0.01,
+      "endDate": "2026-11-04T04:59:00Z",
+      "updatedAt": "2026-10-09T05:54:49.303706Z",
+      "url": "https://polymarket.com/event/balance-of-power-2026-midterms",
+      "questionZh": "2026年美国国会格局：共和党掌控参议院、民主党掌控众议院？"
+    },
+    {
+      "id": "562802",
+      "eventId": "32225",
+      "question": "Will the Democratic Party control the House after the 2026 Midterm elections?",
+      "category": "政治与地缘",
+      "outcomes": [
+        {
+          "name": "Yes",
+          "probability": 0.905,
+          "nameZh": "是"
+        },
+        {
+          "name": "No",
+          "probability": 0.095,
+          "nameZh": "否"
+        }
+      ],
+      "volume24h": 142728.724949,
+      "liquidity": 2428148.6819,
+      "spread": 0.01,
+      "endDate": "2026-11-04T04:59:00Z",
+      "updatedAt": "2026-10-09T05:54:49.303706Z",
+      "url": "https://polymarket.com/event/which-party-will-win-the-house-in-2026",
+      "questionZh": "民主党是否会在2026年美国中期选举后掌控众议院？"
+    },
+    {
+      "id": "679022",
+      "eventId": "79987",
+      "question": "Will David Lisnard win the 2027 French presidential election?",
+      "category": "政治与地缘",
+      "outcomes": [
+        {
+          "name": "Yes",
+          "probability": 0.1275,
+          "nameZh": "是"
+        },
+        {
+          "name": "No",
+          "probability": 0.8725,
+          "nameZh": "否"
+        }
+      ],
+      "volume24h": 139993.829335,
+      "liquidity": 341124.2079,
+      "spread": 0.001,
+      "endDate": "2027-04-19T03:59:00Z",
+      "updatedAt": "2026-10-09T05:54:49.303706Z",
+      "url": "https://polymarket.com/event/next-french-presidential-election",
+      "questionZh": "达维德·利斯纳尔（David Lisnard）是否会赢得2027年法国总统选举？"
+    },
+    {
+      "id": "5207032",
+      "eventId": "1119679",
+      "question": "Will the price of Bitcoin be above $88,000 on October 9?",
+      "category": "金融市场",
+      "outcomes": [
+        {
+          "name": "Yes",
+          "probability": 0.0015,
+          "nameZh": "是"
+        },
+        {
+          "name": "No",
+          "probability": 0.9985,
+          "nameZh": "否"
+        }
+      ],
+      "volume24h": 118032.624501,
+      "liquidity": 41011.18871,
+      "spread": 0.001,
+      "endDate": "2026-10-09T16:00:00Z",
+      "updatedAt": "2026-10-09T05:54:49.303706Z",
+      "url": "https://polymarket.com/event/bitcoin-above-on-october-9-2026",
+      "questionZh": "10月9日比特币价格是否会高于88,000美元？"
+    },
+    {
+      "id": "5207020",
+      "eventId": "1119679",
+      "question": "Will the price of Bitcoin be above $76,000 on October 9?",
+      "category": "金融市场",
+      "outcomes": [
+        {
+          "name": "Yes",
+          "probability": 0.996,
+          "nameZh": "是"
+        },
+        {
+          "name": "No",
+          "probability": 0.004,
+          "nameZh": "否"
+        }
+      ],
+      "volume24h": 115890.90509799999,
+      "liquidity": 54621.96202,
+      "spread": 0.002,
+      "endDate": "2026-10-09T16:00:00Z",
+      "updatedAt": "2026-10-09T05:54:49.303706Z",
+      "url": "https://polymarket.com/event/bitcoin-above-on-october-9-2026",
+      "questionZh": "10月9日比特币价格是否会高于76,000美元？"
+    },
+    {
+      "id": "5170744",
+      "eventId": "1112205",
+      "question": "Will Bitcoin dip to $65,000 in October?",
+      "category": "金融市场",
+      "outcomes": [
+        {
+          "name": "Yes",
+          "probability": 0.0345,
+          "nameZh": "是"
+        },
+        {
+          "name": "No",
+          "probability": 0.9655,
+          "nameZh": "否"
+        }
+      ],
+      "volume24h": 110055.591723,
+      "liquidity": 144263.1956,
+      "spread": 0.001,
+      "endDate": "2026-11-01T04:00:00Z",
+      "updatedAt": "2026-10-09T05:54:49.303706Z",
+      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-october-2026",
+      "questionZh": "比特币是否会在10月跌至65,000美元？"
+    },
+    {
+      "id": "5207028",
+      "eventId": "1119679",
+      "question": "Will the price of Bitcoin be above $84,000 on October 9?",
+      "category": "金融市场",
+      "outcomes": [
+        {
+          "name": "Yes",
+          "probability": 0.096,
+          "nameZh": "是"
+        },
+        {
+          "name": "No",
+          "probability": 0.904,
+          "nameZh": "否"
+        }
+      ],
+      "volume24h": 101635.834551,
+      "liquidity": 47239.72351,
+      "spread": 0.004,
+      "endDate": "2026-10-09T16:00:00Z",
+      "updatedAt": "2026-10-09T05:54:49.303706Z",
+      "url": "https://polymarket.com/event/bitcoin-above-on-october-9-2026",
+      "questionZh": "10月9日比特币价格是否会高于84,000美元？"
+    },
+    {
+      "id": "701501",
+      "eventId": "89502",
+      "question": "Will Bitcoin dip to $55,000 by December 31, 2026?",
+      "category": "金融市场",
+      "outcomes": [
+        {
+          "name": "Yes",
+          "probability": 0.105,
+          "nameZh": "是"
+        },
+        {
+          "name": "No",
+          "probability": 0.895,
+          "nameZh": "否"
+        }
+      ],
+      "volume24h": 100717.162425,
+      "liquidity": 248359.3875,
+      "spread": 0.01,
+      "endDate": "2027-01-01T05:00:00Z",
+      "updatedAt": "2026-10-09T05:54:49.303706Z",
+      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-before-2027",
+      "questionZh": "比特币是否会在2026年12月31日之前跌至55,000美元？"
+    },
+    {
+      "id": "5170746",
+      "eventId": "1112205",
+      "question": "Will Bitcoin dip to $60,000 in October?",
+      "category": "金融市场",
+      "outcomes": [
+        {
+          "name": "Yes",
+          "probability": 0.0215,
+          "nameZh": "是"
+        },
+        {
+          "name": "No",
+          "probability": 0.9785,
+          "nameZh": "否"
+        }
+      ],
+      "volume24h": 94398.036,
+      "liquidity": 109060.54182,
+      "spread": 0.001,
+      "endDate": "2026-11-01T04:00:00Z",
+      "updatedAt": "2026-10-09T05:54:49.303706Z",
+      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-october-2026",
+      "questionZh": "比特币是否会在10月跌至60,000美元？"
+    },
+    {
+      "id": "5311866",
+      "eventId": "1134901",
+      "question": "Will Bitcoin dip to $80,000 October 5-11?",
+      "category": "金融市场",
+      "outcomes": [
+        {
+          "name": "Yes",
+          "probability": 0.235,
+          "nameZh": "是"
+        },
+        {
+          "name": "No",
+          "probability": 0.765,
+          "nameZh": "否"
+        }
+      ],
+      "volume24h": 86724.752921,
+      "liquidity": 42714.7636,
+      "spread": 0.01,
+      "endDate": "2026-10-12T04:00:00Z",
+      "updatedAt": "2026-10-09T05:54:49.303706Z",
+      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-october-5-11-2026",
+      "questionZh": "比特币是否会在10月5日至11日期间跌至80,000美元？"
+    },
+    {
+      "id": "3215005",
+      "eventId": "770450",
+      "question": "Will the Fed decrease interest rates by 50+ bps after the December 2026 meeting?",
+      "category": "经济与利率",
+      "outcomes": [
+        {
+          "name": "Yes",
+          "probability": 0.004,
+          "nameZh": "是"
+        },
+        {
+          "name": "No",
+          "probability": 0.996,
+          "nameZh": "否"
+        }
+      ],
+      "volume24h": 80788.22299999998,
+      "liquidity": 157919.57899,
+      "spread": 0.002,
+      "endDate": "2026-12-09T23:59:00Z",
+      "updatedAt": "2026-10-09T05:54:49.303706Z",
+      "url": "https://polymarket.com/event/fed-decision-in-december-20260729232808632",
+      "questionZh": "美联储是否会在2026年12月会议后降息至少50个基点？"
+    },
+    {
+      "id": "5170729",
+      "eventId": "1112205",
+      "question": "Will Bitcoin reach $102,500 in October?",
+      "category": "金融市场",
+      "outcomes": [
+        {
+          "name": "Yes",
+          "probability": 0.0205,
+          "nameZh": "是"
+        },
+        {
+          "name": "No",
+          "probability": 0.9795,
+          "nameZh": "否"
+        }
+      ],
+      "volume24h": 70922.539995,
+      "liquidity": 151359.06646,
+      "spread": 0.001,
+      "endDate": "2026-11-01T04:00:00Z",
+      "updatedAt": "2026-10-09T05:54:49.303706Z",
+      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-october-2026",
+      "questionZh": "比特币是否会在10月达到102,500美元？"
+    },
+    {
+      "id": "3215007",
+      "eventId": "770450",
+      "question": "Will there be no change in Fed interest rates after the December 2026 meeting?",
+      "category": "经济与利率",
+      "outcomes": [
+        {
+          "name": "Yes",
+          "probability": 0.225,
+          "nameZh": "是"
+        },
+        {
+          "name": "No",
+          "probability": 0.775,
+          "nameZh": "否"
+        }
+      ],
+      "volume24h": 38823.881284000025,
+      "liquidity": 247843.2106,
+      "spread": 0.01,
+      "endDate": "2026-12-09T23:59:00Z",
+      "updatedAt": "2026-10-09T05:54:49.303706Z",
+      "url": "https://polymarket.com/event/fed-decision-in-december-20260729232808632",
+      "questionZh": "美联储是否会在2026年12月会议后维持利率不变？"
+    },
+    {
+      "id": "3215006",
+      "eventId": "770450",
+      "question": "Will the Fed decrease interest rates by 25 bps after the December 2026 meeting?",
+      "category": "经济与利率",
+      "outcomes": [
+        {
+          "name": "Yes",
+          "probability": 0.012,
+          "nameZh": "是"
+        },
+        {
+          "name": "No",
+          "probability": 0.988,
+          "nameZh": "否"
+        }
+      ],
+      "volume24h": 30204.000201000003,
+      "liquidity": 163904.03448,
+      "spread": 0.004,
+      "endDate": "2026-12-09T23:59:00Z",
+      "updatedAt": "2026-10-09T05:54:49.303706Z",
+      "url": "https://polymarket.com/event/fed-decision-in-december-20260729232808632",
+      "questionZh": "美联储是否会在2026年12月会议后降息25个基点？"
+    },
+    {
+      "id": "2657589",
+      "eventId": "626860",
+      "question": "Will 1 Fed rate hike happen in 2026?",
+      "category": "经济与利率",
+      "outcomes": [
+        {
+          "name": "Yes",
+          "probability": 0.225,
+          "nameZh": "是"
+        },
+        {
+          "name": "No",
+          "probability": 0.775,
+          "nameZh": "否"
+        }
+      ],
+      "volume24h": 21358.264513,
+      "liquidity": 81253.5486,
+      "spread": 0.01,
+      "endDate": "2026-12-31T23:59:00Z",
+      "updatedAt": "2026-10-09T05:54:49.303706Z",
+      "url": "https://polymarket.com/event/how-many-fed-rate-hikes-in-2026-20260623190717369",
+      "questionZh": "2026年美联储是否会恰好加息1次？"
+    },
+    {
+      "id": "4620900",
+      "eventId": "1034268",
+      "question": "Another Fed rate hike in 2026?",
+      "category": "经济与利率",
+      "outcomes": [
+        {
+          "name": "Yes",
+          "probability": 0.78,
+          "nameZh": "是"
+        },
+        {
+          "name": "No",
+          "probability": 0.22,
+          "nameZh": "否"
+        }
+      ],
+      "volume24h": 15963.963410000002,
+      "liquidity": 117475.6207,
+      "spread": 0.02,
+      "endDate": "2026-12-10T04:59:00Z",
+      "updatedAt": "2026-10-09T05:49:32.213519Z",
+      "url": "https://polymarket.com/event/another-fed-rate-hike-in-2026",
+      "questionZh": "2026年美联储是否会再次加息？"
+    }
+  ],
+  "receipts": [
+    {
+      "url": "https://gamma-api.polymarket.com/markets?limit=100&offset=0&active=true&closed=false&order=volume24hr&ascending=false",
+      "sha256": "b5df7f75cb75229aaf54a8a2fcbc488dc0681b6e608739c95899cb10a93eb641"
+    },
+    {
+      "url": "https://gamma-api.polymarket.com/markets?limit=100&offset=100&active=true&closed=false&order=volume24hr&ascending=false",
+      "sha256": "be0d1f9b0804188cf7dd763b7d2fc0991875a15279d3af3476318d51dcca86e2"
+    },
+    {
+      "url": "https://gamma-api.polymarket.com/markets?limit=100&offset=200&active=true&closed=false&order=volume24hr&ascending=false",
+      "sha256": "a8bca5385d3b7eeef7da27099c60ed5e0a995bbf9f09a89f91f82a7372d816d6"
+    },
+    {
+      "url": "https://gamma-api.polymarket.com/markets?limit=100&offset=300&active=true&closed=false&order=volume24hr&ascending=false",
+      "sha256": "611774f79ba4afc1e5bc077b7fa1d5cd3a67c5fda334e6bf24a5eb9bea72a09a"
+    },
+    {
+      "url": "https://gamma-api.polymarket.com/markets?limit=100&offset=400&active=true&closed=false&order=volume24hr&ascending=false",
+      "sha256": "51ccba8fd3e2a607dacc74c455203f38cef07d4925361f5a16b48c9d6cb9f458"
+    },
+    {
+      "url": "https://gamma-api.polymarket.com/markets?limit=100&offset=500&active=true&closed=false&order=volume24hr&ascending=false",
+      "sha256": "4b1466ff56428eb87886e11ee3c134f03c92d44192e9abbff436221bb76a5d6d"
+    }
+  ],
+  "selectionNote": "扫描成交量排名前600个公开活跃合约，按关键词筛选三类主题；非全市场覆盖，每类最多8个。"
+}

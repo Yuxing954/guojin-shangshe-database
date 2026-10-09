@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="中国与美国宏观指标、官方历史数据及Polymarket重要预测。">
+  <title>宏观数据 · 国金商社</title>
+  <link rel="stylesheet" href="scripts/site.css?v=6"><link rel="stylesheet" href="scripts/macro.css?v=2">
+  <script defer src="scripts/site-shell.js?v=5"></script><script defer src="scripts/macro-model.js?v=1"></script><script defer src="scripts/macro.js?v=2"></script>
+</head>
+<body class="site-page" data-site-section="macro">
+<a class="macro-skip" href="#main">跳至主要内容</a>
+<main id="main" class="site-main" tabindex="-1">
+  <header class="portal-header"><div><p class="eyebrow">MACRO / CHINA & UNITED STATES</p><h1>宏观数据</h1><p>从经济增长到金融条件，核对数据与市场预期。</p></div><a href="docs/macro-data.md" class="portal-top-link">数据接入说明 ↗</a></header>
+  <nav class="portal-tabs" aria-label="数据视图"><button data-view="indicators" aria-pressed="true">官方宏观指标</button><button data-view="predictions" aria-pressed="false">Polymarket 重要预测</button></nav>
+  <div id="load-state" class="portal-status" role="status">正在读取宏观数据…</div><button id="retry" class="portal-button" hidden>重试读取</button>
+  <section id="indicators" hidden>
+    <nav id="countries" class="portal-tabs" aria-label="选择国家"><button data-country="CN" aria-pressed="true">中国</button><button data-country="US" aria-pressed="false">美国</button></nav>
+    <div class="macro-summary" id="summary" role="status"></div>
+    <p class="portal-note">年度数据来自世界银行；月度、季度、日度指标按各自来源展示。未接入指标保持空值，发布日期未知时明确标注；快照获取时间不代表数据发布日期。</p>
+    <div class="portal-filter"><input id="search" type="search" aria-label="搜索宏观指标" placeholder="搜索指标、分类或官方序列代码"><label>分类 <select id="category"><option value="">全部分类</option></select></label><label><input id="available" type="checkbox"> 只看有数据</label></div>
+    <div class="macro-layout">
+      <section class="portal-panel macro-list-panel" aria-labelledby="list-heading"><div class="portal-panel-head"><h2 id="list-heading">指标目录</h2><span id="count" class="portal-note"></span></div><div id="metric-list" class="macro-list"></div></section>
+      <section id="detail" class="portal-panel macro-detail" aria-labelledby="metric-title"></section>
+    </div>
+    <details class="portal-panel"><summary>官方来源、API 可用性与数据授权</summary><div id="sources" class="macro-sources"></div></details>
+  </section>
+  <section id="predictions" hidden aria-labelledby="prediction-heading">
+    <div class="portal-panel-head"><div><h2 id="prediction-heading">重要事件的市场预期</h2><p class="portal-note">按主题筛选，再按24小时成交量排序；每个事件最多3个合约，保留结算条件原文入口。</p></div><button id="prediction-download" class="portal-button" disabled>下载预测 CSV</button></div>
+    <p class="macro-disclosure">概率由 Polymarket 合约价格×100 推得，是该平台的市场隐含预期，受流动性、价差和结算规则影响。它不是官方统计或确定结论。</p>
+    <div id="prediction-status" class="portal-status" role="status"></div>
+    <div class="portal-filter"><input id="prediction-search" type="search" aria-label="搜索预测事件" placeholder="搜索预测标题（中文或英文）"><label>主题 <select id="prediction-category"><option value="">全部主题</option><option>经济与利率</option><option>金融市场</option><option>政治与地缘</option></select></label></div>
+    <div id="prediction-list" class="prediction-grid"></div>
+    <p class="portal-note">公开 Gamma API，无需密钥。来源：<a href="https://docs.polymarket.com/market-data/overview" target="_blank" rel="noopener">Polymarket 官方文档</a>；使用遵循其<a href="https://polymarket.com/tos" target="_blank" rel="noopener">服务条款</a>，公开接口不构成无限再分发授权。标题与结果优先展示中文，可展开核对英文原文；结算以原始合约规则为准。</p>
+  </section>
+</main>
+</body></html>
