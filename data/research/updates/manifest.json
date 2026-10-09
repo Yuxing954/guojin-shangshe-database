@@ -1,11 +1,11 @@
 {
-  "syncedAt": "2026-10-09T18:10:29+08:00",
+  "syncedAt": "2026-10-09T20:01:49+08:00",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
   "coverageFrom": "2026-08-09",
-  "coverageTo": "2026-10-09T17:50:04.563+0800",
+  "coverageTo": "2026-10-09T19:45:45.398+0800",
   "oldestFetched": "2026-08-08T22:08:04.080+0800",
-  "fetchedTopics": 11137,
+  "fetchedTopics": 11149,
   "files": {
     "views": [
       "data/research/updates/2026-10-09-views-005.csv",
@@ -18,6 +18,7 @@
       "data/research/updates/2026-10-07-views-002.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-10-09-all_views-008.csv",
       "data/research/updates/2026-10-09-all_views-007.csv",
       "data/research/updates/2026-10-09-all_views-006.csv",
       "data/research/updates/2026-10-09-all_views-005.csv",
@@ -65,17 +66,17 @@
   },
   "counts": {
     "views": 207,
-    "all_views": 3964,
+    "all_views": 3971,
     "minutes": 99
   },
   "latest": {
     "views": "2026-10-09T17:47:48",
-    "all_views": "2026-10-09T17:50:04",
+    "all_views": "2026-10-09T19:45:45",
     "minutes": "2026-09-28T13:18:13"
   },
   "excluded": {
     "纯文件/图片占位": 729,
-    "图片贴（仅标题文字）": 163,
+    "图片贴（仅标题文字）": 165,
     "纯符号内容": 402,
     "纯标签贴": 1402,
     "内容过短（13字）": 48,
@@ -88,7 +89,7 @@
     "仅会议标题（无正文）": 22,
     "内容过短（4字）": 2,
     "内容过短（9字）": 3,
-    "附件标题": 32,
+    "附件标题": 35,
     "内容过短（2字）": 1,
     "内容过短（3字）": 3,
     "内容过短且无信息量（29字）": 1,
@@ -4362,7 +4363,14 @@
       "14425445514182842",
       "14425445514182852",
       "55521551145482254",
-      "82258228842441142"
+      "82258228842441142",
+      "55521551182442144",
+      "22258228815421281",
+      "14425445582148552",
+      "14425445582148222",
+      "45548558814252248",
+      "14425445582141452",
+      "22258228815422821"
     ]
   },
   "lastRun": {
@@ -4396,6 +4404,24 @@
       },
       "skippedUnreadableImageTopics": 4,
       "keptDuplicatePolicy": "同一类别中保留较新发布时间的记录"
+    },
+    {
+      "syncedAt": "2026-10-09T20:01:49+08:00",
+      "coverageFrom": "2026-10-09T17:50:04.563+0800",
+      "coverageTo": "2026-10-09T19:45:45.398+0800",
+      "pageTopicsRead": 30,
+      "newCoverageTopics": 12,
+      "added": {
+        "views": 0,
+        "all_views": 7
+      },
+      "removedDuplicateRows": {
+        "views": 0,
+        "all_views": 0
+      },
+      "skippedUnreadableAttachments": 3,
+      "skippedImageOnlyTopics": 2,
+      "keptDuplicatePolicy": "按topic_id和清理后正文去重"
     }
   ]
 }
