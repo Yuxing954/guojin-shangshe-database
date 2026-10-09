@@ -53,7 +53,7 @@
     var base = periods.get(baseWeek());
     $('period-note').innerHTML = '数据周：' + esc(periodLabel(periods.get(state.week))) + '<br>比较基周：' +
       esc(base ? periodLabel(base) : baseWeek() + '（无基周记录）') +
-      (state.base === 'auto' ? ' · 同周号同比，未作节假日错期调整' : ' · <span class="hd-manual">手动基周 · 对比变化</span>');
+      (state.base === 'auto' ? ' · 同周同比' : ' · <span class="hd-manual">手动基周 · 对比变化</span>');
     $('mode-switch').querySelector('[data-mode="change"]').textContent = state.base === 'auto' ? '同比增速' : '对比变化';
   }
   function renderOverview() {
@@ -67,12 +67,6 @@
       var cls = isChange && main != null ? (main > 0 ? ' hd-positive' : main < 0 ? ' hd-negative' : ' hd-neutral') : '';
       return '<article class="hd-stat' + (i === 0 ? ' primary' : '') + '"><div class="hd-stat-label">' + meta.label + ' <span>' + meta.abbr + '</span>' + (isChange ? ' · ' + labelChange() : '') + '</div><div class="hd-stat-value' + cls + '">' + (isChange && main > 0 ? '+' : '') + fmt(main, 1) + '<small>' + unit + '</small></div><div class="hd-stat-change">' + (isChange ? '<span>本周</span>' + fmt(v, 1) + ' ' + meta.unit : '<span>' + labelChange() + '</span>' + delta(change, field)) + '</div></article>';
     }).join('');
-    if (!r) $('takeaway').textContent = state.region + '在所选周暂无经营记录。可切换数据周查看。';
-    else if (!base) $('takeaway').textContent = '比较基周暂无该地区记录；当前值保留，变化不计算。';
-    else {
-      $('takeaway').innerHTML = '量价一起看：入住率' + labelChange() + ' ' + delta(M.change(r, base, 'occupancy_rate'), 'occupancy_rate') +
-        '，房价' + labelChange() + ' ' + delta(M.change(r, base, 'adr'), 'adr') + '，每房收入' + labelChange() + ' ' + delta(M.change(r, base, 'revpar'), 'revpar') + '。';
-    }
     renderTrend(); renderSegments();
     $('region-supply').innerHTML = '<div class="hd-scale"><span>全部酒店<b>' + fmt(M.metric(r, 'hotel_count'), 0) + ' 家</b></span><span>全部房量<b>' + fmt(M.metric(r, 'room_count'), 0) + ' 间</b></span><span>15间及以上房量<b>' + fmt(M.metric(r, 'room_count_15plus'), 0) + ' 间</b></span></div>';
     $('segment-scale-table').innerHTML = '<thead><tr><th>档次（15间及以上）</th><th>酒店数（家）</th><th>房量（间）</th></tr></thead><tbody>' + ['全部'].concat(SEGS).map(function (seg) {
@@ -92,10 +86,10 @@
       return { x: r.period_id, y: display(row(state.region, '全部', M.priorPeriod(r)), field) };
     }) });
     var unit = state.mode === 'change' ? (field === 'occupancy_rate' ? '百分点' : '%') : meta.unit;
-    $('trend-caption').textContent = meta.label + '（' + meta.abbr + '） · ' + unit + (state.mode === 'change' ? ' · 未作节假日错期调整' : ' · 虚线为去年同周号');
+    $('trend-caption').textContent = meta.label + '（' + meta.abbr + '） · ' + unit + (state.mode === 'change' ? '' : '');
     $('chart-mode-note').textContent = state.mode === 'change' ? '同周同比 · 入住率用百分点' : '绝对值 · 对照去年同周';
     lineChart('main-chart', lines, { unit: unit, occupancy: state.mode === 'value' && field === 'occupancy_rate', zero: state.mode === 'change' });
-    $('history-note').textContent = rows.length ? '展示 ' + rows[0].period_id + ' — ' + rows[rows.length - 1].period_id + ' · ' + rows.length + '周 · 范围截止所选周；缺失值留空，折线断开。' : '所选范围暂无数据。';
+    $('history-note').textContent = rows.length ? '展示 ' + rows[0].period_id + ' — ' + rows[rows.length - 1].period_id + ' · ' + rows.length + '周' : '所选范围暂无数据。';
   }
   function metricCell(r, base, field) {
     var v = display(r, field), change = M.change(r, base, field);
@@ -117,7 +111,7 @@
   function drawSegments() {
     var field = $('segment-metric').value, isChange = state.mode === 'change';
     var unit = isChange ? (field === 'occupancy_rate' ? '百分点' : '%') : META[field].unit;
-    $('segment-chart-caption').textContent = META[field].label + ' · ' + (isChange ? '同周同比（' + unit + '），未作节假日错期调整' : '绝对值（' + unit + '）');
+    $('segment-chart-caption').textContent = META[field].label + ' · ' + (isChange ? '同周同比（' + unit + '）' : '绝对值（' + unit + '）');
     lineChart('segment-chart', SEGS.map(function (seg, i) { return { name: seg, color: COLORS[i], pts: calendar().map(function (r) {
       var s = row(state.region, seg, r.period_id);
       return { x: r.period_id, y: isChange ? M.change(s, row(state.region, seg, M.priorPeriod(r)), field) : display(s, field) };
@@ -157,7 +151,7 @@
     if (!data.group) return;
     var field = $('group-metric').value, isChange = state.mode === 'change';
     var unit = isChange ? '%' : valueUnit(field), title = field === 'stay_adr' ? '入住日期房价' : field === 'hotel_count' ? '酒店数量' : '房间数量';
-    $('group-chart-caption').textContent = title + ' · ' + (isChange ? '同周同比（%），未作节假日错期调整' : '绝对值（' + unit + '）');
+    $('group-chart-caption').textContent = title + ' · ' + (isChange ? '同周同比（%）' : '绝对值（' + unit + '）');
     lineChart('group-chart', GROUPS.map(function (g, i) {
       var full = M.sorted(data.group.filter(function (r) { return r.group === g && r.region === '全国'; }));
       return { name: g, color: COLORS[i], pts: calendar().filter(function (r) { return full.length && r.period_id >= full[0].period_id; }).map(function (r) {

@@ -8,12 +8,12 @@
   <link rel="stylesheet" href="scripts/hotel-dashboard.css?v=20261008yoy">
   <script defer src="scripts/site-shell.js?v=4"></script>
   <script defer src="scripts/hotel-metrics.js?v=20261008"></script>
-  <script defer src="scripts/hotel-dashboard.js?v=20261008yoy"></script>
+  <script defer src="scripts/hotel-dashboard.js?v=20261009copy"></script>
 </head>
 <body class="hotel-page">
 <main class="hd-wrap">
   <header class="hd-header">
-    <div><a class="hd-back" href="industry.html#hotel">行业数据 / 酒店</a><h1>酒店数据</h1><p>重点看同比，再结合量价与城市差异。</p></div>
+    <div><a class="hd-back" href="industry.html#hotel">行业数据 / 酒店</a><h1>酒店数据</h1></div>
     <div class="hd-updated" id="asof" aria-live="polite">正在读取数据…</div>
   </header>
   <div id="load-error" class="hd-error" role="alert" hidden></div>
@@ -23,8 +23,8 @@
       <div class="hd-display-control"><span>经营指标显示</span><div class="hd-switch" id="mode-switch" aria-label="经营指标显示"><button type="button" data-mode="change" class="active" aria-pressed="true">同比增速</button><button type="button" data-mode="value" aria-pressed="false">绝对值</button></div></div>
       <details class="hd-compare"><summary>同比口径与错期</summary><div class="hd-compare-body">
         <label>比较基周 <select id="compare-select"></select></label>
-        <p>默认按去年同周号比较，未作节假日错期调整。可手动选择去年基周，选择后显示“对比变化”。</p>
-        <p>图表的同比走势始终按去年同周号计算。</p>
+        <p>默认同周号 · 未调整节假日错期</p>
+
       </div></details>
     </div>
     <p class="hd-period" id="period-note"></p>
@@ -37,7 +37,7 @@
     <section id="view-overview" class="hd-view">
       <div class="hd-section-head"><h2 id="overview-title">全国经营</h2><label>地区 <select id="region-select"></select></label></div>
       <div class="hd-kpis" id="core-kpis"></div>
-      <p class="hd-takeaway" id="takeaway"></p>
+
       <div class="hd-card">
         <div class="hd-card-head"><h2>经营走势</h2><label>范围 <select id="history-start"><option value="52">近1年</option><option value="156">近3年</option><option value="all">全部历史</option></select></label></div>
         <div class="hd-chart-controls">
@@ -48,34 +48,34 @@
         <div class="hd-chart" id="main-chart"></div>
         <p class="hd-footnote" id="history-note"></p>
       </div>
-      <div class="hd-card"><div class="hd-card-head"><h2>哪个档次表现更好</h2><span>所选地区 · 所选周</span></div><div class="hd-table-scroll" tabindex="0" aria-label="分档次经营表，可左右滚动"><table class="hd-table" id="segment-table"></table></div>
+      <div class="hd-card"><div class="hd-card-head"><h2>分档次经营</h2><span>所选地区 · 所选周</span></div><div class="hd-table-scroll" tabindex="0" aria-label="分档次经营表，可左右滚动"><table class="hd-table" id="segment-table"></table></div>
         <details class="hd-detail"><summary>查看分档次历史走势</summary><label>指标 <select id="segment-metric"><option value="revpar">每房收入</option><option value="occupancy_rate">入住率</option><option value="adr">房价</option></select></label><p class="hd-detail-caption" id="segment-chart-caption"></p><div class="hd-chart" id="segment-chart"></div></details>
       </div>
-      <details class="hd-detail hd-plain"><summary>酒店与房间规模</summary><div id="region-supply"></div><div class="hd-table-scroll" tabindex="0" aria-label="分档次规模表，可左右滚动"><table class="hd-table" id="segment-scale-table"></table></div><p>“全部”包含15间以下酒店；分档次规模使用15间及以上口径。</p></details>
+      <details class="hd-detail hd-plain"><summary>酒店与房间规模</summary><div id="region-supply"></div><div class="hd-table-scroll" tabindex="0" aria-label="分档次规模表，可左右滚动"><table class="hd-table" id="segment-scale-table"></table></div></details>
     </section>
 
     <section id="view-cities" class="hd-view" hidden>
-      <div class="hd-section-head"><div><h2>20个重点城市，放在一起看</h2><p>与全国使用同一数据周和比较基周。点击城市查看历史。</p></div></div>
+      <div class="hd-section-head"><div><h2>重点城市</h2></div></div>
       <div class="hd-city-summary" id="city-summary"></div>
       <div class="hd-card">
         <div class="hd-city-controls"><label>搜索城市 <input id="city-search" type="search" placeholder="例如：杭州"></label><label>排序 <select id="city-sort"><option value="revChange">每房收入同比 · 从高到低</option><option value="occChange">入住率同比 · 从高到低</option><option value="adrChange">房价同比 · 从高到低</option><option value="revpar">每房收入绝对值 · 从高到低</option><option value="occupancy_rate">入住率绝对值 · 从高到低</option><option value="adr">房价绝对值 · 从高到低</option></select></label></div>
-        <div class="hd-table-scroll" tabindex="0" aria-label="重点城市经营表，可左右滚动"><table class="hd-table hd-city-table" id="city-table"></table></div><p class="hd-footnote">全国作为参照固定在首行，不参与城市排名；缺失值不参与比较。</p>
+        <div class="hd-table-scroll" tabindex="0" aria-label="重点城市经营表，可左右滚动"><table class="hd-table hd-city-table" id="city-table"></table></div>
       </div>
     </section>
 
     <section id="view-structure" class="hd-view" hidden>
-      <div class="hd-section-head"><div><h2>集团与供给</h2><p>本页均为全国口径；周度数据跟随上方数据周，市占率单独使用年度数据。</p></div></div>
-      <div class="hd-card"><div class="hd-card-head"><h2>集团经营与规模</h2><span id="group-period"></span></div><div class="hd-table-scroll" tabindex="0" aria-label="全国集团表，可左右滚动"><table class="hd-table" id="group-table"></table></div><p class="hd-footnote">房价、价格指数与热度指数均按入住日期统计；热度指数不等于实际入住率。</p>
+      <div class="hd-section-head"><div><h2>集团与供给</h2></div></div>
+      <div class="hd-card"><div class="hd-card-head"><h2>集团经营与规模</h2><span id="group-period"></span></div><div class="hd-table-scroll" tabindex="0" aria-label="全国集团表，可左右滚动"><table class="hd-table" id="group-table"></table></div>
         <details class="hd-detail"><summary>查看集团历史走势</summary><label>指标 <select id="group-metric"><option value="stay_adr">房价</option><option value="hotel_count">酒店数量</option><option value="room_count">房间数量</option></select></label> <label>范围 <select id="group-window"><option value="52">近1年</option><option value="156">近3年</option><option value="all">全部历史</option></select></label><p class="hd-detail-caption" id="group-chart-caption"></p><div class="hd-chart" id="group-chart"></div></details>
       </div>
       <div class="hd-card"><div class="hd-card-head"><h2>全国酒店供给</h2><span id="supply-period"></span></div><div class="hd-supply-stats" id="supply-stats"></div><div class="hd-table-scroll" tabindex="0" aria-label="供给结构表，可左右滚动"><table class="hd-table" id="supply-table"></table></div>
         <details class="hd-detail"><summary>查看供给历史走势</summary><label>指标 <select id="supply-metric"><option value="room_count">房间数量（间）</option><option value="hotel_count">酒店数量（家）</option></select></label> <label>范围 <select id="supply-window"><option value="52">近1年</option><option value="156">近3年</option><option value="all">全部历史</option></select></label><div class="hd-chart" id="supply-chart"></div></details>
       </div>
-      <details class="hd-detail hd-card hd-annual"><summary>集团市占率 · 年度数据 <span id="share-year"></span></summary><p>六大集团房间数份额，按源表原值展示，不归一化。</p><div class="hd-table-scroll" tabindex="0" aria-label="年度市占率表，可左右滚动"><table class="hd-table" id="share-table"></table></div><div class="hd-chart" id="share-chart"></div></details>
+      <details class="hd-detail hd-card hd-annual"><summary>集团市占率 · 年度数据 <span id="share-year"></span></summary><div class="hd-table-scroll" tabindex="0" aria-label="年度市占率表，可左右滚动"><table class="hd-table" id="share-table"></table></div><div class="hd-chart" id="share-chart"></div></details>
     </section>
 
-    <details class="hd-detail hd-quality"><summary>数据来源、历史覆盖与计算口径</summary><div id="coverage-note"></div><p>数据来源：酒店之家。每房收入（RevPAR）＝入住率（OCC）×平均房价（ADR）；房价采用入住日期口径。入住率变化用“百分点”，房价与每房收入变化用“%”。同比缺少基期或基期为零时不计算增速。</p><p>不同指标起始周不同，缺失和异常值显示“—”，不补零。历史分档次异常入住率及其每房收入已在分析数据中留空，源值保留在异常记录。</p><p><a href="https://github.com/yuxing954/guojin-shangshe-database/blob/main/docs/hotel-data-update.md" target="_blank" rel="noopener">查看数据更新与口径说明 ↗</a> · <a href="data/hotel-source-anomalies.csv">异常记录</a></p></details>
-    <footer class="hd-footer">酒店之家 · 国金商社研究数据库 <span>数据周与比较基周见页首</span></footer>
+    <details class="hd-detail hd-quality"><summary>数据来源、历史覆盖与计算口径</summary><div id="coverage-note"></div><p><a href="https://github.com/yuxing954/guojin-shangshe-database/blob/main/docs/hotel-data-update.md" target="_blank" rel="noopener">查看数据更新与口径说明 ↗</a> · <a href="data/hotel-source-anomalies.csv">异常记录</a></p></details>
+    <footer class="hd-footer">酒店之家 · 国金商社研究数据库 </footer>
   </div>
 </main>
 </body>

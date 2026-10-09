@@ -12,7 +12,7 @@
   function summary(rows){
     const s=M.historySummary(rows);if(!s)return '';
     const sign=n=>n>0?'+':'',fmt=n=>n.toLocaleString('zh-CN',{maximumFractionDigits:2});
-    return '<div class="gold-kpis"><div class="gold-kpi">首末观测变化<strong>'+(s.change===null?'—':sign(s.change)+fmt(s.change))+'</strong><span class="gold-meta">'+(s.percent===null?'至少需要两个不同日期的观测':sign(s.percent)+fmt(s.percent)+'% · '+esc(rows[0].unit))+'</span></div><div class="gold-kpi">观测最低 / 最高<strong>'+fmt(s.min)+' / '+fmt(s.max)+'</strong><span class="gold-meta">'+esc(rows[0].unit)+'</span></div></div><p class="gold-subtle">计算期间：'+s.start+' 至 '+s.end+'，共 '+s.count+' 条。仅比较区间内首末实际观测；缺日不补值，不代表所选日历端点的涨跌。</p>';
+    return '<div class="gold-kpis"><div class="gold-kpi">首末观测变化<strong>'+(s.change===null?'—':sign(s.change)+fmt(s.change))+'</strong><span class="gold-meta">'+(s.percent===null?'单点':sign(s.percent)+fmt(s.percent)+'% · '+esc(rows[0].unit))+'</span></div><div class="gold-kpi">观测最低 / 最高<strong>'+fmt(s.min)+' / '+fmt(s.max)+'</strong><span class="gold-meta">'+esc(rows[0].unit)+'</span></div></div><p class="gold-subtle">计算期间：'+s.start+' 至 '+s.end+'，共 '+s.count+' 条</p>';
   }
   root.GoldJewelryHistory={init(data){
     const sources=Object.fromEntries(data.sources.map(s=>[s.id,s])),brands=Object.fromEntries(data.brands.map(s=>[s.id,s.name])),groups=new Map();

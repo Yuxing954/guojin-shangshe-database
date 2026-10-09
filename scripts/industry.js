@@ -21,7 +21,7 @@
 
   function chart(points,m){
 
-    const clean=points.filter(p=>Number.isFinite(p.value));if(!clean.length)return '<p class="portal-empty">当前口径暂无可绘制数据，请切换指标或查看来源明细。</p>';
+    const clean=points.filter(p=>Number.isFinite(p.value));if(!clean.length)return '<p class="portal-empty">暂无数据</p>';
 
     const esc=D.esc,values=clean.map(p=>p.value),high=Math.max(...values),low=Math.min(...values),spread=high-low||Math.max(1,Math.abs(high)*.02),lo=low-spread*.1,hi=high+spread*.1;
 
@@ -51,7 +51,7 @@
 
     $('sources').innerHTML=ids.map(id=>{const s=sources[id];return '<div class="industry-source">'+sourceLink(id)+'<p>'+D.esc((s.provider||'')+' · '+(quality[s.quality]||''))+'</p><p>'+D.esc('发布日期：'+(s.publishedAt||'未记录')+' · 核对或采集：'+(s.retrievedAt||'未记录'))+'</p>'+(s.locator?'<p>'+D.esc(s.locator)+'</p>':'')+(s.indicator?'<p>原始指标：'+D.esc(s.indicator)+'</p>':'')+'</div>';}).join('')||'<p class="industry-empty">暂无来源记录。</p>';
 
-    const revisions=snapshot.revisions.filter(r=>r.metricId===m.id);$('revision-label').textContent='来源差异与修订记录（'+revisions.length+' 条）';$('revisions').innerHTML=revisions.length?'<p>保留旧值以便回查；当前优先采用原始披露，其次采用平台转引。</p><ul>'+revisions.map(r=>'<li>'+D.esc(r.period)+'：'+fmt(r.previousValue,m.precision)+' → '+fmt(r.selectedValue,m.precision)+' '+D.esc(m.unit)+' · '+D.esc(sources[r.previousSourceId]?.provider||'')+' → '+D.esc(sources[r.selectedSourceId]?.provider||'')+'</li>').join('')+'</ul>':'<p>该指标尚无已记录的来源差异。</p>';
+    const revisions=snapshot.revisions.filter(r=>r.metricId===m.id);$('revision-label').textContent='来源差异与修订记录（'+revisions.length+' 条）';$('revisions').innerHTML=revisions.length?'<ul>'+revisions.map(r=>'<li>'+D.esc(r.period)+'：'+fmt(r.previousValue,m.precision)+' → '+fmt(r.selectedValue,m.precision)+' '+D.esc(m.unit)+' · '+D.esc(sources[r.previousSourceId]?.provider||'')+' → '+D.esc(sources[r.selectedSourceId]?.provider||'')+'</li>').join('')+'</ul>':'<p>该指标尚无已记录的来源差异。</p>';
 
   }
 
@@ -63,11 +63,8 @@
 
     $('coverage').textContent=all.length?all[0].endDate+' — '+all.at(-1).endDate:'';$('chart').innerHTML=chart(points,m);
 
-    const short=all.length&&Number(years)&&Date.parse(all.at(-1).endDate)-Date.parse(m.points[0].endDate)<Number(years)*300*86400000;
 
-    $('chart-note').textContent=[short?'按实际收录范围展示，尚不足'+years+'年。':'',m.frequency==='季度累计'?'柱图展示各期累计量，不代表单季度消费。':'',!m.isRate&&mode!=='change'&&all.some(p=>p.basis==='combined')?'1—2月合并金额不接入单月曲线，可在明细中查看。':'',mode==='change'?'缺失同比不绘制；不由累计同比替代。':''].filter(Boolean).join(' ');
-
-    $('definition').textContent=m.scope+(m.formula?'。'+m.formula:'')+(m.scopeNote?'。'+m.scopeNote:'')+'。历史整理和平台转引保留来源状态；未记录的发布时间保持为空。';
+    $('definition').textContent=m.scope+(m.formula?'。'+m.formula:'')+(m.scopeNote?'。'+m.scopeNote:'');
 
     $('ranges').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.years)===years)));table();
 
@@ -79,21 +76,21 @@
     if(!relatedLoaded){$('company-links').innerHTML='<p class="industry-empty">正在读取公司目录…</p>';$('research-links').innerHTML='<p class="industry-empty">正在读取相关研究…</p>';return;}
     const companies=pool.filter(c=>sector.companySector.split(',').includes(c['子行业'])),sectorUrl='companies.html?sector='+encodeURIComponent(sector.companySector);
 
-    $('company-all').href=sectorUrl;$('company-links').innerHTML=companyError?'<p class="industry-empty">公司目录暂时无法读取，可进入公司页重试。</p>':companies.slice(0,5).map(c=>'<a class="industry-company-link" href="'+sectorUrl+'&company='+encodeURIComponent(c['证券代码'])+'"><span>'+D.esc(c['公司名称'])+'</span><small>'+D.esc(c['证券代码'])+' →</small></a>').join('')||'<p class="industry-empty">暂无已收录公司，后续按公告补齐。</p>';
+    $('company-all').href=sectorUrl;$('company-links').innerHTML=companyError?'<p class="industry-empty">公司目录暂时无法读取，可进入公司页重试。</p>':companies.slice(0,5).map(c=>'<a class="industry-company-link" href="'+sectorUrl+'&company='+encodeURIComponent(c['证券代码'])+'"><span>'+D.esc(c['公司名称'])+'</span><small>'+D.esc(c['证券代码'])+' →</small></a>').join('')||'<p class="industry-empty">暂无公司</p>';
 
     const items=research.filter(r=>R.sectorIds(r).includes(sector.researchSector)).sort((a,b)=>b.published.localeCompare(a.published)).slice(0,5);
 
-    $('research-all').href='research.html?sector='+sector.researchSector;$('research-links').innerHTML=researchError?'<p class="industry-empty">研究内容暂时无法读取，可进入研究页重试。</p>':items.map(r=>'<a class="industry-research-link" href="'+D.esc(R.href(r))+'"><time datetime="'+D.esc(r.published)+'">'+D.esc(r.date.slice(5))+'</time><span>'+D.esc(r.title)+'</span></a>').join('')||'<p class="industry-empty">暂无近期已收录研究，可进入文库查看历史内容。</p>';
+    $('research-all').href='research.html?sector='+sector.researchSector;$('research-links').innerHTML=researchError?'<p class="industry-empty">研究内容暂时无法读取，可进入研究页重试。</p>':items.map(r=>'<a class="industry-research-link" href="'+D.esc(R.href(r))+'"><time datetime="'+D.esc(r.published)+'">'+D.esc(r.date.slice(5))+'</time><span>'+D.esc(r.title)+'</span></a>').join('')||'<p class="industry-empty">暂无近期研究</p>';
 
   }
 
-  function select(){const key=location.hash.slice(1);sector=snapshot.sectors.find(s=>s.id===key)||snapshot.sectors[0];$('page-title').textContent=sector.name;document.title=sector.name+'行业数据 · 国金商社';$('page-subtitle').textContent=sector.question;$('sector-note').textContent=sector.note;$('sector-tabs').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.key===sector.id)));$('metric').innerHTML=sector.metrics.map(m=>'<option value="'+m.id+'">'+D.esc(m.label)+(m.environment?'（经营环境）':m.subset?'（子集）':'')+'</option>').join('');$('specialist').hidden=!sector.detailHref;$('specialist').href=sector.detailHref||'#';$('specialist').textContent='进入'+sector.name+'专题 →';$('history-details').open=false;const requested=new URLSearchParams(location.search).get('metric');choose(sector.metrics.some(m=>m.id===requested)?requested:sector.defaultMetric);related();}
+  function select(){const key=location.hash.slice(1);sector=snapshot.sectors.find(s=>s.id===key)||snapshot.sectors[0];$('page-title').textContent=sector.name;document.title=sector.name+'行业数据 · 国金商社';$('sector-tabs').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.key===sector.id)));$('metric').innerHTML=sector.metrics.map(m=>'<option value="'+m.id+'">'+D.esc(m.label)+(m.environment?'（经营环境）':m.subset?'（子集）':'')+'</option>').join('');$('specialist').hidden=!sector.detailHref;$('specialist').href=sector.detailHref||'#';$('specialist').textContent='进入'+sector.name+'专题 →';$('history-details').open=false;const requested=new URLSearchParams(location.search).get('metric');choose(sector.metrics.some(m=>m.id===requested)?requested:sector.defaultMetric);related();}
 
   $('sector-tabs').onclick=e=>{const b=e.target.closest('[data-key]');if(b)location.hash=b.dataset.key;};$('stats').onclick=e=>{const b=e.target.closest('[data-metric]');if(b)choose(b.dataset.metric);};$('metric').onchange=e=>choose(e.target.value);$('chart-mode').onchange=render;$('ranges').onclick=e=>{const b=e.target.closest('[data-years]');if(b){years=Number(b.dataset.years);page=1;render();}};$('prev').onclick=()=>{page--;table();};$('next').onclick=()=>{page++;table();};$('download').onclick=()=>{const m=activeMetric(),blob=new Blob([M.csv(m,M.inRange(m.points,years),sources)],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=sector.name+'-'+m.label+'.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};addEventListener('hashchange',()=>{if(snapshot)select();});
 
   try{
 
-    snapshot=await D.json('data/industry/overview.json');sources=Object.fromEntries(snapshot.sources.map(s=>[s.id,s]));select();$('content').hidden=false;$('status').textContent='';$('snapshot-note').textContent='最近核对 '+(snapshot.checkedAt||'未记录')+' · 各指标以数据所属期间为准，页面生成时间不代表数据更新。';
+    snapshot=await D.json('data/industry/overview.json');sources=Object.fromEntries(snapshot.sources.map(s=>[s.id,s]));select();$('content').hidden=false;$('status').textContent='';$('snapshot-note').textContent='最近核对 '+(snapshot.checkedAt||'未记录')+'';
 
     const results=await Promise.allSettled([D.json('data-manifest.json').then(m=>D.table(m.datasets.find(d=>d.id==='valuation').file)),D.json('data/research/recent.json')]);
 
