@@ -133,13 +133,14 @@
     $('chart-detail').textContent=dateLabel(rows[0][0])+' — '+dateLabel(rows.at(-1)[0])+(period!=='minute'&&chartData.adjustment==='源数据'?' · 来源未标明复权方式':'')+(quotes[selected.code]&&quotes[selected.code].asOf.slice(0,10)!==end?' · 走势与报价日期不同':'');
   }
   async function loadChart(force=false){
-    if(!selected||!moduleActive())return;const request=++chartRequest,company=selected,mode=period,qc=quotes[company.code]?.providerCode||K.quoteCode(company.code),minute=mode==='minute',key=company.code+'|'+mode+'|'+qc,previous=cache.get(key);
+    if(!selected||!moduleActive())return;const request=++chartRequest,company=selected,mode=period,minute=mode==='minute';let qc,url;
+    try{qc=K.chartCode(company.code,quotes[company.code]?.providerCode);url=K.chartUrl(company.code,mode,quotes[company.code]?.providerCode,mode==='day'?150:100,company.index);}catch(e){$('chart-status').textContent=e.message;chartData=null;$('chart').innerHTML='';return;}
+    const key=company.code+'|'+mode+'|'+qc,previous=cache.get(key);
     $('periods').querySelectorAll('button').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.period===mode)));$('chart-window').disabled=mode!=='day';$('show-ma').disabled=minute;
     if(!force&&previous&&Date.now()-previous.loadedAt<(minute?15000:300000)){chartData=previous;paintChart();return;}
     if(!chartPending.has(key)&&Date.now()<(chartNextAt.get(key)||0)){if(previous){chartData=previous;paintChart();}else $('chart-status').textContent='走势请求间隔至少15秒，请稍后重试。';return;}
     $('chart-status').textContent='正在读取腾讯走势…';chartData=null;$('chart').innerHTML='';$('chart-readout').textContent='';$('chart-detail').textContent='';
-    const url=minute?'https://proxy.finance.qq.com/ifzqgtimg/appstock/app/minute/query?code='+encodeURIComponent(qc):'https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param='+encodeURIComponent(qc+','+mode+',,,'+(mode==='day'?150:100)+(company.index?'':',qfq'));
-    try{let flight=chartPending.get(key);if(!flight){chartNextAt.set(key,Date.now()+15000);flight=jsonp(url).finally(()=>chartPending.delete(key));chartPending.set(key,flight);}const data=await flight,rows=minute?M.intraday(K.normalize(data,'m1'),company.code):M.candles(K.normalize(data,mode));if(rows.length<2)throw Error('来源暂未返回足够的有效走势数据。');const result={code:company.code,period:mode,rows:minute?rows:rows.slice(mode==='day'?-150:-80),adjustment:M.adjustment(data,qc,mode,company.index),loadedAt:Date.now()};cache.set(key,result);if(!moduleActive()||request!==chartRequest||selected?.code!==company.code)return;chartData=result;paintChart();}
+    try{let flight=chartPending.get(key);if(!flight){chartNextAt.set(key,Date.now()+15000);flight=jsonp(url).finally(()=>chartPending.delete(key));chartPending.set(key,flight);}const data=await flight,rows=minute?M.intraday(K.normalize(data,'m1',qc),company.code):M.candles(K.normalize(data,mode,qc));if(rows.length<2)throw Error('来源暂未返回足够的有效走势数据。');const result={code:company.code,period:mode,rows:minute?rows:rows.slice(mode==='day'?-150:-80),adjustment:M.adjustment(data,qc,mode,company.index),loadedAt:Date.now()};cache.set(key,result);if(!moduleActive()||request!==chartRequest||selected?.code!==company.code)return;chartData=result;paintChart();}
     catch(e){if(!moduleActive()||request!==chartRequest||selected?.code!==company.code)return;$('chart-status').textContent='';$('chart').innerHTML='<div class="quotes-chart-empty">'+esc(e.message)+'<br>可切换周期或点击“刷新走势”。</div>';}
   }
   function selectCompany(code,scrollDetail=false){

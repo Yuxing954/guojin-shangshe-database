@@ -13,6 +13,8 @@ on:
       - "industry.html"
       - "quotes.html"
       - "scripts/quotes*"
+      - "tests/fixtures/tencent-charts*"
+      - "scripts/market-kline*"
       - "companies.html"
       - "research.html"
       - "hotel-dashboard.html"
@@ -87,7 +89,7 @@ jobs:
           node --check scripts/quotes-model.js
           node scripts/quotes-model.test.cjs
           node --check scripts/quotes-poller.js
-          node --test scripts/quotes-poller.test.cjs scripts/quotes-lifecycle.test.cjs scripts/quotes-legacy.test.cjs
+          node --test scripts/quotes*.test.cjs
           node --check scripts/home.js
           node --check scripts/site-shell.js
           node --check scripts/industry.js
