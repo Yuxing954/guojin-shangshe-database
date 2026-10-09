@@ -506,7 +506,7 @@
         }
       ],
       "name": "美国10年实际利率",
-      "mechanism": "TIPS实际收益率上升通常提高持有黄金的机会成本；变化用基点表示。",
+      "mechanism": "TIPS实际收益率上升通常提高持有黄金的机会成本。",
       "sourceId": "choice-real10"
     },
     {
@@ -1039,7 +1039,7 @@
       "publishedAt": "2026-09-30",
       "sourceId": "us-pce-202608",
       "basis": "PCE ex food energy yoy",
-      "note": "8月环比+0.2%；不能与CPI通胀目标直接混用。",
+      "note": "8月环比+0.2%；剔除食品和能源。",
       "quality": "primary"
     },
     {
@@ -1063,7 +1063,7 @@
       "publishedAt": "2026-10-02",
       "sourceId": "us-employment-202609",
       "basis": "U3 SA",
-      "note": "季调U3；不采用4.0%的未季调失业率。",
+      "note": "季调U3口径。",
       "quality": "primary"
     }
   ],
