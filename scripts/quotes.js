@@ -42,7 +42,7 @@
     if(focusCode||focusWatch){const buttons=[...$('rows').querySelectorAll('button')],target=buttons.find(button=>focusWatch?button.dataset.watch===focusWatch:button.dataset.code===focusCode);target?.focus({preventScroll:true});}
     $('heatmap').innerHTML=filtered.map(c=>{const q=quotes[c.code],pct=q?.percent,style=heatStyle(pct);return '<button class="quotes-heat-tile" style="background:'+style.background+';color:'+style.color+'" data-code="'+esc(c.code)+'" data-selected="'+(selected?.code===c.code)+'" type="button" title="'+esc(c.name+' · '+c.code+' · '+infoLabel(c)+' · '+price(q,c)+(q?' · '+q.asOf:' · 暂无报价'))+'"><strong>'+esc(c.name)+(watch.includes(c.code)?' ★':'')+'</strong><span>'+signed(pct,'%')+'</span><small>'+price(q,c)+' '+meta(c).currency+'</small></button>';}).join('')||'<p class="quotes-empty">当前分组没有公司，请调整筛选或先添加自选。</p>';
     $('workspace').dataset.view=view;
-    $('columns').parentElement && ($('columns').parentElement.hidden=view==='heat');
+    $('table-tools').hidden=view==='heat';
     $('list-view').hidden=view!=='list';$('heat-view').hidden=view!=='heat';$('views').querySelectorAll('button').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.view===view)));
     $('list-note').textContent=(onlyWatch?'自选仅保存在当前浏览器。 ':'')+(view==='heat'?'共 '+filtered.length+' 家 · 点击色块查看走势':'共 '+filtered.length+' 家 · 点击整行查看走势');
     renderGroups();renderBenchmarks();saveUrl();if(selected){renderOverview();detailNavigation();}
