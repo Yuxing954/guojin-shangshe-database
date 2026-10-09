@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-09",
+  "records": [
+    {
+      "year": 2019, "holiday": "端午", "kind": "holiday", "period": "6.7-6.9", "days": 3,
+      "sales": 0.952661, "shoppers": 2.81, "items": 13.71,
+      "reported_sales_yoy": 51.18, "reported_shoppers_yoy": 34.62, "reported_items_yoy": 49.88,
+      "notes": ["原文9526.61万元换算为0.952661亿元；假期日期按国务院2019年安排核验。"],
+      "web_source": {"title": "海南端午免税品销售额9526万元 同比增长过半", "url": "https://travel.china.com.cn/txt/2019-06/11/content_74875824.html", "publishedAt": "2019-06-11", "publisher": "中国网（海南日报）", "authority": "海口海关初步统计", "locator": "正文首段：销售金额、购物人数及购物件数", "periodUrl": "https://app.www.gov.cn/govdata/gov/201812/06/432792/article.html"}
+    },
+    {
+      "year": 2020, "holiday": "中秋国庆", "comparison_group": "国庆", "kind": "holiday", "period": "10.1-10.8", "days": 8,
+      "sales": 10.4, "shoppers": 14.68, "items": 99.89,
+      "reported_sales_yoy": 148.7, "reported_shoppers_yoy": 43.9, "reported_items_yoy": 97.2,
+      "notes": ["采用海关总署发布并由央视报道的10.4亿元精度，不混入商务厅含有税销售额12.2亿元。"],
+      "web_source": {"title": "海南离岛免税8天销售10.4亿！中秋国庆假期数据来了", "url": "https://www.itaiwannews.cn/20201009/7fcef3cd-4004-c9b1-321d-206cdf662be5.html", "publishedAt": "2020-10-09", "publisher": "海峡飞虹（央视新闻客户端）", "authority": "海关总署、海口海关", "locator": "正文首段：中秋国庆长假金额、旅客及件数", "periodUrl": "https://app.www.gov.cn/govdata/gov/201911/21/451111/article.html"}
+    },
+    {
+      "year": 2021, "holiday": "国庆", "kind": "holiday", "period": "10.1-10.7", "days": 7,
+      "sales": 14.7, "shoppers": 18, "items": 200,
+      "reported_sales_yoy": 66.9, "reported_shoppers_yoy": 61.6, "reported_items_yoy": 136,
+      "notes": ["披露同比为海关原文口径；日均同比按本表2021年7天与2020年8天计算，两者分别保留。"],
+      "web_source": {"title": "海南国庆假期接待游客370.22万人次 揽金超58亿元", "url": "https://www.cnr.cn/hn/jrhn/20211008/t20211008_525627241.shtml", "publishedAt": "2021-10-08", "publisher": "央广网", "authority": "海口海关统计", "locator": "正文‘免税购物持续发力’段，10月1日至7日海关数据"}
+    },
+    {
+      "year": 2023, "holiday": "端午", "kind": "holiday", "period": "6.22-6.24", "days": 3,
+      "sales": 2.6, "shoppers": 4.37,
+      "notes": ["该报道未披露购物件数及同比，保持缺失；不按后年同比反推。"],
+      "web_source": {"title": "端午节期间海南离岛免税‘揽金’2.6亿元", "url": "https://news.hainan.net/hainan/minsheng/minshengliebiao/2023/06/25/4750199.shtml", "publishedAt": "2023-06-25", "publisher": "海南在线（椰网/海拔新闻）", "authority": "海口海关统计", "locator": "正文首段：6月22日至24日金额及购物人数"}
+    },
+    {
+      "year": 2020, "holiday": "元旦", "kind": "holiday", "period": "1.1", "days": 1,
+      "sales": 0.54, "shoppers": 1.71, "items": 7.01,
+      "reported_sales_yoy": 19.69, "reported_shoppers_yoy": 47.38, "reported_items_yoy": 35.91,
+      "preserve_calendar_detail": true,
+      "notes": ["2020年法定元旦仅1天；原表1月1日至3日的公式反推窗口转存阶段记录，不与实际元旦1天混用。"],
+      "web_source": {"title": "‘元旦’期间海关监管海南离岛免税销售再创新高", "url": "https://www.chinanews.com/cj/2020/01-02/9049789.shtml", "publishedAt": "2020-01-02", "publisher": "中国新闻网", "authority": "海口海关统计", "locator": "正文首段明确2020年1月1日及三项指标", "periodUrl": "https://app.www.gov.cn/govdata/gov/201911/21/451111/article.html"}
+    },
+    {
+      "year": 2021, "holiday": "元旦", "kind": "holiday", "period": "1.1-1.3", "days": 3,
+      "sales": 5.4, "shoppers": 7.6, "items": 66.9,
+      "reported_sales_yoy": 195.16, "reported_shoppers_yoy": 80.9, "reported_items_yoy": 200,
+      "recompute_yoy": true,
+      "notes": ["原文披露同比单列保留；本表日均按2021年3天与2020年法定元旦1天计算。原表195.16%及公式三天窗口保留在原表基线/阶段区。"],
+      "web_source": {"title": "海南元旦假期离岛免税销售金额达5.4亿元", "url": "https://www.xinhuanet.com/2021-01/04/c_1126945053.htm", "publishedAt": "2021-01-04", "publisher": "新华网", "authority": "海口海关统计", "locator": "正文第二段：66.9万件、7.6万人次、5.4亿元及同比", "periodUrl": "https://app.www.gov.cn/govdata/gov/202011/25/465322/article.html"}
+    },
+    {
+      "year": 2026, "holiday": "清明", "kind": "holiday", "items": 22.42,
+      "reported_sales_yoy": 14.8, "reported_shoppers_yoy": 19.6, "reported_items_yoy": 10.1,
+      "notes": ["购物件数与购物人数同比按公开报道补录；2025年清明总额未独立核验，不反推补录。"],
+      "web_source": {"title": "今年清明假期海南离岛免税购物金额同比增长14.8%", "url": "https://news.cnr.cn/native/gd/kx/20260407/t20260407_527576041.shtml", "publishedAt": "2026-04-07", "publisher": "央广网（央视新闻客户端）", "authority": "央视报道海南离岛免税统计", "locator": "正文首段：4月4日至6日三项指标与同比"}
+    },
+    {
+      "year": 2026, "holiday": "端午", "kind": "holiday", "items": 15.9,
+      "reported_sales_yoy": 8.6, "reported_shoppers_yoy": 11.2, "reported_items_yoy": 1.9,
+      "notes": ["披露销售同比8.6%与本表已收录金额计算的日均同比不同；披露值与计算值分别保留。"],
+      "web_source": {"title": "端午期间海南离岛免税购物金额超2亿元", "url": "https://www.stcn.com/article/detail/3971332.html", "publishedAt": "2026-06-22", "publisher": "证券时报（央视新闻）", "authority": "海口海关统计", "locator": "正文海关统计段：6月19日至21日三项指标与同比"}
+    },
+    {
+      "year": 2026, "holiday": "五一", "kind": "holiday", "items": 44.17,
+      "reported_sales_yoy": 10.4, "reported_shoppers_yoy": 7.4, "reported_items_yoy": 3.8,
+      "notes": ["披露销售同比10.4%与本表金额计算的日均同比不同；披露值与计算值分别保留。"],
+      "web_source": {"title": "‘五一’假期海南离岛免税购物金额5.54亿元", "url": "https://www.stcn.com/article/detail/3895504.html", "publishedAt": "2026-05-06", "publisher": "证券时报（央视新闻）", "authority": "海口海关统计", "locator": "正文首段：5月1日至5日三项指标与同比"}
+    },
+    {
+      "year": 2026, "holiday": "国庆", "kind": "holiday", "items": 69.68, "items_text": null,
+      "field_sources": {"items": "https://www.xinhuanet.com/photo/20261008/612a8afa84d144c78bc2e3e6dece4d52/c.html"},
+      "additional_sources": [{"title": "国庆期间海南离岛免税市场销售火热", "url": "https://www.xinhuanet.com/photo/20261008/612a8afa84d144c78bc2e3e6dece4d52/c.html", "publishedAt": "2026-10-08", "checkedAt": "2026-10-09", "publisher": "新华网", "authority": "海口海关统计", "locator": "首张照片说明，明确10月1日至7日金额、人数、件数"}],
+      "notes": ["国庆购物件数按新华社69.68万件补齐；原文近70万件描述保留于既有央视来源。购物人次同比10.41%仍沿用既有央视报道，未替换为新华社披露。"]
+    },
+    {
+      "year": 2026, "holiday": "端午前两天", "holiday_group": "端午", "kind": "detail", "period": "6.19-6.20", "days": 2,
+      "sales": 1.46, "shoppers": 2.43, "items": 11,
+      "reported_sales_yoy": 41.7, "reported_shoppers_yoy": 13, "reported_items_yoy": 8.9,
+      "notes": ["阶段记录与端午完整假期重叠，不加总。"],
+      "web_source": {"title": "海南自贸港政策红利持续释放 端午消费热度攀升", "url": "https://news.cnr.cn/kuaixun/20260621/t20260621_527670381.shtml", "publishedAt": "2026-06-21", "publisher": "央广网", "authority": "海口海关统计", "locator": "正文‘据海口海关统计，今年端午节前两天’段"}
+    },
+    {
+      "year": 2026, "holiday": "国庆首日", "holiday_group": "国庆", "kind": "detail", "period": "10.1", "days": 1,
+      "sales": 1.07, "shoppers": 1.89, "items": 8.3,
+      "reported_sales_yoy": 21.17, "reported_shoppers_yoy": 13.81, "reported_items_yoy": 11.24,
+      "notes": ["阶段记录与国庆前三天、前五天及完整假期重叠，不加总。"],
+      "web_source": {"title": "国庆假期首日 海南离岛免税购物金额超1亿元", "url": "https://www.stcn.com/article/detail/4205828.html", "publishedAt": "2026-10-02", "publisher": "证券时报（央视新闻）", "authority": "海口海关统计", "locator": "正文首段：国庆首日金额、人数、件数及同比"}
+    },
+    {
+      "year": 2026, "holiday": "国庆前三天", "holiday_group": "国庆", "kind": "detail", "period": "10.1-10.3", "days": 3,
+      "sales": 3.58, "shoppers": 5.51, "items": 27.7,
+      "reported_sales_yoy": 8.85, "reported_shoppers_yoy": 12.9, "reported_items_yoy": 8.02,
+      "notes": ["阶段记录与国庆首日、前五天及完整假期重叠，不加总。"],
+      "web_source": {"title": "国庆假期前三天 海南离岛免税购物金额超3.5亿元", "url": "https://www.stcn.com/article/detail/4206184.html", "publishedAt": "2026-10-04", "publisher": "证券时报（央视新闻）", "authority": "海口海关统计", "locator": "正文首段：10月1日至3日三项指标与同比"}
+    }
+  ],
+  "coverageNotes": [
+    "月度核心金额、人次、件数已收录至2026年8月；2026年9月单月尚未独立核验，不用中秋或暑期数据代替。",
+    "2025年清明缺少独立核验的假期总额，保留缺失；2026年清明披露同比可单独展示。",
+    "2022年国庆原表日期与年份不一致，总额为公式反推；未核验实际期间，不推定天数或日均。",
+    "2025年中秋与国庆连休，无独立中秋总额；2026年中秋无可比上一年独立假期同比。",
+    "月度旅游人次、转化率的部分早期及2026年记录缺少可核验原始口径，保留空值；首年同月基数不存在的同比不补0。"
+  ]
+}

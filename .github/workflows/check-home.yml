@@ -26,6 +26,9 @@ on:
       - "scripts/industry*"
       - "scripts/dutyfree-holidays.*"
       - "tests/dutyfree-holidays.test.cjs"
+      - "tests/test_dutyfree_supplements.py"
+      - "scripts/supplement_dutyfree_holidays.py"
+      - "scripts/import_dutyfree_holidays.py"
       - "data/dutyfree/**"
       - "data/dutyfree_holiday.csv"
       - "scripts/build_industry_snapshot.py"
@@ -97,6 +100,7 @@ jobs:
           node scripts/industry-model.test.cjs
           node --check scripts/dutyfree-holidays.js
           node tests/dutyfree-holidays.test.cjs
+          python tests/test_dutyfree_supplements.py
           node --check scripts/companies.js
           node --check scripts/resource-search.js
           node --check scripts/resource-model.js
