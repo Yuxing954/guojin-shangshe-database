@@ -1199,7 +1199,7 @@
   ],
   "classificationNote": "对标题或正文的偶然关键词命中做主旨复核；未具名的珠宝龙头不推断为具体公司。",
   "validation": {
-    "stage": "preCommit",
+    "stage": "githubAndLivePageVerified",
     "newRows": {
       "views": 11,
       "all_views": 100
@@ -1211,6 +1211,28 @@
     "historicalBriefsPreserved": true,
     "historicalManifestFilesPreserved": true,
     "summaryCount": 21,
-    "unreadAttachmentsExcluded": true
+    "unreadAttachmentsExcluded": true,
+    "dataCommit": "eb31587a63a5f408ed317cd0914fb55baa5c6ac8",
+    "indexCommit": "1cba1480fb477806c2667f643a4dc49366bed0d0",
+    "githubFilesReadBack": 6,
+    "indexSourceRows": {
+      "views": 4584,
+      "all_views": 34880
+    },
+    "newTopicIdsInIndex": 111,
+    "missingNewTopicIds": 0,
+    "indexBuildRun": 37878933198,
+    "indexBuildConclusion": "success",
+    "pagesRun": 37878953455,
+    "pagesConclusion": "success",
+    "livePage": {
+      "url": "https://yuxing954.github.io/guojin-shangshe-database/research.html",
+      "briefCount": 21,
+      "latestBriefPublishedAt": "2026-10-09 10:42",
+      "timezone": "Asia/Shanghai",
+      "readOriginalLabel": true,
+      "checkedBadgeRemoved": true,
+      "minutesBannerRemoved": true
+    }
   }
 }
