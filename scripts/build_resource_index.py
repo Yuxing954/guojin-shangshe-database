@@ -35,7 +35,12 @@ def build(root=ROOT):
                     and s.get('verifiedSha256') == r['sha256']) if r.get('sha256') else (
                         s.get('metadataVerified') is True and s.get('verificationMethod') == 'provider_metadata_version'
                         and bool(re.fullmatch('[a-fA-F0-9]{64}', s.get('cloudVersion') or '')))
-        if not stored or not verified:
+        processing = r.get('processing', {})
+        published_text = (processing.get('bodyAvailable') is True and processing.get('textAvailable') is True
+                          and bool(re.fullmatch('[a-fA-F0-9]{64}', r.get('sha256') or ''))
+                          and bool(re.fullmatch('[a-fA-F0-9]{64}', processing.get('bodySha256') or ''))
+                          and bool(re.fullmatch(r'data/research/processed/[A-Za-z0-9_-]+\.json', processing.get('contentPath') or '')))
+        if not (stored and verified) and not published_text:
             continue
         items.append({'id': r['id'], 'kind': 'minutes', 'title': r['name'],
                       'date': '' if r.get('dateStatus') == 'needs_review' else r.get('date', ''),

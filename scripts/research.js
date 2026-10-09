@@ -27,7 +27,7 @@
     document.querySelector('main').classList.toggle('research-minutes-mode',kind==='minutes');
     $('briefs').hidden=$('digest-note').hidden=kind!=='digest';$('results').hidden=kind==='digest';
     $('library-stats').hidden=true;
-    if(kind==='minutes')$('library-note').textContent=libraryScope==='archived'?'点击下载打开 OneDrive，无需登录；原文可预览前500字。':'未取得原件的资料仅保留线索，下载开放后进入纪要文库。';
+    if(kind==='minutes')$('library-note').textContent=libraryScope==='archived'?'原文可预览前500字；已有下载入口的纪要可打开 OneDrive。':'未取得原件的资料仅保留线索，下载开放后进入纪要文库。';
     $('ranges').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.range===range)));
     $('clear').disabled=!f.q&&!f.sector&&!f.format&&!f.state&&!f.from&&!f.to&&$('sort').value==='desc';
     if(kind==='digest'){renderBriefs(f,invalid);saveUrl();return;}
@@ -163,4 +163,3 @@
     }
   }catch(e){$('status').innerHTML='研究文库暂时无法读取。<button class="portal-button" onclick="location.reload()">重试</button>';}
 })();
-
