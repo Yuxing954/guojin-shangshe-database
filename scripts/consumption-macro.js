@@ -38,7 +38,7 @@
     $('measure').querySelector('[value="value"]').textContent=i?i.valueLabel:'原始值';renderTrend();
   }
   function drawChart(i,rows,field){
-    const el=$('chart');if(field==='combo'||field==='value'&&!['%','点'].includes(i.unit)){SiteCharts.drawPaired(el,rows.map(r=>({period:label(r),x:Date.parse(r.endDate+'T00:00:00Z'),value:r.value,change:r.yoy})),{name:i.name,unit:i.unit,mode:field==='combo'?'combo':'value',gap:{monthly:65,quarterly:120,annual:400}[rows[0]?.frequency]*86400000});return;}
+    const el=$('chart');if(field==='combo'||field==='value'&&!['%','点'].includes(i.unit)){const breaks=new Set(M.segments(rows,'yoy').map(segment=>segment[0]));SiteCharts.drawPaired(el,rows.map(r=>({period:label(r),breakBefore:breaks.has(r),x:Date.parse(r.endDate+'T00:00:00Z'),value:r.value,change:r.yoy})),{name:i.name,unit:i.unit,mode:field==='combo'?'combo':'value',gap:{monthly:65,quarterly:120,annual:400}[rows[0]?.frequency]*86400000});return;}
     const chartPoints=[],valid=rows.filter(r=>M.finite(r[field]));
     if(!valid.length){el.innerHTML='<div class="cm-empty">所选区间没有已收录数据</div>';return;}
     const holiday=rows[0].frequency==='holiday',unit=field==='value'?i.unit:'%',w=Math.max(300,el.clientWidth||900),h=310,L=78,R=22,T=28,B=45;

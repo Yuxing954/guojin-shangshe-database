@@ -40,7 +40,7 @@ const root=path.resolve(__dirname,'..'),server=http.createServer((req,res)=>{
   await page.locator(control).selectOption(control==='#measure'||control==='#mode'?'yoy':'change');assert.equal(await page.locator(host+' .site-value-bar').count(),0);
  }
  await page.goto(base+'/hotel-dashboard.html');await page.waitForSelector('#main-chart .site-paired-chart');assert.equal(await page.locator('#mode-switch [aria-pressed=true]').getAttribute('data-mode'),'combo');
- await page.locator('#metric-switch [data-metric=occupancy_rate]').click();assert.match(await page.locator('#main-chart .site-change-axis').first().innerText(),/百分点/);
+ await page.locator('#metric-switch [data-metric=occupancy_rate]').click();assert.match(await page.locator('#main-chart .site-change-axis').first().textContent(),/百分点/);
  await page.goto(base+'/gold-jewelry.html');await page.locator('[data-view=demand]').click();await page.waitForSelector('#retail-chart .site-paired-chart');assert.ok(await page.locator('#volume-chart .site-paired-chart').count()>0);
  assert.deepEqual(errors,[]);console.log('PASS: 12 chart pages, whole-area hover, pinned click, leave, keyboard and narrow-screen bounds');
  const touch=await browser.newContext({viewport:{width:390,height:900},hasTouch:true,isMobile:true});await touch.route('**/*',r=>r.request().url().startsWith(base)?r.continue():r.abort());

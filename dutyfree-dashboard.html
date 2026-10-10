@@ -154,7 +154,7 @@ items:{label:'购物件数',field:'items_10k',yoy:'items_yoy_pct',unit:'万件',
 spend:{label:'每人次消费',field:'spend_per_shopper_cny',yoy:'spend_per_shopper_yoy_pct',unit:'元',color:'#8a6884'}
 };
 function drawCombo(svg,rows,metric,mode='combo'){
-const result=SiteCharts.paired(rows.map(row=>({period:row.period_id,x:Date.parse(row.period_id+'-01'),value:N(row[metric.field]),change:N(row[metric.yoy])})),{mode,name:metric.label,unit:metric.unit,width:760,gap:65*86400000});
+const result=SiteCharts.paired(rows.map(row=>({period:row.period_id,x:Date.parse(row.period_id+'-01'),value:N(row[metric.field]),change:N(row[metric.yoy])})),{mode,name:metric.label,unit:metric.unit,width:760,gap:45*86400000});
 const shell=document.createElement('div');shell.innerHTML=result.html;const chart=shell.querySelector('svg');
 const panel=svg.closest('.chart');panel.querySelector('.combo-legend')?.remove();panel.querySelector('.site-chart-legend')?.remove();
 if(!chart){svg.innerHTML='<text x="150" y="120">暂无数据</text>';return;}
