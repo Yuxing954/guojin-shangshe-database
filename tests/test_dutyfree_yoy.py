@@ -22,6 +22,10 @@ class GrowthTests(unittest.TestCase):
         self.assertEqual(row["changeCalculation"]["priorPeriod"],"2025-08")
         self.assertEqual(row["changeCalculation"]["priorSourceId"],"source-2025-08")
         before=copy.deepcopy(selected);fill_yoy(selected);self.assertEqual(selected,before)
+    def test_explicit_null_growth_is_computed(self):
+        selected={("dutyfree_sales","2025-08"):record("2025-08",20), ("dutyfree_sales","2026-08"):record("2026-08",25)}
+        selected["dutyfree_sales","2026-08"]["change"]=None
+        fill_yoy(selected);self.assertEqual(selected["dutyfree_sales","2026-08"]["change"],25)
     def test_absent_zero_or_different_basis_is_not_computed(self):
         for prior in (None,0):
             selected={("dutyfree_sales","2026-08"):record("2026-08",25)}

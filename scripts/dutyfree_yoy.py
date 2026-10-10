@@ -8,9 +8,12 @@ RATE_IDS = {"dutyfree_sales": "dutyfree_sales_yoy", "dutyfree_shoppers": "dutyfr
 def previous(period):
     return f"{int(period[:4]) - 1}{period[4:]}" if re.fullmatch(r"\d{4}-(0[1-9]|1[0-2])", period) else None
 
+def finite(value):
+    return isinstance(value, (int, float)) and not isinstance(value, bool) and math.isfinite(value)
+
 def fill_yoy(selected):
     for (metric, period), point in list(selected.items()):
-        if metric not in VALUE_IDS or math.isfinite(point.get("change", float("nan"))):
+        if metric not in VALUE_IDS or finite(point.get("change")):
             continue
         base_period = previous(period)
         base = selected.get((metric, base_period))
