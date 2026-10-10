@@ -2,7 +2,7 @@
   'use strict';
   // Preserve incoming links from the older dashboard and its companion pages.
   const legacyHashes=new Set(['coverage-live','sec-f','sec-hotel','sec-taxfree','sec-gold','sec-overseas','sec-dining','consumer-focus','watch-assistant','sec-u','sec-m','sec-mkt','sec-r']);
-  function redirectLegacyHash(){if(!legacyHashes.has(location.hash.slice(1)))return false;location.replace(({ 'coverage-live':'quotes.html', 'sec-hotel':'industry.html#hotel','sec-taxfree':'industry.html#dutyfree','sec-gold':'industry.html#gold','sec-overseas':'industry.html#overseas','sec-dining':'industry.html#dining','sec-f':'companies.html','consumer-focus':'companies.html','sec-m':'research.html','sec-r':'research.html','sec-mkt':'research.html'}[location.hash.slice(1)]||'database.html'+location.hash)+location.search);return true;}
+  function redirectLegacyHash(){if(!legacyHashes.has(location.hash.slice(1)))return false;location.replace(({ 'coverage-live':'quotes.html', 'sec-hotel':'industry.html#hotel','sec-taxfree':'industry.html#dutyfree','sec-gold':'industry.html#gold','sec-overseas':'industry.html#overseas','sec-dining':'industry.html#dining','sec-f':'quotes.html','consumer-focus':'quotes.html','sec-u':'quotes.html','sec-m':'research.html','sec-r':'research.html','sec-mkt':'research.html'}[location.hash.slice(1)]||'database.html'+location.hash)+location.search);return true;}
   if(redirectLegacyHash())return;
   addEventListener('hashchange',redirectLegacyHash);
   const $=id=>document.getElementById(id);
