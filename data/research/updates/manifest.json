@@ -1,13 +1,14 @@
 {
-  "syncedAt": "2026-10-10 07:05:51 UTC",
+  "syncedAt": "2026-10-10 23:33:45 UTC",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
-  "coverageFrom": "2026-10-10T12:53:49.281+0800",
-  "coverageTo": "2026-10-10T15:02:54.008+0800",
+  "coverageFrom": "2026-10-10T15:02:54.008+0800",
+  "coverageTo": "2026-10-10T21:55:23.371+0800",
   "oldestFetched": "2026-08-08T22:08:04.080+0800",
   "fetchedTopics": 11208,
   "files": {
     "views": [
+      "data/research/updates/2026-10-11-0733-views.csv",
       "data/research/updates/2026-10-10-views-001.csv",
       "data/research/updates/2026-10-09-views-006.csv",
       "data/research/updates/2026-10-09-views-005.csv",
@@ -20,6 +21,7 @@
       "data/research/updates/2026-10-07-views-002.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-10-11-0733-all_views.csv",
       "data/research/updates/2026-10-10-all_views-004.csv",
       "data/research/updates/2026-10-10-all_views-003.csv",
       "data/research/updates/2026-10-10-all_views-002.csv",
@@ -322,7 +324,8 @@
       "14425445514182482",
       "22258228842415281",
       "22258228811555111",
-      "82258228254512182"
+      "82258228254512182",
+      "82258228448824112"
     ],
     "all_views": [
       "55521551154544514",
@@ -4422,22 +4425,31 @@
       "22258228281558251",
       "45548558582111858",
       "14425445451884182",
-      "55521551514881214"
+      "55521551514881214",
+      "45548558225451418",
+      "22258228448821111",
+      "55521551441158844",
+      "22258228448824141",
+      "55521551554845484",
+      "14425445441814112",
+      "14425445441815452",
+      "22258228224148821",
+      "45548558552128848"
     ]
   },
   "lastRun": {
-    "runId": "2026-10-10-hourly-1505",
-    "syncedAt": "2026-10-10T15:05:51+08:00",
-    "previousCoverageTo": "2026-10-10T12:53:49.281+0800",
-    "fetchedUniqueTopics": 8,
-    "newSourceTopics": 8,
+    "runId": "2026-10-11-0733",
+    "syncedAt": "2026-10-11T07:33:45+08:00",
+    "previousCoverageTo": "2026-10-10T15:02:54.008+0800",
+    "fetchedUniqueTopics": 30,
+    "newSourceTopics": 18,
     "added": {
-      "views": 0,
-      "all_views": 1
+      "views": 1,
+      "all_views": 9
     },
-    "excluded": 7,
+    "excluded": 8,
     "duplicates": 0,
-    "record": "data/research/updates/2026-10-10-update-record-1505.json"
+    "record": "data/research/updates/2026-10-11-0733-record.json"
   },
   "syncLog": [
     {
