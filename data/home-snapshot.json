@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-10T12:46:20+08:00",
+  "generatedAt": "2026-10-10T18:14:08+08:00",
   "industries": [
     {
       "id": "hotel",
@@ -25,8 +25,8 @@
       "value": 21.45,
       "unit": "亿元",
       "precision": 2,
-      "change": null,
-      "changeLabel": "同比",
+      "change": 1.8837812419846722,
+      "changeLabel": "同比（计算）",
       "period": "2026年8月",
       "asOf": "2026-08-31",
       "freshnessDays": 50,
@@ -70,7 +70,7 @@
       "id": "dining",
       "name": "餐饮",
       "metric": "全国餐饮收入",
-      "value": 4544.0,
+      "value": 4544,
       "unit": "亿元",
       "precision": 0,
       "change": 1.1,
