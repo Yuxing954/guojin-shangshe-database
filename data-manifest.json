@@ -260,6 +260,14 @@
       "category": "宏观数据",
       "page": "macro.html",
       "coverage": "data/macro/coverage.json"
+    },
+    {
+      "id": "earnings_calendar",
+      "name": "财报日历与披露历史",
+      "file": "data/earnings-calendar.json",
+      "category": "财报日历",
+      "source": "上交所 / 披露易 / 东方财富历史快照",
+      "updateScript": "scripts/update-earnings-calendar.cjs"
     }
   ]
 }

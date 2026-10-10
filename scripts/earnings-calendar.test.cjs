@@ -1,17 +1,28 @@
 const assert=require('node:assert/strict'),fs=require('node:fs');
-const C=require('./earnings-calendar.js');
-const days=C.monthDays(2026,7);
-assert.equal(days.length,42);assert.equal(days[0],'2026-07-27');assert.equal(days[41],'2026-09-06');
-const records=[
- {name:'甲公司',code:'1.SH',sector:'零售',actual:'2026-08-21',expected:'2026-08-20',meeting:'2026-08-25T16:00',meetingEnd:'2026-08-25T17:00'},
- {name:'乙公司',code:'2.SH',sector:'酒店',expected:'2026-08-25'}
-];
-const events=C.eventsFor(records);
-assert.deepEqual(events.map(x=>[x.type,x.date,x.time]),[['report','2026-08-21',''],['meeting','2026-08-25','16:00'],['report','2026-08-25','']]);
-assert.equal(events[0].actual,true);assert.equal(events[2].actual,false);
-const ics=C.calendar(records,'2026H1');
-assert.equal((ics.match(/BEGIN:VEVENT/g)||[]).length,3);assert.match(ics,/DTSTART;VALUE=DATE:20260821/);assert.match(ics,/DTSTART:20260825T080000Z/);assert.doesNotMatch(ics,/研究交付截止/);
-assert.throws(()=>C.validateRecord({meeting:'2026-08-25T17:00',meetingEnd:'2026-08-25T16:00'}));
-const pool=C.parseCSV(fs.readFileSync(__dirname+'/../data/商社-标的池与估值跟踪.csv','utf8')),snapshot=JSON.parse(fs.readFileSync(__dirname+'/../data/earnings-snapshot.json','utf8'));
-assert.equal(pool.length,32);assert.equal(snapshot.records.length,30);assert.equal(C.eventsFor(snapshot.records).length,30);
-console.log('PASS: 42-day calendar grid, report/meeting precedence and ordering, Beijing-time ICS, snapshot coverage');
+const M=require('./earnings-calendar-model.js'),D=require('./site-data.js'),U=require('./update-earnings-calendar.cjs');
+const snapshot=M.validateSnapshot(JSON.parse(fs.readFileSync(__dirname+'/../data/earnings-calendar.json','utf8'))),pool=D.csv(fs.readFileSync(__dirname+'/../data/商社-标的池与估值跟踪.csv','utf8')).map(r=>({code:r['证券代码'],name:r['公司名称'],sector:r['子行业'],market:r['市场']}));
+assert.equal(pool.length,32);assert.equal(M.code('1179.HK'),'01179.HK');assert.equal(M.code('0780.HK'),'00780.HK');
+assert.equal(M.validDate('2026-02-29'),false);assert.equal(M.validDate('2024-02-29'),true);
+assert.equal(M.monthDays(2026,7).length,42);assert.equal(M.monthDays(2026,7)[0],'2026-07-27');assert.deepEqual(M.weekDays('2026-10-11'),['2026-10-05','2026-10-06','2026-10-07','2026-10-08','2026-10-09','2026-10-10','2026-10-11']);
+const q3=M.rows(pool,snapshot,'2026Q3');assert.equal(q3.filter(r=>r.kind==='formal').length,32);assert.equal(q3.filter(r=>r.expected).length,11);assert.equal(q3.filter(r=>r.actual).length,0);assert.equal(q3.filter(r=>!r.expected&&r.kind==='formal').length,21);
+const h1=M.rows(pool,snapshot,'2026H1');assert.equal(h1.filter(r=>r.actual).length,30);assert.equal(h1.filter(r=>r.code==='01179.HK'&&r.actual).length,1);
+const ctm=h1.find(r=>r.code==='601888.SH'&&r.kind==='formal');assert.equal(ctm.actual,'2026-08-21');assert.equal(ctm.announcementDate,'2026-08-21');assert.equal(ctm.announcementPublishedAt,'2026-08-20 18:59:09');assert.match(ctm.url,/static.sse.com.cn/);
+const hotpot=h1.find(r=>r.code==='06862.HK'&&r.kind==='formal');assert.equal(hotpot.expected,'2026-08-25');assert.equal(hotpot.reservations[0].announcedAt,'2026-08-12');assert.equal(M.eventsFor([hotpot],'announcement')[0].date,'2026-08-25');assert.equal(M.eventsFor([hotpot])[0].date,'2026-08-25');
+const forecasts=snapshot.records.filter(r=>r.kind==='forecast');assert.ok(forecasts.length>0);assert.ok(forecasts.every(r=>!r.actual&&r.announcementDate&&r.url));assert.equal(M.status(forecasts[0],'2026-10-10'),'已公告');
+assert.equal(M.status({kind:'formal',expected:'2026-10-09'},'2026-10-10'),'预约日已过');
+assert.equal(M.upcoming(q3,'2026-10-10',7).length,0);assert.equal(M.upcoming(q3,'2026-10-10',30).length,11);
+assert.equal(M.filter(q3,{search:'601888',today:'2026-10-10'}).length,1);assert.equal(M.filter(q3,{market:'港股',today:'2026-10-10'}).length,10);assert.equal(M.filter(q3,{watched:true,watch:['601888.SH'],today:'2026-10-10'}).length,1);
+assert.equal(M.eventsFor([{kind:'formal',id:'unknown'}]).length,0);
+assert.equal(M.url('javascript:alert(1)'), '');assert.equal(M.url('https://user:secret@example.com'),'');
+const bad=structuredClone(snapshot);bad.records[0].actual='2027-01-01';assert.throws(()=>M.validateSnapshot(bad));const duplicate=structuredClone(snapshot);duplicate.records.push(duplicate.records[0]);assert.throws(()=>M.validateSnapshot(duplicate));const badForecast=structuredClone(snapshot);badForecast.records.find(r=>r.kind==='forecast').actual='2026-07-01';assert.throws(()=>M.validateSnapshot(badForecast));
+const unsourced=structuredClone(snapshot);unsourced.records[0].sourceId='unknown';assert.throws(()=>M.validateSnapshot(unsourced));
+const booked=q3.find(r=>r.code==='601888.SH');const change=structuredClone(booked);delete change.source;change.expected='2026-10-30';change.updatedAt='2026-10-10T08:30:00+08:00';const update={version:2,updatedAt:change.updatedAt,sources:[snapshot.sources.find(s=>s.id==='sse')],records:[change]};
+const merged=U.mergeSnapshot(snapshot,update);assert.equal(merged.records.length,snapshot.records.length);assert.ok(merged.records.find(r=>r.id===change.id).history.some(h=>h.from==='2026-10-31'&&h.to==='2026-10-30'));
+assert.throws(()=>U.mergeSnapshot(snapshot,{...update,records:[]}));const regression=structuredClone(ctm);regression.actual='';assert.throws(()=>U.mergeSnapshot(snapshot,{...update,records:[regression]}));
+const ics=M.calendar([booked,hotpot,forecasts[0]],{today:'2026-10-10',days:7});assert.equal((ics.match(/BEGIN:VALARM/g)||[]).length,1);assert.match(ics,/DTSTART;VALUE=DATE:20261031/);assert.match(ics,/DTEND;VALUE=DATE:20261101/);assert.match(ics,/TRIGGER:-P7D/);assert.equal((ics.match(/BEGIN:VEVENT/g)||[]).length,3);for(const line of ics.split('\r\n'))assert.ok(Buffer.byteLength(line)<=75);
+assert.match(M.csv([{...booked,name:'=HYPERLINK(\"bad\")'}],'2026-10-10'),/'=HYPERLINK/);
+assert.equal(U.periodFromTitle('中国中免2025年度业绩快报公告'),'2025FY');assert.equal(U.periodFromTitle('公司2026年半年度报告'),'2026H1');
+const fixture={period:'2026H1',url:'https://query.sse.com.cn/',row:{companyCode:'601888',publishDate0:'2026-08-21',actualDate:'2026-08-21',publishYear:'2026',bulletinType:'L012'}};
+const notice={url:'https://query.sse.com.cn/',row:{SECURITY_CODE:'601888',TITLE:'中国中免2026年半年度报告',SSEDATE:'2026-08-21',URL:'/test.pdf'}};
+assert.equal(U.fromSSE([fixture],[notice],'2026-10-10T00:00:00Z').records[0].url,'https://static.sse.com.cn/test.pdf');assert.throws(()=>U.fromSSE([{...fixture,period:'2026Q3'}],[notice],'2026-10-10T00:00:00Z'));
+console.log('PASS: provenance, company/period mapping, three date types, status and forecast isolation, reminders, filters, history, safe exports, atomic import validation');
