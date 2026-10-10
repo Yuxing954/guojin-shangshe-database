@@ -45,7 +45,32 @@ def metric(id, label, unit, frequency, scope, **extra):
 def definitions():
     hotel = [
         metric('hotel_revpar', '每间可售客房收入', '元', '周度', '全国 / 全部档次', shortLabel='RevPAR', yoyLabel='同比', formula='同一周、同一样本：平均房价 × 入住率（小数）', field='revpar'),
-        metr…736 tokens truncated…#dutyfree', '人次口径跟随海关披露；机场与市内免税单独查看。'),
+        metric('hotel_adr', '平均房价', '元', '周度', '全国 / 全部档次', shortLabel='ADR', yoyLabel='同比', field='adr'),
+        metric('hotel_occ', '入住率', '%', '周度', '全国 / 全部档次', precision=1, yoyLabel='同比', changeUnit='百分点', field='occupancy_rate'),
+    ]
+    dutyfree = [
+        metric('dutyfree_sales', '离岛免税购物金额', '亿元', '月度', '海南离岛免税海关监管口径', changeMetric='dutyfree_sales_yoy'),
+        metric('dutyfree_shoppers', '购物人次', '万人次', '月度', '海南离岛免税；按人次统计', changeMetric='dutyfree_shoppers_yoy'),
+        metric('dutyfree_spend', '每购物人次金额', '元/人次', '月度', '相同期间的购物金额与购物人次', precision=0, formula='购物金额（亿元）÷ 购物人次（万人次）× 10,000；不等于去重人数客单价'),
+        metric('dutyfree_items', '购物件数', '万件', '月度', '海南离岛免税海关监管口径'),
+        metric('dutyfree_sales_yoy', '购物金额同比', '%', '月度', '源数据公布的当月同比', isRate=True),
+        metric('dutyfree_shoppers_yoy', '购物人次同比', '%', '月度', '源数据公布的当月同比', isRate=True),
+    ]
+    gold = [
+        metric('gold_price', 'Au99.99收盘价', '元/克', '日度', '上海黄金交易所 Au99.99；人民币现货收盘价'),
+        metric('gold_retail_yoy', '珠宝零售额同比', '%', '月度', '限额以上单位金银珠宝类；名义增速', precision=1, isRate=True),
+        metric('gold_jewelry_volume', '黄金首饰消费量', '吨', '季度累计', '中国黄金协会；年初至期末累计', precision=3, scopeNote='累计消费量；不连接为单季度趋势'),
+        metric('gold_retail', '珠宝零售额', '亿元', '月度', '限额以上单位金银珠宝类；名义金额', changeMetric='gold_retail_yoy'),
+    ]
+    dining = [
+        metric('dining_revenue', '全国餐饮收入', '亿元', '月度', '全国餐饮收入；1—2月合并发布', precision=0, changeMetric='dining_revenue_yoy'),
+        metric('dining_revenue_yoy', '餐饮收入同比', '%', '月度', '国家统计局公布的可比口径名义增速', precision=1, isRate=True),
+        metric('dining_above_yoy', '限额以上餐饮同比', '%', '月度', '限额以上单位；与全行业范围不同', precision=1, isRate=True),
+        metric('dining_above_revenue', '限额以上餐饮收入', '亿元', '月度', '限额以上单位；1—2月合并发布', precision=0, changeMetric='dining_above_yoy'),
+    ]
+    configs = [
+        ('hotel', '酒店', '看入住率与房价，拆解每间客房的收入变化。', hotel, 'hotel_revpar', 'travel', '酒店', 'industry.html#hotel', ''),
+        ('dutyfree', '免税', '看购物金额、人次与每人次消费，识别增长来源。', dutyfree, 'dutyfree_sales', 'dutyfree', '免税', 'industry.html#dutyfree', '人次口径跟随海关披露；机场与市内免税单独查看。'),
         ('gold', '黄金', '分开看金价、名义零售与首饰消费量。', gold, 'gold_retail_yoy', 'gold', '黄金珠宝', 'industry.html#gold', '消费量为年初累计；名义零售额增速不能直接当作销量增长。'),
         ('dining', '餐饮', '看收入与可比增速，再核对连锁公司的经营表现。', dining, 'dining_revenue_yoy', 'dining', '餐饮,茶饮', 'industry.html#dining', '1—2月按合并期间记录。金额趋势默认只看单月，合并值单列查看。'),
     ]
