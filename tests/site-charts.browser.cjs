@@ -28,7 +28,7 @@ const root=path.resolve(__dirname,'..'),server=http.createServer((req,res)=>{
  for(const [url,control,host] of [
  ['industry.html#dutyfree','#chart-mode','#chart'],
  ['consumption-macro.html?indicator=retail','#measure','#chart'],
- ['macro.html?indicator=cn-retail','#mode','#primary-chart'],
+ ['macro.html?country=US&indicator=us-retail','#mode','#primary-chart'],
  ['dining.html','#sector-chart-mode','#chart'],
  ['overseas.html','#sector-chart-mode','#chart']]){
   await page.goto(base+'/'+url);await page.waitForSelector(host+' svg.site-paired-chart');

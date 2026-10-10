@@ -1,4 +1,5 @@
-(async function(){
+
+    if(!m.isRate){return SiteCharts.paired(points.map(p=>({period:p.periodLabel,x:Date.parse(p.endDate),value:p.value,change:p.change})),{mode:$('chart-mode').value,unit:m.unit,changeUnit:m.changeUnit||'%',name:m.label,precision:m.precision,gap:{'月度':45,'季度累计':115,'周度':15,'年度':400}[m.frequency]*86400000}).html;}(async function(){
 
   'use strict';
 
@@ -21,7 +22,6 @@
 
   function chart(points,m){
 
-    if(!m.isRate){return SiteCharts.paired(points.map(p=>({period:p.periodLabel,x:Date.parse(p.endDate),value:p.value,change:p.change})),{mode:$('chart-mode').value,unit:m.unit,changeUnit:m.changeUnit||'%',name:m.label,precision:m.precision,gap:{'月度':45,'季度累计':115,'周度':15,'年度':400}[m.frequency]*86400000}).html;}
     const clean=points.filter(p=>Number.isFinite(p.value));if(!clean.length)return '<p class="portal-empty">暂无数据</p>';
 
     const esc=D.esc,values=clean.map(p=>p.value),high=Math.max(...values),low=Math.min(...values),spread=high-low||Math.max(1,Math.abs(high)*.02),lo=low-spread*.1,hi=high+spread*.1;
@@ -85,7 +85,7 @@
 
   }
 
-  function select(){const key=location.hash.slice(1);sector=snapshot.sectors.find(s=>s.id===key)||snapshot.sectors[0];$('page-title').textContent=sector.name;document.title=sector.name+'行业数据 · 国金商社';$('sector-tabs').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.key===sector.id)));$('metric').innerHTML=sector.metrics.map(m=>'<option value="'+m.id+'">'+D.esc(m.label)+(m.environment?'（经营环境）':m.subset?'（子集）':'')+'</option>').join('');$('specialist').hidden=!sector.detailHref;$('specialist').href=sector.detailHref||'#';$('specialist').textContent='进入'+sector.name+'专题 →';$('sector-detail').href=sector.detailHref||'#';$('sector-detail').textContent=sector.name+'专题 →';$('sector-detail').hidden=!sector.detailHref;$('snapshot-note').textContent='最近核对 '+(sector.checkedAt||snapshot.checkedAt||'未记录');$('history-details').open=false;const requested=new URLSearchParams(location.search).get('metric');choose(sector.metrics.some(m=>m.id===requested)?requested:sector.defaultMetric);related();}
+  function select(){const key=location.hash.slice(1);sector=snapshot.sectors.find(s=>s.id===key)||snapshot.sectors[0];$('page-title').textContent=sector.name;document.title=sector.name+'行业数据 · 国金商社';$('sector-tabs').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.key===sector.id)));$('metric').innerHTML=sector.metrics.map(m=>'<option value="'+m.id+'">'+D.esc(m.label)+(m.environment?'（经营环境）':m.subset?'（子集）':'')+'</option>').join('');const isGold=sector.id==='gold';$('gold-content').hidden=!isGold;$('gold-industry-history').hidden=!isGold;$('sector-detail').parentElement.hidden=isGold;if(isGold){$('gold-industry-history').append($('content'));GoldDashboard.load();}else{$('industry-content-anchor').after($('content'));}$('specialist').hidden=isGold||!sector.detailHref;$('specialist').href=sector.detailHref||'#';$('specialist').textContent='进入'+sector.name+'专题 →';$('sector-detail').href=sector.detailHref||'#';$('sector-detail').textContent=sector.name+'专题 →';$('sector-detail').hidden=!sector.detailHref;$('snapshot-note').textContent='最近核对 '+(sector.checkedAt||snapshot.checkedAt||'未记录');$('history-details').open=false;const requested=new URLSearchParams(location.search).get('metric');choose(sector.metrics.some(m=>m.id===requested)?requested:sector.defaultMetric);related();}
 
   $('sector-tabs').onclick=e=>{const b=e.target.closest('[data-key]');if(b)location.hash=b.dataset.key;};$('stats').onclick=e=>{const b=e.target.closest('[data-metric]');if(b)choose(b.dataset.metric);};$('metric').onchange=e=>choose(e.target.value);$('chart-mode').onchange=render;$('ranges').onclick=e=>{const b=e.target.closest('[data-years]');if(b){years=Number(b.dataset.years);page=1;render();}};$('prev').onclick=()=>{page--;table();};$('next').onclick=()=>{page++;table();};$('download').onclick=()=>{const m=activeMetric(),blob=new Blob([M.csv(m,M.inRange(m.points,years),sources)],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=sector.name+'-'+m.label+'.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};addEventListener('hashchange',()=>{if(snapshot)select();});
 

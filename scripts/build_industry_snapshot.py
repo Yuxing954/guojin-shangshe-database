@@ -78,7 +78,7 @@ def definitions():
     configs = [
         ('hotel', '酒店', '看入住率与房价，拆解每间客房的收入变化。', hotel, 'hotel_revpar', 'travel', '酒店', 'hotel-dashboard.html', ''),
         ('dutyfree', '免税', '看购物金额、人次与每人次消费，识别增长来源。', dutyfree, 'dutyfree_sales', 'dutyfree', '免税', 'dutyfree-dashboard.html', '人次口径跟随海关披露；机场与市内免税单独查看。'),
-        ('gold', '黄金', '分开看金价、名义零售与首饰消费量。', gold, 'gold_retail_yoy', 'gold', '黄金珠宝', 'gold-jewelry.html', '消费量为年初累计；名义零售额增速不能直接当作销量增长。'),
+        ('gold', '黄金', '分开看金价、名义零售与首饰消费量。', gold, 'gold_retail_yoy', 'gold', '黄金珠宝', 'industry.html#gold', '消费量为年初累计；名义零售额增速不能直接当作销量增长。'),
         ('overseas', '出海', '看行业出口，再看汇率和物流成本。', overseas, 'crossborder_fx', 'commerce', '跨境电商与出海', 'overseas.html', '全行业出口暂缺。汇率与运价用于观察经营环境，B2B简化申报数据仅为子集。'),
         ('dining', '餐饮', '看收入与可比增速，再核对连锁公司的经营表现。', dining, 'dining_revenue_yoy', 'dining', '餐饮,茶饮', 'dining.html', '1—2月按合并期间记录。金额趋势默认只看单月，合并值单列查看。'),
     ]
