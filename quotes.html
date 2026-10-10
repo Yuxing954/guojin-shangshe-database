@@ -2,12 +2,12 @@
 <html lang="zh-CN"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="国金商社行情工作台：腾讯报价、自选公司、行业分组和走势与研究联动。">
-<title>实时行情 · 国金商社</title>
-<link rel="stylesheet" href="scripts/site.css?v=7">
-<script defer src="scripts/site-data.js?v=2"></script><script defer src="scripts/market-kline.js?v=20261009-3"></script>
-<script defer src="scripts/quotes-model.js?v=20261010coverage"></script><script defer src="scripts/site-shell.js?v=20261010coverage"></script><script defer src="scripts/quotes-poller.js?v=2"></script><script defer src="scripts/quotes.js?v=20261010coverage"></script>
-<link rel="stylesheet" href="scripts/site-polish.css?v=1"><link rel="stylesheet" href="scripts/quotes.css?v=20261009-compact"></head><body><main id="main">
-<header class="portal-header quotes-header"><div><p class="eyebrow">MARKET / RESEARCH DESK</p><h1>实时行情</h1></div><div class="quotes-actions"><button class="quotes-text-button" id="pause-quotes" type="button" aria-pressed="false">暂停更新</button><button class="quotes-text-button" id="export-quotes" type="button" disabled>导出当前范围</button><button class="portal-button" id="refresh" type="button">刷新报价</button></div></header>
+<title>实时行情 · 国金商社</title><script defer src="scripts/site-ui.js?v=20261010-unified"></script>
+<link rel="stylesheet" href="scripts/site.css?v=20261010-unified">
+<script defer src="scripts/site-data.js?v=20261010-unified"></script><script defer src="scripts/market-kline.js?v=20261009-3"></script>
+<script defer src="scripts/quotes-model.js?v=20261009-compact"></script><script defer src="scripts/site-shell.js?v=20261010-unified"></script><script defer src="scripts/quotes-poller.js?v=2"></script><script defer src="scripts/quotes.js?v=20261010-unifiedmergedcopy"></script>
+<link rel="stylesheet" href="scripts/quotes.css?v=20261009-compact"><link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-polish.css?v=20261010-unified"></head><body><main id="main">
+<header class="portal-header quotes-header"><div><p class="eyebrow">行情监测</p><h1>实时行情</h1></div><div class="quotes-actions"><button class="quotes-text-button" id="pause-quotes" type="button" aria-pressed="false">暂停更新</button><button class="quotes-text-button" id="export-quotes" type="button" disabled>导出当前范围</button><button class="portal-button" id="refresh" type="button">刷新报价</button></div></header>
 <div id="status" class="quotes-status" role="status" aria-live="polite">正在读取覆盖公司…</div>
 <div id="content" hidden>
 <section id="benchmarks" class="quotes-benchmarks" aria-label="市场指数"></section>
@@ -24,7 +24,7 @@
 <div id="heat-view"><div class="quotes-heat-legend" aria-label="涨跌颜色：绿跌红涨，颜色越深幅度越大"><span>−5%及以下</span><i></i><span>0</span><i></i><span>+5%及以上</span></div><div id="heatmap" class="quotes-heatmap" aria-label="覆盖公司涨跌热力图"></div><div class="quotes-heat-pagination" id="heat-pagination" hidden><button type="button" id="heat-previous" aria-label="上一页公司">← 上一页</button><span id="heat-page-label"></span><button type="button" id="heat-next" aria-label="下一页公司">下一页 →</button></div></div><div id="list-note" class="quotes-list-note"></div>
 </section>
 <section id="quote-detail" class="quotes-detail" aria-labelledby="quote-title" hidden>
-<div class="quotes-detail-head"><div><p class="eyebrow">COMPANY / PRICE HISTORY</p><h2 id="quote-title"></h2><p id="quote-subtitle"></p></div><button id="detail-watch" class="quotes-detail-watch" type="button" aria-pressed="false">☆ 自选</button></div>
+<div class="quotes-detail-head"><div><p class="eyebrow">价格走势</p><h2 id="quote-title"></h2><p id="quote-subtitle"></p></div><button id="detail-watch" class="quotes-detail-watch" type="button" aria-pressed="false">☆ 自选</button></div>
 <div class="quotes-detail-nav"><span id="detail-position"></span><div><button id="previous-company" type="button" aria-label="上一家公司">←</button><button id="next-company" type="button" aria-label="下一家公司">→</button><button id="back-list" class="quotes-back-list" type="button">返回列表 ↑</button></div></div>
 <div id="quote-overview" class="quotes-overview"></div>
 <div class="quotes-chart-head"><div class="quotes-periods" id="periods" aria-label="走势周期"><button type="button" data-period="minute" aria-pressed="false">分时</button><button type="button" data-period="day" aria-pressed="true">日K</button><button type="button" data-period="week" aria-pressed="false">周K</button></div><button class="quotes-text-button" id="chart-retry" type="button">刷新走势</button></div>
@@ -37,3 +37,4 @@
 <details class="quotes-source"><summary>数据来源</summary><p>腾讯行情 · 1秒请求间隔 · 后台暂停 · 更新以来源时间为准 · 失败保留原报价</p><p>自选保存在当前浏览器 · 均线与复权口径见走势标注</p><a href="https://gu.qq.com/" target="_blank" rel="noopener">腾讯自选股 ↗</a></details>
 </div><p id="preference-status" class="quotes-preference-status" role="status" aria-live="polite" hidden></p>
 </main></body></html>
+

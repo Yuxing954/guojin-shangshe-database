@@ -1,0 +1,14 @@
+(function(root){
+  'use strict';
+  const navigation=[['home','index.html','首页','home'],['industry','industry.html','行业数据','chart'],['macro','consumption-macro.html','宏观数据','globe'],['earnings','earnings.html','财报日历','calendar'],['research','research.html','观点纪要','document'],['quotes','quotes.html','实时行情','trend']];
+  const pages={
+    'index.html':['home','研究首页'],'industry.html':['industry','行业数据'],'hotel-dashboard.html':['industry','酒店专题'],'dutyfree-dashboard.html':['industry','免税专题'],'gold-jewelry.html':['industry','黄金珠宝专题'],
+    'consumption-macro.html':['macro','消费专题'],'macro.html':['macro','核心指标'],'companies.html':['companies','公司数据'],'earnings.html':['earnings','财报日历'],'research.html':['research','观点纪要'],'search.html':['research','站内搜索'],'quotes.html':['quotes','实时行情'],'dashboard.html':['tools','数据浏览器'],'database.html':['tools','历史工具']};
+  const legacy={'coverage-live':'quotes.html','sec-hotel':'industry.html#hotel','sec-taxfree':'industry.html#dutyfree','sec-gold':'industry.html#gold','sec-overseas':'industry.html#overseas','sec-dining':'industry.html#dining','sec-f':'quotes.html','consumer-focus':'quotes.html','sec-u':'quotes.html','sec-m':'research.html','sec-r':'research.html','sec-mkt':'research.html'};
+  function route(key,search='',fallback=false){const target=legacy[key]||(fallback?'database.html#'+encodeURIComponent(key):'');if(!target)return '';const url=new URL(target,'https://site.invalid/');for(const [k,v] of new URLSearchParams(search))url.searchParams.set(k,v);return url.pathname.slice(1)+url.search+url.hash;}
+  async function request(path,format='json',timeout=15000){const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),timeout);try{const response=await fetch(path,{cache:'no-store',signal:controller.signal});if(!response.ok)throw Error('HTTP '+response.status);return format==='text'?await response.text():await response.json();}finally{clearTimeout(timer);}}
+  function date(value){if(!value)return '日期未提供';if(/^\d{4}-\d{2}-\d{2}$/.test(value))return value;const d=new Date(value);return Number.isNaN(d.getTime())?'日期未提供':new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).format(d);}
+  function save(values){const u=new URL(location.href);for(const [k,v] of Object.entries(values)){if(v===''||v==null)u.searchParams.delete(k);else u.searchParams.set(k,String(v));}history.replaceState(null,'',u.pathname+u.search+u.hash);}
+  function debounce(fn,delay=150){let timer;return (...args)=>{clearTimeout(timer);timer=setTimeout(()=>fn(...args),delay);};}
+  const api={navigation,pages,route,request,date,save,debounce};if(typeof module==='object'&&module.exports)module.exports=api;else root.SiteUI=api;
+})(typeof window==='object'?window:globalThis);

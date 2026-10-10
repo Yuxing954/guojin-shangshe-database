@@ -139,5 +139,6 @@
     $('brand-history-export').addEventListener('click',()=>downloadQuotes('品牌金价-所选历史.csv',selectedBrandHistory));
     $('price-start').addEventListener('change',renderPrices);$('price-end').addEventListener('change',renderPrices);$('price-reset').addEventListener('click',()=>{$('price-start').value='';$('price-end').value='';renderPrices();});
     operationPeriods();renderPrices();$('dashboard').hidden=false;const old={ 'brand-panel':'prices','benchmark-panel':'prices','industry-panel':'demand','company-panel':'companies','source-panel':'sources'};setView(old[location.hash.slice(1)]||location.hash.slice(1)||'overview');window.addEventListener('hashchange',()=>setView(location.hash.slice(1),false));let timer;window.addEventListener('resize',()=>{clearTimeout(timer);timer=setTimeout(renderView,160);});
-  }catch(error){$('load-error').textContent=error.message||'读取失败，请刷新页面。';$('load-error').hidden=false;$('asof').textContent='数据加载失败';}
+  }catch(error){$('load-error').innerHTML='数据暂时无法读取。 <button class="portal-button" id="gold-retry" type="button">重试</button>';$('gold-retry').onclick=()=>location.reload();$('load-error').hidden=false;$('asof').textContent='数据加载失败';}
 })();
+
