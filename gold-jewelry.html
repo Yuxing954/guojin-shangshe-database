@@ -1,57 +1,6 @@
 <!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>黄金数据 · 国金商社</title><script defer src="scripts/site-ui.js?v=20261010-unified"></script>
-  <link rel="stylesheet" href="scripts/site.css?v=20261010-unified"><link rel="stylesheet" href="scripts/gold-jewelry.css?v=20261009macro">
-  <script defer src="scripts/site-shell.js?v=20261010sectorsmerge"></script><script defer src="scripts/gold-jewelry-model.js?v=3"></script><script defer src="scripts/gold-research-model.js?v=20261009"></script><script defer src="scripts/gold-macro-model.js?v=20261009macro"></script><script defer src="scripts/gold-jewelry.js?v=20261010charts"></script>
-<link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-charts.css?v=20261010a"><link rel="stylesheet" href="scripts/site-polish.css?v=20261010-unified"><script src="scripts/site-charts.js?v=20261010charts"></script></head>
-<body class="gold-page" data-site-section="industry">
-<main class="gj-wrap">
-  <header class="gj-header"><div><a class="gj-back" href="industry.html#gold">行业数据 / 黄金</a><h1>黄金数据</h1></div><div class="gj-updated" id="asof">正在读取数据…</div></header>
-  <div id="load-error" class="gj-error" role="alert" hidden></div>
-  <div id="dashboard" hidden>
-    <nav class="gj-tabs" aria-label="黄金数据视图"><button class="active" data-view="overview" aria-pressed="true">金价驱动</button><button data-view="demand" aria-pressed="false">终端需求</button><button data-view="companies" aria-pressed="false">公司经营</button><button data-view="prices" aria-pressed="false">金价与品牌</button><button data-view="sources" aria-pressed="false">数据与口径</button></nav>
-    <section id="view-overview" class="gj-view">
-      <div class="gj-section-head"><div><h2>金价驱动与政策预期</h2></div><button class="gj-button" id="macro-export">导出驱动数据</button></div>
-      <div id="core-kpis" class="gj-kpis"></div>
-      <div class="gj-grid">
-        <article class="gj-card"><div class="gj-card-head"><div><h2>美联储会议预期</h2><p id="policy-current"></p></div><label>会议 <select id="fed-meeting"></select></label></div><div id="fed-probability" class="gj-fed"></div><details class="gj-detail"><summary>利率区间概率与历史对比</summary><div class="gj-table-scroll" tabindex="0"><table id="fed-history-table" class="gj-table"></table></div></details><details class="gj-detail"><summary>联储官员的年末利率预测 · SEP</summary><div id="policy-sep" class="gj-sep"></div></details><p id="fed-source" class="gj-footnote"></p></article>
-        <article class="gj-card"><div class="gj-card-head"><div><h2>利率、美元与成本传导</h2><p id="macro-caption"></p></div><label>指标 <select id="macro-indicator"></select></label></div><div class="gj-controls"><div id="macro-latest" class="gj-macro-latest"></div><label>范围 <select id="macro-window"><option value="all">全部已收录</option><option value="30">近30天</option></select></label></div><div id="macro-chart" class="gj-chart"></div><p id="macro-mechanism" class="gj-footnote"></p></article>
-        <article class="gj-card"><div class="gj-card-head"><div><h2>投资资金与央行购金</h2></div></div><div id="gold-flows" class="gj-flow-grid"></div><div class="gj-table-scroll" tabindex="0"><table id="position-table" class="gj-table"></table></div></article>
-        <article class="gj-card"><div class="gj-card-head"><div><h2>数据日历</h2><p>北京时间 · 美国官方日历</p></div></div><div id="macro-events" class="gj-events"></div></article>
-      </div>
-      <article class="gj-card"><div class="gj-card-head"><div><h2>通胀与就业</h2></div></div><div id="macro-releases" class="gj-release-grid"></div></article>
-    </section>
-    <section id="view-demand" class="gj-view" hidden>
-      <div class="gj-section-head"><div><h2>零售金额与实物消费</h2></div><button class="gj-button" id="demand-export">导出当前需求数据</button></div>
-      <div id="demand-kpis" class="gj-kpis"></div>
-      <article class="gj-card"><div class="gj-card-head"><div><h2>金银珠宝类零售额</h2><p>全国限额以上单位 · 月度</p></div><label>范围 <select id="retail-window"><option value="all">全部已收录</option><option value="12">近12个月</option><option value="2026">2026年</option></select></label></div><div class="gj-controls"><div class="gj-switch" id="retail-mode"><button data-mode="yoy" class="active" aria-pressed="true">当月同比</button><button data-mode="amount" aria-pressed="false">当月金额</button><button data-mode="ytdYoy" aria-pressed="false">累计同比</button></div><span id="retail-caption"></span></div><div id="retail-chart" class="gj-chart"></div><details class="gj-detail"><summary>查看月度明细与来源</summary><div class="gj-table-scroll" tabindex="0"><table id="retail-table" class="gj-table"></table></div></details></article>
-      <article class="gj-card"><div class="gj-card-head"><div><h2>金饰消费与投资需求</h2></div><label>显示 <select id="volume-mode"><option value="quarter-yoy">单季同比 · 计算值</option><option value="quarter-value">单季吨数 · 累计作差</option><option value="cumulative-yoy">累计同比 · 原始披露</option><option value="cumulative-value">累计吨数 · 原始披露</option></select></label></div><div id="volume-chart" class="gj-chart"></div><details class="gj-detail"><summary>查看消费量、期间与计算依据</summary><div class="gj-table-scroll" tabindex="0"><table id="volume-table" class="gj-table"></table></div></details></article>
-      <article class="gj-card"><div class="gj-card-head"><div><h2>全年用金结构</h2><p>完整年度披露 · 吨</p></div><span class="gj-tag">2023—2025</span></div><div id="annual-composition" class="gj-composition"></div></article>
-    </section>
-    <section id="view-companies" class="gj-view" hidden>
-      <div class="gj-section-head"><div><h2>增长来源与盈利质量</h2></div><button class="gj-button" id="finance-export">导出财务对比</button></div>
-      <article class="gj-card"><div class="gj-card-head"><div><h2>五家公司 · 2026年上半年</h2><p>人民币亿元 · 存货为期末值</p></div></div><div class="gj-table-scroll" tabindex="0"><table id="finance-table" class="gj-table"></table></div></article>
-<details class="gj-detail gj-card"><summary>公司附加披露与逐字段来源</summary><div class="gj-card-head"><label>公司 <select id="company-select"></select></label></div><div id="company-focus" class="gj-table-scroll" tabindex="0"></div></details>
-      <article class="gj-card"><div class="gj-card-head"><div><h2>门店调整与同店量价</h2></div><button class="gj-button" id="operations-export">导出所选经营指标</button></div><div class="gj-controls"><label>公司 <select id="operation-company"></select></label><label>报告期间 <select id="operation-period"></select></label></div><div id="operations-summary" class="gj-mini-kpis"></div><div class="gj-table-scroll" tabindex="0"><table id="operations-table" class="gj-table"></table></div></article>
-    </section>
-    <section id="view-prices" class="gj-view" hidden>
-      <div class="gj-section-head"><div><h2>原料金价与品牌报价</h2></div></div>
-      <div class="gj-price-range"><label>历史开始 <input id="price-start" type="date"></label><label>历史结束 <input id="price-end" type="date"></label><button id="price-reset" class="gj-button">全部历史</button><span id="price-range-note" aria-live="polite"></span></div>
-      <article class="gj-card"><div class="gj-card-head"><div><h2>上金所 Au99.99</h2><p>官方交易日披露 · 元/克</p></div><button class="gj-button" id="benchmark-export">导出上金所数据</button></div><div class="gj-controls"><label>价格口径 <select id="benchmark-type"><option value="close">收盘价</option><option value="weighted_average">加权平均价</option></select></label><span id="benchmark-caption"></span></div><div id="benchmark-chart" class="gj-chart"></div><details class="gj-detail"><summary>查看交易日明细</summary><div class="gj-table-scroll" tabindex="0"><table id="benchmark-table" class="gj-table"></table></div></details></article>
-      <article class="gj-card"><div class="gj-card-head"><div><h2>品牌按克牌价</h2></div><div class="gj-export-actions"><button class="gj-button" id="brand-history-export">导出所选历史</button><button class="gj-button" id="quotes-export">导出报价表</button></div></div><div class="gj-controls"><label>历史序列 <select id="brand-series"></select></label></div><div id="brand-chart" class="gj-chart"></div><div class="gj-controls"><label>报价表品牌 <select id="quote-brand"></select></label><label>报价日期 <select id="quote-date"></select></label></div><div class="gj-table-scroll" tabindex="0"><table id="quotes-table" class="gj-table"></table></div></article>
-    </section>
-    <section id="view-sources" class="gj-view" hidden>
-      <div class="gj-section-head"><div><h2>来源与口径</h2></div></div>
-      <details class="gj-detail gj-card"><summary>金价驱动的来源清单</summary><div class="gj-table-scroll" tabindex="0"><table id="macro-sources-table" class="gj-table"></table></div></details>
-      <details class="gj-detail gj-card"><summary>需求与财务的来源清单</summary><div class="gj-table-scroll" tabindex="0"><table id="sources-table" class="gj-table"></table></div></details>
-      <details class="gj-detail gj-card"><summary>10品牌官方来源核验记录</summary><div class="gj-table-scroll" tabindex="0"><table id="audit-table" class="gj-table"></table></div></details>
-
-      <p class="gj-downloads"><a href="data/gold-jewelry/macro.json">金价驱动数据</a><a href="data/gold-jewelry/research.json">需求与财务数据</a><a href="data/gold-jewelry/company-operations.json">公司公告字段</a><a href="data/gold-jewelry/observations.json">金价与品牌报价</a></p>
-    </section>
-    <footer class="gj-footer"><span>国金商社研究数据库 · 黄金珠宝</span></footer>
-  </div>
-</main>
-</body></html>
-
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>黄金 · 国金商社</title>
+<link rel="stylesheet" href="scripts/site.css?v=20261010-unified"><script defer src="scripts/site-ui.js?v=20261010-unified"></script><script defer src="scripts/site-shell.js?v=20261010sectorsmerge"></script><link rel="stylesheet" href="scripts/site-polish.css?v=20261010-unified">
+<script>
+(function(){const url=new URL('industry.html',location.href);url.search=location.search;const key=location.hash.slice(1),aliases={'brand-panel':'prices','benchmark-panel':'prices','industry-panel':'demand','company-panel':'companies','source-panel':'sources'},view=aliases[key]||key;if(['demand','companies','prices','sources'].includes(view))url.searchParams.set('goldView',view);url.hash='gold';location.replace(url.href);})();
+</script></head><body><main><h1>黄金</h1><a href="industry.html#gold">进入黄金</a></main></body></html>

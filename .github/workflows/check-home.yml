@@ -149,3 +149,4 @@ jobs:
           sector_server_pid=$!
           trap 'kill "$sector_server_pid"' EXIT
           SECTOR_BASE_URL=http://127.0.0.1:18765 node tests/sectors.browser.cjs
+          SECTOR_BASE_URL=http://127.0.0.1:18765 node tests/gold-integration.browser.cjs
