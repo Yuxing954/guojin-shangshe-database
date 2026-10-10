@@ -20,6 +20,7 @@ DATA = ROOT / "data"
 # ---- 参数（可用 --days / --per-db / --sub-len 覆盖） ----
 MAX_DAYS   = 0       # 默认不限天数，按条数保留最新记录；--days 可按需限制
 MAX_PER_DB = 2000    # 每库条数上限
+PREVIEW_PER_DB = 100 # 首屏缓存条数，点击后再读取完整近期索引
 SUB_LEN    = 1200    # 单条 sub 截断（可通过 _set_sub_len 覆盖）
 
 
@@ -195,9 +196,14 @@ def main():
         })
 
     changed = write_json_if_changed(out_json, payload, volatile={"updatedAt"})
+    preview = {**payload, "dbs": [{**db, "availableRows": db["keptRows"], "rows": db["rows"][:PREVIEW_PER_DB]} for db in payload["dbs"]]}
+    preview_path = out_root / "recent-preview.json"
+    preview_changed = write_json_if_changed(preview_path, preview, volatile={"updatedAt"})
     print(f"OK  {'wrote' if changed else 'unchanged'} {out_json.relative_to(ROOT)}  "
           f"total kept={total}  json_size={out_json.stat().st_size}B  "
           f"src_total={total_bytes/1024:.0f}KB")
+    print(f"OK  {'wrote' if preview_changed else 'unchanged'} {preview_path.relative_to(ROOT)}  "
+          f"preview rows={sum(len(db['rows']) for db in preview['dbs'])}")
 
 
 if __name__ == "__main__":

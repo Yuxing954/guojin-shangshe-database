@@ -1,11 +1,12 @@
 (async function(){
   'use strict';
   const D=SiteData,M=ResearchModel,L=ResearchLibrary,$=id=>document.getElementById(id),size=12;
-  const archive=new Set(),batches=new Map(),params=new URLSearchParams(location.search);
-  let entries=[],filtered=[],kind=['digest','views','minutes','all_views'].includes(params.get('kind'))?params.get('kind'):params.get('asset')?'minutes':params.get('topic')||params.get('record')?'views':'digest',page=1,manifest,sync={},range='',articleRequest=0,library={},briefData={briefs:[]};
+  const archive=new Set(),batches=new Map(),loadedRecent=new Set(),params=new URLSearchParams(location.search);
+  let entries=[],filtered=[],kind=['digest','views','minutes','all_views'].includes(params.get('kind'))?params.get('kind'):params.get('asset')?'minutes':params.get('topic')||params.get('record')?'views':'digest',page=1,manifest,sync={},range='',articleRequest=0,library={},briefData={briefs:[]},recentMeta={dbs:[]},recentFull=null;
   const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
   let libraryScope=params.get('scope')==='all'||params.get('state')==='awaiting_file'?'all':'archived';
   function entry(r,k,sourceKind=k){const published=r['原始发布时间']||r['时间']||r['日期']||'';return {kind:k,sourceKind,title:r['标题']||'',published,date:published.slice(0,10),content:r['内容']||r['摘要']||'',author:r['作者']||'',sector:r['覆盖板块']||'',company:r['相关标的']||'',url:D.link(r['原文链接']||r['下载链接']),file:r['文件名']||'',batch:r['更新批次']||'',truncated:!!r['正文已截断'],state:r['内容状态']||''};}
+  function recentEntries(snapshot,requested){return (snapshot.dbs||[]).filter(db=>db.id!=='minutes'||requested==='minutes').flatMap(db=>db.rows.flatMap(r=>db.id==='views'?[entry(r,'views'),entry(r,'all_views','views')]:[entry(r,db.id)])).filter(r=>r.kind===requested);}
   function unique(records){
     const seen=new Set(),seenStampTitle=new Set(),seenBody=new Set();
     return records.filter(r=>{
@@ -44,6 +45,7 @@
     document.querySelector('main').classList.toggle('research-minutes-mode',kind==='minutes');
     $('briefs').hidden=kind!=='digest';$('results').hidden=kind==='digest';
     $('library-stats').hidden=true;
+    $('recent-more').hidden=kind==='digest'||loadedRecent.has(kind)||!((recentMeta.dbs||[]).some(db=>(kind==='all_views'?db.id==='all_views':db.id===kind)&&(db.availableRows||db.keptRows||db.rows?.length||0)>(db.rows||[]).length));
     $('ranges').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.range===range)));
     $('clear').disabled=!f.q&&!f.sector&&!f.format&&!f.state&&!f.from&&!f.to&&$('sort').value==='desc';
     if(kind==='digest'){renderBriefs(f,invalid);saveUrl();return;}
@@ -150,6 +152,7 @@
   $('article-dialog').addEventListener('close',()=>{articleRequest++;saveUrl();});
   function move(delta){page+=delta;render();$('results').scrollIntoView({block:'start',behavior:'smooth'});}
   $('prev').onclick=()=>move(-1);$('next').onclick=()=>move(1);
+  $('recent-more').onclick=async()=>{const requested=kind,button=$('recent-more');button.disabled=true;button.textContent='正在读取更多近期内容…';$('status').textContent='';try{if(!recentFull)recentFull=await D.json('data/research/recent.json');entries=entries.filter(r=>r.kind!==requested).concat(unique(recentEntries(recentFull,requested)));if(requested==='minutes'){library=await D.json('data/research/library.json').catch(()=>library);if(library.records)entries=L.mergeEntries(entries,library.records.map(L.entry),M.topic);}loadedRecent.add(requested);render();}catch(e){$('status').textContent='更多近期内容暂时无法读取，可重试；当前列表仍可浏览。';}finally{button.disabled=false;button.textContent='读取更多近期内容';}};
   async function loadArchive(requested){
     const sourceIds=requested==='all_views'?['views','all_views']:[requested];
     const loaded=await Promise.all(sourceIds.map(async id=>{
@@ -163,14 +166,12 @@
   $('archive').onclick=async()=>{const requested=kind,button=$('archive');button.disabled=true;button.textContent='正在加载历史观点…';$('status').textContent='';try{await loadArchive(requested);render();}catch(e){$('status').textContent='历史观点暂时无法加载，可重试；近期内容仍可浏览。';}finally{button.disabled=false;button.textContent='加载更早观点';}};
   try{
     manifest=await D.json('data-manifest.json');
-    const [recent,minutes,updates,libraryResult,briefResult]=await Promise.all([D.json('data/research/recent.json'),D.table(manifest.datasets.find(d=>d.id==='minutes').file),D.json('data/research/updates/manifest.json'),D.json('data/research/library.json').catch(()=>null),D.json('data/research/market-briefs.json').catch(()=>null)]);
-    if(libraryResult)library=libraryResult;if(briefResult)briefData=briefResult;
-    sync=updates;const minuteUpdates=(await Promise.all((sync.files?.minutes||[]).map(batchRows))).flat();
-    entries=recent.dbs.filter(db=>db.id!=='minutes').flatMap(db=>db.rows.flatMap(r=>db.id==='views'?[entry(r,'views'),entry(r,'all_views','views')]:[entry(r,db.id)])).concat(unique(minuteUpdates.concat(minutes).map(r=>entry(r,'minutes'))));
+    const [recent,updates,briefResult]=await Promise.all([D.json('data/research/recent-preview.json'),D.json('data/research/updates/manifest.json'),D.json('data/research/market-briefs.json').catch(()=>null)]);
+    recentMeta=recent;sync=updates;if(briefResult)briefData=briefResult;
+    entries=recent.dbs.flatMap(db=>db.rows.flatMap(r=>db.id==='views'?[entry(r,'views'),entry(r,'all_views','views')]:[entry(r,db.id)]));
     entries=entries.filter(r=>r.kind!=='all_views').concat(unique(entries.filter(r=>r.kind==='all_views')));
-    if(library.records)entries=L.mergeEntries(entries,library.records.map(L.entry),M.topic);
-    if(!libraryResult||!briefResult)$('status').textContent='部分整理数据暂时无法读取，现有观点原文仍可浏览。';
-    if(libraryResult&&briefResult)$('status').textContent='';$('content').hidden=false;select(kind);
+    if(!briefResult)$('status').textContent='观点摘要暂时无法读取，近期观点原文仍可浏览。';
+    if(briefResult)$('status').textContent='';$('content').hidden=false;select(kind);
     if(params.get('topic')||params.get('record')||params.get('asset')){
       const find=()=>entries.find(r=>r.kind===kind&&(params.get('topic')?(r.library?.sourceTopics||[M.topic(r)]).includes(params.get('topic')):!params.get('record')||[r.title,...(r.legacyTitles||[])].includes(params.get('record')))&&(!params.get('file')||r.file===params.get('file')||params.get('file').split('；').includes(r.file))&&(!params.get('asset')||(r.library?.aliases||[r.id]).includes(params.get('asset'))));
       let record=find();
