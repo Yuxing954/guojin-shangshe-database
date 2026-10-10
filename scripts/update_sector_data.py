@@ -217,9 +217,13 @@ def build(root=ROOT, cutoff=None):
     incoming.append(nbs)
     output = {}
     for sid in ('overseas', 'dining'):
-        baseline = next(s for s in overview['sectors'] if s['id'] == sid)
+        baseline = next((s for s in overview['sectors'] if s['id'] == sid), None)
         path = root / f'data/sectors/{sid}.json'
         previous = read(path) if path.exists() else None
+        # Retired boards remain archival inputs without restoring website entries.
+        baseline = baseline or previous
+        if baseline is None:
+            raise ValueError(f'Missing baseline or archive for {sid}')
         definitions = {m['id']: {k: v for k, v in m.items() if k != 'points'} for m in baseline['metrics']}
         definitions.update({m['id']: m for m in seed['metrics'] if m['sectorId'] == sid})
         source_map = {s['id']: s for s in overview['sources']}
