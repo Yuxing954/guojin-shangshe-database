@@ -1,0 +1,1026 @@
+{
+  "schemaVersion": 1,
+  "issues": [
+    {
+      "type": "period",
+      "sourceId": "src-fda0159bfcd5",
+      "locator": "季度经营数据!K7",
+      "message": "开关店期间非当季，保留原文：FY22: 191 / 4"
+    },
+    {
+      "type": "conflict",
+      "companyId": "atour",
+      "period": "2022Q4",
+      "metric": "adjusted_profit",
+      "selectedId": "obs-72489da5c8cd1321",
+      "alternative": {
+        "value": 259.0,
+        "sourceId": "src-34455fbf8775",
+        "locator": "季度经营数据!M20"
+      },
+      "message": "两份底稿值不同；主序列采用连续数据PDF底稿，差异保留待核验"
+    },
+    {
+      "type": "conflict",
+      "companyId": "atour",
+      "period": "2023Q2",
+      "metric": "revpar",
+      "selectedId": "obs-e1e2361f92f090ed",
+      "alternative": {
+        "value": 384.0,
+        "sourceId": "src-34455fbf8775",
+        "locator": "季度经营数据!F22"
+      },
+      "message": "两份底稿值不同；主序列采用连续数据PDF底稿，差异保留待核验"
+    },
+    {
+      "type": "conflict",
+      "companyId": "atour",
+      "period": "2023Q4",
+      "metric": "occ",
+      "selectedId": "obs-8c7e432d46235fbe",
+      "alternative": {
+        "value": 77.8,
+        "sourceId": "src-34455fbf8775",
+        "locator": "季度经营数据!E24"
+      },
+      "message": "两份底稿值不同；主序列采用连续数据PDF底稿，差异保留待核验"
+    },
+    {
+      "type": "conflict",
+      "companyId": "atour",
+      "period": "2024Q3",
+      "metric": "revpar",
+      "selectedId": "obs-05536e88d54bc6ec",
+      "alternative": {
+        "value": 380.0,
+        "sourceId": "src-34455fbf8775",
+        "locator": "季度经营数据!F27"
+      },
+      "message": "两份底稿值不同；主序列采用连续数据PDF底稿，差异保留待核验"
+    },
+    {
+      "type": "conflict",
+      "companyId": "atour",
+      "period": "2025Q1",
+      "metric": "revpar",
+      "selectedId": "obs-dc5fa6906850d2f4",
+      "alternative": {
+        "value": 304.0,
+        "sourceId": "src-34455fbf8775",
+        "locator": "季度经营数据!F29"
+      },
+      "message": "两份底稿值不同；主序列采用连续数据PDF底稿，差异保留待核验"
+    },
+    {
+      "type": "conflict",
+      "companyId": "atour",
+      "period": "2026Q1",
+      "metric": "revpar",
+      "selectedId": "obs-5f683e6673f7c55d",
+      "alternative": {
+        "value": 312.0,
+        "sourceId": "src-34455fbf8775",
+        "locator": "季度经营数据!F33"
+      },
+      "message": "两份底稿值不同；主序列采用连续数据PDF底稿，差异保留待核验"
+    },
+    {
+      "type": "conflict",
+      "companyId": "atour",
+      "period": "2026Q2",
+      "metric": "revpar",
+      "selectedId": "obs-b57e35ea18bb5cf6",
+      "alternative": {
+        "value": 345.0,
+        "sourceId": "src-34455fbf8775",
+        "locator": "季度经营数据!F34"
+      },
+      "message": "两份底稿值不同；主序列采用连续数据PDF底稿，差异保留待核验"
+    },
+    {
+      "type": "conflict",
+      "companyId": "atour",
+      "period": "2020FY",
+      "metric": "adr",
+      "selectedId": "obs-b556d62d0da2ae65",
+      "alternative": {
+        "value": 383.4,
+        "sourceId": "src-34455fbf8775",
+        "locator": "年度数据!D5"
+      },
+      "message": "两份底稿值不同；主序列采用连续数据PDF底稿，差异保留待核验"
+    },
+    {
+      "type": "conflict",
+      "companyId": "atour",
+      "period": "2020FY",
+      "metric": "occ",
+      "selectedId": "obs-521341b468439553",
+      "alternative": {
+        "value": 64.5,
+        "sourceId": "src-34455fbf8775",
+        "locator": "年度数据!E5"
+      },
+      "message": "两份底稿值不同；主序列采用连续数据PDF底稿，差异保留待核验"
+    },
+    {
+      "type": "conflict",
+      "companyId": "atour",
+      "period": "2020FY",
+      "metric": "revpar",
+      "selectedId": "obs-b5b2a1c0621581fc",
+      "alternative": {
+        "value": 262.2,
+        "sourceId": "src-34455fbf8775",
+        "locator": "年度数据!F5"
+      },
+      "message": "两份底稿值不同；主序列采用连续数据PDF底稿，差异保留待核验"
+    },
+    {
+      "type": "conflict",
+      "companyId": "atour",
+      "period": "2020FY",
+      "metric": "net_profit",
+      "selectedId": "obs-547e1eaeb554986f",
+      "alternative": {
+        "value": 42.1,
+        "sourceId": "src-34455fbf8775",
+        "locator": "年度数据!I5"
+      },
+      "message": "两份底稿值不同；主序列采用连续数据PDF底稿，差异保留待核验"
+    },
+    {
+      "type": "conflict",
+      "companyId": "atour",
+      "period": "2021FY",
+      "metric": "adr",
+      "selectedId": "obs-179a79f0d2184a0b",
+      "alternative": {
+        "value": 412.5,
+        "sourceId": "src-34455fbf8775",
+        "locator": "年度数据!D6"
+      },
+      "message": "两份底稿值不同；主序列采用连续数据PDF底稿，差异保留待核验"
+    },
+    {
+      "type": "conflict",
+      "companyId": "atour",
+      "period": "2021FY",
+      "metric": "occ",
+      "selectedId": "obs-048bfe2c8897a06c",
+      "alternative": {
+        "value": 67.5,
+        "sourceId": "src-34455fbf8775",
+        "locator": "年度数据!E6"
+      },
+      "message": "两份底稿值不同；主序列采用连续数据PDF底稿，差异保留待核验"
+    },
+    {
+      "type": "conflict",
+      "companyId": "atour",
+      "period": "2021FY",
+      "metric": "revpar",
+      "selectedId": "obs-d0b7cbdfaae27060",
+      "alternative": {
+        "value": 293.6,
+        "sourceId": "src-34455fbf8775",
+        "locator": "年度数据!F6"
+      },
+      "message": "两份底稿值不同；主序列采用连续数据PDF底稿，差异保留待核验"
+    },
+    {
+      "type": "conflict",
+      "companyId": "atour",
+      "period": "2021FY",
+      "metric": "net_profit",
+      "selectedId": "obs-546cd2b651cf789a",
+      "alternative": {
+        "value": 145.1,
+        "sourceId": "src-34455fbf8775",
+        "locator": "年度数据!I6"
+      },
+      "message": "两份底稿值不同；主序列采用连续数据PDF底稿，差异保留待核验"
+    },
+    {
+      "type": "conflict",
+      "companyId": "atour",
+      "period": "2022FY",
+      "metric": "adr",
+      "selectedId": "obs-b1f6b487497153ce",
+      "alternative": {
+        "value": 387.4,
+        "sourceId": "src-34455fbf8775",
+        "locator": "年度数据!D7"
+      },
+      "message": "两份底稿值不同；主序列采用连续数据PDF底稿，差异保留待核验"
+    },
+    {
+      "type": "conflict",
+      "companyId": "atour",
+      "period": "2022FY",
+      "metric": "occ",
+      "selectedId": "obs-286b429d5d767dbb",
+      "alternative": {
+        "value": 62.6,
+        "sourceId": "src-34455fbf8775",
+        "locator": "年度数据!E7"
+      },
+      "message": "两份底稿值不同；主序列采用连续数据PDF底稿，差异保留待核验"
+    },
+    {
+      "type": "conflict",
+      "companyId": "atour",
+      "period": "2022FY",
+      "metric": "revpar",
+      "selectedId": "obs-b26d190a066fecef",
+      "alternative": {
+        "value": 257.6,
+        "sourceId": "src-34455fbf8775",
+        "locator": "年度数据!F7"
+      },
+      "message": "两份底稿值不同；主序列采用连续数据PDF底稿，差异保留待核验"
+    },
+    {
+      "type": "conflict",
+      "companyId": "atour",
+      "period": "2022FY",
+      "metric": "net_profit",
+      "selectedId": "obs-e21085c5ad8cb5d5",
+      "alternative": {
+        "value": 98.1,
+        "sourceId": "src-34455fbf8775",
+        "locator": "年度数据!I7"
+      },
+      "message": "两份底稿值不同；主序列采用连续数据PDF底稿，差异保留待核验"
+    },
+    {
+      "type": "conflict",
+      "companyId": "atour",
+      "period": "2023FY",
+      "metric": "adr",
+      "selectedId": "obs-4237552db863fbf4",
+      "alternative": {
+        "value": 462.8,
+        "sourceId": "src-34455fbf8775",
+        "locator": "年度数据!D8"
+      },
+      "message": "两份底稿值不同；主序列采用连续数据PDF底稿，差异保留待核验"
+    },
+    {
+      "type": "conflict",
+      "companyId": "atour",
+      "period": "2023FY",
+      "metric": "occ",
+      "selectedId": "obs-64cc75fed5a37a0a",
+      "alternative": {
+        "value": 77.5,
+        "sourceId": "src-34455fbf8775",
+        "locator": "年度数据!E8"
+      },
+      "message": "两份底稿值不同；主序列采用连续数据PDF底稿，差异保留待核验"
+    },
+    {
+      "type": "conflict",
+      "companyId": "atour",
+      "period": "2023FY",
+      "metric": "revpar",
+      "selectedId": "obs-5cbc5c241d3c1ff1",
+      "alternative": {
+        "value": 375.8,
+        "sourceId": "src-34455fbf8775",
+        "locator": "年度数据!F8"
+      },
+      "message": "两份底稿值不同；主序列采用连续数据PDF底稿，差异保留待核验"
+    },
+    {
+      "type": "conflict",
+      "companyId": "atour",
+      "period": "2023FY",
+      "metric": "net_profit",
+      "selectedId": "obs-2da056929efde4fc",
+      "alternative": {
+        "value": 737.1,
+        "sourceId": "src-34455fbf8775",
+        "locator": "年度数据!I8"
+      },
+      "message": "两份底稿值不同；主序列采用连续数据PDF底稿，差异保留待核验"
+    },
+    {
+      "type": "conflict",
+      "companyId": "atour",
+      "period": "2023FY",
+      "metric": "retail_revenue",
+      "selectedId": "obs-999ec103cf86a90b",
+      "alternative": {
+        "value": 1073.6,
+        "sourceId": "src-34455fbf8775",
+        "locator": "年度数据!K8"
+      },
+      "message": "两份底稿值不同；主序列采用连续数据PDF底稿，差异保留待核验"
+    },
+    {
+      "type": "conflict",
+      "companyId": "atour",
+      "period": "2024FY",
+      "metric": "occ",
+      "selectedId": "obs-1f33990291d90460",
+      "alternative": {
+        "value": 77.2,
+        "sourceId": "src-34455fbf8775",
+        "locator": "年度数据!E9"
+      },
+      "message": "两份底稿值不同；主序列采用连续数据PDF底稿，差异保留待核验"
+    },
+    {
+      "type": "conflict",
+      "companyId": "atour",
+      "period": "2024FY",
+      "metric": "net_profit",
+      "selectedId": "obs-76ce53722a25d6c7",
+      "alternative": {
+        "value": 1275.3,
+        "sourceId": "src-34455fbf8775",
+        "locator": "年度数据!I9"
+      },
+      "message": "两份底稿值不同；主序列采用连续数据PDF底稿，差异保留待核验"
+    },
+    {
+      "type": "conflict",
+      "companyId": "atour",
+      "period": "2025FY",
+      "metric": "adr",
+      "selectedId": "obs-2a47863fc6e8babf",
+      "alternative": {
+        "value": 431.0,
+        "sourceId": "src-34455fbf8775",
+        "locator": "年度数据!D10"
+      },
+      "message": "两份底稿值不同；主序列采用连续数据PDF底稿，差异保留待核验"
+    },
+    {
+      "type": "conflict",
+      "companyId": "atour",
+      "period": "2025FY",
+      "metric": "occ",
+      "selectedId": "obs-8eae3bd06d03d381",
+      "alternative": {
+        "value": 75.7,
+        "sourceId": "src-34455fbf8775",
+        "locator": "年度数据!E10"
+      },
+      "message": "两份底稿值不同；主序列采用连续数据PDF底稿，差异保留待核验"
+    },
+    {
+      "type": "conflict",
+      "companyId": "atour",
+      "period": "2025FY",
+      "metric": "revpar",
+      "selectedId": "obs-e40c691b67c11a9d",
+      "alternative": {
+        "value": 338.5,
+        "sourceId": "src-34455fbf8775",
+        "locator": "年度数据!F10"
+      },
+      "message": "两份底稿值不同；主序列采用连续数据PDF底稿，差异保留待核验"
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2020FY",
+      "scope": "全部",
+      "observationIds": [
+        "obs-521341b468439553",
+        "obs-b556d62d0da2ae65",
+        "obs-b5b2a1c0621581fc"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 13.5442
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2021FY",
+      "scope": "全部",
+      "observationIds": [
+        "obs-048bfe2c8897a06c",
+        "obs-179a79f0d2184a0b",
+        "obs-d0b7cbdfaae27060"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 13.8096
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2022FY",
+      "scope": "全部",
+      "observationIds": [
+        "obs-286b429d5d767dbb",
+        "obs-b1f6b487497153ce",
+        "obs-b26d190a066fecef"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 14.244
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2023FY",
+      "scope": "全部",
+      "observationIds": [
+        "obs-64cc75fed5a37a0a",
+        "obs-4237552db863fbf4",
+        "obs-5cbc5c241d3c1ff1"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 16.1192
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2024FY",
+      "scope": "全部",
+      "observationIds": [
+        "obs-1f33990291d90460",
+        "obs-37e0f8de36f17f85",
+        "obs-b045a8a0dbfc4088"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 13.2168
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2025FY",
+      "scope": "全部",
+      "observationIds": [
+        "obs-8eae3bd06d03d381",
+        "obs-2a47863fc6e8babf",
+        "obs-e40c691b67c11a9d"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 11.7879
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2022Q4",
+      "scope": "全部",
+      "observationIds": [
+        "obs-111b438ef5d79810",
+        "obs-5b04d166be5f6b6a",
+        "obs-58f2e435bfb0fe76"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 14.172
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2023Q1",
+      "scope": "全部",
+      "observationIds": [
+        "obs-582e1d86fcb098b5",
+        "obs-be5e62c5828002a0",
+        "obs-bfdd312ea0a65927"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 15.825
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2023Q2",
+      "scope": "全部",
+      "observationIds": [
+        "obs-ac7681353e12961a",
+        "obs-283b06417dc2e16f",
+        "obs-e1e2361f92f090ed"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 17.5292
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2023Q3",
+      "scope": "全部",
+      "observationIds": [
+        "obs-6fc4fd69dbcdb9c7",
+        "obs-42af7b24a44265db",
+        "obs-ff5fe0a582ff47a9"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 15.8904
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2023Q4",
+      "scope": "全部",
+      "observationIds": [
+        "obs-8c7e432d46235fbe",
+        "obs-10c273b0c32a6bfe",
+        "obs-a9a6449ca3892c45"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 15.0432
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2024Q1",
+      "scope": "全部",
+      "observationIds": [
+        "obs-f77074e1a23a918f",
+        "obs-92dcf541a6c7967d",
+        "obs-6c79bb532fd029ce"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 12.71
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2024Q2",
+      "scope": "全部",
+      "observationIds": [
+        "obs-4da6c0958b1737c7",
+        "obs-771d71fc110aecb8",
+        "obs-d1427ccb61efdc4c"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 13.2696
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2024Q3",
+      "scope": "全部",
+      "observationIds": [
+        "obs-dce107f1104d07c4",
+        "obs-b625ad2c35dafcba",
+        "obs-05536e88d54bc6ec"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 13.4926
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2024Q4",
+      "scope": "全部",
+      "observationIds": [
+        "obs-494656817e158d80",
+        "obs-62d3407273350124",
+        "obs-7051384594ec9b65"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 13.346
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2025Q1",
+      "scope": "全部",
+      "observationIds": [
+        "obs-f0d2c9ab729b2412",
+        "obs-eebf04c7ebc2ac16",
+        "obs-dc5fa6906850d2f4"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 11.0342
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2025Q2",
+      "scope": "全部",
+      "observationIds": [
+        "obs-4015141473dbeeda",
+        "obs-83517c477222a4d0",
+        "obs-ab32f9a6c01a1b70"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 12.4408
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2025Q3",
+      "scope": "全部",
+      "observationIds": [
+        "obs-5195361c3366da58",
+        "obs-c3564b765a779186",
+        "obs-7d628eb538f01e2a"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 12.6456
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2025Q4",
+      "scope": "全部",
+      "observationIds": [
+        "obs-31a4527f31ee5ab9",
+        "obs-7f4b3a46edf21a1c",
+        "obs-25abdf3a5174a15b"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 11.2096
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2026Q1",
+      "scope": "全部",
+      "observationIds": [
+        "obs-34e11d8227e075d5",
+        "obs-9e8d52cfbd5fb132",
+        "obs-5f683e6673f7c55d"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 10.2792
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2026Q2",
+      "scope": "全部",
+      "observationIds": [
+        "obs-fac59f9df9e00d13",
+        "obs-f5cfadf530c54260",
+        "obs-b57e35ea18bb5cf6"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 11.7202
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2022FY",
+      "scope": "同店组 2022→2023",
+      "observationIds": [
+        "obs-5f92358141c42b34",
+        "obs-23239b8b0e260779",
+        "obs-6bd649b593d7c875"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 14.2694
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2023FY",
+      "scope": "同店组 2022→2023",
+      "observationIds": [
+        "obs-f8a0894c78a35739",
+        "obs-80a76845b44f34e2",
+        "obs-d44e42afdcaed487"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 16.854
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2023FY",
+      "scope": "同店组 2023→2024",
+      "observationIds": [
+        "obs-4e2c43b5c9a1f6e6",
+        "obs-3a3d52dd1489e937",
+        "obs-d4136cb8d92a668a"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 16.3536
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2024FY",
+      "scope": "同店组 2023→2024",
+      "observationIds": [
+        "obs-bb24f5612c667989",
+        "obs-adb2619e242b029b",
+        "obs-9ad34227aa6eb950"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 14.166
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2024FY",
+      "scope": "同店组 2024→2025",
+      "observationIds": [
+        "obs-ae23e8a0caab8627",
+        "obs-bb6e9b4827e3c8b6",
+        "obs-8372ed764aba39c9"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 13.4802
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2025FY",
+      "scope": "同店组 2024→2025",
+      "observationIds": [
+        "obs-798edc9baa20bc1b",
+        "obs-95813a59026d7a2d",
+        "obs-68c4bc755972ec86"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 12.1265
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2019Q1",
+      "scope": "全部",
+      "observationIds": [
+        "obs-2a1474eb5a1f656b",
+        "obs-28e05ca44c7ab2e4",
+        "obs-ea966d6932f141bb"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 11.4926
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2019Q2",
+      "scope": "全部",
+      "observationIds": [
+        "obs-196c3e965c6bc09b",
+        "obs-05e18026ac2ce851",
+        "obs-b08bc98fdbae2613"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 12.3456
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2019Q3",
+      "scope": "全部",
+      "observationIds": [
+        "obs-0b316fb5830db0e6",
+        "obs-d847f4e80dde58b7",
+        "obs-26016d9909a83aa9"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 15.7058
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2019Q4",
+      "scope": "全部",
+      "observationIds": [
+        "obs-17d3289e0d613425",
+        "obs-e9406d093167332f",
+        "obs-230ba5019895ccc9"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 16.55
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2020Q1",
+      "scope": "全部",
+      "observationIds": [
+        "obs-bddd746a833cfc4f",
+        "obs-bc6cacb828cfc847",
+        "obs-b37113babda81532"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 7.1276
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2020Q2",
+      "scope": "全部",
+      "observationIds": [
+        "obs-2c9b644ce9d815c6",
+        "obs-4d221b0c5c0038a1",
+        "obs-bdbe3f109d1c1653"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 12.0193
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2020Q3",
+      "scope": "全部",
+      "observationIds": [
+        "obs-c5d68f34e22e069c",
+        "obs-7b2bc1fc6af6150b",
+        "obs-fb67ce4b6981b015"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 16.2481
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2020Q4",
+      "scope": "全部",
+      "observationIds": [
+        "obs-0684d427fe443273",
+        "obs-349a2f247b70db4a",
+        "obs-e06eb2b6b81cc408"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 15.9263
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2021Q1",
+      "scope": "全部",
+      "observationIds": [
+        "obs-c04a762bd0ad3f96",
+        "obs-dc3dcd41f5966179",
+        "obs-fd8864420eb33d4f"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 11.48
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2021Q2",
+      "scope": "全部",
+      "observationIds": [
+        "obs-42d058eb10ab3749",
+        "obs-c5732e78decfdbc1",
+        "obs-0cee42dda0dc2136"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 15.2473
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2021Q3",
+      "scope": "全部",
+      "observationIds": [
+        "obs-0cfb8a6aa87d1215",
+        "obs-f75643496c872871",
+        "obs-09f79b41274ee904"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 13.572
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2021Q4",
+      "scope": "全部",
+      "observationIds": [
+        "obs-5e265259afcbc064",
+        "obs-c9df1c6c33ee0767",
+        "obs-81390dbe666b5a89"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 15.3457
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2022Q1",
+      "scope": "全部",
+      "observationIds": [
+        "obs-8af0ec24434c83bd",
+        "obs-78049e4ddc42b9f9",
+        "obs-4178f67988b3b213"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 11.2
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2022Q2",
+      "scope": "全部",
+      "observationIds": [
+        "obs-e3fd673647c6802b",
+        "obs-670285055b79c479",
+        "obs-392b033e9da53947"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 14.321
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2022Q3",
+      "scope": "全部",
+      "observationIds": [
+        "obs-bb4d1b86903c7a01",
+        "obs-74dad89e7a5b057b",
+        "obs-040de86b68f8d246"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 15.604
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "atour",
+      "period": "2019FY",
+      "scope": "全部",
+      "observationIds": [
+        "obs-b9cb34503213b659",
+        "obs-a4a080d9d135eebb",
+        "obs-b387fbd3118bab8b"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 14.341
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "btg",
+      "period": "2022FY",
+      "scope": "轻管理",
+      "observationIds": [
+        "obs-9895227cb6e02063",
+        "obs-3c1046921d673570",
+        "obs-1ffb1b5dbb52d9fb"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": -5.488
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "btg",
+      "period": "2020Q2",
+      "scope": "全部",
+      "observationIds": [
+        "obs-3e1a663a6589f23c",
+        "obs-9903134074faeb09",
+        "obs-e77970129ef0f0c1"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": -3.248
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "btg",
+      "period": "2022Q3",
+      "scope": "中高端",
+      "observationIds": [
+        "obs-22a1eba9736e67d8",
+        "obs-24839ed0cf63d08b",
+        "obs-dc208c60631e4b68"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 35.896
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "btg",
+      "period": "2022Q3",
+      "scope": "中高端",
+      "observationIds": [
+        "obs-c898a650d2ba00ef",
+        "obs-24f3ce74af2065e7",
+        "obs-2ae66b95354088f7"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 39.472
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "btg",
+      "period": "2022Q3",
+      "scope": "轻管理",
+      "observationIds": [
+        "obs-bc00a4a50e75b154",
+        "obs-12c1e6211838b3d8",
+        "obs-e6018a631310a14e"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": -19.96
+    },
+    {
+      "type": "reconciliation",
+      "companyId": "btg",
+      "period": "2023Q4",
+      "scope": "全部",
+      "observationIds": [
+        "obs-5aee473a60b99563",
+        "obs-92a62f716b113778",
+        "obs-d083ff7319862fc3"
+      ],
+      "message": "RevPAR与ADR×OCC差异超过2%或1.5货币单位，保留源值待核验",
+      "difference": 4.036
+    }
+  ],
+  "pendingCount": 12
+}

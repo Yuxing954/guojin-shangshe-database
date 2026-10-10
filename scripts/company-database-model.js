@@ -1,0 +1,11 @@
+(function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.CompanyDatabaseModel=api;})(typeof globalThis!=='undefined'?globalThis:this,function(){
+ 'use strict';
+ const labels={transcribed:'底稿转录',derived:'底稿推算',forecast:'模型预测',pending:'待核验'};
+ function period(p){const y=Number(p.slice(0,4));return y*100+(/Q/.test(p)?Number(p.at(-1))*3:/H/.test(p)?Number(p.at(-1))*6:12);}
+ function seriesKey(o){return JSON.stringify([o.scope,o.mode,o.region,o.basis,o.unit,o.currency,o.periodBasis]);}
+ function seriesLabel(o){return [o.region,o.scope,o.mode,o.basis,o.currency,o.periodBasis].filter(v=>v&&v!=='全部').join(' · ');}
+ function filter(rows,opt={}){return rows.filter(o=>(!opt.metric||o.metric===opt.metric)&&(!opt.frequency||o.frequency===opt.frequency)&&(!opt.series||seriesKey(o)===opt.series)&&(!opt.from||Number(o.period.slice(0,4))>=Number(opt.from))&&(!opt.to||Number(o.period.slice(0,4))<=Number(opt.to))&&(opt.forecast||o.status!=='forecast')&&(opt.pending||o.status!=='pending')).sort((a,b)=>period(a.period)-period(b.period)||a.period.localeCompare(b.period));}
+ function series(rows){const result=new Map();for(const o of rows){const key=seriesKey(o),latest=period(o.period);if(!result.has(key))result.set(key,{key,label:seriesLabel(o),row:o,latest});else result.get(key).latest=Math.max(result.get(key).latest,latest);}const priority=o=>o.mode==='全部'&&(o.scope==='全部'||o.scope.includes('/平均'))?2:o.mode==='全部'?1:0;return [...result.values()].sort((a,b)=>priority(b.row)-priority(a.row)||b.latest-a.latest||a.label.localeCompare(b.label,'zh'));}
+ function csv(rows,metrics){const names=Object.fromEntries(metrics.map(m=>[m.id,m.name]));const fields=['公司ID','报告期','指标','数值','单位','币种','地区','范围','经营模式','统计口径','期间口径','状态','来源ID','单元格或行号','报告','页码','原始公式','原始值','来源说明'];function cell(v){let s=String(v??'');if(/^[=+@-]/.test(s)&&typeof v!=='number')s="'"+s;return '"'+s.replace(/"/g,'""')+'"';}return '\uFEFF'+[fields,...rows.map(o=>[o.companyId,o.period,names[o.metric],o.value,o.unit,o.currency,o.region,o.scope,o.mode,o.basis,o.periodBasis,labels[o.status],o.sourceId,o.locator,o.report,o.pages,o.formula,o.rawValue,o.note])].map(r=>r.map(cell).join(',')).join('\r\n');}
+ return {labels,period,seriesKey,seriesLabel,filter,series,csv};
+});

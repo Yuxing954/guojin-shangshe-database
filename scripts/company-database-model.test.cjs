@@ -1,0 +1,14 @@
+const assert=require('node:assert/strict'),M=require('./company-database-model.js');
+const row={companyId:'one',period:'2025Q1',frequency:'季度',metric:'occ',value:0,unit:'%',scope:'全部',mode:'全部',region:'中国',basis:'含税',periodBasis:'期间平均',status:'transcribed'};
+assert.equal(M.filter([row]).length,1,'true zero must remain');
+assert.equal(M.filter([{...row,status:'forecast'},{...row,status:'pending'}]).length,0,'forecasts and future placeholders are not actual');
+assert.equal(M.filter([{...row,status:'forecast'}],{forecast:true}).length,1);
+assert.notEqual(M.seriesKey(row),M.seriesKey({...row,currency:'EUR'}));
+assert.notEqual(M.seriesKey(row),M.seriesKey({...row,periodBasis:'年初至今累计'}));
+assert.notEqual(M.seriesKey(row),M.seriesKey({...row,basis:'同店'}));
+assert.deepEqual(M.filter([{...row,period:'2025Q4'},{...row,period:'2025Q2'},row]).map(r=>r.period),['2025Q1','2025Q2','2025Q4']);
+assert.equal(M.period('2025Q4'),M.period('2025FY'));
+assert.equal(M.filter([row],{from:2026}).length,0);
+assert.match(M.csv([{...row,formula:'=HYPERLINK("bad")'}],[{id:'occ',name:'入住率'}]),/'=HYPERLINK/);
+assert.equal(M.series([{...row,scope:'经济型'},row])[0].row.scope,'全部');
+console.log('Company database filtering, period, unit, status and export checks passed.');

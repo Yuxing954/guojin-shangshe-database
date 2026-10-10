@@ -1,0 +1,322 @@
+{
+  "schemaVersion": 1,
+  "title": "重点公司数据库",
+  "updatedAt": "2026-10-10",
+  "companies": [
+    {
+      "id": "jinjiang",
+      "name": "锦江酒店",
+      "code": "600754.SH",
+      "aliases": [],
+      "sector": "酒店",
+      "market": "A股",
+      "coverage": "核心推荐",
+      "file": "data/companies/hotels/jinjiang.json",
+      "count": 1082,
+      "firstPeriod": "2016H1",
+      "lastPeriod": "2026H1",
+      "status": "已入库",
+      "valuationDate": "2026-09-08"
+    },
+    {
+      "id": "btg",
+      "name": "首旅酒店",
+      "code": "600258.SH",
+      "aliases": [],
+      "sector": "酒店",
+      "market": "A股",
+      "coverage": "核心推荐",
+      "file": "data/companies/hotels/btg.json",
+      "count": 2250,
+      "firstPeriod": "2017Q1",
+      "lastPeriod": "2026H1",
+      "status": "已入库",
+      "valuationDate": "2026-09-08"
+    },
+    {
+      "id": "juneyao",
+      "name": "君亭酒店",
+      "code": "301073.SZ",
+      "aliases": [],
+      "sector": "酒店",
+      "market": "A股",
+      "coverage": "一般跟踪",
+      "file": null,
+      "count": 0,
+      "firstPeriod": null,
+      "lastPeriod": null,
+      "status": "暂无专项经营底稿",
+      "valuationDate": "2026-09-08"
+    },
+    {
+      "id": "atour",
+      "name": "亚朵集团",
+      "code": "ATAT.O",
+      "aliases": [
+        "ATAT.US"
+      ],
+      "sector": "酒店",
+      "market": "美股",
+      "coverage": "核心推荐",
+      "file": "data/companies/hotels/atour.json",
+      "count": 664,
+      "firstPeriod": "2019Q1",
+      "lastPeriod": "2026Q2",
+      "status": "已入库",
+      "valuationDate": "2026-09-08"
+    },
+    {
+      "id": "hworld",
+      "name": "华住集团-S",
+      "code": "1179.HK",
+      "aliases": [
+        "HTHT.US",
+        "HTHT.O"
+      ],
+      "sector": "酒店",
+      "market": "港股",
+      "coverage": "核心推荐",
+      "file": "data/companies/hotels/hworld.json",
+      "count": 760,
+      "firstPeriod": "2010Q1",
+      "lastPeriod": "2026Q2",
+      "status": "已入库",
+      "valuationDate": "2026-09-08"
+    }
+  ],
+  "metrics": [
+    {
+      "id": "hotels",
+      "name": "期末酒店数",
+      "unit": "家",
+      "category": "规模",
+      "aggregation": "stock"
+    },
+    {
+      "id": "rooms",
+      "name": "期末客房数",
+      "unit": "间",
+      "category": "规模",
+      "aggregation": "stock"
+    },
+    {
+      "id": "pipeline",
+      "name": "待开业酒店数",
+      "unit": "家",
+      "category": "规模",
+      "aggregation": "stock"
+    },
+    {
+      "id": "opened",
+      "name": "新开酒店数",
+      "unit": "家",
+      "category": "拓店",
+      "aggregation": "flow"
+    },
+    {
+      "id": "closed",
+      "name": "退出酒店数",
+      "unit": "家",
+      "category": "拓店",
+      "aggregation": "flow"
+    },
+    {
+      "id": "to_pipeline",
+      "name": "开业转筹建",
+      "unit": "家",
+      "category": "拓店",
+      "aggregation": "flow"
+    },
+    {
+      "id": "net_opened",
+      "name": "净增酒店数",
+      "unit": "家",
+      "category": "拓店",
+      "aggregation": "flow"
+    },
+    {
+      "id": "adr",
+      "name": "ADR",
+      "unit": "元/间",
+      "category": "经营",
+      "aggregation": "average"
+    },
+    {
+      "id": "occ",
+      "name": "入住率",
+      "unit": "%",
+      "category": "经营",
+      "aggregation": "average"
+    },
+    {
+      "id": "revpar",
+      "name": "RevPAR",
+      "unit": "元/间",
+      "category": "经营",
+      "aggregation": "average"
+    },
+    {
+      "id": "revenue",
+      "name": "营业收入",
+      "unit": "百万元",
+      "category": "财务",
+      "aggregation": "flow"
+    },
+    {
+      "id": "hotel_revenue",
+      "name": "酒店业务收入",
+      "unit": "百万元",
+      "category": "财务",
+      "aggregation": "flow"
+    },
+    {
+      "id": "managed_revenue",
+      "name": "加盟及管理收入",
+      "unit": "百万元",
+      "category": "财务",
+      "aggregation": "flow"
+    },
+    {
+      "id": "leased_revenue",
+      "name": "直营收入",
+      "unit": "百万元",
+      "category": "财务",
+      "aggregation": "flow"
+    },
+    {
+      "id": "retail_revenue",
+      "name": "零售收入",
+      "unit": "百万元",
+      "category": "财务",
+      "aggregation": "flow"
+    },
+    {
+      "id": "retail_other_revenue",
+      "name": "零售及其他收入",
+      "unit": "百万元",
+      "category": "财务",
+      "aggregation": "flow"
+    },
+    {
+      "id": "other_revenue",
+      "name": "其他收入",
+      "unit": "百万元",
+      "category": "财务",
+      "aggregation": "flow"
+    },
+    {
+      "id": "operating_profit",
+      "name": "经营利润",
+      "unit": "百万元",
+      "category": "财务",
+      "aggregation": "flow"
+    },
+    {
+      "id": "net_profit",
+      "name": "净利润",
+      "unit": "百万元",
+      "category": "财务",
+      "aggregation": "flow"
+    },
+    {
+      "id": "parent_profit",
+      "name": "归母净利润",
+      "unit": "百万元",
+      "category": "财务",
+      "aggregation": "flow"
+    },
+    {
+      "id": "adjusted_profit",
+      "name": "经调整净利润",
+      "unit": "百万元",
+      "category": "财务",
+      "aggregation": "flow"
+    },
+    {
+      "id": "adjusted_ebitda",
+      "name": "经调整EBITDA",
+      "unit": "百万元",
+      "category": "财务",
+      "aggregation": "flow"
+    },
+    {
+      "id": "operating_cf",
+      "name": "经营现金流",
+      "unit": "百万元",
+      "category": "现金流",
+      "aggregation": "flow"
+    },
+    {
+      "id": "investing_cf",
+      "name": "投资现金流",
+      "unit": "百万元",
+      "category": "现金流",
+      "aggregation": "flow"
+    },
+    {
+      "id": "financing_cf",
+      "name": "融资现金流",
+      "unit": "百万元",
+      "category": "现金流",
+      "aggregation": "flow"
+    },
+    {
+      "id": "cash",
+      "name": "现金及受限现金",
+      "unit": "百万元",
+      "category": "现金流",
+      "aggregation": "stock"
+    },
+    {
+      "id": "debt",
+      "name": "债务",
+      "unit": "百万元",
+      "category": "现金流",
+      "aggregation": "stock"
+    },
+    {
+      "id": "gmv",
+      "name": "零售GMV",
+      "unit": "百万元",
+      "category": "零售",
+      "aggregation": "flow"
+    },
+    {
+      "id": "members",
+      "name": "会员数",
+      "unit": "百万人",
+      "category": "零售",
+      "aggregation": "stock"
+    },
+    {
+      "id": "hotel_cost",
+      "name": "酒店成本",
+      "unit": "百万元",
+      "category": "财务",
+      "aggregation": "flow"
+    },
+    {
+      "id": "retail_cost",
+      "name": "零售成本",
+      "unit": "百万元",
+      "category": "财务",
+      "aggregation": "flow"
+    },
+    {
+      "id": "sales_expense",
+      "name": "销售费用",
+      "unit": "百万元",
+      "category": "财务",
+      "aggregation": "flow"
+    },
+    {
+      "id": "admin_expense",
+      "name": "管理费用",
+      "unit": "百万元",
+      "category": "财务",
+      "aggregation": "flow"
+    }
+  ],
+  "sourcesFile": "data/companies/sources.json",
+  "issuesFile": "data/companies/issues.json"
+}

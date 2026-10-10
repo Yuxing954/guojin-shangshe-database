@@ -268,6 +268,15 @@
       "category": "财报日历",
       "source": "Choice MCP · 东方财富（公告原文单独核验）",
       "updateScript": "scripts/import-earnings-choice.cjs"
+    },
+    {
+      "id": "company_database",
+      "name": "重点公司数据库 · 酒店上市公司",
+      "file": "data/companies/catalog.json",
+      "category": "公司",
+      "page": "company-database.html",
+      "sources": "data/companies/sources.json",
+      "verification": "data/companies/issues.json"
     }
   ]
 }
