@@ -161,7 +161,7 @@
       const reassigned=new Set(sync.assignedTopics?.[id==='views'?'all_views':'views']||[]);
       return updates.flat().concat(all.filter(r=>!reassigned.has((D.link(r['原文链接']).match(/\/topic\/(\d+)/)||[])[1]))).map(r=>entry(r,requested,id));
     }));
-    entries=entries.filter(r=>r.kind!==requested).concat(unique(loaded.flat()));archive.add(requested);
+    entries=entries.filter(r=>r.kind!==requested).concat(unique(loaded.flat()));archive.add(requested);loadedRecent.add(requested);
   }
   $('archive').onclick=async()=>{const requested=kind,button=$('archive');button.disabled=true;button.textContent='正在加载历史观点…';$('status').textContent='';try{await loadArchive(requested);render();}catch(e){$('status').textContent='历史观点暂时无法加载，可重试；近期内容仍可浏览。';}finally{button.disabled=false;button.textContent='加载更早观点';}};
   try{
@@ -175,7 +175,7 @@
     if(params.get('topic')||params.get('record')||params.get('asset')){
       const find=()=>entries.find(r=>r.kind===kind&&(params.get('topic')?(r.library?.sourceTopics||[M.topic(r)]).includes(params.get('topic')):!params.get('record')||[r.title,...(r.legacyTitles||[])].includes(params.get('record')))&&(!params.get('file')||r.file===params.get('file')||params.get('file').split('；').includes(r.file))&&(!params.get('asset')||(r.library?.aliases||[r.id]).includes(params.get('asset'))));
       let record=find();
-      if(!record&&kind!=='minutes'){try{$('status').textContent='正在查找历史观点…';await loadArchive(kind);record=find();render();$('status').textContent='';}catch(e){$('status').textContent='历史观点暂时无法加载，请稍后重试。';}}
+      if(!record){try{$('status').textContent='正在查找历史观点…';await loadArchive(kind);if(kind==='minutes'){library=await D.json('data/research/library.json').catch(()=>library);if(library.records)entries=L.mergeEntries(entries,library.records.map(L.entry),M.topic);}record=find();render();$('status').textContent='';}catch(e){$('status').textContent='历史观点暂时无法加载，请稍后重试。';}}
       if(record)await openRecord(record);else $('status').textContent='未找到这条内容，可通过公司或关键词查找。';
     }
   }catch(e){$('status').innerHTML='研究文库暂时无法读取。<button class="portal-button" onclick="location.reload()">重试</button>';}
