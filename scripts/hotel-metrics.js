@@ -89,6 +89,24 @@
     }
     return result;
   }
+  function supply15Plus(rows, industry) {
+    var bands = ['15-29间', '30-69间', '70-149间', '150间及以上'];
+    var selected = bands.map(function (band) { return rows.find(function (r) { return r.room_band === band; }); });
+    var result = Object.assign({}, industry || {}, selected.find(Boolean) || {}, { room_band: '15间及以上' });
+    ['hotel_count', 'room_count', 'chain_hotel_count', 'chain_room_count'].forEach(function (field) {
+      var values = selected.map(function (r) { return metric(r, field); });
+      result[field] = values.every(function (v) { return v != null && v >= 0; }) ? values.reduce(function (a, b) { return a + b; }, 0) : null;
+    });
+    ['hotel_count','room_count'].forEach(function (field) { var source = metric(industry,field+'_15plus'); if(result[field] == null && source != null && source >= 0) result[field] = source; });
+    return result;
+  }
+  function chartSeries(lines) {
+    var kept = lines.filter(function (s) { return s.pts.some(function (p) { return num(p.y) != null; }); });
+    var valid = kept.flatMap(function (s) { return s.pts.filter(function (p) { return num(p.y) != null; }).map(function (p) { return p.x; }); }).sort();
+    return valid.length ? kept.map(function (s) { return Object.assign({}, s, { pts: s.pts.filter(function (p) { return p.x >= valid[0] && p.x <= valid[valid.length - 1]; }) }); }) : [];
+  }
   return { num: num, csv: csv, index: index, metric: metric, change: change, priorPeriod: priorPeriod,
-    sorted: sorted, windowRows: windowRows, rank: rank, validShares: validShares, investmentWindow: investmentWindow };
+    sorted: sorted, windowRows: windowRows, rank: rank, validShares: validShares, investmentWindow: investmentWindow,
+    supply15Plus: supply15Plus, chartSeries: chartSeries };
 });
+

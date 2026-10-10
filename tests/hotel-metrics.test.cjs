@@ -104,6 +104,27 @@ const gap=M.investmentWindow([{period_id:'2024-02',end_date:'2024-02-29',yoy_pct
 assert.equal(gap.find(r=>r.period_id==='2024-03').yoy_pct,null);
 assert.equal(M.num(supply.room_count),M.num(latest.room_count));
 assert.notEqual(M.num(latest.room_count),M.num(latest.room_count_15plus));
+const large = M.supply15Plus(data.supply.filter(r=>r.region==='全国'&&r.period_id===latest.period_id));
+const largePrior = M.supply15Plus(data.supply.filter(r=>r.region==='全国'&&r.period_id===prior));
+assert.equal(large.hotel_count,M.num(latest.hotel_count_15plus));
+assert.equal(large.room_count,M.num(latest.room_count_15plus));
+assert.equal(large.hotel_count,428582);
+assert.equal(large.room_count,20961366);
+assert.equal(large.chain_room_count,6372680);
+close(M.change(large,largePrior,'hotel_count'),(M.num(latest.hotel_count_15plus)/M.num(base.hotel_count_15plus)-1)*100);
+close(M.metric(large,'chain_rate'),6372680/20961366);
+const bands=data.supply.filter(r=>r.region==='全国'&&r.period_id===latest.period_id&&r.room_band!=='15间以下'&&r.room_band!=='全部');
+assert.equal(M.supply15Plus(bands.slice(1)).room_count,null);
+assert.equal(M.supply15Plus([],latest).room_count,M.num(latest.room_count_15plus));
+assert.equal(M.supply15Plus([],latest).chain_room_count,null);
+assert.equal(M.supply15Plus(bands.map((r,i)=>i? r : {...r,room_count:''})).room_count,null);
+assert.equal(M.supply15Plus(bands.map(r=>({...r,chain_room_count:0}))).chain_room_count,0);
+const clipped=M.chartSeries([{name:'有效',pts:[{x:'1',y:null},{x:'2',y:0},{x:'3',y:null},{x:'4',y:4},{x:'5',y:null}]},{name:'无数据',pts:[{x:'1',y:null}]}]);
+assert.equal(clipped.length,1);
+assert.deepEqual(clipped[0].pts.map(p=>p.x),['2','3','4']);
+assert.equal(clipped[0].pts[1].y,null);
+assert.deepEqual(M.chartSeries([{pts:[{x:'1',y:null}]}]),[]);
 const annualYear=Math.max(...data.share.map(r=>Number(r.year))), shares=data.share.filter(r=>Number(r.year)===annualYear);
 assert.ok(M.validShares(shares));
 console.log(JSON.stringify({result:'PASS',latest:latest.period_id,comparison:prior,regions:regions.length,rows:Object.fromEntries(Object.entries(data).map(([k,v])=>[k,v.length])),annualYear,annualRawSum:shares.reduce((s,r)=>s+M.num(r.market_share_pct),0)}));
+
