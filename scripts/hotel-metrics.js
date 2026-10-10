@@ -42,6 +42,10 @@
     return row ? (Number(row.year) - 1) + 'W' + String(Number(row.week)).padStart(2, '0') : null;
   }
   function metric(row, field) {
+    if (field === 'chain_rate') {
+      var total = metric(row, 'room_count'), chain = metric(row, 'chain_room_count');
+      return total == null || total <= 0 || chain == null || chain < 0 || chain > total ? null : chain / total;
+    }
     var v = row ? num(row[field]) : null;
     // Invalid occupancy cannot be treated as a valid zero or enter ratios.
     return field === 'occupancy_rate' && v != null && (v < 0 || v > 1) ? null : v;
@@ -49,7 +53,7 @@
   function change(row, base, field) {
     var current = metric(row, field), prior = metric(base, field);
     if (current == null || prior == null) return null;
-    if (field === 'occupancy_rate') return (current - prior) * 100;
+    if (field === 'occupancy_rate' || field === 'chain_rate') return (current - prior) * 100;
     return prior === 0 ? null : (current / prior - 1) * 100;
   }
   function sorted(rows) { return rows.slice().sort(function (a, b) { return a.period_id.localeCompare(b.period_id); }); }
@@ -71,6 +75,20 @@
     return values.length > 0 && values.every(function (v) { return v != null && v >= 0 && v <= 100; }) &&
       values.reduce(function (a, b) { return a + b; }, 0) <= 100.01;
   }
+  function investmentWindow(rows, cutoff, limit) {
+    var available = sorted(rows).filter(function (r) { return r.end_date <= cutoff; });
+    if (!available.length) return [];
+    var latest = available[available.length - 1].period_id;
+    var end = new Date(latest + '-01T00:00:00Z');
+    var start = limit === 'all' ? new Date(available[0].period_id + '-01T00:00:00Z') : new Date(Date.UTC(end.getUTCFullYear(), end.getUTCMonth() - Number(limit) + 1, 1));
+    var byMonth = index(available, ['period_id']), result = [];
+    for (var date = start; date <= end; date.setUTCMonth(date.getUTCMonth() + 1)) {
+      if (date.getUTCMonth() === 0) continue; // NBS combines January and February.
+      var period = date.toISOString().slice(0, 7);
+      result.push(byMonth.get(period) || { period_id: period, yoy_pct: null, amount_cny_100m: null });
+    }
+    return result;
+  }
   return { num: num, csv: csv, index: index, metric: metric, change: change, priorPeriod: priorPeriod,
-    sorted: sorted, windowRows: windowRows, rank: rank, validShares: validShares };
+    sorted: sorted, windowRows: windowRows, rank: rank, validShares: validShares, investmentWindow: investmentWindow };
 });

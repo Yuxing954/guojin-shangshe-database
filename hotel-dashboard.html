@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>酒店数据 · 国金商社</title>
   <link rel="stylesheet" href="scripts/site.css?v=7">
-  <link rel="stylesheet" href="scripts/hotel-dashboard.css?v=20261008yoy">
+  <link rel="stylesheet" href="scripts/hotel-dashboard.css?v=20261010supply">
   <script defer src="scripts/site-shell.js?v=12"></script>
-  <script defer src="scripts/hotel-metrics.js?v=20261008"></script>
-  <script defer src="scripts/hotel-dashboard.js?v=20261009mergedcopy"></script>
+  <script defer src="scripts/hotel-metrics.js?v=20261010supply"></script>
+  <script defer src="scripts/hotel-dashboard.js?v=20261010supply"></script>
 <link rel="stylesheet" href="scripts/site-polish.css?v=1"></head>
 <body class="hotel-page">
 <main class="hd-wrap">
@@ -20,7 +20,7 @@
   <div id="dashboard" hidden>
     <div class="hd-toolbar">
       <label>数据周 <select id="week-select"></select></label>
-      <div class="hd-display-control"><span>经营指标显示</span><div class="hd-switch" id="mode-switch" aria-label="经营指标显示"><button type="button" data-mode="change" class="active" aria-pressed="true">同比增速</button><button type="button" data-mode="value" aria-pressed="false">绝对值</button></div></div>
+      <div class="hd-display-control"><span>周度指标显示</span><div class="hd-switch" id="mode-switch" aria-label="周度指标显示"><button type="button" data-mode="change" class="active" aria-pressed="true">同比增速</button><button type="button" data-mode="value" aria-pressed="false">绝对值</button></div></div>
       <details class="hd-compare"><summary>同比口径与错期</summary><div class="hd-compare-body">
         <label>比较基周 <select id="compare-select"></select></label>
         <p>默认同周号 · 未调整节假日错期</p>
@@ -31,7 +31,7 @@
     <nav class="hd-tabs" aria-label="酒店数据视图">
       <button type="button" class="hd-tab active" data-view="overview" aria-pressed="true">经营概览</button>
       <button type="button" class="hd-tab" data-view="cities" aria-pressed="false">城市对比</button>
-      <button type="button" class="hd-tab" data-view="structure" aria-pressed="false">集团与供给</button>
+      <button type="button" class="hd-tab" data-view="structure" aria-pressed="false">供给与集团</button>
     </nav>
 
     <section id="view-overview" class="hd-view">
@@ -64,12 +64,19 @@
     </section>
 
     <section id="view-structure" class="hd-view" hidden>
-      <div class="hd-section-head"><div><h2>集团与供给</h2></div></div>
+      <div class="hd-section-head"><div><h2>全国供给与投资</h2></div></div>
+      <div class="hd-card"><div class="hd-card-head"><h2>酒店供给</h2><span id="supply-period"></span></div><div class="hd-supply-stats hd-supply-four" id="supply-stats"></div>
+        <div class="hd-chart-controls"><label>指标 <select id="supply-metric"><option value="room_count">房间数量</option><option value="hotel_count">酒店数量</option><option value="chain_room_count">连锁房量</option></select></label><label>范围 <select id="supply-window"><option value="52">近1年</option><option value="156">近3年</option><option value="all">全部历史</option></select></label></div><p class="hd-chart-caption" id="supply-chart-caption"></p><div class="hd-chart" id="supply-chart"></div>
+        <details class="hd-detail"><summary>按酒店规模看供给</summary><div class="hd-table-scroll" tabindex="0" aria-label="供给结构表，可左右滚动"><table class="hd-table" id="supply-table"></table></div></details>
+      </div>
+      <div class="hd-card"><div class="hd-card-head"><h2>住宿和餐饮业固定资产投资</h2><span id="investment-period">正在读取月度数据…</span></div><div class="hd-supply-stats hd-investment-stats" id="investment-stats" aria-live="polite"></div>
+        <div class="hd-chart-controls"><span>月度 · 不含农户 · 住宿与餐饮合计</span><label>范围 <select id="investment-window"><option value="52">近1年</option><option value="156">近3年</option><option value="all">全部历史</option></select></label></div><p class="hd-chart-caption">年初至当月累计同比（%） · 截至所选周的数据期</p><div class="hd-chart" id="investment-chart"></div>
+        <div class="hd-source-links"><a href="https://choicew2z.eastmoney.com/dataDisplay/macroEDB/#/index?macroids=EMM01013000" target="_blank" rel="noopener">来源：国家统计局 / Choice ↗</a><a href="data/hotel-investment-monthly.csv" download>下载投资数据</a><a href="https://github.com/yuxing954/guojin-shangshe-database/blob/main/docs/hotel-investment.md" target="_blank" rel="noopener">指标口径 ↗</a></div>
+        <details class="hd-detail"><summary>月度历史数据</summary><div class="hd-table-scroll hd-investment-history" tabindex="0" aria-label="投资月度历史，可上下和左右滚动"><table class="hd-table" id="investment-table"></table></div></details>
+      </div>
+      <div class="hd-section-head"><div><h2>全国集团</h2></div></div>
       <div class="hd-card"><div class="hd-card-head"><h2>集团经营与规模</h2><span id="group-period"></span></div><div class="hd-table-scroll" tabindex="0" aria-label="全国集团表，可左右滚动"><table class="hd-table" id="group-table"></table></div>
         <details class="hd-detail"><summary>查看集团历史走势</summary><label>指标 <select id="group-metric"><option value="stay_adr">房价</option><option value="hotel_count">酒店数量</option><option value="room_count">房间数量</option></select></label> <label>范围 <select id="group-window"><option value="52">近1年</option><option value="156">近3年</option><option value="all">全部历史</option></select></label><p class="hd-detail-caption" id="group-chart-caption"></p><div class="hd-chart" id="group-chart"></div></details>
-      </div>
-      <div class="hd-card"><div class="hd-card-head"><h2>全国酒店供给</h2><span id="supply-period"></span></div><div class="hd-supply-stats" id="supply-stats"></div><div class="hd-table-scroll" tabindex="0" aria-label="供给结构表，可左右滚动"><table class="hd-table" id="supply-table"></table></div>
-        <details class="hd-detail"><summary>查看供给历史走势</summary><label>指标 <select id="supply-metric"><option value="room_count">房间数量（间）</option><option value="hotel_count">酒店数量（家）</option></select></label> <label>范围 <select id="supply-window"><option value="52">近1年</option><option value="156">近3年</option><option value="all">全部历史</option></select></label><div class="hd-chart" id="supply-chart"></div></details>
       </div>
       <details class="hd-detail hd-card hd-annual"><summary>集团市占率 · 年度数据 <span id="share-year"></span></summary><div class="hd-table-scroll" tabindex="0" aria-label="年度市占率表，可左右滚动"><table class="hd-table" id="share-table"></table></div><div class="hd-chart" id="share-chart"></div></details>
     </section>

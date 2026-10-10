@@ -14,11 +14,11 @@
   function display(row, field) { var v = M.metric(row, field); return field === 'occupancy_rate' && v != null ? v * 100 : v; }
   function delta(v, field) {
     if (M.num(v) == null) return '<span class="hd-neutral">—</span>';
-    var unit = field === 'occupancy_rate' ? ' 个百分点' : '%';
+    var unit = field === 'occupancy_rate' || field === 'chain_rate' ? ' 个百分点' : '%';
     return '<span class="' + (v > 0 ? 'hd-positive' : v < 0 ? 'hd-negative' : 'hd-neutral') + '">' + (v > 0 ? '+' : '') + fmt(v, 1) + unit + '</span>';
   }
   function labelChange() { return state.base === 'auto' ? '同比' : '对比变化'; }
-  function valueUnit(field) { return field === 'occupancy_rate' ? '%' : field === 'hotel_count' ? '家' : field === 'room_count' ? '间' : '元'; }
+  function valueUnit(field) { return field === 'occupancy_rate' || field === 'chain_rate' ? '%' : field.indexOf('hotel_count') >= 0 ? '家' : field.indexOf('room_count') >= 0 ? '间' : '元'; }
   function row(region, segment, week) { return ix.industry.get(region + '|' + segment + '|' + week); }
   function series(region, segment) { return data.industry.filter(function (r) { return r.region === region && r.segment === segment; }); }
   function calendar() { return M.windowRows(Array.from(periods.values()), state.week, state.window); }
@@ -68,10 +68,11 @@
       return '<article class="hd-stat' + (i === 0 ? ' primary' : '') + '"><div class="hd-stat-label">' + meta.label + ' <span>' + meta.abbr + '</span>' + (isChange ? ' · ' + labelChange() : '') + '</div><div class="hd-stat-value' + cls + '">' + (isChange && main > 0 ? '+' : '') + fmt(main, 1) + '<small>' + unit + '</small></div><div class="hd-stat-change">' + (isChange ? '<span>本周</span>' + fmt(v, 1) + ' ' + meta.unit : '<span>' + labelChange() + '</span>' + delta(change, field)) + '</div></article>';
     }).join('');
     renderTrend(); renderSegments();
-    $('region-supply').innerHTML = '<div class="hd-scale"><span>全部酒店<b>' + fmt(M.metric(r, 'hotel_count'), 0) + ' 家</b></span><span>全部房量<b>' + fmt(M.metric(r, 'room_count'), 0) + ' 间</b></span><span>15间及以上房量<b>' + fmt(M.metric(r, 'room_count_15plus'), 0) + ' 间</b></span></div>';
-    $('segment-scale-table').innerHTML = '<thead><tr><th>档次（15间及以上）</th><th>酒店数（家）</th><th>房量（间）</th></tr></thead><tbody>' + ['全部'].concat(SEGS).map(function (seg) {
+    $('region-supply').innerHTML = '<div class="hd-scale">' + [['hotel_count', '全部酒店'], ['room_count', '全部房量'], ['room_count_15plus', '15间及以上房量']].map(function (item) { return supplyStat(r, base, item[0], item[1]); }).join('') + '</div>';
+    $('segment-scale-table').innerHTML = '<thead><tr><th>档次（15间及以上）</th>' + metricHead('hotel_count_15plus', '酒店数') + metricHead('room_count_15plus', '房量') + '</tr></thead><tbody>' + ['全部'].concat(SEGS).map(function (seg) {
       var s = row(state.region, seg, state.week);
-      return '<tr><td>' + esc(seg) + '</td><td>' + fmt(M.metric(s, 'hotel_count_15plus'), 0) + '</td><td>' + fmt(M.metric(s, 'room_count_15plus'), 0) + '</td></tr>';
+      var b = row(state.region, seg, baseWeek());
+      return '<tr><td>' + esc(seg) + '</td>' + metricCell(s, b, 'hotel_count_15plus') + metricCell(s, b, 'room_count_15plus') + '</tr>';
     }).join('') + '</tbody>';
     var all = M.sorted(series(state.region, '全部'));
     function first(field) { var a = all.find(function (r) { return M.metric(r, field) != null; }); return a ? a.period_id : '暂无数据'; }
@@ -92,12 +93,13 @@
     $('history-note').textContent = rows.length ? '展示 ' + rows[0].period_id + ' — ' + rows[rows.length - 1].period_id + ' · ' + rows.length + '周' : '所选范围暂无数据。';
   }
   function metricCell(r, base, field) {
-    var v = display(r, field), change = M.change(r, base, field);
-    if (state.mode === 'change') return '<td><strong>' + delta(change, field) + '</strong><small>本周 ' + fmt(v, 1) + ' ' + valueUnit(field) + '</small></td>';
-    return '<td><strong>' + fmt(v, 1) + (field === 'occupancy_rate' && v != null ? '%' : '') + '</strong><small>' + labelChange() + ' ' + delta(change, field) + '</small></td>';
+    var v = field === 'chain_rate' ? M.metric(r, field) == null ? null : M.metric(r, field) * 100 : display(r, field), change = M.change(r, base, field);
+    var digits = field.indexOf('count') >= 0 ? 0 : 1;
+    if (state.mode === 'change') return '<td><strong>' + delta(change, field) + '</strong><small>本周 ' + fmt(v, digits) + ' ' + valueUnit(field) + '</small></td>';
+    return '<td><strong>' + fmt(v, digits) + ((field === 'occupancy_rate' || field === 'chain_rate') && v != null ? '%' : '') + '</strong><small>' + labelChange() + ' ' + delta(change, field) + '</small></td>';
   }
   function metricHead(field, title) {
-    var changeUnit = field === 'occupancy_rate' ? '百分点' : '%';
+    var changeUnit = field === 'occupancy_rate' || field === 'chain_rate' ? '百分点' : '%';
     return '<th>' + title + (state.mode === 'change' ? labelChange() + '（' + changeUnit + '）<br>本周（' + valueUnit(field) + '）' : '（' + valueUnit(field) + '）<br>' + labelChange() + '（' + changeUnit + '）') + '</th>';
   }
   function operatingHead(first) { return '<thead><tr><th>' + first + '</th>' + metricHead('revpar', '每房收入') + metricHead('occupancy_rate', '入住率') + metricHead('adr', '房价') + '</tr></thead>'; }
@@ -162,21 +164,40 @@
   }
   function renderSupply() {
     if (!data.supply) return;
-    var r = ix.supply.get('全国|全部|' + state.week), rooms = M.metric(r, 'room_count'), hotels = M.metric(r, 'hotel_count'), chain = M.metric(r, 'chain_room_count');
-    $('supply-period').textContent = state.week + ' · 全部口径';
-    $('supply-stats').innerHTML = '<div><span>全国酒店</span><b>' + fmt(hotels, 0) + ' 家</b></div><div><span>全国房量</span><b>' + fmt(rooms, 0) + ' 间</b></div><div><span>房量连锁率</span><b>' + fmt(rooms && chain != null ? chain / rooms * 100 : null, 1) + '%</b></div>';
-    if (!r) blankTable('supply-table', '所选周暂无供给结构记录；供给数据自2022W31起。', 4);
-    else $('supply-table').innerHTML = '<thead><tr><th>酒店规模</th><th>房量（间）</th><th>占全国房量</th><th>房量连锁率</th></tr></thead><tbody>' + BANDS.map(function (band) {
-      var b = ix.supply.get('全国|' + band + '|' + state.week), count = M.metric(b, 'room_count'), c = M.metric(b, 'chain_room_count');
-      return '<tr><td>' + esc(band) + '</td><td>' + fmt(count, 0) + '</td><td>' + fmt(count != null && rooms ? count / rooms * 100 : null, 1) + '%</td><td>' + fmt(count && c != null ? c / count * 100 : null, 1) + '%</td></tr>';
+    var r = ix.supply.get('全国|全部|' + state.week), base = ix.supply.get('全国|全部|' + baseWeek()), rooms = M.metric(r, 'room_count');
+    $('supply-period').textContent = state.week + ' · 周度 · 全部酒店 · 酒店之家';
+    $('supply-stats').innerHTML = [['hotel_count','全国酒店'], ['room_count','全国房量'], ['chain_room_count','连锁房量'], ['chain_rate','房量连锁率']].map(function (item) { return supplyStat(r, base, item[0], item[1]); }).join('');
+    if (!r) blankTable('supply-table', '所选周暂无供给结构记录；供给数据自2022W31起。', 5);
+    else $('supply-table').innerHTML = '<thead><tr><th>酒店规模</th>' + metricHead('hotel_count','酒店数') + metricHead('room_count','房量') + '<th>占全国房量（%）</th>' + metricHead('chain_rate','房量连锁率') + '</tr></thead><tbody>' + BANDS.map(function (band) {
+      var b = ix.supply.get('全国|' + band + '|' + state.week), prior = ix.supply.get('全国|' + band + '|' + baseWeek()), count = M.metric(b, 'room_count');
+      return '<tr><td>' + esc(band) + '</td>' + metricCell(b, prior, 'hotel_count') + metricCell(b, prior, 'room_count') + '<td>' + fmt(count != null && rooms ? count / rooms * 100 : null, 1) + '%</td>' + metricCell(b, prior, 'chain_rate') + '</tr>';
     }).join('') + '</tbody>';
     drawSupply();
   }
+  function supplyStat(r, base, field, title) {
+    var v = M.metric(r, field), change = M.change(r, base, field), isRate = field === 'chain_rate';
+    if (isRate && v != null) v *= 100;
+    var isChange = state.mode === 'change', current = fmt(v, isRate ? 1 : 0) + ' ' + valueUnit(field);
+    return '<div><span>' + title + (isChange ? ' · ' + labelChange() : '') + '</span><b>' + (isChange ? delta(change, field) : current) + '</b><small>' + (isChange ? '本周 ' + current : labelChange() + ' ' + delta(change, field)) + '</small></div>';
+  }
   function drawSupply() {
     if (!data.supply) return;
-    var field = $('supply-metric').value;
+    var field = $('supply-metric').value, isChange = state.mode === 'change';
+    var title = field === 'hotel_count' ? '酒店数量' : field === 'chain_room_count' ? '连锁房量' : '房间数量';
+    $('supply-chart-caption').textContent = title + ' · ' + (isChange ? '同周同比（%）' : '绝对值（' + valueUnit(field) + '）');
     var full = M.sorted(data.supply.filter(function (r) { return r.region === '全国' && r.room_band === '全部'; }));
-    lineChart('supply-chart', [{ name: '全国 · 全部口径', color: COLORS[0], pts: calendar().filter(function (r) { return full.length && r.period_id >= full[0].period_id; }).map(function (r) { return { x: r.period_id, y: M.metric(ix.supply.get('全国|全部|' + r.period_id), field) }; }) }], { unit: field === 'room_count' ? '间' : '家' });
+    lineChart('supply-chart', [{ name: '全国 · 全部酒店' + (isChange ? ' · 同周同比' : ''), color: COLORS[0], pts: calendar().filter(function (r) { return full.length && r.period_id >= full[0].period_id; }).map(function (r) { return { x: r.period_id, date: r.start_date + ' — ' + r.end_date, y: isChange ? M.change(ix.supply.get('全国|全部|' + r.period_id), ix.supply.get('全国|全部|' + M.priorPeriod(r)), field) : M.metric(ix.supply.get('全国|全部|' + r.period_id), field) }; }) }], { unit: isChange ? '%' : valueUnit(field), zero: isChange });
+  }
+  function renderInvestment() {
+    if (!data.investment) return;
+    var cutoff = periods.get(state.week).end_date;
+    var rows = M.sorted(data.investment.observations).filter(function (r) { return r.end_date <= cutoff; }), r = rows[rows.length - 1];
+    $('investment-period').textContent = r ? r.period_id.slice(0,4) + '年1—' + Number(r.period_id.slice(5)) + '月 · 累计 · 全国' : '所选数据周之前暂无投资数据';
+    var hasAmount = r && M.num(r.amount_cny_100m) != null;
+    $('investment-stats').innerHTML = '<div><span>投资完成额累计同比</span><b>' + delta(r ? r.yoy_pct : null, 'investment') + '</b><small>国家统计局 · Choice转引</small></div><div><span>同期累计完成额（亿元）</span><b>' + (hasAmount ? fmt(r.amount_cny_100m, 1) : '暂无数据') + '</b><small>' + (hasAmount ? '国家统计局公报 · 原披露值' : '金额未取得') + '</small></div>';
+    var points = M.investmentWindow(data.investment.observations, cutoff, state.window === 'all' ? 'all' : state.window === '156' ? 36 : 12);
+    lineChart('investment-chart', [{name:'住宿和餐饮业投资 · 累计同比', color:COLORS[1], pts:points.map(function (p) {return {x:p.period_id, y:M.num(p.yoy_pct), date:p.period_id.slice(0,4)+'年1—'+Number(p.period_id.slice(5))+'月'};})}], {unit:'%', zero:true});
+    $('investment-table').innerHTML = '<thead><tr><th>累计期间</th><th>累计同比（%）</th><th>完成额（亿元）</th></tr></thead><tbody>' + rows.slice().reverse().map(function (p) { return '<tr><td>'+p.period_id.slice(0,4)+'年1—'+Number(p.period_id.slice(5))+'月</td><td>'+delta(p.yoy_pct,'investment')+'</td><td>'+(M.num(p.amount_cny_100m)==null?'暂无数据':fmt(p.amount_cny_100m,1))+'</td></tr>';}).join('') + '</tbody>';
   }
   function renderShare() {
     var years = Array.from(new Set(data.share.map(function (r) { return Number(r.year); }))).sort(function (a, b) { return a - b; }), latest = years[years.length - 1];
@@ -195,7 +216,7 @@
       var r = data.share.find(function (r) { return r.group === g && Number(r.year) === y; }); return { x: String(y), y: r && validYears.has(y) ? M.num(r.market_share_pct) : null };
     }) }; }), { unit: '%' });
   }
-  function refresh() { renderPeriod(); renderOverview(); renderCities(); renderGroups(); renderSupply(); saveState(); }
+  function refresh() { renderPeriod(); renderOverview(); renderCities(); renderGroups(); renderSupply(); renderInvestment(); saveState(); }
   function init(rows) {
     data.industry = rows; ix.industry = M.index(rows, ['region', 'segment', 'period_id']);
     M.sorted(rows.filter(function (r) { return r.segment === '全部'; })).forEach(function (r) { periods.set(r.period_id, r); });
@@ -219,8 +240,8 @@
     $('week-select').onchange = function () { followLatest = this.value === 'latest'; state.week = followLatest ? latestWeek : this.value; state.base = 'auto'; compareOptions(); refresh(); };
     $('compare-select').onchange = function () { state.base = this.value; refresh(); };
     $('region-select').onchange = function () { state.region = this.value; renderOverview(); saveState(); };
-    function setWindow() { state.window = this.value; ['history-start','group-window','supply-window'].forEach(function (id) { $(id).value = state.window; }); renderTrend(); drawSegments(); drawGroups(); drawSupply(); saveState(); }
-    ['history-start','group-window','supply-window'].forEach(function (id) { $(id).value = state.window; $(id).onchange = setWindow; });
+    function setWindow() { state.window = this.value; ['history-start','group-window','supply-window','investment-window'].forEach(function (id) { $(id).value = state.window; }); renderTrend(); drawSegments(); drawGroups(); drawSupply(); renderInvestment(); saveState(); }
+    ['history-start','group-window','supply-window','investment-window'].forEach(function (id) { $(id).value = state.window; $(id).onchange = setWindow; });
     function bindSwitch(id, attr) {
       var buttons = $(id).querySelectorAll('button');
       function active() { buttons.forEach(function (b) { var isActive = b.dataset[attr] === state[attr]; b.classList.toggle('active', isActive); b.setAttribute('aria-pressed', isActive); }); }
@@ -243,7 +264,7 @@
   // Secondary sources fail independently so the primary operating view remains usable.
   var extra = [
     { name: 'group', file: 'hotel_group_weekly.csv', keys: ['group', 'region', 'period_id'], render: renderGroups, table: 'group-table', cols: 6, label: '集团' },
-    { name: 'supply', file: 'hotel_supply_weekly.csv', keys: ['region', 'room_band', 'period_id'], render: renderSupply, table: 'supply-table', cols: 4, label: '供给' },
+    { name: 'supply', file: 'hotel_supply_weekly.csv', keys: ['region', 'room_band', 'period_id'], render: renderSupply, table: 'supply-table', cols: 5, label: '供给' },
     { name: 'share', file: 'hotel_market_share_annual.csv', keys: ['group', 'year'], render: renderShare, table: 'share-table', cols: 3, label: '市占率' }
   ];
   extra.forEach(function (source) { blankTable(source.table, '正在读取' + source.label + '数据…', source.cols); });
@@ -258,11 +279,16 @@
       ix[source.name] = M.index(result[0], source.keys); data[source.name] = result[0]; source.render();
     }).catch(function () { error(source.table, source.label + '数据暂时无法读取，可重新加载后重试。', source.cols); });
   });
+  fetch('data/hotel-investment-monthly.json', {cache:'no-cache'}).then(function (r) {if (!r.ok) throw new Error('HTTP '+r.status); return r.json();}).then(function (json) {
+    if (!json.observations || !json.observations.length) throw new Error('没有有效记录');
+    M.index(json.observations, ['period_id']);
+    return primary.then(function () { data.investment = json; renderInvestment(); });
+  }).catch(function () { $('investment-period').textContent = '投资数据读取失败'; $('investment-stats').textContent = '投资数据暂时无法读取，请重新加载后重试。'; blankTable('investment-table','投资数据读取失败',3); });
   var resizePending = false;
   window.addEventListener('resize', function () {
     if (!data.industry || resizePending) return;
     resizePending = true;
-    requestAnimationFrame(function () { resizePending = false; renderTrend(); drawSegments(); drawGroups(); drawSupply(); if (data.share) renderShare(); });
+    requestAnimationFrame(function () { resizePending = false; renderTrend(); drawSegments(); drawGroups(); drawSupply(); renderInvestment(); if (data.share) renderShare(); });
   });
 
   function svgEl(name, attrs, text) {

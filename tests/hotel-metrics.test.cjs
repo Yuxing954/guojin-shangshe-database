@@ -75,6 +75,33 @@ for(const g of ['华住','首旅如家','锦江酒店（中国区）','亚朵'])
   close(M.change(r,b,'stay_adr'),(M.num(r.stay_adr)/M.num(b.stay_adr)-1)*100);
 }
 const supply=ix.supply.get(`全国|全部|${latest.period_id}`);
+const supplyPrior=ix.supply.get(`全国|全部|${prior}`);
+close(M.change(supply,supplyPrior,'hotel_count'),(M.num(supply.hotel_count)/M.num(supplyPrior.hotel_count)-1)*100);
+close(M.change(supply,supplyPrior,'room_count'),(M.num(supply.room_count)/M.num(supplyPrior.room_count)-1)*100);
+close(M.change(supply,supplyPrior,'chain_rate'),(M.num(supply.chain_room_count)/M.num(supply.room_count)-M.num(supplyPrior.chain_room_count)/M.num(supplyPrior.room_count))*100);
+assert.equal(M.metric({room_count:0,chain_room_count:0},'chain_rate'),null);
+assert.equal(M.metric({room_count:100,chain_room_count:101},'chain_rate'),null);
+assert.equal(M.metric({room_count:100,chain_room_count:null},'chain_rate'),null);
+close(M.change({room_count:100,chain_room_count:20},{room_count:100,chain_room_count:0},'chain_rate'),20);
+const investment=JSON.parse(fs.readFileSync(path.join(__dirname,'../data/hotel-investment-monthly.json'),'utf8'));
+assert.equal(investment.indicator_id,'EMM01013000');
+assert.equal(investment.aggregation,'year_to_date');
+const investmentCsv=M.csv(fs.readFileSync(path.join(__dirname,'../data/hotel-investment-monthly.csv'),'utf8'));
+assert.equal(investmentCsv.length,investment.observations.length);
+for(const observation of investment.observations) {
+  const c=investmentCsv.find(r=>r.period_id===observation.period_id);
+  assert.ok(c);
+  assert.equal(M.num(c.yoy_pct),observation.yoy_pct);
+  assert.equal(M.num(c.amount_cny_100m),observation.amount_cny_100m);
+}
+assert.equal(investment.observations.find(r=>r.period_id==='2017-12').amount_cny_100m,6107);
+assert.equal(investment.observations.at(-1).amount_cny_100m,null);
+const investmentHistory=M.investmentWindow(investment.observations,'2025-03-15','all');
+assert.equal(investmentHistory.at(-1).period_id,'2025-02');
+assert.ok(investmentHistory.every(r=>!r.period_id.endsWith('-01')));
+assert.deepEqual(M.investmentWindow(investment.observations,'2017-01-31','all'),[]);
+const gap=M.investmentWindow([{period_id:'2024-02',end_date:'2024-02-29',yoy_pct:19},{period_id:'2024-04',end_date:'2024-04-30',yoy_pct:29.6}],'2024-04-30','all');
+assert.equal(gap.find(r=>r.period_id==='2024-03').yoy_pct,null);
 assert.equal(M.num(supply.room_count),M.num(latest.room_count));
 assert.notEqual(M.num(latest.room_count),M.num(latest.room_count_15plus));
 const annualYear=Math.max(...data.share.map(r=>Number(r.year))), shares=data.share.filter(r=>Number(r.year)===annualYear);
