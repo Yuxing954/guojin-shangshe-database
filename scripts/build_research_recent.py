@@ -18,8 +18,8 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 
 # ---- 参数（可用 --days / --per-db / --sub-len 覆盖） ----
-MAX_DAYS   = 90      # 时间窗口
-MAX_PER_DB = 400     # 每库条数上限
+MAX_DAYS   = 0       # 默认不限天数，按条数保留最新记录；--days 可按需限制
+MAX_PER_DB = 2000    # 每库条数上限
 SUB_LEN    = 1200    # 单条 sub 截断（可通过 _set_sub_len 覆盖）
 
 
@@ -176,8 +176,8 @@ def main():
             t = parse_time(pick(r, time_keys))
             if t is None:
                 continue                       # 无时间一律丢弃（不稳）
-            if t < cutoff:
-                continue                       # 超窗丢弃
+            if args.days > 0 and t < cutoff:
+                continue                       # 超窗丢弃（默认不限天数）
             fresh.append((t, r))
         # 时间倒序、截前 N 条
         fresh.sort(key=lambda x: x[0], reverse=True)
