@@ -1,0 +1,17 @@
+const assert=require('node:assert/strict'),M=require('./sector-model.js');
+const p=(period,basis,value=1)=>({period,basis,value,endDate:period+'-28'});
+const metric={points:[p('2026-02','combined'),p('2026-03','monthly'),p('2026-05','monthly')]};
+assert.equal(M.points(metric,{basis:'monthly'}).length,2);
+assert.equal(M.groups(M.points(metric,{basis:'monthly'}),'月度').length,2);
+assert.equal(M.points(metric,{basis:'monthly',from:'2026-04-01'}).length,1);
+assert.equal(M.points(metric,{from:'2026-09-01'}).length,0);
+assert.equal(M.groups([{endDate:'2025-12-31',basis:'ytd'},{endDate:'2026-02-28',basis:'ytd'}],'月度累计').length,2);
+const data={companyObservations:[{companyId:'dpc',period:'2026-H1',label:'每笔交易',scope:'元/单'}, {companyId:'superhi',period:'2026-Q2',label:'收入',scope:'美元'}]};
+assert.equal(M.companyRows(data,{company:'dpc',period:'2026-H1'}).length,1);
+assert.equal(M.companyRows(data,{q:'美元'}).length,1);
+const csv=M.csv([{label:'同店"销售',metricId:'sales',period:'2026-H1',basis:'half',value:1,unit:'亿元',scope:'同店',sourceId:'a',calculation:'A/B',inputs:[1,2]}],{a:{name:'公告',url:'https://example.com',publishedAt:'2026-08-26',retrievedAt:'2026-10-10',locator:'p20'}});
+assert.ok(csv.startsWith('\uFEFF'));
+assert.ok(csv.includes('同店""销售'));
+assert.ok(csv.includes('2026-08-26'));
+assert.ok(csv.includes('[1,2]'));
+console.log('Sector model: filters, gaps, dates and export passed');

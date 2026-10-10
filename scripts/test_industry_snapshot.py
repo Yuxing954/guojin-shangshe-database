@@ -64,7 +64,10 @@ class IndustrySnapshotTests(unittest.TestCase):
         self.assertTrue(any(r['metricId'] == 'gold_price' and r['period'] == '2026-09-30' and r['previousValue'] == 907.3 for r in self.data['revisions']))
 
     def test_crossborder_subset_does_not_fill_all_industry_exports(self):
-        self.assertEqual(self.metrics['crossborder_exports']['points'], [])
+        exports = self.metrics['crossborder_exports']['points']
+        self.assertEqual(exports[-1]['period'], '2024')
+        self.assertEqual(exports[-1]['value'], 21500)
+        self.assertFalse(any(p['period'] == '2025' for p in exports))
         self.assertTrue(self.metrics['crossborder_b2b_subset']['subset'])
         self.assertEqual(self.metrics['crossborder_b2b_cumulative_yoy']['points'][-1]['periodLabel'], '2026年1—8月累计')
 
@@ -96,3 +99,4 @@ class IndustrySnapshotTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+

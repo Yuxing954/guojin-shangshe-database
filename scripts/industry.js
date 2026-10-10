@@ -4,7 +4,7 @@
 
   const D=SiteData,M=IndustryModel,R=ResearchModel,$=id=>document.getElementById(id),size=18;
 
-  const quality={primary:'原始披露',provider:'平台转引',legacy:'历史整理',derived:'计算值'};
+  const quality={official:'官方原始',official_reprint:'官方转载',primary:'原始披露',provider:'平台转引',legacy:'历史整理',derived:'计算值'};
 
   let snapshot,sources={},sector,metric,years=3,page=1,pool=[],research=[],companyError=false,researchError=false,relatedLoaded=false;
   const fmt=(value,precision=2)=>D.fmt(value,precision),signed=(value,precision=2)=>(value>0?'+':'')+fmt(value,precision);
@@ -84,13 +84,13 @@
 
   }
 
-  function select(){const key=location.hash.slice(1);sector=snapshot.sectors.find(s=>s.id===key)||snapshot.sectors[0];$('page-title').textContent=sector.name;document.title=sector.name+'行业数据 · 国金商社';$('sector-tabs').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.key===sector.id)));$('metric').innerHTML=sector.metrics.map(m=>'<option value="'+m.id+'">'+D.esc(m.label)+(m.environment?'（经营环境）':m.subset?'（子集）':'')+'</option>').join('');$('specialist').hidden=!sector.detailHref;$('specialist').href=sector.detailHref||'#';$('specialist').textContent='进入'+sector.name+'专题 →';$('history-details').open=false;const requested=new URLSearchParams(location.search).get('metric');choose(sector.metrics.some(m=>m.id===requested)?requested:sector.defaultMetric);related();}
+  function select(){const key=location.hash.slice(1);sector=snapshot.sectors.find(s=>s.id===key)||snapshot.sectors[0];$('page-title').textContent=sector.name;document.title=sector.name+'行业数据 · 国金商社';$('sector-tabs').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.key===sector.id)));$('metric').innerHTML=sector.metrics.map(m=>'<option value="'+m.id+'">'+D.esc(m.label)+(m.environment?'（经营环境）':m.subset?'（子集）':'')+'</option>').join('');$('specialist').hidden=!sector.detailHref;$('specialist').href=sector.detailHref||'#';$('specialist').textContent='进入'+sector.name+'专题 →';$('sector-detail').href=sector.detailHref||'#';$('sector-detail').textContent=sector.name+'专题 →';$('sector-detail').hidden=!sector.detailHref;$('snapshot-note').textContent='最近核对 '+(sector.checkedAt||snapshot.checkedAt||'未记录');$('history-details').open=false;const requested=new URLSearchParams(location.search).get('metric');choose(sector.metrics.some(m=>m.id===requested)?requested:sector.defaultMetric);related();}
 
   $('sector-tabs').onclick=e=>{const b=e.target.closest('[data-key]');if(b)location.hash=b.dataset.key;};$('stats').onclick=e=>{const b=e.target.closest('[data-metric]');if(b)choose(b.dataset.metric);};$('metric').onchange=e=>choose(e.target.value);$('chart-mode').onchange=render;$('ranges').onclick=e=>{const b=e.target.closest('[data-years]');if(b){years=Number(b.dataset.years);page=1;render();}};$('prev').onclick=()=>{page--;table();};$('next').onclick=()=>{page++;table();};$('download').onclick=()=>{const m=activeMetric(),blob=new Blob([M.csv(m,M.inRange(m.points,years),sources)],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=sector.name+'-'+m.label+'.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};addEventListener('hashchange',()=>{if(snapshot)select();});
 
   try{
 
-    snapshot=await D.json('data/industry/overview.json');sources=Object.fromEntries(snapshot.sources.map(s=>[s.id,s]));select();$('content').hidden=false;$('status').textContent='';$('snapshot-note').textContent='最近核对 '+(snapshot.checkedAt||'未记录');
+    snapshot=await D.json('data/industry/overview.json');sources=Object.fromEntries(snapshot.sources.map(s=>[s.id,s]));select();$('content').hidden=false;$('status').textContent='';$('snapshot-note').textContent='最近核对 '+((sector.checkedAt||snapshot.checkedAt)||'未记录');
 
     const results=await Promise.allSettled([D.json('data/coverage-companies.json').then(d=>d.companies.map(c=>({'证券代码':c.code,'公司名称':c.name,'子行业':c.sector}))),D.json('data/research/recent.json')]);
 
