@@ -12,6 +12,7 @@ on:
       - "data/industry/verified-*.json"
       - "scripts/build_research_recent.py"
       - "scripts/research_sources.py"
+      - "scripts/build_research_shards.py"
       - "data/research/updates/manifest.json"
       - "scripts/build_site_summaries.py"
       - "scripts/build_resource_index.py"
@@ -57,11 +58,14 @@ jobs:
       - name: Build only changed summaries and resource directory
         run: python scripts/build_site_summaries.py
 
+      - name: Build connector-readable archive and dedup index
+        run: python scripts/build_research_shards.py
+
       - name: Commit & push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/research/recent.json data/research/recent-preview.json data/home-snapshot.json data/industry/overview.json data/research/resource-index.json data/sectors/overseas.json data/sectors/dining.json data/sectors/update-status.json
+          git add data/research/archive data/research/recent.json data/research/recent-preview.json data/home-snapshot.json data/industry/overview.json data/research/resource-index.json data/sectors/overseas.json data/sectors/dining.json data/sectors/update-status.json
           if git diff --staged --quiet; then
             echo "no change"
             exit 0
