@@ -327,8 +327,8 @@
   extra.forEach(function (source) { blankTable(source.table, '正在读取' + source.label + '数据…', source.cols); });
   var primary = fetchRows('hotel_industry_weekly.csv').then(init).catch(function (e) {
     $('asof').textContent = '经营数据读取失败'; $('load-error').hidden = false;
-    $('load-error').textContent = '经营数据暂时无法读取，请稍后重新加载。' + e.message;
-    var button = document.createElement('button'); button.textContent = '重新加载'; button.onclick = function () { location.reload(); }; $('load-error').appendChild(button);
+    $('load-error').textContent = '经营数据暂时无法读取。';
+    var button = document.createElement('button'); button.textContent = '重试'; button.onclick = function () { location.reload(); }; $('load-error').appendChild(button);
     throw e;
   });
   extra.forEach(function (source) {
@@ -409,4 +409,5 @@
     svg.addEventListener('keydown', function (e) { if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { e.preventDefault(); show(lastIndex + (e.key === 'ArrowLeft' ? -1 : 1)); } else if (e.key === 'Escape') hide(); });
   }
 })();
+
 

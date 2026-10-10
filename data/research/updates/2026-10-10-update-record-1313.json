@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "runId": "2026-10-10-hourly-1313",
+  "syncedAt": "2026-10-10 05:13:03+08:00",
+  "previousCoverageTo": "2026-10-10T11:18:48.078+0800",
+  "fetchedUniqueTopics": 5,
+  "newSourceTopics": 5,
+  "added": {
+    "views": 0,
+    "all_views": 4
+  },
+  "excluded": 1,
+  "duplicates": 0,
+  "record": "data/research/updates/2026-10-10-update-record-1313.json",
+  "sourceGroup": "88888142214212",
+  "sourceName": "水木调研纪要-2.0",
+  "fetchedThrough": "2026-10-10T12:53:49.281+0800",
+  "oldestFetchedThisRun": "2026-10-10T00:30:47.441+0800",
+  "rawPageRecords": 30,
+  "paginationDuplicates": 0,
+  "overlapTopics": 25,
+  "pages": [
+    {
+      "page": "zsxq-page-001",
+      "count": 30,
+      "newest": "2026-10-10T12:53:49.281+0800",
+      "oldest": "2026-10-10T00:30:47.441+0800"
+    }
+  ],
+  "duplicateScope": "按 topic_id 对照 manifest 分配集合；使用清洗后正文对本批与已有记录去重。GitHub 构建会合并历史 CSV 并按主题、时间标题和正文指纹去重。",
+  "excludedReasonCounts": {
+    "正文片段不完整且含未读取图片": 1
+  },
+  "excludedTopics": [
+    {
+      "topicId": "22258228281551551",
+      "title": "美国对立讯精密、富士康等中国企业发起第 337 条调查",
+      "reason": "知识星球接口返回的正文在“第337条”处截断，主题含1张未读取图片；未补写缺失内容，故不纳入数据。"
+    }
+  ],
+  "duplicatesDropped": [],
+  "boundary": "含图片主题仅整理可读取文字，未依据图片补充内容；正文片段不完整的1条未写入数据。"
+}

@@ -2,19 +2,19 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>宏观数据 · 消费专题</title>
-  <link rel="stylesheet" href="scripts/site.css?v=8"><link rel="stylesheet" href="scripts/consumption-macro.css?v=3">
-  <script defer src="scripts/site-shell.js?v=20261010coverage"></script><script defer src="scripts/consumption-macro-model.js?v=4"></script><script defer src="scripts/consumption-macro.js?v=4"></script>
-<link rel="stylesheet" href="scripts/research-chart.css?v=1"><script defer src="scripts/research-chart.js?v=1"></script><link rel="stylesheet" href="scripts/macro-refinements.css?v=1"><link rel="stylesheet" href="scripts/site-polish.css?v=1"></head>
+  <title>宏观数据 · 消费专题</title><script defer src="scripts/site-ui.js?v=20261010-unified"></script>
+  <link rel="stylesheet" href="scripts/site.css?v=20261010-unified"><link rel="stylesheet" href="scripts/consumption-macro.css?v=3">
+  <script defer src="scripts/site-shell.js?v=20261010-unified"></script><script defer src="scripts/consumption-macro-model.js?v=4"></script><script defer src="scripts/consumption-macro.js?v=4"></script>
+<link rel="stylesheet" href="scripts/research-chart.css?v=1"><script defer src="scripts/research-chart.js?v=1"></script><link rel="stylesheet" href="scripts/macro-refinements.css?v=1"><link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-polish.css?v=20261010-unified"></head>
 <body class="site-page" data-site-section="macro">
 <main class="site-main cm-main">
   <header class="portal-header"><div><h1>宏观数据</h1></div><span id="asof" class="portal-note"></span></header>
   <nav class="portal-tabs" aria-label="宏观数据子栏目"><a href="consumption-macro.html" class="current" aria-current="page">消费专题</a><a href="macro.html?view=indicators">核心指标</a><a href="macro.html?view=fedwatch">芝商所 FedWatch</a><a href="macro.html?view=predictions">Polymarket</a></nav><p id="status" class="portal-status" role="status">正在读取消费专题数据…</p>
-  <p id="automatic-warning" class="cm-error" role="status" hidden>补充历史未加载，当前展示已核验官方记录。<button id="retry-load" class="portal-button">重试加载</button></p>
+  <p id="automatic-warning" class="cm-error" role="status" hidden>补充历史未加载，当前展示已核验官方记录。<button id="retry-load" class="portal-button">重试</button></p>
   <div id="content" hidden>
     <section aria-label="核心指标 · 各自最新已收录"><div class="cm-section-head"><h2>消费全景</h2><span class="portal-note">各自最新已收录</span></div><div class="cm-kpis" id="kpis"></div></section>
     <section class="portal-panel retail-panel" aria-labelledby="retail-heading">
-      <div class="portal-panel-head"><div><p class="eyebrow">RETAIL / DETAIL</p><h2 id="retail-heading">社零拆分</h2></div><span id="retail-context" class="portal-note"></span></div>
+      <div class="portal-panel-head"><div><p class="eyebrow">消费拆分</p><h2 id="retail-heading">社零拆分</h2></div><span id="retail-context" class="portal-note"></span></div>
       <div class="cm-filter"><label>统计口径<select id="retail-basis"><option value="month">当月 / 1—2月</option><option value="ytd">年初累计</option><option value="year">全年</option></select></label><label>数据期间<select id="retail-period"></select></label><nav class="retail-tabs" aria-label="社零拆分维度"><button data-retail="categories" aria-pressed="true">分品类</button><button data-retail="structure" aria-pressed="false">商品与餐饮</button><button data-retail="channels" aria-pressed="false">城乡与渠道</button></nav></div>
       <p id="retail-note" class="portal-note"></p><div id="retail-bars" class="retail-bars"></div><p class="chart-help">悬停或点击查看金额、官方同比和来源；点击品类查看历史走势。</p>
     </section>
@@ -50,3 +50,4 @@
   </div>
 </main>
 </body></html>
+

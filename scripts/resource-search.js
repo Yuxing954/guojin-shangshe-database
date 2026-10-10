@@ -14,8 +14,9 @@
     $('search-pager').hidden=pages<=1;$('search-page').textContent=page+' / '+pages;$('search-prev').disabled=page<=1;$('search-next').disabled=page>=pages;
   }
   $('resource-search').onsubmit=e=>{e.preventDefault();page=1;render();};
-  $('query').oninput=()=>{page=1;render();};
+  $('query').oninput=SiteUI.debounce(()=>{page=1;render();});
   $('resource-types').onclick=e=>{const b=e.target.closest('[data-kind]');if(b){kind=b.dataset.kind;page=1;render();}};
   $('search-prev').onclick=()=>{page--;render();};$('search-next').onclick=()=>{page++;render();};
-  try{const data=await D.json('data/research/resource-index.json');items=data.items;ready=true;$('search-coverage').textContent='';render();}catch(e){$('search-status').textContent='资料目录暂时无法读取，请刷新重试。';}
+  try{const data=await D.json('data/research/resource-index.json');items=data.items;ready=true;$('search-coverage').textContent='';render();}catch(e){$('search-status').innerHTML='资料目录暂时无法读取。 <button class="portal-button" id="search-retry" type="button">重试</button>';$('search-retry').onclick=()=>location.reload();}
 })();
+

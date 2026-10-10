@@ -6,7 +6,7 @@
 
   const quality={official:'官方原始',official_reprint:'官方转载',primary:'原始披露',provider:'平台转引',legacy:'历史整理',derived:'计算值'};
 
-  let snapshot,sources={},sector,metric,years=3,page=1,pool=[],research=[],companyError=false,researchError=false,relatedLoaded=false;
+  let snapshot,sources={},sector,metric,years=[1,3,5,0].includes(Number(new URLSearchParams(location.search).get('years')))&&new URLSearchParams(location.search).has('years')?Number(new URLSearchParams(location.search).get('years')):3,page=1,pool=[],research=[],companyError=false,researchError=false,relatedLoaded=false;
   const fmt=(value,precision=2)=>D.fmt(value,precision),signed=(value,precision=2)=>(value>0?'+':'')+fmt(value,precision);
 
   function activeMetric(){return sector.metrics.find(m=>m.id===metric);}
@@ -59,7 +59,7 @@
 
     const m=activeMetric(),mode=$('chart-mode').value,all=M.inRange(m.points,years),points=M.chartPoints(m,years,mode);
 
-    cards();$('metric-title').textContent=m.label+(mode==='change'?' · '+(m.yoyLabel||'同比变化'):'');$('metric-note').textContent=m.scope+' · '+m.frequency+' · '+(mode==='change'?m.changeUnit||'%':m.unit);
+    SiteUI.save({metric,years,mode});cards();$('metric-title').textContent=m.label+(mode==='change'?' · '+(m.yoyLabel||'同比变化'):'');$('metric-note').textContent=m.scope+' · '+m.frequency+' · '+(mode==='change'?m.changeUnit||'%':m.unit);
 
     $('coverage').textContent=all.length?all[0].endDate+' — '+all.at(-1).endDate:'';$('chart').innerHTML=chart(points,m);
 
@@ -70,7 +70,7 @@
 
   }
 
-  function choose(id){metric=id;$('metric').value=id;const m=activeMetric(),changes=m.points.some(p=>Number.isFinite(p.change));$('chart-mode').disabled=m.isRate||!changes;$('chart-mode').value=sector.id==='hotel'&&changes?'change':'value';page=1;render();}
+  function choose(id){metric=id;$('metric').value=id;const m=activeMetric(),changes=m.points.some(p=>Number.isFinite(p.change));$('chart-mode').disabled=m.isRate||!changes;const mode=new URLSearchParams(location.search).get('mode');$('chart-mode').value=changes&&!m.isRate&&mode==='change'?'change':mode==='value'?'value':sector.id==='hotel'&&changes?'change':'value';page=1;render();}
 
   function related(){
     if(!relatedLoaded){$('company-links').innerHTML='<p class="industry-empty">正在读取公司目录…</p>';$('research-links').innerHTML='<p class="industry-empty">正在读取相关研究…</p>';return;}
@@ -92,11 +92,12 @@
 
     snapshot=await D.json('data/industry/overview.json');sources=Object.fromEntries(snapshot.sources.map(s=>[s.id,s]));select();$('content').hidden=false;$('status').textContent='';$('snapshot-note').textContent='最近核对 '+((sector.checkedAt||snapshot.checkedAt)||'未记录');
 
-    const results=await Promise.allSettled([D.json('data/coverage-companies.json').then(d=>d.companies.map(c=>({'证券代码':c.code,'公司名称':c.name,'子行业':c.sector}))),D.json('data/research/recent.json')]);
+    const results=await Promise.allSettled([D.json('data/coverage-companies.json').then(d=>d.companies.map(c=>({'证券代码':c.code,'公司名称':c.name,'子行业':c.sector}))),D.json('data/research/recent-preview.json')]);
 
     relatedLoaded=true;if(results[0].status==='fulfilled')pool=results[0].value;else companyError=true;
     if(results[1].status==='fulfilled')research=results[1].value.dbs.filter(d=>['views','minutes'].includes(d.id)).flatMap(d=>d.rows.map(r=>{const published=r['时间']||r['日期']||'';return {kind:d.id,title:r['标题']||'',published,date:published.slice(0,10),content:r['内容']||r['摘要']||'',sector:r['覆盖板块']||r['命中关键词']||'',company:r['相关标的']||'',url:D.link(r['原文链接']||r['下载链接']),file:r['文件名']||'',state:r['内容状态']||''};}));else researchError=true;related();
 
-  }catch(error){$('content').hidden=true;$('status').innerHTML='行业数据暂时无法读取。<button class="portal-button" onclick="location.reload()">重新加载</button>';}
+  }catch(error){$('content').hidden=true;$('status').innerHTML='行业数据暂时无法读取。<button class="portal-button" onclick="location.reload()">重试</button>';}
 
 })();
+

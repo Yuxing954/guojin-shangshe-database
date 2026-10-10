@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "runId": "2026-10-10-hourly-1505",
+  "syncedAt": "2026-10-10T15:05:51+08:00",
+  "previousCoverageTo": "2026-10-10T12:53:49.281+0800",
+  "fetchedUniqueTopics": 8,
+  "newSourceTopics": 8,
+  "added": {
+    "views": 0,
+    "all_views": 1
+  },
+  "excluded": 7,
+  "duplicates": 0,
+  "record": "data/research/updates/2026-10-10-update-record-1505.json",
+  "sourceGroup": "88888142214212",
+  "sourceName": "水木调研纪要-2.0",
+  "fetchedThrough": "2026-10-10T15:02:54.008+0800",
+  "oldestFetchedThisRun": "2026-10-10T00:35:41.264+0800",
+  "rawPageRecords": 30,
+  "paginationDuplicates": 0,
+  "overlapTopics": 22,
+  "pages": [
+    {
+      "page": "zsxq-page-001",
+      "count": 30,
+      "newest": "2026-10-10T15:02:54.008+0800",
+      "oldest": "2026-10-10T00:35:41.264+0800"
+    }
+  ],
+  "duplicateScope": "先按 topic_id 对照 manifest 分配集合，再对新帖正文与现有归档去重。",
+  "excludedReasonCounts": {
+    "未读取的PDF附件": 7
+  },
+  "excludedTopics": [
+    {
+      "topicId": "55521551551411214",
+      "title": "#海外投行报告",
+      "reason": "主题正文仅有标签，具体内容在未读取的 PDF 附件中；不根据附件名称推断观点，因此不写入数据。",
+      "attachments": [
+        "美股市场前瞻：2027年企业股票供需展望-US Weekly Kickstart_ The outlook for corporate equity supply and demand in 2027.pdf",
+        "美国主题研究：从数据中心到AI工厂的创投视角。-US Thematics-Venture Vision Data Center to AI Factory.pdf"
+      ]
+    },
+    {
+      "topicId": "45548558558284448",
+      "title": "#海外投行报告",
+      "reason": "主题正文仅有标签，具体内容在未读取的 PDF 附件中；不根据附件名称推断观点，因此不写入数据。",
+      "attachments": [
+        "网络设备-OCP前瞻：洞察云数据中心设计趋势-Networking Equipment-OCP Preview A Look into Cloud DC Design Weather Patterns.pdf",
+        "网络与通信设备：串联产业脉络-AI时代网络设备入门解读： Connecting the dots... A primer on networking equipment in the age of AI.pdf",
+        "AI趋势追踪：如果美国来源零部件占光模块物料成本的比例达到65%，会怎样？-Global AI Trend Tracker-What if US content reaches 65% of transceiver BOM cost.pdf"
+      ]
+    },
+    {
+      "topicId": "14425445445128582",
+      "title": "#海外投行报告",
+      "reason": "主题正文仅有标签，具体内容在未读取的 PDF 附件中；不根据附件名称推断观点，因此不写入数据。",
+      "attachments": [
+        "全球存储-三季度业绩前瞻：AI板块仍值得看多吗？-Asia Semis & Global Memory 3Q26 Earnings Preview - Is AI Still a Long.pdf",
+        "全球及中国AI半导体：台积电、联发科前瞻，以及中国CoWoS、存储、CPO与NPO进展-GlobalChina AI Semis TSMCMediaTek Preview, China CoWoSMemory, CPONPO.pdf"
+      ]
+    },
+    {
+      "topicId": "82258228228451842",
+      "title": "#海外投行报告",
+      "reason": "主题正文仅有标签，具体内容在未读取的 PDF 附件中；不根据附件名称推断观点，因此不写入数据。",
+      "attachments": [
+        "中国数据中心：聚焦投入资本回报率（ROIC）-China Data Centers_ Following the ROIC.pdf",
+        "中国医疗保健：十张图解读中国社保改革，更新全国社保基金2025年管理规模及投资回报数据.pdf",
+        "中国每周市场前瞻：MSCI中国指数上涨1%；黄金周出境游需求稳健；恒生科技指数咨询结果公布.pdf"
+      ]
+    },
+    {
+      "topicId": "82258228228451552",
+      "title": "#海外投行报告",
+      "reason": "主题正文仅有标签，具体内容在未读取的 PDF 附件中；不根据附件名称推断观点，因此不写入数据。",
+      "attachments": [
+        "中国旅游：国庆黄金周旅游增长势头总体稳定-China_ Largely stable tourism momentum during the National Day Golden Week.pdf",
+        "中国政策：新一轮政策组合持续落地，但规模有限-China The new policy package continues to unfold, with limited scale.pdf"
+      ]
+    },
+    {
+      "topicId": "22258228228454581",
+      "title": "#海外投行报告",
+      "reason": "主题正文仅有标签，具体内容在未读取的 PDF 附件中；不根据附件名称推断观点，因此不写入数据。",
+      "attachments": [
+        "宁德时代：市场忽视了什么？.pdf",
+        "中国巨石：三季度业绩预告超预期.pdf"
+      ]
+    },
+    {
+      "topicId": "14425445445124282",
+      "title": "#海外投行报告",
+      "reason": "主题正文仅有标签，具体内容在未读取的 PDF 附件中；不根据附件名称推断观点，因此不写入数据。",
+      "attachments": [
+        "汇川技术：三季度前瞻：预计表现平稳；未来工业自动化订单增速放缓，下调目标价及每股收益预测.pdf",
+        "紫光股份：AI服务器与交换机推动增长，超节点业务扩张；中性评级.pdf"
+      ]
+    }
+  ],
+  "duplicatesDropped": [],
+  "marketBriefs": {
+    "added": 0,
+    "updated": 0,
+    "expiredRemoved": 0
+  },
+  "boundary": "仅新增正文完整且可直接读取的CCL专家交流摘要1条至全部市场观点。7条附件型主题未读取PDF，未推断内容。CCL产业材料与商社消费相关性不足，未纳入商社观点或观点摘要。"
+}
