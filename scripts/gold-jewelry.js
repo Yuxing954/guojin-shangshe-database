@@ -1,6 +1,8 @@
-(async function(){
+window.GoldDashboard=(function(){
+  let initialized,refresh;
+  async function initialize(){
   'use strict';
-  const $=id=>document.getElementById(id),R=GoldResearch,P=GoldJewelryModel,M=GoldMacro;
+  const root=document.getElementById('gold-content'),$=id=>root.querySelector('#'+id),R=GoldResearch,P=GoldJewelryModel,M=GoldMacro;
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const num=(v,n=1)=>R.finite(v)?v.toLocaleString('zh-CN',{minimumFractionDigits:n,maximumFractionDigits:n}):'—';
   const pct=v=>R.finite(v)?`${v>0?'+':''}${num(v)}%`:'—';
@@ -130,9 +132,9 @@
     ]));
     function renderView(){if(view==='overview'){renderMacro();renderFed();}if(view==='demand')renderDemand();if(view==='companies')renderCompany();if(view==='prices')renderPrices();}
     const allowed=['overview','demand','companies','prices','sources'];
-    function setView(next,update=true){view=allowed.includes(next)?next:'overview';document.querySelectorAll('.gj-view').forEach(s=>s.hidden=s.id!=='view-'+view);document.querySelectorAll('.gj-tabs button').forEach(b=>{b.classList.toggle('active',b.dataset.view===view);b.setAttribute('aria-pressed',String(b.dataset.view===view));});if(update)history.replaceState(null,'','#'+view);renderView();}
-    document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.view)));document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.go)));
-    document.querySelectorAll('#retail-mode button').forEach(b=>b.addEventListener('click',()=>{retailMode=b.dataset.mode;document.querySelectorAll('#retail-mode button').forEach(a=>{a.classList.toggle('active',a===b);a.setAttribute('aria-pressed',String(a===b));});renderDemand();}));
+    function setView(next,update=true){view=allowed.includes(next)?next:'overview';root.querySelectorAll('.gj-view').forEach(s=>s.hidden=s.id!=='view-'+view);root.querySelectorAll('.gj-tabs button').forEach(b=>{b.classList.toggle('active',b.dataset.view===view);b.setAttribute('aria-pressed',String(b.dataset.view===view));});if(update)SiteUI.save({goldView:view==='overview'?'':view});renderView();}
+    root.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.view)));root.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.go)));
+    root.querySelectorAll('#retail-mode button').forEach(b=>b.addEventListener('click',()=>{retailMode=b.dataset.mode;root.querySelectorAll('#retail-mode button').forEach(a=>{a.classList.toggle('active',a===b);a.setAttribute('aria-pressed',String(a===b));});renderDemand();}));
     $('retail-window').addEventListener('change',renderDemand);$('volume-mode').addEventListener('change',renderDemand);$('company-select').addEventListener('change',renderCompany);$('operation-company').addEventListener('change',operationPeriods);$('operation-period').addEventListener('change',renderOperations);$('benchmark-type').addEventListener('change',renderPrices);$('brand-series').addEventListener('change',renderPrices);$('quote-brand').addEventListener('change',renderPrices);$('quote-date').addEventListener('change',renderPrices);
     $('demand-export').addEventListener('click',()=>{const mode=$('volume-mode').value,cumulative=mode.startsWith('cumulative'),vs=cumulative?consumption:quarter;download('黄金-需求.csv',['模块','期间','口径','指标','数值','单位','同比','同比口径','来源URL'],[...filteredRetail().map(r=>['零售',r.period,r.basis,'金银珠宝类零售额',r.amount,'亿元',r.yoy,'统计局原始公布',sources.get(r.sourceId).url]),...vs.flatMap(r=>R.categories.map(k=>['消费量',r.period,r.basis,R.labels[k],r.values[k],'吨',r.yoy[k],cumulative?'协会原始公布':'单季同比计算值',(cumulative?[r.sourceId]:r.yoyInputSourceIds).map(id=>sources.get(id).url).join(' | ')]))]);});
     $('finance-export').addEventListener('click',()=>download('黄金-2026H1财务.csv',['公司','期间开始','期间结束','币种','指标','数值','单位','来源状态','来源','URL','PDF页码'],data.financials.flatMap(r=>Object.entries(r.metrics).map(([k,m])=>[r.name,r.periodStart,r.periodEnd,r.currency,k,m?.value??null,['revenueYoy','profitYoy','grossMargin','onlineShare','onlineRevenueYoy'].includes(k)?'%':k==='inventoryDays'?'天':'亿元',m?.quality??'missing',m?sources.get(m.sourceId).name:'',m?sources.get(m.sourceId).url:null,m?.pdfPage]))));
@@ -142,7 +144,8 @@
     $('quotes-export').addEventListener('click',()=>downloadQuotes('品牌金价-筛选报价.csv',selectedQuotes));
     $('brand-history-export').addEventListener('click',()=>downloadQuotes('品牌金价-所选历史.csv',selectedBrandHistory));
     $('price-start').addEventListener('change',renderPrices);$('price-end').addEventListener('change',renderPrices);$('price-reset').addEventListener('click',()=>{$('price-start').value='';$('price-end').value='';renderPrices();});
-    operationPeriods();renderPrices();$('dashboard').hidden=false;const old={ 'brand-panel':'prices','benchmark-panel':'prices','industry-panel':'demand','company-panel':'companies','source-panel':'sources'};setView(old[location.hash.slice(1)]||location.hash.slice(1)||'overview');window.addEventListener('hashchange',()=>setView(location.hash.slice(1),false));let timer;window.addEventListener('resize',()=>{clearTimeout(timer);timer=setTimeout(renderView,160);});
+    operationPeriods();renderPrices();$('dashboard').hidden=false;const old={ 'brand-panel':'prices','benchmark-panel':'prices','industry-panel':'demand','company-panel':'companies','source-panel':'sources'};const requested=()=>new URLSearchParams(location.search).get('goldView')||'overview';refresh=()=>{if(location.hash!=='#gold')return;setView(old[requested()]||requested(),false);};refresh();let timer;window.addEventListener('resize',()=>{clearTimeout(timer);timer=setTimeout(()=>{if(!root.hidden)renderView();},160);});
   }catch(error){$('load-error').innerHTML='数据暂时无法读取。 <button class="portal-button" id="gold-retry" type="button">重试</button>';$('gold-retry').onclick=()=>location.reload();$('load-error').hidden=false;$('asof').textContent='数据加载失败';}
+  }
+  return {load(){if(!initialized)initialized=initialize();return initialized.then(()=>{if(refresh)refresh();});}};
 })();
-
