@@ -2,7 +2,7 @@
   'use strict';
   // Preserve incoming links from the older dashboard and its companion pages.
   const legacyHashes=new Set(['coverage-live','sec-f','sec-hotel','sec-taxfree','sec-gold','sec-overseas','sec-dining','consumer-focus','watch-assistant','sec-u','sec-m','sec-mkt','sec-r']);
-  function redirectLegacyHash(){if(!legacyHashes.has(location.hash.slice(1)))return false;location.replace(({ 'coverage-live':'quotes.html', 'sec-hotel':'industry.html#hotel','sec-taxfree':'industry.html#dutyfree','sec-gold':'industry.html#gold','sec-overseas':'industry.html#overseas','sec-dining':'industry.html#dining','sec-f':'quotes.html','consumer-focus':'quotes.html','sec-u':'quotes.html','sec-m':'research.html','sec-r':'research.html','sec-mkt':'research.html'}[location.hash.slice(1)]||'database.html'+location.hash)+location.search);return true;}
+  function redirectLegacyHash(){if(!legacyHashes.has(location.hash.slice(1)))return false;location.replace(SiteUI.route(location.hash.slice(1),location.search,true));return true;}
   if(redirectLegacyHash())return;
   addEventListener('hashchange',redirectLegacyHash);
   const $=id=>document.getElementById(id);
@@ -25,8 +25,9 @@
   async function load(){
     $('load-state').hidden=false;$('load-state').textContent='正在读取研究摘要…';
     try{const r=await fetch('data/home-snapshot.json',{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);render(await r.json());}
-    catch(e){$('load-state').innerHTML='研究摘要暂时无法读取。<a class="text-link" href="database.html">进入完整数据库 ↗</a><button type="button" id="retry">重新加载</button>';$('retry').onclick=load;}
+    catch(e){$('load-state').innerHTML='研究摘要暂时无法读取。<a class="text-link" href="database.html">进入完整数据库 ↗</a><button type="button" id="retry">重试</button>';$('retry').onclick=load;}
   }
   $('today').textContent=new Intl.DateTimeFormat('zh-CN',{timeZone:'Asia/Shanghai',month:'long',day:'numeric',weekday:'long'}).format(new Date());
   load();
 })();
+

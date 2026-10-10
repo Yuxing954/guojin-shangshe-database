@@ -1,4 +1,4 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>免税行业数据库 · 国金商社</title><style>
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>免税专题 · 国金商社</title><script defer src="scripts/site-ui.js?v=20261010-unified"></script><style>
 :root{--bg:#f4f6f8;--card:#fff;--ink:#172536;--mut:#748194;--line:#e1e6eb;--navy:#18374f;--blue:#3d708e;--teal:#2d7b70;--amber:#b47a3d;--red:#bd4a4c;--green:#278069;--font:"PingFang SC","Noto Sans SC","Microsoft YaHei UI",sans-serif}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px var(--font);font-feature-settings:"tnum" 1}
 .wrap{max-width:1240px;margin:auto;padding:22px 20px 50px}
@@ -67,8 +67,8 @@ svg{width:100%;height:auto;display:block}
 .signal{display:grid;grid-template-columns:96px 1fr auto;gap:12px;padding:11px 16px;background:#f8fafb;border-top:1px solid #edf0f3;font-size:11px;align-items:center}
 .signal b{font-size:10px;color:var(--mut)}
 .srchost{position:relative}
-.srcmodal{position:fixed;inset:0;background:rgba(20,35,50,.4);display:none;align-items:center;justify-content:center;z-index:99}
-.srcmodal.on{display:flex}
+.srcmodal{border:0;padding:0;width:min(680px,calc(100% - 32px));max-height:85dvh;background:white;border-radius:12px}.srcmodal::backdrop{background:#17223855}.srcmodal:not([open]){display:none}
+.srcmodal[open]{display:block}
 .srcbox{background:#fff;border-radius:10px;padding:20px 22px;max-width:420px;width:90%;font-size:11px;line-height:1.8}
 .srcbox h3{margin:0 0 10px;font-size:14px}
 .srcbox .row{display:grid;grid-template-columns:80px 1fr;gap:8px;padding:3px 0;border-bottom:1px dashed #edf1f4}
@@ -78,14 +78,14 @@ svg{width:100%;height:auto;display:block}
 @media(max-width:960px){.kpis{grid-template-columns:repeat(3,1fr)}.kpi:nth-child(5n){border-right:1px solid #eef1f4}.grid2,.grid3{grid-template-columns:1fr}}
 #view-monthly .controls{flex-wrap:wrap;gap:8px}#view-monthly .controls .srcbtn{font-size:12px;padding:6px 9px}
 @media(max-width:640px){.wrap{padding:14px 10px}.hero{flex-direction:column;align-items:flex-start}.kpis{grid-template-columns:repeat(2,1fr)}.kpi{border-right:0}.signal{grid-template-columns:1fr}.hero h1{font-size:20px}}
-</style><link rel="stylesheet" href="scripts/site.css?v=7"><script defer src="scripts/site-shell.js?v=20261010coverage"></script><link rel="stylesheet" href="scripts/dutyfree-holidays.css?v=2"><script defer src="scripts/dutyfree-holidays.js?v=20261009mergedcopy"></script><link rel="stylesheet" href="scripts/dutyfree-typography.css?v=3"><link rel="stylesheet" href="scripts/site-polish.css?v=1"></head><body class="dutyfree-page"><div class="wrap">
+</style><link rel="stylesheet" href="scripts/site.css?v=20261010-unified"><script defer src="scripts/site-shell.js?v=20261010-unified"></script><link rel="stylesheet" href="scripts/dutyfree-holidays.css?v=2"><script defer src="scripts/dutyfree-holidays.js?v=20261009mergedcopy"></script><link rel="stylesheet" href="scripts/dutyfree-typography.css?v=3"><link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-polish.css?v=20261010-unified"></head><body class="dutyfree-page"><div class="wrap">
 <div class="crumbs"><a href="industry.html#dutyfree">行业数据</a> / 免税专题</div>
-<header class="hero"><div><div class="eyebrow">GUOJIN · DUTY FREE RESEARCH DATABASE</div><h1>免税行业数据库</h1><p>月度趋势 · 节假日表现</p></div><div class="asof" id="asof">读取数据中…</div></header>
+<header class="hero"><div><div class="eyebrow">行业数据</div><h1>免税专题</h1><p>月度趋势 · 节假日表现</p></div><div class="asof" id="asof">读取数据中…</div></header>
 <nav class="tabs" id="tabs"><button class="tab on" data-view="monthly">月度数据</button><button class="tab" data-view="holidays">节假日数据</button></nav>
 
 <!-- 海南离岛免税 -->
 <section class="view on" id="view-monthly">
-<div class="panel"><div class="panel-head"><div><h2>海南离岛免税 · 月度数据</h2><p id="hn-period"></p></div><div class="controls"><button class="srcbtn" type="button" onclick="showSrc('provided_workbook_monthly')">来源</button><button class="srcbtn" type="button" id="monthly-download">下载当前范围 CSV</button><label class="visually-hidden" for="hn-range">时间范围</label><select id="hn-range" aria-label="时间范围"><option value="12" selected>近12个月</option><option value="24">近24个月</option><option value="2024">2024</option><option value="2025">2025</option><option value="2026">2026</option><option value="9999">全部</option></select></div></div>
+<div class="panel"><div class="panel-head"><div><h2>海南离岛免税 · 月度数据</h2><p id="hn-period"></p></div><div class="controls"><button class="srcbtn" type="button" onclick="showSrc('provided_workbook_monthly')">来源</button><button class="srcbtn" type="button" id="monthly-download">导出当前范围 CSV</button><label class="visually-hidden" for="hn-range">时间范围</label><select id="hn-range" aria-label="时间范围"><option value="12" selected>近12个月</option><option value="24">近24个月</option><option value="2024">2024</option><option value="2025">2025</option><option value="2026">2026</option><option value="9999">全部</option></select></div></div>
 <div class="kpis"><div class="kpi"><span>购物金额</span><strong><span id="hn-sales">—</span><em> 亿元</em></strong><small id="hn-sales-yoy"></small></div><div class="kpi"><span>购物人次</span><strong><span id="hn-shoppers">—</span><em> 万人次</em></strong><small id="hn-shoppers-yoy"></small></div><div class="kpi"><span>每人次消费</span><strong><span id="hn-spend">—</span><em> 元</em></strong><small id="hn-spend-yoy"></small></div></div></div>
 <div class="panel chart"><div class="panel-head"><h3 id="hn-trend-title">购物金额同比增速（%）</h3><div class="trend-controls"><label class="visually-hidden" for="hn-metric">趋势指标</label><select id="hn-metric" aria-label="趋势指标"><option value="sales">购物金额</option><option value="shoppers">购物人次</option><option value="items">购物件数</option><option value="spend">每人次消费</option></select><div class="trend-modes" aria-label="显示方式"><button type="button" data-mode="combo" aria-pressed="true">数值＋同比</button><button type="button" data-mode="value" aria-pressed="false">数值</button><button type="button" data-mode="yoy" aria-pressed="false">同比增速</button></div></div></div><svg id="hn-growth" role="img" aria-label="购物金额同比增速趋势"></svg><div class="tooltip"></div></div>
 <details class="panel monthly-details"><summary>历史数据与口径</summary><p class="trend-caption">原Excel月度表</p><div class="tablewrap"><table class="table" id="hn-table"></table></div><button class="srcbtn" onclick="showSrc('provided_workbook_monthly')">查看来源</button><p class="trend-caption"><a href="data/dutyfree_monthly.csv" download>下载完整月度 CSV</a> · <a href="data/dutyfree/monthly-provenance.json" download>下载来源与单元格记录</a></p></details>
@@ -97,7 +97,7 @@ svg{width:100%;height:auto;display:block}
 </div>
 
 <!-- 来源弹窗 -->
-<div class="srcmodal" id="srcmodal"><div class="srcbox" id="srcbox"></div></div>
+<dialog class="srcmodal" id="srcmodal" aria-label="数据来源"><div class="srcbox" id="srcbox"></div></dialog>
 
 <script>
 /* ---------- 工具 ---------- */
@@ -106,15 +106,15 @@ const N=x=>{let n=Number(x);return isFinite(n)&&x!==''&&x!=null?n:null},F=(x,d=1
 const C=v=>v>0?'up':v<0?'down':'',P=(v,d=1)=>N(v)==null?'—':`${v>0?'+':''}${F(v,d)}%`,Pf=(v,d=1,ty)=>N(v)==null?'—':(ty==='pct'?`${v>0?'+':''}${F(v,d)}pct`:P(v,d));
 const W=(v,d=1,ty)=>`<span class="${C(v)}">${Pf(v,d,ty)}</span>`,Dash=v=>v==null||v===''||v==='—'?'—':v;
 let DB={},SRC={};
-const jf=u=>fetch(u,{cache:'no-store'}).then(r=>r.json());
+const checked=u=>fetch(u,{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r;});const jf=u=>checked(u).then(r=>r.json());
 Promise.all([
  jf('data/dutyfree/sources.json').then(d=>DB.sources=d),
- fetch('data/dutyfree_monthly.csv',{cache:'no-store'}).then(r=>r.text()).then(t=>DB.m=csv(t)),
- fetch('data/dutyfree_holiday.csv',{cache:'no-store'}).then(r=>r.text()).then(t=>DB.h=csv(t))
-]).then(()=>{SRC=DB.sources.sources||{};init()}).catch(e=>{document.getElementById('asof').textContent='数据读取失败';console.log(e)});
+ checked('data/dutyfree_monthly.csv').then(r=>r.text()).then(t=>DB.m=csv(t)),
+ checked('data/dutyfree_holiday.csv').then(r=>r.text()).then(t=>DB.h=csv(t))
+]).then(()=>{SRC=DB.sources.sources||{};init()}).catch(e=>{document.getElementById('asof').innerHTML='数据暂时无法读取。 <button class="srcbtn" onclick="location.reload()">重试</button>'});
 
 function showSrc(key){let s=SRC[key];let b=document.getElementById('srcbox');
- if(!s){b.innerHTML='<h3>数据来源</h3><div class="muted">暂无来源信息</div><div class="closebtn"><button class="srcbtn" onclick="document.getElementById(\'srcmodal\').classList.remove(\'on\')">关闭</button></div>';}
+ if(!s){b.innerHTML='<h3>数据来源</h3><div class="muted">暂无来源信息</div><div class="closebtn"><button class="srcbtn" onclick="document.getElementById(\'srcmodal\').close()">关闭</button></div>';}
  else{b.innerHTML=`<h3>数据来源</h3>
  <div class="row"><b>来源名称</b><span>${Dash(s.sourceName)}</span></div>
  <div class="row"><b>来源类型</b><span>${Dash(s.sourceType)}</span></div>
@@ -122,9 +122,9 @@ function showSrc(key){let s=SRC[key];let b=document.getElementById('srcbox');
  <div class="row"><b>页码</b><span>${Dash(s.page)}</span></div>
  <div class="row"><b>链接</b><span>${s.url?`<a href="${s.url}" target="_blank" style="color:var(--blue)">原文链接</a>`:'—'}</span></div>
  <div class="row"><b>备注</b><span>${Dash(s.note)}</span></div>
- <div class="closebtn"><button class="srcbtn" onclick="document.getElementById('srcmodal').classList.remove('on')">关闭</button></div>`;}
- document.getElementById('srcmodal').classList.add('on')}
-document.getElementById('srcmodal').addEventListener('click',e=>{if(e.target.id==='srcmodal')e.target.classList.remove('on')});
+ <div class="closebtn"><button class="srcbtn" onclick="document.getElementById('srcmodal').close()">关闭</button></div>`;}
+ document.getElementById('srcmodal').showModal()}
+document.getElementById('srcmodal').addEventListener('click',e=>{if(e.target.id==='srcmodal')e.target.close()});
 
 /* ---------- SVG 绘图 ---------- */
 function draw(svg,rows,series,zero=false){if(!svg||!rows||!rows.length){if(svg){svg.setAttribute('viewBox','0 0 620 210');svg.innerHTML='<text x="310" y="110" text-anchor="middle" class="axis">暂无数据</text>'}return}
@@ -229,3 +229,4 @@ document.getElementById('hn-metric').onchange=renderHainan;
 document.querySelectorAll('#hn-metric + .trend-modes button').forEach(button=>button.onclick=()=>{trendModes.hn=button.dataset.mode;button.parentElement.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));renderHainan();});
 }
 </script></body></html>
+
