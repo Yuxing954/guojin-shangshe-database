@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="scripts/hotel-dashboard.css?v=20261010coverage">
   <script defer src="scripts/site-shell.js?v=20261010-unified"></script>
   <script defer src="scripts/hotel-metrics.js?v=20261010coverage"></script>
-  <script defer src="scripts/hotel-dashboard.js?v=20261010charts"></script>
-<link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-charts.css?v=20261010a"><link rel="stylesheet" href="scripts/site-polish.css?v=20261010-unified"><script src="scripts/site-charts.js?v=20261010charts"></script></head>
+  <script defer src="scripts/hotel-dashboard.js?v=20261010combo1"></script>
+<link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-charts.css?v=20261010combo1"><link rel="stylesheet" href="scripts/site-polish.css?v=20261010-unified"><script src="scripts/site-charts.js?v=20261010combo1"></script></head>
 <body class="hotel-page">
 <main class="hd-wrap">
   <header class="hd-header">
@@ -20,7 +20,7 @@
   <div id="dashboard" hidden>
     <div class="hd-toolbar">
       <label>数据周 <select id="week-select"></select></label>
-      <div class="hd-display-control"><span>周度指标显示</span><div class="hd-switch" id="mode-switch" aria-label="周度指标显示"><button type="button" data-mode="change" class="active" aria-pressed="true">同比增速</button><button type="button" data-mode="value" aria-pressed="false">绝对值</button></div></div>
+      <div class="hd-display-control"><span>周度指标显示</span><div class="hd-switch" id="mode-switch" aria-label="周度指标显示"><button type="button" data-mode="combo" class="active" aria-pressed="true">数值＋同比</button><button type="button" data-mode="change" aria-pressed="false">仅同比</button><button type="button" data-mode="value" aria-pressed="false">仅数值</button></div></div>
       <details class="hd-compare"><summary>同比口径与错期</summary><div class="hd-compare-body">
         <label>比较基周 <select id="compare-select"></select></label>
         <p>默认同周号 · 未调整节假日错期</p>

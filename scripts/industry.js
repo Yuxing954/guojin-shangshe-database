@@ -1,4 +1,5 @@
-(async function(){
+
+    (async function(){
 
   'use strict';
 
@@ -20,6 +21,7 @@
   }
 
   function chart(points,m){
+    if(!m.isRate){return SiteCharts.paired(points.map(p=>({period:p.periodLabel,x:Date.parse(p.endDate),value:p.value,change:p.change})),{mode:$('chart-mode').value,unit:m.unit,changeUnit:m.changeUnit||'%',name:m.label,precision:m.precision,gap:{'月度':45,'季度累计':115,'周度':15,'年度':400}[m.frequency]*86400000}).html;}
 
     const clean=points.filter(p=>Number.isFinite(p.value));if(!clean.length)return '<p class="portal-empty">暂无数据</p>';
 
@@ -31,7 +33,7 @@
 
     const grid=[0,1,2].map(i=>{const v=upper-(upper-lower)*i/2;return '<line x1="70" y1="'+y(v)+'" x2="900" y2="'+y(v)+'" stroke="#eceef3"/><text x="58" y="'+(y(v)+4)+'" text-anchor="end">'+esc(fmt(v,m.unit.includes('美元')?4:m.precision))+'</text>';}).join('');
 
-    const tip=p=>esc(m.label+'\n'+p.periodLabel+'：'+fmt(p.value,m.precision)+' '+($('chart-mode').value==='change'?m.changeUnit||'%':m.unit)+(p.changeMethod==='calculated'?'\n同比为计算值':'')+(p.changeMissingReason?'\n'+p.changeMissingReason:'')+(p.changeCalculation?'\n'+p.changeCalculation.currentValue+' ÷ '+p.changeCalculation.priorValue+'（'+p.changeCalculation.priorPeriod+'）'+(p.changeCalculation.note?'\n'+p.changeCalculation.note:''):'')+'\n来源：'+(sources[p.sourceId]?.name||'原始表') );
+    const tip=p=>esc(p.periodLabel+'：'+fmt(p.value,m.precision)+' '+m.unit);
 
     const marks=m.frequency==='季度累计'?clean.map(p=>'<rect x="'+(x(p)-7)+'" y="'+y(p.value)+'" width="14" height="'+(220-y(p.value))+'" rx="2"><title>'+tip(p)+'</title></rect>').join(''):'<polyline points="'+clean.map(p=>x(p)+','+y(p.value)).join(' ')+'" fill="none" stroke="#5158aa" stroke-width="2.5" stroke-linejoin="round"/>'+clean.map(p=>'<circle cx="'+x(p)+'" cy="'+y(p.value)+'" r="3" fill="#5158aa"><title>'+tip(p)+'</title></circle>').join('');
 
@@ -57,9 +59,9 @@
 
   function render(){
 
-    const m=activeMetric(),mode=$('chart-mode').value,all=M.inRange(m.points,years),points=M.chartPoints(m,years,mode);
+    const m=activeMetric(),mode=$('chart-mode').value,all=M.inRange(m.points,years),points=M.chartPoints(m,years,m.isRate?mode:'value');
 
-    SiteUI.save({metric,years,mode});cards();$('metric-title').textContent=m.label+(mode==='change'?' · '+(m.yoyLabel||'同比变化'):'');$('metric-note').textContent=m.scope+' · '+m.frequency+' · '+(mode==='change'?m.changeUnit||'%':m.unit);
+    SiteUI.save({metric,years,mode});cards();$('metric-title').textContent=m.label+(mode==='change'?' · '+(m.yoyLabel||'同比变化'):'');$('metric-note').textContent=m.scope+' · '+m.frequency+' · '+(mode==='combo'?m.unit+' / '+(m.changeUnit||'%'):mode==='change'?m.changeUnit||'%':m.unit);
 
     $('coverage').textContent=all.length?all[0].endDate+' — '+all.at(-1).endDate:'';$('chart').innerHTML=chart(points,m);
 
@@ -70,7 +72,7 @@
 
   }
 
-  function choose(id){metric=id;$('metric').value=id;const m=activeMetric(),changes=m.points.some(p=>Number.isFinite(p.change));$('chart-mode').disabled=m.isRate||!changes;const mode=new URLSearchParams(location.search).get('mode');$('chart-mode').value=changes&&!m.isRate&&mode==='change'?'change':mode==='value'?'value':sector.id==='hotel'&&changes?'change':'value';page=1;render();}
+  function choose(id){metric=id;$('metric').value=id;const m=activeMetric(),changes=m.points.some(p=>Number.isFinite(p.change));$('chart-mode').disabled=m.isRate||!changes;$('chart-mode').querySelector('[value="combo"]').disabled=m.isRate||!changes;$('chart-mode').querySelector('[value="change"]').disabled=m.isRate||!changes;const mode=new URLSearchParams(location.search).get('mode');$('chart-mode').value=changes&&!m.isRate&&['combo','value','change'].includes(mode)?mode:changes&&!m.isRate?'combo':'value';page=1;render();}
 
   function related(){
     if(!relatedLoaded){$('company-links').innerHTML='<p class="industry-empty">正在读取公司目录…</p>';$('research-links').innerHTML='<p class="industry-empty">正在读取相关研究…</p>';return;}
@@ -86,7 +88,7 @@
 
   function select(){const key=location.hash.slice(1);sector=snapshot.sectors.find(s=>s.id===key)||snapshot.sectors[0];$('page-title').textContent=sector.name;document.title=sector.name+'行业数据 · 国金商社';$('sector-tabs').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.key===sector.id)));$('metric').innerHTML=sector.metrics.map(m=>'<option value="'+m.id+'">'+D.esc(m.label)+(m.environment?'（经营环境）':m.subset?'（子集）':'')+'</option>').join('');const isGold=sector.id==='gold';$('gold-content').hidden=!isGold;$('gold-industry-history').hidden=!isGold;$('sector-detail').parentElement.hidden=isGold;if(isGold){$('gold-industry-history').append($('content'));GoldDashboard.load();}else{$('industry-content-anchor').after($('content'));}$('specialist').hidden=isGold||!sector.detailHref;$('specialist').href=sector.detailHref||'#';$('specialist').textContent='进入'+sector.name+'专题 →';$('sector-detail').href=sector.detailHref||'#';$('sector-detail').textContent=sector.name+'专题 →';$('sector-detail').hidden=!sector.detailHref;$('snapshot-note').textContent='最近核对 '+(sector.checkedAt||snapshot.checkedAt||'未记录');$('history-details').open=false;const requested=new URLSearchParams(location.search).get('metric');choose(sector.metrics.some(m=>m.id===requested)?requested:sector.defaultMetric);related();}
 
-  $('sector-tabs').onclick=e=>{const b=e.target.closest('[data-key]');if(b)location.hash=b.dataset.key;};$('stats').onclick=e=>{const b=e.target.closest('[data-metric]');if(b)choose(b.dataset.metric);};$('metric').onchange=e=>choose(e.target.value);$('chart-mode').onchange=render;$('ranges').onclick=e=>{const b=e.target.closest('[data-years]');if(b){years=Number(b.dataset.years);page=1;render();}};$('prev').onclick=()=>{page--;table();};$('next').onclick=()=>{page++;table();};$('download').onclick=()=>{const m=activeMetric(),blob=new Blob([M.csv(m,M.inRange(m.points,years),sources)],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=sector.name+'-'+m.label+'.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};addEventListener('hashchange',()=>{if(snapshot)select();});
+  $('sector-tabs').onclick=e=>{const b=e.target.closest('[data-key]');if(b)location.hash=b.dataset.key;};$('stats').onclick=e=>{const b=e.target.closest('[data-metric]');if(b)choose(b.dataset.metric);};$('metric').onchange=e=>choose(e.target.value);$('chart-mode').onchange=render;$('ranges').onclick=e=>{const b=e.target.closest('[data-years]');if(b){years=Number(b.dataset.years);page=1;render();}};$('prev').onclick=()=>{page--;table();};$('next').onclick=()=>{page++;table();};$('download').onclick=()=>{const m=activeMetric(),blob=new Blob([M.csv(m,M.inRange(m.points,years),sources)],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=sector.name+'-'+m.label+'.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};addEventListener('hashchange',()=>{if(snapshot)select();});let chartResize;addEventListener('resize',()=>{clearTimeout(chartResize);chartResize=setTimeout(()=>{if(snapshot)render();},150);});
 
   try{
 

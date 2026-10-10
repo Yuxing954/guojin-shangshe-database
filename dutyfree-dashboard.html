@@ -78,7 +78,7 @@ svg{width:100%;height:auto;display:block}
 @media(max-width:960px){.kpis{grid-template-columns:repeat(3,1fr)}.kpi:nth-child(5n){border-right:1px solid #eef1f4}.grid2,.grid3{grid-template-columns:1fr}}
 #view-monthly .controls{flex-wrap:wrap;gap:8px}#view-monthly .controls .srcbtn{font-size:12px;padding:6px 9px}
 @media(max-width:640px){.wrap{padding:14px 10px}.hero{flex-direction:column;align-items:flex-start}.kpis{grid-template-columns:repeat(2,1fr)}.kpi{border-right:0}.signal{grid-template-columns:1fr}.hero h1{font-size:20px}}
-</style><link rel="stylesheet" href="scripts/site.css?v=20261010-unified"><script defer src="scripts/site-shell.js?v=20261010-unified"></script><link rel="stylesheet" href="scripts/dutyfree-holidays.css?v=2"><script defer src="scripts/dutyfree-holidays.js?v=20261009mergedcopy"></script><link rel="stylesheet" href="scripts/dutyfree-typography.css?v=3"><link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-charts.css?v=20261010a"><link rel="stylesheet" href="scripts/site-polish.css?v=20261010-unified"><script src="scripts/dutyfree-monthly-model.js?v=20261010charts"></script><script src="scripts/site-charts.js?v=20261010charts"></script></head><body class="dutyfree-page"><div class="wrap">
+</style><link rel="stylesheet" href="scripts/site.css?v=20261010-unified"><script defer src="scripts/site-shell.js?v=20261010-unified"></script><link rel="stylesheet" href="scripts/dutyfree-holidays.css?v=2"><script defer src="scripts/dutyfree-holidays.js?v=20261010combo1"></script><link rel="stylesheet" href="scripts/dutyfree-typography.css?v=3"><link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-charts.css?v=20261010combo1"><link rel="stylesheet" href="scripts/site-polish.css?v=20261010-unified"><script src="scripts/dutyfree-monthly-model.js?v=20261010charts"></script><script src="scripts/site-charts.js?v=20261010combo1"></script></head><body class="dutyfree-page"><div class="wrap">
 <div class="crumbs"><a href="industry.html#dutyfree">行业数据</a> / 免税专题</div>
 <header class="hero"><div><div class="eyebrow">行业数据</div><h1>免税专题</h1><p>月度趋势 · 节假日表现</p></div><div class="asof" id="asof">读取数据中…</div></header>
 <nav class="tabs" id="tabs"><button class="tab on" data-view="monthly">月度数据</button><button class="tab" data-view="holidays">节假日数据</button></nav>
@@ -153,42 +153,22 @@ shoppers:{label:'购物人次',field:'shoppers_10k',yoy:'shoppers_yoy_pct',unit:
 items:{label:'购物件数',field:'items_10k',yoy:'items_yoy_pct',unit:'万件',color:'#2d7b70'},
 spend:{label:'每人次消费',field:'spend_per_shopper_cny',yoy:'spend_per_shopper_yoy_pct',unit:'元',color:'#8a6884'}
 };
-function drawCombo(svg,rows,metric){
-const w=760,h=330,l=54,r=60,t=28,b=50,barColor='#6f95ca',lineColor='#6656bd',gradient=svg.id+'-bars';
-svg.setAttribute('viewBox',`0 0 ${w} ${h}`);
-const panel=svg.closest('.chart');let legend=panel.querySelector('.combo-legend');if(!legend){legend=document.createElement('div');legend.className='combo-legend';svg.before(legend);}
-legend.innerHTML=`<span><i class="legend-bar"></i>${metric.label}<small>${metric.unit} · 左轴</small></span><span><i class="legend-line"></i>同比增速<small>% · 右轴</small></span><small class="legend-hint">移动查看 · 点击固定</small>`;
-const values=rows.map(row=>N(row[metric.field])),growth=rows.map(row=>N(row[metric.yoy]));
-if(!rows.length||!values.some(Number.isFinite)&&!growth.some(Number.isFinite)){svg.innerHTML='<text class="axis" x="380" y="165" text-anchor="middle">暂无数据</text>';return;}
-const rawMax=Math.max(0,...values.filter(Number.isFinite))||1,nice=v=>{const scale=10**Math.floor(Math.log10(v)),n=v/scale;return(n<=1?1:n<=2?2:n<=2.5?2.5:n<=5?5:10)*scale;},maxValue=nice(rawMax*1.12/4)*4;
-let lo=Math.min(0,...growth.filter(Number.isFinite)),hi=Math.max(0,...growth.filter(Number.isFinite));const pad=(hi-lo)*.12||5,growthStep=nice((hi-lo+pad*2)/4);lo=Math.floor((lo-pad)/growthStep)*growthStep;hi=Math.ceil((hi+pad)/growthStep)*growthStep;
-const step=(w-l-r)/rows.length,x=i=>l+(i+.5)*step,yValue=v=>h-b-v/maxValue*(h-t-b),yGrowth=v=>t+(hi-v)/(hi-lo)*(h-t-b),width=Math.min(30,step*.55);
-const esc=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const title=i=>esc(`${rows[i].period_id}：${metric.label} ${F(values[i],metric.unit==='元'?0:2)} ${metric.unit}；同比 ${P(growth[i])}`);
-let html=`<defs><linearGradient id="${gradient}" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#6f95ca"/><stop offset="100%" stop-color="#c3d5ed"/></linearGradient></defs><text class="axis" x="${l}" y="14">${metric.unit}</text><text class="axis" x="${w-r+8}" y="14">%</text>`;
-for(let j=0;j<5;j++){const yy=t+j*(h-t-b)/4;html+=`<line class="gridline" x1="${l}" x2="${w-r}" y1="${yy}" y2="${yy}"/><text class="axis" x="${l-10}" y="${yy+4}" text-anchor="end">${F(maxValue*(1-j/4),maxValue<5?1:0)}</text><text class="axis" x="${w-r+10}" y="${yy+4}">${F(hi-j*(hi-lo)/4,0)}</text>`;}
-html+=`<line x1="${l}" x2="${w-r}" y1="${yGrowth(0)}" y2="${yGrowth(0)}" stroke="#a89fcd" stroke-dasharray="3 5" opacity=".5"/>`;
-rows.forEach((row,i)=>{if(row.period_id.endsWith('-01')&&i>0)html+=`<line x1="${x(i)-step/2}" x2="${x(i)-step/2}" y1="${t}" y2="${h-b}" stroke="#e6e8ef" stroke-dasharray="3 4"/>`;});
-values.forEach((v,i)=>{if(!Number.isFinite(v))return;html+=`<rect class="combo-bar" data-index="${i}" x="${x(i)-width/2}" y="${yValue(v)}" width="${width}" height="${h-b-yValue(v)}" fill="url(#${gradient})" rx="3"><title>${title(i)}</title></rect>`;
-if(rows.length<=12){const inside=Number.isFinite(growth[i])&&Math.abs(yValue(v)-yGrowth(growth[i]))<32&&h-b-yValue(v)>24;html+=`<text class="combo-value" x="${x(i)}" y="${yValue(v)+(inside?15:-9)}" text-anchor="middle" fill="${inside?'#fff':'#70829e'}">${F(v,metric.unit==='元'?0:1)}</text>`;}});
-let path='',connected=false;growth.forEach((v,i)=>{if(!Number.isFinite(v)){connected=false;return;}path+=(connected?'L':'M')+x(i)+' '+yGrowth(v)+' ';connected=true;});
-html+=`<path class="line combo-line" d="${path}" stroke="${lineColor}" style="stroke-width:2.6"/>`;
-growth.forEach((v,i)=>{if(Number.isFinite(v))html+=`<circle cx="${x(i)}" cy="${yGrowth(v)}" r="3.2" fill="white" stroke="${lineColor}" stroke-width="2"><title>${title(i)}</title></circle>`;});
-const last=growth.length-1;if(Number.isFinite(growth[last]))html+=`<text class="combo-last" x="${x(last)-8}" y="${yGrowth(growth[last])-12}" text-anchor="end" fill="${lineColor}">${P(growth[last])}</text>`;
-const interval=Math.max(1,Math.ceil(rows.length/12));rows.forEach((row,i)=>{if(i%interval!==0&&i!==rows.length-1)return;const parts=row.period_id.split('-'),month=Number(parts[1]);html+=`<text class="axis" x="${x(i)}" y="${h-b+20}" text-anchor="middle">${month}月</text>`;if(i===0||month===1)html+=`<text class="combo-year" x="${x(i)}" y="${h-b+38}" text-anchor="middle">${parts[0]}</text>`;});
-html+=`<rect class="combo-focus" x="0" y="${t}" width="${step}" height="${h-t-b}" fill="#6656bd" opacity=".045" visibility="hidden"/><line class="combo-crosshair" y1="${t}" y2="${h-b}" stroke="#a79fca" stroke-dasharray="3 4" visibility="hidden"/>`;
-rows.forEach((row,i)=>{html+=`<rect class="combo-hit" x="${l+i*step}" y="${t}" width="${step}" height="${h-t-b}" fill="transparent" tabindex="0" aria-label="${title(i)}" data-index="${i}"/>`;});
-svg.innerHTML=html;
-SiteCharts.attach(svg,rows.map((row,i)=>({x:x(i),y:Number.isFinite(growth[i])?yGrowth(growth[i]):yValue(values[i]),text:row.period_id+'\n'+metric.label+'：'+F(values[i],metric.unit==='元'?0:2)+' '+metric.unit+'\n同比：'+P(growth[i])+(row[metric.yoy+'_method']==='calculated'?'（计算值）':'')+(row[metric.yoy+'_note']?'\n'+row[metric.yoy+'_note']:'')})));
-
+function drawCombo(svg,rows,metric,mode='combo'){
+const result=SiteCharts.paired(rows.map(row=>({period:row.period_id,x:Date.parse(row.period_id+'-01'),value:N(row[metric.field]),change:N(row[metric.yoy])})),{mode,name:metric.label,unit:metric.unit,width:Math.max(320,svg.closest('.chart').clientWidth-32),gap:45*86400000});
+const shell=document.createElement('div');shell.innerHTML=result.html;const chart=shell.querySelector('svg');
+const panel=svg.closest('.chart');panel.querySelector('.combo-legend')?.remove();panel.querySelector('.site-chart-legend')?.remove();
+if(!chart){svg.innerHTML='<text x="150" y="120">暂无数据</text>';return;}
+svg.setAttribute('viewBox',chart.getAttribute('viewBox'));svg.classList.add('site-paired-chart');svg.innerHTML=chart.innerHTML;const legend=shell.querySelector('.site-chart-legend');if(legend)svg.after(legend);SiteCharts.attach(svg,result.points);
 }
+
 const trendModes={hn:'combo'};
+let trendResize;addEventListener('resize',()=>{clearTimeout(trendResize);trendResize=setTimeout(()=>{if(DB.m?.length)renderHainan();},150);});
 function renderTrend(prefix,rows){
 const metric=trendMetrics[document.getElementById(prefix+'-metric').value],combo=trendModes[prefix]==='combo',yoy=trendModes[prefix]==='yoy',title=metric.label+(combo?'与同比增速':yoy?'同比增速':'走势')+(combo?'':'（'+(yoy?'%':metric.unit)+'）');
 document.getElementById(prefix+'-trend-title').textContent=title;
 const svg=document.getElementById(prefix==='ov'?'ov-sales':'hn-growth');svg.setAttribute('aria-label',title);
-const oldLegend=svg.closest('.chart').querySelector('.combo-legend');if(!combo&&oldLegend)oldLegend.remove();
-if(combo){drawCombo(svg,rows,metric);return;}
+const oldLegend=svg.closest('.chart').querySelector('.combo-legend');if(!combo){oldLegend?.remove();svg.closest('.chart').querySelector('.site-chart-legend')?.remove();svg.classList.remove('site-paired-chart');}
+drawCombo(svg,rows,metric,combo?'combo':yoy?'change':'value');return;
 draw(svg,rows,[{name:metric.label+(yoy?'同比':''),get:r=>N(r[yoy?metric.yoy:metric.field]),color:metric.color,unit:yoy?'%':metric.unit}],yoy);
 }
 function go(t){document.querySelectorAll('.tab,.view').forEach(x=>x.classList.remove('on'));let b=document.querySelector(`.tab[data-view="${t}"]`);if(b)b.classList.add('on');let v=document.getElementById('view-'+t);if(v)v.classList.add('on')}
