@@ -109,7 +109,7 @@ def legacy_fields(root):
         {"id": "dutyfree", "name": "免税", "metric": "离岛免税销售额", "value": numeric(dutyfree["shopping_sales_cny_100m"]), "unit": "亿元", "precision": 2,
          "change": numeric(dutyfree["sales_yoy_pct"]), "period": dutyfree["period_id"], "asOf": month_end(dutyfree["period_id"]), "freshnessDays": 50,
          "source": dutyfree["source"], "sourceFile": paths["dutyfree_monthly"], "href": "dutyfree-dashboard.html"},
-        {"id": "gold", "name": "黄金珠宝", "metric": "上海 Au9999 现货收盘价", "value": numeric(g["数值"]), "unit": g["单位"],
+        {"id": "gold", "name": "黄金", "metric": "上海 Au9999 现货收盘价", "value": numeric(g["数值"]), "unit": g["单位"],
          "change": rate(g["数值"], g_previous.get("数值")), "changeLabel": "较前一记录日", "period": "日度", "asOf": g["数据日期"][:10], "freshnessDays": 7,
          "source": g["数据来源"], "sourceFile": paths["gold"], "href": "industry.html#gold"},
         {"id": "dining", "name": "餐饮", "metric": "全国餐饮收入", "value": numeric(dining["餐饮收入(亿元)"]), "unit": "亿元",
@@ -125,7 +125,7 @@ def legacy_fields(root):
     return industries, focus
 
 
-def build(root=ROOT, now=None):
+def build(root=ROOT, now=None, industry_only=False):
     # Reuse the selected industry release instead of rereading its full CSV sources.
     overview_path = root / "data/industry/overview.json"
     if overview_path.exists():
@@ -143,7 +143,7 @@ def build(root=ROOT, now=None):
             metric = selected[home_metrics[sector["id"]]]
             point = metric["points"][-1] if metric["points"] else {}
             source = provenance.get(point.get("sourceId"), {})
-            industries.append({"id": sector["id"], "name": sector["name"], "metric": metric["label"], "value": point.get("value"), "unit": metric["unit"], "precision": metric["precision"], "change": point.get("change"), "changeLabel": point.get("changeLabel", "同比"), "period": point.get("periodLabel", "全行业口径待补齐"), "asOf": point.get("endDate", ""), "freshnessDays": 14 if metric["frequency"] == "周度" else 50 if metric["frequency"] == "月度" else 10, "source": source.get("name", "暂无可用来源"), "sourceFile": source.get("url") or source.get("file", "industry.html#" + sector["id"]), "href": "industry.html#" + sector["id"]})
+            industries.append({"id": sector["id"], "name": sector["name"], "metric": metric["label"], "value": point.get("value"), "unit": metric["unit"], "precision": metric["precision"], "change": point.get("change"), "changeLabel": point.get("changeLabel", "同比"), "period": point.get("periodLabel", "全行业口径待补齐"), "asOf": point.get("endDate", ""), "freshnessDays": 14 if metric["frequency"] == "周度" else 50 if metric["frequency"] == "月度" else 400 if metric["frequency"] == "年度" else 10, "source": source.get("name", "暂无可用来源"), "sourceFile": source.get("url") or source.get("file", "industry.html#" + sector["id"]), "href": sector.get("detailHref") if sector["id"] in ("overseas", "dining") else "industry.html#" + sector["id"]})
         h_now, d_now, food_now = (next(item for item in industries if item["id"] == id) for id in ("hotel", "dutyfree", "dining"))
         shoppers_now = selected["dutyfree_shoppers"]["points"][-1]
         food_above = selected["dining_above_yoy"]["points"][-1]
@@ -152,8 +152,12 @@ def build(root=ROOT, now=None):
         focus[2].update(summary=f"全国餐饮收入同比 {signed(food_now['change'])}，限额以上餐饮同比 {signed(food_above['value'])}。", asOf=food_now["asOf"], href=food_now["href"])
     else:
         industries, focus = legacy_fields(root)
-    recent = json.loads((root / "data/research/recent.json").read_text(encoding="utf-8"))
-    research = research_items(recent)
+    if industry_only:
+        cached = json.loads((root / "data/home-snapshot.json").read_text(encoding="utf-8"))
+        research = cached["research"]
+    else:
+        recent = json.loads((root / "data/research/recent.json").read_text(encoding="utf-8"))
+        research = research_items(recent)
     moment = now or dt.datetime.now(TZ)
     return {"version": 1, "generatedAt": moment.astimezone(TZ).isoformat(timespec="seconds"),
             "industries": industries, "focus": focus, "research": research,
@@ -163,8 +167,10 @@ def build(root=ROOT, now=None):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, default=ROOT)
+    parser.add_argument("--industry-only", action="store_true", help="Preserve the current research selection")
     args = parser.parse_args()
-    payload = build(args.root)
+    payload = build(args.root, industry_only=args.industry_only)
     target = args.root / "data/home-snapshot.json"
     changed = write_json_if_changed(target, payload, volatile={"generatedAt"}, indent=2)
     print(f"Home summary: {len(payload['industries'])} industries, {len(payload['research'])} research items, {target.stat().st_size} bytes")
+

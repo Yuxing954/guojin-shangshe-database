@@ -11,6 +11,14 @@ on:
       - "scripts/test_summary_updates.py"
       - "index.html"
       - "industry.html"
+      - "overseas.html"
+      - "dining.html"
+      - "scripts/sector*"
+      - "scripts/update_sector_data.py"
+      - "scripts/test_sector_data.py"
+      - "data/sectors/**"
+      - "tests/sectors.browser.cjs"
+      - "company-database.html"
       - "quotes.html"
       - "scripts/quotes*"
       - "tests/quotes-workbench.browser.cjs"
@@ -83,6 +91,10 @@ jobs:
       - name: Check homepage data and JavaScript
         run: |
           python scripts/test_industry_snapshot.py
+          python scripts/test_sector_data.py
+          python scripts/update_sector_data.py
+          node scripts/sector-model.test.cjs
+          node --check scripts/sector.js
           python scripts/build_industry_snapshot.py
           python scripts/test_home_snapshot.py
           python scripts/test_summary_updates.py
@@ -130,3 +142,10 @@ jobs:
           npx playwright install --with-deps chromium
       - name: Verify expanded coverage pool in browser
         run: node tests/quotes-workbench.browser.cjs
+
+      - name: Verify sector pages in browser
+        run: |
+          python -m http.server 18765 --bind 127.0.0.1 > /tmp/sector-http.log 2>&1 &
+          sector_server_pid=$!
+          trap 'kill "$sector_server_pid"' EXIT
+          SECTOR_BASE_URL=http://127.0.0.1:18765 node tests/sectors.browser.cjs

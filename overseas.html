@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>出海数据 · 国金商社</title>
+<link rel="stylesheet" href="scripts/site.css?v=20261010-unified"><link rel="stylesheet" href="scripts/sector.css?v=1">
+<script defer src="scripts/site-ui.js?v=20261010sectorsmerge"></script><script defer src="scripts/site-data.js?v=3"></script><script defer src="scripts/sector-model.js?v=1"></script><script defer src="scripts/site-shell.js?v=20261010sectorsmerge"></script><script defer src="scripts/sector.js?v=1"></script>
+<link rel="stylesheet" href="scripts/site-polish.css?v=20261010-unified"></head><body class="site-page" data-site-section="industry" data-sector="overseas">
+<main class="site-main">
+<header class="portal-header"><div><p class="eyebrow">行业数据</p><h1 id="title">出海</h1></div><div class="sector-top"><span class="portal-note" id="checked"></span><a class="portal-top-link" href="industry.html#overseas">行业总览 →</a></div></header>
+<nav class="portal-tabs sector-tabs" aria-label="行业板块"><a href="industry.html#hotel">酒店</a><a href="industry.html#dutyfree">免税</a><a href="gold-jewelry.html">黄金</a><a href="overseas.html" aria-current="page">出海</a><a href="dining.html">餐饮</a></nav>
+<div id="status" class="portal-status" role="status"><span id="status-text">正在读取板块数据…</span> <button id="retry" hidden class="portal-button">重试</button></div>
+<div id="content" hidden>
+<nav class="portal-tabs sector-tabs" aria-label="数据视图"><button data-view="market" aria-pressed="true">行业趋势</button><button data-view="companies" aria-pressed="false">公司经营</button><button data-view="research" aria-pressed="false">研究资料</button><button data-view="sources" aria-pressed="false">来源与覆盖</button></nav>
+<section id="view-market" class="sector-view" aria-label="行业趋势">
+<div class="sector-core" id="core"></div>
+<section class="portal-panel"><div class="portal-panel-head"><h2 id="metric-title"></h2><button id="download" class="portal-button">下载 CSV</button></div>
+<div class="sector-controls"><label>指标<select id="metric"></select></label><label>期间口径<select id="basis"></select></label><label>开始日期<input type="date" id="from"></label><label>结束日期<input type="date" id="to"></label><button id="clear-range" class="portal-button">全部时间</button></div>
+<p class="portal-note" id="scope"></p><div class="sector-meta" id="metric-meta"></div><div id="chart"></div><p class="portal-subtle" id="publication"></p></section>
+<details class="portal-panel sector-details"><summary>历史明细</summary><div class="portal-table-scroll"><table class="portal-table sector-table"><thead><tr><th>期间</th><th id="history-unit">数值</th><th>同比 %</th><th>来源</th></tr></thead><tbody id="history"></tbody></table></div><div class="sector-pager"><span id="page-label" class="sector-count"></span><div><button id="prev">上一页</button> <button id="next">下一页</button></div></div></details>
+</section>
+<section id="view-companies" class="sector-view" hidden aria-label="公司经营">
+<div id="company-links" class="sector-company-grid"></div><section class="portal-panel"><div class="portal-panel-head"><h2>经营指标</h2><button id="company-download" class="portal-button">下载筛选 CSV</button></div>
+<div class="sector-controls"><label>公司<select id="company"></select></label><label>报告期<select id="company-period"></select></label><label>指标<input type="search" id="company-search" placeholder="收入、同店、门店"></label></div>
+<div class="portal-table-scroll sector-table-scroll"><table class="portal-table sector-table"><thead><tr><th>公司 / 期间</th><th>指标 / 范围</th><th>数值 / 单位</th><th>来源</th></tr></thead><tbody id="company-history"></tbody></table></div><div class="sector-pager"><span id="company-page" class="sector-count"></span><div><button id="company-prev">上一页</button> <button id="company-next">下一页</button></div></div></section>
+</section>
+<section id="view-research" class="sector-view" hidden aria-label="研究资料"><section class="portal-panel"><div class="portal-panel-head"><h2>研报与行业资料</h2><a href="research.html?sector=commerce">站内观点纪要 →</a></div><div id="reports"></div></section></section>
+<section id="view-sources" class="sector-view" hidden aria-label="来源与覆盖"><section class="portal-panel"><h2>待补数据</h2><div class="sector-gaps" id="gaps"></div></section><section class="portal-panel"><h2>来源记录</h2><div id="source-list"></div></section><details class="portal-panel sector-details"><summary>数值修订</summary><div id="revisions"></div></details></section>
+</div></main></body></html>

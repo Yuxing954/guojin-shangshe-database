@@ -32,3 +32,8 @@
 - [国家统计局2026年8月零售与餐饮数据](https://www.stats.gov.cn/sj/zxfb/202609/t20260915_1965311.html)
 - [上金所2026年9月30日每日行情](https://www.sge.com.cn/h5_sjzx/quotationdailynew?end_date=2026-09-30&start_date=2026-09-30)
 - [中国黄金协会2026年上半年统计](https://www.cngold.org.cn/news/show-9500.html)
+
+
+## 2026-10-10 第二阶段
+
+“跨境电商”展示名称改为“出海”，“黄金珠宝”改为“黄金”，旧行业键、CSV文件名、研究题名和链接保留。出海及餐饮已建设独立专题与经营数据库；原第一阶段所述出口及公司经营缺口已有部分补齐，最新范围和仍缺数据以[专题施工记录](sector-construction.md)为准。

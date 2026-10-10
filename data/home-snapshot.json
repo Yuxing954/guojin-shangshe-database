@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-10T01:08:30+08:00",
+  "generatedAt": "2026-10-10T12:46:20+08:00",
   "industries": [
     {
       "id": "hotel",
@@ -36,7 +36,7 @@
     },
     {
       "id": "gold",
-      "name": "黄金珠宝",
+      "name": "黄金",
       "metric": "Au99.99收盘价",
       "value": 907.32,
       "unit": "元/克",
@@ -52,19 +52,19 @@
     },
     {
       "id": "overseas",
-      "name": "跨境电商",
+      "name": "出海",
       "metric": "跨境电商出口",
-      "value": null,
+      "value": 21500,
       "unit": "亿元",
       "precision": 2,
-      "change": null,
+      "change": 16.9,
       "changeLabel": "同比",
-      "period": "全行业口径待补齐",
-      "asOf": "",
-      "freshnessDays": 10,
-      "source": "暂无可用来源",
-      "sourceFile": "industry.html#overseas",
-      "href": "industry.html#overseas"
+      "period": "2024年",
+      "asOf": "2024-12-31",
+      "freshnessDays": 400,
+      "source": "2024年跨境电商出口（海关统计转载）",
+      "sourceFile": "https://www.ccpitzj.gov.cn/art/2025/6/24/art_1229557691_49197.html",
+      "href": "overseas.html"
     },
     {
       "id": "dining",
@@ -78,9 +78,9 @@
       "period": "2026年8月",
       "asOf": "2026-08-31",
       "freshnessDays": 50,
-      "source": "国家统计局",
-      "sourceFile": "https://www.stats.gov.cn/sj/zxfb/202609/t20260915_1965311.html",
-      "href": "industry.html#dining"
+      "source": "中国:社会消费品零售总额:餐饮收入(元)",
+      "sourceFile": "https://choicew2z.eastmoney.com/dataDisplay/macroEDB/#/index?macroids=EMM00063221,EMM00063199,EMM00063191",
+      "href": "dining.html"
     }
   ],
   "focus": [
@@ -103,7 +103,7 @@
       "title": "餐饮收入增速",
       "summary": "全国餐饮收入同比 +1.1%，限额以上餐饮同比 -0.7%。",
       "asOf": "2026-08-31",
-      "href": "industry.html#dining"
+      "href": "dining.html"
     }
   ],
   "research": [

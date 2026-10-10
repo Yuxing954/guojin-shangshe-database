@@ -25,7 +25,7 @@ class HomeSnapshotTests(unittest.TestCase):
         self.assertEqual(result[1]["href"], "research.html")
 
     def test_actual_snapshot_dates_and_sources(self):
-        payload = build(ROOT, dt.datetime(2099, 10, 7, 12, tzinfo=TZ))
+        payload = build(ROOT, dt.datetime(2099, 10, 7, 12, tzinfo=TZ), industry_only=True)
         self.assertEqual(len(payload["focus"]), 3)
         self.assertEqual(len(payload["industries"]), 5)
         self.assertLessEqual(len(payload["research"]), 5)
@@ -37,13 +37,14 @@ class HomeSnapshotTests(unittest.TestCase):
         for item in payload["industries"]:
             source = item["sourceFile"]
             if source.startswith('https://'):
-                self.assertIn(urlparse(source).hostname, ('www.stats.gov.cn', 'www.sge.com.cn', 'www.cngold.org.cn', 'choicew2z.eastmoney.com'))
+                self.assertIn(urlparse(source).hostname, ('www.stats.gov.cn', 'www.sge.com.cn', 'www.cngold.org.cn', 'choicew2z.eastmoney.com', 'www.ccpitzj.gov.cn'))
             else:
                 self.assertTrue((ROOT / source.split('#')[0]).is_file())
             self.assertTrue((ROOT / item["href"].split("#")[0]).is_file())
         crossborder = next(item for item in payload['industries'] if item['id'] == 'overseas')
-        self.assertIsNone(crossborder['value'])
-        self.assertEqual(crossborder['href'], 'industry.html#overseas')
+        self.assertEqual(crossborder['value'], 21500)
+        self.assertEqual(crossborder['asOf'], '2024-12-31')
+        self.assertEqual(crossborder['href'], 'overseas.html')
 
     def test_home_keeps_latest_classified_research(self):
         payload={"dbs":[{"id":"views","rows":[
