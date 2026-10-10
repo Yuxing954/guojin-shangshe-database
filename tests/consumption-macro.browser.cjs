@@ -17,13 +17,15 @@ const server=http.createServer((req,res)=>{const p=path.resolve(root,'.'+decodeU
   await page.locator('#indicator').selectOption('confidence');assert.match(await page.locator('#value-heading').innerText(),/点/);assert.match(await page.locator('#history').innerText(),/89.5/);assert.equal(await page.locator('#measure option[value=yoy]').evaluate(el=>el.disabled),true);
   await page.locator('#retail-basis').selectOption('year');assert.match(await page.locator('#retail-context').innerText(),/2025/);await page.locator('#retail-period').selectOption('2017');assert.match(await page.locator('#retail-context').innerText(),/2017/);
   await page.locator('#indicator').selectOption('holiday_travel');assert.match(await page.locator('#history').innerText(),/预计/);assert.match(await page.locator('#history').innerText(),/日均同比/);
-  await page.setViewportSize({width:390,height:844});await page.goto(base+'/consumption-macro.html');await page.waitForSelector('#content:not([hidden])');assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));assert.equal(await page.locator('.site-nav nav a').count(),6);await page.screenshot({path:path.join(out,'消费宏观-手机预览.png'),fullPage:true});
-  await page.goto(base+'/index.html');await page.waitForSelector('.site-nav nav');assert.equal(await page.locator('.site-nav nav a').count(),6);assert.match(await page.locator('.site-nav a.current').innerText(),/首页/);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+  await page.setViewportSize({width:390,height:844});await page.goto(base+'/consumption-macro.html');await page.waitForSelector('#content:not([hidden])');assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));assert.equal(await page.locator('.site-nav nav a').count(),7);assert.equal(await page.locator('.site-nav nav a[href="company-database.html"]').count(),1);await page.screenshot({path:path.join(out,'消费宏观-手机预览.png'),fullPage:true});
+  await page.goto(base+'/index.html');await page.waitForSelector('.site-nav nav');assert.equal(await page.locator('.site-nav nav a').count(),7);assert.match(await page.locator('.site-nav a.current').innerText(),/首页/);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
   await page.route('**/data/macro/automatic-series.json',route=>route.fulfill({status:503,body:'unavailable'}));await page.goto(base+'/consumption-macro.html');await page.waitForSelector('#automatic-warning:not([hidden])');assert.equal(await page.locator('#content').isVisible(),true);assert.match(await page.locator('#kpis').innerText(),/39,824/);await page.unroute('**/data/macro/automatic-series.json');
   await page.route('**/data/consumption-macro/observations.json',route=>route.fulfill({status:503,body:'unavailable'}));await page.goto(base+'/consumption-macro.html');await page.waitForSelector('#status[role=alert]');assert.match(await page.locator('#status').innerText(),/503/);assert.equal(await page.locator('#content').isHidden(),true);
   assert.deepEqual(errors,[]);console.log('PASS: dashboard loading, navigation, pagination, filters, pending, quarterly scope, date range, CSV downloads, CPI rates, estimates, mobile layout, existing home navigation, and fetch failure.');
  }catch(error){await page.screenshot({path:path.join(out,'failure.png'),fullPage:true});throw error;}finally{await browser.close();server.close();}
 })().catch(e=>{console.error(e);server.close();process.exitCode=1;});
+
+
 
 
 
