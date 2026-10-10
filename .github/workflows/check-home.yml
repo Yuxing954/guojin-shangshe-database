@@ -28,6 +28,7 @@ on:
       - "data/coverage-companies.json"
       - "scripts/coverage*"
       - "research.html"
+      - "tests/research-minutes.browser.cjs"
       - "hotel-dashboard.html"
       - "dutyfree-dashboard.html"
       - "earnings.html"
@@ -142,6 +143,9 @@ jobs:
           npx playwright install --with-deps chromium
       - name: Verify expanded coverage pool in browser
         run: node tests/quotes-workbench.browser.cjs
+
+      - name: Verify minutes initial load, previews and download links
+        run: node tests/research-minutes.browser.cjs
 
       - name: Verify sector pages in browser
         run: |
