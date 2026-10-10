@@ -26,7 +26,7 @@ def inputs(root):
     updates = json.loads(updates_path.read_text(encoding='utf-8-sig')) if updates_path.exists() else {}
     batches = [p for group in updates.get('files', {}).values() for p in group]
     research = [datasets[k] for k in ('views', 'all_views', 'minutes')]
-    industry = [datasets[k] for k in ('hotel_industry_weekly', 'dutyfree_monthly', 'gold', 'crossborder', 'dining')]
+    industry = [datasets[k] for k in ('hotel_industry_weekly', 'dutyfree_monthly', 'gold', 'dining')]
     industry += [p.relative_to(root).as_posix() for pattern in ('miaoxiang-*.json', 'verified-*.json')
                  for p in sorted((root / 'data/industry').glob(pattern))]
     return {
