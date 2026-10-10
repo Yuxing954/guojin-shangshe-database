@@ -76,12 +76,32 @@
         "所得税、财务费用对利润变动的影响"
       ],
       "gaps": [
-        "现金流、债务和所得税桥尚未形成连续结构化序列",
-        "境内外ADR与RevPAR币种不同，不合并作图"
+        "境内外ADR与RevPAR币种不同，不合并作图",
+        "Choice与底稿保留独立序列；债务口径尚未齐备，负债总额不作为有息债务。"
       ],
       "evidence": [
         "report-ba1fb1cb8b35"
-      ]
+      ],
+      "positioning": "境内外酒店平台",
+      "businessLines": [
+        "境内有限服务型",
+        "海外有限服务型",
+        "全服务型"
+      ],
+      "businessLogic": [
+        "境内有限服务型酒店同时开展自有租赁及加盟管理，酒店房费与管理服务收入分别跟踪。",
+        "海外有限服务型酒店单独披露经营量价，ADR与RevPAR使用欧元，保留海外范围。",
+        "全服务型酒店单独披露酒店规模与经营指标，与有限服务型酒店分开查看。"
+      ],
+      "choiceFinancial": {
+        "region": "集团整体",
+        "scope": "全部",
+        "mode": "全部",
+        "basis": "Choice财报 / 返回币种",
+        "currency": "CNY"
+      },
+      "choiceProfitMetric": "parent_profit",
+      "cashMetric": "monetary_funds"
     },
     "btg": {
       "id": "btg",
@@ -158,7 +178,8 @@
       ],
       "gaps": [
         "Q2规模为全网络口径；旧模型“中国”口径不直接拼接同比",
-        "合资和管理输出门店纳入规模，但不纳入本期运营RevPAR"
+        "合资和管理输出门店纳入规模，但不纳入本期运营RevPAR",
+        "Choice与底稿保留独立序列；债务口径尚未齐备，负债总额不作为有息债务。"
       ],
       "evidence": [
         "report-4000f1473275"
@@ -169,7 +190,27 @@
         "mode": "全部",
         "basis": "已签约未开业和正在签约",
         "frequency": "季度"
-      }
+      },
+      "positioning": "分层酒店网络与景区业务",
+      "businessLines": [
+        "传统酒店网络",
+        "轻管理酒店",
+        "海南南山景区"
+      ],
+      "businessLogic": [
+        "传统酒店覆盖经济型和中高端，直营运营收入与加盟管理费分别确认。",
+        "轻管理酒店属于独立的产品类型，规模和扩张与传统直营、加盟网络分别跟踪。",
+        "海南南山景区贡献景区业务收入，酒店与景区不合并解读为酒店房费。"
+      ],
+      "choiceFinancial": {
+        "region": "集团整体",
+        "scope": "全部",
+        "mode": "全部",
+        "basis": "Choice财报 / 返回币种",
+        "currency": "CNY"
+      },
+      "choiceProfitMetric": "parent_profit",
+      "cashMetric": "monetary_funds"
     },
     "hworld": {
       "id": "hworld",
@@ -248,7 +289,8 @@
       ],
       "gaps": [
         "2022Q4前后集团Blended与HWC口径切换",
-        "全年经营均值与季度HWC定义不同；同店组不跨年强行拼接"
+        "全年经营均值与季度HWC定义不同；同店组不跨年强行拼接",
+        "Choice返回展示精度；美股财务返回美元，原始列报币种未确认；不与人民币底稿拼接。"
       ],
       "evidence": [
         "report-08569c038487"
@@ -266,7 +308,27 @@
         "mode": "全部",
         "basis": "中国酒店",
         "frequency": "季度"
-      }
+      },
+      "positioning": "中国加盟平台与海外业务",
+      "businessLines": [
+        "HWC 中国酒店",
+        "HWI 海外酒店",
+        "集团范围与经营模式"
+      ],
+      "businessLogic": [
+        "HWC是中国酒店网络，经营量价采用人民币；加盟管理与直营模式分开查看。",
+        "HWI是海外酒店网络，与中国网络单独披露量价；恒定汇率指标按原报告保留。",
+        "集团规模包含中国和海外；加盟管理收入、直营收入与酒店营业额分别跟踪。"
+      ],
+      "choiceFinancial": {
+        "region": "集团整体",
+        "scope": "全部",
+        "mode": "全部",
+        "basis": "Choice财报 / 返回币种",
+        "currency": "USD"
+      },
+      "choiceProfitMetric": "parent_profit",
+      "cashMetric": "cash_equivalents"
     },
     "atour": {
       "id": "atour",
@@ -321,7 +383,8 @@
       ],
       "gaps": [
         "全酒店ADR×OCC与RevPAR有勾稽差异，保留源值",
-        "2020—2022零售及其他与2023起单列零售不可直接比较"
+        "2020—2022零售及其他与2023起单列零售不可直接比较",
+        "Choice返回展示精度；美股财务返回美元，原始列报币种未确认；不与人民币底稿拼接。"
       ],
       "evidence": [],
       "opened": {
@@ -330,28 +393,27 @@
         "mode": "全部",
         "basis": "",
         "frequency": "季度"
-      }
-    },
-    "juneyao": {
-      "id": "juneyao",
-      "intro": "已建立上市主体档案，专项经营及财务数据待补。",
-      "tags": [
-        "待补资料"
+      },
+      "positioning": "酒店加盟与生活方式零售",
+      "businessLines": [
+        "加盟及管理酒店",
+        "直营酒店",
+        "亚朵星球零售"
       ],
-      "operating": {},
-      "scale": {},
-      "financial": {},
-      "profitMetric": "parent_profit",
-      "structures": [],
-      "watch": [
-        "补充年报、半年报和经营底稿",
-        "补充品牌、直营加盟、门店与客房结构"
+      "businessLogic": [
+        "加盟及管理酒店为主要酒店网络，门店规模、储备项目与管理收入分别跟踪。",
+        "直营酒店通过直接经营提供住宿服务，直营收入与加盟管理收入单列。",
+        "亚朵星球经营零售，零售GMV与确认收入分别保存，不将GMV当成收入。"
       ],
-      "gaps": [
-        "暂无专项经营底稿",
-        "暂无可核验业务画像"
-      ],
-      "evidence": []
+      "choiceFinancial": {
+        "region": "集团整体",
+        "scope": "全部",
+        "mode": "全部",
+        "basis": "Choice财报 / 返回币种",
+        "currency": "USD"
+      },
+      "choiceProfitMetric": "parent_profit",
+      "cashMetric": "cash_equivalents"
     }
   }
 }

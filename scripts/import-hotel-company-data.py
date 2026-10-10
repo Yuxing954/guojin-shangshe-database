@@ -18,6 +18,8 @@ METRICS={
  'financing_cf':('融资现金流','百万元','现金流','flow'),'cash':('现金及受限现金','百万元','现金流','stock'),
  'debt':('债务','百万元','现金流','stock'),'gmv':('零售GMV','百万元','零售','flow'),'members':('会员数','百万人','零售','stock'),
  'hotel_cost':('酒店成本','百万元','财务','flow'),'retail_cost':('零售成本','百万元','财务','flow'),'sales_expense':('销售费用','百万元','财务','flow'),'admin_expense':('管理费用','百万元','财务','flow')}
+METRICS.update({'monetary_funds':('货币资金','百万元','财务','stock'),'cash_equivalents':('现金及现金等价物','百万元','财务','stock'),'assets':('资产总额','百万元','财务','stock'),'liabilities':('负债总额','百万元','财务','stock')})
+
 def clean(v):
  if isinstance(v,(datetime.date,datetime.datetime)):return v.isoformat()
  return v
@@ -211,10 +213,10 @@ def main(source_root,repo):
   w.close();fw.close()
  # Identity and data health are independent of quote dates.
  pool=list(csv.DictReader((Path(repo)/'data/商社-标的池与估值跟踪.csv').open(encoding='utf-8-sig')))
- ids={'600754.SH':'jinjiang','600258.SH':'btg','1179.HK':'hworld','ATAT.O':'atour','301073.SZ':'juneyao'}
+ ids={'600754.SH':'jinjiang','600258.SH':'btg','1179.HK':'hworld','ATAT.O':'atour'}
  companies=[]
  for r in pool:
-  if r['子行业']!='酒店':continue
+  if r['子行业']!='酒店' or r['证券代码'] not in ids:continue
   cid=ids[r['证券代码']];obs=[o for o in allobs if o['companyId']==cid]
   actual=[o for o in obs if o['status'] not in ['pending','forecast']]
   companies.append({'id':cid,'name':r['公司名称'],'code':r['证券代码'],'aliases':['HTHT.US','HTHT.O'] if cid=='hworld' else ['ATAT.US'] if cid=='atour' else [],'sector':'酒店','market':r['市场'],'coverage':r['覆盖级别'],'file':f'data/companies/hotels/{cid}.json' if obs else None,'count':len(obs),'firstPeriod':min((o['period'] for o in actual),key=periodkey,default=None),'lastPeriod':max((o['period'] for o in actual),key=periodkey,default=None),'status':'已入库' if obs else '暂无专项经营底稿','valuationDate':r['数据日期'][:10]})

@@ -8,7 +8,7 @@ class CompanyDataTests(unittest.TestCase):
  def test_identity_sources_and_series(self):
   d=ROOT/'data/companies';cat=json.loads((d/'catalog.json').read_text(encoding='utf-8'))
   sources={s['id']:s for s in json.loads((d/'sources.json').read_text(encoding='utf-8'))['sources']};ids=set();keys=set()
-  self.assertEqual(len(cat['companies']),5)
+  self.assertEqual(len(cat['companies']),4)
   for c in cat['companies']:
    if not c['file']:
     self.assertEqual(c['count'],0);continue

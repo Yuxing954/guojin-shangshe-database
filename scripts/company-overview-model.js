@@ -10,5 +10,16 @@
  function ratio(n,d){if(!n||!d||d.value<=0||n.companyId!==d.companyId||n.period!==d.period||n.frequency!==d.frequency||n.periodBasis!==d.periodBasis||n.unit!==d.unit||n.currency!==d.currency)return null;return n.value/d.value*100;}
  function snapshot(rows,p,period){const result={};for(const m of ['hotels','rooms'])result[m]=latest(rows,p.scale,m,period);for(const m of ['adr','occ','revpar'])result[m]=latest(rows,p.operating,m,period);for(const m of ['revenue',p.profitMetric,'operating_profit','adjusted_ebitda'])result[m]=latest(rows,p.financial,m,period);return result;}
  function structure(rows,p,g){const sel={...p.scale,...g.denominator};const total=latest(rows,sel,g.metric);if(!total)return {total:null,rows:[],residual:null};const items=g.rows.map(r=>{const {label,...match}=r;const o=latest(rows,{...sel,...match},g.metric,total.period);return {label,row:o,share:ratio(o,total)};});const all=items.every(x=>x.row);return {total,rows:items,residual:all?total.value-items.reduce((sum,x)=>sum+x.row.value,0):null};}
- return {actual,key,merge,pick,latest,history,yoy,ratio,snapshot,structure};
+ function financial(rows,p,period,source='research'){
+  const selector=source==='choice'?p.choiceFinancial:p.financial;
+  const selected=latest(rows,selector,'revenue',period);
+  if(!selected&&source==='research')return financial(rows,p,period,'choice');
+  const profitMetric=source==='choice'?p.choiceProfitMetric:p.profitMetric;
+  const sel=selected?{...selector,frequency:selected.frequency,currency:selected.currency}:selector;
+  const result={revenue:selected,profitMetric,source,selector:sel};
+  for(const m of [profitMetric,'operating_profit','operating_cf','adjusted_ebitda','cash','debt','monetary_funds','cash_equivalents','assets','liabilities','deducted_profit'])result[m]=selected?latest(rows,sel,m,selected.period):null;
+  return result;
+ }
+ function description(o){return o?[...new Set([o.region,o.scope,o.mode,o.basis,o.currency,o.periodBasis].filter(v=>v&&v!=='全部'))].join(' · '):'暂无数据';}
+ return {actual,key,merge,pick,latest,history,yoy,ratio,snapshot,structure,financial,description};
 });

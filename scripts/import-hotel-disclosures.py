@@ -69,7 +69,6 @@ P['hworld']=profile('hworld','集团分为华住中国HWC与海外HWI；通过�
  dict(title='HWC经营模式 · 酒店数',metric='hotels',denominator=q(region='中国',basis='中国酒店'),rows=[q(label='直营及自有',region='中国',basis='中国酒店',mode='直营'),q(label='加盟及管理',region='中国',basis='中国酒店',mode='加盟')])],['华住中国ADR、入住率与成熟同店RevPAR','加盟管理收入增长及占比','HWI海外表现、汇率与恒定美元口径','开店、关店与待开业储备'],['2022Q4前后集团Blended与HWC口径切换','全年经营均值与季度HWC定义不同；同店组不跨年强行拼接'],[S['hworld']])
 P['atour']=profile('atour','酒店业务以加盟及管理为主，同时经营亚朵星球零售。品牌、成熟同店、储备店与零售收入单独跟踪。',['酒店 + 零售','加盟及管理','品牌与同店'],q(region='全部',scope='全部',mode='全部',basis='全酒店 / 含税 / 剔除临时关闭客房',frequency='季度'),q(region='全部',scope='全部',mode='全部',basis='集团整体',frequency='季度'),q(region='全部',scope='全部',mode='全部',basis='集团整体'),'net_profit',[
  dict(title='经营模式 · 酒店数',metric='hotels',rows=[q(label='加盟',mode='加盟'),q(label='直营',mode='直营')])],['成熟同店与全酒店RevPAR差异','加盟酒店、待开业项目及品牌结构','酒店收入与零售收入的增长贡献','零售GMV、收入、费用及现金流分别跟踪'],['全酒店ADR×OCC与RevPAR有勾稽差异，保留源值','2020—2022零售及其他与2023起单列零售不可直接比较'],[])
-P['juneyao']=dict(id='juneyao',intro='已建立上市主体档案，专项经营及财务数据待补。',tags=['待补资料'],operating={},scale={},financial={},profitMetric='parent_profit',structures=[],watch=['补充年报、半年报和经营底稿','补充品牌、直营加盟、门店与客房结构'],gaps=['暂无专项经营底稿','暂无可核验业务画像'],evidence=[])
 for o in observations:
  if o['companyId']=='btg' and o['basis']=='原报告单季财务':
   o['rawValue']={'revenue':1802804366.67,'parent_profit':271611308.12}[o['metric']];o['originalUnit']='元';o['formula']=str(o['rawValue'])+'/1000000';o['note']='原报告以元披露，转换为百万元；核对原表数值'
@@ -82,6 +81,9 @@ P['hworld']['opened']=q(region='中国',scope='全部',mode='全部',basis='中�
 P['hworld']['pipeline']=P['hworld']['opened']
 P['atour']['opened']=q(region='全部',scope='全部',mode='全部',basis='',frequency='季度')
 out=R/'data/companies';out.mkdir(parents=True,exist_ok=True)
+if (out/'profiles.json').exists():
+ existing=json.loads((out/'profiles.json').read_text(encoding='utf-8')).get('companies',{})
+ P={cid:{**profile,**existing.get(cid,{})} for cid,profile in P.items()}
 (out/'profiles.json').write_text(json.dumps(dict(schemaVersion=1,updatedAt='2026-10-10',companies=P),ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 parts=[];batch=[];size=0
 def flush():

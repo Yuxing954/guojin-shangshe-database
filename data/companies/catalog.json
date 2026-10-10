@@ -34,21 +34,6 @@
       "valuationDate": "2026-09-08"
     },
     {
-      "id": "juneyao",
-      "name": "君亭酒店",
-      "code": "301073.SZ",
-      "aliases": [],
-      "sector": "酒店",
-      "market": "A股",
-      "coverage": "一般跟踪",
-      "file": null,
-      "count": 0,
-      "firstPeriod": null,
-      "lastPeriod": null,
-      "status": "暂无专项经营底稿",
-      "valuationDate": "2026-09-08"
-    },
-    {
       "id": "atour",
       "name": "亚朵集团",
       "code": "ATAT.O",
@@ -315,6 +300,34 @@
       "unit": "百万元",
       "category": "财务",
       "aggregation": "flow"
+    },
+    {
+      "id": "monetary_funds",
+      "name": "货币资金",
+      "unit": "百万元",
+      "category": "财务",
+      "aggregation": "stock"
+    },
+    {
+      "id": "cash_equivalents",
+      "name": "现金及现金等价物",
+      "unit": "百万元",
+      "category": "财务",
+      "aggregation": "stock"
+    },
+    {
+      "id": "assets",
+      "name": "资产总额",
+      "unit": "百万元",
+      "category": "财务",
+      "aggregation": "stock"
+    },
+    {
+      "id": "liabilities",
+      "name": "负债总额",
+      "unit": "百万元",
+      "category": "财务",
+      "aggregation": "stock"
     }
   ],
   "sourcesFile": "data/companies/sources.json",
