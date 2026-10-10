@@ -28,7 +28,7 @@ class SummaryUpdateTests(unittest.TestCase):
         (root/'data/research').mkdir(parents=True)
         (root/'scripts').mkdir()
         datasets = [{'id': key, 'file': 'data/'+key+'.csv'} for key in
-                    ('views','all_views','minutes','hotel_industry_weekly','dutyfree_monthly','gold','crossborder','dining','valuation')]
+                    ('views','all_views','minutes','hotel_industry_weekly','dutyfree_monthly','gold','dining','valuation')]
         (root/'data-manifest.json').write_text(json.dumps({'datasets': datasets}), encoding='utf-8')
         for d in datasets: (root/d['file']).write_text('initial', encoding='utf-8')
         (root/'data/research/library.json').write_text('{}', encoding='utf-8')
