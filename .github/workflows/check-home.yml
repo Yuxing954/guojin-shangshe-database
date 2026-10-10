@@ -23,6 +23,11 @@ on:
       - "hotel-dashboard.html"
       - "dutyfree-dashboard.html"
       - "earnings.html"
+      - "scripts/earnings*"
+      - "scripts/update-earnings-calendar.cjs"
+      - "tests/earnings-calendar.browser.cjs"
+      - "data/earnings-calendar.json"
+      - "data-manifest.json"
       - "dashboard.html"
       - "database.html"
       - "scripts/site*"
@@ -117,6 +122,7 @@ jobs:
           node scripts/market-kline.test.js
           node scripts/earnings-calendar.test.cjs
           node scripts/earnings.test.cjs
+
       - name: Install browser test dependency
         run: |
           npm install --no-save --package-lock=false playwright@1.62.1

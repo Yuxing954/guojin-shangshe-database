@@ -1,0 +1,36 @@
+name: Check earnings calendar
+on:
+  pull_request:
+    paths:
+      - "earnings.html"
+      - "scripts/earnings*"
+      - "scripts/update-earnings-calendar.cjs"
+      - "scripts/site-shell.js"
+      - "data/earnings-calendar.json"
+      - "data-manifest.json"
+      - "tests/earnings-calendar.browser.cjs"
+      - ".github/workflows/check-earnings-calendar.yml"
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Check earnings logic
+        run: |
+          node --check scripts/earnings-calendar.js
+          node --check scripts/site-shell.js
+          node scripts/earnings-calendar.test.cjs
+          node scripts/earnings.test.cjs
+      - name: Install isolated browser test dependency
+        run: |
+          npm install --prefix /tmp/earnings-test playwright@1.58.2
+          /tmp/earnings-test/node_modules/.bin/playwright install --with-deps chromium
+      - name: Check desktop and mobile interactions
+        env:
+          NODE_PATH: /tmp/earnings-test/node_modules
+        run: node tests/earnings-calendar.browser.cjs
