@@ -217,9 +217,13 @@ def build(root=ROOT, cutoff=None):
     incoming.append(nbs)
     output = {}
     for sid in ('overseas', 'dining'):
-        baseline = next(s for s in overview['sectors'] if s['id'] == sid)
+        baseline = next((s for s in overview['sectors'] if s['id'] == sid), None)
         path = root / f'data/sectors/{sid}.json'
         previous = read(path) if path.exists() else None
+        # Retired boards remain archival inputs without restoring website entries.
+        baseline = baseline or previous
+        if baseline is None:
+            raise ValueError(f'Missing baseline or archive for {sid}')
         definitions = {m['id']: {k: v for k, v in m.items() if k != 'points'} for m in baseline['metrics']}
         definitions.update({m['id']: m for m in seed['metrics'] if m['sectorId'] == sid})
         source_map = {s['id']: s for s in overview['sources']}
@@ -291,7 +295,7 @@ def sync_overview(payload, snapshots):
         if sector['id'] not in snapshots:
             continue
         data = snapshots[sector['id']]
-        sector.update(metrics=data['metrics'], core=data['core'], defaultMetric=data['defaultMetric'], detailHref=sector['id'] + '.html', checkedAt=data['checkedAt'], note='')
+        sector.update(metrics=data['metrics'], core=data['core'], defaultMetric=data['defaultMetric'], detailHref='industry.html#' + sector['id'] if sector['id']=='dining' else sector['id'] + '.html', checkedAt=data['checkedAt'], note='')
         sector['sourceIds'] = sorted({p['sourceId'] for m in data['metrics'] for p in m['points']})
         sources.update({s['id']: s for s in data['sources']})
     payload['sources'] = list(sources.values())

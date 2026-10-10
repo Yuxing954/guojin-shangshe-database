@@ -62,13 +62,6 @@ def definitions():
         metric('gold_jewelry_volume', '黄金首饰消费量', '吨', '季度累计', '中国黄金协会；年初至期末累计', precision=3, scopeNote='累计消费量；不连接为单季度趋势'),
         metric('gold_retail', '珠宝零售额', '亿元', '月度', '限额以上单位金银珠宝类；名义金额', changeMetric='gold_retail_yoy'),
     ]
-    overseas = [
-        metric('crossborder_exports', '跨境电商出口', '亿元', '按披露', '中国跨境电商全行业出口', missing='全行业出口口径待补齐'),
-        metric('crossborder_fx', '美元兑人民币中间价', '人民币元/美元', '日度', '中国人民银行 / 中国外汇交易中心；中间价', precision=4, environment=True),
-        metric('crossborder_scfi', '上海出口集装箱运价', '点', '周度', 'SCFI综合指数；上海航运交易所', environment=True),
-        metric('crossborder_b2b_subset', 'B2B简化申报商品出口', '亿美元', '月度', '99章跨境电商B2B简化申报商品；仅为子集', scopeNote='不能代替跨境电商全行业出口', subset=True),
-        metric('crossborder_b2b_cumulative_yoy', 'B2B子集累计出口同比', '%', '月度累计', '99章B2B简化申报；年初至期末累计增速', isRate=True, subset=True),
-    ]
     dining = [
         metric('dining_revenue', '全国餐饮收入', '亿元', '月度', '全国餐饮收入；1—2月合并发布', precision=0, changeMetric='dining_revenue_yoy'),
         metric('dining_revenue_yoy', '餐饮收入同比', '%', '月度', '国家统计局公布的可比口径名义增速', precision=1, isRate=True),
@@ -76,11 +69,10 @@ def definitions():
         metric('dining_above_revenue', '限额以上餐饮收入', '亿元', '月度', '限额以上单位；1—2月合并发布', precision=0, changeMetric='dining_above_yoy'),
     ]
     configs = [
-        ('hotel', '酒店', '看入住率与房价，拆解每间客房的收入变化。', hotel, 'hotel_revpar', 'travel', '酒店', 'hotel-dashboard.html', ''),
-        ('dutyfree', '免税', '看购物金额、人次与每人次消费，识别增长来源。', dutyfree, 'dutyfree_sales', 'dutyfree', '免税', 'dutyfree-dashboard.html', '人次口径跟随海关披露；机场与市内免税单独查看。'),
+        ('hotel', '酒店', '看入住率与房价，拆解每间客房的收入变化。', hotel, 'hotel_revpar', 'travel', '酒店', 'industry.html#hotel', ''),
+        ('dutyfree', '免税', '看购物金额、人次与每人次消费，识别增长来源。', dutyfree, 'dutyfree_sales', 'dutyfree', '免税', 'industry.html#dutyfree', '人次口径跟随海关披露；机场与市内免税单独查看。'),
         ('gold', '黄金', '分开看金价、名义零售与首饰消费量。', gold, 'gold_retail_yoy', 'gold', '黄金珠宝', 'industry.html#gold', '消费量为年初累计；名义零售额增速不能直接当作销量增长。'),
-        ('overseas', '出海', '看行业出口，再看汇率和物流成本。', overseas, 'crossborder_fx', 'commerce', '跨境电商与出海', 'overseas.html', '全行业出口暂缺。汇率与运价用于观察经营环境，B2B简化申报数据仅为子集。'),
-        ('dining', '餐饮', '看收入与可比增速，再核对连锁公司的经营表现。', dining, 'dining_revenue_yoy', 'dining', '餐饮,茶饮', 'dining.html', '1—2月按合并期间记录。金额趋势默认只看单月，合并值单列查看。'),
+        ('dining', '餐饮', '看收入与可比增速，再核对连锁公司的经营表现。', dining, 'dining_revenue_yoy', 'dining', '餐饮,茶饮', 'industry.html#dining', '1—2月按合并期间记录。金额趋势默认只看单月，合并值单列查看。'),
     ]
     return [{'id': id, 'name': name, 'question': question, 'metrics': metrics, 'core': [m['id'] for m in metrics[:3]], 'defaultMetric': default, 'researchSector': research, 'companySector': company, 'detailHref': detail, 'note': note} for id, name, question, metrics, default, research, company, detail, note in configs]
 
@@ -99,6 +91,8 @@ def build(root=ROOT):
         value = number(record['value'])
         if value is None:
             return
+        if record['metricId'].startswith('crossborder_'):
+            return  # Retired sector may remain in immutable provider receipts.
         assert record['metricId'] in metrics, record['metricId']
         start, end, label = period_info(record['period'], record.get('basis', 'monthly'))
         item = {'startDate': start, 'endDate': end, 'periodLabel': label, **record, 'value': value}
@@ -115,7 +109,7 @@ def build(root=ROOT):
     source('legacy-hotel', files['hotel_industry_weekly'], '酒店之家 / 仓库周度样本')
     hotel = [r for r in rows('hotel_industry_weekly') if r['region'] == '全国' and r['segment'] == '全部']
     latest_hotel_date = max(r['end_date'] for r in hotel) if hotel else '暂无数据'
-    sectors[0]['note'] = f'全国周度样本截至{latest_hotel_date}；同周号同比，未作节假日错期调整。完整城市、集团与供给结构见酒店专题。'
+    sectors[0]['note'] = f'全国周度样本截至{latest_hotel_date}；同周号同比，未作节假日错期调整。完整城市、集团与供给结构见酒店。'
     for item in sectors[0]['metrics']:
         item['scopeNote'] = '同比按去年相同周号比较，未作节假日错期调整。'
     hotel_index = {(int(r['year']), int(r['week'])): r for r in hotel}
@@ -152,12 +146,6 @@ def build(root=ROOT):
         add({'metricId': id, 'period': period, 'value': row['数值'], 'sourceId': 'legacy-gold', 'basis': basis, 'quality': 'legacy'})
         if id == 'gold_retail':
             add({'metricId': 'gold_retail_yoy', 'period': period, 'value': row.get('同比(%)'), 'sourceId': 'legacy-gold', 'basis': basis, 'quality': 'legacy'})
-
-    source('legacy-crossborder', files['crossborder'], '仓库跨境经营环境历史整理')
-    cross_fields = {'美元兑人民币:中间价': 'crossborder_fx', '上海出口集装箱运价指数SCFI:综合': 'crossborder_scfi'}
-    for row in rows('crossborder'):
-        if row['指标名称'] in cross_fields:
-            add({'metricId': cross_fields[row['指标名称']], 'period': row['数据日期'][:10], 'value': row['数值'], 'sourceId': 'legacy-crossborder', 'basis': 'point', 'quality': 'legacy'})
 
     source('legacy-dining', files['dining'], '国家统计局 / Wind 历史整理')
     dining_fields = {'dining_revenue': '餐饮收入(亿元)', 'dining_revenue_yoy': '餐饮收入同比增速(%)', 'dining_above_revenue': '限额以上餐饮(亿元)', 'dining_above_yoy': '限额以上同比增速(%)'}
@@ -219,7 +207,7 @@ def build(root=ROOT):
         sector['sourceIds'] = sorted({p['sourceId'] for m in sector['metrics'] for p in m['points']})
     payload = {'version': 1, 'generatedAt': datetime.now(timezone(timedelta(hours=8))).isoformat(timespec='seconds'), 'checkedAt': max((json.loads(p.read_text(encoding='utf-8-sig')).get('checkedAt', '') for p in verified_files), default=''), 'sectors': sectors, 'sources': list(sources.values()), 'revisions': revisions}
     # Specialized sector snapshots retain reviewed histories across ordinary site builds.
-    sector_paths = {sid: root / f'data/sectors/{sid}.json' for sid in ('overseas', 'dining')}
+    sector_paths = {sid: root / f'data/sectors/{sid}.json' for sid in ('dining',)}
     if all(p.exists() for p in sector_paths.values()):
         from update_sector_data import sync_overview, validate
         snapshots = {sid: validate(json.loads(p.read_text(encoding='utf-8')), date.today().isoformat()) for sid, p in sector_paths.items()}

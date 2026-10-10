@@ -11,15 +11,17 @@ const root=path.resolve(__dirname,'..'),server=http.createServer((req,res)=>{
  try{
  const context=await browser.newContext({viewport:{width:1400,height:1100}});await context.route('**/*',r=>r.request().url().startsWith(base)?r.continue():r.abort());
  const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
- for(const url of ['industry.html#dutyfree','industry.html#hotel','industry.html#gold','industry.html#overseas','industry.html#dining','hotel-dashboard.html','dutyfree-dashboard.html','gold-jewelry.html','macro.html','consumption-macro.html','dining.html','overseas.html']){
+ for(const url of ['industry.html#dutyfree','industry.html#hotel','industry.html#gold','industry.html#dining','hotel-dashboard.html','dutyfree-dashboard.html','gold-jewelry.html','macro.html','consumption-macro.html','dining.html']){
    console.log('Checking chart '+url);await page.goto(base+'/'+url,{waitUntil:'domcontentloaded'});
-   const svg=page.locator('svg.site-interactive-chart:visible:not(.macro-spark)').first();await svg.waitFor({timeout:20000});await svg.scrollIntoViewIfNeeded();
+   const id=url.split('#')[1],scope=url.startsWith('industry.html#')&&['hotel','dutyfree','dining'].includes(id)?page.frameLocator('#panel-'+id):page;
+   if(scope!==page){await page.waitForFunction(id=>{const f=document.getElementById('panel-'+id),m=f?.contentDocument?.querySelector('body > main,body > .wrap');return m&&Math.abs(f.offsetHeight-m.getBoundingClientRect().height-8)<3;},id);await page.waitForTimeout(500);}
+   const svg=scope.locator('svg.site-interactive-chart:visible:not(.macro-spark)').first();await svg.waitFor({timeout:20000});await svg.scrollIntoViewIfNeeded();
    const box=await svg.boundingBox();await page.mouse.move(box.x+box.width*.4,box.y+box.height*.4);
-   const tooltip=page.locator('.site-chart-tooltip:not([hidden])');await tooltip.waitFor();assert.ok((await tooltip.innerText()).trim().length>4,url+' exact value tooltip');assert.doesNotMatch(await tooltip.innerText(),/来源：|发布：|计算值|已固定|÷/,url+' concise tooltip');
+   const tooltip=scope.locator('.site-chart-tooltip:not([hidden])');await tooltip.waitFor();assert.ok((await tooltip.innerText()).trim().length>4,url+' exact value tooltip');assert.doesNotMatch(await tooltip.innerText(),/来源：|发布：|计算值|已固定|÷/,url+' concise tooltip');
    await svg.click();assert.equal(await tooltip.getAttribute('data-pinned'),'true',url+' pin');
    const pinned=await tooltip.innerText();await page.mouse.move(2,2);assert.equal(await tooltip.innerText(),pinned,url+' retained outside plot');
-   await svg.press('End');await svg.press('Escape');assert.equal(await page.locator('.site-chart-tooltip:not([hidden])').count(),0,url+' dismiss');
-   await page.setViewportSize({width:390,height:900});await page.waitForTimeout(250);await svg.scrollIntoViewIfNeeded();await svg.click();
+   await svg.press('End');await svg.press('Escape');assert.equal(await scope.locator('.site-chart-tooltip:not([hidden])').count(),0,url+' dismiss');
+   await page.setViewportSize({width:390,height:900});await page.waitForTimeout(700);await svg.scrollIntoViewIfNeeded();await svg.click();await tooltip.waitFor();
    const bounds=await tooltip.boundingBox();assert.ok(bounds.x>=0&&bounds.x+bounds.width<=391,url+' mobile tooltip bounds');
    await svg.press('Escape');await page.setViewportSize({width:1400,height:1100});await page.waitForTimeout(250);
  }
@@ -29,9 +31,8 @@ const root=path.resolve(__dirname,'..'),server=http.createServer((req,res)=>{
  ['industry.html#dutyfree','#chart-mode','#chart'],
  ['consumption-macro.html?indicator=retail','#measure','#chart'],
  ['macro.html?country=US&indicator=us-housing-starts','#mode','#primary-chart'],
- ['dining.html','#sector-chart-mode','#chart'],
- ['overseas.html','#sector-chart-mode','#chart']]){
-  await page.goto(base+'/'+url);await page.waitForSelector(host+' svg.site-paired-chart');
+ ['dining.html','#sector-chart-mode','#chart']]){
+  await page.goto(base+'/'+url);if(url.startsWith('industry.html'))await page.locator('#gold-industry-history > summary').click();await page.waitForSelector(host+' svg.site-paired-chart');
   assert.equal(await page.locator(control).inputValue(),'combo',url+' default combo');
   assert.ok(await page.locator(host+' .site-value-bar').count()>0,url+' values');
   assert.ok(await page.locator(host+' .site-change-line').count()>0,url+' YoY');
@@ -42,7 +43,7 @@ const root=path.resolve(__dirname,'..'),server=http.createServer((req,res)=>{
  await page.goto(base+'/hotel-dashboard.html');await page.waitForSelector('#main-chart .site-paired-chart');assert.equal(await page.locator('#mode-switch [aria-pressed=true]').getAttribute('data-mode'),'combo');
  await page.locator('#metric-switch [data-metric=occupancy_rate]').click();assert.match(await page.locator('#main-chart .site-change-axis').first().textContent(),/百分点/);
  await page.goto(base+'/gold-jewelry.html');await page.locator('[data-view=demand]').click();await page.waitForSelector('#retail-chart .site-paired-chart');assert.ok(await page.locator('#volume-chart .site-paired-chart').count()>0);
- assert.deepEqual(errors,[]);console.log('PASS: 12 chart pages, whole-area hover, pinned click, leave, keyboard and narrow-screen bounds');
+ assert.deepEqual(errors,[]);console.log('PASS: 10 chart pages, whole-area hover, pinned click, leave, keyboard and narrow-screen bounds');
  const touch=await browser.newContext({viewport:{width:390,height:900},hasTouch:true,isMobile:true});await touch.route('**/*',r=>r.request().url().startsWith(base)?r.continue():r.abort());
  const phone=await touch.newPage();await phone.goto(base+'/dutyfree-dashboard.html');const chart=phone.locator('#hn-growth');await chart.waitFor();await phone.waitForSelector('#hn-growth.site-interactive-chart');await chart.tap();
  assert.equal(await phone.locator('.site-chart-tooltip:not([hidden])').getAttribute('data-pinned'),'true');console.log('PASS: touch tap shows and pins actual monthly value');

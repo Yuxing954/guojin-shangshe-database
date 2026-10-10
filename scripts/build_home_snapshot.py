@@ -105,10 +105,10 @@ def legacy_fields(root):
     industries = [
         {"id": "hotel", "name": "酒店", "metric": "全国 RevPAR", "value": numeric(h["revpar"]), "unit": "元",
          "change": h_change, "changeLabel": "同比", "period": h["period_id"], "asOf": h["end_date"], "freshnessDays": 14,
-         "source": h["source"], "sourceFile": paths["hotel_industry_weekly"], "href": "hotel-dashboard.html"},
+         "source": h["source"], "sourceFile": paths["hotel_industry_weekly"], "href": "industry.html#hotel"},
         {"id": "dutyfree", "name": "免税", "metric": "离岛免税销售额", "value": numeric(dutyfree["shopping_sales_cny_100m"]), "unit": "亿元", "precision": 2,
          "change": numeric(dutyfree["sales_yoy_pct"]), "period": dutyfree["period_id"], "asOf": month_end(dutyfree["period_id"]), "freshnessDays": 50,
-         "source": dutyfree["source"], "sourceFile": paths["dutyfree_monthly"], "href": "dutyfree-dashboard.html"},
+         "source": dutyfree["source"], "sourceFile": paths["dutyfree_monthly"], "href": "industry.html#dutyfree"},
         {"id": "gold", "name": "黄金", "metric": "上海 Au9999 现货收盘价", "value": numeric(g["数值"]), "unit": g["单位"],
          "change": rate(g["数值"], g_previous.get("数值")), "changeLabel": "较前一记录日", "period": "日度", "asOf": g["数据日期"][:10], "freshnessDays": 7,
          "source": g["数据来源"], "sourceFile": paths["gold"], "href": "industry.html#gold"},
@@ -118,8 +118,8 @@ def legacy_fields(root):
     ]
     d_change = numeric(dutyfree["sales_yoy_pct"])
     focus = [
-        {"sector": "酒店经营", "title": "酒店量价", "summary": f"全国 RevPAR 为 {numeric(h['revpar']):.1f} 元，同周号同比 {signed(h_change)}（未作节假日错期调整）。", "asOf": h["end_date"], "href": "hotel-dashboard.html"},
-        {"sector": "免税消费", "title": "免税销售与客流", "summary": f"离岛免税销售额 {numeric(dutyfree['shopping_sales_cny_100m']):.2f} 亿元，同比 {signed(d_change)}；购物人次同比 {signed(numeric(dutyfree['shoppers_yoy_pct']))}。", "asOf": month_end(dutyfree["period_id"]), "href": "dutyfree-dashboard.html"},
+        {"sector": "酒店经营", "title": "酒店量价", "summary": f"全国 RevPAR 为 {numeric(h['revpar']):.1f} 元，同周号同比 {signed(h_change)}（未作节假日错期调整）。", "asOf": h["end_date"], "href": "industry.html#hotel"},
+        {"sector": "免税消费", "title": "免税销售与客流", "summary": f"离岛免税销售额 {numeric(dutyfree['shopping_sales_cny_100m']):.2f} 亿元，同比 {signed(d_change)}；购物人次同比 {signed(numeric(dutyfree['shoppers_yoy_pct']))}。", "asOf": month_end(dutyfree["period_id"]), "href": "industry.html#dutyfree"},
         {"sector": "餐饮需求", "title": "餐饮收入增速", "summary": f"全国餐饮收入同比 {signed(numeric(dining['餐饮收入同比增速(%)']))}，限额以上餐饮同比 {signed(numeric(dining['限额以上同比增速(%)']))}。", "asOf": month_end(dining["月份"]), "href": "industry.html#dining"},
     ]
     return industries, focus
@@ -137,13 +137,13 @@ def build(root=ROOT, now=None, industry_only=False):
         overview = json.loads(overview_path.read_text(encoding="utf-8"))
         provenance = {s["id"]: s for s in overview["sources"]}
         selected = {m["id"]: m for s in overview["sectors"] for m in s["metrics"]}
-        home_metrics = {"hotel": "hotel_revpar", "dutyfree": "dutyfree_sales", "gold": "gold_price", "overseas": "crossborder_exports", "dining": "dining_revenue"}
+        home_metrics = {"hotel": "hotel_revpar", "dutyfree": "dutyfree_sales", "gold": "gold_price", "dining": "dining_revenue"}
         industries = []
         for sector in overview["sectors"]:
             metric = selected[home_metrics[sector["id"]]]
             point = metric["points"][-1] if metric["points"] else {}
             source = provenance.get(point.get("sourceId"), {})
-            industries.append({"id": sector["id"], "name": sector["name"], "metric": metric["label"], "value": point.get("value"), "unit": metric["unit"], "precision": metric["precision"], "change": point.get("change"), "changeLabel": point.get("changeLabel", "同比"), "period": point.get("periodLabel", "全行业口径待补齐"), "asOf": point.get("endDate", ""), "freshnessDays": 14 if metric["frequency"] == "周度" else 50 if metric["frequency"] == "月度" else 400 if metric["frequency"] == "年度" else 10, "source": source.get("name", "暂无可用来源"), "sourceFile": source.get("url") or source.get("file", "industry.html#" + sector["id"]), "href": sector.get("detailHref") if sector["id"] in ("overseas", "dining") else "industry.html#" + sector["id"]})
+            industries.append({"id": sector["id"], "name": sector["name"], "metric": metric["label"], "value": point.get("value"), "unit": metric["unit"], "precision": metric["precision"], "change": point.get("change"), "changeLabel": point.get("changeLabel", "同比"), "period": point.get("periodLabel", "全行业口径待补齐"), "asOf": point.get("endDate", ""), "freshnessDays": 14 if metric["frequency"] == "周度" else 50 if metric["frequency"] == "月度" else 400 if metric["frequency"] == "年度" else 10, "source": source.get("name", "暂无可用来源"), "sourceFile": source.get("url") or source.get("file", "industry.html#" + sector["id"]), "href": "industry.html#" + sector["id"]})
         h_now, d_now, food_now = (next(item for item in industries if item["id"] == id) for id in ("hotel", "dutyfree", "dining"))
         shoppers_now = selected["dutyfree_shoppers"]["points"][-1]
         food_above = selected["dining_above_yoy"]["points"][-1]
