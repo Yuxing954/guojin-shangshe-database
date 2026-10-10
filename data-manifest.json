@@ -266,8 +266,8 @@
       "name": "财报日历与披露历史",
       "file": "data/earnings-calendar.json",
       "category": "财报日历",
-      "source": "上交所 / 披露易 / 东方财富历史快照",
-      "updateScript": "scripts/update-earnings-calendar.cjs"
+      "source": "Choice MCP · 东方财富（公告原文单独核验）",
+      "updateScript": "scripts/import-earnings-choice.cjs"
     }
   ]
 }
