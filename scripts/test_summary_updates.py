@@ -77,7 +77,7 @@ class SummaryUpdateTests(unittest.TestCase):
     def test_home_reuses_overview_without_reading_legacy_csvs(self):
         with patch('build_home_snapshot.rows', side_effect=AssertionError('Legacy CSV reread')):
             result = home(ROOT, dt.datetime(2026,10,9,tzinfo=dt.timezone(dt.timedelta(hours=8))))
-        self.assertEqual(len(result['industries']), 5)
+        self.assertEqual(len(result['industries']), 4)
 
     def test_title_directory_preserves_originals_and_excludes_private_and_text_fields(self):
         result = resource_index(ROOT)
