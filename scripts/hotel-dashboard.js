@@ -114,7 +114,7 @@
       y: !isChange ? display(row(state.region, '全部', r.period_id), field) : M.change(row(state.region, '全部', r.period_id), row(state.region, '全部', M.priorPeriod(r)), field) }; });
     if(['combo','value','change'].includes(state.mode)){
       const result=SiteCharts.drawPaired($('main-chart'),rows.map(r=>({period:r.period_id,x:Date.parse(r.start_date),value:display(row(state.region,'全部',r.period_id),field),change:M.change(row(state.region,'全部',r.period_id),row(state.region,'全部',M.priorPeriod(r)),field)})),{mode:state.mode,unit:meta.unit,changeUnit:field==='occupancy_rate'?'百分点':'%',changeLabel:labelChange(),name:meta.label,gap:15*86400000});
-      $('trend-caption').textContent=meta.label+' · '+meta.unit+' / '+(field==='occupancy_rate'?'百分点':'%');$('chart-mode-note').textContent=labelChange();$('history-note').textContent=rows.length?rows[0].period_id+' — '+rows.at(-1).period_id:'';return;
+      $('trend-caption').textContent=meta.label+' · '+(state.mode==='combo'?meta.unit+' / '+(field==='occupancy_rate'?'百分点':'%'):state.mode==='change'?(field==='occupancy_rate'?'百分点':'%'):meta.unit);$('chart-mode-note').textContent=labelChange();$('history-note').textContent=rows.length?rows[0].period_id+' — '+rows.at(-1).period_id:'';return;
     }
     var lines = [{ name: state.region + (!isChange ? ' · 本期绝对值' : ' · 同周同比'), color: COLORS[0], pts: current }];
     if (!isChange) lines.push({ name: '去年同周号', color: '#aab0c9', dash: true, pts: rows.map(function (r) {
