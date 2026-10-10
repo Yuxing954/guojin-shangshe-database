@@ -208,7 +208,7 @@
   $('views').onclick=e=>{const b=e.target.closest('[data-view]');if(b&&b.dataset.view!==view){view=b.dataset.view;render();preferences();}};
   $('heatmap').onkeydown=e=>{if(!e.target.matches('[data-code]')||!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home','End'].includes(e.key))return;e.preventDefault();if(selected?.code!==e.target.dataset.code)selectCompany(e.target.dataset.code);const columns=M.heatLayout(filtered.length,$('heatmap').clientWidth).columns,i=filtered.findIndex(c=>c.code===selected.code),delta={ArrowLeft:-1,ArrowRight:1,ArrowUp:-columns,ArrowDown:columns,Home:-i,End:filtered.length-1-i}[e.key];moveCompany(delta,true);};
   $('heat-previous').onclick=()=>{heatPage--;renderHeat();syncSelection();};$('heat-next').onclick=()=>{heatPage++;renderHeat();syncSelection();};
-  $('search').oninput=()=>{clearTimeout(searchTimer);searchTimer=setTimeout(applyFilters,120);};for(const id of ['market','sector','sort'])$(id).onchange=applyFilters;
+  $('search').oninput=()=>{clearTimeout(searchTimer);if(!$('search').value.trim())applyFilters();else searchTimer=setTimeout(applyFilters,120);};for(const id of ['market','sector','sort'])$(id).onchange=applyFilters;
   $('live-sort').onchange=()=>{text($('order-hint'),$('live-sort').checked?'随报价按当前排序重排':'报价实时更新 · 位置固定');if($('live-sort').checked)updateQuotes();preferences();};
   $('reset').onclick=()=>{onlyWatch=false;for(const id of ['search','market','sector'])$(id).value='';$('sort').value='change-desc';applyFilters();};
   $('columns').onchange=()=>{render();preferences();};$('refresh').onclick=async()=>{manualReading=true;try{return await poller.check();}finally{manualReading=false;connection();}};$('detail-watch').onclick=()=>toggleWatch(selected.code);
