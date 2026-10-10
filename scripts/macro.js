@@ -76,7 +76,7 @@
   function spark(spec,data){
     const points=D.headlineRows(spec,data).slice(-12),finite=points.filter(r=>M.finite(r.chartValue));if(!finite.length)return '';
     const lo=Math.min(...finite.map(r=>r.chartValue)),hi=Math.max(...finite.map(r=>r.chartValue)),first=M.dateOf(points[0].period),last=M.dateOf(points.at(-1).period);
-    return '<svg class="macro-spark" viewBox="0 0 90 32" aria-hidden="true">'+D.segments(spec,points).map(part=>'<polyline points="'+part.map(r=>(3+(M.dateOf(r.period)-first)/(last-first||1)*84).toFixed(2)+','+(29-(r.chartValue-lo)/(hi-lo||1)*26).toFixed(2)).join(' ')+'"/>').join('')+'</svg>';
+    return '<svg class="macro-spark" viewBox="0 0 90 32" aria-hidden="true">'+D.segments(spec,points).map(part=>'<polyline points="'+part.map(r=>(3+(M.dateOf(r.period)-first)/(last-first||1)*84).toFixed(2)+','+(29-(r.chartValue-lo)/(hi-lo||1)*26).toFixed(2)).join(' ')+'"/>').join('')+finite.map(r=>'<circle cx="'+(3+(M.dateOf(r.period)-first)/(last-first||1)*84)+'" cy="'+(29-(r.chartValue-lo)/(hi-lo||1)*26)+'" r="2"><title>'+esc(spec.name+'\n'+r.period+'：'+number(r.chartValue)+' '+M.headline(spec,data).unit)+'</title></circle>').join('')+'</svg>';
   }
   function renderOverview(){
     const all=D.core(catalog,state.country,snapshot),available=all.filter(s=>M.rows(snapshot.series[s.id]).length);

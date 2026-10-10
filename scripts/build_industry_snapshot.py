@@ -7,6 +7,7 @@ import math
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from summary_io import write_json_if_changed
+from dutyfree_yoy import fill_yoy
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -187,6 +188,21 @@ def build(root=ROOT):
         if same_release and shoppers['value'] > 0:
             add({'metricId': 'dutyfree_spend', 'period': period, 'value': sales['value'] / shoppers['value'] * 10000, 'sourceId': sales['sourceId'], 'inputs': [sales['sourceId'], shoppers['sourceId']], 'basis': 'monthly', 'quality': 'derived'})
 
+    # Attach compatible published changes first. Calculate only the remaining gaps.
+    for item in definitions()[1]['metrics']:
+        if not item.get('changeMetric'):
+            continue
+        for (metric_id, period), point in list(selected.items()):
+            if metric_id != item['id']:
+                continue
+            change = selected.get((item['changeMetric'], period))
+            if not change:
+                continue
+            ps, cs = sources[point['sourceId']], sources[change['sourceId']]
+            if point['sourceId'] == change['sourceId'] or (ps['quality'] == cs['quality'] == 'provider' and ps.get('query') == cs.get('query') and ps.get('retrievedAt') == cs.get('retrievedAt')):
+                point.update(change=change['value'], changeLabel='同比', changeSourceId=change['sourceId'])
+    fill_yoy(selected)
+
     for sector in sectors:
         for item in sector['metrics']:
             item.pop('field', None)
@@ -196,7 +212,7 @@ def build(root=ROOT):
                 psource = sources[point['sourceId']]
                 csource = sources[change['sourceId']] if change else None
                 compatible = change and (point['sourceId'] == change['sourceId'] or (psource['quality'] == csource['quality'] == 'provider' and psource.get('query') == csource.get('query') and psource.get('retrievedAt') == csource.get('retrievedAt')))
-                if compatible:
+                if compatible and point.get('changeMethod') != 'calculated':
                     point['change'], point['changeLabel'] = change['value'], '同比'
                     point['changeSourceId'] = change['sourceId']
             item['points'] = points
@@ -219,6 +235,12 @@ def main():
     path = args.root / 'data/industry/overview.json'
     path.parent.mkdir(parents=True, exist_ok=True)
     write_json_if_changed(path, payload, volatile={'generatedAt'})
+    calculations = [p['changeCalculation'] for sector in payload['sectors'] if sector['id'] == 'dutyfree'
+                    for metric in sector['metrics'] for p in metric['points'] if p.get('changeMethod') == 'calculated']
+    write_json_if_changed(args.root / 'data/dutyfree/monthly-calculations.json',
+                          {'formula': '(current / prior - 1) * 100', 'records': calculations,
+                           'launchSource': 'https://www.gov.cn/xinwen/2019-04/20/content_5384792.htm'})
+
     print('Industry snapshot:', len(payload['sectors']), 'sectors;', sum(len(m['points']) for s in payload['sectors'] for m in s['metrics']), 'observations;', len(payload['revisions']), 'retained source differences')
 
 

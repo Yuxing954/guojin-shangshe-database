@@ -31,7 +31,7 @@ def inputs(root):
                  for p in sorted((root / 'data/industry').glob(pattern))]
     return {
         'research': research + batches + ['data/research/updates/manifest.json', 'scripts/research_sources.py'],
-        'industry': industry + ['data/dutyfree/monthly-provenance.json'],
+        'industry': industry + ['data/dutyfree/monthly-provenance.json', 'scripts/dutyfree_yoy.py'],
         'home': ['data/research/recent.json', 'data/industry/overview.json'] + ([] if (root / 'data/industry/overview.json').exists() else industry),
         'resources': ['data/research/recent.json', 'data/research/library.json', 'data/industry/overview.json', 'data/coverage-companies.json'],
     }

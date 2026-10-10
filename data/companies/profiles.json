@@ -1,0 +1,357 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-10-10",
+  "companies": {
+    "jinjiang": {
+      "id": "jinjiang",
+      "intro": "境内与海外酒店业务并行，覆盖有限服务型、全服务型酒店；直营、自有租赁与加盟管理分开跟踪。",
+      "tags": [
+        "境内 / 海外",
+        "有限服务 / 全服务",
+        "加盟管理"
+      ],
+      "operating": {
+        "region": "中国大陆境内",
+        "scope": "有限服务型酒店",
+        "mode": "全部",
+        "basis": "有限服务型酒店",
+        "frequency": "季度"
+      },
+      "scale": {
+        "region": "全球",
+        "scope": "全部",
+        "mode": "全部",
+        "basis": "酒店业务口径（含全服务型+有限服务型）",
+        "frequency": "季度"
+      },
+      "financial": {
+        "region": "集团整体",
+        "scope": "全部",
+        "mode": "全部",
+        "basis": "模型累计财务"
+      },
+      "profitMetric": "parent_profit",
+      "structures": [
+        {
+          "title": "有限服务型经营模式 · 酒店数",
+          "metric": "hotels",
+          "rows": [
+            {
+              "label": "自有和租赁",
+              "mode": "直营店/自有和租赁",
+              "basis": "酒店业务含全服务型"
+            },
+            {
+              "label": "加盟和管理",
+              "mode": "加盟店/加盟和管理",
+              "basis": "酒店业务含全服务型"
+            }
+          ],
+          "denominator": {
+            "mode": "有限服务型酒店",
+            "basis": "酒店业务含全服务型"
+          }
+        },
+        {
+          "title": "酒店类型 · 酒店数",
+          "metric": "hotels",
+          "rows": [
+            {
+              "label": "有限服务型",
+              "mode": "有限服务型酒店",
+              "basis": "酒店业务含全服务型"
+            },
+            {
+              "label": "全服务型",
+              "mode": "全服务型酒店",
+              "basis": "酒店业务含全服务型"
+            }
+          ]
+        }
+      ],
+      "watch": [
+        "境内有限服务型量价与同店表现",
+        "海外业务收入、亏损与直营改造",
+        "新开、退出、转筹建与净增的区别",
+        "所得税、财务费用对利润变动的影响"
+      ],
+      "gaps": [
+        "现金流、债务和所得税桥尚未形成连续结构化序列",
+        "境内外ADR与RevPAR币种不同，不合并作图"
+      ],
+      "evidence": [
+        "report-ba1fb1cb8b35"
+      ]
+    },
+    "btg": {
+      "id": "btg",
+      "intro": "如家系与首旅品牌覆盖经济型至高端酒店，另有海南南山景区；酒店直营收入与加盟管理费采用不同确认方式。",
+      "tags": [
+        "经济型 / 中高端",
+        "轻管理",
+        "酒店 + 景区"
+      ],
+      "operating": {
+        "region": "中国",
+        "scope": "全部",
+        "mode": "全部",
+        "basis": "报告运营酒店 / 不含未并表合资和管理输出",
+        "frequency": "季度"
+      },
+      "scale": {
+        "region": "集团整体",
+        "scope": "全部",
+        "mode": "全部",
+        "basis": "报告全网络 / 含未并表合资和管理输出",
+        "frequency": "季度"
+      },
+      "financial": {
+        "region": "集团整体",
+        "scope": "全部",
+        "mode": "全部",
+        "basis": "模型累计财务"
+      },
+      "profitMetric": "parent_profit",
+      "structures": [
+        {
+          "title": "经营模式 · 酒店数",
+          "metric": "hotels",
+          "rows": [
+            {
+              "label": "直营",
+              "mode": "直营"
+            },
+            {
+              "label": "特许及管理输出",
+              "mode": "加盟"
+            }
+          ]
+        },
+        {
+          "title": "产品结构 · 酒店数",
+          "metric": "hotels",
+          "rows": [
+            {
+              "label": "经济型",
+              "scope": "经济型"
+            },
+            {
+              "label": "中高端",
+              "scope": "中高端"
+            },
+            {
+              "label": "轻管理",
+              "scope": "轻管理"
+            },
+            {
+              "label": "其他",
+              "scope": "其他"
+            }
+          ]
+        }
+      ],
+      "watch": [
+        "含轻管理与不含轻管理的RevPAR",
+        "成熟店表现与新店扩张",
+        "标准管理酒店和轻管理开店占比",
+        "酒店业务与景区收入、利润贡献"
+      ],
+      "gaps": [
+        "Q2规模为全网络口径；旧模型“中国”口径不直接拼接同比",
+        "合资和管理输出门店纳入规模，但不纳入本期运营RevPAR"
+      ],
+      "evidence": [
+        "report-4000f1473275"
+      ],
+      "pipeline": {
+        "region": "集团整体",
+        "scope": "全部",
+        "mode": "全部",
+        "basis": "已签约未开业和正在签约",
+        "frequency": "季度"
+      }
+    },
+    "hworld": {
+      "id": "hworld",
+      "intro": "集团分为华住中国HWC与海外HWI；通过直营、自有租赁及加盟管理扩张。酒店交易额与集团确认收入分别跟踪。",
+      "tags": [
+        "HWC / HWI",
+        "加盟管理",
+        "收入 ≠ 酒店交易额"
+      ],
+      "operating": {
+        "region": "中国",
+        "scope": "全部",
+        "mode": "全部",
+        "basis": "HWC / Legacy-Huazhu",
+        "frequency": "季度"
+      },
+      "scale": {
+        "region": "集团整体",
+        "scope": "全部",
+        "mode": "全部",
+        "basis": "集团整体",
+        "frequency": "季度"
+      },
+      "financial": {
+        "region": "集团整体",
+        "scope": "全部",
+        "mode": "全部",
+        "basis": "集团整体"
+      },
+      "profitMetric": "parent_profit",
+      "structures": [
+        {
+          "title": "区域结构 · 酒店数",
+          "metric": "hotels",
+          "rows": [
+            {
+              "label": "HWC中国",
+              "region": "中国",
+              "basis": "中国酒店"
+            },
+            {
+              "label": "HWI海外",
+              "region": "海外",
+              "basis": "HWI酒店"
+            }
+          ]
+        },
+        {
+          "title": "HWC经营模式 · 酒店数",
+          "metric": "hotels",
+          "denominator": {
+            "region": "中国",
+            "basis": "中国酒店"
+          },
+          "rows": [
+            {
+              "label": "直营及自有",
+              "region": "中国",
+              "basis": "中国酒店",
+              "mode": "直营"
+            },
+            {
+              "label": "加盟及管理",
+              "region": "中国",
+              "basis": "中国酒店",
+              "mode": "加盟"
+            }
+          ]
+        }
+      ],
+      "watch": [
+        "华住中国ADR、入住率与成熟同店RevPAR",
+        "加盟管理收入增长及占比",
+        "HWI海外表现、汇率与恒定美元口径",
+        "开店、关店与待开业储备"
+      ],
+      "gaps": [
+        "2022Q4前后集团Blended与HWC口径切换",
+        "全年经营均值与季度HWC定义不同；同店组不跨年强行拼接"
+      ],
+      "evidence": [
+        "report-08569c038487"
+      ],
+      "opened": {
+        "region": "中国",
+        "scope": "全部",
+        "mode": "全部",
+        "basis": "中国酒店",
+        "frequency": "季度"
+      },
+      "pipeline": {
+        "region": "中国",
+        "scope": "全部",
+        "mode": "全部",
+        "basis": "中国酒店",
+        "frequency": "季度"
+      }
+    },
+    "atour": {
+      "id": "atour",
+      "intro": "酒店业务以加盟及管理为主，同时经营亚朵星球零售。品牌、成熟同店、储备店与零售收入单独跟踪。",
+      "tags": [
+        "酒店 + 零售",
+        "加盟及管理",
+        "品牌与同店"
+      ],
+      "operating": {
+        "region": "全部",
+        "scope": "全部",
+        "mode": "全部",
+        "basis": "全酒店 / 含税 / 剔除临时关闭客房",
+        "frequency": "季度"
+      },
+      "scale": {
+        "region": "全部",
+        "scope": "全部",
+        "mode": "全部",
+        "basis": "集团整体",
+        "frequency": "季度"
+      },
+      "financial": {
+        "region": "全部",
+        "scope": "全部",
+        "mode": "全部",
+        "basis": "集团整体"
+      },
+      "profitMetric": "net_profit",
+      "structures": [
+        {
+          "title": "经营模式 · 酒店数",
+          "metric": "hotels",
+          "rows": [
+            {
+              "label": "加盟",
+              "mode": "加盟"
+            },
+            {
+              "label": "直营",
+              "mode": "直营"
+            }
+          ]
+        }
+      ],
+      "watch": [
+        "成熟同店与全酒店RevPAR差异",
+        "加盟酒店、待开业项目及品牌结构",
+        "酒店收入与零售收入的增长贡献",
+        "零售GMV、收入、费用及现金流分别跟踪"
+      ],
+      "gaps": [
+        "全酒店ADR×OCC与RevPAR有勾稽差异，保留源值",
+        "2020—2022零售及其他与2023起单列零售不可直接比较"
+      ],
+      "evidence": [],
+      "opened": {
+        "region": "全部",
+        "scope": "全部",
+        "mode": "全部",
+        "basis": "",
+        "frequency": "季度"
+      }
+    },
+    "juneyao": {
+      "id": "juneyao",
+      "intro": "已建立上市主体档案，专项经营及财务数据待补。",
+      "tags": [
+        "待补资料"
+      ],
+      "operating": {},
+      "scale": {},
+      "financial": {},
+      "profitMetric": "parent_profit",
+      "structures": [],
+      "watch": [
+        "补充年报、半年报和经营底稿",
+        "补充品牌、直营加盟、门店与客房结构"
+      ],
+      "gaps": [
+        "暂无专项经营底稿",
+        "暂无可核验业务画像"
+      ],
+      "evidence": []
+    }
+  }
+}

@@ -42,7 +42,13 @@ class IndustrySnapshotTests(unittest.TestCase):
         self.assertEqual(value['quality'], 'derived')
         self.assertEqual(len(value['inputs']), 2)
         # The old sales growth is not attached to a different provider's amount.
-        self.assertNotIn('change', self.metrics['dutyfree_sales']['points'][-1])
+        latest_sales = self.metrics['dutyfree_sales']['points'][-1]
+        self.assertEqual(latest_sales['changeMethod'], 'calculated')
+        prior = next(p for p in self.metrics['dutyfree_sales']['points'] if p['period'] == '2025-08')
+        self.assertAlmostEqual(latest_sales['change'], (latest_sales['value'] / prior['value'] - 1) * 100)
+        self.assertEqual(latest_sales['changeCalculation']['currentSourceId'], latest_sales['sourceId'])
+        self.assertEqual(latest_sales['changeCalculation']['priorSourceId'], prior['sourceId'])
+        self.assertNotIn('changeSourceId', latest_sales)
 
     def test_monthly_and_cumulative_rates_are_not_interchanged(self):
         self.assertEqual(self.metrics['dining_revenue_yoy']['points'][-1]['value'], 1.1)

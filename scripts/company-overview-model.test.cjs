@@ -1,0 +1,20 @@
+const assert=require('node:assert/strict'),A=require('./company-overview-model.js');
+const r={id:'a',companyId:'x',metric:'revenue',value:110,period:'2026H1',frequency:'半年',scope:'全部',mode:'全部',region:'集团整体',basis:'财报',unit:'百万元',currency:'CNY',periodBasis:'半年',status:'transcribed'};
+const prior={...r,id:'b',period:'2025H1',value:100};
+assert.equal(A.yoy([r,prior],r).value,10);
+assert.equal(A.yoy([r,{...prior,periodBasis:'单季'}],r),null,'YTD/single quarter must not mix');
+assert.equal(A.yoy([r,{...prior,currency:'EUR'}],r),null,'currencies must not mix');
+assert.equal(A.yoy([r,{...prior,sourceConflict:true}],r),null,'conflicted prior values do not generate automatic YoY');
+assert.equal(A.yoy([r,{...prior,value:-100}],r).unit,'百万元','loss base gives change amount');
+assert.equal(A.yoy([], {...r,reportedYoY:-2.2}).kind,'报告披露');
+assert.equal(A.yoy([{...r,metric:'occ',value:63.4},{...prior,metric:'occ',value:63.9}],{...r,metric:'occ',value:63.4}).unit,'百分点');
+assert.equal(A.ratio(r,{...r,value:0}),null);assert.equal(A.ratio(r,{...r,period:'2025H1'}),null);
+assert.equal(A.latest([{...r,status:'forecast'}],{},'revenue'),null);
+const merged=A.merge([r],[{...r,id:'verified',value:111}]);assert.equal(merged.length,1);assert.equal(merged[0].originalSource.value,110);assert.equal(merged[0].sourceConflict,true);
+const data=[{...r,metric:'hotels',unit:'家',value:100},{...r,metric:'hotels',unit:'家',value:40,scope:'a'},{...r,metric:'hotels',unit:'家',value:50,scope:'b'}];
+const s=A.structure(data,{scale:{scope:'全部'}},{metric:'hotels',rows:[{label:'a',scope:'a'},{label:'b',scope:'b'}]});assert.equal(s.residual,10);assert.equal(s.rows[0].share,40);
+const fs=require('node:fs'),path=require('node:path'),root=path.join(__dirname,'..'),read=p=>JSON.parse(fs.readFileSync(path.join(root,p),'utf8'));
+const cat=read('data/companies/catalog.json'),profiles=read('data/companies/profiles.json').companies,sup=read('data/companies/supplements.json'),extra=sup.parts.flatMap(p=>read(p).observations);let count=0;
+for(const c of cat.companies){const index=c.file?read(c.file):{parts:[]},base=index.parts.flatMap(p=>read(p).observations),rows=A.merge(base,extra.filter(o=>o.companyId===c.id));count+=rows.length;const snap=A.snapshot(rows,profiles[c.id]);if(c.id!=='juneyao'){assert.equal(snap.revpar.period,'2026Q2');assert.equal(snap.hotels.period,'2026Q2');for(const group of profiles[c.id].structures)assert.equal(A.structure(rows,profiles[c.id],group).residual,0,'configured structure must reconcile');}else assert.equal(snap.revpar,null);}
+assert.equal(count,4833);assert.equal(extra.length,102);assert.equal(A.ratio(r,{...r,periodBasis:'单季'}),null);
+console.log('Overview dataset, same-period, source precedence, forecasts, ratio and loss-base checks passed.');
