@@ -11,10 +11,10 @@
   const state={country:params.get('country')==='US'?'US':'CN',group:params.get('group')||'',q:params.get('q')||'',
     id:params.get('indicator')||'',mode:['yoy','mom'].includes(params.get('mode'))?params.get('mode'):'value',
     years:[0,1,3,5,10].includes(+params.get('years'))&&params.has('years')?+params.get('years'):5,
-    view:params.get('view')==='predictions'?'predictions':'indicators',frequency:['monthly','quarterly','daily'].includes(params.get('frequency'))?params.get('frequency'):'',health:['attention','pending'].includes(params.get('health'))?params.get('health'):'',comparison:params.get('comparison')||''};
-  function save(){const p=new URLSearchParams();for(const key of ['country','group','q','id','mode','years','view','frequency','health','comparison'])if(state[key]!==''&&state[key]!==null)p.set(key==='id'?'indicator':key,state[key]);history.replaceState(null,'',location.pathname+'?'+p);}
+    view:['predictions','fedwatch'].includes(params.get('view'))?params.get('view'):'indicators',frequency:['monthly','quarterly','daily'].includes(params.get('frequency'))?params.get('frequency'):'',health:['attention','pending'].includes(params.get('health'))?params.get('health'):'',comparison:params.get('comparison')||''};
+  function save(){const p=new URLSearchParams();for(const key of ['predictionTopic','predictionQuery','predictionSort','meeting']){const value=new URLSearchParams(location.search).get(key);if(value)p.set(key,value);}for(const key of ['country','group','q','id','mode','years','view','frequency','health','comparison'])if(state[key]!==''&&state[key]!==null)p.set(key==='id'?'indicator':key,state[key]);history.replaceState(null,'',location.pathname+'?'+p);}
   function download(text,filename){const url=URL.createObjectURL(new Blob([text],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
-  function showView(){document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===state.view)));$('countries').hidden=state.view!=='indicators';$('indicators').hidden=state.view!=='indicators'||!catalog;$('predictions').hidden=state.view!=='predictions';save();if(state.view==='predictions'){renderPredictions();loadPredictions();}}
+  function showView(){document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===state.view)));$('countries').hidden=state.view!=='indicators';$('indicators').hidden=state.view!=='indicators'||!catalog;$('predictions').hidden=state.view!=='predictions';$('fedwatch').hidden=state.view!=='fedwatch';if(state.view!=='indicators'){$('load-state').textContent='';$('skeleton').hidden=true;$('data-warning').hidden=true;}save();if(state.view==='fedwatch')ForecastDesk.loadFedwatch();if(state.view==='predictions'){renderPredictions();loadPredictions();}if(state.view==='indicators'&&!catalog)load();}
   function graph(spec,data,mode=state.mode){
     chartPoints=[];const points=M.chartRows(spec,data,mode,state.years,new Date(snapshot.cutoff+'T23:59:59Z'));
     const values=points.filter(r=>M.finite(r.chartValue));
@@ -108,17 +108,8 @@
     renderDetail();save();
   }
   function renderPredictions(){
-    if(!predictions){$('prediction-status').textContent=predictionError?'预测快照读取失败；点击“重试读取”。':'正在读取预测快照…';return;}
-    const stale=(Date.now()-new Date(predictions.fetchedAt))/3600000>24;
-    $('prediction-status').textContent=(predictions.status==='error'?'更新失败 · ':stale?'快照超过24小时 · ':'')+'更新：'+stamp(predictions.fetchedAt)+' · '+predictions.markets.length+' 个合约';
-    $('prediction-selection').textContent=predictions.selectionNote||'';
-    const q=$('prediction-search').value.trim().toLowerCase(),category=$('prediction-category').value;
-    const groups=PredictionModel.groups(predictions.markets,{query:q,category}),list=groups.flatMap(g=>g.markets),visible=predictionExpanded?groups:groups.slice(0,6);
-    $('prediction-status').textContent+=(groups.length?' · '+groups.length+' 个事件':' · 暂无未到期事件');
-    $('prediction-list').innerHTML=groups.length?visible.map(g=>'<article class="prediction-card"><div class="prediction-card-head"><span class="portal-tag">'+esc(g.category)+'</span><span>'+g.markets.length+' 个合约</span></div><h3>'+esc(g.title)+'</h3>'+g.markets.map(m=>{const yes=PredictionModel.affirmative(m),outcomes=yes?[yes]:m.outcomes;return '<div class="prediction-question">'+(g.markets.length>1?'<div class="prediction-question-label">'+esc(PredictionModel.optionLabel(g,m))+'</div>':'')+outcomes.map(o=>'<div class="prediction-outcome"><div><span>'+esc(yes?'发生概率':o.nameZh||o.name)+'</span><strong>'+number(o.probability*100)+'<small>%</small></strong></div><progress max="1" value="'+o.probability+'" aria-label="'+esc((m.questionZh||m.question)+' '+(o.nameZh||o.name)+'市场隐含概率')+'"></progress></div>').join('')+'</div>';}).join('')+'<details class="prediction-detail"><summary>原始合约、截止时间与交易信息</summary>'+g.markets.map(m=>'<div><b>'+esc(m.questionZh||m.question)+'</b><p>'+esc(m.question)+'</p><p>截止：'+esc(stamp(m.endDate))+' · 24h成交：$'+number(m.volume24h)+' · 流动性：$'+number(m.liquidity)+'</p><p>价差：'+(M.finite(m.spread)?number(m.spread*100)+'¢':'未提供')+' · 源更新：'+esc(stamp(m.updatedAt))+'</p>'+link(m.url,'合约与结算规则 ↗')+(m.liquidity<10000?'<p class="macro-state">流动性偏低</p>':'')+'</div>').join('')+'</details></article>').join(''):'<p class="portal-empty">没有符合筛选条件的未到期预测。</p>';
-    $('prediction-more').hidden=groups.length<=6;$('prediction-more').textContent=predictionExpanded?'收起其他事件':'显示全部 '+groups.length+' 个事件';
-    $('prediction-download').disabled=!list.length;
-    $('prediction-download').onclick=()=>{const header=['事件（中文）','事件（英文原文）','主题','结果（中文）','结果（英文原文）','市场隐含概率','24h成交额USD','流动性USD','截止时间','源更新时间','快照时间','原始合约'];const rows=list.flatMap(m=>m.outcomes.map(o=>[m.questionZh,m.question,m.category,o.nameZh,o.name,o.probability,m.volume24h,m.liquidity,m.endDate,m.updatedAt,predictions.fetchedAt,m.url]));download('\uFEFF'+[header,...rows].map(r=>r.map(M.csvCell).join(',')).join('\r\n'),'polymarket-important.csv');};
+    if(!predictions){$('prediction-status').textContent=predictionError?'预测读取失败':'正在读取…';return;}
+    ForecastDesk.renderPolymarket(predictions);
   }
   async function read(url){const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),15000);try{const response=await fetch(url,{cache:'no-cache',signal:controller.signal});if(!response.ok)throw new Error('HTTP '+response.status);return await response.json();}finally{clearTimeout(timer);}}
   async function loadPredictions(){
@@ -127,7 +118,8 @@
     catch{predictionError=true;$('retry').hidden=false;}finally{predictionLoading=false;if(state.view==='predictions')renderPredictions();}
   }
   async function load(){
-    if(state.view==='predictions'&&catalog){predictions=null;await loadPredictions();return;}
+    if(state.view==='fedwatch'){showView();return;}
+    if(state.view==='predictions'){predictions=null;showView();return;}
     $('load-state').textContent='正在读取宏观数据…';$('retry').hidden=true;$('skeleton').hidden=false;$('data-warning').hidden=true;
     const results=await Promise.allSettled([read('data/macro/catalog.json'),read('data/macro/snapshot.json'),read('data/consumption-macro/observations.json'),read('data/macro/automatic-series.json')]);
     $('skeleton').hidden=true;
@@ -161,6 +153,8 @@
   addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{if(catalog&&state.view==='indicators')renderDetail();},150);});
   $('groups').onclick=e=>{const b=e.target.closest('[data-group]');if(b){state.group=b.dataset.group;state.id='';page=0;render();}};
   for(const id of ['metric-list','reference-list','pending-list'])$(id).onclick=e=>{const b=e.target.closest('[data-id]');if(b){state.id=b.dataset.id;page=0;render();}};
-  $('prediction-search').oninput=()=>{predictionExpanded=false;renderPredictions();};$('prediction-category').onchange=()=>{predictionExpanded=false;renderPredictions();};$('prediction-more').onclick=()=>{predictionExpanded=!predictionExpanded;renderPredictions();};$('retry').onclick=load;
+  $('prediction-search').oninput=()=>{predictionExpanded=false;renderPredictions();};$('prediction-category').onchange=()=>{predictionExpanded=false;renderPredictions();};$('retry').onclick=load;
   load();
 })();
+
+

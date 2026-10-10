@@ -13,6 +13,7 @@
 | `data/consumption-macro/observations.json` | 原始官方消费披露；重叠期间优先保留精确金额和真实发布日期 |
 | `data/macro/snapshot.json` | 原有宏观快照，另由`update/macro_data.py`维护 |
 | `data/macro/predictions.json` | Polymarket预测，另由`update/polymarket_data.py`维护 |
+| `data/gold-jewelry/macro.json` | 芝商所 FedWatch：黄金与宏观共用官方工具会议快照 |
 
 先确认当前工作副本来自最新`main`，保留其他任务和用户未提交的修改。后续AI不应依赖某次聊天中的旧本机目录、提交号、条数或最新数值。
 
@@ -85,3 +86,15 @@ node scripts/industry-model.test.cjs
 本项目已在Codex任务中设置北京时间每日17:30更新；这是需要本机和Codex运行的任务，不是仓库自带的云端调度。其他AI不得假定自己环境已有该任务，也不要重复创建调度。`.github/workflows/refresh-macro.yml`仍是人工触发的原有宏观/预测流程，不会自动获得本机Choice凭证。
 
 如任务同时要求更新重要预测，再运行`python update/polymarket_data.py`。核对中文标题、英文原文、结果、来源及截止时间；译名由`data/macro/prediction-translations.json`按完整英文标题匹配，新合约需在核对原始规则后补充中文译名，不沿用已改题合约的旧译名。补充译名后重跑脚本生成快照。它不由`macro_auto.py`更新，也不在当前宏观定时任务的默认提交范围内。
+
+## 6. 芝商所与 Polymarket 类目
+
+`macro.html?view=fedwatch`复用黄金模块的同一份 CME 数据，不新建第二份会议概率。核对官方 FedWatch 工具的会议日期、当前目标区间、每个利率结果、时区及源观察时间，保留原始概率和证据哈希；不得用入库时间代替行情时点。当前展示已收录快照，尚未接入自动 CME REST 更新。REST 数据需要通过 CME 的授权门户单独开通；未取得访问时保留快照及官方入口，不标实时。新旧利率区间不匹配时，比较值留空。未来观察、重复区间、重叠区间和合计显著偏离100%的快照不得显示。
+
+Polymarket 先发现成交靠前的相关事件，每个主题最多6个，再读取 Gamma `events/{id}`补齐该事件全部有效活跃合约。任何活跃选项校验失败，应保留上次整份成功快照并标失败，不将截取的部分选项标为完整。原始 Yes/No 价格及不同阈值的独立合约概率不归一化。`previousFetchedAt`及同 ID、同原始问题、同结果名称的上次概率用于对照，缺失比较值留空。
+
+译名注册表的`events`、`questions`、`options`分别按原始事件标题、完整问题精确匹配；保留英文原文及结算规则链接。只修译名时可以重放当前快照本地翻译，不更改`fetchedAt`或覆盖上次概率。界面默认经济与利率，搜索保留整个事件，更多结果和原文收进明细。
+
+额外检查：`node --test tests/forecast-macro.test.cjs`，并核对桌面、窄屏、会议切换、搜索、到期过滤及两个 CSV 下载。
+
+

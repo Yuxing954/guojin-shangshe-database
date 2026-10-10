@@ -87,9 +87,43 @@ class MacroTests(unittest.TestCase):
         self.assertEqual(len(selected),3)
     def test_real_prediction_snapshot(self):
         snapshot=json.loads((ROOT/'data/macro/predictions.json').read_text(encoding='utf-8'))
-        self.assertGreater(len(snapshot['markets']),0);self.assertLessEqual(len(snapshot['markets']),24)
+        self.assertGreater(len(snapshot['markets']),0)
+        events={}
+        for market in snapshot['markets']:events.setdefault(market['eventId'],[]).append(market)
+        for items in events.values():
+            self.assertEqual(len(items),items[0]['eventActiveMarketCount'])
+            self.assertTrue(all(m['eventComplete'] for m in items))
+        for category in {m['category'] for m in snapshot['markets']}:
+            self.assertLessEqual(sum(items[0]['category']==category for items in events.values()),6)
+        self.assertEqual(len({m['id'] for m in snapshot['markets']}),len(snapshot['markets']))
         for market in snapshot['markets']:
             self.assertTrue(market['url'].startswith('https://polymarket.com/event/'))
             self.assertLess(abs(sum(o['probability'] for o in market['outcomes'])-1),.05)
+    def test_complete_event_rejects_partial_invalid_outcomes(self):
+        now=datetime(2026,10,10,tzinfo=timezone.utc)
+        row=dict(id='1',question='Will the Fed cut interest rates?',active=True,closed=False,
+            endDate='2026-12-01T00:00:00Z',outcomes=['Yes','No'],outcomePrices=['.4','.6'])
+        seed=dict(eventId='10',category='经济与利率')
+        event=dict(id=10,slug='fed-rate',title='Fed Decision in December?',markets=[row,{**row,'id':'2'}])
+        self.assertEqual(len(p.expand_event(event,seed,now)),2)
+        event['markets'][1]['outcomePrices']=['1.1','-.1']
+        with self.assertRaises(ValueError):p.expand_event(event,seed,now)
+    def test_prior_probability_requires_same_contract_and_question(self):
+        old=dict(markets=[dict(id='1',question='original',outcomes=[dict(name='Yes',probability=.3)])])
+        new=[dict(id='1',question='changed',outcomes=[dict(name='Yes',probability=.5)])]
+        self.assertNotIn('previousProbability',p.with_previous(new,old)[0]['outcomes'][0])
+        new[0]['question']='original'
+        self.assertEqual(p.with_previous(new,old)[0]['outcomes'][0]['previousProbability'],.3)
+    def test_failed_event_refresh_retains_last_snapshot(self):
+        prior=dict(version=2,status='ready',fetchedAt='2026-10-09T00:00:00Z',markets=[dict(id='existing')])
+        with tempfile.TemporaryDirectory() as temp:
+            target=Path(temp)/'predictions.json';target.write_text(json.dumps(prior),encoding='utf-8')
+            with patch.object(p,'TARGET',target),patch.object(p,'fetch',side_effect=ValueError('upstream unavailable')):
+                with self.assertRaises(SystemExit):p.main()
+            result=json.loads(target.read_text(encoding='utf-8'))
+            self.assertEqual(result['markets'],prior['markets']);self.assertEqual(result['fetchedAt'],prior['fetchedAt'])
+            self.assertEqual(result['status'],'error')
 
 if __name__=='__main__':unittest.main()
+
+
