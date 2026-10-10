@@ -35,3 +35,26 @@ test('latest CSV includes raw and headline units, true period, release and sourc
   const csv=D.latestCsv([spec],{series:{x:{observations:[{period:'2026-09',value:2,releaseDate:null}],fetchedAt:'2026-10-09T01:00:00Z'}}},{a:{url:'https://example.com'}});
   assert.match(csv,/"'=bad"/);assert.match(csv,/"2026-09"/);assert.match(csv,/"2","%"/);assert.match(csv,/"","2026-10-09T01:00:00Z"/);
 });
+test('morning release list uses true release dates, excludes daily quotes and never substitutes fetch times',()=>{
+  const specs=['cn-cpi','cn-ppi','cn-pmi','cn-retail','cn-lpr','cn-usdcny'].map((id,i)=>({id,name:id,country:'CN',frequency:i===5?'daily':'monthly',kind:'rate',unit:'%',staleDays:99}));
+  const feed={cutoff:'2026-10-10',series:Object.fromEntries(specs.map((s,i)=>[s.id,{fetchedAt:'2026-10-10T00:00:00Z',observations:[{period:'2026-09',value:i,releaseDate:['2026-10-09',null,'2026-10-08','2026-10-11','2026-02-30','2026-10-10'][i]}]}]))};
+  const before=JSON.stringify(feed),result=D.releases({series:specs},feed,'CN');
+  assert.deepEqual(result.items.map(r=>r.spec.id),['cn-cpi','cn-pmi']);assert.equal(result.unknown,3);assert.equal(JSON.stringify(feed),before);
+});
+test('morning prior readings keep exact periods, actual zeros and derived headline units',()=>{
+  const spec={id:'cn-cpi',frequency:'monthly',kind:'rate',unit:'%'},data={observations:[{period:'2026-07',value:0},{period:'2026-08',value:.2}]};
+  assert.equal(D.readout(spec,data).previous.chartValue,0);assert.equal(D.readout(spec,data).delta.value,.2);
+  assert.equal(D.readout(spec,{observations:[data.observations[0],{period:'2026-09',value:.3}]}).previous,null);
+  assert.equal(D.priorPeriod({frequency:'quarterly'},'2026-Q1'),'2025-Q4');assert.equal(D.priorPeriod({frequency:'daily'},'2026-10-09'),null);
+  const retail={id:'cn-retail',frequency:'monthly',kind:'level',unit:'亿元'},r=D.readout(retail,{observations:[{period:'2026-07',value:400,officialYoy:2},{period:'2026-08',value:410,officialYoy:3}]});
+  assert.equal(r.value,3);assert.equal(r.previous.chartValue,2);assert.equal(r.unit,'%');assert.equal(r.delta.unit,'百分点');
+  const missing={observations:[{period:'2026-07',value:400},{period:'2026-08',value:410,officialYoy:3}]};
+  assert.equal(D.readout(retail,missing).previous.chartValue,null);assert.equal(D.readout(retail,missing).delta,null);assert.equal(D.headlineRows(retail,missing)[0].chartValue,null);
+});
+test('morning charts retain original frequency, gaps and headline transformations within three years',()=>{
+  const spec={id:'us-payroll',frequency:'monthly',kind:'level',unit:'千人'},data={observations:[{period:'2023-08',value:100},{period:'2026-07',value:110},{period:'2026-09',value:130}]};
+  const result=D.trendRows(spec,data,'2026-10-10');assert.deepEqual(result.map(r=>r.period),['2026-07','2026-09']);assert.ok(result.every(r=>r.chartValue===null));
+  for(const country of ['CN','US'])for(const id of D.trends[country])assert.ok(D.core(catalog,country,snapshot).some(s=>s.id===id));
+});
+
+
