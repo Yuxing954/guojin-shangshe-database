@@ -187,12 +187,12 @@
   }
   function selectCompany(code,scrollDetail=false){
     const c=companies.concat(benchmarks).find(c=>c.code===code);if(!c)return;
-    if(selected?.code===code){if(scrollDetail&&matchMedia('(max-width:1000px)').matches)$('quote-detail').scrollIntoView({behavior:'smooth',block:'start'});return;}
+    if(selected?.code===code){if(scrollDetail&&matchMedia('(max-width:1100px)').matches)$('quote-detail').scrollIntoView({behavior:'smooth',block:'start'});return;}
     clearTimeout(selectionTimer);selectionTimer=null;chartRequest++;chartLoadingKey='';selected=c;chartData=null;$('quote-title').textContent=c.name;$('quote-subtitle').textContent=c.code+' · '+infoLabel(c)+(c.sector?' · '+c.sector:'');
     $('quote-detail').hidden=false;$('detail-empty').hidden=true;syncSelection();preferences();
     const old=[...cache.values()].find(v=>v.code===code&&v.period===period&&Date.now()-v.loadedAt<(period==='minute'?15000:300000));
     if(old){loadChart();}else{html($('chart'),'<div class="quotes-chart-placeholder">正在读取 '+esc(c.name)+' 的走势…</div>');$('chart').setAttribute('aria-busy','true');$('chart-readout').textContent='';$('chart-detail').textContent='';$('chart-status').textContent='正在读取 '+c.name+' 的腾讯走势…';selectionTimer=setTimeout(()=>{selectionTimer=null;loadChart();},100);}
-    if(scrollDetail&&matchMedia('(max-width:1000px)').matches)$('quote-detail').scrollIntoView({behavior:'smooth',block:'start'});
+    if(scrollDetail&&matchMedia('(max-width:1100px)').matches)$('quote-detail').scrollIntoView({behavior:'smooth',block:'start'});
   }
   function moveCompany(delta,focus=false){
     const index=filtered.findIndex(c=>c.code===selected?.code),next=filtered[index+delta];if(index<0||!next)return;selectCompany(next.code);

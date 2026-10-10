@@ -146,7 +146,7 @@ class LibraryTests(unittest.TestCase):
     def test_curated_claims_reference_existing_source_records(self):
         import csv
         topics = set()
-        for path in (ROOT / 'data/research/updates').glob('*-views-*.csv'):
+        for path in sorted((ROOT / 'data/research/updates').glob('*-views-*.csv')) + sorted((ROOT / 'data/research/updates').glob('*-all_views-*.csv')):
             with path.open(encoding='utf-8-sig', newline='') as stream:
                 topics.update(row['原文链接'].rsplit('/', 1)[-1] for row in csv.DictReader(stream))
         data = json.loads((ROOT / 'data/research/market-briefs.json').read_text(encoding='utf-8'))
