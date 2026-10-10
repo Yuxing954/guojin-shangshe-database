@@ -19,9 +19,9 @@ const root=path.resolve(__dirname,'..'),server=http.createServer((req,res)=>{
    await svg.click();assert.equal(await tooltip.getAttribute('data-pinned'),'true',url+' pin');
    const pinned=await tooltip.innerText();await page.mouse.move(2,2);assert.equal(await tooltip.innerText(),pinned,url+' retained outside plot');
    await svg.press('End');await svg.press('Escape');assert.equal(await page.locator('.site-chart-tooltip:not([hidden])').count(),0,url+' dismiss');
-   await page.setViewportSize({width:390,height:900});await svg.scrollIntoViewIfNeeded();await svg.click();
+   await page.setViewportSize({width:390,height:900});await page.waitForTimeout(250);await svg.scrollIntoViewIfNeeded();await svg.click();
    const bounds=await tooltip.boundingBox();assert.ok(bounds.x>=0&&bounds.x+bounds.width<=391,url+' mobile tooltip bounds');
-   await svg.press('Escape');await page.setViewportSize({width:1400,height:1100});
+   await svg.press('Escape');await page.setViewportSize({width:1400,height:1100});await page.waitForTimeout(250);
  }
  assert.deepEqual(errors,[]);console.log('PASS: 12 chart pages, whole-area hover, pinned click, leave, keyboard and narrow-screen bounds');
  const touch=await browser.newContext({viewport:{width:390,height:900},hasTouch:true,isMobile:true});await touch.route('**/*',r=>r.request().url().startsWith(base)?r.continue():r.abort());

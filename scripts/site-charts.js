@@ -67,7 +67,7 @@ document.addEventListener('focusout',()=>{if(barTip&&!pinned)barTip.hidden=true;
 document.addEventListener('click',e=>{const target=e.target.closest('[data-chart-tooltip]');if(target&&!target.closest('button,a')){if(pinned?.svg===target)pinned.hide(true);else barShow(target,true);}});
 function scan(){
   queued=false;for(const [svg,state] of states)if(!svg.isConnected)state.destroy();
-  document.querySelectorAll('.forecast-outcome,.fedwatch-range,.dh-bar-row,.gj-stacked [title],.retail-row').forEach(node=>{
+  document.querySelectorAll('.forecast-outcome,.fedwatch-range,.gj-probability-row,.dh-bar-row,.gj-stacked [title],.retail-row').forEach(node=>{
     if(!node.dataset.chartTooltip)node.dataset.chartTooltip=node.getAttribute('aria-label')||node.getAttribute('title')||node.textContent.trim();
     if(!node.closest('button,a'))node.tabIndex=0;
   });
