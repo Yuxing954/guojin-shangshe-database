@@ -1,5 +1,5 @@
 
-    if(!m.isRate){return SiteCharts.paired(points.map(p=>({period:p.periodLabel,x:Date.parse(p.endDate),value:p.value,change:p.change})),{mode:$('chart-mode').value,unit:m.unit,changeUnit:m.changeUnit||'%',name:m.label,precision:m.precision,gap:{'月度':45,'季度累计':115,'周度':15,'年度':400}[m.frequency]*86400000}).html;}(async function(){
+    (async function(){
 
   'use strict';
 
@@ -21,6 +21,7 @@
   }
 
   function chart(points,m){
+    if(!m.isRate){return SiteCharts.paired(points.map(p=>({period:p.periodLabel,x:Date.parse(p.endDate),value:p.value,change:p.change})),{mode:$('chart-mode').value,unit:m.unit,changeUnit:m.changeUnit||'%',name:m.label,precision:m.precision,gap:{'月度':45,'季度累计':115,'周度':15,'年度':400}[m.frequency]*86400000}).html;}
 
     const clean=points.filter(p=>Number.isFinite(p.value));if(!clean.length)return '<p class="portal-empty">暂无数据</p>';
 
