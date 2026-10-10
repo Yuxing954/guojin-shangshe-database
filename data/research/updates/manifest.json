@@ -1,11 +1,11 @@
 {
-  "syncedAt": "2026-10-10T01:04:15+08:00",
+  "syncedAt": "2026-10-10T11:24:04+08:00",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
-  "coverageFrom": "2026-08-09",
-  "coverageTo": "2026-10-10T00:38:04.722+0800",
+  "coverageFrom": "2026-10-10T00:38:04.722+0800",
+  "coverageTo": "2026-10-10T11:18:48.078+0800",
   "oldestFetched": "2026-08-08T22:08:04.080+0800",
-  "fetchedTopics": 11186,
+  "fetchedTopics": 11195,
   "files": {
     "views": [
       "data/research/updates/2026-10-10-views-001.csv",
@@ -20,6 +20,7 @@
       "data/research/updates/2026-10-07-views-002.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-10-10-all_views-002.csv",
       "data/research/updates/2026-10-10-all_views-001.csv",
       "data/research/updates/2026-10-09-all_views-010.csv",
       "data/research/updates/2026-10-09-all_views-009.csv",
@@ -71,12 +72,12 @@
   },
   "counts": {
     "views": 209,
-    "all_views": 4001,
+    "all_views": 4008,
     "minutes": 99
   },
   "latest": {
     "views": "2026-10-10T00:31:11",
-    "all_views": "2026-10-10T00:38:04",
+    "all_views": "2026-10-10T11:18:48",
     "minutes": "2026-09-28T13:18:13"
   },
   "excluded": {
@@ -94,7 +95,7 @@
     "仅会议标题（无正文）": 22,
     "内容过短（4字）": 2,
     "内容过短（9字）": 3,
-    "附件标题": 39,
+    "附件标题": 41,
     "内容过短（2字）": 1,
     "内容过短（3字）": 3,
     "内容过短且无信息量（29字）": 1,
@@ -4407,22 +4408,29 @@
       "22258228254514841",
       "22258228254512181",
       "22258228254512421",
-      "22258228254512451"
+      "22258228254512451",
+      "55521551514112224",
+      "14425445451521822",
+      "22258228284852111",
+      "45548558585282558",
+      "22258228282484811",
+      "14425445454154582",
+      "82258228282488822"
     ]
   },
   "lastRun": {
-    "runId": "2026-10-10-hourly-0104",
-    "syncedAt": "2026-10-10T01:04:15+08:00",
-    "previousCoverageTo": "2026-10-09T21:27:44.255+0800",
-    "fetchedUniqueTopics": 30,
-    "newSourceTopics": 17,
+    "runId": "2026-10-10-hourly-1124",
+    "syncedAt": "2026-10-10T11:24:04+08:00",
+    "previousCoverageTo": "2026-10-10T00:38:04.722+0800",
+    "fetchedUniqueTopics": 9,
+    "newSourceTopics": 9,
     "added": {
-      "views": 1,
-      "all_views": 16
+      "views": 0,
+      "all_views": 7
     },
-    "excluded": 0,
+    "excluded": 2,
     "duplicates": 0,
-    "record": "data/research/updates/2026-10-10-update-record.json"
+    "record": "data/research/updates/2026-10-10-update-record-1124.json"
   },
   "syncLog": [
     {
@@ -4515,6 +4523,25 @@
       "skippedImageOnlyTopics": 0,
       "duplicatesDropped": 0,
       "keptDuplicatePolicy": "按topic_id和清理后正文去重"
+    },
+    {
+      "syncedAt": "2026-10-10T11:24:04+08:00",
+      "coverageFrom": "2026-10-10T00:38:04.722+0800",
+      "coverageTo": "2026-10-10T11:18:48.078+0800",
+      "pageTopicsRead": 30,
+      "newCoverageTopics": 9,
+      "added": {
+        "views": 0,
+        "all_views": 7
+      },
+      "removedDuplicateRows": {
+        "views": 0,
+        "all_views": 0
+      },
+      "skippedUnreadableAttachments": 2,
+      "skippedImageOnlyTopics": 0,
+      "duplicatesDropped": 0,
+      "keptDuplicatePolicy": "按topic_id和清洗后正文去重"
     }
   ]
 }

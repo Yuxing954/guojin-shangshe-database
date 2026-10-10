@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "runId": "2026-10-10-hourly-1124",
+  "syncedAt": "2026-10-10T11:24:04+08:00",
+  "previousCoverageTo": "2026-10-10T00:38:04.722+0800",
+  "fetchedUniqueTopics": 9,
+  "newSourceTopics": 9,
+  "added": {
+    "views": 0,
+    "all_views": 7
+  },
+  "excluded": 2,
+  "duplicates": 0,
+  "record": "data/research/updates/2026-10-10-update-record-1124.json",
+  "sourceGroup": "88888142214212",
+  "sourceName": "水木调研纪要-2.0",
+  "fetchedThrough": "2026-10-10T11:18:48.078+0800",
+  "oldestFetchedThisRun": "2026-10-09T21:27:06.484+0800",
+  "rawPageRecords": 30,
+  "paginationDuplicates": 0,
+  "overlapTopics": 21,
+  "pages": [
+    {
+      "page": "zsxq-page-001",
+      "count": 30,
+      "newest": "2026-10-10T11:18:48.078+0800",
+      "oldest": "2026-10-09T21:27:06.484+0800"
+    }
+  ],
+  "duplicateScope": "按 topic_id 对照 manifest 分配集合；使用清洗后正文对本批与已有记录去重。GitHub 构建会合并历史 CSV 并按主题、时间标题和正文指纹去重。",
+  "excludedReasonCounts": {
+    "附件标题": 2
+  },
+  "excludedTopics": [
+    {
+      "topicId": "55521551514288524",
+      "title": "#海外投行报告",
+      "reason": "帖子正文仅含标签，详细内容位于未读取的PDF附件；按要求不推断、不写入。",
+      "attachments": [
+        "李录最新哥大交流要点：AI投资分化的机遇，中国转型之路，全球秩序之变.pdf"
+      ]
+    },
+    {
+      "topicId": "22258228282425411",
+      "title": "#海外投行报告",
+      "reason": "帖子正文仅含标签，详细内容位于未读取的PDF附件；按要求不推断、不写入。",
+      "attachments": [
+        "美银：The Flow Show-Midterms, Bidterms, Skidterms.pdf"
+      ]
+    }
+  ],
+  "duplicatesDropped": [],
+  "boundary": "本批为知识星球原帖，数据和观点未经独立核验；含图片帖子仅保留可读取的文字内容，未依据图片补充信息。"
+}
