@@ -22,6 +22,8 @@ jobs:
         run: |
           node scripts/check-site.cjs
           node --test scripts/*.test.cjs tests/*.test.cjs tests/*.test.js
+      - name: Check dutyfree calculated growth
+        run: python -m unittest discover -s tests -p 'test_dutyfree_yoy.py'
       - name: Install browser test runtime
         run: |
           npm install --no-save --package-lock=false playwright@1.62.1
@@ -30,6 +32,7 @@ jobs:
         env:
           SITE_SCREENSHOT_DIR: .cache/site-unification
         run: |
+          node tests/site-charts.browser.cjs
           node tests/site-unification.browser.cjs
           node tests/macro-dashboard.browser.cjs
           node tests/consumption-macro.browser.cjs

@@ -31,7 +31,7 @@
 
     const grid=[0,1,2].map(i=>{const v=upper-(upper-lower)*i/2;return '<line x1="70" y1="'+y(v)+'" x2="900" y2="'+y(v)+'" stroke="#eceef3"/><text x="58" y="'+(y(v)+4)+'" text-anchor="end">'+esc(fmt(v,m.unit.includes('美元')?4:m.precision))+'</text>';}).join('');
 
-    const tip=p=>esc(p.periodLabel+'：'+fmt(p.value,m.precision)+' '+($('chart-mode').value==='change'?m.changeUnit||'%':m.unit));
+    const tip=p=>esc(m.label+'\n'+p.periodLabel+'：'+fmt(p.value,m.precision)+' '+($('chart-mode').value==='change'?m.changeUnit||'%':m.unit)+(p.changeMethod==='calculated'?'\n同比为计算值':'')+(p.changeMissingReason?'\n'+p.changeMissingReason:'')+(p.changeCalculation?'\n'+p.changeCalculation.currentValue+' ÷ '+p.changeCalculation.priorValue+'（'+p.changeCalculation.priorPeriod+'）'+(p.changeCalculation.note?'\n'+p.changeCalculation.note:''):'')+'\n来源：'+(sources[p.sourceId]?.name||'原始表') );
 
     const marks=m.frequency==='季度累计'?clean.map(p=>'<rect x="'+(x(p)-7)+'" y="'+y(p.value)+'" width="14" height="'+(220-y(p.value))+'" rx="2"><title>'+tip(p)+'</title></rect>').join(''):'<polyline points="'+clean.map(p=>x(p)+','+y(p.value)).join(' ')+'" fill="none" stroke="#5158aa" stroke-width="2.5" stroke-linejoin="round"/>'+clean.map(p=>'<circle cx="'+x(p)+'" cy="'+y(p.value)+'" r="3" fill="#5158aa"><title>'+tip(p)+'</title></circle>').join('');
 
