@@ -35,7 +35,7 @@ function attach(container,points,options={}){
     const x=p.matrixTransform(matrix.inverse()).x;
     return data.reduce((a,g,i)=>Math.abs(g.x-x)<Math.abs(data[a].x-x)?i:a,0);
   }
-  const state={svg,hide,destroy(){hide(true);abort.abort();tip.remove();line.remove();states.delete(svg);}};states.set(svg,state);
+  const state={svg,hide,refresh(){if(tip.hidden)return;const b=svg.getBoundingClientRect();if(b.bottom<0||b.top>innerHeight)hide(true);else place(data[index]);},destroy(){hide(true);abort.abort();tip.remove();line.remove();states.delete(svg);}};states.set(svg,state);
   listen(svg,'pointermove',e=>{if(!isPinned)show(nearest(e),e);});
   listen(svg,'pointerleave',()=>hide());
   listen(svg,'click',e=>{const next=nearest(e);if(isPinned&&next===index){hide(true);return;}pinned?.hide(true);isPinned=true;pinned=state;show(next,e);});
@@ -99,7 +99,7 @@ function canvas(Chart){
 root.SiteCharts={attach,scan,canvas,groups};
 document.addEventListener('pointerdown',e=>{if(pinned&&!pinned.svg.contains(e.target))pinned.hide(true);});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')pinned?.hide(true);});
-addEventListener('scroll',()=>{for(const state of states.values())state.hide(true);},{passive:true});
+addEventListener('scroll',()=>{for(const state of states.values())state.refresh();},{passive:true});
 addEventListener('resize',()=>{for(const state of states.values())state.hide(true);});
 function start(){scan();new MutationObserver(schedule).observe(document.body,{childList:true,subtree:true});}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();

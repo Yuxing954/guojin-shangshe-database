@@ -12,7 +12,7 @@ const root=path.resolve(__dirname,'..'),server=http.createServer((req,res)=>{
  const context=await browser.newContext({viewport:{width:1400,height:1100}});await context.route('**/*',r=>r.request().url().startsWith(base)?r.continue():r.abort());
  const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
  for(const url of ['industry.html#dutyfree','industry.html#hotel','industry.html#gold','industry.html#overseas','industry.html#dining','hotel-dashboard.html','dutyfree-dashboard.html','gold-jewelry.html','macro.html','consumption-macro.html','dining.html','overseas.html']){
-   await page.goto(base+'/'+url,{waitUntil:'domcontentloaded'});
+   console.log('Checking chart '+url);await page.goto(base+'/'+url,{waitUntil:'domcontentloaded'});
    const svg=page.locator('svg.site-interactive-chart:visible:not(.macro-spark)').first();await svg.waitFor({timeout:20000});await svg.scrollIntoViewIfNeeded();
    const box=await svg.boundingBox();await page.mouse.move(box.x+box.width*.4,box.y+box.height*.4);
    const tooltip=page.locator('.site-chart-tooltip:not([hidden])');await tooltip.waitFor();assert.ok((await tooltip.innerText()).trim().length>4,url+' exact value tooltip');
