@@ -1,7 +1,7 @@
 (function () {
   'use strict';
   var M = HotelMetrics, data = {}, ix = {}, periods = new Map(), regions = [];
-  var state = { view: 'overview', region: '全国', week: '', base: 'auto', window: '52', metric: 'revpar', mode: 'change' };
+  var state = { view: 'overview', region: '全国', week: '', base: 'auto', window: '52', metric: 'revpar', mode: 'combo' };
   var followLatest = true, latestWeek = '';
   var SEGS = ['经济型', '中档型', '高档型', '豪华型'];
   var GROUPS = ['华住', '首旅如家', '锦江酒店（中国区）', '亚朵'];
@@ -77,7 +77,7 @@
     $('period-note').innerHTML = '数据周：' + esc(periodLabel(periods.get(state.week))) + '<br>比较基周：' +
       esc(base ? periodLabel(base) : baseWeek() + '（无基周记录）') +
       (state.base === 'auto' ? ' · 同周同比' : ' · <span class="hd-manual">手动基周 · 对比变化</span>');
-    $('mode-switch').querySelector('[data-mode="change"]').textContent = state.base === 'auto' ? '同比增速' : '对比变化';
+    $('mode-switch').querySelector('[data-mode="change"]').textContent = state.base === 'auto' ? '仅同比' : '仅对比变化';
   }
   function renderOverview() {
     var r = row(state.region, '全部', state.week), base = row(state.region, '全部', baseWeek());
@@ -112,6 +112,10 @@
     var field = state.metric, meta = META[field], isChange = state.mode === 'change' && rows.some(function (p) { return M.change(row(state.region, '全部', p.period_id), row(state.region, '全部', M.priorPeriod(p)), field) != null; });
     var current = rows.map(function (r) { return { x: r.period_id, date: r.start_date + ' — ' + r.end_date,
       y: !isChange ? display(row(state.region, '全部', r.period_id), field) : M.change(row(state.region, '全部', r.period_id), row(state.region, '全部', M.priorPeriod(r)), field) }; });
+    if(['combo','value','change'].includes(state.mode)){
+      const result=SiteCharts.drawPaired($('main-chart'),rows.map(r=>({period:r.period_id,x:Date.parse(r.start_date),value:display(row(state.region,'全部',r.period_id),field),change:M.change(row(state.region,'全部',r.period_id),row(state.region,'全部',M.priorPeriod(r)),field)})),{mode:state.mode,unit:meta.unit,changeUnit:field==='occupancy_rate'?'百分点':'%',changeLabel:labelChange(),name:meta.label,gap:15*86400000});
+      $('trend-caption').textContent=meta.label+' · '+meta.unit+' / '+(field==='occupancy_rate'?'百分点':'%');$('chart-mode-note').textContent=labelChange();$('history-note').textContent=rows.length?rows[0].period_id+' — '+rows.at(-1).period_id:'';return;
+    }
     var lines = [{ name: state.region + (!isChange ? ' · 本期绝对值' : ' · 同周同比'), color: COLORS[0], pts: current }];
     if (!isChange) lines.push({ name: '去年同周号', color: '#aab0c9', dash: true, pts: rows.map(function (r) {
       return { x: r.period_id, y: display(row(state.region, '全部', M.priorPeriod(r)), field) };
@@ -153,7 +157,7 @@
     $('segment-chart-caption').textContent = META[field].label + ' · ' + (isChange ? '同周同比（' + unit + '）' : '绝对值（' + unit + '）' + (state.mode === 'change' ? ' · 基期缺失' : ''));
     lineChart('segment-chart', SEGS.map(function (seg, i) { return { name: seg, color: COLORS[i], pts: calendar().map(function (r) {
       var s = row(state.region, seg, r.period_id);
-      return { x: r.period_id, y: isChange ? M.change(s, row(state.region, seg, M.priorPeriod(r)), field) : display(s, field) };
+      return { x: r.period_id, y: isChange ? M.change(s, row(state.region, seg, M.priorPeriod(r)), field) : display(s, field), change:M.change(s,row(state.region,seg,M.priorPeriod(r)),field) };
     }) }; }), { unit: unit, zero: isChange, occupancy: !isChange && field === 'occupancy_rate' });
   }
   function renderCities() {
@@ -207,7 +211,7 @@
       var full = M.sorted(data.group.filter(function (r) { return r.group === g && r.region === '全国'; }));
       return { name: g, color: COLORS[i], pts: calendar().filter(function (r) { return full.length && r.period_id >= full[0].period_id; }).map(function (r) {
         var current = ix.group.get(g + '|全国|' + r.period_id);
-        return { x: r.period_id, y: isChange ? M.change(current, ix.group.get(g + '|全国|' + M.priorPeriod(r)), field) : M.metric(current, field) };
+        return { x: r.period_id, y: isChange ? M.change(current, ix.group.get(g + '|全国|' + M.priorPeriod(r)), field) : M.metric(current, field),change:M.change(current,ix.group.get(g+'|全国|'+M.priorPeriod(r)),field) };
       }) };
     }), { unit: unit, zero: isChange });
   }
@@ -241,7 +245,7 @@
     var field = $('supply-metric').value, isChange = state.mode === 'change' && calendar().some(function (p) { return M.change(ix.supply15.get('全国|'+p.period_id),ix.supply15.get('全国|'+M.priorPeriod(p)),field) != null; });
     var title = field === 'hotel_count' ? '酒店数量' : field === 'chain_room_count' ? '连锁房量' : '房间数量';
     $('supply-chart-caption').textContent = title + ' · 15间及以上 · ' + (isChange ? '同周同比（%）' : '绝对值（' + valueUnit(field) + '）' + (state.mode === 'change' ? ' · 基期缺失' : ''));
-    lineChart('supply-chart', [{ name: '全国 · 15间及以上' + (isChange ? ' · 同周同比' : ''), color: COLORS[0], pts: calendar().map(function (r) { return { x: r.period_id, date: r.start_date + ' — ' + r.end_date, y: isChange ? M.change(ix.supply15.get('全国|' + r.period_id), ix.supply15.get('全国|' + M.priorPeriod(r)), field) : M.metric(ix.supply15.get('全国|' + r.period_id), field) }; }) }], { unit: isChange ? '%' : valueUnit(field), zero: isChange });
+    lineChart('supply-chart', [{ name: '全国 · 15间及以上' + (isChange ? ' · 同周同比' : ''), color: COLORS[0], pts: calendar().map(function (r) { return { x: r.period_id, date: r.start_date + ' — ' + r.end_date, change:M.change(ix.supply15.get('全国|'+r.period_id),ix.supply15.get('全国|'+M.priorPeriod(r)),field), y: isChange ? M.change(ix.supply15.get('全国|' + r.period_id), ix.supply15.get('全国|' + M.priorPeriod(r)), field) : M.metric(ix.supply15.get('全国|' + r.period_id), field) }; }) }], { unit: isChange ? '%' : valueUnit(field), zero: isChange });
   }
   function renderInvestment() {
     if (!data.investment) return;
@@ -286,7 +290,7 @@
     if (['overview', 'cities', 'structure'].includes(saved.get('view'))) state.view = saved.get('view');
     if (['52', '156', 'all'].includes(saved.get('window'))) state.window = saved.get('window');
     if (META[saved.get('metric')]) state.metric = saved.get('metric');
-    if (['value', 'change'].includes(saved.get('mode'))) state.mode = saved.get('mode');
+    if (['combo', 'value', 'change'].includes(saved.get('mode'))) state.mode = saved.get('mode');
     if (periods.has(saved.get('base'))) state.base = saved.get('base');
     $('asof').innerHTML = '最新数据截至<b>' + esc(latest.end_date) + ' · ' + esc(latest.period_id) + '</b>';
     $('week-select').innerHTML = option('latest', '最新周 · ' + latestWeek + ' · ' + latest.end_date) + Array.from(periods.values()).reverse().map(function (r) { return option(r.period_id, r.period_id + ' · ' + r.end_date); }).join('');
@@ -357,6 +361,7 @@
   }
   function lineChart(id, lines, opt) {
     opt = opt || {}; var host = $(id); host.innerHTML = ''; lines = M.chartSeries(lines);
+    if(state.mode==='combo'&&lines.some(s=>s.pts.some(p=>Number.isFinite(p.change)))){const keys=[...new Set(lines.flatMap(s=>s.pts.map(p=>p.x)))].sort();SiteCharts.drawPaired(host,keys.map((key,i)=>({period:key,x:i,values:lines.map(s=>{const p=s.pts.find(p=>p.x===key);return {name:s.name,value:p?.y,change:p?.change,color:s.color};})})),{unit:opt.unit,changeUnit:opt.occupancy?'百分点':'%',changeLabel:labelChange(),name:lines.map(s=>s.name).join('、')});return;}
     var xs = Array.from(new Set(lines.flatMap(function (s) { return s.pts.map(function (p) { return p.x; }); }))).sort();
     var values = lines.flatMap(function (s) { return s.pts.map(function (p) { return M.num(p.y); }); }).filter(function (v) { return v != null; });
     if (!values.length) { host.innerHTML = '<div class="hd-empty">所选范围暂无有效数据</div>'; return; }
@@ -392,7 +397,7 @@
     var maps = lines.map(function(s){return new Map(s.pts.map(function(p){return [p.x,p];}));});
     SiteCharts.attach(host, xs.map(function(key){
       var first=maps.map(function(map){return map.get(key);}).find(function(p){return p&&M.num(p.y)!=null;});
-      return {x:px(key),y:first?py(first.y):T,text:key+(first&&first.date?'\n'+first.date:'')+'\n'+lines.map(function(s,i){var p=maps[i].get(key);return s.name+'：'+fmt(p?p.y:null,1)+' '+(opt.unit||'');}).join('\n')};
+      return {x:px(key),y:first?py(first.y):T,text:(first&&first.date?first.date:key)+'\n'+lines.map(function(s,i){var p=maps[i].get(key);return s.name+'：'+fmt(p?p.y:null,1)+' '+(opt.unit||'');}).join('\n')};
     }));
 
   }

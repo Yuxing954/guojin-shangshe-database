@@ -4,8 +4,8 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <title>宏观数据 · 消费专题</title><script defer src="scripts/site-ui.js?v=20261010-unified"></script>
   <link rel="stylesheet" href="scripts/site.css?v=20261010-unified"><link rel="stylesheet" href="scripts/consumption-macro.css?v=3">
-  <script defer src="scripts/site-shell.js?v=20261010-unified"></script><script defer src="scripts/consumption-macro-model.js?v=4"></script><script defer src="scripts/consumption-macro.js?v=4"></script>
-<link rel="stylesheet" href="scripts/research-chart.css?v=1"><script defer src="scripts/research-chart.js?v=20261010charts"></script><link rel="stylesheet" href="scripts/macro-refinements.css?v=1"><link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-charts.css?v=20261010a"><link rel="stylesheet" href="scripts/site-polish.css?v=20261010-unified"><script src="scripts/site-charts.js?v=20261010charts"></script></head>
+  <script defer src="scripts/site-shell.js?v=20261010-unified"></script><script defer src="scripts/consumption-macro-model.js?v=4"></script><script defer src="scripts/consumption-macro.js?v=20261010combo1"></script>
+<link rel="stylesheet" href="scripts/research-chart.css?v=1"><script defer src="scripts/research-chart.js?v=20261010charts"></script><link rel="stylesheet" href="scripts/macro-refinements.css?v=1"><link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-charts.css?v=20261010combo1"><link rel="stylesheet" href="scripts/site-polish.css?v=20261010-unified"><script src="scripts/site-charts.js?v=20261010combo1"></script></head>
 <body class="site-page" data-site-section="macro">
 <main class="site-main cm-main">
   <header class="portal-header"><div><h1>宏观数据</h1></div><span id="asof" class="portal-note"></span></header>
@@ -16,7 +16,7 @@
     <section class="portal-panel retail-panel" aria-labelledby="retail-heading">
       <div class="portal-panel-head"><div><p class="eyebrow">消费拆分</p><h2 id="retail-heading">社零拆分</h2></div><span id="retail-context" class="portal-note"></span></div>
       <div class="cm-filter"><label>统计口径<select id="retail-basis"><option value="month">当月 / 1—2月</option><option value="ytd">年初累计</option><option value="year">全年</option></select></label><label>数据期间<select id="retail-period"></select></label><nav class="retail-tabs" aria-label="社零拆分维度"><button data-retail="categories" aria-pressed="true">分品类</button><button data-retail="structure" aria-pressed="false">商品与餐饮</button><button data-retail="channels" aria-pressed="false">城乡与渠道</button></nav></div>
-      <p id="retail-note" class="portal-note"></p><div id="retail-bars" class="retail-bars"></div><p class="chart-help">悬停或点击查看金额、官方同比和来源；点击品类查看历史走势。</p>
+      <p id="retail-note" class="portal-note"></p><div id="retail-bars" class="retail-bars"></div><p class="chart-help"></p>
     </section>
     <section class="portal-panel" id="trend-panel" aria-labelledby="trend-title">
       <div class="portal-panel-head"><h2 id="trend-title">历史趋势</h2><button id="export-series" class="portal-button">导出当前历史 CSV</button></div>
@@ -24,7 +24,7 @@
         <label class="cm-indicator-control">指标 <select id="indicator"></select></label>
         <label>频率 <select id="series-frequency"></select></label>
         <label>口径 <select id="basis"></select></label>
-        <label>显示 <select id="measure"><option value="value">原始值</option><option value="yoy">官方同比</option><option value="mom">官方环比</option><option value="realYoy">实际同比</option></select></label>
+        <label>显示 <select id="measure"><option value="combo">数值＋同比</option><option value="value">仅数值</option><option value="yoy">官方同比</option><option value="mom">官方环比</option><option value="realYoy">实际同比</option></select></label>
         <label>开始 <input id="from" type="date"></label><label>结束 <input id="to" type="date"></label>
         <button id="clear-range" class="portal-button">全部历史</button>
       </div>

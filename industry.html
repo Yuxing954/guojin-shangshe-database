@@ -4,10 +4,10 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>行业数据 · 国金商社</title><script defer src="scripts/site-ui.js?v=20261010-unified"></script>
   <link rel="stylesheet" href="scripts/site.css?v=20261010-unified"><link rel="stylesheet" href="scripts/industry.css?v=20261010-unified">
-  <script defer src="scripts/site-data.js?v=20261010charts"></script><script defer src="scripts/research-model.js?v=20261010sectorsmerge"></script>
-  <script defer src="scripts/industry-model.js?v=3"></script><script defer src="scripts/site-shell.js?v=20261010sectorsmerge"></script><script defer src="scripts/industry.js?v=20261010charts"></script>
-  <link rel="stylesheet" href="scripts/dutyfree-holidays.css?v=2"><script defer src="scripts/dutyfree-holidays.js?v=20261009mergedcopy"></script>
-<link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-charts.css?v=20261010a"><link rel="stylesheet" href="scripts/site-polish.css?v=20261010-unified"><script src="scripts/site-charts.js?v=20261010charts"></script></head>
+  <script defer src="scripts/site-data.js?v=20261010combo1"></script><script defer src="scripts/research-model.js?v=20261010sectorsmerge"></script>
+  <script defer src="scripts/industry-model.js?v=3"></script><script defer src="scripts/site-shell.js?v=20261010sectorsmerge"></script><script defer src="scripts/industry.js?v=20261010combo1"></script>
+  <link rel="stylesheet" href="scripts/dutyfree-holidays.css?v=2"><script defer src="scripts/dutyfree-holidays.js?v=20261010combo1"></script>
+<link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-charts.css?v=20261010combo1"><link rel="stylesheet" href="scripts/site-polish.css?v=20261010-unified"><script src="scripts/site-charts.js?v=20261010combo1"></script></head>
 <body class="site-page" data-site-section="industry">
 <main class="site-main">
   <header class="portal-header"><div><p class="eyebrow">行业数据</p><h1 id="page-title">酒店</h1></div><a class="portal-top-link" href="quotes.html">覆盖池 →</a></header>
@@ -20,7 +20,7 @@
     <div id="stats" class="industry-core" aria-label="核心指标"></div>
     <section class="portal-panel industry-trend" aria-labelledby="metric-title">
       <div class="portal-panel-head"><div><p class="eyebrow">核心趋势</p><h2 id="metric-title"></h2></div><p class="portal-note" id="coverage"></p></div>
-      <div class="industry-controls"><label>指标 <select id="metric"></select></label><label>口径 <select id="chart-mode"><option value="value">原始值</option><option value="change">同比变化</option></select></label><div id="ranges" class="industry-ranges" aria-label="趋势范围"><button data-years="1" aria-pressed="false">近1年</button><button data-years="3" aria-pressed="true">近3年</button><button data-years="0" aria-pressed="false">全部</button></div></div>
+      <div class="industry-controls"><label>指标 <select id="metric"></select></label><label>口径 <select id="chart-mode"><option value="combo">数值＋同比</option><option value="value">仅数值</option><option value="change">仅同比</option></select></label><div id="ranges" class="industry-ranges" aria-label="趋势范围"><button data-years="1" aria-pressed="false">近1年</button><button data-years="3" aria-pressed="true">近3年</button><button data-years="0" aria-pressed="false">全部</button></div></div>
       <p id="metric-note" class="portal-note"></p><div id="chart"></div>
     </section>
     <section id="dutyfree-holidays" class="dh-panel" aria-label="离岛免税节假日数据" hidden></section>

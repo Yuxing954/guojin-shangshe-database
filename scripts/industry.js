@@ -21,6 +21,7 @@
 
   function chart(points,m){
 
+    if(!m.isRate){return SiteCharts.paired(points.map(p=>({period:p.periodLabel,x:Date.parse(p.endDate),value:p.value,change:p.change})),{mode:$('chart-mode').value,unit:m.unit,changeUnit:m.changeUnit||'%',name:m.label,precision:m.precision,gap:{'月度':45,'季度累计':115,'周度':15,'年度':400}[m.frequency]*86400000}).html;}
     const clean=points.filter(p=>Number.isFinite(p.value));if(!clean.length)return '<p class="portal-empty">暂无数据</p>';
 
     const esc=D.esc,values=clean.map(p=>p.value),high=Math.max(...values),low=Math.min(...values),spread=high-low||Math.max(1,Math.abs(high)*.02),lo=low-spread*.1,hi=high+spread*.1;
@@ -31,7 +32,7 @@
 
     const grid=[0,1,2].map(i=>{const v=upper-(upper-lower)*i/2;return '<line x1="70" y1="'+y(v)+'" x2="900" y2="'+y(v)+'" stroke="#eceef3"/><text x="58" y="'+(y(v)+4)+'" text-anchor="end">'+esc(fmt(v,m.unit.includes('美元')?4:m.precision))+'</text>';}).join('');
 
-    const tip=p=>esc(m.label+'\n'+p.periodLabel+'：'+fmt(p.value,m.precision)+' '+($('chart-mode').value==='change'?m.changeUnit||'%':m.unit)+(p.changeMethod==='calculated'?'\n同比为计算值':'')+(p.changeMissingReason?'\n'+p.changeMissingReason:'')+(p.changeCalculation?'\n'+p.changeCalculation.currentValue+' ÷ '+p.changeCalculation.priorValue+'（'+p.changeCalculation.priorPeriod+'）'+(p.changeCalculation.note?'\n'+p.changeCalculation.note:''):'')+'\n来源：'+(sources[p.sourceId]?.name||'原始表') );
+    const tip=p=>esc(p.periodLabel+'：'+fmt(p.value,m.precision)+' '+m.unit);
 
     const marks=m.frequency==='季度累计'?clean.map(p=>'<rect x="'+(x(p)-7)+'" y="'+y(p.value)+'" width="14" height="'+(220-y(p.value))+'" rx="2"><title>'+tip(p)+'</title></rect>').join(''):'<polyline points="'+clean.map(p=>x(p)+','+y(p.value)).join(' ')+'" fill="none" stroke="#5158aa" stroke-width="2.5" stroke-linejoin="round"/>'+clean.map(p=>'<circle cx="'+x(p)+'" cy="'+y(p.value)+'" r="3" fill="#5158aa"><title>'+tip(p)+'</title></circle>').join('');
 
@@ -57,9 +58,9 @@
 
   function render(){
 
-    const m=activeMetric(),mode=$('chart-mode').value,all=M.inRange(m.points,years),points=M.chartPoints(m,years,mode);
+    const m=activeMetric(),mode=$('chart-mode').value,all=M.inRange(m.points,years),points=M.chartPoints(m,years,m.isRate?mode:'value');
 
-    SiteUI.save({metric,years,mode});cards();$('metric-title').textContent=m.label+(mode==='change'?' · '+(m.yoyLabel||'同比变化'):'');$('metric-note').textContent=m.scope+' · '+m.frequency+' · '+(mode==='change'?m.changeUnit||'%':m.unit);
+    SiteUI.save({metric,years,mode});cards();$('metric-title').textContent=m.label+(mode==='change'?' · '+(m.yoyLabel||'同比变化'):'');$('metric-note').textContent=m.scope+' · '+m.frequency+' · '+(mode==='combo'?m.unit+' / '+(m.changeUnit||'%'):mode==='change'?m.changeUnit||'%':m.unit);
 
     $('coverage').textContent=all.length?all[0].endDate+' — '+all.at(-1).endDate:'';$('chart').innerHTML=chart(points,m);
 
@@ -70,7 +71,7 @@
 
   }
 
-  function choose(id){metric=id;$('metric').value=id;const m=activeMetric(),changes=m.points.some(p=>Number.isFinite(p.change));$('chart-mode').disabled=m.isRate||!changes;const mode=new URLSearchParams(location.search).get('mode');$('chart-mode').value=changes&&!m.isRate&&mode==='change'?'change':mode==='value'?'value':sector.id==='hotel'&&changes?'change':'value';page=1;render();}
+  function choose(id){metric=id;$('metric').value=id;const m=activeMetric(),changes=m.points.some(p=>Number.isFinite(p.change));$('chart-mode').disabled=m.isRate||!changes;$('chart-mode').querySelector('[value="combo"]').disabled=m.isRate||!changes;$('chart-mode').querySelector('[value="change"]').disabled=m.isRate||!changes;const mode=new URLSearchParams(location.search).get('mode');$('chart-mode').value=changes&&!m.isRate&&['combo','value','change'].includes(mode)?mode:changes&&!m.isRate?'combo':'value';page=1;render();}
 
   function related(){
     if(!relatedLoaded){$('company-links').innerHTML='<p class="industry-empty">正在读取公司目录…</p>';$('research-links').innerHTML='<p class="industry-empty">正在读取相关研究…</p>';return;}
