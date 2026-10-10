@@ -14,6 +14,7 @@ const root=path.resolve(__dirname,'..'),server=http.createServer((req,res)=>{
  for(const url of ['industry.html#dutyfree','industry.html#hotel','industry.html#gold','industry.html#dining','hotel-dashboard.html','dutyfree-dashboard.html','gold-jewelry.html','macro.html','consumption-macro.html','dining.html']){
    console.log('Checking chart '+url);await page.goto(base+'/'+url,{waitUntil:'domcontentloaded'});
    const id=url.split('#')[1],scope=url.startsWith('industry.html#')&&['hotel','dutyfree','dining'].includes(id)?page.frameLocator('#panel-'+id):page;
+   if(scope!==page){await page.waitForFunction(id=>{const f=document.getElementById('panel-'+id),m=f?.contentDocument?.querySelector('main');return m&&Math.abs(f.offsetHeight-m.getBoundingClientRect().height-8)<3;},id);await page.waitForTimeout(500);}
    const svg=scope.locator('svg.site-interactive-chart:visible:not(.macro-spark)').first();await svg.waitFor({timeout:20000});await svg.scrollIntoViewIfNeeded();
    const box=await svg.boundingBox();await page.mouse.move(box.x+box.width*.4,box.y+box.height*.4);
    const tooltip=scope.locator('.site-chart-tooltip:not([hidden])');await tooltip.waitFor();assert.ok((await tooltip.innerText()).trim().length>4,url+' exact value tooltip');assert.doesNotMatch(await tooltip.innerText(),/来源：|发布：|计算值|已固定|÷/,url+' concise tooltip');
