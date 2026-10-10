@@ -59,7 +59,7 @@
     $('rows').innerHTML=filtered.map(c=>{const q=quotes[c.code],info=meta(c);return '<tr data-company="'+esc(c.code)+'" data-selected="'+(selected?.code===c.code)+'"><td>'+star(c)+'</td><td><button class="quotes-name" data-code="'+esc(c.code)+'" type="button" aria-pressed="'+(selected?.code===c.code)+'">'+esc(c.name)+'</button><small class="quotes-symbol" title="'+esc(info.label+' · '+c.sector)+'">'+esc(c.code)+'</small></td><td><span class="quotes-price">'+price(q,c)+'<small>'+info.currency+'</small></span></td><td class="quotes-percent '+tone(q?.percent)+'">'+signed(q?.percent,'%')+'</td>'+(full?'<td class="'+tone(q?.change)+'">'+signed(q?.change,'',precision(c))+'</td>'+[q?.open,q?.high,q?.low].map(v=>'<td>'+fmt(v,precision(c))+'</td>').join(''):'')+'<td class="quotes-time" data-failed="'+!!q?.failed+'">'+timeText(q)+'</td></tr>';}).join('')||'<tr><td colspan="'+(full?9:5)+'" class="quotes-empty">'+(onlyWatch&&!watch.length?'暂无自选公司':'暂无匹配公司')+'</td></tr>';
     $('table-scroll').scrollTop=scroll;
     if(focusCode||focusWatch){const buttons=[...$('rows').querySelectorAll('button')],target=buttons.find(button=>focusWatch?button.dataset.watch===focusWatch:button.dataset.code===focusCode);target?.focus({preventScroll:true});}
-    $('workspace').dataset.view=view;
+    $('workspace').dataset.view=view;$('workspace').dataset.scope=onlyWatch&&!$('search').value.trim()?'watch':'all';
     $('list-view').hidden=view!=='list';$('heat-view').hidden=view!=='heat';$('views').querySelectorAll('button').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.view===view)));
     $('list-note').textContent='共 '+filtered.length+' 家';
     renderHeat();renderGroups();renderBenchmarks();syncSelection();$('export-quotes').disabled=!filtered.length;
