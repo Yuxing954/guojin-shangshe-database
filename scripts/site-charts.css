@@ -7,3 +7,4 @@
 .site-chart-tooltip[data-pinned="true"]{border-color:#8da9eb}
 @media(max-width:600px){.site-chart-tooltip.research-tooltip{font-size:13px;padding:10px 12px;max-width:calc(100vw - 16px)}}
 .macro-spark circle{fill:#5068b3;stroke:white;stroke-width:.8}
+svg.site-interactive-chart:focus:not(:focus-visible){outline:none}svg.site-interactive-chart:focus-visible{outline:2px solid #5068b3}
