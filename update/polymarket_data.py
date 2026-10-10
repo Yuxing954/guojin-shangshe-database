@@ -13,6 +13,7 @@ TRANSLATIONS=json.loads((ROOT/'data/macro/prediction-translations.json').read_te
 def localize(market):
     # Exact original-title matching prevents a changed contract from inheriting an old translation.
     return {**market, 'questionZh': TRANSLATIONS['questions'].get(market['question']),
+        'optionLabelZh': TRANSLATIONS.get('options',{}).get(market['question'],market.get('optionLabel')),
         'outcomes': [{**o, 'nameZh': TRANSLATIONS['outcomes'].get(o['name'])} for o in market['outcomes']]}
 THEMES=[
  ('经济与利率',r'\b(fed|fomc|interest rates?|rate cuts?|rate hikes?|inflation|recession|gdp|unemployment|cpi|pce|tariffs?|treasury|government shutdown)\b'),
@@ -35,9 +36,9 @@ def parse_date(value):
     result=datetime.fromisoformat(value.replace('Z','+00:00'))
     return result.replace(tzinfo=timezone.utc) if result.tzinfo is None else result
 
-def normalize(row,now):
+def normalize(row,now,category_override=None):
     question=row.get('question','')
-    category=theme(question)
+    category=category_override or theme(question)
     if not category or row.get('active') is not True or row.get('closed') is not False or row.get('archived'):
         return None
     if not row.get('endDate') or parse_date(row['endDate'])<=now:return None
@@ -58,7 +59,7 @@ def normalize(row,now):
         if not math.isfinite(value) or value<0:raise ValueError('Invalid market statistics')
         return value
     return dict(id=str(row['id']),eventId=str(events[0].get('id',slug)) if events else slug,
-        question=question,category=category,outcomes=[dict(name=str(name),probability=p) for name,p in zip(names,numbers)],
+        question=question,category=category,optionLabel=row.get('groupItemTitle'),outcomes=[dict(name=str(name),probability=p) for name,p in zip(names,numbers)],
         volume24h=numeric('volume24hr'),liquidity=numeric('liquidityNum'),spread=numeric('spread'),
         endDate=row['endDate'],updatedAt=row.get('updatedAt'),url='https://polymarket.com/event/'+slug)
 
@@ -71,6 +72,47 @@ def select(markets):
         if events.get(event,0)>=3 or categories.get(cat,0)>=8:continue
         selected.append(market);events[event]=events.get(event,0)+1;categories[cat]=categories.get(cat,0)+1
     return selected[:24]
+
+def select_events(markets):
+    groups={}
+    for market in markets:
+        groups.setdefault(market['eventId'],[]).append(market)
+    counts={};selected=[]
+    for items in sorted(groups.values(),key=lambda rows:sum(m['volume24h'] or 0 for m in rows),reverse=True):
+        category=items[0]['category']
+        if counts.get(category,0)>=6:continue
+        counts[category]=counts.get(category,0)+1
+        selected.append(items[0])
+    return selected
+
+def expand_event(event,seed,now):
+    if str(event.get('id'))!=seed['eventId'] or event.get('closed') or event.get('archived'):raise ValueError('Event identity/status mismatch')
+    raw=event.get('markets')
+    if not isinstance(raw,list) or not raw:raise ValueError('Event has no markets')
+    items=[];seen=set();expected=0
+    for row in raw:
+        if row.get('active') is not True or row.get('closed') is not False or row.get('archived'):continue
+        try:
+            if parse_date(row['endDate'])<=now:continue
+        except (KeyError,ValueError,TypeError):raise ValueError('Missing active contract deadline')
+        expected+=1
+        item=normalize({**row,'events':[dict(id=event['id'],slug=event['slug'])]},now,seed['category'])
+        if not item:raise ValueError('Invalid active event outcome')
+        if item['id'] in seen:raise ValueError('Duplicate contract')
+        seen.add(item['id']);items.append({**localize(item),'eventTitle':event.get('title'),'eventTitleZh':TRANSLATIONS.get('events',{}).get(event.get('title')),'eventComplete':True,'eventActiveMarketCount':expected})
+    if not items:raise ValueError('No active valid outcomes')
+    for item in items:item['eventActiveMarketCount']=len(items)
+    return items
+
+def with_previous(markets,previous):
+    old={m['id']:m for m in previous.get('markets',[])}
+    for item in markets:
+        prior=old.get(item['id'])
+        if not prior or prior['question']!=item['question']:continue
+        prices={o['name']:o['probability'] for o in prior['outcomes']}
+        for outcome in item['outcomes']:
+            if outcome['name'] in prices:outcome['previousProbability']=prices[outcome['name']]
+    return markets
 
 def main():
     now=datetime.now(timezone.utc);stamp=now.isoformat(timespec='seconds')
@@ -87,10 +129,15 @@ def main():
                 except (ValueError,KeyError,TypeError):continue
                 if market:candidates.append(market)
             if len(body)<100:break
-        markets=[localize(market) for market in select(candidates)]
+        markets=[]
+        for seed in select_events(candidates):
+            url='https://gamma-api.polymarket.com/events/'+seed['eventId']
+            event,digest=fetch(url)
+            receipts.append(dict(url=url,sha256=digest))
+            markets.extend(expand_event(event,seed,now))
         if not markets:raise ValueError('No valid relevant markets')
-        output=dict(version=1,status='ready',fetchedAt=stamp,checkedAt=stamp,markets=markets,receipts=receipts,
-            selectionNote=f'扫描成交量排名前{scanned}个公开活跃合约，按关键词筛选三类主题；非全市场覆盖，每类最多8个。')
+        output=dict(version=2,status='ready',fetchedAt=stamp,checkedAt=stamp,previousFetchedAt=previous.get('fetchedAt'),markets=with_previous(markets,previous),receipts=receipts,
+            selectionNote=f'扫描成交量排名前{scanned}个活跃合约；每主题最多6个事件，补取事件全部有效活跃合约。非全市场覆盖；原始价格不归一化。')
     except Exception:
         output={**previous,'status':'error','checkedAt':stamp,'error':'Gamma读取或校验失败；保留最后成功快照。'}
     temp=TARGET.with_suffix('.tmp');temp.write_text(json.dumps(output,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');temp.replace(TARGET)
@@ -98,3 +145,5 @@ def main():
     if output['status']=='error':raise SystemExit(1)
 
 if __name__=='__main__':main()
+
+

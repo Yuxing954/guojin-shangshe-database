@@ -5,13 +5,13 @@
   <meta name="description" content="中美核心宏观指标、历史走势及重要预测。">
   <title>宏观数据 · 国金商社</title>
   <link rel="stylesheet" href="scripts/site.css?v=8"><link rel="stylesheet" href="scripts/macro.css?v=5">
-  <script defer src="scripts/site-shell.js?v=12"></script><script defer src="scripts/macro-model.js?v=5"></script><script defer src="scripts/macro-dashboard-model.js?v=1"></script><script defer src="scripts/macro.js?v=6"></script>
-<link rel="stylesheet" href="scripts/research-chart.css?v=1"><script defer src="scripts/research-chart.js?v=1"></script><script defer src="scripts/prediction-model.js?v=1"></script><link rel="stylesheet" href="scripts/macro-refinements.css?v=1"><link rel="stylesheet" href="scripts/site-polish.css?v=1"><link rel="stylesheet" href="scripts/macro-dashboard.css?v=1"></head>
+  <script defer src="scripts/site-shell.js?v=12"></script><script defer src="scripts/macro-model.js?v=5"></script><script defer src="scripts/macro-dashboard-model.js?v=1"></script>
+<link rel="stylesheet" href="scripts/research-chart.css?v=1"><script defer src="scripts/research-chart.js?v=1"></script><script defer src="scripts/prediction-model.js?v=2"></script><link rel="stylesheet" href="scripts/macro-refinements.css?v=1"><link rel="stylesheet" href="scripts/site-polish.css?v=1"><link rel="stylesheet" href="scripts/macro-dashboard.css?v=1"><link rel="stylesheet" href="scripts/forecast-desk.css?v=1"><script defer src="scripts/fedwatch-model.js?v=1"></script><script defer src="scripts/forecast-desk.js?v=1"></script><script defer src="scripts/macro.js?v=7"></script></head>
 <body class="site-page macro-dashboard" data-site-section="macro">
 <a class="macro-skip" href="#main">跳至主要内容</a>
 <main id="main" class="site-main" tabindex="-1">
   <header class="portal-header macro-page-head"><div><p class="eyebrow">MACRO MONITOR / 宏观研究</p><h1>宏观数据</h1><p class="macro-intro">从核心读数到长期趋势，追踪中美经济脉络。</p></div><a href="docs/macro-data.md" class="portal-top-link">数据说明 ↗</a></header>
-  <div class="macro-toolbar"><nav class="portal-tabs" aria-label="数据视图"><a class="macro-subtab" href="consumption-macro.html">消费专题</a><button data-view="indicators" aria-pressed="true">核心指标</button><button data-view="predictions" aria-pressed="false">重要预测</button></nav><nav id="countries" class="portal-tabs" aria-label="选择国家"><button data-country="CN" aria-pressed="true">中国</button><button data-country="US" aria-pressed="false">美国</button></nav></div>
+  <div class="macro-toolbar"><nav class="portal-tabs" aria-label="数据视图"><a class="macro-subtab" href="consumption-macro.html">消费专题</a><button data-view="indicators" aria-pressed="true">核心指标</button><button data-view="fedwatch" aria-pressed="false">芝商所 FedWatch</button><button data-view="predictions" aria-pressed="false">Polymarket</button></nav><nav id="countries" class="portal-tabs" aria-label="选择国家"><button data-country="CN" aria-pressed="true">中国</button><button data-country="US" aria-pressed="false">美国</button></nav></div>
   <div id="load-state" class="portal-status" role="status">正在读取宏观数据…</div><div id="skeleton" class="macro-skeleton" aria-hidden="true"><i></i><i></i><i></i></div><p id="data-warning" class="macro-warning" role="status" hidden></p><button id="retry" class="portal-button" hidden>重试读取</button>
   <section id="indicators" hidden>
     <section class="macro-overview" aria-labelledby="overview-title"><div class="macro-section-head"><div><h2 id="overview-title">关键指标概览</h2><p id="overview-meta" class="portal-note"></p></div><span class="macro-static-label">仓库数据快照</span></div><div id="kpi-grid" class="macro-kpis"></div><p class="macro-overview-note">各指标按各自最新期间展示 · 增减色仅表示数值方向 · 点击卡片查看历史</p></section>
@@ -23,12 +23,21 @@
       <section id="detail" class="portal-panel macro-detail" aria-labelledby="metric-title"></section>
     </div>
   </section>
+  <section id="fedwatch" hidden aria-labelledby="fedwatch-heading">
+    <div class="forecast-head"><div><h2 id="fedwatch-heading">芝商所 FedWatch</h2><span class="forecast-label">联邦基金期货隐含概率</span></div><a href="https://www.cmegroup.com/fedwatch" target="_blank" rel="noopener" class="portal-button">CME 官方工具 ↗</a></div>
+    <div id="fedwatch-status" class="forecast-status" role="status"></div>
+    <div class="forecast-controls"><label>会议日期<select id="fedwatch-meeting"></select></label><label>对照快照<select id="fedwatch-compare"></select></label><button id="fedwatch-download" class="portal-button" disabled>下载 CSV</button></div>
+    <div id="fedwatch-content"></div>
+  </section>
   <section id="predictions" hidden aria-labelledby="prediction-heading">
-    <div class="portal-panel-head"><h2 id="prediction-heading">重要预测</h2><button id="prediction-download" class="portal-button" disabled>下载 CSV</button></div>
-    <div id="prediction-status" class="portal-note" role="status"></div>
-    <div class="portal-filter"><input id="prediction-search" type="search" aria-label="搜索预测事件" placeholder="搜索预测（中文或英文）"><label>主题 <select id="prediction-category"><option value="">全部主题</option><option>经济与利率</option><option>金融市场</option><option>政治与地缘</option></select></label></div>
-    <p class="prediction-intro">同一事件集中展示，数值为市场隐含概率；仅列已收录合约。</p><div id="prediction-list" class="prediction-grid"></div><button id="prediction-more" class="portal-button" hidden>显示全部事件</button>
-    <details class="macro-method"><summary>概率、筛选与来源</summary><p>市场隐含概率来自 Polymarket 合约价格，不是官方统计。按成交量筛选经济、金融与地缘主题，结算以原始合约为准。</p><p id="prediction-selection"></p><p>公开 Gamma API 无需密钥，使用及再分发须遵循其条款。<a href="https://docs.polymarket.com/market-data/overview" target="_blank" rel="noopener">官方文档</a> · <a href="https://polymarket.com/tos" target="_blank" rel="noopener">使用条款</a></p></details>
+    <div class="forecast-head"><div><h2 id="prediction-heading">Polymarket</h2><span class="forecast-label">事件合约隐含概率</span></div><button id="prediction-download" class="portal-button" disabled>下载 CSV</button></div>
+    <div id="prediction-status" class="forecast-status" role="status"></div>
+    <nav id="prediction-topics" class="forecast-topics" aria-label="预测主题"><button data-topic="" aria-pressed="true">全部</button><button data-topic="经济与利率" aria-pressed="false">经济与利率</button><button data-topic="金融市场" aria-pressed="false">金融市场</button><button data-topic="政治与地缘" aria-pressed="false">政治与地缘</button></nav>
+    <div class="forecast-controls"><input id="prediction-search" type="search" aria-label="搜索预测事件" placeholder="搜索事件、结果"><select id="prediction-category" aria-label="预测主题" hidden><option value="">全部主题</option><option>经济与利率</option><option>金融市场</option><option>政治与地缘</option></select><label>排序<select id="prediction-sort"><option value="volume">24h 成交</option><option value="deadline">最近截止</option></select></label><button id="prediction-reset" class="portal-button">重置</button></div>
+    <div id="prediction-overview" class="forecast-overview"></div><div id="prediction-list" class="prediction-grid forecast-events"></div><button id="prediction-more" class="portal-button" hidden>显示更多事件</button>
+    <details class="forecast-method"><summary>收录范围与来源</summary><p id="prediction-selection"></p><a href="https://docs.polymarket.com/market-data/overview" target="_blank" rel="noopener">Gamma API ↗</a></details>
   </section>
 </main>
 </body></html>
+
+
