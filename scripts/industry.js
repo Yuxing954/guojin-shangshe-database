@@ -74,9 +74,9 @@
 
   function related(){
     if(!relatedLoaded){$('company-links').innerHTML='<p class="industry-empty">正在读取公司目录…</p>';$('research-links').innerHTML='<p class="industry-empty">正在读取相关研究…</p>';return;}
-    const companies=pool.filter(c=>sector.companySector.split(',').includes(c['子行业'])),sectorUrl='companies.html?sector='+encodeURIComponent(sector.companySector);
+    const companies=pool.filter(c=>sector.companySector.split(',').includes(c['子行业'])),sectorUrl='quotes.html?sector='+encodeURIComponent(sector.companySector);
 
-    $('company-all').href=sectorUrl;$('company-links').innerHTML=companyError?'<p class="industry-empty">公司目录暂时无法读取，可进入公司页重试。</p>':companies.slice(0,5).map(c=>'<a class="industry-company-link" href="'+sectorUrl+'&company='+encodeURIComponent(c['证券代码'])+'"><span>'+D.esc(c['公司名称'])+'</span><small>'+D.esc(c['证券代码'])+' →</small></a>').join('')||'<p class="industry-empty">暂无公司</p>';
+    $('company-all').href=sectorUrl;$('company-links').innerHTML=companyError?'<p class="industry-empty">公司目录暂时无法读取，可进入覆盖池重试。</p>':companies.slice(0,5).map(c=>'<a class="industry-company-link" href="'+'quotes.html?sector='+encodeURIComponent(c['子行业'])+'&symbol='+encodeURIComponent(c['证券代码'])+'"><span>'+D.esc(c['公司名称'])+'</span><small>'+D.esc(c['证券代码'])+' →</small></a>').join('')||'<p class="industry-empty">暂无公司</p>';
 
     const items=research.filter(r=>R.sectorIds(r).includes(sector.researchSector)).sort((a,b)=>b.published.localeCompare(a.published)).slice(0,5);
 
@@ -92,7 +92,7 @@
 
     snapshot=await D.json('data/industry/overview.json');sources=Object.fromEntries(snapshot.sources.map(s=>[s.id,s]));select();$('content').hidden=false;$('status').textContent='';$('snapshot-note').textContent='最近核对 '+(snapshot.checkedAt||'未记录');
 
-    const results=await Promise.allSettled([D.json('data-manifest.json').then(m=>D.table(m.datasets.find(d=>d.id==='valuation').file)),D.json('data/research/recent.json')]);
+    const results=await Promise.allSettled([D.json('data/coverage-companies.json').then(d=>d.companies.map(c=>({'证券代码':c.code,'公司名称':c.name,'子行业':c.sector}))),D.json('data/research/recent.json')]);
 
     relatedLoaded=true;if(results[0].status==='fulfilled')pool=results[0].value;else companyError=true;
     if(results[1].status==='fulfilled')research=results[1].value.dbs.filter(d=>['views','minutes'].includes(d.id)).flatMap(d=>d.rows.map(r=>{const published=r['时间']||r['日期']||'';return {kind:d.id,title:r['标题']||'',published,date:published.slice(0,10),content:r['内容']||r['摘要']||'',sector:r['覆盖板块']||r['命中关键词']||'',company:r['相关标的']||'',url:D.link(r['原文链接']||r['下载链接']),file:r['文件名']||'',state:r['内容状态']||''};}));else researchError=true;related();
@@ -100,4 +100,3 @@
   }catch(error){$('content').hidden=true;$('status').innerHTML='行业数据暂时无法读取。<button class="portal-button" onclick="location.reload()">重新加载</button>';}
 
 })();
-

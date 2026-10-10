@@ -78,7 +78,7 @@ svg{width:100%;height:auto;display:block}
 @media(max-width:960px){.kpis{grid-template-columns:repeat(3,1fr)}.kpi:nth-child(5n){border-right:1px solid #eef1f4}.grid2,.grid3{grid-template-columns:1fr}}
 #view-monthly .controls{flex-wrap:wrap;gap:8px}#view-monthly .controls .srcbtn{font-size:12px;padding:6px 9px}
 @media(max-width:640px){.wrap{padding:14px 10px}.hero{flex-direction:column;align-items:flex-start}.kpis{grid-template-columns:repeat(2,1fr)}.kpi{border-right:0}.signal{grid-template-columns:1fr}.hero h1{font-size:20px}}
-</style><link rel="stylesheet" href="scripts/site.css?v=7"><script defer src="scripts/site-shell.js?v=12"></script><link rel="stylesheet" href="scripts/dutyfree-holidays.css?v=2"><script defer src="scripts/dutyfree-holidays.js?v=20261009mergedcopy"></script><link rel="stylesheet" href="scripts/dutyfree-typography.css?v=3"><link rel="stylesheet" href="scripts/site-polish.css?v=1"></head><body class="dutyfree-page"><div class="wrap">
+</style><link rel="stylesheet" href="scripts/site.css?v=7"><script defer src="scripts/site-shell.js?v=20261010coverage"></script><link rel="stylesheet" href="scripts/dutyfree-holidays.css?v=2"><script defer src="scripts/dutyfree-holidays.js?v=20261009mergedcopy"></script><link rel="stylesheet" href="scripts/dutyfree-typography.css?v=3"><link rel="stylesheet" href="scripts/site-polish.css?v=1"></head><body class="dutyfree-page"><div class="wrap">
 <div class="crumbs"><a href="industry.html#dutyfree">行业数据</a> / 免税专题</div>
 <header class="hero"><div><div class="eyebrow">GUOJIN · DUTY FREE RESEARCH DATABASE</div><h1>免税行业数据库</h1><p>月度趋势 · 节假日表现</p></div><div class="asof" id="asof">读取数据中…</div></header>
 <nav class="tabs" id="tabs"><button class="tab on" data-view="monthly">月度数据</button><button class="tab" data-view="holidays">节假日数据</button></nav>
@@ -229,5 +229,3 @@ document.getElementById('hn-metric').onchange=renderHainan;
 document.querySelectorAll('#hn-metric + .trend-modes button').forEach(button=>button.onclick=()=>{trendModes.hn=button.dataset.mode;button.parentElement.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));renderHainan();});
 }
 </script></body></html>
-
-

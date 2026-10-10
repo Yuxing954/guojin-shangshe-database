@@ -32,6 +32,7 @@ class SummaryUpdateTests(unittest.TestCase):
         (root/'data-manifest.json').write_text(json.dumps({'datasets': datasets}), encoding='utf-8')
         for d in datasets: (root/d['file']).write_text('initial', encoding='utf-8')
         (root/'data/research/library.json').write_text('{}', encoding='utf-8')
+        (root/'data/coverage-companies.json').write_text('{"companies": []}', encoding='utf-8')
         def execute(command, **kwargs):
             script = Path(command[1]).name
             if script == 'build_research_recent.py':
@@ -58,6 +59,9 @@ class SummaryUpdateTests(unittest.TestCase):
                 (root/'data/research/library.json').write_text('{"new":true}', encoding='utf-8')
                 changed = run(root, as_of=day)
                 self.assertEqual([k for k,v in changed.items() if v['status'] != 'skipped'], ['resources'])
+                (root/'data/coverage-companies.json').write_text('{"companies": [{"code":"600754.SH"}]}', encoding='utf-8')
+                changed_pool = run(root, as_of=day)
+                self.assertEqual([k for k,v in changed_pool.items() if v['status'] != 'skipped'], ['resources'])
                 call.reset_mock()
                 (root/'data/research/resource-index.json').unlink()
                 run(root, as_of=day)

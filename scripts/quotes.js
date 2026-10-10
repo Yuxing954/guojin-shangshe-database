@@ -3,7 +3,7 @@
   const D=SiteData,M=QuotesModel,K=SinolinkKline,$=id=>document.getElementById(id),esc=D.esc,params=new URLSearchParams(location.search);
   const benchmarks=[{code:'000001.SH',name:'上证指数',index:true},{code:'399006.SZ',name:'创业板指',index:true},{code:'HSI.HI',name:'恒生指数',index:true}];
   const industryIds={'酒店':'hotel','免税':'dutyfree','黄金珠宝':'gold','跨境电商与出海':'overseas','餐饮':'dining','茶饮':'dining'};
-  const groupSectors=['酒店','免税','黄金珠宝','跨境电商与出海','餐饮'];
+  const groupSectors=['酒店','OTA','旅游','免税','黄金珠宝','跨境电商与出海','餐饮','茶饮','商超与线下零售','美妆个护','教育','人服','电商平台','潮玩与生活方式'];
   const storageKey='sinolink.quotes.watchlist.v1',preferencesKey='sinolink.quotes.preferences.v1',cache=new Map();
   let companies=[],quotes={},filtered=[],watch=[],onlyWatch=params.get('group')==='watch',view=params.get('view')==='list'?'list':'heat',pending=false,selected=null;
   let period=['day','week','minute'].includes(params.get('period'))?params.get('period'):'day',chartRequest=0,lastRead='',failed=false,initialized=false,chartData=null,chartSelection=0,pageActive=true,chartPending=new Map(),chartNextAt=new Map(),chartCancels=new Set(),noticeTimer=null,benchmarkBuilt=false,miniCache=new Map(),miniPending=new Set();
@@ -133,7 +133,7 @@
     if(!overviewBuilt){overviewBuilt=true;$('quote-overview').innerHTML='<div class="quotes-large-price"><span id="overview-price"></span><small id="overview-currency"></small></div><p id="overview-change" class="quotes-large-change"></p><p id="overview-note" class="quotes-quote-note"></p><div class="quotes-ohlc">'+[['前收','previousClose'],['开盘','open'],['最高','high'],['最低','low']].map(([label,key])=>'<div><span>'+label+'</span><strong id="overview-'+key+'"></strong></div>').join('')+'</div>';}
     text($('overview-price'),price(q,selected));text($('overview-currency'),selected.index?'':info.currency);text($('overview-change'),signed(q?.change,'',precision(selected))+' / '+signed(q?.percent,'%'));$('overview-change').className='quotes-large-change '+tone(q?.percent);
     text($('overview-note'),q?q.asOf+' · '+info.timeLabel+(q.failed?' · 读取失败，保留上次报价':''):'暂无已取得的有效报价');for(const key of ['previousClose','open','high','low'])text($('overview-'+key),fmt(q?.[key],precision(selected)));
-    $('provider-link').href='https://gu.qq.com/'+(q?.providerCode||K.quoteCode(selected.code));$('company-link').hidden=!!selected.index;$('company-link').href='companies.html?company='+encodeURIComponent(selected.code);
+    $('provider-link').href='https://gu.qq.com/'+(q?.providerCode||K.quoteCode(selected.code));
     $('industry-link').hidden=!industryIds[selected.sector];$('industry-link').href='industry.html#'+(industryIds[selected.sector]||'hotel');
     const active=watch.includes(selected.code);$('detail-watch').hidden=!!selected.index;$('detail-watch').textContent=active?'★ 已自选':'☆ 自选';$('detail-watch').setAttribute('aria-pressed',String(active));$('detail-watch').setAttribute('aria-label',(active?'移除自选：':'加入自选：')+selected.name);
   }
@@ -217,9 +217,10 @@
   let resizeTimer;addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{renderHeat();syncSelection();paintChart();},150);});
   document.addEventListener('visibilitychange',()=>{if(document.hidden)pauseRequests();else{automatic();if(selected&&!chartData)loadChart();}});addEventListener('pagehide',()=>{pageActive=false;pauseRequests();poller.stop();clearTimeout(resizeTimer);clearTimeout(selectionTimer);selectionTimer=null;clearTimeout(searchTimer);});addEventListener('pageshow',()=>{pageActive=true;poller.resume();loadMiniCharts();if(selected&&!chartData)loadChart();});
   try{
-    const manifest=await D.json('data-manifest.json'),dataset=manifest.datasets.find(d=>d.id==='valuation');
-    companies=(await D.table(dataset.file)).map(r=>({code:r['证券代码'],name:r['公司名称'],sector:r['子行业']})).filter(c=>c.code&&c.name);
+    const directory=await D.json('data/coverage-companies.json');
+    companies=M.directory(directory);
     watch=M.watchlist(stored(storageKey,[]),companies);$('sector').innerHTML='<option value="">全部行业</option>'+[...new Set(companies.map(c=>c.sector))].map(s=>'<option>'+esc(s)+'</option>').join('');
+    const combined=params.get('sector');if(combined?.includes(',')&&combined.split(',').every(s=>companies.some(c=>c.sector===s)))$('sector').innerHTML+='<option value="'+esc(combined)+'">'+esc(combined.replace(/,/g,' / '))+'</option>';
     const pref=stored(preferencesKey,{});$('columns').value=pref?.columns==='full'?'full':'compact';$('chart-window').value=['20','60','120'].includes(pref?.window)?pref.window:'60';$('show-ma').checked=pref?.ma!==false;$('live-sort').checked=pref?.liveSort===true;if(!params.has('view')&&pref?.view==='list')view='list';text($('order-hint'),$('live-sort').checked?'随报价按当前排序重排':'报价实时更新 · 位置固定');
     for(const id of ['search','market','sector','sort']){const val=params.get(id==='search'?'q':id);if(val!=null)$(id).value=val;}if(!$('sort').value)$('sort').value='change-desc';
     $('content').hidden=false;render();

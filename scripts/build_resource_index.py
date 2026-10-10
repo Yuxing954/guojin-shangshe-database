@@ -17,16 +17,13 @@ def read(path, default):
 
 def build(root=ROOT):
     root = Path(root)
-    manifest = read(root / 'data-manifest.json', {})
-    valuation = next(d['file'] for d in manifest['datasets'] if d['id'] == 'valuation')
-    with (root / valuation).open(encoding='utf-8-sig', newline='') as handle:
-        companies = list(csv.DictReader(handle))
+    companies = read(root / 'data/coverage-companies.json', {'companies': []})['companies']
     items = []
     for c in companies:
-        code, name = c['证券代码'], c['公司名称']
+        code, name = c['code'], c['name']
         items.append({'id': code, 'kind': 'company', 'title': name, 'company': name,
-                      'code': code, 'sector': c.get('子行业', ''), 'date': c.get('数据日期', '')[:10],
-                      'href': 'companies.html?' + urlencode({'company': code})})
+                      'code': code, 'aliases': c.get('aliases', []), 'sector': c.get('sector', ''), 'date': c.get('addedAt', '')[:10],
+                      'href': 'quotes.html?' + urlencode({'symbol': code})})
     library = read(root / 'data/research/library.json', {'records': []})
     for r in library['records']:
         s = r.get('storage', {})

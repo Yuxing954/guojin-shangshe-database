@@ -5,7 +5,7 @@
 <title>实时行情 · 国金商社</title>
 <link rel="stylesheet" href="scripts/site.css?v=7">
 <script defer src="scripts/site-data.js?v=2"></script><script defer src="scripts/market-kline.js?v=20261009-3"></script>
-<script defer src="scripts/quotes-model.js?v=20261009-compact"></script><script defer src="scripts/site-shell.js?v=12"></script><script defer src="scripts/quotes-poller.js?v=2"></script><script defer src="scripts/quotes.js?v=20261009mergedcopy"></script>
+<script defer src="scripts/quotes-model.js?v=20261010coverage"></script><script defer src="scripts/site-shell.js?v=20261010coverage"></script><script defer src="scripts/quotes-poller.js?v=2"></script><script defer src="scripts/quotes.js?v=20261010coverage"></script>
 <link rel="stylesheet" href="scripts/site-polish.css?v=1"><link rel="stylesheet" href="scripts/quotes.css?v=20261009-compact"></head><body><main id="main">
 <header class="portal-header quotes-header"><div><p class="eyebrow">MARKET / RESEARCH DESK</p><h1>实时行情</h1></div><div class="quotes-actions"><button class="quotes-text-button" id="pause-quotes" type="button" aria-pressed="false">暂停更新</button><button class="quotes-text-button" id="export-quotes" type="button" disabled>导出当前范围</button><button class="portal-button" id="refresh" type="button">刷新报价</button></div></header>
 <div id="status" class="quotes-status" role="status" aria-live="polite">正在读取覆盖公司…</div>
@@ -30,7 +30,7 @@
 <div class="quotes-chart-head"><div class="quotes-periods" id="periods" aria-label="走势周期"><button type="button" data-period="minute" aria-pressed="false">分时</button><button type="button" data-period="day" aria-pressed="true">日K</button><button type="button" data-period="week" aria-pressed="false">周K</button></div><button class="quotes-text-button" id="chart-retry" type="button">刷新走势</button></div>
 <div class="quotes-chart-options"><label><input type="checkbox" id="show-ma" checked> MA5 / MA20</label><select id="chart-window" aria-label="日K范围"><option value="20">近1个月</option><option value="60" selected>近3个月</option><option value="120">近6个月</option></select></div>
 <p id="chart-status" class="quotes-context" role="status"></p><div id="chart-readout" class="quotes-chart-readout" aria-live="off"></div><div id="chart" aria-busy="false"></div><p id="chart-detail" class="quotes-context"></p>
-<div class="quotes-detail-links"><a id="company-link">公司财务 →</a><a id="industry-link">行业数据 →</a><a id="provider-link" target="_blank" rel="noopener">腾讯自选股 ↗</a></div>
+<div class="quotes-detail-links"><a id="industry-link">行业数据 →</a><a id="provider-link" target="_blank" rel="noopener">腾讯自选股 ↗</a></div>
 </section><div id="detail-empty" class="quotes-detail-empty">选择一家覆盖公司，查看走势。</div>
 </div>
 <p class="quotes-context quotes-footnote">本币报价 · 涨跌幅较前收盘 · 报价可能延迟</p>

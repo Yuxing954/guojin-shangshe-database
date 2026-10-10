@@ -13,9 +13,12 @@ on:
       - "industry.html"
       - "quotes.html"
       - "scripts/quotes*"
+      - "tests/quotes-workbench.browser.cjs"
       - "tests/fixtures/tencent-charts*"
       - "scripts/market-kline*"
       - "companies.html"
+      - "data/coverage-companies.json"
+      - "scripts/coverage*"
       - "research.html"
       - "hotel-dashboard.html"
       - "dutyfree-dashboard.html"
@@ -93,6 +96,7 @@ jobs:
           python scripts/test_onedrive_index.py
           node --check scripts/research-library-model.js
           node scripts/research-library-model.test.cjs
+          node scripts/coverage-model.test.cjs
           node --check scripts/quotes.js
           node --check scripts/quotes-model.js
           node scripts/quotes-model.test.cjs
@@ -106,7 +110,6 @@ jobs:
           node --check scripts/dutyfree-holidays.js
           node tests/dutyfree-holidays.test.cjs
           python tests/test_dutyfree_supplements.py
-          node --check scripts/companies.js
           node --check scripts/resource-search.js
           node --check scripts/resource-model.js
           node scripts/resource-model.test.cjs
@@ -119,3 +122,10 @@ jobs:
           node scripts/market-kline.test.js
           node scripts/earnings-calendar.test.cjs
           node scripts/earnings.test.cjs
+
+      - name: Install browser test dependency
+        run: |
+          npm install --no-save --package-lock=false playwright@1.62.1
+          npx playwright install --with-deps chromium
+      - name: Verify expanded coverage pool in browser
+        run: node tests/quotes-workbench.browser.cjs
