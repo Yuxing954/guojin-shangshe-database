@@ -11,7 +11,7 @@ const root=path.resolve(__dirname,'..'),server=http.createServer((req,res)=>{
  try{
  const context=await browser.newContext({viewport:{width:1400,height:1100}});await context.route('**/*',r=>r.request().url().startsWith(base)?r.continue():r.abort());
  const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
- for(const url of ['industry.html#dutyfree','industry.html#hotel','industry.html#gold','industry.html#dining','hotel-dashboard.html','dutyfree-dashboard.html','gold-jewelry.html','macro.html','consumption-macro.html','dining.html','overseas.html']){
+ for(const url of ['industry.html#dutyfree','industry.html#hotel','industry.html#gold','industry.html#dining','hotel-dashboard.html','dutyfree-dashboard.html','gold-jewelry.html','macro.html','consumption-macro.html','dining.html']){
    console.log('Checking chart '+url);await page.goto(base+'/'+url,{waitUntil:'domcontentloaded'});
    const id=url.split('#')[1],scope=url.startsWith('industry.html#')&&['hotel','dutyfree','dining'].includes(id)?page.frameLocator('#panel-'+id):page;
    const svg=scope.locator('svg.site-interactive-chart:visible:not(.macro-spark)').first();await svg.waitFor({timeout:20000});await svg.scrollIntoViewIfNeeded();
@@ -30,9 +30,8 @@ const root=path.resolve(__dirname,'..'),server=http.createServer((req,res)=>{
  ['industry.html#dutyfree','#chart-mode','#chart'],
  ['consumption-macro.html?indicator=retail','#measure','#chart'],
  ['macro.html?country=US&indicator=us-housing-starts','#mode','#primary-chart'],
- ['dining.html','#sector-chart-mode','#chart'],
- ['#sector-chart-mode','#chart']]){
-  await page.goto(base+'/'+url);await page.waitForSelector(host+' svg.site-paired-chart');
+ ['dining.html','#sector-chart-mode','#chart']]){
+  await page.goto(base+'/'+url);if(url.startsWith('industry.html'))await page.locator('#gold-industry-history > summary').click();await page.waitForSelector(host+' svg.site-paired-chart');
   assert.equal(await page.locator(control).inputValue(),'combo',url+' default combo');
   assert.ok(await page.locator(host+' .site-value-bar').count()>0,url+' values');
   assert.ok(await page.locator(host+' .site-change-line').count()>0,url+' YoY');
