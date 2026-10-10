@@ -23,7 +23,7 @@
   const metrics={daily_sales:['日均销售额','亿元',2],sales:['假期销售额','亿元',2],shoppers:['购物人次','万人次',2],daily_shoppers:['日均购物人次','万人次',2],spend:['每购物人次金额','元',0],items:['购物件数','万件',2]};
   let data,holiday='国庆',year='全部',metric='daily_sales';
   function visibility(){el.hidden=location.pathname.endsWith('industry.html')&&location.hash!=='#dutyfree';}
-  addEventListener('hashchange',visibility);visibility();
+  addEventListener('hashchange',visibility);visibility();let chartResize;addEventListener('resize',()=>{clearTimeout(chartResize);chartResize=setTimeout(()=>{if(data)render();},150);});
   el.innerHTML='<p class="dh-message" role="status">正在读取节假日数据…</p>';
   function sources(r){if(r.web_source){const w=r.web_source;return '<details class="dh-source"><summary>来源与口径</summary><p>'+esc(w.authority)+' · '+esc(w.publisher)+' · '+esc(w.publishedAt)+'</p><p><a href="'+esc(w.url)+'" target="_blank" rel="noopener noreferrer">'+esc(w.title)+'</a></p><p>'+esc(r.notes.join(' '))+'</p><p>'+esc(r.yoy_basis)+'</p>'+publicNotes(r)+'<p>日均=总额/统计天数；每购物人次金额=金额/人次×10000。'+esc(r.items_text?'购物件数：'+r.items_text:num(r.items)?'购物件数：'+r.items+'万件。':'')+'</p></details>';}return '<details class="dh-source"><summary>来源与口径</summary><p>'+esc(data.sourceFile)+' · '+esc(r.sheet)+' · '+esc(r.quality)+'</p><p>'+esc(r.notes.join(' ')||'沿用原表当年公布口径。')+'</p><p>'+esc(r.yoy_basis||'缺少可比同比')+'</p><ul>'+Object.entries(r.source_cells).map(([key,s])=>'<li>'+esc((s.sheet||r.sheet)+'!'+s.cell)+'：'+esc(s.value===null?'空缺':s.value)+(s.formula?'；原公式 '+esc(s.formula):'')+'</li>').join('')+'</ul></details>';}
   function chart(rows){

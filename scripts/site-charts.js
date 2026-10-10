@@ -104,7 +104,7 @@ function paired(rows,opt={}){
   const normalized=rows.map((r,i)=>({...r,x:Number.isFinite(r.x)?r.x:i,values:r.values||[{name:opt.name||'数值',value:r.value,change:r.change,color:'#6574b9'}]}));
   const valid=normalized.filter(r=>r.values.some(s=>showValue&&Number.isFinite(s.value)||showChange&&Number.isFinite(s.change)));
   if(!valid.length)return {html:'<p class="portal-empty">暂无数据</p>',points:[]};
-  const w=Math.max(320,opt.width||900),h=320,L=72,R=showChange&&showValue?72:24,T=42,B=48,bottom=h-B;
+  const w=Math.max(320,opt.width||Math.min(900,typeof innerWidth==='number'?innerWidth-64:900)),h=320,L=72,R=showChange&&showValue?72:24,T=42,B=48,bottom=h-B;
   const xs=normalized.map(r=>r.x),xmin=Math.min(...xs),xmax=Math.max(...xs),width=w-L-R;
   const unique=[...new Set(xs)].sort((a,b)=>a-b),delta=unique.length>1?Math.min(...unique.slice(1).map((x,i)=>x-unique[i])):1;
   const margin=width/(unique.length+1)/2,px=x=>L+margin+(x-xmin)/(xmax-xmin||1)*(width-margin*2);
@@ -124,7 +124,7 @@ function paired(rows,opt={}){
     points.push({x:px(r.x),text});
     if(showValue)r.values.forEach((s,si)=>{if(!Number.isFinite(s.value))return;const y=py(s.value,vd),zero=py(0,vd);svg+='<rect class="site-value-bar" x="'+(px(r.x)+(si-seriesCount/2)*barWidth)+'" y="'+Math.min(y,zero)+'" width="'+Math.max(.8,barWidth-1)+'" height="'+Math.max(1,Math.abs(zero-y))+'" rx="2" fill="'+(s.color||colors[si%colors.length])+'" opacity=".72"><title>'+esc(text)+'</title></rect>';});
     const step=Math.max(1,Math.ceil(normalized.length/Math.max(2,Math.floor(width/110))));
-    if(ri===0||ri===normalized.length-1||ri%step===0&&normalized.length-ri>step/2)svg+='<text x="'+px(r.x)+'" y="'+(h-17)+'" text-anchor="'+(ri===0?'start':ri===normalized.length-1?'end':'middle')+'">'+esc(r.period)+'</text>';
+    if(ri===0||ri===normalized.length-1||w>=520&&ri%step===0&&normalized.length-ri>step/2)svg+='<text x="'+px(r.x)+'" y="'+(h-17)+'" text-anchor="'+(ri===0?'start':ri===normalized.length-1?'end':'middle')+'">'+esc(String(r.period).replace(/年/g,'·').replace(/月/g,''))+'</text>';
   });
   if(showChange)for(let si=0;si<seriesCount;si++){let path='',prior=null;for(const r of normalized){const s=r.values[si];if(!Number.isFinite(s?.change)){prior=null;continue;}const gap=r.breakBefore||prior&&(r.x-prior.x)>(opt.gap??Infinity);path+=(prior&&!gap?'L':'M')+px(r.x)+','+py(s.change,cd)+' ';prior=r;}svg+='<path class="site-change-line" d="'+path+'" fill="none" stroke="'+(seriesCount===1?'#cf8844':colors[si%colors.length])+'" stroke-width="2.5" stroke-linejoin="round"/>';normalized.forEach(r=>{if(Number.isFinite(r.values[si]?.change))svg+='<circle data-chart-point="'+si+'" tabindex="0" cx="'+px(r.x)+'" cy="'+py(r.values[si].change,cd)+'" r="2.5" fill="'+(seriesCount===1?'#cf8844':colors[si%colors.length])+'"><title>'+esc(points[normalized.indexOf(r)].text)+'</title></circle>';});}
   svg+='</svg>';
