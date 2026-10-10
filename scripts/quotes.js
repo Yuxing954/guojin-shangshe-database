@@ -167,8 +167,7 @@
     if(!chartData||!selected||chartData.code!==selected.code||chartData.period!==period)return;
     $('chart').setAttribute('aria-busy','false');
     const rows=chartRows(),minute=period==='minute';$('chart').innerHTML=draw(rows,minute,selected,chartData.adjustment);inspectPoint(rows.length-1);
-    const svg=$('chart').querySelector('svg');svg.onpointermove=e=>{const rect=svg.getBoundingClientRect(),x=(e.clientX-rect.left)/rect.width*chartData.canvasWidth;let closest=0;chartData.x.forEach((v,i)=>{if(Math.abs(v-x)<Math.abs(chartData.x[closest]-x))closest=i;});inspectPoint(closest);};
-    svg.onpointerleave=()=>inspectPoint(rows.length-1);svg.onkeydown=e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();inspectPoint(chartSelection+(e.key==='ArrowLeft'?-1:1));}};
+    SiteCharts.attach($('chart'),rows.map((row,i)=>({x:chartData.x[i],y:chartData.y[i],text:selected.name+' · '+dateLabel(row[0])+'\n'+(minute?[['价格',row[2]]]:[['开',row[1]],['收',row[2]],['高',row[3]],['低',row[4]]]).map(([label,value])=>label+' '+fmt(value,precision(selected))).join(' / ')+' '+meta(selected).currency+'\n腾讯行情 · '+chartData.adjustment+(chartData.ma.length?'\n'+chartData.ma.map(line=>'MA'+line.window+' '+fmt(line.values[i],precision(selected))).join(' · '):'')})),{crosshair:false,onSelect:inspectPoint,onClear:()=>inspectPoint(rows.length-1)});
     const end=dateLabel(rows.at(-1)[0]).slice(0,10);$('chart-status').textContent=(minute?'最近交易日分时 · '+end:chartData.adjustment+(period==='day'?'日K':'周K')+' · '+rows.length+' 条')+(selected.index?'':' · '+meta(selected).currency);
     $('chart-detail').textContent=dateLabel(rows[0][0])+' — '+dateLabel(rows.at(-1)[0])+(period!=='minute'&&chartData.adjustment==='源数据'?' · 来源未标明复权方式':'')+(quotes[selected.code]&&quotes[selected.code].asOf.slice(0,10)!==end?' · 走势与报价日期不同':'');
   }

@@ -29,8 +29,12 @@
     const labels=[...new Map(points.map(p=>[p.x,p.label])).entries()].sort((a,b)=>a[0]-b[0]),every=Math.max(1,Math.ceil(labels.length/Math.max(3,Math.floor(w/100))));
     labels.forEach(([xx,label],i)=>{if(i===0||i===labels.length-1||(i%every===0&&x(maxX)-x(xx)>=72))svg+=`<text x="${x(xx)}" y="${h-12}" text-anchor="${i===0?'start':i===labels.length-1?'end':'middle'}" fill="#8a93a3" font-size="10">${esc(label)}</text>`;});
     series.forEach((s,si)=>{let d='',prior=null;for(const p of s.points){if(!R.finite(p.value)){prior=null;continue;}d+=(prior&&p.x-prior.x<=gap?'L':'M')+x(p.x)+','+y(p.value)+' ';prior=p;}svg+=`<path d="${d}" fill="none" stroke="${s.color||colors[si]}" stroke-width="2.2"/>`;s.points.forEach((p,pi)=>{if(R.finite(p.value))svg+=`<circle class="gj-chart-point" tabindex="0" data-series="${si}" data-point="${pi}" cx="${x(p.x)}" cy="${y(p.value)}" r="3" fill="white" stroke="${s.color||colors[si]}" stroke-width="1.7" aria-label="${esc(p.label+' '+s.name+' '+num(p.value,2)+unit)}"><title>${esc(p.label+' '+s.name+' '+num(p.value,2)+unit)}</title></circle>`;});});
-    el.innerHTML=svg+'</svg><div class="gj-legend">'+series.map((s,i)=>`<span><i style="background:${s.color||colors[i]}"></i>${esc(s.name)}</span>`).join('')+'</div><div class="gj-tooltip" hidden></div>';
-    const tip=el.querySelector('.gj-tooltip');el.querySelectorAll('.gj-chart-point').forEach(circle=>{const show=()=>{const s=series[Number(circle.dataset.series)],p=s.points[Number(circle.dataset.point)];tip.innerHTML=`<b>${esc(p.label)}</b>${esc(s.name)}：${num(p.value,2)}${esc(unit)}${p.note?'<br>'+esc(p.note):''}`;tip.hidden=false;const box=circle.getBoundingClientRect(),rect=el.getBoundingClientRect();tip.style.left=Math.max(5,Math.min(box.left-rect.left+8,rect.width-230))+'px';tip.style.top=Math.max(0,box.top-rect.top-55)+'px';};circle.addEventListener('mouseenter',show);circle.addEventListener('focus',show);circle.addEventListener('mouseleave',()=>tip.hidden=true);circle.addEventListener('blur',()=>tip.hidden=true);});
+    el.innerHTML=svg+'</svg><div class="gj-legend">'+series.map((s,i)=>`<span><i style="background:${s.color||colors[i]}"></i>${esc(s.name)}</span>`).join('')+'</div>';
+    const dates=[...new Map(points.map(p=>[p.x,p.label])).entries()].sort((a,b)=>a[0]-b[0]);
+    SiteCharts.attach(el,dates.map(([date,label])=>({x:x(date),text:label+'\n'+series.map(s=>{
+      const p=s.points.find(p=>p.x===date);return s.name+'：'+(R.finite(p?.value)?num(p.value,2)+unit:'—')+(p?.note?' · '+p.note:'');
+    }).join('\n')})));
+
   }
   try{
     const load=async path=>{const r=await fetch(path,{cache:'no-cache'});if(!r.ok)throw new Error('无法读取 '+path);return r.json();};

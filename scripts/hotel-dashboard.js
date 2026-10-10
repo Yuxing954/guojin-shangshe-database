@@ -389,24 +389,12 @@
     });
     var legend = document.createElement('div'); legend.className = 'hd-legend';
     legend.innerHTML = lines.map(function (s) { return '<span><i style="background:' + s.color + '"></i>' + esc(s.name) + (s.dash ? '（虚线）' : '') + '</span>'; }).join(''); host.appendChild(legend);
-    var tip = document.createElement('div'); tip.className = 'hd-tip'; host.appendChild(tip);
-    var guide = svgEl('line', { y1: T, y2: H - B, stroke: '#a3abc2', 'stroke-dasharray': '3 3', visibility: 'hidden' }); svg.appendChild(guide);
-    var pointMaps = lines.map(function (s) { return new Map(s.pts.map(function (p) { return [p.x, p]; })); }), lastIndex = xs.length - 1;
-    function show(index, clientX, clientY) {
-      lastIndex = Math.max(0, Math.min(xs.length - 1, index)); var x = xs[lastIndex], firstPoint = pointMaps[0].get(x);
-      guide.setAttribute('x1', px(x)); guide.setAttribute('x2', px(x)); guide.setAttribute('visibility', 'visible');
-      tip.innerHTML = '<strong>' + esc(x) + '</strong>' + (firstPoint && firstPoint.date ? '<br>' + esc(firstPoint.date) : '') + lines.map(function (s, i) {
-        var p = pointMaps[i].get(x); return '<br><span style="color:' + s.color + '">●</span> ' + esc(s.name) + '：' + fmt(p ? p.y : null, 1) + ' ' + esc(opt.unit);
-      }).join(''); tip.style.display = 'block';
-      var box = host.getBoundingClientRect(), rect = svg.getBoundingClientRect(), left = clientX == null ? (px(x) / W * rect.width + rect.left - box.left) : clientX - box.left + 12;
-      tip.style.left = Math.max(0, Math.min(box.width - tip.offsetWidth - 8, left)) + 'px'; tip.style.top = (clientY == null ? 24 : Math.max(0, clientY - box.top - 30)) + 'px';
-    }
-    svg.addEventListener('pointermove', function (event) { var r = svg.getBoundingClientRect(); var x = (event.clientX - r.left) / r.width * W; show(Math.round((x - L) / (W - L - R) * (xs.length - 1)), event.clientX, event.clientY); });
-    svg.addEventListener('pointerdown', function (event) { var r = svg.getBoundingClientRect(); show(Math.round(((event.clientX - r.left) / r.width * W - L) / (W - L - R) * (xs.length - 1)), event.clientX, event.clientY); });
-    function hide() { tip.style.display = 'none'; guide.setAttribute('visibility', 'hidden'); }
-    svg.addEventListener('pointerleave', hide); svg.addEventListener('blur', hide);
-    svg.addEventListener('focus', function () { show(lastIndex); });
-    svg.addEventListener('keydown', function (e) { if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { e.preventDefault(); show(lastIndex + (e.key === 'ArrowLeft' ? -1 : 1)); } else if (e.key === 'Escape') hide(); });
+    var maps = lines.map(function(s){return new Map(s.pts.map(function(p){return [p.x,p];}));});
+    SiteCharts.attach(host, xs.map(function(key){
+      var first=maps.map(function(map){return map.get(key);}).find(function(p){return p&&M.num(p.y)!=null;});
+      return {x:px(key),y:first?py(first.y):T,text:key+(first&&first.date?'\n'+first.date:'')+'\n'+lines.map(function(s,i){var p=maps[i].get(key);return s.name+'：'+fmt(p?p.y:null,1)+' '+(opt.unit||'');}).join('\n')};
+    }));
+
   }
 })();
 
