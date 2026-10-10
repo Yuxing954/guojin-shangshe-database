@@ -1,0 +1,3388 @@
+{
+  "version": 2,
+  "updatedAt": "2026-10-10T00:29:12.829Z",
+  "sources": [
+    {
+      "id": "eastmoney-archive",
+      "label": "东方财富妙想（历史快照）",
+      "url": "https://github.com/Yuxing954/guojin-shangshe-database/blob/f561ec207cca6cf002f3aa483908acb163a13777/data/earnings-snapshot.json",
+      "checkedAt": "2026-09-11T00:00:00+08:00",
+      "note": "原查询日 2026-09-11 · 港股为披露日期字段，公告原文待补"
+    },
+    {
+      "id": "sse",
+      "label": "上海证券交易所",
+      "url": "https://www.sse.com.cn/disclosure/listedinfo/periodic/",
+      "checkedAt": "2026-10-10T00:29:12.829Z",
+      "note": "沪市覆盖公司 · 预约与定期公告官方接口"
+    },
+    {
+      "id": "hkex",
+      "label": "香港交易所披露易",
+      "url": "https://www.hkexnews.hk/",
+      "checkedAt": "2026-10-10T00:25:13.688Z",
+      "note": "海底捞 / 同程 · 正式业绩公告与董事会通知原文"
+    }
+  ],
+  "records": [
+    {
+      "id": "002033.SZ|2026H1|formal",
+      "code": "002033.SZ",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "",
+      "actual": "2026-08-11",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "eastmoney-archive",
+      "updatedAt": "2026-09-11T00:00:00+08:00",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "file": "data/earnings-snapshot.json",
+        "metric": "定期报告实际披露日期；2026中报，报告期2026-06-30",
+        "tool": "mx_ashare_finance_data",
+        "columns": [
+          "定期报告实际披露日期",
+          "2026中报",
+          "2026一季报"
+        ],
+        "row": [
+          "丽江股份(002033.SZ)",
+          "2026-08-11",
+          "2026-04-24"
+        ]
+      }
+    },
+    {
+      "id": "002251.SZ|2026H1|formal",
+      "code": "002251.SZ",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "",
+      "actual": "2026-08-27",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "eastmoney-archive",
+      "updatedAt": "2026-09-11T00:00:00+08:00",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "file": "data/earnings-snapshot.json",
+        "metric": "定期报告实际披露日期；2026中报，报告期2026-06-30",
+        "tool": "mx_ashare_finance_data",
+        "columns": [
+          "定期报告实际披露日期",
+          "2026中报",
+          "2026一季报"
+        ],
+        "row": [
+          "步步高(002251.SZ)",
+          "2026-08-27",
+          "2026-04-23"
+        ]
+      }
+    },
+    {
+      "id": "002345.SZ|2026H1|formal",
+      "code": "002345.SZ",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "",
+      "actual": "2026-08-27",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "eastmoney-archive",
+      "updatedAt": "2026-09-11T00:00:00+08:00",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "file": "data/earnings-snapshot.json",
+        "metric": "定期报告实际披露日期；2026中报，报告期2026-06-30",
+        "tool": "mx_ashare_finance_data",
+        "columns": [
+          "定期报告实际披露日期",
+          "2026中报",
+          "2026一季报"
+        ],
+        "row": [
+          "潮宏基(002345.SZ)",
+          "2026-08-27",
+          "2026-04-30"
+        ]
+      }
+    },
+    {
+      "id": "002607.SZ|2026H1|formal",
+      "code": "002607.SZ",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "",
+      "actual": "2026-08-27",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "eastmoney-archive",
+      "updatedAt": "2026-09-11T00:00:00+08:00",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "file": "data/earnings-snapshot.json",
+        "metric": "定期报告实际披露日期；2026中报，报告期2026-06-30",
+        "tool": "mx_ashare_finance_data",
+        "columns": [
+          "定期报告实际披露日期",
+          "2026中报",
+          "2026一季报"
+        ],
+        "row": [
+          "中公教育(002607.SZ)",
+          "2026-08-27",
+          "2026-04-29"
+        ]
+      }
+    },
+    {
+      "id": "002867.SZ|2026H1|formal",
+      "code": "002867.SZ",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "",
+      "actual": "2026-08-26",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "eastmoney-archive",
+      "updatedAt": "2026-09-11T00:00:00+08:00",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "file": "data/earnings-snapshot.json",
+        "metric": "定期报告实际披露日期；2026中报，报告期2026-06-30",
+        "tool": "mx_ashare_finance_data",
+        "columns": [
+          "定期报告实际披露日期",
+          "2026中报",
+          "2026一季报"
+        ],
+        "row": [
+          "周大生(002867.SZ)",
+          "2026-08-26",
+          "2026-04-29"
+        ]
+      }
+    },
+    {
+      "id": "00667.HK|2026H1|formal",
+      "code": "00667.HK",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "provider-date",
+      "expected": "",
+      "actual": "2026-08-19",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "eastmoney-archive",
+      "updatedAt": "2026-09-11T00:00:00+08:00",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "file": "data/earnings-snapshot.json",
+        "metric": "定期报告实际披露日期；2026中报，报告期2026-06-30",
+        "tool": "mx_hk_finance_data",
+        "columns": [
+          "定期报告实际披露日期",
+          "2026中报",
+          "2025中报"
+        ],
+        "row": [
+          "中国东方教育(00667.HK)(最新年结日12-31)",
+          "2026-08-19",
+          "-"
+        ]
+      }
+    },
+    {
+      "id": "00780.HK|2025FY|formal",
+      "code": "00780.HK",
+      "period": "2025FY",
+      "kind": "formal",
+      "documentType": "results",
+      "actual": "2026-03-24",
+      "expected": "",
+      "announcementDate": "2026-03-24",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0324/2026032400295_c.pdf",
+      "linkType": "original",
+      "sourceId": "hkex",
+      "updatedAt": "2026-10-10T00:25:13.688Z",
+      "title": "截至二零二五年十二月三十一日止年度之業績公告",
+      "reservations": [],
+      "evidence": {
+        "documentTitle": "截至二零二五年十二月三十一日止年度之業績公告",
+        "securityCode": "00780.HK",
+        "reportPeriod": "2025FY",
+        "documentDate": "2026-03-24",
+        "originalUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0324/2026032400295_c.pdf",
+        "locator": "公告首页证券代码及报告期，末页公告日期；预约通知第1页",
+        "reservationNotice": null
+      },
+      "history": []
+    },
+    {
+      "id": "00780.HK|2026H1|formal",
+      "code": "00780.HK",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "results",
+      "actual": "2026-08-24",
+      "expected": "2026-08-24",
+      "announcementDate": "2026-08-24",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0824/2026082400457_c.pdf",
+      "linkType": "original",
+      "sourceId": "hkex",
+      "updatedAt": "2026-10-10T00:25:13.688Z",
+      "title": "截至二零二六年六月三十日止三個月及六個月之業績公告",
+      "reservations": [
+        {
+          "date": "2026-08-24",
+          "label": "董事会业绩发布安排",
+          "announcedAt": "2026-08-03",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0803/2026080303544_c.pdf"
+        }
+      ],
+      "evidence": {
+        "documentTitle": "截至二零二六年六月三十日止三個月及六個月之業績公告",
+        "securityCode": "00780.HK",
+        "reportPeriod": "2026H1",
+        "documentDate": "2026-08-24",
+        "originalUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0824/2026082400457_c.pdf",
+        "locator": "公告首页证券代码及报告期，末页公告日期；预约通知第1页",
+        "reservationNotice": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0803/2026080303544_c.pdf"
+      },
+      "history": [
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "expected",
+          "from": "",
+          "to": "2026-08-24",
+          "sourceId": "hkex",
+          "previousSourceId": "eastmoney-archive"
+        },
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "announcementDate",
+          "from": "",
+          "to": "2026-08-24",
+          "sourceId": "hkex",
+          "previousSourceId": "eastmoney-archive"
+        },
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "url",
+          "from": "",
+          "to": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0824/2026082400457_c.pdf",
+          "sourceId": "hkex",
+          "previousSourceId": "eastmoney-archive"
+        }
+      ]
+    },
+    {
+      "id": "01179.HK|2026H1|formal",
+      "code": "01179.HK",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "provider-date",
+      "expected": "",
+      "actual": "2026-08-17",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "eastmoney-archive",
+      "updatedAt": "2026-09-11T00:00:00+08:00",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "file": "data/earnings-snapshot.json",
+        "metric": "定期报告实际披露日期；2026中报，报告期2026-06-30",
+        "tool": "mx_hk_finance_data",
+        "columns": [
+          "定期报告实际披露日期",
+          "2026中报",
+          "2025中报"
+        ],
+        "row": [
+          "华住集团-S(01179.HK)(最新年结日12-31)",
+          "2026-08-17",
+          "-"
+        ]
+      }
+    },
+    {
+      "id": "01364.HK|2026H1|formal",
+      "code": "01364.HK",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "provider-date",
+      "expected": "",
+      "actual": "2026-08-26",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "eastmoney-archive",
+      "updatedAt": "2026-09-11T00:00:00+08:00",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "file": "data/earnings-snapshot.json",
+        "metric": "定期报告实际披露日期；2026中报，报告期2026-06-30",
+        "tool": "mx_hk_finance_data",
+        "columns": [
+          "定期报告实际披露日期",
+          "2026中报",
+          "2025中报"
+        ],
+        "row": [
+          "古茗(01364.HK)(最新年结日12-31)",
+          "2026-08-26",
+          "-"
+        ]
+      }
+    },
+    {
+      "id": "02097.HK|2026H1|formal",
+      "code": "02097.HK",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "provider-date",
+      "expected": "",
+      "actual": "2026-08-27",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "eastmoney-archive",
+      "updatedAt": "2026-09-11T00:00:00+08:00",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "file": "data/earnings-snapshot.json",
+        "metric": "定期报告实际披露日期；2026中报，报告期2026-06-30",
+        "tool": "mx_hk_finance_data",
+        "columns": [
+          "定期报告实际披露日期",
+          "2026中报",
+          "2025中报"
+        ],
+        "row": [
+          "蜜雪集团(02097.HK)(最新年结日12-31)",
+          "2026-08-27",
+          "-"
+        ]
+      }
+    },
+    {
+      "id": "06181.HK|2026H1|formal",
+      "code": "06181.HK",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "provider-date",
+      "expected": "",
+      "actual": "2026-08-25",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "eastmoney-archive",
+      "updatedAt": "2026-09-11T00:00:00+08:00",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "file": "data/earnings-snapshot.json",
+        "metric": "定期报告实际披露日期；2026中报，报告期2026-06-30",
+        "tool": "mx_hk_finance_data",
+        "columns": [
+          "定期报告实际披露日期",
+          "2026中报",
+          "2025中报"
+        ],
+        "row": [
+          "老铺黄金(06181.HK)(最新年结日12-31)",
+          "2026-08-25",
+          "-"
+        ]
+      }
+    },
+    {
+      "id": "06862.HK|2025FY|formal",
+      "code": "06862.HK",
+      "period": "2025FY",
+      "kind": "formal",
+      "documentType": "results",
+      "actual": "2026-03-24",
+      "expected": "",
+      "announcementDate": "2026-03-24",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0324/2026032400913_c.pdf",
+      "linkType": "original",
+      "sourceId": "hkex",
+      "updatedAt": "2026-10-10T00:25:13.688Z",
+      "title": "截至2025年12月31日止年度的全年業績公告",
+      "reservations": [],
+      "evidence": {
+        "documentTitle": "截至2025年12月31日止年度的全年業績公告",
+        "securityCode": "06862.HK",
+        "reportPeriod": "2025FY",
+        "documentDate": "2026-03-24",
+        "originalUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0324/2026032400913_c.pdf",
+        "locator": "公告首页证券代码及报告期，末页公告日期；预约通知第1页",
+        "reservationNotice": null
+      },
+      "history": []
+    },
+    {
+      "id": "06862.HK|2026H1|formal",
+      "code": "06862.HK",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "results",
+      "actual": "2026-08-25",
+      "expected": "2026-08-25",
+      "announcementDate": "2026-08-25",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0825/2026082501120_c.pdf",
+      "linkType": "original",
+      "sourceId": "hkex",
+      "updatedAt": "2026-10-10T00:25:13.688Z",
+      "title": "截至2026年6月30日止六個月的中期業績及中期股息及暫停辦理過戶登記手續公告",
+      "reservations": [
+        {
+          "date": "2026-08-25",
+          "label": "董事会业绩发布安排",
+          "announcedAt": "2026-08-12",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0812/2026081200419_c.pdf"
+        }
+      ],
+      "evidence": {
+        "documentTitle": "截至2026年6月30日止六個月的中期業績及中期股息及暫停辦理過戶登記手續公告",
+        "securityCode": "06862.HK",
+        "reportPeriod": "2026H1",
+        "documentDate": "2026-08-25",
+        "originalUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0825/2026082501120_c.pdf",
+        "locator": "公告首页证券代码及报告期，末页公告日期；预约通知第1页",
+        "reservationNotice": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0812/2026081200419_c.pdf"
+      },
+      "history": [
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "expected",
+          "from": "",
+          "to": "2026-08-25",
+          "sourceId": "hkex",
+          "previousSourceId": "eastmoney-archive"
+        },
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "announcementDate",
+          "from": "",
+          "to": "2026-08-25",
+          "sourceId": "hkex",
+          "previousSourceId": "eastmoney-archive"
+        },
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "url",
+          "from": "",
+          "to": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0825/2026082501120_c.pdf",
+          "sourceId": "hkex",
+          "previousSourceId": "eastmoney-archive"
+        }
+      ]
+    },
+    {
+      "id": "09922.HK|2026H1|formal",
+      "code": "09922.HK",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "provider-date",
+      "expected": "",
+      "actual": "2026-08-28",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "eastmoney-archive",
+      "updatedAt": "2026-09-11T00:00:00+08:00",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "file": "data/earnings-snapshot.json",
+        "metric": "定期报告实际披露日期；2026中报，报告期2026-06-30",
+        "tool": "mx_hk_finance_data",
+        "columns": [
+          "定期报告实际披露日期",
+          "2026中报",
+          "2025中报"
+        ],
+        "row": [
+          "九毛九(09922.HK)(最新年结日12-31)",
+          "2026-08-28",
+          "-"
+        ]
+      }
+    },
+    {
+      "id": "09987.HK|2026H1|formal",
+      "code": "09987.HK",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "provider-date",
+      "expected": "",
+      "actual": "2026-07-30",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "eastmoney-archive",
+      "updatedAt": "2026-09-11T00:00:00+08:00",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "file": "data/earnings-snapshot.json",
+        "metric": "定期报告实际披露日期；2026中报，报告期2026-06-30",
+        "tool": "mx_hk_finance_data",
+        "columns": [
+          "定期报告实际披露日期",
+          "2026中报",
+          "2025中报"
+        ],
+        "row": [
+          "百胜中国(09987.HK)(最新年结日12-31)",
+          "2026-07-30",
+          "-"
+        ]
+      }
+    },
+    {
+      "id": "300492.SZ|2026H1|formal",
+      "code": "300492.SZ",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "",
+      "actual": "2026-08-27",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "eastmoney-archive",
+      "updatedAt": "2026-09-11T00:00:00+08:00",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "file": "data/earnings-snapshot.json",
+        "metric": "定期报告实际披露日期；2026中报，报告期2026-06-30",
+        "tool": "mx_ashare_finance_data",
+        "columns": [
+          "定期报告实际披露日期",
+          "2026中报",
+          "2026一季报"
+        ],
+        "row": [
+          "华图山鼎(300492.SZ)",
+          "2026-08-27",
+          "2026-04-29"
+        ]
+      }
+    },
+    {
+      "id": "300662.SZ|2026H1|formal",
+      "code": "300662.SZ",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "",
+      "actual": "2026-08-28",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "eastmoney-archive",
+      "updatedAt": "2026-09-11T00:00:00+08:00",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "file": "data/earnings-snapshot.json",
+        "metric": "定期报告实际披露日期；2026中报，报告期2026-06-30",
+        "tool": "mx_ashare_finance_data",
+        "columns": [
+          "定期报告实际披露日期",
+          "2026中报",
+          "2026一季报"
+        ],
+        "row": [
+          "科锐国际(300662.SZ)",
+          "2026-08-28",
+          "2026-04-28"
+        ]
+      }
+    },
+    {
+      "id": "300866.SZ|2026H1|formal",
+      "code": "300866.SZ",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "",
+      "actual": "2026-08-31",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "eastmoney-archive",
+      "updatedAt": "2026-09-11T00:00:00+08:00",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "file": "data/earnings-snapshot.json",
+        "metric": "定期报告实际披露日期；2026中报，报告期2026-06-30",
+        "tool": "mx_ashare_finance_data",
+        "columns": [
+          "定期报告实际披露日期",
+          "2026中报",
+          "2026一季报"
+        ],
+        "row": [
+          "安克创新(300866.SZ)",
+          "2026-08-31",
+          "2026-04-30"
+        ]
+      }
+    },
+    {
+      "id": "301073.SZ|2026H1|formal",
+      "code": "301073.SZ",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "",
+      "actual": "2026-08-29",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "eastmoney-archive",
+      "updatedAt": "2026-09-11T00:00:00+08:00",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "file": "data/earnings-snapshot.json",
+        "metric": "定期报告实际披露日期；2026中报，报告期2026-06-30",
+        "tool": "mx_ashare_finance_data",
+        "columns": [
+          "定期报告实际披露日期",
+          "2026中报",
+          "2026一季报"
+        ],
+        "row": [
+          "君亭酒店(301073.SZ)",
+          "2026-08-29",
+          "2026-04-29"
+        ]
+      }
+    },
+    {
+      "id": "301381.SZ|2026H1|formal",
+      "code": "301381.SZ",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "",
+      "actual": "2026-08-27",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "eastmoney-archive",
+      "updatedAt": "2026-09-11T00:00:00+08:00",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "file": "data/earnings-snapshot.json",
+        "metric": "定期报告实际披露日期；2026中报，报告期2026-06-30",
+        "tool": "mx_ashare_finance_data",
+        "columns": [
+          "定期报告实际披露日期",
+          "2026中报",
+          "2026一季报"
+        ],
+        "row": [
+          "赛维时代(301381.SZ)",
+          "2026-08-27",
+          "2026-04-28"
+        ]
+      }
+    },
+    {
+      "id": "600258.SH|2025FY|formal",
+      "code": "600258.SH",
+      "period": "2025FY",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-03-31",
+      "actual": "2026-03-31",
+      "announcementDate": "2026-03-31",
+      "announcementPublishedAt": "2026-03-30 22:15:37",
+      "title": "北京首旅酒店（集团）股份有限公司2025年年度报告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-03-31/600258_20260331_Y6A1.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-03-31",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L011&publishYear=2025&companyCode=600258&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "600258",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2025",
+            "publishDate2": "",
+            "publishDate0": "2026-03-31",
+            "companyAbbr": "首旅酒店",
+            "actualDate": "2026-03-31",
+            "bulletinType": "L011"
+          }
+        },
+        "announcement": {
+          "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=2&pageHelp.beginPage=2&pageHelp.cacheSize=1&pageHelp.endPage=2&productId=600258&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+          "row": {
+            "SECURITY_CODE": "600258",
+            "SECURITY_NAME": "首旅酒店",
+            "TITLE": "北京首旅酒店（集团）股份有限公司2025年年度报告",
+            "SSEDATE": "2026-03-31",
+            "ADDDATE": "2026-03-30 22:15:37",
+            "URL": "/disclosure/listedinfo/announcement/c/new/2026-03-31/600258_20260331_Y6A1.pdf",
+            "BULLETIN_TYPE": "年报"
+          }
+        }
+      },
+      "history": []
+    },
+    {
+      "id": "600258.SH|2026H1|formal",
+      "code": "600258.SH",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-08-29",
+      "actual": "2026-08-29",
+      "announcementDate": "2026-08-29",
+      "announcementPublishedAt": "2026-08-28 16:44:58",
+      "title": "北京首旅酒店（集团）股份有限公司2026年半年度报告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-29/600258_20260829_KLO2.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-08-29",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L012&publishYear=2026&companyCode=600258&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "600258",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2026",
+            "publishDate2": "",
+            "publishDate0": "2026-08-29",
+            "companyAbbr": "首旅酒店",
+            "actualDate": "2026-08-29",
+            "bulletinType": "L012"
+          }
+        },
+        "announcement": {
+          "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=600258&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+          "row": {
+            "SECURITY_CODE": "600258",
+            "SECURITY_NAME": "首旅酒店",
+            "TITLE": "北京首旅酒店（集团）股份有限公司2026年半年度报告",
+            "SSEDATE": "2026-08-29",
+            "ADDDATE": "2026-08-28 16:44:58",
+            "URL": "/disclosure/listedinfo/announcement/c/new/2026-08-29/600258_20260829_KLO2.pdf",
+            "BULLETIN_TYPE": "半年报"
+          }
+        }
+      },
+      "history": [
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "expected",
+          "from": "",
+          "to": "2026-08-29",
+          "sourceId": "sse",
+          "previousSourceId": "eastmoney-archive"
+        },
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "announcementDate",
+          "from": "",
+          "to": "2026-08-29",
+          "sourceId": "sse",
+          "previousSourceId": "eastmoney-archive"
+        },
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "url",
+          "from": "",
+          "to": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-29/600258_20260829_KLO2.pdf",
+          "sourceId": "sse",
+          "previousSourceId": "eastmoney-archive"
+        }
+      ]
+    },
+    {
+      "id": "600258.SH|2026Q1|formal",
+      "code": "600258.SH",
+      "period": "2026Q1",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-04-29",
+      "actual": "2026-04-29",
+      "announcementDate": "2026-04-29",
+      "announcementPublishedAt": "2026-04-28 17:33:52",
+      "title": "北京首旅酒店（集团）股份有限公司 2026年第一季度报告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-29/600258_20260429_0ME4.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-04-29",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L013&publishYear=2026&companyCode=600258&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "600258",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2026",
+            "publishDate2": "",
+            "publishDate0": "2026-04-29",
+            "companyAbbr": "首旅酒店",
+            "actualDate": "2026-04-29",
+            "bulletinType": "L013"
+          }
+        },
+        "announcement": {
+          "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=600258&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+          "row": {
+            "SECURITY_CODE": "600258",
+            "SECURITY_NAME": "首旅酒店",
+            "TITLE": "北京首旅酒店（集团）股份有限公司 2026年第一季度报告",
+            "SSEDATE": "2026-04-29",
+            "ADDDATE": "2026-04-28 17:33:52",
+            "URL": "/disclosure/listedinfo/announcement/c/new/2026-04-29/600258_20260429_0ME4.pdf",
+            "BULLETIN_TYPE": "第一季度季报"
+          }
+        }
+      },
+      "history": []
+    },
+    {
+      "id": "600258.SH|2026Q3|formal",
+      "code": "600258.SH",
+      "period": "2026Q3",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-10-30",
+      "actual": "",
+      "announcementDate": "",
+      "announcementPublishedAt": "",
+      "title": "首旅酒店 2026Q3 定期报告",
+      "url": "",
+      "linkType": "",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-10-30",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L014&publishYear=2026&companyCode=600258&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "600258",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2026",
+            "publishDate2": "",
+            "publishDate0": "2026-10-30",
+            "companyAbbr": "首旅酒店",
+            "actualDate": "",
+            "bulletinType": "L014"
+          }
+        },
+        "announcement": null
+      },
+      "history": []
+    },
+    {
+      "id": "600415.SH|2025FY|formal",
+      "code": "600415.SH",
+      "period": "2025FY",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-04-09",
+      "actual": "2026-04-09",
+      "announcementDate": "2026-04-09",
+      "announcementPublishedAt": "2026-04-08 18:38:43",
+      "title": "2025年年度报告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-09/600415_20260409_A36Y.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-04-10",
+          "label": "首次预约"
+        },
+        {
+          "date": "2026-04-09",
+          "label": "第 1 次变更"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L011&publishYear=2025&companyCode=600415&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "600415",
+            "publishDate3": "",
+            "publishDate1": "2026-04-09",
+            "publishYear": "2025",
+            "publishDate2": "",
+            "publishDate0": "2026-04-10",
+            "companyAbbr": "小商品城",
+            "actualDate": "2026-04-09",
+            "bulletinType": "L011"
+          }
+        },
+        "announcement": {
+          "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=600415&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+          "row": {
+            "SECURITY_CODE": "600415",
+            "SECURITY_NAME": "小商品城",
+            "TITLE": "2025年年度报告",
+            "SSEDATE": "2026-04-09",
+            "ADDDATE": "2026-04-08 18:38:43",
+            "URL": "/disclosure/listedinfo/announcement/c/new/2026-04-09/600415_20260409_A36Y.pdf",
+            "BULLETIN_TYPE": "年报"
+          }
+        }
+      },
+      "history": []
+    },
+    {
+      "id": "600415.SH|2026H1|formal",
+      "code": "600415.SH",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-08-26",
+      "actual": "2026-08-26",
+      "announcementDate": "2026-08-26",
+      "announcementPublishedAt": "2026-08-25 17:03:55",
+      "title": "2026年半年度报告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-26/600415_20260826_Q9WY.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-08-26",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L012&publishYear=2026&companyCode=600415&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "600415",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2026",
+            "publishDate2": "",
+            "publishDate0": "2026-08-26",
+            "companyAbbr": "小商品城",
+            "actualDate": "2026-08-26",
+            "bulletinType": "L012"
+          }
+        },
+        "announcement": {
+          "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=600415&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+          "row": {
+            "SECURITY_CODE": "600415",
+            "SECURITY_NAME": "小商品城",
+            "TITLE": "2026年半年度报告",
+            "SSEDATE": "2026-08-26",
+            "ADDDATE": "2026-08-25 17:03:55",
+            "URL": "/disclosure/listedinfo/announcement/c/new/2026-08-26/600415_20260826_Q9WY.pdf",
+            "BULLETIN_TYPE": "半年报"
+          }
+        }
+      },
+      "history": [
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "expected",
+          "from": "",
+          "to": "2026-08-26",
+          "sourceId": "sse",
+          "previousSourceId": "eastmoney-archive"
+        },
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "announcementDate",
+          "from": "",
+          "to": "2026-08-26",
+          "sourceId": "sse",
+          "previousSourceId": "eastmoney-archive"
+        },
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "url",
+          "from": "",
+          "to": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-26/600415_20260826_Q9WY.pdf",
+          "sourceId": "sse",
+          "previousSourceId": "eastmoney-archive"
+        }
+      ]
+    },
+    {
+      "id": "600415.SH|2026Q1|formal",
+      "code": "600415.SH",
+      "period": "2026Q1",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-04-23",
+      "actual": "2026-04-23",
+      "announcementDate": "2026-04-23",
+      "announcementPublishedAt": "2026-04-22 18:10:13",
+      "title": "2026年第一季度报告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-23/600415_20260423_ZQEJ.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-04-23",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L013&publishYear=2026&companyCode=600415&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "600415",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2026",
+            "publishDate2": "",
+            "publishDate0": "2026-04-23",
+            "companyAbbr": "小商品城",
+            "actualDate": "2026-04-23",
+            "bulletinType": "L013"
+          }
+        },
+        "announcement": {
+          "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=600415&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+          "row": {
+            "SECURITY_CODE": "600415",
+            "SECURITY_NAME": "小商品城",
+            "TITLE": "2026年第一季度报告",
+            "SSEDATE": "2026-04-23",
+            "ADDDATE": "2026-04-22 18:10:13",
+            "URL": "/disclosure/listedinfo/announcement/c/new/2026-04-23/600415_20260423_ZQEJ.pdf",
+            "BULLETIN_TYPE": "第一季度季报"
+          }
+        }
+      },
+      "history": []
+    },
+    {
+      "id": "600415.SH|2026Q3|formal",
+      "code": "600415.SH",
+      "period": "2026Q3",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-10-22",
+      "actual": "",
+      "announcementDate": "",
+      "announcementPublishedAt": "",
+      "title": "小商品城 2026Q3 定期报告",
+      "url": "",
+      "linkType": "",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-10-22",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L014&publishYear=2026&companyCode=600415&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "600415",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2026",
+            "publishDate2": "",
+            "publishDate0": "2026-10-22",
+            "companyAbbr": "小商品城",
+            "actualDate": "",
+            "bulletinType": "L014"
+          }
+        },
+        "announcement": null
+      },
+      "history": []
+    },
+    {
+      "id": "600612.SH|2025FY|flash|2026-03-07",
+      "code": "600612.SH",
+      "period": "2025FY",
+      "kind": "flash",
+      "documentType": "flash",
+      "expected": "",
+      "actual": "",
+      "announcementDate": "2026-03-07",
+      "title": "老凤祥股份有限公司2025年度业绩快报公告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-03-07/600612_20260307_5FSK.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [],
+      "evidence": {
+        "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=600612&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+        "row": {
+          "SECURITY_CODE": "600612",
+          "SECURITY_NAME": "老凤祥",
+          "TITLE": "老凤祥股份有限公司2025年度业绩快报公告",
+          "SSEDATE": "2026-03-07",
+          "ADDDATE": "2026-03-06 17:26:05",
+          "URL": "/disclosure/listedinfo/announcement/c/new/2026-03-07/600612_20260307_5FSK.pdf",
+          "BULLETIN_TYPE": "其它"
+        }
+      },
+      "history": []
+    },
+    {
+      "id": "600612.SH|2025FY|formal",
+      "code": "600612.SH",
+      "period": "2025FY",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-04-24",
+      "actual": "2026-04-24",
+      "announcementDate": "2026-04-24",
+      "announcementPublishedAt": "2026-04-23 18:31:25",
+      "title": "老凤祥股份有限公司2025年年度报告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-24/600612_20260424_CI2B.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-04-24",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L011&publishYear=2025&companyCode=600612&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "600612",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2025",
+            "publishDate2": "",
+            "publishDate0": "2026-04-24",
+            "companyAbbr": "老凤祥",
+            "actualDate": "2026-04-24",
+            "bulletinType": "L011"
+          }
+        },
+        "announcement": {
+          "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=600612&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+          "row": {
+            "SECURITY_CODE": "600612",
+            "SECURITY_NAME": "老凤祥",
+            "TITLE": "老凤祥股份有限公司2025年年度报告",
+            "SSEDATE": "2026-04-24",
+            "ADDDATE": "2026-04-23 18:31:25",
+            "URL": "/disclosure/listedinfo/announcement/c/new/2026-04-24/600612_20260424_CI2B.pdf",
+            "BULLETIN_TYPE": "年报"
+          }
+        }
+      },
+      "history": []
+    },
+    {
+      "id": "600612.SH|2026H1|formal",
+      "code": "600612.SH",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-08-27",
+      "actual": "2026-08-27",
+      "announcementDate": "2026-08-27",
+      "announcementPublishedAt": "2026-08-26 16:06:07",
+      "title": "老凤祥股份有限公司2026年半年度报告全文",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-27/600612_20260827_B6O0.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-08-27",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L012&publishYear=2026&companyCode=600612&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "600612",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2026",
+            "publishDate2": "",
+            "publishDate0": "2026-08-27",
+            "companyAbbr": "老凤祥",
+            "actualDate": "2026-08-27",
+            "bulletinType": "L012"
+          }
+        },
+        "announcement": {
+          "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=600612&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+          "row": {
+            "SECURITY_CODE": "600612",
+            "SECURITY_NAME": "老凤祥",
+            "TITLE": "老凤祥股份有限公司2026年半年度报告全文",
+            "SSEDATE": "2026-08-27",
+            "ADDDATE": "2026-08-26 16:06:07",
+            "URL": "/disclosure/listedinfo/announcement/c/new/2026-08-27/600612_20260827_B6O0.pdf",
+            "BULLETIN_TYPE": "半年报"
+          }
+        }
+      },
+      "history": [
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "expected",
+          "from": "",
+          "to": "2026-08-27",
+          "sourceId": "sse",
+          "previousSourceId": "eastmoney-archive"
+        },
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "announcementDate",
+          "from": "",
+          "to": "2026-08-27",
+          "sourceId": "sse",
+          "previousSourceId": "eastmoney-archive"
+        },
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "url",
+          "from": "",
+          "to": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-27/600612_20260827_B6O0.pdf",
+          "sourceId": "sse",
+          "previousSourceId": "eastmoney-archive"
+        }
+      ]
+    },
+    {
+      "id": "600612.SH|2026Q1|formal",
+      "code": "600612.SH",
+      "period": "2026Q1",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-04-24",
+      "actual": "2026-04-24",
+      "announcementDate": "2026-04-24",
+      "announcementPublishedAt": "2026-04-23 18:31:23",
+      "title": "老凤祥股份有限公司2026年第一季度报告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-24/600612_20260424_SDPE.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-04-24",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L013&publishYear=2026&companyCode=600612&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "600612",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2026",
+            "publishDate2": "",
+            "publishDate0": "2026-04-24",
+            "companyAbbr": "老凤祥",
+            "actualDate": "2026-04-24",
+            "bulletinType": "L013"
+          }
+        },
+        "announcement": {
+          "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=600612&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+          "row": {
+            "SECURITY_CODE": "600612",
+            "SECURITY_NAME": "老凤祥",
+            "TITLE": "老凤祥股份有限公司2026年第一季度报告",
+            "SSEDATE": "2026-04-24",
+            "ADDDATE": "2026-04-23 18:31:23",
+            "URL": "/disclosure/listedinfo/announcement/c/new/2026-04-24/600612_20260424_SDPE.pdf",
+            "BULLETIN_TYPE": "第一季度季报"
+          }
+        }
+      },
+      "history": []
+    },
+    {
+      "id": "600612.SH|2026Q3|formal",
+      "code": "600612.SH",
+      "period": "2026Q3",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-10-31",
+      "actual": "",
+      "announcementDate": "",
+      "announcementPublishedAt": "",
+      "title": "老凤祥 2026Q3 定期报告",
+      "url": "",
+      "linkType": "",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-10-31",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L014&publishYear=2026&companyCode=600612&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "600612",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2026",
+            "publishDate2": "",
+            "publishDate0": "2026-10-31",
+            "companyAbbr": "老凤祥",
+            "actualDate": "",
+            "bulletinType": "L014"
+          }
+        },
+        "announcement": null
+      },
+      "history": []
+    },
+    {
+      "id": "600655.SH|2025FY|forecast|2026-01-31",
+      "code": "600655.SH",
+      "period": "2025FY",
+      "kind": "forecast",
+      "documentType": "forecast",
+      "expected": "",
+      "actual": "",
+      "announcementDate": "2026-01-31",
+      "title": "上海豫园旅游商城（集团）股份有限公司2025年年度业绩预告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-01-31/600655_20260131_M05O.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [],
+      "evidence": {
+        "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=2&pageHelp.beginPage=2&pageHelp.cacheSize=1&pageHelp.endPage=2&productId=600655&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+        "row": {
+          "SECURITY_CODE": "600655",
+          "SECURITY_NAME": "豫园股份",
+          "TITLE": "上海豫园旅游商城（集团）股份有限公司2025年年度业绩预告",
+          "SSEDATE": "2026-01-31",
+          "ADDDATE": "2026-01-30 20:11:21",
+          "URL": "/disclosure/listedinfo/announcement/c/new/2026-01-31/600655_20260131_M05O.pdf",
+          "BULLETIN_TYPE": "其它"
+        }
+      },
+      "history": []
+    },
+    {
+      "id": "600655.SH|2025FY|formal",
+      "code": "600655.SH",
+      "period": "2025FY",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-03-24",
+      "actual": "2026-03-24",
+      "announcementDate": "2026-03-24",
+      "announcementPublishedAt": "2026-03-23 22:33:22",
+      "title": "上海豫园旅游商城（集团）股份有限公司2025年年度报告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-03-24/600655_20260324_U37D.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-03-24",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L011&publishYear=2025&companyCode=600655&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "600655",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2025",
+            "publishDate2": "",
+            "publishDate0": "2026-03-24",
+            "companyAbbr": "豫园股份",
+            "actualDate": "2026-03-24",
+            "bulletinType": "L011"
+          }
+        },
+        "announcement": {
+          "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=600655&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+          "row": {
+            "SECURITY_CODE": "600655",
+            "SECURITY_NAME": "豫园股份",
+            "TITLE": "上海豫园旅游商城（集团）股份有限公司2025年年度报告",
+            "SSEDATE": "2026-03-24",
+            "ADDDATE": "2026-03-23 22:33:22",
+            "URL": "/disclosure/listedinfo/announcement/c/new/2026-03-24/600655_20260324_U37D.pdf",
+            "BULLETIN_TYPE": "年报"
+          }
+        }
+      },
+      "history": []
+    },
+    {
+      "id": "600655.SH|2026H1|formal",
+      "code": "600655.SH",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-08-21",
+      "actual": "2026-08-21",
+      "announcementDate": "2026-08-21",
+      "announcementPublishedAt": "2026-08-20 18:41:05",
+      "title": "2026年半年度报告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-21/600655_20260821_NI16.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-08-21",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L012&publishYear=2026&companyCode=600655&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "600655",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2026",
+            "publishDate2": "",
+            "publishDate0": "2026-08-21",
+            "companyAbbr": "豫园股份",
+            "actualDate": "2026-08-21",
+            "bulletinType": "L012"
+          }
+        },
+        "announcement": {
+          "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=600655&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+          "row": {
+            "SECURITY_CODE": "600655",
+            "SECURITY_NAME": "豫园股份",
+            "TITLE": "2026年半年度报告",
+            "SSEDATE": "2026-08-21",
+            "ADDDATE": "2026-08-20 18:41:05",
+            "URL": "/disclosure/listedinfo/announcement/c/new/2026-08-21/600655_20260821_NI16.pdf",
+            "BULLETIN_TYPE": "半年报"
+          }
+        }
+      },
+      "history": [
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "expected",
+          "from": "",
+          "to": "2026-08-21",
+          "sourceId": "sse",
+          "previousSourceId": "eastmoney-archive"
+        },
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "announcementDate",
+          "from": "",
+          "to": "2026-08-21",
+          "sourceId": "sse",
+          "previousSourceId": "eastmoney-archive"
+        },
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "url",
+          "from": "",
+          "to": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-21/600655_20260821_NI16.pdf",
+          "sourceId": "sse",
+          "previousSourceId": "eastmoney-archive"
+        }
+      ]
+    },
+    {
+      "id": "600655.SH|2026Q1|formal",
+      "code": "600655.SH",
+      "period": "2026Q1",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-04-17",
+      "actual": "2026-04-17",
+      "announcementDate": "2026-04-17",
+      "announcementPublishedAt": "2026-04-16 15:53:17",
+      "title": "上海豫园旅游商城（集团）股份有限公司2026年第一季度报告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-17/600655_20260417_IMDI.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-04-17",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L013&publishYear=2026&companyCode=600655&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "600655",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2026",
+            "publishDate2": "",
+            "publishDate0": "2026-04-17",
+            "companyAbbr": "豫园股份",
+            "actualDate": "2026-04-17",
+            "bulletinType": "L013"
+          }
+        },
+        "announcement": {
+          "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=600655&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+          "row": {
+            "SECURITY_CODE": "600655",
+            "SECURITY_NAME": "豫园股份",
+            "TITLE": "上海豫园旅游商城（集团）股份有限公司2026年第一季度报告",
+            "SSEDATE": "2026-04-17",
+            "ADDDATE": "2026-04-16 15:53:17",
+            "URL": "/disclosure/listedinfo/announcement/c/new/2026-04-17/600655_20260417_IMDI.pdf",
+            "BULLETIN_TYPE": "第一季度季报"
+          }
+        }
+      },
+      "history": []
+    },
+    {
+      "id": "600655.SH|2026Q3|formal",
+      "code": "600655.SH",
+      "period": "2026Q3",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-10-30",
+      "actual": "",
+      "announcementDate": "",
+      "announcementPublishedAt": "",
+      "title": "豫园股份 2026Q3 定期报告",
+      "url": "",
+      "linkType": "",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-10-30",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L014&publishYear=2026&companyCode=600655&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "600655",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2026",
+            "publishDate2": "",
+            "publishDate0": "2026-10-30",
+            "companyAbbr": "豫园股份",
+            "actualDate": "",
+            "bulletinType": "L014"
+          }
+        },
+        "announcement": null
+      },
+      "history": []
+    },
+    {
+      "id": "600729.SH|2025FY|flash|2026-01-15",
+      "code": "600729.SH",
+      "period": "2025FY",
+      "kind": "flash",
+      "documentType": "flash",
+      "expected": "",
+      "actual": "",
+      "announcementDate": "2026-01-15",
+      "title": "重庆百货大楼股份有限公司2025年度业绩快报公告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-01-15/600729_20260115_6N2C.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [],
+      "evidence": {
+        "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=600729&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+        "row": {
+          "SECURITY_CODE": "600729",
+          "SECURITY_NAME": "重庆百货",
+          "TITLE": "重庆百货大楼股份有限公司2025年度业绩快报公告",
+          "SSEDATE": "2026-01-15",
+          "ADDDATE": "2026-01-14 16:43:53",
+          "URL": "/disclosure/listedinfo/announcement/c/new/2026-01-15/600729_20260115_6N2C.pdf",
+          "BULLETIN_TYPE": "其它"
+        }
+      },
+      "history": []
+    },
+    {
+      "id": "600729.SH|2025FY|formal",
+      "code": "600729.SH",
+      "period": "2025FY",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-04-18",
+      "actual": "2026-04-18",
+      "announcementDate": "2026-04-18",
+      "announcementPublishedAt": "2026-04-17 17:36:34",
+      "title": "重庆百货大楼股份有限公司2025年年度报告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-18/600729_20260418_UR8Y.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-04-18",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L011&publishYear=2025&companyCode=600729&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "600729",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2025",
+            "publishDate2": "",
+            "publishDate0": "2026-04-18",
+            "companyAbbr": "重庆百货",
+            "actualDate": "2026-04-18",
+            "bulletinType": "L011"
+          }
+        },
+        "announcement": {
+          "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=600729&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+          "row": {
+            "SECURITY_CODE": "600729",
+            "SECURITY_NAME": "重庆百货",
+            "TITLE": "重庆百货大楼股份有限公司2025年年度报告",
+            "SSEDATE": "2026-04-18",
+            "ADDDATE": "2026-04-17 17:36:34",
+            "URL": "/disclosure/listedinfo/announcement/c/new/2026-04-18/600729_20260418_UR8Y.pdf",
+            "BULLETIN_TYPE": "年报"
+          }
+        }
+      },
+      "history": []
+    },
+    {
+      "id": "600729.SH|2026H1|flash|2026-07-15",
+      "code": "600729.SH",
+      "period": "2026H1",
+      "kind": "flash",
+      "documentType": "flash",
+      "expected": "",
+      "actual": "",
+      "announcementDate": "2026-07-15",
+      "title": "重庆重百科技集团股份有限公司2026年半年度业绩快报公告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-15/600729_20260715_XC5R.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [],
+      "evidence": {
+        "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=600729&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+        "row": {
+          "SECURITY_CODE": "600729",
+          "SECURITY_NAME": "重百集团",
+          "TITLE": "重庆重百科技集团股份有限公司2026年半年度业绩快报公告",
+          "SSEDATE": "2026-07-15",
+          "ADDDATE": "2026-07-14 16:59:35",
+          "URL": "/disclosure/listedinfo/announcement/c/new/2026-07-15/600729_20260715_XC5R.pdf",
+          "BULLETIN_TYPE": "其它"
+        }
+      },
+      "history": []
+    },
+    {
+      "id": "600729.SH|2026H1|formal",
+      "code": "600729.SH",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-08-25",
+      "actual": "2026-08-25",
+      "announcementDate": "2026-08-25",
+      "announcementPublishedAt": "2026-08-24 16:50:19",
+      "title": "重庆重百科技集团股份有限公司2026年半年度报告全文",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-25/600729_20260825_YDOM.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-08-25",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L012&publishYear=2026&companyCode=600729&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "600729",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2026",
+            "publishDate2": "",
+            "publishDate0": "2026-08-25",
+            "companyAbbr": "重百集团",
+            "actualDate": "2026-08-25",
+            "bulletinType": "L012"
+          }
+        },
+        "announcement": {
+          "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=600729&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+          "row": {
+            "SECURITY_CODE": "600729",
+            "SECURITY_NAME": "重百集团",
+            "TITLE": "重庆重百科技集团股份有限公司2026年半年度报告全文",
+            "SSEDATE": "2026-08-25",
+            "ADDDATE": "2026-08-24 16:50:19",
+            "URL": "/disclosure/listedinfo/announcement/c/new/2026-08-25/600729_20260825_YDOM.pdf",
+            "BULLETIN_TYPE": "半年报"
+          }
+        }
+      },
+      "history": [
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "expected",
+          "from": "",
+          "to": "2026-08-25",
+          "sourceId": "sse",
+          "previousSourceId": "eastmoney-archive"
+        },
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "announcementDate",
+          "from": "",
+          "to": "2026-08-25",
+          "sourceId": "sse",
+          "previousSourceId": "eastmoney-archive"
+        },
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "url",
+          "from": "",
+          "to": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-25/600729_20260825_YDOM.pdf",
+          "sourceId": "sse",
+          "previousSourceId": "eastmoney-archive"
+        }
+      ]
+    },
+    {
+      "id": "600729.SH|2026Q1|formal",
+      "code": "600729.SH",
+      "period": "2026Q1",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-04-29",
+      "actual": "2026-04-29",
+      "announcementDate": "2026-04-29",
+      "announcementPublishedAt": "2026-04-28 16:27:55",
+      "title": "重庆百货大楼股份有限公司2026年第一季度报告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-29/600729_20260429_QDQ2.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-04-29",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L013&publishYear=2026&companyCode=600729&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "600729",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2026",
+            "publishDate2": "",
+            "publishDate0": "2026-04-29",
+            "companyAbbr": "重庆百货",
+            "actualDate": "2026-04-29",
+            "bulletinType": "L013"
+          }
+        },
+        "announcement": {
+          "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=600729&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+          "row": {
+            "SECURITY_CODE": "600729",
+            "SECURITY_NAME": "重庆百货",
+            "TITLE": "重庆百货大楼股份有限公司2026年第一季度报告",
+            "SSEDATE": "2026-04-29",
+            "ADDDATE": "2026-04-28 16:27:55",
+            "URL": "/disclosure/listedinfo/announcement/c/new/2026-04-29/600729_20260429_QDQ2.pdf",
+            "BULLETIN_TYPE": "第一季度季报"
+          }
+        }
+      },
+      "history": []
+    },
+    {
+      "id": "600729.SH|2026Q3|formal",
+      "code": "600729.SH",
+      "period": "2026Q3",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-10-29",
+      "actual": "",
+      "announcementDate": "",
+      "announcementPublishedAt": "",
+      "title": "重百集团 2026Q3 定期报告",
+      "url": "",
+      "linkType": "",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-10-29",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L014&publishYear=2026&companyCode=600729&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "600729",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2026",
+            "publishDate2": "",
+            "publishDate0": "2026-10-29",
+            "companyAbbr": "重百集团",
+            "actualDate": "",
+            "bulletinType": "L014"
+          }
+        },
+        "announcement": null
+      },
+      "history": []
+    },
+    {
+      "id": "600754.SH|2025FY|formal",
+      "code": "600754.SH",
+      "period": "2025FY",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-03-28",
+      "actual": "2026-03-28",
+      "announcementDate": "",
+      "announcementPublishedAt": "",
+      "title": "锦江酒店 2025FY 定期报告",
+      "url": "",
+      "linkType": "",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-03-31",
+          "label": "首次预约"
+        },
+        {
+          "date": "2026-03-28",
+          "label": "第 1 次变更"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L011&publishYear=2025&companyCode=600754&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "600754",
+            "publishDate3": "",
+            "publishDate1": "2026-03-28",
+            "publishYear": "2025",
+            "publishDate2": "",
+            "publishDate0": "2026-03-31",
+            "companyAbbr": "锦江酒店",
+            "actualDate": "2026-03-28",
+            "bulletinType": "L011"
+          }
+        },
+        "announcement": null
+      },
+      "history": []
+    },
+    {
+      "id": "600754.SH|2026H1|formal",
+      "code": "600754.SH",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-08-29",
+      "actual": "2026-08-29",
+      "announcementDate": "2026-08-29",
+      "announcementPublishedAt": "2026-08-28 18:58:34",
+      "title": "锦江酒店2026年半年度报告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-29/600754_20260829_9KRT.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-08-29",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L012&publishYear=2026&companyCode=600754&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "600754",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2026",
+            "publishDate2": "",
+            "publishDate0": "2026-08-29",
+            "companyAbbr": "锦江酒店",
+            "actualDate": "2026-08-29",
+            "bulletinType": "L012"
+          }
+        },
+        "announcement": {
+          "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=600754&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+          "row": {
+            "SECURITY_CODE": "600754",
+            "SECURITY_NAME": "锦江酒店",
+            "TITLE": "锦江酒店2026年半年度报告",
+            "SSEDATE": "2026-08-29",
+            "ADDDATE": "2026-08-28 18:58:34",
+            "URL": "/disclosure/listedinfo/announcement/c/new/2026-08-29/600754_20260829_9KRT.pdf",
+            "BULLETIN_TYPE": "半年报"
+          }
+        }
+      },
+      "history": [
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "expected",
+          "from": "",
+          "to": "2026-08-29",
+          "sourceId": "sse",
+          "previousSourceId": "eastmoney-archive"
+        },
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "announcementDate",
+          "from": "",
+          "to": "2026-08-29",
+          "sourceId": "sse",
+          "previousSourceId": "eastmoney-archive"
+        },
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "url",
+          "from": "",
+          "to": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-29/600754_20260829_9KRT.pdf",
+          "sourceId": "sse",
+          "previousSourceId": "eastmoney-archive"
+        }
+      ]
+    },
+    {
+      "id": "600754.SH|2026Q1|formal",
+      "code": "600754.SH",
+      "period": "2026Q1",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-04-30",
+      "actual": "2026-04-30",
+      "announcementDate": "2026-04-30",
+      "announcementPublishedAt": "2026-04-29 17:13:40",
+      "title": "锦江酒店2026年第一季度报告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-30/600754_20260430_EZKX.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-04-30",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L013&publishYear=2026&companyCode=600754&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "600754",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2026",
+            "publishDate2": "",
+            "publishDate0": "2026-04-30",
+            "companyAbbr": "锦江酒店",
+            "actualDate": "2026-04-30",
+            "bulletinType": "L013"
+          }
+        },
+        "announcement": {
+          "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=600754&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+          "row": {
+            "SECURITY_CODE": "600754",
+            "SECURITY_NAME": "锦江酒店",
+            "TITLE": "锦江酒店2026年第一季度报告",
+            "SSEDATE": "2026-04-30",
+            "ADDDATE": "2026-04-29 17:13:40",
+            "URL": "/disclosure/listedinfo/announcement/c/new/2026-04-30/600754_20260430_EZKX.pdf",
+            "BULLETIN_TYPE": "第一季度季报"
+          }
+        }
+      },
+      "history": []
+    },
+    {
+      "id": "600754.SH|2026Q3|formal",
+      "code": "600754.SH",
+      "period": "2026Q3",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-10-31",
+      "actual": "",
+      "announcementDate": "",
+      "announcementPublishedAt": "",
+      "title": "锦江酒店 2026Q3 定期报告",
+      "url": "",
+      "linkType": "",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-10-31",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L014&publishYear=2026&companyCode=600754&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "600754",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2026",
+            "publishDate2": "",
+            "publishDate0": "2026-10-31",
+            "companyAbbr": "锦江酒店",
+            "actualDate": "",
+            "bulletinType": "L014"
+          }
+        },
+        "announcement": null
+      },
+      "history": []
+    },
+    {
+      "id": "600861.SH|2025FY|formal",
+      "code": "600861.SH",
+      "period": "2025FY",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-04-25",
+      "actual": "2026-04-25",
+      "announcementDate": "2026-04-25",
+      "announcementPublishedAt": "2026-04-24 17:42:05",
+      "title": "北京人力2025年年度报告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-25/600861_20260425_SMJO.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-04-25",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L011&publishYear=2025&companyCode=600861&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "600861",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2025",
+            "publishDate2": "",
+            "publishDate0": "2026-04-25",
+            "companyAbbr": "北京人力",
+            "actualDate": "2026-04-25",
+            "bulletinType": "L011"
+          }
+        },
+        "announcement": {
+          "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=600861&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+          "row": {
+            "SECURITY_CODE": "600861",
+            "SECURITY_NAME": "北京人力",
+            "TITLE": "北京人力2025年年度报告",
+            "SSEDATE": "2026-04-25",
+            "ADDDATE": "2026-04-24 17:42:05",
+            "URL": "/disclosure/listedinfo/announcement/c/new/2026-04-25/600861_20260425_SMJO.pdf",
+            "BULLETIN_TYPE": "年报"
+          }
+        }
+      },
+      "history": []
+    },
+    {
+      "id": "600861.SH|2026H1|formal",
+      "code": "600861.SH",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-08-29",
+      "actual": "2026-08-29",
+      "announcementDate": "2026-08-29",
+      "announcementPublishedAt": "2026-08-28 15:44:18",
+      "title": "北京人力2026年半年度报告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-29/600861_20260829_4O6H.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-08-29",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L012&publishYear=2026&companyCode=600861&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "600861",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2026",
+            "publishDate2": "",
+            "publishDate0": "2026-08-29",
+            "companyAbbr": "北京人力",
+            "actualDate": "2026-08-29",
+            "bulletinType": "L012"
+          }
+        },
+        "announcement": {
+          "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=600861&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+          "row": {
+            "SECURITY_CODE": "600861",
+            "SECURITY_NAME": "北京人力",
+            "TITLE": "北京人力2026年半年度报告",
+            "SSEDATE": "2026-08-29",
+            "ADDDATE": "2026-08-28 15:44:18",
+            "URL": "/disclosure/listedinfo/announcement/c/new/2026-08-29/600861_20260829_4O6H.pdf",
+            "BULLETIN_TYPE": "半年报"
+          }
+        }
+      },
+      "history": [
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "expected",
+          "from": "",
+          "to": "2026-08-29",
+          "sourceId": "sse",
+          "previousSourceId": "eastmoney-archive"
+        },
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "announcementDate",
+          "from": "",
+          "to": "2026-08-29",
+          "sourceId": "sse",
+          "previousSourceId": "eastmoney-archive"
+        },
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "url",
+          "from": "",
+          "to": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-29/600861_20260829_4O6H.pdf",
+          "sourceId": "sse",
+          "previousSourceId": "eastmoney-archive"
+        }
+      ]
+    },
+    {
+      "id": "600861.SH|2026Q1|formal",
+      "code": "600861.SH",
+      "period": "2026Q1",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-04-25",
+      "actual": "2026-04-25",
+      "announcementDate": "2026-04-25",
+      "announcementPublishedAt": "2026-04-24 17:42:05",
+      "title": "北京人力2026年第一季度报告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-25/600861_20260425_48EC.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-04-25",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L013&publishYear=2026&companyCode=600861&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "600861",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2026",
+            "publishDate2": "",
+            "publishDate0": "2026-04-25",
+            "companyAbbr": "北京人力",
+            "actualDate": "2026-04-25",
+            "bulletinType": "L013"
+          }
+        },
+        "announcement": {
+          "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=600861&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+          "row": {
+            "SECURITY_CODE": "600861",
+            "SECURITY_NAME": "北京人力",
+            "TITLE": "北京人力2026年第一季度报告",
+            "SSEDATE": "2026-04-25",
+            "ADDDATE": "2026-04-24 17:42:05",
+            "URL": "/disclosure/listedinfo/announcement/c/new/2026-04-25/600861_20260425_48EC.pdf",
+            "BULLETIN_TYPE": "第一季度季报"
+          }
+        }
+      },
+      "history": []
+    },
+    {
+      "id": "600861.SH|2026Q3|formal",
+      "code": "600861.SH",
+      "period": "2026Q3",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-10-29",
+      "actual": "",
+      "announcementDate": "",
+      "announcementPublishedAt": "",
+      "title": "北京人力 2026Q3 定期报告",
+      "url": "",
+      "linkType": "",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-10-29",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L014&publishYear=2026&companyCode=600861&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "600861",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2026",
+            "publishDate2": "",
+            "publishDate0": "2026-10-29",
+            "companyAbbr": "北京人力",
+            "actualDate": "",
+            "bulletinType": "L014"
+          }
+        },
+        "announcement": null
+      },
+      "history": []
+    },
+    {
+      "id": "601888.SH|2025FY|flash|2026-03-21",
+      "code": "601888.SH",
+      "period": "2025FY",
+      "kind": "flash",
+      "documentType": "flash",
+      "expected": "",
+      "actual": "",
+      "announcementDate": "2026-03-21",
+      "title": "中国旅游集团中免股份有限公司2025年度业绩快报公告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-03-21/601888_20260321_3KLQ.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [],
+      "evidence": {
+        "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=601888&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+        "row": {
+          "SECURITY_CODE": "601888",
+          "SECURITY_NAME": "中国中免",
+          "TITLE": "中国旅游集团中免股份有限公司2025年度业绩快报公告",
+          "SSEDATE": "2026-03-21",
+          "ADDDATE": "2026-03-20 16:15:35",
+          "URL": "/disclosure/listedinfo/announcement/c/new/2026-03-21/601888_20260321_3KLQ.pdf",
+          "BULLETIN_TYPE": "其它"
+        }
+      },
+      "history": []
+    },
+    {
+      "id": "601888.SH|2025FY|formal",
+      "code": "601888.SH",
+      "period": "2025FY",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-03-31",
+      "actual": "2026-03-31",
+      "announcementDate": "2026-03-31",
+      "announcementPublishedAt": "2026-03-30 21:52:08",
+      "title": "中国旅游集团中免股份有限公司2025年年度报告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-03-31/601888_20260331_WYR6.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-03-31",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L011&publishYear=2025&companyCode=601888&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "601888",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2025",
+            "publishDate2": "",
+            "publishDate0": "2026-03-31",
+            "companyAbbr": "中国中免",
+            "actualDate": "2026-03-31",
+            "bulletinType": "L011"
+          }
+        },
+        "announcement": {
+          "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=601888&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+          "row": {
+            "SECURITY_CODE": "601888",
+            "SECURITY_NAME": "中国中免",
+            "TITLE": "中国旅游集团中免股份有限公司2025年年度报告",
+            "SSEDATE": "2026-03-31",
+            "ADDDATE": "2026-03-30 21:52:08",
+            "URL": "/disclosure/listedinfo/announcement/c/new/2026-03-31/601888_20260331_WYR6.pdf",
+            "BULLETIN_TYPE": "年报"
+          }
+        }
+      },
+      "history": []
+    },
+    {
+      "id": "601888.SH|2026H1|flash|2026-07-15",
+      "code": "601888.SH",
+      "period": "2026H1",
+      "kind": "flash",
+      "documentType": "flash",
+      "expected": "",
+      "actual": "",
+      "announcementDate": "2026-07-15",
+      "title": "中国旅游集团中免股份有限公司2026年半年度业绩快报公告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-15/601888_20260715_G86D.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [],
+      "evidence": {
+        "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=601888&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+        "row": {
+          "SECURITY_CODE": "601888",
+          "SECURITY_NAME": "中国中免",
+          "TITLE": "中国旅游集团中免股份有限公司2026年半年度业绩快报公告",
+          "SSEDATE": "2026-07-15",
+          "ADDDATE": "2026-07-14 20:30:31",
+          "URL": "/disclosure/listedinfo/announcement/c/new/2026-07-15/601888_20260715_G86D.pdf",
+          "BULLETIN_TYPE": "其它"
+        }
+      },
+      "history": []
+    },
+    {
+      "id": "601888.SH|2026H1|formal",
+      "code": "601888.SH",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-08-21",
+      "actual": "2026-08-21",
+      "announcementDate": "2026-08-21",
+      "announcementPublishedAt": "2026-08-20 18:59:09",
+      "title": "中国旅游集团中免股份有限公司2026年半年度报告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-21/601888_20260821_3M5E.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-08-21",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L012&publishYear=2026&companyCode=601888&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "601888",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2026",
+            "publishDate2": "",
+            "publishDate0": "2026-08-21",
+            "companyAbbr": "中国中免",
+            "actualDate": "2026-08-21",
+            "bulletinType": "L012"
+          }
+        },
+        "announcement": {
+          "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=601888&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+          "row": {
+            "SECURITY_CODE": "601888",
+            "SECURITY_NAME": "中国中免",
+            "TITLE": "中国旅游集团中免股份有限公司2026年半年度报告",
+            "SSEDATE": "2026-08-21",
+            "ADDDATE": "2026-08-20 18:59:09",
+            "URL": "/disclosure/listedinfo/announcement/c/new/2026-08-21/601888_20260821_3M5E.pdf",
+            "BULLETIN_TYPE": "半年报"
+          }
+        }
+      },
+      "history": [
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "expected",
+          "from": "",
+          "to": "2026-08-21",
+          "sourceId": "sse",
+          "previousSourceId": "eastmoney-archive"
+        },
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "announcementDate",
+          "from": "",
+          "to": "2026-08-21",
+          "sourceId": "sse",
+          "previousSourceId": "eastmoney-archive"
+        },
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "url",
+          "from": "",
+          "to": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-21/601888_20260821_3M5E.pdf",
+          "sourceId": "sse",
+          "previousSourceId": "eastmoney-archive"
+        }
+      ]
+    },
+    {
+      "id": "601888.SH|2026Q1|formal",
+      "code": "601888.SH",
+      "period": "2026Q1",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-04-30",
+      "actual": "2026-04-30",
+      "announcementDate": "2026-04-30",
+      "announcementPublishedAt": "2026-04-29 17:06:36",
+      "title": "中国旅游集团中免股份有限公司2026年第一季度报告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-30/601888_20260430_QZ3A.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-04-30",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L013&publishYear=2026&companyCode=601888&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "601888",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2026",
+            "publishDate2": "",
+            "publishDate0": "2026-04-30",
+            "companyAbbr": "中国中免",
+            "actualDate": "2026-04-30",
+            "bulletinType": "L013"
+          }
+        },
+        "announcement": {
+          "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=601888&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+          "row": {
+            "SECURITY_CODE": "601888",
+            "SECURITY_NAME": "中国中免",
+            "TITLE": "中国旅游集团中免股份有限公司2026年第一季度报告",
+            "SSEDATE": "2026-04-30",
+            "ADDDATE": "2026-04-29 17:06:36",
+            "URL": "/disclosure/listedinfo/announcement/c/new/2026-04-30/601888_20260430_QZ3A.pdf",
+            "BULLETIN_TYPE": "第一季度季报"
+          }
+        }
+      },
+      "history": []
+    },
+    {
+      "id": "601888.SH|2026Q3|formal",
+      "code": "601888.SH",
+      "period": "2026Q3",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-10-31",
+      "actual": "",
+      "announcementDate": "",
+      "announcementPublishedAt": "",
+      "title": "中国中免 2026Q3 定期报告",
+      "url": "",
+      "linkType": "",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-10-31",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L014&publishYear=2026&companyCode=601888&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "601888",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2026",
+            "publishDate2": "",
+            "publishDate0": "2026-10-31",
+            "companyAbbr": "中国中免",
+            "actualDate": "",
+            "bulletinType": "L014"
+          }
+        },
+        "announcement": null
+      },
+      "history": []
+    },
+    {
+      "id": "601933.SH|2025FY|flash|2026-03-31",
+      "code": "601933.SH",
+      "period": "2025FY",
+      "kind": "flash",
+      "documentType": "flash",
+      "expected": "",
+      "actual": "",
+      "announcementDate": "2026-03-31",
+      "title": "永辉超市股份有限公司2025年年度业绩快报公告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-03-31/601933_20260331_4HUC.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [],
+      "evidence": {
+        "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=601933&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+        "row": {
+          "SECURITY_CODE": "601933",
+          "SECURITY_NAME": "永辉超市",
+          "TITLE": "永辉超市股份有限公司2025年年度业绩快报公告",
+          "SSEDATE": "2026-03-31",
+          "ADDDATE": "2026-03-30 18:46:31",
+          "URL": "/disclosure/listedinfo/announcement/c/new/2026-03-31/601933_20260331_4HUC.pdf",
+          "BULLETIN_TYPE": "其它"
+        }
+      },
+      "history": []
+    },
+    {
+      "id": "601933.SH|2025FY|formal",
+      "code": "601933.SH",
+      "period": "2025FY",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-04-17",
+      "actual": "2026-04-17",
+      "announcementDate": "2026-04-17",
+      "announcementPublishedAt": "2026-04-16 19:39:14",
+      "title": "永辉超市股份有限公司2025年年度报告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-17/601933_20260417_UOVA.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-03-31",
+          "label": "首次预约"
+        },
+        {
+          "date": "2026-04-17",
+          "label": "第 1 次变更"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L011&publishYear=2025&companyCode=601933&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "601933",
+            "publishDate3": "",
+            "publishDate1": "2026-04-17",
+            "publishYear": "2025",
+            "publishDate2": "",
+            "publishDate0": "2026-03-31",
+            "companyAbbr": "永辉超市",
+            "actualDate": "2026-04-17",
+            "bulletinType": "L011"
+          }
+        },
+        "announcement": {
+          "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=601933&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+          "row": {
+            "SECURITY_CODE": "601933",
+            "SECURITY_NAME": "永辉超市",
+            "TITLE": "永辉超市股份有限公司2025年年度报告",
+            "SSEDATE": "2026-04-17",
+            "ADDDATE": "2026-04-16 19:39:14",
+            "URL": "/disclosure/listedinfo/announcement/c/new/2026-04-17/601933_20260417_UOVA.pdf",
+            "BULLETIN_TYPE": "年报"
+          }
+        }
+      },
+      "history": []
+    },
+    {
+      "id": "601933.SH|2026H1|formal",
+      "code": "601933.SH",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-08-21",
+      "actual": "2026-08-21",
+      "announcementDate": "2026-08-21",
+      "announcementPublishedAt": "2026-08-20 18:49:55",
+      "title": "永辉超市股份有限公司2026年半年度报告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-21/601933_20260821_GJFO.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-08-21",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L012&publishYear=2026&companyCode=601933&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "601933",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2026",
+            "publishDate2": "",
+            "publishDate0": "2026-08-21",
+            "companyAbbr": "永辉超市",
+            "actualDate": "2026-08-21",
+            "bulletinType": "L012"
+          }
+        },
+        "announcement": {
+          "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=601933&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+          "row": {
+            "SECURITY_CODE": "601933",
+            "SECURITY_NAME": "永辉超市",
+            "TITLE": "永辉超市股份有限公司2026年半年度报告",
+            "SSEDATE": "2026-08-21",
+            "ADDDATE": "2026-08-20 18:49:55",
+            "URL": "/disclosure/listedinfo/announcement/c/new/2026-08-21/601933_20260821_GJFO.pdf",
+            "BULLETIN_TYPE": "半年报"
+          }
+        }
+      },
+      "history": [
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "expected",
+          "from": "",
+          "to": "2026-08-21",
+          "sourceId": "sse",
+          "previousSourceId": "eastmoney-archive"
+        },
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "announcementDate",
+          "from": "",
+          "to": "2026-08-21",
+          "sourceId": "sse",
+          "previousSourceId": "eastmoney-archive"
+        },
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "url",
+          "from": "",
+          "to": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-21/601933_20260821_GJFO.pdf",
+          "sourceId": "sse",
+          "previousSourceId": "eastmoney-archive"
+        }
+      ]
+    },
+    {
+      "id": "601933.SH|2026Q1|formal",
+      "code": "601933.SH",
+      "period": "2026Q1",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-04-17",
+      "actual": "2026-04-17",
+      "announcementDate": "2026-04-17",
+      "announcementPublishedAt": "2026-04-16 19:39:13",
+      "title": "永辉超市股份有限公司2026年第一季度报告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-17/601933_20260417_60UB.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-04-17",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L013&publishYear=2026&companyCode=601933&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "601933",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2026",
+            "publishDate2": "",
+            "publishDate0": "2026-04-17",
+            "companyAbbr": "永辉超市",
+            "actualDate": "2026-04-17",
+            "bulletinType": "L013"
+          }
+        },
+        "announcement": {
+          "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=601933&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+          "row": {
+            "SECURITY_CODE": "601933",
+            "SECURITY_NAME": "永辉超市",
+            "TITLE": "永辉超市股份有限公司2026年第一季度报告",
+            "SSEDATE": "2026-04-17",
+            "ADDDATE": "2026-04-16 19:39:13",
+            "URL": "/disclosure/listedinfo/announcement/c/new/2026-04-17/601933_20260417_60UB.pdf",
+            "BULLETIN_TYPE": "第一季度季报"
+          }
+        }
+      },
+      "history": []
+    },
+    {
+      "id": "601933.SH|2026Q3|formal",
+      "code": "601933.SH",
+      "period": "2026Q3",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-10-31",
+      "actual": "",
+      "announcementDate": "",
+      "announcementPublishedAt": "",
+      "title": "永辉超市 2026Q3 定期报告",
+      "url": "",
+      "linkType": "",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-10-31",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L014&publishYear=2026&companyCode=601933&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "601933",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2026",
+            "publishDate2": "",
+            "publishDate0": "2026-10-31",
+            "companyAbbr": "永辉超市",
+            "actualDate": "",
+            "bulletinType": "L014"
+          }
+        },
+        "announcement": null
+      },
+      "history": []
+    },
+    {
+      "id": "603099.SH|2025FY|formal",
+      "code": "603099.SH",
+      "period": "2025FY",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-03-27",
+      "actual": "2026-03-27",
+      "announcementDate": "2026-03-27",
+      "announcementPublishedAt": "2026-03-26 17:49:20",
+      "title": "长白山旅游股份有限公司2025年年度报告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-03-27/603099_20260327_UVWR.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-03-27",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L011&publishYear=2025&companyCode=603099&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "603099",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2025",
+            "publishDate2": "",
+            "publishDate0": "2026-03-27",
+            "companyAbbr": "长白山",
+            "actualDate": "2026-03-27",
+            "bulletinType": "L011"
+          }
+        },
+        "announcement": {
+          "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=603099&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+          "row": {
+            "SECURITY_CODE": "603099",
+            "SECURITY_NAME": "长白山",
+            "TITLE": "长白山旅游股份有限公司2025年年度报告",
+            "SSEDATE": "2026-03-27",
+            "ADDDATE": "2026-03-26 17:49:20",
+            "URL": "/disclosure/listedinfo/announcement/c/new/2026-03-27/603099_20260327_UVWR.pdf",
+            "BULLETIN_TYPE": "年报"
+          }
+        }
+      },
+      "history": []
+    },
+    {
+      "id": "603099.SH|2026H1|flash|2026-07-21",
+      "code": "603099.SH",
+      "period": "2026H1",
+      "kind": "flash",
+      "documentType": "flash",
+      "expected": "",
+      "actual": "",
+      "announcementDate": "2026-07-21",
+      "title": "长白山旅游股份有限公司2026年半年度业绩快报公告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-21/603099_20260721_Z7IC.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [],
+      "evidence": {
+        "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=603099&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+        "row": {
+          "SECURITY_CODE": "603099",
+          "SECURITY_NAME": "长白山",
+          "TITLE": "长白山旅游股份有限公司2026年半年度业绩快报公告",
+          "SSEDATE": "2026-07-21",
+          "ADDDATE": "2026-07-20 16:11:11",
+          "URL": "/disclosure/listedinfo/announcement/c/new/2026-07-21/603099_20260721_Z7IC.pdf",
+          "BULLETIN_TYPE": "其它"
+        }
+      },
+      "history": []
+    },
+    {
+      "id": "603099.SH|2026H1|forecast|2026-07-14",
+      "code": "603099.SH",
+      "period": "2026H1",
+      "kind": "forecast",
+      "documentType": "forecast",
+      "expected": "",
+      "actual": "",
+      "announcementDate": "2026-07-14",
+      "title": "长白山旅游股份有限公司2026年半年度业绩预告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-14/603099_20260714_Z5W6.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [],
+      "evidence": {
+        "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=603099&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+        "row": {
+          "SECURITY_CODE": "603099",
+          "SECURITY_NAME": "长白山",
+          "TITLE": "长白山旅游股份有限公司2026年半年度业绩预告",
+          "SSEDATE": "2026-07-14",
+          "ADDDATE": "2026-07-13 16:01:35",
+          "URL": "/disclosure/listedinfo/announcement/c/new/2026-07-14/603099_20260714_Z5W6.pdf",
+          "BULLETIN_TYPE": "其它"
+        }
+      },
+      "history": []
+    },
+    {
+      "id": "603099.SH|2026H1|formal",
+      "code": "603099.SH",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-08-25",
+      "actual": "2026-08-25",
+      "announcementDate": "2026-08-25",
+      "announcementPublishedAt": "2026-08-24 18:47:03",
+      "title": "长白山旅游股份有限公司2026年半年度报告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-25/603099_20260825_I470.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-08-25",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L012&publishYear=2026&companyCode=603099&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "603099",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2026",
+            "publishDate2": "",
+            "publishDate0": "2026-08-25",
+            "companyAbbr": "长白山",
+            "actualDate": "2026-08-25",
+            "bulletinType": "L012"
+          }
+        },
+        "announcement": {
+          "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=603099&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+          "row": {
+            "SECURITY_CODE": "603099",
+            "SECURITY_NAME": "长白山",
+            "TITLE": "长白山旅游股份有限公司2026年半年度报告",
+            "SSEDATE": "2026-08-25",
+            "ADDDATE": "2026-08-24 18:47:03",
+            "URL": "/disclosure/listedinfo/announcement/c/new/2026-08-25/603099_20260825_I470.pdf",
+            "BULLETIN_TYPE": "半年报"
+          }
+        }
+      },
+      "history": [
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "expected",
+          "from": "",
+          "to": "2026-08-25",
+          "sourceId": "sse",
+          "previousSourceId": "eastmoney-archive"
+        },
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "announcementDate",
+          "from": "",
+          "to": "2026-08-25",
+          "sourceId": "sse",
+          "previousSourceId": "eastmoney-archive"
+        },
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "url",
+          "from": "",
+          "to": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-25/603099_20260825_I470.pdf",
+          "sourceId": "sse",
+          "previousSourceId": "eastmoney-archive"
+        }
+      ]
+    },
+    {
+      "id": "603099.SH|2026Q1|formal",
+      "code": "603099.SH",
+      "period": "2026Q1",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-04-29",
+      "actual": "2026-04-29",
+      "announcementDate": "2026-04-29",
+      "announcementPublishedAt": "2026-04-28 17:57:01",
+      "title": "长白山旅游股份有限公司2026年第一季度报告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-29/603099_20260429_1G19.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-04-29",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L013&publishYear=2026&companyCode=603099&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "603099",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2026",
+            "publishDate2": "",
+            "publishDate0": "2026-04-29",
+            "companyAbbr": "长白山",
+            "actualDate": "2026-04-29",
+            "bulletinType": "L013"
+          }
+        },
+        "announcement": {
+          "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=603099&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+          "row": {
+            "SECURITY_CODE": "603099",
+            "SECURITY_NAME": "长白山",
+            "TITLE": "长白山旅游股份有限公司2026年第一季度报告",
+            "SSEDATE": "2026-04-29",
+            "ADDDATE": "2026-04-28 17:57:01",
+            "URL": "/disclosure/listedinfo/announcement/c/new/2026-04-29/603099_20260429_1G19.pdf",
+            "BULLETIN_TYPE": "第一季度季报"
+          }
+        }
+      },
+      "history": []
+    },
+    {
+      "id": "603099.SH|2026Q3|formal",
+      "code": "603099.SH",
+      "period": "2026Q3",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-10-29",
+      "actual": "",
+      "announcementDate": "",
+      "announcementPublishedAt": "",
+      "title": "长白山 2026Q3 定期报告",
+      "url": "",
+      "linkType": "",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-10-29",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L014&publishYear=2026&companyCode=603099&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "603099",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2026",
+            "publishDate2": "",
+            "publishDate0": "2026-10-29",
+            "companyAbbr": "长白山",
+            "actualDate": "",
+            "bulletinType": "L014"
+          }
+        },
+        "announcement": null
+      },
+      "history": []
+    },
+    {
+      "id": "605098.SH|2025FY|formal",
+      "code": "605098.SH",
+      "period": "2025FY",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-04-15",
+      "actual": "2026-04-15",
+      "announcementDate": "2026-04-15",
+      "announcementPublishedAt": "2026-04-14 18:57:07",
+      "title": "2025年年度报告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-15/605098_20260415_SURI.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-04-15",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L011&publishYear=2025&companyCode=605098&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "605098",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2025",
+            "publishDate2": "",
+            "publishDate0": "2026-04-15",
+            "companyAbbr": "行动教育",
+            "actualDate": "2026-04-15",
+            "bulletinType": "L011"
+          }
+        },
+        "announcement": {
+          "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=605098&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+          "row": {
+            "SECURITY_CODE": "605098",
+            "SECURITY_NAME": "行动教育",
+            "TITLE": "2025年年度报告",
+            "SSEDATE": "2026-04-15",
+            "ADDDATE": "2026-04-14 18:57:07",
+            "URL": "/disclosure/listedinfo/announcement/c/new/2026-04-15/605098_20260415_SURI.pdf",
+            "BULLETIN_TYPE": "年报"
+          }
+        }
+      },
+      "history": []
+    },
+    {
+      "id": "605098.SH|2026H1|formal",
+      "code": "605098.SH",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-08-12",
+      "actual": "2026-08-12",
+      "announcementDate": "2026-08-12",
+      "announcementPublishedAt": "2026-08-11 18:43:24",
+      "title": "2026年半年度报告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-12/605098_20260812_OL9D.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-08-12",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L012&publishYear=2026&companyCode=605098&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "605098",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2026",
+            "publishDate2": "",
+            "publishDate0": "2026-08-12",
+            "companyAbbr": "行动教育",
+            "actualDate": "2026-08-12",
+            "bulletinType": "L012"
+          }
+        },
+        "announcement": {
+          "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=605098&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+          "row": {
+            "SECURITY_CODE": "605098",
+            "SECURITY_NAME": "行动教育",
+            "TITLE": "2026年半年度报告",
+            "SSEDATE": "2026-08-12",
+            "ADDDATE": "2026-08-11 18:43:24",
+            "URL": "/disclosure/listedinfo/announcement/c/new/2026-08-12/605098_20260812_OL9D.pdf",
+            "BULLETIN_TYPE": "半年报"
+          }
+        }
+      },
+      "history": [
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "expected",
+          "from": "",
+          "to": "2026-08-12",
+          "sourceId": "sse",
+          "previousSourceId": "eastmoney-archive"
+        },
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "announcementDate",
+          "from": "",
+          "to": "2026-08-12",
+          "sourceId": "sse",
+          "previousSourceId": "eastmoney-archive"
+        },
+        {
+          "observedAt": "2026-10-10T00:25:13.688Z",
+          "field": "url",
+          "from": "",
+          "to": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-12/605098_20260812_OL9D.pdf",
+          "sourceId": "sse",
+          "previousSourceId": "eastmoney-archive"
+        }
+      ]
+    },
+    {
+      "id": "605098.SH|2026Q1|formal",
+      "code": "605098.SH",
+      "period": "2026Q1",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-04-28",
+      "actual": "2026-04-28",
+      "announcementDate": "2026-04-28",
+      "announcementPublishedAt": "2026-04-27 16:46:43",
+      "title": "2026年第一季度报告",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-28/605098_20260428_SFRO.pdf",
+      "linkType": "original",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-04-30",
+          "label": "首次预约"
+        },
+        {
+          "date": "2026-04-28",
+          "label": "第 1 次变更"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L013&publishYear=2026&companyCode=605098&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "605098",
+            "publishDate3": "",
+            "publishDate1": "2026-04-28",
+            "publishYear": "2026",
+            "publishDate2": "",
+            "publishDate0": "2026-04-30",
+            "companyAbbr": "行动教育",
+            "actualDate": "2026-04-28",
+            "bulletinType": "L013"
+          }
+        },
+        "announcement": {
+          "requestUrl": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&productId=605098&securityType=0101&reportType=ALL&beginDate=2026-01-01&endDate=2026-10-10",
+          "row": {
+            "SECURITY_CODE": "605098",
+            "SECURITY_NAME": "行动教育",
+            "TITLE": "2026年第一季度报告",
+            "SSEDATE": "2026-04-28",
+            "ADDDATE": "2026-04-27 16:46:43",
+            "URL": "/disclosure/listedinfo/announcement/c/new/2026-04-28/605098_20260428_SFRO.pdf",
+            "BULLETIN_TYPE": "第一季度季报"
+          }
+        }
+      },
+      "history": []
+    },
+    {
+      "id": "605098.SH|2026Q3|formal",
+      "code": "605098.SH",
+      "period": "2026Q3",
+      "kind": "formal",
+      "documentType": "report",
+      "expected": "2026-10-27",
+      "actual": "",
+      "announcementDate": "",
+      "announcementPublishedAt": "",
+      "title": "行动教育 2026Q3 定期报告",
+      "url": "",
+      "linkType": "",
+      "sourceId": "sse",
+      "updatedAt": "2026-10-10T00:29:12.829Z",
+      "reservations": [
+        {
+          "date": "2026-10-27",
+          "label": "首次预约"
+        }
+      ],
+      "evidence": {
+        "reservation": {
+          "requestUrl": "https://query.sse.com.cn/commonSoaQuery.do?sqlId=SSE_SZSGG_DQBGYYQK_CAST_NEW&isPagination=true&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&bulletintype=L014&publishYear=2026&companyCode=605098&order=companyCode%7Casc",
+          "row": {
+            "companyCode": "605098",
+            "publishDate3": "",
+            "publishDate1": "",
+            "publishYear": "2026",
+            "publishDate2": "",
+            "publishDate0": "2026-10-27",
+            "companyAbbr": "行动教育",
+            "actualDate": "",
+            "bulletinType": "L014"
+          }
+        },
+        "announcement": null
+      },
+      "history": []
+    }
+  ]
+}

@@ -5,8 +5,10 @@ on:
       - "earnings.html"
       - "scripts/earnings*"
       - "scripts/update-earnings-calendar.cjs"
+      - "scripts/import-earnings-choice.cjs"
       - "scripts/site-shell.js"
-      - "data/earnings-calendar.json"
+      - "data/earnings*.json"
+      - "data/coverage-companies.json"
       - "data-manifest.json"
       - "tests/earnings-calendar.browser.cjs"
       - ".github/workflows/check-earnings-calendar.yml"
@@ -24,6 +26,7 @@ jobs:
         run: |
           node --check scripts/earnings-calendar.js
           node --check scripts/site-shell.js
+          node --check scripts/import-earnings-choice.cjs
           node scripts/earnings-calendar.test.cjs
           node scripts/earnings.test.cjs
       - name: Install isolated browser test dependency

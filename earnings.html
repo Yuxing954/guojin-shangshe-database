@@ -1,25 +1,39 @@
 <!doctype html>
-<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>财报日历 · 国金商社</title><script defer src="scripts/site-ui.js?v=20261010-unified"></script><link rel="stylesheet" href="scripts/site.css?v=20261010-unified"><link rel="stylesheet" href="scripts/earnings-calendar.css?v=20261010"><script defer src="scripts/site-data.js?v=20261010-unified"></script><script defer src="scripts/site-shell.js?v=20261010-unified"></script><script defer src="scripts/earnings-calendar-model.js?v=20261010"></script><script defer src="scripts/earnings-calendar.js?v=20261010"></script><link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-polish.css?v=20261010-unified"></head>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>财报日历 · 国金商社</title><script defer src="scripts/site-ui.js?v=20261010-unified"></script>
+<link rel="stylesheet" href="scripts/site.css?v=20261010-unified">
+<link rel="stylesheet" href="scripts/earnings-calendar.css?v=20261010b">
+<script defer src="scripts/site-data.js?v=20261010-unified"></script><script defer src="scripts/site-shell.js?v=20261010-unified"></script>
+<script defer src="scripts/earnings-calendar-model.js?v=20261010b"></script><script defer src="scripts/earnings-calendar.js?v=20261010b"></script>
+<link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-polish.css?v=20261010-unified"></head>
 <body><main>
-<header class="portal-header"><div><p class="eyebrow">公司研究</p><h1>财报日历</h1></div><div class="ec-actions"><button id="csv">导出 CSV</button><button id="ics">导出日历</button></div></header>
-<div id="sourceStatus" class="ec-source" role="status">正在读取披露日期…</div><div id="error" role="alert" hidden></div>
+<header class="portal-header"><div><p class="eyebrow">公司研究</p><h1>财报日历</h1></div></header>
+<div id="sourceStatus" class="ec-source" role="status">正在读取 Choice 数据…</div><div id="error" role="alert" hidden></div>
 <div id="content" hidden>
-<section class="ec-stats" aria-label="披露进度"><div><span>覆盖公司</span><strong id="coverageCount">—</strong></div><div><span>已披露</span><strong id="disclosedCount">—</strong></div><div><span>已预约</span><strong id="scheduledCount">—</strong></div><div><span>待公布</span><strong id="unknownCount">—</strong></div></section>
-<section class="ec-filters" aria-label="财报筛选">
-<label class="ec-search">搜索公司<input id="search" type="search" placeholder="公司名称、代码、公告标题"></label>
-<label>报告期<select id="period"></select></label><label>行业<select id="sector"><option value="">全部行业</option></select></label><label>市场<select id="market"><option value="">全部市场</option><option>A股</option><option>港股</option><option>美股</option></select></label>
-<label>财报类型<select id="reportType"><option value="">全部类型</option><option value="FY">年报</option><option value="H1">半年报</option><option value="Q1">一季报</option><option value="Q2">二季报</option><option value="Q3">三季报</option><option value="Q4">四季报</option></select></label>
-<label>公告类别<select id="kind"><option value="">全部公告</option><option value="formal">正式公告</option><option value="forecast">业绩预告</option><option value="flash">业绩快报</option></select></label>
-<label>披露状态<select id="status"><option value="">全部状态</option><option>已披露</option><option>已预约</option><option>待公布</option><option>预约日已过</option><option>已公告</option></select></label><label>公司范围<select id="scope"><option value="">全部覆盖</option><option value="watch">我的关注</option></select></label><button id="reset">重置</button>
+<section class="ec-controls" aria-label="财报筛选">
+<label class="ec-search"><span class="ec-sr-only">搜索公司</span><input id="search" type="search" placeholder="搜索公司或代码"></label>
+<label><span class="ec-sr-only">行业</span><select id="sector"><option value="">全部行业</option></select></label>
+<div class="ec-views" role="group" aria-label="日历视图"><button data-view="list" aria-pressed="true">最近</button><button data-view="month" aria-pressed="false">月</button><button data-view="week" aria-pressed="false">周</button></div>
+<details id="moreOptions" class="ec-options"><summary>更多</summary><div>
+<label>市场<select id="market"><option value="">全部市场</option><option>A股</option><option>港股</option><option>美股</option></select></label>
+<label class="ec-checkbox"><input id="watchOnly" type="checkbox">只看关注</label>
+<label class="ec-checkbox"><input id="history" type="checkbox">完整历史</label>
+<div class="ec-export"><button id="csv">导出 CSV</button><button id="ics">导出日历</button></div>
+</div></details>
 </section>
-<section class="ec-reminders" aria-labelledby="reminderTitle"><div class="ec-reminder-head"><h2 id="reminderTitle">临近披露</h2><label>提前<select id="lead" aria-label="提醒提前天数"><option value="3">3 天</option><option value="7" selected>7 天</option><option value="14">14 天</option><option value="30">30 天</option></select></label><span>北京时间 · 页面提醒 / 日历提醒</span></div><div id="reminders"></div></section>
-<section class="ec-board">
-<div class="ec-toolbar"><div class="ec-views" role="group" aria-label="日历视图"><button data-view="month" aria-pressed="true">月</button><button data-view="week" aria-pressed="false">周</button><button data-view="list" aria-pressed="false">列表</button></div><label>日期口径<select id="dateMode"><option value="disclosure">实际 / 预约披露日</option><option value="announcement">公告发布日期</option></select></label><span id="count" aria-live="polite"></span></div>
-<div id="calendarNav" class="ec-nav"><div><button id="prev" aria-label="上一月或周">‹</button><button id="today">今天</button><button id="next" aria-label="下一月或周">›</button></div><h2 id="rangeTitle">—</h2><div class="ec-legend"><span class="ec-formal">● 实际</span><span class="ec-scheduled">● 预约</span><span class="ec-forecast">● 预告 / 快报</span></div></div>
-<div id="calendarView" class="ec-layout"><div class="ec-calendar"><div class="ec-weekdays"><span>周一</span><span>周二</span><span>周三</span><span>周四</span><span>周五</span><span>周六</span><span>周日</span></div><div id="grid" class="ec-grid"></div></div><section class="ec-day-panel"><h2 id="selectedDate">—</h2><div id="dayEvents"></div><details open class="ec-unknown"><summary id="pendingLabel">日期待公布</summary><div id="pending"></div></details></section></div>
-<div id="listView" hidden><label class="ec-history-switch"><input id="history" type="checkbox">全部报告期历史</label><div class="portal-table-scroll"><table class="portal-table"><thead><tr><th>公司 / 行业</th><th>报告期 / 类别</th><th>预约披露日</th><th>实际披露日</th><th>公告发布日期</th><th>状态</th><th>来源 / 原文</th></tr></thead><tbody id="rows"></tbody></table></div><div class="ec-list-foot"><span id="listCount"></span><button id="more" hidden>加载更多</button></div></div>
+<div id="count" class="ec-count" aria-live="polite"></div>
+<section id="recentView">
+<section id="upcomingSection" class="ec-upcoming"><div class="ec-section-head"><h2>即将披露</h2><span>未来 30 天 · 预计</span></div><div id="reminders"></div></section>
+<section class="ec-recent"><div class="ec-section-head"><h2 id="listTitle">最近披露</h2><span id="listCount"></span></div><div class="portal-table-scroll"><table class="portal-table"><thead><tr><th>公司</th><th>最近财报</th><th>实际披露日</th><th>下次披露</th></tr></thead><tbody id="rows"></tbody></table></div><button id="historyMore" hidden>加载更多</button></section>
 </section>
-<details class="ec-sources"><summary>数据来源与更新</summary><div id="sources"></div><a href="docs/earnings-workbench.md" target="_blank" rel="noopener">数据口径与更新记录 ↗</a></details>
+<section id="calendarView" class="ec-board" hidden>
+<div class="ec-nav"><div><button id="prev" aria-label="上一月或周">‹</button><button id="today">今天</button><button id="next" aria-label="下一月或周">›</button></div><h2 id="rangeTitle"></h2><span class="ec-legend">● 实际　<span>● 预计</span></span></div>
+<div class="ec-calendar"><div class="ec-weekdays"><span>周一</span><span>周二</span><span>周三</span><span>周四</span><span>周五</span><span>周六</span><span>周日</span></div><div id="grid" class="ec-grid"></div></div>
+<section class="ec-day-panel"><h2 id="selectedDate"></h2><div id="dayEvents"></div></section>
+</section>
+<details class="ec-sources"><summary>来源与更新</summary><div id="sources"></div></details>
 </div>
 <dialog id="detail" class="ec-dialog"><div class="ec-detail-head"><div><small id="detailSubtitle"></small><h2 id="detailTitle"></h2></div><button id="closeDetail" aria-label="关闭详情">×</button></div><div id="detailBody"></div></dialog>
 <div id="toast" role="status" aria-live="polite"></div>
