@@ -141,12 +141,6 @@
       "category": "免税"
     },
     {
-      "id": "crossborder",
-      "name": "出海板块跟踪数据",
-      "file": "data/跨境电商板块跟踪数据_2026-09-08.csv",
-      "category": "行业高频"
-    },
-    {
       "id": "gold",
       "name": "黄金板块跟踪数据",
       "file": "data/黄金珠宝板块跟踪数据_2026-09-08.csv",
@@ -202,7 +196,7 @@
     },
     {
       "id": "industry_overview",
-      "name": "五大行业核心指标与来源",
+      "name": "行业核心指标与来源",
       "file": "data/industry/overview.json",
       "category": "行业核心",
       "checkedAt": "2026-10-07"
@@ -279,23 +273,11 @@
       "verification": "data/companies/issues.json"
     },
     {
-      "id": "overseas_sector",
-      "name": "出海行业与公司经营",
-      "file": "data/sectors/overseas.json",
-      "category": "行业数据",
-      "page": "overseas.html",
-      "asOf": "2026-10-10",
-      "rowCount": 615,
-      "updateScript": "scripts/update_sector_data.py",
-      "evidence": "data/sectors/reviewed.json",
-      "coverage": "docs/sector-construction.md"
-    },
-    {
       "id": "dining_sector",
       "name": "餐饮行业与公司经营",
       "file": "data/sectors/dining.json",
       "category": "行业数据",
-      "page": "dining.html",
+      "page": "industry.html#dining",
       "asOf": "2026-10-10",
       "rowCount": 1165,
       "updateScript": "scripts/update_sector_data.py",

@@ -27,7 +27,7 @@ class HomeSnapshotTests(unittest.TestCase):
     def test_actual_snapshot_dates_and_sources(self):
         payload = build(ROOT, dt.datetime(2099, 10, 7, 12, tzinfo=TZ), industry_only=True)
         self.assertEqual(len(payload["focus"]), 3)
-        self.assertEqual(len(payload["industries"]), 5)
+        self.assertEqual(len(payload["industries"]), 4)
         self.assertLessEqual(len(payload["research"]), 5)
         hotel = payload["industries"][0]
         self.assertIsNotNone(hotel["value"])
@@ -41,10 +41,7 @@ class HomeSnapshotTests(unittest.TestCase):
             else:
                 self.assertTrue((ROOT / source.split('#')[0]).is_file())
             self.assertTrue((ROOT / item["href"].split("#")[0]).is_file())
-        crossborder = next(item for item in payload['industries'] if item['id'] == 'overseas')
-        self.assertEqual(crossborder['value'], 21500)
-        self.assertEqual(crossborder['asOf'], '2024-12-31')
-        self.assertEqual(crossborder['href'], 'overseas.html')
+        self.assertNotIn('overseas', {item['id'] for item in payload['industries']})
 
     def test_home_keeps_latest_classified_research(self):
         payload={"dbs":[{"id":"views","rows":[

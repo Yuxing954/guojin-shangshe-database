@@ -2,19 +2,18 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>行业数据 · 国金商社</title><script defer src="scripts/site-ui.js?v=20261010-unified"></script>
+  <title>行业数据 · 国金商社</title><script defer src="scripts/site-ui.js?v=20261010direct"></script>
   <link rel="stylesheet" href="scripts/site.css?v=20261010-unified"><link rel="stylesheet" href="scripts/industry.css?v=20261010-unified">
   <script defer src="scripts/site-data.js?v=20261010combo1"></script><script defer src="scripts/research-model.js?v=20261010sectorsmerge"></script>
-  <script defer src="scripts/industry-model.js?v=3"></script><script defer src="scripts/site-shell.js?v=20261010sectorsmerge"></script><script defer src="scripts/gold-jewelry-model.js?v=3"></script><script defer src="scripts/gold-research-model.js?v=20261009"></script><script defer src="scripts/gold-macro-model.js?v=20261009macro"></script><script defer src="scripts/gold-jewelry.js?v=20261010combo1"></script><script defer src="scripts/industry.js?v=20261010combo1"></script>
+  <script defer src="scripts/industry-model.js?v=3"></script><script defer src="scripts/site-shell.js?v=20261010sectorsmerge"></script><script defer src="scripts/gold-jewelry-model.js?v=3"></script><script defer src="scripts/gold-research-model.js?v=20261009"></script><script defer src="scripts/gold-macro-model.js?v=20261009macro"></script><script defer src="scripts/gold-jewelry.js?v=20261010combo1"></script><script defer src="scripts/industry-panels.js?v=20261010direct"></script><script defer src="scripts/industry.js?v=20261010direct"></script>
   <link rel="stylesheet" href="scripts/dutyfree-holidays.css?v=2"><script defer src="scripts/dutyfree-holidays.js?v=20261010combo1"></script>
-<link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-charts.css?v=20261010combo1"><link rel="stylesheet" href="scripts/gold-jewelry.css?v=20261009macro"><link rel="stylesheet" href="scripts/site-polish.css?v=20261010-unified"><script src="scripts/site-charts.js?v=20261010combo1"></script></head>
+<link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-charts.css?v=20261010combo1"><link rel="stylesheet" href="scripts/gold-jewelry.css?v=20261009macro"><link rel="stylesheet" href="scripts/industry-embed.css?v=20261010direct"><link rel="stylesheet" href="scripts/site-polish.css?v=20261010-unified"><script src="scripts/site-charts.js?v=20261010combo1"></script></head>
 <body class="site-page" data-site-section="industry">
 <main class="site-main">
   <header class="portal-header"><div><p class="eyebrow">行业数据</p><h1 id="page-title">酒店</h1></div><a class="portal-top-link" href="quotes.html">覆盖池 →</a></header>
   <nav class="portal-tabs industry-tabs" id="sector-tabs" aria-label="选择行业">
-    <button data-key="hotel" aria-pressed="true">酒店</button><button data-key="dutyfree" aria-pressed="false">免税</button><button data-key="gold" aria-pressed="false">黄金</button><button data-key="overseas" aria-pressed="false">出海</button><button data-key="dining" aria-pressed="false">餐饮</button>
+    <button data-key="hotel" aria-pressed="true">酒店</button><button data-key="dutyfree" aria-pressed="false">免税</button><button data-key="gold" aria-pressed="false">黄金</button><button data-key="dining" aria-pressed="false">餐饮</button>
   </nav>
-  <p class="portal-note"><a id="sector-detail" href="hotel-dashboard.html">酒店专题 →</a></p>
   <div id="status" class="portal-status" role="status">正在读取行业数据…</div>
   <section id="gold-content" class="gold-page gj-wrap" aria-label="黄金" hidden>
   <div class="gj-header"><div class="gj-updated" id="asof">正在读取黄金数据…</div></div>
@@ -62,7 +61,8 @@
     <footer class="gj-footer"><span>国金商社研究数据库 · 黄金</span></footer>
   </div>
 </section>
-  <details id="gold-industry-history" class="portal-panel industry-details" hidden><summary>更多行业历史</summary></details>
+  <div id="industry-panels" hidden></div>
+  <details id="gold-industry-history" class="portal-panel industry-details" hidden><summary>行业历史</summary></details>
   <div id="industry-content-anchor"></div>
   <div id="content" hidden>
     <div id="stats" class="industry-core" aria-label="核心指标"></div>
@@ -79,7 +79,7 @@
     <details class="portal-panel industry-details" id="history-details"><summary><span>历史数据与来源</span><span class="portal-note">口径说明 · 明细 · 下载</span></summary><div class="industry-detail-body">
       <p id="definition" class="portal-note"></p><div class="portal-table-scroll"><table class="portal-table"><thead><tr><th>数据期间</th><th id="value-heading">数值</th><th id="change-heading">变化</th><th>来源与状态</th></tr></thead><tbody id="history"></tbody></table></div>
       <div class="portal-pager"><span id="page-label"></span><div><button id="prev">上一页</button> <button id="next">下一页</button></div></div>
-      <div class="industry-downloads"><button id="download" class="portal-button">下载当前指标 CSV</button><a id="specialist" hidden>进入专题 →</a></div>
+      <div class="industry-downloads"><button id="download" class="portal-button">下载当前指标 CSV</button></div>
       <h3>来源记录</h3><div id="sources"></div><details class="industry-revisions"><summary id="revision-label">来源差异与修订记录</summary><div id="revisions"></div></details>
     </div></details>
     <p class="portal-subtle" id="snapshot-note"></p>

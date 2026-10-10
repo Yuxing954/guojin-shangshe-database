@@ -51,22 +51,6 @@
       "href": "industry.html#gold"
     },
     {
-      "id": "overseas",
-      "name": "出海",
-      "metric": "跨境电商出口",
-      "value": 21500,
-      "unit": "亿元",
-      "precision": 2,
-      "change": 16.9,
-      "changeLabel": "同比",
-      "period": "2024年",
-      "asOf": "2024-12-31",
-      "freshnessDays": 400,
-      "source": "2024年跨境电商出口（海关统计转载）",
-      "sourceFile": "https://www.ccpitzj.gov.cn/art/2025/6/24/art_1229557691_49197.html",
-      "href": "overseas.html"
-    },
-    {
       "id": "dining",
       "name": "餐饮",
       "metric": "全国餐饮收入",
@@ -80,7 +64,7 @@
       "freshnessDays": 50,
       "source": "中国:社会消费品零售总额:餐饮收入(元)",
       "sourceFile": "https://choicew2z.eastmoney.com/dataDisplay/macroEDB/#/index?macroids=EMM00063221,EMM00063199,EMM00063191",
-      "href": "dining.html"
+      "href": "industry.html#dining"
     }
   ],
   "focus": [

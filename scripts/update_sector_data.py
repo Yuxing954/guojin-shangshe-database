@@ -291,7 +291,7 @@ def sync_overview(payload, snapshots):
         if sector['id'] not in snapshots:
             continue
         data = snapshots[sector['id']]
-        sector.update(metrics=data['metrics'], core=data['core'], defaultMetric=data['defaultMetric'], detailHref=sector['id'] + '.html', checkedAt=data['checkedAt'], note='')
+        sector.update(metrics=data['metrics'], core=data['core'], defaultMetric=data['defaultMetric'], detailHref='industry.html#' + sector['id'] if sector['id']=='dining' else sector['id'] + '.html', checkedAt=data['checkedAt'], note='')
         sector['sourceIds'] = sorted({p['sourceId'] for m in data['metrics'] for p in m['points']})
         sources.update({s['id']: s for s in data['sources']})
     payload['sources'] = list(sources.values())
