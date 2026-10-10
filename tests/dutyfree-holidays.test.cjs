@@ -71,8 +71,8 @@ console.log('Holiday data, missing-value handling, period separation and filters
 // Exercise the actual browser download handler with a minimal DOM and Blob capture.
 (async()=>{
   const vm=require('node:vm'),elements=new Map();let downloaded,downloadName;
-  const element=id=>{if(!elements.has(id))elements.set(id,{});return elements.get(id);};
-  const context={window:{},document:{getElementById:element,createElement:()=>({click(){downloadName=this.download;}})},location:{pathname:'/industry.html',hash:'#dutyfree'},addEventListener(){},fetch:async()=>({ok:true,json:async()=>d}),Blob,URL:{createObjectURL(blob){downloaded=blob;return 'blob:test';},revokeObjectURL(){}},setTimeout(){},console};
+  const element=id=>{if(!elements.has(id))elements.set(id,{parentElement:{},value:'combo'});return elements.get(id);};
+  const context={SiteCharts:{paired:()=>({html:''})},window:{},document:{getElementById:element,createElement:()=>({click(){downloadName=this.download;}})},location:{pathname:'/industry.html',hash:'#dutyfree'},addEventListener(){},fetch:async()=>({ok:true,json:async()=>d}),Blob,URL:{createObjectURL(blob){downloaded=blob;return 'blob:test';},revokeObjectURL(){}},setTimeout(){},console};
   vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../scripts/dutyfree-holidays.js'),'utf8'),context);
   await new Promise(resolve=>setImmediate(resolve));
   element('dh-holiday').onchange({target:{value:'春节'}});element('dh-year').onchange({target:{value:'2026'}});element('dh-download').onclick();
