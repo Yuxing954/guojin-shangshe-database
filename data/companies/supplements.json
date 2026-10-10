@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "id": "report-4000f1473275",
+      "companyId": "btg",
+      "file": "首旅酒店_2026年半年度报告.pdf",
+      "relativePath": "AI研报/首旅酒店/定期报告/首旅酒店_2026年半年度报告.pdf",
+      "sha256": "24bce043f4c00cc48e5f12afe7dcad005a2f364e07e6b459d39ef1cf1f568ffe",
+      "importedAt": "2026-10-10T17:31:10.973108+08:00",
+      "verification": "本轮核对原PDF披露页及表格",
+      "pages": "P7/P9/P12/P13/P14"
+    },
+    {
+      "id": "report-ba1fb1cb8b35",
+      "companyId": "jinjiang",
+      "file": "锦江酒店_2026年半年度报告.pdf",
+      "relativePath": "AI研报/锦江酒店/定期报告/锦江酒店_2026年半年度报告.pdf",
+      "sha256": "a8621901329c1c26ccc35ae92da64c21752fc77f6c7eae60a9e162847361b2d0",
+      "importedAt": "2026-10-10T17:31:10.975109+08:00",
+      "verification": "本轮核对原PDF披露页及表格",
+      "pages": "P9/P12/P13/P14"
+    },
+    {
+      "id": "report-08569c038487",
+      "companyId": "hworld",
+      "file": "2026年第二季度及中期业绩公告.pdf",
+      "relativePath": "AI研报/华住/定期报告/2026年第二季度及中期业绩公告.pdf",
+      "sha256": "a0c308815938dd3e8a02c79f1b855b9415198a73d67cfa7ccf80af067dae1180",
+      "importedAt": "2026-10-10T17:31:10.977234+08:00",
+      "verification": "本轮核对原PDF披露页及表格",
+      "pages": "P1/P2/P3"
+    }
+  ],
+  "parts": [
+    "data/companies/supplements/001.json",
+    "data/companies/supplements/002.json",
+    "data/companies/supplements/003.json"
+  ]
+}

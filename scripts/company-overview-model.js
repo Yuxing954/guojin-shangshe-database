@@ -1,0 +1,14 @@
+(function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory(require('./company-database-model.js'));else root.CompanyOverviewModel=factory(root.CompanyDatabaseModel);})(typeof globalThis!=='undefined'?globalThis:this,function(M){
+ 'use strict';
+ const actual=o=>o.status!=='forecast'&&o.status!=='pending';
+ const key=o=>JSON.stringify([o.companyId,o.metric,o.period,o.frequency,M.seriesKey(o)]);
+ function merge(base,extra){const out=new Map(base.map(o=>[key(o),o]));for(const o of extra){const old=out.get(key(o));out.set(key(o),old?{...o,originalSource:{id:old.sourceId,observationId:old.id,locator:old.locator,value:old.value},sourceConflict:old.value!==o.value}:o);}return [...out.values()];}
+ function pick(rows,selector={},metric,period){return M.filter(rows).filter(o=>actual(o)&&(!metric||o.metric===metric)&&(!period||o.period===period)&&Object.entries(selector).every(([k,v])=>o[k]===v));}
+ function latest(rows,selector,metric,period){return pick(rows,selector,metric,period).at(-1)||null;}
+ function history(rows,o){return o?pick(rows,{frequency:o.frequency},o.metric).filter(r=>M.seriesKey(r)===M.seriesKey(o)):[];}
+ function yoy(rows,o){if(!o)return null;const priorPeriod=String(Number(o.period.slice(0,4))-1)+o.period.slice(4);const b=history(rows,o).find(r=>r.period===priorPeriod);if(!b||o.sourceConflict||b.sourceConflict){return Number.isFinite(o.reportedYoY)?{value:o.reportedYoY,unit:o.metric==='occ'?'百分点':'%',kind:'报告披露',prior:null}:null;}const delta=o.value-b.value;if(o.metric==='occ')return {value:delta,unit:'百分点',kind:'同比计算',prior:b};if(b.value<=0)return {value:delta,unit:o.unit,kind:'同比增减额',prior:b};return {value:delta/b.value*100,unit:'%',kind:'同比计算',prior:b};}
+ function ratio(n,d){if(!n||!d||d.value<=0||n.companyId!==d.companyId||n.period!==d.period||n.frequency!==d.frequency||n.periodBasis!==d.periodBasis||n.unit!==d.unit||n.currency!==d.currency)return null;return n.value/d.value*100;}
+ function snapshot(rows,p,period){const result={};for(const m of ['hotels','rooms'])result[m]=latest(rows,p.scale,m,period);for(const m of ['adr','occ','revpar'])result[m]=latest(rows,p.operating,m,period);for(const m of ['revenue',p.profitMetric,'operating_profit','adjusted_ebitda'])result[m]=latest(rows,p.financial,m,period);return result;}
+ function structure(rows,p,g){const sel={...p.scale,...g.denominator};const total=latest(rows,sel,g.metric);if(!total)return {total:null,rows:[],residual:null};const items=g.rows.map(r=>{const {label,...match}=r;const o=latest(rows,{...sel,...match},g.metric,total.period);return {label,row:o,share:ratio(o,total)};});const all=items.every(x=>x.row);return {total,rows:items,residual:all?total.value-items.reduce((sum,x)=>sum+x.row.value,0):null};}
+ return {actual,key,merge,pick,latest,history,yoy,ratio,snapshot,structure};
+});
