@@ -5,23 +5,21 @@
 <title>实时行情 · 国金商社</title>
 <link rel="stylesheet" href="scripts/site.css?v=7">
 <script defer src="scripts/site-data.js?v=2"></script><script defer src="scripts/market-kline.js?v=20261009-3"></script>
-<script defer src="scripts/quotes-model.js?v=20261010coverage"></script><script defer src="scripts/site-shell.js?v=20261010coverage"></script><script defer src="scripts/quotes-poller.js?v=2"></script><script defer src="scripts/quotes.js?v=20261010coverage"></script>
-<link rel="stylesheet" href="scripts/site-polish.css?v=1"><link rel="stylesheet" href="scripts/quotes.css?v=20261009-compact"></head><body><main id="main">
-<header class="portal-header quotes-header"><div><p class="eyebrow">MARKET / RESEARCH DESK</p><h1>实时行情</h1></div><div class="quotes-actions"><button class="quotes-text-button" id="pause-quotes" type="button" aria-pressed="false">暂停更新</button><button class="quotes-text-button" id="export-quotes" type="button" disabled>导出当前范围</button><button class="portal-button" id="refresh" type="button">刷新报价</button></div></header>
+<script defer src="scripts/quotes-model.js?v=20261010coverage"></script><script defer src="scripts/site-shell.js?v=20261010coverage"></script><script defer src="scripts/quotes-poller.js?v=2"></script><script defer src="scripts/quotes.js?v=20261010simple"></script>
+<link rel="stylesheet" href="scripts/site-polish.css?v=1"><link rel="stylesheet" href="scripts/quotes.css?v=20261010simple"></head><body><main id="main">
+<header class="portal-header quotes-header"><div><p class="eyebrow">MARKET / RESEARCH DESK</p><h1>实时行情</h1></div><div class="quotes-actions"><button class="portal-button" id="refresh" type="button">刷新</button></div></header>
 <div id="status" class="quotes-status" role="status" aria-live="polite">正在读取覆盖公司…</div>
 <div id="content" hidden>
 <section id="benchmarks" class="quotes-benchmarks" aria-label="市场指数"></section>
 <section class="quotes-controls" aria-label="选择公司范围">
 <div class="quotes-groups" id="groups" aria-label="公司分组"></div>
-<div class="quotes-filters"><input type="search" id="search" aria-label="搜索公司或代码" placeholder="搜索公司或证券代码"><select id="market" aria-label="证券市场"><option value="">全部市场</option><option value="CN">A股</option><option value="HK">港股</option><option value="US">美股</option></select><select id="sector" aria-label="公司行业"><option value="">全部行业</option></select><select id="sort" aria-label="行情排序"><option value="change-desc">涨幅优先</option><option value="change-asc">跌幅优先</option><option value="name">名称升序</option><option value="name-desc">名称降序</option></select><button type="button" id="reset" class="quotes-text-button">重置筛选</button></div>
+<div class="quotes-filters"><input type="search" id="search" aria-label="搜索公司或代码" placeholder="搜索全部公司，点击 ☆ 加自选"><select id="sector" aria-label="公司行业"><option value="">全部行业</option></select><details class="quotes-settings" id="quote-settings"><summary>更多设置<span id="filter-count"></span></summary><div class="quotes-settings-panel"><label>市场 <select id="market" aria-label="证券市场"><option value="">全部市场</option><option value="CN">A股</option><option value="HK">港股</option><option value="US">美股</option></select></label><label>排序 <select id="sort" aria-label="行情排序"><option value="change-desc">涨幅优先</option><option value="change-asc">跌幅优先</option><option value="name">名称升序</option><option value="name-desc">名称降序</option></select></label><label>字段 <select id="columns" aria-label="报价字段"><option value="compact">核心报价</option><option value="full">完整报价</option></select></label><label><input id="live-sort" type="checkbox"> 实时排序</label><span id="order-hint">报价实时更新 · 位置固定</span><div class="quotes-settings-actions"><button class="quotes-text-button" id="pause-quotes" type="button" aria-pressed="false">暂停更新</button><button class="quotes-text-button" id="export-quotes" type="button" disabled>下载行情</button><button type="button" id="reset" class="quotes-text-button">清除筛选</button></div></div></details></div>
 </section>
 <div class="quotes-workspace" id="workspace">
 <section class="quotes-board" aria-labelledby="board-title">
-<div class="quotes-board-head"><div><h2 id="board-title">全部覆盖</h2><p id="range-summary"></p></div><div class="quotes-view" id="views" aria-label="展示方式"><button type="button" data-view="list" aria-pressed="false">列表</button><button type="button" data-view="heat" aria-pressed="true">热力图</button></div></div>
-<div class="quotes-board-toolbar"><label title="默认固定位置，避免点击时公司换位；勾选后报价更新会按当前排序重排。"><input id="live-sort" type="checkbox"> 实时排序</label><span id="order-hint">报价实时更新 · 位置固定</span></div>
-<div class="quotes-table-tools" id="table-tools"><span>点击整行查看走势 · ☆ 加入自选</span><label>报价字段 <select id="columns" aria-label="报价字段"><option value="compact">核心报价</option><option value="full">完整报价</option></select></label></div>
-<div id="list-view" class="quotes-table-wrap" hidden><div class="quotes-table-scroll" id="table-scroll"><table class="quotes-table" id="quote-table"><thead id="table-head"></thead><tbody id="rows"></tbody></table></div></div>
-<div id="heat-view"><div class="quotes-heat-legend" aria-label="涨跌颜色：绿跌红涨，颜色越深幅度越大"><span>−5%及以下</span><i></i><span>0</span><i></i><span>+5%及以上</span></div><div id="heatmap" class="quotes-heatmap" aria-label="覆盖公司涨跌热力图"></div><div class="quotes-heat-pagination" id="heat-pagination" hidden><button type="button" id="heat-previous" aria-label="上一页公司">← 上一页</button><span id="heat-page-label"></span><button type="button" id="heat-next" aria-label="下一页公司">下一页 →</button></div></div><div id="list-note" class="quotes-list-note"></div>
+<div class="quotes-board-head"><div><h2 id="board-title">全部覆盖</h2><p id="range-summary"></p></div><div class="quotes-view" id="views" aria-label="展示方式"><button type="button" data-view="list" aria-pressed="true">列表</button><button type="button" data-view="heat" aria-pressed="false">热力图</button></div></div>
+<div id="list-view" class="quotes-table-wrap"><div class="quotes-table-scroll" id="table-scroll"><table class="quotes-table" id="quote-table"><thead id="table-head"></thead><tbody id="rows"></tbody></table></div></div>
+<div id="heat-view" hidden><div class="quotes-heat-legend" aria-label="涨跌颜色：绿跌红涨，颜色越深幅度越大"><span>−5%及以下</span><i></i><span>0</span><i></i><span>+5%及以上</span></div><div id="heatmap" class="quotes-heatmap" aria-label="覆盖公司涨跌热力图"></div><div class="quotes-heat-pagination" id="heat-pagination" hidden><button type="button" id="heat-previous" aria-label="上一页公司">← 上一页</button><span id="heat-page-label"></span><button type="button" id="heat-next" aria-label="下一页公司">下一页 →</button></div></div><div id="list-note" class="quotes-list-note"></div>
 </section>
 <section id="quote-detail" class="quotes-detail" aria-labelledby="quote-title" hidden>
 <div class="quotes-detail-head"><div><p class="eyebrow">COMPANY / PRICE HISTORY</p><h2 id="quote-title"></h2><p id="quote-subtitle"></p></div><button id="detail-watch" class="quotes-detail-watch" type="button" aria-pressed="false">☆ 自选</button></div>
@@ -31,8 +29,9 @@
 <div class="quotes-chart-options"><label><input type="checkbox" id="show-ma" checked> MA5 / MA20</label><select id="chart-window" aria-label="日K范围"><option value="20">近1个月</option><option value="60" selected>近3个月</option><option value="120">近6个月</option></select></div>
 <p id="chart-status" class="quotes-context" role="status"></p><div id="chart-readout" class="quotes-chart-readout" aria-live="off"></div><div id="chart" aria-busy="false"></div><p id="chart-detail" class="quotes-context"></p>
 <div class="quotes-detail-links"><a id="industry-link">行业数据 →</a><a id="provider-link" target="_blank" rel="noopener">腾讯自选股 ↗</a></div>
-</section><div id="detail-empty" class="quotes-detail-empty">选择一家覆盖公司，查看走势。</div>
+</section><div id="detail-empty" class="quotes-detail-empty" hidden>选择公司查看走势</div>
 </div>
+<section id="watch-empty" class="quotes-watch-empty" hidden><h2>暂无自选公司</h2><button id="browse-companies" class="portal-button" type="button">添加公司</button></section>
 <p class="quotes-context quotes-footnote">本币报价 · 涨跌幅较前收盘 · 报价可能延迟</p>
 <details class="quotes-source"><summary>数据来源</summary><p>腾讯行情 · 1秒请求间隔 · 后台暂停 · 更新以来源时间为准 · 失败保留原报价</p><p>自选保存在当前浏览器 · 均线与复权口径见走势标注</p><a href="https://gu.qq.com/" target="_blank" rel="noopener">腾讯自选股 ↗</a></details>
 </div><p id="preference-status" class="quotes-preference-status" role="status" aria-live="polite" hidden></p>
