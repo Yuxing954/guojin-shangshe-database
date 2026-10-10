@@ -1,0 +1,55 @@
+/* Morning overview uses the existing catalog and reviewed history. */
+.macro-dashboard.macro-morning .macro-page-head{margin-bottom:20px}
+.macro-morning .morning-head-actions{display:flex;align-items:center;gap:18px}
+.macro-morning .morning-badge{border:1px solid #dce3ef;background:#fff;padding:5px 12px;border-radius:20px;color:var(--site-muted);font-size:12px}
+.macro-dashboard.macro-morning .macro-kpis{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.macro-dashboard.macro-morning .macro-kpi{padding:18px;min-height:164px;border-radius:12px}
+.macro-dashboard.macro-morning .macro-kpi-reading strong{font-size:34px}
+.macro-morning .macro-kpi-previous{display:block;color:var(--macro-muted);font-size:12px;margin-top:8px}
+.macro-morning .macro-kpi-release{display:block;font-size:11px;color:var(--macro-muted);margin-top:5px}
+.macro-dashboard.macro-morning .macro-kpi-bottom{margin-top:8px;min-height:28px}
+.macro-dashboard.macro-morning .macro-kpi-change{font-size:12px}
+.macro-dashboard.macro-morning .macro-kpi.is-support{grid-column:span 2;min-height:0;display:grid;grid-template-columns:minmax(120px,1fr) auto;gap:3px 16px;padding:13px 18px;background:#f9fafe}
+.macro-morning .is-support .macro-kpi-reading{grid-column:2;grid-row:1 / span 2;margin:0;justify-content:flex-end}
+.macro-dashboard.macro-morning .is-support .macro-kpi-reading strong{font-size:25px}
+.macro-morning .is-support .macro-kpi-top{min-height:0}
+.macro-morning .is-support .macro-kpi-bottom{grid-column:1 / -1;justify-content:space-between;min-height:0;margin-top:3px}
+.macro-morning .is-support .macro-spark{height:24px}
+.macro-morning .is-support .macro-kpi-previous{grid-column:1;grid-row:3;margin-top:2px}
+.macro-morning .is-support .macro-kpi-release{grid-column:2;grid-row:3;text-align:right;margin-top:2px}
+.macro-morning .morning-section{margin-top:26px}
+.macro-morning .morning-releases{border:1px solid var(--site-line);border-radius:12px;background:#fff;overflow:hidden}
+.macro-morning .morning-releases table{margin:0;width:100%;border-collapse:collapse}
+.macro-morning .morning-releases th{font-size:12px;font-weight:500;color:var(--macro-muted);text-align:left;background:#f8fafe;white-space:nowrap;padding:10px 16px}
+.macro-morning .morning-releases td{padding:10px 16px;border-top:1px solid var(--site-line);font-size:13px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.macro-morning .morning-releases td>small{font-size:11px;color:var(--macro-muted)}
+.macro-morning .morning-releases td:nth-child(2)>small{display:block;white-space:normal}
+.macro-morning .morning-releases button,.macro-morning .morning-trend header button{padding:0;border:0;background:none;color:var(--site-ink);text-align:left;font:inherit;font-weight:600;min-height:28px}
+.macro-morning .morning-releases button:hover,.macro-morning .morning-trend header button:hover{color:var(--site-accent)}
+.macro-morning .morning-reading{font-weight:650}
+.macro-morning .morning-trends{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.macro-morning .morning-trend{border:1px solid var(--site-line);border-radius:12px;background:#fff;padding:16px;min-width:0}
+.macro-morning .morning-trend header{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:14px}
+.macro-morning .morning-trend header>span{color:var(--macro-muted);font-size:11px;white-space:nowrap}
+.macro-morning .morning-trend-value{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px;margin:12px 0 8px}
+.macro-morning .morning-trend-value strong{font-size:26px;font-variant-numeric:tabular-nums}
+.macro-morning .morning-trend-value span,.macro-morning .morning-trend-value time{font-size:11px;color:var(--macro-muted)}
+.macro-morning .morning-trend-value time{margin-left:auto}
+.macro-morning .morning-chart svg{display:block;width:100%;height:auto;overflow:visible}
+.macro-morning .morning-chart text{font-size:11px;fill:var(--macro-muted)}
+.macro-morning .morning-grid{stroke:#edf0f5}
+.macro-morning .morning-reference{stroke:#adb7ca;stroke-dasharray:4 4}
+.macro-morning .morning-chart polyline{fill:none;stroke:var(--macro-blue);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.macro-morning .morning-chart circle[data-chart-point]{fill:transparent;stroke:transparent;pointer-events:all}
+.macro-morning .morning-chart circle.morning-last{fill:var(--macro-blue);stroke:white;stroke-width:1.5}
+.macro-morning .morning-chart circle[data-chart-point]:focus-visible{fill:white;stroke:var(--macro-blue);stroke-width:2;outline:none}
+.macro-dashboard.macro-morning .macro-workspace-head{border-top:1px solid var(--site-line);padding-top:26px;margin-top:30px}
+.macro-morning .morning-filters{display:flex;gap:10px;align-items:center}
+.macro-morning .morning-filters summary{font-size:12px;color:var(--macro-muted);cursor:pointer;padding:8px}
+.macro-morning .morning-filters[open]{flex-basis:100%;flex-wrap:wrap}
+.macro-morning .morning-filters[open] summary{width:100%}
+.macro-morning .morning-filters label{display:inline-flex;margin:0 10px 5px 0}
+@media(max-width:1250px){.macro-dashboard.macro-morning .macro-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.macro-dashboard.macro-morning .macro-kpi.is-support{grid-column:span 1}.macro-morning .is-support .macro-kpi-category{display:none}.macro-morning .morning-trends{gap:10px}.macro-morning .morning-trend{padding:12px}.macro-morning .morning-releases td,.macro-morning .morning-releases th{padding:10px 12px}}
+@media(max-width:900px){.macro-morning .morning-trends{grid-template-columns:1fr}.macro-morning .morning-chart{max-width:700px;margin:auto}.macro-morning .morning-trend{padding:16px}.macro-morning .morning-trend-value time{margin-left:8px}}
+@media(max-width:600px){.macro-dashboard.macro-morning .macro-kpi{padding:14px;min-height:170px}.macro-dashboard.macro-morning .macro-kpi-reading strong{font-size:29px}.macro-dashboard.macro-morning .macro-kpi.is-support{grid-column:span 2;grid-template-columns:1fr auto;padding:12px 14px}.macro-morning .morning-head-actions{gap:8px;flex-wrap:wrap;justify-content:flex-end}.macro-morning .morning-badge{font-size:11px;padding:3px 8px}.macro-morning .morning-releases table{min-width:780px}.macro-morning .morning-section .macro-section-head{align-items:start}.macro-morning .morning-section h2{font-size:18px}.macro-morning #release-meta{font-size:11px}.macro-morning .macro-kpi-previous{font-size:11px}.macro-morning .macro-kpi-release{font-size:10px}.macro-morning .macro-kpi-top{min-height:30px}.macro-morning .morning-trend-value strong{font-size:24px}}
+
