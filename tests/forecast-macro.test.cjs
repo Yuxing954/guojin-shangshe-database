@@ -9,6 +9,12 @@ test('Polymarket search retains all event choices and Chinese option names',()=>
 
 
 const data=require('../data/gold-jewelry/macro.json'),receipt=require('../data/macro/fedwatch-receipt-2026-10-11.json');
+test('failed refresh preserves historical futures and only warns after an actual attempt',()=>{
+ const update={status:'error',attemptedAt:'2026-10-11T07:00:00Z'};
+ assert.match(F.refreshWarning(update,{retrievedAt:'2026-10-11T00:36:25Z'},Date.parse('2026-10-11T08:00:00Z')),/保留概率及期货历史快照/);
+ assert.equal(F.refreshWarning(update,{retrievedAt:'2026-10-11T00:36:25Z'},Date.parse('2026-10-11T06:00:00Z')),'');
+ assert.equal(F.refreshWarning(update,{retrievedAt:'2026-10-11T07:30:00Z'},Date.parse('2026-10-11T08:00:00Z')),'');
+});
 test('whole official table retains every meeting, contract, zero, blank and unnormalized rounded row',()=>{
  const t=F.latestTable(data,Date.parse(receipt.retrievedAt)+1);assert.ok(t);
  assert.equal(t.rows.length,receipt.tables[1].rows.length-2);assert.equal(t.futures.length,receipt.tables[0].rows[1].length);

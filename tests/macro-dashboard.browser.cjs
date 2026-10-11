@@ -43,7 +43,10 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
     if(out)await page.screenshot({path:path.join(out,'宏观核心指标-手机.png'),fullPage:true});
     await page.locator('[data-view="predictions"]').click();await page.waitForFunction(()=>document.querySelector('#prediction-list .forecast-event'));assert.ok(requests.some(url=>url.includes('predictions.json')));
     assert.match(await page.locator('#prediction-overview').innerText(),/活跃合约/);
-    await page.locator('#prediction-search').fill('降息25');assert.equal(await page.locator('#prediction-list .forecast-event').count(),2);
+    await page.locator('#prediction-search').fill('降息25');
+    const pm=JSON.parse(fs.readFileSync(path.join(root,'data/macro/predictions.json'),'utf8')),P=require('../scripts/prediction-model.js');
+    const expected=P.groups(pm.markets,{query:'降息25',category:await page.locator('#prediction-category').inputValue(),wholeEvents:true}).length;
+    assert.ok(expected>0);assert.equal(await page.locator('#prediction-list .forecast-event').count(),expected);
     assert.match(await page.locator('#prediction-list').innerText(),/维持不变/);
     const predictionDownload=page.waitForEvent('download');await page.locator('#prediction-download').click();assert.match(fs.readFileSync(await (await predictionDownload).path(),'utf8'),/英文原文/);
     await page.locator('[data-view="fedwatch"]').click();await page.waitForSelector('.fedwatch-kpi');
