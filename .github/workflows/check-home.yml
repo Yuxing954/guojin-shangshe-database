@@ -57,6 +57,8 @@ on:
       - "scripts/research*"
       - "scripts/research_sources*"
       - "scripts/test_research_updates.py"
+      - "scripts/validate_research_data.py"
+      - "scripts/test_validate_research_data.py"
       - "scripts/import_research_topics.py"
       - "scripts/build_research_recent.py"
       - "scripts/build_research_library.py"
@@ -100,6 +102,8 @@ jobs:
           python scripts/test_home_snapshot.py
           python scripts/test_summary_updates.py
           python scripts/research_sources_test.py
+          python scripts/test_validate_research_data.py
+          python scripts/validate_research_data.py
           python -m py_compile scripts/import_research_topics.py
           python scripts/build_research_recent.py
           python scripts/build_home_snapshot.py
