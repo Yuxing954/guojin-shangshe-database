@@ -18,5 +18,5 @@ test('same event groups without normalizing probabilities; expired events exclud
  assert.equal(P.groups(markets,{query:'加息',now})[0].markets.length,1);assert.equal(P.groups(markets,{category:'金融市场',now}).length,0);
 });
 test('macro consumption navigation comes first and chart interaction helpers load on both views',()=>{
- for(const name of ['macro.html','consumption-macro.html']){const html=fs.readFileSync(path.join(__dirname,'..',name),'utf8');assert.ok(html.indexOf('>消费专题<')<html.indexOf('>核心指标<'));assert.match(html,/research-chart.js/);assert.doesNotMatch(html,/>消费宏观</);}
+ for(const name of ['macro.html','consumption-macro.html']){const html=fs.readFileSync(path.join(__dirname,'..',name),'utf8');const consumption=html.indexOf('>消费全景<'),core=html.indexOf('>核心指标<');assert.ok(consumption>=0&&core>consumption);assert.match(html,/research-chart.js/);assert.doesNotMatch(html,/>消费宏观</);}
 });

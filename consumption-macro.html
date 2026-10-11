@@ -2,52 +2,52 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>������� �� ����ȫ��</title><script defer src="scripts/site-ui.js?v=20261011public"></script>
+  <title>宏观数据 · 消费全景</title><script defer src="scripts/site-ui.js?v=20261011public"></script>
   <link rel="stylesheet" href="scripts/site.css?v=20261011public"><link rel="stylesheet" href="scripts/consumption-macro.css?v=3">
   <script defer src="scripts/site-shell.js?v=20261011public"></script><script defer src="scripts/consumption-macro-model.js?v=20261011study1"></script><script defer src="scripts/consumption-macro.js?v=20261011clarity"></script>
 <link rel="stylesheet" href="scripts/research-chart.css?v=1"><script defer src="scripts/research-chart.js?v=20261010charts"></script><link rel="stylesheet" href="scripts/macro-refinements.css?v=1"><link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-charts.css?v=20261010combo1"><link rel="stylesheet" href="scripts/macro-study.css?v=20261011study2"><link rel="stylesheet" href="scripts/macro-clarity.css?v=20261011clarity"><link rel="stylesheet" href="scripts/site-polish.css?v=20261011macrodesign"><script src="scripts/site-charts.js?v=20261010combo1"></script></head>
 <body class="site-page" data-site-section="macro">
 <main class="site-main data-board cm-main">
-  <header class="portal-header"><div><p class="eyebrow">����о�</p><h1>�������</h1></div><span id="asof" class="portal-note"></span></header>
-  <nav class="portal-tabs site-subnav" aria-label="�����������Ŀ"><a href="consumption-macro.html" class="current" aria-current="page">����ȫ��</a><a href="macro.html?view=indicators">����ָ��</a><a href="macro.html?view=fedwatch">֥���� FedWatch</a><a href="macro.html?view=predictions">Polymarket</a></nav><p id="status" class="portal-status" role="status">���ڶ�ȡ����ȫ�����ݡ�</p>
-  <p id="automatic-warning" class="cm-error" role="status" hidden>������ʷδ���أ���ǰչʾ�Ѻ���ٷ���¼��<button id="retry-load" class="portal-button">����</button></p>
+  <header class="portal-header"><div><p class="eyebrow">宏观研究</p><h1>宏观数据</h1></div><span id="asof" class="portal-note"></span></header>
+  <nav class="portal-tabs site-subnav" aria-label="宏观数据子栏目"><a href="consumption-macro.html" class="current" aria-current="page">消费全景</a><a href="macro.html?view=indicators">核心指标</a><a href="macro.html?view=fedwatch">芝商所 FedWatch</a><a href="macro.html?view=predictions">Polymarket</a></nav><p id="status" class="portal-status" role="status">正在读取消费全景数据…</p>
+  <p id="automatic-warning" class="cm-error" role="status" hidden>补充历史未加载，当前展示已核验官方记录。<button id="retry-load" class="portal-button">重试</button></p>
   <div id="content" hidden>
-    <nav id="consumption-views" class="site-subnav cm-study-tabs" aria-label="�����о���ͼ"><button data-cm-view="overview" aria-pressed="true">����</button><button data-cm-view="structure" aria-pressed="false">���Ѳ��</button><button data-cm-view="income" aria-pressed="false">������۸�</button><button data-cm-view="workspace" aria-pressed="false">ָ���ѯ</button></nav>
-    <section id="consumption-summary" aria-label="���Ѻ��Ķ���"><div class="cm-section-head board-section-head"><h2 id="consumption-summary-title">���Ѻ��Ķ���</h2><nav class="site-subnav" aria-label="�����ڼ�"><button data-period-mode="latest" aria-pressed="true">���¶���</button><button data-period-mode="aligned" aria-pressed="false">ͬƵͬ��</button></nav></div><div id="kpis"></div></section>
+    <nav id="consumption-views" class="site-subnav cm-study-tabs" aria-label="消费研究视图"><button data-cm-view="overview" aria-pressed="true">总览</button><button data-cm-view="structure" aria-pressed="false">消费拆分</button><button data-cm-view="income" aria-pressed="false">收入与价格</button><button data-cm-view="workspace" aria-pressed="false">指标查询</button></nav>
+    <section id="consumption-summary" aria-label="消费核心读数"><div class="cm-section-head board-section-head"><h2 id="consumption-summary-title">消费核心读数</h2><nav class="site-subnav" aria-label="读数期间"><button data-period-mode="latest" aria-pressed="true">最新读数</button><button data-period-mode="aligned" aria-pressed="false">同频同期</button></nav></div><div id="kpis"></div></section>
     <section id="retail-panel" class="portal-panel retail-panel board-panel" aria-labelledby="retail-heading">
-      <div class="portal-panel-head board-panel-head"><div><p class="eyebrow">���Ѳ��</p><h2 id="retail-heading">������</h2></div><span id="retail-context" class="portal-note"></span></div>
-      <div class="cm-filter board-filters"><label>ͳ�ƿھ�<select id="retail-basis"><option value="month">���� / 1��2��</option><option value="ytd">����ۼ�</option><option value="year">ȫ��</option></select></label><label>�����ڼ�<select id="retail-period"></select></label><nav class="retail-tabs site-subnav" aria-label="������ά��"><button data-retail="categories" aria-pressed="true">��Ʒ��</button><button data-retail="structure" aria-pressed="false">��Ʒ�����</button><button data-retail="channels" aria-pressed="false">����������</button></nav></div>
+      <div class="portal-panel-head board-panel-head"><div><p class="eyebrow">消费拆分</p><h2 id="retail-heading">社零拆分</h2></div><span id="retail-context" class="portal-note"></span></div>
+      <div class="cm-filter board-filters"><label>统计口径<select id="retail-basis"><option value="month">当月 / 1—2月</option><option value="ytd">年初累计</option><option value="year">全年</option></select></label><label>数据期间<select id="retail-period"></select></label><nav class="retail-tabs site-subnav" aria-label="社零拆分维度"><button data-retail="categories" aria-pressed="true">分品类</button><button data-retail="structure" aria-pressed="false">商品与餐饮</button><button data-retail="channels" aria-pressed="false">城乡与渠道</button></nav></div>
       <p id="retail-note" class="portal-note"></p><div id="retail-bars" class="retail-bars"></div><p class="chart-help"></p>
     </section>
-    <details id="consumption-directory" class="portal-panel cm-directory board-panel board-detail"><summary>ȫ������ָ��������</summary>
-      <div class="portal-panel-head board-panel-head"><h2 id="directory-title">ָ������</h2><span id="coverage" class="portal-note"></span></div>
+    <details id="consumption-directory" class="portal-panel cm-directory board-panel board-detail"><summary>全部消费指标与下载</summary>
+      <div class="portal-panel-head board-panel-head"><h2 id="directory-title">指标总览</h2><span id="coverage" class="portal-note"></span></div>
       <div class="portal-filter cm-filter board-filters">
-        <label>��� <select id="group"><option value="">ȫ�����</option></select></label>
-        <label>Ƶ�� <select id="frequency"><option value="">ȫ��Ƶ��</option><option value="monthly">�¶�</option><option value="quarterly">����</option><option value="annual">���</option></select></label>
-        <label>״̬ <select id="connection"><option value="">ȫ��״̬</option><option value="connected">�ѽ���</option><option value="pending">������</option></select></label>
-        <input id="query" type="search" aria-label="��������ָ��" placeholder="���㡢���������롭">
-        <button id="reset" class="portal-button">����</button>
+        <label>类别 <select id="group"><option value="">全部类别</option></select></label>
+        <label>频率 <select id="frequency"><option value="">全部频率</option><option value="monthly">月度</option><option value="quarterly">季度</option><option value="annual">年度</option></select></label>
+        <label>状态 <select id="connection"><option value="">全部状态</option><option value="connected">已接入</option><option value="pending">待接入</option></select></label>
+        <input id="query" type="search" aria-label="搜索消费指标" placeholder="社零、餐饮、收入…">
+        <button id="reset" class="portal-button">重置</button>
       </div>
-      <div class="portal-table-scroll" tabindex="0" role="region" aria-label="ָ��������"><table class="portal-table cm-table board-table"><thead><tr><th scope="col">ָ��</th><th scope="col">��������¼ֵ</th><th scope="col">ͬ��</th><th scope="col">�����ڼ� / �ھ�</th><th scope="col">�������� / ��Դ</th><th scope="col">״̬</th></tr></thead><tbody id="directory"></tbody></table></div>
-      <div class="portal-pager"><span id="page-label" aria-live="polite"></span><div><button id="prev">��һҳ</button> <button id="next">��һҳ</button></div><button id="export-latest" class="portal-button">����ɸѡ��� CSV</button></div>
+      <div class="portal-table-scroll" tabindex="0" role="region" aria-label="指标总览表"><table class="portal-table cm-table board-table"><thead><tr><th scope="col">指标</th><th scope="col">最新已收录值</th><th scope="col">同比</th><th scope="col">数据期间 / 口径</th><th scope="col">发布日期 / 来源</th><th scope="col">状态</th></tr></thead><tbody id="directory"></tbody></table></div>
+      <div class="portal-pager"><span id="page-label" aria-live="polite"></span><div><button id="prev">上一页</button> <button id="next">下一页</button></div><button id="export-latest" class="portal-button">导出筛选结果 CSV</button></div>
     </details>
     <section class="portal-panel board-panel" id="trend-panel" aria-labelledby="trend-title">
-      <div class="portal-panel-head board-panel-head"><h2 id="trend-title">��ʷ����</h2><button id="export-series" class="portal-button">������ǰ��ʷ CSV</button></div>
+      <div class="portal-panel-head board-panel-head"><h2 id="trend-title">历史趋势</h2><button id="export-series" class="portal-button">导出当前历史 CSV</button></div>
       <div class="cm-filter cm-trend-controls board-filters">
-        <label class="cm-indicator-control">ָ�� <select id="indicator"></select></label>
-        <label>Ƶ�� <select id="series-frequency"></select></label>
-        <label>�ھ� <select id="basis"></select></label>
-        <label>��ʾ <select id="measure"><option value="combo">��ֵ��ͬ��</option><option value="value">����ֵ</option><option value="yoy">�ٷ�ͬ��</option><option value="mom">�ٷ�����</option><option value="realYoy">ʵ��ͬ��</option></select></label>
-        <label>��ʼ <input id="from" type="date"></label><label>���� <input id="to" type="date"></label>
-        <button id="clear-range" class="portal-button">ȫ����ʷ</button>
+        <label class="cm-indicator-control">指标 <select id="indicator"></select></label>
+        <label>频率 <select id="series-frequency"></select></label>
+        <label>口径 <select id="basis"></select></label>
+        <label>显示 <select id="measure"><option value="combo">数值＋同比</option><option value="value">仅数值</option><option value="yoy">官方同比</option><option value="mom">官方环比</option><option value="realYoy">实际同比</option></select></label>
+        <label>开始 <input id="from" type="date"></label><label>结束 <input id="to" type="date"></label>
+        <button id="clear-range" class="portal-button">全部历史</button>
       </div>
       <p id="series-definition" class="portal-note"></p><div id="range-error" class="cm-error" role="alert" hidden></div>
-      <div id="chart" class="cm-chart board-chart"></div><p class="chart-help">�ƶ����鿴������ֵ �� �ֻ��ᴥ���ݵ�</p><p id="chart-caption" class="portal-note" aria-live="polite"></p>
-      <details class="cm-details board-detail"><summary>��ʷ��������Դ</summary>
-        <div class="portal-table-scroll" tabindex="0" role="region" aria-label="��ʷ���ݱ�"><table class="portal-table cm-table board-table"><thead><tr><th scope="col">�����ڼ�</th><th scope="col">�ھ�</th><th scope="col" id="value-heading">��ֵ</th><th scope="col">ͬ��</th><th scope="col">��ע / ��������</th><th scope="col">��������</th><th scope="col">ԭʼ��Դ</th></tr></thead><tbody id="history"></tbody></table></div>
+      <div id="chart" class="cm-chart board-chart"></div><p class="chart-help">移动鼠标查看具体数值 · 手机轻触数据点</p><p id="chart-caption" class="portal-note" aria-live="polite"></p>
+      <details class="cm-details board-detail"><summary>历史数据与来源</summary>
+        <div class="portal-table-scroll" tabindex="0" role="region" aria-label="历史数据表"><table class="portal-table cm-table board-table"><thead><tr><th scope="col">数据期间</th><th scope="col">口径</th><th scope="col" id="value-heading">数值</th><th scope="col">同比</th><th scope="col">备注 / 其他增速</th><th scope="col">发布日期</th><th scope="col">原始来源</th></tr></thead><tbody id="history"></tbody></table></div>
       </details>
     </section>
-    <details class="portal-panel cm-details board-panel board-detail"><summary>���ݸ�������¼�¼</summary><div id="coverage-notes" class="cm-coverage-notes"></div><a href="docs/consumption-macro.md">�������ݿھ�����·�ʽ �J</a></details>
+    <details class="portal-panel cm-details board-panel board-detail"><summary>数据覆盖与更新记录</summary><div id="coverage-notes" class="cm-coverage-notes"></div><a href="docs/consumption-macro.md">完整数据口径与更新方式 ↗</a></details>
   </div>
 </main>
 </body></html>
