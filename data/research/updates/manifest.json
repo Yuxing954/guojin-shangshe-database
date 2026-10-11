@@ -1,9 +1,9 @@
 {
-  "syncedAt": "2026-10-11T15:02:26Z",
+  "syncedAt": "2026-10-11T15:58:17.000Z",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
-  "coverageFrom": "2026-10-11T21:50:13.034+0800",
-  "coverageTo": "2026-10-11T22:58:04.105+0800",
+  "coverageFrom": "2026-10-11T22:58:04.105+0800",
+  "coverageTo": "2026-10-11T23:42:34.932+0800",
   "oldestFetched": "2026-08-08T22:08:04.080+0800",
   "fetchedTopics": 11208,
   "files": {
@@ -27,6 +27,7 @@
       "data/research/updates/2026-10-07-views-002.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-10-11-2356-all_views.csv",
       "data/research/updates/2026-10-11-2302-all_views.csv",
       "data/research/updates/2026-10-11-2202-all_views.csv",
       "data/research/updates/2026-10-11-2102-all_views.csv",
@@ -4556,20 +4557,33 @@
       "14425445815422442",
       "55521551841188284",
       "55521551841185224",
-      "22258228148818211"
+      "22258228148818211",
+      "14425445814424882",
+      "22258228142252151",
+      "45548558125545518",
+      "45548558125545588",
+      "45548558128114818",
+      "14425445815882522",
+      "45548558128122258",
+      "82258228148415222",
+      "14425445815118582",
+      "45548558128222258",
+      "22258228148444281",
+      "45548558128225828",
+      "22258228148481811"
     ]
   },
   "lastRun": {
-    "runId": "2026-10-11-2302",
-    "previousCoverageTo": "2026-10-11T21:50:13.034+0800",
-    "newSourceTopics": 7,
+    "runId": "2026-10-11-2356",
+    "previousCoverageTo": "2026-10-11T22:58:04.105+0800",
+    "newSourceTopics": 13,
     "added": {
       "views": 0,
-      "all_views": 7
+      "all_views": 13
     },
     "duplicates": 0,
     "excluded": 0,
-    "record": "data/research/updates/2026-10-11-2302-record.json"
+    "record": "data/research/updates/2026-10-11-2356-record.json"
   },
   "syncLog": [
     {
