@@ -1,0 +1,80 @@
+{
+  "runId": "2026-10-11-2102",
+  "previousCoverageTo": "2026-10-11T19:59:05.705+0800",
+  "newSourceTopics": 13,
+  "added": {
+    "views": 1,
+    "all_views": 11
+  },
+  "duplicates": 0,
+  "excluded": 1,
+  "record": "data/research/updates/2026-10-11-2102-record.json",
+  "syncedAt": "2026-10-11T13:06:02Z",
+  "coverageTo": "2026-10-11T20:50:00.471+0800",
+  "addedTopicIds": [
+    {
+      "topicId": "45548558154414148",
+      "kind": "views"
+    },
+    {
+      "topicId": "82258228125515282",
+      "kind": "all_views"
+    },
+    {
+      "topicId": "45548558154414858",
+      "kind": "all_views"
+    },
+    {
+      "topicId": "45548558154421488",
+      "kind": "all_views"
+    },
+    {
+      "topicId": "22258228181828111",
+      "kind": "all_views"
+    },
+    {
+      "topicId": "82258228181528552",
+      "kind": "all_views"
+    },
+    {
+      "topicId": "82258228181525442",
+      "kind": "all_views"
+    },
+    {
+      "topicId": "45548558181481458",
+      "kind": "all_views"
+    },
+    {
+      "topicId": "55521551818214814",
+      "kind": "all_views"
+    },
+    {
+      "topicId": "45548558181482248",
+      "kind": "all_views"
+    },
+    {
+      "topicId": "82258228181584222",
+      "kind": "all_views"
+    },
+    {
+      "topicId": "82258228181584512",
+      "kind": "all_views"
+    }
+  ],
+  "duplicateTopicIds": [],
+  "excludedTopics": [
+    {
+      "topicId": "22258228181821581",
+      "reason": "仅图片标题，无可归档观点正文；未读取图片"
+    }
+  ],
+  "briefChanges": {
+    "added": 1,
+    "updated": 0,
+    "expiredRemoved": 0
+  },
+  "briefTopicIds": [
+    "45548558154414148"
+  ],
+  "attachmentPolicy": "仅使用实际读取正文；图片及附件未读取，不据其补充内容"
+}

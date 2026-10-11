@@ -1,13 +1,14 @@
 {
-  "syncedAt": "2026-10-11 11:58:53 UTC",
+  "syncedAt": "2026-10-11T13:06:02Z",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
-  "coverageFrom": "2026-10-11T18:10:56.314+0800",
-  "coverageTo": "2026-10-11T19:59:05.705+0800",
+  "coverageFrom": "2026-10-11T19:59:05.705+0800",
+  "coverageTo": "2026-10-11T20:50:00.471+0800",
   "oldestFetched": "2026-08-08T22:08:04.080+0800",
   "fetchedTopics": 11208,
   "files": {
     "views": [
+      "data/research/updates/2026-10-11-2102-views.csv",
       "data/research/updates/2026-10-11-1958-views.csv",
       "data/research/updates/2026-10-11-1903-views.csv",
       "data/research/updates/2026-10-11-1455-views.csv",
@@ -25,6 +26,7 @@
       "data/research/updates/2026-10-07-views-002.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-10-11-2102-all_views.csv",
       "data/research/updates/2026-10-11-1958-all_views.csv",
       "data/research/updates/2026-10-11-1903-all_views.csv",
       "data/research/updates/2026-10-11-1656-all_views.csv",
@@ -344,7 +346,8 @@
       "82258228185125122",
       "14425445858228152",
       "22258228184244551",
-      "45548558182525258"
+      "45548558182525258",
+      "45548558154414148"
     ],
     "all_views": [
       "55521551154544514",
@@ -4516,20 +4519,31 @@
       "22258228184242251",
       "22258228184248221",
       "45548558182528448",
-      "45548558182524218"
+      "45548558182524218",
+      "82258228125515282",
+      "45548558154414858",
+      "45548558154421488",
+      "22258228181828111",
+      "82258228181528552",
+      "82258228181525442",
+      "45548558181481458",
+      "55521551818214814",
+      "45548558181482248",
+      "82258228181584222",
+      "82258228181584512"
     ]
   },
   "lastRun": {
-    "runId": "2026-10-11-1958",
-    "previousCoverageTo": "2026-10-11T18:10:56.314+0800",
-    "newSourceTopics": 27,
+    "runId": "2026-10-11-2102",
+    "previousCoverageTo": "2026-10-11T19:59:05.705+0800",
+    "newSourceTopics": 13,
     "added": {
-      "views": 3,
-      "all_views": 24
+      "views": 1,
+      "all_views": 11
     },
     "duplicates": 0,
-    "excluded": 0,
-    "record": "data/research/updates/2026-10-11-1958-record.json"
+    "excluded": 1,
+    "record": "data/research/updates/2026-10-11-2102-record.json"
   },
   "syncLog": [
     {
