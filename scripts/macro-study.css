@@ -14,6 +14,8 @@
 .cm-main .cm-readout-group:first-child{grid-column:1/-1}
 .cm-main #kpis .cm-readout-group:nth-child(2) .board-kpis{grid-template-columns:minmax(0,1fr)!important}
 .cm-main #kpis .cm-readout-group:last-child .board-kpis{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+.cm-main #kpis[data-study=income] .cm-readout-group:first-child{grid-column:auto}
+.cm-main #kpis[data-study=income] .cm-readout-group:first-child .board-kpis{grid-template-columns:minmax(0,1fr)!important}
 .cm-main .cm-readout-group .board-section-head{margin-bottom:10px}
 .cm-main .cm-readout-group h3{margin:0;font-size:16px;font-weight:600}
 .cm-main .cm-readout-group label{display:flex;align-items:center;gap:8px;font-size:13px}
