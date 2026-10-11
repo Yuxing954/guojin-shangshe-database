@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "checkedAt": "2026-10-09T10:16:09+00:00",
+  "checkedAt": "2026-10-11T00:22:26+00:00",
   "series": {
     "cn-ppi": {
       "start": "2016-01",
@@ -259,8 +259,8 @@
     },
     "us-treasury10": {
       "start": "2020-12-30",
-      "end": "2026-10-08",
-      "count": 1445,
+      "end": "2026-10-09",
+      "count": 1446,
       "requestedStart": "2016-01-01",
       "historyShort": false,
       "missingPeriods": [],
@@ -1230,5 +1230,21 @@
       "calendar": "原始发布频率"
     }
   },
-  "errors": []
+  "errors": [
+    {
+      "id": "cn-property-sales",
+      "errorType": "ValueError",
+      "reason": "No exact reviewed indicator"
+    },
+    {
+      "id": "consumer-category-7",
+      "errorType": "ValueError",
+      "reason": "No exact reviewed indicator"
+    },
+    {
+      "id": "consumer-category-6",
+      "errorType": "ValueError",
+      "reason": "No exact reviewed indicator"
+    }
+  ]
 }
