@@ -1064,6 +1064,10 @@
         {
           "date": "2026-10-08",
           "value": 2.87
+        },
+        {
+          "date": "2026-10-09",
+          "value": 2.91
         }
       ],
       "name": "美国10年实际利率",
@@ -1365,6 +1369,10 @@
         {
           "date": "2026-10-08",
           "value": 102.123
+        },
+        {
+          "date": "2026-10-09",
+          "value": 102.231
         }
       ],
       "name": "美元指数 DXY",
@@ -1844,9 +1852,9 @@
       "name": "妙想 / Choice · 美国10年实际利率",
       "quality": "provider",
       "url": "https://choicew2z.eastmoney.com/dataDisplay/macroEDB/#/index?macroids=E1003243",
-      "sha256": "dbc77fa29ec9baf369a6a098753d578ffeb26465a5f05515afbfa574135a3ef5",
+      "sha256": "c8c4585b6674ac666d2ef51933b191f208f7cae5df03f02efb72c3d6f287e062",
       "retrieval": "native_mcp",
-      "checkedAt": "2026-10-09",
+      "checkedAt": "2026-10-11",
       "publishedAt": null
     },
     {
@@ -1854,9 +1862,9 @@
       "name": "妙想 / Choice · 美元指数 DXY",
       "quality": "provider",
       "url": "https://choicew2z.eastmoney.com/dataDisplay/macroEDB/#/index?macroids=EMG00001435",
-      "sha256": "dbc77fa29ec9baf369a6a098753d578ffeb26465a5f05515afbfa574135a3ef5",
+      "sha256": "cae9eb92e19236d0b92fb44811df9569576dc86838337be13ac653235733377e",
       "retrieval": "native_mcp",
-      "checkedAt": "2026-10-09",
+      "checkedAt": "2026-10-11",
       "publishedAt": null
     },
     {
@@ -2163,17 +2171,45 @@
     }
   ],
   "fedwatchUpdate": {
-    "status": "ready",
-    "attemptedAt": "2026-10-11T00:36:25.199Z",
+    "status": "error",
+    "attemptedAt": "2026-10-11T06:50:09+00:00",
     "sourceUrl": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html",
     "meetingProbabilities": {
-      "status": "ready",
-      "meetings": 10,
-      "ranges": 8
+      "status": "error",
+      "reason": "本次Current页可读，Probabilities整表无法切换读取；保留上次10会议8区间快照。"
     },
     "fundFutures": {
-      "status": "ready",
-      "contracts": 13
-    }
+      "status": "error",
+      "reason": "本次完整期货报价表无法读取；保留上次13合约快照。"
+    },
+    "reason": "官方嵌入工具浏览器操作失败；独立工具页面提示加载失败，未取得本次整表。"
+  },
+  "seriesUpdate": {
+    "attemptedAt": "2026-10-11T06:50:09+00:00",
+    "series": [
+      {
+        "id": "real10",
+        "status": "ready",
+        "added": 1,
+        "latest": "2026-10-09"
+      },
+      {
+        "id": "dxy",
+        "status": "ready",
+        "added": 1,
+        "latest": "2026-10-09"
+      },
+      {
+        "id": "usdcny",
+        "status": "error",
+        "reason": "本次回执含重复同名指标或机构不符，保留历史。"
+      },
+      {
+        "id": "brent",
+        "status": "ready",
+        "added": 0,
+        "latest": "2026-10-06"
+      }
+    ]
   }
 }

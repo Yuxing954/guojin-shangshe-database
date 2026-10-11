@@ -270,7 +270,7 @@ def main():
             if not row.get('footnotes'):row.pop('footnotes',None)
     compact_json(target,output)
     atomic_json(DATA/'coverage.json',{'version':1,'checkedAt':now,'series':{k:v.get('coverage',{}) for k,v in values.items()},'errors':errors})
-    print(json.dumps({'series':len(values),'ready':sum(bool(v.get('observations')) for v in values.values()),'failures':errors},ensure_ascii=False))
+    print(json.dumps({'series':len(values),'ready':sum(v.get('status')=='ready' and bool(v.get('observations')) for v in values.values()),'withHistory':sum(bool(v.get('observations')) for v in values.values()),'failures':errors},ensure_ascii=False))
     return 1 if errors else 0
 
 if __name__=='__main__':

@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-09T06:09:22+00:00",
-  "cutoff": "2026-10-09",
+  "generatedAt": "2026-10-11T06:35:06+00:00",
+  "cutoff": "2026-10-11",
   "series": {
     "cn-gdp-growth": {
       "observations": [
@@ -4359,11 +4359,6 @@
     },
     "us-debt": {
       "observations": [
-        {
-          "period": "2018-10-18",
-          "value": 21672453590238.12,
-          "releaseDate": null
-        },
         {
           "period": "2018-10-19",
           "value": 21671476474549.22,
@@ -14358,13 +14353,18 @@
           "period": "2026-10-07",
           "value": 40284036147367.19,
           "releaseDate": null
+        },
+        {
+          "period": "2026-10-08",
+          "value": 40305316210829.72,
+          "releaseDate": null
         }
       ],
-      "sourceUrl": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny?filter=record_date:lte:2026-10-09&sort=-record_date&page[size]=2000&fields=record_date,tot_pub_debt_out_amt",
-      "receiptSha256": "908bd281ac2ae7d2fbf2978ec4e211a31a26f55829859f3709c12633ed78a661",
+      "sourceUrl": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny?filter=record_date:lte:2026-10-11&sort=-record_date&page[size]=2000&fields=record_date,tot_pub_debt_out_amt",
+      "receiptSha256": "122ea51807a24940aed7d8e090e5f4373fa51f06ce29d29db331efc7cadeeeed",
       "status": "ready",
-      "checkedAt": "2026-10-09T06:09:22+00:00",
-      "fetchedAt": "2026-10-09T06:09:22+00:00"
+      "checkedAt": "2026-10-11T06:35:06+00:00",
+      "fetchedAt": "2026-10-11T06:35:06+00:00"
     },
     "us-cpi": {
       "observations": [
