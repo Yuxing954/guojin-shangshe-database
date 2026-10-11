@@ -7,6 +7,10 @@
   const tone=v=>M.finite(v)?v>0?'cm-up':v<0?'cm-down':'':'';
   const options=(id,values,chosen)=>{$(id).innerHTML=values.map(([v,t])=>`<option value="${esc(v)}">${esc(t)}</option>`).join('');if(values.some(([v])=>v===chosen))$(id).value=chosen;};
   let data,byId,sources,items=[],page=0,selected='',history=[],retailGroup='categories';
+  const params=new URLSearchParams(location.search),views=['overview','structure','categories','channels','income','workspace'];
+  let study=views.includes(params.get('study'))?params.get('study'):'overview',periodMode=params.get('periodMode')==='aligned'?'aligned':'latest';
+  const periodSelection={monthly:params.get('periodMonthly')||'',online:params.get('periodOnline')||'',quarterly:params.get('periodQuarterly')||''};
+  const readoutGroups=[{id:'monthly',title:'当月 · 月度',ids:['retail','catering','cpi'],scope:{frequency:'monthly',basis:'month'}},{id:'online',title:'线上实物 · 月度累计',ids:['online_goods'],scope:{frequency:'monthly',basis:'ytd'}},{id:'quarterly',title:'收入与支出 · 季度累计',ids:['income_national','spending_national'],scope:{frequency:'quarterly',basis:'ytd'}}];
   const measures={combo:'数值＋同比',value:'原始值',yoy:'官方同比',mom:'官方环比',realYoy:'实际同比'};
   const published=(r,s)=>s?.publishedAt||r?.releaseDate||'来源未提供';
   async function loadJson(url){const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),15000);try{const response=await fetch(url,{cache:'no-cache',signal:controller.signal});if(!response.ok)throw new Error('数据读取失败（'+response.status+'）');return await response.json();}finally{clearTimeout(timer);}}
@@ -16,15 +20,42 @@
   function download(name,rows){if(!rows.length)return;const url=URL.createObjectURL(new Blob([M.csv(data,rows)],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
   const filters=()=>({group:$('group').value,frequency:$('frequency').value,status:$('connection').value,query:$('query').value});
   const latestRow=i=>M.latest(data,i.id,$('frequency').value);
-  function saveUrl(){const params=new URLSearchParams();for(const [key,id] of [['group','group'],['frequency','frequency'],['status','connection'],['q','query']])if($(id).value)params.set(key,$(id).value);if(selected)params.set('indicator',selected);window.history.replaceState(null,'',location.pathname+(params.size?'?'+params.toString():''));}
+  function saveUrl(){const params=new URLSearchParams();params.set('study',study);params.set('periodMode',periodMode);for(const g of readoutGroups)if(periodSelection[g.id])params.set('period'+g.id[0].toUpperCase()+g.id.slice(1),periodSelection[g.id]);for(const [key,id] of [['seriesFrequency','series-frequency'],['basis','basis'],['measure','measure'],['from','from'],['to','to']])if($(id).value)params.set(key,$(id).value);for(const [key,id] of [['group','group'],['frequency','frequency'],['status','connection'],['q','query']])if($(id).value)params.set(key,$(id).value);if(selected)params.set('indicator',selected);window.history.replaceState(null,'',location.pathname+(params.size?'?'+params.toString():''));}
   function renderDirectory(){
     const count=items.length;page=Math.min(page,Math.max(0,Math.ceil(count/12)-1));
     $('directory').innerHTML=items.slice(page*12,page*12+12).map(i=>{const r=latestRow(i),s=r?sources.get(r.sourceId):null;return `<tr><td><button class="cm-select" data-id="${esc(i.id)}" aria-pressed="${selected===i.id}">${esc(i.name)}</button><small>${esc(i.group)}</small></td><td>${value(i,r)}<small>${esc(i.valueLabel)}</small></td><td class="${tone(r?.yoy)}">${pct(r?.yoy)}</td><td>${r?esc(label(r))+'<small>'+esc(M.frequencies[r.frequency]+' · '+M.bases[r.basis])+'</small>':'—'}</td><td>${s?'<time>'+esc(published(r,s))+'</time><small>'+sourceLink(s)+'</small>':i.sourceUrl?'<a href="'+esc(i.sourceUrl)+'" target="_blank" rel="noopener noreferrer">官方入口 ↗</a>':'—'}</td><td><span class="cm-tag ${i.status==='pending'?'pending':''}">${i.status==='pending'?'待接入':i.updateStatus==='error'?'更新失败':'已接入'}</span>${r?.quality==='estimate'?'<small class="cm-tag estimate">预计</small>':''}</td></tr>`;}).join('')||'<tr><td colspan="6">没有符合筛选条件的指标</td></tr>';
     $('page-label').textContent=count?`${page*12+1}—${Math.min(page*12+12,count)} / ${count} 项指标`:'0 项指标';$('prev').disabled=page===0;$('next').disabled=(page+1)*12>=count;$('export-latest').disabled=!items.some(i=>latestRow(i));
     $('directory').querySelectorAll('[data-id]').forEach(b=>b.addEventListener('click',()=>choose(b.dataset.id,true)));
   }
-  function choose(id,scroll=false){selected=id;$('indicator').value=id;configureFrequency();renderDirectory();saveUrl();if(scroll)$('trend-panel').scrollIntoView({behavior:'smooth',block:'start'});}
-  function applyFilters(){page=0;items=M.directory(data,filters());options('indicator',items.map(i=>[i.id,i.name]),selected);if(!items.some(i=>i.id===selected))selected=items[0]?.id||'';if(selected)$('indicator').value=selected;configureFrequency();renderDirectory();saveUrl();}
+  function choose(id,scroll=false){selected=id;if(!items.some(i=>i.id===id)){for(const key of ['group','frequency','connection','query'])$(key).value='';applyFilters();}else{$('indicator').value=id;configureFrequency();renderDirectory();renderKpis();saveUrl();}if(scroll)$('trend-panel').scrollIntoView({behavior:'smooth',block:'start'});}
+  function renderKpis(){
+    document.querySelectorAll('[data-period-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.periodMode===periodMode)));
+    $('kpis').innerHTML=readoutGroups.map(g=>{
+      const ids=study==='income'?g.ids.filter(id=>['cpi','income_national','spending_national'].includes(id)):g.ids;
+      if(!ids.length)return '';
+      const periods=M.comparisonPeriods(data,ids,g.scope);
+      if(!periods.some(p=>p.key===periodSelection[g.id]))periodSelection[g.id]=periods[0]?.key||'';
+      return `<section class="cm-readout-group"><div class="board-section-head"><h3>${esc(study==='income'&&g.id==='monthly'?'价格 · 月度':g.title)}</h3>${periodMode==='aligned'?`<label>数据期间<select data-readout-period="${g.id}" ${periods.length?'':'disabled'}>${periods.length?periods.map(p=>`<option value="${p.key}" ${p.key===periodSelection[g.id]?'selected':''}>${esc(p.basis==='jan_feb'?p.period.slice(0,4)+'年1—2月':p.period)}</option>`).join(''):'<option>暂无共同期间</option>'}</select></label>`:''}</div><div class="cm-kpis board-kpis">${ids.map(id=>{
+        const i=byId.get(id),r=periodMode==='aligned'?M.comparisonRow(data,id,g.scope,periodSelection[g.id]):M.records(data,id,g.scope).filter(r=>r.quality!=='estimate').at(-1),source=sources.get(r?.sourceId);
+        return `<button class="cm-kpi board-stat" data-id="${id}" data-scope="${g.id}" data-period="${r?.period||''}" data-basis="${r?.basis||''}" aria-pressed="${selected===id}"><span>${esc(i.name)}</span><strong>${num(r?.value)}<small>${esc(i.unit)}</small></strong><em class="${tone(r?.yoy)}">${M.finite(r?.yoy)?'同比 '+pct(r.yoy):esc(i.valueLabel)}</em><span class="cm-meta">${r?esc(label(r)+' · '+M.bases[r.basis]):'暂无共同期间'}</span><time>发布 ${esc(published(r,source))}</time><span class="cm-kpi-source">${esc(source?.publisher||'来源未提供')}</span></button>`;
+      }).join('')}</div></section>`;
+    }).join('');
+    $('kpis').querySelectorAll('[data-readout-period]').forEach(el=>el.onchange=()=>{periodSelection[el.dataset.readoutPeriod]=el.value;renderKpis();saveUrl();});
+  }
+  function renderStudy(){
+    document.querySelectorAll('[data-cm-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.cmView===study)));
+    $('consumption-summary').hidden=!['overview','income'].includes(study);
+    $('retail-panel').hidden=!['structure','categories','channels'].includes(study);
+    $('consumption-directory').open=study==='workspace';renderKpis();
+  }
+  function selectReadout(b){
+    if(!items.some(i=>i.id===b.dataset.id)){for(const id of ['group','frequency','connection','query'])$(id).value='';}
+    selected=b.dataset.id;applyFilters();const g=readoutGroups.find(g=>g.id===b.dataset.scope);
+    $('series-frequency').value=g.scope.frequency;configureBasis();$('basis').value=g.scope.basis;
+    if(periodMode==='aligned'&&b.dataset.period){const r=M.comparisonRow(data,selected,g.scope,b.dataset.period+'|'+b.dataset.basis);$('from').value=r?.endDate||'';$('to').value=r?.endDate||'';}else{$('from').value='';$('to').value='';}
+    renderTrend();saveUrl();
+  }
+  function applyFilters(){page=0;items=M.directory(data,filters());options('indicator',items.map(i=>[i.id,i.name]),selected);if(!items.some(i=>i.id===selected))selected=items[0]?.id||'';if(selected)$('indicator').value=selected;configureFrequency();renderDirectory();renderKpis();saveUrl();}
   function configureFrequency(){
     const available=[...new Set(M.records(data,selected).map(r=>r.frequency))];const global=$('frequency').value;
     const scope=M.defaultScope(data,selected,global);options('series-frequency',available.map(f=>[f,M.frequencies[f]]),scope?.frequency);$('series-frequency').disabled=!available.length;configureBasis();
@@ -83,7 +114,7 @@
     $('value-heading').textContent=i?i.valueLabel+' / '+i.unit:'数值';
     $('history').innerHTML=history.slice().reverse().map(r=>{const s=sources.get(r.sourceId),notes=[r.note,M.finite(r.mom)?'环比 '+pct(r.mom):'',M.finite(r.realYoy)?'实际同比 '+pct(r.realYoy):'',r.quality==='estimate'?'预计':''].filter(Boolean);return `<tr><td>${esc(label(r))}</td><td>${esc(M.bases[r.basis])}</td><td>${num(r.value)}</td><td class="${tone(r.yoy)}">${pct(r.yoy)}</td><td>${esc(notes.join('；')||'—')}</td><td><time>${esc(published(r,s))}</time></td><td>${sourceLink(s)}${r.supplementSourceId?' · '+sourceLink(sources.get(r.supplementSourceId)):''}<small>${esc(s.title)}</small></td></tr>`;}).join('')||'<tr><td colspan="7">没有已收录数据</td></tr>';
     const missing=history.filter(r=>!M.finite(r[$('measure').value==='combo'?'value':$('measure').value])).length;
-    $('chart-caption').textContent=history.length?`${history[0].period} — ${history.at(-1).period} · ${history.length} 条已收录 · ${M.bases[$('basis').value]||''}${missing?'；所选字段缺失 '+missing+' 条':''}${$('basis').value==='month'?'；1—2月合并':''}${history[0].frequency==='holiday'?'；不同假期分别展示':'；缺期断线'}`:'';
+    saveUrl();$('chart-caption').textContent=history.length?`${history[0].period} — ${history.at(-1).period} · ${history.length} 条已收录 · ${M.bases[$('basis').value]||''}${missing?'；所选字段缺失 '+missing+' 条':''}${$('basis').value==='month'?'；1—2月合并':''}${history[0].frequency==='holiday'?'；不同假期分别展示':'；缺期断线'}`:'';
   }
   try{
     $('retry-load').onclick=()=>location.reload();
@@ -92,9 +123,8 @@
     byId=new Map(data.indicators.map(i=>[i.id,i]));sources=new Map(data.sources.map(s=>[s.id,s]));
     $('asof').textContent='最近检查 '+(data.automaticCheckedAt||data.checkedAt).slice(0,10);
     $('coverage').textContent=data.indicators.length+' 项消费指标';
-    $('kpis').innerHTML=['retail','catering','online_goods','cpi','income_national','spending_national'].map(id=>{const i=byId.get(id),r=M.latest(data,id),s=sources.get(r.sourceId);return `<button class="cm-kpi board-stat" data-id="${id}"><span>${esc(i.name)}</span><strong>${num(r.value)}<small>${esc(i.unit)}</small></strong><em class="${id==='retail'?'':tone(r.yoy)}">${M.finite(r.yoy)?'同比 '+pct(r.yoy):esc(i.valueLabel)}</em><span class="cm-meta">${esc(label(r)+' · '+M.bases[r.basis])}</span><time>发布 ${esc(published(r,s))}</time></button>`;}).join('');
     options('group',[['','全部类别'],...[...new Set(data.indicators.map(i=>i.group))].map(g=>[g,g])]);
-    const params=new URLSearchParams(location.search);for(const [key,id] of [['group','group'],['frequency','frequency'],['status','connection']])if([...$(id).options].some(o=>o.value===params.get(key)))$(id).value=params.get(key);$('query').value=params.get('q')||'';selected=byId.has(params.get('indicator'))?params.get('indicator'):'retail';
+    for(const [key,id] of [['group','group'],['frequency','frequency'],['status','connection']])if([...$(id).options].some(o=>o.value===params.get(key)))$(id).value=params.get(key);$('query').value=params.get('q')||'';selected=byId.has(params.get('indicator'))?params.get('indicator'):'retail';
     $('coverage-notes').innerHTML=data.indicators.map(i=>{const c=M.scopeCoverage(data,i.id);return '<p>'+esc(i.name+'：'+(c?c.start+' — '+c.end+' · '+c.count+'期'+(c.missingPeriods.length?' · 区间缺期 '+c.missingPeriods.join('、'):'')+(c.structuralPeriods.length?' · 全年原披露另列 '+c.structuralPeriods.join('、'):'')+(c.valueMissing?' · 数值缺失 '+c.valueMissing+'条':'')+(c.yoyMissing&&!['%','点'].includes(i.unit)?' · 官方同比缺失 '+c.yoyMissing+'条':'')+(i.updateStatus==='error'?' · 更新失败，保留历史':''):(i.pendingReason||'暂无数据')))+(i.automaticSeries||[]).map(s=>'<small>'+esc((s.measure==='yoy'?'同比':'数值')+'补充：'+(s.coverage?.historyShort?'历史覆盖不足；':'')+(s.status==='error'?'更新失败；':'')+'检查 '+(s.checkedAt||'未提供').slice(0,10))+'</small>').join('')+'</p>';}).join('')+'<p>区间连续不代表已更新至最近应发布月份。1—2月不拆分；全年使用原披露或年末累计，不加总舍入月值；不由舍入金额重算同比或环比。Choice未返回发布日期时留空。</p>';
     $('content').hidden=false;$('status').hidden=true;
     for(const id of ['group','frequency','connection'])$(id).addEventListener('change',applyFilters);$('query').addEventListener('input',applyFilters);
@@ -103,11 +133,20 @@
     $('indicator').addEventListener('change',()=>choose($('indicator').value));$('series-frequency').addEventListener('change',configureBasis);
     for(const id of ['basis','measure','from','to'])$(id).addEventListener('change',renderTrend);
     $('clear-range').addEventListener('click',()=>{$('from').value='';$('to').value='';renderTrend();});
-    $('export-series').addEventListener('click',()=>download('消费专题-'+selected+'-'+$('basis').value+'.csv',history));
-    $('export-latest').addEventListener('click',()=>download('消费专题-筛选结果.csv',items.map(latestRow).filter(Boolean)));
-    $('kpis').querySelectorAll('[data-id]').forEach(b=>b.addEventListener('click',()=>{for(const id of ['group','frequency','connection','query'])$(id).value='';selected=b.dataset.id;applyFilters();$('trend-panel').scrollIntoView({behavior:'smooth'});}));
+    $('export-series').addEventListener('click',()=>download('消费全景-'+selected+'-'+$('basis').value+'.csv',history));
+    $('export-latest').addEventListener('click',()=>download('消费全景-筛选结果.csv',items.map(latestRow).filter(Boolean)));
+    $('kpis').onclick=e=>{const b=e.target.closest('[data-id]');if(b)selectReadout(b);};
+    document.querySelectorAll('[data-period-mode]').forEach(b=>b.onclick=()=>{periodMode=b.dataset.periodMode;renderKpis();saveUrl();});
+    $('consumption-views').onclick=e=>{const b=e.target.closest('[data-cm-view]');if(!b)return;study=b.dataset.cmView;
+      if(['structure','categories','channels'].includes(study)){retailGroup=study;renderRetail();choose(study==='channels'?'online_goods':'retail');}
+      if(study==='income')choose('income_national');renderStudy();saveUrl();};
     $('retail-basis').onchange=()=>renderRetail(true);$('retail-period').onchange=()=>renderRetail();document.querySelectorAll('[data-retail]').forEach(b=>b.onclick=()=>{retailGroup=b.dataset.retail;renderRetail();});renderRetail(true);
     $('measure').value='combo';applyFilters();
+    if(params.get('seriesFrequency')&&[...$('series-frequency').options].some(o=>o.value===params.get('seriesFrequency'))){$('series-frequency').value=params.get('seriesFrequency');configureBasis();}
+    for(const [key,id] of [['basis','basis'],['measure','measure']])if([...$(id).options].some(o=>o.value===params.get(key)&&!o.disabled))$(id).value=params.get(key);
+    for(const id of ['from','to'])if(/^\d{4}-\d{2}-\d{2}$/.test(params.get(id)||''))$(id).value=params.get(id);
+    if(['structure','categories','channels'].includes(study)){retailGroup=study;renderRetail();}
+    renderTrend();renderStudy();saveUrl();
   }catch(error){$('status').hidden=false;$('status').textContent=error.message||'加载失败，请刷新重试';$('status').setAttribute('role','alert');$('content').hidden=true;}
 })();
 
