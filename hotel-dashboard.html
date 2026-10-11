@@ -8,17 +8,22 @@
   <link rel="stylesheet" href="scripts/hotel-dashboard.css?v=20261010coverage">
   <script defer src="scripts/site-shell.js?v=20261010direct"></script>
   <script defer src="scripts/hotel-metrics.js?v=20261010coverage"></script>
-  <script defer src="scripts/hotel-dashboard.js?v=20261010combo1"></script>
-<link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-charts.css?v=20261010combo1"><link rel="stylesheet" href="scripts/industry-embed.css?v=20261010direct"><link rel="stylesheet" href="scripts/site-polish.css?v=20261011subnav"><script src="scripts/site-charts.js?v=20261010combo1"></script><script defer src="scripts/industry-embed.js?v=20261010direct"></script></head>
+  <script defer src="scripts/hotel-dashboard.js?v=20261011boards"></script>
+<link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-charts.css?v=20261010combo1"><link rel="stylesheet" href="scripts/industry-embed.css?v=20261010direct"><link rel="stylesheet" href="scripts/site-polish.css?v=20261011boards"><script src="scripts/site-charts.js?v=20261010combo1"></script><script defer src="scripts/industry-embed.js?v=20261010direct"></script></head>
 <body class="hotel-page">
-<main class="hd-wrap">
+<main class="hd-wrap industry-board">
   <header class="hd-header">
     <div><a class="hd-back" href="industry.html#hotel">行业数据 / 酒店</a><h1>酒店</h1></div>
-    <div class="hd-updated" id="asof" aria-live="polite">正在读取数据…</div>
+    <div class="hd-updated board-asof" id="asof" aria-live="polite">正在读取数据…</div>
   </header>
   <div id="load-error" class="hd-error" role="alert" hidden></div>
   <div id="dashboard" hidden>
-    <div class="hd-toolbar">
+    <nav class="hd-tabs site-subnav" aria-label="酒店数据视图">
+      <button type="button" class="hd-tab active" data-view="overview" aria-pressed="true">经营概览</button>
+      <button type="button" class="hd-tab" data-view="cities" aria-pressed="false">城市对比</button>
+      <button type="button" class="hd-tab" data-view="structure" aria-pressed="false">供给与集团</button>
+    </nav>
+    <div class="hd-toolbar board-filters">
       <label>数据周 <select id="week-select"></select></label>
       <div class="hd-display-control"><span>周度指标显示</span><div class="hd-switch" id="mode-switch" aria-label="周度指标显示"><button type="button" data-mode="combo" class="active" aria-pressed="true">数值＋同比</button><button type="button" data-mode="change" aria-pressed="false">仅同比</button><button type="button" data-mode="value" aria-pressed="false">仅数值</button></div></div>
       <details class="hd-compare"><summary>同比口径与错期</summary><div class="hd-compare-body">
@@ -29,65 +34,63 @@
     </div>
     <p class="hd-period" id="period-note"></p>
     <p class="hd-selection-note" id="selection-note" role="status" hidden></p>
-    <nav class="hd-tabs site-subnav" aria-label="酒店数据视图">
-      <button type="button" class="hd-tab active" data-view="overview" aria-pressed="true">经营概览</button>
-      <button type="button" class="hd-tab" data-view="cities" aria-pressed="false">城市对比</button>
-      <button type="button" class="hd-tab" data-view="structure" aria-pressed="false">供给与集团</button>
-    </nav>
+
 
     <section id="view-overview" class="hd-view">
-      <div class="hd-section-head"><h2 id="overview-title">全国经营</h2><label>地区 <select id="region-select"></select></label></div>
-      <div class="hd-kpis" id="core-kpis"></div>
+      <div class="hd-section-head board-section-head"><h2 id="overview-title">全国经营</h2><label>地区 <select id="region-select"></select></label></div>
+      <div class="hd-kpis board-kpis" id="core-kpis"></div>
 
-      <div class="hd-card">
-        <div class="hd-card-head"><h2>经营走势</h2><label>范围 <select id="history-start"><option value="52">近1年</option><option value="156">近3年</option><option value="all">全部历史</option></select></label></div>
+      <div class="hd-card board-panel">
+        <div class="hd-card-head board-panel-head"><h2>经营走势</h2><label>范围 <select id="history-start"><option value="52">近1年</option><option value="156">近3年</option><option value="all">全部历史</option></select></label></div>
         <div class="hd-chart-controls">
           <div class="hd-switch" id="metric-switch" aria-label="经营指标"><button type="button" data-metric="revpar" class="active" aria-pressed="true">每房收入</button><button type="button" data-metric="occupancy_rate" aria-pressed="false">入住率</button><button type="button" data-metric="adr" aria-pressed="false">房价</button></div>
           <span class="hd-chart-mode" id="chart-mode-note">同周同比 · 入住率用百分点</span>
         </div>
         <p class="hd-chart-caption" id="trend-caption"></p>
-        <div class="hd-chart" id="main-chart"></div>
+        <div class="hd-chart board-chart" id="main-chart"></div>
         <p class="hd-footnote" id="history-note"></p>
       </div>
-      <div class="hd-card"><div class="hd-card-head"><h2>分档次经营</h2><span>所选地区 · 所选周</span></div><div class="hd-table-scroll" tabindex="0" aria-label="分档次经营表，可左右滚动"><table class="hd-table" id="segment-table"></table></div>
-        <details class="hd-detail"><summary>查看分档次历史走势</summary><label>指标 <select id="segment-metric"><option value="revpar">每房收入</option><option value="occupancy_rate">入住率</option><option value="adr">房价</option></select></label><p class="hd-detail-caption" id="segment-chart-caption"></p><div class="hd-chart" id="segment-chart"></div></details>
+      <div class="hd-card board-panel"><div class="hd-card-head board-panel-head"><h2>分档次经营</h2><span>所选地区 · 所选周</span></div><div class="hd-table-scroll" tabindex="0" aria-label="分档次经营表，可左右滚动"><table class="hd-table board-table" id="segment-table"></table></div>
+        <details class="hd-detail board-detail"><summary>查看分档次历史走势</summary><label>指标 <select id="segment-metric"><option value="revpar">每房收入</option><option value="occupancy_rate">入住率</option><option value="adr">房价</option></select></label><p class="hd-detail-caption" id="segment-chart-caption"></p><div class="hd-chart board-chart" id="segment-chart"></div></details>
       </div>
-      <details class="hd-detail hd-plain"><summary>酒店与房间规模 · 15间及以上</summary><div id="region-supply"></div><div class="hd-table-scroll" tabindex="0" aria-label="分档次规模表，可左右滚动"><table class="hd-table" id="segment-scale-table"></table></div></details>
+      <details class="hd-detail hd-plain board-detail"><summary>酒店与房间规模 · 15间及以上</summary><div id="region-supply"></div><div class="hd-table-scroll" tabindex="0" aria-label="分档次规模表，可左右滚动"><table class="hd-table board-table" id="segment-scale-table"></table></div></details>
     </section>
 
     <section id="view-cities" class="hd-view" hidden>
-      <div class="hd-section-head"><div><h2>城市经营</h2></div></div>
+      <div class="hd-section-head board-section-head"><div><h2>城市经营</h2></div></div>
       <div class="hd-city-summary" id="city-summary"></div>
-      <div class="hd-card">
+      <div class="hd-card board-panel">
         <div class="hd-city-controls"><label>搜索城市 <input id="city-search" type="search" placeholder="例如：杭州"></label><label>排序 <select id="city-sort"><option value="revChange">每房收入同比 · 从高到低</option><option value="occChange">入住率同比 · 从高到低</option><option value="adrChange">房价同比 · 从高到低</option><option value="revpar">每房收入绝对值 · 从高到低</option><option value="occupancy_rate">入住率绝对值 · 从高到低</option><option value="adr">房价绝对值 · 从高到低</option></select></label></div>
-        <div class="hd-table-scroll" tabindex="0" aria-label="重点城市经营表，可左右滚动"><table class="hd-table hd-city-table" id="city-table"></table></div>
+        <div class="hd-table-scroll" tabindex="0" aria-label="重点城市经营表，可左右滚动"><table class="hd-table hd-city-table board-table" id="city-table"></table></div>
       </div>
     </section>
 
     <section id="view-structure" class="hd-view" hidden>
-      <div class="hd-section-head"><div><h2>全国供给与投资</h2></div></div>
-      <div class="hd-card" id="supply-card"><div class="hd-card-head"><h2>酒店供给 · 15间及以上</h2><span id="supply-period"></span></div><div class="hd-supply-stats hd-supply-four" id="supply-stats"></div>
-        <div class="hd-chart-controls"><label>指标 <select id="supply-metric"><option value="room_count">房间数量</option><option value="hotel_count">酒店数量</option><option value="chain_room_count">连锁房量</option></select></label><label>范围 <select id="supply-window"><option value="52">近1年</option><option value="156">近3年</option><option value="all">全部历史</option></select></label></div><p class="hd-chart-caption" id="supply-chart-caption"></p><div class="hd-chart" id="supply-chart"></div>
-        <details class="hd-detail"><summary>按酒店规模看供给</summary><div class="hd-table-scroll" tabindex="0" aria-label="供给结构表，可左右滚动"><table class="hd-table" id="supply-table"></table></div></details>
+      <div class="hd-section-head board-section-head"><div><h2>全国供给与投资</h2></div></div>
+      <div class="hd-card board-panel" id="supply-card"><div class="hd-card-head board-panel-head"><h2>酒店供给 · 15间及以上</h2><span id="supply-period"></span></div><div class="hd-supply-stats hd-supply-four" id="supply-stats"></div>
+        <div class="hd-chart-controls"><label>指标 <select id="supply-metric"><option value="room_count">房间数量</option><option value="hotel_count">酒店数量</option><option value="chain_room_count">连锁房量</option></select></label><label>范围 <select id="supply-window"><option value="52">近1年</option><option value="156">近3年</option><option value="all">全部历史</option></select></label></div><p class="hd-chart-caption" id="supply-chart-caption"></p><div class="hd-chart board-chart" id="supply-chart"></div>
+        <details class="hd-detail board-detail"><summary>按酒店规模看供给</summary><div class="hd-table-scroll" tabindex="0" aria-label="供给结构表，可左右滚动"><table class="hd-table board-table" id="supply-table"></table></div></details>
       </div>
-      <div class="hd-card"><div class="hd-card-head"><h2>住宿和餐饮业固定资产投资</h2><span id="investment-period">正在读取月度数据…</span></div><div class="hd-supply-stats hd-investment-stats" id="investment-stats" aria-live="polite"></div>
-        <div class="hd-chart-controls"><span>月度 · 不含农户 · 住宿与餐饮合计</span><label>范围 <select id="investment-window"><option value="52">近1年</option><option value="156">近3年</option><option value="all">全部历史</option></select></label></div><p class="hd-chart-caption">年初至当月累计同比（%） · 截至所选周的数据期</p><div class="hd-chart" id="investment-chart"></div>
+      <div class="hd-card board-panel"><div class="hd-card-head board-panel-head"><h2>住宿和餐饮业固定资产投资</h2><span id="investment-period">正在读取月度数据…</span></div><div class="hd-supply-stats hd-investment-stats" id="investment-stats" aria-live="polite"></div>
+        <div class="hd-chart-controls"><span>月度 · 不含农户 · 住宿与餐饮合计</span><label>范围 <select id="investment-window"><option value="52">近1年</option><option value="156">近3年</option><option value="all">全部历史</option></select></label></div><p class="hd-chart-caption">年初至当月累计同比（%） · 截至所选周的数据期</p><div class="hd-chart board-chart" id="investment-chart"></div>
         <div class="hd-source-links"><a href="https://choicew2z.eastmoney.com/dataDisplay/macroEDB/#/index?macroids=EMM01013000" target="_blank" rel="noopener">来源：国家统计局 / Choice ↗</a><a href="data/hotel-investment-monthly.csv" download>下载投资数据</a><a href="https://github.com/yuxing954/guojin-shangshe-database/blob/main/docs/hotel-investment.md" target="_blank" rel="noopener">指标口径 ↗</a></div>
-        <details class="hd-detail"><summary>月度历史数据</summary><div class="hd-table-scroll hd-investment-history" tabindex="0" aria-label="投资月度历史，可上下和左右滚动"><table class="hd-table" id="investment-table"></table></div></details>
+        <details class="hd-detail board-detail"><summary>月度历史数据</summary><div class="hd-table-scroll hd-investment-history" tabindex="0" aria-label="投资月度历史，可上下和左右滚动"><table class="hd-table board-table" id="investment-table"></table></div></details>
       </div>
-      <div class="hd-section-head"><div><h2>全国集团</h2></div></div>
-      <div class="hd-card" id="group-card"><div class="hd-card-head"><h2>集团经营与规模</h2><span id="group-period"></span></div><div class="hd-table-scroll" tabindex="0" aria-label="全国集团表，可左右滚动"><table class="hd-table" id="group-table"></table></div>
-        <details class="hd-detail"><summary>查看集团历史走势</summary><label>指标 <select id="group-metric"><option value="stay_adr">房价</option><option value="hotel_count">酒店数量</option><option value="room_count">房间数量</option></select></label> <label>范围 <select id="group-window"><option value="52">近1年</option><option value="156">近3年</option><option value="all">全部历史</option></select></label><p class="hd-detail-caption" id="group-chart-caption"></p><div class="hd-chart" id="group-chart"></div></details>
+      <div class="hd-section-head board-section-head"><div><h2>全国集团</h2></div></div>
+      <div class="hd-card board-panel" id="group-card"><div class="hd-card-head board-panel-head"><h2>集团经营与规模</h2><span id="group-period"></span></div><div class="hd-table-scroll" tabindex="0" aria-label="全国集团表，可左右滚动"><table class="hd-table board-table" id="group-table"></table></div>
+        <details class="hd-detail board-detail"><summary>查看集团历史走势</summary><label>指标 <select id="group-metric"><option value="stay_adr">房价</option><option value="hotel_count">酒店数量</option><option value="room_count">房间数量</option></select></label> <label>范围 <select id="group-window"><option value="52">近1年</option><option value="156">近3年</option><option value="all">全部历史</option></select></label><p class="hd-detail-caption" id="group-chart-caption"></p><div class="hd-chart board-chart" id="group-chart"></div></details>
       </div>
-      <details class="hd-detail hd-card hd-annual"><summary>集团市占率 · 年度数据 <span id="share-year"></span></summary><div class="hd-table-scroll" tabindex="0" aria-label="年度市占率表，可左右滚动"><table class="hd-table" id="share-table"></table></div><div class="hd-chart" id="share-chart"></div></details>
+      <details class="hd-detail hd-card hd-annual board-detail board-panel"><summary>集团市占率 · 年度数据 <span id="share-year"></span></summary><div class="hd-table-scroll" tabindex="0" aria-label="年度市占率表，可左右滚动"><table class="hd-table board-table" id="share-table"></table></div><div class="hd-chart board-chart" id="share-chart"></div></details>
     </section>
 
-    <details class="hd-detail hd-quality"><summary>数据来源、历史覆盖与计算口径</summary><div id="coverage-note"></div><p><a href="https://github.com/yuxing954/guojin-shangshe-database/blob/main/docs/hotel-data-update.md" target="_blank" rel="noopener">查看数据更新与口径说明 ↗</a> · <a href="data/hotel-source-anomalies.csv">异常记录</a></p></details>
+    <details class="hd-detail hd-quality board-detail"><summary>数据来源、历史覆盖与计算口径</summary><div id="coverage-note"></div><p><a href="https://github.com/yuxing954/guojin-shangshe-database/blob/main/docs/hotel-data-update.md" target="_blank" rel="noopener">查看数据更新与口径说明 ↗</a> · <a href="data/hotel-source-anomalies.csv">异常记录</a></p></details>
     <footer class="hd-footer">酒店之家 · 国金商社研究数据库 </footer>
   </div>
 </main>
 </body>
 </html>
+
+
 
 
 
