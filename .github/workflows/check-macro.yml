@@ -40,7 +40,9 @@ jobs:
       - name: Verify macro dashboard in browser
         env:
           MACRO_SCREENSHOT_DIR: artifacts/macro
-        run: node tests/macro-dashboard.browser.cjs
+        run: |
+          node tests/macro-dashboard.browser.cjs
+          node tests/macro-study.browser.cjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:

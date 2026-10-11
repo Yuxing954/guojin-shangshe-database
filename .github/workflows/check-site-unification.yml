@@ -35,6 +35,7 @@ jobs:
           node tests/site-subnav.browser.cjs
           node tests/site-industry-design.browser.cjs
           node tests/site-macro-design.browser.cjs
+          node tests/macro-study.browser.cjs
           node tests/site-charts.browser.cjs
           node tests/site-unification.browser.cjs
           node tests/macro-dashboard.browser.cjs

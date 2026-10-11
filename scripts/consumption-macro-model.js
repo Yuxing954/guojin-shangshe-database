@@ -107,5 +107,14 @@
     const ids=group==='categories'?data.indicators.filter(i=>i.group==='社零分品类').map(i=>i.id):group==='structure'?['retail','goods','catering','above_total','above_goods','above_catering']:['retail_urban','retail_rural','retail_ex_auto','online_goods','online_total','online_services'];
     return {reference,items:ids.map(id=>({indicator:data.indicators.find(i=>i.id===id),row:reference?data.observations.find(r=>r.indicatorId===id&&r.frequency===reference.frequency&&r.basis===reference.basis&&r.period===reference.period)||null:null})).filter(x=>x.indicator)};
   }
-  return {scopeCoverage,annualRows,retailBreakdown,important,licensedSource,mergeAutomatic,finite,frequencies,bases,official,validate,records,defaultScope,latest,directory,segments,csv};
+  function comparisonPeriods(data,ids,scope){
+    const lists=ids.map(id=>records(data,id,scope).filter(r=>r.quality!=='estimate'&&(finite(r.value)||finite(r.yoy))));
+    if(!lists.length||lists.some(rows=>!rows.length))return [];
+    const keys=lists.slice(1).map(rows=>new Set(rows.map(r=>r.period+'|'+r.basis)));
+    return lists[0].filter(r=>keys.every(set=>set.has(r.period+'|'+r.basis))).map(r=>({key:r.period+'|'+r.basis,period:r.period,basis:r.basis})).reverse();
+  }
+  function comparisonRow(data,id,scope,key){
+    return records(data,id,scope).find(r=>r.period+'|'+r.basis===key&&r.quality!=='estimate')||null;
+  }
+  return {comparisonPeriods,comparisonRow,scopeCoverage,annualRows,retailBreakdown,important,licensedSource,mergeAutomatic,finite,frequencies,bases,official,validate,records,defaultScope,latest,directory,segments,csv};
 });
