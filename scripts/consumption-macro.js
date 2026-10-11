@@ -29,6 +29,7 @@
   }
   function choose(id,scroll=false){selected=id;if(!items.some(i=>i.id===id)){for(const key of ['group','frequency','connection','query'])$(key).value='';applyFilters();}else{$('indicator').value=id;configureFrequency();renderDirectory();renderKpis();saveUrl();}if(scroll)$('trend-panel').scrollIntoView({behavior:'smooth',block:'start'});}
   function renderKpis(){
+    $('kpis').dataset.study=study;
     document.querySelectorAll('[data-period-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.periodMode===periodMode)));
     $('kpis').innerHTML=readoutGroups.map(g=>{
       const ids=study==='income'?g.ids.filter(id=>['cpi','income_national','spending_national'].includes(id)):g.ids;
@@ -140,7 +141,7 @@
     $('consumption-views').onclick=e=>{const b=e.target.closest('[data-cm-view]');if(!b)return;study=b.dataset.cmView;
       if(['structure','categories','channels'].includes(study)){retailGroup=study;renderRetail();choose(study==='channels'?'online_goods':'retail');}
       if(study==='income')choose('income_national');renderStudy();saveUrl();};
-    $('retail-basis').onchange=()=>renderRetail(true);$('retail-period').onchange=()=>renderRetail();document.querySelectorAll('[data-retail]').forEach(b=>b.onclick=()=>{retailGroup=b.dataset.retail;renderRetail();});renderRetail(true);
+    $('retail-basis').onchange=()=>renderRetail(true);$('retail-period').onchange=()=>renderRetail();document.querySelectorAll('[data-retail]').forEach(b=>b.onclick=()=>{retailGroup=b.dataset.retail;study=retailGroup;renderRetail();renderStudy();saveUrl();});renderRetail(true);
     $('measure').value='combo';applyFilters();
     if(params.get('seriesFrequency')&&[...$('series-frequency').options].some(o=>o.value===params.get('seriesFrequency'))){$('series-frequency').value=params.get('seriesFrequency');configureBasis();}
     for(const [key,id] of [['basis','basis'],['measure','measure']])if([...$(id).options].some(o=>o.value===params.get(key)&&!o.disabled))$(id).value=params.get(key);
