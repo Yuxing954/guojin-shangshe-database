@@ -70,9 +70,9 @@
     if(sorted.some(c=>quotes[c.code]))firstRanking=true;filtered=ranked;
     const full=$('columns').value==='full';
     for(const row of $('rows').querySelectorAll('tr[data-company]')){const c=companies.find(c=>c.code===row.dataset.company),q=quotes[c.code],td=row.children;if(!c)continue;
-      html(td[2],'<span class="quotes-price">'+price(q,c)+'<small>'+meta(c).currency+'</small></span>');text(td[3],signed(q?.percent,'%'));td[3].className='quotes-percent '+tone(q?.percent);
-      if(full){td[4].textContent=signed(q?.change,'',precision(c));td[4].className=tone(q?.change);[q?.open,q?.high,q?.low].forEach((v,i)=>td[i+5].textContent=fmt(v,precision(c)));}
-      const time=td[full?8:4];html(time,timeText(q));time.dataset.failed=String(!!q?.failed);
+      html(td[1],'<span class="quotes-price">'+price(q,c)+'<small>'+meta(c).currency+'</small></span>');text(td[2],signed(q?.percent,'%'));td[2].className='quotes-percent '+tone(q?.percent);
+      if(full){td[3].textContent=signed(q?.change,'',precision(c));td[3].className=tone(q?.change);[q?.open,q?.high,q?.low].forEach((v,i)=>td[i+4].textContent=fmt(v,precision(c)));}
+      const time=td[full?7:3];html(time,timeText(q));time.dataset.failed=String(!!q?.failed);
     }
     renderHeat();
     const host=$('rows'),nodes=[...host.querySelectorAll('tr[data-company]')],byCode=new Map(nodes.map(n=>[n.dataset.company,n]));if(nodes.some((n,i)=>n.dataset.company!==ranked[i]?.code))for(const c of ranked){const n=byCode.get(c.code);if(n)host.appendChild(n);}
