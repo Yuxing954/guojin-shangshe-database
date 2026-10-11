@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "checkedAt": "2026-10-11T06:33:25+00:00",
+  "checkedAt": "2026-10-11T09:59:58+00:00",
   "series": {
     "cn-ppi": {
       "start": "2016-01",
@@ -1230,11 +1230,5 @@
       "calendar": "原始发布频率"
     }
   },
-  "errors": [
-    {
-      "id": "consumer-category-7",
-      "errorType": "ValueError",
-      "reason": "No exact reviewed indicator"
-    }
-  ]
+  "errors": []
 }
