@@ -9,11 +9,11 @@
   const nav=document.createElement('aside');nav.className='site-nav';
   nav.innerHTML='<a class="site-brand" href="index.html"><b>SINOLINK</b><span>国金商社数据库</span></a><form class="site-search" action="search.html" role="search"><input type="search" name="q" aria-label="站内搜索" placeholder="公司、纪要、指标"><button type="submit" aria-label="搜索">'+icon('search')+'</button></form><nav aria-label="主要导航">'+U.navigation.map(([key,href,label,glyph])=>'<a href="'+href+'"'+(section===key?' class="current" aria-current="page"':'')+'>'+icon(glyph)+'<span>'+label+'</span></a>').join('')+'</nav><div class="site-nav-bottom"><a href="dashboard.html"'+(page==='dashboard.html'?' aria-current="page"':'')+'>数据浏览器</a><a href="hotel-weekly-product.html"'+(page==='hotel-weekly-product.html'?' aria-current="page"':'')+'>酒店周度产品</a><small>商贸零售 · 社会服务</small></div>';
   document.body.prepend(nav);
-  const deskButton=document.createElement('button');deskButton.type='button';deskButton.className='site-workspace-open';deskButton.textContent='☆ 我的工作台';nav.querySelector('.site-search').after(deskButton);
   const main=document.querySelector('body > main,body > .wrap,body > .main,body > .app > .main,body > .shell > .main')||document.querySelector('main');
   if(main){main.classList.add('site-main');if(!main.id)main.id='site-main';main.tabIndex=-1;main.setAttribute('aria-label',title);if(document.querySelector('.skip-link'))document.querySelector('.skip-link').href='#'+main.id;if(!document.querySelector('.skip-link')){const skip=document.createElement('a');skip.href='#'+main.id;skip.className='skip-link';skip.textContent='跳到内容';document.body.prepend(skip);}}
 
   if(main&&U.createWorkspace){
+  const deskButton=document.createElement('button');deskButton.type='button';deskButton.className='site-workspace-open';deskButton.textContent='☆ 我的工作台';nav.querySelector('.site-search').after(deskButton);
     let browserStorage;try{browserStorage=localStorage;}catch(_){browserStorage={getItem(){throw Error('storage unavailable');},setItem(){throw Error('storage unavailable');}};}
     const workspace=U.createWorkspace(browserStorage,location.href);
     const escape=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));

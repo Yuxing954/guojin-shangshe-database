@@ -104,6 +104,7 @@ jobs:
           python scripts/build_research_recent.py
           python scripts/build_home_snapshot.py
           python scripts/test_research_updates.py
+          python scripts/test_research_statistics.py
           python scripts/test_research_library.py
           python scripts/test_onedrive_minutes.py
           python scripts/test_sync_research_library.py
