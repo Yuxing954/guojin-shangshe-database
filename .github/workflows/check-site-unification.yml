@@ -32,6 +32,7 @@ jobs:
         env:
           SITE_SCREENSHOT_DIR: .cache/site-unification
         run: |
+          node tests/site-subnav.browser.cjs
           node tests/site-charts.browser.cjs
           node tests/site-unification.browser.cjs
           node tests/macro-dashboard.browser.cjs
