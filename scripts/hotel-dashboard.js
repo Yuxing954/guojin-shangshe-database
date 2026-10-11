@@ -89,7 +89,7 @@
       var unit = isChange ? (field === 'occupancy_rate' ? '百分点' : '%') : meta.unit;
       var cls = isChange && main != null ? (main > 0 ? ' hd-positive' : main < 0 ? ' hd-negative' : ' hd-neutral') : '';
       if (v == null) return '';
-      return '<article class="hd-stat' + (i === 0 ? ' primary' : '') + '"><div class="hd-stat-label">' + meta.label + ' <span>' + meta.abbr + '</span>' + (isChange ? ' · ' + labelChange() : ' · 本周') + '</div><div class="hd-stat-value' + cls + '">' + (isChange && main > 0 ? '+' : '') + fmt(main, 1) + '<small>' + unit + '</small></div><div class="hd-stat-change">' + (isChange ? '<span>本周</span>' + fmt(v, 1) + ' ' + meta.unit : change == null ? '基期缺失 · 暂无同比' : '<span>' + labelChange() + '</span>' + delta(change, field)) + '</div></article>';
+      return '<article class="board-stat hd-stat' + (i === 0 ? ' primary' : '') + '"><div class="hd-stat-label">' + meta.label + ' <span>' + meta.abbr + '</span>' + (isChange ? ' · ' + labelChange() : ' · 本周') + '</div><div class="hd-stat-value' + cls + '">' + (isChange && main > 0 ? '+' : '') + fmt(main, 1) + '<small>' + unit + '</small></div><div class="hd-stat-change">' + (isChange ? '<span>本周</span>' + fmt(v, 1) + ' ' + meta.unit : change == null ? '基期缺失 · 暂无同比' : '<span>' + labelChange() + '</span>' + delta(change, field)) + '</div></article>';
     }).join('');
     renderTrend(); renderSegments();
     var hasScale = hasValues(r, ['hotel_count_15plus','room_count_15plus']);
@@ -402,5 +402,7 @@
 
   }
 })();
+
+
 
 
