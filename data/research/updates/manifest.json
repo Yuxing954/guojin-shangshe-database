@@ -1,13 +1,14 @@
 {
-  "syncedAt": "2026-10-10 23:33:45 UTC",
+  "syncedAt": "2026-10-11 01:00:00 UTC",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
-  "coverageFrom": "2026-10-10T15:02:54.008+0800",
-  "coverageTo": "2026-10-10T21:55:23.371+0800",
+  "coverageFrom": "2026-10-10T21:55:23.371+0800",
+  "coverageTo": "2026-10-11T08:51:41.568+0800",
   "oldestFetched": "2026-08-08T22:08:04.080+0800",
   "fetchedTopics": 11208,
   "files": {
     "views": [
+      "data/research/updates/2026-10-11-0859-views.csv",
       "data/research/updates/2026-10-11-0733-views.csv",
       "data/research/updates/2026-10-10-views-001.csv",
       "data/research/updates/2026-10-09-views-006.csv",
@@ -21,6 +22,7 @@
       "data/research/updates/2026-10-07-views-002.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-10-11-0859-all_views.csv",
       "data/research/updates/2026-10-11-0733-all_views.csv",
       "data/research/updates/2026-10-10-all_views-004.csv",
       "data/research/updates/2026-10-10-all_views-003.csv",
@@ -325,7 +327,10 @@
       "22258228842415281",
       "22258228811555111",
       "82258228254512182",
-      "82258228448824112"
+      "82258228448824112",
+      "55521551481821854",
+      "22258228418158151",
+      "14425445185188412"
     ],
     "all_views": [
       "55521551154544514",
@@ -4434,22 +4439,37 @@
       "14425445441814112",
       "14425445441815452",
       "22258228224148821",
-      "45548558552128848"
+      "45548558552128848",
+      "14425445185821112",
+      "45548558218142248",
+      "14425445185825142",
+      "45548558218148588",
+      "45548558218148548",
+      "14425445185825242",
+      "82258228418155512",
+      "22258228418155521",
+      "45548558218211158",
+      "14425445185188182",
+      "55521551481488414",
+      "14425445185188282",
+      "55521551481488224",
+      "22258228418412841",
+      "82258228418412822",
+      "55521551481485254",
+      "82258228418415152"
     ]
   },
   "lastRun": {
-    "runId": "2026-10-11-0733",
-    "syncedAt": "2026-10-11T07:33:45+08:00",
-    "previousCoverageTo": "2026-10-10T15:02:54.008+0800",
-    "fetchedUniqueTopics": 30,
-    "newSourceTopics": 18,
+    "runId": "2026-10-11-0859",
+    "previousCoverageTo": "2026-10-10T21:55:23.371+0800",
+    "newSourceTopics": 27,
     "added": {
-      "views": 1,
-      "all_views": 9
+      "views": 3,
+      "all_views": 17
     },
-    "excluded": 8,
-    "duplicates": 0,
-    "record": "data/research/updates/2026-10-11-0733-record.json"
+    "duplicates": 4,
+    "excluded": 3,
+    "record": "data/research/updates/2026-10-11-0859-record.json"
   },
   "syncLog": [
     {
