@@ -34,6 +34,7 @@ jobs:
         run: |
           node tests/site-subnav.browser.cjs
           node tests/site-industry-design.browser.cjs
+          node tests/site-macro-design.browser.cjs
           node tests/site-charts.browser.cjs
           node tests/site-unification.browser.cjs
           node tests/macro-dashboard.browser.cjs
@@ -45,5 +46,7 @@ jobs:
         with:
           name: site-browser-verification
           path: .cache/site-unification
+
+
 
 

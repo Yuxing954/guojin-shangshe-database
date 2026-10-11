@@ -92,7 +92,7 @@
     byId=new Map(data.indicators.map(i=>[i.id,i]));sources=new Map(data.sources.map(s=>[s.id,s]));
     $('asof').textContent='最近检查 '+(data.automaticCheckedAt||data.checkedAt).slice(0,10);
     $('coverage').textContent=data.indicators.length+' 项消费指标';
-    $('kpis').innerHTML=['retail','catering','online_goods','cpi','income_national','spending_national'].map(id=>{const i=byId.get(id),r=M.latest(data,id),s=sources.get(r.sourceId);return `<button class="cm-kpi" data-id="${id}"><span>${esc(i.name)}</span><strong>${num(r.value)}<small>${esc(i.unit)}</small></strong><em class="${id==='retail'?'':tone(r.yoy)}">${M.finite(r.yoy)?'同比 '+pct(r.yoy):esc(i.valueLabel)}</em><span class="cm-meta">${esc(label(r)+' · '+M.bases[r.basis])}</span><time>发布 ${esc(published(r,s))}</time></button>`;}).join('');
+    $('kpis').innerHTML=['retail','catering','online_goods','cpi','income_national','spending_national'].map(id=>{const i=byId.get(id),r=M.latest(data,id),s=sources.get(r.sourceId);return `<button class="cm-kpi board-stat" data-id="${id}"><span>${esc(i.name)}</span><strong>${num(r.value)}<small>${esc(i.unit)}</small></strong><em class="${id==='retail'?'':tone(r.yoy)}">${M.finite(r.yoy)?'同比 '+pct(r.yoy):esc(i.valueLabel)}</em><span class="cm-meta">${esc(label(r)+' · '+M.bases[r.basis])}</span><time>发布 ${esc(published(r,s))}</time></button>`;}).join('');
     options('group',[['','全部类别'],...[...new Set(data.indicators.map(i=>i.group))].map(g=>[g,g])]);
     const params=new URLSearchParams(location.search);for(const [key,id] of [['group','group'],['frequency','frequency'],['status','connection']])if([...$(id).options].some(o=>o.value===params.get(key)))$(id).value=params.get(key);$('query').value=params.get('q')||'';selected=byId.has(params.get('indicator'))?params.get('indicator'):'retail';
     $('coverage-notes').innerHTML=data.indicators.map(i=>{const c=M.scopeCoverage(data,i.id);return '<p>'+esc(i.name+'：'+(c?c.start+' — '+c.end+' · '+c.count+'期'+(c.missingPeriods.length?' · 区间缺期 '+c.missingPeriods.join('、'):'')+(c.structuralPeriods.length?' · 全年原披露另列 '+c.structuralPeriods.join('、'):'')+(c.valueMissing?' · 数值缺失 '+c.valueMissing+'条':'')+(c.yoyMissing&&!['%','点'].includes(i.unit)?' · 官方同比缺失 '+c.yoyMissing+'条':'')+(i.updateStatus==='error'?' · 更新失败，保留历史':''):(i.pendingReason||'暂无数据')))+(i.automaticSeries||[]).map(s=>'<small>'+esc((s.measure==='yoy'?'同比':'数值')+'补充：'+(s.coverage?.historyShort?'历史覆盖不足；':'')+(s.status==='error'?'更新失败；':'')+'检查 '+(s.checkedAt||'未提供').slice(0,10))+'</small>').join('')+'</p>';}).join('')+'<p>区间连续不代表已更新至最近应发布月份。1—2月不拆分；全年使用原披露或年末累计，不加总舍入月值；不由舍入金额重算同比或环比。Choice未返回发布日期时留空。</p>';
@@ -110,3 +110,5 @@
     $('measure').value='combo';applyFilters();
   }catch(error){$('status').hidden=false;$('status').textContent=error.message||'加载失败，请刷新重试';$('status').setAttribute('role','alert');$('content').hidden=true;}
 })();
+
+
