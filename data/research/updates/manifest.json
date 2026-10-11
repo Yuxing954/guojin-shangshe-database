@@ -1,9 +1,9 @@
 {
-  "syncedAt": "2026-10-11 06:55:48 UTC",
+  "syncedAt": "2026-10-11 08:03:49 UTC",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
-  "coverageFrom": "2026-10-11T13:26:20.323+0800",
-  "coverageTo": "2026-10-11T14:41:46.861+0800",
+  "coverageFrom": "2026-10-11T14:41:46.861+0800",
+  "coverageTo": "2026-10-11T15:57:19.742+0800",
   "oldestFetched": "2026-08-08T22:08:04.080+0800",
   "fetchedTopics": 11208,
   "files": {
@@ -23,6 +23,7 @@
       "data/research/updates/2026-10-07-views-002.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-10-11-1603-all_views.csv",
       "data/research/updates/2026-10-11-1403-all_views.csv",
       "data/research/updates/2026-10-11-1201-all_views.csv",
       "data/research/updates/2026-10-11-0859-all_views.csv",
@@ -4467,20 +4468,24 @@
       "14425445188852482",
       "82258228155421282",
       "14425445822152842",
-      "82258228155485242"
+      "82258228155485242",
+      "14425445828254282",
+      "14425445828228852",
+      "55521551824842444",
+      "82258228154124212"
     ]
   },
   "lastRun": {
-    "runId": "2026-10-11-1455",
-    "previousCoverageTo": "2026-10-11T13:26:20.323+0800",
-    "newSourceTopics": 1,
+    "runId": "2026-10-11-1603",
+    "previousCoverageTo": "2026-10-11T14:41:46.861+0800",
+    "newSourceTopics": 9,
     "added": {
-      "views": 1,
-      "all_views": 0
+      "views": 0,
+      "all_views": 4
     },
     "duplicates": 0,
-    "excluded": 0,
-    "record": "data/research/updates/2026-10-11-1455-record.json"
+    "excluded": 5,
+    "record": "data/research/updates/2026-10-11-1603-record.json"
   },
   "syncLog": [
     {
