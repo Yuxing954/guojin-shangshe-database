@@ -7,7 +7,7 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
  try{
  const context=await browser.newContext({viewport:{width:1440,height:1000},acceptDownloads:true});await context.route('**/*',route=>new URL(route.request().url()).origin===base?route.continue():route.abort());const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
  for(const file of fs.readdirSync(root).filter(f=>f.endsWith('.html'))){
-   const start=Date.now(),before=errors.length;await page.setViewportSize({width:1440,height:1000});await page.goto(base+'/'+file+(file==='database.html'?'#watch-assistant':''),{waitUntil:'domcontentloaded'});await page.waitForSelector('.site-nav');await page.waitForTimeout(['hotel-dashboard.html','company-database.html'].includes(file)?1800:600);
+   const start=Date.now(),before=errors.length;await page.setViewportSize({width:1440,height:1000});await page.goto(base+'/'+file,{waitUntil:'domcontentloaded'});await page.waitForSelector('.site-nav');await page.waitForTimeout(['hotel-dashboard.html','company-database.html'].includes(file)?1800:600);
    assert.equal(await page.locator('.site-nav nav a').count(),7,file+' navigation');assert.equal(await page.locator('.site-nav').count(),1,file+' duplicate nav');assert.ok(await page.locator('h1:visible').count()>=1,file+' heading');assert.ok(await page.locator('.skip-link').count()>=1,file+' skip');
    for(const width of [1440,1024,768,390]){await page.setViewportSize({width,height:1000});await page.waitForTimeout(80);const dimensions=await page.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth}));assert.ok(dimensions.scroll<=width+1,file+' overflow '+JSON.stringify(dimensions));if(out&&(width===1440||width===390)){fs.mkdirSync(out,{recursive:true});await page.screenshot({path:path.join(out,file.replace('.html','')+'-'+width+'.png'),fullPage:false});}}
    assert.deepEqual(errors.slice(before),[],file+' runtime errors');results.push({page:file,widths:[1440,1024,768,390],loadMs:Date.now()-start});console.log('PASS',file);
@@ -26,3 +26,4 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
  assert.deepEqual(errors,[]);if(out)fs.writeFileSync(path.join(out,'全站浏览器验证.json'),JSON.stringify({pages:results,interactions:['retired company link redirects to coverage','legacy query routing','industry range restore','dutyfree sources and tabs','CSV and JSON datasets','empty and retry states'],externalNetwork:'blocked; quote network covered by recorded-response suite'},null,2));console.log('PASS: all page layouts and shared interaction regressions');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;}).finally(()=>server.close());
+

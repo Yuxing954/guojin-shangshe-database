@@ -1,0 +1,31 @@
+'use strict';
+const assert=require('node:assert/strict'),http=require('node:http'),fs=require('node:fs'),path=require('node:path');
+const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright'),root=path.resolve(__dirname,'..');
+const server=http.createServer((req,res)=>{const file=path.resolve(root,'.'+decodeURIComponent(req.url.split('?')[0]));if(!file.startsWith(root+path.sep)){res.writeHead(403).end();return;}fs.readFile(file,(e,b)=>{if(e){res.writeHead(404).end();return;}res.writeHead(200,{'Content-Type':{'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.csv':'text/csv; charset=utf-8'}[path.extname(file)]||'text/plain'}).end(b);});});
+(async()=>{
+ assert.equal(fs.existsSync(path.join(root,'database.html')),false,'retired tool page deleted');
+ assert.equal(fs.existsSync(path.join(root,'scripts/quotes-legacy.test.cjs')),false);
+ await new Promise(r=>server.listen(0,'127.0.0.1',r));const base='http://127.0.0.1:'+server.address().port;
+ const browser=await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_CHANNEL?{channel:process.env.PLAYWRIGHT_CHANNEL}:{})});
+ try{
+  const page=await browser.newPage({viewport:{width:1440,height:1000}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
+  await page.route('**/*',r=>new URL(r.request().url()).origin===base?r.continue():r.abort());
+  await page.goto(base+'/index.html');await page.locator('.site-nav').waitFor();
+  assert.equal(await page.getByRole('link',{name:'历史工具',exact:true}).count(),0);
+  await page.getByRole('link',{name:'酒店周度产品',exact:true}).click();await page.waitForFunction(()=>window.hotelProduct?.rows.length>0);
+  assert.equal(await page.locator('.site-nav').count(),1);assert.equal(await page.locator('h1').innerText(),'酒店周度产品');
+  const stats=await page.evaluate(()=>{const p=window.hotelProduct,r=p.get('全部',document.querySelector('#week').value);return {revpar:Number(r.revpar),adr:Number(r.adr),occ:Number(r.occupancy_rate),occChange:p.delta(r,'occupancy_rate'),canvas:document.querySelector('canvas').height}});
+  assert.ok(Math.abs(stats.revpar-stats.adr*stats.occ)<1e-7);
+  for(const width of [1440,1024,768,390]){await page.setViewportSize({width,height:1000});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'overflow '+width)}
+  await page.setViewportSize({width:1440,height:1000});await page.getByText('编辑点评与署名',{exact:true}).click();
+  const options=await page.locator('#week option').evaluateAll(o=>o.map(x=>x.value));await page.selectOption('#week',options[1]);await page.fill('#comment','产品点评核验');await page.selectOption('#week',options[0]);assert.equal(await page.locator('#comment').inputValue(),'');await page.selectOption('#week',options[1]);assert.equal(await page.locator('#comment').inputValue(),'产品点评核验');await page.fill('#comment','');await page.selectOption('#week',options[0]);
+  await page.fill('#comment','长点评逐行验证。\n'.repeat(18));assert.ok(await page.locator('canvas').evaluate(e=>e.height)>3140);await page.fill('#comment','');
+  const early=options.at(-1);await page.selectOption('#week',early);assert.equal(await page.evaluate(()=>window.hotelProduct.delta(window.hotelProduct.get('全部',document.querySelector('#week').value),'adr')),null);await page.selectOption('#week',options[0]);
+  let broken=true;await page.route('**/data/hotel_industry_weekly.csv',r=>broken?r.fulfill({status:503,body:'unavailable'}):r.continue());await page.click('#refresh');await page.waitForFunction(()=>!document.querySelector('#refresh').disabled);assert.match(await page.locator('#status').innerText(),/保留当前数据/);assert.equal(await page.locator('#week').inputValue(),options[0]);broken=false;await page.click('#refresh');await page.waitForFunction(()=>!document.querySelector('#refresh').disabled);assert.doesNotMatch(await page.locator('#status').innerText(),/失败/);await page.unroute('**/data/hotel_industry_weekly.csv');
+  const before=await page.evaluate(()=>window.hotelProduct.rows.length);await page.getByText('导入周度数据 CSV',{exact:true}).click();const duplicate=await page.evaluate(()=>{const r=window.hotelProduct.rows[0],keys=Object.keys(r);return keys.join(',')+'\n'+[r,r].map(x=>keys.map(k=>x[k]).join(',')).join('\n')});await page.locator('#upload').setInputFiles({name:'duplicate.csv',mimeType:'text/csv',buffer:Buffer.from(duplicate)});await page.waitForFunction(()=>document.querySelector('#status').textContent.includes('导入失败'));assert.equal(await page.evaluate(()=>window.hotelProduct.rows.length),before);
+  await page.click('#refresh');await page.waitForFunction(()=>!document.querySelector('#refresh').disabled);await page.locator('#upload').setInputFiles([]);await page.locator('details').evaluateAll(items=>items.forEach(d=>d.open=false));
+  const downloading=page.waitForEvent('download');await page.click('#export');const download=await downloading;assert.match(download.suggestedFilename(),/酒店行业周度跟踪_.*\.png/);if(process.env.PRODUCT_SCREENSHOT_DIR){fs.mkdirSync(process.env.PRODUCT_SCREENSHOT_DIR,{recursive:true});await download.saveAs(path.join(process.env.PRODUCT_SCREENSHOT_DIR,'酒店周度产品.png'));await page.screenshot({path:path.join(process.env.PRODUCT_SCREENSHOT_DIR,'酒店周度产品网页.png')});}
+  await page.click('#capture');assert.equal(await page.locator('.site-nav').isVisible(),false);assert.equal(await page.locator('.toolbar').isVisible(),false);await page.keyboard.press('Tab');await page.locator('#return').focus();await page.keyboard.press('Enter');assert.equal(await page.locator('.site-nav').isVisible(),true);assert.deepEqual(errors,[]);
+  console.log('PASS: product navigation, responsive layout, missing bases, comment retention/height, source failure/recovery, duplicate rejection, PNG export and capture mode',stats);
+ }finally{await browser.close();}
+})().catch(e=>{console.error(e);process.exitCode=1;}).finally(()=>server.close());

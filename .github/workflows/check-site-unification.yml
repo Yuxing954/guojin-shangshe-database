@@ -38,6 +38,7 @@ jobs:
           node tests/macro-study.browser.cjs
           node tests/site-charts.browser.cjs
           node tests/site-unification.browser.cjs
+          node tests/hotel-weekly-product.browser.cjs
           node tests/macro-dashboard.browser.cjs
           node tests/consumption-macro.browser.cjs
           node tests/earnings-calendar.browser.cjs
@@ -47,6 +48,7 @@ jobs:
         with:
           name: site-browser-verification
           path: .cache/site-unification
+
 
 
 

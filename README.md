@@ -9,7 +9,7 @@
 - 财报日历：[earnings.html](./earnings.html)；Choice MCP 财报日期；默认最近披露与未来安排，支持月 / 周、搜索行业、原文与历史；[数据口径与更新](./docs/earnings-workbench.md)
 - 公司数据：[companies.html](./companies.html)；公司搜索、估值与财务详情
 - 观点纪要：[research.html](./research.html)；公司与板块检索、近7天/30天筛选、站内观点阅读及纪要附件入口；区分纪要摘要、文档附件和未转写音频
-- 行情与工具：[database.html](./database.html)；按模块查看原有功能
+- 酒店周度产品：[hotel-weekly-product.html](./hotel-weekly-product.html)；选周、编辑点评、截图及导出PNG长图
 - 通用数据浏览器：[dashboard.html](./dashboard.html)
 - 各项指标旁标注源数据日期，摘要生成时间不代表上游数据已更新
 - 视觉规范：浅色 paper 主题；A 股惯例为涨红跌绿
@@ -33,7 +33,7 @@
 ├── index.html          # 每日研究首页：3 条重点、4 张行业卡、5 条研究
 ├── industry.html       # 行业选择、指标趋势与历史记录
 ├── companies.html      # 公司目录、估值与财务详情
-├── database.html       # 原完整看板：行业、公司、行情与 K 线
+├── hotel-weekly-product.html # 酒店周度产品与PNG长图导出
 ├── research.html       # 观点与纪要中心
 ├── earnings.html       # 财报日历
 ├── dashboard.html      # 通用数据浏览器
@@ -83,3 +83,4 @@
 - [酒店](./industry.html#hotel)、[免税](./industry.html#dutyfree)、[黄金](./industry.html#gold)、[餐饮](./industry.html#dining)在行业页直接展示完整数据，历史指标折叠保留。
 - 餐饮包括餐饮收入、成本环境、门店、同店、客单与经营利润。出海已从网站板块和数据目录移除，旧数据仅留作存档，不参与行业与首页构建。
 - [数据范围、口径与增量更新](./docs/sector-construction.md)。离线更新默认只整理已核验数据；Choice MCP 查询和公开来源刷新分别显式导入。
+
