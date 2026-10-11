@@ -13,7 +13,7 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
     assert.equal(await page.locator('#metric-list .macro-item').count(),17);assert.match(await page.locator('#overview-meta').innerText(),/17\/17/);
     assert.ok(!requests.some(url=>url.includes('predictions.json')));assert.match(await page.locator('#kpi-grid').innerText(),/50.1/);
     console.log('Initial local load including history:',Date.now()-start,'ms');
-    assert.equal(await page.locator('.macro-kpi:not(.is-support)').count(),4);assert.equal(await page.locator('.macro-kpi.is-support').count(),2);
+    assert.equal(await page.locator('.macro-topic').count(),3);for(const group of await page.locator('.macro-topic').all())assert.equal(await group.locator('.macro-kpi').count(),2);
     assert.equal(await page.locator('#morning-trends .morning-trend').count(),3);assert.ok(await page.locator('#release-rows tr').count()<=5);
     const releaseDates=await page.locator('#release-rows time').allTextContents();assert.deepEqual(releaseDates,releaseDates.slice().sort().reverse());
     await page.locator('#recent-releases > summary').click();await page.locator('#trend-presets > summary').click();
@@ -21,41 +21,41 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
     const releasedId=await page.locator('#release-rows [data-morning-metric]').first().getAttribute('data-morning-metric');await page.locator('#release-rows [data-morning-metric]').first().click();assert.equal(new URL(page.url()).searchParams.get('indicator'),releasedId);
     await page.locator('#morning-chart-cn-retail [data-chart-point]').first().focus();assert.ok(await page.locator('#morning-chart-cn-retail .research-tooltip').isVisible());
     await page.locator('#morning-trends [data-morning-metric="cn-pmi"]').click();assert.equal(new URL(page.url()).searchParams.get('indicator'),'cn-pmi');
-    if(out){fs.mkdirSync(out,{recursive:true});await page.evaluate(()=>scrollTo(0,0));await page.screenshot({path:path.join(out,'宏观晨报-首屏.png'),fullPage:false});}
+    if(out){fs.mkdirSync(out,{recursive:true});await page.evaluate(()=>scrollTo(0,0));await page.screenshot({path:path.join(out,'��۳���-����.png'),fullPage:false});}
     await page.locator('[data-kpi="cn-cpi"]').click();assert.match(await page.locator('#metric-title').innerText(),/CPI/);
     await page.locator('#comparison').selectOption('cn-ppi');assert.equal(await page.locator('.macro-chart svg').count(),2);
     await page.locator('#years').selectOption('1');await page.reload();await ready();assert.equal(await page.locator('#comparison').inputValue(),'cn-ppi');assert.equal(await page.locator('#years').inputValue(),'1');
-    await page.locator('#primary-chart [data-chart-point]').first().focus();assert.ok(await page.locator('#primary-chart .research-tooltip').isVisible());assert.match(await page.locator('#primary-chart .research-tooltip').innerText(),/20\d{2}-\d{2}/);assert.doesNotMatch(await page.locator('#primary-chart .research-tooltip').innerText(),/发布|来源|计算/);
-    if(out){fs.mkdirSync(out,{recursive:true});await page.locator('#primary-chart [data-chart-point]').first().evaluate(el=>el.blur());await page.evaluate(()=>scrollTo(0,0));await page.screenshot({path:path.join(out,'宏观核心指标-桌面.png'),fullPage:true});}
+    await page.locator('#primary-chart [data-chart-point]').first().focus();assert.ok(await page.locator('#primary-chart .research-tooltip').isVisible());assert.match(await page.locator('#primary-chart .research-tooltip').innerText(),/20\d{2}-\d{2}/);assert.doesNotMatch(await page.locator('#primary-chart .research-tooltip').innerText(),/����|��Դ|����/);
+    if(out){fs.mkdirSync(out,{recursive:true});await page.locator('#primary-chart [data-chart-point]').first().evaluate(el=>el.blur());await page.evaluate(()=>scrollTo(0,0));await page.screenshot({path:path.join(out,'��ۺ���ָ��-����.png'),fullPage:true});}
     await page.locator('[data-study=workspace]').click();await page.locator('#more-filters > summary').click();await page.locator('#frequency').selectOption('quarterly');assert.equal(await page.locator('#metric-list .macro-item').count(),2);
-    await page.locator('#search').fill('不存在');await page.waitForTimeout(250);assert.match(await page.locator('#detail').innerText(),/没有匹配/);assert.equal(await page.locator('#download-latest').isDisabled(),true);
-    await page.locator('#reset-filters').click();await page.locator('#search').fill('社零');await page.waitForTimeout(250);assert.equal(await page.locator('#metric-list .macro-item').count(),1);
-    const download=page.waitForEvent('download');await page.locator('#download-latest').click();const csv=fs.readFileSync(await (await download).path(),'utf8');assert.equal(csv.split('\r\n').length,2);assert.match(csv,/社零/);assert.match(csv,/2026-08/);
-    await page.locator('[data-study=overview]').click();await page.locator('[data-kpi="cn-pmi"]').click();assert.equal(await page.locator('#search').inputValue(),'');assert.match(await page.locator('.macro-latest').innerText(),/点/);
+    await page.locator('#search').fill('������');await page.waitForTimeout(250);assert.match(await page.locator('#detail').innerText(),/û��ƥ��/);assert.equal(await page.locator('#download-latest').isDisabled(),true);
+    await page.locator('#reset-filters').click();await page.locator('#search').fill('����');await page.waitForTimeout(250);assert.equal(await page.locator('#metric-list .macro-item').count(),1);
+    const download=page.waitForEvent('download');await page.locator('#download-latest').click();const csv=fs.readFileSync(await (await download).path(),'utf8');assert.equal(csv.split('\r\n').length,2);assert.match(csv,/����/);assert.match(csv,/2026-08/);
+    await page.locator('[data-study=overview]').click();await page.locator('[data-kpi="cn-pmi"]').click();assert.equal(await page.locator('#search').inputValue(),'');assert.match(await page.locator('.macro-latest').innerText(),/��/);
     await page.locator('[data-study=workspace]').click();await page.locator('#reset-filters').click();await page.locator('[data-country="US"]').click();assert.equal(await page.locator('#metric-list .macro-item').count(),14);assert.equal(await page.locator('#comparison').inputValue(),'');
     assert.equal(await page.locator('#morning-trends [data-morning-metric="us-payroll"]').count(),1);assert.equal(await page.locator('#morning-trends [data-morning-metric^="cn-"]').count(),0);
     await page.locator('#health').selectOption('attention');assert.match(await page.locator('#metric-list').innerText(),/CPI/);
-    await page.locator('[data-study=overview]').click();await page.locator('[data-kpi="us-cpi"]').click();assert.match(await page.locator('.macro-coverage').innerText(),/缺失/);
-    await page.locator('#comparison').selectOption('us-gdp-quarter');assert.match(await page.locator('.macro-chart-note').innerText(),/频率不同/);
+    await page.locator('[data-study=overview]').click();await page.locator('[data-kpi="us-cpi"]').click();assert.match(await page.locator('.macro-coverage').innerText(),/ȱʧ/);
+    await page.locator('#comparison').selectOption('us-gdp-quarter');assert.match(await page.locator('.macro-chart-note').innerText(),/Ƶ�ʲ�ͬ/);
     await page.locator('[data-kpi="us-treasury10"]').click();await page.locator('#years').selectOption('0');assert.ok(await page.locator('#primary-chart [data-chart-point]').count()<=122);
     for(const width of [1920,1440,1024,768,390]){await page.setViewportSize({width,height:1000});await page.waitForTimeout(200);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'overflow at '+width);}
     await page.goto(base+'/macro.html?country=CN&indicator=cn-cpi&comparison=cn-ppi&years=1');await ready();
-    if(out)await page.screenshot({path:path.join(out,'宏观核心指标-手机.png'),fullPage:true});
+    if(out)await page.screenshot({path:path.join(out,'��ۺ���ָ��-�ֻ�.png'),fullPage:true});
     await page.locator('[data-view="predictions"]').click();await page.waitForFunction(()=>document.querySelector('#prediction-list .forecast-event'));assert.ok(requests.some(url=>url.includes('predictions.json')));
-    assert.match(await page.locator('#prediction-overview').innerText(),/活跃合约/);
-    await page.locator('#prediction-search').fill('降息25');
+    assert.match(await page.locator('#prediction-overview').innerText(),/��Ծ��Լ/);
+    await page.locator('#prediction-search').fill('��Ϣ25');
     const pm=JSON.parse(fs.readFileSync(path.join(root,'data/macro/predictions.json'),'utf8')),P=require('../scripts/prediction-model.js');
-    const expected=P.groups(pm.markets,{query:'降息25',category:await page.locator('#prediction-category').inputValue(),wholeEvents:true}).length;
+    const expected=P.groups(pm.markets,{query:'��Ϣ25',category:await page.locator('#prediction-category').inputValue(),wholeEvents:true}).length;
     assert.ok(expected>0);assert.equal(await page.locator('#prediction-list .forecast-event').count(),expected);
-    assert.match(await page.locator('#prediction-list').innerText(),/维持不变/);
-    const predictionDownload=page.waitForEvent('download');await page.locator('#prediction-download').click();assert.match(fs.readFileSync(await (await predictionDownload).path(),'utf8'),/英文原文/);
+    assert.match(await page.locator('#prediction-list').innerText(),/ά�ֲ���/);
+    const predictionDownload=page.waitForEvent('download');await page.locator('#prediction-download').click();assert.match(fs.readFileSync(await (await predictionDownload).path(),'utf8'),/Ӣ��ԭ��/);
     await page.locator('[data-view="fedwatch"]').click();await page.waitForSelector('.fedwatch-kpi');
-    assert.equal(await page.locator('.fedwatch-kpi').count(),3);assert.match(await page.locator('#fedwatch-status').innerText(),/快照/);
+    assert.equal(await page.locator('.fedwatch-kpi').count(),3);assert.match(await page.locator('#fedwatch-status').innerText(),/����/);
     const full=JSON.parse(fs.readFileSync(path.join(root,'data/gold-jewelry/macro.json'),'utf8')).fedwatchTables.at(-1);
     assert.equal(await page.locator('.fedwatch-matrix tbody tr').count(),full.rows.length);
     assert.equal(await page.locator('.fedwatch-futures thead th').count(),full.futures.length);
-    assert.match(await page.locator('#fedwatch-status').innerText(),/源时点未提供/);
-    assert.equal(await page.locator('.fedwatch-matrix tbody tr').first().locator('td').nth(6).innerText(),'—');
+    assert.match(await page.locator('#fedwatch-status').innerText(),/Դʱ��δ�ṩ/);
+    assert.equal(await page.locator('.fedwatch-matrix tbody tr').first().locator('td').nth(6).innerText(),'��');
     assert.equal(await page.locator('.fedwatch-matrix tbody tr').first().locator('td').nth(5).innerText(),'0%');
     const wholeDownload=page.waitForEvent('download');await page.locator('#fedwatch-table-download').click();
     const wholeCsv=fs.readFileSync(await (await wholeDownload).path(),'utf8');
@@ -67,8 +67,8 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
     await page.setViewportSize({width:1512,height:1100});
     await page.locator('#fedwatch-meeting').selectOption('2026-12-09');assert.match(await page.locator('#fedwatch-content').innerText(),/2026-12-09/);
     await page.locator('[data-view="indicators"]').click();assert.ok(await page.locator('#kpi-grid').isVisible());
-    await page.route('**/data/macro/automatic-series.json',r=>r.fulfill({status:503,body:'unavailable'}));await page.goto(base+'/macro.html');await ready();assert.match(await page.locator('#data-warning').innerText(),/补充历史读取失败/);assert.ok(await page.locator('#retry').isVisible());await page.unroute('**/data/macro/automatic-series.json');await page.locator('#retry').click();await page.waitForFunction(()=>document.querySelectorAll('#metric-list .macro-item').length===17);assert.ok(await page.locator('#data-warning').isHidden());
-    await page.route('**/data/macro/catalog.json',r=>r.fulfill({status:503,body:'unavailable'}));await page.goto(base+'/macro.html');await page.waitForFunction(()=>document.querySelector('#load-state').textContent.includes('读取失败'));assert.ok(await page.locator('#indicators').isHidden());assert.ok(await page.locator('#skeleton').isHidden());
+    await page.route('**/data/macro/automatic-series.json',r=>r.fulfill({status:503,body:'unavailable'}));await page.goto(base+'/macro.html');await ready();assert.match(await page.locator('#data-warning').innerText(),/������ʷ��ȡʧ��/);assert.ok(await page.locator('#retry').isVisible());await page.unroute('**/data/macro/automatic-series.json');await page.locator('#retry').click();await page.waitForFunction(()=>document.querySelectorAll('#metric-list .macro-item').length===17);assert.ok(await page.locator('#data-warning').isHidden());
+    await page.route('**/data/macro/catalog.json',r=>r.fulfill({status:503,body:'unavailable'}));await page.goto(base+'/macro.html');await page.waitForFunction(()=>document.querySelector('#load-state').textContent.includes('��ȡʧ��'));assert.ok(await page.locator('#indicators').isHidden());assert.ok(await page.locator('#skeleton').isHidden());
     await page.unroute('**/data/macro/catalog.json');await page.locator('#retry').click();await ready();
     assert.deepEqual(errors,[]);console.log('PASS: KPI drill-down, comparison, frequency/health/search filters, URL restore, CSV, chart keyboard access, daily performance, five viewport widths, lazy prediction loading, partial failure, full failure and retry.');
   }finally{await browser.close();await new Promise(r=>server.close(r));}
