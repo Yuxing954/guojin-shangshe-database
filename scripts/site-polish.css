@@ -54,142 +54,223 @@ body.site-page .site-subnav.site-subnav[hidden]{display:none!important}
 }
 @media(prefers-reduced-motion:reduce){body.site-page .site-subnav.site-subnav > :is(a,button){transition:none!important}}
 
-/* Industry content components: hotel, dutyfree, gold and dining share this contract.
+/* Shared data content components: industry and macro pages share this contract.
+
    Specialty styles only describe their data-specific layouts and visualizations. */
-body.site-page .industry-board{
+body.site-page :is(.industry-board,.data-board){
  --board-gap:20px; color:var(--site-ink);font-family:inherit;font-size:14px;line-height:1.65;background:transparent;
 }
-body.site-page .industry-board :is(.board-asof,.embedded-asof,#checked){
+body.site-page :is(.industry-board,.data-board) :is(.board-asof,.embedded-asof,#checked){
  padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;
  margin:0 0 16px!important;color:var(--site-muted)!important;font-size:13px!important;line-height:22px!important;
  box-shadow:none!important;width:auto!important;white-space:normal!important;text-align:left!important;
 }
-body.site-page .industry-board .board-asof b{display:inline;font-size:inherit;color:var(--site-ink);font-weight:600;margin-right:8px}
-body.site-page .industry-board .gj-header{margin:0}
-body.site-page .industry-board .gj-header #asof{margin:0!important}
-body.site-page .industry-board .board-section-head{
+body.site-page :is(.industry-board,.data-board) .board-asof b{display:inline;font-size:inherit;color:var(--site-ink);font-weight:600;margin-right:8px}
+body.site-page :is(.industry-board,.data-board) .gj-header{margin:0}
+body.site-page :is(.industry-board,.data-board) .gj-header #asof{margin:0!important}
+body.site-page :is(.industry-board,.data-board) .board-section-head{
  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
  margin:0 0 16px;padding:0;border:0;background:transparent;
 }
-body.site-page .industry-board :is(.board-section-head h2,.board-section-head h3){
+body.site-page :is(.industry-board,.data-board) :is(.board-section-head h2,.board-section-head h3){
  margin:0!important;font-size:18px!important;line-height:28px!important;font-weight:600!important;letter-spacing:0;
 }
-body.site-page .industry-board .board-section-head p{margin:4px 0 0;font-size:13px;line-height:22px;color:var(--site-muted)}
-body.site-page .industry-board .board-kpis{
+body.site-page :is(.industry-board,.data-board) .board-section-head p{margin:4px 0 0;font-size:13px;line-height:22px;color:var(--site-muted)}
+body.site-page :is(.industry-board,.data-board) .board-kpis{
  display:grid!important;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))!important;
  gap:16px!important;padding:0!important;margin:0 0 24px!important;border:0!important;background:transparent!important;
 }
-body.site-page .industry-board .board-stat{
+body.site-page :is(.industry-board,.data-board) .board-stat{
  display:flex!important;flex-direction:column!important;align-items:stretch!important;justify-content:flex-start!important;
  gap:0!important;grid-column:auto!important;min-width:0;min-height:164px;padding:20px!important;margin:0!important;
  border:1px solid var(--site-line)!important;border-radius:12px!important;background:var(--site-surface)!important;
  box-shadow:none!important;text-align:left!important;font-family:inherit;line-height:1.65!important;
 }
-body.site-page .industry-board button.board-stat[aria-pressed=true]{border-color:var(--site-accent)!important;box-shadow:inset 0 0 0 1px var(--site-accent)!important}
-body.site-page .industry-board .board-stat > :is(span,.hd-stat-label,.gj-stat-label){
+body.site-page :is(.industry-board,.data-board) button.board-stat[aria-pressed=true]{border-color:var(--site-accent)!important;box-shadow:inset 0 0 0 1px var(--site-accent)!important}
+body.site-page :is(.industry-board,.data-board) .board-stat > :is(span,.hd-stat-label,.gj-stat-label){
  display:block;margin:0!important;font-size:13px!important;line-height:22px!important;font-weight:400!important;color:var(--site-muted)!important;
 }
-body.site-page .industry-board .board-stat > :is(strong,.hd-stat-value,.gj-stat-value),
-body.site-page .industry-board .board-stat .dh-value > strong{
+body.site-page :is(.industry-board,.data-board) .board-stat > :is(strong,.board-stat-value,.hd-stat-value,.gj-stat-value),
+body.site-page :is(.industry-board,.data-board) .board-stat .dh-value > strong,
+body.site-page :is(.industry-board,.data-board) .board-stat .board-stat-value{
  display:block;margin:8px 0 6px!important;font-size:32px!important;line-height:42px!important;font-weight:700!important;
  letter-spacing:0!important;font-variant-numeric:tabular-nums;text-align:left!important;color:var(--site-ink);
 }
-body.site-page .industry-board .board-stat :is(strong small,strong em,.hd-stat-value small,.gj-stat-value small){
+body.site-page :is(.industry-board,.data-board) .board-stat :is(strong small,strong em,.hd-stat-value small,.gj-stat-value small){
  font-size:13px!important;line-height:22px!important;font-weight:400!important;font-style:normal!important;letter-spacing:0!important;
  color:var(--site-muted)!important;margin-left:4px;
 }
-body.site-page .industry-board .board-stat > :is(small,.hd-stat-change,.gj-stat-meta),
-body.site-page .industry-board .board-stat .dh-yoy{
+body.site-page :is(.industry-board,.data-board) .board-stat > :is(small,.hd-stat-change,.gj-stat-meta),
+body.site-page :is(.industry-board,.data-board) .board-stat .dh-yoy{
  font-size:13px!important;line-height:22px!important;margin:0!important;color:var(--site-muted);
 }
-body.site-page .industry-board .board-stat .dh-value{display:block}
-body.site-page .industry-board .board-stat .dh-yoy{display:block;white-space:normal}
-body.site-page .industry-board :is(.up,.hd-positive,.gj-positive,.is-up){color:#b85460!important}
-body.site-page .industry-board :is(.down,.hd-negative,.gj-negative,.is-down){color:#368575!important}
-body.site-page .industry-board .board-panel{
+body.site-page :is(.industry-board,.data-board) .board-stat .dh-value{display:block}
+body.site-page :is(.industry-board,.data-board) .board-stat .dh-yoy{display:block;white-space:normal}
+body.site-page :is(.industry-board,.data-board) :is(.up,.hd-positive,.gj-positive,.is-up){color:#b85460!important}
+body.site-page :is(.industry-board,.data-board) :is(.down,.hd-negative,.gj-negative,.is-down){color:#368575!important}
+body.site-page :is(.industry-board,.data-board) .board-panel{
  padding:0!important;margin:0 0 24px!important;border:1px solid var(--site-line)!important;border-radius:12px!important;
  background:var(--site-surface)!important;box-shadow:none!important;overflow:hidden;min-width:0;
 }
-body.site-page .industry-board .board-panel-head{
+body.site-page :is(.industry-board,.data-board) .board-panel-head{
  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
  padding:20px!important;margin:0!important;border:0!important;
 }
-body.site-page .industry-board .board-panel-head :is(h2,h3){
+body.site-page :is(.industry-board,.data-board) .board-panel-head :is(h2,h3){
  margin:0!important;font-size:18px!important;font-weight:600!important;line-height:28px!important;letter-spacing:0!important;
 }
-body.site-page .industry-board .board-panel-head :is(p,span){font-size:13px;line-height:22px;color:var(--site-muted)}
-body.site-page .industry-board .board-panel > :is(h2,h3){margin:20px;font-size:18px;line-height:28px;font-weight:600}
-body.site-page .industry-board .board-filters{
+body.site-page :is(.industry-board,.data-board) .board-panel-head :is(p,span){font-size:13px;line-height:22px;color:var(--site-muted)}
+body.site-page :is(.industry-board,.data-board) .board-panel > :is(h2,h3){margin:20px;font-size:18px;line-height:28px;font-weight:600}
+body.site-page :is(.industry-board,.data-board) .board-filters{
  display:flex;align-items:center;flex-wrap:wrap;gap:12px!important;padding:0!important;margin:0 0 16px!important;background:transparent!important;border:0!important;
 }
-body.site-page .industry-board .board-panel > .board-filters{padding:0 20px!important}
-body.site-page .industry-board .hd-display-control{order:0!important}
-body.site-page .industry-board :is(label,.hd-display-control > span){font-size:13px!important;line-height:22px;color:var(--site-muted)}
-body.site-page .industry-board :is(select,input[type=search],input[type=date]){
+body.site-page :is(.industry-board,.data-board) .board-panel > .board-filters{padding:0 20px!important}
+body.site-page :is(.industry-board,.data-board) .hd-display-control{order:0!important}
+body.site-page :is(.industry-board,.data-board) :is(label,.hd-display-control > span){font-size:13px!important;line-height:22px;color:var(--site-muted)}
+body.site-page :is(.industry-board,.data-board) :is(select,input[type=search],input[type=date]){
  max-width:100%;min-height:40px!important;padding:8px 12px!important;border:1px solid var(--site-line)!important;
  border-radius:8px!important;background:var(--site-surface)!important;color:var(--site-ink)!important;
  font-family:inherit!important;font-size:14px!important;line-height:22px!important;box-shadow:none!important;
 }
-body.site-page .industry-board :is(.hd-switch,.gj-switch,.trend-modes){
+body.site-page :is(.industry-board,.data-board) :is(.hd-switch,.gj-switch,.trend-modes){
  display:flex;flex-wrap:wrap;gap:4px;padding:4px;border:1px solid var(--site-line);border-radius:8px;background:var(--site-soft);
 }
-body.site-page .industry-board :is(.hd-switch,.gj-switch,.trend-modes) button{
+body.site-page :is(.industry-board,.data-board) :is(.hd-switch,.gj-switch,.trend-modes) button{
  min-height:32px;padding:5px 10px;border:0!important;border-radius:6px!important;background:transparent!important;
  color:var(--site-muted)!important;font-family:inherit;font-size:13px;line-height:22px;font-weight:500;box-shadow:none!important;
 }
-body.site-page .industry-board :is(.hd-switch,.gj-switch,.trend-modes) :is(.active,[aria-pressed=true]){
+body.site-page :is(.industry-board,.data-board) :is(.hd-switch,.gj-switch,.trend-modes) :is(.active,[aria-pressed=true]){
  background:var(--site-surface)!important;color:var(--site-accent)!important;font-weight:600;
 }
-body.site-page .industry-board :is(.gj-button,.srcbtn,.portal-button,.dh-controls > button){
+body.site-page :is(.industry-board,.data-board) :is(.gj-button,.srcbtn,.portal-button,.dh-controls > button){
  min-height:40px!important;padding:8px 12px!important;border:1px solid var(--site-line)!important;border-radius:8px!important;
  background:var(--site-surface)!important;color:var(--site-accent)!important;font-family:inherit!important;font-size:13px!important;line-height:22px!important;
 }
-body.site-page .industry-board :is(.hd-period,.hd-selection-note,.hd-chart-caption,.gj-chart-caption,.trend-caption,.dh-note){
+body.site-page :is(.industry-board,.data-board) :is(.hd-period,.hd-selection-note,.hd-chart-caption,.gj-chart-caption,.trend-caption,.dh-note){
  font-size:13px!important;line-height:22px!important;color:var(--site-muted);margin-top:0;
 }
-body.site-page .industry-board .board-chart{padding:0 20px 16px!important}
-body.site-page .industry-board .board-chart svg,
-body.site-page .industry-board :is(#hn-growth,#chart > svg){
+body.site-page :is(.industry-board,.data-board) .board-chart{padding:0 20px 16px!important}
+body.site-page :is(.industry-board,.data-board) .board-chart svg,
+body.site-page :is(.industry-board,.data-board) :is(#hn-growth,#chart > svg){
  display:block;width:100%;height:300px!important;max-width:100%;
 }
-body.site-page .industry-board #hn-growth{width:calc(100% - 40px);margin:0 20px 16px}
-body.site-page .industry-board #chart{padding:0 20px 16px}
-body.site-page .industry-board :is(.board-table,.dh-table){width:100%;border-collapse:collapse;font-size:13px!important;font-variant-numeric:tabular-nums}
-body.site-page .industry-board :is(.board-table,.dh-table) :is(th,td){
+body.site-page :is(.industry-board,.data-board) #hn-growth{width:calc(100% - 40px);margin:0 20px 16px}
+body.site-page :is(.industry-board,.data-board) #chart{padding:0 20px 16px}
+body.site-page :is(.industry-board,.data-board) :is(.board-table,.dh-table){width:100%;border-collapse:collapse;font-size:13px!important;font-variant-numeric:tabular-nums}
+body.site-page :is(.industry-board,.data-board) :is(.board-table,.dh-table) :is(th,td){
  padding:12px 20px!important;border-bottom:1px solid var(--site-line)!important;line-height:22px!important;
 }
-body.site-page .industry-board :is(.board-table,.dh-table) th{
+body.site-page :is(.industry-board,.data-board) :is(.board-table,.dh-table) th{
  background:var(--site-soft)!important;color:var(--site-muted)!important;font-size:12px!important;font-weight:500!important;
 }
-body.site-page .industry-board :is(.board-table,.dh-table) td small{font-size:12px!important;line-height:20px!important}
-body.site-page .industry-board .board-detail{
+body.site-page :is(.industry-board,.data-board) :is(.board-table,.dh-table) td small{font-size:12px!important;line-height:20px!important}
+body.site-page :is(.industry-board,.data-board) .board-detail{
  display:block;margin:0 0 16px!important;padding:16px 20px!important;border:1px solid var(--site-line)!important;
  border-radius:12px!important;background:var(--site-surface)!important;font-size:13px!important;line-height:22px!important;
 }
-body.site-page .industry-board .board-panel .board-detail{margin:0!important;border:0!important;border-top:1px solid var(--site-line)!important;border-radius:0!important}
-body.site-page .industry-board .board-detail summary{font-size:14px!important;font-weight:500;color:var(--site-ink);cursor:pointer}
-body.site-page .industry-board :is(.hd-footnote,.gj-footnote,.portal-subtle,.fresh,.hd-footer,.gj-footer){font-size:13px!important;line-height:22px!important;color:var(--site-muted)}
-body.site-page .industry-board :is(.gj-grid,.sector-company-grid){gap:20px}
-body.site-page .industry-board .gj-grid > .board-panel{margin-bottom:0!important}
-body.site-page .industry-board .gj-grid{grid-template-columns:1fr;margin-bottom:24px}
-body.site-page .industry-board :is(#scope,#metric-meta,#publication){margin:0 20px 12px}
-body.site-page .industry-board .dh-panel{padding:0;border:0;border-radius:0;background:transparent}
+body.site-page :is(.industry-board,.data-board) .board-panel .board-detail{margin:0!important;border:0!important;border-top:1px solid var(--site-line)!important;border-radius:0!important}
+body.site-page :is(.industry-board,.data-board) .board-detail summary{font-size:14px!important;font-weight:500;color:var(--site-ink);cursor:pointer}
+body.site-page :is(.industry-board,.data-board) :is(.hd-footnote,.gj-footnote,.portal-subtle,.fresh,.hd-footer,.gj-footer){font-size:13px!important;line-height:22px!important;color:var(--site-muted)}
+body.site-page :is(.industry-board,.data-board) :is(.gj-grid,.sector-company-grid){gap:20px}
+body.site-page :is(.industry-board,.data-board) .gj-grid > .board-panel{margin-bottom:0!important}
+body.site-page :is(.industry-board,.data-board) .gj-grid{grid-template-columns:1fr;margin-bottom:24px}
+body.site-page :is(.industry-board,.data-board) :is(#scope,#metric-meta,#publication){margin:0 20px 12px}
+body.site-page :is(.industry-board,.data-board) .dh-panel{padding:0;border:0;border-radius:0;background:transparent}
 @media(max-width:760px){
- body.site-page .industry-board .board-kpis{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}
- body.site-page .industry-board .board-stat{padding:16px!important;min-height:158px}
- body.site-page .industry-board .board-stat > :is(strong,.hd-stat-value,.gj-stat-value),
- body.site-page .industry-board .board-stat .dh-value > strong{font-size:28px!important;line-height:38px!important;overflow-wrap:anywhere}
- body.site-page .industry-board .board-panel-head{padding:16px!important}
- body.site-page .industry-board .board-chart{padding:0 16px 16px!important}
- body.site-page .industry-board :is(.board-chart svg,#hn-growth,#chart > svg){height:240px!important}
- body.site-page .industry-board #hn-growth{width:calc(100% - 32px);margin:0 16px 16px}
- body.site-page .industry-board #chart{padding:0 16px 16px}
- body.site-page .industry-board .board-detail{padding:16px!important}
- body.site-page .industry-board .board-filters{align-items:flex-start}
- body.site-page .industry-board .board-filters label{max-width:100%;flex-wrap:wrap}
- body.site-page .industry-board :is(.gj-grid,.sector-company-grid){grid-template-columns:1fr}
- body.site-page .industry-board .board-panel > .board-filters{padding:0 16px!important}
+ body.site-page :is(.industry-board,.data-board) .board-kpis{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}
+ body.site-page :is(.industry-board,.data-board) .board-stat{padding:16px!important;min-height:158px}
+ body.site-page :is(.industry-board,.data-board) .board-stat > :is(strong,.board-stat-value,.hd-stat-value,.gj-stat-value),
+ body.site-page :is(.industry-board,.data-board) .board-stat .dh-value > strong,
+body.site-page :is(.industry-board,.data-board) .board-stat .board-stat-value{font-size:28px!important;line-height:38px!important;overflow-wrap:anywhere}
+ body.site-page :is(.industry-board,.data-board) .board-panel-head{padding:16px!important}
+ body.site-page :is(.industry-board,.data-board) .board-chart{padding:0 16px 16px!important}
+ body.site-page :is(.industry-board,.data-board) :is(.board-chart svg,#hn-growth,#chart > svg){height:240px!important}
+ body.site-page :is(.industry-board,.data-board) #hn-growth{width:calc(100% - 32px);margin:0 16px 16px}
+ body.site-page :is(.industry-board,.data-board) #chart{padding:0 16px 16px}
+ body.site-page :is(.industry-board,.data-board) .board-detail{padding:16px!important}
+ body.site-page :is(.industry-board,.data-board) .board-filters{align-items:flex-start}
+ body.site-page :is(.industry-board,.data-board) .board-filters label{max-width:100%;flex-wrap:wrap}
+ body.site-page :is(.industry-board,.data-board) :is(.gj-grid,.sector-company-grid){grid-template-columns:1fr}
+ body.site-page :is(.industry-board,.data-board) .board-panel > .board-filters{padding:0 16px!important}
 }
 
+
+
+
+
+/* Macro layouts reuse the data-board component sizes and states. */
+body.site-page .data-board .portal-header{margin-bottom:24px;align-items:center}
+body.site-page .data-board .portal-header h1{font-size:30px!important;line-height:39px!important;margin:7px 0 0!important}
+body.site-page .data-board .portal-header .eyebrow{font-size:13px;letter-spacing:0;margin:0;color:var(--site-muted)}
+body.site-page .data-board .macro-toolbar{display:block;border:0;padding:0;margin:0}
+body.site-page .data-board .board-kpis{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+body.site-page .data-board .board-stat :is(.cm-meta,time,em,.macro-kpi-period,.macro-kpi-previous,.macro-kpi-release,.macro-kpi-note){
+ font-size:13px!important;line-height:22px!important;color:var(--site-muted)!important;margin:0!important;font-style:normal;
+}
+body.site-page .data-board .macro-kpi-top{display:flex!important;align-items:baseline;justify-content:space-between;gap:8px;min-height:0}
+body.site-page .data-board .macro-kpi-category{font-size:12px!important;white-space:normal}
+body.site-page .data-board .macro-kpi-release{text-align:left}
+body.site-page .data-board .board-panel-head .eyebrow{margin:0 0 4px;font-size:13px;line-height:22px}
+body.site-page .data-board .macro-kpi-reading{display:flex!important;align-items:baseline;justify-content:flex-start!important;gap:4px;flex-wrap:wrap;margin:0!important}
+body.site-page .data-board .macro-kpi-reading small{font-size:13px!important;line-height:22px;font-weight:400;color:var(--site-muted)}
+body.site-page .data-board .macro-kpi-bottom{display:flex!important;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;min-height:0;margin-top:8px!important}
+body.site-page .data-board .macro-kpi-change{font-size:13px!important;line-height:22px}
+body.site-page .data-board .macro-spark{width:70px;height:26px;max-width:100%}
+body.site-page .data-board :is(.macro-up,.cm-up){color:#b85460!important}
+body.site-page .data-board :is(.macro-down,.cm-down){color:#368575!important}
+body.site-page .data-board .macro-workspace-head{padding-top:24px;margin-top:24px}
+body.site-page .data-board .macro-search{display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding:0;margin:0 0 16px;background:transparent}
+body.site-page .data-board .macro-list{padding:0 20px 16px}
+body.site-page .data-board :is(.macro-reference,.macro-pending){margin:0!important}
+body.site-page .data-board .macro-detail > :is(.macro-latest,.macro-source-line,.macro-coverage,.macro-controls,.macro-chart-grid,.macro-chart-note,.chart-help,.macro-state){
+ margin:0 20px 16px!important;
+}
+body.site-page .data-board .macro-detail > .board-filters{padding:0!important}
+body.site-page .data-board .macro-latest{padding:0;gap:16px;border:0}
+body.site-page .data-board .macro-latest :is(span,small){font-size:13px;line-height:22px}
+body.site-page .data-board .macro-latest b{font-size:32px!important;line-height:42px;font-weight:700;color:var(--site-ink)!important}
+body.site-page .data-board .macro-chart-block{border-radius:12px;padding:16px 0 0}
+body.site-page .data-board .macro-chart-label{font-size:13px;line-height:22px;margin:0 20px 12px;min-height:0}
+body.site-page .data-board .macro-chart-note{font-size:13px;line-height:22px}
+body.site-page .data-board .morning-releases{border-radius:12px}
+body.site-page .data-board .morning-trends{grid-template-columns:1fr;gap:0}
+body.site-page .data-board .morning-trend header button{font-size:18px!important;line-height:28px;font-weight:600}
+body.site-page .data-board .morning-trend-value{padding:0 20px;margin:0 0 16px;gap:8px}
+body.site-page .data-board .morning-trend-value strong{font-size:32px;line-height:42px;font-weight:700}
+body.site-page .data-board .morning-trend-value :is(span,time){font-size:13px;line-height:22px}
+body.site-page .data-board .morning-chart{max-width:none;margin:0}
+body.site-page .data-board .board-panel-body{padding:20px}
+body.site-page .data-board .board-panel-body h3{font-size:18px;line-height:28px;font-weight:600}
+body.site-page .data-board .forecast-events{gap:20px}
+body.site-page .data-board .forecast-event{margin-bottom:0!important}
+body.site-page .data-board .fedwatch-distribution{margin:0;padding:0 20px 20px}
+body.site-page .data-board .fedwatch-range{font-size:14px}
+body.site-page .data-board .fedwatch-range strong{font-weight:700}
+body.site-page .data-board .cm-kpi em{margin-bottom:4px!important}
+body.site-page .data-board .cm-kpi:first-child strong{color:var(--site-ink)}
+body.site-page .data-board .retail-panel > :is(.retail-bars,#retail-note,.chart-help){margin:0 20px 16px}
+body.site-page .data-board .board-panel > :is(#series-definition,#range-error,#chart-caption,.chart-help){margin:0 20px 16px}
+body.site-page .data-board .cm-chart{min-height:0}
+body.site-page .data-board .cm-details > :is(a,p,.cm-coverage-notes){font-size:13px;line-height:22px}
+body.site-page .data-board .macro-reference summary,body.site-page .data-board .macro-pending summary{font-size:14px}
+body.site-page .data-board .board-panel > .portal-empty{margin:20px}
+body.site-page :is(.industry-board,.data-board) [hidden]{display:none!important}
+@media(max-width:760px){
+ body.site-page .data-board .portal-header h1{font-size:26px!important;line-height:34px!important}
+ body.site-page .data-board .board-kpis{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ body.site-page .data-board .board-panel-body{padding:16px}
+ body.site-page .data-board .macro-kpi-category{display:none}
+ body.site-page .data-board .macro-kpi-top{min-height:0}
+ body.site-page .data-board .macro-kpi-release{text-align:left}
+ body.site-page .data-board .macro-detail > :is(.macro-latest,.macro-source-line,.macro-coverage,.macro-controls,.macro-chart-grid,.macro-chart-note,.chart-help,.macro-state){margin:0 16px 16px!important}
+ body.site-page .data-board .macro-latest{gap:12px}
+ body.site-page .data-board .macro-latest b,body.site-page .data-board .morning-trend-value strong{font-size:28px!important;line-height:38px}
+ body.site-page .data-board .morning-trend-value{padding:0 16px}
+ body.site-page .data-board .fedwatch-distribution{padding:0 16px 16px}
+ body.site-page .data-board .fedwatch-range{grid-template-columns:75px minmax(0,1fr) 55px;gap:8px;font-size:13px}
+ body.site-page .data-board .retail-panel > :is(.retail-bars,#retail-note,.chart-help),
+ body.site-page .data-board .board-panel > :is(#series-definition,#range-error,#chart-caption,.chart-help){margin:0 16px 16px}
+ body.site-page .data-board .macro-list{padding:0 16px 16px}
+}
 
 

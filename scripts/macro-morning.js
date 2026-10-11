@@ -40,11 +40,13 @@
     trends.innerHTML=D.trends[country].map(id=>{
       const spec=catalog.series.find(s=>s.id===id);if(!spec)return '';
       const data=snapshot.series[id]||{},r=D.readout(spec,data),chart=draw(spec,data,snapshot.cutoff);charts.push({id,points:chart.points});
-      return '<article class="morning-trend"><header><button data-morning-metric="'+id+'">'+esc(spec.name)+' <span aria-hidden="true">↗</span></button><span>'+esc(M.frequency[spec.frequency])+'</span></header><div class="morning-trend-value"><strong>'+number(r.value)+'</strong><span>'+esc(r.unit)+(r.label?' · '+esc(r.label):'')+'</span><time>'+esc(r.latest?.period||'暂无数据')+'</time></div><div id="morning-chart-'+id+'" class="morning-chart">'+chart.html+'</div></article>';
+      return '<article class="morning-trend board-panel"><header class="board-panel-head"><button data-morning-metric="'+id+'">'+esc(spec.name)+' <span aria-hidden="true">↗</span></button><span>'+esc(M.frequency[spec.frequency])+'</span></header><div class="morning-trend-value"><strong>'+number(r.value)+'</strong><span>'+esc(r.unit)+(r.label?' · '+esc(r.label):'')+'</span><time>'+esc(r.latest?.period||'暂无数据')+'</time></div><div id="morning-chart-'+id+'" class="morning-chart board-chart">'+chart.html+'</div></article>';
     }).join('');
     for(const chart of charts)root.ResearchChart.attach(document.getElementById('morning-chart-'+chart.id),chart.points);
     trends.onclick=e=>{const b=e.target.closest('[data-morning-metric]');if(b)onSelect(b.dataset.morningMetric);};
   }
   root.MacroMorning={render};
 })(window);
+
+
 
