@@ -13,7 +13,7 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
     assert.equal(await page.locator('#metric-list .macro-item').count(),17);assert.match(await page.locator('#overview-meta').innerText(),/17\/17/);
     assert.ok(!requests.some(url=>url.includes('predictions.json')));assert.match(await page.locator('#kpi-grid').innerText(),/50.1/);
     console.log('Initial local load including history:',Date.now()-start,'ms');
-    assert.equal(await page.locator('.macro-kpi:not(.is-support)').count(),4);assert.equal(await page.locator('.macro-kpi.is-support').count(),2);
+    assert.equal(await page.locator('.macro-topic').count(),3);for(const group of await page.locator('.macro-topic').all())assert.equal(await group.locator('.macro-kpi').count(),2);
     assert.equal(await page.locator('#morning-trends .morning-trend').count(),3);assert.ok(await page.locator('#release-rows tr').count()<=5);
     const releaseDates=await page.locator('#release-rows time').allTextContents();assert.deepEqual(releaseDates,releaseDates.slice().sort().reverse());
     await page.locator('#recent-releases > summary').click();await page.locator('#trend-presets > summary').click();

@@ -10,7 +10,7 @@
   const params=new URLSearchParams(location.search),views=['overview','structure','categories','channels','income','workspace'];
   let study=views.includes(params.get('study'))?params.get('study'):'overview',periodMode=params.get('periodMode')==='aligned'?'aligned':'latest';
   const periodSelection={monthly:params.get('periodMonthly')||'',online:params.get('periodOnline')||'',quarterly:params.get('periodQuarterly')||''};
-  const readoutGroups=[{id:'monthly',title:'当月 · 月度',ids:['retail','catering','cpi'],scope:{frequency:'monthly',basis:'month'}},{id:'online',title:'线上实物 · 月度累计',ids:['online_goods'],scope:{frequency:'monthly',basis:'ytd'}},{id:'quarterly',title:'收入与支出 · 季度累计',ids:['income_national','spending_national'],scope:{frequency:'quarterly',basis:'ytd'}}];
+  const readoutGroups=[{id:'monthly',title:'当月消费与价格',ids:['retail','catering','cpi'],scope:{frequency:'monthly',basis:'month'}},{id:'online',title:'线上渠道 · 月度累计',ids:['online_goods'],scope:{frequency:'monthly',basis:'ytd'}},{id:'quarterly',title:'居民收支 · 季度累计',ids:['income_national','spending_national'],scope:{frequency:'quarterly',basis:'ytd'}}];
   const measures={combo:'数值＋同比',value:'原始值',yoy:'官方同比',mom:'官方环比',realYoy:'实际同比'};
   const published=(r,s)=>s?.publishedAt||r?.releaseDate||'来源未提供';
   async function loadJson(url){const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),15000);try{const response=await fetch(url,{cache:'no-cache',signal:controller.signal});if(!response.ok)throw new Error('数据读取失败（'+response.status+'）');return await response.json();}finally{clearTimeout(timer);}}
@@ -36,18 +36,23 @@
       if(!ids.length)return '';
       const periods=M.comparisonPeriods(data,ids,g.scope);
       if(!periods.some(p=>p.key===periodSelection[g.id]))periodSelection[g.id]=periods[0]?.key||'';
-      return `<section class="cm-readout-group"><div class="board-section-head"><h3>${esc(study==='income'&&g.id==='monthly'?'价格 · 月度':g.title)}</h3>${periodMode==='aligned'?`<label>数据期间<select data-readout-period="${g.id}" ${periods.length?'':'disabled'}>${periods.length?periods.map(p=>`<option value="${p.key}" ${p.key===periodSelection[g.id]?'selected':''}>${esc(p.basis==='jan_feb'?p.period.slice(0,4)+'年1—2月':p.period)}</option>`).join(''):'<option>暂无共同期间</option>'}</select></label>`:''}</div><div class="cm-kpis board-kpis">${ids.map(id=>{
+      return `<section class="cm-readout-group" data-readout-group="${g.id}"><div class="board-section-head"><h3>${esc(study==='income'&&g.id==='monthly'?'价格 · 月度':g.title)}</h3>${periodMode==='aligned'?`<label>数据期间<select data-readout-period="${g.id}" ${periods.length?'':'disabled'}>${periods.length?periods.map(p=>`<option value="${p.key}" ${p.key===periodSelection[g.id]?'selected':''}>${esc(p.basis==='jan_feb'?p.period.slice(0,4)+'年1—2月':p.period)}</option>`).join(''):'<option>暂无共同期间</option>'}</select></label>`:''}</div><div class="cm-kpis board-kpis">${ids.map(id=>{
         const i=byId.get(id),r=periodMode==='aligned'?M.comparisonRow(data,id,g.scope,periodSelection[g.id]):M.records(data,id,g.scope).filter(r=>r.quality!=='estimate').at(-1),source=sources.get(r?.sourceId);
-        return `<button class="cm-kpi board-stat" data-id="${id}" data-scope="${g.id}" data-period="${r?.period||''}" data-basis="${r?.basis||''}" aria-pressed="${selected===id}"><span>${esc(i.name)}</span><strong>${num(r?.value)}<small>${esc(i.unit)}</small></strong><em class="${tone(r?.yoy)}">${M.finite(r?.yoy)?'同比 '+pct(r.yoy):esc(i.valueLabel)}</em><span class="cm-meta">${r?esc(label(r)+' · '+M.bases[r.basis]):'暂无共同期间'}</span><time>发布 ${esc(published(r,source))}</time><span class="cm-kpi-source">${esc(source?.publisher||'来源未提供')}</span></button>`;
+        const headline=M.finite(r?.yoy)?r.yoy:(i.unit==='%'?r?.value:null);
+        const headlineLabel=M.finite(r?.yoy)?'同比':i.unit==='%'?i.valueLabel:'同比未提供';
+        return `<button class="cm-kpi board-stat" data-id="${id}" data-scope="${g.id}" data-period="${r?.period||''}" data-basis="${r?.basis||''}" aria-pressed="${selected===id}"><span class="cm-kpi-title">${esc(i.name)}<span class="readout-selected">${selected===id?'已选':'趋势 ↗'}</span></span><span class="cm-meta">${r?esc(label(r)+' · '+M.bases[r.basis]):'暂无共同期间'}</span><strong>${num(headline)}<small>${M.finite(headline)?'%':''} · ${esc(headlineLabel)}</small></strong><em class="cm-kpi-amount">${i.unit==='%'?'环比 '+pct(r?.mom):(i.unit==='元'?'人均 ':'金额 ')+num(r?.value)+' '+esc(i.unit)}</em><span class="cm-kpi-footer"><time>发布 ${esc(published(r,source))}</time><span class="cm-kpi-source">${esc(source?.publisher||'来源未提供')}</span></span></button>`;
       }).join('')}</div></section>`;
     }).join('');
     $('kpis').querySelectorAll('[data-readout-period]').forEach(el=>el.onchange=()=>{const group=el.dataset.readoutPeriod;periodSelection[group]=el.value;renderKpis();const active=[...$('kpis').querySelectorAll('[data-id]')].find(b=>b.dataset.id===selected&&b.dataset.scope===group);if(active)selectReadout(active);else saveUrl();});
   }
   function renderStudy(){
-    document.querySelectorAll('[data-cm-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.cmView===study)));
+    document.querySelectorAll('[data-cm-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.cmView===study||(b.dataset.cmView==='structure'&&['categories','channels'].includes(study)))));
     $('consumption-summary').hidden=!['overview','income'].includes(study);
     $('retail-panel').hidden=!['structure','categories','channels'].includes(study);
-    $('consumption-directory').open=study==='workspace';renderKpis();
+    $('consumption-directory').hidden=study!=='workspace';
+    $('consumption-directory').open=study==='workspace';
+    $('consumption-summary-title').textContent=study==='income'?'居民收支与价格':'消费核心读数';
+    renderKpis();
   }
   function selectReadout(b){
     if(!items.some(i=>i.id===b.dataset.id)){for(const id of ['group','frequency','connection','query'])$(id).value='';}
@@ -55,6 +60,9 @@
     $('series-frequency').value=g.scope.frequency;configureBasis();$('basis').value=g.scope.basis;
     if(periodMode==='aligned'&&b.dataset.period){const r=M.comparisonRow(data,selected,g.scope,b.dataset.period+'|'+b.dataset.basis);$('from').value=r?.endDate||'';$('to').value=r?.endDate||'';}else{$('from').value='';$('to').value='';}
     renderTrend();saveUrl();
+    $('trend-title').setAttribute('tabindex','-1');
+    $('trend-panel').scrollIntoView({behavior:'auto',block:'start'});
+    $('trend-title').focus({preventScroll:true});
   }
   function applyFilters(){page=0;items=M.directory(data,filters());options('indicator',items.map(i=>[i.id,i.name]),selected);if(!items.some(i=>i.id===selected))selected=items[0]?.id||'';if(selected)$('indicator').value=selected;configureFrequency();renderDirectory();renderKpis();saveUrl();}
   function configureFrequency(){
@@ -141,7 +149,7 @@
     $('consumption-views').onclick=e=>{const b=e.target.closest('[data-cm-view]');if(!b)return;study=b.dataset.cmView;
       if(['structure','categories','channels'].includes(study)){retailGroup=study;renderRetail();choose(study==='channels'?'online_goods':'retail');}
       if(study==='income')choose('income_national');renderStudy();saveUrl();};
-    $('retail-basis').onchange=()=>renderRetail(true);$('retail-period').onchange=()=>renderRetail();document.querySelectorAll('[data-retail]').forEach(b=>b.onclick=()=>{retailGroup=b.dataset.retail;study=retailGroup;renderRetail();renderStudy();saveUrl();});renderRetail(true);
+    $('retail-basis').onchange=()=>renderRetail(true);$('retail-period').onchange=()=>renderRetail();document.querySelectorAll('[data-retail]').forEach(b=>b.onclick=()=>{retailGroup=b.dataset.retail;study=retailGroup;renderRetail();choose(study==='channels'?'online_goods':'retail');renderStudy();saveUrl();});renderRetail(true);
     $('measure').value='combo';applyFilters();
     if(params.get('seriesFrequency')&&[...$('series-frequency').options].some(o=>o.value===params.get('seriesFrequency'))){$('series-frequency').value=params.get('seriesFrequency');configureBasis();}
     for(const [key,id] of [['basis','basis'],['measure','measure']])if([...$(id).options].some(o=>o.value===params.get(key)&&!o.disabled))$(id).value=params.get(key);

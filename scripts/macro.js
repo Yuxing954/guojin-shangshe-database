@@ -51,7 +51,7 @@
     const query=state.study==='workspace';$('indicators').classList.toggle('macro-overview-mode',!query);
     document.querySelectorAll('[data-study]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.study===state.study)));
     document.querySelector('.macro-overview').hidden=query;$('groups').hidden=!query;document.querySelector('.macro-search').hidden=!query;document.querySelector('.macro-list-panel').hidden=!query;
-    $('recent-releases').hidden=query;$('trend-presets').hidden=query;$('workspace-heading').textContent=query?'全部指标研究':'指标详情';$('download-latest').hidden=!query;
+    $('recent-releases').hidden=query;$('trend-presets').hidden=query;$('workspace-heading').textContent=query?'指标查询':'趋势分析';$('download-latest').hidden=!query;
   }
   function renderDetail(){
     const spec=catalog.series.find(s=>s.id===state.id);if(!spec){$('detail').innerHTML='<p class="portal-empty">没有匹配指标。请调整筛选条件。</p>';return;}
@@ -90,10 +90,14 @@
     const releases=D.releases(catalog,snapshot,state.country);
     $('overview-title').textContent=(state.country==='CN'?'中国':'美国')+' · 核心读数';
     $('overview-meta').textContent=available.length+'/'+all.length+' 项已收录 · 快照截止 '+snapshot.cutoff+(releases.items.length?' · 最近发布 '+releases.items[0].releaseDate:'');
-    $('kpi-grid').innerHTML=D.featured[state.country].map((id,index)=>{
+    const topics=state.country==='CN'?
+      [{title:'增长与需求',ids:['cn-gdp-quarter','cn-retail']},{title:'景气与就业',ids:['cn-pmi','cn-unemployment']},{title:'价格与货币',ids:['cn-cpi','cn-m2']}]:
+      [{title:'增长与就业',ids:['us-gdp-quarter','us-payroll']},{title:'通胀与失业',ids:['us-cpi','us-unemployment']},{title:'政策与利率',ids:['us-fed-rate','us-treasury10']}];
+    const card=id=>{
       const spec=catalog.series.find(s=>s.id===id);if(!spec)return '';const data=snapshot.series[id]||{},head=D.readout(spec,data),latest=head.latest,delta=head.delta,status=M.status(spec,data);
-      return '<button class="board-stat macro-kpi'+(index>=4?' is-support':'')+'" data-kpi="'+esc(id)+'" aria-pressed="'+(id===state.id)+'" aria-label="'+esc(spec.name+'，'+compact(head.value)+' '+head.unit+'，'+(latest?.period||'暂无数据')+'，查看历史')+'"><span class="macro-kpi-top"><span>'+esc(spec.name)+'</span><span class="macro-kpi-category">'+esc(M.groupOf(id)?.label)+'</span></span><span class="macro-kpi-reading"><strong class="board-stat-value">'+compact(head.value)+'</strong><small>'+esc(head.unit)+'</small></span><span class="macro-kpi-period">'+esc((latest?.period||'暂无数据')+' · '+M.frequency[spec.frequency]+(head.label?' · '+head.label:''))+'</span><span class="macro-kpi-previous">上期 '+number(head.previous?.chartValue)+' '+esc(head.unit)+'</span><span class="macro-kpi-release">发布 '+esc(latest?.releaseDate||'未提供')+'</span><span class="macro-kpi-bottom"><span class="macro-kpi-change '+(delta?.value>0?'macro-up':delta?.value<0?'macro-down':'')+'">'+(delta?esc(delta.label)+' '+(delta.value>0?'+':'')+number(delta.value)+' '+esc(delta.unit):'差值 —')+'</span>'+spark(spec,data)+'</span>'+(status!=='已收录'||data.coverage?.missingPeriods?.length?'<span class="macro-kpi-note">'+esc(status!=='已收录'?status:'历史存在缺期')+'</span>':'')+'</button>';
-    }).join('');
+      return '<button class="board-stat macro-kpi" data-kpi="'+esc(id)+'" aria-pressed="'+(id===state.id)+'" aria-label="'+esc(spec.name+'，'+compact(head.value)+' '+head.unit+'，'+(latest?.period||'暂无数据')+'，查看历史')+'"><span class="macro-kpi-top"><span>'+esc(spec.name)+'</span><span class="readout-selected">'+(id===state.id?'已选':'趋势 ↗')+'</span></span><span class="macro-kpi-period">'+esc((latest?.period||'暂无数据')+' · '+M.frequency[spec.frequency]+(head.label?' · '+head.label:''))+'</span><span class="macro-reading-row"><span class="macro-kpi-reading"><strong class="board-stat-value">'+compact(head.value)+'</strong><small>'+esc(head.unit)+'</small></span>'+spark(spec,data)+'</span><span class="macro-kpi-bottom"><span class="macro-kpi-change '+(delta?.value>0?'macro-up':delta?.value<0?'macro-down':'')+'">'+(delta?esc(delta.label)+' '+(delta.value>0?'+':'')+number(delta.value)+' '+esc(delta.unit):'上期差值 —')+'</span><span class="macro-kpi-previous">上期 '+number(head.previous?.chartValue)+' '+esc(head.unit)+'</span></span><span class="macro-kpi-release">发布 '+esc(latest?.releaseDate||'未提供')+'</span>'+(status!=='已收录'||data.coverage?.missingPeriods?.length?'<span class="macro-kpi-note">'+esc(status!=='已收录'?status:'历史存在缺期')+'</span>':'')+'</button>';
+    };
+    $('kpi-grid').innerHTML=topics.map((topic,index)=>'<section class="macro-topic"><h3><span>'+String(index+1).padStart(2,'0')+'</span>'+esc(topic.title)+'</h3><div class="macro-topic-cards">'+topic.ids.map(card).join('')+'</div></section>').join('');
     MacroMorning.render(catalog,snapshot,state.country,selectMetric);
   }
   function render(){
