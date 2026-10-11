@@ -1,13 +1,14 @@
 {
-  "syncedAt": "2026-10-11T13:06:02Z",
+  "syncedAt": "2026-10-11T14:04:26Z",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
-  "coverageFrom": "2026-10-11T19:59:05.705+0800",
-  "coverageTo": "2026-10-11T20:50:00.471+0800",
+  "coverageFrom": "2026-10-11T20:50:00.471+0800",
+  "coverageTo": "2026-10-11T21:50:13.034+0800",
   "oldestFetched": "2026-08-08T22:08:04.080+0800",
   "fetchedTopics": 11208,
   "files": {
     "views": [
+      "data/research/updates/2026-10-11-2202-views.csv",
       "data/research/updates/2026-10-11-2102-views.csv",
       "data/research/updates/2026-10-11-1958-views.csv",
       "data/research/updates/2026-10-11-1903-views.csv",
@@ -26,6 +27,7 @@
       "data/research/updates/2026-10-07-views-002.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-10-11-2202-all_views.csv",
       "data/research/updates/2026-10-11-2102-all_views.csv",
       "data/research/updates/2026-10-11-1958-all_views.csv",
       "data/research/updates/2026-10-11-1903-all_views.csv",
@@ -347,7 +349,8 @@
       "14425445858228152",
       "22258228184244551",
       "45548558182525258",
-      "45548558154414148"
+      "45548558154414148",
+      "22258228124528111"
     ],
     "all_views": [
       "55521551154544514",
@@ -4530,20 +4533,35 @@
       "55521551818214814",
       "45548558181482248",
       "82258228181584222",
-      "82258228181584512"
+      "82258228181584512",
+      "45548558152851488",
+      "82258228124828442",
+      "45548558152848218",
+      "55521551854121184",
+      "22258228124858821",
+      "82258228124522122",
+      "45548558152455818",
+      "22258228124525581",
+      "55521551854218444",
+      "45548558152482188",
+      "45548558152482588",
+      "22258228124582121",
+      "22258228124582441",
+      "55521551854211184",
+      "45548558155541188"
     ]
   },
   "lastRun": {
-    "runId": "2026-10-11-2102",
-    "previousCoverageTo": "2026-10-11T19:59:05.705+0800",
-    "newSourceTopics": 13,
+    "runId": "2026-10-11-2202",
+    "previousCoverageTo": "2026-10-11T20:50:00.471+0800",
+    "newSourceTopics": 25,
     "added": {
       "views": 1,
-      "all_views": 11
+      "all_views": 15
     },
-    "duplicates": 0,
-    "excluded": 1,
-    "record": "data/research/updates/2026-10-11-2102-record.json"
+    "duplicates": 3,
+    "excluded": 6,
+    "record": "data/research/updates/2026-10-11-2202-record.json"
   },
   "syncLog": [
     {
