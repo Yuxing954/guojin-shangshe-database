@@ -93,5 +93,17 @@ class ResearchValidationTests(unittest.TestCase):
         self.assertEqual(meta['counts']['minutes'], 0)
         self.assertEqual(meta['latest']['minutes'], '')
 
+    def test_summary_workflow_persists_repaired_manifest(self):
+        workflow = (Path(__file__).resolve().parents[1] /
+                    '.github/workflows/build-research-recent.yml').read_text()
+        stage = next(line for line in workflow.splitlines() if 'git add ' in line)
+        self.assertIn('data/research/updates/manifest.json', stage.split())
+        self.assertIn('data/research/market-briefs.json', stage.split())
+        self.assertLess(workflow.index('validate_research_data.py --repair'),
+                        workflow.index('python scripts/build_site_summaries.py'))
+        self.assertLess(workflow.index('python scripts/test_research_updates.py'),
+                        workflow.index('git commit'))
+        self.assertIn('python scripts/test_research_statistics.py', workflow)
+
 
 if __name__ == '__main__': unittest.main()

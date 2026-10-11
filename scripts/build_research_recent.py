@@ -125,6 +125,22 @@ def sort_key(row):
     return t or dt.datetime(1970, 1, 1)
 
 
+
+def refresh_update_statistics(root):
+    """Keep derived counts and latest periods in step with immutable update batches."""
+    path = root / "data/research/updates/manifest.json"
+    if not path.exists():
+        return
+    manifest = json.loads(path.read_text(encoding="utf-8"))
+    rows = {kind: update_rows(root, kind) for kind in ("views", "all_views", "minutes")}
+    manifest["counts"] = {kind: len(values) for kind, values in rows.items()}
+    manifest["latest"] = {
+        kind: max((r.get("时间") or r.get("日期") or "" for r in values), default="")
+        for kind, values in rows.items()
+    }
+    write_json_if_changed(path, manifest)
+
+
 def main():
     global ROOT, DATA
     ap = argparse.ArgumentParser()
@@ -154,6 +170,8 @@ def main():
     payload = {"updatedAt": moment.strftime("%Y-%m-%d %H:%M:%S"),
                "windowDays": args.days,
                "dbs": []}
+
+    refresh_update_statistics(ROOT)
 
     total = 0
     total_bytes = 0

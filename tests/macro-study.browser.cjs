@@ -10,9 +10,9 @@ const server=http.createServer((req,res)=>{const file=path.resolve(root,'.'+deco
  try{
   await p.goto(base+'/macro.html');await ready();assert.ok(await p.locator('#kpi-grid').isVisible());assert.ok(await p.locator('.macro-list-panel').isHidden());assert.equal(await p.locator('#trend-presets').evaluate(e=>e.open),false);
   assert.ok(await p.locator('#detail').evaluate(e=>e.offsetTop<document.querySelector('#recent-releases').offsetTop));
-  await p.locator('[data-kpi=cn-cpi]').click();await p.locator('#favorite').click();assert.equal(await p.locator('#favorite').getAttribute('aria-pressed'),'true');await shot('core-overview');
-  await p.locator('[data-study=workspace]').click();await p.locator('#favorites-only').check();assert.equal(await p.locator('#metric-list .macro-item').count(),1);await p.reload();await ready();assert.ok(await p.locator('#favorites-only').isChecked());assert.equal(await p.locator('#favorite').getAttribute('aria-pressed'),'true');
-  await p.locator('#favorites-only').uncheck();await p.locator('#search').fill('CPI');await p.waitForTimeout(250);const q=await p.locator('#search').inputValue();await p.locator('#metric-list .macro-item').first().click();assert.equal(await p.locator('#search').inputValue(),q);await shot('core-workspace');
+  await p.locator('[data-kpi=cn-cpi]').click();assert.equal(await p.locator('#favorite,#favorites-only').count(),0);await shot('core-overview');
+  await p.locator('[data-study=workspace]').click();
+  await p.locator('#search').fill('CPI');await p.waitForTimeout(250);const q=await p.locator('#search').inputValue();await p.locator('#metric-list .macro-item').first().click();assert.equal(await p.locator('#search').inputValue(),q);await shot('core-workspace');
   await p.goto(base+'/consumption-macro.html');await p.locator('.cm-kpi').first().waitFor();assert.equal(await p.locator('.cm-kpi').count(),6);assert.equal(await p.locator('.cm-readout-group').count(),3);assert.ok(await p.locator('#retail-panel').isHidden());
   await p.locator('[data-period-mode=aligned]').click();assert.equal(await p.locator('[data-readout-period]').count(),3);
   for(const group of await p.locator('.cm-readout-group').all()){const periods=await group.locator('.cm-kpi').evaluateAll(es=>es.map(e=>e.dataset.period+'|'+e.dataset.basis));assert.equal(new Set(periods).size,1);}
@@ -24,6 +24,6 @@ const server=http.createServer((req,res)=>{const file=path.resolve(root,'.'+deco
   for(const url of ['macro.html','macro.html?study=workspace','consumption-macro.html?periodMode=aligned','consumption-macro.html?study=workspace']){await p.setViewportSize({width:390,height:900});await p.goto(base+'/'+url);await p.locator(url.startsWith('macro')?'#metric-title':'#trend-title').waitFor();assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'overflow '+url);await shot('mobile-'+url.split('?')[0]+(url.includes('?')?'-alternate':''));}
   const fixture=JSON.parse(fs.readFileSync(path.join(root,'data/macro/predictions.json'),'utf8'));fixture.fetchedAt='2026-10-09T18:30:00Z';
   await p.route('**/data/macro/predictions.json',r=>r.fulfill({json:fixture}));await p.goto(base+'/macro.html?view=predictions');await p.locator('.forecast-event').first().waitFor();assert.match(await p.locator('#prediction-status').innerText(),/2026-10-10 02:30 北京时间/);await p.unroute('**/data/macro/predictions.json');
-  assert.deepEqual(errors,[]);console.log('PASS: compact overview, shared detail, favorites, preserved filters, exact-period grouping, date/basis restore, research views, Beijing date rollover and mobile overflow');
+  assert.deepEqual(errors,[]);console.log('PASS: compact overview, shared detail, public indicators, preserved filters, exact-period grouping, date/basis restore, research views, Beijing date rollover and mobile overflow');
  }finally{await b.close();server.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;server.close();});
