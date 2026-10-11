@@ -1,6 +1,7 @@
 
 /* Macro research navigation; scoped away from CME. */
-#indicators .macro-study-tabs{margin-bottom:20px}
+#indicators .macro-study-controls{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-bottom:20px}
+#indicators .macro-study-controls .site-subnav{margin:0!important}
 #indicators.macro-overview-mode .macro-layout{grid-template-columns:minmax(0,1fr)}
 #indicators .macro-detail-actions{display:flex;gap:8px;flex-wrap:wrap}
 #indicators .macro-favorite-filter{display:flex;align-items:center;gap:6px;white-space:nowrap;font-size:14px}
