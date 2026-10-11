@@ -40,7 +40,7 @@
         return `<button class="cm-kpi board-stat" data-id="${id}" data-scope="${g.id}" data-period="${r?.period||''}" data-basis="${r?.basis||''}" aria-pressed="${selected===id}"><span>${esc(i.name)}</span><strong>${num(r?.value)}<small>${esc(i.unit)}</small></strong><em class="${tone(r?.yoy)}">${M.finite(r?.yoy)?'同比 '+pct(r.yoy):esc(i.valueLabel)}</em><span class="cm-meta">${r?esc(label(r)+' · '+M.bases[r.basis]):'暂无共同期间'}</span><time>发布 ${esc(published(r,source))}</time><span class="cm-kpi-source">${esc(source?.publisher||'来源未提供')}</span></button>`;
       }).join('')}</div></section>`;
     }).join('');
-    $('kpis').querySelectorAll('[data-readout-period]').forEach(el=>el.onchange=()=>{periodSelection[el.dataset.readoutPeriod]=el.value;renderKpis();saveUrl();});
+    $('kpis').querySelectorAll('[data-readout-period]').forEach(el=>el.onchange=()=>{const group=el.dataset.readoutPeriod;periodSelection[group]=el.value;renderKpis();const active=[...$('kpis').querySelectorAll('[data-id]')].find(b=>b.dataset.id===selected&&b.dataset.scope===group);if(active)selectReadout(active);else saveUrl();});
   }
   function renderStudy(){
     document.querySelectorAll('[data-cm-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.cmView===study)));
