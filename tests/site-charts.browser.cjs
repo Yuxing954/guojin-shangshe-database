@@ -32,7 +32,7 @@ const root=path.resolve(__dirname,'..'),server=http.createServer((req,res)=>{
  ['consumption-macro.html?indicator=retail','#measure','#chart'],
  ['macro.html?country=US&indicator=us-housing-starts','#mode','#primary-chart'],
  ['dining.html','#sector-chart-mode','#chart']]){
-  await page.goto(base+'/'+url);if(url.startsWith('industry.html'))await page.locator('#gold-industry-history > summary').click();await page.waitForSelector(host+' svg.site-paired-chart');
+  await page.goto(base+'/'+url);if(url.startsWith('industry.html')){await page.locator('#content:not([hidden])').waitFor({state:'attached'});await page.locator('#gold-industry-history > summary').click();}await page.waitForSelector(host+' svg.site-paired-chart');
   assert.equal(await page.locator(control).inputValue(),'combo',url+' default combo');
   assert.ok(await page.locator(host+' .site-value-bar').count()>0,url+' values');
   assert.ok(await page.locator(host+' .site-change-line').count()>0,url+' YoY');

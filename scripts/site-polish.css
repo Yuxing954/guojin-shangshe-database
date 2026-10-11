@@ -21,3 +21,35 @@ body.site-page{--ink:var(--site-ink);--brand:var(--site-accent);--blue:var(--sit
 @media(prefers-reduced-motion:reduce){.site-page *{transition:none!important;scroll-behavior:auto!important}}
 
 
+
+/* One navigation component for secondary categories and their content views. */
+body.site-page .site-subnav.site-subnav{
+ display:flex!important;align-items:center!important;justify-content:flex-start!important;flex-wrap:wrap!important;
+ gap:8px!important;margin:24px 0!important;padding:0!important;border:0!important;border-radius:0!important;
+ background:transparent!important;box-shadow:none!important;position:static!important;overflow:visible!important;min-width:0;
+}
+body.site-page .site-subnav.site-subnav > :is(a,button){
+ display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:6px!important;
+ flex:0 0 auto!important;min-width:0!important;min-height:44px!important;height:auto!important;
+ padding:10px 16px!important;border:1px solid var(--site-line)!important;border-radius:8px!important;
+ background:var(--site-surface)!important;color:var(--site-muted)!important;box-shadow:none!important;
+ font-family:inherit!important;font-size:14px!important;font-weight:500!important;line-height:22px!important;
+ letter-spacing:0!important;text-align:center!important;text-decoration:none!important;white-space:normal!important;
+ max-width:100%!important;cursor:pointer;transition:background-color .15s,color .15s,border-color .15s;
+}
+body.site-page .site-subnav.site-subnav > :is(a,button):hover{
+ background:var(--site-soft)!important;border-color:var(--site-accent)!important;color:var(--site-accent)!important;
+}
+body.site-page .site-subnav.site-subnav > :is(.active,.on,.current,[aria-pressed=true],[aria-selected=true],[aria-current=page]){
+ background:var(--site-accent)!important;border-color:var(--site-accent)!important;color:#fff!important;font-weight:600!important;
+}
+body.site-page .site-subnav.site-subnav > :is(a,button):focus-visible{
+ outline:3px solid #9da9e5!important;outline-offset:3px!important;
+}
+body.site-page .site-subnav.site-subnav > :is(a,button):disabled{cursor:default;opacity:.45}
+body.site-page .site-subnav.site-subnav small{font-size:12px!important;line-height:inherit!important;color:inherit!important}
+body.site-page .site-subnav.site-subnav[hidden]{display:none!important}
+@media(max-width:760px){
+ body.site-page .site-subnav.site-subnav{margin:20px 0!important}
+}
+@media(prefers-reduced-motion:reduce){body.site-page .site-subnav.site-subnav > :is(a,button){transition:none!important}}

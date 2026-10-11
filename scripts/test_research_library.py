@@ -144,14 +144,11 @@ class LibraryTests(unittest.TestCase):
             self.assertEqual(data['zsxq-file-3']['sectors'], ['retail'])
 
     def test_curated_claims_reference_existing_source_records(self):
-        import csv
-        topics_by_kind = {}
-        for kind in ['views', 'all_views']:
-            topics = set()
-            for path in (ROOT / 'data/research/updates').glob(f'*-{kind}-*.csv'):
-                with path.open(encoding='utf-8-sig', newline='') as stream:
-                    topics.update(row['原文链接'].rsplit('/', 1)[-1] for row in csv.DictReader(stream))
-            topics_by_kind[kind] = topics
+        from research_sources import update_rows
+        topics_by_kind = {
+            kind: {row['原文链接'].rsplit('/', 1)[-1] for row in update_rows(ROOT, kind)}
+            for kind in ['views', 'all_views']
+        }
         data = json.loads((ROOT / 'data/research/market-briefs.json').read_text(encoding='utf-8'))
         for brief in data['briefs']:
             ids = {source['topicId'] for source in brief['sources']}
