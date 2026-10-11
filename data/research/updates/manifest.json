@@ -1,13 +1,14 @@
 {
-  "syncedAt": "2026-10-11 08:56:50 UTC",
+  "syncedAt": "2026-10-11 11:03:22 UTC",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
-  "coverageFrom": "2026-10-11T15:57:19.742+0800",
-  "coverageTo": "2026-10-11T16:56:42.388+0800",
+  "coverageFrom": "2026-10-11T16:56:42.388+0800",
+  "coverageTo": "2026-10-11T18:10:56.314+0800",
   "oldestFetched": "2026-08-08T22:08:04.080+0800",
   "fetchedTopics": 11208,
   "files": {
     "views": [
+      "data/research/updates/2026-10-11-1903-views.csv",
       "data/research/updates/2026-10-11-1455-views.csv",
       "data/research/updates/2026-10-11-0859-views.csv",
       "data/research/updates/2026-10-11-0733-views.csv",
@@ -23,6 +24,7 @@
       "data/research/updates/2026-10-07-views-002.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-10-11-1903-all_views.csv",
       "data/research/updates/2026-10-11-1656-all_views.csv",
       "data/research/updates/2026-10-11-1603-all_views.csv",
       "data/research/updates/2026-10-11-1403-all_views.csv",
@@ -336,7 +338,8 @@
       "55521551481821854",
       "22258228418158151",
       "14425445185188412",
-      "22258228158222881"
+      "22258228158222881",
+      "82258228185125122"
     ],
     "all_views": [
       "55521551154544514",
@@ -4476,20 +4479,28 @@
       "82258228154124212",
       "45548558141184418",
       "45548558141141128",
-      "22258228151154881"
+      "22258228151154881",
+      "14425445852844142",
+      "22258228185128441",
+      "45548558184158528",
+      "55521551812851524",
+      "14425445852845552",
+      "45548558184158428",
+      "14425445852858152",
+      "45548558184181828"
     ]
   },
   "lastRun": {
-    "runId": "2026-10-11-1656",
-    "previousCoverageTo": "2026-10-11T15:57:19.742+0800",
-    "newSourceTopics": 4,
+    "runId": "2026-10-11-1903",
+    "previousCoverageTo": "2026-10-11T16:56:42.388+0800",
+    "newSourceTopics": 9,
     "added": {
-      "views": 0,
-      "all_views": 3
+      "views": 1,
+      "all_views": 8
     },
     "duplicates": 0,
-    "excluded": 1,
-    "record": "data/research/updates/2026-10-11-1656-record.json"
+    "excluded": 0,
+    "record": "data/research/updates/2026-10-11-1903-record.json"
   },
   "syncLog": [
     {
