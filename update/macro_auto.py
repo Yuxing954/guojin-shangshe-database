@@ -5,7 +5,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from urllib.parse import urlparse, parse_qs
 from urllib.request import Request, build_opener
-from miaoxiang_mcp import Client, URL
+from miaoxiang_mcp import Client, URL, configured_key
 from gold_jewelry import NoRedirect, atomic_json
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -204,11 +204,7 @@ def main():
     values=dict(previous['series']);now=datetime.now(timezone.utc).isoformat(timespec='seconds');errors=[]
     if args.only and set(args.only)-{s['id'] for s in registry['series']}:raise ValueError('Unknown registry ID')
     entries=[s for s in registry['series'] if (not args.only or s['id'] in args.only) and (not args.consumer_only or s.get('consumerId'))]
-    key=os.environ.get('EM_API_KEY','')
-    if not key and args.codex_config:
-        server=tomllib.loads(args.codex_config.read_text(encoding='utf-8'))['mcp_servers']['mx-ds-mcp']
-        if server['url']!=URL:raise ValueError('Unexpected provider endpoint')
-        key=server['http_headers']['em_api_key']
+    key=configured_key(args.codex_config)
     receipts=[]
     if args.receipts_dir:
         for path in args.receipts_dir.glob('choice-*.json'):
@@ -280,3 +276,4 @@ def main():
 if __name__=='__main__':
     try:sys.exit(main())
     except Exception as exc:print(json.dumps({'ok':False,'errorType':type(exc).__name__}));sys.exit(2)
+

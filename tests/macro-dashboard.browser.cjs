@@ -47,6 +47,20 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
     const predictionDownload=page.waitForEvent('download');await page.locator('#prediction-download').click();assert.match(fs.readFileSync(await (await predictionDownload).path(),'utf8'),/英文原文/);
     await page.locator('[data-view="fedwatch"]').click();await page.waitForSelector('.fedwatch-kpi');
     assert.equal(await page.locator('.fedwatch-kpi').count(),3);assert.match(await page.locator('#fedwatch-status').innerText(),/快照/);
+    const full=JSON.parse(fs.readFileSync(path.join(root,'data/gold-jewelry/macro.json'),'utf8')).fedwatchTables.at(-1);
+    assert.equal(await page.locator('.fedwatch-matrix tbody tr').count(),full.rows.length);
+    assert.equal(await page.locator('.fedwatch-futures thead th').count(),full.futures.length);
+    assert.match(await page.locator('#fedwatch-status').innerText(),/源时点未提供/);
+    assert.equal(await page.locator('.fedwatch-matrix tbody tr').first().locator('td').nth(6).innerText(),'—');
+    assert.equal(await page.locator('.fedwatch-matrix tbody tr').first().locator('td').nth(5).innerText(),'0%');
+    const wholeDownload=page.waitForEvent('download');await page.locator('#fedwatch-table-download').click();
+    const wholeCsv=fs.readFileSync(await (await wholeDownload).path(),'utf8');
+    assert.equal(wholeCsv.split('\r\n').length,1+full.rows.length*full.columns.length+full.futures.length);
+    assert.match(wholeCsv,/"ZQV6","2026-10"/);assert.match(wholeCsv,/96.1150/);assert.ok(wholeCsv.includes(full.retrievedAt));
+    await page.locator('[data-fedwatch-meeting="2027-10-27"]').click();assert.equal(await page.locator('#fedwatch-meeting').inputValue(),'2027-10-27');
+    assert.equal(await page.locator('#fedwatch-compare').inputValue(),'');assert.equal(await page.locator('.fedwatch-range').count(),8);
+    for(const width of [1512,768,390]){await page.setViewportSize({width,height:1000});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));}
+    await page.setViewportSize({width:1512,height:1100});
     await page.locator('#fedwatch-meeting').selectOption('2026-12-09');assert.match(await page.locator('#fedwatch-content').innerText(),/2026-12-09/);
     await page.locator('[data-view="indicators"]').click();assert.ok(await page.locator('#kpi-grid').isVisible());
     await page.route('**/data/macro/automatic-series.json',r=>r.fulfill({status:503,body:'unavailable'}));await page.goto(base+'/macro.html');await ready();assert.match(await page.locator('#data-warning').innerText(),/补充历史读取失败/);assert.ok(await page.locator('#retry').isVisible());await page.unroute('**/data/macro/automatic-series.json');await page.locator('#retry').click();await page.waitForFunction(()=>document.querySelectorAll('#metric-list .macro-item').length===17);assert.ok(await page.locator('#data-warning').isHidden());
@@ -55,6 +69,7 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
     assert.deepEqual(errors,[]);console.log('PASS: KPI drill-down, comparison, frequency/health/search filters, URL restore, CSV, chart keyboard access, daily performance, five viewport widths, lazy prediction loading, partial failure, full failure and retry.');
   }finally{await browser.close();await new Promise(r=>server.close(r));}
 })().catch(e=>{console.error(e);server.close();process.exitCode=1;});
+
 
 
 

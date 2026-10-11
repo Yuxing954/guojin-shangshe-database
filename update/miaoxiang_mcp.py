@@ -2,6 +2,8 @@
 import argparse
 import json
 import os
+import shlex
+import subprocess
 from pathlib import Path
 import tomllib
 from urllib.request import Request, build_opener
@@ -9,6 +11,25 @@ from gold_jewelry import NoRedirect, archive, atomic_json
 
 URL = 'https://mxapi.eastmoney.com/mxds/mcp'
 READ_ONLY_TOOLS = ('mx_ashare_finance_data','mx_hk_finance_data','mx_macro_data','mx_comprehensive_finance_data','mx_finance_search_notice','mx_finance_search_news')
+
+def configured_key(config_path=None):
+    """Resolve existing local credentials without exposing helper output or secrets."""
+    key=os.getenv('EM_API_KEY','').strip()
+    if key or not config_path:return key
+    server=tomllib.loads(Path(config_path).read_text(encoding='utf-8'))['mcp_servers']['mx-ds-mcp']
+    if server.get('url')!=URL:raise ValueError('Unexpected provider endpoint')
+    key=server.get('http_headers',{}).get('em_api_key','')
+    helper=server.get('http_headers_helper')
+    if not key and helper:
+        command=shlex.split(helper,posix=os.name!='nt')
+        if os.name=='nt':command=[arg.strip('"') for arg in command]
+        try:
+            result=subprocess.run(command,capture_output=True,text=True,timeout=30,check=True)
+            key=json.loads(result.stdout).get('em_api_key','')
+        except Exception:
+            raise ValueError('Credential helper failed') from None
+    if not isinstance(key,str):raise ValueError('Invalid credential header')
+    return key.strip()
 
 def response_summary(result):
     """Protocol success alone does not prove business success or indicator relevance."""
@@ -76,12 +97,7 @@ def main():
     ap.add_argument('--company',default='')
     args=ap.parse_args()
     try:
-        key=os.getenv('EM_API_KEY','')
-        if not key and args.codex_config:
-            cfg=tomllib.loads(args.codex_config.read_text(encoding='utf-8'))
-            server=cfg['mcp_servers']['mx-ds-mcp']
-            if server['url']!=URL: raise ValueError('Configured server URL differs from official endpoint')
-            key=server['http_headers']['em_api_key']
+        key=configured_key(args.codex_config)
         client=Client(key)
         if args.query_id:
             from gold_jewelry import PLAN,read_json,is_date
@@ -112,3 +128,4 @@ def main():
         print(json.dumps({'ok':False,'errorType':type(exc).__name__})); return 2
 
 if __name__=='__main__': raise SystemExit(main())
+

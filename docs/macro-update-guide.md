@@ -110,3 +110,12 @@ Polymarket 先发现成交靠前的相关事件，每个主题最多6个，再�
 额外检查：`node --test tests/forecast-macro.test.cjs`，并核对桌面、窄屏、会议切换、搜索、到期过滤及两个 CSV 下载。
 
 
+
+### FedWatch 整表数据结构与未知时点
+
+完整表保存在 `data/gold-jewelry/macro.json` 的 `fedwatchTables` 数组，包含全部 `columns`、`rows` 和 `futures`；会议历史继续保存在 `meetings[].snapshots`。原始 DOM 行列收据保存在 `data/macro/fedwatch-receipt-YYYY-MM-DD.json`，来源记录保存收据路径及 SHA-256。后续采集要保留当前页面实际提供的全部行列与合约，不固定会议数、利率档数或合约数。
+
+整表未披露独立源时点时，`observedAt` 和会议快照的 `observedDate` 保留 `null`，使用 `retrievedAt` 单独记录抓取时间。`referenceObservedAt` 仅记录同次 Current 页显示的参考源时间，不能替代整表源时点。页面、对照选择器与导出须明确显示“获取”或“源时点未提供”。源表空白保留 `null`，真实 `0.0%` 保留数值 0。
+
+概率显示到一位小数时，逐项舍入可能使整行偏离 100%；合计校验允许每个已披露数值最多 0.05 个百分点的舍入误差（最低容差 0.15），其余精度维持严格校验。不改写原始值或归一化概率。期货 `rawPrice` 保留原表价格精度，`contractMonth` 单独展示合约月份。
+

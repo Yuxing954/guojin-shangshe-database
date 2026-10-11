@@ -1,7 +1,7 @@
 name: Check macro and predictions
 on:
   pull_request:
-    paths: ['macro.html', 'scripts/macro*', 'scripts/prediction-model.js', 'scripts/fedwatch*', 'scripts/forecast-desk*', 'scripts/research-chart*', 'scripts/site*', 'data/macro/**', 'data/consumption-macro/**', 'update/macro_auto.py', 'update/macro_data.py', 'update/polymarket_data.py', 'tests/*macro*', '.github/workflows/check-macro.yml']
+    paths: ['macro.html', 'scripts/macro*', 'scripts/prediction-model.js', 'scripts/fedwatch*', 'scripts/forecast-desk*', 'scripts/research-chart*', 'scripts/site*', 'data/macro/**', 'data/consumption-macro/**', 'data/gold-jewelry/macro.json', 'update/miaoxiang_mcp.py', 'tests/test_miaoxiang_credentials.py', 'update/macro_auto.py', 'update/macro_data.py', 'update/polymarket_data.py', 'tests/*macro*', '.github/workflows/check-macro.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -29,6 +29,7 @@ jobs:
           node --test tests/macro.test.cjs
           python tests/test_macro_data.py
           python tests/test_macro_auto.py
+          python tests/test_miaoxiang_credentials.py
           node --test tests/consumption-macro.test.cjs
           node scripts/site-data.test.cjs
           node scripts/industry-model.test.cjs
@@ -46,4 +47,5 @@ jobs:
           name: macro-dashboard-previews
           path: artifacts/macro
           if-no-files-found: ignore
+
 

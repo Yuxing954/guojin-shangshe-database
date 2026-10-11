@@ -23,10 +23,12 @@
       mid+=(r.lower+r.upper)/2*r.probability;total+=r.probability;
     }
     const ranges=snapshot.ranges.slice().sort((a,b)=>a.lower-b.lower);
-    if(ranges.some((r,i)=>i&&r.lower<ranges[i-1].upper)||Math.abs(total-100)>.15||!keys.has(baseline.join('|')))return null;
+    if(ranges.some((r,i)=>i&&r.lower<ranges[i-1].upper)||Math.abs(total-100)>(ranges.every(r=>Math.abs(r.probability*10-Math.round(r.probability*10))<1e-8)?Math.max(.15,ranges.length*.05+1e-8):.15)||!keys.has(baseline.join('|')))return null;
     return {cut,hold,hike,midpoint:mid/total};
   }
-  function latestSnapshot(meeting){return meeting.snapshots.slice().sort((a,b)=>(a.observedAt||a.observedDate).localeCompare(b.observedAt||b.observedDate)).at(-1);}
+  function snapshotTime(s){return s.observedAt||(s.observedDate?s.observedDate+'T23:59:59Z':s.retrievedAt);}
+  function snapshotLabel(s){return s.observedDate||('获取 '+String(s.retrievedAt||'').slice(0,10));}
+  function latestSnapshot(meeting){return meeting.snapshots.slice().sort((a,b)=>Date.parse(snapshotTime(a))-Date.parse(snapshotTime(b))).at(-1);}
   function changeSince(series,anchor){
     const rows=sorted(series.observations).filter(r=>finite(r.value)),latest=rows.at(-1),base=rows.filter(r=>r.date<=anchor).at(-1);
     if(!base||!latest||latest.date<=base.date)return null;
@@ -42,11 +44,12 @@
     const p=d.policy;if(!p||p.unit!=='%'||!Array.isArray(p.range)||p.range.length!==2||!p.range.every(finite)||p.range[1]<=p.range[0]||p.range[0]<0||p.range[1]>25||!validDate(p.decisionDate)||p.decisionDate>d.checkedAt)e.push('政策利率口径无效');else ref(p);
     const codes={real10:['%','美国:国债实际收益率(以通胀为标的):10年(%)'],dxy:['指数','美元指数'],usdcny:['CNY/USD','中间价:美元兑人民币'],brent:['USD/桶','日现货FOB价:欧洲布伦特原油(美元/桶)']};
     const seriesKeys=new Set();for(const s of d.series||[]){ref(s);if(seriesKeys.has(s.id))e.push('宏观序列重复');seriesKeys.add(s.id);if(!codes[s.id]||s.unit!==codes[s.id][0]||s.originalName!==codes[s.id][1]||s.frequency!=='daily')e.push('宏观指标身份或单位错误');let prior='';for(const r of s.observations||[]){if(!validDate(r.date)||r.date>d.checkedAt||r.date<=prior||!finite(r.value))e.push('宏观观测日期重复、逆序、未来或空值');prior=r.date;}if(!s.observations?.length)e.push('宏观序列为空');}
-    const dates=new Set();for(const m of d.meetings||[]){if(dates.has(m.meetingDate)||!validDate(m.meetingDate)||m.rateUnit!=='%')e.push('FOMC会议日期或利率单位错误');dates.add(m.meetingDate);let prior='';for(const s of m.snapshots||[]){ref(s);if(!validDate(s.observedDate)||s.observedDate>d.checkedAt||s.observedDate>=m.meetingDate||s.observedDate<(p?.decisionDate||'')||s.observedDate<=prior||s.probabilityUnit!=='%'||s.timezone!=='America/Chicago'||!chicagoTimestamp(s))e.push('预期时点、时区或政策基准不匹配');prior=s.observedDate;if(!probabilities(s,p?.range))e.push('会议概率分布无效');}if(!m.snapshots?.length)e.push('会议概率缺失');}
+    const dates=new Set();for(const m of d.meetings||[]){if(dates.has(m.meetingDate)||!validDate(m.meetingDate)||m.rateUnit!=='%')e.push('FOMC会议日期或利率单位错误');dates.add(m.meetingDate);let prior=-Infinity;for(const s of m.snapshots||[]){ref(s);const known=validDate(s.observedDate),unknown=s.observedDate===null&&s.observedAt===null&&Number.isFinite(Date.parse(s.retrievedAt)),date=known?s.observedDate:String(s.retrievedAt||'').slice(0,10),clock=Date.parse(snapshotTime(s));if((!known&&!unknown)||date>d.checkedAt||date>=m.meetingDate||date<(p?.decisionDate||'')||clock<=prior||s.probabilityUnit!=='%'||s.timezone!=='America/Chicago'||!chicagoTimestamp(s))e.push('预期时点、时区或政策基准不匹配');prior=clock;if(!probabilities(s,p?.range))e.push('会议概率分布无效');}if(!m.snapshots?.length)e.push('会议概率缺失');}
     const proj=d.projections;if(proj){ref(proj);if(proj.unit!=='%'||proj.basis!=='sep_year_end_midpoint'||!validDate(proj.asOf)||proj.asOf>d.checkedAt||!proj.points?.length||proj.points.some(r=>!Number.isInteger(r.year)||r.year<Number(proj.asOf.slice(0,4))||!finite(r.value)))e.push('点阵图口径无效');}
     for(const r of [...(d.releases||[]),...(d.flows||[])]){ref(r);if(!finite(r.value)||!r.unit||!validDate(r.periodEnd)||r.periodEnd>d.checkedAt||!validDate(r.publishedAt)||r.publishedAt<r.periodEnd||r.publishedAt>d.checkedAt)e.push('宏观统计期间或发布日期无效');}
     for(const r of d.events||[])if(!sources.has(r.sourceId)||!Number.isFinite(Date.parse(r.scheduledAt))||!r.period||!r.name)e.push('事件日历缺时间或来源');
     return e;
   }
-  return {finite,probabilities,latestSnapshot,changeSince,ageDays,chicagoTimestamp,validate};
+  return {finite,probabilities,latestSnapshot,changeSince,ageDays,chicagoTimestamp,validate,snapshotLabel,snapshotTime};
 });
+
