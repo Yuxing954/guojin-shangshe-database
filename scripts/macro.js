@@ -8,12 +8,11 @@
   const link=(url,label)=>'<a href="'+esc(M.safeUrl(url))+'" target="_blank" rel="noopener">'+esc(label)+'</a>';
   let catalog,snapshot,predictions,predictionError=false,predictionLoading=false,page=0,chartPoints=[],predictionExpanded=false,searchTimer,resizeTimer;
   const params=new URLSearchParams(location.search);
-  let favorites=new Set();try{const stored=JSON.parse(localStorage.getItem('macro-favorites')||'[]');if(Array.isArray(stored))favorites=new Set(stored.filter(id=>typeof id==='string'));}catch{}
-  const state={study:params.get('study')==='workspace'?'workspace':'overview',favoritesOnly:params.get('favorites')==='1',country:params.get('country')==='US'?'US':'CN',group:params.get('group')||'',q:params.get('q')||'',
+  const state={study:params.get('study')==='workspace'?'workspace':'overview',country:params.get('country')==='US'?'US':'CN',group:params.get('group')||'',q:params.get('q')||'',
     id:params.get('indicator')||'',mode:['combo','value','yoy','mom'].includes(params.get('mode'))?params.get('mode'):'combo',
     years:[0,1,3,5,10].includes(+params.get('years'))&&params.has('years')?+params.get('years'):5,
     view:['predictions','fedwatch'].includes(params.get('view'))?params.get('view'):'indicators',frequency:['monthly','quarterly','daily'].includes(params.get('frequency'))?params.get('frequency'):'',health:['attention','pending'].includes(params.get('health'))?params.get('health'):'',comparison:params.get('comparison')||''};
-  function save(){const p=new URLSearchParams();p.set('study',state.study);if(state.favoritesOnly)p.set('favorites','1');for(const key of ['predictionTopic','predictionQuery','predictionSort','meeting']){const value=new URLSearchParams(location.search).get(key);if(value)p.set(key,value);}for(const key of ['country','group','q','id','mode','years','view','frequency','health','comparison'])if(state[key]!==''&&state[key]!==null)p.set(key==='id'?'indicator':key,state[key]);history.replaceState(null,'',location.pathname+'?'+p);}
+  function save(){const p=new URLSearchParams();p.set('study',state.study);for(const key of ['predictionTopic','predictionQuery','predictionSort','meeting']){const value=new URLSearchParams(location.search).get(key);if(value)p.set(key,value);}for(const key of ['country','group','q','id','mode','years','view','frequency','health','comparison'])if(state[key]!==''&&state[key]!==null)p.set(key==='id'?'indicator':key,state[key]);history.replaceState(null,'',location.pathname+'?'+p);}
   function download(text,filename){const url=URL.createObjectURL(new Blob([text],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
   function showView(){document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===state.view)));$('countries').hidden=state.view!=='indicators';$('indicators').hidden=state.view!=='indicators'||!catalog;$('predictions').hidden=state.view!=='predictions';$('fedwatch').hidden=state.view!=='fedwatch';if(state.view!=='indicators'){$('load-state').textContent='';$('skeleton').hidden=true;$('data-warning').hidden=true;}save();if(state.view==='fedwatch')ForecastDesk.loadFedwatch();if(state.view==='predictions'){renderPredictions();loadPredictions();}}
   function graph(spec,data,mode=state.mode){
@@ -52,7 +51,7 @@
     const query=state.study==='workspace';$('indicators').classList.toggle('macro-overview-mode',!query);
     document.querySelectorAll('[data-study]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.study===state.study)));
     document.querySelector('.macro-overview').hidden=query;$('groups').hidden=!query;document.querySelector('.macro-search').hidden=!query;document.querySelector('.macro-list-panel').hidden=!query;
-    $('recent-releases').hidden=query;$('trend-presets').hidden=query;$('workspace-heading').textContent=query?'全部指标研究':'指标详情';$('download-latest').hidden=!query;$('favorites-only').checked=state.favoritesOnly;
+    $('recent-releases').hidden=query;$('trend-presets').hidden=query;$('workspace-heading').textContent=query?'全部指标研究':'指标详情';$('download-latest').hidden=!query;
   }
   function renderDetail(){
     const spec=catalog.series.find(s=>s.id===state.id);if(!spec){$('detail').innerHTML='<p class="portal-empty">没有匹配指标。请调整筛选条件。</p>';return;}
@@ -65,7 +64,7 @@
     if(unavailable||spec.kind==='rate'&&state.mode==='combo'||(spec.frequency==='annual'&&state.mode==='mom'))state.mode='value';
     if(!latest){$('detail').innerHTML='<h2 id="metric-title">'+esc(spec.name)+'</h2><p class="portal-note">待补齐 · '+esc(M.frequency[spec.frequency])+'</p><p>'+link(source.url,'查看官方来源 ↗')+'</p>';return;}
     const changes=unavailable?[]:spec.frequency==='annual'?['yoy']:['yoy','mom'];
-    $('detail').innerHTML='<div class="portal-panel-head board-panel-head"><div><p class="eyebrow">'+esc((M.groupOf(spec.id)?.label||spec.category)+' · '+M.frequency[spec.frequency])+'</p><h2 id="metric-title">'+esc(spec.name)+'</h2><span class="macro-state">'+esc(s)+'</span></div><div class="macro-detail-actions"><button id="favorite" class="portal-button" aria-pressed="'+favorites.has(spec.id)+'">'+(favorites.has(spec.id)?'已收藏':'收藏')+'</button><button id="download" class="portal-button">下载 CSV</button></div></div>'+
+    $('detail').innerHTML='<div class="portal-panel-head board-panel-head"><div><p class="eyebrow">'+esc((M.groupOf(spec.id)?.label||spec.category)+' · '+M.frequency[spec.frequency])+'</p><h2 id="metric-title">'+esc(spec.name)+'</h2><span class="macro-state">'+esc(s)+'</span></div><div class="macro-detail-actions"><button id="download" class="portal-button">下载 CSV</button></div></div>'+
       '<div class="macro-latest"><div><span>最新读数 · '+esc(latest.period)+'</span><b>'+compact(head.value)+'</b><small>'+esc(head.unit+(head.label?' · '+head.label:''))+'</small></div>'+changes.map(mode=>'<div><span>'+esc(M.changeLabel(spec,mode))+'</span><b>'+number(M.compare(spec,list,latest,mode))+'</b><small>'+esc(M.changeUnit(spec))+'</small></div>').join('')+'</div>'+
       '<p class="macro-source-line">'+link(latest.originalSourceUrl||latest.sourceUrl||data.sourceUrl||source.url,data.provider?.includes('Choice')?data.sourceOrganization+' · Choice':source.name)+' · '+esc(spec.adjustment)+'<br>发布日期：'+esc(latest.releaseDate||'来源未提供')+(M.finite(latest.officialYoy)?' · 官方同比 '+number(latest.officialYoy)+'%':'')+'</p>'+(data.error?'<p class="macro-state">更新失败，保留历史数据。</p>':'')+
       (data.coverage?'<p class="macro-coverage">'+esc(data.coverage.start+' — '+data.coverage.end+' · '+data.coverage.count+'期 · '+(data.coverage.missingPeriods.length?data.coverage.missingPeriods.length+'期缺失':'区间内无缺期'))+(data.coverage.historyShort?' · 历史覆盖不足':'')+(data.coverage.structuralPeriods.length?' · 合并发布月份不拆分':'')+'</p>':'')+
@@ -77,11 +76,10 @@
     $('comparison').value=state.comparison;$('comparison').onchange=e=>{state.comparison=e.target.value;renderDetail();save();};
     $('mode').value=state.mode;$('years').value=String(state.years);
     $('mode').onchange=e=>{state.mode=e.target.value;renderDetail();save();};$('years').onchange=e=>{state.years=+e.target.value;renderDetail();save();};
-    $('favorite').onclick=()=>{favorites.has(spec.id)?favorites.delete(spec.id):favorites.add(spec.id);try{localStorage.setItem('macro-favorites',JSON.stringify([...favorites]));}catch{}render();};
     $('download').onclick=()=>download(M.csv(spec,data,source),spec.id+'.csv');
     $('prev').onclick=()=>{page--;renderHistory(spec,data);};$('next').onclick=()=>{page++;renderHistory(spec,data);};renderHistory(spec,data);
   }
-  function selectMetric(id){if(!D.directory(catalog,snapshot,state).some(s=>s.id===id)){state.q='';state.group='';state.frequency='';state.health='';}if(state.favoritesOnly&&!favorites.has(id))state.favoritesOnly=false;if(state.id!==id)state.mode='combo';state.id=id;page=0;render();const rect=$('detail').getBoundingClientRect();if(rect.top<0||rect.top>innerHeight-160)$('detail').scrollIntoView({behavior:'auto',block:'start'});$('metric-title')?.setAttribute('tabindex','-1');$('metric-title')?.focus({preventScroll:true});}
+  function selectMetric(id){if(!D.directory(catalog,snapshot,state).some(s=>s.id===id)){state.q='';state.group='';state.frequency='';state.health='';}if(state.id!==id)state.mode='combo';state.id=id;page=0;render();const rect=$('detail').getBoundingClientRect();if(rect.top<0||rect.top>innerHeight-160)$('detail').scrollIntoView({behavior:'auto',block:'start'});$('metric-title')?.setAttribute('tabindex','-1');$('metric-title')?.focus({preventScroll:true});}
   function spark(spec,data){
     const points=D.headlineRows(spec,data).slice(-12),finite=points.filter(r=>M.finite(r.chartValue));if(!finite.length)return '';
     const lo=Math.min(...finite.map(r=>r.chartValue)),hi=Math.max(...finite.map(r=>r.chartValue)),first=M.dateOf(points[0].period),last=M.dateOf(points.at(-1).period);
@@ -100,7 +98,7 @@
   }
   function render(){
     if(!catalog)return;renderStudy();
-    const filtered=D.directory(catalog,snapshot,state).filter(s=>!state.favoritesOnly||favorites.has(s.id)),selected={available:filtered.filter(s=>M.rows(snapshot.series[s.id]).length),pending:filtered.filter(s=>!M.rows(snapshot.series[s.id]).length),references:[]},all=filtered;
+    const filtered=D.directory(catalog,snapshot,state),selected={available:filtered.filter(s=>M.rows(snapshot.series[s.id]).length),pending:filtered.filter(s=>!M.rows(snapshot.series[s.id]).length),references:[]},all=filtered;
     if(!all.some(s=>s.id===state.id)){state.id=all[0]?.id||'';page=0;}renderOverview();
     $('summary').textContent='筛选结果 '+filtered.length+' / '+D.core(catalog,state.country,snapshot).length+' 项';$('count').textContent=filtered.length+' 项';
     $('frequency').value=state.frequency;$('health').value=state.health;
@@ -108,7 +106,7 @@
     $('download-latest').disabled=!selected.available.length;$('download-latest').onclick=()=>download(D.latestCsv(filtered,snapshot,catalog.sources),'macro-'+state.country+'-latest.csv');
     const item=spec=>{const data=snapshot.series[spec.id]||{},latest=M.rows(data).at(-1),head=M.headline(spec,data);return '<button class="macro-item" data-id="'+esc(spec.id)+'" aria-pressed="'+(state.id===spec.id)+'"><strong>'+esc(spec.name)+'</strong><span class="macro-item-value">'+compact(head.value)+' <small>'+esc(head.unit+(head.label?' · '+head.label:''))+'</small></span><small>'+esc((latest?.period||'待补齐')+' · '+M.frequency[spec.frequency])+(M.status(spec,data)==='已收录'?'':' · '+esc(M.status(spec,data)))+'</small></button>';};
     const grouped=(list,draw)=>M.groups.map(g=>{const subset=list.filter(s=>M.groupOf(s.id)?.id===g.id);return subset.length?'<h3 class="macro-group-label">'+esc(g.label)+'</h3>'+subset.map(draw).join(''):'';}).join('');
-    $('metric-list').innerHTML=selected.available.length?grouped(selected.available,item):'<p class="portal-empty">'+(state.favoritesOnly?'当前筛选没有收藏指标。':state.q?'没有匹配的核心数据。':'月度、季度核心指标待补齐。')+'</p>';
+    $('metric-list').innerHTML=selected.available.length?grouped(selected.available,item):'<p class="portal-empty">'+(state.q?'没有匹配的核心数据。':'月度、季度核心指标待补齐。')+'</p>';
     $('reference-list').innerHTML=selected.references.map(item).join('');$('reference-count').textContent=selected.references.length+' 项';$('reference-details').hidden=!selected.references.length;
     $('reference-details').open=!selected.available.length&&!!selected.references.length||selected.references.some(s=>s.id===state.id);
     $('pending-list').innerHTML=grouped(selected.pending,spec=>'<button class="macro-pending-item" data-id="'+esc(spec.id)+'" aria-pressed="'+(state.id===spec.id)+'">'+esc(spec.name)+'</button>');$('pending-count').textContent=selected.pending.length+' 项';$('pending-details').hidden=!selected.pending.length;
@@ -159,13 +157,12 @@
   document.querySelectorAll('[data-country]').forEach(b=>b.onclick=()=>{state.country=b.dataset.country;state.id='';state.comparison='';page=0;render();});
   $('search').oninput=e=>{state.q=e.target.value;clearTimeout(searchTimer);searchTimer=setTimeout(()=>{page=0;render();},180);};
   $('frequency').onchange=e=>{state.frequency=e.target.value;page=0;render();};$('health').onchange=e=>{state.health=e.target.value;page=0;render();};
-  $('reset-filters').onclick=()=>{clearTimeout(searchTimer);state.q='';state.group='';state.frequency='';state.health='';state.favoritesOnly=false;page=0;render();};
+  $('reset-filters').onclick=()=>{clearTimeout(searchTimer);state.q='';state.group='';state.frequency='';state.health='';page=0;render();};
   $('kpi-grid').onclick=e=>{const b=e.target.closest('[data-kpi]');if(b){clearTimeout(searchTimer);selectMetric(b.dataset.kpi);}};
   addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{if(catalog&&state.view==='indicators')renderDetail();},150);});
   $('groups').onclick=e=>{const b=e.target.closest('[data-group]');if(b){state.group=b.dataset.group;state.id='';page=0;render();}};
   for(const id of ['metric-list','reference-list','pending-list'])$(id).onclick=e=>{const b=e.target.closest('[data-id]');if(b)selectMetric(b.dataset.id);};
   document.querySelectorAll('[data-study]').forEach(b=>b.onclick=()=>{state.study=b.dataset.study;render();});
-  $('favorites-only').onchange=e=>{state.favoritesOnly=e.target.checked;page=0;render();};
   $('prediction-search').oninput=()=>{predictionExpanded=false;renderPredictions();};$('prediction-category').onchange=()=>{predictionExpanded=false;renderPredictions();};$('retry').onclick=load;
   load();
 })();

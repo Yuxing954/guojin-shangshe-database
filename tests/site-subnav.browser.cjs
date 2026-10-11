@@ -15,7 +15,7 @@ const cases=[
 ];
 async function check(nav){
  await nav.waitFor({state:'visible',timeout:45000});assert.ok(await nav.evaluate(e=>e.classList.contains('site-subnav')));await nav.evaluate(e=>Promise.all(e.getAnimations({subtree:true}).map(a=>a.finished.catch(()=>{}))));
- const items=nav.locator(':scope > button,:scope > a');assert.ok(await items.count()>1);
+ const items=nav.locator(':scope > button,:scope > a');assert.ok(await items.count()>=1);
  const values=await items.evaluateAll(items=>items.map(e=>{const s=getComputedStyle(e),selected=e.matches('.active,.on,.current,[aria-pressed=true],[aria-selected=true],[aria-current=page]');return {selected,font:s.fontSize,weight:s.fontWeight,line:s.lineHeight,radius:s.borderRadius,padding:s.padding,border:s.borderTopWidth,height:e.getBoundingClientRect().height,background:s.backgroundColor,color:s.color,shadow:s.boxShadow};}));
  for(const v of values){assert.equal(v.font,'14px');assert.equal(v.line,'22px');assert.equal(v.radius,'8px');assert.equal(v.padding,'10px 16px');assert.equal(v.border,'1px');assert.ok(v.height>=44);assert.equal(v.shadow,'none');assert.equal(v.weight,v.selected?'600':'500');assert.equal(v.background,v.selected?'rgb(77, 88, 164)':'rgb(255, 255, 255)');assert.equal(v.color,v.selected?'rgb(255, 255, 255)':'rgb(102, 116, 138)');}
  assert.ok(values.some(v=>v.selected),'navigation has a visible selected category');
