@@ -17,7 +17,7 @@
     let browserStorage;try{browserStorage=localStorage;}catch(_){browserStorage={getItem(){throw Error('storage unavailable');},setItem(){throw Error('storage unavailable');}};}
     const workspace=U.createWorkspace(browserStorage,location.href);
     const escape=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-    const current=()=>({href:workspace.link(location.href),title:(document.querySelector('h1')?.textContent?.trim()||title)+(document.querySelector('#metric-title,#detail-title,#primary-title')?.textContent?.trim()?' · '+document.querySelector('#metric-title,#detail-title,#primary-title').textContent.trim():'')});
+    const current=()=>{const params=new URLSearchParams(location.search),record=params.get('record')||params.get('file'),heading=document.querySelector('dialog[open] h2')?.textContent?.trim(),metric=document.querySelector('#metric-title,#detail-title,#primary-title')?.textContent?.trim(),symbol=params.get('symbol');return {href:workspace.link(location.href),title:record||heading||((document.querySelector('h1')?.textContent?.trim()||title)+(symbol?' · '+symbol:metric?' · '+metric:''))};};
     const actions=document.createElement('div');actions.className='site-page-actions';actions.innerHTML='<button type="button" id="site-save-page" aria-pressed="false">☆ 收藏当前页</button><button type="button" id="site-open-workspace">我的工作台</button><span class="site-workspace-status" role="status"></span>';
     main.prepend(actions);
     const dialog=document.createElement('dialog');dialog.className='site-workspace-dialog';dialog.setAttribute('aria-labelledby','site-workspace-title');
@@ -33,7 +33,7 @@
       dialog.querySelector('#site-clear-recent').disabled=!state.recent.length;
       dialog.querySelector('.site-workspace-note').textContent=state.persistent?'仅保存在当前浏览器':'浏览器未允许保存，仅本次浏览有效';
       const home=document.querySelector('#workspace-home');
-      if(home){home.innerHTML=state.saved.length?list(state.saved.slice(0,4),false):'<div class="site-workspace-empty">收藏常用指标、公司和纪要，可从这里直接打开。</div>';}
+      if(home){home.innerHTML=state.saved.length?list(state.saved.slice(0,4),false):'<div class="site-workspace-empty">暂无收藏</div>';}
     }
     const remember=()=>{const item=current();if(item.href&&page!=='index.html'){workspace.visit(item.href,item.title);}refresh();};
     function open(){remember();dialog.showModal();dialog.querySelector('input').focus();}
