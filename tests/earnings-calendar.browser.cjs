@@ -19,7 +19,7 @@ async function main(){
  await page.fill('#search','601888');assert.equal(await page.locator('#rows tr').count(),1);
  await page.click('#rows .ec-next');await page.waitForSelector('dialog[open]');assert.match(await page.locator('#detailBody').innerText(),/2026-10-31/);assert.match(await page.locator('#detailBody').innerText(),/实际披露日\s*待公布/);
  await page.keyboard.press('Escape');assert.equal(await page.locator('#watchCompany,#watchOnly').count(),0);
- await page.click('#moreOptions summary');await page.selectOption('#market','港股');await page.click('#count');assert.equal(await page.locator('#rows tr').count(),10);assert.match(await page.locator('#rows').innerText(),/携程/);assert.equal(await page.locator('#reminders [data-record]').count(),0);
+ await page.fill('#search','');await page.reload();await page.waitForSelector('#content:not([hidden])');await page.click('#moreOptions summary');await page.selectOption('#market','港股');await page.click('#count');assert.equal(await page.locator('#rows tr').count(),10);assert.match(await page.locator('#rows').innerText(),/携程/);assert.equal(await page.locator('#reminders [data-record]').count(),0);
  await page.click('#moreOptions summary');await page.selectOption('#market','');await page.click('#count');
  await page.click('[data-view=month]');assert.equal(await page.locator('#grid .ec-day').count(),42);assert.match(await page.locator('#rangeTitle').innerText(),/2026 年 10 月/);
  await page.click('[data-date="2026-10-31"]');assert.equal(await page.locator('#dayEvents [data-record]').count(),4);await page.locator('#dayEvents [data-record]').first().click();assert.match(await page.locator('#detailBody').innerText(),/Choice/);await page.keyboard.press('Escape');
