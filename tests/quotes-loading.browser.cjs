@@ -1,4 +1,4 @@
-// Real browser regression: slow transport must not block cached quotes or square cells.
+// Real browser regression: slow transport must not block cached quotes or compact rectangles.
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
 const assert=require('node:assert/strict'),http=require('node:http'),fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'..'),fixture=require('./fixtures/tencent-charts-20261009.json').find(f=>f.label==='hk_native_day');
@@ -32,13 +32,13 @@ const server=http.createServer((req,res)=>{const p=path.resolve(root,'.'+new URL
   await page.waitForFunction(()=>document.getElementById('overview-price').textContent==='102.00');assert.doesNotMatch(await page.locator('#status').innerText(),/上次报价，正在更新/);
   for(const width of [1440,1920,1100,390]){
    await page.setViewportSize({width,height:1000});await page.waitForTimeout(200);
-   const company=await page.locator('.quotes-heat-tile').first().boundingBox();assert.ok(Math.abs(company.width-company.height)<2,JSON.stringify({width,company}));
-   await page.locator('[data-view=sector]').click();const sector=await page.locator('.quotes-sector-tile').first().boundingBox();assert.ok(Math.abs(sector.width-sector.height)<2,JSON.stringify({width,sector}));
+   const company=await page.locator('.quotes-heat-tile').first().boundingBox();assert.ok(company.width/company.height>=1.15&&company.width/company.height<=1.55,JSON.stringify({width,company}));
+   await page.locator('[data-view=sector]').click();const sector=await page.locator('.quotes-sector-tile').first().boundingBox();assert.ok(sector.width/sector.height>=1.15&&sector.width/sector.height<=1.6,JSON.stringify({width,sector}));
    await page.locator('.quotes-sector-tile').first().click();await page.locator('[data-view=sector]').click();assert.equal(await page.locator('#sector').inputValue(),'');assert.equal(await page.locator('.quotes-sector-tile').count(),7);
-   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));await page.locator('[data-view=heat]').click();
+   if(width>1100){const board=await page.locator('.quotes-board').boundingBox(),detail=await page.locator('#quote-detail').boundingBox();assert.ok(Math.abs(board.height-detail.height)<3,JSON.stringify({board,detail}));assert.ok(board.width/detail.width<1.35);}assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));await page.locator('[data-view=heat]').click();
   }
   // Corrupt cached identity must fall back to the real directory, never break initialization.
   slow=false;await page.evaluate(()=>{localStorage.setItem('sinolink.quotes.directory.v1',JSON.stringify({at:Date.now(),directory:{companies:[{code:'bad'}]}}));});await page.reload();await page.waitForSelector('.quotes-heat-tile');assert.equal(await page.locator('#rows tr').count(),74);
-  assert.deepEqual(errors,[]);console.log(JSON.stringify({result:'PASS',cachedVisibleMs,simulatedDirectoryDelayMs:2000,simulatedQuoteDelayMs:1800,squareWidths:[1440,1920,1100,390],errors}));
+  assert.deepEqual(errors,[]);console.log(JSON.stringify({result:'PASS',cachedVisibleMs,simulatedDirectoryDelayMs:2000,simulatedQuoteDelayMs:1800,balancedWidths:[1440,1920,1100,390],errors}));
  }finally{await browser.close();server.close();}
 })().catch(e=>{console.error(e);server.close();process.exitCode=1;});
