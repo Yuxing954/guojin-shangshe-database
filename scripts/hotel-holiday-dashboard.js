@@ -128,7 +128,7 @@
     sorted.forEach(function (row, index) {
       var current = metricValue(row, field, false), baseline = metricValue(row, field, true), cx = x(index);
       var day = row.day_label ? '第' + row.period_day + '天 · ' + row.day_label : '第' + row.period_day + '天';
-      var detail = day + '\\n本期 ' + row.current_date + '：' + fmt(current, field) + '\\n对标 ' + row.baseline_date + '：' + fmt(baseline, field);
+      var detail = [day, '本期 ' + row.current_date + '：' + fmt(current, field), '对标 ' + row.baseline_date + '：' + fmt(baseline, field)].join(String.fromCharCode(10));
       tooltipPoints.push({ x: cx, y: y(current == null ? baseline : current), text: detail });
       if (current != null) dots += '<circle cx="' + cx + '" cy="' + y(current) + '" r="3.5" fill="#5158aa"><title>' + esc(detail) + '</title></circle>';
       if (baseline != null) dots += '<circle cx="' + cx + '" cy="' + y(baseline) + '" r="3.5" fill="#aab0c9"><title>' + esc(detail) + '</title></circle>';
@@ -209,8 +209,8 @@
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(function () { renderChart(selectedRecords()); }, 120);
     });
-    render();
     $('holiday-dashboard').hidden = false;
+    render();
   }
   Promise.all([fetch('data/hotel_holiday_daily.csv', { cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); }), fetch('data/hotel-holiday-import-record.json', { cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })])
     .then(function (result) { init(M.csv(result[0]), result[1]); })
