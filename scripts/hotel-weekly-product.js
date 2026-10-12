@@ -1,6 +1,6 @@
 
 'use strict';
-const snapshot={rows:[],revision:'仓库周度数据'}, C=document.getElementById('product'),$=id=>document.getElementById(id), SEGS=['经济型','中档型','高档型','豪华型'], COLORS=['#165b9c','#5aa8df','#a64d19','#e6a04b'], TYPE={section:24,body:22,table:20,meta:18};
+const snapshot={rows:[],revision:'仓库周度数据'}, C=document.getElementById('product'),$=id=>document.getElementById(id), SEGS=['经济型','中档型','高档型','豪华型'], COLORS=['#165b9c','#5aa8df','#a64d19','#e6a04b'], TYPE={section:24,chart:22,body:22,table:20,meta:18};
 let ctx=C.getContext('2d',{alpha:false});
 let rows=snapshot.rows, revision=snapshot.revision, index=new Map(), weeks=[], logo=new Image(),ready=false,fontsReady=false;
 
@@ -40,13 +40,13 @@ function linesFor(value,width,size){const scale=ctx.getTransform().a;size=Math.r
 function section(title,y){text(title,36,y,30,'#173f60','bold');ctx.fillStyle='#d8e0e7';ctx.fillRect(36,y+17,696,1)}
 function trendPeriods(r){const available=weeks.filter(p=>p.period_id<=r.period_id);if($('window').value==='all')return available;const end=new Date(r.end_date+'T00:00:00Z'),months=Number($('window').value),day=end.getUTCDate();end.setUTCDate(1);end.setUTCMonth(end.getUTCMonth()-months);const last=new Date(Date.UTC(end.getUTCFullYear(),end.getUTCMonth()+1,0)).getUTCDate();end.setUTCDate(Math.min(day,last));const start=end.toISOString().slice(0,10);return available.filter(p=>p.end_date>start)}
 function heading(title,x,y){text(title,x,y,TYPE.section,'#104f87','bold')}
-function desktopSection(title,y){heading(title,44,y);ctx.fillStyle='#e5eaf0';ctx.fillRect(44,y+16,1112,1)}
+function desktopSection(title,y){heading(title,44,y);ctx.fillStyle='#c9d6e0';ctx.fillRect(44,y+16,1112,1.5)}
 function changeColor(n){return n===null||n===0?'#68737e':n>0?'#c23d3d':'#21816b'}
 function tablePeriods(r){return weeks.filter(p=>p.period_id<=r.period_id).slice(-8)}
 function marker(x,y,kind,color,size=3){ctx.fillStyle='#fff';ctx.strokeStyle=color;ctx.lineWidth=1.8;ctx.beginPath();if(kind==='square')ctx.rect(x-size,y-size,size*2,size*2);else if(kind==='diamond'){ctx.moveTo(x,y-size);ctx.lineTo(x+size,y);ctx.lineTo(x,y+size);ctx.lineTo(x-size,y);ctx.closePath()}else ctx.arc(x,y,size,0,Math.PI*2);ctx.fill();ctx.stroke()}
 function panelChart(x,y,title,series,periods,mixed=false){
  ctx.save();ctx.translate(x,y);ctx.lineCap="round";ctx.lineJoin="round";
- heading(title,0,0);text(mixed?'ADR / RevPAR：%　OCC：百分点（右轴）':series[0].field==='occupancy_rate'?'同比变化（百分点）':'同比增速（%）',0,42,TYPE.meta,'#68737e');
+ text(title,0,0,TYPE.chart,'#104f87','bold');text(mixed?'ADR / RevPAR：%　OCC：百分点（右轴）':series[0].field==='occupancy_rate'?'同比变化（百分点）':'同比增速（%）',0,42,TYPE.meta,'#68737e');
  series.forEach((v,i)=>{const lx=i*(536/series.length);ctx.strokeStyle=v.color;ctx.lineWidth=3;ctx.setLineDash([]);ctx.beginPath();ctx.moveTo(lx,68);ctx.lineTo(lx+20,68);ctx.stroke();marker(lx+10,68,v.marker,v.color,2.5);ctx.setLineDash([]);text(v.name,lx+26,74,TYPE.meta,'#455460')});
  const left=49,top=105,w=mixed?434:478,h=198,points=series.map(v=>periods.map(p=>delta(get(v.seg,p.period_id),v.field)));
  function range(v){v=v.filter(n=>n!==null);if(!v.length)return [-1,1];let lo=Math.min(0,...v),hi=Math.max(0,...v);if(lo===hi){lo--;hi++}const pad=(hi-lo)*.12;return [lo-pad,hi+pad]}
@@ -82,14 +82,15 @@ function render(options={}){
  desktopSection('分档次',489);
  const segWidth=104,metricWidth=100,gridLeft=44+segWidth+metricWidth,colWidth=(1112-segWidth-metricWidth)/recent.length;
  ctx.fillStyle='#104f87';ctx.fillRect(44,tableTop,1112,54);text('档次',57,tableTop+34,TYPE.table,'#fff','bold');text('指标',44+segWidth+12,tableTop+34,TYPE.table,'#fff','bold');
- recent.forEach((p,j)=>{ctx.textAlign='center';text(p.period_id.slice(2),gridLeft+(j+.5)*colWidth,tableTop+34,20,'#fff','bold')});ctx.textAlign='left';
+ recent.forEach((p,j)=>{ctx.textAlign='center';text(p.period_id.slice(2),gridLeft+(j+.5)*colWidth,tableTop+34,20,'#fff',j===recent.length-1?'bold':'normal')});ctx.textAlign='left';
  SEGS.forEach((seg,i)=>{const top=tableTop+54+i*3*rowHeight;ctx.fillStyle=i<2?(i%2?'#f3f8fc':'#eaf2fa'):(i%2?'#fcf6ef':'#f8eee3');ctx.fillRect(44,top,1112,3*rowHeight);text(seg.replace('型',''),57,top+rowHeight*1.5+7,TYPE.table,COLORS[i],'bold');
-  metrics.forEach(([k,name],m)=>{const y=top+m*rowHeight;text(name,44+segWidth+12,y+26,TYPE.table,'#455460');recent.forEach((p,j)=>{const d=delta(get(seg,p.period_id),k);ctx.textAlign='center';text(d===null?'—':(d>0?'+':'')+d.toFixed(d!==0&&Math.abs(d)<.05?2:1)+(k==='occupancy_rate'?'pct':'%'),gridLeft+(j+.5)*colWidth,y+26,TYPE.table,changeColor(d),'bold');ctx.textAlign='left'});if(m<2){ctx.fillStyle='#dde5eb';ctx.fillRect(44+segWidth,y+rowHeight-1,1112-segWidth,1)}});
+  metrics.forEach(([k,name],m)=>{const y=top+m*rowHeight;text(name,44+segWidth+12,y+26,TYPE.table,'#455460');recent.forEach((p,j)=>{const d=delta(get(seg,p.period_id),k);ctx.textAlign='center';text(d===null?'—':(d>0?'+':'')+d.toFixed(d!==0&&Math.abs(d)<.05?2:1)+(k==='occupancy_rate'?'pct':'%'),gridLeft+(j+.5)*colWidth,y+26,TYPE.table,changeColor(d),j===recent.length-1?'bold':'normal');ctx.textAlign='left'});if(m<2){ctx.fillStyle='#dde5eb';ctx.fillRect(44+segWidth,y+rowHeight-1,1112-segWidth,1)}});
   ctx.fillStyle='#cbd6df';ctx.fillRect(44,top+3*rowHeight-1,1112,1)
  });
- desktopSection('本周观察',commentTitle);commentLines.forEach((l,i)=>text(l,44,commentTop+i*35,TYPE.body,'#283b49'));
+ desktopSection('经营观察与趋势',commentTitle);commentLines.forEach((l,i)=>text(l,44,commentTop+i*35,TYPE.body,'#283b49'));
  const specs=[['全国酒店同比趋势',[{name:'RevPAR同比',seg:'全部',field:'revpar',color:'#165b9c',marker:'circle'},{name:'ADR同比',seg:'全部',field:'adr',color:'#66a9dc',marker:'square'},{name:'OCC（右轴）',seg:'全部',field:'occupancy_rate',color:'#7b8490',marker:'diamond'}],true],... [['revpar','RevPAR 同比 · 分档次'],['occupancy_rate','OCC 同比 · 分档次'],['adr','ADR 同比 · 分档次']].map(([k,t])=>[t,SEGS.map((seg,j)=>({name:seg,seg,field:k,color:COLORS[j],marker:j%2?'square':'circle'})),false])];
  specs.forEach(([title,series,mixed],i)=>panelChart(i%2?620:44,chartStart+Math.floor(i/2)*374,title,series,periods,mixed));
+ ctx.fillStyle='#d7e0e7';[344,728].forEach(offset=>ctx.fillRect(44,chartStart+offset,1112,1));
  let y=footerStart;text('来源：酒店之家、国金商社研究数据库',44,y,19,'#66717d');
  y+=40;ctx.fillStyle='#f5f4f5';ctx.fillRect(0,y-10,1200,height-y+10);ctx.fillStyle='#eee8cd';ctx.fillRect(0,y-10,1200,5);
  y+=16;legalLines.forEach((lines,i)=>{text(i?'免责声明':'特别声明',44,y+22,22,'#998951','bold');y+=42;lines.forEach(l=>{text(l,44,y,13,'#68727b');y+=18});y+=16});
