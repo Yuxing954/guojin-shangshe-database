@@ -1,13 +1,14 @@
 {
-  "syncedAt": "2026-10-12T14:31:07Z",
+  "syncedAt": "2026-10-12T16:02:20Z",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
-  "coverageFrom": "2026-10-12T20:24:55.861+0800",
-  "coverageTo": "2026-10-12T21:53:26.943+0800",
+  "coverageFrom": "2026-10-12T21:53:26.943+0800",
+  "coverageTo": "2026-10-12T23:46:12.687+0800",
   "oldestFetched": "2026-08-08T22:08:04.080+0800",
   "fetchedTopics": 30,
   "files": {
     "views": [
+      "data/research/updates/2026-10-13-0000-views.csv",
       "data/research/updates/2026-10-12-2032-views-001.csv",
       "data/research/updates/2026-10-12-1450-views.csv",
       "data/research/updates/2026-10-12-views-001.csv",
@@ -30,6 +31,7 @@
       "data/research/updates/2026-10-07-views-002.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-10-13-0000-all_views.csv",
       "data/research/updates/2026-10-12-1428-all_views.csv",
       "data/research/updates/2026-10-12-2032-all_views-001.csv",
       "data/research/updates/2026-10-12-classification-food-beverage-all_views.csv",
@@ -716,7 +718,11 @@
       "14425445858228152",
       "45548558154414148",
       "22258228124528111",
-      "55188521548182844"
+      "55188521548182844",
+      "14425444424544852",
+      "45548555545442858",
+      "82258222258111512",
+      "45548555548115118"
     ],
     "all_views": [
       "14425444585455852",
@@ -5447,19 +5453,36 @@
       "82811454511548882",
       "82811488254451252",
       "45548555818218418",
-      "22258222818441521"
+      "22258222818441521",
+      "82258222252824542",
+      "45548555545858558",
+      "82258222252582142",
+      "55521555525215114",
+      "14425444424228242",
+      "82258222252554142",
+      "22258222252554281",
+      "82258222252552542",
+      "22258222252558111",
+      "82258222252558242",
+      "45548555545448858",
+      "14425444424222212",
+      "22258222252555581",
+      "82258222258111442",
+      "55521555521888424",
+      "22258222258112151",
+      "14425444425884482"
     ]
   },
   "lastRun": {
-    "runId": "2026-10-12-1428",
-    "previousCoverageTo": "2026-10-12T20:24:55.861+0800",
-    "newSourceTopics": 7,
+    "runId": "2026-10-13-0000",
+    "previousCoverageTo": "2026-10-12T21:53:26.943+0800",
+    "newSourceTopics": 22,
     "added": {
-      "views": 0,
-      "all_views": 2
+      "views": 4,
+      "all_views": 17
     },
     "duplicates": 0,
-    "excluded": 5,
-    "record": "data/research/updates/2026-10-12-1428-record.json"
+    "excluded": 1,
+    "record": "data/research/updates/2026-10-13-0000-record.json"
   }
 }
