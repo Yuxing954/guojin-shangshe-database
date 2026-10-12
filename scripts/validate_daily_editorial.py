@@ -1,5 +1,6 @@
 import argparse, datetime as dt, json
 from pathlib import Path
+from daily_scope import is_ecommerce_topic
 from build_daily_report import stamp,ROOT,window_hours
 
 def validate(d):
@@ -11,6 +12,7 @@ def validate(d):
  count=len(d['headline'])+len(d.get('quiet',''))
  for group in ('focus','industries'):
   for r in d[group]:
+   assert not is_ecommerce_topic(r.get('title',r.get('sector',''))),'Ecommerce is excluded from daily brief'
    for field in (('title','summary') if group=='focus' else ('sector','view','changeType','change')):
     assert r.get(field),field;count+=len(r[field])
    assert r.get('sources'),'Missing evidence'

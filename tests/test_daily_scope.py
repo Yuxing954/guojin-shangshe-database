@@ -9,5 +9,10 @@ class ScopeTests(unittest.TestCase):
  def test_keeps_relevant_despite_broker_label(self):
   self.assertEqual(sector_for('【浙商食饮】餐饮与茶饮更新'),'餐饮茶饮')
   self.assertEqual(sector_for('【国海传媒】泡泡玛特周度跟踪'),'零售与消费出海')
+ def test_excludes_ecommerce_but_keeps_retail_channels(self):
+  for title in ['阿里巴巴业绩更新','京东零售利润修复','跨境电商周观点','安克创新经营更新','零售电商行业观点']:
+   self.assertIsNone(sector_for(title))
+  self.assertEqual(sector_for('泡泡玛特电商渠道增长'),'零售与消费出海')
+  self.assertEqual(sector_for('名创优品美国经营更新'),'零售与消费出海')
  def test_incidental_mention_is_not_sector(self):
   self.assertIsNone(sector_for('科技周报','酒店客户使用新款GPU'))
