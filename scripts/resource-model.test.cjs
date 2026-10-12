@@ -1,6 +1,6 @@
 const assert=require('node:assert/strict'),M=require('./resource-model.js');
 const items=[
-  {kind:'company',title:'华住集团-S',code:'1179.HK',date:'2026-09-08',href:'company-database.html?company=1179.HK'},
+  {kind:'company',title:'华住集团-S',code:'1179.HK',date:'2026-09-08',href:'quotes.html?symbol=1179.HK'},
   {kind:'company',title:'首旅酒店',code:'600258.SH'},
   {kind:'minutes',title:'20260930 华住集团交流纪要.docx',date:'2026-09-30',sector:'travel'},
   {kind:'minutes',title:'20260918 华住专家.docx',date:'',sortDate:'2026-09-18'},
@@ -18,4 +18,3 @@ assert.equal(M.safeHref('javascript:alert(1)'),'');
 assert.equal(M.safeHref('//evil.example'),'');
 assert.equal(M.safeHref('research.html?kind=minutes&asset=abc'),'research.html?kind=minutes&asset=abc');
 console.log('Resource search checks passed');
-

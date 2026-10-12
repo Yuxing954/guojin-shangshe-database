@@ -10,7 +10,7 @@ const cases=[
  ['consumption-macro.html?study=categories','[aria-label="宏观数据子栏目"]',null,'.retail-tabs'],
  ['macro.html?view=indicators&study=workspace','[aria-label="数据视图"]',null,'#countries'],
  ['company-database.html','[aria-label="公司板块"]',null,'.db-tabs'],
- ['research.html','#research-tabs'],
+ ['research.html','#research-tabs'],['quotes.html','#groups',null,'#views'],
  ['search.html','#resource-types'],['earnings.html','.ec-views']
 ];
 async function check(nav){
@@ -41,4 +41,3 @@ async function check(nav){
   assert.deepEqual(errors,[]);console.log('PASS desktop/mobile styles, selected states, keyboard focus and category switching');
  }finally{await browser.close();server.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;server.close();});
-

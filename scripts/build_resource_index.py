@@ -18,13 +18,12 @@ def read(path, default):
 def build(root=ROOT):
     root = Path(root)
     companies = read(root / 'data/coverage-companies.json', {'companies': []})['companies']
-    company_ids = {c['code']: c['id'] for c in read(root / 'data/companies/catalog.json', {'companies': []})['companies'] if c['id'] == 'hworld'}
     items = []
     for c in companies:
         code, name = c['code'], c['name']
         items.append({'id': code, 'kind': 'company', 'title': name, 'company': name,
                       'code': code, 'aliases': c.get('aliases', []), 'sector': c.get('sector', ''), 'date': c.get('addedAt', '')[:10],
-                      'href': 'company-database.html?' + urlencode({'company': code}) if code in company_ids else ''})
+                      'href': 'quotes.html?' + urlencode({'symbol': code})})
     library = read(root / 'data/research/library.json', {'records': []})
     for r in library['records']:
         s = r.get('storage', {})
@@ -81,4 +80,3 @@ if __name__ == '__main__':
     payload = build(args.root)
     changed = write_json_if_changed(args.root / 'data/research/resource-index.json', payload, volatile={'generatedAt'})
     print(json.dumps({'items': len(payload['items']), 'changed': changed}, ensure_ascii=False))
-
