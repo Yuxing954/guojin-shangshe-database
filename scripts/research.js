@@ -5,6 +5,7 @@
   let entries=[],filtered=[],kind=['digest','views','minutes','all_views'].includes(params.get('kind'))?params.get('kind'):params.get('asset')?'minutes':params.get('topic')||params.get('record')?'views':'digest',page=1,manifest,sync={},range='',articleRequest=0,library={},briefData={briefs:[]},recentMeta={dbs:[]},recentFull=null;
   const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
   let libraryScope=params.get('scope')==='all'||params.get('state')==='awaiting_file'?'all':'archived',libraryFailed=false;
+  function displaySource(value){return String(value||'').replace(/水[木母]调研纪要(?:\s*[-－·]?\s*2\.0)?/g,'').replace(/^[\s·|｜,，;；-]+|[\s·|｜,，;；-]+$/g,'').trim();}
   function entry(r,k,sourceKind=k){const published=r['原始发布时间']||r['时间']||r['日期']||'';return {kind:k,sourceKind,title:r['标题']||'',published,date:published.slice(0,10),content:r['内容']||r['摘要']||'',author:r['作者']||'',sector:r['覆盖板块']||'',company:r['相关标的']||'',url:D.link(r['原文链接']||r['下载链接']),file:r['文件名']||'',batch:r['更新批次']||'',truncated:!!r['正文已截断'],state:r['内容状态']||''};}
   function recentEntries(snapshot,requested){return (snapshot.dbs||[]).filter(db=>db.id!=='minutes'||requested==='minutes').flatMap(db=>db.rows.flatMap(r=>db.id==='views'?[entry(r,'views'),entry(r,'all_views','views')]:[entry(r,db.id)])).filter(r=>r.kind===requested);}
   function unique(records){
@@ -65,7 +66,7 @@
       const title=r.title;
       const download=r.library&&L.storageLink(r.library);
       const actions='<button class="research-read" data-entry="'+((page-1)*size+i)+'" aria-label="'+D.esc((r.library?.processing.textAvailable?'阅读摘要':type==='view'||type==='text'?'阅读':'查看资料')+'：'+r.title)+'">'+(r.library?.processing.textAvailable?'阅读摘要':type==='view'||type==='text'?'阅读':'查看资料')+' →</button>'+(download?'<a class="minute-download" href="'+D.esc(download)+'" target="_blank" rel="noopener noreferrer" aria-label="'+D.esc('下载原件：'+r.title)+'">下载原件 ↗</a>':'');
-      return '<article class="portal-research-item"><div class="research-item-main"><div class="portal-research-meta"><time datetime="'+D.esc(r.published)+'">'+D.esc(r.library?.dateStatus==='needs_review'?'会议日期待核对':kind==='minutes'?r.date||'日期待补充':'发布 '+M.publicationTime(r.published))+'</time>'+(kind!=='minutes'&&r.author?'<span>'+D.esc(r.author)+'</span>':'')+(tag?'<span class="portal-tag">'+D.esc(tag)+'</span>':'')+state+(r.library?.documentType?'<span>'+D.esc(r.library.documentType)+'</span>':'')+'</div><button class="portal-research-title" data-entry="'+((page-1)*size+i)+'">'+D.esc(title||'未命名内容')+'</button><p class="portal-research-summary">'+D.esc(summary)+'</p></div><div class="minute-actions">'+actions+'</div></article>';
+      return '<article class="portal-research-item"><div class="research-item-main"><div class="portal-research-meta"><time datetime="'+D.esc(r.published)+'">'+D.esc(r.library?.dateStatus==='needs_review'?'会议日期待核对':kind==='minutes'?r.date||'日期待补充':'发布 '+M.publicationTime(r.published))+'</time>'+(kind!=='minutes'&&displaySource(r.author)?'<span>'+D.esc(displaySource(r.author))+'</span>':'')+(tag?'<span class="portal-tag">'+D.esc(tag)+'</span>':'')+state+(r.library?.documentType?'<span>'+D.esc(r.library.documentType)+'</span>':'')+'</div><button class="portal-research-title" data-entry="'+((page-1)*size+i)+'">'+D.esc(title||'未命名内容')+'</button><p class="portal-research-summary">'+D.esc(summary)+'</p></div><div class="minute-actions">'+actions+'</div></article>';
     }).join('')||'<div class="portal-empty"><p>'+(invalid?'开始日期不能晚于结束日期':kind==='minutes'&&f.state?'当前范围暂无这种处理状态的资料':'没有找到匹配内容')+'</p><p class="portal-note">'+(kind==='minutes'?'更换筛选条件':'更换筛选条件')+'</p><button class="portal-button" data-reset>重置筛选</button></div>';
     $('results').innerHTML=kind==='minutes'&&filtered.length?'<table class="minute-table"><caption class="sr-only">纪要列表</caption><thead><tr><th scope="col">纪要名称</th><th scope="col">日期</th><th scope="col">板块</th><th scope="col">操作</th></tr></thead><tbody>'+resultRows+'</tbody></table>':resultRows;
     $('count').textContent=filtered.length+' '+(kind==='minutes'?'份资料':'条观点')+(f.q?' · “'+f.q.trim()+'”':'');
@@ -95,7 +96,7 @@
     $('article-body').textContent=attachment?'':r.content||'此条记录尚无正文，请查看原始来源。';
     $('article-files').hidden=!attachment;
     $('article-files').innerHTML=attachment?'<p class="portal-note">原始文件</p><ul>'+String(r.file||r.title).split('；').map(name=>'<li>'+D.esc(name)+'</li>').join('')+'</ul>':'';
-    $('article-note').textContent=attachment?(type==='audio'?'会议音频 · 未转写':'附件 · 未提取正文'):type==='text'?'纪要摘要':full?'完整正文 · '+(sync.sourceName||'研究文库'):r.truncated?'内容预览':'原文';
+    $('article-note').textContent=attachment?(type==='audio'?'会议音频 · 未转写':'附件 · 未提取正文'):type==='text'?'纪要摘要':full?['完整正文',displaySource(sync.sourceName)].filter(Boolean).join(' · '):r.truncated?'内容预览':'原文';
   }
   async function openMinute(r,request){
     $('article-kind').hidden=true;
@@ -126,7 +127,7 @@
     if(r.kind==='minutes')return openMinute(r,request);
     $('article-kind').hidden=false;$('article-note').hidden=false;
     $('article-title').textContent=r.title;$('article-kind').textContent=kind==='all_views'?(r.sourceKind==='views'?'板块观点':'市场观点'):M.labels[M.format(r)];
-    $('article-meta').textContent=[r.library?.dateStatus==='needs_review'?'会议日期待核对':'发布 '+M.publicationTime(r.published)+'（北京时间）',r.author,r.company].filter(Boolean).join(' · ');
+    $('article-meta').textContent=[r.library?.dateStatus==='needs_review'?'会议日期待核对':'发布 '+M.publicationTime(r.published)+'（北京时间）',displaySource(r.author),r.company].filter(Boolean).join(' · ');
     showBody(r,false);$('article-source').hidden=!r.url;$('article-source').href=r.url||'#';
     $('article-source').textContent=r.kind==='minutes'?(M.format(r)==='text'?'下载完整纪要 ↗':'进入来源查看附件 ↗'):'查看原始来源 ↗';
     $('article-dialog').showModal();$('article-dialog').scrollTop=0;saveUrl(r);
