@@ -100,9 +100,7 @@
       var b = row(state.region, seg, baseWeek());
       return hasValues(s, ['hotel_count_15plus','room_count_15plus']) ? '<tr><td>' + esc(seg) + '</td>' + metricCell(s, b, 'hotel_count_15plus') + metricCell(s, b, 'room_count_15plus') + '</tr>' : '';
     }).join('') + '</tbody>';
-    var all = M.sorted(series(state.region, '全部'));
-    function first(field) { var a = all.find(function (r) { return M.metric(r, field) != null; }); return a ? a.period_id : '暂无数据'; }
-    $('coverage-note').textContent = state.region + '历史：' + all[0].period_id + ' — ' + all[all.length - 1].period_id + '，共' + all.length + '周。房价始于' + first('adr') + '；入住率 / 每房收入始于' + first('occupancy_rate') + '；酒店数量 / 房量始于' + first('hotel_count') + '。';
+
   }
   function renderTrend() {
     var rows = calendar(), fields = ['revpar','occupancy_rate','adr'];

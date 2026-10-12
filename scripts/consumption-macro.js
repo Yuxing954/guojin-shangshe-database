@@ -134,7 +134,7 @@
     $('coverage').textContent=data.indicators.length+' 项消费指标';
     options('group',[['','全部类别'],...[...new Set(data.indicators.map(i=>i.group))].map(g=>[g,g])]);
     for(const [key,id] of [['group','group'],['frequency','frequency'],['status','connection']])if([...$(id).options].some(o=>o.value===params.get(key)))$(id).value=params.get(key);$('query').value=params.get('q')||'';selected=byId.has(params.get('indicator'))?params.get('indicator'):'retail';
-    $('coverage-notes').innerHTML=data.indicators.map(i=>{const c=M.scopeCoverage(data,i.id);return '<p>'+esc(i.name+'：'+(c?c.start+' — '+c.end+' · '+c.count+'期'+(c.missingPeriods.length?' · 区间缺期 '+c.missingPeriods.join('、'):'')+(c.structuralPeriods.length?' · 全年原披露另列 '+c.structuralPeriods.join('、'):'')+(c.valueMissing?' · 数值缺失 '+c.valueMissing+'条':'')+(c.yoyMissing&&!['%','点'].includes(i.unit)?' · 官方同比缺失 '+c.yoyMissing+'条':'')+(i.updateStatus==='error'?' · 更新失败，保留历史':''):(i.pendingReason||'暂无数据')))+(i.automaticSeries||[]).map(s=>'<small>'+esc((s.measure==='yoy'?'同比':'数值')+'补充：'+(s.coverage?.historyShort?'历史覆盖不足；':'')+(s.status==='error'?'更新失败；':'')+'检查 '+(s.checkedAt||'未提供').slice(0,10))+'</small>').join('')+'</p>';}).join('')+'<p>区间连续不代表已更新至最近应发布月份。1—2月不拆分；全年使用原披露或年末累计，不加总舍入月值；不由舍入金额重算同比或环比。Choice未返回发布日期时留空。</p>';
+
     $('content').hidden=false;$('status').hidden=true;
     for(const id of ['group','frequency','connection'])$(id).addEventListener('change',applyFilters);$('query').addEventListener('input',applyFilters);
     $('reset').addEventListener('click',()=>{for(const id of ['group','frequency','connection','query'])$(id).value='';applyFilters();});

@@ -98,6 +98,7 @@ console.log('Holiday data, missing-value handling, period separation and filters
   assert.ok(element('dh-chart-title').textContent.includes('购物件数'));
   element('dh-holiday').onchange({target:{value:'清明'}});element('dh-year').onchange({target:{value:'2025'}});
   assert.equal(element('dh-download').disabled,true);
-  assert.ok(element('dh-coverage').textContent.includes('2025年清明'));
+  assert.ok(d.coverageNotes.some(n=>n.includes('2025年清明')));
+  assert.ok(!element('dutyfree-holidays').innerHTML.includes('数据覆盖与待核验缺口'));
   console.log('Browser CSV download handler exports exact values and per-record workbook or web sources.');
 })().catch(error=>{console.error(error);process.exitCode=1;});
