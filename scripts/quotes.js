@@ -218,7 +218,7 @@
   try{
     const directory=await D.json('data/coverage-companies.json');
     companies=M.directory(directory);
-    $('sector').innerHTML='<option value="">全部行业</option>'+Object.keys(M.sectorGroups).map(g=>'<option>'+esc(g)+'</option>').join('');
+    $('sector').innerHTML='<option value="">全部行业</option>'+[...new Set(companies.map(c=>c.sector))].map(g=>'<option>'+esc(g)+'</option>').join('');
     const pref=stored(preferencesKey,{});$('columns').value=pref?.columns==='full'?'full':'compact';$('chart-window').value=['20','60','120'].includes(pref?.window)?pref.window:'60';$('show-ma').checked=pref?.ma!==false;$('live-sort').checked=pref?.liveSort===true;if(!params.has('view'))view='heat';text($('order-hint'),$('live-sort').checked?'随报价按当前排序重排':'报价实时更新 · 位置固定');
     for(const id of ['search','market','sector','sort']){const val=params.get(id==='search'?'q':id);if(val!=null)$(id).value=id==='sector'?M.sectorGroup(val.split(',')[0]):val;}if(!$('sort').value)$('sort').value='change-desc';
     $('content').hidden=false;render();
