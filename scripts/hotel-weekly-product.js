@@ -63,12 +63,12 @@ function render(options={}){
  const comment=$('comment').value.trim()||autoComment(r),commentLines=linesFor(comment,1112,TYPE.body),chartStart=commentTop+commentLines.length*35+42,footerStart=chartStart+770;
  const legalLines=LEGAL_TEXT.map(t=>linesFor(t,1112,13)),legalHeight=legalLines.reduce((n,a)=>n+a.length*18+58,0),height=footerStart+56+legalHeight+170;
  target.width=pixelWidth;target.height=Math.ceil(height*scale);ctx.setTransform(scale,0,0,scale,0,0);ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.fillStyle='#fff';ctx.fillRect(0,0,1200,height);
- if(ready)ctx.drawImage(logo,30,25,300,67);
- ctx.fillStyle='#447eaf';ctx.beginPath();ctx.roundRect(974,30,250,58,29);ctx.fill();text('国金商社',1006,71,34,'#fff','normal');
+ if(ready)ctx.drawImage(logo,44,25,300,67);
+ ctx.fillStyle='#447eaf';ctx.beginPath();ctx.roundRect(918,30,238,58,29);ctx.fill();ctx.textAlign='center';text('国金商社',1037,71,32,'#fff','normal');ctx.textAlign='left';
  ctx.fillStyle='#104f87';ctx.fillRect(0,120,1200,272);if(banner.complete&&banner.naturalWidth)ctx.drawImage(banner,0,120,1200,272);
- text('酒店行业周度跟踪',44,236,64,'#fff','bold');
- text(r.start_date.replaceAll('-','/')+' — '+r.end_date.replaceAll('-','/'),44,330,30,'#fff');
- ctx.textAlign='right';text(r.period_id,1156,330,30,'#fff');ctx.textAlign='left';
+ text('酒店行业周度跟踪',44,236,60,'#fff','bold');
+ text(r.period_id+'　'+r.start_date.replaceAll('-','/')+' — '+r.end_date.replaceAll('-','/'),44,330,28,'#fff');
+ 
  ctx.translate(0,160);
  const metrics=[['revpar','RevPAR','元'],['occupancy_rate','OCC','%'],['adr','ADR','元']];
  desktopSection('全国酒店',282);
