@@ -24,3 +24,6 @@ body.capture .stage{max-width:880px}body.site-page.capture > main{max-width:880p
 @media(max-width:760px){.product-workbench canvas{min-width:760px}.product-workbench .stage{overflow-x:auto}.product-workbench .toolbar{padding:14px}}
 @media print{.product-workbench .stage{max-width:880px}.product-workbench canvas{min-width:0}}
 
+
+/* Colors from the supplied Guojin travel report. */
+.product-workbench button{background:#104f87}.product-workbench button.secondary{background:#e8eff6;color:#104f87}.product-workbench .product-header h1{color:#104f87}
