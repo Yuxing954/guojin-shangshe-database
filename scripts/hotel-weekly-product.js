@@ -10,6 +10,7 @@ logo.onload=()=>{ready=true;render()};
 logo.src='scripts/assets/hotel-weekly/logo.png';
 const num=v=>v==null||String(v).trim()===''?null:Number.isFinite(Number(v))?Number(v):null;
 function val(r,k){const n=num(r?.[k]);return k==='occupancy_rate'&&n!==null&&(n<0||n>1)?null:n}
+function periodLabel(r){const shortDate=d=>Number(d.slice(5,7))+'/'+Number(d.slice(8,10)),label=p=>p.period_id.slice(2)+' ('+shortDate(p.start_date)+'-'+shortDate(p.end_date)+')',base=get('全部',previous(r));return label(r)+'　同比 '+(base?label(base):'暂无可比基期')}
 function previous(r){return `${Number(r.year)-1}W${String(Number(r.week)).padStart(2,'0')}`}
 function get(seg,w){return index.get(seg+'|'+w)}
 function delta(r,k){let a=val(r,k),b=val(get(r?.segment, r?previous(r):''),k);return a===null||b===null||k!=='occupancy_rate'&&b===0?null:k==='occupancy_rate'?(a-b)*100:(a/b-1)*100}
@@ -66,8 +67,8 @@ function render(options={}){
  if(ready)ctx.drawImage(logo,44,25,300,67);
  ctx.fillStyle='#447eaf';ctx.fillRect(920,34,236,50);ctx.textAlign='center';text('国金商社于健',1038,70,32,'#fff','normal');ctx.textAlign='left';
  ctx.fillStyle='#104f87';ctx.fillRect(0,120,1200,272);if(banner.complete&&banner.naturalWidth)ctx.drawImage(banner,0,120,1200,272);
- text('酒店行业周度跟踪',44,236,68,'#fff','bold');
- const shortDate=d=>Number(d.slice(5,7))+'/'+Number(d.slice(8,10));text(r.period_id.slice(2)+' ('+shortDate(r.start_date)+'-'+shortDate(r.end_date)+')',44,330,28,'#fff');
+ text('酒店行业周度跟踪',44,236,76,'#fff','bold');
+ const [currentPeriod,basePeriod]=periodLabel(r).split('　');text(currentPeriod,44,330,32,'#fff');const periodWidth=ctx.measureText(currentPeriod).width;text(basePeriod,44+periodWidth+28,330,24,'#dce8f2');
  
  ctx.translate(0,160);
  const metrics=[['revpar','RevPAR','元'],['occupancy_rate','OCC','%'],['adr','ADR','元']];
@@ -91,7 +92,7 @@ function render(options={}){
  let y=footerStart;text('来源：酒店之家、国金商社研究数据库',44,y,19,'#66717d');
  y+=40;ctx.fillStyle='#f5f4f5';ctx.fillRect(0,y-10,1200,height-y+10);ctx.fillStyle='#eee8cd';ctx.fillRect(0,y-10,1200,5);
  y+=16;legalLines.forEach((lines,i)=>{text(i?'免责声明':'特别声明',44,y+22,22,'#998951','bold');y+=42;lines.forEach(l=>{text(l,44,y,13,'#68727b');y+=18});y+=16});
- C.setAttribute('aria-label',`${r.period_id}全国酒店RevPAR${fmt(val(r,'revpar'))}元，OCC${fmt(val(r,'occupancy_rate')===null?null:val(r,'occupancy_rate')*100)}%，ADR${fmt(val(r,'adr'))}元。${comment}。特别声明：${LEGAL_TEXT[0]}。免责声明：${LEGAL_TEXT[1]}`);
+ C.setAttribute('aria-label',`${periodLabel(r)}。全国酒店RevPAR${fmt(val(r,'revpar'))}元，OCC${fmt(val(r,'occupancy_rate')===null?null:val(r,'occupancy_rate')*100)}%，ADR${fmt(val(r,'adr'))}元。${comment}。特别声明：${LEGAL_TEXT[0]}。免责声明：${LEGAL_TEXT[1]}`);
  $('status').textContent=`${r.period_id} · ${windowLabel} · ${periods.length}周 · 高清PNG 3600 × ${Math.ceil(height*3)}`;
 }
 
@@ -106,5 +107,5 @@ $('upload').onchange=async()=>{const file=$('upload').files[0];if(!file)return;t
 C.hidden=true;
 async function startProduct(){try{await Promise.all([document.fonts.load('400 26px "Microsoft YaHei"'),document.fonts.load('700 26px "Microsoft YaHei"')]);fontsReady=true;await reload()}catch(e){$('status').textContent='字体读取失败，请刷新重试：'+e.message}}
 let resizeFrame;const resizePreview=()=>{cancelAnimationFrame(resizeFrame);resizeFrame=requestAnimationFrame(()=>{const width=Math.round(C.getBoundingClientRect().width*(window.devicePixelRatio||1));if(width>0&&width!==C.width)render()})};new ResizeObserver(resizePreview).observe(document.querySelector('.stage'));window.addEventListener('resize',resizePreview);
-startProduct();window.hotelProduct={get rows(){return rows},delta,get,parseCSV,validate,render,trendPeriods,tablePeriods,get revision(){return revision}};
+startProduct();window.hotelProduct={get rows(){return rows},delta,get,parseCSV,validate,render,trendPeriods,tablePeriods,periodLabel,get revision(){return revision}};
 
