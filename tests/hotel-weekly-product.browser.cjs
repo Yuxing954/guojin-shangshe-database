@@ -17,7 +17,7 @@ const server=http.createServer((req,res)=>{const file=path.resolve(root,'.'+deco
   const stats=await page.evaluate(()=>{const p=window.hotelProduct,r=p.get('全部',document.querySelector('#week').value);return {revpar:Number(r.revpar),adr:Number(r.adr),occ:Number(r.occupancy_rate),occChange:p.delta(r,'occupancy_rate'),canvas:document.querySelector('canvas').height}});
   assert.ok(Math.abs(stats.revpar-stats.adr*stats.occ)<1e-7);
   for(const width of [1440,1024,768,390]){await page.setViewportSize({width,height:1000});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'overflow '+width)}
-  await page.setViewportSize({width:1440,height:1000});await page.getByText('编辑点评与署名',{exact:true}).click();
+  await page.setViewportSize({width:1440,height:1000});await page.getByText('编辑点评',{exact:true}).click();
   const options=await page.locator('#week option').evaluateAll(o=>o.map(x=>x.value));await page.selectOption('#week',options[1]);await page.fill('#comment','产品点评核验');await page.selectOption('#week',options[0]);assert.equal(await page.locator('#comment').inputValue(),'');await page.selectOption('#week',options[1]);assert.equal(await page.locator('#comment').inputValue(),'产品点评核验');await page.fill('#comment','');await page.selectOption('#week',options[0]);
   await page.fill('#comment','长点评逐行验证。\n'.repeat(18));assert.ok(await page.locator('canvas').evaluate(e=>e.height)>3140);await page.fill('#comment','');
   const early=options.at(-1);await page.selectOption('#week',early);assert.equal(await page.evaluate(()=>window.hotelProduct.delta(window.hotelProduct.get('全部',document.querySelector('#week').value),'adr')),null);await page.selectOption('#week',options[0]);
