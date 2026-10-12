@@ -1,13 +1,14 @@
 {
-  "syncedAt": "2026-10-12T18:43:42+08:00",
+  "syncedAt": "2026-10-12T20:32:47+08:00",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
   "coverageFrom": "2026-10-11T22:58:04.105+0800",
-  "coverageTo": "2026-10-12T18:38:27.080+0800",
+  "coverageTo": "2026-10-12T20:24:55.861+0800",
   "oldestFetched": "2026-08-08T22:08:04.080+0800",
   "fetchedTopics": 30,
   "files": {
     "views": [
+      "data/research/updates/2026-10-12-2032-views-001.csv",
       "data/research/updates/2026-10-12-1450-views.csv",
       "data/research/updates/2026-10-12-views-001.csv",
       "data/research/updates/2026-10-11-2202-views.csv",
@@ -29,6 +30,7 @@
       "data/research/updates/2026-10-07-views-002.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-10-12-2032-all_views-001.csv",
       "data/research/updates/2026-10-12-classification-food-beverage-all_views.csv",
       "data/research/updates/2026-10-12-1833-all_views-001.csv",
       "data/research/updates/2026-10-12-1734-all_views.csv",
@@ -104,19 +106,17 @@
     ]
   },
   "counts": {
-    "views": 202,
-    "all_views": 4632,
+    "views": 203,
+    "all_views": 4642,
     "minutes": 101
   },
   "latest": {
-    "views": "2026-10-12T14:28:30",
-    "all_views": "2026-10-12T18:31:39",
+    "views": "2026-10-12T20:24:55",
+    "all_views": "2026-10-12T20:23:55",
     "minutes": "2026-10-12T01:07:33"
   },
   "excluded": {
-    "图片贴（仅标题文字）": 1,
-    "内容过短（13字）": 2,
-    "活动通知/预告": 1
+    "附件标题": 1
   },
   "lastClassificationCorrection": {
     "date": "2026-10-12",
@@ -510,6 +510,7 @@
   },
   "assignedTopics": {
     "views": [
+      "22258222818282441",
       "22258222824428441",
       "45548555441144228",
       "55521551888551244",
@@ -717,6 +718,16 @@
       "55188521548182844"
     ],
     "all_views": [
+      "14425444585455852",
+      "45548555818584858",
+      "14425444585428852",
+      "22258222818254481",
+      "45548555818542448",
+      "82258222818258412",
+      "45548555818548458",
+      "22258222818542411",
+      "14425444585228542",
+      "82258222815445282",
       "55521555144521124",
       "22258222842858121",
       "14425444514524242",
