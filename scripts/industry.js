@@ -4,7 +4,6 @@
   function select(){
     let key=location.hash.slice(1);
     if(!labels[key])key='hotel';
-    document.getElementById('page-title').textContent=labels[key];
     document.title=labels[key]+'行业数据 · 国金商社';
     document.getElementById('sector-tabs').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.key===key)));
     document.getElementById('gold-content').hidden=key!=='gold';
