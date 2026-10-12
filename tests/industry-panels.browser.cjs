@@ -14,7 +14,7 @@ const base=process.env.SECTOR_BASE_URL||'http://127.0.0.1:18765';
    await page.setViewportSize({width:390,height:844});await page.waitForTimeout(500);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));assert.ok(await frame.locator('body').evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));await page.setViewportSize({width:1440,height:1000});
   }
   await page.click('[data-key=gold]');await page.locator('#dashboard').waitFor({state:'visible'});assert.equal(await page.locator('#industry-panels').isVisible(),false);
-  await page.goto(base+'/index.html');await page.waitForFunction(()=>document.querySelectorAll('.industry-card').length===4);assert.ok(!(await page.locator('#industry-list').innerText()).includes('出海'));
+  await page.goto(base+'/index.html');await page.waitForURL(/industry\.html/);assert.equal(await page.locator('#sector-tabs button').count(),4);assert.ok(!(await page.locator('#sector-tabs').innerText()).includes('出海'));
   await page.goto(base+'/overseas.html');await page.waitForURL(/industry.html#hotel/);await page.locator('#panel-hotel').waitFor({state:'visible'});
   assert.deepEqual(errors,[]);console.log('PASS: four direct boards, retired overseas/topic entries, charts, company data, CSV, mobile and iframe sizing');
  }finally{await browser.close();}

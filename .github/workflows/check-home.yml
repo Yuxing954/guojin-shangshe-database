@@ -22,6 +22,7 @@ on:
       - "quotes.html"
       - "scripts/quotes*"
       - "tests/quotes-workbench.browser.cjs"
+      - "tests/quotes-loading.browser.cjs"
       - "tests/fixtures/tencent-charts*"
       - "scripts/market-kline*"
       - "companies.html"
@@ -89,7 +90,7 @@ jobs:
           python-version: "3.12"
       - name: Install PDF reader and extraction test dependency
         run: python -m pip install -r requirements-research-media.txt
-      - name: Check homepage data and JavaScript
+      - name: Check research data and site JavaScript
         run: |
           python scripts/test_industry_snapshot.py
           python scripts/test_sector_data.py
@@ -117,7 +118,7 @@ jobs:
           node scripts/quotes-model.test.cjs
           node --check scripts/quotes-poller.js
           node --test scripts/quotes*.test.cjs
-          node --check scripts/home.js
+          node --check scripts/index-redirect.js
           node --check scripts/site-shell.js
           node --check scripts/industry.js
           node --check scripts/industry-model.js
@@ -143,7 +144,9 @@ jobs:
           npm install --no-save --package-lock=false playwright@1.62.1
           npx playwright install --with-deps chromium
       - name: Verify expanded coverage pool in browser
-        run: node tests/quotes-workbench.browser.cjs
+        run: |
+          node tests/quotes-workbench.browser.cjs
+          node tests/quotes-loading.browser.cjs
 
       - name: Verify minutes initial load, previews and download links
         run: node tests/research-minutes.browser.cjs

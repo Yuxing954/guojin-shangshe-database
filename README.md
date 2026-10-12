@@ -2,8 +2,7 @@
 
 消费零售、社会服务与电商行业的研究数据看板，覆盖酒店、免税、OTA、旅游、餐饮、教育、黄金珠宝、跨境电商、零售及人力资源等板块。
 
-- 研究首页：[index.html](./index.html)；展示研究重点、行业关键指标和最新观点纪要
-- 行业数据：[industry.html](./industry.html)；酒店、免税、黄金、餐饮四个板块直接展示完整数据，保留历史记录
+- 行业数据：[industry.html](./industry.html)；网站根地址默认进入此页，酒店、免税、黄金、餐饮四个板块直接展示完整数据并保留历史记录
 - 宏观数据：[macro.html](./macro.html)；中国17项、美国14项核心指标，以及消费专题和Polymarket重要预测，共用历史、来源、覆盖和CSV下载；[数据说明](./docs/macro-data.md) · [AI更新指引](./docs/macro-update-guide.md)
 - 消费专题：[consumption-macro.html](./consumption-macro.html)；归入宏观数据一级类目，精选8项消费指标，与核心页共用补充历史
 - 财报日历：[earnings.html](./earnings.html)；Choice MCP 财报日期；默认最近披露与未来安排，支持月 / 周、搜索行业、原文与历史；[数据口径与更新](./docs/earnings-workbench.md)
@@ -24,13 +23,13 @@
 | 研究 | 市场观点、纪要文库 | 券商观点、调研纪要 |
 | 行业与公司 | 行业景气、业绩与财务、标的池与估值 | 月度景气指标、定期报告表现及估值跟踪 |
 
-数据清单见 [data-manifest.json](./data-manifest.json)。首页入口与摘要更新方式见 [每日研究首页说明](./docs/daily-home.md)，全站交互与数据口径见 [网站设计说明](./docs/website-design.md)。
+数据清单见 [data-manifest.json](./data-manifest.json)。根地址会自动跳转到行业数据；全站交互与数据口径见 [网站设计说明](./docs/website-design.md)。
 
 ## 项目结构
 
 ```text
 .
-├── index.html          # 每日研究首页：3 条重点、4 张行业卡、5 条研究
+├── index.html          # 根地址兼容跳转至行业数据
 ├── industry.html       # 行业选择、指标趋势与历史记录
 ├── companies.html      # 公司目录、估值与财务详情
 ├── hotel-weekly-product.html # 酒店周度产品与PNG长图导出
@@ -81,6 +80,6 @@
 ## 行业板块
 
 - [酒店](./industry.html#hotel)、[免税](./industry.html#dutyfree)、[黄金](./industry.html#gold)、[餐饮](./industry.html#dining)在行业页直接展示完整数据，历史指标折叠保留。
-- 餐饮包括餐饮收入、成本环境、门店、同店、客单与经营利润。出海已从网站板块和数据目录移除，旧数据仅留作存档，不参与行业与首页构建。
+- 餐饮包括餐饮收入、成本环境、门店、同店、客单与经营利润。出海已从网站板块和数据目录移除，旧数据仅留作存档，不参与行业构建。
 - [数据范围、口径与增量更新](./docs/sector-construction.md)。离线更新默认只整理已核验数据；Choice MCP 查询和公开来源刷新分别显式导入。
 

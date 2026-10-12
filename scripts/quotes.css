@@ -149,3 +149,14 @@
  .quotes-board-head{flex-wrap:wrap}.quotes-view{gap:3px}.quotes-view button{font-size:12px;padding:7px 9px}
 }
 @media(max-width:1100px){.quotes-workspace[data-view=heat],.quotes-workspace[data-view=sector]{grid-template-columns:minmax(0,1fr)}}
+
+/* Square cells follow available width rather than a fixed viewport height. */
+.quotes-workspace[data-view=heat] .quotes-heatmap{width:100%;max-width:min(100%,var(--heat-max-width,720px));height:auto;max-height:none;margin:0 auto;grid-template-rows:none;grid-auto-rows:auto;gap:6px}
+.quotes-workspace[data-view=heat] .quotes-heat-tile{width:100%;aspect-ratio:1;box-sizing:border-box;min-height:0;padding:4px;gap:3px}
+.quotes-workspace[data-view=heat] .quotes-heat-tile strong{font-size:12px;line-height:16px;text-align:center;white-space:normal;overflow:hidden;max-width:100%;overflow-wrap:anywhere}
+.quotes-workspace[data-view=heat] .quotes-heat-tile span{font-size:15px;line-height:20px}
+.quotes-sector-heatmap{width:100%;max-width:min(100%,var(--sector-max-width,616px));margin:0 auto;grid-template-columns:repeat(var(--sector-columns,3),minmax(0,1fr));gap:8px}
+.quotes-sector-tile{aspect-ratio:1;box-sizing:border-box;min-height:0;padding:12px;align-items:center;text-align:center;gap:6px}
+.quotes-sector-tile strong{font-size:15px;line-height:22px;overflow-wrap:anywhere}
+.quotes-sector-percent{font-size:28px;line-height:34px}
+@media(max-width:760px){.quotes-sector-tile strong{font-size:13px;line-height:18px}.quotes-sector-percent{font-size:24px;line-height:30px}.quotes-sector-tile small{font-size:10px;line-height:16px}.quotes-sector-tile{padding:8px;gap:4px}.quotes-workspace[data-view=heat] .quotes-heat-tile small{display:none}}
