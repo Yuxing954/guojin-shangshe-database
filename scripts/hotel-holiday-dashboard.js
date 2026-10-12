@@ -5,7 +5,7 @@
     'spring-festival': '春节', qingming: '清明', 'mid-autumn': '中秋',
     'dragon-boat': '端午', 'national-day': '国庆'
   };
-  var state = { rows: [], record: null, segment: '全部', metric: 'revpar' };
+  var state = { rows: [], record: null, segment: '全部', metric: 'revpar', mode: 'combo' };
   function esc(value) { return String(value == null ? '' : value).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function num(value) { return M.num(value); }
   function average(rows, field) {
@@ -87,58 +87,39 @@
     return num(row['baseline_' + field]);
   }
   function renderChart(records) {
-    var field = state.metric;
-    var title = field === 'occupancy_rate' ? 'OCC' : field === 'adr' ? 'ADR' : 'RevPAR';
-    var unit = field === 'occupancy_rate' ? '%' : '元';
+    var field = state.metric, title = field === 'occupancy_rate' ? 'OCC' : field === 'adr' ? 'ADR' : 'RevPAR';
+    var unit = field === 'occupancy_rate' ? '%' : '元', changeUnit = field === 'occupancy_rate' ? '百分点' : '%';
     var sorted = records.slice().sort(function (a, b) { return Number(a.period_day) - Number(b.period_day); });
-    var values = sorted.flatMap(function (r) { return [metricValue(r, field, false), metricValue(r, field, true)]; }).filter(function (v) { return v != null; });
+    var changeLabel = sorted.length ? comparisonLabel(sorted[0]) : '同比';
+    if (field === 'occupancy_rate' && changeLabel === '同比') changeLabel = '同比变化';
+    $('trend-title').textContent = '假期每日 ' + title;
+    $('trend-note').textContent = state.segment === '全部' ? '全国整体' : state.segment;
+    $('trend-caption').textContent = (state.mode === 'combo' ? '本期数值（' + unit + '）＋' + changeLabel + '（' + changeUnit + '）' :
+      state.mode === 'change' ? changeLabel + '（' + changeUnit + '）' : '本期 / 对标期（' + unit + '）') + ' · 按假期日序对齐';
+    $('holiday-mode-switch').querySelectorAll('[data-mode]').forEach(function (button) {
+      var active = button.dataset.mode === state.mode;
+      button.classList.toggle('active', active); button.setAttribute('aria-pressed', String(active));
+      if (button.dataset.mode === 'combo') button.textContent = '数值＋' + changeLabel;
+      if (button.dataset.mode === 'change') button.textContent = '仅' + changeLabel;
+    });
+    var chartRows = sorted.map(function (r) {
+      var now = metricValue(r, field, false), base = metricValue(r, field, true);
+      var value = field === 'occupancy_rate' && now != null ? now * 100 : now;
+      var baseline = field === 'occupancy_rate' && base != null ? base * 100 : base;
+      var item = { x: Number(r.period_day), period: '第' + r.period_day + '天', value: value, change: difference(now, base, field) };
+      if (state.mode === 'value') item.values = [{ name: '本期', value: value }, { name: '对标期', value: baseline }];
+      return item;
+    });
     var host = $('holiday-chart');
-    $('trend-title').textContent = '假期每日' + title;
-    $('trend-note').textContent = state.segment === '*' ? '当前查看全部分组' : state.segment;
-    $('trend-caption').textContent = field === 'occupancy_rate' ? 'OCC（%） · 按假期日序对齐 · 对照日期按源表保留' : title + '（元） · 按假期日序对齐 · 对照日期按源表保留';
-    if (!sorted.length || !values.length) { host.innerHTML = '<div class="hd-empty">所选范围暂无有效数据</div>'; return; }
-
-    var width = Math.max(300, host.clientWidth || 900), height = 280, left = 72, right = 28, top = 24, bottom = 36;
-    var scale=SiteCharts.niceScale(values,{min:0,max:field==='occupancy_rate'?1:undefined}),min=scale.min,max=scale.max;
-    var x = function (i) { return left + (sorted.length <= 1 ? 0 : i * (width - left - right) / (sorted.length - 1)); };
-    var y = function (v) { return top + (max - v) * (height - top - bottom) / (max - min); };
-    var svg = '<svg viewBox="0 0 ' + width + ' ' + height + '" preserveAspectRatio="none" role="img" aria-label="' + esc(title + '，本期与对标期按假期日序比较') + '"><title>' + esc(title + '，本期与对标期按假期日序比较') + '</title>';
-    var axisDigits = field === 'occupancy_rate' ? 0 : 1;
-    for (var tick = 0; tick < scale.ticks.length; tick++) {
-      var value = scale.ticks[tick], yy = y(value);
-      var axisLabel = field === 'occupancy_rate' ? SiteCharts.axisFormat(value*100,scale.step*100)+'%' : scale.format(value);
-      svg += '<line x1="' + left + '" x2="' + (width - right) + '" y1="' + yy + '" y2="' + yy + '" stroke="#edf0f5"/>' +
-        '<text x="' + (left - 8) + '" y="' + (yy + 4) + '" text-anchor="end" font-size="11" fill="#8a94a5">' + axisLabel + '</text>';
-    }
-    var step = Math.max(1, Math.ceil(sorted.length / Math.max(2, Math.floor((width - left - right) / 100))));
-    sorted.forEach(function (row, index) {
-      if (index !== 0 && index !== sorted.length - 1 && index % step !== 0) return;
-      var label = row.day_label || '第' + row.period_day + '天';
-      svg += '<text x="' + x(index) + '" y="' + (height - 10) + '" text-anchor="middle" font-size="11" fill="#8a94a5">' + esc(label) + '</text>';
+    var result = SiteCharts.drawPaired(host, chartRows, { mode: state.mode, name: title, unit: unit,
+      changeUnit: changeUnit, changeLabel: changeLabel, precision: 1, gap: 1.5 });
+    result.points.forEach(function (point, index) {
+      var r = sorted[index], now = metricValue(r, field, false), base = metricValue(r, field, true);
+      point.text = ['第' + r.period_day + '天', '本期 ' + r.current_date + '：' + fmt(now, field),
+        '对标 ' + r.baseline_date + '：' + fmt(base, field),
+        changeLabel + ' ' + fmtChange(difference(now, base, field), field)].join(String.fromCharCode(10));
     });
-    function path(baseline) {
-      var d = '', started = false;
-      sorted.forEach(function (row, index) {
-        var value = metricValue(row, field, baseline);
-        if (value == null) { started = false; return; }
-        d += (started ? 'L' : 'M') + x(index).toFixed(1) + ',' + y(value).toFixed(1) + ' ';
-        started = true;
-      });
-      return '<path d="' + d + '" fill="none" stroke="' + (baseline ? '#71869b' : '#2167a0') + '" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"' + (baseline ? ' stroke-dasharray="5 5"' : '') + '/>';
-    }
-    var dots = '', tooltipPoints = [];
-    sorted.forEach(function (row, index) {
-      var current = metricValue(row, field, false), baseline = metricValue(row, field, true), cx = x(index);
-      var day = row.day_label ? '第' + row.period_day + '天 · ' + row.day_label : '第' + row.period_day + '天';
-      var change = difference(current, baseline, field);
-        var detail = [day, '本期 ' + row.current_date + '：' + fmt(current, field), '对标 ' + row.baseline_date + '：' + fmt(baseline, field), (field === 'occupancy_rate' ? '较对标期' : comparisonLabel(row)) + ' ' + fmtChange(change, field)].join(String.fromCharCode(10));
-      tooltipPoints.push({ x: cx, y: y(current == null ? baseline : current), text: detail });
-      if (current != null) dots += '<circle cx="' + cx + '" cy="' + y(current) + '" r="3.5" fill="white" stroke="#2167a0" stroke-width="1.8"><title>' + esc(detail) + '</title></circle>';
-      if (baseline != null) dots += '<circle cx="' + cx + '" cy="' + y(baseline) + '" r="3.5" fill="white" stroke="#71869b" stroke-width="1.8"><title>' + esc(detail) + '</title></circle>';
-    });
-    host.innerHTML = svg + path(true) + path(false) + dots + '</svg>' +
-      '<div class="hd-legend"><span><i style="background:#2167a0"></i>本期</span><span><i style="background:#71869b"></i>对标期（虚线）</span><span>单位：' + unit + '</span></div>';
-    if (window.SiteCharts) window.SiteCharts.attach(host, tooltipPoints);
+    SiteCharts.attach(host, result.points);
   }
   function renderSummary(rows) {
     var segments = Array.from(new Set(rows.map(function (r) { return r.segment; }))).sort(function (a, b) { return a === '全部' ? -1 : b === '全部' ? 1 : a.localeCompare(b, 'zh-CN'); });
@@ -199,7 +180,7 @@
     });
     var saved = new URLSearchParams(location.hash.slice(1));
     saved.set('view', 'holiday'); saved.set('holiday', holiday);
-    saved.set('holidayDimension', dimension); saved.set('holidaySegment', state.segment); saved.set('holidayMetric', state.metric);
+    saved.set('holidayDimension', dimension); saved.set('holidaySegment', state.segment); saved.set('holidayMetric', state.metric); saved.set('holidayMode', state.mode);
     history.replaceState(null, '', location.pathname + location.search + '#' + saved.toString());
   }
   function init(rows, record) {
@@ -217,12 +198,17 @@
     $('holiday-select').innerHTML = Object.keys(holidayNames).map(function (id) { return '<option value="' + id + '">' + holidayNames[id] + '</option>'; }).join('');
     $('holiday-select').value = holidayNames[savedHoliday.get('holiday')] ? savedHoliday.get('holiday') : 'national-day';
     state.segment = savedHoliday.get('holidaySegment') || '全部';
+    state.mode = ['combo', 'change', 'value'].includes(savedHoliday.get('holidayMode')) ? savedHoliday.get('holidayMode') : 'combo';
     state.metric = ['revpar', 'adr', 'occupancy_rate'].includes(savedHoliday.get('holidayMetric')) ? savedHoliday.get('holidayMetric') : 'revpar';
     $('dimension-select').value = savedHoliday.get('holidayDimension') === 'city_tier' ? 'city_tier' : 'hotel_tier';
     ['holiday-select', 'dimension-select'].forEach(function (id) { $(id).addEventListener('change', render); });
     $('holiday-segments').addEventListener('click', function (event) {
       var button = event.target.closest('[data-segment]');
       if (button) { state.segment = button.dataset.segment; render(); }
+    });
+    $('holiday-mode-switch').addEventListener('click', function (event) {
+      var button = event.target.closest('[data-mode]');
+      if (button) { state.mode = button.dataset.mode; render(); }
     });
     $('holiday-metric-switch').addEventListener('click', function (event) {
       var button = event.target.closest('[data-metric]');
