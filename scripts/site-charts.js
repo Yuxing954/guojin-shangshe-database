@@ -6,9 +6,42 @@ function groups(points){
   points.forEach((p,index)=>{if(!Number.isFinite(p.x)||!p.text)return;const key=p.x.toFixed(3);if(!map.has(key))map.set(key,{x:p.x,y:p.y,indices:[],texts:[]});const g=map.get(key);g.indices.push(index);if(!g.texts.includes(p.text))g.texts.push(p.text);});
   return [...map.values()].sort((a,b)=>a.x-b.x);
 }
+// Apply the shared design to the legacy SVG renderers as well as paired charts.
+function themeChart(svg){
+  if(svg.classList.contains('quotes-chart'))return; // Market candle colors encode price direction.
+  svg.dataset.siteChartTheme='blue-gold';
+  if(svg.classList.contains('site-paired-chart'))return;
+  const ink=['#2167a0','#ac863d','#668397','#538db5','#8d7852','#476777'];
+  const pale=['#abcfe8','#e6d4ab','#c3d0d9','#bfdcec','#d8ccb5','#acc2ce'];
+  const colorMap=new Map(),key=(node,prop)=>getComputedStyle(node)[prop];
+  const colorIndex=color=>{if(!colorMap.has(color))colorMap.set(color,colorMap.size%ink.length);return colorMap.get(color);};
+  const lines=[...svg.querySelectorAll('polyline,path')].filter(n=>!n.closest('defs')&&!n.classList.contains('site-axis-rule')&&key(n,'fill')==='none'&&key(n,'stroke')!=='none');
+  const dots=[...svg.querySelectorAll('circle')].filter(n=>!n.closest('defs'));
+  const bars=[...svg.querySelectorAll('rect')].filter(n=>!n.closest('defs')&&!n.classList.contains('combo-hit')&&key(n,'fill')!=='none'&&key(n,'fill')!=='transparent');
+  const originalLines=lines.map(n=>[n,colorIndex(key(n,'stroke'))]);
+  const originalDots=dots.map(n=>[n,colorIndex(key(n,'stroke')==='none'?key(n,'fill'):key(n,'stroke'))]);
+  const originalBars=bars.map(n=>[n,colorIndex(key(n,'fill'))]);
+  originalLines.forEach(([n,i])=>{n.style.setProperty('stroke',ink[i],'important');n.style.strokeWidth='2.6';n.style.strokeLinejoin='round';n.style.strokeLinecap='round';});
+  originalDots.forEach(([n,i])=>{n.style.setProperty('fill','white','important');n.style.setProperty('stroke',ink[i],'important');n.style.strokeWidth='1.8';});
+  originalBars.forEach(([n,i])=>{n.style.setProperty('fill',pale[i],'important');n.style.opacity='1';});
+  // Some legacy renderers draw only paths. Add hollow markers on their real vertices.
+  if(!dots.length){
+    const group=document.createElementNS(NS,'g');group.classList.add('site-legacy-markers');group.setAttribute('aria-hidden','true');
+    originalLines.forEach(([n,i])=>{
+      const values=n.tagName==='polyline'?(n.getAttribute('points')||'').match(/-?\d*\.?\d+(?:e[-+]?\d+)?/gi):null;
+      const pairs=values?Array.from({length:Math.floor(values.length/2)},(_,j)=>[+values[2*j],+values[2*j+1]]):[...(n.getAttribute('d')||'').matchAll(/[ML]\s*(-?\d*\.?\d+(?:e[-+]?\d+)?)[,\s]+(-?\d*\.?\d+(?:e[-+]?\d+)?)/gi)].map(m=>[+m[1],+m[2]]);
+      const stride=Math.max(1,Math.ceil(pairs.length/60));pairs.forEach(([x,y],j)=>{if(j%stride&&j!==pairs.length-1)return;const dot=document.createElementNS(NS,'circle');for(const [k,v]of Object.entries({cx:x,cy:y,r:3,fill:'white',stroke:ink[i],'stroke-width':1.8}))dot.setAttribute(k,v);group.append(dot);});
+    });if(group.childNodes.length)svg.append(group);
+  }
+  const host=svg.parentElement;
+  host.querySelectorAll('.hd-legend i,.gj-legend i,.legend i').forEach(n=>{const color=key(n,'backgroundColor');if(colorMap.has(color))n.style.backgroundColor=ink[colorMap.get(color)];});
+}
+
 function attach(container,points,options={}){
   const svg=container?.matches?.('svg')?container:container?.querySelector('svg');if(!svg)return;
   states.get(svg)?.destroy();
+  svg.querySelector('.site-legacy-markers')?.remove();
+  themeChart(svg);
   const data=groups(points);if(!data.length)return;
   const host=svg.parentElement,abort=new AbortController(),listen=(node,event,fn)=>node.addEventListener(event,fn,{signal:abort.signal});
   svg.classList.add('site-interactive-chart');svg.setAttribute('tabindex','0');svg.setAttribute('data-chart-ready','true');
@@ -66,6 +99,7 @@ document.addEventListener('pointerout',e=>{if(barTarget&&!barTarget.contains(e.r
 document.addEventListener('focusout',()=>{if(barTip&&!pinned)barTip.hidden=true;});
 document.addEventListener('click',e=>{const target=e.target.closest('[data-chart-tooltip]');if(target&&!target.closest('button,a')){if(pinned?.svg===target)pinned.hide(true);else barShow(target,true);}});
 function scan(){
+  document.querySelectorAll('main table,.site-main table').forEach(table=>table.classList.add('site-data-table'));
   queued=false;for(const [svg,state] of states)if(!svg.isConnected)state.destroy();
   document.querySelectorAll('.forecast-outcome,.fedwatch-range,.gj-probability-row,.dh-bar-row,.gj-stacked [title],.retail-row').forEach(node=>{
     if(!node.dataset.chartTooltip)node.dataset.chartTooltip=node.getAttribute('aria-label')||node.getAttribute('title')||node.textContent.trim();

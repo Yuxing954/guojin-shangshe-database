@@ -62,3 +62,16 @@ body.site-page :is(.board-table,.hd-table,.portal-table,.cm-table,.gj-table,.dh-
 body.site-page :is(.macro-chart,.morning-chart) svg polyline{stroke:#2167a0}
 body.site-page :is(.macro-chart,.morning-chart) svg circle{fill:white;stroke:#2167a0;stroke-width:1.8}
 
+/* Legacy plots and data tables share the same presentation contract. */
+body.site-page svg[data-site-chart-theme] text{fill:#253443!important;font-variant-numeric:tabular-nums}
+body.site-page svg[data-site-chart-theme] > line:not(.site-chart-guide):not(.morning-reference):not(.site-zero){stroke:#e2e8ef;stroke-width:1}
+body.site-page main table.site-data-table.site-data-table{border-collapse:collapse;font-variant-numeric:tabular-nums;color:#253443;font-size:13px}
+body.site-page main table.site-data-table.site-data-table th{background:#edf3f8!important;color:#354b60!important;font-weight:600!important;border-bottom:1px solid #b9c7d4!important;padding:11px 12px!important;line-height:1.6}
+body.site-page main table.site-data-table.site-data-table td{border-bottom:1px solid #e0e7ee!important;padding:11px 12px!important;line-height:1.6}
+body.site-page main table.site-data-table.site-data-table tbody tr:nth-child(even) td:not([style*="background"]){background:#f7fafc}
+body.site-page main table.site-data-table.site-data-table tbody tr:hover td:not([style*="background"]){background:#edf4fa}
+body.site-page :is(.fedwatch-range>div>i,.forecast-outcome-bar>i){background:#abcfe8!important}
+body.site-page .site-legacy-markers{pointer-events:none}
+body.site-page :is(.dh-bar,.forecast-probability-track i,.retail-track>span){background:#abcfe8!important}
+body.site-page :is(.dh-bar-track,.forecast-probability-track,.retail-track){background:#f0f4f7}
+
