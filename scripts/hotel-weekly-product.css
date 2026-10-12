@@ -12,3 +12,17 @@ body.capture .stage{max-width:1040px}body.site-page.capture > main{max-width:104
 @font-face{font-family:GJSourceHanSerif;src:url('assets/hotel-weekly/SourceHanSerifSC-Regular.woff2') format('woff2');font-style:normal;font-weight:400;font-display:block}
 @font-face{font-family:GJSourceHanSerif;src:url('assets/hotel-weekly/SourceHanSerifSC-Bold.woff2') format('woff2');font-style:normal;font-weight:700;font-display:block}
 .product-workbench .stage{background:#fff;border:1px solid #e1e6ea;box-shadow:0 8px 28px #173d5b0d}
+
+/* Compact editorial report: one shared width and one type family. */
+body{background:#f3f4f5}
+.product-workbench{font-family:"GJSourceHanSerif",serif;font-size:14px}
+.product-workbench .stage,.product-workbench .toolbar,.product-workbench .product-header{max-width:880px}
+.product-workbench .toolbar{border:1px solid #e2e5e8;box-shadow:none;border-radius:6px;padding:18px 20px}
+.product-workbench .product-header h1{font-family:"GJSourceHanSerif",serif;font-size:26px;font-weight:700;letter-spacing:0}
+.product-workbench .row{gap:16px}
+.product-workbench label,.product-workbench summary{font-size:14px}
+.product-workbench .stage{border:0;box-shadow:0 3px 20px #173d5b0a}
+body.capture .stage{max-width:880px}body.site-page.capture > main{max-width:880px!important}
+@media(max-width:760px){.product-workbench canvas{min-width:760px}.product-workbench .stage{overflow-x:auto}.product-workbench .toolbar{padding:14px}}
+@media print{.product-workbench .stage{max-width:880px}.product-workbench canvas{min-width:0}}
+
