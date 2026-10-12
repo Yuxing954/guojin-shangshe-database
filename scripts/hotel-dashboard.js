@@ -298,7 +298,11 @@
     document.querySelectorAll('.hd-tab[data-view]').forEach(function (b) { b.onclick = function () { switchView(b.dataset.view); }; });
     var holidayTab = $('holiday-dashboard-tab');
     if (holidayTab) holidayTab.addEventListener('click', function (event) {
-      event.preventDefault(); saveState(); location.href = 'hotel-holiday-dashboard.html' + location.hash;
+      event.preventDefault(); saveState();
+      var target = new URL('hotel-holiday-dashboard.html', location.href);
+      if (new URLSearchParams(location.search).get('embed') === '1') target.searchParams.set('embed', '1');
+      var saved = new URLSearchParams(location.hash.slice(1)); saved.set('view', 'holiday');
+      target.hash = saved.toString(); location.href = target.href;
     });
     $('week-select').onchange = function () { followLatest = this.value === 'latest'; state.week = followLatest ? latestWeek : this.value; state.base = 'auto'; compareOptions(); refresh(); };
     $('compare-select').onchange = function () { state.base = this.value; refresh(); };
