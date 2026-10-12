@@ -1,9 +1,9 @@
 {
-  "syncedAt": "2026-10-12T20:32:47+08:00",
+  "syncedAt": "2026-10-12T14:31:07Z",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
-  "coverageFrom": "2026-10-11T22:58:04.105+0800",
-  "coverageTo": "2026-10-12T20:24:55.861+0800",
+  "coverageFrom": "2026-10-12T20:24:55.861+0800",
+  "coverageTo": "2026-10-12T21:53:26.943+0800",
   "oldestFetched": "2026-08-08T22:08:04.080+0800",
   "fetchedTopics": 30,
   "files": {
@@ -30,6 +30,7 @@
       "data/research/updates/2026-10-07-views-002.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-10-12-1428-all_views.csv",
       "data/research/updates/2026-10-12-2032-all_views-001.csv",
       "data/research/updates/2026-10-12-classification-food-beverage-all_views.csv",
       "data/research/updates/2026-10-12-1833-all_views-001.csv",
@@ -5444,32 +5445,21 @@
       "82811285814822842",
       "82811445825815822",
       "82811454511548882",
-      "82811488254451252"
+      "82811488254451252",
+      "45548555818218418",
+      "22258222818441521"
     ]
   },
   "lastRun": {
-    "readTopics": 30,
-    "pageCount": 1,
-    "pageFrom": "2026-10-12T13:17:03.721+0800",
-    "pageTo": "2026-10-12T18:38:27.080+0800",
-    "overlapCutoff": "2026-10-12T17:31:23.816+0800",
-    "topicsAfterCutoff": 5,
-    "detailsFetched": 3,
-    "commercialViewsAdded": 0,
-    "marketViewsAdded": 1,
-    "minutesIndexed": 0,
-    "attachmentsIndexed": 0,
-    "excluded": {
-      "image_only_market_summary": 3,
-      "event_announcement": 1
+    "runId": "2026-10-12-1428",
+    "previousCoverageTo": "2026-10-12T20:24:55.861+0800",
+    "newSourceTopics": 7,
+    "added": {
+      "views": 0,
+      "all_views": 2
     },
-    "latestSourceTime": "2026-10-12T18:38:27.080+0800",
-    "latestIndexedContentTime": "2026-10-12T18:31:39.913+0800",
-    "classificationCorrection": {
-      "foodBeverageTopicsMoved": 375,
-      "newMarketRows": 369,
-      "alreadyPresentInMarket": 6,
-      "restoredRestaurantServiceTopic": 1
-    }
+    "duplicates": 0,
+    "excluded": 5,
+    "record": "data/research/updates/2026-10-12-1428-record.json"
   }
 }
