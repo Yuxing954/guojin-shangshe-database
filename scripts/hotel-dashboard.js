@@ -8,7 +8,7 @@
   var BANDS = ['15-29间', '30-69间', '70-149间', '150间及以上'];
   var weekly = [], seriesCache = new Map();
   var COLORS = ['#2167a0', '#368575', '#b9854c', '#b85460', '#7a68a6', '#5485a5'];
-  var META = { revpar: { label: '每间可售房收入', abbr: 'RevPAR', unit: '元' }, occupancy_rate: { label: '入住率', abbr: 'OCC', unit: '%' }, adr: { label: '平均房价', abbr: 'ADR', unit: '元' } };
+  var META = { revpar: { label: 'RevPAR', abbr: 'RevPAR', unit: '元' }, occupancy_rate: { label: 'OCC', abbr: 'OCC', unit: '%' }, adr: { label: 'ADR', abbr: 'ADR', unit: '元' } };
   function $(id) { return document.getElementById(id); }
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function fmt(v, digits) { return M.num(v) == null ? '—' : Number(v).toLocaleString('zh-CN', { minimumFractionDigits: digits, maximumFractionDigits: digits }); }
@@ -89,7 +89,7 @@
       var unit = isChange ? (field === 'occupancy_rate' ? '百分点' : '%') : meta.unit;
       var cls = isChange && main != null ? (main > 0 ? ' hd-positive' : main < 0 ? ' hd-negative' : ' hd-neutral') : '';
       if (v == null) return '';
-      return '<article class="board-stat hd-stat' + (i === 0 ? ' primary' : '') + '"><div class="hd-stat-label">' + meta.label + ' <span>' + meta.abbr + '</span>' + (isChange ? ' · ' + labelChange() : ' · 本周') + '</div><div class="hd-stat-value' + cls + '">' + (isChange && main > 0 ? '+' : '') + fmt(main, 1) + '<small>' + unit + '</small></div><div class="hd-stat-change">' + (isChange ? '<span>本周</span>' + fmt(v, 1) + ' ' + meta.unit : change == null ? '基期缺失 · 暂无同比' : '<span>' + labelChange() + '</span>' + delta(change, field)) + '</div></article>';
+      return '<article class="board-stat hd-stat' + (i === 0 ? ' primary' : '') + '"><div class="hd-stat-label">' + meta.label + (isChange ? ' · ' + labelChange() : ' · 本周') + '</div><div class="hd-stat-value' + cls + '">' + (isChange && main > 0 ? '+' : '') + fmt(main, 1) + '<small>' + unit + '</small></div><div class="hd-stat-change">' + (isChange ? '<span>本周</span>' + fmt(v, 1) + ' ' + meta.unit : change == null ? '基期缺失 · 暂无同比' : '<span>' + labelChange() + '</span>' + delta(change, field)) + '</div></article>';
     }).join('');
     renderTrend(); renderSegments();
     var hasScale = hasValues(r, ['hotel_count_15plus','room_count_15plus']);
@@ -119,8 +119,8 @@
       return { x: r.period_id, y: display(row(state.region, '全部', M.priorPeriod(r)), field) };
     }) });
     var unit = isChange ? (field === 'occupancy_rate' ? '百分点' : '%') : meta.unit;
-    $('trend-caption').textContent = meta.label + '（' + meta.abbr + '） · ' + unit ;
-    $('chart-mode-note').textContent = isChange ? '同周同比 · 入住率用百分点' : state.mode === 'change' ? '基期缺失 · 显示绝对值' : '绝对值 · 对照去年同周';
+    $('trend-caption').textContent = meta.label + ' · ' + unit ;
+    $('chart-mode-note').textContent = isChange ? '同周同比 · OCC用百分点' : state.mode === 'change' ? '基期缺失 · 显示绝对值' : '绝对值 · 对照去年同周';
     lineChart('main-chart', lines, { unit: unit, occupancy: !isChange && field === 'occupancy_rate', zero: isChange });
     var plotted = M.chartSeries(lines), plottedRows = plotted.length ? plotted[0].pts : [];
     $('history-note').textContent = plottedRows.length ? '有效区间 ' + plottedRows[0].x + ' — ' + plottedRows[plottedRows.length - 1].x : '所选范围暂无数据。';
@@ -138,7 +138,7 @@
     return '<th>' + title + (state.mode === 'change' ? labelChange() + '（' + changeUnit + '）<br>本周（' + valueUnit(field) + '）' : '（' + valueUnit(field) + '）<br>' + labelChange() + '（' + changeUnit + '）') + '</th>';
   }
   function operatingFields(rows) { return ['revpar','occupancy_rate','adr'].filter(function (f) { return rows.some(function (r) { return M.metric(r, f) != null; }); }); }
-  function operatingHead(first, fields) { var names = {revpar:'每房收入',occupancy_rate:'入住率',adr:'房价'}; return '<thead><tr><th>' + first + '</th>' + fields.map(function (f) { return metricHead(f,names[f]); }).join('') + '</tr></thead>'; }
+  function operatingHead(first, fields) { var names = {revpar:'RevPAR',occupancy_rate:'OCC',adr:'ADR'}; return '<thead><tr><th>' + first + '</th>' + fields.map(function (f) { return metricHead(f,names[f]); }).join('') + '</tr></thead>'; }
   function renderSegments() {
     var fields = operatingFields(SEGS.map(function (seg) { return row(state.region, seg, state.week); }));
     $('segment-table').innerHTML = operatingHead('档次', fields) + '<tbody>' + SEGS.map(function (seg) {
@@ -166,8 +166,8 @@
     var national = row('全国', '全部', state.week), nationalBase = row('全国', '全部', baseWeek()), nationalChange = M.change(national, nationalBase, 'revpar');
     var comparable = all.filter(function (c) { return c.revChange != null; });
     var higher = nationalChange == null ? null : comparable.filter(function (c) { return c.revChange > nationalChange; }).length;
-    $('city-summary').innerHTML = (nationalChange != null ? '<span>全国每房收入' + labelChange() + ' <b>' + delta(nationalChange, 'revpar') + '</b></span>' : '') + '<span>本周有数据 <b>' + all.filter(function(c){return hasValues(c.row,['revpar','occupancy_rate','adr']);}).length + ' 城</b></span>' + (comparable.length ? '<span>每房收入可比 <b>' + comparable.length + ' 城</b></span>' : '<span>每房收入基期缺失</span>') + (higher != null ? '<span>增幅高于全国 <b>' + higher + ' 城</b></span>' : '');
-    [['revChange','每房收入'],['occChange','入住率'],['adrChange','房价']].forEach(function (o) { $('city-sort').querySelector('[value="' + o[0] + '"]').textContent = o[1] + labelChange() + ' · 从高到低'; });
+    $('city-summary').innerHTML = (nationalChange != null ? '<span>全国RevPAR' + labelChange() + ' <b>' + delta(nationalChange, 'revpar') + '</b></span>' : '') + '<span>本周有数据 <b>' + all.filter(function(c){return hasValues(c.row,['revpar','occupancy_rate','adr']);}).length + ' 城</b></span>' + (comparable.length ? '<span>RevPAR可比 <b>' + comparable.length + ' 城</b></span>' : '<span>RevPAR基期缺失</span>') + (higher != null ? '<span>增幅高于全国 <b>' + higher + ' 城</b></span>' : '');
+    [['revChange','RevPAR'],['occChange','OCC'],['adrChange','ADR']].forEach(function (o) { $('city-sort').querySelector('[value="' + o[0] + '"]').textContent = o[1] + labelChange() + ' · 从高到低'; });
     all = all.filter(function (c) { return hasValues(c.row,['revpar','occupancy_rate','adr']); });
     Array.from($('city-sort').options).forEach(function (o) { o.disabled = !all.some(function (c) { return c[o.value] != null; }); });
     if ($('city-sort').selectedOptions[0].disabled) { var validSort = Array.from($('city-sort').options).find(function (o) { return !o.disabled; }); if(validSort) $('city-sort').value = validSort.value; }
@@ -193,7 +193,7 @@
     cardAvailable('group-card',validGroups.length>0,'所选周暂无集团数据 · 集团周度记录自2024年起');
     if (!validGroups.length) { blankTable('group-table', '所选周暂无集团记录', 6); return; }
     else {
-      $('group-table').innerHTML = '<thead><tr><th>集团</th>' + metricHead('stay_adr', '房价') + '<th>酒店数（家）</th><th>房量（间）</th><th>价格指数</th><th>热度指数</th></tr></thead><tbody>' + validGroups.map(function (g) {
+      $('group-table').innerHTML = '<thead><tr><th>集团</th>' + metricHead('stay_adr', 'ADR') + '<th>酒店数（家）</th><th>房量（间）</th><th>价格指数</th><th>热度指数</th></tr></thead><tbody>' + validGroups.map(function (g) {
         var r = ix.group.get(g + '|全国|' + state.week), b = ix.group.get(g + '|全国|' + baseWeek());
         return '<tr><td>' + esc(g) + '</td>' + metricCell(r, b, 'stay_adr') + '<td>' + fmt(M.metric(r, 'hotel_count'), 0) + '</td><td>' + fmt(M.metric(r, 'room_count'), 0) + '</td><td>' + fmt(M.metric(r, 'stay_price_index'), 2) + '</td><td>' + fmt(M.metric(r, 'stay_heat_index'), 2) + '</td></tr>';
       }).join('') + '</tbody>';
@@ -203,7 +203,7 @@
   function drawGroups() {
     if (!data.group) return;
     var field = $('group-metric').value, isChange = state.mode === 'change' && calendar().some(function (p) { return GROUPS.some(function (g) { return M.change(ix.group.get(g+'|全国|'+p.period_id),ix.group.get(g+'|全国|'+M.priorPeriod(p)),field) != null; }); });
-    var unit = isChange ? '%' : valueUnit(field), title = field === 'stay_adr' ? '入住日期房价' : field === 'hotel_count' ? '酒店数量' : '房间数量';
+    var unit = isChange ? '%' : valueUnit(field), title = field === 'stay_adr' ? 'ADR（入住日期）' : field === 'hotel_count' ? '酒店数量' : '房间数量';
     $('group-chart-caption').textContent = title + ' · ' + (isChange ? '同周同比（%）' : '绝对值（' + unit + '）' + (state.mode === 'change' ? ' · 基期缺失' : ''));
     lineChart('group-chart', GROUPS.map(function (g, i) {
       var full = M.sorted(data.group.filter(function (r) { return r.group === g && r.region === '全国'; }));
