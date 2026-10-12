@@ -295,7 +295,11 @@
     $('week-select').value = followLatest ? 'latest' : state.week; $('region-select').innerHTML = regions.map(function (r) { return option(r, r); }).join(''); $('history-start').value = state.window;
     compareOptions(); $('dashboard').hidden = false;
     if (state.mode === 'value') $('city-sort').value = 'revpar';
-    document.querySelectorAll('.hd-tab').forEach(function (b) { b.onclick = function () { switchView(b.dataset.view); }; });
+    document.querySelectorAll('.hd-tab[data-view]').forEach(function (b) { b.onclick = function () { switchView(b.dataset.view); }; });
+    var holidayTab = $('holiday-dashboard-tab');
+    if (holidayTab) holidayTab.addEventListener('click', function (event) {
+      event.preventDefault(); saveState(); location.href = 'hotel-holiday-dashboard.html' + location.hash;
+    });
     $('week-select').onchange = function () { followLatest = this.value === 'latest'; state.week = followLatest ? latestWeek : this.value; state.base = 'auto'; compareOptions(); refresh(); };
     $('compare-select').onchange = function () { state.base = this.value; refresh(); };
     $('region-select').onchange = function () { state.region = this.value; refresh(); };

@@ -46,13 +46,11 @@
     var c = state.record && state.record.coverage && state.record.coverage[id];
     return c || null;
   }
-  function periodText(id) {
-    var c = holidayInfo(id), sheets = c && c.sheets, first = sheets && Object.values(sheets)[0];
-    var dates = first ? first : null;
-    if (!dates) return '';
-    var years = Object.values(sheets).map(function (s) { return [s.currentStart, s.currentEnd, s.baselineStart, s.baselineEnd]; });
-    var range = years[0] || [];
-    return range[0] + ' 至 ' + range[1] + ' 对比 ' + range[2] + ' 至 ' + range[3] + ' · 按假期第几天对齐';
+  function periodText(id, dimension) {
+    var c = holidayInfo(id), sheets = c && c.sheets;
+    var sheet = sheets && sheets[dimension === 'hotel_tier' ? '分档位' : '分线级'];
+    if (!sheet) return '';
+    return sheet.currentStart + ' 至 ' + sheet.currentEnd + ' 对比 ' + sheet.baselineStart + ' 至 ' + sheet.baselineEnd + ' · 按假期日序对齐';
   }
   function renderOptions() {
     var holiday = $('holiday-select').value || 'national-day';
@@ -66,53 +64,78 @@
     $('segment-select').value = segments.indexOf(old) >= 0 ? old : (segments.indexOf('全部') >= 0 ? '全部' : (segments[0] || ''));
   }
   function kpi(label, now, base, field) {
-    var diff = difference(now, base, field), changeLabel = field === 'occupancy_rate' ? '较对标期' : '较对标期';
-    return '<article class="hd-stat"><div class="hd-stat-label">' + label + '</div><div class="hd-stat-value">' + fmt(now, field) + '</div><div class="hd-stat-change"><span>对标 ' + fmt(base, field) + '</span><strong class="' + deltaClass(diff) + '">' + esc(fmtChange(diff, field)) + '</strong></div><div class="hd-stat-change hd-neutral">' + changeLabel + '</div></article>';
+    var diff = difference(now, base, field);
+    return '<article class="hd-stat"><div class="hd-stat-label">' + label + '</div><div class="hd-stat-value">' + fmt(now, field) + '</div><div class="hd-stat-change"><span>对标 ' + fmt(base, field) + '</span><strong class="' + deltaClass(diff) + '">' + esc(fmtChange(diff, field)) + '</strong></div></article>';
   }
   function renderKpis(records) {
     var now = summarize(records), baseRows = records.map(function (r) { return { occupancy_rate: r.baseline_occupancy_rate, adr: r.baseline_adr, revpar: r.baseline_revpar }; });
     var base = summarize(baseRows);
-    $('holiday-kpis').innerHTML = kpi('假期日均入住率', now.occupancy_rate, base.occupancy_rate, 'occupancy_rate') +
-      kpi('假期日均 ADR（元）', now.adr, base.adr, 'adr') + kpi('假期日均 RevPAR（元）', now.revpar, base.revpar, 'revpar');
+    $('holiday-kpis').innerHTML = [
+      ['假期日均入住率', 'occupancy_rate'], ['假期日均 ADR（元）', 'adr'], ['假期日均 RevPAR（元）', 'revpar']
+    ].filter(function (item) { return now[item[1]] != null; }).map(function (item) {
+      return kpi(item[0], now[item[1]], base[item[1]], item[1]);
+    }).join('');
   }
   function metricValue(row, field, baseline) {
     if (!baseline) return num(row[field]);
     return num(row['baseline_' + field]);
   }
   function renderChart(records) {
-    var field = $('metric-select').value, title = field === 'occupancy_rate' ? '入住率' : field === 'adr' ? 'ADR' : 'RevPAR';
+    var field = $('metric-select').value;
+    var title = field === 'occupancy_rate' ? '入住率' : field === 'adr' ? 'ADR' : 'RevPAR';
+    var unit = field === 'occupancy_rate' ? '%' : '元';
     var sorted = records.slice().sort(function (a, b) { return Number(a.period_day) - Number(b.period_day); });
     var values = sorted.flatMap(function (r) { return [metricValue(r, field, false), metricValue(r, field, true)]; }).filter(function (v) { return v != null; });
+    var host = $('holiday-chart');
     $('trend-title').textContent = '假期每日' + title;
     $('trend-note').textContent = $('segment-select').value === '*' ? '当前查看全部分组' : $('segment-select').value;
     $('trend-caption').textContent = field === 'occupancy_rate' ? '入住率（%） · 按假期日序对齐 · 对照日期按源表保留' : title + '（元） · 按假期日序对齐 · 对照日期按源表保留';
-    if (!sorted.length || !values.length) { $('holiday-chart').innerHTML = '<div class="hd-empty">所选范围暂无数据</div>'; return; }
-    var min = Math.min.apply(null, values), max = Math.max.apply(null, values), pad = (max - min) * .15 || Math.max(Math.abs(max) * .08, .1);
+    if (!sorted.length || !values.length) { host.innerHTML = '<div class="hd-empty">所选范围暂无有效数据</div>'; return; }
+
+    var width = Math.max(300, host.clientWidth || 900), height = 280, left = 54, right = 22, top = 14, bottom = 36;
+    var min = Math.min.apply(null, values), max = Math.max.apply(null, values);
+    var pad = (max - min) * .12 || Math.max(Math.abs(max) * .08, field === 'occupancy_rate' ? .01 : .1);
     min = Math.max(0, min - pad); max += pad;
-    var width = 920, height = 330, left = 58, right = 18, top = 18, bottom = 46;
+    if (field === 'occupancy_rate') { min = Math.max(0, min); max = Math.min(1, max); }
+    if (max <= min) max = min + (field === 'occupancy_rate' ? .01 : 1);
     var x = function (i) { return left + (sorted.length <= 1 ? 0 : i * (width - left - right) / (sorted.length - 1)); };
-    var y = function (v) { return top + (max - v) * (height - top - bottom) / (max - min || 1); };
-    var tickValues = [min, (min + max) / 2, max];
-    var grid = tickValues.map(function (v) { var yy = y(v); return '<line x1="' + left + '" x2="' + (width - right) + '" y1="' + yy + '" y2="' + yy + '" stroke="#e9edf3"/><text x="' + (left - 10) + '" y="' + (yy + 4) + '" text-anchor="end" fill="#7b8496" font-size="11">' + (field === 'occupancy_rate' ? (v * 100).toFixed(0) + '%' : v.toFixed(0)) + '</text>'; }).join('');
-    function path(baseline) {
-      var chunks = [], points = [];
-      sorted.forEach(function (r, i) {
-        var value = metricValue(r, field, baseline);
-        if (value == null) { if (points.length) chunks.push(points.join(' ')); points = []; return; }
-        points.push((points.length ? 'L' : 'M') + x(i).toFixed(1) + ',' + y(value).toFixed(1));
-      });
-      if (points.length) chunks.push(points.join(' '));
-      return chunks.map(function (d) { return '<path d="' + d + '" fill="none" stroke="' + (baseline ? '#a0a9b8' : '#5964a6') + '" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"' + (baseline ? ' stroke-dasharray="5 4"' : '') + '/>'; }).join('');
+    var y = function (v) { return top + (max - v) * (height - top - bottom) / (max - min); };
+    var svg = '<svg viewBox="0 0 ' + width + ' ' + height + '" preserveAspectRatio="none" role="img" aria-label="' + esc(title + '，本期与对标期按假期日序比较') + '"><title>' + esc(title + '，本期与对标期按假期日序比较') + '</title>';
+    var axisDigits = field === 'occupancy_rate' ? 0 : 1;
+    for (var tick = 0; tick <= 4; tick++) {
+      var value = max - (max - min) * tick / 4, yy = y(value);
+      var axisLabel = field === 'occupancy_rate' ? (value * 100).toFixed(axisDigits) + '%' : value.toFixed(axisDigits);
+      svg += '<line x1="' + left + '" x2="' + (width - right) + '" y1="' + yy + '" y2="' + yy + '" stroke="#edf0f5"/>' +
+        '<text x="' + (left - 8) + '" y="' + (yy + 4) + '" text-anchor="end" font-size="11" fill="#8a94a5">' + axisLabel + '</text>';
     }
-    var points = sorted.map(function (r, i) {
-      var now = metricValue(r, field, false), base = metricValue(r, field, true), cx = x(i);
-      var label = r.day_label ? r.day_label : '第' + r.period_day + '天';
-      return '<g><text x="' + cx + '" y="' + (height - 16) + '" text-anchor="middle" fill="#7b8496" font-size="10">' + esc(label) + '</text>' +
-        (now == null ? '' : '<circle cx="' + cx + '" cy="' + y(now) + '" r="3.5" fill="#5964a6"><title>' + r.current_date + ' · ' + fmt(now, field) + '</title></circle>') +
-        (base == null ? '' : '<circle cx="' + cx + '" cy="' + y(base) + '" r="3.5" fill="#a0a9b8"><title>' + r.baseline_date + ' · ' + fmt(base, field) + '</title></circle>') + '</g>';
-    }).join('');
-    var unit = field === 'occupancy_rate' ? '%' : '元';
-    $('holiday-chart').innerHTML = '<svg viewBox="0 0 ' + width + ' ' + height + '" role="img" aria-label="' + title + '，本期与对标期按假期日序比较">' + grid + path(true) + path(false) + points + '</svg><div class="hd-legend"><span><i style="background:#5964a6"></i>本期</span><span><i style="background:#a0a9b8"></i>对标期</span><span>单位：' + unit + '</span></div>';
+    var step = Math.max(1, Math.ceil(sorted.length / Math.max(2, Math.floor((width - left - right) / 100))));
+    sorted.forEach(function (row, index) {
+      if (index !== 0 && index !== sorted.length - 1 && index % step !== 0) return;
+      var label = row.day_label || '第' + row.period_day + '天';
+      svg += '<text x="' + x(index) + '" y="' + (height - 10) + '" text-anchor="middle" font-size="11" fill="#8a94a5">' + esc(label) + '</text>';
+    });
+    function path(baseline) {
+      var d = '', started = false;
+      sorted.forEach(function (row, index) {
+        var value = metricValue(row, field, baseline);
+        if (value == null) { started = false; return; }
+        d += (started ? 'L' : 'M') + x(index).toFixed(1) + ',' + y(value).toFixed(1) + ' ';
+        started = true;
+      });
+      return '<path d="' + d + '" fill="none" stroke="' + (baseline ? '#aab0c9' : '#5158aa') + '" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"' + (baseline ? ' stroke-dasharray="5 5"' : '') + '/>';
+    }
+    var dots = '', tooltipPoints = [];
+    sorted.forEach(function (row, index) {
+      var current = metricValue(row, field, false), baseline = metricValue(row, field, true), cx = x(index);
+      var day = row.day_label ? '第' + row.period_day + '天 · ' + row.day_label : '第' + row.period_day + '天';
+      var detail = [day, '本期 ' + row.current_date + '：' + fmt(current, field), '对标 ' + row.baseline_date + '：' + fmt(baseline, field)].join(String.fromCharCode(10));
+      tooltipPoints.push({ x: cx, y: y(current == null ? baseline : current), text: detail });
+      if (current != null) dots += '<circle cx="' + cx + '" cy="' + y(current) + '" r="3.5" fill="#5158aa"><title>' + esc(detail) + '</title></circle>';
+      if (baseline != null) dots += '<circle cx="' + cx + '" cy="' + y(baseline) + '" r="3.5" fill="#aab0c9"><title>' + esc(detail) + '</title></circle>';
+    });
+    host.innerHTML = svg + path(true) + path(false) + dots + '</svg>' +
+      '<div class="hd-legend"><span><i style="background:#5158aa"></i>本期</span><span><i style="background:#aab0c9"></i>对标期（虚线）</span><span>单位：' + unit + '</span></div>';
+    if (window.SiteCharts) window.SiteCharts.attach(host, tooltipPoints);
   }
   function renderSummary(rows) {
     var segments = Array.from(new Set(rows.map(function (r) { return r.segment; }))).sort(function (a, b) { return a === '全部' ? -1 : b === '全部' ? 1 : a.localeCompare(b, 'zh-CN'); });
@@ -150,7 +173,7 @@
     var holiday = $('holiday-select').value, dimension = $('dimension-select').value;
     var matching = state.rows.filter(function (r) { return r.holiday_id === holiday && r.dimension === dimension; });
     var selected = selectedRecords();
-    $('period-note').textContent = periodText(holiday);
+    $('period-note').textContent = periodText(holiday, dimension);
     var baselineYear = (matching[0] && matching[0].baseline_year) || '';
     $('asof').innerHTML = '<b>' + holidayNames[holiday] + ' · ' + ((matching[0] && matching[0].current_year) || '') + '年对标' + baselineYear + '年</b>酒店之家';
     renderHolidayOverview(dimension);
@@ -173,8 +196,21 @@
     $('holiday-select').value = 'national-day';
     $('dimension-select').value = 'hotel_tier';
     ['holiday-select', 'dimension-select', 'segment-select', 'metric-select'].forEach(function (id) { $(id).addEventListener('change', render); });
-    render();
+    document.querySelectorAll('[data-weekly-view]').forEach(function (link) {
+      link.addEventListener('click', function (event) {
+        event.preventDefault();
+        var saved = new URLSearchParams(location.hash.slice(1));
+        saved.set('view', link.dataset.weeklyView);
+        location.href = 'hotel-dashboard.html#' + saved.toString();
+      });
+    });
+    var resizeTimer;
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function () { renderChart(selectedRecords()); }, 120);
+    });
     $('holiday-dashboard').hidden = false;
+    render();
   }
   Promise.all([fetch('data/hotel_holiday_daily.csv', { cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); }), fetch('data/hotel-holiday-import-record.json', { cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })])
     .then(function (result) { init(M.csv(result[0]), result[1]); })
