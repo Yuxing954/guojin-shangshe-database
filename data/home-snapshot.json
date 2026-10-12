@@ -1,18 +1,18 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-12T14:56:49+08:00",
+  "generatedAt": "2026-10-12T18:09:23+08:00",
   "industries": [
     {
       "id": "hotel",
       "name": "酒店",
       "metric": "每间可售客房收入",
-      "value": 195.341588,
+      "value": 105.693441,
       "unit": "元",
       "precision": 2,
-      "change": -2.1759950216429402,
-      "changeLabel": "同比",
-      "period": "2026W40 · 2026-10-04",
-      "asOf": "2026-10-04",
+      "change": 12.866899989235892,
+      "changeLabel": "同周号同比，未作节假日错期调整",
+      "period": "2026W41",
+      "asOf": "2026-10-11",
       "freshnessDays": 14,
       "source": "酒店之家 / 仓库周度样本",
       "sourceFile": "data/hotel_industry_weekly.csv",
@@ -25,8 +25,8 @@
       "value": 21.45,
       "unit": "亿元",
       "precision": 2,
-      "change": 1.8837812419846722,
-      "changeLabel": "同比（计算）",
+      "change": null,
+      "changeLabel": "同比",
       "period": "2026年8月",
       "asOf": "2026-08-31",
       "freshnessDays": 50,
@@ -36,7 +36,7 @@
     },
     {
       "id": "gold",
-      "name": "黄金",
+      "name": "黄金珠宝",
       "metric": "Au99.99收盘价",
       "value": 907.32,
       "unit": "元/克",
@@ -51,6 +51,22 @@
       "href": "industry.html#gold"
     },
     {
+      "id": "overseas",
+      "name": "跨境电商",
+      "metric": "跨境电商出口",
+      "value": null,
+      "unit": "亿元",
+      "precision": 2,
+      "change": null,
+      "changeLabel": "同比",
+      "period": "全行业口径待补齐",
+      "asOf": "",
+      "freshnessDays": 10,
+      "source": "暂无可用来源",
+      "sourceFile": "industry.html#overseas",
+      "href": "industry.html#overseas"
+    },
+    {
       "id": "dining",
       "name": "餐饮",
       "metric": "全国餐饮收入",
@@ -62,75 +78,75 @@
       "period": "2026年8月",
       "asOf": "2026-08-31",
       "freshnessDays": 50,
-      "source": "中国:社会消费品零售总额:餐饮收入(元)",
-      "sourceFile": "https://choicew2z.eastmoney.com/dataDisplay/macroEDB/#/index?macroids=EMM00063221,EMM00063199,EMM00063191",
+      "source": "国家统计局",
+      "sourceFile": "https://www.stats.gov.cn/sj/zxfb/202609/t20260915_1965311.html",
       "href": "industry.html#dining"
     }
   ],
   "focus": [
     {
       "sector": "酒店经营",
-      "title": "酒店量价",
-      "summary": "全国 RevPAR 为 195.3 元，同比 -2.2%。",
-      "asOf": "2026-10-04",
+      "title": "关注酒店经营的量价变化",
+      "summary": "全国 RevPAR 为 105.7 元，同周号同比 +12.9%（未作节假日错期调整）。结合入住率与房价查看变化来源。",
+      "asOf": "2026-10-11",
       "href": "industry.html#hotel"
     },
     {
       "sector": "免税消费",
-      "title": "免税销售与客流",
-      "summary": "离岛免税购物金额 21.45 亿元，购物人次 37.24 万人次。",
+      "title": "对照销售额与购物人次",
+      "summary": "离岛免税购物金额 21.45 亿元，购物人次 37.24 万人次。对照每购物人次金额查看消费变化。",
       "asOf": "2026-08-31",
       "href": "industry.html#dutyfree"
     },
     {
       "sector": "餐饮需求",
-      "title": "餐饮收入增速",
-      "summary": "全国餐饮收入同比 +1.1%，限额以上餐饮同比 -0.7%。",
+      "title": "跟踪餐饮收入增速",
+      "summary": "全国餐饮收入同比 +1.1%，限额以上餐饮同比 -0.7%。查看两种口径的趋势。",
       "asOf": "2026-08-31",
       "href": "industry.html#dining"
     }
   ],
   "research": [
     {
-      "title": "【飞亚达重要更新】",
-      "date": "2026-10-12",
+      "title": "若羽臣：关注短期超跌机会，看好斐萃新品放量+奥伦纳素调整成效！",
+      "date": "2026-10-09",
       "kind": "views",
       "label": "商社观点",
       "author": "水木调研纪要",
-      "href": "https://wx.zsxq.com/group/88888142214212/topic/22258222824428441"
+      "href": "https://wx.zsxq.com/group/88888142214212/topic/45548558881542488"
     },
     {
-      "title": "9月及国庆餐饮上市公司更新",
-      "date": "2026-10-12",
+      "title": "紫江企业：穿越周期的饮料包装龙头，低估值高股息，兼具多维向上期权",
+      "date": "2026-10-09",
       "kind": "views",
       "label": "商社观点",
       "author": "水木调研纪要",
-      "href": "https://wx.zsxq.com/group/88888142214212/topic/45548555441144228"
+      "href": "https://wx.zsxq.com/group/88888142214212/topic/22258228884242541"
     },
     {
-      "title": "【国海传媒】泡泡玛特（9992.HK）每周跟踪1011：美国Tiktok环比大增，关注下周The Monsters毛绒新品！",
-      "date": "2026-10-12",
+      "title": "【国泰海通食饮】推荐宝立食品！价值低估，BC亮点纷呈",
+      "date": "2026-10-09",
       "kind": "views",
       "label": "商社观点",
       "author": "水木调研纪要",
-      "href": "https://wx.zsxq.com/group/88888142214212/topic/55521551888551244"
+      "href": "https://wx.zsxq.com/group/88888142214212/topic/82258228884245482"
     },
     {
-      "title": "【国海轻工】周观点：10-11月黑纸预计偏强运行，继续布局出口链低估值+确定性细分方向-20261011",
-      "date": "2026-10-12",
+      "title": "【东财医药唐爱金团队】当前重点推荐“低估值+账上现金多+回购”的健康消费——“互联网电商平台+家用品牌器械”",
+      "date": "2026-10-09",
       "kind": "views",
       "label": "商社观点",
       "author": "水木调研纪要",
-      "href": "https://wx.zsxq.com/group/88888142214212/topic/14425445884145222"
+      "href": "https://wx.zsxq.com/group/88888142214212/topic/45548558882524528"
     },
     {
-      "title": "海底捞26年9月及十一情况更新：",
-      "date": "2026-10-12",
+      "title": "⭐️【国金商社】小菜园国庆数据速递",
+      "date": "2026-10-09",
       "kind": "views",
       "label": "商社观点",
       "author": "水木调研纪要",
-      "href": "https://wx.zsxq.com/group/88888142214212/topic/82258228112251522"
+      "href": "https://wx.zsxq.com/group/88888142214212/topic/82258228851125882"
     }
   ],
-  "researchAsOf": "2026-10-12"
+  "researchAsOf": "2026-10-09"
 }
