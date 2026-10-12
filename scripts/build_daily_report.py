@@ -46,7 +46,7 @@ def research(end):
             if key in seen: continue
             seen.add(key)
             result[kind].append({'id':key[:16],'sector':sector,'title':title,'body':body,'publishedAt':stamp(when).isoformat(),'source':'研究观点原文','url':r.get('原文链接',''),'score':score(title,body)})
-    for k in result: result[k]=sorted(result[k],key=lambda r:(r['score'],r['publishedAt']),reverse=True)[:12]
+    for k in result: result[k]=sorted(result[k],key=lambda r:(r['score'],r['publishedAt']),reverse=True)
     return result,excluded
 
 def numeric_candidates(payload,path):
