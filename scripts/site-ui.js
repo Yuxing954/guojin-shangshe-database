@@ -1,6 +1,6 @@
 (function(root){
   'use strict';
-  const navigation=[['daily','daily.html','商社日报','document'],['home','index.html','首页','home'],['industry','industry.html','行业数据','chart'],['macro','consumption-macro.html','宏观数据','globe'],['companies','company-database.html','重点公司','building'],['earnings','earnings.html','财报日历','calendar'],['research','research.html','观点纪要','document'],['quotes','quotes.html','实时行情','trend']];
+  const navigation=[['home','index.html','首页','home'],['industry','industry.html','行业数据','chart'],['macro','consumption-macro.html','宏观数据','globe'],['companies','company-database.html','重点公司','building'],['earnings','earnings.html','财报日历','calendar'],['research','research.html','观点纪要','document'],['quotes','quotes.html','实时行情','trend']];
   const pages={
     'daily.html':['daily','国金商社日报'],
     'data-notes.html':['tools','数据说明'],
