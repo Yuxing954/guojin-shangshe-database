@@ -9,7 +9,8 @@ def validate(d):
  assert (cutoff.hour,cutoff.minute)==(16,0)
  assert d['headline'] and len(d['headline'])<=100
  assert len(d['focus'])<=4 and len(d['industries'])<=6
- count=len(d['headline'])+len(d.get('quiet',''))
+ if d.get('dailySummary'):assert len(d['dailySummary'])<=350,'Daily summary must be concise'
+ count=len(d.get('dailySummary') or d['headline'])+len(d.get('quiet',''))
  for group in ('focus','industries'):
   for r in d[group]:
    assert not is_ecommerce_topic(r.get('title',r.get('sector',''))),'Ecommerce is excluded from daily brief'
