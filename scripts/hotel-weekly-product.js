@@ -39,49 +39,50 @@ const LEGAL_TEXT=["国金证券股份有限公司经中国证券监督管理委�
 function linesFor(value,width,size){const scale=ctx.getTransform().a;size=Math.round(size*scale)/scale;ctx.font=`${size}px "Microsoft YaHei",sans-serif`;return String(value).split('\n').flatMap(p=>{let out=[],line='';for(const c of p){if(ctx.measureText(line+c).width>width){out.push(line);line=c}else line+=c}out.push(line);return out})}
 function section(title,y){text(title,36,y,30,'#173f60','bold');ctx.fillStyle='#d8e0e7';ctx.fillRect(36,y+17,696,1)}
 function trendPeriods(r){const available=weeks.filter(p=>p.period_id<=r.period_id);if($('window').value==='all')return available;const end=new Date(r.end_date+'T00:00:00Z'),months=Number($('window').value),day=end.getUTCDate();end.setUTCDate(1);end.setUTCMonth(end.getUTCMonth()-months);const last=new Date(Date.UTC(end.getUTCFullYear(),end.getUTCMonth()+1,0)).getUTCDate();end.setUTCDate(Math.min(day,last));const start=end.toISOString().slice(0,10);return available.filter(p=>p.end_date>start)}
-function desktopSection(title,y){text(title,44,y,TYPE.section,'#104f87','bold');ctx.fillStyle='#e5eaf0';ctx.fillRect(44,y+16,1112,1)}
+function heading(title,x,y){text(title,x,y,TYPE.section,'#104f87','bold')}
+function desktopSection(title,y){heading(title,44,y);ctx.fillStyle='#e5eaf0';ctx.fillRect(44,y+16,1112,1)}
 function changeColor(n){return n===null||n===0?'#68737e':n>0?'#c23d3d':'#21816b'}
 function tablePeriods(r){return weeks.filter(p=>p.period_id<=r.period_id).slice(-8)}
 function marker(x,y,kind,color,size=3){ctx.fillStyle='#fff';ctx.strokeStyle=color;ctx.lineWidth=1.8;ctx.beginPath();if(kind==='square')ctx.rect(x-size,y-size,size*2,size*2);else if(kind==='diamond'){ctx.moveTo(x,y-size);ctx.lineTo(x+size,y);ctx.lineTo(x,y+size);ctx.lineTo(x-size,y);ctx.closePath()}else ctx.arc(x,y,size,0,Math.PI*2);ctx.fill();ctx.stroke()}
 function panelChart(x,y,title,series,periods,mixed=false){
  ctx.save();ctx.translate(x,y);ctx.lineCap="round";ctx.lineJoin="round";
- text(title,0,0,TYPE.section,'#104f87','bold');text(mixed?'ADR / RevPAR：%　OCC：百分点（右轴）':series[0].field==='occupancy_rate'?'同比变化（百分点）':'同比增速（%）',0,31,17,'#68737e');
- series.forEach((v,i)=>{const lx=i*(536/series.length);ctx.strokeStyle=v.color;ctx.lineWidth=3;ctx.setLineDash([]);ctx.beginPath();ctx.moveTo(lx,57);ctx.lineTo(lx+20,57);ctx.stroke();marker(lx+10,57,v.marker,v.color,2.5);ctx.setLineDash([]);text(v.name,lx+26,63,18,'#455460')});
- const left=49,top=94,w=mixed?434:478,h=198,points=series.map(v=>periods.map(p=>delta(get(v.seg,p.period_id),v.field)));
+ heading(title,0,0);text(mixed?'ADR / RevPAR：%　OCC：百分点（右轴）':series[0].field==='occupancy_rate'?'同比变化（百分点）':'同比增速（%）',0,42,TYPE.meta,'#68737e');
+ series.forEach((v,i)=>{const lx=i*(536/series.length);ctx.strokeStyle=v.color;ctx.lineWidth=3;ctx.setLineDash([]);ctx.beginPath();ctx.moveTo(lx,68);ctx.lineTo(lx+20,68);ctx.stroke();marker(lx+10,68,v.marker,v.color,2.5);ctx.setLineDash([]);text(v.name,lx+26,74,TYPE.meta,'#455460')});
+ const left=49,top=105,w=mixed?434:478,h=198,points=series.map(v=>periods.map(p=>delta(get(v.seg,p.period_id),v.field)));
  function range(v){v=v.filter(n=>n!==null);if(!v.length)return [-1,1];let lo=Math.min(0,...v),hi=Math.max(0,...v);if(lo===hi){lo--;hi++}const pad=(hi-lo)*.12;return [lo-pad,hi+pad]}
  const lr=range(points.flatMap((v,i)=>mixed&&series[i].field==='occupancy_rate'?[]:v)),rr=mixed?range(points.flatMap((v,i)=>series[i].field==='occupancy_rate'?v:[])):lr;
  for(let i=0;i<=4;i++){const yy=top+i*h/4;ctx.strokeStyle='#edf0f3';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(left,yy);ctx.lineTo(left+w,yy);ctx.stroke();ctx.textAlign='right';text((lr[1]-(lr[1]-lr[0])*i/4).toFixed(0),left-10,yy+6,18,'#73808b');ctx.textAlign='left';if(mixed)text((rr[1]-(rr[1]-rr[0])*i/4).toFixed(1),left+w+9,yy+6,18,'#73808b')}
  const zero=top+h*lr[1]/(lr[1]-lr[0]);ctx.strokeStyle='#cbd4dc';ctx.setLineDash([]);ctx.beginPath();ctx.moveTo(left,zero);ctx.lineTo(left+w,zero);ctx.stroke();ctx.setLineDash([]);
  points.forEach((values,i)=>{const range=mixed&&series[i].field==='occupancy_rate'?rr:lr;ctx.strokeStyle=series[i].color;ctx.lineWidth=3;ctx.setLineDash([]);ctx.beginPath();let active=false;values.forEach((v,j)=>{if(v===null){active=false;return}const xx=left+w*j/Math.max(1,periods.length-1),yy=top+h*(range[1]-v)/(range[1]-range[0]);if(active)ctx.lineTo(xx,yy);else ctx.moveTo(xx,yy);active=true});ctx.stroke();ctx.setLineDash([]);values.forEach((v,j)=>{if(v===null||values.length>26&&j!==values.length-1)return;marker(left+w*j/Math.max(1,periods.length-1),top+h*(range[1]-v)/(range[1]-range[0]),series[i].marker,series[i].color,2.7)});if(values.length===1&&values[0]!==null){ctx.fillStyle=series[i].color;ctx.beginPath();ctx.arc(left,top+h*(range[1]-values[0])/(range[1]-range[0]),3,0,Math.PI*2);ctx.fill()}});
  if(!points.flat().some(v=>v!==null))text('暂无可比基期数据',150,top+110,22,'#73808b');
- [...new Set(Array.from({length:4},(_,i)=>Math.round(i*(periods.length-1)/3)))].forEach(j=>{if(!periods[j])return;ctx.textAlign=j===0?'left':j===periods.length-1?'right':'center';text(periods[j].period_id,left+w*j/Math.max(1,periods.length-1),top+h+29,17,'#73808b')});ctx.textAlign='left';ctx.restore();
+ [...new Set(Array.from({length:4},(_,i)=>Math.round(i*(periods.length-1)/3)))].forEach(j=>{if(!periods[j])return;ctx.textAlign=j===0?'left':j===periods.length-1?'right':'center';text(periods[j].period_id.slice(2),left+w*j/Math.max(1,periods.length-1),top+h+29,TYPE.meta,'#73808b')});ctx.textAlign='left';ctx.restore();
 }
 function render(options={}){
  if(!weeks.length||!fontsReady)return;C.hidden=false;$('export').disabled=false;
  const target=options.canvas||C,exporting=target!==C;ctx=target.getContext('2d',{alpha:false});const pixelWidth=exporting?3600:Math.round(C.getBoundingClientRect().width*(window.devicePixelRatio||1)),scale=pixelWidth/1200;ctx.setTransform(scale,0,0,scale,0,0);
  const r=get('全部',$('week').value),periods=trendPeriods(r),windowLabel={'1':'近1个月','3':'近3个月','6':'近6个月','12':'近1年','24':'近2年',all:'全部历史'}[$('window').value];
  const recent=tablePeriods(r),tableTop=524,rowHeight=38,tableBottom=tableTop+54+SEGS.length*3*rowHeight,commentTitle=tableBottom+48,commentTop=commentTitle+50;
- const comment=$('comment').value.trim()||autoComment(r),commentLines=linesFor(comment,1112,TYPE.body),chartStart=commentTop+commentLines.length*35+42,footerStart=chartStart+770;
+ const comment=$('comment').value.trim()||autoComment(r),commentLines=linesFor(comment,1112,TYPE.body),chartStart=commentTop+commentLines.length*35+28,footerStart=chartStart+770;
  const legalLines=LEGAL_TEXT.map(t=>linesFor(t,1112,13)),legalHeight=legalLines.reduce((n,a)=>n+a.length*18+58,0),height=footerStart+56+legalHeight+170;
  target.width=pixelWidth;target.height=Math.ceil(height*scale);ctx.setTransform(scale,0,0,scale,0,0);ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.fillStyle='#fff';ctx.fillRect(0,0,1200,height);
  if(ready)ctx.drawImage(logo,44,25,300,67);
  ctx.fillStyle='#447eaf';ctx.fillRect(920,34,236,50);ctx.textAlign='center';text('国金商社于健',1038,70,32,'#fff','normal');ctx.textAlign='left';
  ctx.fillStyle='#104f87';ctx.fillRect(0,120,1200,272);if(banner.complete&&banner.naturalWidth)ctx.drawImage(banner,0,120,1200,272);
- ctx.textAlign='center';text('酒店行业周度跟踪',600,260,84,'#fff','bold');ctx.textAlign='left';
+ text('酒店行业周度跟踪',44,260,88,'#fff','bold');
  const [currentPeriod,basePeriod]=periodLabel(r).split('　');text(currentPeriod,44,330,32,'#fff');const periodWidth=ctx.measureText(currentPeriod).width;text(basePeriod,44+periodWidth+28,330,24,'#dce8f2');
  
  ctx.translate(0,160);
  const metrics=[['revpar','RevPAR','元'],['occupancy_rate','OCC','%'],['adr','ADR','元']];
  desktopSection('全国酒店',282);
  metrics.forEach(([k,name,unit],i)=>{const x=44+i*378,v=val(r,k),labels={revpar:'RevPAR · 每间可售客房收入',occupancy_rate:'OCC · 入住率',adr:'ADR · 平均房价'};
-  text(labels[k],x,335,21,'#667582');const display=fmt(k==='occupancy_rate'&&v!==null?v*100:v);text(display,x,387,44,'#173f60','bold');const width=ctx.measureText(display).width;text(unit,x+width+12,386,22,'#667582');const d=delta(r,k);text(d===null?'暂无同比':
+  text(labels[k],x,332,21,'#667582');const display=fmt(k==='occupancy_rate'&&v!==null?v*100:v);text(display,x,387,44,'#173f60','bold');const width=ctx.measureText(display).width;text(unit,x+width+12,386,22,'#667582');const d=delta(r,k);text(d===null?'暂无同比':
   '同比 '+(d>0?'+':'')+d.toFixed(1)+(k==='occupancy_rate'?'pct':'%'),x,426,25,changeColor(d),'bold');
   if(i<2){ctx.fillStyle='#e1e6ea';ctx.fillRect(x+351,317,1,115)}
  });
  desktopSection('分档次',489);
  const segWidth=104,metricWidth=100,gridLeft=44+segWidth+metricWidth,colWidth=(1112-segWidth-metricWidth)/recent.length;
  ctx.fillStyle='#104f87';ctx.fillRect(44,tableTop,1112,54);text('档次',57,tableTop+34,TYPE.table,'#fff','bold');text('指标',44+segWidth+12,tableTop+34,TYPE.table,'#fff','bold');
- recent.forEach((p,j)=>{ctx.textAlign='center';text(p.period_id,gridLeft+(j+.5)*colWidth,tableTop+34,17,'#fff','bold')});ctx.textAlign='left';
+ recent.forEach((p,j)=>{ctx.textAlign='center';text(p.period_id.slice(2),gridLeft+(j+.5)*colWidth,tableTop+34,20,'#fff','bold')});ctx.textAlign='left';
  SEGS.forEach((seg,i)=>{const top=tableTop+54+i*3*rowHeight;ctx.fillStyle=i<2?(i%2?'#f3f8fc':'#eaf2fa'):(i%2?'#fcf6ef':'#f8eee3');ctx.fillRect(44,top,1112,3*rowHeight);text(seg.replace('型',''),57,top+rowHeight*1.5+7,TYPE.table,COLORS[i],'bold');
   metrics.forEach(([k,name],m)=>{const y=top+m*rowHeight;text(name,44+segWidth+12,y+26,TYPE.table,'#455460');recent.forEach((p,j)=>{const d=delta(get(seg,p.period_id),k);ctx.textAlign='center';text(d===null?'—':(d>0?'+':'')+d.toFixed(d!==0&&Math.abs(d)<.05?2:1)+(k==='occupancy_rate'?'pct':'%'),gridLeft+(j+.5)*colWidth,y+26,TYPE.table,changeColor(d),'bold');ctx.textAlign='left'});if(m<2){ctx.fillStyle='#dde5eb';ctx.fillRect(44+segWidth,y+rowHeight-1,1112-segWidth,1)}});
   ctx.fillStyle='#cbd6df';ctx.fillRect(44,top+3*rowHeight-1,1112,1)
