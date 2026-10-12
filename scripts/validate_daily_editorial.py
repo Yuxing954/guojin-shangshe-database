@@ -1,6 +1,6 @@
 import argparse, datetime as dt, json
 from pathlib import Path
-from build_daily_report import stamp,ROOT
+from build_daily_report import stamp,ROOT,window_hours
 
 def validate(d):
  assert d['schemaVersion']==2,'Expected editorial v2'
@@ -19,7 +19,7 @@ def validate(d):
     assert src['url'].startswith('https://')
     t=stamp(src['publishedAt']);assert t and len(src['publishedAt'])>10
     assert cutoff-dt.timedelta(days=7)<t<=cutoff,'Evidence outside comparison window'
-    fresh|=cutoff-dt.timedelta(hours=24)<t
+    fresh|=cutoff-dt.timedelta(hours=window_hours(cutoff))<t
    assert fresh,'No new source in daily window'
  assert count<=1100,'Editorial exceeds one-page budget'
  return count

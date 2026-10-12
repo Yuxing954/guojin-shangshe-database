@@ -17,6 +17,9 @@ def inside(value,end,hours):
     t=stamp(value)
     return t is not None and end-dt.timedelta(hours=hours)<t<=end
 
+def window_hours(end):
+    return 72 if end.astimezone(TZ).weekday()==0 else 24
+
 def read(path,default=None):
     p=ROOT/path
     return json.loads(p.read_text()) if p.exists() else default
@@ -33,7 +36,7 @@ def research(end):
         with (ROOT/'data'/file).open(encoding='utf-8-sig') as f: base=list(csv.DictReader(f))
         for r in merge_rows(archive_rows(ROOT,db,base),update_rows(ROOT,db)):
             when=r.get('时间',''); body=r.get('内容','').strip(); title=r.get('标题','').strip()
-            if not inside(when,end,24): continue
+            if not inside(when,end,window_hours(end)): continue
             sector=sector_for(title,body)
             if not sector:
                 excluded+=1; continue
@@ -90,11 +93,11 @@ def build(end):
     sections,excluded=research(end); sections['data']=important_data(end)
     feed=read('data/daily/news.json',{'items':[]}); news=[]; seen=set()
     for r in feed.get('items',[]):
-        if not r.get('verified') or len(r.get('publishedAt',''))<=10 or not inside(r.get('publishedAt'),end,24): continue
+        if not r.get('verified') or len(r.get('publishedAt',''))<=10 or not inside(r.get('publishedAt'),end,window_hours(end)): continue
         if not r.get('url','').startswith('https://') or r['url'] in seen: continue
         seen.add(r['url']); news.append(r)
     sections['news']=sorted(news,key=lambda r:(r.get('importance',0),r['publishedAt']),reverse=True)[:12]
-    return {'schemaVersion':1,'date':end.date().isoformat(),'cutoff':end.isoformat(),'generatedAt':dt.datetime.now(TZ).isoformat(timespec='seconds'),'sections':sections,'coverage':{'researchSourceTo':read('data/research/updates/manifest.json',{}).get('coverageTo'),'newsCheckedAt':feed.get('checkedAt'),'newsStatus':feed.get('status','未核验'),'excludedResearchRows':excluded},'notes':['重要数据按截点前72小时已提交数值/统计期变化筛选；入库更新不等同于新披露，最多30项。','段子、市场观点按原始发布时间筛选24小时，按经营/业绩/数据关键词排序，各取12条；保留原文，不将观点改写为新闻。','新闻仅收录已核验原文、分钟级发布时间及来源链接的记录；空栏不代表市场没有新闻。','每日16:00北京时间截点；自动任务启动、检索和发布可能延迟。']}
+    return {'schemaVersion':1,'date':end.date().isoformat(),'cutoff':end.isoformat(),'windowStart':(end-dt.timedelta(hours=window_hours(end))).isoformat(),'windowHours':window_hours(end),'generatedAt':dt.datetime.now(TZ).isoformat(timespec='seconds'),'sections':sections,'coverage':{'researchSourceTo':read('data/research/updates/manifest.json',{}).get('coverageTo'),'newsCheckedAt':feed.get('checkedAt'),'newsStatus':feed.get('status','未核验'),'excludedResearchRows':excluded},'notes':['重要数据按截点前72小时已提交数值/统计期变化筛选；入库更新不等同于新披露，最多30项。','段子、市场观点按原始发布时间筛选新增窗口（周一72小时、其他日24小时），按经营/业绩/数据关键词排序，各取12条；保留原文，不将观点改写为新闻。','新闻仅收录已核验原文、分钟级发布时间及来源链接的记录；空栏不代表市场没有新闻。','每日16:00北京时间截点；自动任务启动、检索和发布可能延迟。']}
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--date'); a=p.parse_args(); now=dt.datetime.now(TZ)
