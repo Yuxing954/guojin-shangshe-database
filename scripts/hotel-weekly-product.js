@@ -35,7 +35,7 @@ function chart(y,title,series,periods,mixed=false){
  rule(y+418);
 }
 const LEGAL_TEXT=["国金证券股份有限公司经中国证券监督管理委员会批准，已具备证券投资咨询业务资格。\n本报告版权归“国金证券股份有限公司”（以下简称“国金证券”）所有，未经事先书面授权，任何机构和个人均不得以任何方式对本报告的任何部分制作任何形式的复制、转发、转载、刊载、引用、修改、仿制、刊发，或以任何侵犯本公司版权的其他方式使用。经书面授权的引用、刊发，需注明出处为“国金证券股份有限公司”，且不得对本报告进行任何有悖原意的删节和修改。\n本报告的产生基于国金证券及其研究人员认为可信的公开资料或实地调研资料，但国金证券及其研究人员对这些信息的准确性和完整性不作任何保证。本报告反映撰写研究人员的不同设想、见解及分析方法，故本报告所载观点可能与其他类似研究报告的观点及市场实际情况不一致，国金证券不对使用本报告所包含的材料产生的任何直接或间接损失或与此有关的其他任何损失承担任何责任。且本报告中的资料、意见、预测均反映报告初次公开发布时的判断，在不作事先通知的情况下，可能会随时调整，亦可因使用不同假设和标准、采用不同观点和分析方法而与国金证券其它业务部门、单位或附属机构在制作类似的其他材料时所给出的意见不同或者相反。\n本报告仅为参考之用，在任何地区均不应被视为买卖任何证券、金融工具的要约或要约邀请。本报告提及的任何证券或金融工具均可能会含有重大的风险，可能不易变卖以及不适合所有投资者。本报告所提及的证券或金融工具的价格、价值及收益可能会受汇率影响而波动。过往的业绩并不能代表未来的表现。\n客户应当考虑到国金证券存在可能影响本报告客观性的利益冲突，而不应视本报告为作出投资决策的唯一因素。证券研究报告是用于服务具备专业知识的投资者和投资顾问的专业产品，使用时必须经专业人士进行解读。国金证券建议获取报告人员应考虑本报告的任何意见或建议是否符合其特定状况，以及（若有必要）咨询独立投资顾问。报告本身、报告中的信息或所表达意见也不构成投资、法律、会计或税务的最终操作建议，国金证券不就报告中的内容对最终操作建议做出任何担保，在任何时候均不构成对任何人的个人推荐。\n在法律允许的情况下，国金证券的关联机构可能会持有报告中涉及的公司所发行的证券并进行交易，并可能为这些公司正在提供或争取提供多种金融服务。\n本报告并非意图发送、发布给在当地法律或监管规则下不允许向其发送、发布该研究报告的人员。国金证券并不因收件人收到本报告而视其为国金证券的客户。本报告对于收件人而言属高度机密，只有符合条件的收件人才能使用。根据《证券期货投资者适当性管理办法》，本报告仅供国金证券股份有限公司客户中风险评级高于C3级（含C3级）的投资者使用；本报告所包含的观点及建议并未考虑个别客户的特殊状况、目标或需要，不应被视为对特定客户关于特定证券或金融工具的建议或策略。对于本报告中提及的任何证券或金融工具，本报告的收件人须保持自身的独立判断。使用国金证券研究报告进行投资，遭受任何损失，国金证券不承担相关法律责任。\n若国金证券以外的任何机构或个人发送本报告，则由该机构或个人为此发送行为承担全部责任。本报告不构成国金证券向发送本报告的机构或个人的收件人提供投资建议，国金证券不为此承担任何责任。\n此报告仅限于中国境内使用。国金证券版权所有，保留一切权利。", "本公众号的观点、分析及预测仅代表作者个人意见，不代表任何机构立场，也不构成对阅读者的投资建议。本公众号发布的信息仅供《证券期货投资者适当性管理办法》中规定的专业投资者使用；非专业投资者擅自使用本公众号信息进行投资，本人不对任何人使用此全部或部分内容的行为或由此而引致的任何损失承担任何责任。未经本人事先书面许可，任何人不得将此报告或其任何部分以任何形式进行派发、复制、转载或发布，或对公众号内容进行任何有悖原意的删节或修改。投资有风险，入市需谨慎。"];
-function linesFor(value,width,size){ctx.font=`${size}px "Microsoft YaHei",sans-serif`;return String(value).split('\n').flatMap(p=>{let out=[],line='';for(const c of p){if(ctx.measureText(line+c).width>width){out.push(line);line=c}else line+=c}out.push(line);return out})}
+function linesFor(value,width,size){const scale=ctx.getTransform().a;size=Math.round(size*scale)/scale;ctx.font=`${size}px "Microsoft YaHei",sans-serif`;return String(value).split('\n').flatMap(p=>{let out=[],line='';for(const c of p){if(ctx.measureText(line+c).width>width){out.push(line);line=c}else line+=c}out.push(line);return out})}
 function section(title,y){text(title,36,y,30,'#173f60','bold');ctx.fillStyle='#d8e0e7';ctx.fillRect(36,y+17,696,1)}
 function trendPeriods(r){const available=weeks.filter(p=>p.period_id<=r.period_id);if($('window').value==='all')return available;const end=new Date(r.end_date+'T00:00:00Z'),months=Number($('window').value),day=end.getUTCDate();end.setUTCDate(1);end.setUTCMonth(end.getUTCMonth()-months);const last=new Date(Date.UTC(end.getUTCFullYear(),end.getUTCMonth()+1,0)).getUTCDate();end.setUTCDate(Math.min(day,last));const start=end.toISOString().slice(0,10);return available.filter(p=>p.end_date>start)}
 function desktopSection(title,y){text(title,44,y,28,'#104f87','bold');ctx.fillStyle='#e5eaf0';ctx.fillRect(44,y+16,1112,1)}
@@ -55,11 +55,11 @@ function panelChart(x,y,title,series,periods,mixed=false){
 }
 function render(options={}){
  if(!weeks.length||!fontsReady)return;C.hidden=false;$('export').disabled=false;
- const target=options.canvas||C,exporting=target!==C;ctx=target.getContext('2d',{alpha:false});
+ const target=options.canvas||C,exporting=target!==C;ctx=target.getContext('2d',{alpha:false});const pixelWidth=exporting?3600:Math.round(C.getBoundingClientRect().width*(window.devicePixelRatio||1)),scale=pixelWidth/1200;ctx.setTransform(scale,0,0,scale,0,0);
  const r=get('全部',$('week').value),periods=trendPeriods(r),windowLabel={'1':'近1个月','3':'近3个月','6':'近6个月','12':'近1年','24':'近2年',all:'全部历史'}[$('window').value];
  const comment=$('comment').value.trim()||autoComment(r),commentLines=linesFor(comment,1112,24),chartStart=926+commentLines.length*38,footerStart=chartStart+770;
- const legalLines=LEGAL_TEXT.map(t=>linesFor(t,1112,11)),legalHeight=legalLines.reduce((n,a)=>n+a.length*17+42,0),height=footerStart+69+legalHeight+68;
- const pixelWidth=exporting?3600:Math.round(C.getBoundingClientRect().width*(window.devicePixelRatio||1)),scale=pixelWidth/1200;target.width=pixelWidth;target.height=Math.ceil(height*scale);ctx.setTransform(scale,0,0,scale,0,0);ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.fillStyle='#fff';ctx.fillRect(0,0,1200,height);
+ const legalLines=LEGAL_TEXT.map(t=>linesFor(t,1112,13)),legalHeight=legalLines.reduce((n,a)=>n+a.length*20+76,0),height=footerStart+64+legalHeight+60;
+ target.width=pixelWidth;target.height=Math.ceil(height*scale);ctx.setTransform(scale,0,0,scale,0,0);ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.fillStyle='#fff';ctx.fillRect(0,0,1200,height);
  if(ready)ctx.drawImage(logo,44,27,223,50);
  ctx.textAlign='right';text('国金商社',1156,60,24,'#104f87','bold');ctx.textAlign='left';
  ctx.fillStyle='#104f87';ctx.fillRect(0,100,1200,180);if(banner.complete&&banner.naturalWidth)ctx.drawImage(banner,0,100,1200,180);
@@ -83,7 +83,7 @@ function render(options={}){
  specs.forEach(([title,series,mixed],i)=>panelChart(i%2?620:44,chartStart+Math.floor(i/2)*374,title,series,periods,mixed));
  let y=footerStart;text('来源：酒店之家、国金商社研究数据库',44,y,19,'#66717d');
  y+=40;ctx.fillStyle='#f5f4f5';ctx.fillRect(0,y-10,1200,height-y+10);ctx.fillStyle='#eee8cd';ctx.fillRect(0,y-10,1200,5);
- legalLines.forEach((lines,i)=>{ctx.textAlign='center';text(i?'免责声明':'特别声明',600,y+19,19,'#ac9d6c','bold');ctx.textAlign='left';y+=32;lines.forEach(l=>{text(l,44,y,11,'#737373');y+=17});y+=10});
+ y+=24;legalLines.forEach((lines,i)=>{text(i?'免责声明':'特别声明',44,y+22,22,'#998951','bold');y+=52;lines.forEach(l=>{text(l,44,y,13,'#68727b');y+=20});y+=24});
  C.setAttribute('aria-label',`${r.period_id}全国酒店RevPAR${fmt(val(r,'revpar'))}元，OCC${fmt(val(r,'occupancy_rate')===null?null:val(r,'occupancy_rate')*100)}%，ADR${fmt(val(r,'adr'))}元。${comment}。特别声明：${LEGAL_TEXT[0]}。免责声明：${LEGAL_TEXT[1]}`);
  $('status').textContent=`${r.period_id} · ${windowLabel} · ${periods.length}周 · 高清PNG 3600 × ${Math.ceil(height*3)}`;
 }
