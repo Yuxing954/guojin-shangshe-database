@@ -307,3 +307,42 @@ body.site-page:is(.industry-hub,.industry-embedded) .board-section-head{margin-b
 
 body.industry-hub #sector-tabs.industry-sector-nav{margin-top:0!important}
 body.site-page:is(.industry-hub,.industry-embedded) .board-filters{justify-content:flex-start!important}
+
+/* Unified category/header rhythm and usable mobile content width. */
+body.site-page:is(.industry-hub,.macro-hub)>main>.portal-header{display:flex;align-items:center;gap:12px;padding:0 0 10px!important;margin:0 0 14px!important}
+body.site-page:is(.industry-hub,.macro-hub)>main>.portal-header>div:first-child{display:flex;align-items:baseline;gap:10px;min-width:0}
+body.site-page:is(.industry-hub,.macro-hub)>main>.portal-header h1{margin:0!important;font-size:22px!important;line-height:30px!important}
+body.site-page:is(.industry-hub,.macro-hub)>main>.portal-header .eyebrow{margin:0!important;line-height:20px;letter-spacing:0!important}
+body.industry-hub #sector-tabs.industry-sector-nav,body.macro-hub .section-category-nav{display:flex!important;align-items:center;flex-wrap:wrap;gap:8px!important;margin:0 0 14px!important;padding:0!important;border:0!important}
+body.macro-hub .macro-toolbar{padding:0!important;margin:0!important;background:transparent;border:0}
+body.site-page:is(.industry-hub,.macro-hub) :is(#sector-tabs,.section-category-nav)>:is(button,a){display:inline-flex!important;align-items:center;justify-content:center;gap:7px;min-height:42px;padding:7px 12px!important;border:1px solid var(--site-line);border-radius:8px;background:white;color:var(--site-muted);font-size:13px;line-height:22px;white-space:nowrap;text-decoration:none}
+body.site-page:is(.industry-hub,.macro-hub) :is(#sector-tabs,.section-category-nav)>:is([aria-pressed=true],[aria-current=page],.current){background:var(--site-accent)!important;border-color:var(--site-accent)!important;color:white!important}
+body.macro-hub .industry-sector-icon{display:flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:6px;background:#f0f2fa}
+body.macro-hub .industry-sector-icon svg{width:18px;height:18px;flex-shrink:0}
+body.macro-hub .section-category-nav>:is([aria-pressed=true],[aria-current=page]) .industry-sector-icon{background:#ffffff24}
+body.macro-hub .site-subnav{gap:6px;margin:10px 0 12px}
+body.macro-hub .board-filters{align-items:center!important;gap:8px 12px!important}
+body.site-page :is(.industry-board,.data-board),body.site-page :is(.macro-layout,.macro-detail,.macro-list-panel,.cm-main,#content){min-width:0;max-width:100%}
+@media(max-width:900px){
+ body.macro-hub .macro-layout{grid-template-columns:minmax(0,1fr)!important}
+}
+@media(max-width:760px){
+ body.site-page:is(.industry-hub,.macro-hub){padding-left:0!important}
+ body.site-page:is(.industry-hub,.macro-hub)>.site-nav{position:relative!important;width:100%!important}
+ body.site-page:is(.industry-hub,.macro-hub)>main.site-main{width:100%!important;max-width:100%!important;padding:14px 12px 24px!important;box-sizing:border-box}
+ body.site-page.industry-embedded>main.site-main{padding:0!important}
+ body.site-page:is(.industry-hub,.macro-hub)>main>.portal-header{padding-bottom:8px!important;margin-bottom:12px!important;flex-wrap:wrap}
+ body.site-page:is(.industry-hub,.macro-hub) :is(#sector-tabs,.section-category-nav)>:is(button,a){padding:7px 9px!important;gap:5px}
+ body.macro-hub :is(.macro-chart-grid,.morning-trends,.forecast-events,.prediction-grid){grid-template-columns:minmax(0,1fr)!important}
+ body.macro-hub .board-filters label{min-width:0;max-width:100%;flex:1 1 160px}
+ body.macro-hub .board-filters :is(select,input){min-width:0!important;max-width:100%!important}
+ body.macro-hub .cm-indicator-control{flex-basis:100%!important}
+ body.site-page:is(.industry-hub,.macro-hub,.industry-embedded) :is(.portal-table-scroll,.hd-table-scroll,.gj-table-scroll){overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+}
+@media(max-width:480px){
+ body.macro-hub .section-category-nav{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}
+ body.macro-hub .section-category-nav>:is(a,button){width:100%;box-sizing:border-box}
+ body.macro-hub .data-board :is(.board-kpis,.macro-kpis,.cm-kpis,.macro-topic-grid,#kpis){grid-template-columns:minmax(0,1fr)!important}
+ body.macro-hub .data-board .board-stat{min-height:0!important}
+ body.macro-hub .board-panel-head{padding:14px!important}
+}
