@@ -3,6 +3,8 @@
 const snapshot={rows:[],revision:'仓库周度数据'}, C=document.getElementById('product'),ctx=C.getContext('2d'),$=id=>document.getElementById(id), SEGS=['经济型','中档型','高档型','豪华型'], COLORS=['#235b88','#369c9a','#c49b50','#95758f'];
 let rows=snapshot.rows, revision=snapshot.revision, index=new Map(), weeks=[], logo=new Image(),ready=false,fontsReady=false;
 
+const banner=new Image();
+banner.onload=render;banner.src='scripts/assets/hotel-weekly/title.png';
 logo.onload=()=>{ready=true;render()};
 logo.src='scripts/assets/hotel-weekly/logo.png';
 const num=v=>v==null||String(v).trim()===''?null:Number.isFinite(Number(v))?Number(v):null;
@@ -58,8 +60,8 @@ function render(){
  C.width=3600;C.height=Math.ceil(height*3);ctx.scale(3,3);ctx.fillStyle='#fff';ctx.fillRect(0,0,1200,height);
  if(ready)ctx.drawImage(logo,44,27,223,50);
  ctx.textAlign='right';text('国金商社',1156,60,24,'#104f87','bold');ctx.textAlign='left';
- ctx.fillStyle='#104f87';ctx.fillRect(0,100,1200,132);
- text('酒店行业周度跟踪',44,158,38,'#fff','bold');
+ ctx.fillStyle='#104f87';ctx.fillRect(0,100,1200,132);if(banner.complete&&banner.naturalWidth)ctx.drawImage(banner,0,100,1200,132);
+ text('全国酒店经营数据周度跟踪',44,158,38,'#fff','bold');
  text(r.start_date.replaceAll('-','/')+' — '+r.end_date.replaceAll('-','/'),44,201,22,'#dce8f2');
  ctx.textAlign='right';text(r.period_id,1156,201,22,'#dce8f2');ctx.textAlign='left';
  const metrics=[['revpar','RevPAR','元'],['occupancy_rate','OCC','%'],['adr','ADR','元']];
