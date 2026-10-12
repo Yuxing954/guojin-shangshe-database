@@ -8,3 +8,5 @@ body.site-page{background:#f5f5f3;color:#28313a}body.site-page main.site-main{ma
 .daily-summary .daily-lead{margin:8px 0 18px;padding:12px 16px;font-size:14px;line-height:1.95}.daily-summary{margin-top:20px}
 
 .daily-summary .daily-lead{white-space:pre-line}.daily-original-meta a{color:#9b593e;text-decoration:none}
+
+.daily-summary-point{display:flex;gap:10px;margin:0 0 12px;white-space:normal}.daily-summary-point:last-child{margin-bottom:0}.daily-summary-point>strong{color:#914c34;font-size:16px;flex-shrink:0}.daily-segment{border-bottom:1px solid #e9e5df;margin:0}.daily-segment>summary{padding:12px 0;cursor:pointer;font-size:13px;line-height:1.7;font-weight:600;color:#28313a}.daily-segment>summary>span{float:right;font-size:10px;color:#888;font-weight:400;margin-left:12px}.daily-segment-content{padding:0 10px 10px}.daily-segment>summary:focus-visible{outline:2px solid #9b593e;outline-offset:2px}@media(max-width:600px){.daily-segment>summary>span{float:none;display:block;margin-left:16px}}
