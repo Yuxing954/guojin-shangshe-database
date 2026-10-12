@@ -86,7 +86,7 @@ function render(options={}){
   ctx.fillStyle='#cbd6df';ctx.fillRect(44,top+3*rowHeight-1,1112,1)
  });
  desktopSection('本周观察',commentTitle);commentLines.forEach((l,i)=>text(l,44,commentTop+i*35,TYPE.body,'#283b49'));
- const specs=[['全国酒店同比趋势',[{name:'RevPAR同比',seg:'全部',field:'revpar',color:'#165b9c',marker:'circle'},{name:'ADR同比',seg:'全部',field:'adr',color:'#d47721',marker:'square'},{name:'OCC（右轴）',seg:'全部',field:'occupancy_rate',color:'#8052a0',marker:'diamond'}],true],... [['revpar','RevPAR 同比 · 分档次'],['occupancy_rate','OCC 同比 · 分档次'],['adr','ADR 同比 · 分档次']].map(([k,t])=>[t,SEGS.map((seg,j)=>({name:seg,seg,field:k,color:COLORS[j],marker:j%2?'square':'circle'})),false])];
+ const specs=[['全国酒店同比趋势',[{name:'RevPAR同比',seg:'全部',field:'revpar',color:'#165b9c',marker:'circle'},{name:'ADR同比',seg:'全部',field:'adr',color:'#66a9dc',marker:'square'},{name:'OCC（右轴）',seg:'全部',field:'occupancy_rate',color:'#7b8490',marker:'diamond'}],true],... [['revpar','RevPAR 同比 · 分档次'],['occupancy_rate','OCC 同比 · 分档次'],['adr','ADR 同比 · 分档次']].map(([k,t])=>[t,SEGS.map((seg,j)=>({name:seg,seg,field:k,color:COLORS[j],marker:j%2?'square':'circle'})),false])];
  specs.forEach(([title,series,mixed],i)=>panelChart(i%2?620:44,chartStart+Math.floor(i/2)*374,title,series,periods,mixed));
  let y=footerStart;text('来源：酒店之家、国金商社研究数据库',44,y,19,'#66717d');
  y+=40;ctx.fillStyle='#f5f4f5';ctx.fillRect(0,y-10,1200,height-y+10);ctx.fillStyle='#eee8cd';ctx.fillRect(0,y-10,1200,5);
