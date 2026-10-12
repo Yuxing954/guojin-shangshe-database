@@ -8,7 +8,7 @@
     const wrap=document.createElement('section'),status=document.createElement('p'),frame=document.createElement('iframe');
     wrap.className='industry-panel';status.className='portal-status';status.textContent='正在读取'+labels[id]+'数据…';status.setAttribute('role','status');
     frame.id='panel-'+id;frame.className='industry-panel-frame';frame.title=labels[id];frame.setAttribute('aria-label',labels[id]+'数据');
-    const url=new URL(pages[id],location.href);url.searchParams.set('embed','1');if(id==='dining')url.searchParams.set('v','20261012trend');
+    const url=new URL(pages[id],location.href);url.searchParams.set('embed','1');if(id==='dining')url.searchParams.set('v','20261012polish');
     const view=new URLSearchParams(location.search).get('panelView');if(view&&id!=='dining')url.hash=view;
     let timer;const load=()=>{clearTimeout(timer);status.hidden=false;status.textContent='正在读取'+labels[id]+'数据…';frame.src=url.href;timer=setTimeout(()=>{status.textContent=labels[id]+'数据暂时无法读取。';const retry=document.createElement('button');retry.className='portal-button';retry.textContent='重试';retry.onclick=load;status.append(' ',retry);},15000);};
     wrap.append(status,frame);host.append(wrap);panels.set(id,{wrap,frame,status,ready:()=>{clearTimeout(timer);status.hidden=true;}});load();

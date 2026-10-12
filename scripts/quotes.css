@@ -83,3 +83,19 @@
 .site-page .quotes-table[data-columns=compact]{width:100%;min-width:0}.quotes-workspace[data-scope=watch] .quotes-table-scroll{height:auto;max-height:440px}
 
 .quotes-settings[open]{flex-basis:100%}.quotes-settings[open]>summary{width:max-content}.quotes-settings-panel{position:static;top:auto;right:auto;width:auto;max-width:none;margin-top:10px;box-shadow:none;grid-template-columns:repeat(2,minmax(0,1fr));align-items:center}.quotes-settings-actions{grid-column:1/-1}@media(max-width:760px){.quotes-settings-panel{width:auto;max-width:none;grid-template-columns:1fr}}
+
+/* Stable table geometry and readable compact controls. */
+.quotes-filters{display:grid;grid-template-columns:minmax(180px,1fr) minmax(130px,180px) auto;align-items:start}
+.quotes-groups{display:none}
+.quotes-settings[open]{grid-column:1/-1}
+.quotes-table[data-columns=compact]{table-layout:fixed}
+.quotes-table[data-columns=compact] th:first-child{width:34%}
+.quotes-table[data-columns=compact] th:nth-child(2){width:24%}
+.quotes-table[data-columns=compact] th:nth-child(3){width:22%}
+.quotes-table[data-columns=compact] th:last-child{width:20%}
+.quotes-table td:first-child{overflow:hidden}.quotes-name{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:block}
+.quotes-price small{display:block;font-size:10px;line-height:16px;font-weight:400;color:#778195;margin:0}
+.quotes-time{white-space:nowrap;font-variant-numeric:tabular-nums}.quotes-board-head{align-items:center;gap:12px}.quotes-board-head h2{font-size:18px;line-height:28px;margin:0}
+.quotes-board-head p{font-size:12px;line-height:20px;margin:4px 0 0;max-width:100%}.quotes-status{line-height:20px;overflow-wrap:anywhere}
+.quotes-benchmark strong{font-variant-numeric:tabular-nums}.quotes-overview{gap:12px}.quotes-chart-readout{display:flex;flex-wrap:wrap;gap:8px;line-height:20px}
+@media(max-width:760px){.quotes-filters{grid-template-columns:minmax(0,1fr) auto}.quotes-filters>input{grid-column:1/-1}.quotes-filters>select{width:100%}.quotes-settings summary{padding:10px}.quotes-table[data-columns=compact] th:first-child{width:32%}.quotes-table[data-columns=compact] th:nth-child(2){width:25%}.quotes-table[data-columns=compact] th:nth-child(3){width:23%}.quotes-board-head{flex-wrap:wrap}.quotes-heat-tile strong{white-space:normal;line-height:1.4}}
