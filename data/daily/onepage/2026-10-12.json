@@ -283,12 +283,13 @@
     {
       "title": "酒店｜全国周度数据更新至26W41",
       "period": "2026-10-05至2026-10-11",
-      "summary": "26W41（10/5—10/11）全国酒店RevPAR 105.69元、ADR 207.69元、入住率50.89%。本周跨国庆后段与节后工作日，判断需求变化需考虑假期错位，不能直接将环比回落解释为行业趋势转弱。",
+      "summary": "26W41（10/5—10/11）全国酒店RevPAR同比+12.9%、ADR同比+7.3%，入住率同比+5.2%（提升2.52个百分点）。RevPAR增长同时受房价和入住率提升带动。比较基准为2025W41（10/6—10/12），按周历同周同比，需考虑两年国庆假期错位。",
       "source": "酒店之家 · 已导入数据",
       "url": "hotel-dashboard.html",
       "publishedAt": null,
       "availableAt": "2026-10-12T18:09:23+08:00",
-      "evidenceFile": "data/hotel_industry_weekly.csv"
+      "evidenceFile": "data/hotel_industry_weekly.csv",
+      "comparisonPeriod": "2025W41（2025-10-06至2025-10-12）"
     }
   ],
   "monitoringCheckedAt": "2026-10-12T20:33:14+08:00"

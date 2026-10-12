@@ -91,3 +91,6 @@ validate_daily_editorial.py检查：所有segments恰好全部列入focus、每�
 - 用AI总结变化含义，重要发现融入①②③；假期错位、基数与预测属性明确。16点后手动追加须标实际入库/追加时间，不能混作原截点前发布。
 - onepage新增earningsUpcoming数组（company/code/period/date/status/source/url/checkedAt/evidenceFile）、industryUpdates数组（title/period/summary/source/url/publishedAt或null/availableAt/evidenceFile）、monitoringCheckedAt。无有效条目不凑数；核验失败不能声称没有更新。历史日报保留当期快照，不加载今天的动态日历覆盖旧期。
 - 发布前核验每条财报日期在当日至未来14天，排除已披露、取消、重复项目；行业数字与来源逐项相符。例行检查必须同时涵盖财报和行业数据，并记录无法访问的来源。
+
+## 个人研究偏好：同比优先（最高优先的最新要求）
+行业数据与总结以同比为主要判断依据；先写关键指标同比、再解释变化原因，不只报绝对值。环比不重要，不作为主结论，仅在用户要求或提供额外信息时补充。核验去年同期、统计范围、单位、假期可比性；入住率区分同比百分比与百分点。缺少可靠同比时明确缺口，不用环比替代。酒店周度须核验去年同周原值，说明周历口径及假期错位。
