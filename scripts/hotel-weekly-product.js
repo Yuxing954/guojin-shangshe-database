@@ -64,7 +64,7 @@ function render(options={}){
  const legalLines=LEGAL_TEXT.map(t=>linesFor(t,1112,13)),legalHeight=legalLines.reduce((n,a)=>n+a.length*18+58,0),height=footerStart+56+legalHeight+170;
  target.width=pixelWidth;target.height=Math.ceil(height*scale);ctx.setTransform(scale,0,0,scale,0,0);ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.fillStyle='#fff';ctx.fillRect(0,0,1200,height);
  if(ready)ctx.drawImage(logo,44,25,300,67);
- ctx.fillStyle='#447eaf';ctx.beginPath();ctx.roundRect(856,30,300,58,29);ctx.fill();ctx.textAlign='center';text('国金商社于健',1006,71,32,'#fff','normal');ctx.textAlign='left';
+ ctx.fillStyle='#447eaf';ctx.fillRect(856,30,300,58);ctx.textAlign='center';text('国金商社于健',1006,71,32,'#fff','normal');ctx.textAlign='left';
  ctx.fillStyle='#104f87';ctx.fillRect(0,120,1200,272);if(banner.complete&&banner.naturalWidth)ctx.drawImage(banner,0,120,1200,272);
  text('酒店行业周度跟踪',44,236,68,'#fff','bold');
  const shortDate=d=>Number(d.slice(5,7))+'/'+Number(d.slice(8,10));text(r.period_id.slice(2)+' ('+shortDate(r.start_date)+'-'+shortDate(r.end_date)+')',44,330,28,'#fff');
