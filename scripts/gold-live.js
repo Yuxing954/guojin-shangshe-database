@@ -10,8 +10,6 @@
       el.querySelector('.gold-live-price').textContent=q?D.fmt(q.price,2):'—';
       const change=el.querySelector('.gold-live-change');change.textContent=Number.isFinite(q?.percent)?(q.percent>0?'+':'')+D.fmt(q.percent,2)+'%':'—';change.className='gold-live-change '+(q?.percent>0?'up':q?.percent<0?'down':'');
       el.querySelector('time').textContent=q?new Intl.DateTimeFormat('zh-CN',{timeZone:'Asia/Shanghai',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hourCycle:'h23'}).format(new Date(q.asOf))+' 北京时间':'等待报价';
-      el.querySelector('.gold-live-state').textContent=errors.has(id)?q?'读取失败 · 保留上次报价':'暂未取得报价':q&&age>15?'来源时间未更新 · 上次报价':q?'来源报价':'正在读取';
-      const source=el.querySelector('a');source.textContent=q?.source||'数据来源';source.href=q?.url||'https://finance.sina.com.cn/nmetal/';
     }
   }
   function international(signal){return new Promise((resolve,reject)=>{
@@ -31,7 +29,7 @@
       international(signal).catch(()=>{errors.add('XAU');errors.add('GC');}).then(async()=>{if(!errors.has('XAU')||signal.aborted)return;try{const r=await fetch('https://api.gold-api.com/price/XAU',{signal});if(!r.ok)throw Error('Gold API');const q=await r.json();accept('XAU',{price:q.price,percent:null,asOf:q.updatedAt,source:'Gold API',url:'https://gold-api.com/docs'});}catch(e){errors.add('XAU');}})
     ]);clearTimeout(deadline);pending=false;paint();
   }
-  host.innerHTML='<div class="gold-live-head"><h2>国内与国际金价</h2><button class="portal-button" type="button">刷新报价</button></div><div class="gold-live-grid">'+definitions.map(([id,name,unit,interval])=>'<article class="board-stat" data-gold="'+id+'"><span>'+name+'</span><strong class="gold-live-price">—</strong><span>'+unit+'</span><div class="gold-live-detail"><span class="gold-live-change">—</span><span>'+interval+'</span></div><time>等待报价</time><small class="gold-live-state">正在读取</small><a target="_blank" rel="noopener">数据来源</a></article>').join('')+'</div>';
+  host.innerHTML='<div class="gold-live-head"><h2>国内与国际金价</h2><button class="portal-button" type="button">刷新报价</button></div><div class="gold-live-grid">'+definitions.map(([id,name,unit,interval])=>'<article class="board-stat" data-gold="'+id+'"><span>'+name+'</span><strong class="gold-live-price">—</strong><span>'+unit+'</span><div class="gold-live-detail"><span class="gold-live-change">—</span><span>'+interval+'</span></div><time>等待报价</time></article>').join('')+'</div>';
   host.querySelector('button').onclick=refresh;
   function resume(){clearInterval(timer);if(active()){refresh();timer=setInterval(refresh,15000);}else controller?.abort();}
   addEventListener('hashchange',resume);document.addEventListener('visibilitychange',resume);addEventListener('pagehide',()=>{clearInterval(timer);controller?.abort();});addEventListener('pageshow',resume);resume();
