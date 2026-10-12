@@ -51,6 +51,16 @@
       "updateRecord": "data/hotel-update-record.json"
     },
     {
+      "id": "hotel_holiday_daily",
+      "name": "酒店节假日经营对标",
+      "file": "data/hotel_holiday_daily.csv",
+      "category": "酒店",
+      "asOf": "2026-10-07",
+      "latestPeriod": "2026",
+      "rowCount": 275,
+      "updateRecord": "data/hotel-holiday-import-record.json"
+    },
+    {
       "id": "taxfree",
       "name": "免税板块跟踪数据",
       "file": "data/免税板块跟踪数据_2026-09-08.csv",
@@ -286,3 +296,4 @@
     }
   ]
 }
+
