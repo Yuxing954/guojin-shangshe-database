@@ -25,8 +25,11 @@ assert.equal(spring.days,9);assert.equal(spring.sales,27.2);assert.equal(spring.
 assert.ok(Math.abs(spring.daily_sales-27.2/9)<1e-12);
 assert.ok(Math.abs(spring.daily_yoy-15.462167038098262)<1e-10);
 assert.equal(M.filter(d.records,'国庆','全部').length,7);
-assert.equal(M.filter(d.records,'国庆','2022')[0].daily_sales,null);
-assert.equal(M.filter(d.records,'国庆','2022')[0].spend_yoy,null);
+assert.equal(M.filter(d.records,'国庆','2022')[0].days,7);
+assert.equal(M.filter(d.records,'国庆','2022')[0].daily_sales,6.13/7);
+assert.equal(M.filter(d.records,'国庆','2022')[0].quality,'研报转引＋计算值');
+assert.equal(M.filter(d.records,'国庆','2022')[0].workbook_baseline.period,'9.29-10.6');
+assert.ok(Number.isFinite(M.filter(d.records,'国庆','2022')[0].spend_yoy));
 assert.ok(d.records.every(r=>r.web_source?.url||(r.source_cells.sales.cell&&r.sheet)));
 const mid=M.filter(d.records,'中秋','2026')[0],national=M.filter(d.records,'国庆','2026')[0];
 assert.equal(mid.sales,2.31);assert.equal(mid.shoppers,3.86);assert.equal(mid.days,3);assert.equal(mid.daily_sales,2.31/3);assert.equal(mid.daily_yoy,null);

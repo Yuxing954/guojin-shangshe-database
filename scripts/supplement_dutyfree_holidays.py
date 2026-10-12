@@ -36,18 +36,18 @@ def apply_updates(data):
                 detail["notes"].append("1月2日、3日为工作日；该三天窗口由原表公式反推，非独立公开披露。")
                 records.append(detail)
         for key, value in update.items():
-            if key not in ("notes", "preserve_calendar_detail", "recompute_yoy"):
+            if key not in ("notes", "preserve_calendar_detail", "recompute_yoy", "replace_notes"):
                 record[key] = copy.deepcopy(value)
-        record["notes"] = list(dict.fromkeys(record["notes"] + update["notes"]))
-        record.update(status="available", quality="公开披露＋计算值")
+        record["notes"] = update["notes"][:] if update.get("replace_notes") else list(dict.fromkeys(record["notes"] + update["notes"]))
+        record.update(status="available", quality=update.get("quality", "公开披露＋计算值"))
         if "web_source" in update:
-            record["web_source"]["checkedAt"] = supplements["checkedAt"]
+            record["web_source"]["checkedAt"] = update["web_source"].get("checkedAt", supplements["checkedAt"])
         sales, shoppers, days = record.get("sales"), record.get("shoppers"), record.get("days")
         record["spend"] = sales / shoppers * 10000 if sales is not None and shoppers else None
         record["daily_sales"] = sales / days if sales is not None and days else None
         record["daily_shoppers"] = shoppers / days if shoppers is not None and days else None
         record["calculations"] = dict(DERIVED)
-        if update.get("preserve_calendar_detail") or update.get("recompute_yoy"):
+        if update.get("preserve_calendar_detail") or update.get("recompute_yoy", "replace_notes"):
             record.update(daily_yoy=None, shoppers_daily_yoy=None, spend_yoy=None)
         if not record.get("yoy_basis"):
             record["yoy_basis"] = "未取得可比同比，保持缺失；披露同比单列保留"

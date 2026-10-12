@@ -2,3 +2,5 @@
 
 .dh-value{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px 12px;margin-top:6px}.dh-value strong{white-space:nowrap}.dh-cards .dh-yoy,.dutyfree-page .dh-cards .dh-yoy{font-size:16px;font-weight:600;white-space:nowrap;color:#657287}.dh-cards .dh-yoy.is-up,.dutyfree-page .dh-cards .dh-yoy.is-up{color:#ab525b}.dh-cards .dh-yoy.is-down,.dutyfree-page .dh-cards .dh-yoy.is-down{color:#347c70}.dh-cards .dh-yoy.is-missing,.dutyfree-page .dh-cards .dh-yoy.is-missing{font-size:14px;font-weight:400}@media(max-width:700px){.dh-value{gap:5px 10px}.dh-cards .dh-yoy,.dutyfree-page .dh-cards .dh-yoy{font-size:15px}}
 
+
+#dh-coverage{white-space:pre-line;line-height:1.9;margin:12px 0;color:var(--site-muted,#748194)}

@@ -1056,7 +1056,7 @@
       "daily_yoy": 8.62745098039217,
       "shoppers_daily_yoy": 6.953223767383054,
       "spend_yoy": 1.56538265424373,
-      "yoy_basis": "原表同比栏（当年公布口径）",
+      "yoy_basis": "缺失同比按连续上一年同组假期的日均/每人次金额计算；原文披露同比单列保留。",
       "workbook_baseline": {
         "id": "2026-五一-holiday-五一假期-3-28",
         "year": 2026,
@@ -1150,7 +1150,10 @@
       "calculations": {
         "spend": "购物金额（亿元）/购物人次（万人次）×10000",
         "daily_sales": "购物金额/统计天数",
-        "daily_shoppers": "购物人次/统计天数"
+        "daily_shoppers": "购物人次/统计天数",
+        "daily_yoy": "2026年daily_sales/2025年daily_sales−1，乘100",
+        "shoppers_daily_yoy": "2026年daily_shoppers/2025年daily_shoppers−1，乘100",
+        "spend_yoy": "2026年spend/2025年spend−1，乘100"
       }
     },
     {
@@ -1600,8 +1603,8 @@
       "notes": [
         "购物件数与购物人数同比按公开报道补录；2025年清明总额未独立核验，不反推补录。"
       ],
-      "daily_yoy": 14.799999999999999,
-      "shoppers_daily_yoy": 19.6,
+      "daily_yoy": null,
+      "shoppers_daily_yoy": null,
       "spend_yoy": null,
       "yoy_basis": "原表同比栏（当年公布口径）",
       "workbook_baseline": {
@@ -1834,7 +1837,7 @@
       "daily_yoy": 8.021390374331538,
       "shoppers_daily_yoy": 10.862619808306718,
       "spend_yoy": -2.562838077332086,
-      "yoy_basis": "原表同比栏（当年公布口径）",
+      "yoy_basis": "缺失同比按连续上一年同组假期的日均/每人次金额计算；原文披露同比单列保留。",
       "workbook_baseline": {
         "id": "2026-端午-holiday-端午假期-3-22",
         "year": 2026,
@@ -1928,7 +1931,10 @@
       "calculations": {
         "spend": "购物金额（亿元）/购物人次（万人次）×10000",
         "daily_sales": "购物金额/统计天数",
-        "daily_shoppers": "购物人次/统计天数"
+        "daily_shoppers": "购物人次/统计天数",
+        "daily_yoy": "2026年daily_sales/2025年daily_sales−1，乘100",
+        "shoppers_daily_yoy": "2026年daily_shoppers/2025年daily_shoppers−1，乘100",
+        "spend_yoy": "2026年spend/2025年spend−1，乘100"
       }
     },
     {
@@ -2233,7 +2239,7 @@
       "daily_yoy": 3.510895883777243,
       "shoppers_daily_yoy": 14.378705102871114,
       "spend_yoy": -9.548217147753768,
-      "yoy_basis": "日均/客单同比按2026国庆7天与2025中秋国庆8天计算；海关披露购物人次同比10.41%为原文口径，单列保留。",
+      "yoy_basis": "缺失同比按连续上一年同组假期的日均/每人次金额计算；原文披露同比单列保留。",
       "comparison_group": "国庆",
       "workbook_baseline": {
         "sheet": "国庆中秋假期",
@@ -2291,7 +2297,10 @@
       "calculations": {
         "spend": "购物金额（亿元）/购物人次（万人次）×10000",
         "daily_sales": "购物金额/统计天数",
-        "daily_shoppers": "购物人次/统计天数"
+        "daily_shoppers": "购物人次/统计天数",
+        "daily_yoy": "2026年daily_sales/2025年daily_sales−1，乘100",
+        "shoppers_daily_yoy": "2026年daily_shoppers/2025年daily_shoppers−1，乘100",
+        "spend_yoy": "2026年spend/2025年spend−1，乘100"
       },
       "items_text": null,
       "reported_shoppers_yoy": 10.41,
@@ -2499,26 +2508,30 @@
         }
       },
       "notes": [],
-      "daily_yoy": null,
-      "shoppers_daily_yoy": null,
+      "daily_yoy": 89.84502446982057,
+      "shoppers_daily_yoy": 112.5,
       "spend_yoy": -10.699588477366273,
-      "yoy_basis": "缺失同比按本表相同假期上一年计算；已有同比沿用原表",
-      "comparison_group": "国庆"
+      "yoy_basis": "缺失同比按连续上一年同组假期的日均/每人次金额计算；原文披露同比单列保留。",
+      "comparison_group": "国庆",
+      "calculations": {
+        "daily_yoy": "2023年daily_sales/2022年daily_sales−1，乘100",
+        "shoppers_daily_yoy": "2023年daily_shoppers/2022年daily_shoppers−1，乘100"
+      }
     },
     {
       "id": "2022-国庆-holiday-国庆中秋假期-7-34",
       "year": 2022,
       "holiday": "国庆",
       "kind": "holiday",
-      "period": "9.29-10.6",
-      "days": null,
-      "sales": 6.129032258064517,
-      "shoppers": 6.995884773662551,
-      "spend": 8760.91081593928,
-      "daily_sales": null,
-      "daily_shoppers": null,
+      "period": "10.1-10.7",
+      "days": 7,
+      "sales": 6.13,
+      "shoppers": 7.0,
+      "spend": 8757.142857142857,
+      "daily_sales": 0.8757142857142857,
+      "daily_shoppers": 1.0,
       "status": "available",
-      "quality": "原表公式值",
+      "quality": "研报转引＋计算值",
       "sheet": "国庆中秋假期",
       "source_cells": {
         "sales": {
@@ -2542,13 +2555,76 @@
         }
       },
       "notes": [
-        "原表日期为9.29-10.6，与年份对应关系待核验；未推定统计天数。"
+        "统计期间与总额按民生证券2023年10月8日研报第6页表2校正；海口海关原始公告暂未取得，标记为研报转引。原表错误日期与反推公式保留在workbook_baseline；购物件数未披露，保持缺失。"
       ],
-      "daily_yoy": null,
-      "shoppers_daily_yoy": null,
-      "spend_yoy": null,
-      "yoy_basis": null,
-      "comparison_group": "国庆"
+      "daily_yoy": -58.29931972789115,
+      "shoppers_daily_yoy": -61.111111111111114,
+      "spend_yoy": 7.230320699708437,
+      "yoy_basis": "缺失同比按连续上一年同组假期的日均/每人次金额计算；原文披露同比单列保留。",
+      "comparison_group": "国庆",
+      "workbook_baseline": {
+        "id": "2022-国庆-holiday-国庆中秋假期-7-34",
+        "year": 2022,
+        "holiday": "国庆",
+        "kind": "holiday",
+        "period": "9.29-10.6",
+        "days": null,
+        "sales": 6.129032258064517,
+        "shoppers": 6.995884773662551,
+        "spend": 8760.91081593928,
+        "daily_sales": null,
+        "daily_shoppers": null,
+        "status": "available",
+        "quality": "原表公式值",
+        "sheet": "国庆中秋假期",
+        "source_cells": {
+          "sales": {
+            "cell": "G34",
+            "value": 6.129032258064517,
+            "formula": "=F34/2.17"
+          },
+          "shoppers": {
+            "cell": "G35",
+            "value": 6.995884773662551,
+            "formula": "=F35/2.43"
+          },
+          "spend": {
+            "cell": "G36",
+            "value": 8760.91081593928,
+            "formula": "=G34/G35*10000"
+          },
+          "period": {
+            "cell": "G33",
+            "value": "9.29-10.6"
+          }
+        },
+        "notes": [
+          "原表日期为9.29-10.6，与年份对应关系待核验；未推定统计天数。"
+        ],
+        "daily_yoy": null,
+        "shoppers_daily_yoy": null,
+        "spend_yoy": null,
+        "yoy_basis": null,
+        "comparison_group": "国庆"
+      },
+      "web_source": {
+        "title": "民生证券社服周观点：客流恢复平稳，人均消费环比五一有所提升，重点景区相比19年增长显著",
+        "url": "https://pdf.dfcfw.com/pdf/H3_AP202310091601093744_1.pdf",
+        "publishedAt": "2023-10-08",
+        "publisher": "民生证券",
+        "authority": "研报转引海口海关",
+        "locator": "PDF第6页表2，2022年国庆整体行；日期10/1—10/7，金额6.13亿元，人次7.0万",
+        "pdfPage": 6,
+        "checkedAt": "2026-10-12"
+      },
+      "calculations": {
+        "spend": "购物金额（亿元）/购物人次（万人次）×10000",
+        "daily_sales": "购物金额/统计天数",
+        "daily_shoppers": "购物人次/统计天数",
+        "daily_yoy": "2022年daily_sales/2021年daily_sales−1，乘100",
+        "shoppers_daily_yoy": "2022年daily_shoppers/2021年daily_shoppers−1，乘100",
+        "spend_yoy": "2022年spend/2021年spend−1，乘100"
+      }
     },
     {
       "id": "2026-元旦首日-detail-元旦假期-3-16",
@@ -3835,7 +3911,10 @@
       "calculations": {
         "spend": "购物金额（亿元）/购物人次（万人次）×10000",
         "daily_sales": "购物金额/统计天数",
-        "daily_shoppers": "购物人次/统计天数"
+        "daily_shoppers": "购物人次/统计天数",
+        "daily_yoy": "2021年daily_sales/2020年daily_sales−1，乘100",
+        "shoppers_daily_yoy": "2021年daily_shoppers/2020年daily_shoppers−1，乘100",
+        "spend_yoy": "2021年spend/2020年spend−1，乘100"
       },
       "yoy_basis": "缺失同比按连续上一年同组假期的日均/每人次金额计算；原文披露同比单列保留。"
     },
@@ -4073,12 +4152,12 @@
       "yoy_basis": "未取得可比同比，保持缺失；披露同比单列保留"
     }
   ],
-  "updatedAt": "2026-10-09",
+  "updatedAt": "2026-10-12",
   "coverageNotes": [
-    "月度核心金额、人次、件数已收录至2026年8月；2026年9月单月尚未独立核验，不用中秋或暑期数据代替。",
-    "2025年清明缺少独立核验的假期总额，保留缺失；2026年清明披露同比可单独展示。",
-    "2022年国庆原表日期与年份不一致，总额为公式反推；未核验实际期间，不推定天数或日均。",
-    "2025年中秋与国庆连休，无独立中秋总额；2026年中秋无可比上一年独立假期同比。",
-    "月度旅游人次、转化率的部分早期及2026年记录缺少可核验原始口径，保留空值；首年同月基数不存在的同比不补0。"
+    "月度：截至2026年8月；9月单月待披露核验。",
+    "2025年清明：独立假期总额待核验。",
+    "2022年国庆：10月1—7日，7天；研报转引，原表日期已修正。",
+    "中秋：2025年与国庆连休，2026年无独立假期同比。",
+    "旅游人次及转化率：部分期间缺原始口径；缺失值与不可比同比留空。"
   ]
 }
