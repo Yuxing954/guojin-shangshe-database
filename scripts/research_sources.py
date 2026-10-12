@@ -44,7 +44,14 @@ def update_rows(root, dbid):
             raise ValueError('Research update file is outside repository')
         with target.open(encoding='utf-8-sig', newline='') as stream:
             rows.extend(csv.DictReader(stream))
-    return merge_rows([], rows)
+    rows = merge_rows([], rows)
+    # Incremental classification corrections override the original batch category.
+    # Keep each topic in exactly one of the two opinion indexes.
+    if dbid in ('views', 'all_views'):
+        other = 'all_views' if dbid == 'views' else 'views'
+        reassigned = set(data.get('assignedTopics', {}).get(other, []))
+        rows = [r for r in rows if not (row_keys(r)[0] and row_keys(r)[0][0] in reassigned)]
+    return rows
 
 
 def archive_rows(root, dbid, rows):

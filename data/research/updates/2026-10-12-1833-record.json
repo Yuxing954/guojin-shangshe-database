@@ -1,0 +1,37 @@
+{
+  "batch": "2026-10-12-1833",
+  "sourceGroup": "88888142214212",
+  "sourceName": "水木调研纪要-2.0",
+  "readTopics": 30,
+  "pagination": {
+    "pages": 1,
+    "from": "2026-10-12T13:17:03.721+0800",
+    "to": "2026-10-12T18:38:27.080+0800",
+    "overlapCutoff": "2026-10-12T17:31:23.816+0800",
+    "newTopics": 5
+  },
+  "added": {
+    "commercialViews": 0,
+    "marketViews": 1,
+    "minutes": 0,
+    "attachments": 0
+  },
+  "excluded": {
+    "image_only_market_summary": 3,
+    "event_announcement": 1
+  },
+  "cumulative": {
+    "commercialViews": 202,
+    "marketViews": 4632,
+    "minutes": 101,
+    "attachments": 341
+  },
+  "latestSourceTime": "2026-10-12T18:38:27.080+0800",
+  "latestIndexedContentTime": "2026-10-12T18:31:39.913+0800",
+  "classificationCorrection": {
+    "foodBeverageTopicsMoved": 375,
+    "newMarketRows": 369,
+    "alreadyPresentInMarket": 6,
+    "restoredRestaurantServiceTopics": 1
+  }
+}

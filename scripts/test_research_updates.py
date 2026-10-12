@@ -1,12 +1,32 @@
 """Validate source coverage, assignments and the generated research index."""
 import json
 import unittest
+import csv
+import re
 from pathlib import Path
 from research_sources import update_rows, row_keys
 
 ROOT=Path(__file__).resolve().parent.parent
 
 class ResearchDataTests(unittest.TestCase):
+    def test_historical_food_beverage_reclassification_is_mutually_exclusive(self):
+        meta=json.loads((ROOT/'data/research/updates/manifest.json').read_text(encoding='utf-8'))
+        correction=meta['lastClassificationCorrection']
+        path=ROOT/correction['correctionFile']
+        with path.open(encoding='utf-8-sig',newline='') as stream:
+            rows=list(csv.DictReader(stream))
+        corrected={re.search(r'/topic/(\d+)',r['原文链接']).group(1) for r in rows}
+        self.assertEqual(len(corrected),correction['newAllViewsRows'])
+        views={row_keys(r)[0][0] for r in update_rows(ROOT,'views') if row_keys(r)[0]}
+        all_views={row_keys(r)[0][0] for r in update_rows(ROOT,'all_views') if row_keys(r)[0]}
+        self.assertTrue(corrected <= all_views)
+        self.assertFalse(corrected & views)
+        self.assertFalse(set(meta['assignedTopics']['views']) & set(meta['assignedTopics']['all_views']))
+        index=json.loads((ROOT/'data/research/recent.json').read_text(encoding='utf-8'))
+        market=next(db for db in index['dbs'] if db['id']=='all_views')
+        indexed={row_keys(r)[0][0] for r in market['rows'] if row_keys(r)[0]}
+        self.assertTrue(set(correction['topicIds']) <= indexed)
+
     def test_sources_and_latest_index(self):
         meta=json.loads((ROOT/'data/research/updates/manifest.json').read_text(encoding='utf-8'))
         index=json.loads((ROOT/'data/research/recent.json').read_text(encoding='utf-8'))

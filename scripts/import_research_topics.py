@@ -7,12 +7,14 @@ ap.add_argument('--since',required=True,help='YYYY-MM-DD; pages must reach this 
 ap.add_argument('--batch-date',default=datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).date().isoformat())
 args=ap.parse_args()
 datetime.date.fromisoformat(args.since)
-datetime.date.fromisoformat(args.batch_date)
+datetime.date.fromisoformat(args.batch_date[:10])
+if not re.fullmatch(r"\d{4}-\d{2}-\d{2}(?:-\d{4})?", args.batch_date):
+    raise ValueError('batch-date must be YYYY-MM-DD with an optional -HHMM suffix')
 HERE=Path(args.topics_dir).resolve()
 sys.path.insert(0,str(ROOT/'update'))
 sys.path.insert(0,str(ROOT/'scripts'))
 from clean_text import normalize_content,make_title
-from segment_filter import classify
+from segment_filter import classify, is_food_beverage_focus
 from research_sources import merge_rows
 cfg=json.loads((ROOT/'update/config.json').read_text(encoding='utf-8'))
 cfg['pool'].append('东方甄选')
@@ -49,7 +51,10 @@ for tid,t in topics.items():
     if ok:
         row={'时间':stamp,'月份':stamp[:7],'标题':title,'内容':body,'作者':(talk.get('owner') or {}).get('name',''),'命中关键词':'|'.join(h),'点赞':str(t.get('likes_count',0)),'评论':str(t.get('comments_count',0)),'阅读':str(t.get('readers_count',0)),'原文链接':url}
         relevant=any(k not in cfg['generic'] for k in h) or any(k in title for k in h) or any(k in title for k in ['文旅','社服','社零','商社','茶饮','珠宝'])
-        if h and relevant and not (any(w in title for w in cfg['noise_title_words']) and all(k in cfg['generic'] for k in h)):rows['views'].append(row)
+        commercial_relevant = h and relevant and not (any(w in title for w in cfg['noise_title_words']) and all(k in cfg['generic'] for k in h))
+        # A company/keyword overlap in the body is not enough to make a food/beverage
+        # or大众品专题 a 商社 view. Keep it searchable in all market views instead.
+        if commercial_relevant and not is_food_beverage_focus(title):rows['views'].append(row)
         else:rows['all_views'].append(row)
     else:rejected[reason]+=1
     mh=hits(title+'\n'+'\n'.join(names))
@@ -67,6 +72,8 @@ if min(t['create_time'] for t in topics.values())[:10]>args.since:raise ValueErr
 previous=json.loads((out/'manifest.json').read_text(encoding='utf-8')) if (out/'manifest.json').exists() else {}
 if previous and previous['coverageTo'][:10]<args.since:raise ValueError('Date gap: --since must overlap the previous coverage')
 manifest={'syncedAt':datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).isoformat(timespec='seconds'),'sourceGroup':cfg['group_id'],'sourceName':cfg['group_name'],'coverageFrom':args.since,'coverageTo':max(t['create_time'] for t in topics.values()),'oldestFetched':min(t['create_time'] for t in topics.values()),'fetchedTopics':len(topics),'files':{},'counts':{},'latest':{},'excluded':dict(rejected)}
+if previous.get('lastClassificationCorrection'):
+    manifest['lastClassificationCorrection']=previous['lastClassificationCorrection']
 for kind,records in rows.items():
     records=merge_rows([],records);manifest['counts'][kind]=len(records);manifest['latest'][kind]=max((r.get('时间') or r.get('日期') for r in records),default='');manifest['files'][kind]=[]
     # Small immutable files are compatible with the connector and lazy reading.
@@ -102,3 +109,4 @@ from build_research_library import build as build_library
 library = build_library(HERE, ROOT)
 (ROOT / 'data/research/library.json').write_text(json.dumps(library,ensure_ascii=False,separators=(',',':'))+'\n',encoding='utf-8')
 print(json.dumps({**{k:manifest[k] for k in ['counts','latest','oldestFetched','fetchedTopics']}, 'consumptionAttachments':len(library['records'])},ensure_ascii=False))
+

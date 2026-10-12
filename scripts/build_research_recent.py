@@ -12,7 +12,7 @@ build_research_recent.py
 import sys, os, csv, json, io, argparse, datetime as dt
 from pathlib import Path
 from summary_io import write_json_if_changed
-from research_sources import merge_rows, update_rows, archive_rows
+from research_sources import merge_rows, update_rows, archive_rows, row_keys
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -201,6 +201,25 @@ def main():
         # 时间倒序、截前 N 条
         fresh.sort(key=lambda x: x[0], reverse=True)
         fresh = fresh[:args.per_db]
+        # Historical reclassifications can fall outside the normal recent window.
+        # Keep those explicitly assigned topics searchable in the correct category.
+        if dbid == "all_views":
+            update_manifest = DATA / "research/updates/manifest.json"
+            if update_manifest.exists():
+                meta = json.loads(update_manifest.read_text(encoding="utf-8"))
+                correction = meta.get("lastClassificationCorrection", {})
+                correction_ids = set(correction.get("topicIds", []))
+                if correction_ids:
+                    selected = [row for _, row in fresh]
+                    selected_ids = {k[0] for row in selected if (k := row_keys(row)[0])}
+                    for row in rows:
+                        key = row_keys(row)[0]
+                        if key and key[0] in correction_ids and key[0] not in selected_ids:
+                            selected.append(row)
+                            selected_ids.add(key[0])
+                    fresh = [(parse_time(pick(row, time_keys)), row) for row in selected]
+                    fresh = [(stamp, row) for stamp, row in fresh if stamp is not None]
+                    fresh.sort(key=lambda x: x[0], reverse=True)
         norm = [normalize_row(dbid, k, r) for _, r in fresh]
         kept = len(norm)
         total += kept
