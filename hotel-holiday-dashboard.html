@@ -11,7 +11,7 @@
   <script defer src="scripts/site-shell.js?v=20261012dailybottom"></script>
   <script defer src="scripts/hotel-metrics.js?v=20261010coverage"></script>
   <script src="scripts/site-charts.js?v=20261012mobile1"></script>
-  <script defer src="scripts/hotel-holiday-dashboard.js?v=20261012dailychange"></script>
+  <script defer src="scripts/hotel-holiday-dashboard.js?v=20261012yoychart"></script>
   <link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified">
   <link rel="stylesheet" href="scripts/site-charts.css?v=20261012mobile1">
   <link rel="stylesheet" href="scripts/industry-embed.css?v=20261012simple">
@@ -46,6 +46,11 @@
           <button type="button" data-metric="revpar" class="active" aria-pressed="true">RevPAR</button>
           <button type="button" data-metric="occupancy_rate" aria-pressed="false">OCC</button>
           <button type="button" data-metric="adr" aria-pressed="false">ADR</button>
+        </div>
+        <div class="hd-switch" id="holiday-mode-switch" aria-label="图表显示">
+          <button type="button" data-mode="combo" class="active" aria-pressed="true">数值＋同比</button>
+          <button type="button" data-mode="change" aria-pressed="false">仅同比</button>
+          <button type="button" data-mode="value" aria-pressed="false">仅数值</button>
         </div>
       </div>
       <div class="holiday-segments" id="holiday-segments" aria-label="对比对象"></div>
