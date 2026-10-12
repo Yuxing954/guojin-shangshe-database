@@ -77,7 +77,7 @@
     var now = summarize(records), baseRows = records.map(function (r) { return { occupancy_rate: r.baseline_occupancy_rate, adr: r.baseline_adr, revpar: r.baseline_revpar }; });
     var base = summarize(baseRows);
     $('holiday-kpis').innerHTML = [
-      ['假期日均入住率', 'occupancy_rate'], ['假期日均 ADR（元）', 'adr'], ['假期日均 RevPAR（元）', 'revpar']
+      ['假期日均OCC', 'occupancy_rate'], ['假期日均 ADR（元）', 'adr'], ['假期日均 RevPAR（元）', 'revpar']
     ].filter(function (item) { return now[item[1]] != null; }).map(function (item) {
       return kpi(item[0], now[item[1]], base[item[1]], item[1]);
     }).join('');
@@ -88,14 +88,14 @@
   }
   function renderChart(records) {
     var field = state.metric;
-    var title = field === 'occupancy_rate' ? '入住率' : field === 'adr' ? 'ADR' : 'RevPAR';
+    var title = field === 'occupancy_rate' ? 'OCC' : field === 'adr' ? 'ADR' : 'RevPAR';
     var unit = field === 'occupancy_rate' ? '%' : '元';
     var sorted = records.slice().sort(function (a, b) { return Number(a.period_day) - Number(b.period_day); });
     var values = sorted.flatMap(function (r) { return [metricValue(r, field, false), metricValue(r, field, true)]; }).filter(function (v) { return v != null; });
     var host = $('holiday-chart');
     $('trend-title').textContent = '假期每日' + title;
     $('trend-note').textContent = state.segment === '*' ? '当前查看全部分组' : state.segment;
-    $('trend-caption').textContent = field === 'occupancy_rate' ? '入住率（%） · 按假期日序对齐 · 对照日期按源表保留' : title + '（元） · 按假期日序对齐 · 对照日期按源表保留';
+    $('trend-caption').textContent = field === 'occupancy_rate' ? 'OCC（%） · 按假期日序对齐 · 对照日期按源表保留' : title + '（元） · 按假期日序对齐 · 对照日期按源表保留';
     if (!sorted.length || !values.length) { host.innerHTML = '<div class="hd-empty">所选范围暂无有效数据</div>'; return; }
 
     var width = Math.max(300, host.clientWidth || 900), height = 280, left = 72, right = 28, top = 24, bottom = 36;
@@ -130,7 +130,8 @@
     sorted.forEach(function (row, index) {
       var current = metricValue(row, field, false), baseline = metricValue(row, field, true), cx = x(index);
       var day = row.day_label ? '第' + row.period_day + '天 · ' + row.day_label : '第' + row.period_day + '天';
-      var detail = [day, '本期 ' + row.current_date + '：' + fmt(current, field), '对标 ' + row.baseline_date + '：' + fmt(baseline, field)].join(String.fromCharCode(10));
+      var change = difference(current, baseline, field);
+        var detail = [day, '本期 ' + row.current_date + '：' + fmt(current, field), '对标 ' + row.baseline_date + '：' + fmt(baseline, field), (field === 'occupancy_rate' ? '较对标期' : comparisonLabel(row)) + ' ' + fmtChange(change, field)].join(String.fromCharCode(10));
       tooltipPoints.push({ x: cx, y: y(current == null ? baseline : current), text: detail });
       if (current != null) dots += '<circle cx="' + cx + '" cy="' + y(current) + '" r="3.5" fill="white" stroke="#2167a0" stroke-width="1.8"><title>' + esc(detail) + '</title></circle>';
       if (baseline != null) dots += '<circle cx="' + cx + '" cy="' + y(baseline) + '" r="3.5" fill="white" stroke="#71869b" stroke-width="1.8"><title>' + esc(detail) + '</title></circle>';
@@ -149,7 +150,7 @@
         return '<td>' + fmt(now[field], field) + '<small>对标 ' + fmt(base[field], field) + ' · <span class="' + deltaClass(delta) + '">' + esc(fmtChange(delta, field)) + '</span></small></td>';
       }).join('') + '</tr>';
     }).join('');
-    $('summary-table').innerHTML = '<thead><tr><th>对标对象</th><th>入住率</th><th>ADR（元）</th><th>RevPAR（元）</th></tr></thead><tbody>' + body + '</tbody>';
+    $('summary-table').innerHTML = '<thead><tr><th>对标对象</th><th>OCC</th><th>ADR（元）</th><th>RevPAR（元）</th></tr></thead><tbody>' + body + '</tbody>';
   }
   function renderHolidayOverview(dimension) {
     var body = Object.keys(holidayNames).map(function (id) {
@@ -162,12 +163,21 @@
         return '<td>' + fmt(now[field], field) + '<small>对标 ' + fmt(base[field], field) + ' · <span class="' + deltaClass(delta) + '">' + esc(fmtChange(delta, field)) + '</span></small></td>';
       }).join('') + '</tr>';
     }).join('');
-    $('holiday-overview-table').innerHTML = '<thead><tr><th>假期</th><th>本期 / 对标期</th><th>日均入住率</th><th>日均 ADR（元）</th><th>日均 RevPAR（元）</th></tr></thead><tbody>' + body + '</tbody>';
+    $('holiday-overview-table').innerHTML = '<thead><tr><th>假期</th><th>本期 / 对标期</th><th>日均OCC</th><th>日均 ADR（元）</th><th>日均 RevPAR（元）</th></tr></thead><tbody>' + body + '</tbody>';
+  }
+  function comparisonLabel(row) {
+    return Number(row.current_year) - Number(row.baseline_year) === 1 ? '同比' : '对标变化';
   }
   function renderDaily(records) {
     var rows = records.slice().sort(function (a, b) { return Number(a.period_day) - Number(b.period_day); });
-    $('daily-table').innerHTML = '<thead><tr><th>假期日序</th><th>酒店档位 / 城市线级</th><th>本期日期</th><th>对标日期</th><th>本期 OCC</th><th>对标 OCC</th><th>本期 ADR</th><th>对标 ADR</th><th>本期 RevPAR</th><th>对标 RevPAR</th></tr></thead><tbody>' + rows.map(function (r) {
-      return '<tr><td>第' + esc(r.period_day) + '天' + (r.day_label ? ' · ' + esc(r.day_label) : '') + '</td><td>' + esc(r.segment) + '</td><td>' + esc(r.current_date) + '</td><td>' + esc(r.baseline_date) + '</td><td>' + fmt(num(r.occupancy_rate), 'occupancy_rate') + '</td><td>' + fmt(num(r.baseline_occupancy_rate), 'occupancy_rate') + '</td><td>' + fmt(num(r.adr), 'adr') + '</td><td>' + fmt(num(r.baseline_adr), 'adr') + '</td><td>' + fmt(num(r.revpar), 'revpar') + '</td><td>' + fmt(num(r.baseline_revpar), 'revpar') + '</td></tr>';
+    var fields = ['occupancy_rate', 'adr', 'revpar'];
+    $('daily-table').innerHTML = '<thead><tr><th>假期日序</th><th>酒店档位 / 城市线级</th><th>本期日期</th><th>对标日期</th><th>本期 OCC（%）</th><th>对标 OCC（%）</th><th>本期 ADR（元）</th><th>对标 ADR（元）</th><th>本期 RevPAR（元）</th><th>对标 RevPAR（元）</th></tr></thead><tbody>' + rows.map(function (r) {
+      return '<tr><td>第' + esc(r.period_day) + '天' + (r.day_label ? ' · ' + esc(r.day_label) : '') + '</td><td>' + esc(r.segment) + '</td><td>' + esc(r.current_date) + '</td><td>' + esc(r.baseline_date) + '</td>' + fields.map(function (field) {
+        var now = metricValue(r, field, false), base = metricValue(r, field, true);
+        var change = difference(now, base, field);
+        var label = field === 'occupancy_rate' ? '较对标期' : comparisonLabel(r);
+        return '<td>' + fmt(now, field) + '<small class="' + deltaClass(change) + '">' + label + ' ' + esc(fmtChange(change, field)) + '</small></td><td>' + fmt(base, field) + '</td>';
+      }).join('') + '</tr>';
     }).join('') + '</tbody>';
   }
   function render() {
