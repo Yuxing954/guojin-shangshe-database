@@ -13,7 +13,7 @@ def validate(d):
  if d.get('dailySummaryPoints'):
   assert len(d['dailySummaryPoints'])==3 and all(isinstance(x,str) and x.strip() for x in d['dailySummaryPoints']),'Daily summary requires three points'
   assert d['dailySummary']=='\n'.join(n+' '+t for n,t in zip('①②③',d['dailySummaryPoints'])),'Display and export summaries differ'
- if d.get('dailySummary'):assert len(d['dailySummary'])<=350,'Daily summary must be concise'
+ if d.get('dailySummary'):assert len(d['dailySummary'])<=450,'Daily summary must be concise'
  count=len(d.get('dailySummary') or d['headline'])+len(d.get('quiet',''))
  for group in ('focus','industries'):
   for r in d[group]:

@@ -8,7 +8,7 @@ for(const rows of Object.values(d.sections||{}))for(const r of rows)if(r.url&&r.
 }).catch(()=>{sourceTask=null;throw new Error('原文读取失败');});
 return sourceTask;
 }
-const refs=items=>(items||[]).filter(r=>/^https:\/\//.test(r.url||'')).map(r=>'<details class="daily-original" data-url="'+esc(r.url)+'"'+'><summary>阅读原文 · '+esc(SiteUI.date(r.publishedAt))+'</summary><div class="daily-original-meta">'+esc(r.source||'原文')+' · <a href="'+esc(r.url)+'" target="_blank" rel="noopener">查看来源↗</a></div><div class="daily-original-body">正在读取原文…</div></details>').join('');
+const refs=items=>(items||[]).filter(r=>/^https:\/\//.test(r.url||'')).map(r=>'<div class="daily-original" data-url="'+esc(r.url)+'"><div class="daily-original-meta">'+esc(r.source||'原文')+' · <a href="'+esc(r.url)+'" target="_blank" rel="noopener">查看来源↗</a></div><div class="daily-original-body">正在读取原文…</div></div>').join('');
 async function fillOriginals(date,id){
 try{await readOriginals(date);if(id!==token)return;
 document.querySelectorAll('.daily-original').forEach(el=>{
