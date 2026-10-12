@@ -6,7 +6,7 @@ const D = require('./site-data.js');
 const ROOT = path.resolve(__dirname, '..');
 const FIELDS = {'定期报告实际披露日期':'actual', '定期报告预计披露日期':'expected'};
 const INDICATORS = {actual:['100000000007105','100000000051385'], expected:['100000000007104','100000000051384']};
-function security(value) { return M.code(String(value || '').match(/([\d]{1,6}\.(?:SH|SZ|HK)|[A-Z]+\.O)/)?.[1]); }
+function security(value) { return M.code(String(value || '').match(/([\d]{1,6}\.(?:SH|SZ|HK)|[A-Z]+\.(?:O|N))/)?.[1]); }
 function period(value) {
   const match = String(value || '').match(/(20\d{2})年?(中报|半年报|一季报|二季报|三季报|四季报|年报)/);
   return match ? match[1]+({中报:'H1',半年报:'H1',一季报:'Q1',二季报:'Q2',三季报:'Q3',四季报:'Q4',年报:'FY'}[match[2]]) : '';
@@ -16,7 +16,7 @@ function date(value) {
   if (!M.validDate(value)) throw Error('Invalid Choice disclosure date');
   return value;
 }
-function fromChoice(receipts, pool, previous) {
+function fromChoice(receipts, pool, previous, receiptFile='data/earnings-choice-receipts.json') {
   if (receipts.version !== 1 || receipts.provider !== 'choice-mcp' || !Array.isArray(receipts.envelopes)) throw Error('Invalid Choice receipts');
   const companies = new Map(pool.map(c => [M.code(c.code), c]));
   const records = new Map();
@@ -47,7 +47,7 @@ function fromChoice(receipts, pool, previous) {
           if (parsed && !links.length) throw Error('Missing Choice indicator evidence');
           const id = code+'|'+reportPeriod+'|formal';
           let record = records.get(id);
-          if (!record) {record={id,code,period:reportPeriod,kind:'formal',documentType:'report',title:companies.get(code).name+' '+reportPeriod,expected:'',actual:'',announcementDate:'',url:'',linkType:'',sourceId:'choice-mcp',updatedAt:envelope.checkedAt,reservations:[],history:[],evidence:{receiptFile:'data/earnings-choice-receipts.json',cells:[]}}; records.set(id,record);}
+          if (!record) {record={id,code,period:reportPeriod,kind:'formal',documentType:'report',title:companies.get(code).name+' '+reportPeriod,expected:'',actual:'',announcementDate:'',url:'',linkType:'',sourceId:'choice-mcp',updatedAt:envelope.checkedAt,reservations:[],history:[],evidence:{receiptFile,cells:[]}}; records.set(id,record);}
           const priorCell = record.evidence.cells.find(c=>c.field===field);
           if (priorCell && record[field]!==parsed) throw Error('Conflicting Choice cells: '+id+' '+field);
           record[field]=parsed;
@@ -89,7 +89,7 @@ function main() {
   const receipts=JSON.parse(fs.readFileSync(input,'utf8'));
   const file=path.join(ROOT,'data/earnings-calendar.json'),previous=JSON.parse(fs.readFileSync(file,'utf8'));
   const pool=JSON.parse(fs.readFileSync(path.join(ROOT,'data/coverage-companies.json'),'utf8')).companies;
-  const next=mergeChoice(previous,fromChoice(receipts,pool,previous));
+  const next=mergeChoice(previous,fromChoice(receipts,pool,previous,'data/'+path.basename(input)));
   fs.writeFileSync(file+'.tmp',JSON.stringify(next,null,2)+'\n');fs.renameSync(file+'.tmp',file);
   console.log('Choice earnings: '+next.records.length+' records');
 }
