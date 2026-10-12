@@ -25,7 +25,7 @@ assert.equal(U.periodFromTitle('中国中免2025年度业绩快报公告'),'2025
 const fixture={period:'2026H1',url:'https://query.sse.com.cn/',row:{companyCode:'601888',publishDate0:'2026-08-21',actualDate:'2026-08-21',publishYear:'2026',bulletinType:'L012'}};
 const notice={url:'https://query.sse.com.cn/',row:{SECURITY_CODE:'601888',TITLE:'中国中免2026年半年度报告',SSEDATE:'2026-08-21',URL:'/test.pdf'}};
 assert.equal(U.fromSSE([fixture],[notice],'2026-10-10T00:00:00Z').records[0].url,'https://static.sse.com.cn/test.pdf');assert.throws(()=>U.fromSSE([{...fixture,period:'2026Q3'}],[notice],'2026-10-10T00:00:00Z'));
-const C=require('./import-earnings-choice.cjs'),active=M.validateSnapshot(JSON.parse(fs.readFileSync(__dirname+'/../data/earnings-calendar.json','utf8'))),receipts=JSON.parse(fs.readFileSync(__dirname+'/../data/earnings-choice-receipts.json','utf8'));
+const C=require('./import-earnings-choice.cjs'),active=M.validateSnapshot(JSON.parse(fs.readFileSync(__dirname+'/../tests/fixtures/earnings-calendar-32.json','utf8'))),receipts=JSON.parse(fs.readFileSync(__dirname+'/../tests/fixtures/earnings-choice-receipts-32.json','utf8'));
 assert.equal(active.primarySource,'choice-mcp');assert.ok(active.records.every(r=>r.sourceId==='choice-mcp'));assert.equal(active.records.length,84);
 const recent=M.recent(pool,active,'2026-10-10');assert.equal(recent.length,32);assert.equal(recent.filter(c=>c.latest).length,32);assert.equal(recent.filter(c=>c.next).length,22);assert.equal(recent.filter(c=>!c.next&&!c.overdue).length,10);
 assert.equal(recent[0].code,'09961.HK');assert.equal(recent[0].latest.actual,'2026-09-16');assert.equal(M.upcoming(recent.flatMap(c=>c.next?[c.next]:[]),'2026-10-10',30).length,21);
@@ -46,3 +46,8 @@ assert.throws(()=>C.fromChoice({...receipts,envelopes:[]},pool,active));
 const partial=C.fromChoice({...receipts,envelopes:[receipts.envelopes[0]]},pool,active);assert.equal(C.mergeChoice(active,partial).records.length,84);
 const erased=structuredClone(active);erased.records.find(r=>r.actual).actual='';assert.throws(()=>C.mergeChoice(active,erased));
 console.log('PASS: Choice indicator/period/cell evidence, stale response isolation, recent defaults/year rollover, upcoming and overdue, partial history preservation, date types and safe exports');
+
+const expanded=M.validateSnapshot(JSON.parse(fs.readFileSync(__dirname+'/../data/earnings-calendar.json','utf8'))),directory=JSON.parse(fs.readFileSync(__dirname+'/../data/coverage-companies.json','utf8')).companies;
+assert.equal(directory.length,107);assert.equal(new Set(expanded.records.map(r=>r.code)).size,107);const summaries=M.recent(directory,expanded,'2026-10-12');assert.equal(summaries.filter(c=>c.latest).length,107);assert.equal(summaries.filter(c=>c.next).length,69);assert.equal(M.upcoming(summaries.flatMap(c=>c.next?[c.next]:[]),'2026-10-12',30).length,68);assert.equal(C.security('好未来(TAL.N)'), 'TAL.N');
+const added=JSON.parse(fs.readFileSync(__dirname+'/../data/earnings-choice-expansion-receipts.json','utf8'));const imported=C.fromChoice(added,directory,expanded);for(const r of imported.records){const saved=expanded.records.find(x=>x.id===r.id);assert.ok(saved);assert.equal(r.actual,saved.actual);assert.equal(r.expected,saved.expected);}
+assert.ok(active.records.every(old=>expanded.records.some(r=>r.id===old.id&&r.actual===old.actual&&r.expected===old.expected)));console.log('PASS: 107 companies, retained dates, 68 upcoming, NYSE identity and expansion receipt replay');
