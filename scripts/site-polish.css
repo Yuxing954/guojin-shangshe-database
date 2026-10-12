@@ -392,3 +392,20 @@ body.site-page:is(.industry-hub,.macro-hub) :is(#sector-tabs.industry-sector-nav
 }
 
 body.site-page.macro-hub .data-board .section-category-nav.section-category-nav{border-bottom:1px solid var(--site-line)!important}
+
+/* One shared spacing scale for the six primary workspaces. */
+body.site-page:not(.industry-embedded)[data-site-section]:is([data-site-section=industry],[data-site-section=macro],[data-site-section=companies],[data-site-section=earnings],[data-site-section=research],[data-site-section=quotes])>main.site-main{
+ --workspace-gap:16px;max-width:1600px!important;width:auto!important;min-width:0!important;margin:0 auto!important;padding:20px 24px 32px!important;box-sizing:border-box;
+}
+body.site-page:not(.industry-embedded)>.site-main>:is(.site-subnav,.portal-tabs,.macro-toolbar,.resource-search,.ec-source,.quotes-status){margin-top:0!important}
+body.site-page:not(.industry-embedded)>.site-main>:is(.site-subnav,.portal-tabs){margin-bottom:16px!important}
+body.site-page:not(.industry-embedded)>.site-main>.portal-panel{margin-top:0!important}
+body.site-page:not(.industry-embedded)>.site-main>:is(.portal-note,.portal-status,.ec-source,.quotes-status){margin:0 0 12px!important}
+body.site-page.industry-embedded .embedded-asof{margin:0 0 12px!important}
+body.site-page:is(.industry-embedded,.macro-hub) :is(.hd-tabs,.gj-tabs,#consumption-views,.macro-study-controls){margin-top:0!important;margin-bottom:16px!important}
+body.site-page .research-heading{margin-top:0!important;margin-bottom:16px}
+body.site-page .research-heading>.site-subnav{margin-top:0!important}
+body.site-page .quotes-filters>#refresh{flex:0 0 auto}
+@media(max-width:760px){
+ body.site-page:not(.industry-embedded)[data-site-section]:is([data-site-section=industry],[data-site-section=macro],[data-site-section=companies],[data-site-section=earnings],[data-site-section=research],[data-site-section=quotes])>main.site-main{width:100%!important;padding:14px 12px 24px!important}
+}
