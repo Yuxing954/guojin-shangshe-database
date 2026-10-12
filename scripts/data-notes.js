@@ -3,7 +3,7 @@
   const D=SiteData,esc=D.esc,$=id=>document.getElementById(id),cache=new Map();let request=0;
   const modules={
     daily:{name:'商社日报',files:['data/daily/latest.json'],docs:['docs/daily-report.md']},
-    hotel:{name:'酒店',files:['data/hotel-update-record.json','data/hotel-city-history-coverage.json'],docs:['docs/hotel-data-update.md']},
+    hotel:{name:'酒店',files:['data/hotel-update-record.json','data/hotel-city-history-coverage.json','data/hotel-holiday-import-record.json'],docs:['docs/hotel-data-update.md','docs/hotel-holiday-dashboard.md']},
     dutyfree:{name:'免税',files:['data/dutyfree/holidays.json','data/dutyfree/monthly-provenance.json','data/dutyfree/sources.json'],docs:['docs/dutyfree-holidays.md']},
     gold:{name:'黄金',files:['data/gold-jewelry/research.json','data/gold-jewelry/macro.json','data/gold-jewelry/observations.json'],docs:['docs/gold-jewelry-database.md']},
     dining:{name:'餐饮',files:['data/sectors/dining.json'],docs:[]},
@@ -18,7 +18,7 @@
   function notes(id,values){
     const a=values[0]||{},out=[];
     if(id==='dutyfree')out.push(...(a.coverageNotes||[]),...(a.notes||[]),values[1]?.note||'');
-    if(id==='hotel')out.push('同比默认匹配来源年/周；假期错期需单独映射与标注。',...Object.entries(a.historicalCoverage||{}).flatMap(([file,regions])=>Object.entries(regions).map(([region,c])=>region+'：'+c.firstPeriod+' — '+c.lastPeriod+' · '+c.periodCount+'期')),'异常源记录：'+(a.sourceAnomalyCount??'未记录')+'条');
+    if(id==='hotel')out.push('同比默认匹配来源年/周；假期错期需单独映射与标注。','节假日经营对标按假期日序匹配两期日期，入住率差为百分点，ADR及RevPAR为相对变化。',...Object.entries(a.historicalCoverage||{}).flatMap(([file,regions])=>Object.entries(regions).map(([region,c])=>region+'：'+c.firstPeriod+' — '+c.lastPeriod+' · '+c.periodCount+'期')),'异常源记录：'+(a.sourceAnomalyCount??'未记录')+'条');
     if(id==='gold')out.push(...(a.limitations||[]),'国内金价后台按5分钟计划采集；国际行情在黄金页面打开时每15秒读取。实际更新以来源报价时间为准，网络失败保留上次报价。');
     if(id==='dining')out.push(...(a.gaps||[]).map(g=>g.metric+'：'+g.reason));
     if(id==='companies')out.push(...(a.issues||[]).filter(i=>!i.companyId||i.companyId==='hworld').map(i=>[i.period,i.locator,i.message].filter(Boolean).join(' · ')));
@@ -40,4 +40,5 @@
   }
   addEventListener('hashchange',render);render();
 })();
+
 
