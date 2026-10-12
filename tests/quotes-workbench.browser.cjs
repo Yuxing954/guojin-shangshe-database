@@ -57,6 +57,6 @@ const server=http.createServer((req,res)=>{const p=path.resolve(root,'.'+decodeU
   // Retired personal links restore the public pool.
   await page.goto(base+'/quotes.html?group=watch');await page.waitForSelector('#rows tr[data-company]');assert.equal(await page.locator('#rows tr[data-company]').count(),74);assert.equal(await page.locator('[data-watch],#detail-watch,#watch-empty').count(),0);
 
-  assert.deepEqual(errors,[]);console.log('PASS: square layout, 74-company paginated desktop/16-company mobile pages, stable DOM, cached return, rapid switch, quote ticks, pause/manual, export, filters, failure/backoff, keyboard and mobile overflow.');
+  for(const [sector,count] of [['新消费',10],['消费出海',9],['黄金珠宝',8],['化妆品&医美',13],['免税&出行',19],['餐饮&茶饮',9],['超市&其他专业连锁',5],['跨境电商',1]]){await page.selectOption('#sector',sector);await page.waitForFunction(count=>document.querySelectorAll('#rows tr[data-company]').length===count,count);}assert.deepEqual(errors,[]);console.log('PASS: square layout, 74-company paginated desktop/16-company mobile pages, stable DOM, cached return, rapid switch, quote ticks, pause/manual, export, filters, failure/backoff, keyboard and mobile overflow.');
  }finally{await browser.close();server.close();}
 })().catch(e=>{console.error(e);server.close();process.exitCode=1;});

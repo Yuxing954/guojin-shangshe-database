@@ -10,10 +10,10 @@ test('invalid and older observations cannot replace a valid quote',()=>{
  assert.throws(()=>M.accept(old,{price:0,asOf:old.asOf}));
  assert.throws(()=>M.accept(old,{price:901,asOf:'missing'}));
 });
-test('merged industry filters cover all original sectors without dropping identities',()=>{
+test('report-selected industry filters cover all selected identities',()=>{
  const fs=require('node:fs'),directory=Q.directory(JSON.parse(fs.readFileSync('data/coverage-companies.json','utf8')));
  const all=Object.keys(Q.sectorGroups).flatMap(sector=>Q.filter(directory,{}, {sector}));
  assert.equal(new Set(all.map(c=>c.code)).size,directory.length);assert.equal(all.length,directory.length);
- assert.ok(Q.filter(directory,{}, {sector:'餐饮茶饮'}).some(c=>c.sector==='茶饮'));
- assert.ok(Q.filter(directory,{}, {sector:'酒店旅游'}).some(c=>c.sector==='OTA'));
+ assert.ok(Q.filter(directory,{}, {sector:'餐饮&茶饮'}).some(c=>c.sector==='餐饮&茶饮'));
+ assert.ok(Q.filter(directory,{}, {sector:'免税&出行'}).some(c=>c.sector==='免税&出行'));
 });

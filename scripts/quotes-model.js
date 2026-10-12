@@ -13,7 +13,7 @@
   }
   function dayFor(code,now=new Date()){return new Intl.DateTimeFormat('en-CA',{timeZone:markets[market(code)].timeZone,year:'numeric',month:'2-digit',day:'2-digit'}).format(now);}
   function state(quote,now=new Date()){if(!quote)return '暂无报价';if(quote.failed)return '读取失败 · 上次报价';if(quote.unchanged)return '来源时间未更新 · 保留报价';return quote.asOf.slice(0,10)===dayFor(quote.code,now)?'当日报价':'上次报价';}
-  const sectorGroups={'酒店旅游':['酒店','旅游','OTA'],'免税':['免税'],'黄金珠宝':['黄金珠宝'],'餐饮茶饮':['餐饮','茶饮'],'电商零售':['商超与线下零售','电商平台','跨境电商与出海'],'美妆个护':['美妆个护'],'教育人服':['教育','人服'],'潮玩生活':['潮玩与生活方式']};
+  const sectorGroups={'新消费':['新消费'],'消费出海':['消费出海'],'黄金珠宝':['黄金珠宝'],'化妆品&医美':['化妆品&医美'],'免税&出行':['免税&出行'],'餐饮&茶饮':['餐饮&茶饮'],'超市&其他专业连锁':['超市&其他专业连锁'],'跨境电商':['跨境电商']};
   function sectors(value){return (value||'').split(',').flatMap(s=>sectorGroups[s]||[s]);}
   function sectorGroup(value){return Object.keys(sectorGroups).find(g=>sectorGroups[g].includes(value))||value;}
   function filter(companies,quotes,f){const q=(f.q||'').trim().toLowerCase(),watch=new Set(f.watchlist||[]);const rows=companies.filter(c=>(!f.onlyWatch||watch.has(c.code))&&(!f.market||market(c.code)===f.market)&&(!f.sector||sectors(f.sector).includes(c.sector))&&(!q||[c.name,c.code,...(c.aliases||[])].join(' ').toLowerCase().includes(q)));return rows.sort((a,b)=>{if(f.sort==='name'||f.sort==='name-desc')return a.name.localeCompare(b.name,'zh')*(f.sort==='name-desc'?-1:1);const x=quotes[a.code]?.percent,y=quotes[b.code]?.percent;if(!Number.isFinite(x))return Number.isFinite(y)?1:a.name.localeCompare(b.name,'zh');if(!Number.isFinite(y))return -1;return (f.sort==='change-asc'?x-y:y-x)||a.name.localeCompare(b.name,'zh');});}
