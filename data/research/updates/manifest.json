@@ -1,9 +1,9 @@
 {
-  "syncedAt": "2026-10-12T12:41:20+08:00",
+  "syncedAt": "2026-10-12T13:36:14+08:00",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
   "coverageFrom": "2026-10-11T22:58:04.105+0800",
-  "coverageTo": "2026-10-12T11:34:06.620+0800",
+  "coverageTo": "2026-10-12T13:22:16.574+0800",
   "oldestFetched": "2026-08-08T22:08:04.080+0800",
   "fetchedTopics": 30,
   "files": {
@@ -28,6 +28,7 @@
       "data/research/updates/2026-10-07-views-002.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-10-12-1334-all_views.csv",
       "data/research/updates/2026-10-12-1235-all_views.csv",
       "data/research/updates/2026-10-12-1132-all_views.csv",
       "data/research/updates/2026-10-12-all_views-001.csv",
@@ -98,16 +99,18 @@
   },
   "counts": {
     "views": 224,
-    "all_views": 4235,
+    "all_views": 4246,
     "minutes": 101
   },
   "latest": {
     "views": "2026-10-12T10:11:10",
-    "all_views": "2026-10-12T11:34:06",
+    "all_views": "2026-10-12T13:21:59",
     "minutes": "2026-10-12T01:07:33"
   },
   "excluded": {
-    "附件标题": 11
+    "内容过短（3字）": 1,
+    "附件标题": 3,
+    "内容过短（13字）": 1
   },
   "assignedTopics": {
     "views": [
@@ -339,6 +342,17 @@
       "22258228124528111"
     ],
     "all_views": [
+      "22258222825855121",
+      "14425444542524252",
+      "45548555854845858",
+      "55521555152125454",
+      "55521555152125824",
+      "22258222825884441",
+      "82258222825282142",
+      "14425444542451422",
+      "22258222822224481",
+      "14425444544448252",
+      "55521555155588154",
       "55521555114825444",
       "55521555114824514",
       "14425444551828812",
@@ -4664,19 +4678,21 @@
   "fetchedTopicsScope": "current_batch",
   "lastBatch": {
     "date": "2026-10-12",
-    "batch": "2026-10-12-1235",
-    "from": "2026-10-12T10:22:07.339+0800",
-    "to": "2026-10-12T11:34:06.620+0800",
+    "batch": "2026-10-12-1334",
+    "from": "2026-10-12T10:55:59.159+0800",
+    "to": "2026-10-12T13:22:16.574+0800",
     "uniqueTopics": 30,
     "newViews": 0,
-    "newMarketViews": 7,
+    "newMarketViews": 11,
     "newMinuteTopics": 0,
-    "newAttachmentFiles": 0,
+    "newAttachmentFiles": 2,
     "excluded": {
-      "附件标题": 11
+      "内容过短（3字）": 1,
+      "附件标题": 3,
+      "内容过短（13字）": 1
     },
     "duplicates": {
-      "existing_or_overlap_all_views": 12
+      "existing_or_overlap_all_views": 14
     },
     "method": "official zsxq-cli OAuth-authorized group +topics; all new topic details checked against list bodies"
   }
