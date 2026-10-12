@@ -16,6 +16,8 @@ const server=http.createServer((req,res)=>{const file=path.resolve(root,'.'+deco
   assert.equal(await page.locator('.site-nav').count(),1);assert.equal(await page.locator('h1').innerText(),'酒店周度产品');
   const stats=await page.evaluate(()=>{const p=window.hotelProduct,r=p.get('全部',document.querySelector('#week').value);return {revpar:Number(r.revpar),adr:Number(r.adr),occ:Number(r.occupancy_rate),occChange:p.delta(r,'occupancy_rate'),canvas:document.querySelector('canvas').height}});
   assert.ok(Math.abs(stats.revpar-stats.adr*stats.occ)<1e-7);
+  assert.equal(await page.evaluate(()=>periodLabel(window.hotelProduct.get('全部','2026W40'))),'26W40 (9/28-10/4)　同比 25W40 (9/29-10/5)','comparison label uses actual prior-year week dates');
+  assert.match(await page.evaluate(()=>{const p=window.hotelProduct,r=p.rows.filter(r=>r.segment==='全部').sort((a,b)=>a.period_id.localeCompare(b.period_id))[0];return periodLabel(r)}),/同比 暂无可比基期$/,'missing base dates are not invented');
   for(const width of [1440,1024,768,390]){await page.setViewportSize({width,height:1000});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'overflow '+width)}
   await page.setViewportSize({width:1440,height:1000});await page.getByText('编辑点评',{exact:true}).click();
   const options=await page.locator('#week option').evaluateAll(o=>o.map(x=>x.value));await page.selectOption('#week',options[1]);await page.fill('#comment','产品点评核验');await page.selectOption('#week',options[0]);assert.equal(await page.locator('#comment').inputValue(),'');await page.selectOption('#week',options[1]);assert.equal(await page.locator('#comment').inputValue(),'产品点评核验');await page.fill('#comment','');await page.selectOption('#week',options[0]);
