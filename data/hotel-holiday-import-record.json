@@ -1,0 +1,159 @@
+{
+  "updatedAt": "2026-10-12",
+  "importedAt": "2026-10-12T10:57:12Z",
+  "source": "酒店之家",
+  "file": "data/hotel_holiday_daily.csv",
+  "rowCount": 275,
+  "key": [
+    "holiday_id",
+    "dimension",
+    "segment",
+    "period_day"
+  ],
+  "comparisonAlignment": "holiday day index; current and baseline dates are retained as supplied",
+  "sources": [
+    {
+      "file": "2025&2026春节假期.xlsx",
+      "sha256": "c5dca2e9d214d1ae102478f335e2738cd29178251cf53d56e4ed375e42f2d6de",
+      "rows": 99
+    },
+    {
+      "file": "2025&2026清明假期.xlsx",
+      "sha256": "6bd737740b557c7da5a653f249d1d4976aa8f4852c4ff5f10ad92524adf0e4f3",
+      "rows": 33
+    },
+    {
+      "file": "2026&2024中秋假期.xlsx",
+      "sha256": "c688dd4c26b30ed65ecb932a9371d6399a8f34bf135aeb7ad889c87673dbbfce",
+      "rows": 33
+    },
+    {
+      "file": "2026&2025端午.xlsx",
+      "sha256": "8aee3c3e5c988de8b9567e348bce32d597b389836c9696a4c1d479703bea000e",
+      "rows": 33
+    },
+    {
+      "file": "2026&2025国庆假期.xlsx",
+      "sha256": "9bb8366aae6f6377d56d0a574b168fe6356ea4a0ca3004d688163fade57744c8",
+      "rows": 77
+    }
+  ],
+  "coverage": {
+    "spring-festival": {
+      "name": "春节",
+      "sheets": {
+        "分档位": {
+          "dimension": "hotel_tier",
+          "rows": 45,
+          "periodDays": 9,
+          "currentStart": "2026-02-15",
+          "currentEnd": "2026-02-23",
+          "baselineStart": "2025-01-27",
+          "baselineEnd": "2025-02-04"
+        },
+        "分线级": {
+          "dimension": "city_tier",
+          "rows": 54,
+          "periodDays": 9,
+          "currentStart": "2026-02-15",
+          "currentEnd": "2026-02-23",
+          "baselineStart": "2025-01-27",
+          "baselineEnd": "2025-02-04"
+        }
+      }
+    },
+    "qingming": {
+      "name": "清明",
+      "sheets": {
+        "分档位": {
+          "dimension": "hotel_tier",
+          "rows": 15,
+          "periodDays": 3,
+          "currentStart": "2026-04-04",
+          "currentEnd": "2026-04-06",
+          "baselineStart": "2025-04-04",
+          "baselineEnd": "2025-04-06"
+        },
+        "分线级": {
+          "dimension": "city_tier",
+          "rows": 18,
+          "periodDays": 3,
+          "currentStart": "2026-04-04",
+          "currentEnd": "2026-04-06",
+          "baselineStart": "2025-04-04",
+          "baselineEnd": "2025-04-06"
+        }
+      }
+    },
+    "mid-autumn": {
+      "name": "中秋",
+      "sheets": {
+        "分档位": {
+          "dimension": "hotel_tier",
+          "rows": 15,
+          "periodDays": 3,
+          "currentStart": "2026-09-25",
+          "currentEnd": "2026-09-27",
+          "baselineStart": "2024-09-15",
+          "baselineEnd": "2024-09-17"
+        },
+        "分线级": {
+          "dimension": "city_tier",
+          "rows": 18,
+          "periodDays": 3,
+          "currentStart": "2026-09-25",
+          "currentEnd": "2026-09-27",
+          "baselineStart": "2024-09-15",
+          "baselineEnd": "2024-09-17"
+        }
+      }
+    },
+    "dragon-boat": {
+      "name": "端午",
+      "sheets": {
+        "分档位": {
+          "dimension": "hotel_tier",
+          "rows": 15,
+          "periodDays": 3,
+          "currentStart": "2026-06-19",
+          "currentEnd": "2026-06-21",
+          "baselineStart": "2025-05-31",
+          "baselineEnd": "2025-06-02"
+        },
+        "分线级": {
+          "dimension": "city_tier",
+          "rows": 18,
+          "periodDays": 3,
+          "currentStart": "2026-06-19",
+          "currentEnd": "2026-06-21",
+          "baselineStart": "2025-05-31",
+          "baselineEnd": "2025-06-02"
+        }
+      }
+    },
+    "national-day": {
+      "name": "国庆",
+      "sheets": {
+        "分档位": {
+          "dimension": "hotel_tier",
+          "rows": 35,
+          "periodDays": 7,
+          "currentStart": "2026-10-01",
+          "currentEnd": "2026-10-07",
+          "baselineStart": "2025-10-01",
+          "baselineEnd": "2025-10-07"
+        },
+        "分线级": {
+          "dimension": "city_tier",
+          "rows": 42,
+          "periodDays": 7,
+          "currentStart": "2026-10-01",
+          "currentEnd": "2026-10-07",
+          "baselineStart": "2025-10-01",
+          "baselineEnd": "2025-10-07"
+        }
+      }
+    }
+  }
+}
+
