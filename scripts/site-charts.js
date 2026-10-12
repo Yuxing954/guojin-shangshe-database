@@ -37,11 +37,41 @@ function themeChart(svg){
   host.querySelectorAll('.hd-legend i,.gj-legend i,.legend i').forEach(n=>{const color=key(n,'backgroundColor');if(colorMap.has(color))n.style.backgroundColor=ink[colorMap.get(color)];});
 }
 
+// Keep dense legacy plots readable on touch screens without widening the page.
+function mobileChart(svg){
+  if(svg.classList.contains('site-paired-chart')||!svg.querySelector('text'))return;
+  let frame=svg.parentElement;
+  if(!frame.classList.contains('site-chart-scroll')){
+    frame=document.createElement('div');frame.className='site-chart-scroll';
+    frame.tabIndex=0;frame.setAttribute('role','region');
+    frame.setAttribute('aria-label','趋势图，可横向滑动查看');
+    svg.before(frame);frame.append(svg);
+  }
+  const width=svg.viewBox.baseVal.width;
+  if(width){
+    const sizes=[...svg.querySelectorAll('text')].map(n=>parseFloat(getComputedStyle(n).fontSize)).filter(n=>n>0);
+    const size=sizes.length?Math.min(...sizes):12;
+    svg.style.setProperty('--site-readable-width',Math.ceil(width*Math.min(1,12/size))+'px');
+  }
+}
+function mobileTable(table){
+  table.classList.add('site-data-table');
+  const parent=table.parentElement;
+  if(parent.classList.contains('site-table-scroll'))return;
+  if(['auto','scroll'].includes(getComputedStyle(parent).overflowX)){
+    parent.classList.add('site-table-scroll');
+    parent.tabIndex=0;parent.setAttribute('role','region');parent.setAttribute('aria-label','数据表，可横向滑动查看');return;
+  }
+  const frame=document.createElement('div');frame.className='site-table-scroll';frame.tabIndex=0;
+  frame.setAttribute('role','region');frame.setAttribute('aria-label','数据表，可横向滑动查看');
+  table.before(frame);frame.append(table);
+}
 function attach(container,points,options={}){
   const svg=container?.matches?.('svg')?container:container?.querySelector('svg');if(!svg)return;
   states.get(svg)?.destroy();
   svg.querySelector('.site-legacy-markers')?.remove();
   themeChart(svg);
+  mobileChart(svg);
   const data=groups(points);if(!data.length)return;
   const host=svg.parentElement,abort=new AbortController(),listen=(node,event,fn)=>node.addEventListener(event,fn,{signal:abort.signal});
   svg.classList.add('site-interactive-chart');svg.setAttribute('tabindex','0');svg.setAttribute('data-chart-ready','true');
@@ -69,7 +99,7 @@ function attach(container,points,options={}){
     return data.reduce((a,g,i)=>Math.abs(g.x-x)<Math.abs(data[a].x-x)?i:a,0);
   }
   const state={svg,hide,refresh(){if(tip.hidden)return;const b=svg.getBoundingClientRect();if(b.bottom<0||b.top>innerHeight)hide(true);else place(data[index]);},destroy(){hide(true);abort.abort();tip.remove();line.remove();states.delete(svg);}};states.set(svg,state);
-  listen(svg,'pointermove',e=>{if(!isPinned)show(nearest(e),e);});
+  listen(svg,'pointermove',e=>{if(e.pointerType==='touch')return;if(!isPinned)show(nearest(e),e);});
   listen(svg,'pointerleave',()=>hide());
   listen(svg,'click',e=>{const next=nearest(e);if(isPinned&&next===index){hide(true);return;}pinned?.hide(true);isPinned=true;pinned=state;show(next,e);});
   listen(svg,'focus',()=>{if(tip.hidden)show(index);});
@@ -99,7 +129,7 @@ document.addEventListener('pointerout',e=>{if(barTarget&&!barTarget.contains(e.r
 document.addEventListener('focusout',()=>{if(barTip&&!pinned)barTip.hidden=true;});
 document.addEventListener('click',e=>{const target=e.target.closest('[data-chart-tooltip]');if(target&&!target.closest('button,a')){if(pinned?.svg===target)pinned.hide(true);else barShow(target,true);}});
 function scan(){
-  document.querySelectorAll('main table,.site-main table').forEach(table=>table.classList.add('site-data-table'));
+  document.querySelectorAll('main table,.site-main table').forEach(mobileTable);
   queued=false;for(const [svg,state] of states)if(!svg.isConnected)state.destroy();
   document.querySelectorAll('.forecast-outcome,.fedwatch-range,.gj-probability-row,.dh-bar-row,.gj-stacked [title],.retail-row').forEach(node=>{
     if(!node.dataset.chartTooltip)node.dataset.chartTooltip=node.getAttribute('aria-label')||node.getAttribute('title')||node.textContent.trim();
@@ -206,4 +236,7 @@ addEventListener('resize',()=>{for(const state of states.values())state.hide(tru
 function start(){scan();new MutationObserver(schedule).observe(document.body,{childList:true,subtree:true});}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
 })(window);
+
+
+
 

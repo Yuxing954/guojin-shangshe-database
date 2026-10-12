@@ -75,3 +75,20 @@ body.site-page .site-legacy-markers{pointer-events:none}
 body.site-page :is(.dh-bar,.forecast-probability-track i,.retail-track>span){background:#abcfe8!important}
 body.site-page :is(.dh-bar-track,.forecast-probability-track,.retail-track){background:#f0f4f7}
 
+
+
+/* Mobile: readable plots, local scrolling, and comfortable touch controls. */
+.site-chart-scroll,.site-table-scroll{display:block;width:100%;max-width:100%;min-width:0;overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+.site-chart-scroll:focus-visible,.site-table-scroll:focus-visible{outline:2px solid #2167a0;outline-offset:2px}
+.site-chart-scroll svg{display:block}
+@media(max-width:600px){
+ body.site-page main,body.site-page main :is(section,article,.portal-card,.hd-card,.gj-card){min-width:0}
+ body.site-page .site-chart-scroll svg.site-interactive-chart{width:100%!important;min-width:var(--site-readable-width,640px)!important;height:auto!important;min-height:0!important;max-width:none!important;touch-action:pan-x pan-y}
+ .site-chart-legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;line-height:20px}
+ .site-chart-legend>span{display:inline-flex;align-items:center;gap:6px}
+ .site-chart-tooltip{max-width:calc(100vw - 16px)!important;max-height:calc(100dvh - 16px);overflow:auto;box-sizing:border-box;white-space:pre-line;overflow-wrap:anywhere;font-size:13px;line-height:1.6}
+ body.site-page main table.site-data-table.site-data-table{font-size:13px;width:max-content;min-width:100%}
+ body.site-page main table.site-data-table.site-data-table :is(th,td){white-space:nowrap;padding:10px!important}
+ body.site-page :is(.hd-controls,.chart-controls,.portal-controls) :is(button,select){min-height:40px}
+}
+
