@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="scripts/hotel-dashboard.css?v=20261010coverage">
   <script defer src="scripts/site-shell.js?v=20261012dailybottom"></script>
   <script defer src="scripts/hotel-metrics.js?v=20261010coverage"></script>
-  <script defer src="scripts/hotel-dashboard.js?v=20261012chartclarity"></script>
+  <script defer src="scripts/hotel-dashboard.js?v=20261012english"></script>
 <link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-charts.css?v=20261012allcharts2"><link rel="stylesheet" href="scripts/industry-embed.css?v=20261010direct"><link rel="stylesheet" href="scripts/site-polish.css?v=20261012spacing"><script src="scripts/site-charts.js?v=20261012allcharts2"></script><script defer src="scripts/industry-embed.js?v=20261010direct"></script></head>
 <body class="hotel-page">
 <main class="hd-wrap industry-board">
@@ -44,15 +44,15 @@
       <div class="hd-card board-panel">
         <div class="hd-card-head board-panel-head"><h2>经营走势</h2><label>范围 <select id="history-start"><option value="52">近1年</option><option value="156">近3年</option><option value="all">全部历史</option></select></label></div>
         <div class="hd-chart-controls">
-          <div class="hd-switch" id="metric-switch" aria-label="经营指标"><button type="button" data-metric="revpar" class="active" aria-pressed="true">每房收入</button><button type="button" data-metric="occupancy_rate" aria-pressed="false">入住率</button><button type="button" data-metric="adr" aria-pressed="false">房价</button></div>
-          <span class="hd-chart-mode" id="chart-mode-note">同周同比 · 入住率用百分点</span>
+          <div class="hd-switch" id="metric-switch" aria-label="经营指标"><button type="button" data-metric="revpar" class="active" aria-pressed="true">RevPAR</button><button type="button" data-metric="occupancy_rate" aria-pressed="false">OCC</button><button type="button" data-metric="adr" aria-pressed="false">ADR</button></div>
+          <span class="hd-chart-mode" id="chart-mode-note">同周同比 · OCC用百分点</span>
         </div>
         <p class="hd-chart-caption" id="trend-caption"></p>
         <div class="hd-chart board-chart" id="main-chart"></div>
         <p class="hd-footnote" id="history-note"></p>
       </div>
       <div class="hd-card board-panel"><div class="hd-card-head board-panel-head"><h2>分档次经营</h2><span>所选地区 · 所选周</span></div><div class="hd-table-scroll" tabindex="0" aria-label="分档次经营表，可左右滚动"><table class="hd-table board-table" id="segment-table"></table></div>
-        <details class="hd-detail board-detail"><summary>查看分档次历史走势</summary><label>指标 <select id="segment-metric"><option value="revpar">每房收入</option><option value="occupancy_rate">入住率</option><option value="adr">房价</option></select></label><p class="hd-detail-caption" id="segment-chart-caption"></p><div class="hd-chart board-chart" id="segment-chart"></div></details>
+        <details class="hd-detail board-detail"><summary>查看分档次历史走势</summary><label>指标 <select id="segment-metric"><option value="revpar">RevPAR</option><option value="occupancy_rate">OCC</option><option value="adr">ADR</option></select></label><p class="hd-detail-caption" id="segment-chart-caption"></p><div class="hd-chart board-chart" id="segment-chart"></div></details>
       </div>
       <details class="hd-detail hd-plain board-detail"><summary>酒店与房间规模 · 15间及以上</summary><div id="region-supply"></div><div class="hd-table-scroll" tabindex="0" aria-label="分档次规模表，可左右滚动"><table class="hd-table board-table" id="segment-scale-table"></table></div></details>
     </section>
@@ -61,7 +61,7 @@
       <div class="hd-section-head board-section-head"><div><h2>城市经营</h2></div></div>
       <div class="hd-city-summary" id="city-summary"></div>
       <div class="hd-card board-panel">
-        <div class="hd-city-controls"><label>搜索城市 <input id="city-search" type="search" placeholder="例如：杭州"></label><label>排序 <select id="city-sort"><option value="revChange">每房收入同比 · 从高到低</option><option value="occChange">入住率同比 · 从高到低</option><option value="adrChange">房价同比 · 从高到低</option><option value="revpar">每房收入绝对值 · 从高到低</option><option value="occupancy_rate">入住率绝对值 · 从高到低</option><option value="adr">房价绝对值 · 从高到低</option></select></label></div>
+        <div class="hd-city-controls"><label>搜索城市 <input id="city-search" type="search" placeholder="例如：杭州"></label><label>排序 <select id="city-sort"><option value="revChange">RevPAR同比 · 从高到低</option><option value="occChange">OCC同比 · 从高到低</option><option value="adrChange">ADR同比 · 从高到低</option><option value="revpar">RevPAR绝对值 · 从高到低</option><option value="occupancy_rate">OCC绝对值 · 从高到低</option><option value="adr">ADR绝对值 · 从高到低</option></select></label></div>
         <div class="hd-table-scroll" tabindex="0" aria-label="重点城市经营表，可左右滚动"><table class="hd-table hd-city-table board-table" id="city-table"></table></div>
       </div>
     </section>
@@ -79,7 +79,7 @@
       </div>
       <div class="hd-section-head board-section-head"><div><h2>全国集团</h2></div></div>
       <div class="hd-card board-panel" id="group-card"><div class="hd-card-head board-panel-head"><h2>集团经营与规模</h2><span id="group-period"></span></div><div class="hd-table-scroll" tabindex="0" aria-label="全国集团表，可左右滚动"><table class="hd-table board-table" id="group-table"></table></div>
-        <details class="hd-detail board-detail"><summary>查看集团历史走势</summary><label>指标 <select id="group-metric"><option value="stay_adr">房价</option><option value="hotel_count">酒店数量</option><option value="room_count">房间数量</option></select></label> <label>范围 <select id="group-window"><option value="52">近1年</option><option value="156">近3年</option><option value="all">全部历史</option></select></label><p class="hd-detail-caption" id="group-chart-caption"></p><div class="hd-chart board-chart" id="group-chart"></div></details>
+        <details class="hd-detail board-detail"><summary>查看集团历史走势</summary><label>指标 <select id="group-metric"><option value="stay_adr">ADR</option><option value="hotel_count">酒店数量</option><option value="room_count">房间数量</option></select></label> <label>范围 <select id="group-window"><option value="52">近1年</option><option value="156">近3年</option><option value="all">全部历史</option></select></label><p class="hd-detail-caption" id="group-chart-caption"></p><div class="hd-chart board-chart" id="group-chart"></div></details>
       </div>
       <details class="hd-detail hd-card hd-annual board-detail board-panel"><summary>集团市占率 · 年度数据 <span id="share-year"></span></summary><div class="hd-table-scroll" tabindex="0" aria-label="年度市占率表，可左右滚动"><table class="hd-table board-table" id="share-table"></table></div><div class="hd-chart board-chart" id="share-chart"></div></details>
     </section>
