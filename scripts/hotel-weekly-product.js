@@ -1,6 +1,7 @@
 
 'use strict';
-const snapshot={rows:[],revision:'仓库周度数据'}, C=document.getElementById('product'),ctx=C.getContext('2d'),$=id=>document.getElementById(id), SEGS=['经济型','中档型','高档型','豪华型'], COLORS=['#235b88','#369c9a','#c49b50','#95758f'];
+const snapshot={rows:[],revision:'仓库周度数据'}, C=document.getElementById('product'),$=id=>document.getElementById(id), SEGS=['经济型','中档型','高档型','豪华型'], COLORS=['#235b88','#369c9a','#c49b50','#95758f'];
+let ctx=C.getContext('2d',{alpha:false});
 let rows=snapshot.rows, revision=snapshot.revision, index=new Map(), weeks=[], logo=new Image(),ready=false,fontsReady=false;
 
 const banner=new Image();
@@ -16,7 +17,7 @@ function fmt(n,d=1){return n===null?'暂无数据':n.toFixed(d)}
 function change(n,k){return n===null?'暂无同比':`${n>0?'+':''}${n.toFixed(1)}${k==='occupancy_rate'?'个百分点':'%'}`}
 function validate(items){const seen=new Set();for(const r of items){if(r.region!=='全国')continue;const k=r.segment+'|'+r.period_id;if(seen.has(k))throw Error('全国数据存在重复记录：'+k);seen.add(k);if(!/^\d{4}W\d{2}$/.test(r.period_id)||!/^\d{4}-\d{2}-\d{2}$/.test(r.start_date)||!/^\d{4}-\d{2}-\d{2}$/.test(r.end_date)||r.start_date>r.end_date)throw Error('周号或日期格式异常');}if(!items.some(r=>r.region==='全国'&&r.segment==='全部'&&val(r,'adr')!==null))throw Error('未找到全国全部档次的有效数据');}
 function install(items){validate(items);rows=items.filter(r=>r.region==='全国'&&['全部',...SEGS].includes(r.segment));index=new Map(rows.map(r=>[r.segment+'|'+r.period_id,r]));weeks=rows.filter(r=>r.segment==='全部'&&['adr','revpar','occupancy_rate'].some(k=>val(r,k)!==null)).sort((a,b)=>a.period_id.localeCompare(b.period_id));const old=$('week').value;$('week').replaceChildren(...weeks.slice().reverse().map(r=>{const o=document.createElement('option');o.value=r.period_id;o.textContent=r.period_id+' · '+r.end_date;return o}));$('week').value=weeks.some(r=>r.period_id===old)?old:weeks.at(-1).period_id;loadComment();render()}
-function text(s,x,y,size=24,color='#233f54',weight='normal'){ctx.fillStyle=color;ctx.font=`${weight} ${size}px "Microsoft YaHei",sans-serif`;ctx.fillText(s,x,y)}
+function text(s,x,y,size=24,color='#233f54',weight='normal'){const t=ctx.getTransform(),scale=t.a;ctx.fillStyle=color;ctx.font=`${weight} ${Math.round(size*scale)/scale}px "Microsoft YaHei",sans-serif`;ctx.fillText(s,(Math.round(x*scale+t.e)-t.e)/scale,(Math.round(y*scale+t.f)-t.f)/scale)}
 function wrap(s,x,y,width,size=24,line=40,maxLines=5){let parts=String(s).split('\n'),n=0;for(const part of parts){let lineText='';for(const char of part){ctx.font=`${size}px "Microsoft YaHei",sans-serif`;if(ctx.measureText(lineText+char).width>width){if(n>=maxLines)return y+n*line;text(lineText,x,y+n++*line,size);lineText=char}else lineText+=char}if(n>=maxLines)return y+n*line;text(lineText,x,y+n++*line,size)}return y+n*line}
 function rule(y){ctx.fillStyle='#d7e0e7';ctx.fillRect(32,y,716,1)}
 function autoComment(r){const rev=delta(r,'revpar'),occ=delta(r,'occupancy_rate'),adr=delta(r,'adr');const ranked=SEGS.map(s=>({s,d:delta(get(s,r.period_id),'revpar')})).filter(v=>v.d!==null).sort((a,b)=>b.d-a.d);return `本周全国酒店RevPAR为${fmt(val(r,'revpar'))}元，同比${change(rev,'revpar')}；入住率${fmt(val(r,'occupancy_rate')===null?null:val(r,'occupancy_rate')*100)}%，同比${change(occ,'occupancy_rate')}；平均房价${fmt(val(r,'adr'))}元，同比${change(adr,'adr')}。${ranked.length?'分档次看，'+ranked[0].s+'RevPAR同比表现相对较好。':''}`}
@@ -52,12 +53,13 @@ function panelChart(x,y,title,series,periods,mixed=false){
  if(!points.flat().some(v=>v!==null))text('暂无可比基期数据',150,top+110,22,'#73808b');
  [...new Set(Array.from({length:4},(_,i)=>Math.round(i*(periods.length-1)/3)))].forEach(j=>{if(!periods[j])return;ctx.textAlign=j===0?'left':j===periods.length-1?'right':'center';text(periods[j].period_id,left+w*j/Math.max(1,periods.length-1),top+h+29,17,'#73808b')});ctx.textAlign='left';ctx.restore();
 }
-function render(){
+function render(options={}){
  if(!weeks.length||!fontsReady)return;C.hidden=false;$('export').disabled=false;
+ const target=options.canvas||C,exporting=target!==C;ctx=target.getContext('2d',{alpha:false});
  const r=get('全部',$('week').value),periods=trendPeriods(r),windowLabel={'1':'近1个月','3':'近3个月','6':'近6个月','12':'近1年','24':'近2年',all:'全部历史'}[$('window').value];
  const comment=$('comment').value.trim()||autoComment(r),commentLines=linesFor(comment,1112,24),chartStart=926+commentLines.length*38,footerStart=chartStart+770;
  const legalLines=LEGAL_TEXT.map(t=>linesFor(t,1112,11)),legalHeight=legalLines.reduce((n,a)=>n+a.length*17+42,0),height=footerStart+69+legalHeight+68;
- C.width=3600;C.height=Math.ceil(height*3);ctx.scale(3,3);ctx.fillStyle='#fff';ctx.fillRect(0,0,1200,height);
+ const pixelWidth=exporting?3600:Math.round(C.getBoundingClientRect().width*(window.devicePixelRatio||1)),scale=pixelWidth/1200;target.width=pixelWidth;target.height=Math.ceil(height*scale);ctx.setTransform(scale,0,0,scale,0,0);ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.fillStyle='#fff';ctx.fillRect(0,0,1200,height);
  if(ready)ctx.drawImage(logo,44,27,223,50);
  ctx.textAlign='right';text('国金商社',1156,60,24,'#104f87','bold');ctx.textAlign='left';
  ctx.fillStyle='#104f87';ctx.fillRect(0,100,1200,180);if(banner.complete&&banner.naturalWidth)ctx.drawImage(banner,0,100,1200,180);
@@ -83,18 +85,19 @@ function render(){
  y+=40;ctx.fillStyle='#f5f4f5';ctx.fillRect(0,y-10,1200,height-y+10);ctx.fillStyle='#eee8cd';ctx.fillRect(0,y-10,1200,5);
  legalLines.forEach((lines,i)=>{ctx.textAlign='center';text(i?'免责声明':'特别声明',600,y+19,19,'#ac9d6c','bold');ctx.textAlign='left';y+=32;lines.forEach(l=>{text(l,44,y,11,'#737373');y+=17});y+=10});
  C.setAttribute('aria-label',`${r.period_id}全国酒店RevPAR${fmt(val(r,'revpar'))}元，OCC${fmt(val(r,'occupancy_rate')===null?null:val(r,'occupancy_rate')*100)}%，ADR${fmt(val(r,'adr'))}元。${comment}。特别声明：${LEGAL_TEXT[0]}。免责声明：${LEGAL_TEXT[1]}`);
- $('status').textContent=`${r.period_id} · ${windowLabel} · ${periods.length}周 · 高清PNG ${C.width} × ${C.height}`;
+ $('status').textContent=`${r.period_id} · ${windowLabel} · ${periods.length}周 · 高清PNG 3600 × ${Math.ceil(height*3)}`;
 }
 
 function key(){return 'gjss-hotel-product:'+ $('week').value}function loadComment(){try{$('comment').value=localStorage.getItem(key())||''}catch{$('comment').value=''}}
 function parseCSV(str){const lines=[],row=[];let cur='',quoted=false;for(let i=0;i<str.length;i++){const c=str[i];if(quoted){if(c==='"'&&str[i+1]==='"'){cur+='"';i++}else if(c==='"')quoted=false;else cur+=c}else if(c==='"')quoted=true;else if(c===','){row.push(cur);cur=''}else if(c==='\n'){row.push(cur.replace(/\r$/,''));lines.push(row.splice(0));cur=''}else cur+=c}if(quoted)throw Error('CSV引号未闭合');if(cur||row.length){row.push(cur.replace(/\r$/,''));lines.push(row)}const headers=lines.shift().map(x=>x.replace(/^\uFEFF/,''));for(const f of ['period_id','year','week','start_date','end_date','region','segment','occupancy_rate','adr','revpar'])if(!headers.includes(f))throw Error('缺少字段：'+f);return lines.filter(x=>x.some(Boolean)).map(a=>Object.fromEntries(headers.map((h,i)=>[h,a[i]??''])))}
 $('week').onchange=()=>{loadComment();render()};$('window').onchange=render;$('comment').oninput=()=>{try{localStorage.setItem(key(),$('comment').value)}catch{}render()};
 $('capture').onclick=()=>{document.body.classList.add('capture');window.scrollTo(0,0)};$('return').onclick=()=>document.body.classList.remove('capture');
-$('export').onclick=()=>{C.toBlob(blob=>{if(!blob){$('status').textContent='导出失败，请使用截图模式';return}const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`酒店行业周度跟踪_${$('week').value}.png`;a.click();setTimeout(()=>URL.revokeObjectURL(url),2000)},'image/png')};
+$('export').onclick=()=>{const output=document.createElement('canvas');const previewContext=ctx;try{render({canvas:output})}finally{ctx=previewContext}output.toBlob(blob=>{if(!blob){$('status').textContent='导出失败，请使用截图模式';return}const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`酒店行业周度跟踪_${$('week').value}.png`;a.click();setTimeout(()=>URL.revokeObjectURL(url),2000)},'image/png')};
 async function reload(){const b=$('refresh');b.disabled=true;$('status').textContent='正在读取酒店周度数据…';try{const response=await fetch('data/hotel_industry_weekly.csv',{cache:'no-store'});if(!response.ok)throw Error('HTTP '+response.status);const incoming=parseCSV(await response.text());validate(incoming);const next=incoming.filter(r=>r.region==='全国'&&r.segment==='全部').map(r=>r.period_id).sort().at(-1);if(weeks.length&&next<weeks.at(-1).period_id)throw Error('新数据早于已有数据');revision='仓库周度数据';install(incoming);$('week').value=weeks.at(-1).period_id;loadComment();render()}catch(e){$('status').textContent='数据读取失败'+(weeks.length?'，保留当前数据':'')+'：'+e.message}finally{b.disabled=false}}
 $('refresh').onclick=reload;
 $('upload').onchange=async()=>{const file=$('upload').files[0];if(!file)return;try{const data=parseCSV(await file.text());validate(data);revision='本地CSV导入';install(data);$('week').value=weeks.at(-1).period_id;loadComment();render()}catch(e){$('status').textContent='导入失败，保留当前数据：'+e.message}};
 C.hidden=true;
 async function startProduct(){try{await Promise.all([document.fonts.load('400 26px "Microsoft YaHei"'),document.fonts.load('700 26px "Microsoft YaHei"')]);fontsReady=true;await reload()}catch(e){$('status').textContent='字体读取失败，请刷新重试：'+e.message}}
+let resizeFrame;const resizePreview=()=>{cancelAnimationFrame(resizeFrame);resizeFrame=requestAnimationFrame(()=>{const width=Math.round(C.getBoundingClientRect().width*(window.devicePixelRatio||1));if(width>0&&width!==C.width)render()})};new ResizeObserver(resizePreview).observe(document.querySelector('.stage'));window.addEventListener('resize',resizePreview);
 startProduct();window.hotelProduct={get rows(){return rows},delta,get,parseCSV,validate,render,trendPeriods,get revision(){return revision}};
 
