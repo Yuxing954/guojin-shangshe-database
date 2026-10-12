@@ -7,7 +7,7 @@
 - 宏观数据：[macro.html](./macro.html)；中国17项、美国14项核心指标，以及消费专题和Polymarket重要预测，共用历史、来源、覆盖和CSV下载；[数据说明](./docs/macro-data.md) · [AI更新指引](./docs/macro-update-guide.md)
 - 消费专题：[consumption-macro.html](./consumption-macro.html)；归入宏观数据一级类目，精选8项消费指标，与核心页共用补充历史
 - 财报日历：[earnings.html](./earnings.html)；Choice MCP 财报日期；默认最近披露与未来安排，支持月 / 周、搜索行业、原文与历史；[数据口径与更新](./docs/earnings-workbench.md)
-- 公司数据：[companies.html](./companies.html)；公司搜索、估值与财务详情
+- 重点公司：[company-database.html](./company-database.html)；查看已入库公司的经营与财务历史；旧 [companies.html](./companies.html) 链接会转到该页面
 - 观点纪要：[research.html](./research.html)；公司与板块检索、近7天/30天筛选、站内观点阅读及纪要附件入口；区分纪要摘要、文档附件和未转写音频
 - 酒店周度产品：[hotel-weekly-product.html](./hotel-weekly-product.html)；选周、编辑点评、截图及导出PNG长图
 - 通用数据浏览器：[dashboard.html](./dashboard.html)
@@ -32,7 +32,7 @@
 .
 ├── index.html          # 每日研究首页：3 条重点、4 张行业卡、5 条研究
 ├── industry.html       # 行业选择、指标趋势与历史记录
-├── companies.html      # 公司目录、估值与财务详情
+├── company-database.html # 已入库公司的经营与财务历史
 ├── hotel-weekly-product.html # 酒店周度产品与PNG长图导出
 ├── research.html       # 观点与纪要中心
 ├── earnings.html       # 财报日历
@@ -83,4 +83,5 @@
 - [酒店](./industry.html#hotel)、[免税](./industry.html#dutyfree)、[黄金](./industry.html#gold)、[餐饮](./industry.html#dining)在行业页直接展示完整数据，历史指标折叠保留。
 - 餐饮包括餐饮收入、成本环境、门店、同店、客单与经营利润。出海已从网站板块和数据目录移除，旧数据仅留作存档，不参与行业与首页构建。
 - [数据范围、口径与增量更新](./docs/sector-construction.md)。离线更新默认只整理已核验数据；Choice MCP 查询和公开来源刷新分别显式导入。
+
 

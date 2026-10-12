@@ -42,12 +42,12 @@ jobs:
           node tests/macro-dashboard.browser.cjs
           node tests/consumption-macro.browser.cjs
           node tests/earnings-calendar.browser.cjs
-          node tests/quotes-workbench.browser.cjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: site-browser-verification
           path: .cache/site-unification
+
 
 
 

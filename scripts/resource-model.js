@@ -20,6 +20,7 @@
     });
   }
   function companyResources(items,code,kind){const c=items.find(r=>r.kind==='company'&&r.code===code);if(!c)return [];const names=aliases(c).filter(a=>!/^\d+$/.test(a));return items.filter(r=>r.kind===kind&&names.some(a=>text(r).includes(normal(a)))).sort((a,b)=>(b.sortDate||b.date||'').localeCompare(a.sortDate||a.date||''));}
-  function safeHref(href){return typeof href==='string'&&/^(?:quotes|research|industry)\.html(?:[?#]|$)/.test(href)?href:'';}
+  function safeHref(href){return typeof href==='string'&&/^(?:company-database|research|industry)\.html(?:[?#]|$)/.test(href)?href:'';}
   return {labels,sector,aliases,search,companyResources,safeHref};
 });
+
