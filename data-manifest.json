@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-10",
+  "updatedAt": "2026-10-12",
   "datasets": [
     {
       "id": "hotel",
@@ -12,9 +12,9 @@
       "name": "酒店行业周度经营",
       "file": "data/hotel_industry_weekly.csv",
       "category": "酒店",
-      "asOf": "2026-10-04",
-      "latestPeriod": "2026W40",
-      "rowCount": 53434,
+      "asOf": "2026-10-11",
+      "latestPeriod": "2026W41",
+      "rowCount": 53439,
       "updateRecord": "data/hotel-update-record.json",
       "historyCoverage": "data/hotel-city-history-coverage.json",
       "sourceAnomalies": "data/hotel-source-anomalies.csv"
@@ -34,9 +34,9 @@
       "name": "酒店供给结构",
       "file": "data/hotel_supply_weekly.csv",
       "category": "酒店",
-      "asOf": "2026-10-04",
-      "latestPeriod": "2026W40",
-      "rowCount": 27525,
+      "asOf": "2026-10-11",
+      "latestPeriod": "2026W41",
+      "rowCount": 27531,
       "updateRecord": "data/hotel-update-record.json",
       "historyCoverage": "data/hotel-city-history-coverage.json"
     },

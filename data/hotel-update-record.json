@@ -1,117 +1,27 @@
 {
-  "importedAt": "2026-10-08T07:54:34+08:00",
-  "mode": "historical-backfill",
+  "importedAt": "2026-10-12T18:09:23+08:00",
+  "mode": "weekly-update",
   "sources": [
     {
-      "file": "城市酒店数据_20城_2017W02-2017W52_20261008.xlsx",
-      "sha256": "e7f94d57d9ad7ac41cc42f722af424aae16204811e796c1ff25396e1675d1c36",
+      "file": "全国酒店数据20261012 (1).xlsx",
+      "sha256": "73f317c7c897b37058c6679f47c377bc94e7e322f4614971e9c63382a11442af",
       "rows": {
-        "hotel_industry_weekly.csv": 5100,
+        "hotel_industry_weekly.csv": 120,
         "hotel_group_weekly.csv": 0,
-        "hotel_supply_weekly.csv": 0,
-        "hotel_market_share_annual.csv": 0
-      }
-    },
-    {
-      "file": "城市酒店数据_20城_2017W53-2018W51_20261008.xlsx",
-      "sha256": "547e13ef4f5682f1eb47ae966078fb4443dfb2ff93d955659df84f96e655b6d0",
-      "rows": {
-        "hotel_industry_weekly.csv": 5200,
-        "hotel_group_weekly.csv": 0,
-        "hotel_supply_weekly.csv": 0,
-        "hotel_market_share_annual.csv": 0
-      }
-    },
-    {
-      "file": "城市酒店数据_20城_2018W52-2019W51_20261008.xlsx",
-      "sha256": "c3d714db7420ca9d2e5be00fd700755442bae0615dfe3a05f52bf4eaa0cf57af",
-      "rows": {
-        "hotel_industry_weekly.csv": 5200,
-        "hotel_group_weekly.csv": 0,
-        "hotel_supply_weekly.csv": 0,
-        "hotel_market_share_annual.csv": 0
-      }
-    },
-    {
-      "file": "城市酒店数据_20城_2019W52-2020W51_20261008.xlsx",
-      "sha256": "e9d2f9cd4ff0bcce6d528887445deab3985e7d85910a2bbd0b7500d558556f82",
-      "rows": {
-        "hotel_industry_weekly.csv": 5194,
-        "hotel_group_weekly.csv": 0,
-        "hotel_supply_weekly.csv": 0,
-        "hotel_market_share_annual.csv": 0
-      }
-    },
-    {
-      "file": "城市酒店数据_20城_2020W52-2021W51_20261008.xlsx",
-      "sha256": "0626c6f04537445559902907ea47059d62f4a00128dbc0fe1046a44ef534197b",
-      "rows": {
-        "hotel_industry_weekly.csv": 5200,
-        "hotel_group_weekly.csv": 0,
-        "hotel_supply_weekly.csv": 0,
-        "hotel_market_share_annual.csv": 0
-      }
-    },
-    {
-      "file": "城市酒店数据_20城_2021W52-2022W51_20261008.xlsx",
-      "sha256": "f470357f314d451eb524b2487cca216e6812c796ae4630bc201c780d2c8f8fcd",
-      "rows": {
-        "hotel_industry_weekly.csv": 5200,
-        "hotel_group_weekly.csv": 0,
-        "hotel_supply_weekly.csv": 2520,
-        "hotel_market_share_annual.csv": 0
-      }
-    },
-    {
-      "file": "城市酒店数据_20城_2022W52-2023W51_20261008.xlsx",
-      "sha256": "d9d9c698f2f5070ec5b1a3425ad1743a5738fdbbd54413ed111ce54ddb7bc7f4",
-      "rows": {
-        "hotel_industry_weekly.csv": 5200,
-        "hotel_group_weekly.csv": 0,
-        "hotel_supply_weekly.csv": 6240,
-        "hotel_market_share_annual.csv": 0
-      }
-    },
-    {
-      "file": "城市酒店数据_20城_2023W52-2024W50_20261008.xlsx",
-      "sha256": "0302ff8f153f4d0b19e89cda36205d5706f2adbcc7dea9e20e3e10eb80d37e96",
-      "rows": {
-        "hotel_industry_weekly.csv": 5200,
-        "hotel_group_weekly.csv": 0,
-        "hotel_supply_weekly.csv": 6240,
-        "hotel_market_share_annual.csv": 0
-      }
-    },
-    {
-      "file": "城市酒店数据_20城_2024W51-2025W50_20261008.xlsx",
-      "sha256": "1b195fa0f2b824d6501977a2dccf31cb7855178a2fe5927976615f2a90c2b006",
-      "rows": {
-        "hotel_industry_weekly.csv": 5200,
-        "hotel_group_weekly.csv": 0,
-        "hotel_supply_weekly.csv": 6240,
-        "hotel_market_share_annual.csv": 0
-      }
-    },
-    {
-      "file": "城市酒店数据_20城_2025W51-2026W40_20261008.xlsx",
-      "sha256": "34327d5ec7a6bb1d4fed7b5ef7695a3e76e710b39fbacd46e6d5652d03f95ade",
-      "rows": {
-        "hotel_industry_weekly.csv": 4200,
-        "hotel_group_weekly.csv": 0,
-        "hotel_supply_weekly.csv": 5040,
+        "hotel_supply_weekly.csv": 144,
         "hotel_market_share_annual.csv": 0
       }
     }
   ],
   "datasets": {
     "hotel_industry_weekly.csv": {
-      "rowCount": 53434,
-      "previousRowCount": 5540,
-      "added": 47894,
+      "rowCount": 53439,
+      "previousRowCount": 53434,
+      "added": 5,
       "revised": 0,
       "removed": 0,
-      "latestPeriod": "2026W40",
-      "asOf": "2026-10-04",
+      "latestPeriod": "2026W41",
+      "asOf": "2026-10-11",
       "regions": [
         "上海",
         "东莞",
@@ -149,13 +59,13 @@
       ]
     },
     "hotel_supply_weekly.csv": {
-      "rowCount": 27525,
-      "previousRowCount": 4125,
-      "added": 23400,
+      "rowCount": 27531,
+      "previousRowCount": 27525,
+      "added": 6,
       "revised": 0,
       "removed": 0,
-      "latestPeriod": "2026W40",
-      "asOf": "2026-10-04",
+      "latestPeriod": "2026W41",
+      "asOf": "2026-10-11",
       "regions": [
         "上海",
         "东莞",
@@ -324,43 +234,43 @@
       },
       "全国": {
         "firstPeriod": "2017W02",
-        "lastPeriod": "2026W40",
-        "periodCount": 508,
+        "lastPeriod": "2026W41",
+        "periodCount": 509,
         "metrics": {
           "hotel_count": {
             "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
+            "lastPeriod": "2026W41",
+            "periodCount": 220
           },
           "room_count": {
             "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
+            "lastPeriod": "2026W41",
+            "periodCount": 220
           },
           "hotel_count_15plus": {
             "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
+            "lastPeriod": "2026W41",
+            "periodCount": 220
           },
           "room_count_15plus": {
             "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
+            "lastPeriod": "2026W41",
+            "periodCount": 220
           },
           "occupancy_rate": {
             "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
+            "lastPeriod": "2026W41",
+            "periodCount": 406
           },
           "adr": {
             "firstPeriod": "2017W02",
-            "lastPeriod": "2026W40",
-            "periodCount": 508
+            "lastPeriod": "2026W41",
+            "periodCount": 509
           },
           "revpar": {
             "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
+            "lastPeriod": "2026W41",
+            "periodCount": 406
           }
         }
       },
@@ -1079,30 +989,6 @@
         }
       }
     },
-    "hotel_group_weekly.csv": {
-      "全国": {
-        "firstPeriod": "2024W01",
-        "lastPeriod": "2026W40",
-        "periodCount": 144,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2024W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 144
-          },
-          "room_count": {
-            "firstPeriod": "2024W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 144
-          },
-          "adr": {
-            "firstPeriod": "2024W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 144
-          }
-        }
-      }
-    },
     "hotel_supply_weekly.csv": {
       "上海": {
         "firstPeriod": "2022W31",
@@ -1187,28 +1073,28 @@
       },
       "全国": {
         "firstPeriod": "2022W42",
-        "lastPeriod": "2026W40",
-        "periodCount": 208,
+        "lastPeriod": "2026W41",
+        "periodCount": 209,
         "metrics": {
           "hotel_count": {
             "firstPeriod": "2022W42",
-            "lastPeriod": "2026W40",
-            "periodCount": 208
+            "lastPeriod": "2026W41",
+            "periodCount": 209
           },
           "room_count": {
             "firstPeriod": "2022W42",
-            "lastPeriod": "2026W40",
-            "periodCount": 208
+            "lastPeriod": "2026W41",
+            "periodCount": 209
           },
           "chain_hotel_count": {
             "firstPeriod": "2022W42",
-            "lastPeriod": "2026W40",
-            "periodCount": 208
+            "lastPeriod": "2026W41",
+            "periodCount": 209
           },
           "chain_room_count": {
             "firstPeriod": "2022W42",
-            "lastPeriod": "2026W40",
-            "periodCount": 208
+            "lastPeriod": "2026W41",
+            "periodCount": 209
           }
         }
       },
