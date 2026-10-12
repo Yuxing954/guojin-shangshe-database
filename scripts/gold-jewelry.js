@@ -15,18 +15,16 @@ window.GoldDashboard=(function(){
   const monthX=p=>{const [y,m]=p.split('-').map(Number);return y*12+m;};
   const quarterX=p=>{const [y,q]=p.split('-Q').map(Number);return y*4+q;};
   const dayX=p=>Date.parse(p+'T00:00:00Z')/86400000;
-  const colors=['#5158aa','#c49851','#8e9cae'];
+  const colors=['#2167a0','#ac863d','#8e9cae'];
   function chart(id,series,{unit='%',title='',zero=true,gap=1}={}){
     const el=$(id),points=series.flatMap(s=>s.points),valid=points.filter(p=>R.finite(p.value));
     if(!valid.length){el.innerHTML='<div class="gj-empty">所选口径缺少可比较数据</div>';return;}
-    const w=Math.max(300,el.clientWidth-28||650),h=250,L=48,T=22,B=38,RR=20;
+    const w=Math.max(300,el.clientWidth-28||650),h=280,L=72,T=30,B=38,RR=20;
     const minX=Math.min(...points.map(p=>p.x)),maxX=Math.max(...points.map(p=>p.x)),vs=valid.map(p=>p.value);
-    let lo=Math.min(...vs,zero?0:Infinity),hi=Math.max(...vs,zero?0:-Infinity);
-    const rawStep=(hi-lo||Math.abs(hi)*.08||1)/4,power=10**Math.floor(Math.log10(rawStep)),step=([1,2,2.5,5,10].find(n=>n>=rawStep/power)||10)*power;
-    lo=Math.floor(lo/step)*step;hi=Math.ceil(hi/step)*step;if(hi===lo){lo-=step;hi+=step;}
+    const scale=SiteCharts.niceScale(vs,{zero}),lo=scale.min,hi=scale.max,step=scale.step;
     const x=v=>L+(v-minX)/(maxX-minX||1)*(w-L-RR),y=v=>T+(hi-v)/(hi-lo)*(h-T-B);
     let svg=`<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(title)}"><title>${esc(title)}</title><text x="${L}" y="12" fill="#8a93a3" font-size="10">${esc(unit)}</text>`;
-    for(let v=lo;v<=hi+step/100;v+=step){svg+=`<line x1="${L}" x2="${w-RR}" y1="${y(v)}" y2="${y(v)}" stroke="#edf0f5"/><text x="${L-8}" y="${y(v)+4}" text-anchor="end" fill="#8a93a3" font-size="10">${num(v,step<1?2:step<5?1:0)}</text>`;}
+    for(let v=lo;v<=hi+step/100;v+=step){svg+=`<line x1="${L}" x2="${w-RR}" y1="${y(v)}" y2="${y(v)}" stroke="#edf0f5"/><text x="${L-8}" y="${y(v)+4}" text-anchor="end" fill="#8a93a3" font-size="10">${scale.format(v)}</text>`;}
     if(lo<0&&hi>0)svg+=`<line x1="${L}" x2="${w-RR}" y1="${y(0)}" y2="${y(0)}" stroke="#bcc2d2" stroke-dasharray="4 4"/>`;
     const labels=[...new Map(points.map(p=>[p.x,p.label])).entries()].sort((a,b)=>a[0]-b[0]),every=Math.max(1,Math.ceil(labels.length/Math.max(3,Math.floor(w/100))));
     labels.forEach(([xx,label],i)=>{if(i===0||i===labels.length-1||(i%every===0&&x(maxX)-x(xx)>=72))svg+=`<text x="${x(xx)}" y="${h-12}" text-anchor="${i===0?'start':i===labels.length-1?'end':'middle'}" fill="#8a93a3" font-size="10">${esc(label)}</text>`;});
@@ -105,7 +103,7 @@ window.GoldDashboard=(function(){
     function renderFed(){
       const meeting=macro.meetings.find(m=>m.meetingDate===$('fed-meeting').value),snapshot=M.latestSnapshot(meeting),probs=M.probabilities(snapshot,macro.policy.range),week=meeting.snapshots[0],old=week!==snapshot?M.probabilities(week,macro.policy.range):null,move=old?probs.hike-old.hike:null,age=M.ageDays(snapshot.observedDate,today),past=meeting.meetingDate<today;
       $('policy-current').innerHTML='当前目标区间 '+macro.policy.range.map(v=>num(v,2)).join('—')+'% · '+esc(macro.policy.decisionDate)+'决议 '+link({...ms.get(macro.policy.sourceId),name:'决议原文'});
-      $('fed-probability').innerHTML=`<div class="gj-fed-heading"><span>${meeting.meetingDate+'会议'} · 高于当前利率的概率</span><strong>${num(probs.hike)}<small>%</small></strong><p>${move===null?'暂无对照快照':'较'+esc(M.snapshotLabel(week))+' '+(move>0?'+':'')+num(move)+'个百分点'} ${past?'<b class="gj-stale">会议已结束 · 历史快照</b>':age>3?'<b class="gj-stale">历史快照 · 距今'+age+'天</b>':''}</p></div><div class="gj-probability-rows">${snapshot.ranges.filter(r=>r.probability>0).map(r=>`<div class="gj-probability-row" data-chart-tooltip="${esc(M.snapshotLabel(snapshot)+'\n'+num(r.lower,2)+'—'+num(r.upper,2)+'% · 概率：'+num(r.probability)+'%')}"><span>${num(r.lower,2)}—${num(r.upper,2)}%<small>${r.lower===macro.policy.range[0]?'维持':r.lower>macro.policy.range[0]?'累计加息'+Math.round((r.lower-macro.policy.range[0])*100)+'bp':'累计降息'+Math.round((macro.policy.range[0]-r.lower)*100)+'bp'}</small></span><div><i style="width:${r.probability}%;background:${r.lower===macro.policy.range[0]?'#aab0c4':'#5158aa'}"></i></div><b>${num(r.probability)}%</b></div>`).join('')}</div><div class="gj-prob-total"><span>降息 ${num(probs.cut)}%</span><span>维持 ${num(probs.hold)}%</span><span>加息 ${num(probs.hike)}%</span></div>`;
+      $('fed-probability').innerHTML=`<div class="gj-fed-heading"><span>${meeting.meetingDate+'会议'} · 高于当前利率的概率</span><strong>${num(probs.hike)}<small>%</small></strong><p>${move===null?'暂无对照快照':'较'+esc(M.snapshotLabel(week))+' '+(move>0?'+':'')+num(move)+'个百分点'} ${past?'<b class="gj-stale">会议已结束 · 历史快照</b>':age>3?'<b class="gj-stale">历史快照 · 距今'+age+'天</b>':''}</p></div><div class="gj-probability-rows">${snapshot.ranges.filter(r=>r.probability>0).map(r=>`<div class="gj-probability-row" data-chart-tooltip="${esc(M.snapshotLabel(snapshot)+'\n'+num(r.lower,2)+'—'+num(r.upper,2)+'% · 概率：'+num(r.probability)+'%')}"><span>${num(r.lower,2)}—${num(r.upper,2)}%<small>${r.lower===macro.policy.range[0]?'维持':r.lower>macro.policy.range[0]?'累计加息'+Math.round((r.lower-macro.policy.range[0])*100)+'bp':'累计降息'+Math.round((macro.policy.range[0]-r.lower)*100)+'bp'}</small></span><div><i style="width:${r.probability}%;background:${r.lower===macro.policy.range[0]?'#aab0c4':'#2167a0'}"></i></div><b>${num(r.probability)}%</b></div>`).join('')}</div><div class="gj-prob-total"><span>降息 ${num(probs.cut)}%</span><span>维持 ${num(probs.hold)}%</span><span>加息 ${num(probs.hike)}%</span></div>`;
       table('fed-history-table',['源观测日 / 获取日',...snapshot.ranges.map(r=>num(r.lower,2)+'—'+num(r.upper,2)+'%')],meeting.snapshots.slice().reverse().map(s=>[esc(M.snapshotLabel(s))+(s.observedAt?'<small>'+esc(s.observedAt.slice(11,19))+' CT</small>':'<small>原表未披露具体时刻</small>'),...snapshot.ranges.map(r=>{const v=s.ranges.find(t=>t.lower===r.lower&&t.upper===r.upper);return v?num(v.probability)+'%':'—';})]));
       $('policy-sep').innerHTML='<p>'+esc(macro.projections.asOf)+' · 年末利率中位数</p><div>'+macro.projections.points.map(p=>'<span>'+p.year+'年<strong>'+num(p.value)+'%</strong></span>').join('')+'</div><p>'+link(ms.get(macro.projections.sourceId))+'</p>';
       $('fed-source').innerHTML=link(ms.get(snapshot.sourceId))+' · '+(snapshot.observedAt?esc(snapshot.observedDate+' '+snapshot.observedAt.slice(11,19))+' CT（UTC'+esc(snapshot.observedAt.slice(-6))+'）':'源时点未提供 · '+esc(M.snapshotLabel(snapshot)));
@@ -149,5 +147,6 @@ window.GoldDashboard=(function(){
   }
   return {load(){if(!initialized)initialized=initialize();return initialized.then(()=>{if(refresh)refresh();});}};
 })();
+
 
 

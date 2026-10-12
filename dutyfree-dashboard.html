@@ -78,7 +78,7 @@ svg{width:100%;height:auto;display:block}
 @media(max-width:960px){.kpis{grid-template-columns:repeat(3,1fr)}.kpi:nth-child(5n){border-right:1px solid #eef1f4}.grid2,.grid3{grid-template-columns:1fr}}
 #view-monthly .controls{flex-wrap:wrap;gap:8px}#view-monthly .controls .srcbtn{font-size:12px;padding:6px 9px}
 @media(max-width:640px){.wrap{padding:14px 10px}.hero{flex-direction:column;align-items:flex-start}.kpis{grid-template-columns:repeat(2,1fr)}.kpi{border-right:0}.signal{grid-template-columns:1fr}.hero h1{font-size:20px}}
-</style><link rel="stylesheet" href="scripts/site.css?v=20261011public"><script defer src="scripts/site-shell.js?v=20261012dailybottom"></script><link rel="stylesheet" href="scripts/dutyfree-holidays.css?v=20261012coverage"><script defer src="scripts/dutyfree-holidays.js?v=20261012notes"></script><link rel="stylesheet" href="scripts/dutyfree-typography.css?v=3"><link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-charts.css?v=20261010combo1"><link rel="stylesheet" href="scripts/industry-embed.css?v=20261010direct"><link rel="stylesheet" href="scripts/site-polish.css?v=20261012hierarchy"><script src="scripts/dutyfree-monthly-model.js?v=20261010charts"></script><script src="scripts/site-charts.js?v=20261010combo1"></script><script defer src="scripts/industry-embed.js?v=20261010direct"></script></head><body class="dutyfree-page"><div class="wrap industry-board">
+</style><link rel="stylesheet" href="scripts/site.css?v=20261011public"><script defer src="scripts/site-shell.js?v=20261012dailybottom"></script><link rel="stylesheet" href="scripts/dutyfree-holidays.css?v=20261012coverage"><script defer src="scripts/dutyfree-holidays.js?v=20261012notes"></script><link rel="stylesheet" href="scripts/dutyfree-typography.css?v=3"><link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-charts.css?v=20261012chartclarity"><link rel="stylesheet" href="scripts/industry-embed.css?v=20261010direct"><link rel="stylesheet" href="scripts/site-polish.css?v=20261012hierarchy"><script src="scripts/dutyfree-monthly-model.js?v=20261010charts"></script><script src="scripts/site-charts.js?v=20261012chartclarity"></script><script defer src="scripts/industry-embed.js?v=20261010direct"></script></head><body class="dutyfree-page"><div class="wrap industry-board">
 <div class="crumbs"><a href="industry.html#dutyfree">行业数据</a> / 免税</div>
 <header class="hero"><div><div class="eyebrow">行业数据</div><h1>免税</h1><p>月度趋势 · 节假日表现</p></div><div class="asof board-asof" id="asof">读取数据中…</div></header>
 <nav class="tabs site-subnav" id="tabs"><button class="tab on" data-view="monthly">月度数据</button><button class="tab" data-view="holidays">节假日数据</button></nav>
@@ -129,9 +129,9 @@ document.getElementById('srcmodal').addEventListener('click',e=>{if(e.target.id=
 /* ---------- SVG 绘图 ---------- */
 function draw(svg,rows,series,zero=false){if(!svg||!rows||!rows.length){if(svg){svg.setAttribute('viewBox','0 0 620 210');svg.innerHTML='<text x="310" y="110" text-anchor="middle" class="axis">暂无数据</text>'}return}
 try{let w=620,h=210,l=38,r=12,t=16,b=24,all=series.flatMap(s=>rows.map(s.get)).filter(Number.isFinite);if(!all.length){svg.innerHTML='<text x="310" y="110" text-anchor="middle" class="axis">暂无数据</text>';return}
-let mi=Math.min(...all),ma=Math.max(...all),pad=(ma-mi)*.12||1;mi-=pad;ma+=pad;if(zero){mi=Math.min(mi,0);ma=Math.max(ma,0)}
+const scale=SiteCharts.niceScale(all,{zero});let mi=scale.min,ma=scale.max;
 let x=i=>l+i/Math.max(1,rows.length-1)*(w-l-r),y=v=>t+(ma-v)/(ma-mi)*(h-t-b),html='';
-for(let j=0;j<4;j++){let v=ma-j*(ma-mi)/3,yy=y(v);html+=`<line class="gridline" x1="${l}" y1="${yy}" x2="${w-r}" y2="${yy}"/><text class="axis" x="${l-5}" y="${yy+3}" text-anchor="end">${F(v,0)}</text>`}
+for(const v of scale.ticks){let yy=y(v);html+=`<line class="gridline" x1="${l}" y1="${yy}" x2="${w-r}" y2="${yy}"/><text class="axis" x="${l-5}" y="${yy+3}" text-anchor="end">${scale.format(v)}</text>`}
 if(mi<0&&ma>0)html+=`<line x1="${l}" y1="${y(0)}" x2="${w-r}" y2="${y(0)}" stroke="#aeb8c2"/>`;
 let lbl=[0,Math.floor((rows.length-1)/2),rows.length-1].filter((q,i,a)=>a.indexOf(q)===i);
 lbl.forEach(i=>{if(rows[i])html+=`<text class="axis" x="${x(i)}" y="${h-6}" text-anchor="${i===0?'start':i===rows.length-1?'end':'middle'}">${rows[i].period_id||rows[i].period||''}</text>`});
@@ -140,8 +140,8 @@ html+=`<rect class="hit" x="${l}" y="${t}" width="${w-l-r}" height="${h-t-b}" fi
 svg.setAttribute('viewBox',`0 0 ${w} ${h}`);svg.innerHTML=html;
 SiteCharts.attach(svg,rows.map((row,i)=>({x:x(i),text:(row.period_id||row.period)+'\n'+series.map(s=>s.name+'：'+F(s.get(row),2)+(s.unit||'')).join('\n')})));} catch(e){console.log('draw err',e)}}
 function drawBar(svg,rows,series){if(!svg||!rows||!rows.length){if(svg){svg.setAttribute('viewBox','0 0 620 210');svg.innerHTML='<text x="310" y="110" text-anchor="middle" class="axis">暂无数据</text>'}return}try{let w=620,h=210,l=38,r=12,t=16,b=24,all=series.flatMap(s=>rows.map(s.get)).filter(Number.isFinite);if(!all.length){svg.innerHTML='<text x="310" y="110" text-anchor="middle" class="axis">暂无数据</text>';return}
-let mi=Math.min(0,...all),ma=Math.max(0,...all),pad=(ma-mi)*.12||1;ma+=pad;mi-=pad;let x=i=>l+i/rows.length*(w-l-r),bw=(w-l-r)/rows.length*.6/series.length,y=v=>t+(ma-v)/(ma-mi)*(h-t-b),html='';
-for(let j=0;j<4;j++){let v=ma-j*(ma-mi)/3,yy=y(v);html+=`<line class="gridline" x1="${l}" y1="${yy}" x2="${w-r}" y2="${yy}"/><text class="axis" x="${l-5}" y="${yy+3}" text-anchor="end">${F(v,0)}</text>`}
+const scale=SiteCharts.niceScale(all,{zero:true});let mi=scale.min,ma=scale.max;let x=i=>l+i/rows.length*(w-l-r),bw=(w-l-r)/rows.length*.6/series.length,y=v=>t+(ma-v)/(ma-mi)*(h-t-b),html='';
+for(const v of scale.ticks){let yy=y(v);html+=`<line class="gridline" x1="${l}" y1="${yy}" x2="${w-r}" y2="${yy}"/><text class="axis" x="${l-5}" y="${yy+3}" text-anchor="end">${scale.format(v)}</text>`}
 rows.forEach((row,i)=>{html+=`<text class="axis" x="${x(i)+bw*series.length/2}" y="${h-6}" text-anchor="middle">${row.period}</text>`;series.forEach((s,k)=>{let v=s.get(row);if(Number.isFinite(v)){let yy=y(Math.max(0,v)),hh=Math.abs(y(v)-y(0));html+=`<rect x="${x(i)+k*bw}" y="${yy}" width="${bw-2}" height="${hh}" fill="${s.color}" rx="1"/>`}})});
 if(mi<0)html+=`<line x1="${l}" y1="${y(0)}" x2="${w-r}" y2="${y(0)}" stroke="#aeb8c2"/>`;
 svg.setAttribute('viewBox',`0 0 ${w} ${h}`);svg.innerHTML=html;SiteCharts.attach(svg,rows.map((row,i)=>({x:x(i)+bw*series.length/2,text:(row.period_id||row.period)+'\n'+series.map(s=>s.name+'：'+F(s.get(row),2)+(s.unit||'')).join('\n')})));}catch(e){console.log('drawBar err',e)}}
@@ -158,7 +158,7 @@ const result=SiteCharts.paired(rows.map(row=>({period:row.period_id,x:Date.parse
 const shell=document.createElement('div');shell.innerHTML=result.html;const chart=shell.querySelector('svg');
 const panel=svg.closest('.chart');panel.querySelector('.combo-legend')?.remove();panel.querySelector('.site-chart-legend')?.remove();
 if(!chart){svg.innerHTML='<text x="150" y="120">暂无数据</text>';return;}
-svg.setAttribute('viewBox',chart.getAttribute('viewBox'));svg.classList.add('site-paired-chart');svg.innerHTML=chart.innerHTML;const legend=shell.querySelector('.site-chart-legend');if(legend)svg.after(legend);SiteCharts.attach(svg,result.points);
+svg.setAttribute('viewBox',chart.getAttribute('viewBox'));svg.classList.add('site-paired-chart');svg.style.setProperty('height','auto','important');svg.style.minHeight='0';svg.innerHTML=chart.innerHTML;const legend=shell.querySelector('.site-chart-legend');if(legend)svg.after(legend);SiteCharts.attach(svg,result.points);
 }
 
 const trendModes={hn:'combo'};
@@ -206,6 +206,8 @@ document.getElementById('hn-metric').onchange=renderHainan;
 document.querySelectorAll('#hn-metric + .trend-modes button').forEach(button=>button.onclick=()=>{trendModes.hn=button.dataset.mode;button.parentElement.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));renderHainan();});
 }
 </script></body></html>
+
+
 
 
 

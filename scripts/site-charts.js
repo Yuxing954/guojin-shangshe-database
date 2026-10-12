@@ -97,43 +97,74 @@ function canvas(Chart){
   },afterDestroy(chart){chart.$siteAbort?.abort();}});
 }
 
+// Shared numeric axes. Tick precision follows the interval, never the raw extrema.
+function niceScale(values,options={}){
+  const vs=values.filter(Number.isFinite);let lo=vs.length?Math.min(...vs):0,hi=vs.length?Math.max(...vs):1;
+  if(options.zero){lo=Math.min(0,lo);hi=Math.max(0,hi);}
+  if(lo===hi){const pad=Math.abs(lo)*.05||1;lo-=pad;hi+=pad;if(options.zero&&vs.every(v=>v>=0))lo=0;}
+  const intervals=options.intervals||5,raw=(hi-lo)/intervals,power=10**Math.floor(Math.log10(raw));
+  const step=([1,2,2.5,5,10].find(n=>n>=raw/power)||10)*power;
+  lo=Math.floor(lo/step)*step;hi=Math.ceil(hi/step)*step;
+  if(Number.isFinite(options.min))lo=Math.max(options.min,lo);
+  if(Number.isFinite(options.max))hi=Math.min(options.max,hi);
+  const clean=v=>Number(v.toPrecision(12)),ticks=[];
+  for(let i=0;i<20;i++){const v=clean(Math.ceil((lo-step*1e-9)/step)*step+i*step);if(v>hi+step*1e-8)break;if(v>=lo-step*1e-8)ticks.push(v);}
+  return {min:clean(lo),max:clean(hi),step:clean(step),ticks,format:v=>axisFormat(v,step,Math.max(Math.abs(lo),Math.abs(hi)))};
+}
+function axisFormat(value,step=1,extent=Math.abs(value)){
+  if(!Number.isFinite(value))return '—';
+  const magnitude=extent,divisor=magnitude>=1e12?1e12:magnitude>=1e8?1e8:magnitude>=1e7?1e4:1;
+  const suffix=divisor===1e12?'万亿':divisor===1e8?'亿':divisor===1e4?'万':'';
+  let digits=0;while(digits<8&&Math.abs(step/divisor*10**digits-Math.round(step/divisor*10**digits))>1e-8)digits++;
+  return new Intl.NumberFormat('zh-CN',{maximumFractionDigits:digits}).format(Math.abs(value)<Math.abs(step)*1e-9?0:value/divisor)+suffix;
+}
+
 function paired(rows,opt={}){
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const fmt=v=>Number.isFinite(v)?new Intl.NumberFormat('zh-CN',{maximumFractionDigits:opt.precision??2}).format(v):'—';
   const mode=opt.mode||'combo',showValue=mode!=='change',showChange=mode!=='value',unit=opt.unit||'',changeUnit=opt.changeUnit||'%';
-  const normalized=rows.map((r,i)=>({...r,x:Number.isFinite(r.x)?r.x:i,values:r.values||[{name:opt.name||'数值',value:r.value,change:r.change,color:'#6574b9'}]}));
+  const normalized=rows.map((r,i)=>({...r,x:Number.isFinite(r.x)?r.x:i,values:r.values||[{name:opt.name||'数值',value:r.value,change:r.change,color:'#2167a0'}]}));
   const valid=normalized.filter(r=>r.values.some(s=>showValue&&Number.isFinite(s.value)||showChange&&Number.isFinite(s.change)));
   if(!valid.length)return {html:'<p class="portal-empty">暂无数据</p>',points:[]};
-  const w=Math.max(320,opt.width||Math.min(900,typeof innerWidth==='number'?innerWidth-64:900)),h=320,L=72,R=showChange&&showValue?72:24,T=42,B=48,bottom=h-B;
+  const w=Math.max(240,opt.width||Math.min(900,typeof innerWidth==='number'?innerWidth-64:900)),h=w<520?300:340,L=w<520?58:76,R=showChange&&showValue?(w<520?52:76):24,T=42,B=48,bottom=h-B;
   const xs=normalized.map(r=>r.x),xmin=Math.min(...xs),xmax=Math.max(...xs),width=w-L-R;
   const unique=[...new Set(xs)].sort((a,b)=>a-b),delta=unique.length>1?Math.min(...unique.slice(1).map((x,i)=>x-unique[i])):1;
   const margin=width/(unique.length+1)/2,px=x=>L+margin+(x-xmin)/(xmax-xmin||1)*(width-margin*2);
-  function domain(key,zero){const vs=normalized.flatMap(r=>r.values.map(s=>s[key])).filter(Number.isFinite);if(!vs.length)return [0,1];let lo=Math.min(...vs,zero?0:Infinity),hi=Math.max(...vs,zero?0:-Infinity),pad=(hi-lo||Math.abs(hi)*.1||1)*.12;return [lo<0?lo-pad:zero?0:lo-pad,hi+pad];}
-  const vd=domain('value',true),cd=domain('change',true),py=(v,d)=>bottom-(v-d[0])/(d[1]-d[0])*(bottom-T);
-  const palette=['#6574b9','#c99b55','#4c9e92','#9b79b7'],colors=normalized[0].values.map((s,i)=>s.color||palette[i%palette.length]);
-  const axis=v=>Math.abs(v)>=1e8?fmt(v/1e8)+'亿':Math.abs(v)>=1e5?fmt(v/1e4)+'万':fmt(v);
-  let svg='<svg class="site-paired-chart" viewBox="0 0 '+w+' '+h+'" role="img" aria-label="'+esc(opt.name||'历史趋势')+'"><title>'+esc(opt.name||'历史趋势')+'</title>';
-  const primary=showValue?vd:cd;
-  svg+='<text class="site-axis-label" x="'+L+'" y="20">'+esc(showValue?'数值（'+unit+'）':'同比（'+changeUnit+'）')+'</text>';
+  function domain(key){return niceScale(normalized.flatMap(r=>r.values.map(s=>s[key])),{zero:true});}
+  const valueScale=domain('value'),changeScale=domain('change'),vd=[valueScale.min,valueScale.max],cd=[changeScale.min,changeScale.max],py=(v,d)=>bottom-(v-d[0])/(d[1]-d[0])*(bottom-T);
+  const palette=['#2167a0','#ac863d','#668397','#538db5','#8d7852','#476777'],barPalette=['#abcfe8','#e6d4ab','#c3d0d9','#bfdcec','#d8ccb5','#acc2ce'],colors=Array.from({length:Math.max(...normalized.map(r=>r.values.length))},(_,i)=>palette[i%palette.length]);
+  let svg='<svg class="site-paired-chart" style="height:auto!important;min-height:0" viewBox="0 0 '+w+' '+h+'" role="img" aria-label="'+esc(opt.name||'历史趋势')+'"><title>'+esc(opt.name||'历史趋势')+'</title>';
+  const primary=showValue?vd:cd,primaryScale=showValue?valueScale:changeScale;
+  svg+='<text class="site-axis-label" x="'+L+'" y="20">'+esc(showValue?'数值（'+unit+'）':(opt.changeLabel||'同比')+'（'+changeUnit+'）')+'</text>';
   if(showValue&&showChange)svg+='<text class="site-axis-label site-change-axis" x="'+(w-R)+'" y="20" text-anchor="end">'+esc((opt.changeLabel||'同比')+'（'+changeUnit+'）')+'</text>';
-  for(let k=0;k<5;k++){let v=primary[1]-(primary[1]-primary[0])*k/4,y=py(v,primary);svg+='<line x1="'+L+'" x2="'+(w-R)+'" y1="'+y+'" y2="'+y+'" stroke="#e8edf4"/><text x="'+(L-10)+'" y="'+(y+4)+'" text-anchor="end">'+esc(axis(v))+'</text>';if(showValue&&showChange)svg+='<text class="site-change-axis" x="'+(w-R+10)+'" y="'+(y+4)+'">'+esc(axis(cd[1]-(cd[1]-cd[0])*k/4))+'</text>';}
+  for(const v of primaryScale.ticks){const y=py(v,primary);svg+='<line class="site-grid'+(v===0?' site-zero':'')+'" x1="'+L+'" x2="'+(w-R)+'" y1="'+y+'" y2="'+y+'"/><text class="site-tick" x="'+(L-12)+'" y="'+(y+4)+'" text-anchor="end">'+esc(primaryScale.format(v))+'</text>';}
+  if(showValue&&showChange)for(const v of changeScale.ticks)svg+='<text class="site-change-axis site-tick" x="'+(w-R+12)+'" y="'+(py(v,cd)+4)+'">'+esc(changeScale.format(v))+'</text>';
+  svg+='<path class="site-axis-rule" d="M'+L+','+T+'V'+bottom+'H'+(w-R)+(showValue&&showChange?'V'+T:'')+'" fill="none"/>';
   const seriesCount=Math.max(...normalized.map(r=>r.values.length)),barWidth=Math.min(44,width*delta/(xmax-xmin+delta)*.72)/seriesCount;
   const points=[];
   normalized.forEach((r,ri)=>{
     const text=r.period+'\n'+r.values.map(s=>(seriesCount>1?s.name+'：':'')+(showValue?fmt(s.value)+(Number.isFinite(s.value)?' '+unit:''):'')+(showValue&&showChange?'  |  ':'')+(showChange?(opt.changeLabel||'同比')+' '+fmt(s.change)+(Number.isFinite(s.change)?' '+changeUnit:''):'')).join('\n');
     points.push({x:px(r.x),text});
-    if(showValue)r.values.forEach((s,si)=>{if(!Number.isFinite(s.value))return;const y=py(s.value,vd),zero=py(0,vd);svg+='<rect class="site-value-bar" x="'+(px(r.x)+(si-seriesCount/2)*barWidth)+'" y="'+Math.min(y,zero)+'" width="'+Math.max(.8,barWidth-1)+'" height="'+Math.max(1,Math.abs(zero-y))+'" rx="2" fill="'+(s.color||colors[si%colors.length])+'" opacity=".72"><title>'+esc(text)+'</title></rect>';});
+    if(showValue)r.values.forEach((s,si)=>{if(!Number.isFinite(s.value))return;const y=py(s.value,vd),zero=py(0,vd);svg+='<rect class="site-value-bar" x="'+(px(r.x)+(si-seriesCount/2)*barWidth)+'" y="'+Math.min(y,zero)+'" width="'+Math.max(.8,barWidth-1)+'" height="'+Math.max(1,Math.abs(zero-y))+'" rx="2" fill="'+barPalette[si%barPalette.length]+'" opacity="1"><title>'+esc(text)+'</title></rect>';});
     const step=Math.max(1,Math.ceil(normalized.length/Math.max(2,Math.floor(width/110))));
     if(ri===0||ri===normalized.length-1||w>=520&&ri%step===0&&normalized.length-ri>step/2)svg+='<text x="'+px(r.x)+'" y="'+(h-17)+'" text-anchor="'+(ri===0?'start':ri===normalized.length-1?'end':'middle')+'">'+esc(String(r.period).replace(/年/g,'·').replace(/月/g,''))+'</text>';
   });
-  if(showChange)for(let si=0;si<seriesCount;si++){let path='',prior=null;for(const r of normalized){const s=r.values[si];if(!Number.isFinite(s?.change)){prior=null;continue;}const gap=r.breakBefore||prior&&(r.x-prior.x)>(opt.gap??Infinity);path+=(prior&&!gap?'L':'M')+px(r.x)+','+py(s.change,cd)+' ';prior=r;}svg+='<path class="site-change-line" d="'+path+'" fill="none" stroke="'+(seriesCount===1?'#cf8844':colors[si%colors.length])+'" stroke-width="2.5" stroke-linejoin="round"/>';normalized.forEach(r=>{if(Number.isFinite(r.values[si]?.change))svg+='<circle data-chart-point="'+si+'" tabindex="0" cx="'+px(r.x)+'" cy="'+py(r.values[si].change,cd)+'" r="2.5" fill="'+(seriesCount===1?'#cf8844':colors[si%colors.length])+'"><title>'+esc(points[normalized.indexOf(r)].text)+'</title></circle>';});}
+  if(showChange)for(let si=0;si<seriesCount;si++){let path='',prior=null;for(const r of normalized){const s=r.values[si];if(!Number.isFinite(s?.change)){prior=null;continue;}const gap=r.breakBefore||prior&&(r.x-prior.x)>(opt.gap??Infinity);path+=(prior&&!gap?'L':'M')+px(r.x)+','+py(s.change,cd)+' ';prior=r;}svg+='<path class="site-line-halo" d="'+path+'" fill="none" stroke="white" stroke-width="5.5" stroke-linejoin="round" stroke-linecap="round"/><path class="site-change-line" d="'+path+'" fill="none" stroke="'+colors[si%colors.length]+'" stroke-width="2.5" stroke-linejoin="round"/>';normalized.forEach((r,ri)=>{if(Number.isFinite(r.values[si]?.change)&&(ri%Math.max(1,Math.ceil(normalized.length/(w<520?24:80)))===0||ri===normalized.length-1))svg+='<circle data-chart-point="'+si+'" tabindex="0" cx="'+px(r.x)+'" cy="'+py(r.values[si].change,cd)+'" r="'+(normalized.length>80?2.4:3.4)+'" fill="white" stroke="'+colors[si%colors.length]+'" stroke-width="1.8"><title>'+esc(points[normalized.indexOf(r)].text)+'</title></circle>';});}
   svg+='</svg>';
   const legend=seriesCount>1?normalized.find(r=>r.values.length===seriesCount).values.map((s,i)=>'<span><i style="background:'+colors[i%colors.length]+'"></i>'+esc(s.name)+'</span>').join(''):'';
   return {html:svg+'<div class="site-chart-legend">'+(showValue?'<span><i class="site-bar-key"></i>数值 · '+esc(unit)+'</span>':'')+(showChange?'<span><i class="site-line-key"></i>'+esc(opt.changeLabel||'同比')+' · '+esc(changeUnit)+'</span>':'')+legend+'</div>',points};
 }
-function drawPaired(host,rows,opt){const result=paired(rows,{width:host.clientWidth||900,...opt});host.innerHTML=result.html;attach(host,result.points);return result;}
+const pairedObservers=new WeakMap();
+function drawPaired(host,rows,opt={}){
+  const style=typeof getComputedStyle==='function'?getComputedStyle(host):null;
+  const width=(host.clientWidth||900)-(parseFloat(style?.paddingLeft)||0)-(parseFloat(style?.paddingRight)||0);
+  const result=paired(rows,{...opt,width});host.innerHTML=result.html;attach(host,result.points);
+  pairedObservers.get(host)?.disconnect();
+  if(typeof ResizeObserver!=='undefined'){let last=host.clientWidth;const observer=new ResizeObserver(()=>{if(host.clientWidth>0&&Math.abs(host.clientWidth-last)>2){observer.disconnect();drawPaired(host,rows,opt);}});observer.observe(host);pairedObservers.set(host,observer);}
+  return result;
+}
 
-root.SiteCharts={attach,scan,canvas,groups,paired,drawPaired};
+root.SiteCharts={attach,scan,canvas,groups,paired,drawPaired,niceScale,axisFormat};
 document.addEventListener('pointerdown',e=>{if(pinned&&!pinned.svg.contains(e.target))pinned.hide(true);});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')pinned?.hide(true);});
 addEventListener('scroll',()=>{for(const state of states.values())state.refresh();},{passive:true});
@@ -141,3 +172,4 @@ addEventListener('resize',()=>{for(const state of states.values())state.hide(tru
 function start(){scan();new MutationObserver(schedule).observe(document.body,{childList:true,subtree:true});}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
 })(window);
+

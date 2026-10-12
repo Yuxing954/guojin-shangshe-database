@@ -7,7 +7,7 @@
   var GROUPS = ['华住', '首旅如家', '锦江酒店（中国区）', '亚朵'];
   var BANDS = ['15-29间', '30-69间', '70-149间', '150间及以上'];
   var weekly = [], seriesCache = new Map();
-  var COLORS = ['#5158aa', '#368575', '#b9854c', '#b85460', '#7a68a6', '#5485a5'];
+  var COLORS = ['#2167a0', '#368575', '#b9854c', '#b85460', '#7a68a6', '#5485a5'];
   var META = { revpar: { label: '每间可售房收入', abbr: 'RevPAR', unit: '元' }, occupancy_rate: { label: '入住率', abbr: 'OCC', unit: '%' }, adr: { label: '平均房价', abbr: 'ADR', unit: '元' } };
   function $(id) { return document.getElementById(id); }
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
@@ -115,7 +115,7 @@
       $('trend-caption').textContent=meta.label+' · '+(state.mode==='combo'?meta.unit+' / '+(field==='occupancy_rate'?'百分点':'%'):state.mode==='change'?(field==='occupancy_rate'?'百分点':'%'):meta.unit);$('chart-mode-note').textContent=labelChange();$('history-note').textContent=rows.length?rows[0].period_id+' — '+rows.at(-1).period_id:'';return;
     }
     var lines = [{ name: state.region + (!isChange ? ' · 本期绝对值' : ' · 同周同比'), color: COLORS[0], pts: current }];
-    if (!isChange) lines.push({ name: '去年同周号', color: '#aab0c9', dash: true, pts: rows.map(function (r) {
+    if (!isChange) lines.push({ name: '去年同周号', color: '#71869b', dash: true, pts: rows.map(function (r) {
       return { x: r.period_id, y: display(row(state.region, '全部', M.priorPeriod(r)), field) };
     }) });
     var unit = isChange ? (field === 'occupancy_rate' ? '百分点' : '%') : meta.unit;
@@ -371,21 +371,19 @@
     var xs = Array.from(new Set(lines.flatMap(function (s) { return s.pts.map(function (p) { return p.x; }); }))).sort();
     var values = lines.flatMap(function (s) { return s.pts.map(function (p) { return M.num(p.y); }); }).filter(function (v) { return v != null; });
     if (!values.length) { host.innerHTML = '<div class="hd-empty">所选范围暂无有效数据</div>'; return; }
-    var W = Math.max(300, $('dashboard').clientWidth - 40), H = 280, L = 54, R = 22, T = 14, B = 32, min = Math.min.apply(null, values), max = Math.max.apply(null, values);
+    var W = Math.max(300, host.clientWidth - 40), H = 300, L = 76, R = 28, T = 24, B = 40, min = Math.min.apply(null, values), max = Math.max.apply(null, values);
     if (opt.zero) { min = Math.min(0, min); max = Math.max(0, max); }
-    var padding = (max - min) * .12 || 1; min -= padding; max += padding;
-    if (opt.occupancy) { min = Math.max(0, min); max = Math.min(100, max); }
-    if (max === min) max = min + 1;
+    var scale=SiteCharts.niceScale(values,{zero:opt.zero,min:opt.occupancy?0:undefined,max:opt.occupancy?100:undefined});min=scale.min;max=scale.max;
     var positions = new Map(xs.map(function (x, i) { return [x, i]; }));
     function px(x) { return L + positions.get(x) / Math.max(1, xs.length - 1) * (W - L - R); }
     function py(y) { return T + (max - y) / (max - min) * (H - T - B); }
     var svg = svgEl('svg', { viewBox: '0 0 ' + W + ' ' + H, preserveAspectRatio: 'none', role: 'img', 'aria-label': lines.map(function (s) { return s.name; }).join('、') + '走势，单位' + opt.unit, tabindex: '0' });
     host.appendChild(svg);
     var axisDigits = opt.unit === '%' || opt.unit === '百分点' ? 1 : 0;
-    for (var i = 0; i <= 4; i++) {
-      var v = max - (max - min) * i / 4, y = py(v);
+    for (var i = 0; i < scale.ticks.length; i++) {
+      var v = scale.ticks[i], y = py(v);
       svg.appendChild(svgEl('line', { x1: L, x2: W - R, y1: y, y2: y, stroke: '#edf0f5' }));
-      svg.appendChild(svgEl('text', { x: L - 8, y: y + 4, 'text-anchor': 'end', 'font-size': 11, fill: '#8a94a5' }, fmt(v, axisDigits)));
+      svg.appendChild(svgEl('text', { x: L - 8, y: y + 4, 'text-anchor': 'end', 'font-size': 11, fill: '#8a94a5' }, scale.format(v)));
     }
     if (min < 0 && max > 0) svg.appendChild(svgEl('line', { x1: L, x2: W - R, y1: py(0), y2: py(0), stroke: '#c3c9d8', 'stroke-dasharray': '4 4' }));
     Array.from(new Set([0, Math.round((xs.length - 1) / 3), Math.round((xs.length - 1) * 2 / 3), xs.length - 1])).forEach(function (i) {
@@ -396,7 +394,7 @@
       s.pts.forEach(function (p) { if (M.num(p.y) == null) { started = false; return; } path += (started ? 'L' : 'M') + px(p.x).toFixed(1) + ' ' + py(p.y).toFixed(1); started = true; });
       var attrs = { d: path, fill: 'none', stroke: s.color, 'stroke-width': 2.5, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' };
       if (s.dash) attrs['stroke-dasharray'] = '5 5'; svg.appendChild(svgEl('path', attrs));
-      s.pts.forEach(function(p,i){if(M.num(p.y)!=null && (!s.pts[i-1] || M.num(s.pts[i-1].y)==null) && (!s.pts[i+1] || M.num(s.pts[i+1].y)==null)) svg.appendChild(svgEl('circle',{cx:px(p.x),cy:py(p.y),r:3.5,fill:s.color}));});
+      s.pts.forEach(function(p,i){if(M.num(p.y)!=null&&(i%Math.max(1,Math.ceil(s.pts.length/60))===0||i===s.pts.length-1))svg.appendChild(svgEl('circle',{cx:px(p.x),cy:py(p.y),r:3.2,fill:'white',stroke:s.color,'stroke-width':1.8}));});
     });
     var legend = document.createElement('div'); legend.className = 'hd-legend';
     legend.innerHTML = lines.map(function (s) { return '<span><i style="background:' + s.color + '"></i>' + esc(s.name) + (s.dash ? '（虚线）' : '') + '</span>'; }).join(''); host.appendChild(legend);
@@ -408,6 +406,7 @@
 
   }
 })();
+
 
 
 

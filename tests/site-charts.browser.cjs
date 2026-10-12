@@ -28,11 +28,10 @@ const root=path.resolve(__dirname,'..'),server=http.createServer((req,res)=>{
  
  // Default paired charts and all three selections use real repository data.
  for(const [url,control,host] of [
- ['industry.html#dutyfree','#chart-mode','#chart'],
  ['consumption-macro.html?indicator=retail','#measure','#chart'],
  ['macro.html?country=US&indicator=us-housing-starts','#mode','#primary-chart'],
  ['dining.html','#sector-chart-mode','#chart']]){
-  await page.goto(base+'/'+url);if(url.startsWith('industry.html')){await page.locator('#content:not([hidden])').waitFor({state:'attached'});await page.locator('#gold-industry-history > summary').click();}await page.waitForSelector(host+' svg.site-paired-chart');
+  await page.goto(base+'/'+url);await page.waitForSelector(host+' svg.site-paired-chart');
   assert.equal(await page.locator(control).inputValue(),'combo',url+' default combo');
   assert.ok(await page.locator(host+' .site-value-bar').count()>0,url+' values');
   assert.ok(await page.locator(host+' .site-change-line').count()>0,url+' YoY');
@@ -40,6 +39,8 @@ const root=path.resolve(__dirname,'..'),server=http.createServer((req,res)=>{
   await page.locator(control).selectOption('value');assert.equal(await page.locator(host+' .site-change-line').count(),0);
   await page.locator(control).selectOption(control==='#measure'||control==='#mode'?'yoy':'change');assert.equal(await page.locator(host+' .site-value-bar').count(),0);
  }
+ await page.goto(base+'/dutyfree-dashboard.html');await page.waitForSelector('#hn-growth .site-value-bar');
+ for(const mode of ['value','yoy','combo']){await page.locator('.trend-modes [data-mode="'+mode+'"]').click();assert.equal(await page.locator('#hn-growth .site-value-bar').count()>0,mode!=='yoy');assert.equal(await page.locator('#hn-growth .site-change-line').count()>0,mode!=='value');}
  await page.goto(base+'/hotel-dashboard.html');await page.waitForSelector('#main-chart .site-paired-chart');assert.equal(await page.locator('#mode-switch [aria-pressed=true]').getAttribute('data-mode'),'combo');
  await page.locator('#metric-switch [data-metric=occupancy_rate]').click();assert.match(await page.locator('#main-chart .site-change-axis').first().textContent(),/百分点/);
  await page.goto(base+'/gold-jewelry.html');await page.locator('[data-view=demand]').click();await page.waitForSelector('#retail-chart .site-paired-chart');assert.ok(await page.locator('#volume-chart .site-paired-chart').count()>0);
@@ -49,3 +50,4 @@ const root=path.resolve(__dirname,'..'),server=http.createServer((req,res)=>{
  assert.equal(await phone.locator('.site-chart-tooltip:not([hidden])').getAttribute('data-pinned'),'true');console.log('PASS: touch tap shows and pins actual monthly value');
  }finally{await browser.close();server.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;server.close();});
+

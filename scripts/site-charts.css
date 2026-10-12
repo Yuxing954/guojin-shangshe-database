@@ -12,12 +12,53 @@ svg.site-interactive-chart:focus:not(:focus-visible){outline:none}svg.site-inter
 .site-paired-chart{display:block;width:100%;height:auto;min-height:240px}
 .site-paired-chart text{font-size:12px;fill:#788596;font-family:inherit}
 .site-paired-chart .site-axis-label{font-size:13px;font-weight:600;fill:#46546a}
-.site-paired-chart .site-change-axis{fill:#a56731}
+.site-paired-chart .site-change-axis{fill:#253443}
 .site-chart-legend{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:center;font-size:12px;color:#66758a;padding:4px 0 12px}
 .site-chart-legend span{display:inline-flex;align-items:center;gap:6px}
 .site-chart-legend i{display:inline-block;width:14px;height:10px;border-radius:2px}
-.site-chart-legend .site-bar-key{background:#6574b9;opacity:.72}
-.site-chart-legend .site-line-key{height:3px;background:#cf8844}
+.site-chart-legend .site-bar-key{background:#abcfe8;opacity:.92}
+.site-chart-legend .site-line-key{height:3px;background:#2167a0}
 .site-chart-mode{display:flex;align-items:center;gap:8px;font-size:13px;color:#66758a;margin:8px 0}
 .site-chart-mode select{border:1px solid #dbe2eb;background:#fff;color:#26364b;border-radius:7px;padding:6px 10px;font:inherit}
 @media(max-width:600px){.site-paired-chart{min-height:220px}.site-chart-tooltip{font-size:13px;max-width:calc(100vw - 16px)}}
+
+/* Shared analytical charts: legible ticks, restrained grid and explicit series keys. */
+body.site-page svg.site-paired-chart,
+body.site-page :is(.industry-board,.data-board) .board-chart svg.site-paired-chart,
+body.site-page :is(.industry-board,.data-board) #chart > svg.site-paired-chart{
+ height:auto!important;min-height:0;max-height:none;overflow:visible;
+}
+svg.site-interactive-chart text:not(.combo-value):not(.combo-last){fill:#253443;font-size:14px;font-variant-numeric:tabular-nums}
+svg.site-paired-chart text.site-axis-label{fill:#253443;font-size:14px;font-weight:600}
+svg.site-paired-chart text.site-change-axis{fill:#253443!important}
+svg.site-paired-chart .site-grid{stroke:#e2e8ef;stroke-width:1;shape-rendering:crispEdges}
+svg.site-paired-chart .site-zero{stroke:#a5b3c1;stroke-width:1.2}
+svg.site-paired-chart .site-axis-rule{stroke:#b6c2ce;stroke-width:1;shape-rendering:crispEdges}
+svg.site-paired-chart .site-change-line{stroke-width:2.8;stroke-linecap:round}
+.site-chart-legend{color:#435569;font-size:13px;line-height:22px;gap:8px 22px;padding:10px 0 12px}
+.site-chart-legend i{width:18px;height:10px;flex-shrink:0}
+.site-chart-legend .site-line-key{border-radius:0}
+.site-chart-guide{stroke:#788c9f;stroke-dasharray:3 4}
+.site-paired-chart .site-axis-label{letter-spacing:0}
+svg.site-paired-chart text.site-tick{fill:#253443!important;font-size:14px!important}
+svg.site-paired-chart text.site-change-axis{fill:#253443!important}
+svg.site-paired-chart .site-line-halo{pointer-events:none}
+.research-chart{background:#fff;border-color:#e2e8ef;border-radius:8px}
+body.site-page :is(.board-table,.hd-table,.portal-table,.cm-table,.gj-table,.dh-table,.db-table){
+ border-collapse:collapse;font-variant-numeric:tabular-nums;color:#24384b;
+}
+body.site-page :is(.board-table,.hd-table,.portal-table,.cm-table,.gj-table,.dh-table,.db-table) :is(th,td){
+ border-bottom:1px solid #e1e7ee;padding-top:11px;padding-bottom:11px;line-height:1.55;
+}
+body.site-page :is(.board-table,.hd-table,.portal-table,.cm-table,.gj-table,.dh-table,.db-table) th{
+ background:#f1f5f8;color:#354b60;font-weight:600;border-bottom:1px solid #bfcbd7;
+}
+body.site-page :is(.board-table,.hd-table,.portal-table,.cm-table,.gj-table,.dh-table,.db-table) tbody tr:nth-child(even){background:#f8fafc}
+body.site-page :is(.board-table,.hd-table,.portal-table,.cm-table,.gj-table,.dh-table,.db-table) tbody tr:hover{background:#edf4fa}
+
+.site-chart-legend .site-line-key{position:relative;background:#2167a0}
+.site-chart-legend .site-line-key:after{content:"";position:absolute;width:7px;height:7px;border:1.8px solid #2167a0;background:white;border-radius:50%;left:5px;top:-3px;box-sizing:border-box}
+
+body.site-page :is(.macro-chart,.morning-chart) svg polyline{stroke:#2167a0}
+body.site-page :is(.macro-chart,.morning-chart) svg circle{fill:white;stroke:#2167a0;stroke-width:1.8}
+

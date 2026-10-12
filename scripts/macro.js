@@ -20,9 +20,8 @@
     chartPoints=[];const points=M.chartRows(spec,data,mode,state.years,new Date(snapshot.cutoff+'T23:59:59Z'));
     const values=points.filter(r=>M.finite(r.chartValue));
     if(!values.length)return '<p class="portal-empty">所选区间或口径没有可用数据。可切换“原始值”或“全部”。</p>';
-    const w=Math.max(320,document.querySelector('.macro-chart')?.clientWidth||(state.comparison&&innerWidth>1200?($('detail').clientWidth-76)/2:$('detail').clientWidth-60)||720),h=300,left=58,right=24,top=28,bottom=40;
-    let lo=Math.min(...values.map(r=>r.chartValue)),hi=Math.max(...values.map(r=>r.chartValue));
-    const pad=(hi-lo||Math.abs(hi)*.05||1)*.1;lo-=pad;hi+=pad;
+    const w=Math.max(320,document.querySelector('.macro-chart')?.clientWidth||(state.comparison&&innerWidth>1200?($('detail').clientWidth-76)/2:$('detail').clientWidth-60)||720),h=300,left=76,right=24,top=28,bottom=40;
+    const scale=SiteCharts.niceScale(values.map(r=>r.chartValue)),lo=scale.min,hi=scale.max;
     const first=M.dateOf(points[0].period).getTime(),last=M.dateOf(points.at(-1).period).getTime();
     const x=r=>left+(M.dateOf(r.period).getTime()-first)/(last-first||1)*(w-left-right);
     const y=r=>top+(hi-r.chartValue)/(hi-lo)*(h-top-bottom);
@@ -39,7 +38,7 @@
       chartPoints.push({x:x(row),y:y(row),text:row.period+'：'+number(row.chartValue)+' '+(mode==='value'?spec.unit:M.changeUnit(spec))});
       previous=row;
     }flush();
-    let grid='';for(let i=0;i<4;i++){const gy=top+i*(h-top-bottom)/3;grid+='<line x1="'+left+'" x2="'+(w-right)+'" y1="'+gy+'" y2="'+gy+'" stroke="#eceef5"/><text x="'+(left-8)+'" y="'+(gy+4)+'" text-anchor="end">'+esc(compact(hi-i*(hi-lo)/3))+'</text>';}
+    let grid='';for(const tick of scale.ticks){const gy=top+(hi-tick)/(hi-lo)*(h-top-bottom);grid+='<line x1="'+left+'" x2="'+(w-right)+'" y1="'+gy+'" y2="'+gy+'" stroke="#eceef5"/><text x="'+(left-8)+'" y="'+(gy+4)+'" text-anchor="end">'+esc(scale.format(tick))+'</text>';}
     return '<svg viewBox="0 0 '+w+' '+h+'" role="img" aria-labelledby="chart-title chart-desc"><title id="chart-title">'+esc(spec.name)+'历史走势</title><desc id="chart-desc">'+esc(values.length+'个观测值；详细数值见历史明细和CSV。缺失区间不连线。')+'</desc>'+grid+lines+dots+'<text x="'+left+'" y="'+(h-12)+'">'+esc(points[0].period)+'</text><text x="'+(w-right)+'" y="'+(h-12)+'" text-anchor="end">'+esc(points.at(-1).period)+'</text></svg>';
   }
   function renderHistory(spec,data){
@@ -170,6 +169,7 @@
   $('prediction-search').oninput=()=>{predictionExpanded=false;renderPredictions();};$('prediction-category').onchange=()=>{predictionExpanded=false;renderPredictions();};$('retry').onclick=load;
   load();
 })();
+
 
 
 

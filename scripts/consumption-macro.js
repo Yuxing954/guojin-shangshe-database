@@ -82,17 +82,17 @@
     const chartPoints=[],valid=rows.filter(r=>M.finite(r[field]));
     if(!valid.length){el.innerHTML='<div class="cm-empty">所选区间没有已收录数据</div>';return;}
     const holiday=rows[0].frequency==='holiday',unit=field==='value'?i.unit:'%',w=Math.max(300,el.clientWidth||900),h=310,L=78,R=22,T=28,B=45;
-    const raw=valid.map(r=>r[field]);let lo=Math.min(...raw),hi=Math.max(...raw);const pad=(hi-lo||Math.abs(hi)*.1||1)*.15;lo-=pad;hi+=pad;if(holiday){lo=Math.min(0,lo);hi=Math.max(0,hi);}
+    const raw=valid.map(r=>r[field]),scale=SiteCharts.niceScale(raw,{zero:holiday}),lo=scale.min,hi=scale.max;
     const times=rows.map(r=>Date.parse(r.endDate+'T00:00:00Z')),xmin=Math.min(...times),xmax=Math.max(...times);
     const xx=r=>holiday?L+(rows.indexOf(r)+.5)/rows.length*(w-L-R):L+(Date.parse(r.endDate+'T00:00:00Z')-xmin)/(xmax-xmin||1)*(w-L-R);
     const yy=v=>T+(hi-v)/(hi-lo)*(h-T-B);
     let svg=`<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(i.name+' '+(field==='value'?i.valueLabel:measures[field])+'历史趋势')}" preserveAspectRatio="xMidYMid meet"><title>${esc(i.name)} · ${esc(unit)}</title><text x="${L}" y="15" fill="#818897" font-size="12">${esc(unit)}</text>`;
-    for(let k=0;k<5;k++){const v=lo+(hi-lo)*k/4,y=yy(v);svg+=`<line x1="${L}" x2="${w-R}" y1="${y}" y2="${y}" stroke="#e9ebf1"/><text x="${L-10}" y="${y+4}" fill="#818897" text-anchor="end" font-size="12">${esc(num(v))}</text>`;}
+    for(const v of scale.ticks){const y=yy(v);svg+=`<line x1="${L}" x2="${w-R}" y1="${y}" y2="${y}" stroke="#e9ebf1"/><text x="${L-10}" y="${y+4}" fill="#818897" text-anchor="end" font-size="12">${esc(scale.format(v))}</text>`;}
     if(lo<0&&hi>0)svg+=`<line x1="${L}" x2="${w-R}" y1="${yy(0)}" y2="${yy(0)}" stroke="#b7bbc7" stroke-dasharray="4 4"/>`;
-    if(!holiday)for(const seg of M.segments(rows,field))svg+=`<path d="${seg.map((r,k)=>(k?'L':'M')+xx(r)+','+yy(r[field])).join(' ')}" fill="none" stroke="#5158aa" stroke-width="2.4"/>`;
+    if(!holiday)for(const seg of M.segments(rows,field))svg+=`<path d="${seg.map((r,k)=>(k?'L':'M')+xx(r)+','+yy(r[field])).join(' ')}" fill="none" stroke="#2167a0" stroke-width="2.4"/>`;
     rows.forEach((r,k)=>{if(!M.finite(r[field]))return;const title=label(r)+' · '+M.bases[r.basis]+' · '+num(r[field])+unit;
-      if(holiday){const width=Math.min(75,(w-L-R)/rows.length*.45);svg+=`<rect x="${xx(r)-width/2}" y="${Math.min(yy(0),yy(r[field]))}" width="${width}" height="${Math.max(1,Math.abs(yy(0)-yy(r[field])))}" fill="#5158aa" opacity=".85"><title>${esc(title)}</title></rect>`;}
-      svg+=`<circle data-row="${k}" data-chart-point="${chartPoints.length}" tabindex="0" cx="${xx(r)}" cy="${yy(r[field])}" r="4" fill="white" stroke="#5158aa" stroke-width="2" aria-label="${esc(title)}"><title>${esc(title)}</title></circle>`;
+      if(holiday){const width=Math.min(75,(w-L-R)/rows.length*.45);svg+=`<rect x="${xx(r)-width/2}" y="${Math.min(yy(0),yy(r[field]))}" width="${width}" height="${Math.max(1,Math.abs(yy(0)-yy(r[field])))}" fill="#2167a0" opacity=".85"><title>${esc(title)}</title></rect>`;}
+      svg+=`<circle data-row="${k}" data-chart-point="${chartPoints.length}" tabindex="0" cx="${xx(r)}" cy="${yy(r[field])}" r="4" fill="white" stroke="#2167a0" stroke-width="2" aria-label="${esc(title)}"><title>${esc(title)}</title></circle>`;
       chartPoints.push({x:xx(r),y:yy(r[field]),text:title});
     });
     const step=Math.max(1,Math.ceil(rows.length/Math.max(2,Math.floor(w/110))));rows.forEach((r,k)=>{if(holiday||k===0||k===rows.length-1||(k%step===0&&rows.length-k>step/2))svg+=`<text x="${xx(r)}" y="${h-14}" fill="#818897" text-anchor="${holiday?'middle':k===0?'start':k===rows.length-1?'end':'middle'}" font-size="11">${esc(label(r))}</text>`;});
@@ -158,5 +158,6 @@
     renderTrend();renderStudy();saveUrl();
   }catch(error){$('status').hidden=false;$('status').textContent=error.message||'加载失败，请刷新重试';$('status').setAttribute('role','alert');$('content').hidden=true;}
 })();
+
 
 

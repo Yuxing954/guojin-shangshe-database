@@ -98,19 +98,15 @@
     $('trend-caption').textContent = field === 'occupancy_rate' ? '入住率（%） · 按假期日序对齐 · 对照日期按源表保留' : title + '（元） · 按假期日序对齐 · 对照日期按源表保留';
     if (!sorted.length || !values.length) { host.innerHTML = '<div class="hd-empty">所选范围暂无有效数据</div>'; return; }
 
-    var width = Math.max(300, host.clientWidth || 900), height = 280, left = 54, right = 22, top = 14, bottom = 36;
-    var min = Math.min.apply(null, values), max = Math.max.apply(null, values);
-    var pad = (max - min) * .12 || Math.max(Math.abs(max) * .08, field === 'occupancy_rate' ? .01 : .1);
-    min = Math.max(0, min - pad); max += pad;
-    if (field === 'occupancy_rate') { min = Math.max(0, min); max = Math.min(1, max); }
-    if (max <= min) max = min + (field === 'occupancy_rate' ? .01 : 1);
+    var width = Math.max(300, host.clientWidth || 900), height = 280, left = 72, right = 28, top = 24, bottom = 36;
+    var scale=SiteCharts.niceScale(values,{min:0,max:field==='occupancy_rate'?1:undefined}),min=scale.min,max=scale.max;
     var x = function (i) { return left + (sorted.length <= 1 ? 0 : i * (width - left - right) / (sorted.length - 1)); };
     var y = function (v) { return top + (max - v) * (height - top - bottom) / (max - min); };
     var svg = '<svg viewBox="0 0 ' + width + ' ' + height + '" preserveAspectRatio="none" role="img" aria-label="' + esc(title + '，本期与对标期按假期日序比较') + '"><title>' + esc(title + '，本期与对标期按假期日序比较') + '</title>';
     var axisDigits = field === 'occupancy_rate' ? 0 : 1;
-    for (var tick = 0; tick <= 4; tick++) {
-      var value = max - (max - min) * tick / 4, yy = y(value);
-      var axisLabel = field === 'occupancy_rate' ? (value * 100).toFixed(axisDigits) + '%' : value.toFixed(axisDigits);
+    for (var tick = 0; tick < scale.ticks.length; tick++) {
+      var value = scale.ticks[tick], yy = y(value);
+      var axisLabel = field === 'occupancy_rate' ? SiteCharts.axisFormat(value*100,scale.step*100)+'%' : scale.format(value);
       svg += '<line x1="' + left + '" x2="' + (width - right) + '" y1="' + yy + '" y2="' + yy + '" stroke="#edf0f5"/>' +
         '<text x="' + (left - 8) + '" y="' + (yy + 4) + '" text-anchor="end" font-size="11" fill="#8a94a5">' + axisLabel + '</text>';
     }
@@ -128,7 +124,7 @@
         d += (started ? 'L' : 'M') + x(index).toFixed(1) + ',' + y(value).toFixed(1) + ' ';
         started = true;
       });
-      return '<path d="' + d + '" fill="none" stroke="' + (baseline ? '#aab0c9' : '#5158aa') + '" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"' + (baseline ? ' stroke-dasharray="5 5"' : '') + '/>';
+      return '<path d="' + d + '" fill="none" stroke="' + (baseline ? '#71869b' : '#2167a0') + '" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"' + (baseline ? ' stroke-dasharray="5 5"' : '') + '/>';
     }
     var dots = '', tooltipPoints = [];
     sorted.forEach(function (row, index) {
@@ -136,11 +132,11 @@
       var day = row.day_label ? '第' + row.period_day + '天 · ' + row.day_label : '第' + row.period_day + '天';
       var detail = [day, '本期 ' + row.current_date + '：' + fmt(current, field), '对标 ' + row.baseline_date + '：' + fmt(baseline, field)].join(String.fromCharCode(10));
       tooltipPoints.push({ x: cx, y: y(current == null ? baseline : current), text: detail });
-      if (current != null) dots += '<circle cx="' + cx + '" cy="' + y(current) + '" r="3.5" fill="#5158aa"><title>' + esc(detail) + '</title></circle>';
-      if (baseline != null) dots += '<circle cx="' + cx + '" cy="' + y(baseline) + '" r="3.5" fill="#aab0c9"><title>' + esc(detail) + '</title></circle>';
+      if (current != null) dots += '<circle cx="' + cx + '" cy="' + y(current) + '" r="3.5" fill="white" stroke="#2167a0" stroke-width="1.8"><title>' + esc(detail) + '</title></circle>';
+      if (baseline != null) dots += '<circle cx="' + cx + '" cy="' + y(baseline) + '" r="3.5" fill="white" stroke="#71869b" stroke-width="1.8"><title>' + esc(detail) + '</title></circle>';
     });
     host.innerHTML = svg + path(true) + path(false) + dots + '</svg>' +
-      '<div class="hd-legend"><span><i style="background:#5158aa"></i>本期</span><span><i style="background:#aab0c9"></i>对标期（虚线）</span><span>单位：' + unit + '</span></div>';
+      '<div class="hd-legend"><span><i style="background:#2167a0"></i>本期</span><span><i style="background:#71869b"></i>对标期（虚线）</span><span>单位：' + unit + '</span></div>';
     if (window.SiteCharts) window.SiteCharts.attach(host, tooltipPoints);
   }
   function renderSummary(rows) {
@@ -244,4 +240,6 @@
     .then(function (result) { init(M.csv(result[0]), result[1]); })
     .catch(function (error) { $('load-error').hidden = false; $('load-error').textContent = '假期数据暂时无法读取：' + error.message; });
 })();
+
+
 

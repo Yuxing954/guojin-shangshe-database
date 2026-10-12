@@ -7,14 +7,13 @@
   function draw(spec,data,cutoff){
     const rows=D.trendRows(spec,data,cutoff),finite=rows.filter(r=>M.finite(r.chartValue)),points=[];
     if(!finite.length)return {html:'<p class="portal-empty">暂无可用历史</p>',points};
-    const width=440,height=180,left=48,right=18,top=20,bottom=32;
-    let lo=Math.min(...finite.map(r=>r.chartValue)),hi=Math.max(...finite.map(r=>r.chartValue));
-    const pad=(hi-lo||Math.abs(hi)*.05||1)*.15;lo-=pad;hi+=pad;
+    const width=440,height=180,left=64,right=18,top=20,bottom=32;
+    const scale=SiteCharts.niceScale(finite.map(r=>r.chartValue),{intervals:3}),lo=scale.min,hi=scale.max;
     const first=M.dateOf(rows[0].period),last=M.dateOf(rows.at(-1).period),head=M.headline(spec,data);
     const x=r=>left+(M.dateOf(r.period)-first)/(last-first||1)*(width-left-right);
     const y=v=>top+(hi-v)/(hi-lo)*(height-top-bottom);
     let html='';
-    for(let i=0;i<3;i++){const value=hi-(hi-lo)*i/2,py=y(value);html+='<line class="morning-grid" x1="'+left+'" x2="'+(width-right)+'" y1="'+py+'" y2="'+py+'"/><text x="'+(left-7)+'" y="'+(py+4)+'" text-anchor="end">'+number(value)+'</text>';}
+    for(const value of scale.ticks){const py=y(value);html+='<line class="morning-grid" x1="'+left+'" x2="'+(width-right)+'" y1="'+py+'" y2="'+py+'"/><text x="'+(left-7)+'" y="'+(py+4)+'" text-anchor="end">'+scale.format(value)+'</text>';}
     const reference=spec.id==='cn-pmi'?50:0;
     if(reference>=lo&&reference<=hi)html+='<line class="morning-reference" x1="'+left+'" x2="'+(width-right)+'" y1="'+y(reference)+'" y2="'+y(reference)+'"/><text x="'+(width-right)+'" y="'+(y(reference)-5)+'" text-anchor="end">'+reference+'</text>';
     for(const part of D.segments(spec,rows)){
@@ -47,6 +46,7 @@
   }
   root.MacroMorning={render};
 })(window);
+
 
 
 
