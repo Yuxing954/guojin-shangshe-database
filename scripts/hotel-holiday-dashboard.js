@@ -5,7 +5,7 @@
     'spring-festival': '春节', qingming: '清明', 'mid-autumn': '中秋',
     'dragon-boat': '端午', 'national-day': '国庆'
   };
-  var state = { rows: [], record: null };
+  var state = { rows: [], record: null, segment: '全部', metric: 'revpar' };
   function esc(value) { return String(value == null ? '' : value).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function num(value) { return M.num(value); }
   function average(rows, field) {
@@ -36,11 +36,11 @@
   }
   function deltaClass(value) { return value == null || value === 0 ? 'hd-neutral' : value > 0 ? 'hd-positive' : 'hd-negative'; }
   function activeRows() {
-    var holiday = $('holiday-select').value, dimension = $('dimension-select').value, segment = $('segment-select').value;
+    var holiday = $('holiday-select').value, dimension = $('dimension-select').value, segment = state.segment;
     return state.rows.filter(function (r) { return r.holiday_id === holiday && r.dimension === dimension && (segment === '*' || r.segment === segment); });
   }
   function selectedRecords() {
-    return activeRows().filter(function (r) { return r.segment === $('segment-select').value || $('segment-select').value === '*'; }).sort(function (a, b) { return Number(a.period_day) - Number(b.period_day); });
+    return activeRows().filter(function (r) { return r.segment === state.segment || state.segment === '*'; }).sort(function (a, b) { return Number(a.period_day) - Number(b.period_day); });
   }
   function holidayInfo(id) {
     var c = state.record && state.record.coverage && state.record.coverage[id];
@@ -59,9 +59,15 @@
     $('holiday-select').value = holiday;
     $('dimension-select').value = dimension;
     var segments = Array.from(new Set(state.rows.filter(function (r) { return r.holiday_id === holiday && r.dimension === dimension; }).map(function (r) { return r.segment; })));
-    var old = $('segment-select').value;
-    $('segment-select').innerHTML = segments.map(function (s) { return '<option value="' + esc(s) + '">' + esc(s) + '</option>'; }).join('');
-    $('segment-select').value = segments.indexOf(old) >= 0 ? old : (segments.indexOf('全部') >= 0 ? '全部' : (segments[0] || ''));
+    var old = state.segment;
+    segments.sort(function (a, b) {
+      var order = ['全部', '经济型', '中档型', '高档型', '豪华型', '一线城市', '新一线城市', '二线城市', '三线城市', '四线及以下城市'];
+      return order.indexOf(a) - order.indexOf(b);
+    });
+    state.segment = segments.indexOf(old) >= 0 ? old : (segments.indexOf('全部') >= 0 ? '全部' : (segments[0] || ''));
+    $('holiday-segments').innerHTML = segments.map(function (s) {
+      return '<button type="button" data-segment="' + esc(s) + '" class="' + (s === state.segment ? 'active' : '') + '" aria-pressed="' + (s === state.segment) + '">' + esc(s === '全部' ? '全国整体' : s) + '</button>';
+    }).join('');
   }
   function kpi(label, now, base, field) {
     var diff = difference(now, base, field);
@@ -81,14 +87,14 @@
     return num(row['baseline_' + field]);
   }
   function renderChart(records) {
-    var field = $('metric-select').value;
+    var field = state.metric;
     var title = field === 'occupancy_rate' ? '入住率' : field === 'adr' ? 'ADR' : 'RevPAR';
     var unit = field === 'occupancy_rate' ? '%' : '元';
     var sorted = records.slice().sort(function (a, b) { return Number(a.period_day) - Number(b.period_day); });
     var values = sorted.flatMap(function (r) { return [metricValue(r, field, false), metricValue(r, field, true)]; }).filter(function (v) { return v != null; });
     var host = $('holiday-chart');
     $('trend-title').textContent = '假期每日' + title;
-    $('trend-note').textContent = $('segment-select').value === '*' ? '当前查看全部分组' : $('segment-select').value;
+    $('trend-note').textContent = state.segment === '*' ? '当前查看全部分组' : state.segment;
     $('trend-caption').textContent = field === 'occupancy_rate' ? '入住率（%） · 按假期日序对齐 · 对照日期按源表保留' : title + '（元） · 按假期日序对齐 · 对照日期按源表保留';
     if (!sorted.length || !values.length) { host.innerHTML = '<div class="hd-empty">所选范围暂无有效数据</div>'; return; }
 
@@ -181,6 +187,14 @@
     renderChart(selected);
     renderSummary(matching);
     renderDaily(selected);
+    $('holiday-metric-switch').querySelectorAll('[data-metric]').forEach(function (button) {
+      var active = button.dataset.metric === state.metric;
+      button.classList.toggle('active', active); button.setAttribute('aria-pressed', String(active));
+    });
+    var saved = new URLSearchParams(location.hash.slice(1));
+    saved.set('view', 'holiday'); saved.set('holiday', holiday);
+    saved.set('holidayDimension', dimension); saved.set('holidaySegment', state.segment); saved.set('holidayMetric', state.metric);
+    history.replaceState(null, '', location.pathname + location.search + '#' + saved.toString());
   }
   function init(rows, record) {
     state.rows = rows.map(function (r) {
@@ -193,15 +207,29 @@
     });
     state.record = record;
     if (!state.rows.length) throw new Error('假期经营数据为空');
-    $('holiday-select').value = 'national-day';
-    $('dimension-select').value = 'hotel_tier';
-    ['holiday-select', 'dimension-select', 'segment-select', 'metric-select'].forEach(function (id) { $(id).addEventListener('change', render); });
+    var savedHoliday = new URLSearchParams(location.hash.slice(1));
+    $('holiday-select').innerHTML = Object.keys(holidayNames).map(function (id) { return '<option value="' + id + '">' + holidayNames[id] + '</option>'; }).join('');
+    $('holiday-select').value = holidayNames[savedHoliday.get('holiday')] ? savedHoliday.get('holiday') : 'national-day';
+    state.segment = savedHoliday.get('holidaySegment') || '全部';
+    state.metric = ['revpar', 'adr', 'occupancy_rate'].includes(savedHoliday.get('holidayMetric')) ? savedHoliday.get('holidayMetric') : 'revpar';
+    $('dimension-select').value = savedHoliday.get('holidayDimension') === 'city_tier' ? 'city_tier' : 'hotel_tier';
+    ['holiday-select', 'dimension-select'].forEach(function (id) { $(id).addEventListener('change', render); });
+    $('holiday-segments').addEventListener('click', function (event) {
+      var button = event.target.closest('[data-segment]');
+      if (button) { state.segment = button.dataset.segment; render(); }
+    });
+    $('holiday-metric-switch').addEventListener('click', function (event) {
+      var button = event.target.closest('[data-metric]');
+      if (button) { state.metric = button.dataset.metric; render(); }
+    });
     document.querySelectorAll('[data-weekly-view]').forEach(function (link) {
       link.addEventListener('click', function (event) {
         event.preventDefault();
         var saved = new URLSearchParams(location.hash.slice(1));
         saved.set('view', link.dataset.weeklyView);
-        location.href = 'hotel-dashboard.html#' + saved.toString();
+        var target = new URL('hotel-dashboard.html', location.href);
+        if (new URLSearchParams(location.search).get('embed') === '1') target.searchParams.set('embed', '1');
+        target.hash = saved.toString(); location.href = target.href;
       });
     });
     var resizeTimer;
