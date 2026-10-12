@@ -25,11 +25,11 @@
     tag.onerror=()=>finish(Error('Network'));signal.addEventListener('abort',abort,{once:true});tag.src='https://qt.gtimg.cn/q=hf_XAU,hf_GC&_='+Date.now();document.head.append(tag);
   });}
   function active(){return !document.hidden&&!document.getElementById('gold-content').hidden;}
-  async function refresh(){if(pending||!active())return;pending=true;controller=new AbortController();const signal=controller.signal;
+  async function refresh(){if(pending||!active())return;pending=true;controller=new AbortController();const signal=controller.signal,deadline=setTimeout(()=>controller.abort(),12000);
     await Promise.allSettled([
       fetch('data/gold-jewelry/live.json?_='+Math.floor(Date.now()/60000),{cache:'no-store',signal}).then(r=>{if(!r.ok)throw Error('Snapshot');return r.json();}).then(q=>accept('AU9999',q)).catch(()=>errors.add('AU9999')),
       international(signal).catch(()=>{errors.add('XAU');errors.add('GC');}).then(async()=>{if(!errors.has('XAU')||signal.aborted)return;try{const r=await fetch('https://api.gold-api.com/price/XAU',{signal});if(!r.ok)throw Error('Gold API');const q=await r.json();accept('XAU',{price:q.price,percent:null,asOf:q.updatedAt,source:'Gold API',url:'https://gold-api.com/docs'});}catch(e){errors.add('XAU');}})
-    ]);pending=false;paint();
+    ]);clearTimeout(deadline);pending=false;paint();
   }
   host.innerHTML='<div class="gold-live-head"><h2>国内与国际金价</h2><button class="portal-button" type="button">刷新报价</button></div><div class="gold-live-grid">'+definitions.map(([id,name,unit,interval])=>'<article class="board-stat" data-gold="'+id+'"><span>'+name+'</span><strong class="gold-live-price">—</strong><span>'+unit+'</span><div class="gold-live-detail"><span class="gold-live-change">—</span><span>'+interval+'</span></div><time>等待报价</time><small class="gold-live-state">正在读取</small><a target="_blank" rel="noopener">数据来源</a></article>').join('')+'</div>';
   host.querySelector('button').onclick=refresh;
