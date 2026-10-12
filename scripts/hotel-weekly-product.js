@@ -67,7 +67,7 @@ function render(options={}){
  if(ready)ctx.drawImage(logo,44,25,300,67);
  ctx.fillStyle='#447eaf';ctx.fillRect(920,34,236,50);ctx.textAlign='center';text('国金商社于健',1038,70,32,'#fff','normal');ctx.textAlign='left';
  ctx.fillStyle='#104f87';ctx.fillRect(0,120,1200,272);if(banner.complete&&banner.naturalWidth)ctx.drawImage(banner,0,120,1200,272);
- text('酒店行业周度跟踪',44,236,76,'#fff','bold');
+ ctx.textAlign='center';text('酒店行业周度跟踪',600,260,84,'#fff','bold');ctx.textAlign='left';
  const [currentPeriod,basePeriod]=periodLabel(r).split('　');text(currentPeriod,44,330,32,'#fff');const periodWidth=ctx.measureText(currentPeriod).width;text(basePeriod,44+periodWidth+28,330,24,'#dce8f2');
  
  ctx.translate(0,160);
