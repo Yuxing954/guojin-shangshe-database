@@ -273,3 +273,37 @@ body.site-page :is(.industry-board,.data-board) [hidden]{display:none!important}
 
 
 
+
+/* Compact top controls across all industry boards. */
+body.industry-hub>.site-main{padding-top:20px!important}
+body.industry-hub #sector-tabs.industry-sector-nav{gap:8px;margin-bottom:12px}
+body.industry-hub #sector-tabs.industry-sector-nav button{flex-direction:row;gap:8px;min-height:44px;padding:8px 10px;font-size:14px;line-height:22px;border-radius:8px;opacity:1}
+body.industry-hub .industry-sector-icon{width:26px;height:26px;border-radius:6px}
+body.industry-hub .industry-sector-icon svg{width:21px;height:21px}
+body.industry-hub>.site-main>.portal-header{margin-bottom:12px;padding-bottom:10px}
+body.industry-hub>.site-main>.portal-header>div{display:flex;align-items:baseline;gap:10px}
+body.industry-hub>.site-main>.portal-header .eyebrow{margin:0}
+body.industry-hub>.site-main>.portal-header h1{font-size:22px;line-height:30px}
+body.site-page:is(.industry-hub,.industry-embedded) .embedded-asof{margin:0 0 8px!important}
+body.site-page:is(.industry-hub,.industry-embedded) :is(.hd-tabs,.gj-tabs,.site-subnav){margin-top:10px!important;margin-bottom:12px!important;gap:6px}
+body.site-page:is(.industry-hub,.industry-embedded) :is(.hd-tab,.gj-tabs button,.site-subnav button){min-height:36px;padding:6px 11px;font-size:13px}
+body.site-page:is(.industry-hub,.industry-embedded) .board-filters{display:flex;align-items:center!important;gap:8px 14px!important;margin-bottom:6px}
+body.site-page:is(.industry-hub,.industry-embedded) .board-filters label{display:inline-flex!important;align-items:center;gap:6px;flex-wrap:nowrap!important;width:auto!important}
+body.site-page:is(.industry-hub,.industry-embedded) .hd-display-control{display:flex!important;flex-wrap:nowrap!important;align-items:center;justify-content:flex-start!important;gap:6px;width:auto!important;flex:0 1 auto;order:0!important}
+body.site-page:is(.industry-hub,.industry-embedded) .hd-display-control .hd-switch{flex:0 1 auto!important;max-width:none!important;width:auto!important;flex-basis:auto!important}
+body.site-page:is(.industry-hub,.industry-embedded) :is(.hd-switch,.gj-switch,.trend-modes) button{padding:6px 9px!important;font-size:12px!important}
+body.site-page:is(.industry-hub,.industry-embedded) .hd-compare{margin-left:0;font-size:12px}
+body.site-page:is(.industry-hub,.industry-embedded) .hd-compare summary{padding:4px 0}
+body.site-page:is(.industry-hub,.industry-embedded) :is(.hd-period,.hd-selection-note){margin:6px 0 12px!important;font-size:12px!important;line-height:20px!important}
+body.site-page:is(.industry-hub,.industry-embedded) .board-section-head{margin-bottom:12px!important}
+@media(max-width:760px){
+ body.industry-hub>.site-main{padding-top:14px!important}
+ body.industry-hub #sector-tabs.industry-sector-nav{gap:6px}
+ body.industry-hub #sector-tabs.industry-sector-nav button{gap:5px;padding:7px 6px;font-size:13px;min-height:40px}
+ body.industry-hub .industry-sector-icon{width:22px;height:22px}
+ body.industry-hub .industry-sector-icon svg{width:18px;height:18px}
+ body.site-page:is(.industry-hub,.industry-embedded) .hd-display-control>span{font-size:12px!important}
+}
+
+body.industry-hub #sector-tabs.industry-sector-nav{margin-top:0!important}
+body.site-page:is(.industry-hub,.industry-embedded) .board-filters{justify-content:flex-start!important}
