@@ -4,7 +4,7 @@
   const benchmarks=[{code:'000001.SH',name:'上证指数',index:true},{code:'399006.SZ',name:'创业板指',index:true},{code:'HSI.HI',name:'恒生指数',index:true}];
   const industryIds={'酒店':'hotel','免税':'dutyfree','黄金珠宝':'gold','跨境电商与出海':'overseas','餐饮':'dining','茶饮':'dining','消费出海':'overseas','餐饮&茶饮':'dining'};
   const preferencesKey='sinolink.quotes.preferences.v1',cache=new Map();
-  let companies=[],quotes={},filtered=[],view=params.get('view')==='heat'?'heat':'list',pending=false,selected=null;
+  let companies=[],quotes={},filtered=[],view=['list','sector'].includes(params.get('view'))?params.get('view'):'heat',pending=false,selected=null;
   let period=['day','week','minute'].includes(params.get('period'))?params.get('period'):'day',chartRequest=0,lastRead='',failed=false,initialized=false,chartData=null,chartSelection=0,pageActive=true,chartPending=new Map(),chartNextAt=new Map(),chartCancels=new Set(),noticeTimer=null,benchmarkBuilt=false,miniCache=new Map(),miniPending=new Set();
   let paused=false,manualReading=false,firstRanking=false,heatPage=0,heatSignature='',heatSize=36,selectionTimer=null,searchTimer=null,chartLoadingKey='',overviewBuilt=false;
   const html=(el,value)=>{if(el.innerHTML!==value)el.innerHTML=value;};
@@ -19,19 +19,24 @@
   function filters(){return {q:$('search').value,market:$('market').value,sector:$('sector').value,sort:$('sort').value};}
   function saveUrl(){
     const f=filters(),p=new URLSearchParams();for(const key of ['q','market','sector'])if(f[key])p.set(key,f[key]);if(f.sort!=='change-desc')p.set('sort',f.sort);
-    if(view!=='list')p.set('view',view);if(selected)p.set('symbol',selected.code);else if(!initialized&&params.get('symbol'))p.set('symbol',params.get('symbol'));
+    if(view!=='heat')p.set('view',view);if(selected)p.set('symbol',selected.code);else if(!initialized&&params.get('symbol'))p.set('symbol',params.get('symbol'));
     if(period!=='day')p.set('period',period);history.replaceState(null,'',location.pathname+(p.size?'?'+p:''));
   }
   function timeText(q){return q?'<span title="'+esc(q.asOf)+'">'+esc(q.asOf.slice(11,19))+'</span>'+(q.failed?'<small>读取失败</small>':''):'—<small>暂无报价</small>';}
   function heatStyle(pct){const valid=Number.isFinite(pct),strength=valid?Math.min(Math.abs(pct),5):0;return {background:!valid?'#eef0f4':pct===0?'#f2f3f6':'hsl('+(pct>0?'354 58%':'164 47%')+' '+(96-strength*(pct>0?10:12))+'%)',color:strength>=4?'#fff':pct>0?'#8d2332':pct<0?'#145d49':'#627084'};}
   function paintHeat(tile,q,c){const style=heatStyle(q?.percent);tile.style.background=style.background;tile.style.color=style.color;tile.title=c.name+' · '+c.code+' · '+infoLabel(c)+' · '+signed(q?.percent,'%')+' · '+price(q,c)+(q?' · '+q.asOf+(q.failed?' · 读取失败，保留上次报价':''):' · 暂无报价');tile.dataset.failed=String(!!q?.failed);}
   function renderHeat(){
-    const host=$('heatmap'),layout=M.heatLayout(filtered.length,host.clientWidth||$('workspace').clientWidth/2||480);heatSize=layout.pageSize;const pages=Math.max(1,Math.ceil(filtered.length/heatSize));heatPage=Math.max(0,Math.min(heatPage,pages-1));
-    host.style.setProperty?.('--heat-columns',String(layout.columns));host.style.setProperty?.('--heat-height',layout.height+'px');host.style.setProperty?.('--heat-font',Math.max(14,Math.min(22,Math.floor(((host.clientWidth||480)/layout.columns-16)/4)))+'px');
+    const host=$('heatmap'),layout=M.heatLayout(filtered.length,host.clientWidth||$('workspace').clientWidth||480,matchMedia('(min-width:1101px)').matches);heatSize=layout.pageSize;const pages=Math.max(1,Math.ceil(filtered.length/heatSize));heatPage=Math.max(0,Math.min(heatPage,pages-1));
+    host.style.setProperty?.('--heat-columns',String(layout.columns));host.style.setProperty?.('--heat-rows',String(Math.max(1,Math.ceil(Math.min(filtered.length,heatSize)/layout.columns))));host.style.setProperty?.('--heat-height',layout.height+'px');host.style.setProperty?.('--heat-font',Math.max(12,Math.min(16,Math.floor(((host.clientWidth||480)/layout.columns-16)/5)))+'px');
     const visible=filtered.slice(heatPage*heatSize,(heatPage+1)*heatSize),signature=visible.map(c=>c.code).join('|');
     if(signature!==heatSignature||!host.innerHTML){const nodes=[...host.querySelectorAll('[data-code]')],byCode=new Map(nodes.map(n=>[n.dataset.code,n]));heatSignature=signature;if(visible.length===nodes.length&&visible.length&&visible.every(c=>byCode.has(c.code))){for(const c of visible)host.appendChild(byCode.get(c.code));}else host.innerHTML=visible.map(c=>{const q=quotes[c.code],pct=q?.percent,style=heatStyle(pct);return '<button class="quotes-heat-tile" style="background:'+style.background+';color:'+style.color+'" data-code="'+esc(c.code)+'" data-selected="'+(selected?.code===c.code)+'" aria-pressed="'+(selected?.code===c.code)+'" type="button"><strong>'+esc(c.name)+'</strong><span>'+signed(pct,'%')+'</span><small>'+esc(c.code)+'</small></button>';}).join('')||'<p class="quotes-empty">暂无匹配公司</p>';}
     for(const tile of host.querySelectorAll('[data-code]')){const c=companies.find(c=>c.code===tile.dataset.code);if(!c)continue;const name=tile.querySelector('strong');if(name)text(name,c.name);text(tile.querySelector('span'),signed(quotes[c.code]?.percent,'%'));paintHeat(tile,quotes[c.code],c);}
-    $('heat-pagination').hidden=pages===1;$('heat-previous').disabled=heatPage===0;$('heat-next').disabled=heatPage===pages-1;text($('heat-page-label'),(heatPage+1)+' / '+pages+' 页 · '+(heatPage*heatSize+1)+'–'+Math.min(filtered.length,(heatPage+1)*heatSize)+' 家');
+    $('heat-pagination').hidden=view!=='heat'||pages===1;$('heat-previous').disabled=heatPage===0;$('heat-next').disabled=heatPage===pages-1;text($('heat-page-label'),(heatPage+1)+' / '+pages+' 页 · '+(heatPage*heatSize+1)+'–'+Math.min(filtered.length,(heatPage+1)*heatSize)+' 家');
+  }
+  function renderSectorHeat(){
+    const host=$('sector-heatmap'),sectors=M.sectorHeat(filtered,quotes),signature=sectors.map(s=>s.sector).join('|');
+    if(host.dataset.signature!==signature){host.dataset.signature=signature;host.innerHTML=sectors.map(s=>'<button type="button" class="quotes-sector-tile" data-sector="'+esc(s.sector)+'"><strong>'+esc(s.sector)+'</strong><span class="quotes-sector-percent"></span><small class="quotes-sector-coverage"></small><small class="quotes-sector-breadth"></small></button>').join('')||'<p class="quotes-empty">暂无匹配板块</p>';}
+    for(const tile of host.querySelectorAll('[data-sector]')){const s=sectors.find(s=>s.sector===tile.dataset.sector),style=heatStyle(s.percent);tile.style.background=style.background;tile.style.color=style.color;text(tile.querySelector('.quotes-sector-percent'),signed(s.percent,'%'));text(tile.querySelector('.quotes-sector-coverage'),'有效报价 '+s.valid+' / '+s.total+' 家');text(tile.querySelector('.quotes-sector-breadth'),s.up+' 涨 · '+s.down+' 跌 · '+s.flat+' 平');tile.title=s.sector+' · 等权平均涨跌幅 · '+s.valid+'家有效报价';}
   }
   function syncSelection(){
     for(const row of $('rows').querySelectorAll('tr[data-company]')){const active=row.dataset.company===selected?.code;row.dataset.selected=String(active);row.querySelector?.('.quotes-name')?.setAttribute('aria-pressed',String(active));}
@@ -57,9 +62,9 @@
     $('table-scroll').scrollTop=scroll;
     if(focusCode){const buttons=[...$('rows').querySelectorAll('button')],target=buttons.find(button=>button.dataset.code===focusCode);target?.focus({preventScroll:true});}
     $('workspace').dataset.view=view;$('workspace').dataset.scope='all';
-    $('list-view').hidden=view!=='list';$('heat-view').hidden=view!=='heat';$('views').querySelectorAll('button').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.view===view)));
+    $('list-view').hidden=view!=='list';$('heat-view').hidden=view==='list';$('heatmap').hidden=view!=='heat';$('sector-heatmap').hidden=view!=='sector';$('sector-heat-note').hidden=view!=='sector';$('views').querySelectorAll('button').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.view===view)));
     $('list-note').textContent='共 '+filtered.length+' 家';
-    renderHeat();renderGroups();renderBenchmarks();syncSelection();$('export-quotes').disabled=!filtered.length;
+    renderHeat();renderSectorHeat();renderGroups();renderBenchmarks();syncSelection();$('export-quotes').disabled=!filtered.length;
   }
   function updateBenchmarks(){
     for(const el of $('benchmarks').querySelectorAll('[data-code]')){const c=benchmarks.find(c=>c.code===el.dataset.code),q=quotes[c.code];el.querySelector('strong').textContent=price(q,c);const pct=el.querySelector('.quotes-percent');pct.textContent=signed(q?.percent,'%');pct.className='quotes-percent '+tone(q?.percent);el.querySelector('small').textContent=q?q.asOf.slice(5):'暂无报价';}
@@ -74,7 +79,7 @@
       if(full){td[3].textContent=signed(q?.change,'',precision(c));td[3].className=tone(q?.change);[q?.open,q?.high,q?.low].forEach((v,i)=>td[i+4].textContent=fmt(v,precision(c)));}
       const time=td[full?7:3];html(time,timeText(q));time.dataset.failed=String(!!q?.failed);
     }
-    renderHeat();
+    renderHeat();renderSectorHeat();
     const host=$('rows'),nodes=[...host.querySelectorAll('tr[data-company]')],byCode=new Map(nodes.map(n=>[n.dataset.company,n]));if(nodes.some((n,i)=>n.dataset.company!==ranked[i]?.code))for(const c of ranked){const n=byCode.get(c.code);if(n)host.appendChild(n);}
     detailNavigation();
     const b=M.breadth(filtered,quotes);text($('range-summary'),filtered.length+' 家 · '+b.valid+' 家有报价 · '+b.up+'涨 / '+b.down+'跌 / '+b.flat+'平'+(b.missing?' · '+b.missing+'家待取得':'')+(b.percentMissing?' · '+b.percentMissing+'只涨跌幅缺失':''));updateBenchmarks();if(selected)renderOverview();
@@ -196,8 +201,9 @@
   $('rows').onkeydown=e=>{if(!e.target.matches('[data-code]')||!['ArrowUp','ArrowDown'].includes(e.key))return;e.preventDefault();if(selected?.code!==e.target.dataset.code)selectCompany(e.target.dataset.code);moveCompany(e.key==='ArrowUp'?-1:1,true);};
   $('table-head').onclick=e=>{const b=e.target.closest('[data-sort]');if(!b)return;$('sort').value=b.dataset.sort==='name'?($('sort').value==='name'?'name-desc':'name'):($('sort').value==='change-desc'?'change-asc':'change-desc');applyFilters();};
   $('groups').onclick=e=>{const b=e.target.closest('[data-group]');if(!b)return;for(const id of ['search','market','sector'])$(id).value='';applyFilters();};
+  $('sector-heatmap').onclick=e=>{const tile=e.target.closest('[data-sector]');if(!tile)return;$('sector').value=tile.dataset.sector;view='heat';applyFilters();};
   $('views').onclick=e=>{const b=e.target.closest('[data-view]');if(b&&b.dataset.view!==view){view=b.dataset.view;render();preferences();}};
-  $('heatmap').onkeydown=e=>{if(!e.target.matches('[data-code]')||!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home','End'].includes(e.key))return;e.preventDefault();if(selected?.code!==e.target.dataset.code)selectCompany(e.target.dataset.code);const columns=M.heatLayout(filtered.length,$('heatmap').clientWidth).columns,i=filtered.findIndex(c=>c.code===selected.code),delta={ArrowLeft:-1,ArrowRight:1,ArrowUp:-columns,ArrowDown:columns,Home:-i,End:filtered.length-1-i}[e.key];moveCompany(delta,true);};
+  $('heatmap').onkeydown=e=>{if(!e.target.matches('[data-code]')||!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home','End'].includes(e.key))return;e.preventDefault();if(selected?.code!==e.target.dataset.code)selectCompany(e.target.dataset.code);const columns=M.heatLayout(filtered.length,$('heatmap').clientWidth,matchMedia('(min-width:1101px)').matches).columns,i=filtered.findIndex(c=>c.code===selected.code),delta={ArrowLeft:-1,ArrowRight:1,ArrowUp:-columns,ArrowDown:columns,Home:-i,End:filtered.length-1-i}[e.key];moveCompany(delta,true);};
   $('heat-previous').onclick=()=>{heatPage--;renderHeat();syncSelection();};$('heat-next').onclick=()=>{heatPage++;renderHeat();syncSelection();};
   $('search').oninput=()=>{clearTimeout(searchTimer);if(!$('search').value.trim())applyFilters();else searchTimer=setTimeout(applyFilters,120);};for(const id of ['market','sector','sort'])$(id).onchange=applyFilters;
   $('live-sort').onchange=()=>{text($('order-hint'),$('live-sort').checked?'随报价按当前排序重排':'报价实时更新 · 位置固定');if($('live-sort').checked)updateQuotes();preferences();};
@@ -213,7 +219,7 @@
     const directory=await D.json('data/coverage-companies.json');
     companies=M.directory(directory);
     $('sector').innerHTML='<option value="">全部行业</option>'+Object.keys(M.sectorGroups).map(g=>'<option>'+esc(g)+'</option>').join('');
-    const pref=stored(preferencesKey,{});$('columns').value=pref?.columns==='full'?'full':'compact';$('chart-window').value=['20','60','120'].includes(pref?.window)?pref.window:'60';$('show-ma').checked=pref?.ma!==false;$('live-sort').checked=pref?.liveSort===true;if(!params.has('view'))view='list';text($('order-hint'),$('live-sort').checked?'随报价按当前排序重排':'报价实时更新 · 位置固定');
+    const pref=stored(preferencesKey,{});$('columns').value=pref?.columns==='full'?'full':'compact';$('chart-window').value=['20','60','120'].includes(pref?.window)?pref.window:'60';$('show-ma').checked=pref?.ma!==false;$('live-sort').checked=pref?.liveSort===true;if(!params.has('view'))view='heat';text($('order-hint'),$('live-sort').checked?'随报价按当前排序重排':'报价实时更新 · 位置固定');
     for(const id of ['search','market','sector','sort']){const val=params.get(id==='search'?'q':id);if(val!=null)$(id).value=id==='sector'?M.sectorGroup(val.split(',')[0]):val;}if(!$('sort').value)$('sort').value='change-desc';
     $('content').hidden=false;render();
     initialized=true;const code=params.get('symbol')||pref?.selected;if(companies.concat(benchmarks).some(c=>c.code===code))selectCompany(code);else ensureSelection();saveUrl();await poller.check();automatic();
