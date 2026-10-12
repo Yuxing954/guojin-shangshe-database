@@ -16,51 +16,53 @@ function validate(items){const seen=new Set();for(const r of items){if(r.region!
 function install(items){validate(items);rows=items.filter(r=>r.region==='全国'&&['全部',...SEGS].includes(r.segment));index=new Map(rows.map(r=>[r.segment+'|'+r.period_id,r]));weeks=rows.filter(r=>r.segment==='全部'&&['adr','revpar','occupancy_rate'].some(k=>val(r,k)!==null)).sort((a,b)=>a.period_id.localeCompare(b.period_id));const old=$('week').value;$('week').replaceChildren(...weeks.slice().reverse().map(r=>{const o=document.createElement('option');o.value=r.period_id;o.textContent=r.period_id+' · '+r.end_date;return o}));$('week').value=weeks.some(r=>r.period_id===old)?old:weeks.at(-1).period_id;loadComment();render()}
 function text(s,x,y,size=24,color='#233f54',weight='normal'){ctx.fillStyle=color;ctx.font=`${weight} ${size}px "Microsoft YaHei",sans-serif`;ctx.fillText(s,x,y)}
 function wrap(s,x,y,width,size=24,line=40,maxLines=5){let parts=String(s).split('\n'),n=0;for(const part of parts){let lineText='';for(const char of part){ctx.font=`${size}px "Microsoft YaHei",sans-serif`;if(ctx.measureText(lineText+char).width>width){if(n>=maxLines)return y+n*line;text(lineText,x,y+n++*line,size);lineText=char}else lineText+=char}if(n>=maxLines)return y+n*line;text(lineText,x,y+n++*line,size)}return y+n*line}
-function rule(y){ctx.fillStyle='#d7e0e7';ctx.fillRect(58,y,964,1)}
+function rule(y){ctx.fillStyle='#d7e0e7';ctx.fillRect(32,y,716,1)}
 function autoComment(r){const rev=delta(r,'revpar'),occ=delta(r,'occupancy_rate'),adr=delta(r,'adr');const ranked=SEGS.map(s=>({s,d:delta(get(s,r.period_id),'revpar')})).filter(v=>v.d!==null).sort((a,b)=>b.d-a.d);return `本周全国酒店RevPAR为${fmt(val(r,'revpar'))}元，同比${change(rev,'revpar')}；入住率${fmt(val(r,'occupancy_rate')===null?null:val(r,'occupancy_rate')*100)}%，同比${change(occ,'occupancy_rate')}；平均房价${fmt(val(r,'adr'))}元，同比${change(adr,'adr')}。${ranked.length?'分档次看，'+ranked[0].s+'RevPAR同比表现相对较好。':''}`}
 function chart(y,title,series,periods,mixed=false){
- section(title,y);text(mixed?'ADR / RevPAR：%     OCC：百分点（右轴）':series[0]?.field==='occupancy_rate'?'同比变化 · 百分点':'同比增速 · %',58,y+36,18,'#768695');
- series.forEach((s,i)=>{ctx.fillStyle=s.color;ctx.fillRect(62+i*236,y+63,24,4);text(s.name,96+i*236,y+72,19)});
- const x=99,top=y+108,w=884,h=252;const points=series.map(s=>periods.map(p=>delta(get(s.seg,p.period_id),s.field)));
+ section(title,y);text(mixed?'ADR / RevPAR：%　OCC：百分点（右轴）':series[0]?.field==='occupancy_rate'?'同比变化 · 百分点':'同比增速 · %',32,y+38,20,'#768695');
+ series.forEach((s,i)=>{const x=34+i*(712/series.length);ctx.fillStyle=s.color;ctx.fillRect(x,y+65,20,4);text(s.name,x+28,y+74,20)});
+ const x=76,top=y+113,w=mixed?616:646,h=246,points=series.map(s=>periods.map(p=>delta(get(s.seg,p.period_id),s.field)));
  function range(values){const vs=values.filter(v=>v!==null);if(!vs.length)return [-1,1];let lo=Math.min(0,...vs),hi=Math.max(0,...vs);if(lo===hi){lo-=1;hi+=1}const pad=(hi-lo)*.1;return [lo-pad,hi+pad]}
  const left=range(points.flatMap((p,i)=>mixed&&series[i].field==='occupancy_rate'?[]:p)),right=mixed?range(points.flatMap((p,i)=>series[i].field==='occupancy_rate'?p:[])):left;
- for(let i=0;i<=4;i++){const yy=top+i*h/4;ctx.strokeStyle='#e3e9ee';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x,yy);ctx.lineTo(x+w,yy);ctx.stroke();text((left[1]-(left[1]-left[0])*i/4).toFixed(0),x-48,yy+6,18,'#7b8994');if(mixed)text((right[1]-(right[1]-right[0])*i/4).toFixed(1),x+w+10,yy+6,18,'#7b8994')}
+ for(let i=0;i<=4;i++){const yy=top+i*h/4;ctx.strokeStyle='#e3e9ee';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x,yy);ctx.lineTo(x+w,yy);ctx.stroke();text((left[1]-(left[1]-left[0])*i/4).toFixed(0),25,yy+7,20,'#7b8994');if(mixed)text((right[1]-(right[1]-right[0])*i/4).toFixed(1),x+w+10,yy+7,20,'#7b8994')}
  const zero=top+h*left[1]/(left[1]-left[0]);ctx.strokeStyle='#b6c5d0';ctx.setLineDash([5,5]);ctx.beginPath();ctx.moveTo(x,zero);ctx.lineTo(x+w,zero);ctx.stroke();ctx.setLineDash([]);
- points.forEach((vals,i)=>{const r=mixed&&series[i].field==='occupancy_rate'?right:left;ctx.strokeStyle=series[i].color;ctx.lineWidth=2.8;let active=false;ctx.beginPath();vals.forEach((v,j)=>{if(v===null){active=false;return}const xx=x+w*j/Math.max(1,periods.length-1),yy=top+h*(r[1]-v)/(r[1]-r[0]);if(active)ctx.lineTo(xx,yy);else ctx.moveTo(xx,yy);active=true});ctx.stroke()});
- if(!points.flat().some(v=>v!==null))text('暂无可比基期数据',x+300,top+130,26,'#768695');
- const ticks=[...new Set(Array.from({length:6},(_,i)=>Math.round(i*(periods.length-1)/5)))];ticks.forEach(j=>{const p=periods[j];if(!p)return;const label=p.period_id;ctx.font='17px "Microsoft YaHei"';text(label,x+w*j/Math.max(1,periods.length-1)-ctx.measureText(label).width/2,top+h+35,17,'#7b8994')});
- rule(y+415);
+ points.forEach((vals,i)=>{const r=mixed&&series[i].field==='occupancy_rate'?right:left;ctx.strokeStyle=series[i].color;ctx.lineWidth=3;let active=false;ctx.beginPath();vals.forEach((v,j)=>{if(v===null){active=false;return}const xx=x+w*j/Math.max(1,periods.length-1),yy=top+h*(r[1]-v)/(r[1]-r[0]);if(active)ctx.lineTo(xx,yy);else ctx.moveTo(xx,yy);active=true});ctx.stroke()});
+ if(!points.flat().some(v=>v!==null))text('暂无可比基期数据',215,top+130,26,'#768695');
+ const ticks=[...new Set(Array.from({length:4},(_,i)=>Math.round(i*(periods.length-1)/3)))];ticks.forEach(j=>{const p=periods[j];if(!p)return;const label=p.period_id;ctx.font='19px "Microsoft YaHei"';text(label,x+w*j/Math.max(1,periods.length-1)-ctx.measureText(label).width/2,top+h+36,19,'#7b8994')});
+ rule(y+418);
 }
 const LEGAL_TEXT=["国金证券股份有限公司经中国证券监督管理委员会批准，已具备证券投资咨询业务资格。\n本报告版权归“国金证券股份有限公司”（以下简称“国金证券”）所有，未经事先书面授权，任何机构和个人均不得以任何方式对本报告的任何部分制作任何形式的复制、转发、转载、刊载、引用、修改、仿制、刊发，或以任何侵犯本公司版权的其他方式使用。经书面授权的引用、刊发，需注明出处为“国金证券股份有限公司”，且不得对本报告进行任何有悖原意的删节和修改。\n本报告的产生基于国金证券及其研究人员认为可信的公开资料或实地调研资料，但国金证券及其研究人员对这些信息的准确性和完整性不作任何保证。本报告反映撰写研究人员的不同设想、见解及分析方法，故本报告所载观点可能与其他类似研究报告的观点及市场实际情况不一致，国金证券不对使用本报告所包含的材料产生的任何直接或间接损失或与此有关的其他任何损失承担任何责任。且本报告中的资料、意见、预测均反映报告初次公开发布时的判断，在不作事先通知的情况下，可能会随时调整，亦可因使用不同假设和标准、采用不同观点和分析方法而与国金证券其它业务部门、单位或附属机构在制作类似的其他材料时所给出的意见不同或者相反。\n本报告仅为参考之用，在任何地区均不应被视为买卖任何证券、金融工具的要约或要约邀请。本报告提及的任何证券或金融工具均可能会含有重大的风险，可能不易变卖以及不适合所有投资者。本报告所提及的证券或金融工具的价格、价值及收益可能会受汇率影响而波动。过往的业绩并不能代表未来的表现。\n客户应当考虑到国金证券存在可能影响本报告客观性的利益冲突，而不应视本报告为作出投资决策的唯一因素。证券研究报告是用于服务具备专业知识的投资者和投资顾问的专业产品，使用时必须经专业人士进行解读。国金证券建议获取报告人员应考虑本报告的任何意见或建议是否符合其特定状况，以及（若有必要）咨询独立投资顾问。报告本身、报告中的信息或所表达意见也不构成投资、法律、会计或税务的最终操作建议，国金证券不就报告中的内容对最终操作建议做出任何担保，在任何时候均不构成对任何人的个人推荐。\n在法律允许的情况下，国金证券的关联机构可能会持有报告中涉及的公司所发行的证券并进行交易，并可能为这些公司正在提供或争取提供多种金融服务。\n本报告并非意图发送、发布给在当地法律或监管规则下不允许向其发送、发布该研究报告的人员。国金证券并不因收件人收到本报告而视其为国金证券的客户。本报告对于收件人而言属高度机密，只有符合条件的收件人才能使用。根据《证券期货投资者适当性管理办法》，本报告仅供国金证券股份有限公司客户中风险评级高于C3级（含C3级）的投资者使用；本报告所包含的观点及建议并未考虑个别客户的特殊状况、目标或需要，不应被视为对特定客户关于特定证券或金融工具的建议或策略。对于本报告中提及的任何证券或金融工具，本报告的收件人须保持自身的独立判断。使用国金证券研究报告进行投资，遭受任何损失，国金证券不承担相关法律责任。\n若国金证券以外的任何机构或个人发送本报告，则由该机构或个人为此发送行为承担全部责任。本报告不构成国金证券向发送本报告的机构或个人的收件人提供投资建议，国金证券不为此承担任何责任。\n此报告仅限于中国境内使用。国金证券版权所有，保留一切权利。", "本公众号的观点、分析及预测仅代表作者个人意见，不代表任何机构立场，也不构成对阅读者的投资建议。本公众号发布的信息仅供《证券期货投资者适当性管理办法》中规定的专业投资者使用；非专业投资者擅自使用本公众号信息进行投资，本人不对任何人使用此全部或部分内容的行为或由此而引致的任何损失承担任何责任。未经本人事先书面许可，任何人不得将此报告或其任何部分以任何形式进行派发、复制、转载或发布，或对公众号内容进行任何有悖原意的删节或修改。投资有风险，入市需谨慎。"];
 function linesFor(value,width,size){ctx.font=`${size}px "Microsoft YaHei",sans-serif`;return String(value).split('\n').flatMap(p=>{let out=[],line='';for(const c of p){if(ctx.measureText(line+c).width>width){out.push(line);line=c}else line+=c}out.push(line);return out})}
-function section(title,y){ctx.fillStyle='#eaf1f8';ctx.fillRect(44,y-34,992,54);ctx.fillStyle='#0b4b87';ctx.fillRect(44,y-34,6,54);text(title,64,y,28,'#0b4b87','bold')}
+function section(title,y){ctx.fillStyle='#eaf1f8';ctx.fillRect(24,y-33,732,56);ctx.fillStyle='#0b4b87';ctx.fillRect(24,y-33,5,56);text(title,40,y+2,26,'#0b4b87','bold')}
+function trendPeriods(r){const available=weeks.filter(p=>p.period_id<=r.period_id);if($('window').value==='all')return available;const end=new Date(r.end_date+'T00:00:00Z'),months=Number($('window').value),day=end.getUTCDate();end.setUTCDate(1);end.setUTCMonth(end.getUTCMonth()-months);const last=new Date(Date.UTC(end.getUTCFullYear(),end.getUTCMonth()+1,0)).getUTCDate();end.setUTCDate(Math.min(day,last));const start=end.toISOString().slice(0,10);return available.filter(p=>p.end_date>start)}
 function render(){
  if(!weeks.length)return;C.hidden=false;$('export').disabled=false;
- const r=get('全部',$('week').value),base=get('全部',previous(r)),periods=weeks.filter(p=>p.period_id<=r.period_id).slice(-Number($('window').value));
- const comment=$('comment').value.trim()||autoComment(r),commentLines=linesFor(comment,948,23),commentHeight=commentLines.length*38;
- const chartStart=870+commentHeight,footerStart=chartStart+4*465+10;
- const legalLines=LEGAL_TEXT.map(t=>linesFor(t,964,16)),legalHeight=legalLines.reduce((n,a)=>n+a.length*25+82,0);
- C.height=footerStart+154+legalHeight+45;
- ctx.fillStyle='#fff';ctx.fillRect(0,0,1080,C.height);
- if(ready)ctx.drawImage(logo,44,28,300,68);
- ctx.fillStyle='#0b4b87';ctx.fillRect(843,39,193,49);text('国金商社',872,74,29,'#fff','bold');
- if(banner.complete&&banner.naturalWidth)ctx.drawImage(banner,0,124,1080,246);else{ctx.fillStyle='#0b4b87';ctx.fillRect(0,124,1080,246)}
- text('酒店行业周度跟踪',58,227,54,'#fff','bold');text(`${r.period_id}  ${r.start_date.replaceAll('-','/')} — ${r.end_date.replaceAll('-','/')}`,60,304,28,'#fff');
- section('全国酒店经营',423);
+ const r=get('全部',$('week').value),base=get('全部',previous(r)),periods=trendPeriods(r),windowLabel={'1':'近1个月','3':'近3个月','6':'近6个月','12':'近1年','24':'近2年',all:'全部历史'}[$('window').value];
+ const comment=$('comment').value.trim()||autoComment(r),commentLines=linesFor(comment,700,26),commentHeight=commentLines.length*42;
+ const chartStart=830+commentHeight,footerStart=chartStart+4*465+10;
+ const legalLines=LEGAL_TEXT.map(t=>linesFor(t,716,11)),legalHeight=legalLines.reduce((n,a)=>n+a.length*17+52,0);
+ C.width=780;C.height=footerStart+192+legalHeight+38;
+ ctx.fillStyle='#fff';ctx.fillRect(0,0,780,C.height);
+ if(ready)ctx.drawImage(logo,28,24,240,54);
+ ctx.fillStyle='#0b4b87';ctx.fillRect(604,30,148,46);text('国金商社',624,63,26,'#fff','bold');
+ if(banner.complete&&banner.naturalWidth)ctx.drawImage(banner,0,104,780,205);else{ctx.fillStyle='#0b4b87';ctx.fillRect(0,104,780,205)}
+ text('酒店行业周度跟踪',36,187,44,'#fff','bold');text(`${r.period_id}　${r.start_date.slice(5).replace('-','/')} — ${r.end_date.slice(5).replace('-','/')}`,38,253,28,'#fff');
+ section('全国酒店经营',360);
  const metrics=[['revpar','RevPAR','元'],['occupancy_rate','OCC','%'],['adr','ADR','元']];
- metrics.forEach(([k,name,unit],i)=>{const x=62+i*330,v=val(r,k);text(name,x,478,22,'#66717d');text(fmt(k==='occupancy_rate'&&v!==null?v*100:v),x,535,43,'#0b4b87','bold');text(unit,x+180,533,22,'#66717d');text('同比 '+change(delta(r,k),k),x,576,22,'#282828')});
- ctx.fillStyle='#0b4b87';ctx.fillRect(44,611,992,43);text('分档次同比',62,640,20,'#fff');SEGS.forEach((v,j)=>text(v,286+j*183,640,20,'#fff'));
- metrics.forEach(([k,name],i)=>{ctx.fillStyle=i%2?'#f5f8fb':'#eaf1f8';ctx.fillRect(44,654+i*44,992,44);text(name,62,683+i*44,21,'#282828');SEGS.forEach((v,j)=>text(change(delta(get(v,r.period_id),k),k),286+j*183,683+i*44,19,'#282828'))});
- section('本周观察',839);commentLines.forEach((l,i)=>text(l,62,888+i*38,23,'#282828'));
- chart(chartStart+62,'全国酒店经营情况（全部）',[{name:'RevPAR同比',seg:'全部',field:'revpar',color:COLORS[0]},{name:'ADR同比',seg:'全部',field:'adr',color:COLORS[1]},{name:'OCC同比（右轴）',seg:'全部',field:'occupancy_rate',color:COLORS[2]}],periods,true);
- [['revpar','全国酒店 RevPAR 同比增速（分档次）'],['occupancy_rate','全国酒店 OCC 同比变化（分档次）'],['adr','全国酒店 ADR 同比增速（分档次）']].forEach(([k,t],i)=>chart(chartStart+527+i*465,t,SEGS.map((seg,j)=>({name:seg,seg,field:k,color:COLORS[j]})),periods));
- let y=footerStart+62;text($('author').value||'国金商社研究',58,y,22,'#0b4b87','bold');
- text('来源：酒店之家 / 国金商社研究数据库',58,y+34,18,'#66717d');text(`比较基周：${previous(r)}${base?'（'+base.start_date+'至'+base.end_date+'）':' · 暂无数据'}`,58,y+63,17,'#66717d');
- text('同周号同比 · 未作节假日错期调整 · OCC用百分点 · ADR按入住日期',58,y+91,17,'#66717d');
- y+=138;rule(y-12);
- legalLines.forEach((lines,i)=>{text(i?'免责声明':'特别声明',454,y+27,27,'#b1a371','bold');y+=65;lines.forEach(l=>{text(l,58,y,16,'#737373');y+=25});y+=17});
+ metrics.forEach(([k,name,unit],i)=>{const x=38+i*244,v=val(r,k);text(name,x,413,24,'#66717d');text(fmt(k==='occupancy_rate'&&v!==null?v*100:v),x,469,44,'#0b4b87','bold');text(unit,x+156,466,23,'#66717d');const d=delta(r,k);text(d===null?'暂无同比':`同比 ${d>0?'+':''}${d.toFixed(1)}${k==='occupancy_rate'?'pct':'%'}`,x,514,23,'#282828')});
+ ctx.fillStyle='#0b4b87';ctx.fillRect(24,548,732,44);['档次','RevPAR','OCC','ADR'].forEach((v,j)=>text(v,[38,217,401,587][j],578,23,'#fff'));
+ SEGS.forEach((seg,i)=>{const y=592+i*48;ctx.fillStyle=i%2?'#f5f8fb':'#eaf1f8';ctx.fillRect(24,y,732,48);text(seg,38,y+32,23,'#282828');metrics.forEach(([k],j)=>{const d=delta(get(seg,r.period_id),k);text(d===null?'暂无同比':`${d>0?'+':''}${d.toFixed(1)}${k==='occupancy_rate'?'pct':'%'}`,[217,401,587][j],y+32,23,'#282828')})});
+ section('本周观察',826);commentLines.forEach((l,i)=>text(l,38,881+i*42,26,'#282828'));
+ const chartY=chartStart+76;
+ chart(chartY,'全国酒店经营趋势',[{name:'RevPAR同比',seg:'全部',field:'revpar',color:COLORS[0]},{name:'ADR同比',seg:'全部',field:'adr',color:COLORS[1]},{name:'OCC（右轴）',seg:'全部',field:'occupancy_rate',color:COLORS[2]}],periods,true);
+ [['revpar','RevPAR 同比趋势 · 分档次'],['occupancy_rate','OCC 同比趋势 · 分档次'],['adr','ADR 同比趋势 · 分档次']].forEach(([k,t],i)=>chart(chartY+465*(i+1),t,SEGS.map((seg,j)=>({name:seg,seg,field:k,color:COLORS[j]})),periods));
+ let y=footerStart+80;text($('author').value||'国金商社研究',32,y,23,'#0b4b87','bold');
+ text('来源：酒店之家 / 国金商社研究数据库',32,y+33,20,'#66717d');text(`趋势：${windowLabel}　比较基周：${previous(r)}`,32,y+63,19,'#66717d');
+ text('同周号同比 · 未作节假日错期调整 · OCC用百分点',32,y+91,18,'#66717d');
+ y+=130;rule(y-10);
+ legalLines.forEach((lines,i)=>{const title=i?'免责声明':'特别声明';ctx.font='bold 19px "Microsoft YaHei"';text(title,(780-ctx.measureText(title).width)/2,y+20,19,'#b1a371','bold');y+=42;lines.forEach(l=>{text(l,32,y,11,'#737373');y+=17});y+=10});
  C.setAttribute('aria-label',`${r.period_id}全国酒店RevPAR${fmt(val(r,'revpar'))}元，OCC${fmt(val(r,'occupancy_rate')===null?null:val(r,'occupancy_rate')*100)}%，ADR${fmt(val(r,'adr'))}元。${comment}。特别声明：${LEGAL_TEXT[0]}。免责声明：${LEGAL_TEXT[1]}`);
- $('status').textContent=`数据截至 ${weeks.at(-1).end_date}；当前产品 ${r.period_id}。可离线截图或下载1080 × ${C.height} PNG。`;
+ $('status').textContent=`${r.period_id} · ${windowLabel} · ${periods.length}周 · PNG 780 × ${C.height}`;
 }
 
 function key(){return 'gjss-hotel-product:'+ $('week').value}function loadComment(){try{$('comment').value=localStorage.getItem(key())||''}catch{$('comment').value=''}}
@@ -71,4 +73,4 @@ $('export').onclick=()=>{C.toBlob(blob=>{if(!blob){$('status').textContent='导�
 async function reload(){const b=$('refresh');b.disabled=true;$('status').textContent='正在读取酒店周度数据…';try{const response=await fetch('data/hotel_industry_weekly.csv',{cache:'no-store'});if(!response.ok)throw Error('HTTP '+response.status);const incoming=parseCSV(await response.text());validate(incoming);const next=incoming.filter(r=>r.region==='全国'&&r.segment==='全部').map(r=>r.period_id).sort().at(-1);if(weeks.length&&next<weeks.at(-1).period_id)throw Error('新数据早于已有数据');revision='仓库周度数据';install(incoming);$('week').value=weeks.at(-1).period_id;loadComment();render()}catch(e){$('status').textContent='数据读取失败'+(weeks.length?'，保留当前数据':'')+'：'+e.message}finally{b.disabled=false}}
 $('refresh').onclick=reload;
 $('upload').onchange=async()=>{const file=$('upload').files[0];if(!file)return;try{const data=parseCSV(await file.text());validate(data);revision='本地CSV导入';install(data);$('week').value=weeks.at(-1).period_id;loadComment();render()}catch(e){$('status').textContent='导入失败，保留当前数据：'+e.message}};
-C.hidden=true;reload();window.hotelProduct={get rows(){return rows},delta,get,parseCSV,validate,render,get revision(){return revision}};
+C.hidden=true;reload();window.hotelProduct={get rows(){return rows},delta,get,parseCSV,validate,render,trendPeriods,get revision(){return revision}};
