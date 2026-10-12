@@ -101,6 +101,7 @@ function render(options={}){
  y+=40;ctx.fillStyle='#f5f4f5';ctx.fillRect(0,y-10,1200,height-y+10);ctx.fillStyle='#eee8cd';ctx.fillRect(0,y-10,1200,5);
  y+=16;legalLines.forEach((lines,i)=>{text(i?'免责声明':'特别声明',44,y+22,22,'#998951','bold');y+=42;lines.forEach(l=>{text(l,44,y,13,'#68727b');y+=18});y+=16});
  C.setAttribute('aria-label',`${periodLabel(r)}。全国酒店RevPAR${fmt(val(r,'revpar'))}元，OCC${fmt(val(r,'occupancy_rate')===null?null:val(r,'occupancy_rate')*100)}%，ADR${fmt(val(r,'adr'))}元。${comment}。特别声明：${LEGAL_TEXT[0]}。免责声明：${LEGAL_TEXT[1]}`);
+ if($('generated-title'))$('generated-title').textContent=periodLabel(r).split('　')[0].replace(' (','(')+' 酒店行业周度跟踪';
  $('status').textContent=`${r.period_id} · ${windowLabel} · ${periods.length}周 · 高清PNG 3600 × ${Math.ceil(height*3)}`;
 }
 
