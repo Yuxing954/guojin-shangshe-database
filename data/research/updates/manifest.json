@@ -1,9 +1,9 @@
 {
-  "syncedAt": "2026-10-12T11:34:27+08:00",
+  "syncedAt": "2026-10-12T12:41:20+08:00",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
   "coverageFrom": "2026-10-11T22:58:04.105+0800",
-  "coverageTo": "2026-10-12T11:24:10.145+0800",
+  "coverageTo": "2026-10-12T11:34:06.620+0800",
   "oldestFetched": "2026-08-08T22:08:04.080+0800",
   "fetchedTopics": 30,
   "files": {
@@ -28,6 +28,7 @@
       "data/research/updates/2026-10-07-views-002.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-10-12-1235-all_views.csv",
       "data/research/updates/2026-10-12-1132-all_views.csv",
       "data/research/updates/2026-10-12-all_views-001.csv",
       "data/research/updates/2026-10-11-2356-all_views.csv",
@@ -97,19 +98,16 @@
   },
   "counts": {
     "views": 224,
-    "all_views": 4228,
+    "all_views": 4235,
     "minutes": 101
   },
   "latest": {
     "views": "2026-10-12T10:11:10",
-    "all_views": "2026-10-12T10:58:44",
+    "all_views": "2026-10-12T11:34:06",
     "minutes": "2026-10-12T01:07:33"
   },
   "excluded": {
-    "纯文件/图片占位": 2,
-    "图片贴（仅标题文字）": 7,
-    "附件标题": 22,
-    "内容过短（4字）": 1
+    "附件标题": 11
   },
   "assignedTopics": {
     "views": [
@@ -341,6 +339,13 @@
       "22258228124528111"
     ],
     "all_views": [
+      "55521555114825444",
+      "55521555114824514",
+      "14425444551828812",
+      "82258222884185822",
+      "82258222884185252",
+      "45548555882185488",
+      "14425444551854582",
       "55521555211245414",
       "55521555211245554",
       "82258222588542552",
@@ -4659,20 +4664,20 @@
   "fetchedTopicsScope": "current_batch",
   "lastBatch": {
     "date": "2026-10-12",
-    "batch": "2026-10-12-1132",
-    "from": "2026-10-12T10:12:38.324+0800",
-    "to": "2026-10-12T11:24:10.145+0800",
+    "batch": "2026-10-12-1235",
+    "from": "2026-10-12T10:22:07.339+0800",
+    "to": "2026-10-12T11:34:06.620+0800",
     "uniqueTopics": 30,
     "newViews": 0,
-    "newMarketViews": 12,
+    "newMarketViews": 7,
     "newMinuteTopics": 0,
-    "newAttachmentFiles": 1,
+    "newAttachmentFiles": 0,
     "excluded": {
       "附件标题": 11
     },
     "duplicates": {
-      "existing_or_crossline_all_views": 7
+      "existing_or_overlap_all_views": 12
     },
-    "method": "official zsxq-cli OAuth-authorized group +topics; long topic detail matched full body"
+    "method": "official zsxq-cli OAuth-authorized group +topics; all new topic details checked against list bodies"
   }
 }
