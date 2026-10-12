@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "provider": "choice-mcp",
+  "query": "瑞幸咖啡LKNCY.OTCBB的2026年中报定期报告实际披露日期（100000000051385）和2026年三季报定期报告预计披露日期（100000000051384），不要个股最新报告期，必须只要实际/预计披露日期两个指标及Choice指标链接。",
+  "tool": "mx_us_finance_data",
+  "checkedAt": "2026-10-12T05:12:49.003Z",
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"data\":[]}"
+      }
+    ],
+    "isError": false
+  }
+}

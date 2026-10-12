@@ -2,7 +2,7 @@
   'use strict';
   const D=SiteData,M=QuotesModel,K=SinolinkKline,$=id=>document.getElementById(id),esc=D.esc,params=new URLSearchParams(location.search);
   const benchmarks=[{code:'000001.SH',name:'上证指数',index:true},{code:'399006.SZ',name:'创业板指',index:true},{code:'HSI.HI',name:'恒生指数',index:true}];
-  const industryIds={'酒店':'hotel','免税':'dutyfree','黄金珠宝':'gold','跨境电商与出海':'overseas','餐饮':'dining','茶饮':'dining'};
+  const industryIds={'酒店':'hotel','免税':'dutyfree','黄金珠宝':'gold','跨境电商与出海':'overseas','餐饮':'dining','茶饮':'dining','消费出海':'overseas','餐饮&茶饮':'dining'};
   const preferencesKey='sinolink.quotes.preferences.v1',cache=new Map();
   let companies=[],quotes={},filtered=[],view=params.get('view')==='heat'?'heat':'list',pending=false,selected=null;
   let period=['day','week','minute'].includes(params.get('period'))?params.get('period'):'day',chartRequest=0,lastRead='',failed=false,initialized=false,chartData=null,chartSelection=0,pageActive=true,chartPending=new Map(),chartNextAt=new Map(),chartCancels=new Set(),noticeTimer=null,benchmarkBuilt=false,miniCache=new Map(),miniPending=new Set();
@@ -92,7 +92,7 @@
   function applyFilters(){clearTimeout(searchTimer);heatPage=0;render();ensureSelection();}
 
   function quoteRequest(codes,signal){return new Promise((resolve,reject)=>{
-    const mapping=codes.map(code=>[code,K.quoteCode(code)]).filter(([,q])=>/^(?:sh\d{6}|sz\d{6}|hk(?:\d{5}|HSI)|us[A-Z][A-Z0-9.-]*)$/.test(q)),tag=document.createElement('script');
+    const mapping=codes.map(code=>[code,K.quoteCode(code)]).filter(([,q])=>/^(?:sh\d{6}|sz\d{6}|bj\d{6}|hk(?:\d{5}|HSI)|us[A-Z][A-Z0-9.-]*)$/.test(q)),tag=document.createElement('script');
     mapping.forEach(([,q])=>{try{delete window['v_'+q];}catch(e){window['v_'+q]=undefined;}});
     let done=false;const abort=()=>{if(done)return;done=true;cleanup();reject(new DOMException('Cancelled','AbortError'));};
     const cleanup=()=>{signal?.removeEventListener('abort',abort);clearTimeout(timeout);tag.onload=tag.onerror=null;tag.remove();mapping.forEach(([,q])=>{try{delete window['v_'+q];}catch(e){}});};
