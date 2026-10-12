@@ -6,7 +6,7 @@ const D = require('./site-data.js');
 const ROOT = path.resolve(__dirname, '..');
 const FIELDS = {'定期报告实际披露日期':'actual', '定期报告预计披露日期':'expected'};
 const INDICATORS = {actual:['100000000007105','100000000051385'], expected:['100000000007104','100000000051384']};
-function security(value) { return M.code(String(value || '').match(/([\d]{1,6}\.(?:SH|SZ|HK)|[A-Z]+\.(?:O|N))/)?.[1]); }
+function security(value) { return M.code(String(value || '').replace(/\.OTCBB/g,'.OO').match(/([\d]{1,6}\.(?:SH|SZ|BJ|HK)|[A-Z]+\.(?:OTCBB|OO|O|N))/)?.[1]); }
 function period(value) {
   const match = String(value || '').match(/(20\d{2})年?(中报|半年报|一季报|二季报|三季报|四季报|年报)/);
   return match ? match[1]+({中报:'H1',半年报:'H1',一季报:'Q1',二季报:'Q2',三季报:'Q3',四季报:'Q4',年报:'FY'}[match[2]]) : '';
@@ -39,7 +39,7 @@ function fromChoice(receipts, pool, previous, receiptFile='data/earnings-choice-
           // The returned column controls the period. A 2025 response to a 2026 query stays 2025.
           if (Number(reportPeriod.slice(0,4)) < Number(envelope.checkedAt.slice(0,4))-1) return;
           const reportEnd=reportPeriod.slice(0,4)+'-'+({FY:'12-31',H1:'06-30',Q1:'03-31',Q2:'06-30',Q3:'09-30',Q4:'12-31'}[M.reportType(reportPeriod)]);
-          const indicator=INDICATORS[field][/\.(SH|SZ)$/.test(code)?0:1];
+          const indicator=INDICATORS[field][/\.(SH|SZ|BJ)$/.test(code)?0:1];
           const links = (table.meta?.jumpUrlList || []).map(x=>x.choiceUrl).filter(v=>{
             try { const u=new URL(v); return u.protocol==='em:' && u.hostname==='stockdatacenter' && (u.searchParams.get('code')||'').split(',').map(M.code).includes(code) && (u.searchParams.get('indId')||'').split(',').includes(indicator+'|100:'+reportEnd); } catch { return false; }
           });

@@ -1,13 +1,13 @@
 {
   "version": 2,
   "primarySource": "choice-mcp",
-  "updatedAt": "2026-10-12T02:45:29.499Z",
+  "updatedAt": "2026-10-12T03:23:54.024Z",
   "sources": [
     {
       "id": "choice-mcp",
       "label": "Choice MCP · 东方财富",
       "url": "https://choice.eastmoney.com/",
-      "checkedAt": "2026-10-12T02:45:29.499Z",
+      "checkedAt": "2026-10-12T03:23:54.024Z",
       "note": "定期报告实际/预计披露日期；保留MCP回执与Choice指标标识"
     },
     {
@@ -2818,6 +2818,290 @@
             ],
             "choiceUrls": [
               "EM://stockdatacenter?type=browser&modType=STOCK&code=01929.HK,00590.HK,00116.HK,02585.HK,00999.HK,01405.HK,09658.HK,00520.HK,02150.HK,02555.HK,02589.HK,06808.HK,02367.HK,01318.HK,02145.HK,09901.HK,02469.HK,06919.HK,09988.HK,09618.HK,03690.HK,09896.HK,09992.HK,00325.HK&indId=100000000051385|100:2026-06-30,100000000051385|100:2026-03-31,100000000051385|100:2027-03-31"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "001206.SZ|2026H1|formal",
+      "code": "001206.SZ",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "依依股份 2026H1",
+      "expected": "",
+      "actual": "2026-08-26",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.023Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 0,
+            "row": 3,
+            "column": 1,
+            "value": "2026-08-26",
+            "query": "003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ的2026年中报定期报告实际披露日期（指标100000000007105）。只返回证券代码、报告期和这一个日期指标及Choice链接，不要板块或财务金额。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "定期报告实际披露日期",
+              "2026中报",
+              "2026一季报"
+            ],
+            "rowValues": [
+              "依依股份(001206.SZ)",
+              "2026-08-26",
+              "2026-04-24"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ&indId=100000000007105|100:2026-03-31,100000000007105|100:2026-06-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "001206.SZ|2026Q1|formal",
+      "code": "001206.SZ",
+      "period": "2026Q1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "依依股份 2026Q1",
+      "expected": "",
+      "actual": "2026-04-24",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.023Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 0,
+            "row": 3,
+            "column": 2,
+            "value": "2026-04-24",
+            "query": "003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ的2026年中报定期报告实际披露日期（指标100000000007105）。只返回证券代码、报告期和这一个日期指标及Choice链接，不要板块或财务金额。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "定期报告实际披露日期",
+              "2026中报",
+              "2026一季报"
+            ],
+            "rowValues": [
+              "依依股份(001206.SZ)",
+              "2026-08-26",
+              "2026-04-24"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ&indId=100000000007105|100:2026-03-31,100000000007105|100:2026-06-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "001206.SZ|2026Q3|formal",
+      "code": "001206.SZ",
+      "period": "2026Q3",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "依依股份 2026Q3",
+      "expected": "2026-10-28",
+      "actual": "",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.023Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000007104",
+            "envelope": 1,
+            "table": 0,
+            "row": 3,
+            "column": 1,
+            "value": "2026-10-28",
+            "query": "003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ的2026年三季报定期报告预计披露日期（100000000007104）。只返回日期字段、证券代码和报告期，附Choice指标链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "定期报告预计披露日期",
+              "2026三季报"
+            ],
+            "rowValues": [
+              "依依股份(001206.SZ)",
+              "2026-10-28"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ&indId=100000000007104|100:2026-09-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "001222.SZ|2026H1|formal",
+      "code": "001222.SZ",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "源飞宠物 2026H1",
+      "expected": "",
+      "actual": "2026-08-28",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.023Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 0,
+            "row": 5,
+            "column": 1,
+            "value": "2026-08-28",
+            "query": "003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ的2026年中报定期报告实际披露日期（指标100000000007105）。只返回证券代码、报告期和这一个日期指标及Choice链接，不要板块或财务金额。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "定期报告实际披露日期",
+              "2026中报",
+              "2026一季报"
+            ],
+            "rowValues": [
+              "源飞宠物(001222.SZ)",
+              "2026-08-28",
+              "2026-04-28"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ&indId=100000000007105|100:2026-03-31,100000000007105|100:2026-06-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "001222.SZ|2026Q1|formal",
+      "code": "001222.SZ",
+      "period": "2026Q1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "源飞宠物 2026Q1",
+      "expected": "",
+      "actual": "2026-04-28",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.023Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 0,
+            "row": 5,
+            "column": 2,
+            "value": "2026-04-28",
+            "query": "003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ的2026年中报定期报告实际披露日期（指标100000000007105）。只返回证券代码、报告期和这一个日期指标及Choice链接，不要板块或财务金额。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "定期报告实际披露日期",
+              "2026中报",
+              "2026一季报"
+            ],
+            "rowValues": [
+              "源飞宠物(001222.SZ)",
+              "2026-08-28",
+              "2026-04-28"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ&indId=100000000007105|100:2026-03-31,100000000007105|100:2026-06-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "001222.SZ|2026Q3|formal",
+      "code": "001222.SZ",
+      "period": "2026Q3",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "源飞宠物 2026Q3",
+      "expected": "2026-10-26",
+      "actual": "",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.023Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000007104",
+            "envelope": 1,
+            "table": 0,
+            "row": 5,
+            "column": 1,
+            "value": "2026-10-26",
+            "query": "003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ的2026年三季报定期报告预计披露日期（100000000007104）。只返回日期字段、证券代码和报告期，附Choice指标链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "定期报告预计披露日期",
+              "2026三季报"
+            ],
+            "rowValues": [
+              "源飞宠物(001222.SZ)",
+              "2026-10-26"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ&indId=100000000007104|100:2026-09-30"
             ]
           }
         ]
@@ -6965,6 +7249,290 @@
       }
     },
     {
+      "id": "002891.SZ|2026H1|formal",
+      "code": "002891.SZ",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "中宠股份 2026H1",
+      "expected": "",
+      "actual": "2026-08-25",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.023Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 0,
+            "row": 2,
+            "column": 1,
+            "value": "2026-08-25",
+            "query": "003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ的2026年中报定期报告实际披露日期（指标100000000007105）。只返回证券代码、报告期和这一个日期指标及Choice链接，不要板块或财务金额。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "定期报告实际披露日期",
+              "2026中报",
+              "2026一季报"
+            ],
+            "rowValues": [
+              "中宠股份(002891.SZ)",
+              "2026-08-25",
+              "2026-04-24"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ&indId=100000000007105|100:2026-03-31,100000000007105|100:2026-06-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "002891.SZ|2026Q1|formal",
+      "code": "002891.SZ",
+      "period": "2026Q1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "中宠股份 2026Q1",
+      "expected": "",
+      "actual": "2026-04-24",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.023Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 0,
+            "row": 2,
+            "column": 2,
+            "value": "2026-04-24",
+            "query": "003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ的2026年中报定期报告实际披露日期（指标100000000007105）。只返回证券代码、报告期和这一个日期指标及Choice链接，不要板块或财务金额。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "定期报告实际披露日期",
+              "2026中报",
+              "2026一季报"
+            ],
+            "rowValues": [
+              "中宠股份(002891.SZ)",
+              "2026-08-25",
+              "2026-04-24"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ&indId=100000000007105|100:2026-03-31,100000000007105|100:2026-06-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "002891.SZ|2026Q3|formal",
+      "code": "002891.SZ",
+      "period": "2026Q3",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "中宠股份 2026Q3",
+      "expected": "2026-10-27",
+      "actual": "",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.023Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000007104",
+            "envelope": 1,
+            "table": 0,
+            "row": 2,
+            "column": 1,
+            "value": "2026-10-27",
+            "query": "003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ的2026年三季报定期报告预计披露日期（100000000007104）。只返回日期字段、证券代码和报告期，附Choice指标链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "定期报告预计披露日期",
+              "2026三季报"
+            ],
+            "rowValues": [
+              "中宠股份(002891.SZ)",
+              "2026-10-27"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ&indId=100000000007104|100:2026-09-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "003010.SZ|2026H1|formal",
+      "code": "003010.SZ",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "若羽臣 2026H1",
+      "expected": "",
+      "actual": "2026-08-29",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.023Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 0,
+            "row": 0,
+            "column": 1,
+            "value": "2026-08-29",
+            "query": "003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ的2026年中报定期报告实际披露日期（指标100000000007105）。只返回证券代码、报告期和这一个日期指标及Choice链接，不要板块或财务金额。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "定期报告实际披露日期",
+              "2026中报",
+              "2026一季报"
+            ],
+            "rowValues": [
+              "若羽臣(003010.SZ)",
+              "2026-08-29",
+              "2026-04-30"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ&indId=100000000007105|100:2026-03-31,100000000007105|100:2026-06-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "003010.SZ|2026Q1|formal",
+      "code": "003010.SZ",
+      "period": "2026Q1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "若羽臣 2026Q1",
+      "expected": "",
+      "actual": "2026-04-30",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.023Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 0,
+            "row": 0,
+            "column": 2,
+            "value": "2026-04-30",
+            "query": "003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ的2026年中报定期报告实际披露日期（指标100000000007105）。只返回证券代码、报告期和这一个日期指标及Choice链接，不要板块或财务金额。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "定期报告实际披露日期",
+              "2026中报",
+              "2026一季报"
+            ],
+            "rowValues": [
+              "若羽臣(003010.SZ)",
+              "2026-08-29",
+              "2026-04-30"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ&indId=100000000007105|100:2026-03-31,100000000007105|100:2026-06-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "003010.SZ|2026Q3|formal",
+      "code": "003010.SZ",
+      "period": "2026Q3",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "若羽臣 2026Q3",
+      "expected": "2026-10-28",
+      "actual": "",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.023Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000007104",
+            "envelope": 1,
+            "table": 0,
+            "row": 0,
+            "column": 1,
+            "value": "2026-10-28",
+            "query": "003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ的2026年三季报定期报告预计披露日期（100000000007104）。只返回日期字段、证券代码和报告期，附Choice指标链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "定期报告预计披露日期",
+              "2026三季报"
+            ],
+            "rowValues": [
+              "若羽臣(003010.SZ)",
+              "2026-10-28"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ&indId=100000000007104|100:2026-09-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "003032.SZ|2025FY|formal",
       "code": "003032.SZ",
       "period": "2025FY",
@@ -7289,6 +7857,88 @@
             ],
             "choiceUrls": [
               "EM://stockdatacenter?type=browser&modType=STOCK&code=000524.SZ,002059.SZ,300144.SZ,600138.SH,000888.SZ,600054.SH,603136.SH,002707.SZ,002159.SZ,300859.SZ,600706.SH,000610.SZ,600250.SH,600859.SH,600515.SH,603069.SH,600916.SH,605599.SH,301177.SZ,300945.SZ,002731.SZ,002574.SZ,300592.SZ,002803.SZ,002315.SZ,300729.SZ,301376.SZ,301558.SZ,000721.SZ,002186.SZ,603708.SH,002697.SZ,600827.SH,600858.SH,000417.SZ,000501.SZ,600694.SH,000785.SZ,601828.SH,603605.SH,300957.SZ,603983.SH,600315.SH,300740.SZ,600223.SH,000526.SZ,003032.SZ,600662.SH&indId=100000000007104|100:2026-09-30,100000000007104|100:2025-09-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "00308.HK|2026H1|formal",
+      "code": "00308.HK",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "香港中旅 2026H1",
+      "expected": "2026-08-31",
+      "actual": "2026-08-31",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.023Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000051385",
+            "envelope": 2,
+            "table": 0,
+            "row": 0,
+            "column": 4,
+            "value": "2026-08-31",
+            "query": "思摩尔国际6969.HK、中烟香港6055.HK、乐舒适2698.HK、香港中旅0308.HK的2026年中报定期报告实际披露日期（100000000051385）、定期报告预计披露日期（100000000051384）。只要日期指标，保留返回报告期和Choice指标链接。",
+            "tool": "mx_hk_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "2026中报",
+              "思摩尔国际(06969.HK)(最新年结日12-31)",
+              "中烟香港(06055.HK)(最新年结日12-31)",
+              "乐舒适(02698.HK)(最新年结日12-31)",
+              "香港中旅(00308.HK)(最新年结日12-31)"
+            ],
+            "rowValues": [
+              "定期报告实际披露日期",
+              "2026-08-19",
+              "2026-08-21",
+              "2026-08-19",
+              "2026-08-31"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=06969.HK,06055.HK,02698.HK,00308.HK&indId=100000000051385|100:2026-06-30,100000000051384|100:2026-06-30"
+            ]
+          },
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000051384",
+            "envelope": 2,
+            "table": 0,
+            "row": 1,
+            "column": 4,
+            "value": "2026-08-31",
+            "query": "思摩尔国际6969.HK、中烟香港6055.HK、乐舒适2698.HK、香港中旅0308.HK的2026年中报定期报告实际披露日期（100000000051385）、定期报告预计披露日期（100000000051384）。只要日期指标，保留返回报告期和Choice指标链接。",
+            "tool": "mx_hk_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "2026中报",
+              "思摩尔国际(06969.HK)(最新年结日12-31)",
+              "中烟香港(06055.HK)(最新年结日12-31)",
+              "乐舒适(02698.HK)(最新年结日12-31)",
+              "香港中旅(00308.HK)(最新年结日12-31)"
+            ],
+            "rowValues": [
+              "定期报告预计披露日期",
+              "2026-08-19",
+              "2026-08-21",
+              "2026-08-19",
+              "2026-08-31"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=06969.HK,06055.HK,02698.HK,00308.HK&indId=100000000051385|100:2026-06-30,100000000051384|100:2026-06-30"
             ]
           }
         ]
@@ -7866,6 +8516,152 @@
             "choiceUrls": [
               "EM://stockdatacenter?type=browser&modType=STOCK&code=01929.HK,00590.HK,00116.HK,02585.HK,00999.HK,01405.HK,09658.HK,00520.HK,02150.HK,02555.HK,02589.HK,06808.HK,02367.HK,01318.HK,02145.HK,09901.HK,02469.HK,06919.HK,09988.HK,09618.HK,03690.HK,09896.HK,09992.HK,00325.HK&indId=100000000051385|100:2026-06-30,100000000051385|100:2026-03-31,100000000051385|100:2027-03-31"
             ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "00625.HK|2026H1|formal",
+      "code": "00625.HK",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "SHEIN 2026H1",
+      "expected": "2026-09-28",
+      "actual": "2026-09-28",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.024Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000051385",
+            "envelope": 3,
+            "table": 0,
+            "row": 0,
+            "column": 1,
+            "value": "2026-09-28",
+            "query": "希音-W00625.HK的2026年中报定期报告实际披露日期（100000000051385）和2026年三季报定期报告预计披露日期（100000000051384）。只要披露日期，不要证券简称或上市日期，没有数据返回空。",
+            "tool": "mx_hk_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.024Z",
+            "columns": [
+              "希音-W(00625.HK)(最新年结日12-31)",
+              "2026中报",
+              "2026一季报"
+            ],
+            "rowValues": [
+              "定期报告实际披露日期",
+              "2026-09-28",
+              "2026-08-24"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=00625.HK&indId=100000000051385|100:2026-03-31,100000000051385|100:2026-06-30,100000000051384|100:2026-06-30"
+            ]
+          },
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000051384",
+            "envelope": 3,
+            "table": 0,
+            "row": 1,
+            "column": 1,
+            "value": "2026-09-28",
+            "query": "希音-W00625.HK的2026年中报定期报告实际披露日期（100000000051385）和2026年三季报定期报告预计披露日期（100000000051384）。只要披露日期，不要证券简称或上市日期，没有数据返回空。",
+            "tool": "mx_hk_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.024Z",
+            "columns": [
+              "希音-W(00625.HK)(最新年结日12-31)",
+              "2026中报",
+              "2026一季报"
+            ],
+            "rowValues": [
+              "定期报告预计披露日期",
+              "2026-09-28",
+              "-"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=00625.HK&indId=100000000051385|100:2026-03-31,100000000051385|100:2026-06-30,100000000051384|100:2026-06-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "00625.HK|2026Q1|formal",
+      "code": "00625.HK",
+      "period": "2026Q1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "SHEIN 2026Q1",
+      "expected": "",
+      "actual": "2026-08-24",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.024Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000051385",
+            "envelope": 3,
+            "table": 0,
+            "row": 0,
+            "column": 2,
+            "value": "2026-08-24",
+            "query": "希音-W00625.HK的2026年中报定期报告实际披露日期（100000000051385）和2026年三季报定期报告预计披露日期（100000000051384）。只要披露日期，不要证券简称或上市日期，没有数据返回空。",
+            "tool": "mx_hk_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.024Z",
+            "columns": [
+              "希音-W(00625.HK)(最新年结日12-31)",
+              "2026中报",
+              "2026一季报"
+            ],
+            "rowValues": [
+              "定期报告实际披露日期",
+              "2026-09-28",
+              "2026-08-24"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=00625.HK&indId=100000000051385|100:2026-03-31,100000000051385|100:2026-06-30,100000000051384|100:2026-06-30"
+            ]
+          },
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000051384",
+            "envelope": 3,
+            "table": 0,
+            "row": 1,
+            "column": 2,
+            "value": "-",
+            "query": "希音-W00625.HK的2026年中报定期报告实际披露日期（100000000051385）和2026年三季报定期报告预计披露日期（100000000051384）。只要披露日期，不要证券简称或上市日期，没有数据返回空。",
+            "tool": "mx_hk_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.024Z",
+            "columns": [
+              "希音-W(00625.HK)(最新年结日12-31)",
+              "2026中报",
+              "2026一季报"
+            ],
+            "rowValues": [
+              "定期报告预计披露日期",
+              "2026-09-28",
+              "-"
+            ],
+            "choiceUrls": []
           }
         ]
       }
@@ -10667,6 +11463,236 @@
       }
     },
     {
+      "id": "02657.HK|2025FY|formal",
+      "code": "02657.HK",
+      "period": "2025FY",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "林清轩 2025FY",
+      "expected": "2026-03-24",
+      "actual": "2026-03-24",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:16:49.014Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000051385",
+            "envelope": 1,
+            "table": 1,
+            "row": 0,
+            "column": 2,
+            "value": "2026-03-24",
+            "query": "周六福6168.HK、林清轩2657.HK，仅查询最近已披露报告期定期报告实际披露日期100000000051385、下一次定期报告预计披露日期100000000051384，保留原报告期和Choice指标跳转链接。",
+            "tool": "mx_hk_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.014Z",
+            "columns": [
+              "林清轩(02657.HK)(最新年结日12-31)",
+              "2026中报",
+              "2025年报"
+            ],
+            "rowValues": [
+              "定期报告实际披露日期",
+              "2026-08-31",
+              "2026-03-24"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=02657.HK&indId=100000000051385|100:2025-12-31,100000000051385|100:2026-06-30,100000000051384|100:2025-12-31,100000000051384|100:2026-06-30"
+            ]
+          },
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000051384",
+            "envelope": 1,
+            "table": 1,
+            "row": 1,
+            "column": 2,
+            "value": "2026-03-24",
+            "query": "周六福6168.HK、林清轩2657.HK，仅查询最近已披露报告期定期报告实际披露日期100000000051385、下一次定期报告预计披露日期100000000051384，保留原报告期和Choice指标跳转链接。",
+            "tool": "mx_hk_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.014Z",
+            "columns": [
+              "林清轩(02657.HK)(最新年结日12-31)",
+              "2026中报",
+              "2025年报"
+            ],
+            "rowValues": [
+              "定期报告预计披露日期",
+              "2026-08-31",
+              "2026-03-24"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=02657.HK&indId=100000000051385|100:2025-12-31,100000000051385|100:2026-06-30,100000000051384|100:2025-12-31,100000000051384|100:2026-06-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "02657.HK|2026H1|formal",
+      "code": "02657.HK",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "林清轩 2026H1",
+      "expected": "2026-08-31",
+      "actual": "2026-08-31",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:16:49.014Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000051385",
+            "envelope": 1,
+            "table": 1,
+            "row": 0,
+            "column": 1,
+            "value": "2026-08-31",
+            "query": "周六福6168.HK、林清轩2657.HK，仅查询最近已披露报告期定期报告实际披露日期100000000051385、下一次定期报告预计披露日期100000000051384，保留原报告期和Choice指标跳转链接。",
+            "tool": "mx_hk_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.014Z",
+            "columns": [
+              "林清轩(02657.HK)(最新年结日12-31)",
+              "2026中报",
+              "2025年报"
+            ],
+            "rowValues": [
+              "定期报告实际披露日期",
+              "2026-08-31",
+              "2026-03-24"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=02657.HK&indId=100000000051385|100:2025-12-31,100000000051385|100:2026-06-30,100000000051384|100:2025-12-31,100000000051384|100:2026-06-30"
+            ]
+          },
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000051384",
+            "envelope": 1,
+            "table": 1,
+            "row": 1,
+            "column": 1,
+            "value": "2026-08-31",
+            "query": "周六福6168.HK、林清轩2657.HK，仅查询最近已披露报告期定期报告实际披露日期100000000051385、下一次定期报告预计披露日期100000000051384，保留原报告期和Choice指标跳转链接。",
+            "tool": "mx_hk_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.014Z",
+            "columns": [
+              "林清轩(02657.HK)(最新年结日12-31)",
+              "2026中报",
+              "2025年报"
+            ],
+            "rowValues": [
+              "定期报告预计披露日期",
+              "2026-08-31",
+              "2026-03-24"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=02657.HK&indId=100000000051385|100:2025-12-31,100000000051385|100:2026-06-30,100000000051384|100:2025-12-31,100000000051384|100:2026-06-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "02698.HK|2026H1|formal",
+      "code": "02698.HK",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "乐舒适 2026H1",
+      "expected": "2026-08-19",
+      "actual": "2026-08-19",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.023Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000051385",
+            "envelope": 2,
+            "table": 0,
+            "row": 0,
+            "column": 3,
+            "value": "2026-08-19",
+            "query": "思摩尔国际6969.HK、中烟香港6055.HK、乐舒适2698.HK、香港中旅0308.HK的2026年中报定期报告实际披露日期（100000000051385）、定期报告预计披露日期（100000000051384）。只要日期指标，保留返回报告期和Choice指标链接。",
+            "tool": "mx_hk_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "2026中报",
+              "思摩尔国际(06969.HK)(最新年结日12-31)",
+              "中烟香港(06055.HK)(最新年结日12-31)",
+              "乐舒适(02698.HK)(最新年结日12-31)",
+              "香港中旅(00308.HK)(最新年结日12-31)"
+            ],
+            "rowValues": [
+              "定期报告实际披露日期",
+              "2026-08-19",
+              "2026-08-21",
+              "2026-08-19",
+              "2026-08-31"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=06969.HK,06055.HK,02698.HK,00308.HK&indId=100000000051385|100:2026-06-30,100000000051384|100:2026-06-30"
+            ]
+          },
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000051384",
+            "envelope": 2,
+            "table": 0,
+            "row": 1,
+            "column": 3,
+            "value": "2026-08-19",
+            "query": "思摩尔国际6969.HK、中烟香港6055.HK、乐舒适2698.HK、香港中旅0308.HK的2026年中报定期报告实际披露日期（100000000051385）、定期报告预计披露日期（100000000051384）。只要日期指标，保留返回报告期和Choice指标链接。",
+            "tool": "mx_hk_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "2026中报",
+              "思摩尔国际(06969.HK)(最新年结日12-31)",
+              "中烟香港(06055.HK)(最新年结日12-31)",
+              "乐舒适(02698.HK)(最新年结日12-31)",
+              "香港中旅(00308.HK)(最新年结日12-31)"
+            ],
+            "rowValues": [
+              "定期报告预计披露日期",
+              "2026-08-19",
+              "2026-08-21",
+              "2026-08-19",
+              "2026-08-31"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=06969.HK,06055.HK,02698.HK,00308.HK&indId=100000000051385|100:2026-06-30,100000000051384|100:2026-06-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "03690.HK|2026H1|formal",
       "code": "03690.HK",
       "period": "2026H1",
@@ -10811,6 +11837,236 @@
             ],
             "choiceUrls": [
               "EM://stockdatacenter?type=browser&modType=STOCK&code=01929.HK,00590.HK,00116.HK,02585.HK,00999.HK,01405.HK,09658.HK,00520.HK,02150.HK,02555.HK,02589.HK,06808.HK,02367.HK,01318.HK,02145.HK,09901.HK,02469.HK,06919.HK,09988.HK,09618.HK,03690.HK,09896.HK,09992.HK,00325.HK&indId=100000000051385|100:2026-06-30,100000000051385|100:2026-03-31,100000000051385|100:2027-03-31"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "06055.HK|2026H1|formal",
+      "code": "06055.HK",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "中烟香港 2026H1",
+      "expected": "2026-08-21",
+      "actual": "2026-08-21",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.023Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000051385",
+            "envelope": 2,
+            "table": 0,
+            "row": 0,
+            "column": 2,
+            "value": "2026-08-21",
+            "query": "思摩尔国际6969.HK、中烟香港6055.HK、乐舒适2698.HK、香港中旅0308.HK的2026年中报定期报告实际披露日期（100000000051385）、定期报告预计披露日期（100000000051384）。只要日期指标，保留返回报告期和Choice指标链接。",
+            "tool": "mx_hk_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "2026中报",
+              "思摩尔国际(06969.HK)(最新年结日12-31)",
+              "中烟香港(06055.HK)(最新年结日12-31)",
+              "乐舒适(02698.HK)(最新年结日12-31)",
+              "香港中旅(00308.HK)(最新年结日12-31)"
+            ],
+            "rowValues": [
+              "定期报告实际披露日期",
+              "2026-08-19",
+              "2026-08-21",
+              "2026-08-19",
+              "2026-08-31"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=06969.HK,06055.HK,02698.HK,00308.HK&indId=100000000051385|100:2026-06-30,100000000051384|100:2026-06-30"
+            ]
+          },
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000051384",
+            "envelope": 2,
+            "table": 0,
+            "row": 1,
+            "column": 2,
+            "value": "2026-08-21",
+            "query": "思摩尔国际6969.HK、中烟香港6055.HK、乐舒适2698.HK、香港中旅0308.HK的2026年中报定期报告实际披露日期（100000000051385）、定期报告预计披露日期（100000000051384）。只要日期指标，保留返回报告期和Choice指标链接。",
+            "tool": "mx_hk_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "2026中报",
+              "思摩尔国际(06969.HK)(最新年结日12-31)",
+              "中烟香港(06055.HK)(最新年结日12-31)",
+              "乐舒适(02698.HK)(最新年结日12-31)",
+              "香港中旅(00308.HK)(最新年结日12-31)"
+            ],
+            "rowValues": [
+              "定期报告预计披露日期",
+              "2026-08-19",
+              "2026-08-21",
+              "2026-08-19",
+              "2026-08-31"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=06969.HK,06055.HK,02698.HK,00308.HK&indId=100000000051385|100:2026-06-30,100000000051384|100:2026-06-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "06168.HK|2025FY|formal",
+      "code": "06168.HK",
+      "period": "2025FY",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "周六福 2025FY",
+      "expected": "2026-03-20",
+      "actual": "2026-03-20",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:16:49.014Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000051385",
+            "envelope": 1,
+            "table": 0,
+            "row": 0,
+            "column": 2,
+            "value": "2026-03-20",
+            "query": "周六福6168.HK、林清轩2657.HK，仅查询最近已披露报告期定期报告实际披露日期100000000051385、下一次定期报告预计披露日期100000000051384，保留原报告期和Choice指标跳转链接。",
+            "tool": "mx_hk_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.014Z",
+            "columns": [
+              "周六福(06168.HK)(最新年结日12-31)",
+              "2026中报",
+              "2025年报"
+            ],
+            "rowValues": [
+              "定期报告实际披露日期",
+              "2026-08-28",
+              "2026-03-20"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=06168.HK&indId=100000000051385|100:2025-12-31,100000000051385|100:2026-06-30,100000000051384|100:2025-12-31,100000000051384|100:2026-06-30"
+            ]
+          },
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000051384",
+            "envelope": 1,
+            "table": 0,
+            "row": 1,
+            "column": 2,
+            "value": "2026-03-20",
+            "query": "周六福6168.HK、林清轩2657.HK，仅查询最近已披露报告期定期报告实际披露日期100000000051385、下一次定期报告预计披露日期100000000051384，保留原报告期和Choice指标跳转链接。",
+            "tool": "mx_hk_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.014Z",
+            "columns": [
+              "周六福(06168.HK)(最新年结日12-31)",
+              "2026中报",
+              "2025年报"
+            ],
+            "rowValues": [
+              "定期报告预计披露日期",
+              "2026-08-28",
+              "2026-03-20"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=06168.HK&indId=100000000051385|100:2025-12-31,100000000051385|100:2026-06-30,100000000051384|100:2025-12-31,100000000051384|100:2026-06-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "06168.HK|2026H1|formal",
+      "code": "06168.HK",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "周六福 2026H1",
+      "expected": "2026-08-28",
+      "actual": "2026-08-28",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:16:49.014Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000051385",
+            "envelope": 1,
+            "table": 0,
+            "row": 0,
+            "column": 1,
+            "value": "2026-08-28",
+            "query": "周六福6168.HK、林清轩2657.HK，仅查询最近已披露报告期定期报告实际披露日期100000000051385、下一次定期报告预计披露日期100000000051384，保留原报告期和Choice指标跳转链接。",
+            "tool": "mx_hk_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.014Z",
+            "columns": [
+              "周六福(06168.HK)(最新年结日12-31)",
+              "2026中报",
+              "2025年报"
+            ],
+            "rowValues": [
+              "定期报告实际披露日期",
+              "2026-08-28",
+              "2026-03-20"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=06168.HK&indId=100000000051385|100:2025-12-31,100000000051385|100:2026-06-30,100000000051384|100:2025-12-31,100000000051384|100:2026-06-30"
+            ]
+          },
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000051384",
+            "envelope": 1,
+            "table": 0,
+            "row": 1,
+            "column": 1,
+            "value": "2026-08-28",
+            "query": "周六福6168.HK、林清轩2657.HK，仅查询最近已披露报告期定期报告实际披露日期100000000051385、下一次定期报告预计披露日期100000000051384，保留原报告期和Choice指标跳转链接。",
+            "tool": "mx_hk_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.014Z",
+            "columns": [
+              "周六福(06168.HK)(最新年结日12-31)",
+              "2026中报",
+              "2025年报"
+            ],
+            "rowValues": [
+              "定期报告预计披露日期",
+              "2026-08-28",
+              "2026-03-20"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=06168.HK&indId=100000000051385|100:2025-12-31,100000000051385|100:2026-06-30,100000000051384|100:2025-12-31,100000000051384|100:2026-06-30"
             ]
           }
         ]
@@ -11452,6 +12708,88 @@
             ],
             "choiceUrls": [
               "EM://stockdatacenter?type=browser&modType=STOCK&code=01929.HK,00590.HK,00116.HK,02585.HK,00999.HK,01405.HK,09658.HK,00520.HK,02150.HK,02555.HK,02589.HK,06808.HK,02367.HK,01318.HK,02145.HK,09901.HK,02469.HK,06919.HK,09988.HK,09618.HK,03690.HK,09896.HK,09992.HK,00325.HK&indId=100000000051385|100:2026-06-30,100000000051385|100:2026-03-31,100000000051385|100:2027-03-31"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "06969.HK|2026H1|formal",
+      "code": "06969.HK",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "思摩尔国际 2026H1",
+      "expected": "2026-08-19",
+      "actual": "2026-08-19",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.023Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000051385",
+            "envelope": 2,
+            "table": 0,
+            "row": 0,
+            "column": 1,
+            "value": "2026-08-19",
+            "query": "思摩尔国际6969.HK、中烟香港6055.HK、乐舒适2698.HK、香港中旅0308.HK的2026年中报定期报告实际披露日期（100000000051385）、定期报告预计披露日期（100000000051384）。只要日期指标，保留返回报告期和Choice指标链接。",
+            "tool": "mx_hk_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "2026中报",
+              "思摩尔国际(06969.HK)(最新年结日12-31)",
+              "中烟香港(06055.HK)(最新年结日12-31)",
+              "乐舒适(02698.HK)(最新年结日12-31)",
+              "香港中旅(00308.HK)(最新年结日12-31)"
+            ],
+            "rowValues": [
+              "定期报告实际披露日期",
+              "2026-08-19",
+              "2026-08-21",
+              "2026-08-19",
+              "2026-08-31"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=06969.HK,06055.HK,02698.HK,00308.HK&indId=100000000051385|100:2026-06-30,100000000051384|100:2026-06-30"
+            ]
+          },
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000051384",
+            "envelope": 2,
+            "table": 0,
+            "row": 1,
+            "column": 1,
+            "value": "2026-08-19",
+            "query": "思摩尔国际6969.HK、中烟香港6055.HK、乐舒适2698.HK、香港中旅0308.HK的2026年中报定期报告实际披露日期（100000000051385）、定期报告预计披露日期（100000000051384）。只要日期指标，保留返回报告期和Choice指标链接。",
+            "tool": "mx_hk_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "2026中报",
+              "思摩尔国际(06969.HK)(最新年结日12-31)",
+              "中烟香港(06055.HK)(最新年结日12-31)",
+              "乐舒适(02698.HK)(最新年结日12-31)",
+              "香港中旅(00308.HK)(最新年结日12-31)"
+            ],
+            "rowValues": [
+              "定期报告预计披露日期",
+              "2026-08-19",
+              "2026-08-21",
+              "2026-08-19",
+              "2026-08-31"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=06969.HK,06055.HK,02698.HK,00308.HK&indId=100000000051385|100:2026-06-30,100000000051384|100:2026-06-30"
             ]
           }
         ]
@@ -14389,6 +15727,148 @@
       }
     },
     {
+      "id": "300673.SZ|2026H1|formal",
+      "code": "300673.SZ",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "佩蒂股份 2026H1",
+      "expected": "",
+      "actual": "2026-08-25",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.023Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 0,
+            "row": 4,
+            "column": 1,
+            "value": "2026-08-25",
+            "query": "003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ的2026年中报定期报告实际披露日期（指标100000000007105）。只返回证券代码、报告期和这一个日期指标及Choice链接，不要板块或财务金额。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "定期报告实际披露日期",
+              "2026中报",
+              "2026一季报"
+            ],
+            "rowValues": [
+              "佩蒂股份(300673.SZ)",
+              "2026-08-25",
+              "2026-04-23"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ&indId=100000000007105|100:2026-03-31,100000000007105|100:2026-06-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "300673.SZ|2026Q1|formal",
+      "code": "300673.SZ",
+      "period": "2026Q1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "佩蒂股份 2026Q1",
+      "expected": "",
+      "actual": "2026-04-23",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.023Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 0,
+            "row": 4,
+            "column": 2,
+            "value": "2026-04-23",
+            "query": "003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ的2026年中报定期报告实际披露日期（指标100000000007105）。只返回证券代码、报告期和这一个日期指标及Choice链接，不要板块或财务金额。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "定期报告实际披露日期",
+              "2026中报",
+              "2026一季报"
+            ],
+            "rowValues": [
+              "佩蒂股份(300673.SZ)",
+              "2026-08-25",
+              "2026-04-23"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ&indId=100000000007105|100:2026-03-31,100000000007105|100:2026-06-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "300673.SZ|2026Q3|formal",
+      "code": "300673.SZ",
+      "period": "2026Q3",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "佩蒂股份 2026Q3",
+      "expected": "2026-10-27",
+      "actual": "",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.023Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000007104",
+            "envelope": 1,
+            "table": 0,
+            "row": 4,
+            "column": 1,
+            "value": "2026-10-27",
+            "query": "003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ的2026年三季报定期报告预计披露日期（100000000007104）。只返回日期字段、证券代码和报告期，附Choice指标链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "定期报告预计披露日期",
+              "2026三季报"
+            ],
+            "rowValues": [
+              "佩蒂股份(300673.SZ)",
+              "2026-10-27"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ&indId=100000000007104|100:2026-09-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "300729.SZ|2025FY|formal",
       "code": "300729.SZ",
       "period": "2025FY",
@@ -15582,6 +17062,330 @@
       }
     },
     {
+      "id": "300896.SZ|2025Q3|formal",
+      "code": "300896.SZ",
+      "period": "2025Q3",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "爱美客 2025Q3",
+      "expected": "",
+      "actual": "2025-10-29",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:16:49.013Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 2,
+            "row": 0,
+            "column": 4,
+            "value": "2025-10-29",
+            "query": "石头科技688169.SH、绿联科技301606.SZ、爱美客300896.SZ、华熙生物688363.SH，仅查询2026年中报定期报告实际披露日期100000000007105及2026年三季报定期报告预计披露日期100000000007104，保留公司代码、返回报告期、日期指标及Choice跳转链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.013Z",
+            "columns": [
+              "爱美客(300896.SZ)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报",
+              "2025三季报"
+            ],
+            "rowValues": [
+              "定期报告实际披露日期",
+              "-",
+              "2026-08-21",
+              "2026-04-23",
+              "2025-10-29"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=300896.SZ&indId=100000000007105|100:2026-03-31,100000000007105|100:2026-06-30,100000000007104|100:2026-03-31,100000000007104|100:2026-06-30,100000000007105|100:2025-09-30,100000000007104|100:2026-09-30"
+            ]
+          },
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000007104",
+            "envelope": 0,
+            "table": 2,
+            "row": 1,
+            "column": 4,
+            "value": "-",
+            "query": "石头科技688169.SH、绿联科技301606.SZ、爱美客300896.SZ、华熙生物688363.SH，仅查询2026年中报定期报告实际披露日期100000000007105及2026年三季报定期报告预计披露日期100000000007104，保留公司代码、返回报告期、日期指标及Choice跳转链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.013Z",
+            "columns": [
+              "爱美客(300896.SZ)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报",
+              "2025三季报"
+            ],
+            "rowValues": [
+              "定期报告预计披露日期",
+              "2026-10-29",
+              "2026-08-21",
+              "2026-04-23",
+              "-"
+            ],
+            "choiceUrls": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "300896.SZ|2026H1|formal",
+      "code": "300896.SZ",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "爱美客 2026H1",
+      "expected": "2026-08-21",
+      "actual": "2026-08-21",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:16:49.013Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 2,
+            "row": 0,
+            "column": 2,
+            "value": "2026-08-21",
+            "query": "石头科技688169.SH、绿联科技301606.SZ、爱美客300896.SZ、华熙生物688363.SH，仅查询2026年中报定期报告实际披露日期100000000007105及2026年三季报定期报告预计披露日期100000000007104，保留公司代码、返回报告期、日期指标及Choice跳转链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.013Z",
+            "columns": [
+              "爱美客(300896.SZ)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报",
+              "2025三季报"
+            ],
+            "rowValues": [
+              "定期报告实际披露日期",
+              "-",
+              "2026-08-21",
+              "2026-04-23",
+              "2025-10-29"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=300896.SZ&indId=100000000007105|100:2026-03-31,100000000007105|100:2026-06-30,100000000007104|100:2026-03-31,100000000007104|100:2026-06-30,100000000007105|100:2025-09-30,100000000007104|100:2026-09-30"
+            ]
+          },
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000007104",
+            "envelope": 0,
+            "table": 2,
+            "row": 1,
+            "column": 2,
+            "value": "2026-08-21",
+            "query": "石头科技688169.SH、绿联科技301606.SZ、爱美客300896.SZ、华熙生物688363.SH，仅查询2026年中报定期报告实际披露日期100000000007105及2026年三季报定期报告预计披露日期100000000007104，保留公司代码、返回报告期、日期指标及Choice跳转链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.013Z",
+            "columns": [
+              "爱美客(300896.SZ)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报",
+              "2025三季报"
+            ],
+            "rowValues": [
+              "定期报告预计披露日期",
+              "2026-10-29",
+              "2026-08-21",
+              "2026-04-23",
+              "-"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=300896.SZ&indId=100000000007105|100:2026-03-31,100000000007105|100:2026-06-30,100000000007104|100:2026-03-31,100000000007104|100:2026-06-30,100000000007105|100:2025-09-30,100000000007104|100:2026-09-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "300896.SZ|2026Q1|formal",
+      "code": "300896.SZ",
+      "period": "2026Q1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "爱美客 2026Q1",
+      "expected": "2026-04-23",
+      "actual": "2026-04-23",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:16:49.013Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 2,
+            "row": 0,
+            "column": 3,
+            "value": "2026-04-23",
+            "query": "石头科技688169.SH、绿联科技301606.SZ、爱美客300896.SZ、华熙生物688363.SH，仅查询2026年中报定期报告实际披露日期100000000007105及2026年三季报定期报告预计披露日期100000000007104，保留公司代码、返回报告期、日期指标及Choice跳转链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.013Z",
+            "columns": [
+              "爱美客(300896.SZ)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报",
+              "2025三季报"
+            ],
+            "rowValues": [
+              "定期报告实际披露日期",
+              "-",
+              "2026-08-21",
+              "2026-04-23",
+              "2025-10-29"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=300896.SZ&indId=100000000007105|100:2026-03-31,100000000007105|100:2026-06-30,100000000007104|100:2026-03-31,100000000007104|100:2026-06-30,100000000007105|100:2025-09-30,100000000007104|100:2026-09-30"
+            ]
+          },
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000007104",
+            "envelope": 0,
+            "table": 2,
+            "row": 1,
+            "column": 3,
+            "value": "2026-04-23",
+            "query": "石头科技688169.SH、绿联科技301606.SZ、爱美客300896.SZ、华熙生物688363.SH，仅查询2026年中报定期报告实际披露日期100000000007105及2026年三季报定期报告预计披露日期100000000007104，保留公司代码、返回报告期、日期指标及Choice跳转链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.013Z",
+            "columns": [
+              "爱美客(300896.SZ)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报",
+              "2025三季报"
+            ],
+            "rowValues": [
+              "定期报告预计披露日期",
+              "2026-10-29",
+              "2026-08-21",
+              "2026-04-23",
+              "-"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=300896.SZ&indId=100000000007105|100:2026-03-31,100000000007105|100:2026-06-30,100000000007104|100:2026-03-31,100000000007104|100:2026-06-30,100000000007105|100:2025-09-30,100000000007104|100:2026-09-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "300896.SZ|2026Q3|formal",
+      "code": "300896.SZ",
+      "period": "2026Q3",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "爱美客 2026Q3",
+      "expected": "2026-10-29",
+      "actual": "",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:16:49.013Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 2,
+            "row": 0,
+            "column": 1,
+            "value": "-",
+            "query": "石头科技688169.SH、绿联科技301606.SZ、爱美客300896.SZ、华熙生物688363.SH，仅查询2026年中报定期报告实际披露日期100000000007105及2026年三季报定期报告预计披露日期100000000007104，保留公司代码、返回报告期、日期指标及Choice跳转链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.013Z",
+            "columns": [
+              "爱美客(300896.SZ)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报",
+              "2025三季报"
+            ],
+            "rowValues": [
+              "定期报告实际披露日期",
+              "-",
+              "2026-08-21",
+              "2026-04-23",
+              "2025-10-29"
+            ],
+            "choiceUrls": []
+          },
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000007104",
+            "envelope": 0,
+            "table": 2,
+            "row": 1,
+            "column": 1,
+            "value": "2026-10-29",
+            "query": "石头科技688169.SH、绿联科技301606.SZ、爱美客300896.SZ、华熙生物688363.SH，仅查询2026年中报定期报告实际披露日期100000000007105及2026年三季报定期报告预计披露日期100000000007104，保留公司代码、返回报告期、日期指标及Choice跳转链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.013Z",
+            "columns": [
+              "爱美客(300896.SZ)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报",
+              "2025三季报"
+            ],
+            "rowValues": [
+              "定期报告预计披露日期",
+              "2026-10-29",
+              "2026-08-21",
+              "2026-04-23",
+              "-"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=300896.SZ&indId=100000000007105|100:2026-03-31,100000000007105|100:2026-06-30,100000000007104|100:2026-03-31,100000000007104|100:2026-06-30,100000000007105|100:2025-09-30,100000000007104|100:2026-09-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "300945.SZ|2025FY|formal",
       "code": "300945.SZ",
       "period": "2025FY",
@@ -16439,6 +18243,148 @@
             ],
             "choiceUrls": [
               "EM://stockdatacenter?type=browser&modType=STOCK&code=600754.SH,600258.SH,301073.SZ,601888.SH,002033.SZ,603099.SH,002607.SZ,300492.SZ,605098.SH,600612.SH,002345.SZ,002867.SZ,600655.SH,300866.SZ,600415.SH,301381.SZ,601933.SH,600729.SH,002251.SZ,300662.SZ,600861.SH&indId=100000000007104|100:2026-09-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "301078.SZ|2026H1|formal",
+      "code": "301078.SZ",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "孩子王 2026H1",
+      "expected": "",
+      "actual": "2026-08-26",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.023Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 0,
+            "row": 10,
+            "column": 1,
+            "value": "2026-08-26",
+            "query": "003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ的2026年中报定期报告实际披露日期（指标100000000007105）。只返回证券代码、报告期和这一个日期指标及Choice链接，不要板块或财务金额。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "定期报告实际披露日期",
+              "2026中报",
+              "2026一季报"
+            ],
+            "rowValues": [
+              "孩子王(301078.SZ)",
+              "2026-08-26",
+              "2026-04-28"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ&indId=100000000007105|100:2026-03-31,100000000007105|100:2026-06-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "301078.SZ|2026Q1|formal",
+      "code": "301078.SZ",
+      "period": "2026Q1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "孩子王 2026Q1",
+      "expected": "",
+      "actual": "2026-04-28",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.023Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 0,
+            "row": 10,
+            "column": 2,
+            "value": "2026-04-28",
+            "query": "003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ的2026年中报定期报告实际披露日期（指标100000000007105）。只返回证券代码、报告期和这一个日期指标及Choice链接，不要板块或财务金额。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "定期报告实际披露日期",
+              "2026中报",
+              "2026一季报"
+            ],
+            "rowValues": [
+              "孩子王(301078.SZ)",
+              "2026-08-26",
+              "2026-04-28"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ&indId=100000000007105|100:2026-03-31,100000000007105|100:2026-06-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "301078.SZ|2026Q3|formal",
+      "code": "301078.SZ",
+      "period": "2026Q3",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "孩子王 2026Q3",
+      "expected": "2026-10-29",
+      "actual": "",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.023Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000007104",
+            "envelope": 1,
+            "table": 0,
+            "row": 10,
+            "column": 1,
+            "value": "2026-10-29",
+            "query": "003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ的2026年三季报定期报告预计披露日期（100000000007104）。只返回日期字段、证券代码和报告期，附Choice指标链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "定期报告预计披露日期",
+              "2026三季报"
+            ],
+            "rowValues": [
+              "孩子王(301078.SZ)",
+              "2026-10-29"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ&indId=100000000007104|100:2026-09-30"
             ]
           }
         ]
@@ -17308,6 +19254,148 @@
       }
     },
     {
+      "id": "301498.SZ|2026H1|formal",
+      "code": "301498.SZ",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "乖宝宠物 2026H1",
+      "expected": "",
+      "actual": "2026-08-27",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.023Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 0,
+            "row": 1,
+            "column": 1,
+            "value": "2026-08-27",
+            "query": "003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ的2026年中报定期报告实际披露日期（指标100000000007105）。只返回证券代码、报告期和这一个日期指标及Choice链接，不要板块或财务金额。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "定期报告实际披露日期",
+              "2026中报",
+              "2026一季报"
+            ],
+            "rowValues": [
+              "乖宝宠物(301498.SZ)",
+              "2026-08-27",
+              "2026-04-23"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ&indId=100000000007105|100:2026-03-31,100000000007105|100:2026-06-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "301498.SZ|2026Q1|formal",
+      "code": "301498.SZ",
+      "period": "2026Q1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "乖宝宠物 2026Q1",
+      "expected": "",
+      "actual": "2026-04-23",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.023Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 0,
+            "row": 1,
+            "column": 2,
+            "value": "2026-04-23",
+            "query": "003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ的2026年中报定期报告实际披露日期（指标100000000007105）。只返回证券代码、报告期和这一个日期指标及Choice链接，不要板块或财务金额。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "定期报告实际披露日期",
+              "2026中报",
+              "2026一季报"
+            ],
+            "rowValues": [
+              "乖宝宠物(301498.SZ)",
+              "2026-08-27",
+              "2026-04-23"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ&indId=100000000007105|100:2026-03-31,100000000007105|100:2026-06-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "301498.SZ|2026Q3|formal",
+      "code": "301498.SZ",
+      "period": "2026Q3",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "乖宝宠物 2026Q3",
+      "expected": "2026-10-28",
+      "actual": "",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.023Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000007104",
+            "envelope": 1,
+            "table": 0,
+            "row": 1,
+            "column": 1,
+            "value": "2026-10-28",
+            "query": "003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ的2026年三季报定期报告预计披露日期（100000000007104）。只返回日期字段、证券代码和报告期，附Choice指标链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "定期报告预计披露日期",
+              "2026三季报"
+            ],
+            "rowValues": [
+              "乖宝宠物(301498.SZ)",
+              "2026-10-28"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ&indId=100000000007104|100:2026-09-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "301558.SZ|2025FY|formal",
       "code": "301558.SZ",
       "period": "2025FY",
@@ -17632,6 +19720,472 @@
             ],
             "choiceUrls": [
               "EM://stockdatacenter?type=browser&modType=STOCK&code=000524.SZ,002059.SZ,300144.SZ,600138.SH,000888.SZ,600054.SH,603136.SH,002707.SZ,002159.SZ,300859.SZ,600706.SH,000610.SZ,600250.SH,600859.SH,600515.SH,603069.SH,600916.SH,605599.SH,301177.SZ,300945.SZ,002731.SZ,002574.SZ,300592.SZ,002803.SZ,002315.SZ,300729.SZ,301376.SZ,301558.SZ,000721.SZ,002186.SZ,603708.SH,002697.SZ,600827.SH,600858.SH,000417.SZ,000501.SZ,600694.SH,000785.SZ,601828.SH,603605.SH,300957.SZ,603983.SH,600315.SH,300740.SZ,600223.SH,000526.SZ,003032.SZ,600662.SH&indId=100000000007104|100:2026-09-30,100000000007104|100:2025-09-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "301606.SZ|2025Q3|formal",
+      "code": "301606.SZ",
+      "period": "2025Q3",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "绿联科技 2025Q3",
+      "expected": "",
+      "actual": "2025-10-25",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:16:49.013Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-receipts.json",
+        "cells": [
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000007104",
+            "envelope": 0,
+            "table": 1,
+            "row": 0,
+            "column": 4,
+            "value": "-",
+            "query": "石头科技688169.SH、绿联科技301606.SZ、爱美客300896.SZ、华熙生物688363.SH，仅查询2026年中报定期报告实际披露日期100000000007105及2026年三季报定期报告预计披露日期100000000007104，保留公司代码、返回报告期、日期指标及Choice跳转链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.013Z",
+            "columns": [
+              "绿联科技(301606.SZ)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报",
+              "2025三季报"
+            ],
+            "rowValues": [
+              "定期报告预计披露日期",
+              "2026-10-30",
+              "2026-08-25",
+              "2026-04-28",
+              "-"
+            ],
+            "choiceUrls": []
+          },
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 1,
+            "row": 1,
+            "column": 4,
+            "value": "2025-10-25",
+            "query": "石头科技688169.SH、绿联科技301606.SZ、爱美客300896.SZ、华熙生物688363.SH，仅查询2026年中报定期报告实际披露日期100000000007105及2026年三季报定期报告预计披露日期100000000007104，保留公司代码、返回报告期、日期指标及Choice跳转链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.013Z",
+            "columns": [
+              "绿联科技(301606.SZ)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报",
+              "2025三季报"
+            ],
+            "rowValues": [
+              "定期报告实际披露日期",
+              "-",
+              "2026-08-25",
+              "2026-04-28",
+              "2025-10-25"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=301606.SZ&indId=100000000007104|100:2026-03-31,100000000007104|100:2026-06-30,100000000007105|100:2026-03-31,100000000007105|100:2026-06-30,100000000007104|100:2026-09-30,100000000007105|100:2025-09-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "301606.SZ|2026H1|formal",
+      "code": "301606.SZ",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "绿联科技 2026H1",
+      "expected": "2026-08-25",
+      "actual": "2026-08-25",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:16:49.013Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-receipts.json",
+        "cells": [
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000007104",
+            "envelope": 0,
+            "table": 1,
+            "row": 0,
+            "column": 2,
+            "value": "2026-08-25",
+            "query": "石头科技688169.SH、绿联科技301606.SZ、爱美客300896.SZ、华熙生物688363.SH，仅查询2026年中报定期报告实际披露日期100000000007105及2026年三季报定期报告预计披露日期100000000007104，保留公司代码、返回报告期、日期指标及Choice跳转链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.013Z",
+            "columns": [
+              "绿联科技(301606.SZ)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报",
+              "2025三季报"
+            ],
+            "rowValues": [
+              "定期报告预计披露日期",
+              "2026-10-30",
+              "2026-08-25",
+              "2026-04-28",
+              "-"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=301606.SZ&indId=100000000007104|100:2026-03-31,100000000007104|100:2026-06-30,100000000007105|100:2026-03-31,100000000007105|100:2026-06-30,100000000007104|100:2026-09-30,100000000007105|100:2025-09-30"
+            ]
+          },
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 1,
+            "row": 1,
+            "column": 2,
+            "value": "2026-08-25",
+            "query": "石头科技688169.SH、绿联科技301606.SZ、爱美客300896.SZ、华熙生物688363.SH，仅查询2026年中报定期报告实际披露日期100000000007105及2026年三季报定期报告预计披露日期100000000007104，保留公司代码、返回报告期、日期指标及Choice跳转链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.013Z",
+            "columns": [
+              "绿联科技(301606.SZ)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报",
+              "2025三季报"
+            ],
+            "rowValues": [
+              "定期报告实际披露日期",
+              "-",
+              "2026-08-25",
+              "2026-04-28",
+              "2025-10-25"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=301606.SZ&indId=100000000007104|100:2026-03-31,100000000007104|100:2026-06-30,100000000007105|100:2026-03-31,100000000007105|100:2026-06-30,100000000007104|100:2026-09-30,100000000007105|100:2025-09-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "301606.SZ|2026Q1|formal",
+      "code": "301606.SZ",
+      "period": "2026Q1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "绿联科技 2026Q1",
+      "expected": "2026-04-28",
+      "actual": "2026-04-28",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:16:49.013Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-receipts.json",
+        "cells": [
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000007104",
+            "envelope": 0,
+            "table": 1,
+            "row": 0,
+            "column": 3,
+            "value": "2026-04-28",
+            "query": "石头科技688169.SH、绿联科技301606.SZ、爱美客300896.SZ、华熙生物688363.SH，仅查询2026年中报定期报告实际披露日期100000000007105及2026年三季报定期报告预计披露日期100000000007104，保留公司代码、返回报告期、日期指标及Choice跳转链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.013Z",
+            "columns": [
+              "绿联科技(301606.SZ)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报",
+              "2025三季报"
+            ],
+            "rowValues": [
+              "定期报告预计披露日期",
+              "2026-10-30",
+              "2026-08-25",
+              "2026-04-28",
+              "-"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=301606.SZ&indId=100000000007104|100:2026-03-31,100000000007104|100:2026-06-30,100000000007105|100:2026-03-31,100000000007105|100:2026-06-30,100000000007104|100:2026-09-30,100000000007105|100:2025-09-30"
+            ]
+          },
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 1,
+            "row": 1,
+            "column": 3,
+            "value": "2026-04-28",
+            "query": "石头科技688169.SH、绿联科技301606.SZ、爱美客300896.SZ、华熙生物688363.SH，仅查询2026年中报定期报告实际披露日期100000000007105及2026年三季报定期报告预计披露日期100000000007104，保留公司代码、返回报告期、日期指标及Choice跳转链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.013Z",
+            "columns": [
+              "绿联科技(301606.SZ)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报",
+              "2025三季报"
+            ],
+            "rowValues": [
+              "定期报告实际披露日期",
+              "-",
+              "2026-08-25",
+              "2026-04-28",
+              "2025-10-25"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=301606.SZ&indId=100000000007104|100:2026-03-31,100000000007104|100:2026-06-30,100000000007105|100:2026-03-31,100000000007105|100:2026-06-30,100000000007104|100:2026-09-30,100000000007105|100:2025-09-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "301606.SZ|2026Q3|formal",
+      "code": "301606.SZ",
+      "period": "2026Q3",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "绿联科技 2026Q3",
+      "expected": "2026-10-30",
+      "actual": "",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:16:49.013Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-receipts.json",
+        "cells": [
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000007104",
+            "envelope": 0,
+            "table": 1,
+            "row": 0,
+            "column": 1,
+            "value": "2026-10-30",
+            "query": "石头科技688169.SH、绿联科技301606.SZ、爱美客300896.SZ、华熙生物688363.SH，仅查询2026年中报定期报告实际披露日期100000000007105及2026年三季报定期报告预计披露日期100000000007104，保留公司代码、返回报告期、日期指标及Choice跳转链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.013Z",
+            "columns": [
+              "绿联科技(301606.SZ)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报",
+              "2025三季报"
+            ],
+            "rowValues": [
+              "定期报告预计披露日期",
+              "2026-10-30",
+              "2026-08-25",
+              "2026-04-28",
+              "-"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=301606.SZ&indId=100000000007104|100:2026-03-31,100000000007104|100:2026-06-30,100000000007105|100:2026-03-31,100000000007105|100:2026-06-30,100000000007104|100:2026-09-30,100000000007105|100:2025-09-30"
+            ]
+          },
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 1,
+            "row": 1,
+            "column": 1,
+            "value": "-",
+            "query": "石头科技688169.SH、绿联科技301606.SZ、爱美客300896.SZ、华熙生物688363.SH，仅查询2026年中报定期报告实际披露日期100000000007105及2026年三季报定期报告预计披露日期100000000007104，保留公司代码、返回报告期、日期指标及Choice跳转链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.013Z",
+            "columns": [
+              "绿联科技(301606.SZ)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报",
+              "2025三季报"
+            ],
+            "rowValues": [
+              "定期报告实际披露日期",
+              "-",
+              "2026-08-25",
+              "2026-04-28",
+              "2025-10-25"
+            ],
+            "choiceUrls": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "600009.SH|2026H1|formal",
+      "code": "600009.SH",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "上海机场 2026H1",
+      "expected": "",
+      "actual": "2026-08-20",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.023Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 0,
+            "row": 7,
+            "column": 1,
+            "value": "2026-08-20",
+            "query": "003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ的2026年中报定期报告实际披露日期（指标100000000007105）。只返回证券代码、报告期和这一个日期指标及Choice链接，不要板块或财务金额。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "定期报告实际披露日期",
+              "2026中报",
+              "2026一季报"
+            ],
+            "rowValues": [
+              "上海机场(600009.SH)",
+              "2026-08-20",
+              "2026-04-30"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ&indId=100000000007105|100:2026-03-31,100000000007105|100:2026-06-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "600009.SH|2026Q1|formal",
+      "code": "600009.SH",
+      "period": "2026Q1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "上海机场 2026Q1",
+      "expected": "",
+      "actual": "2026-04-30",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.023Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 0,
+            "row": 7,
+            "column": 2,
+            "value": "2026-04-30",
+            "query": "003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ的2026年中报定期报告实际披露日期（指标100000000007105）。只返回证券代码、报告期和这一个日期指标及Choice链接，不要板块或财务金额。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "定期报告实际披露日期",
+              "2026中报",
+              "2026一季报"
+            ],
+            "rowValues": [
+              "上海机场(600009.SH)",
+              "2026-08-20",
+              "2026-04-30"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ&indId=100000000007105|100:2026-03-31,100000000007105|100:2026-06-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "600009.SH|2026Q3|formal",
+      "code": "600009.SH",
+      "period": "2026Q3",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "上海机场 2026Q3",
+      "expected": "2026-10-31",
+      "actual": "",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.023Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000007104",
+            "envelope": 1,
+            "table": 0,
+            "row": 7,
+            "column": 1,
+            "value": "2026-10-31",
+            "query": "003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ的2026年三季报定期报告预计披露日期（100000000007104）。只返回日期字段、证券代码和报告期，附Choice指标链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "定期报告预计披露日期",
+              "2026三季报"
+            ],
+            "rowValues": [
+              "上海机场(600009.SH)",
+              "2026-10-31"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ&indId=100000000007104|100:2026-09-30"
             ]
           }
         ]
@@ -25858,6 +28412,290 @@
       }
     },
     {
+      "id": "603199.SH|2026H1|formal",
+      "code": "603199.SH",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "九华旅游 2026H1",
+      "expected": "",
+      "actual": "2026-08-20",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.023Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 0,
+            "row": 9,
+            "column": 1,
+            "value": "2026-08-20",
+            "query": "003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ的2026年中报定期报告实际披露日期（指标100000000007105）。只返回证券代码、报告期和这一个日期指标及Choice链接，不要板块或财务金额。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "定期报告实际披露日期",
+              "2026中报",
+              "2026一季报"
+            ],
+            "rowValues": [
+              "九华旅游(603199.SH)",
+              "2026-08-20",
+              "2026-04-24"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ&indId=100000000007105|100:2026-03-31,100000000007105|100:2026-06-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "603199.SH|2026Q1|formal",
+      "code": "603199.SH",
+      "period": "2026Q1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "九华旅游 2026Q1",
+      "expected": "",
+      "actual": "2026-04-24",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.023Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 0,
+            "row": 9,
+            "column": 2,
+            "value": "2026-04-24",
+            "query": "003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ的2026年中报定期报告实际披露日期（指标100000000007105）。只返回证券代码、报告期和这一个日期指标及Choice链接，不要板块或财务金额。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "定期报告实际披露日期",
+              "2026中报",
+              "2026一季报"
+            ],
+            "rowValues": [
+              "九华旅游(603199.SH)",
+              "2026-08-20",
+              "2026-04-24"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ&indId=100000000007105|100:2026-03-31,100000000007105|100:2026-06-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "603199.SH|2026Q3|formal",
+      "code": "603199.SH",
+      "period": "2026Q3",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "九华旅游 2026Q3",
+      "expected": "2026-10-29",
+      "actual": "",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.023Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000007104",
+            "envelope": 1,
+            "table": 0,
+            "row": 9,
+            "column": 1,
+            "value": "2026-10-29",
+            "query": "003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ的2026年三季报定期报告预计披露日期（100000000007104）。只返回日期字段、证券代码和报告期，附Choice指标链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "定期报告预计披露日期",
+              "2026三季报"
+            ],
+            "rowValues": [
+              "九华旅游(603199.SH)",
+              "2026-10-29"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ&indId=100000000007104|100:2026-09-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "603402.SH|2026H1|formal",
+      "code": "603402.SH",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "陕西旅游 2026H1",
+      "expected": "",
+      "actual": "2026-08-14",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.023Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 0,
+            "row": 8,
+            "column": 1,
+            "value": "2026-08-14",
+            "query": "003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ的2026年中报定期报告实际披露日期（指标100000000007105）。只返回证券代码、报告期和这一个日期指标及Choice链接，不要板块或财务金额。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "定期报告实际披露日期",
+              "2026中报",
+              "2026一季报"
+            ],
+            "rowValues": [
+              "陕西旅游(603402.SH)",
+              "2026-08-14",
+              "2026-04-28"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ&indId=100000000007105|100:2026-03-31,100000000007105|100:2026-06-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "603402.SH|2026Q1|formal",
+      "code": "603402.SH",
+      "period": "2026Q1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "陕西旅游 2026Q1",
+      "expected": "",
+      "actual": "2026-04-28",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.023Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 0,
+            "row": 8,
+            "column": 2,
+            "value": "2026-04-28",
+            "query": "003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ的2026年中报定期报告实际披露日期（指标100000000007105）。只返回证券代码、报告期和这一个日期指标及Choice链接，不要板块或财务金额。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "定期报告实际披露日期",
+              "2026中报",
+              "2026一季报"
+            ],
+            "rowValues": [
+              "陕西旅游(603402.SH)",
+              "2026-08-14",
+              "2026-04-28"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ&indId=100000000007105|100:2026-03-31,100000000007105|100:2026-06-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "603402.SH|2026Q3|formal",
+      "code": "603402.SH",
+      "period": "2026Q3",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "陕西旅游 2026Q3",
+      "expected": "2026-10-30",
+      "actual": "",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.023Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000007104",
+            "envelope": 1,
+            "table": 0,
+            "row": 8,
+            "column": 1,
+            "value": "2026-10-30",
+            "query": "003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ的2026年三季报定期报告预计披露日期（100000000007104）。只返回日期字段、证券代码和报告期，附Choice指标链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "定期报告预计披露日期",
+              "2026三季报"
+            ],
+            "rowValues": [
+              "陕西旅游(603402.SH)",
+              "2026-10-30"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ&indId=100000000007104|100:2026-09-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "603605.SH|2025FY|formal",
       "code": "603605.SH",
       "period": "2025FY",
@@ -27470,6 +30308,1028 @@
             ],
             "choiceUrls": [
               "EM://stockdatacenter?type=browser&modType=STOCK&code=000524.SZ,002059.SZ,300144.SZ,600138.SH,000888.SZ,600054.SH,603136.SH,002707.SZ,002159.SZ,300859.SZ,600706.SH,000610.SZ,600250.SH,600859.SH,600515.SH,603069.SH,600916.SH,605599.SH,301177.SZ,300945.SZ,002731.SZ,002574.SZ,300592.SZ,002803.SZ,002315.SZ,300729.SZ,301376.SZ,301558.SZ,000721.SZ,002186.SZ,603708.SH,002697.SZ,600827.SH,600858.SH,000417.SZ,000501.SZ,600694.SH,000785.SZ,601828.SH,603605.SH,300957.SZ,603983.SH,600315.SH,300740.SZ,600223.SH,000526.SZ,003032.SZ,600662.SH&indId=100000000007104|100:2026-09-30,100000000007104|100:2025-09-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "688169.SH|2025Q3|formal",
+      "code": "688169.SH",
+      "period": "2025Q3",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "石头科技 2025Q3",
+      "expected": "",
+      "actual": "2025-10-31",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:16:49.013Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-receipts.json",
+        "cells": [
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000007104",
+            "envelope": 0,
+            "table": 0,
+            "row": 0,
+            "column": 4,
+            "value": "-",
+            "query": "石头科技688169.SH、绿联科技301606.SZ、爱美客300896.SZ、华熙生物688363.SH，仅查询2026年中报定期报告实际披露日期100000000007105及2026年三季报定期报告预计披露日期100000000007104，保留公司代码、返回报告期、日期指标及Choice跳转链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.013Z",
+            "columns": [
+              "石头科技(688169.SH)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报",
+              "2025三季报"
+            ],
+            "rowValues": [
+              "定期报告预计披露日期",
+              "2026-10-31",
+              "2026-08-25",
+              "2026-04-23",
+              "-"
+            ],
+            "choiceUrls": []
+          },
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 0,
+            "row": 1,
+            "column": 4,
+            "value": "2025-10-31",
+            "query": "石头科技688169.SH、绿联科技301606.SZ、爱美客300896.SZ、华熙生物688363.SH，仅查询2026年中报定期报告实际披露日期100000000007105及2026年三季报定期报告预计披露日期100000000007104，保留公司代码、返回报告期、日期指标及Choice跳转链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.013Z",
+            "columns": [
+              "石头科技(688169.SH)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报",
+              "2025三季报"
+            ],
+            "rowValues": [
+              "定期报告实际披露日期",
+              "-",
+              "2026-08-25",
+              "2026-04-23",
+              "2025-10-31"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=688169.SH&indId=100000000007104|100:2026-03-31,100000000007104|100:2026-06-30,100000000007105|100:2026-03-31,100000000007105|100:2026-06-30,100000000007104|100:2026-09-30,100000000007105|100:2025-09-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "688169.SH|2026H1|formal",
+      "code": "688169.SH",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "石头科技 2026H1",
+      "expected": "2026-08-25",
+      "actual": "2026-08-25",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:16:49.013Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-receipts.json",
+        "cells": [
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000007104",
+            "envelope": 0,
+            "table": 0,
+            "row": 0,
+            "column": 2,
+            "value": "2026-08-25",
+            "query": "石头科技688169.SH、绿联科技301606.SZ、爱美客300896.SZ、华熙生物688363.SH，仅查询2026年中报定期报告实际披露日期100000000007105及2026年三季报定期报告预计披露日期100000000007104，保留公司代码、返回报告期、日期指标及Choice跳转链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.013Z",
+            "columns": [
+              "石头科技(688169.SH)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报",
+              "2025三季报"
+            ],
+            "rowValues": [
+              "定期报告预计披露日期",
+              "2026-10-31",
+              "2026-08-25",
+              "2026-04-23",
+              "-"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=688169.SH&indId=100000000007104|100:2026-03-31,100000000007104|100:2026-06-30,100000000007105|100:2026-03-31,100000000007105|100:2026-06-30,100000000007104|100:2026-09-30,100000000007105|100:2025-09-30"
+            ]
+          },
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 0,
+            "row": 1,
+            "column": 2,
+            "value": "2026-08-25",
+            "query": "石头科技688169.SH、绿联科技301606.SZ、爱美客300896.SZ、华熙生物688363.SH，仅查询2026年中报定期报告实际披露日期100000000007105及2026年三季报定期报告预计披露日期100000000007104，保留公司代码、返回报告期、日期指标及Choice跳转链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.013Z",
+            "columns": [
+              "石头科技(688169.SH)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报",
+              "2025三季报"
+            ],
+            "rowValues": [
+              "定期报告实际披露日期",
+              "-",
+              "2026-08-25",
+              "2026-04-23",
+              "2025-10-31"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=688169.SH&indId=100000000007104|100:2026-03-31,100000000007104|100:2026-06-30,100000000007105|100:2026-03-31,100000000007105|100:2026-06-30,100000000007104|100:2026-09-30,100000000007105|100:2025-09-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "688169.SH|2026Q1|formal",
+      "code": "688169.SH",
+      "period": "2026Q1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "石头科技 2026Q1",
+      "expected": "2026-04-23",
+      "actual": "2026-04-23",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:16:49.013Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-receipts.json",
+        "cells": [
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000007104",
+            "envelope": 0,
+            "table": 0,
+            "row": 0,
+            "column": 3,
+            "value": "2026-04-23",
+            "query": "石头科技688169.SH、绿联科技301606.SZ、爱美客300896.SZ、华熙生物688363.SH，仅查询2026年中报定期报告实际披露日期100000000007105及2026年三季报定期报告预计披露日期100000000007104，保留公司代码、返回报告期、日期指标及Choice跳转链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.013Z",
+            "columns": [
+              "石头科技(688169.SH)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报",
+              "2025三季报"
+            ],
+            "rowValues": [
+              "定期报告预计披露日期",
+              "2026-10-31",
+              "2026-08-25",
+              "2026-04-23",
+              "-"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=688169.SH&indId=100000000007104|100:2026-03-31,100000000007104|100:2026-06-30,100000000007105|100:2026-03-31,100000000007105|100:2026-06-30,100000000007104|100:2026-09-30,100000000007105|100:2025-09-30"
+            ]
+          },
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 0,
+            "row": 1,
+            "column": 3,
+            "value": "2026-04-23",
+            "query": "石头科技688169.SH、绿联科技301606.SZ、爱美客300896.SZ、华熙生物688363.SH，仅查询2026年中报定期报告实际披露日期100000000007105及2026年三季报定期报告预计披露日期100000000007104，保留公司代码、返回报告期、日期指标及Choice跳转链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.013Z",
+            "columns": [
+              "石头科技(688169.SH)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报",
+              "2025三季报"
+            ],
+            "rowValues": [
+              "定期报告实际披露日期",
+              "-",
+              "2026-08-25",
+              "2026-04-23",
+              "2025-10-31"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=688169.SH&indId=100000000007104|100:2026-03-31,100000000007104|100:2026-06-30,100000000007105|100:2026-03-31,100000000007105|100:2026-06-30,100000000007104|100:2026-09-30,100000000007105|100:2025-09-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "688169.SH|2026Q3|formal",
+      "code": "688169.SH",
+      "period": "2026Q3",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "石头科技 2026Q3",
+      "expected": "2026-10-31",
+      "actual": "",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:16:49.013Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-receipts.json",
+        "cells": [
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000007104",
+            "envelope": 0,
+            "table": 0,
+            "row": 0,
+            "column": 1,
+            "value": "2026-10-31",
+            "query": "石头科技688169.SH、绿联科技301606.SZ、爱美客300896.SZ、华熙生物688363.SH，仅查询2026年中报定期报告实际披露日期100000000007105及2026年三季报定期报告预计披露日期100000000007104，保留公司代码、返回报告期、日期指标及Choice跳转链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.013Z",
+            "columns": [
+              "石头科技(688169.SH)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报",
+              "2025三季报"
+            ],
+            "rowValues": [
+              "定期报告预计披露日期",
+              "2026-10-31",
+              "2026-08-25",
+              "2026-04-23",
+              "-"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=688169.SH&indId=100000000007104|100:2026-03-31,100000000007104|100:2026-06-30,100000000007105|100:2026-03-31,100000000007105|100:2026-06-30,100000000007104|100:2026-09-30,100000000007105|100:2025-09-30"
+            ]
+          },
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 0,
+            "row": 1,
+            "column": 1,
+            "value": "-",
+            "query": "石头科技688169.SH、绿联科技301606.SZ、爱美客300896.SZ、华熙生物688363.SH，仅查询2026年中报定期报告实际披露日期100000000007105及2026年三季报定期报告预计披露日期100000000007104，保留公司代码、返回报告期、日期指标及Choice跳转链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.013Z",
+            "columns": [
+              "石头科技(688169.SH)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报",
+              "2025三季报"
+            ],
+            "rowValues": [
+              "定期报告实际披露日期",
+              "-",
+              "2026-08-25",
+              "2026-04-23",
+              "2025-10-31"
+            ],
+            "choiceUrls": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "688363.SH|2025Q3|formal",
+      "code": "688363.SH",
+      "period": "2025Q3",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "华熙生物 2025Q3",
+      "expected": "",
+      "actual": "2025-10-29",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:16:49.013Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-receipts.json",
+        "cells": [
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000007104",
+            "envelope": 0,
+            "table": 3,
+            "row": 0,
+            "column": 4,
+            "value": "-",
+            "query": "石头科技688169.SH、绿联科技301606.SZ、爱美客300896.SZ、华熙生物688363.SH，仅查询2026年中报定期报告实际披露日期100000000007105及2026年三季报定期报告预计披露日期100000000007104，保留公司代码、返回报告期、日期指标及Choice跳转链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.013Z",
+            "columns": [
+              "华熙生物(688363.SH)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报",
+              "2025三季报"
+            ],
+            "rowValues": [
+              "定期报告预计披露日期",
+              "2026-10-30",
+              "2026-08-28",
+              "2026-04-30",
+              "-"
+            ],
+            "choiceUrls": []
+          },
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 3,
+            "row": 1,
+            "column": 4,
+            "value": "2025-10-29",
+            "query": "石头科技688169.SH、绿联科技301606.SZ、爱美客300896.SZ、华熙生物688363.SH，仅查询2026年中报定期报告实际披露日期100000000007105及2026年三季报定期报告预计披露日期100000000007104，保留公司代码、返回报告期、日期指标及Choice跳转链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.013Z",
+            "columns": [
+              "华熙生物(688363.SH)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报",
+              "2025三季报"
+            ],
+            "rowValues": [
+              "定期报告实际披露日期",
+              "-",
+              "2026-08-28",
+              "2026-04-30",
+              "2025-10-29"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=688363.SH&indId=100000000007104|100:2026-03-31,100000000007104|100:2026-06-30,100000000007105|100:2026-03-31,100000000007105|100:2026-06-30,100000000007104|100:2026-09-30,100000000007105|100:2025-09-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "688363.SH|2026H1|formal",
+      "code": "688363.SH",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "华熙生物 2026H1",
+      "expected": "2026-08-28",
+      "actual": "2026-08-28",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:16:49.013Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-receipts.json",
+        "cells": [
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000007104",
+            "envelope": 0,
+            "table": 3,
+            "row": 0,
+            "column": 2,
+            "value": "2026-08-28",
+            "query": "石头科技688169.SH、绿联科技301606.SZ、爱美客300896.SZ、华熙生物688363.SH，仅查询2026年中报定期报告实际披露日期100000000007105及2026年三季报定期报告预计披露日期100000000007104，保留公司代码、返回报告期、日期指标及Choice跳转链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.013Z",
+            "columns": [
+              "华熙生物(688363.SH)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报",
+              "2025三季报"
+            ],
+            "rowValues": [
+              "定期报告预计披露日期",
+              "2026-10-30",
+              "2026-08-28",
+              "2026-04-30",
+              "-"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=688363.SH&indId=100000000007104|100:2026-03-31,100000000007104|100:2026-06-30,100000000007105|100:2026-03-31,100000000007105|100:2026-06-30,100000000007104|100:2026-09-30,100000000007105|100:2025-09-30"
+            ]
+          },
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 3,
+            "row": 1,
+            "column": 2,
+            "value": "2026-08-28",
+            "query": "石头科技688169.SH、绿联科技301606.SZ、爱美客300896.SZ、华熙生物688363.SH，仅查询2026年中报定期报告实际披露日期100000000007105及2026年三季报定期报告预计披露日期100000000007104，保留公司代码、返回报告期、日期指标及Choice跳转链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.013Z",
+            "columns": [
+              "华熙生物(688363.SH)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报",
+              "2025三季报"
+            ],
+            "rowValues": [
+              "定期报告实际披露日期",
+              "-",
+              "2026-08-28",
+              "2026-04-30",
+              "2025-10-29"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=688363.SH&indId=100000000007104|100:2026-03-31,100000000007104|100:2026-06-30,100000000007105|100:2026-03-31,100000000007105|100:2026-06-30,100000000007104|100:2026-09-30,100000000007105|100:2025-09-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "688363.SH|2026Q1|formal",
+      "code": "688363.SH",
+      "period": "2026Q1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "华熙生物 2026Q1",
+      "expected": "2026-04-30",
+      "actual": "2026-04-30",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:16:49.013Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-receipts.json",
+        "cells": [
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000007104",
+            "envelope": 0,
+            "table": 3,
+            "row": 0,
+            "column": 3,
+            "value": "2026-04-30",
+            "query": "石头科技688169.SH、绿联科技301606.SZ、爱美客300896.SZ、华熙生物688363.SH，仅查询2026年中报定期报告实际披露日期100000000007105及2026年三季报定期报告预计披露日期100000000007104，保留公司代码、返回报告期、日期指标及Choice跳转链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.013Z",
+            "columns": [
+              "华熙生物(688363.SH)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报",
+              "2025三季报"
+            ],
+            "rowValues": [
+              "定期报告预计披露日期",
+              "2026-10-30",
+              "2026-08-28",
+              "2026-04-30",
+              "-"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=688363.SH&indId=100000000007104|100:2026-03-31,100000000007104|100:2026-06-30,100000000007105|100:2026-03-31,100000000007105|100:2026-06-30,100000000007104|100:2026-09-30,100000000007105|100:2025-09-30"
+            ]
+          },
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 3,
+            "row": 1,
+            "column": 3,
+            "value": "2026-04-30",
+            "query": "石头科技688169.SH、绿联科技301606.SZ、爱美客300896.SZ、华熙生物688363.SH，仅查询2026年中报定期报告实际披露日期100000000007105及2026年三季报定期报告预计披露日期100000000007104，保留公司代码、返回报告期、日期指标及Choice跳转链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.013Z",
+            "columns": [
+              "华熙生物(688363.SH)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报",
+              "2025三季报"
+            ],
+            "rowValues": [
+              "定期报告实际披露日期",
+              "-",
+              "2026-08-28",
+              "2026-04-30",
+              "2025-10-29"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=688363.SH&indId=100000000007104|100:2026-03-31,100000000007104|100:2026-06-30,100000000007105|100:2026-03-31,100000000007105|100:2026-06-30,100000000007104|100:2026-09-30,100000000007105|100:2025-09-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "688363.SH|2026Q3|formal",
+      "code": "688363.SH",
+      "period": "2026Q3",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "华熙生物 2026Q3",
+      "expected": "2026-10-30",
+      "actual": "",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:16:49.013Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-receipts.json",
+        "cells": [
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000007104",
+            "envelope": 0,
+            "table": 3,
+            "row": 0,
+            "column": 1,
+            "value": "2026-10-30",
+            "query": "石头科技688169.SH、绿联科技301606.SZ、爱美客300896.SZ、华熙生物688363.SH，仅查询2026年中报定期报告实际披露日期100000000007105及2026年三季报定期报告预计披露日期100000000007104，保留公司代码、返回报告期、日期指标及Choice跳转链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.013Z",
+            "columns": [
+              "华熙生物(688363.SH)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报",
+              "2025三季报"
+            ],
+            "rowValues": [
+              "定期报告预计披露日期",
+              "2026-10-30",
+              "2026-08-28",
+              "2026-04-30",
+              "-"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=688363.SH&indId=100000000007104|100:2026-03-31,100000000007104|100:2026-06-30,100000000007105|100:2026-03-31,100000000007105|100:2026-06-30,100000000007104|100:2026-09-30,100000000007105|100:2025-09-30"
+            ]
+          },
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 3,
+            "row": 1,
+            "column": 1,
+            "value": "-",
+            "query": "石头科技688169.SH、绿联科技301606.SZ、爱美客300896.SZ、华熙生物688363.SH，仅查询2026年中报定期报告实际披露日期100000000007105及2026年三季报定期报告预计披露日期100000000007104，保留公司代码、返回报告期、日期指标及Choice跳转链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.013Z",
+            "columns": [
+              "华熙生物(688363.SH)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报",
+              "2025三季报"
+            ],
+            "rowValues": [
+              "定期报告实际披露日期",
+              "-",
+              "2026-08-28",
+              "2026-04-30",
+              "2025-10-29"
+            ],
+            "choiceUrls": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "688775.SH|2026H1|formal",
+      "code": "688775.SH",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "影石创新 2026H1",
+      "expected": "",
+      "actual": "2026-08-28",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.023Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 0,
+            "row": 6,
+            "column": 1,
+            "value": "2026-08-28",
+            "query": "003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ的2026年中报定期报告实际披露日期（指标100000000007105）。只返回证券代码、报告期和这一个日期指标及Choice链接，不要板块或财务金额。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "定期报告实际披露日期",
+              "2026中报",
+              "2026一季报"
+            ],
+            "rowValues": [
+              "影石创新(688775.SH)",
+              "2026-08-28",
+              "2026-04-29"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ&indId=100000000007105|100:2026-03-31,100000000007105|100:2026-06-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "688775.SH|2026Q1|formal",
+      "code": "688775.SH",
+      "period": "2026Q1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "影石创新 2026Q1",
+      "expected": "",
+      "actual": "2026-04-29",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.023Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 0,
+            "table": 0,
+            "row": 6,
+            "column": 2,
+            "value": "2026-04-29",
+            "query": "003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ的2026年中报定期报告实际披露日期（指标100000000007105）。只返回证券代码、报告期和这一个日期指标及Choice链接，不要板块或财务金额。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "定期报告实际披露日期",
+              "2026中报",
+              "2026一季报"
+            ],
+            "rowValues": [
+              "影石创新(688775.SH)",
+              "2026-08-28",
+              "2026-04-29"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ&indId=100000000007105|100:2026-03-31,100000000007105|100:2026-06-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "688775.SH|2026Q3|formal",
+      "code": "688775.SH",
+      "period": "2026Q3",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "影石创新 2026Q3",
+      "expected": "2026-10-28",
+      "actual": "",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:23:54.023Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-extra-receipts.json",
+        "cells": [
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000007104",
+            "envelope": 1,
+            "table": 0,
+            "row": 6,
+            "column": 1,
+            "value": "2026-10-28",
+            "query": "003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ的2026年三季报定期报告预计披露日期（100000000007104）。只返回日期字段、证券代码和报告期，附Choice指标链接。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:23:54.023Z",
+            "columns": [
+              "定期报告预计披露日期",
+              "2026三季报"
+            ],
+            "rowValues": [
+              "影石创新(688775.SH)",
+              "2026-10-28"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=003010.SZ,301498.SZ,002891.SZ,001206.SZ,300673.SZ,001222.SZ,688775.SH,600009.SH,603402.SH,603199.SH,301078.SZ&indId=100000000007104|100:2026-09-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "920982.BJ|2026H1|formal",
+      "code": "920982.BJ",
+      "period": "2026H1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "锦波生物 2026H1",
+      "expected": "2026-08-25",
+      "actual": "2026-08-25",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:16:49.014Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 2,
+            "table": 0,
+            "row": 0,
+            "column": 2,
+            "value": "2026-08-25",
+            "query": "锦波生物920982.BJ，查询2026年中报定期报告实际披露日期100000000007105、2026年三季报定期报告预计披露日期100000000007104，保留北京证券交易所代码、原报告期和Choice指标跳转链接。只要日期字段。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.014Z",
+            "columns": [
+              "锦波生物(920982.BJ)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报"
+            ],
+            "rowValues": [
+              "定期报告实际披露日期",
+              "-",
+              "2026-08-25",
+              "2026-04-29"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=920982.BJ&indId=100000000007105|100:2026-03-31,100000000007105|100:2026-06-30,100000000007104|100:2026-03-31,100000000007104|100:2026-06-30,100000000007104|100:2026-09-30"
+            ]
+          },
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000007104",
+            "envelope": 2,
+            "table": 0,
+            "row": 1,
+            "column": 2,
+            "value": "2026-08-25",
+            "query": "锦波生物920982.BJ，查询2026年中报定期报告实际披露日期100000000007105、2026年三季报定期报告预计披露日期100000000007104，保留北京证券交易所代码、原报告期和Choice指标跳转链接。只要日期字段。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.014Z",
+            "columns": [
+              "锦波生物(920982.BJ)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报"
+            ],
+            "rowValues": [
+              "定期报告预计披露日期",
+              "2026-10-28",
+              "2026-08-25",
+              "2026-04-29"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=920982.BJ&indId=100000000007105|100:2026-03-31,100000000007105|100:2026-06-30,100000000007104|100:2026-03-31,100000000007104|100:2026-06-30,100000000007104|100:2026-09-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "920982.BJ|2026Q1|formal",
+      "code": "920982.BJ",
+      "period": "2026Q1",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "锦波生物 2026Q1",
+      "expected": "2026-04-29",
+      "actual": "2026-04-29",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:16:49.014Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 2,
+            "table": 0,
+            "row": 0,
+            "column": 3,
+            "value": "2026-04-29",
+            "query": "锦波生物920982.BJ，查询2026年中报定期报告实际披露日期100000000007105、2026年三季报定期报告预计披露日期100000000007104，保留北京证券交易所代码、原报告期和Choice指标跳转链接。只要日期字段。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.014Z",
+            "columns": [
+              "锦波生物(920982.BJ)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报"
+            ],
+            "rowValues": [
+              "定期报告实际披露日期",
+              "-",
+              "2026-08-25",
+              "2026-04-29"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=920982.BJ&indId=100000000007105|100:2026-03-31,100000000007105|100:2026-06-30,100000000007104|100:2026-03-31,100000000007104|100:2026-06-30,100000000007104|100:2026-09-30"
+            ]
+          },
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000007104",
+            "envelope": 2,
+            "table": 0,
+            "row": 1,
+            "column": 3,
+            "value": "2026-04-29",
+            "query": "锦波生物920982.BJ，查询2026年中报定期报告实际披露日期100000000007105、2026年三季报定期报告预计披露日期100000000007104，保留北京证券交易所代码、原报告期和Choice指标跳转链接。只要日期字段。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.014Z",
+            "columns": [
+              "锦波生物(920982.BJ)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报"
+            ],
+            "rowValues": [
+              "定期报告预计披露日期",
+              "2026-10-28",
+              "2026-08-25",
+              "2026-04-29"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=920982.BJ&indId=100000000007105|100:2026-03-31,100000000007105|100:2026-06-30,100000000007104|100:2026-03-31,100000000007104|100:2026-06-30,100000000007104|100:2026-09-30"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "920982.BJ|2026Q3|formal",
+      "code": "920982.BJ",
+      "period": "2026Q3",
+      "kind": "formal",
+      "documentType": "report",
+      "title": "锦波生物 2026Q3",
+      "expected": "2026-10-28",
+      "actual": "",
+      "announcementDate": "",
+      "url": "",
+      "linkType": "",
+      "sourceId": "choice-mcp",
+      "updatedAt": "2026-10-12T03:16:49.014Z",
+      "reservations": [],
+      "history": [],
+      "evidence": {
+        "receiptFile": "data/earnings-choice-focused-receipts.json",
+        "cells": [
+          {
+            "field": "actual",
+            "indicator": "定期报告实际披露日期",
+            "indicatorId": "100000000007105",
+            "envelope": 2,
+            "table": 0,
+            "row": 0,
+            "column": 1,
+            "value": "-",
+            "query": "锦波生物920982.BJ，查询2026年中报定期报告实际披露日期100000000007105、2026年三季报定期报告预计披露日期100000000007104，保留北京证券交易所代码、原报告期和Choice指标跳转链接。只要日期字段。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.014Z",
+            "columns": [
+              "锦波生物(920982.BJ)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报"
+            ],
+            "rowValues": [
+              "定期报告实际披露日期",
+              "-",
+              "2026-08-25",
+              "2026-04-29"
+            ],
+            "choiceUrls": []
+          },
+          {
+            "field": "expected",
+            "indicator": "定期报告预计披露日期",
+            "indicatorId": "100000000007104",
+            "envelope": 2,
+            "table": 0,
+            "row": 1,
+            "column": 1,
+            "value": "2026-10-28",
+            "query": "锦波生物920982.BJ，查询2026年中报定期报告实际披露日期100000000007105、2026年三季报定期报告预计披露日期100000000007104，保留北京证券交易所代码、原报告期和Choice指标跳转链接。只要日期字段。",
+            "tool": "mx_ashare_finance_data",
+            "checkedAt": "2026-10-12T03:16:49.014Z",
+            "columns": [
+              "锦波生物(920982.BJ)",
+              "2026三季报",
+              "2026中报",
+              "2026一季报"
+            ],
+            "rowValues": [
+              "定期报告预计披露日期",
+              "2026-10-28",
+              "2026-08-25",
+              "2026-04-29"
+            ],
+            "choiceUrls": [
+              "EM://stockdatacenter?type=browser&modType=STOCK&code=920982.BJ&indId=100000000007105|100:2026-03-31,100000000007105|100:2026-06-30,100000000007104|100:2026-03-31,100000000007104|100:2026-06-30,100000000007104|100:2026-09-30"
             ]
           }
         ]

@@ -82,8 +82,8 @@ async function boot(){try{
  if(!calendarFile)throw Error('数据清单缺少财报配置');
  const [directory,data]=await Promise.all([D.json('data/coverage-companies.json'),D.json(calendarFile)]);snapshot=M.validateSnapshot(data);
  if(snapshot.primarySource!=='choice-mcp'||snapshot.records.some(r=>r.sourceId!=='choice-mcp'))throw Error('财报日期尚未同步 Choice');
- const coveredCodes=new Set(snapshot.records.map(r=>M.code(r.code)));
- pool=directory.companies.filter(c=>coveredCodes.has(M.code(c.code))).map(c=>({...c,code:M.code(c.code),market:/\.(SH|SZ)$/.test(c.code)?'A股':/\.HK$/.test(c.code)?'港股':'美股'}));
+ 
+ pool=directory.companies.map(c=>({...c,code:M.code(c.code),market:/\.(SH|SZ|BJ)$/.test(c.code)?'A股':/\.HK$/.test(c.code)?'港股':'美股'}));
  if(!pool.length)throw Error('覆盖池为空');
  $('sector').innerHTML='<option value="">全部行业</option>'+[...new Set(pool.map(c=>c.sector))].map(s=>'<option>'+esc(s)+'</option>').join('');
  restore();applyURL();$('sourceStatus').textContent='Choice MCP · 更新 '+time(snapshot.updatedAt);
