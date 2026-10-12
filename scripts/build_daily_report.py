@@ -2,6 +2,7 @@
 """Build a dated 16:00 Asia/Shanghai digest; see docs/daily-report.md."""
 import argparse, csv, datetime as dt, hashlib, json, re, subprocess
 from pathlib import Path
+from daily_scope import sector_for
 from research_sources import merge_rows, update_rows, archive_rows
 ROOT=Path(__file__).resolve().parent.parent
 TZ=dt.timezone(dt.timedelta(hours=8))
@@ -33,12 +34,15 @@ def research(end):
         for r in merge_rows(archive_rows(ROOT,db,base),update_rows(ROOT,db)):
             when=r.get('时间',''); body=r.get('内容','').strip(); title=r.get('标题','').strip()
             if not inside(when,end,24): continue
+            sector=sector_for(title,body)
+            if not sector:
+                excluded+=1; continue
             if len(when)<=10 or len(body)<80 or not title:
                 excluded+=1; continue
             key=hashlib.sha256(re.sub(r'\s','',body).encode()).hexdigest()
             if key in seen: continue
             seen.add(key)
-            result[kind].append({'id':key[:16],'title':title,'body':body,'publishedAt':stamp(when).isoformat(),'source':'研究观点原文','url':r.get('原文链接',''),'score':score(title,body)})
+            result[kind].append({'id':key[:16],'sector':sector,'title':title,'body':body,'publishedAt':stamp(when).isoformat(),'source':'研究观点原文','url':r.get('原文链接',''),'score':score(title,body)})
     for k in result: result[k]=sorted(result[k],key=lambda r:(r['score'],r['publishedAt']),reverse=True)[:12]
     return result,excluded
 

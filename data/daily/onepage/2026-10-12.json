@@ -1,56 +1,96 @@
 {
-  "sections": {
-    "data": [
-      {
-        "id": "data/macro/automatic-series.json:consumer-catering",
-        "shortTitle": "",
-        "digest": "餐饮：8月全国餐饮收入4544亿元。"
-      },
-      {
-        "id": "data/home-snapshot.json:dutyfree",
-        "shortTitle": "",
-        "digest": "免税：8月离岛免税购物金额21.45亿元，同比+1.9%。"
-      },
-      {
-        "id": "data/consumption-macro/observations.json:holiday_2026_national_trips",
-        "shortTitle": "",
-        "digest": "旅游：国庆国内出游8.26亿人次。"
-      },
-      {
-        "id": "data/consumption-macro/observations.json:holiday_2026_national_spend",
-        "shortTitle": "",
-        "digest": "旅游：国庆国内旅游花费7383.75亿元。"
-      }
-    ],
-    "briefs": [
-      {
-        "id": "087c04f01a0ccbc2",
-        "shortTitle": "餐饮",
-        "digest": "据经营交流，海底捞9月翻台率同比持平，新开11家、关闭5家；太二9月及国庆前6天内地同店高双位数增长，受益中秋错期及低基数。"
-      },
-      {
-        "id": "df9b9601741d5804",
-        "shortTitle": "阿里巴巴",
-        "digest": "天风预计FY27Q2电商GMV边际改善、利润企稳，本地业务小幅减亏；预计阿里云收入同比约+53%。"
-      },
-      {
-        "id": "039f50142681ed98",
-        "shortTitle": "食品饮料",
-        "digest": "浙商认为双节白酒动销仍偏弱，预计同比下降约10%；关注红利及三季报业绩催化。"
-      }
-    ],
-    "views": [
-      {
-        "id": "12a2ac61652d1f49",
-        "shortTitle": "连锁药店",
-        "digest": "原文观点预计大参林Q3收入接近双位数增长、利润增长约20%；益丰收入大个位数增长、利润增长10%以上。"
-      },
-      {
-        "id": "f2e9be5e4c9a1e26",
-        "shortTitle": "惠泰医疗",
-        "digest": "原文观点预计PFA放量带动Q3业绩延续较高增长，利润表现仍需关注费用投入节奏。"
-      }
-    ],
-    "news": []
-  }
+  "schemaVersion": 2,
+  "date": "2026-10-12",
+  "cutoff": "2026-10-12T16:00:00+08:00",
+  "headline": "今日重点：餐饮、茶饮经营反馈边际改善但仍分化；潮玩海外渠道增长较强；电商观点转向关注利润企稳。",
+  "focus": [
+    {
+      "title": "餐饮｜太二改善，绿茶仍承压",
+      "summary": "据公司交流转述，太二9月及国庆前6天内地同店高双位数增长，8月为中高单位数增长；绿茶国庆同店仍中双位数下滑。中秋错期、低基数影响需保留。",
+      "sources": [
+        {
+          "source": "9月及国庆餐饮上市公司更新",
+          "publishedAt": "2026-10-12T10:11:10+08:00",
+          "url": "https://wx.zsxq.com/group/88888142214212/topic/45548555441144228"
+        }
+      ]
+    },
+    {
+      "title": "潮玩｜泡泡玛特美国渠道提速",
+      "summary": "国海跟踪援引Fastmoss：10月4—10日美国TikTok GMV为563万元，环比+59%；截至10月11日海外门店268家（不含港澳台），年初至今新开83家。",
+      "sources": [
+        {
+          "source": "【国海传媒】泡泡玛特（9992.HK）每周跟踪1011：美国Tiktok环比大增，关注下周The Monsters毛绒新品！",
+          "publishedAt": "2026-10-12T08:41:33+08:00",
+          "url": "https://wx.zsxq.com/group/88888142214212/topic/55521551888551244"
+        }
+      ]
+    },
+    {
+      "title": "电商｜阿里利润企稳预期",
+      "summary": "天风预计FY27Q2国内电商EBITA同比持平，较上季度同比下降3%—4%改善；本地业务亏损预计由上季度100亿元出头收窄至90多亿元，仍属预测。",
+      "sources": [
+        {
+          "source": "[红包]【天风传媒互联网】阿里巴巴FY27Q2 Preview点评及观点更新：电商宏观压力仍在，GMV及利润边际改善；本地如期小幅减亏；云增速维持此前指引收入增长坚挺、利润率持续改善。",
+          "publishedAt": "2026-10-11T19:57:41+08:00",
+          "url": "https://wx.zsxq.com/group/88888142214212/topic/14425445858228152"
+        }
+      ]
+    }
+  ],
+  "industries": [
+    {
+      "sector": "餐饮",
+      "view": "今日交流反馈偏向龙头改善，尚不足以推断全行业拐点。",
+      "changeType": "经营变化",
+      "change": "小菜园年初至今同店降幅由8月约10%收窄至9月高单位数；海底捞9月翻台率同比持平。",
+      "sources": [
+        {
+          "source": "9月及国庆餐饮上市公司更新",
+          "publishedAt": "2026-10-12T10:11:10+08:00",
+          "url": "https://wx.zsxq.com/group/88888142214212/topic/45548555441144228"
+        }
+      ]
+    },
+    {
+      "sector": "茶饮",
+      "view": "同店趋稳，但品牌间恢复节奏不同。",
+      "changeType": "经营变化",
+      "change": "茶百道预计9月同店中单位数下滑，国庆接近持平；古茗专家口径GMV增速由9月约5%升至国庆约8%，窗口及口径不同。",
+      "sources": [
+        {
+          "source": "9月及国庆餐饮上市公司更新",
+          "publishedAt": "2026-10-12T10:11:10+08:00",
+          "url": "https://wx.zsxq.com/group/88888142214212/topic/45548555441144228"
+        }
+      ]
+    },
+    {
+      "sector": "潮玩",
+      "view": "当前跟踪关注海外渠道及新品兑现。",
+      "changeType": "渠道变化",
+      "change": "美国TikTok周度GMV环比+59%，仅代表该渠道；下一观察点为The Monsters新品销售，不能外推公司整体增速。",
+      "sources": [
+        {
+          "source": "【国海传媒】泡泡玛特（9992.HK）每周跟踪1011：美国Tiktok环比大增，关注下周The Monsters毛绒新品！",
+          "publishedAt": "2026-10-12T08:41:33+08:00",
+          "url": "https://wx.zsxq.com/group/88888142214212/topic/55521551888551244"
+        }
+      ]
+    },
+    {
+      "sector": "电商",
+      "view": "天风观点偏向主业企稳、向内提升利润。",
+      "changeType": "预期变化",
+      "change": "本次预测较上季度实际同比表现改善，并非相较昨日上调盈利预测；后续看GMV与减亏兑现。",
+      "sources": [
+        {
+          "source": "[红包]【天风传媒互联网】阿里巴巴FY27Q2 Preview点评及观点更新：电商宏观压力仍在，GMV及利润边际改善；本地如期小幅减亏；云增速维持此前指引收入增长坚挺、利润率持续改善。",
+          "publishedAt": "2026-10-11T19:57:41+08:00",
+          "url": "https://wx.zsxq.com/group/88888142214212/topic/14425445858228152"
+        }
+      ]
+    }
+  ],
+  "quiet": "本次已读取来源中，酒店、免税、黄金珠宝、教育暂无窗口内可确认的重要新增观点。"
 }
