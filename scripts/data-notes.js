@@ -2,6 +2,7 @@
   'use strict';
   const D=SiteData,esc=D.esc,$=id=>document.getElementById(id),cache=new Map();let request=0;
   const modules={
+    daily:{name:'商社日报',files:['data/daily/latest.json'],docs:['docs/daily-report.md']},
     hotel:{name:'酒店',files:['data/hotel-update-record.json','data/hotel-city-history-coverage.json'],docs:['docs/hotel-data-update.md']},
     dutyfree:{name:'免税',files:['data/dutyfree/holidays.json','data/dutyfree/monthly-provenance.json','data/dutyfree/sources.json'],docs:['docs/dutyfree-holidays.md']},
     gold:{name:'黄金',files:['data/gold-jewelry/research.json','data/gold-jewelry/macro.json','data/gold-jewelry/observations.json'],docs:['docs/gold-jewelry-database.md']},
@@ -26,6 +27,7 @@
       const consumption=values[2]&&values[3]&&!values[3].loadError?ConsumptionMacro.mergeAutomatic(values[2],values[3]):values[2];if(consumption&&window.ConsumptionMacro)for(const i of consumption.indicators||[]){const c=ConsumptionMacro.scopeCoverage(consumption,i.id);out.push(i.name+'：'+(c?[c.start+' — '+c.end,c.count+'期',c.missingPeriods.length?'缺期 '+c.missingPeriods.join('、'):'',c.valueMissing?'数值缺失 '+c.valueMissing+'条':''].filter(Boolean).join(' · '):i.pendingReason||'暂无数据'));}
       out.push('1—2月按合并披露保留；全年不加总舍入月值；不由舍入金额重算同比。发布日期未返回时留空。');
     }
+    if(id==='daily')out.push(...(a.notes||[]),'观点源最新时间：'+(a.coverage?.researchSourceTo||'未提供'),'新闻核验：'+(a.coverage?.newsStatus||'未提供'));
     if(id==='research')out.push('来源发布时间、导入时间与会议日期分别保留。原文、纪要摘要、文档附件及未转写音频分别记录；正文未提取不代表已完成整理。');
     if(id==='earnings')out.push('预计披露日期与实际公告日期分开记录；原始来源和核对时间见来源记录。');
     if(id==='quotes')out.push('行情与财报日历共用公司库；当前'+(a.companies?.length||0)+'家公司，SHEIN归消费出海。','板块热力图按当前筛选内各公司有效报价涨跌幅等权计算，不是交易所指数或市值加权。缺失与读取失败的报价不参与计算，真实零涨跌参与；各市场报价时间可能不同。','腾讯行情；页面前台每秒请求，后台暂停；报价可能延迟。更新按来源报价时间判断；读取失败保留上次报价。','涨跌幅以来源前收盘为基准；A股、港股和美股使用各自本币，不混比绝对价格。');
