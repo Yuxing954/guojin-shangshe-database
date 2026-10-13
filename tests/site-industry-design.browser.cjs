@@ -55,6 +55,22 @@ async function styles(scope,mobile){
   assert.equal(await page.frameLocator('#panel-dutyfree').locator('.hero,.crumbs').count(),0);
   assert.equal(await page.frameLocator('#panel-dutyfree').locator('#view-monthly').isVisible(),true);
   assert.match(await page.frameLocator('#panel-dutyfree').locator('#hn-metric').innerText(),/购物人次（万人次）/);
+  let releaseEmbed;
+  const embedGate=new Promise(resolve=>releaseEmbed=resolve);
+  await page.route('**/scripts/industry-embed.js*',async route=>{await embedGate;await route.continue();});
+  await page.goto(base+'/industry.html#hotel',{waitUntil:'domcontentloaded'});
+  const loading=page.frameLocator('#panel-hotel');
+  await loading.locator('body').waitFor({state:'attached',timeout:45000});
+  assert.equal(await loading.locator('body').evaluate(e=>getComputedStyle(e).visibility),'hidden');
+  assert.equal(await loading.locator('html').evaluate(e=>e.classList.contains('industry-embedding')),true);
+  releaseEmbed();
+  await loading.locator('#core-kpis .board-stat').first().waitFor({state:'visible',timeout:45000});
+  assert.equal(await loading.locator('.hd-header').count(),0);
+  assert.equal(await loading.locator('body').evaluate(e=>getComputedStyle(e).visibility),'visible');
+  await page.unroute('**/scripts/industry-embed.js*');
+  await page.goto(base+'/hotel-dashboard.html');
+  await page.locator('.hd-header').waitFor({state:'visible',timeout:45000});
+  assert.equal(await page.locator('html').evaluate(e=>e.classList.contains('industry-embedding')),false);
   assert.deepEqual(errors,[]);console.log('PASS industry cards, panels, typography, filters, metadata and iframe sizing');
  }finally{await browser.close();server.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;server.close();});
