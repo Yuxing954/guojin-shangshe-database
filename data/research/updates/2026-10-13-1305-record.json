@@ -1,0 +1,78 @@
+{
+  "runId": "2026-10-13-1305",
+  "previousCoverageTo": "2026-10-13T11:58:25.987+0800",
+  "newSourceTopics": 11,
+  "added": {
+    "views": 2,
+    "all_views": 7
+  },
+  "duplicates": 0,
+  "excluded": 2,
+  "record": "data/research/updates/2026-10-13-1305-record.json",
+  "syncedAt": "2026-10-13T05:05:00Z",
+  "coverageTo": "2026-10-13T13:01:56.285+0800",
+  "addedTopicIds": [
+    {
+      "topicId": "45548555522115118",
+      "kind": "views"
+    },
+    {
+      "topicId": "45548555522118148",
+      "kind": "views"
+    },
+    {
+      "topicId": "14425444485584212",
+      "kind": "all_views"
+    },
+    {
+      "topicId": "14425444411881182",
+      "kind": "all_views"
+    },
+    {
+      "topicId": "22258222244114451",
+      "kind": "all_views"
+    },
+    {
+      "topicId": "22258222244114211",
+      "kind": "all_views"
+    },
+    {
+      "topicId": "22258222244114521",
+      "kind": "all_views"
+    },
+    {
+      "topicId": "82258222244118182",
+      "kind": "all_views"
+    },
+    {
+      "topicId": "14425444411885482",
+      "kind": "all_views"
+    }
+  ],
+  "duplicateTopicIds": [],
+  "excludedTopics": [
+    {
+      "topicId": "55521555581525224",
+      "title": "A股和港股市场午评#外资交易台",
+      "publishedAt": "2026-10-13T12:53:14.137+0800",
+      "reason": "正文仅含午评标题，实质市场信息在未读取图片中；未依据图片推断。"
+    },
+    {
+      "topicId": "45548555518284518",
+      "title": "「文件」",
+      "publishedAt": "2026-10-13T13:01:56.285+0800",
+      "reason": "正文仅为文件占位，附件未读取；未依据文件推断。"
+    }
+  ],
+  "briefChanges": {
+    "added": [
+      "duodian-ai-retail-20261013",
+      "apparel-september-tracker-20261013"
+    ],
+    "updated": [],
+    "expiredRemoved": []
+  },
+  "sourceGroup": "88888142214212",
+  "sourceName": "水木调研纪要-2.0",
+  "oldestFetched": "2026-10-13T10:29:45.241+0800"
+}
