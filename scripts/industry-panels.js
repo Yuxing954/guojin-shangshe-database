@@ -8,8 +8,13 @@
     const wrap=document.createElement('section'),status=document.createElement('p'),frame=document.createElement('iframe');
     wrap.className='industry-panel';status.className='portal-status';status.textContent='正在读取'+labels[id]+'数据…';status.setAttribute('role','status');
     frame.id='panel-'+id;frame.className='industry-panel-frame';frame.title=labels[id];frame.setAttribute('aria-label',labels[id]+'数据');
-    const url=new URL(pages[id],location.href);url.searchParams.set('embed','1');if(id==='dining')url.searchParams.set('v','20261012polish');if(id==='dutyfree')url.searchParams.set('v','20261012coverage');
-    const view=new URLSearchParams(location.search).get('panelView');
+    const url=new URL(pages[id],location.href);url.searchParams.set('embed','1');url.searchParams.set('v','20261013clean');
+    const saved=new URLSearchParams(location.search),owner=saved.get('panelSector');
+    let view=owner===id?saved.get('panelView'):null;
+    if(view){const key=new URLSearchParams(view).get('view')||view;
+      const allowed=id==='hotel'?['overview','cities','structure','holiday']:id==='dutyfree'?['monthly','holidays']:[];
+      if(!allowed.includes(key))view=null;
+    }
     if(id==='hotel'&&view&&new URLSearchParams(view).get('view')==='holiday')url.pathname=url.pathname.replace('hotel-dashboard.html','hotel-holiday-dashboard.html');
     if(view&&id!=='dining')url.hash=view;
     let timer;const load=()=>{clearTimeout(timer);status.hidden=false;status.textContent='正在读取'+labels[id]+'数据…';frame.src=url.href;timer=setTimeout(()=>{status.textContent=labels[id]+'数据暂时无法读取。';const retry=document.createElement('button');retry.className='portal-button';retry.textContent='重试';retry.onclick=load;status.append(' ',retry);},15000);};
@@ -19,7 +24,7 @@
     if(event.origin!==location.origin||!event.data||event.data.type!=='industry-panel')return;
     const panel=[...panels.values()].find(p=>p.frame.contentWindow===event.source);if(!panel)return;
     const height=Number(event.data.height);if(Number.isFinite(height)&&height>0&&height<100000){panel.frame.style.height=Math.ceil(height)+'px';panel.ready();}
-    if(location.hash==='#'+[...panels.entries()].find(([,p])=>p===panel)[0]&&typeof event.data.view==='string')SiteUI.save({panelView:event.data.view});
+    if(location.hash==='#'+[...panels.entries()].find(([,p])=>p===panel)[0]&&typeof event.data.view==='string')SiteUI.save({panelSector:[...panels.entries()].find(([,p])=>p===panel)[0],panelView:event.data.view});
   });
   window.IndustryPanels={show};
 })();

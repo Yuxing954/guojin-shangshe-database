@@ -11,7 +11,7 @@
     if(key==='gold')GoldDashboard.load();
     document.getElementById('status').textContent='';
   }
-  document.getElementById('sector-tabs').onclick=e=>{const b=e.target.closest('[data-key]');if(b){SiteUI.save({panelView:''});location.hash=b.dataset.key;}};
+  document.getElementById('sector-tabs').onclick=e=>{const b=e.target.closest('[data-key]');if(b){SiteUI.save({panelView:'',panelSector:''});location.hash=b.dataset.key;}};
   addEventListener('hashchange',select);
   select();
 })();

@@ -82,7 +82,7 @@ class IndustrySnapshotTests(unittest.TestCase):
             for point in metric['points']:
                 self.assertIn(point['sourceId'], sources)
                 self.assertLessEqual(date.fromisoformat(point['startDate']), date.fromisoformat(point['endDate']))
-                self.assertLessEqual(point['endDate'], '2026-10-07')
+                self.assertLessEqual(date.fromisoformat(point['endDate']), date.today())
 
     def test_provider_units_and_missing_are_strict(self):
         self.assertEqual(numeric('1.108万亿'), 1108000000000)

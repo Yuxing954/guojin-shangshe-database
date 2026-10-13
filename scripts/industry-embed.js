@@ -5,8 +5,8 @@
   const main=document.querySelector('body > main')||document.querySelector('body > .wrap');
   if(!main)return;
   const header=main.querySelector('.hd-header,.hero,.portal-header'),stamp=document.getElementById('asof')||document.getElementById('checked');
-  if(header){if(stamp){header.before(stamp);stamp.classList.add('embedded-asof');}header.hidden=true;}
-  document.querySelectorAll('.crumbs,[aria-label="行业板块"]').forEach(el=>el.hidden=true);
+  if(header){if(stamp){header.before(stamp);stamp.classList.add('embedded-asof');}header.remove();}
+  document.querySelectorAll('.crumbs,[aria-label="行业板块"]').forEach(el=>el.remove());
   let pending=false,last='';
   function size(){pending=false;const height=Math.ceil(main.getBoundingClientRect().height+8),view=location.hash.slice(1),key=height+'|'+view;if(key===last)return;last=key;window.parent.postMessage({type:'industry-panel',height,view},location.origin);}
   function queue(){if(pending)return;pending=true;requestAnimationFrame(size);}
