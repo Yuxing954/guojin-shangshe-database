@@ -95,6 +95,26 @@ def is_food_beverage_focus(title: str) -> bool:
             return True
     return bool(FOOD_BEVERAGE_FOCUS.search(subject))
 
+# 纯快递/寄递行业观点不进入商社精选；与即时零售、餐饮或商超渠道直接相关的同城配送除外。
+COURIER_INVESTMENT_FOCUS = re.compile(
+    r"快递行业|电商快递|快递板块|快递公司|快递数据|快递跟踪|快递业绩|快递涨价|快递派费|"
+    r"极兔速递|极兔|中通快递|圆通速递|圆通|申通快递|申通|韵达速递|韵达|"
+    r"顺丰控股|顺丰速运|顺丰物流|顺丰|京东物流|菜鸟网络|跨越速运|快运|寄递"
+)
+INSTANT_RETAIL_LAST_MILE = re.compile(r"即时零售|即时配送|餐饮|商超|外卖|淘宝闪购|美团")
+
+
+def is_commercial_courier_focus(title: str, body: str = "") -> bool:
+    """纯快递公司/行业投资内容归入全部观点；明确的同城零售履约场景可留在商社精选。"""
+    raw_title = title or ""
+    if not COURIER_INVESTMENT_FOCUS.search(raw_title):
+        return False
+    subject = _classification_title(raw_title)
+    if "顺丰同城" in subject and INSTANT_RETAIL_LAST_MILE.search(raw_title + "\n" + (body or "")):
+        return False
+    return True
+
+
 # ---------- 词汇表 ----------
 
 # 标题噪音词（命中 + 内容不具实质 → 剔除）。注意：刻意不放「调查」「招聘」等

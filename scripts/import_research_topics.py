@@ -14,7 +14,7 @@ HERE=Path(args.topics_dir).resolve()
 sys.path.insert(0,str(ROOT/'update'))
 sys.path.insert(0,str(ROOT/'scripts'))
 from clean_text import normalize_content,make_title
-from segment_filter import classify, is_food_beverage_focus
+from segment_filter import classify, is_commercial_courier_focus, is_food_beverage_focus
 from research_sources import merge_rows
 cfg=json.loads((ROOT/'update/config.json').read_text(encoding='utf-8'))
 cfg['pool'].append('东方甄选')
@@ -54,7 +54,8 @@ for tid,t in topics.items():
         commercial_relevant = h and relevant and not (any(w in title for w in cfg['noise_title_words']) and all(k in cfg['generic'] for k in h))
         # A company/keyword overlap in the body is not enough to make a food/beverage
         # or大众品专题 a 商社 view. Keep it searchable in all market views instead.
-        if commercial_relevant and not is_food_beverage_focus(title):rows['views'].append(row)
+        # 快递公司/行业投资观点留在全部市场观点；直接服务即时零售、餐饮或商超的顺丰同城内容仍可精选。
+        if commercial_relevant and not is_food_beverage_focus(title) and not is_commercial_courier_focus(title,body):rows['views'].append(row)
         else:rows['all_views'].append(row)
     else:rejected[reason]+=1
     mh=hits(title+'\n'+'\n'.join(names))

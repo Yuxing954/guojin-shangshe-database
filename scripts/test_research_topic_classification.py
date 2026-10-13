@@ -2,7 +2,7 @@ import unittest
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "update"))
-from segment_filter import classify, is_food_beverage_focus
+from segment_filter import classify, is_commercial_courier_focus, is_food_beverage_focus
 
 
 class FoodBeverageRoutingTests(unittest.TestCase):
@@ -53,6 +53,31 @@ class FoodBeverageRoutingTests(unittest.TestCase):
         accepted, reason = classify(title, body)
         self.assertFalse(accepted)
         self.assertEqual(reason, "活动通知/预告")
+
+
+
+class CourierRoutingTests(unittest.TestCase):
+    def test_pure_courier_investment_notes_stay_out_of_commercial_views(self):
+        titles = [
+            "电商快递行业投资策略：关注中通、圆通和极兔",
+            "极兔速递：海外件量增长与盈利预测",
+            "中通快递低估值、高股息",
+            "京东物流业绩与估值更新",
+            "快递涨价和行业反内卷跟踪",
+        ]
+        for title in titles:
+            with self.subTest(title=title):
+                self.assertTrue(is_commercial_courier_focus(title, "利润预测和行业份额变化"))
+
+    def test_last_mile_with_explicit_retail_channel_stays_eligible(self):
+        title = "顺丰同城：即时零售份额提升，餐饮商超配送需求增长"
+        body = "淘宝闪购和餐饮、商超客户的配送订单带来增量。"
+        self.assertFalse(is_commercial_courier_focus(title, body))
+
+    def test_courier_mention_inside_unrelated_commercial_topic_does_not_exclude(self):
+        title = "零售渠道调研：即时零售继续增长"
+        body = "商家使用多家快递和配送平台，核心观点聚焦门店和零售需求。"
+        self.assertFalse(is_commercial_courier_focus(title, body))
 
 
 if __name__ == "__main__":

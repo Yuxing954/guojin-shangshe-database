@@ -22,6 +22,7 @@ ZSXQ = os.environ.get("ZSXQ_CLI", "zsxq-cli")
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from clean_text import normalize_content, make_title  # noqa: E402
+from segment_filter import is_commercial_courier_focus  # noqa: E402
 LIB_API = os.environ.get("LIB_SPACE_API", "")
 
 def parse_time(s):
@@ -198,6 +199,8 @@ def main():
             if not hits or (t["create_time"], title) in seen:
                 continue
             if any(w in title for w in CFG["noise_title_words"]) and all(h in generic for h in hits):
+                continue
+            if is_commercial_courier_focus(title, body):
                 continue
             c = t.get("counts") or {}
             link = f"https://wx.zsxq.com/group/{CFG['group_id']}/topic/{t['topic_id']}"
