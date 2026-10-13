@@ -64,6 +64,9 @@ jobs:
       - name: Build connector-readable archive and dedup index
         run: python scripts/build_research_shards.py
 
+      - name: Validate generated recent and complete market-view exports
+        run: python scripts/test_research_market_views.py --verify-generated
+
       - name: Commit & push if changed
         run: |
           git config user.name "github-actions[bot]"
