@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-10-11",
+  "checkedAt": "2026-10-13",
   "policy": {
     "range": [
       3.75,
@@ -159,6 +159,51 @@
             "525-550",
             "550-575"
           ]
+        },
+        {
+          "observedDate": null,
+          "observedAt": null,
+          "retrievedAt": "2026-10-13T09:52:07Z",
+          "timezone": "America/Chicago",
+          "sourceId": "cme-full-20261013T095207Z",
+          "quality": "primary",
+          "probabilityUnit": "%",
+          "ranges": [
+            {
+              "lower": 3.75,
+              "upper": 4.0,
+              "probability": 80.6
+            },
+            {
+              "lower": 4.0,
+              "upper": 4.25,
+              "probability": 19.4
+            },
+            {
+              "lower": 4.25,
+              "upper": 4.5,
+              "probability": 0.0
+            },
+            {
+              "lower": 4.5,
+              "upper": 4.75,
+              "probability": 0.0
+            },
+            {
+              "lower": 4.75,
+              "upper": 5.0,
+              "probability": 0.0
+            },
+            {
+              "lower": 5.0,
+              "upper": 5.25,
+              "probability": 0.0
+            }
+          ],
+          "missingRanges": [
+            "525-550",
+            "550-575"
+          ]
         }
       ],
       "rateUnit": "%"
@@ -307,6 +352,58 @@
             }
           ],
           "missingRanges": []
+        },
+        {
+          "observedDate": null,
+          "observedAt": null,
+          "retrievedAt": "2026-10-13T09:52:07Z",
+          "timezone": "America/Chicago",
+          "sourceId": "cme-full-20261013T095207Z",
+          "quality": "primary",
+          "probabilityUnit": "%",
+          "ranges": [
+            {
+              "lower": 3.75,
+              "upper": 4.0,
+              "probability": 15.6
+            },
+            {
+              "lower": 4.0,
+              "upper": 4.25,
+              "probability": 68.8
+            },
+            {
+              "lower": 4.25,
+              "upper": 4.5,
+              "probability": 15.6
+            },
+            {
+              "lower": 4.5,
+              "upper": 4.75,
+              "probability": 0.0
+            },
+            {
+              "lower": 4.75,
+              "upper": 5.0,
+              "probability": 0.0
+            },
+            {
+              "lower": 5.0,
+              "upper": 5.25,
+              "probability": 0.0
+            },
+            {
+              "lower": 5.25,
+              "upper": 5.5,
+              "probability": 0.0
+            },
+            {
+              "lower": 5.5,
+              "upper": 5.75,
+              "probability": 0.0
+            }
+          ],
+          "missingRanges": []
         }
       ],
       "rateUnit": "%"
@@ -362,6 +459,58 @@
               "lower": 5.5,
               "upper": 5.75,
               "probability": 0
+            }
+          ],
+          "missingRanges": []
+        },
+        {
+          "observedDate": null,
+          "observedAt": null,
+          "retrievedAt": "2026-10-13T09:52:07Z",
+          "timezone": "America/Chicago",
+          "sourceId": "cme-full-20261013T095207Z",
+          "quality": "primary",
+          "probabilityUnit": "%",
+          "ranges": [
+            {
+              "lower": 3.75,
+              "upper": 4.0,
+              "probability": 9.1
+            },
+            {
+              "lower": 4.0,
+              "upper": 4.25,
+              "probability": 46.8
+            },
+            {
+              "lower": 4.25,
+              "upper": 4.5,
+              "probability": 37.6
+            },
+            {
+              "lower": 4.5,
+              "upper": 4.75,
+              "probability": 6.5
+            },
+            {
+              "lower": 4.75,
+              "upper": 5.0,
+              "probability": 0.0
+            },
+            {
+              "lower": 5.0,
+              "upper": 5.25,
+              "probability": 0.0
+            },
+            {
+              "lower": 5.25,
+              "upper": 5.5,
+              "probability": 0.0
+            },
+            {
+              "lower": 5.5,
+              "upper": 5.75,
+              "probability": 0.0
             }
           ],
           "missingRanges": []
@@ -423,6 +572,58 @@
             }
           ],
           "missingRanges": []
+        },
+        {
+          "observedDate": null,
+          "observedAt": null,
+          "retrievedAt": "2026-10-13T09:52:07Z",
+          "timezone": "America/Chicago",
+          "sourceId": "cme-full-20261013T095207Z",
+          "quality": "primary",
+          "probabilityUnit": "%",
+          "ranges": [
+            {
+              "lower": 3.75,
+              "upper": 4.0,
+              "probability": 2.8
+            },
+            {
+              "lower": 4.0,
+              "upper": 4.25,
+              "probability": 20.6
+            },
+            {
+              "lower": 4.25,
+              "upper": 4.5,
+              "probability": 44.0
+            },
+            {
+              "lower": 4.5,
+              "upper": 4.75,
+              "probability": 28.1
+            },
+            {
+              "lower": 4.75,
+              "upper": 5.0,
+              "probability": 4.5
+            },
+            {
+              "lower": 5.0,
+              "upper": 5.25,
+              "probability": 0.0
+            },
+            {
+              "lower": 5.25,
+              "upper": 5.5,
+              "probability": 0.0
+            },
+            {
+              "lower": 5.5,
+              "upper": 5.75,
+              "probability": 0.0
+            }
+          ],
+          "missingRanges": []
         }
       ],
       "rateUnit": "%"
@@ -478,6 +679,58 @@
               "lower": 5.5,
               "upper": 5.75,
               "probability": 0
+            }
+          ],
+          "missingRanges": []
+        },
+        {
+          "observedDate": null,
+          "observedAt": null,
+          "retrievedAt": "2026-10-13T09:52:07Z",
+          "timezone": "America/Chicago",
+          "sourceId": "cme-full-20261013T095207Z",
+          "quality": "primary",
+          "probabilityUnit": "%",
+          "ranges": [
+            {
+              "lower": 3.75,
+              "upper": 4.0,
+              "probability": 1.8
+            },
+            {
+              "lower": 4.0,
+              "upper": 4.25,
+              "probability": 14.1
+            },
+            {
+              "lower": 4.25,
+              "upper": 4.5,
+              "probability": 35.5
+            },
+            {
+              "lower": 4.5,
+              "upper": 4.75,
+              "probability": 33.9
+            },
+            {
+              "lower": 4.75,
+              "upper": 5.0,
+              "probability": 13.1
+            },
+            {
+              "lower": 5.0,
+              "upper": 5.25,
+              "probability": 1.6
+            },
+            {
+              "lower": 5.25,
+              "upper": 5.5,
+              "probability": 0.0
+            },
+            {
+              "lower": 5.5,
+              "upper": 5.75,
+              "probability": 0.0
             }
           ],
           "missingRanges": []
@@ -539,6 +792,58 @@
             }
           ],
           "missingRanges": []
+        },
+        {
+          "observedDate": null,
+          "observedAt": null,
+          "retrievedAt": "2026-10-13T09:52:07Z",
+          "timezone": "America/Chicago",
+          "sourceId": "cme-full-20261013T095207Z",
+          "quality": "primary",
+          "probabilityUnit": "%",
+          "ranges": [
+            {
+              "lower": 3.75,
+              "upper": 4.0,
+              "probability": 1.0
+            },
+            {
+              "lower": 4.0,
+              "upper": 4.25,
+              "probability": 8.8
+            },
+            {
+              "lower": 4.25,
+              "upper": 4.5,
+              "probability": 26.3
+            },
+            {
+              "lower": 4.5,
+              "upper": 4.75,
+              "probability": 34.6
+            },
+            {
+              "lower": 4.75,
+              "upper": 5.0,
+              "probability": 22.0
+            },
+            {
+              "lower": 5.0,
+              "upper": 5.25,
+              "probability": 6.5
+            },
+            {
+              "lower": 5.25,
+              "upper": 5.5,
+              "probability": 0.7
+            },
+            {
+              "lower": 5.5,
+              "upper": 5.75,
+              "probability": 0.0
+            }
+          ],
+          "missingRanges": []
         }
       ],
       "rateUnit": "%"
@@ -589,6 +894,58 @@
               "lower": 5.25,
               "upper": 5.5,
               "probability": 1.1
+            },
+            {
+              "lower": 5.5,
+              "upper": 5.75,
+              "probability": 0.1
+            }
+          ],
+          "missingRanges": []
+        },
+        {
+          "observedDate": null,
+          "observedAt": null,
+          "retrievedAt": "2026-10-13T09:52:07Z",
+          "timezone": "America/Chicago",
+          "sourceId": "cme-full-20261013T095207Z",
+          "quality": "primary",
+          "probabilityUnit": "%",
+          "ranges": [
+            {
+              "lower": 3.75,
+              "upper": 4.0,
+              "probability": 0.9
+            },
+            {
+              "lower": 4.0,
+              "upper": 4.25,
+              "probability": 7.8
+            },
+            {
+              "lower": 4.25,
+              "upper": 4.5,
+              "probability": 24.0
+            },
+            {
+              "lower": 4.5,
+              "upper": 4.75,
+              "probability": 33.5
+            },
+            {
+              "lower": 4.75,
+              "upper": 5.0,
+              "probability": 23.7
+            },
+            {
+              "lower": 5.0,
+              "upper": 5.25,
+              "probability": 8.6
+            },
+            {
+              "lower": 5.25,
+              "upper": 5.5,
+              "probability": 1.5
             },
             {
               "lower": 5.5,
@@ -655,6 +1012,58 @@
             }
           ],
           "missingRanges": []
+        },
+        {
+          "observedDate": null,
+          "observedAt": null,
+          "retrievedAt": "2026-10-13T09:52:07Z",
+          "timezone": "America/Chicago",
+          "sourceId": "cme-full-20261013T095207Z",
+          "quality": "primary",
+          "probabilityUnit": "%",
+          "ranges": [
+            {
+              "lower": 3.75,
+              "upper": 4.0,
+              "probability": 0.7
+            },
+            {
+              "lower": 4.0,
+              "upper": 4.25,
+              "probability": 6.7
+            },
+            {
+              "lower": 4.25,
+              "upper": 4.5,
+              "probability": 21.3
+            },
+            {
+              "lower": 4.5,
+              "upper": 4.75,
+              "probability": 31.9
+            },
+            {
+              "lower": 4.75,
+              "upper": 5.0,
+              "probability": 25.3
+            },
+            {
+              "lower": 5.0,
+              "upper": 5.25,
+              "probability": 11.1
+            },
+            {
+              "lower": 5.25,
+              "upper": 5.5,
+              "probability": 2.7
+            },
+            {
+              "lower": 5.5,
+              "upper": 5.75,
+              "probability": 0.3
+            }
+          ],
+          "missingRanges": []
         }
       ],
       "rateUnit": "%"
@@ -713,6 +1122,58 @@
             }
           ],
           "missingRanges": []
+        },
+        {
+          "observedDate": null,
+          "observedAt": null,
+          "retrievedAt": "2026-10-13T09:52:07Z",
+          "timezone": "America/Chicago",
+          "sourceId": "cme-full-20261013T095207Z",
+          "quality": "primary",
+          "probabilityUnit": "%",
+          "ranges": [
+            {
+              "lower": 3.75,
+              "upper": 4.0,
+              "probability": 0.7
+            },
+            {
+              "lower": 4.0,
+              "upper": 4.25,
+              "probability": 6.4
+            },
+            {
+              "lower": 4.25,
+              "upper": 4.5,
+              "probability": 20.8
+            },
+            {
+              "lower": 4.5,
+              "upper": 4.75,
+              "probability": 31.6
+            },
+            {
+              "lower": 4.75,
+              "upper": 5.0,
+              "probability": 25.5
+            },
+            {
+              "lower": 5.0,
+              "upper": 5.25,
+              "probability": 11.6
+            },
+            {
+              "lower": 5.25,
+              "upper": 5.5,
+              "probability": 2.9
+            },
+            {
+              "lower": 5.5,
+              "upper": 5.75,
+              "probability": 0.4
+            }
+          ],
+          "missingRanges": []
         }
       ],
       "rateUnit": "%"
@@ -768,6 +1229,58 @@
               "lower": 5.5,
               "upper": 5.75,
               "probability": 0.3
+            }
+          ],
+          "missingRanges": []
+        },
+        {
+          "observedDate": null,
+          "observedAt": null,
+          "retrievedAt": "2026-10-13T09:52:07Z",
+          "timezone": "America/Chicago",
+          "sourceId": "cme-full-20261013T095207Z",
+          "quality": "primary",
+          "probabilityUnit": "%",
+          "ranges": [
+            {
+              "lower": 3.75,
+              "upper": 4.0,
+              "probability": 0.9
+            },
+            {
+              "lower": 4.0,
+              "upper": 4.25,
+              "probability": 7.0
+            },
+            {
+              "lower": 4.25,
+              "upper": 4.5,
+              "probability": 21.3
+            },
+            {
+              "lower": 4.5,
+              "upper": 4.75,
+              "probability": 31.3
+            },
+            {
+              "lower": 4.75,
+              "upper": 5.0,
+              "probability": 25.0
+            },
+            {
+              "lower": 5.0,
+              "upper": 5.25,
+              "probability": 11.2
+            },
+            {
+              "lower": 5.25,
+              "upper": 5.5,
+              "probability": 2.8
+            },
+            {
+              "lower": 5.5,
+              "upper": 5.75,
+              "probability": 0.4
             }
           ],
           "missingRanges": []
@@ -1373,6 +1886,10 @@
         {
           "date": "2026-10-09",
           "value": 102.231
+        },
+        {
+          "date": "2026-10-12",
+          "value": 102.5805
         }
       ],
       "name": "美元指数 DXY",
@@ -1862,9 +2379,9 @@
       "name": "妙想 / Choice · 美元指数 DXY",
       "quality": "provider",
       "url": "https://choicew2z.eastmoney.com/dataDisplay/macroEDB/#/index?macroids=EMG00001435",
-      "sha256": "cae9eb92e19236d0b92fb44811df9569576dc86838337be13ac653235733377e",
+      "sha256": "c936ff9297860e9a7a99152450dffa3b8e5a0d0863357852f7c51b0b7abfed04",
       "retrieval": "native_mcp",
-      "checkedAt": "2026-10-11",
+      "checkedAt": "2026-10-13",
       "publishedAt": null
     },
     {
@@ -1904,6 +2421,23 @@
       "sha256": "ef84eaac07e91e61ed497326f3204dbb92f3a8a5ebf07220b181e8c1e3f52579",
       "retrieval": "browser_dom_excerpt",
       "checkedAt": "2026-10-11"
+    },
+    {
+      "id": "cme-full-20261013T095207Z",
+      "name": "CME FedWatch 完整会议概率与联邦基金期货表",
+      "url": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html",
+      "quality": "primary",
+      "observedAt": null,
+      "retrievedAt": "2026-10-13T09:52:07Z",
+      "publishedAt": null,
+      "evidence": {
+        "kind": "browser_dom_table_rows",
+        "path": "data/macro/fedwatch-receipt-2026-10-13T095207Z.json",
+        "sha256": "e2e58e2df52282b0c0a494f65193c3e2eff2a8ed5d257b19eea253a118247d5e"
+      },
+      "sha256": "e2e58e2df52282b0c0a494f65193c3e2eff2a8ed5d257b19eea253a118247d5e",
+      "retrieval": "browser_dom_excerpt",
+      "checkedAt": "2026-10-13"
     }
   ],
   "fedwatchTables": [
@@ -2168,56 +2702,325 @@
           "rawPrice": "95.3550"
         }
       ]
+    },
+    {
+      "sourceId": "cme-full-20261013T095207Z",
+      "observedAt": null,
+      "retrievedAt": "2026-10-13T09:52:07Z",
+      "referenceObservedAt": "2026-10-13T04:35:25-05:00",
+      "rateUnit": "%",
+      "probabilityUnit": "%",
+      "columns": [
+        {
+          "lower": 3.75,
+          "upper": 4.0,
+          "labelBps": "375-400"
+        },
+        {
+          "lower": 4.0,
+          "upper": 4.25,
+          "labelBps": "400-425"
+        },
+        {
+          "lower": 4.25,
+          "upper": 4.5,
+          "labelBps": "425-450"
+        },
+        {
+          "lower": 4.5,
+          "upper": 4.75,
+          "labelBps": "450-475"
+        },
+        {
+          "lower": 4.75,
+          "upper": 5.0,
+          "labelBps": "475-500"
+        },
+        {
+          "lower": 5.0,
+          "upper": 5.25,
+          "labelBps": "500-525"
+        },
+        {
+          "lower": 5.25,
+          "upper": 5.5,
+          "labelBps": "525-550"
+        },
+        {
+          "lower": 5.5,
+          "upper": 5.75,
+          "labelBps": "550-575"
+        }
+      ],
+      "rows": [
+        {
+          "meetingDate": "2026-10-28",
+          "probabilities": [
+            80.6,
+            19.4,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            null,
+            null
+          ]
+        },
+        {
+          "meetingDate": "2026-12-09",
+          "probabilities": [
+            15.6,
+            68.8,
+            15.6,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "meetingDate": "2027-01-27",
+          "probabilities": [
+            9.1,
+            46.8,
+            37.6,
+            6.5,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "meetingDate": "2027-03-17",
+          "probabilities": [
+            2.8,
+            20.6,
+            44.0,
+            28.1,
+            4.5,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "meetingDate": "2027-04-28",
+          "probabilities": [
+            1.8,
+            14.1,
+            35.5,
+            33.9,
+            13.1,
+            1.6,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "meetingDate": "2027-06-09",
+          "probabilities": [
+            1.0,
+            8.8,
+            26.3,
+            34.6,
+            22.0,
+            6.5,
+            0.7,
+            0.0
+          ]
+        },
+        {
+          "meetingDate": "2027-07-28",
+          "probabilities": [
+            0.9,
+            7.8,
+            24.0,
+            33.5,
+            23.7,
+            8.6,
+            1.5,
+            0.1
+          ]
+        },
+        {
+          "meetingDate": "2027-09-15",
+          "probabilities": [
+            0.7,
+            6.7,
+            21.3,
+            31.9,
+            25.3,
+            11.1,
+            2.7,
+            0.3
+          ]
+        },
+        {
+          "meetingDate": "2027-10-27",
+          "probabilities": [
+            0.7,
+            6.4,
+            20.8,
+            31.6,
+            25.5,
+            11.6,
+            2.9,
+            0.4
+          ]
+        },
+        {
+          "meetingDate": "2027-12-08",
+          "probabilities": [
+            0.9,
+            7.0,
+            21.3,
+            31.3,
+            25.0,
+            11.2,
+            2.8,
+            0.4
+          ]
+        }
+      ],
+      "futures": [
+        {
+          "contract": "ZQV6",
+          "contractMonth": "2026-10",
+          "price": 96.1163,
+          "rawPrice": "96.1163"
+        },
+        {
+          "contract": "ZQX6",
+          "contractMonth": "2026-11",
+          "price": 96.0725,
+          "rawPrice": "96.0725"
+        },
+        {
+          "contract": "ZQZ6",
+          "contractMonth": "2026-12",
+          "price": 95.9275,
+          "rawPrice": "95.9275"
+        },
+        {
+          "contract": "ZQF7",
+          "contractMonth": "2027-01",
+          "price": 95.8575,
+          "rawPrice": "95.8575"
+        },
+        {
+          "contract": "ZQG7",
+          "contractMonth": "2027-02",
+          "price": 95.7675,
+          "rawPrice": "95.7675"
+        },
+        {
+          "contract": "ZQH7",
+          "contractMonth": "2027-03",
+          "price": 95.6925,
+          "rawPrice": "95.6925"
+        },
+        {
+          "contract": "ZQJ7",
+          "contractMonth": "2027-04",
+          "price": 95.5875,
+          "rawPrice": "95.5875"
+        },
+        {
+          "contract": "ZQK7",
+          "contractMonth": "2027-05",
+          "price": 95.5025,
+          "rawPrice": "95.5025"
+        },
+        {
+          "contract": "ZQM7",
+          "contractMonth": "2027-06",
+          "price": 95.4275,
+          "rawPrice": "95.4275"
+        },
+        {
+          "contract": "ZQN7",
+          "contractMonth": "2027-07",
+          "price": 95.3925,
+          "rawPrice": "95.3925"
+        },
+        {
+          "contract": "ZQQ7",
+          "contractMonth": "2027-08",
+          "price": 95.3625,
+          "rawPrice": "95.3625"
+        },
+        {
+          "contract": "ZQU7",
+          "contractMonth": "2027-09",
+          "price": 95.34,
+          "rawPrice": "95.3400"
+        },
+        {
+          "contract": "ZQV7",
+          "contractMonth": "2027-10",
+          "price": 95.32,
+          "rawPrice": "95.3200"
+        }
+      ]
     }
   ],
   "fedwatchUpdate": {
     "status": "ready",
-    "attemptedAt": "2026-10-11T10:00:14+00:00",
+    "attemptedAt": "2026-10-13T09:52:07Z",
     "sourceUrl": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html",
     "observedAt": null,
-    "retrievedAt": "2026-10-11T09:54:17Z",
+    "retrievedAt": "2026-10-13T09:52:07Z",
     "meetingProbabilities": {
       "status": "ready",
       "meetings": 10,
       "rateRanges": 8,
-      "changed": false
+      "changed": true
     },
     "fundFutures": {
       "status": "ready",
       "contracts": 13,
-      "changed": false
+      "changed": true
     },
     "evidence": {
-      "path": "data/macro/fedwatch-receipt-2026-10-11T095417Z.json",
-      "sha256": "ad9b8646e75f39d33391b6a2b6282b8751a5c5cc4bb9be1837714dbd46fbc1c3"
+      "path": "data/macro/fedwatch-receipt-2026-10-13T095207Z.json",
+      "sha256": "e2e58e2df52282b0c0a494f65193c3e2eff2a8ed5d257b19eea253a118247d5e"
     },
-    "note": "本次核验全部概率及期货与上次一致，恢复失败状态；历史快照及其获取时间保留，整表未提供独立源时点。"
+    "note": "官方Probabilities完整表未披露独立源时点；Current参考时点另存，真实零值及空白保留。"
   },
   "seriesUpdate": {
-    "attemptedAt": "2026-10-11T06:50:09+00:00",
+    "attemptedAt": "2026-10-13T10:07:24+00:00",
     "series": [
       {
         "id": "real10",
         "status": "ready",
-        "added": 1,
-        "latest": "2026-10-09"
+        "added": 0,
+        "revised": 0,
+        "latest": "2026-10-09",
+        "receiptSha256": "c8c4585b6674ac666d2ef51933b191f208f7cae5df03f02efb72c3d6f287e062"
       },
       {
         "id": "dxy",
         "status": "ready",
         "added": 1,
-        "latest": "2026-10-09"
+        "revised": 0,
+        "latest": "2026-10-12",
+        "receiptSha256": "c936ff9297860e9a7a99152450dffa3b8e5a0d0863357852f7c51b0b7abfed04"
       },
       {
         "id": "usdcny",
         "status": "error",
-        "reason": "本次回执含重复同名指标或机构不符，保留历史。"
+        "errorType": "ValueError",
+        "reason": "未匹配唯一审定名称和发布机构，保留历史。"
       },
       {
         "id": "brent",
         "status": "ready",
         "added": 0,
-        "latest": "2026-10-06"
+        "revised": 0,
+        "latest": "2026-10-06",
+        "receiptSha256": "b4e6b2c979c5c8847fb9f233a9226ca4dd4bb095061935b2ce0cc8c92ecb53a9"
       }
     ]
   }

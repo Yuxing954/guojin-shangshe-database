@@ -60,9 +60,11 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
     const wholeDownload=page.waitForEvent('download');await page.locator('#fedwatch-table-download').click();
     const wholeCsv=fs.readFileSync(await (await wholeDownload).path(),'utf8');
     assert.equal(wholeCsv.split('\r\n').length,1+full.rows.length*full.columns.length+full.futures.length);
-    assert.match(wholeCsv,/"ZQV6","2026-10"/);assert.match(wholeCsv,/96.1150/);assert.ok(wholeCsv.includes(full.retrievedAt));
+    for(const future of full.futures){assert.ok(wholeCsv.includes('"'+future.contract+'","'+future.contractMonth+'"'));assert.ok(wholeCsv.includes('"'+future.rawPrice+'"'));}assert.ok(wholeCsv.includes(full.retrievedAt));
     await page.locator('[data-fedwatch-meeting="2027-10-27"]').click();assert.equal(await page.locator('#fedwatch-meeting').inputValue(),'2027-10-27');
-    assert.equal(await page.locator('#fedwatch-compare').inputValue(),'');assert.equal(await page.locator('.fedwatch-range').count(),8);
+    const history=JSON.parse(fs.readFileSync(path.join(root,'data/gold-jewelry/macro.json'),'utf8')).meetings.find(m=>m.meetingDate==='2027-10-27').snapshots;
+    const previous=history.filter(s=>s.retrievedAt&&s.retrievedAt!==full.retrievedAt).at(-1);
+    assert.equal(await page.locator('#fedwatch-compare').inputValue(),previous?.retrievedAt||'');assert.equal(await page.locator('.fedwatch-range').count(),8);
     for(const width of [1512,768,390]){await page.setViewportSize({width,height:1000});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));}
     await page.setViewportSize({width:1512,height:1100});
     await page.locator('#fedwatch-meeting').selectOption('2026-12-09');assert.match(await page.locator('#fedwatch-content').innerText(),/2026-12-09/);

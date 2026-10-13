@@ -11,7 +11,9 @@ test('unreleased statistics, duplicate dates and inconsistent timezone are rejec
 
 test('new complete-table snapshots disclose unknown source time and preserve old precise timestamps',()=>{
  const latest=M.latestSnapshot(D.meetings[0]);assert.equal(latest.observedAt,null);assert.equal(latest.observedDate,null);
- assert.match(M.snapshotLabel(latest),/^获取 /);assert.equal(M.probabilities(latest,D.policy.range).hike,17.7);
+ const table=D.fedwatchTables.find(t=>t.sourceId===latest.sourceId),row=table.rows.find(r=>r.meetingDate===D.meetings[0].meetingDate);
+ const hike=table.columns.reduce((sum,c,i)=>sum+(c.lower>=D.policy.range[1]&&Number.isFinite(row.probabilities[i])?row.probabilities[i]:0),0);
+ assert.match(M.snapshotLabel(latest),/^获取 /);assert.equal(M.probabilities(latest,D.policy.range).hike,hike);
  assert.equal(D.meetings[0].snapshots.find(s=>s.observedAt==='2026-10-08T09:03:53-05:00').ranges[1].probability,82.8);
 });
 
