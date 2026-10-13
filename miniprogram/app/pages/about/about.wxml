@@ -1,0 +1,23 @@
+<view class="page-wrap">
+  <view class="card">
+    <view class="card-title">关于本小程序</view>
+    <view class="p">「国金商社·线上可视化数据库」移动端。数据实时来自 GitHub 仓库 Yuxing954/guojin-shangshe-database，仓库更新后小程序下拉刷新即可获取最新数据。</view>
+    <view class="p muted">数据快照：{{manifest ? manifest.updatedAt : '——'}} · 共 {{manifest ? manifest.count : '——'}} 个数据集</view>
+    <view class="p muted">链路：小程序 → 云端代理 → GitHub raw</view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">数据更新方式</view>
+    <view class="p">① GitHub 仓库 push 更新（Wind MCP / 知识星球抓取脚本产出）</view>
+    <view class="p">② 小程序任意页面下拉刷新，即拉取仓库最新数据</view>
+    <view class="p muted">代理服务 5 分钟缓存，极小延迟；无需重新发版</view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">相关链接</view>
+    <view class="link-row" bindtap="copyRepo">GitHub 仓库（点按复制）</view>
+    <view class="link-row" bindtap="copyOnline">网页版数据库（点按复制）</view>
+  </view>
+
+  <view class="muted center foot">国金商社 · 消费零售 + 社服电商</view>
+</view>

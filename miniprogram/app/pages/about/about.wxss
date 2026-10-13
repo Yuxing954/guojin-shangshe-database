@@ -1,0 +1,13 @@
+.p {
+  font-size: 26rpx;
+  margin-bottom: 10rpx;
+  word-break: break-all;
+}
+.link-row {
+  font-size: 26rpx;
+  padding: 14rpx 0;
+  border-bottom: 1rpx solid #f4f2ed;
+  color: #b03a2e;
+}
+.link-row:last-child { border-bottom: none; }
+.foot { padding: 40rpx 0; }

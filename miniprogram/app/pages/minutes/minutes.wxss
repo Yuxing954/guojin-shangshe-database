@@ -1,0 +1,35 @@
+.search-bar { margin: 16rpx 24rpx 0; }
+.search-input {
+  background: #fff;
+  border: 1rpx solid #ecebe6;
+  border-radius: 12rpx;
+  padding: 12rpx 20rpx;
+  font-size: 26rpx;
+}
+
+.m-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  margin-bottom: 10rpx;
+}
+.meta-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8rpx;
+  margin-bottom: 10rpx;
+}
+.m-muted { font-size: 24rpx; margin-bottom: 10rpx; }
+.m-body {
+  font-size: 24rpx;
+  color: #5a5a52;
+  word-break: break-all;
+}
+.dl {
+  margin-top: 16rpx;
+  text-align: right;
+}
+.dl-btn {
+  color: #b03a2e;
+  font-size: 24rpx;
+}

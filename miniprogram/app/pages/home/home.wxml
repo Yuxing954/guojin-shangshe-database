@@ -1,0 +1,59 @@
+<view class="page-wrap">
+  <view class="hero">
+    <view class="hero-title">国金商社 · 线上可视化数据库</view>
+    <view class="hero-sub">消费零售 + 社服电商 · 数据快照 {{manifest ? manifest.updatedAt : '——'}}</view>
+  </view>
+
+  <view wx:if="{{loading}}" class="loading">正在拉取 GitHub 最新数据…</view>
+  <view wx:elif="{{err}}" class="empty">加载失败：{{err}}</view>
+
+  <block wx:else>
+    <!-- 板块入口 -->
+    <view class="card">
+      <view class="card-title">行业高频板块</view>
+      <view class="sector-grid">
+        <view class="sector-item" wx:for="{{sectors}}" wx:key="key" bindtap="goSector" data-key="{{item.key}}">
+          <view class="sector-icon">{{item.icon}}</view>
+          <view class="sector-name">{{item.name}}</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 标的池 -->
+    <view class="card">
+      <view class="card-title">重点覆盖标的池 <text class="muted">{{valuation.length}} 只</text></view>
+      <view class="val-table">
+        <view class="val-row val-head">
+          <text class="c-name">公司</text><text class="c-num">现价</text><text class="c-num">PE</text><text class="c-num">年初至今</text>
+        </view>
+        <view class="val-row" wx:for="{{valuation}}" wx:key="code">
+          <text class="c-name">{{item.name}}<text class="muted code">{{item.code}}</text></text>
+          <text class="c-num">{{item.price !== null ? item.price : '--'}}</text>
+          <text class="c-num">{{item.pe !== null ? item.pe : '--'}}</text>
+          <text class="c-num" style="color:{{item.ytd > 0 ? '#c0392b' : item.ytd < 0 ? '#1e8449' : '#5a5a52'}}">{{item.ytd !== null ? (item.ytd > 0 ? '+' : '') + item.ytd + '%' : '--'}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 本周涨跌 -->
+    <view class="card">
+      <view class="card-title">覆盖标的本周涨跌</view>
+      <view class="mover-row" wx:for="{{topMovers}}" wx:key="code">
+        <text>{{item.name}}</text>
+        <text class="mover-chg" style="color:{{item.chg > 0 ? '#c0392b' : item.chg < 0 ? '#1e8449' : '#5a5a52'}}">{{item.chg > 0 ? '+' : ''}}{{item.chg}}%</text>
+      </view>
+    </view>
+
+    <!-- 最新纪要 -->
+    <view class="card">
+      <view class="card-title">最新纪要</view>
+      <view class="min-item" wx:for="{{latestMinutes}}" wx:key="title">
+        <view class="min-title">{{item.title}}</view>
+        <view class="muted">{{item.date}} · {{item.sector}}</view>
+      </view>
+      <view wx:if="{{!latestMinutes.length}}" class="empty">暂无纪要</view>
+    </view>
+  </block>
+
+  <view class="footer muted center" bindtap="copyLink">数据源：GitHub · Yuxing954/guojin-shangshe-database（点按复制地址）</view>
+</view>

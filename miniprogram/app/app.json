@@ -1,0 +1,31 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/sector/sector",
+    "pages/views/views",
+    "pages/minutes/minutes",
+    "pages/about/about"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#faf9f6",
+    "navigationBarTitleText": "国金商社数据库",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#faf9f6"
+  },
+  "tabBar": {
+    "color": "#8a8a83",
+    "selectedColor": "#b03a2e",
+    "backgroundColor": "#fff",
+    "borderStyle": "black",
+    "list": [
+      { "pagePath": "pages/home/home", "text": "首页" },
+      { "pagePath": "pages/sector/sector", "text": "板块" },
+      { "pagePath": "pages/views/views", "text": "观点" },
+      { "pagePath": "pages/minutes/minutes", "text": "纪要" },
+      { "pagePath": "pages/about/about", "text": "我的" }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "networkTimeout": { "request": 20000 }
+}

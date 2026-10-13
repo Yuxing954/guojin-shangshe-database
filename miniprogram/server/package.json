@@ -1,0 +1,12 @@
+{
+  "name": "guojin-shangshe-data-proxy",
+  "version": "1.0.0",
+  "description": "国金商社数据库 GitHub→微信小程序数据代理",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
