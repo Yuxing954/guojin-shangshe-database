@@ -64,7 +64,7 @@
   }
   function compareOptions() {
     var p = periods.get(state.week), prior = M.priorPeriod(p);
-    var options = option('auto', '去年同周号 · ' + prior);
+    var options = option('auto', '同比基周 · ' + prior);
     Array.from(periods.values()).filter(function (r) { return Number(r.year) === Number(p.year) - 1; }).reverse().forEach(function (r) {
       options += option(r.period_id, periodLabel(r));
     });
@@ -74,9 +74,8 @@
   }
   function renderPeriod() {
     var base = periods.get(baseWeek());
-    $('period-note').innerHTML = '数据周：' + esc(periodLabel(periods.get(state.week))) + '<br>比较基周：' +
-      esc(base ? periodLabel(base) : baseWeek() + '（无基周记录）') +
-      (state.base === 'auto' ? ' · 同周同比' : ' · <span class="hd-manual">手动基周 · 对比变化</span>');
+    $('period-note').textContent = periodLabel(periods.get(state.week)) + (state.base === 'auto' ? ' · 同周同比' : ' · 手动对比');
+    $('period-note').title = '比较基周：' + (base ? periodLabel(base) : baseWeek() + '（无基周记录）');
     $('mode-switch').querySelector('[data-mode="change"]').textContent = state.base === 'auto' ? '仅同比' : '仅对比变化';
   }
   function renderOverview() {
