@@ -1,5 +1,7 @@
 (function(root){
 'use strict';
+// Numeric scale helpers also serve the Node data-rendering checks.
+if(typeof module==='object'&&module.exports){module.exports={niceScale,axisFormat};return;}
 const states=new Map(),NS='http://www.w3.org/2000/svg';let pinned=null,queued=false;
 function groups(points){
   const map=new Map();
@@ -235,7 +237,7 @@ addEventListener('scroll',()=>{for(const state of states.values())state.refresh(
 addEventListener('resize',()=>{for(const state of states.values())state.hide(true);});
 function start(){scan();new MutationObserver(schedule).observe(document.body,{childList:true,subtree:true});}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
-})(window);
+})(typeof window==='object'?window:{});
 
 
 
