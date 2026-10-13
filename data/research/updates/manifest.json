@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-10-13T02:34:24Z",
+  "syncedAt": "2026-10-13T02:53:55Z",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
   "coverageFrom": "2026-10-13T03:03:17.158+0800",
@@ -116,7 +116,7 @@
   },
   "counts": {
     "views": 218,
-    "all_views": 4694,
+    "all_views": 4692,
     "minutes": 101
   },
   "latest": {
@@ -5227,9 +5227,7 @@
       "82258222222444812",
       "22258222222248841",
       "82258222222248582",
-      "82258222222221242",
-      "14425444458418212",
-      "14425444451188252"
+      "82258222222221242"
     ]
   },
   "lastRun": {
@@ -5238,12 +5236,12 @@
     "newSourceTopics": 76,
     "added": {
       "views": 1,
-      "all_views": 14
+      "all_views": 12
     },
-    "duplicates": 50,
+    "duplicates": 52,
     "excluded": 11,
     "record": "data/research/updates/2026-10-13-1034-record.json",
-    "syncedAt": "2026-10-13T02:34:24Z",
+    "syncedAt": "2026-10-13T02:53:55Z",
     "coverageTo": "2026-10-13T10:12:38.299+0800",
     "addedTopicIds": [
       {
@@ -5297,14 +5295,6 @@
       {
         "topicId": "82258222222221242",
         "kind": "all_views"
-      },
-      {
-        "topicId": "14425444458418212",
-        "kind": "all_views"
-      },
-      {
-        "topicId": "14425444451188252",
-        "kind": "all_views"
       }
     ],
     "duplicateTopicIds": [
@@ -5312,385 +5302,492 @@
         "topicId": "14425444458411512",
         "matchedKeys": [
           "stamp:526d7c2c207bb5c20da96cb161f8772ef40995c24d7b22a30469bf05718690b2",
-          "body:07e5e490f14e12259ca281f9d6059f242e379b45f45bf1430687c65bfd5af1e9"
+          "topic:14425444458411512",
+          "body:07e5e490f14e12259ca281f9d6059f242e379b45f45bf1430687c65bfd5af1e9",
+          "compactBody:337b98db4c93c2542052bd2e49969c53f020b5c199fc8988ed995cef192f9489"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "82258222284182512",
         "matchedKeys": [
           "stamp:1d3d8215bcf3f5fbb9955f0a712ac656bb5bdd04d837f4ee0ae27941e6094f2b",
-          "body:8cf41590c2015f6cdb0f82c7073a61bfdad14adcf4d43b17a6b297930845bf5e"
+          "topic:82258222284182512",
+          "body:8cf41590c2015f6cdb0f82c7073a61bfdad14adcf4d43b17a6b297930845bf5e",
+          "compactBody:cdfabf8154292fb7593bdc29bbe172c898d3edcaba545a5b2354ce7c38aa1dcc"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "82258222284158512",
         "matchedKeys": [
           "stamp:612f5ba9da4378286be309272d94b11e95d71d905665c6fd0955d75a64d8b801",
-          "body:232108ba47b9e018a7fa21b271ad04978d5dc86891e8180fc9ec302c0cc79471"
+          "topic:82258222284158512",
+          "body:232108ba47b9e018a7fa21b271ad04978d5dc86891e8180fc9ec302c0cc79471",
+          "compactBody:d47f4d510d9cbba6ef04080d8ccd60f071a1a55973badc950977f966e675983b"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "14425444451182852",
         "matchedKeys": [
           "stamp:3f4558f04704d202f94b1d430bd28e593d5c26a8078cd1b594562930198e6937",
-          "body:de19d88264b0c8be0c66aab410e80ee9e149e75567b31f108f694e26c0087ea3"
+          "topic:14425444451182852",
+          "body:de19d88264b0c8be0c66aab410e80ee9e149e75567b31f108f694e26c0087ea3",
+          "compactBody:d961189fa5c92e1fa0647b3ee570a5aebed092b86cbede695c16ecccc6419b77"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "14425444442254112",
         "matchedKeys": [
-          "stamp:e30eae58fb1310d5a4a22cdca5158529d5e16b453a93e87647cba24d0e701261"
+          "stamp:e30eae58fb1310d5a4a22cdca5158529d5e16b453a93e87647cba24d0e701261",
+          "topic:14425444442254112"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "14425444442252422",
         "matchedKeys": [
           "stamp:0fd1135f0885e46af01f4e9fd621ce3039bb95a6e6252562f8c1f8db33f22c14",
-          "body:55d028c87343754cc09ae0d298c1082657fa23787c6a4193e03f7a2a2f55a221"
+          "topic:14425444442252422",
+          "body:55d028c87343754cc09ae0d298c1082657fa23787c6a4193e03f7a2a2f55a221",
+          "compactBody:919e65436ccd1ce528f892606e5ec93917b474c13431349ae3ce389e9c49ea26"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "55521555552228544",
         "matchedKeys": [
-          "stamp:9db836054135da349d8320df1b0db43c474b95d2f9f22bbfdafb660ea29c2130"
+          "stamp:9db836054135da349d8320df1b0db43c474b95d2f9f22bbfdafb660ea29c2130",
+          "topic:55521555552228544"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "14425444458845582",
         "matchedKeys": [
           "stamp:1a6594bbf0d4281e95aff8dfd8c21eb3648c76344781bfc5f729dbeb93641058",
-          "body:0d9f2e029eeb7abc16e1ff93de193c463fc412cddb465db9714976d4d99d25df"
+          "topic:14425444458845582",
+          "body:0d9f2e029eeb7abc16e1ff93de193c463fc412cddb465db9714976d4d99d25df",
+          "compactBody:e36ec9a746262fbacdb3faef2e5023f58283405e76d9569ab18203d48341774c"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "82258222281182552",
         "matchedKeys": [
           "stamp:3093ee43938941ab74c0c0e6e7ae6c86719be0721a46d4695daa48f84af94f0e",
-          "body:04dcac3673ed43df58edc8dd51c5ccaf778602f384c3e3d7b8d2c0c75c2e0855"
+          "topic:82258222281182552",
+          "body:04dcac3673ed43df58edc8dd51c5ccaf778602f384c3e3d7b8d2c0c75c2e0855",
+          "compactBody:733c436a797689c3d3dd7ebadb371fbd089569d86db6d989df93f7dab52c8dd6"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "22258222281158211",
         "matchedKeys": [
           "stamp:217f3d7458db815d0afac6750e930166abfe09f6e0577fed8953abe002103071",
-          "body:5fd9165eedc94b0300fd910fed77e0ebccd5ee0dbac9b328f46c2bfebabb9808"
+          "topic:22258222281158211",
+          "body:5fd9165eedc94b0300fd910fed77e0ebccd5ee0dbac9b328f46c2bfebabb9808",
+          "compactBody:dbca47a7363e6d4b8681c2d71ce802b2f266a006bc8105bbeafe916141b4283f"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "45548555581211118",
         "matchedKeys": [
           "stamp:c93a3e953d12e72e0b1b7ec7f70bf67d24c8d95898d376ba93b367e7d6b8d34f",
-          "body:91629f929547f0701909830d69683fb4f95abd577e52c71bab5c42ed0165c7f4"
+          "topic:45548555581211118",
+          "body:91629f929547f0701909830d69683fb4f95abd577e52c71bab5c42ed0165c7f4",
+          "compactBody:be232f9cc9516b4a256192addb96035aa6c9f88e2d1fb22aea5b810b0b5abbde"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "14425444458188142",
         "matchedKeys": [
-          "stamp:59e2ee56bb373d7c58d62e9ffcadddfd5eeff8617084eeeef879de50f1f20f9b"
+          "stamp:59e2ee56bb373d7c58d62e9ffcadddfd5eeff8617084eeeef879de50f1f20f9b",
+          "topic:14425444458188142",
+          "compactBody:79cea4ec1a61fa223137457456753c6f2b0525d44a4871a64ba8b26cc36e23d6"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "82258222281414412",
         "matchedKeys": [
           "stamp:2a32591917f0cda14e8707467a960afb623413adb3940b2396d7042f3f63f9e8",
-          "body:317ef450e4552da61c73400693edd8f47dd97dd44118d3fc6cb0ece02d98befc"
+          "topic:82258222281414412",
+          "body:317ef450e4552da61c73400693edd8f47dd97dd44118d3fc6cb0ece02d98befc",
+          "compactBody:7a9b6318bf71f1cff5fd5ef4d4bfed1fc1eafb15e8e66972b1d966ce11b80f4b"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "82258222281412452",
         "matchedKeys": [
           "stamp:1f53fcd88a645d02cdb9d5be9a8fdad45a7d408a48e55a646280679c5e74e3d8",
-          "body:a74181a18f6fdc80af93253f2fc800368f0f0f77cc1ae2556912ebb326aab98a"
+          "topic:82258222281412452",
+          "body:a74181a18f6fdc80af93253f2fc800368f0f0f77cc1ae2556912ebb326aab98a",
+          "compactBody:0144cd8179f91527b8ea34c1ea24bf350e667ba919739d3cbd0807e3ca07a655"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "55521555518412814",
         "matchedKeys": [
           "stamp:9fcf6aff3fd2a73f86861ab5a1b37bb8c3aa0976d2275a36c194749bd78414d5",
-          "body:d002bd89bd692c70a35408a37a5927b83184f5d453dff973c9a8904345cc127c"
+          "topic:55521555518412814",
+          "body:d002bd89bd692c70a35408a37a5927b83184f5d453dff973c9a8904345cc127c",
+          "compactBody:338365b1749eae1849aac7e8b7ff6df169f98164e09091cff00a3863599b0ad6"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
+      },
+      {
+        "topicId": "14425444458418212",
+        "matchedKeys": [
+          "compactBody:66d00b04275d8f2d462073b93cee17a62ae4417dc550f83c32a2e5afc3ebc981"
+        ],
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "82258222281244212",
         "matchedKeys": [
           "stamp:b2cca47ddd8e6dca7b345f4f1f7c43b65f714a4f32d6a908b308308fd6b4cae4",
-          "body:4bf6b8387ac2b95a77225dd3a660d83cdbea4cc85849c7dd2620e8cff7834507"
+          "topic:82258222281244212",
+          "body:4bf6b8387ac2b95a77225dd3a660d83cdbea4cc85849c7dd2620e8cff7834507",
+          "compactBody:2e53adb014b660f1d07bb609f25730462854aca28d3273bd867baaae703435c2"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "22258222281248481",
         "matchedKeys": [
-          "stamp:f8bebcfd653e54136ffddcc0fd1433809b7e598b18df5143c605518371a8af3a"
+          "stamp:f8bebcfd653e54136ffddcc0fd1433809b7e598b18df5143c605518371a8af3a",
+          "topic:22258222281248481"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "82258222281255482",
         "matchedKeys": [
           "stamp:79f3dd1e0480b4b8e1d7207ca24ef0113d321fb5f68db035c908b659f4aa76fd",
-          "body:02b0c5acaaa7bbac2a214717bd4052212a22cc9d51f5b6db1a7d641a8da9d383"
+          "topic:82258222281255482",
+          "body:02b0c5acaaa7bbac2a214717bd4052212a22cc9d51f5b6db1a7d641a8da9d383",
+          "compactBody:e4bd0055382794894b0409904f2d742ad05768fd60d0f95b989a7ccf1de0236d"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "55521555518184484",
         "matchedKeys": [
-          "stamp:50f8096c7c1e0d566df31f3fcd0d34f55fdcf911bc7316ddd6f914028cb6ccd3"
+          "stamp:50f8096c7c1e0d566df31f3fcd0d34f55fdcf911bc7316ddd6f914028cb6ccd3",
+          "topic:55521555518184484"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "22258222281818481",
         "matchedKeys": [
           "stamp:7c7283b94021adc63bcf8699366d884c5d2dd8f948a52893716bb96d03cfec9a",
-          "body:7ae152a8fd38e1cab6eedf4f79a12762e5c13b3906fd416d4dc3780a18e7942e"
+          "topic:22258222281818481",
+          "body:7ae152a8fd38e1cab6eedf4f79a12762e5c13b3906fd416d4dc3780a18e7942e",
+          "compactBody:94b0a21e378f89a6bf8590ae61c3c3323c4222e690ac96c430fbcf79e33d1fac"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "55521555518145184",
         "matchedKeys": [
           "stamp:e8820d7c79930d7dca2c924080dd97c299633f63c93175e76b90923b29bc801f",
-          "body:5f2d8b646f513588d866e4c2b85e064d2a6e66930758968b6763043a2f5324f4"
+          "topic:55521555518145184",
+          "body:5f2d8b646f513588d866e4c2b85e064d2a6e66930758968b6763043a2f5324f4",
+          "compactBody:87eae570d39a2e9f277c3e3277423a5364c703cc7b798c12286a57d5f62dcd0e"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "45548555581488288",
         "matchedKeys": [
           "stamp:cb15749cdad77d8df116241e422f3356d5b263416c8120c90c88ce6a1f504235",
-          "body:a39f42fd19d1a7368ec156be39486327a2c14fc97c9b1026177c04761610bca0"
+          "topic:45548555581488288",
+          "body:a39f42fd19d1a7368ec156be39486327a2c14fc97c9b1026177c04761610bca0",
+          "compactBody:a57d4acde0c1aaf8cb32195ab0d27f020e3956e8c18d33d437bc4e4d8fd8b68f"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "14425444458252222",
         "matchedKeys": [
-          "stamp:89b1037a04df114dd6ffd97af0f1263e76608f1a18b5299aacce0d45bc08ef57"
+          "stamp:89b1037a04df114dd6ffd97af0f1263e76608f1a18b5299aacce0d45bc08ef57",
+          "topic:14425444458252222",
+          "compactBody:ad7fc526e4d8456afce48e2626cb6bbebb23476ead8cec2e9fe62fc006d50aeb"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "55521555518224514",
         "matchedKeys": [
           "stamp:cf2d804c61d69496f1574b4f3f74b180088d00958584a19d7e225c25d4c99aaa",
-          "body:9c978e4f5691f56bf7b17a8f59a9ec3a2fdfac4e4a534a295314fb8486385d79"
+          "topic:55521555518224514",
+          "body:9c978e4f5691f56bf7b17a8f59a9ec3a2fdfac4e4a534a295314fb8486385d79",
+          "compactBody:82078bf0a8cbadf47c711b09b4b3fa25702a2edef588857d976a1c9c2159af3e"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "14425444458224882",
         "matchedKeys": [
-          "stamp:a7d95b47f31089b4ca428d105be3528eb66a7b4c600fa043c6ee1dff8355ba88"
+          "stamp:a7d95b47f31089b4ca428d105be3528eb66a7b4c600fa043c6ee1dff8355ba88",
+          "topic:14425444458224882"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "55521555518221154",
         "matchedKeys": [
-          "body:f3631762a7fe2578017f11afee1e0ee6318d7e8b2c11e18c3f818770ee815534"
+          "topic:55521555518221154",
+          "body:f3631762a7fe2578017f11afee1e0ee6318d7e8b2c11e18c3f818770ee815534",
+          "compactBody:778e9f5b88549593831702c8cbadc85280783d8307953ac927d7d4c2cbf0da68"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "14425444458225212",
         "matchedKeys": [
-          "stamp:017e1b9316e1b415265c229a80ce177a512a28b2b78bace3ec8bdb0bbbe662c6"
+          "stamp:017e1b9316e1b415265c229a80ce177a512a28b2b78bace3ec8bdb0bbbe662c6",
+          "topic:14425444458225212"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "14425444451888452",
         "matchedKeys": [
-          "stamp:ff41f99c7aad259884a2b3aa067f46fc372cd955ec0c041c7cdea200f7dcab72"
+          "stamp:ff41f99c7aad259884a2b3aa067f46fc372cd955ec0c041c7cdea200f7dcab72",
+          "topic:14425444451888452",
+          "compactBody:8b9291f367ee336a9253355b7bf7ebb44a05845b9476d510027fe242fe267467"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "82258222284111852",
         "matchedKeys": [
           "stamp:dfafc1312b2720682355713f803914fcf44a20b8db3076775fe1acf9afb773e3",
-          "body:df76c6386c2f19cc0353e8f30c1043e0d906b1530ba12f710afebec2676ce3a6"
+          "topic:82258222284111852",
+          "body:df76c6386c2f19cc0353e8f30c1043e0d906b1530ba12f710afebec2676ce3a6",
+          "compactBody:4ebdb8701863e077eec976b886a5bf9260bb18eca0d7c2daeff8b79a95cbe0b0"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "22258222284114421",
         "matchedKeys": [
           "stamp:1aac968e37c75dc77428d04d2977ed83d53bb37e4de8641b7e8ea2a3ac54a872",
-          "body:904789c8a71661663cf13f23f70a42aca837f9c28004e23a9898ef1e87071f9e"
+          "topic:22258222284114421",
+          "body:904789c8a71661663cf13f23f70a42aca837f9c28004e23a9898ef1e87071f9e",
+          "compactBody:ee412eee2d111e488662f5e494b792d3c777b958d1b3b05eb7f437e120ec8a57"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "45548555582112588",
         "matchedKeys": [
           "stamp:f80c032fa5a67a51a43280d211d087f8029f62831f4e1c0b53000033239ba793",
-          "body:bd56defc96cf0514aacdab51617f94b9d15151bd00d690265be61c21208a7b26"
+          "topic:45548555582112588",
+          "body:bd56defc96cf0514aacdab51617f94b9d15151bd00d690265be61c21208a7b26",
+          "compactBody:34f27f2db2ad4fc5de02a2db68ed1a417a7bf2479e1d67b525b3375bed56768c"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "22258222284181451",
         "matchedKeys": [
           "stamp:5763256972a4e516e50e6c942123891fd5534b30f333b3be5f586485f9283e3c",
-          "body:262a0198973207a80a997dfdd5594cd616f9d12e412460f8daaeaa39c5e61a67"
+          "topic:22258222284181451",
+          "body:262a0198973207a80a997dfdd5594cd616f9d12e412460f8daaeaa39c5e61a67",
+          "compactBody:177e692287adfc852d95c9182c0ab1062768ce57a12f2b1626356e274de9e941"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "14425444451858422",
         "matchedKeys": [
           "stamp:5d8a9b1676bcf1a0a1b7c1e5f8b1a0df3abac05501ec01695ab4fc4103b52288",
-          "body:037eff65f44bbade55009fd1c95bf42c2e9e40789bd3aa7ca026eb201a50216c"
+          "topic:14425444451858422",
+          "body:037eff65f44bbade55009fd1c95bf42c2e9e40789bd3aa7ca026eb201a50216c",
+          "compactBody:5267287ba7b41d86158209e8b4813533bafd547e4e0f711b5c315366fc040c07"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "14425444451851222",
         "matchedKeys": [
           "stamp:2fbe980b3f725b587a1cd8729a9497923d4b91ce9abb91622f102be163293945",
-          "body:ab52de13bb603fc4780b3a011e71f5a3f44a130852d0d8d44dea34eff30b1096"
+          "topic:14425444451851222",
+          "body:ab52de13bb603fc4780b3a011e71f5a3f44a130852d0d8d44dea34eff30b1096",
+          "compactBody:f8d96c6a6555969baabc370a5a510ee786241978d201d24372b1e505cc1f94f9"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "82258222284182442",
         "matchedKeys": [
           "stamp:ad029f6f1e92d45973593529253545d8ff7071f318761c75b6f6178d82414a46",
-          "body:72bc517996a7db62e613c3b69e2abe2427ebdb9c34b2052aac793ed65faa3b82"
+          "topic:82258222284182442",
+          "body:72bc517996a7db62e613c3b69e2abe2427ebdb9c34b2052aac793ed65faa3b82",
+          "compactBody:c570f43219aed3115fc52c01d163a06a2930470b120a7928c847b9b85e2f9731"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "14425444451852152",
         "matchedKeys": [
           "stamp:8e03c6dc1b517f723ee424c1b3aa90b9327de9d622a5131a092eb4a92753c775",
-          "body:e35f23844840b768c502f8152b7cf46bf98770bc322ea783523420aa92a7861e"
+          "topic:14425444451852152",
+          "body:e35f23844840b768c502f8152b7cf46bf98770bc322ea783523420aa92a7861e",
+          "compactBody:01f58151cb0951cd89b769513aa8c90a24e05fb5320e9ed3716f63405c4b44c9"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "82258222284185252",
         "matchedKeys": [
-          "body:91be3966220aff7b515e9412812dcc57863f9dd787cb5ae1b5d5abc6a2557bb9"
+          "topic:82258222284185252",
+          "body:91be3966220aff7b515e9412812dcc57863f9dd787cb5ae1b5d5abc6a2557bb9",
+          "compactBody:2e024650dfb94f10624cc5b7586fe27afb5df282cb034c7edf4dde813ebd80ed"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "14425444451821882",
         "matchedKeys": [
-          "body:5cb2c30563de400ab2b09020101b71986355c3293e113c46dddf450ac787de54"
+          "topic:14425444451821882",
+          "body:5cb2c30563de400ab2b09020101b71986355c3293e113c46dddf450ac787de54",
+          "compactBody:e40be35f60aebab0eaa624eaefed95c6bf8c9a9552bfd5786368d6d29c72c62e"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "82258222284154282",
         "matchedKeys": [
-          "body:7664da5cd2a6c4ac2a9a0c719a887beac733e382fb2e391bbeb8bcce0ea5940f"
+          "topic:82258222284154282",
+          "body:7664da5cd2a6c4ac2a9a0c719a887beac733e382fb2e391bbeb8bcce0ea5940f",
+          "compactBody:beeecb8ed6d987ff677720a4fad89f25693e4c1e508330c326639fc429744e13"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "22258222284152141",
         "matchedKeys": [
           "stamp:115e91e0cbdabd7f1e428d1762bdb689a89ce7a54f6f3e3d03fc7c5eac82c46f",
-          "body:b71f0b22b37cab03cc7cae284d046faa7e0463ff37f2894132d397240e09ba4f"
+          "topic:22258222284152141",
+          "body:b71f0b22b37cab03cc7cae284d046faa7e0463ff37f2894132d397240e09ba4f",
+          "compactBody:1eca0219868a13ca98b7c4ed3a7a8266f71525ae86999c4dfe30384efb31f7ce"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "14425444451825882",
         "matchedKeys": [
           "stamp:c3c4968dab020fa1f3a036a80188a4268abc57f851896bfc1ac24afb3c7a8c58",
-          "body:39564bed2efcd556a162d77544fb64d4e03b072fd2167a843aca9ad8f8499052"
+          "topic:14425444451825882",
+          "body:39564bed2efcd556a162d77544fb64d4e03b072fd2167a843aca9ad8f8499052",
+          "compactBody:91ba293da95d8a60f8eb30c73ae48ff861d994175f30cff7eb02d3a80bf2c2b5"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "55521555514821544",
         "matchedKeys": [
           "stamp:3ffd0ac6424e3c8c67d2190555cceee39d025ce309c267c11a24004fbfe44e3d",
-          "body:74b8ad75ce64121ef04555cc2d78483431e932d519e73418e6e15eedb49f6c01"
+          "topic:55521555514821544",
+          "body:74b8ad75ce64121ef04555cc2d78483431e932d519e73418e6e15eedb49f6c01",
+          "compactBody:7a854e32e6b9e253e91f5d3077de45a624fc6b6c80ab9ab6a2a8280f93053c55"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "55521555514822844",
         "matchedKeys": [
           "stamp:43420f755d33bc634e1dbd410f48a26f65bf233f9f692f8746bd188b94efa85a",
-          "body:f567675b2b4a9dacb49eba47a9b55d55e0bf2adf6a44b752a1ab09d61ff7f7ef"
+          "topic:55521555514822844",
+          "body:f567675b2b4a9dacb49eba47a9b55d55e0bf2adf6a44b752a1ab09d61ff7f7ef",
+          "compactBody:b17032396f52dac96a6a5c9ae99ef304e18822b973d739255ec4c23e0551af69"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "82258222284411482",
         "matchedKeys": [
-          "body:0c4b4cd7ad9ef87886eb3b8c43fc3f24ce32481ee1787ac850a64e8e1f6363b8"
+          "topic:82258222284411482",
+          "body:0c4b4cd7ad9ef87886eb3b8c43fc3f24ce32481ee1787ac850a64e8e1f6363b8",
+          "compactBody:8e31d353059881b5e6918edbed161b2b0167abe48b6cd7a8d5d04489e290b7eb"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "14425444451188412",
         "matchedKeys": [
           "stamp:7a7db7969665f989285a1d8718654f454ad46339c133a84e999ddfc24fe2fba0",
-          "body:479396cd64a4fa588d7b572e2c4c59cea5588f6aae700be1f79f69bfb85d24f0"
+          "topic:14425444451188412",
+          "body:479396cd64a4fa588d7b572e2c4c59cea5588f6aae700be1f79f69bfb85d24f0",
+          "compactBody:143dd3a6641bbfa26693b7496eba8f1437b526b75f52db586603da3761dcb738"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
+      },
+      {
+        "topicId": "14425444451188252",
+        "matchedKeys": [
+          "compactBody:1738bd4b7f9fdabc1c16a43ebe6aa0cd9a09acf97fea6712dfa8f653d8838628"
+        ],
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "82258222284414122",
         "matchedKeys": [
           "stamp:a8c44d0b8fe71469cd6bde56447f5411ecff76163bb05ff6d786ba8c70dbb032",
-          "body:a3d4e50b8b08dd52d1da74d9d1fb3db9fc53e9ac92fbbac187fc64301fbd5f1a"
+          "topic:82258222284414122",
+          "body:a3d4e50b8b08dd52d1da74d9d1fb3db9fc53e9ac92fbbac187fc64301fbd5f1a",
+          "compactBody:376925e2e5eab0b3a506dfeaf65d48087b5551440d6270924299736145834958"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "55521555514485144",
         "matchedKeys": [
-          "stamp:c02067b74a96cf067b337c6e867448f8d013cb120c4e8ec86bec9a05ad694430"
+          "stamp:c02067b74a96cf067b337c6e867448f8d013cb120c4e8ec86bec9a05ad694430",
+          "topic:55521555514485144",
+          "compactBody:b81da5af9b06db57fda83c63e759264ad1d3fccc27a85374a9b9c7f36971a2e2"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "22258222284412511",
         "matchedKeys": [
-          "stamp:9e447d7a3891f72a9bcefc46f330fd8e3ece2dc56b7b148be89022d31eb240c5"
+          "stamp:9e447d7a3891f72a9bcefc46f330fd8e3ece2dc56b7b148be89022d31eb240c5",
+          "topic:22258222284412511"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "45548555582214258",
         "matchedKeys": [
           "stamp:4fee7a1349e3b78af4670d19f6090b949561483394981a374c5ba0f58e670200",
-          "body:f1bca4ca5f33de81c7141edda908218086a15ebd603f450ec64ef65cd412ba0f"
+          "topic:45548555582214258",
+          "body:f1bca4ca5f33de81c7141edda908218086a15ebd603f450ec64ef65cd412ba0f",
+          "compactBody:5110c017025d3a52ace6d8b53e73af66f21313a2875738456788d2823b329243"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       },
       {
         "topicId": "22258222284415541",
         "matchedKeys": [
           "stamp:f588c381d8585ff970c41d2a6c4e18c3db62b478c21b7a69009685e177166cfe",
-          "body:faa3dbaf207c918ccfe44e9f3b2e86efe8c1daee7e6c577993936344911bbcb1"
+          "topic:22258222284415541",
+          "body:faa3dbaf207c918ccfe44e9f3b2e86efe8c1daee7e6c577993936344911bbcb1",
+          "compactBody:88d1d422da0117f710b64fb00eb9ee08d06ad5194d3cf0218775c6ffda6de225"
         ],
-        "reason": "候选去重键已存在于历史索引；未重复写入。"
+        "reason": "按 keys(row) 的 topic、时间标题、正文或去空白正文键命中历史索引。"
       }
     ],
     "excludedTopics": [
@@ -5767,6 +5864,16 @@
         "hotel-q4-20261013"
       ],
       "expiredRemoved": []
-    }
+    },
+    "dedupCorrection": {
+      "removedTopicIds": [
+        "14425444458418212",
+        "14425444451188252"
+      ],
+      "reason": "提交后按仓库 keys(row) 精确核验，发现两条新增行的 compactBody 键命中既有索引；已从新增CSV和新增分配中移除。",
+      "checkedAt": "2026-10-13T02:53:55Z"
+    },
+    "originalSyncedAt": "2026-10-13T02:34:24Z",
+    "correctedAt": "2026-10-13T02:53:55Z"
   }
 }
