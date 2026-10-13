@@ -41,6 +41,17 @@
     "reports": []
   },
   "policy": "仅依据已入库元数据列出标题、发布时间和来源主题；未下载、读取或转写附件，不把研究报告标为纪要。",
-  "attachmentPolicy": "复用现有附件元数据，未刷新源站附件索引；空清单不代表源站无新增",
-  "attachmentSourceThrough": "2026-10-12T13:22:16"
+  "attachmentPolicy": "复用已更新附件元数据；本窗口新增8份文档，无新增录音，未取得可明确归入商社覆盖范围的附件。仅核对标题与元数据，未读取附件正文。",
+  "attachmentSourceThrough": "2026-10-13T18:54:34.237+0800",
+  "attachmentIndexGeneratedAt": "2026-10-13T19:29:28+08:00",
+  "attachmentReview": {
+    "checkedAt": "2026-10-13T19:32:00+08:00",
+    "windowNewDocuments": 8,
+    "windowNewAudio": 0,
+    "scopeMatches": 0,
+    "unclassifiedTitles": [
+      "交运：海外机构投资者（新加坡及香港）反馈Transportation-Overseas Institutional Investor (SGHK) Feedback.pdf"
+    ],
+    "note": "交运泛行业标题未明确涉及酒旅出行，不据标题推断附件内容；索引coverage不等于完整源站覆盖。"
+  }
 }
