@@ -1,0 +1,127 @@
+{
+  "runId": "2026-10-13-1356",
+  "previousCoverageTo": "2026-10-13T13:01:56.285+0800",
+  "newSourceTopics": 22,
+  "added": {
+    "views": 0,
+    "all_views": 14
+  },
+  "duplicates": 3,
+  "excluded": 5,
+  "record": "data/research/updates/2026-10-13-1356-record.json",
+  "syncedAt": "2026-10-13T05:56:34Z",
+  "coverageTo": "2026-10-13T13:41:40.153+0800",
+  "addedTopicIds": [
+    {
+      "topicId": "55521555585451444",
+      "kind": "all_views"
+    },
+    {
+      "topicId": "14425444484158422",
+      "kind": "all_views"
+    },
+    {
+      "topicId": "14425444484151182",
+      "kind": "all_views"
+    },
+    {
+      "topicId": "22258222212482881",
+      "kind": "all_views"
+    },
+    {
+      "topicId": "14425444484288142",
+      "kind": "all_views"
+    },
+    {
+      "topicId": "55521555585288184",
+      "kind": "all_views"
+    },
+    {
+      "topicId": "82258222212514552",
+      "kind": "all_views"
+    },
+    {
+      "topicId": "14425444484284182",
+      "kind": "all_views"
+    },
+    {
+      "topicId": "45548555515418418",
+      "kind": "all_views"
+    },
+    {
+      "topicId": "14425444484282112",
+      "kind": "all_views"
+    },
+    {
+      "topicId": "55521555585282154",
+      "kind": "all_views"
+    },
+    {
+      "topicId": "55521555585244554",
+      "kind": "all_views"
+    },
+    {
+      "topicId": "55521555585244184",
+      "kind": "all_views"
+    },
+    {
+      "topicId": "14425444484214212",
+      "kind": "all_views"
+    }
+  ],
+  "duplicateTopicIds": [
+    {
+      "topicId": "14425444484144842",
+      "reason": "body and compactBody key already indexed"
+    },
+    {
+      "topicId": "45548555515258828",
+      "reason": "compactBody key already indexed"
+    },
+    {
+      "topicId": "45548555515254128",
+      "duplicateOf": "55521555585451444",
+      "reason": "same body within batch"
+    }
+  ],
+  "excludedTopics": [
+    {
+      "topicId": "45548555515884528",
+      "title": "「文件」",
+      "publishedAt": "2026-10-13T13:27:31.062+0800",
+      "reason": "正文只有附件占位，附件未读取，未作推断。"
+    },
+    {
+      "topicId": "14425444484521852",
+      "title": "「文件」",
+      "publishedAt": "2026-10-13T13:26:52.082+0800",
+      "reason": "正文只有附件占位，附件未读取，未作推断。"
+    },
+    {
+      "topicId": "82258222212544812",
+      "title": "<e type=\"hashtag\" hid=\"51518522244414\" title=\"%23%E7%BA%AA%E8%A6%81%26",
+      "publishedAt": "2026-10-13T13:21:49.799+0800",
+      "reason": "正文只有报告标签且含附件，附件未读取，未作推断。"
+    },
+    {
+      "topicId": "22258222212544851",
+      "title": "<e type=\"hashtag\" hid=\"51518522244414\" title=\"%23%E7%BA%AA%E8%A6%81%26",
+      "publishedAt": "2026-10-13T13:21:41.567+0800",
+      "reason": "正文只有报告标签且含附件，附件未读取，未作推断。"
+    },
+    {
+      "topicId": "14425444485885242",
+      "title": "「文件」",
+      "publishedAt": "2026-10-13T13:15:32.367+0800",
+      "reason": "正文只有附件占位，附件未读取，未作推断。"
+    }
+  ],
+  "briefChanges": {
+    "added": [],
+    "updated": [],
+    "expiredRemoved": []
+  },
+  "sourceGroup": "88888142214212",
+  "sourceName": "水木调研纪要-2.0",
+  "oldestFetched": "2026-10-13T12:07:25.441+0800"
+}
