@@ -7,7 +7,9 @@ from build_daily_report import stamp,ROOT,window_hours
 def validate(d):
  assert d['schemaVersion']==2,'Expected editorial v2'
  cutoff=stamp(d['cutoff']);assert cutoff and cutoff.date().isoformat()==d['date']
- assert (cutoff.hour,cutoff.minute)==(16,0)
+ if (cutoff.hour,cutoff.minute)!=(16,0):
+  assert d.get('cutoffOverride',{}).get('requestedBy')=='user' and d['cutoffOverride'].get('reason'),'Nonstandard cutoff requires explicit user request'
+ assert cutoff.second==0,'Cutoff must be a whole minute'
  assert d['headline'] and len(d['headline'])<=100
  assert len(d['industries'])<=6
  if d.get('dailySummaryPoints'):
@@ -49,3 +51,4 @@ if __name__=='__main__':
   for url in actual:
    assert url in rows and d['originals'][url]['body']==rows[url]['内容'],'Original text is incomplete or differs from source corpus'
   print('Complete segment list and originals verified:',len(actual))
+
