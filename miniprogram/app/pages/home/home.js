@@ -20,16 +20,17 @@ Page({
   },
 
   onLoad() { this.refresh(); },
-  onPullDownRefresh() { this.refresh().then(() => wx.stopPullDownRefresh()); },
+  // 下拉刷新走 fresh=1：直拉 GitHub 上游，仓库刚 push 也能立刻拿到
+  onPullDownRefresh() { this.refresh(true).then(() => wx.stopPullDownRefresh()); },
 
-  async refresh() {
+  async refresh(fresh) {
     this.setData({ loading: true, err: '' });
     try {
       const [mf, val, weekly, minutes] = await Promise.all([
         api.manifest().catch(() => null),
-        api.dataset('valuation').catch(() => null),
-        api.dataset('weekly').catch(() => null),
-        api.dataset('minutes').catch(() => null)
+        api.dataset('valuation', fresh).catch(() => null),
+        api.dataset('weekly', fresh).catch(() => null),
+        api.dataset('minutes', fresh).catch(() => null)
       ]);
       const valuation = (val && val.data) || [];
       const weeklyArr = (weekly && weekly.data) || [];

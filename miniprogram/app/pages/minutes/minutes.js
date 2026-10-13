@@ -14,7 +14,8 @@ Page({
 
   onLoad() { this.refresh(); },
   onShow() { this.checkSession(); },
-  onPullDownRefresh() { this.refresh().then(() => wx.stopPullDownRefresh()); },
+  // 下拉刷新走 fresh=1：直拉 GitHub 上游，仓库刚 push 也能立刻拿到
+  onPullDownRefresh() { this.refresh(true).then(() => wx.stopPullDownRefresh()); },
 
   async checkSession() {
     try {
@@ -34,10 +35,10 @@ Page({
     this.setData({ favKeys });
   },
 
-  async refresh() {
+  async refresh(fresh) {
     this.setData({ loading: true, err: '' });
     try {
-      const r = await api.dataset('minutes');
+      const r = await api.dataset('minutes', fresh);
       const list = (r.data || []).map(x => Object.assign({}, x, { favKey: favorites.refKeyOf('minute', x) }));
       this.applyFilter(this.data.keyword, list);
       this.setData({ list, loading: false });

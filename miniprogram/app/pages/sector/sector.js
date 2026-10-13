@@ -27,12 +27,13 @@ Page({
     this.refresh();
   },
 
-  onPullDownRefresh() { this.refresh().then(() => wx.stopPullDownRefresh()); },
+  // 下拉刷新走 fresh=1：直拉 GitHub 上游，仓库刚 push 也能立刻拿到
+  onPullDownRefresh() { this.refresh(true).then(() => wx.stopPullDownRefresh()); },
 
-  async refresh() {
+  async refresh(fresh) {
     this.setData({ loading: true, err: '' });
     try {
-      const r = await api.dataset(this.data.sectorKey);
+      const r = await api.dataset(this.data.sectorKey, fresh);
       const byCat = r.data || {};
       const categories = Object.keys(byCat);
       const currentCat = this.data.currentCat && categories.includes(this.data.currentCat)

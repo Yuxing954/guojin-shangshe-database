@@ -1,20 +1,23 @@
 // 国金商社数据库 · GitHub→微信小程序 数据代理
 // 作用：小程序的 request 合法域名需备案，GitHub 不满足 → 用本服务实时拉 raw 数据转 JSON
-// 数据链路：小程序 → 本服务(内存缓存) ← 后台任务每 10 分钟拉 GitHub raw
-// GitHub push 后 ≤10 分钟自动同步；小程序下拉刷新即读最新缓存，响应毫秒级
+// 数据链路：小程序 → 本服务(内存缓存) ← 后台任务周期性拉 GitHub raw
+// GitHub push 后（有 token 时）≤10 分钟自动同步；小程序下拉刷新走 fresh=1 直拉上游，准实时
 // 拉取失败时保留旧缓存（降级可用），首次冷启动未就绪时返回 loading 状态码
 
 const http = require('http');
 const https = require('https');
 
 const PORT = process.env.PORT || 3000;
-// 主链路 jsDelivr CDN（快），兜底 GitHub raw；均为仓库 main 分支实时内容
+// 主链路 GitHub raw（带 token 免 CDN 缓存滞后，实时性最好）；jsDelivr CDN 兜底（raw 限额/不可达时）
+// 注意：jsDelivr 有天级缓存滞后，仅作兜底，不能当主链路（曾导致 GitHub 更新后小程序不跟随）
 const SOURCES = [
-  'https://cdn.jsdelivr.net/gh/Yuxing954/guojin-shangshe-database@main/',
-  'https://raw.githubusercontent.com/Yuxing954/guojin-shangshe-database/main/'
+  'https://raw.githubusercontent.com/Yuxing954/guojin-shangshe-database/main/',
+  'https://cdn.jsdelivr.net/gh/Yuxing954/guojin-shangshe-database@main/'
 ];
 const TOKEN = process.env.GH_TOKEN || '';
-const REFRESH_MS = 10 * 60 * 1000; // 后台每 10 分钟全量刷新
+// 无 token 时 raw 匿名限额 60次/h：12 个数据集 + manifest = 13 文件/轮 → 安全周期 30 分钟
+// 有 token 时限额 5000次/h，10 分钟一轮绰绰有余
+const REFRESH_MS = (TOKEN ? 10 : 30) * 60 * 1000; // 后台周期刷新
 const FETCH_TIMEOUT_MS = 30 * 1000; // 普通文件拉取上限
 const FETCH_TIMEOUT_BIG_MS = 120 * 1000; // 大文件（views/allviews）拉取上限
 
@@ -231,6 +234,22 @@ function transform(def, rows) {
   }
 }
 
+// ---- 单数据集按需直拉（fresh=1：绕过缓存直接读上游并更新缓存，用户下拉刷新触发） ----
+async function fetchDatasetFresh(key) {
+  const def = DATASETS[key];
+  if (!def) throw new Error('unknown dataset: ' + key);
+  let data;
+  if (def.type === 'viewsjson') {
+    const payload = JSON.parse(await fetchRaw(def.file, false));
+    data = transformViewsJson(payload, key === 'views' ? 'views' : 'all_views');
+  } else {
+    const text = await fetchRaw(def.file, def.big);
+    data = transform(def, parseCSV(text));
+  }
+  cache.set(key, { ts: Date.now(), data, ready: true });
+  return data;
+}
+
 // ---- 后台刷新：并行拉取（每个文件独立超时 30s），成功即更新缓存，失败保留旧值下轮重试 ----
 async function refreshAll() {
   if (status.refreshing) return;
@@ -307,6 +326,42 @@ const server = http.createServer(async (req, res) => {
   const m = p.match(/^data\/([a-z]+)$/i) || p.match(/^([a-z]+)$/);
   if (m && DATASETS[m[1]]) {
     const key = m[1];
+
+    // fresh=1：直拉上游 GitHub（raw 优先），成功后更新缓存并返回；失败回退缓存（缓存也没有则 202 loading）
+    if (u.searchParams.get('fresh') === '1') {
+      try {
+        const data = await fetchDatasetFresh(key);
+        const resp = { ok: true, key, fetchedAt: Date.now(), fresh: true, source: 'upstream' };
+        if (data && Array.isArray(data.list)) {
+          resp.coverageTo = data.coverageTo; resp.totalRows = data.totalRows;
+          resp.count = data.list.length; resp.data = data.list;
+        } else if (data && Array.isArray(data.rows)) {
+          resp.count = data.rows.length; resp.data = data.rows; resp.truncated = true; resp.total = data.total;
+        } else {
+          const rows = data;
+          resp.count = Array.isArray(rows) ? rows.length : Object.keys(rows || {}).length;
+          resp.data = rows;
+        }
+        return json(res, 200, resp);
+      } catch (e) {
+        const hit = cache.get(key);
+        if (hit && hit.ready) {
+          const data = hit.data;
+          const resp = { ok: true, key, fetchedAt: hit.ts, fresh: false, source: 'cache-fallback', warning: '上游拉取失败，返回缓存数据' };
+          if (data && Array.isArray(data.list)) {
+            resp.coverageTo = data.coverageTo; resp.totalRows = data.totalRows; resp.count = data.list.length; resp.data = data.list;
+          } else {
+            const rows = data && data.truncated ? data.rows : data;
+            resp.count = Array.isArray(rows) ? rows.length : Object.keys(rows || {}).length;
+            resp.data = rows;
+            if (data && data.truncated) { resp.truncated = true; resp.total = data.total; }
+          }
+          return json(res, 200, resp);
+        }
+        return json(res, 202, { ok: false, loading: true, key, error: '上游拉取失败且无缓存：' + String(e.message || e) });
+      }
+    }
+
     const hit = cache.get(key);
     if (!hit || !hit.ready) {
       return json(res, 202, { ok: false, loading: true, key, error: '数据尚未就绪（后台正在拉取 GitHub），稍后重试' });

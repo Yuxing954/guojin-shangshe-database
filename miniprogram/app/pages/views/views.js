@@ -20,7 +20,8 @@ Page({
 
   onLoad() { this.refresh(); },
   onShow() { this.checkSession(); },
-  onPullDownRefresh() { this.refresh().then(() => wx.stopPullDownRefresh()); },
+  // 下拉刷新走 fresh=1：直拉 GitHub 上游，仓库刚 push 也能立刻拿到
+  onPullDownRefresh() { this.refresh(true).then(() => wx.stopPullDownRefresh()); },
   onReachBottom() {
     if (this.data.shown.length < this.data.list.length) {
       this.loadMore();
@@ -45,10 +46,10 @@ Page({
     this.setData({ favKeys });
   },
 
-  async refresh() {
+  async refresh(fresh) {
     this.setData({ loading: true, err: '', page: 0 });
     try {
-      const r = await api.dataset(this.data.tab);
+      const r = await api.dataset(this.data.tab, fresh);
       const list = (r.data || []).map(x => Object.assign({}, x, { favKey: favorites.refKeyOf('view', x) }));
       const cov = (r.coverageTo || '').slice(0, 16);
       this.setData({
