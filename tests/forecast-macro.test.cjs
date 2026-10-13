@@ -26,7 +26,7 @@ test('whole official table retains every meeting, contract, zero, blank and unno
  const bad=structuredClone(t);bad.rows[8].probabilities[0]+=1;assert.equal(F.validTable(bad),false);
  bad.rows[8]=structuredClone(t.rows[8]);bad.columns[1].lower=3.9;assert.equal(F.validTable(bad),false);
  assert.equal(F.latestTable(data,Date.parse(receipt.retrievedAt)-1),undefined);
- const s=data.meetings[0].snapshots.at(-1);assert.equal(s.observedDate,null);assert.ok(F.valid(s));
+ const s=data.meetings[0].snapshots.find(s=>s.retrievedAt===receipt.retrievedAt);assert.ok(s);assert.equal(s.observedDate,null);assert.ok(F.valid(s));
  assert.equal(F.snapshots(data.meetings[0],Date.parse(receipt.retrievedAt)+1).at(-1),s);
  assert.match(F.label(s),/^获取 /);
  const crypto=require('node:crypto'),fs=require('node:fs'),path=require('node:path'),source=data.sources.find(s=>s.id===t.sourceId);
