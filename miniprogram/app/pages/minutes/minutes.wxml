@@ -17,8 +17,9 @@
       </view>
       <view class="m-muted muted">相关标的：{{item.stocks || '——'}}</view>
       <view class="m-body">{{item.summary}}</view>
-      <view class="dl" bindtap="copyDownload" data-link="{{item.link}}">
-        <text class="dl-btn">复制下载链接</text>
+      <view class="dl row spread">
+        <text class="fav-btn {{favKeys[item.favKey] ? 'fav-on' : ''}}" bindtap="onToggleFav" data-idx="{{index}}">{{favKeys[item.favKey] ? '已收藏' : '收藏'}}</text>
+        <text class="dl-btn" bindtap="copyDownload" data-link="{{item.link}}">复制下载链接</text>
       </view>
     </view>
   </block>

@@ -27,9 +27,23 @@
 }
 .dl {
   margin-top: 16rpx;
-  text-align: right;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .dl-btn {
   color: #b03a2e;
   font-size: 24rpx;
+}
+.fav-btn {
+  font-size: 24rpx;
+  color: #5a5a52;
+  padding: 4rpx 16rpx;
+  border: 1rpx solid #ecebe6;
+  border-radius: 24rpx;
+}
+.fav-on {
+  color: #b03a2e;
+  border-color: #b03a2e;
+  background: rgba(176, 58, 46, 0.06);
 }

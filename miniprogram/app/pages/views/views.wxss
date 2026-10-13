@@ -58,4 +58,17 @@
   color: #b03a2e;
   font-size: 24rpx;
 }
+.fav-btn {
+  margin-right: 24rpx;
+  font-size: 24rpx;
+  color: #5a5a52;
+  padding: 4rpx 16rpx;
+  border: 1rpx solid #ecebe6;
+  border-radius: 24rpx;
+}
+.fav-on {
+  color: #b03a2e;
+  border-color: #b03a2e;
+  background: rgba(176, 58, 46, 0.06);
+}
 .load-tip { padding: 24rpx 0 48rpx; }

@@ -1,4 +1,6 @@
 const api = require('../../utils/api');
+const favorites = require('../../utils/favorites');
+const { cloud } = require('../../utils/cloud');
 
 Page({
   data: {
@@ -11,10 +13,13 @@ Page({
     total: 0,
     coverageTo: '',
     loading: true,
-    err: ''
+    err: '',
+    favKeys: {},      // 已收藏 ref_key 集合
+    signedIn: false
   },
 
   onLoad() { this.refresh(); },
+  onShow() { this.checkSession(); },
   onPullDownRefresh() { this.refresh().then(() => wx.stopPullDownRefresh()); },
   onReachBottom() {
     if (this.data.shown.length < this.data.list.length) {
@@ -22,11 +27,29 @@ Page({
     }
   },
 
+  async checkSession() {
+    try {
+      const session = await favorites.ensureSession();
+      this.setData({ signedIn: !!session });
+      if (session) this.loadFavoriteKeys();
+    } catch (e) {
+      this.setData({ signedIn: false });
+    }
+  },
+
+  async loadFavoriteKeys() {
+    const r = await favorites.list('view');
+    if (r.error || !Array.isArray(r.data)) return;
+    const favKeys = {};
+    r.data.forEach(x => { favKeys[x.ref_key] = true; });
+    this.setData({ favKeys });
+  },
+
   async refresh() {
     this.setData({ loading: true, err: '', page: 0 });
     try {
       const r = await api.dataset(this.data.tab);
-      const list = r.data || [];
+      const list = (r.data || []).map(x => Object.assign({}, x, { favKey: favorites.refKeyOf('view', x) }));
       const cov = (r.coverageTo || '').slice(0, 16);
       this.setData({
         list,
@@ -70,6 +93,28 @@ Page({
   clearSearch() {
     this.setData({ keyword: '' });
     this.setData({ shown: this.data.list.slice(0, this.data.PAGE_SIZE), page: 0, total: this.data.list.length });
+  },
+
+  // 收藏/取消收藏（云端同步，跨设备）
+  async onToggleFav(e) {
+    const idx = e.currentTarget.dataset.idx;
+    const item = this.data.shown[idx];
+    if (!item) return;
+    if (!this.data.signedIn) {
+      wx.showToast({ title: '请先在「我的」页登录', icon: 'none' });
+      return;
+    }
+    const r = await favorites.toggle('view', item);
+    if (r.error) {
+      if (r.error !== 'not-signed-in') { wx.showToast({ title: r.error, icon: 'none' }); return; }
+      wx.showToast({ title: '请先在「我的」页登录', icon: 'none' });
+      return;
+    }
+    const key = favorites.refKeyOf('view', item);
+    const favKeys = Object.assign({}, this.data.favKeys);
+    if (r.added) { favKeys[key] = true; wx.showToast({ title: '已收藏', icon: 'success' }); }
+    else { delete favKeys[key]; wx.showToast({ title: '已取消', icon: 'none' }); }
+    this.setData({ favKeys });
   },
 
   copyLink(e) {

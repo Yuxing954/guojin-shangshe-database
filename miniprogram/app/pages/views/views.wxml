@@ -29,7 +29,10 @@
           <text wx:if="{{item.comments}}">评 {{item.comments}} </text>
           <text wx:if="{{item.reads}}">阅 {{item.reads}}</text>
         </view>
-        <text wx:if="{{item.link}}" class="copy-btn" bindtap="copyLink" data-link="{{item.link}}">复制原文链接</text>
+        <view class="row">
+          <text class="fav-btn {{favKeys[item.favKey] ? 'fav-on' : ''}}" bindtap="onToggleFav" data-idx="{{index}}">{{favKeys[item.favKey] ? '已收藏' : '收藏'}}</text>
+          <text wx:if="{{item.link}}" class="copy-btn" bindtap="copyLink" data-link="{{item.link}}">复制原文链接</text>
+        </view>
       </view>
     </view>
     <view class="load-tip muted center" wx:if="{{shown.length < list.length}}">上拉加载更多…</view>

@@ -2,10 +2,18 @@
   "description": "国金商社·线上可视化数据库 微信小程序",
   "appid": "touristappid",
   "compileType": "miniprogram",
+  "miniprogramRoot": "./",
   "setting": {
     "es6": true,
     "minified": true,
-    "urlCheck": false
+    "urlCheck": false,
+    "packNpmManually": true,
+    "packNpmRelationList": [
+      {
+        "packageJsonPath": "./package.json",
+        "miniprogramNpmDistDir": "./"
+      }
+    ]
   },
   "projectname": "guojin-shangshe-miniprogram"
 }

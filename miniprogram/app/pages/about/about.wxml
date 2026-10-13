@@ -1,4 +1,39 @@
 <view class="page-wrap">
+  <!-- 云账号：微信登录 + 云端收藏 -->
+  <view class="card">
+    <view class="card-title">我的云账号</view>
+    <block wx:if="{{user}}">
+      <view class="p">已登录{{user.phone ? '（' + user.phone + '）' : ''}}{{user.email ? '（' + user.email + '）' : ''}}</view>
+      <view class="link-row" bindtap="onLogout">退出登录</view>
+    </block>
+    <block wx:else>
+      <view class="p muted">登录后可跨设备云端收藏市场观点与纪要</view>
+      <button class="login-btn" bindtap="onLogin">微信一键登录</button>
+    </block>
+    <view wx:if="{{loginMsg}}" class="p err-text">{{loginMsg}}</view>
+  </view>
+
+  <!-- 云端收藏列表 -->
+  <view class="card" wx:if="{{user}}">
+    <view class="card-title">云端收藏（{{favList.length}}）</view>
+    <view wx:if="{{favLoading}}" class="p muted">加载中…</view>
+    <view wx:elif="{{favErr}}" class="p err-text">{{favErr}}</view>
+    <view wx:elif="{{!favList.length}}" class="p muted">暂无收藏，去「观点」「纪要」页点收藏</view>
+    <block wx:else>
+      <view class="fav-item" wx:for="{{favList}}" wx:key="id">
+        <view class="fav-head row spread">
+          <text class="badge">{{item.type}}</text>
+          <text class="muted small">{{item.meta.t}}</text>
+        </view>
+        <view class="fav-title">{{item.title}}</view>
+        <view class="row spread">
+          <text wx:if="{{item.link}}" class="copy-btn" bindtap="copyFavLink" data-link="{{item.link}}">复制链接</text>
+          <text class="muted small" bindtap="removeFav" data-idx="{{index}}">移除</text>
+        </view>
+      </view>
+    </block>
+  </view>
+
   <view class="card">
     <view class="card-title">关于本小程序</view>
     <view class="p">「国金商社·线上可视化数据库」移动端。数据实时来自 GitHub 仓库 Yuxing954/guojin-shangshe-database，仓库更新后小程序下拉刷新即可获取最新数据。</view>
