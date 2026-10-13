@@ -1,16 +1,17 @@
 <!doctype html>
-<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>数据浏览器 · 国金商社</title>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>数据中心 · 国金商社</title>
 <link rel="stylesheet" href="scripts/site.css?v=20261011public"><link rel="stylesheet" href="scripts/data-browser.css?v=20261010-unified">
 <script defer src="scripts/site-ui.js?v=20261012dailybottom"></script><script defer src="scripts/site-data.js?v=20261012chartclarity"></script><script defer src="scripts/site-shell.js?v=20261012dailybottom"></script><script defer src="scripts/data-browser.js?v=20261010-unified"></script>
-<link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-charts.css?v=20261012mobile1"><link rel="stylesheet" href="scripts/site-polish.css?v=20261011subnav"><script src="scripts/site-charts.js?v=20261012mobile1"></script></head>
-<body><main id="main"><header class="portal-header"><div><p class="eyebrow">研究工具</p><h1>数据浏览器</h1></div><a class="portal-top-link" href="data-manifest.json" download>数据清单 ↗</a></header>
-<div class="portal-status" id="status" role="status">正在读取数据清单…</div>
+<link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-charts.css?v=20261012mobile1"><link rel="stylesheet" href="scripts/data-notes.css?v=20261012center"><link rel="stylesheet" href="scripts/site-polish.css?v=20261011subnav"><script src="scripts/site-charts.js?v=20261012mobile1"></script><script defer src="scripts/consumption-macro-model.js?v=20261012notes"></script><script defer src="scripts/data-notes.js?v=20261012center"></script><script defer src="scripts/data-center.js?v=20261012center"></script></head>
+<body><main id="main"><header class="portal-header"><div><p class="eyebrow">研究工具</p><h1>数据中心</h1></div><a class="portal-top-link" href="data-manifest.json" download>数据清单 ↗</a></header>
+<nav class="portal-tabs site-subnav" aria-label="数据中心"><a id="center-browse-link" href="#browse" aria-current="page">数据浏览</a><a id="center-notes-link" href="#dutyfree">数据说明</a></nav>
+<section id="center-browse" aria-label="数据浏览"><div class="portal-status" id="status" role="status">正在读取数据清单…</div>
 <div class="data-workspace"><aside class="portal-panel data-catalog" aria-label="数据集"><label for="dataset-search">查找数据集</label><input id="dataset-search" type="search" placeholder="名称、分类"><nav id="datasets" aria-label="数据集目录"></nav></aside>
 <section class="portal-panel data-view" aria-labelledby="dataset-title"><div class="portal-panel-head"><h2 id="dataset-title">数据集</h2><span id="format" class="portal-tag"></span></div><p id="metadata" class="portal-note"></p>
 <div class="portal-filter"><input id="query" type="search" aria-label="搜索数据" placeholder="搜索当前数据"><select id="field" aria-label="搜索字段"><option value="">全部字段</option></select><button id="reset" class="portal-button">重置筛选</button><button id="reload" class="portal-button">重试</button></div>
 <div class="data-actions"><a id="source" class="portal-button" download>下载原始文件</a><button id="export" class="portal-button" disabled>导出当前范围 CSV</button><span id="count" class="portal-note" role="status"></span></div>
 <div class="portal-table-scroll" id="table"></div><pre id="json" class="data-json" hidden></pre>
 <div class="portal-pager" id="pager" hidden><span id="page-label"></span><div><button id="prev">上一页</button> <button id="next">下一页</button></div></div>
-</section></div></main></body></html>
+</section></div></section><section id="center-notes" aria-label="数据说明" hidden><nav id="notes-tabs" class="portal-tabs site-subnav" aria-label="说明模块"></nav><div id="notes-status" role="status"></div><section id="notes-content" aria-live="polite"></section></section></main></body></html>
 
 
