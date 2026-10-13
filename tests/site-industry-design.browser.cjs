@@ -46,6 +46,15 @@ async function styles(scope,mobile){
    console.log('PASS shared industry content, all views and mobile:',sid);
   }
   assert.ok(Math.max(...stamps)-Math.min(...stamps)<=2,'metadata/navigation spacing differs: '+stamps);
+  await page.goto(base+'/industry.html?panelView=view%3Dcities%26week%3D2025W01#hotel');
+  await page.frameLocator('#panel-hotel').locator('#core-kpis .board-stat').first().waitFor({timeout:45000});
+  assert.equal(await page.frameLocator('#panel-hotel').locator('.hd-header').count(),0);
+  assert.equal(await page.frameLocator('#panel-hotel').locator('[data-view=overview]').getAttribute('aria-pressed'),'true');
+  await page.goto(base+'/industry.html?panelSector=hotel&panelView=view%3Dcities#dutyfree');
+  await page.frameLocator('#panel-dutyfree').locator('#hn-sales').filter({hasText:/\d/}).waitFor({timeout:45000});
+  assert.equal(await page.frameLocator('#panel-dutyfree').locator('.hero,.crumbs').count(),0);
+  assert.equal(await page.frameLocator('#panel-dutyfree').locator('#view-monthly').isVisible(),true);
+  assert.match(await page.frameLocator('#panel-dutyfree').locator('#hn-metric').innerText(),/购物人次（万人次）/);
   assert.deepEqual(errors,[]);console.log('PASS industry cards, panels, typography, filters, metadata and iframe sizing');
  }finally{await browser.close();server.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;server.close();});
