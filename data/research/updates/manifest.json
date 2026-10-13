@@ -3,11 +3,12 @@
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
   "coverageFrom": "2026-10-13T13:01:56.285+0800",
-  "coverageTo": "2026-10-13T13:41:40.153+0800",
+  "coverageTo": "2026-10-13T15:03:11.304+0800",
   "oldestFetched": "2026-10-13T12:07:25.441+0800",
   "fetchedTopics": 22,
   "files": {
     "views": [
+      "data/research/updates/2026-10-13-1510-views-001.csv",
       "data/research/updates/2026-10-13-1305-views-001.csv",
       "data/research/updates/2026-10-13-1034-views-001.csv",
       "data/research/updates/2026-10-13-0903-views.csv",
@@ -34,6 +35,7 @@
       "data/research/updates/2026-10-07-views-002.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-10-13-1510-all_views-001.csv",
       "data/research/updates/2026-10-13-1356-all_views-001.csv",
       "data/research/updates/2026-10-13-1305-all_views-001.csv",
       "data/research/updates/2026-10-13-1210-all_views-001.csv",
@@ -120,13 +122,13 @@
     ]
   },
   "counts": {
-    "views": 220,
-    "all_views": 4725,
+    "views": 221,
+    "all_views": 4746,
     "minutes": 101
   },
   "latest": {
-    "views": "2026-10-13T12:07:25.441+0800",
-    "all_views": "2026-10-13T13:41:22.697+0800",
+    "views": "2026-10-13T14:50:46.708+0800",
+    "all_views": "2026-10-13T15:03:11.304+0800",
     "minutes": "2026-10-12T01:07:33"
   },
   "excluded": {
@@ -5267,130 +5269,119 @@
     ]
   },
   "lastRun": {
-    "runId": "2026-10-13-1356",
-    "previousCoverageTo": "2026-10-13T13:01:56.285+0800",
+    "runId": "2026-10-13-1510",
+    "previousCoverageTo": "2026-10-13T13:41:40.153+0800",
     "newSourceTopics": 22,
     "added": {
-      "views": 0,
-      "all_views": 14
+      "views": 1,
+      "all_views": 21
     },
-    "duplicates": 3,
-    "excluded": 5,
-    "record": "data/research/updates/2026-10-13-1356-record.json",
-    "syncedAt": "2026-10-13T05:56:34Z",
-    "coverageTo": "2026-10-13T13:41:40.153+0800",
+    "duplicates": 0,
+    "excluded": 0,
+    "record": "data/research/updates/2026-10-13-1510-record.json",
+    "syncedAt": "2026-10-13T07:10:19Z",
+    "coverageTo": "2026-10-13T15:03:11.304+0800",
     "addedTopicIds": [
       {
-        "topicId": "55521555585451444",
+        "topicId": "45548555148854448",
         "kind": "all_views"
       },
       {
-        "topicId": "14425444484158422",
+        "topicId": "14425444825558842",
         "kind": "all_views"
       },
       {
-        "topicId": "14425444484151182",
+        "topicId": "22258222158881451",
         "kind": "all_views"
       },
       {
-        "topicId": "22258222212482881",
+        "topicId": "45548555148882858",
         "kind": "all_views"
       },
       {
-        "topicId": "14425444484288142",
+        "topicId": "14425444825554882",
         "kind": "all_views"
       },
       {
-        "topicId": "55521555585288184",
+        "topicId": "55521555821111254",
         "kind": "all_views"
       },
       {
-        "topicId": "82258222212514552",
+        "topicId": "82258222158551452",
         "kind": "all_views"
       },
       {
-        "topicId": "14425444484284182",
+        "topicId": "45548555148441448",
         "kind": "all_views"
       },
       {
-        "topicId": "45548555515418418",
+        "topicId": "22258222158554451",
         "kind": "all_views"
       },
       {
-        "topicId": "14425444484282112",
+        "topicId": "82258222158552422",
+        "kind": "views"
+      },
+      {
+        "topicId": "82258222158552512",
         "kind": "all_views"
       },
       {
-        "topicId": "55521555585282154",
+        "topicId": "22258222158558111",
         "kind": "all_views"
       },
       {
-        "topicId": "55521555585244554",
+        "topicId": "45548555144218248",
         "kind": "all_views"
       },
       {
-        "topicId": "55521555585244184",
+        "topicId": "55521555822448284",
         "kind": "all_views"
       },
       {
-        "topicId": "14425444484214212",
+        "topicId": "14425444822114182",
+        "kind": "all_views"
+      },
+      {
+        "topicId": "14425444822554112",
+        "kind": "all_views"
+      },
+      {
+        "topicId": "82258222155888812",
+        "kind": "all_views"
+      },
+      {
+        "topicId": "14425444822555242",
+        "kind": "all_views"
+      },
+      {
+        "topicId": "45548555144884248",
+        "kind": "all_views"
+      },
+      {
+        "topicId": "14425444822521822",
+        "kind": "all_views"
+      },
+      {
+        "topicId": "14425444822521482",
+        "kind": "all_views"
+      },
+      {
+        "topicId": "45548555144845888",
         "kind": "all_views"
       }
     ],
-    "duplicateTopicIds": [
-      {
-        "topicId": "14425444484144842",
-        "reason": "body and compactBody key already indexed"
-      },
-      {
-        "topicId": "45548555515258828",
-        "reason": "compactBody key already indexed"
-      },
-      {
-        "topicId": "45548555515254128",
-        "duplicateOf": "55521555585451444",
-        "reason": "same body within batch"
-      }
-    ],
-    "excludedTopics": [
-      {
-        "topicId": "45548555515884528",
-        "title": "「文件」",
-        "publishedAt": "2026-10-13T13:27:31.062+0800",
-        "reason": "正文只有附件占位，附件未读取，未作推断。"
-      },
-      {
-        "topicId": "14425444484521852",
-        "title": "「文件」",
-        "publishedAt": "2026-10-13T13:26:52.082+0800",
-        "reason": "正文只有附件占位，附件未读取，未作推断。"
-      },
-      {
-        "topicId": "82258222212544812",
-        "title": "<e type=\"hashtag\" hid=\"51518522244414\" title=\"%23%E7%BA%AA%E8%A6%81%26",
-        "publishedAt": "2026-10-13T13:21:49.799+0800",
-        "reason": "正文只有报告标签且含附件，附件未读取，未作推断。"
-      },
-      {
-        "topicId": "22258222212544851",
-        "title": "<e type=\"hashtag\" hid=\"51518522244414\" title=\"%23%E7%BA%AA%E8%A6%81%26",
-        "publishedAt": "2026-10-13T13:21:41.567+0800",
-        "reason": "正文只有报告标签且含附件，附件未读取，未作推断。"
-      },
-      {
-        "topicId": "14425444485885242",
-        "title": "「文件」",
-        "publishedAt": "2026-10-13T13:15:32.367+0800",
-        "reason": "正文只有附件占位，附件未读取，未作推断。"
-      }
-    ],
+    "duplicateTopicIds": [],
+    "excludedTopics": [],
     "briefChanges": {
       "added": [],
-      "updated": [],
+      "updated": [
+        "smoore-q3-20261013"
+      ],
       "expiredRemoved": []
     },
     "sourceGroup": "88888142214212",
     "sourceName": "水木调研纪要-2.0",
-    "oldestFetched": "2026-10-13T12:07:25.441+0800"
+    "oldestFetched": "2026-10-13T13:27:31.062+0800"
   }
 }
