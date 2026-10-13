@@ -9,3 +9,6 @@ archive/manifest.json 的 coverageTo 是索引覆盖点；若落后于 updates/m
 每个历史分片保留完整原始行；manifest列出路径、行数、时间范围、字节数及SHA256。只在需要核对原文时读取对应时间的分片。提交增量CSV、摘要、覆盖点和更新记录后，仓库构建自动重新生成索引与分片。回读索引覆盖点、SHA256、新增topic_id对应桶及最新分片，并验证构建部署。保留现有首屏缓存、最近2000条及网页历史查询方式。
 
 商社精选分类补充：纯快递、快运、寄递公司及行业的股票推荐、业绩点评和行业策略归入 `all_views`，不进入 `views` 或“观点摘要”；明确讨论即时零售、餐饮或商超配送渠道价值的同城履约观点可以保留。历史更正只调整分类，原始正文和发布时间保留在全部观点分片中。
+
+
+小程序读取文件由 `scripts/build_research_shards.py` 在同一构建流程中从完整归档生成：`data/research/market-views-recent-300.json` 是两类观点合并后按发布时间倒序的前300条；`data/research/market-views-all.json` 是两类市场观点的完整集合，包含前300条。每条包含 `kind`、`topicId`、`publishedAt` 与原始 `record`。新增观点或分类变化后，Actions 会重建两个文件并提交；回读时核对两文件 `coverageTo`、总数、最近文件不超过300条且与全量文件前缀一致。

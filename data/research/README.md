@@ -26,3 +26,12 @@ python scripts/test_research_updates.py
 
 本地预览缺少大型历史 CSV 时可显式使用 `--use-existing-index`；此时完整历史条数为未知。正式构建必须读取完整历史 CSV，GitHub Actions 在主分支重新生成索引和首页摘要。定时构建仅整理仓库现有内容，不会自动获取知识星球新主题。
 
+
+
+## 小程序市场观点数据
+
+- `market-views-recent-300.json`：`views` 与 `all_views` 合并后按北京时间原始发布时间倒序排列的最近300条。每条带 `kind`、`topicId`、`publishedAt` 和完整原始 `record`。
+- `market-views-all.json`：同一口径的全部市场观点，包含最近300条；用于历史检索或按需加载。
+- 两个文件均有 `schemaVersion`、`coverageTo`、`totalRows`、`sort` 和 `items`。每次市场观点数据或分类调整后，由 GitHub Actions 从完整归档重新生成并提交。小程序默认只请求最近300条；需要全量历史时再请求全部文件。
+
+稳定地址：`https://yuxing954.github.io/guojin-shangshe-database/data/research/market-views-recent-300.json` 和 `https://yuxing954.github.io/guojin-shangshe-database/data/research/market-views-all.json`。
