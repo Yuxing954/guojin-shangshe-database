@@ -1,23 +1,53 @@
 {
-  "importedAt": "2026-10-12T18:09:23+08:00",
+  "importedAt": "2026-10-13T16:28:59+08:00",
   "mode": "weekly-update",
   "sources": [
     {
-      "file": "全国酒店数据20261012 (1).xlsx",
-      "sha256": "73f317c7c897b37058c6679f47c377bc94e7e322f4614971e9c63382a11442af",
+      "file": "【国金商社】酒店之家数据库 20261005.xlsx",
+      "sha256": "3c477526e8036b4eefac0942cf8acb154f356b805350991adba74e594a50f498",
+      "rows": {
+        "hotel_industry_weekly.csv": 3205,
+        "hotel_group_weekly.csv": 540,
+        "hotel_supply_weekly.csv": 1166,
+        "hotel_market_share_annual.csv": 71
+      }
+    },
+    {
+      "file": "全国酒店数据_20261013.xlsx",
+      "sha256": "d2a3e6c6ed2581fb78f01647ce12ce00ce5f2044a8cc10d39fdbeba8a6e4a4e3",
       "rows": {
         "hotel_industry_weekly.csv": 120,
         "hotel_group_weekly.csv": 0,
         "hotel_supply_weekly.csv": 144,
         "hotel_market_share_annual.csv": 0
       }
+    },
+    {
+      "file": "城市酒店数据_全部20城_20261013.xlsx",
+      "sha256": "eebed06e66f3479e37eebccbd7db81ac5d743108aae2f73f8bcfd3f830ab1bf3",
+      "rows": {
+        "hotel_industry_weekly.csv": 2400,
+        "hotel_group_weekly.csv": 0,
+        "hotel_supply_weekly.csv": 2880,
+        "hotel_market_share_annual.csv": 0
+      }
+    },
+    {
+      "file": "集团酒店数据_全国4集团_20261013.xlsx",
+      "sha256": "1bc9b10b4790b515035ec5c5045d4d5bf757fc91c4f109e5b0ce4667dd5277c4",
+      "rows": {
+        "hotel_industry_weekly.csv": 0,
+        "hotel_group_weekly.csv": 96,
+        "hotel_supply_weekly.csv": 0,
+        "hotel_market_share_annual.csv": 0
+      }
     }
   ],
   "datasets": {
     "hotel_industry_weekly.csv": {
-      "rowCount": 53439,
-      "previousRowCount": 53434,
-      "added": 5,
+      "rowCount": 53539,
+      "previousRowCount": 53439,
+      "added": 100,
       "revised": 0,
       "removed": 0,
       "latestPeriod": "2026W41",
@@ -47,21 +77,21 @@
       ]
     },
     "hotel_group_weekly.csv": {
-      "rowCount": 576,
+      "rowCount": 580,
       "previousRowCount": 576,
-      "added": 0,
+      "added": 4,
       "revised": 0,
       "removed": 0,
-      "latestPeriod": "2026W40",
-      "asOf": "2026-10-04",
+      "latestPeriod": "2026W41",
+      "asOf": "2026-10-11",
       "regions": [
         "全国"
       ]
     },
     "hotel_supply_weekly.csv": {
-      "rowCount": 27531,
-      "previousRowCount": 27525,
-      "added": 6,
+      "rowCount": 27651,
+      "previousRowCount": 27531,
+      "added": 120,
       "revised": 0,
       "removed": 0,
       "latestPeriod": "2026W41",
@@ -102,1461 +132,2421 @@
     }
   },
   "comparisonPolicy": "Default YoY matches source year/week; no automatic holiday shift. Comparable holiday periods must be explicitly mapped and labelled.",
-  "sourceAnomalyCount": 59,
-  "sourceAnomalyFile": "data/hotel-source-anomalies.csv",
-  "historicalCoverage": {
-    "hotel_industry_weekly.csv": {
-      "上海": {
-        "firstPeriod": "2017W02",
-        "lastPeriod": "2026W40",
-        "periodCount": 509,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "hotel_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "occupancy_rate": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          },
-          "adr": {
-            "firstPeriod": "2017W02",
-            "lastPeriod": "2026W40",
-            "periodCount": 509
-          },
-          "revpar": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          }
-        }
-      },
-      "东莞": {
-        "firstPeriod": "2017W02",
-        "lastPeriod": "2026W40",
-        "periodCount": 509,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "hotel_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "occupancy_rate": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          },
-          "adr": {
-            "firstPeriod": "2017W02",
-            "lastPeriod": "2026W40",
-            "periodCount": 509
-          },
-          "revpar": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          }
-        }
-      },
-      "佛山": {
-        "firstPeriod": "2017W02",
-        "lastPeriod": "2026W40",
-        "periodCount": 509,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "hotel_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "occupancy_rate": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          },
-          "adr": {
-            "firstPeriod": "2017W02",
-            "lastPeriod": "2026W40",
-            "periodCount": 509
-          },
-          "revpar": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          }
-        }
-      },
-      "全国": {
-        "firstPeriod": "2017W02",
-        "lastPeriod": "2026W41",
-        "periodCount": 509,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W41",
-            "periodCount": 220
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W41",
-            "periodCount": 220
-          },
-          "hotel_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W41",
-            "periodCount": 220
-          },
-          "room_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W41",
-            "periodCount": 220
-          },
-          "occupancy_rate": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W41",
-            "periodCount": 406
-          },
-          "adr": {
-            "firstPeriod": "2017W02",
-            "lastPeriod": "2026W41",
-            "periodCount": 509
-          },
-          "revpar": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W41",
-            "periodCount": 406
-          }
-        }
-      },
-      "北京": {
-        "firstPeriod": "2017W02",
-        "lastPeriod": "2026W40",
-        "periodCount": 509,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "hotel_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "occupancy_rate": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          },
-          "adr": {
-            "firstPeriod": "2017W02",
-            "lastPeriod": "2026W40",
-            "periodCount": 509
-          },
-          "revpar": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          }
-        }
-      },
-      "南京": {
-        "firstPeriod": "2017W02",
-        "lastPeriod": "2026W40",
-        "periodCount": 509,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "hotel_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "occupancy_rate": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          },
-          "adr": {
-            "firstPeriod": "2017W02",
-            "lastPeriod": "2026W40",
-            "periodCount": 509
-          },
-          "revpar": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          }
-        }
-      },
-      "合肥": {
-        "firstPeriod": "2017W02",
-        "lastPeriod": "2026W40",
-        "periodCount": 509,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "hotel_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "occupancy_rate": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          },
-          "adr": {
-            "firstPeriod": "2017W02",
-            "lastPeriod": "2026W40",
-            "periodCount": 509
-          },
-          "revpar": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          }
-        }
-      },
-      "天津": {
-        "firstPeriod": "2017W02",
-        "lastPeriod": "2026W40",
-        "periodCount": 509,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "hotel_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "occupancy_rate": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          },
-          "adr": {
-            "firstPeriod": "2017W02",
-            "lastPeriod": "2026W40",
-            "periodCount": 509
-          },
-          "revpar": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          }
-        }
-      },
-      "广州": {
-        "firstPeriod": "2017W02",
-        "lastPeriod": "2026W40",
-        "periodCount": 509,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "hotel_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "occupancy_rate": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          },
-          "adr": {
-            "firstPeriod": "2017W02",
-            "lastPeriod": "2026W40",
-            "periodCount": 509
-          },
-          "revpar": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          }
-        }
-      },
-      "成都": {
-        "firstPeriod": "2017W02",
-        "lastPeriod": "2026W40",
-        "periodCount": 509,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "hotel_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "occupancy_rate": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          },
-          "adr": {
-            "firstPeriod": "2017W02",
-            "lastPeriod": "2026W40",
-            "periodCount": 509
-          },
-          "revpar": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          }
-        }
-      },
-      "昆明": {
-        "firstPeriod": "2017W02",
-        "lastPeriod": "2026W40",
-        "periodCount": 509,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "hotel_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "occupancy_rate": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          },
-          "adr": {
-            "firstPeriod": "2017W02",
-            "lastPeriod": "2026W40",
-            "periodCount": 509
-          },
-          "revpar": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          }
-        }
-      },
-      "杭州": {
-        "firstPeriod": "2017W02",
-        "lastPeriod": "2026W40",
-        "periodCount": 509,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "hotel_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "occupancy_rate": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          },
-          "adr": {
-            "firstPeriod": "2017W02",
-            "lastPeriod": "2026W40",
-            "periodCount": 509
-          },
-          "revpar": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          }
-        }
-      },
-      "武汉": {
-        "firstPeriod": "2017W02",
-        "lastPeriod": "2026W40",
-        "periodCount": 509,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "hotel_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "occupancy_rate": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          },
-          "adr": {
-            "firstPeriod": "2017W02",
-            "lastPeriod": "2026W40",
-            "periodCount": 509
-          },
-          "revpar": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          }
-        }
-      },
-      "沈阳": {
-        "firstPeriod": "2017W02",
-        "lastPeriod": "2026W40",
-        "periodCount": 509,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "hotel_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "occupancy_rate": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          },
-          "adr": {
-            "firstPeriod": "2017W02",
-            "lastPeriod": "2026W40",
-            "periodCount": 509
-          },
-          "revpar": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          }
-        }
-      },
-      "深圳": {
-        "firstPeriod": "2017W02",
-        "lastPeriod": "2026W40",
-        "periodCount": 509,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "hotel_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "occupancy_rate": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          },
-          "adr": {
-            "firstPeriod": "2017W02",
-            "lastPeriod": "2026W40",
-            "periodCount": 509
-          },
-          "revpar": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          }
-        }
-      },
-      "苏州": {
-        "firstPeriod": "2017W02",
-        "lastPeriod": "2026W40",
-        "periodCount": 509,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "hotel_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "occupancy_rate": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          },
-          "adr": {
-            "firstPeriod": "2017W02",
-            "lastPeriod": "2026W40",
-            "periodCount": 509
-          },
-          "revpar": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          }
-        }
-      },
-      "西安": {
-        "firstPeriod": "2017W02",
-        "lastPeriod": "2026W40",
-        "periodCount": 509,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "hotel_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "occupancy_rate": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          },
-          "adr": {
-            "firstPeriod": "2017W02",
-            "lastPeriod": "2026W40",
-            "periodCount": 509
-          },
-          "revpar": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          }
-        }
-      },
-      "郑州": {
-        "firstPeriod": "2017W02",
-        "lastPeriod": "2026W40",
-        "periodCount": 509,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "hotel_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "occupancy_rate": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          },
-          "adr": {
-            "firstPeriod": "2017W02",
-            "lastPeriod": "2026W40",
-            "periodCount": 509
-          },
-          "revpar": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          }
-        }
-      },
-      "重庆": {
-        "firstPeriod": "2017W02",
-        "lastPeriod": "2026W40",
-        "periodCount": 509,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "hotel_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "occupancy_rate": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          },
-          "adr": {
-            "firstPeriod": "2017W02",
-            "lastPeriod": "2026W40",
-            "periodCount": 509
-          },
-          "revpar": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          }
-        }
-      },
-      "长沙": {
-        "firstPeriod": "2017W02",
-        "lastPeriod": "2026W40",
-        "periodCount": 509,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "hotel_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "occupancy_rate": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          },
-          "adr": {
-            "firstPeriod": "2017W02",
-            "lastPeriod": "2026W40",
-            "periodCount": 509
-          },
-          "revpar": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          }
-        }
-      },
-      "青岛": {
-        "firstPeriod": "2017W02",
-        "lastPeriod": "2026W40",
-        "periodCount": 509,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "hotel_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count_15plus": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "occupancy_rate": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          },
-          "adr": {
-            "firstPeriod": "2017W02",
-            "lastPeriod": "2026W40",
-            "periodCount": 509
-          },
-          "revpar": {
-            "firstPeriod": "2019W01",
-            "lastPeriod": "2026W40",
-            "periodCount": 405
-          }
+  "previousUpdateRecord": {
+    "importedAt": "2026-10-12T18:09:23+08:00",
+    "mode": "weekly-update",
+    "sources": [
+      {
+        "file": "全国酒店数据20261012 (1).xlsx",
+        "sha256": "73f317c7c897b37058c6679f47c377bc94e7e322f4614971e9c63382a11442af",
+        "rows": {
+          "hotel_industry_weekly.csv": 120,
+          "hotel_group_weekly.csv": 0,
+          "hotel_supply_weekly.csv": 144,
+          "hotel_market_share_annual.csv": 0
         }
       }
+    ],
+    "datasets": {
+      "hotel_industry_weekly.csv": {
+        "rowCount": 53439,
+        "previousRowCount": 53434,
+        "added": 5,
+        "revised": 0,
+        "removed": 0,
+        "latestPeriod": "2026W41",
+        "asOf": "2026-10-11",
+        "regions": [
+          "上海",
+          "东莞",
+          "佛山",
+          "全国",
+          "北京",
+          "南京",
+          "合肥",
+          "天津",
+          "广州",
+          "成都",
+          "昆明",
+          "杭州",
+          "武汉",
+          "沈阳",
+          "深圳",
+          "苏州",
+          "西安",
+          "郑州",
+          "重庆",
+          "长沙",
+          "青岛"
+        ]
+      },
+      "hotel_group_weekly.csv": {
+        "rowCount": 576,
+        "previousRowCount": 576,
+        "added": 0,
+        "revised": 0,
+        "removed": 0,
+        "latestPeriod": "2026W40",
+        "asOf": "2026-10-04",
+        "regions": [
+          "全国"
+        ]
+      },
+      "hotel_supply_weekly.csv": {
+        "rowCount": 27531,
+        "previousRowCount": 27525,
+        "added": 6,
+        "revised": 0,
+        "removed": 0,
+        "latestPeriod": "2026W41",
+        "asOf": "2026-10-11",
+        "regions": [
+          "上海",
+          "东莞",
+          "佛山",
+          "全国",
+          "北京",
+          "南京",
+          "合肥",
+          "天津",
+          "广州",
+          "成都",
+          "昆明",
+          "杭州",
+          "武汉",
+          "沈阳",
+          "深圳",
+          "苏州",
+          "西安",
+          "郑州",
+          "重庆",
+          "长沙",
+          "青岛"
+        ]
+      },
+      "hotel_market_share_annual.csv": {
+        "rowCount": 71,
+        "previousRowCount": 71,
+        "added": 0,
+        "revised": 0,
+        "removed": 0,
+        "latestPeriod": "2025",
+        "asOf": "2025-12-31",
+        "regions": []
+      }
     },
-    "hotel_supply_weekly.csv": {
-      "上海": {
-        "firstPeriod": "2022W31",
-        "lastPeriod": "2026W40",
-        "periodCount": 219,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
+    "comparisonPolicy": "Default YoY matches source year/week; no automatic holiday shift. Comparable holiday periods must be explicitly mapped and labelled.",
+    "sourceAnomalyCount": 59,
+    "sourceAnomalyFile": "data/hotel-source-anomalies.csv",
+    "historicalCoverage": {
+      "hotel_industry_weekly.csv": {
+        "上海": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "periodCount": 509,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "hotel_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "occupancy_rate": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            },
+            "adr": {
+              "firstPeriod": "2017W02",
+              "lastPeriod": "2026W40",
+              "periodCount": 509
+            },
+            "revpar": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            }
+          }
+        },
+        "东莞": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "periodCount": 509,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "hotel_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "occupancy_rate": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            },
+            "adr": {
+              "firstPeriod": "2017W02",
+              "lastPeriod": "2026W40",
+              "periodCount": 509
+            },
+            "revpar": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            }
+          }
+        },
+        "佛山": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "periodCount": 509,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "hotel_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "occupancy_rate": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            },
+            "adr": {
+              "firstPeriod": "2017W02",
+              "lastPeriod": "2026W40",
+              "periodCount": 509
+            },
+            "revpar": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            }
+          }
+        },
+        "全国": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W41",
+          "periodCount": 509,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W41",
+              "periodCount": 220
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W41",
+              "periodCount": 220
+            },
+            "hotel_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W41",
+              "periodCount": 220
+            },
+            "room_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W41",
+              "periodCount": 220
+            },
+            "occupancy_rate": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W41",
+              "periodCount": 406
+            },
+            "adr": {
+              "firstPeriod": "2017W02",
+              "lastPeriod": "2026W41",
+              "periodCount": 509
+            },
+            "revpar": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W41",
+              "periodCount": 406
+            }
+          }
+        },
+        "北京": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "periodCount": 509,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "hotel_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "occupancy_rate": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            },
+            "adr": {
+              "firstPeriod": "2017W02",
+              "lastPeriod": "2026W40",
+              "periodCount": 509
+            },
+            "revpar": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            }
+          }
+        },
+        "南京": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "periodCount": 509,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "hotel_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "occupancy_rate": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            },
+            "adr": {
+              "firstPeriod": "2017W02",
+              "lastPeriod": "2026W40",
+              "periodCount": 509
+            },
+            "revpar": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            }
+          }
+        },
+        "合肥": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "periodCount": 509,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "hotel_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "occupancy_rate": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            },
+            "adr": {
+              "firstPeriod": "2017W02",
+              "lastPeriod": "2026W40",
+              "periodCount": 509
+            },
+            "revpar": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            }
+          }
+        },
+        "天津": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "periodCount": 509,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "hotel_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "occupancy_rate": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            },
+            "adr": {
+              "firstPeriod": "2017W02",
+              "lastPeriod": "2026W40",
+              "periodCount": 509
+            },
+            "revpar": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            }
+          }
+        },
+        "广州": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "periodCount": 509,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "hotel_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "occupancy_rate": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            },
+            "adr": {
+              "firstPeriod": "2017W02",
+              "lastPeriod": "2026W40",
+              "periodCount": 509
+            },
+            "revpar": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            }
+          }
+        },
+        "成都": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "periodCount": 509,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "hotel_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "occupancy_rate": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            },
+            "adr": {
+              "firstPeriod": "2017W02",
+              "lastPeriod": "2026W40",
+              "periodCount": 509
+            },
+            "revpar": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            }
+          }
+        },
+        "昆明": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "periodCount": 509,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "hotel_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "occupancy_rate": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            },
+            "adr": {
+              "firstPeriod": "2017W02",
+              "lastPeriod": "2026W40",
+              "periodCount": 509
+            },
+            "revpar": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            }
+          }
+        },
+        "杭州": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "periodCount": 509,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "hotel_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "occupancy_rate": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            },
+            "adr": {
+              "firstPeriod": "2017W02",
+              "lastPeriod": "2026W40",
+              "periodCount": 509
+            },
+            "revpar": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            }
+          }
+        },
+        "武汉": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "periodCount": 509,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "hotel_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "occupancy_rate": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            },
+            "adr": {
+              "firstPeriod": "2017W02",
+              "lastPeriod": "2026W40",
+              "periodCount": 509
+            },
+            "revpar": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            }
+          }
+        },
+        "沈阳": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "periodCount": 509,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "hotel_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "occupancy_rate": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            },
+            "adr": {
+              "firstPeriod": "2017W02",
+              "lastPeriod": "2026W40",
+              "periodCount": 509
+            },
+            "revpar": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            }
+          }
+        },
+        "深圳": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "periodCount": 509,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "hotel_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "occupancy_rate": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            },
+            "adr": {
+              "firstPeriod": "2017W02",
+              "lastPeriod": "2026W40",
+              "periodCount": 509
+            },
+            "revpar": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            }
+          }
+        },
+        "苏州": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "periodCount": 509,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "hotel_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "occupancy_rate": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            },
+            "adr": {
+              "firstPeriod": "2017W02",
+              "lastPeriod": "2026W40",
+              "periodCount": 509
+            },
+            "revpar": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            }
+          }
+        },
+        "西安": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "periodCount": 509,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "hotel_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "occupancy_rate": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            },
+            "adr": {
+              "firstPeriod": "2017W02",
+              "lastPeriod": "2026W40",
+              "periodCount": 509
+            },
+            "revpar": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            }
+          }
+        },
+        "郑州": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "periodCount": 509,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "hotel_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "occupancy_rate": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            },
+            "adr": {
+              "firstPeriod": "2017W02",
+              "lastPeriod": "2026W40",
+              "periodCount": 509
+            },
+            "revpar": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            }
+          }
+        },
+        "重庆": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "periodCount": 509,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "hotel_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "occupancy_rate": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            },
+            "adr": {
+              "firstPeriod": "2017W02",
+              "lastPeriod": "2026W40",
+              "periodCount": 509
+            },
+            "revpar": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            }
+          }
+        },
+        "长沙": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "periodCount": 509,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "hotel_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "occupancy_rate": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            },
+            "adr": {
+              "firstPeriod": "2017W02",
+              "lastPeriod": "2026W40",
+              "periodCount": 509
+            },
+            "revpar": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            }
+          }
+        },
+        "青岛": {
+          "firstPeriod": "2017W02",
+          "lastPeriod": "2026W40",
+          "periodCount": 509,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "hotel_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count_15plus": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "occupancy_rate": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            },
+            "adr": {
+              "firstPeriod": "2017W02",
+              "lastPeriod": "2026W40",
+              "periodCount": 509
+            },
+            "revpar": {
+              "firstPeriod": "2019W01",
+              "lastPeriod": "2026W40",
+              "periodCount": 405
+            }
           }
         }
       },
-      "东莞": {
-        "firstPeriod": "2022W31",
-        "lastPeriod": "2026W40",
-        "periodCount": 219,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
+      "hotel_supply_weekly.csv": {
+        "上海": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "periodCount": 219,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            }
           }
-        }
-      },
-      "佛山": {
-        "firstPeriod": "2022W31",
-        "lastPeriod": "2026W40",
-        "periodCount": 219,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
+        },
+        "东莞": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "periodCount": 219,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            }
           }
-        }
-      },
-      "全国": {
-        "firstPeriod": "2022W42",
-        "lastPeriod": "2026W41",
-        "periodCount": 209,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W42",
-            "lastPeriod": "2026W41",
-            "periodCount": 209
-          },
-          "room_count": {
-            "firstPeriod": "2022W42",
-            "lastPeriod": "2026W41",
-            "periodCount": 209
-          },
-          "chain_hotel_count": {
-            "firstPeriod": "2022W42",
-            "lastPeriod": "2026W41",
-            "periodCount": 209
-          },
-          "chain_room_count": {
-            "firstPeriod": "2022W42",
-            "lastPeriod": "2026W41",
-            "periodCount": 209
+        },
+        "佛山": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "periodCount": 219,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            }
           }
-        }
-      },
-      "北京": {
-        "firstPeriod": "2022W31",
-        "lastPeriod": "2026W40",
-        "periodCount": 219,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
+        },
+        "全国": {
+          "firstPeriod": "2022W42",
+          "lastPeriod": "2026W41",
+          "periodCount": 209,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W42",
+              "lastPeriod": "2026W41",
+              "periodCount": 209
+            },
+            "room_count": {
+              "firstPeriod": "2022W42",
+              "lastPeriod": "2026W41",
+              "periodCount": 209
+            },
+            "chain_hotel_count": {
+              "firstPeriod": "2022W42",
+              "lastPeriod": "2026W41",
+              "periodCount": 209
+            },
+            "chain_room_count": {
+              "firstPeriod": "2022W42",
+              "lastPeriod": "2026W41",
+              "periodCount": 209
+            }
           }
-        }
-      },
-      "南京": {
-        "firstPeriod": "2022W31",
-        "lastPeriod": "2026W40",
-        "periodCount": 219,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
+        },
+        "北京": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "periodCount": 219,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            }
           }
-        }
-      },
-      "合肥": {
-        "firstPeriod": "2022W31",
-        "lastPeriod": "2026W40",
-        "periodCount": 219,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
+        },
+        "南京": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "periodCount": 219,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            }
           }
-        }
-      },
-      "天津": {
-        "firstPeriod": "2022W31",
-        "lastPeriod": "2026W40",
-        "periodCount": 219,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
+        },
+        "合肥": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "periodCount": 219,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            }
           }
-        }
-      },
-      "广州": {
-        "firstPeriod": "2022W31",
-        "lastPeriod": "2026W40",
-        "periodCount": 219,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
+        },
+        "天津": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "periodCount": 219,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            }
           }
-        }
-      },
-      "成都": {
-        "firstPeriod": "2022W31",
-        "lastPeriod": "2026W40",
-        "periodCount": 219,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
+        },
+        "广州": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "periodCount": 219,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            }
           }
-        }
-      },
-      "昆明": {
-        "firstPeriod": "2022W31",
-        "lastPeriod": "2026W40",
-        "periodCount": 219,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
+        },
+        "成都": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "periodCount": 219,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            }
           }
-        }
-      },
-      "杭州": {
-        "firstPeriod": "2022W31",
-        "lastPeriod": "2026W40",
-        "periodCount": 219,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
+        },
+        "昆明": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "periodCount": 219,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            }
           }
-        }
-      },
-      "武汉": {
-        "firstPeriod": "2022W31",
-        "lastPeriod": "2026W40",
-        "periodCount": 219,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
+        },
+        "杭州": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "periodCount": 219,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            }
           }
-        }
-      },
-      "沈阳": {
-        "firstPeriod": "2022W31",
-        "lastPeriod": "2026W40",
-        "periodCount": 219,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
+        },
+        "武汉": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "periodCount": 219,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            }
           }
-        }
-      },
-      "深圳": {
-        "firstPeriod": "2022W31",
-        "lastPeriod": "2026W40",
-        "periodCount": 219,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
+        },
+        "沈阳": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "periodCount": 219,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            }
           }
-        }
-      },
-      "苏州": {
-        "firstPeriod": "2022W31",
-        "lastPeriod": "2026W40",
-        "periodCount": 219,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
+        },
+        "深圳": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "periodCount": 219,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            }
           }
-        }
-      },
-      "西安": {
-        "firstPeriod": "2022W31",
-        "lastPeriod": "2026W40",
-        "periodCount": 219,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
+        },
+        "苏州": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "periodCount": 219,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            }
           }
-        }
-      },
-      "郑州": {
-        "firstPeriod": "2022W31",
-        "lastPeriod": "2026W40",
-        "periodCount": 219,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
+        },
+        "西安": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "periodCount": 219,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            }
           }
-        }
-      },
-      "重庆": {
-        "firstPeriod": "2022W31",
-        "lastPeriod": "2026W40",
-        "periodCount": 219,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
+        },
+        "郑州": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "periodCount": 219,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            }
           }
-        }
-      },
-      "长沙": {
-        "firstPeriod": "2022W31",
-        "lastPeriod": "2026W40",
-        "periodCount": 219,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
+        },
+        "重庆": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "periodCount": 219,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            }
           }
-        }
-      },
-      "青岛": {
-        "firstPeriod": "2022W31",
-        "lastPeriod": "2026W40",
-        "periodCount": 219,
-        "metrics": {
-          "hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_hotel_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
-          },
-          "chain_room_count": {
-            "firstPeriod": "2022W31",
-            "lastPeriod": "2026W40",
-            "periodCount": 219
+        },
+        "长沙": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "periodCount": 219,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            }
+          }
+        },
+        "青岛": {
+          "firstPeriod": "2022W31",
+          "lastPeriod": "2026W40",
+          "periodCount": 219,
+          "metrics": {
+            "hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_hotel_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            },
+            "chain_room_count": {
+              "firstPeriod": "2022W31",
+              "lastPeriod": "2026W40",
+              "periodCount": 219
+            }
           }
         }
       }
     }
+  },
+  "exportVerification": {
+    "verified_at": "2026-10-13T16:27:30.429603+08:00",
+    "account": "guojin24",
+    "export_date": "2026-10-13",
+    "page_update_date": "2026-10-11",
+    "method": "Codex In-app Browser: 导出数据 -> 确定导出; original XLSX preserved byte for byte",
+    "status": "all_three_exports_validated",
+    "files": [
+      {
+        "category": "全国",
+        "source_filename": "全国酒店数据20261013.xlsx",
+        "filename": "全国酒店数据_20261013.xlsx",
+        "bytes": 22576,
+        "sha256": "d2a3e6c6ed2581fb78f01647ce12ce00ce5f2044a8cc10d39fdbeba8a6e4a4e3",
+        "source_url": "https://yj.innhome.com.cn/module/home/country",
+        "sheets": [
+          {
+            "sheet": "全国(分档次)",
+            "data_rows": 120,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市线级",
+              "酒店类型",
+              "酒店数量(分档次)",
+              "酒店房量(分档次)",
+              "酒店数量(15间及以上分档次)",
+              "酒店房量(15间及以上分档次)",
+              "酒店入住率",
+              "酒店平均房价",
+              "酒店平均房价(按入住日期统计)"
+            ]
+          },
+          {
+            "sheet": "全国(分房量)",
+            "data_rows": 144,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市线级",
+              "房量区间",
+              "酒店数量(分房量)",
+              "酒店房量(分房量)",
+              "酒店数量(连锁分房量)",
+              "酒店房量(连锁分房量)"
+            ]
+          }
+        ]
+      },
+      {
+        "category": "城市",
+        "source_filename": "城市酒店数据_北京市&广州市&上海市&天津市&重庆市&沈阳市&南京市&武汉市&成都市&西安市&郑州市&苏州市&青岛市&合肥市&杭州市&长沙市&深圳市&佛山市&东莞市&昆明市20261013.xlsx",
+        "filename": "城市酒店数据_全部20城_20261013.xlsx",
+        "bytes": 342191,
+        "sha256": "eebed06e66f3479e37eebccbd7db81ac5d743108aae2f73f8bcfd3f830ab1bf3",
+        "source_url": "https://yj.innhome.com.cn/module/home/city",
+        "sheets": [
+          {
+            "sheet": "杭州市(分档次)",
+            "data_rows": 120,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "酒店类型",
+              "酒店数量(分档次)",
+              "酒店房量(分档次)",
+              "酒店数量(15间及以上分档次)",
+              "酒店房量(15间及以上分档次)",
+              "酒店入住率",
+              "酒店平均房价",
+              "酒店平均房价(按入住日期统计)"
+            ]
+          },
+          {
+            "sheet": "郑州市(分档次)",
+            "data_rows": 120,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "酒店类型",
+              "酒店数量(分档次)",
+              "酒店房量(分档次)",
+              "酒店数量(15间及以上分档次)",
+              "酒店房量(15间及以上分档次)",
+              "酒店入住率",
+              "酒店平均房价",
+              "酒店平均房价(按入住日期统计)"
+            ]
+          },
+          {
+            "sheet": "广州市(分档次)",
+            "data_rows": 120,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "酒店类型",
+              "酒店数量(分档次)",
+              "酒店房量(分档次)",
+              "酒店数量(15间及以上分档次)",
+              "酒店房量(15间及以上分档次)",
+              "酒店入住率",
+              "酒店平均房价",
+              "酒店平均房价(按入住日期统计)"
+            ]
+          },
+          {
+            "sheet": "上海市(分档次)",
+            "data_rows": 120,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "酒店类型",
+              "酒店数量(分档次)",
+              "酒店房量(分档次)",
+              "酒店数量(15间及以上分档次)",
+              "酒店房量(15间及以上分档次)",
+              "酒店入住率",
+              "酒店平均房价",
+              "酒店平均房价(按入住日期统计)"
+            ]
+          },
+          {
+            "sheet": "北京市(分档次)",
+            "data_rows": 120,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "酒店类型",
+              "酒店数量(分档次)",
+              "酒店房量(分档次)",
+              "酒店数量(15间及以上分档次)",
+              "酒店房量(15间及以上分档次)",
+              "酒店入住率",
+              "酒店平均房价",
+              "酒店平均房价(按入住日期统计)"
+            ]
+          },
+          {
+            "sheet": "苏州市(分档次)",
+            "data_rows": 120,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "酒店类型",
+              "酒店数量(分档次)",
+              "酒店房量(分档次)",
+              "酒店数量(15间及以上分档次)",
+              "酒店房量(15间及以上分档次)",
+              "酒店入住率",
+              "酒店平均房价",
+              "酒店平均房价(按入住日期统计)"
+            ]
+          },
+          {
+            "sheet": "天津市(分档次)",
+            "data_rows": 120,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "酒店类型",
+              "酒店数量(分档次)",
+              "酒店房量(分档次)",
+              "酒店数量(15间及以上分档次)",
+              "酒店房量(15间及以上分档次)",
+              "酒店入住率",
+              "酒店平均房价",
+              "酒店平均房价(按入住日期统计)"
+            ]
+          },
+          {
+            "sheet": "深圳市(分档次)",
+            "data_rows": 120,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "酒店类型",
+              "酒店数量(分档次)",
+              "酒店房量(分档次)",
+              "酒店数量(15间及以上分档次)",
+              "酒店房量(15间及以上分档次)",
+              "酒店入住率",
+              "酒店平均房价",
+              "酒店平均房价(按入住日期统计)"
+            ]
+          },
+          {
+            "sheet": "重庆市(分档次)",
+            "data_rows": 120,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "酒店类型",
+              "酒店数量(分档次)",
+              "酒店房量(分档次)",
+              "酒店数量(15间及以上分档次)",
+              "酒店房量(15间及以上分档次)",
+              "酒店入住率",
+              "酒店平均房价",
+              "酒店平均房价(按入住日期统计)"
+            ]
+          },
+          {
+            "sheet": "青岛市(分档次)",
+            "data_rows": 120,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "酒店类型",
+              "酒店数量(分档次)",
+              "酒店房量(分档次)",
+              "酒店数量(15间及以上分档次)",
+              "酒店房量(15间及以上分档次)",
+              "酒店入住率",
+              "酒店平均房价",
+              "酒店平均房价(按入住日期统计)"
+            ]
+          },
+          {
+            "sheet": "沈阳市(分档次)",
+            "data_rows": 120,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "酒店类型",
+              "酒店数量(分档次)",
+              "酒店房量(分档次)",
+              "酒店数量(15间及以上分档次)",
+              "酒店房量(15间及以上分档次)",
+              "酒店入住率",
+              "酒店平均房价",
+              "酒店平均房价(按入住日期统计)"
+            ]
+          },
+          {
+            "sheet": "长沙市(分档次)",
+            "data_rows": 120,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "酒店类型",
+              "酒店数量(分档次)",
+              "酒店房量(分档次)",
+              "酒店数量(15间及以上分档次)",
+              "酒店房量(15间及以上分档次)",
+              "酒店入住率",
+              "酒店平均房价",
+              "酒店平均房价(按入住日期统计)"
+            ]
+          },
+          {
+            "sheet": "南京市(分档次)",
+            "data_rows": 120,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "酒店类型",
+              "酒店数量(分档次)",
+              "酒店房量(分档次)",
+              "酒店数量(15间及以上分档次)",
+              "酒店房量(15间及以上分档次)",
+              "酒店入住率",
+              "酒店平均房价",
+              "酒店平均房价(按入住日期统计)"
+            ]
+          },
+          {
+            "sheet": "昆明市(分档次)",
+            "data_rows": 120,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "酒店类型",
+              "酒店数量(分档次)",
+              "酒店房量(分档次)",
+              "酒店数量(15间及以上分档次)",
+              "酒店房量(15间及以上分档次)",
+              "酒店入住率",
+              "酒店平均房价",
+              "酒店平均房价(按入住日期统计)"
+            ]
+          },
+          {
+            "sheet": "武汉市(分档次)",
+            "data_rows": 120,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "酒店类型",
+              "酒店数量(分档次)",
+              "酒店房量(分档次)",
+              "酒店数量(15间及以上分档次)",
+              "酒店房量(15间及以上分档次)",
+              "酒店入住率",
+              "酒店平均房价",
+              "酒店平均房价(按入住日期统计)"
+            ]
+          },
+          {
+            "sheet": "成都市(分档次)",
+            "data_rows": 120,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "酒店类型",
+              "酒店数量(分档次)",
+              "酒店房量(分档次)",
+              "酒店数量(15间及以上分档次)",
+              "酒店房量(15间及以上分档次)",
+              "酒店入住率",
+              "酒店平均房价",
+              "酒店平均房价(按入住日期统计)"
+            ]
+          },
+          {
+            "sheet": "合肥市(分档次)",
+            "data_rows": 120,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "酒店类型",
+              "酒店数量(分档次)",
+              "酒店房量(分档次)",
+              "酒店数量(15间及以上分档次)",
+              "酒店房量(15间及以上分档次)",
+              "酒店入住率",
+              "酒店平均房价",
+              "酒店平均房价(按入住日期统计)"
+            ]
+          },
+          {
+            "sheet": "西安市(分档次)",
+            "data_rows": 120,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "酒店类型",
+              "酒店数量(分档次)",
+              "酒店房量(分档次)",
+              "酒店数量(15间及以上分档次)",
+              "酒店房量(15间及以上分档次)",
+              "酒店入住率",
+              "酒店平均房价",
+              "酒店平均房价(按入住日期统计)"
+            ]
+          },
+          {
+            "sheet": "东莞市(分档次)",
+            "data_rows": 120,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "酒店类型",
+              "酒店数量(分档次)",
+              "酒店房量(分档次)",
+              "酒店数量(15间及以上分档次)",
+              "酒店房量(15间及以上分档次)",
+              "酒店入住率",
+              "酒店平均房价",
+              "酒店平均房价(按入住日期统计)"
+            ]
+          },
+          {
+            "sheet": "佛山市(分档次)",
+            "data_rows": 120,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "酒店类型",
+              "酒店数量(分档次)",
+              "酒店房量(分档次)",
+              "酒店数量(15间及以上分档次)",
+              "酒店房量(15间及以上分档次)",
+              "酒店入住率",
+              "酒店平均房价",
+              "酒店平均房价(按入住日期统计)"
+            ]
+          },
+          {
+            "sheet": "杭州市(分房量)",
+            "data_rows": 144,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "房量区间",
+              "酒店数量(分房量)",
+              "酒店房量(分房量)",
+              "酒店数量(连锁分房量)",
+              "酒店房量(连锁分房量)"
+            ]
+          },
+          {
+            "sheet": "郑州市(分房量)",
+            "data_rows": 144,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "房量区间",
+              "酒店数量(分房量)",
+              "酒店房量(分房量)",
+              "酒店数量(连锁分房量)",
+              "酒店房量(连锁分房量)"
+            ]
+          },
+          {
+            "sheet": "广州市(分房量)",
+            "data_rows": 144,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "房量区间",
+              "酒店数量(分房量)",
+              "酒店房量(分房量)",
+              "酒店数量(连锁分房量)",
+              "酒店房量(连锁分房量)"
+            ]
+          },
+          {
+            "sheet": "上海市(分房量)",
+            "data_rows": 144,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "房量区间",
+              "酒店数量(分房量)",
+              "酒店房量(分房量)",
+              "酒店数量(连锁分房量)",
+              "酒店房量(连锁分房量)"
+            ]
+          },
+          {
+            "sheet": "北京市(分房量)",
+            "data_rows": 144,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "房量区间",
+              "酒店数量(分房量)",
+              "酒店房量(分房量)",
+              "酒店数量(连锁分房量)",
+              "酒店房量(连锁分房量)"
+            ]
+          },
+          {
+            "sheet": "苏州市(分房量)",
+            "data_rows": 144,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "房量区间",
+              "酒店数量(分房量)",
+              "酒店房量(分房量)",
+              "酒店数量(连锁分房量)",
+              "酒店房量(连锁分房量)"
+            ]
+          },
+          {
+            "sheet": "天津市(分房量)",
+            "data_rows": 144,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "房量区间",
+              "酒店数量(分房量)",
+              "酒店房量(分房量)",
+              "酒店数量(连锁分房量)",
+              "酒店房量(连锁分房量)"
+            ]
+          },
+          {
+            "sheet": "深圳市(分房量)",
+            "data_rows": 144,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "房量区间",
+              "酒店数量(分房量)",
+              "酒店房量(分房量)",
+              "酒店数量(连锁分房量)",
+              "酒店房量(连锁分房量)"
+            ]
+          },
+          {
+            "sheet": "重庆市(分房量)",
+            "data_rows": 144,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "房量区间",
+              "酒店数量(分房量)",
+              "酒店房量(分房量)",
+              "酒店数量(连锁分房量)",
+              "酒店房量(连锁分房量)"
+            ]
+          },
+          {
+            "sheet": "青岛市(分房量)",
+            "data_rows": 144,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "房量区间",
+              "酒店数量(分房量)",
+              "酒店房量(分房量)",
+              "酒店数量(连锁分房量)",
+              "酒店房量(连锁分房量)"
+            ]
+          },
+          {
+            "sheet": "沈阳市(分房量)",
+            "data_rows": 144,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "房量区间",
+              "酒店数量(分房量)",
+              "酒店房量(分房量)",
+              "酒店数量(连锁分房量)",
+              "酒店房量(连锁分房量)"
+            ]
+          },
+          {
+            "sheet": "长沙市(分房量)",
+            "data_rows": 144,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "房量区间",
+              "酒店数量(分房量)",
+              "酒店房量(分房量)",
+              "酒店数量(连锁分房量)",
+              "酒店房量(连锁分房量)"
+            ]
+          },
+          {
+            "sheet": "南京市(分房量)",
+            "data_rows": 144,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "房量区间",
+              "酒店数量(分房量)",
+              "酒店房量(分房量)",
+              "酒店数量(连锁分房量)",
+              "酒店房量(连锁分房量)"
+            ]
+          },
+          {
+            "sheet": "昆明市(分房量)",
+            "data_rows": 144,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "房量区间",
+              "酒店数量(分房量)",
+              "酒店房量(分房量)",
+              "酒店数量(连锁分房量)",
+              "酒店房量(连锁分房量)"
+            ]
+          },
+          {
+            "sheet": "武汉市(分房量)",
+            "data_rows": 144,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "房量区间",
+              "酒店数量(分房量)",
+              "酒店房量(分房量)",
+              "酒店数量(连锁分房量)",
+              "酒店房量(连锁分房量)"
+            ]
+          },
+          {
+            "sheet": "成都市(分房量)",
+            "data_rows": 144,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "房量区间",
+              "酒店数量(分房量)",
+              "酒店房量(分房量)",
+              "酒店数量(连锁分房量)",
+              "酒店房量(连锁分房量)"
+            ]
+          },
+          {
+            "sheet": "合肥市(分房量)",
+            "data_rows": 144,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "房量区间",
+              "酒店数量(分房量)",
+              "酒店房量(分房量)",
+              "酒店数量(连锁分房量)",
+              "酒店房量(连锁分房量)"
+            ]
+          },
+          {
+            "sheet": "西安市(分房量)",
+            "data_rows": 144,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "房量区间",
+              "酒店数量(分房量)",
+              "酒店房量(分房量)",
+              "酒店数量(连锁分房量)",
+              "酒店房量(连锁分房量)"
+            ]
+          },
+          {
+            "sheet": "东莞市(分房量)",
+            "data_rows": 144,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "房量区间",
+              "酒店数量(分房量)",
+              "酒店房量(分房量)",
+              "酒店数量(连锁分房量)",
+              "酒店房量(连锁分房量)"
+            ]
+          },
+          {
+            "sheet": "佛山市(分房量)",
+            "data_rows": 144,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27 - 2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05 - 2026-10-11)",
+            "headers": [
+              "周期",
+              "城市",
+              "房量区间",
+              "酒店数量(分房量)",
+              "酒店房量(分房量)",
+              "酒店数量(连锁分房量)",
+              "酒店房量(连锁分房量)"
+            ]
+          }
+        ]
+      },
+      {
+        "category": "集团",
+        "source_filename": "集团酒店数据20261013.xlsx",
+        "filename": "集团酒店数据_全国4集团_20261013.xlsx",
+        "bytes": 16884,
+        "sha256": "1bc9b10b4790b515035ec5c5045d4d5bf757fc91c4f109e5b0ce4667dd5277c4",
+        "source_url": "https://yj.innhome.com.cn/module/home/group",
+        "sheets": [
+          {
+            "sheet": "华住",
+            "data_rows": 24,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27-2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05-2026-10-11)",
+            "headers": [
+              "周期",
+              "集团",
+              "区域",
+              "酒店数量",
+              "酒店房量",
+              "价格指数",
+              "市场热度指数",
+              "价格指数(按入住日期统计)",
+              "市场热度指数(按入住日期统计)",
+              "平均客房价",
+              "平均客房价（按入住日期统计）"
+            ]
+          },
+          {
+            "sheet": "首旅如家",
+            "data_rows": 24,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27-2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05-2026-10-11)",
+            "headers": [
+              "周期",
+              "集团",
+              "区域",
+              "酒店数量",
+              "酒店房量",
+              "价格指数",
+              "市场热度指数",
+              "价格指数(按入住日期统计)",
+              "市场热度指数(按入住日期统计)",
+              "平均客房价",
+              "平均客房价（按入住日期统计）"
+            ]
+          },
+          {
+            "sheet": "锦江酒店（中国区）",
+            "data_rows": 24,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27-2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05-2026-10-11)",
+            "headers": [
+              "周期",
+              "集团",
+              "区域",
+              "酒店数量",
+              "酒店房量",
+              "价格指数",
+              "市场热度指数",
+              "价格指数(按入住日期统计)",
+              "市场热度指数(按入住日期统计)",
+              "平均客房价",
+              "平均客房价（按入住日期统计）"
+            ]
+          },
+          {
+            "sheet": "亚朵",
+            "data_rows": 24,
+            "period_count": 24,
+            "first_period": "2026年第18周(2026-04-27-2026-05-03)",
+            "last_period": "2026年第41周(2026-10-05-2026-10-11)",
+            "headers": [
+              "周期",
+              "集团",
+              "区域",
+              "酒店数量",
+              "酒店房量",
+              "价格指数",
+              "市场热度指数",
+              "价格指数(按入住日期统计)",
+              "市场热度指数(按入住日期统计)",
+              "平均客房价",
+              "平均客房价（按入住日期统计）"
+            ]
+          }
+        ]
+      }
+    ]
   }
 }

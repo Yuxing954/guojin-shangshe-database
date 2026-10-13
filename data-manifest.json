@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-12",
+  "updatedAt": "2026-10-13",
   "datasets": [
     {
       "id": "hotel",
@@ -14,7 +14,7 @@
       "category": "酒店",
       "asOf": "2026-10-11",
       "latestPeriod": "2026W41",
-      "rowCount": 53439,
+      "rowCount": 53539,
       "updateRecord": "data/hotel-update-record.json",
       "historyCoverage": "data/hotel-city-history-coverage.json",
       "sourceAnomalies": "data/hotel-source-anomalies.csv"
@@ -24,9 +24,9 @@
       "name": "酒店集团周度经营",
       "file": "data/hotel_group_weekly.csv",
       "category": "酒店",
-      "asOf": "2026-10-04",
-      "latestPeriod": "2026W40",
-      "rowCount": 576,
+      "asOf": "2026-10-11",
+      "latestPeriod": "2026W41",
+      "rowCount": 580,
       "updateRecord": "data/hotel-update-record.json"
     },
     {
@@ -36,7 +36,7 @@
       "category": "酒店",
       "asOf": "2026-10-11",
       "latestPeriod": "2026W41",
-      "rowCount": 27531,
+      "rowCount": 27651,
       "updateRecord": "data/hotel-update-record.json",
       "historyCoverage": "data/hotel-city-history-coverage.json"
     },
@@ -296,4 +296,3 @@
     }
   ]
 }
-
