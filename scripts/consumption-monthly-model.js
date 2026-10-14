@@ -39,7 +39,7 @@ function report(data,period,count='12',insights={}){
  return {period,title:monthLabel(period)+'CPI跟踪',periodLabel:monthLabel(period),cpi,core,prices,priceTrend,sources,history,
  freshness:{period,publishedAt:source?.publishedAt||'',updatedAt:cpi?.updatedAt||source?.checkedAt||data.checkedAt||'',latest},
  priceCategories:prepared?.categories||[],headline:prepared?.headline||'',contributions:prepared?.contributions||null,commentSections:prepared?.commentSections||[],
- comments:prepared?.comment||'CPI同比'+rate(cpi?.value)+'，环比'+rate(cpi?.mom)+'；核心CPI同比'+rate(core?.value)+'，环比'+rate(core?.mom)+'。'};
+ comments:prepared?.comment||'暂无当月官方解读。'};
 }
 return {mergeReleases,finite,monthLabel,monthIndex,monthAt,row,months,preferred,periods,display,rate,report};
 });
