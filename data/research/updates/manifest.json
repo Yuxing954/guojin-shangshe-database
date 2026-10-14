@@ -1,13 +1,14 @@
 {
-  "syncedAt": "2026-10-14 12:05:43Z",
+  "syncedAt": "2026-10-14 12:59:52Z",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
-  "coverageFrom": "2026-10-14T18:44:05.227+0800",
-  "coverageTo": "2026-10-14T19:20:11.657+0800",
-  "oldestFetched": "2026-10-14T19:09:05.125+0800",
+  "coverageFrom": "2026-10-14T19:20:11.657+0800",
+  "coverageTo": "2026-10-14T20:41:17.051+0800",
+  "oldestFetched": "2026-10-14T17:03:22.826+0800",
   "fetchedTopics": 30,
   "files": {
     "views": [
+      "data/research/updates/2026-10-14-2059-views.csv",
       "data/research/updates/2026-10-14-1758-views.csv",
       "data/research/updates/2026-10-14-1556-views.csv",
       "data/research/updates/2026-10-14-1458-views.csv",
@@ -43,6 +44,7 @@
       "data/research/updates/2026-10-14-1258-views.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-10-14-2059-all_views.csv",
       "data/research/updates/2026-10-14-1956-all_views.csv",
       "data/research/updates/2026-10-14-1902-all_views.csv",
       "data/research/updates/2026-10-14-1758-all_views.csv",
@@ -144,13 +146,13 @@
     ]
   },
   "counts": {
-    "views": 0,
-    "all_views": 10,
+    "views": 4,
+    "all_views": 21,
     "minutes": 101
   },
   "latest": {
-    "views": "2026-10-14T17:48:34.802+0800",
-    "all_views": "2026-10-14T19:20:11.657+0800",
+    "views": "2026-10-14T20:40:27.520+0800",
+    "all_views": "2026-10-14T20:41:17.051+0800",
     "minutes": "2026-10-12T01:07:33"
   },
   "excluded": {
@@ -446,7 +448,12 @@
       "45548552481518248",
       "22258224581841811",
       "55521554214822184",
-      "14425441241822282"
+      "14425441241822282",
+      "82258224818218822",
+      "14425441585485252",
+      "45548552818518448",
+      "14425441518281412",
+      "82258224841518252"
     ],
     "all_views": [
       "55521555585451444",
@@ -5442,50 +5449,79 @@
       "55521554218814444",
       "14425441258822442",
       "22258224581441251",
-      "22258224524155811"
+      "22258224524155811",
+      "45548552818515228",
+      "82258224818212212",
+      "14425441585485452",
+      "45548552821845558",
+      "22258224841858841",
+      "45548552821844248",
+      "82258224841511842",
+      "82258224841514822",
+      "45548552821414448",
+      "82258224841541142",
+      "14425441518218482"
     ]
   },
   "lastRun": {
-    "runId": "2026-10-14-1956",
+    "runId": "2026-10-14-2059",
     "sourceGroup": "88888142214212",
     "sourceName": "水木调研纪要-2.0",
-    "previousCoverageTo": "2026-10-14T18:44:05.227+0800",
-    "coverageTo": "2026-10-14T19:20:11.657+0800",
-    "oldestFetched": "2026-10-14T19:09:05.125+0800",
+    "previousCoverageTo": "2026-10-14T19:20:11.657+0800",
+    "coverageTo": "2026-10-14T20:41:17.051+0800",
+    "oldestFetched": "2026-10-14T17:03:22.826+0800",
     "sourceTopicsFetched": 30,
-    "sourceTopicsInCoverage": 6,
+    "sourceTopicsInCoverage": 16,
     "added": {
-      "views": 0,
-      "all_views": 6
+      "views": 4,
+      "all_views": 11
     },
-    "duplicates": 0,
+    "duplicates": 1,
     "excludedTopics": [],
     "briefChanges": {
-      "added": [],
-      "updated": [],
+      "added": [
+        "guyue-longshan-channel-20261014",
+        "kuaijishan-wine-channel-20261014",
+        "361-degrees-q3-20261014"
+      ],
+      "updated": [
+        "liquor-consumption-cycle-20261013"
+      ],
       "expiredRemoved": []
     },
     "addedTopicIds": [
-      "14425441511158882",
-      "45548552822284228",
-      "14425441511128452",
-      "55521554144422444",
-      "14425441511488852",
-      "45548552822512528"
+      "45548552818515228",
+      "82258224818212212",
+      "14425441585485452",
+      "82258224818218822",
+      "45548552818518448",
+      "45548552821845558",
+      "22258224841858841",
+      "45548552821844248",
+      "82258224841511842",
+      "14425441518281412",
+      "82258224841514822",
+      "82258224841518252",
+      "45548552821414448",
+      "82258224841541142",
+      "14425441518218482"
     ],
-    "duplicateTopicIds": [],
+    "duplicateTopicIds": [
+      "14425441585485252"
+    ],
     "files": {
-      "all_views": "data/research/updates/2026-10-14-1956-all_views.csv"
+      "views": "data/research/updates/2026-10-14-2059-views.csv",
+      "all_views": "data/research/updates/2026-10-14-2059-all_views.csv"
     },
-    "syncedAt": "2026-10-14 12:05:43Z",
+    "syncedAt": "2026-10-14 12:59:52Z",
     "fetchedTopics": 30,
     "pageRowsFetched": 30,
     "dedupCheck": {
       "algorithm": "scripts/build_research_shards.py keys(row)",
-      "candidateKeys": 24,
-      "candidateBuckets": 23,
+      "candidateKeys": 62,
+      "candidateBuckets": 56,
       "duplicateKeys": 0
     },
-    "pageOldestFetched": "2026-10-14T14:12:31.054+0800"
+    "pageOldestFetched": "2026-10-14T17:03:22.826+0800"
   }
 }
