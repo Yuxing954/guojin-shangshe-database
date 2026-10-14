@@ -50,7 +50,7 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
     assert.match(await page.locator('#prediction-list').innerText(),/维持不变/);
     const predictionDownload=page.waitForEvent('download');await page.locator('#prediction-download').click();assert.match(fs.readFileSync(await (await predictionDownload).path(),'utf8'),/英文原文/);
     await page.locator('[data-view="fedwatch"]').click();await page.waitForSelector('.fedwatch-kpi');
-    assert.equal(await page.locator('.fedwatch-kpi').count(),3);assert.match(await page.locator('#fedwatch-status').innerText(),/快照/);
+    assert.equal(await page.locator('.fedwatch-kpi').count(),3);assert.match(await page.locator('#fedwatch-status').innerText(),/获取/);
     const full=JSON.parse(fs.readFileSync(path.join(root,'data/gold-jewelry/macro.json'),'utf8')).fedwatchTables.at(-1);
     assert.equal(await page.locator('.fedwatch-matrix tbody tr').count(),full.rows.length);
     assert.equal(await page.locator('.fedwatch-futures thead th').count(),full.futures.length);
