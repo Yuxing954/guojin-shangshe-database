@@ -1,0 +1,111 @@
+{
+  "date": "2026-10-14",
+  "checkedAt": "2026-10-14T16:14:04+08:00",
+  "sourceCommit": "af455af2ca9e57f11e734441052c3c26a546f541",
+  "hotel": {
+    "rows": [
+      {
+        "period_id": "2025W41",
+        "year": "2025",
+        "week": "41",
+        "start_date": "2025-10-06",
+        "end_date": "2025-10-12",
+        "region": "全国",
+        "segment": "全部",
+        "hotel_count": "834490",
+        "room_count": "22196591",
+        "hotel_count_15plus": "406078",
+        "room_count_15plus": "19909392",
+        "occupancy_rate": "0.4837",
+        "adr": "193.6",
+        "revpar": "93.64432",
+        "source": "酒店之家"
+      },
+      {
+        "period_id": "2026W41",
+        "year": "2026",
+        "week": "41",
+        "start_date": "2026-10-05",
+        "end_date": "2026-10-11",
+        "region": "全国",
+        "segment": "全部",
+        "hotel_count": "1041513",
+        "room_count": "23354310",
+        "hotel_count_15plus": "424101",
+        "room_count_15plus": "20781991",
+        "occupancy_rate": "0.5089",
+        "adr": "207.69",
+        "revpar": "105.693441",
+        "source": "酒店之家"
+      }
+    ],
+    "calculations": {
+      "revpar": 12.866899989235892,
+      "adr": 7.277892561983479,
+      "occupancy_rate": 5.209840810419686,
+      "occChangePp": 2.52
+    },
+    "sourceFile": "data/hotel_industry_weekly.csv",
+    "availableAt": "2026-10-12T18:09:23+08:00",
+    "verification": "全国W41在10/12首次入库；最新导入回执previousUpdateRecord保留该批次；当前大CSV远端读取失败，复用已完整入库的全国原值，不发布新增城市数值"
+  },
+  "publicSources": [
+    {
+      "url": "https://www.stats.gov.cn/zwfwck/sjfb/202610/t20261014_1965475.html",
+      "publishedAt": "2026-10-14T09:30:00+08:00",
+      "values": {
+        "cpiYoy": 0.9,
+        "coreCpiYoy": 1.0,
+        "servicesYoy": 0.8,
+        "travelServicesYoy": 2.1,
+        "hotelMom": -7.0
+      },
+      "basis": "全国价格指数，同比对比2025年9月；环比受暑期结束影响"
+    },
+    {
+      "url": "https://www.lvmh.com/en/publications/continued-growth-in-the-third-quarter-of-2026",
+      "publishedAt": "2026-10-12",
+      "values": {
+        "q3RevenueEurMillion": 18504,
+        "organicYoy": 1,
+        "fashionLeatherOrganicYoy": -5,
+        "watchesJewelryOrganicYoy": 6,
+        "retailOrganicYoy": 8
+      }
+    },
+    {
+      "url": "https://www.hrbicesnow.com/",
+      "publishedAt": "2026-10-12",
+      "values": {
+        "plannedAreaSqm": 1250000,
+        "plannedIceSnowCubicMetres": 400000
+      }
+    },
+    {
+      "url": "https://www.jl.gov.cn/yaowen/202609/t20260912_3670050.html",
+      "publishedAt": "2026-09-12",
+      "note": "雪假9月已公布，非今日新政"
+    },
+    {
+      "url": "https://apps.sfc.hk/edistributionWeb/gateway/TC/news-and-announcements/news/doc?refNo=26PR168",
+      "publishedAt": "2026-10-13",
+      "verification": "证监会首页与公开索引；正文JS未渲染，检索文本所列停牌日期9/10；不把研究转发日期当事件发生日期"
+    }
+  ],
+  "earnings": {
+    "sourceFile": "data/earnings-calendar.json",
+    "snapshotRecords": 476,
+    "validUpcoming": 0,
+    "attemptedUrl": "https://www.sse.com.cn/disclosure/listedinfo/periodic/",
+    "status": "页面未提供可读预约明细，未声称全行业无财报"
+  },
+  "editorialReview": {
+    "sourceTopics": 10,
+    "focusCards": 7,
+    "duplicateReposts": "乐高2个、古茗3个来源主题分别并入一张卡；所有来源和全文保留",
+    "excludedTopics": [
+      "平台电商及美团混合平台投资观点",
+      "食品饮料、医药医美、纯科技、建材制造等非覆盖内容"
+    ]
+  }
+}

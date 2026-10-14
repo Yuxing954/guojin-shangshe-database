@@ -17,6 +17,13 @@ class ScopeTests(unittest.TestCase):
  def test_incidental_mention_is_not_sector(self):
   self.assertIsNone(sector_for('科技周报','酒店客户使用新款GPU'))
 
+ def test_consumer_research_coverage_and_platform_boundary(self):
+  for title in ['复盘乐高成长史（布鲁可同行比较）','LVMH三季报解读','双11化妆品品牌动销前瞻']:
+   self.assertEqual(sector_for(title),'零售与消费出海')
+  self.assertEqual(sector_for('冰雪大世界官宣扩容'),'酒店旅游')
+  self.assertIsNone(sector_for('【中信社服&新零售】美团观点更新'))
+  self.assertIsNone(sector_for('住房贷款贴息政策落地-存量房链消费建材'))
+
  def test_air_travel_supply_not_aerospace_manufacturing(self):
   self.assertEqual(sector_for('2026年冬航季时刻计划详解'),'酒店旅游')
   self.assertIsNone(sector_for('【招商航空航天及国防】商用发动机深度'))
