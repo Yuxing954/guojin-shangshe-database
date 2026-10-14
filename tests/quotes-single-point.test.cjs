@@ -1,0 +1,13 @@
+'use strict';
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const source=fs.readFileSync(require('node:path').join(__dirname,'../scripts/quotes.js'),'utf8');
+const start=source.indexOf('function draw('),end=source.indexOf('\n  function inspectPoint',start);
+const context={quotes:{},chartData:{rows:[]},$:id=>id==='chart'?{clientWidth:900}:{checked:false},dateLabel:x=>x,fmt:x=>String(x),precision:()=>2,esc:x=>String(x),meta:()=>({currency:'CNY'}),K:{sessionAxis:()=>({minute:1,total:240})}};
+vm.createContext(context);vm.runInContext(source.slice(start,end),context);
+const row=['2026-10-14','128.00','132.75','133.60','126.19','3835'];
+const svg=context.draw([row],false,{code:'920982.BJ',name:'锦波生物'},'源数据');
+assert.equal((svg.match(/2026-10-14<\/text>/g)||[]).length,1);
+assert.match(svg,/width="18"/);assert.ok(context.chartData.x[0]>70);
+assert.match(context.draw([['202610140930','128','132.75']],true,{code:'920982.BJ',name:'锦波生物'},''),/r="3.5"/);
+assert.doesNotMatch(source,/if\(rows.length<2\)throw Error/);
+console.log('PASS: Beijing single candle, centered unique date, bounded width and visible single minute');
