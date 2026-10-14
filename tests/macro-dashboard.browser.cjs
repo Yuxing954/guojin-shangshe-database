@@ -11,7 +11,7 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
     const start=Date.now();await page.goto(base+'/macro.html');await ready();
     assert.ok(page.url().includes('/macro.html?'));assert.equal(await page.locator('.macro-kpi').count(),6);
     assert.equal(await page.locator('#metric-list .macro-item').count(),17);assert.match(await page.locator('#overview-meta').innerText(),/17\/17/);
-    assert.ok(!requests.some(url=>url.includes('predictions.json')));assert.match(await page.locator('#kpi-grid').innerText(),/50.1/);
+    assert.ok(!requests.some(url=>url.includes('predictions.json')));assert.match(await page.locator('#kpi-grid').innerText(),/50.1/);assert.doesNotMatch(await page.locator('#kpi-grid').innerText(),/发布\s*未提供/);
     console.log('Initial local load including history:',Date.now()-start,'ms');
     assert.equal(await page.locator('.macro-topic').count(),3);for(const group of await page.locator('.macro-topic').all())assert.equal(await group.locator('.macro-kpi').count(),2);
     assert.equal(await page.locator('#morning-trends .morning-trend').count(),3);assert.ok(await page.locator('#release-rows tr').count()<=5);
@@ -22,7 +22,7 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
     await page.locator('#morning-chart-cn-retail [data-chart-point]').first().focus();assert.ok(await page.locator('#morning-chart-cn-retail .research-tooltip').isVisible());
     await page.locator('#morning-trends [data-morning-metric="cn-pmi"]').click();assert.equal(new URL(page.url()).searchParams.get('indicator'),'cn-pmi');
     if(out){fs.mkdirSync(out,{recursive:true});await page.evaluate(()=>scrollTo(0,0));await page.screenshot({path:path.join(out,'宏观晨报-首屏.png'),fullPage:false});}
-    await page.locator('[data-kpi="cn-cpi"]').click();assert.match(await page.locator('#metric-title').innerText(),/CPI/);
+    await page.locator('[data-kpi="cn-cpi"]').click();assert.match(await page.locator('#metric-title').innerText(),/CPI/);assert.doesNotMatch(await page.locator('#detail').innerText(),/发布日期：来源未提供|来源未提供/);
     await page.locator('#comparison').selectOption('cn-ppi');assert.equal(await page.locator('.macro-chart svg').count(),2);
     await page.locator('#years').selectOption('1');await page.reload();await ready();assert.equal(await page.locator('#comparison').inputValue(),'cn-ppi');assert.equal(await page.locator('#years').inputValue(),'1');
     await page.locator('#primary-chart [data-chart-point]').first().focus();assert.ok(await page.locator('#primary-chart .research-tooltip').isVisible());assert.match(await page.locator('#primary-chart .research-tooltip').innerText(),/20\d{2}-\d{2}/);assert.doesNotMatch(await page.locator('#primary-chart .research-tooltip').innerText(),/发布|来源|计算/);
@@ -54,7 +54,7 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
     const full=JSON.parse(fs.readFileSync(path.join(root,'data/gold-jewelry/macro.json'),'utf8')).fedwatchTables.at(-1);
     assert.equal(await page.locator('.fedwatch-matrix tbody tr').count(),full.rows.length);
     assert.equal(await page.locator('.fedwatch-futures thead th').count(),full.futures.length);
-    assert.match(await page.locator('#fedwatch-status').innerText(),/源时点未提供/);
+    assert.doesNotMatch(await page.locator('#fedwatch-status').innerText(),/未提供/);
     assert.equal(await page.locator('.fedwatch-matrix tbody tr').first().locator('td').nth(8).innerText(),'—');
     assert.equal(await page.locator('.fedwatch-matrix tbody tr').first().locator('td').nth(5).innerText(),'0%');
     const wholeDownload=page.waitForEvent('download');await page.locator('#fedwatch-table-download').click();
