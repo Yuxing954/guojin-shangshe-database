@@ -6,7 +6,7 @@
   const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
   let libraryScope=params.get('scope')==='all'||params.get('state')==='awaiting_file'?'all':'archived',libraryFailed=false;
   function displaySource(value){return String(value||'').replace(/水[木母]调研纪要(?:\s*[-－·]?\s*2\.0)?/g,'').replace(/^[\s·|｜,，;；-]+|[\s·|｜,，;；-]+$/g,'').trim();}
-  function entry(r,k,sourceKind=k){const published=r['原始发布时间']||r['时间']||r['日期']||'';return {kind:k,sourceKind,title:r['标题']||'',published,date:published.slice(0,10),content:r['内容']||r['摘要']||'',author:r['作者']||'',sector:r['覆盖板块']||'',company:r['相关标的']||'',url:D.link(r['原文链接']||r['下载链接']),file:r['文件名']||'',batch:r['更新批次']||'',truncated:!!r['正文已截断'],state:r['内容状态']||''};}
+  function entry(r,k,sourceKind=k){const published=r['原始发布时间']||r['时间']||r['日期']||'';return {kind:k,sourceKind,title:M.plainContent(r['标题']||''),published,date:published.slice(0,10),content:M.plainContent(r['内容']||r['摘要']||''),author:r['作者']||'',sector:r['覆盖板块']||'',company:r['相关标的']||'',url:D.link(r['原文链接']||r['下载链接']),file:r['文件名']||'',batch:r['更新批次']||'',truncated:!!r['正文已截断'],state:r['内容状态']||''};}
   function recentEntries(snapshot,requested){return (snapshot.dbs||[]).filter(db=>db.id!=='minutes'||requested==='minutes').flatMap(db=>db.rows.flatMap(r=>db.id==='views'?[entry(r,'views'),entry(r,'all_views','views')]:[entry(r,db.id)])).filter(r=>r.kind===requested);}
   function unique(records){
     const seen=new Set(),seenStampTitle=new Set(),seenBody=new Set();
@@ -96,7 +96,7 @@
   }
   function showBody(r,full){
     const type=M.format(r),attachment=type==='audio'||type==='document';
-    $('article-body').textContent=attachment?'':r.content||'此条记录尚无正文，请查看原始来源。';
+    $('article-body').textContent=attachment?'':M.plainContent(r.content||'此条记录尚无正文，请查看原始来源。');
     $('article-files').hidden=!attachment;
     $('article-files').innerHTML=attachment?'<p class="portal-note">原始文件</p><ul>'+String(r.file||r.title).split('；').map(name=>'<li>'+D.esc(name)+'</li>').join('')+'</ul>':'';
     $('article-note').textContent=attachment?(type==='audio'?'会议音频 · 未转写':'附件 · 未提取正文'):type==='text'?'纪要摘要':full?['完整正文',displaySource(sync.sourceName)].filter(Boolean).join(' · '):r.truncated?'内容预览':'原文';
@@ -121,7 +121,7 @@
       const preview=L.preview(data);
       $('article-note').hidden=!preview.text;
       $('article-note').textContent=preview.truncated?'原文前500字':'原文预览';
-      $('article-body').textContent=preview.text+(preview.truncated?'…':'')||'暂无文字预览，可打开原件查看完整纪要。';
+      $('article-body').textContent=M.plainContent(preview.text+(preview.truncated?'…':''))||'暂无文字预览，可打开原件查看完整纪要。';
     }catch(e){if(request===articleRequest)$('article-body').textContent='预览暂时无法读取，可下载完整纪要。';}
   }
   async function openRecord(r){
