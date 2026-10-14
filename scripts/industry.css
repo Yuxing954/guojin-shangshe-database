@@ -23,3 +23,15 @@ body.industry-hub #industry-panels,.industry-hub #gold-content{margin-top:0}
  body.industry-hub>.site-main>.portal-header{margin-bottom:16px;padding-bottom:12px}
  body.industry-hub>.site-main>.portal-header h1{font-size:22px;line-height:30px}
 }
+
+/* One loading surface; pending documents keep layout width without being painted. */
+.industry-stage{position:relative;min-width:0}
+.industry-loading{display:flex;align-items:flex-start;gap:10px;min-height:220px;padding:20px 0;margin:0;color:var(--site-muted,#66748a);font:400 14px/22px -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+.industry-loading[hidden],.industry-loading [hidden]{display:none!important}
+.industry-loading-mark{flex:0 0 16px;width:16px;height:16px;margin-top:3px;border:2px solid #dce1ee;border-top-color:#6674ad;border-radius:50%;animation:industry-wait 1s linear infinite}
+.industry-loading .portal-button{margin-top:-6px}
+.industry-panel{position:relative;min-width:0}
+.industry-panel-frame:not([data-state=ready]){position:absolute;left:0;top:0;visibility:hidden!important;pointer-events:none}
+.industry-stage:not([data-state=ready])>#gold-content{position:absolute;left:0;top:0;width:100%;visibility:hidden!important;pointer-events:none}
+@keyframes industry-wait{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.industry-loading-mark{animation:none}}
