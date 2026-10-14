@@ -255,7 +255,13 @@ def main():
         for future in as_completed(futures):
             spec=futures[future]
             try:
-                values[spec['id']]=merge_history(values.get(spec['id'],{}),future.result(),spec,now)
+                incoming=future.result()
+                if plan is not None and not due.has_expected_period(spec,incoming.get('observations',[]),date.fromisoformat(args.cutoff)):
+                    # The source has not published this period yet. Leave the window open for tomorrow's retry.
+                    continue
+                existing=values.get(spec['id'],{})
+                merged=merge_history(existing,incoming,spec,now)
+                values[spec['id']]=existing if due.semantic_payload(existing)==due.semantic_payload(merged) else merged
                 if plan is not None:
                     d=date.fromisoformat(args.cutoff);ledger=due.load_ledger();ledger.setdefault('choice',{})[spec['id']]=due.window_key(d,due.group_for(spec));due.save_ledger(ledger)
             except Exception as exc:
@@ -276,22 +282,32 @@ def main():
             try:
                 source_results=fn()
                 if plan is not None and name=='bls-history' and not source_results:raise ValueError('BLS returned no scheduled series')
+                ready_sources=set()
                 for id,result in source_results.items():
                     # Authoritative BLS retains index/seasonal definitions, with full history.
-                    spec={'id':result['registryId'],'frequency':result.get('spec',{}).get('frequency','monthly'),'start':'2016-01-01'}
+                    frequency='quarterly' if id=='us-gdp-quarter' else 'monthly'
+                    spec={'id':result['registryId'],'frequency':frequency,'start':'2016-01-01'}
+                    source=('bls-cpi' if id in ('us-cpi','us-core-cpi') else 'bls-employment' if id in ('us-unemployment','us-payroll','us-earnings') else name)
+                    if plan is not None and not due.has_expected_period(spec,result.get('observations',[]),date.fromisoformat(args.cutoff)):
+                        continue
+                    if plan is not None:ready_sources.add(source)
                     prior=values.get(id,{})
                     if prior.get('registryId')==result['registryId']:
                         rows={r['period']:r for r in prior.get('observations',[])};rows.update({r['period']:r for r in result['observations']})
                         result['observations']=sorted(rows.values(),key=lambda r:r['period']);result['coverage']=coverage(result['observations'],spec)
-                    values[id]={**result,'fetchedAt':now,'checkedAt':now}
+                    candidate={**result,'fetchedAt':now,'checkedAt':now}
+                    values[id]=prior if due.semantic_payload(prior)==due.semantic_payload(candidate) else candidate
                 if plan is not None:
                     d=date.fromisoformat(args.cutoff);ledger=due.load_ledger()
-                    for source in (due_sources if name=='bls-history' else [name]):ledger.setdefault('official',{})[source]=due.official_key(d,source)
+                    for source in ready_sources:ledger.setdefault('official',{})[source]=due.official_key(d,source)
                     due.save_ledger(ledger)
             except Exception as exc:
                 errors.append({'id':name,'errorType':type(exc).__name__})
                 ids=['us-gdp-quarter'] if name=='bea-real-gdp' else ['us-housing-starts'] if name=='census-housing' else (['us-cpi','us-core-cpi'] if 'bls-cpi' in due_sources else [])+(['us-unemployment','us-payroll','us-earnings'] if 'bls-employment' in due_sources else []) if plan is not None else [s['id'] for s in json.loads((DATA/'catalog.json').read_text(encoding='utf-8'))['series'] if s['adapter']=='bls']
                 for id in ids:values[id]={**values.get(id,{}),'status':'error','checkedAt':now,'error':'官方接口更新失败，保留同口径历史。'}
+    if args.due_only and due.semantic_payload({'series':values,'errors':errors}) == due.semantic_payload({'series':previous.get('series',{}),'errors':previous.get('errors',[])}):
+        print(json.dumps({'noChange':True,'series':len(values),'failures':errors},ensure_ascii=False,separators=(',',':')))
+        return 1 if errors else 0
     output={'version':1,'cutoff':args.cutoff,'checkedAt':now,'publicRedistributionApproved':True,'series':values,'errors':errors}
     for series in values.values():
         for row in series.get('observations',[]):
