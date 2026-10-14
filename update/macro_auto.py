@@ -7,6 +7,7 @@ from urllib.parse import urlparse, parse_qs
 from urllib.request import Request, build_opener
 from miaoxiang_mcp import Client, URL, configured_key
 from gold_jewelry import NoRedirect, atomic_json
+import macro_due as due
 
 ROOT=Path(__file__).resolve().parents[1]
 DATA=ROOT/'data/macro'
@@ -159,9 +160,9 @@ def bea_gdp(cutoff):
         'sourceOrganization':'美国经济分析局 BEA','sourceUrl':url,'receiptSha256':hashlib.sha256(raw).hexdigest(),
         'spec':{'name':'实际GDP季度增长（折年率）','unit':'%','kind':'rate','frequency':'quarterly','adjustment':'季调环比折年率'},'coverage':coverage(observations,spec)}
 
-def bls_history(catalog,cutoff):
+def bls_history(catalog,cutoff,series_ids=None):
     from macro_data import fetch,observation,period_end
-    wanted=[s for s in catalog['series'] if s['adapter']=='bls'];out={s['id']:[] for s in wanted}
+    wanted=[s for s in catalog['series'] if s['adapter']=='bls' and (series_ids is None or s['id'] in series_ids)];out={s['id']:[] for s in wanted}
     for year in range(2016,int(cutoff[:4])+1,3):
         payload={'seriesid':[s['code'] for s in wanted],'startyear':str(year),'endyear':str(min(year+2,int(cutoff[:4])))}
         body,digest=fetch('https://api.bls.gov/publicAPI/v2/timeseries/data/',payload)
@@ -197,14 +198,22 @@ def census_housing(cutoff):
 
 def main():
     ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--codex-config',type=Path);ap.add_argument('--receipts-dir',type=Path)
-    ap.add_argument('--cutoff',default=date.today().isoformat());ap.add_argument('--only',nargs='*');ap.add_argument('--skip-official',action='store_true');ap.add_argument('--consumer-only',action='store_true',help='Refresh mapped consumption series only; leave unrelated official series untouched');args=ap.parse_args()
+    ap.add_argument('--cutoff');ap.add_argument('--only',nargs='*');ap.add_argument('--skip-official',action='store_true');ap.add_argument('--consumer-only',action='store_true',help='Refresh mapped consumption series only; leave unrelated official series untouched');ap.add_argument('--due-only',action='store_true',help='Fetch only indicators inside their expected release windows');args=ap.parse_args()
+    if not args.cutoff:
+        from zoneinfo import ZoneInfo
+        args.cutoff=(datetime.now(ZoneInfo('Asia/Shanghai')).date() if args.due_only else date.today()).isoformat()
     date.fromisoformat(args.cutoff);registry=json.loads((DATA/'choice-registry.json').read_text(encoding='utf-8'))
     if registry.get('publicRedistributionApproved') is not True:raise ValueError('Publication authorization required')
     target=DATA/'automatic-series.json';previous=json.loads(target.read_text(encoding='utf-8')) if target.exists() else {'series':{}}
     values=dict(previous['series']);now=datetime.now(timezone.utc).isoformat(timespec='seconds');errors=[]
     if args.only and set(args.only)-{s['id'] for s in registry['series']}:raise ValueError('Unknown registry ID')
     entries=[s for s in registry['series'] if (not args.only or s['id'] in args.only) and (not args.consumer_only or s.get('consumerId'))]
-    key=configured_key(args.codex_config)
+    plan=due.build_plan(date.fromisoformat(args.cutoff),registry,due.load_ledger()) if args.due_only else None
+    if plan is not None:
+        entries=[s for s in entries if s['id'] in plan['dueChoice']]
+        if not entries and not plan['dueOfficial']:
+            print(json.dumps({'noDataFetch':True,'dueScopes':plan['dueScopes']},ensure_ascii=False,separators=(',',':')));return 0
+    key=configured_key(args.codex_config) if entries else None
     receipts=[]
     if args.receipts_dir:
         for path in args.receipts_dir.glob('choice-*.json'):
@@ -243,15 +252,29 @@ def main():
         futures={pool.submit(task,s):s for s in entries}
         for future in as_completed(futures):
             spec=futures[future]
-            try:values[spec['id']]=merge_history(values.get(spec['id'],{}),future.result(),spec,now)
+            try:
+                values[spec['id']]=merge_history(values.get(spec['id'],{}),future.result(),spec,now)
+                if plan is not None:
+                    d=date.fromisoformat(args.cutoff);ledger=due.load_ledger();ledger.setdefault('choice',{})[spec['id']]=due.window_key(d,due.group_for(spec));due.save_ledger(ledger)
             except Exception as exc:
                 safe_reasons={'No exact reviewed indicator','MCP protocol error','Missing or ambiguous MCP response','Provider business error','Reviewed series definition changed','Indicator code mismatch'}
                 errors.append({'id':spec['id'],'errorType':type(exc).__name__,'reason':str(exc) if str(exc) in safe_reasons else '接口或数据校验失败'})
                 values[spec['id']]={**values.get(spec['id'],{}),'status':'error','checkedAt':now,'error':'接口返回未通过指标与口径校验，保留已有历史。'}
     if not args.skip_official and not args.consumer_only:
         for name,fn in [('bea-real-gdp',lambda:{'us-gdp-quarter':bea_gdp(args.cutoff)}),('census-housing',lambda:{'us-housing-starts':census_housing(args.cutoff)}),('bls-history',lambda:bls_history(json.loads((DATA/'catalog.json').read_text(encoding='utf-8')),args.cutoff))]:
+            due_sources=[]
+            if plan is not None and name=='bls-history':
+                due_sources=[x for x in plan['dueOfficial'] if x in ('bls-cpi','bls-employment')]
+                if not due_sources:continue
+                wanted=set()
+                if 'bls-cpi' in due_sources:wanted.update(('us-cpi','us-core-cpi'))
+                if 'bls-employment' in due_sources:wanted.update(('us-unemployment','us-payroll','us-earnings'))
+                fn=lambda wanted=wanted:bls_history(json.loads((DATA/'catalog.json').read_text(encoding='utf-8')),args.cutoff,wanted)
+            elif plan is not None and name not in plan['dueOfficial']:continue
             try:
-                for id,result in fn().items():
+                source_results=fn()
+                if plan is not None and name=='bls-history' and not source_results:raise ValueError('BLS returned no scheduled series')
+                for id,result in source_results.items():
                     # Authoritative BLS retains index/seasonal definitions, with full history.
                     spec={'id':result['registryId'],'frequency':result.get('spec',{}).get('frequency','monthly'),'start':'2016-01-01'}
                     prior=values.get(id,{})
@@ -259,9 +282,13 @@ def main():
                         rows={r['period']:r for r in prior.get('observations',[])};rows.update({r['period']:r for r in result['observations']})
                         result['observations']=sorted(rows.values(),key=lambda r:r['period']);result['coverage']=coverage(result['observations'],spec)
                     values[id]={**result,'fetchedAt':now,'checkedAt':now}
+                if plan is not None:
+                    d=date.fromisoformat(args.cutoff);ledger=due.load_ledger()
+                    for source in (due_sources if name=='bls-history' else [name]):ledger.setdefault('official',{})[source]=due.official_key(d,source)
+                    due.save_ledger(ledger)
             except Exception as exc:
                 errors.append({'id':name,'errorType':type(exc).__name__})
-                ids=['us-gdp-quarter'] if name=='bea-real-gdp' else ['us-housing-starts'] if name=='census-housing' else [s['id'] for s in json.loads((DATA/'catalog.json').read_text(encoding='utf-8'))['series'] if s['adapter']=='bls']
+                ids=['us-gdp-quarter'] if name=='bea-real-gdp' else ['us-housing-starts'] if name=='census-housing' else (['us-cpi','us-core-cpi'] if 'bls-cpi' in due_sources else [])+(['us-unemployment','us-payroll','us-earnings'] if 'bls-employment' in due_sources else []) if plan is not None else [s['id'] for s in json.loads((DATA/'catalog.json').read_text(encoding='utf-8'))['series'] if s['adapter']=='bls']
                 for id in ids:values[id]={**values.get(id,{}),'status':'error','checkedAt':now,'error':'官方接口更新失败，保留同口径历史。'}
     output={'version':1,'cutoff':args.cutoff,'checkedAt':now,'publicRedistributionApproved':True,'series':values,'errors':errors}
     for series in values.values():
