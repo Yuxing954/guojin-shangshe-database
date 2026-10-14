@@ -47,15 +47,15 @@ function draw(target,width,model,comment){
  if(!values.length)text('暂无数据',x+w/2,top+110,23,muted,'normal','center');
  hit.push({type:'trend',x:l+inset,y:top,w:r-l-2*inset,h,points,series,labels});
  }
- function contributionPanel(x,y,title,rows,{digits=2,suffix='',type='contribution'}={}){
- const w=536,rowHeight=48,top=y+(title?55:22),labelWidth=190,barWidth=252,zero=x+labelWidth+barWidth/2,maximum=Math.max(.01,...rows.map(row=>Math.abs(row.value))),labels=[];
+ function contributionPanel(x,y,title,rows,{digits=2,suffix='',type='contribution',scaleMax=null}={}){
+ const w=536,rowHeight=48,top=y+(title?55:22),labelWidth=190,barWidth=252,zero=x+labelWidth+barWidth/2,maximum=scaleMax??Math.max(.01,...rows.map(row=>Math.abs(row.value))),labels=[];
  text(title,x,y,TYPE.chart,'#627b8e','bold');
  rows.forEach((row,i)=>{const yy=top+i*rowHeight,color=row.value>0?'#c23d3d':row.value<0?'#21816b':'#68737e',length=row.value/maximum*(barWidth/2-12);
  if(i%2===0){ctx.fillStyle='#f3f7fa';ctx.fillRect(x,yy-27,w,rowHeight);}text(row.name,x+10,yy,TYPE.table,ink);
  ctx.strokeStyle='#cbd4dc';ctx.beginPath();ctx.moveTo(zero,yy-25);ctx.lineTo(zero,yy+15);ctx.stroke();ctx.fillStyle=color;ctx.fillRect(Math.min(zero,zero+length),yy-14,Math.max(2,Math.abs(length)),14);
  text((row.value>0?'+':'')+M.display(row.value,digits)+suffix,x+w-10,yy,TYPE.table,color,'bold','right');labels.push({name:row.name,value:row.value});
  });
- hit.push({type,x,y:top-27,w,h:rows.length*rowHeight,rows,rowHeight,basis:title,labels,digits,suffix});
+ hit.push({type,x,y:top-27,w,h:rows.length*rowHeight,rows,rowHeight,basis:title,labels,digits,suffix,scaleMax:maximum});
  return top+rows.length*rowHeight+12;
  }
 
@@ -73,7 +73,7 @@ function draw(target,width,model,comment){
  if(model.contributions){section('主要拉动与拖累 · 个百分点',y);y+=56;
  const endY=contributionPanel(44,y,'同比影响 · 约',model.contributions.yoy),endM=contributionPanel(620,y,'环比影响 · 约',model.contributions.mom);
  y=Math.max(endY,endM)+12;text('国家统计局披露的主要项目，非完整分解',44,y,TYPE.meta,muted);y+=75;}
- if(model.yoyBreakdown){section('分项同比涨幅 · %',y);y+=42;const items=model.yoyBreakdown.items;const left=contributionPanel(44,y,'',items.slice(0,4),{digits:1,suffix:'%',type:'breakdown'}),right=contributionPanel(620,y,'',items.slice(4),{digits:1,suffix:'%',type:'breakdown'});y=Math.max(left,right)+55;}
+ if(model.yoyBreakdown){section('分项同比涨幅 · %',y);y+=42;const items=model.yoyBreakdown.items;const left=contributionPanel(44,y,'',items.slice(0,4),{digits:1,suffix:'%',type:'breakdown',scaleMax:Math.max(.01,...items.map(row=>Math.abs(row.value)))}),right=contributionPanel(620,y,'',items.slice(4),{digits:1,suffix:'%',type:'breakdown',scaleMax:Math.max(.01,...items.map(row=>Math.abs(row.value)))});y=Math.max(left,right)+55;}
  chart(44,y,'CPI与核心CPI · 同比 %',model.priceTrend,[{name:'CPI',get:p=>p.cpi?.value},{name:'核心CPI',get:p=>p.core?.value}]);y+=375;
  chart(44,y,'CPI与核心CPI · 环比 %',model.priceTrend,[{name:'CPI',get:p=>p.cpi?.mom},{name:'核心CPI',get:p=>p.core?.mom}]);y+=375;
  line(y);y+=36;
