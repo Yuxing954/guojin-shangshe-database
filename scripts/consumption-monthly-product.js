@@ -1,6 +1,6 @@
 (function(){
 'use strict';
-const M=MonthlyProduct,CM=ConsumptionMacro,$=id=>document.getElementById(id),canvas=$('product'),ink='#173f60',blue='#104f87',muted='#667582',colors=['#165b9c','#66a9dc','#a64d19'],TYPE={section:24,chart:22,body:22,table:20,meta:18};
+const M=MonthlyProduct,CM=ConsumptionMacro,$=id=>document.getElementById(id),canvas=$('product'),ink='#173f60',blue='#104f87',muted='#667582',colors=['#165b9c','#66a9dc','#a64d19'],TYPE={section:24,chart:22,body:22,table:20,meta:18},SPACE={bodyLine:35,sectionGap:56,headingToBody:50,headingToRows:42,metaGap:36,chartStep:378};
 let insights={},data=null,legal=[],report=null,busy=false,warning='',hits=[],activeMonth='',comments=new Map(),previewFrame;
 const banner=new Image();banner.onload=()=>{if(report)render();};banner.src='scripts/assets/hotel-weekly/title.png';
 const logo=new Image();logo.onload=()=>{if(report)render();};logo.src='scripts/assets/hotel-weekly/logo.png';
@@ -17,14 +17,14 @@ function draw(target,width,model,comment){
  const height=3400+Math.max(model.contributions?.yoy?.length||0,model.contributions?.mom?.length||0)*48+commentLines.length*34+legalHeight;
  target.width=width;target.height=Math.ceil(height*width/1200);const ctx=target.getContext('2d',{alpha:false}),scale=width/1200;ctx.scale(scale,scale);ctx.fillStyle='#fff';ctx.fillRect(0,0,1200,height);
  const hit=[];
- function text(t,x,y,size=20,color=ink,weight='normal',align='left'){ctx.font=weight+' '+size+'px "Microsoft YaHei",sans-serif';ctx.fillStyle=color;ctx.textAlign=align;ctx.fillText(String(t),x,y);ctx.textAlign='left';}
+ function text(t,x,y,size=20,color=ink,weight='normal',align='left'){const transform=ctx.getTransform(),pixelScale=transform.a;ctx.font=weight+' '+(Math.round(size*pixelScale)/pixelScale)+'px "Microsoft YaHei",sans-serif';ctx.fillStyle=color;ctx.textAlign=align;ctx.fillText(String(t),(Math.round(x*pixelScale+transform.e)-transform.e)/pixelScale,(Math.round(y*pixelScale+transform.f)-transform.f)/pixelScale);ctx.textAlign='left';}
  function line(y){ctx.fillStyle='#dae2e8';ctx.fillRect(44,y,1112,1);}
  function section(title,y){text(title,44,y,TYPE.section,blue,'bold');ctx.fillStyle='#c9d6e0';ctx.fillRect(44,y+16,1112,1.5);}
  function marker(x,y,square,color){ctx.fillStyle='#fff';ctx.strokeStyle=color;ctx.lineWidth=1.8;ctx.beginPath();if(square)ctx.rect(x-3,y-3,6,6);else ctx.arc(x,y,3,0,Math.PI*2);ctx.fill();ctx.stroke();}
 
  function chart(x,y,title,points,series){
  const w=1112,h=210,l=x+49,r=x+w-16,top=y+82,bottom=top+h,inset=28;
- text(title,x,y,TYPE.chart,'#627b8e','bold');
+ section(title,y);
  series.forEach((item,i)=>{const lx=x+i*230;ctx.strokeStyle=colors[i];ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(lx,y+35);ctx.lineTo(lx+22,y+35);ctx.stroke();marker(lx+11,y+35,i===1,colors[i]);text(item.name,lx+31,y+42,TYPE.meta,colors[i]);});
  const values=points.flatMap(p=>series.map(item=>item.get(p))).filter(M.finite);
  let low=values.length?Math.min(0,...values):-1,high=values.length?Math.max(0,...values):1;if(low===high){low-=1;high+=1;}
@@ -56,7 +56,7 @@ function draw(target,width,model,comment){
  text((row.value>0?'+':'')+M.display(row.value,digits)+suffix,x+w-10,yy,TYPE.table,color,'bold','right');labels.push({name:row.name,value:row.value});
  });
  hit.push({type,x,y:top-27,w,h:rows.length*rowHeight,rows,rowHeight,basis:title,labels,digits,suffix,scaleMax:maximum});
- return top+rows.length*rowHeight+12;
+ return top+rows.length*rowHeight-27;
  }
 
  if(logo.complete&&logo.naturalWidth)ctx.drawImage(logo,44,25,300,67);else text('SINOLINK 国金证券',44,68,32,blue,'bold');
@@ -64,21 +64,21 @@ function draw(target,width,model,comment){
  ctx.fillStyle=blue;ctx.fillRect(0,120,1200,272);if(banner.complete&&banner.naturalWidth)ctx.drawImage(banner,0,120,1200,272);text(model.title,44,260,88,'#fff','bold');text('发布日期：'+(model.freshness.publishedAt?model.freshness.publishedAt.replace(/^(\d{4})-(\d{2})-(\d{2})$/,'$1年$2月$3日') :'未提供'),44,330,32,'#fff');
 
  let y=450;
- section('当期核心指标',y);y+=52;
+ section('当期核心指标',y);y+=20;
  const cards=[['CPI同比',model.cpi?.value,'较上月',M.row(data,'cpi',M.monthAt(M.monthIndex(model.period)-1))?.value],['CPI环比',model.cpi?.mom,'较上月',M.row(data,'cpi',M.monthAt(M.monthIndex(model.period)-1))?.mom],['核心CPI同比',model.core?.value,'较上月',M.row(data,'core_cpi',M.monthAt(M.monthIndex(model.period)-1))?.value],['核心CPI环比',model.core?.mom,'较上月',M.row(data,'core_cpi',M.monthAt(M.monthIndex(model.period)-1))?.mom]];
  cards.forEach(([name,v,label,previous],i)=>{const x=44+i*282;text(name,x,y+31,21,muted);text(rate(v),x,y+86,44,ink,'bold');if(i<3){ctx.fillStyle='#e1e6ea';ctx.fillRect(x+262,y+16,1,115);}const delta=M.finite(v)&&M.finite(previous)?v-previous:null;text(M.finite(delta)?label+' '+(delta>0?'+':'')+M.display(delta)+'pct':'暂无可比数据',x,y+125,25,delta>0?'#c23d3d':delta<0?'#21816b':'#68737e','bold');});
 
- y+=190;section('原因解释',y);y+=48;
- commentLines.forEach(value=>{text(value,44,y,TYPE.body,'#283b49');y+=34;});y+=60;
- if(model.contributions){section('主要拉动与拖累 · pct',y);y+=56;
+ y+=181;section('原因解释',y);y+=SPACE.headingToBody;
+ commentLines.forEach(value=>{text(value,44,y,TYPE.body,'#283b49');y+=SPACE.bodyLine;});y+=SPACE.sectionGap-SPACE.bodyLine;
+ if(model.contributions){section('主要拉动与拖累 · pct',y);y+=SPACE.sectionGap;
  const endY=contributionPanel(44,y,'同比影响 · 约',model.contributions.yoy),endM=contributionPanel(620,y,'环比影响 · 约',model.contributions.mom);
- y=Math.max(endY,endM)+12;text('国家统计局披露的主要项目，非完整分解',44,y,TYPE.meta,muted);y+=75;}
- if(model.yoyBreakdown){section('分项同比涨幅 · %',y);y+=42;const items=model.yoyBreakdown.items;const left=contributionPanel(44,y,'',items.slice(0,4),{digits:1,suffix:'%',type:'breakdown',scaleMax:Math.max(.01,...items.map(row=>Math.abs(row.value)))}),right=contributionPanel(620,y,'',items.slice(4),{digits:1,suffix:'%',type:'breakdown',scaleMax:Math.max(.01,...items.map(row=>Math.abs(row.value)))});y=Math.max(left,right)+55;}
- chart(44,y,'CPI与核心CPI · 同比 %',model.priceTrend,[{name:'CPI',get:p=>p.cpi?.value},{name:'核心CPI',get:p=>p.core?.value}]);y+=375;
- chart(44,y,'CPI与核心CPI · 环比 %',model.priceTrend,[{name:'CPI',get:p=>p.cpi?.mom},{name:'核心CPI',get:p=>p.core?.mom}]);y+=375;
+ y=Math.max(endY,endM)+SPACE.metaGap;text('国家统计局披露的主要项目，非完整分解',44,y,TYPE.meta,muted);y+=SPACE.sectionGap;}
+ if(model.yoyBreakdown){section('分项同比涨幅 · %',y);y+=SPACE.headingToRows;const items=model.yoyBreakdown.items;const left=contributionPanel(44,y,'',items.slice(0,4),{digits:1,suffix:'%',type:'breakdown',scaleMax:Math.max(.01,...items.map(row=>Math.abs(row.value)))}),right=contributionPanel(620,y,'',items.slice(4),{digits:1,suffix:'%',type:'breakdown',scaleMax:Math.max(.01,...items.map(row=>Math.abs(row.value)))});y=Math.max(left,right)+SPACE.sectionGap;}
+ chart(44,y,'CPI与核心CPI · 同比 %',model.priceTrend,[{name:'CPI',get:p=>p.cpi?.value},{name:'核心CPI',get:p=>p.core?.value}]);y+=SPACE.chartStep;
+ chart(44,y,'CPI与核心CPI · 环比 %',model.priceTrend,[{name:'CPI',get:p=>p.cpi?.mom},{name:'核心CPI',get:p=>p.core?.mom}]);y+=SPACE.chartStep;
  line(y);y+=36;
  text('来源：国家统计局数据及解读'+(model.sources.some(s=>s.licensedChoice)?' / Choice转引':'')+'；国金商社研究数据库',44,y,18,muted);y+=30;
- text('数据月份 '+model.period+' · 官方发布 '+(model.freshness.publishedAt||'未提供')+' · 入库核对 '+(model.freshness.updatedAt||'未提供'),44,y,17,muted);y+=35;
+ text('数据月份 '+model.period+' · 官方发布 '+(model.freshness.publishedAt||'未提供')+' · 入库核对 '+(model.freshness.updatedAt||'未提供'),44,y,TYPE.meta,muted);y+=35;
  ctx.fillStyle='#f5f4f5';ctx.fillRect(0,y,1200,height-y);ctx.fillStyle='#eee8cd';ctx.fillRect(0,y,1200,5);y+=35;
  legalLines.forEach((ls,i)=>{text(i?'免责声明':'特别声明',44,y,22,'#998951','bold');y+=32;for(const t of ls){text(t,44,y,13,'#68727b');y+=18;}y+=24;});
  // Crop to the actual report height, keeping export and preview layout identical.
