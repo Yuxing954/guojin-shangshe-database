@@ -1,0 +1,33 @@
+name: Check industry loading
+on:
+  pull_request:
+    paths:
+      - 'industry.html'
+      - '*dashboard.html'
+      - 'dining.html'
+      - 'scripts/industry*'
+      - 'tests/industry-loading.browser.cjs'
+      - '.github/workflows/check-industry-loading.yml'
+permissions:
+  contents: read
+jobs:
+  industry-loading:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check script syntax
+        run: |
+          node --check scripts/industry.js
+          node --check scripts/industry-panels.js
+          node --check scripts/industry-embed.js
+      - name: Install isolated browser runtime
+        run: |
+          npm install --prefix /tmp/industry-loading-test playwright@1.58.2
+          /tmp/industry-loading-test/node_modules/.bin/playwright install --with-deps chromium
+      - name: Check loading transitions and retry
+        env:
+          NODE_PATH: /tmp/industry-loading-test/node_modules
+        run: node tests/industry-loading.browser.cjs

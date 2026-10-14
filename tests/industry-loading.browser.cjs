@@ -1,0 +1,34 @@
+const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),assert=require('node:assert/strict'),{chromium}=require('playwright');
+const root=path.resolve(__dirname,'..'),server=http.createServer((req,res)=>{const f=path.resolve(root,'.'+new URL(req.url,'http://local').pathname);if(!f.startsWith(root+path.sep))return res.writeHead(403).end();try{res.setHeader('Content-Type',({'.js':'text/javascript','.css':'text/css','.html':'text/html','.json':'application/json'})[path.extname(f)]||'text/plain');res.end(fs.readFileSync(f));}catch{res.writeHead(404).end();}});
+async function main(){
+ await new Promise(r=>server.listen(0,'127.0.0.1',r));const browser=await chromium.launch({headless:true,...(process.env.EDGE_PATH?{executablePath:process.env.EDGE_PATH}:{})});
+ try{
+ const page=await browser.newPage({viewport:{width:1440,height:1000}}),origin=process.argv[2]||'http://127.0.0.1:'+server.address().port,errors=[];page.on('pageerror',e=>{errors.push(e.message);console.log('ERROR',e.message)});page.on('console',m=>{if(m.type()==='error')console.log('BROWSER',m.text())});
+ let release;const gate=new Promise(r=>release=r);await page.route('**/data/hotel_industry_weekly.csv*',async route=>{await gate;await route.continue();});
+ await page.goto(origin+'/industry.html',{waitUntil:'domcontentloaded'});await page.waitForSelector('#panel-hotel',{state:'attached'});
+ const loading=()=>page.locator('#status').evaluate(e=>{const s=getComputedStyle(e),r=e.getBoundingClientRect();return {text:e.innerText,font:s.font,color:s.color,x:r.x,y:r.y,height:r.height};});
+ const first=await loading();assert.equal(first.text,'正在读取数据…');await page.waitForTimeout(400);assert.deepEqual(await loading(),first);
+ assert.equal(await page.locator('#panel-hotel').isVisible(),false);
+ await page.evaluate(()=>{const f=document.querySelector('#panel-hotel');dispatchEvent(new MessageEvent('message',{origin:location.origin,source:f.contentWindow,data:{type:'industry-panel',height:600,view:''}}));});
+ assert.deepEqual(await loading(),first);
+ // Background hotel completion cannot dismiss the dining loader.
+ let releaseDining;const diningGate=new Promise(r=>releaseDining=r);await page.route('**/data/sectors/dining.json*',async route=>{await diningGate;await route.continue();});
+ await page.click('[data-key=dining]');await page.waitForSelector('#panel-dining',{state:'attached'});release();await page.waitForTimeout(500);assert.equal(await page.locator('#industry-stage').getAttribute('data-state'),'loading');assert.equal(await page.locator('#panel-dining').isVisible(),false);releaseDining();
+ await page.locator('#industry-stage[data-state=ready]').waitFor();assert(await page.locator('#panel-dining').isVisible());
+ await page.click('[data-key=hotel]');await page.locator('#panel-hotel[data-state=ready]').waitFor();assert.equal(await page.locator('#status').isVisible(),false);assert(await page.frameLocator('#panel-hotel').locator('#main-chart svg').count()>0);
+ const height=await page.locator('#panel-hotel').evaluate(e=>e.getBoundingClientRect().height);assert(height>600);
+ await page.click('[data-key=dining]');await page.waitForTimeout(100);await page.click('[data-key=hotel]');await page.waitForTimeout(100);assert.equal(await page.locator('#status').isVisible(),false);assert.equal(await page.locator('#panel-hotel').evaluate(e=>e.getBoundingClientRect().height),height);
+ for(const key of ['dutyfree','gold']){await page.click('[data-key='+key+']');await page.locator('[data-key='+key+'][aria-pressed=true]').waitFor();await page.locator('#industry-stage[data-state=ready]').waitFor({timeout:30000});assert.equal(await page.locator('#status').isVisible(),false);if(key==='dutyfree')assert.equal(await page.frameLocator('#panel-dutyfree').locator('#hn-growth').getAttribute('data-chart-ready'),'true');}
+ await page.click('[data-key=hotel]');await page.frameLocator('#panel-hotel').locator('#holiday-dashboard-tab').click();await page.waitForFunction(()=>document.querySelector('#panel-hotel').contentDocument?.querySelector('#holiday-dashboard:not([hidden])'));await page.locator('#panel-hotel[data-state=ready]').waitFor();
+ assert.equal(await page.locator('#status').isVisible(),false);
+ // The static loader is identical even before the controller has executed.
+ let start;const startup=new Promise(r=>start=r);await page.route('**/scripts/industry-panels.js*',async r=>{await startup;await r.continue();});
+ const nav=page.goto(origin+'/industry.html?test=startup',{waitUntil:'domcontentloaded'});await page.waitForSelector('#industry-load-text');const early=await loading();start();await nav;await page.waitForSelector('#panel-hotel',{state:'attached'});await page.locator('#panel-hotel[data-state=ready]').waitFor();assert.equal(early.text,'正在读取数据…');assert.equal(early.font,first.font);assert.equal(early.color,first.color);assert.equal(early.x,first.x);assert.equal(early.y,first.y);await page.unroute('**/scripts/industry-panels.js*');
+ await page.setViewportSize({width:390,height:844});assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+ // Explicit data failure stays in the same loader and supports retry.
+ await page.unroute('**/data/sectors/dining.json*');await page.route('**/data/sectors/dining.json*',r=>r.fulfill({status:503,body:'unavailable'}));await page.goto(origin+'/industry.html?test=failure#dining',{waitUntil:'domcontentloaded'});await page.locator('#industry-stage[data-state=error]').waitFor();assert.equal(await page.locator('#panel-dining').isVisible(),false);assert(await page.locator('#industry-load-retry').isVisible());await page.unroute('**/data/sectors/dining.json*');await page.click('#industry-load-retry');await page.locator('#industry-stage[data-state=ready]').waitFor();
+ assert.deepEqual(errors,[]);console.log('PASS: stable loader geometry, no premature reveal, all four sectors, background completion, cached panels, responsive layout, failure and retry');
+ }finally{await browser.close();}
+}
+main().catch(e=>{console.error(e);process.exitCode=1;}).finally(()=>server.close());
+
