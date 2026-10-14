@@ -2,6 +2,7 @@
 'use strict';
 const M=MonthlyProduct,CM=ConsumptionMacro,$=id=>document.getElementById(id),canvas=$('product'),ink='#173f60',blue='#104f87',muted='#697985',colors=['#165b9c','#5aa8df','#a64d19'];
 let data=null,legal=[],report=null,busy=false,warning='',hits=[],activeMonth='',comments=new Map(),previewFrame;
+const banner=new Image();banner.onload=()=>{if(report)render();};banner.src='scripts/assets/hotel-weekly/title.png';
 const logo=new Image();logo.onload=()=>{if(report)render();};logo.src='scripts/assets/hotel-weekly/logo.png';
 const tip=document.createElement('div');tip.className='monthly-tooltip';tip.hidden=true;document.body.append(tip);
 function status(message,error=false){$('status').textContent=message;$('status').classList.toggle('error',error);}
@@ -13,12 +14,12 @@ function textLines(ctx,text,width,size){ctx.font=size+'px "Microsoft YaHei",sans
 function draw(target,width,model,comment){
  const measure=target.getContext('2d'),commentLines=textLines(measure,comment,1112,22),legalLines=legal.map(p=>textLines(measure,p,1112,13));
  const legalHeight=legalLines.reduce((n,ls)=>n+ls.length*19+62,0);
- const height=3600+model.categories.length*37+commentLines.length*34+legalHeight;
+ const height=3648+model.categories.length*37+commentLines.length*34+legalHeight;
  target.width=width;target.height=Math.ceil(height*width/1200);const ctx=target.getContext('2d',{alpha:false}),scale=width/1200;ctx.scale(scale,scale);ctx.fillStyle='#fff';ctx.fillRect(0,0,1200,height);
  const hit=[];
  function text(t,x,y,size=20,color=ink,weight='normal',align='left'){ctx.font=weight+' '+size+'px "Microsoft YaHei",sans-serif';ctx.fillStyle=color;ctx.textAlign=align;ctx.fillText(String(t),x,y);ctx.textAlign='left';}
  function line(y){ctx.fillStyle='#dae2e8';ctx.fillRect(44,y,1112,1);}
- function section(title,y){text(title,44,y,27,blue,'bold');ctx.fillStyle='#eee8cd';ctx.fillRect(44,y+13,1112,5);}
+ function section(title,y){text(title,44,y,27,blue,'bold');ctx.fillStyle='#dae2e8';ctx.fillRect(44,y+16,1112,1.5);}
  function cells(headers,rows,y,widths){ctx.fillStyle=blue;ctx.fillRect(44,y,1112,44);let x=44;headers.forEach((h,i)=>{text(h,x+12,y+29,19,'#fff','bold');x+=widths[i];});let top=y+44;rows.forEach((row,i)=>{ctx.fillStyle=i%2?'#f3f7fa':'#fff';ctx.fillRect(44,top,1112,37);let x=44;row.forEach((v,j)=>{text(v,x+12,top+25,19,j===0?ink:ink,j===0?'normal':'normal');x+=widths[j];});ctx.fillStyle='#e4eaf0';ctx.fillRect(44,top+36,1112,1);top+=37;});return top;}
  function kpis(items,y){const w=1112/items.length;items.forEach((i,j)=>{const x=44+j*w;text(i[0],x,y,21,muted);text(i[1],x,y+54,43,ink,'bold');text(i[2]||'',x,y+88,22,muted);if(j<items.length-1){ctx.fillStyle='#dae2e8';ctx.fillRect(x+w-28,y-8,1,108);}});}
  function chart(x,y,title,points,series){
@@ -39,8 +40,8 @@ function draw(target,width,model,comment){
  }
  if(logo.complete&&logo.naturalWidth)ctx.drawImage(logo,44,25,300,67);else text('SINOLINK 国金证券',44,68,32,blue,'bold');
  ctx.fillStyle='#447eaf';ctx.fillRect(920,34,236,50);text('国金商社于健',1038,69,29,'#fff','normal','center');
- ctx.fillStyle=blue;ctx.fillRect(0,120,1200,224);text('社零与CPI月度跟踪',44,224,68,'#fff','bold');text(M.monthLabel(model.period),44,298,32,'#fff');
- let y=400;
+ ctx.fillStyle=blue;ctx.fillRect(0,120,1200,272);if(banner.complete&&banner.naturalWidth)ctx.drawImage(banner,0,120,1200,272);text('社零与CPI月度跟踪',44,260,76,'#fff','bold');text(M.monthLabel(model.period),44,330,32,'#fff');
+ let y=448;
  section('社会消费品零售总额',y);y+=63;
  kpis([['社零 · '+(model.combined?'1—2月合并':'当月'),number(model.retail?.value,0)+' 亿元','同比 '+rate(model.retail?.yoy)],['餐饮收入 · '+(model.combined?'1—2月合并':'当月'),number(M.row(data,'catering',model.period)?.value,0)+' 亿元','同比 '+rate(M.row(data,'catering',model.period)?.yoy)],['社零 · 年初累计',number(model.ytd?.value,0)+' 亿元','累计同比 '+rate(model.ytd?.yoy)]],y);
  y+=145;text('全国 · 名义金额 · 未季调'+(model.combined?' · 1—2月合并披露':''),44,y,18,muted);y+=33;
