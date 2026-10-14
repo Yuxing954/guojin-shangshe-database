@@ -1,4 +1,5 @@
 /* Canonical site tokens and common components. Page adapters live in site-polish.css. */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 :root{--site-bg:#f5f7fb;--site-surface:#fff;--site-ink:#202c40;--site-muted:#66748a;--site-line:#e0e6ef;--site-accent:#4d58a4;--site-soft:#eef0fa;--site-up:#b85460;--site-down:#368575;--site-radius:12px;--site-control:40px;--site-space:24px}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
