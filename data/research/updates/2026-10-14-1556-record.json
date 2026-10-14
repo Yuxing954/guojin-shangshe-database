@@ -1,0 +1,42 @@
+{
+  "runId": "2026-10-14-1556",
+  "sourceGroup": "88888142214212",
+  "sourceName": "水木调研纪要-2.0",
+  "previousCoverageTo": "2026-10-14T14:42:44.948+0800",
+  "coverageTo": "2026-10-14T15:16:32.032+0800",
+  "oldestFetched": "2026-10-14T15:16:16.829+0800",
+  "sourceTopicsFetched": 30,
+  "sourceTopicsInCoverage": 2,
+  "added": {
+    "views": 1,
+    "all_views": 1
+  },
+  "duplicates": 0,
+  "excludedTopics": [],
+  "briefChanges": {
+    "added": [],
+    "updated": [
+      "meituan-instant-retail-unit-economics-20261014"
+    ],
+    "expiredRemoved": []
+  },
+  "addedTopicIds": [
+    "14425441241822282",
+    "22258224524155811"
+  ],
+  "duplicateTopicIds": [],
+  "files": {
+    "views": "data/research/updates/2026-10-14-1556-views.csv",
+    "all_views": "data/research/updates/2026-10-14-1556-all_views.csv"
+  },
+  "syncedAt": "2026-10-14 07:56:47Z",
+  "fetchedTopics": 30,
+  "pageRowsFetched": 30,
+  "dedupCheck": {
+    "algorithm": "scripts/build_research_shards.py keys(row)",
+    "candidateKeys": 8,
+    "candidateBuckets": 8,
+    "duplicateKeys": 0
+  },
+  "pageOldestFetched": "2026-10-14T13:01:48.854+0800"
+}
