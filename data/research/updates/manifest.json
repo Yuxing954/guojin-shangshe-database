@@ -1,13 +1,14 @@
 {
-  "syncedAt": "2026-10-14 02:59:56Z",
+  "syncedAt": "2026-10-14 04:04:14Z",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
   "coverageFrom": "2026-10-13T19:28:11.141+0800",
-  "coverageTo": "2026-10-14T10:51:19.243+0800",
+  "coverageTo": "2026-10-14T11:35:28.376+0800",
   "oldestFetched": "2026-10-11T21:49:26.657+0800",
-  "fetchedTopics": 607,
+  "fetchedTopics": 634,
   "files": {
     "views": [
+      "data/research/updates/2026-10-14-1204-views-001.csv",
       "data/research/updates/2026-10-14-1059-views-001.csv",
       "data/research/updates/2026-10-14-0950-views-001.csv",
       "data/research/updates/2026-10-13-1510-views-001.csv",
@@ -37,6 +38,7 @@
       "data/research/updates/2026-10-07-views-002.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-10-14-1204-all_views-001.csv",
       "data/research/updates/2026-10-14-1059-all_views-001.csv",
       "data/research/updates/2026-10-14-0950-all_views-001.csv",
       "data/research/updates/2026-10-13-2055-all_views-001.csv",
@@ -130,18 +132,18 @@
     ]
   },
   "counts": {
-    "views": 234,
-    "all_views": 4864,
+    "views": 237,
+    "all_views": 4886,
     "minutes": 101
   },
   "latest": {
-    "views": "2026-10-14T09:55:39.328+0800",
-    "all_views": "2026-10-14T10:51:19.243+0800",
+    "views": "2026-10-14T11:35:28.376+0800",
+    "all_views": "2026-10-14T11:35:13.681+0800",
     "minutes": "2026-10-12T01:07:33"
   },
   "excluded": {
     "附件标题": 37,
-    "图片无可读正文": 9,
+    "图片无可读正文": 10,
     "无实质观点正文": 8
   },
   "lastClassificationCorrection": {
@@ -5410,100 +5412,90 @@
     ]
   },
   "lastRun": {
-    "runId": "2026-10-14-1059",
-    "previousCoverageTo": "2026-10-14T09:49:50.993+0800",
-    "newSourceTopics": 24,
+    "runId": "2026-10-14-1204",
+    "previousCoverageTo": "2026-10-14T10:51:19.243+0800",
+    "newSourceTopics": 27,
     "added": {
-      "views": 1,
-      "all_views": 13
+      "views": 3,
+      "all_views": 22
     },
-    "duplicates": 0,
-    "excluded": 10,
-    "record": "data/research/updates/2026-10-14-1059-record.json",
-    "syncedAt": "2026-10-14 02:59:56Z",
-    "coverageTo": "2026-10-14T10:51:19.243+0800",
+    "duplicates": 1,
+    "excluded": 1,
+    "record": "data/research/updates/2026-10-14-1204-record.json",
+    "syncedAt": "2026-10-14 04:04:14Z",
+    "coverageTo": "2026-10-14T11:35:28.376+0800",
     "addedTopicIds": [
-      "22258224585522151",
-      "14425441252251852",
-      "55521554228842114",
-      "14425441228842182",
-      "82258224551184412",
-      "45548552441141888",
-      "22258224551454251",
-      "82258224551221852",
-      "55521554228554844",
-      "82258224551224842",
-      "14425441224224252",
-      "82258224552555422",
-      "45548552445444518",
-      "55521554221888414"
+      "55521554211182244",
+      "55521554211148814",
+      "82258224588844282",
+      "82258224588844822",
+      "82258224588842212",
+      "55521554211145184",
+      "45548552488842188",
+      "45548552488411188",
+      "22258224588511211",
+      "82258224588512442",
+      "22258224588512851",
+      "55521554211282524",
+      "55521554211248224",
+      "82258224588544222",
+      "82258224588544522",
+      "14425441255214852",
+      "45548552488428548",
+      "45548552488428488",
+      "45548552488451858",
+      "45548552488452118",
+      "14425441255244182",
+      "22258224588522211",
+      "22258224588522521",
+      "14425441255245812",
+      "22258224588525251"
     ],
-    "duplicateTopicIds": [],
+    "duplicateTopicIds": [
+      "14425441255282412"
+    ],
     "excludedTopics": [
       {
-        "topicId": "45548552445555428",
-        "reason": "纯文件/附件占位；附件仅登记元数据，正文未读取"
-      },
-      {
-        "topicId": "14425441224445822",
-        "reason": "纯文件/附件占位；附件仅登记元数据，正文未读取"
-      },
-      {
-        "topicId": "82258224552225552",
-        "reason": "纯文件/附件占位；附件仅登记元数据，正文未读取"
-      },
-      {
-        "topicId": "82258224552281182",
-        "reason": "纯文件/附件占位；附件仅登记元数据，正文未读取"
-      },
-      {
-        "topicId": "45548552445582458",
-        "reason": "纯文件/附件占位；附件仅登记元数据，正文未读取"
-      },
-      {
-        "topicId": "22258224552282121",
-        "reason": "纯文件/附件占位；附件仅登记元数据，正文未读取"
-      },
-      {
-        "topicId": "45548552445585448",
-        "reason": "纯文件/附件占位；附件仅登记元数据，正文未读取"
-      },
-      {
-        "topicId": "82258224552251542",
-        "reason": "纯文件/附件占位；附件仅登记元数据，正文未读取"
-      },
-      {
-        "topicId": "14425441224425812",
-        "reason": "纯文件/附件占位；附件仅登记元数据，正文未读取"
-      },
-      {
-        "topicId": "22258224552822211",
-        "reason": "纯文件/附件占位；附件仅登记元数据，正文未读取"
+        "topicId": "14425441255248142",
+        "reason": "只有图片及标题“国内储能招标数据库”，正文没有可判断的观点；不推断图片内容"
       }
     ],
     "briefChanges": {
-      "added": [],
-      "updated": [
-        "toy-building-blocks-20261014"
+      "added": [
+        "zhongju-channel-q3-20261014",
+        "lvmh-q3-20261014",
+        "ecommerce-platform-sales-202609"
       ],
+      "updated": [],
       "expiredRemoved": []
     },
     "sourceGroup": "88888142214212",
     "sourceName": "水木调研纪要-2.0",
-    "oldestFetched": "2026-10-14T09:38:25.045+0800",
-    "fetchedTopics": 30,
+    "oldestFetched": "2026-10-14T11:25:57.993+0800",
+    "fetchedTopics": 27,
     "attachmentMetadata": {
-      "sourceFileOccurrences": 23,
-      "indexedFileOccurrences": 23,
-      "unreadContents": 23,
-      "addedCatalogRecords": 23,
+      "sourceFileOccurrences": 0,
+      "indexedFileOccurrences": 0,
+      "unreadContents": 0,
+      "addedCatalogRecords": 0,
       "windowStart": "2026-10-12",
       "windowEnd": "2026-10-14",
-      "metadataOnly": true
+      "metadataOnly": true,
+      "windowScan": {
+        "windowStart": "2026-10-12",
+        "windowEnd": "2026-10-14",
+        "topicsScanned": 639,
+        "topicPages": 22,
+        "boundaryReached": true,
+        "sourceOccurrencesObserved": 382,
+        "sourceOccurrencesAlreadyIndexed": 382,
+        "missingOccurrences": 0,
+        "attachmentContentRead": false
+      }
     },
     "files": {
-      "views": "data/research/updates/2026-10-14-1059-views-001.csv",
-      "all_views": "data/research/updates/2026-10-14-1059-all_views-001.csv"
+      "views": "data/research/updates/2026-10-14-1204-views-001.csv",
+      "all_views": "data/research/updates/2026-10-14-1204-all_views-001.csv"
     }
   }
 }
