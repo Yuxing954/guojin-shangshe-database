@@ -5,7 +5,7 @@ const base=new URL('../',document.currentScript.src),home=new URL('industry.html
 let pending,entry,dialog,platform=/iPhone|iPad|iPod/i.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)?'ios':'android';
 const mode=matchMedia('(display-mode: standalone)'),installed=()=>mode.matches||navigator.standalone===true;
 const inApp=/MicroMessenger|Weibo|DingTalk|QQ\//i.test(navigator.userAgent);
-const mobile=/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)||navigator.maxTouchPoints>1;
+const mobile=/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
 addEventListener('beforeinstallprompt',e=>{e.preventDefault();pending=e;refresh();});
 addEventListener('appinstalled',()=>{pending=null;if(entry)entry.hidden=true;if(dialog?.open)dialog.close();});
 mode.addEventListener?.('change',()=>{if(entry)entry.hidden=installed();if(installed()&&dialog?.open)dialog.close();});
