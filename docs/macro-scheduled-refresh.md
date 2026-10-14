@@ -12,11 +12,17 @@
 | 旧傍晚/夜间任务 `automation-4`、`automation-5` | 已暂停 | 统一由每日08:20批次覆盖 |
 | 旧发布后补查任务 | 已暂停 | CPI及BLS/Census发布事件只在每日统一批次核验，不单独安排30/90分钟重复采集 |
 
-按官方披露日历在每日批次检查新发布的数据；没有官方日期时标待确认，不猜测发布日期。停止单独的发布后30/90分钟补查任务，避免同一宏观数据一天多次刷新。BLS 2026日历确认9月CPI于10月14日08:30美国东部时间发布：<https://www.bls.gov/schedule/2026/home.htm>。
+每日 08:20 只触发一个宏观批次。先运行 `python update/macro_due.py --json` 看今日到期的官方源和独立范围，再运行 `python update/macro_auto.py --due-only`；更新器内部按同一策略过滤 Choice 和官方 API。若今日没有到期数据，它不读取凭证、不发网络请求、不改快照或 `checkedAt`，只返回紧凑的 `noDataFetch` 状态。心跳只处理 `dueScopes` 中的 FedWatch、期货、Polymarket、黄金、政策与 SEP，不要再单独处理 `dueOfficial`，避免重复请求。
 
-官方发布日历只用于确定哪些指标在每日批次中已经到期；使用America/New_York等真实时区处理夏令时，不猜测发布日期。若发布时点晚于当日批次，在次日批次核验并按官方统计期间记录，不为其增加第二次刷新。
+刷新窗口定义在 `update/macro_due.py`，用官方本地时区换算为北京时间的次日早批。2026年国家统计局发布表中，CPI/PPI在每月9日至14日发布，PMI通常月末发布，月度经济运行数据集中在当月15日至19日发布；批次只在公告日之后检查。BLS CPI、就业报告按其官方发布日期次日检查；Census零售与新屋开工按官方日历的次日检查；BEA个人收入/PCE、贸易和GDP采用官方公布日次日检查；美联储G.17工业生产按其已公布发布日期次日检查。FedWatch与联邦基金期货在美国上一交易日收市后的北京时间批次核验；若前一美国日历日是周末或NYSE休市日则跳过。Polymarket每日核验；黄金ETF/CFTC周末核验、央行购金每月首周核验、低频年度数据每年10月首周核验。FOMC政策和SEP只在声明/预测实际公布后的北京时间次日检查。
+
+发布窗口容许次日批次作为一次失败重试。成功或确认无变化的指标/来源会写入被Git忽略的 `.cache/macro-due-ledger.json`，同一发布事件不再重复查询；失败不记成功，可在窗口内次日重试。Choice增量请求只回看月度24个月、季度8季、日度180天并合并本地历史；每年10月该指标到期时做一次全历史核验。政策账本不保存宏观值或凭证。官方日历调整时先核验来源，再更新窗口和测试；未来日程未公布的指标保持未到期，不猜日期，也不做定时补查。发布时刻晚于 08:20 的数据只在下个早批检查，不建立当晚的第二次任务。停止单独的发布后30/90分钟补查任务。
+
+官方日历来源：国家统计局 [2026年主要统计信息发布日程](https://www.stats.gov.cn/xw/tjxw/tzgg/202512/t20251224_1962137.html)、[BLS CPI日程](https://www.bls.gov/schedule/news_release/cpi.htm) 与 [Employment Situation日程](https://www.bls.gov/schedule/news_release/empsit.htm)、美国人口普查局 [零售销售](https://www.census.gov/retail/release_schedule.html) 与 [新屋开工](https://www.census.gov/construction/soc/schedule.html)、BEA [发布日历](https://www.bea.gov/news/schedule)、美联储 [FOMC日历](https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm) 和 [G.17工业生产日历](https://www.federalreserve.gov/releases/G17/default.htm)、[NYSE休市日历](https://www.nyse.com/markets/hours-calendars)。
 
 ## 执行与数据文件
+
+每日08:20先运行到期计划；无到期指标时立即结束，不读历史快照或凭证、不联网。按单项预计发布期查询并保留窗口内次日重试；来源尚未返回应发布期时不记成功。回看范围按频率限制为月度24个月、季度8季、日度180天，并合并完整历史。只有数值、期间、来源、修订或状态实际变化才写文件；抓取时间和回执哈希单独变化不触发提交。
 
 1. 仅通过GitHub连接器读取最新main、AGENTS.md及本指引。确认无同批正在执行/待合并PR/部署；存在时继续该批或跳过，不能重叠提交。使用独立本地批次目录，记录基准提交与批次标识，绝不覆盖其他任务的未提交修改。发布前再读main；发生变化时核对涉及文件并重新验证。
 2. 依照注册表串行查询本批准确指标；使用本机已授权Choice/东方财富MCP。不得输出或上传配置、凭证、认证头。维护`.cache/`原始回执及SHA-256，失败仅输出安全错误原因。保留所有历史和真实0，未知值保留空，缺期不插值；无独立源时点时留空并另记实际获取时间。
