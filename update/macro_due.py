@@ -12,6 +12,11 @@ DEFAULT_REGISTRY = ROOT / "data/macro/choice-registry.json"
 LEDGER = ROOT / ".cache/macro-due-ledger.json"
 POLICY = {
     "timezone": "Asia/Shanghai",
+    "marketHolidays": [
+        "2026-01-01", "2026-01-19", "2026-02-16", "2026-04-03", "2026-05-25", "2026-06-19", "2026-07-03", "2026-09-07", "2026-11-26", "2026-12-25",
+        "2027-01-01", "2027-01-18", "2027-02-15", "2027-03-26", "2027-05-31", "2027-06-18", "2027-07-05", "2027-09-06", "2027-11-25", "2027-12-24",
+        "2028-01-17", "2028-02-21", "2028-04-14", "2028-05-29", "2028-06-19", "2028-07-04", "2028-09-04", "2028-11-23", "2028-12-25",
+    ],
     "windows": {
         "nbs_cpi": {"days": [10, 16], "exactDays2026": [10, 12, 10, 11, 12, 11, 10, 10, 10, 15, 10, 10]},
         "nbs_pmi": {"days": [1, 3], "exactDays2026": [1, 1, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1]},
@@ -30,7 +35,7 @@ POLICY = {
         "us_monthly_early": {"days": [1, 7]},
         "us_trade": {"exactDates": ["2026-11-05", "2026-12-09", "2027-01-08", "2027-02-05", "2027-03-10", "2027-04-07", "2027-05-06", "2027-06-10", "2027-07-08", "2027-08-06", "2027-09-09", "2027-10-07", "2027-11-05", "2027-12-08"]},
         "us_gdp": {"exactDates": ["2026-10-30", "2026-11-26", "2026-12-24", "2027-01-29", "2027-02-26", "2027-03-31", "2027-04-30", "2027-05-28", "2027-06-26", "2027-07-30", "2027-08-26", "2027-10-01", "2027-10-29", "2027-11-25", "2027-12-23"]},
-        "daily_market": {"weekdays": [0, 1, 2, 3, 4]},
+        "daily_market": {"marketCalendar": True},
         "daily_prediction": {"everyDay": True},
         "weekly_gold": {"weekdays": [5, 6]},
         "monthly_gold": {"days": [1, 7]},
@@ -52,6 +57,7 @@ POLICY = {
         "bea": "https://www.bea.gov/news/schedule",
         "fomc": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
         "industrialProduction": "https://www.federalreserve.gov/releases/G17/default.htm",
+        "marketHolidays": "https://www.nyse.com/markets/hours-calendars",
         "censusHousing": "https://www.census.gov/construction/soc/schedule.html",
         "blsCpi": "https://www.bls.gov/schedule/news_release/cpi.htm",
         "blsEmployment": "https://www.bls.gov/schedule/news_release/empsit.htm",
@@ -60,6 +66,9 @@ POLICY = {
 
 
 def in_window(day: date, spec: dict, release_key: str) -> bool:
+    if spec.get("marketCalendar"):
+        session = day - timedelta(days=1)
+        return session.weekday() < 5 and session.isoformat() not in POLICY["marketHolidays"]
     if "exactDates" in spec:
         return day.isoformat() in spec["exactDates"] or (day.fromordinal(day.toordinal() - 1)).isoformat() in spec["exactDates"]
     year_key = f"exactDays{day.year}"
