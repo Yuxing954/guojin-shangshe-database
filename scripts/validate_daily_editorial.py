@@ -4,7 +4,18 @@ from hydrate_daily_originals import normalize_url,corpus
 from daily_scope import is_ecommerce_topic
 from build_daily_report import stamp,ROOT,window_hours
 
+def validate_industry_updates(d):
+ if d.get('industryWindowHours')!=24:return  # Preserve historical snapshots.
+ start,end=stamp(d.get('industryWindowStart')),stamp(d.get('industryWindowEnd'))
+ assert start and end and end-start==dt.timedelta(hours=24),'Industry window must be exactly 24 hours'
+ for row in d.get('industryUpdates',[]):
+  published=row.get('publishedAt')
+  assert published and len(published)>10,'Industry update requires a verified publication time'
+  t=stamp(published)
+  assert t and start<t<=end,'Industry update outside publication window'
+
 def validate(d):
+ validate_industry_updates(d)
  assert d['schemaVersion']==2,'Expected editorial v2'
  cutoff=stamp(d['cutoff']);assert cutoff and cutoff.date().isoformat()==d['date']
  if (cutoff.hour,cutoff.minute)!=(16,0):

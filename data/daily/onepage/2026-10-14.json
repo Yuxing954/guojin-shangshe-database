@@ -131,36 +131,6 @@
       "publishedAt": "2026-10-14T09:30:00+08:00",
       "availableAt": "2026-10-14T16:14:04+08:00",
       "evidenceFile": "data/daily/evidence/2026-10-14.json"
-    },
-    {
-      "title": "酒店W41：同比改善含国庆错位影响",
-      "period": "2026W41（10/5—10/11）对比2025W41（10/6—10/12）；全国、全部档次",
-      "summary": "RevPAR 105.69元，同比+12.9%；ADR 207.69元，同比+7.3%；OCC 50.89%，去年同周48.37%，提高2.52个百分点。价格与入住率共同拉动增长，国庆错位放大单周同比，季度趋势仍需结合累计表现与节后商旅需求。",
-      "source": "酒店之家",
-      "url": "https://yj.innhome.com.cn/",
-      "publishedAt": null,
-      "availableAt": "2026-10-12T18:09:23+08:00",
-      "evidenceFile": "data/daily/evidence/2026-10-14.json"
-    },
-    {
-      "title": "LVMH三季度：品类分化延续",
-      "period": "2026Q3；全球业务、固定汇率及合并范围",
-      "summary": "收入185.04亿欧元，有机同比+1%；时装皮具-5%、腕表珠宝+6%、精品零售+8%。中国需求偏弱拖累软奢，珠宝和精品零售相对更稳，显示高端消费内部仍有明显品类分化。",
-      "source": "LVMH公司公告",
-      "url": "https://www.lvmh.com/en/publications/continued-growth-in-the-third-quarter-of-2026",
-      "publishedAt": "2026-10-12",
-      "availableAt": "2026-10-14T16:14:04+08:00",
-      "evidenceFile": "data/daily/evidence/2026-10-14.json"
-    },
-    {
-      "title": "冰雪大世界新雪季扩容计划",
-      "period": "第二十八届哈尔滨冰雪大世界；2026—2027雪季",
-      "summary": "新雪季园区规划面积125万平方米、用冰用雪40万立方米。项目扩容叠加演艺与体验升级，有望强化哈尔滨冬季目的地吸引力，带动景区、酒店及周边配套消费。",
-      "source": "哈尔滨冰雪大世界官网",
-      "url": "https://www.hrbicesnow.com/",
-      "publishedAt": "2026-10-12",
-      "availableAt": "2026-10-14T16:14:04+08:00",
-      "evidenceFile": "data/daily/evidence/2026-10-14.json"
     }
   ],
   "monitoringCheckedAt": "2026-10-14T16:14:04+08:00",
@@ -286,7 +256,7 @@
       "sha256": "d0cc959ee46ab03df80d5893fcb65614e6a1a782947eb85536ef6e1d38a9d348"
     }
   },
-  "updatedAt": "2026-10-14T21:31:03+08:00",
+  "updatedAt": "2026-10-14T22:26:21+08:00",
   "additions": [
     {
       "type": "usCpi",
@@ -294,5 +264,8 @@
       "appendedAt": "2026-10-14T21:31:03+08:00",
       "reason": "用户要求追加美国9月CPI"
     }
-  ]
+  ],
+  "industryWindowHours": 24,
+  "industryWindowEnd": "2026-10-14T21:31:03+08:00",
+  "industryWindowStart": "2026-10-13T21:31:03+08:00"
 }
