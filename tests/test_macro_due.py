@@ -3,7 +3,9 @@ import unittest
 from datetime import date
 from pathlib import Path
 
-spec = importlib.util.spec_from_file_location("macro_due", Path(__file__).with_name("macro_due.py"))
+repo = Path(__file__).resolve().parents[1] if Path(__file__).parent.name == "tests" else Path(__file__).resolve().parent
+module_path = repo / "update" / "macro_due.py" if (repo / "update" / "macro_due.py").exists() else Path(__file__).with_name("macro_due.py")
+spec = importlib.util.spec_from_file_location("macro_due", module_path)
 due = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(due)
 
@@ -47,6 +49,21 @@ class DueWindowTests(unittest.TestCase):
     def test_census_housing_waits_for_the_publication_day(self):
         self.assertNotIn("census-housing", due.build_plan(date(2026, 10, 20), self.registry)["dueOfficial"])
         self.assertIn("census-housing", due.build_plan(date(2026, 10, 21), self.registry)["dueOfficial"])
+
+    def test_federal_reserve_industrial_production_uses_g17_release_dates(self):
+        registry = {"series": [{"id": "us-industrial-production", "publisher": "美联储", "frequency": "monthly"}]}
+        self.assertEqual(due.build_plan(date(2026, 10, 16), registry)["dueChoice"], [])
+        self.assertEqual(due.build_plan(date(2026, 10, 17), registry)["dueChoice"], ["us-industrial-production"])
+
+    def test_incremental_queries_keep_history_and_bound_response_size(self):
+        monthly = {"start": "2016-01-01", "frequency": "monthly"}
+        obs = [{"period": "2026-09"}]
+        self.assertEqual(due.incremental_start(monthly, obs), "2024-09-01")
+        self.assertEqual(due.incremental_start(monthly, obs, full_history=True), "2016-01-01")
+        quarterly = {"start": "2016-01-01", "frequency": "quarterly"}
+        self.assertEqual(due.incremental_start(quarterly, [{"period": "2026-Q3"}]), "2024-07-01")
+        daily = {"start": "2016-01-01", "frequency": "daily"}
+        self.assertEqual(due.incremental_start(daily, [{"period": "2026-10-14"}]), "2026-04-17")
 
     def test_successful_series_is_suppressed_for_the_window_only(self):
         ledger = {"choice": {"cn-cpi": "2026-10"}}
