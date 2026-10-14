@@ -27,7 +27,7 @@
    options('db-frequency',[...new Set(rows.map(o=>o.frequency))].sort((a,b)=>['季度','半年','年度'].indexOf(a)-['季度','半年','年度'].indexOf(b)).map(f=>({value:f,label:f})),restore?params.get('db-frequency'):'季度');
    const years=[...new Set(rows.map(o=>o.period.slice(0,4)))].sort();for(const k of ['from','to'])options('db-'+k,[{value:'',label:k==='from'?'起始年':'结束年'},...years.map(y=>({value:y,label:y}))],restore?params.get('db-'+k):'');
    $('db-forecast').checked=restore&&params.get('db-forecast')==='1';$('db-pending').checked=restore&&params.get('db-pending')==='1';const defaultRow=A.latest(rows,profileConfig[selected.id]?.operating||{},'revpar');setSeries((restore?params.get('db-series'):null)||(defaultRow?M.seriesKey(defaultRow):null));page=1;
-   $('db-status').textContent=selected.name+' · '+selected.code+' · '+(rows.length?'研究底稿、定期报告与Choice财务分别保留来源':'暂无已入库数据');
+   $('db-status').textContent=rows.length?'':'暂无已入库数据';
    $('db-controls').hidden=!rows.length;$('db-data').hidden=!rows.length;$('db-gap').hidden=!!rows.length;$('db-gap').textContent=rows.length?'':selected.name+'：暂无专项经营底稿';paint();document.dispatchEvent(new CustomEvent('companydb:selected',{detail:{company:selected,rows,catalog,sources,issues,loadCompany,select,toHistory}}));
   }catch(e){if(current!==request)return;$('db-status').textContent='公司经营数据读取失败';$('db-status').append(Object.assign(document.createElement('button'),{textContent:'重试',className:'portal-button',onclick:()=>select(selected.id,restore)}));}
  }
