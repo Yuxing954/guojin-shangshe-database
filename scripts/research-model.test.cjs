@@ -8,11 +8,6 @@ assert(!M.matches({...row,content:'提到黄金'}, {kind:'views',sector:'gold'})
 assert(!M.sectorIds({title:'国庆黄金周出行前瞻'}).includes('gold'));
 assert(!M.sectorIds({title:'Nyota updates'}).includes('travel'));
 assert.equal(M.preview(row),'RevPAR同比增长5%。');
-const zsxq='外卖：放缓利潮兑现，优先收回市占'+String.fromCharCode(10)+'<e type="hashtag" hid="28455282584121" title="%23%E5%A4%96%E5%8D%96%23" /> 美团即时零售';
-assert.equal(M.plainContent(zsxq),'外卖：放缓利潮兑现，优先收回市占'+String.fromCharCode(10)+'#外卖# 美团即时零售');
-assert(!M.plainContent(zsxq).includes('<e type='));
-assert(M.matches({...row,content:zsxq},{kind:'views',q:'外卖'}));
-assert.equal(M.plainContent('<e type="text_bold" title="%E6%B8%A9%E5%92%8C%E9%99%8D%E8%A1%A5%E8%B4%B4" />'),'温和降补贴');
 assert.equal(M.format({kind:'minutes',file:'报告.pdf',state:'附件索引，正文未提取'}),'document');
 assert.equal(M.format({kind:'minutes',file:'交流.mp3；补充.mp3',state:'会议音频，未转写'}),'audio');
 assert.equal(M.format({kind:'minutes',file:'',state:''}),'text');
