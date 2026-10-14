@@ -71,6 +71,25 @@ class DueWindowTests(unittest.TestCase):
         daily = {"start": "2016-01-01", "frequency": "daily"}
         self.assertEqual(due.incremental_start(daily, [{"period": "2026-10-14"}]), "2026-04-17")
 
+    def test_expected_release_period_must_arrive_before_window_is_completed(self):
+        day = date(2026, 10, 15)
+        self.assertEqual(due.expected_period({"frequency": "monthly"}, day), "2026-09")
+        self.assertFalse(due.has_expected_period({"frequency": "monthly"}, [{"period": "2026-08"}], day))
+        self.assertTrue(due.has_expected_period({"frequency": "monthly"}, [{"period": "2026-09"}], day))
+
+    def test_expected_quarter_and_daily_periods(self):
+        self.assertEqual(due.expected_period({"frequency": "quarterly"}, date(2026, 10, 20)), "2026-Q3")
+        self.assertFalse(due.has_expected_period({"frequency": "quarterly"}, [{"period": "2026-Q2"}], date(2026, 10, 20)))
+        self.assertEqual(due.expected_period({"frequency": "daily"}, date(2026, 10, 17)), "2026-10-16")
+
+    def test_semantic_payload_ignores_fetch_metadata_but_keeps_values_and_sources(self):
+        old = {"value": 1, "fetchedAt": "a", "checkedAt": "a", "receiptSha256": "old",
+               "sourceUrl": "https://example.test/data"}
+        new = {**old, "fetchedAt": "b", "checkedAt": "b", "receiptSha256": "new"}
+        self.assertEqual(due.semantic_payload(old), due.semantic_payload(new))
+        self.assertNotEqual(due.semantic_payload(old), due.semantic_payload({**new, "value": 2}))
+        self.assertNotEqual(due.semantic_payload(old), due.semantic_payload({**new, "sourceUrl": "https://example.test/other"}))
+
     def test_successful_series_is_suppressed_for_the_window_only(self):
         ledger = {"choice": {"cn-cpi": "2026-10"}}
         self.assertNotIn("cn-cpi", due.build_plan(date(2026, 10, 16), self.registry, ledger)["dueChoice"])
