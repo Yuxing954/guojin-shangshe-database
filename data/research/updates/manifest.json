@@ -1,13 +1,14 @@
 {
-  "syncedAt": "2026-10-14 07:56:47Z",
+  "syncedAt": "2026-10-14 09:58:49Z",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
-  "coverageFrom": "2026-10-14T14:42:44.948+0800",
-  "coverageTo": "2026-10-14T15:16:32.032+0800",
-  "oldestFetched": "2026-10-14T13:01:48.854+0800",
-  "fetchedTopics": 744,
+  "coverageFrom": "2026-10-14T15:16:32.032+0800",
+  "coverageTo": "2026-10-14T17:48:34.802+0800",
+  "oldestFetched": "2026-10-14T13:28:29.242+0800",
+  "fetchedTopics": 774,
   "files": {
     "views": [
+      "data/research/updates/2026-10-14-1758-views.csv",
       "data/research/updates/2026-10-14-1556-views.csv",
       "data/research/updates/2026-10-14-1458-views.csv",
       "data/research/updates/2026-10-14-1358-views.csv",
@@ -42,6 +43,7 @@
       "data/research/updates/2026-10-14-1258-views.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-10-14-1758-all_views.csv",
       "data/research/updates/2026-10-14-1556-all_views.csv",
       "data/research/updates/2026-10-14-1458-all_views.csv",
       "data/research/updates/2026-10-14-1358-all_views.csv",
@@ -140,13 +142,13 @@
     ]
   },
   "counts": {
-    "views": 242,
-    "all_views": 4915,
+    "views": 246,
+    "all_views": 4920,
     "minutes": 101
   },
   "latest": {
-    "views": "2026-10-14T15:16:16.829+0800",
-    "all_views": "2026-10-14T15:16:32.032+0800",
+    "views": "2026-10-14T17:48:34.802+0800",
+    "all_views": "2026-10-14T17:04:11.125+0800",
     "minutes": "2026-10-12T01:07:33"
   },
   "excluded": {
@@ -5442,45 +5444,56 @@
     ]
   },
   "lastRun": {
-    "runId": "2026-10-14-1556",
+    "runId": "2026-10-14-1758",
     "sourceGroup": "88888142214212",
     "sourceName": "水木调研纪要-2.0",
-    "previousCoverageTo": "2026-10-14T14:42:44.948+0800",
-    "coverageTo": "2026-10-14T15:16:32.032+0800",
-    "oldestFetched": "2026-10-14T15:16:16.829+0800",
+    "previousCoverageTo": "2026-10-14T15:16:32.032+0800",
+    "coverageTo": "2026-10-14T17:48:34.802+0800",
+    "oldestFetched": "2026-10-14T17:01:36.455+0800",
     "sourceTopicsFetched": 30,
-    "sourceTopicsInCoverage": 2,
+    "sourceTopicsInCoverage": 9,
     "added": {
-      "views": 1,
-      "all_views": 1
+      "views": 4,
+      "all_views": 5
     },
     "duplicates": 0,
     "excludedTopics": [],
     "briefChanges": {
-      "added": [],
+      "added": [
+        "dairy-new-retail-channel-20261014",
+        "jd-health-retail-supply-chain-20261014"
+      ],
       "updated": [
-        "meituan-instant-retail-unit-economics-20261014"
+        "meituan-instant-retail-unit-economics-20261014",
+        "tea-chains-competition-20261014"
       ],
       "expiredRemoved": []
     },
     "addedTopicIds": [
-      "14425441241822282",
-      "22258224524155811"
+      "55521554145424454",
+      "55521554242158814",
+      "55521554242151444",
+      "55521554242151114",
+      "22258224545824251",
+      "82258224545825122",
+      "22258224545881211",
+      "45548552424882148",
+      "22258224545884421"
     ],
     "duplicateTopicIds": [],
     "files": {
-      "views": "data/research/updates/2026-10-14-1556-views.csv",
-      "all_views": "data/research/updates/2026-10-14-1556-all_views.csv"
+      "views": "data/research/updates/2026-10-14-1758-views.csv",
+      "all_views": "data/research/updates/2026-10-14-1758-all_views.csv"
     },
-    "syncedAt": "2026-10-14 07:56:47Z",
+    "syncedAt": "2026-10-14 09:58:49Z",
     "fetchedTopics": 30,
     "pageRowsFetched": 30,
     "dedupCheck": {
       "algorithm": "scripts/build_research_shards.py keys(row)",
-      "candidateKeys": 8,
-      "candidateBuckets": 8,
+      "candidateKeys": 36,
+      "candidateBuckets": 34,
       "duplicateKeys": 0
     },
-    "pageOldestFetched": "2026-10-14T13:01:48.854+0800"
+    "pageOldestFetched": "2026-10-14T13:28:29.242+0800"
   }
 }
