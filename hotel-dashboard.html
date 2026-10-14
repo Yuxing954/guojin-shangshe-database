@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>酒店 · 国金商社</title><script defer src="scripts/site-ui.js?v=20261014monthly"></script>
   <link rel="stylesheet" href="scripts/site.css?v=20261014viewfit">
-  <link rel="stylesheet" href="scripts/hotel-dashboard.css?v=20261010coverage">
+  <link rel="stylesheet" href="scripts/hotel-dashboard.css?v=20261014tiers">
   <script defer src="scripts/site-shell.js?v=20261014monthly"></script>
   <script defer src="scripts/hotel-metrics.js?v=20261010coverage"></script>
-  <script defer src="scripts/hotel-dashboard.js?v=20261014dual"></script>
+  <script defer src="scripts/hotel-dashboard.js?v=20261014tiers"></script>
 <link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-charts.css?v=20261012mobile1"><link rel="stylesheet" href="scripts/industry-embed.css?v=20261014viewfit"><link rel="stylesheet" href="scripts/site-install.css?v=20261014home"><link rel="stylesheet" href="scripts/site-polish.css?v=20261013clean"><script src="scripts/site-charts.js?v=20261012mobile1"></script><script defer src="scripts/industry-embed.js?v=20261013firstpaint"></script><link rel="manifest" href="site.webmanifest"><meta name="theme-color" content="#4d58a4"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="国金商社"><meta name="apple-mobile-web-app-status-bar-style" content="default"><link rel="apple-touch-icon" href="scripts/assets/app/apple-touch-icon.png"><script defer src="scripts/site-install.js?v=20261014home"></script></head>
 <body class="hotel-page">
 <main class="hd-wrap industry-board">
@@ -50,9 +50,10 @@
         <p class="hd-chart-caption" id="trend-caption"></p>
         <div class="hd-chart board-chart" id="main-chart"></div>
         <p class="hd-footnote" id="history-note"></p>
+        <section class="hd-tier-trend" aria-label="分档次经营走势"><h3>分档次走势</h3><p class="hd-chart-caption" id="segment-chart-caption"></p><div class="hd-chart board-chart" id="segment-chart"></div></section>
       </div>
       <div class="hd-card board-panel"><div class="hd-card-head board-panel-head"><h2>分档次经营</h2><span>所选地区 · 所选周</span></div><div class="hd-table-scroll" tabindex="0" aria-label="分档次经营表，可左右滚动"><table class="hd-table board-table" id="segment-table"></table></div>
-        <details class="hd-detail board-detail"><summary>查看分档次历史走势</summary><label>指标 <select id="segment-metric"><option value="revpar">RevPAR</option><option value="occupancy_rate">OCC</option><option value="adr">ADR</option></select></label><p class="hd-detail-caption" id="segment-chart-caption"></p><div class="hd-chart board-chart" id="segment-chart"></div></details>
+
       </div>
       <details class="hd-detail hd-plain board-detail"><summary>酒店与房间规模 · 15间及以上</summary><div id="region-supply"></div><div class="hd-table-scroll" tabindex="0" aria-label="分档次规模表，可左右滚动"><table class="hd-table board-table" id="segment-scale-table"></table></div></details>
     </section>

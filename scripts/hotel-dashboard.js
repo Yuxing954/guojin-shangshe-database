@@ -147,15 +147,18 @@
     drawSegments();
   }
   function drawSegments() {
-    var available = Array.from($('segment-metric').options).filter(function (o) { var valid = calendar().some(function (p) { return SEGS.some(function (seg) { return M.metric(row(state.region,seg,p.period_id),o.value) != null; }); }); o.disabled = !valid; return valid; });
-    if (available.length && $('segment-metric').selectedOptions[0].disabled) $('segment-metric').value = available[0].value;
-    var field = $('segment-metric').value, isChange = state.mode === 'change' && calendar().some(function (p) { return SEGS.some(function (seg) { return M.change(row(state.region,seg,p.period_id),row(state.region,seg,M.priorPeriod(p)),field) != null; }); });
-    var unit = isChange ? (field === 'occupancy_rate' ? '百分点' : '%') : META[field].unit;
-    $('segment-chart-caption').textContent = META[field].label + ' · ' + (isChange ? '同周同比（' + unit + '）' : '绝对值（' + unit + '）' + (state.mode === 'change' ? ' · 基期缺失' : ''));
-    lineChart('segment-chart', SEGS.map(function (seg, i) { return { name: seg, color: COLORS[i], pts: calendar().map(function (r) {
-      var s = row(state.region, seg, r.period_id);
-      return { x: r.period_id, y: isChange ? M.change(s, row(state.region, seg, M.priorPeriod(r)), field) : display(s, field), change:M.change(s,row(state.region,seg,M.priorPeriod(r)),field) };
-    }) }; }), { unit: unit, zero: isChange, occupancy: !isChange && field === 'occupancy_rate' });
+    var rows = calendar(), field = state.metric, meta = META[field];
+    var points = rows.map(function (p) { return { period: p.period_id, x: Date.parse(p.start_date), values: SEGS.map(function (seg, i) {
+      var current = row(state.region, seg, p.period_id), base = row(state.region, seg, M.priorPeriod(p));
+      return { name: seg, color: COLORS[i], value: display(current, field), change: M.change(current, base, field) };
+    }) }; });
+    var hasValue = points.some(function (p) { return p.values.some(function (s) { return s.value != null; }); });
+    var hasChange = points.some(function (p) { return p.values.some(function (s) { return s.change != null; }); });
+    var fallback = state.mode === 'change' && !hasChange && hasValue, mode = fallback ? 'value' : state.mode;
+    var changeUnit = field === 'occupancy_rate' ? '百分点' : '%';
+    $('segment-chart-caption').textContent = state.region + ' · ' + meta.label + ' · ' + (mode === 'combo' ? meta.unit + ' / 同周同比（' + changeUnit + '）' : mode === 'change' ? '同周同比（' + changeUnit + '）' : '数值（' + meta.unit + '）') + (fallback ? ' · 基期缺失' : '');
+    if (!hasValue && !hasChange) { $('segment-chart').innerHTML = '<div class="hd-empty">所选范围暂无分档次数据</div>'; return; }
+    SiteCharts.drawPaired($('segment-chart'), points, { mode: mode, unit: meta.unit, changeUnit: changeUnit, changeLabel: '同周同比', name: state.region + '分档次' + meta.label, gap: 15 * 86400000 });
   }
   function renderCities() {
     var all = regions.filter(function (r) { return r !== '全国'; }).map(function (region) {
@@ -328,11 +331,11 @@
           var changeFields = { revpar: 'revChange', occupancy_rate: 'occChange', adr: 'adrChange' }, valueFields = { revChange: 'revpar', occChange: 'occupancy_rate', adrChange: 'adr' };
           $('city-sort').value = (state.mode === 'change' ? changeFields[$('city-sort').value] : valueFields[$('city-sort').value]) || $('city-sort').value;
           refresh();
-        } else { renderTrend(); saveState(); }
+        } else { renderTrend(); drawSegments(); saveState(); }
       }; }); active();
     }
     bindSwitch('metric-switch', 'metric'); bindSwitch('mode-switch', 'mode');
-    $('segment-metric').onchange = drawSegments; $('group-metric').onchange = drawGroups; $('supply-metric').onchange = function () { drawSupply(); renderInvestment(); };
+    $('group-metric').onchange = drawGroups; $('supply-metric').onchange = function () { drawSupply(); renderInvestment(); };
     $('city-search').oninput = renderCities; $('city-sort').onchange = renderCities;
     $('city-table').onclick = function (event) { var b = event.target.closest('[data-region]'); if (!b) return; state.region = b.dataset.region; switchView('overview'); $('region-select').focus(); };
     switchView(state.view);

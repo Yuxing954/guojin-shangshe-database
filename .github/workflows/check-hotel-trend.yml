@@ -1,0 +1,30 @@
+name: Check hotel tier trend
+on:
+  pull_request:
+    paths:
+      - 'hotel-dashboard.html'
+      - 'scripts/hotel-dashboard.*'
+      - 'scripts/hotel-metrics.js'
+      - 'scripts/site-charts.*'
+      - 'data/hotel_industry_weekly.csv'
+      - 'tests/hotel-tier-trend.browser.cjs'
+      - '.github/workflows/check-hotel-trend.yml'
+permissions:
+  contents: read
+jobs:
+  hotel-trend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --check scripts/hotel-dashboard.js
+      - name: Install isolated browser runtime
+        run: |
+          npm install --prefix /tmp/hotel-trend-test playwright@1.58.2
+          /tmp/hotel-trend-test/node_modules/.bin/playwright install --with-deps chromium
+      - name: Check four tiers and shared controls
+        env:
+          NODE_PATH: /tmp/hotel-trend-test/node_modules
+        run: node tests/hotel-tier-trend.browser.cjs
