@@ -198,7 +198,7 @@ def census_housing(cutoff):
 
 def main():
     ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--codex-config',type=Path);ap.add_argument('--receipts-dir',type=Path)
-    ap.add_argument('--cutoff');ap.add_argument('--only',nargs='*');ap.add_argument('--skip-official',action='store_true');ap.add_argument('--consumer-only',action='store_true',help='Refresh mapped consumption series only; leave unrelated official series untouched');ap.add_argument('--due-only',action='store_true',help='Fetch only indicators inside their expected release windows');args=ap.parse_args()
+    ap.add_argument('--cutoff');ap.add_argument('--only',nargs='*');ap.add_argument('--skip-official',action='store_true');ap.add_argument('--consumer-only',action='store_true',help='Refresh mapped consumption series only; leave unrelated official series untouched');ap.add_argument('--due-only',action='store_true',help='Fetch only indicators inside their expected release windows');ap.add_argument('--full-history',action='store_true',help='Fetch the full registered history for a scheduled audit');args=ap.parse_args()
     if not args.cutoff:
         from zoneinfo import ZoneInfo
         args.cutoff=(datetime.now(ZoneInfo('Asia/Shanghai')).date() if args.due_only else date.today()).isoformat()
@@ -231,10 +231,11 @@ def main():
         if remote['client'] is None:
             remote['client']=Client(key);remote['client'].initialize()
         client=remote['client']
-        start=spec['start']
-        if spec.get('lookbackYears'):start=str(int(args.cutoff[:4])-spec['lookbackYears'])+'-01-01'
+        full_history=args.full_history or (args.due_only and args.cutoff[5:7]=='10' and spec['frequency']!='daily')
+        start=due.incremental_start(spec,values.get(spec['id'],{}).get('observations',[]),full_history)
+        if spec.get('lookbackYears') and (full_history or not values.get(spec['id'],{}).get('observations')):start=str(int(args.cutoff[:4])-spec['lookbackYears'])+'-01-01'
         frequency={'monthly':'月度','quarterly':'季度','daily':'日度'}[spec['frequency']]
-        query=f"{spec['originalName']}，来源{spec['publisher']}，{frequency}，{start}至{args.cutoff}完整历史，保留原始名称、精度和来源链接。"
+        query=f"{spec['originalName']}，来源{spec['publisher']}，{frequency}，{start}至{args.cutoff}区间，保留原始名称、精度和来源链接。"
         if query in remote['receipts']:return normalize(remote['receipts'][query],spec,args.cutoff)
         for attempt in range(4):
             time.sleep(4 if attempt==0 else 20*attempt)
