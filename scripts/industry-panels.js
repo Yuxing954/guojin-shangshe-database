@@ -8,7 +8,7 @@
     const wrap=document.createElement('section'),status=document.createElement('p'),frame=document.createElement('iframe');
     wrap.className='industry-panel';status.className='portal-status';status.textContent='正在读取'+labels[id]+'数据…';status.setAttribute('role','status');
     frame.id='panel-'+id;frame.className='industry-panel-frame';frame.title=labels[id];frame.setAttribute('aria-label',labels[id]+'数据');
-    const url=new URL(pages[id],location.href);url.searchParams.set('embed','1');url.searchParams.set('v','20261013clean');
+    const url=new URL(pages[id],location.href);url.searchParams.set('embed','1');url.searchParams.set('v','20261014viewfit');
     const saved=new URLSearchParams(location.search),owner=saved.get('panelSector');
     let view=owner===id?saved.get('panelView'):null;
     if(view){const key=new URLSearchParams(view).get('view')||view;
