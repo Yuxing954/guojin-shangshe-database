@@ -30,6 +30,6 @@ test('whole official table retains every meeting, contract, zero, blank and unno
  assert.equal(F.snapshots(data.meetings[0],Date.parse(receipt.retrievedAt)+1).at(-1),s);
  assert.match(F.label(s),/^获取 /);
  const crypto=require('node:crypto'),fs=require('node:fs'),path=require('node:path'),source=data.sources.find(s=>s.id===t.sourceId);
- assert.equal(crypto.createHash('sha256').update(fs.readFileSync(path.join(__dirname,'..',source.evidence.path))).digest('hex'),source.evidence.sha256);
+ assert.equal(crypto.createHash('sha256').update(fs.readFileSync(path.join(__dirname,'..',source.evidence.path)).toString('utf8').replace(/\r\n/g,'\n')).digest('hex'),source.evidence.sha256);
 });
 

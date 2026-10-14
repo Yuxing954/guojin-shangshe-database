@@ -29,9 +29,11 @@ def normalize(receipt, indicator, cutoff):
         for row in table.get('items', []):
             if not row or row[0] != name:
                 continue
+            if len(row) != len(columns):
+                raise ValueError('Unexpected indicator dimensions')
+            if row[1] != publisher:
+                continue
             matched += 1
-            if len(row) != len(columns) or row[1] != publisher:
-                raise ValueError('Unexpected indicator source or dimensions')
             for date, value in zip(columns[2:], row[2:]):
                 if not re.fullmatch(r'\d{4}-\d{2}-\d{2}', date):
                     raise ValueError('Not a daily date')

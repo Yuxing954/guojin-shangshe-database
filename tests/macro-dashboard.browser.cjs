@@ -55,7 +55,7 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
     assert.equal(await page.locator('.fedwatch-matrix tbody tr').count(),full.rows.length);
     assert.equal(await page.locator('.fedwatch-futures thead th').count(),full.futures.length);
     assert.match(await page.locator('#fedwatch-status').innerText(),/源时点未提供/);
-    assert.equal(await page.locator('.fedwatch-matrix tbody tr').first().locator('td').nth(6).innerText(),'—');
+    assert.equal(await page.locator('.fedwatch-matrix tbody tr').first().locator('td').nth(8).innerText(),'—');
     assert.equal(await page.locator('.fedwatch-matrix tbody tr').first().locator('td').nth(5).innerText(),'0%');
     const wholeDownload=page.waitForEvent('download');await page.locator('#fedwatch-table-download').click();
     const wholeCsv=fs.readFileSync(await (await wholeDownload).path(),'utf8');
@@ -64,7 +64,7 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
     await page.locator('[data-fedwatch-meeting="2027-10-27"]').click();assert.equal(await page.locator('#fedwatch-meeting').inputValue(),'2027-10-27');
     const history=JSON.parse(fs.readFileSync(path.join(root,'data/gold-jewelry/macro.json'),'utf8')).meetings.find(m=>m.meetingDate==='2027-10-27').snapshots;
     const previous=history.filter(s=>s.retrievedAt&&s.retrievedAt!==full.retrievedAt).at(-1);
-    assert.equal(await page.locator('#fedwatch-compare').inputValue(),previous?.retrievedAt||'');assert.equal(await page.locator('.fedwatch-range').count(),8);
+    assert.equal(await page.locator('#fedwatch-compare').inputValue(),previous?.retrievedAt||'');assert.equal(await page.locator('.fedwatch-range').count(),11);
     for(const width of [1512,768,390]){await page.setViewportSize({width,height:1000});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));}
     await page.setViewportSize({width:1512,height:1100});
     await page.locator('#fedwatch-meeting').selectOption('2026-12-09');assert.match(await page.locator('#fedwatch-content').innerText(),/2026-12-09/);

@@ -16,6 +16,12 @@
 | 上午任务内周度复核 | 周六08:20 | 黄金ETF、央行购金、CFTC仓位；严格区分资金金额、持仓吨数与期货合约数 |
 | 上午任务内修订复核 | 周日10:20 | 年度/季度/低频；最近24个月和8季度修订；每月首个周日全历史及映射复核 |
 | 美国CPI发布补查 `cpi-2026-10-14` | 2026-10-14 21:00、22:00 | 官方20:30公布后的30/90分钟补查；仅当日运行，两次后暂停，次数受限 |
+| Census Business Formation Statistics `census-business-formation-2026-09` | 2026-10-14 22:30、23:30 | 官方美东10:00发布后的30/90分钟；一次性任务 |
+| BLS PPI + Census Advance Retail Sales `bls-ppi-2026-09`、`census-advance-retail-2026-09` | 2026-10-15 21:00、22:00 | 官方美东08:30发布后的30/90分钟；一次性任务 |
+| Census Manufacturing and Trade Inventories and Sales `census-manufacturing-trade-inventories-sales-2026-08` | 2026-10-15 22:30、2026-10-16 00:30 | 官方美东10:00发布后的30/90分钟；一次性任务 |
+| BLS Import and Export Price Indexes `bls-import-export-prices-2026-09` | 2026-10-16 21:00、22:00 | 官方美东08:30发布后的30/90分钟；一次性任务 |
+| Census New Residential Construction `census-new-residential-construction-2026-09` | 2026-10-20 21:00、22:00 | 官方美东08:30发布后的30/90分钟；一次性任务 |
+| BLS State Employment and Unemployment `bls-state-employment-2026-09` | 2026-10-20 22:30、2026-10-21 00:30 | 官方美东10:00发布后的30/90分钟；一次性任务 |
 
 黄金月度、季度数据在上述窗口按已确认披露日历检查。没有官方日期时标待确认，不猜测发布日期。BLS 2026日历确认9月CPI于10月14日08:30美国东部时间发布，当前换算为北京时间20:30：<https://www.bls.gov/schedule/2026/home.htm>。
 
