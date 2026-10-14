@@ -58,7 +58,7 @@ function draw(target,width,model,comment){
  chart(44,y,'CPI与核心CPI · 同比 %',model.priceTrend,[{name:'CPI',get:p=>p.cpi?.value},{name:'核心CPI',get:p=>p.core?.value}]);
  chart(620,y,'CPI与核心CPI · 环比 %',model.priceTrend,[{name:'CPI',get:p=>p.cpi?.mom},{name:'核心CPI',get:p=>p.core?.mom}]);y+=370;
  section('研究点评',y);y+=54;commentLines.forEach(t=>{text(t,44,y,22,'#283b49');y+=34;});y+=26;line(y);y+=35;
- text('来源：国家统计局；已授权Choice补充历史；国金商社研究数据库',44,y,18,muted);y+=30;
+ text('来源：国家统计局'+(model.sources.some(s=>s.licensedChoice)?' / Choice转引':'')+'；国金商社研究数据库',44,y,18,muted);y+=30;
  const pubs=[...new Set(model.sources.map(s=>s.publishedAt).filter(Boolean))].sort();text('原始披露发布：'+(pubs.length?pubs[0]+' — '+pubs.at(-1):'未提供')+' · 数据期 '+model.period,44,y,17,muted);y+=35;
  ctx.fillStyle='#f5f4f5';ctx.fillRect(0,y,1200,height-y);ctx.fillStyle='#eee8cd';ctx.fillRect(0,y,1200,5);y+=35;
  legalLines.forEach((ls,i)=>{text(i?'免责声明':'特别声明',44,y,22,'#998951','bold');y+=32;for(const t of ls){text(t,44,y,13,'#68727b');y+=19;}y+=24;});
