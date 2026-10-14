@@ -1,0 +1,67 @@
+{
+  "runId": "2026-10-14-1458",
+  "sourceGroup": "88888142214212",
+  "sourceName": "水木调研纪要-2.0",
+  "previousCoverageTo": "2026-10-14T13:28:54.124+0800",
+  "coverageTo": "2026-10-14T14:42:44.948+0800",
+  "oldestFetched": "2026-10-14T14:01:13.160+0800",
+  "sourceTopicsFetched": 30,
+  "sourceTopicsInCoverage": 17,
+  "added": {
+    "views": 1,
+    "all_views": 13
+  },
+  "duplicates": 0,
+  "excludedTopics": [
+    {
+      "topicId": "22258224524252241",
+      "reason": "仅有“文件”占位文本及音频附件；未读取附件正文，无法核实观点"
+    },
+    {
+      "topicId": "55521554254211254",
+      "reason": "仅有“文件”占位文本及音频附件；未读取附件正文，无法核实观点"
+    },
+    {
+      "topicId": "55521554254222224",
+      "reason": "仅有“文件”占位文本及音频附件；未读取附件正文，无法核实观点"
+    }
+  ],
+  "briefChanges": {
+    "added": [
+      "stone-tech-channel-q4-20261014"
+    ],
+    "updated": [],
+    "expiredRemoved": []
+  },
+  "addedTopicIds": [
+    "55521554255844114",
+    "45548552455125218",
+    "45548552455128248",
+    "82258224522148812",
+    "55521554255841254",
+    "45548552455124118",
+    "14425441244812142",
+    "14425441244848542",
+    "22258224522122881",
+    "55521554255855224",
+    "55521554251281544",
+    "14425441245282242",
+    "14425441245215482",
+    "82258224528548842"
+  ],
+  "duplicateTopicIds": [],
+  "files": {
+    "views": "data/research/updates/2026-10-14-1458-views.csv",
+    "all_views": "data/research/updates/2026-10-14-1458-all_views.csv"
+  },
+  "syncedAt": "2026-10-14 06:58:46Z",
+  "fetchedTopics": 30,
+  "pageRowsFetched": 30,
+  "dedupCheck": {
+    "algorithm": "scripts/build_research_shards.py keys(row)",
+    "candidateKeys": 56,
+    "candidateBuckets": 49,
+    "duplicateKeys": 0
+  },
+  "pageOldestFetched": "2026-10-14T12:56:12.569+0800"
+}
