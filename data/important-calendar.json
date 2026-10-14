@@ -4,6 +4,38 @@
   "coverageStart": "2026-10-01",
   "coverageEnd": "2026-12-31",
   "timezone": "Asia/Shanghai",
+  "sources": [
+    {
+      "url": "https://www.stats.gov.cn/xw/tjxw/tzgg/202512/t20251224_1962137.html",
+      "name": "国家统计局",
+      "publisher": "国家统计局",
+      "checkedAt": "2026-10-14"
+    },
+    {
+      "url": "https://www.bls.gov/schedule/2026/home.htm",
+      "name": "美国劳工统计局",
+      "publisher": "美国劳工统计局",
+      "checkedAt": "2026-10-14"
+    },
+    {
+      "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+      "name": "美联储",
+      "publisher": "美联储",
+      "checkedAt": "2026-10-14"
+    },
+    {
+      "url": "https://www.federalreserve.gov/newsevents/2026-october.htm",
+      "name": "美联储官方月度日程",
+      "publisher": "美联储",
+      "checkedAt": "2026-10-14"
+    },
+    {
+      "url": "https://www.federalreserve.gov/newsevents/2026-december.htm",
+      "name": "美联储官方月度日程",
+      "publisher": "美联储",
+      "checkedAt": "2026-10-14"
+    }
+  ],
   "series": [
     {
       "id": "cn-cpi",

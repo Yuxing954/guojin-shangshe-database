@@ -19,6 +19,7 @@
   function sources(values){const rows=values.flatMap(x=>Array.isArray(x.sources)?x.sources:Object.values(x.sources||{}));return rows.length?'<article class="notes-panel"><h2>来源记录</h2><details><summary>'+rows.length+'条来源</summary>'+rows.map(s=>'<div class="notes-source-item">'+(D.link(s.url)?'<a target="_blank" rel="noopener" href="'+esc(D.link(s.url))+'">'+esc(s.name||s.title||s.sourceName||s.label||s.file||s.id||'来源')+' ↗</a>':esc(s.name||s.title||s.sourceName||s.label||s.file||s.id||'来源'))+'<p>'+esc([s.publisher||s.provider,s.quality,s.publishedAt?'发布 '+s.publishedAt:'',s.checkedAt?'核对 '+s.checkedAt:'',s.locator,s.note||s.notes||s.verification].filter(Boolean).join(' · '))+'</p></div>').join('')+'</details></article>':'';}
   function notes(id,values){
     const a=values[0]||{},out=[];
+    if(id==='calendar')out.push('只保留中国CPI、社零、美国CPI、非农和美联储议息五类；日程范围：'+a.coverageStart+'—'+a.coverageEnd+'。','全部时间为北京时间；海外原始时区单独保存，按冬夏令时换算。美联储会议日期与决议发布时间分开显示。','日期为官方计划，可能调整。“时间已过”不表示已发布或本站已更新；后续未核验日期不推算。','日历不重复维护指标数值，数据入口指向现有模块。导出包含当前地区和时间范围的日程。');
     if(id==='monthly')out.push(...(a.notes||[]));
     if(id==='dutyfree')out.push(...(a.coverageNotes||[]),...(a.notes||[]),values[1]?.note||'');
     if(id==='hotel')out.push('同比默认匹配来源年/周；假期错期需单独映射与标注。','节假日经营对标按假期日序匹配两期日期，入住率差为百分点，ADR及RevPAR为相对变化。',...Object.entries(a.historicalCoverage||{}).flatMap(([file,regions])=>Object.entries(regions).map(([region,c])=>region+'：'+c.firstPeriod+' — '+c.lastPeriod+' · '+c.periodCount+'期')),'异常源记录：'+(a.sourceAnomalyCount??'未记录')+'条');
