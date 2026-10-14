@@ -24,6 +24,12 @@ class DueWindowTests(unittest.TestCase):
         plan = due.build_plan(date(2026, 10, 8), self.registry)
         self.assertEqual(plan["dueChoice"], ["us-treasury10"])
 
+    def test_daily_market_uses_previous_us_session_and_skips_closed_sessions(self):
+        registry = {"series": [{"id": "us-treasury10", "publisher": "美联储", "frequency": "daily"}]}
+        self.assertEqual(due.build_plan(date(2026, 10, 17), registry)["dueChoice"], ["us-treasury10"])
+        self.assertEqual(due.build_plan(date(2026, 10, 18), registry)["dueChoice"], [])
+        self.assertEqual(due.build_plan(date(2026, 11, 27), registry)["dueChoice"], [])
+
     def test_official_cpi_window_is_after_release(self):
         self.assertNotIn("cn-cpi", due.build_plan(date(2026, 10, 14), self.registry)["dueChoice"])
         plan = due.build_plan(date(2026, 10, 16), self.registry)
