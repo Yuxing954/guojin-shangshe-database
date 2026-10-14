@@ -4,8 +4,8 @@
     "2026-09": {
       "publishedAt": "2026-10-14",
       "sourceUrl": "https://www.stats.gov.cn/sj/zxfb/202610/t20261014_1965477.html",
-      "headline": "食品价格仍拖累同比，服务价格环比回落",
-      "comment": "9月CPI同比上涨0.9%、环比上涨0.2%，核心CPI同比上涨1.0%、环比持平。食品同比下降1.7%，鲜菜、猪肉价格分别下降8.1%、10.0%，食品价格仍对同比形成拖累。服务价格环比下降0.2%，其中旅行社及其他旅游服务价格环比下降5.3%，不能将总项环比上涨解读为服务价格全面走强。",
+      "headline": "",
+      "comment": "同比：汽油涨幅扩大带动能源价格走强，食品价格下降形成拖累。\n环比：暑期结束，机票、宾馆住宿和旅行社收费回落；工业消费品和食品涨价形成支撑。",
       "categories": [
         {
           "name": "食品",
@@ -111,7 +111,66 @@
           "yoy": null,
           "updatedAt": "2026-10-14"
         }
-      ]
+      ],
+      "interpretation": {
+        "id": "cpi-interpretation-2026-09",
+        "title": "董莉娟解读2026年9月份CPI和PPI数据",
+        "url": "https://www.stats.gov.cn/sj/zxfbhjd/202610/t20261014_1965475.html",
+        "publisher": "国家统计局",
+        "publishedAt": "2026-10-14",
+        "checkedAt": "2026-10-14",
+        "quality": "official",
+        "retrievalMethod": "official_html",
+        "htmlSha256": "40dec4831dd009f02bb6364728cfdef3bacb740b9163aeb19f10fea3e340869e"
+      },
+      "commentSections": [
+        {
+          "title": "同比因素",
+          "text": "汽油涨幅扩大带动能源价格走强，食品价格下降形成拖累。"
+        },
+        {
+          "title": "环比因素",
+          "text": "暑期结束，机票、宾馆住宿和旅行社收费回落；工业消费品和食品涨价形成支撑。"
+        }
+      ],
+      "contributions": {
+        "unit": "percentage_point",
+        "approximate": true,
+        "complete": false,
+        "sourceId": "cpi-interpretation-2026-09",
+        "yoy": [
+          {
+            "name": "汽油",
+            "value": 0.47
+          },
+          {
+            "name": "服务",
+            "value": 0.4
+          },
+          {
+            "name": "非能源工业消费品",
+            "value": 0.39
+          },
+          {
+            "name": "食品",
+            "value": -0.29
+          }
+        ],
+        "mom": [
+          {
+            "name": "工业消费品",
+            "value": 0.22
+          },
+          {
+            "name": "食品",
+            "value": 0.06
+          },
+          {
+            "name": "服务",
+            "value": -0.08
+          }
+        ]
+      }
     }
   }
 }
