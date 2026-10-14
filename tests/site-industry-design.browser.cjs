@@ -2,7 +2,7 @@
 const assert=require('node:assert/strict'),http=require('node:http'),fs=require('node:fs'),path=require('node:path');
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright'),root=path.resolve(__dirname,'..');
 const server=http.createServer((req,res)=>{const file=path.resolve(root,'.'+decodeURIComponent(req.url.split('?')[0]));if(!file.startsWith(root+path.sep)){res.writeHead(403).end();return;}fs.readFile(file,(e,b)=>{if(e){res.writeHead(404).end();return;}res.writeHead(200,{'Content-Type':{'.html':'text/html; charset=utf-8','.js':'text/javascript','.css':'text/css','.json':'application/json','.csv':'text/csv; charset=utf-8'}[path.extname(file)]||'text/plain'}).end(b);});});
-const cases=[['hotel','.hd-tabs','#core-kpis .board-stat'],['dutyfree','#tabs','.board-stat'],['gold','.gj-tabs','#core-kpis .board-stat'],['dining',null,'#core .board-stat']];
+const cases=[['hotel','.hd-tabs','#core-kpis .board-stat'],['dutyfree','#tabs','.board-stat'],['gold','.gj-tabs','#gold-live .board-stat'],['dining',null,'#core .board-stat']];
 async function styles(scope,mobile){
  const cards=scope.locator('.board-stat:visible');
  for(const card of await cards.all()){
