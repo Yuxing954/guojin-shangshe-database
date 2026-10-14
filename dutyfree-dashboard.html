@@ -78,7 +78,7 @@ svg{width:100%;height:auto;display:block}
 @media(max-width:960px){.kpis{grid-template-columns:repeat(3,1fr)}.kpi:nth-child(5n){border-right:1px solid #eef1f4}.grid2,.grid3{grid-template-columns:1fr}}
 #view-monthly .controls{flex-wrap:wrap;gap:8px}#view-monthly .controls .srcbtn{font-size:12px;padding:6px 9px}
 @media(max-width:640px){.wrap{padding:14px 10px}.hero{flex-direction:column;align-items:flex-start}.kpis{grid-template-columns:repeat(2,1fr)}.kpi{border-right:0}.signal{grid-template-columns:1fr}.hero h1{font-size:20px}}
-</style><link rel="stylesheet" href="scripts/site.css?v=20261014viewfit"><script defer src="scripts/site-shell.js?v=20261014monthly"></script><link rel="stylesheet" href="scripts/dutyfree-holidays.css?v=20261012coverage"><script defer src="scripts/dutyfree-holidays.js?v=20261014aligned"></script><link rel="stylesheet" href="scripts/dutyfree-typography.css?v=20261014aligned"><link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-charts.css?v=20261012mobile1"><link rel="stylesheet" href="scripts/industry-embed.css?v=20261014viewfit"><link rel="stylesheet" href="scripts/site-polish.css?v=20261013clean"><script src="scripts/dutyfree-monthly-model.js?v=20261010charts"></script><script src="scripts/site-charts.js?v=20261012mobile1"></script><script defer src="scripts/industry-embed.js?v=20261013firstpaint"></script></head><body class="dutyfree-page"><div class="wrap industry-board">
+</style><link rel="stylesheet" href="scripts/site.css?v=20261014viewfit"><script defer src="scripts/site-shell.js?v=20261014monthly"></script><link rel="stylesheet" href="scripts/dutyfree-holidays.css?v=20261012coverage"><script defer src="scripts/dutyfree-holidays.js?v=20261014chartready"></script><link rel="stylesheet" href="scripts/dutyfree-typography.css?v=20261014aligned"><link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-charts.css?v=20261012mobile1"><link rel="stylesheet" href="scripts/industry-embed.css?v=20261014viewfit"><link rel="stylesheet" href="scripts/site-polish.css?v=20261013clean"><script src="scripts/dutyfree-monthly-model.js?v=20261010charts"></script><script src="scripts/site-charts.js?v=20261012mobile1"></script><script defer src="scripts/industry-embed.js?v=20261013firstpaint"></script><style>#hn-growth:not([data-chart-ready]){visibility:hidden}</style></head><body class="dutyfree-page"><div class="wrap industry-board">
 <div class="crumbs"><a href="industry.html#dutyfree">行业数据</a> / 免税</div>
 <header class="hero"><div><div class="eyebrow">行业数据</div><h1>免税</h1><p>月度趋势 · 节假日表现</p></div><div class="asof board-asof" id="asof">读取数据中…</div></header>
 <nav class="tabs site-subnav" id="tabs"><button class="tab on" data-view="monthly">月度数据</button><button class="tab" data-view="holidays">节假日数据</button></nav>
@@ -154,14 +154,22 @@ items:{label:'购物件数',field:'items_10k',yoy:'items_yoy_pct',unit:'万件',
 spend:{label:'每人次消费',field:'spend_per_shopper_cny',yoy:'spend_per_shopper_yoy_pct',unit:'元',color:'#8a6884'}
 };
 function drawCombo(svg,rows,metric,mode='combo'){
-const result=SiteCharts.paired(rows.map(row=>({period:row.period_id,x:Date.parse(row.period_id+'-01'),value:N(row[metric.field]),change:N(row[metric.yoy])})),{mode,name:metric.label,unit:metric.unit,width:Math.max(320,svg.closest('.chart').clientWidth-32),gap:45*86400000});
+const width=svg.closest('.chart').clientWidth;if(width<100)return;
+const result=SiteCharts.paired(rows.map(row=>({period:row.period_id,x:Date.parse(row.period_id+'-01'),value:N(row[metric.field]),change:N(row[metric.yoy])})),{mode,name:metric.label,unit:metric.unit,width:Math.max(280,width-32),gap:45*86400000});
 const shell=document.createElement('div');shell.innerHTML=result.html;const chart=shell.querySelector('svg');
 const panel=svg.closest('.chart');panel.querySelector('.combo-legend')?.remove();panel.querySelector('.site-chart-legend')?.remove();
 if(!chart){svg.innerHTML='<text x="150" y="120">暂无数据</text>';return;}
-svg.setAttribute('viewBox',chart.getAttribute('viewBox'));svg.classList.add('site-paired-chart');svg.style.setProperty('height','auto','important');svg.style.minHeight='0';svg.innerHTML=chart.innerHTML;const legend=shell.querySelector('.site-chart-legend');if(legend)svg.after(legend);SiteCharts.attach(svg,result.points);
+svg.setAttribute('viewBox',chart.getAttribute('viewBox'));svg.dataset.chartReady='true';svg.classList.add('site-paired-chart');svg.style.setProperty('height','auto','important');svg.style.minHeight='0';svg.innerHTML=chart.innerHTML;const legend=shell.querySelector('.site-chart-legend');if(legend)svg.after(legend);SiteCharts.attach(svg,result.points);
 }
 
 const trendModes={hn:'combo'};
+/* Hidden sector panels have no usable width. Redraw as soon as layout returns. */
+if(window.ResizeObserver){let lastWidth=0;new ResizeObserver(entries=>{
+ const width=Math.round(entries[0].contentRect.width);
+ if(width<100){lastWidth=0;document.getElementById('hn-growth').removeAttribute('data-chart-ready');return;}
+ if(width!==lastWidth){lastWidth=width;if(DB.m?.length)renderHainan();}
+}).observe(document.getElementById('hn-growth').closest('.chart'));}
+
 let trendResize;addEventListener('resize',()=>{clearTimeout(trendResize);trendResize=setTimeout(()=>{if(DB.m?.length)renderHainan();},150);});
 function renderTrend(prefix,rows){
 const metric=trendMetrics[document.getElementById(prefix+'-metric').value],combo=trendModes[prefix]==='combo',yoy=trendModes[prefix]==='yoy',title=metric.label+(combo?'与同比增速':yoy?'同比增速':'走势')+(combo?'':'（'+(yoy?'%':metric.unit)+'）');
@@ -171,7 +179,7 @@ const oldLegend=svg.closest('.chart').querySelector('.combo-legend');if(!combo){
 drawCombo(svg,rows,metric,combo?'combo':yoy?'change':'value');return;
 draw(svg,rows,[{name:metric.label+(yoy?'同比':''),get:r=>N(r[yoy?metric.yoy:metric.field]),color:metric.color,unit:yoy?'%':metric.unit}],yoy);
 }
-function go(t){document.querySelectorAll('.tab,.view').forEach(x=>x.classList.remove('on'));let b=document.querySelector(`.tab[data-view="${t}"]`);if(b)b.classList.add('on');let v=document.getElementById('view-'+t);if(v)v.classList.add('on')}
+function go(t){document.querySelectorAll('.tab,.view').forEach(x=>x.classList.remove('on'));let b=document.querySelector(`.tab[data-view="${t}"]`);if(b)b.classList.add('on');let v=document.getElementById('view-'+t);if(v)v.classList.add('on');if(t==='monthly'&&DB.m?.length)renderHainan();window.dispatchEvent(new Event('dutyfree:viewchange'));}
 
 /* ---------- 海南 ---------- */
 let hnSort={key:'period_id',dir:-1};
