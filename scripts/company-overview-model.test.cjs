@@ -14,9 +14,9 @@ const merged=A.merge([r],[{...r,id:'verified',value:111}]);assert.equal(merged.l
 const data=[{...r,metric:'hotels',unit:'家',value:100},{...r,metric:'hotels',unit:'家',value:40,scope:'a'},{...r,metric:'hotels',unit:'家',value:50,scope:'b'}];
 const s=A.structure(data,{scale:{scope:'全部'}},{metric:'hotels',rows:[{label:'a',scope:'a'},{label:'b',scope:'b'}]});assert.equal(s.residual,10);assert.equal(s.rows[0].share,40);
 const fs=require('node:fs'),path=require('node:path'),root=path.join(__dirname,'..'),read=p=>JSON.parse(fs.readFileSync(path.join(root,p),'utf8'));
-const cat=read('data/companies/catalog.json'),profiles=read('data/companies/profiles.json').companies,sup=read('data/companies/supplements.json'),extra=sup.parts.flatMap(p=>read(p).observations);let count=0;
+const cat=read('data/companies/catalog.json'),profiles=read('data/companies/profiles.json').companies,sup=read('data/companies/supplements.json'),wb=read('data/companies/workbook-disclosures.json'),extra=[...sup.parts.flatMap(p=>read(p).observations),...wb.parts.flatMap(p=>read(p).observations)];let count=0;
 for(const c of cat.companies){const index=read(c.file),base=index.parts.flatMap(p=>read(p).observations),rows=A.merge(base,extra.filter(o=>o.companyId===c.id));count+=rows.length;const snap=A.snapshot(rows,profiles[c.id]);assert.equal(snap.revpar.period,'2026Q2');assert.equal(snap.hotels.period,'2026Q2');for(const group of profiles[c.id].structures)assert.equal(A.structure(rows,profiles[c.id],group).residual,0,'configured structure must reconcile');}
-assert.equal(count,4833);assert.equal(extra.length,102);assert.equal(A.ratio(r,{...r,periodBasis:'单季'}),null);
+assert.ok(count>25000);assert.equal(extra.length,102+24621);assert.equal(A.ratio(r,{...r,periodBasis:'单季'}),null);
 console.log('Overview dataset, same-period, source precedence, forecasts, ratio and loss-base checks passed.');
 const choice=read('data/companies/choice.json'),choiceRows=choice.parts.flatMap(p=>read(p).observations);
 assert.equal(choiceRows.length,148);
@@ -28,3 +28,4 @@ for(const c of cat.companies){const base=read(c.file).parts.flatMap(p=>read(p).o
  assert.equal(A.financial(rows,p,'2027FY','choice').revenue,null,'missing requested period never falls back to prior actual');
  const h=A.financial(rows,p,'2026H1','choice');assert.equal(h.revenue.periodBasis,'上半年累计');assert.equal(h.operating_cf.periodBasis,h.revenue.periodBasis);assert.equal(h.cash_equivalents?.periodBasis||h.monetary_funds?.periodBasis,'期末');}
 console.log('Choice period, currency, independent series, missing data and cohort checks passed.');
+

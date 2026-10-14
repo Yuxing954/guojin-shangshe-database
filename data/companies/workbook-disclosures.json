@@ -1,0 +1,316 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-10-14",
+  "sources": [
+    {
+      "id": "workbook-hworld-20261014",
+      "companyId": "hworld",
+      "file": "华住经营数据底稿_定期报告页码与真实截图嵌入.xlsx",
+      "relativePath": "AI研报/AI产物/华住经营数据底稿_定期报告页码与真实截图嵌入.xlsx",
+      "sha256": "a6ea87e37b93bf72ce9d9ac4d3e071a1cc81a4111f789636f662587a0badcfa4",
+      "importedAt": "2026-10-14",
+      "kind": "用户提供的研究底稿",
+      "verification": "底稿逐单元格转录；报告页码及截图定位沿用底稿，未重新核对原PDF",
+      "embeddedImageCount": 214
+    },
+    {
+      "id": "workbook-jinjiang-20261014",
+      "companyId": "jinjiang",
+      "file": "锦江酒店_经营数据简洁版_20261012.xlsx",
+      "relativePath": "AI研报/AI产物/锦江酒店_经营数据简洁版_20261012.xlsx",
+      "sha256": "65c8018d5a09515dac5d8c3824a590a2f8b8e455f80b5d92cf8af82fd33fbcc4",
+      "importedAt": "2026-10-14",
+      "kind": "用户提供的研究底稿",
+      "verification": "底稿逐单元格转录；报告页码及截图定位沿用底稿，未重新核对原PDF",
+      "embeddedImageCount": 349
+    },
+    {
+      "id": "workbook-btg-20261014",
+      "companyId": "btg",
+      "file": "首旅酒店_2016至2026H1重要经营数据与原始报告截图.xlsx",
+      "relativePath": "AI研报/AI产物/首旅酒店_2016至2026H1重要经营数据与原始报告截图.xlsx",
+      "sha256": "afc974f421822c78d6902a8d8877aed4b50617940b12fc21c08c6dd34e8be093",
+      "importedAt": "2026-10-14",
+      "kind": "用户提供的研究底稿",
+      "verification": "底稿逐单元格转录；报告页码及截图定位沿用底稿，未重新核对原PDF",
+      "embeddedImageCount": 307
+    }
+  ],
+  "parts": [
+    "data/companies/workbook-disclosures/hworld/001.json",
+    "data/companies/workbook-disclosures/jinjiang/001.json",
+    "data/companies/workbook-disclosures/jinjiang/002.json",
+    "data/companies/workbook-disclosures/jinjiang/003.json",
+    "data/companies/workbook-disclosures/jinjiang/004.json",
+    "data/companies/workbook-disclosures/jinjiang/005.json",
+    "data/companies/workbook-disclosures/jinjiang/006.json",
+    "data/companies/workbook-disclosures/jinjiang/007.json",
+    "data/companies/workbook-disclosures/jinjiang/008.json",
+    "data/companies/workbook-disclosures/jinjiang/009.json",
+    "data/companies/workbook-disclosures/jinjiang/010.json",
+    "data/companies/workbook-disclosures/jinjiang/011.json",
+    "data/companies/workbook-disclosures/btg/001.json",
+    "data/companies/workbook-disclosures/btg/002.json",
+    "data/companies/workbook-disclosures/btg/003.json",
+    "data/companies/workbook-disclosures/btg/004.json",
+    "data/companies/workbook-disclosures/btg/005.json",
+    "data/companies/workbook-disclosures/btg/006.json",
+    "data/companies/workbook-disclosures/btg/007.json",
+    "data/companies/workbook-disclosures/btg/008.json",
+    "data/companies/workbook-disclosures/btg/009.json",
+    "data/companies/workbook-disclosures/btg/010.json",
+    "data/companies/workbook-disclosures/btg/011.json",
+    "data/companies/workbook-disclosures/btg/012.json",
+    "data/companies/workbook-disclosures/btg/013.json",
+    "data/companies/workbook-disclosures/btg/014.json",
+    "data/companies/workbook-disclosures/btg/015.json",
+    "data/companies/workbook-disclosures/btg/016.json",
+    "data/companies/workbook-disclosures/btg/017.json",
+    "data/companies/workbook-disclosures/btg/018.json",
+    "data/companies/workbook-disclosures/btg/019.json",
+    "data/companies/workbook-disclosures/btg/020.json"
+  ],
+  "companyParts": {
+    "hworld": [
+      "data/companies/workbook-disclosures/hworld/001.json"
+    ],
+    "jinjiang": [
+      "data/companies/workbook-disclosures/jinjiang/001.json",
+      "data/companies/workbook-disclosures/jinjiang/002.json",
+      "data/companies/workbook-disclosures/jinjiang/003.json",
+      "data/companies/workbook-disclosures/jinjiang/004.json",
+      "data/companies/workbook-disclosures/jinjiang/005.json",
+      "data/companies/workbook-disclosures/jinjiang/006.json",
+      "data/companies/workbook-disclosures/jinjiang/007.json",
+      "data/companies/workbook-disclosures/jinjiang/008.json",
+      "data/companies/workbook-disclosures/jinjiang/009.json",
+      "data/companies/workbook-disclosures/jinjiang/010.json",
+      "data/companies/workbook-disclosures/jinjiang/011.json"
+    ],
+    "btg": [
+      "data/companies/workbook-disclosures/btg/001.json",
+      "data/companies/workbook-disclosures/btg/002.json",
+      "data/companies/workbook-disclosures/btg/003.json",
+      "data/companies/workbook-disclosures/btg/004.json",
+      "data/companies/workbook-disclosures/btg/005.json",
+      "data/companies/workbook-disclosures/btg/006.json",
+      "data/companies/workbook-disclosures/btg/007.json",
+      "data/companies/workbook-disclosures/btg/008.json",
+      "data/companies/workbook-disclosures/btg/009.json",
+      "data/companies/workbook-disclosures/btg/010.json",
+      "data/companies/workbook-disclosures/btg/011.json",
+      "data/companies/workbook-disclosures/btg/012.json",
+      "data/companies/workbook-disclosures/btg/013.json",
+      "data/companies/workbook-disclosures/btg/014.json",
+      "data/companies/workbook-disclosures/btg/015.json",
+      "data/companies/workbook-disclosures/btg/016.json",
+      "data/companies/workbook-disclosures/btg/017.json",
+      "data/companies/workbook-disclosures/btg/018.json",
+      "data/companies/workbook-disclosures/btg/019.json",
+      "data/companies/workbook-disclosures/btg/020.json"
+    ]
+  },
+  "observationCount": 24621,
+  "counts": {
+    "hworld": 796,
+    "btg": 15595,
+    "jinjiang": 8230
+  },
+  "issues": [
+    {
+      "type": "range",
+      "observationId": "wb-d09afe0973b723f2bb9f",
+      "message": "20159M 经营指标修订明细!G6：底稿入住率超过0—100%，保留原值，待核验"
+    },
+    {
+      "type": "range",
+      "observationId": "wb-ff3b1d3000cc5551f433",
+      "message": "2016Q1 经营指标修订明细!G7：底稿入住率超过0—100%，保留原值，待核验"
+    },
+    {
+      "type": "range",
+      "observationId": "wb-8fcf7b74b72d0989eb4f",
+      "message": "20169M 经营指标修订明细!G11：底稿入住率超过0—100%，保留原值，待核验"
+    },
+    {
+      "type": "range",
+      "observationId": "wb-0d60602fc0d78f443d5e",
+      "message": "2017Q1 经营指标修订明细!G19：底稿入住率超过0—100%，保留原值，待核验"
+    },
+    {
+      "type": "source-version",
+      "observationId": "wb-7a0c1c9c42a46ecdb847",
+      "message": "2016Q4 hotels：底稿不同来源版本存在差异；主值 594，另一版本 3401",
+      "alternative": {
+        "value": 3401,
+        "sourceId": "workbook-btg-20261014",
+        "locator": "原始门店客房!E45"
+      }
+    },
+    {
+      "type": "source-version",
+      "observationId": "wb-21bc8db025d583ab788d",
+      "message": "2016Q4 hotels：底稿不同来源版本存在差异；主值 148，另一版本 988",
+      "alternative": {
+        "value": 988,
+        "sourceId": "workbook-btg-20261014",
+        "locator": "原始门店客房!F45"
+      }
+    },
+    {
+      "type": "source-version",
+      "observationId": "wb-dd32e431554e0910be96",
+      "message": "2016Q4 hotels：底稿不同来源版本存在差异；主值 446，另一版本 2413",
+      "alternative": {
+        "value": 2413,
+        "sourceId": "workbook-btg-20261014",
+        "locator": "原始门店客房!G45"
+      }
+    },
+    {
+      "type": "source-version",
+      "observationId": "wb-5513d00559a44d5f4d05",
+      "message": "2016Q4 rooms：底稿不同来源版本存在差异；主值 72272，另一版本 373360",
+      "alternative": {
+        "value": 373360,
+        "sourceId": "workbook-btg-20261014",
+        "locator": "原始门店客房!H45"
+      }
+    },
+    {
+      "type": "source-version",
+      "observationId": "wb-77150975834207a6a587",
+      "message": "2016Q4 rooms：底稿不同来源版本存在差异；主值 21087，另一版本 120748",
+      "alternative": {
+        "value": 120748,
+        "sourceId": "workbook-btg-20261014",
+        "locator": "原始门店客房!I45"
+      }
+    },
+    {
+      "type": "source-version",
+      "observationId": "wb-5256bfbc8042c076637f",
+      "message": "2016Q4 rooms：底稿不同来源版本存在差异；主值 51185，另一版本 252612",
+      "alternative": {
+        "value": 252612,
+        "sourceId": "workbook-btg-20261014",
+        "locator": "原始门店客房!J45"
+      }
+    },
+    {
+      "type": "source-version",
+      "observationId": "wb-58fbab4ddfe13a55fd38",
+      "message": "2017Q2 hotels：底稿不同来源版本存在差异；主值 602，另一版本 3471",
+      "alternative": {
+        "value": 3471,
+        "sourceId": "workbook-btg-20261014",
+        "locator": "原始门店客房!E116"
+      }
+    },
+    {
+      "type": "source-version",
+      "observationId": "wb-e5998a7def06de837a9d",
+      "message": "2017Q2 hotels：底稿不同来源版本存在差异；主值 147，另一版本 971",
+      "alternative": {
+        "value": 971,
+        "sourceId": "workbook-btg-20261014",
+        "locator": "原始门店客房!F116"
+      }
+    },
+    {
+      "type": "source-version",
+      "observationId": "wb-3de5282e277d677018e8",
+      "message": "2017Q2 hotels：底稿不同来源版本存在差异；主值 455，另一版本 2500",
+      "alternative": {
+        "value": 2500,
+        "sourceId": "workbook-btg-20261014",
+        "locator": "原始门店客房!G116"
+      }
+    },
+    {
+      "type": "source-version",
+      "observationId": "wb-74376c766b4e7f3576bb",
+      "message": "2017Q2 rooms：底稿不同来源版本存在差异；主值 71427，另一版本 374739",
+      "alternative": {
+        "value": 374739,
+        "sourceId": "workbook-btg-20261014",
+        "locator": "原始门店客房!H116"
+      }
+    },
+    {
+      "type": "source-version",
+      "observationId": "wb-cca4618c7ba9101c62ba",
+      "message": "2017Q2 rooms：底稿不同来源版本存在差异；主值 20711，另一版本 117806",
+      "alternative": {
+        "value": 117806,
+        "sourceId": "workbook-btg-20261014",
+        "locator": "原始门店客房!I116"
+      }
+    },
+    {
+      "type": "source-version",
+      "observationId": "wb-c4a21aa51d3ef976ae65",
+      "message": "2017Q2 rooms：底稿不同来源版本存在差异；主值 50716，另一版本 256933",
+      "alternative": {
+        "value": 256933,
+        "sourceId": "workbook-btg-20261014",
+        "locator": "原始门店客房!J116"
+      }
+    },
+    {
+      "type": "source-version",
+      "observationId": "wb-a0379970969733326da8",
+      "message": "2023Q1 parent_profit：底稿不同来源版本存在差异；主值 77.19088810999999，另一版本 80.46882987000001",
+      "alternative": {
+        "value": 80.46882987000001,
+        "sourceId": "workbook-btg-20261014",
+        "locator": "原始财务分部!D406"
+      }
+    },
+    {
+      "type": "source-version",
+      "observationId": "wb-a0379970969733326da8",
+      "message": "2023Q1 parent_profit：底稿不同来源版本存在差异；主值 77.19088810999999，另一版本 80.46882987000001",
+      "alternative": {
+        "value": 80.46882987000001,
+        "sourceId": "workbook-btg-20261014",
+        "locator": "原始财务分部!D410"
+      }
+    },
+    {
+      "type": "source-version",
+      "observationId": "wb-b7bc0b998b801363a22f",
+      "message": "2023Q1 operating_cf：底稿不同来源版本存在差异；主值 886.35947586，另一版本 900.94926148",
+      "alternative": {
+        "value": 900.94926148,
+        "sourceId": "workbook-btg-20261014",
+        "locator": "原始财务分部!D408"
+      }
+    },
+    {
+      "type": "source-version",
+      "observationId": "wb-b7bc0b998b801363a22f",
+      "message": "2023Q1 operating_cf：底稿不同来源版本存在差异；主值 886.35947586，另一版本 900.94926148",
+      "alternative": {
+        "value": 900.94926148,
+        "sourceId": "workbook-btg-20261014",
+        "locator": "原始财务分部!D412"
+      }
+    },
+    {
+      "type": "source-version",
+      "observationId": "wb-4ebfb27afe07a802f570",
+      "message": "2017FY managed_revenue：底稿不同来源版本存在差异；主值 1947.1000000000001，另一版本 1004.65",
+      "alternative": {
+        "value": 1004.65,
+        "sourceId": "workbook-jinjiang-20261014",
+        "locator": "加盟及管理费修订!E27"
+      }
+    }
+  ],
+  "verification": {
+    "sourceCellsReconciled": 24621,
+    "sourceVersionsPreserved": 1483,
+    "missingPolicy": "空白不转零；不反推基期；异常入住率待核验"
+  }
+}

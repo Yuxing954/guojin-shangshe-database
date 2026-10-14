@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-10",
+  "updatedAt": "2026-10-14",
   "companies": {
     "jinjiang": {
       "id": "jinjiang",
@@ -28,43 +28,42 @@
         "region": "集团整体",
         "scope": "全部",
         "mode": "全部",
-        "basis": "模型累计财务"
+        "basis": "原报告合并财务"
       },
       "profitMetric": "parent_profit",
       "structures": [
         {
           "title": "有限服务型经营模式 · 酒店数",
           "metric": "hotels",
+          "denominator": {
+            "basis": "原报告规模分类",
+            "scope": "有限服务型酒店"
+          },
           "rows": [
             {
               "label": "自有和租赁",
-              "mode": "直营店/自有和租赁",
-              "basis": "酒店业务含全服务型"
+              "mode": "直营店/自有和租赁"
             },
             {
               "label": "加盟和管理",
-              "mode": "加盟店/加盟和管理",
-              "basis": "酒店业务含全服务型"
+              "mode": "加盟店/加盟和管理"
             }
-          ],
-          "denominator": {
-            "mode": "有限服务型酒店",
-            "basis": "酒店业务含全服务型"
-          }
+          ]
         },
         {
           "title": "酒店类型 · 酒店数",
           "metric": "hotels",
+          "denominator": {
+            "basis": "原报告规模分类"
+          },
           "rows": [
             {
               "label": "有限服务型",
-              "mode": "有限服务型酒店",
-              "basis": "酒店业务含全服务型"
+              "scope": "有限服务型酒店"
             },
             {
               "label": "全服务型",
-              "mode": "全服务型酒店",
-              "basis": "酒店业务含全服务型"
+              "scope": "全服务型酒店"
             }
           ]
         }
@@ -80,7 +79,8 @@
         "Choice与底稿保留独立序列；债务口径尚未齐备，负债总额不作为有息债务。"
       ],
       "evidence": [
-        "report-ba1fb1cb8b35"
+        "report-ba1fb1cb8b35",
+        "workbook-jinjiang-20261014"
       ],
       "positioning": "境内外酒店平台",
       "businessLines": [
@@ -115,21 +115,21 @@
         "region": "中国",
         "scope": "全部",
         "mode": "全部",
-        "basis": "报告运营酒店 / 不含未并表合资和管理输出",
+        "basis": "原报告运营酒店 / 全部酒店",
         "frequency": "季度"
       },
       "scale": {
         "region": "集团整体",
         "scope": "全部",
         "mode": "全部",
-        "basis": "报告全网络 / 含未并表合资和管理输出",
+        "basis": "原报告门店网络 / 品牌",
         "frequency": "季度"
       },
       "financial": {
         "region": "集团整体",
         "scope": "全部",
         "mode": "全部",
-        "basis": "模型累计财务"
+        "basis": "原报告合并财务"
       },
       "profitMetric": "parent_profit",
       "structures": [
@@ -177,18 +177,18 @@
         "酒店业务与景区收入、利润贡献"
       ],
       "gaps": [
-        "Q2规模为全网络口径；旧模型“中国”口径不直接拼接同比",
-        "合资和管理输出门店纳入规模，但不纳入本期运营RevPAR",
-        "Choice与底稿保留独立序列；债务口径尚未齐备，负债总额不作为有息债务。"
+        "2019Q1前如家与首旅存量酒店分开；早期成员酒店含筹建，不与后期开业规模直接比较",
+        "成熟店采用各期固定样本；规模含部分未并表合资和管理输出，运营指标剔除这些门店"
       ],
       "evidence": [
-        "report-4000f1473275"
+        "report-4000f1473275",
+        "workbook-btg-20261014"
       ],
       "pipeline": {
         "region": "集团整体",
         "scope": "全部",
         "mode": "全部",
-        "basis": "已签约未开业和正在签约",
+        "basis": "原报告拓店 / 期末储备店",
         "frequency": "季度"
       },
       "positioning": "分层酒店网络与景区业务",
@@ -210,7 +210,14 @@
         "currency": "CNY"
       },
       "choiceProfitMetric": "parent_profit",
-      "cashMetric": "monetary_funds"
+      "cashMetric": "monetary_funds",
+      "opened": {
+        "region": "集团整体",
+        "scope": "全部",
+        "mode": "全部",
+        "basis": "原报告拓店 / 单季新开店",
+        "frequency": "季度"
+      }
     },
     "hworld": {
       "id": "hworld",
@@ -293,7 +300,8 @@
         "Choice返回展示精度；美股财务返回美元，原始列报币种未确认；不与人民币底稿拼接。"
       ],
       "evidence": [
-        "report-08569c038487"
+        "report-08569c038487",
+        "workbook-hworld-20261014"
       ],
       "opened": {
         "region": "中国",

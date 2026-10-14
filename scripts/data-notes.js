@@ -10,7 +10,7 @@
     gold:{name:'黄金',files:['data/gold-jewelry/research.json','data/gold-jewelry/macro.json','data/gold-jewelry/observations.json'],docs:['docs/gold-jewelry-database.md']},
     dining:{name:'餐饮',files:['data/sectors/dining.json'],docs:[]},
     macro:{name:'宏观与消费',files:['data/macro/coverage.json','data/macro/catalog.json','data/consumption-macro/observations.json','data/macro/automatic-series.json'],docs:['docs/macro-data.md','docs/consumption-macro.md']},
-    companies:{name:'重点公司',files:['data/companies/issues.json','data/companies/sources.json'],docs:['docs/company-database.md']},
+    companies:{name:'重点公司',files:['data/companies/issues.json','data/companies/sources.json','data/companies/workbook-disclosures.json'],docs:['docs/company-database.md']},
     earnings:{name:'财报日历',files:['data/earnings-calendar.json'],docs:['docs/earnings-workbench.md']},
     research:{name:'观点纪要',files:['data/research/updates/manifest.json'],docs:['docs/research-library.md']},
     quotes:{name:'实时行情',files:['data/coverage-companies.json'],docs:['docs/realtime-quotes.md','docs/coverage-pool.md']}
@@ -25,7 +25,8 @@
     if(id==='hotel')out.push('同比默认匹配来源年/周；假期错期需单独映射与标注。','节假日经营对标按假期日序匹配两期日期，入住率差为百分点，ADR及RevPAR为相对变化。',...Object.entries(a.historicalCoverage||{}).flatMap(([file,regions])=>Object.entries(regions).map(([region,c])=>region+'：'+c.firstPeriod+' — '+c.lastPeriod+' · '+c.periodCount+'期')),'异常源记录：'+(a.sourceAnomalyCount??'未记录')+'条');
     if(id==='gold')out.push(...(a.limitations||[]),'国内金价后台按5分钟计划采集；国际行情在黄金页面打开时每15秒读取。实际更新以来源报价时间为准，网络失败保留上次报价。');
     if(id==='dining')out.push(...(a.gaps||[]).map(g=>g.metric+'：'+g.reason));
-    if(id==='companies')out.push(...(a.issues||[]).filter(i=>!i.companyId||i.companyId==='hworld').map(i=>[i.period,i.locator,i.message].filter(Boolean).join(' · ')));
+    if(id==='companies'&&values[2])out.push('三份用户底稿逐单元格转录，保留原单位、报告期、页码、证据编号和截图位置；缺失不转零。',...((values[2].issues)||[]).map(i=>i.message));
+    if(id==='companies')out.push(...(a.issues||[]).map(i=>[i.period,i.locator,i.message].filter(Boolean).join(' · ')));
     if(id==='macro'){
       for(const [key,c] of Object.entries(a.series||{}))out.push(key+'：'+[c.start+' — '+c.end,c.count+'期',c.missingPeriods?.length?'缺期 '+c.missingPeriods.join('、'):'',c.historyShort?'历史覆盖不足':'',c.status==='error'?'更新失败，保留历史':''].filter(Boolean).join(' · '));
       const consumption=values[2]&&values[3]&&!values[3].loadError?ConsumptionMacro.mergeAutomatic(values[2],values[3]):values[2];if(consumption&&window.ConsumptionMacro)for(const i of consumption.indicators||[]){const c=ConsumptionMacro.scopeCoverage(consumption,i.id);out.push(i.name+'：'+(c?[c.start+' — '+c.end,c.count+'期',c.missingPeriods.length?'缺期 '+c.missingPeriods.join('、'):'',c.valueMissing?'数值缺失 '+c.valueMissing+'条':''].filter(Boolean).join(' · '):i.pendingReason||'暂无数据'));}
@@ -44,6 +45,7 @@
   }
   addEventListener('hashchange',render);render();
 })();
+
 
 
 

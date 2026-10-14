@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "title": "重点公司数据库",
-  "updatedAt": "2026-10-10",
+  "updatedAt": "2026-10-14",
   "companies": [
     {
       "id": "jinjiang",
@@ -328,8 +328,128 @@
       "unit": "百万元",
       "category": "财务",
       "aggregation": "stock"
+    },
+    {
+      "id": "signed_hotels",
+      "name": "签约酒店数",
+      "unit": "家",
+      "category": "规模",
+      "aggregation": "stock"
+    },
+    {
+      "id": "signed_rooms",
+      "name": "签约客房数",
+      "unit": "间",
+      "category": "规模",
+      "aggregation": "stock"
+    },
+    {
+      "id": "mature_hotels",
+      "name": "成熟酒店样本数",
+      "unit": "家",
+      "category": "经营",
+      "aggregation": "stock"
+    },
+    {
+      "id": "finance_expense",
+      "name": "财务费用",
+      "unit": "百万元",
+      "category": "财务",
+      "aggregation": "flow"
+    },
+    {
+      "id": "parent_equity",
+      "name": "归母净资产",
+      "unit": "百万元",
+      "category": "财务",
+      "aggregation": "stock"
+    },
+    {
+      "id": "pretax_profit",
+      "name": "利润总额",
+      "unit": "百万元",
+      "category": "财务",
+      "aggregation": "flow"
+    },
+    {
+      "id": "project_revenue",
+      "name": "项目收入",
+      "unit": "百万元",
+      "category": "财务",
+      "aggregation": "flow"
+    },
+    {
+      "id": "project_cost",
+      "name": "项目成本",
+      "unit": "百万元",
+      "category": "财务",
+      "aggregation": "flow"
+    },
+    {
+      "id": "gross_profit",
+      "name": "毛利",
+      "unit": "百万元",
+      "category": "财务",
+      "aggregation": "flow"
+    },
+    {
+      "id": "gross_margin",
+      "name": "毛利率",
+      "unit": "%",
+      "category": "财务",
+      "aggregation": "average"
+    },
+    {
+      "id": "ebitda",
+      "name": "EBITDA",
+      "unit": "百万元",
+      "category": "财务",
+      "aggregation": "flow"
+    },
+    {
+      "id": "capex",
+      "name": "资本性支出",
+      "unit": "百万元",
+      "category": "现金流",
+      "aggregation": "flow"
+    },
+    {
+      "id": "product_share",
+      "name": "产品结构比例",
+      "unit": "%",
+      "category": "产品",
+      "aggregation": "average"
+    },
+    {
+      "id": "ownership",
+      "name": "受益持股比例",
+      "unit": "%",
+      "category": "股权",
+      "aggregation": "stock"
+    },
+    {
+      "id": "reported_growth",
+      "name": "披露同比",
+      "unit": "%",
+      "category": "财务",
+      "aggregation": "average"
+    },
+    {
+      "id": "managed_share",
+      "name": "加盟管理收入占比",
+      "unit": "%",
+      "category": "财务",
+      "aggregation": "average"
+    },
+    {
+      "id": "deducted_profit",
+      "name": "扣非归母净利润",
+      "unit": "百万元",
+      "category": "财务",
+      "aggregation": "flow"
     }
   ],
   "sourcesFile": "data/companies/sources.json",
-  "issuesFile": "data/companies/issues.json"
+  "issuesFile": "data/companies/issues.json",
+  "workbookDisclosuresFile": "data/companies/workbook-disclosures.json"
 }
