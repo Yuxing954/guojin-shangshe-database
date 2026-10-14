@@ -61,7 +61,7 @@ function draw(target,width,model,comment){
 
  if(logo.complete&&logo.naturalWidth)ctx.drawImage(logo,44,25,300,67);else text('SINOLINK 国金证券',44,68,32,blue,'bold');
  ctx.fillStyle='#447eaf';ctx.fillRect(920,34,236,50);text('国金商社于健',1038,70,32,'#fff','normal','center');
- ctx.fillStyle=blue;ctx.fillRect(0,120,1200,272);if(banner.complete&&banner.naturalWidth)ctx.drawImage(banner,0,120,1200,272);text(model.title,44,260,88,'#fff','bold');if(model.freshness.publishedAt)text('发布日期：'+model.freshness.publishedAt.replace(/^(\d{4})-(\d{2})-(\d{2})$/,'$1年$2月$3日'),44,330,32,'#fff');
+ ctx.fillStyle=blue;ctx.fillRect(0,120,1200,272);if(banner.complete&&banner.naturalWidth)ctx.drawImage(banner,0,120,1200,272);text(model.title,44,260,88,'#fff','bold');text('发布日期：'+(model.freshness.publishedAt?model.freshness.publishedAt.replace(/^(\d{4})-(\d{2})-(\d{2})$/,'$1年$2月$3日') :'未提供'),44,330,32,'#fff');
 
  let y=450;
  section('当期核心指标',y);y+=20;
@@ -78,7 +78,7 @@ function draw(target,width,model,comment){
  chart(44,y,'CPI与核心CPI · 环比 %',model.priceTrend,[{name:'CPI',get:p=>p.cpi?.mom},{name:'核心CPI',get:p=>p.core?.mom}]);y+=SPACE.chartStep;
  line(y);y+=36;
  text('来源：国家统计局数据及解读'+(model.sources.some(s=>s.licensedChoice)?' / Choice转引':'')+'；国金商社研究数据库',44,y,18,muted);y+=30;
- text(['数据月份 '+model.period,model.freshness.publishedAt?'官方发布 '+model.freshness.publishedAt:'',model.freshness.updatedAt?'入库核对 '+model.freshness.updatedAt:''].filter(Boolean).join(' · '),44,y,TYPE.meta,muted);y+=35;
+ text('数据月份 '+model.period+' · 官方发布 '+(model.freshness.publishedAt||'未提供')+' · 入库核对 '+(model.freshness.updatedAt||'未提供'),44,y,TYPE.meta,muted);y+=35;
  ctx.fillStyle='#f5f4f5';ctx.fillRect(0,y,1200,height-y);ctx.fillStyle='#eee8cd';ctx.fillRect(0,y,1200,5);y+=35;
  legalLines.forEach((ls,i)=>{text(i?'免责声明':'特别声明',44,y,22,'#998951','bold');y+=32;for(const t of ls){text(t,44,y,13,'#68727b');y+=18;}y+=24;});
  // Crop to the actual report height, keeping export and preview layout identical.
@@ -90,7 +90,7 @@ function sourceLinks(){
 }
 function render(){
  if(!data||!$('month').value)return;
- try{report=M.report(data,$('month').value,$('window').value,insights);const comment=$('comment').value.trim()||report.comments;canvas.hidden=false;const width=Math.max(760,Math.round(canvas.getBoundingClientRect().width*(devicePixelRatio||1)));const result=draw(canvas,width,report,comment);hits=result.hits;canvas.setAttribute('aria-label',report.title+(report.freshness.publishedAt?'。发布日期：'+report.freshness.publishedAt:'')+'。'+comment+'。来源：'+report.sources.map(s=>s.title||s.name).join('；'));$('generated-title').textContent=report.title;document.querySelector('.product-header h1').textContent=report.title;$('export').disabled=false;status(warning||report.periodLabel+' · 最新收录 '+report.freshness.latest+' · 高清PNG 3600像素宽',Boolean(warning));sourceLinks();publishURL();}catch(e){status('生成失败：'+e.message,true);$('export').disabled=true;}
+ try{report=M.report(data,$('month').value,$('window').value,insights);const comment=$('comment').value.trim()||report.comments;canvas.hidden=false;const width=Math.max(760,Math.round(canvas.getBoundingClientRect().width*(devicePixelRatio||1)));const result=draw(canvas,width,report,comment);hits=result.hits;canvas.setAttribute('aria-label',report.title+'。发布日期：'+(report.freshness.publishedAt||'未提供')+'。'+comment+'。来源：'+report.sources.map(s=>s.title||s.name).join('；'));$('generated-title').textContent=report.title;document.querySelector('.product-header h1').textContent=report.title;$('export').disabled=false;status(warning||report.periodLabel+' · 最新收录 '+report.freshness.latest+' · 高清PNG 3600像素宽',Boolean(warning));sourceLinks();publishURL();}catch(e){status('生成失败：'+e.message,true);$('export').disabled=true;}
 }
 async function reload(){
  if(busy)return;busy=true;$('refresh').disabled=true;status('正在读取月度数据…');
