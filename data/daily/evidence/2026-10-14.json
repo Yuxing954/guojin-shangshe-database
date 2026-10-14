@@ -55,10 +55,10 @@
       "publishedAt": "2026-10-14T09:30:00+08:00",
       "values": {
         "cpiYoy": 0.9,
-        "coreCpiYoy": 1.0,
+        "coreCpiYoy": 1,
         "servicesYoy": 0.8,
         "travelServicesYoy": 2.1,
-        "hotelMom": -7.0
+        "hotelMom": -7
       },
       "basis": "全国价格指数，同比对比2025年9月；环比受暑期结束影响"
     },
@@ -107,5 +107,55 @@
       "平台电商及美团混合平台投资观点",
       "食品饮料、医药医美、纯科技、建材制造等非覆盖内容"
     ]
+  },
+  "usCpi": {
+    "checkedAt": "2026-10-14T21:31:03+08:00",
+    "publishedAt": "2026-10-14T20:30:00+08:00",
+    "source": "https://www.bls.gov/news.release/cpi.htm",
+    "archiveAttempt": "https://www.bls.gov/news.release/archives/cpi_10142026.htm",
+    "archiveStatus": "暂未返回正文，已核验滚动发布页标题为2026年9月及公布日期",
+    "releaseId": "USDL-26-1574",
+    "period": "2026-09",
+    "scope": "CPI-U U.S. city average",
+    "yoyBasis": "未季调，2026年9月对比2025年9月",
+    "momBasis": "季调，2026年9月对比2026年8月；外出就餐月度项为未季调，本次不作月度比较",
+    "values": {
+      "headlineYoyPct": 3.7,
+      "previousHeadlineYoyPct": 3.4,
+      "coreYoyPct": 2.6,
+      "previousCoreYoyPct": 2.4,
+      "headlineSaMomPct": 0.6,
+      "previousHeadlineSaMomPct": 0.4,
+      "coreSaMomPct": 0.3,
+      "previousCoreSaMomPct": 0.3,
+      "gasolineSaMomPct": 9.1,
+      "servicesLessEnergyYoyPct": 3.1,
+      "servicesLessEnergySaMomPct": 0.4,
+      "foodAwayFromHomeYoyPct": 3.5
+    },
+    "sourceLocations": [
+      "发布正文第182—198行",
+      "Table A",
+      "服务与能源说明"
+    ],
+    "interpretation": "整体月度加速主要受能源推动，核心月度增幅持平；对海外消费经营的影响为编辑判断，非BLS表述。"
+  },
+  "attachmentCorrection": {
+    "catalogGeneratedAt": "2026-10-14T17:11:04+08:00",
+    "catalogSourceThrough": "2026-10-14T15:16:32.032+0800",
+    "previousCatalogGeneratedAt": "2026-10-14T13:58:15+08:00",
+    "updatedAt": "2026-10-14T21:39:13+08:00",
+    "reason": "日报修订时沿用旧附件快照，未复用最新已入库索引",
+    "added": [
+      {
+        "id": "zsxq-file-814848252851552",
+        "title": "九毛九20261009.mp3",
+        "publishedAt": "2026-10-14T14:42:44.948000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/22258224524252241",
+        "status": "未转写",
+        "sector": ""
+      }
+    ],
+    "attachmentContentRead": false
   }
 }

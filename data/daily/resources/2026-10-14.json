@@ -3,6 +3,10 @@
   "windowStart": "2026-10-13T16:00:00+08:00",
   "cutoff": "2026-10-14T16:00:00+08:00",
   "sourceThrough": "2026-10-14T15:16:32.032+0800",
+  "attachmentCatalog": {
+    "generatedAt": "2026-10-14T17:11:04+08:00",
+    "sourceThrough": "2026-10-14T15:16:32.032+0800"
+  },
   "groups": {
     "segments": [
       {
@@ -70,18 +74,27 @@
       {
         "id": "zsxq-file-584141141122814",
         "title": "对话专家-双十一宠物前瞻专家交流20261013.pdf",
-        "publishedAt": "2026-10-13T22:01:48+08:00",
+        "publishedAt": "2026-10-13T22:01:48.353000+08:00",
         "url": "https://wx.zsxq.com/group/88888142214212/topic/14425444844184512",
         "status": "仅标题登记",
         "sector": "retail"
       }
     ],
-    "audio": [],
+    "audio": [
+      {
+        "id": "zsxq-file-814848252851552",
+        "title": "九毛九20261009.mp3",
+        "publishedAt": "2026-10-14T14:42:44.948000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/22258224524252241",
+        "status": "未转写",
+        "sector": ""
+      }
+    ],
     "reports": [
       {
         "id": "zsxq-file-584141184551414",
         "title": "中国住宿消费：秋假有望带动四季度休闲旅游新增需求-China Consumer Lodging Autumn Break to Drive Incremental Leisure Travel Demand in 4Q26.pdf",
-        "publishedAt": "2026-10-14T10:10:14+08:00",
+        "publishedAt": "2026-10-14T10:10:14.933000+08:00",
         "url": "https://wx.zsxq.com/group/88888142214212/topic/45548552445582458",
         "status": "仅标题登记",
         "sector": "travel / retail"
@@ -89,7 +102,7 @@
       {
         "id": "zsxq-file-181515515524822",
         "title": "本地生活行业近况更新20261013.pdf",
-        "publishedAt": "2026-10-13T22:02:52+08:00",
+        "publishedAt": "2026-10-13T22:02:52.499000+08:00",
         "url": "https://wx.zsxq.com/group/88888142214212/topic/22258222122411821",
         "status": "仅标题登记",
         "sector": "retail"
@@ -97,7 +110,5 @@
     ]
   },
   "policy": "仅依据已入库元数据列出标题、发布时间和来源主题；未下载、读取或转写附件，不把研究报告标为纪要。",
-  "attachmentSourceThrough": "2026-10-14T13:28:54.124+0800",
-  "attachmentIndexGeneratedAt": "2026-10-14T13:58:15+08:00",
-  "attachmentPolicy": "仅复用现有附件元数据；未刷新索引，未下载、读取或转写附件；空项仅代表本次已登记样本。"
+  "updatedAt": "2026-10-14T21:39:13+08:00"
 }

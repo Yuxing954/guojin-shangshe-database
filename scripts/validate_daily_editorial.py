@@ -39,7 +39,7 @@ def validate(d):
  else:assert count<=1100,'Editorial exceeds one-page budget'
  return count
 if __name__=='__main__':
- p=argparse.ArgumentParser();p.add_argument('--date',required=True);a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('--date',required=True);p.add_argument('--check-resources',action='store_true',help='Compare this publication with the current local source metadata; do not use for frozen historical snapshots');a=p.parse_args()
  d=json.loads((ROOT/'data/daily/onepage'/f'{a.date}.json').read_text())
  print('Editorial valid:',validate(d),'characters')
  if d.get('allSegmentsListed'):
@@ -51,4 +51,12 @@ if __name__=='__main__':
   for url in actual:
    assert url in rows and d['originals'][url]['body']==rows[url]['内容'],'Original text is incomplete or differs from source corpus'
   print('Complete segment list and originals verified:',len(actual))
+ if a.check_resources:
+  from build_daily_resource_list import build
+  saved=json.loads((ROOT/'data/daily/resources'/f'{a.date}.json').read_text())
+  expected=build(a.date,saved['cutoff'])
+  assert saved.get('attachmentCatalog')==expected['attachmentCatalog'],'Attachment catalogue version is stale'
+  for kind in ('minutes','audio','reports'):
+   assert saved['groups'][kind]==expected['groups'][kind],f'Incomplete or stale {kind} resource list'
+  print('Attachment catalogue version and all resource items verified')
 
