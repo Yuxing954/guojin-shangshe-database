@@ -1,0 +1,29 @@
+name: Check add to home screen
+on:
+  pull_request:
+    paths:
+      - '*.html'
+      - 'site.webmanifest'
+      - 'scripts/site-install.*'
+      - 'scripts/assets/app/**'
+      - 'tests/site-install.browser.cjs'
+      - '.github/workflows/check-site-install.yml'
+permissions:
+  contents: read
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --check scripts/site-install.js
+      - name: Install isolated browser runtime
+        run: |
+          npm install --prefix /tmp/install-test playwright@1.58.2
+          /tmp/install-test/node_modules/.bin/playwright install --with-deps chromium
+      - name: Check install UI and application metadata
+        env:
+          NODE_PATH: /tmp/install-test/node_modules
+        run: node tests/site-install.browser.cjs
