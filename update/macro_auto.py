@@ -204,8 +204,7 @@ def main():
         args.cutoff=(datetime.now(ZoneInfo('Asia/Shanghai')).date() if args.due_only else date.today()).isoformat()
     date.fromisoformat(args.cutoff);registry=json.loads((DATA/'choice-registry.json').read_text(encoding='utf-8'))
     if registry.get('publicRedistributionApproved') is not True:raise ValueError('Publication authorization required')
-    target=DATA/'automatic-series.json';previous=json.loads(target.read_text(encoding='utf-8')) if target.exists() else {'series':{}}
-    values=dict(previous['series']);now=datetime.now(timezone.utc).isoformat(timespec='seconds');errors=[]
+    target=DATA/'automatic-series.json';now=datetime.now(timezone.utc).isoformat(timespec='seconds');errors=[]
     if args.only and set(args.only)-{s['id'] for s in registry['series']}:raise ValueError('Unknown registry ID')
     entries=[s for s in registry['series'] if (not args.only or s['id'] in args.only) and (not args.consumer_only or s.get('consumerId'))]
     plan=due.build_plan(date.fromisoformat(args.cutoff),registry,due.load_ledger()) if args.due_only else None
@@ -213,6 +212,8 @@ def main():
         entries=[s for s in entries if s['id'] in plan['dueChoice']]
         if not entries and not plan['dueOfficial']:
             print(json.dumps({'noDataFetch':True,'dueScopes':plan['dueScopes']},ensure_ascii=False,separators=(',',':')));return 0
+    previous=json.loads(target.read_text(encoding='utf-8')) if target.exists() else {'series':{}}
+    values=dict(previous['series'])
     key=configured_key(args.codex_config) if entries else None
     receipts=[]
     if args.receipts_dir:
