@@ -3,9 +3,9 @@
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
   "coverageFrom": "2026-10-13T19:28:11.141+0800",
-  "coverageTo": "2026-10-14T11:35:28.376+0800",
+  "coverageTo": "2026-10-14T12:56:18.668+0800",
   "oldestFetched": "2026-10-11T21:49:26.657+0800",
-  "fetchedTopics": 634,
+  "fetchedTopics": 654,
   "files": {
     "views": [
       "data/research/updates/2026-10-14-1204-views-001.csv",
@@ -35,7 +35,8 @@
       "data/research/updates/2026-10-09-views-001.csv",
       "data/research/updates/2026-10-08-views-001.csv",
       "data/research/updates/2026-10-07-views-001.csv",
-      "data/research/updates/2026-10-07-views-002.csv"
+      "data/research/updates/2026-10-07-views-002.csv",
+      "data/research/updates/2026-10-14-1258-views.csv"
     ],
     "all_views": [
       "data/research/updates/2026-10-14-1204-all_views-001.csv",
@@ -124,7 +125,8 @@
       "data/research/updates/2026-10-07-all_views-028.csv",
       "data/research/updates/2026-10-07-all_views-029.csv",
       "data/research/updates/2026-10-07-all_views-030.csv",
-      "data/research/updates/2026-10-13-classification-courier-all_views.csv"
+      "data/research/updates/2026-10-13-classification-courier-all_views.csv",
+      "data/research/updates/2026-10-14-1258-all_views.csv"
     ],
     "minutes": [
       "data/research/updates/2026-10-12-minutes-001.csv",
@@ -132,19 +134,19 @@
     ]
   },
   "counts": {
-    "views": 237,
-    "all_views": 4884,
+    "views": 240,
+    "all_views": 4897,
     "minutes": 101
   },
   "latest": {
-    "views": "2026-10-14T11:35:28.376+0800",
-    "all_views": "2026-10-14T11:35:13.681+0800",
+    "views": "2026-10-14T12:56:12.569+0800",
+    "all_views": "2026-10-14T12:56:18.668+0800",
     "minutes": "2026-10-12T01:07:33"
   },
   "excluded": {
     "附件标题": 37,
-    "图片无可读正文": 10,
-    "无实质观点正文": 8
+    "图片无可读正文": 13,
+    "无实质观点正文": 9
   },
   "lastClassificationCorrection": {
     "date": "2026-10-13",
@@ -430,7 +432,10 @@
       "14425444842148212",
       "22258224558228211",
       "55521554221518584",
-      "55521554221888414"
+      "55521554221888414",
+      "45548552481518248",
+      "22258224581841811",
+      "55521554214822184"
     ],
     "all_views": [
       "55521555585451444",
@@ -5408,75 +5413,89 @@
       "82258224551224842",
       "14425441224224252",
       "82258224552555422",
-      "45548552445444518"
+      "45548552445444518",
+      "22258224581218441",
+      "45548552481818858",
+      "45548552481814418",
+      "45548552481821858",
+      "14425441258511212",
+      "55521554214885424",
+      "45548552482188148",
+      "82258224584188242",
+      "55521554214812484",
+      "82258224584151182",
+      "82258224584154152",
+      "82258224584152842",
+      "45548552482144528"
     ]
   },
   "lastRun": {
-    "runId": "2026-10-14-1204",
-    "previousCoverageTo": "2026-10-14T10:51:19.243+0800",
-    "newSourceTopics": 27,
+    "runId": "2026-10-14-1258",
+    "previousCoverageTo": "2026-10-14T11:35:28.376+0800",
+    "newSourceTopics": 20,
     "added": {
       "views": 3,
-      "all_views": 20
+      "all_views": 13
     },
-    "duplicates": 3,
-    "excluded": 1,
-    "record": "data/research/updates/2026-10-14-1204-record.json",
-    "syncedAt": "2026-10-14 04:04:14Z",
-    "coverageTo": "2026-10-14T11:35:28.376+0800",
+    "duplicates": 0,
+    "excluded": 4,
+    "record": "data/research/updates/2026-10-14-1258-record.json",
+    "syncedAt": "2026-10-14 04:58:44Z",
+    "coverageTo": "2026-10-14T12:56:18.668+0800",
     "addedTopicIds": [
-      "55521554211182244",
-      "55521554211148814",
-      "82258224588844282",
-      "82258224588844822",
-      "82258224588842212",
-      "55521554211145184",
-      "45548552488411188",
-      "22258224588511211",
-      "82258224588512442",
-      "55521554211282524",
-      "55521554211248224",
-      "82258224588544222",
-      "82258224588544522",
-      "14425441255214852",
-      "45548552488428548",
-      "45548552488428488",
-      "45548552488451858",
-      "45548552488452118",
-      "14425441255244182",
-      "22258224588522211",
-      "22258224588522521",
-      "14425441255245812",
-      "22258224588525251"
+      "22258224581218441",
+      "45548552481518248",
+      "45548552481818858",
+      "45548552481814418",
+      "22258224581841811",
+      "45548552481821858",
+      "14425441258511212",
+      "55521554214885424",
+      "45548552482188148",
+      "82258224584188242",
+      "55521554214812484",
+      "82258224584151182",
+      "82258224584154152",
+      "82258224584152842",
+      "45548552482144528",
+      "55521554214822184"
     ],
-    "duplicateTopicIds": [
-      "14425441255282412",
-      "45548552488842188",
-      "22258224588512851"
-    ],
+    "duplicateTopicIds": [],
     "excludedTopics": [
       {
-        "topicId": "14425441255248142",
-        "reason": "只有图片及标题“国内储能招标数据库”，正文没有可判断的观点；不推断图片内容"
+        "topicId": "45548552481518888",
+        "reason": "仅有锅圈调研资料外链，无可读正文；未读取外链、不推断观点"
+      },
+      {
+        "topicId": "22258224584151281",
+        "reason": "只有图片及标题“A股市场午评”，正文无可判断观点；不推断图片"
+      },
+      {
+        "topicId": "55521554214442244",
+        "reason": "只有图片及标题“存储价格更新”，正文无可判断观点；不推断图片"
+      },
+      {
+        "topicId": "82258224584422222",
+        "reason": "只有图片及标题“存储股遭抛售”，正文无可判断观点；不推断图片"
       }
     ],
     "briefChanges": {
       "added": [
-        "zhongju-channel-q3-20261014",
-        "lvmh-q3-20261014",
-        "ecommerce-platform-sales-202609"
+        "eastbuy-channel-streaming-20261014",
+        "meituan-instant-retail-unit-economics-20261014",
+        "platform-ai-instant-retail-20261014"
       ],
       "updated": [],
       "expiredRemoved": []
     },
     "sourceGroup": "88888142214212",
     "sourceName": "水木调研纪要-2.0",
-    "oldestFetched": "2026-10-14T11:25:57.993+0800",
-    "fetchedTopics": 27,
+    "oldestFetched": "2026-10-14T11:31:23.863+0800",
+    "fetchedTopics": 20,
     "attachmentMetadata": {
-      "sourceFileOccurrences": 0,
-      "indexedFileOccurrences": 0,
-      "unreadContents": 0,
+      "sourceFileOccurrences": 382,
+      "indexedFileOccurrences": 382,
+      "unreadContents": 382,
       "addedCatalogRecords": 0,
       "windowStart": "2026-10-12",
       "windowEnd": "2026-10-14",
@@ -5484,7 +5503,7 @@
       "windowScan": {
         "windowStart": "2026-10-12",
         "windowEnd": "2026-10-14",
-        "topicsScanned": 639,
+        "topicsScanned": 660,
         "topicPages": 22,
         "boundaryReached": true,
         "sourceOccurrencesObserved": 382,
@@ -5494,8 +5513,8 @@
       }
     },
     "files": {
-      "views": "data/research/updates/2026-10-14-1204-views-001.csv",
-      "all_views": "data/research/updates/2026-10-14-1204-all_views-001.csv"
+      "views": "data/research/updates/2026-10-14-1258-views.csv",
+      "all_views": "data/research/updates/2026-10-14-1258-all_views.csv"
     }
   }
 }
