@@ -27,9 +27,10 @@
   el.innerHTML='<p class="dh-message" role="status">正在读取节假日数据…</p>';
   function sources(r){if(r.web_source){const w=r.web_source;return '<details class="dh-source"><summary>来源与口径</summary><p>'+esc(w.authority)+' · '+esc(w.publisher)+' · '+esc(w.publishedAt)+'</p><p><a href="'+esc(w.url)+'" target="_blank" rel="noopener noreferrer">'+esc(w.title)+'</a></p><p>'+esc(r.notes.join(' '))+'</p><p>'+esc(r.yoy_basis)+'</p>'+publicNotes(r)+'<p>日均=总额/统计天数；每购物人次金额=金额/人次×10000。'+esc(r.items_text?'购物件数：'+r.items_text:num(r.items)?'购物件数：'+r.items+'万件。':'')+'</p></details>';}return '<details class="dh-source"><summary>来源与口径</summary><p>'+esc(data.sourceFile)+' · '+esc(r.sheet)+' · '+esc(r.quality)+'</p><p>'+esc(r.notes.join(' ')||'沿用原表当年公布口径。')+'</p><p>'+esc(r.yoy_basis||'缺少可比同比')+'</p><ul>'+Object.entries(r.source_cells).map(([key,s])=>'<li>'+esc((s.sheet||r.sheet)+'!'+s.cell)+'：'+esc(s.value===null?'空缺':s.value)+(s.formula?'；原公式 '+esc(s.formula):'')+'</li>').join('')+'</ul></details>';}
   function chart(rows){
+    const chartWidth=document.getElementById('dh-chart').clientWidth;if(chartWidth<100)return '';
     const available=rows.filter(r=>r.status==='available'&&num(r[metric])).slice().reverse(),[label,unit,digits]=metrics[metric];
     if(!available.length)return '<p class="dh-message">该筛选暂无已收录数值。</p>';
-    if(holiday!=='全部'){const field={daily_sales:'daily_yoy',spend:'spend_yoy',sales:'reported_sales_yoy',shoppers:'reported_shoppers_yoy',items:'reported_items_yoy'}[metric];return SiteCharts.paired(available.map(r=>({period:r.year+' '+r.holiday,x:r.year,value:r[metric],change:r[field]})),{name:label,unit,precision:digits,mode:document.getElementById('dh-chart-mode').value,width:Math.max(280,document.getElementById('dh-chart').clientWidth-32),gap:1}).html;}
+    if(holiday!=='全部'){const field={daily_sales:'daily_yoy',spend:'spend_yoy',sales:'reported_sales_yoy',shoppers:'reported_shoppers_yoy',items:'reported_items_yoy'}[metric];return SiteCharts.paired(available.map(r=>({period:r.year+' '+r.holiday,x:r.year,value:r[metric],change:r[field]})),{name:label,unit,precision:digits,mode:document.getElementById('dh-chart-mode').value,width:Math.max(280,chartWidth-32),gap:1}).html;}
     const max=Math.max(...available.map(r=>r[metric]))||1;
     return '<div class="dh-bars" role="img" aria-label="'+esc(label+'历年对比，单位'+unit)+'">'+available.map(r=>'<div class="dh-bar-row"><span>'+r.year+' '+esc(r.holiday)+'</span><div class="dh-bar-track"><div class="dh-bar" style="width:'+Math.max(1,r[metric]/max*100)+'%"></div></div><strong>'+fmt(r[metric],digits)+' <small>'+unit+'</small></strong></div>').join('')+'</div>';
   }
@@ -51,6 +52,8 @@
     document.getElementById('dh-details').hidden=!details.length;document.getElementById('dh-details-table').innerHTML=table(details,true);
     document.getElementById('dh-download').disabled=!rows.length;
   }
+  addEventListener('dutyfree:viewchange',()=>{if(data&&el.getBoundingClientRect().width>0)render();});
+  if(window.ResizeObserver){let lastWidth=0;new ResizeObserver(entries=>{const width=Math.round(entries[0].contentRect.width);if(width<100){lastWidth=0;return;}if(width!==lastWidth){lastWidth=width;if(data)render();}}).observe(el);}
   function download(){
     const rows=filter(data.records,holiday,year),keys=['year','holiday','period','days','sales','shoppers','spend','daily_sales','daily_shoppers','daily_yoy','status','quality','sheet'];
     const headers=['年份','假期','统计期间','统计天数','销售额（亿元）','购物人次（万人次）','每购物人次金额（元）','日均销售额（亿元）','日均购物人次（万人次）','日均销售额同比（%）','状态','数值类型','来源工作表','原始文件或网页','来源单元格','口径说明','购物件数（万件）','原文销售额同比（%）','原文购物人次同比（%）','原文购物件数同比（%）','同比计算口径','来源发布日期','来源核验日期','补充来源与字段'];
