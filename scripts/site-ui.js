@@ -2,8 +2,9 @@
   'use strict';
   const navigation=[['industry','industry.html','行业数据','chart'],['macro','consumption-macro.html','宏观数据','globe'],['companies','company-database.html','重点公司','building'],['earnings','earnings.html','财报日历','calendar'],['research','research.html','观点纪要','document'],['quotes','quotes.html','实时行情','trend']];
   const pages={
+    'cpi-monthly-product.html':['tools','CPI月度产品'],
     'daily.html':['daily','国金商社日报'],
-    'data-notes.html':['tools','数据说明'],
+    'data-notes.html':['tools','数据来源与说明'],
     'industry.html':['industry','行业数据'],'dining.html':['industry','餐饮'],'hotel-dashboard.html':['industry','酒店'],'hotel-holiday-dashboard.html':['industry','酒店假期数据'],'dutyfree-dashboard.html':['industry','免税'],'gold-jewelry.html':['industry','黄金'],
     'consumption-macro.html':['macro','消费专题'],'macro.html':['macro','核心指标'],'company-database.html':['companies','重点公司数据库'],'companies.html':['quotes','覆盖池'],'earnings.html':['earnings','财报日历'],'research.html':['research','观点纪要'],'search.html':['research','站内搜索'],'quotes.html':['quotes','实时行情'],'dashboard.html':['tools','数据浏览器'],'hotel-weekly-product.html':['tools','酒店周度产品']};
   const legacy={'watch-assistant':'hotel-weekly-product.html','coverage-live':'quotes.html','sec-hotel':'industry.html#hotel','sec-taxfree':'industry.html#dutyfree','sec-gold':'industry.html#gold','sec-overseas':'industry.html#hotel','sec-dining':'industry.html#dining','sec-f':'quotes.html','consumer-focus':'quotes.html','sec-u':'quotes.html','sec-m':'research.html','sec-r':'research.html','sec-mkt':'research.html'};

@@ -2,6 +2,7 @@
   'use strict';
   const D=SiteData,esc=D.esc,$=id=>document.getElementById(id),cache=new Map();let request=0;
   const modules={
+    monthly:{name:'CPI月度产品',files:['data/products/consumption-monthly.json'],docs:['docs/consumption-monthly-product.md']},
     daily:{name:'商社日报',files:['data/daily/latest.json'],docs:['docs/daily-report.md']},
     hotel:{name:'酒店',files:['data/hotel-update-record.json','data/hotel-city-history-coverage.json','data/hotel-holiday-import-record.json'],docs:['docs/hotel-data-update.md','docs/hotel-holiday-dashboard.md']},
     dutyfree:{name:'免税',files:['data/dutyfree/holidays.json','data/dutyfree/monthly-provenance.json','data/dutyfree/sources.json'],docs:['docs/dutyfree-holidays.md']},
@@ -17,6 +18,7 @@
   function sources(values){const rows=values.flatMap(x=>Array.isArray(x.sources)?x.sources:Object.values(x.sources||{}));return rows.length?'<article class="notes-panel"><h2>来源记录</h2><details><summary>'+rows.length+'条来源</summary>'+rows.map(s=>'<div class="notes-source-item">'+(D.link(s.url)?'<a target="_blank" rel="noopener" href="'+esc(D.link(s.url))+'">'+esc(s.name||s.title||s.sourceName||s.label||s.file||s.id||'来源')+' ↗</a>':esc(s.name||s.title||s.sourceName||s.label||s.file||s.id||'来源'))+'<p>'+esc([s.publisher||s.provider,s.quality,s.publishedAt?'发布 '+s.publishedAt:'',s.checkedAt?'核对 '+s.checkedAt:'',s.locator,s.note||s.notes||s.verification].filter(Boolean).join(' · '))+'</p></div>').join('')+'</details></article>':'';}
   function notes(id,values){
     const a=values[0]||{},out=[];
+    if(id==='monthly')out.push(...(a.notes||[]));
     if(id==='dutyfree')out.push(...(a.coverageNotes||[]),...(a.notes||[]),values[1]?.note||'');
     if(id==='hotel')out.push('同比默认匹配来源年/周；假期错期需单独映射与标注。','节假日经营对标按假期日序匹配两期日期，入住率差为百分点，ADR及RevPAR为相对变化。',...Object.entries(a.historicalCoverage||{}).flatMap(([file,regions])=>Object.entries(regions).map(([region,c])=>region+'：'+c.firstPeriod+' — '+c.lastPeriod+' · '+c.periodCount+'期')),'异常源记录：'+(a.sourceAnomalyCount??'未记录')+'条');
     if(id==='gold')out.push(...(a.limitations||[]),'国内金价后台按5分钟计划采集；国际行情在黄金页面打开时每15秒读取。实际更新以来源报价时间为准，网络失败保留上次报价。');
@@ -36,7 +38,7 @@
   async function render(){const id=modules[location.hash.slice(1)]?location.hash.slice(1):'dutyfree',config=modules[id],token=++request;$('notes-tabs').innerHTML=Object.entries(modules).map(([key,m])=>'<a href="#'+key+'"'+(key===id?' aria-current="page"':'')+'>'+esc(m.name)+'</a>').join('');$('notes-status').textContent='正在读取'+config.name+'说明…';$('notes-content').innerHTML='';
     const values=await Promise.all(config.files.map(async path=>{try{if(!cache.has(path))cache.set(path,await D.json(path));return cache.get(path);}catch(e){return {loadError:path};}}));if(token!==request)return;
     const failed=values.filter(v=>v.loadError),stamp=values.map(v=>v.checkedAt||v.updatedAt||v.importedAt||v.verifiedAt).filter(Boolean).sort().at(-1);$('notes-status').textContent=failed.length?'部分来源文件暂时未能读取：'+failed.map(v=>v.loadError).join('、'):'';
-    $('notes-content').innerHTML=(stamp?'<p class="notes-stamp">记录更新 '+esc(stamp)+'</p>':'')+list(config.name+' · 覆盖与口径',notes(id,values))+sources(values)+'<article class="notes-panel"><h2>完整记录</h2><div class="notes-links">'+config.files.map(p=>'<a href="'+esc(p)+'" target="_blank" rel="noopener">'+esc(p.split('/').pop())+'</a>').join('')+config.docs.map(p=>'<a href="'+esc(p)+'" target="_blank" rel="noopener">'+esc(p.split('/').pop())+'</a>').join('')+'</div></article>';
+    $('notes-content').innerHTML=(stamp?'<p class="notes-stamp">记录更新 '+esc(stamp)+'</p>':'')+list(config.name+' · 数据来源与说明',notes(id,values))+sources(values)+'<article class="notes-panel"><h2>完整记录</h2><div class="notes-links">'+config.files.map(p=>'<a href="'+esc(p)+'" target="_blank" rel="noopener">'+esc(p.split('/').pop())+'</a>').join('')+config.docs.map(p=>'<a href="'+esc(p)+'" target="_blank" rel="noopener">'+esc(p.split('/').pop())+'</a>').join('')+'</div></article>';
   }
   addEventListener('hashchange',render);render();
 })();

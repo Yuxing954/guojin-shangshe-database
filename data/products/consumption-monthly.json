@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "title": "CPI月度产品",
+  "files": [
+    "data/consumption-macro/observations.json",
+    "data/macro/automatic-series.json",
+    "data/products/consumption-monthly-insights.json"
+  ],
+  "notes": [
+    "独立CPI产品，仅展示CPI、核心CPI及价格分项。",
+    "默认展示最新已收录月份；数据月份、官方发布日期与入库核对时间分别保留。",
+    "CPI数值为同比涨跌幅，环比来自mom字段；核心CPI扣除食品与能源。",
+    "当期行加粗，上涨红色、下降绿色、持平中性色。",
+    "重点分项仅按官方披露收录，缺期留空；未整理历史月份仅显示数据描述。",
+    "当月点评按官方原文核验，未证实原因不写成事实。",
+    "导出3600像素宽PNG，声明沿用酒店周度产品原文。"
+  ]
+}
