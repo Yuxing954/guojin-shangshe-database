@@ -1,9 +1,7 @@
-# 社零与CPI月度产品
+# CPI月度产品
 
-入口：consumption-monthly-product.html。沿用酒店周度产品的蓝白研究长图、点评、截图模式及3600像素宽PNG导出。数据共享 consumption-macro/observations.json 和 macro/automatic-series.json，使用 ConsumptionMacro.mergeAutomatic 合并，不另建数据快照或录入流程。
+入口为 cpi-monthly-product.html，旧社零与CPI月报地址跳转到新产品。独立展示CPI与核心CPI，同比、环比、重点分项和研究点评；不展示社零。
 
-默认取两项都有数据的最新月；选单边月份时保留另一项空值。社零月度/1—2月合并、累计分列。网上商品仅累计；分品类为限额以上单位。CPI的value即同比涨跌幅，mom即环比；核心CPI扣除食品能源。趋势缺期断线，不插值。数据更新沿用 docs/macro-update-guide.md。
+复用消费专题原始数据与补充历史，不另建总量数据副本。分别显示数据月份、官方发布日期与入库核对时间。CPI数值为同比涨跌幅，环比来自mom字段，零值保留，缺期不插值。当期表格加粗并按上涨红色、下降绿色、持平中性色强调。
 
-页面点评不永久保存；原始披露读取失败保留当前已展示数据。自动补充历史失败时使用原始披露并显示错误状态。来源链接按实际使用记录生成，发布日期单独展示。
-
-测试：node --test tests/consumption-monthly.test.cjs；node tests/consumption-monthly.browser.cjs。浏览器测试核验月份、点评、真实PNG尺寸、失败恢复、手机与截图模式。
+每月核验后的短点评和重点分项保存在 data/products/consumption-monthly-insights.json；正文写判断、关键数据及可验证的驱动。与既有每日宏观刷新共用一次检查，仅有新披露或修订时更新当月点评，研究文字提交待复核PR，避免每次访问重新生成。未整理历史月份使用纯数据描述，不冒称研究点评。PNG为3600像素宽，复用酒店周报标识、背景与原文声明。

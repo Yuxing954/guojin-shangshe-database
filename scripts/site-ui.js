@@ -2,7 +2,7 @@
   'use strict';
   const navigation=[['industry','industry.html','行业数据','chart'],['macro','consumption-macro.html','宏观数据','globe'],['companies','company-database.html','重点公司','building'],['earnings','earnings.html','财报日历','calendar'],['research','research.html','观点纪要','document'],['quotes','quotes.html','实时行情','trend']];
   const pages={
-    'consumption-monthly-product.html':['tools','社零与CPI月度产品'],
+    'cpi-monthly-product.html':['tools','CPI月度产品'],
     'daily.html':['daily','国金商社日报'],
     'data-notes.html':['tools','数据来源与说明'],
     'industry.html':['industry','行业数据'],'dining.html':['industry','餐饮'],'hotel-dashboard.html':['industry','酒店'],'hotel-holiday-dashboard.html':['industry','酒店假期数据'],'dutyfree-dashboard.html':['industry','免税'],'gold-jewelry.html':['industry','黄金'],
