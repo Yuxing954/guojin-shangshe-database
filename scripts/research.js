@@ -121,7 +121,7 @@
       const preview=L.preview(data);
       $('article-note').hidden=!preview.text;
       $('article-note').textContent=preview.truncated?'原文前500字':'原文预览';
-      $('article-body').textContent=preview.text+(preview.truncated?'…':'')||'暂无文字预览，可打开原件查看完整纪要。';
+      $('article-body').textContent=M.plainContent(preview.text+(preview.truncated?'…':''))||'暂无文字预览，可打开原件查看完整纪要。';
     }catch(e){if(request===articleRequest)$('article-body').textContent='预览暂时无法读取，可下载完整纪要。';}
   }
   async function openRecord(r){
