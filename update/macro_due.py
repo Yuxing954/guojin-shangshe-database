@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import argparse
 import json
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta
 from pathlib import Path
 
 _HERE = Path(__file__).resolve().parent
@@ -26,7 +26,7 @@ POLICY = {
         "census_housing": {"months": list(range(1, 13)), "days": [1, 31], "exactDays2026": [None, None, None, None, None, None, None, None, None, 21, 19, 18], "exactDays2027": [21, 19, 18, 21, 19, 18, 21, 18, 22, 20, 18, 17]},
         "us_retail": {"exactDates": ["2026-10-16", "2026-11-18", "2026-12-17"]},
         "us_pce": {"exactDates": ["2026-10-30", "2026-11-26", "2026-12-24", "2027-01-29", "2027-02-26", "2027-03-31", "2027-04-30", "2027-05-28", "2027-06-26", "2027-07-30", "2027-08-26", "2027-10-01", "2027-10-29", "2027-11-25", "2027-12-23"]},
-        "us_industrial": {"days": [14, 20]},
+        "us_industrial": {"exactDates": ["2026-01-17", "2026-02-19", "2026-03-17", "2026-04-17", "2026-05-16", "2026-06-16", "2026-07-18", "2026-08-19", "2026-09-19", "2026-10-17", "2026-11-18", "2026-12-17", "2027-01-16", "2027-02-18", "2027-03-16", "2027-04-16", "2027-05-18", "2027-06-17", "2027-07-17", "2027-08-18", "2027-09-17", "2027-10-19", "2027-11-18", "2027-12-17"]},
         "us_monthly_early": {"days": [1, 7]},
         "us_trade": {"exactDates": ["2026-11-05", "2026-12-09", "2027-01-08", "2027-02-05", "2027-03-10", "2027-04-07", "2027-05-06", "2027-06-10", "2027-07-08", "2027-08-06", "2027-09-09", "2027-10-07", "2027-11-05", "2027-12-08"]},
         "us_gdp": {"exactDates": ["2026-10-30", "2026-11-26", "2026-12-24", "2027-01-29", "2027-02-26", "2027-03-31", "2027-04-30", "2027-05-28", "2027-06-26", "2027-07-30", "2027-08-26", "2027-10-01", "2027-10-29", "2027-11-25", "2027-12-23"]},
@@ -51,6 +51,7 @@ POLICY = {
         "census": "https://www.census.gov/economic-indicators/calendar-listview.html",
         "bea": "https://www.bea.gov/news/schedule",
         "fomc": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+        "industrialProduction": "https://www.federalreserve.gov/releases/G17/default.htm",
         "censusHousing": "https://www.census.gov/construction/soc/schedule.html",
         "blsCpi": "https://www.bls.gov/schedule/news_release/cpi.htm",
         "blsEmployment": "https://www.bls.gov/schedule/news_release/empsit.htm",
@@ -160,6 +161,27 @@ def official_key(day: date, source: str) -> str:
         return today if today in spec["exactDates"] else yesterday
     group = {"bea-real-gdp": "us_gdp", "census-housing": "census_housing"}[source]
     return window_key(day, group)
+
+
+def incremental_start(spec: dict, observations: list[dict], full_history: bool = False) -> str:
+    """Keep stored history, query a revision window, and audit full history annually."""
+    if full_history or not observations:
+        return spec["start"]
+    latest = max(row["period"] for row in observations)
+    frequency = spec["frequency"]
+    if frequency == "monthly":
+        year, month = map(int, latest.split("-"))
+        index = year * 12 + month - 1 - 24
+        year, month0 = divmod(index, 12)
+        candidate = date(year, month0 + 1, 1)
+    elif frequency == "quarterly":
+        year, quarter = latest.split("-Q")
+        index = int(year) * 4 + int(quarter) - 1 - 8
+        year, quarter0 = divmod(index, 4)
+        candidate = date(year, quarter0 * 3 + 1, 1)
+    else:
+        candidate = date.fromisoformat(latest) - timedelta(days=180)
+    return max(spec["start"], candidate.isoformat())
 
 
 def load_ledger(path: Path = LEDGER) -> dict:
