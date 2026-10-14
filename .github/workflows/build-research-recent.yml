@@ -64,14 +64,15 @@ jobs:
       - name: Build connector-readable archive and dedup index
         run: python scripts/build_research_shards.py
 
-      - name: Validate generated recent and complete market-view exports
+      - name: Validate generated complete market-view export
         run: python scripts/test_research_market_views.py --verify-generated
 
       - name: Commit & push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/research/archive data/research/market-views-recent-300.json data/research/market-views-all.json data/research/recent.json data/research/recent-preview.json data/home-snapshot.json data/industry/overview.json data/research/resource-index.json data/sectors/overseas.json data/sectors/dining.json data/sectors/update-status.json
+          git add data/research/archive data/research/market-views-all.json data/research/recent.json data/research/recent-preview.json data/home-snapshot.json data/industry/overview.json data/research/resource-index.json data/sectors/overseas.json data/sectors/dining.json data/sectors/update-status.json
+          git add -u data/research
           if git diff --staged --quiet; then
             echo "no change"
             exit 0

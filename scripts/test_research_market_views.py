@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Contract and generated-output tests for mini-program market-view exports."""
+"""Contract and generated-output tests for the complete mini-program market-view export."""
 import argparse
 import datetime as dt
 import json
@@ -8,7 +8,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from build_research_shards import _publication_utc, market_view_exports
+from build_research_shards import _publication_utc, market_view_export
 
 
 def make_row(kind, number, days_ago):
@@ -27,21 +27,17 @@ def make_row(kind, number, days_ago):
 def test_contract():
     views = [make_row('views', i, i) for i in range(305)]
     all_views = [make_row('all_views', i, -1 if i == 0 else i + 306) for i in range(5)]
-    recent, complete = market_view_exports(
+    complete = market_view_export(
         {'views': views, 'all_views': all_views},
         '2026-10-13T12:00:00+0800',
-        limit=300,
     )
     assert complete['totalRows'] == 310
     assert len(complete['items']) == 310
-    assert recent['totalRows'] == complete['totalRows']
-    assert len(recent['items']) == 300
-    assert recent['items'] == complete['items'][:300]
     assert complete['items'][0]['kind'] == 'all_views'
-    assert {item['kind'] for item in recent['items']} == {'views', 'all_views'}
+    assert {item['kind'] for item in complete['items']} == {'views', 'all_views'}
     assert all(item['record']['内容'] for item in complete['items'])
     assert all(item['topicId'] for item in complete['items'])
-    print('synthetic contract: PASS (300 recent, 310 complete, full-row fields preserved)')
+    print('synthetic contract: PASS (310 complete rows, full-row fields preserved)')
 
 
 def read_json(root, path):
@@ -52,24 +48,17 @@ def verify_generated(root):
     root = Path(root).resolve()
     archive = read_json(root, 'data/research/archive/manifest.json')
     updates = read_json(root, 'data/research/updates/manifest.json')
-    recent = read_json(root, 'data/research/market-views-recent-300.json')
     complete = read_json(root, 'data/research/market-views-all.json')
 
     assert archive.get('coverageTo') == updates.get('coverageTo'), (
         f"archive coverage {archive.get('coverageTo')} != updates coverage {updates.get('coverageTo')}"
     )
     coverage = archive.get('coverageTo')
-    assert recent.get('coverageTo') == coverage
     assert complete.get('coverageTo') == coverage
     full_items = complete.get('items')
-    recent_items = recent.get('items')
-    assert isinstance(full_items, list) and isinstance(recent_items, list)
+    assert isinstance(full_items, list)
     expected_total = sum(archive['databases'][kind]['rows'] for kind in ('views', 'all_views'))
     assert complete.get('totalRows') == expected_total == len(full_items)
-    assert recent.get('totalRows') == expected_total
-    assert recent.get('limit') == 300
-    assert len(recent_items) == min(300, expected_total)
-    assert recent_items == full_items[:300], 'recent export is not an exact prefix of complete export'
 
     previous = None
     for index, item in enumerate(full_items):
@@ -88,9 +77,8 @@ def verify_generated(root):
         previous = moment
 
     print(
-        'generated exports: PASS '
-        f'(coverageTo={coverage}, full={len(full_items)}, recent={len(recent_items)}, '
-        f'archive={expected_total})'
+        'generated complete export: PASS '
+        f'(coverageTo={coverage}, full={len(full_items)}, archive={expected_total})'
     )
 
 

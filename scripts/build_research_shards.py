@@ -46,8 +46,8 @@ def _publication_utc(value):
     return dt.datetime.min.replace(tzinfo=dt.timezone.utc)
 
 
-def market_view_exports(rows_by_kind, coverage_to, limit=300):
-    """Return stable, full-row JSON exports for mini-program clients."""
+def market_view_export(rows_by_kind, coverage_to):
+    """Return a stable, full-row JSON export for mini-program clients."""
     items = []
     for kind in ('views', 'all_views'):
         for row in rows_by_kind.get(kind, []):
@@ -56,11 +56,8 @@ def market_view_exports(rows_by_kind, coverage_to, limit=300):
             items.append({'kind': kind, 'topicId': topic.group(1) if topic else '',
                           'publishedAt': published, 'record': row})
     items.sort(key=lambda item: _publication_utc(item['publishedAt']), reverse=True)
-    common = {'schemaVersion': 1, 'coverageTo': coverage_to,
-              'sort': 'publishedAt_desc', 'totalRows': len(items)}
-    recent = {**common, 'limit': limit, 'items': items[:limit]}
-    complete = {**common, 'items': items}
-    return recent, complete
+    return {'schemaVersion': 1, 'coverageTo': coverage_to,
+            'sort': 'publishedAt_desc', 'totalRows': len(items), 'items': items}
 
 def build(root):
     root = Path(root).resolve()
@@ -117,8 +114,7 @@ def build(root):
         manifest['databases'][kind] = {'rows': len(rows), 'shards': shards}
         if kind in ('views', 'all_views'):
             market_rows[kind] = rows
-    recent_export, complete_export = market_view_exports(market_rows, updates.get('coverageTo'), limit=300)
-    write_export('data/research/market-views-recent-300.json', recent_export)
+    complete_export = market_view_export(market_rows, updates.get('coverageTo'))
     write_export('data/research/market-views-all.json', complete_export)
     for bucket, values in sorted(buckets.items()):
         meta = write(f'data/research/archive/dedup/{bucket}.json', {'keys': sorted(values)})
