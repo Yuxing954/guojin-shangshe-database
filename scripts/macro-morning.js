@@ -26,12 +26,12 @@
   function render(catalog,snapshot,country,onSelect){
     if(currentSnapshot!==snapshot||currentCountry!==country){expanded=false;currentSnapshot=snapshot;currentCountry=country;}
     const feed=D.releases(catalog,snapshot,country),host=document.getElementById('release-rows'),button=document.getElementById('release-more');
-    document.getElementById('release-meta').textContent=feed.items.length+' 项有发布日期'+(feed.unknown?' · '+feed.unknown+' 项未提供':'');
+    document.getElementById('release-meta').textContent=feed.items.length?feed.items.length+' 项有明确发布日期':'';document.getElementById('recent-releases').hidden=feed.items.length===0;
     function releaseTable(){
       host.innerHTML=(expanded?feed.items:feed.items.slice(0,5)).map(({spec,data,reading:r,releaseDate})=>{
         const source=catalog.sources[spec.source],url=r.latest.originalSourceUrl||r.latest.sourceUrl||data.sourceUrl||source?.url;
         return '<tr><td><time datetime="'+releaseDate+'">'+releaseDate+'</time></td><td><button data-morning-metric="'+esc(spec.id)+'">'+esc(spec.name)+'</button><small>'+esc(r.label||spec.adjustment)+'</small></td><td>'+esc(r.latest.period)+'</td><td class="morning-reading">'+number(r.value)+' <small>'+esc(r.unit)+'</small></td><td>'+number(r.previous?.chartValue)+' <small>'+esc(r.unit)+'</small></td><td class="'+(r.delta?.value>0?'macro-up':r.delta?.value<0?'macro-down':'')+'">'+(r.delta?(r.delta.value>0?'+':'')+number(r.delta.value)+' '+esc(r.delta.unit):'—')+'</td><td><a href="'+esc(M.safeUrl(url))+'" target="_blank" rel="noopener">来源 ↗</a></td></tr>';
-      }).join('')||'<tr><td colspan="7">暂无已提供发布日期的数据</td></tr>';
+      }).join('');
       button.hidden=feed.items.length<=5;button.textContent=expanded?'收起':'全部发布';button.setAttribute('aria-expanded',String(expanded));
     }
     releaseTable();button.onclick=()=>{expanded=!expanded;releaseTable();};host.onclick=e=>{const b=e.target.closest('[data-morning-metric]');if(b)onSelect(b.dataset.morningMetric);};
