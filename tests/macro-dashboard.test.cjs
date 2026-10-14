@@ -10,7 +10,7 @@ const catalog=structuredClone(require('../data/macro/catalog.json')),snapshot=st
 M.mergeAutomatic(catalog,snapshot,require('../data/macro/automatic-series.json'));
 test('featured KPIs and directory use the reviewed catalog; attention filter preserves real gaps',()=>{
   for(const country of ['CN','US'])for(const id of D.featured[country])assert.ok(D.core(catalog,country,snapshot).some(s=>s.id===id));
-  assert.equal(D.directory(catalog,snapshot,{country:'CN',frequency:'quarterly'}).length,2);
+  assert.equal(D.directory(catalog,snapshot,{country:'CN',frequency:'quarterly'}).length,1);
   assert.ok(D.directory(catalog,snapshot,{country:'US',health:'attention'}).some(s=>s.id==='us-cpi'));
   assert.equal(D.directory(catalog,snapshot,{country:'CN',q:'不存在'}).length,0);
 });

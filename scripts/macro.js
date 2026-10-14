@@ -13,6 +13,7 @@
     years:[0,1,3,5,10].includes(+params.get('years'))&&params.has('years')?+params.get('years'):5,
     view:['predictions','fedwatch'].includes(params.get('view'))?params.get('view'):'indicators',frequency:['monthly','quarterly','daily'].includes(params.get('frequency'))?params.get('frequency'):'',health:['attention','pending'].includes(params.get('health'))?params.get('health'):'',comparison:params.get('comparison')||''};
   function save(){const p=new URLSearchParams();p.set('study',state.study);for(const key of ['predictionTopic','predictionQuery','predictionSort','meeting']){const value=new URLSearchParams(location.search).get(key);if(value)p.set(key,value);}for(const key of ['country','group','q','id','mode','years','view','frequency','health','comparison'])if(state[key]!==''&&state[key]!==null)p.set(key==='id'?'indicator':key,state[key]);history.replaceState(null,'',location.pathname+'?'+p);}
+  function renderGroupFilters(){if(!catalog)return;const available=M.groups.filter(g=>Array.isArray(g[state.country])&&g[state.country].length);if(!available.some(g=>g.id===state.group))state.group='';$('groups').innerHTML=[{id:'',label:'全部'},...available].map(g=>'<button data-group="'+g.id+'" aria-pressed="'+(state.group===g.id)+'">'+esc(g.label)+'</button>').join('');}
   function download(text,filename){const url=URL.createObjectURL(new Blob([text],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
   function showView(){document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===state.view)));$('countries').hidden=state.view!=='indicators';$('indicators').hidden=state.view!=='indicators'||!catalog;$('predictions').hidden=state.view!=='predictions';$('fedwatch').hidden=state.view!=='fedwatch';if(state.view!=='indicators'){$('load-state').textContent='';$('skeleton').hidden=true;$('data-warning').hidden=true;}save();if(state.view==='fedwatch')ForecastDesk.loadFedwatch();if(state.view==='predictions'){renderPredictions();loadPredictions();}}
   function graph(spec,data,mode=state.mode){
@@ -150,14 +151,13 @@
       if(warnings.length){$('data-warning').textContent=warnings.join('；')+'。当前展示可用快照，部分指标及历史可能不完整。';$('data-warning').hidden=false;$('retry').hidden=false;}
       const legacy=catalog.series.find(s=>s.country===state.country&&s.category===params.get('category')&&M.groupOf(s.id));
       if(!state.group&&legacy)state.group=M.groupOf(legacy.id).id;
-      if(!M.groups.some(g=>g.id===state.group))state.group='';
-      $('groups').innerHTML=[{id:'',label:'全部'},...M.groups].map(g=>'<button data-group="'+g.id+'" aria-pressed="'+(state.group===g.id)+'">'+esc(g.label)+'</button>').join('');
+      renderGroupFilters();
       $('load-state').textContent='';render();
     }else{$('load-state').textContent='宏观数据读取失败；请检查网络后重试。';$('retry').hidden=false;}
     showView();
   }
   document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>{state.view=b.dataset.view;showView();if(state.view==='indicators'&&!catalog)load();});
-  document.querySelectorAll('[data-country]').forEach(b=>b.onclick=()=>{state.country=b.dataset.country;state.id='';state.comparison='';page=0;render();});
+  document.querySelectorAll('[data-country]').forEach(b=>b.onclick=()=>{state.country=b.dataset.country;state.id='';state.comparison='';page=0;renderGroupFilters();render();});
   $('search').oninput=e=>{state.q=e.target.value;clearTimeout(searchTimer);searchTimer=setTimeout(()=>{page=0;render();},180);};
   $('frequency').onchange=e=>{state.frequency=e.target.value;page=0;render();};$('health').onchange=e=>{state.health=e.target.value;page=0;render();};
   $('reset-filters').onclick=()=>{clearTimeout(searchTimer);state.q='';state.group='';state.frequency='';state.health='';page=0;render();};

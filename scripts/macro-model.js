@@ -67,11 +67,11 @@
   }
   function safeUrl(value){try{const u=new URL(value);return ['http:','https:'].includes(u.protocol)?u.href:'#';}catch{return '#';}}
   const groups=[
-    {id:'growth',label:'增长消费',CN:['gdp-quarter','pmi','retail','industrial-growth','disposable-income'],US:['gdp-quarter','retail','personal-income','industrial-production']},
+    {id:'growth',label:'增长消费',CN:['gdp-quarter','pmi','retail','industrial-growth'],US:['gdp-quarter','retail','industrial-production']},
     {id:'prices',label:'通胀就业',CN:['cpi','ppi','unemployment'],US:['cpi','core-cpi','pce','payroll','unemployment','earnings']},
     {id:'property',label:'地产投资',CN:['property-sales','property-investment','fixed-investment'],US:['housing-starts']},
-    {id:'money',label:'货币利率',CN:['m2','tsf','lpr','usdcny'],US:['fed-rate','treasury10']},
-    {id:'external',label:'外贸收支',CN:['exports-monthly','imports-monthly'],US:['trade-balance']}
+    {id:'money',label:'货币利率',CN:['m2','tsf','lpr'],US:['fed-rate','treasury10']},
+    {id:'external',label:'外贸收支',CN:['exports-monthly','imports-monthly'],US:[]}
   ];
   const references={growth:['gdp-growth'],prices:['cpi-annual']};
   function curated(series,state,snapshot){

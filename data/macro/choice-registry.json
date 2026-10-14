@@ -333,7 +333,7 @@
       "code": "EMG01355356",
       "name": "个人收入",
       "adjustment": "季调折年额；接口金额保留原始舍入精度",
-      "scale": 1e-09
+      "scale": 1e-9
     },
     {
       "id": "consumer-core-cpi",
@@ -462,33 +462,6 @@
       "expectedMissingMonths": [
         1
       ]
-    },
-    {
-      "id": "consumer-category-7",
-      "consumerId": "category_7",
-      "originalName": "中国:限额以上企业(单位)商品零售类值:体育、娱乐用品类(元)",
-      "publisher": "国家统计局",
-      "name": "体育、娱乐用品类",
-      "unit": "亿元",
-      "frequency": "monthly",
-      "start": "2016-01-01",
-      "kind": "level",
-      "basis": "month",
-      "minValue": 0,
-      "adjustment": "全国；名义金额及官方可比口径同比；未季调；限额以上单位，企业范围逐年调整",
-      "scale": 1e-08,
-      "expectedMissingMonths": [
-        1,
-        2
-      ],
-      "codeCandidates": [
-        "EMM02597018",
-        "EMI00135378",
-        "EMI00135374",
-        "EMM02622059",
-        "EMM02623346"
-      ],
-      "codeMapping": "表级代码集合，不按顺序配对"
     },
     {
       "id": "consumer-category-8",
@@ -685,26 +658,6 @@
         2
       ],
       "code": "EMI00135373"
-    },
-    {
-      "id": "consumer-category-6",
-      "consumerId": "category_6",
-      "originalName": "中国:限额以上企业(单位)商品零售类值:日用品类(元)",
-      "publisher": "国家统计局",
-      "name": "日用品类",
-      "unit": "亿元",
-      "frequency": "monthly",
-      "start": "2016-01-01",
-      "kind": "level",
-      "basis": "month",
-      "minValue": 0,
-      "adjustment": "全国；名义金额及官方可比口径同比；未季调；限额以上单位，企业范围逐年调整",
-      "scale": 1e-08,
-      "expectedMissingMonths": [
-        1,
-        2
-      ],
-      "code": "EMI00135375"
     },
     {
       "id": "consumer-category-9",
@@ -932,32 +885,6 @@
       "codeCandidates": [
         "EMI00135326",
         "EMI00135324"
-      ],
-      "codeMapping": "表级代码集合，不按顺序配对"
-    },
-    {
-      "id": "consumer-sports-ytd",
-      "consumerId": "category_7",
-      "originalName": "中国:限额以上企业(单位)商品零售类值:体育、娱乐用品类:累计值(元)",
-      "publisher": "国家统计局",
-      "unit": "亿元",
-      "kind": "cumulative",
-      "frequency": "monthly",
-      "start": "2016-01-01",
-      "scale": 1e-08,
-      "basis": "ytd",
-      "expectedMissingMonths": [
-        1
-      ],
-      "name": "体育、娱乐用品类",
-      "minValue": 0,
-      "adjustment": "全国限额以上企业(单位)体育娱乐用品类零售额；名义累计，未季调，样本范围逐年调整；不计算同比",
-      "codeCandidates": [
-        "EMM02597018",
-        "EMI00135378",
-        "EMI00135374",
-        "EMM02622059",
-        "EMM02623346"
       ],
       "codeMapping": "表级代码集合，不按顺序配对"
     }

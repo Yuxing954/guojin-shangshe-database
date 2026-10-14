@@ -11,6 +11,7 @@ test('expanded consumption history preserves units, combined months, annual orig
   const annual=M.records(d,'income_urban',{frequency:'annual',basis:'year'});assert.equal(annual[0].period,'2016');assert.match(annual[0].note,/年末累计/);assert.equal(annual.find(r=>r.period==='2025').value,56502);
   assert.equal(M.latest(d,'service_retail','annual').period,'2025');assert.equal(M.records(d,'cpi',{frequency:'annual'}).some(r=>r.period==='2016'),false);
   const breakdown=M.retailBreakdown(d,{basis:'year',period:'2017'});assert.equal(breakdown.reference.frequency,'annual');assert.ok(breakdown.items.filter(x=>x.row).length>=15);
+  const featured=M.retailBreakdown(d,{basis:'year',period:'2017',includeAllCategories:false});assert.deepEqual(featured.items.map(x=>x.indicator.id),['category_14','category_5','category_4','category_3','category_8','category_12']);assert.equal(M.retailBreakdown(d,{includeAllCategories:false}).items.length,6);
   const holiday=M.latest(d,'holiday_2026_national_trips');assert.equal(holiday.value,8.26);assert.equal(holiday.yoy,null);assert.match(holiday.note,/日均同比/);
 });
 test('quarter and annual gaps break lines and a separately disclosed year is not a missing Q4',()=>{
@@ -28,6 +29,12 @@ test('failure of one field is retained when another field refresh succeeds and C
   const feed=structuredClone(require('../data/macro/automatic-series.json'));feed.series['consumer-retail'].status='error';
   const d=M.mergeAutomatic(data,feed);assert.equal(d.indicators.find(i=>i.id==='retail').updateStatus,'error');
   const r=M.records(d,'retail',{frequency:'monthly',basis:'month'}).find(r=>r.period==='2016-03');assert.ok(r.fieldSources.value&&r.fieldSources.yoy);assert.notEqual(r.fieldSources.value,r.fieldSources.yoy);assert.match(M.csv(d,[r]),/数值来源/);
+});
+test('low-priority category source retries are retired while all historical rows remain available',()=>{
+  const ids=['consumer-category-6','consumer-category-7','consumer-sports-ytd'],feed=require('../data/macro/automatic-series.json'),registry=require('../data/macro/choice-registry.json');
+  for(const id of ids){assert.ok(!registry.series.some(s=>s.id===id));assert.equal(feed.series[id].autoRefreshDisabled,true);assert.ok(feed.series[id].observations.length);}
+  const merged=M.mergeAutomatic(data,feed);
+  for(const id of ids){const categoryId=id.endsWith('-6')?'category_6':'category_7',indicator=merged.indicators.find(i=>i.id===categoryId);assert.equal(indicator.updateStatus,'disabled');assert.equal(indicator.automaticSeries[0].status,'disabled');assert.ok(M.records(merged,categoryId).length);}
 });
 test('shared automatic history fills real gaps, preserves exact amounts and dates, attributes supplementary fields',()=>{
   const auto=require('../data/macro/automatic-series.json'),merged=M.mergeAutomatic(data,auto);

@@ -78,8 +78,9 @@
         data.observations.push(record);keys.set(key,record);
       }
       if(series.observations.length)indicator.status='connected';
-      indicator.automaticSeries=[...(indicator.automaticSeries||[]),{id,measure:series.consumerMeasure||'value',status:series.status,coverage:series.coverage,checkedAt:series.checkedAt,error:series.error||''}];
-      indicator.automaticCoverage=series.coverage;indicator.updateStatus=indicator.automaticSeries.some(s=>s.status==='error')?'error':series.status;indicator.checkedAt=series.checkedAt;
+      const refreshDisabled=series.autoRefreshDisabled===true;
+      indicator.automaticSeries=[...(indicator.automaticSeries||[]),{id,measure:series.consumerMeasure||'value',status:refreshDisabled?'disabled':series.status,coverage:series.coverage,checkedAt:series.checkedAt,error:refreshDisabled?(series.autoRefreshDisabledReason||'自动补充已停，历史保留。'):(series.error||''),autoRefreshDisabled:refreshDisabled}];
+      indicator.automaticCoverage=series.coverage;indicator.updateStatus=indicator.automaticSeries.every(s=>s.autoRefreshDisabled)?'disabled':indicator.automaticSeries.some(s=>s.status==='error')?'error':series.status;indicator.checkedAt=series.checkedAt;
     }
     data.automaticCheckedAt=feed.checkedAt;return data;
   }
@@ -102,9 +103,11 @@
     const body=rows.map(r=>{const i=indicators.get(r.indicatorId),s=sources.get(r.sourceId);return [i.name,i.group,frequencies[r.frequency],r.period,r.endDate,bases[r.basis]+'；'+i.definition,i.valueLabel,r.value,i.unit,r.yoy,r.mom,r.realYoy,r.note,r.quality==='estimate'?'预计':'官方披露',s.publishedAt||r.releaseDate,s.publisher,s.title,s.url,sources.get(r.supplementSourceId)?.url,finite(r.value)?sources.get(r.fieldSources?.value||r.sourceId)?.url:'',finite(r.yoy)?sources.get(r.fieldSources?.yoy||r.sourceId)?.url:''];});
     return '\ufeff'+[headers,...body].map(row=>row.map(csvCell).join(',')).join('\r\n');
   }
-  function retailBreakdown(data,{basis='month',period='',group='categories'}={}){
+  const priorityRetailCategories=['category_14','category_5','category_4','category_3','category_8','category_12'];
+  function retailBreakdown(data,{basis='month',period='',group='categories',includeAllCategories=true}={}){
     const reference=records(data,'retail',{frequency:basis==='year'?'annual':'monthly',basis}).filter(r=>!period||r.period===period).at(-1);
-    const ids=group==='categories'?data.indicators.filter(i=>i.group==='社零分品类').map(i=>i.id):group==='structure'?['retail','goods','catering','above_total','above_goods','above_catering']:['retail_urban','retail_rural','retail_ex_auto','online_goods','online_total','online_services'];
+    let ids=group==='categories'?data.indicators.filter(i=>i.group==='社零分品类').map(i=>i.id):group==='structure'?['retail','goods','catering','above_total','above_goods','above_catering']:['retail_urban','retail_rural','retail_ex_auto','online_goods','online_total','online_services'];
+    if(group==='categories'&&!includeAllCategories)ids=priorityRetailCategories.filter(id=>ids.includes(id));
     return {reference,items:ids.map(id=>({indicator:data.indicators.find(i=>i.id===id),row:reference?data.observations.find(r=>r.indicatorId===id&&r.frequency===reference.frequency&&r.basis===reference.basis&&r.period===reference.period)||null:null})).filter(x=>x.indicator)};
   }
   function comparisonPeriods(data,ids,scope){
