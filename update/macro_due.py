@@ -172,6 +172,37 @@ def official_key(day: date, source: str) -> str:
     return window_key(day, group)
 
 
+def expected_period(spec: dict, day: date) -> str:
+    """Latest data period expected to have been published by this Beijing date."""
+    frequency = spec.get("frequency")
+    if frequency == "monthly":
+        index = day.year * 12 + day.month - 2
+        year, month0 = divmod(index, 12)
+        return f"{year}-{month0 + 1:02d}"
+    if frequency == "quarterly":
+        index = day.year * 4 + (day.month - 1) // 3 - 1
+        year, quarter0 = divmod(index, 4)
+        return f"{year}-Q{quarter0 + 1}"
+    if frequency == "daily":
+        return (day - timedelta(days=1)).isoformat()
+    raise ValueError("Unsupported frequency")
+
+
+def has_expected_period(spec: dict, observations: list[dict], day: date) -> bool:
+    target = expected_period(spec, day)
+    return any(str(row.get("period", "")) >= target for row in observations)
+
+
+def semantic_payload(value):
+    """Remove acquisition-only metadata before detecting meaningful changes."""
+    volatile = {"checkedAt", "fetchedAt", "retrievedAt", "receiptSha256"}
+    if isinstance(value, dict):
+        return {key: semantic_payload(item) for key, item in value.items() if key not in volatile}
+    if isinstance(value, list):
+        return [semantic_payload(item) for item in value]
+    return value
+
+
 def incremental_start(spec: dict, observations: list[dict], full_history: bool = False) -> str:
     """Keep stored history, query a revision window, and audit full history annually."""
     if full_history or not observations:
