@@ -18,6 +18,10 @@ class GoldMacroNormalization(unittest.TestCase):
     def test_duplicate_indicator_or_conflicting_data_cannot_be_imported(self):
         r=['美元指数','NYCE','102','102','102']
         with self.assertRaises(ValueError):M.normalize(self.receipt([r,r]),'dxy','2026-10-08')
+    def test_same_name_from_another_publisher_is_ignored(self):
+        rows=[['美元指数','NYCE','102.5','102.123','-'],['美元指数','其他来源','999','999','999']]
+        r=M.normalize(self.receipt(rows),'dxy','2026-10-08')
+        self.assertEqual(r['observations'],[{'date':'2026-10-08','value':102.123}])
     def test_monthly_columns_and_unknown_numeric_units_are_rejected(self):
         with self.assertRaises(ValueError):M.normalize(self.receipt(dates=['2026-10','2026-09','2026-08']),'dxy','2026-10-08')
         with self.assertRaises(ValueError):M.normalize(self.receipt([['美元指数','NYCE','102','2.9万','102']]),'dxy','2026-10-08')
