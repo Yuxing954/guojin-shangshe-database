@@ -2,6 +2,7 @@
   'use strict';
   const D=SiteData,esc=D.esc,$=id=>document.getElementById(id),cache=new Map();let request=0;
   const modules={
+    monthly:{name:'社零与CPI月度产品',files:['data/products/consumption-monthly.json'],docs:['docs/consumption-monthly-product.md']},
     daily:{name:'商社日报',files:['data/daily/latest.json'],docs:['docs/daily-report.md']},
     hotel:{name:'酒店',files:['data/hotel-update-record.json','data/hotel-city-history-coverage.json','data/hotel-holiday-import-record.json'],docs:['docs/hotel-data-update.md','docs/hotel-holiday-dashboard.md']},
     dutyfree:{name:'免税',files:['data/dutyfree/holidays.json','data/dutyfree/monthly-provenance.json','data/dutyfree/sources.json'],docs:['docs/dutyfree-holidays.md']},
@@ -17,6 +18,7 @@
   function sources(values){const rows=values.flatMap(x=>Array.isArray(x.sources)?x.sources:Object.values(x.sources||{}));return rows.length?'<article class="notes-panel"><h2>来源记录</h2><details><summary>'+rows.length+'条来源</summary>'+rows.map(s=>'<div class="notes-source-item">'+(D.link(s.url)?'<a target="_blank" rel="noopener" href="'+esc(D.link(s.url))+'">'+esc(s.name||s.title||s.sourceName||s.label||s.file||s.id||'来源')+' ↗</a>':esc(s.name||s.title||s.sourceName||s.label||s.file||s.id||'来源'))+'<p>'+esc([s.publisher||s.provider,s.quality,s.publishedAt?'发布 '+s.publishedAt:'',s.checkedAt?'核对 '+s.checkedAt:'',s.locator,s.note||s.notes||s.verification].filter(Boolean).join(' · '))+'</p></div>').join('')+'</details></article>':'';}
   function notes(id,values){
     const a=values[0]||{},out=[];
+    if(id==='monthly')out.push(...(a.notes||[]));
     if(id==='dutyfree')out.push(...(a.coverageNotes||[]),...(a.notes||[]),values[1]?.note||'');
     if(id==='hotel')out.push('同比默认匹配来源年/周；假期错期需单独映射与标注。','节假日经营对标按假期日序匹配两期日期，入住率差为百分点，ADR及RevPAR为相对变化。',...Object.entries(a.historicalCoverage||{}).flatMap(([file,regions])=>Object.entries(regions).map(([region,c])=>region+'：'+c.firstPeriod+' — '+c.lastPeriod+' · '+c.periodCount+'期')),'异常源记录：'+(a.sourceAnomalyCount??'未记录')+'条');
     if(id==='gold')out.push(...(a.limitations||[]),'国内金价后台按5分钟计划采集；国际行情在黄金页面打开时每15秒读取。实际更新以来源报价时间为准，网络失败保留上次报价。');
