@@ -1,13 +1,14 @@
 {
-  "syncedAt": "2026-10-14 04:04:14Z",
+  "syncedAt": "2026-10-14 05:58:15Z",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
-  "coverageFrom": "2026-10-13T19:28:11.141+0800",
-  "coverageTo": "2026-10-14T12:56:18.668+0800",
-  "oldestFetched": "2026-10-11T21:49:26.657+0800",
-  "fetchedTopics": 654,
+  "coverageFrom": "2026-10-14T12:56:18.668+0800",
+  "coverageTo": "2026-10-14T13:28:54.124+0800",
+  "oldestFetched": "2026-10-14T12:12:44.729+0800",
+  "fetchedTopics": 684,
   "files": {
     "views": [
+      "data/research/updates/2026-10-14-1358-views.csv",
       "data/research/updates/2026-10-14-1204-views-001.csv",
       "data/research/updates/2026-10-14-1059-views-001.csv",
       "data/research/updates/2026-10-14-0950-views-001.csv",
@@ -39,6 +40,7 @@
       "data/research/updates/2026-10-14-1258-views.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-10-14-1358-all_views.csv",
       "data/research/updates/2026-10-14-1204-all_views-001.csv",
       "data/research/updates/2026-10-14-1059-all_views-001.csv",
       "data/research/updates/2026-10-14-0950-all_views-001.csv",
@@ -135,17 +137,17 @@
   },
   "counts": {
     "views": 240,
-    "all_views": 4897,
+    "all_views": 4901,
     "minutes": 101
   },
   "latest": {
     "views": "2026-10-14T12:56:12.569+0800",
-    "all_views": "2026-10-14T12:56:18.668+0800",
+    "all_views": "2026-10-14T13:17:36.858+0800",
     "minutes": "2026-10-12T01:07:33"
   },
   "excluded": {
-    "附件标题": 37,
-    "图片无可读正文": 13,
+    "附件标题": 43,
+    "图片无可读正文": 14,
     "无实质观点正文": 9
   },
   "lastClassificationCorrection": {
@@ -5426,95 +5428,99 @@
       "82258224584151182",
       "82258224584154152",
       "82258224584152842",
-      "45548552482144528"
+      "45548552482144528",
+      "45548552454424228",
+      "55521554218814444",
+      "14425441258822442",
+      "22258224581441251"
     ]
   },
   "lastRun": {
-    "runId": "2026-10-14-1258",
-    "previousCoverageTo": "2026-10-14T11:35:28.376+0800",
-    "newSourceTopics": 20,
+    "runId": "2026-10-14-1358",
+    "sourceGroup": "88888142214212",
+    "sourceName": "水木调研纪要-2.0",
+    "previousCoverageTo": "2026-10-14T12:56:18.668+0800",
+    "coverageTo": "2026-10-14T13:28:54.124+0800",
+    "newSourceTopics": 11,
     "added": {
-      "views": 3,
-      "all_views": 13
+      "views": 0,
+      "all_views": 4
     },
     "duplicates": 0,
-    "excluded": 4,
-    "record": "data/research/updates/2026-10-14-1258-record.json",
-    "syncedAt": "2026-10-14 04:58:44Z",
-    "coverageTo": "2026-10-14T12:56:18.668+0800",
-    "addedTopicIds": [
-      "22258224581218441",
-      "45548552481518248",
-      "45548552481818858",
-      "45548552481814418",
-      "22258224581841811",
-      "45548552481821858",
-      "14425441258511212",
-      "55521554214885424",
-      "45548552482188148",
-      "82258224584188242",
-      "55521554214812484",
-      "82258224584151182",
-      "82258224584154152",
-      "82258224584152842",
-      "45548552482144528",
-      "55521554214822184"
-    ],
-    "duplicateTopicIds": [],
     "excludedTopics": [
       {
-        "topicId": "45548552481518888",
-        "reason": "仅有锅圈调研资料外链，无可读正文；未读取外链、不推断观点"
+        "topicId": "55521554252522824",
+        "reason": "仅有附件或“文件”占位文本；未读取附件正文，无法核实观点"
       },
       {
-        "topicId": "22258224584151281",
-        "reason": "只有图片及标题“A股市场午评”，正文无可判断观点；不推断图片"
+        "topicId": "14425441242422512",
+        "reason": "仅有附件或“文件”占位文本；未读取附件正文，无法核实观点"
       },
       {
-        "topicId": "55521554214442244",
-        "reason": "只有图片及标题“存储价格更新”，正文无可判断观点；不推断图片"
+        "topicId": "22258224525811811",
+        "reason": "仅有附件或“文件”占位文本；未读取附件正文，无法核实观点"
       },
       {
-        "topicId": "82258224584422222",
-        "reason": "只有图片及标题“存储股遭抛售”，正文无可判断观点；不推断图片"
+        "topicId": "55521554252184544",
+        "reason": "仅有附件或“文件”占位文本；未读取附件正文，无法核实观点"
+      },
+      {
+        "topicId": "45548552454812548",
+        "reason": "仅有附件或“文件”占位文本；未读取附件正文，无法核实观点"
+      },
+      {
+        "topicId": "22258224525824811",
+        "reason": "仅有附件或“文件”占位文本；未读取附件正文，无法核实观点"
+      },
+      {
+        "topicId": "82258224581152522",
+        "reason": "仅图片占位或无可读观点正文；未读取图片内容，不推断观点"
       }
     ],
     "briefChanges": {
-      "added": [
-        "eastbuy-channel-streaming-20261014",
-        "meituan-instant-retail-unit-economics-20261014",
-        "platform-ai-instant-retail-20261014"
-      ],
+      "added": [],
       "updated": [],
       "expiredRemoved": []
     },
-    "sourceGroup": "88888142214212",
-    "sourceName": "水木调研纪要-2.0",
-    "oldestFetched": "2026-10-14T11:31:23.863+0800",
-    "fetchedTopics": 20,
+    "sourceTopicsFetched": 30,
+    "sourceTopicsInCoverage": 11,
+    "addedTopicIds": [
+      "45548552454424228",
+      "55521554218814444",
+      "14425441258822442",
+      "22258224581441251"
+    ],
+    "duplicateTopicIds": [],
     "attachmentMetadata": {
-      "sourceFileOccurrences": 382,
-      "indexedFileOccurrences": 382,
-      "unreadContents": 382,
-      "addedCatalogRecords": 0,
+      "sourceFileOccurrences": 409,
+      "indexedFileOccurrences": 409,
+      "unreadContents": 409,
+      "addedCatalogRecords": 27,
       "windowStart": "2026-10-12",
       "windowEnd": "2026-10-14",
       "metadataOnly": true,
       "windowScan": {
         "windowStart": "2026-10-12",
         "windowEnd": "2026-10-14",
-        "topicsScanned": 660,
-        "topicPages": 22,
+        "topicsScanned": 668,
+        "topicsInWindow": 642,
+        "topicPages": 23,
         "boundaryReached": true,
-        "sourceOccurrencesObserved": 382,
-        "sourceOccurrencesAlreadyIndexed": 382,
-        "missingOccurrences": 0,
+        "sourceOccurrencesObserved": 409,
+        "sourceOccurrencesBeforeScan": 382,
+        "missingOccurrences": 27,
+        "missingOccurrencesAfterUpdate": 0,
+        "addedOccurrences": 27,
         "attachmentContentRead": false
       }
     },
     "files": {
-      "views": "data/research/updates/2026-10-14-1258-views.csv",
-      "all_views": "data/research/updates/2026-10-14-1258-all_views.csv"
-    }
+      "views": "data/research/updates/2026-10-14-1358-views.csv",
+      "all_views": "data/research/updates/2026-10-14-1358-all_views.csv"
+    },
+    "record": "data/research/updates/2026-10-14-1358-record.json",
+    "syncedAt": "2026-10-14 05:58:15Z",
+    "fetchedTopics": 11,
+    "pageRowsFetched": 30
   }
 }
