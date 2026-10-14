@@ -11,6 +11,21 @@ function preferred(data){return months(data)[0]||'';}
 function periods(data,period,count){const candidates=months(data).filter(p=>p<=period);if(!candidates.length)return [];const start=count==='all'?monthIndex(candidates.at(-1)):Math.max(monthIndex(candidates.at(-1)),monthIndex(period)-Number(count)+1);return Array.from({length:monthIndex(period)-start+1},(_,i)=>monthAt(start+i));}
 function display(v,precision=1){return finite(v)?v.toLocaleString('zh-CN',{minimumFractionDigits:precision,maximumFractionDigits:precision}):'—';}
 const rate=v=>finite(v)?(v>0?'+':'')+display(v)+'%':'—';
+
+function mergeReleases(data,insights){
+ const output={...data,sources:data.sources.map(s=>({...s,checkedAt:s.checkedAt||data.checkedAt})),observations:[...data.observations]};
+ for(const [period,release] of Object.entries(insights.months||{})){
+  if(!release.observations?.length)continue;
+  const source=release.source;
+  if(!source||source.quality!=='official'||!/^https:\/\/([a-z0-9-]+\.)*stats\.gov\.cn\//.test(source.url)||!/^\d{4}-\d{2}-\d{2}$/.test(source.publishedAt)||source.publishedAt>insights.checkedAt)throw Error('CPI月度来源无效');
+  for(const row of release.observations){if(!['cpi','core_cpi'].includes(row.indicatorId)||row.period!==period||row.sourceId!==source.id||row.frequency!=='monthly'||!['month','ytd'].includes(row.basis)||!finite(row.value))throw Error('CPI月度记录无效');
+   if(!output.observations.some(r=>r.indicatorId===row.indicatorId&&r.period===period&&r.frequency===row.frequency&&r.basis===row.basis))output.observations.push({...row});
+  }
+  if(!output.sources.some(s=>s.id===source.id))output.sources.push({...source});
+ }
+ output.checkedAt=[data.checkedAt,insights.checkedAt].filter(Boolean).sort().at(-1);return output;
+}
+
 function report(data,period,count='12',insights={}){
  if(!/^\d{4}-(0[1-9]|1[0-2])$/.test(period)||!months(data).includes(period))throw Error('未收录该月份');
  const cpi=row(data,'cpi',period),core=row(data,'core_cpi',period),history=periods(data,period,count),recent=periods(data,period,'6');
@@ -25,5 +40,5 @@ function report(data,period,count='12',insights={}){
  priceCategories:prepared?.categories||[],headline:prepared?.headline||'',
  comments:prepared?.comment||'CPI同比'+rate(cpi?.value)+'，环比'+rate(cpi?.mom)+'；核心CPI同比'+rate(core?.value)+'，环比'+rate(core?.mom)+'。'};
 }
-return {finite,monthLabel,monthIndex,monthAt,row,months,preferred,periods,display,rate,report};
+return {mergeReleases,finite,monthLabel,monthIndex,monthAt,row,months,preferred,periods,display,rate,report};
 });

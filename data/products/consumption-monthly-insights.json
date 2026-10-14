@@ -52,6 +52,65 @@
           "yoy": 5.9,
           "mom": -0.8
         }
+      ],
+      "source": {
+        "id": "cpi-2026-09",
+        "publishedAt": "2026-10-14",
+        "checkedAt": "2026-10-14",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202610/t20261014_1965477.html",
+        "title": "2026年9月份居民消费价格同比上涨0.9%",
+        "publisher": "国家统计局",
+        "quality": "official",
+        "kind": "cpi",
+        "period": "2026-09"
+      },
+      "observations": [
+        {
+          "indicatorId": "cpi",
+          "sourceId": "cpi-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "month",
+          "value": 0.9,
+          "yoy": null,
+          "mom": 0.2,
+          "updatedAt": "2026-10-14"
+        },
+        {
+          "indicatorId": "cpi",
+          "sourceId": "cpi-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "ytd",
+          "value": 0.9,
+          "yoy": null,
+          "updatedAt": "2026-10-14"
+        },
+        {
+          "indicatorId": "core_cpi",
+          "sourceId": "cpi-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "month",
+          "value": 1,
+          "yoy": null,
+          "mom": 0,
+          "updatedAt": "2026-10-14"
+        },
+        {
+          "indicatorId": "core_cpi",
+          "sourceId": "cpi-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "ytd",
+          "value": 1.1,
+          "yoy": null,
+          "updatedAt": "2026-10-14"
+        }
       ]
     }
   }
