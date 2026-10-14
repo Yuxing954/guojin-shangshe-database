@@ -210,7 +210,7 @@
         var current = ix.group.get(g + '|全国|' + r.period_id);
         return { x: r.period_id, y: isChange ? M.change(current, ix.group.get(g + '|全国|' + M.priorPeriod(r)), field) : M.metric(current, field),change:M.change(current,ix.group.get(g+'|全国|'+M.priorPeriod(r)),field) };
       }) };
-    }), { unit: unit, zero: isChange });
+    }), { unit: unit, zero: isChange, forceLine: true });
   }
   function renderSupply() {
     if (!data.supply) return;
@@ -251,8 +251,19 @@
     $('investment-period').textContent = r ? r.period_id.slice(0,4) + '年1—' + Number(r.period_id.slice(5)) + '月 · 累计 · 全国' : '所选数据周之前暂无投资数据';
     var hasAmount = r && M.num(r.amount_cny_100m) != null;
     $('investment-stats').innerHTML = '<div><span>投资完成额累计同比</span><b>' + delta(r ? r.yoy_pct : null, 'investment') + '</b><small>国家统计局 · Choice转引</small></div><div><span>同期累计完成额（亿元）</span><b>' + (hasAmount ? fmt(r.amount_cny_100m, 1) : '暂无数据') + '</b><small>' + (hasAmount ? '国家统计局公报 · 原披露值' : '金额未取得') + '</small></div>';
-    var points = M.investmentWindow(data.investment.observations, cutoff, state.window === 'all' ? 'all' : state.window === '156' ? 36 : 12);
-    lineChart('investment-chart', [{name:'住宿和餐饮业投资 · 累计同比', color:COLORS[1], pts:points.map(function (p) {return {x:p.period_id, y:M.num(p.yoy_pct), date:p.period_id.slice(0,4)+'年1—'+Number(p.period_id.slice(5))+'月'};})}], {unit:'%', zero:true});
+    var weeks = calendar(), start = weeks.length ? weeks[0].start_date : cutoff;
+    var field = $('supply-metric').value;
+    var title = field === 'hotel_count' ? '酒店数量' : field === 'chain_room_count' ? '连锁房量' : '房间数量';
+    var points = M.investmentWindow(data.investment.observations, cutoff, 'all').map(function (p) {
+      var date = new Date(p.period_id + '-01T00:00:00Z');
+      return { x: new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth() + 1, 0)).toISOString().slice(0,10), y:M.num(p.yoy_pct), date:p.period_id.slice(0,4)+'年1—'+Number(p.period_id.slice(5))+'月' };
+    }).filter(function (p) { return p.x >= start && p.x <= cutoff; });
+    var lines = [{name:'住宿和餐饮业投资 · 月度累计同比', color:COLORS[1], gap:65*86400000, pts:points}];
+    if (ix.supply15) lines.unshift({name:title+' · 周度同周同比', color:COLORS[0], gap:15*86400000, pts:weeks.map(function (p) {
+      return {x:p.end_date, date:p.period_id+'（'+p.end_date+'）', y:M.change(ix.supply15.get('全国|'+p.period_id),ix.supply15.get('全国|'+M.priorPeriod(p)),field)};
+    })});
+    $('investment-chart-caption').textContent = title+'同比 / 住宿和餐饮业投资累计同比（%） · 15间及以上 / 不含农户';
+    lineChart('investment-chart', lines, {unit:'%', zero:true, time:true, forceLine:true});
     $('investment-table').innerHTML = '<thead><tr><th>累计期间</th><th>累计同比（%）</th><th>完成额（亿元）</th></tr></thead><tbody>' + rows.slice().reverse().map(function (p) { return '<tr><td>'+p.period_id.slice(0,4)+'年1—'+Number(p.period_id.slice(5))+'月</td><td>'+delta(p.yoy_pct,'investment')+'</td><td>'+(M.num(p.amount_cny_100m)==null?'暂无数据':fmt(p.amount_cny_100m,1))+'</td></tr>';}).join('') + '</tbody>';
   }
   function renderShare() {
@@ -321,7 +332,7 @@
       }; }); active();
     }
     bindSwitch('metric-switch', 'metric'); bindSwitch('mode-switch', 'mode');
-    $('segment-metric').onchange = drawSegments; $('group-metric').onchange = drawGroups; $('supply-metric').onchange = drawSupply;
+    $('segment-metric').onchange = drawSegments; $('group-metric').onchange = drawGroups; $('supply-metric').onchange = function () { drawSupply(); renderInvestment(); };
     $('city-search').oninput = renderCities; $('city-sort').onchange = renderCities;
     $('city-table').onclick = function (event) { var b = event.target.closest('[data-region]'); if (!b) return; state.region = b.dataset.region; switchView('overview'); $('region-select').focus(); };
     switchView(state.view);
@@ -366,7 +377,7 @@
   }
   function lineChart(id, lines, opt) {
     opt = opt || {}; var host = $(id); host.innerHTML = ''; lines = M.chartSeries(lines);
-    if(state.mode==='combo'&&lines.some(s=>s.pts.some(p=>Number.isFinite(p.change)))){const keys=[...new Set(lines.flatMap(s=>s.pts.map(p=>p.x)))].sort();SiteCharts.drawPaired(host,keys.map((key,i)=>({period:key,x:i,values:lines.map(s=>{const p=s.pts.find(p=>p.x===key);return {name:s.name,value:p?.y,change:p?.change,color:s.color};})})),{unit:opt.unit,changeUnit:opt.occupancy?'百分点':'%',changeLabel:labelChange(),name:lines.map(s=>s.name).join('、')});return;}
+    if(!opt.forceLine&&state.mode==='combo'&&lines.some(s=>s.pts.some(p=>Number.isFinite(p.change)))){const keys=[...new Set(lines.flatMap(s=>s.pts.map(p=>p.x)))].sort();SiteCharts.drawPaired(host,keys.map((key,i)=>({period:key,x:i,values:lines.map(s=>{const p=s.pts.find(p=>p.x===key);return {name:s.name,value:p?.y,change:p?.change,color:s.color};})})),{unit:opt.unit,changeUnit:opt.occupancy?'百分点':'%',changeLabel:labelChange(),name:lines.map(s=>s.name).join('、')});return;}
     var xs = Array.from(new Set(lines.flatMap(function (s) { return s.pts.map(function (p) { return p.x; }); }))).sort();
     var values = lines.flatMap(function (s) { return s.pts.map(function (p) { return M.num(p.y); }); }).filter(function (v) { return v != null; });
     if (!values.length) { host.innerHTML = '<div class="hd-empty">所选范围暂无有效数据</div>'; return; }
@@ -374,7 +385,7 @@
     if (opt.zero) { min = Math.min(0, min); max = Math.max(0, max); }
     var scale=SiteCharts.niceScale(values,{zero:opt.zero,min:opt.occupancy?0:undefined,max:opt.occupancy?100:undefined});min=scale.min;max=scale.max;
     var positions = new Map(xs.map(function (x, i) { return [x, i]; }));
-    function px(x) { return L + positions.get(x) / Math.max(1, xs.length - 1) * (W - L - R); }
+    function px(x) { return L + (opt.time ? (Date.parse(x)-Date.parse(xs[0])) / Math.max(1,Date.parse(xs[xs.length-1])-Date.parse(xs[0])) : positions.get(x) / Math.max(1, xs.length - 1)) * (W - L - R); }
     function py(y) { return T + (max - y) / (max - min) * (H - T - B); }
     var svg = svgEl('svg', { viewBox: '0 0 ' + W + ' ' + H, preserveAspectRatio: 'none', role: 'img', 'aria-label': lines.map(function (s) { return s.name; }).join('、') + '走势，单位' + opt.unit, tabindex: '0' });
     host.appendChild(svg);
@@ -386,11 +397,11 @@
     }
     if (min < 0 && max > 0) svg.appendChild(svgEl('line', { x1: L, x2: W - R, y1: py(0), y2: py(0), stroke: '#c3c9d8', 'stroke-dasharray': '4 4' }));
     Array.from(new Set([0, Math.round((xs.length - 1) / 3), Math.round((xs.length - 1) * 2 / 3), xs.length - 1])).forEach(function (i) {
-      svg.appendChild(svgEl('text', { x: px(xs[i]), y: H - 10, 'text-anchor': 'middle', 'font-size': 11, fill: '#8a94a5' }, xs[i]));
+      svg.appendChild(svgEl('text', { x: px(xs[i]), y: H - 10, 'text-anchor': opt.time && i === 0 ? 'start' : opt.time && i === xs.length - 1 ? 'end' : 'middle', 'font-size': 11, fill: '#8a94a5' }, xs[i]));
     });
     lines.forEach(function (s) {
-      var path = '', started = false;
-      s.pts.forEach(function (p) { if (M.num(p.y) == null) { started = false; return; } path += (started ? 'L' : 'M') + px(p.x).toFixed(1) + ' ' + py(p.y).toFixed(1); started = true; });
+      var path = '', started = false, previous = null;
+      s.pts.forEach(function (p) { if (M.num(p.y) == null) { started = false; previous = null; return; } if(opt.time && previous && Date.parse(p.x)-Date.parse(previous)>s.gap) started=false; path += (started ? 'L' : 'M') + px(p.x).toFixed(1) + ' ' + py(p.y).toFixed(1); started = true; previous=p.x; });
       var attrs = { d: path, fill: 'none', stroke: s.color, 'stroke-width': 2.5, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' };
       if (s.dash) attrs['stroke-dasharray'] = '5 5'; svg.appendChild(svgEl('path', attrs));
       s.pts.forEach(function(p,i){if(M.num(p.y)!=null&&(i%Math.max(1,Math.ceil(s.pts.length/60))===0||i===s.pts.length-1))svg.appendChild(svgEl('circle',{cx:px(p.x),cy:py(p.y),r:3.2,fill:'white',stroke:s.color,'stroke-width':1.8}));});
