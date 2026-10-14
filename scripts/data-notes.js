@@ -2,6 +2,7 @@
   'use strict';
   const D=SiteData,esc=D.esc,$=id=>document.getElementById(id),cache=new Map();let request=0;
   const modules={
+    calendar:{name:'重要数据日历',files:['data/important-calendar.json'],docs:['docs/important-calendar.md']},
     monthly:{name:'CPI月度产品',files:['data/products/consumption-monthly.json'],docs:['docs/consumption-monthly-product.md']},
     daily:{name:'商社日报',files:['data/daily/latest.json'],docs:['docs/daily-report.md']},
     hotel:{name:'酒店',files:['data/hotel-update-record.json','data/hotel-city-history-coverage.json','data/hotel-holiday-import-record.json'],docs:['docs/hotel-data-update.md','docs/hotel-holiday-dashboard.md']},
@@ -42,5 +43,6 @@
   }
   addEventListener('hashchange',render);render();
 })();
+
 
 

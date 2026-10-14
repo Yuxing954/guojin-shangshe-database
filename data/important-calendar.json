@@ -1,0 +1,202 @@
+{
+  "version": 1,
+  "checkedAt": "2026-10-14",
+  "coverageStart": "2026-10-01",
+  "coverageEnd": "2026-12-31",
+  "timezone": "Asia/Shanghai",
+  "series": [
+    {
+      "id": "cn-cpi",
+      "name": "中国 CPI",
+      "region": "中国",
+      "focus": "总CPI、核心CPI及食品和服务价格",
+      "href": "cpi-monthly-product.html",
+      "source": "国家统计局",
+      "sourceUrl": "https://www.stats.gov.cn/xw/tjxw/tzgg/202512/t20251224_1962137.html"
+    },
+    {
+      "id": "cn-retail",
+      "name": "中国社零",
+      "region": "中国",
+      "focus": "社零同比、餐饮收入及重点零售品类",
+      "href": "consumption-macro.html?indicator=retail",
+      "source": "国家统计局",
+      "sourceUrl": "https://www.stats.gov.cn/xw/tjxw/tzgg/202512/t20251224_1962137.html"
+    },
+    {
+      "id": "us-cpi",
+      "name": "美国 CPI",
+      "region": "海外",
+      "focus": "总CPI和核心CPI环比变化",
+      "href": "macro.html",
+      "source": "美国劳工统计局",
+      "sourceUrl": "https://www.bls.gov/schedule/2026/home.htm"
+    },
+    {
+      "id": "us-jobs",
+      "name": "美国非农",
+      "region": "海外",
+      "focus": "新增非农就业、失业率及工资增速",
+      "href": "macro.html",
+      "source": "美国劳工统计局",
+      "sourceUrl": "https://www.bls.gov/schedule/2026/home.htm"
+    },
+    {
+      "id": "fomc",
+      "name": "美联储议息",
+      "region": "海外",
+      "focus": "利率决议及政策指引",
+      "href": "macro.html?view=fedwatch",
+      "source": "美联储",
+      "sourceUrl": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    }
+  ],
+  "events": [
+    {
+      "id": "us-jobs-2026-10-02",
+      "series": "us-jobs",
+      "date": "2026-10-02",
+      "time": "08:30",
+      "timezone": "America/New_York",
+      "scheduledAt": "2026-10-02T08:30:00-04:00",
+      "period": "2026年9月",
+      "status": "scheduled"
+    },
+    {
+      "id": "us-cpi-2026-10-14",
+      "series": "us-cpi",
+      "date": "2026-10-14",
+      "time": "08:30",
+      "timezone": "America/New_York",
+      "scheduledAt": "2026-10-14T08:30:00-04:00",
+      "period": "2026年9月",
+      "status": "scheduled"
+    },
+    {
+      "id": "cn-cpi-2026-10-14",
+      "series": "cn-cpi",
+      "date": "2026-10-14",
+      "time": "09:30",
+      "timezone": "Asia/Shanghai",
+      "scheduledAt": "2026-10-14T09:30:00+08:00",
+      "period": "2026年9月",
+      "status": "scheduled"
+    },
+    {
+      "id": "cn-retail-2026-10-19",
+      "series": "cn-retail",
+      "date": "2026-10-19",
+      "time": "10:00",
+      "timezone": "Asia/Shanghai",
+      "scheduledAt": "2026-10-19T10:00:00+08:00",
+      "period": "2026年9月",
+      "status": "scheduled"
+    },
+    {
+      "id": "fomc-2026-10-28",
+      "series": "fomc",
+      "date": "2026-10-28",
+      "time": "14:00",
+      "timezone": "America/New_York",
+      "scheduledAt": "2026-10-28T14:00:00-04:00",
+      "period": "10月会议",
+      "status": "scheduled",
+      "meetingStart": "2026-10-27",
+      "meetingEnd": "2026-10-28",
+      "sourceUrl": "https://www.federalreserve.gov/newsevents/2026-october.htm"
+    },
+    {
+      "id": "us-jobs-2026-11-06",
+      "series": "us-jobs",
+      "date": "2026-11-06",
+      "time": "08:30",
+      "timezone": "America/New_York",
+      "scheduledAt": "2026-11-06T08:30:00-05:00",
+      "period": "2026年10月",
+      "status": "scheduled"
+    },
+    {
+      "id": "cn-cpi-2026-11-09",
+      "series": "cn-cpi",
+      "date": "2026-11-09",
+      "time": "09:30",
+      "timezone": "Asia/Shanghai",
+      "scheduledAt": "2026-11-09T09:30:00+08:00",
+      "period": "2026年10月",
+      "status": "scheduled"
+    },
+    {
+      "id": "us-cpi-2026-11-10",
+      "series": "us-cpi",
+      "date": "2026-11-10",
+      "time": "08:30",
+      "timezone": "America/New_York",
+      "scheduledAt": "2026-11-10T08:30:00-05:00",
+      "period": "2026年10月",
+      "status": "scheduled"
+    },
+    {
+      "id": "cn-retail-2026-11-16",
+      "series": "cn-retail",
+      "date": "2026-11-16",
+      "time": "10:00",
+      "timezone": "Asia/Shanghai",
+      "scheduledAt": "2026-11-16T10:00:00+08:00",
+      "period": "2026年10月",
+      "status": "scheduled"
+    },
+    {
+      "id": "us-jobs-2026-12-04",
+      "series": "us-jobs",
+      "date": "2026-12-04",
+      "time": "08:30",
+      "timezone": "America/New_York",
+      "scheduledAt": "2026-12-04T08:30:00-05:00",
+      "period": "2026年11月",
+      "status": "scheduled"
+    },
+    {
+      "id": "cn-cpi-2026-12-09",
+      "series": "cn-cpi",
+      "date": "2026-12-09",
+      "time": "09:30",
+      "timezone": "Asia/Shanghai",
+      "scheduledAt": "2026-12-09T09:30:00+08:00",
+      "period": "2026年11月",
+      "status": "scheduled"
+    },
+    {
+      "id": "fomc-2026-12-09",
+      "series": "fomc",
+      "date": "2026-12-09",
+      "time": "14:00",
+      "timezone": "America/New_York",
+      "scheduledAt": "2026-12-09T14:00:00-05:00",
+      "period": "12月会议",
+      "status": "scheduled",
+      "meetingStart": "2026-12-08",
+      "meetingEnd": "2026-12-09",
+      "sourceUrl": "https://www.federalreserve.gov/newsevents/2026-december.htm"
+    },
+    {
+      "id": "us-cpi-2026-12-10",
+      "series": "us-cpi",
+      "date": "2026-12-10",
+      "time": "08:30",
+      "timezone": "America/New_York",
+      "scheduledAt": "2026-12-10T08:30:00-05:00",
+      "period": "2026年11月",
+      "status": "scheduled"
+    },
+    {
+      "id": "cn-retail-2026-12-15",
+      "series": "cn-retail",
+      "date": "2026-12-15",
+      "time": "10:00",
+      "timezone": "Asia/Shanghai",
+      "scheduledAt": "2026-12-15T10:00:00+08:00",
+      "period": "2026年11月",
+      "status": "scheduled"
+    }
+  ]
+}

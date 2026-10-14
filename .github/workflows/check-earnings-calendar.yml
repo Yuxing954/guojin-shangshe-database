@@ -3,6 +3,10 @@ on:
   pull_request:
     paths:
       - "earnings.html"
+      - "scripts/important-calendar*"
+      - "data/important-calendar.json"
+      - "tests/important-calendar*"
+      - "docs/important-calendar.md"
       - "scripts/earnings*"
       - "scripts/update-earnings-calendar.cjs"
       - "scripts/import-earnings-choice.cjs"
@@ -24,6 +28,8 @@ jobs:
           node-version: "22"
       - name: Check earnings logic
         run: |
+          node --check scripts/important-calendar.js
+          node --test tests/important-calendar.test.cjs
           node --check scripts/earnings-calendar.js
           node --check scripts/site-shell.js
           node --check scripts/import-earnings-choice.cjs
@@ -36,4 +42,7 @@ jobs:
       - name: Check desktop and mobile interactions
         env:
           NODE_PATH: /tmp/earnings-test/node_modules
-        run: node tests/earnings-calendar.browser.cjs
+        run: |
+          node tests/earnings-calendar.browser.cjs
+          node tests/important-calendar.browser.cjs
+
