@@ -6,7 +6,7 @@
   const pct=v=>M.finite(v)?(v>0?'+':'')+num(v)+'%':'—';
   const tone=v=>M.finite(v)?v>0?'cm-up':v<0?'cm-down':'':'';
   const options=(id,values,chosen)=>{$(id).innerHTML=values.map(([v,t])=>`<option value="${esc(v)}">${esc(t)}</option>`).join('');if(values.some(([v])=>v===chosen))$(id).value=chosen;};
-  let data,byId,sources,items=[],page=0,selected='',history=[],retailGroup='categories';
+  let data,byId,sources,items=[],page=0,selected='',history=[],retailGroup='categories',retailExpanded=false;
   const params=new URLSearchParams(location.search),views=['overview','structure','categories','channels','income','workspace'];
   let study=views.includes(params.get('study'))?params.get('study'):'overview',periodMode=params.get('periodMode')==='aligned'?'aligned':'latest';
   const periodSelection={monthly:params.get('periodMonthly')||'',online:params.get('periodOnline')||'',quarterly:params.get('periodQuarterly')||''};
@@ -23,7 +23,7 @@
   function saveUrl(){const params=new URLSearchParams();params.set('study',study);params.set('periodMode',periodMode);for(const g of readoutGroups)if(periodSelection[g.id])params.set('period'+g.id[0].toUpperCase()+g.id.slice(1),periodSelection[g.id]);for(const [key,id] of [['seriesFrequency','series-frequency'],['basis','basis'],['measure','measure'],['from','from'],['to','to']])if($(id).value)params.set(key,$(id).value);for(const [key,id] of [['group','group'],['frequency','frequency'],['status','connection'],['q','query']])if($(id).value)params.set(key,$(id).value);if(selected)params.set('indicator',selected);window.history.replaceState(null,'',location.pathname+(params.size?'?'+params.toString():''));}
   function renderDirectory(){
     const count=items.length;page=Math.min(page,Math.max(0,Math.ceil(count/12)-1));
-    $('directory').innerHTML=items.slice(page*12,page*12+12).map(i=>{const r=latestRow(i),s=r?sources.get(r.sourceId):null;return `<tr><td><button class="cm-select" data-id="${esc(i.id)}" aria-pressed="${selected===i.id}">${esc(i.name)}</button><small>${esc(i.group)}</small></td><td>${value(i,r)}<small>${esc(i.valueLabel)}</small></td><td class="${tone(r?.yoy)}">${pct(r?.yoy)}</td><td>${r?esc(label(r))+'<small>'+esc(M.frequencies[r.frequency]+' · '+M.bases[r.basis])+'</small>':'—'}</td><td>${s?'<time>'+esc(published(r,s))+'</time><small>'+sourceLink(s)+'</small>':i.sourceUrl?'<a href="'+esc(i.sourceUrl)+'" target="_blank" rel="noopener noreferrer">官方入口 ↗</a>':'—'}</td><td><span class="cm-tag ${i.status==='pending'?'pending':''}">${i.status==='pending'?'待接入':i.updateStatus==='error'?'更新失败':'已接入'}</span>${r?.quality==='estimate'?'<small class="cm-tag estimate">预计</small>':''}</td></tr>`;}).join('')||'<tr><td colspan="6">没有符合筛选条件的指标</td></tr>';
+    $('directory').innerHTML=items.slice(page*12,page*12+12).map(i=>{const r=latestRow(i),s=r?sources.get(r.sourceId):null,status=i.status==='pending'?'待接入':i.updateStatus==='disabled'?'历史保留':i.updateStatus==='error'?'更新失败':'已接入',title=i.updateStatus==='disabled'?'低优先级细分项已停止Choice补充，历史记录仍保留。':'';return `<tr><td><button class="cm-select" data-id="${esc(i.id)}" aria-pressed="${selected===i.id}">${esc(i.name)}</button><small>${esc(i.group)}</small></td><td>${value(i,r)}<small>${esc(i.valueLabel)}</small></td><td class="${tone(r?.yoy)}">${pct(r?.yoy)}</td><td>${r?esc(label(r))+'<small>'+esc(M.frequencies[r.frequency]+' · '+M.bases[r.basis])+'</small>':'—'}</td><td>${s?'<time>'+esc(published(r,s))+'</time><small>'+sourceLink(s)+'</small>':i.sourceUrl?'<a href="'+esc(i.sourceUrl)+'" target="_blank" rel="noopener noreferrer">官方入口 ↗</a>':'—'}</td><td><span class="cm-tag ${i.status==='pending'?'pending':''}"${title?' title="'+esc(title)+'"':''}>${status}</span>${r?.quality==='estimate'?'<small class="cm-tag estimate">预计</small>':''}</td></tr>`;}).join('')||'<tr><td colspan="6">没有符合筛选条件的指标</td></tr>';
     $('page-label').textContent=count?`${page*12+1}—${Math.min(page*12+12,count)} / ${count} 项指标`:'0 项指标';$('prev').disabled=page===0;$('next').disabled=(page+1)*12>=count;$('export-latest').disabled=!items.some(i=>latestRow(i));
     $('directory').querySelectorAll('[data-id]').forEach(b=>b.addEventListener('click',()=>choose(b.dataset.id,true)));
   }
@@ -102,9 +102,15 @@
   function renderRetail(reset=false){
     const basis=$('retail-basis').value,scope=M.records(data,'retail',{frequency:basis==='year'?'annual':'monthly',basis});
     if(reset)options('retail-period',scope.slice().reverse().map(r=>[r.period,label(r)]),scope.at(-1)?.period);
-    const result=M.retailBreakdown(data,{basis,period:$('retail-period').value,group:retailGroup});
+    const allCategoryCount=data.indicators.filter(i=>i.group==='社零分品类').length;
+    const result=M.retailBreakdown(data,{basis,period:$('retail-period').value,group:retailGroup,includeAllCategories:retailExpanded});
     $('retail-context').textContent=result.reference?label(result.reference)+' · '+M.bases[result.reference.basis]:'暂无数据';
-    $('retail-note').textContent=retailGroup==='categories'?'限额以上单位分品类：展示金额与官方同比，不能相加替代社零总额。':retailGroup==='channels'?'各项单独比较；线上与线下存在交叉，不能直接相加。当月未披露的线上数据，请切换年初累计。':'总额、商品、餐饮与限额以上分别展示，不重复加总。';
+    const note=$('retail-note');
+    note.textContent=retailGroup==='categories'?'限额以上单位分品类：金额与官方同比，不能相加替代社零总额。':retailGroup==='channels'?'各项单独比较；线上与线下存在交叉，不能直接相加。当月未披露的线上数据，请切换年初累计。':'总额、商品、餐饮与限额以上分别展示，不重复加总。';
+    if(retailGroup==='categories'&&(retailExpanded||allCategoryCount>result.items.length)){
+      const toggle=document.createElement('button');toggle.type='button';toggle.className='portal-button retail-detail-toggle';toggle.textContent=retailExpanded?'收起其他品类':`展开其余 ${allCategoryCount-result.items.length} 类`;
+      toggle.setAttribute('aria-expanded',String(retailExpanded));toggle.addEventListener('click',()=>{retailExpanded=!retailExpanded;renderRetail();});note.append(document.createTextNode(' '),toggle);
+    }
     const maximum=Math.max(1,...result.items.map(x=>Math.abs(x.row?.yoy||0)));
     $('retail-bars').innerHTML=result.items.map(({indicator:i,row:r})=>{const source=sources.get(r?.sourceId),tooltip=r?label(r)+'\n'+value(i,r)+'  |  同比 '+pct(r.yoy):'暂无数据';
       return `<button class="retail-row" data-id="${esc(i.id)}" aria-label="${esc(i.name+' · '+tooltip)}" data-chart-tooltip="${esc(tooltip)}"><span class="retail-row-title">${esc(i.name)}</span><span class="retail-row-amount">${r?value(i,r):'暂无数据'}</span><span class="retail-row-rate ${tone(r?.yoy)}">${pct(r?.yoy)}</span><span class="retail-track"><span style="width:${r&&M.finite(r.yoy)?Math.abs(r.yoy)/maximum*100:0}%" class="${tone(r?.yoy)}"></span></span></button>`;
@@ -147,9 +153,9 @@
     $('kpis').onclick=e=>{const b=e.target.closest('[data-id]');if(b)selectReadout(b);};
     document.querySelectorAll('[data-period-mode]').forEach(b=>b.onclick=()=>{periodMode=b.dataset.periodMode;renderKpis();saveUrl();});
     $('consumption-views').onclick=e=>{const b=e.target.closest('[data-cm-view]');if(!b)return;study=b.dataset.cmView;
-      if(['structure','categories','channels'].includes(study)){retailGroup=study;renderRetail();choose(study==='channels'?'online_goods':'retail');}
+      if(['structure','categories','channels'].includes(study)){if(retailGroup!==study)retailExpanded=false;retailGroup=study;renderRetail();choose(study==='channels'?'online_goods':'retail');}
       if(study==='income')choose('income_national');renderStudy();saveUrl();};
-    $('retail-basis').onchange=()=>renderRetail(true);$('retail-period').onchange=()=>renderRetail();document.querySelectorAll('[data-retail]').forEach(b=>b.onclick=()=>{retailGroup=b.dataset.retail;study=retailGroup;renderRetail();choose(study==='channels'?'online_goods':'retail');renderStudy();saveUrl();});renderRetail(true);
+    $('retail-basis').onchange=()=>renderRetail(true);$('retail-period').onchange=()=>renderRetail();document.querySelectorAll('[data-retail]').forEach(b=>b.onclick=()=>{if(retailGroup!==b.dataset.retail)retailExpanded=false;retailGroup=b.dataset.retail;study=retailGroup;renderRetail();choose(study==='channels'?'online_goods':'retail');renderStudy();saveUrl();});renderRetail(true);
     $('measure').value='combo';applyFilters();
     if(params.get('seriesFrequency')&&[...$('series-frequency').options].some(o=>o.value===params.get('seriesFrequency'))){$('series-frequency').value=params.get('seriesFrequency');configureBasis();}
     for(const [key,id] of [['basis','basis'],['measure','measure']])if([...$(id).options].some(o=>o.value===params.get(key)&&!o.disabled))$(id).value=params.get(key);

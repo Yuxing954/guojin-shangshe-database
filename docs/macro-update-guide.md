@@ -47,6 +47,8 @@ python update/macro_auto.py --codex-config <本机配置文件> --cutoff YYYY-MM
 
 消费专题的定向增量更新使用`--consumer-only`，只请求注册表含`consumerId`的指标，同时跳过无关的美国官方序列；可与`--only`及新回执重放组合。未选中的已有历史和状态保持不变。未知`--only`标识会报错，避免拼写错误造成空更新。空序列不标记完整；映射指纹防止把同一原序列误接到不同指标、字段或累计口径。金额及信心指数使用注册的非负下限、0—200上下限校验，CPI允许负值。
 
+日用品与体育娱乐用品（原Choice ID：`consumer-category-6`、`consumer-category-7`及体育娱乐累计别名`consumer-sports-ytd`）已从活动注册表移除。此前来源/口径校验失败或属于重复映射，停止重复请求；`automatic-series.json`继续保留完整历史并标记`autoRefreshDisabled`，`observations.json`仍是官方展示底稿。不得清除历史来掩盖失败，也不得把它们重新加入自动更新，除非来源映射经过单独核验。
+
 消费官方原文另通过`scripts/import_consumption_macro.py --refresh --incremental --checked-at YYYY-MM-DD`读取已登记的新/证据失效来源；有效缓存不会反复下载。该命令不自动发现新增原文，修订复核须使用完整`--refresh`。新增URL、发布日期和文旅人工核验记录仍须在`sources.json`审定。全国居民收入正文与第一列全国表格金额必须一致，防止将季度表混入年度证据。
 
 ## 3. MCP补查及回执重放

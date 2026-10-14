@@ -5,9 +5,9 @@ const level={frequency:'monthly',kind:'level',unit:'元',staleDays:100};
 const list=[{period:'2024-01',value:100},{period:'2025-01',value:110},{period:'2025-02',value:121}];
 const catalog=JSON.parse(fs.readFileSync(path.join(__dirname,'../data/macro/catalog.json')));
 const snapshot=JSON.parse(fs.readFileSync(path.join(__dirname,'../data/macro/snapshot.json')));
-test('all 31 reviewed core indicators have real history and definitions; missing periods remain explicit',()=>{
+test('27 featured core indicators have real history and definitions; missing periods remain explicit',()=>{
   const c=structuredClone(catalog),s=structuredClone(snapshot),feed=require('../data/macro/automatic-series.json');M.mergeAutomatic(c,s,feed);
-  assert.equal(M.curated(c.series,{country:'CN'},s).available.length,17);assert.equal(M.curated(c.series,{country:'US'},s).available.length,14);
+  assert.equal(M.curated(c.series,{country:'CN'},s).available.length,15);assert.equal(M.curated(c.series,{country:'US'},s).available.length,12);
   assert.equal(c.series.find(x=>x.id==='cn-gdp-quarter').name,'实际GDP当季同比');assert.ok(s.series['cn-gdp-quarter'].coverage.count>=42);
   assert.ok(!s.series['us-cpi'].observations.some(r=>r.period==='2025-10'));assert.ok(s.series['us-cpi'].coverage.missingPeriods.includes('2025-10'));
   assert.equal(c.series.find(x=>x.id==='us-housing-starts').unit,'千套');assert.ok(s.series['us-housing-starts'].coverage.count>=120);
@@ -17,7 +17,7 @@ test('reuses verified consumption observations without mixing monthly and cumula
   const feed=JSON.parse(fs.readFileSync(path.join(__dirname,'../data/consumption-macro/observations.json'))),copy=structuredClone(snapshot);
   M.mergeConsumption(catalog,copy,feed);
   const result=M.curated(catalog.series,{country:'CN'},copy);
-  assert.deepEqual(result.available.map(s=>s.id).sort(),['cn-cpi','cn-disposable-income','cn-retail']);
+  assert.deepEqual(result.available.map(s=>s.id).sort(),['cn-cpi','cn-retail']);
   for(const [id,input,basis] of [['cn-cpi','cpi','month'],['cn-retail','retail','month'],['cn-disposable-income','income_national','ytd']]){
     const spec=catalog.series.find(s=>s.id===id),sourceRows=feed.observations.filter(r=>r.indicatorId===input&&r.frequency===spec.frequency&&r.basis===basis);
     assert.equal(copy.series[id].observations.length,sourceRows.length);
@@ -39,7 +39,7 @@ test('curation separates core, pending and annual references with complete uniqu
   assert.equal(M.groups.length,5);
   for(const country of ['CN','US']){
     const result=M.curated(catalog.series,{country},snapshot),ids=result.core.map(s=>s.id);
-    assert.equal(ids.length,country==='CN'?17:14);assert.equal(new Set(ids).size,ids.length);
+    assert.equal(ids.length,country==='CN'?15:12);assert.equal(new Set(ids).size,ids.length);
     for(const id of ids)assert.ok(M.groupOf(id),id);
     assert.equal(result.available.length+result.pending.length,result.core.length);
     assert.ok(result.available.every(s=>s.frequency!=='annual'&&M.rows(snapshot.series[s.id]).length));
