@@ -35,9 +35,10 @@ function report(data,period,count='12',insights={}){
  const sources=data.sources.filter(s=>sourceIds.has(s.id)),source=data.sources.find(s=>s.id===cpi?.sourceId);
  const latest=rows(data,'cpi').filter(r=>finite(r.value)).map(r=>r.period).sort().at(-1)||'';
  const prepared=insights.months?.[period];
+ if(prepared?.interpretation&&!sources.some(s=>s.id===prepared.interpretation.id))sources.push(prepared.interpretation);
  return {period,title:monthLabel(period)+'CPI跟踪',periodLabel:monthLabel(period),cpi,core,prices,priceTrend,sources,history,
  freshness:{period,publishedAt:source?.publishedAt||'',updatedAt:cpi?.updatedAt||source?.checkedAt||data.checkedAt||'',latest},
- priceCategories:prepared?.categories||[],headline:prepared?.headline||'',
+ priceCategories:prepared?.categories||[],headline:prepared?.headline||'',contributions:prepared?.contributions||null,commentSections:prepared?.commentSections||[],
  comments:prepared?.comment||'CPI同比'+rate(cpi?.value)+'，环比'+rate(cpi?.mom)+'；核心CPI同比'+rate(core?.value)+'，环比'+rate(core?.mom)+'。'};
 }
 return {mergeReleases,finite,monthLabel,monthIndex,monthAt,row,months,preferred,periods,display,rate,report};
