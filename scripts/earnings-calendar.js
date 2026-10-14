@@ -11,7 +11,7 @@ const tag=r=>r.kind!=='formal'?'ec-forecast':r.actual?'ec-formal':'ec-scheduled'
 function toast(text){$('toast').textContent=text;clearTimeout(toast.timer);toast.timer=setTimeout(()=>$('toast').textContent='',5000);}
 function restore(){try{legacy=JSON.parse(localStorage.getItem('sinolink-earnings-v1')||'{}').records||{};}catch{legacy={};}}
 function filters(){return {search:$('search').value,sector:$('sector').value,market:$('market').value,today:today()};}
-function syncURL(){const p=new URLSearchParams();for(const [id,key] of [['search','q'],['sector','sector'],['market','market']])if($(id).value)p.set(key,$(id).value);if(view!=='list')p.set('view',view);if(anchor!==today()&&view!=='list')p.set('date',anchor);if($('history').checked)p.set('history','1');history.replaceState(null,'',location.pathname+(p.size?'?'+p:''));}
+function syncURL(){const p=new URLSearchParams(location.search);for(const k of ['q','sector','market','view','date','history'])p.delete(k);for(const [id,key] of [['search','q'],['sector','sector'],['market','market']])if($(id).value)p.set(key,$(id).value);if(view!=='list')p.set('view',view);if(anchor!==today()&&view!=='list')p.set('date',anchor);if($('history').checked)p.set('history','1');history.replaceState(null,'',location.pathname+(p.size?'?'+p:''));}
 function applyURL(){const p=new URLSearchParams(location.search);for(const [id,key] of [['search','q'],['sector','sector'],['market','market']]){const v=p.get(key);if(v!=null&&(id==='search'||[...$(id).options].some(o=>o.value===v)))$(id).value=v;}if(['month','week','list'].includes(p.get('view')))view=p.get('view');anchor=M.validDate(p.get('date'))?p.get('date'):today();selected=anchor;$('history').checked=p.get('history')==='1';if($('history').checked)view='list';}
 function eventButton(e,small=false){return '<button class="ec-event '+tag(e)+(small?' ec-small':'')+'" data-record="'+esc(e.id)+'" aria-label="'+esc(e.name+' '+periodLabel(e.period)+' '+e.dateLabel+' '+e.date)+'"><b>'+esc(e.name)+'</b><span>'+esc(small?e.dateLabel:periodLabel(e.period)+' · '+e.dateLabel)+'</span></button>';}
 function companyButton(c,id){return '<button class="ec-company" '+(id?'data-record="'+esc(id)+'"':'data-company="'+esc(c.code)+'"')+'>'+esc(c.name)+'</button><small>'+esc(c.code)+' · '+esc(c.sector)+' · '+esc(c.market)+'</small>';}
@@ -90,5 +90,8 @@ async function boot(){try{
  $('sources').innerHTML='<p>'+link('https://choice.eastmoney.com/','Choice · 东方财富')+' · '+esc(time(snapshot.updatedAt))+'</p><p>实际 / 预计披露日期；公告原文及发布日期单独核验</p><a href="https://github.com/Yuxing954/guojin-shangshe-database/blob/main/docs/earnings-workbench.md" target="_blank" rel="noopener">数据口径与更新 ↗</a>';
  $('content').hidden=false;$('error').hidden=true;render();
 }catch(e){$('content').hidden=true;$('sourceStatus').textContent='Choice 日期加载失败';$('error').hidden=false;$('error').innerHTML='<span>'+esc(e.message)+'</span> <button id="retry">重新加载</button>';$('retry').onclick=boot;}}
-boot();
+let booted=false;function ensureEarnings(){if(!booted){booted=true;boot();}}
+document.addEventListener('calendar:earnings',ensureEarnings);
+if(new URLSearchParams(location.search).get('tab')!=='important')ensureEarnings();
 })();
+
