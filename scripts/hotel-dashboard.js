@@ -299,7 +299,7 @@
     if (regions.includes(saved.get('region'))) state.region = saved.get('region');
     if (periods.has(saved.get('week'))) { state.week = saved.get('week'); followLatest = false; }
     if (['overview', 'cities', 'structure'].includes(saved.get('view'))) state.view = saved.get('view');
-    if (['52', '156', 'all'].includes(saved.get('window'))) state.window = saved.get('window');
+    if (['13', '26', '52', '156', 'all'].includes(saved.get('window'))) state.window = saved.get('window');
     if (META[saved.get('metric')]) state.metric = saved.get('metric');
     if (['combo', 'value', 'change'].includes(saved.get('mode'))) state.mode = saved.get('mode');
     if (periods.has(saved.get('base'))) state.base = saved.get('base');
