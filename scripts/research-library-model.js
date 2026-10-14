@@ -9,6 +9,20 @@
   function duration(seconds){if(!Number.isFinite(seconds)||seconds<=0)return '';const mins=Math.floor(seconds/60);return mins+'分'+Math.floor(seconds%60)+'秒';}
   function bytes(value){if(!Number.isFinite(value)||value<0)return '';return value<1048576?Math.max(1,Math.round(value/1024))+' KB':(value/1024/1024).toFixed(1)+' MB';}
   function entry(r){return {kind:'minutes',id:r.id,title:r.name,file:r.name,published:r.dateStatus==='needs_review'?'':r.published,sortDate:r.sortDate||r.published,date:r.date,content:r.processing?.summary||'',url:r.sourceUrl,sector:'',company:r.company||'',author:r.sourceName,state:r.format==='audio'?'会议音频，未转写':r.processing?.textAvailable?'文字摘要':'附件索引，正文未提取',library:r};}
+  function entries(r){
+    const occurrences=Array.isArray(r.occurrences)?r.occurrences:[];
+    if(!occurrences.length)return [entry(r)];
+    return occurrences.map(o=>{
+      const occurrenceKey=o.occurrenceKey||[o.fileId,o.topicId,o.fileCreatedAt,o.name].join('|');
+      const item={...r,id:'zsxq-occurrence-'+encodeURIComponent(occurrenceKey),canonicalId:r.id,occurrenceKey,occurrence:o,
+        fileId:o.fileId,topicId:o.topicId,name:o.name,extension:o.extension,format:o.format||r.format,
+        published:(o.topicCreatedAt||r.published||'').slice(0,19),sortDate:o.topicCreatedAt||r.sortDate||r.published,
+        date:(o.topicCreatedAt||r.published||'').slice(0,10),bytes:o.bytes,durationSeconds:o.durationSeconds,
+        sha256:o.sha256||r.sha256,sourceUrl:o.sourceUrl||r.sourceUrl,sectors:o.sectors||r.sectors,
+        aliases:['zsxq-file-'+o.fileId],sourceTopics:[o.topicId].filter(Boolean)};
+      return entry(item);
+    });
+  }
   function mergeEntries(entries,assets,topic){
     const replaced=new Set(),remaining=[];
     for(const old of entries.filter(r=>r.kind==='minutes')){
@@ -28,5 +42,5 @@
   function topicHref(s){const q=new URLSearchParams({kind:s.kind||'views',topic:s.topicId});return 'research.html?'+q;}
   function safeLocalPath(path){return typeof path==='string'&&/^data\/research\/processed\/[A-Za-z0-9_-]+\.json$/.test(path);}
   function preview(data,limit=500){const raw=typeof data?.preview==='string'?data.preview:data?.type==='pdf'?(data.pages||[]).map(p=>p.text||'').join('\n\n'):['audio','transcript'].includes(data?.type)?(data.segments||[]).map(s=>s.text||'').join('\n'):'';const chars=Array.from(raw.trim());return {text:chars.slice(0,limit).join(''),truncated:chars.length>limit||data?.previewTruncated===true};}
-  return {states,duration,bytes,entry,mergeEntries,matches,briefMatches,briefWithinScope,topicHref,safeLocalPath,hasStoredOriginal,hasPublishedText,storageLink,preview};
+  return {states,duration,bytes,entry,entries,mergeEntries,matches,briefMatches,briefWithinScope,topicHref,safeLocalPath,hasStoredOriginal,hasPublishedText,storageLink,preview};
 });

@@ -1,6 +1,6 @@
 (function(){
 'use strict';
-const M=MonthlyProduct,CM=ConsumptionMacro,$=id=>document.getElementById(id),canvas=$('product'),ink='#173f60',blue='#104f87',muted='#697985',colors=['#165b9c','#66a9dc','#a64d19'];
+const M=MonthlyProduct,CM=ConsumptionMacro,$=id=>document.getElementById(id),canvas=$('product'),ink='#173f60',blue='#104f87',muted='#667582',colors=['#165b9c','#66a9dc','#a64d19'],TYPE={section:24,chart:22,body:22,table:20,meta:18};
 let insights={},data=null,legal=[],report=null,busy=false,warning='',hits=[],activeMonth='',comments=new Map(),previewFrame;
 const banner=new Image();banner.onload=()=>{if(report)render();};banner.src='scripts/assets/hotel-weekly/title.png';
 const logo=new Image();logo.onload=()=>{if(report)render();};logo.src='scripts/assets/hotel-weekly/logo.png';
@@ -13,21 +13,21 @@ function rate(v){return M.rate(v);}
 function textLines(ctx,text,width,size){ctx.font=size+'px "Microsoft YaHei",sans-serif';const out=[];for(const part of String(text).split('\n')){let line='';for(const ch of part){if(ctx.measureText(line+ch).width>width&&line){out.push(line);line=ch;}else line+=ch;}out.push(line);}return out;}
 function draw(target,width,model,comment){
  const measure=target.getContext('2d'),commentLines=textLines(measure,comment,1112,22),legalLines=legal.map(p=>textLines(measure,p,1112,13));
- const legalHeight=legalLines.reduce((n,ls)=>n+ls.length*19+62,0);
+ const legalHeight=legalLines.reduce((n,ls)=>n+ls.length*18+62,0);
  const height=4600+model.priceCategories.length*37+commentLines.length*34+legalHeight;
  target.width=width;target.height=Math.ceil(height*width/1200);const ctx=target.getContext('2d',{alpha:false}),scale=width/1200;ctx.scale(scale,scale);ctx.fillStyle='#fff';ctx.fillRect(0,0,1200,height);
  const hit=[];
  function text(t,x,y,size=20,color=ink,weight='normal',align='left'){ctx.font=weight+' '+size+'px "Microsoft YaHei",sans-serif';ctx.fillStyle=color;ctx.textAlign=align;ctx.fillText(String(t),x,y);ctx.textAlign='left';}
  function line(y){ctx.fillStyle='#dae2e8';ctx.fillRect(44,y,1112,1);}
- function section(title,y){text(title,44,y,27,blue,'bold');ctx.fillStyle='#dae2e8';ctx.fillRect(44,y+16,1112,1.5);}
- function cells(headers,rows,y,widths,emphasize=-1){ctx.fillStyle=blue;ctx.fillRect(44,y,1112,44);let x=44;headers.forEach((h,i)=>{text(h,x+12,y+29,19,'#fff','bold');x+=widths[i];});let top=y+44;rows.forEach((row,i)=>{ctx.fillStyle=i%2?'#f3f7fa':'#fff';ctx.fillRect(44,top,1112,37);let x=44;row.forEach((v,j)=>{text(v,x+12,top+25,19,i===emphasize&&j>0?(String(v).startsWith('-')?'#287f70':String(v).startsWith('+')?'#b94c5c':ink):ink,i===emphasize?'bold':'normal');x+=widths[j];});ctx.fillStyle='#e4eaf0';ctx.fillRect(44,top+36,1112,1);top+=37;});return top;}
+ function section(title,y){text(title,44,y,TYPE.section,blue,'bold');ctx.fillStyle='#c9d6e0';ctx.fillRect(44,y+16,1112,1.5);}
+ function cells(headers,rows,y,widths,emphasize=-1){ctx.fillStyle=blue;ctx.fillRect(44,y,1112,44);let x=44;headers.forEach((h,i)=>{text(h,x+12,y+29,TYPE.table,'#fff','bold');x+=widths[i];});let top=y+44;rows.forEach((row,i)=>{ctx.fillStyle=i%2?'#f3f7fa':'#fff';ctx.fillRect(44,top,1112,37);let x=44;row.forEach((v,j)=>{text(v,x+12,top+25,TYPE.table,i===emphasize&&j>0?(String(v).startsWith('-')?'#287f70':String(v).startsWith('+')?'#b94c5c':ink):ink,i===emphasize?'bold':'normal');x+=widths[j];});ctx.fillStyle='#e4eaf0';ctx.fillRect(44,top+36,1112,1);top+=37;});return top;}
  function kpis(items,y){const w=1112/items.length;items.forEach((i,j)=>{const x=44+j*w;text(i[0],x,y,21,muted);text(i[1],x,y+54,43,ink,'bold');text(i[2]||'',x,y+88,22,muted);if(j<items.length-1){ctx.fillStyle='#dae2e8';ctx.fillRect(x+w-28,y-8,1,108);}});}
 
  function marker(x,y,square,color){ctx.fillStyle='#fff';ctx.strokeStyle=color;ctx.lineWidth=1.8;ctx.beginPath();if(square)ctx.rect(x-3,y-3,6,6);else ctx.arc(x,y,3,0,Math.PI*2);ctx.fill();ctx.stroke();}
  function chart(x,y,title,points,series){
  const w=536,h=206,l=x+49,r=x+w-10,top=y+88,bottom=top+h,inset=28;
- text(title,x,y,27,'#627b8e','bold');
- series.forEach((s,i)=>{const lx=x+i*270;ctx.strokeStyle=colors[i];ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(lx,y+35);ctx.lineTo(lx+22,y+35);ctx.stroke();marker(lx+11,y+35,i===1,colors[i]);text(s.name+'  '+rate(s.get(points.at(-1)||{})),lx+31,y+42,21,colors[i],'bold');});
+ text(title,x,y,TYPE.chart,'#627b8e','bold');
+ series.forEach((s,i)=>{const lx=x+i*270;ctx.strokeStyle=colors[i];ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(lx,y+35);ctx.lineTo(lx+22,y+35);ctx.stroke();marker(lx+11,y+35,i===1,colors[i]);text(s.name+'  '+rate(s.get(points.at(-1)||{})),lx+31,y+42,TYPE.meta,colors[i],'bold');});
  const values=points.flatMap(p=>series.map(s=>s.get(p))).filter(M.finite);
  let low=values.length?Math.min(0,...values):-1,high=values.length?Math.max(0,...values):1;if(low===high){low-=1;high+=1;}
  const raw=(high-low)/4,power=10**Math.floor(Math.log10(raw));let step=power;
@@ -36,32 +36,32 @@ function draw(target,width,model,comment){
  for(let i=0;i<=4;i++){const v=high-i*step,yy=ypos(v);ctx.strokeStyle='#edf0f3';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(l,yy);ctx.lineTo(r,yy);ctx.stroke();text(Number(v.toFixed(2)),l-10,yy+6,18,'#73808b','normal','right');}
  ctx.strokeStyle='#cbd4dc';ctx.beginPath();ctx.moveTo(l,ypos(0));ctx.lineTo(r,ypos(0));ctx.stroke();
  series.forEach((s,j)=>{ctx.strokeStyle=colors[j];ctx.lineWidth=3;ctx.beginPath();let connected=false;points.forEach((p,i)=>{const v=s.get(p);if(!M.finite(v)){connected=false;return;}if(connected)ctx.lineTo(xpos(i),ypos(v));else ctx.moveTo(xpos(i),ypos(v));connected=true;});ctx.stroke();points.forEach((p,i)=>{const v=s.get(p);if(M.finite(v)&&(points.length<=26||i===points.length-1))marker(xpos(i),ypos(v),j===1,colors[j]);});});
- const tick=[...new Set(Array.from({length:4},(_,i)=>Math.round(i*(points.length-1)/3)))];for(const i of tick)if(points[i])text(points[i].period.slice(2),xpos(i),bottom+30,19,'#73808b','normal','center');
+ const tick=[...new Set(Array.from({length:4},(_,i)=>Math.round(i*(points.length-1)/3)))];for(const i of tick)if(points[i])text(points[i].period.slice(2),xpos(i),bottom+30,TYPE.meta,'#73808b','normal','center');
  if(!values.length)text('暂无数据',x+w/2,top+110,23,muted,'normal','center');
  hit.push({x:l+inset,y:top,w:r-l-2*inset,h,points,series});
  }
  function categoryBars(y,rows){
  const lineHeight=43,top=y+58,labelWidth=304,barWidth=300,first=44+labelWidth,second=first+394;
- text('重点分项 · 价格变化',44,y,29,blue,'bold');text('同比 %',first,y+10,21,muted,'bold');text('环比 %',second,y+10,21,muted,'bold');
+ text('重点分项 · 价格变化',44,y,TYPE.section,blue,'bold');text('同比 %',first,y+10,TYPE.meta,muted,'bold');text('环比 %',second,y+10,TYPE.meta,muted,'bold');
  const ranges=['yoy','mom'].map(key=>{const values=rows.map(r=>r[key]).filter(M.finite);return {key,max:Math.max(1,...values.map(Math.abs))};});
- rows.forEach((row,i)=>{const yy=top+i*lineHeight;if(i%2===0){ctx.fillStyle='#f3f7fa';ctx.fillRect(44,yy-25,1112,lineHeight);}text(row.name,56,yy,21,ink);
+ rows.forEach((row,i)=>{const yy=top+i*lineHeight;if(i%2===0){ctx.fillStyle='#f3f7fa';ctx.fillRect(44,yy-25,1112,lineHeight);}text(row.name,56,yy,TYPE.table,ink);
  ranges.forEach((r,j)=>{const value=row[r.key],left=j?second:first,zero=left+barWidth/2,color=!M.finite(value)||value===0?'#7b8490':value>0?'#c23d3d':'#21816b';ctx.strokeStyle='#cbd4dc';ctx.beginPath();ctx.moveTo(zero,yy-20);ctx.lineTo(zero,yy+10);ctx.stroke();
- if(M.finite(value)){const len=value/r.max*(barWidth/2-18);ctx.fillStyle=color;ctx.fillRect(Math.min(zero,zero+len),yy-14,Math.max(2,Math.abs(len)),14);}text(rate(value),left+barWidth+8,yy,21,color,'bold');});
+ if(M.finite(value)){const len=value/r.max*(barWidth/2-18);ctx.fillStyle=color;ctx.fillRect(Math.min(zero,zero+len),yy-14,Math.max(2,Math.abs(len)),14);}text(rate(value),left+barWidth+8,yy,TYPE.table,color,'bold');});
  });
  hit.push({type:'category',x:44,y:top-25,w:1112,h:rows.length*lineHeight,rows,lineHeight});
  return top+rows.length*lineHeight+20;
  }
 
  if(logo.complete&&logo.naturalWidth)ctx.drawImage(logo,44,25,300,67);else text('SINOLINK 国金证券',44,68,32,blue,'bold');
- ctx.fillStyle='#447eaf';ctx.fillRect(920,34,236,50);text('国金商社于健',1038,69,29,'#fff','normal','center');
- ctx.fillStyle=blue;ctx.fillRect(0,120,1200,272);if(banner.complete&&banner.naturalWidth)ctx.drawImage(banner,0,120,1200,272);text(model.title,44,260,64,'#fff','bold');text('发布日期：'+(model.freshness.publishedAt?model.freshness.publishedAt.replace(/^(\d{4})-(\d{2})-(\d{2})$/,'$1年$2月$3日'):'未提供'),44,330,30,'#fff');
+ ctx.fillStyle='#447eaf';ctx.fillRect(920,34,236,50);text('国金商社于健',1038,70,32,'#fff','normal','center');
+ ctx.fillStyle=blue;ctx.fillRect(0,120,1200,272);if(banner.complete&&banner.naturalWidth)ctx.drawImage(banner,0,120,1200,272);text(model.title,44,260,88,'#fff','bold');text('发布日期：'+(model.freshness.publishedAt?model.freshness.publishedAt.replace(/^(\d{4})-(\d{2})-(\d{2})$/,'$1年$2月$3日') :'未提供'),44,330,32,'#fff');
 
  let y=450;
  section('当期核心指标',y);y+=52;
  const cards=[['CPI同比',model.cpi?.value,'较上月',M.row(data,'cpi',M.monthAt(M.monthIndex(model.period)-1))?.value],['CPI环比',model.cpi?.mom,'较上月',M.row(data,'cpi',M.monthAt(M.monthIndex(model.period)-1))?.mom],['核心CPI同比',model.core?.value,'较上月',M.row(data,'core_cpi',M.monthAt(M.monthIndex(model.period)-1))?.value],['核心CPI环比',model.core?.mom,'较上月',M.row(data,'core_cpi',M.monthAt(M.monthIndex(model.period)-1))?.mom]];
- cards.forEach(([name,v,label,previous],i)=>{const x=44+i*282;ctx.fillStyle='#f1f6fa';ctx.fillRect(x,y,266,142);text(name,x+18,y+31,22,muted);text(rate(v),x+18,y+86,43,v>0?'#c23d3d':v<0?'#21816b':ink,'bold');const delta=M.finite(v)&&M.finite(previous)?v-previous:null;text(M.finite(delta)?label+' '+(delta>0?'+':'')+M.display(delta)+'个百分点':'上月暂无可比数据',x+18,y+120,17,muted);});
+ cards.forEach(([name,v,label,previous],i)=>{const x=44+i*282;text(name,x,y+31,21,muted);text(rate(v),x,y+86,44,ink,'bold');if(i<3){ctx.fillStyle='#e1e6ea';ctx.fillRect(x+262,y+16,1,115);}const delta=M.finite(v)&&M.finite(previous)?v-previous:null;text(M.finite(delta)?label+' '+(delta>0?'+':'')+M.display(delta)+'pct':'暂无可比数据',x,y+125,25,delta>0?'#c23d3d':delta<0?'#21816b':'#68737e','bold');});
  y+=185;
- if(model.headline){ctx.fillStyle='#f4f0e3';ctx.fillRect(44,y-26,1112,66);ctx.fillStyle='#bba569';ctx.fillRect(44,y-26,5,66);text(model.headline,64,y+16,27,blue,'bold');y+=100;}
+ if(model.headline){text(model.headline,44,y+10,TYPE.body,ink,'bold');y+=75;}
  chart(44,y,'CPI与核心CPI · 同比 %',model.priceTrend,[{name:'CPI',get:p=>p.cpi?.value},{name:'核心CPI',get:p=>p.core?.value}]);
  chart(620,y,'CPI与核心CPI · 环比 %',model.priceTrend,[{name:'CPI',get:p=>p.cpi?.mom},{name:'核心CPI',get:p=>p.core?.mom}]);y+=380;
  if(model.priceCategories.length)y=categoryBars(y,model.priceCategories);
@@ -70,7 +70,7 @@ function draw(target,width,model,comment){
  text('来源：国家统计局'+(model.sources.some(s=>s.licensedChoice)?' / Choice转引':'')+'；国金商社研究数据库',44,y,18,muted);y+=30;
  text('数据月份 '+model.period+' · 官方发布 '+(model.freshness.publishedAt||'未提供')+' · 入库核对 '+(model.freshness.updatedAt||'未提供'),44,y,17,muted);y+=35;
  ctx.fillStyle='#f5f4f5';ctx.fillRect(0,y,1200,height-y);ctx.fillStyle='#eee8cd';ctx.fillRect(0,y,1200,5);y+=35;
- legalLines.forEach((ls,i)=>{text(i?'免责声明':'特别声明',44,y,22,'#998951','bold');y+=32;for(const t of ls){text(t,44,y,13,'#68727b');y+=19;}y+=24;});
+ legalLines.forEach((ls,i)=>{text(i?'免责声明':'特别声明',44,y,22,'#998951','bold');y+=32;for(const t of ls){text(t,44,y,13,'#68727b');y+=18;}y+=24;});
  // Crop to the actual report height, keeping export and preview layout identical.
  const used=Math.ceil((y+30)*scale);if(used<target.height){const image=ctx.getImageData(0,0,target.width,used);target.height=used;target.getContext('2d').putImageData(image,0,0);}
  return {hits:hit,height:target.height};
