@@ -38,7 +38,7 @@ function report(data,period,count='12',insights={}){
  if(prepared?.interpretation&&!sources.some(s=>s.id===prepared.interpretation.id))sources.push(prepared.interpretation);
  return {period,title:monthLabel(period)+'CPI跟踪',periodLabel:monthLabel(period),cpi,core,prices,priceTrend,sources,history,
  freshness:{period,publishedAt:source?.publishedAt||'',updatedAt:cpi?.updatedAt||source?.checkedAt||data.checkedAt||'',latest},
- priceCategories:prepared?.categories||[],headline:prepared?.headline||'',contributions:prepared?.contributions||null,commentSections:prepared?.commentSections||[],
+ priceCategories:prepared?.categories||[],headline:prepared?.headline||'',contributions:prepared?.contributions||null,yoyBreakdown:prepared?.yoyBreakdown||null,commentSections:prepared?.commentSections||[],
  comments:prepared?.comment||'暂无当月官方解读。'};
 }
 return {mergeReleases,finite,monthLabel,monthIndex,monthAt,row,months,preferred,periods,display,rate,report};

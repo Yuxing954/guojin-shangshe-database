@@ -62,7 +62,8 @@
         "publisher": "国家统计局",
         "quality": "official",
         "kind": "cpi",
-        "period": "2026-09"
+        "period": "2026-09",
+        "htmlSha256": "ac0ed2d2e3d259249d113fe41b32b0936823d4493143aa0fea55707a14cffc3b"
       },
       "observations": [
         {
@@ -168,6 +169,44 @@
           {
             "name": "服务",
             "value": -0.08
+          }
+        ]
+      },
+      "yoyBreakdown": {
+        "unit": "percent",
+        "sourceId": "cpi-2026-09",
+        "items": [
+          {
+            "name": "食品烟酒及在外餐饮",
+            "value": -0.9
+          },
+          {
+            "name": "衣着",
+            "value": 1.2
+          },
+          {
+            "name": "居住",
+            "value": -0.3
+          },
+          {
+            "name": "生活用品及服务",
+            "value": 0.2
+          },
+          {
+            "name": "交通通信",
+            "value": 4.3
+          },
+          {
+            "name": "教育文化娱乐",
+            "value": 1.4
+          },
+          {
+            "name": "医疗保健",
+            "value": 2.7
+          },
+          {
+            "name": "其他用品及服务",
+            "value": 5.9
           }
         ]
       }
