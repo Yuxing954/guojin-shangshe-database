@@ -258,12 +258,12 @@
       var date = new Date(p.period_id + '-01T00:00:00Z');
       return { x: new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth() + 1, 0)).toISOString().slice(0,10), y:M.num(p.yoy_pct), date:p.period_id.slice(0,4)+'年1—'+Number(p.period_id.slice(5))+'月' };
     }).filter(function (p) { return p.x >= start && p.x <= cutoff; });
-    var lines = [{name:'住宿和餐饮业投资 · 月度累计同比', color:COLORS[1], gap:65*86400000, pts:points}];
-    if (ix.supply15) lines.unshift({name:title+' · 周度同周同比', color:COLORS[0], gap:15*86400000, pts:weeks.map(function (p) {
+    var lines = [{name:'住宿和餐饮业投资 · 月度累计同比（右轴）', color:'#ac863d', axis:'right', gap:65*86400000, pts:points}];
+    if (ix.supply15) lines.unshift({name:title+' · 周度同周同比（左轴）', color:COLORS[0], gap:15*86400000, pts:weeks.map(function (p) {
       return {x:p.end_date, date:p.period_id+'（'+p.end_date+'）', y:M.change(ix.supply15.get('全国|'+p.period_id),ix.supply15.get('全国|'+M.priorPeriod(p)),field)};
     })});
     $('investment-chart-caption').textContent = title+'同比 / 住宿和餐饮业投资累计同比（%） · 15间及以上 / 不含农户';
-    lineChart('investment-chart', lines, {unit:'%', zero:true, time:true, forceLine:true});
+    lineChart('investment-chart', lines, {unit:'%', time:true, forceLine:true, dualAxis:true, leftTitle:'酒店供给同比（%）', rightTitle:'投资累计同比（%）'});
     $('investment-table').innerHTML = '<thead><tr><th>累计期间</th><th>累计同比（%）</th><th>完成额（亿元）</th></tr></thead><tbody>' + rows.slice().reverse().map(function (p) { return '<tr><td>'+p.period_id.slice(0,4)+'年1—'+Number(p.period_id.slice(5))+'月</td><td>'+delta(p.yoy_pct,'investment')+'</td><td>'+(M.num(p.amount_cny_100m)==null?'暂无数据':fmt(p.amount_cny_100m,1))+'</td></tr>';}).join('') + '</tbody>';
   }
   function renderShare() {
@@ -381,19 +381,26 @@
     var xs = Array.from(new Set(lines.flatMap(function (s) { return s.pts.map(function (p) { return p.x; }); }))).sort();
     var values = lines.flatMap(function (s) { return s.pts.map(function (p) { return M.num(p.y); }); }).filter(function (v) { return v != null; });
     if (!values.length) { host.innerHTML = '<div class="hd-empty">所选范围暂无有效数据</div>'; return; }
-    var W = Math.max(300, host.clientWidth - 40), H = 300, L = 76, R = 28, T = 24, B = 40, min = Math.min.apply(null, values), max = Math.max.apply(null, values);
+    var W = Math.max(300, host.clientWidth - 40), H = 300, L = 76, R = opt.dualAxis ? 76 : 28, T = opt.dualAxis ? 36 : 24, B = 40, min = Math.min.apply(null, values), max = Math.max.apply(null, values);
     if (opt.zero) { min = Math.min(0, min); max = Math.max(0, max); }
-    var scale=SiteCharts.niceScale(values,{zero:opt.zero,min:opt.occupancy?0:undefined,max:opt.occupancy?100:undefined});min=scale.min;max=scale.max;
+    var leftValues = opt.dualAxis ? lines.filter(function(s){return s.axis!=='right';}).flatMap(function(s){return s.pts.map(function(p){return M.num(p.y);});}).filter(function(v){return v!=null;}) : values;
+    var scale=SiteCharts.niceScale(leftValues,{zero:opt.zero,min:opt.occupancy?0:undefined,max:opt.occupancy?100:undefined});min=scale.min;max=scale.max;
+    var rightScale = opt.dualAxis ? SiteCharts.niceScale(lines.filter(function(s){return s.axis==='right';}).flatMap(function(s){return s.pts.map(function(p){return M.num(p.y);});}).filter(function(v){return v!=null;}),{}) : null;
     var positions = new Map(xs.map(function (x, i) { return [x, i]; }));
     function px(x) { return L + (opt.time ? (Date.parse(x)-Date.parse(xs[0])) / Math.max(1,Date.parse(xs[xs.length-1])-Date.parse(xs[0])) : positions.get(x) / Math.max(1, xs.length - 1)) * (W - L - R); }
-    function py(y) { return T + (max - y) / (max - min) * (H - T - B); }
+    function py(y, series) { var selected = rightScale && series && series.axis==='right' ? rightScale : scale; return T + (selected.max - y) / (selected.max - selected.min) * (H - T - B); }
     var svg = svgEl('svg', { viewBox: '0 0 ' + W + ' ' + H, preserveAspectRatio: 'none', role: 'img', 'aria-label': lines.map(function (s) { return s.name; }).join('、') + '走势，单位' + opt.unit, tabindex: '0' });
     host.appendChild(svg);
+    if (opt.dualAxis) {
+      svg.appendChild(svgEl('text',{x:L,y:16,'text-anchor':'start','font-size':11,fill:COLORS[0]},opt.leftTitle));
+      svg.appendChild(svgEl('text',{x:W-R,y:16,'text-anchor':'end','font-size':11,fill:'#ac863d'},opt.rightTitle));
+      rightScale.ticks.forEach(function(v){var y=T+(rightScale.max-v)/(rightScale.max-rightScale.min)*(H-T-B);svg.appendChild(svgEl('text',{x:W-R+8,y:y+4,'text-anchor':'start','font-size':11,fill:'#ac863d'},rightScale.format(v)));});
+    }
     var axisDigits = opt.unit === '%' || opt.unit === '百分点' ? 1 : 0;
     for (var i = 0; i < scale.ticks.length; i++) {
       var v = scale.ticks[i], y = py(v);
       svg.appendChild(svgEl('line', { x1: L, x2: W - R, y1: y, y2: y, stroke: '#edf0f5' }));
-      svg.appendChild(svgEl('text', { x: L - 8, y: y + 4, 'text-anchor': 'end', 'font-size': 11, fill: '#8a94a5' }, scale.format(v)));
+      svg.appendChild(svgEl('text', { x: L - 8, y: y + 4, 'text-anchor': 'end', 'font-size': 11, fill: opt.dualAxis ? COLORS[0] : '#8a94a5' }, scale.format(v)));
     }
     if (min < 0 && max > 0) svg.appendChild(svgEl('line', { x1: L, x2: W - R, y1: py(0), y2: py(0), stroke: '#c3c9d8', 'stroke-dasharray': '4 4' }));
     Array.from(new Set([0, Math.round((xs.length - 1) / 3), Math.round((xs.length - 1) * 2 / 3), xs.length - 1])).forEach(function (i) {
@@ -401,17 +408,17 @@
     });
     lines.forEach(function (s) {
       var path = '', started = false, previous = null;
-      s.pts.forEach(function (p) { if (M.num(p.y) == null) { started = false; previous = null; return; } if(opt.time && previous && Date.parse(p.x)-Date.parse(previous)>s.gap) started=false; path += (started ? 'L' : 'M') + px(p.x).toFixed(1) + ' ' + py(p.y).toFixed(1); started = true; previous=p.x; });
+      s.pts.forEach(function (p) { if (M.num(p.y) == null) { started = false; previous = null; return; } if(opt.time && previous && Date.parse(p.x)-Date.parse(previous)>s.gap) started=false; path += (started ? 'L' : 'M') + px(p.x).toFixed(1) + ' ' + py(p.y,s).toFixed(1); started = true; previous=p.x; });
       var attrs = { d: path, fill: 'none', stroke: s.color, 'stroke-width': 2.5, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' };
       if (s.dash) attrs['stroke-dasharray'] = '5 5'; svg.appendChild(svgEl('path', attrs));
-      s.pts.forEach(function(p,i){if(M.num(p.y)!=null&&(i%Math.max(1,Math.ceil(s.pts.length/60))===0||i===s.pts.length-1))svg.appendChild(svgEl('circle',{cx:px(p.x),cy:py(p.y),r:3.2,fill:'white',stroke:s.color,'stroke-width':1.8}));});
+      s.pts.forEach(function(p,i){if(M.num(p.y)!=null&&(i%Math.max(1,Math.ceil(s.pts.length/60))===0||i===s.pts.length-1))svg.appendChild(svgEl('circle',{cx:px(p.x),cy:py(p.y,s),r:3.2,fill:'white',stroke:s.color,'stroke-width':1.8}));});
     });
     var legend = document.createElement('div'); legend.className = 'hd-legend';
     legend.innerHTML = lines.map(function (s) { return '<span><i style="background:' + s.color + '"></i>' + esc(s.name) + (s.dash ? '（虚线）' : '') + '</span>'; }).join(''); host.appendChild(legend);
     var maps = lines.map(function(s){return new Map(s.pts.map(function(p){return [p.x,p];}));});
     SiteCharts.attach(host, xs.map(function(key){
-      var first=maps.map(function(map){return map.get(key);}).find(function(p){return p&&M.num(p.y)!=null;});
-      return {x:px(key),y:first?py(first.y):T,text:(first&&first.date?first.date:key)+'\n'+lines.map(function(s,i){var p=maps[i].get(key);return s.name+'：'+fmt(p?p.y:null,1)+' '+(opt.unit||'');}).join('\n')};
+      var firstIndex=maps.findIndex(function(map){var p=map.get(key);return p&&M.num(p.y)!=null;}), first=firstIndex>=0?maps[firstIndex].get(key):null;
+      return {x:px(key),y:first?py(first.y,lines[firstIndex]):T,text:(first&&first.date?first.date:key)+'\n'+lines.map(function(s,i){var p=maps[i].get(key);return s.name+'：'+fmt(p?p.y:null,1)+' '+(opt.unit||'');}).join('\n')};
     }));
 
   }
