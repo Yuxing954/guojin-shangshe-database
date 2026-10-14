@@ -2,6 +2,7 @@ import copy,json,sys,unittest
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'update'))
 import macro_auto as M
+from test_macro_due import DueWindowTests
 
 class AutomaticMacroTests(unittest.TestCase):
     def setUp(self):
