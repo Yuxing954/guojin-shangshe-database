@@ -108,3 +108,37 @@ body.dutyfree-page {
 .dutyfree-page .chart .tooltip strong { margin-left:auto; font-size:12px; color:#333d57; }
 .combo-hit:focus { outline:none; }
 @media(max-width:640px) { .combo-legend { gap:12px; padding:14px 12px 8px; } .combo-legend .legend-hint { display:none; } }
+
+/* One layout for monthly and holiday dutyfree views. */
+body.site-page.dutyfree-page .industry-board{width:100%;min-width:0;max-width:100%}
+body.site-page.dutyfree-page #tabs .tab.on{background:var(--accent,#5158aa)!important;color:#fff!important;border-color:var(--accent,#5158aa)!important;box-shadow:none}
+body.site-page.dutyfree-page :is(#view-monthly,#dutyfree-holidays)>.board-section-head{display:flex;align-items:center;padding:0!important;margin:0 0 12px!important;border:0;min-height:24px}
+body.site-page.dutyfree-page .dutyfree-filters{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px!important;margin:0 0 8px!important;padding:0}
+body.site-page.dutyfree-page .dutyfree-filters>button{order:2}
+body.site-page.dutyfree-page :is(#hn-period,#dh-summary-period){margin:0 0 16px!important;font-size:12px!important;line-height:20px!important;color:#748194}
+body.site-page.dutyfree-page :is(.kpis,.dh-cards).board-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:16px;margin:0 0 24px!important}
+body.site-page.dutyfree-page :is(.kpis,.dh-cards)>.board-stat{display:flex;flex-direction:column;justify-content:flex-start;gap:8px;min-width:0;min-height:140px;padding:16px!important;border:1px solid var(--line);border-radius:12px;background:#fff}
+body.site-page.dutyfree-page .board-stat>span{font-size:13px!important;line-height:21px}
+body.site-page.dutyfree-page .board-stat .dh-value{display:contents}
+body.site-page.dutyfree-page .board-stat strong{display:block;margin:0!important;font-size:28px!important;font-weight:600;line-height:38px!important;white-space:normal}
+body.site-page.dutyfree-page .board-stat strong :is(em,small){font-size:13px!important;line-height:21px;font-weight:400;font-style:normal;color:#748194}
+body.site-page.dutyfree-page .board-stat>:is(small),body.site-page.dutyfree-page .board-stat .dh-yoy{font-size:13px!important;font-weight:400!important;line-height:21px!important;white-space:normal}
+body.site-page.dutyfree-page :is(.board-panel,.board-panel-head,.trend-controls){min-width:0;max-width:100%}
+body.site-page.dutyfree-page .board-panel-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}
+body.site-page.dutyfree-page .trend-controls{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+body.site-page.dutyfree-page .trend-controls label{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#748194}
+body.site-page.dutyfree-page #dh-chart{padding:0 16px 16px}
+body.site-page.dutyfree-page #dh-chart svg{display:block;width:100%;max-width:100%;height:auto}
+@media(max-width:760px){
+ body.site-page.dutyfree-page :is(select,input){font-size:16px!important;max-width:100%;min-width:0}
+ body.site-page.dutyfree-page :is(.kpis,.dh-cards).board-kpis{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px}
+ body.site-page.dutyfree-page :is(.kpis,.dh-cards)>.board-stat:last-child{grid-column:1/-1}
+ body.site-page.dutyfree-page .board-stat strong{font-size:24px!important;line-height:34px!important}
+ body.site-page.dutyfree-page .board-panel-head .trend-controls{width:100%}
+ body.site-page.dutyfree-page .trend-modes{flex-wrap:wrap;max-width:100%}
+ body.site-page.dutyfree-page .dutyfree-filters>button{min-height:36px}
+}
+
+body.site-page.dutyfree-page #dutyfree-holidays{margin:0!important}
+body.site-page.dutyfree-page .board-section-head h2{margin:0!important}
+@media(max-width:760px){body.site-page.dutyfree-page :is(.kpis,.dh-cards)>.board-stat:last-child{grid-column:1/-1!important}}
