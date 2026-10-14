@@ -20,3 +20,5 @@
 .hotel-page .hd-kpis{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}.hd-supply-stats.hd-supply-four{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}@media(max-width:760px){.hotel-page .hd-kpis{grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}.hd-supply-stats.hd-supply-four{grid-template-columns:repeat(auto-fit,minmax(125px,1fr))}}
 
 
+
+.hd-tier-trend{margin-top:24px;padding-top:20px;border-top:1px solid #e0e6ef}.hd-tier-trend>h3{margin:0 20px 4px;font-size:17px;line-height:26px;font-weight:600;color:#254866}.hd-tier-trend>.hd-chart-caption{margin-left:20px;margin-right:20px}
