@@ -1,0 +1,409 @@
+{
+  "version": 1,
+  "fetchedAt": "2026-10-15T09:33:01+08:00",
+  "series": {
+    "cn-cpi": {
+      "name": "中国:预测值:CPI:同比(%)",
+      "frequency": "monthly",
+      "unit": "%",
+      "basis": "当月同比",
+      "aggregation": null,
+      "vintageVerified": false,
+      "sourceName": "Choice 预测值",
+      "sourceUrl": "https://choicew2z.eastmoney.com/dataDisplay/macroEDB/#/index?macroids=EMM00072301,EMM00256102",
+      "fetchedAt": "2026-10-15T09:33:01+08:00",
+      "receipt": "data/macro/expectation-receipts/2026-10-15-cpi.json",
+      "observations": [
+        {
+          "period": "2025-01",
+          "value": 0.5,
+          "rawValue": "0.5",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2025-02",
+          "value": -0.4435,
+          "rawValue": "-0.4435",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2025-03",
+          "value": -0.0619,
+          "rawValue": "-0.0619",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2025-04",
+          "value": -0.09,
+          "rawValue": "-0.09",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2025-05",
+          "value": -0.2438,
+          "rawValue": "-0.2438",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2025-06",
+          "value": -0.003,
+          "rawValue": "-0.003",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2025-07",
+          "value": -0.094,
+          "rawValue": "-0.094",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2025-08",
+          "value": -0.212,
+          "rawValue": "-0.212",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2025-09",
+          "value": -0.1059,
+          "rawValue": "-0.1059",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2025-10",
+          "value": 0.0606,
+          "rawValue": "0.0606",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2025-11",
+          "value": 0.6945,
+          "rawValue": "0.6945",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2025-12",
+          "value": 0.7092,
+          "rawValue": "0.7092",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2026-01",
+          "value": 0.2753,
+          "rawValue": "0.2753",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2026-02",
+          "value": 0.8527,
+          "rawValue": "0.8527",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2026-03",
+          "value": 1.173,
+          "rawValue": "1.173",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2026-04",
+          "value": 0.9431,
+          "rawValue": "0.9431",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2026-05",
+          "value": 1.506,
+          "rawValue": "1.506",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2026-06",
+          "value": 1.163,
+          "rawValue": "1.163",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2026-07",
+          "value": 0.7913,
+          "rawValue": "0.7913",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2026-08",
+          "value": 0.7706,
+          "rawValue": "0.7706",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2026-09",
+          "value": 1.028,
+          "rawValue": "1.028",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2026-10",
+          "value": 1.05,
+          "rawValue": "1.05",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        }
+      ],
+      "receiptSha256": "fb6757f576d5b4a2d6b84eeb83f95070c556fcf15d7666d499decd9d5e7e4995"
+    },
+    "cn-gdp-quarter": {
+      "name": "中国:预测值:GDP:同比(%)",
+      "frequency": "quarterly",
+      "unit": "%",
+      "basis": "季度同比；实际/名义定义待核验",
+      "aggregation": null,
+      "vintageVerified": false,
+      "sourceName": "Choice 预测值",
+      "sourceUrl": "https://choicew2z.eastmoney.com/dataDisplay/macroEDB/#/index?macroids=EMM00619381,EMM01526652,EMM00256100",
+      "fetchedAt": "2026-10-15T09:33:01+08:00",
+      "receipt": "data/macro/expectation-receipts/2026-10-15-gdp.json",
+      "observations": [
+        {
+          "period": "2025-Q1",
+          "value": 5.022,
+          "rawValue": "5.022",
+          "forecastDate": null,
+          "comparisonAllowed": false
+        },
+        {
+          "period": "2025-Q2",
+          "value": 5.026,
+          "rawValue": "5.026",
+          "forecastDate": null,
+          "comparisonAllowed": false
+        },
+        {
+          "period": "2025-Q3",
+          "value": 4.645,
+          "rawValue": "4.645",
+          "forecastDate": null,
+          "comparisonAllowed": false
+        },
+        {
+          "period": "2025-Q4",
+          "value": 4.487,
+          "rawValue": "4.487",
+          "forecastDate": null,
+          "comparisonAllowed": false
+        },
+        {
+          "period": "2026-Q1",
+          "value": 4.691,
+          "rawValue": "4.691",
+          "forecastDate": null,
+          "comparisonAllowed": false
+        },
+        {
+          "period": "2026-Q2",
+          "value": 4.507,
+          "rawValue": "4.507",
+          "forecastDate": null,
+          "comparisonAllowed": false
+        },
+        {
+          "period": "2026-Q3",
+          "value": 4.561,
+          "rawValue": "4.561",
+          "forecastDate": null,
+          "comparisonAllowed": false
+        },
+        {
+          "period": "2026-Q4",
+          "value": 4.68,
+          "rawValue": "4.68",
+          "forecastDate": null,
+          "comparisonAllowed": false
+        }
+      ],
+      "receiptSha256": "3b9790e89360fa79c988f5d416eefbf1812d3d32d0bb77f2d33fdd27db7142e8"
+    },
+    "cn-retail": {
+      "name": "中国:预测值:社会消费品零售总额:同比(%)",
+      "frequency": "monthly",
+      "unit": "%",
+      "basis": "同比；1—2月合并口径待核验",
+      "aggregation": null,
+      "vintageVerified": false,
+      "sourceName": "Choice 预测值",
+      "sourceUrl": "https://choicew2z.eastmoney.com/dataDisplay/macroEDB/#/index?macroids=EMM01766437,EMM01766413,EMM01766461",
+      "fetchedAt": "2026-10-15T09:33:01+08:00",
+      "receipt": "data/macro/expectation-receipts/2026-10-15-retail.json",
+      "observations": [
+        {
+          "period": "2025-02",
+          "value": 4.5,
+          "rawValue": "4.5",
+          "forecastDate": null,
+          "comparisonAllowed": false
+        },
+        {
+          "period": "2025-03",
+          "value": 4.36,
+          "rawValue": "4.36",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2025-04",
+          "value": 5.48,
+          "rawValue": "5.48",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2025-05",
+          "value": 4.84,
+          "rawValue": "4.84",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2025-06",
+          "value": 5.56,
+          "rawValue": "5.56",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2025-07",
+          "value": 4.87,
+          "rawValue": "4.87",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2025-08",
+          "value": 3.82,
+          "rawValue": "3.82",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2025-09",
+          "value": 3.11,
+          "rawValue": "3.11",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2025-10",
+          "value": 2.62,
+          "rawValue": "2.62",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2025-11",
+          "value": 2.93,
+          "rawValue": "2.93",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2025-12",
+          "value": 1.42,
+          "rawValue": "1.42",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2026-02",
+          "value": 2.8,
+          "rawValue": "2.8",
+          "forecastDate": null,
+          "comparisonAllowed": false
+        },
+        {
+          "period": "2026-03",
+          "value": 2.45,
+          "rawValue": "2.45",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2026-04",
+          "value": 2.03,
+          "rawValue": "2.03",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2026-05",
+          "value": 0.09,
+          "rawValue": "0.09",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2026-06",
+          "value": 0.09,
+          "rawValue": "0.09",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2026-07",
+          "value": 1.33,
+          "rawValue": "1.33",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2026-08",
+          "value": 0.73,
+          "rawValue": "0.73",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2026-09",
+          "value": 0.68,
+          "rawValue": "0.68",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        },
+        {
+          "period": "2026-12",
+          "value": 3.0,
+          "rawValue": "3",
+          "forecastDate": null,
+          "comparisonAllowed": true
+        }
+      ],
+      "receiptSha256": "964d4795f03fe4570ead1608819b1fafa4a55dec2be35727e4222ab538e26894"
+    }
+  },
+  "notes": [
+    "Choice预测值；接口未披露均值/中位数定义与调查发布日期，不标为公布前市场一致预期。",
+    "历史差值仅为当前实际值减当前返回预测值，不代表公布时超预期；未取得公布前版本。",
+    "GDP预测序列未进一步说明实际/名义口径，保留季度同比预测，暂不与实际GDP计算差值。",
+    "社零1—2月预测值的合并口径未核验，保留原始期间，不拆分或参与差值。",
+    "未来期间为预测对象期间，不能用作预测发布日期；未知发布日期保持空值。",
+    "美国同类预测尚未取得匹配序列；不以IMF年度预测或实际值替代。"
+  ]
+}

@@ -9,7 +9,7 @@
     dutyfree:{name:'免税',files:['data/dutyfree/holidays.json','data/dutyfree/monthly-provenance.json','data/dutyfree/sources.json'],docs:['docs/dutyfree-holidays.md']},
     gold:{name:'黄金',files:['data/gold-jewelry/research.json','data/gold-jewelry/macro.json','data/gold-jewelry/observations.json'],docs:['docs/gold-jewelry-database.md']},
     dining:{name:'餐饮',files:['data/sectors/dining.json'],docs:[]},
-    macro:{name:'宏观与消费',files:['data/macro/coverage.json','data/macro/catalog.json','data/consumption-macro/observations.json','data/macro/automatic-series.json'],docs:['docs/macro-data.md','docs/consumption-macro.md']},
+    macro:{name:'宏观与消费',files:['data/macro/coverage.json','data/macro/catalog.json','data/consumption-macro/observations.json','data/macro/automatic-series.json','data/macro/expectations.json'],docs:['docs/macro-data.md','docs/consumption-macro.md','docs/macro-expectations.md']},
     companies:{name:'重点公司',files:['data/companies/issues.json','data/companies/sources.json','data/companies/workbook-disclosures.json'],docs:['docs/company-database.md']},
     earnings:{name:'财报日历',files:['data/earnings-calendar.json'],docs:['docs/earnings-workbench.md']},
     research:{name:'观点纪要',files:['data/research/updates/manifest.json'],docs:['docs/research-library.md']},
@@ -28,6 +28,7 @@
     if(id==='companies'&&values[2])out.push('三份用户底稿逐单元格转录，保留原单位、报告期、页码、证据编号和截图位置；缺失不转零。',...((values[2].issues)||[]).map(i=>i.message));
     if(id==='companies')out.push(...(a.issues||[]).map(i=>[i.period,i.locator,i.message].filter(Boolean).join(' · ')));
     if(id==='macro'){
+      out.push(...(values[4]?.notes||[]));
       for(const [key,c] of Object.entries(a.series||{}))out.push(key+'：'+[c.start+' — '+c.end,c.count+'期',c.missingPeriods?.length?'缺期 '+c.missingPeriods.join('、'):'',c.historyShort?'历史覆盖不足':'',c.status==='error'?'更新失败，保留历史':''].filter(Boolean).join(' · '));
       const consumption=values[2]&&values[3]&&!values[3].loadError?ConsumptionMacro.mergeAutomatic(values[2],values[3]):values[2];if(consumption&&window.ConsumptionMacro)for(const i of consumption.indicators||[]){const c=ConsumptionMacro.scopeCoverage(consumption,i.id);out.push(i.name+'：'+(c?[c.start+' — '+c.end,c.count+'期',c.missingPeriods.length?'缺期 '+c.missingPeriods.join('、'):'',c.valueMissing?'数值缺失 '+c.valueMissing+'条':''].filter(Boolean).join(' · '):i.pendingReason||'暂无数据'));}
       out.push('1—2月按合并披露保留；全年不加总舍入月值；不由舍入金额重算同比。发布日期未返回时留空。');

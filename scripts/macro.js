@@ -1,6 +1,7 @@
 (function(){
   'use strict';
-  const M=window.MacroModel,D=window.MacroDashboardModel,$=id=>document.getElementById(id);
+  const M=window.MacroModel,D=window.MacroDashboardModel,E=window.MacroExpectations,$=id=>document.getElementById(id);
+  let expectations;
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const number=v=>M.finite(v)?new Intl.NumberFormat('zh-CN',{maximumFractionDigits:2}).format(v):'—';
   const compact=v=>!M.finite(v)?'—':Math.abs(v)>=1e12?number(v/1e12)+'万亿':Math.abs(v)>=1e8?number(v/1e8)+'亿':number(v);
@@ -75,6 +76,12 @@
     $('comparison').value=state.comparison;$('comparison').onchange=e=>{state.comparison=e.target.value;renderDetail();save();};
     $('mode').value=state.mode;$('years').value=String(state.years);
     $('mode').onchange=e=>{state.mode=e.target.value;renderDetail();save();};$('years').onchange=e=>{state.years=+e.target.value;renderDetail();save();};
+    const forecastHost=document.createElement('div');forecastHost.className='macro-forecast-detail';forecastHost.innerHTML=E.history(expectations,spec,data);$('detail').append(forecastHost);
+    if(E.ids.includes(spec.id)){
+      const info=document.createElement('div');info.className='macro-forecast-latest';const forecast=E.lookup(expectations,spec.id,latest.period),delta=E.difference(expectations,spec,latest);
+      info.innerHTML='<span>同期间 Choice 预测 <b>'+number(forecast?.value)+'%</b></span><span>实际−预测 <b>'+number(delta)+'</b> 个百分点</span>'+(expectations?.series[spec.id]?link(expectations.series[spec.id].sourceUrl,'预测来源 ↗'):'');$('detail').querySelector('.macro-latest').after(info);
+      const forecastDownload=document.createElement('button');forecastDownload.className='portal-button';forecastDownload.textContent='下载预测 CSV';forecastDownload.onclick=()=>download(E.csv(expectations,spec,data),spec.id+'-expectations.csv');$('detail').querySelector('.macro-detail-actions').append(forecastDownload);
+    }
     $('download').onclick=()=>download(M.csv(spec,data,source),spec.id+'.csv');
     $('prev').onclick=()=>{page--;renderHistory(spec,data);};$('next').onclick=()=>{page++;renderHistory(spec,data);};renderHistory(spec,data);
   }
@@ -97,6 +104,8 @@
       return '<button class="board-stat macro-kpi" data-kpi="'+esc(id)+'" aria-pressed="'+(id===state.id)+'" aria-label="'+esc(spec.name+'，'+compact(head.value)+' '+head.unit+'，'+(latest?.period||'暂无数据')+'，查看历史')+'"><span class="macro-kpi-top"><span>'+esc(spec.name)+'</span><span class="readout-selected">'+(id===state.id?'已选':'趋势 ↗')+'</span></span><span class="macro-kpi-period">'+esc((latest?.period||'暂无数据')+' · '+M.frequency[spec.frequency]+(head.label?' · '+head.label:''))+'</span><span class="macro-reading-row"><span class="macro-kpi-reading"><strong class="board-stat-value">'+compact(head.value)+'</strong><small>'+esc(head.unit)+'</small></span>'+spark(spec,data)+'</span><span class="macro-kpi-bottom"><span class="macro-kpi-change '+(delta?.value>0?'macro-up':delta?.value<0?'macro-down':'')+'">'+(delta?esc(delta.label)+' '+(delta.value>0?'+':'')+number(delta.value)+' '+esc(delta.unit):'上期差值 —')+'</span><span class="macro-kpi-previous">上期 '+number(head.previous?.chartValue)+' '+esc(head.unit)+'</span></span>'+(latest?.releaseDate?'<span class="macro-kpi-release">发布日期 '+esc(latest.releaseDate)+'</span>':'')+''+(status!=='已收录'||data.coverage?.missingPeriods?.length?'<span class="macro-kpi-note">'+esc(status!=='已收录'?status:'历史存在缺期')+'</span>':'')+'</button>';
     };
     $('kpi-grid').innerHTML=topics.map((topic,index)=>'<section class="macro-topic"><h3><span>'+String(index+1).padStart(2,'0')+'</span>'+esc(topic.title)+'</h3><div class="macro-topic-cards">'+topic.ids.map(card).join('')+'</div></section>').join('');
+    for(const button of $('kpi-grid').querySelectorAll('[data-kpi]')){const spec=catalog.series.find(s=>s.id===button.dataset.kpi);button.insertAdjacentHTML('beforeend',E.card(expectations,spec,M.rows(snapshot.series[spec.id]).at(-1)));}
+    $('forecast-overview')?.remove();const forecasts=document.createElement('div');forecasts.id='forecast-overview';forecasts.innerHTML=E.overview(expectations,catalog,snapshot,state.country);$('kpi-grid').after(forecasts);
     MacroMorning.render(catalog,snapshot,state.country,selectMetric);
   }
   function render(){
@@ -133,12 +142,14 @@
     if(state.view==='fedwatch'){showView();return;}
     if(state.view==='predictions'){predictions=null;showView();return;}
     $('load-state').textContent='正在读取宏观数据…';$('retry').hidden=true;$('skeleton').hidden=false;$('data-warning').hidden=true;
-    const results=await Promise.allSettled([read('data/macro/catalog.json'),read('data/macro/snapshot.json'),read('data/consumption-macro/observations.json'),read('data/macro/automatic-series.json')]);
+    const results=await Promise.allSettled([read('data/macro/catalog.json'),read('data/macro/snapshot.json'),read('data/consumption-macro/observations.json'),read('data/macro/automatic-series.json'),read('data/macro/expectations.json')]);
     $('skeleton').hidden=true;
     if(results[0].status==='fulfilled'&&results[1].status==='fulfilled'){
       const nextCatalog=results[0].value,nextSnapshot=results[1].value;
       if(!Array.isArray(nextCatalog.series)||!nextCatalog.sources||!nextSnapshot.series){$('load-state').textContent='宏观数据格式错误。';$('retry').hidden=false;return;}
       catalog=nextCatalog;snapshot=nextSnapshot;const warnings=[];
+      expectations=null;
+      if(results[4].status==='fulfilled'){try{expectations=E.validate(results[4].value);}catch{warnings.push('预测数据核验未通过');}}else warnings.push('预测数据读取失败');
       if(results[2].status==='fulfilled'){
         try{const copy=JSON.parse(JSON.stringify(snapshot));M.mergeConsumption(catalog,copy,results[2].value);snapshot=copy;}
         catch{warnings.push('消费披露核验未通过');}
@@ -148,6 +159,7 @@
         catch{warnings.push('补充历史核验未通过');}
       }else warnings.push('补充历史读取失败');
       if(warnings.length){$('data-warning').textContent=warnings.join('；')+'。当前展示可用快照，部分指标及历史可能不完整。';$('data-warning').hidden=false;$('retry').hidden=false;}
+      snapshot.expectations=expectations;
       const legacy=catalog.series.find(s=>s.country===state.country&&s.category===params.get('category')&&M.groupOf(s.id));
       if(!state.group&&legacy)state.group=M.groupOf(legacy.id).id;
       if(!M.groups.some(g=>g.id===state.group))state.group='';
