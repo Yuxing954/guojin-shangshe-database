@@ -33,6 +33,12 @@ class AutomaticMacroTests(unittest.TestCase):
             with self.assertRaises(ValueError):self.result(t)
     def test_index_conversion_unknown_release_and_real_gap(self):
         d=self.result();self.assertEqual([r['value'] for r in d['observations']],[0,2.1]);self.assertIsNone(d['observations'][0]['releaseDate']);self.assertEqual(d['coverage']['missingPeriods'],['2025-02'])
+    def test_official_merge_preserves_a_known_release_date_when_source_omits_it(self):
+        old=[{'period':'2026-09','value':336.94,'releaseDate':'2026-10-14'}]
+        incoming=[{'period':'2026-09','value':336.94,'releaseDate':None}]
+        self.assertEqual(M.preserve_release_dates(old,incoming)[0]['releaseDate'],'2026-10-14')
+        incoming=[{'period':'2026-09','value':337.01,'releaseDate':'2026-11-12'}]
+        self.assertEqual(M.preserve_release_dates(old,incoming)[0]['releaseDate'],'2026-11-12')
     def test_structural_months_and_short_history(self):
         rows=[{'period':'2025-03','value':1},{'period':'2026-03','value':2}]
         d=M.coverage(rows,{**self.spec,'expectedMissingMonths':[1,2]})
