@@ -2,7 +2,7 @@
 """Build a dated 16:00 Asia/Shanghai digest; see docs/daily-report.md."""
 import argparse, csv, datetime as dt, hashlib, json, re, subprocess
 from pathlib import Path
-from daily_scope import sector_for
+from daily_scope import sector_for,title_for,published_for
 from research_sources import merge_rows, update_rows, archive_rows
 ROOT=Path(__file__).resolve().parent.parent
 TZ=dt.timezone(dt.timedelta(hours=8))
@@ -35,7 +35,7 @@ def research(end):
     for db,file,kind in [('views','商社-市场观点.csv','briefs'),('all_views','全部-市场观点.csv','views')]:
         with (ROOT/'data'/file).open(encoding='utf-8-sig') as f: base=list(csv.DictReader(f))
         for r in merge_rows(archive_rows(ROOT,db,base),update_rows(ROOT,db)):
-            when=r.get('时间',''); body=r.get('内容','').strip(); title=r.get('标题','').strip()
+            when=published_for(r); body=r.get('内容','').strip(); title=title_for(r.get('标题','').strip(),body)
             if not inside(when,end,window_hours(end)): continue
             sector=sector_for(title,body)
             if not sector:
@@ -71,7 +71,7 @@ def numeric_candidates(payload,path):
     return out
 
 def important_data(end):
-    start=end-dt.timedelta(hours=72); out=[]; seen=set()
+    start=end-dt.timedelta(hours=24); out=[]; seen=set()
     for path in ['data/home-snapshot.json','data/consumption-macro/observations.json','data/macro/automatic-series.json']:
         # Compare content at the cutoff with content before the window, not file mtime/check time.
         head=git('log','-1','--format=%H','--before='+end.isoformat(),'--',path)
@@ -80,6 +80,7 @@ def important_data(end):
         current=numeric_candidates(json.loads(git('show',head+':'+path)),path)
         previous=numeric_candidates(json.loads(git('show',old+':'+path)),path) if old else {}
         for key,r in current.items():
+            if len(str(r.get('publishedAt') or ''))<=10 or not inside(r.get('publishedAt'),end,24): continue
             before=previous.get(key,{})
             if all(r.get(k)==before.get(k) for k in ['value','period','change']): continue
             identity=(r['title'],r['period'],str(r['value']))
@@ -97,7 +98,7 @@ def build(end):
         if not r.get('url','').startswith('https://') or r['url'] in seen: continue
         seen.add(r['url']); news.append(r)
     sections['news']=sorted(news,key=lambda r:(r.get('importance',0),r['publishedAt']),reverse=True)[:12]
-    return {'schemaVersion':1,'date':end.date().isoformat(),'cutoff':end.isoformat(),'windowStart':(end-dt.timedelta(hours=window_hours(end))).isoformat(),'windowHours':window_hours(end),'generatedAt':dt.datetime.now(TZ).isoformat(timespec='seconds'),'sections':sections,'coverage':{'researchSourceTo':read('data/research/updates/manifest.json',{}).get('coverageTo'),'newsCheckedAt':feed.get('checkedAt'),'newsStatus':feed.get('status','未核验'),'excludedResearchRows':excluded},'notes':['重要数据按截点前72小时已提交数值/统计期变化筛选；入库更新不等同于新披露，最多30项。','段子、市场观点按原始发布时间筛选新增窗口（周一72小时、其他日24小时），按经营/业绩/数据关键词排序，各取12条；保留原文，不将观点改写为新闻。','新闻仅收录已核验原文、分钟级发布时间及来源链接的记录；空栏不代表市场没有新闻。','每日16:00北京时间截点；自动任务启动、检索和发布可能延迟。']}
+    return {'schemaVersion':1,'date':end.date().isoformat(),'cutoff':end.isoformat(),'windowStart':(end-dt.timedelta(hours=window_hours(end))).isoformat(),'windowHours':window_hours(end),'industryWindowHours':24,'industryWindowStart':(end-dt.timedelta(hours=24)).isoformat(),'industryWindowEnd':end.isoformat(),'generatedAt':dt.datetime.now(TZ).isoformat(timespec='seconds'),'sections':sections,'coverage':{'researchSourceTo':read('data/research/updates/manifest.json',{}).get('coverageTo'),'newsCheckedAt':feed.get('checkedAt'),'newsStatus':feed.get('status','未核验'),'excludedResearchRows':excluded},'notes':['重要数据仅按截点前24小时真实发布时间筛选；入库时间不替代发布时间。','段子、市场观点按原始发布时间筛选新增窗口（周一72小时、其他日24小时）；全部符合范围的内容供AI逐篇编辑。','新闻仅收录已核验原文、分钟级发布时间及来源链接的记录；空栏不代表市场没有新闻。','每日16:00北京时间截点；自动任务启动、检索和发布可能延迟。']}
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--date'); a=p.parse_args(); now=dt.datetime.now(TZ)

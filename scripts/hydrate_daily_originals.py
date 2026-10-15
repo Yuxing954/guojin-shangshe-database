@@ -2,6 +2,7 @@
 import argparse,csv,hashlib,json
 from build_daily_report import ROOT,stamp
 from research_sources import archive_rows,merge_rows,update_rows
+from daily_scope import published_for
 
 def normalize_url(url):return str(url).split('#')[0].split('?')[0].rstrip('/')
 def corpus():
@@ -19,7 +20,7 @@ def hydrate(d,rows):
   for source in item['sources']:
    key=normalize_url(source['url']);r=rows.get(key)
    if not r or not r.get('内容','').strip():raise ValueError('Missing complete stored source: '+source['url'])
-   body=r['内容'];originals[key]={'url':source['url'],'title':r['标题'],'publishedAt':stamp(r['时间']).isoformat(),'body':body,'sha256':hashlib.sha256(body.encode()).hexdigest()}
+   body=r['内容'];originals[key]={'url':source['url'],'title':r['标题'],'publishedAt':stamp(published_for(r)).isoformat(),'body':body,'sha256':hashlib.sha256(body.encode()).hexdigest()}
  d['originals']=originals
  return d
 if __name__=='__main__':

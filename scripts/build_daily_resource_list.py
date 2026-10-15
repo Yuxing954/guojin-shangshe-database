@@ -3,7 +3,7 @@ import argparse,csv,datetime as dt,hashlib,json,re
 from pathlib import Path
 from build_daily_report import ROOT,TZ,stamp,window_hours
 from research_sources import merge_rows,update_rows,archive_rows
-from daily_scope import sector_for,is_ecommerce_topic,EXCLUDE
+from daily_scope import sector_for,is_ecommerce_topic,EXCLUDE,title_for,published_for
 
 def filename_key(name):return re.sub(r'[\s—\-_]+','',name).lower()
 def within(value,start,end):
@@ -20,7 +20,7 @@ def build(date,cutoff=None):
  for db,file in [('views','商社-市场观点.csv'),('all_views','全部-市场观点.csv')]:
   with (ROOT/'data'/file).open(encoding='utf-8-sig') as f:base=list(csv.DictReader(f))
   for r in merge_rows(archive_rows(ROOT,db,base),update_rows(ROOT,db)):
-   title=r.get('标题','');body=r.get('内容','');when=r.get('时间');sector=sector_for(title,body)
+   body=r.get('内容','');title=title_for(r.get('标题',''),body);when=published_for(r);sector=sector_for(title,body)
    if not sector or not within(when,start,end) or len(body.strip())<80:continue
    url=r.get('原文链接','');identity=re.sub(r'\s','',body)
    if identity in seen or url in seen:continue

@@ -1,0 +1,127 @@
+{
+  "date": "2026-10-15",
+  "checkedAt": "2026-10-15T16:05:32+08:00",
+  "sourceCommit": "f34706f8384b0887eaf31c93b5c3293d12f9e387",
+  "window": {
+    "start": "2026-10-14T16:00:00+08:00",
+    "end": "2026-10-15T16:00:00+08:00"
+  },
+  "sourceCoverage": {
+    "research": "2026-10-15T14:00:12.328+0800",
+    "attachmentCatalog": {
+      "generatedAt": "2026-10-14T17:11:04+08:00",
+      "sourceThrough": "2026-10-14T15:16:32.032+0800"
+    },
+    "attachmentContentRead": false
+  },
+  "usCpi": {
+    "url": "https://www.bls.gov/news.release/cpi.htm",
+    "publishedAt": "2026-10-14T20:30:00+08:00",
+    "releaseId": "USDL-26-1574",
+    "releaseLocal": "2026-10-14 08:30 America/New_York",
+    "period": "2026-09",
+    "values": {
+      "headlineYoy": 3.7,
+      "coreYoy": 2.6,
+      "headlineSaMom": 0.6,
+      "coreSaMom": 0.3,
+      "gasolineSaMom": 9.1,
+      "servicesLessEnergyYoy": 3.1,
+      "servicesLessEnergySaMom": 0.4
+    },
+    "basis": {
+      "yoy": "not seasonally adjusted",
+      "mom": "seasonally adjusted"
+    },
+    "gasolineContribution": "more than half of monthly all-items increase",
+    "verifiedPageTitle": "Consumer Price Index News Release - 2026 M09 Results",
+    "editorialInference": "能源成本及服务价格黏性使出海品牌的成本传导与利润质量更重要"
+  },
+  "industryScan": {
+    "hours": 24,
+    "sectors": [
+      "酒店",
+      "旅游出行",
+      "免税",
+      "餐饮",
+      "零售",
+      "黄金珠宝",
+      "教育人服",
+      "消费宏观"
+    ],
+    "sources": [
+      "https://www.stats.gov.cn/",
+      "https://www.caac.gov.cn/",
+      "https://data.mofcom.gov.cn/",
+      "https://www.customs.gov.cn/",
+      "https://china.gold.org/goldhub/research/gold-demand-trends",
+      "https://www.bls.gov/news.release/cpi.htm"
+    ],
+    "status": "公开检索已进行，仅对核实发布时间及正文的数据入栏；不代表全行业无其他更新",
+    "excluded": [
+      {
+        "item": "中国9月CPI",
+        "reason": "10月14日09:30早于本期24小时窗口"
+      },
+      {
+        "item": "酒店W41",
+        "reason": "只有10月12日入库时间，不是窗口内新发布"
+      },
+      {
+        "item": "国庆消费复盘",
+        "reason": "新研报转载历史经营数据不改变数据本身发布时间"
+      }
+    ]
+  },
+  "earnings": {
+    "calendarFile": "data/earnings-calendar.json",
+    "calendarUpdatedAt": "2026-10-12T03:23:54.024Z",
+    "calendarBlob": "f087cb7e2fd013bca9687620f0fa905ca9eaac35",
+    "recordsChecked": 476,
+    "from": "2026-10-15",
+    "to": "2026-10-18",
+    "eligibleRecords": 0,
+    "receiptFiles": [
+      "data/earnings-choice-receipts.json",
+      "data/earnings-choice-expansion-receipts.json",
+      "data/earnings-choice-focused-receipts.json",
+      "data/earnings-choice-focused-extra-receipts.json"
+    ],
+    "publicChecks": [
+      {
+        "url": "https://www.sse.com.cn/disclosure/listedinfo/periodic/",
+        "status": "页面可读取但未取得覆盖公司完整动态结果"
+      },
+      {
+        "url": "https://investor.neworiental.org/press-releases",
+        "status": "公告10月28日发布业绩，超出范围故不列"
+      },
+      {
+        "url": "https://atour.gcs-web.com/news-events/news-releases",
+        "status": "页面读取失败；搜索结果不足以确认本窗口预约"
+      }
+    ],
+    "status": "partial_public_verification_no_marketwide_absence_claim"
+  },
+  "editorialReview": {
+    "allSourceBodiesRead": true,
+    "segmentCount": 6,
+    "classificationFix": "还原省略号标题为正文完整首行，只筛选主题而不按全文偶然提及行业；保留美护、玩具零售、门店零售方案、361度品牌经营",
+    "excludedTopics": [
+      {
+        "topic": "22258224244554441",
+        "reason": "物理AI通用模型及工业场景，乐园为技术验证场景，不是文旅经营更新"
+      },
+      {
+        "topic": "45548552544214258",
+        "reason": "跨境电商经营，排除"
+      },
+      {
+        "topic": "55521554511448114",
+        "reason": "啤酒属于食品饮料，排除"
+      }
+    ],
+    "forecastsAttributed": true,
+    "originalBodiesUnchanged": true
+  }
+}
