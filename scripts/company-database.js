@@ -24,7 +24,7 @@
   try{
    const data=await loadCompany(selected);if(current!==request)return;rows=data.observations||[];
    const has=new Set(rows.map(o=>o.metric));options('db-metric',catalog.metrics.filter(m=>has.has(m.id)).map(m=>({value:m.id,label:m.category+' · '+m.name})),(restore?params.get('db-metric'):null)||'revpar');
-   options('db-frequency',[...new Set(rows.map(o=>o.frequency))].sort((a,b)=>['季度','半年','年度'].indexOf(a)-['季度','半年','年度'].indexOf(b)).map(f=>({value:f,label:f})),restore?params.get('db-frequency'):'季度');
+   options('db-frequency',[...new Set(rows.map(o=>o.frequency))].sort((a,b)=>['季度','半年','年度'].indexOf(a)-['季度','半年','年度'].indexOf(b)).map(f=>({value:f,label:f})),(restore?params.get('db-frequency'):null)||'季度');
    const years=[...new Set(rows.map(o=>o.period.slice(0,4)))].sort();for(const k of ['from','to'])options('db-'+k,[{value:'',label:k==='from'?'起始年':'结束年'},...years.map(y=>({value:y,label:y}))],restore?params.get('db-'+k):'');
    $('db-forecast').checked=restore&&params.get('db-forecast')==='1';$('db-pending').checked=restore&&params.get('db-pending')==='1';const defaultRow=A.latest(rows,profileConfig[selected.id]?.operating||{},'revpar');setSeries((restore?params.get('db-series'):null)||(defaultRow?M.seriesKey(defaultRow):null));page=1;
    $('db-status').textContent=rows.length?'':'暂无已入库数据';
@@ -44,7 +44,7 @@
   let supplementIndex,profileIndex,choiceIndex;[catalog,{sources},{issues},supplementIndex,profileIndex,choiceIndex]=await Promise.all([D.json('data/companies/catalog.json'),D.json('data/companies/sources.json'),D.json('data/companies/issues.json'),D.json('data/companies/supplements.json'),D.json('data/companies/profiles.json'),D.json('data/companies/choice.json')]);profileConfig=profileIndex.companies;sources.push(...supplementIndex.sources,...choiceIndex.sources);supplements=[...(supplementIndex.parts?(await Promise.all(supplementIndex.parts.map(D.json))).flatMap(p=>p.observations):supplementIndex.observations),...(await Promise.all(choiceIndex.parts.map(D.json))).flatMap(p=>p.observations)];
   workbookIndex=await D.json(catalog.workbookDisclosuresFile);sources.push(...workbookIndex.sources);issues.push(...workbookIndex.issues);catalog={...catalog,companies:catalog.companies.filter(c=>['hworld','jinjiang','btg','atour'].includes(c.id))};
   $('db-company-buttons').innerHTML=catalog.companies.map(c=>'<button class="db-company" data-db-company="'+D.esc(c.id)+'">'+D.esc(c.name)+'<small>'+D.esc(c.code)+'</small></button>').join('');
-  const byCode=catalog.companies.find(c=>c.code===params.get('company'));await select(params.get('db')||byCode?.id||'hworld',true);
+  const byCode=catalog.companies.find(c=>c.code===params.get('company'));await select(params.get('db')||byCode?.id||'jinjiang',true);
  }catch(e){$('db-status').innerHTML='重点公司目录读取失败。<button class="portal-button" onclick="location.reload()">重试</button>';}
 })();
 
