@@ -1,10 +1,10 @@
 {
-  "syncedAt": "2026-10-15 09:59:36Z",
+  "syncedAt": "2026-10-15 10:58:04Z",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
-  "coverageFrom": "2026-10-15T15:41:26.304+0800",
-  "coverageTo": "2026-10-15T17:23:08.724+0800",
-  "oldestFetched": "2026-10-15T12:32:59.929+0800",
+  "coverageFrom": "2026-10-15T17:23:08.724+0800",
+  "coverageTo": "2026-10-15T18:34:52.062+0800",
+  "oldestFetched": "2026-10-15T12:49:01.000+0800",
   "fetchedTopics": 30,
   "files": {
     "views": [
@@ -49,6 +49,7 @@
       "data/research/updates/2026-10-14-1258-views.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-10-15-1858-all_views.csv",
       "data/research/updates/2026-10-15-1759-all_views.csv",
       "data/research/updates/2026-10-15-1701-all_views.csv",
       "data/research/updates/2026-10-15-1359-all_views.csv",
@@ -162,18 +163,18 @@
   },
   "counts": {
     "views": 260,
-    "all_views": 5106,
+    "all_views": 5107,
     "minutes": 101
   },
   "latest": {
     "views": "2026-10-15 15:02",
-    "all_views": "2026-10-15 17:23",
+    "all_views": "2026-10-15 18:28",
     "minutes": "2026-10-12T01:07:33"
   },
   "excluded": {
     "附件标题": 74,
     "图片无可读正文": 22,
-    "无实质观点正文": 19
+    "无实质观点正文": 22
   },
   "lastClassificationCorrection": {
     "date": "2026-10-13",
@@ -5538,37 +5539,42 @@
       "55521554581844554",
       "55521554581844184",
       "45548552518122428",
-      "22258224455124811"
+      "22258224455124811",
+      "45548552248554218"
     ]
   },
   "lastRun": {
-    "runId": "2026-10-15-1759",
+    "runId": "2026-10-15-1858",
     "sourceGroup": "88888142214212",
     "sourceName": "水木调研纪要-2.0",
-    "previousCoverageTo": "2026-10-15T15:41:26.304+0800",
-    "coverageTo": "2026-10-15T17:23:08.724+0800",
-    "oldestFetched": "2026-10-15T12:32:59.929+0800",
+    "previousCoverageTo": "2026-10-15T17:23:08.724+0800",
+    "coverageTo": "2026-10-15T18:34:52.062+0800",
+    "oldestFetched": "2026-10-15T12:49:01.000+0800",
     "sourceTopicsFetched": 30,
-    "sourceTopicsInCoverage": 1,
+    "sourceTopicsInCoverage": 4,
     "added": {
       "views": 0,
       "all_views": 1
     },
     "duplicates": 0,
     "duplicateTopicIds": [],
-    "excludedTopics": [],
+    "excludedTopics": [
+      "22258224458454111",
+      "55521554421424514",
+      "14425441125121512"
+    ],
     "briefChanges": {
       "added": [],
       "updated": [],
       "expiredRemoved": []
     },
     "addedTopicIds": [
-      "22258224455124811"
+      "45548552248554218"
     ],
     "files": {
-      "all_views": "data/research/updates/2026-10-15-1759-all_views.csv"
+      "all_views": "data/research/updates/2026-10-15-1858-all_views.csv"
     },
-    "syncedAt": "2026-10-15 09:59:36Z",
+    "syncedAt": "2026-10-15 10:58:04Z",
     "fetchedTopics": 30,
     "pageRowsFetched": 30,
     "dedupCheck": {
@@ -5577,25 +5583,25 @@
       "candidateBuckets": 4,
       "duplicateKeys": 0,
       "candidateKeysByTopic": {
-        "22258224455124811": [
-          "topic:22258224455124811",
-          "stamp:bb4cae317321498340c691977db3761ae08459ee251886130d9f546fd7880ba0",
-          "body:3973e02be0cc61a6f91542f16125f43c61b937a8dc367ee8b067269cd29daa5",
-          "compactBody:3973e02be0cc61a6f91542f16125f43c61b937a8dc367ee8b067269cd29daa5"
+        "45548552248554218": [
+          "stamp:5a8555fa7ed75efbe7246c340a1edbf26518bbffff1b195d76349d490e691b25",
+          "topic:45548552248554218",
+          "body:c6cfd34fd814a625dcd17016cc2035df7a8518cc357ff85727759d470807b051",
+          "compactBody:c8e34366aae703d8eae04e7c2079c67a0941c1dade1076444b4ed9ce074d353c"
         ]
       },
       "candidateBucketsByTopic": {
-        "22258224455124811": [
-          "86",
-          "87",
-          "2d",
-          "61"
+        "45548552248554218": [
+          "f6",
+          "0c",
+          "ce",
+          "25"
         ]
       },
       "duplicateKeysByTopic": {
-        "22258224455124811": []
+        "45548552248554218": []
       }
     },
-    "notes": "新增1条基金申赎强度市场数据观点；全量摘要无变更，最近3个北京时间自然日内无过期条目。"
+    "notes": "新增1条谷歌云/TPU市场观点；3条仅含市场总结标签、无观点正文的主题未纳入；摘要无变更且无过期条目。"
   }
 }
