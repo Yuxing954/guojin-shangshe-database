@@ -3,7 +3,9 @@
   const R=HotelResearchModel,J=JinjiangResearchModel,D=SiteData,esc=D.esc;
   const state={region:'domestic',tier:'all',mode:'全部',cohortId:'',segmentPeriod:'',revenueItem:'持续加盟服务',revenueRegion:'境内有限服务型酒店'};
   let cachedRows,cachedModel;
-  const menu={compare:'锦江总览',operating:'境内与海外',expansion:'开店与加盟',profit:'收入与利润',logic:'改革兑现',scenario:'预期与测算',raw:'数据明细'};
+  const menu={compare:'总览',operating:'经营',expansion:'开店',profit:'财务',raw:'明细'};
+  const panels=['compare','operating','expansion','profit','raw'];
+  const redirects={logic:'profit',scenario:'profit'};
   function model(rows){if(rows!==cachedRows){cachedRows=rows;cachedModel=J.build(rows);}return cachedModel;}
   const heading=(title,period='')=>'<div class="jj-section-head"><h3>'+esc(title)+'</h3>'+(period?'<span>'+esc(period)+'</span>':'')+'</div>';
   const unit=o=>o?.unit==='百万元'?(o.currency==='EUR'?'百万欧元':o.currency==='CNY'?'亿元':'百万'+o.currency):o?.unit||'';
@@ -94,13 +96,11 @@
   }
   function expansion(env){
     const {U,quarter}=env,m=model(env.data.rows),s=m.structure(quarter),p=U.quarters(quarter,12);
-    let html=heading('酒店网络',quarter)+grid([metricCard(U,'全球已开业',m.scale('hotels',quarter),U.grow(m.data,m.scale('hotels',quarter))),metricCard(U,'有限服务型',s.finite,U.grow(m.data,s.finite)),derivedCard(U,'有限服务型加盟占比',s.franchiseShare,'加盟 / 有限服务型酒店数'),derivedCard(U,'有限服务型中端占比',s.midShare,'中端 / 有限服务型酒店数')]);
+    let html=heading('酒店网络',quarter)+grid([['全球已开业','hotels'],['期末签约酒店','signed_hotels'],['当季新开','opened'],['当季净增','net_opened']].map(([label,metric])=>{const o=m.scale(metric,quarter);return metricCard(U,label,o,U.grow(m.data,o));}));
     const stock=m.stockBridge(quarter);
     html+=networkVisuals(U,m,quarter);
     html+='<div class="jj-charts">'+composition(U,'客房结构 · 有限服务型',quarter,[{name:'中端客房',row:s.midRooms},{name:'经济型客房',row:s.economyRooms}],s.finiteRooms,'间')+chartCard('客房与签约储备',quarter,grid([derivedCard(U,'有限服务型单店客房',s.roomsPerHotel),metricCard(U,'全服务型酒店',s.full,''),derivedCard(U,'签约未开业差额',m.contractGap(quarter))],'jj-three'))+'</div>';
     if(stock){const flow=(label,o,sign)=>({label,value:o.value*sign,unit:o.unit,inputs:[o],method:label});html+=bridge(U,{start:stock.prior,end:stock.current,components:[flow('新开',stock.opened,1),flow('退出',stock.closed,-1),flow('转筹建',stock.transfer,-1),...(Math.abs(stock.residual.value)>0.01?[{label:'未解释差额',...stock.residual}]:[])]},'开业门店变动',true);}
-    html+=heading('开关店勾稽',quarter);
-    html+=briefTable(U,['上季末','新开','退出','转筹建','本季净增','本季末','未解释差额'],[[U.cell(stock?.prior,0),U.cell(stock?.opened,0),U.cell(stock?.closed,0),U.cell(stock?.transfer,0),U.cell(stock?.net,0),U.cell(stock?.current,0),U.cell(stock?.residual,0)]]);
     html+='<details class="hr-disclosure"><summary>门店季度明细</summary>'+briefTable(U,['季度','开业酒店','新开','退出','转筹建','净增','签约酒店','签约未开业差额'],p.slice().reverse().map(per=>[per,...['hotels','opened','closed','to_pipeline','net_opened','signed_hotels'].map(metric=>U.cell(m.scale(metric,per),0)),U.cell(m.contractGap(per),0)]))+'</details>';
     html+='<div class="jj-charts"><article class="hr-card"><h3>新开、退出与净增</h3>'+U.lineChart(['opened','closed','net_opened'].map(metric=>({name:U.metric(metric),points:p.map(per=>({value:m.scale(metric,per)?.value}))})),p,'开关店','家')+'</article><article class="hr-card"><h3>有限服务型 · 结构升级</h3>'+U.lineChart([{name:'加盟酒店占比',points:p.map(per=>({value:m.structure(per).franchiseShare?.value}))},{name:'中端酒店占比',points:p.map(per=>({value:m.structure(per).midShare?.value}))},{name:'中端客房占比',points:p.map(per=>({value:m.structure(per).midRoomShare?.value}))}],p,'有限服务型结构','%')+'</article></div>';
     html+=regionalVisual(U,m,quarter);
@@ -128,29 +128,16 @@
     html+='<div class="jj-charts">'+trend(U,m,'合并费用率',financePeriod,[['销售','sales_expense'],['管理','admin_expense'],['财务','finance_expense']].map(([name,metric])=>({name,row:p=>R.ratio(m.group(metric,p),m.group('revenue',p))})),'%')+trend(U,m,'经营现金流与利润',financePeriod,[['经营现金流','operating_cf'],['归母净利润','parent_profit'],['扣非归母','deducted_profit']].map(([name,metric])=>({name,row:p=>m.group(metric,p)})))+'</div>';
     html+=heading('境内外分部财务 · 原币',per)+segmentVisuals(U,m,per)+briefTable(U,['分部','币种','收入','收入同比','归母净利润','同比增减'],[['domestic','境内有限服务型'],['overseas','海外有限服务型']].map(([region,label])=>{const rev=m.segment('revenue',region,per),profit=m.segment('parent_profit',region,per);return [label,esc(rev?.currency||'—'),U.cell(rev),U.grow(m.data,rev),U.cell(profit),U.cell(m.delta(profit))];}));
     html+='<div class="jj-charts">'+feeTrend(U,m,per)+trend(U,m,'海外有限服务型 · 归母净利润',per,[{name:'海外归母',row:p=>m.segment('parent_profit','overseas',p)}],'百万欧元')+'</div>';
-    html+=heading('有限服务型分部 · 未抵销跨分部交易',per)+grid([['EBITDA','ebitda','息税折旧摊销前的利润(EBITDA)'],['调整后EBITDA','adjusted_ebitda','调整后息税折旧摊销前的利润(EBITDA)'],['EBITDA · 不含租赁准则','ebitda','息税折旧摊销前的利润(EBITDA)-不含租赁准则']].map(([label,metric,scope])=>{const o=m.segmentKpi(metric,scope,per);return metricCard(U,label,o,U.grow(m.data,o));}),'jj-three');
-    html+=heading('资产与现金 · Choice财报',financePeriod)+grid([['货币资金','monetary_funds'],['资产总计','assets'],['负债合计','liabilities']].map(([label,metric])=>{const o=m.balance(metric,financePeriod);return metricCard(U,label,o,U.grow(m.data,o));}).concat([derivedCard(U,'资产负债率',R.ratio(m.balance('liabilities',financePeriod),m.balance('assets',financePeriod)))]));
+    const ebitda=[['EBITDA','ebitda','息税折旧摊销前的利润(EBITDA)'],['调整后EBITDA','adjusted_ebitda','调整后息税折旧摊销前的利润(EBITDA)'],['EBITDA · 不含租赁准则','ebitda','息税折旧摊销前的利润(EBITDA)-不含租赁准则']].map(([label,metric,scope])=>({label,row:m.segmentKpi(metric,scope,per)})).filter(x=>x.row);
+    if(ebitda.length)html+=heading('有限服务型分部 · 未抵销跨分部交易',per)+grid(ebitda.map(x=>metricCard(U,x.label,x.row,U.grow(m.data,x.row))),'jj-three');
+    const balances=[['货币资金','monetary_funds'],['资产总计','assets'],['负债合计','liabilities']].map(([label,metric])=>({label,row:m.balance(metric,financePeriod)})).filter(x=>x.row),leverage=R.ratio(m.balance('liabilities',financePeriod),m.balance('assets',financePeriod));
+    if(balances.length)html+=heading('资产与现金 · Choice财报',financePeriod)+grid(balances.map(x=>metricCard(U,x.label,x.row,U.grow(m.data,x.row))).concat(leverage?[derivedCard(U,'资产负债率',leverage)]:[]));
     html+=heading('境内外收入矩阵',per)+briefTable(U,['项目 / 百万元CNY','境内有限服务型','境外有限服务型','集团披露合计','境内同比'],m.revenueParts(per).map(row=>[esc(row.label),U.cell(row.domestic),U.cell(row.overseas),U.cell(row.total),U.grow(m.data,row.domestic)]));
-    html+=heading('业务毛利率',per)+briefTable(U,['业务','收入','毛利','毛利率','毛利率同比'],['酒店客房','餐饮服务','前期加盟服务','持续加盟服务','订房渠道','会员服务','采购平台收入'].map(item=>{const scope='境内外有限服务型酒店 / '+item,rev=m.project('project_revenue',scope,per),gross=m.project('gross_profit',scope,per),margin=m.projectMargin(scope,per),old=R.ratio(R.previous(m.data,gross),R.previous(m.data,rev));return [item,U.cell(rev),U.cell(gross),U.cell(margin),U.cell(margin&&old?{value:margin.value-old.value,unit:'百分点',inputs:[...margin.inputs,...old.inputs],method:'本期毛利率 − 上年同期毛利率'}:null)];}));
+    html+='<details class="hr-disclosure"><summary>业务毛利率明细</summary>'+briefTable(U,['业务','收入','毛利','毛利率','毛利率同比'],['酒店客房','餐饮服务','前期加盟服务','持续加盟服务','订房渠道','会员服务','采购平台收入'].map(item=>{const scope='境内外有限服务型酒店 / '+item,rev=m.project('project_revenue',scope,per),gross=m.project('gross_profit',scope,per),margin=m.projectMargin(scope,per),old=R.ratio(R.previous(m.data,gross),R.previous(m.data,rev));return [item,U.cell(rev),U.cell(gross),U.cell(margin),U.cell(margin&&old?{value:margin.value-old.value,unit:'百分点',inputs:[...margin.inputs,...old.inputs],method:'本期毛利率 − 上年同期毛利率'}:null)];}))+'</details>';
+    html+='<details class="hr-disclosure"><summary>研究记录与备份</summary>'+env.legacyLogic()+'</details>';
     return html;
   }
-  function logic(env){
-    const {U,quarter}=env,m=model(env.data.rows),per=reportPeriod(m,env.financePeriod),direct=m.cohort(quarter,'domestic','直营'),overseas=m.segment('parent_profit','overseas',per);
-    const lines=[
-      ['境内直营减亏',direct,U.grow(m.data,direct),'直营同店RevPAR · '+(direct?.period||'—'),'直营独立利润未入库'],
-      ['加盟存量升级',m.structure(quarter).mid,U.cell(m.structure(quarter).midShare),'中端门店 / 有限服务型 · '+quarter,'改造店数及改造样本未入库'],
-      ['加盟与渠道收入',m.matrixRow('持续加盟服务','境内有限服务型酒店',per),U.grow(m.data,m.matrixRow('持续加盟服务','境内有限服务型酒店',per)),'境内持续加盟服务收入 · '+per,'综合收费率缺少同口径交易额'],
-      ['海外减亏',overseas,U.cell(m.delta(overseas)),'有限服务型归母净利润 · '+per+' · EUR','海外独立列报，不折算相加']
-    ];
-    let html=heading('改革兑现 · 证据跟踪',per)+'<div class="jj-reform-grid">'+lines.map(([title,row,change,label,gap])=>'<article class="hr-card"><div class="jj-reform-title"><h3>'+title+'</h3>'+U.tag('指标跟踪')+'</div><p class="hr-caption">'+esc(label)+'</p><strong class="hr-value">'+U.cell(row)+'</strong><div>'+change+'</div><p class="jj-gap">'+esc(gap)+'</p></article>').join('')+'</div>';
-    html+='<div class="jj-charts">'+compareBars(U,m,'境内直营与加盟 · 同店RevPAR同比',direct?.period||per,['全部','直营','加盟'].map(mode=>({name:mode,row:R.growth(m.data,m.cohorts('domestic',mode).find(o=>o.period===direct?.period)),old:null})),'%')+trend(U,m,'海外有限服务型 · 归母净利润',per,[{name:'海外归母',row:p=>m.segment('parent_profit','overseas',p)}],'百万欧元')+'</div>';
-    html+='<div class="jj-charts">'+feeTrend(U,m,per)+compareBars(U,m,'境内渠道与会员收入',per,['订房渠道','会员服务','前期加盟服务'].map(name=>({name,row:m.matrixRow(name,'境内有限服务型酒店',per)})))+'</div>';
-    html+=heading('渠道与会员收入',per)+briefTable(U,['境内有限服务型','本期','上年同期','同比'],['持续加盟服务','订房渠道','会员服务','前期加盟服务'].map(item=>{const o=m.matrixRow(item,'境内有限服务型酒店',per);return [item,U.cell(o),U.cell(R.previous(m.data,o)),U.grow(m.data,o)];}));
-    html+=heading('财务因素单列',env.financePeriod)+briefTable(U,['指标','本期','上年同期','同比增减'],['finance_expense','parent_profit','deducted_profit'].map(metric=>{const o=m.group(metric,env.financePeriod);return [U.metric(metric),U.cell(o),U.cell(R.previous(m.data,o)),U.cell(m.delta(o))];}));
-    html+='<details class="hr-disclosure"><summary>研究验证记录 / 新增进展</summary>'+env.legacyLogic()+'</details>';
-    return html;
-  }
-  function render(panel,env){const renders={compare:snapshot,operating,expansion,profit,logic};return renders[panel]?renders[panel](env):null;}
+  function render(panel,env){const renders={compare:snapshot,operating,expansion,profit};return renders[panel]?renders[panel](env):null;}
   function bind(env){const $=id=>document.getElementById(id);for(const [id,key]of Object.entries({'jj-region':'region','jj-tier':'tier','jj-mode':'mode','jj-cohort':'cohortId','jj-segment-period':'segmentPeriod'})){if($(id))$(id).onchange=()=>{state[key]=$(id).value;if(['jj-region','jj-tier','jj-mode'].includes(id))state.cohortId='';env.refresh();};}}
-  window.JinjiangResearch={menu,render,bind,model};
+  window.JinjiangResearch={menu,panels,redirects,render,bind,model};
 })();
