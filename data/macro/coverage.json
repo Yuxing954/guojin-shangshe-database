@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "checkedAt": "2026-10-14T13:35:30.0478547Z",
+  "checkedAt": "2026-10-15T00:26:56+00:00",
   "series": {
     "cn-ppi": {
       "start": "2016-01",
@@ -1232,14 +1232,49 @@
   },
   "errors": [
     {
-      "id": "consumer-category-7",
+      "id": "cn-cpi",
       "errorType": "ValueError",
-      "reason": "No exact reviewed indicator"
+      "reason": "接口或数据校验失败"
     },
     {
-      "id": "consumer-category-6",
+      "id": "cn-ppi",
       "errorType": "ValueError",
-      "reason": "No exact reviewed indicator"
+      "reason": "接口或数据校验失败"
+    },
+    {
+      "id": "cn-m2",
+      "errorType": "ValueError",
+      "reason": "接口或数据校验失败"
+    },
+    {
+      "id": "cn-tsf",
+      "errorType": "ValueError",
+      "reason": "接口或数据校验失败"
+    },
+    {
+      "id": "us-treasury10",
+      "errorType": "ValueError",
+      "reason": "接口或数据校验失败"
+    },
+    {
+      "id": "cn-exports-monthly",
+      "errorType": "ValueError",
+      "reason": "接口或数据校验失败"
+    },
+    {
+      "id": "cn-imports-monthly",
+      "errorType": "ValueError",
+      "reason": "接口或数据校验失败"
+    },
+    {
+      "id": "consumer-core-cpi",
+      "errorType": "ValueError",
+      "reason": "接口或数据校验失败"
+    },
+    {
+      "id": "consumer-cpi",
+      "errorType": "ValueError",
+      "reason": "接口或数据校验失败"
     }
   ]
 }

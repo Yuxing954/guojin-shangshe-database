@@ -137,6 +137,17 @@ def merge_history(previous,result,spec,now):
     result['coverage']=coverage(result['observations'],spec)
     return result
 
+def preserve_release_dates(previous_rows,incoming_rows):
+    """Keep a verified publication date when a later source response omits it."""
+    previous={row.get('period'):row for row in previous_rows}
+    preserved=[]
+    for row in incoming_rows:
+        prior=previous.get(row.get('period'))
+        if row.get('releaseDate') is None and prior and prior.get('releaseDate'):
+            row={**row,'releaseDate':prior['releaseDate']}
+        preserved.append(row)
+    return preserved
+
 def fetch_bytes(url):
     with build_opener(NoRedirect()).open(Request(url,headers={'User-Agent':'GuojinMacro/2.0'}),timeout=60) as response:
         return response.read(12_000_001)
@@ -293,6 +304,7 @@ def main():
                     if plan is not None:ready_sources.add(source)
                     prior=values.get(id,{})
                     if prior.get('registryId')==result['registryId']:
+                        result['observations']=preserve_release_dates(prior.get('observations',[]),result.get('observations',[]))
                         rows={r['period']:r for r in prior.get('observations',[])};rows.update({r['period']:r for r in result['observations']})
                         result['observations']=sorted(rows.values(),key=lambda r:r['period']);result['coverage']=coverage(result['observations'],spec)
                     candidate={**result,'fetchedAt':now,'checkedAt':now}
