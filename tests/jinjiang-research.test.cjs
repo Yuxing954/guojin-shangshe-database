@@ -1,0 +1,22 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
+const A=require('../scripts/company-overview-model.js'),R=require('../scripts/hotel-research-model.js'),J=require('../scripts/jinjiang-research-model.js');
+const root=path.resolve(__dirname,'..'),read=p=>JSON.parse(fs.readFileSync(path.join(root,p),'utf8'));
+const base=read('data/companies/hotels/jinjiang.json'),wb=read('data/companies/workbook-disclosures.json'),extra=read('data/companies/supplements.json');
+let rows=base.parts.flatMap(p=>read(p).observations);rows=A.merge(rows,extra.parts.flatMap(p=>read(p).observations).filter(x=>x.companyId==='jinjiang'));rows=A.merge(rows,wb.companyParts.jinjiang.flatMap(p=>read(p).observations));
+const original=JSON.stringify(rows),m=J.build(rows);let checks=0;function check(name,fn){fn();checks++;console.log('PASS',name);}
+check('domestic and overseas price currencies stay separate',()=>{assert.equal(m.operating('revpar','2026Q2').currency,'CNY');assert.equal(m.operating('revpar','2026Q2','overseas').currency,'EUR');});
+check('midscale and economy select original report classification',()=>{assert.equal(m.operating('revpar','2026Q2','domestic','mid').basis,'原报告分类 / 中端酒店');assert.equal(m.operating('revpar','2026Q2','domestic','economy').basis,'原报告分类 / 经济型酒店');});
+check('cohort remains a fixed sample and uses its disclosed growth',()=>{const o=m.cohort('2026Q2','domestic','直营');assert.equal(o.period,'2026H1');assert.match(o.basis,/固定样本2026H1/);assert.equal(R.growth(m.data,o).value,8.34);});
+check('cohort never falls forward to later disclosure',()=>assert.ok(J.periodOrder(m.cohort('2025Q1').period)<=J.periodOrder('2025Q1')));
+check('franchise and midscale shares use limited-service denominator',()=>{const s=m.structure('2026Q2');assert.equal(s.finite.value,14282);assert.equal(s.franchise.value,13681);assert.ok(Math.abs(s.franchiseShare.value-13681/14282*100)<1e-9);assert.ok(Math.abs(s.midShare.value-9290/14282*100)<1e-9);assert.equal(m.scale('hotels','2026Q2').value,14404);});
+check('signed unopened gap retains both stock sources',()=>{const gap=m.contractGap('2026Q2');assert.equal(gap.value,4013);assert.equal(gap.inputs.length,2);assert.match(gap.method,/差额/);});
+check('opening bridge reconciles all three flows',()=>{const b=m.stockBridge('2026Q2');assert.equal(b.prior.value,14236);assert.equal(b.opened.value,343);assert.equal(b.closed.value,175);assert.equal(b.transfer.value,0);assert.equal(b.net.value,168);assert.equal(b.residual.value,0);});
+check('missing opening input disables reconciliation',()=>{const id=m.stockBridge('2026Q2').closed.id;assert.equal(J.build(rows.filter(x=>x.id!==id)).stockBridge('2026Q2'),null);});
+check('overseas loss changes are EUR amounts, not growth percentages',()=>{const o=m.segment('parent_profit','overseas','2026H1'),d=m.delta(o);assert.equal(o.currency,'EUR');assert.ok(Math.abs(d.value-7.33)<1e-9);assert.equal(R.growth(m.data,o).unit,'百万元');});
+check('matrix and original-currency segment remain independent',()=>{const x=m.matrixRow('合计','境外有限服务型酒店','2026H1'),y=m.segment('revenue','overseas','2026H1');assert.equal(x.currency,'CNY');assert.equal(y.currency,'EUR');assert.equal(x.value,1830.7609578599997);assert.equal(y.value,229.3);});
+check('profit quality bridge reconciles reported and recurring profit',()=>{const b=m.qualityBridge('2026H1');assert.ok(Math.abs(b.start.value+b.components.reduce((s,x)=>s+x.value,0)-b.end.value)<1e-9);assert.equal(b.components[0].inputs[0].metric,'deducted_profit');});
+check('gross expense bridge reconciles without double counting financial expense',()=>{const b=m.grossBridge('2026H1');assert.equal(b.components[0].label,'毛利变化');assert.equal(b.components.filter(x=>x.label==='财务费用').length,1);assert.ok(Math.abs(b.start.value+b.components.reduce((s,x)=>s+x.value,0)-b.end.value)<1e-9);assert.equal(m.grossBridge('2026Q2'),null);});
+check('future and missing reports remain blank',()=>{assert.equal(m.group('revenue','2027H1'),null);assert.equal(m.matrixRow('会员服务','境外有限服务型酒店','2026H1'),null);});
+check('hotel revenue excludes food business and retains both sources',()=>{const x=m.hotelRevenue('2026H1');assert.equal(x.inputs.length,2);assert.ok(Math.abs(x.value-6700.228183759999)<1e-8);assert.ok(x.value<m.group('revenue','2026H1').value);});
+check('source observations are never rewritten',()=>assert.equal(JSON.stringify(rows),original));
+console.log(checks+' Jinjiang checks passed');
