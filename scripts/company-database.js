@@ -42,9 +42,10 @@
  $('db-export-all').onclick=async()=>{const b=$('db-export-all');b.disabled=true;b.textContent='正在准备完整数据…';try{const all=(await Promise.all(catalog.companies.map(loadCompany))).flatMap(d=>d.observations);const url=URL.createObjectURL(new Blob([M.csv(all,catalog.metrics)],{type:'text/csv;charset=utf-8'}));Object.assign(document.createElement('a'),{href:url,download:'重点公司完整历史.csv'}).click();setTimeout(()=>URL.revokeObjectURL(url),1000);b.textContent='导出完整数据';}catch(e){b.textContent='导出失败，点击重试';}finally{b.disabled=false;}};
  try{
   let supplementIndex,profileIndex,choiceIndex;[catalog,{sources},{issues},supplementIndex,profileIndex,choiceIndex]=await Promise.all([D.json('data/companies/catalog.json'),D.json('data/companies/sources.json'),D.json('data/companies/issues.json'),D.json('data/companies/supplements.json'),D.json('data/companies/profiles.json'),D.json('data/companies/choice.json')]);profileConfig=profileIndex.companies;sources.push(...supplementIndex.sources,...choiceIndex.sources);supplements=[...(supplementIndex.parts?(await Promise.all(supplementIndex.parts.map(D.json))).flatMap(p=>p.observations):supplementIndex.observations),...(await Promise.all(choiceIndex.parts.map(D.json))).flatMap(p=>p.observations)];
-  workbookIndex=await D.json(catalog.workbookDisclosuresFile);sources.push(...workbookIndex.sources);issues.push(...workbookIndex.issues);catalog={...catalog,companies:catalog.companies.filter(c=>['hworld','jinjiang','btg'].includes(c.id))};
+  workbookIndex=await D.json(catalog.workbookDisclosuresFile);sources.push(...workbookIndex.sources);issues.push(...workbookIndex.issues);catalog={...catalog,companies:catalog.companies.filter(c=>['hworld','jinjiang','btg','atour'].includes(c.id))};
   $('db-company-buttons').innerHTML=catalog.companies.map(c=>'<button class="db-company" data-db-company="'+D.esc(c.id)+'">'+D.esc(c.name)+'<small>'+D.esc(c.code)+'</small></button>').join('');
   const byCode=catalog.companies.find(c=>c.code===params.get('company'));await select(params.get('db')||byCode?.id||'hworld',true);
  }catch(e){$('db-status').innerHTML='重点公司目录读取失败。<button class="portal-button" onclick="location.reload()">重试</button>';}
 })();
+
 
