@@ -10,7 +10,7 @@
     gold:{name:'黄金',files:['data/gold-jewelry/research.json','data/gold-jewelry/macro.json','data/gold-jewelry/observations.json'],docs:['docs/gold-jewelry-database.md']},
     dining:{name:'餐饮',files:['data/sectors/dining.json'],docs:[]},
     macro:{name:'宏观与消费',files:['data/macro/coverage.json','data/macro/catalog.json','data/consumption-macro/observations.json','data/macro/automatic-series.json','data/macro/expectations.json'],docs:['docs/macro-data.md','docs/consumption-macro.md','docs/macro-expectations.md']},
-    companies:{name:'重点公司',files:['data/companies/issues.json','data/companies/sources.json','data/companies/workbook-disclosures.json','data/companies/hotel-research.json'],docs:['docs/company-database.md']},
+    companies:{name:'重点公司',files:['data/companies/issues.json','data/companies/sources.json','data/companies/workbook-disclosures.json','data/companies/hotel-research.json','data/companies/jinjiang-research-notes.json'],docs:['docs/company-database.md']},
     earnings:{name:'财报日历',files:['data/earnings-calendar.json'],docs:['docs/earnings-workbench.md']},
     research:{name:'观点纪要',files:['data/research/updates/manifest.json'],docs:['docs/research-library.md']},
     quotes:{name:'实时行情',files:['data/coverage-companies.json'],docs:['docs/realtime-quotes.md','docs/coverage-pool.md']}
@@ -26,7 +26,7 @@
     if(id==='gold')out.push(...(a.limitations||[]),'国内金价后台按5分钟计划采集；国际行情在黄金页面打开时每15秒读取。实际更新以来源报价时间为准，网络失败保留上次报价。');
     if(id==='dining')out.push(...(a.gaps||[]).map(g=>g.metric+'：'+g.reason));
     if(id==='companies'&&values[2])out.push('三份用户底稿逐单元格转录，保留原单位、报告期、页码、证据编号和截图位置；缺失不转零。',...((values[2].issues)||[]).map(i=>i.message));
-    if(id==='companies')out.push(...(values[3]?.notes||[]));
+    if(id==='companies')out.push(...(values[3]?.notes||[]),...(values[4]?.notes||[]));
     if(id==='companies')out.push(...(a.issues||[]).map(i=>[i.period,i.locator,i.message].filter(Boolean).join(' · ')));
     if(id==='macro'){
       out.push(...(values[4]?.notes||[]));
