@@ -1,11 +1,11 @@
 {
-  "syncedAt": "2026-10-15 01:00:55Z",
+  "syncedAt": "2026-10-15 01:59:22Z",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
-  "coverageFrom": "2026-10-15T00:06:12.389+0800",
-  "coverageTo": "2026-10-15T08:57:56.800+0800",
-  "oldestFetched": "2026-10-14T19:11:08.493+0800",
-  "fetchedTopics": 90,
+  "coverageFrom": "2026-10-15T08:57:56.800+0800",
+  "coverageTo": "2026-10-15T09:57:23.856+0800",
+  "oldestFetched": "2026-10-15T08:57:56.800+0800",
+  "fetchedTopics": 28,
   "files": {
     "views": [
       "data/research/updates/2026-10-15-0901-views.csv",
@@ -46,6 +46,7 @@
       "data/research/updates/2026-10-14-1258-views.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-10-15-0959-all_views.csv",
       "data/research/updates/2026-10-15-0901-all_views.csv",
       "data/research/updates/2026-10-15-0059-all_views.csv",
       "data/research/updates/2026-10-15-0008-all_views.csv",
@@ -152,18 +153,18 @@
   },
   "counts": {
     "views": 255,
-    "all_views": 5042,
+    "all_views": 5057,
     "minutes": 101
   },
   "latest": {
     "views": "2026-10-15 08:33",
-    "all_views": "2026-10-15 08:57",
+    "all_views": "2026-10-15 09:43",
     "minutes": "2026-10-12T01:07:33"
   },
   "excluded": {
-    "附件标题": 62,
-    "图片无可读正文": 17,
-    "无实质观点正文": 17
+    "附件标题": 69,
+    "图片无可读正文": 20,
+    "无实质观点正文": 19
   },
   "lastClassificationCorrection": {
     "date": "2026-10-13",
