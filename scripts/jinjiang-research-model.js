@@ -5,7 +5,7 @@
   const categories={region:'全球',mode:'全部',basis:'原报告规模分类'};
   const matrix={region:'集团整体',mode:'全部',basis:'原报告分部收入矩阵',currency:'CNY'};
   const projects={region:'集团整体',mode:'全部',basis:'原报告项目收入成本 / 2020年起',currency:'CNY'};
-  const periodOrder=p=>Number(p.slice(0,4))*12+(/Q/.test(p)?Number(p.at(-1))*3:/H/.test(p)?Number(p.at(-1))*6:12);
+  const periodOrder=p=>Number(p.slice(0,4))*12+(/Q/.test(p)?Number(p.at(-1))*3:/H/.test(p)?Number(p.at(-1))*6:/9M$/.test(p)?9:12);
   function build(input){
     const data=input.filter(o=>o.companyId==='jinjiang'),cache=new Map();
     const get=(metric,sel,period)=>{const key=JSON.stringify([metric,sel,period]);if(!cache.has(key))cache.set(key,R.one(data,sel,metric,period));return cache.get(key);};
@@ -26,6 +26,24 @@
     function cohort(period,region='domestic',mode='全部',tier='all'){
       return cohorts(region,mode,tier).find(o=>periodOrder(o.period)<=periodOrder(period))||null;
     }
+    function sameStoreWindows(region='domestic'){
+      const rows=R.rows(data,{region:region==='domestic'?'中国大陆境内':'海外'},'revpar').filter(o=>o.basis.startsWith('原报告可比酒店 /')&&!o.basis.includes('来源版本'));
+      return [...new Map(rows.map(o=>{const w={period:o.period,region:o.region,basis:o.basis,frequency:o.frequency,periodBasis:o.periodBasis};w.key=JSON.stringify(w);return [w.key,w];})).values()].sort((a,b)=>periodOrder(b.period)-periodOrder(a.period)||b.period.localeCompare(a.period));
+    }
+    function sameStoreValue(window,metric,mode='全部',tier='all'){
+      if(!window||!['revpar','adr','occ'].includes(metric)||!['全部','直营','加盟'].includes(mode))return null;
+      const scope={all:'合计',mid:'中端酒店',economy:'经济型酒店'}[tier];if(!scope)return null;
+      const {period,region,basis,frequency,periodBasis}=window;
+      return get(metric,{region,basis,frequency,periodBasis,scope,mode},period);
+    }
+    function sameStoreGrowth(o){return R.safe(o)&&o.basis.startsWith('原报告可比酒店 /')&&Number.isFinite(o.reportedYoY)?R.derived(o.reportedYoY,o.metric==='occ'?'百分点':'%',[o],'该报告固定同店样本披露同比'):null;}
+    function sameStoreComparison(window,metric,mode='全部',tier='all'){
+      const same=sameStoreValue(window,metric,mode,tier),region=window?.region==='中国大陆境内'?'domestic':'overseas',all=window?operating(metric,window.period,region,tier,mode):null,sameGrowth=sameStoreGrowth(same),allGrowth=R.growth(data,all);
+      const comparable=R.compatible(same,all,['region','mode','currency','frequency','periodBasis'])&&same.unit===all.unit;
+      const gap=comparable&&sameGrowth&&allGrowth&&sameGrowth.unit===allGrowth.unit?derive(sameGrowth.value-allGrowth.value,'百分点',[...sameGrowth.inputs,...allGrowth.inputs],'同店披露同比 − 相同期间、地区、档次、模式全口径同比'):null;
+      return {same,all,sameGrowth,allGrowth,gap};
+    }
+    function sameStoreHistory(window){return window?sameStoreWindows(window.region==='中国大陆境内'?'domestic':'overseas').filter(w=>w.period.slice(4)===window.period.slice(4)&&w.frequency===window.frequency&&w.periodBasis===window.periodBasis&&periodOrder(w.period)<=periodOrder(window.period)).reverse():[];}
     const segment=(metric,region,period)=>get(metric,{region:region==='overseas'?'海外':'中国大陆境内',scope:'有限服务型连锁酒店',mode:'全部',basis:'原报告境内外分部'},period);
     function derive(value,unit,inputs,method){return inputs.length&&inputs.every(R.safe)?R.derived(value,unit,inputs,method):null;}
     function delta(o){const b=R.previous(data,o);return R.safe(o)&&R.safe(b)?derive(o.value-b.value,o.unit,[o,b],'本期 − 上年同期'):null;}
@@ -77,7 +95,7 @@
     const fullSegment=(metric,period)=>get(metric,{region:'中国大陆境内',scope:'全服务型酒店',mode:'全部',basis:'原报告境内外分部'},period);
     const segmentKpi=(metric,scope,period)=>get(metric,{region:'集团整体',scope,mode:'全部',basis:'有限服务型酒店分部 / 未抵销跨分部交易',currency:'CNY'},period);
     const balance=(metric,period)=>get(metric,{...financial,basis:'Choice财报 / 返回币种',currency:'CNY'},period);
-    return {data,get,group,project,matrixRow,scale,operating,cohorts,cohort,segment,delta,share,structure,contractGap,stockBridge,qualityBridge,grossBridge,projectMargin,revenueParts,hotelRevenue,reportPeriods,segmentPeriods,periodOrder,samePeriods,businessParts,regional,fullOperating,fullSegment,segmentKpi,balance};
+    return {data,get,group,project,matrixRow,scale,operating,cohorts,cohort,segment,delta,share,structure,contractGap,stockBridge,qualityBridge,grossBridge,projectMargin,revenueParts,hotelRevenue,reportPeriods,segmentPeriods,periodOrder,samePeriods,businessParts,regional,fullOperating,fullSegment,segmentKpi,balance,sameStoreWindows,sameStoreValue,sameStoreGrowth,sameStoreComparison,sameStoreHistory};
   }
   return {build,financial,network,categories,matrix,projects,periodOrder};
 });
