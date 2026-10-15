@@ -1,10 +1,10 @@
 {
-  "syncedAt": "2026-10-15 10:58:04Z",
+  "syncedAt": "2026-10-15 11:55:35Z",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
-  "coverageFrom": "2026-10-15T17:23:08.724+0800",
-  "coverageTo": "2026-10-15T18:34:52.062+0800",
-  "oldestFetched": "2026-10-15T12:49:01.000+0800",
+  "coverageFrom": "2026-10-15T18:34:52.062+0800",
+  "coverageTo": "2026-10-15T19:10:39.981+0800",
+  "oldestFetched": "2026-10-15T14:26:15.277+0800",
   "fetchedTopics": 30,
   "files": {
     "views": [
@@ -49,6 +49,7 @@
       "data/research/updates/2026-10-14-1258-views.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-10-15-1955-all_views.csv",
       "data/research/updates/2026-10-15-1858-all_views.csv",
       "data/research/updates/2026-10-15-1759-all_views.csv",
       "data/research/updates/2026-10-15-1701-all_views.csv",
@@ -163,12 +164,12 @@
   },
   "counts": {
     "views": 260,
-    "all_views": 5107,
+    "all_views": 5109,
     "minutes": 101
   },
   "latest": {
     "views": "2026-10-15 15:02",
-    "all_views": "2026-10-15 18:28",
+    "all_views": "2026-10-15 19:10",
     "minutes": "2026-10-12T01:07:33"
   },
   "excluded": {
@@ -5540,68 +5541,113 @@
       "55521554581844184",
       "45548552518122428",
       "22258224455124811",
-      "45548552248554218"
+      "45548552248554218",
+      "82258224458142442",
+      "22258224458142451"
     ]
   },
   "lastRun": {
-    "runId": "2026-10-15-1858",
+    "runId": "2026-10-15-1955",
     "sourceGroup": "88888142214212",
     "sourceName": "水木调研纪要-2.0",
-    "previousCoverageTo": "2026-10-15T17:23:08.724+0800",
-    "coverageTo": "2026-10-15T18:34:52.062+0800",
-    "oldestFetched": "2026-10-15T12:49:01.000+0800",
+    "previousCoverageTo": "2026-10-15T18:34:52.062+0800",
+    "coverageTo": "2026-10-15T19:10:39.981+0800",
+    "oldestFetched": "2026-10-15T14:26:15.277+0800",
     "sourceTopicsFetched": 30,
     "sourceTopicsInCoverage": 4,
     "added": {
       "views": 0,
-      "all_views": 1
+      "all_views": 2
     },
-    "duplicates": 0,
-    "duplicateTopicIds": [],
-    "excludedTopics": [
-      "22258224458454111",
-      "55521554421424514",
-      "14425441125121512"
+    "duplicates": 2,
+    "duplicateTopicIds": [
+      "55521554421844224",
+      "14425441125815522"
     ],
+    "excludedTopics": [],
     "briefChanges": {
       "added": [],
       "updated": [],
       "expiredRemoved": []
     },
     "addedTopicIds": [
-      "45548552248554218"
+      "82258224458142442",
+      "22258224458142451"
     ],
     "files": {
-      "all_views": "data/research/updates/2026-10-15-1858-all_views.csv"
+      "all_views": "data/research/updates/2026-10-15-1955-all_views.csv"
     },
-    "syncedAt": "2026-10-15 10:58:04Z",
+    "syncedAt": "2026-10-15 11:55:35Z",
     "fetchedTopics": 30,
     "pageRowsFetched": 30,
     "dedupCheck": {
       "algorithm": "scripts/build_research_shards.py keys(row)",
-      "candidateKeys": 4,
-      "candidateBuckets": 4,
-      "duplicateKeys": 0,
+      "candidateKeys": 16,
+      "candidateBuckets": 16,
+      "duplicateKeys": 4,
       "candidateKeysByTopic": {
-        "45548552248554218": [
-          "stamp:5a8555fa7ed75efbe7246c340a1edbf26518bbffff1b195d76349d490e691b25",
-          "topic:45548552248554218",
-          "body:c6cfd34fd814a625dcd17016cc2035df7a8518cc357ff85727759d470807b051",
-          "compactBody:c8e34366aae703d8eae04e7c2079c67a0941c1dade1076444b4ed9ce074d353c"
+        "55521554421844224": [
+          "stamp:6aca9091d8b2780606de1f3cf1d8a43ab19684bb1cd849b35ef50fee35958e16",
+          "topic:55521554421844224",
+          "body:90e579ef018cf059d3a28ea5ef28e56c698d24fcd146b3fc61ca1c03801b9ca5",
+          "compactBody:5d2a5895d998303dc67ddc5bb5dee26db0c06bbe713e52832fc0485462aed325"
+        ],
+        "82258224458142442": [
+          "stamp:ac623b3b85cddb794afcbf2d7032e9b0790ef41cebcc3da9cf677b3dd414afc3",
+          "topic:82258224458142442",
+          "body:67218ceddf2c93acfe101fd2b5df3c505e2c688f3bcf813c72612145f75e33df",
+          "compactBody:0d8b1f808aa78a0cc7bc5e0d229e99507a38300242eb95c819f337ceaa52b883"
+        ],
+        "22258224458142451": [
+          "stamp:e3de8c03dfe08d1d306a791f10822d7b64e1e24c0ebef5fdf1aaf65ef6a19330",
+          "topic:22258224458142451",
+          "body:03a5c37c01b2199f930a3478b58864b253b17d0cc197b5b00573d38e8c2ecb41",
+          "compactBody:bfdda7cac742e359ca05d420e0e8e4e596d20d34efef57fd6eb61aabd7b4cc16"
+        ],
+        "14425441125815522": [
+          "stamp:af21ac9691085f2ef913f7271bd31aebc5ad3c1326038689bcc84f61b883ccb5",
+          "topic:14425441125815522",
+          "body:8116894131ec39f09e3d425c7f19a52ccc83e789283b954f508feb6127f59fb7",
+          "compactBody:968c349cd998860c2b89daa5e4f973a8bc9fbaa80b9d00c6efaadc0293e9443e"
         ]
       },
       "candidateBucketsByTopic": {
-        "45548552248554218": [
-          "f6",
-          "0c",
-          "ce",
-          "25"
+        "55521554421844224": [
+          "ec",
+          "f1",
+          "c6",
+          "63"
+        ],
+        "82258224458142442": [
+          "82",
+          "e1",
+          "42",
+          "39"
+        ],
+        "22258224458142451": [
+          "1c",
+          "9c",
+          "16",
+          "b5"
+        ],
+        "14425441125815522": [
+          "f5",
+          "2d",
+          "62",
+          "2a"
         ]
       },
       "duplicateKeysByTopic": {
-        "45548552248554218": []
+        "55521554421844224": [
+          "body:90e579ef018cf059d3a28ea5ef28e56c698d24fcd146b3fc61ca1c03801b9ca5",
+          "compactBody:5d2a5895d998303dc67ddc5bb5dee26db0c06bbe713e52832fc0485462aed325"
+        ],
+        "14425441125815522": [
+          "body:8116894131ec39f09e3d425c7f19a52ccc83e789283b954f508feb6127f59fb7",
+          "compactBody:968c349cd998860c2b89daa5e4f973a8bc9fbaa80b9d00c6efaadc0293e9443e"
+        ]
       }
     },
-    "notes": "新增1条谷歌云/TPU市场观点；3条仅含市场总结标签、无观点正文的主题未纳入；摘要无变更且无过期条目。"
+    "notes": "新增2条其他市场观点（台积电产业链资本开支与AI需求、极兔速递经营更新；纯快递类归入全部观点）；另2条市场观点因正文去重键命中未重复写入。观点摘要无变动，无到期清理。"
   }
 }
