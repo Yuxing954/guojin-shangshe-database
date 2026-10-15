@@ -1,13 +1,14 @@
 {
-  "syncedAt": "2026-10-15 04:04:20Z",
+  "syncedAt": "2026-10-15 04:58:38Z",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
-  "coverageFrom": "2026-10-15T10:58:52.572+0800",
-  "coverageTo": "2026-10-15T11:36:58.251+0800",
-  "oldestFetched": "2026-10-15T09:57:23.856+0800",
+  "coverageFrom": "2026-10-15T11:36:58.251+0800",
+  "coverageTo": "2026-10-15T12:58:07.560+0800",
+  "oldestFetched": "2026-10-15T11:19:32.927+0800",
   "fetchedTopics": 30,
   "files": {
     "views": [
+      "data/research/updates/2026-10-15-1258-views.csv",
       "data/research/updates/2026-10-15-1158-views.csv",
       "data/research/updates/2026-10-15-0901-views.csv",
       "data/research/updates/2026-10-15-0008-views.csv",
@@ -47,6 +48,7 @@
       "data/research/updates/2026-10-14-1258-views.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-10-15-1258-all_views.csv",
       "data/research/updates/2026-10-15-1158-all_views.csv",
       "data/research/updates/2026-10-15-1058-all_views.csv",
       "data/research/updates/2026-10-15-0959-all_views.csv",
@@ -155,18 +157,18 @@
     ]
   },
   "counts": {
-    "views": 257,
-    "all_views": 5078,
+    "views": 259,
+    "all_views": 5086,
     "minutes": 101
   },
   "latest": {
-    "views": "2026-10-15 11:30",
-    "all_views": "2026-10-15 11:30",
+    "views": "2026-10-15 12:58",
+    "all_views": "2026-10-15 12:58",
     "minutes": "2026-10-12T01:07:33"
   },
   "excluded": {
-    "附件标题": 69,
-    "图片无可读正文": 21,
+    "附件标题": 71,
+    "图片无可读正文": 22,
     "无实质观点正文": 19
   },
   "lastClassificationCorrection": {
@@ -5516,49 +5518,58 @@
     ]
   },
   "lastRun": {
-    "runId": "2026-10-15-1058",
+    "runId": "2026-10-15-1258",
     "sourceGroup": "88888142214212",
     "sourceName": "水木调研纪要-2.0",
-    "previousCoverageTo": "2026-10-15T09:57:23.856+0800",
-    "coverageTo": "2026-10-15T10:58:52.572+0800",
-    "oldestFetched": "2026-10-15T09:09:52.374+0800",
+    "previousCoverageTo": "2026-10-15T11:36:58.251+0800",
+    "coverageTo": "2026-10-15T12:58:07.560+0800",
+    "oldestFetched": "2026-10-15T11:19:32.927+0800",
     "sourceTopicsFetched": 30,
-    "sourceTopicsInCoverage": 9,
+    "sourceTopicsInCoverage": 13,
     "added": {
-      "views": 0,
-      "all_views": 3
+      "views": 2,
+      "all_views": 8
     },
     "duplicates": 0,
     "duplicateTopicIds": [],
     "excludedTopics": [
-      "82258224221425422",
-      "22258224221484241",
-      "82258224221485542",
-      "45548552551245588",
-      "82258224228245512",
-      "14425441445441482"
+      "45548552522885188",
+      "22258224244854451",
+      "55521554545828424"
     ],
     "briefChanges": {
       "added": [],
-      "updated": [],
+      "updated": [
+        "beauty-double11-20261014",
+        "jinma-tourism-robots-20261011"
+      ],
       "expiredRemoved": []
     },
     "addedTopicIds": [
-      "14425441448244252",
-      "82258224221528452",
-      "22258224228242851"
+      "45548552522484548",
+      "22258224244554441",
+      "45548552522228518",
+      "45548552522551258",
+      "22258224244224421",
+      "82258224244224282",
+      "22258224244224811",
+      "82258224244585282",
+      "82258224244551552",
+      "82258224244554142"
     ],
     "files": {
-      "all_views": "data/research/updates/2026-10-15-1058-all_views.csv"
+      "views": "data/research/updates/2026-10-15-1258-views.csv",
+      "all_views": "data/research/updates/2026-10-15-1258-all_views.csv"
     },
-    "syncedAt": "2026-10-15 02:58:06Z",
+    "syncedAt": "2026-10-15 04:58:38Z",
     "fetchedTopics": 30,
     "pageRowsFetched": 30,
     "dedupCheck": {
       "algorithm": "scripts/build_research_shards.py keys(row)",
-      "candidateKeys": 34,
-      "candidateBuckets": 31,
+      "candidateKeys": 40,
+      "candidateBuckets": 37,
       "duplicateKeys": 0
-    }
+    },
+    "notes": "新增10条真实市场观点：2条商社相关并补充观点摘要，8条归入其他市场观点；2条附件标题帖及1条仅有图片的午评未读取附件/图片正文，未纳入。"
   }
 }
