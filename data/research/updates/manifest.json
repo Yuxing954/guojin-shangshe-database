@@ -1,10 +1,10 @@
 {
-  "syncedAt": "2026-10-15 01:59:22Z",
+  "syncedAt": "2026-10-15 02:58:06Z",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
-  "coverageFrom": "2026-10-15T08:57:56.800+0800",
-  "coverageTo": "2026-10-15T09:57:23.856+0800",
-  "oldestFetched": "2026-10-15T08:57:56.800+0800",
+  "coverageFrom": "2026-10-15T09:57:23.856+0800",
+  "coverageTo": "2026-10-15T10:58:52.572+0800",
+  "oldestFetched": "2026-10-15T09:09:52.374+0800",
   "fetchedTopics": 28,
   "files": {
     "views": [
@@ -46,6 +46,7 @@
       "data/research/updates/2026-10-14-1258-views.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-10-15-1058-all_views.csv",
       "data/research/updates/2026-10-15-0959-all_views.csv",
       "data/research/updates/2026-10-15-0901-all_views.csv",
       "data/research/updates/2026-10-15-0059-all_views.csv",
@@ -153,12 +154,12 @@
   },
   "counts": {
     "views": 255,
-    "all_views": 5057,
+    "all_views": 5060,
     "minutes": 101
   },
   "latest": {
     "views": "2026-10-15 08:33",
-    "all_views": "2026-10-15 09:43",
+    "all_views": "2026-10-15 10:58",
     "minutes": "2026-10-12T01:07:33"
   },
   "excluded": {
@@ -5513,82 +5514,49 @@
     ]
   },
   "lastRun": {
-    "runId": "2026-10-15-0901",
+    "runId": "2026-10-15-1058",
     "sourceGroup": "88888142214212",
     "sourceName": "水木调研纪要-2.0",
-    "previousCoverageTo": "2026-10-15T00:06:12.389+0800",
-    "coverageTo": "2026-10-15T08:57:56.800+0800",
-    "oldestFetched": "2026-10-14T19:11:08.493+0800",
-    "sourceTopicsFetched": 90,
-    "sourceTopicsInCoverage": 38,
+    "previousCoverageTo": "2026-10-15T09:57:23.856+0800",
+    "coverageTo": "2026-10-15T10:58:52.572+0800",
+    "oldestFetched": "2026-10-15T09:09:52.374+0800",
+    "sourceTopicsFetched": 30,
+    "sourceTopicsInCoverage": 9,
     "added": {
-      "views": 1,
-      "all_views": 21
+      "views": 0,
+      "all_views": 3
     },
     "duplicates": 0,
     "duplicateTopicIds": [],
     "excludedTopics": [
-      "55521554518155254",
-      "55521554515222514",
-      "45548552588112588",
-      "45548552588121458",
-      "55521554511488184",
-      "14425441455182222",
-      "14425441455112552",
-      "82258224252454882",
-      "45548552545242418",
-      "45548552545242428",
-      "22258224252454551",
-      "82258224252454552",
-      "55521554525425884",
-      "45548552545515558",
-      "55521554525582844",
-      "45548552545524188"
+      "82258224221425422",
+      "22258224221484241",
+      "82258224221485542",
+      "45548552551245588",
+      "82258224228245512",
+      "14425441445441482"
     ],
     "briefChanges": {
-      "added": [
-        "55521554511448114"
-      ],
+      "added": [],
       "updated": [],
       "expiredRemoved": []
     },
     "addedTopicIds": [
-      "22258224281512441",
-      "22258224281512821",
-      "82258224281515542",
-      "22258224281544181",
-      "45548552581425458",
-      "45548552581428148",
-      "22258224281584521",
-      "45548552581442158",
-      "14425441454511552",
-      "55521554515151884",
-      "82258224288411552",
-      "82258224288414222",
-      "45548552588215828",
-      "14425441455185882",
-      "55521554511481414",
-      "45548552588214858",
-      "14425441455118112",
-      "55521554511448114",
-      "14425441455118242",
-      "82258224288442512",
-      "55521554511445214",
-      "55521554511442554"
+      "14425441448244252",
+      "82258224221528452",
+      "22258224228242851"
     ],
     "files": {
-      "views": "data/research/updates/2026-10-15-0901-views.csv",
-      "all_views": "data/research/updates/2026-10-15-0901-all_views.csv"
+      "all_views": "data/research/updates/2026-10-15-1058-all_views.csv"
     },
-    "syncedAt": "2026-10-15 01:00:55Z",
-    "fetchedTopics": 90,
-    "pageRowsFetched": 90,
+    "syncedAt": "2026-10-15 02:58:06Z",
+    "fetchedTopics": 30,
+    "pageRowsFetched": 30,
     "dedupCheck": {
       "algorithm": "scripts/build_research_shards.py keys(row)",
-      "candidateKeys": 88,
-      "candidateBuckets": 74,
+      "candidateKeys": 34,
+      "candidateBuckets": 31,
       "duplicateKeys": 0
-    },
-    "pageOldestFetched": "2026-10-14T19:11:08.493+0800"
+    }
   }
 }
