@@ -64,3 +64,13 @@ body.site-page .data-board #indicators #detail{scroll-margin-top:24px}
  body.site-page .cm-main .cm-kpi>strong{grid-column:1;grid-row:auto;text-align:left!important}
  body.site-page .cm-main .cm-kpi>strong small{display:inline;text-align:left}
 }
+.macro-expectation-reading{display:block;margin-top:9px;padding-top:9px;border-top:1px solid #e5e8ef;font-size:12px;line-height:20px;color:#856139;white-space:normal}
+.macro-forecast-latest{display:flex;flex-wrap:wrap;gap:10px 24px;padding:12px 20px;background:#faf7f2;font-size:13px;line-height:22px}
+.macro-forecast-latest a,.macro-forecast-overview a{color:#536294;font-size:12px}
+.macro-forecast-overview{margin-top:18px;margin-bottom:22px;min-width:0}
+.macro-forecast-overview h3{margin:0;font-size:15px}
+.macro-forecast-history{margin:18px 20px}
+.macro-forecast-history>summary{cursor:pointer;padding:12px 0;font-size:13px}
+.macro-forecast-overview .portal-table-scroll,.macro-forecast-history .portal-table-scroll{max-width:100%;overflow:auto}
+.macro-forecast-overview th,.macro-forecast-overview td,.macro-forecast-history th,.macro-forecast-history td{white-space:nowrap}
+.macro-forecast-detail:empty{display:none}
