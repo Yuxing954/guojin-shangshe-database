@@ -1,4 +1,5 @@
 const test=require('node:test'),assert=require('node:assert/strict');
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
 const M=require('../scripts/gold-macro-model.js'),D=require('../data/gold-jewelry/macro.json');
 test('reviewed macro data validates with separate policy, market probabilities and SEP',()=>{assert.deepEqual(M.validate(D),[]);assert.ok(D.series.reduce((n,s)=>n+s.observations.length,0)>=184);assert.equal(D.releases.length,5);assert.ok(D.meetings.length>=2);assert.equal(D.projections.basis,'sep_year_end_midpoint');});
 test('year-end probability aggregates all higher target ranges, not just one hike',()=>{const s=D.meetings[1].snapshots.find(s=>s.observedAt==='2026-10-08T09:09:01-05:00'),p=M.probabilities(s,D.policy.range);assert.ok(Math.abs(p.hike-82.8)<1e-10);assert.equal(p.hold,17.2);assert.equal(p.cut,0);assert.equal(s.observedAt,'2026-10-08T09:09:01-05:00');assert.equal(M.probabilities(D.meetings[1].snapshots[0],D.policy.range).hike,79.7);});
@@ -15,5 +16,10 @@ test('new complete-table snapshots disclose unknown source time and preserve old
  const hike=table.columns.reduce((sum,c,i)=>sum+(c.lower>=D.policy.range[1]&&Number.isFinite(row.probabilities[i])?row.probabilities[i]:0),0);
  assert.match(M.snapshotLabel(latest),/^获取 /);assert.equal(M.probabilities(latest,D.policy.range).hike,hike);
  assert.equal(D.meetings[0].snapshots.find(s=>s.observedAt==='2026-10-08T09:03:53-05:00').ranges[1].probability,82.8);
+});
+
+test('FedWatch receipt hash matches canonical committed bytes',()=>{
+ const t=D.fedwatchTables.at(-1),raw=fs.readFileSync(path.join(__dirname,'..',t.receiptPath),'utf8').replace(/\r\n/g,'\n');
+ assert.equal(crypto.createHash('sha256').update(raw,'utf8').digest('hex'),t.receiptSha256);
 });
 
