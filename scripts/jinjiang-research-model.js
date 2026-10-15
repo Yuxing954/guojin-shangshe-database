@@ -33,7 +33,8 @@
     function structure(period){
       const finite=get('hotels',{...categories,scope:'有限服务型酒店'},period),mid=get('hotels',{...categories,scope:'中端酒店'},period),franchise=get('hotels',{...categories,scope:'有限服务型酒店',mode:'加盟店/加盟和管理'},period),leased=get('hotels',{...categories,scope:'有限服务型酒店',mode:'直营店/自有和租赁'},period);
       const finiteRooms=get('rooms',{...categories,scope:'有限服务型酒店'},period),midRooms=get('rooms',{...categories,scope:'中端酒店'},period);
-      return {finite,mid,franchise,leased,midShare:share(mid,finite),franchiseShare:share(franchise,finite),midRoomShare:share(midRooms,finiteRooms)};
+      const economy=get('hotels',{...categories,scope:'经济型'},period),economyRooms=get('rooms',{...categories,scope:'经济型'},period),full=get('hotels',{...categories,scope:'全服务型酒店'},period);
+      return {finite,mid,economy,franchise,leased,finiteRooms,midRooms,economyRooms,full,roomsPerHotel:R.roomsPerHotel(finiteRooms,finite),midShare:share(mid,finite),franchiseShare:share(franchise,finite),midRoomShare:share(midRooms,finiteRooms)};
     }
     function contractGap(period){const signed=scale('signed_hotels',period),opened=scale('hotels',period);return R.compatible(signed,opened)&&signed.unit===opened.unit&&signed.value>=opened.value?derive(signed.value-opened.value,'家',[signed,opened],'期末签约酒店 − 期末开业酒店（签约未开业差额）'):null;}
     function stockBridge(period){
@@ -68,7 +69,15 @@
     function hotelRevenue(period){const finite=project('project_revenue','境内外有限服务型酒店 / 合计',period),full=project('project_revenue','境内全服务型酒店 / 合计',period),total=group('revenue',period);if(!R.compatible(finite,full,['region','basis','currency','frequency','periodBasis'])||!R.safe(total)||finite.unit!==full.unit||finite.currency!==total.currency||finite.value+full.value>total.value+0.001)return null;return {...derive(finite.value+full.value,finite.unit,[finite,full],'有限服务型酒店收入 + 全服务型酒店收入'),currency:finite.currency};}
     const reportPeriods=[...new Set(R.rows(data,financial,'revenue').map(o=>o.period))].sort((a,b)=>periodOrder(b)-periodOrder(a)||b.localeCompare(a));
     const segmentPeriods=[...new Set(R.rows(data,{...projects,scope:'合并收入成本合计 / 合计'},'project_revenue').filter(o=>o.frequency==='半年'||o.frequency==='年度').map(o=>o.period))].sort((a,b)=>periodOrder(b)-periodOrder(a));
-    return {data,get,group,project,matrixRow,scale,operating,cohorts,cohort,segment,delta,share,structure,contractGap,stockBridge,qualityBridge,grossBridge,projectMargin,revenueParts,hotelRevenue,reportPeriods,segmentPeriods,periodOrder};
+    // Compare the same reporting window across years; never interleave FY and H1.
+    function samePeriods(period,count=6){return reportPeriods.filter(p=>p.slice(4)===period.slice(4)&&periodOrder(p)<=periodOrder(period)).slice(0,count).reverse();}
+    function businessParts(period){return ['酒店客房','餐饮服务','前期加盟服务','持续加盟服务','订房渠道','会员服务','采购平台收入','其他'].map(label=>{const scope='境内外有限服务型酒店 / '+label;return {label,revenue:project('project_revenue',scope,period),gross:project('gross_profit',scope,period),margin:projectMargin(scope,period)};});}
+    const regional=(metric,region,mode,period)=>get(metric,{region,mode,scope:'全部',basis:'原报告境内外开业签约规模',frequency:'季度'},period);
+    const fullOperating=(metric,period)=>get(metric,{region:'中国大陆境内',scope:'全服务型酒店',mode:'全部',basis:'全服务型酒店'},period);
+    const fullSegment=(metric,period)=>get(metric,{region:'中国大陆境内',scope:'全服务型酒店',mode:'全部',basis:'原报告境内外分部'},period);
+    const segmentKpi=(metric,scope,period)=>get(metric,{region:'集团整体',scope,mode:'全部',basis:'有限服务型酒店分部 / 未抵销跨分部交易',currency:'CNY'},period);
+    const balance=(metric,period)=>get(metric,{...financial,basis:'Choice财报 / 返回币种',currency:'CNY'},period);
+    return {data,get,group,project,matrixRow,scale,operating,cohorts,cohort,segment,delta,share,structure,contractGap,stockBridge,qualityBridge,grossBridge,projectMargin,revenueParts,hotelRevenue,reportPeriods,segmentPeriods,periodOrder,samePeriods,businessParts,regional,fullOperating,fullSegment,segmentKpi,balance};
   }
   return {build,financial,network,categories,matrix,projects,periodOrder};
 });
