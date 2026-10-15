@@ -20,6 +20,7 @@ jobs:
           node --check scripts/macro.js
           node --check scripts/macro-dashboard-model.js
           node --test tests/macro-dashboard.test.cjs
+          node --test tests/macro-expectations.test.cjs
           node --check scripts/prediction-model.js
           node --check scripts/forecast-desk.js
           node --test tests/forecast-macro.test.cjs
@@ -42,6 +43,7 @@ jobs:
           MACRO_SCREENSHOT_DIR: artifacts/macro
         run: |
           node tests/macro-dashboard.browser.cjs
+          node tests/macro-expectations.browser.cjs
           node tests/macro-study.browser.cjs
       - uses: actions/upload-artifact@v4
         if: always()
