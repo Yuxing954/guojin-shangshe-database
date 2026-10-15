@@ -1,7 +1,7 @@
 (function(){
   'use strict';
   const R=HotelResearchModel,J=JinjiangResearchModel,D=SiteData,esc=D.esc;
-  const state={region:'domestic',tier:'all',mode:'全部',cohortId:'',segmentPeriod:'',revenueItem:'持续加盟服务',revenueRegion:'境内有限服务型酒店'};
+  const state={region:'domestic',tier:'all',mode:'全部',segmentPeriod:'',revenueItem:'持续加盟服务',revenueRegion:'境内有限服务型酒店',ssRegion:'domestic',ssWindow:'',ssQuarter:'',ssTier:'all',ssMode:'全部',ssMetric:'revpar'};
   let cachedRows,cachedModel;
   const menu={compare:'总览',operating:'经营',expansion:'开店',profit:'财务',raw:'明细'};
   const panels=['compare','operating','expansion','profit','raw'];
@@ -55,15 +55,37 @@
     const chart=(title,regions)=>{const rows=regions.flatMap(([label,region])=>['直营','加盟'].map(mode=>({label:label+' · '+mode,mode,row:m.regional('hotels',region,mode,period)}))),max=Math.max(1,...rows.filter(x=>valid(x.row)).map(x=>x.row.value));return chartCard(title+' · 开业酒店',period,'<div class="jj-region-bars">'+rows.map(x=>'<div><b>'+esc(x.label)+'</b><span><i style="width:'+(valid(x.row)?x.row.value/max*100:0)+'%;background:'+palette[x.mode==='直营'?1:0]+'"></i></span><strong>'+U.numeric(x.row?.value,0)+'<small> 家</small></strong>'+U.source(x.row)+'</div>').join('')+'</div>');};
     return '<div class="jj-charts">'+chart('境内外 · 原报告地区口径',[['境内','中国大陆境内 / 合计'],['海外','海外 / 合计']])+chart('海外分布 · 法国为欧洲子集',[['欧洲','海外 / 欧洲'],['其中法国','海外 / 其中:法国'],['亚洲','海外 / 亚洲'],['美洲','海外 / 美洲'],['非洲','海外 / 非洲']])+'</div>';
   }
-  function operatingComparison(U,m,period,region,mode,tier,selected){
-    const same=selected||m.cohort(period,region,mode,tier);if(!same)return '';
-    const sameRow=metric=>{const sel=R.selector(same);if(metric==='occ')delete sel.currency;return R.one(m.data,sel,metric,same.period);};
-    return '<div class="jj-charts">'+compareBars(U,m,'全口径与固定同店 · RevPAR同比',same.period,[{name:'全口径',row:R.growth(m.data,m.operating('revpar',same.period,region,tier,mode)),old:null},{name:'固定同店',row:R.growth(m.data,same),old:null}],'%')+chartCard('固定同店 · '+mode,same.period,grid(['revpar','adr','occ'].map(metric=>metricCard(U,U.metric(metric),sameRow(metric),U.grow(m.data,sameRow(metric)))),'jj-three'))+'</div>';
+  function sameStoreMatrix(U,m,w){
+    const currency=w.region==='中国大陆境内'?'元/间':'欧元/间',names={all:'合计',mid:'中端',economy:'经济型'},rows=['all','mid','economy'].flatMap(tier=>['全部','直营','加盟'].map(mode=>({tier,mode,rows:['revpar','adr','occ'].map(metric=>m.sameStoreValue(w,metric,mode,tier))}))).filter(x=>x.rows.some(Boolean));
+    const cards=['all','mid','economy'].map(tier=>{const subset=rows.filter(x=>x.tier===tier);if(!subset.length)return '';const body='<div class="jj-matrix-note">本期值 / 披露同比 · OCC同比：pp</div><div class="jj-matrix"><div class="jj-matrix-head"><span>模式</span><span>RevPAR<br><small>'+currency+'</small></span><span>ADR<br><small>'+currency+'</small></span><span>OCC<br><small>%</small></span></div>'+subset.map(x=>'<div class="jj-matrix-row"><b>'+esc(x.mode)+'</b>'+x.rows.map(o=>{const g=m.sameStoreGrowth(o);return '<div class="jj-heat '+(g?(g.value>=0?'positive':'negative'):'missing')+'"><strong>'+U.numeric(o?.value,2)+'</strong><span>'+(o&&!R.safe(o)?U.tag('待核验'):g?U.numeric(g.value,2)+(g.unit==='百分点'?' pp':'%'):'—')+'</span>'+U.source(g||o)+'</div>';}).join('')+'</div>').join('')+'</div>';return chartCard(names[tier]+' · 同店量价',w.period,body);}).join('');
+    return '<div class="jj-ss-grid">'+cards+'</div><details class="hr-disclosure"><summary>同店数值与来源</summary>'+briefTable(U,['档次 / 模式','RevPAR','同比','ADR','同比','OCC','同比 / pp'],rows.map(x=>[esc(names[x.tier]+' · '+x.mode),...x.rows.flatMap(o=>[U.cell(o,2),U.cell(m.sameStoreGrowth(o),2)])]))+'</details>';
+  }
+  function sameStoreHistoryChart(U,m,w){
+    const windows=m.sameStoreHistory(w),modes=['全部','直营','加盟'],metric=state.ssMetric,unit=metric==='occ'?'百分点':'%',series=windows.map(window=>({window,items:modes.map(mode=>({mode,row:m.sameStoreValue(window,metric,mode,state.ssTier)}))}));
+    const values=series.flatMap(s=>s.items.map(x=>m.sameStoreGrowth(x.row)?.value)).filter(Number.isFinite),lo=Math.min(0,...values),hi=Math.max(0,...values),range=hi-lo||1,y=v=>180-(v-lo)/range*130,group=620/Math.max(1,series.length),bar=Math.min(35,group/4);
+    const chart=values.length?'<svg class="hr-chart quotes-chart" viewBox="0 0 720 235" role="img" aria-label="同店'+U.metric(metric)+'各期披露同比"><title>同店'+U.metric(metric)+'各期披露同比 · '+unit+'</title><line x1="45" x2="680" y1="'+y(0)+'" y2="'+y(0)+'" stroke="#bdcbd3"/>'+series.map((s,i)=>s.items.map((x,j)=>{const g=m.sameStoreGrowth(x.row);if(!g)return '';const center=50+group*(i+.5),px=center+(j-1)*bar-bar*.42;return '<rect x="'+px+'" y="'+Math.min(y(0),y(g.value))+'" width="'+bar*.84+'" height="'+Math.max(1,Math.abs(y(0)-y(g.value)))+'" fill="'+palette[j]+'"><title>'+esc(s.window.period+' · '+x.mode+' · '+U.numeric(g.value,2)+unit)+'</title></rect><text x="'+(px+bar*.42)+'" y="'+(g.value>=0?y(g.value)-6:y(g.value)+14)+'" text-anchor="middle">'+U.numeric(g.value,2)+'</text>';}).join('')+'<text x="'+(50+group*(i+.5))+'" y="220" text-anchor="middle">'+esc(s.window.period)+'</text>').join('')+'</svg>':U.empty('暂无披露同比');
+    return chartCard('同店'+U.metric(metric)+'同比 · '+unit,'同报告窗口 · 各期独立样本',chart+'<div class="hr-legend">'+modes.map((mode,i)=>'<span><i style="background:'+palette[i]+'"></i>'+mode+'</span>').join('')+'</div><details class="hr-disclosure"><summary>历史数值与样本来源</summary>'+briefTable(U,['期间','样本','全部','直营','加盟'],series.map(s=>[esc(s.window.period),esc(s.window.basis),...s.items.map(x=>U.cell(m.sameStoreGrowth(x.row),2))]))+'</details>');
+  }
+  function sameStoreSection(env){
+    const {U,quarter}=env,m=model(env.data.rows),regions=[{value:'domestic',label:'境内'},{value:'overseas',label:'海外'}].filter(x=>m.sameStoreWindows(x.value).length);
+    if(!regions.length)return heading('同店经营')+U.empty('暂无已入库同店披露');
+    if(!regions.some(x=>x.value===state.ssRegion))state.ssRegion=regions[0].value;
+    if(state.ssQuarter!==quarter){state.ssWindow='';state.ssQuarter=quarter;}
+    const windows=m.sameStoreWindows(state.ssRegion),w=windows.find(x=>x.key===state.ssWindow)||windows.find(x=>J.periodOrder(x.period)<=J.periodOrder(quarter));
+    let html=heading('同店经营',regions.find(x=>x.value===state.ssRegion).label+'有限服务型');
+    if(!w)return html+U.empty('该经营季度前暂无同店披露');state.ssWindow=w.key;
+    html+='<div class="hr-tools">'+(regions.length>1?U.field('同店地区','jj-ss-region',regions,state.ssRegion):'')+U.field('同店报告期 / 固定样本','jj-ss-window',windows.map(x=>({value:x.key,label:x.period+' · '+x.basis.replace('原报告可比酒店 / ','')})),w.key,true)+'</div>';
+    html+='<div class="jj-ss-sample">'+esc(w.basis.replace('原报告可比酒店 / ',''))+' · '+esc(w.frequency)+'</div>';
+    html+=sameStoreMatrix(U,m,w);
+    html+='<div class="hr-tools">'+U.field('同店分析档次','jj-ss-tier',[{value:'all',label:'合计'},{value:'mid',label:'中端'},{value:'economy',label:'经济型'}],state.ssTier)+U.field('全口径对照模式','jj-ss-mode',['全部','直营','加盟'],state.ssMode)+U.field('历史同比指标','jj-ss-metric',['revpar','adr','occ'].map(x=>({value:x,label:U.metric(x)})),state.ssMetric)+'</div>';
+    html+='<div class="jj-charts">'+sameStoreHistoryChart(U,m,w)+chartCard('同店与全口径 · '+state.ssMode,w.period,briefTable(U,['指标','同店值','同店同比','全口径值','全口径同比','同店 − 全口径 / pp'],['revpar','adr','occ'].map(metric=>{const c=m.sameStoreComparison(w,metric,state.ssMode,state.ssTier);return [U.metric(metric),U.cell(c.same,2),U.cell(c.sameGrowth,2),U.cell(c.all,2),U.cell(c.allGrowth,2),U.cell(c.gap,2)];})))+'</div>';
+    return html;
   }
   function snapshot(env){
     const {U,quarter,financePeriod}=env,m=model(env.data.rows),segmentPeriod=reportPeriod(m,financePeriod),f=metric=>m.group(metric,financePeriod),per=U.quarters(quarter);
     let html=heading('合并业绩',financePeriod);
     html+=grid([['营业收入','revenue'],['归母净利润','parent_profit'],['扣非归母净利润','deducted_profit'],['经营现金流','operating_cf']].map(([label,metric])=>metricCard(U,label,f(metric),U.grow(m.data,f(metric)))));
+    const ss=m.cohort(quarter);if(ss){const w=m.sameStoreWindows().find(x=>x.period===ss.period&&x.basis===ss.basis);html+=heading('境内同店RevPAR同比',ss.period)+grid(['全部','直营','加盟'].map(mode=>derivedCard(U,mode,m.sameStoreGrowth(m.sameStoreValue(w,'revpar',mode)),'固定样本 · '+ss.period)),'jj-three');}
     html+='<div class="jj-charts">'+operatingMatrix(U,m,quarter,'domestic',['all'])+operatingMatrix(U,m,quarter,'overseas',['all'])+'</div>';
     html+=heading('境内经营与盈利兑现',quarter)+'<div class="jj-overview-grid">';
     const dom=m.operating('revpar',quarter),direct=m.cohort(quarter,'domestic','直营'),same=m.cohort(quarter),overseas=m.segment('parent_profit','overseas',segmentPeriod),channel=m.matrixRow('订房渠道','境内有限服务型酒店',segmentPeriod),fees=m.matrixRow('持续加盟服务','境内有限服务型酒店',segmentPeriod);
@@ -80,18 +102,12 @@
   }
   function operating(env){
     const {U,quarter}=env,m=model(env.data.rows),p=U.quarters(quarter,12),area=state.region==='domestic'?'境内':'海外',r=metric=>m.operating(metric,quarter,state.region,state.tier,state.mode);
-    let html='<div class="jj-charts">'+operatingMatrix(U,m,quarter,'domestic')+operatingMatrix(U,m,quarter,'overseas')+'</div>';
-    html+=heading('量价历史 / 同店对照')+'<div class="hr-tools">'+U.field('区域','jj-region',[{value:'domestic',label:'境内'},{value:'overseas',label:'海外'}],state.region)+U.field('档次','jj-tier',[{value:'all',label:'有限服务型合计'},{value:'mid',label:'中端'},{value:'economy',label:'经济型'}],state.tier)+U.field('经营模式','jj-mode',['全部','直营','加盟'],state.mode)+'</div>';
+    let html=sameStoreSection(env)+heading('全口径经营',quarter)+'<div class="jj-charts">'+operatingMatrix(U,m,quarter,'domestic')+operatingMatrix(U,m,quarter,'overseas')+'</div>';
+    html+=heading('全口径量价历史')+'<div class="hr-tools">'+U.field('区域','jj-region',[{value:'domestic',label:'境内'},{value:'overseas',label:'海外'}],state.region)+U.field('档次','jj-tier',[{value:'all',label:'有限服务型合计'},{value:'mid',label:'中端'},{value:'economy',label:'经济型'}],state.tier)+U.field('经营模式','jj-mode',['全部','直营','加盟'],state.mode)+'</div>';
     html+=heading(area+'有限服务型 · 量价',quarter)+grid(['revpar','adr','occ'].map(metric=>metricCard(U,U.metric(metric),r(metric),U.grow(m.data,r(metric)))), 'jj-three');
     html+='<div class="jj-charts">'+growthChart(U,m,p,'量价同比',[{name:'RevPAR',row:per=>m.operating('revpar',per,state.region,state.tier,state.mode)},{name:'ADR',row:per=>m.operating('adr',per,state.region,state.tier,state.mode)}])+growthChart(U,m,p,'入住率同比',[{name:'入住率',row:per=>m.operating('occ',per,state.region,state.tier,state.mode)}],'百分点')+'</div>';
     html+=heading('境内全服务型',quarter)+grid(['revpar','adr','occ'].map(metric=>{const o=m.fullOperating(metric,quarter);return metricCard(U,U.metric(metric),o,U.grow(m.data,o));}),'jj-three');
     html+='<details class="hr-disclosure"><summary>季度量价明细</summary>'+briefTable(U,['季度','RevPAR','同比','ADR','同比','入住率','同比 / pp'],p.slice().reverse().map(per=>{const rows=['revpar','adr','occ'].map(metric=>m.operating(metric,per,state.region,state.tier,state.mode));return [per,...rows.flatMap(o=>[U.cell(o),U.grow(m.data,o)])];}))+'</details>';
-    const cohorts=m.cohorts(state.region,state.mode,state.tier);const selected=cohorts.find(o=>o.id===state.cohortId)||m.cohort(quarter,state.region,state.mode,state.tier);state.cohortId=selected?.id||'';
-    html+=heading('固定样本同店');
-    if(!cohorts.length)return html+U.empty('该范围暂无同店披露');
-    html+='<div class="hr-tools">'+U.field('同店样本 / 报告期','jj-cohort',cohorts.map(o=>({value:o.id,label:o.period+' · '+o.basis})),state.cohortId,true)+'</div>';
-    html+=operatingComparison(U,m,selected.period,state.region,state.mode,state.tier,selected);
-    html+=briefTable(U,['指标','全口径','全口径同比','固定同店','同店同比','同店 − 全口径'],['revpar','adr','occ'].map(metric=>{const sel=R.selector(selected);if(metric==='occ')delete sel.currency;const same=R.one(m.data,sel,metric,selected.period),all=m.operating(metric,selected.period,state.region,state.tier,state.mode),a=R.growth(m.data,same),b=R.growth(m.data,all);const difference=a&&b&&a.unit===b.unit?{value:a.value-b.value,unit:'百分点',inputs:[...a.inputs,...b.inputs],method:'同店同比 − 同期全口径同比'}:null;return [U.metric(metric),U.cell(all),U.grow(m.data,all),U.cell(same),U.grow(m.data,same),U.cell(difference)];}));
     return html;
   }
   function expansion(env){
@@ -138,6 +154,6 @@
     return html;
   }
   function render(panel,env){const renders={compare:snapshot,operating,expansion,profit};return renders[panel]?renders[panel](env):null;}
-  function bind(env){const $=id=>document.getElementById(id);for(const [id,key]of Object.entries({'jj-region':'region','jj-tier':'tier','jj-mode':'mode','jj-cohort':'cohortId','jj-segment-period':'segmentPeriod'})){if($(id))$(id).onchange=()=>{state[key]=$(id).value;if(['jj-region','jj-tier','jj-mode'].includes(id))state.cohortId='';env.refresh();};}}
+  function bind(env){const $=id=>document.getElementById(id);for(const [id,key]of Object.entries({'jj-region':'region','jj-tier':'tier','jj-mode':'mode','jj-segment-period':'segmentPeriod','jj-ss-region':'ssRegion','jj-ss-window':'ssWindow','jj-ss-tier':'ssTier','jj-ss-mode':'ssMode','jj-ss-metric':'ssMetric'})){if($(id))$(id).onchange=()=>{state[key]=$(id).value;if(id==='jj-ss-region')state.ssWindow='';env.refresh();};}}
   window.JinjiangResearch={menu,panels,redirects,render,bind,model};
 })();
