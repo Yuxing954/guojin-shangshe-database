@@ -1,10 +1,10 @@
 {
-  "syncedAt": "2026-10-15 09:01:32Z",
+  "syncedAt": "2026-10-15 09:59:36Z",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
-  "coverageFrom": "2026-10-15T14:00:12.328+0800",
-  "coverageTo": "2026-10-15T15:41:26.304+0800",
-  "oldestFetched": "2026-10-15T12:30:47.538+0800",
+  "coverageFrom": "2026-10-15T15:41:26.304+0800",
+  "coverageTo": "2026-10-15T17:23:08.724+0800",
+  "oldestFetched": "2026-10-15T12:32:59.929+0800",
   "fetchedTopics": 30,
   "files": {
     "views": [
@@ -49,6 +49,7 @@
       "data/research/updates/2026-10-14-1258-views.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-10-15-1759-all_views.csv",
       "data/research/updates/2026-10-15-1701-all_views.csv",
       "data/research/updates/2026-10-15-1359-all_views.csv",
       "data/research/updates/2026-10-15-1258-all_views.csv",
@@ -161,12 +162,12 @@
   },
   "counts": {
     "views": 260,
-    "all_views": 5105,
+    "all_views": 5106,
     "minutes": 101
   },
   "latest": {
     "views": "2026-10-15 15:02",
-    "all_views": "2026-10-15 15:41",
+    "all_views": "2026-10-15 17:23",
     "minutes": "2026-10-12T01:07:33"
   },
   "excluded": {
@@ -5536,69 +5537,65 @@
       "45548552515528818",
       "55521554581844554",
       "55521554581844184",
-      "45548552518122428"
+      "45548552518122428",
+      "22258224455124811"
     ]
   },
   "lastRun": {
-    "runId": "2026-10-15-1701",
+    "runId": "2026-10-15-1759",
     "sourceGroup": "88888142214212",
     "sourceName": "水木调研纪要-2.0",
-    "previousCoverageTo": "2026-10-15T14:00:12.328+0800",
-    "coverageTo": "2026-10-15T15:41:26.304+0800",
-    "oldestFetched": "2026-10-15T12:30:47.538+0800",
+    "previousCoverageTo": "2026-10-15T15:41:26.304+0800",
+    "coverageTo": "2026-10-15T17:23:08.724+0800",
+    "oldestFetched": "2026-10-15T12:32:59.929+0800",
     "sourceTopicsFetched": 30,
-    "sourceTopicsInCoverage": 21,
+    "sourceTopicsInCoverage": 1,
     "added": {
-      "views": 1,
-      "all_views": 18
+      "views": 0,
+      "all_views": 1
     },
     "duplicates": 0,
     "duplicateTopicIds": [],
-    "excludedTopics": [
-      "82258224214581552",
-      "55521554581845424"
-    ],
+    "excludedTopics": [],
     "briefChanges": {
       "added": [],
-      "updated": [
-        "jinma-tourism-robots-20261011"
-      ],
+      "updated": [],
       "expiredRemoved": []
     },
     "addedTopicIds": [
-      "45548552512841218",
-      "22258224212444111",
-      "14425441484111152",
-      "22258224212444821",
-      "45548552515228118",
-      "55521554585441484",
-      "14425441484115112",
-      "22258224212448541",
-      "45548552515251218",
-      "82258224212421482",
-      "82258224212421852",
-      "82258224212422112",
-      "55521554585452454",
-      "55521554585414444",
-      "45548552515285118",
-      "45548552515528818",
-      "55521554581844554",
-      "55521554581844184",
-      "45548552518122428"
+      "22258224455124811"
     ],
     "files": {
-      "views": "data/research/updates/2026-10-15-1701-views.csv",
-      "all_views": "data/research/updates/2026-10-15-1701-all_views.csv"
+      "all_views": "data/research/updates/2026-10-15-1759-all_views.csv"
     },
-    "syncedAt": "2026-10-15 09:01:32Z",
+    "syncedAt": "2026-10-15 09:59:36Z",
     "fetchedTopics": 30,
     "pageRowsFetched": 30,
     "dedupCheck": {
       "algorithm": "scripts/build_research_shards.py keys(row)",
-      "candidateKeys": 76,
-      "candidateBuckets": 66,
-      "duplicateKeys": 0
+      "candidateKeys": 4,
+      "candidateBuckets": 4,
+      "duplicateKeys": 0,
+      "candidateKeysByTopic": {
+        "22258224455124811": [
+          "topic:22258224455124811",
+          "stamp:bb4cae317321498340c691977db3761ae08459ee251886130d9f546fd7880ba0",
+          "body:3973e02be0cc61a6f91542f16125f43c61b937a8dc367ee8b067269cd29daa5",
+          "compactBody:3973e02be0cc61a6f91542f16125f43c61b937a8dc367ee8b067269cd29daa5"
+        ]
+      },
+      "candidateBucketsByTopic": {
+        "22258224455124811": [
+          "86",
+          "87",
+          "2d",
+          "61"
+        ]
+      },
+      "duplicateKeysByTopic": {
+        "22258224455124811": []
+      }
     },
-    "notes": "新增1条文旅场景商业化观点及18条其他市场观点；2条仅有附件的主题未读取附件正文，未纳入观点。金马游乐同主题吸收新增来源证据并更新摘要。"
+    "notes": "新增1条基金申赎强度市场数据观点；全量摘要无变更，最近3个北京时间自然日内无过期条目。"
   }
 }
