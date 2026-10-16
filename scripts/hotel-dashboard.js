@@ -287,24 +287,35 @@
     }) }; }), { unit: '%' });
   }
   function refresh() { selectionOptions(); renderPeriod(); if(state.view==='overview') renderOverview(); else if(state.view==='cities') renderCities(); else { renderGroups(); renderSupply(); renderInvestment(); } saveState(); }
-  function exportWeekly(allHistory) {
-    var rows = allHistory ? data.industry : data.industry.filter(function (r) { return r.period_id === state.week; });
-    if (!rows || !rows.length) return;
+  function exportWeekly() {
+    var start = $('export-start').value, end = $('export-end').value;
+    var tiered = $('export-scope').value === 'segments', error = $('export-error');
+    error.textContent = '';
+    if (!periods.has(start) || !periods.has(end) || start > end) { error.textContent = '开始周不能晚于结束周。'; return; }
+    var rows = data.industry.filter(function (r) {
+      return r.period_id >= start && r.period_id <= end && r.region === '全国' && (tiered ? SEGS.includes(r.segment) : r.segment === '全部');
+    }).sort(function (a,b) { return a.period_id.localeCompare(b.period_id) || SEGS.indexOf(a.segment)-SEGS.indexOf(b.segment); });
+    if (!rows.length) { error.textContent = '所选范围暂无数据。'; return; }
     var fields = Array.from(new Set(rows.flatMap(function (r) { return Object.keys(r); })));
-    var extraHeaders = ['比较基周', 'RevPAR变化（%）', 'OCC变化（百分点）', 'ADR变化（%）'];
-    function cell(value) { return '"' + String(value == null ? '' : value).replace(/"/g, '""') + '"'; }
-    var lines = [fields.concat(extraHeaders).map(cell).join(',')];
+    function cell(v) { return '"' + String(v == null ? '' : v).replace(/"/g, '""') + '"'; }
+    var lines = [fields.concat(['同比基周','RevPAR同比（%）','OCC同比（百分点）','ADR同比（%）']).map(cell).join(',')];
     rows.forEach(function (r) {
-      var baseId = allHistory ? M.priorPeriod(r) : baseWeek();
-      var base = row(r.region, r.segment, baseId);
-      var values = fields.map(function (field) { return r[field]; }).concat([baseId, M.change(r, base, 'revpar'), M.change(r, base, 'occupancy_rate'), M.change(r, base, 'adr')]);
-      lines.push(values.map(cell).join(','));
+      var id = M.priorPeriod(r), base = row(r.region,r.segment,id);
+      lines.push(fields.map(function (f) { return r[f]; }).concat([id,M.change(r,base,'revpar'),M.change(r,base,'occupancy_rate'),M.change(r,base,'adr')]).map(cell).join(','));
     });
-    var blob = new Blob(['\uFEFF' + lines.join('\r\n') + '\r\n'], { type: 'text/csv;charset=utf-8;' });
-    var url = URL.createObjectURL(blob), link = document.createElement('a');
-    link.href = url; link.download = '酒店周度数据_' + (allHistory ? '全部历史_同周同比' : state.week + '_对比' + baseWeek()) + '.csv';
+    var url = URL.createObjectURL(new Blob(['\uFEFF'+lines.join('\r\n')+'\r\n'],{type:'text/csv;charset=utf-8;'})), link = document.createElement('a');
+    link.href = url; link.download = '酒店周度数据_'+(tiered?'全国分档次_':'全国_')+start+'_'+end+'.csv';
     document.body.appendChild(link); link.click(); link.remove();
-    setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+    setTimeout(function () { URL.revokeObjectURL(url); },1000);
+    $('weekly-export-dialog').close();
+  }
+  function openWeeklyExport() {
+    var options = weekly.map(function (p) { return option(p.period_id,p.period_id+' · '+p.start_date+' — '+p.end_date); }).join('');
+    $('export-start').innerHTML = options; $('export-end').innerHTML = options;
+    var range = calendar();
+    $('export-start').value = range.length ? range[0].period_id : state.week;
+    $('export-end').value = state.week; $('export-error').textContent = '';
+    $('weekly-export-dialog').showModal();
   }
   function init(rows) {
     data.industry = rows; ix.industry = M.index(rows, ['region', 'segment', 'period_id']);
@@ -326,8 +337,9 @@
     $('week-select').innerHTML = option('latest', '最新周 · ' + latestWeek + ' · ' + latest.end_date) + Array.from(periods.values()).reverse().map(function (r) { return option(r.period_id, r.period_id + ' · ' + r.end_date); }).join('');
     $('week-select').value = followLatest ? 'latest' : state.week; $('region-select').innerHTML = regions.map(function (r) { return option(r, r); }).join(''); $('history-start').value = state.window;
     compareOptions(); $('dashboard').hidden = false;
-    $('weekly-export').onclick = function () { exportWeekly(false); };
-    $('weekly-export-all').onclick = function () { exportWeekly(true); };
+    $('weekly-export').onclick = openWeeklyExport;
+    $('export-cancel').onclick = function () { $('weekly-export-dialog').close(); };
+    $('export-form').onsubmit = function (event) { event.preventDefault(); exportWeekly(); };
     if (state.mode === 'value') $('city-sort').value = 'revpar';
     document.querySelectorAll('.hd-tab[data-view]').forEach(function (b) { b.onclick = function () { switchView(b.dataset.view); }; });
     var holidayTab = $('holiday-dashboard-tab');
