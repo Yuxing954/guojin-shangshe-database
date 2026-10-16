@@ -41,6 +41,7 @@ def validate_announcements(d):
    assert start.date()<=published.date()<=end.date(),'Announcement date outside daily window'
 
 def validate(d):
+ assert d.get('publicationStatus')!='blocked','Editorial has unresolved publication blockers'
  validate_industry_updates(d)
  validate_announcements(d)
  assert d['schemaVersion']==2,'Expected editorial v2'
@@ -96,7 +97,9 @@ if __name__=='__main__':
   print('Complete segment list and originals verified:',len(actual))
  if a.check_resources:
   from build_daily_resource_list import build
+  from daily_attachment_coverage import validate_attachment_coverage
   saved=json.loads((ROOT/'data/daily/resources'/f'{a.date}.json').read_text())
+  validate_attachment_coverage(saved)
   expected=build(a.date,saved['cutoff'])
   assert saved.get('attachmentCatalog')==expected['attachmentCatalog'],'Attachment catalogue version is stale'
   for kind in ('minutes','audio','reports'):

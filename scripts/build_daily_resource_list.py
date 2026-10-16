@@ -4,6 +4,7 @@ from pathlib import Path
 from build_daily_report import ROOT,TZ,stamp,window_hours
 from research_sources import merge_rows,update_rows,archive_rows
 from daily_scope import sector_for,is_ecommerce_topic,EXCLUDE,title_for,published_for
+from daily_attachment_coverage import attachment_catalog
 
 def filename_key(name):return re.sub(r'[\s—\-_]+','',name).lower()
 def within(value,start,end):
@@ -41,7 +42,7 @@ def build(date,cutoff=None):
   groups[kind].append({'title':name,'publishedAt':stamp(when).isoformat(),'url':r.get('原文链接') or r.get('下载链接',''),'status':r.get('内容状态') or '仅标题登记','sector':r.get('覆盖板块','')})
  for items in groups.values():items.sort(key=lambda r:r['publishedAt'],reverse=True)
  manifest=json.loads((ROOT/'data/research/updates/manifest.json').read_text())
- return {'date':date,'windowStart':start.isoformat(),'cutoff':end.isoformat(),'sourceThrough':manifest.get('coverageTo'),'attachmentCatalog':{'generatedAt':library.get('generatedAt'),'sourceThrough':library.get('coverage',{}).get('to')},'groups':groups,'policy':'仅依据已入库元数据列出标题、发布时间和来源主题；未下载、读取或转写附件，不把研究报告标为纪要。'}
+ return {'schemaVersion':2,'date':date,'windowStart':start.isoformat(),'cutoff':end.isoformat(),'sourceThrough':manifest.get('coverageTo'),'attachmentCatalog':attachment_catalog(library,start,end),'groups':groups,'policy':'仅依据已入库元数据列出标题、发布时间和来源主题；未下载、读取或转写附件，不把研究报告标为纪要。'}
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--date',required=True);p.add_argument('--cutoff');a=p.parse_args();d=build(a.date,a.cutoff)
  out=ROOT/'data/daily/resources';out.mkdir(exist_ok=True);(out/f'{a.date}.json').write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')

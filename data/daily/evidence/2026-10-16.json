@@ -1,0 +1,979 @@
+{
+  "date": "2026-10-16",
+  "checkedAt": "2026-10-16T08:14:08Z",
+  "windowStart": "2026-10-15T16:00:00+08:00",
+  "cutoff": "2026-10-16T16:00:00+08:00",
+  "sourceCommit": "ba8ddb0056b4c880b3d1e29c60203b839df426a0",
+  "status": "blocked_attachment_index",
+  "attachmentScan": {
+    "requiredWindowStart": "2026-10-15T16:00:00+08:00",
+    "requiredCutoff": "2026-10-16T16:00:00+08:00",
+    "latestIndexGeneratedAt": "2026-10-16T09:28:28+08:00",
+    "lastReceipt": {
+      "observedAt": "2026-10-16T09:28:28+08:00",
+      "sourceGroup": "88888142214212",
+      "sourceName": "水木调研纪要-2.0",
+      "topicsScanned": 523,
+      "topicsInWindow": 516,
+      "topicPages": 18,
+      "topicWindowFrom": "2026-10-14T00:00:00+0800",
+      "topicWindowTo": "2026-10-16T09:16:22.745+0800",
+      "boundaryReachedBeforeWindow": true,
+      "attachmentsObserved": 330,
+      "newRecords": 97,
+      "existingRecordsRefreshed": 233,
+      "occurrenceRecordsAdded": 0,
+      "attachmentContentRead": false,
+      "windowComplete": true,
+      "archiveHasMore": true,
+      "sourceMetadataFields": [
+        "fileId",
+        "topicId",
+        "filename",
+        "extension",
+        "bytes",
+        "attachmentCreatedAt",
+        "topicCreatedAt",
+        "durationSeconds",
+        "downloadCount",
+        "sourceHash",
+        "source",
+        "sourceUrl"
+      ],
+      "windowStart": "2026-10-14T00:00:00+0800",
+      "windowEnd": "2026-10-16T09:28:28+08:00",
+      "windowEndDate": "2026-10-16"
+    },
+    "missingWindowStart": "2026-10-16T09:28:28+08:00",
+    "missingWindowEnd": "2026-10-16T16:00:00+08:00",
+    "attempts": [
+      {
+        "method": "connected browser",
+        "result": "Browser access requires the originating browser context."
+      },
+      {
+        "method": "cloud browser",
+        "url": "https://wx.zsxq.com/group/88888142214212",
+        "result": "net::ERR_BLOCKED_BY_CLIENT"
+      },
+      {
+        "method": "repository CLI authentication",
+        "result": "Existing backup is Windows DPAPI-bound; current Linux environment cannot restore it. No credentials read or transferred."
+      }
+    ],
+    "attachmentContentRead": false,
+    "downloadEndpointCalled": false
+  },
+  "researchCoverage": {
+    "manifestCoverageTo": "2026-10-16T15:01:08.627+0800",
+    "refetchedImmutableBatches": [
+      "data/research/updates/2026-10-16-1259-views.csv",
+      "data/research/updates/2026-10-16-1102-views.csv",
+      "data/research/updates/2026-10-16-1007-views.csv",
+      "data/research/updates/2026-10-16-0931-views.csv",
+      "data/research/updates/2026-10-15-1701-views.csv",
+      "data/research/updates/2026-10-16-1259-all_views.csv",
+      "data/research/updates/2026-10-16-1201-all_views.csv",
+      "data/research/updates/2026-10-16-1102-all_views.csv",
+      "data/research/updates/2026-10-16-1007-all_views.csv",
+      "data/research/updates/2026-10-16-0931-all_views.csv",
+      "data/research/updates/2026-10-16-0000-all_views.csv",
+      "data/research/updates/2026-10-15-2302-all_views.csv",
+      "data/research/updates/2026-10-15-2204-all_views.csv",
+      "data/research/updates/2026-10-15-2105-all_views.csv",
+      "data/research/updates/2026-10-15-1955-all_views.csv",
+      "data/research/updates/2026-10-15-1858-all_views.csv",
+      "data/research/updates/2026-10-15-1759-all_views.csv",
+      "data/research/updates/2026-10-15-1701-all_views.csv"
+    ],
+    "completeThroughCutoff": false,
+    "lastSyncAt": "2026-10-16T08:01:04.777Z",
+    "lastRunId": "2026-10-16-1601",
+    "pagination": {
+      "pages": 2,
+      "limit": 30,
+      "nextEndTimes": [
+        "2026-10-16T13:11:24.313+0800",
+        "2026-10-16T10:27:42.179+0800"
+      ],
+      "uniquePageTopics": 60,
+      "overlapTopicIds": []
+    },
+    "sourceWindowReceiptStatus": "ingestion_scan_after_cutoff; latest topic time is not the requested scan cutoff"
+  },
+  "industryUpdates": [
+    {
+      "title": "美国零售｜名义销售增长仍强，剔除汽油后动能放缓",
+      "period": "2026年9月",
+      "summary": "美国9月零售和餐饮销售额7450亿美元，同比增长6.3%、季调环比增长0.8%；剔除加油站后同比增长4.5%、季调环比仅增长0.2%。汽油支出抬高整体增速，非汽油消费扩张较温和；餐饮销售同比增长7.0%、季调环比增长1.1%，强于综合商品零售的短期表现。金额为名义值，已调整季节、假期和交易日差异。",
+      "source": "美国人口普查局",
+      "url": "https://www.census.gov/retail/marts/www/marts_current.pdf",
+      "publishedAt": "2026-10-15T20:30:00+08:00",
+      "availableAt": "2026-10-16T08:14:08Z",
+      "evidenceFile": "data/daily/evidence/2026-10-16.json"
+    },
+    {
+      "title": "美国PPI｜能源成本上行，服务端价格压力扩散",
+      "period": "2026年9月",
+      "summary": "美国9月最终需求PPI未季调同比上涨6.3%（8月5.6%）、季调环比上涨1.3%（8月0.5%）；剔除食品、能源和贸易服务后，未季调同比上涨5.0%、季调环比上涨0.5%。商品和服务价格季调环比分别上涨2.6%和0.8%，能源拉动之外，服务端涨价使消费链成本压力更广，企业的定价能力与成本消化能力将进一步分化。",
+      "source": "美国劳工统计局",
+      "url": "https://www.bls.gov/news.release/ppi.htm",
+      "publishedAt": "2026-10-15T20:30:00+08:00",
+      "availableAt": "2026-10-16T08:14:08Z",
+      "evidenceFile": "data/daily/evidence/2026-10-16.json"
+    }
+  ],
+  "industryEvidence": [
+    {
+      "url": "https://www.census.gov/retail/marts/www/marts_current.pdf",
+      "releaseNumber": "CB26-165",
+      "publishedAt": "2026-10-15T20:30:00+08:00",
+      "location": "Page 1 headline; Table 2 (page 6)",
+      "verifiedValues": {
+        "retailFoodSalesBillionUSD": 745,
+        "totalYoY": 6.3,
+        "totalSA_MoM": 0.8,
+        "exGasYoY": 4.5,
+        "exGasSA_MoM": 0.2,
+        "foodServicesYoY": 7,
+        "foodServicesSA_MoM": 1.1
+      },
+      "basis": "Adjusted seasonal/holiday/trading-day, nominal, not price adjusted."
+    },
+    {
+      "url": "https://www.bls.gov/news.release/ppi.htm",
+      "releaseNumber": "USDL 26-1576",
+      "publishedAt": "2026-10-15T20:30:00+08:00",
+      "location": "Release header, summary and Table A",
+      "verifiedValues": {
+        "finalDemandYoY_Unadjusted": 6.3,
+        "finalDemandSA_MoM": 1.3,
+        "augustYoY": 5.6,
+        "augustSA_MoM": 0.5,
+        "lessFoodEnergyTradeYoY": 5,
+        "lessFoodEnergyTradeSA_MoM": 0.5,
+        "goodsSA_MoM": 2.6,
+        "servicesSA_MoM": 0.8
+      }
+    }
+  ],
+  "companyAnnouncements": [],
+  "announcementSearches": [
+    {
+      "companies": [
+        {
+          "company": "泡泡玛特",
+          "code": "9992.HK"
+        },
+        {
+          "company": "名创优品",
+          "code": "9896.HK"
+        },
+        {
+          "company": "思摩尔国际",
+          "code": "6969.HK"
+        },
+        {
+          "company": "中烟香港",
+          "code": "6055.HK"
+        }
+      ],
+      "method": "official-domain publication search",
+      "returnedUrls": [
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0216/2026021600618_c.pdf",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2024/1009/2024100900266_c.pdf",
+        "https://www3.hkexnews.hk/reports/changecomsec/ncms/changecomsec_stkcode_des_c.htm",
+        "https://www3.hkexnews.hk/reports/changeauditor/ncms/changeauditor_stkcode_des_c.htm",
+        "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0116/2026011500407_c.pdf",
+        "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0527/2026052701440_c.pdf",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0819/2025081901434_c.pdf",
+        "https://www1.hkexnews.hk/search/titlesearch.xhtml?category=0&documentType=-1&from=18991230&lang=ZH&market=SEHK&searchType=0&stockId=176392&t1code=-2&t2Gcode=-2&t2code=-2&to=20300101",
+        "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1014/2025101400572_c.pdf"
+      ],
+      "status": "incomplete_not_no_announcements",
+      "limitation": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+    },
+    {
+      "companies": [
+        {
+          "company": "小商品城",
+          "code": "600415.SH"
+        },
+        {
+          "company": "特海国际",
+          "code": "9658.HK"
+        },
+        {
+          "company": "周大福",
+          "code": "1929.HK"
+        },
+        {
+          "company": "老铺黄金",
+          "code": "6181.HK"
+        }
+      ],
+      "method": "official-domain publication search",
+      "returnedUrls": [
+        "https://www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834786.shtml",
+        "https://www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834796.shtml",
+        "https://www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834792.shtml",
+        "https://www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834788.shtml",
+        "https://www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834794.shtml",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834790.shtml",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834798.shtml",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834802.shtml",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834784.shtml",
+        "https://www3.hkexnews.hk/reports/changecomsec/ncms/changecomsec_stkcode_des_c.htm",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834800.shtml",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0330/2026033003074_c.pdf",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0616/2026061600580_c.pdf",
+        "https://www.szse.cn/www/disclosure/notice/t20251110_617139.html",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2024/1009/2024100900685_c.pdf",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2025/1024/2025102400240_c.pdf",
+        "https://www.sse.com.cn/home/search/index.shtml?webswd=600935"
+      ],
+      "status": "incomplete_not_no_announcements",
+      "limitation": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+    },
+    {
+      "companies": [
+        {
+          "company": "老凤祥",
+          "code": "600612.SH"
+        },
+        {
+          "company": "六福集团",
+          "code": "0590.HK"
+        },
+        {
+          "company": "菜百股份",
+          "code": "605599.SH"
+        },
+        {
+          "company": "周大生",
+          "code": "002867.SZ"
+        }
+      ],
+      "method": "official-domain publication search",
+      "returnedUrls": [
+        "https://www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834786.shtml",
+        "https://www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834796.shtml",
+        "https://static.cninfo.com.cn/finalpage/2026-04-24/1225164758.PDF",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834786.shtml",
+        "https://disc.static.szse.cn/download/disc/disk03/finalpage/2026-08-26/2bce1a62-10a6-448d-aabb-67df7a1d4eeb.PDF",
+        "https://www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834800.shtml",
+        "https://www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834788.shtml",
+        "https://www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834792.shtml",
+        "https://www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834784.shtml",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834790.shtml",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834798.shtml",
+        "https://www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834794.shtml",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834796.shtml",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834794.shtml",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834792.shtml",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834802.shtml",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834800.shtml",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834784.shtml",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834788.shtml",
+        "https://dataclouds.cninfo.com.cn/shgonggao/hsomarket/2026/20260520/09802ab25a7440a190a890dcd30f7ae8.PDF",
+        "https://www.szse.cn/www/disclosure/notice/t20251110_617139.html",
+        "https://www.sse.com.cn/home/search/index.shtml?webswd=600935",
+        "https://disc.static.szse.cn/download/disc/disk03/finalpage/2026-06-25/35483c78-f6f5-4e12-9abe-fb178c0e903d.PDF",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0819/2025081901434_c.pdf",
+        "https://www3.hkexnews.hk/reports/changecomsec/ncms/changecomsec_stkcode_des_c.htm"
+      ],
+      "status": "incomplete_not_no_announcements",
+      "limitation": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+    },
+    {
+      "companies": [
+        {
+          "company": "潮宏基",
+          "code": "002345.SZ"
+        },
+        {
+          "company": "周六福",
+          "code": "6168.HK"
+        },
+        {
+          "company": "爱美客",
+          "code": "300896.SZ"
+        },
+        {
+          "company": "巨子生物",
+          "code": "2367.HK"
+        }
+      ],
+      "method": "official-domain publication search",
+      "returnedUrls": [
+        "https://static.cninfo.com.cn/finalpage/2026-08-21/1225487535.PDF",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2025/1016/2025101600967_c.pdf",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834786.shtml",
+        "https://www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834796.shtml",
+        "https://www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834792.shtml",
+        "https://www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834800.shtml",
+        "https://www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834794.shtml",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834796.shtml",
+        "https://www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834784.shtml",
+        "https://www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834788.shtml",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834798.shtml",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834792.shtml",
+        "https://www3.hkexnews.hk/reports/changecomsec/ncms/changecomsec_stkcode_des_c.htm",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834790.shtml",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834794.shtml",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834802.shtml",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834784.shtml",
+        "https://www3.hkexnews.hk/reports/changeauditor/ncms/changeauditor_stkcode_des_c.htm",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834800.shtml",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/announcement/general/jjzssgg/c/c_20261015_10834788.shtml",
+        "https://www.szse.cn/www/disclosure/notice/t20251110_617139.html",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0325/2026032501342_c.pdf",
+        "https://www.sse.com.cn/home/search/index.shtml?webswd=600935"
+      ],
+      "status": "incomplete_not_no_announcements",
+      "limitation": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+    },
+    {
+      "companies": [
+        {
+          "company": "毛戈平",
+          "code": "1318.HK"
+        },
+        {
+          "company": "珀莱雅",
+          "code": "603605.SH"
+        },
+        {
+          "company": "上美股份",
+          "code": "2145.HK"
+        },
+        {
+          "company": "华熙生物",
+          "code": "688363.SH"
+        }
+      ],
+      "method": "official-domain publication search",
+      "returnedUrls": [
+        "https://www.sse.com.cn/disclosure/bond/announcement/convertible/?COLLCC=612873427&COLLCC=76526803",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0317/2026031701471_c.pdf",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0401/2026040104097_c.pdf",
+        "https://static.cninfo.com.cn/finalpage/2026-08-28/1225522098.PDF",
+        "https://static.cninfo.com.cn/finalpage/2026-08-25/1225496527.PDF",
+        "https://www.sse.com.cn/disclosure/fund/etflist/detail.shtml?fundid=588130",
+        "https://pujiang.sse.com.cn/update/participants/others/c/c_20260409_10814677.shtml",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20251031_10796699.shtml",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/market/sseindex/diclosure/c/c_20211126_5644497.shtml",
+        "https://www3.hkexnews.hk/sdw/search/mutualmarket_c.aspx?t=hk",
+        "https://www.sse.com.cn/assortment/stock/areatrade/area/detail.shtml?AREANAME=2",
+        "https://www.sse.com.cn/lawandrules/sselawsrules2025/repeal/rules/c/c_20260109_10815555.shtml",
+        "https://pujiang.sse.com.cn/update/participants/independentupdate/c/c_20251230_10803492.shtml",
+        "https://www.sse.com.cn/assortment/stock/areatrade/area/detail.shtml?AREANAME=370000"
+      ],
+      "status": "incomplete_not_no_announcements",
+      "limitation": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+    },
+    {
+      "companies": [
+        {
+          "company": "贝泰妮",
+          "code": "300957.SZ"
+        },
+        {
+          "company": "上海家化",
+          "code": "600315.SH"
+        },
+        {
+          "company": "丸美生物",
+          "code": "603983.SH"
+        },
+        {
+          "company": "林清轩",
+          "code": "2657.HK"
+        }
+      ],
+      "method": "official-domain publication search",
+      "returnedUrls": [
+        "https://www.cninfo.com.cn/new/fulltextSearch?keyWord=603983",
+        "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1218/2025121800222_c.pdf",
+        "https://static.cninfo.com.cn/finalpage/2026-04-27/1225192420.PDF",
+        "https://static.cninfo.com.cn/finalpage/2026-03-26/1225030432.PDF",
+        "https://static.cninfo.com.cn/finalpage/2026-08-29/1225530696.PDF",
+        "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0508/2026050801455_c.pdf",
+        "https://www.sse.com.cn/disclosure/diclosure/public/dailydata/detail.shtml?refType=12&secAbbr=%E4%B8%B8%E7%BE%8E%E7%94%9F%E7%89%A9&secCode=603983&tradeDate=20260729",
+        "https://www.sse.com.cn/assortment/stock/list/info/executives/index.shtml?COMPANY_CODE=600315",
+        "https://www.sse.com.cn/lawandrules/sselawsrules2025/repeal/rules/c/c_20260109_10815555.shtml",
+        "https://www.sse.com.cn/assortment/stock/list/info/turnover/index.shtml?COMPANY_CODE=600315",
+        "https://pujiang.sse.com.cn/update/participants/independentupdate/c/c_20260306_10811059.shtml",
+        "https://www.sse.com.cn/assortment/stock/list/info/turnover/index.shtml?COMPANY_CODE=603983",
+        "https://www.sse.com.cn/disclosure/fund/etflist/detail.shtml?fundid=530060",
+        "https://pujiang.sse.com.cn/update/participants/secretaryupdate/c/c_20260409_10814645.shtml",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/market/sseindex/diclosure/c/c_20211126_5644497.shtml",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/market/sseindex/diclosure/c/c_20220527_5702708.shtml",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/market/sseindex/diclosure/c/c_20150911_3985085.shtml",
+        "https://www.sse.com.cn/assortment/stock/areatrade/area/detail.shtml?AREANAME=2",
+        "https://star.sse.com.cn/assortment/stock/areatrade/area/detail.shtml?AREANAME=440000",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20150912_3988298.shtml"
+      ],
+      "status": "incomplete_not_no_announcements",
+      "limitation": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+    },
+    {
+      "companies": [
+        {
+          "company": "水羊股份",
+          "code": "300740.SZ"
+        },
+        {
+          "company": "福瑞达",
+          "code": "600223.SH"
+        },
+        {
+          "company": "锦波生物",
+          "code": "920982.BJ"
+        },
+        {
+          "company": "中国中免",
+          "code": "601888.SH"
+        }
+      ],
+      "method": "official-domain publication search",
+      "returnedUrls": [
+        "https://www.sse.com.cn/assortment/stock/list/info/announcement/index.shtml?productId=601888",
+        "https://dataclouds.cninfo.com.cn/sjother2/bse_onmarket/2026/20260429/c83007ea43ca11f1ba59fa163e296ac0.pdf",
+        "https://static.cninfo.com.cn/finalpage/2026-05-29/1225336545.PDF",
+        "https://static.cninfo.com.cn/finalpage/2026-03-21/1225020649.PDF",
+        "https://www.sse.com.cn/disclosure/diclosure/public/inquirydata/index.shtml?branchName=%E4%B8%AD%E4%BF%A1%E8%AF%81%E5%88%B8%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%E6%9D%AD%E5%B7%9E%E6%95%99%E5%B7%A5%E8%B7%AF%E8%AF%81%E5%88%B8%E8%90%A5%E4%B8%9A%E9%83%A8&bsType=S",
+        "https://static.cninfo.com.cn/finalpage/2025-12-30/1224904598.PDF",
+        "https://static.cninfo.com.cn/finalpage/2026-04-14/1225102873.PDF",
+        "https://static.cninfo.com.cn/finalpage/2024-10-29/1221542580.PDF",
+        "https://www.sse.com.cn/lawandrules/sselawsrules2025/repeal/rules/c/c_20260109_10815555.shtml",
+        "https://www.sse.com.cn/disclosure/diclosure/public/inquirydata/index.shtml?branchName=%E4%B8%9C%E6%96%B9%E8%AF%81%E5%88%B8%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%E4%B8%8A%E6%B5%B7%E6%9D%A8%E6%B5%A6%E5%8C%BA%E5%AE%89%E6%B3%A2%E8%B7%AF%E8%AF%81%E5%88%B8%E8%90%A5%E4%B8%9A%E9%83%A8&bsType=S",
+        "https://www.sse.com.cn/listing/renewal/ipo/qsmzq/index_listing_detail.shtml?uniformCode=91140100672338346F",
+        "https://www.sse.com.cn/disclosure/fund/etflist/detail.shtml?fundid=530060",
+        "https://www.sse.com.cn/assortment/stock/list/info/company/index.shtml?COMPANY_CODE=603369&tabActive=1",
+        "https://www.sse.com.cn/disclosure/fund/etflist/detail.shtml?etfClass=03&fundid=510300&type=008",
+        "https://www.sse.com.cn/disclosure/fund/etflist/detail.shtml?fundid=510190",
+        "https://www.sse.com.cn/disclosure/fund/etflist/detail.shtml?fundid=561200",
+        "https://www.sse.com.cn/assortment/stock/areatrade/area/detail.shtml?AREANAME=370000",
+        "https://www.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20260830_10830362.shtml",
+        "https://pujiang.sse.com.cn/update/participants/others/c/c_20250710_10784494.shtml",
+        "https://pujiang.sse.com.cn/update/participants/independentupdate/c/c_20250603_10780710.shtml",
+        "https://www.sse.com.cn/assortment/stock/areatrade/area/detail.shtml?AREANAME=2",
+        "https://pujiang.sse.com.cn/update/participants/others/c/5742334.shtml",
+        "https://pujiang.sse.com.cn/update/participants/others/c/5737351.shtml",
+        "https://pujiang.sse.com.cn/update/participants/independentupdate/c/5732407.shtml"
+      ],
+      "status": "incomplete_not_no_announcements",
+      "limitation": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+    },
+    {
+      "companies": [
+        {
+          "company": "王府井",
+          "code": "600859.SH"
+        },
+        {
+          "company": "上海机场",
+          "code": "600009.SH"
+        },
+        {
+          "company": "携程集团-S",
+          "code": "9961.HK"
+        },
+        {
+          "company": "同程旅行",
+          "code": "0780.HK"
+        }
+      ],
+      "method": "official-domain publication search",
+      "returnedUrls": [
+        "https://www.sse.com.cn/disclosure/listedinfo/announcement/?productId=688012",
+        "https://static.cninfo.com.cn/finalpage/2026-09-15/1225562162.PDF",
+        "https://www.sse.com.cn/disclosure/listedinfo/summaries/indexDetail.shtml?SEQ=334665727",
+        "https://static.cninfo.com.cn/finalpage/2026-05-22/1225321941.PDF",
+        "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0630/2023063001580.pdf",
+        "https://www.sse.com.cn/disclosure/diclosure/public/inquirydata/index.shtml?branchName=%E9%95%BF%E6%B1%9F%E8%AF%81%E5%88%B8%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%E6%80%BB%E9%83%A8&bsType=B",
+        "https://www.sse.com.cn/disclosure/listedinfo/listedcompanies/index_detail.shtml?COMPANY_ABBR=%E4%B8%8A%E6%B5%B7%E6%9C%BA%E5%9C%BA&COMPANY_CODE=600009&REPORT_PERIOD_ID=1000&REPORT_YEAR=2025",
+        "https://www.sse.com.cn/disclosure/fund/etflist/detail.shtml?etfClass=03&fundid=510300&type=008",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0428/2025042801720_c.pdf",
+        "https://www.sse.com.cn/lawandrules/sselawsrules2025/repeal/rules/c/c_20260109_10815555.shtml",
+        "https://static.cninfo.com.cn/finalpage/2025-04-26/1223313058.PDF",
+        "https://www.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20260830_10830362.shtml",
+        "https://static.sse.com.cn/disclosure/bond/announcement/company/c/new/2026-01-08/244505_20260108_GK9T.pdf",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/market/sseindex/diclosure/c/c_20211126_5644497.shtml",
+        "https://pujiang.sse.com.cn/update/participants/secretaryupdate/c/c_20260409_10814645.shtml",
+        "https://pujiang.sse.com.cn/update/participants/others/c/c_20260206_10808766.shtml",
+        "https://star.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20260430_10817333.shtml",
+        "https://www.sse.com.cn/assortment/stock/list/info/company/index.shtml?COMPANY_CODE=601588&tabActive=1",
+        "https://www.sse.com.cn/disclosure/fund/etflist/detail.shtml?fundid=530060",
+        "https://pujiang.sse.com.cn/update/participants/others/c/c_20251010_10794151.shtml",
+        "https://star.sse.com.cn/assortment/fund/list/etfinfo/basic/index.shtml?FUNDID=510010",
+        "https://www3.hkexnews.hk/sdw/search/mutualmarket_c.aspx?t=hk",
+        "https://www.sse.com.cn/assortment/stock/areatrade/area/detail.shtml?AREANAME=2",
+        "https://www.sse.com.cn/assortment/stock/areatrade/area/detail.shtml?AREANAME=110000",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20250831_10790221.shtml",
+        "https://pujiang.sse.com.cn/update/participants/independentupdate/c/c_20250603_10780710.shtml",
+        "https://star.sse.com.cn/assortment/stock/areatrade/trade/detail.shtml?csrcCode=F52&csrcName=%E9%9B%B6%E5%94%AE%E4%B8%9A",
+        "https://www.sse.com.cn/market/sseindex/diclosure/c/c_20150911_3985085.shtml",
+        "https://english.sse.com.cn/news/newsrelease/c/4947076.shtml"
+      ],
+      "status": "incomplete_not_no_announcements",
+      "limitation": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+    },
+    {
+      "companies": [
+        {
+          "company": "华住集团-S",
+          "code": "1179.HK"
+        },
+        {
+          "company": "亚朵",
+          "code": "ATAT.O"
+        },
+        {
+          "company": "锦江酒店",
+          "code": "600754.SH"
+        },
+        {
+          "company": "首旅酒店",
+          "code": "600258.SH"
+        }
+      ],
+      "method": "official-domain publication search",
+      "returnedUrls": [
+        "https://star.sse.com.cn/assortment/stock/list/info/company/index.shtml?COMPANY_CODE=600754",
+        "https://www.sse.com.cn/assortment/stock/list/info/company/index.shtml?COMPANY_CODE=600258",
+        "https://static.cninfo.com.cn/finalpage/2026-04-30/1225256736.PDF",
+        "https://static.cninfo.com.cn/finalpage/2026-03-28/1225047640.PDF",
+        "https://static.cninfo.com.cn/finalpage/2026-03-28/1225047965.PDF",
+        "https://static.cninfo.com.cn/finalpage/2026-07-03/1225407546.PDF",
+        "https://static.cninfo.com.cn/finalpage/2026-03-28/1225046504.PDF",
+        "https://static.cninfo.com.cn/finalpage/2026-03-31/1225063977.PDF",
+        "https://www.sse.com.cn/disclosure/fund/etflist/detail.shtml?fundid=563830",
+        "https://www.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20260830_10830362.shtml",
+        "https://www.sse.com.cn/lawandrules/sselawsrules2025/repeal/rules/c/c_20260109_10815555.shtml",
+        "https://pujiang.sse.com.cn/update/participants/secretaryupdate/c/c_20260105_10804131.shtml",
+        "https://pujiang.sse.com.cn/update/participants/independentupdate/c/c_20251204_10800710.shtml",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20240901_10761185.shtml",
+        "https://www.sse.com.cn/assortment/stock/areatrade/area/detail.shtml?AREANAME=110000",
+        "https://pujiang.sse.com.cn/update/participants/independentupdate/c/5742090.shtml",
+        "https://pujiang.sse.com.cn/update/participants/secretaryupdate/c/5732208.shtml"
+      ],
+      "status": "incomplete_not_no_announcements",
+      "limitation": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+    },
+    {
+      "companies": [
+        {
+          "company": "宋城演艺",
+          "code": "300144.SZ"
+        },
+        {
+          "company": "长白山",
+          "code": "603099.SH"
+        },
+        {
+          "company": "陕西旅游",
+          "code": "603402.SH"
+        },
+        {
+          "company": "黄山旅游",
+          "code": "600054.SH"
+        }
+      ],
+      "method": "official-domain publication search",
+      "returnedUrls": [
+        "https://www.sse.com.cn/assortment/stock/list/info/announcement/index.shtml?productId=603099",
+        "https://static.cninfo.com.cn/finalpage/2026-04-24/1225164614.PDF",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-20/603402_20260420_EJ8P.pdf",
+        "https://static.cninfo.com.cn/finalpage/2026-01-23/1224947372.PDF",
+        "https://static.cninfo.com.cn/finalpage/2026-08-22/1225491618.PDF",
+        "https://disc.static.szse.cn/disc/disk03/finalpage/2026-04-24/42130d7b-d0ef-416a-9cdf-0db0f9851c03.PDF",
+        "https://disc.static.szse.cn/disc/disk03/finalpage/2026-04-24/0183e881-cabc-4a34-99de-406d717f71e8.PDF",
+        "https://www.sse.com.cn/disclosure/listedinfo/summaries/indexDetail.shtml?SEQ=334658537",
+        "https://www.sse.com.cn/disclosure/listedinfo/announcement/?productId=688012",
+        "https://pujiang.sse.com.cn/update/participants/others/c/c_20260630_10823921.shtml",
+        "https://www.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20260830_10830362.shtml",
+        "https://pujiang.sse.com.cn/update/participants/independentupdate/c/c_20260306_10811059.shtml",
+        "https://pujiang.sse.com.cn/update/participants/others/c/c_20260206_10808766.shtml",
+        "https://pujiang.sse.com.cn/update/participants/others/c/c_20260409_10814677.shtml",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/market/sseindex/diclosure/c/c_20150911_3985128.shtml",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20250831_10790221.shtml",
+        "https://www.sse.com.cn/disclosure/diclosure/public/inquirydata/index.shtml?branchName=%E4%B8%AD%E8%88%AA%E8%AF%81%E5%88%B8%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%E8%A5%BF%E5%AE%89%E9%98%8E%E8%89%AF%E5%85%AC%E5%9B%AD%E5%8D%97%E8%B7%AF%E8%AF%81%E5%88%B8%E8%90%A5%E4%B8%9A%E9%83%A8&bsType=B"
+      ],
+      "status": "incomplete_not_no_announcements",
+      "limitation": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+    },
+    {
+      "companies": [
+        {
+          "company": "众信旅游",
+          "code": "002707.SZ"
+        },
+        {
+          "company": "峨眉山A",
+          "code": "000888.SZ"
+        },
+        {
+          "company": "香港中旅",
+          "code": "0308.HK"
+        },
+        {
+          "company": "君亭酒店",
+          "code": "301073.SZ"
+        }
+      ],
+      "method": "official-domain publication search",
+      "returnedUrls": [
+        "https://www3.hkexnews.hk/reports/bmn/ebmn_c.htm",
+        "https://static.cninfo.com.cn/finalpage/2026-07-17/1225427580.PDF",
+        "https://static.cninfo.com.cn/finalpage/2025-10-25/1224730925.PDF",
+        "https://static.cninfo.com.cn/finalpage/2026-08-29/1225525457.PDF",
+        "https://static.cninfo.com.cn/finalpage/2026-04-27/1225176937.PDF",
+        "https://disc.static.szse.cn/disc/disk03/finalpage/2026-05-27/d1ffec41-6d01-471f-8c26-00cbb37c08b0.PDF",
+        "https://static.cninfo.com.cn/finalpage/2026-04-27/1225176930.PDF",
+        "https://irm.cninfo.com.cn/interview/interview/activityInfo?activityId=1442348957005258752",
+        "https://www3.hkexnews.hk/sdw/search/mutualmarket_c.aspx?t=hk",
+        "https://bond.sse.com.cn/disclosure/info/ppb/",
+        "https://irm.cninfo.com.cn/interview/interview/activityInfo?activityId=1170923774321029120"
+      ],
+      "status": "incomplete_not_no_announcements",
+      "limitation": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+    },
+    {
+      "companies": [
+        {
+          "company": "九华旅游",
+          "code": "603199.SH"
+        },
+        {
+          "company": "天目湖",
+          "code": "603136.SH"
+        },
+        {
+          "company": "蜜雪集团",
+          "code": "2097.HK"
+        },
+        {
+          "company": "百胜中国",
+          "code": "9987.HK"
+        }
+      ],
+      "method": "official-domain publication search",
+      "returnedUrls": [
+        "https://www.sse.com.cn/disclosure/listedinfo/announcement/?productId=688012",
+        "https://dataclouds.cninfo.com.cn/shgonggao/hsomarket/2026/20260423/1db30bce5da44b87b394073142de7c2a.PDF",
+        "https://dataclouds.cninfo.com.cn/shgonggao/hsomarket/2026/20260428/fae8338372f44f8d971b56e6e693ddd8.PDF",
+        "https://static.cninfo.com.cn/finalpage/2026-03-26/1225030749.PDF",
+        "https://static.cninfo.com.cn/finalpage/2026-08-20/1225482276.PDF",
+        "https://pujiang.sse.com.cn/update/participants/independentupdate/c/c_20260306_10811059.shtml",
+        "https://pujiang.sse.com.cn/update/participants/secretaryupdate/c/c_20260603_10820638.shtml",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/cpc/cpctheme/4th20thcpc/4th20thcpcgcxx/c/c_20260424_10816452.shtml",
+        "https://pujiang.sse.com.cn/update/participants/others/c/c_20250515_10779033.shtml",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20250831_10790221.shtml",
+        "https://www.sse.com.cn/assortment/stock/areatrade/area/detail.shtml?AREANAME=2",
+        "https://pujiang.sse.com.cn/update/participants/independentupdate/c/c_20250808_10787956.shtml",
+        "https://pujiang.sse.com.cn/update/participants/secretaryupdate/c/c_20250808_10787961.shtml",
+        "https://pujiang.sse.com.cn/update/participants/others/c/5731998.shtml",
+        "https://pujiang.sse.com.cn/update/participants/independentupdate/c/5732401.shtml",
+        "https://pujiang.sse.com.cn/update/participants/independentupdate/c/5732398.shtml",
+        "https://pujiang.sse.com.cn/update/participants/independentupdate/c/5732405.shtml",
+        "https://pujiang.sse.com.cn/update/participants/others/c/5732004.shtml",
+        "https://pujiang.sse.com.cn/update/participants/independentupdate/c/5734135.shtml",
+        "https://pujiang.sse.com.cn/update/participants/secretaryupdate/c/5742858.shtml"
+      ],
+      "status": "incomplete_not_no_announcements",
+      "limitation": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+    },
+    {
+      "companies": [
+        {
+          "company": "海底捞",
+          "code": "6862.HK"
+        },
+        {
+          "company": "古茗",
+          "code": "1364.HK"
+        },
+        {
+          "company": "瑞幸咖啡",
+          "code": "LKNCY.OO"
+        },
+        {
+          "company": "小菜园",
+          "code": "0999.HK"
+        }
+      ],
+      "method": "official-domain publication search",
+      "returnedUrls": [
+        "https://www1.hkexnews.hk/search/predefineddoc.xhtml?lang=zh&predefineddocuments=9",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0603/2026060302467_c.pdf",
+        "https://www3.hkexnews.hk/reports/doe/eent_c.htm",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0325/2026032501364_c.pdf",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0211/2025021100945_c.pdf",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0424/2026042401135_c.pdf",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0328/2025032801851_c.pdf",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2024/0425/2024042501639_c.pdf",
+        "https://www3.hkexnews.hk/sdw/search/mutualmarket_c.aspx?t=hk"
+      ],
+      "status": "incomplete_not_no_announcements",
+      "limitation": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+    },
+    {
+      "companies": [
+        {
+          "company": "茶百道",
+          "code": "2555.HK"
+        },
+        {
+          "company": "沪上阿姨",
+          "code": "2589.HK"
+        },
+        {
+          "company": "达势股份",
+          "code": "1405.HK"
+        },
+        {
+          "company": "重庆百货",
+          "code": "600729.SH"
+        }
+      ],
+      "method": "official-domain publication search",
+      "returnedUrls": [
+        "https://www1.hkexnews.hk/search/predefineddoc.xhtml?lang=zh&predefineddocuments=9",
+        "https://www3.hkexnews.hk/reports/doe/eent_c.htm",
+        "https://www3.hkexnews.hk/reports/changecomsec/ncms/changecomsec_stkcode_des_c.htm",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0316/2026031600770_c.pdf",
+        "https://static.cninfo.com.cn/finalpage/2026-02-04/1224964982.PDF",
+        "https://static.cninfo.com.cn/finalpage/2025-10-01/1224696340.PDF",
+        "https://static.cninfo.com.cn/finalpage/2025-12-13/1224873024.PDF",
+        "https://www.sse.com.cn/disclosure/listedinfo/announcement/?productId=688012",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0827/2025082701369.pdf",
+        "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0428/2025042800814_c.pdf",
+        "https://www.sse.com.cn/assortment/stock/list/info/turnover/index.shtml?COMPANY_CODE=600729",
+        "https://www.sse.com.cn/lawandrules/sselawsrules2025/repeal/rules/c/c_20260109_10815555.shtml",
+        "https://www3.hkexnews.hk/sdw/search/mutualmarket_c.aspx?t=hk"
+      ],
+      "status": "incomplete_not_no_announcements",
+      "limitation": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+    },
+    {
+      "companies": [
+        {
+          "company": "永辉超市",
+          "code": "601933.SH"
+        },
+        {
+          "company": "红旗连锁",
+          "code": "002697.SZ"
+        },
+        {
+          "company": "家家悦",
+          "code": "603708.SH"
+        },
+        {
+          "company": "孩子王",
+          "code": "301078.SZ"
+        }
+      ],
+      "method": "official-domain publication search",
+      "returnedUrls": [
+        "https://disc.static.szse.cn/download/disc/disk03/finalpage/2026-08-15/79f7f1cc-f928-434e-bd1a-b79e95627509.PDF",
+        "https://static.cninfo.com.cn/finalpage/2026-05-01/1225273472.PDF",
+        "https://static.cninfo.com.cn/finalpage/2026-07-15/1225423973.PDF",
+        "https://static.cninfo.com.cn/finalpage/2026-08-21/1225486909.PDF",
+        "https://static.cninfo.com.cn/finalpage/2026-05-09/1225286243.PDF",
+        "https://www.sse.com.cn/assortment/stock/list/info/turnover/index.shtml?COMPANY_CODE=603708",
+        "https://www.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20260830_10830362.shtml",
+        "https://www.sse.com.cn/disclosure/fund/etflist/detail.shtml?fundid=563830",
+        "https://pujiang.sse.com.cn/update/participants/secretaryupdate/c/c_20260409_10814645.shtml",
+        "https://www.sse.com.cn/lawandrules/sselawsrules2025/repeal/rules/c/c_20260109_10815555.shtml",
+        "https://www.sse.com.cn/assortment/stock/areatrade/area/detail.shtml?AREANAME=2",
+        "https://star.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20260430_10817333.shtml",
+        "https://pujiang.sse.com.cn/update/participants/others/c/c_20260630_10823921.shtml",
+        "https://star.sse.com.cn/assortment/stock/areatrade/trade/detail.shtml?csrcCode=F52&csrcName=%E9%9B%B6%E5%94%AE%E4%B8%9A",
+        "https://irm.cninfo.com.cn/interview/interview/activityInfo?activityId=1448418132255027200",
+        "https://pujiang.sse.com.cn/update/participants/independentupdate/c/c_20260306_10811059.shtml",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/market/sseindex/diclosure/c/c_20220527_5702708.shtml",
+        "https://pujiang.sse.com.cn/update/participants/secretaryupdate/c/5732210.shtml"
+      ],
+      "status": "incomplete_not_no_announcements",
+      "limitation": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+    }
+  ],
+  "excludedCompanies": [
+    {
+      "code": "003010.SZ",
+      "name": "若羽臣",
+      "sector": "新消费",
+      "aliases": [],
+      "sourceId": "selected-20261012",
+      "addedAt": "2026-10-12",
+      "identitySource": "choice-and-tencent-20261012",
+      "status": "excluded_from_daily",
+      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。"
+    },
+    {
+      "code": "301498.SZ",
+      "name": "乖宝宠物",
+      "sector": "新消费",
+      "aliases": [],
+      "sourceId": "selected-20261012",
+      "addedAt": "2026-10-12",
+      "identitySource": "choice-and-tencent-20261012",
+      "status": "excluded_from_daily",
+      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。"
+    },
+    {
+      "code": "002891.SZ",
+      "name": "中宠股份",
+      "sector": "新消费",
+      "aliases": [],
+      "sourceId": "selected-20261012",
+      "addedAt": "2026-10-12",
+      "identitySource": "choice-and-tencent-20261012",
+      "status": "excluded_from_daily",
+      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。"
+    },
+    {
+      "code": "001206.SZ",
+      "name": "依依股份",
+      "sector": "新消费",
+      "aliases": [],
+      "sourceId": "selected-20261012",
+      "addedAt": "2026-10-12",
+      "identitySource": "choice-and-tencent-20261012",
+      "status": "excluded_from_daily",
+      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。"
+    },
+    {
+      "code": "300673.SZ",
+      "name": "佩蒂股份",
+      "sector": "新消费",
+      "aliases": [],
+      "sourceId": "selected-20261012",
+      "addedAt": "2026-10-12",
+      "identitySource": "choice-and-tencent-20261012",
+      "status": "excluded_from_daily",
+      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。"
+    },
+    {
+      "code": "001222.SZ",
+      "name": "源飞宠物",
+      "sector": "新消费",
+      "aliases": [],
+      "sourceId": "selected-20261012",
+      "addedAt": "2026-10-12",
+      "identitySource": "choice-and-tencent-20261012",
+      "status": "excluded_from_daily",
+      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。"
+    },
+    {
+      "code": "688775.SH",
+      "name": "影石创新",
+      "sector": "消费出海",
+      "aliases": [],
+      "sourceId": "selected-20261012",
+      "addedAt": "2026-10-12",
+      "identitySource": "choice-and-tencent-20261012",
+      "status": "excluded_from_daily",
+      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。"
+    },
+    {
+      "code": "300866.SZ",
+      "name": "安克创新",
+      "sector": "消费出海",
+      "aliases": [],
+      "sourceId": "selected-20261012",
+      "addedAt": "2026-09-08",
+      "identitySource": "existing-pool",
+      "status": "excluded_from_daily",
+      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。"
+    },
+    {
+      "code": "2698.HK",
+      "name": "乐舒适",
+      "sector": "消费出海",
+      "aliases": [],
+      "sourceId": "selected-20261012",
+      "addedAt": "2026-10-12",
+      "identitySource": "choice-and-tencent-20261012",
+      "status": "excluded_from_daily",
+      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。"
+    },
+    {
+      "code": "688169.SH",
+      "name": "石头科技",
+      "sector": "消费出海",
+      "aliases": [],
+      "sourceId": "selected-20261012",
+      "addedAt": "2026-10-12",
+      "identitySource": "choice-and-tencent-20261012",
+      "status": "excluded_from_daily",
+      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。"
+    },
+    {
+      "code": "301606.SZ",
+      "name": "绿联科技",
+      "sector": "消费出海",
+      "aliases": [],
+      "sourceId": "selected-20261012",
+      "addedAt": "2026-10-12",
+      "identitySource": "choice-and-tencent-20261012",
+      "status": "excluded_from_daily",
+      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。"
+    },
+    {
+      "code": "301381.SZ",
+      "name": "赛维时代",
+      "sector": "消费出海",
+      "aliases": [],
+      "sourceId": "selected-20261012",
+      "addedAt": "2026-09-08",
+      "identitySource": "existing-pool",
+      "status": "excluded_from_daily",
+      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。"
+    },
+    {
+      "code": "301376.SZ",
+      "name": "致欧科技",
+      "sector": "消费出海",
+      "aliases": [],
+      "sourceId": "selected-20261012",
+      "addedAt": "2026-10-10",
+      "identitySource": "tencent-20261010",
+      "status": "excluded_from_daily",
+      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。"
+    },
+    {
+      "code": "0625.HK",
+      "name": "SHEIN",
+      "sector": "消费出海",
+      "aliases": [
+        "希音",
+        "希音-W"
+      ],
+      "sourceId": "selected-20261012",
+      "addedAt": "2026-10-12",
+      "identitySource": "choice-and-tencent-20261012",
+      "status": "excluded_from_daily",
+      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。"
+    }
+  ],
+  "earningsMonitoring": {
+    "source": "data/earnings-calendar.json",
+    "windowStart": "2026-10-16",
+    "windowEnd": "2026-10-19",
+    "calendarMatches": [],
+    "status": "stored_calendar_checked_official_refresh_pending"
+  },
+  "latestSourceCommit": "6a0bca07fc767c2023b9004308af3be12659482f",
+  "validation": {
+    "pythonTestsPassed": 28,
+    "rendererAndExportTest": "passed",
+    "siteCheck": "passed with unmodified remote icon existence verified by Git tree; local text-only checkout cannot materialize that binary",
+    "publicationGate": "blocked by incomplete attachment scan as expected",
+    "draftOriginals": 8,
+    "formalDailyIndexChanged": false
+  }
+}
