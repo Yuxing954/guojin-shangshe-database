@@ -22,3 +22,10 @@
 
 
 .hd-tier-trend{margin-top:24px;padding-top:20px;border-top:1px solid #e0e6ef}.hd-tier-trend>h3{margin:0 20px 4px;font-size:17px;line-height:26px;font-weight:600;color:#254866}.hd-tier-trend>.hd-chart-caption{margin-left:20px;margin-right:20px}
+
+.hd-export-dialog{width:480px;max-width:calc(100vw - 32px);max-height:90vh;overflow:auto;padding:24px;border:1px solid #e6e9ef;border-radius:16px;background:#fff;color:#263047;box-shadow:0 20px 80px #26304730}
+.hd-export-dialog::backdrop{background:#18213c66}.hd-export-dialog h2{font-size:20px;margin:0 0 20px}
+.hotel-page .hd-export-dialog label{display:flex;flex-direction:column;align-items:stretch;gap:6px;margin:14px 0}.hd-export-dialog select{width:100%}
+.hd-export-note{font-size:12px;color:#747e90;margin:16px 0 0}.hd-export-dialog #export-error{font-size:12px;color:#b85460;margin:8px 0}
+.hd-export-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:22px}.hd-export-actions button{padding:9px 20px;border:1px solid #dce1ea;border-radius:8px;background:#fff;color:#5158aa;font-size:14px}.hd-export-actions button[type=submit]{background:#5158aa;color:#fff;border-color:#5158aa}
+body.hotel-page.site-page .hd-tabs.site-subnav > :is(a,button){display:inline-flex!important;align-items:center!important;justify-content:center!important;font-family:inherit!important;font-size:14px!important;line-height:22px!important;padding:12px 18px!important;min-height:48px!important;text-decoration:none!important}
