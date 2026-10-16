@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>酒店 · 国金商社</title><script defer src="scripts/site-ui.js?v=20261014monthly"></script>
   <link rel="stylesheet" href="scripts/site.css?v=20261014viewfit">
-  <link rel="stylesheet" href="scripts/hotel-dashboard.css?v=20261014tiers">
+  <link rel="stylesheet" href="scripts/hotel-dashboard.css?v=20261016dialog">
   <script defer src="scripts/site-shell.js?v=20261014monthly"></script>
   <script defer src="scripts/hotel-metrics.js?v=20261010coverage"></script>
-  <script defer src="scripts/hotel-dashboard.js?v=20261016export"></script>
+  <script defer src="scripts/hotel-dashboard.js?v=20261016dialog"></script>
 <link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-charts.css?v=20261012mobile1"><link rel="stylesheet" href="scripts/industry-embed.css?v=20261014viewfit"><link rel="stylesheet" href="scripts/site-install.css?v=20261014home"><link rel="stylesheet" href="scripts/site-polish.css?v=20261013clean"><script src="scripts/site-charts.js?v=20261012mobile1"></script><script defer src="scripts/industry-embed.js?v=20261014loading"></script><link rel="manifest" href="site.webmanifest"><meta name="theme-color" content="#4d58a4"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="国金商社"><meta name="apple-mobile-web-app-status-bar-style" content="default"><link rel="apple-touch-icon" href="scripts/assets/app/apple-touch-icon.png"><script defer src="scripts/site-install.js?v=20261014home"></script></head>
 <body class="hotel-page">
 <main class="hd-wrap industry-board">
@@ -26,8 +26,7 @@
     </nav>
     <div class="hd-toolbar board-filters">
       <label>数据周 <select id="week-select"></select></label>
-      <button type="button" class="hd-tab" id="weekly-export" title="所选周全部地区与档次 · CSV">导出所选周</button>
-      <button type="button" class="hd-tab" id="weekly-export-all" title="全部周、地区与档次 · CSV · 同周同比">导出全部历史</button>
+      <button type="button" class="hd-tab" id="weekly-export" aria-haspopup="dialog">导出数据</button>
       <div class="hd-display-control"><span>周度指标显示</span><div class="hd-switch" id="mode-switch" aria-label="周度指标显示"><button type="button" data-mode="combo" class="active" aria-pressed="true">数值＋同比</button><button type="button" data-mode="change" aria-pressed="false">仅同比</button><button type="button" data-mode="value" aria-pressed="false">仅数值</button></div></div>
       <details class="hd-compare"><summary>同比口径与错期</summary><div class="hd-compare-body">
         <label>比较基周 <select id="compare-select"></select></label>
@@ -91,6 +90,16 @@
     <footer class="hd-footer">酒店之家 · 国金商社研究数据库 </footer>
   </div>
 </main>
+<dialog id="weekly-export-dialog" class="hd-export-dialog" aria-labelledby="export-title">
+<form id="export-form">
+<h2 id="export-title">导出周度数据</h2>
+<label>开始周<select id="export-start" required></select></label>
+<label>结束周<select id="export-end" required></select></label>
+<label>导出内容<select id="export-scope"><option value="national">全国</option><option value="segments">分档次（全国）</option></select></label>
+<p class="hd-export-note">CSV · 同周同比 · OCC同比为百分点</p>
+<p id="export-error" role="alert"></p>
+<div class="hd-export-actions"><button type="button" id="export-cancel">取消</button><button type="submit">导出</button></div>
+</form></dialog>
 </body>
 </html>
 
