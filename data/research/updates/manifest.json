@@ -1,13 +1,14 @@
 {
-  "syncedAt": "2026-10-16T02:07:09Z",
+  "syncedAt": "2026-10-16T03:02:42Z",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
-  "coverageFrom": "2026-10-16T09:29:24.813+0800",
-  "coverageTo": "2026-10-16T09:55:23.407+0800",
-  "oldestFetched": "2026-10-16T09:15:56.497+0800",
-  "fetchedTopics": 30,
+  "coverageFrom": "2026-10-16T09:55:23.407+0800",
+  "coverageTo": "2026-10-16T11:00:48.458+0800",
+  "oldestFetched": "2026-10-16T09:27:46.465+0800",
+  "fetchedTopics": 60,
   "files": {
     "views": [
+      "data/research/updates/2026-10-16-1102-views.csv",
       "data/research/updates/2026-10-16-1007-views.csv",
       "data/research/updates/2026-10-16-0931-views.csv",
       "data/research/updates/2026-10-15-1701-views.csv",
@@ -51,6 +52,7 @@
       "data/research/updates/2026-10-14-1258-views.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-10-16-1102-all_views.csv",
       "data/research/updates/2026-10-16-1007-all_views.csv",
       "data/research/updates/2026-10-16-0931-all_views.csv",
       "data/research/updates/2026-10-16-0000-all_views.csv",
@@ -171,19 +173,19 @@
     ]
   },
   "counts": {
-    "views": 272,
-    "all_views": 5216,
+    "views": 273,
+    "all_views": 5238,
     "minutes": 101
   },
   "latest": {
-    "views": "2026-10-16 09:36",
-    "all_views": "2026-10-16 09:55",
+    "views": "2026-10-16 10:50",
+    "all_views": "2026-10-16 11:00",
     "minutes": "2026-10-12T01:07:33"
   },
   "excluded": {
-    "附件标题": 79,
+    "附件标题": 87,
     "图片无可读正文": 25,
-    "无实质观点正文": 26
+    "无实质观点正文": 28
   },
   "lastClassificationCorrection": {
     "date": "2026-10-13",
@@ -495,7 +497,8 @@
       "14425441812215812",
       "45548552151121428",
       "55521554882244454",
-      "55521554848441424"
+      "55521554848441424",
+      "22258224111841241"
     ],
     "all_views": [
       "82258224252524812",
@@ -5653,252 +5656,351 @@
       "22258224141111451",
       "14425441818858222",
       "14425441818855212",
-      "82258224141445882"
+      "82258224141445882",
+      "45548551448411848",
+      "22258224111288281",
+      "14425441888422882",
+      "45548552111812158",
+      "55521554888184524",
+      "22258224111812841",
+      "55521554888181444",
+      "45548552111814858",
+      "14425441888518422",
+      "14425441888215152",
+      "82258224111548822",
+      "14425441888212852",
+      "45548552112144448",
+      "82258224114484222",
+      "55521554884415254",
+      "55521554884422424",
+      "22258224114455841",
+      "14425441881481852",
+      "55521554884181554",
+      "82258224114841412",
+      "55521554884148554",
+      "55521554884144284"
     ]
   },
   "lastRun": {
-    "runId": "2026-10-16-1007",
+    "runId": "2026-10-16-1102",
     "sourceGroup": "88888142214212",
     "sourceName": "水木调研纪要-2.0",
-    "previousCoverageTo": "2026-10-16T09:29:24.813+0800",
-    "coverageTo": "2026-10-16T09:55:23.407+0800",
-    "oldestFetched": "2026-10-16T09:15:56.497+0800",
-    "sourceTopicsFetched": 30,
-    "pageRowsFetched": 30,
-    "sourceTopicsInCoverage": 21,
+    "previousCoverageTo": "2026-10-16T09:55:23.407+0800",
+    "coverageTo": "2026-10-16T11:00:48.458+0800",
+    "oldestFetched": "2026-10-16T09:27:46.465+0800",
+    "sourceTopicsFetched": 60,
+    "pageRowsFetched": 60,
+    "sourceTopicsInCoverage": 34,
     "added": {
-      "views": 2,
-      "all_views": 14
+      "views": 1,
+      "all_views": 22
     },
     "duplicates": 1,
     "duplicateTopicIds": [
-      "82258224118112282"
+      "82258224114218112"
     ],
     "excludedTopics": [
-      "14425441885885252",
-      "82258224115854442",
-      "82258224115511812",
-      "55521554882242854"
+      "14425441888288582",
+      "14425441888284182",
+      "22258224114241841",
+      "22258224114242221",
+      "14425441881414282",
+      "82258224114221112",
+      "14425441881448112",
+      "55521554884151224",
+      "22258224114881441",
+      "22258224114882211"
     ],
     "files": {
-      "views": "data/research/updates/2026-10-16-1007-views.csv",
-      "all_views": "data/research/updates/2026-10-16-1007-all_views.csv"
+      "views": "data/research/updates/2026-10-16-1102-views.csv",
+      "all_views": "data/research/updates/2026-10-16-1102-all_views.csv"
     },
     "dedupCheck": {
       "algorithm": "scripts/build_research_shards.py keys(row)",
-      "candidateKeys": 68,
-      "candidateBuckets": 61,
+      "candidateKeys": 96,
+      "candidateBuckets": 82,
       "candidateKeysByTopic": {
-        "55521554885544224": [
-          "topic:55521554885544224",
-          "stamp:10490d0fb352234468628c3451787540f521fbd890f8716eb764b82bcd0f6ef5",
-          "body:133912a6e48582e1f9de25b32c3ba4388798bcd718464ae04b704b82a446360d",
-          "compactBody:d6dede7bd911ae740d03a6b87fc5d57bb6e8e2335d32d0e9b66834a19f433c47"
+        "45548551448411848": [
+          "stamp:133a31d6576b3f70cff65afdc189d01a8bcff7e980f70a2c870d1ea103a31ebc",
+          "topic:45548551448411848",
+          "body:0a0c3f679ce9637cc77c3e730d1fb803d59d2f92551e0d9c72c42005b4c164de",
+          "compactBody:34d6030d2e9b3d9b8188797c6f79a01b192e5b473d040e406a82234b7d3906f7"
         ],
-        "45548552115525248": [
-          "topic:45548552115525248",
-          "stamp:91f01ce1a0b02b1a2f9e1214bb9c915a3ee631377713bb7ed64606ba7fab30bb",
-          "body:23770f66167b662aae144c64e3508c2d60f1e8f8843f082f68860544bd56a604",
-          "compactBody:7cf95c3f30531d66fa316dbc0794099377a73ac518bbcb76a02343c728aaeb49"
+        "22258224111288281": [
+          "stamp:7d4a761bb5a24f3025884b7af217f851db5ed4a1164beb846b0c24fb77ceff41",
+          "topic:22258224111288281",
+          "body:97b64543af940ac10c74417be4c8aaaa0009c83783b7a6dcedcaf12e2918d500",
+          "compactBody:3db71a03017c51c020249fd16fcb121e2fee75a238a3d778529e6d55c8b0e021"
         ],
-        "82258224112245112": [
-          "topic:82258224112245112",
-          "stamp:b2e63e630160ef65c84d684e155c0d42c5413f4cb95e9336eefe83cb1f58295f",
-          "body:506692c35e8a799f46f86fbe38a9be6ba2a262e02b059a0aecb9f80f6f4ed0cb",
-          "compactBody:de89801014c1bc76881f1702aa228e55c20bc972f8b8fc13624b38c653184308"
+        "14425441888422882": [
+          "stamp:72f22ddd1ae67629a8a6503dd014a85051619b6ee80eb03ef18fb3113423dfd3",
+          "topic:14425441888422882",
+          "body:9e04369c4ecfc20d72d4593033f8997a31129604d3a1781a8b1d2981c190c0bb",
+          "compactBody:548c3680947d6e9b99e6a02fb2a8dd2242dc42039171e570ac44aeb01c80aaec"
         ],
-        "22258224112281151": [
-          "topic:22258224112281151",
-          "stamp:e55e88cbe7b9c57722d215a57aed5a32ff814799ee7b4a29e7d4154c1bfa71de",
-          "body:d82563d53790a943f55f347fdffc9f4818d3dd2ef23597abb693f096b8a471ad",
-          "compactBody:15a106e2de1138f9fa142a0156760792ce9f07e3b0d87849fa32cb1256c7e46a"
+        "45548552111812158": [
+          "stamp:bf92ac406970dc22865dea907f92490c564eac23c6e20a1b0a10f48d37fdc3ce",
+          "topic:45548552111812158",
+          "body:70d0cb195d39b239bf6d6c466deee8e676ce3e203e140f4ff4916e49bf3f30cf",
+          "compactBody:a608869aeee228eb0027928b761281d012f08a7ad3961201475ec3b3e8456aa4"
         ],
-        "82258224118112282": [
-          "topic:82258224118112282",
-          "stamp:db84fd03b899223dfcc71fc8c99f5bb0cd9bf0045b0b487d4f41e2b25bc4e9d2",
-          "body:eaaca14a6ef0d72e6cebca3557ad4ba69c04cd45fa4f046764655759f2f4e3cd",
-          "compactBody:cc625413ac3bafddb7140c2044f0e7d0f95c4775cfba5020ffcc3b690ea7eedd"
+        "55521554888184524": [
+          "stamp:f506916f896f03172e6a2d2aeff73a1e9567c7a89afef2a7e1e1351779d999bd",
+          "topic:55521554888184524",
+          "body:f3cc92fb59088a519028a129332003ac481970d415140eb8b0b2de505fe6207f",
+          "compactBody:fc47af86fd0b33e49c4f873744e532304317dcfb6240a6b9d0060aa3d486814a"
         ],
-        "82258224115515452": [
-          "topic:82258224115515452",
-          "stamp:650c3325b13eee7b56175137833cfd3652713067fb3ddd93223164fa9d4de6c7",
-          "body:647821099d13e824ca70c2670b7cd82810847ed7fc12e5c60aeaf94e0a3350e4",
-          "compactBody:f0ce3f5c055406e3ab4679e9c3f9beac48423c8bf0599fa456dc298fa8baf651"
+        "22258224111812841": [
+          "stamp:42a939cab6d6195c77aaacdfaec1cb07e891d8672f71629f370d01da8cba5004",
+          "topic:22258224111812841",
+          "body:08dfa0a6687a57692681715c29f3f797c40140817f2b2c007fc69fafa00a73ae",
+          "compactBody:d1a88a7ef7c03d7dda1465f470ad7cc67e8c13ac3b9f8a581cbe36e9d93c791b"
         ],
-        "22258224115544141": [
-          "topic:22258224115544141",
-          "stamp:9c4f55f5314b782667916165d00812db262bd2a87b76067d70075b074b517f79",
+        "55521554888181444": [
+          "stamp:21fdfc4be47b5d45a0bdf7d68301cd575f20bb881f8169cc254cf6b4ffc458a3",
+          "topic:55521554888181444",
+          "body:0d264f0a9fa7a2f2b78981738fc0f605bf5af90f5499ffd7252ac0cc405c67dd",
+          "compactBody:8255f7ece65e37fa016eefb2662a4bac8d46d4550789d65bb89720245830d1a0"
+        ],
+        "45548552111814858": [
+          "stamp:bfad33110007e523c1c1c332a6aa9716f1b1067e74097cf32a3c167ed4357ef2",
+          "topic:45548552111814858",
+          "body:7109044e9b5af10549ce2dc58f12e770175ced8370d2ab54a314d5457176623d",
+          "compactBody:294cbb6db4b2228218f8af7f71e3c3008d34929340326e46f2cbb67c794d852d"
+        ],
+        "22258224111841241": [
+          "stamp:cd5834d5925af5fa6e56be7ede930944d399a26b3d29387fa868c28e371ec686",
+          "topic:22258224111841241",
+          "body:bebb3c8e8bd993431c87902e8bd9319b5f8a388c0c743e6c329e9b09de2f2804",
+          "compactBody:ac8d1fb9ee2555d3055f63086279212769374ed44308cd37135169ddc02325d8"
+        ],
+        "14425441888518422": [
+          "stamp:34c208d95e4144a839affde79c32f316b3b05f00350b9d43b1955bbd2f395c85",
+          "topic:14425441888518422",
+          "body:66af89838e459e1147a53bfbdd8e3a0fb7d20a89a482a565f916636e540c3d5c",
+          "compactBody:50f487e22862b8adb73d1f63b340e8c79438b071b14c8c0ed70facb9846278f5"
+        ],
+        "14425441888215152": [
+          "stamp:db4639fbd640717ffadf65ac401559878489d5ca25dffb2d4f56bf6d63410666",
+          "topic:14425441888215152",
+          "body:debf4b1c3b28c1c7a0a27afc1e0152c437c5297e94d8c74883725827d30f47d6",
+          "compactBody:339d1ddd46333e31718aa070696bb9136e0a780582e4e93e84ade58302138f82"
+        ],
+        "82258224111548822": [
+          "stamp:c353f59d0c779f75027631045defeded777b74e3c35bbe1107f0351d9f1b1870",
+          "topic:82258224111548822",
+          "body:80569f27fd8242145d5bee72fa37d40cb51c44734bac9256566564b4d8a7625d",
+          "compactBody:ccd0aa9da19376649d534672c4852103de4a0b88b7eb977f47ed316a42a5c37f"
+        ],
+        "14425441888212852": [
+          "stamp:2a883348d6f468fee04be647564cfb735a4029951f4bb01bef7d3ce59e5e8484",
+          "topic:14425441888212852",
+          "body:c93bf4d78eb201f0f17609859672cda67d694222a3e3b1e4ef2665056c77b1e8",
+          "compactBody:a38fdbb40b55964a293411b397fb6750e107a21e6e982d2247a8d31b07a391c2"
+        ],
+        "45548552112144448": [
+          "stamp:6b8c908bbf3c893bd127e9ef235c41ee699e6ee201349d5faef1030afff87288",
+          "topic:45548552112144448",
+          "body:8aa394d0fb6606ec41f09e7b2a05645d4bb4e40d6fc8838de2bdf60c01885002",
+          "compactBody:d47efbcc2f7a48e3a661e47d87ba938144bea95c627fb4a00a3fe25bfa268d82"
+        ],
+        "82258224114484222": [
+          "stamp:aa03e2070e80a4227f79d0ce8c4b6d719f9c78299375e3b3923e1e831537895a",
+          "topic:82258224114484222",
+          "body:a41525f69d602a23c76c05ef96e887aa105d60c938d0171768f955143e5e7ff7",
+          "compactBody:4a888703ceec3f31d4cf0fe55c54767184ad64a05efa2083d21b32c626a2e702"
+        ],
+        "55521554884415254": [
+          "stamp:218c3b6654c02c2b964d3a46f75bd34295a5474d5d58f5a34a7825b22911d24e",
+          "topic:55521554884415254",
+          "body:52bd6a72bb55306465fbe375d4bf21788943b247cf1b0ba546c720482ca03114",
+          "compactBody:6906f68d0bc0166a5141db65bdc7f8430787904990d0ba82c68870493930d88d"
+        ],
+        "55521554884422424": [
+          "stamp:615a98b4fe2763b8bb3d338edc16b799d05f79eb2931a0f821f177f7c0350b6a",
+          "topic:55521554884422424",
+          "body:e9e6705fe4f428323b38440449e58e0cc4dc3706866896f7380d53537530f904",
+          "compactBody:fb013def6b593c56aa4488b39d27bc8d36d79138468c1fe2446f8417e1479b6d"
+        ],
+        "22258224114455841": [
+          "stamp:2c22793f4ff5150c354cc7852783da5ec2494eff29af097f4629126cf2080a2f",
+          "topic:22258224114455841",
+          "body:5feef97642155adbba0658f6c4092ddda3f80fbc8d520bb0b3da966802823c39",
+          "compactBody:76e4fbc9dc8023e4d2132364b26d780b8e2bf1af8cf153f83396649f648d49a5"
+        ],
+        "14425441881481852": [
+          "stamp:9342305b953793d6adca4092ccceb84dd980d9ab6e463bb62dab522bbfe3b3e8",
+          "topic:14425441881481852",
+          "body:7692ba04b0caa7fc66cc90d6187f10e7481be542cc787f84c46e1cdac3558e97",
+          "compactBody:670ec85c32fb96d1bb8b0b2bff6eb07cd8bd17d4826a33f621d0ff54c200785d"
+        ],
+        "82258224114218112": [
+          "stamp:625cfc64e4d7023c17e03ae626698196c06cdf140209e700d38c26ca20e3f0ef",
+          "topic:82258224114218112",
           "body:7baf6e5de55063d375f8c4dfd15c594d5b796823896c6d20ae2db154e173e7fb",
           "compactBody:c88213310a80e5a505a8f01b72d7a151785ecb697354a5fc820a698e1bcb2e69"
         ],
-        "55521554882244454": [
-          "topic:55521554882244454",
-          "stamp:a7f447d75876cb4cb6cc238133a1269380361abbcdbf94a057b6d4f72799de62",
-          "body:3553978484edfebf7a3a15a014147e85e90227d2ed270b9f296e4c4f721d2ada",
-          "compactBody:80ef02c5b12de84405abf5b5696325d9c30eadbb559b9a3147de4e43c81f6f83"
+        "55521554884181554": [
+          "stamp:185911e01b303edd3a895e392cdbb5ce47f682bf9acd8ad6d020ab7955559277",
+          "topic:55521554884181554",
+          "body:a837d7568c80782f26fda63f17322965c73528d8838424ffccb1da390bb2f81c",
+          "compactBody:550a2b10fb3defa23a6ef535ccf08084dc79760ff9e6cc504338780bc19367be"
         ],
-        "45548552114428148": [
-          "topic:45548552114428148",
-          "stamp:d320dde55b6a7972503a59b44ac3173f39b690cf05b0e588296262d1a916d6f4",
-          "body:f73c39a6f3c9146f76b670c1b3936b263e806b186558cce4541a7a2168c271a1",
-          "compactBody:1b8862da087eecfd6fb02d7fb246da422a5aef795a156f114a893b4ef0312de5"
+        "82258224114841412": [
+          "stamp:1c1ca7613923789fd1bec83aa39f0a8e093863e0f56cbbb077af3fb8875bf73a",
+          "topic:82258224114841412",
+          "body:63af9407b8945b3fce6a9ba0041b2bcd8aea611f7974c2d1b8cd4849838ee93e",
+          "compactBody:c35233ed4c8ba4cf2f91240cfedf07d8b3d6d83c2a89028ba8ae85f559ef6075"
         ],
-        "22258224115548251": [
-          "topic:22258224115548251",
-          "stamp:5a959259c57cc9fe0100aca95f56ae3f1267226b9ed1cf65145d510aba6962ea",
-          "body:8053c2220e0addf3c86181944828fd07cbddef2063d8e7a2cba89fb6040e5250",
-          "compactBody:588184d8b2e149fceff8a6e6542f10aa4076282152565e34f2d0ace0be5d5163"
+        "55521554884148554": [
+          "stamp:d1e842b4b4ebaa9d3d07220a8bcb530138b94a8b3c652698481026586df7d9bf",
+          "topic:55521554884148554",
+          "body:94afbd5e8b1893ab635d003302445c5ef65d739327ba25167b3e5f90b5eb523a",
+          "compactBody:fc0f8b43dfc3f504e089b9849a675345e97c5041d4ac8eb89990f239b27cbda2"
         ],
-        "55521554882258414": [
-          "topic:55521554882258414",
-          "stamp:6edfbadfd2f724044593953f62469ae58ba15f78b3550c5298d3edecb651f356",
-          "body:ea87194605bec019aff37f86b2772f970405e489027861638893a3694e259648",
-          "compactBody:92adbcbc724529f7119ac4e44749d290af3108e7b0fffa855c0f372e06390fdf"
-        ],
-        "14425441882222252": [
-          "topic:14425441882222252",
-          "stamp:8593a0d454580f6f80868bc42f79efa648e9380d5866c38ab310d10b708efe41",
-          "body:17f8e95913095c9fecf6cf76d26938f1458821ae7914206159183fdc30062a7d",
-          "compactBody:c17adae8d277136bd32cefefd34f888ca36ffa452c342e7ff889fad5a5f631f6"
-        ],
-        "22258224141111451": [
-          "topic:22258224141111451",
-          "stamp:6e190732c1750fb92855e36f35601d82544c73597352c18b703152a7d15cd916",
-          "body:78d01c36a1e04ab709ed9c4b64dfd84cb87dc5a1f9e56c14efe93fd30f4af1aa",
-          "compactBody:c073869c4f391320439a441135a986cd50299040ef4539b768eee181fe9dce17"
-        ],
-        "14425441818858222": [
-          "topic:14425441818858222",
-          "stamp:05ce225987079e7993f1e772002eff4178c878de04bcfc6131b46f76c1085222",
-          "body:6e41b644b89c6b8801d4b530ffc8b35d50f1d5c6413013713ac12cb043d98313",
-          "compactBody:b2182fbe5bd0a949ca0f058a593748abf42e229be88187f16367667fe355880b"
-        ],
-        "14425441818855212": [
-          "topic:14425441818855212",
-          "stamp:b6c595b52a3065b71fabe0e1005c8c49dc55825de0f357615c4c944f93d16d50",
-          "body:aaee64efd89e36d7678c9e096ff14b029f749ff714be274aa84580d04f2de445",
-          "compactBody:acc46b3a888c82387a790b057913c1a39e0bb579bbd2f0ac0a3ccdc745c6c31c"
-        ],
-        "55521554848441424": [
-          "topic:55521554848441424",
-          "stamp:22f4a7571128482e78a882f009ea03b8e782782c5b4e079d22b4c2746df70654",
-          "body:a352ee12b6f9db9056adc79c745fb787b730335beb0df4c096d88ff921a620f6",
-          "compactBody:49c2650a22017157bf04c9cf95b4bb789fc9e69e5f9b2e38bb83a239f0989d78"
-        ],
-        "82258224141445882": [
-          "topic:82258224141445882",
-          "stamp:a85a72143aa8384e212ed0c5bbef1d01b75e0565522b19c2e00b9331b009ffc9",
-          "body:5372fb187f3e21d258ba3bc95b0a2ee2a9afcf59f69579ccdbc14ef9cf5393c9",
-          "compactBody:0144558ba6ab5379c2e8ff48ac3870bba820ff580ad5a169c72c75a81f9f8258"
+        "55521554884144284": [
+          "stamp:f1a1cb61508588495787380e4a7bed46798d71e95e3978f8863a5d8238aa19bd",
+          "topic:55521554884144284",
+          "body:99b7b70f2a0d1dbc18a9dbcb432dad0c15e047a7371a7b20460945c9087dd6f8",
+          "compactBody:26fcdbefa6440134227bba972efc6536747002c281766e42772842821f0c43f4"
         ]
       },
       "buckets": [
-        "02",
-        "04",
-        "07",
-        "0b",
-        "0f",
+        "08",
+        "0c",
+        "12",
         "14",
-        "15",
-        "1b",
-        "25",
+        "17",
+        "1a",
+        "1c",
+        "24",
+        "26",
+        "27",
         "28",
-        "2c",
-        "30",
-        "32",
+        "29",
+        "2a",
+        "2b",
+        "2d",
         "35",
-        "36",
-        "38",
-        "39",
-        "40",
-        "44",
-        "46",
-        "47",
+        "41",
+        "42",
         "48",
         "4b",
-        "54",
-        "57",
-        "59",
-        "6b",
+        "4c",
+        "4e",
+        "50",
+        "51",
+        "56",
+        "5c",
+        "62",
+        "63",
+        "64",
+        "69",
+        "6a",
         "6c",
         "6d",
         "6f",
-        "70",
-        "72",
+        "71",
+        "74",
+        "79",
+        "7a",
         "7b",
-        "7d",
-        "81",
-        "84",
+        "7c",
+        "7f",
+        "85",
         "86",
         "89",
+        "8a",
+        "8d",
         "8e",
-        "91",
+        "93",
         "94",
         "97",
-        "9c",
-        "a1",
-        "a6",
-        "af",
-        "b1",
+        "9b",
+        "9e",
+        "9f",
+        "a2",
+        "a3",
+        "aa",
+        "ad",
+        "b0",
         "b2",
+        "b3",
+        "b8",
         "bd",
-        "c2",
-        "c6",
-        "c8",
-        "ca",
+        "be",
+        "c1",
+        "c7",
+        "cb",
         "d3",
-        "d4",
+        "d7",
+        "d8",
+        "d9",
+        "dc",
         "df",
+        "e3",
+        "e5",
+        "e6",
+        "e8",
         "ed",
         "ef",
         "f1",
-        "fd",
-        "fe"
+        "fa",
+        "fb",
+        "ff"
       ],
       "duplicateKeys": 2,
       "duplicateKeysByTopic": {
-        "82258224118112282": [
-          "body:eaaca14a6ef0d72e6cebca3557ad4ba69c04cd45fa4f046764655759f2f4e3cd",
-          "compactBody:cc625413ac3bafddb7140c2044f0e7d0f95c4775cfba5020ffcc3b690ea7eedd"
+        "82258224114218112": [
+          "body:7baf6e5de55063d375f8c4dfd15c594d5b796823896c6d20ae2db154e173e7fb",
+          "compactBody:c88213310a80e5a505a8f01b72d7a151785ecb697354a5fc820a698e1bcb2e69"
         ]
       }
     },
     "pagination": {
-      "pages": 1,
+      "pages": 2,
       "limit": 30,
       "nextEndTimes": [
-        "2026-10-16T09:15:56.497+0800"
+        "2026-10-16T10:20:58.284+0800",
+        "2026-10-16T09:27:46.465+0800"
       ]
     },
-    "notes": "读取30个主题并连续分页至最早主题早于原coverage；21个主题位于新覆盖窗口，新增16条市场观点（商社精选2条、其他市场观点14条），1条正文重复，4条仅含附件标签的主题排除；未读取附件正文。摘要更新2条，无新增、无过期清理。"
+    "notes": "连续读取两页并跨过原覆盖点。60条分页记录中，34个唯一主题位于新增覆盖区间；23条写入（商社观点1条、其他市场观点22条），1条正文重复，10条仅有附件标题/占位文本而未纳入观点数据。未读取附件正文。新增1条商社相关摘要，无过期摘要清理。"
   },
   "lastUpdateRecord": {
-    "runId": "2026-10-16-1007",
+    "runId": "2026-10-16-1102",
     "sourceGroup": "88888142214212",
     "sourceName": "水木调研纪要-2.0",
-    "previousCoverageTo": "2026-10-16T09:29:24.813+0800",
-    "coverageTo": "2026-10-16T09:55:23.407+0800",
-    "added": 16,
+    "previousCoverageTo": "2026-10-16T09:55:23.407+0800",
+    "coverageTo": "2026-10-16T11:00:48.458+0800",
+    "added": 23,
     "updated": 0,
     "expiredRemoved": 0,
     "sourceTopicIds": [
-      "55521554885544224",
-      "45548552115525248",
-      "82258224112245112",
-      "22258224112281151",
-      "82258224115515452",
-      "22258224115544141",
-      "55521554882244454",
-      "45548552114428148",
-      "22258224115548251",
-      "55521554882258414",
-      "14425441882222252",
-      "22258224141111451",
-      "14425441818858222",
-      "14425441818855212",
-      "55521554848441424",
-      "82258224141445882"
+      "45548551448411848",
+      "22258224111288281",
+      "14425441888422882",
+      "45548552111812158",
+      "55521554888184524",
+      "22258224111812841",
+      "55521554888181444",
+      "45548552111814858",
+      "22258224111841241",
+      "14425441888518422",
+      "14425441888215152",
+      "82258224111548822",
+      "14425441888212852",
+      "45548552112144448",
+      "82258224114484222",
+      "55521554884415254",
+      "55521554884422424",
+      "22258224114455841",
+      "14425441881481852",
+      "55521554884181554",
+      "82258224114841412",
+      "55521554884148554",
+      "55521554884144284"
     ],
-    "notes": "新增16条市场观点（views 2、all_views 14），重复1条，排除4条附件占位主题；摘要更新2条，无新增、无过期清理。附件和图片正文未读取。"
+    "notes": "新增23条市场观点（商社观点1条、其他市场观点22条），正文重复1条，10条仅含附件占位/标题未纳入观点；摘要新增1条，无摘要过期清理。附件未读取。"
   }
 }
