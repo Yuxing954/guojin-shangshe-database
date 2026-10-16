@@ -11,6 +11,7 @@ def within(value,start,end):
  t=stamp(value);return bool(t and start<t<=end)
 def allowed_attachment(r):
  name=r.get('name','')
+ if re.search(r'LendAPI|嵌入式金融|金融科技',name,re.I):return False
  if is_ecommerce_topic(name) or EXCLUDE.search(name):return False
  return bool(sector_for(name) or set(r.get('sectors',[])) & {'hotel','tourism','dutyfree','gold','retail','dining','education','hr'})
 def build(date,cutoff=None):

@@ -1,0 +1,49 @@
+name: Backfill daily attachment lists
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - data/research/library.json
+      - scripts/backfill_daily_resources.py
+      - scripts/build_daily_resource_list.py
+      - scripts/daily_attachment_coverage.py
+      - .github/workflows/backfill-daily-resources.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-attachment-backfill
+  cancel-in-progress: false
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reconcile latest two published attachment snapshots
+        run: python scripts/backfill_daily_resources.py --limit 2
+      - name: Validate changed snapshots and daily behavior
+        run: |
+          python -m unittest discover -s tests -p 'test_daily*.py'
+          for snapshot in $(git diff --name-only -- data/daily/resources); do
+            report_date=$(basename "$snapshot" .json)
+            python scripts/validate_daily_editorial.py --date "$report_date" --check-resources
+          done
+          node scripts/check-site.cjs
+      - name: Commit only daily attachment backfills
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/daily/resources
+          if git diff --staged --quiet; then exit 0; fi
+          git commit -m 'data: backfill late daily attachment metadata'
+          git pull --rebase origin main
+          git push origin HEAD:main

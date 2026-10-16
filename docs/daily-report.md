@@ -132,3 +132,11 @@ validate_daily_editorial.py检查：所有segments恰好全部列入focus、每�
 - 当日onepage写`companyAnnouncements`数组，字段：company/code/title/category/publishedAt/timePrecision/summary/impact/source/sourceType/url/checkedAt/evidenceFile/verified。publishedAt为真实带时区时间或原始日期，timePrecision为timestamp/date；sourceType为exchange/company/regulator，verified=true仅在原文核实后填写。evidenceFile写入当天凭证，记录公告编号/URL、原文关键数据及判断依据。
 - 写`announcementMonitoring`：checkedAt、windowStart、cutoff、coverageFile、checkedCompanies数组、failedCompanies数组、status及evidenceFile。每家公司记录所查来源和结果；失败/受限不等于无公告，未完整核验不能写“覆盖公司无重要公告”。没有核实有效条目时隐藏空栏，检查状态存数据及来源说明。
 - 页面“公司重要公告”位于行业重要数据之后、重点段子之前；复制正文和下载顺序一致。历日日报只读当期快照，不用实时公告回填旧期；财报预约仍在最后、仅当天及未来3天。
+
+## 晚到索引自动回补（2026-10-16晚间修复）
+- 先fetch并读取最新附件索引及扫描回执。如果已有补齐后的回执完整覆盖待生成窗口，直接用该已完成扫描生成清单，不因本机无法重扫而再次阻塞同一历史窗口。
+- 索引更新后，`Backfill daily attachment lists`工作流运行`backfill_daily_resources.py --limit 2`，只回补最近两期已发布日报的纪要、录音、研究资料。保留原窗口、段子、全文、每日总结、行业数据、公告和财报快照，记录attachmentBackfill补录时间。扫描不完整时保留有效历史。
+- 日报任务启动及发布前均运行上述回补，再逐期运行`validate_daily_editorial.py --date 日期 --check-resources`。不要只重建当天而放任昨天仍引用旧空清单。
+- 空附件类别不展示0条卡片；扫描待补与确认无新增分开显示。页面、复制和下载使用同一有效类别清单。仅元数据，禁止下载或读取附件。
+- 公司重要公告是每日独立必查项，继续使用最新统一覆盖目录、法定披露与公司IR。逐公司保留检查状态、候选及正文核验凭证；不得用空数组代替未做检查，也不得把新闻或研报当作公司公告。来源受限时记录失败，其他已核实内容继续更新，不宣称全覆盖无重要公告。
+- 新日报设置announcementMonitoringRequired=true；检查矩阵须覆盖统一目录全部公司（范围外者记录排除原因），并与当天凭证中的announcementMonitoring完全一致。未检查、部分来源失败和完整检查无重要事项是不同状态。

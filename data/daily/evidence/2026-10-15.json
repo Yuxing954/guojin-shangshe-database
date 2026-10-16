@@ -123,5 +123,86 @@
     ],
     "forecastsAttributed": true,
     "originalBodiesUnchanged": true
-  }
+  },
+  "revision": {
+    "at": "2026-10-16T20:21:49+08:00",
+    "reason": "回补晚到的完整附件索引并核对全部窗口内段子",
+    "focusCount": 7,
+    "resourceCounts": {
+      "segments": 7,
+      "minutes": 0,
+      "audio": 1,
+      "reports": 3
+    },
+    "originalWindowPreserved": true,
+    "attachmentContentRead": false,
+    "downloadEndpointCalled": false
+  },
+  "attachmentIndexSource": {
+    "path": "data/research/library.json",
+    "commit": "14d8b6f51888ef2eabff256414bf9aa21bd8cf1f",
+    "blobSha": "7ced65c64c81de438b20856d5ef4eaaf31e373eb",
+    "generatedAt": "2026-10-16T16:37:30.000+08:00",
+    "scan": {
+      "observedAt": "2026-10-16T16:37:30.000+08:00",
+      "sourceGroup": "88888142214212",
+      "sourceName": "水木调研纪要-2.0",
+      "topicsScanned": 690,
+      "topicsInWindow": 669,
+      "topicPages": 23,
+      "topicWindowFrom": "2026-10-14T00:00:00+0800",
+      "topicWindowTo": "2026-10-16T16:20:35.971+0800",
+      "boundaryReachedBeforeWindow": true,
+      "attachmentsObserved": 407,
+      "newRecords": 67,
+      "existingRecordsRefreshed": 330,
+      "occurrenceRecordsAdded": 0,
+      "attachmentContentRead": false,
+      "windowComplete": true,
+      "archiveHasMore": true,
+      "sourceMetadataFields": [
+        "fileId",
+        "topicId",
+        "filename",
+        "extension",
+        "bytes",
+        "attachmentCreatedAt",
+        "topicCreatedAt",
+        "durationSeconds",
+        "downloadCount",
+        "sourceHash",
+        "source",
+        "sourceUrl"
+      ],
+      "windowStart": "2026-10-14T00:00:00+0800",
+      "windowEnd": "2026-10-16T16:37:30.000+08:00",
+      "windowEndDate": "2026-10-16"
+    }
+  },
+  "validation": {
+    "dailyTestsPassed": 33,
+    "fullOriginalsAndSourceHashes": "verified",
+    "attachmentWindowAndCatalogue": "complete",
+    "publicationGate": "passed"
+  },
+  "announcementCandidates": [
+    {
+      "company": "永辉超市",
+      "code": "601933.SH",
+      "title": "关于仲裁案件的进展公告",
+      "documentDate": "2026-10-15",
+      "announcementNumber": "2026-057",
+      "sourceType": "company",
+      "url": "https://paper.cnstock.com/html/2026-10/15/content_2277282.htm",
+      "officialPdfUrl": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-10-15/601933_20261015_8W19.pdf",
+      "bodyRead": true,
+      "facts": {
+        "remainingConsiderationRMB": 3639089070.93,
+        "status": "撤销及不予执行申请均被驳回；案件处于执行阶段，回款及利润影响未确定"
+      },
+      "windowVerified": false,
+      "status": "date-boundary_pending_original_disclosure_time",
+      "checkedAt": "2026-10-16T20:21:49+08:00"
+    }
+  ]
 }

@@ -4,24 +4,26 @@
   "windowStart": "2026-10-15T16:00:00+08:00",
   "cutoff": "2026-10-16T16:00:00+08:00",
   "sourceCommit": "ba8ddb0056b4c880b3d1e29c60203b839df426a0",
-  "status": "blocked_attachment_index",
+  "status": "published_with_partial_announcement_sources",
   "attachmentScan": {
-    "requiredWindowStart": "2026-10-15T16:00:00+08:00",
-    "requiredCutoff": "2026-10-16T16:00:00+08:00",
-    "latestIndexGeneratedAt": "2026-10-16T09:28:28+08:00",
-    "lastReceipt": {
-      "observedAt": "2026-10-16T09:28:28+08:00",
+    "status": "complete",
+    "path": "data/research/library.json",
+    "commit": "14d8b6f51888ef2eabff256414bf9aa21bd8cf1f",
+    "blobSha": "7ced65c64c81de438b20856d5ef4eaaf31e373eb",
+    "generatedAt": "2026-10-16T16:37:30.000+08:00",
+    "scan": {
+      "observedAt": "2026-10-16T16:37:30.000+08:00",
       "sourceGroup": "88888142214212",
       "sourceName": "水木调研纪要-2.0",
-      "topicsScanned": 523,
-      "topicsInWindow": 516,
-      "topicPages": 18,
+      "topicsScanned": 690,
+      "topicsInWindow": 669,
+      "topicPages": 23,
       "topicWindowFrom": "2026-10-14T00:00:00+0800",
-      "topicWindowTo": "2026-10-16T09:16:22.745+0800",
+      "topicWindowTo": "2026-10-16T16:20:35.971+0800",
       "boundaryReachedBeforeWindow": true,
-      "attachmentsObserved": 330,
-      "newRecords": 97,
-      "existingRecordsRefreshed": 233,
+      "attachmentsObserved": 407,
+      "newRecords": 67,
+      "existingRecordsRefreshed": 330,
       "occurrenceRecordsAdded": 0,
       "attachmentContentRead": false,
       "windowComplete": true,
@@ -41,28 +43,9 @@
         "sourceUrl"
       ],
       "windowStart": "2026-10-14T00:00:00+0800",
-      "windowEnd": "2026-10-16T09:28:28+08:00",
+      "windowEnd": "2026-10-16T16:37:30.000+08:00",
       "windowEndDate": "2026-10-16"
-    },
-    "missingWindowStart": "2026-10-16T09:28:28+08:00",
-    "missingWindowEnd": "2026-10-16T16:00:00+08:00",
-    "attempts": [
-      {
-        "method": "connected browser",
-        "result": "Browser access requires the originating browser context."
-      },
-      {
-        "method": "cloud browser",
-        "url": "https://wx.zsxq.com/group/88888142214212",
-        "result": "net::ERR_BLOCKED_BY_CLIENT"
-      },
-      {
-        "method": "repository CLI authentication",
-        "result": "Existing backup is Windows DPAPI-bound; current Linux environment cannot restore it. No credentials read or transferred."
-      }
-    ],
-    "attachmentContentRead": false,
-    "downloadEndpointCalled": false
+    }
   },
   "researchCoverage": {
     "manifestCoverageTo": "2026-10-16T15:01:08.627+0800",
@@ -969,11 +952,1544 @@
   },
   "latestSourceCommit": "6a0bca07fc767c2023b9004308af3be12659482f",
   "validation": {
-    "pythonTestsPassed": 28,
-    "rendererAndExportTest": "passed",
-    "siteCheck": "passed with unmodified remote icon existence verified by Git tree; local text-only checkout cannot materialize that binary",
-    "publicationGate": "blocked by incomplete attachment scan as expected",
-    "draftOriginals": 8,
-    "formalDailyIndexChanged": false
+    "dailyTestsPassed": 33,
+    "fullOriginalsAndSourceHashes": "verified",
+    "attachmentWindowAndCatalogue": "complete",
+    "publicationGate": "passed"
+  },
+  "revision": {
+    "at": "2026-10-16T20:21:49+08:00",
+    "reason": "回补晚到的完整附件索引并核对全部窗口内段子",
+    "focusCount": 8,
+    "resourceCounts": {
+      "segments": 8,
+      "minutes": 0,
+      "audio": 1,
+      "reports": 2
+    },
+    "originalWindowPreserved": true,
+    "attachmentContentRead": false,
+    "downloadEndpointCalled": false
+  },
+  "attachmentIndexSource": {
+    "path": "data/research/library.json",
+    "commit": "14d8b6f51888ef2eabff256414bf9aa21bd8cf1f",
+    "blobSha": "7ced65c64c81de438b20856d5ef4eaaf31e373eb",
+    "generatedAt": "2026-10-16T16:37:30.000+08:00",
+    "scan": {
+      "observedAt": "2026-10-16T16:37:30.000+08:00",
+      "sourceGroup": "88888142214212",
+      "sourceName": "水木调研纪要-2.0",
+      "topicsScanned": 690,
+      "topicsInWindow": 669,
+      "topicPages": 23,
+      "topicWindowFrom": "2026-10-14T00:00:00+0800",
+      "topicWindowTo": "2026-10-16T16:20:35.971+0800",
+      "boundaryReachedBeforeWindow": true,
+      "attachmentsObserved": 407,
+      "newRecords": 67,
+      "existingRecordsRefreshed": 330,
+      "occurrenceRecordsAdded": 0,
+      "attachmentContentRead": false,
+      "windowComplete": true,
+      "archiveHasMore": true,
+      "sourceMetadataFields": [
+        "fileId",
+        "topicId",
+        "filename",
+        "extension",
+        "bytes",
+        "attachmentCreatedAt",
+        "topicCreatedAt",
+        "durationSeconds",
+        "downloadCount",
+        "sourceHash",
+        "source",
+        "sourceUrl"
+      ],
+      "windowStart": "2026-10-14T00:00:00+0800",
+      "windowEnd": "2026-10-16T16:37:30.000+08:00",
+      "windowEndDate": "2026-10-16"
+    }
+  },
+  "initialAttempt": {
+    "status": "blocked_attachment_index",
+    "attachmentScan": {
+      "requiredWindowStart": "2026-10-15T16:00:00+08:00",
+      "requiredCutoff": "2026-10-16T16:00:00+08:00",
+      "latestIndexGeneratedAt": "2026-10-16T09:28:28+08:00",
+      "lastReceipt": {
+        "observedAt": "2026-10-16T09:28:28+08:00",
+        "sourceGroup": "88888142214212",
+        "sourceName": "水木调研纪要-2.0",
+        "topicsScanned": 523,
+        "topicsInWindow": 516,
+        "topicPages": 18,
+        "topicWindowFrom": "2026-10-14T00:00:00+0800",
+        "topicWindowTo": "2026-10-16T09:16:22.745+0800",
+        "boundaryReachedBeforeWindow": true,
+        "attachmentsObserved": 330,
+        "newRecords": 97,
+        "existingRecordsRefreshed": 233,
+        "occurrenceRecordsAdded": 0,
+        "attachmentContentRead": false,
+        "windowComplete": true,
+        "archiveHasMore": true,
+        "sourceMetadataFields": [
+          "fileId",
+          "topicId",
+          "filename",
+          "extension",
+          "bytes",
+          "attachmentCreatedAt",
+          "topicCreatedAt",
+          "durationSeconds",
+          "downloadCount",
+          "sourceHash",
+          "source",
+          "sourceUrl"
+        ],
+        "windowStart": "2026-10-14T00:00:00+0800",
+        "windowEnd": "2026-10-16T09:28:28+08:00",
+        "windowEndDate": "2026-10-16"
+      },
+      "missingWindowStart": "2026-10-16T09:28:28+08:00",
+      "missingWindowEnd": "2026-10-16T16:00:00+08:00",
+      "attempts": [
+        {
+          "method": "connected browser",
+          "result": "Browser access requires the originating browser context."
+        },
+        {
+          "method": "cloud browser",
+          "url": "https://wx.zsxq.com/group/88888142214212",
+          "result": "net::ERR_BLOCKED_BY_CLIENT"
+        },
+        {
+          "method": "repository CLI authentication",
+          "result": "Existing backup is Windows DPAPI-bound; current Linux environment cannot restore it. No credentials read or transferred."
+        }
+      ],
+      "attachmentContentRead": false,
+      "downloadEndpointCalled": false
+    },
+    "validation": {
+      "pythonTestsPassed": 28,
+      "rendererAndExportTest": "passed",
+      "siteCheck": "passed with unmodified remote icon existence verified by Git tree; local text-only checkout cannot materialize that binary",
+      "publicationGate": "blocked by incomplete attachment scan as expected",
+      "draftOriginals": 8,
+      "formalDailyIndexChanged": false
+    }
+  },
+  "announcementMonitoring": {
+    "checkedAt": "2026-10-16T08:14:08Z",
+    "windowStart": "2026-10-15T16:00:00+08:00",
+    "cutoff": "2026-10-16T16:00:00+08:00",
+    "coverageFile": "data/coverage-companies.json",
+    "checkedCompanies": [
+      {
+        "company": "泡泡玛特",
+        "code": "9992.HK",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "hkexnews.hk"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "名创优品",
+        "code": "9896.HK",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "hkexnews.hk"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "思摩尔国际",
+        "code": "6969.HK",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "hkexnews.hk"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "中烟香港",
+        "code": "6055.HK",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "hkexnews.hk"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "小商品城",
+        "code": "600415.SH",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "特海国际",
+        "code": "9658.HK",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "hkexnews.hk"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "周大福",
+        "code": "1929.HK",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "hkexnews.hk"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "老铺黄金",
+        "code": "6181.HK",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "hkexnews.hk"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "老凤祥",
+        "code": "600612.SH",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "六福集团",
+        "code": "0590.HK",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "hkexnews.hk"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "菜百股份",
+        "code": "605599.SH",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "周大生",
+        "code": "002867.SZ",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "潮宏基",
+        "code": "002345.SZ",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "周六福",
+        "code": "6168.HK",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "hkexnews.hk"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "爱美客",
+        "code": "300896.SZ",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "巨子生物",
+        "code": "2367.HK",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "hkexnews.hk"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "毛戈平",
+        "code": "1318.HK",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "hkexnews.hk"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "珀莱雅",
+        "code": "603605.SH",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "上美股份",
+        "code": "2145.HK",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "hkexnews.hk"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "华熙生物",
+        "code": "688363.SH",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "贝泰妮",
+        "code": "300957.SZ",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "上海家化",
+        "code": "600315.SH",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "丸美生物",
+        "code": "603983.SH",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "林清轩",
+        "code": "2657.HK",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "hkexnews.hk"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "水羊股份",
+        "code": "300740.SZ",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "福瑞达",
+        "code": "600223.SH",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "锦波生物",
+        "code": "920982.BJ",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "中国中免",
+        "code": "601888.SH",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "王府井",
+        "code": "600859.SH",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "上海机场",
+        "code": "600009.SH",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "携程集团-S",
+        "code": "9961.HK",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "hkexnews.hk"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "同程旅行",
+        "code": "0780.HK",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "hkexnews.hk"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "华住集团-S",
+        "code": "1179.HK",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "hkexnews.hk"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "亚朵",
+        "code": "ATAT.O",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "sec.gov"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "锦江酒店",
+        "code": "600754.SH",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "首旅酒店",
+        "code": "600258.SH",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "宋城演艺",
+        "code": "300144.SZ",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "长白山",
+        "code": "603099.SH",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "陕西旅游",
+        "code": "603402.SH",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "黄山旅游",
+        "code": "600054.SH",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "众信旅游",
+        "code": "002707.SZ",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "峨眉山A",
+        "code": "000888.SZ",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "香港中旅",
+        "code": "0308.HK",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "hkexnews.hk"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "君亭酒店",
+        "code": "301073.SZ",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "九华旅游",
+        "code": "603199.SH",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "天目湖",
+        "code": "603136.SH",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "蜜雪集团",
+        "code": "2097.HK",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "hkexnews.hk"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "百胜中国",
+        "code": "9987.HK",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "hkexnews.hk"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "海底捞",
+        "code": "6862.HK",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "hkexnews.hk"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "古茗",
+        "code": "1364.HK",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "hkexnews.hk"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "瑞幸咖啡",
+        "code": "LKNCY.OO",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "sec.gov"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "小菜园",
+        "code": "0999.HK",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "hkexnews.hk"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "茶百道",
+        "code": "2555.HK",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "hkexnews.hk"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "沪上阿姨",
+        "code": "2589.HK",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "hkexnews.hk"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "达势股份",
+        "code": "1405.HK",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "hkexnews.hk"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "重庆百货",
+        "code": "600729.SH",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "永辉超市",
+        "code": "601933.SH",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "红旗连锁",
+        "code": "002697.SZ",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "家家悦",
+        "code": "603708.SH",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      },
+      {
+        "company": "孩子王",
+        "code": "301078.SZ",
+        "sources": [
+          {
+            "method": "official-domain-search",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ]
+          }
+        ],
+        "method": "official-domain publication search",
+        "status": "search_attempted_original_list_and_IR_incomplete"
+      }
+    ],
+    "failedCompanies": [
+      {
+        "company": "泡泡玛特",
+        "code": "9992.HK",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "名创优品",
+        "code": "9896.HK",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "思摩尔国际",
+        "code": "6969.HK",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "中烟香港",
+        "code": "6055.HK",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "小商品城",
+        "code": "600415.SH",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "特海国际",
+        "code": "9658.HK",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "周大福",
+        "code": "1929.HK",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "老铺黄金",
+        "code": "6181.HK",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "老凤祥",
+        "code": "600612.SH",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "六福集团",
+        "code": "0590.HK",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "菜百股份",
+        "code": "605599.SH",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "周大生",
+        "code": "002867.SZ",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "潮宏基",
+        "code": "002345.SZ",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "周六福",
+        "code": "6168.HK",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "爱美客",
+        "code": "300896.SZ",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "巨子生物",
+        "code": "2367.HK",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "毛戈平",
+        "code": "1318.HK",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "珀莱雅",
+        "code": "603605.SH",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "上美股份",
+        "code": "2145.HK",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "华熙生物",
+        "code": "688363.SH",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "贝泰妮",
+        "code": "300957.SZ",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "上海家化",
+        "code": "600315.SH",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "丸美生物",
+        "code": "603983.SH",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "林清轩",
+        "code": "2657.HK",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "水羊股份",
+        "code": "300740.SZ",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "福瑞达",
+        "code": "600223.SH",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "锦波生物",
+        "code": "920982.BJ",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "中国中免",
+        "code": "601888.SH",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "王府井",
+        "code": "600859.SH",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "上海机场",
+        "code": "600009.SH",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "携程集团-S",
+        "code": "9961.HK",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "同程旅行",
+        "code": "0780.HK",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "华住集团-S",
+        "code": "1179.HK",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "亚朵",
+        "code": "ATAT.O",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "锦江酒店",
+        "code": "600754.SH",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "首旅酒店",
+        "code": "600258.SH",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "宋城演艺",
+        "code": "300144.SZ",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "长白山",
+        "code": "603099.SH",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "陕西旅游",
+        "code": "603402.SH",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "黄山旅游",
+        "code": "600054.SH",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "众信旅游",
+        "code": "002707.SZ",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "峨眉山A",
+        "code": "000888.SZ",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "香港中旅",
+        "code": "0308.HK",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "君亭酒店",
+        "code": "301073.SZ",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "九华旅游",
+        "code": "603199.SH",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "天目湖",
+        "code": "603136.SH",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "蜜雪集团",
+        "code": "2097.HK",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "百胜中国",
+        "code": "9987.HK",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "海底捞",
+        "code": "6862.HK",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "古茗",
+        "code": "1364.HK",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "瑞幸咖啡",
+        "code": "LKNCY.OO",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "小菜园",
+        "code": "0999.HK",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "茶百道",
+        "code": "2555.HK",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "沪上阿姨",
+        "code": "2589.HK",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "达势股份",
+        "code": "1405.HK",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "重庆百货",
+        "code": "600729.SH",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "永辉超市",
+        "code": "601933.SH",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "红旗连锁",
+        "code": "002697.SZ",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "家家悦",
+        "code": "603708.SH",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      },
+      {
+        "company": "孩子王",
+        "code": "301078.SZ",
+        "reason": "Search results are candidates only. Live disclosure list pagination, company IR cross-check, precise boundary time and original-body verification are not complete."
+      }
+    ],
+    "status": "incomplete",
+    "evidenceFile": "data/daily/evidence/2026-10-16.json",
+    "excludedCompanies": [
+      {
+        "code": "003010.SZ",
+        "name": "若羽臣",
+        "sector": "新消费",
+        "aliases": [],
+        "sourceId": "selected-20261012",
+        "addedAt": "2026-10-12",
+        "identitySource": "choice-and-tencent-20261012",
+        "status": "excluded_from_daily",
+        "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。"
+      },
+      {
+        "code": "301498.SZ",
+        "name": "乖宝宠物",
+        "sector": "新消费",
+        "aliases": [],
+        "sourceId": "selected-20261012",
+        "addedAt": "2026-10-12",
+        "identitySource": "choice-and-tencent-20261012",
+        "status": "excluded_from_daily",
+        "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。"
+      },
+      {
+        "code": "002891.SZ",
+        "name": "中宠股份",
+        "sector": "新消费",
+        "aliases": [],
+        "sourceId": "selected-20261012",
+        "addedAt": "2026-10-12",
+        "identitySource": "choice-and-tencent-20261012",
+        "status": "excluded_from_daily",
+        "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。"
+      },
+      {
+        "code": "001206.SZ",
+        "name": "依依股份",
+        "sector": "新消费",
+        "aliases": [],
+        "sourceId": "selected-20261012",
+        "addedAt": "2026-10-12",
+        "identitySource": "choice-and-tencent-20261012",
+        "status": "excluded_from_daily",
+        "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。"
+      },
+      {
+        "code": "300673.SZ",
+        "name": "佩蒂股份",
+        "sector": "新消费",
+        "aliases": [],
+        "sourceId": "selected-20261012",
+        "addedAt": "2026-10-12",
+        "identitySource": "choice-and-tencent-20261012",
+        "status": "excluded_from_daily",
+        "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。"
+      },
+      {
+        "code": "001222.SZ",
+        "name": "源飞宠物",
+        "sector": "新消费",
+        "aliases": [],
+        "sourceId": "selected-20261012",
+        "addedAt": "2026-10-12",
+        "identitySource": "choice-and-tencent-20261012",
+        "status": "excluded_from_daily",
+        "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。"
+      },
+      {
+        "code": "688775.SH",
+        "name": "影石创新",
+        "sector": "消费出海",
+        "aliases": [],
+        "sourceId": "selected-20261012",
+        "addedAt": "2026-10-12",
+        "identitySource": "choice-and-tencent-20261012",
+        "status": "excluded_from_daily",
+        "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。"
+      },
+      {
+        "code": "300866.SZ",
+        "name": "安克创新",
+        "sector": "消费出海",
+        "aliases": [],
+        "sourceId": "selected-20261012",
+        "addedAt": "2026-09-08",
+        "identitySource": "existing-pool",
+        "status": "excluded_from_daily",
+        "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。"
+      },
+      {
+        "code": "2698.HK",
+        "name": "乐舒适",
+        "sector": "消费出海",
+        "aliases": [],
+        "sourceId": "selected-20261012",
+        "addedAt": "2026-10-12",
+        "identitySource": "choice-and-tencent-20261012",
+        "status": "excluded_from_daily",
+        "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。"
+      },
+      {
+        "code": "688169.SH",
+        "name": "石头科技",
+        "sector": "消费出海",
+        "aliases": [],
+        "sourceId": "selected-20261012",
+        "addedAt": "2026-10-12",
+        "identitySource": "choice-and-tencent-20261012",
+        "status": "excluded_from_daily",
+        "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。"
+      },
+      {
+        "code": "301606.SZ",
+        "name": "绿联科技",
+        "sector": "消费出海",
+        "aliases": [],
+        "sourceId": "selected-20261012",
+        "addedAt": "2026-10-12",
+        "identitySource": "choice-and-tencent-20261012",
+        "status": "excluded_from_daily",
+        "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。"
+      },
+      {
+        "code": "301381.SZ",
+        "name": "赛维时代",
+        "sector": "消费出海",
+        "aliases": [],
+        "sourceId": "selected-20261012",
+        "addedAt": "2026-09-08",
+        "identitySource": "existing-pool",
+        "status": "excluded_from_daily",
+        "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。"
+      },
+      {
+        "code": "301376.SZ",
+        "name": "致欧科技",
+        "sector": "消费出海",
+        "aliases": [],
+        "sourceId": "selected-20261012",
+        "addedAt": "2026-10-10",
+        "identitySource": "tencent-20261010",
+        "status": "excluded_from_daily",
+        "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。"
+      },
+      {
+        "code": "0625.HK",
+        "name": "SHEIN",
+        "sector": "消费出海",
+        "aliases": [
+          "希音",
+          "希音-W"
+        ],
+        "sourceId": "selected-20261012",
+        "addedAt": "2026-10-12",
+        "identitySource": "choice-and-tencent-20261012",
+        "status": "excluded_from_daily",
+        "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。"
+      }
+    ]
   }
 }

@@ -1,14 +1,59 @@
 {
+  "schemaVersion": 2,
   "date": "2026-10-15",
   "windowStart": "2026-10-14T16:00:00+08:00",
   "cutoff": "2026-10-15T16:00:00+08:00",
-  "sourceThrough": "2026-10-15T14:00:12.328+0800",
+  "sourceThrough": "2026-10-16T17:32:37.642+0800",
   "attachmentCatalog": {
-    "generatedAt": "2026-10-14T17:11:04+08:00",
-    "sourceThrough": "2026-10-14T15:16:32.032+0800"
+    "generatedAt": "2026-10-16T16:37:30.000+08:00",
+    "sourceThrough": "2026-10-16T16:20:35.971+0800",
+    "scan": {
+      "observedAt": "2026-10-16T16:37:30.000+08:00",
+      "sourceGroup": "88888142214212",
+      "sourceName": "水木调研纪要-2.0",
+      "topicsScanned": 690,
+      "topicsInWindow": 669,
+      "topicPages": 23,
+      "topicWindowFrom": "2026-10-14T00:00:00+0800",
+      "topicWindowTo": "2026-10-16T16:20:35.971+0800",
+      "boundaryReachedBeforeWindow": true,
+      "attachmentsObserved": 407,
+      "newRecords": 67,
+      "existingRecordsRefreshed": 330,
+      "occurrenceRecordsAdded": 0,
+      "attachmentContentRead": false,
+      "windowComplete": true,
+      "archiveHasMore": true,
+      "sourceMetadataFields": [
+        "fileId",
+        "topicId",
+        "filename",
+        "extension",
+        "bytes",
+        "attachmentCreatedAt",
+        "topicCreatedAt",
+        "durationSeconds",
+        "downloadCount",
+        "sourceHash",
+        "source",
+        "sourceUrl"
+      ],
+      "windowStart": "2026-10-14T00:00:00+0800",
+      "windowEnd": "2026-10-16T16:37:30.000+08:00",
+      "windowEndDate": "2026-10-16"
+    },
+    "coverageStatus": "complete",
+    "requestedWindowStart": "2026-10-14T16:00:00+08:00",
+    "requestedCutoff": "2026-10-15T16:00:00+08:00"
   },
   "groups": {
     "segments": [
+      {
+        "title": "【金马游乐】再获DD，物理AI之文旅场景放量更进一步1015",
+        "publishedAt": "2026-10-15T15:02:59.194000+08:00",
+        "sector": "酒店旅游",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/82258224212422112"
+      },
       {
         "title": "【国泰海通美护】双十一前瞻：周期收敛、买赠升级，关注大促催化",
         "publishedAt": "2026-10-15T12:22:04.136000+08:00",
@@ -47,8 +92,48 @@
       }
     ],
     "minutes": [],
-    "audio": [],
-    "reports": []
+    "audio": [
+      {
+        "id": "zsxq-file-584141542815514",
+        "title": "古茗调研一线反馈20261014.mp3",
+        "publishedAt": "2026-10-15T14:26:15.277000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/55521554581845424",
+        "status": "未转写",
+        "sector": ""
+      }
+    ],
+    "reports": [
+      {
+        "id": "zsxq-file-214848221182811",
+        "title": "古茗：投资者日：开店节奏调整，同店销售增长及单店盈利仍健康；买入.pdf",
+        "publishedAt": "2026-10-15T12:30:47.538000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/22258224244854451",
+        "status": "仅标题登记",
+        "sector": ""
+      },
+      {
+        "id": "zsxq-file-412828588248428",
+        "title": "361度20261014.pdf",
+        "publishedAt": "2026-10-14T21:56:11.627000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/14425441581242882",
+        "status": "仅标题登记",
+        "sector": ""
+      },
+      {
+        "id": "zsxq-file-181515455125212",
+        "title": "古茗20261014.pdf",
+        "publishedAt": "2026-10-14T21:56:11.627000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/14425441581242882",
+        "status": "仅标题登记",
+        "sector": ""
+      }
+    ]
   },
-  "policy": "仅依据已入库元数据列出标题、发布时间和来源主题；未下载、读取或转写附件，不把研究报告标为纪要。"
+  "policy": "仅依据已入库元数据列出标题、发布时间和来源主题；未下载、读取或转写附件，不把研究报告标为纪要。",
+  "attachmentBackfill": {
+    "at": "2026-10-16T20:19:26+08:00",
+    "originalCutoff": "2026-10-15T16:00:00+08:00",
+    "indexGeneratedAt": "2026-10-16T16:37:30.000+08:00",
+    "reason": "补齐晚到附件索引，保持原日报窗口"
+  }
 }

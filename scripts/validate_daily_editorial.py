@@ -40,10 +40,30 @@ def validate_announcements(d):
    assert row['timePrecision']=='date' and len(row['publishedAt'])==10,'Unknown announcement date precision'
    assert start.date()<=published.date()<=end.date(),'Announcement date outside daily window'
 
+def validate_announcement_monitoring(d):
+ if not d.get('announcementMonitoringRequired'):return
+ m=d.get('announcementMonitoring') or {}
+ assert m.get('checkedAt') and stamp(m['checkedAt']),'Missing announcement monitoring time'
+ assert m.get('windowStart')==d['windowStart'] and m.get('cutoff')==d['cutoff'],'Announcement monitoring window differs'
+ assert m.get('coverageFile')=='data/coverage-companies.json' and m.get('evidenceFile'),'Missing announcement coverage/evidence'
+ assert m.get('status') in ('complete','partial','incomplete','blocked'),'Unknown announcement monitoring status'
+ coverage=json.loads((ROOT/'data/coverage-companies.json').read_text())
+ expected={r['code'] for r in coverage['companies']}
+ checked=m.get('checkedCompanies',[]);excluded=m.get('excludedCompanies',[])
+ codes=[r.get('code') for r in checked+excluded]
+ assert len(codes)==len(set(codes)) and set(codes)==expected,'Announcement monitoring must account for the current coverage directory'
+ assert all(r.get('sources') and r.get('status') for r in checked),'Missing per-company source/check result'
+ assert all(r.get('reason') for r in excluded),'Missing daily-scope exclusion reason'
+ failed=m.get('failedCompanies',[])
+ assert isinstance(failed,list) and all(r.get('code') in {c['code'] for c in checked} for r in failed),'Invalid failed-company records'
+ if m['status']=='complete':
+  assert not failed and all(r['status']=='complete' for r in checked),'Partial source checks cannot be reported as complete'
+
 def validate(d):
  assert d.get('publicationStatus')!='blocked','Editorial has unresolved publication blockers'
  validate_industry_updates(d)
  validate_announcements(d)
+ validate_announcement_monitoring(d)
  assert d['schemaVersion']==2,'Expected editorial v2'
  cutoff=stamp(d['cutoff']);assert cutoff and cutoff.date().isoformat()==d['date']
  if (cutoff.hour,cutoff.minute)!=(16,0):
@@ -81,6 +101,10 @@ if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--date',required=True);p.add_argument('--check-resources',action='store_true',help='Compare this publication with the current local source metadata; do not use for frozen historical snapshots');a=p.parse_args()
  d=json.loads((ROOT/'data/daily/onepage'/f'{a.date}.json').read_text())
  print('Editorial valid:',validate(d),'characters')
+ if d.get('announcementMonitoringRequired'):
+  proof=(ROOT/d['announcementMonitoring']['evidenceFile']).resolve()
+  assert proof.is_relative_to((ROOT/'data/daily/evidence').resolve()) and proof.is_file(),'Missing announcement monitoring evidence file'
+  assert json.loads(proof.read_text()).get('announcementMonitoring')==d['announcementMonitoring'],'Announcement monitoring is not backed by its saved receipt'
  for row in d.get('companyAnnouncements',[]):
   proof=(ROOT/row['evidenceFile']).resolve()
   assert proof.is_relative_to((ROOT/'data/daily/evidence').resolve()) and proof.is_file(),'Missing announcement evidence file'
