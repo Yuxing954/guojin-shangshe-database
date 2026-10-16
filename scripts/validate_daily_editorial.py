@@ -14,8 +14,35 @@ def validate_industry_updates(d):
   t=stamp(published)
   assert t and start<t<=end,'Industry update outside publication window'
 
+def validate_announcements(d):
+ rows=d.get('companyAnnouncements',[])
+ assert isinstance(rows,list),'Company announcements must be an array'
+ if not rows:return
+ coverage=json.loads((ROOT/'data/coverage-companies.json').read_text())
+ codes={r['code'] for r in coverage['companies']}
+ end=stamp(d['cutoff']);start=stamp(d.get('windowStart')) or end-dt.timedelta(hours=window_hours(end))
+ seen=set()
+ for row in rows:
+  for key in ('company','code','title','category','publishedAt','timePrecision','summary','impact','source','sourceType','url','checkedAt','evidenceFile'):
+   assert isinstance(row.get(key),str) and row[key].strip(),'Missing announcement field: '+key
+  assert row['code'] in codes,'Announcement company is outside the coverage directory'
+  assert not is_ecommerce_topic(row['company']+' '+row['title']),'Ecommerce is excluded from daily announcements'
+  assert row.get('verified') is True,'Unverified announcement cannot be published'
+  assert row['sourceType'] in ('exchange','company','regulator'),'Announcement requires an original disclosure source'
+  assert row['url'].startswith('https://'),'Announcement needs an original HTTPS URL'
+  identity=(row['code'],row['url'].split('#')[0].split('?')[0]);assert identity not in seen,'Duplicate announcement';seen.add(identity)
+  published=stamp(row['publishedAt']);checked=stamp(row['checkedAt'])
+  assert published and checked and checked>=published,'Invalid announcement publication/check time'
+  if row['timePrecision']=='timestamp':
+   assert len(row['publishedAt'])>10 and (row['publishedAt'].endswith('Z') or '+' in row['publishedAt'][10:]),'Announcement timestamp must include a timezone'
+   assert start<published<=end,'Announcement outside daily window'
+  else:
+   assert row['timePrecision']=='date' and len(row['publishedAt'])==10,'Unknown announcement date precision'
+   assert start.date()<=published.date()<=end.date(),'Announcement date outside daily window'
+
 def validate(d):
  validate_industry_updates(d)
+ validate_announcements(d)
  assert d['schemaVersion']==2,'Expected editorial v2'
  cutoff=stamp(d['cutoff']);assert cutoff and cutoff.date().isoformat()==d['date']
  if (cutoff.hour,cutoff.minute)!=(16,0):
@@ -53,6 +80,11 @@ if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--date',required=True);p.add_argument('--check-resources',action='store_true',help='Compare this publication with the current local source metadata; do not use for frozen historical snapshots');a=p.parse_args()
  d=json.loads((ROOT/'data/daily/onepage'/f'{a.date}.json').read_text())
  print('Editorial valid:',validate(d),'characters')
+ for row in d.get('companyAnnouncements',[]):
+  proof=(ROOT/row['evidenceFile']).resolve()
+  assert proof.is_relative_to((ROOT/'data/daily/evidence').resolve()) and proof.is_file(),'Missing announcement evidence file'
+  saved=json.loads(proof.read_text()).get('companyAnnouncements',[])
+  assert any(x.get('url')==row['url'] and x.get('code')==row['code'] for x in saved),'Announcement is not linked to its source evidence'
  if d.get('allSegmentsListed'):
   resources=json.loads((ROOT/'data/daily/resources'/f'{a.date}.json').read_text())
   expected={normalize_url(x['url']) for x in resources['groups']['segments']}
