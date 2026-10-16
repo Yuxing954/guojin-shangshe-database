@@ -58,6 +58,7 @@
   function saveState() { var saved = Object.assign({}, state, { week: followLatest ? 'latest' : state.week }); history.replaceState(null, '', '#' + new URLSearchParams(saved).toString()); }
   function switchView(view) {
     state.view = view;
+    $('weekly-export').hidden = view !== 'overview';
     document.querySelectorAll('.hd-tab').forEach(function (b) { var active = b.dataset.view === view; b.classList.toggle('active', active); b.setAttribute('aria-pressed', active); });
     document.querySelectorAll('.hd-view').forEach(function (s) { s.hidden = s.id !== 'view-' + view; });
     refresh();
