@@ -13,6 +13,19 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
     assert.equal(await page.locator('#metric-list .macro-item').count(),17);assert.match(await page.locator('#overview-meta').innerText(),/17\/17/);
     assert.ok(!requests.some(url=>url.includes('predictions.json')));assert.match(await page.locator('#kpi-grid').innerText(),/50.1/);
     console.log('Initial local load including history:',Date.now()-start,'ms');
+    async function checkCardGeometry(){
+      const boxes=await page.locator('#kpi-grid .macro-kpi').evaluateAll(nodes=>nodes.map(node=>{
+        const b=node.getBoundingClientRect();
+        const reading=node.querySelector('.macro-reading-row').getBoundingClientRect(),unit=node.querySelector('.macro-kpi-reading small').getBoundingClientRect();
+        return {width:b.width,height:b.height,readingTop:reading.top-b.top,unitFits:unit.bottom<=reading.bottom+1,overflow:node.scrollHeight>node.clientHeight+1};
+      }));
+      assert.equal(boxes.length,6);
+      assert.ok(Math.max(...boxes.map(b=>b.width))-Math.min(...boxes.map(b=>b.width))<=1,JSON.stringify(boxes));
+      assert.ok(Math.max(...boxes.map(b=>b.height))-Math.min(...boxes.map(b=>b.height))<=1,JSON.stringify(boxes));
+      assert.ok(boxes.every(b=>!b.overflow&&b.unitFits),'card content clipped: '+JSON.stringify(boxes));
+      assert.ok(Math.max(...boxes.map(b=>b.readingTop))-Math.min(...boxes.map(b=>b.readingTop))<=1,'readings are misaligned: '+JSON.stringify(boxes));
+    }
+    await checkCardGeometry();
     assert.equal(await page.locator('.macro-topic').count(),3);for(const group of await page.locator('.macro-topic').all())assert.equal(await group.locator('.macro-kpi').count(),2);
     assert.equal(await page.locator('#recent-releases,#trend-presets,#mode,.macro-history,.macro-method,.macro-forecast-detail,#forecast-overview').count(),0);
     async function checkPlotWidth(){
@@ -44,7 +57,9 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
     await page.locator('[data-study=overview]').click();await page.locator('[data-kpi="us-cpi"]').click();assert.equal(await page.locator('.macro-coverage').count(),0);
     assert.equal(await page.locator('#comparison').count(),0);
     await page.locator('[data-kpi="us-treasury10"]').click();await page.locator('#years').selectOption('0');assert.ok(await page.locator('#primary-chart [data-chart-point]').count()<=122);
-    for(const width of [1920,1440,1024,768,390]){await page.setViewportSize({width,height:1000});await page.waitForTimeout(250);await checkPlotWidth();assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'overflow at '+width);}
+    for(const width of [1920,1440,1024,768,390]){await page.setViewportSize({width,height:1000});await page.waitForTimeout(250);await checkPlotWidth();await checkCardGeometry();assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'overflow at '+width);}
+    await page.locator('[data-country="CN"]').click();
+    for(const width of [1920,1440,1024,768,390]){await page.setViewportSize({width,height:1000});await page.waitForTimeout(250);await checkCardGeometry();}
     await page.goto(base+'/macro.html?country=CN&indicator=cn-cpi&comparison=cn-ppi&years=1');await ready();assert.equal(new URL(page.url()).searchParams.has('comparison'),false);
     if(out)await page.screenshot({path:path.join(out,'宏观核心指标-手机.png'),fullPage:true});
     await page.locator('[data-view="predictions"]').click();await page.waitForFunction(()=>document.querySelector('#prediction-list .forecast-event'));assert.ok(requests.some(url=>url.includes('predictions.json')));

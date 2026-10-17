@@ -1,10 +1,29 @@
-import copy,json,sys,unittest
+import copy,json,sys,unittest,os,tempfile
+from unittest.mock import patch
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'update'))
 import macro_auto as M
 from test_macro_due import DueWindowTests
 
 class AutomaticMacroTests(unittest.TestCase):
+    def test_default_choice_config_and_explicit_override(self):
+        with tempfile.TemporaryDirectory() as folder:
+            config=Path(folder)/'config.toml';config.write_text('',encoding='utf-8')
+            with patch.dict(os.environ,{'CODEX_HOME':folder,'EM_API_KEY':''}),patch.object(M,'configured_key',return_value='test-key') as get:
+                self.assertEqual(M.choice_key(),'test-key');get.assert_called_once_with(config)
+            explicit=Path(folder)/'explicit.toml'
+            with patch.object(M,'configured_key',return_value='test-key') as get:
+                M.choice_key(explicit);get.assert_called_once_with(explicit)
+            with patch.dict(os.environ,{'CODEX_HOME':folder,'EM_API_KEY':'test-env'}),patch.object(M,'configured_key',return_value='test-env') as get:
+                M.choice_key();get.assert_called_once_with(None)
+    def test_refresh_error_classification_never_exposes_provider_or_secret_prose(self):
+        auth=M.failure_info(ValueError('Choice credentials missing'))
+        self.assertEqual(auth['errorCode'],'credentials_missing');self.assertIn('授权',auth['reason'])
+        self.assertEqual(M.failure_info(ValueError('Indicator code mismatch'))['errorCode'],'indicator_code')
+        self.assertEqual(M.failure_info(M.RateLimitError('private-provider-message'))['errorCode'],'rate_limit')
+        self.assertEqual(M.failure_info(TimeoutError('private-url'))['errorCode'],'timeout')
+        self.assertNotIn('private-secret',json.dumps(M.failure_info(ValueError('private-secret'))))
+
     def setUp(self):
         self.spec=dict(id='test',originalName='中国:PPI:全部工业品:同比',publisher='国家统计局',unit='%',kind='rate',frequency='monthly',start='2025-01-01',code='CODE',offset=-100)
         self.table=dict(columns=['指标','数据来源','2025-01','2025-03'],items=[[self.spec['originalName'],'国家统计局','100','102.1']],meta={'jumpUrlList':[{'choiceUrl':'https://choicew2z.eastmoney.com/dataDisplay/macroEDB/#/index?macroids=CODE'}]})

@@ -13,6 +13,38 @@ ROOT=Path(__file__).resolve().parents[1]
 DATA=ROOT/'data/macro'
 class RateLimitError(ValueError):pass
 
+
+def choice_key(config_path=None):
+    """Use the existing local Codex credential provider when no CLI path is supplied."""
+    if config_path is None and not os.getenv('EM_API_KEY','').strip():
+        candidate=Path(os.getenv('CODEX_HOME') or Path.home()/'.codex')/'config.toml'
+        if candidate.is_file():config_path=candidate
+    return configured_key(config_path)
+
+def failure_info(exc):
+    """Only reviewed error labels may enter published data; never exception prose."""
+    messages={
+        'Choice credentials missing':('credentials_missing','本机未读取到Choice授权配置'),
+        'Credential helper failed':('credentials_helper','本机Choice授权读取失败'),
+        'No exact reviewed indicator':('indicator_not_found','来源未返回完全匹配的指标'),
+        'Indicator code mismatch':('indicator_code','来源指标代码与审定记录不符'),
+        'Reviewed series definition changed':('definition_changed','指标定义或映射发生变化，待复核'),
+        'Source dimensions differ':('source_shape','来源表格行列不一致'),
+        'Conflicting observations':('conflicting_values','来源对同一期间返回冲突值'),
+        'Observation outside reviewed bounds':('out_of_bounds','来源数值超出审定范围'),
+        'Untrusted source URL':('source_url','来源链接未通过校验'),
+        'Unknown numeric representation':('numeric_format','来源数值格式无法识别'),
+        'Boolean numeric value':('numeric_format','来源数值类型不符'),
+        'Nonfinite value':('numeric_format','来源返回非有限数值'),
+        'Provider business error':('provider_error','Choice接口返回业务错误'),
+        'MCP protocol error':('provider_protocol','Choice连接协议错误'),
+        'Missing or ambiguous MCP response':('provider_protocol','Choice响应缺失或不完整'),
+    }
+    if isinstance(exc,RateLimitError):code,reason='rate_limit','Choice请求频率受限'
+    elif isinstance(exc,TimeoutError):code,reason='timeout','Choice请求超时'
+    else:code,reason=messages.get(str(exc),('refresh_failed','数据更新未完成，需检查来源或连接'))
+    return {'errorCode':code,'reason':reason,'error':reason+'，保留已有历史。'}
+
 def compact_json(path,data):
     path.parent.mkdir(parents=True,exist_ok=True)
     fd,name=tempfile.mkstemp(prefix='.macro-',dir=path.parent)
@@ -225,7 +257,7 @@ def main():
             print(json.dumps({'noDataFetch':True,'dueScopes':plan['dueScopes']},ensure_ascii=False,separators=(',',':')));return 0
     previous=json.loads(target.read_text(encoding='utf-8')) if target.exists() else {'series':{}}
     values=dict(previous['series'])
-    key=configured_key(args.codex_config) if entries else None
+    key=choice_key(args.codex_config) if entries else None
     receipts=[]
     if args.receipts_dir:
         for path in args.receipts_dir.glob('choice-*.json'):
@@ -276,9 +308,10 @@ def main():
                 if plan is not None:
                     d=date.fromisoformat(args.cutoff);ledger=due.load_ledger();ledger.setdefault('choice',{})[spec['id']]=due.window_key(d,due.group_for(spec));due.save_ledger(ledger)
             except Exception as exc:
-                safe_reasons={'No exact reviewed indicator','MCP protocol error','Missing or ambiguous MCP response','Provider business error','Reviewed series definition changed','Indicator code mismatch'}
-                errors.append({'id':spec['id'],'errorType':type(exc).__name__,'reason':str(exc) if str(exc) in safe_reasons else '接口或数据校验失败'})
-                values[spec['id']]={**values.get(spec['id'],{}),'status':'error','checkedAt':now,'error':'接口返回未通过指标与口径校验，保留已有历史。'}
+                info=failure_info(exc)
+                errors.append({'id':spec['id'],'errorType':type(exc).__name__,'errorCode':info['errorCode'],'reason':info['reason']})
+                values[spec['id']]={**values.get(spec['id'],{}),'status':'error','checkedAt':now,'errorCode':info['errorCode'],'error':info['error']}
+
     if not args.skip_official and not args.consumer_only:
         for name,fn in [('bea-real-gdp',lambda:{'us-gdp-quarter':bea_gdp(args.cutoff)}),('census-housing',lambda:{'us-housing-starts':census_housing(args.cutoff)}),('bls-history',lambda:bls_history(json.loads((DATA/'catalog.json').read_text(encoding='utf-8')),args.cutoff))]:
             due_sources=[]
