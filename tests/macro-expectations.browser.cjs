@@ -19,7 +19,7 @@ const server=http.createServer((req,res)=>{const file=path.resolve(root,'.'+deco
       assert.equal(await page.locator('.macro-forecast-latest,.macro-forecast-history').count(),0);
       assert.ok(await page.locator('#primary-chart svg').isVisible());
       const download=page.waitForEvent('download');await page.locator('#download').click();
-      const csv=fs.readFileSync(await(await download).path(),'utf8');assert.ok(csv.includes('\uFEFF')||csv.includes('数据'));assert.ok(csv.split('\\r\\n').length>2);
+      const csv=fs.readFileSync(await(await download).path(),'utf8');assert.match(csv,/202\d-[0-9Q]/);assert.ok(csv.split(/\r?\n/).length>2);
 
     }
     for(const width of [1440,768,390]){await page.setViewportSize({width,height:1000});await page.waitForTimeout(200);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'overflow at '+width);}
