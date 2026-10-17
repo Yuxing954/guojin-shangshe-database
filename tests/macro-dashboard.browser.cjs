@@ -25,6 +25,7 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
       assert.ok(measured.plotWidth/measured.width>.65,'plot is squeezed: '+JSON.stringify(measured));
       assert.ok(measured.height>=250&&measured.height<=330,'plot height: '+JSON.stringify(measured));
     }
+    assert.equal(await page.locator('#detail .site-value-option').count(),0);
     await checkPlotWidth();
     if(out){fs.mkdirSync(out,{recursive:true});await page.evaluate(()=>scrollTo(0,0));await page.screenshot({path:path.join(out,'宏观晨报-首屏.png'),fullPage:false});}
     await page.evaluate(()=>scrollTo(0,0));const beforeKpiClick=await page.evaluate(()=>scrollY);await page.locator('[data-kpi="cn-cpi"]').click();assert.match(await page.locator('#metric-title').innerText(),/CPI/);assert.equal(await page.evaluate(()=>scrollY),beforeKpiClick,'selecting a KPI should not jump to the trend detail');assert.equal(await page.locator('#comparison').count(),0);assert.equal(await page.locator('#comparison-chart').count(),0);
