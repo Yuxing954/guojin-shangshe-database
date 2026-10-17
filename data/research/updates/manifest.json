@@ -1,10 +1,10 @@
 {
-  "syncedAt": "2026-10-17T05:58:03Z",
+  "syncedAt": "2026-10-17T08:57:06Z",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
-  "coverageFrom": "2026-10-17T11:24:02.269+0800",
-  "coverageTo": "2026-10-17T13:18:22.308+0800",
-  "oldestFetched": "2026-10-17T11:18:56.673+0800",
+  "coverageFrom": "2026-10-17T13:18:22.308+0800",
+  "coverageTo": "2026-10-17T15:58:34.944+0800",
+  "oldestFetched": "2026-10-17T11:22:46.002+0800",
   "fetchedTopics": 30,
   "files": {
     "views": [
@@ -56,6 +56,7 @@
       "data/research/updates/2026-10-14-1258-views.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-10-17-1657-all_views.csv",
       "data/research/updates/2026-10-17-1201-all_views.csv",
       "data/research/updates/2026-10-16-2359-all_views.csv",
       "data/research/updates/2026-10-16-1802-all_views.csv",
@@ -185,18 +186,18 @@
   },
   "counts": {
     "views": 280,
-    "all_views": 5310,
+    "all_views": 5314,
     "minutes": 101
   },
   "latest": {
     "views": "2026-10-17 11:22",
-    "all_views": "2026-10-17 11:24",
+    "all_views": "2026-10-17 15:58",
     "minutes": "2026-10-12T01:07:33"
   },
   "excluded": {
-    "附件标题": 104,
+    "附件标题": 113,
     "图片无可读正文": 33,
-    "无实质观点正文": 30
+    "无实质观点正文": 34
   },
   "lastClassificationCorrection": {
     "date": "2026-10-13",
@@ -5733,114 +5734,148 @@
     ]
   },
   "lastRun": {
-    "runId": "2026-10-17-1358",
+    "runId": "2026-10-17-1657",
     "sourceGroup": "88888142214212",
     "sourceName": "水木调研纪要-2.0",
-    "previousCoverageTo": "2026-10-17T11:24:02.269+0800",
-    "coverageTo": "2026-10-17T13:18:22.308+0800",
-    "oldestFetched": "2026-10-17T11:18:56.673+0800",
+    "previousCoverageTo": "2026-10-17T13:18:22.308+0800",
+    "coverageTo": "2026-10-17T15:58:34.944+0800",
+    "oldestFetched": "2026-10-17T11:22:46.002+0800",
     "sourceTopicsFetched": 30,
     "pageRowsFetched": 30,
     "uniquePageTopics": 30,
-    "sourceTopicsInCoverage": 7,
+    "sourceTopicsInCoverage": 18,
     "added": {
       "views": 0,
-      "all_views": 0
+      "all_views": 4
     },
-    "duplicates": 0,
-    "duplicateTopicIds": [],
+    "duplicates": 1,
+    "duplicateTopicIds": [
+      "14425448288412552"
+    ],
     "excludedTopics": [
       {
-        "topicId": "55521558288112524",
-        "createdAt": "2026-10-17T13:18:22.308+0800",
+        "topicId": "14425448288481482",
+        "createdAt": "2026-10-17T14:19:17.401+0800",
         "reason": "正文仅附件标签占位，附件为报告文件；未读取附件内容"
       },
       {
-        "topicId": "45548551411884488",
-        "createdAt": "2026-10-17T13:16:06.848+0800",
-        "reason": "正文仅“美国股票：本周回顾”，另有图片附件未读取；不据附件推断观点"
-      },
-      {
-        "topicId": "82258221511584512",
-        "createdAt": "2026-10-17T12:52:38.367+0800",
+        "topicId": "45548551411512818",
+        "createdAt": "2026-10-17T14:18:43.775+0800",
         "reason": "正文仅附件标签占位，附件为报告文件；未读取附件内容"
       },
       {
-        "topicId": "14425448288251242",
-        "createdAt": "2026-10-17T12:52:24.522+0800",
+        "topicId": "82258221511214842",
+        "createdAt": "2026-10-17T14:18:32.059+0800",
         "reason": "正文仅附件标签占位，附件为报告文件；未读取附件内容"
       },
       {
-        "topicId": "14425448288254852",
-        "createdAt": "2026-10-17T12:51:40.814+0800",
+        "topicId": "55521558288584284",
+        "createdAt": "2026-10-17T14:18:02.916+0800",
         "reason": "正文仅附件标签占位，附件为报告文件；未读取附件内容"
       },
       {
-        "topicId": "22258221511582411",
-        "createdAt": "2026-10-17T12:51:22.810+0800",
+        "topicId": "14425448288481212",
+        "createdAt": "2026-10-17T14:17:56.432+0800",
         "reason": "正文仅附件标签占位，附件为报告文件；未读取附件内容"
       },
       {
-        "topicId": "14425448288254482",
-        "createdAt": "2026-10-17T12:50:50.425+0800",
+        "topicId": "45548551411518148",
+        "createdAt": "2026-10-17T14:16:37.182+0800",
         "reason": "正文仅附件标签占位，附件为报告文件；未读取附件内容"
+      },
+      {
+        "topicId": "14425448288485482",
+        "createdAt": "2026-10-17T14:16:06.251+0800",
+        "reason": "正文仅附件标签占位，附件为报告文件；未读取附件内容"
+      },
+      {
+        "topicId": "45548551411521558",
+        "createdAt": "2026-10-17T14:13:44.844+0800",
+        "reason": "正文仅附件标签占位，附件为报告文件；未读取附件内容"
+      },
+      {
+        "topicId": "82258221511241882",
+        "createdAt": "2026-10-17T14:13:29.254+0800",
+        "reason": "正文仅附件标签占位，附件为报告文件；未读取附件内容"
+      },
+      {
+        "topicId": "82258221511242252",
+        "createdAt": "2026-10-17T14:11:33.790+0800",
+        "reason": "正文只有价格周报标题与外链；未读取外链内容，无法确认具体观点"
+      },
+      {
+        "topicId": "22258221511248581",
+        "createdAt": "2026-10-17T14:10:59.090+0800",
+        "reason": "正文仅外链标题，没有可确认的观点正文"
+      },
+      {
+        "topicId": "45548551411528448",
+        "createdAt": "2026-10-17T14:10:48.148+0800",
+        "reason": "正文为报告标题与外链，没有可确认的观点正文；未读取外链内容"
+      },
+      {
+        "topicId": "14425448288448842",
+        "createdAt": "2026-10-17T14:08:39.052+0800",
+        "reason": "正文仅有标题，缺少可归档的观点内容"
       }
     ],
     "files": {
       "views": [],
-      "all_views": []
+      "all_views": [
+        "data/research/updates/2026-10-17-1657-all_views.csv"
+      ]
     },
     "pagination": {
       "pages": 1,
       "limit": 30,
       "nextEndTimes": [
-        "2026-10-16T23:41:25.793+0800"
+        "2026-10-17T11:22:46.002+0800"
       ],
       "uniquePageTopics": 30,
       "overlapTopicIds": [],
       "stoppedWhenPageReachedCoverage": true,
-      "coverageBoundarySeen": "2026-10-17T11:24:02.269+0800"
+      "coverageBoundarySeen": "2026-10-17T13:18:22.308+0800"
     },
     "dedupCheck": {
       "algorithm": "scripts/build_research_shards.py keys(row)",
-      "candidateKeys": 0,
-      "candidateBuckets": 0,
-      "duplicateKeys": 0,
-      "duplicateTopicIds": [],
-      "priorUnindexedBatchCheck": {
-        "coverageFrom": "2026-10-16T23:44:03.277+0800",
-        "coverageTo": "2026-10-17T11:24:02.269+0800",
-        "candidateKeys": 64,
-        "candidateBuckets": 58,
-        "duplicateKeys": 0
-      }
+      "candidateKeys": 20,
+      "candidateBuckets": 19,
+      "duplicateKeys": 2,
+      "duplicateTopicIds": [
+        "14425448288412552"
+      ]
     },
     "briefChanges": {
       "added": 0,
       "updated": 0,
       "expiredRemoved": 0
     },
-    "notes": "从最近主题连续读取30条，最早主题已早于此前coverageTo；窗口内7个新主题正文均无可归档市场观点，含6个仅附件帖子及1个只有周评标题且带未读取图片的主题。附件/图片均未下载或读取。"
+    "expiredBriefIds": [],
+    "notes": "新增4条其他市场观点（Anthropic AI工作方式、开源模型令牌与支出、PCB产业链、10.16市场策略）；另1条市场评论与已有内容正文重复，未重复写入。9条仅附件帖子及4条只有标题/链接的主题不纳入，未读取附件或外链正文。商社观点摘要无变化，最近3个北京时间自然日内摘要无过期。"
   },
   "lastUpdateRecord": {
-    "runId": "2026-10-17-1201",
+    "runId": "2026-10-17-1657",
     "sourceGroup": "88888142214212",
     "sourceName": "水木调研纪要-2.0",
-    "previousCoverageTo": "2026-10-16T23:44:03.277+0800",
-    "coverageTo": "2026-10-17T11:24:02.269+0800",
-    "added": 16,
+    "previousCoverageTo": "2026-10-17T13:18:22.308+0800",
+    "coverageTo": "2026-10-17T15:58:34.944+0800",
+    "added": 4,
     "updated": 0,
     "expiredRemoved": 0,
     "sourceTopicIds": [
-      "45548551412588128",
-      "55521558284512814"
+      "55521545428414454",
+      "22258242451484281",
+      "45548551411525248",
+      "55521558288542244"
     ],
-    "duplicateTopicIds": [],
+    "duplicateTopicIds": [
+      "14425448288412552"
+    ],
     "briefChanges": {
-      "added": 2,
+      "added": 0,
       "updated": 0,
       "expiredRemoved": 0
     },
-    "notes": "新增商社观点2条、其他市场观点14条；新增来源topic_id均已按dedup索引候选键核对。"
+    "notes": "新增4条其他市场观点；1条同正文记录按dedup索引去重；无商社观点摘要变化。"
   }
 }
