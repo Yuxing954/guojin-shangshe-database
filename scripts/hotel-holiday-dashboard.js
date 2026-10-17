@@ -111,7 +111,7 @@
       return item;
     });
     var host = $('holiday-chart');
-    var result = SiteCharts.drawPaired(host, chartRows, { mode: state.mode, name: title, unit: unit,
+    var result = SiteCharts.drawPaired(host, chartRows, { changeLabels:!!$('holiday-labels')?.checked,valueLabels:!!$('holiday-labels')?.checked, mode: state.mode, name: title, unit: unit,
       changeUnit: changeUnit, changeLabel: changeLabel, precision: 1, gap: 1.5 });
     result.points.forEach(function (point, index) {
       var r = sorted[index], now = metricValue(r, field, false), base = metricValue(r, field, true);
@@ -210,6 +210,7 @@
       return row;
     });
     state.record = record;
+    $('holiday-labels').onchange = function () { renderChart(selectedRecords()); };
     if (!state.rows.length) throw new Error('假期经营数据为空');
     var savedHoliday = new URLSearchParams(location.hash.slice(1));
     $('holiday-select').innerHTML = Object.keys(holidayNames).map(function (id) { return '<option value="' + id + '">' + holidayNames[id] + '</option>'; }).join('');
