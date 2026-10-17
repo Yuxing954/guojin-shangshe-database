@@ -13,3 +13,5 @@
 - 更新沿用现有酒店CSV导入流程。页面直接读取同一CSV，无重复填报或额外构建；公司财报数据保留在重点公司模块。
 
 验证：node scripts/hotel-groups-model.test.cjs；node tests/hotel-groups.browser.cjs。旧财报深链接会规范化为最新集团周度ADR，不显示旧财报值。
+
+新增热度指数、房价指数，分别读取源表入住日期字段 stay_heat_index、stay_price_index，按来源原值保留两位小数。热度指数不解释为OCC；指数同比为同字段上年同周的相对变动，不等于ADR同比。三个原有图表保留，两个指数图直接展开，卡片仍一次显示一项。可视周次统一26WXX，源CSV、URL及同比匹配保留2026WXX。

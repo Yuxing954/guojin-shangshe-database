@@ -3,6 +3,7 @@
   else root.HotelMetrics = factory();
 })(typeof globalThis !== 'undefined' ? globalThis : this, function () {
   'use strict';
+  function weekLabel(value) { return String(value == null ? '' : value).replace(/\b\d{2}(\d{2}W\d{2})\b/g, '$1'); }
   function num(value) {
     if (value == null || String(value).trim() === '') return null;
     var n = Number(value);
@@ -105,7 +106,7 @@
     var valid = kept.flatMap(function (s) { return s.pts.filter(function (p) { return num(p.y) != null; }).map(function (p) { return p.x; }); }).sort();
     return valid.length ? kept.map(function (s) { return Object.assign({}, s, { pts: s.pts.filter(function (p) { return p.x >= valid[0] && p.x <= valid[valid.length - 1]; }) }); }) : [];
   }
-  return { num: num, csv: csv, index: index, metric: metric, change: change, priorPeriod: priorPeriod,
+  return { weekLabel: weekLabel, num: num, csv: csv, index: index, metric: metric, change: change, priorPeriod: priorPeriod,
     sorted: sorted, windowRows: windowRows, rank: rank, validShares: validShares, investmentWindow: investmentWindow,
     supply15Plus: supply15Plus, chartSeries: chartSeries };
 });
