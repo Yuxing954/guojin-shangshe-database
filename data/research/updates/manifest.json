@@ -1,10 +1,10 @@
 {
-  "syncedAt": "2026-10-17T10:58:08Z",
+  "syncedAt": "2026-10-17T16:57:14Z",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
-  "coverageFrom": "2026-10-17T15:58:34.944+0800",
-  "coverageTo": "2026-10-17T18:50:25.449+0800",
-  "oldestFetched": "2026-10-17T13:18:22.308+0800",
+  "coverageFrom": "2026-10-17T18:50:25.449+0800",
+  "coverageTo": "2026-10-17T19:18:50.750+0800",
+  "oldestFetched": "2026-10-17T14:11:33.790+0800",
   "fetchedTopics": 30,
   "files": {
     "views": [
@@ -5746,83 +5746,105 @@
     ]
   },
   "lastRun": {
-    "runId": "2026-10-17-1858",
+    "runId": "2026-10-18-0057",
     "sourceGroup": "88888142214212",
     "sourceName": "水木调研纪要-2.0",
-    "previousCoverageTo": "2026-10-17T15:58:34.944+0800",
-    "coverageTo": "2026-10-17T18:50:25.449+0800",
-    "oldestFetched": "2026-10-17T13:18:22.308+0800",
+    "previousCoverageTo": "2026-10-17T18:50:25.449+0800",
+    "coverageTo": "2026-10-17T19:18:50.750+0800",
+    "oldestFetched": "2026-10-17T14:11:33.790+0800",
     "sourceTopicsFetched": 30,
     "pageRowsFetched": 30,
     "uniquePageTopics": 30,
-    "sourceTopicsInCoverage": 11,
+    "sourceTopicsInCoverage": 6,
     "added": {
       "views": 0,
-      "all_views": 11
+      "all_views": 0
     },
     "duplicates": 0,
     "duplicateTopicIds": [],
-    "excludedTopics": [],
+    "excludedTopics": [
+      {
+        "topicId": "82258242485115882",
+        "createdAt": "2026-10-17T19:18:50.750+0800",
+        "reason": "正文仅附件标签占位；未读取附件内容，无法确认市场观点"
+      },
+      {
+        "topicId": "82258242485188852",
+        "createdAt": "2026-10-17T19:15:30.659+0800",
+        "reason": "正文仅附件标签占位；未读取附件内容，无法确认市场观点"
+      },
+      {
+        "topicId": "55521545412812844",
+        "createdAt": "2026-10-17T19:14:55.354+0800",
+        "reason": "正文仅附件标签占位；未读取附件内容，无法确认市场观点"
+      },
+      {
+        "topicId": "14425414152821412",
+        "createdAt": "2026-10-17T19:08:44.919+0800",
+        "reason": "正文仅附件标签占位；未读取附件内容，无法确认市场观点"
+      },
+      {
+        "topicId": "55521545412825584",
+        "createdAt": "2026-10-17T19:07:51.150+0800",
+        "reason": "正文仅附件标签占位；未读取附件内容，无法确认市场观点"
+      },
+      {
+        "topicId": "45548525284145458",
+        "createdAt": "2026-10-17T19:06:36.141+0800",
+        "reason": "正文仅附件标签占位；未读取附件内容，无法确认市场观点"
+      }
+    ],
     "files": {
       "views": [],
-      "all_views": [
-        "data/research/updates/2026-10-17-1858-all_views.csv"
-      ]
+      "all_views": []
     },
     "pagination": {
       "pages": 1,
       "limit": 30,
       "nextEndTimes": [
-        "2026-10-17T13:18:22.308+0800"
+        "2026-10-17T14:11:33.790+0800"
       ],
       "uniquePageTopics": 30,
       "overlapTopicIds": [],
       "stoppedWhenPageReachedCoverage": true,
-      "coverageBoundarySeen": "2026-10-17T13:18:22.308+0800"
+      "coverageBoundarySeen": "2026-10-17T14:11:33.790+0800"
     },
     "dedupCheck": {
       "algorithm": "scripts/build_research_shards.py keys(row)",
-      "candidateKeys": 44,
-      "candidateBuckets": 38,
+      "candidateKeys": 0,
+      "candidateBuckets": 0,
       "duplicateKeys": 0,
       "duplicateTopicIds": []
     },
     "briefChanges": {
       "added": 0,
       "updated": 0,
-      "expiredRemoved": 0
+      "expiredRemoved": 4
     },
-    "expiredBriefIds": [],
-    "notes": "新增11条其他市场观点，均有可读取的实质正文；候选dedup桶未命中重复。未读取附件或外链内容；摘要无商社相关新增或到期清理。"
+    "expiredBriefIds": [
+      "hanshow-smart-retail-20261015",
+      "huiquan-beer-channel-upgrade-20261015",
+      "jinma-tourism-robots-20261011",
+      "us-holiday-toy-assortment-20261015"
+    ],
+    "notes": "无新增可确认市场观点；6条新主题仅附件占位正文，未读取附件。清理4条早于最近3个北京时间自然日窗口的摘要。"
   },
   "lastUpdateRecord": {
-    "runId": "2026-10-17-1858",
+    "runId": "2026-10-18-0057",
     "sourceGroup": "88888142214212",
     "sourceName": "水木调研纪要-2.0",
-    "previousCoverageTo": "2026-10-17T15:58:34.944+0800",
-    "coverageTo": "2026-10-17T18:50:25.449+0800",
-    "added": 11,
+    "previousCoverageTo": "2026-10-17T18:50:25.449+0800",
+    "coverageTo": "2026-10-17T19:18:50.750+0800",
+    "added": 0,
     "updated": 0,
-    "expiredRemoved": 0,
-    "sourceTopicIds": [
-      "82258242485448112",
-      "14425414152115852",
-      "82258242485448422",
-      "22258242485448211",
-      "55521545412441514",
-      "22258242485448251",
-      "22258242485448821",
-      "82258242485448822",
-      "55521545412442154",
-      "45548525284224858",
-      "55521545412442214"
-    ],
+    "expiredRemoved": 4,
+    "sourceTopicIds": [],
     "duplicateTopicIds": [],
     "briefChanges": {
       "added": 0,
       "updated": 0,
-      "expiredRemoved": 0
+      "expiredRemoved": 4
     },
-    "notes": "新增11条其他市场观点；未发现候选键重复，无商社观点摘要变化。"
+    "notes": "无新增可确认市场观点；6条新主题仅附件占位正文，未读取附件。清理4条早于最近3个北京时间自然日窗口的摘要。"
   }
 }
