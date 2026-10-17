@@ -24,6 +24,8 @@ jobs:
           node --check scripts/site-charts.js
           node --check scripts/hotel-dashboard.js
           node --check scripts/quotes.js
+      - name: Check scales and numeric integrity
+        run: node --test tests/site-paired.test.cjs tests/chart-axis.test.cjs
       - name: Install isolated browser runtime
         run: |
           npm install --prefix /tmp/chart-values-test playwright@1.58.2

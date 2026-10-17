@@ -277,7 +277,7 @@ function paired(rows,opt={}){
   const seriesCount=Math.max(...normalized.map(r=>r.values.length)),barWidth=Math.min(44,width*delta/(xmax-xmin+delta)*.72)/seriesCount;
   const points=[];
   normalized.forEach((r,ri)=>{
-    const text=r.period+'\n'+r.values.map(s=>(seriesCount>1?s.name+'：':'')+(showValue?fmt(s.value)+(Number.isFinite(s.value)?' '+unit:''):'')+(showValue&&showChange?'  |  ':'')+(showChange?(opt.changeLabel||'同比')+' '+(Number.isFinite(s.change)?new Intl.NumberFormat('zh-CN',{minimumFractionDigits:opt.changePrecision??1,maximumFractionDigits:opt.changePrecision??1}).format(s.change):'—')+(Number.isFinite(s.change)?' '+changeUnit:''):'')).join('\n');
+    const text=r.period+'\n'+r.values.map(s=>(seriesCount>1?s.name+'：':'')+(showValue?fmt(s.value)+(Number.isFinite(s.value)?' '+unit:''):'')+(showValue&&showChange?'  |  ':'')+(showChange?(opt.changeLabel||'同比')+' '+(Number.isFinite(s.change)?new Intl.NumberFormat('zh-CN',{minimumFractionDigits:opt.changePrecision??0,maximumFractionDigits:opt.changePrecision??opt.precision??2}).format(s.change):'—')+(Number.isFinite(s.change)?' '+changeUnit:''):'')).join('\n');
     points.push({x:px(r.x),text,labels:r.values.flatMap((s,si)=>[
       ...(showValue&&Number.isFinite(s.value)?[{x:px(r.x)+(si-(seriesCount-1)/2)*barWidth,y:py(s.value,vd),text:fmt(s.value),kind:'value',color:colors[si%colors.length]}]:[]),
       ...(showChange&&Number.isFinite(s.change)?[{x:px(r.x),y:py(s.change,cd),text:(s.change>0?'+':'')+new Intl.NumberFormat('zh-CN',{minimumFractionDigits:opt.changePrecision??1,maximumFractionDigits:opt.changePrecision??1}).format(s.change)+(changeUnit==='%'?'%':changeUnit==='百分点'?'pct':changeUnit),kind:'change',color:colors[si%colors.length]}]:[])
