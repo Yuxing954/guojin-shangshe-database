@@ -1,0 +1,1 @@
+(function(){'use strict';document.querySelectorAll('[data-group-entry]').forEach(a=>a.addEventListener('click',event=>{event.preventDefault();const u=new URL(a.href,location.href);if(new URLSearchParams(location.search).get('embed')==='1')u.searchParams.set('embed','1');location.href=u.href;}));})();

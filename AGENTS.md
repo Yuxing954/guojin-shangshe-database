@@ -38,3 +38,6 @@
 
 - 核心指标同一屏幕宽度下，全部 KPI 卡片必须等宽等高；日期、状态、预测有无不得改变卡片尺寸或读数位置。
 - 使用固定内容槽位承载可选字段，不截断必要数值或错误状态。修改卡片字段、共享样式后，运行宏观浏览器回归的中美双组及1920/1440/1024/768/390宽度检查，核对卡片边界与内容溢出后再发布。
+
+### 酒店集团看板
+更新 `data/companies/` 中的酒店资料或筛选配置后，运行 `node scripts/build-hotel-groups.cjs`；提交生成的 `data/hotel-groups.json`，再运行 `node scripts/build-hotel-groups.cjs --check` 和 `node scripts/hotel-groups-model.test.cjs`。看板复用该精简数据与集团周度CSV，保留来源核验层级、单季/累计区别及各集团范围，不另行手填数据。

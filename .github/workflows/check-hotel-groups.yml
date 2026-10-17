@@ -1,0 +1,37 @@
+name: Check hotel groups
+on:
+  pull_request:
+    paths:
+      - 'hotel-groups.html'
+      - 'hotel-dashboard.html'
+      - 'hotel-holiday-dashboard.html'
+      - 'scripts/hotel-group*'
+      - 'scripts/build-hotel-groups.cjs'
+      - 'scripts/company-*-model.js'
+      - 'scripts/industry-panels.js'
+      - 'scripts/site-charts.*'
+      - 'data/companies/**'
+      - 'data/hotel-groups.json'
+      - 'data/hotel_group_weekly.csv'
+      - 'tests/hotel-groups.browser.cjs'
+      - '.github/workflows/check-hotel-groups.yml'
+permissions:
+  contents: read
+jobs:
+  hotel-groups:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/build-hotel-groups.cjs --check
+      - run: node scripts/hotel-groups-model.test.cjs
+      - name: Install isolated browser runtime
+        run: |
+          npm install --prefix /tmp/hotel-groups-test playwright@1.58.2
+          /tmp/hotel-groups-test/node_modules/.bin/playwright install --with-deps chromium
+      - name: Check desktop, mobile, source switching and embedded navigation
+        env:
+          NODE_PATH: /tmp/hotel-groups-test/node_modules
+        run: node tests/hotel-groups.browser.cjs
