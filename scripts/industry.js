@@ -3,7 +3,7 @@
   const labels={hotel:'酒店',dutyfree:'免税',gold:'黄金',dining:'餐饮'};
   function select(){
     let key=location.hash.slice(1);
-    if(!labels[key])key='hotel';
+    if(!labels[key] || key==='gold')key='hotel';
     document.title=labels[key]+'行业数据 · 国金商社';
     document.getElementById('sector-tabs').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.key===key)));
     document.getElementById('gold-content').hidden=key!=='gold';
