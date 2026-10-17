@@ -183,7 +183,24 @@
     saved.set('holidayDimension', dimension); saved.set('holidaySegment', state.segment); saved.set('holidayMetric', state.metric); saved.set('holidayMode', state.mode);
     history.replaceState(null, '', location.pathname + location.search + '#' + saved.toString());
   }
+  async function exportHoliday() {
+    var button = $('holiday-export'), label = button.textContent;
+    button.disabled = true; button.textContent = '正在生成…'; $('holiday-export-error').textContent = '';
+    try {
+      var rows = state.rows.slice().sort(function(a,b){return a.holiday_id.localeCompare(b.holiday_id)||a.dimension.localeCompare(b.dimension)||a.segment.localeCompare(b.segment,'zh-CN')||a.period_day-b.period_day;});
+      var X = HotelExcel;
+      var columns=[{label:'假期',width:12},{label:'对比维度',width:14},{label:'分组',width:20},{label:'假期第几天',width:14},{label:'本期日期',width:15,format:'date'},{label:'对标日期',width:15,format:'date'},{label:'本期RevPAR（元）',width:20,format:'number'},{label:'对标RevPAR（元）',width:20,format:'number'},{label:'RevPAR变化',format:'change'},{label:'本期OCC',format:'percent'},{label:'对标OCC',format:'percent'},{label:'OCC变化（百分点）',width:22,format:'points'},{label:'本期ADR（元）',width:18,format:'number'},{label:'对标ADR（元）',width:18,format:'number'},{label:'ADR变化',format:'change'}];
+      var specs=['hotel_tier','city_tier'].map(function(d){return {name:d==='hotel_tier'?'按酒店档次':'按城市线级',title:'酒店假期每日经营对比',subtitle:'全部已收录假期 · 来源：酒店之家',note:'按假期日序对齐；原始日期保留。变化为本期相对对标期，缺失值留空。',columns:columns,rows:rows.filter(function(r){return r.dimension===d;}).map(function(r){
+        var rv=metricValue(r,'revpar',false), rb=metricValue(r,'revpar',true), ov=metricValue(r,'occupancy_rate',false), ob=metricValue(r,'occupancy_rate',true), av=metricValue(r,'adr',false), ab=metricValue(r,'adr',true);
+        var dr=difference(rv,rb,'revpar'), da=difference(av,ab,'adr');
+        return [r.holiday_name,d==='hotel_tier'?'酒店档次':'城市线级',r.segment,r.period_day,X.date(r.current_date),X.date(r.baseline_date),rv,rb,dr==null?null:dr/100,ov,ob,difference(ov,ob,'occupancy_rate'),av,ab,da==null?null:da/100];
+      })};});
+      specs.push(X.raw(rows)); await X.download(specs,'酒店假期经营数据');
+    } catch(e) { $('holiday-export-error').textContent=e.message||'导出失败，请重试。'; }
+    finally {button.disabled=false;button.textContent=label;}
+  }
   function init(rows, record) {
+    $('holiday-export').onclick = exportHoliday;
     state.rows = rows.map(function (r) {
       var row = Object.assign({}, r);
       ['period_day', 'current_year', 'baseline_year', 'occupancy_rate', 'adr', 'revpar'].forEach(function (f) { row[f] = num(row[f]); });
