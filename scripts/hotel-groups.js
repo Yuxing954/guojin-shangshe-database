@@ -9,13 +9,14 @@
  function paint(){
   $('group-metric').value=state.metric;$('group-period').value=state.period;$('group-window').value=state.window;
   const {s,o}=row();
-  $('group-cards').innerHTML=Object.entries(G.groups).map(([id,name])=>{const r=row(id);return '<button type="button" class="hg-card" data-group="'+id+'" aria-pressed="'+(id===state.id)+'"><span class="hg-card-name">'+esc(name)+'<span class="hg-card-mark">'+(id===state.id?'正在查看':'查看走势')+'</span></span><span class="hg-card-value">'+fmt(r.o?.value)+'<small>'+esc(r.s.unit)+'</small></span><span class="hg-card-growth">'+growth(r.o)+'</span><span class="hg-card-scope">'+(id==='jinjiang'?'中国区样本':'全国样本')+' · '+esc(r.s.periodBasis)+'</span></button>';}).join('');
+  $('group-cards').innerHTML=Object.entries(G.groups).map(([id,name])=>'<article class="hg-card" data-group="'+id+'" data-selected="'+(id===state.id)+'"><button type="button" class="hg-card-name" data-select-group="'+id+'" aria-pressed="'+(id===state.id)+'">'+esc(name)+'</button><div class="hg-card-metrics">'+Object.entries(G.weeklyMetrics).map(([metric,definition])=>{const {s,o}=row(id,metric);return '<button type="button" class="hg-card-metric" data-card-metric="'+metric+'" data-select-group="'+id+'" aria-pressed="'+(id===state.id&&metric===state.metric)+'" aria-label="查看'+esc(name+' '+definition.name)+'走势"><span class="hg-metric-label">'+esc(definition.name)+'<small>'+esc(s.unit)+(metric==='adr'?' · 入住日期':'')+'</small></span><span class="hg-card-value">'+fmt(o?.value)+'</span><span class="hg-card-growth">'+growth(o)+'</span></button>';}).join('')+'</div><span class="hg-card-scope">'+(id==='jinjiang'?'中国区样本':'全国样本')+'</span></article>').join('');
+
   $('group-company-name').textContent=G.groups[state.id];$('group-metric-name').textContent=s.name;$('group-metric-name').dataset.metric=state.metric;
   $('group-scope').textContent=(state.id==='jinjiang'?'中国区样本':'全国样本')+' · '+s.periodBasis;
   const r=weekly.find(o=>o.period_id===state.period);$('period-note').textContent=state.period+(r?' · '+r.start_date+'—'+r.end_date:'');
   const latest=weekly.find(o=>o.period_id===periods.at(-1));$('asof').textContent='酒店之家 · '+periods.at(-1)+(latest?' · 截至 '+latest.end_date:'');
   $('group-footer').textContent='来源：酒店之家'+(update.importedAt?' · 入库 '+SiteUI.date(update.importedAt):'');
-  $('group-evidence').disabled=!o;paintMatrix();save();draw();
+  $('group-evidence').disabled=!o;save();draw();
  }
  function draw(){
   const {s}=row(),selected=G.windowRows(s,state.period,state.window,periods),points=selected.map(o=>({period:o.period,value:o.value,change:o.yoy?.value??null}));
@@ -24,15 +25,12 @@
   document.querySelectorAll('[data-mode]').forEach(b=>{b.classList.toggle('active',b.dataset.mode===state.mode);b.setAttribute('aria-pressed',String(b.dataset.mode===state.mode));});
   $('group-chart-note').textContent='同周同比 · 未调整节假日错期'+(selected.some(o=>o.value==null)?' · 缺失期间留空':'');
  }
- function paintMatrix(){
-  const metrics=Object.keys(G.weeklyMetrics);$('group-matrix').innerHTML='<thead><tr><th>集团</th>'+metrics.map(m=>'<th>'+G.weeklyMetrics[m].name+' · '+G.weeklyMetrics[m].unit+'</th>').join('')+'</tr></thead><tbody>'+Object.entries(G.groups).map(([id,name])=>'<tr><td class="hg-row-name"><strong>'+esc(name)+'</strong><small>'+esc(state.period)+'</small></td>'+metrics.map(m=>{const {o}=row(id,m);return '<td>'+(o?'<button class="hg-cell" type="button" data-evidence-group="'+id+'" data-evidence-metric="'+m+'">'+fmt(o.value)+'<small>'+growth(o)+'</small></button>':'—')+'</td>';}).join('')+'</tr>').join('')+'</tbody>';
- }
  function evidence(id=state.id,metric=state.metric){
   const {s,o}=row(id,metric);if(!o)return;const fields=[['数据周',o.period],['日期',o.startDate+'—'+o.endDate],['原始数值',fmt(o.value,3)+' '+s.unit],['集团范围',s.scope+' · 全国'],['日期口径',s.periodBasis],['来源','酒店之家'],['来源定位',o.locator],['同比基期',o.yoy?o.yoy.priorPeriod+' · 原值 '+o.yoy.priorValue:'无可比基期，未强算'],['同比',o.yoy?signed(o.yoy.value)+'%':'—']];
   $('group-source-title').textContent=G.groups[id]+' · '+s.name;$('group-source-body').innerHTML='<dl>'+fields.map(([k,v])=>'<dt>'+esc(k)+'</dt><dd>'+esc(v)+'</dd>').join('')+'</dl>';$('group-source-dialog').showModal();
  }
- $('group-metric').onchange=e=>{state.metric=e.target.value;paint();};$('group-period').onchange=e=>{state.period=e.target.value;paint();};$('group-cards').onclick=e=>{const b=e.target.closest('[data-group]');if(b){state.id=b.dataset.group;paint();}};$('group-window').onchange=e=>{state.window=e.target.value;save();draw();};
- $('group-chart-mode').onclick=e=>{const b=e.target.closest('[data-mode]');if(b){state.mode=b.dataset.mode;save();draw();}};$('group-evidence').onclick=()=>evidence();$('group-matrix').onclick=e=>{const b=e.target.closest('[data-evidence-group]');if(b)evidence(b.dataset.evidenceGroup,b.dataset.evidenceMetric);};$('group-source-close').onclick=()=>$('group-source-dialog').close();
+ $('group-metric').onchange=e=>{state.metric=e.target.value;paint();};$('group-period').onchange=e=>{state.period=e.target.value;paint();};$('group-cards').onclick=e=>{const b=e.target.closest('[data-select-group]');if(b){state.id=b.dataset.selectGroup;if(b.dataset.cardMetric)state.metric=b.dataset.cardMetric;paint();}};$('group-window').onchange=e=>{state.window=e.target.value;save();draw();};
+ $('group-chart-mode').onclick=e=>{const b=e.target.closest('[data-mode]');if(b){state.mode=b.dataset.mode;save();draw();}};$('group-evidence').onclick=()=>evidence();$('group-source-close').onclick=()=>$('group-source-dialog').close();
  $('group-export').onclick=()=>{const url=URL.createObjectURL(new Blob([G.csv(weekly,state.metric,state.period,state.window)],{type:'text/csv;charset=utf-8'}));Object.assign(document.createElement('a'),{href:url,download:'酒店之家集团_'+state.metric+'_'+state.period+'.csv'}).click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
  document.querySelectorAll('[data-hotel-view]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const u=new URL(a.href,location.href);if(new URLSearchParams(location.search).get('embed')==='1')u.searchParams.set('embed','1');location.href=u.href;}));
  new ResizeObserver(()=>{cancelAnimationFrame(frame);frame=requestAnimationFrame(()=>{if(weekly.length&&!$('dashboard').hidden&&$('group-trend').clientWidth>0)draw();});}).observe($('group-trend-panel'));
