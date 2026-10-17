@@ -307,3 +307,62 @@ body.site-page .data-board #indicators .macro-expectation-reading{
 @media(prefers-reduced-motion:reduce){
   body.site-page .data-board #indicators #kpi-grid .macro-kpi:hover{transform:none}
 }
+
+
+/* Macro trend chart: one clean plot, compact axes, and a quieter frame. */
+body.site-page .data-board #indicators .macro-chart-block{
+  padding:8px 0 0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+}
+body.site-page .data-board #indicators .macro-chart-label{
+  min-height:0;
+  margin:0 0 8px;
+  color:#748198;
+  font-size:12px;
+  line-height:19px;
+}
+body.site-page .data-board #indicators .macro-chart-label b{
+  display:inline;
+  margin-right:8px;
+  color:#2e3a51;
+  font-size:14px;
+  font-weight:600;
+}
+body.site-page .data-board #indicators .macro-chart svg{
+  display:block;
+  width:100%;
+  height:auto;
+  min-height:0;
+  max-height:none;
+}
+body.site-page .data-board #indicators .macro-chart svg text{
+  fill:#77849a;
+  font-size:11px;
+  font-variant-numeric:tabular-nums;
+}
+body.site-page .data-board #indicators .macro-chart svg line{
+  stroke:#e9edf3;
+  stroke-width:1;
+}
+body.site-page .data-board #indicators .macro-chart svg polyline{
+  stroke:#5968b2;
+  stroke-width:2.4;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+body.site-page .data-board #indicators .macro-chart svg circle[data-chart-point]{
+  fill:transparent;
+  stroke:transparent;
+  stroke-width:2;
+}
+body.site-page .data-board #indicators .macro-chart svg circle[data-chart-point]:focus-visible{
+  fill:#fff;
+  stroke:#5968b2;
+}
+body.site-page .data-board #indicators .macro-chart-note{display:none}
+@media(max-width:700px){
+  body.site-page .data-board #indicators .macro-chart-label{font-size:11px}
+  body.site-page .data-board #indicators .macro-chart-label b{font-size:13px}
+}
