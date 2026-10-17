@@ -31,3 +31,23 @@
 body.hotel-page.site-page .hd-tabs.site-subnav > :is(a,button){display:inline-flex!important;align-items:center!important;justify-content:center!important;font-family:inherit!important;font-size:14px!important;line-height:22px!important;padding:12px 18px!important;min-height:48px!important;text-decoration:none!important}
 
 body.hotel-page .hd-export-dialog{position:fixed;inset:var(--export-top,48px) 0 auto;margin:0 auto;max-height:var(--export-max-height,calc(100vh - 80px))}
+
+/* Consistent hotel dashboard typography and control alignment. */
+body.hotel-page{font-family:"Microsoft YaHei","PingFang SC",sans-serif;font-size:14px;line-height:1.6}
+body.hotel-page .hd-card-head h2,body.hotel-page .hd-tier-head h3,body.hotel-page .hd-detail h3{font-size:16px;line-height:24px;font-weight:600;margin:0}
+body.hotel-page .hd-section-head h2{font-size:18px;line-height:26px}
+body.hotel-page .hd-toolbar,body.hotel-page .hd-chart-controls,body.hotel-page .hd-card-head{align-items:center;gap:12px}
+body.hotel-page .hd-chart-controls{justify-content:space-between}
+body.hotel-page .hd-range-controls{display:inline-flex;align-items:center;justify-content:flex-end;gap:14px;flex-wrap:wrap}
+body.hotel-page label{font-size:13px;line-height:20px;align-items:center}
+body.hotel-page select,body.hotel-page input[type=search]{font-family:inherit;font-size:13px!important;line-height:20px!important;min-height:38px;padding:8px 10px!important}
+body.hotel-page .hd-switch{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:4px;padding:4px!important;margin:0!important;min-height:40px;flex:none!important}
+body.hotel-page .hd-switch button{display:inline-flex!important;align-items:center!important;justify-content:center!important;font-family:inherit!important;font-size:13px!important;line-height:20px!important;min-height:32px!important;padding:6px 14px!important;margin:0!important;white-space:nowrap}
+body.hotel-page #metric-switch,body.hotel-page #holiday-metric-switch{display:inline-grid!important;grid-template-columns:repeat(3,minmax(68px,1fr));align-self:center}
+body.hotel-page .hd-label-toggle{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;cursor:pointer}
+body.hotel-page .hd-label-toggle input[type=checkbox]{appearance:auto;width:15px;height:15px;min-height:0;padding:0!important;margin:0;border-radius:3px!important;accent-color:#5158aa;flex:none}
+body.hotel-page .hd-tier-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 20px}
+body.hotel-page .hd-tier-head h3{margin:0}
+body.hotel-page .hd-table{font-size:13px}body.hotel-page .hd-table th{font-size:12px;line-height:20px}
+body.hotel-page .hd-chart-caption,body.hotel-page .hd-chart-mode,body.hotel-page .hd-period{font-size:12px;line-height:20px}
+@media(max-width:760px){body.hotel-page .hd-range-controls{justify-content:flex-start;gap:10px}body.hotel-page .hd-tier-head{flex-wrap:wrap;padding:0 16px}body.hotel-page .hd-switch button{padding:6px 10px!important}body.hotel-page .hd-card-head{align-items:center}}
