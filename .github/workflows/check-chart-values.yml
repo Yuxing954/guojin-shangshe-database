@@ -1,0 +1,36 @@
+name: Check chart value labels
+on:
+  pull_request:
+    paths:
+      - 'hotel-dashboard.html'
+      - 'scripts/hotel-dashboard.*'
+      - 'scripts/site-charts.*'
+      - 'scripts/quotes.js'
+      - 'dutyfree-dashboard.html'
+      - 'tests/chart-values.browser.cjs'
+      - '.github/workflows/check-chart-values.yml'
+permissions:
+  contents: read
+jobs:
+  chart-values:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check script syntax
+        run: |
+          node --check scripts/site-charts.js
+          node --check scripts/hotel-dashboard.js
+          node --check scripts/quotes.js
+      - name: Check scales and numeric integrity
+        run: node --test tests/site-paired.test.cjs tests/chart-axis.test.cjs
+      - name: Install isolated browser runtime
+        run: |
+          npm install --prefix /tmp/chart-values-test playwright@1.58.2
+          /tmp/chart-values-test/node_modules/.bin/playwright install --with-deps chromium
+      - name: Check overview, annotations and supply range
+        env:
+          NODE_PATH: /tmp/chart-values-test/node_modules
+        run: node tests/chart-values.browser.cjs

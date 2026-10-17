@@ -68,10 +68,71 @@ function mobileTable(table){
   frame.setAttribute('role','region');frame.setAttribute('aria-label','数据表，可横向滑动查看');
   table.before(frame);frame.append(table);
 }
+// One opt-in value label control per chart panel; display state never changes source data.
+const valueScopes=new WeakMap();
+function shortValue(text){
+  const tail=String(text??'').trim().split(/[\n：]/).at(-1);
+  const matches=[...tail.matchAll(/[+-]?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?(?:\s*(?:%|pct|百分点|元\/克|元|亿元|万元|万人次|万件|家|间|点|美元|港元))?/g)];
+  return matches.at(-1)?.[0]||'';
+}
+function chartScope(svg){return svg.closest('.hd-tier-trend,.hd-card,.gj-card,.morning-trend,.morning-trend-card,#quote-detail,.board-panel,.portal-panel')||svg.closest('article,section')||svg.parentElement.parentElement;}
+function valuesControl(svg){
+  if(svg.matches('[aria-hidden=true],.macro-spark')||svg.closest('button,a'))return null;
+  const scope=chartScope(svg);if(!scope)return null;
+  let config=valueScopes.get(scope);
+  const legacy=scope.querySelector('input[data-chart-labels]');
+  if(legacy){if(!config){config={scope,hotel:false,node:legacy.closest('label')};valueScopes.set(scope,config);}config.value=legacy.checked;config.change=legacy.checked;return config;}
+  const hotel=document.body.classList.contains('hotel-page'),metric=scope.querySelector('#metric-switch')?.querySelector('[aria-pressed=true]')?.textContent.trim()||scope.querySelector('[data-metric][aria-pressed=true]')?.textContent.trim()||(scope.matches('.hd-tier-trend')?document.querySelector('#metric-switch [aria-pressed=true]')?.textContent.trim():'')||'数值';
+  if(!config){config={scope,hotel,value:false,change:false};valueScopes.set(scope,config);}
+  if(!config.node?.isConnected){
+    const node=document.createElement('span');node.className='site-value-options';config.node=node;
+    for(const key of hotel?['value','change']:['value']){
+      const label=document.createElement('label'),input=document.createElement('input'),caption=document.createElement('span');label.className='site-value-option';input.type='checkbox';input.dataset.valueKind=key;input.checked=config[key];input.addEventListener('change',()=>{config[key]=input.checked;if(!hotel)config.change=input.checked;for(const state of [...states.values()])if(state.valueScope===scope)state.refreshValues();});label.append(input,caption);node.append(label);config[key+'Caption']=caption;
+    }
+    const fields=[...scope.querySelectorAll('select,input[type=date]')].filter(n=>chartScope(n)===scope&&!n.closest('.site-value-options')&&(/window|range|history-start|from|\bto\b|years|price-end/.test(n.id)||/范围|区间/.test(n.getAttribute('aria-label')||'')||/范围|期间|开始|结束/.test(n.closest('label')?.textContent||'')));
+    const field=fields.at(-1),anchor=field?.closest('label')||field;
+    if(anchor){let row=anchor.parentElement;if(!row.classList.contains('site-chart-options')){row=document.createElement('span');row.className='site-chart-options';anchor.before(row);row.append(anchor);}row.append(node);}
+    else{const head=scope.querySelector('.hd-card-head,.gj-card-head,.board-panel-head,.portal-panel-head,.quotes-chart-options,.sector-controls,.macro-detail-controls');if(head)head.append(node);else{node.classList.add('site-value-options-standalone');const host=svg.closest('.site-chart-scroll')||svg;host.before(node);}}
+  }
+  config.valueCaption.textContent=hotel&&metric!=='数值'?'显示 '+metric:'显示数值';if(hotel)config.changeCaption.textContent='显示同比';
+  return config;
+}
+function valueLabels(svg,points,config){
+  svg.querySelector('.site-value-labels')?.remove();if(!config||!config.value&&!config.change)return;
+  const explicit=points.flatMap(p=>p.labels||[]),hasExplicit=points.some(p=>Array.isArray(p.labels));
+  const labels=hasExplicit?explicit:points.filter(p=>Number.isFinite(p.y)).map(p=>({x:p.x,y:p.y,text:p.label||shortValue(p.text),kind:p.kind||'value'}));
+  if(!hasExplicit&&!labels.length)for(const p of nativePoints(svg))labels.push({...p,text:shortValue(p.text),kind:'value'});
+  const layer=document.createElementNS(NS,'g');layer.classList.add('site-value-labels');layer.setAttribute('aria-hidden','true');
+  const width=svg.viewBox.baseVal.width,height=svg.viewBox.baseVal.height,occupied=[];
+  for(const p of labels){
+    if(!Number.isFinite(p.x)||!Number.isFinite(p.y)||!p.text||!(p.kind==='change'?config.change:config.value))continue;
+    const text=String(p.text),tw=text.length*6.7+8,x=Math.max(tw/2+3,Math.min(width-tw/2-3,p.x));let y=Math.max(28,Math.min(height-36,p.y-11));
+    for(let i=0;i<36;i++){const next=Math.max(28,Math.min(height-36,p.y+(i?Math.ceil(i/2)*16*(i%2?1:-1):-11)));if(!occupied.some(b=>Math.abs(b.x-x)<(b.w+tw)/2+2&&Math.abs(b.y-next)<14)){y=next;break;}y=next;}
+    occupied.push({x,y,w:tw});
+    const n=document.createElementNS(NS,'text');n.classList.add('site-value-label');n.dataset.kind=p.kind||'value';n.setAttribute('x',x);n.setAttribute('y',y);n.setAttribute('text-anchor','middle');if(p.color)n.style.fill=p.color;n.textContent=text;layer.append(n);
+  }svg.append(layer);
+}
+function prepareValues(svg,points,config){
+  if(points.paired&&config){
+    const meta=points.paired,showValue=config.value,showChange=config.change;
+    if(meta.showValue!==showValue||meta.showChange!==showChange||svg.dataset.valuesMode!==String(showValue)+'|'+String(showChange)){
+      const result=paired(meta.rows,{...meta.options,valueLabels:showValue,yoyLabels:showChange});
+      const oldWrap=svg.parentElement,oldOverflow=oldWrap.scrollWidth-oldWrap.clientWidth,wasAtEnd=oldOverflow<=0||oldWrap.scrollLeft>=oldOverflow-2,oldRatio=oldOverflow>0?oldWrap.scrollLeft/oldOverflow:1;
+      const shell=document.createElement('div');shell.innerHTML=result.html;const next=shell.querySelector('svg');svg.setAttribute('viewBox',next.getAttribute('viewBox'));svg.innerHTML=next.innerHTML;
+      svg.dataset.valuesMode=String(showValue)+'|'+String(showChange);
+      const expanded=showValue||showChange;
+      svg.style.setProperty('width',expanded?next.viewBox.baseVal.width+'px':'100%','important');svg.style.setProperty('min-width',expanded?next.viewBox.baseVal.width+'px':'0','important');svg.style.setProperty('max-width',expanded?'none':'100%','important');svg.style.setProperty('height','auto','important');svg.style.setProperty('min-height','0','important');
+      if(!svg.parentElement.classList.contains('site-chart-scroll')){const wrap=document.createElement('div');wrap.className='site-chart-scroll';wrap.tabIndex=0;wrap.setAttribute('role','region');wrap.setAttribute('aria-label','图表，可横向滚动');svg.before(wrap);wrap.append(svg);}
+      points=result.points;
+      if(expanded)requestAnimationFrame(()=>{const wrap=svg.parentElement;wrap.scrollLeft=(wrap.scrollWidth-wrap.clientWidth)*(wasAtEnd?1:oldRatio);});
+    }
+  }valueLabels(svg,points,config);return points;
+}
 function attach(container,points,options={}){
   const svg=container?.matches?.('svg')?container:container?.querySelector('svg');if(!svg)return;
   states.get(svg)?.destroy();
   svg.querySelector('.site-legacy-markers')?.remove();
+  const originalPoints=points,config=valuesControl(svg);points=prepareValues(svg,points,config);
   themeChart(svg);
   mobileChart(svg);
   const data=groups(points);if(!data.length)return;
@@ -100,7 +161,7 @@ function attach(container,points,options={}){
     const x=p.matrixTransform(matrix.inverse()).x;
     return data.reduce((a,g,i)=>Math.abs(g.x-x)<Math.abs(data[a].x-x)?i:a,0);
   }
-  const state={svg,hide,refresh(){if(tip.hidden)return;const b=svg.getBoundingClientRect();if(b.bottom<0||b.top>innerHeight)hide(true);else place(data[index]);},destroy(){hide(true);abort.abort();tip.remove();line.remove();states.delete(svg);}};states.set(svg,state);
+  const state={svg,hide,valueScope:config?.scope,refreshValues(){attach(svg,originalPoints,options);},refresh(){if(tip.hidden)return;const b=svg.getBoundingClientRect();if(b.bottom<0||b.top>innerHeight)hide(true);else place(data[index]);},destroy(){hide(true);abort.abort();tip.remove();line.remove();states.delete(svg);}};states.set(svg,state);
   listen(svg,'pointermove',e=>{if(e.pointerType==='touch')return;if(!isPinned)show(nearest(e),e);});
   listen(svg,'pointerleave',()=>hide());
   listen(svg,'click',e=>{const next=nearest(e);if(isPinned&&next===index){hide(true);return;}pinned?.hide(true);isPinned=true;pinned=state;show(next,e);});
@@ -198,7 +259,8 @@ function paired(rows,opt={}){
   }
   const valid=normalized.filter(r=>r.values.some(s=>showValue&&Number.isFinite(s.value)||showChange&&Number.isFinite(s.change)));
   if(!valid.length)return {html:'<p class="portal-empty">暂无数据</p>',points:[]};
-  const w=Math.max((opt.changeLabels||opt.valueLabels)?Math.min(normalized.length,12)*76+152:240,opt.width||Math.min(900,typeof innerWidth==='number'?innerWidth-64:900)),h=w<520?300:340,L=w<520?58:76,R=showChange&&showValue?(w<520?52:76):24,T=42,B=48,bottom=h-B;
+  const labelled=opt.valueLabels||opt.yoyLabels,seriesSlots=Math.max(...normalized.map(r=>r.values.length));
+  const w=Math.max(labelled?normalized.length*(seriesSlots===1?52:24+seriesSlots*32)+152:240,opt.width||Math.min(900,typeof innerWidth==='number'?innerWidth-64:900)),h=w<520?300:340,L=w<520?58:76,R=showChange&&showValue?(w<520?52:76):24,T=42,B=48,bottom=h-B;
   const xs=normalized.map(r=>r.x),xmin=Math.min(...xs),xmax=Math.max(...xs),width=w-L-R;
   const unique=[...new Set(xs)].sort((a,b)=>a-b),delta=unique.length>1?Math.min(...unique.slice(1).map((x,i)=>x-unique[i])):1;
   const margin=width/(unique.length+1)/2,px=x=>L+margin+(x-xmin)/(xmax-xmin||1)*(width-margin*2);
@@ -215,47 +277,20 @@ function paired(rows,opt={}){
   const seriesCount=Math.max(...normalized.map(r=>r.values.length)),barWidth=Math.min(44,width*delta/(xmax-xmin+delta)*.72)/seriesCount;
   const points=[];
   normalized.forEach((r,ri)=>{
-    const text=r.period+'\n'+r.values.map(s=>(seriesCount>1?s.name+'：':'')+(showValue?fmt(s.value)+(Number.isFinite(s.value)?' '+unit:''):'')+(showValue&&showChange?'  |  ':'')+(showChange?(opt.changeLabel||'同比')+' '+fmt(s.change)+(Number.isFinite(s.change)?' '+changeUnit:''):'')).join('\n');
-    points.push({x:px(r.x),text});
+    const text=r.period+'\n'+r.values.map(s=>(seriesCount>1?s.name+'：':'')+(showValue?fmt(s.value)+(Number.isFinite(s.value)?' '+unit:''):'')+(showValue&&showChange?'  |  ':'')+(showChange?(opt.changeLabel||'同比')+' '+(Number.isFinite(s.change)?new Intl.NumberFormat('zh-CN',{minimumFractionDigits:opt.changePrecision??0,maximumFractionDigits:opt.changePrecision??opt.precision??2}).format(s.change):'—')+(Number.isFinite(s.change)?' '+changeUnit:''):'')).join('\n');
+    points.push({x:px(r.x),text,labels:r.values.flatMap((s,si)=>[
+      ...(showValue&&Number.isFinite(s.value)?[{x:px(r.x)+(si-(seriesCount-1)/2)*barWidth,y:py(s.value,vd),text:fmt(s.value),kind:'value',color:colors[si%colors.length]}]:[]),
+      ...(showChange&&Number.isFinite(s.change)?[{x:px(r.x),y:py(s.change,cd),text:(s.change>0?'+':'')+new Intl.NumberFormat('zh-CN',{minimumFractionDigits:opt.changePrecision??1,maximumFractionDigits:opt.changePrecision??1}).format(s.change)+(changeUnit==='%'?'%':changeUnit==='百分点'?'pct':changeUnit),kind:'change',color:colors[si%colors.length]}]:[])
+    ])});
     if(showValue)r.values.forEach((s,si)=>{if(!Number.isFinite(s.value))return;const y=py(s.value,vd),zero=py(0,vd);svg+='<rect class="site-value-bar" x="'+(px(r.x)+(si-seriesCount/2)*barWidth)+'" y="'+Math.min(y,zero)+'" width="'+Math.max(.8,barWidth-1)+'" height="'+Math.max(1,Math.abs(zero-y))+'" rx="2" fill="'+barPalette[si%barPalette.length]+'" opacity="1"><title>'+esc(text)+'</title></rect>';});
     const step=Math.max(1,Math.ceil(normalized.length/Math.max(2,Math.floor(width/110))));
     if(ri===0||ri===normalized.length-1||w>=520&&ri%step===0&&normalized.length-ri>step/2)svg+='<text x="'+px(r.x)+'" y="'+(h-17)+'" text-anchor="'+(ri===0?'start':ri===normalized.length-1?'end':'middle')+'">'+esc(String(r.period).replace(/年/g,'·').replace(/月/g,''))+'</text>';
   });
   if(showChange)for(let si=0;si<seriesCount;si++){let path='',prior=null;for(const r of normalized){const s=r.values[si];if(!Number.isFinite(s?.change)){prior=null;continue;}const gap=r.breakBefore||prior&&(r.x-prior.x)>(opt.gap??Infinity);path+=(prior&&!gap?'L':'M')+px(r.x)+','+py(s.change,cd)+' ';prior=r;}svg+='<path class="site-line-halo" d="'+path+'" fill="none" stroke="white" stroke-width="5.5" stroke-linejoin="round" stroke-linecap="round"/><path class="site-change-line" d="'+path+'" fill="none" stroke="'+colors[si%colors.length]+'" stroke-width="2.5" stroke-linejoin="round"/>';normalized.forEach((r,ri)=>{if(Number.isFinite(r.values[si]?.change)&&(ri%Math.max(1,Math.ceil(normalized.length/(w<520?24:80)))===0||ri===normalized.length-1))svg+='<circle data-chart-point="'+si+'" tabindex="0" cx="'+px(r.x)+'" cy="'+py(r.values[si].change,cd)+'" r="'+(normalized.length>80?2.4:3.4)+'" fill="white" stroke="'+colors[si%colors.length]+'" stroke-width="1.8"><title>'+esc(points[normalized.indexOf(r)].text)+'</title></circle>';});}
-  if(showChange && opt.changeLabels){
-    const occupied=[],stride=Math.max(1,Math.ceil(normalized.length/12));
-    normalized.forEach((r,ri)=>{
-      if(ri%stride!==0&&ri!==normalized.length-1)return;
-      r.values.forEach((s,si)=>{
-        if(!Number.isFinite(s.change))return;
-        const text=(s.change>0?'+':'')+s.change.toFixed(1)+(changeUnit==='%'?'%':'pp');
-        const tw=text.length*6.5+6,x=Math.max(L+tw/2,Math.min(w-R-tw/2,px(r.x))),pointY=py(s.change,cd);
-        let y=Math.max(T+12,Math.min(bottom-8,pointY-12-si*14));
-        for(let attempt=0;attempt<16;attempt++){
-          const collision=occupied.some(b=>Math.abs(b.x-x)<(b.w+tw)/2+2&&Math.abs(b.y-y)<13);
-          if(!collision)break;
-          const offset=(Math.floor(attempt/2)+1)*14*(attempt%2?1:-1);
-          y=Math.max(T+12,Math.min(bottom-8,pointY+offset));
-        }
-        occupied.push({x,y,w:tw});
-        svg+='<text class="site-change-value" x="'+x+'" y="'+y+'" text-anchor="middle" style="font-size:11px;font-weight:600;fill:'+colors[si%colors.length]+';paint-order:stroke;stroke:white;stroke-width:3px;stroke-linejoin:round">'+esc(text)+'</text>';
-      });
-    });
-  }
-  if(showValue&&opt.valueLabels){
-    const stride=Math.max(1,Math.ceil(normalized.length/12));
-    normalized.forEach((r,ri)=>{
-      if(ri%stride!==0&&ri!==normalized.length-1)return;
-      r.values.forEach((s,si)=>{
-        if(!Number.isFinite(s.value))return;
-        const x=px(r.x)+(si-(seriesCount-1)/2)*barWidth,y=Math.max(T+12,py(s.value,vd)-8-si*12);
-        svg+='<text class="site-value-label" x="'+x+'" y="'+y+'" text-anchor="middle" style="font-size:11px;font-weight:600;fill:'+colors[si%colors.length]+';paint-order:stroke;stroke:white;stroke-width:3px">'+esc(fmt(s.value))+'</text>';
-      });
-    });
-  }
   svg+='</svg>';
   const legend=seriesCount>1?normalized.find(r=>r.values.length===seriesCount).values.map((s,i)=>'<span><i style="background:'+colors[i%colors.length]+'"></i>'+esc(s.name)+'</span>').join(''):'';
-  return {html:((opt.changeLabels||opt.valueLabels)?'<div class="site-chart-scroll" style="overflow-x:auto;max-width:100%" tabindex="0" role="region" aria-label="趋势图，可横向滚动">'+svg.replace('style="height:auto!important;min-height:0"','style="height:auto!important;min-height:0;min-width:'+w+'px"')+'</div>':svg)+'<div class="site-chart-legend">'+(showValue?'<span><i class="site-bar-key"></i>数值 · '+esc(unit)+'</span>':'')+(showChange?'<span><i class="site-line-key"></i>'+esc(opt.changeLabel||'同比')+' · '+esc(changeUnit)+'</span>':'')+legend+'</div>',points};
+  points.paired={rows,options:opt,showValue:!!opt.valueLabels,showChange:!!opt.yoyLabels};
+  return {html:(labelled?'<div class="site-chart-scroll" style="overflow-x:auto;max-width:100%" tabindex="0" role="region" aria-label="趋势图，可横向滚动">'+svg.replace('style="height:auto!important;min-height:0"','style="height:auto!important;min-height:0;min-width:'+w+'px"')+'</div>':svg)+'<div class="site-chart-legend">'+(showValue?'<span><i class="site-bar-key"></i>数值 · '+esc(unit)+'</span>':'')+(showChange?'<span><i class="site-line-key"></i>'+esc(opt.changeLabel||'同比')+' · '+esc(changeUnit)+'</span>':'')+legend+'</div>',points};
 }
 const pairedObservers=new WeakMap();
 function drawPaired(host,rows,opt={}){
