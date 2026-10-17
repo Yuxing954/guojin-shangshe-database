@@ -396,3 +396,40 @@ body.site-page .data-board #indicators .macro-download{padding:0;border:0;backgr
  body.site-page .data-board #indicators #detail .macro-latest{gap:16px;flex-wrap:wrap}
  body.site-page .data-board #indicators #primary-chart,body.site-page .data-board #indicators #primary-chart svg{height:260px!important}
 }
+
+/* Every core readout uses the same six content slots, including optional metadata. */
+body.site-page .data-board #indicators #kpi-grid{--macro-card-height:234px}
+body.site-page .data-board #indicators #kpi-grid .macro-topic-cards{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
+body.site-page .data-board #indicators #kpi-grid .macro-kpi{
+ display:grid!important;grid-template-rows:22px 20px 48px 30px 28px minmax(0,1fr);
+ align-content:stretch;align-items:stretch;gap:0!important;
+ width:100%;height:var(--macro-card-height)!important;min-height:var(--macro-card-height)!important;max-height:var(--macro-card-height)!important;
+ box-sizing:border-box;padding:16px!important;
+}
+body.site-page .data-board #indicators #kpi-grid .macro-kpi>*{width:100%;min-width:0;box-sizing:border-box;justify-self:stretch}
+body.site-page .data-board #indicators #kpi-grid .macro-kpi-top{min-height:0;margin:0;align-items:center;line-height:18px}
+body.site-page .data-board #indicators #kpi-grid .macro-kpi-period{align-self:center;line-height:18px}
+body.site-page .data-board #indicators #kpi-grid .macro-reading-row{display:flex!important;justify-content:space-between;gap:8px;margin:0;min-height:0;align-items:center}
+body.site-page .data-board #indicators #kpi-grid .macro-kpi-reading{margin:0;flex:0 0 auto;flex-wrap:nowrap!important}
+body.site-page .data-board #indicators #kpi-grid .macro-kpi-bottom{display:flex!important;align-items:center;gap:4px 8px;margin:0!important;padding:4px 0 0;border-top:1px solid #edf0f5;min-height:0}
+body.site-page .data-board #indicators #kpi-grid .macro-kpi-meta{display:flex;flex-wrap:wrap;align-items:center;gap:0 8px;font-size:10px;line-height:18px;color:#748198}
+body.site-page .data-board #indicators #kpi-grid .macro-kpi-release{margin:0!important;padding:0;border:0;font-size:10px}
+body.site-page .data-board #indicators #kpi-grid .macro-kpi-note{margin:0;padding:1px 5px;font-size:10px;line-height:16px}
+body.site-page .data-board #indicators #kpi-grid .macro-kpi-forecast{display:flex;align-items:flex-start;min-width:0}
+body.site-page .data-board #indicators #kpi-grid .macro-expectation-reading{width:100%;margin:0!important;padding:6px 8px;border:0;line-height:17px;font-size:11px}
+@media(max-width:1100px){
+ body.site-page .data-board #indicators .macro-topic-grid{grid-template-columns:minmax(0,1fr)}
+ body.site-page .data-board #indicators #kpi-grid .macro-topic-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:600px){
+ body.site-page .data-board #indicators #kpi-grid{--macro-card-height:296px}
+ body.site-page .data-board #indicators #kpi-grid .macro-kpi{padding:14px!important;grid-template-rows:38px 20px 58px 44px 40px minmax(0,1fr)}
+ body.site-page .data-board #indicators #kpi-grid .macro-kpi-top{align-items:flex-start;flex-wrap:nowrap}
+ body.site-page .data-board #indicators #kpi-grid .macro-reading-row{flex-wrap:nowrap}
+ body.site-page .data-board #indicators #kpi-grid .macro-spark{width:52px;height:26px;flex:none}
+ body.site-page .data-board #indicators #kpi-grid .macro-kpi-top .readout-selected{flex:none}
+ body.site-page .data-board #indicators #kpi-grid .macro-kpi-bottom{display:grid!important;grid-template-columns:minmax(0,1fr);gap:0;align-content:center}
+}
+@media(max-width:380px){
+ body.site-page .data-board #indicators #kpi-grid .macro-topic-cards{grid-template-columns:minmax(0,1fr)}
+}

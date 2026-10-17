@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "checkedAt": "2026-10-15T00:26:56+00:00",
+  "checkedAt": "2026-10-17T08:20:20+00:00",
   "series": {
     "cn-ppi": {
       "start": "2016-01",
-      "end": "2026-08",
-      "count": 128,
+      "end": "2026-09",
+      "count": 129,
       "requestedStart": "2016-01-01",
       "historyShort": false,
       "missingPeriods": [],
@@ -15,8 +15,8 @@
     },
     "cn-cpi": {
       "start": "2016-01",
-      "end": "2026-08",
-      "count": 128,
+      "end": "2026-09",
+      "count": 129,
       "requestedStart": "2016-01-01",
       "historyShort": false,
       "missingPeriods": [],
@@ -123,8 +123,8 @@
     },
     "cn-m2": {
       "start": "2016-01",
-      "end": "2026-08",
-      "count": 128,
+      "end": "2026-09",
+      "count": 129,
       "requestedStart": "2016-01-01",
       "historyShort": false,
       "missingPeriods": [],
@@ -134,8 +134,8 @@
     },
     "cn-tsf": {
       "start": "2016-01",
-      "end": "2026-08",
-      "count": 128,
+      "end": "2026-09",
+      "count": 129,
       "requestedStart": "2016-01-01",
       "historyShort": false,
       "missingPeriods": [],
@@ -259,8 +259,8 @@
     },
     "us-treasury10": {
       "start": "2020-12-30",
-      "end": "2026-10-13",
-      "count": 1447,
+      "end": "2026-10-16",
+      "count": 1450,
       "requestedStart": "2016-01-01",
       "historyShort": false,
       "missingPeriods": [],
@@ -281,8 +281,8 @@
     },
     "consumer-core-cpi": {
       "start": "2016-01",
-      "end": "2026-08",
-      "count": 128,
+      "end": "2026-09",
+      "count": 129,
       "requestedStart": "2016-01-01",
       "historyShort": false,
       "missingPeriods": [],
@@ -292,8 +292,8 @@
     },
     "consumer-cpi": {
       "start": "2016-01",
-      "end": "2026-08",
-      "count": 128,
+      "end": "2026-09",
+      "count": 129,
       "requestedStart": "2016-01-01",
       "historyShort": false,
       "missingPeriods": [],
@@ -454,8 +454,8 @@
     },
     "cn-imports-monthly": {
       "start": "2016-01",
-      "end": "2026-08",
-      "count": 128,
+      "end": "2026-09",
+      "count": 129,
       "requestedStart": "2016-01-01",
       "historyShort": false,
       "missingPeriods": [],
@@ -519,8 +519,8 @@
     },
     "cn-exports-monthly": {
       "start": "2016-01",
-      "end": "2026-08",
-      "count": 128,
+      "end": "2026-09",
+      "count": 129,
       "requestedStart": "2016-01-01",
       "historyShort": false,
       "missingPeriods": [],
@@ -1230,51 +1230,5 @@
       "calendar": "原始发布频率"
     }
   },
-  "errors": [
-    {
-      "id": "cn-cpi",
-      "errorType": "ValueError",
-      "reason": "接口或数据校验失败"
-    },
-    {
-      "id": "cn-ppi",
-      "errorType": "ValueError",
-      "reason": "接口或数据校验失败"
-    },
-    {
-      "id": "cn-m2",
-      "errorType": "ValueError",
-      "reason": "接口或数据校验失败"
-    },
-    {
-      "id": "cn-tsf",
-      "errorType": "ValueError",
-      "reason": "接口或数据校验失败"
-    },
-    {
-      "id": "us-treasury10",
-      "errorType": "ValueError",
-      "reason": "接口或数据校验失败"
-    },
-    {
-      "id": "cn-exports-monthly",
-      "errorType": "ValueError",
-      "reason": "接口或数据校验失败"
-    },
-    {
-      "id": "cn-imports-monthly",
-      "errorType": "ValueError",
-      "reason": "接口或数据校验失败"
-    },
-    {
-      "id": "consumer-core-cpi",
-      "errorType": "ValueError",
-      "reason": "接口或数据校验失败"
-    },
-    {
-      "id": "consumer-cpi",
-      "errorType": "ValueError",
-      "reason": "接口或数据校验失败"
-    }
-  ]
+  "errors": []
 }
