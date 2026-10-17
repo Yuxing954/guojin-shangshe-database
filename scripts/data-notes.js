@@ -5,6 +5,7 @@
     calendar:{name:'重要数据日历',files:['data/important-calendar.json'],docs:['docs/important-calendar.md']},
     monthly:{name:'CPI月度产品',files:['data/products/consumption-monthly.json'],docs:['docs/consumption-monthly-product.md']},
     daily:{name:'商社日报',files:['data/daily/latest.json'],docs:['docs/daily-report.md']},
+    'hotel-groups':{name:'酒店集团',files:['data/hotel-groups.json'],docs:['docs/hotel-groups.md']},
     hotel:{name:'酒店',files:['data/hotel-update-record.json','data/hotel-city-history-coverage.json','data/hotel-holiday-import-record.json'],docs:['docs/hotel-data-update.md','docs/hotel-holiday-dashboard.md']},
     dutyfree:{name:'免税',files:['data/dutyfree/holidays.json','data/dutyfree/monthly-provenance.json','data/dutyfree/sources.json'],docs:['docs/dutyfree-holidays.md']},
     gold:{name:'黄金',files:['data/gold-jewelry/research.json','data/gold-jewelry/macro.json','data/gold-jewelry/observations.json'],docs:['docs/gold-jewelry-database.md']},
@@ -20,6 +21,7 @@
   function notes(id,values){
     const a=values[0]||{},out=[];
     if(id==='calendar')out.push('只保留中国CPI、社零、美国CPI、非农和美联储议息五类；日程范围：'+a.coverageStart+'—'+a.coverageEnd+'。','全部时间为北京时间；海外原始时区单独保存，按冬夏令时换算。美联储会议日期与决议发布时间分开显示。','日期为官方计划，可能调整。“时间已过”不表示已发布或本站已更新；后续未核验日期不推算。','日历不重复维护指标数值，数据入口指向现有模块。导出包含当前地区和时间范围的日程。');
+    if(id==='hotel-groups')out.push(...(a.notes||[]),'财报数据入库：'+(a.updatedAt||'未记录')+'；周度数据读取hotel_group_weekly.csv，以数据周和日期区间为准。','四家集团按profiles.json配置筛选；每次源数据更新后由构建脚本重新生成精简数据。');
     if(id==='monthly')out.push(...(a.notes||[]));
     if(id==='dutyfree')out.push(...(a.coverageNotes||[]),...(a.notes||[]),values[1]?.note||'');
     if(id==='hotel')out.push('同比默认匹配来源年/周；假期错期需单独映射与标注。','节假日经营对标按假期日序匹配两期日期，入住率差为百分点，ADR及RevPAR为相对变化。',...Object.entries(a.historicalCoverage||{}).flatMap(([file,regions])=>Object.entries(regions).map(([region,c])=>region+'：'+c.firstPeriod+' — '+c.lastPeriod+' · '+c.periodCount+'期')),'异常源记录：'+(a.sourceAnomalyCount??'未记录')+'条');
