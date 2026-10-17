@@ -12,21 +12,21 @@ const server=http.createServer((req,res)=>{const file=path.resolve(root,'.'+deco
   try{
     await page.goto(url);await ready();
     assert.equal(await page.locator('.macro-expectation-reading').count(),3);
-    assert.equal(await page.locator('#forecast-overview tbody tr').count(),3);
+    assert.equal(await page.locator('#forecast-overview').count(),0);
     for(const id of ['cn-cpi','cn-gdp-quarter','cn-retail']){
       await page.locator('[data-kpi="'+id+'"]').click();
-      assert.match(await page.locator('.macro-forecast-latest').innerText(),/Choice 预测/);
-      await page.locator('.macro-forecast-history summary').click();
-      assert.ok(await page.locator('.macro-forecast-history tbody tr').count()>=8);
-      const download=page.waitForEvent('download');await page.getByRole('button',{name:'下载预测 CSV',exact:true}).click();
-      const csv=fs.readFileSync(await(await download).path(),'utf8');assert.match(csv,/Choice预测%/);assert.match(csv,/公布前版本已核验/);
-      if(id==='cn-gdp-quarter')assert.equal(await page.locator('.macro-forecast-history tbody tr').first().locator('td').nth(3).innerText(),'—');
+      assert.match(await page.locator('[data-kpi="'+id+'"] .macro-expectation-reading').innerText(),/Choice 预测/);
+      assert.equal(await page.locator('.macro-forecast-latest,.macro-forecast-history').count(),0);
+      assert.ok(await page.locator('#primary-chart svg').isVisible());
+      const download=page.waitForEvent('download');await page.locator('#download').click();
+      const csv=fs.readFileSync(await(await download).path(),'utf8');assert.match(csv,/202\d-[0-9Q]/);assert.ok(csv.split(/\r?\n/).length>2);
+
     }
     for(const width of [1440,768,390]){await page.setViewportSize({width,height:1000});await page.waitForTimeout(200);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'overflow at '+width);}
     if(process.env.MACRO_SCREENSHOT_DIR){fs.mkdirSync(process.env.MACRO_SCREENSHOT_DIR,{recursive:true});await page.screenshot({path:path.join(process.env.MACRO_SCREENSHOT_DIR,'macro-expectations-mobile.png'),fullPage:true});await page.setViewportSize({width:1440,height:1100});await page.screenshot({path:path.join(process.env.MACRO_SCREENSHOT_DIR,'macro-expectations-desktop.png'),fullPage:true});}
     await page.locator('[data-country="US"]').click();assert.equal(await page.locator('.macro-expectation-reading').count(),0);assert.equal(await page.locator('#forecast-overview tbody tr').count(),0);
     await page.route('**/data/macro/expectations.json',r=>r.fulfill({status:503,body:'unavailable'}));await page.goto(url);await ready();assert.match(await page.locator('#data-warning').innerText(),/预测数据读取失败/);assert.equal(await page.locator('.macro-kpi').count(),6);
-    await page.unroute('**/data/macro/expectations.json');await page.locator('#retry').click();await page.waitForFunction(()=>document.querySelector('#forecast-overview tbody tr'));assert.ok(await page.locator('#data-warning').isHidden());
-    assert.deepEqual(errors,[]);console.log('PASS: three forecast series, historical/future periods, CSV, missing definitions, country switch, narrow screens, failure and retry');
+    await page.unroute('**/data/macro/expectations.json');await page.locator('#retry').click();await page.waitForFunction(()=>document.querySelectorAll('.macro-expectation-reading').length===3);assert.ok(await page.locator('#data-warning').isHidden());
+    assert.deepEqual(errors,[]);console.log('PASS: three forecast readouts without repeated detail panels, historical CSV, country switch, narrow screens, failure and retry');
   }finally{await browser.close();server.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;server.close();});

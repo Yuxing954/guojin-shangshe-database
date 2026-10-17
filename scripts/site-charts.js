@@ -77,7 +77,7 @@ function shortValue(text){
 }
 function chartScope(svg){return svg.closest('.hd-tier-trend,.hd-card,.gj-card,.morning-trend,.morning-trend-card,#quote-detail,.board-panel,.portal-panel')||svg.closest('article,section')||svg.parentElement.parentElement;}
 function valuesControl(svg){
-  if(svg.matches('[aria-hidden=true],.macro-spark')||svg.closest('button,a'))return null;
+  if(svg.matches('[aria-hidden=true],.macro-spark')||svg.closest('button,a,[data-chart-controls="minimal"]'))return null;
   const scope=chartScope(svg);if(!scope)return null;
   let config=valueScopes.get(scope);
   const legacy=scope.querySelector('input[data-chart-labels]');

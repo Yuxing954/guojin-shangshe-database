@@ -8,8 +8,7 @@ const server=http.createServer((req,res)=>{const file=path.resolve(root,'.'+deco
  const ready=()=>p.locator('#metric-title').waitFor();
  async function shot(name){if(out){fs.mkdirSync(out,{recursive:true});await p.evaluate(()=>scrollTo(0,0));await p.screenshot({path:path.join(out,name+'.png')});}}
  try{
-  await p.goto(base+'/macro.html');await ready();assert.ok(await p.locator('#kpi-grid').isVisible());assert.ok(await p.locator('.macro-list-panel').isHidden());assert.equal(await p.locator('#trend-presets').evaluate(e=>e.open),false);
-  assert.ok(await p.locator('#detail').evaluate(e=>e.offsetTop<document.querySelector('#recent-releases').offsetTop));
+  await p.goto(base+'/macro.html');await ready();assert.ok(await p.locator('#kpi-grid').isVisible());assert.ok(await p.locator('.macro-list-panel').isHidden());assert.equal(await p.locator('#recent-releases,#trend-presets').count(),0);
   await p.locator('[data-kpi=cn-cpi]').click();assert.equal(await p.locator('#favorite,#favorites-only').count(),0);await shot('core-overview');
   await p.locator('[data-study=workspace]').click();
   await p.locator('#search').fill('CPI');await p.waitForTimeout(250);const q=await p.locator('#search').inputValue();await p.locator('#metric-list .macro-item').first().click();assert.equal(await p.locator('#search').inputValue(),q);await shot('core-workspace');
