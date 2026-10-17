@@ -17,3 +17,10 @@
 body.hotel-page.hotel-groups-page.site-page #group-trend-panel h2{font-family:inherit!important;font-size:18px!important;line-height:26px!important;font-weight:600!important;margin:0!important}body.hotel-page.hotel-groups-page.site-page .hg-card-name{font-family:inherit!important}
 
 body.hotel-page.hotel-groups-page.site-page #group-trend-panel h2 span{font:inherit!important}
+
+.hg-chart-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-bottom:20px;min-width:0}
+.hg-chart-grid>.hd-card{margin:0;min-width:0}.hg-chart-grid>#group-trend-panel{grid-column:1/-1}
+body.hotel-page.hotel-groups-page.site-page .hg-chart-grid .hd-card h2,body.hotel-page.hotel-groups-page.site-page .hg-chart-grid .hd-card h2 span{font-family:inherit!important;font-size:18px!important;line-height:26px!important;font-weight:600!important}
+.hotel-groups-page .hg-chart-grid .hd-card-head{align-items:baseline}
+.hotel-groups-page .hg-chart-grid .hd-chart-controls{padding-bottom:8px}
+@media(max-width:900px){.hg-chart-grid{grid-template-columns:minmax(0,1fr);gap:16px}.hg-chart-grid>#group-trend-panel{grid-column:auto}}
