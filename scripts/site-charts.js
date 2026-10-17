@@ -189,10 +189,16 @@ function paired(rows,opt={}){
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const fmt=v=>Number.isFinite(v)?new Intl.NumberFormat('zh-CN',{maximumFractionDigits:opt.precision??2}).format(v):'—';
   const mode=opt.mode||'combo',showValue=mode!=='change',showChange=mode!=='value',unit=opt.unit||'',changeUnit=opt.changeUnit||'%';
-  const normalized=rows.map((r,i)=>({...r,x:Number.isFinite(r.x)?r.x:i,values:r.values||[{name:opt.name||'数值',value:r.value,change:r.change,color:'#2167a0'}]}));
+  let normalized=rows.map((r,i)=>({...r,x:Number.isFinite(r.x)?r.x:i,values:r.values||[{name:opt.name||'数值',value:r.value,change:r.change,color:'#2167a0'}]}));
+  if(opt.trimEmpty){
+    const active=r=>r.values.some(s=>showValue&&Number.isFinite(s.value)||showChange&&Number.isFinite(s.change));
+    const first=normalized.findIndex(active);let last=normalized.length-1;
+    while(last>=0&&!active(normalized[last]))last--;
+    normalized=first<0?[]:normalized.slice(first,last+1);
+  }
   const valid=normalized.filter(r=>r.values.some(s=>showValue&&Number.isFinite(s.value)||showChange&&Number.isFinite(s.change)));
   if(!valid.length)return {html:'<p class="portal-empty">暂无数据</p>',points:[]};
-  const w=Math.max(240,opt.width||Math.min(900,typeof innerWidth==='number'?innerWidth-64:900)),h=w<520?300:340,L=w<520?58:76,R=showChange&&showValue?(w<520?52:76):24,T=42,B=48,bottom=h-B;
+  const w=Math.max(opt.changeLabels?Math.min(normalized.length,12)*76+152:240,opt.width||Math.min(900,typeof innerWidth==='number'?innerWidth-64:900)),h=w<520?300:340,L=w<520?58:76,R=showChange&&showValue?(w<520?52:76):24,T=42,B=48,bottom=h-B;
   const xs=normalized.map(r=>r.x),xmin=Math.min(...xs),xmax=Math.max(...xs),width=w-L-R;
   const unique=[...new Set(xs)].sort((a,b)=>a-b),delta=unique.length>1?Math.min(...unique.slice(1).map((x,i)=>x-unique[i])):1;
   const margin=width/(unique.length+1)/2,px=x=>L+margin+(x-xmin)/(xmax-xmin||1)*(width-margin*2);
@@ -216,9 +222,29 @@ function paired(rows,opt={}){
     if(ri===0||ri===normalized.length-1||w>=520&&ri%step===0&&normalized.length-ri>step/2)svg+='<text x="'+px(r.x)+'" y="'+(h-17)+'" text-anchor="'+(ri===0?'start':ri===normalized.length-1?'end':'middle')+'">'+esc(String(r.period).replace(/年/g,'·').replace(/月/g,''))+'</text>';
   });
   if(showChange)for(let si=0;si<seriesCount;si++){let path='',prior=null;for(const r of normalized){const s=r.values[si];if(!Number.isFinite(s?.change)){prior=null;continue;}const gap=r.breakBefore||prior&&(r.x-prior.x)>(opt.gap??Infinity);path+=(prior&&!gap?'L':'M')+px(r.x)+','+py(s.change,cd)+' ';prior=r;}svg+='<path class="site-line-halo" d="'+path+'" fill="none" stroke="white" stroke-width="5.5" stroke-linejoin="round" stroke-linecap="round"/><path class="site-change-line" d="'+path+'" fill="none" stroke="'+colors[si%colors.length]+'" stroke-width="2.5" stroke-linejoin="round"/>';normalized.forEach((r,ri)=>{if(Number.isFinite(r.values[si]?.change)&&(ri%Math.max(1,Math.ceil(normalized.length/(w<520?24:80)))===0||ri===normalized.length-1))svg+='<circle data-chart-point="'+si+'" tabindex="0" cx="'+px(r.x)+'" cy="'+py(r.values[si].change,cd)+'" r="'+(normalized.length>80?2.4:3.4)+'" fill="white" stroke="'+colors[si%colors.length]+'" stroke-width="1.8"><title>'+esc(points[normalized.indexOf(r)].text)+'</title></circle>';});}
+  if(showChange && opt.changeLabels){
+    const occupied=[],stride=Math.max(1,Math.ceil(normalized.length/12));
+    normalized.forEach((r,ri)=>{
+      if(ri%stride!==0&&ri!==normalized.length-1)return;
+      r.values.forEach((s,si)=>{
+        if(!Number.isFinite(s.change))return;
+        const text=(s.change>0?'+':'')+s.change.toFixed(1)+(changeUnit==='%'?'%':'pp');
+        const tw=text.length*6.5+6,x=Math.max(L+tw/2,Math.min(w-R-tw/2,px(r.x))),pointY=py(s.change,cd);
+        let y=Math.max(T+12,Math.min(bottom-8,pointY-12-si*14));
+        for(let attempt=0;attempt<16;attempt++){
+          const collision=occupied.some(b=>Math.abs(b.x-x)<(b.w+tw)/2+2&&Math.abs(b.y-y)<13);
+          if(!collision)break;
+          const offset=(Math.floor(attempt/2)+1)*14*(attempt%2?1:-1);
+          y=Math.max(T+12,Math.min(bottom-8,pointY+offset));
+        }
+        occupied.push({x,y,w:tw});
+        svg+='<text class="site-change-value" x="'+x+'" y="'+y+'" text-anchor="middle" style="font-size:11px;font-weight:600;fill:'+colors[si%colors.length]+';paint-order:stroke;stroke:white;stroke-width:3px;stroke-linejoin:round">'+esc(text)+'</text>';
+      });
+    });
+  }
   svg+='</svg>';
   const legend=seriesCount>1?normalized.find(r=>r.values.length===seriesCount).values.map((s,i)=>'<span><i style="background:'+colors[i%colors.length]+'"></i>'+esc(s.name)+'</span>').join(''):'';
-  return {html:svg+'<div class="site-chart-legend">'+(showValue?'<span><i class="site-bar-key"></i>数值 · '+esc(unit)+'</span>':'')+(showChange?'<span><i class="site-line-key"></i>'+esc(opt.changeLabel||'同比')+' · '+esc(changeUnit)+'</span>':'')+legend+'</div>',points};
+  return {html:(opt.changeLabels?'<div class="site-chart-scroll" style="overflow-x:auto;max-width:100%" tabindex="0" role="region" aria-label="趋势图，可横向滚动">'+svg.replace('style="height:auto!important;min-height:0"','style="height:auto!important;min-height:0;min-width:'+w+'px"')+'</div>':svg)+'<div class="site-chart-legend">'+(showValue?'<span><i class="site-bar-key"></i>数值 · '+esc(unit)+'</span>':'')+(showChange?'<span><i class="site-line-key"></i>'+esc(opt.changeLabel||'同比')+' · '+esc(changeUnit)+'</span>':'')+legend+'</div>',points};
 }
 const pairedObservers=new WeakMap();
 function drawPaired(host,rows,opt={}){
