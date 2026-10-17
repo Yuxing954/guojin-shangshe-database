@@ -47,3 +47,8 @@ class ScopeTests(unittest.TestCase):
  def test_air_travel_supply_not_aerospace_manufacturing(self):
   self.assertEqual(sector_for('2026年冬航季时刻计划详解'),'酒店旅游')
   self.assertIsNone(sector_for('【招商航空航天及国防】商用发动机深度'))
+
+ def test_cruise_passenger_operations_are_tourism(self):
+  self.assertEqual(sector_for('长江三峡游轮行业9月数据跟踪\n...', '长江三峡游轮行业9月数据跟踪\n\n9月省际游轮客运量同比增长13%。'),'酒店旅游')
+  self.assertEqual(sector_for('邮轮出行旅客经营数据'),'酒店旅游')
+  self.assertIsNone(sector_for('GPU电源研究：邮轮客户案例'))
