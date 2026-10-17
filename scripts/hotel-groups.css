@@ -24,3 +24,5 @@ body.hotel-page.hotel-groups-page.site-page .hg-chart-grid .hd-card h2,body.hote
 .hotel-groups-page .hg-chart-grid .hd-card-head{align-items:baseline}
 .hotel-groups-page .hg-chart-grid .hd-chart-controls{padding-bottom:8px}
 @media(max-width:900px){.hg-chart-grid{grid-template-columns:minmax(0,1fr);gap:16px}.hg-chart-grid>#group-trend-panel{grid-column:auto}}
+
+.hg-dialog h3{margin:20px 0 10px;font-size:16px}.hg-dialog dl+ h3{padding-top:14px;border-top:1px solid var(--hd-line)}
