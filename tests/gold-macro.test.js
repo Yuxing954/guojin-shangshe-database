@@ -23,3 +23,15 @@ test('FedWatch receipt hash matches canonical committed bytes',()=>{
  assert.equal(crypto.createHash('sha256').update(raw,'utf8').digest('hex'),t.receiptSha256);
 });
 
+test('latest FedWatch one-digit futures year resolves to the next matching decade',()=>{
+ const t=D.fedwatchTables.at(-1),retrievedYear=Number(t.retrievedAt.slice(0,4));
+ const monthByCode={F:'01',G:'02',H:'03',J:'04',K:'05',M:'06',N:'07',Q:'08',U:'09',V:'10',X:'11',Z:'12'};
+ const latest=require('../scripts/fedwatch-model.js');assert.equal(latest.latestTable(D).sourceId,t.sourceId);
+ for(const f of t.futures){
+  const code=f.contract.at(-2),digit=Number(f.contract.at(-1));let year=Math.floor(retrievedYear/10)*10+digit;
+  if(year<retrievedYear)year+=10;
+  assert.equal(f.contractMonth,year+'-'+monthByCode[code],f.contract);
+ }
+ const invalid=structuredClone(t);invalid.futures[0].contractMonth='2006-10';assert.equal(latest.validTable(invalid),false);
+});
+
