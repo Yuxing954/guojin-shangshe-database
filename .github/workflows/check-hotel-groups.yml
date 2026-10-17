@@ -6,12 +6,8 @@ on:
       - 'hotel-dashboard.html'
       - 'hotel-holiday-dashboard.html'
       - 'scripts/hotel-group*'
-      - 'scripts/build-hotel-groups.cjs'
-      - 'scripts/company-*-model.js'
       - 'scripts/industry-panels.js'
       - 'scripts/site-charts.*'
-      - 'data/companies/**'
-      - 'data/hotel-groups.json'
       - 'data/hotel_group_weekly.csv'
       - 'tests/hotel-groups.browser.cjs'
       - '.github/workflows/check-hotel-groups.yml'
@@ -25,7 +21,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: node scripts/build-hotel-groups.cjs --check
       - run: node scripts/hotel-groups-model.test.cjs
       - name: Install isolated browser runtime
         run: |

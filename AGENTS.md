@@ -40,4 +40,4 @@
 - 使用固定内容槽位承载可选字段，不截断必要数值或错误状态。修改卡片字段、共享样式后，运行宏观浏览器回归的中美双组及1920/1440/1024/768/390宽度检查，核对卡片边界与内容溢出后再发布。
 
 ### 酒店集团看板
-更新 `data/companies/` 中的酒店资料或筛选配置后，运行 `node scripts/build-hotel-groups.cjs`；提交生成的 `data/hotel-groups.json`，再运行 `node scripts/build-hotel-groups.cjs --check` 和 `node scripts/hotel-groups-model.test.cjs`。看板复用该精简数据与集团周度CSV，保留来源核验层级、单季/累计区别及各集团范围，不另行手填数据。
+酒店集团页仅使用 `data/hotel_group_weekly.csv`（酒店之家集团周度数据），不混入公司财报。ADR使用入住日期字段 `stay_adr`；不构造未披露的集团OCC或RevPAR。更新沿用酒店CSV流程，无需另建看板数据文件。运行 `node scripts/hotel-groups-model.test.cjs` 和 `node tests/hotel-groups.browser.cjs` 检查。
