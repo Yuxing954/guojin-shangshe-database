@@ -8,7 +8,8 @@
   <link rel="stylesheet" href="scripts/hotel-dashboard.css?v=20261016dialog">
   <script defer src="scripts/site-shell.js?v=20261014monthly"></script>
   <script defer src="scripts/hotel-metrics.js?v=20261010coverage"></script>
-  <script defer src="scripts/hotel-dashboard.js?v=20261016overviewexport"></script>
+  <script defer src="scripts/hotel-excel-export.js?v=20261017"></script>
+  <script defer src="scripts/hotel-dashboard.js?v=20261017excel"></script>
 <link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-charts.css?v=20261012mobile1"><link rel="stylesheet" href="scripts/industry-embed.css?v=20261014viewfit"><link rel="stylesheet" href="scripts/site-install.css?v=20261014home"><link rel="stylesheet" href="scripts/site-polish.css?v=20261013clean"><script src="scripts/site-charts.js?v=20261012mobile1"></script><script defer src="scripts/industry-embed.js?v=20261014loading"></script><link rel="manifest" href="site.webmanifest"><meta name="theme-color" content="#4d58a4"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="国金商社"><meta name="apple-mobile-web-app-status-bar-style" content="default"><link rel="apple-touch-icon" href="scripts/assets/app/apple-touch-icon.png"><script defer src="scripts/site-install.js?v=20261014home"></script></head>
 <body class="hotel-page">
 <main class="hd-wrap industry-board">
@@ -96,7 +97,7 @@
 <label>开始周<select id="export-start" required></select></label>
 <label>结束周<select id="export-end" required></select></label>
 <label>导出内容<select id="export-scope"><option value="national">全国</option><option value="segments">分档次（全国）</option></select></label>
-<p class="hd-export-note">CSV · 同周同比 · OCC同比为百分点</p>
+<p class="hd-export-note">Excel · 同周同比 · OCC同比为百分点</p>
 <p id="export-error" role="alert"></p>
 <div class="hd-export-actions"><button type="button" id="export-cancel">取消</button><button type="submit">导出</button></div>
 </form></dialog>
