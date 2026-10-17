@@ -53,8 +53,9 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
     const download=page.waitForEvent('download');await page.locator('#download-latest').click();const csv=fs.readFileSync(await (await download).path(),'utf8');assert.equal(csv.split('\r\n').length,2);assert.match(csv,/社零/);assert.match(csv,/2026-08/);
     await page.locator('[data-study=overview]').click();await page.locator('[data-kpi="cn-pmi"]').click();assert.equal(await page.locator('#search').inputValue(),'');assert.match(await page.locator('.macro-latest').innerText(),/点/);
     await page.locator('[data-study=workspace]').click();await page.locator('#reset-filters').click();await page.locator('[data-country="US"]').click();assert.equal(await page.locator('#metric-list .macro-item').count(),14);assert.equal(await page.locator('#comparison').count(),0);
-    await page.locator('#health').selectOption('attention');assert.match(await page.locator('#metric-list').innerText(),/CPI/);
+    await page.locator('#health').selectOption('attention');assert.equal(await page.locator('#metric-list [data-id="us-cpi"]').count(),0);
     await page.locator('[data-study=overview]').click();await page.locator('[data-kpi="us-cpi"]').click();assert.equal(await page.locator('.macro-coverage').count(),0);
+    assert.match(await page.locator('[data-kpi="us-cpi"] .macro-kpi-context').innerText(),/2025-10官方未发布/);assert.doesNotMatch(await page.locator('[data-kpi="us-fed-rate"]').innerText(),/数据滞后/);
     assert.equal(await page.locator('#comparison').count(),0);
     await page.locator('[data-kpi="us-treasury10"]').click();await page.locator('#years').selectOption('0');assert.ok(await page.locator('#primary-chart [data-chart-point]').count()<=122);
     for(const width of [1920,1440,1024,768,390]){await page.setViewportSize({width,height:1000});await page.waitForTimeout(250);await checkPlotWidth();await checkCardGeometry();assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'overflow at '+width);}

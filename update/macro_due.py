@@ -136,6 +136,7 @@ def build_plan(day: date, registry: dict, ledger: dict | None = None) -> dict:
     ledger = ledger or {"choice": {}, "scopes": {}}
     due_choice, due_scopes = [], []
     for spec in registry.get("series", []):
+        if spec.get('adapter') == 'treasury-public': continue
         group = group_for(spec)
         if not group: continue
         policy = POLICY["windows"][group]
@@ -144,6 +145,7 @@ def build_plan(day: date, registry: dict, ledger: dict | None = None) -> dict:
             due_choice.append(spec["id"])
     official = []
     rules = {"bea-real-gdp": "us_gdp", "census-housing": "census_housing"}
+    if any(s.get("adapter") == "treasury-public" for s in registry.get("series", [])):rules["treasury-yields"] = "daily_market"
     for source, group in rules.items():
         key = window_key(day, group)
         if in_window(day, POLICY["windows"][group], key) and ledger.get("official", {}).get(source) != key:
@@ -168,7 +170,7 @@ def official_key(day: date, source: str) -> str:
         today = day.isoformat()
         yesterday = day.fromordinal(day.toordinal() - 1).isoformat()
         return today if today in spec["exactDates"] else yesterday
-    group = {"bea-real-gdp": "us_gdp", "census-housing": "census_housing"}[source]
+    group = {"bea-real-gdp": "us_gdp", "census-housing": "census_housing", "treasury-yields": "daily_market"}[source]
     return window_key(day, group)
 
 

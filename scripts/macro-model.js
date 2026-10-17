@@ -121,7 +121,11 @@
       const spec=catalog.series.find(s=>s.id===id);if(!spec||!rows(data).length)continue;
       const previous=new Map(rows(snapshot.series[id]).map(r=>[r.period,r]));
       const observations=rows(data).map(r=>{const known=previous.get(r.period);return {...r,releaseDate:r.releaseDate||(known?.value===r.value?known.releaseDate:null),originalSourceUrl:known?.value===r.value?known.sourceUrl:null};});
-      if(data.spec)Object.assign(spec,data.spec);
+      if(data.spec){
+        const frequencyChanged=data.spec.frequency&&data.spec.frequency!==spec.frequency;
+        Object.assign(spec,data.spec);
+        if(frequencyChanged&&!Object.hasOwn(data.spec,'staleDays'))spec.staleDays={annual:800,quarterly:180,monthly:100,daily:10}[spec.frequency];
+      }
       snapshot.series[id]={...data,observations};
     }
     if(feed.cutoff>snapshot.cutoff)snapshot.cutoff=feed.cutoff;

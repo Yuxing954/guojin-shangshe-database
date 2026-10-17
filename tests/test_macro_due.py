@@ -11,6 +11,14 @@ spec.loader.exec_module(due)
 
 
 class DueWindowTests(unittest.TestCase):
+    def test_public_treasury_uses_official_lane_without_a_choice_request(self):
+        registry={'series':[{'id':'us-treasury10','publisher':'美联储','frequency':'daily','adapter':'treasury-public'}]}
+        day=date(2026,10,17);plan=due.build_plan(day,registry)
+        self.assertEqual(plan['dueChoice'],[]);self.assertIn('treasury-yields',plan['dueOfficial'])
+        key=due.official_key(day,'treasury-yields')
+        self.assertNotIn('treasury-yields',due.build_plan(day,registry,{'official':{'treasury-yields':key}})['dueOfficial'])
+        self.assertNotIn('treasury-yields',due.build_plan(date(2026,10,18),registry)['dueOfficial'])
+
     def setUp(self):
         self.registry = {"series": [
             {"id": "cn-cpi", "publisher": "国家统计局", "frequency": "monthly"},

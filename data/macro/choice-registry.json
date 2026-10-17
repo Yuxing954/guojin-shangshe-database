@@ -224,8 +224,9 @@
       "frequency": "monthly",
       "start": "2016-01-01",
       "code": "EMG01420755",
-      "name": "联邦基金有效利率",
-      "adjustment": "月平均值，非当日利率"
+      "name": "联邦基金有效利率（月均）",
+      "adjustment": "月平均值，非当日利率",
+      "staleDays": 100
     },
     {
       "id": "us-treasury10",
@@ -238,7 +239,8 @@
       "name": "10年期国债收益率",
       "adjustment": "日度；交易日口径",
       "lookbackYears": 5,
-      "code": "E1003238"
+      "code": "E1003238",
+      "adapter": "treasury-public"
     },
     {
       "id": "cn-gdp-quarter",
@@ -278,7 +280,7 @@
       "kind": "level",
       "frequency": "monthly",
       "start": "2016-01-01",
-      "scale": 1e-08,
+      "scale": 1e-8,
       "code": "EMI01523073",
       "expectedMissingMonths": [
         1,
@@ -317,7 +319,7 @@
       "kind": "balance",
       "frequency": "monthly",
       "start": "2016-01-01",
-      "scale": 1e-08,
+      "scale": 1e-8,
       "code": "EMG00000700",
       "name": "贸易差额",
       "adjustment": "季调当月货物与服务贸易差额"
@@ -333,7 +335,7 @@
       "code": "EMG01355356",
       "name": "个人收入",
       "adjustment": "季调折年额；接口金额保留原始舍入精度",
-      "scale": 1e-09
+      "scale": 1e-9
     },
     {
       "id": "consumer-core-cpi",
@@ -384,7 +386,7 @@
       "kind": "level",
       "frequency": "monthly",
       "start": "2016-01-01",
-      "scale": 1e-08,
+      "scale": 1e-8,
       "consumerId": "catering",
       "basis": "month",
       "expectedMissingMonths": [
@@ -400,7 +402,7 @@
       "kind": "cumulative",
       "frequency": "monthly",
       "start": "2019-01-01",
-      "scale": 1e-08,
+      "scale": 1e-8,
       "consumerId": "online_goods",
       "basis": "ytd",
       "expectedMissingMonths": [
@@ -440,7 +442,7 @@
       "frequency": "monthly",
       "start": "2016-01-01",
       "code": "EMI00135328",
-      "scale": 1e-08,
+      "scale": 1e-8,
       "consumerId": "retail",
       "basis": "month",
       "expectedMissingMonths": [
@@ -476,7 +478,7 @@
       "basis": "month",
       "minValue": 0,
       "adjustment": "全国；名义金额及官方可比口径同比；未季调；限额以上单位，企业范围逐年调整",
-      "scale": 1e-08,
+      "scale": 1e-8,
       "expectedMissingMonths": [
         1,
         2
@@ -503,7 +505,7 @@
       "basis": "month",
       "minValue": 0,
       "adjustment": "全国；名义金额及官方可比口径同比；未季调；限额以上单位，企业范围逐年调整",
-      "scale": 1e-08,
+      "scale": 1e-8,
       "expectedMissingMonths": [
         1,
         2
@@ -530,7 +532,7 @@
       "basis": "month",
       "minValue": 0,
       "adjustment": "全国；名义金额及官方可比口径同比；未季调；限额以上单位，企业范围逐年调整",
-      "scale": 1e-08,
+      "scale": 1e-8,
       "expectedMissingMonths": [
         1,
         2
@@ -557,7 +559,7 @@
       "basis": "month",
       "minValue": 0,
       "adjustment": "全国；名义金额及官方可比口径同比；未季调；限额以上单位，企业范围逐年调整",
-      "scale": 1e-08,
+      "scale": 1e-8,
       "expectedMissingMonths": [
         1
       ],
@@ -579,7 +581,7 @@
       "basis": "month",
       "minValue": 0,
       "adjustment": "全国；名义金额及官方可比口径同比；未季调；限额以上单位，企业范围逐年调整",
-      "scale": 1e-08,
+      "scale": 1e-8,
       "expectedMissingMonths": [
         1,
         2
@@ -599,7 +601,7 @@
       "basis": "month",
       "minValue": 0,
       "adjustment": "全国；名义金额及官方可比口径同比；未季调；限额以上单位，企业范围逐年调整",
-      "scale": 1e-08,
+      "scale": 1e-8,
       "expectedMissingMonths": [
         1,
         2
@@ -619,7 +621,7 @@
       "basis": "month",
       "minValue": 0,
       "adjustment": "全国；名义金额及官方可比口径同比；未季调；限额以上单位，企业范围逐年调整",
-      "scale": 1e-08,
+      "scale": 1e-8,
       "expectedMissingMonths": [
         1,
         2
@@ -639,7 +641,7 @@
       "basis": "month",
       "minValue": 0,
       "adjustment": "全国；名义金额及官方可比口径同比；未季调；限额以上单位，企业范围逐年调整",
-      "scale": 1e-08,
+      "scale": 1e-8,
       "expectedMissingMonths": [
         1,
         2
@@ -659,7 +661,7 @@
       "basis": "month",
       "minValue": 0,
       "adjustment": "全国；名义金额及官方可比口径同比；未季调；限额以上单位，企业范围逐年调整",
-      "scale": 1e-08,
+      "scale": 1e-8,
       "expectedMissingMonths": [
         1,
         2
@@ -679,7 +681,7 @@
       "basis": "month",
       "minValue": 0,
       "adjustment": "全国；名义金额及官方可比口径同比；未季调；限额以上单位，企业范围逐年调整",
-      "scale": 1e-08,
+      "scale": 1e-8,
       "expectedMissingMonths": [
         1,
         2
@@ -699,7 +701,7 @@
       "basis": "month",
       "minValue": 0,
       "adjustment": "全国；名义金额及官方可比口径同比；未季调；限额以上单位，企业范围逐年调整",
-      "scale": 1e-08,
+      "scale": 1e-8,
       "expectedMissingMonths": [
         1,
         2
@@ -719,7 +721,7 @@
       "basis": "month",
       "minValue": 0,
       "adjustment": "全国；名义金额及官方可比口径同比；未季调；限额以上单位，企业范围逐年调整",
-      "scale": 1e-08,
+      "scale": 1e-8,
       "expectedMissingMonths": [
         1,
         2
@@ -739,7 +741,7 @@
       "basis": "month",
       "minValue": 0,
       "adjustment": "全国；名义金额及官方可比口径同比；未季调；限额以上单位，企业范围逐年调整",
-      "scale": 1e-08,
+      "scale": 1e-8,
       "expectedMissingMonths": [
         1,
         2
@@ -759,7 +761,7 @@
       "basis": "month",
       "minValue": 0,
       "adjustment": "全国；名义金额及官方可比口径同比；未季调；限额以上单位，企业范围逐年调整",
-      "scale": 1e-08,
+      "scale": 1e-8,
       "expectedMissingMonths": [
         1,
         2
@@ -779,7 +781,7 @@
       "basis": "month",
       "minValue": 0,
       "adjustment": "全国；名义金额及官方可比口径同比；未季调；限额以上单位，企业范围逐年调整",
-      "scale": 1e-08,
+      "scale": 1e-8,
       "expectedMissingMonths": [
         1,
         2
@@ -900,7 +902,7 @@
       "basis": "month",
       "minValue": 0,
       "adjustment": "全国；名义金额及官方可比口径同比；未季调",
-      "scale": 1e-08,
+      "scale": 1e-8,
       "expectedMissingMonths": [
         1,
         2
@@ -924,7 +926,7 @@
       "basis": "month",
       "minValue": 0,
       "adjustment": "全国；名义金额及官方可比口径同比；未季调",
-      "scale": 1e-08,
+      "scale": 1e-8,
       "expectedMissingMonths": [
         1,
         2
@@ -944,7 +946,7 @@
       "kind": "cumulative",
       "frequency": "monthly",
       "start": "2016-01-01",
-      "scale": 1e-08,
+      "scale": 1e-8,
       "basis": "ytd",
       "expectedMissingMonths": [
         1

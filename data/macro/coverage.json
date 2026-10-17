@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "checkedAt": "2026-10-17T08:20:20+00:00",
+  "checkedAt": "2026-10-17T09:10:45+00:00",
   "series": {
     "cn-ppi": {
       "start": "2016-01",
@@ -171,12 +171,19 @@
       "count": 128,
       "requestedStart": "2016-01-01",
       "historyShort": false,
-      "missingPeriods": [
+      "missingPeriods": [],
+      "structuralPeriods": [
         "2025-10"
       ],
-      "structuralPeriods": [],
-      "complete": false,
-      "calendar": "原始发布频率"
+      "complete": true,
+      "calendar": "原始发布频率",
+      "unpublishedPeriods": [
+        {
+          "period": "2025-10",
+          "reason": "2025年联邦政府停摆，官方未发布",
+          "sourceUrl": "https://www.bls.gov/bls/2025-lapse-revised-release-dates.htm"
+        }
+      ]
     },
     "us-core-cpi": {
       "start": "2016-01",
@@ -184,12 +191,19 @@
       "count": 128,
       "requestedStart": "2016-01-01",
       "historyShort": false,
-      "missingPeriods": [
+      "missingPeriods": [],
+      "structuralPeriods": [
         "2025-10"
       ],
-      "structuralPeriods": [],
-      "complete": false,
-      "calendar": "原始发布频率"
+      "complete": true,
+      "calendar": "原始发布频率",
+      "unpublishedPeriods": [
+        {
+          "period": "2025-10",
+          "reason": "2025年联邦政府停摆，官方未发布",
+          "sourceUrl": "https://www.bls.gov/bls/2025-lapse-revised-release-dates.htm"
+        }
+      ]
     },
     "us-pce": {
       "start": "2016-01",
@@ -258,9 +272,9 @@
       "calendar": "原始发布频率"
     },
     "us-treasury10": {
-      "start": "2020-12-30",
+      "start": "2016-01-04",
       "end": "2026-10-16",
-      "count": 1450,
+      "count": 2698,
       "requestedStart": "2016-01-01",
       "historyShort": false,
       "missingPeriods": [],
@@ -445,12 +459,19 @@
       "count": 128,
       "requestedStart": "2016-01-01",
       "historyShort": false,
-      "missingPeriods": [
+      "missingPeriods": [],
+      "structuralPeriods": [
         "2025-10"
       ],
-      "structuralPeriods": [],
-      "complete": false,
-      "calendar": "原始发布频率"
+      "complete": true,
+      "calendar": "原始发布频率",
+      "unpublishedPeriods": [
+        {
+          "period": "2025-10",
+          "reason": "2025年联邦政府停摆，官方未发布",
+          "sourceUrl": "https://www.bls.gov/cps/methods/2025-federal-government-shutdown-impact-cps.htm"
+        }
+      ]
     },
     "cn-imports-monthly": {
       "start": "2016-01",

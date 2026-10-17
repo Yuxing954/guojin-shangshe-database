@@ -433,3 +433,6 @@ body.site-page .data-board #indicators #kpi-grid .macro-expectation-reading{widt
 @media(max-width:380px){
  body.site-page .data-board #indicators #kpi-grid .macro-topic-cards{grid-template-columns:minmax(0,1fr)}
 }
+
+body.site-page .data-board #indicators #kpi-grid .macro-kpi-context{color:#748198;font-size:10px;line-height:18px;text-decoration:none}
+body.site-page .data-board #indicators #kpi-grid .macro-kpi-context:hover{text-decoration:underline}
