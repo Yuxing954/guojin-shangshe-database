@@ -288,27 +288,27 @@
     }) }; }), { unit: '%' });
   }
   function refresh() { selectionOptions(); renderPeriod(); if(state.view==='overview') renderOverview(); else if(state.view==='cities') renderCities(); else { renderGroups(); renderSupply(); renderInvestment(); } saveState(); }
-  function exportWeekly() {
+  async function exportWeekly() {
     var start = $('export-start').value, end = $('export-end').value;
     var tiered = $('export-scope').value === 'segments', error = $('export-error');
     error.textContent = '';
     if (!periods.has(start) || !periods.has(end) || start > end) { error.textContent = '开始周不能晚于结束周。'; return; }
-    var rows = data.industry.filter(function (r) {
-      return r.period_id >= start && r.period_id <= end && r.region === '全国' && (tiered ? SEGS.includes(r.segment) : r.segment === '全部');
-    }).sort(function (a,b) { return a.period_id.localeCompare(b.period_id) || SEGS.indexOf(a.segment)-SEGS.indexOf(b.segment); });
+    var rows = data.industry.filter(function (r) { return r.period_id >= start && r.period_id <= end && r.region === '全国' && (tiered ? SEGS.includes(r.segment) : r.segment === '全部'); }).sort(function (a,b) { return a.period_id.localeCompare(b.period_id); });
     if (!rows.length) { error.textContent = '所选范围暂无数据。'; return; }
-    var fields = Array.from(new Set(rows.flatMap(function (r) { return Object.keys(r); })));
-    function cell(v) { return '"' + String(v == null ? '' : v).replace(/"/g, '""') + '"'; }
-    var lines = [fields.concat(['同比基周','RevPAR同比（%）','OCC同比（百分点）','ADR同比（%）']).map(cell).join(',')];
-    rows.forEach(function (r) {
-      var id = M.priorPeriod(r), base = row(r.region,r.segment,id);
-      lines.push(fields.map(function (f) { return r[f]; }).concat([id,M.change(r,base,'revpar'),M.change(r,base,'occupancy_rate'),M.change(r,base,'adr')]).map(cell).join(','));
-    });
-    var url = URL.createObjectURL(new Blob(['\uFEFF'+lines.join('\r\n')+'\r\n'],{type:'text/csv;charset=utf-8;'})), link = document.createElement('a');
-    link.href = url; link.download = '酒店周度数据_'+(tiered?'全国分档次_':'全国_')+start+'_'+end+'.csv';
-    document.body.appendChild(link); link.click(); link.remove();
-    setTimeout(function () { URL.revokeObjectURL(url); },1000);
-    $('weekly-export-dialog').close();
+    var submit = $('export-form').querySelector('[type="submit"]'); submit.disabled = true; submit.textContent = '正在生成…';
+    try {
+      var X = HotelExcel, columns = [{label:'数据周',width:14},{label:'开始日期',width:15,format:'date'},{label:'结束日期',width:15,format:'date'},{label:'RevPAR（元）',format:'number'},{label:'RevPAR同比',format:'change'},{label:'OCC',format:'percent'},{label:'OCC同比（百分点）',width:20,format:'points'},{label:'ADR（元）',format:'number'},{label:'ADR同比',format:'change'},{label:'同比基周',width:14}];
+      var specs = (tiered ? SEGS : ['全部']).filter(function (s) { return rows.some(function (r) { return r.segment === s; }); }).map(function (s) {
+        return { name:s==='全部'?'全国经营':s, title:'全国酒店周度经营'+(s==='全部'?'':' · '+s), subtitle:start+' 至 '+end+' · 来源：酒店之家', note:'同周号同比，未调整节假日错期；缺失值留空。OCC为入住率，变化单位为百分点。', columns:columns,
+          rows:rows.filter(function (r) { return r.segment === s; }).map(function (r) { var id=M.priorPeriod(r), b=row(r.region,r.segment,id); return [r.period_id,X.date(r.start_date),X.date(r.end_date),M.metric(r,'revpar'),M.change(r,b,'revpar')==null?null:M.change(r,b,'revpar')/100,M.metric(r,'occupancy_rate'),M.change(r,b,'occupancy_rate'),M.metric(r,'adr'),M.change(r,b,'adr')==null?null:M.change(r,b,'adr')/100,id]; }) };
+      });
+      var originals = new Map();
+      rows.forEach(function (r) { originals.set(r.period_id+'|'+r.segment,r); var b=row(r.region,r.segment,M.priorPeriod(r)); if(b) originals.set(b.period_id+'|'+b.segment,b); });
+      specs.push(X.raw(Array.from(originals.values()).sort(function(a,b){return a.period_id.localeCompare(b.period_id);})));
+      await X.download(specs,'酒店周度数据_'+(tiered?'全国分档次_':'全国_')+start+'_'+end);
+      $('weekly-export-dialog').close();
+    } catch (e) { error.textContent = e.message || '导出失败，请重试。'; }
+    finally { submit.disabled=false; submit.textContent='导出'; }
   }
   function openWeeklyExport() {
     var options = weekly.map(function (p) { return option(p.period_id,p.period_id+' · '+p.start_date+' — '+p.end_date); }).join('');
