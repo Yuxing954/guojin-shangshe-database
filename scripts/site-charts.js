@@ -137,6 +137,7 @@ function prepareValues(svg,points,config){
 }
 function attach(container,points,options={}){
   const svg=container?.matches?.('svg')?container:container?.querySelector('svg');if(!svg)return;
+  if(svg.isConnected===false){states.get(svg)?.destroy();return;}
   states.get(svg)?.destroy();
   svg.querySelector('.site-legacy-markers')?.remove();
   const originalPoints=points,config=valuesControl(svg);points=prepareValues(svg,points,config);
@@ -302,7 +303,9 @@ const pairedObservers=new WeakMap();
 function drawPaired(host,rows,opt={}){
   const style=typeof getComputedStyle==='function'?getComputedStyle(host):null;
   const width=(host.clientWidth||900)-(parseFloat(style?.paddingLeft)||0)-(parseFloat(style?.paddingRight)||0);
-  const result=paired(rows,{...opt,width});host.innerHTML=result.html;attach(host,result.points);
+  const result=paired(rows,{...opt,width});
+  host.querySelectorAll('svg').forEach(svg=>states.get(svg)?.destroy());
+  host.innerHTML=result.html;attach(host,result.points);
   pairedObservers.get(host)?.disconnect();
   if(typeof ResizeObserver!=='undefined'){let last=host.clientWidth;const observer=new ResizeObserver(()=>{if(host.clientWidth>0&&Math.abs(host.clientWidth-last)>2){observer.disconnect();drawPaired(host,rows,opt);}});observer.observe(host);pairedObservers.set(host,observer);}
   return result;
