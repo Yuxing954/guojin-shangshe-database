@@ -16,13 +16,13 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
     async function checkCardGeometry(){
       const boxes=await page.locator('#kpi-grid .macro-kpi').evaluateAll(nodes=>nodes.map(node=>{
         const b=node.getBoundingClientRect();
-        const reading=node.querySelector('.macro-reading-row').getBoundingClientRect(),unit=node.querySelector('.macro-kpi-reading small').getBoundingClientRect();
-        return {width:b.width,height:b.height,readingTop:reading.top-b.top,unitFits:unit.bottom<=reading.bottom+1,overflow:node.scrollHeight>node.clientHeight+1};
+        const reading=node.querySelector('.macro-reading-row').getBoundingClientRect(),unit=node.querySelector('.macro-kpi-reading small').getBoundingClientRect(),style=getComputedStyle(node),innerWidth=node.clientWidth-parseFloat(style.paddingLeft)-parseFloat(style.paddingRight);
+        return {width:b.width,height:b.height,readingTop:reading.top-b.top,unitFits:unit.bottom<=reading.bottom+1,slotFillsWidth:Math.abs(reading.width-innerWidth)<=1,overflow:node.scrollHeight>node.clientHeight+1};
       }));
       assert.equal(boxes.length,6);
       assert.ok(Math.max(...boxes.map(b=>b.width))-Math.min(...boxes.map(b=>b.width))<=1,JSON.stringify(boxes));
       assert.ok(Math.max(...boxes.map(b=>b.height))-Math.min(...boxes.map(b=>b.height))<=1,JSON.stringify(boxes));
-      assert.ok(boxes.every(b=>!b.overflow&&b.unitFits),'card content clipped: '+JSON.stringify(boxes));
+      assert.ok(boxes.every(b=>!b.overflow&&b.unitFits&&b.slotFillsWidth),'card content clipped: '+JSON.stringify(boxes));
       assert.ok(Math.max(...boxes.map(b=>b.readingTop))-Math.min(...boxes.map(b=>b.readingTop))<=1,'readings are misaligned: '+JSON.stringify(boxes));
     }
     await checkCardGeometry();
