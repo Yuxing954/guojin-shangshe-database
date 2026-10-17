@@ -198,7 +198,7 @@ function paired(rows,opt={}){
   }
   const valid=normalized.filter(r=>r.values.some(s=>showValue&&Number.isFinite(s.value)||showChange&&Number.isFinite(s.change)));
   if(!valid.length)return {html:'<p class="portal-empty">暂无数据</p>',points:[]};
-  const w=Math.max(opt.changeLabels?Math.min(normalized.length,12)*76+152:240,opt.width||Math.min(900,typeof innerWidth==='number'?innerWidth-64:900)),h=w<520?300:340,L=w<520?58:76,R=showChange&&showValue?(w<520?52:76):24,T=42,B=48,bottom=h-B;
+  const w=Math.max((opt.changeLabels||opt.valueLabels)?Math.min(normalized.length,12)*76+152:240,opt.width||Math.min(900,typeof innerWidth==='number'?innerWidth-64:900)),h=w<520?300:340,L=w<520?58:76,R=showChange&&showValue?(w<520?52:76):24,T=42,B=48,bottom=h-B;
   const xs=normalized.map(r=>r.x),xmin=Math.min(...xs),xmax=Math.max(...xs),width=w-L-R;
   const unique=[...new Set(xs)].sort((a,b)=>a-b),delta=unique.length>1?Math.min(...unique.slice(1).map((x,i)=>x-unique[i])):1;
   const margin=width/(unique.length+1)/2,px=x=>L+margin+(x-xmin)/(xmax-xmin||1)*(width-margin*2);
@@ -242,9 +242,20 @@ function paired(rows,opt={}){
       });
     });
   }
+  if(showValue&&opt.valueLabels){
+    const stride=Math.max(1,Math.ceil(normalized.length/12));
+    normalized.forEach((r,ri)=>{
+      if(ri%stride!==0&&ri!==normalized.length-1)return;
+      r.values.forEach((s,si)=>{
+        if(!Number.isFinite(s.value))return;
+        const x=px(r.x)+(si-(seriesCount-1)/2)*barWidth,y=Math.max(T+12,py(s.value,vd)-8-si*12);
+        svg+='<text class="site-value-label" x="'+x+'" y="'+y+'" text-anchor="middle" style="font-size:11px;font-weight:600;fill:'+colors[si%colors.length]+';paint-order:stroke;stroke:white;stroke-width:3px">'+esc(fmt(s.value))+'</text>';
+      });
+    });
+  }
   svg+='</svg>';
   const legend=seriesCount>1?normalized.find(r=>r.values.length===seriesCount).values.map((s,i)=>'<span><i style="background:'+colors[i%colors.length]+'"></i>'+esc(s.name)+'</span>').join(''):'';
-  return {html:(opt.changeLabels?'<div class="site-chart-scroll" style="overflow-x:auto;max-width:100%" tabindex="0" role="region" aria-label="趋势图，可横向滚动">'+svg.replace('style="height:auto!important;min-height:0"','style="height:auto!important;min-height:0;min-width:'+w+'px"')+'</div>':svg)+'<div class="site-chart-legend">'+(showValue?'<span><i class="site-bar-key"></i>数值 · '+esc(unit)+'</span>':'')+(showChange?'<span><i class="site-line-key"></i>'+esc(opt.changeLabel||'同比')+' · '+esc(changeUnit)+'</span>':'')+legend+'</div>',points};
+  return {html:((opt.changeLabels||opt.valueLabels)?'<div class="site-chart-scroll" style="overflow-x:auto;max-width:100%" tabindex="0" role="region" aria-label="趋势图，可横向滚动">'+svg.replace('style="height:auto!important;min-height:0"','style="height:auto!important;min-height:0;min-width:'+w+'px"')+'</div>':svg)+'<div class="site-chart-legend">'+(showValue?'<span><i class="site-bar-key"></i>数值 · '+esc(unit)+'</span>':'')+(showChange?'<span><i class="site-line-key"></i>'+esc(opt.changeLabel||'同比')+' · '+esc(changeUnit)+'</span>':'')+legend+'</div>',points};
 }
 const pairedObservers=new WeakMap();
 function drawPaired(host,rows,opt={}){
