@@ -22,9 +22,9 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
     await page.locator('#morning-chart-cn-retail [data-chart-point]').first().focus();assert.ok(await page.locator('#morning-chart-cn-retail .research-tooltip').isVisible());
     await page.locator('#morning-trends [data-morning-metric="cn-pmi"]').click();assert.equal(new URL(page.url()).searchParams.get('indicator'),'cn-pmi');
     if(out){fs.mkdirSync(out,{recursive:true});await page.evaluate(()=>scrollTo(0,0));await page.screenshot({path:path.join(out,'宏观晨报-首屏.png'),fullPage:false});}
-    await page.locator('[data-kpi="cn-cpi"]').click();assert.match(await page.locator('#metric-title').innerText(),/CPI/);
-    await page.locator('#comparison').selectOption('cn-ppi');assert.equal(await page.locator('.macro-chart svg').count(),2);
-    await page.locator('#years').selectOption('1');await page.reload();await ready();assert.equal(await page.locator('#comparison').inputValue(),'cn-ppi');assert.equal(await page.locator('#years').inputValue(),'1');
+    await page.evaluate(()=>scrollTo(0,0));const beforeKpiClick=await page.evaluate(()=>scrollY);await page.locator('[data-kpi="cn-cpi"]').click();assert.match(await page.locator('#metric-title').innerText(),/CPI/);assert.equal(await page.evaluate(()=>scrollY),beforeKpiClick,'selecting a KPI should not jump to the trend detail');assert.equal(await page.locator('#comparison').count(),0);assert.equal(await page.locator('#comparison-chart').count(),0);
+    assert.equal(await page.locator('.macro-chart svg').count(),1);assert.equal(new URL(page.url()).searchParams.has('comparison'),false);
+    await page.locator('#years').selectOption('1');await page.reload();await ready();assert.equal(await page.locator('#years').inputValue(),'1');
     await page.locator('#primary-chart [data-chart-point]').first().focus();assert.ok(await page.locator('#primary-chart .research-tooltip').isVisible());assert.match(await page.locator('#primary-chart .research-tooltip').innerText(),/20\d{2}-\d{2}/);assert.doesNotMatch(await page.locator('#primary-chart .research-tooltip').innerText(),/发布|来源|计算/);
     if(out){fs.mkdirSync(out,{recursive:true});await page.locator('#primary-chart [data-chart-point]').first().evaluate(el=>el.blur());await page.evaluate(()=>scrollTo(0,0));await page.screenshot({path:path.join(out,'宏观核心指标-桌面.png'),fullPage:true});}
     await page.locator('[data-study=workspace]').click();await page.locator('#more-filters > summary').click();await page.locator('#frequency').selectOption('quarterly');assert.equal(await page.locator('#metric-list .macro-item').count(),2);
@@ -32,14 +32,14 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
     await page.locator('#reset-filters').click();await page.locator('#search').fill('社零');await page.waitForTimeout(250);assert.equal(await page.locator('#metric-list .macro-item').count(),1);
     const download=page.waitForEvent('download');await page.locator('#download-latest').click();const csv=fs.readFileSync(await (await download).path(),'utf8');assert.equal(csv.split('\r\n').length,2);assert.match(csv,/社零/);assert.match(csv,/2026-08/);
     await page.locator('[data-study=overview]').click();await page.locator('[data-kpi="cn-pmi"]').click();assert.equal(await page.locator('#search').inputValue(),'');assert.match(await page.locator('.macro-latest').innerText(),/点/);
-    await page.locator('[data-study=workspace]').click();await page.locator('#reset-filters').click();await page.locator('[data-country="US"]').click();assert.equal(await page.locator('#metric-list .macro-item').count(),14);assert.equal(await page.locator('#comparison').inputValue(),'');
+    await page.locator('[data-study=workspace]').click();await page.locator('#reset-filters').click();await page.locator('[data-country="US"]').click();assert.equal(await page.locator('#metric-list .macro-item').count(),14);assert.equal(await page.locator('#comparison').count(),0);
     assert.equal(await page.locator('#morning-trends [data-morning-metric="us-payroll"]').count(),1);assert.equal(await page.locator('#morning-trends [data-morning-metric^="cn-"]').count(),0);
     await page.locator('#health').selectOption('attention');assert.match(await page.locator('#metric-list').innerText(),/CPI/);
     await page.locator('[data-study=overview]').click();await page.locator('[data-kpi="us-cpi"]').click();assert.match(await page.locator('.macro-coverage').innerText(),/缺失/);
-    await page.locator('#comparison').selectOption('us-gdp-quarter');assert.match(await page.locator('.macro-chart-note').innerText(),/频率不同/);
+    assert.equal(await page.locator('#comparison').count(),0);
     await page.locator('[data-kpi="us-treasury10"]').click();await page.locator('#years').selectOption('0');assert.ok(await page.locator('#primary-chart [data-chart-point]').count()<=122);
     for(const width of [1920,1440,1024,768,390]){await page.setViewportSize({width,height:1000});await page.waitForTimeout(200);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'overflow at '+width);}
-    await page.goto(base+'/macro.html?country=CN&indicator=cn-cpi&comparison=cn-ppi&years=1');await ready();
+    await page.goto(base+'/macro.html?country=CN&indicator=cn-cpi&comparison=cn-ppi&years=1');await ready();assert.equal(new URL(page.url()).searchParams.has('comparison'),false);
     if(out)await page.screenshot({path:path.join(out,'宏观核心指标-手机.png'),fullPage:true});
     await page.locator('[data-view="predictions"]').click();await page.waitForFunction(()=>document.querySelector('#prediction-list .forecast-event'));assert.ok(requests.some(url=>url.includes('predictions.json')));
     assert.match(await page.locator('#prediction-overview').innerText(),/活跃合约/);
@@ -72,7 +72,7 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
     await page.route('**/data/macro/automatic-series.json',r=>r.fulfill({status:503,body:'unavailable'}));await page.goto(base+'/macro.html');await ready();assert.match(await page.locator('#data-warning').innerText(),/补充历史读取失败/);assert.ok(await page.locator('#retry').isVisible());await page.unroute('**/data/macro/automatic-series.json');await page.locator('#retry').click();await page.waitForFunction(()=>document.querySelectorAll('#metric-list .macro-item').length===17);assert.ok(await page.locator('#data-warning').isHidden());
     await page.route('**/data/macro/catalog.json',r=>r.fulfill({status:503,body:'unavailable'}));await page.goto(base+'/macro.html');await page.waitForFunction(()=>document.querySelector('#load-state').textContent.includes('读取失败'));assert.ok(await page.locator('#indicators').isHidden());assert.ok(await page.locator('#skeleton').isHidden());
     await page.unroute('**/data/macro/catalog.json');await page.locator('#retry').click();await ready();
-    assert.deepEqual(errors,[]);console.log('PASS: KPI drill-down, comparison, frequency/health/search filters, URL restore, CSV, chart keyboard access, daily performance, five viewport widths, lazy prediction loading, partial failure, full failure and retry.');
+    assert.deepEqual(errors,[]);console.log('PASS: no-jump KPI selection, single-indicator charts, frequency/health/search filters, URL restore, CSV, chart keyboard access, daily performance, five viewport widths, lazy prediction loading, partial failure, full failure and retry.');
   }finally{await browser.close();await new Promise(r=>server.close(r));}
 })().catch(e=>{console.error(e);server.close();process.exitCode=1;});
 
