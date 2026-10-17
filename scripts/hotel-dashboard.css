@@ -29,3 +29,5 @@
 .hd-export-note{font-size:12px;color:#747e90;margin:16px 0 0}.hd-export-dialog #export-error{font-size:12px;color:#b85460;margin:8px 0}
 .hd-export-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:22px}.hd-export-actions button{padding:9px 20px;border:1px solid #dce1ea;border-radius:8px;background:#fff;color:#5158aa;font-size:14px}.hd-export-actions button[type=submit]{background:#5158aa;color:#fff;border-color:#5158aa}
 body.hotel-page.site-page .hd-tabs.site-subnav > :is(a,button){display:inline-flex!important;align-items:center!important;justify-content:center!important;font-family:inherit!important;font-size:14px!important;line-height:22px!important;padding:12px 18px!important;min-height:48px!important;text-decoration:none!important}
+
+body.hotel-page .hd-export-dialog{position:fixed;inset:var(--export-top,48px) 0 auto;margin:0 auto;max-height:var(--export-max-height,calc(100vh - 80px))}
