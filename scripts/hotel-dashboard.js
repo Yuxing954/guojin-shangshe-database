@@ -1,7 +1,7 @@
 (function () {
   'use strict';
   var M = HotelMetrics, data = {}, ix = {}, periods = new Map(), regions = [];
-  var state = { view: 'overview', region: '全国', week: '', base: 'auto', window: '52', metric: 'revpar', mode: 'combo' };
+  var state = { view: 'overview', region: '全国', week: '', base: 'auto', window: '12', metric: 'revpar', mode: 'combo' };
   var followLatest = true, latestWeek = '';
   var SEGS = ['经济型', '中档型', '高档型', '豪华型'];
   var GROUPS = ['华住', '首旅如家', '锦江酒店（中国区）', '亚朵'];
@@ -55,7 +55,7 @@
       return r.text();
     }).then(function (text) { var rows = M.csv(text); if (!rows.length) throw new Error('没有有效记录'); return rows; });
   }
-  function saveState() { var saved = Object.assign({}, state, { week: followLatest ? 'latest' : state.week }); history.replaceState(null, '', '#' + new URLSearchParams(saved).toString()); }
+  function saveState() { var saved = Object.assign({}, state, { week: followLatest ? 'latest' : state.week, rangeVersion: '12w' }); history.replaceState(null, '', '#' + new URLSearchParams(saved).toString()); }
   function switchView(view) {
     state.view = view;
     $('weekly-export').hidden = view !== 'overview';
@@ -111,8 +111,8 @@
     var current = rows.map(function (r) { return { x: r.period_id, date: r.start_date + ' — ' + r.end_date,
       y: !isChange ? display(row(state.region, '全部', r.period_id), field) : M.change(row(state.region, '全部', r.period_id), row(state.region, '全部', M.priorPeriod(r)), field) }; });
     if(['combo','value','change'].includes(state.mode)){
-      const result=SiteCharts.drawPaired($('main-chart'),rows.map(r=>({period:r.period_id,x:Date.parse(r.start_date),value:display(row(state.region,'全部',r.period_id),field),change:M.change(row(state.region,'全部',r.period_id),row(state.region,'全部',M.priorPeriod(r)),field)})),{mode:state.mode,unit:meta.unit,changeUnit:field==='occupancy_rate'?'百分点':'%',changeLabel:labelChange(),name:meta.label,gap:15*86400000});
-      $('trend-caption').textContent=meta.label+' · '+(state.mode==='combo'?meta.unit+' / '+(field==='occupancy_rate'?'百分点':'%'):state.mode==='change'?(field==='occupancy_rate'?'百分点':'%'):meta.unit);$('chart-mode-note').textContent=labelChange();$('history-note').textContent=rows.length?rows[0].period_id+' — '+rows.at(-1).period_id:'';return;
+      const result=SiteCharts.drawPaired($('main-chart'),rows.map(r=>({period:r.period_id,x:Date.parse(r.start_date),value:display(row(state.region,'全部',r.period_id),field),change:M.change(row(state.region,'全部',r.period_id),row(state.region,'全部',M.priorPeriod(r)),field)})),{mode:state.mode,unit:meta.unit,changeUnit:field==='occupancy_rate'?'百分点':'%',changeLabel:labelChange(),name:meta.label,trimEmpty:true,changeLabels:true,gap:15*86400000});
+      $('trend-caption').textContent=meta.label+' · '+(state.mode==='combo'?meta.unit+' / '+(field==='occupancy_rate'?'百分点':'%'):state.mode==='change'?(field==='occupancy_rate'?'百分点':'%'):meta.unit);$('chart-mode-note').textContent=labelChange();$('history-note').textContent=result.points.length?result.points[0].text.split('\n')[0]+' — '+result.points.at(-1).text.split('\n')[0]:'';return;
     }
     var lines = [{ name: state.region + (!isChange ? ' · 本期绝对值' : ' · 同周同比'), color: COLORS[0], pts: current }];
     if (!isChange) lines.push({ name: '去年同周号', color: '#71869b', dash: true, pts: rows.map(function (r) {
@@ -159,7 +159,7 @@
     var changeUnit = field === 'occupancy_rate' ? '百分点' : '%';
     $('segment-chart-caption').textContent = state.region + ' · ' + meta.label + ' · ' + (mode === 'combo' ? meta.unit + ' / 同周同比（' + changeUnit + '）' : mode === 'change' ? '同周同比（' + changeUnit + '）' : '数值（' + meta.unit + '）') + (fallback ? ' · 基期缺失' : '');
     if (!hasValue && !hasChange) { $('segment-chart').innerHTML = '<div class="hd-empty">所选范围暂无分档次数据</div>'; return; }
-    SiteCharts.drawPaired($('segment-chart'), points, { mode: mode, unit: meta.unit, changeUnit: changeUnit, changeLabel: '同周同比', name: state.region + '分档次' + meta.label, gap: 15 * 86400000 });
+    SiteCharts.drawPaired($('segment-chart'), points, { mode: mode, unit: meta.unit, changeUnit: changeUnit, changeLabel: '同周同比', name: state.region + '分档次' + meta.label, trimEmpty:true,changeLabels:true, gap: 15 * 86400000 });
   }
   function renderCities() {
     var all = regions.filter(function (r) { return r !== '全国'; }).map(function (region) {
@@ -341,7 +341,7 @@
     if (regions.includes(saved.get('region'))) state.region = saved.get('region');
     if (periods.has(saved.get('week'))) { state.week = saved.get('week'); followLatest = false; }
     if (['overview', 'cities', 'structure'].includes(saved.get('view'))) state.view = saved.get('view');
-    if (['13', '26', '52', '156', 'all'].includes(saved.get('window'))) state.window = saved.get('window');
+    if (['12', '13', '26', '52', '156', 'all'].includes(saved.get('window')) && (saved.get('window') !== '52' || saved.get('rangeVersion') === '12w')) state.window = saved.get('window');
     if (META[saved.get('metric')]) state.metric = saved.get('metric');
     if (['combo', 'value', 'change'].includes(saved.get('mode'))) state.mode = saved.get('mode');
     if (periods.has(saved.get('base'))) state.base = saved.get('base');
