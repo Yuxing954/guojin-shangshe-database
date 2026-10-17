@@ -1,13 +1,14 @@
 {
-  "syncedAt": "2026-10-16T16:14:48Z",
+  "syncedAt": "2026-10-17T04:01:23Z",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
-  "coverageFrom": "2026-10-16T12:58:38.859+0800",
-  "coverageTo": "2026-10-16T23:44:03.277+0800",
-  "oldestFetched": "2026-10-16T10:27:42.179+0800",
-  "fetchedTopics": 120,
+  "coverageFrom": "2026-10-16T23:44:03.277+0800",
+  "coverageTo": "2026-10-17T11:24:02.269+0800",
+  "oldestFetched": "2026-10-17T11:18:56.673+0800",
+  "fetchedTopics": 30,
   "files": {
     "views": [
+      "data/research/updates/2026-10-17-1201-views.csv",
       "data/research/updates/2026-10-16-1802-views.csv",
       "data/research/updates/2026-10-16-1601-views.csv",
       "data/research/updates/2026-10-16-1259-views.csv",
@@ -55,6 +56,7 @@
       "data/research/updates/2026-10-14-1258-views.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-10-17-1201-all_views.csv",
       "data/research/updates/2026-10-16-2359-all_views.csv",
       "data/research/updates/2026-10-16-1802-all_views.csv",
       "data/research/updates/2026-10-16-1601-all_views.csv",
@@ -182,13 +184,13 @@
     ]
   },
   "counts": {
-    "views": 278,
-    "all_views": 5296,
+    "views": 280,
+    "all_views": 5310,
     "minutes": 101
   },
   "latest": {
-    "views": "2026-10-16 17:31",
-    "all_views": "2026-10-16 23:44",
+    "views": "2026-10-17 11:22",
+    "all_views": "2026-10-17 11:24",
     "minutes": "2026-10-12T01:07:33"
   },
   "excluded": {
@@ -5731,165 +5733,166 @@
     ]
   },
   "lastRun": {
-    "runId": "2026-10-16-2359",
+    "runId": "2026-10-17-1201",
     "sourceGroup": "88888142214212",
     "sourceName": "水木调研纪要-2.0",
-    "previousCoverageTo": "2026-10-16T20:57:56.468+0800",
-    "coverageTo": "2026-10-16T23:44:03.277+0800",
-    "oldestFetched": "2026-10-16T16:20:35.971+0800",
+    "previousCoverageTo": "2026-10-16T23:44:03.277+0800",
+    "coverageTo": "2026-10-17T11:24:02.269+0800",
+    "oldestFetched": "2026-10-17T11:18:56.673+0800",
     "sourceTopicsFetched": 30,
     "pageRowsFetched": 30,
-    "sourceTopicsInCoverage": 14,
+    "sourceTopicsInCoverage": 16,
     "added": {
-      "views": 0,
+      "views": 2,
       "all_views": 14
     },
     "duplicates": 0,
     "duplicateTopicIds": [],
     "excludedTopics": [],
     "files": {
-      "all_views": "data/research/updates/2026-10-16-2359-all_views.csv"
+      "views": "data/research/updates/2026-10-17-1201-views.csv",
+      "all_views": "data/research/updates/2026-10-17-1201-all_views.csv"
     },
     "dedupCheck": {
       "algorithm": "scripts/build_research_shards.py keys(row)",
-      "candidateKeys": 56,
-      "candidateBuckets": 49,
-      "candidateKeysByTopic": {
-        "82258221544118542": [
-          "topic:82258221544118542",
-          "stamp:23169dd8ed02e2a285f163549e05d3b80cbf35e9699c695b088ea49091cf17de",
-          "body:5a4f8c4c156337d94b00652b49c11c7a858b83bde14cb1b0333b09e7e3b74bdd",
-          "compactBody:726b344706c5f24ff06c42fe61dd192274aad61a1c859a708d1ef753d587b463"
-        ],
-        "55521558244882814": [
-          "topic:55521558244882814",
-          "stamp:e667ab1e0e530a90fc5541b98e68b9b0ea29abcb39f303352db6968977a6fc6f",
-          "body:64610676b714062d50ac373d1acaebd574bd0bd6534c6351475e99c234878cff",
-          "compactBody:09f230096cdb7e5f033b3db834d20e967e5fd86e3869acf4e9189fd7c3ec05a4"
-        ],
-        "22258221544115421": [
-          "topic:22258221544115421",
-          "stamp:0265a907e52ef922ed47549bf680c36b4a54ddbdc7e085cfcd3b362b4a9d6c39",
-          "body:a15b517c5157ec7b8149e760de2884ecb12f0f551a715656e26ca896c0377cbe",
-          "compactBody:db1fcd8e4bb357674ada9fad463c4c59f7641d177330736c16b886e67c481fa7"
-        ],
-        "55521558244882584": [
-          "topic:55521558244882584",
-          "stamp:478d5457124b9d0bf12500725ec619a07f7ee04c76ac15774ce3305a2daa754a",
-          "body:608b9c134234365a06564f443127c81b648fab087294dc2ef513696c23780633",
-          "compactBody:75e74278a2dbacf041283009642de02157aee57b71e29c7822dcc897e779ca45"
-        ],
-        "45548551422185828": [
-          "topic:45548551422185828",
-          "stamp:438207c455d57157c9a3d9d0dd0757449e4dd183c6f3892bcd1faca1e07d4f1a",
-          "body:1fa7514fb4a4ec5954ffe9f286729df066b8fc90936c3e0b4f1be5203814e453",
-          "compactBody:ee4d588eb15cb2877e4833a052d3f9b674792c377231ed5a6a8117e0a46302cd"
-        ],
-        "14425448211854522": [
-          "topic:14425448211854522",
-          "stamp:d497979c538da17ead923e6e951fde7dde9f389cab45f4238a2a46c8080998d0",
-          "body:a919dee92d58c02343e3a3fe9c9664b63b86523238e59711b6a8a64aa6e11b34",
-          "compactBody:636a343bcf5476fcebe675d9aa1f482895808608b260acf4e8ebaf608f7b98bd"
-        ],
-        "55521558244811844": [
-          "topic:55521558244811844",
-          "stamp:1ba139aed9234c4bc69dfa11a5f028075dad519b541b367627365ee06edc6c97",
-          "body:298194c5da332d3026fba5f0f46b6579679ad9ce8d023ba8d058292fec66c6bc",
-          "compactBody:d2e18cdd6d47832cc3882d4632805b78f84bda67428a065acfd7b23c9a53160a"
-        ],
-        "55521558244811454": [
-          "topic:55521558244811454",
-          "stamp:c3623404c3fe42a369ff2326809e56051de9f8eb74d0b7c33e9024789a5f66f1",
-          "body:f86cd5ead690b952134fbde7b47e33117909147014975975f02f284261aefa9f",
-          "compactBody:39831a62a030cdc9a3daf7f893ad47992308b4dc5aa738035414e8fbef15a987"
-        ],
-        "45548551422188548": [
-          "topic:45548551422188548",
-          "stamp:aa3dfd72c1ad4f48cdcf1a1f58c2d959e6dd98470ba2c4e894013679aa67e2d2",
-          "body:c15a6861c781fd0f05be285e5be8f84066e35413f33f92a84e6484a436250357",
-          "compactBody:e8fb3dcaa791e39ddd69522dd7ee79459ea5f9b49770d3ee7e0f315e13b34975"
-        ],
-        "22258221544188821": [
-          "topic:22258221544188821",
-          "stamp:2729a915d41dd28db2a18b141c6677a84550ac37c43f8ac6e2dcfdc38b21914d",
-          "body:64afb98f57ddd4697d03ddd4ea5692191768be3d3ea5f24e7552b129013ee74c",
-          "compactBody:bdbaac9b0b827b1dd0c91b7f0afc28bfb78242678d2c00dc38295f91c31a9dd1"
-        ],
-        "45548551422184818": [
-          "topic:45548551422184818",
-          "stamp:08a4490633b37a6414634dc5abde43141ce5e57ea9d1626ec546177629ff03e0",
-          "body:f593cf5802af79ea21b26ea4c28e5b3e8f10e2247139bcad7cd4c67c0ab6cfc2",
-          "compactBody:35baaec3dd3735fe4a020c596bc5623ef0e123cf6c38d19d4b43dfe157afaf44"
-        ],
-        "22258221544185851": [
-          "topic:22258221544185851",
-          "stamp:f410a0cc0ee23109251da86db52d9d2b3dbe06d29baf3b49428c4577b4513f1a",
-          "body:c2045ab248964efe478ddbf743d1627ea39f6d4b3b6c548392b7d9fd15ed7715",
-          "compactBody:542894951e12d9f2a2de92e0f6535ed3cece633ce57a8177aafc40953562d8ac"
-        ],
-        "45548551422141188": [
-          "topic:45548551422141188",
-          "stamp:158ea18ecb22874bbfa5decbac6ce1adf961dd0a0d576946d9d5c37b26d38e9e",
-          "body:80759fe3b9f351e04a10c34454994257aba70fd64468df3746f49976e1de8527",
-          "compactBody:49036b8576f48893fdd85d3045538e902fea5973a76eeb0f9ead9df698c72735"
-        ],
-        "82258221544151412": [
-          "topic:82258221544151412",
-          "stamp:70d8dd3187b073960a542e6afc8a986889ff6e08728434110a76470e19b134a7",
-          "body:e63fe6eb98ab365dd4244d629d34d22db09aae12d0a6c9a2239dde332853ec4a",
-          "compactBody:e5e3ddc8982705574405adcbfba0a203c74325fd14b97931b48bcec576d1b38e"
-        ]
-      },
+      "candidateKeys": 64,
+      "candidateBuckets": 58,
       "duplicateKeys": 0,
-      "duplicateKeysByTopic": {}
+      "duplicateTopicIds": [],
+      "candidateKeysByTopic": {
+        "82258221514282812": [
+          "stamp:afa30c0dea23d6898b2cf8f3789146bf6cc32906d10c6cf985f3725d04e15765",
+          "topic:82258221514282812",
+          "body:57bdae41dabd33ea1ceff18456945620f6c34e62d49499ad3fa4aafca97bbf05",
+          "compactBody:57bdae41dabd33ea1ceff18456945620f6c34e62d49499ad3fa4aafca97bbf05"
+        ],
+        "55521558284515284": [
+          "stamp:6de4c72233f8fba8cd8942c33a66a40db521699d4c0eeef9f105e9fcc60a882c",
+          "topic:55521558284515284",
+          "body:139ba6e96cded8f967381acc352f55835cbcd340a66c15c83019d0d620b546b5",
+          "compactBody:139ba6e96cded8f967381acc352f55835cbcd340a66c15c83019d0d620b546b5"
+        ],
+        "14425448281454212": [
+          "stamp:275063e7f90ea640e0e42f6dc5489a89de44d097161d2fc780bcf892b7131ac2",
+          "topic:14425448281454212",
+          "body:9cfe1468ae77386903384d4ba7a6b00eee4beb38dad645591346b4a81f7bd507",
+          "compactBody:9cfe1468ae77386903384d4ba7a6b00eee4beb38dad645591346b4a81f7bd507"
+        ],
+        "45548551412588128": [
+          "stamp:9f9f9eed4b4fdb37e29cf444ef15f7f4cd90e0f553a6046dd2b65b3d43430f68",
+          "topic:45548551412588128",
+          "body:dfa7e9b474f0278ff7125c75467c4d4bc8fd7c33ca6a4cd46ddd663cdd346a94",
+          "compactBody:dfa7e9b474f0278ff7125c75467c4d4bc8fd7c33ca6a4cd46ddd663cdd346a94"
+        ],
+        "82258221514288122": [
+          "stamp:7a4a3d857024e1fc017914b1448e2601e6600904e2d3a999b1d3c4e2b589fd9f",
+          "topic:82258221514288122",
+          "body:1d7cd45c9f4ad6e518c1697e1571b66afe9d81ee2c66187bab15390dd473fa21",
+          "compactBody:1d7cd45c9f4ad6e518c1697e1571b66afe9d81ee2c66187bab15390dd473fa21"
+        ],
+        "55521558284512854": [
+          "stamp:17fb5a7391221d663273d8070b25d537bcbaf9bbc878c1c2854cf30929437155",
+          "topic:55521558284512854",
+          "body:e51129587d40507380b01f61f3f9a48ae629f17bc56efb1faa7605cd14f0fc35",
+          "compactBody:e51129587d40507380b01f61f3f9a48ae629f17bc56efb1faa7605cd14f0fc35"
+        ],
+        "55521558284512814": [
+          "stamp:934fc90932c66f9edf69035051762919a2ad62db0fdf714128441ee9f3fcc1a7",
+          "topic:55521558284512814",
+          "body:88350b5f889f3ab33a0196a745e44fe91522a6b87c4bc12063e731e3363a8e4f",
+          "compactBody:88350b5f889f3ab33a0196a745e44fe91522a6b87c4bc12063e731e3363a8e4f"
+        ],
+        "82258221514285452": [
+          "stamp:ac07b1395dafc8f9129f9c55c029c2348831edcbf3de9b3479b659bb291b9949",
+          "topic:82258221514285452",
+          "body:f86a0f95bf297ef4088706fcb6f503637203cb473814f9191a6915b2dd62c9da",
+          "compactBody:f86a0f95bf297ef4088706fcb6f503637203cb473814f9191a6915b2dd62c9da"
+        ],
+        "14425448281452412": [
+          "stamp:3e017e2a4cc8e2270d494e11b6fb6cd1216f55128cfc3e6ce31bd2b8d7ab1f23",
+          "topic:14425448281452412",
+          "body:9d397de5aaef4fd60bd3c4f305a369dd0f6b18c8675dd73dfd17109c52be071e",
+          "compactBody:9d397de5aaef4fd60bd3c4f305a369dd0f6b18c8675dd73dfd17109c52be071e"
+        ],
+        "55521558284512114": [
+          "stamp:515f2c97ecfb337add202ef49f5be48e9253c25952f5a741eb0c2658b4c85c96",
+          "topic:55521558284512114",
+          "body:b55af428376c25b2eb719ff442b0c0bcef81ab94dfada78c7345ae67d51187ad",
+          "compactBody:b55af428376c25b2eb719ff442b0c0bcef81ab94dfada78c7345ae67d51187ad"
+        ],
+        "45548551412584428": [
+          "stamp:17193e8f2af7d51d14837504c5c45d0a848cdef9a656a9c254afbe96de4cd765",
+          "topic:45548551412584428",
+          "body:1d409e7e347c0cfe258d0cc6fd1a4293531ff7c4acf60856b0b5ef2539ae4d1b",
+          "compactBody:1d409e7e347c0cfe258d0cc6fd1a4293531ff7c4acf60856b0b5ef2539ae4d1b"
+        ],
+        "55521558284528844": [
+          "stamp:19307f675bc9df9d79fb35f15770ed3700be700798bd1598f063bb2d4d6d8cd6",
+          "topic:55521558284528844",
+          "body:688f832efc7d379bbfce8f13ccfbb37d862d909bce2539b33fc51ea0fdafb4a2",
+          "compactBody:688f832efc7d379bbfce8f13ccfbb37d862d909bce2539b33fc51ea0fdafb4a2"
+        ],
+        "82258221514251442": [
+          "stamp:5817f8dd3ce68e84475885571b9161fa91dcba6531005edcf16f53c798fa1ccf",
+          "topic:82258221514251442",
+          "body:18148b5c587099a9b769675fc3e646be4da31167aefb83e8fcec9250f7d0c58e",
+          "compactBody:18148b5c587099a9b769675fc3e646be4da31167aefb83e8fcec9250f7d0c58e"
+        ],
+        "82258221514254152": [
+          "stamp:41aaf981b7dff77a0545e893c1ba033d8b6781cd77751999ad8e43d6ef48a109",
+          "topic:82258221514254152",
+          "body:dcec2625ffdba42ed164b1dc81337cce030333a05e75ebf57d362d5513b4eca9",
+          "compactBody:dcec2625ffdba42ed164b1dc81337cce030333a05e75ebf57d362d5513b4eca9"
+        ],
+        "82258221514254422": [
+          "stamp:03f761e7ca929c693c49660b44dd151c7ccff35a8bbcad206ebbad49d4f0f04c",
+          "topic:82258221514254422",
+          "body:4ae9e1191f0d07cfe09d1f64bf8d59d85b14272ee49b0515e940356605bea655",
+          "compactBody:4ae9e1191f0d07cfe09d1f64bf8d59d85b14272ee49b0515e940356605bea655"
+        ],
+        "45548551412542588": [
+          "stamp:7a9fa916bb004f28e789c012264db3dcef493df231bf1684932f6cd1ceaecb4a",
+          "topic:45548551412542588",
+          "body:94f06bd9c70c3aed199f8861ffe996b2368077112e857350c9b81ceac92b8dc7",
+          "compactBody:94f06bd9c70c3aed199f8861ffe996b2368077112e857350c9b81ceac92b8dc7"
+        ]
+      }
     },
     "pagination": {
       "pages": 1,
       "limit": 30,
       "nextEndTimes": [
-        "2026-10-16T16:20:35.971+0800"
+        "2026-10-16T23:40:10.931+0800"
       ],
       "uniquePageTopics": 30,
       "overlapTopicIds": []
     },
     "briefChanges": {
-      "added": 0,
+      "added": 2,
       "updated": 0,
-      "expiredRemoved": 22
+      "expiredRemoved": 0
     },
-    "notes": "跨过原 coverageTo，窗口内读取14个新主题：新增其他市场观点14条、商社精选0条、重复0；14条均为已读正文且未见附件；按北京时间最近3个自然日清理2026-10-14摘要22条。"
+    "notes": "跨过原 coverageTo，首个30条页面读取到16个新增主题并已逐条读取正文；其中布鲁可与东方甄选归入商社观点2条，其余14条归入全部市场观点；去重候选键均未命中；未见附件。"
   },
   "lastUpdateRecord": {
-    "runId": "2026-10-16-2359",
+    "runId": "2026-10-17-1201",
     "sourceGroup": "88888142214212",
     "sourceName": "水木调研纪要-2.0",
-    "previousCoverageTo": "2026-10-16T20:57:56.468+0800",
-    "coverageTo": "2026-10-16T23:44:03.277+0800",
-    "added": 14,
+    "previousCoverageTo": "2026-10-16T23:44:03.277+0800",
+    "coverageTo": "2026-10-17T11:24:02.269+0800",
+    "added": 16,
     "updated": 0,
-    "expiredRemoved": 22,
+    "expiredRemoved": 0,
     "sourceTopicIds": [
-      "82258221544118542",
-      "55521558244882814",
-      "22258221544115421",
-      "55521558244882584",
-      "45548551422185828",
-      "14425448211854522",
-      "55521558244811844",
-      "55521558244811454",
-      "45548551422188548",
-      "22258221544188821",
-      "45548551422184818",
-      "22258221544185851",
-      "45548551422141188",
-      "82258221544151412"
+      "45548551412588128",
+      "55521558284512814"
     ],
     "duplicateTopicIds": [],
     "briefChanges": {
-      "added": 0,
+      "added": 2,
       "updated": 0,
-      "expiredRemoved": 22
+      "expiredRemoved": 0
     },
-    "notes": "新增其他市场观点14条；清理窗口外观点摘要22条。"
+    "notes": "新增商社观点2条、其他市场观点14条；新增来源topic_id均已按dedup索引候选键核对。"
   }
 }
