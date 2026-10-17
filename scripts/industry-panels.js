@@ -15,7 +15,7 @@
     if(!pages[id]||panels.has(id)){paint();return;}
     const wrap=document.createElement('section'),frame=document.createElement('iframe');
     wrap.className='industry-panel';frame.id='panel-'+id;frame.className='industry-panel-frame';frame.dataset.state='loading';frame.title=labels[id];frame.setAttribute('aria-label',labels[id]+'数据');
-    const url=new URL(pages[id],location.href);url.searchParams.set('embed','1');url.searchParams.set('v','20261017allmetrics');
+    const url=new URL(pages[id],location.href);url.searchParams.set('embed','1');url.searchParams.set('v','20261017allcharts');
     const saved=new URLSearchParams(location.search),owner=saved.get('panelSector');let view=owner===id?saved.get('panelView'):null;
     if(view){const key=new URLSearchParams(view).get('view')||view;const allowed=id==='hotel'?['overview','cities','structure','holiday','groups']:id==='dutyfree'?['monthly','holidays']:[];if(!allowed.includes(key))view=null;}
     if(id==='hotel'&&view&&new URLSearchParams(view).get('view')==='holiday')url.pathname=url.pathname.replace('hotel-dashboard.html','hotel-holiday-dashboard.html');
