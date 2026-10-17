@@ -44,8 +44,11 @@ async function main(){
  await hv.check();await page.locator('#holiday-mode-switch [data-mode=value]').click();assert.equal(await hc.isDisabled(),true);assert.equal(await page.locator('#holiday-chart .site-value-label[data-kind=change]').count(),0);assert(await page.locator('#holiday-chart .site-value-label[data-kind=value]').count()>0);await page.locator('#holiday-mode-switch [data-mode=change]').click();assert.equal(await hv.isDisabled(),true);assert.equal(await hc.isDisabled(),false);await page.locator('#holiday-mode-switch [data-mode=combo]').click();assert.equal(await hv.isDisabled(),false);
  const holidaySvg=page.locator('#holiday-chart svg');await holidaySvg.focus();await holidaySvg.press('End');assert.match(await page.locator('.site-chart-tooltip:not([hidden])').innerText(),/本期.*\d{4}-\d{2}-\d{2}/);await holidaySvg.press('Escape');
  await page.setViewportSize({width:390,height:844});await page.waitForTimeout(200);await fitted(page,'#holiday-chart');assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));if(process.env.SCREENSHOT_DIR)await holiday.screenshot({path:path.join(process.env.SCREENSHOT_DIR,'holiday-mobile.png')});
+ await page.goto(base+'/industry.html?panelSector=hotel&panelView='+encodeURIComponent('view=holiday&holidayMetric=occupancy_rate')+'#hotel');const holidayFrame=page.frameLocator('#panel-hotel');await holidayFrame.locator('#holiday-chart svg').waitFor();const embeddedValue=holidayFrame.locator('input[data-value-kind=value]'),embeddedChange=holidayFrame.locator('input[data-value-kind=change]');assert.match(await embeddedValue.locator('..').innerText(),/显示 OCC/);await embeddedValue.check();await embeddedChange.check();await fitted(holidayFrame,'#holiday-chart');assert(await holidayFrame.locator('#holiday-chart .site-value-label[data-kind=value]').count()>0);assert((await holidayFrame.locator('#holiday-chart .site-value-label[data-kind=change]').allTextContents()).every(t=>t.endsWith('pct')));
  assert.deepEqual(errors,[]);console.log('PASS: fixed-width annotations without scrollbars; independent overview/holiday metric and YoY labels, correct modes/tooltips, integer values, missing data, resize and embedded charts');
  }finally{await browser.close();}
 }
 main().catch(e=>{console.error(e);process.exitCode=1;}).finally(()=>server.close());
+
+
 
