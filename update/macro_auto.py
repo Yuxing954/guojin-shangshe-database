@@ -5,6 +5,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from urllib.parse import urlparse, parse_qs
 from urllib.request import Request, build_opener
+from urllib.error import HTTPError, URLError
 from miaoxiang_mcp import Client, URL, configured_key
 from gold_jewelry import NoRedirect, atomic_json
 import macro_due as due
@@ -12,6 +13,15 @@ import macro_due as due
 ROOT=Path(__file__).resolve().parents[1]
 DATA=ROOT/'data/macro'
 class RateLimitError(ValueError):pass
+# Exact official non-publication events, never a recurring missing-month rule.
+BLS_CPI_SHUTDOWN='https://www.bls.gov/bls/2025-lapse-revised-release-dates.htm'
+BLS_CPS_SHUTDOWN='https://www.bls.gov/cps/methods/2025-federal-government-shutdown-impact-cps.htm'
+NON_PUBLICATION={
+    'us-cpi':BLS_CPI_SHUTDOWN,'bls-CUUR0000SA0':BLS_CPI_SHUTDOWN,
+    'us-core-cpi':BLS_CPI_SHUTDOWN,'bls-CUUR0000SA0L1E':BLS_CPI_SHUTDOWN,
+    'us-unemployment':BLS_CPS_SHUTDOWN,'bls-LNS14000000':BLS_CPS_SHUTDOWN,
+}
+
 
 
 def choice_key(config_path=None):
@@ -26,6 +36,9 @@ def failure_info(exc):
     messages={
         'Choice credentials missing':('credentials_missing','本机未读取到Choice授权配置'),
         'Credential helper failed':('credentials_helper','本机Choice授权读取失败'),
+        'Treasury source overlap conflict':('source_conflict','两份官方收益率来源存在冲突，待复核'),
+        'Treasury source migration conflict':('source_conflict','官方收益率与原历史不一致，待复核'),
+        'Treasury source migration incomplete':('source_incomplete','官方收益率尚未覆盖全部原历史'),
         'No exact reviewed indicator':('indicator_not_found','来源未返回完全匹配的指标'),
         'Indicator code mismatch':('indicator_code','来源指标代码与审定记录不符'),
         'Reviewed series definition changed':('definition_changed','指标定义或映射发生变化，待复核'),
@@ -41,7 +54,9 @@ def failure_info(exc):
         'Missing or ambiguous MCP response':('provider_protocol','Choice响应缺失或不完整'),
     }
     if isinstance(exc,RateLimitError):code,reason='rate_limit','Choice请求频率受限'
-    elif isinstance(exc,TimeoutError):code,reason='timeout','Choice请求超时'
+    elif isinstance(exc,TimeoutError):code,reason='timeout','数据源请求超时'
+    elif isinstance(exc,HTTPError):code,reason='http_'+str(exc.code),'数据源HTTP '+str(exc.code)
+    elif isinstance(exc,URLError):code,reason='network','数据源连接失败'
     else:code,reason=messages.get(str(exc),('refresh_failed','数据更新未完成，需检查来源或连接'))
     return {'errorCode':code,'reason':reason,'error':reason+'，保留已有历史。'}
 
@@ -89,7 +104,7 @@ def end_of(period,frequency):
     return date(year,month,calendar.monthrange(year,month)[1]).isoformat()
 
 def coverage(observations,spec):
-    periods=sorted(r['period'] for r in observations);missing=[];structural=[]
+    periods=sorted(r['period'] for r in observations);missing=[];structural=[];unpublished=[]
     if periods and spec['frequency'] in ('monthly','quarterly'):
         step=1 if spec['frequency']=='monthly' else 3
         start=int(periods[0][:4])*12+(int(periods[0][-2:])-1 if step==1 else (int(periods[0][-1])-1)*3)
@@ -99,7 +114,10 @@ def coverage(observations,spec):
             year,month=divmod(index,12)
             period=f'{year}-{month+1:02}' if step==1 else f'{year}-Q{month//3+1}'
             if period not in present:
-                (structural if month+1 in spec.get('expectedMissingMonths',[]) else missing).append(period)
+                if period=='2025-10' and NON_PUBLICATION.get(spec.get('id')):
+                    structural.append(period)
+                    unpublished.append({'period':period,'reason':'2025年联邦政府停摆，官方未发布','sourceUrl':NON_PUBLICATION[spec['id']]})
+                else:(structural if month+1 in spec.get('expectedMissingMonths',[]) else missing).append(period)
     requested=spec.get('start')
     requested_period=(requested[:7] if spec['frequency']=='monthly' else requested[:4]+'-Q'+str((int(requested[5:7])-1)//3+1)) if requested and spec['frequency']!='daily' else None
     # Non-publication at the beginning of a year is not truncated history.
@@ -109,9 +127,10 @@ def coverage(observations,spec):
         while int(expected[-2:]) in spec.get('expectedMissingMonths',[]):
             y,m=int(expected[:4]),int(expected[-2:]);expected=f'{y+1 if m==12 else y}-{1 if m==12 else m+1:02}'
     short=bool(expected and earliest and earliest>expected)
+    if requested and periods and spec['frequency']=='daily':short=(date.fromisoformat(periods[0])-date.fromisoformat(requested)).days>7
     return {'start':periods[0] if periods else None,'end':periods[-1] if periods else None,'count':len(periods),'requestedStart':requested,'historyShort':short,
             'missingPeriods':missing,'structuralPeriods':structural,'complete':bool(periods) and not missing and not short,
-            'calendar': '交易日序列；不将周末及节假日算作缺失' if spec['frequency']=='daily' else '原始发布频率'}
+            'calendar': '交易日序列；不将周末及节假日算作缺失' if spec['frequency']=='daily' else '原始发布频率',**({'unpublishedPeriods':unpublished} if unpublished else {})}
 
 def normalize(receipt,spec,cutoff):
     observations={};links=set();codes=set();matched=0
@@ -146,7 +165,7 @@ def normalize(receipt,spec,cutoff):
     result={'status':'ready','observations':sorted(observations.values(),key=lambda r:r['period']),
         'sourceOrganization':spec['publisher'],'provider':'东方财富 Choice / 妙想 MCP','providerCodes':sorted(codes),
         'sourceUrl':sorted(links)[0],'receiptSha256':hashlib.sha256(json.dumps(receipt,ensure_ascii=False,sort_keys=True).encode()).hexdigest(),
-        'metric':spec.get('metric'), 'spec':{**{k:spec[k] for k in ('name','unit','kind','frequency','adjustment','combinedMonths','minValue','maxValue') if k in spec},'definition':spec.get('adjustment',spec['originalName'])},
+        'metric':spec.get('metric'), 'spec':{**{k:spec[k] for k in ('name','unit','kind','frequency','adjustment','combinedMonths','minValue','maxValue','staleDays') if k in spec},'definition':spec.get('adjustment',spec['originalName'])},
         'registryId':spec['id'],'coverage':coverage(list(observations.values()),spec)}
     if spec.get('consumerId'):result.update(consumerId=spec['consumerId'],basis=spec['basis'],consumerMeasure=spec.get('consumerMeasure','value'))
     return result
@@ -241,7 +260,7 @@ def census_housing(cutoff):
 
 def main():
     ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--codex-config',type=Path);ap.add_argument('--receipts-dir',type=Path)
-    ap.add_argument('--cutoff');ap.add_argument('--only',nargs='*');ap.add_argument('--skip-official',action='store_true');ap.add_argument('--consumer-only',action='store_true',help='Refresh mapped consumption series only; leave unrelated official series untouched');ap.add_argument('--due-only',action='store_true',help='Fetch only indicators inside their expected release windows');ap.add_argument('--full-history',action='store_true',help='Fetch the full registered history for a scheduled audit');args=ap.parse_args()
+    ap.add_argument('--cutoff');ap.add_argument('--only',nargs='*');ap.add_argument('--skip-official',action='store_true');ap.add_argument('--consumer-only',action='store_true',help='Refresh mapped consumption series only; leave unrelated official series untouched');ap.add_argument('--official-only',nargs='+',choices=['bea-real-gdp','census-housing','bls-history','treasury-yields']);ap.add_argument('--due-only',action='store_true',help='Fetch only indicators inside their expected release windows');ap.add_argument('--full-history',action='store_true',help='Fetch the full registered history for a scheduled audit');args=ap.parse_args()
     if not args.cutoff:
         from zoneinfo import ZoneInfo
         args.cutoff=(datetime.now(ZoneInfo('Asia/Shanghai')).date() if args.due_only else date.today()).isoformat()
@@ -249,7 +268,7 @@ def main():
     if registry.get('publicRedistributionApproved') is not True:raise ValueError('Publication authorization required')
     target=DATA/'automatic-series.json';now=datetime.now(timezone.utc).isoformat(timespec='seconds');errors=[]
     if args.only and set(args.only)-{s['id'] for s in registry['series']}:raise ValueError('Unknown registry ID')
-    entries=[s for s in registry['series'] if (not args.only or s['id'] in args.only) and (not args.consumer_only or s.get('consumerId'))]
+    entries=[s for s in registry['series'] if (not args.only or s['id'] in args.only) and (not args.consumer_only or s.get('consumerId')) and s.get('adapter')!='treasury-public' and not args.official_only]
     plan=due.build_plan(date.fromisoformat(args.cutoff),registry,due.load_ledger()) if args.due_only else None
     if plan is not None:
         entries=[s for s in entries if s['id'] in plan['dueChoice']]
@@ -313,7 +332,9 @@ def main():
                 values[spec['id']]={**values.get(spec['id'],{}),'status':'error','checkedAt':now,'errorCode':info['errorCode'],'error':info['error']}
 
     if not args.skip_official and not args.consumer_only:
-        for name,fn in [('bea-real-gdp',lambda:{'us-gdp-quarter':bea_gdp(args.cutoff)}),('census-housing',lambda:{'us-housing-starts':census_housing(args.cutoff)}),('bls-history',lambda:bls_history(json.loads((DATA/'catalog.json').read_text(encoding='utf-8')),args.cutoff))]:
+        from treasury_yields import refresh as treasury_refresh
+        for name,fn in [('bea-real-gdp',lambda:{'us-gdp-quarter':bea_gdp(args.cutoff)}),('census-housing',lambda:{'us-housing-starts':census_housing(args.cutoff)}),('treasury-yields',lambda:{'us-treasury10':treasury_refresh(args.cutoff,values.get('us-treasury10',{}))}),('bls-history',lambda:bls_history(json.loads((DATA/'catalog.json').read_text(encoding='utf-8')),args.cutoff))]:
+            if args.official_only and name not in args.official_only:continue
             due_sources=[]
             if plan is not None and name=='bls-history':
                 due_sources=[x for x in plan['dueOfficial'] if x in ('bls-cpi','bls-employment')]
@@ -329,7 +350,7 @@ def main():
                 ready_sources=set()
                 for id,result in source_results.items():
                     # Authoritative BLS retains index/seasonal definitions, with full history.
-                    frequency='quarterly' if id=='us-gdp-quarter' else 'monthly'
+                    frequency=result.get('spec',{}).get('frequency') or ('quarterly' if id=='us-gdp-quarter' else 'monthly')
                     spec={'id':result['registryId'],'frequency':frequency,'start':'2016-01-01'}
                     source=('bls-cpi' if id in ('us-cpi','us-core-cpi') else 'bls-employment' if id in ('us-unemployment','us-payroll','us-earnings') else name)
                     if plan is not None and not due.has_expected_period(spec,result.get('observations',[]),date.fromisoformat(args.cutoff)):
@@ -347,9 +368,10 @@ def main():
                     for source in ready_sources:ledger.setdefault('official',{})[source]=due.official_key(d,source)
                     due.save_ledger(ledger)
             except Exception as exc:
-                errors.append({'id':name,'errorType':type(exc).__name__})
-                ids=['us-gdp-quarter'] if name=='bea-real-gdp' else ['us-housing-starts'] if name=='census-housing' else (['us-cpi','us-core-cpi'] if 'bls-cpi' in due_sources else [])+(['us-unemployment','us-payroll','us-earnings'] if 'bls-employment' in due_sources else []) if plan is not None else [s['id'] for s in json.loads((DATA/'catalog.json').read_text(encoding='utf-8'))['series'] if s['adapter']=='bls']
-                for id in ids:values[id]={**values.get(id,{}),'status':'error','checkedAt':now,'error':'官方接口更新失败，保留同口径历史。'}
+                info=failure_info(exc)
+                errors.append({'id':name,'errorType':type(exc).__name__,'errorCode':info['errorCode'],'reason':info['reason']})
+                ids=['us-gdp-quarter'] if name=='bea-real-gdp' else ['us-housing-starts'] if name=='census-housing' else ['us-treasury10'] if name=='treasury-yields' else (['us-cpi','us-core-cpi'] if 'bls-cpi' in due_sources else [])+(['us-unemployment','us-payroll','us-earnings'] if 'bls-employment' in due_sources else []) if plan is not None else [s['id'] for s in json.loads((DATA/'catalog.json').read_text(encoding='utf-8'))['series'] if s['adapter']=='bls']
+                for id in ids:values[id]={**values.get(id,{}),'status':'error','checkedAt':now,'errorCode':info['errorCode'],'error':info['error']}
     if args.due_only and due.semantic_payload({'series':values,'errors':errors}) == due.semantic_payload({'series':previous.get('series',{}),'errors':previous.get('errors',[])}):
         print(json.dumps({'noChange':True,'series':len(values),'failures':errors},ensure_ascii=False,separators=(',',':')))
         return 1 if errors else 0

@@ -9,7 +9,7 @@ test('all 31 reviewed core indicators have real history and definitions; missing
   const c=structuredClone(catalog),s=structuredClone(snapshot),feed=require('../data/macro/automatic-series.json');M.mergeAutomatic(c,s,feed);
   assert.equal(M.curated(c.series,{country:'CN'},s).available.length,17);assert.equal(M.curated(c.series,{country:'US'},s).available.length,14);
   assert.equal(c.series.find(x=>x.id==='cn-gdp-quarter').name,'实际GDP当季同比');assert.ok(s.series['cn-gdp-quarter'].coverage.count>=42);
-  assert.ok(!s.series['us-cpi'].observations.some(r=>r.period==='2025-10'));assert.ok(s.series['us-cpi'].coverage.missingPeriods.includes('2025-10'));
+  assert.ok(!s.series['us-cpi'].observations.some(r=>r.period==='2025-10'));assert.ok(s.series['us-cpi'].coverage.unpublishedPeriods.some(r=>r.period==='2025-10'));assert.ok(!s.series['us-cpi'].coverage.missingPeriods.includes('2025-10'));
   assert.equal(c.series.find(x=>x.id==='us-housing-starts').unit,'千套');assert.ok(s.series['us-housing-starts'].coverage.count>=120);
   assert.throws(()=>M.mergeAutomatic(c,s,{...feed,publicRedistributionApproved:false}));
 });
@@ -99,4 +99,21 @@ test('real catalog has both countries and all requested categories with unique I
   for(const s of catalog.series){assert.ok(catalog.sources[s.source]);assert.ok(data.series[s.id]);}
   const filtered=M.filter(catalog.series,{country:'US',category:'就业',q:'失业',available:true},data);
   assert.ok(filtered.length);assert.ok(filtered.every(s=>s.country==='US'&&s.category==='就业'&&M.rows(data.series[s.id]).length));
+});
+
+test('monthly overrides reset inherited daily stale thresholds without falsifying recency',()=>{
+  const c={series:[{id:'us-fed-rate',frequency:'daily',staleDays:10}]},s={series:{}};
+  M.mergeAutomatic(c,s,{version:1,publicRedistributionApproved:true,series:{'us-fed-rate':{spec:{frequency:'monthly'},observations:[{period:'2026-09',value:3.744}]}}});
+  assert.equal(c.series[0].frequency,'monthly');assert.equal(c.series[0].staleDays,100);
+  assert.equal(M.status(c.series[0],s.series['us-fed-rate'],new Date('2026-10-17')),'已收录');
+  assert.equal(M.status(c.series[0],s.series['us-fed-rate'],new Date('2027-03-01')),'数据滞后');
+});
+test('officially unpublished October remains absent and comparisons cannot bridge it',()=>{
+  const c=structuredClone(catalog),s=structuredClone(snapshot);M.mergeAutomatic(c,s,require('../data/macro/automatic-series.json'));
+  for(const id of ['us-cpi','us-core-cpi','us-unemployment']){
+    const rows=M.rows(s.series[id]),spec=c.series.find(r=>r.id===id);
+    assert.ok(!rows.some(r=>r.period==='2025-10'));
+    assert.equal(M.compare(spec,rows,rows.find(r=>r.period==='2025-11'),'mom'),null);
+    assert.ok(s.series[id].coverage.unpublishedPeriods[0].sourceUrl.startsWith('https://www.bls.gov/'));
+  }
 });

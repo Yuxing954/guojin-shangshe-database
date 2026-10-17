@@ -11,7 +11,11 @@ M.mergeAutomatic(catalog,snapshot,require('../data/macro/automatic-series.json')
 test('featured KPIs and directory use the reviewed catalog; attention filter preserves real gaps',()=>{
   for(const country of ['CN','US'])for(const id of D.featured[country])assert.ok(D.core(catalog,country,snapshot).some(s=>s.id===id));
   assert.equal(D.directory(catalog,snapshot,{country:'CN',frequency:'quarterly'}).length,2);
-  assert.ok(D.directory(catalog,snapshot,{country:'US',health:'attention'}).some(s=>s.id==='us-cpi'));
+  assert.ok(!D.directory(catalog,snapshot,{country:'US',health:'attention'}).some(s=>s.id==='us-cpi'));
+  const incomplete=structuredClone(snapshot);
+  incomplete.series['us-cpi'].observations=incomplete.series['us-cpi'].observations.filter(r=>r.period!=='2026-07');
+  incomplete.series['us-cpi'].coverage={...incomplete.series['us-cpi'].coverage,missingPeriods:['2026-07'],complete:false};
+  assert.ok(D.directory(catalog,incomplete,{country:'US',health:'attention'}).some(s=>s.id==='us-cpi'));
   assert.equal(D.directory(catalog,snapshot,{country:'CN',q:'不存在'}).length,0);
 });
 test('KPI difference uses exact prior period; PMI difference is points, rates use percentage points',()=>{

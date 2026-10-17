@@ -6,6 +6,19 @@ import macro_auto as M
 from test_macro_due import DueWindowTests
 
 class AutomaticMacroTests(unittest.TestCase):
+    def test_official_nonpublication_is_not_an_unexplained_gap(self):
+        rows=[{'period':'2025-09','value':100},{'period':'2025-11','value':101}]
+        for sid in ['us-cpi','us-core-cpi','us-unemployment','bls-CUUR0000SA0','bls-LNS14000000']:
+            c=M.coverage(rows,{'id':sid,'frequency':'monthly','start':'2025-09-01'})
+            self.assertEqual(c['missingPeriods'],[]);self.assertEqual(c['structuralPeriods'],['2025-10'])
+            self.assertEqual(c['unpublishedPeriods'][0]['period'],'2025-10')
+            self.assertTrue(c['unpublishedPeriods'][0]['sourceUrl'].startswith('https://www.bls.gov/'))
+            self.assertTrue(c['complete'])
+        c=M.coverage(rows,{'id':'us-payroll','frequency':'monthly','start':'2025-09-01'})
+        self.assertEqual(c['missingPeriods'],['2025-10']);self.assertFalse(c['complete'])
+        c=M.coverage([{'period':'2026-09','value':1},{'period':'2026-11','value':2}],{'id':'us-cpi','frequency':'monthly','start':'2026-09-01'})
+        self.assertEqual(c['missingPeriods'],['2026-10']);self.assertNotIn('unpublishedPeriods',c)
+
     def test_default_choice_config_and_explicit_override(self):
         with tempfile.TemporaryDirectory() as folder:
             config=Path(folder)/'config.toml';config.write_text('',encoding='utf-8')

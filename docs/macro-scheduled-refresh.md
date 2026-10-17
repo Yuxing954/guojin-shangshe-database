@@ -47,3 +47,7 @@
 测试按`macro-update-guide.md`执行，另运行`tests/forecast-macro.test.cjs`、`tests/gold*.test.js`、`tests/test_gold_macro.py`及受影响浏览器回归。发布前比较diff确认没有凭证、缓存、无关研究数据和仅时间变更。通过GitHub连接器基于最新main创建分支、提交和PR；所有相关GitHub检查通过后合并，附加PR到任务。待Pages部署成功后回读线上JSON、页面、筛选与CSV，再报告发布结果。
 
 当前边界：FedWatch尚未接入授权CME REST；官方嵌入工具不可读时需要保留快照并记录失败。部分年度指标无已审定自动适配器；定时任务覆盖检查，不代表已补齐数据。以上缺口不得通过模拟值、旧收据或仅修改更新时间掩盖。
+
+### 十年期美债公开来源（2026-10-17）
+
+`us-treasury10`已移至`dueOfficial: treasury-yields`，同一每日08:20批次内由`macro_auto.py --due-only`直接读取美国财政部公开XML；不再请求Choice，也不由调用方重复抓取。首次迁移/历史不足时核验美联储H.15/FRED同口径历史；之后每次只读取当前年度。失败保留历史，不登记成功；与其他官方源共用按发布窗口去重账本。
