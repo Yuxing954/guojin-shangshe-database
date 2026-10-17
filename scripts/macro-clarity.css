@@ -368,7 +368,7 @@ body.site-page .data-board #indicators .macro-chart-note{display:none}
 }
 
 /* A single measured plot. SVG coordinates match the visible container width. */
-body.site-page .data-board #indicators #detail{padding:24px;overflow:hidden}
+body.site-page .data-board #indicators #detail{padding:24px!important;overflow:hidden}
 body.site-page .data-board #indicators .macro-trend-head{display:flex;justify-content:space-between;align-items:center;gap:20px}
 body.site-page .data-board #indicators .macro-trend-head h2{font-size:20px;margin:0;line-height:1.5}
 body.site-page .data-board #indicators .macro-trend-head .eyebrow{margin:0 0 4px;font-size:12px;color:#748198}
@@ -389,7 +389,7 @@ body.site-page .data-board #indicators .macro-trend-footer .macro-source-line{di
 body.site-page .data-board #indicators .macro-trend-footer>div{display:flex;align-items:center;gap:18px;font-size:12px}
 body.site-page .data-board #indicators .macro-download{padding:0;border:0;background:transparent;color:var(--site-accent);font:inherit;cursor:pointer}
 @media(max-width:600px){
- body.site-page .data-board #indicators #detail{padding:16px}
+ body.site-page .data-board #indicators #detail{padding:16px!important}
  body.site-page .data-board #indicators .macro-trend-head{align-items:flex-start;gap:12px}
  body.site-page .data-board #indicators .macro-trend-head h2{font-size:17px}
  body.site-page .data-board #indicators .macro-range{font-size:11px;gap:4px}
