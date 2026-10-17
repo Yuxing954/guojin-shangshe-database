@@ -12,5 +12,7 @@
  function csv(rows,metric,period,count){const headers=['集团','数据周','开始日期','结束日期','指标','数值','单位','字段','同比（%）','同比基周','基期原值','来源','来源定位'],cell=v=>{let s=String(v??'');if(/^[=+@-]/.test(s)&&typeof v!=='number')s="'"+s;return '"'+s.replace(/"/g,'""')+'"';},all=periods(rows);
   return '\uFEFF'+[headers,...Object.entries(groups).flatMap(([id,name])=>{const s=series(rows,id,metric);return windowRows(s,period,count,all).filter(o=>o.value!=null).map(o=>[name,o.period,o.startDate,o.endDate,s.name,o.value,s.unit,s.field,o.yoy?.value,o.yoy?.priorPeriod,o.yoy?.priorValue,o.source,o.locator]);})].map(row=>row.map(cell).join(',')).join('\r\n');
  }
- return {groups,weeklyMetrics,time,series,periods,observation,windowRows,csv};
+ function compare(rows,metric,period,count){const all=periods(rows),selected=windowRows(null,period,count,all),seriesByGroup=Object.entries(groups).map(([id,name])=>({id,name,series:series(rows,id,metric)}));return selected.map(({period})=>{const dated=rows.find(o=>o.period_id===period);return {period,x:dated?Date.parse(dated.start_date):undefined,values:seriesByGroup.map(({id,name,series})=>{const o=observation(series,period);return {id,name,value:o?.value??null,change:o?.yoy?.value??null};})};});}
+ function csvAll(rows,period,windows={}){return Object.keys(weeklyMetrics).map((m,i)=>{const text=csv(rows,m,period,windows[m]||'12');if(!i)return text;const start=text.indexOf('\r\n');return start<0?'':text.slice(start+2);}).filter(Boolean).join('\r\n');}
+ return {compare,csvAll,groups,weeklyMetrics,time,series,periods,observation,windowRows,csv};
 });
