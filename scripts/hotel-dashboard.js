@@ -2,6 +2,7 @@
   'use strict';
   var M = HotelMetrics, data = {}, ix = {}, periods = new Map(), regions = [];
   var state = { view: 'overview', region: '全国', week: '', base: 'auto', window: '12', metric: 'revpar', mode: 'combo' };
+  var chartLabels = {};
   var followLatest = true, latestWeek = '';
   var SEGS = ['经济型', '中档型', '高档型', '豪华型'];
   var GROUPS = ['华住', '首旅如家', '锦江酒店（中国区）', '亚朵'];
@@ -111,7 +112,7 @@
     var current = rows.map(function (r) { return { x: r.period_id, date: r.start_date + ' — ' + r.end_date,
       y: !isChange ? display(row(state.region, '全部', r.period_id), field) : M.change(row(state.region, '全部', r.period_id), row(state.region, '全部', M.priorPeriod(r)), field) }; });
     if(['combo','value','change'].includes(state.mode)){
-      const result=SiteCharts.drawPaired($('main-chart'),rows.map(r=>({period:r.period_id,x:Date.parse(r.start_date),value:display(row(state.region,'全部',r.period_id),field),change:M.change(row(state.region,'全部',r.period_id),row(state.region,'全部',M.priorPeriod(r)),field)})),{mode:state.mode,unit:meta.unit,changeUnit:field==='occupancy_rate'?'百分点':'%',changeLabel:labelChange(),name:meta.label,trimEmpty:true,changeLabels:true,gap:15*86400000});
+      const result=SiteCharts.drawPaired($('main-chart'),rows.map(r=>({period:r.period_id,x:Date.parse(r.start_date),value:display(row(state.region,'全部',r.period_id),field),change:M.change(row(state.region,'全部',r.period_id),row(state.region,'全部',M.priorPeriod(r)),field)})),{mode:state.mode,unit:meta.unit,changeUnit:field==='occupancy_rate'?'百分点':'%',changeLabel:labelChange(),name:meta.label,trimEmpty:true,changeLabels:!!chartLabels['main-chart'],valueLabels:!!chartLabels['main-chart'],gap:15*86400000});
       $('trend-caption').textContent=meta.label+' · '+(state.mode==='combo'?meta.unit+' / '+(field==='occupancy_rate'?'百分点':'%'):state.mode==='change'?(field==='occupancy_rate'?'百分点':'%'):meta.unit);$('chart-mode-note').textContent=labelChange();$('history-note').textContent=result.points.length?result.points[0].text.split('\n')[0]+' — '+result.points.at(-1).text.split('\n')[0]:'';return;
     }
     var lines = [{ name: state.region + (!isChange ? ' · 本期绝对值' : ' · 同周同比'), color: COLORS[0], pts: current }];
@@ -159,7 +160,7 @@
     var changeUnit = field === 'occupancy_rate' ? '百分点' : '%';
     $('segment-chart-caption').textContent = state.region + ' · ' + meta.label + ' · ' + (mode === 'combo' ? meta.unit + ' / 同周同比（' + changeUnit + '）' : mode === 'change' ? '同周同比（' + changeUnit + '）' : '数值（' + meta.unit + '）') + (fallback ? ' · 基期缺失' : '');
     if (!hasValue && !hasChange) { $('segment-chart').innerHTML = '<div class="hd-empty">所选范围暂无分档次数据</div>'; return; }
-    SiteCharts.drawPaired($('segment-chart'), points, { mode: mode, unit: meta.unit, changeUnit: changeUnit, changeLabel: '同周同比', name: state.region + '分档次' + meta.label, trimEmpty:true,changeLabels:true, gap: 15 * 86400000 });
+    SiteCharts.drawPaired($('segment-chart'), points, { mode: mode, unit: meta.unit, changeUnit: changeUnit, changeLabel: '同周同比', name: state.region + '分档次' + meta.label, trimEmpty:true,changeLabels:!!chartLabels['segment-chart'],valueLabels:!!chartLabels['segment-chart'], gap: 15 * 86400000 });
   }
   function renderCities() {
     var all = regions.filter(function (r) { return r !== '全国'; }).map(function (region) {
@@ -365,8 +366,8 @@
     $('week-select').onchange = function () { followLatest = this.value === 'latest'; state.week = followLatest ? latestWeek : this.value; state.base = 'auto'; compareOptions(); refresh(); };
     $('compare-select').onchange = function () { state.base = this.value; refresh(); };
     $('region-select').onchange = function () { state.region = this.value; refresh(); };
-    function setWindow() { state.window = this.value; ['history-start','group-window','supply-window','investment-window'].forEach(function (id) { $(id).value = state.window; }); renderTrend(); drawSegments(); drawGroups(); drawSupply(); renderInvestment(); saveState(); }
-    ['history-start','group-window','supply-window','investment-window'].forEach(function (id) { $(id).value = state.window; $(id).onchange = setWindow; });
+    function setWindow() { state.window = this.value; ['history-start','segment-window','group-window','supply-window','investment-window'].forEach(function (id) { $(id).value = state.window; }); renderTrend(); drawSegments(); drawGroups(); drawSupply(); renderInvestment(); saveState(); }
+    ['history-start','segment-window','group-window','supply-window','investment-window'].forEach(function (id) { $(id).value = state.window; $(id).onchange = setWindow; });
     function bindSwitch(id, attr) {
       var buttons = $(id).querySelectorAll('button');
       function active() { buttons.forEach(function (b) { var isActive = b.dataset[attr] === state[attr]; b.classList.toggle('active', isActive); b.setAttribute('aria-pressed', isActive); }); }
@@ -383,6 +384,13 @@
     $('group-metric').onchange = drawGroups; $('supply-metric').onchange = function () { drawSupply(); renderInvestment(); };
     $('city-search').oninput = renderCities; $('city-sort').onchange = renderCities;
     $('city-table').onclick = function (event) { var b = event.target.closest('[data-region]'); if (!b) return; state.region = b.dataset.region; switchView('overview'); $('region-select').focus(); };
+    document.querySelectorAll('[data-chart-labels]').forEach(function (input) {
+      input.checked = false;
+      input.onchange = function () {
+        chartLabels[input.dataset.chartLabels] = input.checked;
+        renderTrend(); drawSegments(); drawGroups(); drawSupply(); renderInvestment(); if(data.share) renderShare();
+      };
+    });
     switchView(state.view);
   }
   function error(id, message, cols) { blankTable(id, message, cols); }
@@ -425,7 +433,7 @@
   }
   function lineChart(id, lines, opt) {
     opt = opt || {}; var host = $(id); host.innerHTML = ''; lines = M.chartSeries(lines);
-    if(!opt.forceLine&&state.mode==='combo'&&lines.some(s=>s.pts.some(p=>Number.isFinite(p.change)))){const keys=[...new Set(lines.flatMap(s=>s.pts.map(p=>p.x)))].sort();SiteCharts.drawPaired(host,keys.map((key,i)=>({period:key,x:i,values:lines.map(s=>{const p=s.pts.find(p=>p.x===key);return {name:s.name,value:p?.y,change:p?.change,color:s.color};})})),{unit:opt.unit,changeUnit:opt.occupancy?'百分点':'%',changeLabel:labelChange(),name:lines.map(s=>s.name).join('、')});return;}
+    if(!opt.forceLine&&state.mode==='combo'&&lines.some(s=>s.pts.some(p=>Number.isFinite(p.change)))){const keys=[...new Set(lines.flatMap(s=>s.pts.map(p=>p.x)))].sort();SiteCharts.drawPaired(host,keys.map((key,i)=>({period:key,x:i,values:lines.map(s=>{const p=s.pts.find(p=>p.x===key);return {name:s.name,value:p?.y,change:p?.change,color:s.color};})})),{unit:opt.unit,changeUnit:opt.occupancy?'百分点':'%',changeLabel:labelChange(),name:lines.map(s=>s.name).join('、'),changeLabels:!!chartLabels[id],valueLabels:!!chartLabels[id]});return;}
     var xs = Array.from(new Set(lines.flatMap(function (s) { return s.pts.map(function (p) { return p.x; }); }))).sort();
     var values = lines.flatMap(function (s) { return s.pts.map(function (p) { return M.num(p.y); }); }).filter(function (v) { return v != null; });
     if (!values.length) { host.innerHTML = '<div class="hd-empty">所选范围暂无有效数据</div>'; return; }
@@ -463,6 +471,14 @@
     });
     var legend = document.createElement('div'); legend.className = 'hd-legend';
     legend.innerHTML = lines.map(function (s) { return '<span><i style="background:' + s.color + '"></i>' + esc(s.name) + (s.dash ? '（虚线）' : '') + '</span>'; }).join(''); host.appendChild(legend);
+    if(chartLabels[id]) lines.forEach(function(s,si){
+      var stride=Math.max(1,Math.ceil(s.pts.length/12));
+      s.pts.forEach(function(p,i){
+        if(M.num(p.y)==null || i%stride!==0&&i!==s.pts.length-1)return;
+        var label=svgEl('text',{x:px(p.x),y:Math.max(T+12,Math.min(H-B-8,py(p.y,s)-10-si*12)),'text-anchor':'middle','font-size':11,fill:s.color,style:'paint-order:stroke;stroke:white;stroke-width:3px'},fmt(p.y,1)+(opt.unit||''));
+        label.classList.add('hd-data-label');svg.appendChild(label);
+      });
+    });
     var maps = lines.map(function(s){return new Map(s.pts.map(function(p){return [p.x,p];}));});
     SiteCharts.attach(host, xs.map(function(key){
       var firstIndex=maps.findIndex(function(map){var p=map.get(key);return p&&M.num(p.y)!=null;}), first=firstIndex>=0?maps[firstIndex].get(key):null;
