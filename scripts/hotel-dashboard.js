@@ -316,7 +316,18 @@
     var range = calendar();
     $('export-start').value = range.length ? range[0].period_id : state.week;
     $('export-end').value = state.week; $('export-error').textContent = '';
-    $('weekly-export-dialog').showModal();
+    var dialog = $('weekly-export-dialog'), height = window.innerHeight, top = Math.min(64, height * 0.08);
+    // Embedded panels grow with their content; position against the visible parent viewport.
+    try {
+      if (window.parent !== window && window.frameElement) {
+        height = window.parent.innerHeight;
+        top = Math.max(16, Math.min(64, height * 0.08) - window.frameElement.getBoundingClientRect().top);
+        var visibleTop = top + window.frameElement.getBoundingClientRect().top;
+        dialog.style.setProperty('--export-max-height', Math.max(160, height - visibleTop - 16) + 'px');
+      } else dialog.style.setProperty('--export-max-height', Math.max(160, height - top - 16) + 'px');
+    } catch (e) { dialog.style.setProperty('--export-max-height', '85vh'); }
+    dialog.style.setProperty('--export-top', top + 'px');
+    dialog.showModal();
   }
   function init(rows) {
     data.industry = rows; ix.industry = M.index(rows, ['region', 'segment', 'period_id']);
