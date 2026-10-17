@@ -10,18 +10,17 @@
   let catalog,snapshot,predictions,predictionError=false,predictionLoading=false,page=0,chartPoints=[],predictionExpanded=false,searchTimer,resizeTimer;
   const params=new URLSearchParams(location.search);
   const state={study:params.get('study')==='workspace'?'workspace':'overview',country:params.get('country')==='US'?'US':'CN',group:params.get('group')||'',q:params.get('q')||'',
-    id:params.get('indicator')||'',mode:['combo','value','yoy','mom'].includes(params.get('mode'))?params.get('mode'):'combo',
+    id:params.get('indicator')||'',mode:'value',
     years:[0,1,3,5,10].includes(+params.get('years'))&&params.has('years')?+params.get('years'):5,
     view:['predictions','fedwatch'].includes(params.get('view'))?params.get('view'):'indicators',frequency:['monthly','quarterly','daily'].includes(params.get('frequency'))?params.get('frequency'):'',health:['attention','pending'].includes(params.get('health'))?params.get('health'):''};
   function save(){const p=new URLSearchParams();p.set('study',state.study);for(const key of ['predictionTopic','predictionQuery','predictionSort','meeting']){const value=new URLSearchParams(location.search).get(key);if(value)p.set(key,value);}for(const key of ['country','group','q','id','mode','years','view','frequency','health'])if(state[key]!==''&&state[key]!==null)p.set(key==='id'?'indicator':key,state[key]);history.replaceState(null,'',location.pathname+'?'+p);}
   function download(text,filename){const url=URL.createObjectURL(new Blob([text],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
-  function showView(){document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===state.view)));$('countries').hidden=state.view!=='indicators';$('indicators').hidden=state.view!=='indicators'||!catalog;$('predictions').hidden=state.view!=='predictions';$('fedwatch').hidden=state.view!=='fedwatch';if(state.view!=='indicators'){$('load-state').textContent='';$('skeleton').hidden=true;$('data-warning').hidden=true;}save();if(state.view==='fedwatch')ForecastDesk.loadFedwatch();if(state.view==='predictions'){renderPredictions();loadPredictions();}}
+  function showView(){document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===state.view)));$('countries').hidden=state.view!=='indicators';$('indicators').hidden=state.view!=='indicators'||!catalog;$('predictions').hidden=state.view!=='predictions';$('fedwatch').hidden=state.view!=='fedwatch';if(state.view!=='indicators'){$('load-state').textContent='';$('skeleton').hidden=true;$('data-warning').hidden=true;}save();if(state.view==='indicators'&&catalog)requestAnimationFrame(drawDetailChart);if(state.view==='fedwatch')ForecastDesk.loadFedwatch();if(state.view==='predictions'){renderPredictions();loadPredictions();}}
   function graph(spec,data,mode=state.mode){
-    if(mode==='combo'||mode==='value'&&spec.frequency!=='daily'&&spec.kind!=='rate'){const rows=M.chartRows(spec,data,'value',state.years,new Date(snapshot.cutoff+'T23:59:59Z'));const result=SiteCharts.paired(rows.map(r=>({period:r.period,x:M.dateOf(r.period).getTime(),value:r.chartValue,change:M.compare(spec,M.rows(data),r,'yoy')})),{mode:mode==='combo'?'combo':'value',width:document.querySelector('.macro-chart')?.clientWidth||Math.max(320,Math.min(720,innerWidth-64)),name:spec.name,unit:spec.unit,changeUnit:M.changeUnit(spec),changeLabel:spec.kind==='balance'?'同期增量':spec.kind==='rate'?'同比变化':'同比',gap:{annual:400,quarterly:110,monthly:40,daily:7}[spec.frequency]*86400000});chartPoints=result.points;return result.html;}
     chartPoints=[];const points=M.chartRows(spec,data,mode,state.years,new Date(snapshot.cutoff+'T23:59:59Z'));
     const values=points.filter(r=>M.finite(r.chartValue));
     if(!values.length)return '<p class="portal-empty">所选区间或口径没有可用数据。可切换“原始值”或“全部”。</p>';
-    const w=Math.max(320,document.querySelector('.macro-chart')?.clientWidth||$('detail').clientWidth-60||720),h=300,left=76,right=24,top=28,bottom=40;
+    const w=Math.max(240,$('primary-chart').clientWidth),h=innerWidth<=600?260:320,left=w<500?48:58,right=20,top=24,bottom=38;
     const scale=SiteCharts.niceScale(values.map(r=>r.chartValue)),lo=scale.min,hi=scale.max;
     const first=M.dateOf(points[0].period).getTime(),last=M.dateOf(points.at(-1).period).getTime();
     const x=r=>left+(M.dateOf(r.period).getTime()-first)/(last-first||1)*(w-left-right);
@@ -40,45 +39,36 @@
       previous=row;
     }flush();
     let grid='';for(const tick of scale.ticks){const gy=top+(hi-tick)/(hi-lo)*(h-top-bottom);grid+='<line x1="'+left+'" x2="'+(w-right)+'" y1="'+gy+'" y2="'+gy+'" stroke="#eceef5"/><text x="'+(left-8)+'" y="'+(gy+4)+'" text-anchor="end">'+esc(scale.format(tick))+'</text>';}
-    return '<svg viewBox="0 0 '+w+' '+h+'" role="img" aria-labelledby="chart-title chart-desc"><title id="chart-title">'+esc(spec.name)+'历史走势</title><desc id="chart-desc">'+esc(values.length+'个观测值；详细数值见历史明细和CSV。缺失区间不连线。')+'</desc>'+grid+lines+dots+'<text x="'+left+'" y="'+(h-12)+'">'+esc(points[0].period)+'</text><text x="'+(w-right)+'" y="'+(h-12)+'" text-anchor="end">'+esc(points.at(-1).period)+'</text></svg>';
-  }
-  function renderHistory(spec,data){
-    const list=M.rows(data),descending=list.slice().reverse(),slice=descending.slice(page*24,(page+1)*24);
-    $('history').innerHTML=slice.length?slice.map(r=>'<tr><td>'+esc(r.period)+'</td><td>'+number(r.value)+'</td><td>'+number(M.compare(spec,list,r,'yoy'))+'</td><td>'+number(M.compare(spec,list,r,'mom'))+'</td><td>'+(r.releaseDate?esc(r.releaseDate):'')+'</td><td>'+link(r.sourceUrl||data.sourceUrl||catalog.sources[spec.source].url,'原始来源')+'</td></tr>').join(''):'<tr><td colspan="6">尚无真实观测值</td></tr>';
-    $('page-label').textContent=list.length?'第 '+(page+1)+' / '+Math.ceil(list.length/24)+' 页 · '+list.length+' 条':'0 条';$('prev').disabled=page===0;$('next').disabled=(page+1)*24>=list.length;
+    return '<svg width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'" role="img" aria-labelledby="chart-title chart-desc"><title id="chart-title">'+esc(spec.name)+'历史走势</title><desc id="chart-desc">'+esc(values.length+'个观测值；详细数值可下载CSV。缺失区间不连线。')+'</desc>'+grid+lines+dots+'<text x="'+left+'" y="'+(h-12)+'">'+esc(points[0].period)+'</text><text x="'+(w-right)+'" y="'+(h-12)+'" text-anchor="end">'+esc(points.at(-1).period)+'</text></svg>';
   }
   function renderStudy(){
     const query=state.study==='workspace';$('indicators').classList.toggle('macro-overview-mode',!query);
     document.querySelectorAll('[data-study]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.study===state.study)));
     document.querySelector('.macro-overview').hidden=query;$('groups').hidden=!query;document.querySelector('.macro-search').hidden=!query;document.querySelector('.macro-list-panel').hidden=!query;
-    $('recent-releases').hidden=query;$('trend-presets').hidden=query;$('workspace-heading').textContent=query?'指标查询':'趋势分析';$('download-latest').hidden=!query;
+    $('workspace-heading').textContent=query?'指标查询':'趋势分析';$('download-latest').hidden=!query;
+  }
+  function drawDetailChart(){
+    const host=$('primary-chart'),spec=catalog?.series.find(s=>s.id===state.id);
+    if(!host||!spec||host.clientWidth<=0)return;
+    host.innerHTML=graph(spec,snapshot.series[spec.id]||{},'value');
+    ResearchChart.attach(host,chartPoints);
   }
   function renderDetail(){
-    const spec=catalog.series.find(s=>s.id===state.id);if(!spec){$('detail').innerHTML='<p class="portal-empty">没有匹配指标。请调整筛选条件。</p>';return;}
-    const data=snapshot.series[spec.id]||{},source=catalog.sources[spec.source],list=M.rows(data),latest=list.at(-1),s=M.status(spec,data);
-    const unavailable=spec.kind==='cumulative'||spec.frequency==='daily';
-        const head=M.headline(spec,data);
-    if(unavailable||spec.kind==='rate'&&state.mode==='combo'||(spec.frequency==='annual'&&state.mode==='mom'))state.mode='value';
-    if(!latest){$('detail').innerHTML='<h2 id="metric-title">'+esc(spec.name)+'</h2><p class="portal-note">待补齐 · '+esc(M.frequency[spec.frequency])+'</p><p>'+link(source.url,'查看官方来源 ↗')+'</p>';return;}
-    const changes=unavailable?[]:spec.frequency==='annual'?['yoy']:['yoy','mom'];
-    $('detail').innerHTML='<div class="portal-panel-head board-panel-head"><div><p class="eyebrow">'+esc((M.groupOf(spec.id)?.label||spec.category)+' · '+M.frequency[spec.frequency])+'</p><h2 id="metric-title">'+esc(spec.name)+'</h2><span class="macro-state">'+esc(s)+'</span></div><div class="macro-detail-actions"><button id="download" class="portal-button">下载 CSV</button></div></div>'+
-      '<div class="macro-latest"><div><span>最新读数 · '+esc(latest.period)+'</span><b>'+compact(head.value)+'</b><small>'+esc(head.unit+(head.label?' · '+head.label:''))+'</small></div>'+changes.map(mode=>'<div><span>'+esc(M.changeLabel(spec,mode))+'</span><b>'+number(M.compare(spec,list,latest,mode))+'</b><small>'+esc(M.changeUnit(spec))+'</small></div>').join('')+'</div>'+
-      '<p class="macro-source-line">'+link(latest.originalSourceUrl||latest.sourceUrl||data.sourceUrl||source.url,data.provider?.includes('Choice')?data.sourceOrganization+' · Choice':source.name)+' · '+esc(spec.adjustment)+(latest.releaseDate?'<br>发布日期：'+esc(latest.releaseDate):'')+(M.finite(latest.officialYoy)?' · 官方同比 '+number(latest.officialYoy)+'%':'')+'</p>'+(data.error?'<p class="macro-state">更新失败，保留历史数据。</p>':'')+
-      (data.coverage?'<p class="macro-coverage">'+esc(data.coverage.start+' — '+data.coverage.end+' · '+data.coverage.count+'期 · '+(data.coverage.missingPeriods.length?data.coverage.missingPeriods.length+'期缺失':'区间内无缺期'))+(data.coverage.historyShort?' · 历史覆盖不足':'')+(data.coverage.structuralPeriods.length?' · 合并发布月份不拆分':'')+'</p>':'')+
-      '<div class="macro-controls board-filters"><label>口径<select id="mode"><option value="value">仅数值</option>'+(!unavailable?(spec.kind!=='rate'?'<option value="combo">数值＋同比</option>':'')+'<option value="yoy">'+esc(M.changeLabel(spec,'yoy'))+'</option><option value="mom" '+(spec.frequency==='annual'?'disabled':'')+'>'+esc(M.changeLabel(spec,'mom'))+'</option>':'')+'</select></label><label>时间<select id="years"><option value="1">近1年</option><option value="3">近3年</option><option value="5">近5年</option><option value="10">近10年</option><option value="0">全部</option></select></label><span class="portal-note">单位：'+esc(state.mode==='combo'?spec.unit+' / '+M.changeUnit(spec):state.mode==='value'?spec.unit:M.changeUnit(spec))+'</span></div><div class="macro-chart-grid"><div class="macro-chart-block"><p class="macro-chart-label"><b>'+esc(spec.name)+'</b>'+esc(state.mode==='combo'?'数值＋同比':state.mode==='value'?spec.adjustment:M.changeLabel(spec,state.mode))+' · '+esc(state.mode==='combo'?spec.unit+' / '+M.changeUnit(spec):state.mode==='value'?spec.unit:M.changeUnit(spec))+'</p><div id="primary-chart" class="macro-chart board-chart">'+graph(spec,data)+'</div></div></div><p class="chart-help">悬停、轻触或按 Tab 聚焦数据点查看数值 · 图表缺期断线</p>'+
-      '<details class="macro-history board-detail"><summary>历史明细</summary><div class="portal-table-scroll"><table class="portal-table board-table"><thead><tr><th>数据期间</th><th>数值 ('+esc(spec.unit)+')</th><th>'+esc(M.changeLabel(spec,'yoy'))+' ('+esc(M.changeUnit(spec))+')</th><th>'+esc(M.changeLabel(spec,'mom'))+' ('+esc(M.changeUnit(spec))+')</th><th>发布日期</th><th>来源</th></tr></thead><tbody id="history"></tbody></table></div><div class="portal-pager"><span id="page-label"></span><div><button id="prev">上一页</button> <button id="next">下一页</button></div></div></details>'+
-      '<details class="macro-method board-detail"><summary>口径与来源</summary><p>'+esc(spec.definition)+'</p><p>'+esc(unavailable?'累计及日度序列不推算同比环比。':spec.kind==='rate'?'百分比指标比较为百分点差值。':spec.kind==='balance'?'余额比较为原单位差值。':'同比、环比匹配准确期间，不补缺值。')+'</p><p>最近获取：'+esc(stamp(data.fetchedAt))+'<br>最近检查：'+esc(stamp(data.checkedAt))+'<br>源库更新：'+esc(data.datasetUpdatedAt||'未提供')+'</p>'+(data.coverage?.missingPeriods?.length?'<p>真实缺期：'+esc(data.coverage.missingPeriods.join('、'))+'</p>':'')+(data.reusedFrom?'<p>复用站内已核验的 '+link('https://yuxing954.github.io/guojin-shangshe-database/consumption-macro.html','消费全景')+' 数据；官方同比单列，不用金额重算替代。</p>':'')+(data.sourceOrganization?'<p>原始提供者：'+esc(data.sourceOrganization)+(data.metadataUrl?' '+link(data.metadataUrl,'元数据'):'')+'</p>':'')+(latest.footnotes?.length?'<p>修订脚注：'+esc(latest.footnotes.join('; '))+'</p>':'')+'<p>API：'+esc(data.provider?.includes('Choice')?'后端通过已连接的Choice MCP更新，浏览器不接触密钥':source.api)+'<br>授权：'+esc(data.provider?.includes('Choice')?'用户已明确确认公开展示与下载授权':source.license)+' '+link(source.terms,'条款')+'</p></details>';
-    ResearchChart.attach($('primary-chart'),chartPoints);
-    $('mode').value=state.mode;$('years').value=String(state.years);
-    $('mode').onchange=e=>{state.mode=e.target.value;renderDetail();save();};$('years').onchange=e=>{state.years=+e.target.value;renderDetail();save();};
-    const forecastHost=document.createElement('div');forecastHost.className='macro-forecast-detail';forecastHost.innerHTML=E.history(expectations,spec,data);$('detail').append(forecastHost);
-    if(E.ids.includes(spec.id)){
-      const info=document.createElement('div');info.className='macro-forecast-latest';const forecast=E.lookup(expectations,spec.id,latest.period),delta=E.difference(expectations,spec,latest);
-      info.innerHTML='<span>同期间 Choice 预测 <b>'+number(forecast?.value)+'%</b></span><span>实际−预测 <b>'+number(delta)+'</b> 个百分点</span>'+(expectations?.series[spec.id]?link(expectations.series[spec.id].sourceUrl,'预测来源 ↗'):'');$('detail').querySelector('.macro-latest').after(info);
-      const forecastDownload=document.createElement('button');forecastDownload.className='portal-button';forecastDownload.textContent='下载预测 CSV';forecastDownload.onclick=()=>download(E.csv(expectations,spec,data),spec.id+'-expectations.csv');$('detail').querySelector('.macro-detail-actions').append(forecastDownload);
-    }
+    const spec=catalog.series.find(s=>s.id===state.id);
+    if(!spec){$('detail').innerHTML='<p class="portal-empty">没有匹配指标。</p>';return;}
+    const data=snapshot.series[spec.id]||{},source=catalog.sources[spec.source],r=D.readout(spec,data),latest=r.latest;
+    state.mode='value';
+    if(!latest){$('detail').innerHTML='<h2 id="metric-title">'+esc(spec.name)+'</h2><p class="portal-note">待补齐 · '+esc(M.frequency[spec.frequency])+'</p><p>'+link(source.url,'官方来源 ↗')+'</p>';return;}
+    const sourceUrl=latest.originalSourceUrl||latest.sourceUrl||data.sourceUrl||source.url;
+    $('detail').innerHTML='<div class="macro-trend-head"><div><p class="eyebrow">'+esc(M.frequency[spec.frequency]+' · '+latest.period)+'</p><h2 id="metric-title">'+esc(spec.name)+'</h2></div><label class="macro-range">时间<select id="years" aria-label="趋势时间范围"><option value="1">近1年</option><option value="3">近3年</option><option value="5">近5年</option><option value="10">近10年</option><option value="0">全部</option></select></label></div>'+
+      '<div class="macro-latest"><div><b>'+compact(r.value)+'</b><small>'+esc(r.unit+(r.label?' · '+r.label:''))+'</small></div>'+(r.delta?'<div class="macro-trend-change"><span>'+esc(r.delta.label)+'</span><b>'+(r.delta.value>0?'+':'')+number(r.delta.value)+'</b><small>'+esc(r.delta.unit)+'</small></div>':'')+'</div>'+
+      (data.error?'<p class="macro-state">更新失败，保留历史数据。</p>':'')+
+      '<div id="primary-chart" class="macro-chart board-chart"></div>'+
+      '<div class="macro-trend-footer"><p class="macro-source-line">'+link(sourceUrl,data.provider?.includes('Choice')?data.sourceOrganization+' · Choice':source.name)+'<span>'+esc(spec.adjustment)+'</span>'+(latest.releaseDate?'<time>发布 '+esc(latest.releaseDate)+'</time>':'')+'</p><div><a href="data-notes.html#macro">数据说明</a><button id="download" class="macro-download">下载 CSV</button></div></div>';
+    $('years').value=String(state.years);
+    $('years').onchange=e=>{state.years=+e.target.value;drawDetailChart();save();};
     $('download').onclick=()=>download(M.csv(spec,data,source),spec.id+'.csv');
-    $('prev').onclick=()=>{page--;renderHistory(spec,data);};$('next').onclick=()=>{page++;renderHistory(spec,data);};renderHistory(spec,data);
+    drawDetailChart();
   }
   function selectMetric(id){if(!D.directory(catalog,snapshot,state).some(s=>s.id===id)){state.q='';state.group='';state.frequency='';state.health='';}if(state.id!==id)state.mode='value';state.id=id;page=0;render();$('metric-title')?.setAttribute('tabindex','-1');$('metric-title')?.focus({preventScroll:true});}
   function spark(spec,data){
@@ -100,11 +90,10 @@
     };
     $('kpi-grid').innerHTML=topics.map((topic,index)=>'<section class="macro-topic"><h3><span>'+String(index+1).padStart(2,'0')+'</span>'+esc(topic.title)+'</h3><div class="macro-topic-cards">'+topic.ids.map(card).join('')+'</div></section>').join('');
     for(const button of $('kpi-grid').querySelectorAll('[data-kpi]')){const spec=catalog.series.find(s=>s.id===button.dataset.kpi);button.insertAdjacentHTML('beforeend',E.card(expectations,spec,M.rows(snapshot.series[spec.id]).at(-1)));}
-    $('forecast-overview')?.remove();const forecasts=document.createElement('div');forecasts.id='forecast-overview';forecasts.innerHTML=E.overview(expectations,catalog,snapshot,state.country);$('kpi-grid').after(forecasts);
-    MacroMorning.render(catalog,snapshot,state.country,selectMetric);
+
   }
   function render(){
-    if(!catalog)return;renderStudy();
+    if(!catalog)return;$('indicators').hidden=state.view!=='indicators';renderStudy();
     const filtered=D.directory(catalog,snapshot,state),selected={available:filtered.filter(s=>M.rows(snapshot.series[s.id]).length),pending:filtered.filter(s=>!M.rows(snapshot.series[s.id]).length),references:[]},all=filtered;
     if(!all.some(s=>s.id===state.id)){state.id=all[0]?.id||'';page=0;}renderOverview();
     $('summary').textContent='筛选结果 '+filtered.length+' / '+D.core(catalog,state.country,snapshot).length+' 项';$('count').textContent=filtered.length+' 项';
