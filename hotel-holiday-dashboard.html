@@ -11,7 +11,7 @@
   <script defer src="scripts/site-shell.js?v=20261014monthly"></script>
   <script defer src="scripts/hotel-metrics.js?v=20261010coverage"></script>
   <script src="scripts/site-charts.js?v=20261012mobile1"></script>
-  <script defer src="scripts/hotel-holiday-dashboard.js?v=20261012yoychart"></script>
+  <script defer src="scripts/hotel-excel-export.js?v=20261017"></script><script defer src="scripts/hotel-holiday-dashboard.js?v=20261017excel"></script>
   <link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified">
   <link rel="stylesheet" href="scripts/site-charts.css?v=20261012mobile1">
   <link rel="stylesheet" href="scripts/industry-embed.css?v=20261014viewfit">
@@ -35,7 +35,7 @@
     <div class="hd-toolbar board-filters holiday-toolbar">
       <label>假期 <select id="holiday-select"></select></label>
       <label>对比维度 <select id="dimension-select"><option value="hotel_tier">酒店档位</option><option value="city_tier">城市线级</option></select></label>
-      <a class="hd-source-link" href="data/hotel_holiday_daily.csv" download>下载假期数据</a>
+      <button type="button" class="hd-tab" id="holiday-export">下载假期数据</button><span id="holiday-export-error" role="alert"></span>
     </div>
     <p class="hd-period" id="period-note"></p>
     <section class="hd-kpis board-kpis holiday-kpis" id="holiday-kpis" aria-label="假期日均经营指标"></section>
