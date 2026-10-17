@@ -38,15 +38,15 @@
       followLatest = false; state.base = 'auto';
     }
     $('selection-note').hidden = before === state.week;
-    $('selection-note').textContent = before === state.week ? '' : before + '在当前视图暂无数据，已切至' + state.week;
+    $('selection-note').textContent = before === state.week ? '' : M.weekLabel(before) + '在当前视图暂无数据，已切至' + M.weekLabel(state.week);
     var newest = allowed[allowed.length - 1];
-    $('week-select').innerHTML = option('latest', '最新周 · ' + newest.period_id + ' · ' + newest.end_date) + allowed.slice().reverse().map(function (p) { return option(p.period_id, p.period_id + ' · ' + p.end_date); }).join('');
+    $('week-select').innerHTML = option('latest', '最新周 · ' + M.weekLabel(newest.period_id) + ' · ' + newest.end_date) + allowed.slice().reverse().map(function (p) { return option(p.period_id, M.weekLabel(p.period_id) + ' · ' + p.end_date); }).join('');
     if (followLatest) state.week = newest.period_id;
     $('week-select').value = followLatest ? 'latest' : state.week;
     compareOptions();
   }
   function baseWeek() { return state.base === 'auto' ? M.priorPeriod(periods.get(state.week)) : state.base; }
-  function periodLabel(p) { return p ? p.period_id + '（' + p.start_date + ' — ' + p.end_date + '）' : '暂无数据'; }
+  function periodLabel(p) { return p ? M.weekLabel(p.period_id) + '（' + p.start_date + ' — ' + p.end_date + '）' : '暂无数据'; }
   function blankTable(id, message, cols) { $(id).innerHTML = '<tbody><tr><td colspan="' + cols + '" class="hd-empty">' + esc(message) + '</td></tr></tbody>'; }
   function option(value, text) { return '<option value="' + esc(value) + '">' + esc(text) + '</option>'; }
   function fetchRows(file) {
@@ -65,7 +65,7 @@
   }
   function compareOptions() {
     var p = periods.get(state.week), prior = M.priorPeriod(p);
-    var options = option('auto', '同比基周 · ' + prior);
+    var options = option('auto', '同比基周 · ' + M.weekLabel(prior));
     Array.from(periods.values()).filter(function (r) { return Number(r.year) === Number(p.year) - 1; }).reverse().forEach(function (r) {
       options += option(r.period_id, periodLabel(r));
     });
@@ -76,7 +76,7 @@
   function renderPeriod() {
     var base = periods.get(baseWeek());
     $('period-note').textContent = periodLabel(periods.get(state.week)) + (state.base === 'auto' ? ' · 同周同比' : ' · 手动对比');
-    $('period-note').title = '比较基周：' + (base ? periodLabel(base) : baseWeek() + '（无基周记录）');
+    $('period-note').title = '比较基周：' + (base ? periodLabel(base) : M.weekLabel(baseWeek()) + '（无基周记录）');
     $('mode-switch').querySelector('[data-mode="change"]').textContent = state.base === 'auto' ? '仅同比' : '仅对比变化';
   }
   function renderOverview() {
@@ -111,7 +111,7 @@
     var current = rows.map(function (r) { return { x: r.period_id, date: r.start_date + ' — ' + r.end_date,
       y: !isChange ? display(row(state.region, '全部', r.period_id), field) : M.change(row(state.region, '全部', r.period_id), row(state.region, '全部', M.priorPeriod(r)), field) }; });
     if(['combo','value','change'].includes(state.mode)){
-      const result=SiteCharts.drawPaired($('main-chart'),rows.map(r=>({period:r.period_id,x:Date.parse(r.start_date),value:display(row(state.region,'全部',r.period_id),field),change:M.change(row(state.region,'全部',r.period_id),row(state.region,'全部',M.priorPeriod(r)),field)})),{mode:state.mode,unit:meta.unit,changeUnit:field==='occupancy_rate'?'百分点':'%',changeLabel:labelChange(),name:meta.label,trimEmpty:true,precision:0,changePrecision:1,gap:15*86400000});
+      const result=SiteCharts.drawPaired($('main-chart'),rows.map(r=>({period:r.period_id,x:Date.parse(r.start_date),value:display(row(state.region,'全部',r.period_id),field),change:M.change(row(state.region,'全部',r.period_id),row(state.region,'全部',M.priorPeriod(r)),field)})),{mode:state.mode,unit:meta.unit,changeUnit:field==='occupancy_rate'?'百分点':'%',changeLabel:labelChange(),name:meta.label,trimEmpty:true,precision:0,changePrecision:1,periodFormat:'week-short',gap:15*86400000});
       $('trend-caption').textContent=meta.label+' · '+(state.mode==='combo'?meta.unit+' / '+(field==='occupancy_rate'?'百分点':'%'):state.mode==='change'?(field==='occupancy_rate'?'百分点':'%'):meta.unit);$('history-note').textContent=result.points.length?result.points[0].text.split('\n')[0]+' — '+result.points.at(-1).text.split('\n')[0]:'';return;
     }
     var lines = [{ name: state.region + (!isChange ? ' · 本期绝对值' : ' · 同周同比'), color: COLORS[0], pts: current }];
@@ -157,7 +157,7 @@
     var changeUnit = field === 'occupancy_rate' ? '百分点' : '%';
     $('segment-chart-caption').textContent = state.region + ' · ' + meta.label + ' · ' + (mode === 'combo' ? meta.unit + ' / 同周同比（' + changeUnit + '）' : mode === 'change' ? '同周同比（' + changeUnit + '）' : '数值（' + meta.unit + '）') + (fallback ? ' · 基期缺失' : '');
     if (!hasValue && !hasChange) { $('segment-chart').innerHTML = '<div class="hd-empty">所选范围暂无分档次数据</div>'; return; }
-    SiteCharts.drawPaired($('segment-chart'), points, { mode: mode, unit: meta.unit, changeUnit: changeUnit, changeLabel: '同周同比', name: state.region + '分档次' + meta.label, trimEmpty:true,precision:0,changePrecision:1, gap: 15 * 86400000 });
+    SiteCharts.drawPaired($('segment-chart'), points, { mode: mode, unit: meta.unit, changeUnit: changeUnit, changeLabel: '同周同比', name: state.region + '分档次' + meta.label, trimEmpty:true,precision:0,changePrecision:1,periodFormat:'week-short', gap: 15 * 86400000 });
   }
   function renderCities() {
     var all = regions.filter(function (r) { return r !== '全国'; }).map(function (region) {
@@ -188,7 +188,7 @@
   }
   function renderGroups() {
     if (!data.group) return;
-    $('group-period').textContent = state.week + ' · 全国';
+    $('group-period').textContent = M.weekLabel(state.week) + ' · 全国';
     var rows = GROUPS.map(function (g) { return ix.group.get(g + '|全国|' + state.week); });
     var validGroups = GROUPS.filter(function (g, i) { return hasValues(rows[i], ['stay_adr','hotel_count','room_count']); });
     cardAvailable('group-card',validGroups.length>0,'所选周暂无集团数据 · 集团周度记录自2024年起');
@@ -217,7 +217,7 @@
   function renderSupply() {
     if (!data.supply) return;
     var r = ix.supply15.get('全国|' + state.week), base = ix.supply15.get('全国|' + baseWeek()), rooms = M.metric(r, 'room_count');
-    $('supply-period').textContent = state.week + ' · 周度 · 15间及以上 · 酒店之家';
+    $('supply-period').textContent = M.weekLabel(state.week) + ' · 周度 · 15间及以上 · 酒店之家';
     cardAvailable('supply-card',hasValues(r,['hotel_count','room_count','chain_room_count']),'所选周暂无15间及以上供给数据');
     if (!hasValues(r,['hotel_count','room_count','chain_room_count'])) return;
     $('supply-stats').innerHTML = [['hotel_count','全国酒店'], ['room_count','全国房量'], ['chain_room_count','连锁房量'], ['chain_rate','房量连锁率']].map(function (item) { return supplyStat(r, base, item[0], item[1]); }).join('');
@@ -262,7 +262,7 @@
     }).filter(function (p) { return p.x >= start && p.x <= cutoff; });
     var lines = [{name:'住宿和餐饮业投资 · 月度累计同比（右轴）', color:'#ac863d', axis:'right', gap:65*86400000, pts:points}];
     if (ix.supply15) lines.unshift({name:title+' · 周度同周同比（左轴）', color:COLORS[0], gap:15*86400000, pts:weeks.map(function (p) {
-      return {x:p.end_date, date:p.period_id+'（'+p.end_date+'）', y:M.change(ix.supply15.get('全国|'+p.period_id),ix.supply15.get('全国|'+M.priorPeriod(p)),field)};
+      return {x:p.end_date, date:M.weekLabel(p.period_id)+'（'+p.end_date+'）', y:M.change(ix.supply15.get('全国|'+p.period_id),ix.supply15.get('全国|'+M.priorPeriod(p)),field)};
     })});
     $('investment-chart-caption').textContent = title+'同比 / 住宿和餐饮业投资累计同比（%） · 15间及以上 / 不含农户';
     lineChart('investment-chart', lines, {unit:'%', time:true, forceLine:true, dualAxis:true, leftTitle:'酒店供给同比（%）', rightTitle:'投资累计同比（%）'});
@@ -309,7 +309,7 @@
     finally { submit.disabled=false; submit.textContent='导出'; }
   }
   function openWeeklyExport() {
-    var options = weekly.map(function (p) { return option(p.period_id,p.period_id+' · '+p.start_date+' — '+p.end_date); }).join('');
+    var options = weekly.map(function (p) { return option(p.period_id,M.weekLabel(p.period_id)+' · '+p.start_date+' — '+p.end_date); }).join('');
     $('export-start').innerHTML = options; $('export-end').innerHTML = options;
     var range = calendar();
     $('export-start').value = range.length ? range[0].period_id : state.week;
@@ -344,8 +344,8 @@
     if (META[saved.get('metric')]) state.metric = saved.get('metric');
     if (['combo', 'value', 'change'].includes(saved.get('mode'))) state.mode = saved.get('mode');
     if (periods.has(saved.get('base'))) state.base = saved.get('base');
-    $('asof').innerHTML = '最新数据截至<b>' + esc(latest.end_date) + ' · ' + esc(latest.period_id) + '</b>';
-    $('week-select').innerHTML = option('latest', '最新周 · ' + latestWeek + ' · ' + latest.end_date) + Array.from(periods.values()).reverse().map(function (r) { return option(r.period_id, r.period_id + ' · ' + r.end_date); }).join('');
+    $('asof').innerHTML = '最新数据截至<b>' + esc(latest.end_date) + ' · ' + esc(M.weekLabel(latest.period_id)) + '</b>';
+    $('week-select').innerHTML = option('latest', '最新周 · ' + M.weekLabel(latestWeek) + ' · ' + latest.end_date) + Array.from(periods.values()).reverse().map(function (r) { return option(r.period_id, M.weekLabel(r.period_id) + ' · ' + r.end_date); }).join('');
     $('week-select').value = followLatest ? 'latest' : state.week; $('region-select').innerHTML = regions.map(function (r) { return option(r, r); }).join(''); $('history-start').value = state.window;
     compareOptions(); $('dashboard').hidden = false;
     $('weekly-export').onclick = openWeeklyExport;
@@ -425,7 +425,7 @@
   }
   function lineChart(id, lines, opt) {
     opt = opt || {}; var host = $(id); host.innerHTML = ''; lines = M.chartSeries(lines);
-    if(!opt.forceLine&&state.mode==='combo'&&lines.some(s=>s.pts.some(p=>Number.isFinite(p.change)))){const keys=[...new Set(lines.flatMap(s=>s.pts.map(p=>p.x)))].sort();SiteCharts.drawPaired(host,keys.map((key,i)=>({period:key,x:i,values:lines.map(s=>{const p=s.pts.find(p=>p.x===key);return {name:s.name,value:p?.y,change:p?.change,color:s.color};})})),{unit:opt.unit,changeUnit:opt.occupancy?'百分点':'%',changeLabel:labelChange(),name:lines.map(s=>s.name).join('、'),precision:0,changePrecision:1});return;}
+    if(!opt.forceLine&&state.mode==='combo'&&lines.some(s=>s.pts.some(p=>Number.isFinite(p.change)))){const keys=[...new Set(lines.flatMap(s=>s.pts.map(p=>p.x)))].sort();SiteCharts.drawPaired(host,keys.map((key,i)=>({period:key,x:i,values:lines.map(s=>{const p=s.pts.find(p=>p.x===key);return {name:s.name,value:p?.y,change:p?.change,color:s.color};})})),{unit:opt.unit,changeUnit:opt.occupancy?'百分点':'%',changeLabel:labelChange(),name:lines.map(s=>s.name).join('、'),precision:0,changePrecision:1,periodFormat:'week-short'});return;}
     var xs = Array.from(new Set(lines.flatMap(function (s) { return s.pts.map(function (p) { return p.x; }); }))).sort();
     var values = lines.flatMap(function (s) { return s.pts.map(function (p) { return M.num(p.y); }); }).filter(function (v) { return v != null; });
     if (!values.length) { host.innerHTML = '<div class="hd-empty">所选范围暂无有效数据</div>'; return; }
@@ -452,7 +452,7 @@
     }
     if (min < 0 && max > 0) svg.appendChild(svgEl('line', { x1: L, x2: W - R, y1: py(0), y2: py(0), stroke: '#c3c9d8', 'stroke-dasharray': '4 4' }));
     Array.from(new Set([0, Math.round((xs.length - 1) / 3), Math.round((xs.length - 1) * 2 / 3), xs.length - 1])).forEach(function (i) {
-      svg.appendChild(svgEl('text', { x: px(xs[i]), y: H - 10, 'text-anchor': opt.time && i === 0 ? 'start' : opt.time && i === xs.length - 1 ? 'end' : 'middle', 'font-size': 11, fill: '#8a94a5' }, xs[i]));
+      svg.appendChild(svgEl('text', { x: px(xs[i]), y: H - 10, 'text-anchor': opt.time && i === 0 ? 'start' : opt.time && i === xs.length - 1 ? 'end' : 'middle', 'font-size': 11, fill: '#8a94a5' }, M.weekLabel(xs[i])));
     });
     lines.forEach(function (s) {
       var path = '', started = false, previous = null;
@@ -466,7 +466,7 @@
     var maps = lines.map(function(s){return new Map(s.pts.map(function(p){return [p.x,p];}));});
     SiteCharts.attach(host, xs.map(function(key){
       var firstIndex=maps.findIndex(function(map){var p=map.get(key);return p&&M.num(p.y)!=null;}), first=firstIndex>=0?maps[firstIndex].get(key):null;
-      return {x:px(key),y:first?py(first.y,lines[firstIndex]):T,labels:lines.flatMap(function(s,i){var p=maps[i].get(key);return p&&M.num(p.y)!=null?[{x:px(key),y:py(p.y,s),text:fmt(p.y,opt.zero||id==='investment-chart'?1:0)+(opt.zero||id==='investment-chart'?(opt.unit||''):''),kind:opt.zero||id==='investment-chart'?'change':'value',color:s.color}]:[];}),text:(first&&first.date?first.date:key)+'\n'+lines.map(function(s,i){var p=maps[i].get(key);return s.name+'：'+fmt(p?p.y:null,opt.zero||id==='investment-chart'?1:0)+' '+(opt.unit||'');}).join('\n')};
+      return {x:px(key),y:first?py(first.y,lines[firstIndex]):T,labels:lines.flatMap(function(s,i){var p=maps[i].get(key);return p&&M.num(p.y)!=null?[{x:px(key),y:py(p.y,s),text:fmt(p.y,opt.zero||id==='investment-chart'?1:0)+(opt.zero||id==='investment-chart'?(opt.unit||''):''),kind:opt.zero||id==='investment-chart'?'change':'value',color:s.color}]:[];}),text:M.weekLabel(first&&first.date?first.date:key)+'\n'+lines.map(function(s,i){var p=maps[i].get(key);return s.name+'：'+fmt(p?p.y:null,opt.zero||id==='investment-chart'?1:0)+' '+(opt.unit||'');}).join('\n')};
     }));
 
   }
