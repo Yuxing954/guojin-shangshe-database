@@ -26,8 +26,8 @@
   }
   function fmt(value, field) {
     if (value == null) return '—';
-    if (field === 'occupancy_rate') return (value * 100).toFixed(1) + '%';
-    return value.toFixed(1);
+    if (field === 'occupancy_rate') return (value * 100).toFixed(0) + '%';
+    return value.toFixed(0);
   }
   function fmtChange(value, field) {
     if (value == null) return '—';
@@ -111,8 +111,8 @@
       return item;
     });
     var host = $('holiday-chart');
-    var result = SiteCharts.drawPaired(host, chartRows, { changeLabels:!!$('holiday-labels')?.checked,valueLabels:!!$('holiday-labels')?.checked, mode: state.mode, name: title, unit: unit,
-      changeUnit: changeUnit, changeLabel: changeLabel, precision: 1, gap: 1.5 });
+    var result = SiteCharts.drawPaired(host, chartRows, { mode: state.mode, name: title, unit: unit,
+      changeUnit: changeUnit, changeLabel: changeLabel, precision: 0, changePrecision: 1, gap: 1.5 });
     result.points.forEach(function (point, index) {
       var r = sorted[index], now = metricValue(r, field, false), base = metricValue(r, field, true);
       point.text = ['第' + r.period_day + '天', '本期 ' + r.current_date + '：' + fmt(now, field),
@@ -171,13 +171,13 @@
     $('asof').innerHTML = '<b>' + holidayNames[holiday] + ' · ' + ((matching[0] && matching[0].current_year) || '') + '年对标' + baselineYear + '年</b>酒店之家';
     renderHolidayOverview(dimension);
     renderKpis(selected);
-    renderChart(selected);
-    renderSummary(matching);
-    renderDaily(selected);
     $('holiday-metric-switch').querySelectorAll('[data-metric]').forEach(function (button) {
       var active = button.dataset.metric === state.metric;
       button.classList.toggle('active', active); button.setAttribute('aria-pressed', String(active));
     });
+    renderChart(selected);
+    renderSummary(matching);
+    renderDaily(selected);
     var saved = new URLSearchParams(location.hash.slice(1));
     saved.set('view', 'holiday'); saved.set('holiday', holiday);
     saved.set('holidayDimension', dimension); saved.set('holidaySegment', state.segment); saved.set('holidayMetric', state.metric); saved.set('holidayMode', state.mode);
@@ -210,7 +210,6 @@
       return row;
     });
     state.record = record;
-    $('holiday-labels').onchange = function () { renderChart(selectedRecords()); };
     if (!state.rows.length) throw new Error('假期经营数据为空');
     var savedHoliday = new URLSearchParams(location.hash.slice(1));
     $('holiday-select').innerHTML = Object.keys(holidayNames).map(function (id) { return '<option value="' + id + '">' + holidayNames[id] + '</option>'; }).join('');

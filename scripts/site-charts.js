@@ -87,27 +87,35 @@ function valuesControl(svg){
   if(!config.node?.isConnected){
     const node=document.createElement('span');node.className='site-value-options';config.node=node;
     for(const key of hotel?['value','change']:['value']){
-      const label=document.createElement('label'),input=document.createElement('input'),caption=document.createElement('span');label.className='site-value-option';input.type='checkbox';input.dataset.valueKind=key;input.checked=config[key];input.addEventListener('change',()=>{config[key]=input.checked;if(!hotel)config.change=input.checked;for(const state of [...states.values()])if(state.valueScope===scope)state.refreshValues();});label.append(input,caption);node.append(label);config[key+'Caption']=caption;
+      const label=document.createElement('label'),input=document.createElement('input'),caption=document.createElement('span');label.className='site-value-option';input.type='checkbox';input.dataset.valueKind=key;input.checked=config[key];input.addEventListener('change',()=>{config[key]=input.checked;if(!hotel)config.change=input.checked;for(const state of [...states.values()])if(state.valueScope===scope)state.refreshValues();});label.append(input,caption);node.append(label);config[key+'Caption']=caption;config[key+'Input']=input;
     }
     const fields=[...scope.querySelectorAll('select,input[type=date]')].filter(n=>chartScope(n)===scope&&!n.closest('.site-value-options')&&(/window|range|history-start|from|\bto\b|years|price-end/.test(n.id)||/范围|区间/.test(n.getAttribute('aria-label')||'')||/范围|期间|开始|结束/.test(n.closest('label')?.textContent||'')));
     const field=fields.at(-1),anchor=field?.closest('label')||field;
     if(anchor){let row=anchor.parentElement;if(!row.classList.contains('site-chart-options')){row=document.createElement('span');row.className='site-chart-options';anchor.before(row);row.append(anchor);}row.append(node);}
-    else{const head=scope.querySelector('.hd-card-head,.gj-card-head,.board-panel-head,.portal-panel-head,.quotes-chart-options,.sector-controls,.macro-detail-controls');if(head)head.append(node);else{node.classList.add('site-value-options-standalone');const host=svg.closest('.site-chart-scroll')||svg;host.before(node);}}
+    else{const head=scope.querySelector('[data-chart-value-controls]')||scope.querySelector('.hd-card-head,.gj-card-head,.board-panel-head,.portal-panel-head,.quotes-chart-options,.sector-controls,.macro-detail-controls');if(head)head.append(node);else{node.classList.add('site-value-options-standalone');const host=svg.closest('.site-chart-scroll')||svg;host.before(node);}}
   }
   config.valueCaption.textContent=hotel&&metric!=='数值'?'显示 '+metric:'显示数值';if(hotel)config.changeCaption.textContent='显示同比';
   return config;
 }
 function valueLabels(svg,points,config){
   svg.querySelector('.site-value-labels')?.remove();if(!config||!config.value&&!config.change)return;
-  const explicit=points.flatMap(p=>p.labels||[]),hasExplicit=points.some(p=>Array.isArray(p.labels));
+  const hasExplicit=points.some(p=>Array.isArray(p.labels));
+  const active=p=>(p.kind==='change'?config.change:config.value);
+  const candidates=points.filter(p=>(p.labels||[]).some(active)),count=Math.max(1,...candidates.map(p=>p.labels.filter(active).length));
+  const plotWidth=Math.max(80,svg.viewBox.baseVal.width-(svg.viewBox.baseVal.width<520?110:152)),budget=Math.max(2,Math.floor(plotWidth/Math.max(28,count*8)));
+  const visible=new Set(Array.from({length:Math.min(budget,candidates.length)},(_,i)=>Math.round(i*(candidates.length-1)/Math.max(1,Math.min(budget,candidates.length)-1))));
+  // Thin annotations, never observations; include the latest finite point in every selected series.
+  const recent=new Map();for(const p of candidates)for(const label of p.labels||[])if(active(label))recent.set((label.kind||'value')+'|'+(label.color||''),label);
+  const explicit=[...new Set([...candidates.filter((p,i)=>candidates.length<=budget||visible.has(i)).flatMap(p=>p.labels||[]),...recent.values()])];
   const labels=hasExplicit?explicit:points.filter(p=>Number.isFinite(p.y)).map(p=>({x:p.x,y:p.y,text:p.label||shortValue(p.text),kind:p.kind||'value'}));
   if(!hasExplicit&&!labels.length)for(const p of nativePoints(svg))labels.push({...p,text:shortValue(p.text),kind:'value'});
   const layer=document.createElementNS(NS,'g');layer.classList.add('site-value-labels');layer.setAttribute('aria-hidden','true');
-  const width=svg.viewBox.baseVal.width,height=svg.viewBox.baseVal.height,occupied=[];
+  const width=svg.viewBox.baseVal.width,height=svg.viewBox.baseVal.height,occupied=[],dual=points.paired&&(points.paired.options.mode||'combo')==='combo';
+  const left=points.paired?(width<520?58:76):8,right=points.paired?(dual?(width<520?52:76):24):8,top=points.paired?54:28,bottom=height-(points.paired?56:36);
   for(const p of labels){
     if(!Number.isFinite(p.x)||!Number.isFinite(p.y)||!p.text||!(p.kind==='change'?config.change:config.value))continue;
-    const text=String(p.text),tw=text.length*6.7+8,x=Math.max(tw/2+3,Math.min(width-tw/2-3,p.x));let y=Math.max(28,Math.min(height-36,p.y-11));
-    for(let i=0;i<36;i++){const next=Math.max(28,Math.min(height-36,p.y+(i?Math.ceil(i/2)*16*(i%2?1:-1):-11)));if(!occupied.some(b=>Math.abs(b.x-x)<(b.w+tw)/2+2&&Math.abs(b.y-next)<14)){y=next;break;}y=next;}
+    const text=String(p.text),tw=text.length*6.7+8,x=Math.max(left+tw/2+3,Math.min(width-right-tw/2-3,p.x));let y=Math.max(top,Math.min(bottom,p.y-11));
+    for(let i=0;i<36;i++){const next=Math.max(top,Math.min(bottom,p.y+(i?Math.ceil(i/2)*16*(i%2?1:-1):-11)));if(!occupied.some(b=>Math.abs(b.x-x)<(b.w+tw)/2+2&&Math.abs(b.y-next)<14)){y=next;break;}y=next;}
     occupied.push({x,y,w:tw});
     const n=document.createElementNS(NS,'text');n.classList.add('site-value-label');n.dataset.kind=p.kind||'value';n.setAttribute('x',x);n.setAttribute('y',y);n.setAttribute('text-anchor','middle');if(p.color)n.style.fill=p.color;n.textContent=text;layer.append(n);
   }svg.append(layer);
@@ -117,16 +125,15 @@ function prepareValues(svg,points,config){
     const meta=points.paired,showValue=config.value,showChange=config.change;
     if(meta.showValue!==showValue||meta.showChange!==showChange||svg.dataset.valuesMode!==String(showValue)+'|'+String(showChange)){
       const result=paired(meta.rows,{...meta.options,valueLabels:showValue,yoyLabels:showChange});
-      const oldWrap=svg.parentElement,oldOverflow=oldWrap.scrollWidth-oldWrap.clientWidth,wasAtEnd=oldOverflow<=0||oldWrap.scrollLeft>=oldOverflow-2,oldRatio=oldOverflow>0?oldWrap.scrollLeft/oldOverflow:1;
       const shell=document.createElement('div');shell.innerHTML=result.html;const next=shell.querySelector('svg');svg.setAttribute('viewBox',next.getAttribute('viewBox'));svg.innerHTML=next.innerHTML;
       svg.dataset.valuesMode=String(showValue)+'|'+String(showChange);
-      const expanded=showValue||showChange;
-      svg.style.setProperty('width',expanded?next.viewBox.baseVal.width+'px':'100%','important');svg.style.setProperty('min-width',expanded?next.viewBox.baseVal.width+'px':'0','important');svg.style.setProperty('max-width',expanded?'none':'100%','important');svg.style.setProperty('height','auto','important');svg.style.setProperty('min-height','0','important');
-      if(!svg.parentElement.classList.contains('site-chart-scroll')){const wrap=document.createElement('div');wrap.className='site-chart-scroll';wrap.tabIndex=0;wrap.setAttribute('role','region');wrap.setAttribute('aria-label','图表，可横向滚动');svg.before(wrap);wrap.append(svg);}
+      svg.style.setProperty('width','100%','important');svg.style.setProperty('min-width','0','important');svg.style.setProperty('max-width','100%','important');svg.style.setProperty('height','auto','important');svg.style.setProperty('min-height','0','important');
+      if(svg.parentElement.classList.contains('site-chart-scroll')){const wrap=svg.parentElement;wrap.replaceWith(...wrap.childNodes);}
+      result.points.forEach((point,index)=>{if(points[index])point.text=points[index].text;});
       points=result.points;
-      if(expanded)requestAnimationFrame(()=>{const wrap=svg.parentElement;wrap.scrollLeft=(wrap.scrollWidth-wrap.clientWidth)*(wasAtEnd?1:oldRatio);});
     }
-  }valueLabels(svg,points,config);return points;
+  }if(config&&points.some(p=>Array.isArray(p.labels))){const kinds=new Set(points.flatMap(p=>p.labels||[]).map(p=>p.kind||'value'));for(const kind of ['value','change'])if(config[kind+'Input'])config[kind+'Input'].disabled=!kinds.has(kind);}
+  valueLabels(svg,points,config);return points;
 }
 function attach(container,points,options={}){
   const svg=container?.matches?.('svg')?container:container?.querySelector('svg');if(!svg)return;
@@ -259,8 +266,7 @@ function paired(rows,opt={}){
   }
   const valid=normalized.filter(r=>r.values.some(s=>showValue&&Number.isFinite(s.value)||showChange&&Number.isFinite(s.change)));
   if(!valid.length)return {html:'<p class="portal-empty">暂无数据</p>',points:[]};
-  const labelled=opt.valueLabels||opt.yoyLabels,seriesSlots=Math.max(...normalized.map(r=>r.values.length));
-  const w=Math.max(labelled?normalized.length*(seriesSlots===1?52:24+seriesSlots*32)+152:240,opt.width||Math.min(900,typeof innerWidth==='number'?innerWidth-64:900)),h=w<520?300:340,L=w<520?58:76,R=showChange&&showValue?(w<520?52:76):24,T=42,B=48,bottom=h-B;
+  const w=Math.max(240,opt.width||Math.min(900,typeof innerWidth==='number'?innerWidth-64:900)),h=w<520?300:340,L=w<520?58:76,R=showChange&&showValue?(w<520?52:76):24,T=42,B=48,bottom=h-B;
   const xs=normalized.map(r=>r.x),xmin=Math.min(...xs),xmax=Math.max(...xs),width=w-L-R;
   const unique=[...new Set(xs)].sort((a,b)=>a-b),delta=unique.length>1?Math.min(...unique.slice(1).map((x,i)=>x-unique[i])):1;
   const margin=width/(unique.length+1)/2,px=x=>L+margin+(x-xmin)/(xmax-xmin||1)*(width-margin*2);
@@ -290,7 +296,7 @@ function paired(rows,opt={}){
   svg+='</svg>';
   const legend=seriesCount>1?normalized.find(r=>r.values.length===seriesCount).values.map((s,i)=>'<span><i style="background:'+colors[i%colors.length]+'"></i>'+esc(s.name)+'</span>').join(''):'';
   points.paired={rows,options:opt,showValue:!!opt.valueLabels,showChange:!!opt.yoyLabels};
-  return {html:(labelled?'<div class="site-chart-scroll" style="overflow-x:auto;max-width:100%" tabindex="0" role="region" aria-label="趋势图，可横向滚动">'+svg.replace('style="height:auto!important;min-height:0"','style="height:auto!important;min-height:0;min-width:'+w+'px"')+'</div>':svg)+'<div class="site-chart-legend">'+(showValue?'<span><i class="site-bar-key"></i>数值 · '+esc(unit)+'</span>':'')+(showChange?'<span><i class="site-line-key"></i>'+esc(opt.changeLabel||'同比')+' · '+esc(changeUnit)+'</span>':'')+legend+'</div>',points};
+  return {html:svg+'<div class="site-chart-legend">'+(showValue?'<span><i class="site-bar-key"></i>数值 · '+esc(unit)+'</span>':'')+(showChange?'<span><i class="site-line-key"></i>'+esc(opt.changeLabel||'同比')+' · '+esc(changeUnit)+'</span>':'')+legend+'</div>',points};
 }
 const pairedObservers=new WeakMap();
 function drawPaired(host,rows,opt={}){

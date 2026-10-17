@@ -10,10 +10,10 @@
   <link rel="stylesheet" href="scripts/hotel-holiday-dashboard.css?v=20261012simple">
   <script defer src="scripts/site-shell.js?v=20261014monthly"></script>
   <script defer src="scripts/hotel-metrics.js?v=20261010coverage"></script>
-  <script src="scripts/site-charts.js?v=20261017values2"></script>
-  <script defer src="scripts/hotel-excel-export.js?v=20261017"></script><script defer src="scripts/hotel-holiday-dashboard.js?v=20261017controls"></script>
+  <script src="scripts/site-charts.js?v=20261017fitlabels"></script>
+  <script defer src="scripts/hotel-excel-export.js?v=20261017"></script><script defer src="scripts/hotel-holiday-dashboard.js?v=20261017fitlabels"></script>
   <link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified">
-  <link rel="stylesheet" href="scripts/site-charts.css?v=20261017values2">
+  <link rel="stylesheet" href="scripts/site-charts.css?v=20261017fitlabels">
   <link rel="stylesheet" href="scripts/industry-embed.css?v=20261014viewfit">
   <link rel="stylesheet" href="scripts/site-install.css?v=20261014home"><link rel="stylesheet" href="scripts/site-polish.css?v=20261013clean">
   <script defer src="scripts/industry-embed.js?v=20261014loading"></script>
@@ -53,7 +53,7 @@
           <button type="button" data-mode="value" aria-pressed="false">仅数值</button>
         </div>
       </div>
-      <div class="hd-chart-controls"><label class="hd-label-toggle"><input type="checkbox" id="holiday-labels" data-chart-labels="holiday-chart">显示数值</label></div>
+      <div class="hd-chart-controls"><span data-chart-value-controls></span></div>
       <div class="holiday-segments" id="holiday-segments" aria-label="对比对象"></div>
       <p class="hd-chart-caption" id="trend-caption"></p>
       <div class="hd-chart board-chart holiday-chart" id="holiday-chart" role="img" aria-label="本期与对标期每日酒店经营数据比较"></div>
