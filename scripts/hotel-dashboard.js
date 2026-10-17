@@ -1,8 +1,7 @@
 (function () {
   'use strict';
   var M = HotelMetrics, data = {}, ix = {}, periods = new Map(), regions = [];
-  var state = { view: 'overview', region: '全国', week: '', base: 'auto', window: '12', metric: 'revpar', mode: 'combo' };
-  var chartLabels = {};
+  var state = { view: 'overview', region: '全国', week: '', base: 'auto', window: '12', supplyWindow: '156', metric: 'revpar', mode: 'combo' };
   var followLatest = true, latestWeek = '';
   var SEGS = ['经济型', '中档型', '高档型', '豪华型'];
   var GROUPS = ['华住', '首旅如家', '锦江酒店（中国区）', '亚朵'];
@@ -23,7 +22,7 @@
   function valueUnit(field) { return field === 'occupancy_rate' || field === 'chain_rate' ? '%' : field.indexOf('hotel_count') >= 0 ? '家' : field.indexOf('room_count') >= 0 ? '间' : '元'; }
   function row(region, segment, week) { return ix.industry.get(region + '|' + segment + '|' + week); }
   function series(region, segment) { return seriesCache.get(region + '|' + segment) || []; }
-  function calendar() { return M.windowRows(weekly, state.week, state.window); }
+  function calendar(range) { return M.windowRows(weekly, state.week, range || state.window); }
   function hasValues(r, fields) { return fields.some(function (f) { return M.metric(r, f) != null; }); }
   function availableWeeks() {
     if (state.view === 'overview') return weekly.filter(function (p) { return hasValues(row(state.region, '全部', p.period_id), ['adr','occupancy_rate','revpar']); });
@@ -90,7 +89,7 @@
       var unit = isChange ? (field === 'occupancy_rate' ? '百分点' : '%') : meta.unit;
       var cls = isChange && main != null ? (main > 0 ? ' hd-positive' : main < 0 ? ' hd-negative' : ' hd-neutral') : '';
       if (v == null) return '';
-      return '<article class="board-stat hd-stat' + (i === 0 ? ' primary' : '') + '"><div class="hd-stat-label">' + meta.label + (isChange ? ' · ' + labelChange() : ' · 本周') + '</div><div class="hd-stat-value' + cls + '">' + (isChange && main > 0 ? '+' : '') + fmt(main, 1) + '<small>' + unit + '</small></div><div class="hd-stat-change">' + (isChange ? '<span>本周</span>' + fmt(v, 1) + ' ' + meta.unit : change == null ? '基期缺失 · 暂无同比' : '<span>' + labelChange() + '</span>' + delta(change, field)) + '</div></article>';
+      return '<article class="board-stat hd-stat' + (i === 0 ? ' primary' : '') + '"><div class="hd-stat-label">' + meta.label + (isChange ? ' · ' + labelChange() : ' · 本周') + '</div><div class="hd-stat-value' + cls + '">' + (isChange && main > 0 ? '+' : '') + fmt(main, isChange ? 1 : 0) + '<small>' + unit + '</small></div><div class="hd-stat-change">' + (isChange ? '<span>本周</span>' + fmt(v, 0) + ' ' + meta.unit : change == null ? '基期缺失 · 暂无同比' : '<span>' + labelChange() + '</span>' + delta(change, field)) + '</div></article>';
     }).join('');
     renderTrend(); renderSegments();
     var hasScale = hasValues(r, ['hotel_count_15plus','room_count_15plus']);
@@ -112,23 +111,21 @@
     var current = rows.map(function (r) { return { x: r.period_id, date: r.start_date + ' — ' + r.end_date,
       y: !isChange ? display(row(state.region, '全部', r.period_id), field) : M.change(row(state.region, '全部', r.period_id), row(state.region, '全部', M.priorPeriod(r)), field) }; });
     if(['combo','value','change'].includes(state.mode)){
-      const result=SiteCharts.drawPaired($('main-chart'),rows.map(r=>({period:r.period_id,x:Date.parse(r.start_date),value:display(row(state.region,'全部',r.period_id),field),change:M.change(row(state.region,'全部',r.period_id),row(state.region,'全部',M.priorPeriod(r)),field)})),{mode:state.mode,unit:meta.unit,changeUnit:field==='occupancy_rate'?'百分点':'%',changeLabel:labelChange(),name:meta.label,trimEmpty:true,changeLabels:!!chartLabels['main-chart'],valueLabels:!!chartLabels['main-chart'],gap:15*86400000});
-      $('trend-caption').textContent=meta.label+' · '+(state.mode==='combo'?meta.unit+' / '+(field==='occupancy_rate'?'百分点':'%'):state.mode==='change'?(field==='occupancy_rate'?'百分点':'%'):meta.unit);$('chart-mode-note').textContent=labelChange();$('history-note').textContent=result.points.length?result.points[0].text.split('\n')[0]+' — '+result.points.at(-1).text.split('\n')[0]:'';return;
+      const result=SiteCharts.drawPaired($('main-chart'),rows.map(r=>({period:r.period_id,x:Date.parse(r.start_date),value:display(row(state.region,'全部',r.period_id),field),change:M.change(row(state.region,'全部',r.period_id),row(state.region,'全部',M.priorPeriod(r)),field)})),{mode:state.mode,unit:meta.unit,changeUnit:field==='occupancy_rate'?'百分点':'%',changeLabel:labelChange(),name:meta.label,trimEmpty:true,precision:0,changePrecision:1,gap:15*86400000});
+      $('trend-caption').textContent=meta.label+' · '+(state.mode==='combo'?meta.unit+' / '+(field==='occupancy_rate'?'百分点':'%'):state.mode==='change'?(field==='occupancy_rate'?'百分点':'%'):meta.unit);$('history-note').textContent=result.points.length?result.points[0].text.split('\n')[0]+' — '+result.points.at(-1).text.split('\n')[0]:'';return;
     }
     var lines = [{ name: state.region + (!isChange ? ' · 本期绝对值' : ' · 同周同比'), color: COLORS[0], pts: current }];
     if (!isChange) lines.push({ name: '去年同周号', color: '#71869b', dash: true, pts: rows.map(function (r) {
       return { x: r.period_id, y: display(row(state.region, '全部', M.priorPeriod(r)), field) };
     }) });
     var unit = isChange ? (field === 'occupancy_rate' ? '百分点' : '%') : meta.unit;
-    $('trend-caption').textContent = meta.label + ' · ' + unit ;
-    $('chart-mode-note').textContent = isChange ? '同周同比 · OCC用百分点' : state.mode === 'change' ? '基期缺失 · 显示绝对值' : '绝对值 · 对照去年同周';
-    lineChart('main-chart', lines, { unit: unit, occupancy: !isChange && field === 'occupancy_rate', zero: isChange });
+    $('trend-caption').textContent = meta.label + ' · ' + unit ;    lineChart('main-chart', lines, { unit: unit, occupancy: !isChange && field === 'occupancy_rate', zero: isChange });
     var plotted = M.chartSeries(lines), plottedRows = plotted.length ? plotted[0].pts : [];
     $('history-note').textContent = plottedRows.length ? '有效区间 ' + plottedRows[0].x + ' — ' + plottedRows[plottedRows.length - 1].x : '所选范围暂无数据。';
   }
   function metricCell(r, base, field) {
     var v = field === 'chain_rate' ? M.metric(r, field) == null ? null : M.metric(r, field) * 100 : display(r, field), change = M.change(r, base, field);
-    var digits = field.indexOf('count') >= 0 ? 0 : 1;
+    var digits = ['revpar','occupancy_rate','adr','stay_adr'].includes(field) || field.indexOf('count') >= 0 ? 0 : 1;
     if (v == null) return '<td class="hd-neutral">暂无数据</td>';
     if (state.mode === 'change' && change == null) return '<td><strong>' + fmt(v, digits) + ' ' + valueUnit(field) + '</strong><small>绝对值 · 基期缺失</small></td>';
     if (state.mode === 'change') return '<td><strong>' + delta(change, field) + '</strong><small>本周 ' + fmt(v, digits) + ' ' + valueUnit(field) + '</small></td>';
@@ -160,7 +157,7 @@
     var changeUnit = field === 'occupancy_rate' ? '百分点' : '%';
     $('segment-chart-caption').textContent = state.region + ' · ' + meta.label + ' · ' + (mode === 'combo' ? meta.unit + ' / 同周同比（' + changeUnit + '）' : mode === 'change' ? '同周同比（' + changeUnit + '）' : '数值（' + meta.unit + '）') + (fallback ? ' · 基期缺失' : '');
     if (!hasValue && !hasChange) { $('segment-chart').innerHTML = '<div class="hd-empty">所选范围暂无分档次数据</div>'; return; }
-    SiteCharts.drawPaired($('segment-chart'), points, { mode: mode, unit: meta.unit, changeUnit: changeUnit, changeLabel: '同周同比', name: state.region + '分档次' + meta.label, trimEmpty:true,changeLabels:!!chartLabels['segment-chart'],valueLabels:!!chartLabels['segment-chart'], gap: 15 * 86400000 });
+    SiteCharts.drawPaired($('segment-chart'), points, { mode: mode, unit: meta.unit, changeUnit: changeUnit, changeLabel: '同周同比', name: state.region + '分档次' + meta.label, trimEmpty:true,precision:0,changePrecision:1, gap: 15 * 86400000 });
   }
   function renderCities() {
     var all = regions.filter(function (r) { return r !== '全国'; }).map(function (region) {
@@ -242,12 +239,12 @@
   }
   function drawSupply() {
     if (!data.supply) return;
-    var enabled = Array.from($('supply-metric').options).filter(function(o){ var valid=calendar().some(function(p){return M.metric(ix.supply15.get('全国|'+p.period_id),o.value)!=null;});o.disabled=!valid;return valid; });
+    var enabled = Array.from($('supply-metric').options).filter(function(o){ var valid=calendar(state.supplyWindow).some(function(p){return M.metric(ix.supply15.get('全国|'+p.period_id),o.value)!=null;});o.disabled=!valid;return valid; });
     if(enabled.length && $('supply-metric').selectedOptions[0].disabled) $('supply-metric').value=enabled[0].value;
-    var field = $('supply-metric').value, isChange = state.mode === 'change' && calendar().some(function (p) { return M.change(ix.supply15.get('全国|'+p.period_id),ix.supply15.get('全国|'+M.priorPeriod(p)),field) != null; });
+    var field = $('supply-metric').value, isChange = state.mode === 'change' && calendar(state.supplyWindow).some(function (p) { return M.change(ix.supply15.get('全国|'+p.period_id),ix.supply15.get('全国|'+M.priorPeriod(p)),field) != null; });
     var title = field === 'hotel_count' ? '酒店数量' : field === 'chain_room_count' ? '连锁房量' : '房间数量';
     $('supply-chart-caption').textContent = title + ' · 15间及以上 · ' + (isChange ? '同周同比（%）' : '绝对值（' + valueUnit(field) + '）' + (state.mode === 'change' ? ' · 基期缺失' : ''));
-    lineChart('supply-chart', [{ name: '全国 · 15间及以上' + (isChange ? ' · 同周同比' : ''), color: COLORS[0], pts: calendar().map(function (r) { return { x: r.period_id, date: r.start_date + ' — ' + r.end_date, change:M.change(ix.supply15.get('全国|'+r.period_id),ix.supply15.get('全国|'+M.priorPeriod(r)),field), y: isChange ? M.change(ix.supply15.get('全国|' + r.period_id), ix.supply15.get('全国|' + M.priorPeriod(r)), field) : M.metric(ix.supply15.get('全国|' + r.period_id), field) }; }) }], { unit: isChange ? '%' : valueUnit(field), zero: isChange });
+    lineChart('supply-chart', [{ name: '全国 · 15间及以上' + (isChange ? ' · 同周同比' : ''), color: COLORS[0], pts: calendar(state.supplyWindow).map(function (r) { return { x: r.period_id, date: r.start_date + ' — ' + r.end_date, change:M.change(ix.supply15.get('全国|'+r.period_id),ix.supply15.get('全国|'+M.priorPeriod(r)),field), y: isChange ? M.change(ix.supply15.get('全国|' + r.period_id), ix.supply15.get('全国|' + M.priorPeriod(r)), field) : M.metric(ix.supply15.get('全国|' + r.period_id), field) }; }) }], { unit: isChange ? '%' : valueUnit(field), zero: isChange });
   }
   function renderInvestment() {
     if (!data.investment) return;
@@ -343,6 +340,7 @@
     if (periods.has(saved.get('week'))) { state.week = saved.get('week'); followLatest = false; }
     if (['overview', 'cities', 'structure'].includes(saved.get('view'))) state.view = saved.get('view');
     if (['12', '13', '26', '52', '156', 'all'].includes(saved.get('window')) && (saved.get('window') !== '52' || saved.get('rangeVersion') === '12w')) state.window = saved.get('window');
+    if (['12','13','26','52','156','all'].includes(saved.get('supplyWindow'))) state.supplyWindow=saved.get('supplyWindow');
     if (META[saved.get('metric')]) state.metric = saved.get('metric');
     if (['combo', 'value', 'change'].includes(saved.get('mode'))) state.mode = saved.get('mode');
     if (periods.has(saved.get('base'))) state.base = saved.get('base');
@@ -366,8 +364,9 @@
     $('week-select').onchange = function () { followLatest = this.value === 'latest'; state.week = followLatest ? latestWeek : this.value; state.base = 'auto'; compareOptions(); refresh(); };
     $('compare-select').onchange = function () { state.base = this.value; refresh(); };
     $('region-select').onchange = function () { state.region = this.value; refresh(); };
-    function setWindow() { state.window = this.value; ['history-start','segment-window','group-window','supply-window','investment-window'].forEach(function (id) { $(id).value = state.window; }); renderTrend(); drawSegments(); drawGroups(); drawSupply(); renderInvestment(); saveState(); }
-    ['history-start','segment-window','group-window','supply-window','investment-window'].forEach(function (id) { $(id).value = state.window; $(id).onchange = setWindow; });
+    function setWindow() { state.window = this.value; ['history-start','segment-window','group-window','investment-window'].forEach(function (id) { $(id).value = state.window; }); renderTrend(); drawSegments(); drawGroups(); drawSupply(); renderInvestment(); saveState(); }
+    ['history-start','segment-window','group-window','investment-window'].forEach(function (id) { $(id).value = state.window; $(id).onchange = setWindow; });
+    $('supply-window').value=state.supplyWindow; $('supply-window').onchange=function(){state.supplyWindow=this.value;drawSupply();saveState();};
     function bindSwitch(id, attr) {
       var buttons = $(id).querySelectorAll('button');
       function active() { buttons.forEach(function (b) { var isActive = b.dataset[attr] === state[attr]; b.classList.toggle('active', isActive); b.setAttribute('aria-pressed', isActive); }); }
@@ -384,13 +383,6 @@
     $('group-metric').onchange = drawGroups; $('supply-metric').onchange = function () { drawSupply(); renderInvestment(); };
     $('city-search').oninput = renderCities; $('city-sort').onchange = renderCities;
     $('city-table').onclick = function (event) { var b = event.target.closest('[data-region]'); if (!b) return; state.region = b.dataset.region; switchView('overview'); $('region-select').focus(); };
-    document.querySelectorAll('[data-chart-labels]').forEach(function (input) {
-      input.checked = false;
-      input.onchange = function () {
-        chartLabels[input.dataset.chartLabels] = input.checked;
-        renderTrend(); drawSegments(); drawGroups(); drawSupply(); renderInvestment(); if(data.share) renderShare();
-      };
-    });
     switchView(state.view);
   }
   function error(id, message, cols) { blankTable(id, message, cols); }
@@ -433,7 +425,7 @@
   }
   function lineChart(id, lines, opt) {
     opt = opt || {}; var host = $(id); host.innerHTML = ''; lines = M.chartSeries(lines);
-    if(!opt.forceLine&&state.mode==='combo'&&lines.some(s=>s.pts.some(p=>Number.isFinite(p.change)))){const keys=[...new Set(lines.flatMap(s=>s.pts.map(p=>p.x)))].sort();SiteCharts.drawPaired(host,keys.map((key,i)=>({period:key,x:i,values:lines.map(s=>{const p=s.pts.find(p=>p.x===key);return {name:s.name,value:p?.y,change:p?.change,color:s.color};})})),{unit:opt.unit,changeUnit:opt.occupancy?'百分点':'%',changeLabel:labelChange(),name:lines.map(s=>s.name).join('、'),changeLabels:!!chartLabels[id],valueLabels:!!chartLabels[id]});return;}
+    if(!opt.forceLine&&state.mode==='combo'&&lines.some(s=>s.pts.some(p=>Number.isFinite(p.change)))){const keys=[...new Set(lines.flatMap(s=>s.pts.map(p=>p.x)))].sort();SiteCharts.drawPaired(host,keys.map((key,i)=>({period:key,x:i,values:lines.map(s=>{const p=s.pts.find(p=>p.x===key);return {name:s.name,value:p?.y,change:p?.change,color:s.color};})})),{unit:opt.unit,changeUnit:opt.occupancy?'百分点':'%',changeLabel:labelChange(),name:lines.map(s=>s.name).join('、'),precision:0,changePrecision:1});return;}
     var xs = Array.from(new Set(lines.flatMap(function (s) { return s.pts.map(function (p) { return p.x; }); }))).sort();
     var values = lines.flatMap(function (s) { return s.pts.map(function (p) { return M.num(p.y); }); }).filter(function (v) { return v != null; });
     if (!values.length) { host.innerHTML = '<div class="hd-empty">所选范围暂无有效数据</div>'; return; }
@@ -471,18 +463,10 @@
     });
     var legend = document.createElement('div'); legend.className = 'hd-legend';
     legend.innerHTML = lines.map(function (s) { return '<span><i style="background:' + s.color + '"></i>' + esc(s.name) + (s.dash ? '（虚线）' : '') + '</span>'; }).join(''); host.appendChild(legend);
-    if(chartLabels[id]) lines.forEach(function(s,si){
-      var stride=Math.max(1,Math.ceil(s.pts.length/12));
-      s.pts.forEach(function(p,i){
-        if(M.num(p.y)==null || i%stride!==0&&i!==s.pts.length-1)return;
-        var label=svgEl('text',{x:px(p.x),y:Math.max(T+12,Math.min(H-B-8,py(p.y,s)-10-si*12)),'text-anchor':'middle','font-size':11,fill:s.color,style:'paint-order:stroke;stroke:white;stroke-width:3px'},fmt(p.y,1)+(opt.unit||''));
-        label.classList.add('hd-data-label');svg.appendChild(label);
-      });
-    });
     var maps = lines.map(function(s){return new Map(s.pts.map(function(p){return [p.x,p];}));});
     SiteCharts.attach(host, xs.map(function(key){
       var firstIndex=maps.findIndex(function(map){var p=map.get(key);return p&&M.num(p.y)!=null;}), first=firstIndex>=0?maps[firstIndex].get(key):null;
-      return {x:px(key),y:first?py(first.y,lines[firstIndex]):T,text:(first&&first.date?first.date:key)+'\n'+lines.map(function(s,i){var p=maps[i].get(key);return s.name+'：'+fmt(p?p.y:null,1)+' '+(opt.unit||'');}).join('\n')};
+      return {x:px(key),y:first?py(first.y,lines[firstIndex]):T,labels:lines.flatMap(function(s,i){var p=maps[i].get(key);return p&&M.num(p.y)!=null?[{x:px(key),y:py(p.y,s),text:fmt(p.y,opt.zero||id==='investment-chart'?1:0)+(opt.zero||id==='investment-chart'?(opt.unit||''):''),kind:opt.zero||id==='investment-chart'?'change':'value',color:s.color}]:[];}),text:(first&&first.date?first.date:key)+'\n'+lines.map(function(s,i){var p=maps[i].get(key);return s.name+'：'+fmt(p?p.y:null,opt.zero||id==='investment-chart'?1:0)+' '+(opt.unit||'');}).join('\n')};
     }));
 
   }
