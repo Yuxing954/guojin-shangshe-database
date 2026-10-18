@@ -12,7 +12,7 @@ on:
       - "data/industry/verified-*.json"
       - "scripts/build_research_recent.py"
       - "scripts/research_sources.py"
-      - "scripts/build_research_shards.py"
+      - "scripts/build_research_shards.py"\n      - "scripts/*market_sync*.mjs"\n      - "scripts/sync_market_views.mjs"\n      - "scripts/test_market_sync_receipt.py"
       - "data/research/updates/manifest.json"
       - "scripts/build_site_summaries.py"
       - "scripts/build_resource_index.py"
@@ -58,7 +58,7 @@ jobs:
       - name: Build only changed summaries and resource directory
         run: python scripts/build_site_summaries.py
 
-      - name: Test market-view JSON exports
+      - uses: actions/setup-node@v4\n        with:\n          node-version: "22"\n\n      - name: Test resumable market-view updater\n        run: node --test scripts/test_market_sync.mjs\n\n      - name: Test export validation receipt\n        run: python scripts/test_market_sync_receipt.py\n\n      - name: Test market-view JSON exports
         run: python scripts/test_research_market_views.py
 
       - name: Build connector-readable archive and dedup index

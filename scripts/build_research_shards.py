@@ -87,7 +87,8 @@ def build(root):
         target.parent.mkdir(parents=True, exist_ok=True)
         if not target.exists() or target.read_bytes() != raw: target.write_bytes(raw)
         generated.add(target.resolve())
-        return {'path': path, 'bytes': len(raw), 'sha256': hashlib.sha256(raw).hexdigest()}
+        return {'path': path, 'bytes': len(raw), 'sha256': hashlib.sha256(raw).hexdigest(),
+                'gitBlobSha1': hashlib.sha1(b'blob ' + str(len(raw)).encode('ascii') + b'\0' + raw).hexdigest()}
     for kind, filename in BASES.items():
         with (root / 'data' / filename).open(encoding='utf-8-sig', newline='') as handle:
             base = list(csv.DictReader(handle))
@@ -115,7 +116,11 @@ def build(root):
         if kind in ('views', 'all_views'):
             market_rows[kind] = rows
     complete_export = market_view_export(market_rows, updates.get('coverageTo'))
-    write_export('data/research/market-views-all.json', complete_export)
+    export_meta = write_export('data/research/market-views-all.json', complete_export)
+    manifest['marketViewsExport'] = {**export_meta, 'coverageTo': updates.get('coverageTo'),
+                                   'totalRows': complete_export['totalRows']}
+    manifest['indexedUpdateFiles'] = sorted({p for kind in ('views', 'all_views')
+                                            for p in updates.get('files', {}).get(kind, [])})
     for bucket, values in sorted(buckets.items()):
         meta = write(f'data/research/archive/dedup/{bucket}.json', {'keys': sorted(values)})
         meta['keys'] = len(values)
