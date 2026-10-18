@@ -24,9 +24,13 @@
     if (message.type === 'result') {store('market_sync_last_result',message);text(message);break;}
     if (message.type !== 'rpc') throw new Error('Unexpected market sync message');
     if (!message.requestFile.replaceAll('\\','/').startsWith(state + '/outbox/')) throw new Error('Request path outside sync state');
-    const read = await tools.exec_command({cmd:'node scripts/market_sync_io.mjs read '+quote(message.requestFile),workdir:root,max_output_tokens:100000});
-    if(read.exit_code!==0)throw new Error('Could not read connector request');
-    const requests = JSON.parse(read.output).requests;
+    let requestText='',total=1;
+    while(requestText.length<total){
+      const read=await tools.exec_command({cmd:'node scripts/market_sync_io.mjs chunk '+quote(message.requestFile)+' '+requestText.length+' 8000',workdir:root,max_output_tokens:24000});
+      if(read.exit_code!==0)throw new Error('Could not read connector request');
+      const part=JSON.parse(read.output);total=part.total;if(!part.data&&requestText.length<total)throw new Error('Truncated connector request');requestText+=part.data;
+    }
+    const requests = JSON.parse(requestText).requests;
     const responses = await Promise.allSettled(requests.map(request=>{
       if(!allowed.has(request.tool))throw new Error('Unexpected connector tool');
       return tools[request.tool](request.args);
