@@ -13,7 +13,7 @@
 node scripts/sync_market_views.mjs --bridge --state <本机工作副本>/state
 ```
 
-脚本通过标准输入输出传递连接器请求；不要直接在终端无人接管地启动。响应的大正文保存在本地，不直接打印到聊天。`state/current.json` 是原子保存的进度，`state/rpc` 保存固定版本读取结果与已创建对象，`state/bucket-cache` 按 SHA256 缓存索引桶。状态文件含原文，不应提交到 GitHub。
+脚本通过本地原子文件邮箱传递连接器请求和响应，终端只传小型状态消息；不要直接在终端无人接管地启动。响应的大正文保存在本地，不经过终端输入，也不直接打印到聊天。`state/current.json` 是原子保存的进度，`state/rpc` 保存固定版本读取结果与已创建对象，`state/bucket-cache` 按 SHA256 缓存索引桶。状态文件含原文，不应提交到 GitHub。
 
 ## 阶段与恢复
 

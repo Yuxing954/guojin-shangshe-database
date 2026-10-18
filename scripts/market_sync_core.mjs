@@ -99,7 +99,7 @@ export class MarketSync{
     this.s.algorithmSourceSha256=hash(values[1]);this.s.remoteCoverage=this.s.updates.coverageTo;
     const memo=path.join(this.root,'scan-cache.json');const prior=await exists(memo)?JSON.parse(await fs.readFile(memo,'utf8')):null;
     this.s.scanFrom=prior?.remoteCoverage===this.s.remoteCoverage&&time(prior.scannedTo)>time(this.s.remoteCoverage)?prior.scannedTo:this.s.remoteCoverage;
-    this.s.pages=[];this.s.stage='collect';await this.save();
+    this.s.pages=this.s.reusePages&&time(this.s.reuseScanFrom)<=time(this.s.scanFrom)?this.s.reusePages:[];delete this.s.reusePages;delete this.s.reuseScanFrom;this.s.stage='collect';await this.save();
   }
   async collect(){
     while(!this.s.pages.length||!this.s.pages.at(-1).complete){
@@ -188,7 +188,7 @@ export class MarketSync{
     }
     if(head.commit.sha!==this.s.baseHead){
       await atomic(path.join(this.root,'history',this.s.runId+'-conflict.json'),this.s);
-      this.s={version:2,runId:beijingDate(this.now())+'-'+this.now().toISOString().slice(11,19).replaceAll(':','')+'-r'+head.commit.sha.slice(0,5),stage:'snapshot',startedAt:this.now().toISOString()};
+      this.s={version:2,runId:beijingDate(this.now())+'-'+this.now().toISOString().slice(11,19).replaceAll(':','')+'-r'+head.commit.sha.slice(0,5),stage:'snapshot',startedAt:this.now().toISOString(),reusePages:this.s.pages,reuseScanFrom:this.s.scanFrom};
       await fs.unlink(path.join(this.root,'review.json')).catch(()=>{});await this.save();const e=new Error('Main changed; checkpoint saved; next slice re-deduplicates against new main');e.pending=true;throw e;
     }
     const entries=Object.entries(this.s.prepared);

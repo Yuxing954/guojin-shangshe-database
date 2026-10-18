@@ -4,6 +4,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import os from 'node:os';
 import {MarketSync,hash,gitHash,keys,csvWrite,csvRead,json,sourcePage,cutoff,unpack} from './market_sync_core.mjs';
+import {mailboxTransport} from './market_sync_mailbox.mjs';
 const U='data/research/updates/manifest.json',A='data/research/archive/manifest.json',B='data/research/market-briefs.json';
 const now=()=>new Date('2026-10-19T02:00:00Z');
 const topic={topic_id:'12345',create_time:'2026-10-19T09:01:02.345+0800',title:'渠道经营观点',content:'渠道订单可能改善。\n需观察销售兑现。',owner:'测试'};
@@ -87,4 +88,10 @@ test('concurrent main update creates resumable rebase instead of overwriting',as
 test('missing decisions never advance coverage',async t=>{
  const {dir,repo,opts}=await fixture(t);await new MarketSync(opts).run();const state=JSON.parse(await fs.readFile(path.join(dir,'current.json'),'utf8'));await fs.writeFile(path.join(dir,'review.json'),json({runId:state.runId,decisions:[]}));
  assert.equal((await new MarketSync(opts).run()).status,'failed');assert.equal(repo.head,'base');
+});
+test('file mailbox transfers multi-megabyte Unicode results without terminal encoding',async t=>{
+ const {dir}=await fixture(t),body='多行原文\n🙂"字段"'.repeat(160000);
+ const exchange=mailboxTransport(dir,async message=>{await atomicResponse(message.responseFile,{results:[ok(body)]});});
+ async function atomicResponse(file,value){await fs.writeFile(file+'.tmp',JSON.stringify(value),'utf8');await fs.rename(file+'.tmp',file);}
+ const result=await exchange([{tool:'test',args:{}}]);assert.equal(unpack(result[0]),body);
 });
