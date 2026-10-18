@@ -12,6 +12,7 @@
     dining:{name:'餐饮',files:['data/sectors/dining.json'],docs:[]},
     macro:{name:'宏观与消费',files:['data/macro/coverage.json','data/macro/catalog.json','data/consumption-macro/observations.json','data/macro/automatic-series.json','data/macro/expectations.json'],docs:['docs/macro-data.md','docs/consumption-macro.md','docs/macro-expectations.md','docs/macro-data-quality-20261017.md']},
     companies:{name:'重点公司',files:['data/companies/issues.json','data/companies/sources.json','data/companies/workbook-disclosures.json','data/companies/hotel-research.json','data/companies/jinjiang-research-notes.json'],docs:['docs/company-database.md']},
+    'overseas-hotels':{name:'海外酒店',files:['data/companies/overseas-hotels.json'],docs:['docs/overseas-hotels.md']},
     earnings:{name:'财报日历',files:['data/earnings-calendar.json'],docs:['docs/earnings-workbench.md']},
     research:{name:'观点纪要',files:['data/research/updates/manifest.json'],docs:['docs/research-library.md']},
     quotes:{name:'实时行情',files:['data/coverage-companies.json'],docs:['docs/realtime-quotes.md','docs/coverage-pool.md']}
@@ -23,6 +24,7 @@
     if(id==='calendar')out.push('只保留中国CPI、社零、美国CPI、非农和美联储议息五类；日程范围：'+a.coverageStart+'—'+a.coverageEnd+'。','全部时间为北京时间；海外原始时区单独保存，按冬夏令时换算。美联储会议日期与决议发布时间分开显示。','日期为官方计划，可能调整。“时间已过”不表示已发布或本站已更新；后续未核验日期不推算。','日历不重复维护指标数值，数据入口指向现有模块。导出包含当前地区和时间范围的日程。');
     if(id==='hotel-groups')out.push('来源：酒店之家集团数据。覆盖华住、锦江酒店（中国区）、首旅如家、亚朵。','ADR读取stay_adr（入住日期）；热度指数、房价指数分别读取stay_heat_index、stay_price_index（均按入住日期统计），指数保留两位小数；酒店数和房间数保留源表值。指数同比为同一字段同周相对变动，不等于ADR增速或OCC。','同比对齐上年同周号，未调整节假日错期；基期缺失或非正数时不强算。','源数据不含集团周度OCC、RevPAR，不用热度或价格指数代替，也不以财报数据填补。','范围：'+(a.datasets?.['hotel_group_weekly.csv']?.latestPeriod||'以源CSV为准')+'；入库时间：'+(a.importedAt||'未记录')+'。','直接读取hotel_group_weekly.csv；更新现有酒店周度数据即可，无需新增公司底稿构建步骤。');
     if(id==='monthly')out.push(...(a.notes||[]));
+    if(id==='overseas-hotels')out.push(...(a.notes||[]));
     if(id==='dutyfree')out.push(...(a.coverageNotes||[]),...(a.notes||[]),values[1]?.note||'');
     if(id==='hotel')out.push('同比默认匹配来源年/周；假期错期需单独映射与标注。','节假日经营对标按假期日序匹配两期日期，入住率差为百分点，ADR及RevPAR为相对变化。',...Object.entries(a.historicalCoverage||{}).flatMap(([file,regions])=>Object.entries(regions).map(([region,c])=>region+'：'+c.firstPeriod+' — '+c.lastPeriod+' · '+c.periodCount+'期')),'异常源记录：'+(a.sourceAnomalyCount??'未记录')+'条');
     if(id==='gold')out.push(...(a.limitations||[]),'国内金价后台按5分钟计划采集；国际行情在黄金页面打开时每15秒读取。实际更新以来源报价时间为准，网络失败保留上次报价。');
@@ -49,6 +51,7 @@
   }
   addEventListener('hashchange',render);render();
 })();
+
 
 
 
