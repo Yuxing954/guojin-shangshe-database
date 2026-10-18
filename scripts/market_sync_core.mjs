@@ -203,6 +203,20 @@ export class MarketSync{
   }
   async verify(){
     const head=await this.get(`https://api.github.com/repos/${REPO}/branches/main`),ref=head.commit.sha;
+    this.s.verificationRefs=[...new Set([...(this.s.verificationRefs||[]),ref])];await this.save();
+    const artifactCache=path.join(this.root,'bucket-cache');
+    const cachedArtifact=async meta=>{
+      const file=path.join(artifactCache,meta.sha256+'.json');
+      if(await exists(file)){const raw=await fs.readFile(file,'utf8');if(hash(raw)===meta.sha256)return raw;}
+      for(const previous of this.s.verificationRefs){
+        const request={repository_full_name:REPO,path:meta.path,ref:previous};
+        const saved=path.join(this.root,'rpc',hash(JSON.stringify(['mcp__codex_apps__github_fetch_file',request]))+'.json');
+        if(!await exists(saved))continue;
+        const raw=unpack(JSON.parse(await fs.readFile(saved,'utf8')));
+        if(typeof raw==='string'&&hash(raw)===meta.sha256){await fs.mkdir(artifactCache,{recursive:true});await fs.writeFile(file,raw);return raw;}
+      }
+      return null;
+    };
     // Fresh reads: build commits can land after the data commit.
     const freshFile=async p=>unpack(await this.rpc('mcp__codex_apps__github_fetch_file',{repository_full_name:REPO,path:p,ref}));
     const a=JSON.parse(await freshFile(ARCHIVE));
@@ -214,19 +228,26 @@ export class MarketSync{
     const needed=[...new Set(this.s.sourceTopicIds.map(id=>hash('topic:'+id).slice(0,2)))];
     for(let i=0;i<needed.length;i+=6){
       const batch=needed.slice(i,i+6);
-      const rs=await this.rpcMany(batch.map(b=>({tool:'mcp__codex_apps__github_fetch_file',args:{repository_full_name:REPO,path:a.dedupBuckets[b].path,ref}})));
-      for(let j=0;j<batch.length;j++){const b=batch[j],meta=a.dedupBuckets[b],raw=unpack(rs[j]);if(hash(raw)!==meta.sha256)throw new Error('Post-build bucket hash mismatch');const set=new Set(JSON.parse(raw).keys);for(const id of this.s.sourceTopicIds.filter(id=>hash('topic:'+id).slice(0,2)===b))if(!set.has('topic:'+id))throw new Error('New source absent from dedup bucket');}
+      const cache=new Map();for(const b of batch){const raw=await cachedArtifact(a.dedupBuckets[b]);if(raw)cache.set(b,raw);}
+      const missing=batch.filter(b=>!cache.has(b));
+      const rs=await this.rpcMany(missing.map(b=>({tool:'mcp__codex_apps__github_fetch_file',args:{repository_full_name:REPO,path:a.dedupBuckets[b].path,ref}})));
+      for(let j=0;j<missing.length;j++)cache.set(missing[j],unpack(rs[j]));
+      for(const b of batch){const meta=a.dedupBuckets[b],raw=cache.get(b);if(hash(raw)!==meta.sha256)throw new Error('Post-build bucket hash mismatch');await fs.mkdir(artifactCache,{recursive:true});await fs.writeFile(path.join(artifactCache,meta.sha256+'.json'),raw);const set=new Set(JSON.parse(raw).keys);for(const id of this.s.sourceTopicIds.filter(id=>hash('topic:'+id).slice(0,2)===b))if(!set.has('topic:'+id))throw new Error('New source absent from dedup bucket');}
     }
     for(const kind of ['views','all_views']){
       const expected=this.s.sources.filter(s=>s.kind===kind);if(!expected.length)continue;
       const shardPaths=a.databases[kind].shards.filter(m=>expected.some(s=>time(s.create_time)<=time(m.newest)&&time(s.create_time)>=time(m.oldest)));
-      const found=new Set();for(const m of shardPaths){const raw=await freshFile(m.path);if(hash(raw)!==m.sha256)throw new Error('Shard checksum mismatch');for(const row of JSON.parse(raw).rows){const id=row['原文链接']?.match(/\/topic\/(\d+)/)?.[1];if(id)found.add(id);}}
+      const found=new Set();for(const m of shardPaths){const raw=await cachedArtifact(m)||await freshFile(m.path);if(hash(raw)!==m.sha256)throw new Error('Shard checksum mismatch');for(const row of JSON.parse(raw).rows){const id=row['原文链接']?.match(/\/topic\/(\d+)/)?.[1];if(id)found.add(id);}}
       if(expected.some(s=>!found.has(s.topic_id)))throw new Error('New source absent from archive shard');
     }
     const b=JSON.parse(await freshFile(BRIEFS));if(b.briefs.some(x=>x.date<this.s.briefCutoff))throw new Error('Expired brief remains');
     const resource=await freshFile(ROOT+'resource-index.json');JSON.parse(resource);
     const ex=a.marketViewsExport;if(!ex)throw new Error('Full export validation receipt missing; deploy rewritten builder first');
-    const meta=await this.get(`https://api.github.com/repos/${REPO}/contents/${ex.path}?ref=${ref}`);
+    // Fetching a single large file makes some connectors download its body.
+    // Directory entries carry the same blob SHA and byte count without the body.
+    const directory=ex.path.slice(0,ex.path.lastIndexOf('/'));
+    const listing=await this.get(`https://api.github.com/repos/${REPO}/contents/${directory}?ref=${ref}`);
+    const meta=listing.find(item=>item.path===ex.path);if(!meta)throw new Error('Full export missing from resource directory');
     if(meta.sha!==ex.gitBlobSha1||meta.size!==ex.bytes||ex.totalRows!==a.databases.views.rows+a.databases.all_views.rows||ex.coverageTo!==a.coverageTo)throw new Error('Full export checksum/count/coverage mismatch');
     this.s.dataVerifiedForHead=ref;this.s.verification={head:ref,coverageTo:a.coverageTo,rows:ex.totalRows,exportSha:meta.sha};await this.save();
     }

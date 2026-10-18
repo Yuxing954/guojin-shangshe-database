@@ -36,7 +36,7 @@ class FakeRepo{
   if(j.tool.endsWith('github_update_ref')){assert.equal(a.expected_sha,this.head);for(const e of this.tree)this.files.set(e.path,this.blobs.get(e.sha));this.head='new-commit';this.build();if(this.lostRef){this.lostRef=false;throw new Error('Simulated disconnect after successful ref update');}return obj({ref:'main'});}
   if(j.tool.endsWith('github_fetch')){
    if(a.url.includes('/branches/'))return ok(JSON.stringify({commit:{sha:this.head,commit:{tree:{sha:'base-tree'}}}}));
-   if(a.url.includes('/contents/')){const raw=this.files.get('data/research/market-views-all.json');return ok(JSON.stringify({sha:gitHash(raw),size:Buffer.byteLength(raw)}));}
+   if(a.url.includes('/contents/')){assert(!a.url.includes('market-views-all.json'));if(this.failExport)return {isError:true,content:[{type:'text',text:'temporary metadata failure'}]};const raw=this.files.get('data/research/market-views-all.json');return ok(JSON.stringify([{path:'data/research/market-views-all.json',sha:gitHash(raw),size:Buffer.byteLength(raw)}]));}
    if(a.url.includes('/actions/workflows/'))return ok(JSON.stringify({workflow_runs:[{head_sha:'new-commit',path:'.github/workflows/build-research-recent.yml',status:'completed',conclusion:'success'}]}));
    if(a.url.includes('/actions/runs'))return ok(JSON.stringify({workflow_runs:[{head_sha:this.head,path:'dynamic/pages/pages-build-deployment',status:'completed',conclusion:'success'}]}));
   }
@@ -94,4 +94,12 @@ test('file mailbox transfers multi-megabyte Unicode results without terminal enc
  const exchange=mailboxTransport(dir,async message=>{await atomicResponse(message.responseFile,{results:[ok(body)]});});
  async function atomicResponse(file,value){await fs.writeFile(file+'.tmp',JSON.stringify(value),'utf8');await fs.rename(file+'.tmp',file);}
  const result=await exchange([{tool:'test',args:{}}]);assert.equal(unpack(result[0]),body);
+});
+test('verification failure reuses checked artifacts across an unrelated main commit',async t=>{
+ const {dir,repo,opts}=await fixture(t);await new MarketSync(opts).run();await review(dir);repo.failExport=true;
+ assert.equal((await new MarketSync(opts).run()).status,'failed');
+ const count=repo.calls.filter(x=>x.tool.endsWith('github_fetch_file')&&x.args.path.includes('/dedup/')).length;
+ repo.failExport=false;repo.head='unrelated-code-commit';
+ assert.equal((await new MarketSync(opts).run()).status,'done');
+ assert.equal(repo.calls.filter(x=>x.tool.endsWith('github_fetch_file')&&x.args.path.includes('/dedup/')).length,count);
 });
