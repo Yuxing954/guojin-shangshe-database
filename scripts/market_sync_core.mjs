@@ -211,8 +211,12 @@ export class MarketSync{
     const u=JSON.parse(await freshFile(UPDATES));if(time(u.coverageTo)<time(this.s.scannedTo))throw new Error('Published coverage regressed');
     const exact=time(a.coverageTo)===time(this.s.scannedTo);
     for(const kind of ['views','all_views']){const expected=this.s.archive.databases[kind].rows+this.s.added[kind];if(exact?a.databases[kind].rows!==expected:a.databases[kind].rows<expected)throw new Error('Archive row count mismatch: '+kind);}
-    const needed=new Set(this.s.sourceTopicIds.map(id=>hash('topic:'+id).slice(0,2)));
-    for(const b of needed){const meta=a.dedupBuckets[b],raw=await freshFile(meta.path);if(hash(raw)!==meta.sha256)throw new Error('Post-build bucket hash mismatch');const set=new Set(JSON.parse(raw).keys);for(const id of this.s.sourceTopicIds.filter(id=>hash('topic:'+id).slice(0,2)===b))if(!set.has('topic:'+id))throw new Error('New source absent from dedup bucket');}
+    const needed=[...new Set(this.s.sourceTopicIds.map(id=>hash('topic:'+id).slice(0,2)))];
+    for(let i=0;i<needed.length;i+=6){
+      const batch=needed.slice(i,i+6);
+      const rs=await this.rpcMany(batch.map(b=>({tool:'mcp__codex_apps__github_fetch_file',args:{repository_full_name:REPO,path:a.dedupBuckets[b].path,ref}})));
+      for(let j=0;j<batch.length;j++){const b=batch[j],meta=a.dedupBuckets[b],raw=unpack(rs[j]);if(hash(raw)!==meta.sha256)throw new Error('Post-build bucket hash mismatch');const set=new Set(JSON.parse(raw).keys);for(const id of this.s.sourceTopicIds.filter(id=>hash('topic:'+id).slice(0,2)===b))if(!set.has('topic:'+id))throw new Error('New source absent from dedup bucket');}
+    }
     for(const kind of ['views','all_views']){
       const expected=this.s.sources.filter(s=>s.kind===kind);if(!expected.length)continue;
       const shardPaths=a.databases[kind].shards.filter(m=>expected.some(s=>time(s.create_time)<=time(m.newest)&&time(s.create_time)>=time(m.oldest)));
