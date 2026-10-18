@@ -1,25 +1,28 @@
 {
   "date": "2026-10-17",
-  "checkedAt": "2026-10-17T16:12:46+08:00",
+  "checkedAt": "2026-10-18T16:12:54+08:00",
   "windowStart": "2026-10-16T16:00:00+08:00",
   "cutoff": "2026-10-17T16:00:00+08:00",
   "sourceSnapshot": {
-    "commit": "25dff2a60116ecbbbaa664d65c4e7279298645b6",
-    "libraryBlob": "7ced65c64c81de438b20856d5ef4eaaf31e373eb",
-    "manifestBlob": "5f94ce79dbba524bdf7269344322596d339d4261",
+    "commit": "b1bee34164b1530d14b58be97c800da157c15678",
+    "libraryBlob": "cc8807c367545a0ae68ff2450c12cf33d6878624",
+    "manifestBlob": "b61ed0492b180ee52708de8d97f608119fac7dde",
+    "coverageBlob": "ce3dff7e251d402aee59c62cd29c82c64270f2ba",
     "scan": {
-      "observedAt": "2026-10-16T16:37:30.000+08:00",
+      "observedAt": "2026-10-17T16:33:06.220+08:00",
       "sourceGroup": "88888142214212",
       "sourceName": "水木调研纪要-2.0",
-      "topicsScanned": 690,
-      "topicsInWindow": 669,
-      "topicPages": 23,
-      "topicWindowFrom": "2026-10-14T00:00:00+0800",
-      "topicWindowTo": "2026-10-16T16:20:35.971+0800",
+      "topicsScanned": 510,
+      "topicsInWindow": 489,
+      "topicPages": 17,
+      "topicWindowFrom": "2026-10-15T00:00:00+0800",
+      "topicWindowTo": "2026-10-17T15:58:34.944+0800",
       "boundaryReachedBeforeWindow": true,
-      "attachmentsObserved": 407,
-      "newRecords": 67,
-      "existingRecordsRefreshed": 330,
+      "attachmentsObserved": 312,
+      "uniqueFileIds": 307,
+      "duplicateFileIds": 5,
+      "newRecords": 60,
+      "existingRecordsRefreshed": 247,
       "occurrenceRecordsAdded": 0,
       "attachmentContentRead": false,
       "windowComplete": true,
@@ -38,33 +41,34 @@
         "source",
         "sourceUrl"
       ],
-      "windowStart": "2026-10-14T00:00:00+0800",
-      "windowEnd": "2026-10-16T16:37:30.000+08:00",
-      "windowEndDate": "2026-10-16"
+      "windowStart": "2026-10-15T00:00:00+0800",
+      "windowEnd": "2026-10-17T16:33:06.220+08:00",
+      "windowEndDate": "2026-10-17"
     }
   },
   "researchCoverage": {
-    "sourceThrough": "2026-10-17T13:18:22.308+0800",
-    "syncedAt": "2026-10-17T05:58:03Z",
-    "status": "16:00 cutoff coverage not confirmed"
+    "sourceThrough": "2026-10-17T19:18:50.750+0800",
+    "syncedAt": "2026-10-17T16:57:14Z",
+    "status": "original_cutoff_covered_by_late_batches",
+    "comparison": "同原始16点窗口重建全部候选，2篇入选全文及哈希均未变化，新增4条纯科技排除。"
   },
   "attachmentMonitoring": {
-    "status": "pending",
-    "missingFrom": "2026-10-16T16:37:30+08:00",
-    "missingThrough": "2026-10-17T16:00:00+08:00",
+    "status": "complete",
     "scan": {
-      "observedAt": "2026-10-16T16:37:30.000+08:00",
+      "observedAt": "2026-10-17T16:33:06.220+08:00",
       "sourceGroup": "88888142214212",
       "sourceName": "水木调研纪要-2.0",
-      "topicsScanned": 690,
-      "topicsInWindow": 669,
-      "topicPages": 23,
-      "topicWindowFrom": "2026-10-14T00:00:00+0800",
-      "topicWindowTo": "2026-10-16T16:20:35.971+0800",
+      "topicsScanned": 510,
+      "topicsInWindow": 489,
+      "topicPages": 17,
+      "topicWindowFrom": "2026-10-15T00:00:00+0800",
+      "topicWindowTo": "2026-10-17T15:58:34.944+0800",
       "boundaryReachedBeforeWindow": true,
-      "attachmentsObserved": 407,
-      "newRecords": 67,
-      "existingRecordsRefreshed": 330,
+      "attachmentsObserved": 312,
+      "uniqueFileIds": 307,
+      "duplicateFileIds": 5,
+      "newRecords": 60,
+      "existingRecordsRefreshed": 247,
       "occurrenceRecordsAdded": 0,
       "attachmentContentRead": false,
       "windowComplete": true,
@@ -83,41 +87,37 @@
         "source",
         "sourceUrl"
       ],
-      "windowStart": "2026-10-14T00:00:00+0800",
-      "windowEnd": "2026-10-16T16:37:30.000+08:00",
-      "windowEndDate": "2026-10-16"
+      "windowStart": "2026-10-15T00:00:00+0800",
+      "windowEnd": "2026-10-17T16:33:06.220+08:00",
+      "windowEndDate": "2026-10-17"
     },
-    "sourceAccess": {
-      "url": "https://wx.zsxq.com/group/88888142214212",
-      "result": "Forbidden. Calls to this URL are not allowed.",
-      "classification": "network_policy_denial",
-      "attachmentContentRead": false,
-      "downloadCalls": 0
-    },
-    "pluginDiscovery": "No matching ZSXQ plugin returned; no callable ZSXQ MCP or authenticated CLI available"
+    "attachmentContentRead": false,
+    "downloadCalls": 0
   },
   "resourceSnapshot": {
     "schemaVersion": 2,
     "date": "2026-10-17",
     "windowStart": "2026-10-16T16:00:00+08:00",
     "cutoff": "2026-10-17T16:00:00+08:00",
-    "sourceThrough": "2026-10-17T13:18:22.308+0800",
+    "sourceThrough": "2026-10-17T19:18:50.750+0800",
     "attachmentCatalog": {
-      "generatedAt": "2026-10-16T16:37:30.000+08:00",
-      "sourceThrough": "2026-10-16T16:20:35.971+0800",
+      "generatedAt": "2026-10-17T16:33:06.220+08:00",
+      "sourceThrough": "2026-10-17T15:58:34.944+0800",
       "scan": {
-        "observedAt": "2026-10-16T16:37:30.000+08:00",
+        "observedAt": "2026-10-17T16:33:06.220+08:00",
         "sourceGroup": "88888142214212",
         "sourceName": "水木调研纪要-2.0",
-        "topicsScanned": 690,
-        "topicsInWindow": 669,
-        "topicPages": 23,
-        "topicWindowFrom": "2026-10-14T00:00:00+0800",
-        "topicWindowTo": "2026-10-16T16:20:35.971+0800",
+        "topicsScanned": 510,
+        "topicsInWindow": 489,
+        "topicPages": 17,
+        "topicWindowFrom": "2026-10-15T00:00:00+0800",
+        "topicWindowTo": "2026-10-17T15:58:34.944+0800",
         "boundaryReachedBeforeWindow": true,
-        "attachmentsObserved": 407,
-        "newRecords": 67,
-        "existingRecordsRefreshed": 330,
+        "attachmentsObserved": 312,
+        "uniqueFileIds": 307,
+        "duplicateFileIds": 5,
+        "newRecords": 60,
+        "existingRecordsRefreshed": 247,
         "occurrenceRecordsAdded": 0,
         "attachmentContentRead": false,
         "windowComplete": true,
@@ -136,11 +136,11 @@
           "source",
           "sourceUrl"
         ],
-        "windowStart": "2026-10-14T00:00:00+0800",
-        "windowEnd": "2026-10-16T16:37:30.000+08:00",
-        "windowEndDate": "2026-10-16"
+        "windowStart": "2026-10-15T00:00:00+0800",
+        "windowEnd": "2026-10-17T16:33:06.220+08:00",
+        "windowEndDate": "2026-10-17"
       },
-      "coverageStatus": "pending",
+      "coverageStatus": "complete",
       "requestedWindowStart": "2026-10-16T16:00:00+08:00",
       "requestedCutoff": "2026-10-17T16:00:00+08:00"
     },
@@ -161,7 +161,16 @@
       ],
       "minutes": [],
       "audio": [],
-      "reports": []
+      "reports": [
+        {
+          "id": "zsxq-file-584141855885444",
+          "title": "美妆双十一跟踪-大促首日美妆节表现拆析20261016.pdf",
+          "publishedAt": "2026-10-17T12:50:50.425000+08:00",
+          "url": "https://wx.zsxq.com/group/88888142214212/topic/14425448288254482",
+          "status": "仅标题登记",
+          "sector": ""
+        }
+      ]
     },
     "policy": "仅依据已入库元数据列出标题、发布时间和来源主题；未下载、读取或转写附件，不把研究报告标为纪要。"
   },
@@ -4355,7 +4364,7 @@
       "facts": {
         "importsYoYPct": 8.1,
         "importsMoMPct": 1.1,
-        "nonfuelYoYPct": 6.0,
+        "nonfuelYoYPct": 6,
         "nonfuelMoMPct": 0.7,
         "fromChinaYoYPct": 3.1,
         "fromChinaMoMPct": 0.7,
@@ -4377,7 +4386,7 @@
         "activitySeptember": -8.7,
         "activityOctober": -20.7,
         "pricesReceivedOctober": 36.3,
-        "pricesPaidOctober": 70.0,
+        "pricesPaidOctober": 70,
         "seasonallyAdjusted": false,
         "unit": "diffusion index points",
         "region": "New York State, northern New Jersey, southwestern Connecticut"
@@ -4435,7 +4444,12 @@
     "segmentCount": 2,
     "summaryCharacters": 442,
     "manualScopeCorrection": "三峡游轮归旅游；东方甄选平台电商排除；泛市场期指和建筑观点排除",
-    "attachmentContentRead": false
+    "attachmentContentRead": false,
+    "reReviewedAt": "2026-10-18T16:12:54+08:00",
+    "lateExcludedRows": 4,
+    "originalHashesUnchanged": true,
+    "summaryReReviewed": true,
+    "summaryChanged": false
   },
   "candidateSnapshot": {
     "sections": {
@@ -4463,31 +4477,166 @@
       ],
       "views": []
     },
-    "excludedResearchRows": 36
+    "excludedResearchRows": 40
   },
-  "publicationStatus": "blocked",
-  "publicationBlockers": [
-    {
-      "type": "attachment_scan_pending",
-      "recoverable": true,
-      "missingFrom": "2026-10-16T16:37:30+08:00",
-      "missingThrough": "2026-10-17T16:00:00+08:00",
-      "reason": "附件元数据扫描未覆盖日报截止，当前知识星球入口网络策略拒绝访问。"
-    },
-    {
-      "type": "research_cutoff_not_confirmed",
-      "recoverable": true,
-      "sourceThrough": "2026-10-17T13:18:22.308+0800",
-      "reason": "最新已入库文本批次未确认覆盖16:00截点；后续补齐须重建候选、重新AI审稿。"
-    }
-  ],
+  "publicationStatus": "published",
+  "publicationBlockers": [],
   "validation": {
+    "checkedAt": "2026-10-18T16:16:00+08:00",
     "editorial": "passed (721 characters)",
-    "segmentCoverageAndOriginalHashes": "passed, 2 complete originals match full source corpus",
-    "resourceGate": "rejected: Attachment scan does not cover the complete daily window",
+    "segmentCoverageAndOriginalHashes": "passed, 2 full originals match source corpus",
+    "resourceGate": "passed, complete scan covers original window; 1 research report",
+    "backfillRecentTwo": "passed, 2026-10-17 and 2026-10-16; idempotent",
+    "previousReport": "2026-10-16 editorial/originals/resources passed",
     "dailyUnitTests": "34 passed",
     "siteCheck": "passed: 20 entrypoints, 58 scripts, 4 inline scripts",
-    "previousReports": "10/15 and 10/16 originals and resources validate against current main index; backfill idempotent",
+    "announcementRendering": "passed synthetic render/export tests",
+    "actualReportRendering": "passed VM renderer: 3 points, 2 closed details with visible summaries, complete bodies, 1 report, no empty attachment categories, copy/download equal",
+    "liveReadback": "not passed: network policy denial",
     "noAttachmentContentRead": true
+  },
+  "previousBlockedAttempt": {
+    "checkedAt": "2026-10-17T16:12:46+08:00",
+    "sourceSnapshot": {
+      "commit": "25dff2a60116ecbbbaa664d65c4e7279298645b6",
+      "libraryBlob": "7ced65c64c81de438b20856d5ef4eaaf31e373eb",
+      "manifestBlob": "5f94ce79dbba524bdf7269344322596d339d4261",
+      "scan": {
+        "observedAt": "2026-10-16T16:37:30.000+08:00",
+        "sourceGroup": "88888142214212",
+        "sourceName": "水木调研纪要-2.0",
+        "topicsScanned": 690,
+        "topicsInWindow": 669,
+        "topicPages": 23,
+        "topicWindowFrom": "2026-10-14T00:00:00+0800",
+        "topicWindowTo": "2026-10-16T16:20:35.971+0800",
+        "boundaryReachedBeforeWindow": true,
+        "attachmentsObserved": 407,
+        "newRecords": 67,
+        "existingRecordsRefreshed": 330,
+        "occurrenceRecordsAdded": 0,
+        "attachmentContentRead": false,
+        "windowComplete": true,
+        "archiveHasMore": true,
+        "sourceMetadataFields": [
+          "fileId",
+          "topicId",
+          "filename",
+          "extension",
+          "bytes",
+          "attachmentCreatedAt",
+          "topicCreatedAt",
+          "durationSeconds",
+          "downloadCount",
+          "sourceHash",
+          "source",
+          "sourceUrl"
+        ],
+        "windowStart": "2026-10-14T00:00:00+0800",
+        "windowEnd": "2026-10-16T16:37:30.000+08:00",
+        "windowEndDate": "2026-10-16"
+      }
+    },
+    "publicationBlockers": [
+      {
+        "type": "attachment_scan_pending",
+        "recoverable": true,
+        "missingFrom": "2026-10-16T16:37:30+08:00",
+        "missingThrough": "2026-10-17T16:00:00+08:00",
+        "reason": "附件元数据扫描未覆盖日报截止，当前知识星球入口网络策略拒绝访问。"
+      },
+      {
+        "type": "research_cutoff_not_confirmed",
+        "recoverable": true,
+        "sourceThrough": "2026-10-17T13:18:22.308+0800",
+        "reason": "最新已入库文本批次未确认覆盖16:00截点；后续补齐须重建候选、重新AI审稿。"
+      }
+    ],
+    "validation": {
+      "editorial": "passed (721 characters)",
+      "segmentCoverageAndOriginalHashes": "passed, 2 complete originals match full source corpus",
+      "resourceGate": "rejected: Attachment scan does not cover the complete daily window",
+      "dailyUnitTests": "34 passed",
+      "siteCheck": "passed: 20 entrypoints, 58 scripts, 4 inline scripts",
+      "previousReports": "10/15 and 10/16 originals and resources validate against current main index; backfill idempotent",
+      "noAttachmentContentRead": true
+    }
+  },
+  "publicationRecovery": {
+    "fromDraft": "data/daily/drafts/2026-10-17.json",
+    "checkedAt": "2026-10-18T16:12:54+08:00",
+    "cutoffUnchanged": true,
+    "sourceSnapshotCommit": "b1bee34164b1530d14b58be97c800da157c15678",
+    "allSourceBodiesReRead": true,
+    "focusSourceSetUnchanged": true,
+    "originalHashesUnchanged": true,
+    "lateInWindowExcludedRows": 4,
+    "summaryReReviewed": true,
+    "summaryChanged": false,
+    "reason": "晚到批次已重新通读，新增四条均为纯科技；本期仍为两篇商社全文，摘要与三点判断无需改动。"
+  },
+  "recoveryAnnouncementCandidates": [
+    {
+      "company": "王府井",
+      "code": "600859.SH",
+      "announcementId": "临2026-070",
+      "title": "关于以集中竞价交易方式回购股份的进展公告",
+      "publishedAt": "2026-10-17",
+      "timePrecision": "date",
+      "url": "https://paper.cnstock.com/html/2026-10/17/content_2278427.htm",
+      "bodyRead": true,
+      "sourceType": "designated_disclosure_media",
+      "facts": "截至10月16日累计回购68.56万股、占总股本0.06%，成交金额661.14万元（不含交易费用），价格9.46—9.90元。",
+      "disposition": "body_verified_time_boundary_pending",
+      "reason": "交易所动态列表未返回可核对的原始时分；新闻时间不替代法定披露时间，不能确定归入17日或18日的精确窗口。",
+      "verified": false
+    },
+    {
+      "company": "福瑞达",
+      "code": "600223.SH",
+      "announcementId": "临2026-032",
+      "title": "关于聘任公司高级管理人员的公告",
+      "publishedAt": "2026-10-17",
+      "timePrecision": "date",
+      "url": "https://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12645335&stockid=600223",
+      "mirrorBodyRead": true,
+      "originalVerified": false,
+      "disposition": "routine_personnel_candidate_only",
+      "reason": "高管聘任程序，未核实新的经营数据或指引；原始公告与精确披露时间仍待核对。",
+      "verified": false
+    },
+    {
+      "company": "水羊股份",
+      "code": "300740.SZ",
+      "title": "2026年员工持股计划第一次持有人会议决议",
+      "publishedAt": "2026-10-17",
+      "timePrecision": "date",
+      "url": "https://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12646187&stockid=300740",
+      "originalVerified": false,
+      "disposition": "candidate_pending_original_verification",
+      "reason": "候选为持有人会议及管理程序，不能作为新实施股权转让；未完成原始公告核验。",
+      "verified": false
+    },
+    {
+      "company": "锦波生物",
+      "code": "920982.BJ",
+      "title": "募集资金专户监管协议相关公告",
+      "publishedAt": "2026-10-16",
+      "timePrecision": "date",
+      "url": "https://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12646853&stockid=920982",
+      "originalVerified": false,
+      "disposition": "old_date_candidate_not_new_fundraise",
+      "reason": "镜像检索日期不替代公告日期；监管协议不等于本期新增融资完成。",
+      "verified": false
+    }
+  ],
+  "recoveryVerification": {
+    "checkedAt": "2026-10-18T16:12:54+08:00",
+    "industrySourcesReRead": [
+      "https://www.bls.gov/news.release/archives/ximpim_10162026.htm",
+      "https://www.newyorkfed.org/survey/business_leaders/bls_overview"
+    ],
+    "announcementStatus": "原检查矩阵完整保留；本次新增候选含时间边界待核验，不作为已核实公告发布。",
+    "liveReadback": "blocked_network_policy"
   }
 }
