@@ -37,8 +37,8 @@ class FakeRepo{
   if(j.tool.endsWith('github_fetch')){
    if(a.url.includes('/branches/'))return ok(JSON.stringify({commit:{sha:this.head,commit:{tree:{sha:'base-tree'}}}}));
    if(a.url.includes('/contents/')){assert(!a.url.includes('market-views-all.json'));if(this.failExport)return {isError:true,content:[{type:'text',text:'temporary metadata failure'}]};const raw=this.files.get('data/research/market-views-all.json');return ok(JSON.stringify([{path:'data/research/market-views-all.json',sha:gitHash(raw),size:Buffer.byteLength(raw)}]));}
-   if(a.url.includes('/actions/workflows/'))return ok(JSON.stringify({workflow_runs:[{head_sha:'new-commit',path:'.github/workflows/build-research-recent.yml',status:'completed',conclusion:'success'}]}));
-   if(a.url.includes('/actions/runs'))return ok(JSON.stringify({workflow_runs:[{head_sha:this.head,path:'dynamic/pages/pages-build-deployment',status:'completed',conclusion:'success'}]}));
+   assert(!a.url.includes('/actions/workflows/'),'Use the connector-supported actions/runs endpoint');
+   if(a.url.includes('/actions/runs'))return ok(JSON.stringify({workflow_runs:[{head_sha:'new-commit',path:'.github/workflows/build-research-recent.yml',status:'completed',conclusion:'success'},{head_sha:this.head,path:'dynamic/pages/pages-build-deployment',status:'completed',conclusion:'success'}]}));
   }
   throw new Error('Unexpected connector request '+j.tool+' '+JSON.stringify(a));
  }));}

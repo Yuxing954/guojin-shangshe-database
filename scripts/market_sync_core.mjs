@@ -251,7 +251,7 @@ export class MarketSync{
     if(meta.sha!==ex.gitBlobSha1||meta.size!==ex.bytes||ex.totalRows!==a.databases.views.rows+a.databases.all_views.rows||ex.coverageTo!==a.coverageTo)throw new Error('Full export checksum/count/coverage mismatch');
     this.s.dataVerifiedForHead=ref;this.s.verification={head:ref,coverageTo:a.coverageTo,rows:ex.totalRows,exportSha:meta.sha};await this.save();
     }
-    const runs=await this.get(`https://api.github.com/repos/${REPO}/actions/workflows/build-research-recent.yml/runs?head_sha=${this.s.commitSha}&per_page=10`);
+    const runs=await this.get(`https://api.github.com/repos/${REPO}/actions/runs?head_sha=${this.s.commitSha}&per_page=30`);
     const relevant=runs.workflow_runs.filter(r=>r.head_sha===this.s.commitSha&&r.path?.endsWith('/build-research-recent.yml'));
     if(relevant.some(r=>r.status==='completed'&&r.conclusion!=='success'))throw new Error('Research build failed');
     if(!relevant.some(r=>r.conclusion==='success'))return {status:'pending',stage:'build-status',commit:this.s.commitSha};
