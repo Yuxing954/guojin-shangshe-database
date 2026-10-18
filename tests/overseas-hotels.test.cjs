@@ -18,6 +18,13 @@ assert.equal(M.segments([{value:1},{value:null},{value:2}]).length,2);
 const ihg=companies.find(c=>c.company.id==='ihg');assert.ok(ihg.finance.every(r=>/H1|FY/.test(r.period)));assert.ok(hyatt.finance.filter(r=>r.metric==='营业利润').every(r=>r.value===null));
 assert.deepEqual(M.financeMatrix(ihg.finance,'集团').periods,['2023FY','2024H1','2024FY','2025H1','2025FY','2026H1']);
 assert.ok(ihg.capital.some(r=>Object.values(r.formats).some(f=>f.includes('%'))));
+assert.deepEqual(M.range(manifest.quarters,'2025Q1','2025Q3'),['2025Q1','2025Q2','2025Q3']);
+assert.deepEqual(M.range(manifest.quarters,'2099Q1','bad'),manifest.quarters);
+assert.equal(M.financialChange(hyatt.finance,hyatt.finance.find(r=>r.period==='2026Q2'&&r.region==='集团'&&r.metric==='归母净利润')).label,'扭亏');
+assert.equal(M.financialChange(hyatt.finance,hyatt.finance.find(r=>r.period==='2026Q2'&&r.region==='集团'&&r.metric==='归母净利润')).percent,null);
+assert.equal(M.financialChange(hyatt.finance,hyatt.finance.find(r=>r.period==='2026Q2'&&r.region==='集团'&&r.metric==='营业利润')),null);
+const revenue=hyatt.finance.find(r=>r.period==='2026Q2'&&r.region==='集团'&&r.metric==='营业收入');assert.ok(Math.abs(M.financialChange(hyatt.finance,revenue).percent-(1829/1808-1)*100)<1e-10);
+assert.ok(M.search(ops,'2026Q2 全球').every(r=>r.quarter==='2026Q2'&&r.region==='全球'));
 assert.equal(M.financialGrowth([{period:'2025Q2',region:'集团',metric:'归母净利润',unit:'百万美元',basis:'GAAP',value:-5}],{period:'2026Q2',region:'集团',metric:'归母净利润',unit:'百万美元',basis:'GAAP',value:3}),null);
 for(const s of manifest.sheets){const grid=read(s.file);assert.equal(grid.name,s.name);assert.equal(grid.rows.length,s.rows);for(const r of grid.rows)assert.ok(r.cells.every(c=>c.v!==null&&c.c>0));}
 const html=fs.readFileSync(path.join(root,'company-database.html'),'utf8');assert.ok(html.includes('overseas-hotels.html'));assert.ok(fs.readFileSync(path.join(root,'scripts/data-notes.js'),'utf8').includes("'overseas-hotels'"));
