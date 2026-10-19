@@ -11,7 +11,14 @@
  if(state.batchId&&state.batchId!==spec.manifest.batchId)throw Error('Upload checkpoint belongs to a different batch');
  state.batchId=spec.manifest.batchId;state.blobs??={};
  const head=await call('mcp__codex_apps__github_fetch',{url:'https://api.github.com/repos/'+repo+'/branches/main'});
- if(state.commit&&head.commit.sha===state.commit){text({status:'submitted',commit:state.commit});return;}
+ const activate=async()=>{
+  const entry=await read('p.entries.find(e=>e.path.endsWith(\'/manifest.json\'))');
+  const result=await call('mcp__codex_apps__github_update_file',{repository_full_name:repo,branch:'main',path:entry.path,sha:state.blobs[entry.path],content:entry.content+'\n',message:'research: activate verified library upload '+state.batchId});
+  state.activationCommit=result.commit_sha;state.stage='submitted';await save();
+  text({status:'submitted',commit:state.activationCommit,batchId:state.batchId});
+ };
+ if(state.activationCommit){text({status:state.stage,commit:state.activationCommit,batchId:state.batchId});return;}
+ if(state.commit&&head.commit.sha===state.commit){await activate();return;}
  if(state.head&&head.commit.sha!==state.head)throw Error('Main changed; retain upload and reconcile before publishing');
  const listing=await call('mcp__codex_apps__github_fetch',{url:'https://api.github.com/repos/'+repo+'/contents/data/research?ref='+head.commit.sha});
  if(listing.find(f=>f.name==='library.json')?.sha!==spec.manifest.baseBlobSha)throw Error('Library changed since scan; no write');
@@ -26,5 +33,6 @@
  if(!state.tree){const t=await call('mcp__codex_apps__github_create_tree',{repository_full_name:repo,base_tree_sha:state.baseTree,tree_elements:Object.entries(state.blobs).map(([path,sha])=>({path,mode:'100644',type:'blob',sha}))});state.tree=t.sha;await save();}
  if(!state.commit){const c=await call('mcp__codex_apps__github_create_commit',{repository_full_name:repo,parent_sha:state.head,tree_sha:state.tree,message:'research: repair large library writes with verified chunk uploads'});state.commit=c.sha;await save();}
  await call('mcp__codex_apps__github_update_ref',{repository_full_name:repo,branch_name:'main',expected_sha:state.head,force:false,sha:state.commit});
- state.stage='submitted';await save();text({status:'submitted',commit:state.commit,batchId:state.batchId});
+ state.stage='uploaded';await save();await activate();
 })()
+
