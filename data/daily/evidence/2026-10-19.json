@@ -16100,16 +16100,32 @@
       "reason": "当前最新扫描仅覆盖10月17日00:00至10月19日16:36；较早已完成扫描覆盖前段，但尚缺18:00截止覆盖回执。",
       "latestReceiptLowerBoundary": "2026-10-17T00:00:00+08:00",
       "earlierReceipt": "data/daily/resources/2026-10-18.json@0bb65af4a0d2b3c8008ba5226eeda61b4d35c9ff"
+    },
+    {
+      "type": "site_check_failed",
+      "recoverable": true,
+      "file": "company-database.html",
+      "reason": "最新main的全站检查失败：company-database.html最后样式为hotel-workspace.css，check-site.cjs要求site-polish.css。该页面为其他模块，本次仅提交日报相关文件，未改动。",
+      "workflowRunId": 39236473720,
+      "jobId": 118006644375
     }
   ],
-  "publicationDecision": "18:00新窗口及晚到研究增量已重建，10条段子全部通读；仅附件末段扫描回执未到齐，待补稿保存，正式历史保留。",
+  "publicationDecision": "10月19日18:00完整编辑稿已保存；附件末段扫描待补，且最新main全站检查存在酒店公司页面样式顺序错误，保持blocked。10月17、18日已核验的附件回补单独提交，历史正文和窗口不变。",
   "validation": {
     "checkedAt": "2026-10-19T16:20:00+08:00",
     "dailyUnitTests": {
       "passed": 38,
       "failed": 0
     },
-    "siteCheck": "passed",
+    "siteCheck": {
+      "localWorkingCopy": "passed",
+      "latestMainCI": "failed",
+      "error": "company-database.html adapter ordering",
+      "actual": "scripts/hotel-workspace.css",
+      "expected": "scripts/site-polish.css",
+      "workflowRunId": 39236473720,
+      "reason": "本地旧工作副本未包含并行更新后的酒店页面，最终以最新main云端检查为准。"
+    },
     "editorial": "blocked as expected; separate source/body/matrix/24h checks passed",
     "originalsVerified": 10,
     "renderer": "real daily scripts passed visible summaries, closed single-level originals, no segment source buttons, attachment lists, copy/download parity, earnings-last order",
@@ -16120,9 +16136,10 @@
     },
     "eveningTests": {
       "command": "python -m unittest discover -s tests -p 'test_daily*.py'",
-      "passed": 45
+      "passed": 45,
+      "latestMainCIPassed": 45
     },
-    "formalEditorial": "blocked: latest attachment scan ends at 16:36, no complete 18:00 receipt",
+    "formalEditorial": "blocked: attachment scan ends at 16:36 and latest-main site check fails on hotel company page",
     "fullOriginals": 10,
     "companyAnnouncementsVerified": 1,
     "editorialContent": "passed with publicationStatus left blocked in saved draft",

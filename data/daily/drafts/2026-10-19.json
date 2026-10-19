@@ -227,6 +227,14 @@
       "reason": "当前最新扫描仅覆盖10月17日00:00至10月19日16:36；较早已完成扫描覆盖前段，但尚缺18:00截止覆盖回执。",
       "latestReceiptLowerBoundary": "2026-10-17T00:00:00+08:00",
       "earlierReceipt": "data/daily/resources/2026-10-18.json@0bb65af4a0d2b3c8008ba5226eeda61b4d35c9ff"
+    },
+    {
+      "type": "site_check_failed",
+      "recoverable": true,
+      "file": "company-database.html",
+      "reason": "最新main的全站检查失败：company-database.html最后样式为hotel-workspace.css，check-site.cjs要求site-polish.css。该页面为其他模块，本次仅提交日报相关文件，未改动。",
+      "workflowRunId": 39236473720,
+      "jobId": 118006644375
     }
   ],
   "resumeInstructions": "保持18:00新窗口，补齐覆盖后重新构建资源、逐篇阅读所有新增或变更原文并重新编辑三点总结，通过原文、附件和逐公司公告矩阵校验后发布。",
