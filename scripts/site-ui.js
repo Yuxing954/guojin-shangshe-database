@@ -2,6 +2,7 @@
   'use strict';
   const navigation=[['industry','industry.html','行业数据','chart'],['macro','consumption-macro.html','宏观数据','globe'],['companies','company-database.html','重点公司','building'],['earnings','earnings.html','财报日历','calendar'],['research','research.html','观点纪要','document'],['quotes','quotes.html','实时行情','trend']];
   const pages={
+    'retail-monthly-product.html':['tools','社零月度产品'],
     'cpi-monthly-product.html':['tools','CPI月度产品'],
     'daily.html':['daily','国金商社日报'],
     'overseas-hotels.html':['companies','海外酒店'],
@@ -17,6 +18,7 @@
 
   const api={navigation,pages,route,request,date,save,debounce};if(typeof module==='object'&&module.exports)module.exports=api;else root.SiteUI=api;
 })(typeof window==='object'?window:globalThis);
+
 
 
 

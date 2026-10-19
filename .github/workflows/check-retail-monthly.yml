@@ -1,0 +1,34 @@
+name: Check retail monthly product
+on:
+  pull_request:
+    paths:
+      - 'retail-monthly-product.html'
+      - 'scripts/retail-monthly*'
+      - 'scripts/consumption-macro-model.js'
+      - 'scripts/consumption-monthly*'
+      - 'data/products/retail-monthly*'
+      - 'data/consumption-macro/observations.json'
+      - 'data/macro/automatic-series.json'
+      - 'tests/retail-monthly*'
+      - '.github/workflows/check-retail-monthly.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  retail-product:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test tests/retail-monthly.test.cjs
+      - run: |
+          npm install --no-save --package-lock=false playwright@1.62.1
+          npx playwright install --with-deps chromium
+      - run: node tests/retail-monthly.browser.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: retail-monthly-preview
+          path: .cache/retail-monthly
