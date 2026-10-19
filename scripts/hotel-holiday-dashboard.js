@@ -96,12 +96,7 @@
     $('trend-note').textContent = state.segment === '全部' ? '全国整体' : state.segment;
     $('trend-caption').textContent = (state.mode === 'combo' ? '本期数值（' + unit + '）＋' + changeLabel + '（' + changeUnit + '）' :
       state.mode === 'change' ? changeLabel + '（' + changeUnit + '）' : '本期 / 对标期（' + unit + '）') + ' · 按假期日序对齐';
-    $('holiday-mode-switch').querySelectorAll('[data-mode]').forEach(function (button) {
-      var active = button.dataset.mode === state.mode;
-      button.classList.toggle('active', active); button.setAttribute('aria-pressed', String(active));
-      if (button.dataset.mode === 'combo') button.textContent = '数值＋' + changeLabel;
-      if (button.dataset.mode === 'change') button.textContent = '仅' + changeLabel;
-    });
+
     var chartRows = sorted.map(function (r) {
       var now = metricValue(r, field, false), base = metricValue(r, field, true);
       var value = field === 'occupancy_rate' && now != null ? now * 100 : now;
@@ -171,10 +166,7 @@
     $('asof').innerHTML = '<b>' + holidayNames[holiday] + ' · ' + ((matching[0] && matching[0].current_year) || '') + '年对标' + baselineYear + '年</b>酒店之家';
     renderHolidayOverview(dimension);
     renderKpis(selected);
-    $('holiday-metric-switch').querySelectorAll('[data-metric]').forEach(function (button) {
-      var active = button.dataset.metric === state.metric;
-      button.classList.toggle('active', active); button.setAttribute('aria-pressed', String(active));
-    });
+    $('holiday-metric-select').value = state.metric;
     renderChart(selected);
     renderSummary(matching);
     renderDaily(selected);
@@ -215,7 +207,7 @@
     $('holiday-select').innerHTML = Object.keys(holidayNames).map(function (id) { return '<option value="' + id + '">' + holidayNames[id] + '</option>'; }).join('');
     $('holiday-select').value = holidayNames[savedHoliday.get('holiday')] ? savedHoliday.get('holiday') : 'national-day';
     state.segment = savedHoliday.get('holidaySegment') || '全部';
-    state.mode = ['combo', 'change', 'value'].includes(savedHoliday.get('holidayMode')) ? savedHoliday.get('holidayMode') : 'combo';
+    state.mode = 'combo';
     state.metric = ['revpar', 'adr', 'occupancy_rate'].includes(savedHoliday.get('holidayMetric')) ? savedHoliday.get('holidayMetric') : 'revpar';
     $('dimension-select').value = savedHoliday.get('holidayDimension') === 'city_tier' ? 'city_tier' : 'hotel_tier';
     ['holiday-select', 'dimension-select'].forEach(function (id) { $(id).addEventListener('change', render); });
@@ -223,14 +215,7 @@
       var button = event.target.closest('[data-segment]');
       if (button) { state.segment = button.dataset.segment; render(); }
     });
-    $('holiday-mode-switch').addEventListener('click', function (event) {
-      var button = event.target.closest('[data-mode]');
-      if (button) { state.mode = button.dataset.mode; render(); }
-    });
-    $('holiday-metric-switch').addEventListener('click', function (event) {
-      var button = event.target.closest('[data-metric]');
-      if (button) { state.metric = button.dataset.metric; render(); }
-    });
+    $('holiday-metric-select').addEventListener('change', function (event) { state.metric = event.target.value; render(); });
     document.querySelectorAll('[data-weekly-view]').forEach(function (link) {
       link.addEventListener('click', function (event) {
         event.preventDefault();

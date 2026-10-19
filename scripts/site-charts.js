@@ -82,7 +82,7 @@ function valuesControl(svg){
   let config=valueScopes.get(scope);
   const legacy=scope.querySelector('input[data-chart-labels]');
   if(legacy){if(!config){config={scope,hotel:false,node:legacy.closest('label')};valueScopes.set(scope,config);}config.value=legacy.checked;config.change=legacy.checked;return config;}
-  const hotel=document.body.classList.contains('hotel-page'),metric=scope.querySelector('#metric-switch')?.querySelector('[aria-pressed=true]')?.textContent.trim()||scope.querySelector('[data-metric][aria-pressed=true]')?.textContent.trim()||(scope.matches('.hd-tier-trend')?document.querySelector('#metric-switch [aria-pressed=true]')?.textContent.trim():'')||'数值';
+  const hotel=document.body.classList.contains('hotel-page')||scope.hasAttribute('data-chart-dual-labels'),selectedMetric=scope.querySelector('#holiday-metric-select,#hn-metric,#dh-metric'),metric=selectedMetric?.selectedOptions[0]?.textContent.trim().replace(/[（(].*$/,'')||scope.querySelector('#metric-switch')?.querySelector('[aria-pressed=true]')?.textContent.trim()||scope.querySelector('[data-metric][aria-pressed=true]')?.textContent.trim()||(scope.matches('.hd-tier-trend')?document.querySelector('#metric-switch [aria-pressed=true]')?.textContent.trim():'')||'数值';
   if(!config){config={scope,hotel,value:false,change:false};valueScopes.set(scope,config);}
   if(!config.node?.isConnected){
     const node=document.createElement('span');node.className='site-value-options';config.node=node;
