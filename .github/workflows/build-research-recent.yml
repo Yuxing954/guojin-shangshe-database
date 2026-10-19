@@ -21,6 +21,9 @@ on:
       - "scripts/build_resource_index.py"
       - "scripts/summary_io.py"
       - "data/research/library.json"
+      - "data/research/library-pending/**"
+      - "scripts/apply_library_upload.py"
+      - "scripts/test_library_upload.py"
       - "data/industry/overview.json"
       - "data/sectors/**"
       - "scripts/update_sector_data.py"
@@ -55,6 +58,11 @@ jobs:
           key: summaries-${{ runner.os }}-${{ github.ref_name }}-${{ github.run_id }}
           restore-keys: summaries-${{ runner.os }}-${{ github.ref_name }}-
 
+      - name: Test and apply verified library upload chunks
+        run: |
+          python scripts/test_library_upload.py
+          python scripts/apply_library_upload.py
+
       - name: Validate and update sector histories from reviewed evidence
         run: python scripts/update_sector_data.py
 
@@ -86,6 +94,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/research/archive data/research/market-views-all.json data/research/recent.json data/research/recent-preview.json data/home-snapshot.json data/industry/overview.json data/research/resource-index.json data/sectors/overseas.json data/sectors/dining.json data/sectors/update-status.json
           git add -u data/research
+          if [ -f data/research/library-sync-receipt.json ]; then git add data/research/library-sync-receipt.json; fi
           if git diff --staged --quiet; then
             echo "no change"
             exit 0
