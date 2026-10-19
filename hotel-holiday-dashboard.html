@@ -10,10 +10,10 @@
   <link rel="stylesheet" href="scripts/hotel-holiday-dashboard.css?v=20261012simple">
   <script defer src="scripts/site-shell.js?v=20261014monthly"></script>
   <script defer src="scripts/hotel-metrics.js?v=20261017groupcompare"></script>
-  <script src="scripts/site-charts.js?v=20261017groupcompare"></script>
-  <script defer src="scripts/hotel-excel-export.js?v=20261017"></script><script defer src="scripts/hotel-holiday-dashboard.js?v=20261017fitlabels"></script>
+  <script src="scripts/site-charts.js?v=20261019controls"></script>
+  <script defer src="scripts/hotel-excel-export.js?v=20261017"></script><script defer src="scripts/hotel-holiday-dashboard.js?v=20261019controls"></script>
   <link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified">
-  <link rel="stylesheet" href="scripts/site-charts.css?v=20261017fitlabels">
+  <link rel="stylesheet" href="scripts/site-charts.css?v=20261019controls">
   <link rel="stylesheet" href="scripts/industry-embed.css?v=20261014viewfit">
   <link rel="stylesheet" href="scripts/site-install.css?v=20261014home"><link rel="stylesheet" href="scripts/site-polish.css?v=20261013clean">
   <script defer src="scripts/industry-embed.js?v=20261014loading"></script>
@@ -42,19 +42,10 @@
     <section class="hd-kpis board-kpis holiday-kpis" id="holiday-kpis" aria-label="假期日均经营指标"></section>
     <div class="hd-card board-panel">
       <div class="hd-card-head board-panel-head"><h2 id="trend-title">假期每日经营</h2><span id="trend-note"></span></div>
-      <div class="hd-chart-controls">
-        <div class="hd-switch" id="holiday-metric-switch" aria-label="经营指标">
-          <button type="button" data-metric="revpar" class="active" aria-pressed="true">RevPAR</button>
-          <button type="button" data-metric="occupancy_rate" aria-pressed="false">OCC</button>
-          <button type="button" data-metric="adr" aria-pressed="false">ADR</button>
-        </div>
-        <div class="hd-switch" id="holiday-mode-switch" aria-label="图表显示">
-          <button type="button" data-mode="combo" class="active" aria-pressed="true">数值＋同比</button>
-          <button type="button" data-mode="change" aria-pressed="false">仅同比</button>
-          <button type="button" data-mode="value" aria-pressed="false">仅数值</button>
-        </div>
+      <div class="hd-chart-controls site-chart-tools">
+        <select id="holiday-metric-select" aria-label="经营指标"><option value="revpar">RevPAR</option><option value="occupancy_rate">OCC</option><option value="adr">ADR</option></select>
+        <span data-chart-value-controls></span>
       </div>
-      <div class="hd-chart-controls"><span data-chart-value-controls></span></div>
       <div class="holiday-segments" id="holiday-segments" aria-label="对比对象"></div>
       <p class="hd-chart-caption" id="trend-caption"></p>
       <div class="hd-chart board-chart holiday-chart" id="holiday-chart" role="img" aria-label="本期与对标期每日酒店经营数据比较"></div>
