@@ -213,31 +213,9 @@
       "evidenceFile": "data/daily/evidence/2026-10-19.json"
     }
   ],
-  "publicationStatus": "blocked",
-  "publicationBlockers": [
-    {
-      "type": "attachment_scan_pending",
-      "recoverable": true,
-      "missingIntervals": [
-        {
-          "start": "2026-10-19T16:36:17.827+08:00",
-          "end": "2026-10-19T18:00:00+08:00"
-        }
-      ],
-      "reason": "当前最新扫描仅覆盖10月17日00:00至10月19日16:36；较早已完成扫描覆盖前段，但尚缺18:00截止覆盖回执。",
-      "latestReceiptLowerBoundary": "2026-10-17T00:00:00+08:00",
-      "earlierReceipt": "data/daily/resources/2026-10-18.json@0bb65af4a0d2b3c8008ba5226eeda61b4d35c9ff"
-    },
-    {
-      "type": "site_check_failed",
-      "recoverable": true,
-      "file": "company-database.html",
-      "reason": "最新main的全站检查失败：company-database.html最后样式为hotel-workspace.css，check-site.cjs要求site-polish.css。该页面为其他模块，本次仅提交日报相关文件，未改动。",
-      "workflowRunId": 39236473720,
-      "jobId": 118006644375
-    }
-  ],
-  "resumeInstructions": "保持18:00新窗口，补齐覆盖后重新构建资源、逐篇阅读所有新增或变更原文并重新编辑三点总结，通过原文、附件和逐公司公告矩阵校验后发布。",
+  "publicationStatus": "published",
+  "publicationBlockers": [],
+  "resumeInstructions": "正式正文已按用户要求发布；附件扫描回执补齐后，按原18:00窗口回补附件元数据，保留本期正文和原文。",
   "originals": {
     "https://wx.zsxq.com/group/88888142214212/topic/55521544118884284": {
       "url": "https://wx.zsxq.com/group/88888142214212/topic/55521544118884284",
@@ -3505,5 +3483,60 @@
     ],
     "status": "incomplete",
     "evidenceFile": "data/daily/evidence/2026-10-19.json"
-  }
+  },
+  "windowLabel": "截至北京时间18:00",
+  "publishedAt": "2026-10-19T19:12:00+08:00",
+  "publicationException": {
+    "requestedBy": "user",
+    "requestedAt": "2026-10-19T19:08:36+08:00",
+    "instruction": "正式发布一下",
+    "scope": "2026-10-19 only",
+    "reason": "用户在已知附件扫描缺口后明确要求正式发布；仅本期按已核实正文和现有附件元数据发布，附件覆盖状态继续pending，不宣称完整扫描。",
+    "acceptedIssues": [
+      {
+        "type": "attachment_scan_pending",
+        "recoverable": true,
+        "missingIntervals": [
+          {
+            "start": "2026-10-19T16:36:17.827+08:00",
+            "end": "2026-10-19T18:00:00+08:00"
+          }
+        ],
+        "reason": "当前最新扫描仅覆盖10月17日00:00至10月19日16:36；较早已完成扫描覆盖前段，但尚缺18:00截止覆盖回执。",
+        "latestReceiptLowerBoundary": "2026-10-17T00:00:00+08:00",
+        "earlierReceipt": "data/daily/resources/2026-10-18.json@0bb65af4a0d2b3c8008ba5226eeda61b4d35c9ff"
+      },
+      {
+        "type": "site_check_failed",
+        "recoverable": true,
+        "file": "company-database.html",
+        "reason": "最新main的全站检查失败：company-database.html最后样式为hotel-workspace.css，check-site.cjs要求site-polish.css。该页面为其他模块，本次仅提交日报相关文件，未改动。",
+        "workflowRunId": 39236473720,
+        "jobId": 118006644375
+      }
+    ]
+  },
+  "knownIssues": [
+    {
+      "type": "attachment_scan_pending",
+      "recoverable": true,
+      "missingIntervals": [
+        {
+          "start": "2026-10-19T16:36:17.827+08:00",
+          "end": "2026-10-19T18:00:00+08:00"
+        }
+      ],
+      "reason": "当前最新扫描仅覆盖10月17日00:00至10月19日16:36；较早已完成扫描覆盖前段，但尚缺18:00截止覆盖回执。",
+      "latestReceiptLowerBoundary": "2026-10-17T00:00:00+08:00",
+      "earlierReceipt": "data/daily/resources/2026-10-18.json@0bb65af4a0d2b3c8008ba5226eeda61b4d35c9ff"
+    },
+    {
+      "type": "site_check_failed",
+      "recoverable": true,
+      "file": "company-database.html",
+      "reason": "最新main的全站检查失败：company-database.html最后样式为hotel-workspace.css，check-site.cjs要求site-polish.css。该页面为其他模块，本次仅提交日报相关文件，未改动。",
+      "workflowRunId": 39236473720,
+      "jobId": 118006644375
+    }
+  ]
 }

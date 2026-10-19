@@ -16086,31 +16086,18 @@
       "rule": "量贩零售归商社零售，食品制造与营养品仍排除。"
     }
   },
-  "publicationStatus": "blocked",
-  "publicationBlockers": [
-    {
-      "type": "attachment_scan_pending",
-      "recoverable": true,
-      "missingIntervals": [
-        {
-          "start": "2026-10-19T16:36:17.827+08:00",
-          "end": "2026-10-19T18:00:00+08:00"
-        }
-      ],
-      "reason": "当前最新扫描仅覆盖10月17日00:00至10月19日16:36；较早已完成扫描覆盖前段，但尚缺18:00截止覆盖回执。",
-      "latestReceiptLowerBoundary": "2026-10-17T00:00:00+08:00",
-      "earlierReceipt": "data/daily/resources/2026-10-18.json@0bb65af4a0d2b3c8008ba5226eeda61b4d35c9ff"
-    },
-    {
-      "type": "site_check_failed",
-      "recoverable": true,
-      "file": "company-database.html",
-      "reason": "最新main的全站检查失败：company-database.html最后样式为hotel-workspace.css，check-site.cjs要求site-polish.css。该页面为其他模块，本次仅提交日报相关文件，未改动。",
-      "workflowRunId": 39236473720,
-      "jobId": 118006644375
-    }
-  ],
-  "publicationDecision": "10月19日18:00完整编辑稿已保存；附件末段扫描待补，且最新main全站检查存在酒店公司页面样式顺序错误，保持blocked。10月17、18日已核验的附件回补单独提交，历史正文和窗口不变。",
+  "publicationStatus": "published",
+  "publicationBlockers": [],
+  "publicationDecision": {
+    "at": "2026-10-19T19:12:00+08:00",
+    "decision": "publish_verified_editorial_with_pending_attachment_index",
+    "requestedBy": "user",
+    "request": "正式发布一下",
+    "contentCutoff": "2026-10-19T18:00:00+08:00",
+    "attachmentCoverage": "pending",
+    "siteCheck": "known unrelated company-database.html adapter ordering failure retained",
+    "doesNotChangeFuturePublicationRules": true
+  },
   "validation": {
     "checkedAt": "2026-10-19T16:20:00+08:00",
     "dailyUnitTests": {
@@ -16148,6 +16135,76 @@
     "historicalResourceBackfill": {
       "2026-10-17": "4 research files; exact source metadata and valid historical completed scan; --check-resources passed",
       "2026-10-18": "1 research file; latest completed scan; --check-resources passed"
+    },
+    "manualPublication": {
+      "at": "2026-10-19T19:12:00+08:00",
+      "unitTests": {
+        "passed": 45,
+        "failed": 0
+      },
+      "attachmentCheck": "pending; exact missing interval retained; not passed",
+      "sourceCommit": "d26dbf9545e00009f022043a7eb893db28183878",
+      "editorial": "passed",
+      "immutableSourceOriginals": {
+        "matched": 10,
+        "total": 10,
+        "sha256": "all passed"
+      },
+      "renderer": "passed: actual daily.js rendered 10 visible summaries and closed single-layer originals, 3 summary points, pending attachment status, no empty categories, copy/download parity, announcement position, earnings last, fixed-date share link",
+      "fullSite": "known existing latest-main CI failure: company-database.html adapter ordering; not represented as passed"
     }
+  },
+  "knownIssues": [
+    {
+      "type": "attachment_scan_pending",
+      "recoverable": true,
+      "missingIntervals": [
+        {
+          "start": "2026-10-19T16:36:17.827+08:00",
+          "end": "2026-10-19T18:00:00+08:00"
+        }
+      ],
+      "reason": "当前最新扫描仅覆盖10月17日00:00至10月19日16:36；较早已完成扫描覆盖前段，但尚缺18:00截止覆盖回执。",
+      "latestReceiptLowerBoundary": "2026-10-17T00:00:00+08:00",
+      "earlierReceipt": "data/daily/resources/2026-10-18.json@0bb65af4a0d2b3c8008ba5226eeda61b4d35c9ff"
+    },
+    {
+      "type": "site_check_failed",
+      "recoverable": true,
+      "file": "company-database.html",
+      "reason": "最新main的全站检查失败：company-database.html最后样式为hotel-workspace.css，check-site.cjs要求site-polish.css。该页面为其他模块，本次仅提交日报相关文件，未改动。",
+      "workflowRunId": 39236473720,
+      "jobId": 118006644375
+    }
+  ],
+  "publicationException": {
+    "requestedBy": "user",
+    "requestedAt": "2026-10-19T19:08:36+08:00",
+    "instruction": "正式发布一下",
+    "scope": "2026-10-19 only",
+    "reason": "用户在已知附件扫描缺口后明确要求正式发布；仅本期按已核实正文和现有附件元数据发布，附件覆盖状态继续pending，不宣称完整扫描。",
+    "acceptedIssues": [
+      {
+        "type": "attachment_scan_pending",
+        "recoverable": true,
+        "missingIntervals": [
+          {
+            "start": "2026-10-19T16:36:17.827+08:00",
+            "end": "2026-10-19T18:00:00+08:00"
+          }
+        ],
+        "reason": "当前最新扫描仅覆盖10月17日00:00至10月19日16:36；较早已完成扫描覆盖前段，但尚缺18:00截止覆盖回执。",
+        "latestReceiptLowerBoundary": "2026-10-17T00:00:00+08:00",
+        "earlierReceipt": "data/daily/resources/2026-10-18.json@0bb65af4a0d2b3c8008ba5226eeda61b4d35c9ff"
+      },
+      {
+        "type": "site_check_failed",
+        "recoverable": true,
+        "file": "company-database.html",
+        "reason": "最新main的全站检查失败：company-database.html最后样式为hotel-workspace.css，check-site.cjs要求site-polish.css。该页面为其他模块，本次仅提交日报相关文件，未改动。",
+        "workflowRunId": 39236473720,
+        "jobId": 118006644375
+      }
+    ]
   }
 }
