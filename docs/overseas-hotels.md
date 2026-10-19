@@ -31,3 +31,9 @@ RevPAR、ADR金额为美元，同比为百分比。OCC为百分比，OCC变化�
 导入程序与用户修订文件保存在研究项目的接入归档中；后续以工作簿明细和原公告核对，不静默覆盖不同口径的历史。
 
 运行 `node tests/overseas-hotels.test.cjs` 检查记录、缺失值、OCC单位、季度断点、来源、公司导航与原表覆盖。回归 `scripts/company-database-model.test.cjs`、`scripts/company-overview-model.test.cjs`、`tests/site-ui.test.cjs`。桌面与手机检查四公司切换、全部选项、来源弹窗和CSV导出；发布后回读main及Pages。
+
+## 页面入口与来源
+
+公司内页保留经营、财务、品牌与开发、集团概况、数据明细；“公司对比”从页头进入独立的 overseas-hotel-comparison.html，不再作为公司标签。旧 tab=comparison 链接保留季度区间及单季/累计选择并跳转新页。
+
+经营与财务卡片、财务表、公司对比表不逐格放来源链接。页头“来源与说明”读取原来源清单；逐行公告、工作簿定位、披露测算方法和同比基数仍可在“数据明细”查看，导出继续包含原来源。财务测算期间在表头标明。经营及公司对比的季度表默认收起，点击“季度数据”展开。来源数据及计算模型未变。

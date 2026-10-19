@@ -1,0 +1,30 @@
+name: Check overseas hotels
+on:
+  pull_request:
+    paths:
+      - 'overseas-hotels.html'
+      - 'overseas-hotel-comparison.html'
+      - 'scripts/overseas-hotels*'
+      - 'scripts/hotel-workspace*'
+      - 'scripts/site-ui.js'
+      - 'scripts/site-data.js'
+      - 'data/companies/overseas*'
+      - 'data/companies/overseas/**'
+      - 'tests/overseas-hotels*'
+      - '.github/workflows/check-overseas-hotels.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  overseas-hotels:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node tests/overseas-hotels.test.cjs
+      - run: |
+          npm install --no-save --package-lock=false playwright@1.62.1
+          npx playwright install --with-deps chromium
+      - run: node tests/overseas-hotels.browser.cjs
