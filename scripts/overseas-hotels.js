@@ -2,8 +2,8 @@
  'use strict';
  const $=id=>document.getElementById(id),D=SiteData,M=OverseasHotelModel,esc=D.esc,params=new URLSearchParams(location.search),cache=new Map(),sheetCache=new Map();
  const comparisonPage=document.body.dataset.view==='comparison';
- if(!comparisonPage&&params.get('tab')==='comparison'){const u=new URL('overseas-hotel-comparison.html',location.href);for(const k of ['from','quarter','mode'])if(params.has(k))u.searchParams.set(k,params.get(k));location.replace(u.href);return;}
- const state={company:params.get('company')||'marriott',tab:comparisonPage?'comparison':params.get('tab')||'operating',mode:params.get('mode')||'单季度',quarter:params.get('quarter')||'2026Q2',region:params.get('region')||'全球',financeRegion:params.get('financeRegion')||'集团',detailKind:params.get('kind')||'operating',sheet:params.get('sheet')||'经营明细',page:1,query:params.get('q')||'',brandView:params.get('brand')||'scale',from:params.get('from')||'2023Q3'};
+ if(!comparisonPage&&params.get('tab')==='comparison'){const u=new URL('overseas-hotel-comparison.html',location.href);for(const k of ['from','quarter','mode'])if(params.has(k))u.searchParams.set(k,params.get(k));if(params.has('company'))u.searchParams.set('backCompany',params.get('company'));location.replace(u.href);return;}
+ const state={company:(comparisonPage?params.get('backCompany'):params.get('company'))||'marriott',tab:comparisonPage?'comparison':params.get('tab')||'operating',mode:params.get('mode')||'单季度',quarter:params.get('quarter')||'2026Q2',region:params.get('region')||'全球',financeRegion:params.get('financeRegion')||'集团',detailKind:params.get('kind')||'operating',sheet:params.get('sheet')||'经营明细',page:1,query:params.get('q')||'',brandView:params.get('brand')||'scale',from:params.get('from')||'2023Q3'};
  let manifest,data,token=0,evidence=new Map();
  const safeURL=u=>D.link(u);
  function displayCell(v,f=''){if(!M.finite(v))return v??'';let text=f.includes('%')?M.fmt(v*100,1)+'%':M.fmt(v,f.includes('0.00')?2:f.includes('0.0')?1:0);return text+(f.includes(' pp')?' pp':'');}
@@ -21,7 +21,7 @@
   for(const k of keys)u.searchParams.set(k,state[k]);
   if(!comparisonPage){u.searchParams.set('kind',state.detailKind);if(state.detailKind==='raw')u.searchParams.set('sheet',state.sheet);else u.searchParams.delete('sheet');if(state.tab==='brands')u.searchParams.set('brand',state.brandView);else u.searchParams.delete('brand');if(state.tab==='details'&&state.query)u.searchParams.set('q',state.query);else u.searchParams.delete('q');}
   history.replaceState(null,'',u);window.HotelWorkspace?.remember();
-  const link=$('oh-compare-link')||$('oh-back');if(link){const target=new URL(comparisonPage?'overseas-hotels.html':'overseas-hotel-comparison.html',location.href);for(const k of ['mode','quarter','from'])target.searchParams.set(k,state[k]);link.href=target.href;}
+  const link=$('oh-compare-link')||$('oh-back');if(link){const target=new URL(comparisonPage?'overseas-hotels.html':'overseas-hotel-comparison.html',location.href);for(const k of ['mode','quarter','from'])target.searchParams.set(k,state[k]);target.searchParams.set(comparisonPage?'company':'backCompany',state.company);link.href=target.href;}
  }
  function historyTable(html){return '<details class="oh-history"><summary>季度数据</summary>'+html+'</details>';}
 
