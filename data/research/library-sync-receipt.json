@@ -1,0 +1,42 @@
+{
+  "batchId": "metadata-ed4115a72d3bd209",
+  "sha256": "ed4115a72d3bd209cd93777d4930f99309eb9d8a75a4fadde8c9bb1bf689d59a",
+  "bytes": 2969298,
+  "recordCount": 1392,
+  "blobSha": "3d6c10f8a78f4dc3c55cf6000c709e6f1b499d7b",
+  "attachmentScan": {
+    "observedAt": "2026-10-19T08:36:17.827Z",
+    "sourceGroup": "88888142214212",
+    "sourceName": "水木调研纪要-2.0",
+    "topicsScanned": 510,
+    "topicsInWindow": 474,
+    "topicPages": 17,
+    "topicWindowFrom": "2026-10-17T00:00:00+08:00",
+    "topicWindowTo": "2026-10-19T15:27:06.989+0800",
+    "boundaryReachedBeforeWindow": true,
+    "attachmentsObserved": 278,
+    "uniqueFileIds": 278,
+    "duplicateFileIds": 0,
+    "newRecords": 191,
+    "existingRecordsRefreshed": 87,
+    "attachmentContentRead": false,
+    "sourceMetadataFields": [
+      "fileId",
+      "topicId",
+      "filename",
+      "extension",
+      "bytes",
+      "fileCreatedAt",
+      "topicCreatedAt",
+      "durationSeconds",
+      "downloadCount",
+      "sourceHash",
+      "source"
+    ],
+    "windowStart": "2026-10-17T00:00:00+08:00",
+    "windowEnd": "2026-10-19T08:36:17.827Z",
+    "windowEndDate": "2026-10-19",
+    "windowComplete": true,
+    "archiveHasMore": true
+  }
+}
