@@ -452,6 +452,7 @@
     $('city-search').oninput = renderCities; $('city-order').onchange = function () { cityOrder = $('city-order').value; renderCities(); };
     document.querySelectorAll('[data-city-metric]').forEach(function (button) { button.onclick = function () { cityMetric = button.dataset.cityMetric; renderCities(); }; });
     $('city-table').onclick = function (event) { var b = event.target.closest('[data-region]'); if (!b) return; state.region = b.dataset.region; switchView('overview'); $('region-select').focus(); };
+    window.addEventListener('hotel:switch-view', function(event) { if(['overview','cities','structure'].includes(event.detail))switchView(event.detail); });
     switchView(state.view);
   }
   function error(id, message, cols) { blankTable(id, message, cols); }
