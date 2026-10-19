@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>酒店 · 国金商社</title><script defer src="scripts/site-ui.js?v=20261014monthly"></script>
   <link rel="stylesheet" href="scripts/site.css?v=20261014viewfit">
-  <link rel="stylesheet" href="scripts/hotel-dashboard.css?v=20261017overview2">
+  <link rel="stylesheet" href="scripts/hotel-dashboard.css?v=20261019citycompare">
   <script defer src="scripts/site-shell.js?v=20261014monthly"></script>
   <script defer src="scripts/hotel-metrics.js?v=20261017groupcompare"></script>
   <script defer src="scripts/hotel-excel-export.js?v=20261017"></script>
-  <script defer src="scripts/hotel-dashboard.js?v=20261017groupcompare"></script>
+  <script defer src="scripts/hotel-dashboard.js?v=20261019citycompare"></script>
 <link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-charts.css?v=20261017fitlabels"><link rel="stylesheet" href="scripts/industry-embed.css?v=20261014viewfit"><link rel="stylesheet" href="scripts/site-install.css?v=20261014home"><link rel="stylesheet" href="scripts/site-polish.css?v=20261013clean"><script src="scripts/site-charts.js?v=20261017groupcompare"></script><script defer src="scripts/industry-embed.js?v=20261014loading"></script><link rel="manifest" href="site.webmanifest"><meta name="theme-color" content="#4d58a4"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="国金商社"><meta name="apple-mobile-web-app-status-bar-style" content="default"><link rel="apple-touch-icon" href="scripts/assets/app/apple-touch-icon.png"><script defer src="scripts/site-install.js?v=20261014home"></script><script defer src="scripts/hotel-group-entry.js?v=20261017groups"></script></head>
 <body class="hotel-page">
 <main class="hd-wrap industry-board">
@@ -61,11 +61,23 @@
     </section>
 
     <section id="view-cities" class="hd-view" hidden>
-      <div class="hd-section-head board-section-head"><div><h2>城市经营</h2></div></div>
-      <div class="hd-city-summary" id="city-summary"></div>
-      <div class="hd-card board-panel">
-        <div class="hd-city-controls"><label>搜索城市 <input id="city-search" type="search" placeholder="例如：杭州"></label><label>排序 <select id="city-sort"><option value="revChange">RevPAR同比 · 从高到低</option><option value="occChange">OCC同比 · 从高到低</option><option value="adrChange">ADR同比 · 从高到低</option><option value="revpar">RevPAR绝对值 · 从高到低</option><option value="occupancy_rate">OCC绝对值 · 从高到低</option><option value="adr">ADR绝对值 · 从高到低</option></select></label></div>
-        <div class="hd-table-scroll" tabindex="0" aria-label="重点城市经营表，可左右滚动"><table class="hd-table hd-city-table board-table" id="city-table"></table></div>
+      <div class="hd-section-head board-section-head">
+        <div><h2>城市对比</h2><p>选一个指标，直接和全国及其他城市比较。</p></div>
+      </div>
+      <div class="hd-city-summary" id="city-summary" aria-live="polite"></div>
+      <div class="hd-card board-panel hd-city-comparison">
+        <div class="hd-city-controls">
+          <fieldset class="hd-city-metrics" aria-label="对比指标">
+            <legend>对比指标</legend>
+            <button type="button" data-city-metric="revpar" aria-pressed="true">RevPAR</button>
+            <button type="button" data-city-metric="occupancy_rate" aria-pressed="false">入住率 OCC</button>
+            <button type="button" data-city-metric="adr" aria-pressed="false">平均房价 ADR</button>
+          </fieldset>
+          <label>搜索城市 <input id="city-search" type="search" placeholder="输入城市名，如杭州" autocomplete="off"></label>
+          <label>排序 <select id="city-order"><option value="desc">由高到低</option><option value="asc">由低到高</option></select></label>
+        </div>
+        <p class="hd-city-guide" id="city-guide"></p>
+        <div class="hd-table-scroll" tabindex="0" aria-label="城市对比结果"><table class="hd-table hd-city-table board-table" id="city-table"></table></div>
       </div>
     </section>
 

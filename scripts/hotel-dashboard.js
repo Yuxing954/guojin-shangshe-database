@@ -159,26 +159,97 @@
     if (!hasValue && !hasChange) { $('segment-chart').innerHTML = '<div class="hd-empty">所选范围暂无分档次数据</div>'; return; }
     SiteCharts.drawPaired($('segment-chart'), points, { mode: mode, unit: meta.unit, changeUnit: changeUnit, changeLabel: '同周同比', name: state.region + '分档次' + meta.label, trimEmpty:true,precision:0,changePrecision:1,periodFormat:'week-short', gap: 15 * 86400000 });
   }
+  var cityMetric = 'revpar';
+  var cityOrder = 'desc';
+  function cityMetricName(field) { return field === 'revpar' ? 'RevPAR' : field === 'occupancy_rate' ? '入住率 OCC' : '平均房价 ADR'; }
+  function cityValue(row, field) {
+    var v = display(row, field);
+    return v == null ? null : v;
+  }
+  function cityFormattedValue(row, field) {
+    var v = cityValue(row, field);
+    if (v == null) return '暂无数据';
+    return fmt(v, field === 'occupancy_rate' ? 1 : 0) + ' ' + valueUnit(field);
+  }
+  function cityScore(row, base, field) {
+    if (state.mode === 'change') return M.change(row, base, field);
+    return cityValue(row, field);
+  }
   function renderCities() {
+    var field = cityMetric;
     var all = regions.filter(function (r) { return r !== '全国'; }).map(function (region) {
       var r = row(region, '全部', state.week), b = row(region, '全部', baseWeek());
-      return { region: region, row: r, base: b, revpar: M.metric(r, 'revpar'), occupancy_rate: M.metric(r, 'occupancy_rate'), adr: M.metric(r, 'adr'), revChange: M.change(r, b, 'revpar'), occChange: M.change(r, b, 'occupancy_rate'), adrChange: M.change(r, b, 'adr') };
+      return { region: region, row: r, base: b, value: cityValue(r, field), change: M.change(r, b, field), score: cityScore(r, b, field) };
+    }).filter(function (c) { return c.value != null; });
+    var national = row('全国', '全部', state.week), nationalBase = row('全国', '全部', baseWeek());
+    var nationalValue = cityValue(national, field), nationalChange = M.change(national, nationalBase, field);
+    var nationalScore = cityScore(national, nationalBase, field);
+    var comparable = all.filter(function (c) { return c.change != null; });
+    var comparableNational = state.mode === 'change' ? nationalChange != null : nationalValue != null;
+    var benchmarkScore = state.mode === 'change' ? nationalChange : nationalValue;
+    var above = comparableNational ? all.filter(function (c) {
+      var score = state.mode === 'change' ? c.change : c.value;
+      return score != null && score > benchmarkScore;
+    }).length : null;
+    var ranked = all.slice().sort(function (a, b) {
+      if (a.score == null && b.score != null) return 1;
+      if (a.score != null && b.score == null) return -1;
+      if (a.score != null && b.score != null && a.score !== b.score) return (cityOrder === 'asc' ? 1 : -1) * (a.score - b.score);
+      return a.region.localeCompare(b.region, 'zh-CN');
     });
-    var national = row('全国', '全部', state.week), nationalBase = row('全国', '全部', baseWeek()), nationalChange = M.change(national, nationalBase, 'revpar');
-    var comparable = all.filter(function (c) { return c.revChange != null; });
-    var higher = nationalChange == null ? null : comparable.filter(function (c) { return c.revChange > nationalChange; }).length;
-    $('city-summary').innerHTML = (nationalChange != null ? '<span>全国RevPAR' + labelChange() + ' <b>' + delta(nationalChange, 'revpar') + '</b></span>' : '') + '<span>本周有数据 <b>' + all.filter(function(c){return hasValues(c.row,['revpar','occupancy_rate','adr']);}).length + ' 城</b></span>' + (comparable.length ? '<span>RevPAR可比 <b>' + comparable.length + ' 城</b></span>' : '<span>RevPAR基期缺失</span>') + (higher != null ? '<span>增幅高于全国 <b>' + higher + ' 城</b></span>' : '');
-    [['revChange','RevPAR'],['occChange','OCC'],['adrChange','ADR']].forEach(function (o) { $('city-sort').querySelector('[value="' + o[0] + '"]').textContent = o[1] + labelChange() + ' · 从高到低'; });
-    all = all.filter(function (c) { return hasValues(c.row,['revpar','occupancy_rate','adr']); });
-    Array.from($('city-sort').options).forEach(function (o) { o.disabled = !all.some(function (c) { return c[o.value] != null; }); });
-    if ($('city-sort').selectedOptions[0].disabled) { var validSort = Array.from($('city-sort').options).find(function (o) { return !o.disabled; }); if(validSort) $('city-sort').value = validSort.value; }
-    var sorted = M.rank(all, $('city-sort').value), query = $('city-search').value.trim();
-    var shown = sorted.map(function (c, i) { c.rank = i + 1; return c; }).filter(function (c) { return c.region.includes(query); });
-    var fields = operatingFields([national].concat(shown.map(function (c) { return c.row; })));
-    function tr(region, r, b, rank) {
-      return '<tr' + (region === '全国' ? ' class="hd-benchmark"' : '') + '><td>' + (region === '全国' ? '<strong>全国参照</strong>' : '<span class="hd-row-rank">' + rank + '</span><button class="hd-city-link" type="button" data-region="' + esc(region) + '">' + esc(region) + '</button>') + '</td>' + fields.map(function (f) { return metricCell(r, b, f); }).join('') + '</tr>';
+    var query = $('city-search').value.trim();
+    var shown = ranked.filter(function (c) { return c.region.includes(query); });
+    shown.forEach(function (c) { c.rank = ranked.indexOf(c) + 1; });
+    var modeLabel = state.mode === 'change' ? labelChange() : '绝对值';
+    var compareUnit = field === 'occupancy_rate' ? '个百分点' : '%';
+    var mainValue = state.mode === 'change'
+      ? (nationalChange == null ? '基期缺失' : delta(nationalChange, field))
+      : cityFormattedValue(national, field);
+    var mainLabel = state.mode === 'change' ? '全国' + cityMetricName(field) + labelChange() : '全国' + cityMetricName(field);
+    var aboveText = above == null ? '全国基准暂无可比数据' : '高于全国';
+    $('city-summary').innerHTML =
+      '<span>' + mainLabel + ' <b>' + mainValue + '</b></span>' +
+      '<span>有本周数据 <b>' + all.length + ' 城</b></span>' +
+      '<span>' + (state.mode === 'change' ? '可比基期' : labelChange() + '可比') + ' <b>' + comparable.length + ' 城</b></span>' +
+      '<span>' + aboveText + ' <b>' + (above == null ? '—' : above + ' 城') + '</b></span>' +
+      (ranked.some(function(c){return c.score != null;}) ? '<span>当前最高 <b>' + esc(ranked.filter(function(c){return c.score != null;}).slice().sort(function(a,b){return b.score-a.score;})[0].region) + '</b></span>' : '');
+    document.querySelectorAll('[data-city-metric]').forEach(function (button) {
+      var active = button.dataset.cityMetric === field;
+      button.classList.toggle('active', active);
+      button.setAttribute('aria-pressed', String(active));
+    });
+    $('city-guide').textContent = state.mode === 'change'
+      ? (state.base === 'auto' ? '当前显示去年同周同比；' : '当前显示所选基周的对比变化；') +
+        (field === 'occupancy_rate' ? '入住率变化按百分点计算。' : '价格变化按百分比计算。') +
+        ' 全国行作为基准；无去年同期数据的城市仍显示本周值并标注基期缺失。'
+      : '当前显示本周绝对值；副行显示' + labelChange() + '。全国行作为基准，点击城市名可查看该城市详情。';
+    var header = '<thead><tr><th>排名 / 城市</th><th>' + esc(cityMetricName(field)) + (state.mode === 'change' ? labelChange() + '（' + compareUnit + '）' : '（' + valueUnit(field) + '）') + '</th><th>与全国比较</th></tr></thead>';
+    function primaryValue(r, b) {
+      var v = cityValue(r, field), ch = M.change(r, b, field);
+      if (v == null) return '<strong class="hd-neutral">暂无数据</strong>';
+      if (state.mode === 'change' && ch != null) return '<strong>' + delta(ch, field) + '</strong><small>本周 ' + esc(cityFormattedValue(r, field)) + '</small>';
+      if (state.mode === 'change') return '<strong>' + esc(cityFormattedValue(r, field)) + '</strong><small>' + labelChange() + '基期缺失</small>';
+      return '<strong>' + esc(cityFormattedValue(r, field)) + '</strong><small>' + (ch == null ? labelChange() + '基期缺失' : labelChange() + ' ' + delta(ch, field)) + '</small>';
     }
-    $('city-table').innerHTML = operatingHead('城市',fields) + '<tbody>' + (hasValues(national,fields) ? tr('全国', national, nationalBase) : '') + shown.map(function (c) { return tr(c.region, c.row, c.base, c.rank); }).join('') + (!shown.length ? '<tr><td colspan="' + (fields.length+1) + '" class="hd-empty">没有匹配的城市</td></tr>' : '') + '</tbody>';
+    function comparison(score, benchmark, missing) {
+      if (score == null || benchmark == null || missing) return '<span class="hd-city-badge is-muted">基期缺失</span>';
+      if (Math.abs(score - benchmark) < 0.0000001) return '<span class="hd-city-badge is-muted">与全国持平</span>';
+      return score > benchmark ? '<span class="hd-city-badge is-up">高于全国</span>' : '<span class="hd-city-badge is-down">低于全国</span>';
+    }
+    function rowHtml(region, r, b, rank) {
+      var isNational = region === '全国';
+      var score = cityScore(r, b, field);
+      return '<tr' + (isNational ? ' class="hd-benchmark"' : '') + '><td>' +
+        (isNational ? '<strong>全国基准</strong>' : '<span class="hd-row-rank">' + rank + '</span><button class="hd-city-link" type="button" data-region="' + esc(region) + '" aria-label="查看' + esc(region) + '详情">' + esc(region) + '</button>') +
+        '</td><td class="hd-city-value">' + primaryValue(r, b) + '</td><td>' +
+        (isNational ? '<span class="hd-city-badge is-national">对比基准</span>' : comparison(score, nationalScore, state.mode === 'change' && M.change(r, b, field) == null)) +
+        '</td></tr>';
+    }
+    $('city-table').innerHTML = header + '<tbody>' +
+      (nationalValue != null ? rowHtml('全国', national, nationalBase) : '') +
+      shown.map(function (c) { return rowHtml(c.region, c.row, c.base, c.rank); }).join('') +
+      (!shown.length ? '<tr><td colspan="3" class="hd-empty">' + (query ? '没有匹配的城市，请检查城市名称。' : '本周暂无可对比城市数据。') + '</td></tr>' : '') +
+      '</tbody>';
   }
   function cardAvailable(id, available, message) {
     var card = $(id), notice = card.querySelector('.hd-module-notice');
@@ -351,7 +422,6 @@
     $('weekly-export').onclick = openWeeklyExport;
     $('export-cancel').onclick = function () { $('weekly-export-dialog').close(); };
     $('export-form').onsubmit = function (event) { event.preventDefault(); exportWeekly(); };
-    if (state.mode === 'value') $('city-sort').value = 'revpar';
     document.querySelectorAll('.hd-tab[data-view]').forEach(function (b) { b.onclick = function () { switchView(b.dataset.view); }; });
     var holidayTab = $('holiday-dashboard-tab');
     if (holidayTab) holidayTab.addEventListener('click', function (event) {
@@ -373,15 +443,14 @@
       buttons.forEach(function (b) { b.onclick = function () {
         state[attr] = b.dataset[attr]; active();
         if (attr === 'mode') {
-          var changeFields = { revpar: 'revChange', occupancy_rate: 'occChange', adr: 'adrChange' }, valueFields = { revChange: 'revpar', occChange: 'occupancy_rate', adrChange: 'adr' };
-          $('city-sort').value = (state.mode === 'change' ? changeFields[$('city-sort').value] : valueFields[$('city-sort').value]) || $('city-sort').value;
           refresh();
         } else { renderTrend(); drawSegments(); saveState(); }
       }; }); active();
     }
     bindSwitch('metric-switch', 'metric'); bindSwitch('mode-switch', 'mode');
     $('group-metric').onchange = drawGroups; $('supply-metric').onchange = function () { drawSupply(); renderInvestment(); };
-    $('city-search').oninput = renderCities; $('city-sort').onchange = renderCities;
+    $('city-search').oninput = renderCities; $('city-order').onchange = function () { cityOrder = $('city-order').value; renderCities(); };
+    document.querySelectorAll('[data-city-metric]').forEach(function (button) { button.onclick = function () { cityMetric = button.dataset.cityMetric; renderCities(); }; });
     $('city-table').onclick = function (event) { var b = event.target.closest('[data-region]'); if (!b) return; state.region = b.dataset.region; switchView('overview'); $('region-select').focus(); };
     switchView(state.view);
   }

@@ -114,3 +114,27 @@ body.hotel-page.site-page #view-overview .hd-table th{font-size:13px!important;l
  body.hotel-page.site-page #view-overview .site-value-options{gap:10px}
  body.hotel-page.site-page #view-overview .site-value-option{font-size:13px!important}
 }
+
+/* City comparison: one metric, one explicit national benchmark, responsive controls. */
+.hd-city-comparison{overflow:hidden}
+.hd-city-controls{display:grid;grid-template-columns:minmax(300px,1fr) minmax(190px,260px) minmax(140px,190px);align-items:end;gap:18px;padding:18px 20px 14px}
+.hd-city-controls>label{display:flex;flex-direction:column;align-items:stretch;gap:7px;width:auto;color:var(--hd-muted);font-size:12px}
+.hd-city-controls input,.hd-city-controls select{box-sizing:border-box;width:100%;max-width:none;min-height:40px;padding:8px 11px;border:1px solid var(--hd-line);border-radius:8px;background:#fff;color:var(--hd-ink)}
+.hd-city-metrics{display:flex;flex-wrap:wrap;gap:7px;margin:0;padding:0;border:0}
+.hd-city-metrics legend{width:100%;margin:0 0 7px;color:var(--hd-muted);font-size:12px}
+.hd-city-metrics button{min-height:38px;padding:8px 12px;border:1px solid var(--hd-line);border-radius:8px;background:#fff;color:var(--hd-ink);font:inherit;font-size:12px;cursor:pointer}
+.hd-city-metrics button.active{border-color:var(--hd-accent);background:#f0f2fb;color:var(--hd-accent);font-weight:700;box-shadow:inset 0 0 0 1px var(--hd-accent)}
+.hd-city-metrics button:focus-visible,.hd-city-link:focus-visible{outline:2px solid var(--hd-accent);outline-offset:2px}
+.hd-city-guide{margin:0;padding:0 20px 14px;color:var(--hd-muted);font-size:12px;line-height:1.6}
+.hd-city-table{min-width:520px}
+.hd-city-table th:nth-child(2),.hd-city-table td:nth-child(2){text-align:right}
+.hd-city-table td{vertical-align:middle}
+.hd-city-value strong{font-size:15px;color:var(--hd-ink)}
+.hd-city-value small{color:var(--hd-muted)}
+.hd-city-value .hd-positive{color:#21805e}.hd-city-value .hd-negative{color:#b24a52}
+.hd-city-badge{display:inline-block;padding:5px 9px;border-radius:999px;font-size:11px;font-weight:600;white-space:nowrap}
+.hd-city-badge.is-up{background:#eaf5ef;color:#26754f}.hd-city-badge.is-down{background:#fff0ee;color:#a64b43}.hd-city-badge.is-muted{background:#f1f2f5;color:#747d8a}.hd-city-badge.is-national{background:#e9ebf7;color:#4d58a4}
+.hd-city-table .hd-benchmark{background:#f3f4fb}
+.hd-city-table .hd-benchmark td{border-bottom:2px solid #e2e4f1}
+@media(max-width:760px){.hd-city-controls{grid-template-columns:1fr 1fr;gap:14px;padding:16px}.hd-city-metrics{grid-column:1/-1}.hd-city-guide{padding:0 16px 14px}.hd-city-summary>span{flex:1 1 40%}}
+@media(max-width:460px){.hd-city-controls{grid-template-columns:1fr}.hd-city-metrics{grid-column:auto}.hd-city-metrics button{flex:1}.hd-city-summary>span{flex:1 1 100%}}
