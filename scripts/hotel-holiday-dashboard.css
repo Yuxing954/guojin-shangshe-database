@@ -8,3 +8,10 @@
 .holiday-overview-panel>summary{padding:16px 20px;cursor:pointer;font-size:14px;font-weight:600}
 .holiday-kpis{margin-top:0}
 @media(max-width:760px){.holiday-segments{padding-left:16px;padding-right:16px}.holiday-toolbar label{width:auto}.holiday-toolbar select{min-width:0;max-width:100%}}
+
+/* A single compact row; narrow screens scroll the controls without wrapping. */
+body.site-page .holiday-chart-toolbar{flex-wrap:nowrap!important;overflow-x:auto;max-width:100%;gap:12px!important;padding-bottom:4px}
+body.site-page .holiday-chart-toolbar>select,body.site-page .holiday-chart-toolbar>[data-chart-value-controls]{flex:0 0 auto}
+body.site-page .holiday-chart-toolbar .site-value-options{flex-wrap:nowrap}
+body.site-page .holiday-chart-toolbar .holiday-segments{display:flex;flex:0 0 auto;flex-wrap:nowrap;padding:0!important;gap:6px;white-space:nowrap}
+body.site-page .holiday-chart-toolbar .holiday-segments button{flex:0 0 auto}
