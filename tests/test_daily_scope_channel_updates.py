@@ -19,4 +19,10 @@ class ChannelUpdates(unittest.TestCase):
   self.assertEqual(sector_for('9月各航司供需持续恢复'),'酒店旅游')
   self.assertIsNone(sector_for('航空发动机经营数据'))
 
+class SnackRetailScopeTests(unittest.TestCase):
+    def test_snack_retail_is_not_food_manufacturing(self):
+        self.assertEqual(sector_for('万辰集团跌超7%20261019', '量贩龙头同店和新店爬坡'), '零售与消费出海')
+        self.assertIsNone(sector_for('保龄宝代糖需求更新', '餐饮客户订单增长'))
+
 if __name__=='__main__':unittest.main()
+

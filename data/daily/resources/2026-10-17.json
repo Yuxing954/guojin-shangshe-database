@@ -5,8 +5,8 @@
   "cutoff": "2026-10-17T16:00:00+08:00",
   "sourceThrough": "2026-10-17T19:18:50.750+0800",
   "attachmentCatalog": {
-    "generatedAt": "2026-10-18T17:45:30.647+08:00",
-    "sourceThrough": "2026-10-18T17:31:15.291+0800",
+    "generatedAt": "2026-10-19T08:36:17.827Z",
+    "sourceThrough": "2026-10-19T15:27:06.989+0800",
     "scan": {
       "observedAt": "2026-10-18T17:45:30.647+08:00",
       "sourceGroup": "88888142214212",
@@ -46,7 +46,9 @@
     },
     "coverageStatus": "complete",
     "requestedWindowStart": "2026-10-16T16:00:00+08:00",
-    "requestedCutoff": "2026-10-17T16:00:00+08:00"
+    "requestedCutoff": "2026-10-17T16:00:00+08:00",
+    "scanReceiptFile": "data/daily/resources/2026-10-17.json",
+    "usedHistoricalScan": true
   },
   "groups": {
     "segments": [
@@ -67,6 +69,30 @@
     "audio": [],
     "reports": [
       {
+        "id": "zsxq-file-412828152848118",
+        "title": "中国消费：关注估值有吸引力、持仓拥挤度低、流动性好且现金回报高的股票-China Consumer Attractively Valued  Less-Crowded Stocks with Good Liquidity  High Cash Return.pdf",
+        "publishedAt": "2026-10-17T14:18:32.059000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/82258221511214842",
+        "status": "仅标题登记",
+        "sector": ""
+      },
+      {
+        "id": "zsxq-file-814848122114542",
+        "title": "超跌商社消费股梳理汇报20261016.pdf",
+        "publishedAt": "2026-10-17T12:51:22.810000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/22258221511582411",
+        "status": "仅标题登记",
+        "sector": ""
+      },
+      {
+        "id": "zsxq-file-214848122114541",
+        "title": "资金再均衡下商社投资机会20261016.pdf",
+        "publishedAt": "2026-10-17T12:51:22.810000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/22258221511582411",
+        "status": "仅标题登记",
+        "sector": ""
+      },
+      {
         "id": "zsxq-file-584141855885444",
         "title": "美妆双十一跟踪-大促首日美妆节表现拆析20261016.pdf",
         "publishedAt": "2026-10-17T12:50:50.425000+08:00",
@@ -78,9 +104,9 @@
   },
   "policy": "仅依据已入库元数据列出标题、发布时间和来源主题；未下载、读取或转写附件，不把研究报告标为纪要。",
   "attachmentBackfill": {
-    "at": "2026-10-19T16:08:00+08:00",
+    "at": "2026-10-19T18:15:39+08:00",
     "originalCutoff": "2026-10-17T16:00:00+08:00",
-    "indexGeneratedAt": "2026-10-18T17:45:30.647+08:00",
-    "previousIndexGeneratedAt": "2026-10-17T16:33:06.220+08:00"
+    "indexGeneratedAt": "2026-10-19T08:36:17.827Z",
+    "previousIndexGeneratedAt": "2026-10-18T17:45:30.647+08:00"
   }
 }

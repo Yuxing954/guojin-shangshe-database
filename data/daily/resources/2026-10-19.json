@@ -1,28 +1,27 @@
 {
   "schemaVersion": 2,
   "date": "2026-10-19",
-  "windowStart": "2026-10-16T16:00:00+08:00",
-  "cutoff": "2026-10-19T16:00:00+08:00",
-  "sourceThrough": "2026-10-19T15:02:53.462+0800",
+  "windowStart": "2026-10-16T18:00:00+08:00",
+  "cutoff": "2026-10-19T18:00:00+08:00",
+  "sourceThrough": "2026-10-19T17:08:54.375+0800",
   "attachmentCatalog": {
-    "generatedAt": "2026-10-18T17:45:30.647+08:00",
-    "sourceThrough": "2026-10-18T17:31:15.291+0800",
+    "generatedAt": "2026-10-19T08:36:17.827Z",
+    "sourceThrough": "2026-10-19T15:27:06.989+0800",
     "scan": {
-      "observedAt": "2026-10-18T17:45:30.647+08:00",
+      "observedAt": "2026-10-19T08:36:17.827Z",
       "sourceGroup": "88888142214212",
       "sourceName": "水木调研纪要-2.0",
-      "topicsScanned": 407,
-      "topicsInWindow": 383,
-      "topicPages": 14,
-      "topicWindowFrom": "2026-10-16T00:00:00+0800",
-      "topicWindowTo": "2026-10-18T17:31:15.291+0800",
+      "topicsScanned": 510,
+      "topicsInWindow": 474,
+      "topicPages": 17,
+      "topicWindowFrom": "2026-10-17T00:00:00+08:00",
+      "topicWindowTo": "2026-10-19T15:27:06.989+0800",
       "boundaryReachedBeforeWindow": true,
-      "attachmentsObserved": 201,
-      "uniqueFileIds": 201,
+      "attachmentsObserved": 278,
+      "uniqueFileIds": 278,
       "duplicateFileIds": 0,
-      "newRecords": 34,
-      "existingRecordsRefreshed": 167,
-      "occurrenceRecordsAdded": 0,
+      "newRecords": 191,
+      "existingRecordsRefreshed": 87,
       "attachmentContentRead": false,
       "sourceMetadataFields": [
         "fileId",
@@ -30,26 +29,31 @@
         "filename",
         "extension",
         "bytes",
-        "attachmentCreatedAt",
+        "fileCreatedAt",
         "topicCreatedAt",
         "durationSeconds",
         "downloadCount",
         "sourceHash",
-        "source",
-        "sourceUrl"
+        "source"
       ],
-      "windowStart": "2026-10-16T00:00:00+0800",
-      "windowEnd": "2026-10-18T17:45:30.647+08:00",
-      "windowEndDate": "2026-10-18",
+      "windowStart": "2026-10-17T00:00:00+08:00",
+      "windowEnd": "2026-10-19T08:36:17.827Z",
+      "windowEndDate": "2026-10-19",
       "windowComplete": true,
       "archiveHasMore": true
     },
     "coverageStatus": "pending",
-    "requestedWindowStart": "2026-10-16T16:00:00+08:00",
-    "requestedCutoff": "2026-10-19T16:00:00+08:00"
+    "requestedWindowStart": "2026-10-16T18:00:00+08:00",
+    "requestedCutoff": "2026-10-19T18:00:00+08:00"
   },
   "groups": {
     "segments": [
+      {
+        "title": "万辰集团跌超7%20261019",
+        "publishedAt": "2026-10-19T17:07:55.904000+08:00",
+        "sector": "零售与消费出海",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/55521544118884284"
+      },
       {
         "title": "【国金商社】9月社零：总量边际回暖超预期，结构剧烈分化",
         "publishedAt": "2026-10-19T13:22:12.908000+08:00",
@@ -103,17 +107,84 @@
         "publishedAt": "2026-10-17T11:22:59.904000+08:00",
         "sector": "零售与消费出海",
         "url": "https://wx.zsxq.com/group/88888142214212/topic/45548551412588128"
-      },
-      {
-        "title": "长江三峡游轮行业9月数据跟踪",
-        "publishedAt": "2026-10-16T17:31:11.765000+08:00",
-        "sector": "酒店旅游",
-        "url": "https://wx.zsxq.com/group/88888142214212/topic/14425448245441842"
       }
     ],
     "minutes": [],
-    "audio": [],
+    "audio": [
+      {
+        "id": "zsxq-file-814842554141542",
+        "title": "消费行业底部推荐20261015.mp3",
+        "publishedAt": "2026-10-19T01:02:30.042000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/45548525181458588",
+        "status": "未转写",
+        "sector": "other"
+      }
+    ],
     "reports": [
+      {
+        "id": "zsxq-file-214842528848251",
+        "title": "消费价值凸显20261018.pdf",
+        "publishedAt": "2026-10-19T12:30:05.827000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/45548522848522488",
+        "status": "仅标题登记",
+        "sector": "other"
+      },
+      {
+        "id": "zsxq-file-214842528845111",
+        "title": "消费行业高股息标的梳理20261018.pdf",
+        "publishedAt": "2026-10-19T12:29:39.710000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/45548522848528288",
+        "status": "仅标题登记",
+        "sector": "other"
+      },
+      {
+        "id": "zsxq-file-412825444855848",
+        "title": "2026Q3消费业绩前瞻分析20261018.pdf",
+        "publishedAt": "2026-10-18T21:55:09.520000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/82258242152228142",
+        "status": "仅标题登记",
+        "sector": "other"
+      },
+      {
+        "id": "zsxq-file-814842555822512",
+        "title": "关注低预期下边际改善的商社标的20261018.pdf",
+        "publishedAt": "2026-10-18T21:55:09.520000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/82258242152228142",
+        "status": "仅标题登记",
+        "sector": "other"
+      },
+      {
+        "id": "zsxq-file-181515812854142",
+        "title": "中国消费：黄金周现实检验-专家电话会要点-China Consumer_ Expert Call Takeaways - Golden Week Reality Check.pdf",
+        "publishedAt": "2026-10-17T19:14:55.354000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/55521545412812844",
+        "status": "仅标题登记",
+        "sector": "other"
+      },
+      {
+        "id": "zsxq-file-412828152848118",
+        "title": "中国消费：关注估值有吸引力、持仓拥挤度低、流动性好且现金回报高的股票-China Consumer Attractively Valued  Less-Crowded Stocks with Good Liquidity  High Cash Return.pdf",
+        "publishedAt": "2026-10-17T14:18:32.059000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/82258221511214842",
+        "status": "仅标题登记",
+        "sector": ""
+      },
+      {
+        "id": "zsxq-file-814848122114542",
+        "title": "超跌商社消费股梳理汇报20261016.pdf",
+        "publishedAt": "2026-10-17T12:51:22.810000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/22258221511582411",
+        "status": "仅标题登记",
+        "sector": ""
+      },
+      {
+        "id": "zsxq-file-214848122114541",
+        "title": "资金再均衡下商社投资机会20261016.pdf",
+        "publishedAt": "2026-10-17T12:51:22.810000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/22258221511582411",
+        "status": "仅标题登记",
+        "sector": ""
+      },
       {
         "id": "zsxq-file-584141855885444",
         "title": "美妆双十一跟踪-大促首日美妆节表现拆析20261016.pdf",

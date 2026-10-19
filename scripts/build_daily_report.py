@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build a dated 16:00 Asia/Shanghai digest; see docs/daily-report.md."""
+"""Build a dated Asia/Shanghai digest; see docs/daily-report.md."""
 import argparse, csv, datetime as dt, hashlib, json, re, subprocess
 from pathlib import Path
 from daily_scope import sector_for,title_for,published_for
@@ -19,6 +19,10 @@ def inside(value,end,hours):
 
 def window_hours(end):
     return 72 if end.astimezone(TZ).weekday()==0 else 24
+
+def scheduled_cutoff(date):
+    hour = 18 if date >= dt.date(2026, 10, 19) else 16
+    return dt.datetime.combine(date, dt.time(hour), TZ)
 
 def read(path,default=None):
     p=ROOT/path
@@ -101,10 +105,13 @@ def build(end):
     return {'schemaVersion':1,'date':end.date().isoformat(),'cutoff':end.isoformat(),'windowStart':(end-dt.timedelta(hours=window_hours(end))).isoformat(),'windowHours':window_hours(end),'industryWindowHours':24,'industryWindowStart':(end-dt.timedelta(hours=24)).isoformat(),'industryWindowEnd':end.isoformat(),'generatedAt':dt.datetime.now(TZ).isoformat(timespec='seconds'),'sections':sections,'coverage':{'researchSourceTo':read('data/research/updates/manifest.json',{}).get('coverageTo'),'newsCheckedAt':feed.get('checkedAt'),'newsStatus':feed.get('status','未核验'),'excludedResearchRows':excluded},'notes':['重要数据仅按截点前24小时真实发布时间筛选；入库时间不替代发布时间。','段子、市场观点按原始发布时间筛选新增窗口（周一72小时、其他日24小时）；全部符合范围的内容供AI逐篇编辑。','新闻仅收录已核验原文、分钟级发布时间及来源链接的记录；空栏不代表市场没有新闻。','每日16:00北京时间截点；自动任务启动、检索和发布可能延迟。']}
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--date'); a=p.parse_args(); now=dt.datetime.now(TZ)
-    end=dt.datetime.combine(dt.date.fromisoformat(a.date) if a.date else now.date(),dt.time(16),TZ)
-    if not a.date and now<end:end-=dt.timedelta(days=1)
+    p=argparse.ArgumentParser();p.add_argument('--date');p.add_argument('--cutoff'); a=p.parse_args(); now=dt.datetime.now(TZ)
+    date=dt.date.fromisoformat(a.date) if a.date else now.date()
+    end=stamp(a.cutoff) if a.cutoff else scheduled_cutoff(date)
+    if not end or (a.date and end.date()!=date):p.error('Cutoff must be valid and match --date')
+    if not a.date and not a.cutoff and now<end:end=scheduled_cutoff(date-dt.timedelta(days=1))
     report=build(end); folder=ROOT/'data/daily';folder.mkdir(exist_ok=True)
+    report['notes'][-1]=f'北京时间{end:%H:%M}截点；自动任务启动、检索和发布可能延迟。'
     for name in [report['date']+'.json','latest.json']:(folder/name).write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
     dates=sorted([p.stem for p in folder.glob('????-??-??.json')],reverse=True)
     (folder/'index.json').write_text(json.dumps({'dates':dates},ensure_ascii=False,indent=2)+'\n')

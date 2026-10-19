@@ -2,7 +2,7 @@ import argparse, datetime as dt, json, hashlib
 from pathlib import Path
 from hydrate_daily_originals import normalize_url,corpus
 from daily_scope import is_ecommerce_topic
-from build_daily_report import stamp,ROOT,window_hours
+from build_daily_report import stamp,ROOT,window_hours,scheduled_cutoff
 
 def validate_industry_updates(d):
  if d.get('industryWindowHours')!=24:return  # Preserve historical snapshots.
@@ -66,7 +66,7 @@ def validate(d):
  validate_announcement_monitoring(d)
  assert d['schemaVersion']==2,'Expected editorial v2'
  cutoff=stamp(d['cutoff']);assert cutoff and cutoff.date().isoformat()==d['date']
- if (cutoff.hour,cutoff.minute)!=(16,0):
+ if cutoff!=scheduled_cutoff(cutoff.date()):
   assert d.get('cutoffOverride',{}).get('requestedBy')=='user' and d['cutoffOverride'].get('reason'),'Nonstandard cutoff requires explicit user request'
  assert cutoff.second==0,'Cutoff must be a whole minute'
  assert d['headline'] and len(d['headline'])<=100
