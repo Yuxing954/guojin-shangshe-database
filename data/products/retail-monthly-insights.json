@@ -1,0 +1,713 @@
+{
+  "checkedAt": "2026-10-19",
+  "months": {
+    "2026-09": {
+      "source": {
+        "id": "retail-2026-09",
+        "title": "2026年1—9月份社会消费品零售总额增长1.1%",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202610/t20261019_1965614.html",
+        "publisher": "国家统计局",
+        "publishedAt": "2026-10-19",
+        "checkedAt": "2026-10-19",
+        "quality": "official",
+        "period": "2026-09",
+        "htmlSha256": "b27d0c8aa542541828c90f42953d0e2011eeb4e7552671f15aa1ada6202cb5b6"
+      },
+      "observations": [
+        {
+          "indicatorId": "retail",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "month",
+          "value": 42433,
+          "yoy": 1.1,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "retail",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "ytd",
+          "value": 370001,
+          "yoy": 1.1,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "retail_ex_auto",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "month",
+          "value": 38792,
+          "yoy": 3.9,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "retail_ex_auto",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "ytd",
+          "value": 340574,
+          "yoy": 2.8,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "above_total",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "month",
+          "value": 16873,
+          "yoy": -2.1,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "above_total",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "ytd",
+          "value": 140387,
+          "yoy": -1.5,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "retail_urban",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "month",
+          "value": 36077,
+          "yoy": 0.8,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "retail_urban",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "ytd",
+          "value": 319820,
+          "yoy": 0.9,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "retail_rural",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "month",
+          "value": 6356,
+          "yoy": 2.7,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "retail_rural",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "ytd",
+          "value": 50181,
+          "yoy": 2.3,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "catering",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "month",
+          "value": 4603,
+          "yoy": 2.1,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "catering",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "ytd",
+          "value": 41969,
+          "yoy": 2.4,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "above_catering",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "month",
+          "value": 1413,
+          "yoy": 2,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "above_catering",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "ytd",
+          "value": 12528,
+          "yoy": 1.3,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "goods",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "month",
+          "value": 37830,
+          "yoy": 1,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "goods",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "ytd",
+          "value": 328032,
+          "yoy": 1,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "above_goods",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "month",
+          "value": 15460,
+          "yoy": -2.5,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "above_goods",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "ytd",
+          "value": 127859,
+          "yoy": -1.8,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "category_0",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "month",
+          "value": 2224,
+          "yoy": 6.7,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "category_0",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "ytd",
+          "value": 17738,
+          "yoy": 6.8,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "category_1",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "month",
+          "value": 304,
+          "yoy": 5,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "category_1",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "ytd",
+          "value": 2444,
+          "yoy": 5.4,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "category_2",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "month",
+          "value": 663,
+          "yoy": 13.8,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "category_2",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "ytd",
+          "value": 5105,
+          "yoy": 12.6,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "category_3",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "month",
+          "value": 1213,
+          "yoy": 1.2,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "category_3",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "ytd",
+          "value": 10824,
+          "yoy": 4.6,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "category_4",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "month",
+          "value": 390,
+          "yoy": 5.4,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "category_4",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "ytd",
+          "value": 3491,
+          "yoy": 6.1,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "category_5",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "month",
+          "value": 258,
+          "yoy": -9.6,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "category_5",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "ytd",
+          "value": 2620,
+          "yoy": -2.4,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "category_6",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "month",
+          "value": 748,
+          "yoy": 4.1,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "category_6",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "ytd",
+          "value": 6447,
+          "yoy": 3.8,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "category_7",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "month",
+          "value": 143,
+          "yoy": -1.1,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "category_7",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "ytd",
+          "value": 1281,
+          "yoy": -3.4,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "category_8",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "month",
+          "value": 881,
+          "yoy": 1.9,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "category_8",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "ytd",
+          "value": 8105,
+          "yoy": -4.9,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "category_9",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "month",
+          "value": 648,
+          "yoy": 5,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "category_9",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "ytd",
+          "value": 5410,
+          "yoy": 4,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "category_10",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "month",
+          "value": 474,
+          "yoy": 7.9,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "category_10",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "ytd",
+          "value": 3785,
+          "yoy": 6.2,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "category_11",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "month",
+          "value": 161,
+          "yoy": -3,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "category_11",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "ytd",
+          "value": 1306,
+          "yoy": -4.7,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "category_12",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "month",
+          "value": 1062,
+          "yoy": 31.1,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "category_12",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "ytd",
+          "value": 8123,
+          "yoy": 18.1,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "category_13",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "month",
+          "value": 1859,
+          "yoy": -0.8,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "category_13",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "ytd",
+          "value": 15878,
+          "yoy": -5.5,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "category_14",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "month",
+          "value": 3641,
+          "yoy": -21.2,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "category_14",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "ytd",
+          "value": 29427,
+          "yoy": -14.9,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "category_15",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "month",
+          "value": 105,
+          "yoy": -9.2,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "category_15",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "ytd",
+          "value": 874,
+          "yoy": -9.7,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "online_goods",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "ytd",
+          "value": 95060,
+          "yoy": 3.8,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "online_total",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "ytd",
+          "value": 151471,
+          "yoy": 4.4,
+          "updatedAt": "2026-10-19"
+        },
+        {
+          "indicatorId": "online_services",
+          "sourceId": "retail-2026-09",
+          "period": "2026-09",
+          "endDate": "2026-09-30",
+          "frequency": "monthly",
+          "basis": "ytd",
+          "value": 56411,
+          "yoy": 5.3,
+          "updatedAt": "2026-10-19"
+        }
+      ],
+      "references": [
+        {
+          "id": "economy-2026-q3",
+          "title": "前三季度经济运行总体平稳　高质量发展取得新成效",
+          "url": "https://www.stats.gov.cn/sj/zxfb/202610/t20261019_1965618.html",
+          "publisher": "国家统计局",
+          "publishedAt": "2026-10-19",
+          "quality": "official",
+          "htmlSha256": "1bfb05afd5f4eeb5818bd20d5ff9adda3eb3d6e7ad55420ae95888e6d399a3c5"
+        },
+        {
+          "id": "retail-2026-08",
+          "title": "2026年1—8月份社会消费品零售总额增长1.1%",
+          "url": "https://www.stats.gov.cn/sj/zxfb/202609/t20260915_1965311.html",
+          "publisher": "国家统计局",
+          "publishedAt": "2026-09-15",
+          "quality": "official"
+        }
+      ],
+      "interpretationStatus": "截至2026-10-19本次核验，官方消费专题解读目录最新为1—8月。本期点评为基于9月数据及前三季度经济运行发布稿的研究整理，不冒充统计局专题解读。",
+      "commentSections": [
+        {
+          "title": "总量边际回暖，结构明显分化",
+          "text": "9月社零同比+1.1%，较8月加快0.7pct；季调环比+0.35%，较修订后的8月-0.16%改善，1—9月累计同比+1.1%。剔除汽车后，9月社零同比+3.9%，高于整体增速2.8pct，非汽车消费表现明显更好。单月回暖已体现，但累计增速尚未抬升，消费修复仍有分化。"
+        },
+        {
+          "title": "餐饮好于商品，乡村好于城镇",
+          "text": "9月餐饮收入同比+2.1%，高于商品零售的+1.0%；限额以上餐饮同比+2.0%，较8月-0.7%由负转正，餐饮边际改善。乡村零售同比+2.7%，明显快于城镇的+0.8%；1—9月乡村累计增长2.3%，亦高于城镇的0.9%，下沉市场保持相对韧性。"
+        },
+        {
+          "title": "可选品结构性分化",
+          "text": "9月限额以上通讯器材零售额同比+31.1%，1—9月累计+18.1%，延续较快增长；烟酒同比+13.8%、文化办公用品+7.9%、化妆品+5.4%、中西药品+5.0%。服装鞋帽针纺织品同比+1.2%，增速仍偏低。通讯器材表现突出，后续可关注新品周期及AI终端换机需求的持续性，具体驱动仍需结合品牌与渠道数据验证。"
+        },
+        {
+          "title": "汽车继续承压，地产链边际分化",
+          "text": "9月汽车类零售额同比-21.2%，降幅较8月-18.5%扩大2.7pct，持续压制社零整体表现。家电类同比+1.9%，延续正增长，但较8月+2.3%略放缓，1—9月累计仍为-4.9%；以旧换新相关需求的延续性值得跟踪。家具-3.0%、建材-9.2%，降幅较8月分别收窄4.9pct、2.6pct，地产后周期消费仍在低位修复。"
+        },
+        {
+          "title": "珠宝降幅收窄，修复持续性仍需跟踪",
+          "text": "9月金银珠宝类零售额同比-9.6%，较8月-17.5%收窄7.9pct，边际改善较明显；1—9月累计同比-2.4%。本期回升为后续终端动销提供积极观察信号，但单月名义零售额改善尚不能确认高金价影响已经消退，仍需跟踪销量、客单价和门店表现。"
+        },
+        {
+          "title": "业态分化延续，关注调改与性价比",
+          "text": "1—9月累计看，便利店+5.2%、超市+4.1%保持稳健；百货店-2.9%、专业店-2.2%、品牌专卖店-10.3%持续承压。研究上继续关注调改及性价比业态，重点验证商品力改善能否带动客流与同店恢复，并最终体现为盈利改善。"
+        },
+        {
+          "title": "网上商品增长放缓，服务消费仍是亮点",
+          "text": "1—9月网上商品和服务零售额同比+4.4%，其中网上商品+3.8%，较1—8月回落0.5pct。网上商品中，吃类+15.8%、穿类+3.4%、用类+0.8%，吃类表现突出；网上服务+5.3%，较1—8月加快0.2pct。线上商品与服务继续分化，服务消费保持相对较强表现。"
+        },
+        {
+          "title": "欢迎联系国金商社",
+          "text": "于健 15821682853 / 谷亦清 / 代宇星"
+        }
+      ],
+      "seasonallyAdjustedMom": [
+        {
+          "period": "2025-09",
+          "value": -0.1
+        },
+        {
+          "period": "2025-10",
+          "value": 0.15
+        },
+        {
+          "period": "2025-11",
+          "value": -0.1
+        },
+        {
+          "period": "2025-12",
+          "value": -0.03
+        },
+        {
+          "period": "2026-01",
+          "value": 0.22
+        },
+        {
+          "period": "2026-02",
+          "value": 0.35
+        },
+        {
+          "period": "2026-03",
+          "value": 0.12
+        },
+        {
+          "period": "2026-04",
+          "value": -0.26
+        },
+        {
+          "period": "2026-05",
+          "value": -0.09
+        },
+        {
+          "period": "2026-06",
+          "value": 0.4
+        },
+        {
+          "period": "2026-07",
+          "value": 0.11
+        },
+        {
+          "period": "2026-08",
+          "value": -0.16
+        },
+        {
+          "period": "2026-09",
+          "value": 0.35
+        }
+      ],
+      "seasonallyAdjustedMomSourceId": "retail-2026-09",
+      "editorialBasis": "按用户提供的国金商社9月社零段子改写；核对8月和9月官方数据。未采用无一致预期来源的“超预期”，不把除汽车增速差当作贡献；修正家电“转正”，驱动及金价拐点保留研究观察语气。"
+    }
+  }
+}
