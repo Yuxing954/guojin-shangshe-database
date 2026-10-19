@@ -2,6 +2,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
 const root=path.resolve(__dirname,'..'),read=p=>JSON.parse(fs.readFileSync(path.join(root,p),'utf8')),M=require('../scripts/overseas-hotels-model.js'),U=require('../scripts/site-ui.js');
 const manifest=read('data/companies/overseas-hotels.json'),companies=manifest.companies.map(c=>read(c.file));
 assert.equal(companies.length,4);assert.deepEqual(U.pages['overseas-hotels.html'],['companies','海外酒店']);
+assert.deepEqual(U.pages['overseas-hotel-comparison.html'],['companies','海外酒店公司对比']);
 const ops=companies.flatMap(c=>c.operating),fin=companies.flatMap(c=>c.finance);
 assert.equal(ops.length,612);assert.equal(fin.length,360);assert.equal(new Set(ops.map(r=>r.id)).size,612);assert.equal(new Set(fin.map(r=>r.id)).size,360);
 assert.equal(ops.filter(r=>r.mode==='单季度').length,306);assert.equal(ops.filter(r=>r.values.some(v=>v===null)).length,24);
