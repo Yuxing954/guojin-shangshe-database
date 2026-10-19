@@ -33,5 +33,13 @@
   addEventListener('resize',queue);addEventListener('hashchange',queue);addEventListener('pageshow',queue);
   addEventListener('pagehide',()=>window.parent.postMessage({type:'industry-panel',state:'loading',navigation:true},location.origin));
   queue();
+
+  document.addEventListener('click',event=>{
+    const link=event.target.closest('.hd-tabs a[href]');if(!link||event.button!==0||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;
+    const url=new URL(link.href,location.href);if(url.origin!==location.origin)return;
+    const file=url.pathname.split('/').pop();if(!['hotel-dashboard.html','hotel-holiday-dashboard.html','hotel-groups.html'].includes(file))return;
+    const view=file==='hotel-groups.html'?'groups':file==='hotel-holiday-dashboard.html'?'holiday':new URLSearchParams(url.hash.slice(1)).get('view')||'overview';
+    event.preventDefault();event.stopImmediatePropagation();parent.postMessage({type:'hotel-view',view},location.origin);
+  },true);
   document.addEventListener('click',event=>{const link=event.target.closest('a[href]');if(!link||link.target==='_blank'||link.hasAttribute('download'))return;const url=new URL(link.href,location.href);if(url.origin!==location.origin||url.pathname===location.pathname&&url.hash)return;link.target='_top';});
 })();
