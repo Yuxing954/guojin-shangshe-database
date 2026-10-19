@@ -4,29 +4,27 @@
   "windowStart": "2026-10-17T16:00:00+08:00",
   "cutoff": "2026-10-18T16:00:00+08:00",
   "sourceSnapshot": {
-    "commit": "b1bee34164b1530d14b58be97c800da157c15678",
-    "libraryBlob": "cc8807c367545a0ae68ff2450c12cf33d6878624",
-    "manifestBlob": "b61ed0492b180ee52708de8d97f608119fac7dde",
+    "commit": "af5633dbe9088c3a292efefd3b6cec90d5821e92",
+    "libraryBlob": "b8ebef27b487500e63e10f86057b8a43a08876dd",
+    "manifestBlob": "e1fad5e180058e1595b95ec07a2624670e4763d7",
     "coverageBlob": "ce3dff7e251d402aee59c62cd29c82c64270f2ba",
     "scan": {
-      "observedAt": "2026-10-17T16:33:06.220+08:00",
+      "observedAt": "2026-10-18T17:45:30.647+08:00",
       "sourceGroup": "88888142214212",
       "sourceName": "水木调研纪要-2.0",
-      "topicsScanned": 510,
-      "topicsInWindow": 489,
-      "topicPages": 17,
-      "topicWindowFrom": "2026-10-15T00:00:00+0800",
-      "topicWindowTo": "2026-10-17T15:58:34.944+0800",
+      "topicsScanned": 407,
+      "topicsInWindow": 383,
+      "topicPages": 14,
+      "topicWindowFrom": "2026-10-16T00:00:00+0800",
+      "topicWindowTo": "2026-10-18T17:31:15.291+0800",
       "boundaryReachedBeforeWindow": true,
-      "attachmentsObserved": 312,
-      "uniqueFileIds": 307,
-      "duplicateFileIds": 5,
-      "newRecords": 60,
-      "existingRecordsRefreshed": 247,
+      "attachmentsObserved": 201,
+      "uniqueFileIds": 201,
+      "duplicateFileIds": 0,
+      "newRecords": 34,
+      "existingRecordsRefreshed": 167,
       "occurrenceRecordsAdded": 0,
       "attachmentContentRead": false,
-      "windowComplete": true,
-      "archiveHasMore": true,
       "sourceMetadataFields": [
         "fileId",
         "topicId",
@@ -41,121 +39,119 @@
         "source",
         "sourceUrl"
       ],
-      "windowStart": "2026-10-15T00:00:00+0800",
-      "windowEnd": "2026-10-17T16:33:06.220+08:00",
-      "windowEndDate": "2026-10-17"
+      "windowStart": "2026-10-16T00:00:00+0800",
+      "windowEnd": "2026-10-18T17:45:30.647+08:00",
+      "windowEndDate": "2026-10-18",
+      "windowComplete": true,
+      "archiveHasMore": true
     }
   },
   "researchCoverage": {
-    "sourceThrough": "2026-10-17T19:18:50.750+0800",
-    "syncedAt": "2026-10-17T16:57:14Z",
-    "status": "cutoff_not_confirmed",
+    "sourceThrough": "2026-10-19T15:02:53.462+0800",
+    "syncedAt": "2026-10-19T07:07:31.624Z",
+    "status": "complete_for_original_cutoff",
     "lastRun": {
-      "runId": "2026-10-18-0057",
+      "runId": "2026-10-19-150229",
       "sourceGroup": "88888142214212",
       "sourceName": "水木调研纪要-2.0",
-      "previousCoverageTo": "2026-10-17T18:50:25.449+0800",
-      "coverageTo": "2026-10-17T19:18:50.750+0800",
-      "oldestFetched": "2026-10-17T14:11:33.790+0800",
-      "sourceTopicsFetched": 30,
-      "pageRowsFetched": 30,
-      "uniquePageTopics": 30,
-      "sourceTopicsInCoverage": 6,
+      "previousCoverageTo": "2026-10-19T12:53:49.320+0800",
+      "coverageTo": "2026-10-19T15:02:53.462+0800",
       "added": {
-        "views": 0,
-        "all_views": 0
+        "views": 2,
+        "all_views": 24
+      },
+      "updated": 0,
+      "expiredRemoved": 0,
+      "sourceTopicIds": [
+        "82258244888421112",
+        "45548522888521218",
+        "14425411555458552",
+        "45548522888581428",
+        "82258244888284522",
+        "45548522888444218",
+        "45548522888444288",
+        "45548522884112228",
+        "55521544112884414",
+        "55521544112282854",
+        "22258244885544851",
+        "55521544112225824",
+        "82258244851125152",
+        "82258244851418522",
+        "45548522841214428",
+        "82258244851441422",
+        "22258244851482421",
+        "22258244851482511",
+        "45548522841284188",
+        "14425411528152582",
+        "14425411524848142",
+        "45548522845152888",
+        "55521544125855444",
+        "82258244852188452",
+        "82258244852185282",
+        "45548522845545428"
+      ],
+      "duplicateTopicIds": [],
+      "briefChanges": {
+        "added": 2,
+        "updated": 0,
+        "expiredRemoved": 0
       },
       "duplicates": 0,
-      "duplicateTopicIds": [],
       "excludedTopics": [
         {
-          "topicId": "82258242485115882",
-          "createdAt": "2026-10-17T19:18:50.750+0800",
-          "reason": "正文仅附件标签占位；未读取附件内容，无法确认市场观点"
+          "topicId": "14425411555552142",
+          "reason": "与此前已读取并归档的抖音专家会、安琪及牧业观点或钧达更新内容重复，仅格式及表情变化，无新增论点"
         },
         {
-          "topicId": "82258242485188852",
-          "createdAt": "2026-10-17T19:15:30.659+0800",
-          "reason": "正文仅附件标签占位；未读取附件内容，无法确认市场观点"
+          "topicId": "45548522884415518",
+          "reason": "仅标题，没有可读取观点正文"
         },
         {
-          "topicId": "55521545412812844",
-          "createdAt": "2026-10-17T19:14:55.354+0800",
-          "reason": "正文仅附件标签占位；未读取附件内容，无法确认市场观点"
+          "topicId": "82258244885515222",
+          "reason": "仅标题，没有可读取观点正文"
         },
         {
-          "topicId": "14425414152821412",
-          "createdAt": "2026-10-17T19:08:44.919+0800",
-          "reason": "正文仅附件标签占位；未读取附件内容，无法确认市场观点"
+          "topicId": "55521544128418214",
+          "reason": "与此前已读取并归档的抖音专家会、安琪及牧业观点或钧达更新内容重复，仅格式及表情变化，无新增论点"
         },
         {
-          "topicId": "55521545412825584",
-          "createdAt": "2026-10-17T19:07:51.150+0800",
-          "reason": "正文仅附件标签占位；未读取附件内容，无法确认市场观点"
-        },
-        {
-          "topicId": "45548525284145458",
-          "createdAt": "2026-10-17T19:06:36.141+0800",
-          "reason": "正文仅附件标签占位；未读取附件内容，无法确认市场观点"
+          "topicId": "55521544125828454",
+          "reason": "与此前已读取并归档的抖音专家会、安琪及牧业观点或钧达更新内容重复，仅格式及表情变化，无新增论点"
         }
       ],
-      "files": {
-        "views": [],
-        "all_views": []
-      },
       "pagination": {
-        "pages": 1,
+        "pages": 2,
+        "pageRowsFetched": 60,
         "limit": 30,
-        "nextEndTimes": [
-          "2026-10-17T14:11:33.790+0800"
-        ],
-        "uniquePageTopics": 30,
-        "overlapTopicIds": [],
-        "stoppedWhenPageReachedCoverage": true,
-        "coverageBoundarySeen": "2026-10-17T14:11:33.790+0800"
+        "stoppedWhenPageReachedCoverage": true
       },
       "dedupCheck": {
-        "algorithm": "scripts/build_research_shards.py keys(row)",
-        "candidateKeys": 0,
-        "candidateBuckets": 0,
-        "duplicateKeys": 0,
-        "duplicateTopicIds": []
+        "candidateKeys": 124,
+        "candidateBuckets": 94,
+        "algorithm": "sha256-utf8-v1"
       },
-      "briefChanges": {
-        "added": 0,
-        "updated": 0,
-        "expiredRemoved": 4
-      },
-      "expiredBriefIds": [
-        "hanshow-smart-retail-20261015",
-        "huiquan-beer-channel-upgrade-20261015",
-        "jinma-tourism-robots-20261011",
-        "us-holiday-toy-assortment-20261015"
-      ],
-      "notes": "无新增可确认市场观点；6条新主题仅附件占位正文，未读取附件。清理4条早于最近3个北京时间自然日窗口的摘要。"
+      "expiredBriefIds": []
     }
   },
   "attachmentMonitoring": {
-    "status": "pending",
+    "status": "complete",
     "scan": {
-      "observedAt": "2026-10-17T16:33:06.220+08:00",
+      "observedAt": "2026-10-18T17:45:30.647+08:00",
       "sourceGroup": "88888142214212",
       "sourceName": "水木调研纪要-2.0",
-      "topicsScanned": 510,
-      "topicsInWindow": 489,
-      "topicPages": 17,
-      "topicWindowFrom": "2026-10-15T00:00:00+0800",
-      "topicWindowTo": "2026-10-17T15:58:34.944+0800",
+      "topicsScanned": 407,
+      "topicsInWindow": 383,
+      "topicPages": 14,
+      "topicWindowFrom": "2026-10-16T00:00:00+0800",
+      "topicWindowTo": "2026-10-18T17:31:15.291+0800",
       "boundaryReachedBeforeWindow": true,
-      "attachmentsObserved": 312,
-      "uniqueFileIds": 307,
-      "duplicateFileIds": 5,
-      "newRecords": 60,
-      "existingRecordsRefreshed": 247,
+      "attachmentsObserved": 201,
+      "uniqueFileIds": 201,
+      "duplicateFileIds": 0,
+      "newRecords": 34,
+      "existingRecordsRefreshed": 167,
       "occurrenceRecordsAdded": 0,
       "attachmentContentRead": false,
-      "windowComplete": true,
-      "archiveHasMore": true,
       "sourceMetadataFields": [
         "fileId",
         "topicId",
@@ -170,43 +166,41 @@
         "source",
         "sourceUrl"
       ],
-      "windowStart": "2026-10-15T00:00:00+0800",
-      "windowEnd": "2026-10-17T16:33:06.220+08:00",
-      "windowEndDate": "2026-10-17"
+      "windowStart": "2026-10-16T00:00:00+0800",
+      "windowEnd": "2026-10-18T17:45:30.647+08:00",
+      "windowEndDate": "2026-10-18",
+      "windowComplete": true,
+      "archiveHasMore": true
     },
     "attachmentContentRead": false,
-    "downloadCalls": 0,
-    "missingFrom": "2026-10-17T16:33:06.220+08:00",
-    "missingThrough": "2026-10-18T16:00:00+08:00"
+    "downloadCalls": 0
   },
   "resourceSnapshot": {
     "schemaVersion": 2,
     "date": "2026-10-18",
     "windowStart": "2026-10-17T16:00:00+08:00",
     "cutoff": "2026-10-18T16:00:00+08:00",
-    "sourceThrough": "2026-10-17T19:18:50.750+0800",
+    "sourceThrough": "2026-10-19T15:02:53.462+0800",
     "attachmentCatalog": {
-      "generatedAt": "2026-10-17T16:33:06.220+08:00",
-      "sourceThrough": "2026-10-17T15:58:34.944+0800",
+      "generatedAt": "2026-10-18T17:45:30.647+08:00",
+      "sourceThrough": "2026-10-18T17:31:15.291+0800",
       "scan": {
-        "observedAt": "2026-10-17T16:33:06.220+08:00",
+        "observedAt": "2026-10-18T17:45:30.647+08:00",
         "sourceGroup": "88888142214212",
         "sourceName": "水木调研纪要-2.0",
-        "topicsScanned": 510,
-        "topicsInWindow": 489,
-        "topicPages": 17,
-        "topicWindowFrom": "2026-10-15T00:00:00+0800",
-        "topicWindowTo": "2026-10-17T15:58:34.944+0800",
+        "topicsScanned": 407,
+        "topicsInWindow": 383,
+        "topicPages": 14,
+        "topicWindowFrom": "2026-10-16T00:00:00+0800",
+        "topicWindowTo": "2026-10-18T17:31:15.291+0800",
         "boundaryReachedBeforeWindow": true,
-        "attachmentsObserved": 312,
-        "uniqueFileIds": 307,
-        "duplicateFileIds": 5,
-        "newRecords": 60,
-        "existingRecordsRefreshed": 247,
+        "attachmentsObserved": 201,
+        "uniqueFileIds": 201,
+        "duplicateFileIds": 0,
+        "newRecords": 34,
+        "existingRecordsRefreshed": 167,
         "occurrenceRecordsAdded": 0,
         "attachmentContentRead": false,
-        "windowComplete": true,
-        "archiveHasMore": true,
         "sourceMetadataFields": [
           "fileId",
           "topicId",
@@ -221,16 +215,31 @@
           "source",
           "sourceUrl"
         ],
-        "windowStart": "2026-10-15T00:00:00+0800",
-        "windowEnd": "2026-10-17T16:33:06.220+08:00",
-        "windowEndDate": "2026-10-17"
+        "windowStart": "2026-10-16T00:00:00+0800",
+        "windowEnd": "2026-10-18T17:45:30.647+08:00",
+        "windowEndDate": "2026-10-18",
+        "windowComplete": true,
+        "archiveHasMore": true
       },
-      "coverageStatus": "pending",
+      "coverageStatus": "complete",
       "requestedWindowStart": "2026-10-17T16:00:00+08:00",
       "requestedCutoff": "2026-10-18T16:00:00+08:00"
     },
     "groups": {
-      "segments": [],
+      "segments": [
+        {
+          "title": "📈中国化妆品｜双十一观察：头部达人首日直播价格竞争加剧",
+          "publishedAt": "2026-10-18T11:17:15.023000+08:00",
+          "sector": "零售与消费出海",
+          "url": "https://wx.zsxq.com/group/88888142214212/topic/14425414148881512"
+        },
+        {
+          "title": "周末好[太阳]再次推荐关注商社板块投资机会，出口与服务消费仍然高增，且红利股显著低估。",
+          "publishedAt": "2026-10-18T11:12:58.038000+08:00",
+          "sector": "商社综合",
+          "url": "https://wx.zsxq.com/group/88888142214212/topic/45548525251121248"
+        }
+      ],
       "minutes": [],
       "audio": [],
       "reports": []
@@ -5823,37 +5832,371 @@
     "windowEnd": "2026-10-21",
     "calendarFile": "data/earnings-calendar.json",
     "calendarBlob": "f087cb7e2fd013bca9687620f0fa905ca9eaac35",
-    "status": "partial",
+    "status": "calendar_receipts_crosschecked",
     "sources": [
       {
         "url": "https://www3.hkexnews.hk/reports/bmn/ebmn_c.htm",
         "listDate": "2026-10-15",
         "result": "检查已返回预约列表及本地日历，未找到范围内已核实的覆盖公司预约；未将范围外公司凑入。"
       }
+    ],
+    "recheckedAt": "2026-10-19T16:14:00+08:00",
+    "matchedRecords": [
+      {
+        "id": "002033.SZ|2026Q3|formal",
+        "code": "002033.SZ",
+        "period": "2026Q3",
+        "kind": "formal",
+        "documentType": "report",
+        "title": "丽江股份 2026Q3",
+        "expected": "2026-10-20",
+        "actual": "",
+        "announcementDate": "",
+        "url": "",
+        "linkType": "",
+        "sourceId": "choice-mcp",
+        "updatedAt": "2026-10-10T03:51:35.614Z",
+        "reservations": [],
+        "history": [],
+        "evidence": {
+          "receiptFile": "data/earnings-choice-receipts.json",
+          "cells": [
+            {
+              "field": "expected",
+              "indicator": "定期报告预计披露日期",
+              "indicatorId": "100000000007104",
+              "envelope": 0,
+              "table": 0,
+              "row": 4,
+              "column": 1,
+              "value": "2026-10-20",
+              "query": "锦江酒店600754.SH、首旅酒店600258.SH、君亭酒店301073.SZ、中国中免601888.SH、丽江股份002033.SZ、长白山603099.SH、中公教育002607.SZ、华图山鼎300492.SZ、行动教育605098.SH、老凤祥600612.SH、潮宏基002345.SZ、周大生002867.SZ、豫园股份600655.SH、安克创新300866.SZ、小商品城600415.SH、赛维时代301381.SZ、永辉超市601933.SH、重百集团600729.SH、步步高002251.SZ、科锐国际300662.SZ、北京人力600861.SH的2026年三季报定期报告预计披露日期、定期报告实际披露日期。只要日期指标。",
+              "tool": "mx_ashare_finance_data",
+              "checkedAt": "2026-10-10T03:51:35.614Z",
+              "columns": [
+                "定期报告预计披露日期",
+                "2026三季报"
+              ],
+              "rowValues": [
+                "丽江股份(002033.SZ)",
+                "2026-10-20"
+              ],
+              "choiceUrls": [
+                "EM://stockdatacenter?type=browser&modType=STOCK&code=600754.SH,600258.SH,301073.SZ,601888.SH,002033.SZ,603099.SH,002607.SZ,300492.SZ,605098.SH,600612.SH,002345.SZ,002867.SZ,600655.SH,300866.SZ,600415.SH,301381.SZ,601933.SH,600729.SH,002251.SZ,300662.SZ,600861.SH&indId=100000000007104|100:2026-09-30"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "300859.SZ|2026Q3|formal",
+        "code": "300859.SZ",
+        "period": "2026Q3",
+        "kind": "formal",
+        "documentType": "report",
+        "title": "西域旅游 2026Q3",
+        "expected": "2026-10-21",
+        "actual": "",
+        "announcementDate": "",
+        "url": "",
+        "linkType": "",
+        "sourceId": "choice-mcp",
+        "updatedAt": "2026-10-12T02:43:11.905Z",
+        "reservations": [],
+        "history": [],
+        "evidence": {
+          "receiptFile": "data/earnings-choice-expansion-receipts.json",
+          "cells": [
+            {
+              "field": "expected",
+              "indicator": "定期报告预计披露日期",
+              "indicatorId": "100000000007104",
+              "envelope": 2,
+              "table": 0,
+              "row": 9,
+              "column": 1,
+              "value": "2026-10-21",
+              "query": "岭南控股000524.SZ、云南旅游002059.SZ、宋城演艺300144.SZ、中青旅600138.SH、峨眉山Ａ000888.SZ、黄山旅游600054.SH、天目湖603136.SH、众信旅游002707.SZ、三特索道002159.SZ、西域旅游300859.SZ、曲江文旅600706.SH、*ST西旅000610.SZ、南京商旅600250.SH、王府井600859.SH、海南机场600515.SH、海汽集团603069.SH、中国黄金600916.SH、菜百股份605599.SH、迪阿股份301177.SZ、曼卡龙300945.SZ、*ST萃华002731.SZ、明牌珠宝002574.SZ、华凯易佰300592.SZ、吉宏股份002803.SZ、焦点科技002315.SZ、乐歌股份300729.SZ、致欧科技301376.SZ、三态股份301558.SZ、西安饮食000721.SZ、全聚德002186.SZ、家家悦603708.SH、红旗连锁002697.SZ、百联股份600827.SH、银座股份600858.SH、合百集团000417.SZ、武商集团000501.SZ、大商股份600694.SH、居然智家000785.SZ、美凯龙601828.SH、珀莱雅603605.SH、贝泰妮300957.SZ、丸美生物603983.SH、上海家化600315.SH、水羊股份300740.SZ、福瑞达600223.SH、学大教育000526.SZ、传智教育003032.SZ、外服控股600662.SH，只查询2026年三季报定期报告预计披露日期（100000000007104），不查询中报或其它财务指标，附Choice指标链接。",
+              "tool": "mx_ashare_finance_data",
+              "checkedAt": "2026-10-12T02:43:11.905Z",
+              "columns": [
+                "定期报告预计披露日期",
+                "2026三季报",
+                "2025三季报"
+              ],
+              "rowValues": [
+                "西域旅游(300859.SZ)",
+                "2026-10-21",
+                "-"
+              ],
+              "choiceUrls": [
+                "EM://stockdatacenter?type=browser&modType=STOCK&code=000524.SZ,002059.SZ,300144.SZ,600138.SH,000888.SZ,600054.SH,603136.SH,002707.SZ,002159.SZ,300859.SZ,600706.SH,000610.SZ,600250.SH,600859.SH,600515.SH,603069.SH,600916.SH,605599.SH,301177.SZ,300945.SZ,002731.SZ,002574.SZ,300592.SZ,002803.SZ,002315.SZ,300729.SZ,301376.SZ,301558.SZ,000721.SZ,002186.SZ,603708.SH,002697.SZ,600827.SH,600858.SH,000417.SZ,000501.SZ,600694.SH,000785.SZ,601828.SH,603605.SH,300957.SZ,603983.SH,600315.SH,300740.SZ,600223.SH,000526.SZ,003032.SZ,600662.SH&indId=100000000007104|100:2026-09-30,100000000007104|100:2025-09-30"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "recheckSources": [
+      {
+        "url": "https://data.eastmoney.com/stockcalendar/002033.html",
+        "result": "公开检索预约日期与已入库原始回执一致；未发现已披露或取消标记。"
+      },
+      {
+        "url": "https://data.eastmoney.com/stockcalendar/300859.html",
+        "result": "公开检索预约日期与已入库原始回执一致；未发现已披露或取消标记。"
+      }
     ]
   },
-  "publicationStatus": "blocked",
-  "publicationBlockers": [
-    {
-      "type": "attachment_scan_pending",
-      "recoverable": true,
-      "missingFrom": "2026-10-17T16:33:06.220+08:00",
-      "missingThrough": "2026-10-18T16:00:00+08:00",
-      "reason": "最新已完成附件元数据扫描仅至10月17日16:33，本期余下窗口尚无扫描完成回执。"
+  "publicationStatus": "published",
+  "publicationBlockers": [],
+  "publicationDecision": "按原截止恢复待补稿，重新通读2条新增全文并重写三点总结；公告来源未完整返回的检查状态继续保留，不宣称无公告。",
+  "previousBlockedSnapshot": {
+    "sourceSnapshot": {
+      "commit": "b1bee34164b1530d14b58be97c800da157c15678",
+      "libraryBlob": "cc8807c367545a0ae68ff2450c12cf33d6878624",
+      "manifestBlob": "b61ed0492b180ee52708de8d97f608119fac7dde",
+      "coverageBlob": "ce3dff7e251d402aee59c62cd29c82c64270f2ba",
+      "scan": {
+        "observedAt": "2026-10-17T16:33:06.220+08:00",
+        "sourceGroup": "88888142214212",
+        "sourceName": "水木调研纪要-2.0",
+        "topicsScanned": 510,
+        "topicsInWindow": 489,
+        "topicPages": 17,
+        "topicWindowFrom": "2026-10-15T00:00:00+0800",
+        "topicWindowTo": "2026-10-17T15:58:34.944+0800",
+        "boundaryReachedBeforeWindow": true,
+        "attachmentsObserved": 312,
+        "uniqueFileIds": 307,
+        "duplicateFileIds": 5,
+        "newRecords": 60,
+        "existingRecordsRefreshed": 247,
+        "occurrenceRecordsAdded": 0,
+        "attachmentContentRead": false,
+        "windowComplete": true,
+        "archiveHasMore": true,
+        "sourceMetadataFields": [
+          "fileId",
+          "topicId",
+          "filename",
+          "extension",
+          "bytes",
+          "attachmentCreatedAt",
+          "topicCreatedAt",
+          "durationSeconds",
+          "downloadCount",
+          "sourceHash",
+          "source",
+          "sourceUrl"
+        ],
+        "windowStart": "2026-10-15T00:00:00+0800",
+        "windowEnd": "2026-10-17T16:33:06.220+08:00",
+        "windowEndDate": "2026-10-17"
+      }
     },
-    {
-      "type": "research_cutoff_not_confirmed",
-      "recoverable": true,
+    "researchCoverage": {
       "sourceThrough": "2026-10-17T19:18:50.750+0800",
       "syncedAt": "2026-10-17T16:57:14Z",
-      "missingThrough": "2026-10-18T16:00:00+08:00",
-      "reason": "研究增量最近回执为10月18日00:57，尚未确认覆盖本期16:00截止。"
+      "status": "cutoff_not_confirmed",
+      "lastRun": {
+        "runId": "2026-10-18-0057",
+        "sourceGroup": "88888142214212",
+        "sourceName": "水木调研纪要-2.0",
+        "previousCoverageTo": "2026-10-17T18:50:25.449+0800",
+        "coverageTo": "2026-10-17T19:18:50.750+0800",
+        "oldestFetched": "2026-10-17T14:11:33.790+0800",
+        "sourceTopicsFetched": 30,
+        "pageRowsFetched": 30,
+        "uniquePageTopics": 30,
+        "sourceTopicsInCoverage": 6,
+        "added": {
+          "views": 0,
+          "all_views": 0
+        },
+        "duplicates": 0,
+        "duplicateTopicIds": [],
+        "excludedTopics": [
+          {
+            "topicId": "82258242485115882",
+            "createdAt": "2026-10-17T19:18:50.750+0800",
+            "reason": "正文仅附件标签占位；未读取附件内容，无法确认市场观点"
+          },
+          {
+            "topicId": "82258242485188852",
+            "createdAt": "2026-10-17T19:15:30.659+0800",
+            "reason": "正文仅附件标签占位；未读取附件内容，无法确认市场观点"
+          },
+          {
+            "topicId": "55521545412812844",
+            "createdAt": "2026-10-17T19:14:55.354+0800",
+            "reason": "正文仅附件标签占位；未读取附件内容，无法确认市场观点"
+          },
+          {
+            "topicId": "14425414152821412",
+            "createdAt": "2026-10-17T19:08:44.919+0800",
+            "reason": "正文仅附件标签占位；未读取附件内容，无法确认市场观点"
+          },
+          {
+            "topicId": "55521545412825584",
+            "createdAt": "2026-10-17T19:07:51.150+0800",
+            "reason": "正文仅附件标签占位；未读取附件内容，无法确认市场观点"
+          },
+          {
+            "topicId": "45548525284145458",
+            "createdAt": "2026-10-17T19:06:36.141+0800",
+            "reason": "正文仅附件标签占位；未读取附件内容，无法确认市场观点"
+          }
+        ],
+        "files": {
+          "views": [],
+          "all_views": []
+        },
+        "pagination": {
+          "pages": 1,
+          "limit": 30,
+          "nextEndTimes": [
+            "2026-10-17T14:11:33.790+0800"
+          ],
+          "uniquePageTopics": 30,
+          "overlapTopicIds": [],
+          "stoppedWhenPageReachedCoverage": true,
+          "coverageBoundarySeen": "2026-10-17T14:11:33.790+0800"
+        },
+        "dedupCheck": {
+          "algorithm": "scripts/build_research_shards.py keys(row)",
+          "candidateKeys": 0,
+          "candidateBuckets": 0,
+          "duplicateKeys": 0,
+          "duplicateTopicIds": []
+        },
+        "briefChanges": {
+          "added": 0,
+          "updated": 0,
+          "expiredRemoved": 4
+        },
+        "expiredBriefIds": [
+          "hanshow-smart-retail-20261015",
+          "huiquan-beer-channel-upgrade-20261015",
+          "jinma-tourism-robots-20261011",
+          "us-holiday-toy-assortment-20261015"
+        ],
+        "notes": "无新增可确认市场观点；6条新主题仅附件占位正文，未读取附件。清理4条早于最近3个北京时间自然日窗口的摘要。"
+      }
+    },
+    "attachmentMonitoring": {
+      "status": "pending",
+      "scan": {
+        "observedAt": "2026-10-17T16:33:06.220+08:00",
+        "sourceGroup": "88888142214212",
+        "sourceName": "水木调研纪要-2.0",
+        "topicsScanned": 510,
+        "topicsInWindow": 489,
+        "topicPages": 17,
+        "topicWindowFrom": "2026-10-15T00:00:00+0800",
+        "topicWindowTo": "2026-10-17T15:58:34.944+0800",
+        "boundaryReachedBeforeWindow": true,
+        "attachmentsObserved": 312,
+        "uniqueFileIds": 307,
+        "duplicateFileIds": 5,
+        "newRecords": 60,
+        "existingRecordsRefreshed": 247,
+        "occurrenceRecordsAdded": 0,
+        "attachmentContentRead": false,
+        "windowComplete": true,
+        "archiveHasMore": true,
+        "sourceMetadataFields": [
+          "fileId",
+          "topicId",
+          "filename",
+          "extension",
+          "bytes",
+          "attachmentCreatedAt",
+          "topicCreatedAt",
+          "durationSeconds",
+          "downloadCount",
+          "sourceHash",
+          "source",
+          "sourceUrl"
+        ],
+        "windowStart": "2026-10-15T00:00:00+0800",
+        "windowEnd": "2026-10-17T16:33:06.220+08:00",
+        "windowEndDate": "2026-10-17"
+      },
+      "attachmentContentRead": false,
+      "downloadCalls": 0,
+      "missingFrom": "2026-10-17T16:33:06.220+08:00",
+      "missingThrough": "2026-10-18T16:00:00+08:00"
+    },
+    "publicationBlockers": [
+      {
+        "type": "attachment_scan_pending",
+        "recoverable": true,
+        "missingFrom": "2026-10-17T16:33:06.220+08:00",
+        "missingThrough": "2026-10-18T16:00:00+08:00",
+        "reason": "最新已完成附件元数据扫描仅至10月17日16:33，本期余下窗口尚无扫描完成回执。"
+      },
+      {
+        "type": "research_cutoff_not_confirmed",
+        "recoverable": true,
+        "sourceThrough": "2026-10-17T19:18:50.750+0800",
+        "syncedAt": "2026-10-17T16:57:14Z",
+        "missingThrough": "2026-10-18T16:00:00+08:00",
+        "reason": "研究增量最近回执为10月18日00:57，尚未确认覆盖本期16:00截止。"
+      }
+    ]
+  },
+  "recoveredAt": "2026-10-19T16:14:00+08:00",
+  "recovery": {
+    "previousFocusCount": 0,
+    "rebuiltFocusCount": 2,
+    "newSourceUrls": [
+      "https://wx.zsxq.com/group/88888142214212/topic/14425414148881512",
+      "https://wx.zsxq.com/group/88888142214212/topic/45548525251121248"
+    ],
+    "editorialReread": true,
+    "originalCutoffPreserved": true,
+    "attachmentCoverageComplete": true,
+    "fullOriginalsHydrated": true
+  },
+  "earningsUpcoming": [
+    {
+      "company": "丽江股份",
+      "code": "002033.SZ",
+      "period": "2026Q3",
+      "date": "2026-10-20",
+      "status": "预约披露",
+      "source": "Choice预约回执 / 东方财富日历",
+      "url": "https://data.eastmoney.com/stockcalendar/002033.html",
+      "checkedAt": "2026-10-19T16:14:00+08:00",
+      "evidenceFile": "data/daily/evidence/2026-10-18.json"
+    },
+    {
+      "company": "西域旅游",
+      "code": "300859.SZ",
+      "period": "2026Q3",
+      "date": "2026-10-21",
+      "status": "预约披露",
+      "source": "Choice预约回执 / 东方财富日历",
+      "url": "https://data.eastmoney.com/stockcalendar/300859.html",
+      "checkedAt": "2026-10-19T16:14:00+08:00",
+      "evidenceFile": "data/daily/evidence/2026-10-18.json"
     }
   ],
-  "publicationDecision": "保留有效历史及待补稿，不发布空日报；附件延迟不永久暂停任务。",
-  "liveReadback": {
-    "url": "https://yuxing954.github.io/guojin-shangshe-database/daily.html",
-    "status": "network_policy_denied",
-    "message": "Forbidden. Calls to this URL are not allowed."
+  "validation": {
+    "checkedAt": "2026-10-19T16:20:00+08:00",
+    "dailyUnitTests": {
+      "passed": 38,
+      "failed": 0
+    },
+    "siteCheck": "PASS: 20 entrypoints, 58 scripts, 4 inline scripts",
+    "editorial": "passed --check-resources",
+    "originalsVerified": 2,
+    "renderer": "local actual-script VM: summaries visible in summary elements, one closed details per segment, full original text, no 查看来源, three summary points, resource categories exclude segments, copy/download identical, earnings last",
+    "liveReadback": {
+      "url": "https://yuxing954.github.io/guojin-shangshe-database/daily.html",
+      "status": "network_policy_denied",
+      "message": "Forbidden. Calls to this URL are not allowed."
+    }
   }
 }
