@@ -58,6 +58,7 @@ jobs:
           key: summaries-${{ runner.os }}-${{ github.ref_name }}-${{ github.run_id }}
           restore-keys: summaries-${{ runner.os }}-${{ github.ref_name }}-
 
+      # Keep connector payloads bounded; merge only checksum-verified metadata.
       - name: Test and apply verified library upload chunks
         run: |
           python scripts/test_library_upload.py
