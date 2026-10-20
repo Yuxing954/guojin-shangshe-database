@@ -30,3 +30,16 @@ assert.equal(M.financialGrowth([{period:'2025Q2',region:'集团',metric:'归母�
 for(const s of manifest.sheets){const grid=read(s.file);assert.equal(grid.name,s.name);assert.equal(grid.rows.length,s.rows);for(const r of grid.rows)assert.ok(r.cells.every(c=>c.v!==null&&c.c>0));}
 const html=fs.readFileSync(path.join(root,'company-database.html'),'utf8');assert.ok(html.includes('overseas-hotels.html'));assert.ok(fs.readFileSync(path.join(root,'scripts/data-notes.js'),'utf8').includes("'overseas-hotels'"));
 console.log('Overseas hotels: 612 operating, 360 finance, 122 brand scale, 31 brand metrics, 13 sheets; scopes, units, gaps and sources passed.');
+
+for(const mode of ['单季度','年初累计'])for(let metric=0;metric<3;metric++){
+ const points=M.comparisonRows(companies,manifest.quarters,{mode,metric,region:'全球'});
+ assert.equal(points.length,manifest.quarters.length);
+ for(const p of points)for(const v of p.values){const d=companies.find(d=>d.company.id===v.id),r=d.operating.find(r=>r.mode===mode&&r.region==='全球'&&r.quarter===p.period);assert.equal(v.value,r?.values[metric]??null);assert.equal(v.change,r?.changes[metric]??null);}
+}
+const missingRegion=M.comparisonRows(companies,['2026Q2'],{ids:['marriott','hilton'],region:'大中华区',metric:1})[0];
+assert.equal(missingRegion.values.length,2);assert.equal(missingRegion.values[1].value,null);assert.equal(missingRegion.values[1].change,null);
+const noPoint=[{company:{id:'test',name:'test'},operating:[{quarter:'2026Q2',mode:'单季度',region:'全球',values:[0,0,0],changes:[0,0,0]}]}];
+assert.equal(M.comparisonRows(noPoint,['2026Q1','2026Q2'])[0].values[0].value,null);assert.equal(M.comparisonRows(noPoint,['2026Q1','2026Q2'])[1].values[0].value,0);
+for(const c of companies){const periods=[...new Set(c.finance.map(r=>r.period))];for(const period of periods){const segment=M.regionalFinance(c.finance,period);assert.deepEqual(segment.rows,c.finance.filter(r=>r.region!=='集团'&&r.period===period));assert(!segment.rows.some(r=>r.region==='集团'));}assert.equal(M.regionalFinance(c.finance,'2099Q2').rows.length,0);}
+assert.equal(M.regionalFinance(ihg.finance,'2026Q2').rows.length,0);assert(M.regionalFinance(ihg.finance,'2026H1').rows.length>0);
+console.log('Peer comparison: exact company, original region, mode, unit, missing/zero and reported financial segments passed.');
