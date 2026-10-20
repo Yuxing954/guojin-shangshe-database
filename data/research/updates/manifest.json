@@ -1,10 +1,10 @@
 {
-  "syncedAt": "2026-10-20T07:02:27.416Z",
+  "syncedAt": "2026-10-20T09:12:31.892Z",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
-  "coverageFrom": "2026-10-20T14:00:35.135+0800",
-  "coverageTo": "2026-10-20T14:56:08.011+0800",
-  "oldestFetched": "2026-10-20T13:24:35.660+0800",
+  "coverageFrom": "2026-10-20T14:56:08.011+0800",
+  "coverageTo": "2026-10-20T16:59:41.934+0800",
+  "oldestFetched": "2026-10-20T13:26:14.659+0800",
   "fetchedTopics": 30,
   "files": {
     "views": [
@@ -69,6 +69,7 @@
       "data/research/updates/2026-10-14-1258-views.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-10-20-170250-all_views.csv",
       "data/research/updates/2026-10-20-145851-all_views.csv",
       "data/research/updates/2026-10-20-140408-all_views.csv",
       "data/research/updates/2026-10-20-125756-all_views.csv",
@@ -214,12 +215,12 @@
   },
   "counts": {
     "views": 342,
-    "all_views": 5776,
+    "all_views": 5777,
     "minutes": 101
   },
   "latest": {
     "views": "2026-10-20 14:24",
-    "all_views": "2026-10-20 14:56",
+    "all_views": "2026-10-20 16:12",
     "minutes": "2026-10-12T01:07:33"
   },
   "excluded": {
@@ -6282,46 +6283,39 @@
       "22258244444421111",
       "45548522222252488",
       "82258244444428822",
-      "14425411111158212"
+      "14425411111158212",
+      "82258244412528182"
     ]
   },
   "lastRun": {
-    "runId": "2026-10-20-145851",
+    "runId": "2026-10-20-170250",
     "sourceGroup": "88888142214212",
     "sourceName": "水木调研纪要-2.0",
-    "previousCoverageTo": "2026-10-20T14:00:35.135+0800",
-    "coverageTo": "2026-10-20T14:56:08.011+0800",
+    "previousCoverageTo": "2026-10-20T14:56:08.011+0800",
+    "coverageTo": "2026-10-20T16:59:41.934+0800",
     "added": {
-      "views": 1,
-      "all_views": 7
+      "views": 0,
+      "all_views": 1
     },
     "updated": 0,
     "expiredRemoved": 0,
     "sourceTopicIds": [
-      "14425411118585422",
-      "14425411118554812",
-      "45548522221451858",
-      "22258244444445521",
-      "22258244444421111",
-      "45548522222252488",
-      "82258244444428822",
-      "14425411111158212"
+      "82258244412528182"
     ],
-    "duplicateTopicIds": [],
+    "duplicateTopicIds": [
+      "55521544485821824",
+      "22258244412158281"
+    ],
     "briefChanges": {
       "added": 0,
-      "updated": 1,
+      "updated": 0,
       "expiredRemoved": 0
     },
-    "duplicates": 0,
+    "duplicates": 2,
     "excludedTopics": [
       {
-        "topicId": "55521544444842284",
-        "reason": "文件占位，未读附件"
-      },
-      {
-        "topicId": "55521544444458514",
-        "reason": "与已归档14425411112185482创新药反转观点相同，仅格式差异，排除语义重复"
+        "topicId": "55521544485254554",
+        "reason": "与已归档14425411118585422野村存储正文的摘要相同，439亿美元门槛及297亿美元运行率等论据均已存，无实质新增"
       }
     ],
     "pagination": {
@@ -6331,35 +6325,31 @@
       "stoppedWhenPageReachedCoverage": true
     },
     "dedupCheck": {
-      "candidateKeys": 40,
-      "candidateBuckets": 39,
+      "candidateKeys": 16,
+      "candidateBuckets": 15,
       "algorithm": "sha256-utf8-v1"
     },
     "expiredBriefIds": []
   },
   "lastUpdateRecord": {
-    "runId": "2026-10-20-145851",
+    "runId": "2026-10-20-170250",
     "sourceGroup": "88888142214212",
     "sourceName": "水木调研纪要-2.0",
-    "previousCoverageTo": "2026-10-20T14:00:35.135+0800",
-    "coverageTo": "2026-10-20T14:56:08.011+0800",
-    "added": 8,
+    "previousCoverageTo": "2026-10-20T14:56:08.011+0800",
+    "coverageTo": "2026-10-20T16:59:41.934+0800",
+    "added": 1,
     "updated": 0,
     "expiredRemoved": 0,
     "sourceTopicIds": [
-      "14425411118585422",
-      "14425411118554812",
-      "45548522221451858",
-      "22258244444445521",
-      "22258244444421111",
-      "45548522222252488",
-      "82258244444428822",
-      "14425411111158212"
+      "82258244412528182"
     ],
-    "duplicateTopicIds": [],
+    "duplicateTopicIds": [
+      "55521544485821824",
+      "22258244412158281"
+    ],
     "briefChanges": {
       "added": 0,
-      "updated": 1,
+      "updated": 0,
       "expiredRemoved": 0
     }
   }
