@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-20T15:04:34+08:00",
+  "generatedAt": "2026-10-20T17:38:55+08:00",
   "industries": [
     {
       "id": "hotel",
@@ -22,16 +22,16 @@
       "id": "dutyfree",
       "name": "免税",
       "metric": "离岛免税购物金额",
-      "value": 21.45,
+      "value": 17.12,
       "unit": "亿元",
       "precision": 2,
-      "change": 1.8837812419846722,
+      "change": -1.2368469632637824,
       "changeLabel": "同比（计算）",
-      "period": "2026年8月",
-      "asOf": "2026-08-31",
+      "period": "2026年9月",
+      "asOf": "2026-09-30",
       "freshnessDays": 50,
       "source": "海关总署",
-      "sourceFile": "https://choicew2z.eastmoney.com/dataDisplay/macroEDB/#/index?macroids=EMM01500930,EMI01975571,EMM01500929,EMM01500926,EMM01500927,EMM01500925",
+      "sourceFile": "https://choicew2z.eastmoney.com/dataDisplay/macroEDB/#/index?macroids=EMM01500926,EMM01500927,EMM01500925",
       "href": "industry.html#dutyfree"
     },
     {
@@ -78,8 +78,8 @@
     {
       "sector": "免税消费",
       "title": "免税销售与客流",
-      "summary": "离岛免税购物金额 21.45 亿元，购物人次 37.24 万人次。",
-      "asOf": "2026-08-31",
+      "summary": "离岛免税购物金额 17.12 亿元，购物人次 28.06 万人次。",
+      "asOf": "2026-09-30",
       "href": "industry.html#dutyfree"
     },
     {
