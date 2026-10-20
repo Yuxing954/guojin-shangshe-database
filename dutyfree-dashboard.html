@@ -85,10 +85,10 @@ svg{width:100%;height:auto;display:block}
 
 <!-- 海南离岛免税 -->
 <section class="view on" id="view-monthly">
-<div class="board-section-head"><h2>海南离岛免税 · 月度数据</h2></div><div class="controls board-filters dutyfree-filters"><button class="srcbtn" type="button" onclick="showSrc('provided_workbook_monthly')">来源</button><button class="srcbtn" type="button" id="monthly-download">导出当前范围 CSV</button><label for="hn-range">时间范围</label><select id="hn-range" aria-label="时间范围"><option value="12" selected>近12个月</option><option value="24">近24个月</option><option value="2024">2024</option><option value="2025">2025</option><option value="2026">2026</option><option value="9999">全部</option></select></div><p id="hn-period" class="dh-note"></p>
+<div class="board-section-head"><h2>海南离岛免税 · 月度数据</h2></div><div class="controls board-filters dutyfree-filters"><button class="srcbtn" type="button" onclick="showSrc('monthly_sources')">来源</button><button class="srcbtn" type="button" id="monthly-download">导出当前范围 CSV</button><label for="hn-range">时间范围</label><select id="hn-range" aria-label="时间范围"><option value="12" selected>近12个月</option><option value="24">近24个月</option><option value="2024">2024</option><option value="2025">2025</option><option value="2026">2026</option><option value="9999">全部</option></select></div><p id="hn-period" class="dh-note"></p>
 <div class="kpis board-kpis"><div class="kpi board-stat"><span>购物金额</span><strong><span id="hn-sales">—</span><em> 亿元</em></strong><small id="hn-sales-yoy"></small></div><div class="kpi board-stat"><span>购物人次</span><strong><span id="hn-shoppers">—</span><em> 万人次</em></strong><small id="hn-shoppers-yoy"></small></div><div class="kpi board-stat"><span>每购物人次金额</span><strong><span id="hn-spend">—</span><em> 元</em></strong><small id="hn-spend-yoy"></small></div></div>
 <div class="panel chart board-panel" data-chart-dual-labels><div class="panel-head board-panel-head"><h3 id="hn-trend-title">购物金额同比增速（%）</h3><div class="trend-controls site-chart-tools"><label class="visually-hidden" for="hn-metric">趋势指标</label><select id="hn-metric" aria-label="趋势指标"><option value="sales">购物金额（亿元）</option><option value="shoppers">购物人次（万人次）</option><option value="items">购物件数（万件）</option><option value="spend">每人次消费（元）</option></select><span data-chart-value-controls></span></div></div><svg id="hn-growth" role="img" aria-label="购物金额同比增速趋势"></svg><div class="tooltip"></div></div>
-<details class="panel monthly-details board-panel board-detail"><summary>历史数据与口径</summary><p class="trend-caption">原Excel月度表</p><div class="tablewrap"><table class="table board-table" id="hn-table"></table></div><button class="srcbtn" onclick="showSrc('provided_workbook_monthly')">查看来源</button><p class="trend-caption"><a href="data/dutyfree_monthly.csv" download>下载完整月度 CSV</a> · <a href="data/dutyfree/monthly-provenance.json" download>下载来源与单元格记录</a></p></details>
+<details class="panel monthly-details board-panel board-detail"><summary>历史数据与口径</summary><p class="trend-caption">月度历史</p><div class="tablewrap"><table class="table board-table" id="hn-table"></table></div><button class="srcbtn" onclick="showSrc('monthly_sources')">查看来源</button><p class="trend-caption"><a href="data/dutyfree_monthly.csv" download>下载完整月度 CSV</a> · <a href="data/dutyfree/monthly-provenance.json" download>下载来源与单元格记录</a></p></details>
 </section>
 
 <section class="view" id="view-holidays"><section id="dutyfree-holidays" class="dh-panel" aria-label="离岛免税节假日数据"></section></section>
@@ -213,9 +213,3 @@ document.getElementById('monthly-download').onclick=downloadMonthly;
 document.getElementById('hn-metric').onchange=renderHainan;
 }
 </script></body></html>
-
-
-
-
-
-

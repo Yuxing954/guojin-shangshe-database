@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-19",
+  "updatedAt": "2026-10-20",
   "datasets": [
     {
       "id": "hotel",
@@ -70,7 +70,11 @@
       "id": "dutyfree_monthly",
       "name": "离岛免税月度经营",
       "file": "data/dutyfree_monthly.csv",
-      "category": "免税"
+      "category": "免税",
+      "asOf": "2026-09-30",
+      "latestPeriod": "2026-09",
+      "rowCount": 186,
+      "updateRecord": "data/dutyfree/monthly-provenance.json"
     },
     {
       "id": "dutyfree_holiday",

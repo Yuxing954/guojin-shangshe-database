@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-08",
+  "updatedAt": "2026-10-20",
   "sources": {
     "provided_workbook_monthly": {
       "sourceName": "【国金商社】离岛免税数据库 20260908.xlsx",
@@ -16,6 +16,14 @@
       "page": null,
       "url": "data/dutyfree/holidays.json",
       "note": "各假期工作表，逐条保留工作表名、单元格及公式。"
+    },
+    "monthly_sources": {
+      "sourceName": "月度历史原Excel（至2026-08）+ Choice（2026-09）",
+      "sourceType": "原Excel / Choice转引海关总署",
+      "reportDate": null,
+      "page": null,
+      "url": "data/dutyfree/monthly-provenance.json",
+      "note": "9月金额17.12亿元、人次28.06万、件数145.3万；每人次金额与同比为计算值。9月独立发布日期未知，保持空值；历史原表值不变。"
     }
   }
 }
