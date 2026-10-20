@@ -41,3 +41,10 @@
 
 ### 酒店集团看板
 酒店集团页仅使用 `data/hotel_group_weekly.csv`（酒店之家集团周度数据），不混入公司财报。ADR使用入住日期字段 `stay_adr`；不构造未披露的集团OCC或RevPAR。更新沿用酒店CSV流程，无需另建看板数据文件。运行 `node scripts/hotel-groups-model.test.cjs` 和 `node tests/hotel-groups.browser.cjs` 检查。
+
+## 离岛免税月度更新（快速入口）
+
+用户要求更新离岛免税某月时，直接按 `docs/dutyfree-monthly-refresh.md` 操作，不运行宏观刷新、不重新全站探索。入口为 `python scripts/update_dutyfree_monthly.py --period YYYY-MM --fetch`，只请求一次已审定的三项Choice指标，自动同步CSV、来源、KPI和行业快照。已收录月份在读取凭据和请求前退出；修订、来源或定义变化单独复核。
+
+通过GitHub连接器读取最新main、检查同批PR并仅提交命令返回的changedFiles；运行免税专项测试与浏览器检查，核验对应GitHub检查后合并发布并回读页面和CSV。全站已知无关失败须分开报告，不能把失败说成通过。不要顺手修改页面、共享样式或其他板块，以免触发全站检查。数据专用更新由摘要工作流识别，校验预生成快照后跳过无关重建，避免二次部署。
+

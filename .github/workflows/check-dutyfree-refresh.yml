@@ -1,0 +1,43 @@
+name: Check dutyfree refresh
+on:
+  pull_request:
+    paths:
+      - 'data/dutyfree_monthly.csv'
+      - 'data/dutyfree/**'
+      - 'data/industry/miaoxiang-*dutyfree*.json'
+      - 'scripts/update_dutyfree_monthly.py'
+      - 'scripts/build_industry_snapshot.py'
+      - 'scripts/import_miaoxiang_industry.py'
+      - 'scripts/dutyfree_yoy.py'
+      - 'scripts/is_dutyfree_only.py'
+      - 'tests/test_dutyfree_refresh.py'
+      - 'tests/dutyfree-refresh.browser.cjs'
+      - '.github/workflows/check-dutyfree-refresh.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  dutyfree:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check importer, history, zero values, rollback and duplicate requests
+        run: |
+          python -m unittest discover -s tests -p 'test_dutyfree_refresh.py'
+          python scripts/update_dutyfree_monthly.py --check
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Prepare only the dutyfree browser runtime
+        run: |
+          npm install --prefix /tmp/dutyfree-check --no-save --package-lock=false playwright@1.58.2
+          if [ ! -x /usr/bin/google-chrome ]; then /tmp/dutyfree-check/node_modules/.bin/playwright install --with-deps chromium; fi
+      - name: Verify latest month, source, chart and CSV
+        env:
+          NODE_PATH: /tmp/dutyfree-check/node_modules
+          BROWSER_PATH: /usr/bin/google-chrome
+        run: node tests/dutyfree-refresh.browser.cjs
+
