@@ -8,3 +8,5 @@ test('HWorld international currency and special closure category remain separate
 test('BTG 2020Q2 OCC is level difference in pp, not a percent growth',()=>{const d=datasets.find(d=>d.company.id==='btg'),p=M.mainSeries(d,'全部',['2020Q2'],'单季度')[0];assert.equal(p.records[2].value,55.2);assert.ok(Math.abs(p.records[2].change+25)<1e-8);assert.ok(Math.abs(p.records[1].change-((149/202-1)*100))<1e-8);});
 test('replacement loads overseas styles and no obsolete domestic scripts',()=>{const s=fs.readFileSync(path.join(base,'company-database.html'),'utf8');assert.match(s,/scripts\/overseas-hotels.css/);assert.match(s,/scripts\/hotel-workspace.css/);assert.doesNotMatch(s,/scripts\/(company-database|hotel-research|jinjiang-research|company-overview)\.(js|css)/);assert.match(s,/domestic-hotel-comparison.html/);});
 
+
+test('each company has a local logo and source provenance',()=>{for(const c of manifest.companies){assert.ok(c.logo.startsWith('scripts/assets/domestic-hotels/'));assert.ok(fs.statSync(path.join(base,c.logo)).size>1000);assert.ok(manifest.logos.items[c.id].url.startsWith('https://'));}assert.equal(new Set(manifest.companies.map(c=>c.logo)).size,4);});

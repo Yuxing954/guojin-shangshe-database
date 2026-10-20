@@ -1,7 +1,10 @@
-/* Domestic additions reuse the overseas page's components and spacing. */
-.dh-monogram{color:#374b88;font-size:17px;font-weight:700;letter-spacing:1px}
-.oh-company[data-company=jinjiang] .oh-logo{background:#4089a2}
-.dh-chart{position:relative;min-width:0}.dh-chart-tip{position:absolute;pointer-events:none;z-index:3;background:#203e61;color:#fff;border-radius:7px;padding:10px 13px;font-size:12px;line-height:1.8;box-shadow:0 3px 14px #203e6129;white-space:nowrap;max-width:calc(100% - 20px)}
-.dh-chart-tip[hidden]{display:none}.dh-chart-tip b{display:block;margin-bottom:3px}.dh-chart-tip span{display:block}.dh-chart-tip i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:7px}
-.dh-focus{stroke:#9aaec6;stroke-dasharray:4 3;pointer-events:none}.dh-capture{fill:transparent;cursor:crosshair;outline:none}.dh-capture:focus-visible{stroke:#374b88;stroke-width:2}.oh-kpi .oh-source{float:right}.dh-context{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}.dh-table-source{margin-top:4px}.dh-current-source{font-size:11px}.oh-toolbar input[type=search]{width:240px}.dh-details td{max-width:240px;white-space:normal}.dh-details td:first-child{min-width:72px}.oh-pagination input{width:56px;min-width:0;padding:5px;border:1px solid #dce2eb;border-radius:5px}.oh-company .oh-logo img{width:auto;height:auto}
-@media(max-width:650px){.dh-chart-tip{font-size:11px}.dh-chart{min-width:620px}.oh-kpi .oh-source{float:none;display:block;padding-left:0}.oh-kpi strong{white-space:nowrap}.oh-pagination{gap:8px;flex-wrap:wrap}.oh-profile{flex-wrap:wrap}.dh-details td{min-width:85px}}
+/* Domestic hotel views use the same plot, typography and controls as overseas hotels. */
+body.site-page .oh-company .oh-logo{background:#fff;flex:0 0 72px;width:72px;height:50px;display:flex;align-items:center;justify-content:center;border-radius:6px}
+body.site-page .oh-company .oh-logo img{display:block;width:100%;height:100%;max-width:72px;max-height:50px;object-fit:contain}
+.dh-context{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.dh-details td{max-width:240px;white-space:normal}.dh-details td:first-child{min-width:72px}
+.oh-toolbar input[type=search]{width:240px}.oh-pagination input{width:56px;min-width:0;padding:5px;border:1px solid #dce2eb;border-radius:5px}
+.oh-kpi .oh-source{float:right}
+@media(max-width:650px){body.site-page .oh-company .oh-logo{flex-basis:56px;width:56px;height:42px}body.site-page .oh-company .oh-logo img{max-width:56px;max-height:42px}.oh-kpi .oh-source{float:none;display:block;padding-left:0}.oh-pagination{gap:8px;flex-wrap:wrap}.oh-profile{flex-wrap:wrap}.dh-details td{min-width:85px}}
+
+body.site-page .oh-company:is([data-company=jinjiang],[data-company=atour]) .oh-logo{background:#203e61;padding:5px;box-sizing:border-box}
