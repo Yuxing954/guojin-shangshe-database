@@ -11,6 +11,7 @@ def within(value,start,end):
  t=stamp(value);return bool(t and start<t<=end)
 def allowed_attachment(r):
  name=r.get('name','')
+ if re.search(r'中国汽车|China Automobiles|汽车行业|汽车零部件|消费电子|房地产',name,re.I):return False
  if re.search(r'LendAPI|嵌入式金融|金融科技',name,re.I):return False
  if is_ecommerce_topic(name) or EXCLUDE.search(name):return False
  consumer_overview = re.search(r'商社|中国消费[:：]|消费(?:价值|行业)|消费业绩前瞻',name)
@@ -27,17 +28,24 @@ def attachment_kind(r):
 def catalog_for_window(library,start,end):
  current=attachment_catalog(library,start,end)
  if current['coverageStatus']=='complete':return current
+ scans=[library.get('attachmentScan') or {}]
  # A newer narrow scan does not invalidate an older completed historical scan.
  folder=ROOT/'data/daily/resources'
  for path in sorted(folder.glob('*.json'),reverse=True):
   saved=json.loads(path.read_text()).get('attachmentCatalog',{})
   scan=saved.get('scan')
   if not scan:continue
+  scans.extend(saved.get('coverageScans') or [{**scan,'receiptFile':saved.get('scanReceiptFile') or str(path.relative_to(ROOT))}])
   candidate=attachment_catalog({**library,'attachmentScan':scan},start,end)
   if candidate['coverageStatus']=='complete':
    candidate['scanReceiptFile']=str(path.relative_to(ROOT))
    candidate['usedHistoricalScan']=True
    return candidate
+ unique={json.dumps(s,sort_keys=True,ensure_ascii=False):s for s in scans}
+ combined=attachment_catalog({**library,'attachmentScans':list(unique.values())},start,end)
+ if combined['coverageStatus']=='complete':
+  combined['usedHistoricalScan']=True
+  return combined
  return current
 def build(date,cutoff=None):
  editorial_path=ROOT/'data/daily/onepage'/f'{date}.json'
