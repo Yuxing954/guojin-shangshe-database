@@ -2781,8 +2781,10 @@
     {
       "type": "site_check_failed",
       "recoverable": true,
-      "file": "company-database.html",
-      "reason": "全站检查现存失败：domestic-hotels.css排在site-polish.css之后；本次仅修改日报相关文件。"
+      "file": "hotel-groups.html",
+      "reason": "最新main云端全站检查失败：hotel-groups.css排在site-polish.css之后；本次仅修改日报相关文件。",
+      "workflowRunId": 39407453141,
+      "jobId": 118576731261
     }
   ],
   "publicationDecision": {
@@ -2800,7 +2802,21 @@
       "file": "company-database.html",
       "actual": "scripts/domestic-hotels.css",
       "expected": "scripts/site-polish.css",
-      "scope": "已有其他模块样式顺序错误，本次日报不改酒店模块。"
+      "scope": "已有其他模块样式顺序错误，本次日报不改酒店模块。",
+      "localSourceCommit": "116f1b79585712a6245164fde0bac5489c0f3b56",
+      "latestMainCI": {
+        "workflowRunId": 39407453141,
+        "jobId": 118576731261,
+        "status": "failed",
+        "file": "hotel-groups.html",
+        "actual": "scripts/hotel-groups.css",
+        "expected": "scripts/site-polish.css",
+        "dailyTestsPassed": 51,
+        "backfillResult": {
+          "updated": [],
+          "skipped": []
+        }
+      }
     },
     "historicalChecks": {
       "2026-10-19": "--check-resources passed; 10 exact originals; complete union scan",
@@ -2824,6 +2840,21 @@
         "audio": 2,
         "reports": 9
       }
+    },
+    "liveReadback": {
+      "status": "browser_connection_unavailable",
+      "reason": "Browser连接返回Unknown tool；未声称已完成现场UI回读。"
+    },
+    "deployment": {
+      "commit": "6bc776a1cced550c9279d3d719a17e33dec34e95",
+      "workflowRunId": 39407451665,
+      "status": "success",
+      "publishedResourceDates": [
+        "2026-10-18",
+        "2026-10-19"
+      ],
+      "latestOfficialDate": "2026-10-19",
+      "todayEditorialPublished": false
     }
   },
   "lastPrecommitSourceCheck": {

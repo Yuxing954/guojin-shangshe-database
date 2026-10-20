@@ -2373,8 +2373,10 @@
     {
       "type": "site_check_failed",
       "recoverable": true,
-      "file": "company-database.html",
-      "reason": "全站检查现存失败：domestic-hotels.css排在site-polish.css之后；本次仅修改日报相关文件。"
+      "file": "hotel-groups.html",
+      "reason": "最新main云端全站检查失败：hotel-groups.css排在site-polish.css之后；本次仅修改日报相关文件。",
+      "workflowRunId": 39407453141,
+      "jobId": 118576731261
     }
   ],
   "resumeInstructions": "保持18:00原截止；附件完整回执与18:00后研究批次到齐后，重建全部候选并比对来源和全文哈希；如有新增或变化重新AI通读及编辑三点总结，通过校验后发布。10月19日用户发布例外仅适用19日，不沿用至本期。",
