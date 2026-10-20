@@ -13,5 +13,14 @@
  function range(quarters,from,to){const end=quarters.includes(to)?to:quarters.at(-1),start=quarters.includes(from)&&from<=end?from:quarters[0];return quarters.filter(q=>q>=start&&q<=end);}
  function financialChange(rows,r){if(!r||!finite(r.value))return null;const before=rows.find(p=>p.period===previous(r.period)&&p.region===r.region&&p.metric===r.metric&&p.unit===r.unit&&p.basis===r.basis);if(!before||!finite(before.value))return null;const delta=r.value-before.value;let label;if(before.value<0)label=r.value>=0?'扭亏':delta>0?'减亏':delta<0?'增亏':'持平';else if(before.value===0)label=r.value===0?'持平':'上年为零';else label='同比 '+growth((r.value/before.value-1)*100);return {label,base:before,delta,percent:before.value>0?(r.value/before.value-1)*100:null};}
  function search(rows,query){const words=String(query||'').trim().toLowerCase().split(/\s+/).filter(Boolean);return rows.filter(r=>words.every(w=>[r.company,r.quarter,r.period,r.region,r.mode,r.metric,r.basis].filter(Boolean).join(' ').toLowerCase().includes(w)));}
- const api={finite,fmt,growth,operating,previous,financialGrowth,financeMatrix,chartPoints,segments,periodRank,range,financialChange,search};if(typeof module==='object'&&module.exports)module.exports=api;else root.OverseasHotelModel=api;
+
+ function comparisonRows(companies,quarters,{ids=companies.map(d=>d.company.id),mode='单季度',region='全球',metric=0}={}){
+  const selected=ids.map(id=>companies.find(d=>d.company.id===id)).filter(Boolean);
+  return quarters.map((period,x)=>({period,x,values:selected.map(d=>{const r=d.operating.find(r=>r.mode===mode&&r.region===region&&r.quarter===period);return {id:d.company.id,name:d.company.name,value:r?.values[metric]??null,change:r?.changes[metric]??null};})}));
+ }
+ function regionalFinance(rows,period){
+  const selected=rows.filter(r=>r.region!=='集团'&&r.period===period);
+  return {regions:[...new Set(selected.map(r=>r.region))],metrics:[...new Set(selected.map(r=>r.metric))],rows:selected};
+ }
+ const api={finite,fmt,growth,operating,previous,financialGrowth,financeMatrix,chartPoints,segments,periodRank,range,financialChange,search,comparisonRows,regionalFinance};if(typeof module==='object'&&module.exports)module.exports=api;else root.OverseasHotelModel=api;
 })(typeof window==='object'?window:globalThis);

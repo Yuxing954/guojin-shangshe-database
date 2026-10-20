@@ -8,3 +8,20 @@ body{background:#f4f6f9;color:#182b43}.oh-header{display:flex;align-items:center
 .oh-history[open] summary{margin-bottom:12px}
 body[data-view=comparison] .oh-profile h2{font-size:18px}
 body[data-view=comparison] .oh-header{margin-bottom:24px}
+
+.oh-peer-companies{display:flex;flex-wrap:wrap;align-items:center;gap:12px 22px;width:100%;margin:0 0 6px;padding:12px 16px;border:1px solid #dfe5ee;border-radius:9px;background:#fff}
+.oh-peer-companies legend{padding:0 5px;font-size:13px;color:#68768a}
+.oh-toolbar .oh-peer-companies label{display:inline-flex;align-items:center;flex-direction:row;gap:7px;font-size:14px;color:#203e61;cursor:pointer}
+.oh-peer-companies input{min-width:0!important;width:16px;height:16px;margin:0;accent-color:#374b88}
+.oh-peer-companies i{display:inline-block;width:9px;height:9px;border-radius:50%}
+.oh-peer-filters{display:flex;flex-wrap:wrap;align-items:end;gap:10px;width:100%}
+.oh-block-head{flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.oh-block-head h3{margin:0}
+.oh-block-head .site-value-option{margin-left:auto!important}
+.oh-plot{width:100%;min-width:0;max-width:100%;overflow:visible}
+body.site-page .oh-plot svg.site-paired-chart{width:100%!important;min-width:0!important;max-width:100%!important;height:auto!important;max-height:none!important}
+.oh-plot .site-chart-legend{font-size:13px;line-height:22px}
+.oh-plot svg text{font-family:inherit!important;letter-spacing:0}
+body.site-page main .oh-block{min-width:0}
+#oh-regional-finance .oh-empty{padding:14px 0;text-align:left}
+@media(max-width:650px){.oh-peer-filters{gap:8px}.oh-peer-filters>label{flex:1 1 44%;min-width:0}.oh-peer-filters select{width:100%;min-width:0}.oh-peer-companies{gap:12px 16px;padding:10px 12px}.oh-toolbar .oh-peer-companies label{font-size:13px}.oh-block-head .site-value-option{margin-left:0!important}.oh-block-head>small{font-size:12px}}
