@@ -13,6 +13,18 @@ import macro_due as due
 ROOT=Path(__file__).resolve().parents[1]
 DATA=ROOT/'data/macro'
 class RateLimitError(ValueError):pass
+
+class RequestPacer:
+    """Keep provider starts four seconds apart, including time spent awaiting replies."""
+    def __init__(self, interval=4):
+        self.interval=interval
+        self.last_started=None
+
+    def wait(self):
+        if self.last_started is not None:
+            remaining=self.interval-(time.monotonic()-self.last_started)
+            if remaining>0:time.sleep(remaining)
+        self.last_started=time.monotonic()
 # Exact official non-publication events, never a recurring missing-month rule.
 BLS_CPI_SHUTDOWN='https://www.bls.gov/bls/2025-lapse-revised-release-dates.htm'
 BLS_CPS_SHUTDOWN='https://www.bls.gov/cps/methods/2025-federal-government-shutdown-impact-cps.htm'
@@ -283,6 +295,8 @@ def main():
             try:receipts.append(json.loads(path.read_text(encoding='utf-8')))
             except ValueError:pass
     remote={'client':None,'receipts':{}}
+    pacer=RequestPacer()
+    pending=[]
     def task(spec):
         if receipts:
             candidates=[]
@@ -301,7 +315,8 @@ def main():
         query=f"{spec['originalName']}，来源{spec['publisher']}，{frequency}，{start}至{args.cutoff}区间，保留原始名称、精度和来源链接。"
         if query in remote['receipts']:return normalize(remote['receipts'][query],spec,args.cutoff)
         for attempt in range(4):
-            time.sleep(4 if attempt==0 else 20*attempt)
+            if attempt:time.sleep(20*attempt)
+            pacer.wait()
             result=client.rpc('tools/call',{'name':'mx_macro_data','arguments':{'query':query}})
             try:body_of(result);break
             except RateLimitError:
@@ -320,6 +335,7 @@ def main():
                 incoming=future.result()
                 if plan is not None and not due.has_expected_period(spec,incoming.get('observations',[]),date.fromisoformat(args.cutoff)):
                     # The source has not published this period yet. Leave the window open for tomorrow's retry.
+                    pending.append(spec['id'])
                     continue
                 existing=values.get(spec['id'],{})
                 merged=merge_history(existing,incoming,spec,now)
@@ -354,6 +370,7 @@ def main():
                     spec={'id':result['registryId'],'frequency':frequency,'start':'2016-01-01'}
                     source=('bls-cpi' if id in ('us-cpi','us-core-cpi') else 'bls-employment' if id in ('us-unemployment','us-payroll','us-earnings') else name)
                     if plan is not None and not due.has_expected_period(spec,result.get('observations',[]),date.fromisoformat(args.cutoff)):
+                        pending.append(id)
                         continue
                     if plan is not None:ready_sources.add(source)
                     prior=values.get(id,{})
@@ -373,7 +390,7 @@ def main():
                 ids=['us-gdp-quarter'] if name=='bea-real-gdp' else ['us-housing-starts'] if name=='census-housing' else ['us-treasury10'] if name=='treasury-yields' else (['us-cpi','us-core-cpi'] if 'bls-cpi' in due_sources else [])+(['us-unemployment','us-payroll','us-earnings'] if 'bls-employment' in due_sources else []) if plan is not None else [s['id'] for s in json.loads((DATA/'catalog.json').read_text(encoding='utf-8'))['series'] if s['adapter']=='bls']
                 for id in ids:values[id]={**values.get(id,{}),'status':'error','checkedAt':now,'errorCode':info['errorCode'],'error':info['error']}
     if args.due_only and due.semantic_payload({'series':values,'errors':errors}) == due.semantic_payload({'series':previous.get('series',{}),'errors':previous.get('errors',[])}):
-        print(json.dumps({'noChange':True,'series':len(values),'failures':errors},ensure_ascii=False,separators=(',',':')))
+        print(json.dumps({'noChange':True,'series':len(values),'pending':pending,'failures':errors},ensure_ascii=False,separators=(',',':')))
         return 1 if errors else 0
     output={'version':1,'cutoff':args.cutoff,'checkedAt':now,'publicRedistributionApproved':True,'series':values,'errors':errors}
     for series in values.values():
@@ -382,10 +399,9 @@ def main():
             if not row.get('footnotes'):row.pop('footnotes',None)
     compact_json(target,output)
     atomic_json(DATA/'coverage.json',{'version':1,'checkedAt':now,'series':{k:v.get('coverage',{}) for k,v in values.items()},'errors':errors})
-    print(json.dumps({'series':len(values),'ready':sum(v.get('status')=='ready' and bool(v.get('observations')) for v in values.values()),'withHistory':sum(bool(v.get('observations')) for v in values.values()),'failures':errors},ensure_ascii=False))
+    print(json.dumps({'series':len(values),'ready':sum(v.get('status')=='ready' and bool(v.get('observations')) for v in values.values()),'withHistory':sum(bool(v.get('observations')) for v in values.values()),'pending':pending,'failures':errors},ensure_ascii=False))
     return 1 if errors else 0
 
 if __name__=='__main__':
     try:sys.exit(main())
     except Exception as exc:print(json.dumps({'ok':False,'errorType':type(exc).__name__}));sys.exit(2)
-

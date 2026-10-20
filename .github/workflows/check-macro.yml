@@ -30,6 +30,7 @@ jobs:
           node --test tests/macro.test.cjs
           python tests/test_macro_data.py
           python tests/test_macro_auto.py
+          python tests/test_macro_refresh_speed.py
           python tests/test_treasury_yields.py
           python tests/test_miaoxiang_credentials.py
           node --test tests/consumption-macro.test.cjs
@@ -38,7 +39,11 @@ jobs:
       - name: Install browser test dependency
         run: |
           npm install --no-save --package-lock=false playwright@1.62.1
-          npx playwright install --with-deps chromium
+          if command -v google-chrome >/dev/null 2>&1; then
+            echo 'PLAYWRIGHT_CHANNEL=chrome' >> "$GITHUB_ENV"
+          else
+            npx playwright install --with-deps chromium
+          fi
       - name: Verify macro dashboard in browser
         env:
           MACRO_SCREENSHOT_DIR: artifacts/macro
@@ -52,5 +57,3 @@ jobs:
           name: macro-dashboard-previews
           path: artifacts/macro
           if-no-files-found: ignore
-
-
