@@ -14,8 +14,10 @@ const server=http.createServer((req,res)=>{const file=path.resolve(root,'.'+deco
   await p.locator('#search').fill('CPI');await p.waitForTimeout(250);const q=await p.locator('#search').inputValue();await p.locator('#metric-list .macro-item').first().click();assert.equal(await p.locator('#search').inputValue(),q);await shot('core-workspace');
   await p.goto(base+'/consumption-macro.html');await p.locator('.cm-kpi').first().waitFor();assert.equal(await p.locator('.cm-kpi').count(),6);assert.equal(await p.locator('.cm-readout-group').count(),3);
   assert.equal(await p.locator('#consumption-views button').count(),4);
-  assert.match(await p.locator('.cm-kpi[data-id=retail] strong').innerText(),/0.4/);
-  assert.match(await p.locator('.cm-kpi[data-id=retail] .cm-kpi-amount').innerText(),/39,824/);
+  const CM=require('../scripts/consumption-macro-model.js'),consumption=CM.mergeAutomatic(require('../data/consumption-macro/observations.json'),require('../data/macro/automatic-series.json'));
+  const retail=consumption.observations.filter(r=>r.indicatorId==='retail'&&r.frequency==='monthly'&&r.basis==='month'&&Number.isFinite(r.value)&&Number.isFinite(r.yoy)).sort((a,b)=>a.period.localeCompare(b.period)).at(-1);
+  assert.ok((await p.locator('.cm-kpi[data-id=retail] strong').innerText()).includes(String(retail.yoy)));
+  assert.ok((await p.locator('.cm-kpi[data-id=retail] .cm-kpi-amount').innerText()).includes(new Intl.NumberFormat('en-US').format(retail.value)));
   await p.locator('.cm-kpi[data-id=catering]').click();
   assert.match(await p.locator('#trend-title').innerText(),/餐饮/);
   assert.equal(await p.locator('#trend-title').evaluate(e=>document.activeElement===e),true);
