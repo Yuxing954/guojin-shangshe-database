@@ -1,5 +1,6 @@
 """Read public Gamma market snapshots; no account, wallet, trading, or invented price history."""
 from datetime import datetime, timezone
+from concurrent.futures import ThreadPoolExecutor
 import json
 import math
 from pathlib import Path
@@ -114,14 +115,26 @@ def with_previous(markets,previous):
             if outcome['name'] in prices:outcome['previousProbability']=prices[outcome['name']]
     return markets
 
+def ordered_fetch(urls):
+    """Bound public reads while retaining source ranking and deterministic receipt order."""
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        return list(pool.map(fetch,urls))
+
+def meaningful(value):
+    if isinstance(value,dict):
+        return {k:meaningful(v) for k,v in value.items() if k not in {'checkedAt','fetchedAt','previousFetchedAt','previousProbability','sha256'}}
+    if isinstance(value,list):return [meaningful(v) for v in value]
+    return value
+
 def main():
     now=datetime.now(timezone.utc);stamp=now.isoformat(timespec='seconds')
     previous=json.loads(TARGET.read_text(encoding='utf-8')) if TARGET.exists() else dict(markets=[],fetchedAt=None)
     try:
         candidates=[];receipts=[];scanned=0
-        for offset in range(0,600,100):
-            url=f'https://gamma-api.polymarket.com/markets?limit=100&offset={offset}&active=true&closed=false&order=volume24hr&ascending=false'
-            body,digest=fetch(url)
+        urls=[f'https://gamma-api.polymarket.com/markets?limit=100&offset={offset}&active=true&closed=false&order=volume24hr&ascending=false' for offset in range(0,600,100)]
+        # Public, independent GETs only; map preserves the original ranking order.
+        pages=ordered_fetch(urls)
+        for url,(body,digest) in zip(urls,pages):
             if not isinstance(body,list):raise ValueError('Unexpected Gamma response')
             receipts.append(dict(url=url,sha256=digest));scanned+=len(body)
             for row in body:
@@ -130,9 +143,10 @@ def main():
                 if market:candidates.append(market)
             if len(body)<100:break
         markets=[]
-        for seed in select_events(candidates):
-            url='https://gamma-api.polymarket.com/events/'+seed['eventId']
-            event,digest=fetch(url)
+        seeds=select_events(candidates)
+        event_urls=['https://gamma-api.polymarket.com/events/'+seed['eventId'] for seed in seeds]
+        events=ordered_fetch(event_urls)
+        for seed,url,(event,digest) in zip(seeds,event_urls,events):
             receipts.append(dict(url=url,sha256=digest))
             markets.extend(expand_event(event,seed,now))
         if not markets:raise ValueError('No valid relevant markets')
@@ -140,10 +154,12 @@ def main():
             selectionNote=f'扫描成交量排名前{scanned}个活跃合约；每主题最多6个事件，补取事件全部有效活跃合约。非全市场覆盖；原始价格不归一化。')
     except Exception:
         output={**previous,'status':'error','checkedAt':stamp,'error':'Gamma读取或校验失败；保留最后成功快照。'}
+    if meaningful(output)==meaningful(previous):
+        print(json.dumps(dict(noChange=True,status=output['status'],markets=len(output['markets'])),separators=(',',':')))
+        if output['status']=='error':raise SystemExit(1)
+        return
     temp=TARGET.with_suffix('.tmp');temp.write_text(json.dumps(output,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');temp.replace(TARGET)
     print(output['status'],len(output['markets']),'markets')
     if output['status']=='error':raise SystemExit(1)
 
 if __name__=='__main__':main()
-
-

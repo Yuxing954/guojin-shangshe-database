@@ -6,6 +6,17 @@ import macro_auto as M
 from test_macro_due import DueWindowTests
 
 class AutomaticMacroTests(unittest.TestCase):
+    def test_pacing_counts_response_time_and_never_shortens_retry_backoff(self):
+        clock=[0.0]
+        def sleep(seconds):clock[0]+=seconds
+        with patch.object(M.time,'monotonic',side_effect=lambda:clock[0]),patch.object(M.time,'sleep',side_effect=sleep) as wait:
+            pacer=M.RequestPacer()
+            pacer.wait();wait.assert_not_called()
+            clock[0]+=1;pacer.wait();self.assertEqual(clock[0],4)
+            clock[0]+=7;pacer.wait();self.assertEqual(clock[0],11)
+            clock[0]+=20;pacer.wait();self.assertEqual(clock[0],31)
+            self.assertEqual(wait.call_count,1)
+
     def test_official_nonpublication_is_not_an_unexplained_gap(self):
         rows=[{'period':'2025-09','value':100},{'period':'2025-11','value':101}]
         for sid in ['us-cpi','us-core-cpi','us-unemployment','bls-CUUR0000SA0','bls-LNS14000000']:
