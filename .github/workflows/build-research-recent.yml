@@ -47,12 +47,24 @@ jobs:
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 2
 
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
+      - name: Detect prebuilt dutyfree-only update
+        id: dutyfree
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+          AFTER_SHA: ${{ github.sha }}
+        run: echo "only=$(python scripts/is_dutyfree_only.py --base "$BEFORE_SHA" --head "$AFTER_SHA")" >> "$GITHUB_OUTPUT"
+
+      - name: Validate prebuilt dutyfree snapshot
+        if: steps.dutyfree.outputs.only == 'true'
+        run: python scripts/update_dutyfree_monthly.py --check
       - uses: actions/cache@v4
+        if: steps.dutyfree.outputs.only != 'true'
         with:
           path: .cache/research-build.json
           key: summaries-${{ runner.os }}-${{ github.ref_name }}-${{ github.run_id }}
@@ -60,36 +72,46 @@ jobs:
 
       # Keep connector payloads bounded; merge only checksum-verified metadata.
       - name: Test and apply verified library upload chunks
+        if: steps.dutyfree.outputs.only != 'true'
         run: |
           python scripts/test_library_upload.py
           python scripts/apply_library_upload.py
 
       - name: Validate and update sector histories from reviewed evidence
+        if: steps.dutyfree.outputs.only != 'true'
         run: python scripts/update_sector_data.py
 
       - name: Build only changed summaries and resource directory
+        if: steps.dutyfree.outputs.only != 'true'
         run: python scripts/build_site_summaries.py
 
       - uses: actions/setup-node@v4
+        if: steps.dutyfree.outputs.only != 'true'
         with:
           node-version: "22"
 
       - name: Test resumable market-view updater
+        if: steps.dutyfree.outputs.only != 'true'
         run: node --test scripts/test_market_sync.mjs
 
       - name: Test export validation receipt
+        if: steps.dutyfree.outputs.only != 'true'
         run: python scripts/test_market_sync_receipt.py
 
       - name: Test market-view JSON exports
+        if: steps.dutyfree.outputs.only != 'true'
         run: python scripts/test_research_market_views.py
 
       - name: Build connector-readable archive and dedup index
+        if: steps.dutyfree.outputs.only != 'true'
         run: python scripts/build_research_shards.py
 
       - name: Validate generated complete market-view export
+        if: steps.dutyfree.outputs.only != 'true'
         run: python scripts/test_research_market_views.py --verify-generated
 
       - name: Commit & push if changed
+        if: steps.dutyfree.outputs.only != 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -102,3 +124,4 @@ jobs:
           fi
           git commit -m "data: refresh research and home summaries $(date -u +'%Y-%m-%d %H:%M UTC')"
           git push
+

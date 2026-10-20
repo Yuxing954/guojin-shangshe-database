@@ -205,7 +205,7 @@ def build(root=ROOT):
                     point['changeSourceId'] = change['sourceId']
             item['points'] = points
         sector['sourceIds'] = sorted({p['sourceId'] for m in sector['metrics'] for p in m['points']})
-    payload = {'version': 1, 'generatedAt': datetime.now(timezone(timedelta(hours=8))).isoformat(timespec='seconds'), 'checkedAt': max((json.loads(p.read_text(encoding='utf-8-sig')).get('checkedAt', '') for p in verified_files), default=''), 'sectors': sectors, 'sources': list(sources.values()), 'revisions': revisions}
+    payload = {'version': 1, 'generatedAt': datetime.now(timezone(timedelta(hours=8))).isoformat(timespec='seconds'), 'checkedAt': max((json.loads(p.read_text(encoding='utf-8-sig')).get('checkedAt', '') for p in verified_files), default=''), 'sectors': sectors, 'sources': sorted(sources.values(), key=lambda s: s['id']), 'revisions': revisions}
     # Specialized sector snapshots retain reviewed histories across ordinary site builds.
     sector_paths = {sid: root / f'data/sectors/{sid}.json' for sid in ('dining',)}
     if all(p.exists() for p in sector_paths.values()):
