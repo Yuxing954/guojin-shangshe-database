@@ -208,5 +208,59 @@
   },
   "recordCount": 185,
   "checkedNumericCells": 2178,
-  "note": "每条非空数字与用户提供Excel对应单元格核对；百分比乘100，CSV保留六位小数。原表整理值不表示已独立回查公告。"
+  "note": "每条非空数字与用户提供Excel对应单元格核对；百分比乘100，CSV保留六位小数。原表整理值不表示已独立回查公告。",
+  "supplements": [
+    {
+      "period": "2026-09",
+      "sourceId": "choice-dutyfree-202609",
+      "sourceType": "东方财富Choice转引海关总署",
+      "sourceUrl": "https://choicew2z.eastmoney.com/dataDisplay/macroEDB/#/index?macroids=EMM01500926,EMM01500927,EMM01500925",
+      "receiptSha256": "7113885a50ab5fd00550277498ac99e45ea5f60ba4184571cab14e0b5f0216f6",
+      "retrievedAt": "2026-10-20T09:06:10+00:00",
+      "publishedAt": null,
+      "recordPath": "data/industry/miaoxiang-2026-10-20-dutyfree.json",
+      "observations": [
+        {
+          "metricId": "dutyfree_shoppers",
+          "period": "2026-09",
+          "value": 28.06,
+          "rawValue": "28.06万",
+          "sourceId": "mx-dutyfree-20261020090610-0",
+          "basis": "monthly",
+          "quality": "provider"
+        },
+        {
+          "metricId": "dutyfree_sales",
+          "period": "2026-09",
+          "value": 17.12,
+          "rawValue": "17.12亿",
+          "sourceId": "mx-dutyfree-20261020090610-1",
+          "basis": "monthly",
+          "quality": "provider"
+        },
+        {
+          "metricId": "dutyfree_items",
+          "period": "2026-09",
+          "value": 145.3,
+          "rawValue": "145.3万",
+          "sourceId": "mx-dutyfree-20261020090610-2",
+          "basis": "monthly",
+          "quality": "provider"
+        }
+      ],
+      "calculatedFields": {
+        "spend_per_shopper_cny": "shopping_sales_cny_100m / shoppers_10k * 10000",
+        "items_per_shopper": "items_10k / shoppers_10k",
+        "unit_price_cny": "shopping_sales_cny_100m / items_10k * 10000"
+      },
+      "growthBasis": "同比按既有2025-09同月、同口径原Excel基期计算；保留原表精度，不用本次Choice的四舍五入历史覆盖原值。",
+      "missing": [
+        "tourists_10k",
+        "tourists_yoy_pct",
+        "conversion_rate_pct",
+        "publishedAt"
+      ]
+    }
+  ],
+  "totalRecordCount": 186
 }

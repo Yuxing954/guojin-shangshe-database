@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-10-08",
+  "updatedAt": "2026-10-20",
   "module": "免税行业数据库",
-  "note": "页面保留可对应原Excel的数据。无可定位出处的记录已撤下，空模块不展示；null仍表示缺失。",
+  "note": "历史保留可对应原Excel的数据；新增月度通过Choice转引海关总署，逐期来源见monthlyProvenance；null表示缺失。",
   "files": {
     "overview": "data/dutyfree/overview.json",
     "holidays": "data/dutyfree/holidays.json",
@@ -21,5 +21,6 @@
   "legacy": {
     "monthly": "data/dutyfree_monthly.csv",
     "holiday": "data/dutyfree_holiday.csv"
-  }
+  },
+  "sourceNote": "原Excel历史至2026-08；2026-09来自Choice转引海关总署，见monthly-provenance.json supplements。"
 }

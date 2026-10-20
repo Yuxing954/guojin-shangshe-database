@@ -38,13 +38,14 @@ class IndustrySnapshotTests(unittest.TestCase):
 
     def test_dutyfree_spend_uses_matching_release_and_units(self):
         value = self.metrics['dutyfree_spend']['points'][-1]
-        self.assertAlmostEqual(value['value'], 21.45 / 37.24 * 10000)
+        self.assertEqual(value['period'], '2026-09')
+        self.assertAlmostEqual(value['value'], 17.12 / 28.06 * 10000)
         self.assertEqual(value['quality'], 'derived')
         self.assertEqual(len(value['inputs']), 2)
         # The old sales growth is not attached to a different provider's amount.
         latest_sales = self.metrics['dutyfree_sales']['points'][-1]
         self.assertEqual(latest_sales['changeMethod'], 'calculated')
-        prior = next(p for p in self.metrics['dutyfree_sales']['points'] if p['period'] == '2025-08')
+        prior = next(p for p in self.metrics['dutyfree_sales']['points'] if p['period'] == '2025-09')
         self.assertAlmostEqual(latest_sales['change'], (latest_sales['value'] / prior['value'] - 1) * 100)
         self.assertEqual(latest_sales['changeCalculation']['currentSourceId'], latest_sales['sourceId'])
         self.assertEqual(latest_sales['changeCalculation']['priorSourceId'], prior['sourceId'])
@@ -101,4 +102,3 @@ class IndustrySnapshotTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-

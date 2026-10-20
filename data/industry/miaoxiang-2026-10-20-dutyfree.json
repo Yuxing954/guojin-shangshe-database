@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-20T09:06:10+00:00",
+  "sources": [
+    {
+      "id": "mx-dutyfree-20261020090610-0",
+      "name": "海关总署",
+      "provider": "东方财富妙想 / Choice",
+      "url": "https://choicew2z.eastmoney.com/dataDisplay/macroEDB/#/index?macroids=EMM01500926,EMM01500927,EMM01500925",
+      "retrievedAt": "2026-10-20T09:06:10+00:00",
+      "publishedAt": null,
+      "indicator": "海南:离岛免税购物:人次(人次)",
+      "query": "查询海口海关统计的海南离岛免税购物月度数据（不是免税店含有税营业额，也不是累计）：2025年9月、2026年8月、2026年9月的购物金额（亿元）、购物人数（万人次）、购物件数（万件）。保留准确指标全称、发布机构、原始精度、指标代码及来源跳转链接。未公布月份请明确缺失，不用预测或假期数据代替整月。",
+      "quality": "provider",
+      "receiptSha256": "7113885a50ab5fd00550277498ac99e45ea5f60ba4184571cab14e0b5f0216f6"
+    },
+    {
+      "id": "mx-dutyfree-20261020090610-1",
+      "name": "海关总署",
+      "provider": "东方财富妙想 / Choice",
+      "url": "https://choicew2z.eastmoney.com/dataDisplay/macroEDB/#/index?macroids=EMM01500926,EMM01500927,EMM01500925",
+      "retrievedAt": "2026-10-20T09:06:10+00:00",
+      "publishedAt": null,
+      "indicator": "海南:离岛免税购物:金额(元)",
+      "query": "查询海口海关统计的海南离岛免税购物月度数据（不是免税店含有税营业额，也不是累计）：2025年9月、2026年8月、2026年9月的购物金额（亿元）、购物人数（万人次）、购物件数（万件）。保留准确指标全称、发布机构、原始精度、指标代码及来源跳转链接。未公布月份请明确缺失，不用预测或假期数据代替整月。",
+      "quality": "provider",
+      "receiptSha256": "7113885a50ab5fd00550277498ac99e45ea5f60ba4184571cab14e0b5f0216f6"
+    },
+    {
+      "id": "mx-dutyfree-20261020090610-2",
+      "name": "海关总署",
+      "provider": "东方财富妙想 / Choice",
+      "url": "https://choicew2z.eastmoney.com/dataDisplay/macroEDB/#/index?macroids=EMM01500926,EMM01500927,EMM01500925",
+      "retrievedAt": "2026-10-20T09:06:10+00:00",
+      "publishedAt": null,
+      "indicator": "海南:离岛免税购物:件数(件)",
+      "query": "查询海口海关统计的海南离岛免税购物月度数据（不是免税店含有税营业额，也不是累计）：2025年9月、2026年8月、2026年9月的购物金额（亿元）、购物人数（万人次）、购物件数（万件）。保留准确指标全称、发布机构、原始精度、指标代码及来源跳转链接。未公布月份请明确缺失，不用预测或假期数据代替整月。",
+      "quality": "provider",
+      "receiptSha256": "7113885a50ab5fd00550277498ac99e45ea5f60ba4184571cab14e0b5f0216f6"
+    }
+  ],
+  "records": [
+    {
+      "metricId": "dutyfree_shoppers",
+      "period": "2026-09",
+      "value": 28.06,
+      "rawValue": "28.06万",
+      "sourceId": "mx-dutyfree-20261020090610-0",
+      "basis": "monthly",
+      "quality": "provider"
+    },
+    {
+      "metricId": "dutyfree_sales",
+      "period": "2026-09",
+      "value": 17.12,
+      "rawValue": "17.12亿",
+      "sourceId": "mx-dutyfree-20261020090610-1",
+      "basis": "monthly",
+      "quality": "provider"
+    },
+    {
+      "metricId": "dutyfree_items",
+      "period": "2026-09",
+      "value": 145.3,
+      "rawValue": "145.3万",
+      "sourceId": "mx-dutyfree-20261020090610-2",
+      "basis": "monthly",
+      "quality": "provider"
+    }
+  ],
+  "attempts": [
+    {
+      "id": "dutyfree",
+      "tool": "mx_macro_data",
+      "retrievedAt": "2026-10-20T09:06:10+00:00",
+      "acceptedRecords": 3,
+      "query": "查询海口海关统计的海南离岛免税购物月度数据（不是免税店含有税营业额，也不是累计）：2025年9月、2026年8月、2026年9月的购物金额（亿元）、购物人数（万人次）、购物件数（万件）。保留准确指标全称、发布机构、原始精度、指标代码及来源跳转链接。未公布月份请明确缺失，不用预测或假期数据代替整月。",
+      "receiptSha256": "7113885a50ab5fd00550277498ac99e45ea5f60ba4184571cab14e0b5f0216f6",
+      "unimportedPeriods": [
+        "2025-09",
+        "2026-08"
+      ]
+    }
+  ]
+}

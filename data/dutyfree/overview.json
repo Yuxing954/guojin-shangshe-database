@@ -1,50 +1,54 @@
 {
-  "updatedAt": "2026-10-08",
+  "updatedAt": "2026-10-20",
   "kpis": [
     {
       "key": "hainan_sales",
       "label": "海南离岛免税销售额",
-      "value": 21.39,
+      "value": 17.12,
       "unit": "亿元",
-      "period": "2026-08",
-      "yoy": 1.61,
+      "period": "2026-09",
+      "yoy": -1.2368469632637824,
       "qoq": null,
       "target": "hainan",
-      "source": "provided_workbook_monthly"
+      "source": "choice-dutyfree-202609",
+      "changeMethod": "calculated"
     },
     {
       "key": "hainan_shoppers",
       "label": "海南离岛免税购物人数",
-      "value": 37.24,
+      "value": 28.06,
       "unit": "万人次",
-      "period": "2026-08",
-      "yoy": 0.81,
+      "period": "2026-09",
+      "yoy": 0.057766779109802435,
       "qoq": null,
       "target": "hainan",
-      "source": "provided_workbook_monthly"
+      "source": "choice-dutyfree-202609",
+      "changeMethod": "calculated"
     },
     {
       "key": "hainan_items",
       "label": "海南离岛免税购物件数",
-      "value": 212.07,
+      "value": 145.3,
       "unit": "万件",
-      "period": "2026-08",
-      "yoy": -1.88,
+      "period": "2026-09",
+      "yoy": -2.9421941610344504,
       "qoq": null,
       "target": "hainan",
-      "source": "provided_workbook_monthly"
+      "source": "choice-dutyfree-202609",
+      "changeMethod": "calculated"
     },
     {
       "key": "hainan_spend",
       "label": "客单价",
-      "value": 5745,
+      "value": 6101.0,
       "unit": "元",
-      "period": "2026-08",
-      "yoy": 0.79,
+      "period": "2026-09",
+      "yoy": -1.2938663174760112,
       "qoq": null,
       "target": "hainan",
-      "source": "provided_workbook_monthly"
+      "source": "choice-dutyfree-202609",
+      "changeMethod": "calculated"
     }
   ],
-  "note": "核心指标来自已逐值核对的原Excel月度数据；其他无可定位原文的指标已撤下。"
+  "note": "历史保留用户原Excel，2026-09增补Choice转引海关总署；同比使用原表同月基期计算，获取时间不作发布日期。"
 }

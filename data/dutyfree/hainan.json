@@ -1,9 +1,10 @@
 {
-  "updatedAt": "2026-10-08",
+  "updatedAt": "2026-10-20",
   "note": "海南离岛免税模块元数据。月度/季度/年度趋势数据来自既有 dutyfree_monthly.csv（含销售额/购物人数/件数/客单价/同比），本文件记录口径说明与年度汇总预留。null=暂无。",
   "source": {
-    "name": "【国金商社】离岛免税数据库 20260908.xlsx · 月度数据工作表",
-    "type": "用户提供原Excel"
+    "name": "原Excel历史 + Choice月度补充",
+    "type": "原Excel / Choice转引海关总署",
+    "url": "data/dutyfree/monthly-provenance.json"
   },
   "annual": [],
   "fieldMap": {
@@ -15,5 +16,6 @@
     "shoppers_yoy": "shoppers_yoy_pct",
     "items_yoy": "items_yoy_pct",
     "spend_yoy": "spend_per_shopper_yoy_pct"
-  }
+  },
+  "sourceNote": "原Excel历史至2026-08；2026-09来自Choice转引海关总署，见monthly-provenance.json supplements。"
 }
