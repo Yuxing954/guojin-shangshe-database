@@ -98,8 +98,8 @@ function render(){
 async function reload(){
  if(busy)return;busy=true;$('refresh').disabled=true;status('正在读取月度数据…');
  try{const original=await json('data/consumption-macro/observations.json');const errors=CM.validate(original);if(errors.length)throw Error(errors[0]);warning='';
- let incoming=original;try{incoming=CM.mergeAutomatic(original,await json('data/macro/automatic-series.json'));}catch(e){warning='补充历史读取失败，使用原始披露';}
- insights=await json('data/products/retail-monthly-insights.json');incoming=M.mergeReleases(incoming,insights);const releaseErrors=CM.validate(M.mergeReleases(original,insights));if(releaseErrors.length)throw Error(releaseErrors[0]);
+ insights=await json('data/products/retail-monthly-insights.json');const official=M.mergeReleases(original,insights);const releaseErrors=CM.validate(official);if(releaseErrors.length)throw Error(releaseErrors[0]);
+ let incoming=official;try{incoming=CM.mergeAutomatic(official,await json('data/macro/automatic-series.json'));}catch(e){warning='补充历史读取失败，使用原始披露';}
  const nextLegal=await json('data/products/research-legal.json');if(!Array.isArray(nextLegal.paragraphs)||nextLegal.paragraphs.length!==2)throw Error('声明文件无效');
  const periods=M.months(incoming);if(!periods.length)throw Error('暂无月度数据');const requested=new URLSearchParams(location.search).get('month'),previous=$('month').value;
  data=incoming;legal=nextLegal.paragraphs;const old=previous||requested;$('month').replaceChildren(...periods.map(p=>{const o=document.createElement('option');o.value=p;o.textContent=M.monthLabel(p,M.row(incoming,'retail',p)?.basis==='jan_feb');return o;}));$('month').value=periods.includes(old)?old:M.preferred(data);
