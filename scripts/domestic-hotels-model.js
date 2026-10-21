@@ -2,10 +2,10 @@
  'use strict';
  const metrics=['RevPAR','ADR','OCC'],finite=v=>typeof v==='number'&&Number.isFinite(v);
  const fmt=(v,d=2)=>finite(v)?v.toLocaleString('zh-CN',{minimumFractionDigits:d,maximumFractionDigits:d}):'—';
- const growth=(v,pp=false)=>finite(v)?(v>0?'+':'')+fmt(v,1)+(pp?' pp':'%'):'—';
+ const growth=(v,pp=false)=>finite(v)?(v>0?'+':'')+fmt(v,1)+(pp?' pct':'%'):'—';
  const quarter=p=>String(p).replace(/H1$/,'Q2').replace(/9M$/,'Q3').replace(/FY$/,'Q4');
  const period=(q,frequency)=>frequency==='单季度'?q:q.replace(/Q2$/,'H1').replace(/Q3$/,'9M').replace(/Q4$/,'FY');
- const label=(p,frequency)=>frequency==='单季度'?p:(/Q1$/.test(p)?'3M'+p.slice(2,4):/H1$/.test(p)?'6M'+p.slice(2,4):/9M$/.test(p)?'9M'+p.slice(2,4):/FY$/.test(p)?'FY'+p.slice(2,4):p);
+ const label=(p,frequency)=>frequency==='单季度'?String(p).replace(/^20(\d{2})Q/,'$1Q'):(/Q1$/.test(p)?'3M'+p.slice(2,4):/H1$/.test(p)?'6M'+p.slice(2,4):/9M$/.test(p)?'9M'+p.slice(2,4):/FY$/.test(p)?'FY'+p.slice(2,4):p);
  function range(quarters,from,to){const end=quarters.includes(to)?to:quarters.at(-1),start=quarters.includes(from)&&from<=end?from:quarters[0];return quarters.filter(q=>q>=start&&q<=end);}
  function windowRows(rows,frequency){return rows.filter(r=>frequency==='单季度'?/Q[1-4]$/.test(r.period):/(Q1|H1|9M|FY)$/.test(r.period));}
  function select(rows,filters={}){return rows.filter(r=>Object.entries(filters).every(([k,v])=>v==null||v===''||r[k]===v));}
