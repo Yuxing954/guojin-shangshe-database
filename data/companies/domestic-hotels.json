@@ -82,7 +82,7 @@
       "ticker": "1179.HK / HTHT",
       "region": "中国业务",
       "category": "合计",
-      "logo": "scripts/assets/domestic-hotels/hworld.svg",
+      "logo": "scripts/assets/domestic-hotels/hworld-group.png",
       "file": "data/companies/domestic-hotels/hworld.json",
       "count": 1578
     },
@@ -94,13 +94,13 @@
       "ticker": "ATAT",
       "region": "境内",
       "category": "合计",
-      "logo": "scripts/assets/domestic-hotels/atour.svg",
+      "logo": "scripts/assets/domestic-hotels/atour-group.jpg",
       "file": "data/companies/domestic-hotels/atour.json",
       "count": 621
     }
   ],
   "logos": {
-    "checkedAt": "2026-10-20",
+    "checkedAt": "2026-10-21",
     "items": {
       "jinjiang": {
         "file": "scripts/assets/domestic-hotels/jinjiang.png",
@@ -113,15 +113,17 @@
         "page": "https://www.bthhotels.com/"
       },
       "hworld": {
-        "file": "scripts/assets/domestic-hotels/hworld.svg",
-        "url": "https://logos.stockanalysis.com/htht.svg",
-        "page": "https://stockanalysis.com/stocks/htht/company/",
-        "note": "公司标识归档，区别于华住会会员标识"
+        "file": "scripts/assets/domestic-hotels/hworld-group.png",
+        "url": "https://companieslogo.com/img/orig/HTHT_BIG-f4b6a9ad.png?t=1720244492",
+        "page": "https://companieslogo.com/huazhu-hotels/logo/",
+        "verification": "https://ir.hworld.com/static-files/e5d7edb9-1018-4407-bae0-6c91a8fed94d",
+        "note": "完整华住 WORLD 集团标识，与公司2022年采用新Logo公告对照；不是华住会会员标识"
       },
       "atour": {
-        "file": "scripts/assets/domestic-hotels/atour.svg",
-        "url": "https://wifi.yaduo.com/static/themes/atour/images/pc/ATLogo/atour@3x.svg",
-        "page": "https://wifi.yaduo.com/srun_portal_success"
+        "file": "scripts/assets/domestic-hotels/atour-group.jpg",
+        "url": "https://img.traveldaily.cn/company/logo/2022/0222e801b5d705dc7444.jpg",
+        "page": "https://www.traveldaily.cn/article/188877/",
+        "note": "亚朵集团 ATOUR GROUP 完整字标；环球旅讯公司标识归档，不是亚朵酒店的 ATOUR 子品牌图形"
       }
     }
   }
