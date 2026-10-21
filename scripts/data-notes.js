@@ -2,6 +2,7 @@
   'use strict';
   const D=SiteData,esc=D.esc,$=id=>document.getElementById(id),cache=new Map();let request=0;
   const modules={
+    tourism:{name:'三峡游轮',files:['data/tourism/three-gorges-cruises.json'],docs:['docs/three-gorges-cruises.md']},
     'retail-monthly':{name:'社零月度产品',files:['data/products/retail-monthly.json'],docs:['docs/retail-monthly-product.md']},
     calendar:{name:'重要数据日历',files:['data/important-calendar.json'],docs:['docs/important-calendar.md']},
     monthly:{name:'CPI月度产品',files:['data/products/consumption-monthly.json'],docs:['docs/consumption-monthly-product.md']},
@@ -23,6 +24,7 @@
   function sources(values){const rows=values.flatMap(x=>Array.isArray(x.sources)?x.sources:Object.values(x.sources||{}));return rows.length?'<article class="notes-panel"><h2>来源记录</h2><details><summary>'+rows.length+'条来源</summary>'+rows.map(s=>'<div class="notes-source-item">'+(D.link(s.url)?'<a target="_blank" rel="noopener" href="'+esc(D.link(s.url))+'">'+esc(s.name||s.title||s.sourceName||s.label||s.file||s.id||'来源')+' ↗</a>':esc(s.name||s.title||s.sourceName||s.label||s.file||s.id||'来源'))+'<p>'+esc([s.publisher||s.provider,s.quality,s.publishedAt?'发布 '+s.publishedAt:'',s.checkedAt?'核对 '+s.checkedAt:'',s.locator,s.note||s.notes||s.verification].filter(Boolean).join(' · '))+'</p></div>').join('')+'</details></article>':'';}
   function notes(id,values){
     const a=values[0]||{},out=[];
+    if(id==='tourism')out.push(...(a.notes||[]));
     if(id==='calendar')out.push('只保留中国CPI、社零、美国CPI、非农和美联储议息五类；日程范围：'+a.coverageStart+'—'+a.coverageEnd+'。','全部时间为北京时间；海外原始时区单独保存，按冬夏令时换算。美联储会议日期与决议发布时间分开显示。','日期为官方计划，可能调整。“时间已过”不表示已发布或本站已更新；后续未核验日期不推算。','日历不重复维护指标数值，数据入口指向现有模块。导出包含当前地区和时间范围的日程。');
     if(id==='hotel-groups')out.push('来源：酒店之家集团数据。覆盖华住、锦江酒店（中国区）、首旅如家、亚朵。','ADR读取stay_adr（入住日期）；热度指数、房价指数分别读取stay_heat_index、stay_price_index（均按入住日期统计），指数保留两位小数；酒店数和房间数保留源表值。指数同比为同一字段同周相对变动，不等于ADR增速或OCC。','同比对齐上年同周号，未调整节假日错期；基期缺失或非正数时不强算。','源数据不含集团周度OCC、RevPAR，不用热度或价格指数代替，也不以财报数据填补。','范围：'+(a.datasets?.['hotel_group_weekly.csv']?.latestPeriod||'以源CSV为准')+'；入库时间：'+(a.importedAt||'未记录')+'。','直接读取hotel_group_weekly.csv；更新现有酒店周度数据即可，无需新增公司底稿构建步骤。');
     if(id==='monthly'||id==='retail-monthly')out.push(...(a.notes||[]));

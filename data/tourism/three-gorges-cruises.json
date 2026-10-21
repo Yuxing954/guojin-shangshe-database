@@ -1,0 +1,1394 @@
+{
+  "schemaVersion": 1,
+  "title": "长江三峡游轮月度运行数据",
+  "updatedAt": "2026-10-21",
+  "coverageStart": "2024-01",
+  "coverageEnd": "2026-09",
+  "upstreamPublisher": "重庆邮轮中心 / 重庆航运交易所",
+  "units": {
+    "sailings": "艘次",
+    "passengers": "万人",
+    "load": "%",
+    "sailingsYoY": "%",
+    "passengersYoY": "%",
+    "loadYoYPp": "百分点",
+    "nonOvernightSailings": "艘次",
+    "nonOvernightPassengers": "万人"
+  },
+  "notes": [
+    "覆盖2024—2026三个自然年：2024-01至2026-09共33个月，其中32个月有当月核心指标；2024-01未核验，留空。2026年10月尚未结束，不补入未来月份。",
+    "统计对象为长江三峡游轮行业运行情况，不是上市公司三峡旅游的经营数据。发船量单位为艘次，客运量单位为万人，平均载客率按床位计。",
+    "来源为重庆邮轮中心、重庆航运交易所数据的媒体或论坛转引，未取得完整官网原始月报归档。逐期保留链接、转引层级和发布日期；2026-03当月载客率由券商研报转引，2026-02由论坛转引，待官方原文复核。",
+    "同比沿用来源披露；“为上年同期X%”转换为同比X-100%。载客率同比以百分点记，不是相对增幅。不用已舍入客运量重新计算同比。",
+    "累计值直接采用披露，不对月度值机械加总；累计载客率直接采用披露，不取月度载客率平均值。1月累计与当月一致。未核实项目为null，明确披露的零值保留0。",
+    "2024-01原值缺失；2024-05累计载客率及其同比缺失；2026-01同比缺失。非跨夜明细仅收录已核实披露，其他留空。",
+    "2024-02初披累计244艘次、3.89万人，与3月累计739艘次、13.76万人减当月496艘次、9.9万人不一致。2025年2—3月同比隐含的上年载客率也与2024年初披值不同，版本或口径差异原因未核明，未混用基期或回改历史。",
+    "累计与当月存在其他衔接差异，如2025-07非跨夜累计230艘次与6月181加7月51不一致；2025-09及12月、2026-06至08月发船累计存在衔接差异。保留原文数值，不强制配平。",
+    "2026-05非跨夜累计74艘次、1.36万人与4月相同，但当月48艘次、0.65万人；原转载存在明显衔接异常，数值留存并标记，不据此推算。",
+    "省际非跨夜游轮为来源标注的“其中”项，不能加回总量。2024年相关月度明细未完整取得，跨年比较需注意统计覆盖变化。"
+  ],
+  "records": [
+    {
+      "period": "2024-01",
+      "monthly": {
+        "sailings": null,
+        "passengers": null,
+        "load": null,
+        "sailingsYoY": null,
+        "passengersYoY": null,
+        "loadYoYPp": null,
+        "nonOvernightSailings": null,
+        "nonOvernightPassengers": null
+      },
+      "ytd": {
+        "sailings": null,
+        "passengers": null,
+        "load": null,
+        "sailingsYoY": null,
+        "passengersYoY": null,
+        "loadYoYPp": null,
+        "nonOvernightSailings": null,
+        "nonOvernightPassengers": null
+      },
+      "sourceIds": [
+        "cq-2024-01"
+      ],
+      "status": "待核验",
+      "fieldSources": {},
+      "notes": [
+        "未找到2024年1月原始月报，数值留空。2024年2月初披累计减当月可得80艘次、1.02万人，但与后续月报衔接和同比基数存在差异，不入主序列。"
+      ],
+      "reconciliationClue": {
+        "sailings": 80,
+        "passengers": 1.02,
+        "method": "2024-02初披累计减当月，仅供核验，不作为正式数据"
+      }
+    },
+    {
+      "period": "2024-02",
+      "monthly": {
+        "sailings": 164.0,
+        "passengers": 2.87,
+        "load": 58.15,
+        "sailingsYoY": 62.38,
+        "passengersYoY": 86.75,
+        "loadYoYPp": -2.62,
+        "nonOvernightSailings": null,
+        "nonOvernightPassengers": null
+      },
+      "ytd": {
+        "sailings": 244.0,
+        "passengers": 3.89,
+        "load": 56.56,
+        "sailingsYoY": 96.77,
+        "passengersYoY": 109.15,
+        "loadYoYPp": -5.08,
+        "nonOvernightSailings": null,
+        "nonOvernightPassengers": null
+      },
+      "sourceIds": [
+        "cq-2024-02"
+      ],
+      "status": "转引披露",
+      "fieldSources": {},
+      "notes": []
+    },
+    {
+      "period": "2024-03",
+      "monthly": {
+        "sailings": 496.0,
+        "passengers": 9.9,
+        "load": 63.07,
+        "sailingsYoY": 9.26,
+        "passengersYoY": -21.18,
+        "loadYoYPp": -28.11,
+        "nonOvernightSailings": null,
+        "nonOvernightPassengers": null
+      },
+      "ytd": {
+        "sailings": 739.0,
+        "passengers": 13.76,
+        "load": 61.06,
+        "sailingsYoY": 28.52,
+        "passengersYoY": -4.58,
+        "loadYoYPp": -24.82,
+        "nonOvernightSailings": null,
+        "nonOvernightPassengers": null
+      },
+      "sourceIds": [
+        "cq-2024-03"
+      ],
+      "status": "转引披露",
+      "fieldSources": {},
+      "notes": []
+    },
+    {
+      "period": "2024-04",
+      "monthly": {
+        "sailings": 569.0,
+        "passengers": 15.7,
+        "load": 86.02,
+        "sailingsYoY": -0.35,
+        "passengersYoY": -5.14,
+        "loadYoYPp": -6.75,
+        "nonOvernightSailings": null,
+        "nonOvernightPassengers": null
+      },
+      "ytd": {
+        "sailings": 1308.0,
+        "passengers": 29.46,
+        "load": 72.1,
+        "sailingsYoY": 14.14,
+        "passengersYoY": -4.91,
+        "loadYoYPp": -17.26,
+        "nonOvernightSailings": null,
+        "nonOvernightPassengers": null
+      },
+      "sourceIds": [
+        "cq-2024-04"
+      ],
+      "status": "转引披露",
+      "fieldSources": {},
+      "notes": []
+    },
+    {
+      "period": "2024-05",
+      "monthly": {
+        "sailings": 611.0,
+        "passengers": 15.25,
+        "load": 79.49,
+        "sailingsYoY": 2.17,
+        "passengersYoY": -7.01,
+        "loadYoYPp": -9.62,
+        "nonOvernightSailings": null,
+        "nonOvernightPassengers": null
+      },
+      "ytd": {
+        "sailings": 1919,
+        "passengers": 44.7,
+        "load": null,
+        "sailingsYoY": 10.03,
+        "passengersYoY": -5.66,
+        "loadYoYPp": null,
+        "nonOvernightSailings": null,
+        "nonOvernightPassengers": null
+      },
+      "sourceIds": [
+        "cq-2024-05",
+        "cq-2024-05-ytd"
+      ],
+      "status": "转引披露",
+      "fieldSources": {
+        "ytd.*": "cq-2024-05-ytd"
+      },
+      "notes": [
+        "2024年5月累计载客率及其同比未完成原文核验，留空。"
+      ]
+    },
+    {
+      "period": "2024-06",
+      "monthly": {
+        "sailings": 558.0,
+        "passengers": 12.87,
+        "load": 72.88,
+        "sailingsYoY": -2.11,
+        "passengersYoY": -5.3,
+        "loadYoYPp": -3.63,
+        "nonOvernightSailings": null,
+        "nonOvernightPassengers": null
+      },
+      "ytd": {
+        "sailings": 2477.0,
+        "passengers": 57.59,
+        "load": 74.09,
+        "sailingsYoY": 7.04,
+        "passengersYoY": -5.54,
+        "loadYoYPp": -11.81,
+        "nonOvernightSailings": null,
+        "nonOvernightPassengers": null
+      },
+      "sourceIds": [
+        "cq-2024-06"
+      ],
+      "status": "转引披露",
+      "fieldSources": {},
+      "notes": []
+    },
+    {
+      "period": "2024-07",
+      "monthly": {
+        "sailings": 560.0,
+        "passengers": 13.66,
+        "load": 78.02,
+        "sailingsYoY": -6.51,
+        "passengersYoY": -16.86,
+        "loadYoYPp": -13.94,
+        "nonOvernightSailings": null,
+        "nonOvernightPassengers": null
+      },
+      "ytd": {
+        "sailings": 3037.0,
+        "passengers": 71.25,
+        "load": 76.64,
+        "sailingsYoY": 4.26,
+        "passengersYoY": -7.95,
+        "loadYoYPp": -12.96,
+        "nonOvernightSailings": null,
+        "nonOvernightPassengers": null
+      },
+      "sourceIds": [
+        "cq-2024-07"
+      ],
+      "status": "转引披露",
+      "fieldSources": {},
+      "notes": []
+    },
+    {
+      "period": "2024-08",
+      "monthly": {
+        "sailings": 551.0,
+        "passengers": 12.97,
+        "load": 75.52,
+        "sailingsYoY": -5.0,
+        "passengersYoY": -5.86,
+        "loadYoYPp": -2.34,
+        "nonOvernightSailings": null,
+        "nonOvernightPassengers": null
+      },
+      "ytd": {
+        "sailings": 3588.0,
+        "passengers": 84.22,
+        "load": 76.47,
+        "sailingsYoY": 2.72,
+        "passengersYoY": -7.63,
+        "loadYoYPp": -11.12,
+        "nonOvernightSailings": null,
+        "nonOvernightPassengers": null
+      },
+      "sourceIds": [
+        "cq-2024-08"
+      ],
+      "status": "转引披露",
+      "fieldSources": {},
+      "notes": []
+    },
+    {
+      "period": "2024-09",
+      "monthly": {
+        "sailings": 535.0,
+        "passengers": 9.37,
+        "load": 55.78,
+        "sailingsYoY": -8.39,
+        "passengersYoY": -31.19,
+        "loadYoYPp": -21.07,
+        "nonOvernightSailings": null,
+        "nonOvernightPassengers": null
+      },
+      "ytd": {
+        "sailings": 4123.0,
+        "passengers": 93.58,
+        "load": 73.72,
+        "sailingsYoY": 1.13,
+        "passengersYoY": -10.69,
+        "loadYoYPp": -12.32,
+        "nonOvernightSailings": null,
+        "nonOvernightPassengers": null
+      },
+      "sourceIds": [
+        "cq-2024-09"
+      ],
+      "status": "转引披露",
+      "fieldSources": {},
+      "notes": []
+    },
+    {
+      "period": "2024-10",
+      "monthly": {
+        "sailings": 602.0,
+        "passengers": 15.29,
+        "load": 83.68,
+        "sailingsYoY": -0.66,
+        "passengersYoY": -7.44,
+        "loadYoYPp": -6.04,
+        "nonOvernightSailings": null,
+        "nonOvernightPassengers": null
+      },
+      "ytd": {
+        "sailings": 4725.0,
+        "passengers": 108.87,
+        "load": 74.96,
+        "sailingsYoY": 0.9,
+        "passengersYoY": -10.24,
+        "loadYoYPp": -11.56,
+        "nonOvernightSailings": null,
+        "nonOvernightPassengers": null
+      },
+      "sourceIds": [
+        "cq-2024-10"
+      ],
+      "status": "转引披露",
+      "fieldSources": {},
+      "notes": []
+    },
+    {
+      "period": "2024-11",
+      "monthly": {
+        "sailings": 527.0,
+        "passengers": 12.28,
+        "load": 75.03,
+        "sailingsYoY": -3.66,
+        "passengersYoY": -8.17,
+        "loadYoYPp": -5.54,
+        "nonOvernightSailings": null,
+        "nonOvernightPassengers": null
+      },
+      "ytd": {
+        "sailings": 5252.0,
+        "passengers": 121.16,
+        "load": 74.97,
+        "sailingsYoY": 0.42,
+        "passengersYoY": -10.04,
+        "loadYoYPp": -10.92,
+        "nonOvernightSailings": null,
+        "nonOvernightPassengers": null
+      },
+      "sourceIds": [
+        "cq-2024-11"
+      ],
+      "status": "转引披露",
+      "fieldSources": {},
+      "notes": []
+    },
+    {
+      "period": "2024-12",
+      "monthly": {
+        "sailings": 144.0,
+        "passengers": 2.44,
+        "load": 54.39,
+        "sailingsYoY": -22.58,
+        "passengersYoY": -17.18,
+        "loadYoYPp": -0.06,
+        "nonOvernightSailings": null,
+        "nonOvernightPassengers": null
+      },
+      "ytd": {
+        "sailings": 5396.0,
+        "passengers": 123.59,
+        "load": 74.41,
+        "sailingsYoY": -0.33,
+        "passengersYoY": -10.19,
+        "loadYoYPp": -7.64,
+        "nonOvernightSailings": null,
+        "nonOvernightPassengers": null
+      },
+      "sourceIds": [
+        "cq-2024-12"
+      ],
+      "status": "转引披露",
+      "fieldSources": {},
+      "notes": []
+    },
+    {
+      "period": "2025-01",
+      "monthly": {
+        "sailings": 77.0,
+        "passengers": 1.4891,
+        "load": 60.73,
+        "sailingsYoY": -2.53,
+        "passengersYoY": 48.54,
+        "loadYoYPp": 8.28,
+        "nonOvernightSailings": null,
+        "nonOvernightPassengers": null
+      },
+      "ytd": {
+        "sailings": 77.0,
+        "passengers": 1.4891,
+        "load": 60.73,
+        "sailingsYoY": -2.53,
+        "passengersYoY": 48.54,
+        "loadYoYPp": 8.28,
+        "nonOvernightSailings": null,
+        "nonOvernightPassengers": null
+      },
+      "sourceIds": [
+        "cq-2025-01"
+      ],
+      "status": "转引披露",
+      "fieldSources": {},
+      "notes": []
+    },
+    {
+      "period": "2025-02",
+      "monthly": {
+        "sailings": 154.0,
+        "passengers": 2.78,
+        "load": 67.68,
+        "sailingsYoY": -6.1,
+        "passengersYoY": -2.96,
+        "loadYoYPp": 7.45,
+        "nonOvernightSailings": 6.0,
+        "nonOvernightPassengers": 0.07
+      },
+      "ytd": {
+        "sailings": 231.0,
+        "passengers": 4.27,
+        "load": 65.05,
+        "sailingsYoY": -4.94,
+        "passengersYoY": 10.38,
+        "loadYoYPp": 7.05,
+        "nonOvernightSailings": 8.0,
+        "nonOvernightPassengers": 0.07
+      },
+      "sourceIds": [
+        "cq-2025-02",
+        "cq-2025-02-detail"
+      ],
+      "status": "转引披露",
+      "fieldSources": {
+        "ytd.*": "cq-2025-02-detail",
+        "monthly.nonOvernightSailings": "cq-2025-02-detail",
+        "monthly.nonOvernightPassengers": "cq-2025-02-detail"
+      },
+      "notes": []
+    },
+    {
+      "period": "2025-03",
+      "monthly": {
+        "sailings": 472.0,
+        "passengers": 11.08,
+        "load": 74.82,
+        "sailingsYoY": -4.84,
+        "passengersYoY": 12.02,
+        "loadYoYPp": 9.77,
+        "nonOvernightSailings": 28.0,
+        "nonOvernightPassengers": 0.5
+      },
+      "ytd": {
+        "sailings": 703.0,
+        "passengers": 15.35,
+        "load": 71.76,
+        "sailingsYoY": -4.87,
+        "passengersYoY": 11.56,
+        "loadYoYPp": 8.89,
+        "nonOvernightSailings": 36.0,
+        "nonOvernightPassengers": 0.57
+      },
+      "sourceIds": [
+        "cq-2025-03"
+      ],
+      "status": "转引披露",
+      "fieldSources": {},
+      "notes": []
+    },
+    {
+      "period": "2025-04",
+      "monthly": {
+        "sailings": 528.0,
+        "passengers": 14.67,
+        "load": 89.48,
+        "sailingsYoY": -7.21,
+        "passengersYoY": -6.51,
+        "loadYoYPp": 3.46,
+        "nonOvernightSailings": 52.0,
+        "nonOvernightPassengers": 0.74
+      },
+      "ytd": {
+        "sailings": 1231.0,
+        "passengers": 30.02,
+        "load": 79.39,
+        "sailingsYoY": -5.89,
+        "passengersYoY": 1.93,
+        "loadYoYPp": 7.29,
+        "nonOvernightSailings": 88.0,
+        "nonOvernightPassengers": 1.31
+      },
+      "sourceIds": [
+        "cq-2025-04"
+      ],
+      "status": "转引披露",
+      "fieldSources": {},
+      "notes": []
+    },
+    {
+      "period": "2025-05",
+      "monthly": {
+        "sailings": 551.0,
+        "passengers": 13.19,
+        "load": 76.97,
+        "sailingsYoY": -9.82,
+        "passengersYoY": -13.63,
+        "loadYoYPp": -2.52,
+        "nonOvernightSailings": 53.0,
+        "nonOvernightPassengers": 0.62
+      },
+      "ytd": {
+        "sailings": 1782.0,
+        "passengers": 43.21,
+        "load": 78.64,
+        "sailingsYoY": -7.14,
+        "passengersYoY": -3.38,
+        "loadYoYPp": 3.82,
+        "nonOvernightSailings": 141.0,
+        "nonOvernightPassengers": 1.94
+      },
+      "sourceIds": [
+        "cq-2025-05"
+      ],
+      "status": "转引披露",
+      "fieldSources": {},
+      "notes": []
+    },
+    {
+      "period": "2025-06",
+      "monthly": {
+        "sailings": 518.0,
+        "passengers": 11.02,
+        "load": 69.14,
+        "sailingsYoY": -7.17,
+        "passengersYoY": -14.33,
+        "loadYoYPp": -3.74,
+        "nonOvernightSailings": 40.0,
+        "nonOvernightPassengers": 0.31
+      },
+      "ytd": {
+        "sailings": 2300.0,
+        "passengers": 54.23,
+        "load": 76.47,
+        "sailingsYoY": -7.15,
+        "passengersYoY": -5.83,
+        "loadYoYPp": 2.38,
+        "nonOvernightSailings": 181.0,
+        "nonOvernightPassengers": 2.24
+      },
+      "sourceIds": [
+        "cq-2025-06"
+      ],
+      "status": "转引披露",
+      "fieldSources": {},
+      "notes": []
+    },
+    {
+      "period": "2025-07",
+      "monthly": {
+        "sailings": 528.0,
+        "passengers": 12.72,
+        "load": 77.08,
+        "sailingsYoY": -5.71,
+        "passengersYoY": -6.94,
+        "loadYoYPp": -0.94,
+        "nonOvernightSailings": 51.0,
+        "nonOvernightPassengers": 0.45
+      },
+      "ytd": {
+        "sailings": 2828.0,
+        "passengers": 66.95,
+        "load": 76.59,
+        "sailingsYoY": -6.88,
+        "passengersYoY": -6.04,
+        "loadYoYPp": -0.05,
+        "nonOvernightSailings": 230.0,
+        "nonOvernightPassengers": 2.69
+      },
+      "sourceIds": [
+        "cq-2025-07"
+      ],
+      "status": "转引披露",
+      "fieldSources": {},
+      "notes": []
+    },
+    {
+      "period": "2025-08",
+      "monthly": {
+        "sailings": 492.0,
+        "passengers": 12.64,
+        "load": 79.26,
+        "sailingsYoY": -10.71,
+        "passengersYoY": -2.49,
+        "loadYoYPp": 3.73,
+        "nonOvernightSailings": 42.0,
+        "nonOvernightPassengers": 0.45
+      },
+      "ytd": {
+        "sailings": 3320.0,
+        "passengers": 79.59,
+        "load": 77.0,
+        "sailingsYoY": -7.47,
+        "passengersYoY": -5.49,
+        "loadYoYPp": 0.53,
+        "nonOvernightSailings": 274.0,
+        "nonOvernightPassengers": 3.15
+      },
+      "sourceIds": [
+        "cq-2025-08"
+      ],
+      "status": "转引披露",
+      "fieldSources": {},
+      "notes": []
+    },
+    {
+      "period": "2025-09",
+      "monthly": {
+        "sailings": 481.0,
+        "passengers": 10.53,
+        "load": 67.63,
+        "sailingsYoY": -10.09,
+        "passengersYoY": 12.4,
+        "loadYoYPp": 11.85,
+        "nonOvernightSailings": 44.0,
+        "nonOvernightPassengers": 0.43
+      },
+      "ytd": {
+        "sailings": 3802.0,
+        "passengers": 90.13,
+        "load": 75.76,
+        "sailingsYoY": -7.79,
+        "passengersYoY": -3.69,
+        "loadYoYPp": 2.04,
+        "nonOvernightSailings": 318.0,
+        "nonOvernightPassengers": 3.57
+      },
+      "sourceIds": [
+        "cq-2025-09",
+        "cq-2025-09-ytd"
+      ],
+      "status": "转引披露",
+      "fieldSources": {
+        "ytd.*": "cq-2025-09-ytd"
+      },
+      "notes": []
+    },
+    {
+      "period": "2025-10",
+      "monthly": {
+        "sailings": 527.0,
+        "passengers": 14.85,
+        "load": 85.17,
+        "sailingsYoY": -12.46,
+        "passengersYoY": -2.86,
+        "loadYoYPp": 1.49,
+        "nonOvernightSailings": 53.0,
+        "nonOvernightPassengers": 0.77
+      },
+      "ytd": {
+        "sailings": 4329.0,
+        "passengers": 104.98,
+        "load": 76.95,
+        "sailingsYoY": -8.38,
+        "passengersYoY": -3.58,
+        "loadYoYPp": 1.99,
+        "nonOvernightSailings": 371.0,
+        "nonOvernightPassengers": 4.34
+      },
+      "sourceIds": [
+        "cq-2025-10"
+      ],
+      "status": "转引披露",
+      "fieldSources": {},
+      "notes": []
+    },
+    {
+      "period": "2025-11",
+      "monthly": {
+        "sailings": 477.0,
+        "passengers": 11.93,
+        "load": 74.29,
+        "sailingsYoY": -9.49,
+        "passengersYoY": -2.86,
+        "loadYoYPp": -0.74,
+        "nonOvernightSailings": 41.0,
+        "nonOvernightPassengers": 0.49
+      },
+      "ytd": {
+        "sailings": 4806.0,
+        "passengers": 116.91,
+        "load": 76.67,
+        "sailingsYoY": -8.49,
+        "passengersYoY": -3.5,
+        "loadYoYPp": 1.7,
+        "nonOvernightSailings": 412.0,
+        "nonOvernightPassengers": 4.84
+      },
+      "sourceIds": [
+        "cq-2025-11"
+      ],
+      "status": "转引披露",
+      "fieldSources": {},
+      "notes": []
+    },
+    {
+      "period": "2025-12",
+      "monthly": {
+        "sailings": 165.0,
+        "passengers": 3.14,
+        "load": 59.17,
+        "sailingsYoY": 14.58,
+        "passengersYoY": 29.01,
+        "loadYoYPp": 4.78,
+        "nonOvernightSailings": 12.0,
+        "nonOvernightPassengers": 0.08
+      },
+      "ytd": {
+        "sailings": 4972.0,
+        "passengers": 120.1,
+        "load": 76.08,
+        "sailingsYoY": -7.86,
+        "passengersYoY": -2.83,
+        "loadYoYPp": 1.67,
+        "nonOvernightSailings": 424.0,
+        "nonOvernightPassengers": 4.92
+      },
+      "sourceIds": [
+        "cq-2025-12"
+      ],
+      "status": "转引披露",
+      "fieldSources": {},
+      "notes": []
+    },
+    {
+      "period": "2026-01",
+      "monthly": {
+        "sailings": 40.0,
+        "passengers": 0.8971,
+        "load": 58.06,
+        "sailingsYoY": null,
+        "passengersYoY": null,
+        "loadYoYPp": null,
+        "nonOvernightSailings": null,
+        "nonOvernightPassengers": null
+      },
+      "ytd": {
+        "sailings": 40.0,
+        "passengers": 0.8971,
+        "load": 58.06,
+        "sailingsYoY": null,
+        "passengersYoY": null,
+        "loadYoYPp": null,
+        "nonOvernightSailings": null,
+        "nonOvernightPassengers": null
+      },
+      "sourceIds": [
+        "cq-2026-01"
+      ],
+      "status": "转引披露",
+      "fieldSources": {},
+      "notes": []
+    },
+    {
+      "period": "2026-02",
+      "monthly": {
+        "sailings": 109.0,
+        "passengers": 3.22,
+        "load": 83.25,
+        "sailingsYoY": -29.22,
+        "passengersYoY": 15.75,
+        "loadYoYPp": 15.57,
+        "nonOvernightSailings": 0.0,
+        "nonOvernightPassengers": 0.0
+      },
+      "ytd": {
+        "sailings": 149.0,
+        "passengers": 4.12,
+        "load": 76.06,
+        "sailingsYoY": -35.5,
+        "passengersYoY": -3.6,
+        "loadYoYPp": 11.01,
+        "nonOvernightSailings": 0.0,
+        "nonOvernightPassengers": 0.0
+      },
+      "sourceIds": [
+        "cq-2026-02"
+      ],
+      "status": "转引披露",
+      "fieldSources": {},
+      "notes": []
+    },
+    {
+      "period": "2026-03",
+      "monthly": {
+        "sailings": 373.0,
+        "passengers": 10.53,
+        "load": 82.94,
+        "sailingsYoY": -20.97,
+        "passengersYoY": -4.94,
+        "loadYoYPp": 8.12,
+        "nonOvernightSailings": null,
+        "nonOvernightPassengers": null
+      },
+      "ytd": {
+        "sailings": 522.0,
+        "passengers": 14.65,
+        "load": 80.85,
+        "sailingsYoY": -25.75,
+        "passengersYoY": -4.57,
+        "loadYoYPp": 9.09,
+        "nonOvernightSailings": null,
+        "nonOvernightPassengers": null
+      },
+      "sourceIds": [
+        "cq-2026-03",
+        "cq-2026-03-ytd",
+        "cq-2026-03-load"
+      ],
+      "status": "转引披露",
+      "fieldSources": {
+        "ytd.*": "cq-2026-03-ytd",
+        "monthly.load": "cq-2026-03-load",
+        "monthly.loadYoYPp": "cq-2026-03-load"
+      },
+      "notes": []
+    },
+    {
+      "period": "2026-04",
+      "monthly": {
+        "sailings": 496.0,
+        "passengers": 15.96,
+        "load": 91.97,
+        "sailingsYoY": -6.06,
+        "passengersYoY": 8.8,
+        "loadYoYPp": 2.49,
+        "nonOvernightSailings": 52.0,
+        "nonOvernightPassengers": 1.07
+      },
+      "ytd": {
+        "sailings": 1018.0,
+        "passengers": 30.61,
+        "load": 86.15,
+        "sailingsYoY": -17.3,
+        "passengersYoY": 1.97,
+        "loadYoYPp": 6.76,
+        "nonOvernightSailings": 74.0,
+        "nonOvernightPassengers": 1.36
+      },
+      "sourceIds": [
+        "cq-2026-04"
+      ],
+      "status": "转引披露",
+      "fieldSources": {},
+      "notes": []
+    },
+    {
+      "period": "2026-05",
+      "monthly": {
+        "sailings": 518.0,
+        "passengers": 15.14,
+        "load": 83.61,
+        "sailingsYoY": -5.99,
+        "passengersYoY": 14.85,
+        "loadYoYPp": 6.64,
+        "nonOvernightSailings": 48.0,
+        "nonOvernightPassengers": 0.65
+      },
+      "ytd": {
+        "sailings": 1536.0,
+        "passengers": 45.76,
+        "load": 85.29,
+        "sailingsYoY": -13.8,
+        "passengersYoY": 5.9,
+        "loadYoYPp": 6.65,
+        "nonOvernightSailings": 74.0,
+        "nonOvernightPassengers": 1.36
+      },
+      "sourceIds": [
+        "cq-2026-05"
+      ],
+      "status": "转引披露",
+      "fieldSources": {},
+      "notes": [
+        "原转载的累计省际非跨夜74艘次、1.36万人与4月相同，但5月当月为48艘次、0.65万人。保留原披露并标记异常，不用于推算。"
+      ]
+    },
+    {
+      "period": "2026-06",
+      "monthly": {
+        "sailings": 482.0,
+        "passengers": 11.08,
+        "load": 66.02,
+        "sailingsYoY": -6.95,
+        "passengersYoY": 0.48,
+        "loadYoYPp": -3.12,
+        "nonOvernightSailings": 40.0,
+        "nonOvernightPassengers": null
+      },
+      "ytd": {
+        "sailings": 2020.0,
+        "passengers": 56.89,
+        "load": 80.63,
+        "sailingsYoY": -12.17,
+        "passengersYoY": 4.9,
+        "loadYoYPp": 4.16,
+        "nonOvernightSailings": 162.0,
+        "nonOvernightPassengers": 2.33
+      },
+      "sourceIds": [
+        "cq-2026-06"
+      ],
+      "status": "转引披露",
+      "fieldSources": {},
+      "notes": []
+    },
+    {
+      "period": "2026-07",
+      "monthly": {
+        "sailings": 495.0,
+        "passengers": 12.92,
+        "load": 74.88,
+        "sailingsYoY": -6.25,
+        "passengersYoY": 1.64,
+        "loadYoYPp": -2.2,
+        "nonOvernightSailings": 45.0,
+        "nonOvernightPassengers": 0.5
+      },
+      "ytd": {
+        "sailings": 2516.0,
+        "passengers": 69.83,
+        "load": 79.48,
+        "sailingsYoY": -11.03,
+        "passengersYoY": 4.3,
+        "loadYoYPp": 2.89,
+        "nonOvernightSailings": 207.0,
+        "nonOvernightPassengers": 2.83
+      },
+      "sourceIds": [
+        "cq-2026-07"
+      ],
+      "status": "转引披露",
+      "fieldSources": {},
+      "notes": []
+    },
+    {
+      "period": "2026-08",
+      "monthly": {
+        "sailings": 478.0,
+        "passengers": 14.43,
+        "load": 84.1,
+        "sailingsYoY": -3.04,
+        "passengersYoY": 14.06,
+        "loadYoYPp": 4.84,
+        "nonOvernightSailings": null,
+        "nonOvernightPassengers": null
+      },
+      "ytd": {
+        "sailings": 2994.0,
+        "passengers": 84.26,
+        "load": 80.23,
+        "sailingsYoY": -9.85,
+        "passengersYoY": 5.85,
+        "loadYoYPp": 3.23,
+        "nonOvernightSailings": 251.0,
+        "nonOvernightPassengers": 3.47
+      },
+      "sourceIds": [
+        "cq-2026-08"
+      ],
+      "status": "转引披露",
+      "fieldSources": {},
+      "notes": []
+    },
+    {
+      "period": "2026-09",
+      "monthly": {
+        "sailings": 478.0,
+        "passengers": 11.95,
+        "load": 70.41,
+        "sailingsYoY": -0.62,
+        "passengersYoY": 13.49,
+        "loadYoYPp": 2.78,
+        "nonOvernightSailings": 41.0,
+        "nonOvernightPassengers": 0.3
+      },
+      "ytd": {
+        "sailings": 3472.0,
+        "passengers": 96.21,
+        "load": 78.84,
+        "sailingsYoY": -8.68,
+        "passengersYoY": 6.74,
+        "loadYoYPp": 3.08,
+        "nonOvernightSailings": 292.0,
+        "nonOvernightPassengers": 3.77
+      },
+      "sourceIds": [
+        "cq-2026-09"
+      ],
+      "status": "转引披露",
+      "fieldSources": {},
+      "notes": []
+    }
+  ],
+  "sources": [
+    {
+      "id": "cq-2024-01",
+      "title": "2024-01 长江三峡游轮运行数据",
+      "url": "https://m.bjnews.com.cn/detail/1709685733168326.html",
+      "publisher": "新京报",
+      "publishedAt": "2024-03-06",
+      "checkedAt": "2026-10-21",
+      "quality": "媒体转引重庆邮轮中心 / 重庆航运交易所",
+      "locator": "当月及年初至当月运行数据；2024-01仅为差分线索，不是当月原始披露"
+    },
+    {
+      "id": "cq-2024-02",
+      "title": "2024-02 长江三峡游轮运行数据",
+      "url": "https://m.bjnews.com.cn/detail/1709685733168326.html",
+      "publisher": "新京报",
+      "publishedAt": "2024-03-06",
+      "checkedAt": "2026-10-21",
+      "quality": "媒体转引重庆邮轮中心 / 重庆航运交易所",
+      "locator": "当月及年初至当月运行数据"
+    },
+    {
+      "id": "cq-2024-03",
+      "title": "2024-03 长江三峡游轮运行数据",
+      "url": "https://m.bjnews.com.cn/detail/1712195196169814.html",
+      "publisher": "新京报",
+      "publishedAt": "2024-04-04",
+      "checkedAt": "2026-10-21",
+      "quality": "媒体转引重庆邮轮中心 / 重庆航运交易所",
+      "locator": "当月及年初至当月运行数据"
+    },
+    {
+      "id": "cq-2024-04",
+      "title": "2024-04 长江三峡游轮运行数据",
+      "url": "https://travel.tom.com/202405/1181202271.html",
+      "publisher": "TOM旅游 / 劲旅网",
+      "publishedAt": "2024-05-10",
+      "checkedAt": "2026-10-21",
+      "quality": "媒体转引重庆邮轮中心 / 重庆航运交易所",
+      "locator": "当月及年初至当月运行数据"
+    },
+    {
+      "id": "cq-2024-05",
+      "title": "2024-05 长江三峡游轮运行数据",
+      "url": "https://info.chineseshipping.com.cn/cninfo/News/202406/t20240606_1391031.shtml",
+      "publisher": "中华航运网 / 中国水运网",
+      "publishedAt": "2024-06-06",
+      "checkedAt": "2026-10-21",
+      "quality": "媒体转引重庆邮轮中心 / 重庆航运交易所",
+      "locator": "当月及年初至当月运行数据"
+    },
+    {
+      "id": "cq-2024-06",
+      "title": "2024-06 长江三峡游轮运行数据",
+      "url": "https://www.pinchain.com/article/314941",
+      "publisher": "品橙旅游",
+      "publishedAt": "2024-07-03",
+      "checkedAt": "2026-10-21",
+      "quality": "媒体转引重庆邮轮中心 / 重庆航运交易所",
+      "locator": "当月及年初至当月运行数据"
+    },
+    {
+      "id": "cq-2024-07",
+      "title": "2024-07 长江三峡游轮运行数据",
+      "url": "https://www.sse.net.cn/cninfo/HotInfo/202408/t20240806_1393001.jsp",
+      "publisher": "上海航运交易所 / 中国水运网",
+      "publishedAt": "2024-08-06",
+      "checkedAt": "2026-10-21",
+      "quality": "媒体转引重庆邮轮中心 / 重庆航运交易所",
+      "locator": "当月及年初至当月运行数据"
+    },
+    {
+      "id": "cq-2024-08",
+      "title": "2024-08 长江三峡游轮运行数据",
+      "url": "https://finance.sina.com.cn/jjxw/2024-09-04/doc-incmyeak2716252.shtml",
+      "publisher": "新浪财经转载",
+      "publishedAt": "2024-09-04",
+      "checkedAt": "2026-10-21",
+      "quality": "媒体转引重庆邮轮中心 / 重庆航运交易所",
+      "locator": "当月及年初至当月运行数据"
+    },
+    {
+      "id": "cq-2024-09",
+      "title": "2024-09 长江三峡游轮运行数据",
+      "url": "https://www.bbtnews.com.cn/2024/1009/532453.shtml",
+      "publisher": "北京商报",
+      "publishedAt": "2024-10-09",
+      "checkedAt": "2026-10-21",
+      "quality": "媒体转引重庆邮轮中心 / 重庆航运交易所",
+      "locator": "当月及年初至当月运行数据"
+    },
+    {
+      "id": "cq-2024-10",
+      "title": "2024-10 长江三峡游轮运行数据",
+      "url": "https://info.chineseshipping.com.cn/cninfo/News/202411/t20241105_1396488.shtml",
+      "publisher": "中华航运网 / 中国水运网",
+      "publishedAt": "2024-11-05",
+      "checkedAt": "2026-10-21",
+      "quality": "媒体转引重庆邮轮中心 / 重庆航运交易所",
+      "locator": "当月及年初至当月运行数据"
+    },
+    {
+      "id": "cq-2024-11",
+      "title": "2024-11 长江三峡游轮运行数据",
+      "url": "https://www.lvjie.co/brand/2024/1203/33193.html",
+      "publisher": "旅界",
+      "publishedAt": "2024-12-03",
+      "checkedAt": "2026-10-21",
+      "quality": "媒体转引重庆邮轮中心 / 重庆航运交易所",
+      "locator": "当月及年初至当月运行数据"
+    },
+    {
+      "id": "cq-2024-12",
+      "title": "2024-12 长江三峡游轮运行数据",
+      "url": "https://finance.sina.com.cn/jjxw/2025-01-03/doc-inectaav1448821.shtml",
+      "publisher": "新浪财经转载",
+      "publishedAt": "2025-01-03",
+      "checkedAt": "2026-10-21",
+      "quality": "媒体转引重庆邮轮中心 / 重庆航运交易所",
+      "locator": "当月及年初至当月运行数据"
+    },
+    {
+      "id": "cq-2025-01",
+      "title": "2025-01 长江三峡游轮运行数据",
+      "url": "https://finance.sina.cn/2025-02-07/detail-ineisauc0023078.d.html",
+      "publisher": "新浪财经转载",
+      "publishedAt": "2025-02-07",
+      "checkedAt": "2026-10-21",
+      "quality": "媒体转引重庆邮轮中心 / 重庆航运交易所",
+      "locator": "当月及年初至当月运行数据"
+    },
+    {
+      "id": "cq-2025-02",
+      "title": "2025-02 长江三峡游轮运行数据",
+      "url": "https://www.bbtnews.com.cn/2025/0305/548731.shtml",
+      "publisher": "北京商报",
+      "publishedAt": "2025-03-05",
+      "checkedAt": "2026-10-21",
+      "quality": "媒体转引重庆邮轮中心 / 重庆航运交易所",
+      "locator": "当月及年初至当月运行数据"
+    },
+    {
+      "id": "cq-2025-03",
+      "title": "2025-03 长江三峡游轮运行数据",
+      "url": "https://www.zgsyb.com/news.html?aid=720374",
+      "publisher": "中国水运网",
+      "publishedAt": "2025-04-03",
+      "checkedAt": "2026-10-21",
+      "quality": "媒体转引重庆邮轮中心 / 重庆航运交易所",
+      "locator": "当月及年初至当月运行数据"
+    },
+    {
+      "id": "cq-2025-04",
+      "title": "2025-04 长江三峡游轮运行数据",
+      "url": "https://info.chineseshipping.com.cn/cninfo/News/202505/t20250508_1403735.shtml",
+      "publisher": "中华航运网 / 中国水运网",
+      "publishedAt": "2025-05-08",
+      "checkedAt": "2026-10-21",
+      "quality": "媒体转引重庆邮轮中心 / 重庆航运交易所",
+      "locator": "当月及年初至当月运行数据"
+    },
+    {
+      "id": "cq-2025-05",
+      "title": "2025-05 长江三峡游轮运行数据",
+      "url": "https://info.chineseshipping.com.cn/cninfo/TodayTopNews/202506/t20250604_1404926.shtml",
+      "publisher": "中华航运网 / 中国水运网",
+      "publishedAt": "2025-06-04",
+      "checkedAt": "2026-10-21",
+      "quality": "媒体转引重庆邮轮中心 / 重庆航运交易所",
+      "locator": "当月及年初至当月运行数据"
+    },
+    {
+      "id": "cq-2025-06",
+      "title": "2025-06 长江三峡游轮运行数据",
+      "url": "https://www.sse.net.cn/cninfo/HotInfo/202507/t20250703_1406043.jsp",
+      "publisher": "上海航运交易所 / 中国水运网",
+      "publishedAt": "2025-07-03",
+      "checkedAt": "2026-10-21",
+      "quality": "媒体转引重庆邮轮中心 / 重庆航运交易所",
+      "locator": "当月及年初至当月运行数据"
+    },
+    {
+      "id": "cq-2025-07",
+      "title": "2025-07 长江三峡游轮运行数据",
+      "url": "https://www.bbtnews.com.cn/2025/0804/565090.shtml",
+      "publisher": "北京商报",
+      "publishedAt": "2025-08-04",
+      "checkedAt": "2026-10-21",
+      "quality": "媒体转引重庆邮轮中心 / 重庆航运交易所",
+      "locator": "当月及年初至当月运行数据"
+    },
+    {
+      "id": "cq-2025-08",
+      "title": "2025-08 长江三峡游轮运行数据",
+      "url": "https://www.zgsyb.com/news.html?aid=737079",
+      "publisher": "中国水运网",
+      "publishedAt": null,
+      "checkedAt": "2026-10-21",
+      "quality": "媒体转引重庆邮轮中心 / 重庆航运交易所",
+      "locator": "当月及年初至当月运行数据"
+    },
+    {
+      "id": "cq-2025-09",
+      "title": "2025-09 长江三峡游轮运行数据",
+      "url": "https://www.bbtnews.com.cn/2025/1010/571907.shtml",
+      "publisher": "北京商报",
+      "publishedAt": "2025-10-10",
+      "checkedAt": "2026-10-21",
+      "quality": "媒体转引重庆邮轮中心 / 重庆航运交易所",
+      "locator": "当月及年初至当月运行数据"
+    },
+    {
+      "id": "cq-2025-10",
+      "title": "2025-10 长江三峡游轮运行数据",
+      "url": "https://info.chineseshipping.com.cn/cninfo/News/202511/t20251105_1410516.shtml",
+      "publisher": "中华航运网 / 中国水运网",
+      "publishedAt": "2025-11-05",
+      "checkedAt": "2026-10-21",
+      "quality": "媒体转引重庆邮轮中心 / 重庆航运交易所",
+      "locator": "当月及年初至当月运行数据"
+    },
+    {
+      "id": "cq-2025-11",
+      "title": "2025-11 长江三峡游轮运行数据",
+      "url": "https://www.lvjie.co/brand/2025/1203/34739.html",
+      "publisher": "旅界",
+      "publishedAt": "2025-12-03",
+      "checkedAt": "2026-10-21",
+      "quality": "媒体转引重庆邮轮中心 / 重庆航运交易所",
+      "locator": "当月及年初至当月运行数据"
+    },
+    {
+      "id": "cq-2025-12",
+      "title": "2025-12 长江三峡游轮运行数据",
+      "url": "https://finance.sina.com.cn/jjxw/2026-01-05/doc-inhffmxt2186011.shtml",
+      "publisher": "新浪财经转载",
+      "publishedAt": "2026-01-05",
+      "checkedAt": "2026-10-21",
+      "quality": "媒体转引重庆邮轮中心 / 重庆航运交易所",
+      "locator": "当月及年初至当月运行数据"
+    },
+    {
+      "id": "cq-2026-01",
+      "title": "2026-01 长江三峡游轮运行数据",
+      "url": "https://info.chineseshipping.com.cn/cninfo/News/202602/t20260204_1413322.shtml",
+      "publisher": "中华航运网 / 中国水运网",
+      "publishedAt": "2026-02-04",
+      "checkedAt": "2026-10-21",
+      "quality": "媒体转引重庆邮轮中心 / 重庆航运交易所",
+      "locator": "当月及年初至当月运行数据"
+    },
+    {
+      "id": "cq-2026-02",
+      "title": "2026-02 长江三峡游轮运行数据",
+      "url": "https://bbs.esanxia.com/thread-12817-1-1.html",
+      "publisher": "e三峡论坛转载",
+      "publishedAt": "2026-03-11",
+      "checkedAt": "2026-10-21",
+      "quality": "论坛转引（待原始月报复核）",
+      "locator": "当月及年初至当月运行数据"
+    },
+    {
+      "id": "cq-2026-03",
+      "title": "2026-03 长江三峡游轮运行数据",
+      "url": "https://news.hubeidaily.net/pc/c_5356832.html",
+      "publisher": "湖北日报网",
+      "publishedAt": "2026-04-07",
+      "checkedAt": "2026-10-21",
+      "quality": "媒体转引重庆邮轮中心 / 重庆航运交易所",
+      "locator": "当月及年初至当月运行数据"
+    },
+    {
+      "id": "cq-2026-04",
+      "title": "2026-04 长江三峡游轮运行数据",
+      "url": "https://finance.sina.com.cn/jjxw/2026-05-07/doc-inhxaxnx2640257.shtml",
+      "publisher": "新浪财经转载",
+      "publishedAt": "2026-05-07",
+      "checkedAt": "2026-10-21",
+      "quality": "媒体转引重庆邮轮中心 / 重庆航运交易所",
+      "locator": "当月及年初至当月运行数据"
+    },
+    {
+      "id": "cq-2026-05",
+      "title": "2026-05 长江三峡游轮运行数据",
+      "url": "https://www.zgsyb.com/news.html?aid=761776",
+      "publisher": "中国水运网",
+      "publishedAt": "2026-06-03",
+      "checkedAt": "2026-10-21",
+      "quality": "媒体转引重庆邮轮中心 / 重庆航运交易所",
+      "locator": "当月及年初至当月运行数据"
+    },
+    {
+      "id": "cq-2026-06",
+      "title": "2026-06 长江三峡游轮运行数据",
+      "url": "https://finance.sina.cn/2026-07-02/detail-inifmrts2618213.d.html",
+      "publisher": "新浪财经转载",
+      "publishedAt": "2026-07-02",
+      "checkedAt": "2026-10-21",
+      "quality": "媒体转引重庆邮轮中心 / 重庆航运交易所",
+      "locator": "当月及年初至当月运行数据"
+    },
+    {
+      "id": "cq-2026-07",
+      "title": "2026-07 长江三峡游轮运行数据",
+      "url": "https://www.bbtnews.com.cn/2026/0804/601268.shtml",
+      "publisher": "北京商报",
+      "publishedAt": "2026-08-04",
+      "checkedAt": "2026-10-21",
+      "quality": "媒体转引重庆邮轮中心 / 重庆航运交易所",
+      "locator": "当月及年初至当月运行数据"
+    },
+    {
+      "id": "cq-2026-08",
+      "title": "2026-08 长江三峡游轮运行数据",
+      "url": "https://www.bbtnews.com.cn/2026/0902/604607.shtml",
+      "publisher": "北京商报",
+      "publishedAt": "2026-09-02",
+      "checkedAt": "2026-10-21",
+      "quality": "媒体转引重庆邮轮中心 / 重庆航运交易所",
+      "locator": "当月及年初至当月运行数据"
+    },
+    {
+      "id": "cq-2026-09",
+      "title": "2026-09 长江三峡游轮运行数据",
+      "url": "https://finance.eastmoney.com/a/202610033888460789.html",
+      "publisher": "东方财富 / 财联社",
+      "publishedAt": "2026-10-03",
+      "checkedAt": "2026-10-21",
+      "quality": "媒体转引重庆邮轮中心 / 重庆航运交易所",
+      "locator": "当月及年初至当月运行数据"
+    },
+    {
+      "id": "cq-2025-02-detail",
+      "title": "2025-02 累计及非跨夜明细",
+      "url": "https://bbs.esanxia.com/forum.php?mod=viewthread&tid=8125",
+      "publisher": "e三峡论坛转载",
+      "publishedAt": "2025-03-13",
+      "checkedAt": "2026-10-21",
+      "quality": "论坛转引（待原始月报复核）"
+    },
+    {
+      "id": "cq-2026-03-ytd",
+      "title": "2026年一季度三峡游轮运行数据",
+      "url": "https://www.bjnews.com.cn/detail/1775361057168321.html",
+      "publisher": "新京报",
+      "publishedAt": "2026-04-05",
+      "checkedAt": "2026-10-21",
+      "quality": "媒体转引"
+    },
+    {
+      "id": "cq-2026-03-load",
+      "title": "世纪证券大消费行业周报：2026年3月游轮载客率",
+      "url": "https://pdf.dfcfw.com/pdf/H3_AP202604071821049874_1.pdf",
+      "publisher": "公开转载",
+      "publishedAt": "2026-04-07",
+      "checkedAt": "2026-10-21",
+      "quality": "券商研报转引（待原始月报复核）"
+    },
+    {
+      "id": "cq-2024-05-ytd",
+      "title": "极目新闻：2024年1—5月三峡游轮运行数据",
+      "url": "https://www.sohu.com/a/788109230_121284943",
+      "publisher": "搜狐 / 极目新闻",
+      "publishedAt": "2024-06-24",
+      "checkedAt": "2026-10-21",
+      "quality": "媒体转引"
+    },
+    {
+      "id": "cq-2025-09-ytd",
+      "title": "中国水运网：2025年1—9月三峡游轮运行数据",
+      "url": "https://finance.sina.com.cn/jjxw/2025-10-10/doc-inftkzvm1406805.shtml",
+      "publisher": "新浪财经转载",
+      "publishedAt": "2025-10-10",
+      "checkedAt": "2026-10-21",
+      "quality": "媒体转引"
+    }
+  ]
+}

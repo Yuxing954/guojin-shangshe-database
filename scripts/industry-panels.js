@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  const pages={hotel:'hotel-dashboard.html',dutyfree:'dutyfree-dashboard.html',dining:'dining.html'},labels={hotel:'酒店',dutyfree:'免税',gold:'黄金',dining:'餐饮'},panels=new Map();
+  const pages={hotel:'hotel-dashboard.html',dutyfree:'dutyfree-dashboard.html',dining:'dining.html',tourism:'cruise-dashboard.html'},labels={hotel:'酒店',dutyfree:'免税',gold:'黄金',dining:'餐饮',tourism:'三峡游轮'},panels=new Map();
   const host=document.getElementById('industry-panels'),stage=document.getElementById('industry-stage'),status=document.getElementById('status'),text=document.getElementById('industry-load-text'),retry=document.getElementById('industry-load-retry'),gold=document.getElementById('gold-content');
   let active='hotel',goldState='loading',goldPending=false;const hotelViews=new Map();let hotelWarmed=false;
   function paint(){
@@ -23,7 +23,7 @@
     if(view&&id!=='dining')url.hash=view;
     const panel={wrap,frame,state:'loading',timer:null};
     panel.begin=()=>{clearTimeout(panel.timer);panel.state='loading';frame.dataset.state='loading';if(active===id)paint();panel.timer=setTimeout(()=>{panel.state='error';frame.dataset.state='error';if(active===id)paint();},30000);};
-    panel.load=(reload=false)=>{let target=url.href;if(reload){try{const current=new URL(frame.contentWindow.location.href);if(current.origin===location.origin&&/\/(hotel-dashboard|hotel-holiday-dashboard|hotel-groups|dutyfree-dashboard|dining)\.html$/.test(current.pathname))target=current.href;}catch{}}panel.begin();frame.src=target;};
+    panel.load=(reload=false)=>{let target=url.href;if(reload){try{const current=new URL(frame.contentWindow.location.href);if(current.origin===location.origin&&/\/(hotel-dashboard|hotel-holiday-dashboard|hotel-groups|dutyfree-dashboard|dining|cruise-dashboard)\.html$/.test(current.pathname))target=current.href;}catch{}}panel.begin();frame.src=target;};
     wrap.append(frame);host.append(wrap);panels.set(id,panel);if(id==='hotel'){panel.viewKey=hotelKey(url.pathname);hotelViews.set(panel.viewKey,panel);}panel.load();
   }
 

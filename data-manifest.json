@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-20",
+  "updatedAt": "2026-10-21",
   "datasets": [
     {
       "id": "hotel",
@@ -297,6 +297,16 @@
       "updateScript": "scripts/update_sector_data.py",
       "evidence": "data/sectors/reviewed.json",
       "coverage": "docs/sector-construction.md"
+    },
+    {
+      "id": "three_gorges_cruises",
+      "name": "长江三峡游轮月度运行数据",
+      "file": "data/tourism/three-gorges-cruises.csv",
+      "category": "旅游",
+      "asOf": "2026-09",
+      "latestPeriod": "2026-09",
+      "rowCount": 66,
+      "updateRecord": "data/tourism/three-gorges-cruises.json"
     }
   ]
 }
