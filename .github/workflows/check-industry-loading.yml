@@ -6,6 +6,9 @@ on:
       - '*dashboard.html'
       - 'dining.html'
       - 'scripts/industry*'
+      - 'scripts/cruise-dashboard.*'
+      - 'data/tourism/**'
+      - 'tests/cruise*'
       - 'tests/industry-loading.browser.cjs'
       - '.github/workflows/check-industry-loading.yml'
 permissions:
@@ -23,6 +26,8 @@ jobs:
           node --check scripts/industry.js
           node --check scripts/industry-panels.js
           node --check scripts/industry-embed.js
+          node --check scripts/cruise-dashboard.js
+          node tests/cruise-data.test.cjs
       - name: Install isolated browser runtime
         run: |
           npm install --prefix /tmp/industry-loading-test playwright@1.58.2
@@ -30,4 +35,6 @@ jobs:
       - name: Check loading transitions and retry
         env:
           NODE_PATH: /tmp/industry-loading-test/node_modules
-        run: node tests/industry-loading.browser.cjs
+        run: |
+          node tests/industry-loading.browser.cjs
+          node tests/cruise.browser.cjs
