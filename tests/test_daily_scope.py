@@ -3,6 +3,9 @@ from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 from daily_scope import sector_for,title_for,published_for
 class ScopeTests(unittest.TestCase):
+ def test_coverage_beauty_company_survives_broker_heading_cleanup(self):
+  title='【华泰消费｜美护】底部坚定推荐，重申对于上美股份的底部买入时机'
+  self.assertEqual(sector_for(title),'零售与消费出海')
  def test_shortened_incremental_title_uses_intact_first_line(self):
   title='[红包]【浙商消费】从美国三大...'
   body='[红包]【浙商消费】从美国三大零售商Holiday玩具选品榜单洞察美国玩具消费趋势\n\n亚马逊、沃尔玛选品分析。'
@@ -21,6 +24,8 @@ class ScopeTests(unittest.TestCase):
  def test_keeps_relevant_despite_broker_label(self):
   self.assertEqual(sector_for('【浙商食饮】餐饮与茶饮更新'),'餐饮茶饮')
   self.assertEqual(sector_for('【国海传媒】泡泡玛特周度跟踪'),'零售与消费出海')
+  self.assertIsNone(sector_for('【中金纺织服装珠宝】比音勒芬：业绩持续增长'))
+  self.assertEqual(sector_for('【中金纺织服装珠宝】周大福：门店调整'),'黄金珠宝')
  def test_excludes_ecommerce_but_keeps_retail_channels(self):
   for title in ['阿里巴巴业绩更新','京东零售利润修复','跨境电商周观点','安克创新经营更新','零售电商行业观点','【银河社服】东方甄选今日上涨情况更新']:
    self.assertIsNone(sector_for(title))
@@ -52,3 +57,4 @@ class ScopeTests(unittest.TestCase):
   self.assertEqual(sector_for('长江三峡游轮行业9月数据跟踪\n...', '长江三峡游轮行业9月数据跟踪\n\n9月省际游轮客运量同比增长13%。'),'酒店旅游')
   self.assertEqual(sector_for('邮轮出行旅客经营数据'),'酒店旅游')
   self.assertIsNone(sector_for('GPU电源研究：邮轮客户案例'))
+

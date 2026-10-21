@@ -1,0 +1,921 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-21",
+  "checkedAt": "2026-10-21T18:28:00+08:00",
+  "windowStart": "2026-10-20T18:00:00+08:00",
+  "cutoff": "2026-10-21T18:00:00+08:00",
+  "attempts": [
+    {
+      "source": "Wind金融公告接口",
+      "status": "failed",
+      "error": "AUTH_ERROR: WIND_API_KEY未配置",
+      "scope": "覆盖公司公告结构化检索"
+    },
+    {
+      "source": "上海证券交易所公告页",
+      "company": "小商品城",
+      "code": "600415.SH",
+      "status": "failed",
+      "error": "Forbidden. Calls to this URL are not allowed.",
+      "scope": "2026-10-20T18:00:00+08:00至2026-10-21T18:00:00+08:00"
+    }
+  ],
+  "matrixStatus": "blocked",
+  "checkedCompanies": [
+    {
+      "company": "泡泡玛特",
+      "code": "9992.HK",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "名创优品",
+      "code": "9896.HK",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "思摩尔国际",
+      "code": "6969.HK",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "中烟香港",
+      "code": "6055.HK",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "小商品城",
+      "code": "600415.SH",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "特海国际",
+      "code": "9658.HK",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "周大福",
+      "code": "1929.HK",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "老铺黄金",
+      "code": "6181.HK",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "老凤祥",
+      "code": "600612.SH",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "六福集团",
+      "code": "0590.HK",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "菜百股份",
+      "code": "605599.SH",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "周大生",
+      "code": "002867.SZ",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "潮宏基",
+      "code": "002345.SZ",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "周六福",
+      "code": "6168.HK",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "爱美客",
+      "code": "300896.SZ",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "巨子生物",
+      "code": "2367.HK",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "毛戈平",
+      "code": "1318.HK",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "珀莱雅",
+      "code": "603605.SH",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "上美股份",
+      "code": "2145.HK",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "华熙生物",
+      "code": "688363.SH",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "贝泰妮",
+      "code": "300957.SZ",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "上海家化",
+      "code": "600315.SH",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "丸美生物",
+      "code": "603983.SH",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "林清轩",
+      "code": "2657.HK",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "水羊股份",
+      "code": "300740.SZ",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "福瑞达",
+      "code": "600223.SH",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "锦波生物",
+      "code": "920982.BJ",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "中国中免",
+      "code": "601888.SH",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "王府井",
+      "code": "600859.SH",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "上海机场",
+      "code": "600009.SH",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "携程集团-S",
+      "code": "9961.HK",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "同程旅行",
+      "code": "0780.HK",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "华住集团-S",
+      "code": "1179.HK",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "亚朵",
+      "code": "ATAT.O",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "锦江酒店",
+      "code": "600754.SH",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "首旅酒店",
+      "code": "600258.SH",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "宋城演艺",
+      "code": "300144.SZ",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "长白山",
+      "code": "603099.SH",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "陕西旅游",
+      "code": "603402.SH",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "黄山旅游",
+      "code": "600054.SH",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "众信旅游",
+      "code": "002707.SZ",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "峨眉山A",
+      "code": "000888.SZ",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "香港中旅",
+      "code": "0308.HK",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "君亭酒店",
+      "code": "301073.SZ",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "九华旅游",
+      "code": "603199.SH",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "天目湖",
+      "code": "603136.SH",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "蜜雪集团",
+      "code": "2097.HK",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "百胜中国",
+      "code": "9987.HK",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "海底捞",
+      "code": "6862.HK",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "古茗",
+      "code": "1364.HK",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "瑞幸咖啡",
+      "code": "LKNCY.OO",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "小菜园",
+      "code": "0999.HK",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "茶百道",
+      "code": "2555.HK",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "沪上阿姨",
+      "code": "2589.HK",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "达势股份",
+      "code": "1405.HK",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "重庆百货",
+      "code": "600729.SH",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "永辉超市",
+      "code": "601933.SH",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "红旗连锁",
+      "code": "002697.SZ",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "家家悦",
+      "code": "603708.SH",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "company": "孩子王",
+      "code": "301078.SZ",
+      "sources": [],
+      "status": "source_check_not_completed",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    }
+  ],
+  "excludedCompanies": [
+    {
+      "code": "003010.SZ",
+      "name": "若羽臣",
+      "sector": "新消费",
+      "aliases": [],
+      "sourceId": "selected-20261012",
+      "addedAt": "2026-10-12",
+      "identitySource": "choice-and-tencent-20261012",
+      "status": "excluded_from_daily",
+      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "code": "301498.SZ",
+      "name": "乖宝宠物",
+      "sector": "新消费",
+      "aliases": [],
+      "sourceId": "selected-20261012",
+      "addedAt": "2026-10-12",
+      "identitySource": "choice-and-tencent-20261012",
+      "status": "excluded_from_daily",
+      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "code": "002891.SZ",
+      "name": "中宠股份",
+      "sector": "新消费",
+      "aliases": [],
+      "sourceId": "selected-20261012",
+      "addedAt": "2026-10-12",
+      "identitySource": "choice-and-tencent-20261012",
+      "status": "excluded_from_daily",
+      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "code": "001206.SZ",
+      "name": "依依股份",
+      "sector": "新消费",
+      "aliases": [],
+      "sourceId": "selected-20261012",
+      "addedAt": "2026-10-12",
+      "identitySource": "choice-and-tencent-20261012",
+      "status": "excluded_from_daily",
+      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "code": "300673.SZ",
+      "name": "佩蒂股份",
+      "sector": "新消费",
+      "aliases": [],
+      "sourceId": "selected-20261012",
+      "addedAt": "2026-10-12",
+      "identitySource": "choice-and-tencent-20261012",
+      "status": "excluded_from_daily",
+      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "code": "001222.SZ",
+      "name": "源飞宠物",
+      "sector": "新消费",
+      "aliases": [],
+      "sourceId": "selected-20261012",
+      "addedAt": "2026-10-12",
+      "identitySource": "choice-and-tencent-20261012",
+      "status": "excluded_from_daily",
+      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "code": "688775.SH",
+      "name": "影石创新",
+      "sector": "消费出海",
+      "aliases": [],
+      "sourceId": "selected-20261012",
+      "addedAt": "2026-10-12",
+      "identitySource": "choice-and-tencent-20261012",
+      "status": "excluded_from_daily",
+      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "code": "300866.SZ",
+      "name": "安克创新",
+      "sector": "消费出海",
+      "aliases": [],
+      "sourceId": "selected-20261012",
+      "addedAt": "2026-09-08",
+      "identitySource": "existing-pool",
+      "status": "excluded_from_daily",
+      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "code": "2698.HK",
+      "name": "乐舒适",
+      "sector": "消费出海",
+      "aliases": [],
+      "sourceId": "selected-20261012",
+      "addedAt": "2026-10-12",
+      "identitySource": "choice-and-tencent-20261012",
+      "status": "excluded_from_daily",
+      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "code": "688169.SH",
+      "name": "石头科技",
+      "sector": "消费出海",
+      "aliases": [],
+      "sourceId": "selected-20261012",
+      "addedAt": "2026-10-12",
+      "identitySource": "choice-and-tencent-20261012",
+      "status": "excluded_from_daily",
+      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "code": "301606.SZ",
+      "name": "绿联科技",
+      "sector": "消费出海",
+      "aliases": [],
+      "sourceId": "selected-20261012",
+      "addedAt": "2026-10-12",
+      "identitySource": "choice-and-tencent-20261012",
+      "status": "excluded_from_daily",
+      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "code": "301381.SZ",
+      "name": "赛维时代",
+      "sector": "消费出海",
+      "aliases": [],
+      "sourceId": "selected-20261012",
+      "addedAt": "2026-09-08",
+      "identitySource": "existing-pool",
+      "status": "excluded_from_daily",
+      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "code": "301376.SZ",
+      "name": "致欧科技",
+      "sector": "消费出海",
+      "aliases": [],
+      "sourceId": "selected-20261012",
+      "addedAt": "2026-10-10",
+      "identitySource": "tencent-20261010",
+      "status": "excluded_from_daily",
+      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    },
+    {
+      "code": "0625.HK",
+      "name": "SHEIN",
+      "sector": "消费出海",
+      "aliases": [
+        "希音",
+        "希音-W"
+      ],
+      "sourceId": "selected-20261012",
+      "addedAt": "2026-10-12",
+      "identitySource": "choice-and-tencent-20261012",
+      "status": "excluded_from_daily",
+      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。",
+      "checkedAt": "2026-10-21T18:28:00+08:00"
+    }
+  ],
+  "failedCompanies": [
+    {
+      "company": "泡泡玛特",
+      "code": "9992.HK",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "名创优品",
+      "code": "9896.HK",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "思摩尔国际",
+      "code": "6969.HK",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "中烟香港",
+      "code": "6055.HK",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "小商品城",
+      "code": "600415.SH",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "特海国际",
+      "code": "9658.HK",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "周大福",
+      "code": "1929.HK",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "老铺黄金",
+      "code": "6181.HK",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "老凤祥",
+      "code": "600612.SH",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "六福集团",
+      "code": "0590.HK",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "菜百股份",
+      "code": "605599.SH",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "周大生",
+      "code": "002867.SZ",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "潮宏基",
+      "code": "002345.SZ",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "周六福",
+      "code": "6168.HK",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "爱美客",
+      "code": "300896.SZ",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "巨子生物",
+      "code": "2367.HK",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "毛戈平",
+      "code": "1318.HK",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "珀莱雅",
+      "code": "603605.SH",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "上美股份",
+      "code": "2145.HK",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "华熙生物",
+      "code": "688363.SH",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "贝泰妮",
+      "code": "300957.SZ",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "上海家化",
+      "code": "600315.SH",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "丸美生物",
+      "code": "603983.SH",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "林清轩",
+      "code": "2657.HK",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "水羊股份",
+      "code": "300740.SZ",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "福瑞达",
+      "code": "600223.SH",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "锦波生物",
+      "code": "920982.BJ",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "中国中免",
+      "code": "601888.SH",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "王府井",
+      "code": "600859.SH",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "上海机场",
+      "code": "600009.SH",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "携程集团-S",
+      "code": "9961.HK",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "同程旅行",
+      "code": "0780.HK",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "华住集团-S",
+      "code": "1179.HK",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "亚朵",
+      "code": "ATAT.O",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "锦江酒店",
+      "code": "600754.SH",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "首旅酒店",
+      "code": "600258.SH",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "宋城演艺",
+      "code": "300144.SZ",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "长白山",
+      "code": "603099.SH",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "陕西旅游",
+      "code": "603402.SH",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "黄山旅游",
+      "code": "600054.SH",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "众信旅游",
+      "code": "002707.SZ",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "峨眉山A",
+      "code": "000888.SZ",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "香港中旅",
+      "code": "0308.HK",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "君亭酒店",
+      "code": "301073.SZ",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "九华旅游",
+      "code": "603199.SH",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "天目湖",
+      "code": "603136.SH",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "蜜雪集团",
+      "code": "2097.HK",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "百胜中国",
+      "code": "9987.HK",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "海底捞",
+      "code": "6862.HK",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "古茗",
+      "code": "1364.HK",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "瑞幸咖啡",
+      "code": "LKNCY.OO",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "小菜园",
+      "code": "0999.HK",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "茶百道",
+      "code": "2555.HK",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "沪上阿姨",
+      "code": "2589.HK",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "达势股份",
+      "code": "1405.HK",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "重庆百货",
+      "code": "600729.SH",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "永辉超市",
+      "code": "601933.SH",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "红旗连锁",
+      "code": "002697.SZ",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "家家悦",
+      "code": "603708.SH",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    },
+    {
+      "company": "孩子王",
+      "code": "301078.SZ",
+      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
+    }
+  ]
+}
