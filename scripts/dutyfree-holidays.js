@@ -32,7 +32,7 @@
     const chartWidth=document.getElementById('dh-chart').clientWidth;if(chartWidth<100)return '';
     const available=rows.filter(r=>r.status==='available'&&num(r[metric])).slice().reverse(),[label,unit,digits]=metrics[metric];
     if(!available.length)return '<p class="dh-message">该筛选暂无已收录数值。</p>';
-    if(holiday!=='全部'){const field={daily_sales:'daily_yoy',spend:'spend_yoy',sales:'reported_sales_yoy',shoppers:'reported_shoppers_yoy',items:'reported_items_yoy'}[metric];const paired=SiteCharts.paired(available.map(r=>({period:r.year+' '+r.holiday,x:r.year,value:r[metric],change:r[field]})),{name:label,unit,precision:digits,mode:'combo',width:Math.max(280,chartWidth-32),gap:1});chartPoints=paired.points;return paired.html;}
+    if(holiday!=='全部'){const field={daily_sales:'daily_yoy',spend:'spend_yoy',sales:'reported_sales_yoy',shoppers:'reported_shoppers_yoy',items:'reported_items_yoy'}[metric];const paired=SiteCharts.paired(available.map(r=>({period:r.year+' '+r.holiday,x:r.year,value:r[metric],change:r[field]})),{name:label,unit,precision:digits,minimumFractionDigits:['daily_sales','sales'].includes(metric)?2:0,mode:'combo',width:Math.max(280,chartWidth-32),gap:1});chartPoints=paired.points;return paired.html;}
     const max=Math.max(...available.map(r=>r[metric]))||1;
     return '<div class="dh-bars" role="img" aria-label="'+esc(label+'历年对比，单位'+unit)+'">'+available.map(r=>'<div class="dh-bar-row"><span>'+r.year+' '+esc(r.holiday)+'</span><div class="dh-bar-track"><div class="dh-bar" style="width:'+Math.max(1,r[metric]/max*100)+'%"></div></div><strong>'+fmt(r[metric],digits)+' <small>'+unit+'</small></strong></div>').join('')+'</div>';
   }
