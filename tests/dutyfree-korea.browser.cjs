@@ -24,7 +24,20 @@ try{
  await p.click('#kr-source');await p.locator('#srcmodal[open]').waitFor();const info=await p.locator('#srcbox').textContent();assert(info.includes('韩国免税店协会'));assert(info.includes('缩略'));await p.click('#kr-close-source');
  await p.locator('[data-view=monthly]').click();await p.waitForFunction(()=>document.querySelector('#hn-period').textContent.includes('2026-09'));assert(await p.locator('#hn-growth svg').count()===0);assert.equal(await p.locator('#hn-growth').getAttribute('data-chart-ready'),'true');
  await p.locator('[data-view=holidays]').click();await p.locator('#dh-cards').waitFor();const holiday=p.locator('#dh-chart').locator('..');assert(await holiday.locator('[data-value-kind=value]').isChecked());assert(await p.locator('#dh-chart .site-value-label[data-kind=value]').count()>0);assert((await p.locator('#dh-chart .site-value-label[data-kind=value]').allTextContents()).every(t=>/^[\d,]+\.\d{2}$/.test(t)));await holiday.locator('[data-value-kind=value]').uncheck();await p.selectOption('#dh-metric','sales');assert.equal(await p.locator('#dh-chart .site-value-label[data-kind=value]').count(),0);await p.locator('[data-view=korea]').click();await p.locator('#view-korea[data-status=ready]').waitFor();
- for(const width of [1440,1024,768,390,320]){await p.setViewportSize({width,height:900});assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'overflow '+width);assert(await p.locator('.kr-plot').evaluateAll(es=>es.every(e=>e.scrollWidth<=e.clientWidth+1)),'chart '+width);}
+ for(const width of [1440,1024,768,724,600,390,320]){await p.setViewportSize({width,height:900});assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'overflow '+width);assert(await p.locator('.kr-plot').evaluateAll(es=>es.every(e=>e.scrollWidth<=e.clientWidth+1)),'chart '+width);assert(await p.locator('.kr-plot svg').evaluateAll(svgs=>svgs.every(svg=>{
+ const boxes=selector=>[...svg.querySelectorAll(selector)].map(e=>{const b=e.getBBox();return {x:b.x,y:b.y,w:b.width,h:b.height};});
+ const dates=boxes('.site-period-tick').sort((a,b)=>a.x-b.x),titles=boxes('.site-axis-label'),ticks=boxes('.site-tick');
+ if(svg.dataset.chartLayout!=='spacious'||dates.length<2||dates.length>6)return false;
+ if(dates.some((b,i)=>b.x<0||b.x+b.w>svg.viewBox.baseVal.width||i&&b.x-(dates[i-1].x+dates[i-1].w)<18))return false;
+ if(Math.min(...dates.map(b=>b.y))-Math.max(...ticks.map(b=>b.y+b.h))<12)return false;
+ if(Math.min(...ticks.map(b=>b.y))-Math.max(...titles.map(b=>b.y+b.h))<12)return false;
+ if(titles.length===2&&titles[0].x+titles[0].w>titles[1].x&&titles[0].y+titles[0].h>titles[1].y)return false;
+ for(const cls of ['.site-tick:not(.site-change-axis)','.site-tick.site-change-axis']){
+  const axis=boxes(cls).sort((a,b)=>a.y-b.y);
+  if(axis.some((b,i)=>i&&b.y-(axis[i-1].y+axis[i-1].h)<14))return false;
+ }
+ return true;
+})),'axis spacing '+width);}
  const bad=await context.newPage();await bad.route('**/data/dutyfree/korea.json',r=>r.fulfill({status:503,body:'bad'}));await bad.goto(base+'/dutyfree-dashboard.html#korea');await bad.locator('#view-korea[data-status=error]').waitFor();await bad.locator('[data-view=monthly]').click();await bad.locator('#hn-growth[data-chart-ready]').waitFor();await bad.unroute('**/data/dutyfree/korea.json');await bad.locator('[data-view=korea]').click();await bad.locator('#view-korea[data-status=ready]').waitFor();
  const isolated=await context.newPage();await isolated.route('**/data/dutyfree_monthly.csv',r=>r.fulfill({status:503,body:'bad'}));await isolated.goto(base+'/dutyfree-dashboard.html#korea');await isolated.locator('#view-korea[data-status=ready]').waitFor();assert((await isolated.locator('#asof').textContent()).includes('韩国月度截至'));
  // A real iframe exercises the shared ready/error protocol used by industry.html.

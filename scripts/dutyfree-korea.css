@@ -22,5 +22,4 @@
 #kr-status{font-size:13px;color:#65788d}#kr-status:empty{display:none}
 #kr-retry[hidden]{display:none}
 @media(max-width:1000px){#view-korea .kr-grid{grid-template-columns:minmax(0,1fr)}#view-korea .kr-actions{margin-left:0}}
-@media(max-width:650px){#view-korea .site-axis-label.site-change-axis{transform:translateY(16px)}}
 @media(max-width:650px){#view-korea .kr-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}#view-korea .kr-controls label{flex-direction:column;align-items:stretch;font-size:13px;min-width:0}#view-korea select{width:100%;min-width:0}#view-korea .kr-actions{grid-column:1/-1;justify-content:flex-end}#view-korea .kr-grid>article{padding:14px 10px}#view-korea .kpi{padding:12px 8px}#view-korea .kpi strong{font-size:22px}#view-korea .kpi strong em{font-size:10px}#view-korea .kpi small{font-size:11px}}
