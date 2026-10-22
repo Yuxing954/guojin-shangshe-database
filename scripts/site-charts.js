@@ -102,7 +102,7 @@ function valueLabels(svg,points,config){
   const hasExplicit=points.some(p=>Array.isArray(p.labels));
   const active=p=>(p.kind==='change'?config.change:config.value);
   const candidates=points.filter(p=>(p.labels||[]).some(active)),count=Math.max(1,...candidates.map(p=>p.labels.filter(active).length));
-  const plotWidth=Math.max(80,svg.viewBox.baseVal.width-(svg.viewBox.baseVal.width<520?110:152)),budget=Math.max(2,Math.floor(plotWidth/Math.max(28,count*8)));
+  const bounds=points.paired?.plot,plotWidth=Math.max(80,svg.viewBox.baseVal.width-(bounds?bounds.left+bounds.right:svg.viewBox.baseVal.width<520?110:152)),budget=Math.max(2,Math.floor(plotWidth/Math.max(28,count*8)));
   const visible=new Set(Array.from({length:Math.min(budget,candidates.length)},(_,i)=>Math.round(i*(candidates.length-1)/Math.max(1,Math.min(budget,candidates.length)-1))));
   // Thin annotations, never observations; include the latest finite point in every selected series.
   const recent=new Map();for(const p of candidates)for(const label of p.labels||[])if(active(label))recent.set((label.kind||'value')+'|'+(label.color||''),label);
@@ -111,7 +111,7 @@ function valueLabels(svg,points,config){
   if(!hasExplicit&&!labels.length)for(const p of nativePoints(svg))labels.push({...p,text:shortValue(p.text),kind:'value'});
   const layer=document.createElementNS(NS,'g');layer.classList.add('site-value-labels');layer.setAttribute('aria-hidden','true');
   const width=svg.viewBox.baseVal.width,height=svg.viewBox.baseVal.height,occupied=[],dual=points.paired&&(points.paired.options.mode||'combo')==='combo';
-  const left=points.paired?(width<520?58:76):8,right=points.paired?(dual?(width<520?52:76):24):8,top=points.paired?54:28,bottom=height-(points.paired?56:36);
+  const left=bounds?.left??(points.paired?(width<520?58:76):8),right=bounds?.right??(points.paired?(dual?(width<520?52:76):24):8),top=bounds?bounds.top+12:points.paired?54:28,bottom=bounds?bounds.bottom-8:height-(points.paired?56:36);
   for(const p of labels){
     if(!Number.isFinite(p.x)||!Number.isFinite(p.y)||!p.text||!(p.kind==='change'?config.change:config.value))continue;
     const text=String(p.text),tw=text.length*6.7+8,x=Math.max(left+tw/2+3,Math.min(width-right-tw/2-3,p.x));let y=Math.max(top,Math.min(bottom,p.y-11));
@@ -268,17 +268,19 @@ function paired(rows,opt={}){
   }
   const valid=normalized.filter(r=>r.values.some(s=>showValue&&Number.isFinite(s.value)||showChange&&Number.isFinite(s.change)));
   if(!valid.length)return {html:'<p class="portal-empty">暂无数据</p>',points:[]};
-  const w=Math.max(240,opt.width||Math.min(900,typeof innerWidth==='number'?innerWidth-64:900)),h=w<520?300:340,L=w<520?58:76,R=showChange&&showValue?(w<520?52:76):24,T=42,B=48,bottom=h-B;
+  const spacious=opt.layout==='spacious';
+  const w=Math.max(240,opt.width||Math.min(900,typeof innerWidth==='number'?innerWidth-64:900)),compact=w<520,h=spacious?(compact?360:400):(compact?300:340),L=spacious?(compact?64:80):(compact?58:76),R=showChange&&showValue?(spacious?(compact?64:84):(compact?52:76)):(spacious?36:24),T=spacious?(compact?76:64):42,B=spacious?72:48,bottom=h-B;
   const xs=normalized.map(r=>r.x),xmin=Math.min(...xs),xmax=Math.max(...xs),width=w-L-R;
   const unique=[...new Set(xs)].sort((a,b)=>a-b),delta=unique.length>1?Math.min(...unique.slice(1).map((x,i)=>x-unique[i])):1;
   const margin=width/(unique.length+1)/2,px=x=>L+margin+(x-xmin)/(xmax-xmin||1)*(width-margin*2);
-  function domain(key){return niceScale(normalized.flatMap(r=>r.values.map(s=>s[key])),{zero:true});}
+  function domain(key){return niceScale(normalized.flatMap(r=>r.values.map(s=>s[key])),{zero:true,intervals:spacious?4:5});}
   const valueScale=domain('value'),changeScale=domain('change'),vd=[valueScale.min,valueScale.max],cd=[changeScale.min,changeScale.max],py=(v,d)=>bottom-(v-d[0])/(d[1]-d[0])*(bottom-T);
   const palette=['#2167a0','#ac863d','#668397','#538db5','#8d7852','#476777'],barPalette=['#abcfe8','#e6d4ab','#c3d0d9','#bfdcec','#d8ccb5','#acc2ce'],colors=Array.from({length:Math.max(...normalized.map(r=>r.values.length))},(_,i)=>(opt.colors||palette)[i%(opt.colors||palette).length]);
-  let svg='<svg class="site-paired-chart" style="height:auto!important;min-height:0" viewBox="0 0 '+w+' '+h+'" role="img" aria-label="'+esc(opt.name||'历史趋势')+'"><title>'+esc(opt.name||'历史趋势')+'</title>';
+  const periodCount=Math.min(normalized.length,Math.max(2,Math.min(6,Math.floor((width-margin*2)/150)+1))),periodTicks=new Set(Array.from({length:periodCount},(_,i)=>Math.round(i*(normalized.length-1)/Math.max(1,periodCount-1))));
+  let svg='<svg class="site-paired-chart"'+(spacious?' data-chart-layout="spacious"':'')+' style="height:auto!important;min-height:0" viewBox="0 0 '+w+' '+h+'" role="img" aria-label="'+esc(opt.name||'历史趋势')+'"><title>'+esc(opt.name||'历史趋势')+'</title>';
   const primary=showValue?vd:cd,primaryScale=showValue?valueScale:changeScale;
-  svg+='<text class="site-axis-label" x="'+L+'" y="20">'+esc(showValue?'数值（'+unit+'）':(opt.changeLabel||'同比')+'（'+changeUnit+'）')+'</text>';
-  if(showValue&&showChange)svg+='<text class="site-axis-label site-change-axis" x="'+(w-R)+'" y="20" text-anchor="end">'+esc((opt.changeLabel||'同比')+'（'+changeUnit+'）')+'</text>';
+  svg+='<text class="site-axis-label" x="'+L+'" y="'+(spacious?24:20)+'">'+esc(showValue?'数值（'+unit+'）':(opt.changeLabel||'同比')+'（'+changeUnit+'）')+'</text>';
+  if(showValue&&showChange)svg+='<text class="site-axis-label site-change-axis" x="'+(w-R)+'" y="'+(spacious?(compact?48:24):20)+'" text-anchor="end">'+esc((opt.changeLabel||'同比')+'（'+changeUnit+'）')+'</text>';
   for(const v of primaryScale.ticks){const y=py(v,primary);svg+='<line class="site-grid'+(v===0?' site-zero':'')+'" x1="'+L+'" x2="'+(w-R)+'" y1="'+y+'" y2="'+y+'"/><text class="site-tick" x="'+(L-12)+'" y="'+(y+4)+'" text-anchor="end">'+esc(primaryScale.format(v))+'</text>';}
   if(showValue&&showChange)for(const v of changeScale.ticks)svg+='<text class="site-change-axis site-tick" x="'+(w-R+12)+'" y="'+(py(v,cd)+4)+'">'+esc(changeScale.format(v))+'</text>';
   svg+='<path class="site-axis-rule" d="M'+L+','+T+'V'+bottom+'H'+(w-R)+(showValue&&showChange?'V'+T:'')+'" fill="none"/>';
@@ -292,7 +294,7 @@ function paired(rows,opt={}){
     ])});
     if(showValue&&opt.valueStyle!=='line')r.values.forEach((s,si)=>{if(!Number.isFinite(s.value))return;const y=py(s.value,vd),zero=py(0,vd);svg+='<rect class="site-value-bar" x="'+(px(r.x)+(si-seriesCount/2)*barWidth)+'" y="'+Math.min(y,zero)+'" width="'+Math.max(.8,barWidth-1)+'" height="'+Math.max(1,Math.abs(zero-y))+'" rx="2" fill="'+barPalette[si%barPalette.length]+'" opacity="1"><title>'+esc(text)+'</title></rect>';});
     const step=Math.max(1,Math.ceil(normalized.length/Math.max(2,Math.floor(width/110))));
-    if(ri===0||ri===normalized.length-1||w>=520&&ri%step===0&&normalized.length-ri>step/2)svg+='<text x="'+px(r.x)+'" y="'+(h-17)+'" text-anchor="'+(ri===0?'start':ri===normalized.length-1?'end':'middle')+'">'+esc(String(periodText(r.period)).replace(/年/g,'·').replace(/月/g,''))+'</text>';
+    if(spacious?periodTicks.has(ri):ri===0||ri===normalized.length-1||w>=520&&ri%step===0&&normalized.length-ri>step/2)svg+='<text class="site-period-tick" x="'+px(r.x)+'" y="'+(spacious?bottom+36:h-17)+'" text-anchor="'+(ri===0?'start':ri===normalized.length-1?'end':'middle')+'">'+esc(String(periodText(r.period)).replace(/年/g,'·').replace(/月/g,''))+'</text>';
   });
   if(showValue&&opt.valueStyle==='line')for(let si=0;si<seriesCount;si++){
     let path='',prior=null;
@@ -303,7 +305,7 @@ function paired(rows,opt={}){
   if(showChange)for(let si=0;si<seriesCount;si++){let path='',prior=null;for(const r of normalized){const s=r.values[si];if(!Number.isFinite(s?.change)){prior=null;continue;}const gap=r.breakBefore||prior&&(r.x-prior.x)>(opt.gap??Infinity);path+=(prior&&!gap?'L':'M')+px(r.x)+','+py(s.change,cd)+' ';prior=r;}svg+='<path class="site-line-halo" d="'+path+'" fill="none" stroke="white" stroke-width="5.5" stroke-linejoin="round" stroke-linecap="round"/><path class="site-change-line"'+(opt.valueStyle==='line'&&showValue?' stroke-dasharray="5 4"':'')+' d="'+path+'" fill="none" stroke="'+colors[si%colors.length]+'" stroke-width="2.5" stroke-linejoin="round"/>';normalized.forEach((r,ri)=>{if(Number.isFinite(r.values[si]?.change)&&(ri%Math.max(1,Math.ceil(normalized.length/(w<520?24:80)))===0||ri===normalized.length-1))svg+='<circle data-chart-point="'+si+'" tabindex="0" cx="'+px(r.x)+'" cy="'+py(r.values[si].change,cd)+'" r="'+(normalized.length>80?2.4:3.4)+'" fill="white" stroke="'+colors[si%colors.length]+'" stroke-width="1.8"><title>'+esc(points[normalized.indexOf(r)].text)+'</title></circle>';});}
   svg+='</svg>';
   const legend=seriesCount>1?normalized.find(r=>r.values.length===seriesCount).values.map((s,i)=>'<span><i style="background:'+colors[i%colors.length]+'"></i>'+esc(s.name)+'</span>').join(''):'';
-  points.paired={rows,options:opt,showValue:!!opt.valueLabels,showChange:!!opt.yoyLabels};
+  points.paired={rows,options:opt,showValue:!!opt.valueLabels,showChange:!!opt.yoyLabels,plot:spacious?{left:L,right:R,top:T,bottom}:null};
   return {html:svg+'<div class="site-chart-legend">'+(showValue&&(opt.legend!=='series'||showChange)?'<span><i class="'+(opt.valueStyle==='line'?'site-line-key':'site-bar-key')+'"></i>数值 · '+esc(unit)+'</span>':'')+(showChange&&(opt.legend!=='series'||showValue)?'<span><i class="site-line-key"'+(opt.valueStyle==='line'&&showValue?' style="background:repeating-linear-gradient(to right,#2167a0 0 5px,transparent 5px 9px)"':'')+'></i>'+esc(opt.changeLabel||'同比')+' · '+esc(changeUnit)+'</span>':'')+legend+'</div>',points};
 }
 const pairedObservers=new WeakMap();
