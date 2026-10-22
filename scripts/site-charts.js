@@ -269,7 +269,7 @@ function paired(rows,opt={}){
   const valid=normalized.filter(r=>r.values.some(s=>showValue&&Number.isFinite(s.value)||showChange&&Number.isFinite(s.change)));
   if(!valid.length)return {html:'<p class="portal-empty">暂无数据</p>',points:[]};
   const spacious=opt.layout==='spacious';
-  const w=Math.max(240,opt.width||Math.min(900,typeof innerWidth==='number'?innerWidth-64:900)),compact=w<520,L=spacious?(compact?64:80):(compact?58:76),R=showChange&&showValue?(spacious?(compact?64:84):(compact?52:76)):(spacious?36:24),T=spacious?(compact?76:64):42,B=spacious?72:48;
+  const w=Math.max(240,opt.width||Math.min(900,typeof innerWidth==='number'?innerWidth-64:900)),compact=w<520,L=spacious?(compact?64:80):(compact?58:76),R=showChange&&showValue?(spacious?(compact?64:84):(compact?52:76)):(spacious?36:24),T=spacious?(compact?92:76):42,B=spacious?72:48;
   // Give dual-axis dutyfree plots real vertical room; dense ranges grow without horizontal scrolling.
   const density=normalized.length*40/Math.max(80,w-L-R),extra=spacious&&showValue&&showChange?Math.min(120,Math.max(0,Math.round((density-1)*60))):0;
   const h=spacious?(compact?500:560)+extra:(compact?300:340),bottom=h-B;
