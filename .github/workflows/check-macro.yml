@@ -1,7 +1,7 @@
 name: Check macro and predictions
 on:
   pull_request:
-    paths: ['macro.html', 'scripts/macro*', 'scripts/prediction-model.js', 'scripts/fedwatch*', 'scripts/forecast-desk*', 'scripts/research-chart*', 'scripts/site*', 'data/macro/**', 'data/consumption-macro/**', 'data/gold-jewelry/macro.json', 'update/miaoxiang_mcp.py', 'tests/test_miaoxiang_credentials.py', 'update/macro_auto.py', 'update/treasury_yields.py', 'tests/test_treasury_yields.py', 'update/macro_data.py', 'update/polymarket_data.py', 'update/fedwatch_import.cjs', 'tests/fedwatch-import.test.cjs', 'tests/*macro*', '.github/workflows/check-macro.yml']
+    paths: ['macro.html', 'scripts/macro*', 'scripts/prediction-model.js', 'scripts/fedwatch*', 'scripts/forecast-desk*', 'scripts/research-chart*', 'scripts/site*', 'data/macro/**', 'data/consumption-macro/**', 'data/gold-jewelry/macro.json', 'update/miaoxiang_mcp.py', 'tests/test_miaoxiang_credentials.py', 'update/macro_auto.py', 'update/treasury_yields.py', 'tests/test_treasury_yields.py', 'update/macro_data.py', 'update/polymarket_data.py', 'update/fedwatch_import.cjs', 'tests/fedwatch-import.test.cjs', 'tests/*macro*', 'tests/polymarket*', '.github/workflows/check-macro.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -57,4 +57,30 @@ jobs:
         with:
           name: macro-dashboard-previews
           path: artifacts/macro
+          if-no-files-found: ignore
+  polymarket:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: |
+          node --check scripts/forecast-desk.js
+          node --test tests/forecast-macro.test.cjs
+          npm install --no-save --package-lock=false playwright@1.62.1
+          if command -v google-chrome >/dev/null 2>&1; then
+            echo 'PLAYWRIGHT_CHANNEL=chrome' >> "$GITHUB_ENV"
+          else
+            npx playwright install --with-deps chromium
+          fi
+      - name: Verify prediction density and interactions
+        env:
+          MACRO_SCREENSHOT_DIR: artifacts/polymarket
+        run: node tests/polymarket-layout.browser.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: polymarket-previews
+          path: artifacts/polymarket
           if-no-files-found: ignore
