@@ -2,7 +2,7 @@
 const assert=require('node:assert/strict'),http=require('node:http'),fs=require('node:fs'),path=require('node:path');
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright'),root=path.resolve(__dirname,'..');
 const server=http.createServer((req,res)=>{const file=path.resolve(root,'.'+decodeURIComponent(req.url.split('?')[0]));if(!file.startsWith(root+path.sep)){res.writeHead(403).end();return;}fs.readFile(file,(e,b)=>{if(e){res.writeHead(404).end();return;}res.writeHead(200,{'Content-Type':{'.html':'text/html; charset=utf-8','.js':'text/javascript','.css':'text/css','.json':'application/json','.csv':'text/csv; charset=utf-8'}[path.extname(file)]||'text/plain'}).end(b);});});
-const cases=[['consumption','consumption-macro.html','#kpis .board-stat'],['indicators','macro.html?view=indicators','#kpi-grid .board-stat'],['fedwatch','macro.html?view=fedwatch','.fedwatch-kpi'],['predictions','macro.html?view=predictions','.forecast-event']];
+const cases=[['regional','regional-retail.html','#tier-cards .tier-card'],['indicators','macro.html?view=indicators','#kpi-grid .board-stat'],['fedwatch','macro.html?view=fedwatch','.fedwatch-kpi'],['predictions','macro.html?view=predictions','.forecast-event']];
 async function check(page,mobile){
  for(const card of await page.locator('.data-board .board-stat:visible').all()){
   const s=await card.evaluate(e=>{const s=getComputedStyle(e),v=getComputedStyle(e.querySelector('strong'));return{padding:s.padding,radius:s.borderRadius,bg:s.backgroundColor,image:s.backgroundImage,span:s.gridColumnStart,value:v.fontSize,weight:v.fontWeight,line:v.lineHeight,align:v.textAlign};});
@@ -29,6 +29,7 @@ async function check(page,mobile){
   for(const [name,url,ready] of cases){
    await page.setViewportSize({width:1440,height:1100});await page.goto(base+'/'+url);await page.locator(ready).first().waitFor({timeout:45000});await check(page,false);
    offsets.push(await page.locator('.data-board .site-subnav').first().evaluate(e=>e.getBoundingClientRect().top));
+   if(name==='regional'){const cards=await page.locator('.tier-card').evaluateAll(es=>es.map(e=>({w:e.offsetWidth,h:e.offsetHeight})));assert.equal(cards.length,4);assert.ok(cards.every(c=>Math.abs(c.w-cards[0].w)<2&&c.h===cards[0].h));}
    if(name==='indicators'){await page.locator('#countries [data-country=US]').click();await check(page,false);await page.locator('#countries [data-country=CN]').click();assert.ok(await page.locator('.morning-chart svg').count());}
    if(name==='consumption'){await page.locator('#indicator').selectOption('cpi');await page.locator('#measure').selectOption('value');await page.locator('#chart svg').waitFor();await check(page,false);}
    if(name==='fedwatch'){await page.locator('.board-detail').last().evaluate(e=>e.open=true);assert.ok(await page.locator('#fedwatch .board-table tbody tr').count());}
@@ -41,4 +42,5 @@ async function check(page,mobile){
   assert.ok(Math.max(...offsets)-Math.min(...offsets)<=2,'macro header/navigation alignment: '+offsets);assert.deepEqual(errors,[]);
  }finally{await browser.close();server.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;server.close();});
+
 

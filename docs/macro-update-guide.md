@@ -88,7 +88,7 @@ node scripts/site-data.test.cjs
 node scripts/industry-model.test.cjs
 ```
 
-核对页面`macro.html`和`consumption-macro.html`的最新值、来源、覆盖和CSV。有历史不等于所有应发布期间完整；缺期或覆盖不足不能宣称已补齐。
+核对核心页面`macro.html`的最新值、来源、覆盖和CSV；地方社零与京沪历史另按`docs/regional-retail.md`更新。`consumption-macro.html`已退役并跳转核心指标，不重建旧看板。有历史不等于所有应发布期间完整；缺期或覆盖不足不能宣称已补齐。
 
 ## 5. 提交与发布
 
@@ -140,3 +140,4 @@ Polymarket 先发现成交靠前的相关事件，每个主题最多6个，再�
 - 十年期美债使用 `update/treasury_yields.py`：美国财政部公开年度XML `BC_10YEAR` 为当前来源，首次迁移由美联储H.15/FRED `DGS10` 补足2016年以来历史，并严格比较重叠日期。正常每日批次只请求当前年度XML，不依赖Choice凭据；由 `macro_due.py` 的 `dueOfficial: treasury-yields` 及官方账本去重。缺失报价保持缺失，数值0有效。
 - 单独手动刷新收益率：`python update/macro_auto.py --official-only treasury-yields`。每日仍只运行原 `--due-only` 一次。该指标注册项保留旧Choice身份供审计，并标记 `adapter: treasury-public`，不再发Choice查询。
 - 两份官方源或旧历史重叠值冲突、官方源未覆盖旧历史时，迁移失败并保留原值供复核，不自动拼接。原始公开回执存本地忽略目录，SHA-256保留在JSON；获取时间不作报价或发布日期。
+

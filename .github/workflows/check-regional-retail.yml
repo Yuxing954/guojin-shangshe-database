@@ -30,8 +30,11 @@ jobs:
           node --check scripts/regional-retail-model.js
           node --check scripts/regional-retail-tiers.js
           node --check scripts/regional-retail-tier-model.js
+          node --check scripts/regional-retail-charts.js
+          node --check scripts/macro-navigation.js
           node --test tests/regional-retail.test.cjs
           node --test tests/regional-retail-tiers.test.cjs
+          node --test tests/regional-retail-history.test.cjs
       - name: Browser checks
         run: |
           npm install --no-save --package-lock=false playwright@1.62.1
