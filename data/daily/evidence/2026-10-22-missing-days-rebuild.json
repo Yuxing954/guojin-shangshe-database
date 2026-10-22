@@ -1,0 +1,108 @@
+{
+  "checkedAt": "2026-10-22T18:55:35+08:00",
+  "baseCommit": "d2b3387b805a90e849534679a8a475598e6ed2cc",
+  "dates": [
+    {
+      "date": "2026-10-20",
+      "cutoff": "2026-10-20T18:00:00+08:00",
+      "cards": 6,
+      "originals": 8,
+      "summaryCharacters": 397,
+      "allCandidatesListed": true,
+      "fullOriginalsMatchImmutableSources": true,
+      "summaryPoints": 3,
+      "verifiedAnnouncements": 0,
+      "announcementMonitoring": "partial",
+      "checkedCompanies": 60,
+      "excludedCompanies": 14,
+      "attachmentWindowComplete": false,
+      "attachmentGaps": [
+        {
+          "start": "2026-10-20T16:39:03.081000+08:00",
+          "end": "2026-10-20T18:00:00+08:00"
+        }
+      ],
+      "attachmentCounts": {
+        "minutes": 2,
+        "audio": 2,
+        "reports": 3
+      },
+      "publicationStatus": "blocked"
+    },
+    {
+      "date": "2026-10-21",
+      "cutoff": "2026-10-21T18:00:00+08:00",
+      "cards": 5,
+      "originals": 6,
+      "summaryCharacters": 449,
+      "allCandidatesListed": true,
+      "fullOriginalsMatchImmutableSources": true,
+      "summaryPoints": 3,
+      "verifiedAnnouncements": 0,
+      "announcementMonitoring": "partial",
+      "checkedCompanies": 60,
+      "excludedCompanies": 14,
+      "attachmentWindowComplete": false,
+      "attachmentGaps": [
+        {
+          "start": "2026-10-20T18:00:00+08:00",
+          "end": "2026-10-21T18:00:00+08:00"
+        }
+      ],
+      "attachmentCounts": {
+        "minutes": 0,
+        "audio": 0,
+        "reports": 0
+      },
+      "publicationStatus": "blocked"
+    },
+    {
+      "date": "2026-10-22",
+      "cutoff": "2026-10-22T18:00:00+08:00",
+      "cards": 7,
+      "originals": 9,
+      "summaryCharacters": 447,
+      "allCandidatesListed": true,
+      "fullOriginalsMatchImmutableSources": true,
+      "summaryPoints": 3,
+      "verifiedAnnouncements": 1,
+      "announcementMonitoring": "partial",
+      "checkedCompanies": 60,
+      "excludedCompanies": 14,
+      "attachmentWindowComplete": false,
+      "attachmentGaps": [
+        {
+          "start": "2026-10-21T18:00:00+08:00",
+          "end": "2026-10-22T18:00:00+08:00"
+        }
+      ],
+      "attachmentCounts": {
+        "minutes": 0,
+        "audio": 0,
+        "reports": 0
+      },
+      "publicationStatus": "blocked"
+    }
+  ],
+  "dailyTests": {
+    "command": "python -m unittest discover -s tests -p 'test_daily*.py'",
+    "passed": 53,
+    "failed": 0
+  },
+  "siteCheck": {
+    "command": "node scripts/check-site.cjs",
+    "status": "failed",
+    "file": "hotel-groups.html",
+    "reason": "hotel-groups.css follows site-polish.css on unchanged main; outside daily scope.",
+    "checkoutScope": "Latest main hotel-groups.html checked with current check-site script in local sparse mirror; not a full-site pass."
+  },
+  "publicationDecision": "Drafts retained; original user requirement for complete attachment scan prevents formal publication. No official onepage, latest or index change.",
+  "requiredSourceRepair": {
+    "path": "data/research/library.json",
+    "receipt": "data/research/library-sync-receipt.json",
+    "scanFrom": "2026-10-20T16:39:03.081+08:00",
+    "scanThrough": "2026-10-22T18:00:00+08:00",
+    "onlyMetadata": true,
+    "currentEnvironmentResult": "Forbidden. Calls to this URL are not allowed."
+  }
+}

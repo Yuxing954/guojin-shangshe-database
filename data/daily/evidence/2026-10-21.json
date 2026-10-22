@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "date": "2026-10-21",
-  "checkedAt": "2026-10-22T18:15:49+08:00",
+  "checkedAt": "2026-10-22T18:53:52+08:00",
   "windowStart": "2026-10-20T18:00:00+08:00",
   "cutoff": "2026-10-21T18:00:00+08:00",
   "baseCommit": "82139c3e05bfe43461faef8f0dbff6b81890476d",
@@ -149,16 +149,10 @@
         }
       ],
       "receiptFile": "data/research/library-sync-receipt.json"
-    },
-    {
-      "type": "announcement_originals_pending",
-      "recoverable": true,
-      "evidenceFile": "data/daily/evidence/2026-10-21.json",
-      "reason": "昨日原始公告列表及候选正文核验仍未完成，保留待核验矩阵。"
     }
   ],
   "announcementMonitoring": {
-    "checkedAt": "2026-10-22T18:15:49+08:00",
+    "checkedAt": "2026-10-22T18:53:52+08:00",
     "windowStart": "2026-10-20T18:00:00+08:00",
     "cutoff": "2026-10-21T18:00:00+08:00",
     "coverageFile": "data/coverage-companies.json",
@@ -168,780 +162,1059 @@
         "code": "9992.HK",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"泡泡玛特\" 公司公告 2026年10月",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-0"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "名创优品",
         "code": "9896.HK",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"名创优品\" 公司公告 2026年10月",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-0"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "思摩尔国际",
         "code": "6969.HK",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"思摩尔国际\" 公司公告 2026年10月",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-0"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "中烟香港",
         "code": "6055.HK",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"中烟香港\" 公司公告 2026年10月",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-0"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "小商品城",
         "code": "600415.SH",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"小商品城\" 公司公告 2026年10月",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-1"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "特海国际",
         "code": "9658.HK",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"特海国际\" 公司公告 2026年10月",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-1"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "周大福",
         "code": "1929.HK",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"周大福\" 公司公告 2026年10月",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-1"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "老铺黄金",
         "code": "6181.HK",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"老铺黄金\" 公司公告 2026年10月",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-1"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "老凤祥",
         "code": "600612.SH",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"老凤祥\" 公司公告 2026年10月",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-2"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "六福集团",
         "code": "0590.HK",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"六福集团\" 公司公告 2026年10月",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-2"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "菜百股份",
         "code": "605599.SH",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"菜百股份\" 公司公告 2026年10月",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-2"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "周大生",
         "code": "002867.SZ",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"周大生\" 公司公告 2026年10月",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-2"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "潮宏基",
         "code": "002345.SZ",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"潮宏基\" 公司公告 2026年10月",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-3"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "周六福",
         "code": "6168.HK",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"周六福\" 公司公告 2026年10月",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-3"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "爱美客",
         "code": "300896.SZ",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"爱美客\" 公司公告 2026年10月",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-3"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "巨子生物",
         "code": "2367.HK",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"巨子生物\" 公司公告 2026年10月",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-3"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "毛戈平",
         "code": "1318.HK",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"毛戈平\" 公司公告 2026年10月",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-4"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "珀莱雅",
         "code": "603605.SH",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"珀莱雅\" 公司公告 2026年10月",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-4"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "上美股份",
         "code": "2145.HK",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"上美股份\" 公司公告 2026年10月",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-4"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "华熙生物",
         "code": "688363.SH",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"华熙生物\" 公司公告 2026年10月",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-4"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "贝泰妮",
         "code": "300957.SZ",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"贝泰妮\" 公司公告 2026年10月",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-5"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "上海家化",
         "code": "600315.SH",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"上海家化\" 公司公告 2026年10月",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-5"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "丸美生物",
         "code": "603983.SH",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"丸美生物\" 公司公告 2026年10月",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-5"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "林清轩",
         "code": "2657.HK",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"林清轩\" 公司公告 2026年10月",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-5"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "水羊股份",
         "code": "300740.SZ",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"水羊股份\" 公司公告 2026年10月",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-6"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "福瑞达",
         "code": "600223.SH",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"福瑞达\" 公司公告 2026年10月",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-6"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "锦波生物",
         "code": "920982.BJ",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"锦波生物\" 公司公告 2026年10月",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-6"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "中国中免",
         "code": "601888.SH",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"中国中免\" 公司公告 2026年10月",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-6"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "王府井",
         "code": "600859.SH",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"王府井\" 公司公告 2026年10月",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-7"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "上海机场",
         "code": "600009.SH",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"上海机场\" 公司公告 2026年10月",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-7"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "携程集团-S",
         "code": "9961.HK",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"携程集团-S\" 公司公告 2026年10月",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-7"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "同程旅行",
         "code": "0780.HK",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"同程旅行\" 公司公告 2026年10月",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-7"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "华住集团-S",
         "code": "1179.HK",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"华住集团-S\" 公司公告 2026年10月",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-8"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "亚朵",
         "code": "ATAT.O",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"亚朵\" 公司公告 2026年10月",
+            "domains": [
+              "sec.gov"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-8"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "锦江酒店",
         "code": "600754.SH",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"锦江酒店\" 公司公告 2026年10月",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-8"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "首旅酒店",
         "code": "600258.SH",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"首旅酒店\" 公司公告 2026年10月",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-8"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "宋城演艺",
         "code": "300144.SZ",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"宋城演艺\" 公司公告 2026年10月",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-9"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "长白山",
         "code": "603099.SH",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"长白山\" 公司公告 2026年10月",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-9"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "陕西旅游",
         "code": "603402.SH",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"陕西旅游\" 公司公告 2026年10月",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-9"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "黄山旅游",
         "code": "600054.SH",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"黄山旅游\" 公司公告 2026年10月",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-9"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "众信旅游",
         "code": "002707.SZ",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"众信旅游\" 公司公告 2026年10月",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-10"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "峨眉山A",
         "code": "000888.SZ",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"峨眉山A\" 公司公告 2026年10月",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-10"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "香港中旅",
         "code": "0308.HK",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"香港中旅\" 公司公告 2026年10月",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-10"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "君亭酒店",
         "code": "301073.SZ",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"君亭酒店\" 公司公告 2026年10月",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-10"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "九华旅游",
         "code": "603199.SH",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"九华旅游\" 公司公告 2026年10月",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-11"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "天目湖",
         "code": "603136.SH",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"天目湖\" 公司公告 2026年10月",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-11"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "蜜雪集团",
         "code": "2097.HK",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"蜜雪集团\" 公司公告 2026年10月",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-11"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "百胜中国",
         "code": "9987.HK",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"百胜中国\" 公司公告 2026年10月",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-11"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "海底捞",
         "code": "6862.HK",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"海底捞\" 公司公告 2026年10月",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-12"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "古茗",
         "code": "1364.HK",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"古茗\" 公司公告 2026年10月",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-12"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "瑞幸咖啡",
         "code": "LKNCY.OO",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"瑞幸咖啡\" 公司公告 2026年10月",
+            "domains": [
+              "sec.gov"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-12"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "小菜园",
         "code": "0999.HK",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"小菜园\" 公司公告 2026年10月",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-12"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "茶百道",
         "code": "2555.HK",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"茶百道\" 公司公告 2026年10月",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-13"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "沪上阿姨",
         "code": "2589.HK",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"沪上阿姨\" 公司公告 2026年10月",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-13"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "达势股份",
         "code": "1405.HK",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"达势股份\" 公司公告 2026年10月",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-13"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "重庆百货",
         "code": "600729.SH",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"重庆百货\" 公司公告 2026年10月",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-13"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "永辉超市",
         "code": "601933.SH",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"永辉超市\" 公司公告 2026年10月",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-14"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "红旗连锁",
         "code": "002697.SZ",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"红旗连锁\" 公司公告 2026年10月",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-14"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "家家悦",
         "code": "603708.SH",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"家家悦\" 公司公告 2026年10月",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-14"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       },
       {
         "company": "孩子王",
         "code": "301078.SZ",
         "sources": [
           {
-            "method": "pending_original_disclosure_check",
-            "status": "not_completed",
-            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json"
+            "method": "official-domain-search",
+            "q": "\"孩子王\" 公司公告 2026年10月",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn",
+              "bse.cn"
+            ],
+            "receipt": "data/daily/evidence/2026-10-21-announcement-searches.json#batch-14"
           }
         ],
-        "status": "source_check_not_completed",
-        "checkedAt": "2026-10-22T18:15:49+08:00"
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-10-22T18:53:52+08:00"
       }
     ],
     "excludedCompanies": [
@@ -1048,305 +1321,305 @@
       {
         "company": "泡泡玛特",
         "code": "9992.HK",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "名创优品",
         "code": "9896.HK",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "思摩尔国际",
         "code": "6969.HK",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "中烟香港",
         "code": "6055.HK",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "小商品城",
         "code": "600415.SH",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "特海国际",
         "code": "9658.HK",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "周大福",
         "code": "1929.HK",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "老铺黄金",
         "code": "6181.HK",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "老凤祥",
         "code": "600612.SH",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "六福集团",
         "code": "0590.HK",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "菜百股份",
         "code": "605599.SH",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "周大生",
         "code": "002867.SZ",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "潮宏基",
         "code": "002345.SZ",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "周六福",
         "code": "6168.HK",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "爱美客",
         "code": "300896.SZ",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "巨子生物",
         "code": "2367.HK",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "毛戈平",
         "code": "1318.HK",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "珀莱雅",
         "code": "603605.SH",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "上美股份",
         "code": "2145.HK",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "华熙生物",
         "code": "688363.SH",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "贝泰妮",
         "code": "300957.SZ",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "上海家化",
         "code": "600315.SH",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "丸美生物",
         "code": "603983.SH",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "林清轩",
         "code": "2657.HK",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "水羊股份",
         "code": "300740.SZ",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "福瑞达",
         "code": "600223.SH",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "锦波生物",
         "code": "920982.BJ",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "中国中免",
         "code": "601888.SH",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "王府井",
         "code": "600859.SH",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "上海机场",
         "code": "600009.SH",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "携程集团-S",
         "code": "9961.HK",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "同程旅行",
         "code": "0780.HK",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "华住集团-S",
         "code": "1179.HK",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "亚朵",
         "code": "ATAT.O",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "锦江酒店",
         "code": "600754.SH",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "首旅酒店",
         "code": "600258.SH",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "宋城演艺",
         "code": "300144.SZ",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "长白山",
         "code": "603099.SH",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "陕西旅游",
         "code": "603402.SH",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "黄山旅游",
         "code": "600054.SH",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "众信旅游",
         "code": "002707.SZ",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "峨眉山A",
         "code": "000888.SZ",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "香港中旅",
         "code": "0308.HK",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "君亭酒店",
         "code": "301073.SZ",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "九华旅游",
         "code": "603199.SH",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "天目湖",
         "code": "603136.SH",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "蜜雪集团",
         "code": "2097.HK",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "百胜中国",
         "code": "9987.HK",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "海底捞",
         "code": "6862.HK",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "古茗",
         "code": "1364.HK",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "瑞幸咖啡",
         "code": "LKNCY.OO",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "小菜园",
         "code": "0999.HK",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "茶百道",
         "code": "2555.HK",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "沪上阿姨",
         "code": "2589.HK",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "达势股份",
         "code": "1405.HK",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "重庆百货",
         "code": "600729.SH",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "永辉超市",
         "code": "601933.SH",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "红旗连锁",
         "code": "002697.SZ",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "家家悦",
         "code": "603708.SH",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       },
       {
         "company": "孩子王",
         "code": "301078.SZ",
-        "reason": "原始公告列表未完整取得；检索结果不能用于确认本期无重要公告。"
+        "reason": "Search completed; original filing and IR lists were not fully verified for the historical window."
       }
     ],
-    "status": "blocked",
+    "status": "partial",
     "evidenceFile": "data/daily/evidence/2026-10-21.json"
   },
   "companyAnnouncements": [],
@@ -1354,7 +1627,7 @@
     "windowStart": "2026-10-20T18:00:00+08:00",
     "cutoff": "2026-10-21T18:00:00+08:00",
     "status": "partial_sources_checked_no_verified_in_window_item",
-    "evidenceFile": "data/daily/evidence/2026-10-21-announcement-searches.json",
+    "evidenceFile": "data/daily/evidence/2026-10-21.json",
     "included": []
   },
   "earningsMonitoring": {
@@ -1402,5 +1675,95 @@
     "dailyTestsPassed": 53,
     "publicationGate": "blocked",
     "siteCheck": "not_certified_in_sparse_local_checkout"
-  }
+  },
+  "rebuildAudit": {
+    "checkedAt": "2026-10-22T18:53:52+08:00",
+    "baseCommit": "d2b3387b805a90e849534679a8a475598e6ed2cc",
+    "originalCutoffPreserved": "2026-10-21T18:00:00+08:00",
+    "candidateCount": 6,
+    "cardCount": 5,
+    "candidateUrlsUnchanged": true,
+    "allOriginalHashesUnchanged": true,
+    "allBodiesMatchImmutableCorpus": true,
+    "sourceFiles": {
+      "views": [
+        "data/research/updates/2026-10-22-100632-rd80cf-views-000.csv",
+        "data/research/updates/2026-10-22-150317-views-000.csv",
+        "data/research/updates/2026-10-22-055848-r671b4-views-000.csv",
+        "data/research/updates/2026-10-22-123655-views-000.csv",
+        "data/research/updates/2026-10-22-042154-rc5c32-views-000.csv",
+        "data/research/updates/2026-10-22-042154-rc5c32-views-001.csv",
+        "data/research/updates/2026-10-21-110248-views.csv",
+        "data/research/updates/2026-10-21-100430-views.csv",
+        "data/research/updates/2026-10-21-090259-views.csv",
+        "data/research/updates/2026-10-21-000207-views.csv",
+        "data/research/updates/2026-10-20-220207-views.csv",
+        "data/research/updates/2026-10-20-200205-views.csv",
+        "data/research/updates/2026-10-20-190537-views.csv",
+        "data/research/updates/2026-10-20-145851-views.csv",
+        "data/research/updates/2026-10-20-140408-views.csv",
+        "data/research/updates/2026-10-20-125756-views.csv",
+        "data/research/updates/2026-10-20-113209-views.csv",
+        "data/research/updates/2026-10-19-235801-views.csv",
+        "data/research/updates/2026-10-19-220301-views.csv",
+        "data/research/updates/2026-10-19-200136-views.csv",
+        "data/research/updates/2026-10-19-180105-views.csv",
+        "data/research/updates/2026-10-19-150229-views.csv",
+        "data/research/updates/2026-10-19-125556-views.csv",
+        "data/research/updates/2026-10-19-031007-ra9001-views.csv",
+        "data/research/updates/2026-10-19-090351-views.csv",
+        "data/research/updates/2026-10-19-002035-views.csv"
+      ],
+      "all_views": [
+        "data/research/updates/2026-10-22-100632-rd80cf-all_views-000.csv",
+        "data/research/updates/2026-10-22-150317-all_views-000.csv",
+        "data/research/updates/2026-10-22-055848-r671b4-all_views-000.csv",
+        "data/research/updates/2026-10-22-125831-all_views-000.csv",
+        "data/research/updates/2026-10-22-123655-all_views-000.csv",
+        "data/research/updates/2026-10-22-042154-rc5c32-all_views-000.csv",
+        "data/research/updates/2026-10-22-042154-rc5c32-all_views-001.csv",
+        "data/research/updates/2026-10-22-042154-rc5c32-all_views-002.csv",
+        "data/research/updates/2026-10-22-042154-rc5c32-all_views-003.csv",
+        "data/research/updates/2026-10-22-042154-rc5c32-all_views-004.csv",
+        "data/research/updates/2026-10-22-042154-rc5c32-all_views-005.csv",
+        "data/research/updates/2026-10-22-042154-rc5c32-all_views-006.csv",
+        "data/research/updates/2026-10-21-123303-r51c2f-all_views.csv",
+        "data/research/updates/2026-10-21-110248-all_views.csv",
+        "data/research/updates/2026-10-21-100430-all_views.csv",
+        "data/research/updates/2026-10-21-090259-all_views.csv",
+        "data/research/updates/2026-10-21-000207-all_views.csv",
+        "data/research/updates/2026-10-20-230515-all_views.csv",
+        "data/research/updates/2026-10-20-220207-all_views.csv",
+        "data/research/updates/2026-10-20-200205-all_views.csv",
+        "data/research/updates/2026-10-20-190537-all_views.csv",
+        "data/research/updates/2026-10-20-170250-all_views.csv",
+        "data/research/updates/2026-10-20-145851-all_views.csv",
+        "data/research/updates/2026-10-20-140408-all_views.csv",
+        "data/research/updates/2026-10-20-125756-all_views.csv",
+        "data/research/updates/2026-10-20-113209-all_views.csv",
+        "data/research/updates/2026-10-19-235801-all_views.csv",
+        "data/research/updates/2026-10-19-230052-all_views.csv",
+        "data/research/updates/2026-10-19-220301-all_views.csv",
+        "data/research/updates/2026-10-19-200136-all_views.csv",
+        "data/research/updates/2026-10-19-180105-all_views.csv",
+        "data/research/updates/2026-10-19-150229-all_views.csv",
+        "data/research/updates/2026-10-19-125556-all_views.csv",
+        "data/research/updates/2026-10-19-031007-ra9001-all_views.csv",
+        "data/research/updates/2026-10-19-090351-all_views.csv",
+        "data/research/updates/2026-10-19-002035-all_views.csv"
+      ],
+      "minutes": []
+    },
+    "attachmentAccessAttempt": {
+      "url": "https://wx.zsxq.com/group/88888142214212",
+      "result": "Forbidden. Calls to this URL are not allowed.",
+      "classification": "environment_network_policy",
+      "attachmentContentRead": false,
+      "downloadEndpointCalled": false
+    },
+    "contentValidation": "pass",
+    "attachmentValidation": "Attachment scan does not cover the complete daily window"
+  },
+  "publicationStatus": "blocked",
+  "publicationDecision": "Retain rebuilt draft: complete attachment scan is still required; no formal onepage/index write."
 }

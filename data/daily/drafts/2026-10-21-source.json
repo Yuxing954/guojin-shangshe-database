@@ -7,7 +7,7 @@
   "industryWindowHours": 24,
   "industryWindowStart": "2026-10-20T18:00:00+08:00",
   "industryWindowEnd": "2026-10-21T18:00:00+08:00",
-  "generatedAt": "2026-10-22T18:14:56+08:00",
+  "generatedAt": "2026-10-22T18:53:52+08:00",
   "sections": {
     "briefs": [
       {
@@ -79,17 +79,12 @@
     "researchSourceTo": "2026-10-22T18:04:01.431+0800",
     "newsCheckedAt": null,
     "newsStatus": "未核验",
-    "excludedResearchRows": 212,
-    "researchBatchCompletedAt": "2026-10-22T10:07:57.919Z",
-    "researchLatestRunId": "2026-10-22-100632-rd80cf",
-    "attachmentStatus": "pending",
-    "announcementStatus": "blocked"
+    "excludedResearchRows": 212
   },
   "notes": [
     "重要数据仅按截点前24小时真实发布时间筛选；入库时间不替代发布时间。",
     "段子、市场观点按原始发布时间筛选新增窗口（周一72小时、其他日24小时）；全部符合范围的内容供AI逐篇编辑。",
     "新闻仅收录已核验原文、分钟级发布时间及来源链接的记录；空栏不代表市场没有新闻。",
-    "北京时间18:00截点；自动任务启动、检索和发布可能延迟。"
-  ],
-  "publicationStatus": "blocked"
+    "每日16:00北京时间截点；自动任务启动、检索和发布可能延迟。"
+  ]
 }

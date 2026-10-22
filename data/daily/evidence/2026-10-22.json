@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "date": "2026-10-22",
-  "checkedAt": "2026-10-22T18:15:49+08:00",
+  "checkedAt": "2026-10-22T18:53:52+08:00",
   "windowStart": "2026-10-21T18:00:00+08:00",
   "cutoff": "2026-10-22T18:00:00+08:00",
   "baseCommit": "82139c3e05bfe43461faef8f0dbff6b81890476d",
@@ -263,6 +263,13 @@
               "bse.cn"
             ],
             "receipt": "data/daily/evidence/2026-10-22-announcement-searches.json#batch-1"
+          },
+          {
+            "method": "issuer-authored-statutory-disclosure-read",
+            "url": "https://paper.cnstock.com/html/2026-10/22/content_2279589.htm",
+            "receipt": "data/daily/evidence/2026-10-22.json#announcementOriginalChecks",
+            "status": "selected_original_verified",
+            "checkedAt": "2026-10-22T18:53:52+08:00"
           }
         ],
         "status": "partial_original_lists_not_fully_verified",
@@ -1928,7 +1935,24 @@
     "status": "partial",
     "evidenceFile": "data/daily/evidence/2026-10-22.json"
   },
-  "companyAnnouncements": [],
+  "companyAnnouncements": [
+    {
+      "company": "小商品城",
+      "code": "600415.SH",
+      "title": "2026年三季报：义支付交易额同比增长98%",
+      "category": "定期报告／经营数据",
+      "publishedAt": "2026-10-22",
+      "timePrecision": "date",
+      "summary": "2026年前三季度义支付跨境支付交易额75.10亿美元、同比增长98%；Chinagoods平台注册采购商新增超过58万人、累计超过608万人。",
+      "impact": "支付结算持续放量，商贸服务生态的交易场景扩大。",
+      "source": "浙江中国小商品城集团董事会／上海证券报法定披露",
+      "sourceType": "company",
+      "url": "https://paper.cnstock.com/html/2026-10/22/content_2279589.htm",
+      "checkedAt": "2026-10-22T18:53:52+08:00",
+      "evidenceFile": "data/daily/evidence/2026-10-22.json",
+      "verified": true
+    }
+  ],
   "industryMonitoring": {
     "windowStart": "2026-10-21T18:00:00+08:00",
     "cutoff": "2026-10-22T18:00:00+08:00",
@@ -2010,5 +2034,118 @@
       "topic": "小商品城三季报",
       "issue": "公告候选已发现；原文页打开失败且日期精度/窗口边界待核验，不进入公告正文。"
     }
-  ]
+  ],
+  "announcementOriginalChecks": [
+    {
+      "code": "600415.SH",
+      "url": "https://paper.cnstock.com/html/2026-10/22/content_2279589.htm",
+      "sourceRef": "turn300view0",
+      "publishedAt": "2026-10-22",
+      "timePrecision": "date",
+      "issuerSignature": "浙江中国小商品城集团股份有限公司董事会",
+      "section": "三、其他提醒事项",
+      "facts": {
+        "period": "2026年1—9月",
+        "paymentVolumeUSD100m": 75.1,
+        "paymentVolumeYoYPercent": 98,
+        "newRegisteredBuyersMin": 580000,
+        "registeredBuyersMin": 6080000
+      },
+      "bodyRead": true,
+      "tableFinancialFiguresUsed": false,
+      "impactIsEditorialInference": true,
+      "checkedAt": "2026-10-22T18:53:52+08:00",
+      "comparisonSource": "业绩交流原文45548521551158828披露同一支付指标，与董事会署名报告一致。"
+    }
+  ],
+  "rebuildAudit": {
+    "checkedAt": "2026-10-22T18:53:52+08:00",
+    "baseCommit": "d2b3387b805a90e849534679a8a475598e6ed2cc",
+    "originalCutoffPreserved": "2026-10-22T18:00:00+08:00",
+    "candidateCount": 9,
+    "cardCount": 7,
+    "candidateUrlsUnchanged": true,
+    "allOriginalHashesUnchanged": true,
+    "allBodiesMatchImmutableCorpus": true,
+    "sourceFiles": {
+      "views": [
+        "data/research/updates/2026-10-22-100632-rd80cf-views-000.csv",
+        "data/research/updates/2026-10-22-150317-views-000.csv",
+        "data/research/updates/2026-10-22-055848-r671b4-views-000.csv",
+        "data/research/updates/2026-10-22-123655-views-000.csv",
+        "data/research/updates/2026-10-22-042154-rc5c32-views-000.csv",
+        "data/research/updates/2026-10-22-042154-rc5c32-views-001.csv",
+        "data/research/updates/2026-10-21-110248-views.csv",
+        "data/research/updates/2026-10-21-100430-views.csv",
+        "data/research/updates/2026-10-21-090259-views.csv",
+        "data/research/updates/2026-10-21-000207-views.csv",
+        "data/research/updates/2026-10-20-220207-views.csv",
+        "data/research/updates/2026-10-20-200205-views.csv",
+        "data/research/updates/2026-10-20-190537-views.csv",
+        "data/research/updates/2026-10-20-145851-views.csv",
+        "data/research/updates/2026-10-20-140408-views.csv",
+        "data/research/updates/2026-10-20-125756-views.csv",
+        "data/research/updates/2026-10-20-113209-views.csv",
+        "data/research/updates/2026-10-19-235801-views.csv",
+        "data/research/updates/2026-10-19-220301-views.csv",
+        "data/research/updates/2026-10-19-200136-views.csv",
+        "data/research/updates/2026-10-19-180105-views.csv",
+        "data/research/updates/2026-10-19-150229-views.csv",
+        "data/research/updates/2026-10-19-125556-views.csv",
+        "data/research/updates/2026-10-19-031007-ra9001-views.csv",
+        "data/research/updates/2026-10-19-090351-views.csv",
+        "data/research/updates/2026-10-19-002035-views.csv"
+      ],
+      "all_views": [
+        "data/research/updates/2026-10-22-100632-rd80cf-all_views-000.csv",
+        "data/research/updates/2026-10-22-150317-all_views-000.csv",
+        "data/research/updates/2026-10-22-055848-r671b4-all_views-000.csv",
+        "data/research/updates/2026-10-22-125831-all_views-000.csv",
+        "data/research/updates/2026-10-22-123655-all_views-000.csv",
+        "data/research/updates/2026-10-22-042154-rc5c32-all_views-000.csv",
+        "data/research/updates/2026-10-22-042154-rc5c32-all_views-001.csv",
+        "data/research/updates/2026-10-22-042154-rc5c32-all_views-002.csv",
+        "data/research/updates/2026-10-22-042154-rc5c32-all_views-003.csv",
+        "data/research/updates/2026-10-22-042154-rc5c32-all_views-004.csv",
+        "data/research/updates/2026-10-22-042154-rc5c32-all_views-005.csv",
+        "data/research/updates/2026-10-22-042154-rc5c32-all_views-006.csv",
+        "data/research/updates/2026-10-21-123303-r51c2f-all_views.csv",
+        "data/research/updates/2026-10-21-110248-all_views.csv",
+        "data/research/updates/2026-10-21-100430-all_views.csv",
+        "data/research/updates/2026-10-21-090259-all_views.csv",
+        "data/research/updates/2026-10-21-000207-all_views.csv",
+        "data/research/updates/2026-10-20-230515-all_views.csv",
+        "data/research/updates/2026-10-20-220207-all_views.csv",
+        "data/research/updates/2026-10-20-200205-all_views.csv",
+        "data/research/updates/2026-10-20-190537-all_views.csv",
+        "data/research/updates/2026-10-20-170250-all_views.csv",
+        "data/research/updates/2026-10-20-145851-all_views.csv",
+        "data/research/updates/2026-10-20-140408-all_views.csv",
+        "data/research/updates/2026-10-20-125756-all_views.csv",
+        "data/research/updates/2026-10-20-113209-all_views.csv",
+        "data/research/updates/2026-10-19-235801-all_views.csv",
+        "data/research/updates/2026-10-19-230052-all_views.csv",
+        "data/research/updates/2026-10-19-220301-all_views.csv",
+        "data/research/updates/2026-10-19-200136-all_views.csv",
+        "data/research/updates/2026-10-19-180105-all_views.csv",
+        "data/research/updates/2026-10-19-150229-all_views.csv",
+        "data/research/updates/2026-10-19-125556-all_views.csv",
+        "data/research/updates/2026-10-19-031007-ra9001-all_views.csv",
+        "data/research/updates/2026-10-19-090351-all_views.csv",
+        "data/research/updates/2026-10-19-002035-all_views.csv"
+      ],
+      "minutes": []
+    },
+    "attachmentAccessAttempt": {
+      "url": "https://wx.zsxq.com/group/88888142214212",
+      "result": "Forbidden. Calls to this URL are not allowed.",
+      "classification": "environment_network_policy",
+      "attachmentContentRead": false,
+      "downloadEndpointCalled": false
+    },
+    "contentValidation": "pass",
+    "attachmentValidation": "Attachment scan does not cover the complete daily window"
+  },
+  "publicationStatus": "blocked",
+  "publicationDecision": "Retain rebuilt draft: complete attachment scan is still required; no formal onepage/index write."
 }

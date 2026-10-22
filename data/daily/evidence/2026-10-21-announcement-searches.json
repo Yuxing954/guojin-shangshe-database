@@ -1,921 +1,1799 @@
 {
-  "schemaVersion": 1,
   "date": "2026-10-21",
-  "checkedAt": "2026-10-21T18:28:00+08:00",
+  "checkedAt": "2026-10-22T10:50:47.720Z",
   "windowStart": "2026-10-20T18:00:00+08:00",
   "cutoff": "2026-10-21T18:00:00+08:00",
-  "attempts": [
-    {
-      "source": "Wind金融公告接口",
-      "status": "failed",
-      "error": "AUTH_ERROR: WIND_API_KEY未配置",
-      "scope": "覆盖公司公告结构化检索"
-    },
-    {
-      "source": "上海证券交易所公告页",
-      "company": "小商品城",
-      "code": "600415.SH",
-      "status": "failed",
-      "error": "Forbidden. Calls to this URL are not allowed.",
-      "scope": "2026-10-20T18:00:00+08:00至2026-10-21T18:00:00+08:00"
-    }
-  ],
-  "matrixStatus": "blocked",
-  "checkedCompanies": [
-    {
-      "company": "泡泡玛特",
-      "code": "9992.HK",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "名创优品",
-      "code": "9896.HK",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "思摩尔国际",
-      "code": "6969.HK",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "中烟香港",
-      "code": "6055.HK",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "小商品城",
-      "code": "600415.SH",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "特海国际",
-      "code": "9658.HK",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "周大福",
-      "code": "1929.HK",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "老铺黄金",
-      "code": "6181.HK",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "老凤祥",
-      "code": "600612.SH",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "六福集团",
-      "code": "0590.HK",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "菜百股份",
-      "code": "605599.SH",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "周大生",
-      "code": "002867.SZ",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "潮宏基",
-      "code": "002345.SZ",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "周六福",
-      "code": "6168.HK",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "爱美客",
-      "code": "300896.SZ",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "巨子生物",
-      "code": "2367.HK",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "毛戈平",
-      "code": "1318.HK",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "珀莱雅",
-      "code": "603605.SH",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "上美股份",
-      "code": "2145.HK",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "华熙生物",
-      "code": "688363.SH",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "贝泰妮",
-      "code": "300957.SZ",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "上海家化",
-      "code": "600315.SH",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "丸美生物",
-      "code": "603983.SH",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "林清轩",
-      "code": "2657.HK",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "水羊股份",
-      "code": "300740.SZ",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "福瑞达",
-      "code": "600223.SH",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "锦波生物",
-      "code": "920982.BJ",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "中国中免",
-      "code": "601888.SH",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "王府井",
-      "code": "600859.SH",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "上海机场",
-      "code": "600009.SH",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "携程集团-S",
-      "code": "9961.HK",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "同程旅行",
-      "code": "0780.HK",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "华住集团-S",
-      "code": "1179.HK",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "亚朵",
-      "code": "ATAT.O",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "锦江酒店",
-      "code": "600754.SH",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "首旅酒店",
-      "code": "600258.SH",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "宋城演艺",
-      "code": "300144.SZ",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "长白山",
-      "code": "603099.SH",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "陕西旅游",
-      "code": "603402.SH",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "黄山旅游",
-      "code": "600054.SH",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "众信旅游",
-      "code": "002707.SZ",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "峨眉山A",
-      "code": "000888.SZ",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "香港中旅",
-      "code": "0308.HK",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "君亭酒店",
-      "code": "301073.SZ",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "九华旅游",
-      "code": "603199.SH",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "天目湖",
-      "code": "603136.SH",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "蜜雪集团",
-      "code": "2097.HK",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "百胜中国",
-      "code": "9987.HK",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "海底捞",
-      "code": "6862.HK",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "古茗",
-      "code": "1364.HK",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "瑞幸咖啡",
-      "code": "LKNCY.OO",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "小菜园",
-      "code": "0999.HK",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "茶百道",
-      "code": "2555.HK",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "沪上阿姨",
-      "code": "2589.HK",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "达势股份",
-      "code": "1405.HK",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "重庆百货",
-      "code": "600729.SH",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "永辉超市",
-      "code": "601933.SH",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "红旗连锁",
-      "code": "002697.SZ",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "家家悦",
-      "code": "603708.SH",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "company": "孩子王",
-      "code": "301078.SZ",
-      "sources": [],
-      "status": "source_check_not_completed",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    }
-  ],
-  "excludedCompanies": [
-    {
-      "code": "003010.SZ",
-      "name": "若羽臣",
-      "sector": "新消费",
-      "aliases": [],
-      "sourceId": "selected-20261012",
-      "addedAt": "2026-10-12",
-      "identitySource": "choice-and-tencent-20261012",
-      "status": "excluded_from_daily",
-      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "code": "301498.SZ",
-      "name": "乖宝宠物",
-      "sector": "新消费",
-      "aliases": [],
-      "sourceId": "selected-20261012",
-      "addedAt": "2026-10-12",
-      "identitySource": "choice-and-tencent-20261012",
-      "status": "excluded_from_daily",
-      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "code": "002891.SZ",
-      "name": "中宠股份",
-      "sector": "新消费",
-      "aliases": [],
-      "sourceId": "selected-20261012",
-      "addedAt": "2026-10-12",
-      "identitySource": "choice-and-tencent-20261012",
-      "status": "excluded_from_daily",
-      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "code": "001206.SZ",
-      "name": "依依股份",
-      "sector": "新消费",
-      "aliases": [],
-      "sourceId": "selected-20261012",
-      "addedAt": "2026-10-12",
-      "identitySource": "choice-and-tencent-20261012",
-      "status": "excluded_from_daily",
-      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "code": "300673.SZ",
-      "name": "佩蒂股份",
-      "sector": "新消费",
-      "aliases": [],
-      "sourceId": "selected-20261012",
-      "addedAt": "2026-10-12",
-      "identitySource": "choice-and-tencent-20261012",
-      "status": "excluded_from_daily",
-      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "code": "001222.SZ",
-      "name": "源飞宠物",
-      "sector": "新消费",
-      "aliases": [],
-      "sourceId": "selected-20261012",
-      "addedAt": "2026-10-12",
-      "identitySource": "choice-and-tencent-20261012",
-      "status": "excluded_from_daily",
-      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "code": "688775.SH",
-      "name": "影石创新",
-      "sector": "消费出海",
-      "aliases": [],
-      "sourceId": "selected-20261012",
-      "addedAt": "2026-10-12",
-      "identitySource": "choice-and-tencent-20261012",
-      "status": "excluded_from_daily",
-      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "code": "300866.SZ",
-      "name": "安克创新",
-      "sector": "消费出海",
-      "aliases": [],
-      "sourceId": "selected-20261012",
-      "addedAt": "2026-09-08",
-      "identitySource": "existing-pool",
-      "status": "excluded_from_daily",
-      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "code": "2698.HK",
-      "name": "乐舒适",
-      "sector": "消费出海",
-      "aliases": [],
-      "sourceId": "selected-20261012",
-      "addedAt": "2026-10-12",
-      "identitySource": "choice-and-tencent-20261012",
-      "status": "excluded_from_daily",
-      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "code": "688169.SH",
-      "name": "石头科技",
-      "sector": "消费出海",
-      "aliases": [],
-      "sourceId": "selected-20261012",
-      "addedAt": "2026-10-12",
-      "identitySource": "choice-and-tencent-20261012",
-      "status": "excluded_from_daily",
-      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "code": "301606.SZ",
-      "name": "绿联科技",
-      "sector": "消费出海",
-      "aliases": [],
-      "sourceId": "selected-20261012",
-      "addedAt": "2026-10-12",
-      "identitySource": "choice-and-tencent-20261012",
-      "status": "excluded_from_daily",
-      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "code": "301381.SZ",
-      "name": "赛维时代",
-      "sector": "消费出海",
-      "aliases": [],
-      "sourceId": "selected-20261012",
-      "addedAt": "2026-09-08",
-      "identitySource": "existing-pool",
-      "status": "excluded_from_daily",
-      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "code": "301376.SZ",
-      "name": "致欧科技",
-      "sector": "消费出海",
-      "aliases": [],
-      "sourceId": "selected-20261012",
-      "addedAt": "2026-10-10",
-      "identitySource": "tencent-20261010",
-      "status": "excluded_from_daily",
-      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
-    },
-    {
-      "code": "0625.HK",
-      "name": "SHEIN",
-      "sector": "消费出海",
-      "aliases": [
-        "希音",
-        "希音-W"
+  "method": "official-domain-search",
+  "status": "partial_original_lists_not_fully_verified",
+  "batches": [
+    {
+      "batch": 0,
+      "companies": [
+        "9992.HK",
+        "9896.HK",
+        "6969.HK",
+        "6055.HK"
       ],
-      "sourceId": "selected-20261012",
-      "addedAt": "2026-10-12",
-      "identitySource": "choice-and-tencent-20261012",
-      "status": "excluded_from_daily",
-      "reason": "电商/科技硬件/食品饮料/轻工等非本期日报范围，未删除统一目录。",
-      "checkedAt": "2026-10-21T18:28:00+08:00"
+      "queries": [
+        {
+          "q": "\"泡泡玛特\" 公司公告 2026年10月",
+          "domains": [
+            "hkexnews.hk"
+          ]
+        },
+        {
+          "q": "\"名创优品\" 公司公告 2026年10月",
+          "domains": [
+            "hkexnews.hk"
+          ]
+        },
+        {
+          "q": "\"思摩尔国际\" 公司公告 2026年10月",
+          "domains": [
+            "hkexnews.hk"
+          ]
+        },
+        {
+          "q": "\"中烟香港\" 公司公告 2026年10月",
+          "domains": [
+            "hkexnews.hk"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "turn318search0",
+        "turn318search1",
+        "turn318search2",
+        "turn318search3",
+        "turn318search4",
+        "turn318search5"
+      ],
+      "urls": [
+        "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1015/2025101500746.pdf",
+        "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1209/2025120901221_c.pdf",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0330/2026033004518_c.pdf",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2024/0425/2024042500730.pdf",
+        "https://www1.hkexnews.hk/listedco/listconews/sehk/2020/1211/9545023/sehk20112200163.pdf",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2020/0428/2020042802927_c.pdf"
+      ],
+      "resultExcerpt": "<table id=\"e1\"> (https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1015/2025101500746.pdf)\n【turn318search0】 [wordlim: 200] Published: last year; <tr><td>“Company”</td><td>Pop Mart International Group Limited (泡泡玛特国际集团有限公司), an exempted company incorporated in the Cayman Islands on May 9, 2019 with limited liability, with its Shares initially listed on the Main Board of the Stock Exchange on December 11, 2020 (stock code: 9992);</td></tr> ... <tr><td>“Grant Date”</td><td>October 15, 2025;</td></tr>\n<table id=\"e1\">\n<tr><td>“Company”</td><td>Pop Mart International Group Limited (泡泡玛特国际集团有限公司), an exempted company incorporated in the Cayman Islands on May 9, 2019 with limited liability, with its Shares initially listed on the Main Board of the Stock Exchange on December 11, 2020 (stock code: 9992);</td></tr>\n<tr><td>“Director(s)”</td><td>the director(s) of the Company;</td></tr>\n<tr><td>“Grant Date”</td><td>October 15, 2025;</td></tr>\n<tr><td>“Grantee(s)”</td><td>each or all of ten employees of the Group, who were granted Awards in accordance with the Post-IPO Share Award Scheme on the Grant Date;</td></tr>\n<tr><td>“Group”</td><td>the Company, its subsidiaries and consolidated affiliated entities;</td></tr>\n<tr><td>“Listing Rules”</td><td>the Rules Governing the Listing of Securities on the Stock Exchange;</td></tr>\n<tr><td>“Post-IPO Share Award Scheme”</td><td>the post-IPO share award scheme adopted by the Company on July 24, 2020 and amended on May 17, 2023;</td></tr>\n<tr><td>“Shareholder(s)”</td><td>holder(s) of Shares;</td></tr>\n<tr><td>“Share(s)”</td><td>ordinary share(s) in the share capital of the Company, currently of nominal value US$0.0001 each;</td></tr>\n<tr><td>“Stock Exchange”</td><td>The Stock Exchange of Hong Kong Limited;</td></tr>\n<tr><td>“substantial shareholder”</td><td>has the meaning ascribed to it by the Listing Rules; and</td></tr>\n<tr><td>“Trustee”</td><td>Trident Trust Company (HK) Limited, which was appointed as the trustee of the Post-IPO Share Award Scheme on July 24, 2020.</td></tr>\n</table>\n\nBy order of the Board  \nPOP MART INTERNATIONAL GROUP LIMITED  \nWang Ning  \nExecutive Director, Chairman of the Board and Chief Executive Officer\n\nHong Kong, October 15, 2025\n\nAs at the date of this announcement, the executive Directors are Mr. Wang Ning, Ms. Liu Ran, Mr. Si De and Mr. Moon Duk Il, the non-executive Directors are Mr. Tu Zheng and Mr. He Yu, and the independent non-executive Directors are Mr. Zhang Jianjun, Mr. Wu Liansheng and Mr. Ngan King Leung Gary.\n--------------------------------------------------------------------------------\n香港交易及結算所有限公司及香港聯合交易所有限公司對本公告的內 (https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1209/2025120901221_c.pdf)\n【turn318search1】 [wordlim: 200] Published: 10 months ago; 科技自主创新持续突破，文化创新引领全球风尚——中国资产长期投资价值凸显 ... 球消费文明的底层 ... 1066秒稳态长脉冲高 ... ，泡泡玛特从“商品” ... 界化表达” 打破 ... 定格1 5 9 亿，打破\n科技自主创新持续突破，文化创新引领全球风尚——中国资产长期投资价值凸显\n中国“人造太阳”\n实现亿度千秒运行\n中国芯再突破！\n龙芯发布3C6000\n系列服务器芯片\n中国IP正用开放式\n文化符号，重写全\n球消费文明的底层\n代码\n建成了独立于国外的\n、全球第三套、中国\n独立自主的信息产业\n生态体系\n全超导托卡马克核聚\n变实验装置（EAST）\n实现1 亿摄氏度、\n1066秒稳态长脉冲高\n约束模等离子体运行\n，刷新世界纪录\n当Z世代为Crybaby的\n泪水创作漫画、为\nSkullpanda谱写主题曲\n，泡泡玛特从“商品”\n跃迁为“情感联邦”的\n通用语\n以“东方故事世\n界化表达” 打破\n文化壁垒\nAI大模型：\nDeepSeek-R1模\n型\n我国首台高功率\n大宽幅磁控溅射\n设备通过验收\n为我国新能源电池材\n料产业链自主可控提\n供了关键技术支撑\n在数学运算、代码编\n写及自然语言推理等\n领域性能直追\nOpenAIo1正式版\n《哪吒2》全球票房\n定格1 5 9 亿，打破\n113项纪录创影史神\n话，，位列全球影史\n票房榜第5位\n7\n--------------------------------------------------------------------------------\n中国旅游集团中免股份有限公司2025年年度报告 (https://www.hkexnews.hk/listedco/listco",
+      "conclusion": "Search results do not establish complete company filing/IR list coverage; no absence claim."
+    },
+    {
+      "batch": 1,
+      "companies": [
+        "600415.SH",
+        "9658.HK",
+        "1929.HK",
+        "6181.HK"
+      ],
+      "queries": [
+        {
+          "q": "\"小商品城\" 公司公告 2026年10月",
+          "domains": [
+            "cninfo.com.cn",
+            "sse.com.cn",
+            "szse.cn",
+            "bse.cn"
+          ]
+        },
+        {
+          "q": "\"特海国际\" 公司公告 2026年10月",
+          "domains": [
+            "hkexnews.hk"
+          ]
+        },
+        {
+          "q": "\"周大福\" 公司公告 2026年10月",
+          "domains": [
+            "hkexnews.hk"
+          ]
+        },
+        {
+          "q": "\"老铺黄金\" 公司公告 2026年10月",
+          "domains": [
+            "hkexnews.hk"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "turn319search0",
+        "turn319search1",
+        "turn319search2",
+        "turn319search3",
+        "turn319search4",
+        "turn319search18",
+        "turn319search19",
+        "turn319search20",
+        "turn319search21",
+        "turn319search22",
+        "turn319search23",
+        "turn319search5",
+        "turn319search6",
+        "turn319search7",
+        "turn319search8",
+        "turn319search9",
+        "turn319search10",
+        "turn319search11",
+        "turn319search12",
+        "turn319search13",
+        "turn319search14",
+        "turn319search15",
+        "turn319search16",
+        "turn319search17"
+      ],
+      "urls": [
+        "https://www.sse.com.cn/assortment/stock/list/info/announcement/index.shtml?productId=600415",
+        "https://www.sse.com.cn/disclosure/listedinfo/announcement/?productId=603567",
+        "https://www.sse.com.cn/home/search/index.shtml?webswd=600415",
+        "https://www.sse.com.cn/disclosure/listedinfo/announcement/?productId=688012",
+        "https://www3.hkexnews.hk/reports/doe/eent_c.htm",
+        "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0508/2026050800998_c.pdf",
+        "https://static.cninfo.com.cn/finalpage/2026-06-12/1225365805.PDF",
+        "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1031/2025103101037.pdf",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0331/2026033101686_c.pdf",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2025/1009/2025100901115_c.pdf",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0316/2026031601940_c.pdf",
+        "https://www.sse.com.cn/disclosure/listedinfo/announcement/index.shtml?productId=600519",
+        "https://www.sse.com.cn/disclosure/diclosure/public/inquirydata/index.shtml?secCode=600415",
+        "https://www.sse.com.cn/assortment/stock/list/info/profit/index.shtml?COMPANY_CODE=600415",
+        "https://www.sse.com.cn/disclosure/listedinfo/summaries/indexDetail.shtml?SEQ=334563178",
+        "https://www.sse.com.cn/disclosure/diclosure/public/inquirydata/index.shtml?branchName=%E4%BF%A1%E8%BE%BE%E8%AF%81%E5%88%B8%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%E6%97%A0%E9%94%A1%E9%87%91%E8%9E%8D%E4%B8%80%E8%A1%97%E8%AF%81%E5%88%B8%E8%90%A5%E4%B8%9A%E9%83%A8&bsType=S",
+        "https://english.sse.com.cn/markets/dataservice/xbrl/companyinfo/?stock_id=600415",
+        "https://star.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20260430_10817333.shtml",
+        "https://www3.hkexnews.hk/reports/changeauditor/ncms/changeauditor_stkcode_des_c.htm",
+        "https://www.sse.com.cn/market/sseindex/diclosure/c/c_20191129_4956862.shtml",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2011/1205/ltn20111205039_c.htm",
+        "https://www3.hkexnews.hk/reports/changecomsec/ncms/changecomsec_stkcode_des_c.htm",
+        "https://www3.hkexnews.hk/sdw/search/mutualmarket_c.aspx?t=hk",
+        "https://www3.hkexnews.hk/sdw/search/mutualmarket_c.aspx?nsukey=qT6yQjL0K6ykN3ZzMgjBtJvKmm7hsNymI31b%2FR2Mn%2F9DrY2wzZL2oe3qlYIB3i3atvYK9IBqTtRJiKWjZVqzS5tHZk%2B0VkJwaWJy9KDMSuY7%2Bte8LWNAgQ4FyL7yqNAwZsUE8ytZeCsnmq%2B7wCdXxLIwpOuJkqNiUNDQH8SpgVqGP2%2B34GEXYDDIHkFa0RZ4&t=hk"
+      ],
+      "resultExcerpt": "公司公告 | 上海证券交易所 (https://www.sse.com.cn/assortment/stock/list/info/announcement/index.shtml?productId=600415)\n【turn319search0】 [wordlim: 200] Crawled: 3 days ago; 600415  | 小商品城  | 2026年半年度权益分派实施公告  | 2026-10-16 ... 600415  | 小商品城  | 关于参加浙江辖区上市公司2026年投资者网上集体接待日暨2025年度业绩说明会的公告  | 2026-05-07\n\n# 公司公告\n\n## 浙江中国小商品城集团股份有限公司600415\n\n公司概况\n\n股本结构\n\n筹资情况\n\n利润分配\n\n成交概况\n\n行情图表\n\n公司公告\n\n公告摘要\n\n公司章程\n\n治理细则\n\n股东大会资料\n\n高管人员\n\n## 上市公司公告全文\n\n[Input] [Input: 证券代码或简称]\n\n[Input: 关键字]\n\n[Select]\n\n[Input: 开始日期] Image [Input: 结束日期]\n\n[Button: 查询]\n\n证券代码  | 证券简称  | 公告标题  | 公告时间\n--- | --- | --- | ---\n600415  | 小商品城  | 2026年半年度权益分派实施公告  | 2026-10-16\n600415  | 小商品城  | 关于召开2026年半年度业绩说明会的公告  | 2026-09-17\n600415  | 小商品城  | 2026年半年度报告（英文版）  | 2026-09-12\n600415  | 小商品城  | 关于2026年中期利润分配方案的公告  | 2026-08-26\n600415  | 小商品城  | 第十届董事会第九次会议决议公告  | 2026-08-26\n600415  | 小商品城  | 2026年半年度报告摘要  | 2026-08-26\n600415  | 小商品城  | 2026年半年度报告  | 2026-08-26\n600415  | 小商品城  | 关于公司董事长提议制定2026年中期利润分配方案的提示性公告  | 2026-07-20\n600415  | 小商品城  | 关于补选公司第十届董事会审计委员会召集人、薪酬与考核委员会成员的公告  | 2026-06-16\n600415  | 小商品城  | 国浩律师（杭州）事务所关于浙江中国小商品城集团股份有限公司2026年第一次临时股东会的法律意见书  | 2026-06-16\n600415  | 小商品城  | 2026年第一次临时股东会决议公告  | 2026-06-16\n600415  | 小商品城  | 2025年年度权益分派实施公告  | 2026-06-12\n600415  | 小商品城  | 2026年第一次临时股东会会议资料  | 2026-06-10\n600415  | 小商品城  | 关于向香港联合交易所有限公司递交H股发行上市的申请并刊发申请资料的公告  | 2026-05-30\n600415  | 小商品城  | 第十届董事会第七次会议决议公告  | 2026-05-29\n600415  | 小商品城  | 独立董事候选人声明与承诺（黄钟伟）  | 2026-05-29\n600415  | 小商品城  | 关于召开2026年第一次临时股东会的通知  | 2026-05-29\n600415  | 小商品城  | 独立董事提名人声明与承诺（黄钟伟）  | 2026-05-29\n600415  | 小商品城  | 关于补选第十届董事会独立董事的公告  | 2026-05-29\n600415  | 小商品城  | 关于独立董事辞职的公告  | 2026-05-23\n600415  | 小商品城  | 关于副总经理辞职暨聘任副总经理的公告  | 2026-05-12\n600415  | 小商品城  | 2025年度环境、社会和公司治理报告（英文版）  | 2026-05-09\n600415  | 小商品城  | 关于参加浙江辖区上市公司2026年投资者网上集体接待日暨2025年度业绩说明会的公告  | 2026-05-07\n600415  | 小商品城  | 关于竞得土地使用权暨建设运营的公告  | 2026-05-01\n600415  | 小商品城  | 2025年年度股东会决议公告  | 2026-04-30\n--------------------------------------------------------------------------------\n最新公告 | 上海证券交易所 (https://www.sse.com.cn/disclosure/listedinfo/announcement/?productId=603567)\n【turn319search1】 [wordlim: 200] Crawled: 3 days ago; 600509  | 天富能源  | 新疆天富能源股份有限公司关于调整公司2026年度日常关联交易额度的公告  |  | 2026-10-20 ... 603236  | 移远通信  | 《公司章程》（2026年10月修订）  |  | 2026-10-20 ... 600415  | 小商品城  | 关于召开2026年第三季度业绩说明会的公告  |  | 2026-10-20\n603098  | 森特股份  | 森特股份关于公司董事兼高管增持公司股份暨增持计划的进展公告  |  | 2026-10-20\n688247  | 宣泰医药  | 关于股东部分股份解除质押的公告-1015_final  |  | 2026-10-20\n603383  | 顶点软件  | 顶点软件关于召开2026年第三季度业绩说明会的公告  |  | 2026-10-20\n600038  | 中直股份  | 中航直升机股份有限公司关于使用部分闲置募集资金进行现金管理到期赎回的公告  |  | 2026-10-20\n601918  | 新集能源  | 新集能源关于召开2026年第三季度业绩说明会的公告  |  | 2026-10-20\n605088  | 冠盛股份  | 冠盛股份关于召开2026年第三季度业绩说明会的预告公告  |  | 2026-10-20\n601022  | 宁波远洋  | 宁波远洋运输股份有限公司2026年第三次临时股东会会议资料  |  | 2026-10-20\n603758  | 秦安股份  | 秦安股份关于召开2026年第三季度业绩说明会的公告  |  | 2026-10-20\n600415  | 小商品城  | 关于召开2026年第三季度业绩说明会的公告  |  | 2026-10-20\n603848  | 好太太  | 广东好太太科技集团股份有限公司关于召开2026年第三季度业绩说明会的公告  |  | 2026-10-20\n603399  | 永杉锂业  | 永杉锂业第六届董事会第九次会议决议公告  |  | 2026-10-20\n\n--------------------------------------------------------------------------------\n上证搜索 | 上海证券交易所 (https://www.sse.com.cn/home/search/index.shtml?webswd=600415)\n【turn319search2】 [wordlim: 200] Crawled: 3 days ago; 浙江中国小商品城集团股份有限公司2026 年半年度报告 1 /157 公司代码：600415 公司简称：小商品城 浙江中国小商品城集团股份有限公司2026 年半年度报告 浙江中国小商品城集团股份有限公司2026十一、 其他 适用 不适用 浙江中国小商品城集团股份有限公司浙江中国小商品城集团股份有限公司 公司的中文简称 小商品城 ... 证券代码：600415 证券简称：小商品城 公告编号：2026-临 031 浙江中国小商品城集团股份有限公司 2026年半年度权益分派实施公告分派对象： 截至股权登记日下午上海证券交易所收市后，在中国证券登记结算有",
+      "conclusion": "Search results do not establish complete company filing/IR list coverage; no absence claim."
+    },
+    {
+      "batch": 2,
+      "companies": [
+        "600612.SH",
+        "0590.HK",
+        "605599.SH",
+        "002867.SZ"
+      ],
+      "queries": [
+        {
+          "q": "\"老凤祥\" 公司公告 2026年10月",
+          "domains": [
+            "cninfo.com.cn",
+            "sse.com.cn",
+            "szse.cn",
+            "bse.cn"
+          ]
+        },
+        {
+          "q": "\"六福集团\" 公司公告 2026年10月",
+          "domains": [
+            "hkexnews.hk"
+          ]
+        },
+        {
+          "q": "\"菜百股份\" 公司公告 2026年10月",
+          "domains": [
+            "cninfo.com.cn",
+            "sse.com.cn",
+            "szse.cn",
+            "bse.cn"
+          ]
+        },
+        {
+          "q": "\"周大生\" 公司公告 2026年10月",
+          "domains": [
+            "cninfo.com.cn",
+            "sse.com.cn",
+            "szse.cn",
+            "bse.cn"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "turn330search0",
+        "turn330search1",
+        "turn330search36",
+        "turn330search37",
+        "turn330search2",
+        "turn330search38",
+        "turn330search3",
+        "turn330search39",
+        "turn330search40",
+        "turn330search41",
+        "turn330search4",
+        "turn330search5",
+        "turn330search6",
+        "turn330search7",
+        "turn330search8",
+        "turn330search9",
+        "turn330search10",
+        "turn330search11",
+        "turn330search12",
+        "turn330search13",
+        "turn330search14",
+        "turn330search15",
+        "turn330search16",
+        "turn330search17",
+        "turn330search18",
+        "turn330search19",
+        "turn330search20",
+        "turn330search21",
+        "turn330search22",
+        "turn330search23",
+        "turn330search24",
+        "turn330search25",
+        "turn330search26",
+        "turn330search27",
+        "turn330search28",
+        "turn330search29",
+        "turn330search30",
+        "turn330search31",
+        "turn330search32",
+        "turn330search33",
+        "turn330search34",
+        "turn330search35"
+      ],
+      "urls": [
+        "https://www.sse.com.cn/assortment/stock/list/info/company/index.shtml?COMPANY_CODE=600628&FULLNAME=%E4%B8%8A%E6%B5%B7%E6%96%B0%E4%B8%96%E7%95%8C%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8",
+        "https://www.sse.com.cn/assortment/stock/list/info/company/index.shtml?COMPANY_CODE=600662",
+        "https://static.cninfo.com.cn/finalpage/2026-09-22/1225575793.PDF",
+        "https://static.cninfo.com.cn/finalpage/2026-06-17/1225374062.PDF",
+        "https://www.sse.com.cn/disclosure/listedinfo/summaries/indexDetail.shtml?SEQ=334559108",
+        "https://static.cninfo.com.cn/finalpage/2026-09-14/1225562033.PDF",
+        "https://www.sse.com.cn/aboutus/publication/monthly/report/",
+        "https://dataclouds.cninfo.com.cn/shgonggao/hsomarket/2026/20260520/09802ab25a7440a190a890dcd30f7ae8.PDF",
+        "https://disc.static.szse.cn/download/disc/disk03/finalpage/2026-08-26/2bce1a62-10a6-448d-aabb-67df7a1d4eeb.PDF",
+        "https://disc.static.szse.cn/download/disc/disk03/finalpage/2026-04-29/1febf69d-2550-423c-a8fe-ceaf800a3ce1.PDF",
+        "https://www.cninfo.com.cn/new/index?account_version=us&language=cn",
+        "https://www.sse.com.cn/disclosure/fund/etflist/detail.shtml?fundid=510290",
+        "https://www.sse.com.cn/disclosure/announcement/listing/ipo/c/c_20210908_82936492.shtml",
+        "https://pujiang.sse.com.cn/update/participants/independentupdate/c/c_20260306_10811059.shtml",
+        "https://pujiang.sse.com.cn/update/participants/secretaryupdate/c/c_20260409_10814645.shtml",
+        "https://pujiang.sse.com.cn/update/participants/others/c/c_20260630_10823921.shtml",
+        "https://www.sse.com.cn/disclosure/fund/etflist/detail.shtml?fundid=515480",
+        "https://www.szse.cn/disclosure/notice/t20260529_620819.html",
+        "https://www.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20150912_3987613.shtml",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20240901_10761185.shtml",
+        "https://pujiang.sse.com.cn/update/participants/secretaryupdate/c/c_20250606_10780997.shtml",
+        "https://pujiang.sse.com.cn/update/participants/secretaryupdate/c/5743106.shtml",
+        "https://star.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20240901_10761185.shtml",
+        "https://pujiang.sse.com.cn/update/participants/others/c/c_20250710_10784494.shtml",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020260806351614974469.html",
+        "https://pujiang.sse.com.cn/update/participants/independentupdate/c/c_20250808_10787956.shtml",
+        "https://pujiang.sse.com.cn/update/participants/others/c/5731997.shtml",
+        "https://pujiang.sse.com.cn/update/participants/others/c/5731996.shtml",
+        "https://irm.cninfo.com.cn/interview/interview/activityInfo?activityId=914126837753212928",
+        "https://pujiang.sse.com.cn/update/participants/others/c/5732003.shtml",
+        "https://pujiang.sse.com.cn/update/participants/independentupdate/c/5732405.shtml",
+        "https://star.sse.com.cn/aboutus/publication/monthly/report/",
+        "https://pujiang.sse.com.cn/update/participants/independentupdate/c/5732400.shtml",
+        "https://pujiang.sse.com.cn/update/participants/independentupdate/c/5732399.shtml",
+        "https://irm.cninfo.com.cn/interview/collective/collectiveInfo?cid=1726989788503236608",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020250805527892907072.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020250905347572098528.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020250805527898299637.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020250513504912564404.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020251203531511109126.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020240909360101124659.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020251013318288864764.html"
+      ],
+      "resultExcerpt": "公司概况 | 上海证券交易所 (https://www.sse.com.cn/assortment/stock/list/info/company/index.shtml?COMPANY_CODE=600628&FULLNAME=%E4%B8%8A%E6%B5%B7%E6%96%B0%E4%B8%96%E7%95%8C%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8)\n【turn330search0】 [wordlim: 200] Crawled: last week; 新世界2025年年度权益分派实施公告  | 利润分配和资本公积金转增股本  | 2026-08-10 ... ## 股本结构 数据日期：2026年10月09日 ... 7  | 老凤祥股份有限公司  | 6155001  | 0.95 ... 注：展示数据来自于上市公司提交的XBRL格式报告，信息仅供参考，请以对应报告的PDF版本为准。\n\n--------------------------------------------------------------------------------\n公司概况 | 上海证券交易所 (https://www.sse.com.cn/assortment/stock/list/info/company/index.shtml?COMPANY_CODE=600662)\n【turn330search1】 [wordlim: 200] Crawled: 5 days ago; 外服控股关于更换持续督导财务顾问主办人的公告  | 公司重要基本信息变化  | 2026-07-23 ... ## 股本结构 数据日期：2026年10月16日 ... 7  | 老凤祥股份有限公司  | 6000000  | 0.26 ... 注：展示数据来自于上市公司提交的XBRL格式报告，信息仅供参考，请以对应报告的PDF版本为准。\n\n--------------------------------------------------------------------------------\n证券代码：002867  证券简称：周大生  公告编号：2026-047 (https://static.cninfo.com.cn/finalpage/2026-09-22/1225575793.PDF)\n【turn330search36】 [wordlim: 200] Published: last month; 证券代码：002867  证券简称：周大生  公告编号：2026-047 ... 3、本次会议的召集、召开符合《中华人民共和国公司法》《深圳证券交易所股票上市规则》《深圳证券交易所上市公司自律监管指引第1号——主板上市公司规范运作》等法律、行政法规、部门规章、规范性文件及《公司章程》的有关规定。 ... （2）网络投票时间：通过深圳证券交易所交易系统进行网络投票的具体时间为2026年10月13日9:15-9:25，9:30-11:30，13:00-15:00；通过深圳证券交易所互联网投票系统投票的具体时间为2026年10月13日9:15至15:00的任意时间。\n\n--------------------------------------------------------------------------------\n证券代码：600612 (https://static.cninfo.com.cn/finalpage/2026-06-17/1225374062.PDF)\n【turn330search37】 [wordlim: 200] Published: 4 months ago; 公告编号：2026-026 ... （一）股东会召开的时间：2026年6月16日 ... 本次股东会由老凤祥股份有限公司（以下简称“公司”）董事会召集，现场会议由公司董事长杨奕先生主持。\n\n--------------------------------------------------------------------------------\n公告摘要 | 上海证券交易所 (https://www.sse.com.cn/disclosure/listedinfo/summaries/indexDetail.shtml?SEQ=334559108)\n【turn330search2】 [wordlim: 200] Published: last year; Crawled: 2 weeks ago; ## (600612)“老凤祥”老凤祥股份有限公司2025年第三季度报告 ...         老凤祥股份有限公司2025年第三季度报告        仅供参考，请查阅当日公告全文。\n\n--------------------------------------------------------------------------------\n证券代码：605599  证券简称：菜百股份  公告编号：2026-021 (https://static.cninfo.com.cn/finalpage/2026-09-14/1225562033.PDF)\n【turn330search38】 [wordlim: 200] Published: last month; 证券代码：605599  证券简称：菜百股份  公告编号：2026-021 ... - 投资者可于2026年9月14日（星期一）至9月18日（星期五）16:00前登录上证路演中心网站首页点击“提问预征集”栏目或通过北京菜市口百货股份有限公司（以下简称“公司”）邮箱 cb_investors@bjcaibai.com.cn 进行提问。\n\n--------------------------------------------------------------------------------\n上证统计月报 | 上海证券交易所 (https://www.sse.com.cn/aboutus/publication/monthly/report/)\n【turn330search3】 [wordlim: 200] Crawled: last week; ## 科创板跌幅前十股票 数据日期：2026-09 ... 股票代码  | 股票简称  | 公司全称  | 成交金额（百万元）  | 占市场总额％  | 成交股数（百万） ... 900905  | 老凤祥Ｂ  | 老凤祥股份有限公司  | 119.72  | 3.88  | 6.55 ... 900915  | ST中路B  | 中路股份有限公司  | 83.49  | 8.41  | 10.07\n\n--------------------------------------------------------------------------------\n股票简称：老凤祥\n股票代码：600612\n编号：临2026-023\n老凤祥B\n900905\n老凤祥股 (https://dataclouds.cninfo.com.cn/shgonggao/hsomarket/2026/20260520/09802ab25a7440a190a890dcd30f7ae8.PDF)\n【turn330search39】 [wordlim: 200] Published: 5 months ago; 东会审议，董事会决定于2026 年6 月16 日在上海青松城大酒店召开公司2025 ... 信息披露媒体上的《老凤祥股份有限公司关于召开2025 年年度股东会的通知》，公告编号：临2026-024。\n\n--------------------------------------------------------------------------------\n周大生珠宝股份有限公司2026年半年度报告全文 (https://disc.static.szse.cn/download/disc/disk03/finalpage/2026-08-26/2bce1a62-10a6-448d-aabb-67df7a1d4eeb.PDF)\n【turn330search4",
+      "conclusion": "Search results do not establish complete company filing/IR list coverage; no absence claim."
+    },
+    {
+      "batch": 3,
+      "companies": [
+        "002345.SZ",
+        "6168.HK",
+        "300896.SZ",
+        "2367.HK"
+      ],
+      "queries": [
+        {
+          "q": "\"潮宏基\" 公司公告 2026年10月",
+          "domains": [
+            "cninfo.com.cn",
+            "sse.com.cn",
+            "szse.cn",
+            "bse.cn"
+          ]
+        },
+        {
+          "q": "\"周六福\" 公司公告 2026年10月",
+          "domains": [
+            "hkexnews.hk"
+          ]
+        },
+        {
+          "q": "\"爱美客\" 公司公告 2026年10月",
+          "domains": [
+            "cninfo.com.cn",
+            "sse.com.cn",
+            "szse.cn",
+            "bse.cn"
+          ]
+        },
+        {
+          "q": "\"巨子生物\" 公司公告 2026年10月",
+          "domains": [
+            "hkexnews.hk"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "turn329search0",
+        "turn329search33",
+        "turn329search34",
+        "turn329search1",
+        "turn329search35",
+        "turn329search36",
+        "turn329search37",
+        "turn329search38",
+        "turn329search2",
+        "turn329search3",
+        "turn329search4",
+        "turn329search5",
+        "turn329search6",
+        "turn329search7",
+        "turn329search8",
+        "turn329search9",
+        "turn329search10",
+        "turn329search11",
+        "turn329search12",
+        "turn329search13",
+        "turn329search14",
+        "turn329search15",
+        "turn329search16",
+        "turn329search17",
+        "turn329search18",
+        "turn329search19",
+        "turn329search20",
+        "turn329search21",
+        "turn329search22",
+        "turn329search23",
+        "turn329search24",
+        "turn329search25",
+        "turn329search26",
+        "turn329search27",
+        "turn329search28",
+        "turn329search29",
+        "turn329search30",
+        "turn329search31",
+        "turn329search32"
+      ],
+      "urls": [
+        "https://www.sse.com.cn/assortment/fund/list/etfinfo/basic/index.shtml?FUNDID=517400",
+        "https://www1.hkexnews.hk/app/sehk/2026/10",
+        "https://static.cninfo.com.cn/finalpage/2026-04-04/1225078890.PDF",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0116/2026011600741_c.pdf",
+        "https://www3.hkexnews.hk/reports/changecomsec/ncms/changecomsec_stkcode_des_c.htm",
+        "https://static.cninfo.com.cn/finalpage/2026-04-14/1225102406.PDF",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0822/2025082201931_c.pdf",
+        "https://static.cninfo.com.cn/finalpage/2026-08-21/1225487535.PDF",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0625/2025062500012_c.pdf",
+        "https://www3.hkexnews.hk/reports/changeauditor/ncms/changeauditor_stkcode_des_c.htm",
+        "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0626/2025060302782_c.htm",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0618/2025061800069_c.htm",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020201013520548719599.html",
+        "https://www3.hkexnews.hk/sdw/search/mutualmarket_c.aspx?t=hk",
+        "https://irm.cninfo.com.cn/interview/interview/activityInfo?activityId=1418068476017831936",
+        "https://irm.cninfo.com.cn/interview/interview/activityInfo?activityId=355221429232029696",
+        "https://www.szse.cn/disclosure/notice/company/t20100126_508385.html",
+        "https://www3.hkexnews.hk/sdw/search/mutualmarket_c.aspx?nsukey=qT6yQjL0K6ykN3ZzMgjBtJvKmm7hsNymI31b%2FR2Mn%2F9DrY2wzZL2oe3qlYIB3i3atvYK9IBqTtRJiKWjZVqzS5tHZk%2B0VkJwaWJy9KDMSuY7%2Bte8LWNAgQ4FyL7yqNAwZsUE8ytZeCsnmq%2B7wCdXxLIwpOuJkqNiUNDQH8SpgVqGP2%2B34GEXYDDIHkFa0RZ4&t=hk",
+        "https://www1.hkexnews.hk/app/appyearlyindex.html?board=mainBoard&lang=zh&year=2025",
+        "https://irm.cninfo.com.cn/interview/interview/activityInfo?activityId=1170234723937173504",
+        "https://www.szse.cn/disclosure/notice/t20260529_620819.html",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2022/1103/2022110300023_c.htm",
+        "https://www.szse.cn/disclosure/notice/general/t20100127_500357.html",
+        "https://www1.hkexnews.hk/app/appyearlyindex.html?board=mainBoard&lang=zh&year=2024",
+        "https://investor.szse.cn/marketServices/message/index/dynamic/t20251128_617545.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020260511542158444850.html",
+        "https://www.szse.cn/marketServices/message/index/dynamic/t20210601_586215.html",
+        "https://www.szse.cn/aboutus/trends/news/t20200928_581862.html",
+        "https://docs.static.szse.cn/www/English/siteMarketData/publication/monthly/W020250905347573546611.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020250805527898581774.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020250513504902322342.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020240909360105408337.html",
+        "https://static.cninfo.com.cn/finalpage/1997-05-08/139300.html",
+        "https://docs.static.szse.cn/www/English/siteMarketData/publication/monthly/W020241014330937486008.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020220803513884027269.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020201013520548708885.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020250805527892907072.html",
+        "https://static.cninfo.com.cn/finalpage/2001-08-26/516497.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020250905347573215587.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020250905347572098528.html"
+      ],
+      "resultExcerpt": "基本信息 | 上海证券交易所 (https://www.sse.com.cn/assortment/fund/list/etfinfo/basic/index.shtml?FUNDID=517400)\n【turn329search0】 [wordlim: 200] Crawled: 6 days ago; 基金管理公司名称  | 国泰基金管理有限公司 ... 002345  | 潮宏基  | 1000  | 允许  | 10%  | 30%  | 8180.000  | 深圳证券交易所 ...   * [517400]关于旗下部分基金2026年10月19日因港股通非交易日及境外主要投资市场节假日暂停申购、赎回、转换、定期定额投资业务的公告\n\n--------------------------------------------------------------------------------\n中文版招股书：\n\nhttps://www1.hkexnews.hk/app/sehk/2026/10 (https://static.cninfo.com.cn/finalpage/2026-04-04/1225078890.PDF)\n【turn329search33】 [wordlim: 200] Published: 6 months ago; 本公告以及本公司刊登于香港联交所网站的申请资料均不构成也不得视作对任何个人或实体收购、购买或认购公司本次发行的境外上市股份（H股）的要约或要约邀请。公司本次发行并上市尚需取得中国证券监督管理委员会、香港证监会和香港联交所等相关政府机关、监管机构、证券交易所的备案、批准和/或核准，该事项仍存在不确定性。 ... 广东潮宏基实业股份有限公司董事会2026年4月4日\n\n--------------------------------------------------------------------------------\n香港交易及結算所有限公司及香港聯合交易所有限公司對本公告的內 (https://www.hkexnews.hk/listedco/listconews/sehk/2026/0116/2026011600741_c.pdf)\n【turn329search34】 [wordlim: 200] Published: 7 months ago; 茲提述周六福珠寶股份有限公司（「本公司」）日期為2025年12月24日的2026 ... 董事會欣然宣佈，臨時股東大會已於2026年1 月16日（星期五）上午10時正 ... 時股東大會採取現場投票的方式進行表決，此乃符合中國公司法（「公司\n\n--------------------------------------------------------------------------------\n有關上市公司之公司秘書變動之公告 (https://www3.hkexnews.hk/reports/changecomsec/ncms/changecomsec_stkcode_des_c.htm)\n【turn329search1】 [wordlim: 200] Crawled: yesterday; 搜尋在更新日期後發布有關上市公司之公司秘書變動的公告，請到上市公司公告標題搜尋，選擇標題類別「公告及通告 - 公司狀況變動及委員會/公司變動 - 更換公司秘書」。 ... 03833  | 新疆新鑫礦業  | 2026 年 10 月 14 日  | 請按此處 ... 02370  | 力高健康生活  | 2022 年 05 月 06 日  | 請按此處 ... 02367  | 巨子生物  | 2026 年 04 月 08 日  | 請按此處\n\n--------------------------------------------------------------------------------\n证券代码：300896  证券简称：爱美客  公告编号：2026-021号 (https://static.cninfo.com.cn/finalpage/2026-04-14/1225102406.PDF)\n【turn329search35】 [wordlim: 200] Published: 6 months ago; 爱美客技术发展股份有限公司（以下简称“公司”）于2026年3月20日在巨潮资讯网（http://www.cninfo.com.cn）披露了《关于召开2025年度股东会的通知》（公告编号：2026-019号），公司将于2026年4月16日（星期四）下午14:00召开2025年度股东会（以下简称“本次会议”）。\n\n--------------------------------------------------------------------------------\n香港交易及結算所有限公司及香港聯合交易所有限公司對本公告之內 (https://www.hkexnews.hk/listedco/listconews/sehk/2025/0822/2025082201931_c.pdf)\n【turn329search36】 [wordlim: 200] Published: 1.2 years ago; 除非文義另有所指，本公告所用詞彙具有以下涵義： ... 周六福珠寶股份有限公司（前稱深圳市周六 ... 註冊成立的有限公司，並於2018年11月7 日 ... 本公司及其附屬公司（或如文義所指，指本\n\n--------------------------------------------------------------------------------\n爱美客技术发展股份有限公司　　　　　　　　　　　　　　　　　　　　　　　　　2026 年半年度报告全文 (https://static.cninfo.com.cn/finalpage/2026-08-21/1225487535.PDF)\n【turn329search37】 [wordlim: 200] Published: 2 months ago; 爱美客技术发展股份有限公司　　　　　　　　　　　　　　　　　　　　　　　　　2026 年半年度报告全文 ... <tr><td>利润分配方案</td><td>经本公司 2026 年 8 月 20 日董事会决议批准，本公司拟以 2026 年 6 月 30 日总股本 302,592,061 股扣除公司回购专用证券账户持有的股份 1,165,874 股后的 301,426,187 股为基数进行如下分配：<br>（1）向全体股东每 10 股派发现金股利 10 元（含税），合计派发现金股利 30,142.62 万元（含税）。\n\n--------------------------------------------------------------------------------\n周六福珠宝股份有限公司 (https://www.hkexnews.hk/listedco/listconews/sehk/2025/0625/2025062500012_c.pdf)\n【turn329search38】 [wordlim: 200] Published: 1.3 years ago; 第一條 為維護周六福珠宝股份有限公司（以下簡稱「公司」）、股東和債權人 ... 第三條 公司於2025年5 月12 日向中國證券監督管理委員會（以下簡稱「中國 ... 第八條 董事長或者總經理為公司的法定代表人。\n\n--------------------------------------------------------------------------------\n有關上市公司之核數師變動之公告 (https://www3.hkexnews.hk/reports/changeauditor/ncms/changeauditor_stkcode_des_c.htm)\n【turn329search2】 [wordlim: 200] Crawled: today; 08247  | 中生北控生物科技  | 2024 年 10 月 17 日  | 請按此處 ... 02370  |",
+      "conclusion": "Search results do not establish complete company filing/IR list coverage; no absence claim."
+    },
+    {
+      "batch": 4,
+      "companies": [
+        "1318.HK",
+        "603605.SH",
+        "2145.HK",
+        "688363.SH"
+      ],
+      "queries": [
+        {
+          "q": "\"毛戈平\" 公司公告 2026年10月",
+          "domains": [
+            "hkexnews.hk"
+          ]
+        },
+        {
+          "q": "\"珀莱雅\" 公司公告 2026年10月",
+          "domains": [
+            "cninfo.com.cn",
+            "sse.com.cn",
+            "szse.cn",
+            "bse.cn"
+          ]
+        },
+        {
+          "q": "\"上美股份\" 公司公告 2026年10月",
+          "domains": [
+            "hkexnews.hk"
+          ]
+        },
+        {
+          "q": "\"华熙生物\" 公司公告 2026年10月",
+          "domains": [
+            "cninfo.com.cn",
+            "sse.com.cn",
+            "szse.cn",
+            "bse.cn"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "turn323search0",
+        "turn323search1",
+        "turn323search2",
+        "turn323search3",
+        "turn323search4",
+        "turn323search28",
+        "turn323search5",
+        "turn323search6",
+        "turn323search7",
+        "turn323search29",
+        "turn323search8",
+        "turn323search9",
+        "turn323search10",
+        "turn323search31",
+        "turn323search11",
+        "turn323search12",
+        "turn323search13",
+        "turn323search14",
+        "turn323search15",
+        "turn323search16",
+        "turn323search32",
+        "turn323search33",
+        "turn323search17",
+        "turn323search18",
+        "turn323search19",
+        "turn323search20",
+        "turn323search34",
+        "turn323search21",
+        "turn323search22",
+        "turn323search23",
+        "turn323search24",
+        "turn323search25",
+        "turn323search26"
+      ],
+      "urls": [
+        "https://www.hkexnews.hk/listedco/listconews/index/lci.html?lang=zh",
+        "https://www.sse.com.cn/disclosure/listedinfo/announcement/index.shtml?productId=600745",
+        "https://www.cninfo.com.cn/new/fulltextSearch?keyWord=%E5%8D%8E%E7%86%99%E7%94%9F%E7%89%A9",
+        "https://www.sse.com.cn/disclosure/bond/announcement/convertible/?COLLCC=612873427&COLLCC=76526803",
+        "https://www.sse.com.cn/home/search/index.shtml?webswd=688363",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0317/2026031701471_c.pdf",
+        "https://www1.hkexnews.hk/app/appyearlyindex.html?board=mainBoard&lang=zh&year=2024",
+        "https://bond.sse.com.cn/disclosure/announ/convertible/",
+        "https://www.sse.com.cn/disclosure/fund/etflist/detail.shtml?fundid=510630",
+        "https://static.cninfo.com.cn/finalpage/2026-08-25/1225496527.PDF",
+        "https://www.sse.com.cn/disclosure/fund/etflist/detail.shtml?fundid=589270",
+        "https://www.sse.com.cn/disclosure/listedinfo/summaries/indexDetail.shtml?SEQ=334550318",
+        "https://www.sse.com.cn/disclosure/listedinfo/summaries/indexDetail.shtml?SEQ=334621582",
+        "https://static.cninfo.com.cn/finalpage/2026-09-10/1225556319.PDF",
+        "https://pujiang.sse.com.cn/update/participants/others/c/c_20260409_10814677.shtml",
+        "https://www.sse.com.cn/disclosure/listedinfo/summaries/indexDetail.shtml?SEQ=334621633",
+        "https://www.sse.com.cn/assortment/bonds/list/bondinfo/basic/index.shtml?BOND_CODE=113634&BOND_TYPE=%E5%85%A8%E9%83%A8",
+        "https://www.sse.com.cn/disclosure/diclosure/StarMarketMaker/c/c_20250526_10780069.shtml",
+        "https://www.sse.com.cn/disclosure/announcement/listing/ipo/c/c_20191105_76601941.shtml",
+        "https://www.sse.com.cn/disclosure/fund/etflist/detail.shtml?fundid=588130",
+        "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0429/2026042906229_c.pdf",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0416/2026041602149_c.pdf",
+        "https://www.sse.com.cn/assortment/stock/areatrade/area/detail.shtml?AREANAME=22",
+        "https://www3.hkexnews.hk/reports/changecomsec/ncms/changecomsec_stkcode_des_c.htm",
+        "https://www.sse.com.cn/assortment/stock/areatrade/area/detail.shtml?AREANAME=370000",
+        "https://www.sse.com.cn/disclosure/diclosure/StarMarketMaker/c/5710790.shtml",
+        "https://static.cninfo.com.cn/finalpage/2026-08-28/1225522098.PDF",
+        "https://www.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20251031_10796699.shtml",
+        "https://www.sse.com.cn/disclosure/announcement/listing/c/c_20171113_4417880.shtml",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20251031_10796699.shtml",
+        "https://www.sse.com.cn/lawandrules/sselawsrules2025/trade/specific/margin/c/c_20260710_10825136.shtml",
+        "https://www3.hkexnews.hk/sdw/search/mutualmarket_c.aspx?t=hk",
+        "https://www3.hkexnews.hk/sdw/search/mutualmarket_c.aspx?nsukey=qT6yQjL0K6ykN3ZzMgjBtJvKmm7hsNymI31b%2FR2Mn%2F9DrY2wzZL2oe3qlYIB3i3atvYK9IBqTtRJiKWjZVqzS5tHZk%2B0VkJwaWJy9KDMSuY7%2Bte8LWNAgQ4FyL7yqNAwZsUE8ytZeCsnmq%2B7wCdXxLIwpOuJkqNiUNDQH8SpgVqGP2%2B34GEXYDDIHkFa0RZ4&t=hk"
+      ],
+      "resultExcerpt": ":: HKEX :: HKEXnews :: (https://www.hkexnews.hk/listedco/listconews/index/lci.html?lang=zh)\n【turn323search0】 [wordlim: 200] Crawled: 1.2 years ago; 發放時間: 14/10/2026 06:13  | 股份代號:06157 ...  | 文件:公告及通告 - [《收購守則》所指的要約公司刊發的公告]寄發有關由浤博資本有限公司為及代表魏華平提出 有條件自願現金部分要約 以收購恒益控股有限公司（股份代號：1894）30,000,000股股份 （魏華平及其一致行動人士已擁有者除外）之 要約文件 (582KB) ...  | 文件:公告及通告 - [資本重組]股份合併於二零二六年十月十四日生效 (123KB) ...  | 文件:公告及通告 - [其他-業務發展最新情況]自願性公告：傳奇宣佈截至2026年9月30日止季度CARVYKTI的初步銷售額 (204KB) ...  | 股份簡稱:毛戈平\n | 股份簡稱:毛戈平\n | 文件:翌日披露報表 - [股份購回]翌日披露報表 (118KB) \n發放時間: 13/10/2026 18:32  | 股份代號:01086\n | 股份簡稱:好孩子國際\n | 文件:公告及通告 - [《收購守則》所指的受要約公司刊發的公告 / 集團重組或協議安排 / 私有化/撤銷或取消證券上市]根據收購守則規則3.8刊發之公告 (234KB) \n發放時間: 13/10/2026 18:31  | 股份代號:06687\n | 股份簡稱:聚水潭\n | 文件:翌日披露報表 - [其他]翌日披露報表 (118KB) \n發放時間: 13/10/2026 18:31  | 股份代號:00657\n | 股份簡稱:環科國際\n | 文件:公告及通告 - [董事會召開日期]董事會召開日期 (371KB) \n發放時間: 13/10/2026 18:29  | 股份代號:02675\n | 股份簡稱:精鋒醫療－Ｂ\n | 文件:翌日披露報表 - [股份購回]翌日披露報表 (135KB) \n發放時間: 13/10/2026 18:28  | 股份代號:02291\n | 股份簡稱:心泰醫療\n | 文件:翌日披露報表 - [股份購回]翌日披露報表 (137KB) \n\n--------------------------------------------------------------------------------\n最新公告 | 上海证券交易所 (https://www.sse.com.cn/disclosure/listedinfo/announcement/index.shtml?productId=600745)\n【turn323search1】 [wordlim: 200] Published: last month; Crawled: last month; 10. ... 603933  | 睿能科技  | 睿能科技关于组建企业集团并办理信息公示及修订《公司章程》的公告  |  | 2026-09-22603933  | 睿能科技  | 福建睿能科技股份有限公司章程（2026年9月）  |  | 2026-09-22 ... 688363  | 华熙生物  | 华熙生物关于核心技术人员离职暨新增认定核心技术人员的公告  |  | 2026-09-22688363  | 华熙生物  | 华熙生物关于召开2026年半年度业绩说明会的公告  |  | 2026-09-22\n603999  | 读者传媒  | 读者出版传媒股份有限公司2026年半年度权益分派实施公告  |  | 2026-09-22\n600927  | 永安期货  | 永安期货股份有限公司关于持股5%以上股东减持股份计划公告  |  | 2026-09-22\n601997  | 贵阳银行  | 贵阳银行股份有限公司关于诉讼事项进展的公告  |  | 2026-09-22\n601618  | 中国中冶  | 中国中冶H股公告  |  | 2026-09-22\n688363  | 华熙生物  | 华熙生物关于核心技术人员离职暨新增认定核心技术人员的公告  |  | 2026-09-22\n688363  | 华熙生物  | 华熙生物关于召开2026年半年度业绩说明会的公告  |  | 2026-09-22\n600416  | 湘电股份  | 湘潭电机股份有限公司关于内部无偿划转股权的公告  |  | 2026-09-22\n\n--------------------------------------------------------------------------------\n巨潮资讯网 (https://www.cninfo.com.cn/new/fulltextSearch?keyWord=%E5%8D%8E%E7%86%99%E7%94%9F%E7%89%A9)\n【turn323search2】 [wordlim: 200] Crawled: 3 weeks ago; 688363  | 华熙生物： 北京市通商律师事务所关于华熙生物科技股份有限公司2025年年度股东会的法律意见书  | 2026-06-16 16:00 ... 688363  | 华熙生物： 华熙生物关于参加2026年山东辖区上市公司投资者网上集体接待日活动的公告  | 2026-05-13 16:00\n\n包含\"\"关键词的搜索结果 共 634 条   当前显示1-20条\n\n时间排序 代码排序 相关度排序\n\n |  |  | \n--- | --- | --- | ---\n\n688363  | 华熙生物： 华熙生物关于核心技术人员离职暨新增认定核心技术人员的公告  | 2026-09-21 16:00\n688363  | 华熙生物： 华熙生物关于召开2026年半年度业绩说明会的公告  | 2026-09-21 16:00\n688363  | 华熙生物： 华熙生物2026年半年度报告摘要  | 2026-08-27 16:00\n688363  | 华熙生物： 华熙生物2026年半年度报告  | 2026-08-27 16:00\n688363  | 华熙生物： 华熙生物关于2026年度“提质增效重回报”专项行动方案的半年度评估报告  | 2026-08-27 16:00\n688363  | 华熙生物： 华熙生物2025年年度权益分派实施公告  | 2026-07-06 16:00\n688363  | 华熙生物： 北京市通商律师事务所关于华熙生物科技股份有限公司差异化分红事项之专项法律意见书  | 2026-07-06 16:00\n688363  | 华熙生物： 华熙生物2025年年度股东会决议公告  | 2026-06-16 16:00\n688363  | 华熙生物： 北京市通商律师事务所关于华熙生物科技股份有限公司2025年年度股东会的法律意见书  | 2026-06-16 16:00\n688363  | 华熙生物： 华熙生物关于控股股东及其一致行动人权益变动跨越5%整数倍的提示性公告  | 2026-05-29 16:00\n688363  | 华熙生物： 华熙生物简式权益变动报告书  | 2026-05-29 16:00\n688363  | 华熙生物： 华熙生物2025年年度股东会会议资料  | 2026-05-25 16:00\n688363  | 华熙生物： 华熙生物关于召开2025年年度股东会的通知  | 2026-05-25 16:00\n688363  | 华熙生物： 华熙生物关于参加2026年山东辖区上市公司投资者网上集体接待日活动的公告  | 2026-05-13 16:00\n688363  | 华熙生物： 华熙生物关于控股股东履行捐赠协议暨无偿捐赠部分公司股份的提示性公告  | 2026-05-11 16:00\n688363  | 华熙生物： 华熙生物关于参加十五五·科创惠民——科创板企业成果转化与民生赋能之2025年度生物制品行业集体业绩说明会的公告  | 2026-04-30 16:00\n688363  | 华熙生物： 华熙生物关于续聘会计师事务所的公告  | 2026-04-2",
+      "conclusion": "Search results do not establish complete company filing/IR list coverage; no absence claim."
+    },
+    {
+      "batch": 5,
+      "companies": [
+        "300957.SZ",
+        "600315.SH",
+        "603983.SH",
+        "2657.HK"
+      ],
+      "queries": [
+        {
+          "q": "\"贝泰妮\" 公司公告 2026年10月",
+          "domains": [
+            "cninfo.com.cn",
+            "sse.com.cn",
+            "szse.cn",
+            "bse.cn"
+          ]
+        },
+        {
+          "q": "\"上海家化\" 公司公告 2026年10月",
+          "domains": [
+            "cninfo.com.cn",
+            "sse.com.cn",
+            "szse.cn",
+            "bse.cn"
+          ]
+        },
+        {
+          "q": "\"丸美生物\" 公司公告 2026年10月",
+          "domains": [
+            "cninfo.com.cn",
+            "sse.com.cn",
+            "szse.cn",
+            "bse.cn"
+          ]
+        },
+        {
+          "q": "\"林清轩\" 公司公告 2026年10月",
+          "domains": [
+            "hkexnews.hk"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "turn324search0",
+        "turn324search1",
+        "turn324search35",
+        "turn324search2",
+        "turn324search3",
+        "turn324search4",
+        "turn324search36",
+        "turn324search37",
+        "turn324search38",
+        "turn324search39",
+        "turn324search5",
+        "turn324search40",
+        "turn324search6",
+        "turn324search7",
+        "turn324search8",
+        "turn324search9",
+        "turn324search10",
+        "turn324search11",
+        "turn324search12",
+        "turn324search13",
+        "turn324search14",
+        "turn324search15",
+        "turn324search16",
+        "turn324search17",
+        "turn324search18",
+        "turn324search19",
+        "turn324search20",
+        "turn324search21",
+        "turn324search22",
+        "turn324search23",
+        "turn324search24",
+        "turn324search25",
+        "turn324search26",
+        "turn324search27",
+        "turn324search28",
+        "turn324search29",
+        "turn324search30",
+        "turn324search31",
+        "turn324search32",
+        "turn324search33",
+        "turn324search34"
+      ],
+      "urls": [
+        "https://www.sse.com.cn/disclosure/listedinfo/announcement/?productId=688120",
+        "https://www.sse.com.cn/assortment/stock/list/info/announcement/index.shtml?productId=600315",
+        "https://static.cninfo.com.cn/finalpage/2026-04-27/1225196388.PDF",
+        "https://www.cninfo.com.cn/new/fulltextSearch?keyWord=%E4%B8%B8%E7%BE%8E%E8%82%A1%E4%BB%BD",
+        "https://www.cninfo.com.cn/new/fulltextSearch?keyWord=603983",
+        "https://www.sse.com.cn/disclosure/listedinfo/summaries/indexDetail.shtml?SEQ=334686858",
+        "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0508/2026050801455_c.pdf",
+        "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1218/11959322/2025121800243_c.pdf",
+        "https://static.cninfo.com.cn/finalpage/2026-04-27/1225192419.PDF",
+        "https://static.cninfo.com.cn/finalpage/2026-08-29/1225530696.PDF",
+        "https://www.sse.com.cn/disclosure/listedinfo/summaries/indexDetail.shtml?SEQ=334637505",
+        "https://static.cninfo.com.cn/finalpage/2026-07-10/1225416999.PDF",
+        "https://www.sse.com.cn/disclosure/diclosure/public/inquirydata/index.shtml?branchName=%E4%B8%AD%E4%BF%A1%E8%AF%81%E5%88%B8%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%E5%8C%97%E4%BA%AC%E5%A4%A9%E9%80%9A%E8%8B%91%E8%AF%81%E5%88%B8%E8%90%A5%E4%B8%9A%E9%83%A8&bsType=S",
+        "https://www.szse.cn/disclosure/notice/t20260529_620819.html",
+        "https://www.sse.com.cn/lawandrules/sselawsrules2025/trade/specific/margin/c/c_20260710_10825136.shtml",
+        "https://www.sse.com.cn/assortment/stock/list/info/turnover/index.shtml?COMPANY_CODE=603983",
+        "https://www.sse.com.cn/assortment/stock/list/info/turnover/index.shtml?COMPANY_CODE=600315",
+        "https://www.sse.com.cn/disclosure/listedinfo/summaries/indexDetail.shtml?SEQ=334528508",
+        "https://www.sse.com.cn/lawandrules/sselawsrules2025/repeal/rules/c/c_20260417_10825146.shtml",
+        "https://www.sse.com.cn/market/sseindex/diclosure/c/c_20150911_3985050.shtml",
+        "https://investor.szse.cn/disclosure/notice/general/t20211129_589914.html",
+        "https://www.sse.com.cn/assortment/stock/list/info/executives/index.shtml?COMPANY_CODE=600315",
+        "https://www.sse.com.cn/disclosure/announcement/listing/ipo/c/c_20190725_75650211.shtml",
+        "https://www.sse.com.cn/disclosure/fund/etflist/detail.shtml?fundid=510630",
+        "https://www.sse.com.cn/home/search/index.shtml?webswd=%E4%B8%8A%E6%B5%B7%E5%AE%B6%E5%8C%96%E8%B4%A2%E5%8A%A1%E6%8A%A5%E8%A1%A8",
+        "https://www.sse.com.cn/disclosure/listedinfo/summaries/indexDetail.shtml?SEQ=334476785",
+        "https://pujiang.sse.com.cn/update/participants/secretaryupdate/c/c_20260409_10814645.shtml",
+        "https://www.sse.com.cn/lawandrules/sselawsrules2025/repeal/rules/c/c_20260109_10815555.shtml",
+        "https://docs.static.szse.cn/www/English/siteMarketData/publication/monthly/W020250905347573546611.html",
+        "https://www.szse.cn/disclosure/notice/t20210324_585240.html",
+        "https://static.cninfo.com.cn/finalpage/2002-03-15/553188.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020260403534498621136.html",
+        "https://www.szse.cn/marketServices/message/index/dynamic/t20240531_607513.html",
+        "https://docs.static.szse.cn/www/English/siteMarketData/publication/monthly/W020251013318289243993.html",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/market/sseindex/diclosure/c/c_20220527_5702708.shtml",
+        "https://www.sse.com.cn/market/sseindex/diclosure/c/c_20211126_5644497.shtml",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020210604320374462929.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020230912344259984846.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020230808525916660332.html",
+        "https://docs.static.szse.cn/www/English/siteMarketData/publication/monthly/W020241204353993311227.html",
+        "https://www.szse.cn/aboutus/trends/news/t20210325_585256.html"
+      ],
+      "resultExcerpt": "最新公告 | 上海证券交易所 (https://www.sse.com.cn/disclosure/listedinfo/announcement/?productId=688120)\n【turn324search0】 [wordlim: 200] Published: yesterday; Crawled: yesterday; 601619  | 嘉泽新能  | 嘉泽新能源股份有限公司关于控股子公司通过增资实施核心人员跟投及公司放弃优先认缴出资权暨关联交易及提供连带责任保证担保的公告  |  | 2026-10-21 ... 601868  | 中国能建  | 中国能源建设股份有限公司关于接待机构投资者调研活动的公告  |  | 2026-10-21 ... 603983  | 丸美生物  | 广东丸美生物技术股份有限公司关于归还临时补充流动资金的募集资金的公告  |  | 2026-10-21 ... 600011  | 华能国际  | 华能国际关于召开2026年三季度业绩推介全球投资者电话会议的公告  |  | 2026-10-21 ... 688388  | 嘉元科技  | 广东嘉元科技股份有限公司董事、高级管理人员薪酬管理制度（2026年10月修订）  |  | 2026-10-21\n688170  | 德龙激光  | 德龙激光关于独立董事任期满六年辞任暨补选独立董事并调整董事会专门委员会的公告  |  | 2026-10-21\n688170  | 德龙激光  | 德龙激光第五届董事会提名委员会关于独立董事候选人的审查意见  |  | 2026-10-21\n688170  | 德龙激光  | 德龙激光独立董事提名人声明与承诺（汪志群）  |  | 2026-10-21\n688170  | 德龙激光  | 德龙激光独立董事候选人声明与承诺（汪志群）  |  | 2026-10-21\n688170  | 德龙激光  | 德龙激光关于召开2026年第五次临时股东会的通知  |  | 2026-10-21\n688357  | 建龙微纳  | 关于股份回购实施结果暨股份变动的公告  |  | 2026-10-21\n603983  | 丸美生物  | 广东丸美生物技术股份有限公司关于归还临时补充流动资金的募集资金的公告  |  | 2026-10-21\n600620  | 天宸股份  | 上海市天宸股份有限公司关于持股5%以上股东减持计划期限届满暨减持结果公告  |  | 2026-10-21\n600888  | 新疆众和  | 新疆众和股份有限公司2026年前三季度业绩预增公告  |  | 2026-10-21\n\n--------------------------------------------------------------------------------\n公司公告 | 上海证券交易所 (https://www.sse.com.cn/assortment/stock/list/info/announcement/index.shtml?productId=600315)\n【turn324search1】 [wordlim: 200] Crawled: 3 weeks ago; 600315  | 上海家化  | 上海家化2026年第一次临时股东会决议公告  | 2026-09-10 ... 600315  | 上海家化  | 上海家化关于出售参股公司股权的公告  | 2026-08-20\n\n# 公司公告\n\n## 上海家化联合股份有限公司600315\n\n公司概况\n\n股本结构\n\n筹资情况\n\n利润分配\n\n成交概况\n\n行情图表\n\n公司公告\n\n公告摘要\n\n公司章程\n\n治理细则\n\n股东大会资料\n\n高管人员\n\n## 上市公司公告全文\n\n[Input] [Input: 证券代码或简称]\n\n[Input: 关键字]\n\n[Select]\n\n[Input: 开始日期] Image [Input: 结束日期]\n\n[Button: 查询]\n\n证券代码  | 证券简称  | 公告标题  | 公告时间\n600315  | 上海家化  | 上海家化2026年第一次临时股东会决议公告  | 2026-09-10\n600315  | 上海家化  | 国浩律师（上海）事务所关于上海家化2026年第一次临时股东会的法律意见书  | 2026-09-10\n600315  | 上海家化  | 上海家化2026年第一次临时股东会资料  | 2026-09-01\n600315  | 上海家化  | 上海家化关于召开2026年半年度业绩说明会的公告  | 2026-08-28\n600315  | 上海家化  | 上海家化关于续聘2026年度会计师事务所的公告  | 2026-08-20\n600315  | 上海家化  | 上海家化关于出售参股公司股权的公告  | 2026-08-20\n600315  | 上海家化  | 上海家化2026年半年度报告  | 2026-08-20\n600315  | 上海家化  | 上海家化关于召开2026年第一次临时股东会的通知  | 2026-08-20\n600315  | 上海家化  | 上海家化2026年半年度报告摘要  | 2026-08-20\n600315  | 上海家化  | 上海家化关于2026年第二季度主要经营数据的公告  | 2026-08-20\n600315  | 上海家化  | 毕马威资产评估(上海)有限公司关于上海家化拟股权转让所涉及的丝芙兰(上海)化妆品销售有限公司的股东全部权益价值资产评估报告  | 2026-08-20\n600315  | 上海家化  | 上海家化九届九次董事会决议公告  | 2026-08-20\n\n--------------------------------------------------------------------------------\n证券代码：300957  证券简称：贝泰妮  公告编号：2026-016 (https://static.cninfo.com.cn/finalpage/2026-04-27/1225196388.PDF)\n【turn324search35】 [wordlim: 200] Published: 6 months ago; 证券代码：300957  证券简称：贝泰妮  公告编号：2026-016 ... （1）公司拟使用暂时闲置募集资金（含超募资金）现金管理额度不超过人民币70,000万元（含本数），额度自公司2025年年度股东会审议通过之日起至公司2026年年度股东会召开之日止，投资产品的期限不得超过十二个月，在上述额度及决议有效期内，可循环滚动使用。\n\n--------------------------------------------------------------------------------\n巨潮资讯网 (https://www.cninfo.com.cn/new/fulltextSearch?keyWord=%E4%B8%B8%E7%BE%8E%E8%82%A1%E4%BB%BD)\n【turn324search2】 [wordlim: 200] Crawled: last week; 603983  | 丸美生物： 广东丸美生物技术股份有限公司关于参加2026年广东辖区投资者集体接待日暨辖区上市公司中报业绩说明会活动的公告  | 2026-09-08 16:00 ... 603983  | 丸美生物： 广东丸美生物技术股份有限公司2025年度环境、社会与公司治理（ESG）报告（英文版）  | 2026-05-20 16:00\n\n--------------------------------------------------------------------------------\n巨潮资讯网 (https://www.cninfo.com.cn/new/fulltextSearch?keyWord=603983)\n【turn324search3】 [wordlim: 200] Crawled: 5 days ago; 广东丸美生物技术股份有限公司关于参加2026年广东辖区投资者集体接待日暨辖区上市公司中报业绩说明会活动的公告  | 202",
+      "conclusion": "Search results do not establish complete company filing/IR list coverage; no absence claim."
+    },
+    {
+      "batch": 6,
+      "companies": [
+        "300740.SZ",
+        "600223.SH",
+        "920982.BJ",
+        "601888.SH"
+      ],
+      "queries": [
+        {
+          "q": "\"水羊股份\" 公司公告 2026年10月",
+          "domains": [
+            "cninfo.com.cn",
+            "sse.com.cn",
+            "szse.cn",
+            "bse.cn"
+          ]
+        },
+        {
+          "q": "\"福瑞达\" 公司公告 2026年10月",
+          "domains": [
+            "cninfo.com.cn",
+            "sse.com.cn",
+            "szse.cn",
+            "bse.cn"
+          ]
+        },
+        {
+          "q": "\"锦波生物\" 公司公告 2026年10月",
+          "domains": [
+            "cninfo.com.cn",
+            "sse.com.cn",
+            "szse.cn",
+            "bse.cn"
+          ]
+        },
+        {
+          "q": "\"中国中免\" 公司公告 2026年10月",
+          "domains": [
+            "cninfo.com.cn",
+            "sse.com.cn",
+            "szse.cn",
+            "bse.cn"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "turn322search0",
+        "turn322search1",
+        "turn322search2",
+        "turn322search3",
+        "turn322search4",
+        "turn322search45",
+        "turn322search5",
+        "turn322search6",
+        "turn322search46",
+        "turn322search47",
+        "turn322search48",
+        "turn322search49",
+        "turn322search50",
+        "turn322search7",
+        "turn322search8",
+        "turn322search9",
+        "turn322search10",
+        "turn322search11",
+        "turn322search12",
+        "turn322search13",
+        "turn322search14",
+        "turn322search15",
+        "turn322search16",
+        "turn322search17",
+        "turn322search18",
+        "turn322search19",
+        "turn322search20",
+        "turn322search21",
+        "turn322search22",
+        "turn322search23",
+        "turn322search24",
+        "turn322search25",
+        "turn322search26",
+        "turn322search27",
+        "turn322search28",
+        "turn322search29",
+        "turn322search30"
+      ],
+      "urls": [
+        "https://www.sse.com.cn/assortment/stock/list/info/announcement/index.shtml?productId=601888",
+        "https://www.sse.com.cn/disclosure/listedinfo/announcement/?productId=601688",
+        "https://www.sse.com.cn/disclosure/listedinfo/announcement/?productId=688120",
+        "https://www.sse.com.cn/home/search/index.shtml?webswd=%E4%B8%AD%E5%9B%BD%E4%B8%AD%E5%85%8D%E5%B9%B4%E6%8A%A5",
+        "https://www.sse.com.cn/disclosure/listedinfo/announcement/index.shtml?productId=600166",
+        "https://static.cninfo.com.cn/finalpage/2026-05-29/1225336545.PDF",
+        "https://www.sse.com.cn/assortment/stock/list/info/company/index.shtml?COMPANY_CODE=601888&bt=%E5%85%A8%E9%83%A8&productId=601888&static=t",
+        "https://www.sse.com.cn/disclosure/listedinfo/announcement/index.shtml?productId=600745",
+        "https://static.cninfo.com.cn/finalpage/2026-01-15/1224934316.PDF",
+        "https://static.cninfo.com.cn/finalpage/2026-04-14/1225102873.PDF",
+        "https://www.bse.cn/disclosure/2026/2026-07-09/1783588942_575264.pdf",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-03/600223_20260403_6WTX.pdf",
+        "https://static.cninfo.com.cn/finalpage/2026-04-10/1225094780.PDF",
+        "https://www.sse.com.cn/disclosure/diclosure/public/inquirydata/index.shtml?branchName=%E4%B8%9C%E6%96%B9%E8%AF%81%E5%88%B8%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%E4%B8%8A%E6%B5%B7%E6%9D%A8%E6%B5%A6%E5%8C%BA%E5%AE%89%E6%B3%A2%E8%B7%AF%E8%AF%81%E5%88%B8%E8%90%A5%E4%B8%9A%E9%83%A8&bsType=S",
+        "https://www.sse.com.cn/lawandrules/sselawsrules2025/trade/specific/margin/c/c_20260710_10825136.shtml",
+        "https://www.bse.cn/service/code_mapping.html",
+        "https://www.sse.com.cn/listing/renewal/ipo/qsmzq/index_listing_detail.shtml?uniformCode=91140100672338346F",
+        "https://star.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20260830_10830362.shtml",
+        "https://www.sse.com.cn/lawandrules/sselawsrules2025/repeal/rules/c/c_20260417_10825146.shtml",
+        "https://www.sse.com.cn/disclosure/diclosure/public/dailydata/detail.shtml?refType=1&secAbbr=%E4%B8%AD%E5%9B%BD%E4%B8%AD%E5%85%8D&secCode=601888&tradeDate=20200630",
+        "https://www.sse.com.cn/disclosure/fund/etflist/detail.shtml?etfClass=01&fundid=510100&type=187",
+        "https://www.bse.cn/important_news/200026669.html",
+        "https://www.bse.cn/important_news/200023038.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020260806351614974469.html",
+        "https://www.sse.com.cn/listing/renewal/ipo/?anchor_type=0&auditId=898",
+        "https://www.capco.org.cn",
+        "https://www.bse.cn/important_news/200021996.html",
+        "https://www.bse.cn/important_news/200021759.html",
+        "https://www.bse.cn/issue_report_meeting/200017774.html",
+        "https://www.bse.cn/important_news/200018369.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020231109584427301877.html",
+        "https://www.bse.cn/important_news/200025796.html",
+        "https://docs.static.szse.cn/www/English/siteMarketData/publication/monthly/W020241014330937486008.html",
+        "https://www.sse.com.cn/disclosure/diclosure/public/inquirydata/index.shtml?branchName=%E4%B8%AD%E4%BF%A1%E8%AF%81%E5%88%B8%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%E6%9D%AD%E5%B7%9E%E6%95%99%E5%B7%A5%E8%B7%AF%E8%AF%81%E5%88%B8%E8%90%A5%E4%B8%9A%E9%83%A8&bsType=S",
+        "https://www.sse.com.cn/home/search/index.shtml?webswd=688363",
+        "https://www.sse.com.cn/assortment/stock/list/info/turnover/index.shtml?COMPANY_CODE=600223",
+        "https://pujiang.sse.com.cn/update/participants/others/c/c_20250710_10784494.shtml",
+        "https://pujiang.sse.com.cn/update/participants/others/c/5742334.shtml"
+      ],
+      "resultExcerpt": "公司公告 | 上海证券交易所 (https://www.sse.com.cn/assortment/stock/list/info/announcement/index.shtml?productId=601888)\n【turn322search0】 [wordlim: 200] Crawled: 6 days ago; 601888  | 中国中免  | 变更联席公司秘书、授权代表及法律程序代理人；及豁免严格遵守上市规则第3.28条及第8.17条  | 2026-08-21 ... 601888  | 中国中免  | 中国旅游集团中免股份有限公司关于2025年年度股东会、2026年第一次A股类别股东会、2026年第一次H股类别股东会增加临时提案的公告  | 2026-06-12\n\n--------------------------------------------------------------------------------\n最新公告 | 上海证券交易所 (https://www.sse.com.cn/disclosure/listedinfo/announcement/?productId=601688)\n【turn322search1】 [wordlim: 200] Published: 2 weeks ago; Crawled: 2 weeks ago; 601888  | 中国中免  | H股公告-月报表  |  | 2026-10-08 ... 600187  | *ST国中  | 关于公司控股股东的一致行动人部分股份解除质押及股份再次质押的公告  |  | 2026-10-08\n\n--------------------------------------------------------------------------------\n最新公告 | 上海证券交易所 (https://www.sse.com.cn/disclosure/listedinfo/announcement/?productId=688120)\n【turn322search2】 [wordlim: 200] Published: yesterday; Crawled: yesterday; 603986  | 兆易创新  | 北京中银律师事务所关于兆易创新科技集团股份有限公司2026年第四次临时股东会的法律意见书  |  | 2026-10-21 ... 688733  | 壹石通  | 壹石通关于2026年以集中竞价交易方式回购公司股份的回购报告书  |  | 2026-10-21 ... 601888  | 中国中免  | H股公告-董事会会议召开日期  |  | 2026-10-21 ... 600587  | 新华医疗  | 新华医疗关于公司产品获得三类和二类医疗器械注册证的公告  |  | 2026-10-21\n\n--------------------------------------------------------------------------------\n上证搜索 | 上海证券交易所 (https://www.sse.com.cn/home/search/index.shtml?webswd=%E4%B8%AD%E5%9B%BD%E4%B8%AD%E5%85%8D%E5%B9%B4%E6%8A%A5)\n【turn322search3】 [wordlim: 200] Crawled: 3 days ago; 全部 公告 规则 数据 监管 新闻 ... ：中国中免 中国旅游集团中免股份有限公司 2026 年半年度报告中国旅游集团中免股份有限公司2026 年半年度报告 2 /中国旅游集团中免股份有限公司2026 年半年度报告 4 / 153： 常用词语释义 中国中免、中国国 旅、公司、本公司 指 中国旅游集团中免股份有限公司中国旅游集团中免股份有限公司2026 年半年度报告 11 / ... 公司简称：中国中免 中国旅游集团中免股份有限公司 2025年半年度报告 中国旅游集团中免股份有限公司2025 年半年度报告中国旅游集团中免股份有限公司2025 年半年度报告 4 / 157： 常用词语释义 中国中免、中国国 旅、公司、本公司 指 中国旅游集团中免股份有限公司中国旅游集团中免股份有限公司2025 年半年度报告 10 /\n\n--------------------------------------------------------------------------------\n最新公告 | 上海证券交易所 (https://www.sse.com.cn/disclosure/listedinfo/announcement/index.shtml?productId=600166)\n【turn322search4】 [wordlim: 200] Published: 5 days ago; Crawled: 5 days ago; 600962  | 国投中鲁  | 国投中鲁关于增加2026年度日常关联交易预计额度及预计2027年1-4月日常关联交易额度的公告  |  | 2026-10-17 ... 600916  | 中国黄金  | 北京德恒律师事务所关于中国黄金集团黄金珠宝股份有限公司2026年第二次临时股东会的法律意见  |  | 2026-10-17 ... 600016  | 民生银行  | 中国民生银行关于成功发行100亿元金融债券的公告  |  | 2026-10-17 ... 603519  | 立霸股份  | 立霸股份：参与出资设立投资基金暨关联交易的公告  |  | 2026-10-17 ... 688032  | 禾迈股份  | 关于终止日常经营重大合作协议的公告  |  | 2026-10-17 ... 600223  | 福瑞达  | 鲁商福瑞达医药股份有限公司关于聘任公司高级管理人员的公告  |  | 2026-10-17 ... 600906  | 财达证券  | 财达证券股份有限公司关于公司董事离任的公告  |  | 2026-10-17\n\n--------------------------------------------------------------------------------\n证券代码：601888　　证券简称：中国中免　　公告编号：临 2026-012 (https://static.cninfo.com.cn/finalpage/2026-05-29/1225336545.PDF)\n【turn322search45】 [wordlim: 200] Published: 4 months ago; 证券代码：601888　　证券简称：中国中免　　公告编号：临 2026-012 ... 第三条 公司经中国证券监督管理委员会（以下简称“中国证监会”）《关于核准中国国旅股份有限公司首次公开发行股票的批复》（证监许可[2009]798号）核准，首次向社会公众发行人民币普通股 22,000 万股，于 2009 年 10 月 15 日在上海证券交易所上市。\n\n--------------------------------------------------------------------------------\n公司概况 | 上海证券交易所 (https://www.sse.com.cn/assortment/stock/list/info/company/index.shtml?COMPANY_CODE=601888&bt=%E5%85%A8%E9%83%A8&productId=601888&static=t)\n【turn322search5】 [wordlim: 200] Crawled: 2 weeks ago; 中国旅游集团中免股份有限公司关于召开2026年半年度业绩说明会的公告  | 规范运作  | 2026-09-22 ... 变更联席公司秘书、授权代表及法律程序代理人；及豁免严格遵守上市规则第3.28条及第8.17条  | 其他  | 2026-08-21 ... 上市日*  | 2009-10-15/-/-\n\n-----------------------------",
+      "conclusion": "Search results do not establish complete company filing/IR list coverage; no absence claim."
+    },
+    {
+      "batch": 7,
+      "companies": [
+        "600859.SH",
+        "600009.SH",
+        "9961.HK",
+        "0780.HK"
+      ],
+      "queries": [
+        {
+          "q": "\"王府井\" 公司公告 2026年10月",
+          "domains": [
+            "cninfo.com.cn",
+            "sse.com.cn",
+            "szse.cn",
+            "bse.cn"
+          ]
+        },
+        {
+          "q": "\"上海机场\" 公司公告 2026年10月",
+          "domains": [
+            "cninfo.com.cn",
+            "sse.com.cn",
+            "szse.cn",
+            "bse.cn"
+          ]
+        },
+        {
+          "q": "\"携程集团-S\" 公司公告 2026年10月",
+          "domains": [
+            "hkexnews.hk"
+          ]
+        },
+        {
+          "q": "\"同程旅行\" 公司公告 2026年10月",
+          "domains": [
+            "hkexnews.hk"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "turn325search0",
+        "turn325search1",
+        "turn325search2",
+        "turn325search3",
+        "turn325search4",
+        "turn325search5",
+        "turn325search6",
+        "turn325search25",
+        "turn325search7",
+        "turn325search26",
+        "turn325search27",
+        "turn325search28",
+        "turn325search8",
+        "turn325search29",
+        "turn325search30",
+        "turn325search9",
+        "turn325search10",
+        "turn325search11",
+        "turn325search12",
+        "turn325search13",
+        "turn325search14",
+        "turn325search15",
+        "turn325search16",
+        "turn325search17",
+        "turn325search18",
+        "turn325search19",
+        "turn325search20",
+        "turn325search21",
+        "turn325search22",
+        "turn325search23",
+        "turn325search24"
+      ],
+      "urls": [
+        "https://www.sse.com.cn/assortment/stock/list/info/announcement/index.shtml?productId=600859",
+        "https://www.sse.com.cn/disclosure/listedinfo/announcement/index.shtml?productId=688688",
+        "https://www.sse.com.cn/disclosure/listedinfo/announcement/index.shtml?productId=600166",
+        "https://www.sse.com.cn/disclosure/listedinfo/announcement/?productId=688012",
+        "https://www.sse.com.cn/disclosure/listedinfo/announcement/?productId=603567",
+        "https://www.sse.com.cn/disclosure/listedinfo/announcement/index.shtml?productId=600519",
+        "https://www.sse.com.cn/disclosure/listedinfo/periodic/",
+        "https://static.cninfo.com.cn/finalpage/2026-04-30/1225256621.PDF",
+        "https://www.sse.com.cn/disclosure/listedinfo/summaries/indexDetail.shtml?SEQ=334671520",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0912/2025091200338_c.pdf",
+        "https://static.cninfo.com.cn/finalpage/2026-04-23/1225156482.PDF",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0116/2026011600537_c.pdf",
+        "https://www.sse.com.cn/home/search/index.shtml?webswd=%E9%98%BF%E8%BF%AA%E8%BE%BE%E6%96%AF",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2023/1023/2023102300114_c.pdf",
+        "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0818/2025081800349_c.pdf",
+        "https://www.sse.com.cn/assortment/stock/list/info/company/index.shtml?COMPANY_CODE=600004",
+        "https://www.sse.com.cn/disclosure/diclosure/public/inquirydata/index.shtml?branchName=%E9%95%BF%E6%B1%9F%E8%AF%81%E5%88%B8%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%E6%80%BB%E9%83%A8&bsType=B",
+        "https://www.sse.com.cn/lawandrules/sselawsrules2025/trade/specific/margin/c/c_20260710_10825136.shtml",
+        "https://www.sse.com.cn/assortment/stock/list/info/company/index.shtml?COMPANY_CODE=601588&tabActive=1",
+        "https://www3.hkexnews.hk/sdw/search/mutualmarket_c.aspx?t=hk",
+        "https://www3.hkexnews.hk/sdw/search/mutualmarket_c.aspx?nsukey=qT6yQjL0K6ykN3ZzMgjBtJvKmm7hsNymI31b%2FR2Mn%2F9DrY2wzZL2oe3qlYIB3i3atvYK9IBqTtRJiKWjZVqzS5tHZk%2B0VkJwaWJy9KDMSuY7%2Bte8LWNAgQ4FyL7yqNAwZsUE8ytZeCsnmq%2B7wCdXxLIwpOuJkqNiUNDQH8SpgVqGP2%2B34GEXYDDIHkFa0RZ4&t=hk",
+        "https://www.sse.com.cn/lawandrules/sselawsrules2025/repeal/rules/c/c_20260109_10815555.shtml",
+        "https://www.sse.com.cn/market/sseindex/diclosure/c/c_20211126_5644497.shtml",
+        "https://star.sse.com.cn/assortment/stock/areatrade/trade/detail.shtml?csrcCode=F52&csrcName=%E9%9B%B6%E5%94%AE%E4%B8%9A",
+        "https://pujiang.sse.com.cn/update/participants/others/c/c_20251010_10794151.shtml",
+        "https://www.sse.com.cn/services/tradingservice/margin/info/single/",
+        "https://www.sse.com.cn/disclosure/listedinfo/summaries/indexDetail.shtml?SEQ=334665727",
+        "https://www.sse.com.cn/disclosure/fund/etflist/detail.shtml?etfClass=01&fundid=510130&type=007",
+        "https://www.sse.com.cn/disclosure/listedinfo/listedcompanies/index_detail.shtml?COMPANY_ABBR=%E4%B8%8A%E6%B5%B7%E6%9C%BA%E5%9C%BA&COMPANY_CODE=600009&REPORT_PERIOD_ID=1000&REPORT_YEAR=2025",
+        "https://www.sse.com.cn/disclosure/fund/etflist/detail.shtml?etfClass=01&fundid=510180&type=002",
+        "https://star.sse.com.cn/assortment/stock/list/share/"
+      ],
+      "resultExcerpt": "公司公告 | 上海证券交易所 (https://www.sse.com.cn/assortment/stock/list/info/announcement/index.shtml?productId=600859)\n【turn325search0】 [wordlim: 200] Crawled: today; 600859  | 王府井  | 王府井关于使用暂时闲置募集资金进行现金管理的进展公告  | 2026-10-22 ... 600859  | 王府井  | 王府井关于子公司签署租赁合同暨关联交易的公告  | 2026-08-29\n\n# 公司公告\n\n## 王府井集团股份有限公司600859\n\n公司概况\n\n股本结构\n\n筹资情况\n\n利润分配\n\n成交概况\n\n行情图表\n\n公司公告\n\n公告摘要\n\n公司章程\n\n治理细则\n\n股东大会资料\n\n高管人员\n\n## 上市公司公告全文\n\n证券代码  | 证券简称  | 公告标题  | 公告时间\n--- | --- | --- | ---\n600859  | 王府井  | 王府井关于使用暂时闲置募集资金进行现金管理的进展公告  | 2026-10-22\n600859  | 王府井  | 王府井关于使用暂时闲置募集资金进行现金管理的进展公告  | 2026-10-17\n600859  | 王府井  | 王府井关于以集中竞价交易方式回购股份的进展公告  | 2026-10-17\n600859  | 王府井  | 王府井关于使用暂时闲置募集资金进行现金管理到期赎回的公告  | 2026-10-13\n600859  | 王府井  | 王府井关于使用暂时闲置募集资金进行现金管理到期赎回的公告  | 2026-10-10\n600859  | 王府井  | 王府井关于以集中竞价交易方式回购股份的进展公告  | 2026-10-10\n600859  | 王府井  | 王府井关于使用暂时闲置募集资金进行现金管理的进展公告  | 2026-09-30\n600859  | 王府井  | 王府井关于毕节国贸购物中心对外营业的公告  | 2026-09-28\n600859  | 王府井  | 王府井关于使用暂时闲置募集资金进行现金管理的进展公告  | 2026-09-24\n600859  | 王府井  | 王府井关于使用暂时闲置募集资金进行现金管理的进展公告  | 2026-09-19\n600859  | 王府井  | 王府井关于使用暂时闲置募集资金进行现金管理到期赎回的公告  | 2026-09-16\n600859  | 王府井  | 王府井关于召开2026年半年度业绩说明会的公告  | 2026-09-16\n600859  | 王府井  | 王府井关于使用暂时闲置募集资金进行现金管理的进展公告  | 2026-09-04\n600859  | 王府井  | 王府井关于以集中竞价交易方式回购股份的进展公告  | 2026-09-02\n600859  | 王府井  | 王府井关于计提及核销资产减值准备报告的公告  | 2026-08-29\n600859  | 王府井  | 王府井第十二届董事会第八次会议决议公告  | 2026-08-29\n600859  | 王府井  | 王府井2026年半年度报告  | 2026-08-29\n600859  | 王府井  | 王府井2026年半年度报告摘要  | 2026-08-29\n600859  | 王府井  | 王府井董事会秘书工作细则  | 2026-08-29\n600859  | 王府井  | 王府井关于子公司签署租赁合同暨关联交易的公告  | 2026-08-29\n600859  | 王府井  | 王府井关于对北京首都旅游集团财务有限公司2026年半年度风险评估报告的公告  | 2026-08-29\n600859  | 王府井  | 王府井2026年半年度经营数据公告  | 2026-08-29\n600859  | 王府井  | 王府井重大信息内部报告制度  | 2026-08-29\n600859  | 王府井  | 王府井关于公司2026年半年度募集资金存放、管理与实际使用情况的专项报告  | 2026-08-29\n600859  | 王府井  | 王府井关于以集中竞价交易方式首次回购公司股份的公告  | 2026-08-17\n--------------------------------------------------------------------------------\n最新公告 | 上海证券交易所 (https://www.sse.com.cn/disclosure/listedinfo/announcement/index.shtml?productId=688688)\n【turn325search1】 [wordlim: 200] Published: last week; Crawled: last week; 688072  | 拓荆科技  | 董事会薪酬与考核委员会关于公司2026年限制性股票激励计划首次授予相关事项的核查意见（截至首次授予日）  |  | 2026-10-10 ... 600859  | 王府井  | 王府井关于使用暂时闲置募集资金进行现金管理到期赎回的公告  |  | 2026-10-10600859  | 王府井  | 王府井关于以集中竞价交易方式回购股份的进展公告  |  | 2026-10-10\n688268  | 华特气体  | 广东华特气体股份有限公司关于召开2026年第五次临时股东会的通知  |  | 2026-10-10\n600859  | 王府井  | 王府井关于使用暂时闲置募集资金进行现金管理到期赎回的公告  |  | 2026-10-10\n600859  | 王府井  | 王府井关于以集中竞价交易方式回购股份的进展公告  |  | 2026-10-10\n600456  | 宝钛股份  | 宝鸡钛业股份有限公司关于不向下修正“宝钛转债”转股价格的公告  |  | 2026-10-10\n603166  | 福达股份  | 福达股份关于向不特定对象发行可转换公司债券申请获得上海证券交易所受理的公告  |  | 2026-10-10\n603166  | 福达股份  | 中信证券股份有限公司关于桂林福达股份有限公司向不特定对象发行可转换公司债券之上市保荐书  |  | 2026-10-10\n\n--------------------------------------------------------------------------------\n最新公告 | 上海证券交易所 (https://www.sse.com.cn/disclosure/listedinfo/announcement/index.shtml?productId=600166)\n【turn325search2】 [wordlim: 200] Published: 5 days ago; Crawled: 5 days ago; 688372  | 伟测科技  | 公司章程（2026年10月）  |  | 2026-10-17 ... 600859  | 王府井  | 王府井关于使用暂时闲置募集资金进行现金管理的进展公告  |  | 2026-10-17600859  | 王府井  | 王府井关于以集中竞价交易方式回购股份的进展公告  |  | 2026-10-17\n600859  | 王府井  | 王府井关于使用暂时闲置募集资金进行现金管理的进展公告  |  | 2026-10-17\n600859  | 王府井  | 王府井关于以集中竞价交易方式回购股份的进展公告  |  | 2026-10-17\n688105  | 诺唯赞  | 简式权益变动报告书（诺唯赞投资）  |  | 2026-10-17\n688105  | 诺唯赞  | 诺唯赞关于控股股东权益变动触及1%及5%整数倍暨披露简式权益变动报告书的提示性公告  |  | 2026-10-17\n600685  | 中船防务  | 中船防务H股公告_董事会会议通知  |  | 2026-10-17\n600479  | 千金药业  | 千金药业关于发行股份及支付现金购买资产暨关联交易之部分限售股上市流通的公告  |  | 2026-",
+      "conclusion": "Search results do not establish complete company filing/IR list coverage; no absence claim."
+    },
+    {
+      "batch": 8,
+      "companies": [
+        "1179.HK",
+        "ATAT.O",
+        "600754.SH",
+        "600258.SH"
+      ],
+      "queries": [
+        {
+          "q": "\"华住集团-S\" 公司公告 2026年10月",
+          "domains": [
+            "hkexnews.hk"
+          ]
+        },
+        {
+          "q": "\"亚朵\" 公司公告 2026年10月",
+          "domains": [
+            "sec.gov"
+          ]
+        },
+        {
+          "q": "\"锦江酒店\" 公司公告 2026年10月",
+          "domains": [
+            "cninfo.com.cn",
+            "sse.com.cn",
+            "szse.cn",
+            "bse.cn"
+          ]
+        },
+        {
+          "q": "\"首旅酒店\" 公司公告 2026年10月",
+          "domains": [
+            "cninfo.com.cn",
+            "sse.com.cn",
+            "szse.cn",
+            "bse.cn"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "turn320search0",
+        "turn320search1",
+        "turn320search2",
+        "turn320search3",
+        "turn320search4",
+        "turn320search5",
+        "turn320search30",
+        "turn320search31",
+        "turn320search32",
+        "turn320search33",
+        "turn320search34",
+        "turn320search35",
+        "turn320search6",
+        "turn320search7",
+        "turn320search8",
+        "turn320search9",
+        "turn320search10",
+        "turn320search11",
+        "turn320search12",
+        "turn320search13",
+        "turn320search14",
+        "turn320search15",
+        "turn320search16",
+        "turn320search17",
+        "turn320search18",
+        "turn320search19",
+        "turn320search20",
+        "turn320search21",
+        "turn320search22",
+        "turn320search23",
+        "turn320search24",
+        "turn320search25",
+        "turn320search26",
+        "turn320search27",
+        "turn320search28",
+        "turn320search29"
+      ],
+      "urls": [
+        "https://star.sse.com.cn/assortment/stock/list/info/company/index.shtml?COMPANY_CODE=600754",
+        "https://www.sse.com.cn/assortment/stock/list/info/announcement/index.shtml?productId=600258",
+        "https://www.sse.com.cn/assortment/stock/list/info/summary/index.shtml?COMPANY_CODE=600258",
+        "https://www.sse.com.cn/assortment/stock/list/info/company/index.shtml?COMPANY_CODE=600258",
+        "https://www.sse.com.cn/home/search/index.shtml?webswd=900934",
+        "https://www.sse.com.cn/disclosure/listedinfo/announcement/index.shtml?productId=600745",
+        "https://static.cninfo.com.cn/finalpage/2026-05-15/1225307235.PDF",
+        "https://static.cninfo.com.cn/finalpage/2026-03-28/1225047640.PDF",
+        "https://static.cninfo.com.cn/finalpage/2026-04-30/1225256736.PDF",
+        "https://static.cninfo.com.cn/finalpage/2025-10-30/1224761215.PDF",
+        "https://static.cninfo.com.cn/finalpage/2026-08-29/1225531639.PDF",
+        "https://www.sse.com.cn/",
+        "https://static.cninfo.com.cn/finalpage/2026-03-31/1225063977.PDF",
+        "https://www.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20260830_10830362.shtml",
+        "https://www.sse.com.cn/disclosure/fund/etflist/detail.shtml?fundid=563830",
+        "https://www.sse.com.cn/lawandrules/sselawsrules2025/trade/specific/margin/c/c_20260710_10825136.shtml",
+        "https://www.sse.com.cn/assortment/stock/list/info/capital/index.shtml?COMPANY_CODE=600258",
+        "https://www.sse.com.cn/lawandrules/sselawsrules2025/repeal/rules/c/c_20260417_10825146.shtml",
+        "https://pujiang.sse.com.cn/update/participants/secretaryupdate/c/c_20260105_10804131.shtml",
+        "https://www.sse.com.cn/disclosure/listedinfo/summaries/indexDetail.shtml?SEQ=334452291",
+        "https://www.sec.gov/Archives/edgar/data/1853717/000104746921001175/a2243265zex-10_4.htm",
+        "https://www.sec.gov/Archives/edgar/data/1853717/000110465921132145/tm2111252d18_ex99-2.htm",
+        "https://www.sec.gov/Archives/edgar/data/1853717/000110465921117108/tm2111252d15_ex3-1.htm",
+        "https://static.cninfo.com.cn/finalpage/2003-12-19/13245481.html",
+        "https://www.sse.com.cn/assortment/stock/areatrade/area/detail.shtml?AREANAME=110000",
+        "https://www.sec.gov/Archives/edgar/data/1853717/000110465923123255/tm2331634d3_ex99-1.htm",
+        "https://www.sec.gov/Archives/edgar/data/1853717/000104746921001175/a2243265zex-99_2.htm",
+        "https://www.sse.com.cn/services/tradingservice/margin/info/againstmargin/",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20240901_10761185.shtml",
+        "https://www.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20231031_5728276.shtml",
+        "https://www.sse.com.cn/aboutus/publication/actofcourt/law/list/c/c_20171123_4423478.shtml",
+        "https://pujiang.sse.com.cn/update/participants/independentupdate/c/5742090.shtml",
+        "https://pujiang.sse.com.cn/update/participants/secretaryupdate/c/5739956.shtml",
+        "https://pujiang.sse.com.cn/update/participants/secretaryupdate/c/5732210.shtml",
+        "https://www.sse.com.cn/market/sseindex/diclosure/c/c_20150911_3984881.shtml",
+        "https://static.cninfo.com.cn/finalpage/2001-06-30/515552.html",
+        "https://www.sec.gov/Archives/edgar/data/1853717/000104746921001215/a2243287zex-99_2.htm"
+      ],
+      "resultExcerpt": "公司概况 | 上海证券交易所 (https://star.sse.com.cn/assortment/stock/list/info/company/index.shtml?COMPANY_CODE=600754)\n【turn320search0】 [wordlim: 200] Crawled: last week; 锦江酒店关于使用部分闲置募集资金进行现金管理到期赎回并继续进行现金管理的进展公告  | 募集资金使用与管理  | 2026-10-09锦江酒店关于收购控股子公司少数股东股权的公告  | 应当披露的交易  | 2026-09-30 ... 锦江酒店章程（2026年8月修订稿）  | 公司重要基本信息变化  | ... 5  | 中国银行股份有限公司－富国中证旅游主题交易型开放式指数证券投资基金  | 6582974  | 0.62\n  * 14.权益变动报告书和（要约）收购\n  * 15.股权型再融资\n  * 16.其他再融资\n  * 17.重大资产重组\n  * 18.吸收合并\n  * 19.回购股份\n  * 20.可转换公司债\n  * 21.股权激励及员工持股计划\n  * 22.诉讼和仲裁\n  * 23.股东股份被质押冻结或司法拍卖\n  * 24.破产与重整\n  * 25.其他重大事项\n  * 26.公司重要基本信息变化\n  * 27.风险警示\n  * 28.暂停、恢复和终止上市\n  * 29.补充更正公告\n  * 30.规范运作\n  * 31.中介机构报告\n  * 32.停复牌提示性公告\n  * 33.优先股\n  * 34.特别表决权\n  * 35.超额配售选择权\n  * 36.存托凭证相关公告\n  * 37.询价转让及配售\n  * 38.境内外同步披露\n  * 39.分拆上市\n  * 40.自愿性信息披露\n  * 41.其他\n\n[Input: 标题 / 关键字]\n\n公告标题  | 公告分类  | 公告时间\n--- | --- | ---\n锦江酒店关于使用部分闲置募集资金进行现金管理到期赎回并继续进行现金管理的进展公告  | 募集资金使用与管理  | 2026-10-09\n锦江酒店关于收购控股子公司少数股东股权的公告  | 应当披露的交易  | 2026-09-30\n锦江酒店关于召开2026年半年度业绩说明会的公告  | 规范运作  | 2026-09-24\n锦江酒店第十一届董事会第十八次会议决议公告  | 董事会和监事会  | 2026-08-29\n锦江酒店关于对锦江国际集团财务有限责任公司风险评估报告的公告  | 关联交易  | 2026-08-29\n锦江酒店2026年半年度募集资金存放、管理与实际使用情况的专项报告  | 募集资金使用与管理  | 2026-08-29\n锦江酒店2026年半年度报告摘要  | 半年报  | 2026-08-29\n锦江酒店2026年半年度报告  | 半年报  | \n锦江酒店关于修订《公司章程》部分条款的公告  | 公司重要基本信息变化  | 2026-08-18\n锦江酒店章程（2026年8月修订稿）  | 公司重要基本信息变化  | \n锦江酒店关于转让锦江食品全部股权暨关联交易的公告  | 关联交易  | 2026-08-18\n锦江酒店第十一届董事会第十七次会议决议公告  | 董事会和监事会  | 2026-08-18\n\n\n--------------------------------------------------------------------------------\n公司公告 | 上海证券交易所 (https://www.sse.com.cn/assortment/stock/list/info/announcement/index.shtml?productId=600258)\n【turn320search1】 [wordlim: 200] Crawled: last week; 600258  | 首旅酒店  | 关于公司与北京首都旅游集团财务有限公司重新签订《金融服务协议》暨关联交易的公告  | 2026-08-04 ... 600258  | 首旅酒店  | 北京首旅酒店（集团）股份有限公司2026年上半年募集资金存放、管理与实际使用情况专项报告的公告  | 2026-08-04\n\n# 公司公告\n\n## 北京首旅酒店（集团）股份有限公司600258\n\n公司概况\n\n股本结构\n\n筹资情况\n\n利润分配\n\n成交概况\n\n行情图表\n\n公司公告\n\n公告摘要\n\n公司章程\n\n治理细则\n\n股东大会资料\n\n高管人员\n\n## 上市公司公告全文\n\n[Input] [Input: 证券代码或简称]\n\n[Input: 关键字]\n\n[Select]\n\n[Input: 开始日期] Image [Input: 结束日期]\n\n[Button: 查询]\n\n证券代码  | 证券简称  | 公告标题  | 公告时间\n600258  | 首旅酒店  | 北京首旅酒店（集团）股份有限公司关于部分募集资金专户销户完成的公告  | 2026-09-22\n600258  | 首旅酒店  | 关于北京首都旅游集团财务有限公司2026年半年报风险评估报告  | 2026-08-29\n600258  | 首旅酒店  | 北京首旅酒店（集团）股份有限公司第九届董事会第二十一次会议决议公告  | 2026-08-29\n600258  | 首旅酒店  | 北京首旅酒店（集团）股份有限公司2026年半年度报告摘要  | 2026-08-29\n600258  | 首旅酒店  | 北京首旅酒店（集团）股份有限公司关于2026年度“提质增效重回报”行动方案的半年度评估报告  | 2026-08-29\n600258  | 首旅酒店  | 北京首旅酒店（集团）股份有限公司关于召开2026年半年度业绩说明会的公告  | 2026-08-29\n600258  | 首旅酒店  | 北京首旅酒店（集团）股份有限公司2026年半年度报告  | 2026-08-29\n600258  | 首旅酒店  | 北京首旅酒店（集团）股份有限公司2026年第四次临时股东会决议公告  | 2026-08-21\n600258  | 首旅酒店  | 北京首旅酒店（集团）股份有限公司关于使用闲置募集资金进行现金管理到期赎回并继续进行现金管理进展的公告  | 2026-08-21\n600258  | 首旅酒店  | 关于北京首旅酒店（集团）股份有限公司2026年第四次临时股东会的法律意见书  | 2026-08-21\n600258  | 首旅酒店  | 北京首旅酒店（集团）股份有限公司2026年第四次临时股东会会议文件  | 2026-08-12\n600258  | 首旅酒店  | 北京首旅酒店（集团）股份有限公司关于召开2026年第四次临时股东会的通知  | 2026-08-04\n600258  | 首旅酒店  | 关于公司与北京首都旅游集团财务有限公司重新签订《金融服务协议》暨关联交易的公告  | 2026-08-04\n600258  | 首旅酒店  | 北京首旅酒店（集团）股份有限公司关于修订《公司董事会审计委员会实施细则》的公告  | 2026-08-04\n600258  | 首旅酒店  | 北京首旅酒店（集团）股份有限公司2026年上半年募集资金存放、管理与实际使用情况专项报告的公告  | 2026-08-04\n600258  | 首旅酒店  | 北京首旅酒店（集团）股份有限公司董事会提名委员会关于提名肖媛女士为董事候选人的审核意见  | 2026-08-04\n600258  | 首旅酒店  | 北京首旅酒店（集团）股份有限公司董事会审计委员会工作细则  | 2026-08-04\n600258  | 首旅酒店  | 北京首旅酒店（集团）股份有限公司第九届董事会第二十次会议决议公告  | 2026-08-04\n600258  | 首旅酒店  | 北京首旅酒店（集团）股份有限公司独立董事年报工作细则  | 2026-08-04\n600258  | 首旅酒店  | 北京首旅酒店（集团）股份有限公司独立董事2026年第六次专门会议审议事项的独立意见  | 2026-08-04\n600258  | 首旅酒店  | 北京首旅酒店（集团）股份有限公司关于修订《公司董事会提名委员会实施细则》的公告  | 20",
+      "conclusion": "Search results do not establish complete company filing/IR list coverage; no absence claim."
+    },
+    {
+      "batch": 9,
+      "companies": [
+        "300144.SZ",
+        "603099.SH",
+        "603402.SH",
+        "600054.SH"
+      ],
+      "queries": [
+        {
+          "q": "\"宋城演艺\" 公司公告 2026年10月",
+          "domains": [
+            "cninfo.com.cn",
+            "sse.com.cn",
+            "szse.cn",
+            "bse.cn"
+          ]
+        },
+        {
+          "q": "\"长白山\" 公司公告 2026年10月",
+          "domains": [
+            "cninfo.com.cn",
+            "sse.com.cn",
+            "szse.cn",
+            "bse.cn"
+          ]
+        },
+        {
+          "q": "\"陕西旅游\" 公司公告 2026年10月",
+          "domains": [
+            "cninfo.com.cn",
+            "sse.com.cn",
+            "szse.cn",
+            "bse.cn"
+          ]
+        },
+        {
+          "q": "\"黄山旅游\" 公司公告 2026年10月",
+          "domains": [
+            "cninfo.com.cn",
+            "sse.com.cn",
+            "szse.cn",
+            "bse.cn"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "turn332search0",
+        "turn332search1",
+        "turn332search2",
+        "turn332search47",
+        "turn332search48",
+        "turn332search49",
+        "turn332search50",
+        "turn332search51",
+        "turn332search52",
+        "turn332search3",
+        "turn332search4",
+        "turn332search5",
+        "turn332search6",
+        "turn332search7",
+        "turn332search8",
+        "turn332search9",
+        "turn332search10",
+        "turn332search11",
+        "turn332search12",
+        "turn332search13",
+        "turn332search14",
+        "turn332search15",
+        "turn332search16",
+        "turn332search17",
+        "turn332search18",
+        "turn332search19",
+        "turn332search20",
+        "turn332search21",
+        "turn332search22",
+        "turn332search23",
+        "turn332search24",
+        "turn332search25",
+        "turn332search26",
+        "turn332search27",
+        "turn332search28",
+        "turn332search29",
+        "turn332search30",
+        "turn332search31",
+        "turn332search32",
+        "turn332search33"
+      ],
+      "urls": [
+        "https://www.sse.com.cn/assortment/stock/list/info/announcement/index.shtml?productId=603099",
+        "https://www.sse.com.cn/assortment/stock/list/info/announcement/index.shtml?productId=603402",
+        "https://www.sse.com.cn/assortment/stock/list/info/company/index.shtml?COMPANY_CODE=603099&bt=%E5%85%A8%E9%83%A8&productId=603099&static=t",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-20/603402_20260420_EJ8P.pdf",
+        "https://static.cninfo.com.cn/finalpage/2026-08-22/1225491618.PDF",
+        "https://static.cninfo.com.cn/finalpage/2026-08-25/1225498166.PDF",
+        "https://static.cninfo.com.cn/finalpage/2026-04-24/1225164614.PDF",
+        "https://static.cninfo.com.cn/finalpage/2026-04-24/1225164615.PDF",
+        "https://static.cninfo.com.cn/finalpage/2026-05-18/1225313919.PDF",
+        "https://www.sse.com.cn/disclosure/listedinfo/summaries/indexDetail.shtml?SEQ=334679680",
+        "https://www.sse.com.cn/disclosure/listedinfo/announcement/?productId=600276",
+        "https://www.sse.com.cn/disclosure/listedinfo/summaries/indexDetail.shtml?SEQ=334658537",
+        "https://www.sse.com.cn/disclosure/listedinfo/summaries/indexDetail.shtml?SEQ=334642975",
+        "https://www.sse.com.cn/disclosure/listedinfo/summaries/indexDetail.shtml?SEQ=334662778",
+        "https://pujiang.sse.com.cn/update/participants/others/c/c_20260206_10808766.shtml",
+        "https://star.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20260830_10830362.shtml",
+        "https://docs.static.szse.cn/www/English/siteMarketData/publication/monthly/W020250905347573546611.html",
+        "https://www.sse.com.cn/cpc/cpctheme/4th20thcpc/4th20thcpcgcxx/c/c_20260424_10816452.shtml",
+        "https://www.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20260830_10830362.shtml",
+        "https://www.sse.com.cn/assortment/stock/list/info/turnover/index.shtml?COMPANY_CODE=603099",
+        "https://static.cninfo.com.cn/finalpage/2002-08-17/637667.html",
+        "https://www.sse.com.cn/disclosure/diclosure/public/inquirydata/index.shtml?secCode=603099",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20250831_10790221.shtml",
+        "https://pujiang.sse.com.cn/update/participants/secretaryupdate/c/c_20260105_10804131.shtml",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020250704340863647627.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020230808525916660332.html",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/announcement/listing/ipo/c/c_20260105_10804086.shtml",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/market/sseindex/diclosure/c/c_20150911_3985128.shtml",
+        "https://static.cninfo.com.cn/finalpage/2001-08-17/515491.html",
+        "https://www.sse.com.cn/lawandrules/sselawsrules2025/repeal/rules/c/c_20260417_10825146.shtml",
+        "https://www.sse.com.cn/assortment/stock/list/info/company/index.shtml?COMPANY_CODE=600004",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/market/sseindex/diclosure/c/c_20181130_4684887.shtml",
+        "https://www.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20231031_5728276.shtml",
+        "https://www.szse.cn/aboutus/trends/news/t20160301_518691.html",
+        "https://www.sse.com.cn/disclosure/diclosure/public/inquirydata/index.shtml?branchName=%E4%B8%AD%E8%88%AA%E8%AF%81%E5%88%B8%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%E8%A5%BF%E5%AE%89%E9%98%8E%E8%89%AF%E5%85%AC%E5%9B%AD%E5%8D%97%E8%B7%AF%E8%AF%81%E5%88%B8%E8%90%A5%E4%B8%9A%E9%83%A8&bsType=B",
+        "https://irm.cninfo.com.cn/interview/interview/activityInfo?activityId=1442348957005258752",
+        "https://pujiang.sse.com.cn/update/participants/others/c/c_20250515_10779033.shtml",
+        "https://www.szse.cn/aboutus/trends/news/t20201217_583842.html",
+        "https://pujiang.sse.com.cn/update/participants/independentupdate/c/5742090.shtml",
+        "https://pujiang.sse.com.cn/update/participants/others/c/c_20260630_10823921.shtml"
+      ],
+      "resultExcerpt": "公司公告 | 上海证券交易所 (https://www.sse.com.cn/assortment/stock/list/info/announcement/index.shtml?productId=603099)\n【turn332search0】 [wordlim: 200] Crawled: last week; 603099  | 长白山  | 长白山旅游股份有限公司关于上海证券交易所对公司2025年年度报告的信息披露监管问询函回复的公告  | 2026-06-03\n\n--------------------------------------------------------------------------------\n公司公告 | 上海证券交易所 (https://www.sse.com.cn/assortment/stock/list/info/announcement/index.shtml?productId=603402)\n【turn332search1】 [wordlim: 200] Crawled: 2 weeks ago; 603402  | 陕西旅游  | 陕西旅游：关于使用部分闲置募集资金进行现金管理到期赎回的公告  | 2026-10-01 ... 603402  | 陕西旅游  | 陕西旅游：北京市金杜律师事务所关于陕西旅游文化产业股份有限公司2026年第二次临时股东会的法律意见书  | 2026-09-02\n\n--------------------------------------------------------------------------------\n公司概况 | 上海证券交易所 (https://www.sse.com.cn/assortment/stock/list/info/company/index.shtml?COMPANY_CODE=603099&bt=%E5%85%A8%E9%83%A8&productId=603099&static=t)\n【turn332search2】 [wordlim: 200] Crawled: 2 days ago; 长白山旅游股份有限公司关于召开2026年半年度业绩说明会的公告  | 规范运作  | 2026-08-25 ... 长白山旅游股份有限公司关于变更保荐代表人的公告  | 公司重要基本信息变化  | 2026-08-01 ... **行业分类标准：中国上市公司协会发布的《中国上市公司协会上市公司行业统计分类指引》 ... ## 股本结构 数据日期：2026年10月19日\n\n--------------------------------------------------------------------------------\n证券代码：603402 (https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-20/603402_20260420_EJ8P.pdf)\n【turn332search47】 [wordlim: 200] Published: 5 months ago; 公告编号：2026-015 ... 2026 年4 月16 日，陕西旅游文化产业股份有限公司（以下简称“公司”）\n\n--------------------------------------------------------------------------------\n宋城演艺发展股份有限公司2026年半年度报告全文 (https://static.cninfo.com.cn/finalpage/2026-08-22/1225491618.PDF)\n【turn332search48】 [wordlim: 200] Published: 2 months ago; 宋城演艺发展股份有限公司2026年半年度报告全文 ... 宋城演艺发展股份有限公司成立于1994年，（变更前为杭州宋城旅游发展股份有限公司，以下简称“宋城演艺”或“公司”），统一社会信用代码：91330000143102311G；法定代表人：商玲霞；注册地址及总部地址：浙江省杭州市之江路148号。经中国证券监督管理委员会的证监许可[2010]1632号文《关于核准杭州宋城旅游发展股份有限公司首次公开发行股票并在创业板上市的批复》核准，公司A股股票于2010年12月9日在深圳证券交易所挂牌上市，股票代码300144。\n\n--------------------------------------------------------------------------------\n黄山旅游发展股份有限公司2026年半年度报告 (https://static.cninfo.com.cn/finalpage/2026-08-25/1225498166.PDF)\n【turn332search49】 [wordlim: 200] Published: last month; 黄山旅游发展股份有限公司2026年半年度报告 ... 注：根据1996年8月13日和1996年12月23日本公司与黄山市土地管理局签订的合同，本公司租用黄山风景区内的若干国有土地，面积分别为74,320.00平方米和9,919.90平方米，期限四十年，即分别至2036年10月1日止及2037年1月1日止。\n\n--------------------------------------------------------------------------------\n证券代码：300144  证券简称：宋城演艺  公告编号：2026-009 (https://static.cninfo.com.cn/finalpage/2026-04-24/1225164614.PDF)\n【turn332search50】 [wordlim: 200] Published: 6 months ago; 证券代码：300144  证券简称：宋城演艺  公告编号：2026-009 ... 宋城演艺发展股份有限公司（以下简称“公司”）于2026年4月23日召开第九届董事会第八次会议审议通过《关于2025年度利润分配预案的议案》，该事项尚需提交公司2025年度股东会审议。\n\n--------------------------------------------------------------------------------\n证券代码：300144  证券简称：宋城演艺  公告编号：2026-006 (https://static.cninfo.com.cn/finalpage/2026-04-24/1225164615.PDF)\n【turn332search51】 [wordlim: 200] Published: 6 months ago; 证券代码：300144  证券简称：宋城演艺  公告编号：2026-006 ... 宋城演艺发展股份有限公司（以下简称“公司”）第九届董事会第八次会议于2026年4月23日在公司会议室以现场结合通讯的方式召开。\n\n--------------------------------------------------------------------------------\n证券代码：300144  证券简称：宋城演艺  公告编号：2026-024 (https://static.cninfo.com.cn/finalpage/2026-05-18/1225313919.PDF)\n【turn332search52】 [wordlim: 200] Published: 5 months ago; 为答谢广大股东长期以来对宋城演艺发展股份有限公司（以下简称“公司”或“宋城演艺”）的关心和支持，让股东更深入地了解和体验公司旗下各景区产品，增进投资者对公司的理解和价值认同，公司旗下各千古情景区推出“2026年股东专属回馈活动”，现将具体内容公告如下： ... 本次活动限2026年5月13日（即公司2025年度股东会股权登记日）15:00交易结束后，在中国证券登记结算有限责任公司深圳分公司登记在册的持有",
+      "conclusion": "Search results do not establish complete company filing/IR list coverage; no absence claim."
+    },
+    {
+      "batch": 10,
+      "companies": [
+        "002707.SZ",
+        "000888.SZ",
+        "0308.HK",
+        "301073.SZ"
+      ],
+      "queries": [
+        {
+          "q": "\"众信旅游\" 公司公告 2026年10月",
+          "domains": [
+            "cninfo.com.cn",
+            "sse.com.cn",
+            "szse.cn",
+            "bse.cn"
+          ]
+        },
+        {
+          "q": "\"峨眉山A\" 公司公告 2026年10月",
+          "domains": [
+            "cninfo.com.cn",
+            "sse.com.cn",
+            "szse.cn",
+            "bse.cn"
+          ]
+        },
+        {
+          "q": "\"香港中旅\" 公司公告 2026年10月",
+          "domains": [
+            "hkexnews.hk"
+          ]
+        },
+        {
+          "q": "\"君亭酒店\" 公司公告 2026年10月",
+          "domains": [
+            "cninfo.com.cn",
+            "sse.com.cn",
+            "szse.cn",
+            "bse.cn"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "turn327search0",
+        "turn327search1",
+        "turn327search37",
+        "turn327search38",
+        "turn327search39",
+        "turn327search40",
+        "turn327search41",
+        "turn327search42",
+        "turn327search2",
+        "turn327search3",
+        "turn327search4",
+        "turn327search5",
+        "turn327search6",
+        "turn327search7",
+        "turn327search8",
+        "turn327search9",
+        "turn327search10",
+        "turn327search11",
+        "turn327search12",
+        "turn327search13",
+        "turn327search14",
+        "turn327search15",
+        "turn327search16",
+        "turn327search17",
+        "turn327search18",
+        "turn327search19",
+        "turn327search20",
+        "turn327search21",
+        "turn327search22",
+        "turn327search23",
+        "turn327search24",
+        "turn327search25",
+        "turn327search26",
+        "turn327search27",
+        "turn327search28",
+        "turn327search29",
+        "turn327search30"
+      ],
+      "urls": [
+        "https://www3.hkexnews.hk/reports/bmn/ebmn_c.htm",
+        "https://www.hkexnews.hk/listedco/listconews/index/lci.html?lang=zh",
+        "https://static.cninfo.com.cn/finalpage/2026-04-27/1225176949.PDF",
+        "https://static.cninfo.com.cn/finalpage/2026-01-31/1224957678.PDF",
+        "https://static.cninfo.com.cn/finalpage/2026-04-29/1225225551.PDF",
+        "https://static.cninfo.com.cn/finalpage/2026-04-27/1225176937.PDF",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0520/2026052001869_c.pdf",
+        "https://static.cninfo.com.cn/finalpage/2026-08-29/1225525457.PDF",
+        "https://irm.cninfo.com.cn/interview/interview/activityInfo?activityId=1442348957005258752",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020260806351614974469.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020250805527892907072.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020250805527898299637.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020250905347573215587.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020250905347572098528.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020250513504912564404.html",
+        "https://docs.static.szse.cn/www/English/siteMarketData/publication/monthly/W020250905347573546611.html",
+        "https://www1.hkexnews.hk/listedco/listconews/sehk/2005/0427/ltn20050427158_c.htm",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020200706567747655133.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020190508543653737669.html",
+        "https://irm.cninfo.com.cn/interview/interview/activityInfo?activityId=1170923774321029120",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020251013318288864764.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020230808525916660332.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020210513539805735514.html",
+        "https://www.szse.cn/disclosure/notice/general/t20191202_572315.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020221024572000426989.html",
+        "https://www3.hkexnews.hk/sdw/search/mutualmarket_c.aspx?t=hk",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020250805527898581774.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020240513367375224505.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020181205571126320810.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020250805527892647799.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020200706567747594806.html",
+        "https://www3.hkexnews.hk/sdw/search/mutualmarket_c.aspx?nsukey=qT6yQjL0K6ykN3ZzMgjBtJvKmm7hsNymI31b%2FR2Mn%2F9DrY2wzZL2oe3qlYIB3i3atvYK9IBqTtRJiKWjZVqzS5tHZk%2B0VkJwaWJy9KDMSuY7%2Bte8LWNAgQ4FyL7yqNAwZsUE8ytZeCsnmq%2B7wCdXxLIwpOuJkqNiUNDQH8SpgVqGP2%2B34GEXYDDIHkFa0RZ4&t=hk",
+        "https://docs.static.szse.cn/www/English/siteMarketData/publication/monthly/W020241014330937486008.html",
+        "https://docs.static.szse.cn/www/English/siteMarketData/publication/monthly/W020251013318289243993.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020201013520548719599.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020220211393970755675.html",
+        "https://www3.hkexnews.hk/reports/changeauditor/ncms/changeauditor_stkcode_des_c.htm"
+      ],
+      "resultExcerpt": "Hong Kong Exchanges and Clearing Limited (https://www3.hkexnews.hk/reports/bmn/ebmn_c.htm)\n【turn327search0】 [wordlim: 200] Published: 2 days ago; Crawled: 2 days ago; 欲搜尋上市發行人發出的公告及公司通訊，請使用以下網址: ... 21/10/2026  |  | 中國海外宏洋集團  |    81  | 業績  | 2026年第三季 ... 26/10/2026  |  | 香港中旅  |   308  | 特別股息  |\n\n--------------------------------------------------------------------------------\n:: HKEX :: HKEXnews :: (https://www.hkexnews.hk/listedco/listconews/index/lci.html?lang=zh)\n【turn327search1】 [wordlim: 200] Crawled: 1.2 years ago; 發放時間: 14/10/2026 06:11  | 股份代號:02636 ...  | 文件:公告及通告 - [資本重組]股份合併於二零二六年十月十四日生效 (123KB) ...  | 文件:公告及通告 - [其他-業務發展最新情況]公告 2026年9月未經審核銷售數據 (201KB) ...  | 文件:公告及通告 - [股東特別大會的結果 / 股息或分派 / 暫停辦理過戶登記手續或更改暫停辦理過戶日期]2026年第一次臨時股東會投票表決結果；及派付中期股息 (170KB) ...  | 文件:公告及通告 - [海外監管公告-企業管治相關事宜]海外監管公告 - 國泰海通證券股份有限公司關於公司首席風險官變動的公告 (191KB) ...  | 股份簡稱:香港中旅\n\n--------------------------------------------------------------------------------\n股票代码：002707　　股票简称：众信旅游　　公告编号：2026-009 (https://static.cninfo.com.cn/finalpage/2026-04-27/1225176949.PDF)\n【turn327search37】 [wordlim: 200] Published: 6 months ago; 股票代码：002707　　股票简称：众信旅游　　公告编号：2026-009 ... 公司于2026年4月14日召开第六届董事会审计委员会第五次会议审议通过了《关于续聘公司2026年度审计机构的议案》，董事会审计委员会查阅了中证天通会计师事务所（特殊普通合伙）资格证照、诚信状况等相关信息，认可中证天通会计师事务所（特殊普通合伙）专业胜任能力、投资者保护能力和独立性。\n\n--------------------------------------------------------------------------------\n股票代码：002707　　股票简称：众信旅游　　公告编号：2026-004 (https://static.cninfo.com.cn/finalpage/2026-01-31/1224957678.PDF)\n【turn327search38】 [wordlim: 200] Published: 8 months ago; 股票代码：002707　　股票简称：众信旅游　　公告编号：2026-004 ... 基于对行业和公司未来发展的信心，公司将继续坚持深耕主营业务，以长期价值创造为导向，创新驱动企业可持续健康发展。 ... 2026 年 1 月 31 日\n\n--------------------------------------------------------------------------------\n证券代码：301073  证券简称：君亭酒店  公告编号：2026-004 (https://static.cninfo.com.cn/finalpage/2026-04-29/1225225551.PDF)\n【turn327search39】 [wordlim: 200] Published: 5 months ago; 证券代码：301073  证券简称：君亭酒店  公告编号：2026-004 ... 君亭酒店集团股份有限公司（以下简称“公司”）第四届董事会第九次会议于2026年4月27日（星期一）在公司会议室以现场的方式召开。\n\n--------------------------------------------------------------------------------\n股票代码：002707　　股票简称：众信旅游　　公告编号：2026-011 (https://static.cninfo.com.cn/finalpage/2026-04-27/1225176937.PDF)\n【turn327search40】 [wordlim: 200] Published: 6 months ago; 股票代码：002707　　股票简称：众信旅游　　公告编号：2026-011 ... 截至2025年12月31日，公司累计审批的与子公司的互保额度为人民币20亿元，期末对子公司的担保余额为人民币2.536亿元，占2025年经审计归属于上市公司股东净资产的28.41%。 ... 10\n\n--------------------------------------------------------------------------------\n香港交易及結算所有限公司及香港聯合交易所有限公司對本公告之內容概不負責，對其準確性或完 (https://www.hkexnews.hk/listedco/listconews/sehk/2026/0520/2026052001869_c.pdf)\n【turn327search41】 [wordlim: 200] Published: 5 months ago; 於本公告中，除文義另有所指外，以下詞彙具有以下涵義： ... 香港中旅國際投資有限公司，一間於香港註冊成立的有限公司， ... 「港澳文旅」或「分拆公司」指\n\n--------------------------------------------------------------------------------\n众信旅游集团股份有限公司2026年半年度报告全文 (https://static.cninfo.com.cn/finalpage/2026-08-29/1225525457.PDF)\n【turn327search42】 [wordlim: 200] Published: last month; 2026年1月，公司加速线下服务网络布局，于北京地区集中开启9家线下零售门店，精准辐射核心商务区、热门商圈及大型社区，打造“家门口的专业旅游服务站”。 ... 2026年3月，奇迹旅行打造的摄影旅行品牌“众信摄影”正式发布，打破传统旅游与摄影的边界，提供更加专业、沉浸的深度融合产品。\n\n--------------------------------------------------------------------------------\n互动易云访谈 (https://irm.cninfo.com.cn/interview/interview/activityInfo?activityId=1442348957005258752)\n【turn327search2】 [wordlim: 200] Published: 5 months ago; Crawled: 3 days ago; Image 峨眉山A2025年度业绩说明会现在开始，感谢各位投资者的参加，请各位投资者踊跃提问。 ... 2026年，公司将紧紧围绕文旅产业高质量发展与新质生产力建设目标，立足峨眉山世界文化与自然双重遗产核心资源，坚持文旅为本、科技赋能、创新驱动、提质增效",
+      "conclusion": "Search results do not establish complete company filing/IR list coverage; no absence claim."
+    },
+    {
+      "batch": 11,
+      "companies": [
+        "603199.SH",
+        "603136.SH",
+        "2097.HK",
+        "9987.HK"
+      ],
+      "queries": [
+        {
+          "q": "\"九华旅游\" 公司公告 2026年10月",
+          "domains": [
+            "cninfo.com.cn",
+            "sse.com.cn",
+            "szse.cn",
+            "bse.cn"
+          ]
+        },
+        {
+          "q": "\"天目湖\" 公司公告 2026年10月",
+          "domains": [
+            "cninfo.com.cn",
+            "sse.com.cn",
+            "szse.cn",
+            "bse.cn"
+          ]
+        },
+        {
+          "q": "\"蜜雪集团\" 公司公告 2026年10月",
+          "domains": [
+            "hkexnews.hk"
+          ]
+        },
+        {
+          "q": "\"百胜中国\" 公司公告 2026年10月",
+          "domains": [
+            "hkexnews.hk"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "turn321search0",
+        "turn321search1",
+        "turn321search2",
+        "turn321search24",
+        "turn321search3",
+        "turn321search25",
+        "turn321search26",
+        "turn321search27",
+        "turn321search28",
+        "turn321search4",
+        "turn321search5",
+        "turn321search6",
+        "turn321search7",
+        "turn321search8",
+        "turn321search9",
+        "turn321search10",
+        "turn321search11",
+        "turn321search12",
+        "turn321search13",
+        "turn321search14",
+        "turn321search15",
+        "turn321search16",
+        "turn321search17",
+        "turn321search18",
+        "turn321search19",
+        "turn321search20",
+        "turn321search21",
+        "turn321search22",
+        "turn321search23"
+      ],
+      "urls": [
+        "https://www.sse.com.cn/assortment/stock/list/info/announcement/index.shtml?productId=603199",
+        "https://www.sse.com.cn/disclosure/listedinfo/announcement/?productId=688012",
+        "https://www.sse.com.cn/home/search/index.shtml?webswd=603199",
+        "https://dataclouds.cninfo.com.cn/shgonggao/hsomarket/2026/20260428/fae8338372f44f8d971b56e6e693ddd8.PDF",
+        "https://www.sse.com.cn/disclosure/diclosure/public/inquirydata/index.shtml?branchName=%E5%B9%B3%E5%AE%89%E8%AF%81%E5%88%B8%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%E6%B5%8E%E5%8D%97%E8%A7%A3%E6%94%BE%E8%B7%AF%E8%AF%81%E5%88%B8%E8%90%A5%E4%B8%9A%E9%83%A8&bsType=S",
+        "https://static.cninfo.com.cn/finalpage/2026-08-25/1225494400.PDF",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-20/603136_20260420_GHI6.pdf",
+        "https://dataclouds.cninfo.com.cn/shgonggao/hsomarket/2026/20260104/60b6ef51dd8540488a888c3cdd16aeaf.PDF",
+        "https://static.cninfo.com.cn/finalpage/2026-08-25/1225494424.PDF",
+        "https://www.sse.com.cn/disclosure/listedinfo/announcement/index.shtml?productId=600519",
+        "https://www.sse.com.cn/cpc/cpctheme/4th20thcpc/4th20thcpcgcxx/c/c_20260424_10816452.shtml",
+        "https://pujiang.sse.com.cn/update/participants/secretaryupdate/c/c_20260603_10820638.shtml",
+        "https://www.sse.com.cn/assortment/stock/areatrade/area/detail.shtml?AREANAME=22",
+        "https://www.sse.com.cn/disclosure/listedinfo/announcement/index.shtml?productId=600745",
+        "https://pujiang.sse.com.cn/update/participants/independentupdate/c/c_20260306_10811059.shtml",
+        "https://big5.sse.com.cn/site/cht/www.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20250831_10790221.shtml",
+        "https://pujiang.sse.com.cn/update/participants/others/c/c_20250515_10779033.shtml",
+        "https://pujiang.sse.com.cn/update/participants/secretaryupdate/c/5743106.shtml",
+        "https://pujiang.sse.com.cn/update/participants/independentupdate/c/c_20250808_10787956.shtml",
+        "https://pujiang.sse.com.cn/update/participants/secretaryupdate/c/5732219.shtml",
+        "https://pujiang.sse.com.cn/update/participants/independentupdate/c/5734135.shtml",
+        "https://pujiang.sse.com.cn/update/participants/secretaryupdate/c/5739956.shtml",
+        "https://pujiang.sse.com.cn/update/participants/independentupdate/c/5732401.shtml",
+        "https://pujiang.sse.com.cn/update/participants/independentupdate/c/5732399.shtml",
+        "https://www.sse.com.cn/disclosure/announcement/general/c/c_20170927_4394926.shtml",
+        "https://static.cninfo.com.cn/finalpage/1997-05-08/139300.html",
+        "https://static.cninfo.com.cn/finalpage/1997-01-21/55592.html",
+        "https://static.cninfo.com.cn/finalpage/1996-01-10/60286.html",
+        "https://www.szse.cn/disclosure/notice/general/t20191202_572315.html"
+      ],
+      "resultExcerpt": "公司公告 | 上海证券交易所 (https://www.sse.com.cn/assortment/stock/list/info/announcement/index.shtml?productId=603199)\n【turn321search0】 [wordlim: 200] Crawled: last week; 603199  | 九华旅游  | 九华旅游关于参加2026年安徽上市公司投资者网上集体接待日活动的公告  | 2026-09-15 ... 603199  | 九华旅游  | 九华旅游投资管理制度（2026年6月修订）  | 2026-06-18\n\n# 公司公告\n\n  * 股票列表\n  * 股票\n  * 首次发行待上市股票\n  * 暂停/终止上市公司\n\nImage\n\n扫一扫下载\n\"上交所移动App\"\n\n## 安徽九华山旅游发展股份有限公司603199\n\n公司概况\n\n股本结构\n\n筹资情况\n\n利润分配\n\n成交概况\n\n行情图表\n\n公司公告\n\n公告摘要\n\n公司章程\n\n治理细则\n\n股东大会资料\n\n高管人员\n\n## 上市公司公告全文\n\n[Input] [Input: 证券代码或简称]\n\n[Input: 关键字]\n\n[Select]\n\n[Input: 开始日期] Image [Input: 结束日期]\n\n[Button: 查询]\n\n证券代码  | 证券简称  | 公告标题  | 公告时间\n--- | --- | --- | ---\n603199  | 九华旅游  | 九华旅游经理层成员经营业绩考核办法（2026年9月修订）  | 2026-09-30\n603199  | 九华旅游  | 九华旅游关联交易决策制度（2026年9月修订）  | 2026-09-30\n603199  | 九华旅游  | 九华旅游2026年第二次临时股东会会议资料  | 2026-09-30\n603199  | 九华旅游  | 九华旅游累积投票制实施细则（2026年9月修订）  | 2026-09-30\n603199  | 九华旅游  | 九华旅游关于聘任公司副总经理的公告  | 2026-09-30\n603199  | 九华旅游  | 九华旅游关于召开2026年第二次临时股东会的通知  | 2026-09-30\n603199  | 九华旅游  | 九华旅游关于投资建设九华山百岁宫缆车升级改造项目的公告  | 2026-09-30\n603199  | 九华旅游  | 九华旅游第九届董事会第十七次会议决议公告  | 2026-09-30\n603199  | 九华旅游  | 九华旅游工资总额管理办法（2026年9月修订）  | 2026-09-30\n603199  | 九华旅游  | 九华旅游关于公司董事、高级管理人员2025年度薪酬确认情况及2026年度薪酬方案的公告  | 2026-09-30\n603199  | 九华旅游  | 九华旅游关于参加2026年安徽上市公司投资者网上集体接待日活动的公告  | 2026-09-15\n603199  | 九华旅游  | 九华旅游关于召开2026年半年度业绩说明会的公告  | 2026-09-15\n603199  | 九华旅游  | 九华旅游第九届董事会第十六次会议决议公告  | 2026-08-20\n603199  | 九华旅游  | 九华旅游关于解聘公司副总经理的公告  | 2026-08-20\n603199  | 九华旅游  | 九华旅游2026年半年度报告摘要  | 2026-08-20\n603199  | 九华旅游  | 九华旅游2026年半年度报告  | 2026-08-20\n603199  | 九华旅游  | 九华旅游第九届董事会第十五次会议决议公告  | 2026-07-01\n603199  | 九华旅游  | 九华旅游董事会授权经理层决策管理办法（2026年6月修订）  | 2026-06-18\n603199  | 九华旅游  | 九华旅游投资管理制度（2026年6月修订）  | 2026-06-18\n603199  | 九华旅游  | 九华旅游董事薪酬管理制度  | 2026-06-18\n603199  | 九华旅游  | 九华旅游关于调整2026年度日常关联交易预计额度的公告  | 2026-06-18\n603199  | 九华旅游  | 九华旅游第九届董事会第十四次会议决议公告  | 2026-06-18\n603199  | 九华旅游  | 九华旅游关于副总经理被立案审查调查并留置的公告  | 2026-05-23\n603199  | 九华旅游  | 九华旅游关于参与竞拍石台白鹭湾旅游发展有限公司100%股权并增资的进展暨完成工商变更登记的公告  | 2026-05-20\n603199  | 九华旅游  | 九华旅游2025年年度权益分派实施公告  | 2026-05-14\n--------------------------------------------------------------------------------\n最新公告 | 上海证券交易所 (https://www.sse.com.cn/disclosure/listedinfo/announcement/?productId=688012)\n【turn321search1】 [wordlim: 200] Published: 6 days ago; Crawled: 6 days ago; 603199  | 九华旅游  | 九华旅游2026年第二次临时股东会决议公告  |  | 2026-10-16603199  | 九华旅游  | 上海天衍禾律师事务所关于安徽九华山旅游发展股份有限公司2026年第二次临时股东会之法律意见书  |  | 2026-10-16 ... 600115  | 中国东航  | 中国东方航空股份有限公司2026年9月运营数据公告  |  | 2026-10-16 ... 600127  | 金健米业  | 金健米业关于全资子公司金健植物油（长沙）有限公司增资扩股引进外部投资者暨预挂牌的提示性公告  |  | 2026-10-16\n600004  | 白云机场  | 广州白云国际机场股份有限公司2026年9月生产经营数据快报  |  | 2026-10-16\n603199  | 九华旅游  | 九华旅游2026年第二次临时股东会决议公告  |  | 2026-10-16\n603199  | 九华旅游  | 上海天衍禾律师事务所关于安徽九华山旅游发展股份有限公司2026年第二次临时股东会之法律意见书  |  | 2026-10-16\n600173  | 卧龙新能  | 卧龙新能关于为间接控股股东提供担保的进展公告  |  | 2026-10-16\n688267  | 中触媒  | 中触媒新材料股份有限公司关于控股股东增持股份进展的公告  |  | 2026-10-16\n600221  | 海航控股  | 海航控股：2026年9月主要运营数据公告  |  | 2026-10-16\n\n--------------------------------------------------------------------------------\n上证搜索 | 上海证券交易所 (https://www.sse.com.cn/home/search/index.shtml?webswd=603199)\n【turn321search2】 [wordlim: 200] Crawled: last week; 证券代码：603199 证券简称：九华旅游 公告编号：临 2026-026 安徽九华山旅游发展股份有限公司 关于解聘公司副总经理的公告一、高级管理人员离任情况 安徽九华山旅游发展股份有限公司（以下简称截至本公告日，何龙未持有公司股份，不存在未履行完毕的公开承诺安徽九华山旅游发展股份有限公司董事会 2026 年 8 月 20 ... 证券代码：603199 证券简称：九华旅游 公告编号：临 2026-033 安徽九华山旅游发展股份有限公司 关于召开2026年第二次临时股东会的通知2026 年 10 月 15 日 14 点 00 分 召开地点：安徽省池州市青阳县五溪新区安徽九华山旅游发展股份有限公司安徽九华山旅游发展股份有限公司董事会 2026",
+      "conclusion": "Search results do not establish complete company filing/IR list coverage; no absence claim."
+    },
+    {
+      "batch": 12,
+      "companies": [
+        "6862.HK",
+        "1364.HK",
+        "LKNCY.OO",
+        "0999.HK"
+      ],
+      "queries": [
+        {
+          "q": "\"海底捞\" 公司公告 2026年10月",
+          "domains": [
+            "hkexnews.hk"
+          ]
+        },
+        {
+          "q": "\"古茗\" 公司公告 2026年10月",
+          "domains": [
+            "hkexnews.hk"
+          ]
+        },
+        {
+          "q": "\"瑞幸咖啡\" 公司公告 2026年10月",
+          "domains": [
+            "sec.gov"
+          ]
+        },
+        {
+          "q": "\"小菜园\" 公司公告 2026年10月",
+          "domains": [
+            "hkexnews.hk"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "turn331search18",
+        "turn331search19",
+        "turn331search0",
+        "turn331search1",
+        "turn331search2",
+        "turn331search3",
+        "turn331search4",
+        "turn331search5",
+        "turn331search6",
+        "turn331search20",
+        "turn331search7",
+        "turn331search8",
+        "turn331search9",
+        "turn331search10",
+        "turn331search11",
+        "turn331search12",
+        "turn331search21",
+        "turn331search13",
+        "turn331search14",
+        "turn331search15",
+        "turn331search16",
+        "turn331search17"
+      ],
+      "urls": [
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2025/1204/2025120402189_c.pdf",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0424/2026042401135_c.pdf",
+        "https://www.sec.gov/Archives/edgar/data/1767582/000104746919002450/a2238391zex-10_4.htm",
+        "https://www.sec.gov/Archives/edgar/data/1767582/000104746919002450/a2238391zex-10_5.htm",
+        "https://www.sec.gov/Archives/edgar/data/1767582/000104746919002450/a2238391zex-10_8.htm",
+        "https://www.sec.gov/Archives/edgar/data/1767582/000104746919002450/a2238391zex-10_6.htm",
+        "https://www.sec.gov/Archives/edgar/data/1767582/000104746919002450/a2238391zex-10_7.htm",
+        "https://www1.hkexnews.hk/search/predefineddoc.xhtml?lang=zh&predefineddocuments=9",
+        "https://www.sec.gov/Archives/edgar/data/1767582/000110465921135388/tm2132202d1_ex99-4.htm",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2024/0425/2024042501639_c.pdf",
+        "https://www.sec.gov/Archives/edgar/data/1673358/000095017023033222/yumc-ex10_1.htm",
+        "https://www.sec.gov/Archives/edgar/data/1673358/000095017024090869/yumc-ex10_1.htm",
+        "https://www.sec.gov/Archives/edgar/data/1673358/000095017025035932/yumc-ex10_1.htm",
+        "https://www.sec.gov/Archives/edgar/data/1673358/000156459021055040/yumc-ex991_6.htm",
+        "https://www.sec.gov/Archives/edgar/data/1673358/000095017023070573/yumc-ex10_1.htm",
+        "https://www1.hkexnews.hk/listedco/listconews/sehk/2018/0926/ltn20180926075_c.htm",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0204/2025020400012_c.pdf",
+        "https://www.sec.gov/Archives/edgar/data/1767582/000110465921087180/a20-36633_1ex4d20.htm",
+        "https://www3.hkexnews.hk/reports/doe/eent_c.htm",
+        "https://www1.hkexnews.hk/app/appyearlyindex.html?board=mainBoard&lang=zh&year=2024",
+        "https://www3.hkexnews.hk/sdw/search/mutualmarket_c.aspx?t=hk",
+        "https://www3.hkexnews.hk/sdw/search/mutualmarket_c.aspx?nsukey=qT6yQjL0K6ykN3ZzMgjBtJvKmm7hsNymI31b%2FR2Mn%2F9DrY2wzZL2oe3qlYIB3i3atvYK9IBqTtRJiKWjZVqzS5tHZk%2B0VkJwaWJy9KDMSuY7%2Bte8LWNAgQ4FyL7yqNAwZsUE8ytZeCsnmq%2B7wCdXxLIwpOuJkqNiUNDQH8SpgVqGP2%2B34GEXYDDIHkFa0RZ4&t=hk"
+      ],
+      "resultExcerpt": "香港交易及結算所有限公司及香港聯合交易所有限公司對本公告的內容概不 (https://www.hkexnews.hk/listedco/listconews/sehk/2025/1204/2025120402189_c.pdf)\n【turn331search18】 [wordlim: 200] Published: 10 months ago; 香港交易及結算所有限公司及香港聯合交易所有限公司對本公告的內容概不 ... 古茗控股有限公司（「本公司」）於2025年12月4日舉行之股東特別大會（「股東特別\n香港交易及結算所有限公司及香港聯合交易所有限公司對本公告的內容概不\n負責，對其準確性或完整性亦不發表任何聲明，並明確表示，概不對因本公告\n全部或任何部分內容而產生或因倚賴該等內容而引致的任何損失承擔任何責\n任。\nGuming Holdings Limited\n古茗控股有限公司\n（於開曼群島註冊成立的有限公司）\n（股份代號：01364）\n於2025年12 月4 日舉行之\n股東特別大會的投票表決結果\n古茗控股有限公司（「本公司」）於2025年12月4日舉行之股東特別大會（「股東特別\n大會」）上，列載於2025年11 月14 日的股東特別大會通告內的決議案獲本公司股\n東（「股東」）以投票方式表決通過。\n股東特別大會之投票表決結果如下：\n普通決議案 None | | 票數 (%) 贊成 | 反對 --- | --- | --- | --- 普通決議案 1. | 「動議： (a) 批准向本公司股東宣派及派付特別股息每 股普通股（本公司股本中每股面值0.00001 美元）0.93港元（「特別股息」）；及 (b) 授權本公司任何董事（「董事」）在其全權 酌情認為就落實派付特別股息或與此有 關而屬必要或合宜的情況下，採取有關 行動、進行有關事宜以及簽立有關進一 步文件。」 | 票數 (%) 1,896,395,990 (100%) | 0 (0%)– 1 –\n--------------------------------------------------------------------------------\n海底捞国际控股有限公司 (https://www.hkexnews.hk/listedco/listconews/sehk/2026/0424/2026042401135_c.pdf)\n【turn331search19】 [wordlim: 200] Published: 5 months ago; 公司的組織章程細則並無變動。 ... 茲提述本公司日期為2026年3月24日的公告，董事會建議對現行組織\nCorporate Governance Report\n企業管治報告\n作為定期檢討的一部分，董事會已\n檢討截至2025年12月31日止年度\n的該等股東溝通渠道，並認為該溝\n通渠道有效並已充分實施。\nAs part of its regular review, the Board has reviewed these \ncommunication channels for the year ended December 31, \n2025 and is of the view that this is effective and adequately \nimplemented.\nK. \nAMENDMENTS OF THE ARTICLES OF ASSOCIATION\nK. \n修訂組織章程細則\n截至2025年12月31日止年度，本\n公司的組織章程細則並無變動。最\n新版本的組織章程細則可於聯交所\n及本公司網站查閱。\nFor the year ended December 31, 2025, no change had been \nmade to the Articles of Association of the Company. The latest \nversion of the Articles of Association is available on the website of \nthe Stock Exchange and the Company. \n茲提述本公司日期為2026年3月24\n日的公告，董事會建議對現行組織\n章程細則作出若干修訂，目的包\n括：(i)使組織章程細則符合有關舉\n\n--------------------------------------------------------------------------------\n (https://www.sec.gov/Archives/edgar/data/1767582/000104746919002450/a2238391zex-10_4.htm)\n【turn331search0】 [wordlim: 200] Published: 8.3 years ago; Crawled: last month; Exhibit 10.4 ... Luckin Coffee (China) Limited (瑞幸咖啡（中国）有限公司), a company incorporated under the laws of Hong Kong, with its company number of [                  ] (the “HK Company”); ... 6.\n\n \n\n5.              China Luckin Coffee Co., Ltd. (瑞幸咖啡（中国）有限公司), a limited liability company incorporated under the laws of the PRC with its registered number of [                  ] (the “Xiamen WFOE”);\n\n \n\n6.              Tianjin Luckin Coffee Co., Ltd. (瑞幸咖啡（天津）有限公司), a limited liability company incorporated under the laws of the PRC with its registered number of [                  ] (the “Tianjin WFOE”);\n\n \n\n7.              Pingtan Luckin Coffee E-Commerce Co., Ltd. (瑞幸咖啡电子商务（平潭）有限公司), a limited liability company incorporated under the laws of the PRC with its registered number of [                  ] (the “Pingtan WFOE”);\n\n \n\n8.              Beijing Luckin Coffee Technology Co., Ltd. (北京瑞吉咖啡技术有限公司), a limited liability company incorporated under the laws of the PRC with its registered number of [                  ] (the “VIE Entity”, and together with the Company, the BVI Company, the HK Company, the Beijing WFOE, the Xiamen WFOE, the Tianjin WFOE and the Pingtan WFOE, the “Group Company Parties”);\n\n--------------------------------------------------------------------------------\n (https://www.sec.gov/Archives/edgar/data/1767582/000104746919002450/a2238391zex-10_5.htm)\n【turn331search1】 [wordlim: 200] Pub",
+      "conclusion": "Search results do not establish complete company filing/IR list coverage; no absence claim."
+    },
+    {
+      "batch": 13,
+      "companies": [
+        "2555.HK",
+        "2589.HK",
+        "1405.HK",
+        "600729.SH"
+      ],
+      "queries": [
+        {
+          "q": "\"茶百道\" 公司公告 2026年10月",
+          "domains": [
+            "hkexnews.hk"
+          ]
+        },
+        {
+          "q": "\"沪上阿姨\" 公司公告 2026年10月",
+          "domains": [
+            "hkexnews.hk"
+          ]
+        },
+        {
+          "q": "\"达势股份\" 公司公告 2026年10月",
+          "domains": [
+            "hkexnews.hk"
+          ]
+        },
+        {
+          "q": "\"重庆百货\" 公司公告 2026年10月",
+          "domains": [
+            "cninfo.com.cn",
+            "sse.com.cn",
+            "szse.cn",
+            "bse.cn"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "turn326search0",
+        "turn326search1",
+        "turn326search2",
+        "turn326search3",
+        "turn326search4",
+        "turn326search19",
+        "turn326search20",
+        "turn326search21",
+        "turn326search5",
+        "turn326search22",
+        "turn326search23",
+        "turn326search6",
+        "turn326search7",
+        "turn326search24",
+        "turn326search8",
+        "turn326search9",
+        "turn326search10",
+        "turn326search11",
+        "turn326search12",
+        "turn326search13",
+        "turn326search14",
+        "turn326search15",
+        "turn326search16",
+        "turn326search17",
+        "turn326search18"
+      ],
+      "urls": [
+        "https://www1.hkexnews.hk/search/predefineddoc.xhtml?lang=zh&predefineddocuments=9",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2026/1013/2026101300054_c.htm",
+        "https://www3.hkexnews.hk/reports/changecomsec/ncms/changecomsec_stkcode_des_c.htm",
+        "https://www3.hkexnews.hk/reports/doe/eent_c.htm",
+        "https://www.sse.com.cn/disclosure/listedinfo/summaries/indexDetail.shtml?SEQ=334554326",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0413/2026041300644.pdf",
+        "https://static.cninfo.com.cn/finalpage/2026-02-04/1224964982.PDF",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0827/2025082701369.pdf",
+        "https://www.sse.com.cn/disclosure/diclosure/tenderoffer/",
+        "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0521/2026052101607_c.pdf",
+        "https://static.cninfo.com.cn/finalpage/2025-10-01/1224696340.PDF",
+        "https://www.sse.com.cn/assortment/stock/list/info/turnover/index.shtml?COMPANY_CODE=600729",
+        "https://www.sse.com.cn/lawandrules/sselawsrules2025/repeal/rules/c/c_20260417_10825146.shtml",
+        "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0428/2025042800056_c.pdf",
+        "https://www.sse.com.cn/lawandrules/sselawsrules2025/repeal/rules/c/c_20260109_10815555.shtml",
+        "https://english.sse.com.cn/markets/dataservice/xbrl/companyinfo/?stock_id=600729",
+        "https://www.szse.cn/disclosure/notice/general/t20070608_499840.html",
+        "https://www.sse.com.cn/listing/renewal/ma/index_listing_detail.shtml?auditId=3ebd6c798abd42a6b80ea47e937548db",
+        "https://www.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20150912_3988631.shtml",
+        "https://www3.hkexnews.hk/sdw/search/mutualmarket_c.aspx?nsukey=qT6yQjL0K6ykN3ZzMgjBtJvKmm7hsNymI31b%2FR2Mn%2F9DrY2wzZL2oe3qlYIB3i3atvYK9IBqTtRJiKWjZVqzS5tHZk%2B0VkJwaWJy9KDMSuY7%2Bte8LWNAgQ4FyL7yqNAwZsUE8ytZeCsnmq%2B7wCdXxLIwpOuJkqNiUNDQH8SpgVqGP2%2B34GEXYDDIHkFa0RZ4&t=hk",
+        "https://www.sse.com.cn/market/sseindex/diclosure/c/c_20150911_3984909.shtml",
+        "https://www1.hkexnews.hk/app/appyearlyindex.html?board=mainBoard&lang=zh&year=2024",
+        "https://static.cninfo.com.cn/finalpage/2001-08-08/515894.html",
+        "https://static.cninfo.com.cn/finalpage/2010-03-20/cninfo_jjzq_jjgg_kfsjjgg57714877.html",
+        "https://www3.hkexnews.hk/sdw/search/mutualmarket_c.aspx?t=hk"
+      ],
+      "resultExcerpt": "預先界定的文件 (https://www1.hkexnews.hk/search/predefineddoc.xhtml?lang=zh&predefineddocuments=9)\n【turn326search0】 [wordlim: 200] Crawled: today; 發放時間: 21/10/2026 21:22  | 股份代號: 01220  | 股份簡稱: 志道國際  | 文件: 公告及通告 - [內幕消息 / 停牌] ... 更多公告及通告 - [更換董事或重要行政職能或職責的變更 / 更換審核委員會成員 / 更換薪酬委員會成員 / 更換提名委員會成員 / 更換公司秘書 / 停牌]] ... 發放時間: 14/10/2026 22:35  | 股份代號: 02555  | 股份簡稱: 茶百道  | 文件: 公告及通告 - [停牌]\n25842\n27730\n28307\n28313\n28337\n28839\n50048\n55807\n68039\n68229\n68730\n69699\n69799\n69989  | 股份簡稱: 藥明法巴六甲購A\n華虹法巴六十購A\n百度法興六十購A\n港交法興六十沽A\n中銀法興六十購A\n中鋁法巴六甲購A\n銀河法巴六甲購A\n恒指法巴六十牛T\n恒指法巴六十牛E\n恒指法巴六甲牛D\n阿里法巴六甲牛K\n阿里法巴六甲牛M\n恒指法巴六甲牛B\n恒指法巴六甲牛V\n恒指法巴六十牛J  | 文件: 債券及結構性產品 - [停牌 － 牛熊證 / 停牌 － 衍生權證]\n交易所通告 - 停牌 (2KB, HTM)\n發放時間: 15/10/2026 06:12  | 股份代號: 01376  | 股份簡稱: RAFFLESINTERIOR  | 文件: 公告及通告 - [其他-企業管治相關事宜 / 停牌]\n(1)陳明輝先生及TAN JUNDA ANTHONY先生就NGAI CHIN CONSTRUCTION PTE LTD.接管事宜之行為(2)發現NGAI CHIN CONSTRUCTION PTE LTD.章程中賦予盧立洲先生及盧立發先生特別否決權的既定條文及(3)繼續暫停買賣 (345KB)\n發放時間: 14/10/2026 22:35  | 股份代號: 02555  | 股份簡稱: 茶百道  | 文件: 公告及通告 - [停牌]\n暫停買賣 (103KB)\n發放時間: 14/10/2026 20:19  | 股份代號: 06883  | 股份簡稱: 穎通控股  | 文件: 公告及通告 - [更換董事或重要行政職能或職責的變更 / 更換審核委員會成員 / 更換薪酬委員會成員 / 更換提名委員會成... 更多公告及通告 - [更換董事或重要行政職能或職責的變更 / 更換審核委員會成員 / 更換薪酬委員會成員 / 更換提名委員會成員 / 停牌]]\n\n--------------------------------------------------------------------------------\nListed Company Information (https://www.hkexnews.hk/listedco/listconews/sehk/2026/1013/2026101300054_c.htm)\n【turn326search1】 [wordlim: 200] Published: last week; Crawled: last week; 上市公司訊息 ... 依據證券及期貨(在證券市場上市) 規則之條例第8(1)條，香港聯合交易所有限公司應證券及期貨事務監察委員會之指令，於2026年10月13日上午九時正起，停止四川百茶百道實業股份有限公司 (證券代號：2555) 股份之買賣。\n\n上市公司訊息\n\n交易所通告 - 停牌\n依據證券及期貨(在證券市場上市) 規則之條例第8(1)條，香港聯合交易所有限公司應證券及期貨事務監察委員會之指令，於2026年10月13日上午九時正起，停止四川百茶百道實業股份有限公司 (證券代號：2555) 股份之買賣。\n--------------------------------------------------------------------------------\n有關上市公司之公司秘書變動之公告 (https://www3.hkexnews.hk/reports/changecomsec/ncms/changecomsec_stkcode_des_c.htm)\n【turn326search2】 [wordlim: 200] Crawled: yesterday; 以下列出由2007年6月25日起發布有關上市公司之公司秘書變動之公告，並會每日作出更新。 ... 08525  | 百應控股  | 2021 年 11 月 10 日  | 請按此處 ... 02555  | 茶百道  | 2026 年 03 月 27 日  | 請按此處\n02565  | 派格生物醫藥－Ｂ  | 2026 年 04 月 01 日  | 請按此處\n02565  | 派格生物醫藥－Ｂ  | 2025 年 08 月 26 日  | 請按此處\n02562  | 獅騰控股  | 2025 年 09 月 29 日  | 請按此處\n02560  | 海螺材料科技  | 2026 年 05 月 08 日  | 請按此處\n02560  | 海螺材料科技  | 2025 年 07 月 02 日  | 請按此處\n02559  | 嘀嗒出行－ＰＦ  | 2026 年 09 月 29 日  | 請按此處\n02559  | 嘀嗒出行－ＰＦ  | 2026 年 08 月 28 日  | 請按此處\n02558  | 晉商銀行  | 2026 年 03 月 27 日  | 請按此處\n02558  | 晉商銀行  | 2025 年 07 月 04 日  | 請按此處\n02558  | 晉商銀行  | 2023 年 08 月 29 日  | 請按此處\n02558  | 晉商銀行  | 2021 年 03 月 26 日  | 請按此處\n02558  | 晉商銀行  | 2020 年 09 月 14 日  | 請按此處\n02555  | 茶百道  | 2026 年 03 月 27 日  | 請按此處\n02555  | 茶百道  | 2025 年 09 月 23 日  | 請按此處\n02552  | 華領醫藥－Ｂ  | 2026 年 03 月 26 日  | 請按此處\n\n--------------------------------------------------------------------------------\nHong Kong Exchanges and Clearing Limited (https://www3.hkexnews.hk/reports/doe/eent_c.htm)\n【turn326search3】 [wordlim: 200] Published: 2 days ago; Crawled: 2 days ago;  |  | 將會公布 ...  | 06/11  | 10/11/2026 - 13/11/2026   | 茶百道\n   | 輝煌明天\n(1351)  |  | 供股：每1股合併股份供3股，\n每股供0.600港元\n | 03/11  | 05/11/2026 - 11/11/2026\n   | 中創新航\n(3931)  |  | 中期（半年期）股息\n每10股人民幣0.6元\n(年度：31/12/2026)\n |  | 將會公布\n   | 建設銀行\n(939)  |  | 中期（半年期）股息\n每10股人民幣2.010元\n(可選擇以人民幣或港幣收取股息)\n(年度：31/12/2026)\n |  | 將會公布\n   | 中國光大銀行\n(6818)  |  | 中期（半年期）股息\n每10股人民幣0.81元\n(可選擇以人民幣或港幣收取股息)\n(年度：31/12/2026)\n |  | 將會公布\n   | 中國銀河\n(6881)  |  | 中期（半年期）股息\n每10股人民幣1.50元\n(年度：31/12/2026)\n | 06/11  | 10/11/2026 - 13/11/2026\n   | 茶百道\n(2555)  |  | 中",
+      "conclusion": "Search results do not establish complete company filing/IR list coverage; no absence claim."
+    },
+    {
+      "batch": 14,
+      "companies": [
+        "601933.SH",
+        "002697.SZ",
+        "603708.SH",
+        "301078.SZ"
+      ],
+      "queries": [
+        {
+          "q": "\"永辉超市\" 公司公告 2026年10月",
+          "domains": [
+            "cninfo.com.cn",
+            "sse.com.cn",
+            "szse.cn",
+            "bse.cn"
+          ]
+        },
+        {
+          "q": "\"红旗连锁\" 公司公告 2026年10月",
+          "domains": [
+            "cninfo.com.cn",
+            "sse.com.cn",
+            "szse.cn",
+            "bse.cn"
+          ]
+        },
+        {
+          "q": "\"家家悦\" 公司公告 2026年10月",
+          "domains": [
+            "cninfo.com.cn",
+            "sse.com.cn",
+            "szse.cn",
+            "bse.cn"
+          ]
+        },
+        {
+          "q": "\"孩子王\" 公司公告 2026年10月",
+          "domains": [
+            "cninfo.com.cn",
+            "sse.com.cn",
+            "szse.cn",
+            "bse.cn"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "turn328search0",
+        "turn328search1",
+        "turn328search2",
+        "turn328search44",
+        "turn328search3",
+        "turn328search4",
+        "turn328search45",
+        "turn328search5",
+        "turn328search6",
+        "turn328search7",
+        "turn328search8",
+        "turn328search9",
+        "turn328search10",
+        "turn328search11",
+        "turn328search12",
+        "turn328search13",
+        "turn328search14",
+        "turn328search15",
+        "turn328search16",
+        "turn328search17",
+        "turn328search18",
+        "turn328search19",
+        "turn328search20",
+        "turn328search21",
+        "turn328search22",
+        "turn328search23",
+        "turn328search24",
+        "turn328search25",
+        "turn328search26",
+        "turn328search27",
+        "turn328search28",
+        "turn328search29",
+        "turn328search30",
+        "turn328search31",
+        "turn328search32",
+        "turn328search33",
+        "turn328search34"
+      ],
+      "urls": [
+        "https://www.sse.com.cn/assortment/stock/list/info/announcement/index.shtml?productId=601933",
+        "https://www.cninfo.com.cn/new/fulltextSearch?keyWord=%E6%B0%B8%E8%BE%89%E8%B6%85%E5%B8%82",
+        "https://www.sse.com.cn/disclosure/announcement/listing/stock/c/c_20260527_10819911.shtml",
+        "https://static.cninfo.com.cn/finalpage/2026-05-01/1225273472.PDF",
+        "https://www.sse.com.cn/assortment/stock/list/info/turnover/index.shtml?COMPANY_CODE=601933",
+        "https://www.cninfo.com.cn/new/snapshot/companyDetailCn?code=301078",
+        "https://static.cninfo.com.cn/finalpage/2026-08-21/1225486909.PDF",
+        "https://www.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20260830_10830362.shtml",
+        "https://www.sse.com.cn/home/search/index.shtml?webswd=%E9%99%A4%E6%81%AF",
+        "https://www.sse.com.cn/assortment/stock/list/info/turnover/index.shtml?COMPANY_CODE=603708",
+        "https://www.sse.com.cn/disclosure/diclosure/public/inquirydata/index.shtml?branchName=%E5%8D%8E%E8%A5%BF%E8%AF%81%E5%88%B8%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%E5%8C%97%E4%BA%AC%E7%B4%AB%E7%AB%B9%E9%99%A2%E8%B7%AF%E8%AF%81%E5%88%B8%E8%90%A5%E4%B8%9A%E9%83%A8&bsType=S",
+        "https://www.sse.com.cn/lawandrules/sselawsrules2025/trade/specific/margin/c/c_20260710_10825136.shtml",
+        "https://www.sse.com.cn/home/search/?webswd=%E9%99%A4%E6%9D%83",
+        "https://www.sse.com.cn/assortment/stock/list/info/profit/index.shtml?COMPANY_CODE=601933",
+        "https://www.sse.com.cn/assortment/stock/areatrade/trade/detail.shtml?csrcCode=F",
+        "https://www.sse.com.cn/lawandrules/sselawsrules2025/repeal/rules/c/c_20260417_10825146.shtml",
+        "https://www.szse.cn/disclosure/notice/company/t20211013_588775.html",
+        "https://www.szse.cn/disclosure/notice/t20260529_620819.html",
+        "https://www.sse.com.cn/lawandrules/sselawsrules2025/repeal/rules/c/c_20260109_10815555.shtml",
+        "https://pujiang.sse.com.cn/update/participants/secretaryupdate/c/c_20260409_10814645.shtml",
+        "https://www.sse.com.cn/disclosure/fund/etflist/detail.shtml?fundid=563830",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020250905347572098528.html",
+        "https://www.sse.com.cn/disclosure/diclosure/public/inquirydata/index.shtml?branchName=%E6%96%B9%E6%AD%A3%E8%AF%81%E5%88%B8%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%E4%B9%90%E5%B1%B1%E9%BE%99%E6%B8%B8%E8%B7%AF%E8%AF%81%E5%88%B8%E8%90%A5%E4%B8%9A%E9%83%A8&bsType=S",
+        "https://www.sse.com.cn/disclosure/diclosure/public/dailydata/detail.shtml?refType=11&secAbbr=%E5%AE%B6%E5%AE%B6%E6%82%A6&secCode=603708&tradeDate=20230427",
+        "https://star.sse.com.cn/assortment/stock/areatrade/trade/detail.shtml?csrcCode=F52&csrcName=%E9%9B%B6%E5%94%AE%E4%B8%9A",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020220303379624783874.html",
+        "https://investor.szse.cn/disclosure/notice/general/t20250603_613877.html",
+        "https://star.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20260430_10817333.shtml",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020250513504912564404.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020181205571126320810.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020201013520548719599.html",
+        "https://www.szse.cn/aboutus/trends/news/t20211014_588826.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020200508540013687901.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020250805527892907072.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020250905347571865389.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020211214585272392583.html",
+        "https://docs.static.szse.cn/www/market/periodical/month/W020230808525916660332.html"
+      ],
+      "resultExcerpt": "公司公告 | 上海证券交易所 (https://www.sse.com.cn/assortment/stock/list/info/announcement/index.shtml?productId=601933)\n【turn328search0】 [wordlim: 200] Crawled: 3 days ago; 601933  | 永辉超市  | 永辉超市股份有限公司关于仲裁案件的进展公告  | 2026-10-15 ... 601933  | 永辉超市  | 永辉超市股份有限公司关于延长公司向特定对象发行A股股票股东会决议有效期和相关授权有效期的公告  | 2026-08-21\n\n--------------------------------------------------------------------------------\n巨潮资讯网 (https://www.cninfo.com.cn/new/fulltextSearch?keyWord=%E6%B0%B8%E8%BE%89%E8%B6%85%E5%B8%82)\n【turn328search1】 [wordlim: 200] Crawled: 4 days ago; 601933  | 永辉超市： 永辉超市股份有限公司关于仲裁案件的进展公告  | 2026-10-14 16:00 ... 601933  | 永辉超市： 永辉超市股份有限公司2026年第三次临时股东会决议公告  | 2026-09-07 16:00 ... 巨潮资讯网是深圳证券交易所信息披露官方网站，由深交所全资子公司深圳证券信息有限公司运营，平台始终致力于保护投资者的知情权和参与权，为投资者提供一站式的证券市场信息服务。\n\n--------------------------------------------------------------------------------\n关于家家悦集团股份有限公司可转换公司债券终止上市的公告 | 上海证券交易所 (https://www.sse.com.cn/disclosure/announcement/listing/stock/c/c_20260527_10819911.shtml)\n【turn328search2】 [wordlim: 200] Published: 4 months ago; Crawled: last week; 关于家家悦集团股份有限公司可转换公司债券终止上市的公告 ... 根据《上海证券交易所股票上市规则》的相关规定，本所将于2026年6月5日终止其在本所市场的上市交易和转股。\n\n--------------------------------------------------------------------------------\n证券代码：601933  证券简称：永辉超市  公告编号：2026-027 (https://static.cninfo.com.cn/finalpage/2026-05-01/1225273472.PDF)\n【turn328search44】 [wordlim: 200] Published: 5 months ago; 永辉超市股份有限公司（以下简称“公司”）于2025年10月31日在上海 ... 公司于2025年11月6日收到上交所出具的《关于永辉超市股份有限公司\n\n--------------------------------------------------------------------------------\n成交概况 | 上海证券交易所 (https://www.sse.com.cn/assortment/stock/list/info/turnover/index.shtml?COMPANY_CODE=601933)\n【turn328search3】 [wordlim: 200] Crawled: 2 weeks ago; ## 永辉超市股份有限公司601933 ... 公司公告 ...  | 2022年01月07日  | 2021年12月  | 2021年 ... 成交量（万股）  | 6606.51  | 0  | 0\n\n--------------------------------------------------------------------------------\n巨潮资讯网 (https://www.cninfo.com.cn/new/snapshot/companyDetailCn?code=301078)\n【turn328search4】 [wordlim: 200] Crawled: yesterday; 根据弗若斯特沙利文的资料，我们已成为中国亲子家庭新消费首选服务品牌，旗下「孩子王」、「乐友」及「丝域」品牌在中国享有较高的知名度。 ... 前五大股东(截止日期：2026/06/30) ... 上市公司要览所有内容均来源于上市公司的临时公告及定期报告。 ... 营业收入及每股数据提供公司上市以来近10年数据；财务报表提供公司近10年数据，公司上市前后披露年度报表合计不足10年的数据以“/”表示。\n\n--------------------------------------------------------------------------------\n永辉超市股份有限公司2026年半年度报告 (https://static.cninfo.com.cn/finalpage/2026-08-21/1225486909.PDF)\n【turn328search45】 [wordlim: 200] Published: 2 months ago; 券交易所网站（http://www.sse.com.cn）上披露的《永辉超市股份有限公司关于授权择机处置参股公司股份的公告》（公告编号：2026-021）、《永辉超市股份有限公司关于授权择机处置参股公司股份的进展公告》（公告编号：2026-033）。 ... 主要子公司及对公司净利润影响达10%以上的参股公司情况\n\n--------------------------------------------------------------------------------\n动能向新，结构向优，业绩向好——沪市公司2026年半年报业绩综述 | 上海证券交易所 (https://www.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20260830_10830362.shtml)\n【turn328search5】 [wordlim: 200] Published: last month; Crawled: 2 days ago; 截至目前，沪市上市公司完成2026年半年报披露。 ... 其中，36家成长层企业创新活力持续迸发，经营质效稳步提升，营收同比增长29.1%，大幅缩亏62.3%，科技生力军加速成长。 ... 中微公司的12英寸高端刻蚀设备已运用于3纳米及以下器件中若干关键步骤的加工；拓荆科技的薄膜沉积设备在客户产线生产产品累计流片量约6亿片。 ... 西安奕材月产能突破100万片，持续位居12英寸硅片领域国内第一。 ... 商品消费瞄准新需求。 ... 永辉超市上半年扭亏为盈，累计完成331家门店品质化调改，自有品牌开发加大，整体毛利率同比提升1.7个百分点。\n\n--------------------------------------------------------------------------------\n上证搜索 | 上海证券交易所 (https://www.sse.com.cn/home/search/index.shtml?webswd=%E9%99%A4%E6%81%AF)\n【turn328search6】 [wordlim: 200] Crawled: last week; 来自 ：上交所网站-披露-上市公司信息-最新公告  * 600167联美控股联美控股差异化权益分派特殊除权除息的法律意见2025-06-10 ...   * 603708家家悦东兴证券股份有限公司关于家家悦集团股份有限公司差异化权益分派特殊除权除息事项的核查意见2026-0",
+      "conclusion": "Search results do not establish complete company filing/IR list coverage; no absence claim."
     }
   ],
-  "failedCompanies": [
-    {
-      "company": "泡泡玛特",
-      "code": "9992.HK",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "名创优品",
-      "code": "9896.HK",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "思摩尔国际",
-      "code": "6969.HK",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "中烟香港",
-      "code": "6055.HK",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "小商品城",
-      "code": "600415.SH",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "特海国际",
-      "code": "9658.HK",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "周大福",
-      "code": "1929.HK",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "老铺黄金",
-      "code": "6181.HK",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "老凤祥",
-      "code": "600612.SH",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "六福集团",
-      "code": "0590.HK",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "菜百股份",
-      "code": "605599.SH",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "周大生",
-      "code": "002867.SZ",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "潮宏基",
-      "code": "002345.SZ",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "周六福",
-      "code": "6168.HK",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "爱美客",
-      "code": "300896.SZ",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "巨子生物",
-      "code": "2367.HK",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "毛戈平",
-      "code": "1318.HK",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "珀莱雅",
-      "code": "603605.SH",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "上美股份",
-      "code": "2145.HK",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "华熙生物",
-      "code": "688363.SH",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "贝泰妮",
-      "code": "300957.SZ",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "上海家化",
-      "code": "600315.SH",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "丸美生物",
-      "code": "603983.SH",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "林清轩",
-      "code": "2657.HK",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "水羊股份",
-      "code": "300740.SZ",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "福瑞达",
-      "code": "600223.SH",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "锦波生物",
-      "code": "920982.BJ",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "中国中免",
-      "code": "601888.SH",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "王府井",
-      "code": "600859.SH",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "上海机场",
-      "code": "600009.SH",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "携程集团-S",
-      "code": "9961.HK",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "同程旅行",
-      "code": "0780.HK",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "华住集团-S",
-      "code": "1179.HK",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "亚朵",
-      "code": "ATAT.O",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "锦江酒店",
-      "code": "600754.SH",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "首旅酒店",
-      "code": "600258.SH",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "宋城演艺",
-      "code": "300144.SZ",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "长白山",
-      "code": "603099.SH",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "陕西旅游",
-      "code": "603402.SH",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "黄山旅游",
-      "code": "600054.SH",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "众信旅游",
-      "code": "002707.SZ",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "峨眉山A",
-      "code": "000888.SZ",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "香港中旅",
-      "code": "0308.HK",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "君亭酒店",
-      "code": "301073.SZ",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "九华旅游",
-      "code": "603199.SH",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "天目湖",
-      "code": "603136.SH",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "蜜雪集团",
-      "code": "2097.HK",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "百胜中国",
-      "code": "9987.HK",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "海底捞",
-      "code": "6862.HK",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "古茗",
-      "code": "1364.HK",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "瑞幸咖啡",
-      "code": "LKNCY.OO",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "小菜园",
-      "code": "0999.HK",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "茶百道",
-      "code": "2555.HK",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "沪上阿姨",
-      "code": "2589.HK",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "达势股份",
-      "code": "1405.HK",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "重庆百货",
-      "code": "600729.SH",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "永辉超市",
-      "code": "601933.SH",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "红旗连锁",
-      "code": "002697.SZ",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "家家悦",
-      "code": "603708.SH",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    },
-    {
-      "company": "孩子王",
-      "code": "301078.SZ",
-      "reason": "Wind公告接口未配置鉴权，交易所页面受当前网络策略限制；未完成原始公告列表核验。"
-    }
-  ]
+  "discardedQueryAttempt": {
+    "reason": "Unparenthesized OR produced unrelated date matches; those results are not evidence of company-specific monitoring."
+  },
+  "industryMonitoring": {
+    "checkedAt": "2026-10-22T10:55:36.034Z",
+    "status": "partial_sources_checked_no_verified_in_window_item",
+    "sourceRefs": [
+      "turn335news4",
+      "turn335news5",
+      "turn335news6",
+      "turn335news66",
+      "turn335news10",
+      "turn335news11",
+      "turn335news12",
+      "turn335news17",
+      "turn335news18",
+      "turn335news19",
+      "turn335news20",
+      "turn335news24",
+      "turn335news25",
+      "turn335news26",
+      "turn335news27",
+      "turn335news32",
+      "turn335news33",
+      "turn335news34",
+      "turn335news35",
+      "turn335news40",
+      "turn335news41",
+      "turn335news42",
+      "turn335news43",
+      "turn335news48",
+      "turn335news49",
+      "turn335news50",
+      "turn335news51",
+      "turn335news55",
+      "turn335news56",
+      "turn335news57",
+      "turn335news61",
+      "turn335news62",
+      "turn335news64",
+      "turn335search0",
+      "turn335search1",
+      "turn335search2",
+      "turn335search7",
+      "turn335search8",
+      "turn335search9",
+      "turn335search13",
+      "turn335search14",
+      "turn335search15",
+      "turn335search16",
+      "turn335search21",
+      "turn335search22",
+      "turn335search23",
+      "turn335search29",
+      "turn335search30",
+      "turn335search31"
+    ],
+    "urls": [
+      "https://www.caacnews.com.cn/1/6/202601/t20260103_1392325.html",
+      "https://www.bjnews.com.cn/detail/1792398335129533.html",
+      "https://www.stats.gov.cn/sj/zxfbhjd/202602/t20260228_1962662.html",
+      "https://www.census.gov/retail/sales.html",
+      "https://content.foshanplus.com/simpleNewsDetails.html?newsId=300350328",
+      "https://m.canyin88.com/zhuanlan/lianshangwang/2026/1009/113849.html",
+      "https://www.bea.gov/news/2026/gdp-advance-estimate-4th-quarter-and-year-2025",
+      "https://www.cztv.com/newsDetail/842784",
+      "https://finance.66wz.com/system/2026/10/20/105856880.shtml",
+      "https://www.gz.gov.cn/zwgk/sjfb/tjgb/content/post_10804075.html",
+      "https://www.bls.gov/regions/west/news-release/consumerexpenditures_losangeles.htm",
+      "https://view.inews.qq.com/a/20260210A02SY300",
+      "https://www.or100.cc/?p=701064",
+      "https://www.gz.gov.cn/zwgk/sjfb/tjfx/content/post_10670090.html",
+      "https://www.bls.gov/regions/west/news-release/consumerexpenditures_sanfrancisco.htm",
+      "https://www.guancha.cn/internation/2025_12_14_800374.shtml",
+      "https://www.21jingji.com/article/20260929/herald/69ad9c24b84402db84fe231459df0f92.html",
+      "https://www.stats.gov.cn/sj/zxfb/202601/t20260119_1962321.html",
+      "https://www.bls.gov/opub/reports/consumer-expenditures/2023/",
+      "https://www.caacnews.com.cn/1/6/202504/t20250415_1386577.html",
+      "https://m.sohu.com/a/1082692861_121925623?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334",
+      "https://www.stats.gov.cn/sj/zxfb/202502/t20250228_1958817.html",
+      "https://www.bls.gov/opub/reports/consumer-expenditures/2022/",
+      "https://finance.sina.cn/stock/relnews/hk/2024-07-16/detail-inceizxt3694932.d.html?vt=4",
+      "https://xinwen.bjd.com.cn/content/s6ac8805be4b039a8e2f21315.html",
+      "https://www.stats.gov.cn/sj/zxfb/202402/t20240228_1947915.html",
+      "https://www.bls.gov/opub/btn/volume-12/how-have-the-pandemic-and-online-spending-affected-black-friday-shopping-analyzing-retail-trade-margins-2009-22.htm",
+      "https://www.prnasia.com/story/335723-1.shtml",
+      "https://www.ebrun.com/20260507/665001.shtml",
+      "https://www.bls.gov/opub/btn/volume-11/retail-trade-employment-before-during-and-after-the-pandemic.htm",
+      "https://www.cbndata.com/information/295025",
+      "https://www.bls.gov/opub/mlr/2025/article/sales-versus-margins.htm",
+      "https://news.qq.com/rain/a/20261009A08P3100",
+      "https://www.sohu.com/a/1087705153_122943392",
+      "https://www.mofcom.gov.cn/xwfbzt/2026/swbzklxxwfbh2026n10y15r/index.html",
+      "https://www.stats.gov.cn/sj/",
+      "https://www.mofcom.gov.cn/tjsj/ywtjxxhz/jscxyzx/art/2026/art_2c4a3e48ba3e447cacedc4e1e2c1558f.html",
+      "https://www.gansu.gov.cn/gsszf/c114890/202610/174412271.shtml",
+      "https://www.census.gov/retail/",
+      "https://post.smzdm.com/p/ak807wd9/",
+      "https://assets.kpmg.com/content/dam/kpmgsites/cn/pdf/zh/2026/03/consumer-and-retail-industry-analysis-2025-h2.pdf.coredownload.inline.pdf",
+      "https://www.scio.gov.cn/xwfb/bwxwfb/gbwfbh/rlzyhshbzb/202607/t20260727_1000976.html",
+      "https://www.census.gov/retail/release_schedule.html",
+      "https://prnmedia.prnewswire.com/news-releases/2026-travel-takes-off-falling-prices-and-global-events-push-new-cities-into-the-spotlight-per-kayak-data-302648275.html",
+      "https://www.stats.gov.cn/sj/zxfbhjd/202607/t20260715_1964127.html",
+      "https://www.census.gov/retail/marts/www/marts_current.pdf",
+      "https://www.census.gov/economic\u0002indicators/",
+      "https://www.census.gov/retail/index.html",
+      "https://www.scio.gov.cn/xwfb/bwxwfb/gbwfbh/swb/202601/t20260123_947531.html",
+      "https://chrm.mohrss.gov.cn/%E4%BA%BA%E5%8A%9B%E8%B5%84%E6%BA%90%E7%A4%BE%E4%BC%9A%E4%BF%9D%E9%9A%9C%E9%83%A8%E4%B8%BE%E8%A1%8C%E4%BE%8B%E8%A1%8C%E6%96%B0%E9%97%BB%E5%8F%91%E5%B8%83%E4%BC%9A%EF%BC%882026%E5%B9%B47%E6%9C%8822/",
+      "https://www.bls.gov/news.release/cpi.nr0.htm"
+    ],
+    "excerpt": "同程旅行：元旦假期出境游热度超越往年 (https://www.caacnews.com.cn/1/6/202601/t20260103_1392325.html)\n【turn335news4】 [wordlim: 100] Published: 9 months ago; 《中国民航报》、中国民航网记者许晓泓报道：1月3日，同程旅行发布的《2026元旦假期旅行消费报告》（下称《报告》）显示，元旦小长假叠加拼假一族掀起...\n--------------------------------------------------------------------------------\n商务部：今年前9月重点平台智能眼镜销售额增长1.1倍 (https://www.bjnews.com.cn/detail/1792398335129533.html)\n【turn335news5】 [wordlim: 100] Published: 3 days ago; Crawled: today; Content type: text/html; 新京报贝壳财经讯（记者陈维城）10月19日下午，在国新办新闻发布会上，商务部部长助理袁晓明表示，此次出台的《关于加快推进科技兴商的意见》是立足新...\n\n--------------------------------------------------------------------------------\n中华人民共和国2025年国民经济和社会发展统计公报 (https://www.stats.gov.cn/sj/zxfbhjd/202602/t20260228_1962662.html)\n【turn335news6】 [wordlim: 100] Published: 7 months ago; 中华人民共和国2025年国民经济和社会发展统计公报[1]. 国家统计局. 2026年2月28日. 2025年是“十四五”规划收官之年，是中国式现代化进程中具有重要意义...\n--------------------------------------------------------------------------------\nMonthly Retail Trade - Sales Report (https://www.census.gov/retail/sales.html)\n【turn335news66】 [wordlim: 100] Published: last week; Crawled: today; Content type: text/html; Advance Estimates of U.S. Retail and Food Services Advance estimates of U.S. retail and food services sales for September 2026, adjusted for...\n\n--------------------------------------------------------------------------------\n三亚飞北上广深机票逼近万元，官方出手 (https://content.foshanplus.com/simpleNewsDetails.html?newsId=300350328)\n【turn335news10】 [wordlim: 100] Published: 7 months ago; Crawled: today; Content type: text/html; 今天是大年初七，春节假期进入尾声。海南三大机场将迎来整个春运期间客流峰值日，预计运送旅客将突破23.2万人次。 据界面新闻报道，记者查询多家在线旅游平台发现，2...\n\n--------------------------------------------------------------------------------\n国庆黄金周消费数据出炉：​谁在增长，​谁在承压？ (https://m.canyin88.com/zhuanlan/lianshangwang/2026/1009/113849.html)\n【turn335news11】 [wordlim: 100] Published: 2 weeks ago; Crawled: today; Content type: text/html; 中国零售门户网站联商网，聚焦零售行业，全面提供第一手的时尚零售、电商、品牌商、快消等资讯。 主题市集、IP快闪、首店、文体赛事联动、夜间场景...\n\n--------------------------------------------------------------------------------\nGDP (Advance Estimate), 4th Quarter and Year 2025 (https://www.bea.gov/news/2026/gdp-advance-estimate-4th-quarter-and-year-2025)\n【turn335news12】 [wordlim: 100] Published: 8 months ago; Crawled: today; Content type: text/html; Real gross domestic product (GDP) increased at an annual rate of 1.4 percent in the fourth quarter of 2025 (October, November, and December)...\n\n--------------------------------------------------------------------------------\n元旦假期首日：多个景区发布限流公告，三亚入境游增幅超5倍 (https://www.cztv.com/newsDetail/842784)\n【turn335news17】 [wordlim: 100] Published: 9 months ago; Crawled: today; Content type: text/html; 2026年1月1日，元旦假期第一天，全国多地迎来客流高峰。 据湖南省文旅厅当日公布的数据显示，湖南省当日客流777.99万人次，其中省外游客87.48万人次，...\n--------------------------------------------------------------------------------\n推动技术与市场高效对接——多部门详解科技兴商 (https://finance.66wz.com/system/2026/10/20/105856880.shtml)\n【turn335news18】 [wordlim: 100] Published: 2 days ago; Crawled: today; Content type: text/html; 当前，人工智能、大数据、具身智能、数字孪生等新技术快速迭代，正深刻改变商贸组织方式、运营模式，改善消费体验。如何更好推动科技兴商？商务部等9...\n\n--------------------------------------------------------------------------------\n2025年广州市国民经济和社会发展统计公报 (https://www.gz.gov.cn/zwgk/sjfb/tjgb/content/post_10804075.html)\n【turn335news19】 [wordlim: 100] Published: 5 months ago; Crawled: today; Content type: text/html; 广州市人民政府门户网站（网址：www.gz.gov.cn）是由广州市人民政府办公厅主办，广州市政务服务和数据管理局承办，利用政府的设备、网络和信息等资源...\n\n--------------------------------------------------------------------------------\nConsumer Expenditures for the Los Angeles Area — 2023-24 (https://www.bls.gov/regions/west/news-release/consumerexpenditures_losangeles.htm)\n【turn335news20】 [wordlim: 100] Published: 9 months ago; Crawled: today; Content type: text/html; Households in the Los Angeles, CA, metropolitan area spent an average of $90,594 per year in 2023–24, the U.S. Bureau of Labor Statistics...\n\n--------------------------------------------------------------------------------\n中金：旅游酒店及餐饮行业看好最长春节休闲需求释放 优质头部继续受益 (https://view.inews.qq.com/a/20260210A02SY300)\n【turn335news24】 [wordlim: 100] Published: 8 months ago; Crawled: 2 days ago; Content type: text/html; 智通财经APP获悉，中金发布研报称，观察到26年春运首周人员流动稳健增长、26年春节假期机酒预订表现较好，看好最长春节期间休闲旅游需求释放。\n\n--------------------------------------------------------------------------------\n黄金时代梦碎：美国人钱包渐瘪，经济信心坠入寒冬 (https://www.or100.cc/?p=701064)\n【turn335news25】 [wordlim: 100] Published: 2 months ago; Crawled: 2 days ago; Content type: text/html; 公元二零二六年八月十四日，密歇根大学一纸调查报告，令华尔街的乐观预期化为泡影——美国消费者信心指数初值报51.0，较七月终值55.2骤降7.6%，同比更跌...\n\n--------------------------------------------------------------------------------\n2025年广州经济运行情况 (https://www.gz.gov.cn/zwgk/sjfb/tjfx/content/post_10670090.html)\n【turn335news26】 [wordlim: 100] Published: 8 months ago; Crawled: today; Content type: text/html; 广州市人民政府门户网站（网址：www.gz.gov.cn）是由广州市人民政府办公厅主办，广州市政务服务和数据管理局承办，利用政府的设备、网络和信息等资源...\n\n--------------------------------------------------------------------------------\nConsumer Expenditures in th",
+    "included": [],
+    "reason": "Results were outside the publication window, forecasts, or insufficient to verify a release; no absence claim."
+  }
 }

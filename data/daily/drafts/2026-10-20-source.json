@@ -7,7 +7,7 @@
   "industryWindowHours": 24,
   "industryWindowStart": "2026-10-19T18:00:00+08:00",
   "industryWindowEnd": "2026-10-20T18:00:00+08:00",
-  "generatedAt": "2026-10-20T18:15:00+08:00",
+  "generatedAt": "2026-10-22T18:53:52+08:00",
   "sections": {
     "briefs": [
       {
@@ -92,28 +92,19 @@
       }
     ],
     "views": [],
-    "data": [
-      {
-        "title": "10月LPR维持不变",
-        "period": "2026年10月",
-        "summary": "10月20日1年期、5年期以上LPR分别为3.0%、3.5%，均与上月持平。贷款定价基准未进一步下移，消费企业的融资成本变化仍取决于实际授信条件与负债重定价。",
-        "source": "全国银行间同业拆借中心",
-        "url": "https://www.chinamoney.com.cn/chinese/rdgz/20261020/3433485.html",
-        "publishedAt": "2026-10-20T09:00:00+08:00",
-        "availableAt": "2026-10-20T18:15:00+08:00",
-        "evidenceFile": "data/daily/evidence/2026-10-20.json"
-      }
-    ],
+    "data": [],
     "news": []
   },
   "coverage": {
-    "researchSourceTo": "2026-10-20T16:59:41.934+0800",
-    "researchBatchSyncedAt": "2026-10-20T09:12:31.892Z",
-    "excludedResearchRows": 193,
-    "announcementStatus": "partial"
+    "researchSourceTo": "2026-10-22T18:04:01.431+0800",
+    "newsCheckedAt": null,
+    "newsStatus": "未核验",
+    "excludedResearchRows": 193
   },
   "notes": [
-    "北京时间18:00截止；研究和附件扫描覆盖分别核验。",
-    "不可变完整研究原文逐篇复核；未下载、读取或转写附件。"
+    "重要数据仅按截点前24小时真实发布时间筛选；入库时间不替代发布时间。",
+    "段子、市场观点按原始发布时间筛选新增窗口（周一72小时、其他日24小时）；全部符合范围的内容供AI逐篇编辑。",
+    "新闻仅收录已核验原文、分钟级发布时间及来源链接的记录；空栏不代表市场没有新闻。",
+    "每日16:00北京时间截点；自动任务启动、检索和发布可能延迟。"
   ]
 }
