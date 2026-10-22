@@ -21,7 +21,7 @@ function build(dir,base,extra,official,start='2021-10',end='2026-09'){
     const name=row[0]||'';
     if(!/社会消费品零售(?:总额|额)/.test(name)||/限额|限上|限下|城镇|乡村|农村|市区|市辖区|商品零售|零售业|餐饮|网上|网络|电商/.test(name)){ignored.push({file,name,reason:'非全市全口径总额'});continue;}
     const aliases={'恩施土家族苗族自治州':'恩施州','湘西土家族苗族自治州':'湘西州','大理白族自治州':'大理州','文山壮族苗族自治州':'文山州','红河哈尼族彝族自治州':'红河州','楚雄彝族自治州':'楚雄州','西双版纳傣族自治州':'西双版纳州','德宏傣族景颇族自治州':'德宏州','怒江傈僳族自治州':'怒江州','迪庆藏族自治州':'迪庆州','凉山彝族自治州':'凉山州','阿坝藏族羌族自治州':'阿坝州','甘孜藏族自治州':'甘孜州'};
-    let geoName=name;for(const [raw,canonical]of Object.entries(aliases))geoName=geoName.replaceAll(raw,canonical);geoName=geoName.replace(/维吾尔|壮族|回族/g,'');
+    let geoName=name.replace(/:全市社会消费品/g,':社会消费品');for(const [raw,canonical]of Object.entries(aliases))geoName=geoName.replaceAll(raw,canonical);geoName=geoName.replace(/维吾尔|壮族|回族/g,'');
     const match=r=>new RegExp('(?:^|[:：])'+r.name+'(?:省|市|州|自治区|自治州)?(?=[:：]|$)').test(geoName),city=cityNames.find(match);
     let province=provinces.find(match),prefix=geoName.split('社会消费品')[0];
     for(const r of provinces)prefix=prefix.replaceAll(r.name,'');

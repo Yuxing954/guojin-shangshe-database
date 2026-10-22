@@ -13,7 +13,7 @@
  function trend(){if(!data)return;const s=rows.find(r=>r.id===$('province-region').value);if(!s)return;const period=$('province-period').value,basis=$('province-basis').value,years=Number($('province-years').value),anchor=new Set(s.cities.filter(r=>F(r.yoy)).map(r=>r.id));
  const points=M.displayCalendar(data,[M.windowStart(period,years),data.historyStart||'0000-01'].sort().at(-1),period,basis).map(p=>{const valid=T.cityRows(data,registry,p,basis).filter(r=>anchor.has(r.id)&&F(r.yoy));return {period:p,periodLabel:M.periodLabel(p),value:anchor.size&&valid.length===anchor.size?T.stats(valid).average:null,n:valid.length};});
  C.draw($('province-trend'),[{label:s.name+'省级披露',points:M.seriesHistory(data,s.id,basis,'社零总额','全口径',years,period)},{label:'省内城市等权（固定'+anchor.size+'城）',points}]);
- $('province-legend').innerHTML='<span><i style="background:'+C.colors[0]+'"></i>省级披露同比</span><span><i style="background:'+C.colors[1]+'"></i>省内城市等权 · 固定'+anchor.size+'城</span>';SiteUI.save({provinceYears:years});}
+ $('province-legend').innerHTML='<span>'+C.legend(0)+'省级披露同比</span><span>'+C.legend(1)+'省内城市等权 · 固定'+anchor.size+'城</span>';SiteUI.save({provinceYears:years});}
  function render(){if(!data)return;const period=$('province-period').value,basis=$('province-basis').value;rows=T.provinces(data,registry,period,basis);const s=rows.find(r=>r.id===$('province-region').value);if(!s)return;
  $('province-title').textContent=s.name+' · '+M.periodLabel(period)+' · '+(basis==='ytd'?'年初累计':'当月');
  const k=(label,value,sub)=>'<article class="regional-kpi"><span>'+E(label)+'</span><strong>'+E(value)+'</strong><small>'+E(sub)+'</small></article>';
