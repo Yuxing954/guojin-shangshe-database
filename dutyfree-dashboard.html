@@ -78,10 +78,10 @@ svg{width:100%;height:auto;display:block}
 @media(max-width:960px){.kpis{grid-template-columns:repeat(3,1fr)}.kpi:nth-child(5n){border-right:1px solid #eef1f4}.grid2,.grid3{grid-template-columns:1fr}}
 #view-monthly .controls{flex-wrap:wrap;gap:8px}#view-monthly .controls .srcbtn{font-size:12px;padding:6px 9px}
 @media(max-width:640px){.wrap{padding:14px 10px}.hero{flex-direction:column;align-items:flex-start}.kpis{grid-template-columns:repeat(2,1fr)}.kpi{border-right:0}.signal{grid-template-columns:1fr}.hero h1{font-size:20px}}
-</style><link rel="stylesheet" href="scripts/site.css?v=20261014viewfit"><script defer src="scripts/site-shell.js?v=20261014monthly"></script><link rel="stylesheet" href="scripts/dutyfree-holidays.css?v=20261012coverage"><script defer src="scripts/dutyfree-holidays.js?v=20261019controls"></script><link rel="stylesheet" href="scripts/dutyfree-typography.css?v=20261014aligned"><link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-charts.css?v=20261019controls"><link rel="stylesheet" href="scripts/industry-embed.css?v=20261014viewfit"><link rel="stylesheet" href="scripts/site-install.css?v=20261014home"><link rel="stylesheet" href="scripts/site-polish.css?v=20261013clean"><script src="scripts/dutyfree-monthly-model.js?v=20261010charts"></script><script src="scripts/site-charts.js?v=20261019controls"></script><script defer src="scripts/industry-embed.js?v=20261014loading"></script><style>#hn-growth:not([data-chart-ready]){visibility:hidden}</style><link rel="manifest" href="site.webmanifest"><meta name="theme-color" content="#4d58a4"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="国金商社"><meta name="apple-mobile-web-app-status-bar-style" content="default"><link rel="apple-touch-icon" href="scripts/assets/app/apple-touch-icon.png"><script defer src="scripts/site-install.js?v=20261014home"></script></head><body class="dutyfree-page"><div class="wrap industry-board">
+</style><link rel="stylesheet" href="scripts/site.css?v=20261014viewfit"><script defer src="scripts/site-shell.js?v=20261014monthly"></script><link rel="stylesheet" href="scripts/dutyfree-holidays.css?v=20261012coverage"><script defer src="scripts/dutyfree-holidays.js?v=20261019controls"></script><link rel="stylesheet" href="scripts/dutyfree-typography.css?v=20261014aligned"><link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-charts.css?v=20261019controls"><link rel="stylesheet" href="scripts/industry-embed.css?v=20261014viewfit"><link rel="stylesheet" href="scripts/site-install.css?v=20261014home"><link rel="stylesheet" href="scripts/dutyfree-korea.css?v=20261022korea"><link rel="stylesheet" href="scripts/site-polish.css?v=20261013clean"><script src="scripts/dutyfree-monthly-model.js?v=20261010charts"></script><script src="scripts/site-charts.js?v=20261019controls"></script><script defer src="scripts/site-data.js?v=20261022korea"></script><script defer src="scripts/dutyfree-korea-model.js?v=20261022korea"></script><script defer src="scripts/dutyfree-korea.js?v=20261022korea"></script><script defer src="scripts/industry-embed.js?v=20261022korea"></script><style>#hn-growth:not([data-chart-ready]){visibility:hidden}</style><link rel="manifest" href="site.webmanifest"><meta name="theme-color" content="#4d58a4"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="国金商社"><meta name="apple-mobile-web-app-status-bar-style" content="default"><link rel="apple-touch-icon" href="scripts/assets/app/apple-touch-icon.png"><script defer src="scripts/site-install.js?v=20261014home"></script></head><body class="dutyfree-page"><div class="wrap industry-board">
 <div class="crumbs"><a href="industry.html#dutyfree">行业数据</a> / 免税</div>
 <header class="hero"><div><div class="eyebrow">行业数据</div><h1>免税</h1><p>月度趋势 · 节假日表现</p></div><div class="asof board-asof" id="asof">读取数据中…</div></header>
-<nav class="tabs site-subnav" id="tabs"><button class="tab on" data-view="monthly">月度数据</button><button class="tab" data-view="holidays">节假日数据</button></nav>
+<nav class="tabs site-subnav" id="tabs"><button class="tab on" data-view="monthly">海南免税</button><button class="tab" data-view="korea">韩国免税</button><button class="tab" data-view="holidays">节假日数据</button></nav>
 
 <!-- 海南离岛免税 -->
 <section class="view on" id="view-monthly">
@@ -91,9 +91,24 @@ svg{width:100%;height:auto;display:block}
 <details class="panel monthly-details board-panel board-detail"><summary>历史数据与口径</summary><p class="trend-caption">月度历史</p><div class="tablewrap"><table class="table board-table" id="hn-table"></table></div><button class="srcbtn" onclick="showSrc('monthly_sources')">查看来源</button><p class="trend-caption"><a href="data/dutyfree_monthly.csv" download>下载完整月度 CSV</a> · <a href="data/dutyfree/monthly-provenance.json" download>下载来源与单元格记录</a></p></details>
 </section>
 
+<section class="view" id="view-korea" data-status="idle" aria-label="韩国免税月度数据">
+<div class="board-section-head"><h2>韩国免税 · 月度数据</h2></div>
+<div class="controls kr-controls">
+<label>顾客分类<select id="kr-scope"><option value="total">全部顾客</option><option value="foreign">外国人</option><option value="domestic">韩国本国人</option></select></label>
+<label>范围<select id="kr-range"><option value="12">近12个月</option><option value="24">近24个月</option><option value="all">全部历史</option></select></label>
+<label>图表<select id="kr-mode"><option value="combo">数值＋同比</option><option value="value">数值</option><option value="change">同比</option></select></label>
+<div class="kr-actions"><button class="srcbtn" id="kr-source" type="button">来源</button><button class="srcbtn" id="kr-export" type="button">导出当前范围 CSV</button></div>
+</div>
+<p id="kr-period"></p><p id="kr-status" role="status">正在读取韩国免税数据…</p><button id="kr-retry" class="srcbtn" type="button" hidden>重新读取</button>
+<div class="kpis board-kpis"><div class="kpi board-stat"><span>销售额</span><strong><span id="kr-sales">—</span><em> 亿美元</em></strong><small id="kr-sales-yoy"></small></div><div class="kpi board-stat"><span>购物人次</span><strong><span id="kr-shoppers">—</span><em> 万人次</em></strong><small id="kr-shoppers-yoy"></small></div><div class="kpi board-stat"><span>客单价（测算）</span><strong><span id="kr-spend">—</span><em> 美元/人次</em></strong><small id="kr-spend-yoy"></small></div></div>
+<div class="kr-grid"><article class="panel chart board-panel"><div class="panel-head board-panel-head"><h3 id="kr-sales-title">销售额与同比</h3><label class="site-value-option"><input type="checkbox" data-chart-labels>显示数值</label></div><div id="kr-sales-chart" class="kr-plot"></div></article><article class="panel chart board-panel"><div class="panel-head board-panel-head"><h3 id="kr-shoppers-title">购物人次与同比</h3><label class="site-value-option"><input type="checkbox" data-chart-labels>显示数值</label></div><div id="kr-shoppers-chart" class="kr-plot"></div></article><article class="panel chart board-panel"><div class="panel-head board-panel-head"><h3 id="kr-spend-title">客单价与同比</h3><label class="site-value-option"><input type="checkbox" data-chart-labels>显示数值</label></div><div id="kr-spend-chart" class="kr-plot"></div></article></div>
+<p class="kr-sources">韩国免税店协会 · Wind / Choice转引 · ≈ 为缩略原值或测算值</p>
+<details class="panel monthly-details board-panel"><summary>历史数据</summary><div class="tablewrap"><table class="table board-table" id="kr-table"></table></div><div class="kr-downloads"><button class="srcbtn" id="kr-export-all" type="button">导出全部顾客分类 CSV</button></div></details>
+</section>
+
 <section class="view" id="view-holidays"><section id="dutyfree-holidays" class="dh-panel" aria-label="离岛免税节假日数据"></section></section>
 
-<div class="fresh"><span>月度按原表整理 · 假期补充公开来源</span><span id="rows-note"></span></div>
+<div class="fresh"><span><a href="data-notes.html#dutyfree" target="_blank" rel="noopener">来源与说明 ↗</a></span><span id="rows-note"></span></div>
 </div>
 
 <!-- 来源弹窗 -->
@@ -111,7 +126,7 @@ Promise.all([
  jf('data/dutyfree/sources.json').then(d=>DB.sources=d),
  checked('data/dutyfree_monthly.csv').then(r=>r.text()).then(t=>DB.m=DutyfreeMonthly.derive(csv(t))),
  checked('data/dutyfree_holiday.csv').then(r=>r.text()).then(t=>DB.h=csv(t))
-]).then(()=>{SRC=DB.sources.sources||{};init()}).catch(e=>{document.getElementById('asof').innerHTML='数据暂时无法读取。 <button class="srcbtn" onclick="location.reload()">重试</button>'});
+]).then(()=>{SRC=DB.sources.sources||{};init()}).catch(e=>{DB.failed=true;if(!document.getElementById('view-korea').classList.contains('on'))document.getElementById('asof').innerHTML='数据暂时无法读取。 <button class="srcbtn" onclick="location.reload()">重试</button>'});
 
 function showSrc(key){let s=SRC[key];let b=document.getElementById('srcbox');
  if(!s){b.innerHTML='<h3>数据来源</h3><div class="muted">暂无来源信息</div><div class="closebtn"><button class="srcbtn" onclick="document.getElementById(\'srcmodal\').close()">关闭</button></div>';}
@@ -179,7 +194,7 @@ const oldLegend=svg.closest('.chart').querySelector('.combo-legend');if(!combo){
 drawCombo(svg,rows,metric,combo?'combo':yoy?'change':'value');return;
 draw(svg,rows,[{name:metric.label+(yoy?'同比':''),get:r=>N(r[yoy?metric.yoy:metric.field]),color:metric.color,unit:yoy?'%':metric.unit}],yoy);
 }
-function go(t){document.querySelectorAll('.tab,.view').forEach(x=>x.classList.remove('on'));let b=document.querySelector(`.tab[data-view="${t}"]`);if(b)b.classList.add('on');let v=document.getElementById('view-'+t);if(v)v.classList.add('on');if(t==='monthly'&&DB.m?.length)renderHainan();window.dispatchEvent(new Event('dutyfree:viewchange'));}
+function go(t){document.querySelectorAll('.tab,.view').forEach(x=>x.classList.remove('on'));let b=document.querySelector(`.tab[data-view="${t}"]`);if(b)b.classList.add('on');let v=document.getElementById('view-'+t);if(v)v.classList.add('on');if(t==='monthly'&&DB.m?.length)renderHainan();if(t!=='korea'&&DB.m?.length)document.getElementById('asof').textContent='海南月度截至 '+DB.m.at(-1).period_id;window.dispatchEvent(new Event('dutyfree:viewchange'));}
 
 /* ---------- 海南 ---------- */
 let hnSort={key:'period_id',dir:-1};
@@ -203,13 +218,15 @@ const content='\ufeff'+[keys,...rows.map(r=>keys.map(k=>r[k]))].map(r=>r.map(quo
 const url=URL.createObjectURL(new Blob([content],{type:'text/csv;charset=utf-8'})),a=document.createElement('a');a.href=url;a.download='离岛免税月度-'+document.getElementById('hn-range').value+'.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
 function init(){
-document.getElementById('asof').textContent='月度截至 '+DB.m.at(-1).period_id;
+if(!document.getElementById('view-korea').classList.contains('on'))document.getElementById('asof').textContent='海南月度截至 '+DB.m.at(-1).period_id;
 renderHainan();
 document.getElementById('rows-note').textContent=`月度 ${DB.m.length} 条 · 假期 ${DB.h.length} 条`;
-document.querySelectorAll('#tabs .tab').forEach(b=>b.onclick=()=>{go(b.dataset.view);location.hash=b.dataset.view;window.scrollTo({top:0})});
-const hashView=()=>{let key=location.hash.slice(1);if(['overview','hainan','datacenter'].includes(key)){key='monthly';history.replaceState(null,'',location.pathname+location.search+'#monthly');}go(key==='holidays'?'holidays':'monthly');};hashView();addEventListener('hashchange',hashView);
+
+
 document.getElementById('hn-range').onchange=renderHainan;
 document.getElementById('monthly-download').onclick=downloadMonthly;
 document.getElementById('hn-metric').onchange=renderHainan;
 }
+document.querySelectorAll('#tabs .tab').forEach(b=>b.onclick=()=>{go(b.dataset.view);location.hash=b.dataset.view;window.scrollTo({top:0})});
+const hashView=()=>{let key=location.hash.slice(1);if(['overview','hainan','datacenter'].includes(key)){key='monthly';history.replaceState(null,'',location.pathname+location.search+'#monthly');}go(['holidays','korea'].includes(key)?key:'monthly');};hashView();addEventListener('hashchange',hashView);
 </script></body></html>
