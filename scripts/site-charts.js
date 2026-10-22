@@ -83,7 +83,7 @@ function valuesControl(svg){
   const legacy=scope.querySelector('input[data-chart-labels]');
   if(legacy){if(!config){config={scope,hotel:false,node:legacy.closest('label')};valueScopes.set(scope,config);}config.value=legacy.checked;config.change=legacy.checked;return config;}
   const hotel=document.body.classList.contains('hotel-page')||scope.hasAttribute('data-chart-dual-labels'),selectedMetric=scope.querySelector('#holiday-metric-select,#hn-metric,#dh-metric'),metric=selectedMetric?.selectedOptions[0]?.textContent.trim().replace(/[（(].*$/,'')||scope.querySelector('#metric-switch')?.querySelector('[aria-pressed=true]')?.textContent.trim()||scope.querySelector('[data-metric][aria-pressed=true]')?.textContent.trim()||(scope.matches('.hd-tier-trend')?document.querySelector('#metric-switch [aria-pressed=true]')?.textContent.trim():'')||'数值';
-  if(!config){config={scope,hotel,value:scope.hasAttribute('data-chart-values-default')||document.body.hasAttribute('data-chart-values-default'),change:false};valueScopes.set(scope,config);}
+  if(!config){config={scope,hotel,value:scope.hasAttribute('data-chart-values-default')||document.body.hasAttribute('data-chart-values-default'),change:document.body.classList.contains('dutyfree-page')&&(scope.hasAttribute('data-chart-values-default')||document.body.hasAttribute('data-chart-values-default'))};valueScopes.set(scope,config);}
   if(!config.node?.isConnected){
     const node=document.createElement('span');node.className='site-value-options';config.node=node;
     for(const key of hotel?['value','change']:['value']){
@@ -269,7 +269,10 @@ function paired(rows,opt={}){
   const valid=normalized.filter(r=>r.values.some(s=>showValue&&Number.isFinite(s.value)||showChange&&Number.isFinite(s.change)));
   if(!valid.length)return {html:'<p class="portal-empty">暂无数据</p>',points:[]};
   const spacious=opt.layout==='spacious';
-  const w=Math.max(240,opt.width||Math.min(900,typeof innerWidth==='number'?innerWidth-64:900)),compact=w<520,h=spacious?(compact?360:400):(compact?300:340),L=spacious?(compact?64:80):(compact?58:76),R=showChange&&showValue?(spacious?(compact?64:84):(compact?52:76)):(spacious?36:24),T=spacious?(compact?76:64):42,B=spacious?72:48,bottom=h-B;
+  const w=Math.max(240,opt.width||Math.min(900,typeof innerWidth==='number'?innerWidth-64:900)),compact=w<520,L=spacious?(compact?64:80):(compact?58:76),R=showChange&&showValue?(spacious?(compact?64:84):(compact?52:76)):(spacious?36:24),T=spacious?(compact?92:76):42,B=spacious?72:48;
+  // Give dual-axis dutyfree plots real vertical room; dense ranges grow without horizontal scrolling.
+  const density=normalized.length*40/Math.max(80,w-L-R),extra=spacious&&showValue&&showChange?Math.min(120,Math.max(0,Math.round((density-1)*60))):0;
+  const h=spacious?(compact?500:560)+extra:(compact?300:340),bottom=h-B;
   const xs=normalized.map(r=>r.x),xmin=Math.min(...xs),xmax=Math.max(...xs),width=w-L-R;
   const unique=[...new Set(xs)].sort((a,b)=>a-b),delta=unique.length>1?Math.min(...unique.slice(1).map((x,i)=>x-unique[i])):1;
   const margin=width/(unique.length+1)/2,px=x=>L+margin+(x-xmin)/(xmax-xmin||1)*(width-margin*2);
