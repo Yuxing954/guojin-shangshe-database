@@ -20,4 +20,4 @@
 @media(max-width:760px){.regional-retail .regional-view-head .regional-tabs.site-subnav{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important}.regional-retail .regional-view-head .regional-tabs button{font-size:12px!important;padding-left:5px!important;padding-right:5px!important}}
 
 /* High-contrast series, matching line legends and readable values. */
-.regional-retail .regional-chart text{fill:#475569;font-size:12px}.regional-retail .regional-value-label{font-size:12px;font-weight:600;stroke-width:4px}.regional-legend-line{display:inline-block;vertical-align:middle;flex:none;margin-right:7px}.tier-legend span{color:#334155}
+.regional-retail .regional-chart text{fill:#475569;font-size:12px}.regional-retail .regional-value-label{font-size:13px;font-weight:600;stroke-width:3px}.regional-legend-line{display:inline-block;vertical-align:middle;flex:none;margin-right:7px}.tier-legend span{color:#334155}
