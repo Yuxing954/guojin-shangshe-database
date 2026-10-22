@@ -1,0 +1,120 @@
+{
+  "publishedAt": "2026-10-22T20:53:44+08:00",
+  "dates": [
+    {
+      "date": "2026-10-20",
+      "cards": 6,
+      "originals": 8,
+      "attachments": 7,
+      "verifiedAnnouncements": 0
+    },
+    {
+      "date": "2026-10-21",
+      "cards": 5,
+      "originals": 6,
+      "attachments": 5,
+      "verifiedAnnouncements": 0
+    },
+    {
+      "date": "2026-10-22",
+      "cards": 7,
+      "originals": 9,
+      "attachments": 3,
+      "verifiedAnnouncements": 1
+    }
+  ],
+  "baseCommit": "f84f416765470920fc29e7321bb3ccd1b7235b23",
+  "attachmentScan": {
+    "observedAt": "2026-10-22T11:01:55.996Z",
+    "sourceGroup": "88888142214212",
+    "sourceName": "水木调研纪要-2.0",
+    "topicsScanned": 780,
+    "topicsInWindow": 751,
+    "topicPages": 26,
+    "topicWindowFrom": "2026-10-20T00:00:00+08:00",
+    "topicWindowTo": "2026-10-22T18:20:03.989+0800",
+    "boundaryReachedBeforeWindow": true,
+    "attachmentsObserved": 452,
+    "uniqueFileIds": 452,
+    "duplicateFileIds": 0,
+    "newRecords": 312,
+    "existingRecordsRefreshed": 140,
+    "attachmentContentRead": false,
+    "sourceMetadataFields": [
+      "fileId",
+      "topicId",
+      "filename",
+      "extension",
+      "bytes",
+      "fileCreatedAt",
+      "topicCreatedAt",
+      "durationSeconds",
+      "downloadCount",
+      "sourceHash",
+      "source"
+    ],
+    "windowStart": "2026-10-20T00:00:00+08:00",
+    "windowEnd": "2026-10-22T11:01:55.996Z",
+    "windowEndDate": "2026-10-22",
+    "windowComplete": true,
+    "archiveHasMore": true
+  },
+  "sourceCorpus": "Complete immutable archive shards plus immutable incremental CSV batches; no source recollection.",
+  "attachmentContentRead": false,
+  "validation": {
+    "dailyTests": {
+      "passed": 53,
+      "failed": 0,
+      "command": "python -m unittest discover -s tests -p 'test_daily*.py'"
+    },
+    "editorialAndResources": {
+      "dates": [
+        "2026-10-18",
+        "2026-10-19",
+        "2026-10-20",
+        "2026-10-21",
+        "2026-10-22"
+      ],
+      "status": "pass",
+      "command": "python scripts/validate_daily_editorial.py --date DATE --check-resources",
+      "fullOriginalCounts": {
+        "2026-10-18": 2,
+        "2026-10-19": 10,
+        "2026-10-20": 8,
+        "2026-10-21": 6,
+        "2026-10-22": 9
+      }
+    },
+    "backfill": {
+      "limit": 2,
+      "previousPublishedDatesUpdated": [
+        "2026-10-18",
+        "2026-10-19"
+      ],
+      "prepublicationRepeatUpdated": []
+    },
+    "siteCheck": {
+      "status": "known_unrelated_failure",
+      "command": "node scripts/check-site.cjs",
+      "file": "hotel-groups.html",
+      "reason": "hotel-groups.css follows site-polish.css on existing main. No hotel, shared style, or site check files are part of this publication."
+    },
+    "attachmentTitleExclusion": [
+      "餐饮换挡-速冻提速-速冻行业结构性增长新机遇20261021.pdf"
+    ],
+    "indexDates": [
+      "2026-10-22",
+      "2026-10-21",
+      "2026-10-20",
+      "2026-10-19",
+      "2026-10-18",
+      "2026-10-17",
+      "2026-10-16",
+      "2026-10-15",
+      "2026-10-14",
+      "2026-10-13",
+      "2026-10-12"
+    ]
+  },
+  "validatedAt": "2026-10-22T20:56:09+08:00"
+}

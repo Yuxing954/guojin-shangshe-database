@@ -91,23 +91,23 @@
     ]
   },
   "attachmentCatalog": {
-    "generatedAt": "2026-10-21T17:24:33+08:00",
-    "sourceThrough": "2026-10-20T16:14:22.642+0800",
+    "generatedAt": "2026-10-22T11:01:55.996Z",
+    "sourceThrough": "2026-10-22T18:20:03.989+0800",
     "scan": {
-      "observedAt": "2026-10-20T08:39:03.081Z",
+      "observedAt": "2026-10-22T11:01:55.996Z",
       "sourceGroup": "88888142214212",
       "sourceName": "水木调研纪要-2.0",
-      "topicsScanned": 750,
-      "topicsInWindow": 701,
-      "topicPages": 25,
-      "topicWindowFrom": "2026-10-18T00:00:00+08:00",
-      "topicWindowTo": "2026-10-20T16:14:22.642+0800",
+      "topicsScanned": 780,
+      "topicsInWindow": 751,
+      "topicPages": 26,
+      "topicWindowFrom": "2026-10-20T00:00:00+08:00",
+      "topicWindowTo": "2026-10-22T18:20:03.989+0800",
       "boundaryReachedBeforeWindow": true,
-      "attachmentsObserved": 402,
-      "uniqueFileIds": 402,
+      "attachmentsObserved": 452,
+      "uniqueFileIds": 452,
       "duplicateFileIds": 0,
-      "newRecords": 192,
-      "existingRecordsRefreshed": 210,
+      "newRecords": 312,
+      "existingRecordsRefreshed": 140,
       "attachmentContentRead": false,
       "sourceMetadataFields": [
         "fileId",
@@ -122,35 +122,17 @@
         "sourceHash",
         "source"
       ],
-      "windowStart": "2026-10-18T00:00:00+08:00",
-      "windowEnd": "2026-10-20T08:39:03.081Z",
-      "windowEndDate": "2026-10-20",
+      "windowStart": "2026-10-20T00:00:00+08:00",
+      "windowEnd": "2026-10-22T11:01:55.996Z",
+      "windowEndDate": "2026-10-22",
       "windowComplete": true,
       "archiveHasMore": true
     },
-    "coverageStatus": "pending",
+    "coverageStatus": "complete",
     "requestedWindowStart": "2026-10-20T18:00:00+08:00",
-    "requestedCutoff": "2026-10-21T18:00:00+08:00",
-    "missingIntervals": [
-      {
-        "start": "2026-10-20T18:00:00+08:00",
-        "end": "2026-10-21T18:00:00+08:00"
-      }
-    ]
+    "requestedCutoff": "2026-10-21T18:00:00+08:00"
   },
-  "publicationBlockers": [
-    {
-      "type": "attachment_scan_pending",
-      "recoverable": true,
-      "missingIntervals": [
-        {
-          "start": "2026-10-20T18:00:00+08:00",
-          "end": "2026-10-21T18:00:00+08:00"
-        }
-      ],
-      "receiptFile": "data/research/library-sync-receipt.json"
-    }
-  ],
+  "publicationBlockers": [],
   "announcementMonitoring": {
     "checkedAt": "2026-10-22T18:53:52+08:00",
     "windowStart": "2026-10-20T18:00:00+08:00",
@@ -1764,6 +1746,47 @@
     "contentValidation": "pass",
     "attachmentValidation": "Attachment scan does not cover the complete daily window"
   },
-  "publicationStatus": "blocked",
-  "publicationDecision": "Retain rebuilt draft: complete attachment scan is still required; no formal onepage/index write."
+  "publicationStatus": "published",
+  "publicationDecision": "Publish after complete attachment coverage, full immutable-source reconciliation, and editorial validation.",
+  "publicationRecovery": {
+    "recoveredAt": "2026-10-22T20:53:44+08:00",
+    "draftCutoff": "2026-10-21T18:00:00+08:00",
+    "baseCommit": "f84f416765470920fc29e7321bb3ccd1b7235b23",
+    "attachmentLibraryBlob": "8eb74f917b2078251b9dfef4c984b36417026a4d",
+    "attachmentScanObservedAt": "2026-10-22T11:01:55.996Z",
+    "researchSyncedAt": "2026-10-22T12:02:26.099Z",
+    "fullWindowRebuilt": true,
+    "sourceUrlsUnchanged": true,
+    "sourceHashesUnchanged": true,
+    "scope": "2026-10-20 through 2026-10-22, original 18:00 cutoffs",
+    "sourceBlockersResolved": [
+      {
+        "type": "attachment_scan_pending",
+        "recoverable": true,
+        "missingIntervals": [
+          {
+            "start": "2026-10-20T18:00:00+08:00",
+            "end": "2026-10-21T18:00:00+08:00"
+          }
+        ],
+        "receiptFile": "data/research/library-sync-receipt.json"
+      }
+    ]
+  },
+  "publicationValidation": {
+    "checkedAt": "2026-10-22T20:53:44+08:00",
+    "completeSegmentList": 6,
+    "allOriginalBodiesMatchCorpus": true,
+    "allOriginalHashesUnchanged": true,
+    "attachmentCoverage": "complete",
+    "resourceCounts": {
+      "segments": 6,
+      "minutes": 0,
+      "audio": 3,
+      "reports": 2
+    },
+    "announcementMonitoring": "partial",
+    "verifiedAnnouncements": 0,
+    "knownUnrelatedSiteCheckFailure": "hotel-groups.html adapter ordering on existing main; no hotel/shared styling files changed."
+  }
 }

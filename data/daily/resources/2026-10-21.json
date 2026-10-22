@@ -3,25 +3,25 @@
   "date": "2026-10-21",
   "windowStart": "2026-10-20T18:00:00+08:00",
   "cutoff": "2026-10-21T18:00:00+08:00",
-  "sourceThrough": "2026-10-22T18:04:01.431+0800",
+  "sourceThrough": "2026-10-22T19:36:38.325+0800",
   "attachmentCatalog": {
-    "generatedAt": "2026-10-21T17:24:33+08:00",
-    "sourceThrough": "2026-10-20T16:14:22.642+0800",
+    "generatedAt": "2026-10-22T11:01:55.996Z",
+    "sourceThrough": "2026-10-22T18:20:03.989+0800",
     "scan": {
-      "observedAt": "2026-10-20T08:39:03.081Z",
+      "observedAt": "2026-10-22T11:01:55.996Z",
       "sourceGroup": "88888142214212",
       "sourceName": "水木调研纪要-2.0",
-      "topicsScanned": 750,
-      "topicsInWindow": 701,
-      "topicPages": 25,
-      "topicWindowFrom": "2026-10-18T00:00:00+08:00",
-      "topicWindowTo": "2026-10-20T16:14:22.642+0800",
+      "topicsScanned": 780,
+      "topicsInWindow": 751,
+      "topicPages": 26,
+      "topicWindowFrom": "2026-10-20T00:00:00+08:00",
+      "topicWindowTo": "2026-10-22T18:20:03.989+0800",
       "boundaryReachedBeforeWindow": true,
-      "attachmentsObserved": 402,
-      "uniqueFileIds": 402,
+      "attachmentsObserved": 452,
+      "uniqueFileIds": 452,
       "duplicateFileIds": 0,
-      "newRecords": 192,
-      "existingRecordsRefreshed": 210,
+      "newRecords": 312,
+      "existingRecordsRefreshed": 140,
       "attachmentContentRead": false,
       "sourceMetadataFields": [
         "fileId",
@@ -36,21 +36,15 @@
         "sourceHash",
         "source"
       ],
-      "windowStart": "2026-10-18T00:00:00+08:00",
-      "windowEnd": "2026-10-20T08:39:03.081Z",
-      "windowEndDate": "2026-10-20",
+      "windowStart": "2026-10-20T00:00:00+08:00",
+      "windowEnd": "2026-10-22T11:01:55.996Z",
+      "windowEndDate": "2026-10-22",
       "windowComplete": true,
       "archiveHasMore": true
     },
-    "coverageStatus": "pending",
+    "coverageStatus": "complete",
     "requestedWindowStart": "2026-10-20T18:00:00+08:00",
-    "requestedCutoff": "2026-10-21T18:00:00+08:00",
-    "missingIntervals": [
-      {
-        "start": "2026-10-20T18:00:00+08:00",
-        "end": "2026-10-21T18:00:00+08:00"
-      }
-    ]
+    "requestedCutoff": "2026-10-21T18:00:00+08:00"
   },
   "groups": {
     "segments": [
@@ -92,8 +86,56 @@
       }
     ],
     "minutes": [],
-    "audio": [],
-    "reports": []
+    "audio": [
+      {
+        "id": "zsxq-file-181582181445212",
+        "title": "饮韵时光第66期：晶途研知：零食量贩行业发力下半场20261020.mp3",
+        "publishedAt": "2026-10-21T14:30:22.433000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/82258241888125222",
+        "status": "未转写",
+        "sector": "other"
+      },
+      {
+        "id": "zsxq-file-584182458814884",
+        "title": "零食量贩行业发力下半场261020.mp3",
+        "publishedAt": "2026-10-21T00:39:55.245000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/82258244125254282",
+        "status": "未转写",
+        "sector": "other"
+      },
+      {
+        "id": "zsxq-file-214815421125821",
+        "title": "2026年9月社零数据解读20261019.mp3",
+        "publishedAt": "2026-10-21T00:39:55.245000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/82258244125254282",
+        "status": "未转写",
+        "sector": "other"
+      }
+    ],
+    "reports": [
+      {
+        "id": "zsxq-file-584182451845544",
+        "title": "中国东方教育20261020.pdf",
+        "publishedAt": "2026-10-20T22:29:11.878000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/45548522188514118",
+        "status": "仅标题登记",
+        "sector": "other"
+      },
+      {
+        "id": "zsxq-file-412814258221818",
+        "title": "零食量贩行业发力下半场20261020.pdf",
+        "publishedAt": "2026-10-20T22:19:59.696000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/22258244188821411",
+        "status": "仅标题登记",
+        "sector": "other"
+      }
+    ]
   },
-  "policy": "仅依据已入库元数据列出标题、发布时间和来源主题；未下载、读取或转写附件，不把研究报告标为纪要。"
+  "policy": "仅依据已入库元数据列出标题、发布时间和来源主题；未下载、读取或转写附件，不把研究报告标为纪要。",
+  "attachmentBackfill": {
+    "at": "2026-10-22T20:53:44+08:00",
+    "originalCutoff": "2026-10-21T18:00:00+08:00",
+    "indexGeneratedAt": "2026-10-22T11:01:55.996Z",
+    "reason": "Complete late attachment scan arrived before formal publication; metadata only."
+  }
 }
