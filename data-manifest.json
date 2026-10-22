@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-21",
+  "updatedAt": "2026-10-22",
   "datasets": [
     {
       "id": "hotel",
@@ -307,6 +307,16 @@
       "latestPeriod": "2026-09",
       "rowCount": 66,
       "updateRecord": "data/tourism/three-gorges-cruises.json"
+    },
+    {
+      "id": "regional_retail",
+      "name": "地方社会消费品零售总额与城市结构",
+      "file": "data/regional-retail/observations.json",
+      "category": "宏观",
+      "asOf": "2026-09",
+      "rowCount": 1318,
+      "page": "regional-retail.html",
+      "notes": "各地截止期不同，缺期及字段覆盖见同文件coverage"
     }
   ]
 }
