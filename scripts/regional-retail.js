@@ -7,7 +7,7 @@ const num=(v,d=1)=>finite(v)?v.toLocaleString('zh-CN',{minimumFractionDigits:d,m
 const pct=v=>finite(v)?(v>0?'+':'')+num(v)+'%':'—';
 const color=v=>!finite(v)||v===0?'':v>0?'regional-pos':'regional-neg';
 function option(values,selected){return values.map(x=>'<option value="'+esc(x.value??x)+'"'+((x.value??x)===selected?' selected':'')+'>'+esc(x.label??x)+'</option>').join('');}
-function links(row){return M.sourceIds(row).map(id=>{const s=data.sources.find(x=>x.id===id);if(!s)return '';const url=D.link(s.url);return url?'<a href="'+esc(url)+'" target="_blank" rel="noopener" title="'+esc([s.publisher,s.releaseDate?'发布 '+s.releaseDate:'发布日期未提供',row.provenance?.amount?.originalName||row.provenance?.yoy?.originalName].filter(Boolean).join(' · '))+'">'+(s.quality==='official'?'原文':'Choice')+' ↗</a>':'来源未返回';}).join(' ');}
+function links(row){return M.sourceIds(row).map(id=>{const s=data.sources.find(x=>x.id===id);if(!s)return '';const url=D.link(s.url);return url?'<a href="'+esc(url)+'" target="_blank" rel="noopener" title="'+esc([s.publisher,s.releaseDate?'发布 '+s.releaseDate:'发布日期未提供',row.provenance?.amount?.originalName||row.provenance?.yoy?.originalName].filter(Boolean).join(' · '))+'">'+(['provider','secondary'].includes(s.quality)?'Choice':s.quality==='official-repost'?'转载':'原文')+' ↗</a>':'来源未返回';}).join(' ');}
 function kpi(label,value,sub=''){return '<article class="regional-kpi"><span>'+esc(label)+'</span><strong>'+esc(value)+'</strong><small>'+esc(sub)+'</small></article>';}
 function syncPeriods(basisId,periodId,preferred){const ps=M.periods(data,$(basisId).value);const selected=ps.includes(preferred)?preferred:ps.at(-1);$(periodId).innerHTML=option(ps.slice().reverse(),selected);}
 function renderComparison(){
@@ -44,10 +44,10 @@ function renderBeijing(){
  const ytd=M.observation(data,id,'2026-09','ytd');
  $('beijing-exclusions').innerHTML=kpi('1—9月官方同比',pct(ytd?.yoy),'累计口径')+kpi('剔除汽车后同比',pct(c.exAuto),'测算')+kpi('剔除通讯与汽车后同比',pct(c.exBoth),'测算')+kpi(c.rows.length+'类同比中位数',pct(c.median),'限上已披露品类');
 }
-function setView(next){view=['comparison','structure','beijing'].includes(next)?next:'comparison';for(const key of ['comparison','structure','beijing'])$(key).hidden=key!==view;document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===view)));SiteUI.save({view});}
+function setView(next){view=['tiers','comparison','structure','beijing'].includes(next)?next:'comparison';for(const key of ['tiers','comparison','structure','beijing'])$(key).hidden=key!==view;document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===view)));SiteUI.save({view});}
 async function load(){
  $('regional-status').textContent='正在读取地方社零…';$('regional-retry').hidden=true;
- try{data=await D.json('data/regional-retail/observations.json');if(!data.regions?.length||!data.observations?.length)throw Error('空数据');const p=new URLSearchParams(location.search);$('level').value=p.get('level')==='province'?'province':'city';$('basis').value=['ytd','month','combined'].includes(p.get('basis'))?p.get('basis'):'ytd';syncPeriods('basis','period',p.get('period')||M.defaultPeriod(data,$('level').value));
+ try{data=await D.json('data/regional-retail/observations.json');if(!data.regions?.length||!data.observations?.length)throw Error('空数据');data=await RegionalTierDashboard.load(data);const p=new URLSearchParams(location.search);$('level').value=p.get('level')==='province'?'province':'city';$('basis').value=['ytd','month','combined'].includes(p.get('basis'))?p.get('basis'):'ytd';syncPeriods('basis','period',p.get('period')||M.defaultPeriod(data,$('level').value));
  syncPeriods('structure-basis','structure-period','2026-08');const ids=[...new Set(data.observations.filter(r=>r.category!=='社零总额').map(r=>r.regionId))];$('structure-city').innerHTML=option([{value:'',label:'全部已披露城市'},...ids.map(id=>({value:id,label:data.regions.find(r=>r.id===id)?.name}))],'');
  $('regional-status').textContent='记录更新 '+data.updatedAt;$('regional-content').hidden=false;renderComparison();renderStructure();renderBeijing();setView(p.get('view')||'comparison');
  }catch(e){$('regional-status').textContent='地方社零读取失败：'+e.message;$('regional-content').hidden=true;$('regional-retry').hidden=false;}
@@ -64,4 +64,5 @@ $('structure-csv').onclick=()=>D.downloadCsv(structureRows.map(r=>({城市:data.
 $('beijing-csv').onclick=()=>{if(!caseData)return;D.downloadCsv([...caseData.rows.map(r=>({品类:r.category,期间:'2026-09',金额亿元:r.amount,官方同比百分比:r.yoy,可比基数亿元测算:r.base,同比增量亿元测算:r.increment,拉动社零百分点测算:r.contributionPp,增量占比百分比测算:r.incrementShare,来源:M.sourceIds(r).map(id=>data.sources.find(s=>s.id===id)?.url).join(' ')})),{品类:'未列商品及餐饮（残差）',期间:'2026-09',同比增量亿元测算:caseData.residual,拉动社零百分点测算:caseData.residual/caseData.base*100}],'北京9月社零贡献测算.csv');};
 load();
 })();
+
 

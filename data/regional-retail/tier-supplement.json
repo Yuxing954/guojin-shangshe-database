@@ -1,0 +1,938 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-10-22T04:51:38.777Z",
+  "regions": [
+    {
+      "id": "cx-huaian",
+      "name": "淮安",
+      "level": "city",
+      "parent": "江苏"
+    },
+    {
+      "id": "cx-sanming",
+      "name": "三明",
+      "level": "city",
+      "parent": "福建"
+    },
+    {
+      "id": "cx-longyan",
+      "name": "龙岩",
+      "level": "city",
+      "parent": "福建"
+    },
+    {
+      "id": "cx-yuxi",
+      "name": "玉溪",
+      "level": "city",
+      "parent": "云南"
+    },
+    {
+      "id": "cx-taizhou",
+      "name": "泰州",
+      "level": "city",
+      "parent": "江苏"
+    },
+    {
+      "id": "cx-ningde",
+      "name": "宁德",
+      "level": "city",
+      "parent": "福建"
+    },
+    {
+      "id": "cx-ganzhou",
+      "name": "赣州",
+      "level": "city",
+      "parent": "江西"
+    },
+    {
+      "id": "cx-yichang",
+      "name": "宜昌",
+      "level": "city",
+      "parent": "湖北"
+    }
+  ],
+  "sources": [
+    {
+      "id": "huaian8",
+      "name": "1-8月份我市经济运行保持平稳",
+      "publisher": "淮安市统计局 / 淮安市人民政府",
+      "url": "https://www.huaian.gov.cn/col/14449_162851/art/o/17881920/17905847452552bdh9ik8.html",
+      "releaseDate": "2026-09-28",
+      "publishedAt": "2026-09-28",
+      "retrievedAt": "2026-10-22T04:47:04.115Z",
+      "quality": "official",
+      "provider": "官方原始披露",
+      "locator": "消费市场承压向好：全市社零总额1353.5亿元，同比增长4.6%",
+      "sha256": "067eeb2178eb31c35d623be7ff9389ed39228f79caf069659d788ef71bddc702"
+    },
+    {
+      "id": "sanming8",
+      "name": "解读：2026年1-8月三明市经济运行简况",
+      "publisher": "三明市统计局 / 三明市人民政府",
+      "url": "https://www.sm.gov.cn/zw/tjxx/tjjd/202609/t20260930_2324661.htm",
+      "releaseDate": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "retrievedAt": "2026-10-22T04:47:04.115Z",
+      "quality": "official",
+      "provider": "官方原始披露",
+      "locator": "三、消费：全市社零总额573.48亿元，下降0.1%",
+      "sha256": "fb77fd00d47915c625712955dde37218ae91d94db079ebc361f6bf419c5374ed"
+    },
+    {
+      "id": "sanming7",
+      "name": "解读：2026年1-7月三明市经济运行简况",
+      "publisher": "三明市统计局 / 三明市人民政府",
+      "url": "https://www.sm.gov.cn/zw/tjxx/tjjd/202608/t20260826_2295535.htm",
+      "releaseDate": "2026-08-26",
+      "publishedAt": "2026-08-26",
+      "retrievedAt": "2026-10-22T04:47:04.115Z",
+      "quality": "official",
+      "provider": "官方原始披露",
+      "locator": "三、消费：全市社零总额503.04亿元，下降0.1%",
+      "sha256": "f5cb894cc2a9053bbc92851da75f1f652c92e98dfa0204e3c59bebeb939ba90c"
+    },
+    {
+      "id": "longyan8",
+      "name": "2026年1-8月龙岩经济运行情况",
+      "publisher": "龙岩市人民政府 / 龙岩市统计局",
+      "url": "https://www.longyan.gov.cn/sj/sjjd/202609/t20260928_2315900.htm",
+      "releaseDate": "2026-09-28",
+      "publishedAt": "2026-09-28",
+      "retrievedAt": "2026-10-22T04:47:04.115Z",
+      "quality": "official",
+      "provider": "官方原始披露",
+      "locator": "三、消费：1-8月925.08亿元，下降1.3%；8月同比下降1.3%，原文未给当月金额",
+      "sha256": "86860634c24ad42704fd300f4b8554a9644b75f8287783682bdef79afbeea073"
+    },
+    {
+      "id": "yuxi8",
+      "name": "2026年1—8月玉溪市社会消费品零售情况",
+      "publisher": "玉溪市商务局，源自市统计局统计快报第十五期",
+      "url": "https://www.yuxi.gov.cn/yxszfxxgk/tjsj/20260921/1681265.html",
+      "releaseDate": "2026-09-21",
+      "publishedAt": "2026-09-21",
+      "retrievedAt": "2026-10-22T04:47:04.115Z",
+      "quality": "official",
+      "provider": "官方原始披露",
+      "locator": "全市社零总额555.04亿元，同比下降3.5%",
+      "sha256": "09978f87ce8e489a2c4a40fd89b801eb2a7a496336fd0be8b823e9ead4de9538"
+    },
+    {
+      "id": "taizhou6",
+      "name": "2026年上半年全市消费市场运行情况分析",
+      "publisher": "泰州市统计局",
+      "url": "https://tjj.taizhou.gov.cn/xxgk/fdzdgknr/tjxx/tjfx/art/2026/art_1798c62a68de4eb4b5bab04e0490017c.html",
+      "releaseDate": "2026-08-06",
+      "publishedAt": "2026-08-06",
+      "retrievedAt": "2026-10-22T04:47:04.115Z",
+      "quality": "official",
+      "provider": "官方原始披露",
+      "locator": "一、（一）：上半年全市社零954.9亿元，同比下降3.1%",
+      "sha256": "c27723fa2f72f2df7009d85137735df70844b3419beb5b64dccc3804464f5f4f"
+    },
+    {
+      "id": "choice-tier-longyan",
+      "name": "龙岩市社会消费品零售总额月度序列（本次Choice回执）",
+      "url": "https://choicew2z.eastmoney.com/dataDisplay/macroEDB/#/index?macroids=EMM00800607,EMM00800608,EMM00801569,EMM00801566",
+      "publisher": "龙岩市统计局（Choice转引）",
+      "provider": "Choice / 妙想",
+      "quality": "provider",
+      "releaseDate": null,
+      "publishedAt": null,
+      "retrievedAt": "2026-10-22T04:47:04.115Z",
+      "sha256": "e55a077148493cc57a183f1c9dc4446fefc7892da47e5812c8a12118f9070801",
+      "locator": "全口径累计金额及累计同比两行；2026-02至2026-07；8月由官方精确值替代",
+      "note": "中文量级金额原始显示精度保留，不由显示金额重算官方同比。三明限上/限下子口径不导入。"
+    },
+    {
+      "id": "choice-tier-extra-0",
+      "name": "泰州、宁德月度 / 赣州季度全口径社零（Choice本次回执）",
+      "url": "https://choicew2z.eastmoney.com/dataDisplay/macroEDB/#/index?macroids=EMM00787592,EMM00787591,EMM02592065,EMM02592056",
+      "publisher": "泰州市统计局、宁德市统计局（Choice转引）",
+      "quality": "provider",
+      "provider": "Choice / 妙想",
+      "releaseDate": null,
+      "publishedAt": null,
+      "retrievedAt": "2026-10-22T04:51:38.777Z",
+      "sha256": "b6feff7881d44309509b70d161fbf5264aebec70770e91b93bc7a678119f909b",
+      "locator": "2026-02至2026-08的宏观数据（月）",
+      "note": "原始中文量级金额，优先已有官方精确值；未返回发布日期"
+    },
+    {
+      "id": "choice-tier-extra-1",
+      "name": "泰州、宁德月度 / 赣州季度全口径社零（Choice本次回执）",
+      "url": "https://choicew2z.eastmoney.com/dataDisplay/macroEDB/#/index?macroids=EMM00584280,EMM00584281",
+      "publisher": "赣州市统计局（Choice转引）",
+      "quality": "provider",
+      "provider": "Choice / 妙想",
+      "releaseDate": null,
+      "publishedAt": null,
+      "retrievedAt": "2026-10-22T04:51:38.777Z",
+      "sha256": "b6feff7881d44309509b70d161fbf5264aebec70770e91b93bc7a678119f909b",
+      "locator": "2026-Q1至2026-Q2的宏观数据（季）",
+      "note": "原始中文量级金额，优先已有官方精确值；未返回发布日期"
+    },
+    {
+      "id": "yichang8",
+      "name": "首店经济激活城市能级——宜昌打造区域消费中心观察",
+      "publisher": "湖北省商务厅（转引荆楚网）",
+      "url": "https://swt.hubei.gov.cn/stdt/szsw/202610/t20261014_6032635.shtml",
+      "releaseDate": "2026-10-14",
+      "publishedAt": "2026-10-14",
+      "retrievedAt": "2026-10-22T04:51:38.777Z",
+      "quality": "official-repost",
+      "provider": "政府网站转载",
+      "sha256": "c3518f02c8361ab622475d332e8ceabadaa3f6d2942ed9c43563bc0c0d8bc7b8",
+      "locator": "今年1—8月，全市社会消费品零售总额同比增长3.1%；未提供全口径金额"
+    }
+  ],
+  "observations": [
+    {
+      "regionId": "cx-huaian",
+      "period": "2026-08",
+      "basis": "ytd",
+      "category": "社零总额",
+      "scope": "全口径",
+      "amount": 1353.5,
+      "yoy": 4.6,
+      "provenance": {
+        "amount": {
+          "sourceId": "huaian8",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元"
+        },
+        "yoy": {
+          "sourceId": "huaian8",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元"
+        }
+      },
+      "disputed": {}
+    },
+    {
+      "regionId": "cx-sanming",
+      "period": "2026-08",
+      "basis": "ytd",
+      "category": "社零总额",
+      "scope": "全口径",
+      "amount": 573.48,
+      "yoy": -0.1,
+      "provenance": {
+        "amount": {
+          "sourceId": "sanming8",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元"
+        },
+        "yoy": {
+          "sourceId": "sanming8",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元"
+        }
+      },
+      "disputed": {}
+    },
+    {
+      "regionId": "cx-sanming",
+      "period": "2026-07",
+      "basis": "ytd",
+      "category": "社零总额",
+      "scope": "全口径",
+      "amount": 503.04,
+      "yoy": -0.1,
+      "provenance": {
+        "amount": {
+          "sourceId": "sanming7",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元"
+        },
+        "yoy": {
+          "sourceId": "sanming7",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元"
+        }
+      },
+      "disputed": {}
+    },
+    {
+      "regionId": "cx-longyan",
+      "period": "2026-08",
+      "basis": "ytd",
+      "category": "社零总额",
+      "scope": "全口径",
+      "amount": 925.08,
+      "yoy": -1.3,
+      "provenance": {
+        "amount": {
+          "sourceId": "longyan8",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元"
+        },
+        "yoy": {
+          "sourceId": "longyan8",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元"
+        }
+      },
+      "disputed": {}
+    },
+    {
+      "regionId": "cx-longyan",
+      "period": "2026-08",
+      "basis": "month",
+      "category": "社零总额",
+      "scope": "全口径",
+      "amount": null,
+      "yoy": -1.3,
+      "provenance": {
+        "yoy": {
+          "sourceId": "longyan8",
+          "originalName": "全市社会消费品零售总额当月",
+          "originalFrequency": "月度",
+          "unit": "亿元"
+        }
+      },
+      "disputed": {}
+    },
+    {
+      "regionId": "cx-yuxi",
+      "period": "2026-08",
+      "basis": "ytd",
+      "category": "社零总额",
+      "scope": "全口径",
+      "amount": 555.04,
+      "yoy": -3.5,
+      "provenance": {
+        "amount": {
+          "sourceId": "yuxi8",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元"
+        },
+        "yoy": {
+          "sourceId": "yuxi8",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元"
+        }
+      },
+      "disputed": {}
+    },
+    {
+      "regionId": "cx-taizhou",
+      "period": "2026-06",
+      "basis": "ytd",
+      "category": "社零总额",
+      "scope": "全口径",
+      "amount": 954.9,
+      "yoy": -3.1,
+      "provenance": {
+        "amount": {
+          "sourceId": "taizhou6",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "季度",
+          "unit": "亿元"
+        },
+        "yoy": {
+          "sourceId": "taizhou6",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "季度",
+          "unit": "亿元"
+        }
+      },
+      "disputed": {}
+    },
+    {
+      "regionId": "cx-longyan",
+      "period": "2026-07",
+      "basis": "ytd",
+      "category": "社零总额",
+      "scope": "全口径",
+      "amount": 821.6,
+      "yoy": -1.3,
+      "provenance": {
+        "amount": {
+          "sourceId": "choice-tier-longyan",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元",
+          "originalAmount": "821.6亿",
+          "precision": "来源显示金额"
+        },
+        "yoy": {
+          "sourceId": "choice-tier-longyan",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元",
+          "originalAmount": "821.6亿",
+          "precision": "来源显示金额"
+        }
+      },
+      "disputed": {}
+    },
+    {
+      "regionId": "cx-longyan",
+      "period": "2026-06",
+      "basis": "ytd",
+      "category": "社零总额",
+      "scope": "全口径",
+      "amount": 721.4,
+      "yoy": -1.2,
+      "provenance": {
+        "amount": {
+          "sourceId": "choice-tier-longyan",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元",
+          "originalAmount": "721.4亿",
+          "precision": "来源显示金额"
+        },
+        "yoy": {
+          "sourceId": "choice-tier-longyan",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元",
+          "originalAmount": "721.4亿",
+          "precision": "来源显示金额"
+        }
+      },
+      "disputed": {}
+    },
+    {
+      "regionId": "cx-longyan",
+      "period": "2026-05",
+      "basis": "ytd",
+      "category": "社零总额",
+      "scope": "全口径",
+      "amount": 613.6,
+      "yoy": -1,
+      "provenance": {
+        "amount": {
+          "sourceId": "choice-tier-longyan",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元",
+          "originalAmount": "613.6亿",
+          "precision": "来源显示金额"
+        },
+        "yoy": {
+          "sourceId": "choice-tier-longyan",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元",
+          "originalAmount": "613.6亿",
+          "precision": "来源显示金额"
+        }
+      },
+      "disputed": {}
+    },
+    {
+      "regionId": "cx-longyan",
+      "period": "2026-04",
+      "basis": "ytd",
+      "category": "社零总额",
+      "scope": "全口径",
+      "amount": 502.9,
+      "yoy": -0.3,
+      "provenance": {
+        "amount": {
+          "sourceId": "choice-tier-longyan",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元",
+          "originalAmount": "502.9亿",
+          "precision": "来源显示金额"
+        },
+        "yoy": {
+          "sourceId": "choice-tier-longyan",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元",
+          "originalAmount": "502.9亿",
+          "precision": "来源显示金额"
+        }
+      },
+      "disputed": {}
+    },
+    {
+      "regionId": "cx-longyan",
+      "period": "2026-03",
+      "basis": "ytd",
+      "category": "社零总额",
+      "scope": "全口径",
+      "amount": 393.8,
+      "yoy": 0,
+      "provenance": {
+        "amount": {
+          "sourceId": "choice-tier-longyan",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元",
+          "originalAmount": "393.8亿",
+          "precision": "来源显示金额"
+        },
+        "yoy": {
+          "sourceId": "choice-tier-longyan",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元",
+          "originalAmount": "393.8亿",
+          "precision": "来源显示金额"
+        }
+      },
+      "disputed": {}
+    },
+    {
+      "regionId": "cx-longyan",
+      "period": "2026-02",
+      "basis": "ytd",
+      "category": "社零总额",
+      "scope": "全口径",
+      "amount": 267.6,
+      "yoy": -0.9,
+      "provenance": {
+        "amount": {
+          "sourceId": "choice-tier-longyan",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元",
+          "originalAmount": "267.6亿",
+          "precision": "来源显示金额"
+        },
+        "yoy": {
+          "sourceId": "choice-tier-longyan",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元",
+          "originalAmount": "267.6亿",
+          "precision": "来源显示金额"
+        }
+      },
+      "disputed": {}
+    },
+    {
+      "regionId": "cx-taizhou",
+      "period": "2026-07",
+      "basis": "ytd",
+      "category": "社零总额",
+      "scope": "全口径",
+      "amount": 1114,
+      "yoy": -2.9,
+      "provenance": {
+        "amount": {
+          "sourceId": "choice-tier-extra-0",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元",
+          "originalAmount": "1114亿",
+          "precision": "来源显示金额"
+        },
+        "yoy": {
+          "sourceId": "choice-tier-extra-0",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元",
+          "originalAmount": "1114亿",
+          "precision": "来源显示金额"
+        }
+      },
+      "disputed": {}
+    },
+    {
+      "regionId": "cx-taizhou",
+      "period": "2026-05",
+      "basis": "ytd",
+      "category": "社零总额",
+      "scope": "全口径",
+      "amount": 783.9,
+      "yoy": -3.8,
+      "provenance": {
+        "amount": {
+          "sourceId": "choice-tier-extra-0",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元",
+          "originalAmount": "783.9亿",
+          "precision": "来源显示金额"
+        },
+        "yoy": {
+          "sourceId": "choice-tier-extra-0",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元",
+          "originalAmount": "783.9亿",
+          "precision": "来源显示金额"
+        }
+      },
+      "disputed": {}
+    },
+    {
+      "regionId": "cx-taizhou",
+      "period": "2026-04",
+      "basis": "ytd",
+      "category": "社零总额",
+      "scope": "全口径",
+      "amount": 642.5,
+      "yoy": -3.9,
+      "provenance": {
+        "amount": {
+          "sourceId": "choice-tier-extra-0",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元",
+          "originalAmount": "642.5亿",
+          "precision": "来源显示金额"
+        },
+        "yoy": {
+          "sourceId": "choice-tier-extra-0",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元",
+          "originalAmount": "642.5亿",
+          "precision": "来源显示金额"
+        }
+      },
+      "disputed": {}
+    },
+    {
+      "regionId": "cx-taizhou",
+      "period": "2026-03",
+      "basis": "ytd",
+      "category": "社零总额",
+      "scope": "全口径",
+      "amount": 519,
+      "yoy": -3.7,
+      "provenance": {
+        "amount": {
+          "sourceId": "choice-tier-extra-0",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元",
+          "originalAmount": "519亿",
+          "precision": "来源显示金额"
+        },
+        "yoy": {
+          "sourceId": "choice-tier-extra-0",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元",
+          "originalAmount": "519亿",
+          "precision": "来源显示金额"
+        }
+      },
+      "disputed": {}
+    },
+    {
+      "regionId": "cx-taizhou",
+      "period": "2026-02",
+      "basis": "ytd",
+      "category": "社零总额",
+      "scope": "全口径",
+      "amount": 357.6,
+      "yoy": -2.3,
+      "provenance": {
+        "amount": {
+          "sourceId": "choice-tier-extra-0",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元",
+          "originalAmount": "357.6亿",
+          "precision": "来源显示金额"
+        },
+        "yoy": {
+          "sourceId": "choice-tier-extra-0",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元",
+          "originalAmount": "357.6亿",
+          "precision": "来源显示金额"
+        }
+      },
+      "disputed": {}
+    },
+    {
+      "regionId": "cx-ningde",
+      "period": "2026-08",
+      "basis": "ytd",
+      "category": "社零总额",
+      "scope": "全口径",
+      "amount": 659.5,
+      "yoy": -1.1,
+      "provenance": {
+        "amount": {
+          "sourceId": "choice-tier-extra-0",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元",
+          "originalAmount": "659.5亿",
+          "precision": "来源显示金额"
+        },
+        "yoy": {
+          "sourceId": "choice-tier-extra-0",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元",
+          "originalAmount": "659.5亿",
+          "precision": "来源显示金额"
+        }
+      },
+      "disputed": {}
+    },
+    {
+      "regionId": "cx-ningde",
+      "period": "2026-07",
+      "basis": "ytd",
+      "category": "社零总额",
+      "scope": "全口径",
+      "amount": 578.3,
+      "yoy": -1.2,
+      "provenance": {
+        "amount": {
+          "sourceId": "choice-tier-extra-0",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元",
+          "originalAmount": "578.3亿",
+          "precision": "来源显示金额"
+        },
+        "yoy": {
+          "sourceId": "choice-tier-extra-0",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元",
+          "originalAmount": "578.3亿",
+          "precision": "来源显示金额"
+        }
+      },
+      "disputed": {}
+    },
+    {
+      "regionId": "cx-ningde",
+      "period": "2026-06",
+      "basis": "ytd",
+      "category": "社零总额",
+      "scope": "全口径",
+      "amount": 497.3,
+      "yoy": -0.8,
+      "provenance": {
+        "amount": {
+          "sourceId": "choice-tier-extra-0",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元",
+          "originalAmount": "497.3亿",
+          "precision": "来源显示金额"
+        },
+        "yoy": {
+          "sourceId": "choice-tier-extra-0",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元",
+          "originalAmount": "497.3亿",
+          "precision": "来源显示金额"
+        }
+      },
+      "disputed": {}
+    },
+    {
+      "regionId": "cx-ningde",
+      "period": "2026-05",
+      "basis": "ytd",
+      "category": "社零总额",
+      "scope": "全口径",
+      "amount": 421.7,
+      "yoy": 1.6,
+      "provenance": {
+        "amount": {
+          "sourceId": "choice-tier-extra-0",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元",
+          "originalAmount": "421.7亿",
+          "precision": "来源显示金额"
+        },
+        "yoy": {
+          "sourceId": "choice-tier-extra-0",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元",
+          "originalAmount": "421.7亿",
+          "precision": "来源显示金额"
+        }
+      },
+      "disputed": {}
+    },
+    {
+      "regionId": "cx-ningde",
+      "period": "2026-04",
+      "basis": "ytd",
+      "category": "社零总额",
+      "scope": "全口径",
+      "amount": 344.7,
+      "yoy": 2.8,
+      "provenance": {
+        "amount": {
+          "sourceId": "choice-tier-extra-0",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元",
+          "originalAmount": "344.7亿",
+          "precision": "来源显示金额"
+        },
+        "yoy": {
+          "sourceId": "choice-tier-extra-0",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元",
+          "originalAmount": "344.7亿",
+          "precision": "来源显示金额"
+        }
+      },
+      "disputed": {}
+    },
+    {
+      "regionId": "cx-ningde",
+      "period": "2026-03",
+      "basis": "ytd",
+      "category": "社零总额",
+      "scope": "全口径",
+      "amount": 269,
+      "yoy": 2.7,
+      "provenance": {
+        "amount": {
+          "sourceId": "choice-tier-extra-0",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元",
+          "originalAmount": "269亿",
+          "precision": "来源显示金额"
+        },
+        "yoy": {
+          "sourceId": "choice-tier-extra-0",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元",
+          "originalAmount": "269亿",
+          "precision": "来源显示金额"
+        }
+      },
+      "disputed": {}
+    },
+    {
+      "regionId": "cx-ningde",
+      "period": "2026-02",
+      "basis": "ytd",
+      "category": "社零总额",
+      "scope": "全口径",
+      "amount": 186,
+      "yoy": 2.7,
+      "provenance": {
+        "amount": {
+          "sourceId": "choice-tier-extra-0",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元",
+          "originalAmount": "186亿",
+          "precision": "来源显示金额"
+        },
+        "yoy": {
+          "sourceId": "choice-tier-extra-0",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元",
+          "originalAmount": "186亿",
+          "precision": "来源显示金额"
+        }
+      },
+      "disputed": {}
+    },
+    {
+      "regionId": "cx-ganzhou",
+      "period": "2026-06",
+      "basis": "ytd",
+      "category": "社零总额",
+      "scope": "全口径",
+      "amount": 1054,
+      "yoy": 4.2,
+      "provenance": {
+        "amount": {
+          "sourceId": "choice-tier-extra-1",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "季度",
+          "unit": "亿元",
+          "originalAmount": "1054亿",
+          "precision": "来源显示金额"
+        },
+        "yoy": {
+          "sourceId": "choice-tier-extra-1",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "季度",
+          "unit": "亿元",
+          "originalAmount": "1054亿",
+          "precision": "来源显示金额"
+        }
+      },
+      "disputed": {}
+    },
+    {
+      "regionId": "cx-ganzhou",
+      "period": "2026-03",
+      "basis": "ytd",
+      "category": "社零总额",
+      "scope": "全口径",
+      "amount": 512.7,
+      "yoy": 5.6,
+      "provenance": {
+        "amount": {
+          "sourceId": "choice-tier-extra-1",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "季度",
+          "unit": "亿元",
+          "originalAmount": "512.7亿",
+          "precision": "来源显示金额"
+        },
+        "yoy": {
+          "sourceId": "choice-tier-extra-1",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "季度",
+          "unit": "亿元",
+          "originalAmount": "512.7亿",
+          "precision": "来源显示金额"
+        }
+      },
+      "disputed": {}
+    },
+    {
+      "regionId": "cx-yichang",
+      "period": "2026-08",
+      "basis": "ytd",
+      "category": "社零总额",
+      "scope": "全口径",
+      "amount": null,
+      "yoy": 3.1,
+      "provenance": {
+        "yoy": {
+          "sourceId": "yichang8",
+          "originalName": "全市社会消费品零售总额累计",
+          "originalFrequency": "月度",
+          "unit": "亿元",
+          "originalAmount": null,
+          "precision": "来源显示金额"
+        }
+      },
+      "disputed": {}
+    }
+  ],
+  "notes": [
+    "本轮补淮安、三明、龙岩、玉溪、泰州、宁德、赣州、宜昌八城，仅在实际披露期显示。龙岩8月采用官方精确金额，其他Choice金额保留显示精度；宜昌来自湖北省商务厅转载荆楚网，单独标识转载。",
+    "本轮Choice对桂林、洛阳、湖州、镇江仅返回年度；三明仅返回限上/限下子序列，均未用于补月度全口径。",
+    "补充文件与既有地方社零按城市与期间合并供各视图读取，既有历史不删改。"
+  ]
+}
