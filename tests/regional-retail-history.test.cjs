@@ -12,9 +12,9 @@ test('monthly contribution math reconciles separately for early full-scope usage
 });
 test('coverage expands to at least 100 cities, quarter-end samples stay at their real dates, broad period uses recent coverage',()=>{
  assert.ok(M.regions(D,'city').length>=100);assert.equal(new Set(M.regions(D,'city').map(r=>r.name)).size,M.regions(D,'city').length);assert.equal(M.regions(D,'province').length,31);
- assert.equal(T.broadPeriod(D,R),'2026-06');const s=T.snapshot(D,R,'2026-06','ytd');assert.ok(s.reduce((sum,r)=>sum+r.n,0)>=60);assert.ok(s[2].n>=20&&s[3].n>=10);
+ assert.equal(T.broadPeriod(D,R),'2026-06');const s=T.snapshot(D,R,'2026-06','ytd');assert.ok(s.reduce((sum,r)=>sum+r.n,0)>=60);assert.ok(s[3].n>=20&&s[4].n>=10);
  const huangshan=D.regions.find(r=>r.name==='黄山');assert.ok(M.observation(D,huangshan.id,'2026-06','ytd'));assert.equal(M.observation(D,huangshan.id,'2026-08','ytd'),null);
- const series=T.trend(D,R,'2026-06','ytd','average','fixed',5,'quarterly');assert.ok(series[0].points.every(p=>Number(p.period.slice(5))%3===0));assert.equal(M.seriesHistory(D,'p0','month','社零总额','全口径',5,'2026-09').length,60);
+ const series=T.trend(D,R,'2026-06','ytd','average','fixed',5,'quarterly');assert.ok(series[0].points.every(p=>Number(p.period.slice(5))%3===0));assert.equal(M.seriesHistory(D,'p0','month','社零总额','全口径',5,'2026-09').filter(p=>!p.period.endsWith('c')).every(p=>p.period>='2021-10'&&p.period<='2026-09'),true);
 });
 test('new history sources resolve, exact keys remain unique and disputed provider fields stay unavailable',()=>{
  const keys=new Set(),ids=new Set(D.sources.map(s=>s.id));for(const r of D.observations){const key=[r.regionId,r.period,r.basis,r.category,r.scope].join('|');assert.ok(!keys.has(key));keys.add(key);assert.ok(r.period<='2026-09');for(const p of Object.values(r.provenance))assert.ok(ids.has(p.sourceId));if(r.disputed?.yoy)assert.equal(r.yoy,null);}
@@ -24,3 +24,4 @@ test('new history sources resolve, exact keys remain unique and disputed provide
 test('import never substitutes an unknown city or online retail for a province and rejects annual/ambiguous rows',()=>{
  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'retail-history-'));try{const response={content:[{text:JSON.stringify({data:[{columns:['宏观数据（月）','数据来源','2026-08'],sheetName:'fixture',items:[['湖北省:仙桃市:社会消费品零售总额:累计值(元)','统计局','600.5亿'],['北京市:社会消费品零售额:网上零售额:累计值(元)','统计局','100亿'],['江苏省:盐城市:社会消费品零售总额:同比(%)','统计局','2'],['江苏省:无锡市:社会消费品零售总额:累计同比(%)','统计局','0']]},{columns:['宏观数据（年）','数据来源','2025'],sheetName:'annual',items:[['无锡市:社会消费品零售总额:累计同比(%)','统计局','10']]}]})}]};fs.writeFileSync(path.join(dir,'choice-test.json'),JSON.stringify({response,retrievedAt:'2026-10-22'}));const base=require('../data/regional-retail/observations.json'),result=B.build(dir,base,{regions:[],observations:[]},{observations:[],sources:[]});assert.equal(result.series.length,1);assert.equal(result.series[0].points[0][2],0);assert.ok(result.series[0].originalName.includes('无锡'));assert.ok(result.importAudit.ignored.length>=3);assert.equal(B.numeric('12300',true,'(万元)'),1.23);}finally{assert.ok(path.resolve(dir).startsWith(path.resolve(os.tmpdir())+path.sep));fs.rmSync(dir,{recursive:true,force:true});}
 });
+

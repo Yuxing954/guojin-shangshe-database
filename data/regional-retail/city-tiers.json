@@ -1,25 +1,30 @@
 {
   "schemaVersion": 1,
   "updatedAt": "2026-10-22T04:47:04.115Z",
-  "version": "第一财经2025固定分级",
+  "version": "第一财经2025原始分级 · 五档展示",
   "groups": [
     {
       "id": 1,
-      "label": "一线",
+      "label": "超一线",
       "universe": 4
     },
     {
       "id": 2,
-      "label": "二线（含新一线）",
-      "universe": 45
+      "label": "一线",
+      "universe": 15
     },
     {
       "id": 3,
+      "label": "二线",
+      "universe": 30
+    },
+    {
+      "id": 4,
       "label": "三线",
       "universe": 70
     },
     {
-      "id": 4,
+      "id": 5,
       "label": "四线",
       "universe": 90
     }
@@ -123,952 +128,952 @@
     {
       "name": "济南",
       "originalTier": "二线",
-      "group": 2
+      "group": 3
     },
     {
       "name": "无锡",
       "originalTier": "二线",
-      "group": 2
+      "group": 3
     },
     {
       "name": "沈阳",
       "originalTier": "二线",
-      "group": 2
+      "group": 3
     },
     {
       "name": "昆明",
       "originalTier": "二线",
-      "group": 2
+      "group": 3
     },
     {
       "name": "福州",
       "originalTier": "二线",
-      "group": 2
+      "group": 3
     },
     {
       "name": "厦门",
       "originalTier": "二线",
-      "group": 2
+      "group": 3
     },
     {
       "name": "温州",
       "originalTier": "二线",
-      "group": 2
+      "group": 3
     },
     {
       "name": "石家庄",
       "originalTier": "二线",
-      "group": 2
+      "group": 3
     },
     {
       "name": "大连",
       "originalTier": "二线",
-      "group": 2
+      "group": 3
     },
     {
       "name": "哈尔滨",
       "originalTier": "二线",
-      "group": 2
+      "group": 3
     },
     {
       "name": "金华",
       "originalTier": "二线",
-      "group": 2
+      "group": 3
     },
     {
       "name": "泉州",
       "originalTier": "二线",
-      "group": 2
+      "group": 3
     },
     {
       "name": "南宁",
       "originalTier": "二线",
-      "group": 2
+      "group": 3
     },
     {
       "name": "长春",
       "originalTier": "二线",
-      "group": 2
+      "group": 3
     },
     {
       "name": "常州",
       "originalTier": "二线",
-      "group": 2
+      "group": 3
     },
     {
       "name": "南昌",
       "originalTier": "二线",
-      "group": 2
+      "group": 3
     },
     {
       "name": "南通",
       "originalTier": "二线",
-      "group": 2
+      "group": 3
     },
     {
       "name": "贵阳",
       "originalTier": "二线",
-      "group": 2
+      "group": 3
     },
     {
       "name": "嘉兴",
       "originalTier": "二线",
-      "group": 2
+      "group": 3
     },
     {
       "name": "徐州",
       "originalTier": "二线",
-      "group": 2
+      "group": 3
     },
     {
       "name": "惠州",
       "originalTier": "二线",
-      "group": 2
+      "group": 3
     },
     {
       "name": "太原",
       "originalTier": "二线",
-      "group": 2
+      "group": 3
     },
     {
       "name": "烟台",
       "originalTier": "二线",
-      "group": 2
+      "group": 3
     },
     {
       "name": "临沂",
       "originalTier": "二线",
-      "group": 2
+      "group": 3
     },
     {
       "name": "保定",
       "originalTier": "二线",
-      "group": 2
+      "group": 3
     },
     {
       "name": "台州",
       "originalTier": "二线",
-      "group": 2
+      "group": 3
     },
     {
       "name": "绍兴",
       "originalTier": "二线",
-      "group": 2
+      "group": 3
     },
     {
       "name": "珠海",
       "originalTier": "二线",
-      "group": 2
+      "group": 3
     },
     {
       "name": "洛阳",
       "originalTier": "二线",
-      "group": 2
+      "group": 3
     },
     {
       "name": "潍坊",
       "originalTier": "二线",
-      "group": 2
+      "group": 3
     },
     {
       "name": "乌鲁木齐",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "兰州",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "中山",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "盐城",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "海口",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "扬州",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "济宁",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "湖州",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "赣州",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "邯郸",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "南阳",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "唐山",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "芜湖",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "阜阳",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "廊坊",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "汕头",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "泰州",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "呼和浩特",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "镇江",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "江门",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "菏泽",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "连云港",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "沧州",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "淄博",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "新乡",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "周口",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "襄阳",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "淮安",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "商丘",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "桂林",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "咸阳",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "上饶",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "银川",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "宿迁",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "漳州",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "遵义",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "滁州",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "绵阳",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "宜昌",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "威海",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "湛江",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "九江",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "邢台",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "揭阳",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "三亚",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "衡阳",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "信阳",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "泰安",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "荆州",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "肇庆",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "蚌埠",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "安阳",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "安庆",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "德州",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "株洲",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "莆田",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "聊城",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "驻马店",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "岳阳",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "亳州",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "柳州",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "宜春",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "宿州",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "黄冈",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "六安",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "常德",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "宁德",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "茂名",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "马鞍山",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "衢州",
       "originalTier": "三线",
-      "group": 3
+      "group": 4
     },
     {
       "name": "枣庄",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "宜宾",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "榆林",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "开封",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "邵阳",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "运城",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "清远",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "吉安",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "日照",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "许昌",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "包头",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "郴州",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "滨州",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "丽水",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "宣城",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "淮南",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "平顶山",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "东营",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "南充",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "秦皇岛",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "黄石",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "鞍山",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "晋中",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "曲靖",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "孝感",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "抚州",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "宝鸡",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "渭南",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "舟山",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "德阳",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "衡水",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "吉林",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "西宁",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "龙岩",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "焦作",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "十堰",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "濮阳",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "潮州",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "大庆",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "湘潭",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "鄂尔多斯",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "泸州",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "长治",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "怀化",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "玉林",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "大同",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "梅州",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "南平",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "黄山",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "临汾",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "赤峰",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "恩施",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "齐齐哈尔",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "张家口",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "阳江",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "达州",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "乐山",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "益阳",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "汕尾",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "大理",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "永州",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "红河",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "北海",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "河源",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "锦州",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "毕节",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "景德镇",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "晋城",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "凉山",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "韶关",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "三明",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "黔东南",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "眉山",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "承德",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "铜陵",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "荆门",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "黔南",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "淮北",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "铜仁",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "咸宁",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "营口",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "娄底",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "汉中",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "玉溪",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "喀什",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "遂宁",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "拉萨",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "百色",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "天水",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     },
     {
       "name": "吕梁",
       "originalTier": "四线",
-      "group": 4
+      "group": 5
     }
   ],
   "sources": [
@@ -1094,12 +1099,12 @@
   ],
   "notes": [
     "采用第一财经2025公开分级固定映射历史。2026年原发布机构已停止排名与城市分级输出，因此没有标注为2026分级。",
-    "按用户四组展示：二线包含15个新一线和30个二线城市；保留原始标签。四线仅为原始四线，不含五线。分级是机构研究分类，不是行政等级。",
-    "四组分级名单共209城，社零样本只覆盖已取得有效数据城市；省级数据仅四个直辖市纳入城市且只计一次。",
+    "五组分级名单共209城，社零样本只覆盖已取得有效数据城市；省级数据仅四个直辖市纳入城市且只计一次。",
     "平均同比为同一期、同一全口径城市同比的算术平均（原始披露优先，当月含已标注推算），真实0参与，缺失和待核验值不参与；不是全国该线城市增速。中位数和正增长占比使用同一样本。",
     "可比基数加权（测算）仅使用同时有金额及同比且基数为正（含已标注推算）的城市：100×[Σ本期金额/Σ(本期金额/(1+同比/100))−1]。其样本数单列；金额舍入及统计口径修订影响精度。",
     "增速较上月只在两期均有同比的同城市配对样本上求平均差，单位百分点，不是社零金额环比。累计与当月不混用；当月缺失时按同年相邻累计金额差分测算，保留测算标签及两期来源。",
     "趋势默认固定当前期有数据的城市样本；某期任一城市缺失则断线，并给出当期可用数。可切换逐期可用样本，届时跨期城市构成可能变化。",
-    "样本不足3城时标注样本偏少；三四线当前覆盖很低，不能据此推断全国下沉消费强弱。"
+    "样本不足3城时标注样本偏少；三四线当前覆盖很低，不能据此推断全国下沉消费强弱。",
+    "五档展示为本看板自定义映射：原一线（北上广深）展示为超一线，原新一线展示为一线，原二、三、四线不变；保留原始分级。各档固定名单分别为4、15、30、70、90城。"
   ]
 }
