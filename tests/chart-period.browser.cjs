@@ -13,7 +13,7 @@ try{
  ['hotel-dashboard.html#view=overview','weekly'],['hotel-dashboard.html#view=structure','weekly'],
  ['hotel-groups.html#view=groups&type=weekly','weekly'],['company-database.html?company=atour&tab=operating','quarter'],
  ['domestic-hotel-comparison.html','quarter'],['overseas-hotels.html?company=marriott&tab=operating','quarter'],
- ['overseas-hotel-comparison.html','quarter'],['regional-retail.html','monthly'],
+ ['overseas-hotel-comparison.html','quarter'],['regional-retail.html','quarter'],
  ['macro.html?view=indicators','quarter'],['cruise-dashboard.html','monthly']
 
  ];
