@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-22",
+  "validatedCommit": "df745bdce28c332465a21f3773e03ecd0e6144b7",
+  "dailyTests": {
+    "passed": 53,
+    "failed": 0,
+    "workflowRunId": 39761866260,
+    "jobId": 119767738633
+  },
+  "drafts": [
+    {
+      "date": "2026-10-21",
+      "focusCards": 5,
+      "originals": 6,
+      "allSourceBodiesMatch": true,
+      "publicationStatus": "blocked"
+    },
+    {
+      "date": "2026-10-22",
+      "focusCards": 7,
+      "originals": 9,
+      "allSourceBodiesMatch": true,
+      "publicationStatus": "blocked",
+      "researchCoverage": "complete_from_post_cutoff_batch",
+      "latestRunId": "2026-10-22-100632-rd80cf"
+    }
+  ],
+  "attachmentBackfill": {
+    "dates": [
+      "2026-10-19",
+      "2026-10-18"
+    ],
+    "sourceItemsValidated": true,
+    "remoteReconcile": {
+      "updated": [],
+      "skipped": []
+    }
+  },
+  "siteCheck": {
+    "status": "failed",
+    "file": "hotel-groups.html",
+    "reason": "hotel-groups.css is ordered after site-polish.css",
+    "workflowRunId": 39761866260,
+    "jobId": 119767738633,
+    "scope": "existing unrelated hotel-group entrypoint",
+    "action": "not_modified_outside_daily_scope"
+  },
+  "pages": {
+    "runId": 39761865772,
+    "status": "in_progress",
+    "conclusion": null
+  },
+  "liveReadback": {
+    "status": "unavailable",
+    "error": "Public Pages URLs were not accessible through the readback service"
+  },
+  "formalPublication": {
+    "status": "not_published",
+    "retainedLatestPublishedDate": "2026-10-19",
+    "reason": "Incomplete attachment scan; full-site validation also remains failed"
+  }
+}

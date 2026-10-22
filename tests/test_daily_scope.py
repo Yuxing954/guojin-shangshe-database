@@ -1,8 +1,14 @@
 import sys,unittest
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
-from daily_scope import sector_for,title_for,published_for
+from daily_scope import sector_for,title_for,published_for,substantive_segment
 class ScopeTests(unittest.TestCase):
+ def test_tobacco_brands_and_short_company_events(self):
+  self.assertEqual(sector_for('PMI发布26Q3财报，IQOS动销重回高个位数，ZYN美国量价齐升'),'零售与消费出海')
+  self.assertEqual(sector_for('安踏体育26Q3交流更新【国金纺服】'),'零售与消费出海')
+  text='布鲁可暴跌超18%，因控股股东减持套现2.1亿人民币，公司回应与信托补税有关，后续资金缺口以及是否会继续减持暂未沟通。'
+  self.assertTrue(substantive_segment('布鲁可减持更新',text))
+  self.assertFalse(substantive_segment('布鲁可交流预告','布鲁可今天晚上8点举行电话会，欢迎报名参加交流，有兴趣的领导联系团队获取会议链接。'))
  def test_coverage_beauty_company_survives_broker_heading_cleanup(self):
   title='【华泰消费｜美护】底部坚定推荐，重申对于上美股份的底部买入时机'
   self.assertEqual(sector_for(title),'零售与消费出海')

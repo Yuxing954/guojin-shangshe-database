@@ -2,7 +2,7 @@
 """Build a dated Asia/Shanghai digest; see docs/daily-report.md."""
 import argparse, csv, datetime as dt, hashlib, json, re, subprocess
 from pathlib import Path
-from daily_scope import sector_for,title_for,published_for
+from daily_scope import sector_for,title_for,published_for,substantive_segment
 from research_sources import merge_rows, update_rows, archive_rows
 ROOT=Path(__file__).resolve().parent.parent
 TZ=dt.timezone(dt.timedelta(hours=8))
@@ -44,7 +44,7 @@ def research(end):
             sector=sector_for(title,body)
             if not sector:
                 excluded+=1; continue
-            if len(when)<=10 or len(body)<80 or not title:
+            if len(when)<=10 or not substantive_segment(title,body) or not title:
                 excluded+=1; continue
             key=hashlib.sha256(re.sub(r'\s','',body).encode()).hexdigest()
             if key in seen: continue
@@ -117,3 +117,4 @@ def main():
     (folder/'index.json').write_text(json.dumps({'dates':dates},ensure_ascii=False,indent=2)+'\n')
     print({k:len(v) for k,v in report['sections'].items()})
 if __name__=='__main__': main()
+
