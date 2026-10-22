@@ -1,10 +1,10 @@
 {
-  "syncedAt": "2026-10-22T10:07:57.919Z",
+  "syncedAt": "2026-10-22T11:10:47.705Z",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
-  "coverageFrom": "2026-10-22T14:52:22.347+0800",
-  "coverageTo": "2026-10-22T18:04:01.431+0800",
-  "oldestFetched": "2026-10-22T13:07:55.567+0800",
+  "coverageFrom": "2026-10-22T18:04:01.431+0800",
+  "coverageTo": "2026-10-22T18:20:03.989+0800",
+  "oldestFetched": "2026-10-22T13:15:06.883+0800",
   "fetchedTopics": 30,
   "files": {
     "views": [
@@ -82,6 +82,7 @@
       "data/research/updates/2026-10-14-1258-views.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-10-22-190936-all_views-000.csv",
       "data/research/updates/2026-10-22-100632-rd80cf-all_views-000.csv",
       "data/research/updates/2026-10-22-150317-all_views-000.csv",
       "data/research/updates/2026-10-22-055848-r671b4-all_views-000.csv",
@@ -249,12 +250,12 @@
   },
   "counts": {
     "views": 404,
-    "all_views": 6103,
+    "all_views": 6104,
     "minutes": 101
   },
   "latest": {
     "views": "2026-10-22 17:37",
-    "all_views": "2026-10-22 17:38",
+    "all_views": "2026-10-22 18:20",
     "minutes": "2026-10-12T01:07:33"
   },
   "excluded": {
@@ -6706,65 +6707,40 @@
       "45548521521484558",
       "82258241241551122",
       "82258241412121112",
-      "14425418184151542"
+      "14425418184151542",
+      "45548521212818858"
     ]
   },
   "lastRun": {
-    "runId": "2026-10-22-100632-rd80cf",
+    "runId": "2026-10-22-190936",
     "sourceGroup": "88888142214212",
     "sourceName": "水木调研纪要-2.0",
-    "previousCoverageTo": "2026-10-22T14:52:22.347+0800",
-    "coverageTo": "2026-10-22T18:04:01.431+0800",
+    "previousCoverageTo": "2026-10-22T18:04:01.431+0800",
+    "coverageTo": "2026-10-22T18:20:03.989+0800",
     "added": {
-      "views": 3,
-      "all_views": 2
+      "views": 0,
+      "all_views": 1
     },
     "updated": 0,
     "expiredRemoved": 0,
     "sourceTopicIds": [
-      "82258241412121112",
-      "55521548485854824",
-      "14425418184151542",
-      "14425418184125242",
-      "22258241412212841"
+      "45548521212818858"
     ],
-    "duplicateTopicIds": [
-      "22258241412488851"
-    ],
+    "duplicateTopicIds": [],
     "briefChanges": {
-      "added": 1,
-      "updated": 2,
+      "added": 0,
+      "updated": 0,
       "expiredRemoved": 0
     },
-    "duplicates": 1,
+    "duplicates": 0,
     "excludedTopics": [
       {
-        "topicId": "22258241412154251",
-        "reason": "无可读观点正文"
+        "topicId": "55521548484122454",
+        "reason": "仅标题，无实际论据或观点正文"
       },
       {
-        "topicId": "22258241412154821",
-        "reason": "无可读观点正文"
-      },
-      {
-        "topicId": "14425418184148422",
-        "reason": "无可读观点正文"
-      },
-      {
-        "topicId": "14425418184148582",
-        "reason": "无可读观点正文"
-      },
-      {
-        "topicId": "22258241412424451",
-        "reason": "无可读观点正文"
-      },
-      {
-        "topicId": "14425418181281552",
-        "reason": "仅标题或标签，缺少实际投资观点正文"
-      },
-      {
-        "topicId": "82258241412482222",
-        "reason": "仅标题或标签，缺少实际投资观点正文"
+        "topicId": "22258241414855821",
+        "reason": "仅标题，无实际论据或观点正文"
       }
     ],
     "pagination": {
@@ -6774,34 +6750,28 @@
       "stoppedWhenPageReachedCoverage": true
     },
     "dedupCheck": {
-      "candidateKeys": 32,
-      "candidateBuckets": 31,
+      "candidateKeys": 12,
+      "candidateBuckets": 11,
       "algorithm": "sha256-utf8-v1"
     },
     "expiredBriefIds": []
   },
   "lastUpdateRecord": {
-    "runId": "2026-10-22-100632-rd80cf",
+    "runId": "2026-10-22-190936",
     "sourceGroup": "88888142214212",
     "sourceName": "水木调研纪要-2.0",
-    "previousCoverageTo": "2026-10-22T14:52:22.347+0800",
-    "coverageTo": "2026-10-22T18:04:01.431+0800",
-    "added": 5,
+    "previousCoverageTo": "2026-10-22T18:04:01.431+0800",
+    "coverageTo": "2026-10-22T18:20:03.989+0800",
+    "added": 1,
     "updated": 0,
     "expiredRemoved": 0,
     "sourceTopicIds": [
-      "82258241412121112",
-      "55521548485854824",
-      "14425418184151542",
-      "14425418184125242",
-      "22258241412212841"
+      "45548521212818858"
     ],
-    "duplicateTopicIds": [
-      "22258241412488851"
-    ],
+    "duplicateTopicIds": [],
     "briefChanges": {
-      "added": 1,
-      "updated": 2,
+      "added": 0,
+      "updated": 0,
       "expiredRemoved": 0
     }
   }
