@@ -1,68 +1,73 @@
 (function(){
-'use strict';
-SiteUI.pages['regional-retail.html']=['macro','地方社零'];
-const M=RegionalRetail,D=SiteData,$=id=>document.getElementById(id),esc=D.esc,finite=M.finite;
-let data,currentRows=[],structureRows=[],caseData=null,view='comparison';
-const num=(v,d=1)=>finite(v)?v.toLocaleString('zh-CN',{minimumFractionDigits:d,maximumFractionDigits:d}):'—';
-const pct=v=>finite(v)?(v>0?'+':'')+num(v)+'%':'—';
-const color=v=>!finite(v)||v===0?'':v>0?'regional-pos':'regional-neg';
-function option(values,selected){return values.map(x=>'<option value="'+esc(x.value??x)+'"'+((x.value??x)===selected?' selected':'')+'>'+esc(x.label??x)+'</option>').join('');}
-function links(row){return M.sourceIds(row).map(id=>{const s=data.sources.find(x=>x.id===id);if(!s)return '';const url=D.link(s.url);return url?'<a href="'+esc(url)+'" target="_blank" rel="noopener" title="'+esc([s.publisher,s.releaseDate?'发布 '+s.releaseDate:'发布日期未提供',row.provenance?.amount?.originalName||row.provenance?.yoy?.originalName].filter(Boolean).join(' · '))+'">'+(['provider','secondary'].includes(s.quality)?'Choice':s.quality==='official-repost'?'转载':'原文')+' ↗</a>':'来源未返回';}).join(' ');}
-function kpi(label,value,sub=''){return '<article class="regional-kpi"><span>'+esc(label)+'</span><strong>'+esc(value)+'</strong><small>'+esc(sub)+'</small></article>';}
-function syncPeriods(basisId,periodId,preferred){const ps=M.periods(data,$(basisId).value);const selected=ps.includes(preferred)?preferred:ps.at(-1);$(periodId).innerHTML=option(ps.slice().reverse(),selected);}
-function renderComparison(){
- const level=$('level').value,period=$('period').value,basis=$('basis').value,query=$('regional-search').value.trim();
- currentRows=M.compare(data,level,period,basis).filter(r=>!query||r.name.includes(query)||r.parent?.includes(query));
- const valid=currentRows.filter(r=>finite(r.yoy)),positive=valid.filter(r=>r.yoy>0).length,negative=valid.filter(r=>r.yoy<0).length,sorted=valid.map(r=>r.yoy).sort((a,b)=>a-b),n=sorted.length,median=n?(n%2?sorted[(n-1)/2]:(sorted[n/2-1]+sorted[n/2])/2):null;
- $('comparison-title').textContent=period+' · '+(basis==='ytd'?'年初累计':basis==='combined'?'1—2月合并':'当月')+' · '+(level==='city'?'城市':'省级地区');
- $('comparison-count').textContent=currentRows.length+'个地区 / '+valid.length+'个有同比数据';
- $('comparison-summary').innerHTML=kpi('有同比数据',valid.length+' / '+currentRows.length,'所选同一统计期')+kpi('正增长地区',String(positive),'同比 > 0')+kpi('负增长地区',String(negative),'同比 < 0')+kpi('同比中位数',pct(median),'有数据地区');
- const max=Math.max(1,...valid.map(r=>Math.abs(r.yoy)));
- $('comparison-bars').innerHTML=valid.length?valid.map(r=>'<div class="regional-bars"><span>'+esc(r.name)+'</span><div class="track"><i style="background:'+(r.yoy<0?'#71a398':'#b98287')+';left:'+(r.yoy<0?50-Math.abs(r.yoy)/max*48:50)+'%;width:'+Math.abs(r.yoy)/max*48+'%"></i></div><b class="'+color(r.yoy)+'">'+pct(r.yoy)+'</b></div>').join(''):'<div class="regional-empty">所选统计期暂无同比数据</div>';
- $('comparison-table').innerHTML=currentRows.map(r=>'<tr><td>'+esc(r.name)+'</td><td>'+num(r.amount,2)+'</td><td class="'+color(r.yoy)+'">'+(r.disputed.yoy?'待核验':num(r.yoy))+'</td><td>'+num(r.change)+'</td><td>'+links(r)+'</td></tr>').join('');
- const previous=$('history-region').value,geo=M.regions(data,level);$('history-region').innerHTML=option(geo.map(r=>({value:r.id,label:r.name})),geo.some(r=>r.id===previous)?previous:geo[0]?.id);renderHistory();
- SiteUI.save({level,period,basis,view});
-}
-function renderHistory(){
- const id=$('history-region').value,basis=$('basis').value,points=M.history(data,id,basis),valid=points.filter(p=>finite(p.yoy)),name=data.regions.find(r=>r.id===id)?.name||'';
- if(!valid.length){$('history-chart').innerHTML='<p class="regional-empty">暂无所选口径的历史同比</p>';return;}
- const lo=Math.min(0,...valid.map(p=>p.yoy)),hi=Math.max(0,...valid.map(p=>p.yoy)),span=hi-lo||1,x=i=>55+i*880/Math.max(1,points.length-1),y=v=>190-(v-lo)/span*145;
- let paths=[],segment=[];points.forEach((p,i)=>{if(finite(p.yoy))segment.push(x(i)+','+y(p.yoy));else if(segment.length){paths.push(segment);segment=[];}});if(segment.length)paths.push(segment);
- $('history-chart').innerHTML='<p class="regional-series-title">'+esc(name)+' · 官方同比（%）</p><svg class="regional-chart" viewBox="0 0 990 230" role="img" aria-label="'+esc(name)+'官方同比历史趋势，缺期断线"><title>'+esc(name)+'官方同比历史趋势</title>'+[lo,(lo+hi)/2,hi].map(v=>'<line x1="55" x2="935" y1="'+y(v)+'" y2="'+y(v)+'" stroke="#e3e6ef"/><text x="2" y="'+(y(v)+4)+'">'+num(v)+'</text>').join('')+paths.map(seg=>'<polyline points="'+seg.join(' ')+'" fill="none" stroke="#5969a4" stroke-width="2.4"/>').join('')+points.map((p,i)=>finite(p.yoy)?'<circle cx="'+x(i)+'" cy="'+y(p.yoy)+'" r="3" fill="#5969a4"><title>'+p.period+'：'+pct(p.yoy)+'</title></circle>':'').join('')+'<text x="55" y="220">'+points[0].period+'</text><text x="935" y="220" text-anchor="end">'+points.at(-1).period+'</text></svg>';
-}
-function renderStructure(){
- const period=$('structure-period').value,basis=$('structure-basis').value,city=$('structure-city').value;
- structureRows=M.categories(data,period,basis).filter(r=>!city||r.regionId===city).sort((a,b)=>a.regionId.localeCompare(b.regionId)||a.category.localeCompare(b.category,'zh-CN'));
- $('structure-title').textContent=period+' · '+(basis==='ytd'?'年初累计':basis==='combined'?'1—2月合并':'当月')+' · 品类与消费形态';
- $('structure-table').innerHTML=structureRows.length?structureRows.map(r=>'<tr><td>'+esc(data.regions.find(x=>x.id===r.regionId)?.name)+'</td><td>'+esc(r.category)+'</td><td>'+esc(r.scope)+'</td><td>'+num(r.amount,2)+'</td><td class="'+color(r.yoy)+'">'+num(r.yoy)+'</td><td>'+links(r)+'</td></tr>').join(''):'<tr><td colspan="6" class="regional-empty">所选城市与统计期暂无结构数据</td></tr>';
-}
-function renderBeijing(){
- const id=data.regions.find(r=>r.name==='北京').id,c=caseData=M.decompose(data,id,'2026-09','month');
- if(!c){$('beijing-kpis').innerHTML='<p class="regional-empty">北京9月原始数据暂未取得</p>';return;}
- $('beijing-kpis').innerHTML=kpi('9月社零总额',num(c.total.amount,2),'亿元')+kpi('9月官方同比',pct(c.total.yoy),'全口径')+kpi('通讯器材增量占比',num(c.communication?.incrementShare)+'%','测算')+kpi('剔除通讯器材后同比',pct(c.exCommunication),'测算');
- $('beijing-table').innerHTML=c.rows.map(r=>'<tr><td>'+esc(r.category)+'</td><td>'+num(r.amount,2)+'</td><td class="'+color(r.yoy)+'">'+num(r.yoy)+'</td><td class="'+color(r.increment)+'">'+num(r.increment,2)+'</td><td>'+num(r.contributionPp,2)+'</td><td>'+links(r)+'</td></tr>').join('')+'<tr><td>未列商品及餐饮（残差）</td><td>—</td><td>—</td><td>'+num(c.residual,2)+'</td><td>'+num(c.residual/c.base*100,2)+'</td><td>'+links(c.total)+'</td></tr>';
- const ytd=M.observation(data,id,'2026-09','ytd');
- $('beijing-exclusions').innerHTML=kpi('1—9月官方同比',pct(ytd?.yoy),'累计口径')+kpi('剔除汽车后同比',pct(c.exAuto),'测算')+kpi('剔除通讯与汽车后同比',pct(c.exBoth),'测算')+kpi(c.rows.length+'类同比中位数',pct(c.median),'限上已披露品类');
-}
-function setView(next){view=['tiers','comparison','structure','beijing'].includes(next)?next:'comparison';for(const key of ['tiers','comparison','structure','beijing'])$(key).hidden=key!==view;document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===view)));SiteUI.save({view});}
-async function load(){
- $('regional-status').textContent='正在读取地方社零…';$('regional-retry').hidden=true;
- try{data=await D.json('data/regional-retail/observations.json');if(!data.regions?.length||!data.observations?.length)throw Error('空数据');data=await RegionalTierDashboard.load(data);const p=new URLSearchParams(location.search);$('level').value=p.get('level')==='province'?'province':'city';$('basis').value=['ytd','month','combined'].includes(p.get('basis'))?p.get('basis'):'ytd';syncPeriods('basis','period',p.get('period')||M.defaultPeriod(data,$('level').value));
- syncPeriods('structure-basis','structure-period','2026-08');const ids=[...new Set(data.observations.filter(r=>r.category!=='社零总额').map(r=>r.regionId))];$('structure-city').innerHTML=option([{value:'',label:'全部已披露城市'},...ids.map(id=>({value:id,label:data.regions.find(r=>r.id===id)?.name}))],'');
- $('regional-status').textContent='记录更新 '+data.updatedAt;$('regional-content').hidden=false;renderComparison();renderStructure();renderBeijing();setView(p.get('view')||'comparison');
- }catch(e){$('regional-status').textContent='地方社零读取失败：'+e.message;$('regional-content').hidden=true;$('regional-retry').hidden=false;}
-}
-$('regional-retry').onclick=load;
-document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>setView(b.dataset.view));
-$('level').onchange=()=>{syncPeriods('basis','period',$('level').value==='province'?data.targetPeriod:M.defaultPeriod(data));renderComparison();};
-$('basis').onchange=()=>{syncPeriods('basis','period',$('period').value);renderComparison();};
-$('period').onchange=renderComparison;$('regional-search').oninput=SiteUI.debounce(renderComparison);$('history-region').onchange=renderHistory;
-$('structure-basis').onchange=()=>{syncPeriods('structure-basis','structure-period',$('structure-period').value);renderStructure();};$('structure-period').onchange=renderStructure;$('structure-city').onchange=renderStructure;
-$('regional-csv').onclick=()=>{const names=new Set(currentRows.map(r=>r.name));D.downloadCsv(M.csvRows(data,$('level').value,$('period').value,$('basis').value).filter(r=>names.has(r.地区)),'地方社零-'+$('period').value+'.csv');};
-$('history-csv').onclick=()=>D.downloadCsv(M.history(data,$('history-region').value,$('basis').value).map(r=>{const o=M.observation(data,$('history-region').value,r.period,$('basis').value);return {地区:data.regions.find(x=>x.id===$('history-region').value)?.name,期间:r.period,口径:$('basis').value,金额亿元:r.amount,官方同比百分比:r.yoy,来源:o?M.sourceIds(o).map(id=>data.sources.find(s=>s.id===id)?.url).join(' '):''};}),'地方社零历史.csv');
-$('structure-csv').onclick=()=>D.downloadCsv(structureRows.map(r=>({城市:data.regions.find(x=>x.id===r.regionId)?.name,期间:r.period,口径:r.basis,分类:r.category,统计范围:r.scope,金额亿元:r.amount,官方同比百分比:r.yoy,来源:M.sourceIds(r).map(id=>data.sources.find(s=>s.id===id)?.url).join(' ')})),'城市社零结构-'+$('structure-period').value+'.csv');
-$('beijing-csv').onclick=()=>{if(!caseData)return;D.downloadCsv([...caseData.rows.map(r=>({品类:r.category,期间:'2026-09',金额亿元:r.amount,官方同比百分比:r.yoy,可比基数亿元测算:r.base,同比增量亿元测算:r.increment,拉动社零百分点测算:r.contributionPp,增量占比百分比测算:r.incrementShare,来源:M.sourceIds(r).map(id=>data.sources.find(s=>s.id===id)?.url).join(' ')})),{品类:'未列商品及餐饮（残差）',期间:'2026-09',同比增量亿元测算:caseData.residual,拉动社零百分点测算:caseData.residual/caseData.base*100}],'北京9月社零贡献测算.csv');};
-load();
+  'use strict';
+  const M=RegionalRetail,T=RegionalRetailTiers,C=RegionalRetailCharts,D=SiteData,$=id=>document.getElementById(id),esc=D.esc,F=M.finite;
+  let data,sourceMap,currentRows=[],structureRows=[],caseData=null,caseSelected='',view='tiers',resizeTimer;
+  const num=(v,d=1)=>F(v)?v.toLocaleString('zh-CN',{minimumFractionDigits:d,maximumFractionDigits:d}):'—';
+  const pct=v=>F(v)?(v>0?'+':'')+num(v)+'%':'—',signed=v=>F(v)?(v>0?'+':'')+num(v):'—',color=v=>!F(v)||v===0?'':v>0?'regional-pos':'regional-neg';
+  const basisName=b=>b==='ytd'?'年初累计':b==='combined'?'1—2月合并':'当月';
+  function options(values,selected){return values.map(x=>'<option value="'+esc(x.value??x)+'"'+((x.value??x)===selected?' selected':'')+'>'+esc(x.label??x)+'</option>').join('');}
+  function links(row){return M.sourceIds(row).map(id=>{const s=sourceMap.get(id),url=s&&D.link(s.url);return url?'<a href="'+esc(url)+'" target="_blank" rel="noopener" title="'+esc([s.publisher,s.releaseDate?'发布 '+s.releaseDate:'发布日期未提供'].filter(Boolean).join(' · '))+'">'+(['provider','secondary'].includes(s.quality)?'Choice':s.quality==='official-repost'?'转载':'原文')+' ↗</a>':'';}).join(' ');}
+  function urls(row){return M.sourceIds(row).map(id=>sourceMap.get(id)?.url||'').join(' ');}
+  function kpi(label,value,sub=''){return '<article class="regional-kpi"><span>'+esc(label)+'</span><strong>'+esc(value)+'</strong><small>'+esc(sub)+'</small></article>';}
+  function syncPeriods(basisId,periodId,preferred){const ps=M.periods(data,$(basisId).value);$(periodId).innerHTML=options(ps.slice().reverse(),ps.includes(preferred)?preferred:ps.at(-1));}
+  function bars(host,rows,field){const max=Math.max(1,...rows.map(r=>Math.abs(r[field])));host.innerHTML=rows.length?rows.map(r=>'<div class="regional-bars"><span>'+esc(r.name||r.category)+'</span><div class="track"><i style="background:'+(r[field]<0?'#71a398':'#b98287')+';left:'+(r[field]<0?50-Math.abs(r[field])/max*48:50)+'%;width:'+Math.abs(r[field])/max*48+'%"></i></div><b class="'+color(r[field])+'">'+signed(r[field])+'</b></div>').join(''):'<div class="regional-empty">所选期间暂无数据</div>';}
+  function renderComparison(){
+    const level=$('level').value,period=$('period').value,basis=$('basis').value,q=$('regional-search').value.trim(),missing=$('regional-show-missing').checked;
+    const raw=M.compare(data,level,period,basis).filter(r=>!q||r.name.includes(q)||r.parent?.includes(q));currentRows=raw.filter(r=>missing||F(r.yoy)||F(r.amount));const s=T.stats(raw);
+    $('comparison-title').textContent=period+' · '+basisName(basis)+' · '+(level==='city'?'城市':'省级地区');$('comparison-count').textContent=s.n+'个有同比 / '+raw.length+'个可查询';
+    $('comparison-summary').innerHTML=kpi('有同比数据',s.n+' / '+raw.length,'所选同一期间')+kpi('等权平均同比',pct(s.average),'已取得地区样本')+kpi('同比中位数',pct(s.median),'已取得地区样本')+kpi('正增长地区',s.positive+' / '+s.n,F(s.positiveShare)?num(s.positiveShare)+'%':'—');
+    const valid=currentRows.filter(r=>F(r.yoy));$('comparison-bars-title').textContent=(valid.length>20?'同比前20个地区':'同比比较')+'（%）';bars($('comparison-bars'),valid.slice(0,20),'yoy');
+    $('comparison-table').innerHTML=currentRows.length?currentRows.map(r=>'<tr><td><button data-region-id="'+esc(r.id)+'">'+esc(r.name)+'</button></td><td>'+num(r.amount,2)+'</td><td class="'+color(r.yoy)+'">'+(r.disputed.yoy?'待核验':num(r.yoy))+'</td><td>'+signed(r.change)+'</td><td>'+links(r)+'</td></tr>').join(''):'<tr><td colspan="5" class="regional-empty">所选期间暂无匹配数据</td></tr>';
+    const previous=$('history-region').value,geo=raw;$('history-region').innerHTML=options(geo.map(r=>({value:r.id,label:r.name})),geo.some(r=>r.id===previous)?previous:geo[0]?.id);renderHistory();SiteUI.save({level,period,basis,query:q,missing:missing?'1':null});
+  }
+  function renderHistory(){if(!data)return;const id=$('history-region').value,name=data.regions.find(r=>r.id===id)?.name||'',points=M.seriesHistory(data,id,$('basis').value,'社零总额','全口径',Number($('history-years').value),$('period').value);C.draw($('history-chart'),[{label:name,points}]);SiteUI.save({region:id,years:$('history-years').value});}
+  function renderStructure(){
+    const period=$('structure-period').value,basis=$('structure-basis').value,city=$('structure-city').value;structureRows=M.categories(data,period,basis).filter(r=>!city||r.regionId===city).sort((a,b)=>a.regionId.localeCompare(b.regionId)||a.category.localeCompare(b.category,'zh-CN'));
+    $('structure-title').textContent=period+' · '+basisName(basis)+' · 城市分项';$('structure-table').innerHTML=structureRows.length?structureRows.map(r=>'<tr><td>'+esc(data.regions.find(x=>x.id===r.regionId)?.name)+'</td><td>'+esc(r.category)+'</td><td>'+esc(r.scope)+'</td><td>'+num(r.amount,2)+'</td><td class="'+color(r.yoy)+'">'+num(r.yoy)+'</td><td>'+links(r)+'</td></tr>').join(''):'<tr><td colspan="6" class="regional-empty">所选城市与期间暂无分项数据</td></tr>';
+  }
+  function syncBreakdownPeriods(preferred){const id=$('breakdown-city').value,basis=$('breakdown-basis').value,ps=[...new Set(data.observations.filter(r=>r.regionId===id&&r.basis===basis&&r.category==='社零总额'&&r.scope==='全口径'&&F(r.amount)&&F(r.yoy)).map(r=>r.period))].sort().reverse();$('breakdown-period').innerHTML=options(ps,ps.includes(preferred)?preferred:ps[0]);}
+  function renderBreakdown(){
+    const id=$('breakdown-city').value,period=$('breakdown-period').value,basis=$('breakdown-basis').value,name=data.regions.find(r=>r.id===id)?.name||'',available=M.availableDimensions(data,id,period,basis),old=$('breakdown-dimension').value;
+    $('breakdown-dimension').innerHTML=options(available.map(r=>({value:r.id,label:r.label})),available.some(r=>r.id===old)?old:available[0]?.id);
+    const dimension=$('breakdown-dimension').value,c=caseData=M.breakdown(data,id,period,basis,dimension);$('breakdown-title').textContent=name+' · '+period+' · '+basisName(basis);$('breakdown-meta').textContent=c?M.dimensions[dimension].scope+' · 已取得'+c.rows.length+'项':'暂无可拆解分项';
+    if(!c){$('breakdown-kpis').innerHTML=kpi('社零总额','—','暂无可拆解数据');$('breakdown-table').innerHTML='<tr><td colspan="7" class="regional-empty">所选期间缺少金额、可比同比或分项</td></tr>';$('breakdown-bars').innerHTML='';$('breakdown-summary').textContent='';$('breakdown-category').innerHTML='';$('breakdown-history').innerHTML='';return;}
+    if(!c.rows.some(r=>r.category===caseSelected))caseSelected=c.rows[0].category;const selected=c.rows.find(r=>r.category===caseSelected);
+    $('breakdown-kpis').innerHTML=kpi('社零总额',num(c.total.amount,2),'亿元')+kpi('官方同比',pct(c.total.yoy),'全口径')+kpi('所选分项拉动',signed(selected.contributionPp)+' pp',selected.category+' · 测算')+kpi('剔除所选分项后同比',pct(c.exclude(selected.category)),'测算');
+    $('breakdown-summary').textContent='社零同比增量 '+num(c.increment,2)+'亿元 · 分项同比中位数 '+pct(c.median)+' · 所选分项增量占比 '+(F(selected.incrementShare)?num(selected.incrementShare)+'%':'—');
+    bars($('breakdown-bars'),c.rows,'contributionPp');const residualLabel=dimension==='goods'?'未列商品及餐饮（残差）':'分组差额（舍入及口径差）';
+    $('breakdown-table').innerHTML=c.rows.map(r=>'<tr'+(r.category===caseSelected?' class="is-selected"':'')+'><td><button data-breakdown-category="'+esc(r.category)+'">'+esc(r.category)+'</button></td><td>'+num(r.amount,2)+'</td><td class="'+color(r.yoy)+'">'+num(r.yoy)+'</td><td>'+num(r.increment,2)+'</td><td class="'+color(r.contributionPp)+'">'+signed(r.contributionPp)+'</td><td>'+num(r.incrementShare)+'</td><td>'+links(r)+'</td></tr>').join('')+'<tr><td>'+residualLabel+'</td><td>—</td><td>—</td><td>'+num(c.residual,2)+'</td><td>'+signed(c.residual/c.base*100)+'</td><td>'+num(Math.abs(c.increment)>1e-8?c.residual/c.increment*100:null)+'</td><td>'+links(c.total)+'</td></tr>';
+    const category=$('breakdown-category').value;$('breakdown-category').innerHTML=options(['社零总额',...c.rows.map(r=>r.category)],c.rows.some(r=>r.category===category)?category:'社零总额');renderBreakdownHistory();SiteUI.save({breakdownCity:id,breakdownPeriod:period,breakdownBasis:basis,dimension});
+  }
+  function renderBreakdownHistory(){
+    if(!caseData)return;const id=$('breakdown-city').value,basis=$('breakdown-basis').value,category=$('breakdown-category').value,period=$('breakdown-period').value,years=Number($('breakdown-years').value),name=data.regions.find(r=>r.id===id)?.name;
+    const rows=category==='社零总额'?['p0','p8'].map(regionId=>({label:data.regions.find(r=>r.id===regionId)?.name+'社零',points:M.seriesHistory(data,regionId,basis,'社零总额','全口径',years,period)})):[{label:name+'社零',points:M.seriesHistory(data,id,basis,'社零总额','全口径',years,period)},{label:category,points:M.seriesHistory(data,id,basis,category,M.dimensions[$('breakdown-dimension').value].scope,years,period)}];
+    $('breakdown-history-title').textContent=category+' · '+basisName(basis)+'同比（%）';$('breakdown-legend').innerHTML=rows.map((r,i)=>'<span><i style="background:'+C.colors[i]+'"></i>'+esc(r.label)+'</span>').join('');C.draw($('breakdown-history'),rows);SiteUI.save({breakdownCategory:category,breakdownYears:years});
+  }
+  function setView(next){view=next==='beijing'?'breakdown':['tiers','comparison','structure','breakdown'].includes(next)?next:'tiers';for(const key of ['tiers','comparison','structure','breakdown'])$(key).hidden=key!==view;document.querySelectorAll('[data-retail-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.retailView===view)));SiteUI.save({view});requestAnimationFrame(()=>{if(view==='tiers')RegionalTierDashboard.redraw();else if(view==='comparison')renderHistory();else if(view==='breakdown')renderBreakdownHistory();});}
+  async function load(){
+    $('regional-status').textContent='正在读取地方社零…';$('regional-retry').hidden=true;const p=new URLSearchParams(location.search);
+    try{
+      const loaded=await Promise.allSettled(['observations.json','history.json','tier-supplement.json','city-tiers.json'].map(file=>D.json('data/regional-retail/'+file)));
+      if(loaded[0].status!=='fulfilled'||!loaded[0].value.regions?.length)throw Error('基础快照读取失败');data=loaded[0].value;
+      if(loaded[2].status==='fulfilled')data=T.merge(data,loaded[2].value);if(loaded[1].status==='fulfilled')data=T.merge(data,M.expandHistory(loaded[1].value));sourceMap=new Map(data.sources.map(s=>[s.id,s]));
+      await RegionalTierDashboard.load(data,loaded[3].status==='fulfilled'?loaded[3].value:{});
+      $('level').value=p.get('level')==='province'?'province':'city';$('basis').value=['ytd','month','combined'].includes(p.get('basis'))?p.get('basis'):'ytd';$('regional-search').value=p.get('query')||'';$('regional-show-missing').checked=p.get('missing')==='1';$('history-years').value=['1','3','5'].includes(p.get('years'))?p.get('years'):'5';syncPeriods('basis','period',p.get('period')||M.defaultPeriod(data,$('level').value));renderComparison();if(data.regions.some(r=>r.id===p.get('region'))){$('history-region').value=p.get('region');renderHistory();}
+      syncPeriods('structure-basis','structure-period','2026-08');const ids=[...new Set(data.observations.filter(r=>r.category!=='社零总额').map(r=>r.regionId))];$('structure-city').innerHTML=options([{value:'',label:'全部已披露城市'},...ids.map(id=>({value:id,label:data.regions.find(r=>r.id===id)?.name}))],'');renderStructure();
+      $('breakdown-city').value=p.get('breakdownCity')==='p8'?'p8':'p0';$('breakdown-basis').value=['ytd','month','combined'].includes(p.get('breakdownBasis'))?p.get('breakdownBasis'):'month';$('breakdown-years').value=['1','3','5'].includes(p.get('breakdownYears'))?p.get('breakdownYears'):'5';syncBreakdownPeriods(p.get('breakdownPeriod')||'2026-09');if(p.get('dimension'))$('breakdown-dimension').innerHTML=options([p.get('dimension')],p.get('dimension'));renderBreakdown();if(p.get('breakdownCategory')&&[...$('breakdown-category').options].some(o=>o.value===p.get('breakdownCategory'))){$('breakdown-category').value=p.get('breakdownCategory');renderBreakdownHistory();}
+      const failures=loaded.slice(1).some(r=>r.status==='rejected');$('regional-status').textContent=(data.historyStart||'2021-10')+' 起 · 31省级地区 / '+M.regions(data,'city').length+'城市可查询'+(failures?' · 部分历史或分级读取失败，保留已读取数据':'');$('regional-retry').hidden=!failures;$('regional-content').hidden=false;setView(p.get('view')||'tiers');
+    }catch(e){$('regional-status').textContent='地方社零读取失败：'+e.message;$('regional-content').hidden=true;$('regional-retry').hidden=false;}
+  }
+  $('regional-retry').onclick=load;document.querySelectorAll('[data-retail-view]').forEach(b=>b.onclick=()=>setView(b.dataset.retailView));
+  $('level').onchange=()=>{syncPeriods('basis','period',M.defaultPeriod(data,$('level').value));renderComparison();};$('basis').onchange=()=>{syncPeriods('basis','period',$('period').value);renderComparison();};$('period').onchange=renderComparison;$('regional-search').oninput=SiteUI.debounce(renderComparison);$('regional-show-missing').onchange=renderComparison;$('history-region').onchange=renderHistory;$('history-years').onchange=renderHistory;
+  $('structure-basis').onchange=()=>{syncPeriods('structure-basis','structure-period',$('structure-period').value);renderStructure();};$('structure-period').onchange=renderStructure;$('structure-city').onchange=renderStructure;
+  for(const id of ['breakdown-city','breakdown-basis'])$(id).onchange=()=>{caseSelected='';syncBreakdownPeriods($('breakdown-period').value);renderBreakdown();};$('breakdown-period').onchange=()=>{caseSelected='';renderBreakdown();};$('breakdown-dimension').onchange=()=>{caseSelected='';renderBreakdown();};$('breakdown-category').onchange=renderBreakdownHistory;$('breakdown-years').onchange=renderBreakdownHistory;
+  $('breakdown-table').onclick=e=>{const button=e.target.closest('[data-breakdown-category]');if(!button)return;caseSelected=button.dataset.breakdownCategory;$('breakdown-category').value=caseSelected;renderBreakdown();};
+  document.addEventListener('click',e=>{const button=e.target.closest('[data-region-id]');if(!button||!data)return;const id=button.dataset.regionId,region=data.regions.find(r=>r.id===id);if(!region)return;$('level').value=region.level==='province'&&!region.municipality?'province':'city';$('regional-search').value='';$('basis').value=view==='tiers'?$('tier-basis').value:$('basis').value;syncPeriods('basis','period',view==='tiers'?$('tier-period').value:$('period').value);renderComparison();$('history-region').value=id;setView('comparison');renderHistory();});
+  $('regional-csv').onclick=()=>{const names=new Set(currentRows.map(r=>r.name));D.downloadCsv(M.csvRows(data,$('level').value,$('period').value,$('basis').value).filter(r=>names.has(r.地区)),'地方社零-'+$('period').value+'.csv');};
+  $('history-csv').onclick=()=>D.downloadCsv(M.seriesHistory(data,$('history-region').value,$('basis').value,'社零总额','全口径',Number($('history-years').value),$('period').value).map(r=>({地区:data.regions.find(x=>x.id===$('history-region').value)?.name,期间:r.period,口径:$('basis').value,金额亿元:r.amount,官方同比百分比:r.value,来源:urls(r)})),'地方社零历史.csv');
+  $('structure-csv').onclick=()=>D.downloadCsv(structureRows.map(r=>({城市:data.regions.find(x=>x.id===r.regionId)?.name,期间:r.period,口径:r.basis,分类:r.category,统计范围:r.scope,金额亿元:r.amount,官方同比百分比:r.yoy,来源:urls(r)})),'城市社零分项-'+$('structure-period').value+'.csv');
+  $('breakdown-csv').onclick=()=>{if(!caseData)return;D.downloadCsv([...caseData.rows.map(r=>({城市:data.regions.find(x=>x.id===$('breakdown-city').value)?.name,期间:r.period,口径:r.basis,拆解维度:M.dimensions[$('breakdown-dimension').value].label,分项:r.category,范围:r.scope,金额亿元:r.amount,官方同比百分比:r.yoy,可比基数亿元测算:r.base,同比增量亿元测算:r.increment,拉动社零百分点测算:r.contributionPp,增量占比百分比测算:r.incrementShare,来源:urls(r)})),{分项:'未列部分或分组差额（残差）',期间:$('breakdown-period').value,同比增量亿元测算:caseData.residual,拉动社零百分点测算:caseData.residual/caseData.base*100}],'京沪社零拆解-'+$('breakdown-city').value+'-'+$('breakdown-period').value+'.csv');};
+  $('breakdown-history-csv').onclick=()=>{const category=$('breakdown-category').value,scope=category==='社零总额'?'全口径':M.dimensions[$('breakdown-dimension').value].scope;D.downloadCsv(M.seriesHistory(data,$('breakdown-city').value,$('breakdown-basis').value,category,scope,Number($('breakdown-years').value),$('breakdown-period').value).map(r=>({城市:data.regions.find(x=>x.id===$('breakdown-city').value)?.name,分项:category,统计范围:scope,口径:$('breakdown-basis').value,期间:r.period,金额亿元:r.amount,官方同比百分比:r.value,来源:urls(r)})),'京沪分项历史.csv');};
+  addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{if(!data)return;if(view==='tiers')RegionalTierDashboard.redraw();else if(view==='comparison')renderHistory();else if(view==='breakdown')renderBreakdownHistory();},180);});
+  load();
 })();
-
-

@@ -17,6 +17,8 @@ test('same event groups without normalizing probabilities; expired events exclud
  const copy=JSON.stringify(markets),now=Date.parse('2026-10-09');const groups=P.groups(markets,{now});assert.equal(groups.length,1);assert.equal(groups[0].markets.length,2);assert.equal(P.affirmative(groups[0].markets[0]).probability,.845);assert.equal(JSON.stringify(markets),copy);
  assert.equal(P.groups(markets,{query:'加息',now})[0].markets.length,1);assert.equal(P.groups(markets,{category:'金融市场',now}).length,0);
 });
-test('macro consumption navigation comes first and chart interaction helpers load on both views',()=>{
- for(const name of ['macro.html','consumption-macro.html']){const html=fs.readFileSync(path.join(__dirname,'..',name),'utf8');const consumption=html.indexOf('>消费全景<'),core=html.indexOf('>核心指标<');assert.ok(consumption>=0&&core>consumption);assert.match(html,/research-chart.js/);assert.doesNotMatch(html,/>消费宏观</);}
+test('core navigation is first, regional retail shares it and consumption entry redirects',()=>{
+ const nav=fs.readFileSync(path.join(__dirname,'../scripts/macro-navigation.js'),'utf8');assert.ok(nav.indexOf("['indicators','核心指标'")<nav.indexOf("['regional','地方社零'"));assert.doesNotMatch(nav,/消费全景/);
+ for(const name of ['macro.html','regional-retail.html'])assert.match(fs.readFileSync(path.join(__dirname,'..',name),'utf8'),/data-macro-navigation/);
+ assert.match(fs.readFileSync(path.join(__dirname,'../consumption-macro.html'),'utf8'),/location\.replace\("macro\.html\?view=indicators"\)/);
 });

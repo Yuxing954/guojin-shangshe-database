@@ -259,7 +259,7 @@
       "rowCount": 1366,
       "updateRecord": "data/consumption-macro/sources.json",
       "evidence": "data/consumption-macro/evidence.json",
-      "page": "consumption-macro.html"
+      "page": "macro.html?view=indicators"
     },
     {
       "id": "macro_automatic",
@@ -310,13 +310,15 @@
     },
     {
       "id": "regional_retail",
-      "name": "地方社会消费品零售总额与城市结构",
-      "file": "data/regional-retail/observations.json",
+      "name": "地方社零与京沪近五年月度拆解",
+      "file": "data/regional-retail/history.json",
       "category": "宏观",
       "asOf": "2026-09",
-      "rowCount": 1318,
+      "rowCount": 7191,
       "page": "regional-retail.html",
-      "notes": "各地截止期不同，缺期及字段覆盖见同文件coverage"
+      "notes": "近五年原始序列点；页面与首批精确快照合并，地区覆盖及缺口见history.json的coverage",
+      "history": "data/regional-retail/history.json",
+      "snapshot": "data/regional-retail/observations.json"
     }
   ]
 }

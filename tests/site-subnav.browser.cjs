@@ -7,8 +7,8 @@ const cases=[
  ['industry.html#gold','#sector-tabs',null,'.gj-tabs'],
  ['industry.html#dutyfree','#sector-tabs','#panel-dutyfree','#tabs'],
  ['industry.html#dining','#sector-tabs','#panel-dining','[aria-label="数据视图"]'],
- ['consumption-macro.html?study=categories','[aria-label="宏观数据子栏目"]',null,'.retail-tabs'],
- ['macro.html?view=indicators&study=workspace','[aria-label="数据视图"]',null,'#countries'],
+ ['regional-retail.html','[data-macro-navigation]',null,'.regional-tabs'],
+ ['macro.html?view=indicators&study=workspace','[data-macro-navigation]',null,'#countries'],
  ['company-database.html','[aria-label="公司板块"]',null,'.db-tabs'],
  ['research.html','#research-tabs'],['quotes.html','#groups',null,'#views'],
  ['search.html','#resource-types'],['earnings.html','.ec-views']
@@ -30,7 +30,7 @@ async function check(nav){
    await page.setViewportSize({width:1440,height:1100});await page.goto(base+'/'+url);await check(page.locator(primary));
    const scope=frame?page.frameLocator(frame):page;if(secondary)await check(scope.locator(secondary));
    if(url.startsWith('company-database'))await check(page.locator('.db-chapters'));
-   if(url.startsWith('macro.html')){await check(page.locator('.macro-groups'));await check(page.locator('.macro-study-tabs'));}if(url.startsWith('consumption-macro'))await check(page.locator('#consumption-views'));
+   if(url.startsWith('macro.html')){await check(page.locator('.macro-groups'));await check(page.locator('.macro-study-tabs'));}
    await page.setViewportSize({width:390,height:900});await page.waitForTimeout(500);await page.mouse.move(0,0);await check(page.locator(primary));if(secondary)await check(scope.locator(secondary));
    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),url+' mobile overflow');
    if(process.env.SUBNAV_SCREENSHOTS){fs.mkdirSync(process.env.SUBNAV_SCREENSHOTS,{recursive:true});await page.screenshot({path:path.join(process.env.SUBNAV_SCREENSHOTS,url.split(/[?#]/)[0].replace('.html','')+'-mobile.png')});await page.setViewportSize({width:1440,height:1100});await page.waitForTimeout(250);await page.screenshot({path:path.join(process.env.SUBNAV_SCREENSHOTS,url.replace(/[^a-zA-Z0-9]/g,'-')+'-desktop.png')});}
@@ -41,3 +41,4 @@ async function check(nav){
   assert.deepEqual(errors,[]);console.log('PASS desktop/mobile styles, selected states, keyboard focus and category switching');
  }finally{await browser.close();server.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;server.close();});
+
