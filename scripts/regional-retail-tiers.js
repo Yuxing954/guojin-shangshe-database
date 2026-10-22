@@ -11,7 +11,7 @@
   function renderTrend(){
     const metric=$('tier-metric').value,cohort=$('tier-cohort').value,frequency=$('tier-frequency').value;
     const series=T.trend(data,registry,$('tier-period').value,$('tier-basis').value,metric,cohort,Number($('tier-years').value),frequency);
-    C.draw($('tier-trend'),series);$('tier-legend').innerHTML=series.map((s,i)=>'<span><i style="background:'+C.colors[i]+'"></i>'+esc(s.label)+(cohort==='fixed'?' · '+s.anchorN+'城':'')+'</span>').join('');
+    C.draw($('tier-trend'),series,{frequency});$('tier-legend').innerHTML=series.map((s,i)=>'<span>'+C.legend(i)+''+esc(s.label)+(cohort==='fixed'?' · '+s.anchorN+'城':'')+'</span>').join('');
     const last=series[0]?.points.at(-1)?.period||'—';$('tier-trend-sample').textContent=(frequency==='quarterly'?'季度末':'月度')+' · 趋势至 '+M.periodLabel(last)+' · '+(cohort==='fixed'?'固定所选期城市，样本不完整时断线':'逐期样本变动；悬停或点选查看城市数');
   }
   function renderDetail(){
