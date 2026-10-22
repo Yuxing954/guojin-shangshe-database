@@ -12,7 +12,6 @@
     hotel:{name:'酒店',files:['data/hotel-update-record.json','data/hotel-city-history-coverage.json','data/hotel-holiday-import-record.json'],docs:['docs/hotel-data-update.md','docs/hotel-holiday-dashboard.md']},
     dutyfree:{name:'免税',files:['data/dutyfree/holidays.json','data/dutyfree/monthly-provenance.json','data/dutyfree/sources.json','data/dutyfree/korea.json'],docs:['docs/dutyfree-holidays.md','docs/korea-dutyfree.md']},
     gold:{name:'黄金',files:['data/gold-jewelry/research.json','data/gold-jewelry/macro.json','data/gold-jewelry/observations.json'],docs:['docs/gold-jewelry-database.md']},
-    dining:{name:'餐饮',files:['data/sectors/dining.json'],docs:[]},
     macro:{name:'宏观与消费',files:['data/macro/coverage.json','data/macro/catalog.json','data/consumption-macro/observations.json','data/macro/automatic-series.json','data/macro/expectations.json'],docs:['docs/macro-data.md','docs/consumption-macro.md','docs/macro-expectations.md','docs/macro-data-quality-20261017.md']},
     companies:{name:'重点公司',files:['data/companies/issues.json','data/companies/sources.json','data/companies/workbook-disclosures.json','data/companies/hotel-research.json','data/companies/jinjiang-research-notes.json'],docs:['docs/company-database.md']},
     'domestic-hotels':{name:'国内酒店',files:['data/companies/domestic-hotels.json'],docs:['docs/domestic-hotels.md']},
@@ -34,7 +33,6 @@
     if(id==='dutyfree')out.push(...(a.coverageNotes||[]),...(a.notes||[]),values[1]?.note||'',...(values[3]?.notes||[]));
     if(id==='hotel')out.push('同比默认匹配来源年/周；假期错期需单独映射与标注。','节假日经营对标按假期日序匹配两期日期，入住率差为百分点，ADR及RevPAR为相对变化。',...Object.entries(a.historicalCoverage||{}).flatMap(([file,regions])=>Object.entries(regions).map(([region,c])=>region+'：'+c.firstPeriod+' — '+c.lastPeriod+' · '+c.periodCount+'期')),'异常源记录：'+(a.sourceAnomalyCount??'未记录')+'条');
     if(id==='gold')out.push(...(a.limitations||[]),'国内金价后台按5分钟计划采集；国际行情在黄金页面打开时每15秒读取。实际更新以来源报价时间为准，网络失败保留上次报价。');
-    if(id==='dining')out.push(...(a.gaps||[]).map(g=>g.metric+'：'+g.reason));
     if(id==='companies'&&values[2])out.push('三份用户底稿逐单元格转录，保留原单位、报告期、页码、证据编号和截图位置；缺失不转零。',...((values[2].issues)||[]).map(i=>i.message));
     if(id==='companies')out.push(...(values[3]?.notes||[]),...(values[4]?.notes||[]));
     if(id==='companies')out.push(...(a.issues||[]).map(i=>[i.period,i.locator,i.message].filter(Boolean).join(' · ')));
