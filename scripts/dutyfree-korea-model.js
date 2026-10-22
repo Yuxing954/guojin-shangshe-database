@@ -22,6 +22,6 @@
   const periods=range==='all'?calendar:calendar.slice(-Number(range));
   return periods.map(period=>map.get(period)||{period,scope,salesUsd:null,shoppers:null,spendUsd:null});
  }
- function exports(rows){return rows.map(r=>({'月份':r.period,'顾客分类':scopes[r.scope],'销售额(美元)':r.salesUsd,'购物人次':r.shoppers,'客单价(美元/人次,测算)':r.spendUsd,'销售额同比(%,测算)':r.salesUsdYoy,'人次同比(%,测算)':r.shoppersYoy,'客单价同比(%,测算)':r.spendUsdYoy,'销售额原始回执':r.salesUsdRaw,'人次原始回执':r.shoppersRaw,'销售额精度':r.salesUsdPrecision,'人次精度':r.shoppersPrecision,'销售额来源':r.salesUsdSource,'人次来源':r.shoppersSource,'同比基期':prior(r.period)}));}
+ function exports(rows){return rows.map(r=>({'月份':r.period,'顾客分类':scopes[r.scope],'销售额(美元)':r.salesUsd,'购物人次':r.shoppers,'客单价(美元/人次,测算)':r.spendUsd,'销售额同比(%)':r.salesUsdYoy,'人次同比(%)':r.shoppersYoy,'客单价同比(%)':r.spendUsdYoy,'销售额原始回执':r.salesUsdRaw,'人次原始回执':r.shoppersRaw,'销售额精度':r.salesUsdPrecision,'人次精度':r.shoppersPrecision,'销售额来源':r.salesUsdSource,'人次来源':r.shoppersSource,'同比基期':prior(r.period)}));}
  return {scopes,finite,derive,series,exports,months};
 });
