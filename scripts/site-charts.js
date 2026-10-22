@@ -83,7 +83,7 @@ function valuesControl(svg){
   const legacy=scope.querySelector('input[data-chart-labels]');
   if(legacy){if(!config){config={scope,hotel:false,node:legacy.closest('label')};valueScopes.set(scope,config);}config.value=legacy.checked;config.change=legacy.checked;return config;}
   const hotel=document.body.classList.contains('hotel-page')||scope.hasAttribute('data-chart-dual-labels'),selectedMetric=scope.querySelector('#holiday-metric-select,#hn-metric,#dh-metric'),metric=selectedMetric?.selectedOptions[0]?.textContent.trim().replace(/[（(].*$/,'')||scope.querySelector('#metric-switch')?.querySelector('[aria-pressed=true]')?.textContent.trim()||scope.querySelector('[data-metric][aria-pressed=true]')?.textContent.trim()||(scope.matches('.hd-tier-trend')?document.querySelector('#metric-switch [aria-pressed=true]')?.textContent.trim():'')||'数值';
-  if(!config){config={scope,hotel,value:false,change:false};valueScopes.set(scope,config);}
+  if(!config){config={scope,hotel,value:scope.hasAttribute('data-chart-values-default')||document.body.hasAttribute('data-chart-values-default'),change:false};valueScopes.set(scope,config);}
   if(!config.node?.isConnected){
     const node=document.createElement('span');node.className='site-value-options';config.node=node;
     for(const key of hotel?['value','change']:['value']){
@@ -257,7 +257,7 @@ function axisFormat(value,step=1,extent=Math.abs(value)){
 function paired(rows,opt={}){
   const periodText=value=>opt.periodFormat==='week-short'?String(value??'').replace(/\b\d{2}(\d{2}W\d{2})\b/g,'$1'):value;
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const fmt=v=>Number.isFinite(v)?new Intl.NumberFormat('zh-CN',{maximumFractionDigits:opt.precision??2}).format(v):'—';
+  const fmt=v=>Number.isFinite(v)?new Intl.NumberFormat('zh-CN',{minimumFractionDigits:opt.minimumFractionDigits??0,maximumFractionDigits:opt.precision??2}).format(v):'—';
   const mode=opt.mode||'combo',showValue=mode!=='change',showChange=mode!=='value',unit=opt.unit||'',changeUnit=opt.changeUnit||'%';
   let normalized=rows.map((r,i)=>({...r,x:Number.isFinite(r.x)?r.x:i,values:r.values||[{name:opt.name||'数值',value:r.value,change:r.change,color:'#2167a0'}]}));
   if(opt.trimEmpty){

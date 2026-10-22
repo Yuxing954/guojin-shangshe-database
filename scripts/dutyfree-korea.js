@@ -1,7 +1,7 @@
 (function(){
  'use strict';
  const M=KoreaDutyfree,D=SiteData,$=id=>document.getElementById(id),esc=D.esc,root=$('view-korea');
- const metrics=[{field:'salesUsd',id:'sales',label:'销售额',unit:'亿美元',scale:1e8,precision:3},{field:'shoppers',id:'shoppers',label:'购物人次',unit:'万人次',scale:1e4,precision:2},{field:'spendUsd',id:'spend',label:'客单价',unit:'美元/人次',scale:1,precision:0}];
+ const metrics=[{field:'salesUsd',id:'sales',label:'销售额',unit:'亿美元',scale:1e8,precision:2},{field:'shoppers',id:'shoppers',label:'购物人次',unit:'万人次',scale:1e4,precision:2},{field:'spendUsd',id:'spend',label:'客单价',unit:'美元/人次',scale:1,precision:0}];
  let data,rows,pending;
  const state={scope:'total',range:'12',mode:'combo'};
  function fmt(n,d=1){return M.finite(n)?n.toLocaleString('zh-CN',{minimumFractionDigits:d,maximumFractionDigits:d}):'—';}
@@ -16,7 +16,7 @@
    $('kr-'+m.id).textContent=fmt(M.finite(val)?val/m.scale:null,m.precision);
    const change=latest?.[m.field+'Yoy'];$('kr-'+m.id+'-yoy').textContent='同比测算 '+pct(change);$('kr-'+m.id+'-yoy').className=change>0?'up':change<0?'down':'';
    const title=m.label+(state.mode==='combo'?'与同比':state.mode==='change'?'同比':'走势');$('kr-'+m.id+'-title').textContent=title;
-   SiteCharts.drawPaired($('kr-'+m.id+'-chart'),view.map((r,x)=>({period:r.period.slice(2),x,value:M.finite(r[m.field])?r[m.field]/m.scale:null,change:r[m.field+'Yoy']??null})),{name:m.label,mode:state.mode,unit:m.unit,precision:m.precision,changeUnit:'%',changePrecision:1,gap:1.5,trimEmpty:false,changeLabel:'同比测算'});
+   SiteCharts.drawPaired($('kr-'+m.id+'-chart'),view.map((r,x)=>({period:r.period.slice(2),x,value:M.finite(r[m.field])?r[m.field]/m.scale:null,change:r[m.field+'Yoy']??null})),{name:m.label,mode:state.mode,unit:m.unit,precision:m.precision,minimumFractionDigits:m.id==='sales'?2:0,changeUnit:'%',changePrecision:1,gap:1.5,trimEmpty:false,changeLabel:'同比测算'});
   }
   $('kr-table').innerHTML='<thead><tr>'+['月份','销售额（亿美元）','金额同比测算','购物人次（万）','人次同比测算','客单价（美元/人次）','客单价同比测算'].map(x=>'<th>'+x+'</th>').join('')+'</tr></thead><tbody>'+view.slice().reverse().map(r=>'<tr><td>'+esc(r.period)+'</td>'+metrics.map(m=>'<td class="num">'+fmt(M.finite(r[m.field])?r[m.field]/m.scale:null,m.precision)+'</td><td class="num">'+pct(r[m.field+'Yoy'])+'</td>').join('')+'</tr>').join('')+'</tbody>';
   root.dataset.status='ready';$('kr-status').textContent='';$('kr-retry').hidden=true;if(root.classList.contains('on'))$('rows-note').textContent='韩国月度 '+data.periodCount+' 期 · 三类顾客 '+data.count+' 条';stamp();
