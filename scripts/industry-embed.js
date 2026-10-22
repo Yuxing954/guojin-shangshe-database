@@ -15,6 +15,7 @@
     if(holiday)return holiday.hidden?'loading':'ready';
     if(content)return content.hidden?'loading':'ready';
     if(document.body.classList.contains('dutyfree-page')){
+      if(document.getElementById('view-korea')?.classList.contains('on')){const state=document.getElementById('view-korea').dataset.status;return state==='error'?'error':state==='ready'?'ready':'loading';}
       if(!/月度截至/.test(stamp?.textContent||''))return 'loading';
       if(document.getElementById('view-holidays')?.classList.contains('on')){
         const root=document.getElementById('dutyfree-holidays');if(root?.querySelector('[role="alert"]'))return 'error';

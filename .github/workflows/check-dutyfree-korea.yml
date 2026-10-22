@@ -1,0 +1,35 @@
+name: Check Korea dutyfree
+on:
+  pull_request:
+    paths:
+      - 'dutyfree-dashboard.html'
+      - 'scripts/dutyfree-korea*'
+      - 'scripts/import_korea_dutyfree.py'
+      - 'scripts/industry-embed.js'
+      - 'scripts/industry-panels.js'
+      - 'data/dutyfree/korea.json'
+      - 'tests/dutyfree-korea*'
+      - '.github/workflows/check-dutyfree-korea.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  korea-dutyfree:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test tests/dutyfree-korea.test.cjs tests/dutyfree-monthly.test.cjs
+      - run: |
+          npm install --prefix /tmp/korea-check --no-save --package-lock=false playwright@1.62.1
+          if [ ! -x /usr/bin/google-chrome ]; then /tmp/korea-check/node_modules/.bin/playwright install --with-deps chromium; fi
+      - name: Check Korea and preserve Hainan
+        env:
+          NODE_PATH: /tmp/korea-check/node_modules
+          EDGE_PATH: /usr/bin/google-chrome
+          BROWSER_PATH: /usr/bin/google-chrome
+        run: |
+          node tests/dutyfree-korea.browser.cjs
+          node tests/dutyfree-refresh.browser.cjs
