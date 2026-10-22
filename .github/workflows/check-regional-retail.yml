@@ -1,0 +1,42 @@
+name: Check regional retail
+on:
+  pull_request:
+    paths:
+      - 'regional-retail.html'
+      - 'scripts/regional-retail*'
+      - 'scripts/import-regional-retail.cjs'
+      - 'data/regional-retail/**'
+      - 'tests/regional-retail*'
+      - '.github/workflows/check-regional-retail.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'regional-retail.html'
+      - 'scripts/regional-retail*'
+      - 'data/regional-retail/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  regional-retail:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: |
+          node --check scripts/regional-retail.js
+          node --check scripts/regional-retail-model.js
+          node --test tests/regional-retail.test.cjs
+      - name: Browser checks
+        run: |
+          npm install --no-save --package-lock=false playwright@1.62.1
+          npx playwright install --with-deps chromium
+          node tests/regional-retail.browser.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: regional-retail-previews
+          path: .cache/regional-retail
+
