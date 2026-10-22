@@ -29,7 +29,7 @@ async function check(page,mobile){
   for(const [name,url,ready] of cases){
    await page.setViewportSize({width:1440,height:1100});await page.goto(base+'/'+url);await page.locator(ready).first().waitFor({timeout:45000});await check(page,false);
    offsets.push(await page.locator('.data-board .site-subnav').first().evaluate(e=>e.getBoundingClientRect().top));
-   if(name==='regional'){const cards=await page.locator('.tier-card').evaluateAll(es=>es.map(e=>({w:e.offsetWidth,h:e.offsetHeight})));assert.equal(cards.length,4);assert.ok(cards.every(c=>Math.abs(c.w-cards[0].w)<2&&c.h===cards[0].h));}
+   if(name==='regional'){const cards=await page.locator('.tier-card').evaluateAll(es=>es.map(e=>({w:e.offsetWidth,h:e.offsetHeight})));assert.equal(cards.length,5);assert.ok(cards.every(c=>Math.abs(c.w-cards[0].w)<2&&c.h===cards[0].h));}
    if(name==='indicators'){await page.locator('#countries [data-country=US]').click();await check(page,false);await page.locator('#countries [data-country=CN]').click();assert.ok(await page.locator('.morning-chart svg').count());}
    if(name==='consumption'){await page.locator('#indicator').selectOption('cpi');await page.locator('#measure').selectOption('value');await page.locator('#chart svg').waitFor();await check(page,false);}
    if(name==='fedwatch'){await page.locator('.board-detail').last().evaluate(e=>e.open=true);assert.ok(await page.locator('#fedwatch .board-table tbody tr').count());}
