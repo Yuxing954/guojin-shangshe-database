@@ -1,6 +1,6 @@
 (function(){
 'use strict';
-const M=RegionalRetail,F=M.finite,E=SiteData.esc,colors=['#17365d','#3b73a5','#8f2635','#bb5260','#606975'];
+const M=RegionalRetail,F=M.finite,E=SiteData.esc,colors=['#163a63','#286da0','#b05b16','#8d702c','#66717d'];
 const settings=new Map(),states=new WeakMap();
 // Bar charts retain their independent on/off value control.
 function control(host,redraw){const key=host.id;let toggle=document.querySelector('[data-labels-for="'+key+'"]');if(!settings.has(key)){let value=true;try{value=localStorage.getItem('retail-labels:'+key)!=='off';}catch{}settings.set(key,value);}if(!toggle){const label=document.createElement('label');label.className='regional-label-switch';label.innerHTML='<input type="checkbox" data-labels-for="'+key+'">显示数值';host.before(label);toggle=label.firstElementChild;}toggle.checked=settings.get(key);host.classList.toggle('labels-off',!toggle.checked);toggle.onchange=()=>{settings.set(key,toggle.checked);try{localStorage.setItem('retail-labels:'+key,toggle.checked?'on':'off');}catch{}host.classList.toggle('labels-off',!toggle.checked);if(redraw)redraw();};return toggle.checked;}
@@ -14,9 +14,13 @@ function draw(host,input,options={}){
  const series=input.map((s,j)=>{const map=new Map(s.points.map(p=>[p.period,p]));return {...s,j,color:s.color||colors[j%colors.length],points:points.map(p=>map.get(p.period)||{period:p.period,value:null})};});
  const values=series.flatMap(s=>s.points.map(p=>p.value)).filter(F),visible=series.filter(s=>!st.hidden.has(s.label)),multi=series.length>1;
  const lo=Math.min(0,...values),hi=Math.max(1,...values),span=hi-lo||1;
- const toolbar='<div class="regional-chart-toolbar"><label>数值 <select data-value-mode="'+host.id+'" aria-label="'+host.id+'数值显示"><option value="latest"'+(st.mode==='latest'?' selected':'')+'>最新值</option><option value="all"'+(st.mode==='all'?' selected':'')+'>全部</option><option value="off"'+(st.mode==='off'?' selected':'')+'>关闭</option></select></label>'+(multi?'<div class="regional-view-toggle" role="group" aria-label="图表布局"><button type="button" data-layout="combined" aria-pressed="'+!st.split+'">合并</button><button type="button" data-layout="split" aria-pressed="'+st.split+'">分开</button></div>':'')+'<button type="button" data-chart-reset>重置</button></div>';
- const key=multi?'<div class="regional-interactive-legend" aria-label="曲线选择">'+series.map(s=>'<span class="regional-legend-item"><input type="checkbox" data-visible="'+s.j+'" aria-label="显示'+E(s.label)+'"'+(!st.hidden.has(s.label)?' checked':'')+'><button type="button" data-highlight="'+s.j+'" aria-label="突出'+E(s.label)+'" aria-pressed="'+(st.selected===s.label)+'">'+legend(s.j)+E(s.label)+(F(s.anchorN)?' · '+s.anchorN+'城':'')+'</button></span>').join('')+'</div>':'';
+ const toolbar='<div class="regional-chart-toolbar"><div class="regional-trend-filters"></div><div class="regional-trend-actions"><label>数值 <select data-value-mode="'+host.id+'" aria-label="'+host.id+'数值显示"><option value="latest"'+(st.mode==='latest'?' selected':'')+'>最新值</option><option value="all"'+(st.mode==='all'?' selected':'')+'>全部</option><option value="off"'+(st.mode==='off'?' selected':'')+'>关闭</option></select></label>'+(multi?'<div class="regional-view-toggle" role="group" aria-label="图表布局"><button type="button" data-layout="combined" aria-pressed="'+!st.split+'">合并</button><button type="button" data-layout="split" aria-pressed="'+st.split+'">分开</button></div>':'')+'<button type="button" data-chart-reset>重置</button></div></div>';
+ const key=multi?'<div class="regional-interactive-legend" style="--series-count:'+series.length+'" aria-label="曲线选择">'+series.map(s=>'<span class="regional-legend-item" style="--series-color:'+s.color+'"><input type="checkbox" data-visible="'+s.j+'" aria-label="显示'+E(s.label)+'"'+(!st.hidden.has(s.label)?' checked':'')+'><button type="button" data-highlight="'+s.j+'" aria-label="突出'+E(s.label)+'" aria-pressed="'+(st.selected===s.label)+'">'+legend(s.j)+'<span class="regional-legend-name">'+E(s.label)+(F(s.anchorN)?'<small>'+s.anchorN+'城样本</small>':'')+'</span></button></span>').join('')+'</div>':'';
+ const section=host.closest('.regional-panel'),head=section?.querySelector('.regional-section-head');
+ if(!st.filters){st.filters=head?[...head.children].filter(e=>e.matches('.regional-chart-controls,label')):[];}
  host.innerHTML=toolbar+key+'<div class="regional-chart-panels'+(st.split&&multi?' is-split':'')+'"></div><div class="regional-chart-tooltip" role="tooltip" hidden></div>';
+ const filterHost=host.querySelector('.regional-trend-filters');for(const el of st.filters)filterHost.append(el);
+ if(head){let status=head.querySelector('.regional-trend-status');if(!status){status=document.createElement('span');status.className='regional-trend-status';status.setAttribute('role','status');head.append(status);}status.textContent=(multi?visible.length+'/'+series.length+'条曲线 · ':'')+(points.length?axisLabel(points.at(-1),options.frequency):'暂无数据');}
  const panels=host.querySelector('.regional-chart-panels'),tip=host.querySelector('[role=tooltip]');
  const redraw=()=>draw(host,input,options);
  host.querySelector('[data-value-mode]').onchange=e=>{st.mode=e.target.value;try{localStorage.setItem('retail-value-mode:'+host.id,st.mode);}catch{}redraw();};
@@ -31,7 +35,7 @@ function draw(host,input,options={}){
  for(const group of groups){
   const panel=document.createElement('div');panel.className='regional-small-panel';panels.append(panel);
   const w=Math.max(240,panel.clientWidth),split=st.split&&multi,left=w<500?34:46,right=w<500?108:155,top=28,bottom=38;
-  const h=st.mode==='all'?Math.max(split?260:440,Math.ceil(group.reduce((n,s)=>n+s.points.filter(p=>F(p.value)).length,0)*50/Math.max(130,w-left-right))*20+90):split?250:380;
+  const h=st.mode==='all'?Math.max(split?260:440,Math.ceil(group.reduce((n,s)=>n+s.points.filter(p=>F(p.value)).length,0)*50/Math.max(130,w-left-right))*20+90):split?260:Math.max(330,Math.min(470,Math.round(w*.34)));
   const x=i=>left+i*(w-left-right)/Math.max(1,points.length-1),y=v=>h-bottom-(v-lo)/span*(h-top-bottom),plotEnd=w-right;
   const grid=[...new Set([lo,(lo+hi)/2,hi,0])].sort((a,b)=>a-b).map(v=>'<line x1="'+left+'" x2="'+plotEnd+'" y1="'+y(v)+'" y2="'+y(v)+'" stroke="'+(v===0?'#a9b2c0':'#e3e6ef')+'"/><text x="2" y="'+(y(v)+4)+'">'+v.toFixed(1)+'</text>').join('');
   const ends=group.map(s=>({s,i:s.points.findLastIndex(p=>F(p.value))})).filter(e=>e.i>=0).map(e=>({...e,cy:y(e.s.points[e.i].value)})).sort((a,b)=>a.cy-b.cy);
