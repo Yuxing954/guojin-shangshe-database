@@ -1,7 +1,7 @@
 name: Check macro and predictions
 on:
   pull_request:
-    paths: ['macro.html', 'scripts/macro*', 'scripts/prediction-model.js', 'scripts/fedwatch*', 'scripts/forecast-desk*', 'scripts/research-chart*', 'scripts/site*', 'data/macro/**', 'data/consumption-macro/**', 'data/gold-jewelry/macro.json', 'update/miaoxiang_mcp.py', 'tests/test_miaoxiang_credentials.py', 'update/macro_auto.py', 'update/treasury_yields.py', 'tests/test_treasury_yields.py', 'update/macro_data.py', 'update/polymarket_data.py', 'tests/*macro*', '.github/workflows/check-macro.yml']
+    paths: ['macro.html', 'scripts/macro*', 'scripts/prediction-model.js', 'scripts/fedwatch*', 'scripts/forecast-desk*', 'scripts/research-chart*', 'scripts/site*', 'data/macro/**', 'data/consumption-macro/**', 'data/gold-jewelry/macro.json', 'update/miaoxiang_mcp.py', 'tests/test_miaoxiang_credentials.py', 'update/macro_auto.py', 'update/treasury_yields.py', 'tests/test_treasury_yields.py', 'update/macro_data.py', 'update/polymarket_data.py', 'update/fedwatch_import.cjs', 'tests/fedwatch-import.test.cjs', 'tests/*macro*', '.github/workflows/check-macro.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -24,6 +24,7 @@ jobs:
           node --check scripts/prediction-model.js
           node --check scripts/forecast-desk.js
           node --test tests/forecast-macro.test.cjs
+          node --test tests/fedwatch-import.test.cjs
           node --check scripts/research-chart.js
           node --test tests/macro-refinement.test.cjs
           node --check scripts/site-shell.js
