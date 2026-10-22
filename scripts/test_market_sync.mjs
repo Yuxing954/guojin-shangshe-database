@@ -103,3 +103,11 @@ test('verification failure reuses checked artifacts across an unrelated main com
  assert.equal((await new MarketSync(opts).run()).status,'done');
  assert.equal(repo.calls.filter(x=>x.tool.endsWith('github_fetch_file')&&x.args.path.includes('/dedup/')).length,count);
 });
+
+test('failed build is reported before stale archive is treated as pending',async t=>{
+ const {opts}=await fixture(t);const sync=new MarketSync(opts);
+ sync.s={commitSha:'broken',scannedTo:now().toISOString()};sync.save=async()=>{};
+ sync.get=async url=>url.includes('/branches/')?{commit:{sha:'main'}}:{workflow_runs:[{head_sha:'broken',path:'.github/workflows/build-research-recent.yml',status:'completed',conclusion:'failure',html_url:'https://example.test/failed'}]};
+ sync.rpc=async()=>{throw Error('archive must not be read before build failure');};
+ await assert.rejects(()=>sync.verify(),/Research build failed: failure/);
+});
