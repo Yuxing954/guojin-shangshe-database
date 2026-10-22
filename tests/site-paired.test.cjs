@@ -1,6 +1,6 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict'),vm=require('node:vm'),fs=require('node:fs'),path=require('node:path');
-const context={window:{},document:{addEventListener(){},readyState:'loading'},addEventListener(){},Intl,AbortController};
+const context={ChartPeriod:require('../scripts/chart-period.js'),window:{},document:{addEventListener(){},readyState:'loading'},addEventListener(){},Intl,AbortController};
 vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../scripts/site-charts.js'),'utf8'),context);
 const paired=context.window.SiteCharts.paired;
 test('paired modes preserve real zero, negative values, missing values and units',()=>{

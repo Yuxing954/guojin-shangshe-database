@@ -5,6 +5,7 @@ function format(value){
   if(!text)return text;
   const yy=year=>String(year).slice(-2),month=v=>String(Number(v)),digit={'一':1,'二':2,'三':3,'四':4};
   if((m=text.match(/^(\d{4}|\d{2})年?\s*(\d{1,2})[—–~至-](\d{1,2})月(.*)$/)))return yy(m[1])+'M'+month(m[2])+'–'+month(m[3])+m[4];
+  if((m=text.match(/^(\d{4}|\d{2})[-/·.](\d{1,2})[—–~至](\d{1,2})(?:月)?(.*)$/)))return yy(m[1])+'M'+month(m[2])+'–'+month(m[3])+m[4];
   if((m=text.match(/^(\d{4}|\d{2})(?:年|[-/·.])(\d{1,2})(?:月|[-/])(\d{1,2})(?:日)?(.*)$/)))return yy(m[1])+'/'+month(m[2])+'/'+month(m[3])+m[4];
   if((m=text.match(/^((?:19|20)\d{2}|\d{2})\/((?:19|20)\d{2}|\d{2})$/))&&(m[2].length===4||Number(m[2])>12))return yy(m[1])+'/'+yy(m[2]);
   if((m=text.match(/^FY((?:19|20)\d{2})(.*)$/i)))return 'FY'+yy(m[1])+m[2];
