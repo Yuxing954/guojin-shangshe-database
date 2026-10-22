@@ -4,7 +4,7 @@
 
 1. 运行 `python update/macro_due.py --json`。没有到期项即退出，不读历史、凭证或联网。不要为了手动刷新重复扫描窗口外指标。
 2. 只运行一次 `python update/macro_auto.py --due-only`。内部统一处理Choice和到期官方源，不重复请求Treasury、BEA、BLS或Census。成功账本按事件去重；`pending`表示尚未返回应发布期间，不登记成功、不立即循环补查。
-3. 只对dueScopes执行外部工作。Polymarket运行一次 `python update/polymarket_data.py`；成功或确认无变化后用 `macro_due.py --complete polymarket` 登记。FedWatch/期货必须核验完整表，工具不可用保留旧表并记录失败，不用重复尝试占满整个批次。失败不记完成。
+3. 只对dueScopes执行外部工作。Polymarket运行一次 `python update/polymarket_data.py`；成功或确认无变化后用 `macro_due.py --complete polymarket` 登记。FedWatch/期货按 `docs/fedwatch-refresh.md` 的已验证短流程操作：官方父页、激活工具、键盘进入Probabilities、单次读取两表，再运行 `node update/fedwatch_import.cjs --receipt <本次回执>`。不要把隐藏页或默认30秒工具超时直接当成CME服务故障。失败保留旧表，不重复尝试占满整个批次、不记完成。
 4. 输出期间新增、数值修订、无变化、待发布、失败和changedFiles的紧凑摘要。不要输出整段历史或回执。没有实质变化不提交；失败重复发生时不只为checkedAt创建提交。
 5. 只提交有变化的共用历史、覆盖、预测和FedWatch数据。保留未选中的历史、真实零值、缺失及未知发布日期。审定定义、单位和来源不变时沿用已有发布授权；异常修订和定义变化仍须复核。
 6. 数据更新运行宏观/消费模型与数据测试、页面及CSV核对。只有界面或共享样式改变时才增加布局专项检查。等待相关GitHub检查通过再合并；等待Pages并回读线上JSON、页面和CSV。无关检查失败单列，不谎报全站通过。
