@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  const M=RegionalRetail,F=M.finite,E=SiteData.esc,colors=['#2563eb','#c2410c','#15803d','#7e22ce','#1f2937'],dashes=['','','','',''],focusHandlers=new WeakMap();
+  const M=RegionalRetail,F=M.finite,E=SiteData.esc,colors=['#17365d','#3b73a5','#8f2635','#bb5260','#606975'],dashes=['','','','',''],focusHandlers=new WeakMap();
   const settings=new Map();
   function control(host,redraw){
     const key=host.id;let toggle=document.querySelector('[data-labels-for="'+key+'"]');
