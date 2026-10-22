@@ -8,7 +8,7 @@ async function main(){
  await page.selectOption('#year','2026');assert.equal(await page.locator('#monthly-table tbody tr').count(),9);await page.selectOption('#scope','ytd');assert((await page.locator('#kpis').innerText()).includes('96.21'));
  assert.equal(await page.locator('#view').count(),0);assert.equal(await page.locator('#charts input[type=checkbox]').count(),6);
  const passengers=page.locator('#chart-passengers'),values=passengers.locator('[data-value-kind=value]'),yoy=passengers.locator('[data-value-kind=change]');
- await values.check();assert(await passengers.locator('.site-value-label[data-kind=value]').count()>0);assert.equal(await passengers.locator('.site-value-label[data-kind=change]').count(),0);
+ assert.equal(await values.isChecked(),false);assert(await yoy.isChecked());assert(await passengers.locator('.site-value-label[data-kind=change]').count()>0);await yoy.uncheck();await values.check();assert(await passengers.locator('.site-value-label[data-kind=value]').count()>0);assert.equal(await passengers.locator('.site-value-label[data-kind=change]').count(),0);
  await yoy.check();assert(await passengers.locator('.site-value-label[data-kind=change]').count()>0);assert((await passengers.locator('.site-value-labels').textContent()).includes('96.2'));assert((await passengers.locator('.site-value-labels').textContent()).includes('+6.7%'));
  await values.uncheck();assert.equal(await passengers.locator('.site-value-label[data-kind=value]').count(),0);assert(await passengers.locator('.site-value-label[data-kind=change]').count()>0);
  await page.selectOption('#scope','monthly');assert(await yoy.isChecked());assert.equal(await values.isChecked(),false);await page.selectOption('#scope','ytd');

@@ -83,10 +83,10 @@ function valuesControl(svg){
   const legacy=scope.querySelector('input[data-chart-labels]');
   if(legacy){if(!config){config={scope,hotel:false,node:legacy.closest('label')};valueScopes.set(scope,config);}config.value=legacy.checked;config.change=legacy.checked;return config;}
   const hotel=document.body.classList.contains('hotel-page')||scope.hasAttribute('data-chart-dual-labels'),selectedMetric=scope.querySelector('#holiday-metric-select,#hn-metric,#dh-metric'),metric=selectedMetric?.selectedOptions[0]?.textContent.trim().replace(/[（(].*$/,'')||scope.querySelector('#metric-switch')?.querySelector('[aria-pressed=true]')?.textContent.trim()||scope.querySelector('[data-metric][aria-pressed=true]')?.textContent.trim()||(scope.matches('.hd-tier-trend')?document.querySelector('#metric-switch [aria-pressed=true]')?.textContent.trim():'')||'数值';
-  if(!config){config={scope,hotel,value:scope.hasAttribute('data-chart-values-default')||document.body.hasAttribute('data-chart-values-default'),change:document.body.classList.contains('dutyfree-page')&&(scope.hasAttribute('data-chart-values-default')||document.body.hasAttribute('data-chart-values-default'))};valueScopes.set(scope,config);}
+  if(!config){config={scope,hotel,value:scope.hasAttribute('data-chart-values-default')||document.body.hasAttribute('data-chart-values-default'),change:scope.hasAttribute('data-chart-change-default')||document.body.hasAttribute('data-chart-change-default')||document.body.classList.contains('dutyfree-page')&&(scope.hasAttribute('data-chart-values-default')||document.body.hasAttribute('data-chart-values-default'))};valueScopes.set(scope,config);}
   if(!config.node?.isConnected){
     const node=document.createElement('span');node.className='site-value-options';config.node=node;
-    for(const key of hotel?['value','change']:['value']){
+    for(const key of scope.getAttribute('data-chart-label-kinds')==='change'?['change']:hotel?['value','change']:['value']){
       const label=document.createElement('label'),input=document.createElement('input'),caption=document.createElement('span');label.className='site-value-option';input.type='checkbox';input.dataset.valueKind=key;input.checked=config[key];input.addEventListener('change',()=>{config[key]=input.checked;if(!hotel)config.change=input.checked;for(const state of [...states.values()])if(state.valueScope===scope)state.refreshValues();});label.append(input,caption);node.append(label);config[key+'Caption']=caption;config[key+'Input']=input;
     }
     const fields=[...scope.querySelectorAll('select,input[type=date]')].filter(n=>chartScope(n)===scope&&!n.closest('.site-value-options')&&(/window|range|history-start|from|\bto\b|years|price-end/.test(n.id)||/范围|区间/.test(n.getAttribute('aria-label')||'')||/范围|期间|开始|结束/.test(n.closest('label')?.textContent||'')));
@@ -94,7 +94,7 @@ function valuesControl(svg){
     if(anchor){let row=anchor.parentElement;if(!row.classList.contains('site-chart-options')){row=document.createElement('span');row.className='site-chart-options';anchor.before(row);row.append(anchor);}row.append(node);}
     else{const head=scope.querySelector('[data-chart-value-controls]')||scope.querySelector('.hd-card-head,.gj-card-head,.board-panel-head,.portal-panel-head,.quotes-chart-options,.sector-controls,.macro-detail-controls');if(head)head.append(node);else{node.classList.add('site-value-options-standalone');const host=svg.closest('.site-chart-scroll')||svg;host.before(node);}}
   }
-  config.valueCaption.textContent=hotel&&metric!=='数值'?'显示 '+metric:'显示数值';if(hotel)config.changeCaption.textContent='显示同比';
+  if(config.valueCaption)config.valueCaption.textContent=hotel&&metric!=='数值'?'显示 '+metric:'显示数值';if(hotel)config.changeCaption.textContent='显示同比';
   return config;
 }
 function valueLabels(svg,points,config){
