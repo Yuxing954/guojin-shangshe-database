@@ -39,7 +39,7 @@
       previous=row;
     }flush();
     let grid='';for(const tick of scale.ticks){const gy=top+(hi-tick)/(hi-lo)*(h-top-bottom);grid+='<line x1="'+left+'" x2="'+(w-right)+'" y1="'+gy+'" y2="'+gy+'" stroke="#eceef5"/><text x="'+(left-8)+'" y="'+(gy+4)+'" text-anchor="end">'+esc(scale.format(tick))+'</text>';}
-    return '<svg width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'" role="img" aria-labelledby="chart-title chart-desc"><title id="chart-title">'+esc(spec.name)+'历史走势</title><desc id="chart-desc">'+esc(values.length+'个观测值；详细数值可下载CSV。缺失区间不连线。')+'</desc>'+grid+lines+dots+'<text x="'+left+'" y="'+(h-12)+'">'+esc(points[0].period)+'</text><text x="'+(w-right)+'" y="'+(h-12)+'" text-anchor="end">'+esc(points.at(-1).period)+'</text></svg>';
+    return '<svg width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'" role="img" aria-labelledby="chart-title chart-desc"><title id="chart-title">'+esc(spec.name)+'历史走势</title><desc id="chart-desc">'+esc(values.length+'个观测值；详细数值可下载CSV。缺失区间不连线。')+'</desc>'+grid+lines+dots+'<text class="site-period-tick" x="'+left+'" y="'+(h-12)+'">'+esc(ChartPeriod.format(points[0].period))+'</text><text class="site-period-tick" x="'+(w-right)+'" y="'+(h-12)+'" text-anchor="end">'+esc(ChartPeriod.format(points.at(-1).period))+'</text></svg>';
   }
   function renderStudy(){
     const query=state.study==='workspace';$('indicators').classList.toggle('macro-overview-mode',!query);
