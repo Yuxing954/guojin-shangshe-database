@@ -15,9 +15,9 @@
     if(!pages[id]||panels.has(id)){paint();return;}
     const wrap=document.createElement('section'),frame=document.createElement('iframe');
     wrap.className='industry-panel';frame.id='panel-'+id;frame.className='industry-panel-frame';frame.dataset.state='loading';frame.title=labels[id];frame.setAttribute('aria-label',labels[id]+'数据');
-    const url=new URL(pages[id],location.href);url.searchParams.set('embed','1');url.searchParams.set('v','20261019fasttabs');
+    const url=new URL(pages[id],location.href);url.searchParams.set('embed','1');url.searchParams.set('v','20261022korea');
     const saved=new URLSearchParams(location.search),owner=saved.get('panelSector');let view=owner===id?saved.get('panelView'):null;
-    if(view){const key=new URLSearchParams(view).get('view')||view;const allowed=id==='hotel'?['overview','cities','structure','holiday','groups']:id==='dutyfree'?['monthly','holidays']:[];if(!allowed.includes(key))view=null;}
+    if(view){const key=new URLSearchParams(view).get('view')||view;const allowed=id==='hotel'?['overview','cities','structure','holiday','groups']:id==='dutyfree'?['monthly','korea','holidays']:[];if(!allowed.includes(key))view=null;}
     if(id==='hotel'&&view&&new URLSearchParams(view).get('view')==='holiday')url.pathname=url.pathname.replace('hotel-dashboard.html','hotel-holiday-dashboard.html');
     if(id==='hotel'&&view&&new URLSearchParams(view).get('view')==='groups')url.pathname=url.pathname.replace('hotel-dashboard.html','hotel-groups.html');
     if(view&&id!=='dining')url.hash=view;
@@ -31,7 +31,7 @@
   function hotelFrame(key,view){
     if(hotelViews.has(key))return hotelViews.get(key);
     const current=panels.get('hotel'),frame=document.createElement('iframe'),url=new URL(key==='groups'?'hotel-groups.html':key==='holiday'?'hotel-holiday-dashboard.html':'hotel-dashboard.html',location.href);
-    url.searchParams.set('embed','1');url.searchParams.set('v','20261019fasttabs');url.hash='view='+view;
+    url.searchParams.set('embed','1');url.searchParams.set('v','20261022korea');url.hash='view='+view;
     frame.className='industry-panel-frame';frame.title=key==='groups'?'酒店集团':key==='holiday'?'酒店假期数据':'酒店经营数据';frame.id='panel-hotel-'+key;
     frame.style.cssText='position:absolute;top:0;left:0;width:100%;visibility:hidden;pointer-events:none';frame.setAttribute('aria-hidden','true');frame.inert=true;
     const panel={wrap:current.wrap,frame,state:'loading',timer:null,viewKey:key};
