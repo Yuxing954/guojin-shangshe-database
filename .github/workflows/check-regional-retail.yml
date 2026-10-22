@@ -35,6 +35,7 @@ jobs:
           node --test tests/regional-retail.test.cjs
           node --test tests/regional-retail-tiers.test.cjs
           node --test tests/regional-retail-history.test.cjs
+          node --test tests/regional-retail-monthly.test.cjs
       - name: Browser checks
         run: |
           npm install --no-save --package-lock=false playwright@1.62.1
