@@ -28,6 +28,11 @@ def title_for(title,body=''):
 
 def published_for(row):return row.get('原始发布时间') or row.get('时间')
 
+def substantive_segment(title,body):
+ # A concise company event can carry more information than a long invitation.
+ text=body.strip()
+ return len(text)>=80 or (len(text)>=40 and bool(sector_for(title,body)) and bool(re.search(r'\d+(?:\.\d+)?\s*(?:%|亿|万|家|港元|美元|元)',text)) and bool(re.search(r'减持|增持|回购|经营|收入|利润|门店|GMV',text,re.I)))
+
 def sector_for(title,body=''):
  # Research team names do not determine sector; remove bracketed broker headings.
  subject=re.sub(r'【[^】]*(?:食饮|传媒|轻工|商社|消费|纺织服装珠宝|纺服)[^】]*】','',title_for(title,body))
@@ -39,6 +44,7 @@ def sector_for(title,body=''):
  if re.match(r'双11大促跟踪',subject) and sum(x in body for x in ('珀莱雅','毛戈平','上海家化','润本','玉泽','佰草集'))>=3:return '零售与消费出海'
  if re.search(r'航司.*(?:供需|经营数据|客座率|客运|运力)',subject):return '酒店旅游'
  if re.search(r'航空.*(?:经营数据|客座率|客运|运力)',subject):return '酒店旅游'
+ if re.search(r'IQOS|ZYN|菲利普莫里斯|安踏体育',subject,re.I):return '零售与消费出海'
  for sector,terms in SECTORS.items():
   if any(t in subject for t in terms):return sector
  return None

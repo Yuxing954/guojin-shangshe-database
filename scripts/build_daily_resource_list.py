@@ -3,7 +3,7 @@ import argparse,csv,datetime as dt,hashlib,json,re
 from pathlib import Path
 from build_daily_report import ROOT,TZ,stamp,window_hours
 from research_sources import merge_rows,update_rows,archive_rows
-from daily_scope import sector_for,is_ecommerce_topic,EXCLUDE,title_for,published_for
+from daily_scope import sector_for,is_ecommerce_topic,EXCLUDE,title_for,published_for,substantive_segment
 from daily_attachment_coverage import attachment_catalog
 
 def filename_key(name):return re.sub(r'[\s—\-_]+','',name).lower()
@@ -58,7 +58,7 @@ def build(date,cutoff=None):
   with (ROOT/'data'/file).open(encoding='utf-8-sig') as f:base=list(csv.DictReader(f))
   for r in merge_rows(archive_rows(ROOT,db,base),update_rows(ROOT,db)):
    body=r.get('内容','');title=title_for(r.get('标题',''),body);when=published_for(r);sector=sector_for(title,body)
-   if not sector or not within(when,start,end) or len(body.strip())<80:continue
+   if not sector or not within(when,start,end) or not substantive_segment(title,body):continue
    url=r.get('原文链接','');identity=re.sub(r'\s','',body)
    if identity in seen or url in seen:continue
    seen.update([identity,url]);groups['segments'].append({'title':title,'publishedAt':stamp(when).isoformat(),'sector':sector,'url':url})
@@ -83,3 +83,4 @@ if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--date',required=True);p.add_argument('--cutoff');a=p.parse_args();d=build(a.date,a.cutoff)
  out=ROOT/'data/daily/resources';out.mkdir(exist_ok=True);(out/f'{a.date}.json').write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
  print({k:len(v) for k,v in d['groups'].items()})
+

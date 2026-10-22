@@ -3,19 +3,44 @@
   "date": "2026-10-21",
   "windowStart": "2026-10-20T18:00:00+08:00",
   "cutoff": "2026-10-21T18:00:00+08:00",
-  "sourceThrough": "2026-10-21T11:00:20.405+0800",
+  "sourceThrough": "2026-10-22T18:04:01.431+0800",
   "attachmentCatalog": {
-    "generatedAt": "2026-10-20T08:39:03.081Z",
+    "generatedAt": "2026-10-21T17:24:33+08:00",
     "sourceThrough": "2026-10-20T16:14:22.642+0800",
     "scan": {
       "observedAt": "2026-10-20T08:39:03.081Z",
       "sourceGroup": "88888142214212",
       "sourceName": "水木调研纪要-2.0",
+      "topicsScanned": 750,
+      "topicsInWindow": 701,
+      "topicPages": 25,
+      "topicWindowFrom": "2026-10-18T00:00:00+08:00",
+      "topicWindowTo": "2026-10-20T16:14:22.642+0800",
+      "boundaryReachedBeforeWindow": true,
+      "attachmentsObserved": 402,
+      "uniqueFileIds": 402,
+      "duplicateFileIds": 0,
+      "newRecords": 192,
+      "existingRecordsRefreshed": 210,
+      "attachmentContentRead": false,
+      "sourceMetadataFields": [
+        "fileId",
+        "topicId",
+        "filename",
+        "extension",
+        "bytes",
+        "fileCreatedAt",
+        "topicCreatedAt",
+        "durationSeconds",
+        "downloadCount",
+        "sourceHash",
+        "source"
+      ],
       "windowStart": "2026-10-18T00:00:00+08:00",
       "windowEnd": "2026-10-20T08:39:03.081Z",
+      "windowEndDate": "2026-10-20",
       "windowComplete": true,
-      "boundaryReachedBeforeWindow": true,
-      "attachmentContentRead": false
+      "archiveHasMore": true
     },
     "coverageStatus": "pending",
     "requestedWindowStart": "2026-10-20T18:00:00+08:00",
@@ -30,10 +55,16 @@
   "groups": {
     "segments": [
       {
-        "title": "[红包] 【华泰消费｜美护】底部坚定推荐，重申对于上美股份的底部买入时机，# 高基数期韧性奠定拐点+管理层回购底+多品牌密集落地提供看涨期权+可观赔率",
-        "publishedAt": "2026-10-20T18:02:17.906000+08:00",
+        "title": "# 20261021再次重申万辰/鸣鸣底部的投资机会，当年PE10X，零售里面好的商业模式",
+        "publishedAt": "2026-10-21T14:43:51.907000+08:00",
         "sector": "零售与消费出海",
-        "url": "https://wx.zsxq.com/group/88888142214212/topic/45548522212282188"
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/82258241882542142"
+      },
+      {
+        "title": "锦波生物跟踪点评",
+        "publishedAt": "2026-10-21T13:03:46.377000+08:00",
+        "sector": "零售与消费出海",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/82258241554854442"
       },
       {
         "title": "新型烟草9月重点数据跟踪【国金轻工&新消费】",
@@ -52,11 +83,17 @@
         "publishedAt": "2026-10-21T09:19:16.215000+08:00",
         "sector": "教育人服",
         "url": "https://wx.zsxq.com/group/88888142214212/topic/55521544848224424"
+      },
+      {
+        "title": "[红包] 【华泰消费｜美护】底部坚定推荐，重申对于上美股份的底部买入时机，# 高基数期韧性奠定拐点+管理层回购底+多品牌密集落地提供看涨期权+可观赔率",
+        "publishedAt": "2026-10-20T18:02:17.906000+08:00",
+        "sector": "零售与消费出海",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/45548522212282188"
       }
     ],
     "minutes": [],
     "audio": [],
     "reports": []
   },
-  "policy": "仅依据已入库元数据列标题、发布时间和来源主题；未下载、读取或转写附件。附件窗口未覆盖时，空类别不代表源站没有新增。"
+  "policy": "仅依据已入库元数据列出标题、发布时间和来源主题；未下载、读取或转写附件，不把研究报告标为纪要。"
 }
