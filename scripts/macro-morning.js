@@ -20,7 +20,7 @@
       if(part.length>1)html+='<polyline points="'+part.map(r=>x(r).toFixed(2)+','+y(r.chartValue).toFixed(2)).join(' ')+'"/>';
       for(const row of part){const i=points.length;points.push({x:x(row),y:y(row.chartValue),text:row.period+'：'+number(row.chartValue)+' '+head.unit});html+='<circle tabindex="0" data-chart-point="'+i+'" cx="'+x(row)+'" cy="'+y(row.chartValue)+'" r="3"'+(row===finite.at(-1)?' class="morning-last"':'')+'><title>'+esc(row.period+'：'+number(row.chartValue)+' '+head.unit)+'</title></circle>';}
     }
-    html+='<text x="'+left+'" y="'+(height-7)+'">'+esc(rows[0].period)+'</text><text x="'+(width-right)+'" y="'+(height-7)+'" text-anchor="end">'+esc(rows.at(-1).period)+'</text>';
+    html+='<text class="site-period-tick" x="'+left+'" y="'+(height-7)+'">'+esc(ChartPeriod.format(rows[0].period))+'</text><text class="site-period-tick" x="'+(width-right)+'" y="'+(height-7)+'" text-anchor="end">'+esc(ChartPeriod.format(rows.at(-1).period))+'</text>';
     return {html:'<svg viewBox="0 0 '+width+' '+height+'" role="img" aria-label="'+esc(spec.name+'近三年走势，'+head.unit+(head.label?'，'+head.label:'')+'，缺期断线')+'">'+html+'</svg>',points};
   }
   function render(catalog,snapshot,country,onSelect){

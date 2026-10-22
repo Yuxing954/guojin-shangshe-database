@@ -297,7 +297,7 @@ function paired(rows,opt={}){
     ])});
     if(showValue&&opt.valueStyle!=='line')r.values.forEach((s,si)=>{if(!Number.isFinite(s.value))return;const y=py(s.value,vd),zero=py(0,vd);svg+='<rect class="site-value-bar" x="'+(px(r.x)+(si-seriesCount/2)*barWidth)+'" y="'+Math.min(y,zero)+'" width="'+Math.max(.8,barWidth-1)+'" height="'+Math.max(1,Math.abs(zero-y))+'" rx="2" fill="'+barPalette[si%barPalette.length]+'" opacity="1"><title>'+esc(text)+'</title></rect>';});
     const step=Math.max(1,Math.ceil(normalized.length/Math.max(2,Math.floor(width/110))));
-    if(spacious?periodTicks.has(ri):ri===0||ri===normalized.length-1||w>=520&&ri%step===0&&normalized.length-ri>step/2)svg+='<text class="site-period-tick" x="'+px(r.x)+'" y="'+(spacious?bottom+36:h-17)+'" text-anchor="'+(ri===0?'start':ri===normalized.length-1?'end':'middle')+'">'+esc(String(periodText(r.period)).replace(/年/g,'·').replace(/月/g,''))+'</text>';
+    if(spacious?periodTicks.has(ri):ri===0||ri===normalized.length-1||w>=520&&ri%step===0&&normalized.length-ri>step/2)svg+='<text class="site-period-tick" x="'+px(r.x)+'" y="'+(spacious?bottom+36:h-17)+'" text-anchor="'+(ri===0?'start':ri===normalized.length-1?'end':'middle')+'">'+esc(ChartPeriod.format(r.period))+'</text>';
   });
   if(showValue&&opt.valueStyle==='line')for(let si=0;si<seriesCount;si++){
     let path='',prior=null;

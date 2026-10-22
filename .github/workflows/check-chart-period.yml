@@ -1,0 +1,24 @@
+name: Check chart date axes
+on:
+  pull_request:
+    paths: ['*.html', 'scripts/**', 'tests/chart-period*', '.github/workflows/check-chart-period.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  chart-period:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test tests/chart-period.test.cjs
+      - name: Install isolated browser runtime
+        run: |
+          npm install --prefix /tmp/axis-check --no-save --package-lock=false playwright@1.62.1
+          if [ -x /usr/bin/google-chrome ]; then echo "EDGE_PATH=/usr/bin/google-chrome" >> "$GITHUB_ENV"; else /tmp/axis-check/node_modules/.bin/playwright install --with-deps chromium; fi
+      - name: Check chart axes and exported products
+        run: node tests/chart-period.browser.cjs
+        env:
+          NODE_PATH: /tmp/axis-check/node_modules

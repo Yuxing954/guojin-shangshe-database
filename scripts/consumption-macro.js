@@ -95,7 +95,7 @@
       svg+=`<circle data-row="${k}" data-chart-point="${chartPoints.length}" tabindex="0" cx="${xx(r)}" cy="${yy(r[field])}" r="4" fill="white" stroke="#2167a0" stroke-width="2" aria-label="${esc(title)}"><title>${esc(title)}</title></circle>`;
       chartPoints.push({x:xx(r),y:yy(r[field]),text:title});
     });
-    const step=Math.max(1,Math.ceil(rows.length/Math.max(2,Math.floor(w/110))));rows.forEach((r,k)=>{if(holiday||k===0||k===rows.length-1||(k%step===0&&rows.length-k>step/2))svg+=`<text x="${xx(r)}" y="${h-14}" fill="#818897" text-anchor="${holiday?'middle':k===0?'start':k===rows.length-1?'end':'middle'}" font-size="11">${esc(label(r))}</text>`;});
+    const step=Math.max(1,Math.ceil(rows.length/Math.max(2,Math.floor(w/110))));rows.forEach((r,k)=>{if(holiday||k===0||k===rows.length-1||(k%step===0&&rows.length-k>step/2))svg+=`<text class="site-period-tick" x="${xx(r)}" y="${h-14}" fill="#818897" text-anchor="${holiday?'middle':k===0?'start':k===rows.length-1?'end':'middle'}" font-size="11">${esc(ChartPeriod.format(label(r)))}</text>`;});
     el.innerHTML=svg+'</svg><div class="cm-chart-tooltip" aria-live="polite"></div>';
     ResearchChart.attach(el,chartPoints);
   }

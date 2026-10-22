@@ -43,7 +43,7 @@ function draw(target,width,model,comment){
  if(!selected){const yy=Math.max(top+font,Math.min(bottom-4,py+(j?28:-14)));selected={yy,box:{x:xx-width/2-3,y:yy-font,w:width+6,h:font+5}};}
  placed.push(selected.box);ctx.save();ctx.font='bold '+font+'px "Microsoft YaHei",sans-serif';ctx.textAlign='center';ctx.lineWidth=4;ctx.strokeStyle='#fff';ctx.lineJoin='round';ctx.strokeText(label,xx,selected.yy);ctx.fillStyle=shared?ink:colors[j];ctx.fillText(label,xx,selected.yy);ctx.restore();labels.push({period:p.period,value,series:shared?'CPI / 核心CPI':item.name});
  });});
- const tick=[...new Set(Array.from({length:Math.min(6,points.length)},(_,i)=>Math.round(i*(points.length-1)/Math.max(1,Math.min(6,points.length)-1))))];for(const i of tick)if(points[i])text(points[i].period.slice(2),xpos(i),bottom+30,19,'#73808b','normal','center');
+ const tick=[...new Set(Array.from({length:Math.min(6,points.length)},(_,i)=>Math.round(i*(points.length-1)/Math.max(1,Math.min(6,points.length)-1))))];for(const i of tick)if(points[i])text(ChartPeriod.format(points[i].period),xpos(i),bottom+30,19,'#73808b','normal','center');
  if(!values.length)text('暂无数据',x+w/2,top+110,23,muted,'normal','center');
  hit.push({type:'trend',x:l+inset,y:top,w:r-l-2*inset,h,points,series,labels});
  }

@@ -1,5 +1,5 @@
 const test=require('node:test'),assert=require('node:assert/strict'),vm=require('node:vm'),fs=require('node:fs'),path=require('node:path');
-const context={window:{},document:{addEventListener(){},readyState:'loading'},addEventListener(){},Intl,AbortController};
+const context={ChartPeriod:require('../scripts/chart-period.js'),window:{},document:{addEventListener(){},readyState:'loading'},addEventListener(){},Intl,AbortController};
 vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../scripts/site-charts.js'),'utf8'),context);
 const {niceScale,paired}=context.window.SiteCharts;
 test('axes cover positive, negative, constant, tiny and missing observations with distinct evenly spaced ticks',()=>{

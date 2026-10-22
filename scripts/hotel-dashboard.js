@@ -522,7 +522,7 @@
     }
     if (min < 0 && max > 0) svg.appendChild(svgEl('line', { x1: L, x2: W - R, y1: py(0), y2: py(0), stroke: '#c3c9d8', 'stroke-dasharray': '4 4' }));
     Array.from(new Set([0, Math.round((xs.length - 1) / 3), Math.round((xs.length - 1) * 2 / 3), xs.length - 1])).forEach(function (i) {
-      svg.appendChild(svgEl('text', { x: px(xs[i]), y: H - 10, 'text-anchor': opt.time && i === 0 ? 'start' : opt.time && i === xs.length - 1 ? 'end' : 'middle', 'font-size': 11, fill: '#8a94a5' }, M.weekLabel(xs[i])));
+      svg.appendChild(svgEl('text', { class: 'site-period-tick', x: px(xs[i]), y: H - 10, 'text-anchor': opt.time && i === 0 ? 'start' : opt.time && i === xs.length - 1 ? 'end' : 'middle', 'font-size': 11, fill: '#8a94a5' }, ChartPeriod.format(xs[i])));
     });
     lines.forEach(function (s) {
       var path = '', started = false, previous = null;
