@@ -219,6 +219,12 @@ export class MarketSync{
     };
     // Fresh reads: build commits can land after the data commit.
     const freshFile=async p=>unpack(await this.rpc('mcp__codex_apps__github_fetch_file',{repository_full_name:REPO,path:p,ref}));
+    const buildRef=this.s.recoveryBuildCommit||this.s.commitSha;
+    const runs=await this.get(`https://api.github.com/repos/${REPO}/actions/runs?head_sha=${buildRef}&per_page=30`);
+    const relevant=runs.workflow_runs.filter(r=>r.head_sha===buildRef&&r.path?.endsWith('/build-research-recent.yml'));
+    const latest=relevant.sort((a,b)=>(b.run_attempt||1)-(a.run_attempt||1)||new Date(b.created_at||0)-new Date(a.created_at||0))[0];
+    if(latest?.status==='completed'&&latest.conclusion!=='success')throw new Error('Research build failed: '+latest.conclusion+' '+(latest.html_url||''));
+    if(latest?.conclusion!=='success')return {status:'pending',stage:'build-status',commit:this.s.commitSha};
     const a=JSON.parse(await freshFile(ARCHIVE));
     if(time(a.coverageTo)<time(this.s.scannedTo))return {status:'pending',stage:'build',commit:this.s.commitSha};
     if(this.s.dataVerifiedForHead!==ref){
@@ -251,10 +257,6 @@ export class MarketSync{
     if(meta.sha!==ex.gitBlobSha1||meta.size!==ex.bytes||ex.totalRows!==a.databases.views.rows+a.databases.all_views.rows||ex.coverageTo!==a.coverageTo)throw new Error('Full export checksum/count/coverage mismatch');
     this.s.dataVerifiedForHead=ref;this.s.verification={head:ref,coverageTo:a.coverageTo,rows:ex.totalRows,exportSha:meta.sha};await this.save();
     }
-    const runs=await this.get(`https://api.github.com/repos/${REPO}/actions/runs?head_sha=${this.s.commitSha}&per_page=30`);
-    const relevant=runs.workflow_runs.filter(r=>r.head_sha===this.s.commitSha&&r.path?.endsWith('/build-research-recent.yml'));
-    if(relevant.some(r=>r.status==='completed'&&r.conclusion!=='success'))throw new Error('Research build failed');
-    if(!relevant.some(r=>r.conclusion==='success'))return {status:'pending',stage:'build-status',commit:this.s.commitSha};
     const deployments=await this.get(`https://api.github.com/repos/${REPO}/actions/runs?head_sha=${ref}&per_page=30`);
     const pages=deployments.workflow_runs.filter(r=>r.head_sha===ref&&r.path==='dynamic/pages/pages-build-deployment');
     if(pages.some(r=>r.status==='completed'&&r.conclusion==='failure'))throw new Error('Pages deployment failed');
