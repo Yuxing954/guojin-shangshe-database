@@ -8,7 +8,7 @@ async function main(){
  const page=await browser.newPage({viewport:{width:1440,height:1100}}),base=process.argv[2]||'http://127.0.0.1:'+server.address().port,errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto(base+'/hotel-dashboard.html');await page.locator('#segment-chart svg').waitFor();
  const card=page.locator('.hd-card').filter({has:page.locator('#main-chart')}),value=card.locator('.hd-chart-controls input[data-value-kind=value]'),change=card.locator('.hd-chart-controls input[data-value-kind=change]');
- assert.equal(await value.count(),1);assert.equal(await change.count(),1);assert.equal(await value.isChecked(),false);assert.equal(await change.isChecked(),false);
+ assert.equal(await value.count(),1);assert.equal(await change.count(),1);assert.equal(await value.isChecked(),true);assert.equal(await change.isChecked(),true);assert(await page.locator('#main-chart .site-value-label[data-kind=value]').count()>0);assert(await page.locator('#main-chart .site-value-label[data-kind=change]').count()>0);await value.uncheck();await change.uncheck();
  assert.equal(await page.locator('#main-chart .site-value-label').count(),0);assert.equal(await card.locator('.site-chart-options').locator('#history-start').count(),1);
  for(const [index,field] of ['revpar','occupancy_rate','adr'].entries()){
    const raw=M.metric(latest,field)*(field==='occupancy_rate'?100:1),text=await page.locator('.hd-stat-value').nth(index).innerText();assert(text.includes(Math.round(raw).toLocaleString('zh-CN')));assert(!/\d\.\d/.test(text));
