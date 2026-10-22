@@ -12,18 +12,18 @@
   if(!data)return;const view=selected(),latest=view.at(-1);
   $('kr-period').textContent=(latest?.period||'暂无数据')+' · '+M.scopes[state.scope]+' · 核对 '+data.updatedAt;
   for(const m of metrics){
-   const val=latest?.[m.field],approx=latest?.[m.field+'Precision']!=='raw';
-   $('kr-'+m.id).textContent=(M.finite(val)&&approx?'≈':'')+fmt(M.finite(val)?val/m.scale:null,m.precision);
+   const val=latest?.[m.field];
+   $('kr-'+m.id).textContent=fmt(M.finite(val)?val/m.scale:null,m.precision);
    const change=latest?.[m.field+'Yoy'];$('kr-'+m.id+'-yoy').textContent='同比测算 '+pct(change);$('kr-'+m.id+'-yoy').className=change>0?'up':change<0?'down':'';
    const title=m.label+(state.mode==='combo'?'与同比':state.mode==='change'?'同比':'走势');$('kr-'+m.id+'-title').textContent=title;
    SiteCharts.drawPaired($('kr-'+m.id+'-chart'),view.map((r,x)=>({period:r.period.slice(2),x,value:M.finite(r[m.field])?r[m.field]/m.scale:null,change:r[m.field+'Yoy']??null})),{name:m.label,mode:state.mode,unit:m.unit,precision:m.precision,changeUnit:'%',changePrecision:1,gap:1.5,trimEmpty:false,changeLabel:'同比测算'});
   }
-  $('kr-table').innerHTML='<thead><tr>'+['月份','销售额（亿美元）','金额同比测算','购物人次（万）','人次同比测算','客单价（美元/人次）','客单价同比测算'].map(x=>'<th>'+x+'</th>').join('')+'</tr></thead><tbody>'+view.slice().reverse().map(r=>'<tr><td>'+esc(r.period)+'</td>'+metrics.map(m=>'<td class="num">'+(r[m.field+'Precision']!=='raw'&&M.finite(r[m.field])?'≈':'')+fmt(M.finite(r[m.field])?r[m.field]/m.scale:null,m.precision)+'</td><td class="num">'+pct(r[m.field+'Yoy'])+'</td>').join('')+'</tr>').join('')+'</tbody>';
+  $('kr-table').innerHTML='<thead><tr>'+['月份','销售额（亿美元）','金额同比测算','购物人次（万）','人次同比测算','客单价（美元/人次）','客单价同比测算'].map(x=>'<th>'+x+'</th>').join('')+'</tr></thead><tbody>'+view.slice().reverse().map(r=>'<tr><td>'+esc(r.period)+'</td>'+metrics.map(m=>'<td class="num">'+fmt(M.finite(r[m.field])?r[m.field]/m.scale:null,m.precision)+'</td><td class="num">'+pct(r[m.field+'Yoy'])+'</td>').join('')+'</tr>').join('')+'</tbody>';
   root.dataset.status='ready';$('kr-status').textContent='';$('kr-retry').hidden=true;if(root.classList.contains('on'))$('rows-note').textContent='韩国月度 '+data.periodCount+' 期 · 三类顾客 '+data.count+' 条';stamp();
  }
  function source(){
   if(!data)return;
-  $('srcbox').innerHTML='<h3>韩国免税数据来源</h3><div class="row"><b>原始机构</b><span>韩国免税店协会</span></div><div class="row"><b>数据期间</b><span>'+esc(data.coverageStart+'—'+data.dataAsOf)+'</span></div><div class="row"><b>核对日期</b><span>'+esc(data.updatedAt)+'</span></div><div class="row"><b>精度</b><span>≈ 表示缩略原值或据此测算；独立发布日期未取得</span></div>'+data.sources.map(s=>'<p>'+esc(s.name)+' · <a href="'+esc(s.url)+'" target="_blank" rel="noopener">来源 ↗</a></p>').join('')+'<p><a href="data-notes.html#dutyfree" target="_blank" rel="noopener">完整来源与口径 ↗</a></p><div class="closebtn"><button class="srcbtn" id="kr-close-source">关闭</button></div>';
+  $('srcbox').innerHTML='<h3>韩国免税数据来源</h3><div class="row"><b>原始机构</b><span>韩国免税店协会</span></div><div class="row"><b>数据期间</b><span>'+esc(data.coverageStart+'—'+data.dataAsOf)+'</span></div><div class="row"><b>核对日期</b><span>'+esc(data.updatedAt)+'</span></div><div class="row"><b>精度</b><span>部分原始回执含缩略值；同比和客单价为测算，独立发布日期未取得</span></div>'+data.sources.map(s=>'<p>'+esc(s.name)+' · <a href="'+esc(s.url)+'" target="_blank" rel="noopener">来源 ↗</a></p>').join('')+'<p><a href="data-notes.html#dutyfree" target="_blank" rel="noopener">完整来源与口径 ↗</a></p><div class="closebtn"><button class="srcbtn" id="kr-close-source">关闭</button></div>';
   $('srcmodal').showModal();$('kr-close-source').onclick=()=>$('srcmodal').close();
  }
  async function load(){
