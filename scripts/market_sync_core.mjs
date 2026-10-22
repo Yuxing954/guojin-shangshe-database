@@ -171,7 +171,17 @@ export class MarketSync{
     this.s.excluded=excluded;this.s.duplicates=duplicates;this.s.briefCutoff=cutoff(this.now());this.s.added={views:rows.views.length,all_views:rows.all_views.length};this.s.briefChanges=changes;this.s.sourceTopicIds=sources.map(s=>s.topic_id);
     if(!sources.length&&!briefAdded&&!briefUpdated&&!expired.length){this.s.stage='done';this.s.noChange=true;await atomic(path.join(this.root,'scan-cache.json'),{remoteCoverage:this.s.remoteCoverage,scannedTo:this.s.scannedTo});await this.save();return true;}
     const u=structuredClone(this.s.updates),files={};
-    for(const kind of ['views','all_views'])if(rows[kind].length){const p=ROOT+'updates/'+this.s.runId+'-'+kind+'.csv';files[p]=csvWrite(rows[kind]);u.files[kind]=[p,...u.files[kind]];u.counts[kind]=(u.counts[kind]||0)+rows[kind].length;u.latest[kind]=rows[kind][0]['时间'];}
+    for(const kind of ['views','all_views'])if(rows[kind].length){
+      const groups=[];let batch=[];
+      for(const row of rows[kind]){
+        if(csvWrite([row]).length>24000)throw new Error('Single market row exceeds connector chunk limit');
+        if(batch.length&&csvWrite([...batch,row]).length>24000){groups.push(batch);batch=[];}
+        batch.push(row);
+      }
+      if(batch.length)groups.push(batch);
+      const paths=groups.map((group,i)=>{const p=ROOT+'updates/'+this.s.runId+'-'+kind+'-'+String(i).padStart(3,'0')+'.csv';files[p]=csvWrite(group);return p;});
+      u.files[kind]=[...paths,...u.files[kind]];u.counts[kind]=(u.counts[kind]||0)+rows[kind].length;u.latest[kind]=rows[kind][0]['时间'];
+    }
     const stamp=this.now().toISOString();const record={runId:this.s.runId,sourceGroup:GROUP,sourceName:'水木调研纪要-2.0',previousCoverageTo:this.s.remoteCoverage,coverageTo:this.s.scannedTo,added:sources.length,updated:0,expiredRemoved:expired.length,sourceTopicIds:this.s.sourceTopicIds,duplicateTopicIds:this.s.duplicates.map(x=>x.topicId),briefChanges:changes};
     u.syncedAt=stamp;u.coverageFrom=this.s.remoteCoverage;u.coverageTo=this.s.scannedTo;u.fetchedTopics=new Set(this.s.pages.flatMap(p=>p.topics.map(t=>t.topic_id))).size;u.oldestFetched=this.s.pages.flatMap(p=>p.topics).at(-1)?.create_time||this.s.scanFrom;
     u.lastRun={...record,added:this.s.added,duplicates:this.s.duplicates.length,excludedTopics:this.s.excluded,pagination:{pages:this.s.pages.length,pageRowsFetched:this.s.pages.reduce((n,p)=>n+p.topics.length,0),limit:30,stoppedWhenPageReachedCoverage:true},dedupCheck:{candidateKeys:this.s.candidateKeyCount,candidateBuckets:this.s.bucketCount,algorithm:'sha256-utf8-v1'},expiredBriefIds:expired};u.lastUpdateRecord=record;
