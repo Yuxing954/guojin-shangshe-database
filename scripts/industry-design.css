@@ -1,0 +1,53 @@
+/* Industry-only design contract. Loaded last by the hub and its seven views. */
+body:is(.industry-hub,.industry-embedded){--industry-gap:16px;--industry-radius:12px;--travel-blue:var(--site-accent);--travel-ink:var(--site-ink);--dining-blue:var(--site-accent);color:var(--site-ink)}
+body.industry-hub #sector-tabs.industry-sector-nav{grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-bottom:20px}
+body.industry-hub #sector-tabs.industry-sector-nav button{min-height:60px;padding:10px 14px;font-size:15px}
+body.site-page.industry-embedded .industry-meta{display:flex;align-items:center;justify-content:space-between;gap:8px 16px;flex-wrap:wrap;min-height:40px;margin:0 0 16px}
+body.site-page.industry-embedded :is(main,.wrap)>.embedded-asof{min-height:40px!important;margin:0 0 16px!important}
+body.site-page.industry-embedded .industry-board :is(#view-overview,#view-cities,#view-structure,#holiday-dashboard,#dashboard,.hd-view) .board-stat{padding:16px!important;min-height:120px}
+body.site-page.industry-embedded .industry-board :is(#view-overview,#view-cities,#view-structure,#holiday-dashboard,#dashboard,.hd-view) .board-stat>:is(strong,.board-stat-value,.hd-stat-value,.gj-stat-value),body.site-page.industry-embedded .industry-board :is(#view-overview,#view-cities,#view-structure,#holiday-dashboard,#dashboard,.hd-view) .board-stat .dh-value>strong{font-size:28px!important;line-height:38px!important}
+body.industry-embedded :is(.industry-meta #asof,.embedded-asof){font-size:13px!important;line-height:22px!important;color:var(--site-muted)!important;margin:0!important;padding:0!important;min-height:40px;display:flex;align-items:center}
+body.industry-embedded>.site-main>.embedded-asof,body.industry-embedded>.wrap>.embedded-asof{margin-bottom:16px!important}
+body.industry-embedded .industry-meta-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:13px}
+body.industry-embedded .industry-meta-actions a{color:var(--site-accent)}
+body.site-page.industry-embedded #asof{box-sizing:border-box;display:flex!important;align-items:center;min-height:40px!important;margin:0 0 16px!important;padding:0!important;font-size:13px!important;line-height:22px!important}
+body.site-page.industry-embedded .industry-meta{margin:0!important}
+body.site-page.industry-embedded .industry-meta-actions{margin-left:auto}
+body.site-page.industry-embedded :is(.hd-tabs,#tabs,.travel-tabs,.cruise-tabs)>:is(button,a){box-sizing:border-box;min-height:40px!important}
+body.industry-embedded :is(.hd-tabs,#tabs,.travel-tabs,.cruise-tabs){display:flex!important;align-items:center;flex-wrap:wrap;gap:4px!important;width:100%!important;box-sizing:border-box;padding:4px!important;margin:0 0 20px!important;border:1px solid var(--site-line)!important;border-radius:10px!important;background:var(--site-soft)!important;box-shadow:none!important}
+body.industry-embedded :is(.hd-tabs,#tabs,.travel-tabs,.cruise-tabs)>:is(button,a){display:inline-flex;align-items:center;justify-content:center;flex:0 1 auto;min-width:0;min-height:40px;padding:8px 18px!important;margin:0!important;border:0!important;border-radius:7px!important;background:transparent!important;color:var(--site-muted)!important;font-family:inherit; font-size:14px!important;line-height:24px!important;font-weight:500!important;box-shadow:none!important;text-decoration:none}
+body.industry-embedded :is(.hd-tabs,#tabs,.travel-tabs,.cruise-tabs)>:is(.active,.on,[aria-pressed=true],[aria-current=page]){background:#fff!important;color:var(--site-accent)!important;font-weight:600!important;box-shadow:0 1px 4px #24334c0d!important}
+body.industry-embedded :is(.travel-controls,.cruise-controls,.ca-controls,.dining-toolbar){display:flex;align-items:center;justify-content:flex-start;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding:0;border:0;background:transparent;min-width:0}
+body.industry-embedded :is(label,.travel-tag,.dining-meta,.dining-source){font-size:13px;line-height:22px;color:var(--site-muted)}
+body.industry-embedded :is(select,input[type=date],input[type=search]){box-sizing:border-box;max-width:100%;min-height:40px!important;border:1px solid var(--site-line)!important;border-radius:8px!important;background:#fff!important;padding:8px 12px!important;color:var(--site-ink)!important;font-family:inherit;font-size:14px!important;line-height:22px!important}
+body.industry-embedded :is(.industry-meta-actions button,.dining-actions button){min-height:40px;border:1px solid var(--site-line);border-radius:8px;background:white;padding:8px 12px;color:var(--site-accent);font:inherit;font-size:13px}
+body.industry-embedded :is(.travel-kpis,.cruise-kpis,.dining-kpis){display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin:0 0 24px}
+body.industry-embedded :is(.travel-kpi,.cruise-kpi,.dining-kpi){display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:0;min-width:0;min-height:120px;padding:16px;border:1px solid var(--site-line);border-radius:12px;background:#fff;box-shadow:none;box-sizing:border-box}
+body.industry-embedded :is(.travel-kpi,.cruise-kpi,.dining-kpi) h2{margin:0;font-size:13px;line-height:22px;font-weight:400;color:var(--site-muted)}
+body.industry-embedded :is(.travel-kpi>strong,.cruise-kpi>strong,.dining-kpi-value){display:block;margin:8px 0 6px;padding:0;font-size:28px;line-height:38px;font-weight:700;letter-spacing:0;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+body.industry-embedded :is(.travel-kpi,.cruise-kpi) strong small{font-size:13px;font-weight:400;color:var(--site-muted)}
+body.industry-embedded :is(.travel-kpi,.cruise-kpi) p{margin:0;font-size:13px;line-height:22px;color:var(--site-muted)}
+body.industry-embedded .dining-kpi:is(.qualitative,.estimate) .dining-kpi-value{font-size:17px;line-height:26px;min-height:38px}
+body.industry-embedded :is(.travel-panel,.cruise-panel,.dining-panel){padding:16px;margin:0 0 24px;border:1px solid var(--site-line);border-radius:12px;background:#fff;box-shadow:none;min-width:0}
+body.industry-embedded :is(.travel-panel,.cruise-panel,.dining-panel) h2,body.industry-embedded .travel-section-head h2{font-size:16px;line-height:24px;font-weight:600}
+body.industry-embedded :is(.travel-grid,.cruise-charts,.ca-panels){gap:16px}
+body.industry-embedded :is(.travel-panel-head,.cruise-detail-head,.ca-panel-head,.dining-section){gap:12px;margin-bottom:16px}
+body.industry-embedded :is(.travel-table-wrap,.cruise-table-wrap,.dining-table-wrap){max-width:100%;overflow:auto}
+body.industry-embedded :is(.travel-panel,.cruise-panel,.dining-panel) table{font-size:13px;line-height:21px}
+body.industry-embedded :is(.travel-panel,.cruise-panel,.dining-panel) :is(th,td){padding:10px 12px}
+body.industry-embedded :is(.travel-panel,.cruise-panel,.dining-panel) thead th{background:var(--site-soft);color:var(--site-muted)}
+body.industry-embedded :is(button,a,select,input):focus-visible{outline:2px solid var(--site-accent);outline-offset:3px}
+@media(max-width:760px){
+ body.site-page.industry-embedded .industry-board :is(#view-overview,#view-cities,#view-structure,#holiday-dashboard,#dashboard,.hd-view) .board-stat{min-height:112px}
+ body.site-page.industry-embedded .industry-board :is(#view-overview,#view-cities,#view-structure,#holiday-dashboard,#dashboard,.hd-view) .board-stat>:is(strong,.board-stat-value,.hd-stat-value,.gj-stat-value),body.site-page.industry-embedded .industry-board :is(#view-overview,#view-cities,#view-structure,#holiday-dashboard,#dashboard,.hd-view) .board-stat .dh-value>strong{font-size:24px!important;line-height:34px!important}
+ body.industry-hub #sector-tabs.industry-sector-nav{gap:6px}
+ body.industry-hub #sector-tabs.industry-sector-nav button{padding:8px 2px;font-size:12px;gap:4px;min-height:68px}
+ body.industry-embedded :is(.travel-kpis,.cruise-kpis,.dining-kpis,#domestic-period-kpis){grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+ body.industry-embedded :is(.travel-kpi,.cruise-kpi,.dining-kpi){min-height:112px}
+ body.industry-embedded :is(.travel-kpi>strong,.cruise-kpi>strong,.dining-kpi-value){font-size:24px;line-height:34px}
+ body.industry-embedded :is(.travel-grid,.cruise-charts,.ca-panels){grid-template-columns:1fr}
+ body.industry-embedded :is(.hd-tabs,#tabs,.travel-tabs,.cruise-tabs)>:is(button,a){padding:8px 12px!important}
+ body.industry-embedded .industry-meta{align-items:flex-start}
+ body.industry-embedded :is(select,input[type=date],input[type=search]){font-size:16px!important}
+}
+@media(max-width:340px){body.industry-embedded :is(.travel-kpis,.cruise-kpis,.dining-kpis,#domestic-period-kpis){grid-template-columns:1fr}}
