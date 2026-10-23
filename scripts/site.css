@@ -56,3 +56,25 @@ body.site-page{margin:0!important;padding-left:220px!important;min-height:100vh;
 
 
 .site-nav .site-company-child{font-size:12px;padding-left:46px;min-height:32px;padding-top:5px;padding-bottom:5px}
+
+/* Product library and daily report: peer actions at the foot of the sidebar. */
+.site-nav .site-nav-bottom{padding:24px 0 0;gap:12px}
+.site-nav .site-nav-bottom>a{padding:0 12px}
+.site-nav .site-resource-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;border-top:1px solid var(--site-line);padding-top:16px}
+.site-nav .site-resource-entry{display:flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:9px 6px;border:1px solid var(--site-line);border-radius:9px;background:var(--site-surface);color:var(--site-muted);font:inherit;font-size:13px;text-decoration:none}
+.site-nav .site-resource-entry svg{width:16px;height:16px}
+.site-nav .site-resource-entry:hover,.site-nav .site-resource-entry.current,.site-nav .site-resource-entry[aria-expanded=true]{background:var(--site-soft);border-color:#cbd0e9;color:var(--site-accent);text-decoration:none}
+.site-nav .site-product-chevron{font-size:12px;line-height:1;transform:rotate(180deg)}
+.site-nav [aria-expanded=true] .site-product-chevron{transform:none}
+.site-nav .site-products-panel{display:grid;gap:4px;padding:6px;border:1px solid var(--site-line);border-radius:10px;background:var(--site-bg)}
+.site-nav .site-products-panel a{display:flex;align-items:center;justify-content:space-between;gap:6px;min-height:40px;padding:8px;border-radius:6px;font-size:12px;color:var(--site-muted)}
+.site-nav .site-products-panel a:hover,.site-nav .site-products-panel a[aria-current=page]{background:var(--site-soft);color:var(--site-accent);text-decoration:none}
+.site-nav .site-products-panel a>span:last-child{color:var(--site-muted);font-size:11px}
+@media(max-width:760px){
+ .site-nav .site-nav-bottom{display:grid;padding-top:12px;gap:10px}
+ .site-nav .site-nav-bottom>a{display:none}
+ .site-nav .site-resource-actions{padding-top:10px}
+ .site-nav .site-products-panel{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .site-nav .site-products-panel a{justify-content:center;text-align:center}
+ .site-nav .site-products-panel a>span:last-child{display:none}
+}
