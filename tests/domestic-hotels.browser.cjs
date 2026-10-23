@@ -2,13 +2,13 @@
 const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),http=require('node:http'),M=require('../scripts/domestic-hotels-model.js'),D=require('../scripts/site-data.js');
 const ROOT=path.resolve(__dirname,'..'),manifest=JSON.parse(fs.readFileSync(path.join(ROOT,'data/companies/domestic-hotels.json'),'utf8')),datasets=manifest.companies.map(c=>JSON.parse(fs.readFileSync(path.join(ROOT,c.file),'utf8')));
 const server=http.createServer((req,res)=>{const file=path.resolve(ROOT,'.'+new URL(req.url,'http://local').pathname);if(!file.startsWith(ROOT+path.sep))return res.writeHead(403).end();try{res.setHeader('Content-Type',({'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg'})[path.extname(file)]||'text/plain');res.end(fs.readFileSync(file));}catch{res.writeHead(404).end();}});
-async function csv(page,selector){const event=page.waitForEvent('download');await page.click(selector);const stream=await(await event).createReadStream();let raw='';for await(const c of stream)raw+=c.toString('utf8');return D.csv(raw);}
+async function csv(page,selector){const event=page.waitForEvent('download');if(!await page.locator('.cw-export').evaluate(e=>e.open))await page.click('.cw-export>summary');await page.click(selector);const stream=await(await event).createReadStream();let raw='';for await(const c of stream)raw+=c.toString('utf8');return D.csv(raw);}
 (async()=>{
  await new Promise(r=>server.listen(0,'127.0.0.1',r));const base=process.argv[2]||(process.env.HOTEL_TEST_BASE||'http://127.0.0.1:'+server.address().port).replace(/\/$/,''),browser=await chromium.launch({headless:true,...(process.env.EDGE_PATH?{executablePath:process.env.EDGE_PATH}:{})});
  try{
   const context=await browser.newContext({viewport:{width:1440,height:1000}}),errors=[];context.on('page',p=>p.on('pageerror',e=>errors.push(e.message)));
   await context.addInitScript(()=>{let charts;Object.defineProperty(window,'SiteCharts',{configurable:true,get:()=>charts,set(value){const draw=value.drawPaired;value.drawPaired=function(host,rows,opt){(window.domPlotData||=Object.create(null))[host.id]={rows:structuredClone(rows),opt:structuredClone(opt)};return draw.call(this,host,rows,opt);};charts=value;}});});
-  const p=await context.newPage(),ready=()=>p.locator('#dh-chart-2 svg').waitFor(),more=async()=>{if(!await p.locator('#dh-advanced').getAttribute('open').then(v=>v!==null))await p.locator('#dh-advanced summary').click();};
+  const p=await context.newPage(),ready=()=>p.locator('#dh-chart-2 svg').waitFor({state:'attached'}),more=async()=>{if(!await p.locator('#dh-advanced').getAttribute('open').then(v=>v!==null))await p.locator('#dh-advanced summary').click();};
   await p.goto(base+'/company-database.html');await ready();
   assert.equal(await p.locator('#oh-kind').inputValue(),'全部');assert.equal(await p.locator('#oh-frequency').inputValue(),'单季度');assert.equal(await p.locator('#oh-display').inputValue(),'change');
   assert.equal(await p.locator('#oh-toolbar select:visible').count(),4);assert.equal(await p.locator('#oh-kind option').count(),2);
@@ -49,11 +49,11 @@ async function csv(page,selector){const event=page.waitForEvent('download');awai
   for(const width of [1440,1024,768,390,320]){
    await p.setViewportSize({width,height:900});await p.goto(base+'/company-database.html?company=atour');await ready();await p.locator('#dh-chart-0').locator('..').locator('[data-chart-labels]').check();
    assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'page overflow '+width);
-   assert(await p.locator('.oh-plot').evaluateAll(hs=>hs.every(h=>h.scrollWidth<=h.clientWidth+1&&h.querySelector('svg').getBoundingClientRect().width<=h.clientWidth+1)),'chart overflow '+width);
+   assert(await p.locator('.oh-plot:visible').evaluateAll(hs=>hs.every(h=>h.scrollWidth<=h.clientWidth+1&&h.querySelector('svg').getBoundingClientRect().width<=h.clientWidth+1)),'chart overflow '+width);
    assert.equal(await p.locator('.oh-plot .site-chart-scroll').count(),0);
    await more();assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'filter overflow '+width);
   }
-  const failed=await context.newPage();await failed.route('**/data/companies/domestic-hotels/jinjiang.json',r=>r.fulfill({status:503,body:'unavailable'}));await failed.goto(base+'/company-database.html?company=jinjiang');await failed.locator('#oh-retry:not([hidden])').waitFor();await failed.unroute('**/data/companies/domestic-hotels/jinjiang.json');await failed.click('#oh-retry');await failed.locator('#dh-chart-2 svg').waitFor();
+  const failed=await context.newPage();await failed.route('**/data/companies/domestic-hotels/jinjiang.json',r=>r.fulfill({status:503,body:'unavailable'}));await failed.goto(base+'/company-database.html?company=jinjiang');await failed.locator('#oh-retry:not([hidden])').waitFor();await failed.unroute('**/data/companies/domestic-hotels/jinjiang.json');await failed.click('#oh-retry');await failed.locator('#dh-chart-2 svg').waitFor({state:'attached'});
   assert.deepEqual(errors,[]);console.log('PASS: all hotels / single-quarter / YoY default, four primary controls, versioned links, deterministic company and cohort transitions, true missing periods and FX gaps, source/CSV7427, persistent detail filters, charts and labels, mobile widths, retry.');
  }finally{await browser.close();server.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;server.close();});

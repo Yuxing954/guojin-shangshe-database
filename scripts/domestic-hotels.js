@@ -60,7 +60,7 @@
   }
   return '<details id="dh-advanced" class="dh-advanced"'+(state.advanced?' open':'')+'><summary>更多筛选</summary><div class="dh-filter-grid">'+fields+'</div></details>';
  }
- function toolbar(opts,detail=false){
+ function toolbar(opts,detail=false){CompanyWorkspace.begin();
   $('oh-toolbar').innerHTML=periodTools()+'<div class="dh-tools"><button id="dh-reset" type="button">重置</button><button id="oh-export-view" type="button">'+(detail?'导出明细':comparison?'导出对比':'导出当前数据')+'</button></div>'+advancedTools(opts,detail)+
    (detail?'<div class="dh-search"><label>搜索<input id="oh-search" type="search" placeholder="报告期、指标、口径" value="'+esc(state.query)+'"></label><button id="oh-clear" type="button">清空</button></div>':'');
  }
@@ -76,6 +76,7 @@
   $('dh-reset').onclick=()=>{Object.assign(state,{kind:'全部',frequency:'单季度',display:'change',range:'12',to:manifest.quarters.at(-1),query:'',advanced:false});resetDimensions();render();};
  }
  function updateURL(){
+  CompanyWorkspace.mountActions();
   const u=new URL(location.href);u.search='';
   for(const k of ['company','kind','frequency','from','to','display','range'])u.searchParams.set(k,state[k]);
   u.searchParams.set('sampleView','3');
@@ -93,7 +94,7 @@
   charts.set(id,{rows,idx,options:{name:title,unit:unit(idx,series[0]?.currency),precision:idx===2?1:0,changeUnit:idx===2?'pct':'%',changePrecision:1,mode:state.display,valueStyle:'line',colors:colors.slice(0,series.length),legend:'series',gap:1.5,trimEmpty:false}});
   return '<div class="oh-plot" id="'+id+'"></div>';
  }
- function bindCharts(){for(const[id,c]of charts){const host=$(id);if(!host)continue;const draw=()=>SiteCharts.drawPaired(host,c.rows,c.options);draw();const input=host.closest('article').querySelector('[data-chart-labels]');input.onchange=()=>{labelStates.set(c.idx,input.checked);draw();};}}
+ function bindCharts(){for(const[id,c]of charts){const host=$(id);if(!host)continue;const draw=()=>CompanyWorkspace.plot(host,c.rows,c.options);draw();const input=host.closest('article').querySelector('[data-chart-labels]');input.onchange=()=>{labelStates.set(c.idx,input.checked);draw();};}}
  function historyTable(series,qs,i){return '<details class="oh-history"><summary>历史数据</summary>'+table(['口径',...[...qs].reverse().map(q=>periodName(M.period(q,state.frequency)))],series.map(s=>'<tr><td>'+esc(s.name)+'</td>'+[...s.points].reverse().map(p=>cell(p.records[i],i)).join('')+'</tr>'))+'</details>';}
  function blocks(series,qs){return '<div class="dh-charts">'+M.metrics.map((m,i)=>{const title=m+(state.display==='change'?(i===2?'同比变化':'同比'):'');return '<article class="oh-block"><div class="oh-block-head"><h3>'+title+'</h3><small>'+esc(state.frequency+' · '+(state.display==='change'?(i===2?'pct':'%'):unit(i,series[0]?.currency)))+'</small><label class="site-value-option"><input type="checkbox" data-chart-labels'+(labelStates.get(i)?' checked':'')+'>显示数值</label></div>'+chart(series,qs,i,title)+historyTable(series,qs,i)+'</article>';}).join('')+'</div>';}
  function operating(){
@@ -158,7 +159,7 @@
     $('oh-profile').innerHTML='<div><h2>'+esc(data.company.name)+'</h2><p>'+esc(data.company.english+' · '+data.company.ticker)+'</p></div>';
     if(state.tab==='details')details();else operating();
    }
-   if(token!==renderToken)return;bindCharts();updateURL();
+   if(token!==renderToken)return;bindCharts();updateURL();CompanyWorkspace.enhance();
   }catch(e){if(token!==renderToken)return;$('oh-status').textContent='数据读取失败：'+e.message;$('oh-retry').hidden=false;$('oh-content').innerHTML='';}
  }
  async function choose(id){

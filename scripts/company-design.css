@@ -70,3 +70,50 @@ body.company-hub :is(button,a,select,input,summary):focus-visible{outline:2px so
 /* Secondary actions follow the category navigation, without a duplicate title. */
 body.company-hub .oh-section-actions{display:flex;justify-content:flex-end;margin:0 0 20px}
 @media(max-width:760px){body.company-hub .oh-section-actions{justify-content:flex-start}}
+
+/* Compact company workspace and linked metric focus. */
+body.site-page.company-hub #oh-companies{gap:12px;margin-bottom:18px}
+body.site-page.company-hub .oh-company{min-height:68px;padding:10px 12px;gap:10px}
+body.site-page.company-hub .oh-company .oh-logo{flex:0 0 48px;width:48px;height:34px}
+body.site-page.company-hub .oh-company .oh-logo img{max-width:48px;max-height:32px}
+body.site-page.company-hub .oh-company[data-company=atour] .oh-logo img{width:64px;height:64px;max-width:none;max-height:none}
+body.site-page.company-hub .oh-company strong{font-size:14px;line-height:22px}
+body.site-page.company-hub .oh-company small{font-size:11px;line-height:18px;margin-top:0}
+body.company-hub .cw-actions{display:flex;align-items:center;gap:12px;margin:0}
+body.site-page.company-hub .cw-source-link{border:0;background:transparent;padding:4px 0;min-height:32px}
+body.company-hub .cw-export{position:relative;z-index:5}
+body.company-hub .cw-export>summary{list-style:none;cursor:pointer;padding:8px 14px;border:1px solid var(--site-line);border-radius:8px;background:white;color:var(--site-accent);font-size:13px;line-height:22px}
+body.company-hub .cw-export>summary:after{content:' ▾'}
+body.company-hub .cw-export-items{position:absolute;right:0;top:calc(100% + 6px);min-width:180px;max-width:calc(100vw - 32px);padding:6px;border:1px solid var(--site-line);border-radius:10px;background:white;box-shadow:0 8px 24px #202c401a}
+body.company-hub .cw-export-items>button{display:block;width:100%;text-align:left;border:0;background:white;padding:10px 12px;color:var(--site-accent)}
+body.company-hub .cw-export-items>button:hover{background:var(--site-soft)}
+body.company-hub .cw-filter-tags{display:flex;gap:6px;flex-wrap:wrap;flex-basis:100%;font-size:12px;line-height:22px;color:var(--site-muted)}
+body.company-hub .cw-filter-tags>span{padding:2px 8px;background:var(--site-soft);border-radius:4px}
+body.company-hub .cw-metric-card{position:relative;cursor:pointer}
+body.company-hub .cw-metric-select{border:0;background:none;padding:0;font:inherit;font-size:13px;color:var(--site-muted);text-align:left}
+body.company-hub .cw-metric-select:after{content:'';position:absolute;inset:0;border-radius:12px}
+body.site-page.company-hub .oh-kpi.cw-selected{border-color:var(--site-accent);box-shadow:inset 0 0 0 1px var(--site-accent)}
+body.company-hub .cw-selected .cw-metric-select{color:var(--site-accent);font-weight:600}
+body.company-hub .cw-metric-card .oh-source{position:relative;z-index:1}
+body.company-hub .cw-metric-select:focus-visible:after{outline:2px solid var(--site-accent);outline-offset:3px}
+body.company-hub .dh-charts.cw-one-chart{grid-template-columns:minmax(0,1fr)}
+body.company-hub .cw-one-chart>.oh-block{grid-column:1/-1}
+body.company-hub .cw-metric-tabs{display:flex;gap:4px;padding:4px;margin-bottom:16px;border:1px solid var(--site-line);background:var(--site-soft);border-radius:8px;width:fit-content}
+body.company-hub .cw-metric-tabs button{min-height:36px;padding:6px 20px;border:0;border-radius:6px;background:transparent;color:var(--site-muted);font:inherit}
+body.company-hub .cw-metric-tabs button[aria-pressed=true]{background:white;color:var(--site-accent);font-weight:600}
+body.company-hub .cw-full-summary{margin:0 0 16px}
+body.company-hub #cw-peer-reading td{font-variant-numeric:tabular-nums}
+body.company-hub #cw-peer-reading .oh-block-head small{max-width:100%;overflow-wrap:anywhere}
+body.company-hub #oh-profile .cw-actions{margin-left:auto}
+body.company-hub #oh-toolbar:empty{display:none}
+@media(max-width:760px){
+ body.site-page.company-hub #oh-companies{gap:8px}
+ body.site-page.company-hub .oh-company{min-height:64px;padding:8px;gap:8px}
+ body.site-page.company-hub .oh-company .oh-logo{flex-basis:38px;width:38px;height:30px}
+ body.site-page.company-hub .oh-company .oh-logo img{max-width:38px;max-height:30px}
+ body.site-page.company-hub .oh-company[data-company=atour] .oh-logo img{max-width:none;max-height:none}
+ body.company-hub #oh-profile .cw-actions{margin-left:0;gap:8px}
+ body.company-hub #cw-peer-reading .oh-block-head{align-items:flex-start;flex-direction:column}
+ body.company-hub .oh-peer-filters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+ body.company-hub .oh-peer-filters>label{min-width:0}
+}

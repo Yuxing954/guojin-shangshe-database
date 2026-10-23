@@ -1,0 +1,28 @@
+'use strict';
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),http=require('node:http'),{chromium}=require('playwright');
+const root=path.resolve(__dirname,'..'),server=http.createServer((req,res)=>{const file=path.resolve(root,'.'+new URL(req.url,'http://local').pathname);if(!file.startsWith(root+path.sep))return res.writeHead(403).end();try{res.setHeader('Content-Type',({'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css','.json':'application/json','.svg':'image/svg+xml','.png':'image/png'})[path.extname(file)]||'application/octet-stream');res.end(fs.readFileSync(file));}catch{res.writeHead(404).end();}});
+(async()=>{await new Promise(r=>server.listen(0,'127.0.0.1',r));const base=process.argv[2]||'http://127.0.0.1:'+server.address().port;const browser=await chromium.launch({headless:true,...(process.env.EDGE_PATH?{executablePath:process.env.EDGE_PATH}:{})}),ctx=await browser.newContext({viewport:{width:1440,height:1000}}),page=await ctx.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
+try{
+ await ctx.addInitScript(()=>{let charts;Object.defineProperty(window,'SiteCharts',{configurable:true,get:()=>charts,set(v){const draw=v.drawPaired;v.drawPaired=function(host,rows,opt){(window.cwPlotData||={})[host.id]={rows:structuredClone(rows),opt:structuredClone(opt)};return draw.call(this,host,rows,opt);};charts=v;}});});
+ for(const path of ['company-database.html','overseas-hotels.html']){
+  await page.goto(base+'/'+path);await page.locator('.cw-selected').waitFor();
+  assert.equal(await page.locator('.cw-export').count(),1);assert.equal(await page.locator('#oh-toolbar #oh-export-view').count(),0);
+  for(let i=0;i<3;i++){await page.locator('[data-cw-metric="'+i+'"]').click();assert.equal(await page.locator('[data-cw-plot]:visible').count(),1);assert.equal(await page.locator('[data-cw-plot]:visible').getAttribute('data-cw-plot'),String(i));assert.equal(await page.locator('.cw-selected [data-cw-metric]').getAttribute('data-cw-metric'),String(i));}
+  await page.locator('[data-cw-metric="0"]').focus();await page.keyboard.press('Enter');assert.equal(await page.locator('[data-cw-plot]:visible').getAttribute('data-cw-plot'),'0');
+  await page.locator('.cw-export>summary').click();assert(await page.locator('#oh-export-all').isVisible());assert(await page.locator('#oh-export-view').isVisible());await page.keyboard.press('Escape');assert(!await page.locator('#oh-export-all').isVisible());
+  await page.locator('.oh-company').nth(1).click();await page.waitForFunction(()=>document.querySelectorAll('.cw-export').length===1&&document.querySelector('[data-cw-metric]'));
+  assert.equal(await page.locator('#oh-export-all').count(),1);assert.equal(await page.locator('.cw-filter-tags').count(),1);
+  if(path==='overseas-hotels.html'){await page.selectOption('#oh-op-display','数值');assert((await page.locator('[data-cw-plot]:visible h3').innerText()).includes('数值'));await page.click('[data-tab=profile]');assert.equal(await page.locator('#oh-export-view').count(),0);await page.click('[data-tab=operating]');await page.locator('.cw-selected').waitFor();assert.equal(await page.locator('#oh-export-view').count(),1);}
+  for(const width of [1920,1440,1024,768,390,320]){await page.setViewportSize({width,height:1000});assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));await page.click('[data-cw-metric="2"]');assert.equal(await page.locator('[data-cw-plot]:visible').count(),1);}
+ }
+ for(const path of ['domestic-hotel-comparison.html','overseas-hotel-comparison.html']){
+  await page.setViewportSize({width:1440,height:1000});await page.goto(base+'/'+path);await page.locator('#cw-peer-reading').waitFor();
+  for(let i=0;i<3;i++){await page.click('[data-cw-metric="'+i+'"]');assert.equal(await page.locator('#cw-peer-reading tbody tr').count(),4);assert.equal(await page.locator('[data-cw-plot]:visible').count(),1);const svg=page.locator('[data-cw-plot]:visible svg');await svg.focus();await page.keyboard.press('Home');assert(!(await page.locator('#cw-peer-reading h3').innerText()).includes('2026Q2'));await page.keyboard.press('End');const end=await page.locator('#cw-peer-reading').innerText();assert(end.includes('26Q2')||end.includes('2026Q2'));await page.keyboard.press('Escape');}
+  await page.click('[data-cw-metric="1"]');await page.reload();await page.locator('#cw-peer-reading').waitFor();assert.equal(await page.locator('[data-cw-plot]:visible').getAttribute('data-cw-plot'),'1');
+  const host=page.locator('[data-cw-plot]:visible .oh-plot'),id=await host.getAttribute('id'),source=await page.evaluate(id=>cwPlotData[id],id);await host.locator('svg').focus();await page.keyboard.press('Home');
+  const expected=source.rows[0].values.map(v=>[v.value,v.change].map((n,i)=>Number.isFinite(n)?new Intl.NumberFormat('zh-CN',{maximumFractionDigits:i?1:source.opt.precision}).format(n):'—'));
+  const actual=await page.locator('#cw-peer-reading tbody tr').evaluateAll(rows=>rows.map(r=>[r.cells[1].textContent,r.cells[2].textContent]));assert.deepEqual(actual,expected);
+  for(const width of [1024,390,320]){await page.setViewportSize({width,height:1000});await page.locator('[data-cw-plot]:visible svg').focus();await page.keyboard.press('Home');assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));}
+ }
+ assert.deepEqual(errors,[]);console.log('PASS: metric selection, keyboard interaction, export menu lifecycle, company switches, actual-value mode, shared quarter readings, reload persistence and responsive layout.');
+}finally{await browser.close();server.close();}})().catch(e=>{console.error(e);server.close();process.exitCode=1;});
