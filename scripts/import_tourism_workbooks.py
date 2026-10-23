@@ -108,9 +108,10 @@ def build(domestic,outbound,outdir):
         '九寨沟同比按相同月日计算，未做星期及节假日错期调整；原表C列不可靠，未沿用。长白山读取E:G月度区，不把累计或季度区混进月度。',
         '马来西亚日期错位及韩国无有效期间的末行暂不进入趋势图，原值和定位保留在数据文件。国内原表含酒店和交通假期数据，本旅游页聚焦出游、花费及景区客流，酒店沿用现有酒店板块。'
     ]}
+    from update_tourism_history import apply_history
+    result=apply_history(result,outdir)
     target=outdir/'dashboard.json';target.write_text(json.dumps(result,ensure_ascii=False,indent=2,allow_nan=False),encoding='utf-8')
     print(json.dumps({'file':str(target),'holidays':len(holidays),'changbai':len(chang),'jiuzhai':len(jiuzhai),'destinations':[(x['name'],x['coverage']) for x in destinations],'border':len(official['border']),'issues':len(issues)},ensure_ascii=False))
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--domestic',type=pathlib.Path,required=True);p.add_argument('--outbound',type=pathlib.Path,required=True);p.add_argument('--output-dir',type=pathlib.Path,default=pathlib.Path('data/tourism'));a=p.parse_args();a.output_dir.mkdir(parents=True,exist_ok=True);build(a.domestic,a.outbound,a.output_dir)
-

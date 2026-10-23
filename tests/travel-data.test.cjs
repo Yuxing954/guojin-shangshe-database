@@ -13,8 +13,17 @@ assert.deepEqual(M.continuous([{period:'2026-01',value:1},{period:'2026-03',valu
 assert.equal(M.cumulative([{period:'2026-01',value:2},{period:'2026-03',value:4}],'2026-03').value,null);
 assert.equal(M.cumulative([{period:'2026-01',value:0}],'2026-01').value,0);
 const jp=d.outbound.destinations.find(x=>x.name==='日本');close(M.cumulative(jp.records,'2026-06').value,jp.records.filter(x=>x.period.startsWith('2026')).reduce((t,r)=>t+r.value,0));
-const my=d.outbound.destinations.find(x=>x.name==='马来西亚');assert.equal(my.records.length,0);assert(my.quarantined.length>0);assert.equal(my.status,'期间待核验');
+const my=d.outbound.destinations.find(x=>x.name==='马来西亚');assert.equal(my.records.length,48);assert.equal(my.quarantined.length,36);assert(my.status.includes('官方核对'));
+const annual=M.annualRows(my);assert.deepEqual(annual.map(x=>x.period),['2023','2024','2025']);close(annual[0].value,147.4114);close(annual[1].value,328.7362);close(annual[2].value,396.514);close(annual[0].change,(1474114/212603-1)*100);
+assert.equal(my.records.find(x=>x.period==='2024-06').value,26.4661);assert.equal(my.records.find(x=>x.period==='2024-06').sourceId,'my-kpi2025');
+assert.equal(M.outboundRows(jp,'recent','monthly')[0].period,'2023-01');assert(M.outboundRows(jp,'recent','monthly').length>=42);
+assert.equal(M.annualRows({records:[{period:'2025-12',value:12}]}).length,0);assert.equal(M.annualRows(jp).at(-1).period,'2025');
+const sg=d.outbound.destinations.find(x=>x.name==='新加坡');assert.equal(sg.records.at(-1).period,'2026-08');close(sg.records.at(-1).value,43.5442);assert(sg.records.find(x=>x.period==='2025-01').originalWorkbook);
+const th=d.outbound.destinations.find(x=>x.name==='泰国');close(M.annualRows(th)[0].change,(3521095/273567-1)*100);assert(th.records.filter(r=>r.period.startsWith('2023')).every(r=>r.change===null));
+assert.deepEqual(M.borderRows(d,'q1').map(r=>r.period),['2023Q1','2024Q1','2025Q1','2026Q1']);assert.deepEqual(M.borderRows(d,'q3').map(r=>r.period),['2023Q3','2024Q3','2025Q3','2026Q3']);
+assert.equal(d.inbound.border.find(r=>r.period==='2026Q1').foreignIn,undefined);assert.equal(d.inbound.border.find(r=>r.period==='2025Q1').foreignIn,921.5);
+assert.equal(d.outbound.nationalAnnual.find(r=>r.period==='2024').change,41);assert.equal(d.outbound.nationalAnnual.find(r=>r.period==='2023').change,null);
+for(const dest of d.outbound.destinations){assert.equal(new Set(dest.records.map(r=>r.period)).size,dest.records.length);for(const r of dest.records){assert(d.sources.some(s=>s.id===r.sourceId));if(r.changeBasis==='同月客流计算'){const p=dest.records.find(x=>x.period===r.comparisonPeriod);close(r.change,(r.value/p.value-1)*100);}}}
 for(const s of d.sources.filter(x=>x.quality==='官方原始披露')){assert(/^https:\/\//.test(s.url));assert(s.publishedAt);}
 assert(M.csv([[0,null,'x"y']],['a','b','c']).includes('"0","","x""y"'));
-console.log('PASS travel: holiday units, source locators, annual/half/quarter scopes, inbound versus border, monthly gaps, complete YTD, quarantined dates, CSV');
-
+console.log('PASS travel: recent three full years, official monthly source recovery, same-month and full-year YoY, incomplete years excluded, original dates retained, entry scopes, CSV');

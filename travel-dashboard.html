@@ -4,7 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>旅游 · 国金商社</title>
 <link rel="stylesheet" href="scripts/site.css?v=20261014viewfit"><link rel="stylesheet" href="scripts/site-charts.css?v=20261019controls"><link rel="stylesheet" href="scripts/industry-embed.css?v=20261014viewfit"><link rel="stylesheet" href="scripts/travel-dashboard.css?v=20261023"><link rel="stylesheet" href="scripts/site-polish.css?v=20261013clean">
-<script src="scripts/chart-period.js?v=20261022dates"></script><script defer src="scripts/site-ui.js?v=20261023travel"></script><script defer src="scripts/site-data.js?v=20261022dates"></script><script defer src="scripts/site-shell.js?v=20261014monthly"></script><script defer src="scripts/site-charts.js?v=20261022dates"></script><script defer src="scripts/travel-model.js?v=20261023"></script><script defer src="scripts/travel-dashboard.js?v=20261023"></script><script defer src="scripts/industry-embed.js?v=20261014viewfit"></script>
+<script src="scripts/chart-period.js?v=20261022dates"></script><script defer src="scripts/site-ui.js?v=20261023travel"></script><script defer src="scripts/site-data.js?v=20261022dates"></script><script defer src="scripts/site-shell.js?v=20261014monthly"></script><script defer src="scripts/site-charts.js?v=20261022dates"></script><script defer src="scripts/travel-model.js?v=20261023history"></script><script defer src="scripts/travel-dashboard.js?v=20261023history"></script><script defer src="scripts/industry-embed.js?v=20261014viewfit"></script>
 </head>
 <body class="site-page travel-page" data-site-section="industry">
 <main class="site-main">
@@ -21,7 +21,7 @@
 <div class="travel-grid"><article class="travel-panel"><div class="travel-panel-head"><h2>长白山月度客流</h2><span id="changbai-date"></span></div><div id="changbai-chart"></div></article><article class="travel-panel"><div class="travel-panel-head"><h2>九寨沟日度客流</h2><span id="jiuzhai-date"></span></div><div id="jiuzhai-chart"></div></article></div>
 </section>
 <section id="view-inbound" hidden>
-<div class="travel-controls"><label>查验期间 <select id="border-scope"><option value="q3">第三季度 · 单季</option><option value="h1">上半年</option><option value="annual">完整年度</option></select></label><span class="travel-tag">国家移民管理局</span></div>
+<div class="travel-controls"><label>查验期间 <select id="border-scope"><option value="q3">第三季度 · 单季</option><option value="q1">第一季度 · 单季</option><option value="h1">上半年</option><option value="annual">完整年度</option></select></label><span class="travel-tag">2023年以来 · 国家移民管理局</span></div>
 <div id="inbound-kpis" class="travel-kpis"></div>
 <div class="travel-grid" id="inbound-charts"></div>
 <article class="travel-panel"><div class="travel-panel-head"><h2>入境客源国排名</h2><span id="origins-period"></span></div><ol id="origins" class="travel-origins"></ol></article>
@@ -34,11 +34,12 @@
 <div class="travel-controls"><label>目的地 <select id="destination"></select></label><label>年份 <select id="outbound-year"></select></label><label>口径 <select id="outbound-scope"><option value="monthly">当月</option><option value="ytd">年初累计</option></select></label><span class="travel-tag">目的地接待中国游客</span></div>
 <div id="outbound-kpis" class="travel-kpis"></div>
 <article class="travel-panel"><div class="travel-panel-head"><h2 id="destination-title"></h2><span id="destination-period"></span></div><div id="outbound-chart"></div></article>
+<article class="travel-panel"><h2 id="destination-annual-title">目的地年度接待 · 完整年度</h2><div id="destination-annual-chart"></div><div class="travel-table-wrap"><table id="destination-annual-table"></table></div></article>
 <article class="travel-panel"><h2>各目的地最新已收录</h2><div class="travel-table-wrap"><table id="destination-table"></table></div></article>
 <article class="travel-panel"><h2>目的地月度明细</h2><div class="travel-table-wrap"><table id="outbound-table"></table></div></article>
 <article class="travel-panel"><h2>内地居民出境 · 单向查验</h2><div class="travel-table-wrap"><table id="mainland-out-table"></table></div></article>
+<article class="travel-panel"><h2>出境旅游人数 · 文旅部年度口径</h2><div id="national-out-chart"></div><div class="travel-table-wrap"><table id="national-out-table"></table></div></article>
 </section>
 </section>
 </main>
 </body></html>
-
