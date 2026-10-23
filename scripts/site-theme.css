@@ -64,4 +64,7 @@ html[data-site-theme=dark] body.site-page .data-board #indicators #kpi-grid :is(
 html[data-site-theme=dark] body.site-page .data-board #indicators #kpi-grid .macro-kpi[aria-pressed=true]{border-color:#85754f!important;box-shadow:inset 3px 0 var(--site-accent)!important}
 html[data-site-theme=dark] body.site-page .data-board #indicators #primary-chart svg :is(polyline,circle[data-chart-point]){stroke:var(--site-chart-1)!important}
 html[data-site-theme=dark] body.site-page .data-board #indicators #primary-chart svg circle[data-chart-point]{fill:var(--site-surface)!important}
-html[data-site-theme=dark] body.site-page .data-board #indicators #primary-chart svg text{fill:var(--site-muted)!important}}
+html[data-site-theme=dark] body.site-page .data-board #indicators #primary-chart svg text{fill:var(--site-muted)!important}html[data-site-theme=dark] body.site-page :is(.oh-toolbar button,.db-toolbar button,.portal-filter button,.oh-actions button){background:var(--site-surface)!important;color:var(--site-accent)!important;border-color:var(--site-line)!important}
+html[data-site-theme=dark] body.site-page .oh-actions .oh-primary-link{color:#17202d!important}
+html[data-site-theme=dark] body.site-page .oh-company[aria-pressed=true]{background:var(--site-soft)!important;border-color:var(--site-accent)!important;box-shadow:inset 0 0 0 1px var(--site-accent)!important}}
+
