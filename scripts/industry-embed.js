@@ -3,6 +3,19 @@
   if(window.parent===window||new URLSearchParams(location.search).get('embed')!=='1')return;
   document.body.classList.add('industry-embedded');
   const main=document.querySelector('body > main')||document.querySelector('body > .wrap');if(!main)return;
+  // Preserve source/export controls while giving newer industry views the same header footprint.
+  const sectorHeader=main.querySelector('.travel-head,.cruise-head,.dining-head');
+  if(sectorHeader){
+    const meta=document.createElement('div'),asof=sectorHeader.querySelector('#asof'),actions=sectorHeader.querySelector('.travel-actions,.cruise-links,.dining-actions');
+    meta.className='industry-meta';
+    if(asof)meta.append(asof);
+    if(actions){
+      actions.classList.add('industry-meta-actions');
+      const controls=main.querySelector('.travel-controls,.cruise-controls,.dining-toolbar');
+      if(controls)controls.append(actions);else meta.append(actions);
+    }
+    sectorHeader.replaceWith(meta);
+  }
   const header=main.querySelector('.hd-header,.hero,.portal-header'),stamp=document.getElementById('asof')||document.getElementById('checked');
   if(header){if(stamp){header.before(stamp);stamp.classList.add('embedded-asof');}header.remove();}
   document.querySelectorAll('.crumbs,[aria-label="行业板块"]').forEach(el=>el.remove());document.documentElement.classList.remove('industry-embedding');
