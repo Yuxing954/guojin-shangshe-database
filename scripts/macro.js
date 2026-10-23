@@ -63,7 +63,7 @@
     $('detail').innerHTML='<div class="macro-trend-head"><div><p class="eyebrow">'+esc(M.frequency[spec.frequency]+' · '+latest.period)+'</p><h2 id="metric-title">'+esc(spec.name)+'</h2></div><label class="macro-range">时间<select id="years" aria-label="趋势时间范围"><option value="1">近1年</option><option value="3">近3年</option><option value="5">近5年</option><option value="10">近10年</option><option value="0">全部</option></select></label></div>'+
       '<div class="macro-latest"><div><b>'+compact(r.value)+'</b><small>'+esc(r.unit+(r.label?' · '+r.label:''))+'</small></div>'+(r.delta?'<div class="macro-trend-change"><span>'+esc(r.delta.label)+'</span><b>'+(r.delta.value>0?'+':'')+number(r.delta.value)+'</b><small>'+esc(r.delta.unit)+'</small></div>':'')+'</div>'+
       (data.error?'<p class="macro-state">'+esc(data.error)+'</p>':'')+
-      '<div id="primary-chart" class="macro-chart board-chart" data-chart-controls="minimal"></div>'+
+      '<div id="primary-chart" class="macro-chart board-chart"></div>'+
       '<div class="macro-trend-footer"><p class="macro-source-line">'+link(sourceUrl,data.provider?.includes('Choice')?data.sourceOrganization+' · Choice':source.name)+'<span>'+esc(spec.adjustment)+'</span>'+(latest.releaseDate?'<time>发布 '+esc(latest.releaseDate)+'</time>':'')+'</p><div><a href="data-notes.html#macro">数据说明</a><button id="download" class="macro-download">下载 CSV</button></div></div>';
     $('years').value=String(state.years);
     $('years').onchange=e=>{state.years=+e.target.value;drawDetailChart();save();};
