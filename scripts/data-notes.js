@@ -3,7 +3,7 @@
   const D=SiteData,esc=D.esc,$=id=>document.getElementById(id),cache=new Map();let request=0;
   const modules={
     'regional-retail':{name:'地方社零',files:['data/regional-retail/observations.json','data/regional-retail/city-tiers.json','data/regional-retail/tier-supplement.json','data/regional-retail/history.json'],docs:['docs/regional-retail.md']},
-    dining:{name:'餐饮',files:['data/dining/observations.json'],docs:['docs/dining.md']},
+    dining:{name:'餐饮',files:['data/dining/observations.json','data/dining/zsxq-reconciliation.json'],docs:['docs/dining.md']},
     travel:{name:'旅游',files:['data/tourism/dashboard.json'],docs:['docs/travel-dashboard.md']},
     tourism:{name:'三峡游轮',files:['data/tourism/three-gorges-cruises.json','data/tourism/three-gorges-details.json'],docs:['docs/three-gorges-cruises.md']},
     'retail-monthly':{name:'社零月度产品',files:['data/products/retail-monthly.json'],docs:['docs/retail-monthly-product.md']},
@@ -59,5 +59,6 @@
   }
   addEventListener('hashchange',render);render();
 })();
+
 
 

@@ -1,0 +1,1334 @@
+{
+  "checkedAt": "2026-10-23",
+  "groupId": "88888142214212",
+  "groupName": "水木调研纪要-2.0",
+  "queries": [
+    "search-greentea.json",
+    "search-guming.json",
+    "search-haidilao.json",
+    "search-jj-q226.json",
+    "search-jj-quarter.json",
+    "search-kfc.json",
+    "search-monthly-apr.json",
+    "search-monthly-may.json",
+    "search-monthly25.json",
+    "search-monthly26.json",
+    "search-nai26.json",
+    "search-nayuki.json",
+    "search-overview.json",
+    "search-shanghai.json",
+    "search-taier.json",
+    "search-tea.json",
+    "search-tea25.json",
+    "search-xcy-aug.json",
+    "search-xcy-sep.json",
+    "search-xiaocaiyuan.json",
+    "search-xiaomian.json"
+  ],
+  "searchUniqueTopics": 141,
+  "detailsRead": 40,
+  "adoptedSources": 19,
+  "changes": [
+    {
+      "brandId": "taier",
+      "period": "2025-04",
+      "periodEnd": "2025-06",
+      "action": "source_confirmed",
+      "before": [
+        {
+          "raw": "86%",
+          "period": "2025-04",
+          "periodEnd": "2025-06",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "86%",
+        "value": 86,
+        "scope": "quarter",
+        "metric": "直营",
+        "dataNature": "季报转述"
+      },
+      "sourceId": "zsxq-5125854454148484",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/5125854454148484",
+      "quote": "2Q25太二/怂火锅/九毛九同店销售降幅较1Q25整体明显收窄（-14%/-14%/-19% vs. -21%/-24%/-19%)。"
+    },
+    {
+      "brandId": "songhuoguo",
+      "period": "2025-04",
+      "periodEnd": "2025-06",
+      "action": "source_confirmed",
+      "before": [
+        {
+          "raw": "86%",
+          "period": "2025-04",
+          "periodEnd": "2025-06",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "86%",
+        "value": 86,
+        "scope": "quarter",
+        "metric": "原表同店口径",
+        "dataNature": "季报转述"
+      },
+      "sourceId": "zsxq-5125854454148484",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/5125854454148484",
+      "quote": "2Q25太二/怂火锅/九毛九同店销售降幅较1Q25整体明显收窄（-14%/-14%/-19% vs. -21%/-24%/-19%)。"
+    },
+    {
+      "brandId": "jiumaojiu",
+      "period": "2025-04",
+      "periodEnd": "2025-06",
+      "action": "updated",
+      "before": [
+        {
+          "raw": "82%",
+          "period": "2025-04",
+          "periodEnd": "2025-06",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "81%",
+        "value": 81,
+        "scope": "quarter",
+        "metric": "直营",
+        "dataNature": "季报转述"
+      },
+      "sourceId": "zsxq-5125854454148484",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/5125854454148484",
+      "quote": "2Q25太二/怂火锅/九毛九同店销售降幅较1Q25整体明显收窄（-14%/-14%/-19% vs. -21%/-24%/-19%)。"
+    },
+    {
+      "brandId": "kfc",
+      "period": "2025-07",
+      "periodEnd": "2025-09",
+      "action": "source_confirmed",
+      "before": [
+        {
+          "raw": "102%",
+          "period": "2025-07",
+          "periodEnd": "2025-09",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "102%",
+        "value": 102,
+        "scope": "quarter",
+        "metric": "原表同店口径",
+        "dataNature": "季报转述"
+      },
+      "sourceId": "zsxq-22811544484441541",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/22811544484441541",
+      "quote": "肯德基/必胜客同店销售额同比+2%/+1%。"
+    },
+    {
+      "brandId": "pizzahut",
+      "period": "2025-07",
+      "periodEnd": "2025-09",
+      "action": "source_confirmed",
+      "before": [
+        {
+          "raw": "101%",
+          "period": "2025-07",
+          "periodEnd": "2025-09",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "101%",
+        "value": 101,
+        "scope": "quarter",
+        "metric": "原表同店口径",
+        "dataNature": "季报转述"
+      },
+      "sourceId": "zsxq-22811544484441541",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/22811544484441541",
+      "quote": "肯德基/必胜客同店销售额同比+2%/+1%。"
+    },
+    {
+      "brandId": "kfc",
+      "period": "2025-10",
+      "periodEnd": "2025-12",
+      "action": "source_confirmed",
+      "before": [
+        {
+          "raw": "103%",
+          "period": "2025-10",
+          "periodEnd": "2025-12",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "103%",
+        "value": 103,
+        "scope": "quarter",
+        "metric": "原表同店口径",
+        "dataNature": "季报转述"
+      },
+      "sourceId": "zsxq-22811221818115221",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/22811221818115221",
+      "quote": "肯德基Q4同店+3%（TA持平/TC+3%），必胜客Q4同店+1%（TA-11%/TC+13%）。"
+    },
+    {
+      "brandId": "pizzahut",
+      "period": "2025-10",
+      "periodEnd": "2025-12",
+      "action": "source_confirmed",
+      "before": [
+        {
+          "raw": "101%",
+          "period": "2025-10",
+          "periodEnd": "2025-12",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "101%",
+        "value": 101,
+        "scope": "quarter",
+        "metric": "原表同店口径",
+        "dataNature": "季报转述"
+      },
+      "sourceId": "zsxq-22811221818115221",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/22811221818115221",
+      "quote": "肯德基Q4同店+3%（TA持平/TC+3%），必胜客Q4同店+1%（TA-11%/TC+13%）。"
+    },
+    {
+      "brandId": "kfc",
+      "period": "2026-01",
+      "periodEnd": "2026-03",
+      "action": "source_confirmed",
+      "before": [
+        {
+          "raw": "101%",
+          "period": "2026-01",
+          "periodEnd": "2026-03",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "101%",
+        "value": 101,
+        "scope": "quarter",
+        "metric": "原表同店口径",
+        "dataNature": "季报转述"
+      },
+      "sourceId": "zsxq-45544225854525458",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/45544225854525458",
+      "quote": "其中肯德基同店+1%（26Q1为+1%）；必胜客同店+1%（26Q1为-1%）。"
+    },
+    {
+      "brandId": "pizzahut",
+      "period": "2026-01",
+      "periodEnd": "2026-03",
+      "action": "source_confirmed",
+      "before": [
+        {
+          "raw": "99%",
+          "period": "2026-01",
+          "periodEnd": "2026-03",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "99%",
+        "value": 99,
+        "scope": "quarter",
+        "metric": "原表同店口径",
+        "dataNature": "季报转述"
+      },
+      "sourceId": "zsxq-45544225854525458",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/45544225854525458",
+      "quote": "其中肯德基同店+1%（26Q1为+1%）；必胜客同店+1%（26Q1为-1%）。"
+    },
+    {
+      "brandId": "kfc",
+      "period": "2026-04",
+      "periodEnd": "2026-06",
+      "action": "source_confirmed",
+      "before": [
+        {
+          "raw": "101%",
+          "period": "2026-04",
+          "periodEnd": "2026-06",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "101%",
+        "value": 101,
+        "scope": "quarter",
+        "metric": "原表同店口径",
+        "dataNature": "季报转述"
+      },
+      "sourceId": "zsxq-45544225854525458",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/45544225854525458",
+      "quote": "其中肯德基同店+1%（26Q1为+1%）；必胜客同店+1%（26Q1为-1%）。"
+    },
+    {
+      "brandId": "pizzahut",
+      "period": "2026-04",
+      "periodEnd": "2026-06",
+      "action": "source_confirmed",
+      "before": [
+        {
+          "raw": "101%",
+          "period": "2026-04",
+          "periodEnd": "2026-06",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "101%",
+        "value": 101,
+        "scope": "quarter",
+        "metric": "原表同店口径",
+        "dataNature": "季报转述"
+      },
+      "sourceId": "zsxq-45544225854525458",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/45544225854525458",
+      "quote": "其中肯德基同店+1%（26Q1为+1%）；必胜客同店+1%（26Q1为-1%）。"
+    },
+    {
+      "brandId": "kfc",
+      "period": "2026-09",
+      "periodEnd": "2026-09",
+      "action": "updated",
+      "before": [
+        {
+          "raw": "同比跌幅收窄",
+          "period": "2026-09",
+          "periodEnd": "2026-09",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "101%",
+        "value": 101,
+        "scope": "month",
+        "metric": "原表同店口径",
+        "dataNature": "专家口径"
+      },
+      "sourceId": "zsxq-45548555441144228",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/45548555441144228",
+      "quote": "KFC：专家口径，9月同店+1%"
+    },
+    {
+      "brandId": "xiaocaiyuan",
+      "period": "2025-05",
+      "periodEnd": "2025-05",
+      "action": "updated",
+      "before": [
+        {
+          "raw": "正向微增",
+          "period": "2025-05",
+          "periodEnd": "2025-05",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "同比持平微增",
+        "value": null,
+        "scope": "month",
+        "metric": "原表同店口径",
+        "dataNature": "星球跟踪"
+      },
+      "sourceId": "zsxq-4845211818585188",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/4845211818585188",
+      "quote": "-同店 6月 持平微增（5月也是）"
+    },
+    {
+      "brandId": "xiaocaiyuan",
+      "period": "2025-06",
+      "periodEnd": "2025-06",
+      "action": "updated",
+      "before": [
+        {
+          "raw": "正向微增",
+          "period": "2025-06",
+          "periodEnd": "2025-06",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "同比持平微增",
+        "value": null,
+        "scope": "month",
+        "metric": "原表同店口径",
+        "dataNature": "星球跟踪"
+      },
+      "sourceId": "zsxq-4845211818585188",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/4845211818585188",
+      "quote": "-同店 6月 持平微增（5月也是）"
+    },
+    {
+      "brandId": "xiaocaiyuan",
+      "period": "2025-08",
+      "periodEnd": "2025-08",
+      "action": "updated",
+      "before": [
+        {
+          "raw": "98%",
+          "period": "2025-08",
+          "periodEnd": "2025-08",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "97.9%",
+        "value": 97.9,
+        "scope": "month",
+        "metric": "原表同店口径",
+        "dataNature": "星球跟踪"
+      },
+      "sourceId": "zsxq-1521252514545552",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/1521252514545552",
+      "quote": "8月同店-2.1%，1-8月同店-5.7%"
+    },
+    {
+      "brandId": "greentea",
+      "period": "2025-08",
+      "periodEnd": "2025-08",
+      "action": "updated",
+      "before": [
+        {
+          "raw": "103%",
+          "period": "2025-08",
+          "periodEnd": "2025-08",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "同比增长2%—3%",
+        "value": null,
+        "scope": "month",
+        "metric": "原表同店口径",
+        "dataNature": "星球跟踪"
+      },
+      "sourceId": "zsxq-1521252514545552",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/1521252514545552",
+      "quote": "8月在较高基数下同店增长2%-3%"
+    },
+    {
+      "brandId": "greentea",
+      "period": "2025-12",
+      "periodEnd": "2025-12",
+      "action": "updated",
+      "before": [
+        {
+          "raw": "99%",
+          "period": "2025-12",
+          "periodEnd": "2025-12",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "同比微降",
+        "value": null,
+        "scope": "month",
+        "metric": "原表同店口径",
+        "dataNature": "星球跟踪"
+      },
+      "sourceId": "zsxq-22811252454545881",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/22811252454545881",
+      "quote": "【绿茶集团】12月同店微负，元旦假期正增长。"
+    },
+    {
+      "brandId": "greentea",
+      "period": "2026-04",
+      "periodEnd": "2026-04",
+      "action": "source_confirmed",
+      "before": [
+        {
+          "raw": "同比双位数下滑",
+          "period": "2026-04",
+          "periodEnd": "2026-04",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "同比双位数下滑",
+        "value": null,
+        "scope": "month",
+        "metric": "原表同店口径",
+        "dataNature": "星球跟踪"
+      },
+      "sourceId": "zsxq-14422442221545152",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/14422442221545152",
+      "quote": "绿茶：4月、5月单月同店均双位数下滑"
+    },
+    {
+      "brandId": "greentea",
+      "period": "2026-05",
+      "periodEnd": "2026-05",
+      "action": "source_confirmed",
+      "before": [
+        {
+          "raw": "同比双位数下滑",
+          "period": "2026-05",
+          "periodEnd": "2026-05",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "同比双位数下滑",
+        "value": null,
+        "scope": "month",
+        "metric": "原表同店口径",
+        "dataNature": "星球跟踪"
+      },
+      "sourceId": "zsxq-14422442221545152",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/14422442221545152",
+      "quote": "绿茶：4月、5月单月同店均双位数下滑"
+    },
+    {
+      "brandId": "greentea",
+      "period": "2026-spring",
+      "periodEnd": "2026-spring",
+      "action": "source_confirmed",
+      "before": [
+        {
+          "raw": "持平微增",
+          "period": "2026-spring",
+          "periodEnd": "2026-spring",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "持平微增",
+        "value": null,
+        "scope": "holiday",
+        "metric": "原表同店口径",
+        "dataNature": "星球跟踪"
+      },
+      "sourceId": "zsxq-82811218128424522",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/82811218128424522",
+      "quote": "【绿茶集团】春节8天（除夕到初七）同店持平微增。"
+    },
+    {
+      "brandId": "greentea",
+      "period": "2026-08",
+      "periodEnd": "2026-08",
+      "action": "updated",
+      "before": [
+        {
+          "raw": "同比低双位数下滑",
+          "period": "2026-08",
+          "periodEnd": "2026-08",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "同比中双位数下滑",
+        "value": null,
+        "scope": "month",
+        "metric": "原表同店口径",
+        "dataNature": "公司交流"
+      },
+      "sourceId": "zsxq-45548555441144228",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/45548555441144228",
+      "quote": "同店高双位数下滑（8月为中双位数下滑）"
+    },
+    {
+      "brandId": "greentea",
+      "period": "2026-09",
+      "periodEnd": "2026-09",
+      "action": "source_confirmed",
+      "before": [
+        {
+          "raw": "同比高双位数下滑",
+          "period": "2026-09",
+          "periodEnd": "2026-09",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "同比高双位数下滑",
+        "value": null,
+        "scope": "month",
+        "metric": "原表同店口径",
+        "dataNature": "公司交流"
+      },
+      "sourceId": "zsxq-45548555441144228",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/45548555441144228",
+      "quote": "同店高双位数下滑（8月为中双位数下滑）"
+    },
+    {
+      "brandId": "haidilao",
+      "period": "2025-12",
+      "periodEnd": "2025-12",
+      "action": "source_confirmed",
+      "before": [
+        {
+          "raw": "同比持平",
+          "period": "2025-12",
+          "periodEnd": "2025-12",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "同比持平",
+        "value": null,
+        "scope": "month",
+        "metric": "整体翻台",
+        "dataNature": "星球跟踪"
+      },
+      "sourceId": "zsxq-22811252454545881",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/22811252454545881",
+      "quote": "【海底捞】12月翻台环比上升，同比基本保持一致。"
+    },
+    {
+      "brandId": "haidilao",
+      "period": "2025-07",
+      "periodEnd": "2025-07",
+      "action": "source_confirmed",
+      "before": [
+        {
+          "raw": "同比持平",
+          "period": "2025-07",
+          "periodEnd": "2025-07",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "同比持平",
+        "value": null,
+        "scope": "month",
+        "metric": "整体翻台",
+        "dataNature": "星球跟踪"
+      },
+      "sourceId": "zsxq-55522825251121524",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/55522825251121524",
+      "quote": "25年7月增速为同比持平"
+    },
+    {
+      "brandId": "haidilao",
+      "period": "2026-spring",
+      "periodEnd": "2026-spring",
+      "action": "source_confirmed",
+      "before": [
+        {
+          "raw": "105%+",
+          "period": "2026-spring",
+          "periodEnd": "2026-spring",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "105%+",
+        "value": null,
+        "scope": "holiday",
+        "metric": "整体翻台",
+        "dataNature": "星球跟踪"
+      },
+      "sourceId": "zsxq-82811218128424522",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/82811218128424522",
+      "quote": "假期同比口径（即除夕到初七）翻台率增长超过5%。"
+    },
+    {
+      "brandId": "haidilao",
+      "period": "2026-02",
+      "periodEnd": "2026-02",
+      "action": "source_confirmed",
+      "before": [
+        {
+          "raw": "同比明显增长",
+          "period": "2026-02",
+          "periodEnd": "2026-02",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "同比明显增长",
+        "value": null,
+        "scope": "month",
+        "metric": "整体翻台",
+        "dataNature": "星球跟踪"
+      },
+      "sourceId": "zsxq-45811241552145228",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/45811241552145228",
+      "quote": "海底捞2月整体门店翻台率在春节假期拉动下达到较好水平，翻台率环比、同比均有明显增长。"
+    },
+    {
+      "brandId": "haidilao",
+      "period": "2026-04",
+      "periodEnd": "2026-04",
+      "action": "updated",
+      "before": [
+        {
+          "raw": "105%",
+          "period": "2026-04",
+          "periodEnd": "2026-04",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "同比小幅上升",
+        "value": null,
+        "scope": "month",
+        "metric": "整体翻台",
+        "dataNature": "星球跟踪"
+      },
+      "sourceId": "zsxq-22255848888555411",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/22255848888555411",
+      "quote": "26年4月，因季节性原因，4月翻台率环比略降。同比小幅上升。"
+    },
+    {
+      "brandId": "haidilao",
+      "period": "2026-05",
+      "periodEnd": "2026-05",
+      "action": "source_confirmed",
+      "before": [
+        {
+          "raw": "同比微降",
+          "period": "2026-05",
+          "periodEnd": "2026-05",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "同比微降",
+        "value": null,
+        "scope": "month",
+        "metric": "整体翻台",
+        "dataNature": "星球跟踪"
+      },
+      "sourceId": "zsxq-14422442221545152",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/14422442221545152",
+      "quote": "海底捞五月整体门店翻台率环比上升，但同比微幅下降"
+    },
+    {
+      "brandId": "haidilao",
+      "period": "2026-06",
+      "periodEnd": "2026-06",
+      "action": "updated",
+      "before": [
+        {
+          "raw": "同比小幅下降",
+          "period": "2026-06",
+          "periodEnd": "2026-06",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "同比微降",
+        "value": null,
+        "scope": "month",
+        "metric": "整体翻台",
+        "dataNature": "星球跟踪"
+      },
+      "sourceId": "zsxq-55522825251121524",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/55522825251121524",
+      "quote": "26年5-6月为同比微降"
+    },
+    {
+      "brandId": "haidilao",
+      "period": "2026-07",
+      "periodEnd": "2026-07",
+      "action": "source_confirmed",
+      "before": [
+        {
+          "raw": "同比持平",
+          "period": "2026-07",
+          "periodEnd": "2026-07",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "同比持平",
+        "value": null,
+        "scope": "month",
+        "metric": "整体翻台",
+        "dataNature": "星球跟踪"
+      },
+      "sourceId": "zsxq-55522825251121524",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/55522825251121524",
+      "quote": "7月门店翻台率同比持平"
+    },
+    {
+      "brandId": "haidilao",
+      "period": "2026-08",
+      "periodEnd": "2026-08",
+      "action": "updated",
+      "before": [
+        {
+          "raw": "低单位数比例下降",
+          "period": "2026-08",
+          "periodEnd": "2026-08",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "同比低单位数下降",
+        "value": null,
+        "scope": "month",
+        "metric": "整体翻台",
+        "dataNature": "星球跟踪"
+      },
+      "sourceId": "zsxq-55521182818185484",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/55521182818185484",
+      "quote": "同比25年同期翻台率有低单比例下降"
+    },
+    {
+      "brandId": "haidilao",
+      "period": "2026-09",
+      "periodEnd": "2026-09",
+      "action": "updated",
+      "before": [
+        {
+          "raw": "持平",
+          "period": "2026-09",
+          "periodEnd": "2026-09",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "同比持平",
+        "value": null,
+        "scope": "month",
+        "metric": "整体翻台",
+        "dataNature": "公司交流"
+      },
+      "sourceId": "zsxq-45548555441144228",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/45548555441144228",
+      "quote": "9月：海底捞整体门店翻台率同比25年9月基本持平"
+    },
+    {
+      "brandId": "nayuki",
+      "period": "2025-04",
+      "periodEnd": "2025-04",
+      "action": "updated",
+      "before": [
+        {
+          "raw": "103%",
+          "period": "2025-04",
+          "periodEnd": "2025-04",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "同比增长7%—8%",
+        "value": null,
+        "scope": "month",
+        "metric": "全量单店",
+        "dataNature": "星球跟踪"
+      },
+      "sourceId": "zsxq-8852422228485512",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/8852422228485512",
+      "quote": "4月全量门店店均收入同比增7-8%，5月增长20%"
+    },
+    {
+      "brandId": "nayuki",
+      "period": "2025-05",
+      "periodEnd": "2025-05",
+      "action": "updated",
+      "before": [
+        {
+          "raw": "114%",
+          "period": "2025-05",
+          "periodEnd": "2025-05",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "120%",
+        "value": 120,
+        "scope": "month",
+        "metric": "全量单店",
+        "dataNature": "星球跟踪"
+      },
+      "sourceId": "zsxq-8852422228485512",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/8852422228485512",
+      "quote": "4月全量门店店均收入同比增7-8%，5月增长20%"
+    },
+    {
+      "brandId": "nayuki",
+      "period": "2025-07",
+      "periodEnd": "2025-07",
+      "action": "source_confirmed",
+      "before": [
+        {
+          "raw": "129%",
+          "period": "2025-07",
+          "periodEnd": "2025-07",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "129%",
+        "value": 129,
+        "scope": "month",
+        "metric": "全量单店",
+        "dataNature": "星球跟踪"
+      },
+      "sourceId": "zsxq-1521252514545552",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/1521252514545552",
+      "quote": "7-8月全量门店店效分别+29%/+15%（同店会低6-7pct）"
+    },
+    {
+      "brandId": "nayuki",
+      "period": "2025-08",
+      "periodEnd": "2025-08",
+      "action": "source_confirmed",
+      "before": [
+        {
+          "raw": "115%",
+          "period": "2025-08",
+          "periodEnd": "2025-08",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "115%",
+        "value": 115,
+        "scope": "month",
+        "metric": "全量单店",
+        "dataNature": "星球跟踪"
+      },
+      "sourceId": "zsxq-1521252514545552",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/1521252514545552",
+      "quote": "7-8月全量门店店效分别+29%/+15%（同店会低6-7pct）"
+    },
+    {
+      "brandId": "guming",
+      "period": "2025-07",
+      "periodEnd": "2025-07",
+      "action": "updated",
+      "before": [
+        {
+          "raw": "120%",
+          "period": "2025-07",
+          "periodEnd": "2025-07",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "120%+",
+        "value": null,
+        "scope": "month",
+        "metric": "同店GMV",
+        "dataNature": "星球跟踪"
+      },
+      "sourceId": "zsxq-1521252514545552",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/1521252514545552",
+      "quote": "7-8月同店GMV增速20%+（去年同期是正常基数）"
+    },
+    {
+      "brandId": "guming",
+      "period": "2025-08",
+      "periodEnd": "2025-08",
+      "action": "updated",
+      "before": [
+        {
+          "raw": "120%",
+          "period": "2025-08",
+          "periodEnd": "2025-08",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "120%+",
+        "value": null,
+        "scope": "month",
+        "metric": "同店GMV",
+        "dataNature": "星球跟踪"
+      },
+      "sourceId": "zsxq-1521252514545552",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/1521252514545552",
+      "quote": "7-8月同店GMV增速20%+（去年同期是正常基数）"
+    },
+    {
+      "brandId": "guming",
+      "period": "2026-01",
+      "periodEnd": "2026-01",
+      "action": "updated",
+      "before": [
+        {
+          "raw": "同比双位数增长",
+          "period": "2026-01",
+          "periodEnd": "2026-03",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "同比增长10%—15%",
+        "value": null,
+        "scope": "month",
+        "metric": "单店GMV",
+        "dataNature": "渠道跟踪"
+      },
+      "sourceId": "zsxq-82811224444842512",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/82811224444842512",
+      "quote": "1月单店GMV同比+10~15%，实收同比+8%。"
+    },
+    {
+      "brandId": "guming",
+      "period": "2026-04",
+      "periodEnd": "2026-04",
+      "action": "updated",
+      "before": [
+        {
+          "raw": "预计中个位数下滑",
+          "period": "2026-04",
+          "periodEnd": "2026-06",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "预计同比高单位数增长",
+        "value": null,
+        "scope": "month",
+        "metric": "同店GMV",
+        "dataNature": "预计"
+      },
+      "sourceId": "zsxq-55522514511128824",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/55522514511128824",
+      "quote": "4月份GMV口径同店预计增长高个位数"
+    },
+    {
+      "brandId": "guming",
+      "period": "2026-07",
+      "periodEnd": "2026-07",
+      "action": "updated",
+      "before": [
+        {
+          "raw": "预计同比正增",
+          "period": "2026-07",
+          "periodEnd": "2026-08",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "预计同比中单位数下滑",
+        "value": null,
+        "scope": "month",
+        "metric": "同店GMV",
+        "dataNature": "渠道预计"
+      },
+      "sourceId": "zsxq-55522825251121524",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/55522825251121524",
+      "quote": "7月同店预计同比下滑（渠道口径同店GMV同比下滑中单位数%，同店实收同比下滑低单位数%）"
+    },
+    {
+      "brandId": "guming",
+      "period": "2026-08",
+      "periodEnd": "2026-08",
+      "action": "updated",
+      "before": [
+        {
+          "raw": "预计同比正增",
+          "period": "2026-08",
+          "periodEnd": "2026-08",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "同比转正",
+        "value": null,
+        "scope": "month",
+        "metric": "单店GMV",
+        "dataNature": "星球跟踪"
+      },
+      "sourceId": "zsxq-55521144284145254",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/55521144284145254",
+      "quote": "8月单店转正，单月单店GMV历史新高"
+    },
+    {
+      "brandId": "guming",
+      "period": "2026-09",
+      "periodEnd": "2026-09",
+      "action": "updated",
+      "before": [
+        {
+          "raw": "同比增速环比提速",
+          "period": "2026-09",
+          "periodEnd": "2026-09",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "同比约增长5%",
+        "value": null,
+        "scope": "month",
+        "metric": "同店GMV",
+        "dataNature": "专家口径"
+      },
+      "sourceId": "zsxq-45548555441144228",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/45548555441144228",
+      "quote": "古茗：专家口径，9月同店gmv增长5%左右"
+    },
+    {
+      "brandId": "shanghai",
+      "period": "2025-09",
+      "periodEnd": "2025-09",
+      "action": "updated",
+      "before": [
+        {
+          "raw": "120%",
+          "period": "2025-09",
+          "periodEnd": "2025-09",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "120%+",
+        "value": null,
+        "scope": "month",
+        "metric": "同店GMV",
+        "dataNature": "星球跟踪"
+      },
+      "sourceId": "zsxq-14588285221215852",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/14588285221215852",
+      "quote": "9月起感受到平台补贴力度减弱，但仍保持20%以上同店增速"
+    },
+    {
+      "brandId": "shanghai",
+      "period": "2026-spring",
+      "periodEnd": "2026-spring",
+      "action": "updated",
+      "before": [
+        {
+          "raw": "108%",
+          "period": "2026-spring",
+          "periodEnd": "2026-spring",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "同比高单位数增长",
+        "value": null,
+        "scope": "holiday",
+        "metric": "同店GMV",
+        "dataNature": "星球跟踪"
+      },
+      "sourceId": "zsxq-82811218128424522",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/82811218128424522",
+      "quote": "春节期间同店+高单位数%。"
+    },
+    {
+      "brandId": "shanghai",
+      "period": "2026-07",
+      "periodEnd": "2026-07",
+      "action": "source_confirmed",
+      "before": [
+        {
+          "raw": "同比下滑",
+          "period": "2026-07",
+          "periodEnd": "2026-07",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "同比下滑",
+        "value": null,
+        "scope": "month",
+        "metric": "同店GMV",
+        "dataNature": "星球跟踪"
+      },
+      "sourceId": "zsxq-55522825251121524",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/55522825251121524",
+      "quote": "【沪上阿姨】7月同店同比下滑、符合预期。"
+    },
+    {
+      "brandId": "xiaomian",
+      "period": "2026-spring",
+      "periodEnd": "2026-spring",
+      "action": "updated",
+      "before": [
+        {
+          "raw": "同比个位数下降",
+          "period": "2026-01",
+          "periodEnd": "2026-03",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "同比低单位数下降",
+        "value": null,
+        "scope": "holiday",
+        "metric": "同店",
+        "dataNature": "星球跟踪"
+      },
+      "sourceId": "zsxq-82811218128424522",
+      "url": "https://wx.zsxq.com/group/88888142214212/topic/82811218128424522",
+      "quote": "【遇见小面】春节期间同店销售额是小个位数下降"
+    },
+    {
+      "brandId": "xiaocaiyuan",
+      "period": "2026-08",
+      "periodEnd": "2026-08",
+      "action": "wording_only",
+      "before": [
+        {
+          "raw": "测算同比微跌或正增",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "预计同比微降或微增"
+      },
+      "reason": "未检索到同期间同店销售单月原文；保留预计性质"
+    },
+    {
+      "brandId": "xiaocaiyuan",
+      "period": "2026-09",
+      "periodEnd": "2026-09",
+      "action": "wording_only",
+      "before": [
+        {
+          "raw": "测算同比微跌或正增",
+          "sourceId": "user-image-20261023"
+        }
+      ],
+      "after": {
+        "raw": "预计同比微降或微增"
+      },
+      "reason": "未检索到同期间同店销售单月原文；保留预计性质"
+    }
+  ],
+  "excluded": [
+    {
+      "topicId": "45548555441144228",
+      "brands": [
+        "xiaocaiyuan"
+      ],
+      "reason": "9月帖子披露年初至今同店高单位数下降、8月累计约下降10%，不是8月或9月单月同店销售。"
+    },
+    {
+      "topicId": "45548555545442858",
+      "brands": [
+        "taier",
+        "jiumaojiu",
+        "songhuoguo"
+      ],
+      "reason": "26Q3整体同店分别+5.1%/-11.4%/-26.8%，季度期间不能覆盖7、8、9月单月。太二内地+10.4%与整体口径不同。"
+    },
+    {
+      "topicId": "45548555441144228",
+      "brands": [
+        "taier",
+        "shanghai"
+      ],
+      "reason": "太二9月高双位数为内地同店；原表直营未限定内地。沪上阿姨仅披露Q3，不能代替9月。"
+    },
+    {
+      "topicId": "55522825251121524",
+      "brands": [
+        "taier"
+      ],
+      "reason": "太二6月中单、7月中高单仅内地同店，不覆盖原表整体直营。"
+    },
+    {
+      "topicId": "45811848228221458",
+      "reason": "久谦样本店效/堂食数据与现有品牌整体、公司交流或翻台指标不同，记录为不可直接比较；不混入当前口径。"
+    },
+    {
+      "topicId": "55188145841884524",
+      "reason": "久谦样本店效/堂食数据与现有品牌整体、公司交流或翻台指标不同，记录为不可直接比较；不混入当前口径。"
+    },
+    {
+      "topicId": "22811285441151541",
+      "reason": "久谦样本店效/堂食数据与现有品牌整体、公司交流或翻台指标不同，记录为不可直接比较；不混入当前口径。"
+    },
+    {
+      "topicId": "45544884222224848",
+      "reason": "久谦样本店效/堂食数据与现有品牌整体、公司交流或翻台指标不同，记录为不可直接比较；不混入当前口径。"
+    },
+    {
+      "topicId": "22255421445225551",
+      "reason": "久谦样本店效/堂食数据与现有品牌整体、公司交流或翻台指标不同，记录为不可直接比较；不混入当前口径。"
+    },
+    {
+      "topicId": "2852488551145181",
+      "reason": "久谦样本店效/堂食数据与现有品牌整体、公司交流或翻台指标不同，记录为不可直接比较；不混入当前口径。"
+    },
+    {
+      "topicId": "2852414151411411",
+      "reason": "久谦样本店效/堂食数据与现有品牌整体、公司交流或翻台指标不同，记录为不可直接比较；不混入当前口径。"
+    },
+    {
+      "topicId": "2854521251455881",
+      "reason": "久谦样本店效/堂食数据与现有品牌整体、公司交流或翻台指标不同，记录为不可直接比较；不混入当前口径。"
+    },
+    {
+      "topicId": "55522514511128824",
+      "brands": [
+        "greentea"
+      ],
+      "reason": "4月预计中单位数下降被6月11日更新为4月双位数下降，采用较新的经营反馈。"
+    },
+    {
+      "topicId": "45544145444224188",
+      "brands": [
+        "guming"
+      ],
+      "reason": "8月16日对8月的前瞻由9月5日月后经营更新替代。"
+    }
+  ],
+  "coverage": [
+    {
+      "brand": "太二",
+      "sourceCheckedRecords": 1,
+      "retainedImageRecords": 7
+    },
+    {
+      "brand": "九毛九",
+      "sourceCheckedRecords": 1,
+      "retainedImageRecords": 7
+    },
+    {
+      "brand": "小菜园",
+      "sourceCheckedRecords": 3,
+      "retainedImageRecords": 15
+    },
+    {
+      "brand": "绿茶餐厅",
+      "sourceCheckedRecords": 7,
+      "retainedImageRecords": 10
+    },
+    {
+      "brand": "肯德基",
+      "sourceCheckedRecords": 5,
+      "retainedImageRecords": 3
+    },
+    {
+      "brand": "必胜客",
+      "sourceCheckedRecords": 4,
+      "retainedImageRecords": 1
+    },
+    {
+      "brand": "怂火锅",
+      "sourceCheckedRecords": 1,
+      "retainedImageRecords": 7
+    },
+    {
+      "brand": "海底捞",
+      "sourceCheckedRecords": 10,
+      "retainedImageRecords": 10
+    },
+    {
+      "brand": "奈雪的茶",
+      "sourceCheckedRecords": 4,
+      "retainedImageRecords": 13
+    },
+    {
+      "brand": "古茗",
+      "sourceCheckedRecords": 7,
+      "retainedImageRecords": 10
+    },
+    {
+      "brand": "沪上阿姨",
+      "sourceCheckedRecords": 3,
+      "retainedImageRecords": 10
+    },
+    {
+      "brand": "遇见小面",
+      "sourceCheckedRecords": 1,
+      "retainedImageRecords": 14
+    }
+  ]
+}
