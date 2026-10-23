@@ -54,14 +54,14 @@ html[data-site-theme=dark] body.site-page .hub-navigation .industry-sector-icon{
 
 html[data-site-theme=dark] body.site-page .data-board #indicators :is(.macro-kpi,.macro-kpi-bottom,.macro-topic h3){border-color:var(--site-line)!important}
 html[data-site-theme=dark] body.site-page .data-board #indicators .macro-kpi[aria-pressed=true]{border-color:#85754f!important;box-shadow:inset 3px 0 var(--site-accent)!important}
-html[data-site-theme=dark] body.site-page :is(.macro-kpi-forecast,.macro-kpi-top .readout-selected,.macro-kpi-top .readout-action,.macro-topic h3>span,.readout-link){background:var(--site-soft)!important;color:var(--site-muted)!important;border-color:var(--site-line)!important}
+html[data-site-theme=dark] body.site-page :is(.macro-kpi-top .readout-selected,.macro-kpi-top .readout-action,.macro-topic h3>span,.readout-link){background:var(--site-soft)!important;color:var(--site-muted)!important;border-color:var(--site-line)!important}
 html[data-site-theme=dark] body.site-page :is(.macro-up,.cm-up){color:var(--site-up)!important}
 html[data-site-theme=dark] body.site-page :is(.macro-down,.cm-down){color:var(--site-down)!important}
 html[data-site-theme=dark] body.site-page :is(.macro-kpi-period,.macro-kpi-previous,.macro-kpi-forecast,.macro-kpi-forecast span){color:var(--site-muted)!important}
 html[data-site-theme=dark] body.site-page .site-search input[type=search]{background:transparent!important}
 html[data-site-theme=dark] body.site-page .data-board #indicators #kpi-grid :is(.macro-expectation-reading,.readout-selected){background:var(--site-soft)!important;color:var(--site-muted)!important}
 html[data-site-theme=dark] body.site-page .data-board #indicators #kpi-grid :is(.macro-kpi,.macro-kpi-bottom){border-color:var(--site-line)!important}
-html[data-site-theme=dark] body.site-page .data-board #indicators #kpi-grid .macro-kpi[aria-pressed=true]{border-color:#85754f!important}
+html[data-site-theme=dark] body.site-page .data-board #indicators #kpi-grid .macro-kpi[aria-pressed=true]{border-color:#85754f!important;box-shadow:inset 3px 0 var(--site-accent)!important}
 html[data-site-theme=dark] body.site-page .data-board #indicators #primary-chart svg :is(polyline,circle[data-chart-point]){stroke:var(--site-chart-1)!important}
 html[data-site-theme=dark] body.site-page .data-board #indicators #primary-chart svg circle[data-chart-point]{fill:var(--site-surface)!important}
 html[data-site-theme=dark] body.site-page .data-board #indicators #primary-chart svg text{fill:var(--site-muted)!important}}
