@@ -35,3 +35,13 @@ body.site-page.macro-hub .data-board [hidden]{display:none!important}
 body.site-page.macro-hub .data-board #indicators #kpi-grid .macro-kpi{padding:16px!important}
 body.site-page.macro-hub #prediction-topics>button{min-height:40px!important}
 
+
+/* Macro snapshot and coverage notes sit immediately below the category navigation. */
+body.site-page.macro-hub .data-board .macro-page-meta{
+ display:flex;align-items:center;min-height:40px;box-sizing:border-box;
+ margin:0 0 16px;color:var(--site-muted);font-size:14px;line-height:22px;
+}
+body.site-page.macro-hub .data-board .macro-page-meta:empty{display:none}
+body.site-page.macro-hub #predictions #prediction-status.macro-page-meta{margin:0 0 16px;font-size:14px;line-height:22px}
+body.site-page.macro-hub .regional-state-head{min-height:40px;margin:0 0 16px}
+body.site-page.macro-hub .regional-state-head #regional-status{font-size:14px;line-height:22px}
