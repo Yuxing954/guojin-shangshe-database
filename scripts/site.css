@@ -87,7 +87,7 @@ body.site-page{margin:0;padding-left:var(--site-sidebar);background:var(--site-b
 .site-page h2{font-size:var(--site-section);line-height:1.5;font-weight:600;color:var(--site-ink)}
 .site-page :is(.portal-header,.travel-head,.dining-head,.regional-header){margin:0 0 var(--site-space-6);padding:0 0 var(--site-space-6);border-bottom:1px solid var(--site-line)}
 /* Controls: standard, primary and compact; selection semantics remain on the original controls. */
-.site-page :is(.portal-button,.gj-button,.srcbtn,.site-button,.travel-actions button,.dining-actions button,.regional-actions button,.oh-export,#retry,#reload),
+.site-page :where(.portal-button,.gj-button,.srcbtn,.site-button,.travel-actions button,.dining-actions button,.regional-actions button,.oh-export,#retry,#reload),
 .site-page :is(input:not([type=checkbox]):not([type=radio]),select,textarea){min-height:var(--site-control);max-width:100%;min-width:0;border:1px solid var(--site-line);border-radius:var(--site-radius-control);background:var(--site-surface);color:var(--site-ink);padding:8px 12px;font-size:var(--site-text);line-height:22px}
 .site-page :is(.site-button,.portal-button,.gj-button,.srcbtn){display:inline-flex;align-items:center;justify-content:center;gap:8px;color:var(--site-accent);text-decoration:none}
 .site-page .site-button--primary{background:var(--site-accent);border-color:var(--site-accent);color:var(--site-surface)}
@@ -159,8 +159,8 @@ body.site-page.industry-embedded .embedded-asof{margin:0 0 16px;padding:0;min-he
 .site-page .site-table--compact :is(td,th){padding:8px 12px}
 .site-page .site-number{text-align:right}
 /* Direction is separate from success/error and categorical series colors. */
-.site-page :is(.up,.hd-positive,.gj-positive,.is-up,.macro-up,.cm-up,.regional-pos,.positive,.oh-positive){color:var(--site-up)}
-.site-page :is(.down,.hd-negative,.gj-negative,.is-down,.macro-down,.cm-down,.regional-neg,.negative,.oh-negative){color:var(--site-down)}
+.site-page :is(.up,.hd-positive,.gj-positive,.is-up,.macro-up,.cm-up,.regional-pos,.positive,.oh-positive),.site-page :is(.site-kpi,.board-stat,.portal-stat) :is(.up,.hd-positive,.gj-positive,.is-up,.macro-up,.cm-up,.regional-pos,.positive,.oh-positive){color:var(--site-up)}
+.site-page :is(.down,.hd-negative,.gj-negative,.is-down,.macro-down,.cm-down,.regional-neg,.negative,.oh-negative),.site-page :is(.site-kpi,.board-stat,.portal-stat) :is(.down,.hd-negative,.gj-negative,.is-down,.macro-down,.cm-down,.regional-neg,.negative,.oh-negative){color:var(--site-down)}
 .site-page :is(.site-empty,.portal-empty){padding:32px 16px;text-align:center;color:var(--site-muted)}
 .site-page :is(.portal-status,.site-status){padding:16px;margin:0 0 16px;border:1px solid var(--site-line);border-radius:var(--site-radius);background:var(--site-surface);color:var(--site-muted)}
 .site-page [data-status=error],.site-page .site-status--error{color:var(--site-error)}

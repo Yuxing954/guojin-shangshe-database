@@ -56,8 +56,8 @@ body.site-page :is(.board-table,.hd-table,.portal-table,.cm-table,.gj-table,.dh-
 body.site-page :is(.board-table,.hd-table,.portal-table,.cm-table,.gj-table,.dh-table,.db-table) tbody tr:nth-child(even){background:#f8fafc}
 body.site-page :is(.board-table,.hd-table,.portal-table,.cm-table,.gj-table,.dh-table,.db-table) tbody tr:hover{background:#edf4fa}
 
-.site-chart-legend .site-line-key{position:relative;background:#2167a0}
-.site-chart-legend .site-line-key:after{content:"";position:absolute;width:7px;height:7px;border:1.8px solid #2167a0;background:white;border-radius:50%;left:5px;top:-3px;box-sizing:border-box}
+.site-chart-legend .site-line-key{position:relative;background:var(--series-color,var(--site-chart-blue))}
+.site-chart-legend .site-line-key:after{content:"";position:absolute;width:7px;height:7px;border:1.8px solid var(--series-color,var(--site-chart-blue));background:white;border-radius:50%;left:5px;top:-3px;box-sizing:border-box}
 
 body.site-page :is(.macro-chart,.morning-chart) svg polyline{stroke:#2167a0}
 body.site-page :is(.macro-chart,.morning-chart) svg circle{fill:white;stroke:#2167a0;stroke-width:1.8}
