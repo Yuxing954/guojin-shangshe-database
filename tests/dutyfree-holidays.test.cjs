@@ -75,7 +75,7 @@ console.log('Holiday data, missing-value handling, period separation and filters
 (async()=>{
   const vm=require('node:vm'),elements=new Map();let downloaded,downloadName;
   const element=id=>{if(!elements.has(id))elements.set(id,{parentElement:{},value:'combo'});return elements.get(id);};
-  const context={SiteCharts:{paired:()=>({html:''})},window:{},document:{getElementById:element,createElement:()=>({click(){downloadName=this.download;}})},location:{pathname:'/industry.html',hash:'#dutyfree'},addEventListener(){},fetch:async()=>({ok:true,json:async()=>d}),Blob,URL:{createObjectURL(blob){downloaded=blob;return 'blob:test';},revokeObjectURL(){}},setTimeout(){},console};
+  const context={SiteCharts:{paired:()=>({html:'',points:[]})},window:{},document:{getElementById:element,createElement:()=>({click(){downloadName=this.download;}})},location:{pathname:'/industry.html',hash:'#dutyfree'},addEventListener(){},fetch:async()=>({ok:true,json:async()=>d}),Blob,URL:{createObjectURL(blob){downloaded=blob;return 'blob:test';},revokeObjectURL(){}},setTimeout(){},console};
   vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../scripts/dutyfree-holidays.js'),'utf8'),context);
   await new Promise(resolve=>setImmediate(resolve));
   element('dh-holiday').onchange({target:{value:'春节'}});element('dh-year').onchange({target:{value:'2026'}});element('dh-download').onclick();
@@ -102,3 +102,4 @@ console.log('Holiday data, missing-value handling, period separation and filters
   assert.ok(!element('dutyfree-holidays').innerHTML.includes('数据覆盖与待核验缺口'));
   console.log('Browser CSV download handler exports exact values and per-record workbook or web sources.');
 })().catch(error=>{console.error(error);process.exitCode=1;});
+

@@ -51,3 +51,15 @@
 ## 宏观更新提速入口
 
 宏观更新按 `docs/macro-refresh-fast-path.md` 执行：固定到期计划、单次Choice/官方采集、外部范围去重、紧凑结果和相关检查。不要重新全站探索、重复抓官方源，或为了获取时间变化创建提交。Choice必须保持限速；先保留官方精确披露，再用Choice补缺失历史。
+
+
+## 全站设计系统（新增页面与共享UI修改必读）
+
+唯一规范入口是 [docs/site-presentation.md](docs/site-presentation.md)，导航细则是 [docs/secondary-navigation.md](docs/secondary-navigation.md)，开发示例是 [docs/components.html](docs/components.html)。上述规范与本文件既有数据、研究原文、免责声明及专题流程约束同时生效。
+
+- 新页面必须登记 SiteUI.registry，声明栏目、主要query/hash视图、独立/嵌入、数据说明入口；新增后自动纳入基础浏览器检查，不维护固定页数。
+- 共享视觉写在 site.css，公共行为写在 site-ui/site-shell/site-charts；专题仅管理业务结构和必要布局，不能复制组件改前缀，也不能把 site-polish 当作第二主题。
+- 新变体必须有名称、适用条件、共享实现、规范与例子。未经登记的通用视觉硬编码、主题重定义和重复资源将被 check-site.cjs 拦截。
+- 不改金融模型、数据、原文及导出精度来适配视觉；null不转0，缺期不插值，期间和币种不混用。默认标签、筛选、链接恢复及来源/导出必须回归。
+- 提交前运行结构/单元/全站四宽度和受影响专项；宏观中美五宽度。检查真实截图与计算样式。逐项记录通过、失败、未测、外部受限；分别核验提交、CI、部署和正式站回读。
+- GitHub访问使用GitHub连接器；写入前重新核对main和相关文件，防止覆盖并发变更。

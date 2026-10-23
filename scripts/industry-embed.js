@@ -3,8 +3,8 @@
   if(window.parent===window||new URLSearchParams(location.search).get('embed')!=='1')return;
   document.body.classList.add('industry-embedded');
   const main=document.querySelector('body > main')||document.querySelector('body > .wrap');if(!main)return;
-  const header=main.querySelector('.hd-header,.hero,.portal-header'),stamp=document.getElementById('asof')||document.getElementById('checked');
-  if(header){if(stamp){header.before(stamp);stamp.classList.add('embedded-asof');}header.remove();}
+  const header=main.querySelector('.hd-header,.hero,.portal-header,.travel-head,.dining-head'),stamp=document.getElementById('asof')||document.getElementById('checked');
+  if(header){if(stamp){header.before(stamp);stamp.classList.add('embedded-asof');}const actions=header.querySelector('.travel-actions,.dining-actions');if(actions)header.before(actions);header.remove();}
   document.querySelectorAll('.crumbs,[aria-label="行业板块"]').forEach(el=>el.remove());document.documentElement.classList.remove('industry-embedding');
   let pending=false,last='';
   function phase(){
@@ -44,3 +44,4 @@
   },true);
   document.addEventListener('click',event=>{const link=event.target.closest('a[href]');if(!link||link.target==='_blank'||link.hasAttribute('download'))return;const url=new URL(link.href,location.href);if(url.origin!==location.origin||url.pathname===location.pathname&&url.hash)return;link.target='_top';});
 })();
+

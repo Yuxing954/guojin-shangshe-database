@@ -1,20 +1,54 @@
 # 全站显示规范
 
-公共设计与行为分为三层：`site.css` 定义唯一的色彩、字号、间距、控件、表格、对话框与断点；页面样式定义专题布局；`site-polish.css` 最后加载，只适配专题选择器，不另建一套公共规范。导航、兼容路由、请求超时、筛选保存与输入防抖由 `site-ui.js` / `site-shell.js` 管理。
+唯一规范入口为本文。业务内容与数据边界沿用根目录 AGENTS.md；导航细则见 secondary-navigation.md；可运行的开发示例见 components.html。不要另建平行主题。
 
-- 六个主入口：行业数据、宏观数据、重点公司、财报日历、观点纪要、实时行情。首页已撤除，根地址跳转到行业数据。旧 companies.html 页面已撤除，兼容链接继续转到对应行情；重点公司历史数据使用 company-database.html。
-- 桌面使用 220px 侧栏，小屏使用可横向滚动的导航；宽表只在自己的容器内滚动。不能用隐藏整页溢出来掩盖布局问题。
-- 主标题 30px / 手机 26px；副标题 20px；正文 14–16px，表头 13px，日期与来源 12–13px。行情表保留必要的密度。
-- 公共控件 40px，主导航 44px；主级页签使用实色选中状态，指标和图表内部切换可使用浅色分段控件。选中状态须有 aria-pressed / aria-current。
-- 全站使用同一组描边 SVG 导航图标。静态栏目标签使用中文，研究标题、原文、文件名与来源名称保持原始内容。
-- 加载、无结果、读取失败分别显示对应短状态；失败保留重试，不能用空值或示例数值代替数据。
-- 数值、币种、统计期间、发布日期、行情时点和获取时间分别保留。抓取时间不代表数据发布或报价来源时间。单位优先放在标题、表头或数值旁。
-- 数据浏览器按文件格式展示：CSV 分页、搜索、原始值与导出；JSON 展示可下载的结构化原文。不能把末行当作最新 KPI，不能跨实体自动连线。
-- 纪要对话框使用原文 16px / 1.95 行距；来源弹窗使用原生 dialog，支持键盘关闭与焦点恢复。
-- 行情热力图使用模块的 --heat-columns / --heat-height / --heat-font，共享样式禁止写死列数、图高或分页容量。
-- 页面的公共样式与行为同步刷新版本参数。新增页面执行 `node scripts/check-site.cjs`，浏览器验证见 `tests/site-unification.browser.cjs`。
+## 来源与职责
 
-本轮检查覆盖 15 个 HTML 入口（含已撤除公司的兼容跳转），保留最新 107 家覆盖池、酒店 15 间及以上供给口径和近期三天观点摘要。本轮没有修改源数据、原文、原文件权限或金融数据接入。
+| 文件 | 职责 |
+| --- | --- |
+| scripts/site.css | 语义变量、字体、尺度、外壳、组件、命名变体、响应式及无障碍 |
+| scripts/site-ui.js | navigation、registry、请求、URL、时间、数字与系列色 |
+| scripts/site-shell.js | 唯一外壳、跳过链接、搜索、导航；重复执行不重复注入 |
+| scripts/site-charts.js / .css | 图表配色、轴、图例、标签、提示框及鼠标/触屏/键盘行为 |
+| scripts/chart-period.js | 短期间标签；完整期间保留在提示框、明细、CSV |
+| 专题 CSS | 业务结构及必要布局，必须置于 page 层 |
+| scripts/site-polish.css | 遗留布局适配；不得新增通用组件视觉规则 |
 
+层次固定为 tokens、base、page、charts、components、accessibility；共享组件优先于专题布局。不得使用 !important 争夺组件样式（hidden 的可访问性规则除外）。宏观重复样式已合入 macro.css；地方社零同步移除旧引用，五份重复宏观样式文件删除。
 
+## 视觉尺度
 
+以当前共享主题为基准：主色 #4d58a4，橙金 #ac863d，底色 #f5f7fb，卡片白色。数值方向红涨绿跌，成功/失败使用独立状态变量，不能把增长直接定义为利好。系列色集中在 SiteUI.colors/companyColors，稳定标识调用 seriesColor，深色标签调用 contrastColor；禁止按当前显示顺序重涂 SVG。
+
+字体见 --site-font，数字采用 tabular-nums。页面标题30/手机26，区块20，面板16，正文14，辅助和表头13，图轴12；阅读正文使用16px/1.95。间距使用4/8/12/16/24/32/48。侧栏220、内容上限1600；断点1100和760。控件40、compact32、触控44；控件圆角8、卡片12。宽表、密集图仅在自身区域滚动，不允许通过隐藏 body 溢出来过关。
+
+## 组件契约
+
+| 组件 | 复用入口与状态 |
+| --- | --- |
+| 外壳/标题 | site-page、site-main、portal-header；独立入口显示一次外壳，embed=1 由 industry-embed.js 处理 |
+| 分类/内容/指标导航 | site-subnav--category / site-subnav / site-segment；详见导航规范 |
+| 筛选/搜索/日期 | site-filters（兼容 board-filters）、site-search；input/select 带可访问名称 |
+| 主次/紧凑按钮 | site-button、site-button--primary、site-button--compact；disabled 用原生属性 |
+| KPI | site-kpis/site-kpi；board-kpis/board-stat 是兼容别名。标签、读数、变动、期间/状态各占槽位；forecast 变体固定六槽，不截断数值 |
+| 面板/图表 | site-panel，board-panel（无内边距容器）+ board-panel-head/body/chart；site-chart-toolbar/legend |
+| 表格/分页 | site-table-scroll、原生 table；数字列标记，portal-pager；排序状态用 aria-sort |
+| 标签/状态/空 | site-tag、site-status、site-empty；加载 role=status，失败 role=alert 并提供重试 |
+| 折叠/来源/详情 | 原生 details/summary、portal-dialog；Esc关闭，关闭后焦点返回触发控件 |
+| 导出/复制 | 使用共享按钮，保留现有数据处理和原始精度；成功/失败反馈不可静默 |
+
+forecast 变体适用于“读数+历史趋势+可选预测”的卡片，固定高度234px（手机296px），必须保留空槽；其余 KPI 使用标准密度。阅读、日历、产品画布结构可以不同；不得为同类按钮/KPI另加模块色彩、字号或圆角。
+
+数字按 amount、price、count、percent、percentagePoint、basisPoint 调用 SiteUI.number，并按已披露单位配置 digits/unit。SiteUI.convert 先保留 null/空值再换算。业务模型及原始导出不改精度；OCC水平、相对同比和百分点变化不得混用。未知值显示“—”；缺期断线，不插值、不补零。发布时间使用 SiteUI.date（北京时间到分钟），不将抓取时点冒充发布日期。
+
+图表用 SiteCharts.attach 统一悬浮、点击固定、再次取消、Esc、左右/Home/End和触屏。已有业务图可以传 valuesControl:false/scroll:false 复用提示行为而保留自己的标签及布局。地方社零保留合并/分开、显隐、高亮与缺期；酒店、游轮保留默认勾选。默认值通过页面配置声明，避免运行时猜测。
+
+## 新模块与验收
+
+1. 在 SiteUI.registry 登记入口、所属栏目、page/redirect、独立/嵌入、主要视图和参数；页面数量从磁盘与清单比较，不写死30。
+2. 复用共享资源、组件、格式器。按既有约定登记 data-notes.html 的数据说明。
+3. 新能力先加入共享实现与本文/组件示例。必要例外必须精确到文件、选择器、声明及理由，登记 design-exceptions.json；不接受通配豁免。
+4. 运行 check-site.cjs、共享单元测试、site-unification.browser.cjs 和受影响专项。至少1440/1024/768/390；宏观中美另测1920。检查实际计算样式、截图、交互、加载/空/错、URL恢复、长文与数字及内嵌溢出。
+5. 生成逐页验收记录：通过、失败、未测或受外部条件影响。代码提交、CI通过、部署完成、正式站回读分别记录，不能互相替代。
+
+本轮清单和迁移状态见 design-migration.json；它是时点记录，不是第二份页面路由配置。正式导航仅以 SiteUI.navigation 为准；已退役页面继续兼容跳转。国家队持仓为外部链接，仅统一入口样式。

@@ -1,6 +1,6 @@
 (function(){
 'use strict';
-const M=RetailMonthly,CM=ConsumptionMacro,$=id=>document.getElementById(id),canvas=$('product'),ink='#173f60',blue='#104f87',muted='#667582',colors=['#165b9c','#66a9dc','#a64d19'],TYPE={section:24,chart:22,body:22,table:20,meta:18},SPACE={bodyLine:35,sectionGap:56,headingToBody:50,headingToRows:42,metaGap:36,chartStep:378};
+const M=RetailMonthly,CM=ConsumptionMacro,$=id=>document.getElementById(id),canvas=$('product'),ink='#173f60',blue='#104f87',muted='#667582',colors=SiteUI.colors,TYPE={section:24,chart:22,body:22,table:20,meta:18},SPACE={bodyLine:35,sectionGap:56,headingToBody:50,headingToRows:42,metaGap:36,chartStep:378};
 let insights={},data=null,legal=[],report=null,busy=false,warning='',hits=[],activeMonth='',comments=new Map(),previewFrame;
 const banner=new Image();banner.onload=()=>{if(report)render();};banner.src='scripts/assets/hotel-weekly/title.png';
 const logo=new Image();logo.onload=()=>{if(report)render();};logo.src='scripts/assets/hotel-weekly/logo.png';
@@ -116,3 +116,4 @@ let lastWidth=0;new ResizeObserver(()=>{const width=canvas.getBoundingClientRect
 window.monthlyProduct={get charts(){return hits;},get report(){return report;},get data(){return data;},draw,reload};
 Promise.all([document.fonts.load('400 22px "Microsoft YaHei"'),document.fonts.load('700 22px "Microsoft YaHei"')]).then(reload).catch(()=>status('字体加载失败，请刷新重试',true));
 })();
+

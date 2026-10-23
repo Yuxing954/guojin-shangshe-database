@@ -13,9 +13,9 @@
   const shown=o=>o?.unit==='百万元'&&o.currency==='CNY'?o.value/100:o?.value;
   function metricCard(U,label,o,change,detail=''){
     const value=o?U.numeric(shown(o),o.unit==='家'||o.unit==='间'?0:2):'—';
-    return '<article class="jj-kpi"><h4>'+esc(label)+'</h4><strong>'+value+'<span>'+esc(unit(o))+'</span></strong><div class="jj-kpi-change">'+(change||'—')+'</div><div class="jj-kpi-bottom"><small>'+esc(detail||[o?.period,o?.periodBasis,o?.currency].filter(Boolean).join(' · '))+'</small>'+U.source(o)+'</div></article>';
+    return '<article class="jj-kpi site-kpi"><h4>'+esc(label)+'</h4><strong>'+value+'<span>'+esc(unit(o))+'</span></strong><div class="jj-kpi-change">'+(change||'—')+'</div><div class="jj-kpi-bottom"><small>'+esc(detail||[o?.period,o?.periodBasis,o?.currency].filter(Boolean).join(' · '))+'</small>'+U.source(o)+'</div></article>';
   }
-  function derivedCard(U,label,o,detail=''){return '<article class="jj-kpi"><h4>'+esc(label)+'</h4><strong>'+U.numeric(o?.value,2)+'<span>'+esc(o?.unit||'')+'</span></strong><div class="jj-kpi-bottom"><small>'+esc(detail)+'</small>'+U.source(o)+'</div></article>';}
+  function derivedCard(U,label,o,detail=''){return '<article class="jj-kpi site-kpi"><h4>'+esc(label)+'</h4><strong>'+U.numeric(o?.value,2)+'<span>'+esc(o?.unit||'')+'</span></strong><div class="jj-kpi-bottom"><small>'+esc(detail)+'</small>'+U.source(o)+'</div></article>';}
   function grid(cards,cls=''){return '<div class="jj-kpis '+cls+'">'+cards.join('')+'</div>';}
   function reportPeriod(m,requested){if(m.segmentPeriods.includes(requested))return requested;return m.segmentPeriods[0]||'';}
   function periodTools(m,U,env){state.segmentPeriod=state.segmentPeriod&&m.segmentPeriods.includes(state.segmentPeriod)?state.segmentPeriod:reportPeriod(m,env.financePeriod);return '<div class="hr-tools">'+U.field('分部报告期','jj-segment-period',m.segmentPeriods,state.segmentPeriod)+'</div>';}
@@ -23,7 +23,7 @@
   function growthChart(U,m,periods,title,series,unit='%'){
     return '<article class="hr-card"><h3>'+esc(title)+'</h3>'+U.lineChart(series.map(s=>({name:s.name,points:periods.map(per=>{const g=R.growth(m.data,s.row(per));return {value:g?.unit===unit?g.value:null};})})),periods,title,unit)+'</article>';
   }
-  const palette=['#245c78','#b18b50','#639790','#8c7598','#bd7960','#7c94a6','#a2a767','#a1a6ac'];
+  const palette=SiteUI.colors;
   const valid=o=>o&&(o.inputs?o.inputs.every(R.safe):R.safe(o))&&Number.isFinite(o.value);
   function chartCard(title,period,body){return '<article class="hr-card jj-visual">'+heading(title,period)+body+'</article>';}
   function trend(U,m,title,period,series,chartUnit='亿元'){
@@ -158,3 +158,4 @@
   function bind(env){const $=id=>document.getElementById(id);for(const [id,key]of Object.entries({'jj-region':'region','jj-tier':'tier','jj-mode':'mode','jj-segment-period':'segmentPeriod','jj-ss-region':'ssRegion','jj-ss-window':'ssWindow','jj-ss-tier':'ssTier','jj-ss-mode':'ssMode','jj-ss-metric':'ssMetric'})){if($(id))$(id).onchange=()=>{state[key]=$(id).value;if(id==='jj-ss-region')state.ssWindow='';const u=new URL(location.href);for(const [k,v]of Object.entries(state))if(v)u.searchParams.set('jj-'+k,v);else u.searchParams.delete('jj-'+k);history.replaceState(null,'',u);window.HotelWorkspace?.remember();env.refresh();};}}
   window.JinjiangResearch={menu,panels,redirects,render,bind,model};
 })();
+

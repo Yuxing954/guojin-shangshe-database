@@ -1,17 +1,17 @@
 <!doctype html>
 <html lang="zh-CN">
-<head><script src="scripts/chart-period.js?v=20261022dates"></script>
+<head><script src="scripts/chart-period.js?v=20261023system"></script>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="中美核心宏观指标、历史走势及重要预测。">
-  <title>宏观数据 · 国金商社</title><script defer src="scripts/site-ui.js?v=20261022redesign"></script>
-  <link rel="stylesheet" href="scripts/site.css?v=20261011public"><link rel="stylesheet" href="scripts/macro.css?v=5">
-  <script defer src="scripts/macro-navigation.js?v=20261022redesign"></script><script defer src="scripts/site-shell.js?v=20261014monthly"></script><script defer src="scripts/macro-model.js?v=20261017officialhealth"></script><script defer src="scripts/macro-dashboard-model.js?v=20261023uniformlabels"></script><script defer src="scripts/macro-expectations.js?v=20261015"></script>
-<link rel="stylesheet" href="scripts/research-chart.css?v=1"><script defer src="scripts/research-chart.js?v=20261010charts"></script><script defer src="scripts/prediction-model.js?v=2"></script><link rel="stylesheet" href="scripts/macro-refinements.css?v=1"><link rel="stylesheet" href="scripts/macro-dashboard.css?v=20261017charts"><link rel="stylesheet" href="scripts/macro-morning.css?v=1"><link rel="stylesheet" href="scripts/forecast-desk.css?v=20261022compact"><script defer src="scripts/fedwatch-model.js?v=20261011refresh"></script><script defer src="scripts/forecast-desk.js?v=20261022compact"></script><script defer src="scripts/macro.js?v=20261023labelcpi"></script><link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-charts.css?v=20261017fitlabels"><link rel="stylesheet" href="scripts/macro-study.css?v=20261011study1"><link rel="stylesheet" href="scripts/macro-clarity.css?v=20261017officialhealth"><link rel="stylesheet" href="scripts/site-install.css?v=20261014home"><link rel="stylesheet" href="scripts/site-polish.css?v=20261012spacing"><script src="scripts/site-charts.js?v=20261022dates"></script><link rel="manifest" href="site.webmanifest"><meta name="theme-color" content="#4d58a4"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="国金商社"><meta name="apple-mobile-web-app-status-bar-style" content="default"><link rel="apple-touch-icon" href="scripts/assets/app/apple-touch-icon.png"><script defer src="scripts/site-install.js?v=20261014home"></script></head>
+  <title>宏观数据 · 国金商社</title><script defer src="scripts/site-ui.js?v=20261023system"></script>
+  <link rel="stylesheet" href="scripts/site.css?v=20261023system"><link rel="stylesheet" href="scripts/macro.css?v=20261023system">
+  <script defer src="scripts/macro-navigation.js?v=20261022redesign"></script><script defer src="scripts/site-shell.js?v=20261023system"></script><script defer src="scripts/macro-model.js?v=20261017officialhealth"></script><script defer src="scripts/macro-dashboard-model.js?v=20261023uniformlabels"></script><script defer src="scripts/macro-expectations.js?v=20261015"></script>
+<link rel="stylesheet" href="scripts/research-chart.css?v=20261023system"><script defer src="scripts/research-chart.js?v=20261010charts"></script><script defer src="scripts/prediction-model.js?v=2"></script><link rel="stylesheet" href="scripts/forecast-desk.css?v=20261023system"><script defer src="scripts/fedwatch-model.js?v=20261011refresh"></script><script defer src="scripts/forecast-desk.js?v=20261022compact"></script><script defer src="scripts/macro.js?v=20261023system"></script><link rel="stylesheet" href="scripts/resource-search.css?v=20261023system"><link rel="stylesheet" href="scripts/site-charts.css?v=20261023system"><link rel="stylesheet" href="scripts/site-install.css?v=20261023system"><link rel="stylesheet" href="scripts/site-polish.css?v=20261023system"><script src="scripts/site-charts.js?v=20261023system"></script><link rel="manifest" href="site.webmanifest"><meta name="theme-color" content="#4d58a4"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="国金商社"><meta name="apple-mobile-web-app-status-bar-style" content="default"><link rel="apple-touch-icon" href="scripts/assets/app/apple-touch-icon.png"><script defer src="scripts/site-install.js?v=20261014home"></script></head>
 <body class="site-page macro-hub macro-dashboard macro-morning" data-site-section="macro">
 <a class="macro-skip" href="#main">跳至主要内容</a>
 <main id="main" class="site-main data-board" tabindex="-1">
 
-  <div class="macro-toolbar"><nav class="portal-tabs site-subnav section-category-nav" data-macro-navigation aria-label="宏观数据栏目"></nav></div>
+  <div class="macro-toolbar"><nav class="portal-tabs site-subnav site-subnav--category section-category-nav" data-macro-navigation aria-label="宏观数据栏目"></nav></div>
   
   <div id="load-state" class="portal-status" role="status">正在读取宏观数据…</div><div id="skeleton" class="macro-skeleton" aria-hidden="true"><i></i><i></i><i></i></div><p id="data-warning" class="macro-warning" role="status" hidden></p><button id="retry" class="portal-button" hidden>重试读取</button>
   <section id="indicators" hidden>
@@ -34,7 +34,7 @@
   <section id="predictions" hidden aria-labelledby="prediction-heading">
     <div class="forecast-head board-section-head"><div><h2 id="prediction-heading">Polymarket <span class="forecast-label">事件合约隐含概率</span></h2><div id="prediction-status" class="forecast-status" role="status"></div></div><button id="prediction-download" class="portal-button" disabled>下载 CSV</button></div>
     <div class="prediction-toolbar">
-    <nav id="prediction-topics" class="forecast-topics" aria-label="预测主题"><button data-topic="" aria-pressed="true">全部</button><button data-topic="经济与利率" aria-pressed="false">经济与利率</button><button data-topic="金融市场" aria-pressed="false">金融市场</button><button data-topic="政治与地缘" aria-pressed="false">政治与地缘</button></nav>
+    <nav id="prediction-topics" class="forecast-topics site-subnav" aria-label="预测主题"><button data-topic="" aria-pressed="true">全部</button><button data-topic="经济与利率" aria-pressed="false">经济与利率</button><button data-topic="金融市场" aria-pressed="false">金融市场</button><button data-topic="政治与地缘" aria-pressed="false">政治与地缘</button></nav>
     <div class="forecast-controls"><input id="prediction-search" type="search" aria-label="搜索预测事件" placeholder="搜索事件、结果"><select id="prediction-category" aria-label="预测主题" hidden><option value="">全部主题</option><option>经济与利率</option><option>金融市场</option><option>政治与地缘</option></select><label>排序<select id="prediction-sort"><option value="volume">24h 成交</option><option value="deadline">最近截止</option></select></label><button id="prediction-reset" class="portal-button">重置</button></div>
     </div>
     <div id="prediction-overview" class="forecast-overview" role="status"></div><div id="prediction-list" class="prediction-grid forecast-events"></div><button id="prediction-more" class="portal-button" hidden>显示更多事件</button>
@@ -44,6 +44,7 @@
 <footer class="portal-note"><a href="data-notes.html#macro">数据说明 ↗</a></footer>
 </main>
 </body></html>
+
 
 
 

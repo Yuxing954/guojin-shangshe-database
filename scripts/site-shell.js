@@ -1,5 +1,6 @@
 (function(){
   'use strict';
+  if(document.body.dataset.siteShellReady)return;document.body.dataset.siteShellReady='true';
   const U=SiteUI,page=location.pathname.split('/').pop()||'industry.html';
   const [section,title]=U.pages[page]||['tools','研究工具'];
   document.body.classList.add('site-page');document.body.dataset.siteSection=section;
@@ -17,5 +18,6 @@
     dialog.addEventListener('click',event=>{if(event.target!==dialog)return;const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();});
   });
 })();
+
 
 

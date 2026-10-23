@@ -2,7 +2,7 @@
   'use strict';
   const D=SiteData,R=HotelResearchModel,M=CompanyDatabaseModel,A=CompanyOverviewModel,$=id=>document.getElementById(id),esc=D.esc;
   const panels=[['compare','总览'],['peer','公司对比'],['operating','经营'],['expansion','开店'],['profit','财务'],['raw','明细'],['logic','核心逻辑'],['scenario','预期与测算']];
-  const colors=['#2167a0','#ac863d','#357b78','#8a668f'];
+  const colors=SiteUI.colors;
   const storageKey='gj-hotel-research-v1';
   let context,datasets,profiles,config,loading,loadingKey='',request=0,quarter='',financePeriod='',panel='compare',sortKey='name',sortAsc=true,local={schemaVersion:1,notes:[],expectations:[],scenarios:[]},localError='';
   const state={operatingKey:'',operatingPeriod:'',compareKey:'',scaleKey:'',flowKey:'',structureKey:'',profitSource:'research',scenarioPeriod:''};
@@ -199,3 +199,4 @@
   document.addEventListener('companydb:selected',e=>{if(context&&context.company.id!==e.detail.company.id&&panel==='peer')panel='compare';state.operatingKey='';state.operatingPeriod='';state.compareKey='';state.scaleKey='';state.flowKey='';state.scenarioPeriod='';ready(e.detail);});
   show(panel,false);
 })();
+

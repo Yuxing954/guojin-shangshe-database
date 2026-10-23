@@ -1,15 +1,15 @@
 (function(){
   'use strict';
   const $=id=>document.getElementById(id),M=TravelModel,esc=SiteData.esc;
-  const fmt=(v,d=2)=>Number.isFinite(v)?v.toLocaleString('zh-CN',{maximumFractionDigits:d}):'—';
+  const fmt=(v,d=2)=>SiteUI.number(v,'amount',{digits:d,minimumDigits:0});
   const delta=v=>Number.isFinite(v)?'同比 '+(v>0?'+':'')+fmt(v,1)+'%':'同比 —';
   const scopes={q1:'第一季度 · 单季',q3:'第三季度 · 单季',h1:'上半年',annual:'全年'};
   let data,view='domestic',exports=[];
   function source(id,locator){const s=M.source(data,id);return s.url?'<a href="'+esc(s.url)+'" target="_blank" rel="noopener" title="'+esc(s.name+(s.publishedAt?' · 发布 '+s.publishedAt:''))+'">官方来源</a>':'<a href="data-notes.html#travel" title="'+esc((s.file||'')+' · '+(locator||''))+'">原表</a>';}
   function table(id,headers,rows){$(id).innerHTML='<thead><tr>'+headers.map(x=>'<th>'+esc(x)+'</th>').join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+r.map(x=>'<td>'+x+'</td>').join('')+'</tr>').join('')+'</tbody>';}
-  function kpis(id,items){$(id).innerHTML=items.map(([title,value,unit,change,period])=>'<article class="travel-kpi"><h2>'+esc(title)+'</h2><strong>'+fmt(value)+'<small>'+esc(unit)+'</small></strong><p class="'+(change>0?'positive':change<0?'negative':'')+'">'+(typeof change==='string'?esc(change):delta(change))+'</p><p>'+esc(period||'')+'</p></article>').join('');}
+  function kpis(id,items){$(id).innerHTML=items.map(([title,value,unit,change,period])=>'<article class="travel-kpi site-kpi"><h2>'+esc(title)+'</h2><strong>'+fmt(value)+'<small>'+esc(unit)+'</small></strong><p class="'+(change>0?'positive':change<0?'negative':'')+'">'+(typeof change==='string'?esc(change):delta(change))+'</p><p>'+esc(period||'')+'</p></article>').join('');}
   function chart(id,rows,name,unit,options={}){SiteCharts.drawPaired($(id),rows,{name,unit,mode:'combo',valueStyle:'bar',changeUnit:'%',precision:2,changePrecision:1,...options});}
-  function panelCharts(id,items){if(!$(id).children.length)$(id).innerHTML=items.map(([key,title])=>'<article class="travel-panel"><h2>'+esc(title)+'</h2><div id="'+key+'"></div></article>').join('');}
+  function panelCharts(id,items){if(!$(id).children.length)$(id).innerHTML=items.map(([key,title])=>'<article class="travel-panel site-panel"><h2>'+esc(title)+'</h2><div id="'+key+'"></div></article>').join('');}
   function record(name,r,value,unit,change,basis='',sourceId=r.sourceId,locator=r.locator){const s=M.source(data,sourceId),comparison=M.source(data,r.comparisonSourceId),ss=r.sourceIds?.map(id=>M.source(data,id)),cs=r.comparisonSourceIds?.map(id=>M.source(data,id));exports.push([view,name,r.period,basis,value,unit,change,basis==='年初累计'&&r.scope!=='ytd'?'年初至同月完整数值累计计算':r.changeBasis||'',ss?.map(x=>x.name).join(' | ')||s.name,ss?.map(x=>x.url||'').join(' | ')||s.url||'',s.file||'',locator||'',s.publishedAt||'',data.checkedAt,r.comparisonPeriod||'',cs?.map(x=>x.name).join(' | ')||comparison.name||'',cs?.map(x=>x.url||'').join(' | ')||comparison.url||'']);}
   function renderDomesticPeriods(){
     const scope=$('domestic-period-scope').value,rows=M.domesticQuarterRows(data,$('domestic-period-year').value,scope,$('domestic-quarter').value),r=rows.at(-1),basis=scope==='quarter'?'单季':'年初累计';
@@ -89,3 +89,4 @@
   for(const id of ['domestic-period-year','domestic-period-scope','domestic-quarter','domestic-year','holiday','holiday-basis','scenic-window','border-scope','destination','outbound-year','outbound-scope'])$(id).onchange=render;
   $('export').onclick=download;addEventListener('hashchange',select);load();
 })();
+

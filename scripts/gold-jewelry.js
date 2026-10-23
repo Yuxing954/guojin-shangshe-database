@@ -15,7 +15,7 @@ window.GoldDashboard=(function(){
   const monthX=p=>{const [y,m]=p.split('-').map(Number);return y*12+m;};
   const quarterX=p=>{const [y,q]=p.split('-Q').map(Number);return y*4+q;};
   const dayX=p=>Date.parse(p+'T00:00:00Z')/86400000;
-  const colors=['#2167a0','#ac863d','#8e9cae'];
+  const colors=SiteUI.colors;
   function chart(id,series,{unit='%',title='',zero=true,gap=1}={}){
     const el=$(id),points=series.flatMap(s=>s.points),valid=points.filter(p=>R.finite(p.value));
     if(!valid.length){el.innerHTML='<div class="gj-empty">所选口径缺少可比较数据</div>';return;}
@@ -147,6 +147,7 @@ window.GoldDashboard=(function(){
   }
   return {load(){if(!initialized)initialized=initialize();return initialized.then(()=>{if(refresh)refresh();});}};
 })();
+
 
 
 

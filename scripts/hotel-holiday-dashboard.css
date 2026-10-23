@@ -1,5 +1,6 @@
+@layer page {
 .holiday-toolbar{margin-bottom:8px}.holiday-toolbar .hd-source-link{margin-left:auto;color:var(--hd-accent);font-size:12px;text-decoration:none}.holiday-toolbar .hd-source-link:hover{text-decoration:underline}.holiday-overview-panel{margin-top:14px}.holiday-kpis{margin:14px 0 20px}.holiday-kpis .hd-stat{min-width:0}.holiday-kpis .hd-stat-value{font-size:26px}.holiday-kpis .hd-stat-change{font-size:12px}.holiday-chart svg{height:280px}.holiday-daily-detail{margin:0 0 20px}.holiday-daily-detail[open] .hd-table-scroll{margin-top:14px;max-height:420px}.holiday-daily-detail thead th{position:sticky;top:0;z-index:2}.holiday-daily-detail thead th:first-child{z-index:3}.holiday-page .hd-tabs a{display:inline-block;text-decoration:none}.holiday-page .hd-tabs a:hover{color:var(--hd-accent)}.holiday-page .hd-tabs .active{border-bottom-color:var(--hd-accent);color:var(--hd-accent);font-weight:700}
-@media(max-width:760px){.holiday-toolbar label{width:100%;justify-content:space-between}.holiday-toolbar select{min-width:48%;max-width:70%}.holiday-toolbar .hd-source-link{margin-left:0}.holiday-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.holiday-kpis .hd-stat{padding:14px}.holiday-kpis .hd-stat-value{font-size:22px}.holiday-chart svg{height:240px}}
+@media(max-width:760px){.holiday-toolbar label{justify-content:space-between}.holiday-toolbar .hd-source-link{margin-left:0}.holiday-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.holiday-kpis .hd-stat{padding:14px}.holiday-kpis .hd-stat-value{font-size:22px}.holiday-chart svg{height:240px}}
 
 
 .holiday-segments{display:flex;flex-wrap:wrap;gap:6px;padding:14px 20px 0}
@@ -10,8 +11,11 @@
 @media(max-width:760px){.holiday-segments{padding-left:16px;padding-right:16px}.holiday-toolbar label{width:auto}.holiday-toolbar select{min-width:0;max-width:100%}}
 
 /* A single compact row; narrow screens scroll the controls without wrapping. */
-body.site-page .holiday-chart-toolbar{flex-wrap:nowrap!important;overflow-x:auto;max-width:100%;gap:12px!important;padding-bottom:4px}
+body.site-page .holiday-chart-toolbar{flex-wrap:nowrap;overflow-x:auto;max-width:100%;gap:12px;padding-bottom:4px}
 body.site-page .holiday-chart-toolbar>select,body.site-page .holiday-chart-toolbar>[data-chart-value-controls]{flex:0 0 auto}
 body.site-page .holiday-chart-toolbar .site-value-options{flex-wrap:nowrap}
-body.site-page .holiday-chart-toolbar .holiday-segments{display:flex;flex:0 0 auto;flex-wrap:nowrap;padding:0!important;gap:6px;white-space:nowrap}
+body.site-page .holiday-chart-toolbar .holiday-segments{display:flex;flex:0 0 auto;flex-wrap:nowrap;padding:0;gap:6px;white-space:nowrap}
 body.site-page .holiday-chart-toolbar .holiday-segments button{flex:0 0 auto}
+
+
+}

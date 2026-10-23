@@ -40,7 +40,7 @@
         const i=byId.get(id),r=periodMode==='aligned'?M.comparisonRow(data,id,g.scope,periodSelection[g.id]):M.records(data,id,g.scope).filter(r=>r.quality!=='estimate').at(-1),source=sources.get(r?.sourceId);
         const headline=M.finite(r?.yoy)?r.yoy:(i.unit==='%'?r?.value:null);
         const headlineLabel=M.finite(r?.yoy)?'同比':i.unit==='%'?i.valueLabel:'同比未提供';
-        return `<button class="cm-kpi board-stat" data-id="${id}" data-scope="${g.id}" data-period="${r?.period||''}" data-basis="${r?.basis||''}" aria-pressed="${selected===id}"><span class="cm-kpi-title">${esc(i.name)}<span class="readout-selected">${selected===id?'已选':'趋势 ↗'}</span></span><span class="cm-meta">${r?esc(label(r)+' · '+M.bases[r.basis]):'暂无共同期间'}</span><strong>${num(headline)}<small>${M.finite(headline)?'%':''} · ${esc(headlineLabel)}</small></strong><em class="cm-kpi-amount">${i.unit==='%'?'环比 '+pct(r?.mom):(i.unit==='元'?'人均 ':'金额 ')+num(r?.value)+' '+esc(i.unit)}</em><span class="cm-kpi-footer">${published(r,source)?'<time>发布日期 '+esc(published(r,source))+'</time>':''}<span class="cm-kpi-source">${esc(source?.publisher||'来源未提供')}</span></span></button>`;
+        return `<button class="cm-kpi board-stat site-kpi" data-id="${id}" data-scope="${g.id}" data-period="${r?.period||''}" data-basis="${r?.basis||''}" aria-pressed="${selected===id}"><span class="cm-kpi-title">${esc(i.name)}<span class="readout-selected">${selected===id?'已选':'趋势 ↗'}</span></span><span class="cm-meta">${r?esc(label(r)+' · '+M.bases[r.basis]):'暂无共同期间'}</span><strong>${num(headline)}<small>${M.finite(headline)?'%':''} · ${esc(headlineLabel)}</small></strong><em class="cm-kpi-amount">${i.unit==='%'?'环比 '+pct(r?.mom):(i.unit==='元'?'人均 ':'金额 ')+num(r?.value)+' '+esc(i.unit)}</em><span class="cm-kpi-footer">${published(r,source)?'<time>发布日期 '+esc(published(r,source))+'</time>':''}<span class="cm-kpi-source">${esc(source?.publisher||'来源未提供')}</span></span></button>`;
       }).join('')}</div></section>`;
     }).join('');
     $('kpis').querySelectorAll('[data-readout-period]').forEach(el=>el.onchange=()=>{const group=el.dataset.readoutPeriod;periodSelection[group]=el.value;renderKpis();const active=[...$('kpis').querySelectorAll('[data-id]')].find(b=>b.dataset.id===selected&&b.dataset.scope===group);if(active)selectReadout(active);else saveUrl();});
@@ -158,6 +158,7 @@
     renderTrend();renderStudy();saveUrl();
   }catch(error){$('status').hidden=false;$('status').textContent=error.message||'加载失败，请刷新重试';$('status').setAttribute('role','alert');$('content').hidden=true;}
 })();
+
 
 
 
