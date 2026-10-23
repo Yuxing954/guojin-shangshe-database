@@ -1,7 +1,7 @@
 (function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.TravelModel=api;})(typeof globalThis!=='undefined'?globalThis:this,function(){
   'use strict';
   const finite=Number.isFinite;
-  function yearRows(rows,year){return year==='all'?rows:rows.filter(r=>String(r.year||r.period).startsWith(String(year)));}
+  function yearRows(rows,year){return year==='all'?rows:year==='recent'?rows.filter(r=>String(r.year||r.period)>='2023'):rows.filter(r=>String(r.year||r.period).startsWith(String(year)));}
   function continuous(rows,frequency='month'){
     if(!rows.length)return [];
     const found=new Map(rows.map(r=>[r.period,r])),out=[];
@@ -17,10 +17,14 @@
     const value=sum(year),prior=sum(year-1);return {value,change:value!=null&&prior>0?(value/prior-1)*100:null};
   }
   function outboundRows(destination,year,scope){const original=yearRows(destination.records,year);return continuous(original).map(r=>scope==='ytd'?{...r,...cumulative(destination.records,r.period)}:r);}
+  function annualRows(destination){
+    const years=[...new Set(destination.records.map(r=>r.period.slice(0,4)))].sort(),totals=new Map((destination.annualBaselines||[]).map(r=>[r.period,r]));
+    for(const year of years){const rows=destination.records.filter(r=>r.period.startsWith(year)),sum=cumulative(destination.records,year+'-12');if(sum.value!=null){const ids=[...new Set(rows.map(r=>r.sourceId))];totals.set(year,{period:year,value:sum.value,sourceId:ids[0],sourceIds:ids,locator:rows.map(r=>r.locator).join('; ')});}}
+    return years.filter(y=>y>='2023'&&totals.has(y)).map(y=>{const r=totals.get(y),prior=totals.get(String(+y-1));return {...r,change:prior?.value>0?(r.value/prior.value-1)*100:null,changeBasis:prior?.value>0?'完整年度客流计算':'上年完整年度基期未收录',comparisonSourceId:prior?.sourceId};});
+  }
   function borderRows(data,scope){return data.inbound.border.filter(r=>r.scope===scope).sort((a,b)=>a.period.localeCompare(b.period));}
   const csvCell=v=>'"'+String(v??'').replace(/"/g,'""')+'"';
   function csv(rows,headers){return '\ufeff'+[headers,...rows].map(r=>r.map(csvCell).join(',')).join('\r\n');}
   function source(data,id){return data.sources.find(s=>s.id===id)||{};}
-  return {yearRows,continuous,cumulative,outboundRows,borderRows,csv,source};
+  return {yearRows,continuous,cumulative,outboundRows,annualRows,borderRows,csv,source};
 });
-

@@ -1,0 +1,684 @@
+{
+  "checkedAt": "2026-10-23",
+  "sources": [
+    {
+      "id": "my-kpi2025",
+      "name": "Tourism Malaysia · Key Performance Indicators 2025",
+      "publisher": "Tourism Malaysia",
+      "quality": "官方数据表",
+      "url": "https://data.tourism.gov.my/frontend/pdf/2025/publications/kpi/kpi_2025_new.pdf",
+      "locator": "印刷页20 / PDF第23页 · China · TOURIST",
+      "checkedAt": "2026-10-23"
+    },
+    {
+      "id": "sg-monthly",
+      "name": "Singapore Tourism Board · International Visitor Arrivals By Place Of Residence, Monthly",
+      "publisher": "Singapore Tourism Board / SingStat",
+      "quality": "官方数据表",
+      "url": "https://data.gov.sg/datasets/d_d1c33009b674dcf70b8e8c790b793f28/view",
+      "apiUrl": "https://data.gov.sg/api/action/datastore_search?resource_id=d_d1c33009b674dcf70b8e8c790b793f28&limit=100",
+      "updatedAt": "2026-10-10",
+      "locator": "DataSeries = China / _id = 12",
+      "checkedAt": "2026-10-23"
+    },
+    {
+      "id": "th-nso2024",
+      "name": "Thailand Statistical Yearbook 2024 · Table 17.3",
+      "publisher": "National Statistical Office Thailand / Ministry of Tourism and Sports",
+      "quality": "官方数据表",
+      "url": "https://www.nso.go.th/public/e-book/Statistical-Yearbook/SYB-2024_webPage/File%20SYB/2024/17/T%2017.3%202024.pdf",
+      "locator": "Table 17.3 · China · 2022",
+      "checkedAt": "2026-10-23"
+    }
+  ],
+  "destinations": [
+    {
+      "name": "马来西亚",
+      "records": [
+        {
+          "period": "2022-01",
+          "value": 0.0975,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2022年1月"
+        },
+        {
+          "period": "2022-02",
+          "value": 0.1209,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2022年2月"
+        },
+        {
+          "period": "2022-03",
+          "value": 0.144,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2022年3月"
+        },
+        {
+          "period": "2022-04",
+          "value": 0.655,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2022年4月"
+        },
+        {
+          "period": "2022-05",
+          "value": 1.1439,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2022年5月"
+        },
+        {
+          "period": "2022-06",
+          "value": 1.726,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2022年6月"
+        },
+        {
+          "period": "2022-07",
+          "value": 2.1055,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2022年7月"
+        },
+        {
+          "period": "2022-08",
+          "value": 2.2207,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2022年8月"
+        },
+        {
+          "period": "2022-09",
+          "value": 2.5932,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2022年9月"
+        },
+        {
+          "period": "2022-10",
+          "value": 2.9592,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2022年10月"
+        },
+        {
+          "period": "2022-11",
+          "value": 3.071,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2022年11月"
+        },
+        {
+          "period": "2022-12",
+          "value": 4.4234,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2022年12月"
+        },
+        {
+          "period": "2023-01",
+          "value": 4.5317,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2023年1月"
+        },
+        {
+          "period": "2023-02",
+          "value": 4.9782,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2023年2月"
+        },
+        {
+          "period": "2023-03",
+          "value": 8.3051,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2023年3月"
+        },
+        {
+          "period": "2023-04",
+          "value": 10.976,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2023年4月"
+        },
+        {
+          "period": "2023-05",
+          "value": 11.5211,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2023年5月"
+        },
+        {
+          "period": "2023-06",
+          "value": 9.5419,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2023年6月"
+        },
+        {
+          "period": "2023-07",
+          "value": 19.3025,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2023年7月"
+        },
+        {
+          "period": "2023-08",
+          "value": 18.7749,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2023年8月"
+        },
+        {
+          "period": "2023-09",
+          "value": 15.8286,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2023年9月"
+        },
+        {
+          "period": "2023-10",
+          "value": 14.338,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2023年10月"
+        },
+        {
+          "period": "2023-11",
+          "value": 12.467,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2023年11月"
+        },
+        {
+          "period": "2023-12",
+          "value": 16.8464,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2023年12月"
+        },
+        {
+          "period": "2024-01",
+          "value": 22.0595,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2024年1月"
+        },
+        {
+          "period": "2024-02",
+          "value": 31.0123,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2024年2月"
+        },
+        {
+          "period": "2024-03",
+          "value": 22.8054,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2024年3月"
+        },
+        {
+          "period": "2024-04",
+          "value": 19.6924,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2024年4月"
+        },
+        {
+          "period": "2024-05",
+          "value": 22.9354,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2024年5月"
+        },
+        {
+          "period": "2024-06",
+          "value": 26.4661,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2024年6月"
+        },
+        {
+          "period": "2024-07",
+          "value": 41.0863,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2024年7月"
+        },
+        {
+          "period": "2024-08",
+          "value": 42.5211,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2024年8月"
+        },
+        {
+          "period": "2024-09",
+          "value": 24.5615,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2024年9月"
+        },
+        {
+          "period": "2024-10",
+          "value": 29.0847,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2024年10月"
+        },
+        {
+          "period": "2024-11",
+          "value": 21.6067,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2024年11月"
+        },
+        {
+          "period": "2024-12",
+          "value": 24.9048,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2024年12月"
+        },
+        {
+          "period": "2025-01",
+          "value": 42.5586,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2025年1月"
+        },
+        {
+          "period": "2025-02",
+          "value": 28.4836,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2025年2月"
+        },
+        {
+          "period": "2025-03",
+          "value": 25.6068,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2025年3月"
+        },
+        {
+          "period": "2025-04",
+          "value": 26.4582,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2025年4月"
+        },
+        {
+          "period": "2025-05",
+          "value": 31.0458,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2025年5月"
+        },
+        {
+          "period": "2025-06",
+          "value": 31.0975,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2025年6月"
+        },
+        {
+          "period": "2025-07",
+          "value": 47.5628,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2025年7月"
+        },
+        {
+          "period": "2025-08",
+          "value": 46.4425,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2025年8月"
+        },
+        {
+          "period": "2025-09",
+          "value": 29.3577,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2025年9月"
+        },
+        {
+          "period": "2025-10",
+          "value": 31.6499,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2025年10月"
+        },
+        {
+          "period": "2025-11",
+          "value": 27.7678,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2025年11月"
+        },
+        {
+          "period": "2025-12",
+          "value": 28.4828,
+          "sourceId": "my-kpi2025",
+          "locator": "PDF第23页 / 印刷页20 · China / TOURIST / 2025年12月"
+        }
+      ],
+      "status": "官方核对修正日期 · 过夜游客",
+      "basis": "中国国籍过夜游客（TOURIST），不含一日游",
+      "recoveryNote": "原表日期误转成2026年日号；2024、2025年逐月数值与官方年鉴China/TOURIST表一致，原始36条仍保留quarantined供追溯。"
+    },
+    {
+      "name": "新加坡",
+      "records": [
+        {
+          "period": "2022-01",
+          "value": 0.4361,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2022Jan; 居住地口径"
+        },
+        {
+          "period": "2022-02",
+          "value": 0.3823,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2022Feb; 居住地口径"
+        },
+        {
+          "period": "2022-03",
+          "value": 0.4131,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2022Mar; 居住地口径"
+        },
+        {
+          "period": "2022-04",
+          "value": 0.5048,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2022Apr; 居住地口径"
+        },
+        {
+          "period": "2022-05",
+          "value": 0.715,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2022May; 居住地口径"
+        },
+        {
+          "period": "2022-06",
+          "value": 1.0191,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2022Jun; 居住地口径"
+        },
+        {
+          "period": "2022-07",
+          "value": 1.6622,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2022Jul; 居住地口径"
+        },
+        {
+          "period": "2022-08",
+          "value": 1.4735,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2022Aug; 居住地口径"
+        },
+        {
+          "period": "2022-09",
+          "value": 1.4127,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2022Sep; 居住地口径"
+        },
+        {
+          "period": "2022-10",
+          "value": 1.4971,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2022Oct; 居住地口径"
+        },
+        {
+          "period": "2022-11",
+          "value": 1.6024,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2022Nov; 居住地口径"
+        },
+        {
+          "period": "2022-12",
+          "value": 1.9685,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2022Dec; 居住地口径"
+        },
+        {
+          "period": "2023-01",
+          "value": 2.8375,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2023Jan; 居住地口径"
+        },
+        {
+          "period": "2023-02",
+          "value": 3.5312,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2023Feb; 居住地口径"
+        },
+        {
+          "period": "2023-03",
+          "value": 6.0888,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2023Mar; 居住地口径"
+        },
+        {
+          "period": "2023-04",
+          "value": 9.0725,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2023Apr; 居住地口径"
+        },
+        {
+          "period": "2023-05",
+          "value": 9.5613,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2023May; 居住地口径"
+        },
+        {
+          "period": "2023-06",
+          "value": 11.329,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2023Jun; 居住地口径"
+        },
+        {
+          "period": "2023-07",
+          "value": 23.1331,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2023Jul; 居住地口径"
+        },
+        {
+          "period": "2023-08",
+          "value": 21.5442,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2023Aug; 居住地口径"
+        },
+        {
+          "period": "2023-09",
+          "value": 13.5677,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2023Sep; 居住地口径"
+        },
+        {
+          "period": "2023-10",
+          "value": 12.2765,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2023Oct; 居住地口径"
+        },
+        {
+          "period": "2023-11",
+          "value": 10.4347,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2023Nov; 居住地口径"
+        },
+        {
+          "period": "2023-12",
+          "value": 13.0156,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2023Dec; 居住地口径"
+        },
+        {
+          "period": "2024-01",
+          "value": 21.115,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2024Jan; 居住地口径"
+        },
+        {
+          "period": "2024-02",
+          "value": 32.686,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2024Feb; 居住地口径"
+        },
+        {
+          "period": "2024-03",
+          "value": 24.7622,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2024Mar; 居住地口径"
+        },
+        {
+          "period": "2024-04",
+          "value": 22.0332,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2024Apr; 居住地口径"
+        },
+        {
+          "period": "2024-05",
+          "value": 22.201,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2024May; 居住地口径"
+        },
+        {
+          "period": "2024-06",
+          "value": 21.617,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2024Jun; 居住地口径"
+        },
+        {
+          "period": "2024-07",
+          "value": 41.2805,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2024Jul; 居住地口径"
+        },
+        {
+          "period": "2024-08",
+          "value": 40.3138,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2024Aug; 居住地口径"
+        },
+        {
+          "period": "2024-09",
+          "value": 21.7205,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2024Sep; 居住地口径"
+        },
+        {
+          "period": "2024-10",
+          "value": 23.4528,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2024Oct; 居住地口径"
+        },
+        {
+          "period": "2024-11",
+          "value": 17.4751,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2024Nov; 居住地口径"
+        },
+        {
+          "period": "2024-12",
+          "value": 19.3483,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2024Dec; 居住地口径"
+        },
+        {
+          "period": "2025-01",
+          "value": 37.6481,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2025Jan; 居住地口径"
+        },
+        {
+          "period": "2025-02",
+          "value": 26.7974,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2025Feb; 居住地口径"
+        },
+        {
+          "period": "2025-03",
+          "value": 18.7036,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2025Mar; 居住地口径"
+        },
+        {
+          "period": "2025-04",
+          "value": 20.7505,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2025Apr; 居住地口径"
+        },
+        {
+          "period": "2025-05",
+          "value": 24.2013,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2025May; 居住地口径"
+        },
+        {
+          "period": "2025-06",
+          "value": 19.7185,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2025Jun; 居住地口径"
+        },
+        {
+          "period": "2025-07",
+          "value": 41.4488,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2025Jul; 居住地口径"
+        },
+        {
+          "period": "2025-08",
+          "value": 39.8206,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2025Aug; 居住地口径"
+        },
+        {
+          "period": "2025-09",
+          "value": 20.7028,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2025Sep; 居住地口径"
+        },
+        {
+          "period": "2025-10",
+          "value": 22.601,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2025Oct; 居住地口径"
+        },
+        {
+          "period": "2025-11",
+          "value": 20.3532,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2025Nov; 居住地口径"
+        },
+        {
+          "period": "2025-12",
+          "value": 17.2698,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2025Dec; 居住地口径"
+        },
+        {
+          "period": "2026-01",
+          "value": 27.1985,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2026Jan; 居住地口径"
+        },
+        {
+          "period": "2026-02",
+          "value": 43.2329,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2026Feb; 居住地口径"
+        },
+        {
+          "period": "2026-03",
+          "value": 20.9094,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2026Mar; 居住地口径"
+        },
+        {
+          "period": "2026-04",
+          "value": 21.7874,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2026Apr; 居住地口径"
+        },
+        {
+          "period": "2026-05",
+          "value": 20.4643,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2026May; 居住地口径"
+        },
+        {
+          "period": "2026-06",
+          "value": 19.7106,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2026Jun; 居住地口径"
+        },
+        {
+          "period": "2026-07",
+          "value": 42.978,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2026Jul; 居住地口径"
+        },
+        {
+          "period": "2026-08",
+          "value": 43.5442,
+          "sourceId": "sg-monthly",
+          "locator": "DataSeries=China; 2026Aug; 居住地口径"
+        }
+      ],
+      "status": "官方月度更新",
+      "basis": "居住地：中国；国际访客抵达"
+    }
+  ],
+  "annualBaselines": [
+    {
+      "name": "泰国",
+      "period": "2022",
+      "value": 27.3567,
+      "sourceId": "th-nso2024",
+      "locator": "Table 17.3 / China / 2022"
+    }
+  ]
+}
