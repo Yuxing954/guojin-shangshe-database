@@ -51,3 +51,23 @@ body.industry-embedded :is(button,a,select,input):focus-visible{outline:2px soli
  body.industry-embedded :is(select,input[type=date],input[type=search]){font-size:16px!important}
 }
 @media(max-width:340px){body.industry-embedded :is(.travel-kpis,.cruise-kpis,.dining-kpis,#domestic-period-kpis){grid-template-columns:1fr}}
+
+/* Typography contract: controls, HTML and SVG use the same family. */
+body.site-page:is(.industry-hub,.industry-embedded){
+ --industry-font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ font-family:var(--industry-font)!important;
+}
+body.site-page:is(.industry-hub,.industry-embedded) :is(main,.wrap),
+body.site-page:is(.industry-hub,.industry-embedded) :is(main,.wrap) *{
+ font-family:var(--industry-font)!important;
+}
+body.site-page.industry-embedded #view-overview .hd-stat-label{font-size:13px!important;line-height:22px!important}
+body.site-page.industry-embedded :is(.hd-card-head,.hd-tier-head,.board-panel-head,.board-section-head,.travel-panel-head,.travel-section-head,.cruise-panel,.dining-section) :is(h2,h3){
+ font-size:16px!important;line-height:24px!important;font-weight:600!important;
+}
+body.site-page.industry-embedded :is(.industry-board,.site-main) select{
+ padding:8px 12px!important;border-radius:8px!important;line-height:22px!important;min-height:40px!important;
+}
+body.site-page.industry-embedded :is(.hd-tabs,#tabs,.travel-tabs,.cruise-tabs)>:is(button,a){
+ height:40px!important;min-height:40px!important;line-height:24px!important;
+}
