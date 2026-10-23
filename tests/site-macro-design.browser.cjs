@@ -6,16 +6,16 @@ const cases=[['regional','regional-retail.html','#tier-cards .tier-card'],['indi
 async function check(page,mobile){
  for(const card of await page.locator('.data-board .board-stat:visible').all()){
   const s=await card.evaluate(e=>{const s=getComputedStyle(e),v=getComputedStyle(e.querySelector('strong'));return{padding:s.padding,radius:s.borderRadius,bg:s.backgroundColor,image:s.backgroundImage,span:s.gridColumnStart,value:v.fontSize,weight:v.fontWeight,line:v.lineHeight,align:v.textAlign};});
-  assert.deepEqual(s,{padding:mobile?'16px':'20px',radius:'12px',bg:'rgb(255, 255, 255)',image:'none',span:'auto',value:mobile?'28px':'32px',weight:'700',line:mobile?'38px':'42px',align:'left'});
+  assert.deepEqual(s,{padding:'16px',radius:'12px',bg:'rgb(255, 255, 255)',image:'none',span:'auto',value:mobile?'24px':'28px',weight:'700',line:mobile?'34px':'38px',align:'left'});
  }
  for(const panel of await page.locator('.data-board .board-panel:not(.board-detail):visible').all()){
-  const s=await panel.evaluate(e=>{const s=getComputedStyle(e);return{radius:s.borderRadius,bg:s.backgroundColor,padding:s.padding};});assert.deepEqual(s,{radius:'12px',bg:'rgb(255, 255, 255)',padding:'0px'});
+  const s=await panel.evaluate(e=>{const s=getComputedStyle(e);return{radius:s.borderRadius,bg:s.backgroundColor,padding:s.padding};});assert.deepEqual(s,{radius:'12px',bg:'rgb(255, 255, 255)',padding:await panel.getAttribute('id')==='detail'?'16px':'0px'});
  }
  for(const field of await page.locator('.data-board select:visible,.data-board input[type=date]:visible,.data-board input[type=search]:visible').all()){
-  const s=await field.evaluate(e=>{const s=getComputedStyle(e);return{font:s.fontSize,radius:s.borderRadius,height:e.offsetHeight};});assert.equal(s.font,'14px');assert.equal(s.radius,'8px');assert.ok(s.height>=40);
+  const s=await field.evaluate(e=>{const s=getComputedStyle(e);return{font:s.fontSize,radius:s.borderRadius,height:e.offsetHeight};});assert.equal(s.font,mobile?'16px':'14px');assert.equal(s.radius,'8px');assert.ok(s.height>=40);
  }
  for(const title of await page.locator('.board-section-head h2:visible,.board-panel-head h2:visible,.board-panel-head h3:visible,.board-panel-body h3:visible').all()){
-  assert.deepEqual(await title.evaluate(e=>{const s=getComputedStyle(e);return{font:s.fontSize,line:s.lineHeight,weight:s.fontWeight};}),{font:'18px',line:'28px',weight:'600'});
+  assert.deepEqual(await title.evaluate(e=>{const s=getComputedStyle(e);return{font:s.fontSize,line:s.lineHeight,weight:s.fontWeight};}),{font:'16px',line:'24px',weight:'600'});
  }
  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'mobile/page overflow');
  assert.equal(await page.locator('.data-board [hidden]:visible').count(),0,'hidden data remains hidden');
@@ -30,7 +30,7 @@ async function check(page,mobile){
    await page.setViewportSize({width:1440,height:1100});await page.goto(base+'/'+url);await page.locator(ready).first().waitFor({timeout:45000});await check(page,false);
    offsets.push(await page.locator('.data-board .site-subnav').first().evaluate(e=>e.getBoundingClientRect().top));
    if(name==='regional'){const cards=await page.locator('.tier-card').evaluateAll(es=>es.map(e=>({w:e.offsetWidth,h:e.offsetHeight})));assert.equal(cards.length,5);assert.ok(cards.every(c=>Math.abs(c.w-cards[0].w)<2&&c.h===cards[0].h));}
-   if(name==='indicators'){await page.locator('#countries [data-country=US]').click();await check(page,false);await page.locator('#countries [data-country=CN]').click();assert.ok(await page.locator('.morning-chart svg').count());}
+   if(name==='indicators'){await page.locator('#countries [data-country=US]').click();await check(page,false);await page.locator('#countries [data-country=CN]').click();assert.ok(await page.locator('#primary-chart svg').count());}
    if(name==='consumption'){await page.locator('#indicator').selectOption('cpi');await page.locator('#measure').selectOption('value');await page.locator('#chart svg').waitFor();await check(page,false);}
    if(name==='fedwatch'){await page.locator('.board-detail').last().evaluate(e=>e.open=true);assert.ok(await page.locator('#fedwatch .board-table tbody tr').count());}
    if(name==='predictions'){assert.ok(await page.locator('#prediction-topics').evaluate(e=>e.classList.contains('site-subnav')));await page.locator('#prediction-topics [data-topic=""]').click();await check(page,false);}
@@ -42,5 +42,6 @@ async function check(page,mobile){
   assert.ok(Math.max(...offsets)-Math.min(...offsets)<=2,'macro header/navigation alignment: '+offsets);assert.deepEqual(errors,[]);
  }finally{await browser.close();server.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;server.close();});
+
 
 
