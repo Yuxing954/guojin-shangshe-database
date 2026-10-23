@@ -229,7 +229,10 @@ body.site-page.industry-embedded>.site-main{width:100%;max-width:100%;margin:0;p
   .site-page[data-density=compact] .portal-research-item{padding-top:12px;padding-bottom:12px}
  }
  @media(max-width:760px){
-  .site-workspace-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .site-subnav--scroll{flex-wrap:nowrap;overflow-x:auto;max-width:100%;scrollbar-width:none}
+  .site-subnav--scroll > :is(a,button){white-space:nowrap;padding-top:9px;padding-bottom:9px}
+  .site-workspace-actions{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;padding-bottom:4px}
+  .site-workspace-actions > *{flex:0 0 auto}
   .site-workspace-actions :is(button,label){min-height:44px;max-width:100%;white-space:normal;font-size:13px}
   .site-chart-tools button,.site-table-tools button,.site-chart-export,.site-peer-options label{min-height:44px}
   .site-chart-tools{gap:8px}.site-chart-tools button{flex:1 1 120px}

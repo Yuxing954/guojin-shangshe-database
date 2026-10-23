@@ -57,7 +57,7 @@
 
  function scan(){
   const linked=document.querySelectorAll('[data-research-chart]');let hasGroup=[...linked].some(h=>h._researchChart?.options.syncGroup);if(file==='industry.html')for(const f of document.querySelectorAll('.industry-panel:not([hidden]) iframe')){try{hasGroup||=[...f.contentDocument.querySelectorAll('[data-research-chart]')].some(h=>h._researchChart?.options.syncGroup);}catch{}}if(toolbar)toolbar.querySelector('[data-workspace=sync]').closest('label').hidden=!hasGroup;
-  document.querySelectorAll('.site-workspace button,.site-chart-tools button,.site-table-tools button,.site-views-dialog button,.site-chart-dialog button,.site-chart-export').forEach(b=>b.classList.add('site-button'));
+  document.querySelectorAll('.site-workspace button,.site-chart-tools button,.site-table-tools button,.site-views-dialog button,.site-chart-dialog button,.site-chart-export').forEach(b=>{if(!b.classList.contains('site-button'))b.classList.add('site-button');});
   document.querySelectorAll('.site-table-tools').forEach(tool=>{if(tool._table&&!tool._table.isConnected)tool.remove();});
   document.querySelectorAll('[data-research-chart]').forEach(host=>{if(host._researchChart)enhanceChart(host,host._researchChart.rows,host._researchChart.options);});
   document.querySelectorAll('main table,.site-main table').forEach(table=>{
@@ -65,13 +65,13 @@
    const tools=document.createElement('div');tools.className='site-table-tools';tools._table=table;const b=document.createElement('button');b.type='button';b.className='site-button';b.textContent='复制本页表格';b.onclick=()=>{const d=tableData(table),payload=M.clipboard(d.headers,d.rows,d.textColumns);copy(payload.text,payload.html);};tools.append(b);table.parentElement.classList.contains('site-table-scroll')?table.parentElement.before(tools):table.before(tools);tables.set(table,tools);
    table.addEventListener('click',e=>{if(e.target.closest('a,button,input,select'))return;const row=e.target.closest('tbody tr');if(row){table.querySelectorAll('[aria-selected]').forEach(r=>r.removeAttribute('aria-selected'));row.setAttribute('aria-selected','true');}});
   });
-  document.querySelectorAll('svg[data-chart-ready]').forEach(svg=>{if(svg.closest('[data-research-chart]')||svg.dataset.workspaceExport)return;svg.dataset.workspaceExport='true';const b=document.createElement('button');b.type='button';b.className='site-chart-export';b.textContent='导出图表 PNG';b.onclick=()=>exportPNG(svg,{name:svg.getAttribute('aria-label')||entry.title,source:'来源与口径：见本页来源入口'},[]).catch(e=>notify(e.message));(svg.closest('.site-chart-scroll')||svg).after(b);});
+  document.querySelectorAll('svg[data-chart-ready]').forEach(svg=>{if(svg.closest('[data-research-chart]')||svg.dataset.workspaceExport)return;svg.dataset.workspaceExport='true';const b=document.createElement('button');b.type='button';b.className='site-chart-export site-button';b.textContent='导出图表 PNG';b.onclick=()=>exportPNG(svg,{name:svg.getAttribute('aria-label')||entry.title,source:'来源与口径：见本页来源入口'},[]).catch(e=>notify(e.message));(svg.closest('.site-chart-scroll')||svg).after(b);});
  }
  function chartKey(host,opt){return (host.id||opt.name||'chart').slice(0,150);}
  function enhanceChart(host,rows,opt){
   const svg=host.querySelector('svg');if(!svg||charts.get(host)?.svg===svg)return;
   const key=chartKey(host,opt),saved=chartStates[key]||{},tools=document.createElement('div');tools.className='site-chart-tools';tools.setAttribute('aria-label',(opt.name||'图表')+'研究操作');
-  tools.innerHTML='<button type="button" data-action="table" aria-pressed="'+!!saved.table+'">图表 / 明细</button><button type="button" data-action="copy">复制图中数据</button><button type="button" data-action="csv">导出图中数据</button><button type="button" data-action="png">导出图表 PNG</button><button type="button" data-action="full">放大</button>';
+  tools.innerHTML='<button type="button" class="site-button" data-action="table" aria-pressed="'+!!saved.table+'">图表 / 明细</button><button type="button" class="site-button" data-action="copy">复制图中数据</button><button type="button" class="site-button" data-action="csv">导出图中数据</button><button type="button" class="site-button" data-action="png">导出图表 PNG</button><button type="button" class="site-button" data-action="full">放大</button>';
   const frame=document.createElement('div');frame.className='site-table-scroll';frame.dataset.workspaceTable='true';frame.hidden=!saved.table;
   const d=M.chartTable(rows,opt),payload=M.clipboard(d.headers,d.rows,d.textColumns);frame.innerHTML=payload.html+'<p class="portal-note">图中当前系列与期间 · 保留输入精度 · 缺失留空</p>';
   host.append(tools,frame);charts.set(host,{svg});
