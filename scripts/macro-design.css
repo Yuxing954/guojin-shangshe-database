@@ -16,8 +16,6 @@ body.site-page.macro-hub :is(.macro-topic-grid,.fedwatch-kpis,.regional-compare-
 body.site-page.macro-hub .site-subnav:not(.section-category-nav){display:flex!important;align-items:center;flex-wrap:wrap;gap:4px!important;padding:4px!important;border:1px solid var(--site-line)!important;border-radius:10px!important;background:var(--site-soft)!important;box-shadow:none!important}
 body.site-page.macro-hub .site-subnav:not(.section-category-nav)>:is(button,a){min-width:0;min-height:40px;padding:8px 18px!important;margin:0!important;border:0!important;border-radius:7px!important;background:transparent!important;color:var(--site-muted)!important;font-size:14px!important;line-height:24px!important;font-weight:500!important;box-shadow:none!important}
 body.site-page.macro-hub .site-subnav:not(.section-category-nav)>:is(.active,[aria-pressed=true],[aria-current=page]){background:var(--site-surface)!important;color:var(--site-accent)!important;font-weight:600!important;box-shadow:0 1px 4px #24334c0d!important}
-body.site-page.macro-hub .section-category-nav{gap:12px!important;margin-bottom:20px!important}
-body.site-page.macro-hub .section-category-nav>:is(button,a){min-height:60px!important;padding:10px 14px!important;font-size:15px!important}
 body.site-page.macro-hub .data-board :is(select,input[type=date],input[type=search]){box-sizing:border-box;min-height:40px!important;max-width:100%;padding:8px 12px!important;border:1px solid var(--site-line)!important;border-radius:8px!important;background:var(--site-surface)!important;font-family:inherit;font-size:14px!important;line-height:22px!important;color:var(--site-ink)!important}
 body.site-page.macro-hub :is(button,a,select,input,summary):focus-visible{outline:2px solid var(--site-accent);outline-offset:3px}
 body.site-page.macro-hub #predictions .forecast-event{height:288px}
@@ -30,12 +28,43 @@ body.site-page.macro-hub :is(.forecast-probability-track,.fedwatch-range) i{back
  body.site-page.macro-hub .data-board #indicators #kpi-grid .macro-kpi-reading .board-stat-value{font-size:24px!important;line-height:34px!important}
  body.site-page.macro-hub .data-board :is(select,input[type=date],input[type=search]){font-size:16px!important}
  body.site-page.macro-hub .site-subnav:not(.section-category-nav)>:is(button,a){padding:8px 12px!important}
- body.site-page.macro-hub .section-category-nav{gap:6px!important}
- body.site-page.macro-hub .section-category-nav>:is(button,a){padding:8px 2px!important;font-size:12px!important;gap:4px;min-height:68px!important}
  body.site-page.macro-hub .data-board :is(.board-table,.regional-table) :is(th,td){padding:9px 10px!important}
 }
 body.site-page.macro-hub .data-board #indicators #detail{padding:16px!important} body.site-page.macro-hub .data-board #indicators .macro-trend-head h2{font-size:16px;line-height:24px} body.site-page.macro-hub .data-board #indicators #primary-chart svg polyline{stroke:var(--site-accent)!important} body.site-page.macro-hub .data-board #indicators #primary-chart svg circle[data-chart-point]{stroke:var(--site-accent)!important}
 body.site-page.macro-hub .data-board [hidden]{display:none!important}
 body.site-page.macro-hub .data-board #indicators #kpi-grid .macro-kpi{padding:16px!important}
-body.site-page.macro-hub .section-category-nav{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;width:100%!important;overflow:visible!important} body.site-page.macro-hub .section-category-nav>:is(button,a){min-width:0!important;white-space:normal!important} @media(max-width:760px){body.site-page.macro-hub .section-category-nav>:is(button,a){flex-direction:column!important}}
 body.site-page.macro-hub #prediction-topics>button{min-height:40px!important}
+
+/* One navigation geometry for all macro views; reserve space before scripts load. */
+body.site-page.macro-hub .data-board [data-macro-navigation].section-category-nav{
+ display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;
+ width:100%!important;max-width:100%;height:60px;min-height:60px;
+ gap:12px!important;margin:0 0 20px!important;padding:0!important;
+ overflow:visible!important;border:0!important;border-bottom:1px solid var(--site-line)!important;
+ border-radius:0!important;background:transparent!important;
+}
+body.site-page.macro-hub .data-board [data-macro-navigation].section-category-nav>a{
+ display:flex!important;align-items:center;justify-content:center;flex-direction:row;
+ width:100%!important;min-width:0!important;height:60px!important;min-height:60px!important;
+ gap:7px;padding:10px 4px!important;margin:0!important;box-sizing:border-box;
+ border:0!important;border-bottom:3px solid transparent!important;border-radius:0!important;
+ background:transparent!important;box-shadow:none!important;color:var(--site-muted)!important;
+ font-weight:500;font-family:inherit;font-size:15px!important;line-height:22px!important;
+ text-decoration:none;white-space:nowrap;transition:none!important;
+}
+body.site-page.macro-hub .data-board [data-macro-navigation].section-category-nav>a[aria-current=page]{
+ color:var(--site-accent)!important;border-bottom-color:var(--site-accent)!important;font-weight:600;
+}
+body.site-page.macro-hub [data-macro-navigation] .industry-sector-icon{
+ display:flex;width:20px;height:20px;align-items:center;justify-content:center;
+ background:transparent!important;border-radius:0;flex:none;
+}
+body.site-page.macro-hub [data-macro-navigation] .industry-sector-icon svg{width:18px;height:18px}
+@media(max-width:760px){
+ body.site-page.macro-hub .data-board [data-macro-navigation].section-category-nav{height:68px;min-height:68px;gap:6px!important}
+ body.site-page.macro-hub .data-board [data-macro-navigation].section-category-nav>a{
+  height:68px!important;min-height:68px!important;flex-direction:column;gap:4px;
+  padding:8px 0!important;font-size:12px!important;line-height:20px!important;
+ }
+}
+html{scrollbar-gutter:stable}
