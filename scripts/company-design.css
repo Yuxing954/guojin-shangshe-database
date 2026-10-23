@@ -127,3 +127,11 @@ body.company-hub .oh-company[aria-pressed=true] .cw-check{opacity:1}
 body.company-hub #oh-profile h2{font-size:18px;overflow-wrap:anywhere}
 @media(max-width:760px){body.site-page.company-hub .oh-company{padding-right:22px}body.company-hub .cw-check{right:6px}body.company-hub .cw-company-icon{width:30px;height:30px;flex-basis:30px}body.company-hub .cw-company-icon svg{width:22px;height:22px}}
 body.site-page.company-hub #oh-tabs[hidden]{display:none!important}
+
+/* Brand silhouettes and wordmarks retain their own proportions. */
+body.company-hub .cw-company-icon{flex-basis:48px;width:48px;height:36px;background:transparent}
+body.company-hub .cw-company-icon svg{width:46px;height:30px;overflow:visible}
+body.company-hub .cw-company-icon svg[data-brand=hworld],body.company-hub .cw-company-icon svg[data-brand=jinjiang]{width:32px}
+body.site-page.company-hub #oh-workspace[hidden]{display:none!important}
+body.company-hub[data-view=empty] #oh-status{padding:36px 16px;text-align:center;color:var(--site-muted)}
+@media(max-width:760px){body.company-hub .cw-company-icon{flex-basis:40px;width:40px}body.company-hub .cw-company-icon svg{width:38px;height:28px}body.company-hub .cw-company-icon svg[data-brand=hworld],body.company-hub .cw-company-icon svg[data-brand=jinjiang]{width:28px}}

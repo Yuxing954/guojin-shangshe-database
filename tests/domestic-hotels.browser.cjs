@@ -17,7 +17,7 @@ async function csv(page,selector){const event=page.waitForEvent('download');if(!
   assert.equal(await p.locator('#oh-toolbar select:visible').count(),4);assert.equal(await p.locator('#oh-kind option').count(),2);
   assert.equal(await p.locator('.oh-company svg').count(),4);
   assert.equal(await p.locator('.dh-monogram').count(),0);assert.equal(await p.locator('.site-paired-chart').count(),3);assert.equal(await p.locator('.oh-kpi').count(),3);
-  assert.equal(await p.locator('.oh-company img').count(),0);assert.equal(await p.locator('.oh-company svg[stroke-width="1.6"] path').count(),4);
+  assert.equal(await p.locator('.oh-company img').count(),0);assert.equal(await p.locator('.oh-company svg.cw-brand-mark path').count(),4);
   async function verifyPlot(company,kind,frequency){
    const qs=manifest.quarters.filter(q=>q>=new URL(p.url()).searchParams.get('from')&&q<=new URL(p.url()).searchParams.get('to')),source=M.mainSeries(datasets.find(d=>d.company.id===company),kind,qs,frequency);
    for(let i=0;i<3;i++){const plot=await p.evaluate(id=>domPlotData[id],'dh-chart-'+i);assert.equal(plot.opt.mode,await p.locator('#oh-display').inputValue());assert.equal(plot.opt.valueStyle,'line');assert.equal(plot.rows.length,qs.length);for(let qi=0;qi<plot.rows.length;qi++){assert.equal(plot.rows[qi].values[0].value,source[qi].records[i]?.value??null);assert.equal(plot.rows[qi].values[0].change,source[qi].records[i]?.change??null);}}

@@ -26,7 +26,7 @@
  function cell(r,i){return '<td>'+value(r,i)+'<small class="'+(r?.change<0?'oh-negative':'')+'">'+M.growth(r?.change,i===2)+'</small>'+source(r)+'</td>';}
  function resetDimensions(){state.region='';state.category='';state.mode='合计';state.currency='CNY';state.detailCategory='*';state.detailMode='*';state.page=1;}
  function normalize(){
-  state.peers=[...new Set(state.peers)].filter(id=>manifest.companies.some(c=>c.id===id));if(!state.peers.length)state.peers=[manifest.companies[0].id];comparison=state.peers.length>1;document.body.dataset.view=comparison?'comparison':'company';$('oh-tabs').hidden=comparison;if(comparison)state.tab='operating';
+  state.peers=[...new Set(state.peers)].filter(id=>manifest.companies.some(c=>c.id===id));comparison=state.peers.length>1;document.body.dataset.view=comparison?'comparison':'company';$('oh-tabs').hidden=comparison;if(comparison)state.tab='operating';
   if(!['同店','全部'].includes(state.kind))state.kind='全部';
   if(!['单季度','累计'].includes(state.frequency))state.frequency='单季度';
   if(!['change','value'].includes(state.display))state.display='change';
@@ -163,6 +163,7 @@
   }catch(e){if(token!==renderToken)return;$('oh-status').textContent='数据读取失败：'+e.message;$('oh-retry').hidden=false;$('oh-content').innerHTML='';}
  }
  async function choose(id){
+  if(!state.peers.length){++renderToken;data=null;state.company='';comparison=false;evidence.clear();charts.clear();document.body.dataset.view='empty';document.querySelectorAll('[data-company]').forEach(b=>b.setAttribute('aria-pressed','false'));updateURL();CompanyWorkspace.clearSelection();$('oh-retry').hidden=true;$('oh-status').textContent='请选择公司';return;}
   state.company=manifest.companies.some(c=>c.id===id)?id:manifest.companies[0].id;const token=++renderToken;
   $('oh-workspace').hidden=true;$('oh-retry').hidden=true;$('oh-status').textContent='正在读取数据…';
   document.querySelectorAll('[data-company]').forEach(b=>b.setAttribute('aria-pressed',state.peers.includes(b.dataset.company)));
@@ -174,7 +175,7 @@
    manifest=await D.json('data/companies/domestic-hotels.json');normalize();
    {
     $('oh-companies').innerHTML=manifest.companies.map(c=>CompanyWorkspace.companyButton(c)).join('');
-    document.querySelectorAll('[data-company]').forEach(b=>b.onclick=()=>{const id=b.dataset.company;if(state.peers.includes(id)){if(state.peers.length===1)return;state.peers=state.peers.filter(x=>x!==id);}else state.peers.push(id);resetDimensions();choose(state.peers[0]);});
+    document.querySelectorAll('[data-company]').forEach(b=>b.onclick=()=>{const id=b.dataset.company;if(state.peers.includes(id)){state.peers=state.peers.filter(x=>x!==id);}else state.peers.push(id);resetDimensions();choose(state.peers[0]);});
     document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{state.tab=b.dataset.tab;state.page=1;render();});
     await choose(state.peers[0]);
     $('oh-export-all').onclick=async()=>{const b=$('oh-export-all');b.disabled=true;try{const all=await Promise.all(manifest.companies.map(loadCompany));exportRows(all.flatMap(d=>d.rows),'国内四集团_全部指标_2018Q1起.csv');}catch(e){window.HotelWorkspace?.notify('导出失败：'+e.message);}finally{b.disabled=false;}};

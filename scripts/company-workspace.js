@@ -7,7 +7,7 @@
   if(!actions)return;
   actions.classList.add('cw-actions');
   const source=actions.querySelector('a[href*="data-notes"]');if(source)source.classList.add('cw-source-link');
-  if(!menu){menu=document.createElement('details');menu.className='cw-export';menu.innerHTML='<summary>导出数据</summary><div class="cw-export-items"></div>';actions.append(menu);const all=$('oh-export-all');if(all)menu.lastChild.append(all);}
+  if(!menu){menu=document.createElement('details');menu.className='cw-export';menu.innerHTML='<summary>导出数据</summary><div class="cw-export-items"></div>';actions.append(menu);const all=actions.querySelector('#oh-export-all');if(all)menu.lastChild.append(all);}
   const current=$('oh-toolbar')?.querySelector('#oh-export-view');
   menu.querySelector('#oh-export-view')?.remove();if(current){current.textContent='导出当前筛选';menu.lastChild.prepend(current);}
   menu.hidden=!menu.lastChild.children.length;menu.open=false;
@@ -71,16 +71,7 @@
  function mountActions(){if(actions)$('oh-profile')?.append(actions);}
  function enhance(){const content=$('oh-content');if(!content||content.firstElementChild===lastContent)return;exportMenu();filters();metrics();lastContent=content.firstElementChild;}
  function begin(){menu?.querySelector('#oh-export-view')?.remove();}
- const iconPaths={
-  jinjiang:'M4 21V8l8-5 8 5v13M3 21h18M8 9h8M8 13h2m4 0h2M10 21v-5h4v5',
-  btg:'M3 21h18M5 21V9h14v12M3 9l9-6 9 6M8 12v4m8-4v4M10 21v-5h4v5',
-  hworld:'M3 21h18M5 21V7h6v14M11 21V3h7v18M7 10h2m-2 4h2m4-8h3m-3 4h3m-3 4h3M14 21v-4',
-  atour:'M4 21h16M6 21V10h12v11M4 10l8-4 8 4M9 13h1m4 0h1M10 21v-5h4v5M12 6V3m0 2c2-2 4-2 5-1',
-  marriott:'M3 21h18M5 21V4h5v17M14 21V4h5v17M10 9h4m-4 5h4M7 7h1m-1 4h1m8-4h1m-1 4h1',
-  hyatt:'M4 21h16M6 21V9a6 6 0 0 1 12 0v12M9 21V10a3 3 0 0 1 6 0v11M9 14h6',
-  ihg:'M4 21h16M6 21V12h12v9M9 21v-5h6v5M12 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8M8 6h8M12 2c-2 2-2 6 0 8 2-2 2-6 0-8',
-  hilton:'M3 21h18M5 21V4h4v17M15 21V4h4v17M9 10h6m-6 4h6M6 7h2m8 0h2'
- };
- function companyButton(c){return '<button type="button" class="oh-company" data-company="'+esc(c.id)+'" aria-pressed="false"><span class="cw-company-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="'+(iconPaths[c.id]||iconPaths.hworld)+'"/></svg></span><span><strong>'+esc(c.name)+'</strong><small>'+esc(c.ticker)+'</small></span><span class="cw-check" aria-hidden="true">✓</span></button>';}
- window.CompanyWorkspace={enhance,plot,mountActions,begin,companyButton};
+ function companyButton(c){return '<button type="button" class="oh-company" data-company="'+esc(c.id)+'" aria-pressed="false"><span class="cw-company-icon">'+CompanyLogos[c.id]+'</span><span><strong>'+esc(c.name)+'</strong><small>'+esc(c.ticker)+'</small></span><span class="cw-check" aria-hidden="true">✓</span></button>';}
+ function clearSelection(){begin();if(menu)menu.open=false;$('oh-evidence')?.close();$('oh-profile')?.replaceChildren();$('oh-toolbar')?.replaceChildren();$('oh-content')?.replaceChildren();$('oh-workspace').hidden=true;$('oh-tabs').hidden=true;lastContent=null;exportMenu();if(actions)$('oh-companies').after(actions);}
+ window.CompanyWorkspace={clearSelection,enhance,plot,mountActions,begin,companyButton};
 })();
