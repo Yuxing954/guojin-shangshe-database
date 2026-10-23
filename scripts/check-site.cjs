@@ -12,7 +12,8 @@ for(const file of pages){
   const industryPages=['industry.html','hotel-dashboard.html','hotel-holiday-dashboard.html','hotel-groups.html','dutyfree-dashboard.html','cruise-dashboard.html','dining.html','travel-dashboard.html'];
   if(industryPages.includes(file)){
     assert.equal(styles.at(-1),'scripts/industry-design.css',file+' industry adapter ordering');
-    assert.equal(styles.at(-2),'scripts/site-polish.css',file+' shared adapter ordering');
+    assert.equal(styles.at(-2),file==='hotel-groups.html'?'scripts/hotel-groups.css':'scripts/site-polish.css',file+' shared adapter ordering');
+    assert.equal(styles.filter(s=>s==='scripts/site-polish.css').length,1,file+' shared adapter');
   }else assert.equal(styles.at(-1),'scripts/site-polish.css',file+' adapter ordering');assert.equal(styles.filter(s=>s==='scripts/site.css').length,1,file+' shared base');assert.ok(head.indexOf('scripts/site-ui.js')<head.indexOf('scripts/site-shell.js'),file+' dependency ordering');
   for(const match of head.matchAll(/(?:src|href)="(scripts\/[^"?]+)[^"\s]*"/g))assert.ok(fs.existsSync(path.join(root,match[1])),file+' missing '+match[1]);
 }
