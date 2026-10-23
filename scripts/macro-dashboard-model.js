@@ -64,7 +64,30 @@
     const list=specs.map(s=>{const data=snapshot.series[s.id]||{},latest=M.rows(data).at(-1),head=M.headline(s,data);return [s.name,s.country,latest?.period,head.value,head.unit,head.label,latest?.value,s.unit,s.adjustment,latest?.releaseDate,data.fetchedAt,M.status(s,data),latest?.sourceUrl||data.sourceUrl||sources[s.source]?.url];});
     return '\uFEFF'+[header,...list].map(r=>r.map(M.csvCell).join(',')).join('\r\n');
   }
-  const api={featured,core,directory,headlineRows,movement,segments,latestCsv,priorPeriod,readout,releases,trends,trendRows};
+  function detailDefinition(spec){
+    const cpi=['us-cpi','us-core-cpi'].includes(spec.id);
+    return {mode:cpi&&spec.kind!=='rate'?'yoy':'value',unit:cpi?'%':spec.unit,label:cpi?'同比':''};
+  }
+  function detailRows(spec,data,years,now){
+    return M.chartRows(spec,data,detailDefinition(spec).mode,years,now);
+  }
+  function annotationIndices(points,{width=900,left=0,right=0,maxLabels=12}={}){
+    const valid=points.map((p,index)=>({...p,index})).filter(p=>Number.isFinite(p.x)&&Number.isFinite(p.y)&&String(p.label??'')!=='');
+    if(!valid.length)return [];
+    const textWidth=p=>Array.from(String(p.label)).reduce((n,c)=>n+(/[^\x00-\x7F]/.test(c)?13:7),0)+12;
+    const widest=Math.max(...valid.map(textWidth)),plot=Math.max(1,width-left-right);
+    const budget=Math.min(maxLabels,Math.max(1,Math.floor(plot/(widest+18)))),chosen=[];
+    const offer=p=>{if(!p||chosen.length>=budget||chosen.some(q=>q.index===p.index||Math.abs(q.x-p.x)<(textWidth(q)+textWidth(p))/2+18))return;chosen.push(p);};
+    // Reserve the latest finite observation; annotations never remove tooltip points.
+    offer(valid.at(-1));offer(valid[0]);
+    offer(valid.reduce((a,b)=>a.y<b.y?a:b));offer(valid.reduce((a,b)=>a.y>b.y?a:b));
+    for(let i=1;i<budget;i++){
+      const target=valid[0].x+(valid.at(-1).x-valid[0].x)*i/budget;
+      offer(valid.reduce((a,b)=>Math.abs(a.x-target)<Math.abs(b.x-target)?a:b));
+    }
+    return chosen.map(p=>p.index).sort((a,b)=>a-b);
+  }
+  const api={detailDefinition,detailRows,annotationIndices,featured,core,directory,headlineRows,movement,segments,latestCsv,priorPeriod,readout,releases,trends,trendRows};
   if(typeof module==='object'&&module.exports)module.exports=api;else root.MacroDashboardModel=api;
 })(typeof window==='object'?window:globalThis);
 
