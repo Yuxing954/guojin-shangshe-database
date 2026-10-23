@@ -66,3 +66,7 @@ body.company-hub :is(button,a,select,input,summary):focus-visible{outline:2px so
  body.company-hub .dh-charts{grid-template-columns:minmax(0,1fr)}
  body.site-page.company-hub .oh-table :is(th,td){padding:9px 10px!important}
 }
+
+/* Secondary actions follow the category navigation, without a duplicate title. */
+body.company-hub .oh-section-actions{display:flex;justify-content:flex-end;margin:0 0 20px}
+@media(max-width:760px){body.company-hub .oh-section-actions{justify-content:flex-start}}

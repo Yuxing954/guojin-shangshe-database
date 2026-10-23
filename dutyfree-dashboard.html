@@ -230,4 +230,3 @@ document.getElementById('hn-metric').onchange=renderHainan;
 document.querySelectorAll('#tabs .tab').forEach(b=>b.onclick=()=>{go(b.dataset.view);location.hash=b.dataset.view;window.scrollTo({top:0})});
 const hashView=()=>{let key=location.hash.slice(1);if(['overview','hainan','datacenter'].includes(key)){key='monthly';history.replaceState(null,'',location.pathname+location.search+'#monthly');}go(['holidays','korea'].includes(key)?key:'monthly');};hashView();addEventListener('hashchange',hashView);
 </script></body></html>
-
