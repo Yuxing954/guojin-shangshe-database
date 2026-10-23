@@ -78,3 +78,31 @@
 
 
 
+
+/* Data-type sections and probability columns; Polymarket only. */
+#predictions .prediction-type-heading{grid-column:1/-1;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:8px 0 0;padding:0 0 8px;border-bottom:1px solid var(--site-line)}
+#predictions .prediction-type-heading h3{margin:0;font-size:15px;color:var(--site-ink)}
+#predictions .prediction-type-heading span{font-size:12px;color:var(--site-muted)}
+#predictions .forecast-event .board-panel-body{grid-template-rows:20px 42px 20px 16px minmax(0,1fr) 28px;gap:4px}
+#predictions .prediction-value-head{display:grid;grid-template-columns:minmax(0,1fr) 80px 68px;gap:6px;font-size:10px;line-height:16px;color:var(--site-muted)}
+#predictions .prediction-value-head span:not(:first-child){text-align:right}
+#predictions .forecast-topics{flex-basis:100%;justify-content:flex-start}
+#predictions .forecast-topics small{font-size:11px;opacity:.8}
+#predictions .forecast-preview{grid-template-rows:repeat(3,34px);row-gap:2px}
+@media(max-width:760px){
+ #predictions .forecast-topics{flex-wrap:nowrap;overflow-x:auto;max-width:100%;white-space:nowrap;justify-content:flex-start;padding-bottom:3px}
+ #predictions .forecast-topics button{flex:none}
+}
+
+
+
+
+body.site-page.macro-hub #predictions#predictions .forecast-event .board-panel-body{padding:14px;grid-template-rows:20px 48px 20px 16px minmax(0,1fr) 28px;gap:4px}
+body.site-page.macro-hub #predictions#predictions .forecast-preview{grid-template-rows:repeat(3,32px);row-gap:2px}
+body.site-page.macro-hub #predictions#predictions .forecast-topics{margin:0!important;padding:4px!important}
+body.site-page.macro-hub #predictions#predictions .forecast-controls{margin:0!important}
+@media(max-width:760px){
+ body.site-page.macro-hub #predictions#predictions .forecast-topics{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto!important;max-width:100%;width:100%;justify-content:flex-start!important}
+ body.site-page.macro-hub #predictions#predictions .forecast-topics button{flex:0 0 auto!important}
+}
+

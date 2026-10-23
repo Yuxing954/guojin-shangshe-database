@@ -24,12 +24,21 @@
  }
  function openPmEvent(group){
   const dialog=$('prediction-dialog');$('prediction-dialog-title').textContent=group.title;
-  $('prediction-dialog-meta').textContent=group.category+' · '+group.markets.length+' 个合约'+(!group.complete?' · 部分收录':'')+' · 24h 成交 '+money(group.volume);
+  $('prediction-dialog-meta').textContent=group.dataType.label+' · '+P.measurement(group)+' · '+group.markets.length+' 个合约'+(!group.complete?' · 部分收录':'')+' · 24h 成交 '+money(group.volume);
   $('prediction-dialog-body').innerHTML='<div class="portal-table-scroll"><table class="portal-table board-table"><thead><tr><th>合约 / 结果</th><th>隐含概率</th><th>较对照 / pp</th><th>流动性</th><th>价差 / ¢</th><th>截止 / 北京时间</th><th>来源</th></tr></thead><tbody>'+group.markets.flatMap(m=>m.outcomes.map((o,i)=>{const change=pmChange(o);return '<tr><th scope="row"><b>'+esc(group.markets.length>1?P.optionLabel(group,m):m.questionZh||m.question)+'</b><span class="forecast-detail-outcome">'+esc(o.nameZh||o.name)+'</span>'+(i===0?'<small>'+esc(m.question)+'</small>':'')+'</th><td>'+pct(Number.isFinite(o.probability)?o.probability*100:null)+'</td><td>'+(change===null?'—':(change>0?'+':'')+n(change))+'</td><td>'+money(m.liquidity)+(m.liquidity!=null&&m.liquidity<10000?'<span class="forecast-badge caution">低流动性</span>':'')+'</td><td>'+(Number.isFinite(m.spread)?n(m.spread*100):'—')+'</td><td>'+(m.endDate?esc(pmDay(m.endDate)+' '+when(m.endDate)):'—')+'</td><td>'+anchor(m.url,'结算规则 ↗')+(m.updatedAt?'<small>源更新 '+esc(pmDay(m.updatedAt)+' '+when(m.updatedAt))+'</small>':'')+'</td></tr>';})).join('')+'</tbody></table></div>';
   dialog.showModal();
  }
  function renderPolymarket(data){
-  pm=data;if(!wired){wired=true;$('prediction-search').value=params.get('predictionQuery')||'';$('prediction-category').value=params.has('predictionTopic')?(params.get('predictionTopic')==='all'?'':params.get('predictionTopic')):'';$('prediction-sort').value=params.get('predictionSort')==='deadline'?'deadline':'volume';
+  pm=data;
+  const available=P.groups(pm.markets,{wholeEvents:true}),counts=new Map(P.dataTypes.map(t=>[t.label,available.filter(g=>g.dataType.label===t.label).length]));
+  const chosen=wired?$('prediction-category').value:(params.get('predictionTopic')||'');
+  const types=P.dataTypes.filter(t=>counts.get(t.label)||t.label===chosen);
+  const options=[{label:'全部',value:'',count:available.length},...types.map(t=>({label:t.label,value:t.label,count:counts.get(t.label)}))];
+  if(chosen&&!['all',...options.map(t=>t.value)].includes(chosen))options.push({label:chosen,value:chosen,count:available.filter(g=>g.category===chosen).length});
+  $('prediction-topics').innerHTML=options.map(t=>'<button data-topic="'+esc(t.value)+'" aria-pressed="false">'+esc(t.label)+' <small>'+t.count+'</small></button>').join('');
+  $('prediction-category').innerHTML=options.map(t=>'<option value="'+esc(t.value)+'">'+esc(t.label)+'</option>').join('');
+  $('prediction-category').value=chosen==='all'?'':chosen;
+  if(!wired){wired=true;$('prediction-search').value=params.get('predictionQuery')||'';$('prediction-category').value=params.has('predictionTopic')?(params.get('predictionTopic')==='all'?'':params.get('predictionTopic')):'';$('prediction-sort').value=params.get('predictionSort')==='deadline'?'deadline':'volume';
    $('prediction-topics').onclick=e=>{const b=e.target.closest('[data-topic]');if(b){$('prediction-category').value=b.dataset.topic;pmLimit=PM_PAGE_SIZE;drawPm();}};
    $('prediction-search').oninput=()=>{pmLimit=PM_PAGE_SIZE;drawPm();};$('prediction-sort').onchange=()=>{pmLimit=PM_PAGE_SIZE;drawPm();};$('prediction-more').onclick=()=>{pmLimit+=PM_PAGE_SIZE;drawPm();};$('prediction-reset').onclick=()=>{$('prediction-search').value='';$('prediction-category').value='';$('prediction-sort').value='volume';pmLimit=PM_PAGE_SIZE;drawPm();};
    $('prediction-list').onclick=e=>{const b=e.target.closest('[data-prediction-event]');if(b){const group=pmGroups.find(g=>g.id===b.dataset.predictionEvent);if(group)openPmEvent(group);}};
@@ -39,17 +48,19 @@
  function drawPm(){
   const topic=$('prediction-category').value,query=$('prediction-search').value,sort=$('prediction-sort').value;keep({predictionTopic:topic||'all',predictionQuery:query,predictionSort:sort});
   document.querySelectorAll('[data-topic]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.topic===topic)));
-  const groups=P.groups(pm.markets,{category:topic,query,sort,wholeEvents:true}),visible=groups.slice(0,pmLimit),stale=Date.now()-Date.parse(pm.fetchedAt)>24*3600000;pmGroups=groups;
+  const groups=P.groups(pm.markets,{category:topic,query,sort,wholeEvents:true}),ordered=P.dataTypes.flatMap(t=>groups.filter(g=>g.dataType.label===t.label)),visible=ordered.slice(0,pmLimit),stale=Date.now()-Date.parse(pm.fetchedAt)>24*3600000;pmGroups=groups;
   $('prediction-status').textContent=(pm.status==='error'?'更新失败 · 保留快照 · ':stale?'历史快照 · ':'快照 · ')+pmDay(pm.fetchedAt)+' '+when(pm.fetchedAt)+' 北京时间';
   $('prediction-overview').innerHTML='<span><b>'+groups.length+'</b> 个事件</span><span><b>'+groups.reduce((s,g)=>s+g.markets.length,0)+'</b> 个活跃合约</span>'+(pm.previousFetchedAt?'<span class="forecast-comparison-time">对照 '+pmDay(pm.previousFetchedAt)+' '+when(pm.previousFetchedAt)+' 北京时间 · 变化单位 pp</span>':'');
+  let previousType='';
   $('prediction-list').innerHTML=visible.map(g=>{
+   const heading=previousType===g.dataType.label?'':'<div class="prediction-type-heading"><h3>'+esc(g.dataType.label)+'</h3><span>'+esc(g.dataType.scope)+' · '+groups.filter(v=>v.dataType.label===g.dataType.label).length+' 个事件</span></div>';previousType=g.dataType.label;
    const rows=pmOutcomes(g,g.markets),lead=P.affirmative(g.markets[0]);
    if(g.markets.length===1&&lead){const no=g.markets[0].outcomes.find(o=>o.name==='No'||o.nameZh==='否');if(no)rows.push({market:g.markets[0],outcome:no,label:'否'});}
    const preview=rows.slice(0,3),remaining=rows.length-preview.length;
-   return '<article class="forecast-event board-panel"><div class="board-panel-body"><div class="forecast-event-head"><span class="forecast-badge">'+esc(g.category)+'</span><span>'+g.markets.length+' 合约'+(!g.complete?' · 部分收录':'')+'</span></div><h3 title="'+esc(g.title)+'">'+esc(g.title)+'</h3><div class="forecast-event-meta"><span title="24小时成交额（美元）">24h '+money(g.volume)+'</span>'+(g.endDate?'<span title="最早截止：'+esc(pmDay(g.endDate)+' '+when(g.endDate)+' 北京时间')+'">截止 '+esc(pmDay(g.endDate))+'</span>':'')+'</div><div class="forecast-preview">'+pmRows(preview)+'</div><div class="forecast-event-footer">'+anchor(g.markets[0].url,'来源 ↗')+'<button type="button" data-prediction-event="'+esc(g.id)+'" aria-label="'+esc(g.title)+' · 全部合约明细">'+(remaining?'全部 '+rows.length+' 个结果':'合约明细')+' ↗</button></div></div></article>';
+   return heading+'<article class="forecast-event board-panel"><div class="board-panel-body"><div class="forecast-event-head"><span class="forecast-badge">'+esc(P.measurement(g))+'</span><span>'+g.markets.length+' 合约'+(!g.complete?' · 部分收录':'')+'</span></div><h3 title="'+esc(g.title)+'">'+esc(g.title)+'</h3><div class="forecast-event-meta"><span title="24小时成交额（美元）">24h '+money(g.volume)+'</span>'+(g.endDate?'<span title="最早截止：'+esc(pmDay(g.endDate)+' '+when(g.endDate)+' 北京时间')+'">截止 '+esc(pmDay(g.endDate))+'</span>':'')+'</div><div class="prediction-value-head"><span>合约条件 / 结果</span><span>隐含概率</span><span>变化 / pp</span></div><div class="forecast-preview">'+pmRows(preview)+'</div><div class="forecast-event-footer">'+anchor(g.markets[0].url,'来源 ↗')+'<button type="button" data-prediction-event="'+esc(g.id)+'" aria-label="'+esc(g.title)+' · 全部合约明细">'+(remaining?'全部 '+rows.length+' 个结果':'合约明细')+' ↗</button></div></div></article>';
   }).join('')||'<p class="portal-empty">暂无符合条件的活跃事件</p>';
   $('prediction-selection').textContent=pm.selectionNote||'部分活跃事件 · 原始合约价格 · 不归一化';$('prediction-more').hidden=groups.length<=pmLimit;$('prediction-more').textContent='再显示 '+Math.min(PM_PAGE_SIZE,Math.max(0,groups.length-pmLimit))+' 个事件';
-  $('prediction-download').disabled=!groups.length;$('prediction-download').onclick=()=>exportCsv([['事件','原始事件标题','合约','英文原文','结果','隐含概率','24h成交USD','流动性USD','截止时间','源更新时间','快照时间','完整活跃事件收录','来源'],...groups.flatMap(g=>g.markets.flatMap(m=>m.outcomes.map(o=>[g.title,m.eventTitle||'',m.questionZh||m.question,m.question,o.nameZh||o.name,o.probability,m.volume24h,m.liquidity,m.endDate,m.updatedAt,pm.fetchedAt,g.complete,m.url])))],'polymarket-events.csv');
+  $('prediction-download').disabled=!groups.length;$('prediction-download').onclick=()=>exportCsv([['数据类型','概率口径','事件','原始事件标题','合约','英文原文','结果','隐含概率','24h成交USD','流动性USD','截止时间','源更新时间','快照时间','完整活跃事件收录','来源'],...groups.flatMap(g=>g.markets.flatMap(m=>m.outcomes.map(o=>[g.dataType.label,P.measurement(g),g.title,m.eventTitle||'',m.questionZh||m.question,m.question,o.nameZh||o.name,o.probability,m.volume24h,m.liquidity,m.endDate,m.updatedAt,pm.fetchedAt,g.complete,m.url])))],'polymarket-events.csv');
  }
  async function loadFedwatch(force=false){if(cmeLoading)return;if(cme&&!force){drawCme();return;}cmeLoading=true;$('fedwatch-status').textContent='正在读取…';try{const response=await fetch('data/gold-jewelry/macro.json',{cache:'no-cache',signal:AbortSignal.timeout(15000)});if(!response.ok)throw new Error('HTTP '+response.status);const value=await response.json();if(!Array.isArray(value.meetings)||!value.policy)throw new Error('格式错误');cme=value;cmeError=false;const meetings=value.meetings.filter(m=>Date.parse(m.meetingDate+'T23:59:59Z')>=Date.now()&&F.snapshots(m).length);$('fedwatch-meeting').innerHTML=meetings.map(m=>'<option value="'+esc(m.meetingDate)+'">'+esc(m.meetingDate)+'</option>').join('');if(meetings.some(m=>m.meetingDate===params.get('meeting')))$('fedwatch-meeting').value=params.get('meeting');$('fedwatch-meeting').onchange=()=>{setCompare();drawCme();};$('fedwatch-compare').onchange=drawCme;setCompare();drawCme();}catch{cmeError=true;if(cme)drawCme();else{$('fedwatch-status').textContent='CME 快照读取失败';$('fedwatch-content').innerHTML='<button id="fedwatch-retry" class="portal-button">重试读取</button>';$('fedwatch-retry').onclick=()=>loadFedwatch(true);}}finally{cmeLoading=false;}}
  function selectedCme(){const meeting=cme.meetings.find(m=>m.meetingDate===$('fedwatch-meeting').value);return {meeting,history:F.snapshots(meeting)};}
@@ -68,4 +79,6 @@
  }
  window.ForecastDesk={renderPolymarket,loadFedwatch};
 })();
+
+
 
