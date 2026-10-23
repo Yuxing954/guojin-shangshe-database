@@ -117,3 +117,13 @@ body.company-hub #oh-toolbar:empty{display:none}
  body.company-hub .oh-peer-filters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
  body.company-hub .oh-peer-filters>label{min-width:0}
 }
+/* Native line icons share the main navigation's 24px / 1.6px geometry. */
+body.site-page.company-hub .oh-company{position:relative;padding-right:30px}
+body.company-hub .cw-company-icon{display:flex;align-items:center;justify-content:center;flex:0 0 36px;width:36px;height:36px;border-radius:8px;background:var(--site-soft);color:var(--site-muted)}
+body.company-hub .cw-company-icon svg{width:24px;height:24px}
+body.company-hub .oh-company[aria-pressed=true] .cw-company-icon{color:var(--site-accent)}
+body.company-hub .cw-check{position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--site-accent);font-size:14px;opacity:0}
+body.company-hub .oh-company[aria-pressed=true] .cw-check{opacity:1}
+body.company-hub #oh-profile h2{font-size:18px;overflow-wrap:anywhere}
+@media(max-width:760px){body.site-page.company-hub .oh-company{padding-right:22px}body.company-hub .cw-check{right:6px}body.company-hub .cw-company-icon{width:30px;height:30px;flex-basis:30px}body.company-hub .cw-company-icon svg{width:22px;height:22px}}
+body.site-page.company-hub #oh-tabs[hidden]{display:none!important}
