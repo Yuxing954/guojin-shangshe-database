@@ -5,23 +5,23 @@
   "cutoff": "2026-10-22T18:00:00+08:00",
   "sourceThrough": "2026-10-22T19:36:38.325+0800",
   "attachmentCatalog": {
-    "generatedAt": "2026-10-22T11:01:55.996Z",
-    "sourceThrough": "2026-10-22T18:20:03.989+0800",
+    "generatedAt": "2026-10-23T17:15:42+08:00",
+    "sourceThrough": "2026-10-23T15:39:57.990+0800",
     "scan": {
-      "observedAt": "2026-10-22T11:01:55.996Z",
+      "observedAt": "2026-10-23T08:35:56.690Z",
       "sourceGroup": "88888142214212",
       "sourceName": "水木调研纪要-2.0",
-      "topicsScanned": 780,
-      "topicsInWindow": 751,
-      "topicPages": 26,
-      "topicWindowFrom": "2026-10-20T00:00:00+08:00",
-      "topicWindowTo": "2026-10-22T18:20:03.989+0800",
+      "topicsScanned": 720,
+      "topicsInWindow": 675,
+      "topicPages": 24,
+      "topicWindowFrom": "2026-10-21T00:00:00+08:00",
+      "topicWindowTo": "2026-10-23T15:39:57.990+0800",
       "boundaryReachedBeforeWindow": true,
-      "attachmentsObserved": 452,
-      "uniqueFileIds": 452,
+      "attachmentsObserved": 447,
+      "uniqueFileIds": 447,
       "duplicateFileIds": 0,
-      "newRecords": 312,
-      "existingRecordsRefreshed": 140,
+      "newRecords": 180,
+      "existingRecordsRefreshed": 232,
       "attachmentContentRead": false,
       "sourceMetadataFields": [
         "fileId",
@@ -36,9 +36,9 @@
         "sourceHash",
         "source"
       ],
-      "windowStart": "2026-10-20T00:00:00+08:00",
-      "windowEnd": "2026-10-22T11:01:55.996Z",
-      "windowEndDate": "2026-10-22",
+      "windowStart": "2026-10-21T00:00:00+08:00",
+      "windowEnd": "2026-10-23T08:35:56.690Z",
+      "windowEndDate": "2026-10-23",
       "windowComplete": true,
       "archiveHasMore": true
     },
@@ -134,9 +134,9 @@
   },
   "policy": "仅依据已入库元数据列出标题、发布时间和来源主题；未下载、读取或转写附件，不把研究报告标为纪要。",
   "attachmentBackfill": {
-    "at": "2026-10-22T20:53:44+08:00",
+    "at": "2026-10-23T18:34:55+08:00",
     "originalCutoff": "2026-10-22T18:00:00+08:00",
-    "indexGeneratedAt": "2026-10-22T11:01:55.996Z",
-    "reason": "Complete late attachment scan arrived before formal publication; metadata only."
+    "indexGeneratedAt": "2026-10-23T17:15:42+08:00",
+    "previousIndexGeneratedAt": "2026-10-23T08:35:56.690Z"
   }
 }

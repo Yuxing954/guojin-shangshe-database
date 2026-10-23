@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-23",
+  "cutoff": "2026-10-23T18:00:00+08:00",
+  "policy": {
+    "id": "scan-observed-after-16",
+    "requestedBy": "user",
+    "effectiveFrom": "2026-10-23",
+    "attachmentScanObservedAt": "2026-10-23T08:35:56.690Z",
+    "attachmentCoverageComplete": false,
+    "eligible": true,
+    "note": "当日16点后附件扫描已更新，按用户授权发布；实际扫描与研究覆盖及缺口仍保存在数据中。"
+  },
+  "counts": {"summaryCards": 3, "completeOriginals": 5, "minutes": 0, "audio": 4, "reports": 4},
+  "sourceLibraryBlob": "32b501833e80c242313741f43c2e589c82ef77fd",
+  "validation": {
+    "dailyUnitTests": {"passed": 55, "failed": 0},
+    "editorialAndOriginalHashes": "passed",
+    "resourcesAndLibraryVersion": "passed",
+    "previousDayResourceBackfill": "2026-10-22 updated; original cutoff and editorial unchanged",
+    "localFrontend": {"summaryPoints": 3, "visibleSummaries": true, "singleCollapsedDetails": true, "allOriginalsReadable": true, "attachmentItems": 8, "copyAndDownloadOrder": "passed"},
+    "checkSite": {"status": "failed", "scope": "pre-existing unrelated hotel page", "message": "hotel-groups.html adapter ordering: scripts/hotel-groups.css instead of scripts/site-polish.css"}
+  },
+  "announcementMonitoringStatus": "partial",
+  "announcementEvidenceFile": "data/daily/evidence/2026-10-23.json"
+}

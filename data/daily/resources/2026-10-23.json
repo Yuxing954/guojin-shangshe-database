@@ -5,7 +5,7 @@
   "cutoff": "2026-10-23T18:00:00+08:00",
   "sourceThrough": "2026-10-23T14:52:12.151+0800",
   "attachmentCatalog": {
-    "generatedAt": "2026-10-23T08:35:56.690Z",
+    "generatedAt": "2026-10-23T17:15:42+08:00",
     "sourceThrough": "2026-10-23T15:39:57.990+0800",
     "scan": {
       "observedAt": "2026-10-23T08:35:56.690Z",
@@ -50,7 +50,13 @@
         "start": "2026-10-23T16:35:56.690000+08:00",
         "end": "2026-10-23T18:00:00+08:00"
       }
-    ]
+    ],
+    "publicationEligibility": {
+      "policy": "scan-observed-after-16",
+      "eligible": true,
+      "scanObservedAt": "2026-10-23T08:35:56.690Z",
+      "coverageComplete": false
+    }
   },
   "groups": {
     "segments": [
