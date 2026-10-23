@@ -106,3 +106,19 @@ body.site-page.macro-hub #predictions#predictions .forecast-controls{margin:0!im
  body.site-page.macro-hub #predictions#predictions .forecast-topics button{flex:0 0 auto!important}
 }
 
+
+/* One category row and a compact, probability-first card. */
+body.site-page.macro-hub #predictions#predictions .forecast-event{height:240px}
+body.site-page.macro-hub #predictions#predictions .forecast-event .board-panel-body{grid-template-rows:18px 48px minmax(0,1fr) 26px;gap:6px;padding:14px}
+body.site-page.macro-hub #predictions#predictions .forecast-outcome{grid-template-columns:minmax(0,1fr) 88px}
+body.site-page.macro-hub #predictions#predictions .forecast-event-head .forecast-badge{padding:0;background:transparent;color:var(--site-muted)}
+body.site-page.macro-hub #predictions#predictions .forecast-event-footer{font-size:11px;color:var(--site-muted)}
+body.site-page.macro-hub #predictions#predictions .forecast-topics{background:transparent!important;border:0!important;padding:0!important;border-radius:0!important}
+body.site-page.macro-hub #predictions#predictions .forecast-topics button{padding:8px 12px!important;border:0!important;box-shadow:none!important}
+body.site-page.macro-hub #predictions#predictions .forecast-topics button[aria-pressed=true]{background:var(--site-soft)!important;color:var(--site-accent)!important}
+#predictions .prediction-more-tools{position:relative;flex:none;font-size:12px;color:var(--site-muted)}
+#predictions .prediction-more-tools summary{padding:8px 12px;cursor:pointer}
+#predictions .prediction-tools-panel{position:absolute;right:0;top:100%;z-index:5;display:grid;gap:10px;width:200px;padding:14px;background:white;border:1px solid var(--site-line);border-radius:10px;box-shadow:0 8px 24px #202c4014}
+#predictions .prediction-tools-panel label{display:grid;gap:6px}
+#predictions .prediction-tools-panel select{width:100%}
+
