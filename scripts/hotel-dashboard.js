@@ -40,7 +40,7 @@
     $('selection-note').hidden = before === state.week;
     $('selection-note').textContent = before === state.week ? '' : M.weekLabel(before) + '在当前视图暂无数据，已切至' + M.weekLabel(state.week);
     var newest = allowed[allowed.length - 1];
-    $('week-select').innerHTML = option('latest', '最新周 · ' + M.weekLabel(newest.period_id) + ' · ' + newest.end_date) + allowed.slice().reverse().map(function (p) { return option(p.period_id, M.weekLabel(p.period_id) + ' · ' + p.end_date); }).join('');
+    $('week-select').innerHTML = option('latest', '最新周 · ' + M.weekLabel(newest.period_id)) + allowed.slice().reverse().map(function (p) { return option(p.period_id, M.weekLabel(p.period_id)); }).join('');
     if (followLatest) state.week = newest.period_id;
     $('week-select').value = followLatest ? 'latest' : state.week;
     compareOptions();
@@ -75,7 +75,7 @@
   }
   function renderPeriod() {
     var base = periods.get(baseWeek());
-    $('period-note').textContent = periodLabel(periods.get(state.week)) + (state.base === 'auto' ? ' · 同周同比' : ' · 手动对比');
+    var selected = periods.get(state.week); $('period-note').textContent = (selected ? selected.start_date + '—' + selected.end_date : '暂无数据') + (state.base === 'auto' ? ' · 同周同比' : ' · 手动对比');
     $('period-note').title = '比较基周：' + (base ? periodLabel(base) : M.weekLabel(baseWeek()) + '（无基周记录）');
     $('mode-switch').querySelector('[data-mode="change"]').textContent = state.base === 'auto' ? '仅同比' : '仅对比变化';
   }
@@ -416,8 +416,8 @@
     if (META[saved.get('metric')]) state.metric = saved.get('metric');
     if (['combo', 'value', 'change'].includes(saved.get('mode'))) state.mode = saved.get('mode');
     if (periods.has(saved.get('base'))) state.base = saved.get('base');
-    SiteUI.asOf($('asof'), latest.end_date, [latest.period_id]);
-    $('week-select').innerHTML = option('latest', '最新周 · ' + M.weekLabel(latestWeek) + ' · ' + latest.end_date) + Array.from(periods.values()).reverse().map(function (r) { return option(r.period_id, M.weekLabel(r.period_id) + ' · ' + r.end_date); }).join('');
+    SiteUI.asOf($('asof'), latest.end_date, []);
+    $('week-select').innerHTML = option('latest', '最新周 · ' + M.weekLabel(latestWeek)) + Array.from(periods.values()).reverse().map(function (r) { return option(r.period_id, M.weekLabel(r.period_id)); }).join('');
     $('week-select').value = followLatest ? 'latest' : state.week; $('region-select').innerHTML = regions.map(function (r) { return option(r, r); }).join(''); $('history-start').value = state.window;
     compareOptions(); $('dashboard').hidden = false;
     $('weekly-export').onclick = openWeeklyExport;

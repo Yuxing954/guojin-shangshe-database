@@ -71,3 +71,44 @@ body.site-page.industry-embedded :is(.industry-board,.site-main) select{
 body.site-page.industry-embedded :is(.hd-tabs,#tabs,.travel-tabs,.cruise-tabs)>:is(button,a){
  height:40px!important;min-height:40px!important;line-height:24px!important;
 }
+
+/* Shared compact header controls for embedded industry dashboards. */
+body.site-page.industry-embedded :is(.hd-tabs,#tabs,.travel-tabs,.cruise-tabs){
+ display:inline-flex!important;align-items:center!important;flex-wrap:wrap!important;
+ width:max-content!important;max-width:100%!important;min-height:40px!important;
+ gap:2px!important;padding:3px!important;margin:0 0 16px!important;
+ border:0!important;border-radius:8px!important;background:var(--site-soft)!important;
+}
+body.site-page.industry-embedded :is(.hd-tabs,#tabs,.travel-tabs,.cruise-tabs)>:is(button,a){
+ height:34px!important;min-height:34px!important;padding:6px 12px!important;font-size:13px!important;
+ line-height:20px!important;white-space:nowrap!important;
+}
+body.site-page.industry-embedded :is(.hd-toolbar,.hg-toolbar,.dutyfree-filters,.kr-controls,.travel-controls,.cruise-controls,.dining-toolbar){
+ gap:8px 14px!important;margin-bottom:14px!important;
+}
+body.site-page.industry-embedded :is(.hd-toolbar,.hg-toolbar,.dutyfree-filters,.kr-controls,.travel-controls,.cruise-controls,.dining-toolbar) :is(label,.hd-display-control>span){
+ font-size:12px!important;line-height:20px!important;color:var(--site-muted)!important;
+}
+body.site-page.industry-embedded :is(.hd-toolbar,.hg-toolbar,.dutyfree-filters,.kr-controls,.travel-controls,.cruise-controls,.dining-toolbar) :is(select,button){
+ min-height:36px!important;font-size:13px!important;line-height:20px!important;
+}
+body.site-page.industry-embedded :is(.hd-section-head,.board-section-head,.travel-section-head,.dining-section)>h2{
+ font-size:18px!important;line-height:26px!important;
+}
+body.site-page.industry-embedded :is(.hd-period,.dh-note){
+ font-size:12px!important;line-height:20px!important;margin:4px 0 12px!important;
+}
+@media(max-width:640px){
+ body.site-page.industry-embedded :is(.hd-tabs,#tabs,.travel-tabs,.cruise-tabs){
+  display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  width:100%!important;
+ }
+ body.site-page.industry-embedded :is(.hd-tabs,#tabs,.travel-tabs,.cruise-tabs)>:is(button,a){
+  min-width:0!important;padding:6px 5px!important;white-space:normal!important;
+  text-align:center!important;
+ }
+}
+
+/* One readable control size across every sector toolbar. */
+body.site-page.industry-embedded :is(.industry-board,.site-main) :is(.hd-toolbar,.hg-toolbar,.dutyfree-filters,.kr-controls,.travel-controls,.cruise-controls,.dining-toolbar) :is(select,button){font-size:14px!important}
+@media(max-width:640px){body.site-page.industry-embedded :is(.industry-board,.site-main) :is(.hd-toolbar,.hg-toolbar,.dutyfree-filters,.kr-controls,.travel-controls,.cruise-controls,.dining-toolbar) :is(select,button){font-size:16px!important}}

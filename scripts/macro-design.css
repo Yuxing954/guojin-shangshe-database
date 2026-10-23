@@ -45,3 +45,27 @@ body.site-page.macro-hub .data-board .macro-page-meta:empty{display:none}
 body.site-page.macro-hub #predictions #prediction-status.macro-page-meta{margin:0 0 16px;font-size:14px;line-height:22px}
 body.site-page.macro-hub .regional-state-head{min-height:40px;margin:0 0 16px}
 body.site-page.macro-hub .regional-state-head #regional-status{font-size:14px;line-height:22px}
+
+/* The macro controls use the same compact type scale and spacing as industry views. */
+body.site-page.macro-hub .data-board .macro-page-meta{min-height:28px;margin:0 0 14px;font-size:14px;line-height:22px}
+body.site-page.macro-hub .regional-state-head{min-height:28px;margin:0 0 14px}
+body.site-page.macro-hub .site-subnav:not(.section-category-nav){
+ display:inline-flex!important;width:max-content!important;max-width:100%!important;
+ min-height:40px!important;gap:2px!important;padding:3px!important;
+ border:0!important;border-radius:8px!important;background:var(--site-soft)!important;
+}
+body.site-page.macro-hub .site-subnav:not(.section-category-nav)>:is(button,a){
+ min-height:34px!important;padding:6px 12px!important;font-size:13px!important;line-height:20px!important;
+}
+body.site-page.macro-hub #indicators .macro-study-controls{gap:12px;margin-bottom:16px}
+body.site-page.macro-hub .data-board :is(.macro-section-head,.forecast-head,.regional-section-head) h2{
+ font-size:18px!important;line-height:26px!important;
+}
+body.site-page.macro-hub .data-board :is(.macro-study-controls,.forecast-controls,.regional-controls) label{font-size:12px!important;line-height:20px!important}
+body.site-page.macro-hub .data-board :is(.forecast-controls,.regional-controls) :is(select,input,button){min-height:36px!important;font-size:13px!important;line-height:20px!important}
+@media(max-width:640px){
+ body.site-page.macro-hub .data-board .macro-page-meta{font-size:12px;line-height:20px}
+ body.site-page.macro-hub .site-subnav:not(.section-category-nav)>:is(button,a){padding:6px 9px!important}
+}
+
+@media(max-width:640px){body.site-page.macro-hub .regional-state-head #regional-status{font-size:12px;line-height:20px}}
