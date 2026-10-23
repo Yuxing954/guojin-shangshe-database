@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行业详情 · 行业国家队 ETF 看板</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐰</text></svg>">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/vendor/echarts.min.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <h1>🇨🇳 国家队持仓看板 · ETF</h1>
+    <p class="sub">按行业追踪 <b>中央汇金 · 汇金资管 · 社保基金 · 证金公司</b> 持有的 ETF 与份额</p>
+    <nav class="nav"><a href="index.html" class="home">🏠 总览</a><a href="logs.html">日志</a><span class="seg-nav"><a href="detail.html" class="on">ETF</a><a href="stock_detail.html">个股</a></span><span class="sub-nav"><a href="etf.html">总览</a><a href="trends.html">走势</a><a href="detail.html" class="on">详情</a></span></nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card">
+    <div class="chart-toolbar">
+      <div class="tb-left">
+        <label class="tb-label">行业</label>
+        <select id="ind-select" class="etf-select"></select>
+      </div>
+      <div class="tb-right">
+        <div class="seg" id="period-seg">
+          <button data-p="D" class="active">日</button>
+          <button data-p="W">周</button>
+          <button data-p="M">月</button>
+        </div>
+      </div>
+    </div>
+    <div id="ind-head" class="detail-head"></div>
+    <div class="line-tools">
+      <button id="btn-all" class="mini">全选</button>
+      <button id="btn-none" class="mini">全不选</button>
+      <button id="btn-total" class="mini">仅总量</button>
+      <span class="hint">点击图例可单独显示/隐藏某只 ETF；<b>总量</b>为该行业所有成员份额之和</span>
+    </div>
+    <div id="chart" class="chart" style="height:480px"></div>
+    <p class="muted" style="margin:6px 2px 0">拖动底部滑块查看不同时段；纵轴为份额（亿份），最长约 10 年。</p>
+  </section>
+
+  <section class="card">
+    <div class="table-head"><h2>本行业国家队持仓（按资金）</h2>
+      <span class="hint">当前行业各路国家队资金的持有份额及较上期变化（报告期 <span id="ig-rpt">—</span>）</span></div>
+    <div class="table-scroll">
+      <table class="holder-table" id="ind-groups"><thead><tr>
+        <th class="ta-l">资金（机构）</th><th class="ta-l">类别</th><th>持有份额</th><th>占本行业</th><th>持有市值</th><th>较上期</th>
+      </tr></thead><tbody></tbody></table>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="chart-toolbar">
+      <div class="tb-left">
+        <label class="tb-label">选择 ETF</label>
+        <select id="holder-select" class="etf-select"></select>
+      </div>
+      <div class="tb-right"><span class="hint" id="holder-rpt"></span></div>
+    </div>
+    <p class="muted" style="margin:0 2px 12px">以下为<b>所选单只 ETF</b>自己披露的十大持有人（每只基金各自披露，非行业汇总）。行业层面的国家队汇总见<a href="index.html">行业总览</a>与<a href="trends.html">行业走势</a>。</p>
+
+    <h3 class="sub-h">国家队持有人</h3>
+    <div class="table-scroll">
+      <table class="holder-table" id="nt-holders"><thead><tr>
+        <th class="ta-l">机构</th><th class="ta-l">类别</th>
+        <th>持有份额</th><th>持有占比</th><th>上期占比</th><th>较上期</th>
+      </tr></thead><tbody></tbody></table>
+    </div>
+
+    <h3 class="sub-h">十大持有人（完整）</h3>
+    <div class="table-scroll">
+      <table class="holder-table" id="all-holders"><thead><tr>
+        <th>排名</th><th class="ta-l">持有人名称</th><th>持有份额</th><th>持有占比</th>
+      </tr></thead><tbody></tbody></table>
+    </div>
+  </section>
+
+  <footer class="disclaimer">
+    <p class="muted">份额为日频（上交所逐日，深交所为当前值）。持有人来自半年报 / 年报，最长滞后约 6 个月。数据源：上交所、深交所、新浪财经。仅供研究参考，不构成投资建议。</p>
+  </footer>
+</main>
+
+<script src="js/util.js"></script>
+<script src="js/detail.js"></script>
+</body>
+</html>

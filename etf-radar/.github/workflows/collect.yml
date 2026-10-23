@@ -1,0 +1,120 @@
+name: 采集国家队 ETF 数据
+
+on:
+  schedule:
+    # GitHub Actions 定时为 UTC 且"尽力而为"：整点前后(尤其 :00/:00-:05)是全球 cron 高峰，
+    # 排队任务可能被延迟甚至直接丢弃。故避开整点，选偏门分钟以提高实际触发率。
+    # 多个错开时刻(北京 09:23/10:07/10:47/11:31)：GitHub 定时常被延迟数小时且交易所偶发反爬封锁，
+    # 多点尝试提高撞上"上交所可用窗口"的概率。均为幂等 daily：先成功的产出数据，其余因行情日未变而短路(状态"数据已最新"，不重复抓价、不误报)。
+    # ⚠️ 最后一个槽位(31 3)兼作当天的兜底告警槽(见下面 STRICT)：改动 cron 表达式时
+    #    记得同步「运行采集」步骤里的 STRICT 判断，否则告警会静默失效。
+    - cron: "23 1 * * *"
+    - cron: "7 2 * * *"
+    - cron: "47 2 * * *"
+    - cron: "31 3 * * *"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "采集模式：daily=每日增量；init=初始化/全量"
+        type: choice
+        default: daily
+        options: [daily, init]
+      start:
+        description: "init 模式的起始日 YYYY-MM-DD（留空用默认）"
+        required: false
+        default: ""
+
+# 避免上一次未跑完又触发下一次
+concurrency:
+  group: collect
+  cancel-in-progress: false
+
+permissions:
+  contents: write   # 需要把生成的 JSON 提交回仓库
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: 检出仓库
+        uses: actions/checkout@v4
+
+      - name: 安装 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 安装依赖
+        run: pip install -r collector/requirements.txt
+
+      - name: 运行采集
+        id: collect
+        env:
+          # 单次运行的时间预算：超预算的采集阶段带 warning 收工并照常写盘。
+          # 预算(18min) + 收尾余量 + 个股硬超时(5min) 要留在 timeout-minutes(30) 以内，
+          # 否则会被 job 硬超时杀掉——那样连状态都落不下来，且必发失败邮件。
+          RUN_BUDGET_SEC: "1080"
+          # 交易所接口对 CI 出口有随机反爬，单次取不到数据属常态 → 平时按"跳过"静音处理；
+          # 只有当天最后一个定时槽位才严格：源不可达且当天一次都没成功过，才真失败(发邮件)。
+          STRICT: ${{ github.event.schedule == '31 3 * * *' && '--strict-source' || '' }}
+        run: |
+          if [ "${{ github.event.inputs.mode }}" = "init" ]; then
+            if [ -n "${{ github.event.inputs.start }}" ]; then
+              echo "手动初始化：起始 ${{ github.event.inputs.start }}"
+              python collector/init.py --start "${{ github.event.inputs.start }}"
+            else
+              echo "手动初始化：默认起始"
+              python collector/init.py
+            fi
+          else
+            # 每日增量：脚本内部会自动检测新报告期，有则自动升级初始化
+            echo "每日增量（时间预算 ${RUN_BUDGET_SEC}s，严格模式：${STRICT:-off}）"
+            python collector/daily.py $STRICT
+          fi
+          # 个股国家队直接持股(季度口径)：每日跑增量(只补最近报告期)，捕捉新季报。
+          # 失败不阻断；再套一层硬超时，别让它把整个 job 拖到硬超时(数据是季度口径，跳一次无损)
+          timeout 300 python collector/stock_daily.py || echo "个股采集失败/超时(不阻断)"
+
+      # 采集失败时也要跑：否则 write_run_error 落的 error 状态永远提交不上去，
+      # 网页状态页看不到任何异常痕迹(历史上失败的 run 全部无痕)。
+      - name: 提交数据变更
+        if: always()
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # 运行期间远端可能被其他推送领先(并发/手动提交) → 推送前先 rebase，并重试，避免 non-fast-forward 失败
+          push_data() {
+            for i in 1 2 3 4 5; do
+              if git fetch origin main && git rebase origin/main; then
+                if git push origin HEAD:main; then echo "推送成功(第 $i 次)"; return 0; fi
+              else
+                git rebase --abort 2>/dev/null || true
+              fi
+              echo "推送冲突/失败，重试 $i ..."; sleep $((i*3))
+            done
+            echo "::error::多次重试后仍推送失败"; return 1
+          }
+          if [ "${{ steps.collect.outcome }}" = "success" ]; then
+            git add docs/data
+          else
+            # 采集异常退出：数据可能只写了一半，只提交状态/日志留痕，不碰数据
+            echo "采集步骤未成功(${{ steps.collect.outcome }}) → 只提交状态心跳留痕"
+            git add docs/data/status.json docs/data/runs
+            # 半写的数据文件必须还原干净，否则 push_data 里的 rebase 会因工作区脏而失败
+            git checkout -- docs/data 2>/dev/null || true
+            git clean -qfd docs/data
+          fi
+          TS=$(TZ='Asia/Shanghai' date '+%Y-%m-%d %H:%M')
+          # 实质数据 = 排除每次必变的 meta.json / status.json / runs/(日志)后是否有变化
+          if ! git diff --cached --quiet -- docs/data ':(exclude)docs/data/meta.json' ':(exclude)docs/data/stock/meta.json' ':(exclude)docs/data/status.json' ':(exclude)docs/data/runs/**'; then
+            git commit -m "chore(data): 自动更新国家队数据 ${TS} (北京时间)"
+            push_data
+          elif ! git diff --cached --quiet -- docs/data/status.json docs/data/runs; then
+            # 无实质数据变化(非交易日等) → 仅提交状态/日志心跳,便于网页展示当天采集情况
+            git commit -m "chore(status): 采集状态心跳 ${TS} (无数据变化)"
+            push_data
+          else
+            echo "无任何变化，跳过提交"
+            git reset -q
+          fi

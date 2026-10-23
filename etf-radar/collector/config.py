@@ -1,0 +1,134 @@
+# -*- coding: utf-8 -*-
+"""
+行业国家队 ETF 看板 —— 采集配置
+
+所有可调参数集中在此。不依赖数据库，产物为 docs/data 下的静态 JSON，
+供 GitHub Pages 前端直接 fetch。
+"""
+import os
+
+# ------------------------------------------------------------------
+# 路径
+# ------------------------------------------------------------------
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # 项目根
+DATA_DIR = os.path.join(BASE_DIR, "docs", "data")          # 快照 JSON
+SERIES_DIR = os.path.join(DATA_DIR, "series")              # series/<code>/<year>.json 逐 ETF 逐年
+TRENDS_DIR = os.path.join(DATA_DIR, "trends")              # trends/<year>.json 各行业逐年日频
+HOLDERS_DIR = os.path.join(DATA_DIR, "holders")            # holders/periods.json 报告期序列
+HOLDERS_ETF_DIR = os.path.join(HOLDERS_DIR, "etf")         # holders/etf/<code>.json 每只ETF分期持仓(永久留存)
+INDUSTRY_DIR = os.path.join(DATA_DIR, "industry")          # industry/<id>/<year>.json 行业内各ETF份额打包
+RUNS_DIR = os.path.join(DATA_DIR, "runs")                  # runs/<YYYY-MM>.json 全量运行日志(按月分片)+index.json
+LOG_DIR = os.path.join(BASE_DIR, "logs")
+
+# ------------------------------------------------------------------
+# 个股板块路径（docs/data/stock/ 下，镜像 ETF 结构）
+# ------------------------------------------------------------------
+STOCK_DATA_DIR = os.path.join(DATA_DIR, "stock")
+STOCK_SERIES_DIR = os.path.join(STOCK_DATA_DIR, "series")       # series/<code>/<year>.json 逐股逐年日频收盘价
+STOCK_TRENDS_DIR = os.path.join(STOCK_DATA_DIR, "trends")       # trends/<year>.json 各行业逐年日频持仓市值
+STOCK_HOLDERS_DIR = os.path.join(STOCK_DATA_DIR, "holders")     # holders/periods.json 报告期序列
+STOCK_HOLDERS_STK_DIR = os.path.join(STOCK_HOLDERS_DIR, "stock")  # holders/stock/<code>.json 每股分期持仓(永久留存)
+STOCK_INDUSTRY_DIR = os.path.join(STOCK_DATA_DIR, "industry")   # industry/<id>/<year>.json 行业内各股市值打包
+STOCK_INDUSTRY_CACHE = os.path.join(STOCK_DATA_DIR, "industry_map.json")  # 代码->行业 缓存(减少重复请求)
+STOCK_START_DATE = "2016-01-01"   # 个股历史起始(份额/收盘价/报告期回补)
+
+# ------------------------------------------------------------------
+# “国家队”识别关键词（命中十大持有人名称即视为国家队）
+#   —— 中央汇金 / 汇金资管 / 社保基金 / 证金公司（中国证券金融）
+# ------------------------------------------------------------------
+NT_KEYWORDS = [
+    "中央汇金", "汇金资管", "汇金资产管理", "汇金投资",
+    "社保基金", "全国社保", "社会保障基金", "基本养老", "养老保险基金",
+    "证金", "中国证券金融",
+]
+
+# 机构归一化：把五花八门的持有人名称归到大类，便于跨 ETF/行业汇总
+NT_GROUPS = [
+    ("中央汇金", ["中央汇金投资", "汇金投资"]),
+    ("汇金资管", ["汇金资产管理", "汇金资管"]),
+    ("证金公司", ["证金", "中国证券金融"]),
+    ("社保基金", ["社保基金", "全国社保", "社会保障基金"]),
+    ("养老基金", ["基本养老", "养老保险基金"]),
+]
+
+
+def normalize_nt_group(name: str) -> str:
+    """把持有人名称归一化到国家队大类；非国家队返回空串。"""
+    for group, kws in NT_GROUPS:
+        if any(kw in name for kw in kws):
+            return group
+    return ""
+
+
+def is_nt_holder(name: str) -> bool:
+    return any(kw in name for kw in NT_KEYWORDS)
+
+
+# ------------------------------------------------------------------
+# 个股口径的国家队关键词/分组（比 ETF 更广：加 梧桐树/国新/国家集成电路 等）
+# ------------------------------------------------------------------
+STOCK_NT_KEYWORDS = NT_KEYWORDS + ["梧桐树", "国新投资", "中国国新", "国家集成电路"]
+
+STOCK_NT_GROUPS = NT_GROUPS + [
+    ("梧桐树", ["梧桐树"]),
+    ("国新投资", ["国新"]),
+    ("产业基金", ["国家集成电路"]),
+]
+
+
+def normalize_nt_group_stock(name: str) -> str:
+    for group, kws in STOCK_NT_GROUPS:
+        if any(kw in name for kw in kws):
+            return group
+    return ""
+
+
+def is_nt_holder_stock(name: str) -> bool:
+    return any(kw in name for kw in STOCK_NT_KEYWORDS)
+
+
+# ------------------------------------------------------------------
+# 采集参数
+# ------------------------------------------------------------------
+REQUEST_TIMEOUT = 20         # 单请求超时（秒）
+SCAN_WORKERS = 12            # 持有人扫描并发线程
+SCAN_DELAY = 0.15            # 每请求随机基准间隔（秒），防封
+PRICE_WORKERS = 6            # 价格采集并发（东财对高并发较敏感，取保守值）
+SHARE_BACKFILL_WORKERS = 8   # 份额历史并发（对上交所温和一些）
+HOLDER_HISTORY_MAX_PERIODS = 0   # 历史报告期上限，0=尽可能全
+MAX_RETRIES = 3
+
+# 收盘价主源(东财)取不到时是否转新浪兜底。东财会按 IP 封禁且一封就是整批取不到，
+# 新浪收盘价与东财逐位一致(均不复权)，故默认开启；若哪天新浪改口径(如变复权)
+# 导致价格跳变，把这里关掉即可退回单源。
+PRICE_FALLBACK_SINA = True
+
+# 单次运行的总时间预算（秒）。数据源半死不活时(每请求 20s 超时 × 重试 × 上千请求)
+# 总耗时会失控，撞上 CI 的 job 硬超时被杀 → 步骤失败、状态也来不及落盘。
+# 超预算的采集阶段带 warning 提前收工，已取到的数据照常写盘，下次运行幂等补齐。
+# 0 或负数 = 不限时（本地手动跑、init.py --deep-history 等场景）。
+# GitHub Actions 里由 workflow 用环境变量显式指定，与 timeout-minutes 配套。
+RUN_BUDGET_SEC = int(os.environ.get("RUN_BUDGET_SEC", 18 * 60))
+
+# 初始化默认起始日（init.py 可用 --start 覆盖）。份额与收盘价都从此日回补。
+DEFAULT_START_DATE = "2016-01-01"
+
+UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+      "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
+
+# ------------------------------------------------------------------
+# 数据源 URL（均为境外可达的 HTTPS 接口，适配 GitHub Actions）
+# ------------------------------------------------------------------
+SSE_SHARE_URL = (
+    "https://query.sse.com.cn/commonQuery.do?isPagination=true"
+    "&pageHelp.pageSize=10000&pageHelp.pageNo=1&pageHelp.beginPage=1"
+    "&pageHelp.cacheSize=1&pageHelp.endPage=1"
+    "&sqlId=COMMON_SSE_ZQPZ_ETFZL_XXPL_ETFGM_SEARCH_L&STAT_DATE={date}"
+)
+SZSE_LIST_URL = "https://www.szse.cn/api/report/ShowReport/data"
+SINA_HOLDER_PAGE = "https://stock.finance.sina.com.cn/fundInfo/view/FundInfo_JJCYR.php?symbol={code}"
+SINA_HOLDER_API = "https://stock.finance.sina.com.cn/fundInfo/api/openapi.php/CaihuiFundInfoService.getFundHolder"
+SINA_KLINE_URL = (
+    "https://quotes.sina.cn/cn/api/jsonp_v2.php/var%20_data=/CN_MarketDataService.getKLineData"
+    "?symbol={prefix}{code}&scale=240&ma=no&datalen={datalen}"
+)

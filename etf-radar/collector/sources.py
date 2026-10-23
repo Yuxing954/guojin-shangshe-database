@@ -1,0 +1,643 @@
+# -*- coding: utf-8 -*-
+"""
+数据源抓取（纯 requests + 正则 + json，无 bs4/pandas 依赖）
+
+覆盖：
+  - 上交所 ETF 份额（含名称）           SSE commonQuery
+  - 深交所 ETF 列表（含拟合指数、规模）  SZSE ShowReport
+  - 新浪财经 十大持有人 + 报告期列表     Sina CaihuiFundInfoService
+  - 新浪财经 日 K 线（价格/成交量）      Sina getKLineData
+  - 东方财富 日 K（收盘价全历史，主源）  EM push2his
+
+收盘价统一走 fetch_close_series()：东财为主源，取不到时转新浪兜底（两者收盘价
+口径一致，均不复权）。东财会按 IP 封禁，单源不够用。
+"""
+import re
+import json
+import time
+import logging
+import subprocess
+from datetime import datetime, timedelta, timezone
+
+_CN_TZ = timezone(timedelta(hours=8))   # 所有日期按北京时间(UTC+8)确定
+
+import requests
+import urllib3
+
+from config import (
+    SSE_SHARE_URL, SZSE_LIST_URL, SINA_HOLDER_PAGE, SINA_HOLDER_API,
+    SINA_KLINE_URL, UA, REQUEST_TIMEOUT, MAX_RETRIES, PRICE_FALLBACK_SINA,
+)
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+log = logging.getLogger("sources")
+
+_SSE_HEADERS = {"Referer": "https://www.sse.com.cn/", "User-Agent": UA}
+_SZSE_HEADERS = {
+    "User-Agent": UA,
+    "Referer": "https://www.szse.cn/market/product/list/etfList/index.html",
+    "Accept": "application/json, text/javascript, */*; q=0.01",
+}
+_SINA_HEADERS = {"User-Agent": UA, "Referer": "https://finance.sina.com.cn/"}
+
+
+def exchange_prefix(code: str) -> str:
+    """沪 sh / 深 sz 前缀判断。"""
+    return "sz" if code.startswith(("15", "16")) else "sh"
+
+
+# ==================================================================
+# 上交所份额
+# ==================================================================
+_SSE_SESSION = None
+
+
+def _sse_session():
+    """上交所对境外/无 cookie 请求会返回空体(反爬)。先访问主站拿 cookie 再查询，复用会话。"""
+    global _SSE_SESSION
+    if _SSE_SESSION is None:
+        s = requests.Session()
+        s.headers.update(_SSE_HEADERS)
+        try:
+            s.get("https://www.sse.com.cn/", timeout=REQUEST_TIMEOUT, verify=False)
+        except Exception:  # noqa
+            pass
+        _SSE_SESSION = s
+    return _SSE_SESSION
+
+
+def _sse_get_json(url: str):
+    """带 cookie 会话 + 重试 + curl(带 cookie) 兜底的上交所 GET；空体视为失败并重试。"""
+    global _SSE_SESSION
+    sess = _sse_session()
+    last = None
+    for attempt in range(1, MAX_RETRIES + 2):
+        try:
+            r = sess.get(url, timeout=REQUEST_TIMEOUT, verify=False)
+            if r.text.strip():
+                return r.json()
+            last = "空响应体"
+        except Exception as e:  # noqa
+            last = e
+        if attempt == 2:  # 连续失败 → 重置会话(重新拿 cookie)
+            _SSE_SESSION = None
+            sess = _sse_session()
+        time.sleep(1.2 * attempt)
+    # curl 兜底(带上已拿到的 cookie)
+    try:
+        ck = "; ".join(f"{k}={v}" for k, v in sess.cookies.get_dict().items())
+        cmd = ["curl", "-s", "--max-time", str(REQUEST_TIMEOUT + 10),
+               "-H", f"User-Agent: {UA}", "-H", "Referer: https://www.sse.com.cn/"]
+        if ck:
+            cmd += ["-H", f"Cookie: {ck}"]
+        cmd.append(url)
+        out = subprocess.run(cmd, capture_output=True, timeout=REQUEST_TIMEOUT + 15)
+        if out.returncode == 0 and out.stdout.strip():
+            return json.loads(out.stdout.decode("utf-8", errors="replace"))
+    except Exception as e:  # noqa
+        last = e
+    log.warning("上交所请求失败（含 curl+cookie 兜底）：%s | %s", url[:80], last)
+    return {}
+
+
+def fetch_sse_shares(date_str: str) -> dict:
+    """
+    抓取某日全部上交所 ETF 份额。
+    date_str: 'YYYY-MM-DD'
+    返回 {code: {"name": str, "share": 份额(份)}}
+    """
+    url = SSE_SHARE_URL.format(date=date_str)
+    rows = _sse_get_json(url)
+    out = {}
+    for item in (rows.get("result", []) if isinstance(rows, dict) else []):
+        code = str(item.get("SEC_CODE", "")).strip()
+        name = str(item.get("SEC_NAME", "")).strip()
+        try:
+            share = float(item.get("TOT_VOL", 0)) * 10000  # 万份 -> 份
+        except (TypeError, ValueError):
+            share = 0.0
+        if code:
+            out[code] = {"name": name, "share": share}
+    return out
+
+
+def fetch_sse_shares_latest(max_lookback: int = 12):
+    """从今天往回找最近一个有数据的交易日。返回 (date_str, {code:{...}})。"""
+    for i in range(1, max_lookback + 1):
+        d = datetime.now(_CN_TZ).date() - timedelta(days=i)
+        ds = d.strftime("%Y-%m-%d")
+        data = fetch_sse_shares(ds)
+        if data:
+            log.info("上交所份额：最新交易日 %s，共 %d 只 ETF", ds, len(data))
+            return ds, data
+        log.info("上交所份额：%s 无数据（非交易日？）", ds)
+    return None, {}
+
+
+# ==================================================================
+# 深交所列表（含拟合指数、规模）
+# ==================================================================
+_RE_U = re.compile(r"<u>(.*?)</u>")
+
+
+_SZSE_SESSION = None
+_SZSE_RETRIES = 5
+
+
+def _szse_session():
+    """深交所对境外/非浏览器 IP 有反爬(偶发 Connection reset)。先访问列表页拿 cookie，
+    复用同一 Session，显著降低被重置概率。"""
+    global _SZSE_SESSION
+    if _SZSE_SESSION is None:
+        s = requests.Session()
+        s.headers.update(_SZSE_HEADERS)
+        try:
+            s.get("https://www.szse.cn/market/product/list/etfList/index.html",
+                  timeout=REQUEST_TIMEOUT)
+        except Exception:  # noqa
+            pass
+        _SZSE_SESSION = s
+    return _SZSE_SESSION
+
+
+def _szse_get_json(url, params, tag):
+    """带重试的深交所 GET(用会话 cookie)。多次失败返回 None(而非直接放弃整个流程)。"""
+    sess = _szse_session()
+    for attempt in range(1, _SZSE_RETRIES + 1):
+        try:
+            r = sess.get(url, params=params, timeout=REQUEST_TIMEOUT)
+            return r.json()
+        except Exception as e:  # noqa
+            if attempt == _SZSE_RETRIES:
+                log.warning("深交所 %s 第 %d 次仍失败：%s", tag, attempt, e)
+            else:
+                time.sleep(0.8 * attempt)
+            # 连续失败时重置会话(重新拿 cookie)
+            if attempt == 2:
+                global _SZSE_SESSION
+                _SZSE_SESSION = None
+                sess = _szse_session()
+    return None
+
+
+def fetch_szse_list() -> dict:
+    """
+    抓取深交所全部 ETF。返回 {code: {"name","index_name","share"}}。
+    share 由「当前规模」(万份) 估算 -> 份；深交所无逐日份额接口，仅取当前规模。
+    带会话 cookie + 重试；深交所整体失败时回退东方财富(EM)兜底。
+    """
+    out = {}
+    page = 1
+    total_pages = None
+    while True:
+        params = {"SHOWTYPE": "JSON", "CATALOGID": "1945", "TABKEY": "tab1",
+                  "PAGENO": str(page), "random": "0.123"}
+        blocks = _szse_get_json(SZSE_LIST_URL, params, "列表第 %d 页" % page)
+        if blocks is None:
+            # 本页多次重试仍失败：跳过该页继续(而非整体放弃)
+            if page >= (total_pages or 1):
+                break
+            page += 1
+            continue
+        if not blocks:
+            break
+        blk = blocks[0]
+        meta = blk.get("metadata", {})
+        if total_pages is None:
+            total_pages = int(meta.get("pagecount", 1))
+        for row in blk.get("data", []):
+            code_m = _RE_U.search(row.get("sys_key", ""))
+            name_m = _RE_U.search(row.get("kzjcurl", ""))
+            if not code_m:
+                continue
+            code = code_m.group(1).strip()
+            name = name_m.group(1).strip() if name_m else ""
+            # nhzs 形如 "399266 创新能源"
+            nhzs = str(row.get("nhzs", "")).strip()
+            index_name = nhzs.split(None, 1)[1] if " " in nhzs else nhzs
+            try:
+                share = float(str(row.get("dqgm", "0")).replace(",", "")) * 10000
+            except ValueError:
+                share = 0.0
+            out[code] = {"name": name, "index_name": index_name, "share": share}
+        log.info("深交所列表：第 %d/%s 页，累计 %d 只", page, total_pages, len(out))
+        if page >= (total_pages or 1):
+            break
+        page += 1
+        time.sleep(0.1)
+    if not out:
+        # 深交所整体不可达(境外 IP 反爬) → 东方财富兜底，保证深市 ETF 不缺失
+        log.warning("深交所列表为空，回退东方财富(EM)兜底深市 ETF")
+        out = _fetch_szse_list_em()
+    return out
+
+
+# EM 兜底：全市场 ETF 里按代码(深市 ETF/LOF 以 15/16/18 开头)筛深市。
+# share 由 规模(f20,元) / 净值(f2) 估算 → 份；净值按 f1 小数位还原。
+_EM_CLIST_URL = "https://push2.eastmoney.com/api/qt/clist/get"
+_EM_CLIST_HEADERS = {"User-Agent": UA, "Referer": "https://quote.eastmoney.com/"}
+_EM_ETF_FS = "b:MK0021,b:MK0022,b:MK0024,b:MK0827"
+
+
+def _fetch_szse_list_em() -> dict:
+    out = {}
+    for pn in range(1, 20):
+        j = None
+        for attempt in range(1, MAX_RETRIES + 1):
+            try:
+                r = requests.get(_EM_CLIST_URL, headers=_EM_CLIST_HEADERS, timeout=REQUEST_TIMEOUT,
+                                 params={"pn": str(pn), "pz": "100", "po": "1", "fid": "f12",
+                                         "fs": _EM_ETF_FS, "fields": "f1,f2,f12,f13,f14,f20"})
+                j = r.json()
+                break
+            except Exception:  # noqa
+                time.sleep(0.8 * attempt)
+        diff = ((j or {}).get("data") or {}).get("diff") or []
+        if isinstance(diff, dict):
+            diff = list(diff.values())
+        if not diff:
+            break
+        for x in diff:
+            code = str(x.get("f12") or "").strip()
+            if not code.startswith(("15", "16", "18")):  # 深市 ETF/LOF
+                continue
+            f2, f1, f20 = x.get("f2"), x.get("f1"), x.get("f20")
+            share = 0.0
+            try:
+                nav = float(f2) / (10 ** int(f1 if f1 is not None else 3))  # 还原净值
+                if nav > 0 and f20:
+                    share = float(f20) / nav
+            except (TypeError, ValueError, ZeroDivisionError):
+                share = 0.0
+            out[code] = {"name": (x.get("f14") or "").strip(), "index_name": "", "share": share}
+        time.sleep(0.15)
+    log.info("EM 兜底深市 ETF：%d 只", len(out))
+    return out
+
+
+# ==================================================================
+# 深交所 ETF 历史逐日份额（fund.szse.cn fund_jjgm，按日期区间；单窗口≤~110 交易日）
+# ==================================================================
+_SZSE_FUND_URL = "https://fund.szse.cn/api/report/ShowReport/data"
+_SZSE_FUND_HEADERS = {"User-Agent": UA, "Referer": "https://fund.szse.cn/"}
+
+
+def fetch_szse_shares_history(code, start, end):
+    """
+    深市 ETF 在 [start, end] 区间的历史逐日份额。start/end='YYYY-MM-DD'。
+    返回 [[date, share(份)]...]。单个区间上限约 110 个交易日，调用方需分窗。
+    current_size 单位万份 → ×10000 转份。
+    """
+    out = []
+    page = 1
+    total_pages = None
+    while True:
+        params = {"SHOWTYPE": "JSON", "CATALOGID": "fund_jjgm", "TABKEY": "tab1",
+                  "txtDm": code, "txtStart": start, "txtEnd": end, "PAGENO": str(page)}
+        blocks = None
+        for attempt in range(1, MAX_RETRIES + 1):  # 偶发 reset 重试，勿一次异常即放弃
+            try:
+                r = requests.get(_SZSE_FUND_URL, params=params,
+                                 headers=_SZSE_FUND_HEADERS, timeout=REQUEST_TIMEOUT)
+                blocks = r.json()
+                break
+            except Exception:  # noqa
+                time.sleep(0.6 * attempt)
+        if not blocks:
+            break
+        blk = blocks[0]
+        if total_pages is None:
+            total_pages = int(blk.get("metadata", {}).get("pagecount", 1) or 1)
+        for row in blk.get("data", []):
+            d = row.get("size_date")
+            cs = row.get("current_size")
+            if d and cs:
+                try:
+                    out.append([d, float(str(cs).replace(",", "")) * 10000])
+                except ValueError:
+                    continue
+        if page >= (total_pages or 1):
+            break
+        page += 1
+        time.sleep(0.1)
+    return out
+
+
+# ==================================================================
+# 个股：东方财富 datacenter —— 十大流通股东（按报告期批量）+ 所属行业
+# ==================================================================
+_EM_DC_URL = "https://datacenter.eastmoney.com/securities/api/data/get"
+_EM_DC_HEADERS = {"User-Agent": UA, "Referer": "https://data.eastmoney.com/"}
+
+
+def stock_secucode(code: str) -> str:
+    """600xxx→600xxx.SH；0/3xxxxx→xxxxxx.SZ。"""
+    return code + (".SH" if code.startswith("6") else ".SZ")
+
+
+def fetch_stock_holders_period(end_date: str, is_nt):
+    """
+    抓某报告期(end_date='YYYY-MM-DD')全市场十大流通股东，筛出国家队(is_nt 谓词)。
+    稳定排序 SECURITY_CODE 分页(ps=500)、按(代码,股东)去重。市值 HOLDER_MARKET_CAP 接口直给(元)。
+    返回 [{code,name,holder,num(股),ratio(占流通%),mv(市值元),change,ratio_chg,end_date}...]。
+    """
+    seen = set()
+    out = []
+    p = 1
+    pages = None
+    while True:
+        params = {
+            "type": "RPT_F10_EH_FREEHOLDERS",
+            "sty": "SECURITY_CODE,SECURITY_NAME_ABBR,HOLDER_NAME,HOLD_NUM,HOLD_RATIO,HOLDER_MARKET_CAP,HOLD_NUM_CHANGE,HOLD_RATIO_CHANGE,END_DATE",
+            "filter": f"(END_DATE='{end_date}')", "p": str(p), "ps": "500",
+            "st": "SECURITY_CODE", "sr": "1",
+            "source": "SELECT_SECU_DATA", "client": "WEB",
+        }
+        data = None
+        for attempt in range(1, MAX_RETRIES + 1):
+            try:
+                r = requests.get(_EM_DC_URL, params=params, headers=_EM_DC_HEADERS,
+                                 timeout=REQUEST_TIMEOUT)
+                j = r.json()
+                res = j.get("result") or {}
+                data = res.get("data") or []
+                if pages is None:
+                    pages = res.get("pages") or 1
+                break
+            except Exception:  # noqa
+                time.sleep(1.0 * attempt)
+        if data is None:
+            log.warning("个股股东第 %d 页(%s)多次失败，中止该期", p, end_date)
+            break
+        for x in data:
+            code = str(x.get("SECURITY_CODE", "")).strip()
+            holder = (x.get("HOLDER_NAME") or "").strip()
+            key = (code, holder)
+            if key in seen:
+                continue
+            seen.add(key)
+            if not is_nt(holder):
+                continue
+            def _f(v):
+                try:
+                    return float(v)
+                except (TypeError, ValueError):
+                    return 0.0
+            out.append({
+                "code": code, "name": (x.get("SECURITY_NAME_ABBR") or "").strip(),
+                "holder": holder, "num": _f(x.get("HOLD_NUM")),
+                "ratio": _f(x.get("HOLD_RATIO")),
+                "mv": _f(x.get("HOLDER_MARKET_CAP")),
+                "change": x.get("HOLD_NUM_CHANGE"),
+                "ratio_chg": x.get("HOLD_RATIO_CHANGE"),
+                "end_date": str(x.get("END_DATE", ""))[:10],
+            })
+        if p >= (pages or 1):
+            break
+        p += 1
+    return out
+
+
+def fetch_stock_industry(code: str):
+    """
+    个股所属行业(东财 BOARD_TYPE='行业' 层级)。返回 (primary, industries[])：
+    primary=一级行业(BOARD_LEVEL 最小)，industries=全部行业层级名(按级别排序)。
+    取不到返回 (None, [])。
+    """
+    params = {
+        "type": "RPT_F10_CORETHEME_BOARDTYPE",
+        "sty": "BOARD_NAME,BOARD_TYPE,BOARD_LEVEL,BOARD_RANK",
+        "filter": f'(SECUCODE="{stock_secucode(code)}")',
+        "p": "1", "ps": "50", "source": "HSF10", "client": "PC",
+    }
+    for attempt in range(1, MAX_RETRIES + 1):
+        try:
+            r = requests.get(_EM_DC_URL, params=params, headers=_EM_DC_HEADERS,
+                             timeout=REQUEST_TIMEOUT)
+            rows = ((r.json() or {}).get("result") or {}).get("data") or []
+            break
+        except Exception:  # noqa
+            time.sleep(0.8 * attempt)
+            rows = None
+    if not rows:
+        return None, []
+    ind = [(int(x.get("BOARD_LEVEL") or 9), (x.get("BOARD_NAME") or "").strip())
+           for x in rows if x.get("BOARD_TYPE") == "行业" and x.get("BOARD_NAME")]
+    ind.sort()
+    industries = [n for _, n in ind]
+    primary = industries[0] if industries else None
+    return primary, industries
+
+
+# ==================================================================
+# 新浪 十大持有人
+# ==================================================================
+_RE_OPTION = re.compile(r'<option\s+value="([0-9]{4}-[0-9]{2}-[0-9]{2})"')
+
+
+def fetch_report_dates(code: str):
+    """返回可用报告期列表（新->旧），如 ['2025-12-31','2025-06-30',...]。"""
+    url = SINA_HOLDER_PAGE.format(code=code)
+    try:
+        r = requests.get(url, headers=_SINA_HEADERS, timeout=REQUEST_TIMEOUT)
+        r.encoding = "gbk"
+        return _RE_OPTION.findall(r.text)
+    except Exception:  # noqa
+        return []
+
+
+def fetch_holders(code: str, report_date: str):
+    """
+    返回某报告期十大持有人：[{"rank","name","amount"(份),"ratio"(%)}...]
+    """
+    params = {"symbol": code, "date": report_date}
+    headers = {**_SINA_HEADERS,
+               "Referer": SINA_HOLDER_PAGE.format(code=code)}
+    try:
+        r = requests.get(SINA_HOLDER_API, params=params, headers=headers,
+                         timeout=REQUEST_TIMEOUT)
+        raw = r.json().get("result", {}).get("data", [])
+    except Exception:  # noqa
+        return []
+    holders = []
+    for i, h in enumerate(raw, 1):
+        name = str(h.get("cyrmc", "")).strip()
+        if not name:
+            continue
+        try:
+            amount = float(h.get("cyfe", 0) or 0)
+        except (TypeError, ValueError):
+            amount = 0.0
+        try:
+            ratio = float(h.get("zfeb", 0) or 0)
+        except (TypeError, ValueError):
+            ratio = 0.0
+        holders.append({"rank": i, "name": name, "amount": amount, "ratio": ratio})
+    return holders
+
+
+# ==================================================================
+# 新浪 日 K 线
+# ==================================================================
+_RE_KDATA = re.compile(r"var\s+_data\s*=\s*\((\[.*?\])\)", re.DOTALL)
+
+
+def fetch_kline(code: str, datalen: int = 120, exchange: str = None):
+    """返回 [{"day","open","high","low","close","volume"}...]（旧->新）。
+    exchange 传 'sh'/'sz' 时按它取前缀，否则按代码推断。"""
+    prefix = exchange if exchange in ("sh", "sz") else exchange_prefix(code)
+    url = SINA_KLINE_URL.format(prefix=prefix, code=code, datalen=datalen)
+    try:
+        r = requests.get(url, headers=_SINA_HEADERS, timeout=REQUEST_TIMEOUT)
+        m = _RE_KDATA.search(r.text)
+        if not m:
+            return []
+        return json.loads(m.group(1))
+    except Exception:  # noqa
+        return []
+
+
+# ==================================================================
+# 东方财富 日 K（全历史，收盘价与份额可对齐；境外可达更稳）
+# ==================================================================
+_EM_KLINE_URL = "https://push2his.eastmoney.com/api/qt/stock/kline/get"
+
+
+_EM_HEADERS = {"User-Agent": UA, "Referer": "https://quote.eastmoney.com/"}
+
+
+def fetch_kline_em(code: str, exchange: str, beg: str = "0"):
+    """
+    东方财富全历史日 K。返回 [[date, close]...]（旧->新）。
+    beg: 起始日 'YYYYMMDD' 或 '0'（全历史）。exchange: 'sh'/'sz'。
+
+    东财在密集请求下会断连/返回空 → 带重试 + 退避;区分“接口抖动”与“确实无数据”：
+    仅当拿到 rc==0 且 klines 明确为空时才判定无数据（不再重试）。
+    """
+    secid = ("1." if exchange == "sh" else "0.") + code
+    params = {
+        "secid": secid, "fields1": "f1,f2,f3",
+        "fields2": "f51,f53",             # f51=日期, f53=收盘价（不复权）
+        "klt": "101", "fqt": "0", "beg": beg, "end": "20500101", "lmt": "1000000",
+    }
+    def _parse(j):
+        data = (j or {}).get("data")
+        if data is None:
+            return None                                # 抖动/限流 → 需重试
+        out = []
+        for row in data.get("klines", []) or []:
+            parts = row.split(",")
+            if len(parts) >= 2:
+                try:
+                    out.append([parts[0], float(parts[1])])
+                except ValueError:
+                    continue
+        return out                                     # 明确结果（含空列表）
+
+    for attempt in range(1, MAX_RETRIES + 1):
+        # requests 优先
+        try:
+            r = requests.get(_EM_KLINE_URL, params=params,
+                             headers=_EM_HEADERS, timeout=REQUEST_TIMEOUT)
+            res = _parse(r.json())
+            if res is not None:
+                return res
+        except Exception:  # noqa 断连/超时/JSON 解析失败
+            pass
+        # curl 兜底（常能绕过 requests 被重置的连接）
+        try:
+            qs = "&".join(f"{k}={v}" for k, v in params.items())
+            cmd = ["curl", "-s", "--max-time", str(REQUEST_TIMEOUT),
+                   "-H", f"User-Agent: {UA}", "-H", "Referer: https://quote.eastmoney.com/",
+                   f"{_EM_KLINE_URL}?{qs}"]
+            out = subprocess.run(cmd, capture_output=True, timeout=REQUEST_TIMEOUT + 5)
+            if out.returncode == 0 and out.stdout:
+                res = _parse(json.loads(out.stdout.decode("utf-8", errors="replace")))
+                if res is not None:
+                    return res
+        except Exception:  # noqa
+            pass
+        time.sleep(1.2 * attempt + 0.3)
+    log.warning("东财 K 线多次重试(含 curl)仍失败：%s", secid)
+    return []
+
+
+# ==================================================================
+# 收盘价：东财为主源，新浪兜底
+# ------------------------------------------------------------------
+# 东财(push2his)会按 IP 封禁——密集请求后变成 TLS 握手完直接断连(http=000)，
+# 且一封就是整段时间、整批 ETF 全取不到（2026-09-10 GitHub runner 与本机同时中招，
+# 那天 CI 的 price_ok=0/52）。新浪 K 线的收盘价与东财逐位一致（都是不复权，实测
+# 10 只 × 3 天全同），可作等价兜底；唯一限制是单次最多约千个交易日，补不了更早
+# 的历史（够日更用；全量 init 时只能给近千日，但写盘是按日期合并的，历史不会丢）。
+# ==================================================================
+_SINA_KLINE_MAX = 1023            # 新浪 datalen 上限（实测 1000 可用）
+
+
+def fetch_kline_sina_closes(code: str, exchange: str, beg: str = "0"):
+    """新浪日 K → [[date, close]...]（旧->新），东财收盘价的兜底源。"""
+    need = _SINA_KLINE_MAX
+    if beg and beg != "0":
+        try:
+            days = (datetime.now(_CN_TZ).date()
+                    - datetime.strptime(beg, "%Y%m%d").date()).days
+            # 自然日 → 交易日约 5/7，宽放一点，最少取 30 个
+            need = min(_SINA_KLINE_MAX, max(30, int(days * 0.75) + 10))
+        except ValueError:
+            pass
+    rows = fetch_kline(code, datalen=need, exchange=exchange)
+    out = []
+    for r in rows:
+        day = str(r.get("day", ""))[:10]
+        try:
+            close = float(r["close"])
+        except (KeyError, TypeError, ValueError):
+            continue
+        if day:
+            out.append([day, close])
+    out.sort(key=lambda x: x[0])
+    return out
+
+
+def fetch_close_series(code: str, exchange: str, beg: str = "0"):
+    """收盘价序列，返回 (series, src)：src 为 'em' / 'sina' / ''(两源都没拿到)。
+
+    东财明确返回空列表(rc 正常但无 K 线，如新上市/已摘牌)与"取不到"无法区分，
+    故只要东财给不出数据就试一次新浪；新浪也空才算真没有。
+    """
+    series = fetch_kline_em(code, exchange, beg=beg)
+    if series or not PRICE_FALLBACK_SINA:
+        return (series, "em") if series else ([], "")
+    alt = fetch_kline_sina_closes(code, exchange, beg=beg)
+    if alt:
+        log.info("收盘价转新浪兜底：%s 取到 %d 点（%s→%s）",
+                 code, len(alt), alt[0][0], alt[-1][0])
+        return alt, "sina"
+    return [], ""
+
+
+# ==================================================================
+# 底层：requests 优先，失败回退 curl（个别接口在某些网络下 requests 会被重置）
+# ==================================================================
+def _get_json_with_curl_fallback(url: str, headers: dict):
+    last_err = None
+    for attempt in range(1, MAX_RETRIES + 1):
+        try:
+            r = requests.get(url, headers=headers, timeout=REQUEST_TIMEOUT, verify=False)
+            return r.json()
+        except Exception as e:  # noqa
+            last_err = e
+            time.sleep(1.5 * attempt)
+    # curl 兜底
+    try:
+        cmd = ["curl", "-s", "--max-time", str(REQUEST_TIMEOUT + 10)]
+        for k, v in headers.items():
+            cmd += ["-H", f"{k}: {v}"]
+        cmd.append(url)
+        out = subprocess.run(cmd, capture_output=True, timeout=REQUEST_TIMEOUT + 15)
+        if out.returncode == 0 and out.stdout:
+            return json.loads(out.stdout.decode("utf-8", errors="replace"))
+    except Exception as e:  # noqa
+        last_err = e
+    log.warning("请求失败（含 curl 兜底）：%s | %s", url[:80], last_err)
+    return {}

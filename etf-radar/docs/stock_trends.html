@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>个股走势 · 行业国家队看板</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐰</text></svg>">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/vendor/echarts.min.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <h1>🇨🇳 国家队持仓看板 · 个股</h1>
+    <p class="sub">按行业追踪 <b>中央汇金 · 社保 · 证金 · 汇金资管 · 梧桐树 · 国新 · 大基金</b> 直接持有的个股</p>
+    <nav class="nav"><a href="index.html" class="home">🏠 总览</a><a href="logs.html">日志</a><span class="seg-nav"><a href="trends.html">ETF</a><a href="stock_trends.html" class="on">个股</a></span><span class="sub-nav"><a href="stock.html">总览</a><a href="stock_trends.html" class="on">走势</a><a href="stock_detail.html">详情</a></span></nav>
+  </div>
+</header>
+<main class="wrap">
+  <section class="card">
+    <div class="chart-toolbar">
+      <div class="tb-left">
+        <div class="seg" id="metric-seg">
+          <button data-m="mv" class="active">国家队持股市值</button>
+          <button data-m="ratio">平均持股占比</button>
+        </div>
+      </div>
+    </div>
+    <p class="muted" style="margin:0 2px 8px">各行业国家队直接持股的季度序列（十大流通股东披露，点位准确：每期按当期实际持有的个股聚合）。</p>
+    <div class="line-tools">
+      <button id="btn-all" class="mini">全选</button>
+      <button id="btn-none" class="mini">全不选</button>
+      <span class="hint">点击图例可单独显示/隐藏某行业</span>
+    </div>
+    <div id="chart" class="chart" style="height:480px"></div>
+  </section>
+  <section class="card">
+    <div class="table-head"><h2>数据表格</h2><span class="hint" id="table-hint"></span></div>
+    <div class="table-scroll"><table id="trend-table"><thead></thead><tbody></tbody></table></div>
+  </section>
+  <footer class="disclaimer">
+    <p class="muted">季度口径，市值为报告期持股市值(东财 HOLDER_MARKET_CAP)。数据源：东方财富。仅供研究参考。</p>
+  </footer>
+</main>
+<script src="js/util.js"></script>
+<script src="js/stock_trends.js"></script>
+</body>
+</html>
