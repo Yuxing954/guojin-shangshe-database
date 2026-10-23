@@ -80,8 +80,35 @@ test('US CPI detail plots use calendar-matched YoY while raw data and other indi
 test('macro annotations adapt to available width, retain the latest finite point and preserve all observations',()=>{
   const points=Array.from({length:300},(_,i)=>({x:60+i*3,y:i%45,label:'1.23万亿'})),before=JSON.stringify(points);
   const narrow=D.annotationIndices(points,{width:300,left:48,right:20}),wide=D.annotationIndices(points,{width:1000,left:58,right:20});
-  assert(narrow.includes(299));assert(wide.includes(299));assert(wide.includes(0));assert(wide.length<=12);assert(wide.length>narrow.length);
+  assert(narrow.includes(299));assert(wide.includes(299));assert(wide.length<=12);assert(wide.length>narrow.length);
   for(let i=1;i<wide.length;i++)assert(points[wide[i]].x-points[wide[i-1]].x>=84);
   assert.equal(JSON.stringify(points),before);assert.deepEqual(D.annotationIndices([],{}),[]);
   assert.deepEqual(D.annotationIndices([{x:1,y:0,label:'0'},{x:2,y:NaN,label:'—'}],{width:240}),[0]);
+});
+
+test('annotation density follows uniform time targets rather than extreme values or a fixed label cap',()=>{
+  for(const width of [390,768,1024,1440,1920]){
+    for(const length of [12,60,360,2600]){
+      const left=58,right=20,span=width-left-right;
+      const points=Array.from({length},(_,i)=>({x:left+i*span/(length-1),y:i===1?-10000:i===length-2?10000:i%7,label:'3.74'}));
+      const selected=D.annotationIndices(points,{width,left,right}),xs=selected.map(i=>points[i].x),gaps=xs.slice(1).map((x,i)=>x-xs[i]);
+      assert.equal(selected.at(-1),length-1);assert.ok(xs[0]-left<Math.max(...gaps)+1e-7);
+      assert.ok(Math.min(...gaps)>=60-1e-7);
+      // Whole native periods keep adjacent gaps equal, even for short monthly series.
+      assert.ok(Math.max(...gaps)-Math.min(...gaps)<=1e-7,JSON.stringify({width,length,gaps}));
+      assert.deepEqual(D.annotationIndices(points.map(p=>({...p,y:0})),{width,left,right}),selected);
+      if(length>=60)assert.ok(Math.abs(gaps[0]-104)<24,JSON.stringify({width,length,selected}));
+      if(width===1920&&length>=60)assert.ok(selected.length>12);
+    }
+  }
+});
+test('annotations retain native short series and missing intervals without inventing dates or mutating points',()=>{
+  const short=Array.from({length:24},(_,i)=>({x:58+i*80,y:0,label:'3.74'}));
+  assert.equal(D.annotationIndices(short,{width:1920,left:58,right:20}).length,24);
+  const points=Array.from({length:100},(_,i)=>({x:58+i*10,y:i,label:'1.23万亿'})).filter((p,i)=>i<25||i>70),before=JSON.stringify(points);
+  const selected=D.annotationIndices(points,{width:1100,left:58,right:20});
+  assert.equal(selected.at(-1),points.length-1);
+  assert.ok(selected.every((i,k)=>!k||points[i].x-points[selected[k-1]].x>=84));
+  assert.equal(JSON.stringify(points),before);
+  assert.deepEqual(D.annotationIndices([{x:50,y:0,label:'0'},{x:50,y:1,label:'1'}],{width:240}),[1]);
 });

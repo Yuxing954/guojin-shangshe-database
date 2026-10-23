@@ -71,21 +71,28 @@
   function detailRows(spec,data,years,now){
     return M.chartRows(spec,data,detailDefinition(spec).mode,years,now);
   }
-  function annotationIndices(points,{width=900,left=0,right=0,maxLabels=12}={}){
-    const valid=points.map((p,index)=>({...p,index})).filter(p=>Number.isFinite(p.x)&&Number.isFinite(p.y)&&String(p.label??'')!=='');
+  function annotationIndices(points,{width=900,left=0,right=0,maxLabels=Infinity}={}){
+    const valid=points.map((p,index)=>({...p,index})).filter(p=>Number.isFinite(p.x)&&Number.isFinite(p.y)&&String(p.label??'')!=='').sort((a,b)=>a.x-b.x);
     if(!valid.length)return [];
+    if(valid.length===1||maxLabels<=1)return [valid.at(-1).index];
     const textWidth=p=>Array.from(String(p.label)).reduce((n,c)=>n+(/[^\x00-\x7F]/.test(c)?13:7),0)+12;
-    const widest=Math.max(...valid.map(textWidth)),plot=Math.max(1,width-left-right);
-    const budget=Math.min(maxLabels,Math.max(1,Math.floor(plot/(widest+18)))),chosen=[];
-    const offer=p=>{if(!p||chosen.length>=budget||chosen.some(q=>q.index===p.index||Math.abs(q.x-p.x)<(textWidth(q)+textWidth(p))/2+18))return;chosen.push(p);};
-    // Reserve the latest finite observation; annotations never remove tooltip points.
-    offer(valid.at(-1));offer(valid[0]);
-    offer(valid.reduce((a,b)=>a.y<b.y?a:b));offer(valid.reduce((a,b)=>a.y>b.y?a:b));
-    for(let i=1;i<budget;i++){
-      const target=valid[0].x+(valid.at(-1).x-valid[0].x)*i/budget;
-      offer(valid.reduce((a,b)=>Math.abs(a.x-target)<Math.abs(b.x-target)?a:b));
+    const gap=Math.max(60,Math.max(...valid.map(textWidth))+18),first=valid[0].x,last=valid.at(-1).x,span=last-first;
+    const deltas=valid.slice(1).map((p,i)=>p.x-valid[i].x).filter(d=>d>0).sort((a,b)=>a-b);
+    if(!deltas.length)return [valid.at(-1).index];
+    const cadence=deltas[Math.floor(deltas.length/2)],plot=Math.max(1,Math.min(span,width-left-right));
+    const target=Math.max(104,gap+12)*span/plot,spacing=Math.max(target,span/(maxLabels-1));
+    // Use whole native periods, anchored at the latest observation. This avoids
+    // alternating one-/two-period gaps when a short series nearly fills the plot.
+    const interval=cadence*Math.max(1,Math.round(spacing/cadence),Math.ceil(gap/cadence));
+    const tolerance=Math.max(cadence*.6,interval*.3),chosen=[valid.length-1];
+    let cursor=valid.length-1;
+    for(let x=last-interval;x>=first-cadence*.4&&chosen.length<maxLabels;x-=interval){
+      while(cursor>0&&valid[cursor-1].x>=x)cursor--;
+      const nearby=cursor>0&&Math.abs(valid[cursor-1].x-x)<Math.abs(valid[cursor].x-x)?cursor-1:cursor;
+      if(Math.abs(valid[nearby].x-x)>tolerance||valid[chosen.at(-1)].x-valid[nearby].x<gap)continue;
+      chosen.push(nearby);
     }
-    return chosen.map(p=>p.index).sort((a,b)=>a-b);
+    return chosen.reverse().map(i=>valid[i].index);
   }
   const api={detailDefinition,detailRows,annotationIndices,featured,core,directory,headlineRows,movement,segments,latestCsv,priorPeriod,readout,releases,trends,trendRows};
   if(typeof module==='object'&&module.exports)module.exports=api;else root.MacroDashboardModel=api;
