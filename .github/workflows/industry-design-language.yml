@@ -1,0 +1,30 @@
+name: Industry design language
+on:
+  pull_request:
+    paths: ['*.html', 'scripts/*.css', 'scripts/industry-embed.js', 'tests/industry-design-language.browser.cjs', '.github/workflows/industry-design-language.yml']
+  push:
+    branches: [main]
+    paths: ['*.html', 'scripts/*.css', 'scripts/industry-embed.js', 'tests/industry-design-language.browser.cjs', '.github/workflows/industry-design-language.yml']
+jobs:
+  industry-design-language:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --prefix /tmp/industry-design playwright
+      - run: /tmp/industry-design/node_modules/.bin/playwright install --with-deps chromium
+      - name: Check five industry boards at desktop, tablet and mobile widths
+        run: |
+          python3 -m http.server 18765 >/tmp/industry-design-server.log 2>&1 &
+          node tests/industry-design-language.browser.cjs
+        env:
+          NODE_PATH: /tmp/industry-design/node_modules
+          SITE_SCREENSHOT_DIR: .cache/industry-design
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: industry-design-screenshots
+          path: .cache/industry-design
