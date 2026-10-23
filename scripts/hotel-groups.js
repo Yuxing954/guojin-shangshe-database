@@ -10,7 +10,7 @@
  function paint(){
   $('group-period').value=state.period;
   for(const p of plots){const s=G.weeklyMetrics[p.metric];$(p.prefix+'-metric-name').textContent=s.name;$(p.prefix+'-metric-name').dataset.metric=p.metric;$(p.prefix+'-scope').textContent='全国样本 · 锦江为中国区'+(['adr','heat','price'].includes(p.metric)?' · 入住日期':'');$(p.prefix+'-window').value=state[p.windowKey];}
-  const r=weekly.find(o=>o.period_id===state.period),latest=weekly.find(o=>o.period_id===periods.at(-1));$('period-note').textContent=H.weekLabel(state.period)+(r?' · '+r.start_date+'—'+r.end_date:'');$('asof').textContent='酒店之家 · '+H.weekLabel(periods.at(-1))+(latest?' · 截至 '+latest.end_date:'');$('group-footer').textContent='来源：酒店之家'+(update.importedAt?' · 入库 '+SiteUI.date(update.importedAt):'');
+  const r=weekly.find(o=>o.period_id===state.period),latest=weekly.find(o=>o.period_id===periods.at(-1));$('period-note').textContent=H.weekLabel(state.period)+(r?' · '+r.start_date+'—'+r.end_date:'');SiteUI.asOf($('asof'),latest?.end_date,[periods.at(-1)]);$('group-footer').textContent='来源：酒店之家'+(update.importedAt?' · 入库 '+SiteUI.date(update.importedAt):'');
   paintMatrix();save();draw();
  }
  function draw(){

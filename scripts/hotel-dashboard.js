@@ -416,7 +416,7 @@
     if (META[saved.get('metric')]) state.metric = saved.get('metric');
     if (['combo', 'value', 'change'].includes(saved.get('mode'))) state.mode = saved.get('mode');
     if (periods.has(saved.get('base'))) state.base = saved.get('base');
-    $('asof').innerHTML = '最新数据截至<b>' + esc(latest.end_date) + ' · ' + esc(M.weekLabel(latest.period_id)) + '</b>';
+    SiteUI.asOf($('asof'), latest.end_date, [latest.period_id]);
     $('week-select').innerHTML = option('latest', '最新周 · ' + M.weekLabel(latestWeek) + ' · ' + latest.end_date) + Array.from(periods.values()).reverse().map(function (r) { return option(r.period_id, M.weekLabel(r.period_id) + ' · ' + r.end_date); }).join('');
     $('week-select').value = followLatest ? 'latest' : state.week; $('region-select').innerHTML = regions.map(function (r) { return option(r, r); }).join(''); $('history-start').value = state.window;
     compareOptions(); $('dashboard').hidden = false;

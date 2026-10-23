@@ -26,7 +26,7 @@
   function renderDomestic(){
     renderDomesticPeriods();
     const rows=M.yearRows(data.domestic.holidays,$('domestic-year').value).filter(r=>$('holiday').value==='all'||r.holiday===$('holiday').value),latest=rows.at(-1),daily=$('holiday-basis').value==='daily',tk=daily?'dailyTrips':'trips',sk=daily?'dailySpend':'spend';
-    $('asof').textContent='全国季度至 '+data.domestic.quarters.at(-1).period+' · 假期 '+(latest?.period||'当前筛选无数据');
+    SiteUI.asOf($('asof'),data.domestic.quarters.at(-1).period,['全国国内游','假期 '+(latest?.period||'当前筛选无数据')]);
     kpis('domestic-kpis',latest?[[daily?'日均出游人次':'假期出游人次',latest[tk],daily?'亿人次/日':'亿人次',latest[tk+'YoY'],latest.period+' · '+latest.days+'天'],[daily?'日均出游花费':'假期出游花费',latest[sk],daily?'亿元/日':'亿元',latest[sk+'YoY'],latest.period],['人均出游花费',latest.perTrip,'元',latest.perTripYoY,latest.period],daily?['假期天数',latest.days,'天',latest.comparisonDays?'上年同名假期 '+latest.comparisonDays+'天':'同名假期基期缺失',latest.period]:['日均出游人次',latest.dailyTrips,'亿人次/日',latest.dailyTripsYoY,latest.period]]:[]);
     panelCharts('holiday-charts',[['holiday-trips','出游人次'],['holiday-spend','出游花费'],['holiday-pertrip','人均出游花费']]);
     for(const [id,key,name,unit] of [['holiday-trips',tk,'出游人次',daily?'亿人次/日':'亿人次'],['holiday-spend',sk,'出游花费',daily?'亿元/日':'亿元'],['holiday-pertrip','perTrip','人均出游花费','元']]){chart(id,rows.map(r=>({period:$('domestic-year').value==='all'?r.period:r.holiday,value:r[key],change:r[key+'YoY']})),name,unit);for(const r of rows)record(name,r,r[key],unit,r[key+'YoY'],key==='perTrip'?'每人次花费':daily?'日均测算':'假期总量');}
@@ -48,7 +48,7 @@
   }
   function renderInbound(){
     const rows=M.borderRows(data,$('border-scope').value),r=rows.at(-1);
-    $('asof').textContent=r.period+' · '+scopes[r.scope]+' · 国家移民管理局';
+    SiteUI.asOf($('asof'),r.period,[scopes[r.scope],'国家移民管理局']);
     kpis('inbound-kpis',[["外国人入境 · 单向",r.foreignIn,'万人次',r.foreignInYoY,r.period],['免签入境外国人',r.visaFree,'万人次',r.visaYoY,r.period],['免签占外国人入境',r.visaShare,'%', '官方披露占比',r.period],['外国人出入境 · 双向',r.foreign,'万人次',r.foreignYoY,r.period]]);
     panelCharts('inbound-charts',[['foreign-in-chart','外国人入境与免签入境 · 单向'],['foreign-border-chart','外国人出入境 · 双向及同比'],['border-structure-chart','出入境查验结构 · 双向'],['foreign-share-chart','外国人占全部出入境查验'],['visa-share-chart','免签占外国人入境']]);
     chart('foreign-in-chart',rows.map(x=>({period:x.period,values:[{name:'外国人入境',value:x.foreignIn??null,change:x.foreignInYoY??null},{name:'免签入境',value:x.visaFree??null,change:x.visaYoY??null}]})),'外国人单向入境','万人次',{legend:'series'});
@@ -66,7 +66,7 @@
   }
   function renderOutbound(){
     const dest=data.outbound.destinations.find(d=>d.name===$('destination').value),rows=M.outboundRows(dest,$('outbound-year').value,$('outbound-scope').value),r=rows.filter(x=>Number.isFinite(x.value)).at(-1),latest=r?.period,actual=dest.records.find(x=>x.period===latest),ytd=M.cumulative(dest.records,latest),cumulative=$('outbound-scope').value==='ytd';
-    $('asof').textContent=dest.name+' · '+(latest||'当前筛选暂无数据')+' · '+(dest.basis||'用户海外旅游数据库');
+    SiteUI.asOf($('asof'),latest||'当前筛选暂无数据',[dest.name,dest.basis||'用户海外旅游数据库']);
     kpis('outbound-kpis',[['当月接待中国游客',actual?.value,'万人次',actual?.change,latest||'—'],['年初累计接待',ytd.value,'万人次',ytd.change,latest?latest.slice(0,4)+'年1—'+Number(latest.slice(5))+'月':'—'],['内地居民出境 · 单向',data.inbound.border.at(-1).mainlandOut,'万人次',data.inbound.border.at(-1).mainlandOutYoY,'2026Q3 · 单季'],['内地居民出境 · 单向',data.inbound.border.find(x=>x.period==='2026H1').mainlandOut,'万人次',10.5,'2026H1']]);
     $('destination-title').textContent=dest.name+'接待中国游客';$('destination-period').textContent=(cumulative?'年初累计':'当月')+' · 万人次';
     chart('outbound-chart',rows,'中国游客接待人数','万人次');

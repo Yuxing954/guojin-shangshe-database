@@ -44,7 +44,7 @@ window.GoldDashboard=(function(){
     const latest=retail.at(-1),c=consumption.at(-1),benchmark=P.benchmarkSeries(prices.benchmarks,'close').at(-1);
     let view='overview',retailMode='combo';
     const ms=new Map(macro.sources.map(s=>[s.id,s]));
-    $('asof').innerHTML=`<b>核对 ${esc(data.checkedAt)}</b>金价 ${esc(benchmark.quoteDate)} · 宏观 ${esc(macro.checkedAt)}`;
+    SiteUI.asOf($('asof'),benchmark.quoteDate,['金价','数据核对 '+data.checkedAt,'宏观核对 '+macro.checkedAt]);
     const stat=(label,value,meta,primary=false,cls='')=>`<article class="board-stat gj-stat ${primary?'primary':''}"><div class="gj-stat-label">${esc(label)}</div><div class="gj-stat-value ${cls}">${value}</div><div class="gj-stat-meta">${meta}</div></article>`;
     $('demand-kpis').innerHTML=stat('金银珠宝零售额 · 当月同比',pct(latest.yoy),`${esc(latest.period)} · ${num(latest.amount,0)}亿元`,true,tone(latest.yoy))+stat('黄金首饰用金 · 累计同比',pct(c.yoy.jewelry),`${esc(c.year+'年上半年')} · ${num(c.values.jewelry)}吨`,false,tone(c.yoy.jewelry))+stat('金条及金币 · 累计同比',pct(c.yoy.bars),`${esc(c.year+'年上半年')} · ${num(c.values.bars)}吨`,false,tone(c.yoy.bars))+stat('Au99.99 · 收盘参考',num(benchmark.price,2)+'<small>元/克</small>',`${esc(benchmark.quoteDate)} · 官方交易日披露`);
     const rowSeries=(rows,key,name)=>[{name,points:rows.map(r=>({x:monthX(r.period),label:dateLabel(r),value:r[key],note:r.basis==='jan_feb'?'1—2月合并':''}))}];
