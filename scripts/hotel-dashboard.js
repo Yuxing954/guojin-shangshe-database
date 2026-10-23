@@ -1,7 +1,7 @@
 (function () {
   'use strict';
   var M = HotelMetrics, data = {}, ix = {}, periods = new Map(), regions = [];
-  var state = { view: 'overview', region: '全国', week: '', base: 'auto', window: '12', supplyWindow: '156', metric: 'revpar', mode: 'combo' };
+  var state = { view: 'overview', region: '全国', week: '', base: 'auto', window: '12', supplyWindow: '156', investmentWindow: '156', metric: 'revpar', mode: 'combo' };
   var followLatest = true, latestWeek = '';
   var SEGS = ['经济型', '中档型', '高档型', '豪华型'];
   var GROUPS = ['华住', '首旅如家', '锦江酒店（中国区）', '亚朵'];
@@ -324,7 +324,7 @@
     $('investment-period').textContent = r ? r.period_id.slice(0,4) + '年1—' + Number(r.period_id.slice(5)) + '月 · 累计 · 全国' : '所选数据周之前暂无投资数据';
     var hasAmount = r && M.num(r.amount_cny_100m) != null;
     $('investment-stats').innerHTML = '<div><span>投资完成额累计同比</span><b>' + delta(r ? r.yoy_pct : null, 'investment') + '</b><small>国家统计局 · Choice转引</small></div><div><span>同期累计完成额（亿元）</span><b>' + (hasAmount ? fmt(r.amount_cny_100m, 1) : '暂无数据') + '</b><small>' + (hasAmount ? '国家统计局公报 · 原披露值' : '金额未取得') + '</small></div>';
-    var weeks = calendar(), start = weeks.length ? weeks[0].start_date : cutoff;
+    var weeks = calendar(state.investmentWindow), start = weeks.length ? weeks[0].start_date : cutoff;
     var field = $('supply-metric').value;
     var title = field === 'hotel_count' ? '酒店数量' : field === 'chain_room_count' ? '连锁房量' : '房间数量';
     var points = M.investmentWindow(data.investment.observations, cutoff, 'all').map(function (p) {
@@ -412,6 +412,7 @@
     if (['overview', 'cities', 'structure'].includes(saved.get('view'))) state.view = saved.get('view');
     if (['12', '13', '26', '52', '156', 'all'].includes(saved.get('window')) && (saved.get('window') !== '52' || saved.get('rangeVersion') === '12w')) state.window = saved.get('window');
     if (['12','13','26','52','156','all'].includes(saved.get('supplyWindow'))) state.supplyWindow=saved.get('supplyWindow');
+    if (['12','13','26','52','156','all'].includes(saved.get('investmentWindow'))) state.investmentWindow=saved.get('investmentWindow');
     if (META[saved.get('metric')]) state.metric = saved.get('metric');
     if (['combo', 'value', 'change'].includes(saved.get('mode'))) state.mode = saved.get('mode');
     if (periods.has(saved.get('base'))) state.base = saved.get('base');
@@ -434,8 +435,9 @@
     $('week-select').onchange = function () { followLatest = this.value === 'latest'; state.week = followLatest ? latestWeek : this.value; state.base = 'auto'; compareOptions(); refresh(); };
     $('compare-select').onchange = function () { state.base = this.value; refresh(); };
     $('region-select').onchange = function () { state.region = this.value; refresh(); };
-    function setWindow() { state.window = this.value; ['history-start','segment-window','group-window','investment-window'].forEach(function (id) { $(id).value = state.window; }); renderTrend(); drawSegments(); drawGroups(); drawSupply(); renderInvestment(); saveState(); }
-    ['history-start','segment-window','group-window','investment-window'].forEach(function (id) { $(id).value = state.window; $(id).onchange = setWindow; });
+    function setWindow() { state.window = this.value; ['history-start','segment-window','group-window'].forEach(function (id) { $(id).value = state.window; }); renderTrend(); drawSegments(); drawGroups(); drawSupply(); renderInvestment(); saveState(); }
+    ['history-start','segment-window','group-window'].forEach(function (id) { $(id).value = state.window; $(id).onchange = setWindow; });
+    $('investment-window').value=state.investmentWindow; $('investment-window').onchange=function(){state.investmentWindow=this.value;renderInvestment();saveState();};
     $('supply-window').value=state.supplyWindow; $('supply-window').onchange=function(){state.supplyWindow=this.value;drawSupply();saveState();};
     function bindSwitch(id, attr) {
       var buttons = $(id).querySelectorAll('button');
