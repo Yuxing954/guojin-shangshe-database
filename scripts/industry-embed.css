@@ -27,3 +27,6 @@ body.site-page.hotel-page.industry-embedded .hd-compare-body{max-width:calc(100v
 @media(max-width:340px){
  body.site-page.hotel-page.industry-embedded .industry-board .board-kpis{grid-template-columns:minmax(0,1fr)!important}
 }
+
+/* Contain trailing panel margins so the measured height includes all content. */
+body.site-page.industry-embedded:is(.travel-page,.cruise-page,.dining-page)>main.site-main{display:flow-root}
