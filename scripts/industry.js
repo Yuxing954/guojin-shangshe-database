@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  const labels={hotel:'酒店',dutyfree:'免税',gold:'黄金',tourism:'三峡游轮',dining:'餐饮'};
+  const labels={hotel:'酒店',dutyfree:'免税',gold:'黄金',tourism:'三峡游轮',dining:'餐饮',travel:'旅游'};
   function select(){
     let key=location.hash.slice(1);
     if(!labels[key] || key==='gold'){key='hotel';}
