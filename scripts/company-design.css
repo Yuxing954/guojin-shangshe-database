@@ -1,0 +1,61 @@
+/* Company pages follow the industry dashboard's spacing and controls.
+   Scoped to these four entry points; company data and chart models are unchanged. */
+body.site-page.company-board{--hotel-accent:var(--site-accent);--hotel-border:var(--site-line)}
+body.company-board .oh-header{flex-wrap:wrap;gap:12px 20px;margin-bottom:20px}
+body.company-board .oh-header h1{font-size:24px;line-height:34px;margin:4px 0}
+body.company-board .oh-actions{flex-wrap:wrap;gap:12px;max-width:none}
+body.company-board .oh-categories{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:0 0 20px;padding:0;border:0}
+body.company-board .oh-categories a{display:flex;align-items:center;justify-content:center;min-height:60px;padding:10px 14px;border:1px solid var(--site-line);border-radius:12px;background:white;color:var(--site-muted);font-size:15px;font-weight:500;text-decoration:none}
+body.company-board .oh-categories a[aria-current=page]{border-color:var(--site-accent);background:var(--site-soft);color:var(--site-accent);font-weight:600}
+body.company-board #oh-companies{gap:12px;margin:0 0 24px}
+body.company-board .oh-company{border-radius:12px;min-height:88px;color:var(--site-ink)}
+body.company-board .oh-company[aria-pressed=true]{background:var(--site-soft);border-color:var(--site-accent);box-shadow:0 0 0 1px var(--site-accent)}
+body.company-board .oh-company strong{font-size:15px;line-height:24px;white-space:normal}
+body.company-board .oh-company small{font-size:11px;line-height:18px;color:var(--site-muted)}
+body.company-board .oh-profile{flex-wrap:wrap;min-height:40px;margin:0 0 16px;gap:8px 16px}
+body.company-board .oh-profile h2{font-size:18px;line-height:28px}
+body.company-board .oh-profile p{font-size:13px;line-height:22px;max-width:none;color:var(--site-muted)}
+body.company-board .oh-tabs{display:flex!important;flex-wrap:wrap!important;gap:4px;padding:4px;margin:0 0 20px;border:1px solid var(--site-line);border-radius:10px;background:var(--site-soft);overflow:visible}
+body.company-board .oh-tabs button{flex:0 1 auto;min-width:0;min-height:40px;padding:8px 18px;border:0;border-radius:7px;background:transparent;color:var(--site-muted);font-size:14px;line-height:24px;font-weight:500}
+body.company-board .oh-tabs button[aria-selected=true]{background:white;color:var(--site-accent);font-weight:600;box-shadow:0 1px 4px #24334c0d}
+body.company-board .oh-toolbar{align-items:flex-end;gap:12px;padding:16px;margin:0 0 16px;border:1px solid var(--site-line);border-radius:12px;background:white}
+body.company-board .oh-toolbar label{font-size:13px;line-height:22px;color:var(--site-muted)}
+body.company-board .oh-toolbar :is(select,input[type=search],input[type=number]){min-height:40px;max-width:100%;border:1px solid var(--site-line);border-radius:8px;padding:8px 12px;background:white;color:var(--site-ink);font-size:14px;line-height:22px}
+body.company-board :is(.oh-actions button,.oh-toolbar button,#oh-retry,.oh-primary-link){min-height:40px;padding:8px 12px;border-radius:8px;font-size:13px;line-height:22px}
+body.company-board .oh-primary-link{background:var(--site-accent);border-color:var(--site-accent)}
+body.company-board .oh-kpis{gap:16px;margin:0 0 24px;align-items:stretch}
+body.company-board .oh-kpi{min-width:0;min-height:120px;padding:16px;border:1px solid var(--site-line);border-radius:12px;box-shadow:none}
+body.company-board .oh-kpi>span{font-size:13px;line-height:22px;color:var(--site-muted)}
+body.company-board .oh-kpi strong{margin:8px 0 6px;font-size:28px;line-height:38px;letter-spacing:0;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+body.company-board .oh-kpi strong small{font-size:13px;font-weight:400;color:var(--site-muted)}
+body.company-board .oh-growth{font-size:13px;line-height:22px}
+body.company-board .oh-block{padding:16px;margin-bottom:24px;border:1px solid var(--site-line);border-radius:12px;box-shadow:none}
+body.company-board .dh-charts{gap:16px}
+body.company-board .dh-charts>.oh-block{margin:0}
+body.company-board .oh-block-head{gap:12px;margin-bottom:16px}
+body.company-board .oh-block-head h3{font-size:16px;line-height:24px;font-weight:600}
+body.company-board .oh-block-head>small{font-size:13px;line-height:22px;color:var(--site-muted)}
+body.company-board .oh-table{font-size:13px;line-height:21px}
+body.company-board .oh-table :is(th,td){padding:10px 12px}
+body.company-board .oh-table thead th{background:var(--site-soft);color:var(--site-muted);font-size:13px}
+body.company-board :is(button,a,select,input):focus-visible{outline:2px solid var(--site-accent);outline-offset:3px}
+@media(max-width:1050px){body.company-board #oh-companies{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){
+ body.company-board .oh-header h1{font-size:22px;line-height:32px}
+ body.company-board .oh-actions{justify-content:flex-start;width:100%;gap:8px 12px}
+ body.company-board .oh-categories{gap:8px}
+ body.company-board .oh-categories a{min-height:52px;font-size:14px}
+ body.company-board #oh-companies{gap:12px}
+ body.company-board .oh-company{min-height:80px;padding:10px 8px;gap:8px}
+ body.company-board .oh-tabs button{padding:8px 12px}
+ body.company-board .oh-toolbar{padding:12px}
+ body.company-board .oh-toolbar :is(select,input[type=search]){font-size:16px}
+ body.company-board .oh-kpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+ body.company-board .oh-kpi{min-height:112px;padding:16px}
+ body.company-board .oh-kpi strong{font-size:24px;line-height:34px}
+ body.company-board .oh-kpi strong small{font-size:12px}
+ body.company-board .dh-charts{grid-template-columns:minmax(0,1fr)}
+ body.company-board .oh-block{padding:16px 12px}
+ body.company-board .oh-toolbar input[type=search]{min-width:0;width:100%}
+}
+@media(max-width:340px){body.company-board .oh-kpis{grid-template-columns:minmax(0,1fr)}body.company-board .oh-company{flex-wrap:wrap}}

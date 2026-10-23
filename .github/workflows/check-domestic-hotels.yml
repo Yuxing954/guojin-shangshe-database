@@ -2,6 +2,7 @@ name: Check domestic hotels
 on:
   pull_request:
     paths:
+      - 'scripts/company-design.css'
       - 'company-database.html'
       - 'domestic-hotel-comparison.html'
       - 'scripts/domestic-hotels*'
