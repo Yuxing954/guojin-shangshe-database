@@ -23,8 +23,9 @@
     return years.filter(y=>y>='2023'&&totals.has(y)).map(y=>{const r=totals.get(y),prior=totals.get(String(+y-1));return {...r,change:prior?.value>0?(r.value/prior.value-1)*100:null,changeBasis:prior?.value>0?'完整年度客流计算':'上年完整年度基期未收录',comparisonSourceId:prior?.sourceId};});
   }
   function borderRows(data,scope){return data.inbound.border.filter(r=>r.scope===scope).sort((a,b)=>a.period.localeCompare(b.period));}
+  function domesticQuarterRows(data,year='recent',scope='quarter',quarter='all'){return yearRows(scope==='ytd'?data.domestic.quarterYtd:data.domestic.quarters,year).filter(r=>quarter==='all'||r.quarter===Number(quarter));}
   const csvCell=v=>'"'+String(v??'').replace(/"/g,'""')+'"';
   function csv(rows,headers){return '\ufeff'+[headers,...rows].map(r=>r.map(csvCell).join(',')).join('\r\n');}
   function source(data,id){return data.sources.find(s=>s.id===id)||{};}
-  return {yearRows,continuous,cumulative,outboundRows,annualRows,borderRows,csv,source};
+  return {yearRows,continuous,cumulative,outboundRows,annualRows,borderRows,domesticQuarterRows,csv,source};
 });

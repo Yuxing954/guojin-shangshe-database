@@ -60,7 +60,8 @@ def apply_history(data, folder):
     for n in notes:
         if n not in data['notes']:
             data['notes'].append(n)
-    return data
+    from update_domestic_tourism import apply_domestic
+    return apply_domestic(data, folder)
 
 
 if __name__ == '__main__':

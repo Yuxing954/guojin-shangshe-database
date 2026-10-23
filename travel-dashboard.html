@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>旅游 · 国金商社</title>
-<link rel="stylesheet" href="scripts/site.css?v=20261014viewfit"><link rel="stylesheet" href="scripts/site-charts.css?v=20261019controls"><link rel="stylesheet" href="scripts/industry-embed.css?v=20261014viewfit"><link rel="stylesheet" href="scripts/travel-dashboard.css?v=20261023"><link rel="stylesheet" href="scripts/site-polish.css?v=20261013clean">
-<script src="scripts/chart-period.js?v=20261022dates"></script><script defer src="scripts/site-ui.js?v=20261023travel"></script><script defer src="scripts/site-data.js?v=20261022dates"></script><script defer src="scripts/site-shell.js?v=20261014monthly"></script><script defer src="scripts/site-charts.js?v=20261022dates"></script><script defer src="scripts/travel-model.js?v=20261023history"></script><script defer src="scripts/travel-dashboard.js?v=20261023history"></script><script defer src="scripts/industry-embed.js?v=20261014viewfit"></script>
+<link rel="stylesheet" href="scripts/site.css?v=20261014viewfit"><link rel="stylesheet" href="scripts/site-charts.css?v=20261019controls"><link rel="stylesheet" href="scripts/industry-embed.css?v=20261014viewfit"><link rel="stylesheet" href="scripts/travel-dashboard.css?v=20261023quarter"><link rel="stylesheet" href="scripts/site-polish.css?v=20261013clean">
+<script src="scripts/chart-period.js?v=20261022dates"></script><script defer src="scripts/site-ui.js?v=20261023travel"></script><script defer src="scripts/site-data.js?v=20261022dates"></script><script defer src="scripts/site-shell.js?v=20261014monthly"></script><script defer src="scripts/site-charts.js?v=20261022dates"></script><script defer src="scripts/travel-model.js?v=20261023quarter"></script><script defer src="scripts/travel-dashboard.js?v=20261023quarter"></script><script defer src="scripts/industry-embed.js?v=20261014viewfit"></script>
 </head>
 <body class="site-page travel-page" data-site-section="industry">
 <main class="site-main">
@@ -13,6 +13,12 @@
 <section id="dashboard" hidden>
 <nav class="travel-tabs" aria-label="旅游板块"><button data-view="domestic" aria-pressed="true">国内游</button><button data-view="inbound" aria-pressed="false">入境游</button><button data-view="outbound" aria-pressed="false">出境游</button></nav>
 <section id="view-domestic">
+<div class="travel-section-head"><h2>全国国内游 · 季度量价</h2><span id="domestic-period-asof"></span></div>
+<div class="travel-controls"><label>年份 <select id="domestic-period-year"><option value="recent">近三年＋最新</option><option value="all">全部（含2022基期）</option><option>2026</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option></select></label><label>口径 <select id="domestic-period-scope"><option value="quarter">单季</option><option value="ytd">年初累计</option></select></label><label>季度 <select id="domestic-quarter"><option value="all">全部季度</option><option value="1">第一季度</option><option value="2">第二季度</option><option value="3">第三季度</option><option value="4">第四季度</option></select></label><span class="travel-tag">文化和旅游部</span></div>
+<div id="domestic-period-kpis" class="travel-kpis"></div>
+<div class="travel-grid" id="domestic-period-charts"></div>
+<article class="travel-panel"><h2>全国季度量价明细</h2><div class="travel-table-wrap"><table id="domestic-period-table"></table></div></article>
+<div class="travel-section-head"><h2>假期量价</h2><span>用户旅游数据库</span></div>
 <div class="travel-controls"><label>年份 <select id="domestic-year"></select></label><label>假期 <select id="holiday"><option value="all">全部假期</option><option>元旦</option><option>春节</option><option>清明</option><option>五一</option><option>端午</option><option>中秋</option><option>国庆</option><option>国庆/中秋</option></select></label><label>口径 <select id="holiday-basis"><option value="total">假期总量</option><option value="daily">日均量</option></select></label></div>
 <div id="domestic-kpis" class="travel-kpis"></div>
 <div class="travel-grid" id="holiday-charts"></div>
