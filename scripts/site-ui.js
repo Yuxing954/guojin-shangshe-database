@@ -725,7 +725,20 @@
       "embed",
       "site-chart-interaction",
       "view",
-      "ws"
+      "ws",
+      "travel-domestic-period-year",
+      "travel-domestic-period-scope",
+      "travel-domestic-quarter",
+      "travel-domestic-year",
+      "travel-holiday",
+      "travel-holiday-basis",
+      "travel-scenic-window",
+      "travel-enterprise-year",
+      "travel-enterprise-scope",
+      "travel-border-scope",
+      "travel-destination",
+      "travel-outbound-year",
+      "travel-outbound-scope"
     ]
   }
 };
@@ -740,7 +753,9 @@
   function number(value,type='amount',options={}){if(value===null||value===undefined||value===''||!Number.isFinite(Number(value)))return '—';const spec={...(numberTypes[type]||numberTypes.amount),...options},n=Number(value);return (spec.signed&&n>0?'+':'')+new Intl.NumberFormat('zh-CN',{minimumFractionDigits:spec.minimumDigits??spec.digits,maximumFractionDigits:spec.digits}).format(n)+(spec.unit||'');}
   function convert(value,factor){return value===null||value===undefined||value===''||!Number.isFinite(Number(value))?null:Number(value)*factor;}
   function contextURL(value){const u=new URL(value,location.href),ws=new URLSearchParams(location.search).get("ws");if(ws&&!u.searchParams.has("ws"))u.searchParams.set("ws",ws);return u.pathname+u.search+u.hash;}
-  const api={contextURL,navigation,pages,registry,colors,labelColors,contrastColor,companyColors,seriesColor,numberTypes,number,convert,route,request,date,save,debounce};if(typeof module==='object'&&module.exports)module.exports=api;else root.SiteUI=api;
+  function restoreFields(ids,prefix){const p=new URLSearchParams(location.search);for(const id of ids){const e=document.getElementById(id),v=p.get(prefix+id);if(e&&v!==null&&e.tagName==='SELECT'&&[...e.options].some(o=>o.value===v))e.value=v;}}
+  function saveFields(ids,prefix){save(Object.fromEntries(ids.map(id=>[prefix+id,document.getElementById(id)?.value??''])));}
+  const api={restoreFields,saveFields,contextURL,navigation,pages,registry,colors,labelColors,contrastColor,companyColors,seriesColor,numberTypes,number,convert,route,request,date,save,debounce};if(typeof module==='object'&&module.exports)module.exports=api;else root.SiteUI=api;
 })(typeof window==='object'?window:globalThis);
 
 

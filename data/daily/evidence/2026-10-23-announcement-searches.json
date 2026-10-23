@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-23",
+  "checkedAt": "2026-10-23T18:18:00+08:00",
+  "windowStart": "2026-10-22T18:00:00+08:00",
+  "cutoff": "2026-10-23T18:00:00+08:00",
+  "batches": [
+    {
+      "id": "a-share-official",
+      "scope": "覆盖A股公司，巨潮/沪深北交易所原始域分组检索",
+      "result": "未检出可在精确窗口内完成原文核验的重大公告"
+    },
+    {
+      "id": "hk-official",
+      "scope": "覆盖港股公司，披露易及公司IR原始域分组检索",
+      "result": "泡泡玛特披露易最新为10月15日；六福集团公司IR列示10月22日经营数据，但仅有日期、无法判定是否落在18:00边界后，留作边界候选，不入正文",
+      "urls": [
+        "https://www1.hkexnews.hk/search/titlesearch.xhtml?category=0&market=SEHK&stockId=1000068054",
+        "https://www.lukfook.com/tc/page/investor-relations/announcement-notices"
+      ]
+    },
+    {
+      "id": "us-official",
+      "scope": "覆盖美股/OTC公司，SEC EDGAR及公司IR检索",
+      "result": "未检出覆盖公司在窗口内的重要原始披露"
+    }
+  ],
+  "boundaryCandidates": [
+    {
+      "company": "六福集团",
+      "code": "0590.HK",
+      "title": "截至2027年3月31日止财政年度第二季度及10月首周之零售销售表现",
+      "publishedAt": "2026-10-22",
+      "timePrecision": "date",
+      "status": "未核实18:00边界，不入正文",
+      "url": "https://www.lukfook.com/tc/page/investor-relations/announcement-notices"
+    }
+  ]
+}

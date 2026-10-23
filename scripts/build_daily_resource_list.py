@@ -4,7 +4,7 @@ from pathlib import Path
 from build_daily_report import ROOT,TZ,stamp,window_hours
 from research_sources import merge_rows,update_rows,archive_rows
 from daily_scope import sector_for,is_ecommerce_topic,EXCLUDE,title_for,published_for,substantive_segment
-from daily_attachment_coverage import attachment_catalog
+from daily_attachment_coverage import attachment_catalog,scan_updated_after_four
 
 def filename_key(name):return re.sub(r'[\s—\-_]+','',name).lower()
 def within(value,start,end):
@@ -28,7 +28,7 @@ def attachment_kind(r):
 
 def catalog_for_window(library,start,end):
  current=attachment_catalog(library,start,end)
- if current['coverageStatus']=='complete':return current
+ if current['coverageStatus']=='complete' or scan_updated_after_four(current.get('scan'),end):return current
  scans=[library.get('attachmentScan') or {}]
  # A newer narrow scan does not invalidate an older completed historical scan.
  folder=ROOT/'data/daily/resources'
@@ -84,4 +84,5 @@ if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--date',required=True);p.add_argument('--cutoff');a=p.parse_args();d=build(a.date,a.cutoff)
  out=ROOT/'data/daily/resources';out.mkdir(exist_ok=True);(out/f'{a.date}.json').write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
  print({k:len(v) for k,v in d['groups'].items()})
+
 

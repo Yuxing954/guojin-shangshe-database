@@ -2,6 +2,17 @@
 from build_daily_report import stamp
 
 
+def scan_updated_after_four(scan, cutoff):
+    """User policy from 2026-10-23: a same-day scan after 16:00 permits publication.
+
+    This does not assert complete window coverage or change the receipt.
+    """
+    observed = stamp((scan or {}).get('observedAt'))
+    return bool(cutoff and cutoff.date().isoformat() >= '2026-10-23'
+                and observed and observed.date() == cutoff.date()
+                and observed.hour >= 16)
+
+
 def attachment_catalog(library, start, cutoff):
     scan = library.get('attachmentScan') or {}
     lower, upper = stamp(scan.get('windowStart')), stamp(scan.get('windowEnd'))
@@ -38,6 +49,12 @@ def attachment_catalog(library, start, cutoff):
             cursor = interval[1]
         result['coverageScans'] = selected if complete else scans
     if gaps: result['missingIntervals'] = gaps
+    if cutoff.date().isoformat() >= '2026-10-23':
+        result['publicationEligibility'] = {
+            'policy': 'scan-observed-after-16',
+            'eligible': complete or scan_updated_after_four(scan, cutoff),
+            'scanObservedAt': scan.get('observedAt'),
+            'coverageComplete': complete}
     return result
 
 
@@ -48,4 +65,7 @@ def validate_attachment_coverage(resources):
                                    'attachmentScan': catalog.get('scan'),
                                    'attachmentScans': catalog.get('coverageScans')},
                                   stamp(resources['windowStart']), stamp(resources['cutoff']))
-    assert expected['coverageStatus'] == 'complete', 'Attachment scan does not cover the complete daily window'
+    assert (expected['coverageStatus'] == 'complete'
+            or scan_updated_after_four(catalog.get('scan'), stamp(resources['cutoff']))), (
+                'Attachment scan must cover the daily window or be updated after 16:00 on the report date')
+
