@@ -155,7 +155,7 @@
     return html;
   }
   function render(panel,env){const renders={compare:snapshot,operating,expansion,profit};return renders[panel]?renders[panel](env):null;}
-  function bind(env){const $=id=>document.getElementById(id);for(const [id,key]of Object.entries({'jj-region':'region','jj-tier':'tier','jj-mode':'mode','jj-segment-period':'segmentPeriod','jj-ss-region':'ssRegion','jj-ss-window':'ssWindow','jj-ss-tier':'ssTier','jj-ss-mode':'ssMode','jj-ss-metric':'ssMetric'})){if($(id))$(id).onchange=()=>{state[key]=$(id).value;if(id==='jj-ss-region')state.ssWindow='';const u=new URL(location.href);for(const [k,v]of Object.entries(state))if(v)u.searchParams.set('jj-'+k,v);else u.searchParams.delete('jj-'+k);history.replaceState(null,'',u);window.HotelWorkspace?.remember();env.refresh();};}}
+  function bind(env){const $=id=>document.getElementById(id);for(const [id,key]of Object.entries({'jj-region':'region','jj-tier':'tier','jj-mode':'mode','jj-segment-period':'segmentPeriod','jj-ss-region':'ssRegion','jj-ss-window':'ssWindow','jj-ss-tier':'ssTier','jj-ss-mode':'ssMode','jj-ss-metric':'ssMetric'})){if($(id))$(id).onchange=()=>{state[key]=$(id).value;if(id==='jj-ss-region')state.ssWindow='';const u=new URL(location.href);for(const [k,v]of Object.entries(state))if(v)u.searchParams.set('jj-'+k,v);else u.searchParams.delete('jj-'+k);history.replaceState(null,'',SiteUI.contextURL(u));window.HotelWorkspace?.remember();env.refresh();};}}
   window.JinjiangResearch={menu,panels,redirects,render,bind,model};
 })();
 

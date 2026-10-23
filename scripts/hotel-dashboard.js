@@ -55,7 +55,7 @@
       return r.text();
     }).then(function (text) { var rows = M.csv(text); if (!rows.length) throw new Error('没有有效记录'); return rows; });
   }
-  function saveState() { var saved = Object.assign({}, state, { week: followLatest ? 'latest' : state.week, rangeVersion: '12w' }); history.replaceState(null, '', '#' + new URLSearchParams(saved).toString()); }
+  function saveState() { var saved = Object.assign({}, state, { week: followLatest ? 'latest' : state.week, rangeVersion: '12w' }); history.replaceState(null, '',SiteUI.contextURL( '#' + new URLSearchParams(saved).toString())); }
   function switchView(view) {
     state.view = view;
     $('weekly-export').hidden = view !== 'overview';
@@ -119,7 +119,8 @@
       return { x: r.period_id, y: display(row(state.region, '全部', M.priorPeriod(r)), field) };
     }) });
     var unit = isChange ? (field === 'occupancy_rate' ? '百分点' : '%') : meta.unit;
-    $('trend-caption').textContent = meta.label + ' · ' + unit ;    lineChart('main-chart', lines, { unit: unit, occupancy: !isChange && field === 'occupancy_rate', zero: isChange });
+    $('trend-caption').textContent = meta.label + ' · ' + unit ;
+    lineChart('main-chart', lines, { unit: unit, occupancy: !isChange && field === 'occupancy_rate', zero: isChange });
     var plotted = M.chartSeries(lines), plottedRows = plotted.length ? plotted[0].pts : [];
     $('history-note').textContent = plottedRows.length ? '有效区间 ' + plottedRows[0].x + ' — ' + plottedRows[plottedRows.length - 1].x : '所选范围暂无数据。';
   }

@@ -10,7 +10,7 @@
  const anchor=(url,label)=>'<a target="_blank" rel="noopener" href="'+esc(M.safeUrl(url))+'">'+esc(label)+'</a>';
  const exportCsv=(rows,name)=>{const url=URL.createObjectURL(new Blob(['\uFEFF'+rows.map(r=>r.map(M.csvCell).join(',')).join('\r\n')],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
  const params=new URLSearchParams(location.search);let pm,wired=false,cme,cmeLoading=false,cmeError=false;
- function keep(values){const p=new URLSearchParams(location.search);Object.entries(values).forEach(([k,v])=>v?p.set(k,v):p.delete(k));history.replaceState(null,'',location.pathname+'?'+p);}
+ function keep(values){const p=new URLSearchParams(location.search);Object.entries(values).forEach(([k,v])=>v?p.set(k,v):p.delete(k));history.replaceState(null,'',SiteUI.contextURL(location.pathname+'?'+p));}
  const pmDay=v=>{const d=new Date(v);if(!v||Number.isNaN(d.getTime()))return '未提供';const parts=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(d);const part=type=>parts.find(p=>p.type===type).value;return part('year')+'-'+part('month')+'-'+part('day');};
  const PM_PAGE_SIZE=24;let pmLimit=PM_PAGE_SIZE,pmGroups=[];
  const pmChange=o=>Number.isFinite(o.previousProbability)&&Number.isFinite(o.probability)?(o.probability-o.previousProbability)*100:null;

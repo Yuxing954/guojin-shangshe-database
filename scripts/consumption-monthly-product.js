@@ -7,7 +7,7 @@ const logo=new Image();logo.onload=()=>{if(report)render();};logo.src='scripts/a
 const tip=document.createElement('div');tip.className='monthly-tooltip';tip.hidden=true;document.body.append(tip);
 function status(message,error=false){$('status').textContent=message;$('status').classList.toggle('error',error);}
 async function json(path){const c=new AbortController(),timer=setTimeout(()=>c.abort(),20000);try{const r=await fetch(path,{cache:'no-store',signal:c.signal});if(!r.ok)throw Error(path+'：HTTP '+r.status);return await r.json();}finally{clearTimeout(timer);}}
-function publishURL(){const u=new URL(location.href);u.searchParams.set('month',$('month').value);u.searchParams.set('window',$('window').value);history.replaceState(null,'',u.pathname+u.search);}
+function publishURL(){const u=new URL(location.href);u.searchParams.set('month',$('month').value);u.searchParams.set('window',$('window').value);history.replaceState(null,'',SiteUI.contextURL(u.pathname+u.search));}
 function number(v,d=1){return M.finite(v)?M.display(v,d):'—';}
 function rate(v){return M.rate(v);}
 function textLines(ctx,text,width,size){ctx.font=size+'px "Microsoft YaHei",sans-serif';const out=[];for(const part of String(text).split('\n')){let line='';for(const ch of part){if(ctx.measureText(line+ch).width>width&&line){out.push(line);line=ch;}else line+=ch;}out.push(line);}return out;}

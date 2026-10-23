@@ -55,7 +55,11 @@
       "operation",
       "currency",
       "display",
-      "q"
+      "q",
+      "ws",
+      "detailCategory",
+      "detailMode",
+      "page"
     ]
   },
   "consumption-macro.html": {
@@ -97,7 +101,8 @@
     "queryParameters": [
       "embed",
       "month",
-      "window"
+      "window",
+      "ws"
     ]
   },
   "cruise-dashboard.html": {
@@ -117,7 +122,8 @@
     "queryParameters": [
       "embed",
       "site-chart-interaction",
-      "view"
+      "view",
+      "ws"
     ]
   },
   "daily.html": {
@@ -133,7 +139,8 @@
     ],
     "queryParameters": [
       "embed",
-      "date"
+      "date",
+      "ws"
     ]
   },
   "dashboard.html": {
@@ -152,7 +159,11 @@
       "q",
       "field",
       "dataset",
-      "site-chart-interaction"
+      "site-chart-interaction",
+      "ws",
+      "sort",
+      "order",
+      "page"
     ]
   },
   "data-notes.html": {
@@ -165,7 +176,8 @@
     ],
     "components": [],
     "queryParameters": [
-      "embed"
+      "embed",
+      "ws"
     ]
   },
   "dining.html": {
@@ -184,7 +196,8 @@
       "embed",
       "period",
       "holidays",
-      "view"
+      "view",
+      "ws"
     ]
   },
   "domestic-hotel-comparison.html": {
@@ -215,7 +228,9 @@
       "operation",
       "currency",
       "display",
-      "q"
+      "q",
+      "ws",
+      "peers"
     ]
   },
   "dutyfree-dashboard.html": {
@@ -237,7 +252,11 @@
     "queryParameters": [
       "embed",
       "site-chart-interaction",
-      "view"
+      "view",
+      "ws",
+      "krScope",
+      "krRange",
+      "krMode"
     ]
   },
   "earnings.html": {
@@ -263,7 +282,8 @@
       "site-chart-interaction",
       "im",
       "iv",
-      "region"
+      "region",
+      "ws"
     ]
   },
   "gold-jewelry.html": {
@@ -306,7 +326,8 @@
       "metric",
       "mode",
       "base",
-      "site-chart-interaction"
+      "site-chart-interaction",
+      "ws"
     ]
   },
   "hotel-groups.html": {
@@ -328,7 +349,8 @@
       "site-chart-interaction",
       "period",
       "compare",
-      "view"
+      "view",
+      "ws"
     ]
   },
   "hotel-holiday-dashboard.html": {
@@ -351,7 +373,8 @@
       "holidaySegment",
       "holidayMetric",
       "holidayDimension",
-      "view"
+      "view",
+      "ws"
     ]
   },
   "hotel-weekly-product.html": {
@@ -367,7 +390,8 @@
       "details"
     ],
     "queryParameters": [
-      "embed"
+      "embed",
+      "ws"
     ]
   },
   "index.html": {
@@ -415,7 +439,8 @@
       "panelView",
       "view",
       "hotel",
-      "site-chart-interaction"
+      "site-chart-interaction",
+      "ws"
     ]
   },
   "macro.html": {
@@ -450,7 +475,8 @@
       "frequency",
       "health",
       "category",
-      "site-chart-interaction"
+      "site-chart-interaction",
+      "ws"
     ]
   },
   "overseas-hotel-comparison.html": {
@@ -483,7 +509,8 @@
       "peerRegion",
       "peerMetric",
       "peerDisplay",
-      "financePeriod"
+      "financePeriod",
+      "ws"
     ]
   },
   "overseas-hotels.html": {
@@ -519,7 +546,9 @@
       "peerRegion",
       "peerMetric",
       "peerDisplay",
-      "financePeriod"
+      "financePeriod",
+      "ws",
+      "page"
     ]
   },
   "overseas.html": {
@@ -553,7 +582,8 @@
       "embed",
       "view",
       "period",
-      "symbol"
+      "symbol",
+      "ws"
     ]
   },
   "regional-retail.html": {
@@ -602,7 +632,8 @@
       "breakdownPeriod",
       "dimension",
       "breakdownCategory",
-      "embed"
+      "embed",
+      "ws"
     ]
   },
   "research.html": {
@@ -632,7 +663,11 @@
       "to",
       "format",
       "file",
-      "site-chart-interaction"
+      "site-chart-interaction",
+      "ws",
+      "page",
+      "archive",
+      "recent"
     ]
   },
   "retail-monthly-product.html": {
@@ -650,7 +685,8 @@
     "queryParameters": [
       "embed",
       "month",
-      "window"
+      "window",
+      "ws"
     ]
   },
   "search.html": {
@@ -666,7 +702,9 @@
       "embed",
       "type",
       "q",
-      "site-chart-interaction"
+      "site-chart-interaction",
+      "ws",
+      "page"
     ]
   },
   "travel-dashboard.html": {
@@ -686,7 +724,8 @@
     "queryParameters": [
       "embed",
       "site-chart-interaction",
-      "view"
+      "view",
+      "ws"
     ]
   }
 };
@@ -700,7 +739,8 @@
   const numberTypes=Object.freeze({amount:{digits:2,unit:''},price:{digits:2,unit:''},count:{digits:0,unit:''},percent:{digits:1,unit:'%'},percentagePoint:{digits:1,unit:'pct'},basisPoint:{digits:0,unit:'bp'}});
   function number(value,type='amount',options={}){if(value===null||value===undefined||value===''||!Number.isFinite(Number(value)))return '—';const spec={...(numberTypes[type]||numberTypes.amount),...options},n=Number(value);return (spec.signed&&n>0?'+':'')+new Intl.NumberFormat('zh-CN',{minimumFractionDigits:spec.minimumDigits??spec.digits,maximumFractionDigits:spec.digits}).format(n)+(spec.unit||'');}
   function convert(value,factor){return value===null||value===undefined||value===''||!Number.isFinite(Number(value))?null:Number(value)*factor;}
-  const api={navigation,pages,registry,colors,labelColors,contrastColor,companyColors,seriesColor,numberTypes,number,convert,route,request,date,save,debounce};if(typeof module==='object'&&module.exports)module.exports=api;else root.SiteUI=api;
+  function contextURL(value){const u=new URL(value,location.href),ws=new URLSearchParams(location.search).get("ws");if(ws&&!u.searchParams.has("ws"))u.searchParams.set("ws",ws);return u.pathname+u.search+u.hash;}
+  const api={contextURL,navigation,pages,registry,colors,labelColors,contrastColor,companyColors,seriesColor,numberTypes,number,convert,route,request,date,save,debounce};if(typeof module==='object'&&module.exports)module.exports=api;else root.SiteUI=api;
 })(typeof window==='object'?window:globalThis);
 
 

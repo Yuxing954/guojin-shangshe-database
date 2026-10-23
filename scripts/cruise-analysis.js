@@ -11,7 +11,7 @@
  function applyView(save=true){
   document.querySelectorAll('[data-cruise-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.cruiseView===view)));
   $('cruise-overview').hidden=view!=='overview';$('cruise-analysis').hidden=view==='overview';$('export').hidden=view!=='overview';$('runtime-csv').hidden=view!=='overview';
-  if(save){const p=new URLSearchParams(location.hash.slice(1));p.set('view',view);history.replaceState(null,'','#'+p);}
+  if(save){const p=new URLSearchParams(location.hash.slice(1));p.set('view',view);history.replaceState(null,'',SiteUI.contextURL('#'+p));}
   if(view!=='overview'){render();header();}else dispatchEvent(new Event('resize'));
  }
  function chart(id,rows,options){SiteCharts.drawPaired($(id),rows,{width:Math.max(280,$(id).clientWidth),precision:2,changePrecision:2,...options});}

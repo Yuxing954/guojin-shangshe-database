@@ -5,7 +5,7 @@ if(typeof module==='object'&&module.exports){module.exports={niceScale,axisForma
 const states=new Map(),NS='http://www.w3.org/2000/svg';let pinned=null,queued=false;
 function groups(points){
   const map=new Map();
-  points.forEach((p,index)=>{if(!Number.isFinite(p.x)||!p.text)return;const key=p.x.toFixed(3);if(!map.has(key))map.set(key,{x:p.x,y:p.y,indices:[],texts:[]});const g=map.get(key);g.indices.push(index);if(!g.texts.includes(p.text))g.texts.push(p.text);});
+  points.forEach((p,index)=>{if(!Number.isFinite(p.x)||!p.text)return;const key=p.x.toFixed(3);if(!map.has(key))map.set(key,{x:p.x,y:p.y,indices:[],texts:[]});const g=map.get(key);if(p.period)g.period=p.period;g.indices.push(index);if(!g.texts.includes(p.text))g.texts.push(p.text);});
   return [...map.values()].sort((a,b)=>a.x-b.x);
 }
 // Renderers own series identity; this layer never recolors SVG nodes by DOM order.
@@ -126,12 +126,13 @@ function attach(container,points,options={}){
     tip.style.left=Math.max(8,Math.min(tx+16,innerWidth-tip.offsetWidth-8))+'px';
     tip.style.top=Math.max(8,Math.min(ty+16,innerHeight-tip.offsetHeight-8))+'px';
   }
-  function show(i,event){
+  function show(i,event,linked=false){
     index=Math.max(0,Math.min(data.length-1,i));const g=data[index];
     tip.textContent=g.texts.join('\n');
     tip.hidden=false;tip.dataset.pinned=String(isPinned);
     line.setAttribute('x1',g.x);line.setAttribute('x2',g.x);line.style.display=options.crosshair===false?'none':'block';
     options.onSelect?.(g.indices[0]);place(g,event);
+    if(!linked&&window.ResearchWorkspace?.sync&&g.period&&points.paired?.options.syncGroup){for(const other of states.values())if(other!==state&&other.syncGroup===points.paired.options.syncGroup)other.syncPeriod(g.period);}
   }
   function hide(force=false){if(isPinned&&!force)return;isPinned=false;if(pinned===state)pinned=null;tip.hidden=true;line.style.display='none';options.onClear?.();}
   function nearest(event){
@@ -139,7 +140,7 @@ function attach(container,points,options={}){
     const x=p.matrixTransform(matrix.inverse()).x;
     return data.reduce((a,g,i)=>Math.abs(g.x-x)<Math.abs(data[a].x-x)?i:a,0);
   }
-  const state={svg,hide,valueScope:config?.scope,refreshValues(){attach(svg,originalPoints,options);},refresh(){if(tip.hidden)return;const b=svg.getBoundingClientRect();if(b.bottom<0||b.top>innerHeight)hide(true);else place(data[index]);},destroy(){hide(true);abort.abort();tip.remove();line.remove();states.delete(svg);}};states.set(svg,state);
+  const state={svg,hide,syncGroup:points.paired?.options.syncGroup,syncPeriod(period){const i=data.findIndex(g=>window.ResearchWorkspaceModel?.samePeriod(g.period,period));if(i<0){hide(true);return;}show(i,null,true);},valueScope:config?.scope,refreshValues(){attach(svg,originalPoints,options);},refresh(){if(tip.hidden)return;const b=svg.getBoundingClientRect();if(b.bottom<0||b.top>innerHeight)hide(true);else place(data[index]);},destroy(){hide(true);abort.abort();tip.remove();line.remove();states.delete(svg);}};states.set(svg,state);
   listen(svg,'pointermove',e=>{if(e.pointerType==='touch')return;if(!isPinned)show(nearest(e),e);});
   listen(svg,'pointerleave',()=>hide());
   listen(svg,'click',e=>{const next=nearest(e);if(isPinned&&next===index){hide(true);return;}pinned?.hide(true);isPinned=true;pinned=state;show(next,e);});
@@ -176,7 +177,7 @@ function scan(){
     if(!node.dataset.chartTooltip)node.dataset.chartTooltip=node.getAttribute('aria-label')||node.getAttribute('title')||node.textContent.trim();
     if(!node.closest('button,a'))node.tabIndex=0;
   });
-  document.querySelectorAll('svg:not([aria-hidden=true])').forEach(svg=>{if(states.has(svg))return;const points=nativePoints(svg);if(points.length)attach(svg,points);});
+  document.querySelectorAll('svg:not([aria-hidden=true]):not([data-chart-static])').forEach(svg=>{if(states.has(svg))return;const points=nativePoints(svg);if(points.length)attach(svg,points);});
 }
 function schedule(){if(!queued){queued=true;requestAnimationFrame(scan);}}
 function canvas(Chart){
@@ -261,7 +262,7 @@ function paired(rows,opt={}){
   const points=[];
   normalized.forEach((r,ri)=>{
     const text=periodText(r.period)+'\n'+r.values.map(s=>(seriesCount>1?s.name+'：':'')+(showValue?fmt(s.value)+(Number.isFinite(s.value)?' '+unit:''):'')+(showValue&&showChange?'  |  ':'')+(showChange?(opt.changeLabel||'同比')+' '+(Number.isFinite(s.change)?new Intl.NumberFormat('zh-CN',{minimumFractionDigits:opt.changePrecision??0,maximumFractionDigits:opt.changePrecision??opt.precision??2}).format(s.change):'—')+(Number.isFinite(s.change)?' '+changeUnit:''):'')).join('\n');
-    points.push({x:px(r.x),text,labels:r.values.flatMap((s,si)=>[
+    points.push({period:r.period,x:px(r.x),text,labels:r.values.flatMap((s,si)=>[
       ...(showValue&&Number.isFinite(s.value)?[{x:px(r.x)+(opt.valueStyle==='line'?0:(si-(seriesCount-1)/2)*barWidth),y:py(s.value,vd),text:fmt(s.value),kind:'value',color:colors[si%colors.length]}]:[]),
       ...(showChange&&Number.isFinite(s.change)?[{x:px(r.x),y:py(s.change,cd),text:(s.change>0?'+':'')+new Intl.NumberFormat('zh-CN',{minimumFractionDigits:opt.changePrecision??1,maximumFractionDigits:opt.changePrecision??1}).format(s.change)+(changeUnit==='%'?'%':changeUnit==='百分点'?'pct':changeUnit),kind:'change',color:colors[si%colors.length]}]:[])
     ])});
@@ -288,6 +289,7 @@ function drawPaired(host,rows,opt={}){
   const result=paired(rows,{...opt,width});
   host.querySelectorAll('svg').forEach(svg=>states.get(svg)?.destroy());
   host.innerHTML=result.html;attach(host,result.points);
+  host.dataset.researchChart="true";host._researchChart={rows,options:opt};document.dispatchEvent(new CustomEvent("research:chart",{detail:{host,rows,options:opt}}));
   pairedObservers.get(host)?.disconnect();
   if(typeof ResizeObserver!=='undefined'){let last=host.clientWidth;const observer=new ResizeObserver(()=>{if(host.clientWidth>0&&Math.abs(host.clientWidth-last)>2){observer.disconnect();drawPaired(host,rows,opt);}});observer.observe(host);pairedObservers.set(host,observer);}
   return result;

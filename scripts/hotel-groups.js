@@ -5,7 +5,7 @@
  for(const p of plots){state[p.windowKey]=['12','26','52','156','all'].includes(q.get(p.windowKey))?q.get(p.windowKey):'12';state[p.modeKey]=q.get('compare')==='all'&&['value','change'].includes(q.get(p.modeKey))?q.get(p.modeKey):'value';}
  let weekly=[],periods=[],update={},frame=0;
  const row=(id,metric)=>{const s=G.series(weekly,id,metric);return {s,o:G.observation(s,state.period)};};
- function save(){const p=new URLSearchParams({view:'groups',type:'weekly',compare:'all',period:state.period===periods.at(-1)?'latest':state.period});for(const plot of plots){p.set(plot.windowKey,state[plot.windowKey]);p.set(plot.modeKey,state[plot.modeKey]);}history.replaceState(null,'',location.pathname+location.search+'#'+p.toString());dispatchEvent(new Event('hashchange'));}
+ function save(){const p=new URLSearchParams({view:'groups',type:'weekly',compare:'all',period:state.period===periods.at(-1)?'latest':state.period});for(const plot of plots){p.set(plot.windowKey,state[plot.windowKey]);p.set(plot.modeKey,state[plot.modeKey]);}history.replaceState(null,'',SiteUI.contextURL(location.pathname+location.search+'#'+p.toString()));dispatchEvent(new Event('hashchange'));}
  const growth=o=>o?.yoy?'<span class="'+tone(o.yoy.value)+'">同比 '+signed(o.yoy.value)+'%</span>':'<span class="hd-neutral">同比 —</span>';
  function paint(){
   $('group-period').value=state.period;

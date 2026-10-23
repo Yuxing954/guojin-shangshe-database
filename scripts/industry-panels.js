@@ -50,7 +50,7 @@
       panel.frame.inert=!selected;panel.frame.setAttribute('aria-hidden',String(!selected));
     });
     panels.set('hotel',next);
-    if(key==='weekly'){try{const win=next.frame.contentWindow,params=new URLSearchParams(win.location.hash.slice(1));params.set('view',view);win.history.replaceState(null,'','#'+params);win.dispatchEvent(new CustomEvent('hotel:switch-view',{detail:view}));}catch{}}
+    if(key==='weekly'){try{const win=next.frame.contentWindow,params=new URLSearchParams(win.location.hash.slice(1));params.set('view',view);win.history.replaceState(null,'',SiteUI.contextURL('#'+params));win.dispatchEvent(new CustomEvent('hotel:switch-view',{detail:view}));}catch{}}
     try{next.frame.contentWindow.dispatchEvent(new Event('resize'));}catch{}
     if(active==='hotel')paint();
     if(next.state==='ready'){try{SiteUI.save({panelSector:'hotel',panelView:next.frame.contentWindow.location.hash.slice(1)});}catch{}}
@@ -77,5 +77,6 @@
   new MutationObserver(()=>{if(!goldPending){goldPending=true;requestAnimationFrame(checkGold);}}).observe(gold,{subtree:true,childList:true,attributes:true,characterData:true});
   window.IndustryPanels={show};
 })();
+
 
 

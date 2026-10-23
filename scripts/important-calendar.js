@@ -6,7 +6,7 @@ const query=new URLSearchParams(location.search);
 if(/^\d{4}-\d{2}$/.test(query.get('im')||'')&&Number(query.get('im').slice(5))>=1&&Number(query.get('im').slice(5))<=12)month=query.get('im');
 if(query.get('iv')==='month')view='month';
 if(['中国','海外'].includes(query.get('region')))region=query.get('region');
-function sync(){const q=new URLSearchParams(location.search);if(!$('importantPanel').hidden){q.set('tab','important');if(view==='month'){q.set('iv','month');q.set('im',month);}else{q.delete('iv');q.delete('im');}if(region)q.set('region',region);else q.delete('region');}else{for(const key of ['tab','iv','im','region'])q.delete(key);}history.replaceState(null,'',location.pathname+(q.size?'?'+q:''));}
+function sync(){const q=new URLSearchParams(location.search);if(!$('importantPanel').hidden){q.set('tab','important');if(view==='month'){q.set('iv','month');q.set('im',month);}else{q.delete('iv');q.delete('im');}if(region)q.set('region',region);else q.delete('region');}else{for(const key of ['tab','iv','im','region'])q.delete(key);}history.replaceState(null,'',SiteUI.contextURL(location.pathname+(q.size?'?'+q:'')));}
 function tab(name,update=true){
  const important=name==='important';$('importantPanel').hidden=!important;$('earningsPanel').hidden=important;
  document.querySelectorAll('[data-calendar-tab]').forEach(b=>{b.setAttribute('aria-pressed',String(b.dataset.calendarTab===name));});
@@ -52,3 +52,4 @@ function currentMonth(){const current=M.date(Date.now()).slice(0,7);return data?
  setInterval(()=>{if(data&&!$('importantPanel').hidden)render();},60000);
  tab(query.get('tab')==='important'?'important':'earnings',false);
 })();
+

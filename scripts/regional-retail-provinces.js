@@ -4,7 +4,7 @@
  // Retain old shared links while offering only cumulative and monthly controls.
  const q=new URLSearchParams(location.search);let changed=false;
  for(const [b,p] of [['basis','period'],['tierBasis','tierPeriod'],['breakdownBasis','breakdownPeriod']])if(q.get(b)==='combined'){q.set(b,'month');q.set(p,(q.get(p)||'2026-02').slice(0,7)+'c');changed=true;}
- if(changed)history.replaceState(null,'',location.pathname+'?'+q+location.hash);
+ if(changed)history.replaceState(null,'',SiteUI.contextURL(location.pathname+'?'+q+location.hash));
  let data,registry,rows=[];
  const num=(v,d=1)=>F(v)?v.toLocaleString('zh-CN',{minimumFractionDigits:d,maximumFractionDigits:d}):'—',pct=v=>F(v)?(v>0?'+':'')+num(v)+'%':'—';
  const opts=(values,value)=>values.map(v=>'<option value="'+E(v.id||v)+'"'+((v.id||v)===value?' selected':'')+'>'+E(v.name||M.periodLabel(v))+'</option>').join('');

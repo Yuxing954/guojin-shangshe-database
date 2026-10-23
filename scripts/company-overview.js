@@ -19,7 +19,7 @@
   if(view==='evidence'){location.href='data-notes.html#companies';return;}
   const compare=view==='compare';active=compare?'overview':view;
   for(const v of ['overview','financial','history']){ $('db-view-'+v).hidden=v!==active;const b=document.querySelector('[data-view="'+v+'"]');b.classList.toggle('active',v===active);b.setAttribute('aria-selected',String(v===active));}
-  const u=new URL(location.href);u.searchParams.set('db-view',active);u.searchParams.delete('db-chapter');history.replaceState(null,'',u);
+  const u=new URL(location.href);u.searchParams.set('db-view',active);u.searchParams.delete('db-chapter');history.replaceState(null,'',SiteUI.contextURL(u));
   if(compare){$('db-compare-panel').open=true;paintCompare();}
   if(window.SiteCharts)window.SiteCharts.scan?.();
  }

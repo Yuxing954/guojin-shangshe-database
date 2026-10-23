@@ -13,7 +13,7 @@
   region:saved?(params.get('region')||''):'',category:saved?(params.get('category')||''):'',
   mode:saved?(params.get('operation')||'合计'):'合计',currency:saved?(params.get('currency')||'CNY'):'CNY',
   display:saved?(params.get('display')||'change'):'change',query:saved?(params.get('q')||''):'',
-  detailCategory:'*',detailMode:'*',page:1,advanced:false
+  detailCategory:params.get('detailCategory')||'*',detailMode:params.get('detailMode')||'*',page:Math.max(1,Number(params.get('page'))||1),advanced:false,peers:params.has('peers')?params.get('peers').split(','):null
  };
  let manifest,data,renderToken=0;
  const uniq=values=>[...new Set(values)],unit=(i,c='CNY')=>i===2?'%':({CNY:'元',EUR:'欧元',USD:'美元'}[c]||c);
@@ -25,6 +25,7 @@
  function cell(r,i){return '<td>'+value(r,i)+'<small class="'+(r?.change<0?'oh-negative':'')+'">'+M.growth(r?.change,i===2)+'</small>'+source(r)+'</td>';}
  function resetDimensions(){state.region='';state.category='';state.mode='合计';state.currency='CNY';state.detailCategory='*';state.detailMode='*';state.page=1;}
  function normalize(){
+  state.peers=(state.peers??manifest.companies.map(c=>c.id)).filter((id,i,a)=>manifest.companies.some(c=>c.id===id)&&a.indexOf(id)===i);
   if(!['同店','全部'].includes(state.kind))state.kind='全部';
   if(!['单季度','累计'].includes(state.frequency))state.frequency='单季度';
   if(!['change','value'].includes(state.display))state.display='change';
@@ -78,9 +79,9 @@
  function updateURL(){
   const u=new URL(location.href);u.search='';
   for(const k of ['company','kind','frequency','from','to','display','range'])u.searchParams.set(k,state[k]);
-  u.searchParams.set('sampleView','3');
+  u.searchParams.set('sampleView','3');if(comparison)u.searchParams.set('peers',state.peers.join(','));else{u.searchParams.set('detailCategory',state.detailCategory);u.searchParams.set('detailMode',state.detailMode);if(state.page>1)u.searchParams.set('page',state.page);}
   if(!comparison){u.searchParams.set('tab',state.tab);for(const k of ['region','category','currency'])if(state[k])u.searchParams.set(k,state[k]);u.searchParams.set('operation',state.mode);if(state.query)u.searchParams.set('q',state.query);}
-  history.replaceState(null,'',u);window.HotelWorkspace?.remember();
+  history.replaceState(null,'',SiteUI.contextURL(u));window.HotelWorkspace?.remember();
   const link=$('oh-compare-link')||$('oh-back');
   if(link){const next=new URL(comparison?'company-database.html':'domestic-hotel-comparison.html',location.href);for(const k of ['company','kind','frequency','from','to','display','range'])next.searchParams.set(k,state[k]);next.searchParams.set('sampleView','3');link.href=next.href;}
  }
@@ -89,8 +90,8 @@
   return cache.get(c.id);
  }
  function chart(series,qs,idx,title){
-  const id='dh-chart-'+charts.size,rows=qs.map((q,x)=>({period:periodName(M.period(q,state.frequency)),x,values:series.map(s=>({name:s.name,value:s.points[x]?.records[idx]?.value??null,change:s.points[x]?.records[idx]?.change??null}))}));
-  charts.set(id,{rows,idx,options:{name:title,unit:unit(idx,series[0]?.currency),precision:idx===2?1:0,changeUnit:idx===2?'pct':'%',changePrecision:1,mode:state.display,valueStyle:'line',colors:colors.slice(0,series.length),legend:'series',gap:1.5,trimEmpty:false}});
+  const id='dh-chart-'+charts.size,rows=qs.map((q,x)=>({period:M.period(q,state.frequency),x,values:series.map(s=>({id:s.id||data?.company?.id,name:s.name,value:s.points[x]?.records[idx]?.value??null,change:s.points[x]?.records[idx]?.change??null,source:[s.points[x]?.records[idx]?.evidence?.url,s.points[x]?.records[idx]?.evidence?.pdf_page?'PDF物理页 '+s.points[x].records[idx].evidence.pdf_page:'',s.points[x]?.records[idx]?.evidence?.comparison_basis].filter(Boolean).join(' · ')}))}));
+  charts.set(id,{rows,idx,options:{name:title,syncGroup:'domestic-hotels',source:series.map(s=>s.name).join(' / ')+'；公司原始披露，详见数据来源',basis:[state.kind,state.frequency,state.region,state.category,state.mode].filter(Boolean).join(' · '),unit:unit(idx,series[0]?.currency),precision:idx===2?1:0,changeUnit:idx===2?'pct':'%',changePrecision:1,mode:state.display,valueStyle:'line',colors:colors.slice(0,series.length),legend:'series',gap:1.5,trimEmpty:false}});
   return '<div class="oh-plot" id="'+id+'"></div>';
  }
  function bindCharts(){for(const[id,c]of charts){const host=$(id);if(!host)continue;const draw=()=>SiteCharts.drawPaired(host,c.rows,c.options);draw();const input=host.closest('article').querySelector('[data-chart-labels]');input.onchange=()=>{labelStates.set(c.idx,input.checked);draw();};}}
@@ -117,7 +118,9 @@
  async function compare(token){
   toolbar(null);bindPeriods();$('oh-content').innerHTML='';$('oh-status').textContent='正在读取四集团…';
   const datasets=await Promise.all(manifest.companies.map(loadCompany));if(token!==renderToken)return;$('oh-status').textContent='';
-  const qs=M.range(manifest.quarters,state.from,state.to),series=datasets.map(d=>({name:d.company.name,currency:'CNY',points:M.mainSeries(d,state.kind,qs,state.frequency)}));
+  const qs=M.range(manifest.quarters,state.from,state.to),series=datasets.filter(d=>state.peers.includes(d.company.id)).map(d=>({id:d.company.id,name:d.company.name,currency:'CNY',points:M.mainSeries(d,state.kind,qs,state.frequency)}));
+  const peers=document.createElement('fieldset');peers.className='site-peer-options';peers.innerHTML='<legend>对比公司</legend>'+manifest.companies.map(c=>'<label><input type="checkbox" data-domestic-peer="'+esc(c.id)+'"'+(state.peers.includes(c.id)?' checked':'')+'>'+esc(c.name)+'</label>').join('');$('oh-toolbar').prepend(peers);peers.onchange=()=>{state.peers=[...peers.querySelectorAll(':checked')].map(e=>e.dataset.domesticPeer);render();};
+  if(!series.length){$('oh-content').innerHTML='<div class="portal-empty">请选择对比公司</div>';$('oh-export-view').disabled=true;return;}
   $('oh-profile').innerHTML='<div><h2>国内四集团</h2><p>境内主口径 · 人民币</p></div><span class="oh-tag">'+(state.kind==='同店'?'同店酒店':'全部酒店')+'</span>';
   $('oh-content').innerHTML='<article class="oh-block site-panel"><div class="oh-block-head"><h3>'+esc(periodName(M.period(state.to,state.frequency)))+'</h3><small>'+esc(state.frequency)+' · 元 / %</small></div>'+table(['集团','RevPAR','ADR','OCC'],series.map(s=>'<tr><td>'+esc(s.name)+(s.name==='锦江酒店'&&state.kind==='同店'&&state.frequency==='单季度'&&!/Q1$/.test(state.to)?'<small>仅累计披露</small>':'')+'</td>'+s.points.at(-1).records.map((r,i)=>cell(r,i)).join('')+'</tr>'))+'</article>'+blocks(series,qs);
   $('oh-export-view').onclick=()=>exportRows(series.flatMap(s=>s.points.flatMap(p=>p.records.filter(Boolean))),'国内四集团_'+state.kind+'对比.csv');

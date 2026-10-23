@@ -1,0 +1,540 @@
+{
+  "baseline": "PR184 @24b6c28",
+  "date": "2026-10-23",
+  "features": [
+    {
+      "task": "找到指标、公司、纪要、附件",
+      "status": "优化/新增",
+      "pages": [
+        "search.html"
+      ],
+      "reuse": "ResourceModel、resource-index、宏观catalog、data-manifest、library元数据",
+      "implemented": "按类型分组、共享指标别名、直接定位指标；附件目录按需读取、未转写标注、分页刷新恢复",
+      "test": "site-workspace.browser: 搜索与附件分页；search failure/retry"
+    },
+    {
+      "task": "保存与分享研究上下文",
+      "status": "新增",
+      "pages": "全部24个有效入口",
+      "reuse": "各模块既有URL状态、SiteUI.registry",
+      "implemented": "本设备命名视图、干净窗口链接恢复、标准/紧凑密度；iframe分享当前板块独立地址；只保留登记公开参数",
+      "test": "无本地状态恢复两公司、期间、表格模式、密度与联动开关"
+    },
+    {
+      "task": "公司比较",
+      "status": "优化",
+      "pages": [
+        "domestic-hotel-comparison.html",
+        "overseas-hotel-comparison.html"
+      ],
+      "reuse": "原始公司经营模型、来源证据与CSV",
+      "implemented": "国内增加多选；海外系列色改用稳定公司ID；原值/同比、期间、样本与原始导出不混用",
+      "test": "国内7427条源数据与海外原始对照专项；两公司CSV比对与缺失值检查"
+    },
+    {
+      "task": "图表、明细、复制与PPT输出",
+      "status": "新增",
+      "pages": "使用SiteCharts.drawPaired的已接入图表；其余SVG增加PNG入口并保留模块原始导出",
+      "reuse": "drawPaired精确输入rows、既有CSV/XLSX/产品PNG",
+      "implemented": "同组rows生成图中明细、TSV/HTML剪贴板与CSV；PNG含图例、单位、完整期间、口径和来源；移除浮层",
+      "test": "CSV与渲染器输入逐值比对、剪贴板回读、PNG尺寸和实际打开检查"
+    },
+    {
+      "task": "关联图同步定位",
+      "status": "新增",
+      "pages": [
+        "company-database.html",
+        "domestic-hotel-comparison.html",
+        "overseas-hotels.html",
+        "overseas-hotel-comparison.html",
+        "dutyfree-dashboard.html#korea"
+      ],
+      "reuse": "SiteCharts.attach鼠标/键盘/触屏",
+      "implemented": "显式组内完整期间精确匹配；各图轴与单位不变；缺少该期时不显示伪造读数",
+      "test": "RevPAR/ADR/OCC Home定位相同完整季度；不同频率拒绝匹配"
+    },
+    {
+      "task": "来源核验和关闭后连续操作",
+      "status": "复用/优化",
+      "pages": "现有来源弹窗与明细入口",
+      "reuse": "各模块来源模型、PDF页码、原网址、原文",
+      "implemented": "保留证据内容；关闭来源恢复触发焦点，筛选不变；新增图中数据带传入的来源与口径",
+      "test": "公司来源/CSV、研究附件来源、免税原始机构、移动端Esc"
+    },
+    {
+      "task": "表格扫描与复制",
+      "status": "优化/新增",
+      "pages": "有效页面原生数据表；dashboard.html额外支持全筛选复制与排序",
+      "reuse": "既有表格、分页和原始下载",
+      "implemented": "共享密度、当前行选中、本页复制；数值与small补充字段分列；代码列文本、缺失留空；当前筛选与完整数据命名区分",
+      "test": "数值、代码、空值、公式文本单测；明细排序刷新和CSV下载"
+    },
+    {
+      "task": "长纪要、原文和附件连续阅读",
+      "status": "复用/优化",
+      "pages": [
+        "research.html",
+        "daily.html"
+      ],
+      "reuse": "现有阅读器、摘要/原文、原件链接、未转写状态",
+      "implemented": "记录页码、已加载历史范围，冷启动与关闭阅读恢复；保留日报原文与原有复制链接",
+      "test": "纪要专项、第二页刷新与关闭、390px日报展开与链接回读"
+    },
+    {
+      "task": "真实更新与性能",
+      "status": "复用/边界",
+      "pages": [
+        "macro.html",
+        "earnings.html",
+        "daily.html"
+      ],
+      "reuse": "既有原始发布日期、快照截止、日历与ICS、请求令牌",
+      "implemented": "保留真实时间语义和快速切换请求保护；附件仅按需读取；记录同机前后性能实测",
+      "test": "慢请求/失败/重试、快速选公司、宏观懒加载与报价生命周期"
+    },
+    {
+      "task": "历史修订、冻结数据快照、复杂变换",
+      "status": "未实施：缺少可靠版本或明确指标规则",
+      "pages": "全站",
+      "reuse": "既有模型继续使用；未增加存储或爬虫",
+      "implemented": "不伪造修订记录，不承诺配置收藏可以冻结历史；不新增频率转换、二次同比或自动排名",
+      "test": "金融模型与数据文件无改动；null/0/频率/口径单测"
+    }
+  ],
+  "references": [
+    {
+      "name": "Koyfin",
+      "adoption": "组件按组联动",
+      "url": "https://www.koyfin.com/help/my-dashboards-groups/",
+      "evidence": "官方公开说明，2026-10-23查阅；本项目实现由自身数据和架构限定"
+    },
+    {
+      "name": "FRED",
+      "adoption": "区分数据文件与图表输出",
+      "url": "https://fred.stlouisfed.org/help/graphs/share-my-fred-graph/export-options",
+      "evidence": "官方公开说明，2026-10-23查阅；本项目实现由自身数据和架构限定"
+    },
+    {
+      "name": "Our World in Data",
+      "adoption": "图表、表格与下载保持一致",
+      "url": "https://ourworldindata.org/redesigning-our-interactive-data-visualizations",
+      "evidence": "官方公开说明，2026-10-23查阅；本项目实现由自身数据和架构限定"
+    },
+    {
+      "name": "TradingView",
+      "adoption": "联动按组选择，期间精确定位",
+      "url": "https://www.tradingview.com/support/solutions/43000629992-how-to-sync-the-charts-of-my-layout/",
+      "evidence": "官方公开说明，2026-10-23查阅；本项目实现由自身数据和架构限定"
+    },
+    {
+      "name": "FINVIZ",
+      "adoption": "筛选条件和结果扫描",
+      "url": "https://finviz.com/help/screener",
+      "evidence": "官方公开说明，2026-10-23查阅；本项目实现由自身数据和架构限定"
+    },
+    {
+      "name": "Linear",
+      "adoption": "保存并分享筛选视图",
+      "url": "https://linear.app/docs/custom-views",
+      "evidence": "官方公开说明，2026-10-23查阅；本项目实现由自身数据和架构限定"
+    }
+  ],
+  "pages": [
+    {
+      "page": "companies.html",
+      "title": "覆盖池",
+      "kind": "redirect",
+      "views": [
+        "companies.html"
+      ],
+      "action": "保留兼容入口，不恢复退役导航",
+      "template": "指标看板",
+      "embed": false,
+      "verification": "对应真实浏览器记录见验收包coverage.json；交互专项见workflow-results.json"
+    },
+    {
+      "page": "company-database.html",
+      "title": "重点公司数据库",
+      "kind": "page",
+      "views": [
+        "company-database.html?company=jinjiang",
+        "company-database.html?company=hworld",
+        "company-database.html?company=btg",
+        "company-database.html?company=atour"
+      ],
+      "action": "复用共享外壳与业务模型，新增共享研究工具和适用表格/图表操作",
+      "template": "公司比较与来源",
+      "embed": false,
+      "verification": "对应真实浏览器记录见验收包coverage.json；交互专项见workflow-results.json"
+    },
+    {
+      "page": "consumption-macro.html",
+      "title": "consumption-macro.html",
+      "kind": "redirect",
+      "views": [
+        "consumption-macro.html"
+      ],
+      "action": "保留兼容入口，不恢复退役导航",
+      "template": "指标看板",
+      "embed": false,
+      "verification": "对应真实浏览器记录见验收包coverage.json；交互专项见workflow-results.json"
+    },
+    {
+      "page": "consumption-monthly-product.html",
+      "title": "consumption-monthly-product.html",
+      "kind": "redirect",
+      "views": [
+        "consumption-monthly-product.html"
+      ],
+      "action": "保留兼容入口，不恢复退役导航",
+      "template": "指标看板",
+      "embed": false,
+      "verification": "对应真实浏览器记录见验收包coverage.json；交互专项见workflow-results.json"
+    },
+    {
+      "page": "cpi-monthly-product.html",
+      "title": "CPI月度产品",
+      "kind": "page",
+      "views": [
+        "cpi-monthly-product.html"
+      ],
+      "action": "复用共享外壳与业务模型，新增共享研究工具和适用表格/图表操作",
+      "template": "数据/产品工具",
+      "embed": false,
+      "verification": "对应真实浏览器记录见验收包coverage.json；交互专项见workflow-results.json"
+    },
+    {
+      "page": "cruise-dashboard.html",
+      "title": "三峡游轮",
+      "kind": "page",
+      "views": [
+        "cruise-dashboard.html#view=overview",
+        "cruise-dashboard.html#view=audience",
+        "cruise-dashboard.html#view=operators"
+      ],
+      "action": "复用共享外壳与业务模型，新增共享研究工具和适用表格/图表操作",
+      "template": "指标看板",
+      "embed": true,
+      "verification": "对应真实浏览器记录见验收包coverage.json；交互专项见workflow-results.json"
+    },
+    {
+      "page": "daily.html",
+      "title": "国金商社日报",
+      "kind": "page",
+      "views": [
+        "daily.html"
+      ],
+      "action": "复用共享外壳与业务模型，新增共享研究工具和适用表格/图表操作",
+      "template": "指标看板",
+      "embed": false,
+      "verification": "对应真实浏览器记录见验收包coverage.json；交互专项见workflow-results.json"
+    },
+    {
+      "page": "dashboard.html",
+      "title": "数据浏览器",
+      "kind": "page",
+      "views": [
+        "dashboard.html?dataset=valuation"
+      ],
+      "action": "复用共享外壳与业务模型，新增共享研究工具和适用表格/图表操作",
+      "template": "数据/产品工具",
+      "embed": false,
+      "verification": "对应真实浏览器记录见验收包coverage.json；交互专项见workflow-results.json"
+    },
+    {
+      "page": "data-notes.html",
+      "title": "数据来源与说明",
+      "kind": "page",
+      "views": [
+        "data-notes.html"
+      ],
+      "action": "复用共享外壳与业务模型，新增共享研究工具和适用表格/图表操作",
+      "template": "数据/产品工具",
+      "embed": false,
+      "verification": "对应真实浏览器记录见验收包coverage.json；交互专项见workflow-results.json"
+    },
+    {
+      "page": "dining.html",
+      "title": "餐饮",
+      "kind": "page",
+      "views": [
+        "dining.html"
+      ],
+      "action": "复用共享外壳与业务模型，新增共享研究工具和适用表格/图表操作",
+      "template": "指标看板",
+      "embed": true,
+      "verification": "对应真实浏览器记录见验收包coverage.json；交互专项见workflow-results.json"
+    },
+    {
+      "page": "domestic-hotel-comparison.html",
+      "title": "国内酒店公司对比",
+      "kind": "page",
+      "views": [
+        "domestic-hotel-comparison.html"
+      ],
+      "action": "复用共享外壳与业务模型，新增共享研究工具和适用表格/图表操作",
+      "template": "公司比较与来源",
+      "embed": false,
+      "verification": "对应真实浏览器记录见验收包coverage.json；交互专项见workflow-results.json"
+    },
+    {
+      "page": "dutyfree-dashboard.html",
+      "title": "免税",
+      "kind": "page",
+      "views": [
+        "dutyfree-dashboard.html#monthly",
+        "dutyfree-dashboard.html#holidays",
+        "dutyfree-dashboard.html#korea"
+      ],
+      "action": "复用共享外壳与业务模型，新增共享研究工具和适用表格/图表操作",
+      "template": "指标看板",
+      "embed": true,
+      "verification": "对应真实浏览器记录见验收包coverage.json；交互专项见workflow-results.json"
+    },
+    {
+      "page": "earnings.html",
+      "title": "财报日历",
+      "kind": "page",
+      "views": [
+        "earnings.html"
+      ],
+      "action": "复用共享外壳与业务模型，新增共享研究工具和适用表格/图表操作",
+      "template": "日历",
+      "embed": false,
+      "verification": "对应真实浏览器记录见验收包coverage.json；交互专项见workflow-results.json"
+    },
+    {
+      "page": "gold-jewelry.html",
+      "title": "黄金",
+      "kind": "redirect",
+      "views": [
+        "gold-jewelry.html"
+      ],
+      "action": "保留兼容入口，不恢复退役导航",
+      "template": "指标看板",
+      "embed": false,
+      "verification": "对应真实浏览器记录见验收包coverage.json；交互专项见workflow-results.json"
+    },
+    {
+      "page": "hotel-dashboard.html",
+      "title": "酒店",
+      "kind": "page",
+      "views": [
+        "hotel-dashboard.html#view=overview",
+        "hotel-dashboard.html#view=cities",
+        "hotel-dashboard.html#view=structure"
+      ],
+      "action": "复用共享外壳与业务模型，新增共享研究工具和适用表格/图表操作",
+      "template": "指标看板",
+      "embed": true,
+      "verification": "对应真实浏览器记录见验收包coverage.json；交互专项见workflow-results.json"
+    },
+    {
+      "page": "hotel-groups.html",
+      "title": "酒店集团",
+      "kind": "page",
+      "views": [
+        "hotel-groups.html"
+      ],
+      "action": "复用共享外壳与业务模型，新增共享研究工具和适用表格/图表操作",
+      "template": "指标看板",
+      "embed": true,
+      "verification": "对应真实浏览器记录见验收包coverage.json；交互专项见workflow-results.json"
+    },
+    {
+      "page": "hotel-holiday-dashboard.html",
+      "title": "酒店假期数据",
+      "kind": "page",
+      "views": [
+        "hotel-holiday-dashboard.html"
+      ],
+      "action": "复用共享外壳与业务模型，新增共享研究工具和适用表格/图表操作",
+      "template": "指标看板",
+      "embed": true,
+      "verification": "对应真实浏览器记录见验收包coverage.json；交互专项见workflow-results.json"
+    },
+    {
+      "page": "hotel-weekly-product.html",
+      "title": "酒店周度产品",
+      "kind": "page",
+      "views": [
+        "hotel-weekly-product.html"
+      ],
+      "action": "复用共享外壳与业务模型，新增共享研究工具和适用表格/图表操作",
+      "template": "数据/产品工具",
+      "embed": false,
+      "verification": "对应真实浏览器记录见验收包coverage.json；交互专项见workflow-results.json"
+    },
+    {
+      "page": "index.html",
+      "title": "index.html",
+      "kind": "redirect",
+      "views": [
+        "index.html"
+      ],
+      "action": "保留兼容入口，不恢复退役导航",
+      "template": "指标看板",
+      "embed": false,
+      "verification": "对应真实浏览器记录见验收包coverage.json；交互专项见workflow-results.json"
+    },
+    {
+      "page": "industry.html",
+      "title": "行业数据",
+      "kind": "page",
+      "views": [
+        "industry.html#hotel",
+        "industry.html?panelSector=hotel&panelView=view%3Dcities#hotel",
+        "industry.html?panelSector=hotel&panelView=view%3Dstructure#hotel",
+        "industry.html?panelSector=hotel&panelView=view%3Dgroups#hotel",
+        "industry.html?panelSector=hotel&panelView=view%3Dholiday#hotel",
+        "industry.html#dutyfree",
+        "industry.html#dining",
+        "industry.html#tourism",
+        "industry.html#travel"
+      ],
+      "action": "复用共享外壳与业务模型，新增共享研究工具和适用表格/图表操作",
+      "template": "指标看板",
+      "embed": false,
+      "verification": "对应真实浏览器记录见验收包coverage.json；交互专项见workflow-results.json"
+    },
+    {
+      "page": "macro.html",
+      "title": "核心指标",
+      "kind": "page",
+      "views": [
+        "macro.html?view=indicators&country=CN",
+        "macro.html?view=indicators&country=US",
+        "macro.html?view=fedwatch",
+        "macro.html?view=predictions"
+      ],
+      "action": "复用共享外壳与业务模型，新增共享研究工具和适用表格/图表操作",
+      "template": "指标看板",
+      "embed": false,
+      "verification": "对应真实浏览器记录见验收包coverage.json；交互专项见workflow-results.json"
+    },
+    {
+      "page": "overseas-hotel-comparison.html",
+      "title": "海外酒店公司对比",
+      "kind": "page",
+      "views": [
+        "overseas-hotel-comparison.html"
+      ],
+      "action": "复用共享外壳与业务模型，新增共享研究工具和适用表格/图表操作",
+      "template": "公司比较与来源",
+      "embed": false,
+      "verification": "对应真实浏览器记录见验收包coverage.json；交互专项见workflow-results.json"
+    },
+    {
+      "page": "overseas-hotels.html",
+      "title": "海外酒店",
+      "kind": "page",
+      "views": [
+        "overseas-hotels.html?company=marriott",
+        "overseas-hotels.html?company=hilton",
+        "overseas-hotels.html?company=hyatt",
+        "overseas-hotels.html?company=ihg"
+      ],
+      "action": "复用共享外壳与业务模型，新增共享研究工具和适用表格/图表操作",
+      "template": "公司比较与来源",
+      "embed": false,
+      "verification": "对应真实浏览器记录见验收包coverage.json；交互专项见workflow-results.json"
+    },
+    {
+      "page": "overseas.html",
+      "title": "overseas.html",
+      "kind": "redirect",
+      "views": [
+        "overseas.html"
+      ],
+      "action": "保留兼容入口，不恢复退役导航",
+      "template": "指标看板",
+      "embed": false,
+      "verification": "对应真实浏览器记录见验收包coverage.json；交互专项见workflow-results.json"
+    },
+    {
+      "page": "quotes.html",
+      "title": "实时行情",
+      "kind": "page",
+      "views": [
+        "quotes.html"
+      ],
+      "action": "复用共享外壳与业务模型，新增共享研究工具和适用表格/图表操作",
+      "template": "指标看板",
+      "embed": false,
+      "verification": "对应真实浏览器记录见验收包coverage.json；交互专项见workflow-results.json"
+    },
+    {
+      "page": "regional-retail.html",
+      "title": "地方社零",
+      "kind": "page",
+      "views": [
+        "regional-retail.html?view=tiers",
+        "regional-retail.html?view=breakdown",
+        "regional-retail.html?view=provinces",
+        "regional-retail.html?view=comparison",
+        "regional-retail.html?view=structure"
+      ],
+      "action": "复用共享外壳与业务模型，新增共享研究工具和适用表格/图表操作",
+      "template": "指标看板",
+      "embed": false,
+      "verification": "对应真实浏览器记录见验收包coverage.json；交互专项见workflow-results.json"
+    },
+    {
+      "page": "research.html",
+      "title": "观点纪要",
+      "kind": "page",
+      "views": [
+        "research.html"
+      ],
+      "action": "复用共享外壳与业务模型，新增共享研究工具和适用表格/图表操作",
+      "template": "阅读/搜索",
+      "embed": false,
+      "verification": "对应真实浏览器记录见验收包coverage.json；交互专项见workflow-results.json"
+    },
+    {
+      "page": "retail-monthly-product.html",
+      "title": "社零月度产品",
+      "kind": "page",
+      "views": [
+        "retail-monthly-product.html"
+      ],
+      "action": "复用共享外壳与业务模型，新增共享研究工具和适用表格/图表操作",
+      "template": "数据/产品工具",
+      "embed": false,
+      "verification": "对应真实浏览器记录见验收包coverage.json；交互专项见workflow-results.json"
+    },
+    {
+      "page": "search.html",
+      "title": "站内搜索",
+      "kind": "page",
+      "views": [
+        "search.html"
+      ],
+      "action": "复用共享外壳与业务模型，新增共享研究工具和适用表格/图表操作",
+      "template": "阅读/搜索",
+      "embed": false,
+      "verification": "对应真实浏览器记录见验收包coverage.json；交互专项见workflow-results.json"
+    },
+    {
+      "page": "travel-dashboard.html",
+      "title": "旅游",
+      "kind": "page",
+      "views": [
+        "travel-dashboard.html#view=domestic",
+        "travel-dashboard.html#view=inbound",
+        "travel-dashboard.html#view=outbound"
+      ],
+      "action": "复用共享外壳与业务模型，新增共享研究工具和适用表格/图表操作",
+      "template": "指标看板",
+      "embed": true,
+      "verification": "对应真实浏览器记录见验收包coverage.json；交互专项见workflow-results.json"
+    }
+  ],
+  "exceptions": [
+    "外站只统一入口",
+    "动态图形坐标和研究产品画布保留既有业务布局",
+    "没有原始来源随图传入时明确标明，原页面来源入口仍可用",
+    "普通表格复制为当前显示精度；精确底稿使用原始/筛选数据导出",
+    "不新增账号、交易、后台采集、AI聊天或任意拖拽布局"
+  ]
+}

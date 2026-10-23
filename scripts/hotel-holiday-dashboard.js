@@ -173,7 +173,7 @@
     var saved = new URLSearchParams(location.hash.slice(1));
     saved.set('view', 'holiday'); saved.set('holiday', holiday);
     saved.set('holidayDimension', dimension); saved.set('holidaySegment', state.segment); saved.set('holidayMetric', state.metric); saved.set('holidayMode', state.mode);
-    history.replaceState(null, '', location.pathname + location.search + '#' + saved.toString());
+    history.replaceState(null, '',SiteUI.contextURL( location.pathname + location.search + '#' + saved.toString()));
   }
   async function exportHoliday() {
     var button = $('holiday-export'), label = button.textContent;
@@ -238,6 +238,7 @@
     .then(function (result) { init(M.csv(result[0]), result[1]); })
     .catch(function (error) { $('load-error').hidden = false; $('load-error').textContent = '假期数据暂时无法读取：' + error.message; });
 })();
+
 
 
 
