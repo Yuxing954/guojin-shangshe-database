@@ -1,0 +1,523 @@
+{
+  "checkedAt": "2026-10-23",
+  "units": {
+    "trips": "亿人次",
+    "spend": "亿元",
+    "perTrip": "元/人次",
+    "growth": "%"
+  },
+  "sources": [
+    {
+      "id": "mct-domestic-2022q1",
+      "name": "2022年一季度国内旅游数据情况",
+      "publisher": "文化和旅游部",
+      "quality": "官方原始披露",
+      "publishedAt": "2022-04-18",
+      "url": "https://zwgk.mct.gov.cn/zfxxgkml/tjxx/202204/t20220418_932508.html",
+      "checkedAt": "2026-10-23",
+      "sha256": "cd84fe77a444c7e492ace2424d64cb64c35730a716bc7831099527a1eb891b7d"
+    },
+    {
+      "id": "mct-domestic-2022q2",
+      "name": "2022年上半年国内旅游数据情况",
+      "publisher": "文化和旅游部",
+      "quality": "官方原始披露",
+      "publishedAt": "2022-07-15",
+      "url": "https://zwgk.mct.gov.cn/zfxxgkml/tjxx/202207/t20220715_934711.html",
+      "checkedAt": "2026-10-23",
+      "sha256": "7f2dda87b18310c6840e1ad9e03132333cda68bc875f04f54d1ba7a4f167acc9"
+    },
+    {
+      "id": "mct-domestic-2022q3",
+      "name": "2022年前三季度国内旅游数据情况",
+      "publisher": "文化和旅游部",
+      "quality": "官方原始披露",
+      "publishedAt": "2022-10-25",
+      "url": "https://zwgk.mct.gov.cn/zfxxgkml/tjxx/202210/t20221025_936951.html",
+      "checkedAt": "2026-10-23",
+      "sha256": "e167862f011559f3b050f3db6a4fd12630e19fddf475d1b3c7f3087135e6ae00"
+    },
+    {
+      "id": "mct-domestic-2022q4",
+      "name": "2022年度国内旅游数据情况",
+      "publisher": "文化和旅游部",
+      "quality": "官方原始披露",
+      "publishedAt": "2023-01-18",
+      "url": "https://zwgk.mct.gov.cn/zfxxgkml/tjxx/202301/t20230118_938716.html",
+      "checkedAt": "2026-10-23",
+      "sha256": "600deeb658a001d1c5bc3e36be2c2379836159bd78e1303b5934d62222e926d5"
+    },
+    {
+      "id": "mct-domestic-2023q1",
+      "name": "2023年一季度国内旅游数据情况",
+      "publisher": "文化和旅游部",
+      "quality": "官方原始披露",
+      "publishedAt": "2023-04-21",
+      "url": "https://zwgk.mct.gov.cn/zfxxgkml/tjxx/202304/t20230421_943280.html",
+      "checkedAt": "2026-10-23",
+      "sha256": "30dccde5b7c035d5f04dd80e114e3e51017102ba8bbf2bd60ed4654a7d129ee6"
+    },
+    {
+      "id": "mct-domestic-2023q2",
+      "name": "2023年上半年国内旅游数据情况",
+      "publisher": "文化和旅游部",
+      "quality": "官方原始披露",
+      "publishedAt": "2023-07-13",
+      "url": "https://zwgk.mct.gov.cn/zfxxgkml/tjxx/202307/t20230713_945923.html",
+      "checkedAt": "2026-10-23",
+      "sha256": "c694058ecd60715b12f62efa4ea094cbdaa1a5637b7f8a8d429d4f0f93931865"
+    },
+    {
+      "id": "mct-domestic-2023q3",
+      "name": "2023年前三季度国内旅游数据情况",
+      "publisher": "文化和旅游部",
+      "quality": "官方原始披露",
+      "publishedAt": "2023-10-27",
+      "url": "https://zwgk.mct.gov.cn/zfxxgkml/tjxx/202310/t20231027_949374.html",
+      "checkedAt": "2026-10-23",
+      "sha256": "d31698c609de61ab957aa1505e7a18d93dd38449f2eb64ebc00e1c1295340a64"
+    },
+    {
+      "id": "mct-domestic-2023q4",
+      "name": "2023年国内旅游数据情况",
+      "publisher": "文化和旅游部",
+      "quality": "官方原始披露",
+      "publishedAt": "2024-02-09",
+      "url": "https://zwgk.mct.gov.cn/zfxxgkml/tjxx/202402/t20240208_951300.html",
+      "checkedAt": "2026-10-23",
+      "sha256": "5aa74911477c7477ac89badf8e86f90887b9bc1011d6c2162d790b34bcb66fc5"
+    },
+    {
+      "id": "mct-domestic-2024q1",
+      "name": "2024年一季度国内旅游数据情况",
+      "publisher": "文化和旅游部",
+      "quality": "官方原始披露",
+      "publishedAt": "2024-04-30",
+      "url": "https://zwgk.mct.gov.cn/zfxxgkml/tjxx/202404/t20240430_952635.html",
+      "checkedAt": "2026-10-23",
+      "sha256": "421541956382049d1a31c8372512d57b5d0129a8355fbcf72c070315405d9d33"
+    },
+    {
+      "id": "mct-domestic-2024q2",
+      "name": "2024年上半年国内旅游数据情况",
+      "publisher": "文化和旅游部",
+      "quality": "官方原始披露",
+      "publishedAt": "2024-07-26",
+      "url": "https://zwgk.mct.gov.cn/zfxxgkml/tjxx/202407/t20240726_954368.html",
+      "checkedAt": "2026-10-23",
+      "sha256": "8bea27a5b372e10ca54476b441ec9a9c48056a4c34b006967e1d647947ff4cbf"
+    },
+    {
+      "id": "mct-domestic-2024q3",
+      "name": "2024年前三季度国内旅游数据情况",
+      "publisher": "文化和旅游部",
+      "quality": "官方原始披露",
+      "publishedAt": "2024-10-21",
+      "url": "https://zwgk.mct.gov.cn/zfxxgkml/tjxx/202410/t20241021_955808.html",
+      "checkedAt": "2026-10-23",
+      "sha256": "de76a7554f030751402dfd2711f82671389472bf9e150be4dd60f66a52394791"
+    },
+    {
+      "id": "mct-domestic-2024q4",
+      "name": "2024年度国内旅游数据情况",
+      "publisher": "文化和旅游部",
+      "quality": "官方原始披露",
+      "publishedAt": "2025-01-22",
+      "url": "https://zwgk.mct.gov.cn/zfxxgkml/tjxx/202501/t20250121_958012.html",
+      "checkedAt": "2026-10-23",
+      "sha256": "3380e958f81c56c8e5478652a19a1febb1d41739230dffa16e42fc15f2e77ef4"
+    },
+    {
+      "id": "mct-domestic-2025q1",
+      "name": "2025年一季度国内出游数据情况",
+      "publisher": "文化和旅游部",
+      "quality": "官方原始披露",
+      "publishedAt": "2025-04-23",
+      "url": "https://zwgk.mct.gov.cn/zfxxgkml/tjxx/202504/t20250423_959574.html",
+      "checkedAt": "2026-10-23",
+      "sha256": "37a31cf093b70827977da8dd55fe0a446321d5f61a943a57d82c8549a53e6cc8"
+    },
+    {
+      "id": "mct-domestic-2025q2",
+      "name": "2025年上半年国内居民出游数据情况",
+      "publisher": "文化和旅游部",
+      "quality": "官方原始披露",
+      "publishedAt": "2025-08-01",
+      "url": "https://zwgk.mct.gov.cn/zfxxgkml/tjxx/202508/t20250801_961544.html",
+      "checkedAt": "2026-10-23",
+      "sha256": "2787b0f7af105e7a4f0addbdc98095f602fd698507431e2d4c6889cbf902c002"
+    },
+    {
+      "id": "mct-domestic-2025q3",
+      "name": "2025年前三季度国内旅游市场数据情况",
+      "publisher": "文化和旅游部",
+      "quality": "官方原始披露",
+      "publishedAt": "2025-10-21",
+      "url": "https://zwgk.mct.gov.cn/zfxxgkml/tjxx/202510/t20251021_962874.html",
+      "checkedAt": "2026-10-23",
+      "sha256": "ad98abbe45e52bb40ceb7c33f366b3883dc13a90e37e303a05e7f37adf9f8c93"
+    },
+    {
+      "id": "mct-domestic-2025q4",
+      "name": "2025年国内居民出游数据情况",
+      "publisher": "文化和旅游部",
+      "quality": "官方原始披露",
+      "publishedAt": "2026-01-26",
+      "url": "https://zwgk.mct.gov.cn/zfxxgkml/tjxx/202601/t20260126_964367.html",
+      "checkedAt": "2026-10-23",
+      "sha256": "4ddf34ccc14cc8c08b83e2a656d161807daec498265c2ab49f086c3ee58d58ee"
+    },
+    {
+      "id": "mct-domestic-2026q1",
+      "name": "2026年一季度国内居民出游数据情况",
+      "publisher": "文化和旅游部",
+      "quality": "官方原始披露",
+      "publishedAt": "2026-04-29",
+      "url": "https://zwgk.mct.gov.cn/zfxxgkml/tjxx/202604/t20260429_965662.html",
+      "checkedAt": "2026-10-23",
+      "sha256": "559d90752920276472a464903c695532f47116068bba0fa6820aa00764ae5253"
+    },
+    {
+      "id": "mct-domestic-2026q2",
+      "name": "2026年上半年国内居民出游数据情况",
+      "publisher": "文化和旅游部",
+      "quality": "官方原始披露",
+      "publishedAt": "2026-08-07",
+      "url": "https://zwgk.mct.gov.cn/zfxxgkml/tjxx/202608/t20260807_966808.html",
+      "checkedAt": "2026-10-23",
+      "sha256": "7d6ff33eaf1e39b15830fba79db885030e2cf1bec22d686312ceb36309452fc8"
+    }
+  ],
+  "cumulative": [
+    {
+      "period": "2022Q1",
+      "year": 2022,
+      "quarter": 1,
+      "trips": 8.3,
+      "tripsYoY": -19.0,
+      "spend": 7700.0,
+      "spendYoY": 4.0,
+      "sourceId": "mct-domestic-2022q1",
+      "locator": "正文：国内出游人次及出游总花费",
+      "scope": "ytd"
+    },
+    {
+      "period": "2022Q2",
+      "year": 2022,
+      "quarter": 2,
+      "trips": 14.55,
+      "tripsYoY": -22.2,
+      "spend": 11700.0,
+      "spendYoY": -28.2,
+      "sourceId": "mct-domestic-2022q2",
+      "locator": "正文：国内出游人次及出游总花费",
+      "scope": "ytd"
+    },
+    {
+      "period": "2022Q3",
+      "year": 2022,
+      "quarter": 3,
+      "trips": 20.94,
+      "tripsYoY": -22.1,
+      "spend": 17200.0,
+      "spendYoY": -27.2,
+      "sourceId": "mct-domestic-2022q3",
+      "locator": "正文：国内出游人次及出游总花费",
+      "scope": "ytd"
+    },
+    {
+      "period": "2022Q4",
+      "year": 2022,
+      "quarter": 4,
+      "trips": 25.3,
+      "tripsYoY": -22.1,
+      "spend": 20400.0,
+      "spendYoY": -30.0,
+      "sourceId": "mct-domestic-2022q4",
+      "locator": "正文：国内出游人次及出游总花费",
+      "scope": "ytd"
+    },
+    {
+      "period": "2023Q1",
+      "year": 2023,
+      "quarter": 1,
+      "trips": 12.16,
+      "tripsYoY": 46.5,
+      "spend": 13000.0,
+      "spendYoY": 69.5,
+      "sourceId": "mct-domestic-2023q1",
+      "locator": "正文：国内出游人次及出游总花费",
+      "scope": "ytd"
+    },
+    {
+      "period": "2023Q2",
+      "year": 2023,
+      "quarter": 2,
+      "trips": 23.84,
+      "tripsYoY": 63.9,
+      "spend": 23000.0,
+      "spendYoY": 95.9,
+      "sourceId": "mct-domestic-2023q2",
+      "locator": "正文：国内出游人次及出游总花费",
+      "scope": "ytd"
+    },
+    {
+      "period": "2023Q3",
+      "year": 2023,
+      "quarter": 3,
+      "trips": 36.74,
+      "tripsYoY": 75.5,
+      "spend": 36900.0,
+      "spendYoY": 114.4,
+      "sourceId": "mct-domestic-2023q3",
+      "locator": "正文：国内出游人次及出游总花费",
+      "scope": "ytd"
+    },
+    {
+      "period": "2023Q4",
+      "year": 2023,
+      "quarter": 4,
+      "trips": 48.91,
+      "tripsYoY": 93.3,
+      "spend": 49100.0,
+      "spendYoY": 140.3,
+      "sourceId": "mct-domestic-2023q4",
+      "locator": "正文：国内出游人次及出游总花费",
+      "scope": "ytd"
+    },
+    {
+      "period": "2024Q1",
+      "year": 2024,
+      "quarter": 1,
+      "trips": 14.19,
+      "tripsYoY": 16.7,
+      "spend": 15200.0,
+      "spendYoY": 17.0,
+      "sourceId": "mct-domestic-2024q1",
+      "locator": "正文：国内出游人次及出游总花费",
+      "scope": "ytd"
+    },
+    {
+      "period": "2024Q2",
+      "year": 2024,
+      "quarter": 2,
+      "trips": 27.25,
+      "tripsYoY": 14.3,
+      "spend": 27300.0,
+      "spendYoY": 19.0,
+      "sourceId": "mct-domestic-2024q2",
+      "locator": "正文：国内出游人次及出游总花费",
+      "scope": "ytd"
+    },
+    {
+      "period": "2024Q3",
+      "year": 2024,
+      "quarter": 3,
+      "trips": 42.37,
+      "tripsYoY": 15.3,
+      "spend": 43500.0,
+      "spendYoY": 17.9,
+      "sourceId": "mct-domestic-2024q3",
+      "locator": "正文：国内出游人次及出游总花费",
+      "scope": "ytd"
+    },
+    {
+      "period": "2024Q4",
+      "year": 2024,
+      "quarter": 4,
+      "trips": 56.15,
+      "tripsYoY": 14.8,
+      "spend": 57500.0,
+      "spendYoY": 17.1,
+      "sourceId": "mct-domestic-2024q4",
+      "locator": "正文：国内出游人次及出游总花费",
+      "scope": "ytd"
+    },
+    {
+      "period": "2025Q1",
+      "year": 2025,
+      "quarter": 1,
+      "trips": 17.94,
+      "tripsYoY": 26.4,
+      "spend": 18000.0,
+      "spendYoY": 18.6,
+      "sourceId": "mct-domestic-2025q1",
+      "locator": "正文：国内出游人次及出游总花费",
+      "scope": "ytd"
+    },
+    {
+      "period": "2025Q2",
+      "year": 2025,
+      "quarter": 2,
+      "trips": 32.85,
+      "tripsYoY": 20.6,
+      "spend": 31500.0,
+      "spendYoY": 15.2,
+      "sourceId": "mct-domestic-2025q2",
+      "locator": "正文：国内出游人次及出游总花费",
+      "scope": "ytd"
+    },
+    {
+      "period": "2025Q3",
+      "year": 2025,
+      "quarter": 3,
+      "trips": 49.98,
+      "tripsYoY": 18.0,
+      "spend": 48500.0,
+      "spendYoY": 11.5,
+      "sourceId": "mct-domestic-2025q3",
+      "locator": "正文：国内出游人次及出游总花费",
+      "scope": "ytd"
+    },
+    {
+      "period": "2025Q4",
+      "year": 2025,
+      "quarter": 4,
+      "trips": 65.22,
+      "tripsYoY": 16.2,
+      "spend": 63000.0,
+      "spendYoY": 9.5,
+      "sourceId": "mct-domestic-2025q4",
+      "locator": "正文：国内出游人次及出游总花费",
+      "scope": "ytd"
+    },
+    {
+      "period": "2026Q1",
+      "year": 2026,
+      "quarter": 1,
+      "trips": 19.01,
+      "tripsYoY": 6.0,
+      "spend": 18600.0,
+      "spendYoY": 2.9,
+      "sourceId": "mct-domestic-2026q1",
+      "locator": "正文：国内出游人次及出游总花费",
+      "scope": "ytd"
+    },
+    {
+      "period": "2026Q2",
+      "year": 2026,
+      "quarter": 2,
+      "trips": 34.63,
+      "tripsYoY": 5.4,
+      "spend": 32100.0,
+      "spendYoY": 2.0,
+      "sourceId": "mct-domestic-2026q2",
+      "locator": "正文：国内出游人次及出游总花费",
+      "scope": "ytd"
+    }
+  ],
+  "directQuarters": [
+    {
+      "period": "2022Q1",
+      "trips": 8.3,
+      "tripsYoY": -19,
+      "sourceId": "mct-domestic-2022q4",
+      "locator": "正文：分季度看"
+    },
+    {
+      "period": "2022Q2",
+      "trips": 6.25,
+      "tripsYoY": -26.2,
+      "sourceId": "mct-domestic-2022q4",
+      "locator": "正文：分季度看"
+    },
+    {
+      "period": "2022Q3",
+      "trips": 6.39,
+      "tripsYoY": -21.9,
+      "sourceId": "mct-domestic-2022q4",
+      "locator": "正文：分季度看"
+    },
+    {
+      "period": "2022Q4",
+      "trips": 4.36,
+      "tripsYoY": -21.7,
+      "sourceId": "mct-domestic-2022q4",
+      "locator": "正文：分季度看"
+    },
+    {
+      "period": "2023Q1",
+      "trips": 12.16,
+      "tripsYoY": 46.5,
+      "sourceId": "mct-domestic-2023q4",
+      "locator": "正文：分季度看"
+    },
+    {
+      "period": "2023Q2",
+      "trips": 11.68,
+      "tripsYoY": 86.9,
+      "sourceId": "mct-domestic-2023q4",
+      "locator": "正文：分季度看"
+    },
+    {
+      "period": "2023Q3",
+      "trips": 12.9,
+      "tripsYoY": 101.9,
+      "sourceId": "mct-domestic-2023q4",
+      "locator": "正文：分季度看"
+    },
+    {
+      "period": "2023Q4",
+      "trips": 12.17,
+      "tripsYoY": 179.1,
+      "sourceId": "mct-domestic-2023q4",
+      "locator": "正文：分季度看"
+    },
+    {
+      "period": "2024Q1",
+      "trips": 14.19,
+      "tripsYoY": 16.7,
+      "sourceId": "mct-domestic-2024q4",
+      "locator": "正文：分季度看"
+    },
+    {
+      "period": "2024Q2",
+      "trips": 13.06,
+      "tripsYoY": 11.8,
+      "sourceId": "mct-domestic-2024q4",
+      "locator": "正文：分季度看"
+    },
+    {
+      "period": "2024Q3",
+      "trips": 15.12,
+      "tripsYoY": 17.2,
+      "sourceId": "mct-domestic-2024q4",
+      "locator": "正文：分季度看"
+    },
+    {
+      "period": "2024Q4",
+      "trips": 13.78,
+      "tripsYoY": 13.2,
+      "sourceId": "mct-domestic-2024q4",
+      "locator": "正文：分季度看"
+    },
+    {
+      "period": "2025Q1",
+      "trips": 17.94,
+      "tripsYoY": 26.4,
+      "sourceId": "mct-domestic-2025q1",
+      "locator": "正文：一季度国内出游人次"
+    },
+    {
+      "period": "2026Q1",
+      "trips": 19.01,
+      "tripsYoY": 6.0,
+      "sourceId": "mct-domestic-2026q2",
+      "locator": "正文：分季度看，一季度"
+    },
+    {
+      "period": "2026Q2",
+      "trips": 15.62,
+      "tripsYoY": 4.8,
+      "sourceId": "mct-domestic-2026q2",
+      "locator": "正文：分季度看，二季度"
+    }
+  ],
+  "notes": [
+    "国内季度数据来自文化和旅游部国内居民出游抽样调查；覆盖2023—2025完整年度及2026Q1—Q2，2022年仅作同比基期，可切换更早历史。核对截至2026-10-23，文旅部统计目录最新披露为2026年上半年；未取得2026Q3全国数据，未填数。",
+    "单季与年初累计分别展示。出游人次优先采用官方分季度披露；无单季披露时，以本年相邻累计值相减。Q2花费=上半年-Q1，Q3花费=前三季度-上半年，Q4花费=全年-前三季度；均标注“累计差额测算”。Q1原始值及累计值保留官方披露。",
+    "同比：官方已披露的单季/累计同比原样保留，缺官方同比的单季量按同季度披露值差额计算。原始累计值有舍入及可比口径修订，差分同比是披露值测算，不能冒称官方可比同比，也不通过官方同比反推修改历史总量。",
+    "2026Q1花费官方同比2.9%，但1.86万亿与本库2025Q1的1.80万亿直接计算不一致；2026H1的2.0%与3.21/3.15近似不完全相等。保留各期官方值与同比，差分及人均测算使用已披露总量，并保留来源、前一累计来源与上年同季来源。",
+    "人均花费=花费亿元/出游亿人次；人均同比按本期与上年同口径人均值测算。人均花费和差分花费均为测算值。季度量价与假期量价分别展示，不把假期合计当作全国季度总量。"
+  ]
+}

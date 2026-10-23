@@ -10,10 +10,23 @@
   function kpis(id,items){$(id).innerHTML=items.map(([title,value,unit,change,period])=>'<article class="travel-kpi"><h2>'+esc(title)+'</h2><strong>'+fmt(value)+'<small>'+esc(unit)+'</small></strong><p class="'+(change>0?'positive':change<0?'negative':'')+'">'+(typeof change==='string'?esc(change):delta(change))+'</p><p>'+esc(period||'')+'</p></article>').join('');}
   function chart(id,rows,name,unit,options={}){SiteCharts.drawPaired($(id),rows,{name,unit,mode:'combo',valueStyle:'bar',changeUnit:'%',precision:2,changePrecision:1,...options});}
   function panelCharts(id,items){if(!$(id).children.length)$(id).innerHTML=items.map(([key,title])=>'<article class="travel-panel"><h2>'+esc(title)+'</h2><div id="'+key+'"></div></article>').join('');}
-  function record(name,r,value,unit,change,basis='',sourceId=r.sourceId,locator=r.locator){const s=M.source(data,sourceId),comparison=M.source(data,r.comparisonSourceId);exports.push([view,name,r.period,basis,value,unit,change,basis==='年初累计'?'年初至同月完整数值累计计算':r.changeBasis||'',s.name,s.url||'',s.file||'',locator||'',s.publishedAt||'',data.checkedAt,r.comparisonPeriod||'',comparison.name||'',comparison.url||'']);}
+  function record(name,r,value,unit,change,basis='',sourceId=r.sourceId,locator=r.locator){const s=M.source(data,sourceId),comparison=M.source(data,r.comparisonSourceId),ss=r.sourceIds?.map(id=>M.source(data,id)),cs=r.comparisonSourceIds?.map(id=>M.source(data,id));exports.push([view,name,r.period,basis,value,unit,change,basis==='年初累计'&&r.scope!=='ytd'?'年初至同月完整数值累计计算':r.changeBasis||'',ss?.map(x=>x.name).join(' | ')||s.name,ss?.map(x=>x.url||'').join(' | ')||s.url||'',s.file||'',locator||'',s.publishedAt||'',data.checkedAt,r.comparisonPeriod||'',cs?.map(x=>x.name).join(' | ')||comparison.name||'',cs?.map(x=>x.url||'').join(' | ')||comparison.url||'']);}
+  function renderDomesticPeriods(){
+    const scope=$('domestic-period-scope').value,rows=M.domesticQuarterRows(data,$('domestic-period-year').value,scope,$('domestic-quarter').value),r=rows.at(-1),basis=scope==='quarter'?'单季':'年初累计';
+    $('domestic-period-asof').textContent=r?r.period+' · '+basis:'当前筛选暂无数据';
+    kpis('domestic-period-kpis',r?[['国内出游人次',r.trips,'亿人次',r.tripsYoY,r.period+' · '+basis+' · '+r.tripsBasis],['国内出游花费'+(r.spendBasis==='累计差额测算'?' · 测算':''),r.spend,'亿元',r.spendYoY,r.period+' · '+basis+' · '+r.spendBasis],['人均出游花费 · 测算',r.perTrip,'元/人次',r.perTripYoY,r.period+' · '+basis]]:[]);
+    panelCharts('domestic-period-charts',[['domestic-quarter-trips','国内出游人次'],['domestic-quarter-spend','国内出游花费'],['domestic-quarter-pertrip','人均出游花费 · 测算']]);
+    for(const [id,k,n,u] of [['domestic-quarter-trips','trips','全国国内出游人次','亿人次'],['domestic-quarter-spend','spend','全国国内出游花费','亿元'],['domestic-quarter-pertrip','perTrip','全国人均出游花费','元/人次']]){
+      chart(id,rows.map(x=>({period:x.period,value:x[k],change:x[k+'YoY']})),n,u);
+      for(const x of rows){const ids=x[k+'SourceIds'],cs=x['comparison'+k.charAt(0).toUpperCase()+k.slice(1).toLowerCase()+'SourceIds'];record(n,{...x,sourceIds:ids,comparisonSourceIds:cs,changeBasis:x[k+'Basis']+'；同比：'+x[k+'YoYBasis']},x[k],u,x[k+'YoY'],basis,ids[0]);}
+    }
+    const note=(v,b,d=2)=>fmt(v,d)+'<small>'+esc(b)+'</small>';
+    table('domestic-period-table',['期间','口径','出游（亿人次）','同比（%）','花费（亿元）','同比（%）','人均花费（元）','人均同比（测算%）','来源'],[...rows].reverse().map(x=>[x.period,basis,note(x.trips,x.tripsBasis),note(x.tripsYoY,x.tripsYoYBasis,1),note(x.spend,x.spendBasis),note(x.spendYoY,x.spendYoYBasis,1),fmt(x.perTrip),fmt(x.perTripYoY,1),[...new Set([...x.tripsSourceIds,...x.spendSourceIds])].map(id=>source(id)).join(' · ')]));
+  }
   function renderDomestic(){
+    renderDomesticPeriods();
     const rows=M.yearRows(data.domestic.holidays,$('domestic-year').value).filter(r=>$('holiday').value==='all'||r.holiday===$('holiday').value),latest=rows.at(-1),daily=$('holiday-basis').value==='daily',tk=daily?'dailyTrips':'trips',sk=daily?'dailySpend':'spend';
-    $('asof').textContent=(latest?.period||'当前筛选无假期数据')+' · 用户旅游数据库';
+    $('asof').textContent='全国季度至 '+data.domestic.quarters.at(-1).period+' · 假期 '+(latest?.period||'当前筛选无数据');
     kpis('domestic-kpis',latest?[[daily?'日均出游人次':'假期出游人次',latest[tk],daily?'亿人次/日':'亿人次',latest[tk+'YoY'],latest.period+' · '+latest.days+'天'],[daily?'日均出游花费':'假期出游花费',latest[sk],daily?'亿元/日':'亿元',latest[sk+'YoY'],latest.period],['人均出游花费',latest.perTrip,'元',latest.perTripYoY,latest.period],daily?['假期天数',latest.days,'天',latest.comparisonDays?'上年同名假期 '+latest.comparisonDays+'天':'同名假期基期缺失',latest.period]:['日均出游人次',latest.dailyTrips,'亿人次/日',latest.dailyTripsYoY,latest.period]]:[]);
     panelCharts('holiday-charts',[['holiday-trips','出游人次'],['holiday-spend','出游花费'],['holiday-pertrip','人均出游花费']]);
     for(const [id,key,name,unit] of [['holiday-trips',tk,'出游人次',daily?'亿人次/日':'亿人次'],['holiday-spend',sk,'出游花费',daily?'亿元/日':'亿元'],['holiday-pertrip','perTrip','人均出游花费','元']]){chart(id,rows.map(r=>({period:$('domestic-year').value==='all'?r.period:r.holiday,value:r[key],change:r[key+'YoY']})),name,unit);for(const r of rows)record(name,r,r[key],unit,r[key+'YoY'],key==='perTrip'?'每人次花费':daily?'日均测算':'假期总量');}
@@ -66,13 +79,13 @@
   function download(){const csv=M.csv(exports,['板块','指标','数据期间','统计口径','数值','单位','同比（%）','同比依据','来源','来源URL','来源文件','原表定位','发布日期','核对日期','同比基期','基期来源','基期URL']);const u=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'})),a=document.createElement('a');a.href=u;a.download='旅游_'+view+'.csv';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);}
   async function load(){
     $('load-error').hidden=true;
-    try{data=await SiteData.json('data/tourism/dashboard.json?v=20261023history');if(!data.domestic?.holidays?.length||!data.inbound?.border?.length)throw Error('empty');
+    try{data=await SiteData.json('data/tourism/dashboard.json?v=20261023quarter');if(!data.domestic?.holidays?.length||!data.domestic?.quarters?.length||!data.inbound?.border?.length)throw Error('empty');
       const years=[...new Set(data.domestic.holidays.map(r=>r.year))].sort((a,b)=>b-a);$('domestic-year').innerHTML='<option value="all">全部年份</option>'+years.map(y=>'<option>'+y+'</option>').join('');$('domestic-year').value='2026';
       $('outbound-year').innerHTML='<option value="recent">近三年＋最新（2023年以来）</option><option value="all">全部年份</option>'+Array.from({length:10},(_,i)=>2026-i).map(y=>'<option>'+y+'</option>').join('');$('outbound-year').value='recent';$('destination').innerHTML=data.outbound.destinations.map(d=>'<option>'+esc(d.name)+'</option>').join('');
       $('dashboard').hidden=false;select();$('export').disabled=false;
     }catch(e){data=null;$('dashboard').hidden=true;$('export').disabled=true;$('asof').textContent='旅游数据读取失败';$('load-error').hidden=false;$('load-error').textContent='数据暂时无法读取，请重试。';const b=document.createElement('button');b.textContent='重试';b.onclick=load;$('load-error').append(b);}
   }
   document.querySelector('.travel-tabs').onclick=e=>{const button=e.target.closest('[data-view]');if(button)location.hash='view='+button.dataset.view;};
-  for(const id of ['domestic-year','holiday','holiday-basis','scenic-window','border-scope','destination','outbound-year','outbound-scope'])$(id).onchange=render;
+  for(const id of ['domestic-period-year','domestic-period-scope','domestic-quarter','domestic-year','holiday','holiday-basis','scenic-window','border-scope','destination','outbound-year','outbound-scope'])$(id).onchange=render;
   $('export').onclick=download;addEventListener('hashchange',select);load();
 })();

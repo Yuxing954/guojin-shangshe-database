@@ -2,6 +2,16 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'..'),M=require('../scripts/travel-model.js'),d=JSON.parse(fs.readFileSync(path.join(root,'data/tourism/dashboard.json'),'utf8'));
 const close=(a,b)=>assert(Math.abs(a-b)<1e-8,`${a} != ${b}`);
+assert.equal(d.domestic.quarters.length,18);assert.equal(d.domestic.quarterYtd.length,18);
+assert.equal(M.domesticQuarterRows(d).length,14);assert.equal(M.domesticQuarterRows(d,'recent','quarter','2').length,4);
+assert.equal(M.domesticQuarterRows(d,'2026','quarter','3').length,0);
+const dq=(p,scope='quarter')=>(scope==='quarter'?d.domestic.quarters:d.domestic.quarterYtd).find(r=>r.period===p);
+assert.equal(dq('2026Q2').trips,15.62);assert.equal(dq('2026Q2').tripsYoY,4.8);assert.equal(dq('2026Q2').spend,13500);assert.equal(dq('2026Q2').spendBasis,'累计差额测算');
+assert.equal(dq('2026Q2','ytd').trips,34.63);assert.equal(dq('2026Q2','ytd').spend,32100);assert.equal(dq('2026Q2','ytd').spendYoY,2);
+assert.equal(dq('2026Q1').spendYoY,2.9);assert.notEqual(dq('2026Q1').spendYoY,(18600/18000-1)*100);
+assert.equal(dq('2025Q3').trips,17.13);assert.equal(dq('2025Q3','ytd').tripsYoY,18);close(dq('2025Q3').tripsYoY,(17.13/15.12-1)*100);assert.notEqual(dq('2025Q3').tripsYoY,18);
+for(const scope of ['quarter','ytd'])for(const r of scope==='quarter'?d.domestic.quarters:d.domestic.quarterYtd){close(r.perTrip*r.trips,r.spend);for(const key of ['trips','spend','perTrip']){assert(r[key+'SourceIds'].every(id=>d.sources.some(s=>s.id===id)));if(r[key+'YoYBasis'].includes('计算')){const prior=dq(r.comparisonPeriod,scope);close(r[key+'YoY'],(r[key]/prior[key]-1)*100);}}}
+for(const year of [2022,2023,2024,2025])for(const key of ['trips','spend'])close(d.domestic.quarters.filter(r=>r.year===year).reduce((a,r)=>a+r[key],0),dq(year+'Q4','ytd')[key]);
 assert(d.domestic.holidays.length>=58);assert(d.domestic.changbai.length>100);assert(d.domestic.jiuzhai.length>700);
 const seen=new Set();for(const r of d.domestic.holidays){const k=r.year+'-'+r.order;assert(!seen.has(k),'duplicate holiday '+k);seen.add(k);assert(r.locator);close(r.dailyTrips*r.days,r.trips);close(r.perTrip*r.trips,r.spend);}
 const nd=d.domestic.holidays.find(r=>r.period==='2026年国庆');close(nd.spend,7383.75);close(nd.dailyTrips,1.18);assert.equal(nd.perTripYoY,null);assert(d.domestic.holidays.find(r=>r.period==='2026年端午'));
