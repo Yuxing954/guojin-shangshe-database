@@ -1,0 +1,68 @@
+/* Company pages share the industry/macro spacing, color and navigation system.
+   Scoped to this hub so existing industry and macro layouts are unaffected. */
+body.site-page.company-hub{--hotel-accent:var(--site-accent);--hotel-border:var(--site-line)}
+body.company-hub .oh-header{flex-wrap:wrap;gap:16px}
+body.company-hub .oh-eyebrow{color:var(--site-muted);letter-spacing:.08em}
+body.company-hub .oh-actions{flex-wrap:wrap;gap:8px;max-width:none}
+body.company-hub .oh-actions :is(a,button){display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:8px 14px;border:1px solid var(--site-line);border-radius:8px;background:var(--site-surface);color:var(--site-accent);font-size:13px;line-height:22px;text-decoration:none}
+body.company-hub .oh-actions .oh-primary-link{background:var(--site-accent);border-color:var(--site-accent);color:white}
+body.site-page.company-hub .oh-categories.site-subnav{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px!important;margin:0 0 20px!important;border-bottom:1px solid var(--site-line)!important}
+body.site-page.company-hub .oh-categories.site-subnav>a{height:60px!important;padding:10px 4px!important;border:0!important;border-bottom:3px solid transparent!important;border-radius:0!important;background:transparent!important;font-size:15px!important}
+body.site-page.company-hub .oh-categories.site-subnav>a[aria-current=page]{border-bottom-color:var(--site-accent)!important;color:var(--site-accent)!important}
+body.site-page.company-hub #oh-companies{gap:16px;margin:0 0 24px}
+body.site-page.company-hub .oh-company{min-height:96px;padding:16px;gap:12px;border:1px solid var(--site-line);border-radius:12px;color:var(--site-ink);background:var(--site-surface);box-shadow:none}
+body.site-page.company-hub .oh-company:hover{border-color:var(--site-accent);background:var(--site-soft)}
+body.site-page.company-hub .oh-company[aria-pressed=true]{border-color:var(--site-accent);background:var(--site-soft);box-shadow:inset 0 0 0 1px var(--site-accent)}
+body.site-page.company-hub .oh-company>span:last-child{min-width:0}
+body.site-page.company-hub .oh-company strong{font-size:16px;line-height:24px;white-space:normal}
+body.site-page.company-hub .oh-company small{font-size:12px;line-height:20px;color:var(--site-muted);overflow-wrap:anywhere}
+body.site-page.company-hub .oh-profile{gap:12px;flex-wrap:wrap;margin:0 0 16px}
+body.company-hub .oh-profile h2{font-size:20px}
+body.company-hub .oh-profile p{font-size:13px;max-width:none;color:var(--site-muted)}
+body.site-page.company-hub #oh-tabs.site-subnav{display:flex!important;flex-wrap:wrap!important;gap:4px!important;padding:4px!important;margin:0 0 20px!important;border:1px solid var(--site-line)!important;border-radius:10px!important;background:var(--site-soft)!important;overflow:visible}
+body.site-page.company-hub #oh-tabs.site-subnav>button{min-height:40px!important;padding:8px 18px!important;border:0!important;border-radius:7px!important;background:transparent!important;color:var(--site-muted)!important}
+body.site-page.company-hub #oh-tabs.site-subnav>button[aria-selected=true]{background:var(--site-surface)!important;color:var(--site-accent)!important;box-shadow:0 1px 4px #24334c0d!important}
+body.site-page.company-hub .oh-toolbar{gap:16px;padding:16px;border:1px solid var(--site-line);border-radius:12px;background:var(--site-surface);margin-bottom:20px}
+body.site-page.company-hub .oh-toolbar label{font-size:13px;color:var(--site-muted)}
+body.site-page.company-hub .oh-toolbar :is(select,input[type=search]){min-height:40px;font-size:14px;border-radius:8px;border-color:var(--site-line);color:var(--site-ink)}
+body.site-page.company-hub .oh-toolbar button{min-height:40px;border-radius:8px;border-color:var(--site-line);color:var(--site-accent)}
+body.company-hub .dh-advanced{border-color:var(--site-line)}
+body.company-hub .dh-context{margin-bottom:16px;color:var(--site-muted)}
+body.site-page.company-hub .oh-kpis{gap:16px;margin:0 0 24px;align-items:stretch}
+body.site-page.company-hub .oh-kpi{display:flex;flex-direction:column;align-items:flex-start;min-width:0;min-height:164px;padding:16px;border-radius:12px;border:1px solid var(--site-line);background:var(--site-surface)}
+body.site-page.company-hub .oh-kpi>span{font-size:13px;line-height:22px;color:var(--site-muted)}
+body.site-page.company-hub .oh-kpi strong{margin:8px 0 6px;font-size:28px;line-height:38px;color:var(--site-ink);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+body.site-page.company-hub .oh-kpi strong small{font-size:13px;line-height:22px;margin-left:4px}
+body.site-page.company-hub .oh-growth{font-size:13px;line-height:22px}
+body.site-page.company-hub .oh-kpi .oh-source{float:none;order:4;align-self:flex-end;margin-top:auto;padding:4px 0;font-size:12px;color:var(--site-accent)}
+body.site-page.company-hub .oh-block{padding:16px;margin-bottom:24px;border:1px solid var(--site-line);border-radius:12px;box-shadow:none}
+body.site-page.company-hub .oh-block-head{gap:12px;margin-bottom:16px}
+body.site-page.company-hub .oh-block h3{font-size:16px;line-height:24px;font-weight:600}
+body.site-page.company-hub .oh-block-head>small{font-size:13px;color:var(--site-muted)}
+body.company-hub .dh-charts{gap:16px}
+body.company-hub .dh-charts>.oh-block{margin:0}
+body.site-page.company-hub .oh-table :is(th,td){padding:10px 12px!important;font-size:13px!important;line-height:21px!important}
+body.company-hub .oh-table th{background:var(--site-soft)!important;color:var(--site-muted)!important}
+body.company-hub .oh-table td small{line-height:20px}
+body.company-hub .oh-peer-companies{border-color:var(--site-line);border-radius:8px}
+body.company-hub .oh-tag{background:var(--site-soft);color:var(--site-muted);font-size:12px}
+body.company-hub :is(button,a,select,input,summary):focus-visible{outline:2px solid var(--site-accent);outline-offset:3px}
+@media(max-width:1200px){body.site-page.company-hub #oh-companies{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){
+ body.site-page.company-hub #oh-companies{gap:12px}
+ body.site-page.company-hub .oh-company{padding:12px;gap:8px;min-height:88px}
+ body.site-page.company-hub .oh-company .oh-logo{flex-basis:48px;width:48px}
+ body.site-page.company-hub .oh-company strong{font-size:14px}
+ body.site-page.company-hub .oh-company small{font-size:11px}
+ body.company-hub .oh-header{flex-direction:column;align-items:stretch}
+ body.company-hub .oh-actions{justify-content:flex-start}
+ body.site-page.company-hub .oh-kpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+ body.site-page.company-hub .oh-kpi{min-height:158px}
+ body.site-page.company-hub .oh-kpi strong{font-size:24px;line-height:34px}
+ body.site-page.company-hub .oh-toolbar{padding:12px;gap:12px}
+ body.site-page.company-hub .oh-toolbar :is(select,input[type=search]){font-size:16px;min-width:0;max-width:100%}
+ body.site-page.company-hub #oh-tabs.site-subnav>button{padding:8px 12px!important}
+ body.company-hub .dh-search label{flex-wrap:wrap}
+ body.company-hub .dh-charts{grid-template-columns:minmax(0,1fr)}
+ body.site-page.company-hub .oh-table :is(th,td){padding:9px 10px!important}
+}
