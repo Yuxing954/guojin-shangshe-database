@@ -10,7 +10,7 @@
   kind:saved?(params.get('kind')||'全部'):'全部',
   frequency:saved?(params.get('frequency')||'单季度'):'单季度',
   from:saved?params.get('from'):'',to:saved?params.get('to'):'',
-  range:saved?(params.get('range')||'custom'):'12',
+  range:saved?(params.get('range')||(params.has('from')?'custom':'8')):'8',
   region:saved?(params.get('region')||''):'',category:saved?(params.get('category')||''):'',
   mode:saved?(params.get('operation')||'合计'):'合计',currency:saved?(params.get('currency')||'CNY'):'CNY',
   display:saved?(params.get('display')||'change'):'change',query:saved?(params.get('q')||''):'',
@@ -31,7 +31,7 @@
   if(!['单季度','累计'].includes(state.frequency))state.frequency='单季度';
   if(!['change','value'].includes(state.display))state.display='change';
   if(!['operating','details'].includes(state.tab))state.tab='operating';
-  if(!['8','12','20','all','custom'].includes(state.range))state.range='12';
+  if(!['8','12','20','all','custom'].includes(state.range))state.range='8';
   if(!manifest.quarters.includes(state.to))state.to=manifest.quarters.at(-1);
   if(state.range!=='custom'){const qs=manifest.quarters.filter(q=>q<=state.to);state.from=state.range==='all'?qs[0]:qs.slice(-Number(state.range))[0];}
   const qs=M.range(manifest.quarters,state.from,state.to);state.from=qs[0];state.to=qs.at(-1);
@@ -75,7 +75,7 @@
   bind('oh-kind',v=>{state.kind=v;resetDimensions();});
   bind('oh-display',v=>state.display=v);
   $('dh-advanced').querySelector('summary').onclick=()=>{state.advanced=!$('dh-advanced').open;};
-  $('dh-reset').onclick=()=>{Object.assign(state,{kind:'全部',frequency:'单季度',display:'change',range:'12',to:manifest.quarters.at(-1),query:'',advanced:false});resetDimensions();render();};
+  $('dh-reset').onclick=()=>{Object.assign(state,{kind:'全部',frequency:'单季度',display:'change',range:'8',to:manifest.quarters.at(-1),query:'',advanced:false});resetDimensions();render();};
  }
  function updateURL(){
   CompanyWorkspace.mountActions();
@@ -96,7 +96,7 @@
  }
  function bindCharts(){for(const[id,c]of charts){const host=$(id);if(!host)continue;const draw=()=>CompanyWorkspace.plot(host,c.rows,c.options);draw();const input=host.closest('article').querySelector('[data-chart-labels]');input.onchange=()=>{labelStates.set(c.idx,input.checked);draw();};}}
  function historyTable(series,qs,i){return '<details class="oh-history"><summary>历史数据</summary>'+table(['口径',...[...qs].reverse().map(q=>periodName(M.period(q,state.frequency)))],series.map(s=>'<tr><td>'+esc(s.name)+'</td>'+[...s.points].reverse().map(p=>cell(p.records[i],i)).join('')+'</tr>'))+'</details>';}
- function blocks(series,qs){return '<div class="dh-charts">'+M.metrics.map((m,i)=>{const title=m+(state.display==='change'?(i===2?'同比变化':'同比'):'');return '<article class="oh-block"><div class="oh-block-head"><h3>'+title+'</h3><small>'+esc(state.frequency+' · '+(state.display==='change'?(i===2?'pct':'%'):unit(i,series[0]?.currency)))+'</small><label class="site-value-option"><input type="checkbox" data-chart-labels'+(labelStates.get(i)?' checked':'')+'>显示数值</label></div>'+chart(series,qs,i,title)+historyTable(series,qs,i)+'</article>';}).join('')+'</div>';}
+ function blocks(series,qs){return '<div class="dh-charts">'+M.metrics.map((m,i)=>{const title=m+(state.display==='change'?(i===2?'同比变化':'同比'):'');return '<article class="oh-block"><div class="oh-block-head"><h3>'+title+'</h3><small>'+esc(state.frequency+' · '+(state.display==='change'?(i===2?'pct':'%'):unit(i,series[0]?.currency)))+'</small><label class="site-value-option"><input type="checkbox" data-chart-labels'+(labelStates.get(i)!==false?' checked':'')+'>显示数值</label></div>'+chart(series,qs,i,title)+historyTable(series,qs,i)+'</article>';}).join('')+'</div>';}
  function operating(){
   const opts=normalizeFilters(),qs=M.range(manifest.quarters,state.from,state.to);toolbar(opts);
   const filters={kind:state.kind,region:state.region,category:state.category,mode:state.mode,currency:state.currency};
