@@ -61,7 +61,8 @@ def apply_history(data, folder):
         if n not in data['notes']:
             data['notes'].append(n)
     from update_domestic_tourism import apply_domestic
-    return apply_domestic(data, folder)
+    from update_scenic_tourism import apply_scenic
+    return apply_scenic(apply_domestic(data, folder), folder)
 
 
 if __name__ == '__main__':
