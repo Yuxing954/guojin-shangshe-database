@@ -13,7 +13,10 @@ jobs:
         with:
           node-version: '22'
       - run: node tests/travel-data.test.cjs
-      - run: npm install --no-save playwright
-      - run: npx playwright install --with-deps chromium
+      - name: Install isolated browser runtime
+        run: |
+          npm install --prefix /tmp/tourism-check --no-save --package-lock=false playwright@1.62.1
+          if [ -x /usr/bin/google-chrome ]; then echo "PLAYWRIGHT_CHANNEL=chrome" >> "$GITHUB_ENV"; else /tmp/tourism-check/node_modules/.bin/playwright install --with-deps chromium; fi
       - run: node tests/travel.browser.cjs
-
+        env:
+          NODE_PATH: /tmp/tourism-check/node_modules
