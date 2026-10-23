@@ -1,0 +1,20 @@
+{
+  "importedAt": "2026-10-23",
+  "sourceRepository": "https://github.com/H-Jett/etf-radar",
+  "sourceCommit": "caacc37e185df8503f7747aef178395dfe19f5ec",
+  "sourceTree": "075c3165478c43062af630dc41236b7b03660436",
+  "fileCount": 4976,
+  "notes": [
+    "完整引入上游源码、网页与已生成数据，保留原始文件及原数据时间。",
+    "本次为固定版本快照；原始采集工作流保留于 etf-radar/.github/workflows/，不会自动作为本仓库工作流执行。",
+    "持仓为原项目披露期口径，市值计算及来源沿用原项目；入库日期不代表数据更新日期。"
+  ],
+  "sources": [
+    {
+      "name": "H-Jett/etf-radar",
+      "url": "https://github.com/H-Jett/etf-radar/tree/caacc37e185df8503f7747aef178395dfe19f5ec",
+      "quality": "第三方公开数据聚合",
+      "note": "README标注MIT许可；保留上游原文和作者归属。"
+    }
+  ]
+}

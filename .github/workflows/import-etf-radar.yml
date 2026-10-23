@@ -1,0 +1,29 @@
+name: Import pinned ETF radar snapshot
+on:
+  push:
+    branches: [codex/import-etf-radar]
+    paths: [.github/workflows/import-etf-radar.yml]
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: codex/import-etf-radar
+          fetch-depth: 1
+      - name: Import and verify the complete upstream tree
+        run: |
+          test ! -e etf-radar
+          git fetch --depth=1 https://github.com/H-Jett/etf-radar.git caacc37e185df8503f7747aef178395dfe19f5ec
+          test "$(git rev-parse FETCH_HEAD^{tree})" = "075c3165478c43062af630dc41236b7b03660436"
+          git read-tree --prefix=etf-radar/ -u FETCH_HEAD
+          test "$(git write-tree | xargs -I{} git rev-parse {}:etf-radar)" = "075c3165478c43062af630dc41236b7b03660436"
+          python scripts/verify_etf_radar.py
+          node --check scripts/etf-radar.js
+          node --check scripts/site-shell.js
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Import complete H-Jett ETF radar snapshot caacc37"
+          git push origin HEAD:codex/import-etf-radar
