@@ -12,15 +12,31 @@
  const params=new URLSearchParams(location.search);let pm,wired=false,cme,cmeLoading=false,cmeError=false;
  function keep(values){const p=new URLSearchParams(location.search);Object.entries(values).forEach(([k,v])=>v?p.set(k,v):p.delete(k));history.replaceState(null,'',location.pathname+'?'+p);}
  const pmDay=v=>{const d=new Date(v);if(!v||Number.isNaN(d.getTime()))return '未提供';const parts=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(d);const part=type=>parts.find(p=>p.type===type).value;return part('year')+'-'+part('month')+'-'+part('day');};
- const PM_PAGE_SIZE=24;let pmLimit=PM_PAGE_SIZE,pmGroups=[];
+ const PM_PAGE_SIZE=24;let pmLimit=PM_PAGE_SIZE,pmGroups=[],pmSelected='',pmOutcome=0;
  const pmChange=o=>Number.isFinite(o.previousProbability)&&Number.isFinite(o.probability)?(o.probability-o.previousProbability)*100:null;
  function pmOutcomes(g,items){
   return items.flatMap(m=>{const yes=P.affirmative(m);return (yes?[yes]:m.outcomes).map(o=>({market:m,outcome:o,label:g.markets.length===1?(yes?'是':o.nameZh||o.name):P.optionLabel(g,m)+(yes?'':' · '+(o.nameZh||o.name))}));});
  }
- function pmRows(rows){
-  return rows.map(({market:m,outcome:o,label})=>{const change=pmChange(o),probability=Number.isFinite(o.probability)?o.probability*100:null,changeText=change===null?'—':(change>0?'+':'')+n(change)+' pp';
-   return '<div class="forecast-outcome" data-chart-tooltip="'+esc(pmDay(pm.fetchedAt)+'\n概率：'+pct(probability)+(change===null?'':'\n较对照快照：'+changeText))+'"><div class="forecast-outcome-label" title="'+esc(label)+'">'+esc(label)+(m.liquidity!=null&&m.liquidity<10000?'<span class="forecast-badge caution">低流动性</span>':'')+'</div><strong>'+pct(probability)+'</strong><div class="forecast-probability-track" aria-hidden="true"><i style="width:'+(probability??0)+'%"></i></div></div>';
-  }).join('');
+
+ function eventRows(g){
+  const rows=pmOutcomes(g,g.markets);
+  if(g.markets.length===1&&P.affirmative(g.markets[0])){const no=g.markets[0].outcomes.find(o=>o.name==='No'||o.nameZh==='否');if(no)rows.push({market:g.markets[0],outcome:no,label:'否'});}
+  return rows;
+ }
+ function chooseEvent(id){const restore=document.activeElement?.hasAttribute('data-pm-event');pmSelected=id;pmOutcome=0;drawPm();if(restore)Array.from(document.querySelectorAll('[data-pm-event]')).find(el=>el.dataset.pmEvent===id)?.focus({preventScroll:true});}
+ function drawEvent(){
+  const g=pmGroups.find(g=>g.id===pmSelected),host=$('prediction-focus');
+  if(!g){host.innerHTML='<p class="portal-empty">暂无符合条件的事件</p>';$('prediction-event-select').innerHTML='';return;}
+  const rows=eventRows(g);if(pmOutcome>=rows.length)pmOutcome=0;
+  const row=rows[pmOutcome],prob=row&&Number.isFinite(row.outcome.probability)?row.outcome.probability*100:null;
+  const independent=/触及|指定时点|持续至日期/.test(P.measurement(g));
+  host.innerHTML='<div class="pm-focus-heading"><span>'+esc(g.dataType.label)+' · '+esc(P.measurement(g))+'</span><h2>'+esc(g.title)+'</h2></div>'+
+   '<div class="pm-answer"><div><span class="pm-answer-caption">'+(independent?'所选条件':'所选结果')+'</span><h3>'+esc(row?.label||'未提供')+'</h3></div><div class="pm-big-number"><strong>'+pct(prob)+'</strong><span>市场隐含概率</span></div></div>'+
+   '<div class="pm-results-heading"><h3>'+(independent?'各条件发生概率':'各结果概率对比')+'</h3><span>'+(independent?'各合约独立，不相加':'按原始合约概率展示')+'</span></div>'+
+   '<div class="pm-results">'+rows.map((r,i)=>{const p=Number.isFinite(r.outcome.probability)?r.outcome.probability*100:null;return '<button type="button" class="pm-result" data-pm-outcome="'+i+'" aria-pressed="'+(i===pmOutcome)+'"><span class="pm-result-name">'+esc(r.label)+'</span><span class="pm-result-track" aria-hidden="true"><i style="width:'+(p??0)+'%"></i></span><strong>'+pct(p)+'</strong></button>';}).join('')+'</div>'+
+   '<div class="pm-focus-footer"><span>'+(!g.complete?'部分收录 · ':'')+(g.endDate?'最早截止 '+esc(pmDay(g.endDate))+' · 北京时间':'截止时间未提供')+'</span><div>'+anchor(g.markets[0].url,'原始市场 ↗')+'<button type="button" data-prediction-event="'+esc(g.id)+'">合约明细</button></div></div>';
+  document.querySelectorAll('[data-pm-event]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.pmEvent===pmSelected)));
+  $('prediction-event-select').value=pmSelected;
  }
  function openPmEvent(group){
   const dialog=$('prediction-dialog');$('prediction-dialog-title').textContent=group.title;
@@ -41,7 +57,9 @@
   if(!wired){wired=true;$('prediction-search').value=params.get('predictionQuery')||'';$('prediction-category').value=params.has('predictionTopic')?(params.get('predictionTopic')==='all'?'':params.get('predictionTopic')):chosen;$('prediction-sort').value=params.get('predictionSort')==='deadline'?'deadline':'volume';
    $('prediction-topics').onclick=e=>{const b=e.target.closest('[data-topic]');if(b){$('prediction-category').value=b.dataset.topic;pmLimit=PM_PAGE_SIZE;drawPm();}};
    $('prediction-search').oninput=()=>{pmLimit=PM_PAGE_SIZE;drawPm();};$('prediction-sort').onchange=()=>{pmLimit=PM_PAGE_SIZE;drawPm();};$('prediction-more').onclick=()=>{pmLimit+=PM_PAGE_SIZE;drawPm();};$('prediction-reset').onclick=()=>{$('prediction-search').value='';$('prediction-category').value='';$('prediction-sort').value='volume';pmLimit=PM_PAGE_SIZE;drawPm();};
-   $('prediction-list').onclick=e=>{const b=e.target.closest('[data-prediction-event]');if(b){const group=pmGroups.find(g=>g.id===b.dataset.predictionEvent);if(group)openPmEvent(group);}};
+   $('prediction-list').onclick=e=>{const b=e.target.closest('[data-pm-event]');if(b)chooseEvent(b.dataset.pmEvent);};
+   $('prediction-event-select').onchange=e=>chooseEvent(e.target.value);
+   $('prediction-focus').onclick=e=>{const row=e.target.closest('[data-pm-outcome]'),detail=e.target.closest('[data-prediction-event]');if(row){pmOutcome=Number(row.dataset.pmOutcome);drawEvent();$('prediction-focus').querySelector('[data-pm-outcome="'+pmOutcome+'"]').focus({preventScroll:true});}else if(detail){const group=pmGroups.find(g=>g.id===detail.dataset.predictionEvent);if(group)openPmEvent(group);}};
    $('prediction-dialog-close').onclick=()=>$('prediction-dialog').close();
    const more=document.querySelector('.prediction-more-tools');
    document.addEventListener('click',e=>{if(!more.contains(e.target))more.open=false;});
@@ -53,12 +71,11 @@
   document.querySelectorAll('[data-topic]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.topic===topic)));
   const groups=P.groups(pm.markets,{category:topic,query,sort,wholeEvents:true}),visible=groups.slice(0,pmLimit),stale=Date.now()-Date.parse(pm.fetchedAt)>24*3600000;pmGroups=groups;
   $('prediction-status').textContent=(pm.status==='error'?'更新失败 · 保留快照 · ':stale?'历史快照 · ':'快照 · ')+pmDay(pm.fetchedAt)+' '+when(pm.fetchedAt)+' 北京时间';
-  $('prediction-list').innerHTML=visible.map(g=>{
-   const rows=pmOutcomes(g,g.markets),lead=P.affirmative(g.markets[0]);
-   if(g.markets.length===1&&lead){const no=g.markets[0].outcomes.find(o=>o.name==='No'||o.nameZh==='否');if(no)rows.push({market:g.markets[0],outcome:no,label:'否'});}
-   const preview=rows.slice(0,3),remaining=rows.length-preview.length;
-   return '<article class="forecast-event board-panel"><div class="board-panel-body"><div class="forecast-event-head"><span class="forecast-badge">'+esc(P.measurement(g))+'</span><span>'+(!g.complete?'部分收录':'')+'</span></div><h3 title="'+esc(g.title)+'">'+esc(g.title)+'</h3><div class="forecast-preview">'+pmRows(preview)+'</div><div class="forecast-event-footer">'+(g.endDate?'<span title="最早截止 / 北京时间">'+esc(pmDay(g.endDate))+' 截止</span>':'<span></span>')+'<button type="button" data-prediction-event="'+esc(g.id)+'" aria-label="'+esc(g.title)+' · 全部合约明细">'+'明细'+' ↗</button></div></div></article>';
-  }).join('')||'<p class="portal-empty">暂无符合条件的活跃事件</p>';
+
+  if(!visible.some(g=>g.id===pmSelected)){pmSelected=visible[0]?.id||'';pmOutcome=0;}
+  $('prediction-list').innerHTML=visible.map(g=>'<button class="pm-event" type="button" data-pm-event="'+esc(g.id)+'" aria-pressed="'+(g.id===pmSelected)+'"><span>'+esc(g.title)+'</span><small>'+esc(g.dataType.label)+(g.endDate?' · '+esc(pmDay(g.endDate))+' 截止':'')+'</small></button>').join('')||'<p class="portal-empty">暂无匹配事件</p>';
+  $('prediction-event-select').innerHTML=visible.map(g=>'<option value="'+esc(g.id)+'">'+esc(g.title)+'</option>').join('');
+  drawEvent();
   $('prediction-more').hidden=groups.length<=pmLimit;$('prediction-more').textContent='再显示 '+Math.min(PM_PAGE_SIZE,Math.max(0,groups.length-pmLimit))+' 个事件';
   $('prediction-download').disabled=!groups.length;$('prediction-download').onclick=()=>exportCsv([['数据类型','概率口径','事件','原始事件标题','合约','英文原文','结果','隐含概率','24h成交USD','流动性USD','截止时间','源更新时间','快照时间','完整活跃事件收录','来源'],...groups.flatMap(g=>g.markets.flatMap(m=>m.outcomes.map(o=>[g.dataType.label,P.measurement(g),g.title,m.eventTitle||'',m.questionZh||m.question,m.question,o.nameZh||o.name,o.probability,m.volume24h,m.liquidity,m.endDate,m.updatedAt,pm.fetchedAt,g.complete,m.url])))],'polymarket-events.csv');
  }
