@@ -163,7 +163,8 @@
     var selected = selectedRecords();
     $('period-note').textContent = periodText(holiday, dimension);
     var baselineYear = (matching[0] && matching[0].baseline_year) || '';
-    $('asof').innerHTML = '<b>' + holidayNames[holiday] + ' · ' + ((matching[0] && matching[0].current_year) || '') + '年对标' + baselineYear + '年</b>酒店之家';
+    var coverage = holidayInfo(holiday), sheet = coverage && coverage.sheets && coverage.sheets[dimension === 'hotel_tier' ? '分档位' : '分线级'];
+    SiteUI.asOf($('asof'), sheet && sheet.currentEnd, [((matching[0] && matching[0].current_year) || '') + '年' + holidayNames[holiday], '对标' + baselineYear + '年']);
     renderHolidayOverview(dimension);
     renderKpis(selected);
     $('holiday-metric-select').value = state.metric;

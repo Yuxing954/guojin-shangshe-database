@@ -18,5 +18,28 @@
   function save(values){const u=new URL(location.href);for(const [k,v] of Object.entries(values)){if(v===''||v==null)u.searchParams.delete(k);else u.searchParams.set(k,String(v));}history.replaceState(null,'',u.pathname+u.search+u.hash);}
   function debounce(fn,delay=150){let timer;return (...args)=>{clearTimeout(timer);timer=setTimeout(()=>fn(...args),delay);};}
 
-  const api={navigation,pages,route,request,date,save,debounce};if(typeof module==='object'&&module.exports)module.exports=api;else root.SiteUI=api;
+  // Metadata uses full years; compact chart labels remain independent.
+  function periodLabel(value){
+    const text=String(value??'').trim();let m;
+    if((m=text.match(/^(\d{4})-?W(\d{1,2})$/i)))return m[1]+'年第'+Number(m[2])+'周';
+    if((m=text.match(/^(\d{4})-?Q([1-4])$/i)))return m[1]+'年第'+m[2]+'季度';
+    if((m=text.match(/^(\d{4})-?H([12])$/i)))return m[1]+'年'+(m[2]==='1'?'上':'下')+'半年';
+    if((m=text.match(/^(\d{4})-(\d{1,2})$/)))return m[1]+'年'+Number(m[2])+'月';
+    return text;
+  }
+  function asOf(element,value,details=[],label='数据截至'){
+    if(!element)return;
+    const doc=element.ownerDocument,span=(className,text)=>{const e=doc.createElement('span');e.className=className;e.textContent=text;return e;};
+    element.classList.add('dashboard-asof');
+    const primary=span('dashboard-asof-primary','');
+    primary.append(span('dashboard-asof-label',label),span('dashboard-asof-value',periodLabel(value)||'暂无数据'));
+    const nodes=[primary];
+    for(const detail of details.filter(v=>v!==null&&v!==undefined&&v!=='')){
+      const item=span('dashboard-asof-item',''),separator=span('dashboard-asof-separator','｜');separator.setAttribute('aria-hidden','true');
+      item.append(separator,span('dashboard-asof-detail',periodLabel(detail)));nodes.push(item);
+    }
+    element.replaceChildren(...nodes);
+  }
+  const api={navigation,pages,route,request,date,save,debounce,periodLabel,asOf};if(typeof module==='object'&&module.exports)module.exports=api;else root.SiteUI=api;
 })(typeof window==='object'?window:globalThis);
+

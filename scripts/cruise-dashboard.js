@@ -8,7 +8,7 @@
   function filtered(){return data.records.filter(r=>$('year').value==='all'||r.period.startsWith($('year').value));}
   function render(){
     rows=filtered();const scope=$('scope').value,latest=rows.at(-1),v=latest[scope],label=scope==='monthly'?'当月':'年初累计';
-    if(!window.CruiseAnalysis?.active())$('asof').textContent=latest.period+' · '+label+' · 重庆邮轮中心 / 重庆航运交易所 · 转引';
+    if(!window.CruiseAnalysis?.active())SiteUI.asOf($('asof'),latest.period,[label,'重庆邮轮中心 / 重庆航运交易所 · 转引']);
     $('kpis').innerHTML=metrics.map(([k,n,u,c,cu])=>'<article class="cruise-kpi"><h2>'+n+'</h2><strong>'+fmt(v[k],k==='passengers'?4:2)+'<small>'+u+'</small></strong><p>'+delta(v[c],cu)+'</p></article>').join('');
     if(!$('charts').children.length)$('charts').innerHTML=metrics.map(([k,n])=>'<article class="cruise-panel" data-chart-dual-labels data-chart-change-default><h2>'+n+'</h2><div class="cruise-chart" id="chart-'+k+'"></div></article>').join('');
     for(const [k,n,u,c,cu] of metrics){

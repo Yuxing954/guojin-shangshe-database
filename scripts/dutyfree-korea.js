@@ -7,7 +7,7 @@
  function fmt(n,d=1){return M.finite(n)?n.toLocaleString('zh-CN',{minimumFractionDigits:d,maximumFractionDigits:d}):'—';}
  function pct(v){return M.finite(v)?(v>0?'+':'')+fmt(v,1)+'%':'—';}
  function selected(){return M.series(rows,state.scope,state.range);}
- function stamp(){if(root.classList.contains('on'))$('asof').textContent=data?'韩国月度截至 '+data.dataAsOf:'韩国月度数据读取中…';}
+ function stamp(){if(root.classList.contains('on')){if(data)SiteUI.asOf($('asof'),data.dataAsOf,['韩国 · 月度']);else $('asof').textContent='韩国月度数据读取中…';}}
  function render(){
   if(!data)return;const view=selected(),latest=view.at(-1);
   $('kr-period').textContent=(latest?.period||'暂无数据')+' · '+M.scopes[state.scope]+' · 核对 '+data.updatedAt;
