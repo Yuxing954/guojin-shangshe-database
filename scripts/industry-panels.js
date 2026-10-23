@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  const pages={hotel:'hotel-dashboard.html',dutyfree:'dutyfree-dashboard.html',tourism:'cruise-dashboard.html'},labels={hotel:'酒店',dutyfree:'免税',gold:'黄金',tourism:'三峡游轮'},panels=new Map();
+  const pages={hotel:'hotel-dashboard.html',dutyfree:'dutyfree-dashboard.html',tourism:'cruise-dashboard.html',dining:'dining.html'},labels={hotel:'酒店',dutyfree:'免税',gold:'黄金',tourism:'三峡游轮',dining:'餐饮'},panels=new Map();
   const host=document.getElementById('industry-panels'),stage=document.getElementById('industry-stage'),status=document.getElementById('status'),text=document.getElementById('industry-load-text'),retry=document.getElementById('industry-load-retry'),gold=document.getElementById('gold-content');
   let active='hotel',goldState='loading',goldPending=false;const hotelViews=new Map();let hotelWarmed=false;
   function paint(){
@@ -17,13 +17,13 @@
     wrap.className='industry-panel';frame.id='panel-'+id;frame.className='industry-panel-frame';frame.dataset.state='loading';frame.title=labels[id];frame.setAttribute('aria-label',labels[id]+'数据');
     const url=new URL(pages[id],location.href);url.searchParams.set('embed','1');url.searchParams.set('v','20261022korea');
     const saved=new URLSearchParams(location.search),owner=saved.get('panelSector');let view=owner===id?saved.get('panelView'):null;
-    if(view){const key=new URLSearchParams(view).get('view')||view;const allowed=id==='hotel'?['overview','cities','structure','holiday','groups']:id==='dutyfree'?['monthly','korea','holidays']:[];if(!allowed.includes(key))view=null;}
+    if(view){const key=new URLSearchParams(view).get('view')||view;const allowed=id==='hotel'?['overview','cities','structure','holiday','groups']:id==='dutyfree'?['monthly','korea','holidays']:[];if(id!=='dining'&&!allowed.includes(key))view=null;}
     if(id==='hotel'&&view&&new URLSearchParams(view).get('view')==='holiday')url.pathname=url.pathname.replace('hotel-dashboard.html','hotel-holiday-dashboard.html');
     if(id==='hotel'&&view&&new URLSearchParams(view).get('view')==='groups')url.pathname=url.pathname.replace('hotel-dashboard.html','hotel-groups.html');
     if(view)url.hash=view;
     const panel={wrap,frame,state:'loading',timer:null};
     panel.begin=()=>{clearTimeout(panel.timer);panel.state='loading';frame.dataset.state='loading';if(active===id)paint();panel.timer=setTimeout(()=>{panel.state='error';frame.dataset.state='error';if(active===id)paint();},30000);};
-    panel.load=(reload=false)=>{let target=url.href;if(reload){try{const current=new URL(frame.contentWindow.location.href);if(current.origin===location.origin&&/\/(hotel-dashboard|hotel-holiday-dashboard|hotel-groups|dutyfree-dashboard|cruise-dashboard)\.html$/.test(current.pathname))target=current.href;}catch{}}panel.begin();frame.src=target;};
+    panel.load=(reload=false)=>{let target=url.href;if(reload){try{const current=new URL(frame.contentWindow.location.href);if(current.origin===location.origin&&/\/(hotel-dashboard|hotel-holiday-dashboard|hotel-groups|dutyfree-dashboard|cruise-dashboard|dining)\.html$/.test(current.pathname))target=current.href;}catch{}}panel.begin();frame.src=target;};
     wrap.append(frame);host.append(wrap);panels.set(id,panel);if(id==='hotel'){panel.viewKey=hotelKey(url.pathname);hotelViews.set(panel.viewKey,panel);}panel.load();
   }
 
@@ -77,3 +77,4 @@
   new MutationObserver(()=>{if(!goldPending){goldPending=true;requestAnimationFrame(checkGold);}}).observe(gold,{subtree:true,childList:true,attributes:true,characterData:true});
   window.IndustryPanels={show};
 })();
+
