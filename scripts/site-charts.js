@@ -13,8 +13,8 @@ function themeChart(svg){
   if(svg.classList.contains('quotes-chart'))return; // Market candle colors encode price direction.
   svg.dataset.siteChartTheme='blue-gold';
   if(svg.classList.contains('site-paired-chart'))return;
-  const ink=['var(--site-chart-1,#2167a0)','var(--site-chart-2,#ac863d)','var(--site-chart-3,#668397)','var(--site-chart-4,#538db5)','var(--site-chart-5,#8d7852)','var(--site-chart-6,#476777)'];
-  const pale=['var(--site-chart-fill-1,#abcfe8)','var(--site-chart-fill-2,#e6d4ab)','var(--site-chart-fill-3,#c3d0d9)','var(--site-chart-fill-4,#bfdcec)','var(--site-chart-fill-5,#d8ccb5)','var(--site-chart-fill-6,#acc2ce)'];
+  const ink=['#2167a0','#ac863d','#668397','#538db5','#8d7852','#476777'];
+  const pale=['#abcfe8','#e6d4ab','#c3d0d9','#bfdcec','#d8ccb5','#acc2ce'];
   const colorMap=new Map(),key=(node,prop)=>getComputedStyle(node)[prop];
   const colorIndex=color=>{if(!colorMap.has(color))colorMap.set(color,colorMap.size%ink.length);return colorMap.get(color);};
   const lines=[...svg.querySelectorAll('polyline,path')].filter(n=>!n.closest('defs')&&!n.classList.contains('site-axis-rule')&&key(n,'fill')==='none'&&key(n,'stroke')!=='none');
@@ -24,7 +24,7 @@ function themeChart(svg){
   const originalDots=dots.map(n=>[n,colorIndex(key(n,'stroke')==='none'?key(n,'fill'):key(n,'stroke'))]);
   const originalBars=bars.map(n=>[n,colorIndex(key(n,'fill'))]);
   originalLines.forEach(([n,i])=>{n.style.setProperty('stroke',ink[i],'important');n.style.strokeWidth='2.6';n.style.strokeLinejoin='round';n.style.strokeLinecap='round';});
-  originalDots.forEach(([n,i])=>{n.style.setProperty('fill','var(--site-surface,white)','important');n.style.setProperty('stroke',ink[i],'important');n.style.strokeWidth='1.8';});
+  originalDots.forEach(([n,i])=>{n.style.setProperty('fill','white','important');n.style.setProperty('stroke',ink[i],'important');n.style.strokeWidth='1.8';});
   originalBars.forEach(([n,i])=>{n.style.setProperty('fill',pale[i],'important');n.style.opacity='1';});
   // Some legacy renderers draw only paths. Add hollow markers on their real vertices.
   if(!dots.length){
@@ -32,7 +32,7 @@ function themeChart(svg){
     originalLines.forEach(([n,i])=>{
       const values=n.tagName==='polyline'?(n.getAttribute('points')||'').match(/-?\d*\.?\d+(?:e[-+]?\d+)?/gi):null;
       const pairs=values?Array.from({length:Math.floor(values.length/2)},(_,j)=>[+values[2*j],+values[2*j+1]]):[...(n.getAttribute('d')||'').matchAll(/[ML]\s*(-?\d*\.?\d+(?:e[-+]?\d+)?)[,\s]+(-?\d*\.?\d+(?:e[-+]?\d+)?)/gi)].map(m=>[+m[1],+m[2]]);
-      const stride=Math.max(1,Math.ceil(pairs.length/60));pairs.forEach(([x,y],j)=>{if(j%stride&&j!==pairs.length-1)return;const dot=document.createElementNS(NS,'circle');for(const [k,v]of Object.entries({cx:x,cy:y,r:3,fill:'var(--site-surface,white)',stroke:ink[i],'stroke-width':1.8}))dot.setAttribute(k,v);group.append(dot);});
+      const stride=Math.max(1,Math.ceil(pairs.length/60));pairs.forEach(([x,y],j)=>{if(j%stride&&j!==pairs.length-1)return;const dot=document.createElementNS(NS,'circle');for(const [k,v]of Object.entries({cx:x,cy:y,r:3,fill:'white',stroke:ink[i],'stroke-width':1.8}))dot.setAttribute(k,v);group.append(dot);});
     });if(group.childNodes.length)svg.append(group);
   }
   const host=svg.parentElement;
@@ -278,7 +278,7 @@ function paired(rows,opt={}){
   const margin=width/(unique.length+1)/2,px=x=>L+margin+(x-xmin)/(xmax-xmin||1)*(width-margin*2);
   function domain(key){return niceScale(normalized.flatMap(r=>r.values.map(s=>s[key])),{zero:true,intervals:spacious?4:5});}
   const valueScale=domain('value'),changeScale=domain('change'),vd=[valueScale.min,valueScale.max],cd=[changeScale.min,changeScale.max],py=(v,d)=>bottom-(v-d[0])/(d[1]-d[0])*(bottom-T);
-  const palette=['var(--site-chart-1,#2167a0)','var(--site-chart-2,#ac863d)','var(--site-chart-3,#668397)','var(--site-chart-4,#538db5)','var(--site-chart-5,#8d7852)','var(--site-chart-6,#476777)'],barPalette=['var(--site-chart-fill-1,#abcfe8)','var(--site-chart-fill-2,#e6d4ab)','var(--site-chart-fill-3,#c3d0d9)','var(--site-chart-fill-4,#bfdcec)','var(--site-chart-fill-5,#d8ccb5)','var(--site-chart-fill-6,#acc2ce)'],colors=Array.from({length:Math.max(...normalized.map(r=>r.values.length))},(_,i)=>(opt.colors||palette)[i%(opt.colors||palette).length]);
+  const palette=['#2167a0','#ac863d','#668397','#538db5','#8d7852','#476777'],barPalette=['#abcfe8','#e6d4ab','#c3d0d9','#bfdcec','#d8ccb5','#acc2ce'],colors=Array.from({length:Math.max(...normalized.map(r=>r.values.length))},(_,i)=>(opt.colors||palette)[i%(opt.colors||palette).length]);
   const periodCount=Math.min(normalized.length,Math.max(2,Math.min(6,Math.floor((width-margin*2)/150)+1))),periodTicks=new Set(Array.from({length:periodCount},(_,i)=>Math.round(i*(normalized.length-1)/Math.max(1,periodCount-1))));
   let svg='<svg class="site-paired-chart"'+(spacious?' data-chart-layout="spacious"':'')+' style="height:auto!important;min-height:0" viewBox="0 0 '+w+' '+h+'" role="img" aria-label="'+esc(opt.name||'历史趋势')+'"><title>'+esc(opt.name||'历史趋势')+'</title>';
   const primary=showValue?vd:cd,primaryScale=showValue?valueScale:changeScale;
