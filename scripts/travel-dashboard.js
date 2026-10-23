@@ -1,15 +1,15 @@
 (function(){
   'use strict';
   const $=id=>document.getElementById(id),M=TravelModel,esc=SiteData.esc;
-  const fmt=(v,d=2)=>Number.isFinite(v)?v.toLocaleString('zh-CN',{maximumFractionDigits:d}):'—';
+  const fmt=(v,d=2)=>SiteUI.number(v,'amount',{digits:d,minimumDigits:0});
   const delta=v=>Number.isFinite(v)?'同比 '+(v>0?'+':'')+fmt(v,1)+'%':'同比 —';
   const scopes={q1:'第一季度 · 单季',q3:'第三季度 · 单季',h1:'上半年',annual:'全年'};
-  let data,view='domestic',exports=[];
+  const filterIds=["domestic-period-year", "domestic-period-scope", "domestic-quarter", "domestic-year", "holiday", "holiday-basis", "scenic-window", "enterprise-year", "enterprise-scope", "border-scope", "destination", "outbound-year", "outbound-scope"];let data,view='domestic',exports=[];
   function source(id,locator,url){const s=M.source(data,id);return (url||s.url)?'<a href="'+esc(url||s.url)+'" target="_blank" rel="noopener" title="'+esc(s.name+(s.publishedAt?' · 发布 '+s.publishedAt:''))+'">官方来源</a>':'<a href="data-notes.html#travel" title="'+esc((s.file||'')+' · '+(locator||''))+'">原表</a>';}
   function table(id,headers,rows){$(id).innerHTML='<thead><tr>'+headers.map(x=>'<th>'+esc(x)+'</th>').join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+r.map(x=>'<td>'+x+'</td>').join('')+'</tr>').join('')+'</tbody>';}
-  function kpis(id,items){$(id).innerHTML=items.map(([title,value,unit,change,period])=>'<article class="travel-kpi"><h2>'+esc(title)+'</h2><strong>'+fmt(value)+'<small>'+esc(unit)+'</small></strong><p class="'+(change>0?'positive':change<0?'negative':'')+'">'+(typeof change==='string'?esc(change):delta(change))+'</p><p>'+esc(period||'')+'</p></article>').join('');}
+  function kpis(id,items){$(id).innerHTML=items.map(([title,value,unit,change,period])=>'<article class="travel-kpi site-kpi"><h2>'+esc(title)+'</h2><strong>'+fmt(value)+'<small>'+esc(unit)+'</small></strong><p class="'+(change>0?'positive':change<0?'negative':'')+'">'+(typeof change==='string'?esc(change):delta(change))+'</p><p>'+esc(period||'')+'</p></article>').join('');}
   function chart(id,rows,name,unit,options={}){SiteCharts.drawPaired($(id),rows,{name,unit,mode:'combo',valueStyle:'bar',changeUnit:'%',precision:2,changePrecision:1,...options});}
-  function panelCharts(id,items){if(!$(id).children.length)$(id).innerHTML=items.map(([key,title])=>'<article class="travel-panel"><h2>'+esc(title)+'</h2><div id="'+key+'"></div></article>').join('');}
+  function panelCharts(id,items){if(!$(id).children.length)$(id).innerHTML=items.map(([key,title])=>'<article class="travel-panel site-panel"><h2>'+esc(title)+'</h2><div id="'+key+'"></div></article>').join('');}
   function record(name,r,value,unit,change,basis='',sourceId=r.sourceId,locator=r.locator){const s=M.source(data,sourceId),comparison=M.source(data,r.comparisonSourceId),ss=r.sourceIds?.map(id=>M.source(data,id)),cs=r.comparisonSourceIds?.map(id=>M.source(data,id));exports.push([view,name,r.period,basis,value,unit,change,basis==='年初累计'&&r.scope!=='ytd'?'年初至同月完整数值累计计算':r.changeBasis||'',ss?.map(x=>x.name).join(' | ')||s.name,ss?.map(x=>x.url||'').join(' | ')||r.url||s.url||'',s.file||'',locator||'',r.publishedAt||s.publishedAt||'',data.checkedAt,r.comparisonPeriod||'',cs?.map(x=>x.name).join(' | ')||comparison.name||'',cs?.map(x=>x.url||'').join(' | ')||comparison.url||'']);}
   function renderDomesticPeriods(){
     const scope=$('domestic-period-scope').value,rows=M.domesticQuarterRows(data,$('domestic-period-year').value,scope,$('domestic-quarter').value),r=rows.at(-1),basis=scope==='quarter'?'单季':'年初累计';
@@ -83,7 +83,7 @@
     const border=data.inbound.border.filter(x=>Number.isFinite(x.mainlandOut));table('mainland-out-table',['期间','统计口径','内地居民出境（万人次）','同比（%）','来源'],[...border].reverse().map(x=>[x.period,scopes[x.scope],fmt(x.mainlandOut),fmt(x.mainlandOutYoY,1),source(x.sourceId)]));
     for(const x of border)record('内地居民单向出境',x,x.mainlandOut,'万人次',x.mainlandOutYoY,scopes[x.scope]);
   }
-  function render(){if(!data)return;exports=[];for(const v of ['domestic','inbound','outbound']){$('view-'+v).hidden=v!==view;document.querySelector('[data-view="'+v+'"]').setAttribute('aria-pressed',String(v===view));}({domestic:renderDomestic,inbound:renderInbound,outbound:renderOutbound}[view])();}
+  function render(){if(!data)return;exports=[];for(const v of ['domestic','inbound','outbound']){$('view-'+v).hidden=v!==view;document.querySelector('[data-view="'+v+'"]').setAttribute('aria-pressed',String(v===view));}({domestic:renderDomestic,inbound:renderInbound,outbound:renderOutbound}[view])();SiteUI.saveFields(filterIds,'travel-');}
   function select(){const key=new URLSearchParams(location.hash.slice(1)).get('view')||location.hash.slice(1);view=['domestic','inbound','outbound'].includes(key)?key:'domestic';render();}
   function download(){const csv=M.csv(exports,['板块','指标','数据期间','统计口径','数值','单位','同比（%）','同比依据','来源','来源URL','来源文件','原表定位','发布日期','核对日期','同比基期','基期来源','基期URL']);const u=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'})),a=document.createElement('a');a.href=u;a.download='旅游_'+view+'.csv';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);}
   async function load(){
@@ -91,7 +91,7 @@
     try{data=await SiteData.json('data/tourism/dashboard.json?v=20261023scenic');if(!data.domestic?.holidays?.length||!data.domestic?.quarters?.length||!data.domestic?.scenicOther?.length||!data.inbound?.border?.length)throw Error('empty');
       const years=[...new Set(data.domestic.holidays.map(r=>r.year))].sort((a,b)=>b-a);$('domestic-year').innerHTML='<option value="all">全部年份</option>'+years.map(y=>'<option>'+y+'</option>').join('');$('domestic-year').value='2026';
       $('outbound-year').innerHTML='<option value="recent">近三年＋最新（2023年以来）</option><option value="all">全部年份</option>'+Array.from({length:10},(_,i)=>2026-i).map(y=>'<option>'+y+'</option>').join('');$('outbound-year').value='recent';$('destination').innerHTML=data.outbound.destinations.map(d=>'<option>'+esc(d.name)+'</option>').join('');
-      $('dashboard').hidden=false;select();$('export').disabled=false;
+      SiteUI.restoreFields(filterIds,'travel-');$('dashboard').hidden=false;select();$('export').disabled=false;
     }catch(e){data=null;$('dashboard').hidden=true;$('export').disabled=true;$('asof').textContent='旅游数据读取失败';$('load-error').hidden=false;$('load-error').textContent='数据暂时无法读取，请重试。';const b=document.createElement('button');b.textContent='重试';b.onclick=load;$('load-error').append(b);}
   }
   document.querySelector('.travel-tabs').onclick=e=>{const button=e.target.closest('[data-view]');if(button)location.hash='view='+button.dataset.view;};

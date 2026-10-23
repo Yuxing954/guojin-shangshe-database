@@ -30,7 +30,7 @@
   function briefPublished(r){return (r.sources||[]).map(s=>s.publishedAt).filter(Boolean).sort((a,b)=>M.publicationTime(a).localeCompare(M.publicationTime(b))).at(-1)||r.date||'';}
   async function batchRows(path){if(!batches.has(path))batches.set(path,D.table(path).catch(e=>{batches.delete(path);throw e;}));return batches.get(path);}
   function filters(){return {kind,q:$('search').value,sector:$('sector').value,format:kind==='minutes'?$('format').value:'',state:kind==='minutes'?$('processing-state').value:'',scope:kind==='minutes'?libraryScope:'',from:$('from').value,to:$('to').value};}
-  function saveUrl(record){const f=filters(),p=new URLSearchParams();if(kind!=='digest')p.set('kind',kind);for(const key of ['q','sector','format','state','scope','from','to'])if(f[key])p.set(key,f[key]);if(range)p.set('range',range);if($('sort').value==='asc')p.set('sort','asc');if(record){const id=M.topic(record);if(id)p.set('topic',id);else p.set('record',record.title);if(record.file)p.set('file',record.file);if(record.id)p.set('asset',record.id);}history.replaceState(null,'',location.pathname+(p.size?'?'+p:'')+location.hash);}
+  function saveUrl(record){const f=filters(),p=new URLSearchParams();if(kind!=='digest')p.set('kind',kind);for(const key of ['q','sector','format','state','scope','from','to'])if(f[key])p.set(key,f[key]);if(page>1)p.set('page',page);if(archive.has(kind))p.set('archive','1');if(loadedRecent.has(kind))p.set('recent','1');if(range)p.set('range',range);if($('sort').value==='asc')p.set('sort','asc');if(record){const id=M.topic(record);if(id)p.set('topic',id);else p.set('record',record.title);if(record.file)p.set('file',record.file);if(record.id)p.set('asset',record.id);}history.replaceState(null,'',SiteUI.contextURL(location.pathname+(p.size?'?'+p:'')+location.hash));}
   function renderBriefs(f,invalid){
     const briefs=invalid?[]:briefData.briefs.filter(r=>L.briefMatches(r,f)).sort((a,b)=>$('sort').value==='asc'?M.publicationTime(briefPublished(a)).localeCompare(M.publicationTime(briefPublished(b))):M.publicationTime(briefPublished(b)).localeCompare(M.publicationTime(briefPublished(a))));
     $('count').textContent=briefs.length+' 条观点';
@@ -180,7 +180,9 @@
     entries=entries.filter(r=>r.kind!=='all_views').concat(unique(entries.filter(r=>r.kind==='all_views')));
     if(libraryResult&&Array.isArray(libraryResult.records)){library=libraryResult;entries=L.mergeEntries(entries,library.records.flatMap(L.entries),M.topic);}else libraryFailed=true;
     if(!briefResult)$('status').textContent='观点摘要暂时无法读取，近期观点原文仍可浏览。';
-    if(briefResult)$('status').textContent='';$('content').hidden=false;select(kind);
+    if(briefResult)$('status').textContent='';$('content').hidden=false;
+    if(params.get('archive')==='1')await loadArchive(kind);else if(params.get('recent')==='1'){recentFull=await D.json('data/research/recent.json');entries=entries.filter(r=>r.kind!==kind).concat(unique(recentEntries(recentFull,kind)));loadedRecent.add(kind);}
+    select(kind);page=Math.max(1,Number(params.get('page'))||1);render();
     if(params.get('topic')||params.get('record')||params.get('asset')){
       const find=()=>entries.find(r=>r.kind===kind&&(params.get('topic')?(r.library?.sourceTopics||[M.topic(r)]).includes(params.get('topic')):!params.get('record')||[r.title,...(r.legacyTitles||[])].includes(params.get('record')))&&(!params.get('file')||r.file===params.get('file')||params.get('file').split('；').includes(r.file))&&(!params.get('asset')||(r.library?.aliases||[r.id]).includes(params.get('asset'))));
       let record=find();
@@ -189,3 +191,4 @@
     }
   }catch(e){$('status').innerHTML='研究文库暂时无法读取。<button class="portal-button" onclick="location.reload()">重试</button>';}
 })();
+

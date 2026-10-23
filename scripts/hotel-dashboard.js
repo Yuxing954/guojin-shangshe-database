@@ -7,7 +7,7 @@
   var GROUPS = ['华住', '首旅如家', '锦江酒店（中国区）', '亚朵'];
   var BANDS = ['15-29间', '30-69间', '70-149间', '150间及以上'];
   var weekly = [], seriesCache = new Map();
-  var COLORS = ['#2167a0', '#368575', '#b9854c', '#b85460', '#7a68a6', '#5485a5'];
+  var COLORS=SiteUI.colors;
   var META = { revpar: { label: 'RevPAR', abbr: 'RevPAR', unit: '元' }, occupancy_rate: { label: 'OCC', abbr: 'OCC', unit: '%' }, adr: { label: 'ADR', abbr: 'ADR', unit: '元' } };
   function $(id) { return document.getElementById(id); }
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
@@ -55,7 +55,7 @@
       return r.text();
     }).then(function (text) { var rows = M.csv(text); if (!rows.length) throw new Error('没有有效记录'); return rows; });
   }
-  function saveState() { var saved = Object.assign({}, state, { week: followLatest ? 'latest' : state.week, rangeVersion: '12w' }); history.replaceState(null, '', '#' + new URLSearchParams(saved).toString()); }
+  function saveState() { var saved = Object.assign({}, state, { week: followLatest ? 'latest' : state.week, rangeVersion: '12w' }); history.replaceState(null, '',SiteUI.contextURL( '#' + new URLSearchParams(saved).toString())); }
   function switchView(view) {
     state.view = view;
     $('weekly-export').hidden = view !== 'overview';
@@ -119,7 +119,8 @@
       return { x: r.period_id, y: display(row(state.region, '全部', M.priorPeriod(r)), field) };
     }) });
     var unit = isChange ? (field === 'occupancy_rate' ? '百分点' : '%') : meta.unit;
-    $('trend-caption').textContent = meta.label + ' · ' + unit ;    lineChart('main-chart', lines, { unit: unit, occupancy: !isChange && field === 'occupancy_rate', zero: isChange });
+    $('trend-caption').textContent = meta.label + ' · ' + unit ;
+    lineChart('main-chart', lines, { unit: unit, occupancy: !isChange && field === 'occupancy_rate', zero: isChange });
     var plotted = M.chartSeries(lines), plottedRows = plotted.length ? plotted[0].pts : [];
     $('history-note').textContent = plottedRows.length ? '有效区间 ' + plottedRows[0].x + ' — ' + plottedRows[plottedRows.length - 1].x : '所选范围暂无数据。';
   }
@@ -494,6 +495,7 @@
     if (text != null) e.textContent = text; return e;
   }
   function lineChart(id, lines, opt) {
+    lines=lines.map(function(s){return Object.assign({},s,{color:SiteUI.seriesColor(s.id||s.name)});});
     opt = opt || {}; var host = $(id); host.innerHTML = ''; lines = M.chartSeries(lines);
     if(!opt.forceLine&&state.mode==='combo'&&lines.some(s=>s.pts.some(p=>Number.isFinite(p.change)))){const keys=[...new Set(lines.flatMap(s=>s.pts.map(p=>p.x)))].sort();SiteCharts.drawPaired(host,keys.map((key,i)=>({period:key,x:i,values:lines.map(s=>{const p=s.pts.find(p=>p.x===key);return {name:s.name,value:p?.y,change:p?.change,color:s.color};})})),{unit:opt.unit,changeUnit:opt.occupancy?'百分点':'%',changeLabel:labelChange(),name:lines.map(s=>s.name).join('、'),precision:0,changePrecision:1,periodFormat:'week-short'});return;}
     var xs = Array.from(new Set(lines.flatMap(function (s) { return s.pts.map(function (p) { return p.x; }); }))).sort();
@@ -541,6 +543,7 @@
 
   }
 })();
+
 
 
 

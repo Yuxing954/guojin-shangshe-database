@@ -1,11 +1,11 @@
 (async function(){
  'use strict';
  const G=HotelGroupsModel,H=HotelMetrics,$=id=>document.getElementById(id),esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),fmt=(v,d=0)=>v==null?'—':new Intl.NumberFormat('zh-CN',{minimumFractionDigits:d,maximumFractionDigits:d}).format(v),signed=v=>(v>0?'+':'')+fmt(v,1),tone=v=>v>0?'hd-positive':v<0?'hd-negative':'hd-neutral';
- const q=new URLSearchParams(location.hash.slice(1)),state={period:q.get('period')||'latest'},plots=[{metric:'adr',prefix:'group',windowKey:'window',modeKey:'chart'},{metric:'heat',prefix:'heat',windowKey:'heatWindow',modeKey:'heatMode'},{metric:'price',prefix:'price',windowKey:'priceWindow',modeKey:'priceMode'},{metric:'hotels',prefix:'hotels',windowKey:'hotelsWindow',modeKey:'hotelsMode'},{metric:'rooms',prefix:'rooms',windowKey:'roomsWindow',modeKey:'roomsMode'}],colors=['#2b66b6','#d58a2f','#2d9684','#8c68bd'];
+ const q=new URLSearchParams(location.hash.slice(1)),state={period:q.get('period')||'latest'},plots=[{metric:'adr',prefix:'group',windowKey:'window',modeKey:'chart'},{metric:'heat',prefix:'heat',windowKey:'heatWindow',modeKey:'heatMode'},{metric:'price',prefix:'price',windowKey:'priceWindow',modeKey:'priceMode'},{metric:'hotels',prefix:'hotels',windowKey:'hotelsWindow',modeKey:'hotelsMode'},{metric:'rooms',prefix:'rooms',windowKey:'roomsWindow',modeKey:'roomsMode'}],colors=SiteUI.colors;
  for(const p of plots){state[p.windowKey]=['12','26','52','156','all'].includes(q.get(p.windowKey))?q.get(p.windowKey):'12';state[p.modeKey]=q.get('compare')==='all'&&['value','change'].includes(q.get(p.modeKey))?q.get(p.modeKey):'value';}
  let weekly=[],periods=[],update={},frame=0;
  const row=(id,metric)=>{const s=G.series(weekly,id,metric);return {s,o:G.observation(s,state.period)};};
- function save(){const p=new URLSearchParams({view:'groups',type:'weekly',compare:'all',period:state.period===periods.at(-1)?'latest':state.period});for(const plot of plots){p.set(plot.windowKey,state[plot.windowKey]);p.set(plot.modeKey,state[plot.modeKey]);}history.replaceState(null,'',location.pathname+location.search+'#'+p.toString());dispatchEvent(new Event('hashchange'));}
+ function save(){const p=new URLSearchParams({view:'groups',type:'weekly',compare:'all',period:state.period===periods.at(-1)?'latest':state.period});for(const plot of plots){p.set(plot.windowKey,state[plot.windowKey]);p.set(plot.modeKey,state[plot.modeKey]);}history.replaceState(null,'',SiteUI.contextURL(location.pathname+location.search+'#'+p.toString()));dispatchEvent(new Event('hashchange'));}
  const growth=o=>o?.yoy?'<span class="'+tone(o.yoy.value)+'">同比 '+signed(o.yoy.value)+'%</span>':'<span class="hd-neutral">同比 —</span>';
  function paint(){
   $('group-period').value=state.period;
@@ -36,3 +36,4 @@
   $('group-period').innerHTML=[...periods].reverse().map(p=>'<option value="'+p+'">'+H.weekLabel(p)+'</option>').join('');for(const p of plots)$(p.prefix+'-window').innerHTML=[['12','最近12周'],['26','近半年'],['52','近1年'],['156','近3年'],['all','全部历史']].map(([v,n])=>'<option value="'+v+'">'+n+'</option>').join('');$('dashboard').hidden=false;paint();
  }catch(e){$('load-error').hidden=false;$('load-error').innerHTML='酒店之家集团数据暂时无法读取。<button type="button" onclick="location.reload()">重试</button>';$('asof').textContent='读取失败';}
 })();
+

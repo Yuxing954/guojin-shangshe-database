@@ -12,14 +12,14 @@
  function amount(o){if(!o)return {text:'暂无数据',unit:''};return o.unit==='百万元'?{text:D.fmt(o.value/100,2),unit:(o.currency==='USD'?'亿美元':o.currency==='HKD'?'亿港元':'亿元')+' / '+o.currency}:{text:value(o),unit:unit(o)};}
  function cell(o,withPeriod=true){return o?'<strong>'+value(o)+'</strong> <span class="db-muted">'+esc(unit(o))+'</span>'+src(o)+(issue(o)?'<small class="db-flag">口径待核验</small>':'')+(withPeriod?'<small>'+esc(o.period+' · '+o.periodBasis)+'</small>':''):'<span class="db-muted">暂无数据</span>';}
  function change(o,rows){const y=A.yoy(rows,o);return y?'<span class="db-change">'+esc(y.kind)+' '+signed(y.value)+(y.unit==='%'?'%':' '+esc(y.unit))+'</span>':'<span class="db-muted">同比暂无数据</span>';}
- function card(name,o,rows,compact=false){const a=amount(o);return '<article class="db-kpi"><span>'+esc(name)+'</span><strong>'+esc(a.text)+'</strong><small>'+esc(a.unit)+'</small><div>'+change(o,rows)+'</div><small>'+esc(o?o.period+' · '+o.periodBasis:'暂无数据')+'</small><div class="db-kpi-foot">'+src(o)+(o&&!compact?'<button class="db-evidence" data-history="'+esc(o.id)+'">历史 ↗</button>':'')+'</div>'+(issue(o)?'<span class="db-flag">口径待核验</span>':'')+'</article>';}
- function ratioCard(label,n,d){const ratio=A.ratio(n,d);return '<article class="db-kpi"><span>'+esc(label)+'</span><strong>'+(ratio===null?'暂无数据':D.fmt(ratio,2)+'%')+'</strong><div class="db-kpi-foot">'+src(n)+src(d)+'</div><small>'+esc(ratio===null?'暂无可比输入':d.period+' · '+d.periodBasis)+'</small></article>';}
+ function card(name,o,rows,compact=false){const a=amount(o);return '<article class="db-kpi site-kpi"><span>'+esc(name)+'</span><strong>'+esc(a.text)+'</strong><small>'+esc(a.unit)+'</small><div>'+change(o,rows)+'</div><small>'+esc(o?o.period+' · '+o.periodBasis:'暂无数据')+'</small><div class="db-kpi-foot">'+src(o)+(o&&!compact?'<button class="db-evidence" data-history="'+esc(o.id)+'">历史 ↗</button>':'')+'</div>'+(issue(o)?'<span class="db-flag">口径待核验</span>':'')+'</article>';}
+ function ratioCard(label,n,d){const ratio=A.ratio(n,d);return '<article class="db-kpi site-kpi"><span>'+esc(label)+'</span><strong>'+(ratio===null?'暂无数据':D.fmt(ratio,2)+'%')+'</strong><div class="db-kpi-foot">'+src(n)+src(d)+'</div><small>'+esc(ratio===null?'暂无可比输入':d.period+' · '+d.periodBasis)+'</small></article>';}
  function table(headers,body){return '<div class="portal-table-scroll"><table class="portal-table db-matrix"><thead><tr>'+headers.map(h=>'<th>'+esc(h)+'</th>').join('')+'</tr></thead><tbody>'+body+'</tbody></table></div>';}
  function show(view){
   if(view==='evidence'){location.href='data-notes.html#companies';return;}
   const compare=view==='compare';active=compare?'overview':view;
   for(const v of ['overview','financial','history']){ $('db-view-'+v).hidden=v!==active;const b=document.querySelector('[data-view="'+v+'"]');b.classList.toggle('active',v===active);b.setAttribute('aria-selected',String(v===active));}
-  const u=new URL(location.href);u.searchParams.set('db-view',active);u.searchParams.delete('db-chapter');history.replaceState(null,'',u);
+  const u=new URL(location.href);u.searchParams.set('db-view',active);u.searchParams.delete('db-chapter');history.replaceState(null,'',SiteUI.contextURL(u));
   if(compare){$('db-compare-panel').open=true;paintCompare();}
   if(window.SiteCharts)window.SiteCharts.scan?.();
  }
@@ -51,7 +51,7 @@
  function paintFinancial(){if(!context||!profiles)return;const {rows,company:c}=context,p=profiles[c.id],source=$('db-financial-source').value,period=$('db-financial-period').value,s=A.financial(rows,p,period||undefined,source),profit=s[s.profitMetric],r=s.revenue,cf=s.operating_cf;
   $('db-financial-note').textContent=r?[r.period,r.periodBasis,r.currency,s.source==='choice'?'Choice':'研究底稿 / 原报告'].filter(Boolean).join(' · '):'暂无所选财务数据';
   $('db-finance').innerHTML=card('营业收入',r,rows)+card(metric(s.profitMetric),profit,rows)+card('经营现金流净额',cf,rows);
-  $('db-quality').innerHTML=ratioCard(metric(s.profitMetric)+' / 收入',profit,r)+ratioCard('经营现金流 / 收入',cf,r)+(s.assets&&s.liabilities?'<article class="db-kpi"><span>资产负债率</span><strong>'+D.fmt(A.ratio(s.liabilities,s.assets),2)+'%</strong><small>负债总额 / 资产总额 · '+esc(s.assets.period)+'</small><div>'+src(s.liabilities)+src(s.assets)+'</div></article>':'')+(s.deducted_profit?card('扣非归母净利润',s.deducted_profit,rows):'');
+  $('db-quality').innerHTML=ratioCard(metric(s.profitMetric)+' / 收入',profit,r)+ratioCard('经营现金流 / 收入',cf,r)+(s.assets&&s.liabilities?'<article class="db-kpi site-kpi"><span>资产负债率</span><strong>'+D.fmt(A.ratio(s.liabilities,s.assets),2)+'%</strong><small>负债总额 / 资产总额 · '+esc(s.assets.period)+'</small><div>'+src(s.liabilities)+src(s.assets)+'</div></article>':'')+(s.deducted_profit?card('扣非归母净利润',s.deducted_profit,rows):'');
   const cashMetrics=s.source==='choice'?[p.cashMetric,'assets','liabilities']:['cash','debt','adjusted_ebitda'];
   $('db-liquidity').innerHTML=table(['指标','数值','定义与期间'],cashMetrics.map(m=>{const o=s[m];return '<tr><td>'+esc(metric(m))+'</td><td>'+cell(o,false)+'</td><td>'+esc(o?o.period+' · '+A.description(o):'暂无所选期间数据')+'</td></tr>';}).join(''));
   const trend=$('db-financial-trend').value;const selectedTrend=trend==='profit'?profit:trend==='operating_cf'?cf:r;$('db-financial-trends').innerHTML=trendBlock(selectedTrend,rows,trend==='profit'?metric(s.profitMetric):metric(trend));
@@ -85,6 +85,7 @@
  document.addEventListener('companydb:selected',async e=>{context=e.detail;await profilePromise;paintOverview();if($('db-compare-panel').open)paintCompare();});
  const params=new URLSearchParams(location.search),oldView=params.get('db-view'),oldChapter=params.get('db-chapter');show(oldView==='evidence'?'evidence':oldView==='compare'?'compare':oldView==='history'?'history':oldView==='financial'||oldChapter==='financial'?'financial':'overview');
 })();
+
 
 
 

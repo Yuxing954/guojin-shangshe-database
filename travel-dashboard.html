@@ -3,53 +3,53 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>旅游 · 国金商社</title>
-<link rel="stylesheet" href="scripts/site.css?v=20261014viewfit"><link rel="stylesheet" href="scripts/site-charts.css?v=20261019controls"><link rel="stylesheet" href="scripts/industry-embed.css?v=20261014viewfit"><link rel="stylesheet" href="scripts/travel-dashboard.css?v=20261023quarter"><link rel="stylesheet" href="scripts/site-polish.css?v=20261013clean">
-<script src="scripts/chart-period.js?v=20261022dates"></script><script defer src="scripts/site-ui.js?v=20261023travel"></script><script defer src="scripts/site-data.js?v=20261022dates"></script><script defer src="scripts/site-shell.js?v=20261014monthly"></script><script defer src="scripts/site-charts.js?v=20261022dates"></script><script defer src="scripts/travel-model.js?v=20261023quarter"></script><script defer src="scripts/travel-dashboard.js?v=20261023scenic"></script><script defer src="scripts/industry-embed.js?v=20261014viewfit"></script>
-</head>
+<link rel="stylesheet" href="scripts/site.css?v=20261023workspace"><link rel="stylesheet" href="scripts/site-charts.css?v=20261023workspace"><link rel="stylesheet" href="scripts/industry-embed.css?v=20261023system"><link rel="stylesheet" href="scripts/travel-dashboard.css?v=20261023system"><link rel="stylesheet" href="scripts/site-polish.css?v=20261023system">
+<script src="scripts/chart-period.js?v=20261023system"></script><script defer src="scripts/site-ui.js?v=20261023workspace"></script><script defer src="scripts/site-data.js?v=20261022dates"></script><script defer src="scripts/research-workspace-model.js?v=20261023workspace"></script><script defer src="scripts/site-metrics.js?v=20261023workspace"></script><script defer src="scripts/research-workspace.js?v=20261023workspace"></script><script defer src="scripts/site-shell.js?v=20261023workspace"></script><script defer src="scripts/site-charts.js?v=20261023workspace"></script><script defer src="scripts/travel-model.js?v=20261023quarter"></script><script defer src="scripts/travel-dashboard.js?v=20261023workspace"></script><script defer src="scripts/industry-embed.js?v=20261023system"></script>
+<link rel="manifest" href="site.webmanifest"><link rel="apple-touch-icon" href="scripts/assets/app/apple-touch-icon.png"><link rel="stylesheet" href="scripts/site-install.css?v=20261023system"><script defer src="scripts/site-install.js?v=20261023system"></script></head>
 <body class="site-page travel-page" data-site-section="industry">
 <main class="site-main">
 <header class="travel-head"><div><h1>旅游</h1><p id="asof">正在读取旅游数据…</p></div><div class="travel-actions"><a href="data-notes.html#travel">数据说明</a><a href="data/tourism/dashboard.json" download>全量数据</a><button id="export" disabled>导出当前 CSV</button></div></header>
 <div id="load-error" role="alert" hidden></div>
 <section id="dashboard" hidden>
-<nav class="travel-tabs" aria-label="旅游板块"><button data-view="domestic" aria-pressed="true">国内游</button><button data-view="inbound" aria-pressed="false">入境游</button><button data-view="outbound" aria-pressed="false">出境游</button></nav>
+<nav class="travel-tabs site-subnav" aria-label="旅游板块"><button data-view="domestic" aria-pressed="true">国内游</button><button data-view="inbound" aria-pressed="false">入境游</button><button data-view="outbound" aria-pressed="false">出境游</button></nav>
 <section id="view-domestic">
 <div class="travel-section-head"><h2>全国国内游 · 季度量价</h2><span id="domestic-period-asof"></span></div>
-<div class="travel-controls"><label>年份 <select id="domestic-period-year"><option value="recent">近三年＋最新</option><option value="all">全部（含2022基期）</option><option>2026</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option></select></label><label>口径 <select id="domestic-period-scope"><option value="quarter">单季</option><option value="ytd">年初累计</option></select></label><label>季度 <select id="domestic-quarter"><option value="all">全部季度</option><option value="1">第一季度</option><option value="2">第二季度</option><option value="3">第三季度</option><option value="4">第四季度</option></select></label><span class="travel-tag">文化和旅游部</span></div>
-<div id="domestic-period-kpis" class="travel-kpis"></div>
+<div class="travel-controls site-filters"><label>年份 <select id="domestic-period-year"><option value="recent">近三年＋最新</option><option value="all">全部（含2022基期）</option><option>2026</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option></select></label><label>口径 <select id="domestic-period-scope"><option value="quarter">单季</option><option value="ytd">年初累计</option></select></label><label>季度 <select id="domestic-quarter"><option value="all">全部季度</option><option value="1">第一季度</option><option value="2">第二季度</option><option value="3">第三季度</option><option value="4">第四季度</option></select></label><span class="travel-tag">文化和旅游部</span></div>
+<div id="domestic-period-kpis" class="travel-kpis site-kpis"></div>
 <div class="travel-grid" id="domestic-period-charts"></div>
-<article class="travel-panel"><h2>全国季度量价明细</h2><div class="travel-table-wrap"><table id="domestic-period-table"></table></div></article>
+<article class="travel-panel site-panel"><h2>全国季度量价明细</h2><div class="travel-table-wrap site-table-scroll"><table id="domestic-period-table"></table></div></article>
 <div class="travel-section-head"><h2>假期量价</h2><span>用户旅游数据库</span></div>
-<div class="travel-controls"><label>年份 <select id="domestic-year"></select></label><label>假期 <select id="holiday"><option value="all">全部假期</option><option>元旦</option><option>春节</option><option>清明</option><option>五一</option><option>端午</option><option>中秋</option><option>国庆</option><option>国庆/中秋</option></select></label><label>口径 <select id="holiday-basis"><option value="total">假期总量</option><option value="daily">日均量</option></select></label></div>
-<div id="domestic-kpis" class="travel-kpis"></div>
+<div class="travel-controls site-filters"><label>年份 <select id="domestic-year"></select></label><label>假期 <select id="holiday"><option value="all">全部假期</option><option>元旦</option><option>春节</option><option>清明</option><option>五一</option><option>端午</option><option>中秋</option><option>国庆</option><option>国庆/中秋</option></select></label><label>口径 <select id="holiday-basis"><option value="total">假期总量</option><option value="daily">日均量</option></select></label></div>
+<div id="domestic-kpis" class="travel-kpis site-kpis"></div>
 <div class="travel-grid" id="holiday-charts"></div>
-<article class="travel-panel"><h2>假期量价明细</h2><div class="travel-table-wrap"><table id="holiday-table"></table></div></article>
+<article class="travel-panel site-panel"><h2>假期量价明细</h2><div class="travel-table-wrap site-table-scroll"><table id="holiday-table"></table></div></article>
 <div class="travel-section-head"><h2>景区客流</h2><label>九寨沟范围 <select id="scenic-window"><option value="90">近90天</option><option value="365">近一年</option><option value="all">全部</option></select></label></div>
-<div id="scenic-kpis" class="travel-kpis"></div>
-<div class="travel-grid"><article class="travel-panel"><div class="travel-panel-head"><h2>长白山月度客流</h2><span id="changbai-date"></span></div><div id="changbai-chart"></div></article><article class="travel-panel"><div class="travel-panel-head"><h2>九寨沟日度客流</h2><span id="jiuzhai-date"></span></div><div id="jiuzhai-chart"></div></article></div>
-<div class="travel-grid"><article class="travel-panel"><h2>长白山月度明细</h2><div class="travel-table-wrap"><table id="changbai-table"></table></div></article><article class="travel-panel"><h2>九寨沟日度明细</h2><div class="travel-table-wrap"><table id="jiuzhai-table"></table></div></article></div>
+<div id="scenic-kpis" class="travel-kpis site-kpis"></div>
+<div class="travel-grid"><article class="travel-panel site-panel"><div class="travel-panel-head"><h2>长白山月度客流</h2><span id="changbai-date"></span></div><div id="changbai-chart"></div></article><article class="travel-panel site-panel"><div class="travel-panel-head"><h2>九寨沟日度客流</h2><span id="jiuzhai-date"></span></div><div id="jiuzhai-chart"></div></article></div>
+<div class="travel-grid"><article class="travel-panel site-panel"><h2>长白山月度明细</h2><div class="travel-table-wrap site-table-scroll"><table id="changbai-table"></table></div></article><article class="travel-panel site-panel"><h2>九寨沟日度明细</h2><div class="travel-table-wrap site-table-scroll"><table id="jiuzhai-table"></table></div></article></div>
 <div class="travel-section-head"><h2>文旅企业客流</h2><span>华侨城 · 主题公园、酒店、商业等项目组合 · 非同店</span></div>
-<div class="travel-controls"><label>年份 <select id="enterprise-year"><option value="all">2024年以来</option><option>2026</option><option>2025</option><option>2024</option></select></label><label>口径 <select id="enterprise-scope"><option value="monthly">当月</option><option value="ytd">年初累计</option></select></label><span id="enterprise-date" class="travel-tag"></span></div>
-<article class="travel-panel"><h2>华侨城旗下文旅企业接待游客</h2><div id="enterprise-chart"></div><div class="travel-table-wrap"><table id="enterprise-table"></table></div></article>
+<div class="travel-controls site-filters"><label>年份 <select id="enterprise-year"><option value="all">2024年以来</option><option>2026</option><option>2025</option><option>2024</option></select></label><label>口径 <select id="enterprise-scope"><option value="monthly">当月</option><option value="ytd">年初累计</option></select></label><span id="enterprise-date" class="travel-tag"></span></div>
+<article class="travel-panel site-panel"><h2>华侨城旗下文旅企业接待游客</h2><div id="enterprise-chart"></div><div class="travel-table-wrap site-table-scroll"><table id="enterprise-table"></table></div></article>
 </section>
 <section id="view-inbound" hidden>
-<div class="travel-controls"><label>查验期间 <select id="border-scope"><option value="q3">第三季度 · 单季</option><option value="q1">第一季度 · 单季</option><option value="h1">上半年</option><option value="annual">完整年度</option></select></label><span class="travel-tag">2023年以来 · 国家移民管理局</span></div>
-<div id="inbound-kpis" class="travel-kpis"></div>
+<div class="travel-controls site-filters"><label>查验期间 <select id="border-scope"><option value="q3">第三季度 · 单季</option><option value="q1">第一季度 · 单季</option><option value="h1">上半年</option><option value="annual">完整年度</option></select></label><span class="travel-tag">2023年以来 · 国家移民管理局</span></div>
+<div id="inbound-kpis" class="travel-kpis site-kpis"></div>
 <div class="travel-grid" id="inbound-charts"></div>
-<article class="travel-panel"><div class="travel-panel-head"><h2>入境客源国排名</h2><span id="origins-period"></span></div><ol id="origins" class="travel-origins"></ol></article>
-<article class="travel-panel"><h2>出入境查验明细</h2><div class="travel-table-wrap"><table id="border-table"></table></div></article>
+<article class="travel-panel site-panel"><div class="travel-panel-head"><h2>入境客源国排名</h2><span id="origins-period"></span></div><ol id="origins" class="travel-origins"></ol></article>
+<article class="travel-panel site-panel"><h2>出入境查验明细</h2><div class="travel-table-wrap site-table-scroll"><table id="border-table"></table></div></article>
 <div class="travel-section-head"><h2>入境游客 · 文旅部年度口径</h2><span>万人次</span></div>
-<div class="travel-grid"><article class="travel-panel"><h2>入境游客</h2><div id="tourist-chart"></div></article><article class="travel-panel"><h2>其中：外国游客</h2><div id="foreign-tourist-chart"></div></article></div>
-<article class="travel-panel"><div class="travel-table-wrap"><table id="tourist-table"></table></div></article>
+<div class="travel-grid"><article class="travel-panel site-panel"><h2>入境游客</h2><div id="tourist-chart"></div></article><article class="travel-panel site-panel"><h2>其中：外国游客</h2><div id="foreign-tourist-chart"></div></article></div>
+<article class="travel-panel site-panel"><div class="travel-table-wrap site-table-scroll"><table id="tourist-table"></table></div></article>
 </section>
 <section id="view-outbound" hidden>
-<div class="travel-controls"><label>目的地 <select id="destination"></select></label><label>年份 <select id="outbound-year"></select></label><label>口径 <select id="outbound-scope"><option value="monthly">当月</option><option value="ytd">年初累计</option></select></label><span class="travel-tag">目的地接待中国游客</span></div>
-<div id="outbound-kpis" class="travel-kpis"></div>
-<article class="travel-panel"><div class="travel-panel-head"><h2 id="destination-title"></h2><span id="destination-period"></span></div><div id="outbound-chart"></div></article>
-<article class="travel-panel"><h2 id="destination-annual-title">目的地年度接待 · 完整年度</h2><div id="destination-annual-chart"></div><div class="travel-table-wrap"><table id="destination-annual-table"></table></div></article>
-<article class="travel-panel"><h2>各目的地最新已收录</h2><div class="travel-table-wrap"><table id="destination-table"></table></div></article>
-<article class="travel-panel"><h2>目的地月度明细</h2><div class="travel-table-wrap"><table id="outbound-table"></table></div></article>
-<article class="travel-panel"><h2>内地居民出境 · 单向查验</h2><div class="travel-table-wrap"><table id="mainland-out-table"></table></div></article>
-<article class="travel-panel"><h2>出境旅游人数 · 文旅部年度口径</h2><div id="national-out-chart"></div><div class="travel-table-wrap"><table id="national-out-table"></table></div></article>
+<div class="travel-controls site-filters"><label>目的地 <select id="destination"></select></label><label>年份 <select id="outbound-year"></select></label><label>口径 <select id="outbound-scope"><option value="monthly">当月</option><option value="ytd">年初累计</option></select></label><span class="travel-tag">目的地接待中国游客</span></div>
+<div id="outbound-kpis" class="travel-kpis site-kpis"></div>
+<article class="travel-panel site-panel"><div class="travel-panel-head"><h2 id="destination-title"></h2><span id="destination-period"></span></div><div id="outbound-chart"></div></article>
+<article class="travel-panel site-panel"><h2 id="destination-annual-title">目的地年度接待 · 完整年度</h2><div id="destination-annual-chart"></div><div class="travel-table-wrap site-table-scroll"><table id="destination-annual-table"></table></div></article>
+<article class="travel-panel site-panel"><h2>各目的地最新已收录</h2><div class="travel-table-wrap site-table-scroll"><table id="destination-table"></table></div></article>
+<article class="travel-panel site-panel"><h2>目的地月度明细</h2><div class="travel-table-wrap site-table-scroll"><table id="outbound-table"></table></div></article>
+<article class="travel-panel site-panel"><h2>内地居民出境 · 单向查验</h2><div class="travel-table-wrap site-table-scroll"><table id="mainland-out-table"></table></div></article>
+<article class="travel-panel site-panel"><h2>出境旅游人数 · 文旅部年度口径</h2><div id="national-out-chart"></div><div class="travel-table-wrap site-table-scroll"><table id="national-out-table"></table></div></article>
 </section>
 </section>
 </main>

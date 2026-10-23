@@ -1,6 +1,6 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict'),vm=require('node:vm'),fs=require('node:fs'),path=require('node:path');
-const context={ChartPeriod:require('../scripts/chart-period.js'),window:{},document:{addEventListener(){},readyState:'loading'},addEventListener(){},Intl,AbortController};
+const context={SiteUI:require('../scripts/site-ui.js'),ChartPeriod:require('../scripts/chart-period.js'),window:{},document:{addEventListener(){},readyState:'loading'},addEventListener(){},Intl,AbortController};
 vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../scripts/site-charts.js'),'utf8'),context);
 const paired=context.window.SiteCharts.paired;
 test('paired modes preserve real zero, negative values, missing values and units',()=>{
@@ -26,3 +26,4 @@ test('paired multi-series keep period alignment and escape labels',()=>{
  assert.match(result.html,/&lt;月&gt;/);assert.match(result.points[0].text,/甲：5 吨.*同比 —\n乙：—.*同比 10 %/);
  assert.match(paired([]).html,/暂无数据/);
 });
+

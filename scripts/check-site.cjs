@@ -1,17 +1,9 @@
 'use strict';
-const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),assert=require('node:assert/strict'),root=path.resolve(__dirname,'..');
-const pages=fs.readdirSync(root).filter(f=>f.endsWith('.html'));
-let inline=0,scripts=0;
+const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),assert=require('node:assert/strict'),root=path.resolve(__dirname,'..'),U=require('./site-ui.js');
+const pages=fs.readdirSync(root).filter(f=>f.endsWith('.html')).sort();assert.deepEqual(Object.keys(U.registry).sort(),pages,'Register every entry in SiteUI.registry');let inline=0,scripts=0;
 for(const file of fs.readdirSync(__dirname).filter(f=>f.endsWith('.js'))){new vm.Script(fs.readFileSync(path.join(__dirname,file),'utf8'),{filename:file});scripts++;}
-for(const file of pages){
-  const html=fs.readFileSync(path.join(root,file),'utf8');assert.ok(!/^<<<<<<<|^=======|^>>>>>>>/m.test(html),file+' merge conflict');
-  for(const match of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)){if(!/\bsrc\s*=/i.test(match[1])&&match[2].trim()&&!/type=["']application\//i.test(match[1])){new vm.Script(match[2],{filename:file});inline++;}}
-  if(file==='consumption-macro.html'){assert.match(html,/location\.replace\("macro\.html\?view=indicators"\)/);continue;}
-  if(file==='dining.html'){assert.match(html,/location\.replace\("industry\.html#hotel"\)/);continue;} // Retired dining board redirects to industry.
-  if(file==='companies.html'||file==='index.html')continue; // Retired entry is an immediate compatibility redirect.
-  const head=html.slice(0,html.indexOf('</head>')),styles=[...head.matchAll(/<link\b[^>]*href="(scripts\/[^"?]+\.css)[^"\s]*"/g)].map(m=>m[1]);
-  assert.equal(styles.at(-1),'scripts/site-polish.css',file+' adapter ordering');assert.equal(styles.filter(s=>s==='scripts/site.css').length,1,file+' shared base');assert.ok(head.indexOf('scripts/site-ui.js')<head.indexOf('scripts/site-shell.js'),file+' dependency ordering');
-  for(const match of head.matchAll(/(?:src|href)="(scripts\/[^"?]+)[^"\s]*"/g))assert.ok(fs.existsSync(path.join(root,match[1])),file+' missing '+match[1]);
-}
-console.log('PASS: '+pages.length+' entrypoints, '+scripts+' scripts, '+inline+' inline scripts; shared asset order and local assets');
-
+for(const file of pages){const html=fs.readFileSync(path.join(root,file),'utf8'),entry=U.registry[file];assert.ok(!/^<<<<<<<|^=======|^>>>>>>>/m.test(html),file+' merge conflict');for(const m of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi))if(!/\bsrc\s*=/i.test(m[1])&&m[2].trim()&&!/type=["']application\//i.test(m[1])){new vm.Script(m[2],{filename:file});inline++;}assert.ok(entry.views.length&&entry.views.every(v=>v.startsWith(file)),file+' views');assert.equal((html.match(/rel="manifest"/g)||[]).length,1,file+' manifest');if(entry.kind==='redirect')continue;
+const head=html.slice(0,html.indexOf('</head>')),styles=[...head.matchAll(/href="(scripts\/[^"?]+\.css)[^"\s]*"/g)].map(m=>m[1]);assert.equal(styles.filter(s=>s==='scripts/site.css').length,1,file+' shared tokens');assert.equal(new Set(styles).size,styles.length,file+' duplicate styles');assert.ok(head.includes('scripts/site-ui.js')&&head.includes('scripts/site-shell.js'),file+' shared shell');assert.ok(head.indexOf('scripts/site-ui.js')<head.indexOf('scripts/site-shell.js'),file+' dependency order');for(const asset of ['research-workspace-model.js','site-metrics.js','research-workspace.js']){assert.equal((head.match(new RegExp('scripts/'+asset.replace('.', '\\.')+'[?]', 'g'))||[]).length,1,file+' shared workspace '+asset);assert.ok(head.includes('scripts/'+asset+'?v=20261023workspace'),file+' workspace asset version');}assert.ok(head.indexOf('research-workspace-model.js')<head.indexOf('research-workspace.js'),file+' workspace dependency order');if(entry.embed)assert.ok(html.includes('industry-embed.js'),file+' embed');for(const m of head.matchAll(/(?:src|href)="(scripts\/[^"?]+)[^"\s]*"/g))assert.ok(fs.existsSync(path.join(root,m[1])),file+' missing '+m[1]);assert.ok(!/--site-(?:accent|soft|bg|ink|line|muted|up|down)\s*:/.test(html),file+' theme override');}
+const {checkCSS}=require('./site-style-contract.cjs'),exceptions=JSON.parse(fs.readFileSync(path.join(root,'docs/design-exceptions.json'),'utf8'));
+for(const file of fs.readdirSync(__dirname).filter(f=>f.endsWith('.css')&&!['site.css','site-charts.css'].includes(f)))checkCSS(file,fs.readFileSync(path.join(__dirname,file),'utf8'),exceptions.retained);
+console.log('PASS: '+pages.length+' registered entries, '+scripts+' scripts, '+inline+' inline scripts; component boundaries');

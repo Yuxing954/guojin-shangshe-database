@@ -1,3 +1,4 @@
+@layer page {
 /* Domestic company controls and charts. Shared plot styling matches overseas hotels. */
 body.site-page .oh-companies{gap:10px}
 body.site-page .oh-company{display:flex;align-items:center;gap:12px;min-width:0;padding:14px 12px;min-height:88px}
@@ -28,9 +29,7 @@ body.site-page .dh-search input{width:230px;min-width:0}
 .dh-missing button{background:#fff;color:#294c75;border:1px solid #cad7e5;border-radius:5px;padding:6px 10px;font:inherit}
 body.site-page .oh-kpis{margin:0 0 18px;gap:12px}
 body.site-page .oh-kpi{padding:16px 18px}
-body.site-page .oh-kpi>span{font-size:14px}
-body.site-page .oh-kpi strong{font-size:30px;line-height:1.3;margin:8px 0}
-body.site-page .oh-kpi strong small{font-size:12px}
+body.site-page .oh-kpi strong{line-height:1.3;margin:8px 0}
 body.site-page .oh-growth{font-size:14px;line-height:1.5}
 .oh-kpi .oh-source{float:right}
 .dh-charts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}
@@ -42,4 +41,7 @@ body.site-page .dh-charts .oh-block-head small{font-size:13px}
 .oh-pagination input{width:56px;min-width:0;padding:5px;border:1px solid #dce2eb;border-radius:5px}
 @media(max-width:1100px){.dh-tools{margin-left:0}.dh-primary{gap:10px}.dh-charts{grid-template-columns:minmax(0,1fr)}body.site-page .oh-company{gap:8px}body.site-page .oh-company .oh-logo{width:58px;flex-basis:58px;height:44px}body.site-page .oh-company .oh-logo img{max-width:58px;max-height:44px}body.site-page .oh-company[data-company=atour] .oh-logo img{width:72px;height:72px;max-width:none;max-height:none}}
 @media(max-width:1050px){body.site-page #oh-companies{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:650px){body.site-page .oh-toolbar{padding:12px;gap:10px}.dh-primary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;gap:10px}body.site-page .dh-primary select{width:100%;min-width:0;max-width:100%;font-size:14px}.dh-tools{padding-top:0;margin-left:0;width:100%;justify-content:flex-end;gap:8px}.dh-filter-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.dh-filter-grid>label{min-width:0}.dh-filter-grid select{width:100%;min-width:0!important;max-width:100%!important}.dh-context{gap:6px 10px}body.site-page .oh-company{padding:10px 8px;min-height:76px;gap:7px}body.site-page .oh-company strong{font-size:14px}body.site-page .oh-company small{font-size:10px}.dh-charts>.oh-block{padding:14px 10px}.dh-charts{gap:12px}body.site-page .oh-kpis{gap:7px}body.site-page .oh-kpi{padding:12px 9px}body.site-page .oh-kpi strong{font-size:24px}body.site-page .oh-kpi>span{font-size:13px}body.site-page .oh-growth{font-size:12px}.oh-kpi .oh-source{font-size:10px;padding:2px 0}.oh-profile{flex-wrap:wrap}.oh-pagination{gap:8px;flex-wrap:wrap}.dh-details td{min-width:85px}.dh-search{align-items:flex-end}.dh-search label{flex:1;min-width:0}body.site-page .dh-search input{width:100%;min-width:0}}
+@media(max-width:650px){body.site-page .oh-toolbar{padding:12px;gap:10px}.dh-primary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;gap:10px}body.site-page .dh-primary select{width:100%;min-width:0;max-width:100%;font-size:14px}.dh-tools{padding-top:0;margin-left:0;width:100%;justify-content:flex-end;gap:8px}.dh-filter-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.dh-filter-grid>label{min-width:0}.dh-filter-grid select{width:100%;min-width:0;max-width:100%}.dh-context{gap:6px 10px}body.site-page .oh-company{padding:10px 8px;min-height:76px;gap:7px}body.site-page .oh-company strong{font-size:14px}body.site-page .oh-company small{font-size:10px}.dh-charts>.oh-block{padding:14px 10px}.dh-charts{gap:12px}body.site-page .oh-kpis{gap:7px}body.site-page .oh-kpi{padding:12px 9px}body.site-page .oh-growth{font-size:12px}.oh-kpi .oh-source{padding:2px 0}.oh-profile{flex-wrap:wrap}.oh-pagination{gap:8px;flex-wrap:wrap}.dh-details td{min-width:85px}.dh-search{align-items:flex-end}.dh-search label{flex:1;min-width:0}body.site-page .dh-search input{width:100%;min-width:0}}
+
+
+}

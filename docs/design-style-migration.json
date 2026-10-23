@@ -1,0 +1,2955 @@
+{
+  "baseline": "a201866c59fac68b12a13198b19ba2a3b8806f92",
+  "sitePolish": {
+    "beforeBytes": 43623,
+    "afterBytes": 21277,
+    "rules": [
+      {
+        "selector": "body.site-page",
+        "status": "迁移",
+        "reason": "移入共享组件层"
+      },
+      {
+        "selector": ".site-page .cm-kpi:first-child .cm-meta,.site-page .cm-kpi:first-child time",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": ".site-page .site-search input",
+        "status": "迁移",
+        "reason": "移入共享组件层"
+      },
+      {
+        "selector": ".site-page :is(.hd-tabs,.gj-tabs)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page :is(.hd-tab,.gj-tabs button)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page :is(.hd-tab.active,.gj-tabs button.active)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page :is(.portal-stat span,.portal-stat small,.industry-card-label,.industry-card-date,.industry-card-tag,.industry-context,.industry-source p,.industry-source a,.industry-research-link time,.industry-company-link small,.hd-stat-label,.hd-stat-change,.hd-footnote,.hd-legend,.hd-period,.hd-footer,.gj-stat-label,.gj-stat-meta,.gj-footnote,.gj-legend,.gj-footer,.gj-tag,.gj-provider)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page :is(.portal-stat strong,.hd-stat-value,.gj-stat-value)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page :is(.hd-stat-value small,.gj-stat-value small,.industry-card strong small)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page :is(.hd-card-head,.gj-card-head)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page :is(.hd-card-head h2,.gj-card-head h2)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page :is(.hd-section-head,.gj-section-head,.cm-section-head)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page :is(.hd-header,.gj-header)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page :is(.hd-updated,.gj-updated)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page[data-site-section=home] :is(.intro,.focus-card p,.focus-bottom,.research-title)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": ".site-page[data-site-section=home] :is(.section-note,.focus-top,.industry-top,.freshness,.metric-name,.metric-date,.metric-change,.industry-bottom,.research-date,.research-meta,.research-type,.research-status,.today,footer)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": ".site-page[data-site-section=home] .focus-card h3",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": ".site-page[data-site-section=home] .metric-value",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": ".site-page[data-site-section=home] .focus-card p",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": ".site-page[data-site-section=home] .research-row",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": ".site-page[data-site-section=home] .focus-grid",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": ".site-page[data-site-section=home] .source-pop",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": ".site-page :is(.axis,.portal-chart text)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page :is(.tooltip,.hd-tip,.gj-tooltip,.research-chart-tooltip)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page .chart-help",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page .calendar-nav",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page :is(.calendar-nav #count,.weekdays span,.day-num,.day-count,.more-events,.day-event span,.day-empty,.unknown-list-item,.calendar-toolbar .legend)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page .day-event b",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page .event",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page .month-grid",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page .calendar-toolbar label",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page .resource-result h2",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page[data-site-section=home] .focus-grid",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": ".site-page[data-site-section=home] .focus-card p",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": ".site-page .grid3",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page .kpis",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page[data-site-section=home] :is(.industry-grid,.focus-grid)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": ".site-page[data-site-section=home] .research-row",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": ".site-page[data-site-section=home] .research-title",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": ".site-page[data-site-section=home] .metric-value",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": ".site-page .grid2,.site-page .grid3,.site-page .gj-grid,.site-page .gj-company-focus",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page .kpis",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page .gj-kpis",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page .gj-signals",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page :is(.hd-stat-value,.gj-stat-value)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page :is(.hd-updated,.gj-updated)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page .month-wrap",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page .weekdays,.site-page .month-grid",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page .calendar-nav h2",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page .event",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page .calendar-nav #count",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page .calendar-toolbar label",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page :is(.cm-kpi span,.cm-kpi em)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": ".site-page :is(.cm-kpi time,.cm-kpi .cm-meta,.cm-tag,.cm-coverage-notes,.cm-chart-tooltip,.macro-item small,.macro-source-line,.macro-coverage,.prediction-card-head,.prediction-detail,.prediction-outcome div,.retail-row-amount,.retail-hover)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page .cm-kpi strong small",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": ".site-page .retail-row-title,.site-page .prediction-question-label",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page .retail-tabs button",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page .macro-item strong",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page .cm-kpi .cm-meta,.site-page .cm-kpi time",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page :is(.dutyfree-page .legend,.combo-legend,.combo-legend small,.dh-cards small,.trend-caption,.srcbtn,.tag,.pill,.fresh)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page[data-site-section=tools] .main",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page[data-site-section=tools] .toolbar",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page[data-site-section=tools] .toolbar input",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page .cm-kpi strong",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": ".site-page .retail-row",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page .retail-row-amount",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page .retail-row-rate",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page .retail-track",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page[data-site-section=tools] .main",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page[data-site-section=tools] .portal-tools-nav",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page .portal-pager",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": ".site-page *",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .site-subnav.site-subnav",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page .site-subnav.site-subnav > :is(a,button)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page .site-subnav.site-subnav > :is(a,button):hover",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page .site-subnav.site-subnav > :is(.active,.on,.current,[aria-pressed=true],[aria-selected=true],[aria-current=page])",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page .site-subnav.site-subnav > :is(a,button):focus-visible",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page .site-subnav.site-subnav > :is(a,button):disabled",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page .site-subnav.site-subnav small",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page .site-subnav.site-subnav[hidden]",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page .site-subnav.site-subnav",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page .site-subnav.site-subnav > :is(a,button)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) :is(.board-asof,.embedded-asof,#checked)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .board-asof b",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .gj-header",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .gj-header #asof",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .board-section-head",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) :is(.board-section-head h2,.board-section-head h3)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .board-section-head p",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .board-kpis",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .board-stat",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) button.board-stat[aria-pressed=true]",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .board-stat > :is(span,.hd-stat-label,.gj-stat-label)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .board-stat > :is(strong,.board-stat-value,.hd-stat-value,.gj-stat-value),\nbody.site-page :is(.industry-board,.data-board) .board-stat .dh-value > strong,\nbody.site-page :is(.industry-board,.data-board) .board-stat .board-stat-value",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .board-stat :is(strong small,strong em,.hd-stat-value small,.gj-stat-value small)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .board-stat > :is(small,.hd-stat-change,.gj-stat-meta),\nbody.site-page :is(.industry-board,.data-board) .board-stat .dh-yoy",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .board-stat .dh-value",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .board-stat .dh-yoy",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) :is(.up,.hd-positive,.gj-positive,.is-up)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) :is(.down,.hd-negative,.gj-negative,.is-down)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .board-panel",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .board-panel-head",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .board-panel-head :is(h2,h3)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .board-panel-head :is(p,span)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .board-panel > :is(h2,h3)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .board-filters",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .board-panel > .board-filters",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .hd-display-control",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) :is(label,.hd-display-control > span)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) :is(select,input[type=search],input[type=date])",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) :is(.hd-switch,.gj-switch,.trend-modes)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) :is(.hd-switch,.gj-switch,.trend-modes) button",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) :is(.hd-switch,.gj-switch,.trend-modes) :is(.active,[aria-pressed=true])",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) :is(.gj-button,.srcbtn,.portal-button,.dh-controls > button)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) :is(.hd-period,.hd-selection-note,.hd-chart-caption,.gj-chart-caption,.trend-caption,.dh-note)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .board-chart",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .board-chart svg,\nbody.site-page :is(.industry-board,.data-board) :is(#hn-growth,#chart > svg)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) #hn-growth",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) #chart",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) :is(.board-table,.dh-table)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) :is(.board-table,.dh-table) :is(th,td)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) :is(.board-table,.dh-table) th",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) :is(.board-table,.dh-table) td small",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .board-detail",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .board-panel .board-detail",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .board-detail summary",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) :is(.hd-footnote,.gj-footnote,.portal-subtle,.fresh,.hd-footer,.gj-footer)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) :is(.gj-grid,.sector-company-grid)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .gj-grid > .board-panel",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .gj-grid",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) :is(#scope,#metric-meta,#publication)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .dh-panel",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .board-kpis",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .board-stat",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .board-stat > :is(strong,.board-stat-value,.hd-stat-value,.gj-stat-value),\n body.site-page :is(.industry-board,.data-board) .board-stat .dh-value > strong,\nbody.site-page :is(.industry-board,.data-board) .board-stat .board-stat-value",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .board-panel-head",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .board-chart",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) :is(.board-chart svg,#hn-growth,#chart > svg)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) #hn-growth",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) #chart",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .board-detail",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .board-filters",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .board-filters label",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) :is(.gj-grid,.sector-company-grid)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) .board-panel > .board-filters",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page .data-board .portal-header",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .portal-header h1",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .portal-header .eyebrow",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .macro-toolbar",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .board-kpis",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page .data-board .board-stat :is(.cm-meta,time,em,.macro-kpi-period,.macro-kpi-previous,.macro-kpi-release,.macro-kpi-note)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page .data-board .macro-kpi-top",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .macro-kpi-category",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .macro-kpi-release",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .board-panel-head .eyebrow",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page .data-board .macro-kpi-reading",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .macro-kpi-reading small",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .macro-kpi-bottom",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .macro-kpi-change",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .macro-spark",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board :is(.macro-up,.cm-up)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board :is(.macro-down,.cm-down)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .macro-workspace-head",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .macro-search",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .macro-list",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board :is(.macro-reference,.macro-pending)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .macro-detail > :is(.macro-latest,.macro-source-line,.macro-coverage,.macro-controls,.macro-chart-grid,.macro-chart-note,.chart-help,.macro-state)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .macro-detail > .board-filters",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page .data-board .macro-latest",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .macro-latest :is(span,small)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .macro-latest b",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .macro-chart-block",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .macro-chart-label",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .macro-chart-note",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .morning-releases",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .morning-trends",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .morning-trend header button",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .morning-trend-value",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .morning-trend-value strong",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .morning-trend-value :is(span,time)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .morning-chart",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .board-panel-body",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page .data-board .board-panel-body h3",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page .data-board .forecast-events",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .forecast-event",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .fedwatch-distribution",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .fedwatch-range",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .fedwatch-range strong",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .cm-kpi em",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .cm-kpi:first-child strong",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .retail-panel > :is(.retail-bars,#retail-note,.chart-help)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .board-panel > :is(#series-definition,#range-error,#chart-caption,.chart-help)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page .data-board .cm-chart",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .cm-details > :is(a,p,.cm-coverage-notes)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .macro-reference summary,body.site-page .data-board .macro-pending summary",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .board-panel > .portal-empty",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board) [hidden]",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .portal-header h1",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .board-kpis",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page .data-board .board-panel-body",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page .data-board .macro-kpi-category",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .macro-kpi-top",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .macro-kpi-release",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .macro-detail > :is(.macro-latest,.macro-source-line,.macro-coverage,.macro-controls,.macro-chart-grid,.macro-chart-note,.chart-help,.macro-state)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .macro-latest",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .macro-latest b,body.site-page .data-board .morning-trend-value strong",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .morning-trend-value",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .fedwatch-distribution",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .fedwatch-range",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .data-board .retail-panel > :is(.retail-bars,#retail-note,.chart-help),\n body.site-page .data-board .board-panel > :is(#series-definition,#range-error,#chart-caption,.chart-help)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page .data-board .macro-list",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.industry-hub>.site-main",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.industry-hub #sector-tabs.industry-sector-nav",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.industry-hub #sector-tabs.industry-sector-nav button",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.industry-hub .industry-sector-icon",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.industry-hub .industry-sector-icon svg",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.industry-hub>.site-main>.portal-header",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.industry-hub>.site-main>.portal-header>div",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.industry-hub>.site-main>.portal-header .eyebrow",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.industry-hub>.site-main>.portal-header h1",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page:is(.industry-hub,.industry-embedded) .embedded-asof",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page:is(.industry-hub,.industry-embedded) :is(.hd-tabs,.gj-tabs,.site-subnav)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page:is(.industry-hub,.industry-embedded) :is(.hd-tab,.gj-tabs button,.site-subnav button)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page:is(.industry-hub,.industry-embedded) .board-filters",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page:is(.industry-hub,.industry-embedded) .board-filters label",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page:is(.industry-hub,.industry-embedded) .hd-display-control",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page:is(.industry-hub,.industry-embedded) .hd-display-control .hd-switch",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page:is(.industry-hub,.industry-embedded) :is(.hd-switch,.gj-switch,.trend-modes) button",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page:is(.industry-hub,.industry-embedded) .hd-compare",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page:is(.industry-hub,.industry-embedded) .hd-compare summary",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page:is(.industry-hub,.industry-embedded) :is(.hd-period,.hd-selection-note)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page:is(.industry-hub,.industry-embedded) .board-section-head",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.industry-hub>.site-main",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.industry-hub #sector-tabs.industry-sector-nav",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.industry-hub #sector-tabs.industry-sector-nav button",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.industry-hub .industry-sector-icon",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.industry-hub .industry-sector-icon svg",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page:is(.industry-hub,.industry-embedded) .hd-display-control>span",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.industry-hub #sector-tabs.industry-sector-nav",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page:is(.industry-hub,.industry-embedded) .board-filters",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page:is(.industry-hub,.macro-hub)>main>.portal-header",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page:is(.industry-hub,.macro-hub)>main>.portal-header>div:first-child",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page:is(.industry-hub,.macro-hub)>main>.portal-header h1",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page:is(.industry-hub,.macro-hub)>main>.portal-header .eyebrow",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.industry-hub #sector-tabs.industry-sector-nav,body.macro-hub .section-category-nav",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.macro-hub .macro-toolbar",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page:is(.industry-hub,.macro-hub) :is(#sector-tabs,.section-category-nav)>:is(button,a)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page:is(.industry-hub,.macro-hub) :is(#sector-tabs,.section-category-nav)>:is([aria-pressed=true],[aria-current=page],.current)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.macro-hub .industry-sector-icon",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.macro-hub .industry-sector-icon svg",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.macro-hub .section-category-nav>:is([aria-pressed=true],[aria-current=page]) .industry-sector-icon",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.macro-hub .site-subnav",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.macro-hub .board-filters",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page :is(.industry-board,.data-board),body.site-page :is(.macro-layout,.macro-detail,.macro-list-panel,.cm-main,#content)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.macro-hub .macro-layout",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page:is(.industry-hub,.macro-hub)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page:is(.industry-hub,.macro-hub)>.site-nav",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page:is(.industry-hub,.macro-hub)>main.site-main",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page.industry-embedded>main.site-main",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page:is(.industry-hub,.macro-hub)>main>.portal-header",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page:is(.industry-hub,.macro-hub) :is(#sector-tabs,.section-category-nav)>:is(button,a)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.macro-hub :is(.macro-chart-grid,.morning-trends,.forecast-events,.prediction-grid)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.macro-hub .board-filters label",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.macro-hub .board-filters :is(select,input)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.macro-hub .cm-indicator-control",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page:is(.industry-hub,.macro-hub,.industry-embedded) :is(.portal-table-scroll,.hd-table-scroll,.gj-table-scroll)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.macro-hub .section-category-nav",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.macro-hub .section-category-nav>:is(a,button)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.macro-hub .data-board :is(.board-kpis,.macro-kpis,.cm-kpis,.macro-topic-grid,#kpis)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.macro-hub .data-board .board-stat",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.macro-hub .board-panel-head",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.industry-hub #sector-tabs.industry-sector-nav,body.macro-hub .section-category-nav",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page:is(.industry-hub,.macro-hub) :is(#sector-tabs,.section-category-nav)>:is(button,a)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page:is(.industry-hub,.macro-hub) :is(#sector-tabs,.section-category-nav)>:is([aria-pressed=true],[aria-current=page],.current)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page:is(.industry-hub,.macro-hub) :is(#sector-tabs,.section-category-nav) .industry-sector-icon",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.industry-hub #status:empty",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.industry-hub #sector-tabs.industry-sector-nav",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.industry-hub #sector-tabs.industry-sector-nav>button",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.macro-hub .section-category-nav",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page:is(.industry-hub,.macro-hub)>main.site-main",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page:is(.industry-hub,.macro-hub) :is(#sector-tabs.industry-sector-nav,.section-category-nav)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page:is(.industry-hub,.macro-hub)>main.site-main",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.macro-hub :is(.cm-readout-group,.macro-topic,.macro-kpi,.cm-kpi,.macro-panel,.macro-chart-block)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.macro-hub .data-board :is(.macro-kpi,.cm-kpi)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.macro-hub .cm-main #kpis .cm-kpi",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.macro-hub .cm-main #kpis .cm-kpi>*",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.macro-hub .cm-main #kpis .cm-kpi>strong",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.macro-hub .cm-main #kpis .cm-kpi>strong small",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.macro-hub .data-board :is(.board-kpis,.cm-kpis,.macro-kpis)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.macro-hub .data-board #kpis",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.macro-hub :is(.macro-latest,.macro-meta,.macro-chart-grid,.macro-sources,.forecast-overview)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.macro-hub .data-board .board-filters",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.macro-hub .data-board .board-filters label",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.macro-hub .data-board .board-filters label :is(select,input)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.macro-hub .data-board .cm-indicator-control",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.macro-hub .data-board :is(.macro-controls,.macro-search,.macro-study-controls,.cm-section-head)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.macro-hub .data-board :is(.board-chart,.macro-chart,.cm-chart)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.macro-hub .data-board :is(.board-stat,.board-panel)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.macro-hub .data-board .board-filters",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page:is(.industry-hub,.macro-hub) :is(#sector-tabs.industry-sector-nav,.section-category-nav)>:is(a,button)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page.macro-hub .data-board .section-category-nav.section-category-nav",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page.macro-hub .data-board .section-category-nav.section-category-nav::-webkit-scrollbar",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page.macro-hub .data-board .section-category-nav.section-category-nav>:is(a,button)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page:is(.industry-hub,.macro-hub) :is(#sector-tabs.industry-sector-nav,.section-category-nav)>:is(a,button)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page.macro-hub .data-board .section-category-nav.section-category-nav",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page:not(.industry-embedded)[data-site-section]:is([data-site-section=industry],[data-site-section=macro],[data-site-section=companies],[data-site-section=earnings],[data-site-section=research],[data-site-section=quotes])>main.site-main",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page:not(.industry-embedded)>.site-main>:is(.site-subnav,.portal-tabs,.macro-toolbar,.resource-search,.ec-source,.quotes-status)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page:not(.industry-embedded)>.site-main>:is(.site-subnav,.portal-tabs)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page:not(.industry-embedded)>.site-main>.portal-panel",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page:not(.industry-embedded)>.site-main>:is(.portal-note,.portal-status,.ec-source,.quotes-status)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page.industry-embedded .embedded-asof",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page:is(.industry-embedded,.macro-hub) :is(.hd-tabs,.gj-tabs,#consumption-views,.macro-study-controls)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .research-heading",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .research-heading>.site-subnav",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page .quotes-filters>#refresh",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page:not(.industry-embedded)[data-site-section]:is([data-site-section=industry],[data-site-section=macro],[data-site-section=companies],[data-site-section=earnings],[data-site-section=research],[data-site-section=quotes])>main.site-main",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .industry-board .board-stat",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page .industry-board .board-stat>:is(strong,.board-stat-value,.hd-stat-value,.gj-stat-value),\nbody.site-page .industry-board .board-stat .dh-value>strong",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page .industry-board :is(.board-panel-head,.board-section-head) :is(h2,h3)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page .industry-board .board-panel-head",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page .industry-board :is(.board-table,.dh-table) :is(th,td)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page .industry-board :is(.board-table,.dh-table) td strong",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page .industry-board :is(.board-table,.dh-table) td small",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page .industry-board :is(.hd-table-scroll,.gj-table-scroll,.portal-table-scroll,.tablewrap)",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .industry-board :is(.board-table,.dh-table) th",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page .industry-board .board-detail",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page.industry-embedded .hd-period",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .industry-board .board-kpis",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page .industry-board .board-stat",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page .industry-board .board-stat>:is(strong,.board-stat-value,.hd-stat-value,.gj-stat-value),\n body.site-page .industry-board .board-stat .dh-value>strong",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.site-page.industry-embedded .hd-display-control",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      },
+      {
+        "selector": "body.site-page .industry-board :is(.board-table,.dh-table) :is(th,td)",
+        "status": "删除",
+        "reason": "重复或已被共享组件取代的覆盖"
+      },
+      {
+        "selector": "body.industry-hub #gold-content .gj-header",
+        "status": "保留",
+        "reason": "专题布局适配；通用组件外观以site.css为准"
+      }
+    ]
+  },
+  "commonDeclarations": [
+    {
+      "file": "company-database.css",
+      "selector": ".db-filters select",
+      "declaration": "border-radius:8px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "company-database.css",
+      "selector": ".db-filters select",
+      "declaration": "background:white",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "company-database.css",
+      "selector": ".db-filters label",
+      "declaration": "font-size:13px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "company-overview.css",
+      "selector": ".db-headline .db-kpi",
+      "declaration": "background:#f9fafc",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "company-overview.css",
+      "selector": ".db-headline .db-kpi>strong",
+      "declaration": "font-size:24px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "company-overview.css",
+      "selector": ".db-kpi",
+      "declaration": "border-radius:10px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "company-overview.css",
+      "selector": ".db-kpi",
+      "declaration": "background:#fff",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "company-overview.css",
+      "selector": ".db-kpi>span",
+      "declaration": "font-size:12px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "company-overview.css",
+      "selector": ".db-kpi>span",
+      "declaration": "color:#65718a",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "company-overview.css",
+      "selector": ".db-kpi>strong",
+      "declaration": "font-size:28px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "company-overview.css",
+      "selector": ".db-kpi>strong",
+      "declaration": "color:#233747",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "company-overview.css",
+      "selector": ".db-kpi small",
+      "declaration": "color:#818a9b",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "company-overview.css",
+      "selector": ".db-quality .db-kpi",
+      "declaration": "background:#f7faf8",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "company-overview.css",
+      "selector": ".db-filters label",
+      "declaration": "font-size:12px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "company-overview.css",
+      "selector": ".db-filters label",
+      "declaration": "color:#68758b",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "company-overview.css",
+      "selector": ".db-headline .db-kpi>strong",
+      "declaration": "font-size:23px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "company-overview.css",
+      "selector": ".db-headline .db-kpi>strong",
+      "declaration": "font-size:21px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "company-overview.css",
+      "selector": ".db-kpi small",
+      "declaration": "font-size:11px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "company-overview.css",
+      "selector": ".db-kpi>strong",
+      "declaration": "font-size:22px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "company-overview.css",
+      "selector": ".db-actions .portal-button",
+      "declaration": "font-size:11px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "consumption-macro.css",
+      "selector": ".cm-kpi",
+      "declaration": "background:#fff",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "consumption-macro.css",
+      "selector": ".cm-kpi",
+      "declaration": "border-radius:12px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "consumption-macro.css",
+      "selector": ".cm-kpi:first-child",
+      "declaration": "color:#fff",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "consumption-macro.css",
+      "selector": ".cm-kpi span",
+      "declaration": "font-size:12px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "consumption-macro.css",
+      "selector": ".cm-kpi strong",
+      "declaration": "font-size:28px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "consumption-macro.css",
+      "selector": ".cm-kpi strong small",
+      "declaration": "font-size:12px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "consumption-macro.css",
+      "selector": ".cm-kpi em",
+      "declaration": "font-size:12px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "consumption-macro.css",
+      "selector": ".cm-kpi time,.cm-kpi .cm-meta",
+      "declaration": "font-size:11px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "consumption-macro.css",
+      "selector": ".cm-kpi:first-child time,.cm-kpi:first-child .cm-meta",
+      "declaration": "color:#e0e2fa",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "consumption-macro.css",
+      "selector": ".cm-kpi strong",
+      "declaration": "font-size:23px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "consumption-macro.css",
+      "selector": ".cm-trend-controls .portal-button",
+      "declaration": "font-size:11px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "cruise-dashboard.css",
+      "selector": ".cruise-kpi,.cruise-panel",
+      "declaration": "background:#fff",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "cruise-dashboard.css",
+      "selector": ".cruise-kpi,.cruise-panel",
+      "declaration": "border-radius:12px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "cruise-dashboard.css",
+      "selector": ".cruise-kpi h2,.cruise-panel h2",
+      "declaration": "font-size:15px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "cruise-dashboard.css",
+      "selector": ".cruise-kpi strong",
+      "declaration": "font-size:30px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "cruise-dashboard.css",
+      "selector": ".cruise-kpi small",
+      "declaration": "font-size:13px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "cruise-dashboard.css",
+      "selector": ".cruise-kpi p",
+      "declaration": "font-size:13px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "cruise-dashboard.css",
+      "selector": ".cruise-kpi p",
+      "declaration": "color:#60738a",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "cruise-dashboard.css",
+      "selector": ".cruise-kpi strong",
+      "declaration": "font-size:22px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "cruise-dashboard.css",
+      "selector": ".cruise-kpi h2",
+      "declaration": "font-size:13px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "cruise-dashboard.css",
+      "selector": ".cruise-kpi p",
+      "declaration": "font-size:11px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "dining.css",
+      "selector": ".dining-kpi",
+      "declaration": "background:#fff",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "dining.css",
+      "selector": ".dining-kpi",
+      "declaration": "border-radius:10px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "dining.css",
+      "selector": ".dining-kpi h2",
+      "declaration": "font-size:14px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "dining.css",
+      "selector": ".dining-kpi.qualitative .dining-kpi-value,.dining-kpi.estimate .dining-kpi-value",
+      "declaration": "font-size:17px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "dining.css",
+      "selector": ".dining-kpi.positive .dining-kpi-value",
+      "declaration": "color:#2c706e",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "dining.css",
+      "selector": ".dining-kpi.negative .dining-kpi-value",
+      "declaration": "color:#b1614e",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "dining.css",
+      "selector": ".dining-kpi.qualitative .dining-kpi-value,.dining-kpi.estimate .dining-kpi-value",
+      "declaration": "font-size:15px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "domestic-hotels.css",
+      "selector": "body.site-page .oh-kpi>span",
+      "declaration": "font-size:14px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "domestic-hotels.css",
+      "selector": "body.site-page .oh-kpi strong",
+      "declaration": "font-size:30px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "domestic-hotels.css",
+      "selector": "body.site-page .oh-kpi strong small",
+      "declaration": "font-size:12px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "domestic-hotels.css",
+      "selector": "body.site-page .oh-kpi strong",
+      "declaration": "font-size:24px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "domestic-hotels.css",
+      "selector": "body.site-page .oh-kpi>span",
+      "declaration": "font-size:13px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "domestic-hotels.css",
+      "selector": ".oh-kpi .oh-source",
+      "declaration": "font-size:10px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "earnings-calendar.css",
+      "selector": ".ec-dialog",
+      "declaration": "border-radius:14px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "earnings-calendar.css",
+      "selector": ".ec-dialog",
+      "declaration": "color:#303b57",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "earnings-calendar.css",
+      "selector": ".ec-dialog::backdrop",
+      "declaration": "background:#26324d55",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "earnings-calendar.css",
+      "selector": ".ec-dialog details",
+      "declaration": "font-size:12px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "earnings-calendar.css",
+      "selector": ".ec-dialog summary",
+      "declaration": "color:#7b85a0",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "earnings-calendar.css",
+      "selector": ".ec-dialog pre",
+      "declaration": "font-size:10px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "earnings-calendar.css",
+      "selector": ".ec-dialog pre",
+      "declaration": "background:#f7f8fc",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "earnings-calendar.css",
+      "selector": ".ec-dialog h3",
+      "declaration": "font-size:14px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "forecast-desk.css",
+      "selector": ".fedwatch-kpi",
+      "declaration": "background:white",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "forecast-desk.css",
+      "selector": ".fedwatch-kpi",
+      "declaration": "border-radius:14px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "forecast-desk.css",
+      "selector": ".fedwatch-kpi.primary",
+      "declaration": "background:#eef0fb",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "forecast-desk.css",
+      "selector": ".fedwatch-kpi>span",
+      "declaration": "font-size:15px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "forecast-desk.css",
+      "selector": ".fedwatch-kpi strong",
+      "declaration": "font-size:36px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "forecast-desk.css",
+      "selector": ".fedwatch-kpi small",
+      "declaration": "font-size:13px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "forecast-desk.css",
+      "selector": ".fedwatch-kpi strong",
+      "declaration": "font-size:30px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "forecast-desk.css",
+      "selector": "#predictions .forecast-head>.portal-button",
+      "declaration": "font-size:12px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "gold-jewelry.css",
+      "selector": ".gj-button",
+      "declaration": "background:white",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "gold-jewelry.css",
+      "selector": ".gj-button",
+      "declaration": "border-radius:7px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "gold-jewelry.css",
+      "selector": ".gj-button",
+      "declaration": "font-size:12px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "hotel-dashboard.css",
+      "selector": ".hd-export-dialog",
+      "declaration": "border-radius:16px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "hotel-dashboard.css",
+      "selector": ".hd-export-dialog",
+      "declaration": "background:#fff",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "hotel-dashboard.css",
+      "selector": ".hd-export-dialog",
+      "declaration": "color:#263047",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "hotel-dashboard.css",
+      "selector": ".hd-export-dialog::backdrop",
+      "declaration": "background:#18213c66",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "hotel-dashboard.css",
+      "selector": ".hd-export-dialog h2",
+      "declaration": "font-size:20px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "hotel-dashboard.css",
+      "selector": ".hd-export-dialog #export-error",
+      "declaration": "font-size:12px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "hotel-groups.css",
+      "selector": "body.hotel-page.hotel-groups-page.site-page :is(.hg-toolbar,.hg-scope,.hd-period,.hd-updated,.hd-footnote,.hd-chart-controls label,.hg-text-button)",
+      "declaration": "font-size:14px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "hotel-groups.css",
+      "selector": ".hotel-groups-page .hg-dialog",
+      "declaration": "border-radius:14px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "hotel-groups.css",
+      "selector": ".hotel-groups-page .hg-dialog::backdrop",
+      "declaration": "background:#16243b65",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "hotel-groups.css",
+      "selector": ".hotel-groups-page .hg-dialog h2",
+      "declaration": "font-size:18px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "hotel-groups.css",
+      "selector": ".hotel-groups-page .hg-dialog h3",
+      "declaration": "font-size:16px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "hotel-workspace.css",
+      "selector": ".hotel-workspace .jj-kpi>strong",
+      "declaration": "font-size:clamp(20px,2.2vw,30px)",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "hotel-workspace.css",
+      "selector": ".hotel-workspace .jj-kpi>strong",
+      "declaration": "font-size:20px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "hotel-workspace.css",
+      "selector": ".hotel-workspace .jj-kpi h4",
+      "declaration": "font-size:11px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "jinjiang-research.css",
+      "selector": ".jj-kpi",
+      "declaration": "border-radius:8px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "jinjiang-research.css",
+      "selector": ".jj-kpi",
+      "declaration": "background:#fff",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "jinjiang-research.css",
+      "selector": ".jj-kpi h4",
+      "declaration": "font-size:12px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "jinjiang-research.css",
+      "selector": ".jj-kpi h4",
+      "declaration": "color:#687d88",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "jinjiang-research.css",
+      "selector": ".jj-kpi>strong",
+      "declaration": "font-size:30px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "jinjiang-research.css",
+      "selector": ".jj-kpi>strong",
+      "declaration": "color:#244b60",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "jinjiang-research.css",
+      "selector": ".jj-kpi>strong>span",
+      "declaration": "font-size:11px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "jinjiang-research.css",
+      "selector": ".jj-kpi>strong>span",
+      "declaration": "color:#7a8994",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "jinjiang-research.css",
+      "selector": ".jj-driver .hr-up,.jj-kpi .hr-up",
+      "declaration": "color:#a17743",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "jinjiang-research.css",
+      "selector": ".jj-driver .hr-down,.jj-kpi .hr-down",
+      "declaration": "color:#5c8887",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "jinjiang-research.css",
+      "selector": ".jj-visual .jj-kpi>strong",
+      "declaration": "font-size:22px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "jinjiang-research.css",
+      "selector": ".jj-visual .jj-kpi>strong>span",
+      "declaration": "font-size:9px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "jinjiang-research.css",
+      "selector": ".jj-visual .jj-kpi h4",
+      "declaration": "font-size:10px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "jinjiang-research.css",
+      "selector": ".jj-kpi>strong",
+      "declaration": "font-size:26px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "jinjiang-research.css",
+      "selector": ".jj-kpi>strong",
+      "declaration": "font-size:24px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "macro-dashboard.css",
+      "selector": ".macro-kpi",
+      "declaration": "background:#fff",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "macro-dashboard.css",
+      "selector": ".macro-kpi",
+      "declaration": "border-radius:14px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "macro-dashboard.css",
+      "selector": ".macro-workspace-head .portal-button",
+      "declaration": "font-size:10px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "macro.css",
+      "selector": ".cm-kpi",
+      "declaration": "border-radius:16px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "macro.css",
+      "selector": ".cm-kpi span,.cm-kpi em",
+      "declaration": "font-size:14px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "macro.css",
+      "selector": ".cm-kpi .cm-meta,.cm-kpi time",
+      "declaration": "font-size:12px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "macro.css",
+      "selector": ".cm-kpi strong",
+      "declaration": "font-size:30px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "macro.css",
+      "selector": ".cm-kpi strong",
+      "declaration": "font-size:24px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "macro.css",
+      "selector": ".cm-kpi span,.cm-kpi em",
+      "declaration": "font-size:12px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "macro.css",
+      "selector": ".cm-kpi .cm-meta,.cm-kpi time",
+      "declaration": "font-size:11px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "macro.css",
+      "selector": ".macro-workspace-head .portal-button",
+      "declaration": "font-size:10px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "macro.css",
+      "selector": ".macro-morning .morning-filters summary",
+      "declaration": "font-size:12px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "macro.css",
+      "selector": "body.site-page .cm-main .cm-kpi .cm-kpi-amount",
+      "declaration": "font-size:14px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "overseas-hotels.css",
+      "selector": ".oh-kpi",
+      "declaration": "background:#fff",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "overseas-hotels.css",
+      "selector": ".oh-kpi",
+      "declaration": "border-radius:9px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "overseas-hotels.css",
+      "selector": ".oh-kpi>span",
+      "declaration": "font-size:13px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "overseas-hotels.css",
+      "selector": ".oh-kpi>span",
+      "declaration": "color:#6c7a8e",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "overseas-hotels.css",
+      "selector": ".oh-kpi strong",
+      "declaration": "font-size:31px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "overseas-hotels.css",
+      "selector": ".oh-kpi small",
+      "declaration": "color:#7d8b9e",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "overseas-hotels.css",
+      "selector": ".oh-kpi small",
+      "declaration": "font-size:11px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "overseas-hotels.css",
+      "selector": ".oh-kpi strong",
+      "declaration": "font-size:23px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "overseas-hotels.css",
+      "selector": ".oh-kpi strong small",
+      "declaration": "font-size:9px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "overseas-hotels.css",
+      "selector": ".oh-kpi>span",
+      "declaration": "font-size:12px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "quotes.css",
+      "selector": ".site-page .quotes-filters select",
+      "declaration": "font-size:11px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "quotes.css",
+      "selector": ".quotes-text-button",
+      "declaration": "font-size:10px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "quotes.css",
+      "selector": ".quotes-text-button",
+      "declaration": "color:#646cb2",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "quotes.css",
+      "selector": ".site-page .quotes-filters input,.site-page .quotes-filters select",
+      "declaration": "font-size:13px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "quotes.css",
+      "selector": ".quotes-view button,.quotes-periods button,.quotes-text-button,.quotes-detail-watch,.quotes-detail-links",
+      "declaration": "font-size:12px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "quotes.css",
+      "selector": ".site-page .quotes-filters select",
+      "declaration": "font-size:12px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "quotes.css",
+      "selector": ".quotes-settings-panel .quotes-text-button",
+      "declaration": "font-size:12px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "quotes.css",
+      "selector": ".site-page .quotes-filters input",
+      "declaration": "font-size:14px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "quotes.css",
+      "selector": ".site-page .quotes-filters>select",
+      "declaration": "font-size:13px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "quotes.css",
+      "selector": ".quotes-detail .quotes-text-button",
+      "declaration": "font-size:11px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "regional-retail.css",
+      "selector": ".regional-kpi",
+      "declaration": "background:#fff",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "regional-retail.css",
+      "selector": ".regional-kpi",
+      "declaration": "border-radius:12px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "regional-retail.css",
+      "selector": ".regional-kpi span",
+      "declaration": "font-size:13px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "regional-retail.css",
+      "selector": ".regional-kpi span",
+      "declaration": "color:#657084",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "regional-retail.css",
+      "selector": ".regional-kpi strong",
+      "declaration": "font-size:27px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "regional-retail.css",
+      "selector": ".regional-kpi small",
+      "declaration": "color:#7b8496",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "regional-retail.css",
+      "selector": ".regional-kpi small",
+      "declaration": "font-size:12px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "regional-retail.css",
+      "selector": ".regional-kpi strong",
+      "declaration": "font-size:23px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "regional-retail.css",
+      "selector": ".regional-kpi strong",
+      "declaration": "font-size:23px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "regional-retail.css",
+      "selector": ".regional-retail .regional-trend-filters label,.regional-retail .regional-trend-actions>label",
+      "declaration": "font-size:12px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "regional-retail.css",
+      "selector": ".regional-retail .regional-trend-filters label,.regional-retail .regional-trend-actions>label",
+      "declaration": "color:#647180",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "regional-retail.css",
+      "selector": ".regional-retail .regional-trend-filters select,.regional-retail .regional-trend-actions select",
+      "declaration": "border-radius:6px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "regional-retail.css",
+      "selector": ".regional-retail .regional-trend-filters select,.regional-retail .regional-trend-actions select",
+      "declaration": "background:white",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "regional-retail.css",
+      "selector": ".regional-retail .regional-trend-filters select,.regional-retail .regional-trend-actions select",
+      "declaration": "color:#263d55",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "regional-retail.css",
+      "selector": ".regional-retail .regional-trend-filters select,.regional-retail .regional-trend-actions select",
+      "declaration": "font-size:12px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "research-library.css",
+      "selector": ".minute-preview-dialog .portal-prose",
+      "declaration": "font-size:14px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "research-library.css",
+      "selector": ".minute-preview-dialog .research-reading-note",
+      "declaration": "font-size:11px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "research-library.css",
+      "selector": ".minute-preview-dialog .portal-dialog-head h2",
+      "declaration": "font-size:19px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "resource-search.css",
+      "selector": ".site-search input",
+      "declaration": "font-size:14px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "sector.css",
+      "selector": ".sector-pager button",
+      "declaration": "border-radius:5px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "sector.css",
+      "selector": ".sector-pager button",
+      "declaration": "background:white",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "site-install.css",
+      "selector": ".site-install-dialog",
+      "declaration": "border-radius:20px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "site-install.css",
+      "selector": ".site-install-dialog",
+      "declaration": "color:#20314a",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "site-install.css",
+      "selector": ".site-install-dialog",
+      "declaration": "background:white",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "site-install.css",
+      "selector": ".site-install-dialog::backdrop",
+      "declaration": "background:#17243d66",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "site-install.css",
+      "selector": ".site-install-dialog .install-heading h2",
+      "declaration": "font-size:20px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "site-install.css",
+      "selector": ".site-install-dialog ol",
+      "declaration": "font-size:15px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "site-install.css",
+      "selector": ".site-install-dialog",
+      "declaration": "border-radius:18px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "site-install.css",
+      "selector": ".site-install-dialog .install-heading h2",
+      "declaration": "font-size:19px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "site-polish.css",
+      "selector": ".site-page :is(.cm-kpi span,.cm-kpi em)",
+      "declaration": "font-size:14px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "site-polish.css",
+      "selector": ".site-page :is(.cm-kpi time,.cm-kpi .cm-meta,.cm-tag,.cm-coverage-notes,.cm-chart-tooltip,.macro-item small,.macro-source-line,.macro-coverage,.prediction-card-head,.prediction-detail,.prediction-outcome div,.retail-row-amount,.retail-hover)",
+      "declaration": "font-size:13px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "site-polish.css",
+      "selector": ".site-page .cm-kpi strong small",
+      "declaration": "font-size:13px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "site-polish.css",
+      "selector": ".site-page .cm-kpi strong",
+      "declaration": "font-size:26px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "site-polish.css",
+      "selector": "body.site-page :is(.industry-board,.data-board) :is(.gj-button,.srcbtn,.portal-button,.dh-controls > button)",
+      "declaration": "border-radius:8px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "site-polish.css",
+      "selector": "body.site-page :is(.industry-board,.data-board) :is(.gj-button,.srcbtn,.portal-button,.dh-controls > button)",
+      "declaration": "font-size:13px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "travel-dashboard.css",
+      "selector": ".travel-kpi",
+      "declaration": "background:linear-gradient(120deg,#fff,#f4f7f9)",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "travel-dashboard.css",
+      "selector": ".travel-kpi",
+      "declaration": "border-radius:8px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "travel-dashboard.css",
+      "selector": ".travel-kpi h2",
+      "declaration": "font-size:13px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "travel-dashboard.css",
+      "selector": ".travel-kpi h2",
+      "declaration": "color:#56687b",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "travel-dashboard.css",
+      "selector": ".travel-kpi strong",
+      "declaration": "font-size:28px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "travel-dashboard.css",
+      "selector": ".travel-kpi strong small",
+      "declaration": "font-size:12px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "travel-dashboard.css",
+      "selector": ".travel-kpi p",
+      "declaration": "font-size:12px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "travel-dashboard.css",
+      "selector": ".travel-kpi p",
+      "declaration": "color:#637488",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "travel-dashboard.css",
+      "selector": ".travel-kpi strong",
+      "declaration": "font-size:32px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "travel-dashboard.css",
+      "selector": ".travel-kpi strong",
+      "declaration": "font-size:23px",
+      "status": "迁移",
+      "target": "site.css common components"
+    },
+    {
+      "file": "travel-dashboard.css",
+      "selector": ".travel-kpi strong small",
+      "declaration": "font-size:10px",
+      "status": "迁移",
+      "target": "site.css common components"
+    }
+  ],
+  "removedFiles": [
+    "scripts/macro-dashboard.css",
+    "scripts/macro-clarity.css",
+    "scripts/macro-morning.css",
+    "scripts/macro-refinements.css",
+    "scripts/macro-study.css"
+  ]
+}

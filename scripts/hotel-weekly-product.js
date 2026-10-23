@@ -1,6 +1,6 @@
 
 'use strict';
-const snapshot={rows:[],revision:'仓库周度数据'}, C=document.getElementById('product'),$=id=>document.getElementById(id), SEGS=['经济型','中档型','高档型','豪华型'], COLORS=['#165b9c','#5aa8df','#a64d19','#e6a04b'], TYPE={section:24,chart:22,body:22,table:20,meta:18};
+const snapshot={rows:[],revision:'仓库周度数据'}, C=document.getElementById('product'),$=id=>document.getElementById(id), SEGS=['经济型','中档型','高档型','豪华型'], COLORS=SiteUI.colors, TYPE={section:24,chart:22,body:22,table:20,meta:18};
 let ctx=C.getContext('2d',{alpha:false});
 let rows=snapshot.rows, revision=snapshot.revision, index=new Map(), weeks=[], logo=new Image(),ready=false,fontsReady=false;
 
@@ -117,4 +117,5 @@ C.hidden=true;
 async function startProduct(){try{await Promise.all([document.fonts.load('400 26px "Microsoft YaHei"'),document.fonts.load('700 26px "Microsoft YaHei"')]);fontsReady=true;await reload()}catch(e){$('status').textContent='字体读取失败，请刷新重试：'+e.message}}
 let resizeFrame;const resizePreview=()=>{cancelAnimationFrame(resizeFrame);resizeFrame=requestAnimationFrame(()=>{const width=Math.round(C.getBoundingClientRect().width*(window.devicePixelRatio||1));if(width>0&&width!==C.width)render()})};new ResizeObserver(resizePreview).observe(document.querySelector('.stage'));window.addEventListener('resize',resizePreview);
 startProduct();window.hotelProduct={get rows(){return rows},delta,get,parseCSV,validate,render,trendPeriods,tablePeriods,periodLabel,get revision(){return revision}};
+
 

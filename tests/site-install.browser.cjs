@@ -8,6 +8,10 @@ async function main(){
  try{
  const manifest=JSON.parse(fs.readFileSync(path.join(ROOT,'site.webmanifest'),'utf8'));assert.equal(manifest.display,'standalone');assert.equal(manifest.scope,'./');assert.equal(manifest.id,'./');assert.equal(new URL(manifest.start_url,origin).pathname,new URL('industry.html',origin).pathname);for(const icon of manifest.icons){const b=fs.readFileSync(path.join(ROOT,icon.src)),size=Number(icon.sizes.split('x')[0]);assert.equal(b.readUInt32BE(16),size);assert.equal(b.readUInt32BE(20),size);}
  for(const f of fs.readdirSync(ROOT).filter(x=>x.endsWith('.html'))){const html=fs.readFileSync(path.join(ROOT,f),'utf8');assert.equal((html.match(/rel="manifest"/g)||[]).length,1,f);assert(html.includes('apple-touch-icon.png'),f);assert(html.includes('site-install.js'),f);}
+ // The current main deliberately disables the installation interface. Do not restore it to satisfy old UI tests.
+ if(fs.readFileSync(path.join(ROOT,'scripts/site-install.js'),'utf8').includes('interface is temporarily disabled')){
+   const page=await browser.newPage({viewport:{width:390,height:844}});await page.goto(new URL('earnings.html',origin).href);await page.waitForSelector('.site-nav');assert.equal(await page.locator('.site-install-entry,#site-install-dialog').count(),0);console.log('PASS: manifest/icons/project scope; intentionally disabled install interface remains absent');return;
+ }
  const errors=[],allowed=new Set(['site-install.js','site-shell.js','site-ui.js']),ios='Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 Version/18.0 Mobile/15E148 Safari/604.1',android='Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 Chrome/130.0.0.0 Mobile Safari/537.36';
  async function pageFor(ua,width=390,init){
   const context=await browser.newContext({viewport:{width,height:844},userAgent:ua,hasTouch:width<760}),page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));
@@ -37,3 +41,4 @@ async function main(){
  }finally{await browser.close();}
 }
 main().catch(e=>{console.error(e);process.exitCode=1;}).finally(()=>server.close());
+

@@ -1,5 +1,5 @@
 const test=require('node:test'),assert=require('node:assert/strict'),vm=require('node:vm'),fs=require('node:fs'),path=require('node:path');
-const context={ChartPeriod:require('../scripts/chart-period.js'),window:{},document:{addEventListener(){},readyState:'loading'},addEventListener(){},Intl,AbortController};
+const context={SiteUI:require('../scripts/site-ui.js'),ChartPeriod:require('../scripts/chart-period.js'),window:{},document:{addEventListener(){},readyState:'loading'},addEventListener(){},Intl,AbortController};
 vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../scripts/site-charts.js'),'utf8'),context);
 const {niceScale,paired}=context.window.SiteCharts;
 test('axes cover positive, negative, constant, tiny and missing observations with distinct evenly spaced ticks',()=>{
@@ -20,4 +20,5 @@ test('bounded occupancy scale and single-axis change label retain metric meaning
  const s=niceScale([.77,.98],{min:0,max:1});assert.ok(s.min>=0&&s.max<=1);
  assert.match(paired([{period:'一期',change:1.2}],{mode:'change',changeLabel:'环比',changeUnit:'百分点'}).html,/环比（百分点）/);
 });
+
 

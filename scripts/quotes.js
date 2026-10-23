@@ -33,7 +33,7 @@
   function saveUrl(){
     const f=filters(),p=new URLSearchParams();for(const key of ['q','market','sector'])if(f[key])p.set(key,f[key]);if(f.sort!=='change-desc')p.set('sort',f.sort);
     if(view!=='heat')p.set('view',view);if(selected)p.set('symbol',selected.code);else if(!initialized&&params.get('symbol'))p.set('symbol',params.get('symbol'));
-    if(period!=='day')p.set('period',period);history.replaceState(null,'',location.pathname+(p.size?'?'+p:''));
+    if(period!=='day')p.set('period',period);history.replaceState(null,'',SiteUI.contextURL(location.pathname+(p.size?'?'+p:'')));
   }
   function timeText(q){return q?'<span title="'+esc(q.asOf)+'">'+esc(q.asOf.slice(11,19))+'</span>'+(q.failed?'<small>读取失败</small>':q.cached?'<small>上次报价</small>':''):'—<small>暂无报价</small>';}
   function heatStyle(pct){const valid=Number.isFinite(pct),strength=valid?Math.min(Math.abs(pct),5):0;return {background:!valid?'#eef0f4':pct===0?'#f2f3f6':'hsl('+(pct>0?'354 58%':'164 47%')+' '+(96-strength*(pct>0?10:12))+'%)',color:strength>=4?'#fff':pct>0?'#8d2332':pct<0?'#145d49':'#627084'};}
@@ -238,3 +238,4 @@
     initialized=true;const code=params.get('symbol')||pref?.selected;if(companies.concat(benchmarks).some(c=>c.code===code))selectCompany(code);else ensureSelection();saveUrl();automatic();
   }catch(e){$('status').dataset.error='true';$('status').innerHTML='覆盖公司目录暂时无法读取。<button class="portal-button" type="button" id="retry">重新加载</button>';$('retry').onclick=()=>location.reload();}
 })();
+

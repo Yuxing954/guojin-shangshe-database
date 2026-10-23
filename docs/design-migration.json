@@ -1,0 +1,3347 @@
+{
+  "commit": "a201866c59fac68b12a13198b19ba2a3b8806f92",
+  "entries": [
+    {
+      "file": "companies.html",
+      "title": "覆盖池",
+      "section": "quotes",
+      "kind": "redirect",
+      "embed": false,
+      "views": [
+        "companies.html"
+      ],
+      "components": [],
+      "controls": [],
+      "queryParameters": [
+        "company",
+        "sector",
+        "site-chart-interaction"
+      ],
+      "styles": [
+        "scripts/site-charts.css"
+      ],
+      "issues": [],
+      "migration": "保留兼容路由，未恢复已退役入口",
+      "verification": "通过",
+      "checkedStates": [
+        {
+          "view": "companies.html",
+          "width": 1440,
+          "state": "compatibility redirect",
+          "result": "通过",
+          "screenshot": "companies-0-1440.png",
+          "problems": []
+        },
+        {
+          "view": "companies.html",
+          "width": 1024,
+          "state": "compatibility redirect",
+          "result": "通过",
+          "screenshot": "companies-0-1024.png",
+          "problems": []
+        },
+        {
+          "view": "companies.html",
+          "width": 768,
+          "state": "compatibility redirect",
+          "result": "通过",
+          "screenshot": "companies-0-768.png",
+          "problems": []
+        },
+        {
+          "view": "companies.html",
+          "width": 390,
+          "state": "compatibility redirect",
+          "result": "通过",
+          "screenshot": "companies-0-390.png",
+          "problems": []
+        }
+      ]
+    },
+    {
+      "file": "company-database.html",
+      "title": "重点公司数据库",
+      "section": "companies",
+      "kind": "page",
+      "embed": false,
+      "views": [
+        "company-database.html?company=jinjiang",
+        "company-database.html?company=hworld",
+        "company-database.html?company=btg",
+        "company-database.html?company=atour"
+      ],
+      "components": [
+        "dialog"
+      ],
+      "controls": [
+        "data-tab=\"operating",
+        "data-tab=\"details"
+      ],
+      "queryParameters": [
+        "embed",
+        "site-chart-interaction",
+        "sampleView",
+        "company",
+        "db",
+        "tab",
+        "kind",
+        "frequency",
+        "from",
+        "to",
+        "range",
+        "region",
+        "category",
+        "operation",
+        "currency",
+        "display",
+        "q"
+      ],
+      "styles": [
+        "scripts/site.css",
+        "scripts/overseas-hotels.css",
+        "scripts/site-charts.css",
+        "scripts/hotel-workspace.css",
+        "scripts/domestic-hotels.css",
+        "scripts/site-polish.css"
+      ],
+      "issues": [],
+      "migration": "已接入共享外壳、组件和设计层",
+      "verification": "通过",
+      "checkedStates": [
+        {
+          "view": "company-database.html?company=jinjiang",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "company-database-0-1440.png",
+          "problems": []
+        },
+        {
+          "view": "company-database.html?company=jinjiang",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "company-database-0-1024.png",
+          "problems": []
+        },
+        {
+          "view": "company-database.html?company=jinjiang",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "company-database-0-768.png",
+          "problems": []
+        },
+        {
+          "view": "company-database.html?company=jinjiang",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "company-database-0-390.png",
+          "problems": []
+        },
+        {
+          "view": "company-database.html?company=jinjiang",
+          "width": 390,
+          "state": "details:更多筛选",
+          "result": "通过",
+          "problems": []
+        },
+        {
+          "view": "company-database.html?company=jinjiang",
+          "width": 390,
+          "state": "details:历史数据",
+          "result": "通过",
+          "problems": []
+        },
+        {
+          "view": "company-database.html?company=jinjiang",
+          "width": 390,
+          "state": "details:历史数据",
+          "result": "通过",
+          "problems": []
+        },
+        {
+          "view": "company-database.html?company=jinjiang",
+          "width": 390,
+          "state": "details:历史数据",
+          "result": "通过",
+          "problems": []
+        },
+        {
+          "view": "company-database.html?company=hworld",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "company-database-1-1440.png",
+          "problems": []
+        },
+        {
+          "view": "company-database.html?company=hworld",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "company-database-1-1024.png",
+          "problems": []
+        },
+        {
+          "view": "company-database.html?company=hworld",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "company-database-1-768.png",
+          "problems": []
+        },
+        {
+          "view": "company-database.html?company=hworld",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "company-database-1-390.png",
+          "problems": []
+        },
+        {
+          "view": "company-database.html?company=btg",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "company-database-2-1440.png",
+          "problems": []
+        },
+        {
+          "view": "company-database.html?company=btg",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "company-database-2-1024.png",
+          "problems": []
+        },
+        {
+          "view": "company-database.html?company=btg",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "company-database-2-768.png",
+          "problems": []
+        },
+        {
+          "view": "company-database.html?company=btg",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "company-database-2-390.png",
+          "problems": []
+        },
+        {
+          "view": "company-database.html?company=atour",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "company-database-3-1440.png",
+          "problems": []
+        },
+        {
+          "view": "company-database.html?company=atour",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "company-database-3-1024.png",
+          "problems": []
+        },
+        {
+          "view": "company-database.html?company=atour",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "company-database-3-768.png",
+          "problems": []
+        },
+        {
+          "view": "company-database.html?company=atour",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "company-database-3-390.png",
+          "problems": []
+        }
+      ]
+    },
+    {
+      "file": "consumption-macro.html",
+      "title": "consumption-macro.html",
+      "section": "compatibility",
+      "kind": "redirect",
+      "embed": false,
+      "views": [
+        "consumption-macro.html"
+      ],
+      "components": [],
+      "controls": [],
+      "queryParameters": [],
+      "styles": [],
+      "issues": [],
+      "migration": "保留兼容路由，未恢复已退役入口",
+      "verification": "通过",
+      "checkedStates": [
+        {
+          "view": "consumption-macro.html",
+          "width": 1440,
+          "state": "compatibility redirect",
+          "result": "通过",
+          "screenshot": "consumption-macro-0-1440.png",
+          "problems": []
+        },
+        {
+          "view": "consumption-macro.html",
+          "width": 1024,
+          "state": "compatibility redirect",
+          "result": "通过",
+          "screenshot": "consumption-macro-0-1024.png",
+          "problems": []
+        },
+        {
+          "view": "consumption-macro.html",
+          "width": 768,
+          "state": "compatibility redirect",
+          "result": "通过",
+          "screenshot": "consumption-macro-0-768.png",
+          "problems": []
+        },
+        {
+          "view": "consumption-macro.html",
+          "width": 390,
+          "state": "compatibility redirect",
+          "result": "通过",
+          "screenshot": "consumption-macro-0-390.png",
+          "problems": []
+        }
+      ]
+    },
+    {
+      "file": "consumption-monthly-product.html",
+      "title": "consumption-monthly-product.html",
+      "section": "compatibility",
+      "kind": "redirect",
+      "embed": false,
+      "views": [
+        "consumption-monthly-product.html"
+      ],
+      "components": [],
+      "controls": [],
+      "queryParameters": [
+        "embed"
+      ],
+      "styles": [
+        "scripts/site.css",
+        "scripts/site-install.css",
+        "scripts/site-polish.css"
+      ],
+      "issues": [],
+      "migration": "保留兼容路由，未恢复已退役入口",
+      "verification": "通过",
+      "checkedStates": [
+        {
+          "view": "consumption-monthly-product.html",
+          "width": 1440,
+          "state": "compatibility redirect",
+          "result": "通过",
+          "screenshot": "consumption-monthly-product-0-1440.png",
+          "problems": []
+        },
+        {
+          "view": "consumption-monthly-product.html",
+          "width": 1024,
+          "state": "compatibility redirect",
+          "result": "通过",
+          "screenshot": "consumption-monthly-product-0-1024.png",
+          "problems": []
+        },
+        {
+          "view": "consumption-monthly-product.html",
+          "width": 768,
+          "state": "compatibility redirect",
+          "result": "通过",
+          "screenshot": "consumption-monthly-product-0-768.png",
+          "problems": []
+        },
+        {
+          "view": "consumption-monthly-product.html",
+          "width": 390,
+          "state": "compatibility redirect",
+          "result": "通过",
+          "screenshot": "consumption-monthly-product-0-390.png",
+          "problems": []
+        }
+      ]
+    },
+    {
+      "file": "cpi-monthly-product.html",
+      "title": "CPI月度产品",
+      "section": "tools",
+      "kind": "page",
+      "embed": false,
+      "views": [
+        "cpi-monthly-product.html"
+      ],
+      "components": [
+        "select",
+        "details"
+      ],
+      "controls": [],
+      "queryParameters": [
+        "embed",
+        "month",
+        "window"
+      ],
+      "styles": [
+        "scripts/site.css",
+        "scripts/hotel-weekly-product.css",
+        "scripts/consumption-monthly-product.css",
+        "scripts/site-install.css",
+        "scripts/site-polish.css"
+      ],
+      "issues": [],
+      "migration": "已接入共享外壳、组件和设计层",
+      "verification": "通过",
+      "checkedStates": [
+        {
+          "view": "cpi-monthly-product.html",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "cpi-monthly-product-0-1440.png",
+          "problems": []
+        },
+        {
+          "view": "cpi-monthly-product.html",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "cpi-monthly-product-0-1024.png",
+          "problems": []
+        },
+        {
+          "view": "cpi-monthly-product.html",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "cpi-monthly-product-0-768.png",
+          "problems": []
+        },
+        {
+          "view": "cpi-monthly-product.html",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "cpi-monthly-product-0-390.png",
+          "problems": []
+        },
+        {
+          "view": "cpi-monthly-product.html",
+          "width": 390,
+          "state": "details:编辑点评",
+          "result": "通过",
+          "problems": []
+        },
+        {
+          "view": "cpi-monthly-product.html",
+          "width": 390,
+          "state": "details:数据来源与说明",
+          "result": "通过",
+          "problems": []
+        }
+      ]
+    },
+    {
+      "file": "cruise-dashboard.html",
+      "title": "三峡游轮",
+      "section": "industry",
+      "kind": "page",
+      "embed": true,
+      "views": [
+        "cruise-dashboard.html#view=overview",
+        "cruise-dashboard.html#view=audience",
+        "cruise-dashboard.html#view=operators"
+      ],
+      "components": [
+        "select",
+        "table"
+      ],
+      "controls": [],
+      "queryParameters": [
+        "embed",
+        "site-chart-interaction",
+        "view"
+      ],
+      "styles": [
+        "scripts/site.css",
+        "scripts/site-charts.css",
+        "scripts/industry-embed.css",
+        "scripts/cruise-dashboard.css",
+        "scripts/cruise-analysis.css",
+        "scripts/site-install.css",
+        "scripts/site-polish.css"
+      ],
+      "issues": [],
+      "migration": "已接入共享外壳、组件和设计层",
+      "verification": "通过",
+      "checkedStates": [
+        {
+          "view": "cruise-dashboard.html#view=overview",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "cruise-dashboard-0-1440.png",
+          "problems": []
+        },
+        {
+          "view": "cruise-dashboard.html#view=overview",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "cruise-dashboard-0-1024.png",
+          "problems": []
+        },
+        {
+          "view": "cruise-dashboard.html#view=overview",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "cruise-dashboard-0-768.png",
+          "problems": []
+        },
+        {
+          "view": "cruise-dashboard.html#view=overview",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "cruise-dashboard-0-390.png",
+          "problems": []
+        },
+        {
+          "view": "cruise-dashboard.html#view=audience",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "cruise-dashboard-1-1440.png",
+          "problems": []
+        },
+        {
+          "view": "cruise-dashboard.html#view=audience",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "cruise-dashboard-1-1024.png",
+          "problems": []
+        },
+        {
+          "view": "cruise-dashboard.html#view=audience",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "cruise-dashboard-1-768.png",
+          "problems": []
+        },
+        {
+          "view": "cruise-dashboard.html#view=audience",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "cruise-dashboard-1-390.png",
+          "problems": []
+        },
+        {
+          "view": "cruise-dashboard.html#view=operators",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "cruise-dashboard-2-1440.png",
+          "problems": []
+        },
+        {
+          "view": "cruise-dashboard.html#view=operators",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "cruise-dashboard-2-1024.png",
+          "problems": []
+        },
+        {
+          "view": "cruise-dashboard.html#view=operators",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "cruise-dashboard-2-768.png",
+          "problems": []
+        },
+        {
+          "view": "cruise-dashboard.html#view=operators",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "cruise-dashboard-2-390.png",
+          "problems": []
+        }
+      ]
+    },
+    {
+      "file": "daily.html",
+      "title": "国金商社日报",
+      "section": "daily",
+      "kind": "page",
+      "embed": false,
+      "views": [
+        "daily.html"
+      ],
+      "components": [
+        "select"
+      ],
+      "controls": [],
+      "queryParameters": [
+        "embed",
+        "date"
+      ],
+      "styles": [
+        "scripts/site.css",
+        "scripts/daily.css",
+        "scripts/site-install.css",
+        "scripts/site-polish.css"
+      ],
+      "issues": [],
+      "migration": "已接入共享外壳、组件和设计层",
+      "verification": "通过",
+      "checkedStates": [
+        {
+          "view": "daily.html",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "daily-0-1440.png",
+          "problems": []
+        },
+        {
+          "view": "daily.html",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "daily-0-1024.png",
+          "problems": []
+        },
+        {
+          "view": "daily.html",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "daily-0-768.png",
+          "problems": []
+        },
+        {
+          "view": "daily.html",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "daily-0-390.png",
+          "problems": []
+        },
+        {
+          "view": "daily.html",
+          "width": 390,
+          "state": "details:酒店：节后价格支撑增长，中高端承压\n2026-10-22 09:08\n\n10月11—17日STR口径中国大陆酒店RevPAR同比增长0.4%，ADR增长1.3%、OCC下降0.9%（相对增幅）；三大集团RevPAR增长1.6%，奢华、中高端、经济型分别增长2.0%、下降2.9%、增长2.0%。节后经营仍是价格贡献为主，入住率修复偏弱。",
+          "result": "通过",
+          "problems": []
+        },
+        {
+          "view": "daily.html",
+          "width": 390,
+          "state": "details:中烟香港：进口与免税发运扰动，管理层调整落地\n2026-10-22 10:49\n\n2026年上半年收入75.40亿港元、同比下降26.9%，归母净利润6.27亿港元、同比下降11.2%；美国等地烟叶进口减少、关外免税店卷烟发运延后拖累经营，烟叶出口与巴西业务增长。9月30日起新董事长任职，国际市场拓展与投融资平台定位延续。",
+          "result": "通过",
+          "problems": []
+        },
+        {
+          "view": "daily.html",
+          "width": 390,
+          "state": "details:PMI：新型烟草拉动增长，IQOS终端改善\n2026-10-22 09:48\n\n2026年三季度净收入114.4亿美元、同比增长5.5%，有机增长7.1%；营业利润48.7亿美元、同比增长14.1%，新型烟草收入占比超过40%。IQOS烟弹发货增长1.5%、调整后终端动销增长7.1%，日本增税前备货与欧洲政策差异影响区域节奏（国金轻工跟踪口径）。",
+          "result": "通过",
+          "problems": []
+        },
+        {
+          "view": "daily.html",
+          "width": 390,
+          "state": "details:小商品城：义支付加速，盈利仍受摊销与结构影响\n2026-10-22 12:27\n\n9月义乌入境外商6.25万人次、环比增长1.1%；全球数贸中心约5,200个商位运营，项目折旧摊销与业务结构影响毛利率，公司预计全年出口仍有两位数增长（业绩交流口径）。",
+          "result": "通过",
+          "problems": []
+        },
+        {
+          "view": "daily.html",
+          "width": 390,
+          "state": "details:泡泡玛特：海外门店拓展，二手市场分品类回暖\n2026-10-22 09:30\n\n10月15—21日跟踪中，日本池袋店扩容、英国纽卡斯尔首店及纽约快闪推进；核心IP二手价格总体稳中微降，星星人、部分SKULLPANDA及Zsiga系列环比回暖。新品隐藏款溢价率约200%—280%，供给稀缺与收藏偏好共同影响二手表现（渠道跟踪口径）。",
+          "result": "通过",
+          "problems": []
+        },
+        {
+          "view": "daily.html",
+          "width": 390,
+          "state": "details:布鲁可：开箱动销回暖，股东减持扰动股价\n2026-10-22 08:46\n\n截至10月21日，10月BFC拟合终端开箱日均GMV374万元、较9月增长23%，与二季度日均基本持平，成人线增长50%，新品和海外渠道继续扩展。10月22日交流信息涉及控股股东减持套现约2.1亿元人民币及盘中跌幅超过18%，经营改善与股东资金安排形成短期分化（交流口径）。",
+          "result": "通过",
+          "problems": []
+        },
+        {
+          "view": "daily.html",
+          "width": 390,
+          "state": "details:安踏体育：主品牌承压，其他品牌增长与国庆改善\n2026-10-21 20:55\n\n2026年三季度安踏品牌流水中单位数下降、FILA低单位数下降，其他品牌增长25%—30%，其中可隆同店增长15%（交流口径）。7月拖累季度表现、9月改善，国庆安踏与FILA分别高单位数、低双位数增长，公司维持全年收入指引。",
+          "result": "通过",
+          "problems": []
+        }
+      ]
+    },
+    {
+      "file": "dashboard.html",
+      "title": "数据浏览器",
+      "section": "tools",
+      "kind": "page",
+      "embed": false,
+      "views": [
+        "dashboard.html?dataset=valuation"
+      ],
+      "components": [
+        "select"
+      ],
+      "controls": [],
+      "queryParameters": [
+        "embed",
+        "q",
+        "field",
+        "dataset",
+        "site-chart-interaction"
+      ],
+      "styles": [
+        "scripts/site.css",
+        "scripts/data-browser.css",
+        "scripts/resource-search.css",
+        "scripts/site-charts.css",
+        "scripts/site-install.css",
+        "scripts/site-polish.css"
+      ],
+      "issues": [],
+      "migration": "已接入共享外壳、组件和设计层",
+      "verification": "通过",
+      "checkedStates": [
+        {
+          "view": "dashboard.html?dataset=valuation",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "dashboard-0-1440.png",
+          "problems": []
+        },
+        {
+          "view": "dashboard.html?dataset=valuation",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "dashboard-0-1024.png",
+          "problems": []
+        },
+        {
+          "view": "dashboard.html?dataset=valuation",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "dashboard-0-768.png",
+          "problems": []
+        },
+        {
+          "view": "dashboard.html?dataset=valuation",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "dashboard-0-390.png",
+          "problems": []
+        }
+      ]
+    },
+    {
+      "file": "data-notes.html",
+      "title": "数据来源与说明",
+      "section": "tools",
+      "kind": "page",
+      "embed": false,
+      "views": [
+        "data-notes.html"
+      ],
+      "components": [],
+      "controls": [],
+      "queryParameters": [
+        "embed"
+      ],
+      "styles": [
+        "scripts/site.css",
+        "scripts/data-notes.css",
+        "scripts/site-install.css",
+        "scripts/site-polish.css"
+      ],
+      "issues": [],
+      "migration": "已接入共享外壳、组件和设计层",
+      "verification": "通过",
+      "checkedStates": [
+        {
+          "view": "data-notes.html",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "data-notes-0-1440.png",
+          "problems": []
+        },
+        {
+          "view": "data-notes.html",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "data-notes-0-1024.png",
+          "problems": []
+        },
+        {
+          "view": "data-notes.html",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "data-notes-0-768.png",
+          "problems": []
+        },
+        {
+          "view": "data-notes.html",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "data-notes-0-390.png",
+          "problems": []
+        },
+        {
+          "view": "data-notes.html",
+          "width": 390,
+          "state": "details:6条来源",
+          "result": "通过",
+          "problems": []
+        }
+      ]
+    },
+    {
+      "file": "dining.html",
+      "title": "餐饮",
+      "section": "industry",
+      "kind": "page",
+      "embed": true,
+      "views": [
+        "dining.html"
+      ],
+      "components": [
+        "select",
+        "table"
+      ],
+      "controls": [],
+      "queryParameters": [
+        "embed",
+        "period",
+        "holidays",
+        "view"
+      ],
+      "styles": [
+        "scripts/site.css",
+        "scripts/industry-embed.css",
+        "scripts/dining.css",
+        "scripts/site-polish.css"
+      ],
+      "issues": [],
+      "migration": "已接入共享外壳、组件和设计层",
+      "verification": "通过",
+      "checkedStates": [
+        {
+          "view": "dining.html",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "dining-0-1440.png",
+          "problems": []
+        },
+        {
+          "view": "dining.html",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "dining-0-1024.png",
+          "problems": []
+        },
+        {
+          "view": "dining.html",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "dining-0-768.png",
+          "problems": []
+        },
+        {
+          "view": "dining.html",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "dining-0-390.png",
+          "problems": []
+        }
+      ]
+    },
+    {
+      "file": "domestic-hotel-comparison.html",
+      "title": "国内酒店公司对比",
+      "section": "companies",
+      "kind": "page",
+      "embed": false,
+      "views": [
+        "domestic-hotel-comparison.html"
+      ],
+      "components": [
+        "dialog"
+      ],
+      "controls": [
+        "data-view=\"comparison"
+      ],
+      "queryParameters": [
+        "embed",
+        "site-chart-interaction",
+        "sampleView",
+        "company",
+        "db",
+        "tab",
+        "kind",
+        "frequency",
+        "from",
+        "to",
+        "range",
+        "region",
+        "category",
+        "operation",
+        "currency",
+        "display",
+        "q"
+      ],
+      "styles": [
+        "scripts/site.css",
+        "scripts/hotel-workspace.css",
+        "scripts/overseas-hotels.css",
+        "scripts/site-charts.css",
+        "scripts/domestic-hotels.css",
+        "scripts/site-polish.css"
+      ],
+      "issues": [],
+      "migration": "已接入共享外壳、组件和设计层",
+      "verification": "通过",
+      "checkedStates": [
+        {
+          "view": "domestic-hotel-comparison.html",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "domestic-hotel-comparison-0-1440.png",
+          "problems": []
+        },
+        {
+          "view": "domestic-hotel-comparison.html",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "domestic-hotel-comparison-0-1024.png",
+          "problems": []
+        },
+        {
+          "view": "domestic-hotel-comparison.html",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "domestic-hotel-comparison-0-768.png",
+          "problems": []
+        },
+        {
+          "view": "domestic-hotel-comparison.html",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "domestic-hotel-comparison-0-390.png",
+          "problems": []
+        },
+        {
+          "view": "domestic-hotel-comparison.html",
+          "width": 390,
+          "state": "details:更多筛选",
+          "result": "通过",
+          "problems": []
+        },
+        {
+          "view": "domestic-hotel-comparison.html",
+          "width": 390,
+          "state": "details:历史数据",
+          "result": "通过",
+          "problems": []
+        },
+        {
+          "view": "domestic-hotel-comparison.html",
+          "width": 390,
+          "state": "details:历史数据",
+          "result": "通过",
+          "problems": []
+        },
+        {
+          "view": "domestic-hotel-comparison.html",
+          "width": 390,
+          "state": "details:历史数据",
+          "result": "通过",
+          "problems": []
+        }
+      ]
+    },
+    {
+      "file": "dutyfree-dashboard.html",
+      "title": "免税",
+      "section": "industry",
+      "kind": "page",
+      "embed": true,
+      "views": [
+        "dutyfree-dashboard.html#monthly",
+        "dutyfree-dashboard.html#holidays",
+        "dutyfree-dashboard.html#korea"
+      ],
+      "components": [
+        "select",
+        "details",
+        "table",
+        "dialog"
+      ],
+      "controls": [
+        "data-view=\"monthly",
+        "data-view=\"korea",
+        "data-view=\"holidays",
+        "data-view=\"${t}"
+      ],
+      "queryParameters": [
+        "embed",
+        "site-chart-interaction",
+        "view"
+      ],
+      "styles": [
+        "scripts/site.css",
+        "scripts/dutyfree-holidays.css",
+        "scripts/dutyfree-typography.css",
+        "scripts/resource-search.css",
+        "scripts/site-charts.css",
+        "scripts/industry-embed.css",
+        "scripts/site-install.css",
+        "scripts/dutyfree-korea.css",
+        "scripts/site-polish.css"
+      ],
+      "issues": [],
+      "migration": "已接入共享外壳、组件和设计层",
+      "verification": "通过",
+      "checkedStates": [
+        {
+          "view": "dutyfree-dashboard.html#monthly",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "dutyfree-dashboard-0-1440.png",
+          "problems": []
+        },
+        {
+          "view": "dutyfree-dashboard.html#monthly",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "dutyfree-dashboard-0-1024.png",
+          "problems": []
+        },
+        {
+          "view": "dutyfree-dashboard.html#monthly",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "dutyfree-dashboard-0-768.png",
+          "problems": []
+        },
+        {
+          "view": "dutyfree-dashboard.html#monthly",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "dutyfree-dashboard-0-390.png",
+          "problems": []
+        },
+        {
+          "view": "dutyfree-dashboard.html#monthly",
+          "width": 390,
+          "state": "details:历史数据与口径",
+          "result": "通过",
+          "problems": []
+        },
+        {
+          "view": "dutyfree-dashboard.html#holidays",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "dutyfree-dashboard-1-1440.png",
+          "problems": []
+        },
+        {
+          "view": "dutyfree-dashboard.html#holidays",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "dutyfree-dashboard-1-1024.png",
+          "problems": []
+        },
+        {
+          "view": "dutyfree-dashboard.html#holidays",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "dutyfree-dashboard-1-768.png",
+          "problems": []
+        },
+        {
+          "view": "dutyfree-dashboard.html#holidays",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "dutyfree-dashboard-1-390.png",
+          "problems": []
+        },
+        {
+          "view": "dutyfree-dashboard.html#korea",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "dutyfree-dashboard-2-1440.png",
+          "problems": []
+        },
+        {
+          "view": "dutyfree-dashboard.html#korea",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "dutyfree-dashboard-2-1024.png",
+          "problems": []
+        },
+        {
+          "view": "dutyfree-dashboard.html#korea",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "dutyfree-dashboard-2-768.png",
+          "problems": []
+        },
+        {
+          "view": "dutyfree-dashboard.html#korea",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "dutyfree-dashboard-2-390.png",
+          "problems": []
+        }
+      ]
+    },
+    {
+      "file": "earnings.html",
+      "title": "财报日历",
+      "section": "earnings",
+      "kind": "page",
+      "embed": false,
+      "views": [
+        "earnings.html"
+      ],
+      "components": [
+        "select",
+        "details",
+        "table",
+        "dialog"
+      ],
+      "controls": [
+        "data-view=\"list",
+        "data-view=\"month",
+        "data-view=\"week"
+      ],
+      "queryParameters": [
+        "embed",
+        "view",
+        "date",
+        "history",
+        "tab",
+        "site-chart-interaction",
+        "im",
+        "iv",
+        "region"
+      ],
+      "styles": [
+        "scripts/site.css",
+        "scripts/earnings-calendar.css",
+        "scripts/resource-search.css",
+        "scripts/site-charts.css",
+        "scripts/important-calendar.css",
+        "scripts/site-install.css",
+        "scripts/site-polish.css"
+      ],
+      "issues": [],
+      "migration": "已接入共享外壳、组件和设计层",
+      "verification": "通过",
+      "checkedStates": [
+        {
+          "view": "earnings.html",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "earnings-0-1440.png",
+          "problems": []
+        },
+        {
+          "view": "earnings.html",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "earnings-0-1024.png",
+          "problems": []
+        },
+        {
+          "view": "earnings.html",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "earnings-0-768.png",
+          "problems": []
+        },
+        {
+          "view": "earnings.html",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "earnings-0-390.png",
+          "problems": []
+        },
+        {
+          "view": "earnings.html",
+          "width": 390,
+          "state": "details:更多",
+          "result": "通过",
+          "problems": []
+        },
+        {
+          "view": "earnings.html",
+          "width": 390,
+          "state": "details:来源与更新",
+          "result": "通过",
+          "problems": []
+        }
+      ]
+    },
+    {
+      "file": "gold-jewelry.html",
+      "title": "黄金",
+      "section": "industry",
+      "kind": "redirect",
+      "embed": false,
+      "views": [
+        "gold-jewelry.html"
+      ],
+      "components": [],
+      "controls": [],
+      "queryParameters": [
+        "embed"
+      ],
+      "styles": [
+        "scripts/site.css",
+        "scripts/site-install.css",
+        "scripts/site-polish.css"
+      ],
+      "issues": [],
+      "migration": "保留兼容路由，未恢复已退役入口",
+      "verification": "通过",
+      "checkedStates": [
+        {
+          "view": "gold-jewelry.html",
+          "width": 1440,
+          "state": "compatibility redirect",
+          "result": "通过",
+          "screenshot": "gold-jewelry-0-1440.png",
+          "problems": []
+        },
+        {
+          "view": "gold-jewelry.html",
+          "width": 1024,
+          "state": "compatibility redirect",
+          "result": "通过",
+          "screenshot": "gold-jewelry-0-1024.png",
+          "problems": []
+        },
+        {
+          "view": "gold-jewelry.html",
+          "width": 768,
+          "state": "compatibility redirect",
+          "result": "通过",
+          "screenshot": "gold-jewelry-0-768.png",
+          "problems": []
+        },
+        {
+          "view": "gold-jewelry.html",
+          "width": 390,
+          "state": "compatibility redirect",
+          "result": "通过",
+          "screenshot": "gold-jewelry-0-390.png",
+          "problems": []
+        }
+      ]
+    },
+    {
+      "file": "hotel-dashboard.html",
+      "title": "酒店",
+      "section": "industry",
+      "kind": "page",
+      "embed": true,
+      "views": [
+        "hotel-dashboard.html#view=overview",
+        "hotel-dashboard.html#view=cities",
+        "hotel-dashboard.html#view=structure"
+      ],
+      "components": [
+        "select",
+        "details",
+        "table",
+        "dialog"
+      ],
+      "controls": [
+        "data-view=\"overview",
+        "data-view=\"cities",
+        "data-view=\"structure"
+      ],
+      "queryParameters": [
+        "embed",
+        "region",
+        "week",
+        "view",
+        "window",
+        "rangeVersion",
+        "supplyWindow",
+        "metric",
+        "mode",
+        "base",
+        "site-chart-interaction"
+      ],
+      "styles": [
+        "scripts/site.css",
+        "scripts/hotel-dashboard.css",
+        "scripts/resource-search.css",
+        "scripts/site-charts.css",
+        "scripts/industry-embed.css",
+        "scripts/site-install.css",
+        "scripts/site-polish.css"
+      ],
+      "issues": [],
+      "migration": "已接入共享外壳、组件和设计层",
+      "verification": "通过",
+      "checkedStates": [
+        {
+          "view": "hotel-dashboard.html#view=overview",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "hotel-dashboard-0-1440.png",
+          "problems": []
+        },
+        {
+          "view": "hotel-dashboard.html#view=overview",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "hotel-dashboard-0-1024.png",
+          "problems": []
+        },
+        {
+          "view": "hotel-dashboard.html#view=overview",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "hotel-dashboard-0-768.png",
+          "problems": []
+        },
+        {
+          "view": "hotel-dashboard.html#view=overview",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "hotel-dashboard-0-390.png",
+          "problems": []
+        },
+        {
+          "view": "hotel-dashboard.html#view=overview",
+          "width": 390,
+          "state": "details:同比口径与错期",
+          "result": "通过",
+          "problems": []
+        },
+        {
+          "view": "hotel-dashboard.html#view=overview",
+          "width": 390,
+          "state": "details:酒店与房间规模 · 15间及以上",
+          "result": "通过",
+          "problems": []
+        },
+        {
+          "view": "hotel-dashboard.html#view=cities",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "hotel-dashboard-1-1440.png",
+          "problems": []
+        },
+        {
+          "view": "hotel-dashboard.html#view=cities",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "hotel-dashboard-1-1024.png",
+          "problems": []
+        },
+        {
+          "view": "hotel-dashboard.html#view=cities",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "hotel-dashboard-1-768.png",
+          "problems": []
+        },
+        {
+          "view": "hotel-dashboard.html#view=cities",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "hotel-dashboard-1-390.png",
+          "problems": []
+        },
+        {
+          "view": "hotel-dashboard.html#view=structure",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "hotel-dashboard-2-1440.png",
+          "problems": []
+        },
+        {
+          "view": "hotel-dashboard.html#view=structure",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "hotel-dashboard-2-1024.png",
+          "problems": []
+        },
+        {
+          "view": "hotel-dashboard.html#view=structure",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "hotel-dashboard-2-768.png",
+          "problems": []
+        },
+        {
+          "view": "hotel-dashboard.html#view=structure",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "hotel-dashboard-2-390.png",
+          "problems": []
+        }
+      ]
+    },
+    {
+      "file": "hotel-groups.html",
+      "title": "酒店集团",
+      "section": "industry",
+      "kind": "page",
+      "embed": true,
+      "views": [
+        "hotel-groups.html"
+      ],
+      "components": [
+        "select",
+        "details",
+        "table",
+        "dialog"
+      ],
+      "controls": [],
+      "queryParameters": [
+        "embed",
+        "site-chart-interaction",
+        "period",
+        "compare",
+        "view"
+      ],
+      "styles": [
+        "scripts/site.css",
+        "scripts/hotel-dashboard.css",
+        "scripts/site-charts.css",
+        "scripts/industry-embed.css",
+        "scripts/site-install.css",
+        "scripts/site-polish.css",
+        "scripts/hotel-groups.css"
+      ],
+      "issues": [],
+      "migration": "已接入共享外壳、组件和设计层",
+      "verification": "通过",
+      "checkedStates": [
+        {
+          "view": "hotel-groups.html",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "hotel-groups-0-1440.png",
+          "problems": []
+        },
+        {
+          "view": "hotel-groups.html",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "hotel-groups-0-1024.png",
+          "problems": []
+        },
+        {
+          "view": "hotel-groups.html",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "hotel-groups-0-768.png",
+          "problems": []
+        },
+        {
+          "view": "hotel-groups.html",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "hotel-groups-0-390.png",
+          "problems": []
+        },
+        {
+          "view": "hotel-groups.html",
+          "width": 390,
+          "state": "details:更多指标 · 当期数据",
+          "result": "通过",
+          "problems": []
+        }
+      ]
+    },
+    {
+      "file": "hotel-holiday-dashboard.html",
+      "title": "酒店假期数据",
+      "section": "industry",
+      "kind": "page",
+      "embed": true,
+      "views": [
+        "hotel-holiday-dashboard.html"
+      ],
+      "components": [
+        "select",
+        "table",
+        "details"
+      ],
+      "controls": [],
+      "queryParameters": [
+        "embed",
+        "site-chart-interaction",
+        "holiday",
+        "holidaySegment",
+        "holidayMetric",
+        "holidayDimension",
+        "view"
+      ],
+      "styles": [
+        "scripts/site.css",
+        "scripts/hotel-dashboard.css",
+        "scripts/hotel-holiday-dashboard.css",
+        "scripts/resource-search.css",
+        "scripts/site-charts.css",
+        "scripts/industry-embed.css",
+        "scripts/site-install.css",
+        "scripts/site-polish.css"
+      ],
+      "issues": [],
+      "migration": "已接入共享外壳、组件和设计层",
+      "verification": "通过",
+      "checkedStates": [
+        {
+          "view": "hotel-holiday-dashboard.html",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "hotel-holiday-dashboard-0-1440.png",
+          "problems": []
+        },
+        {
+          "view": "hotel-holiday-dashboard.html",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "hotel-holiday-dashboard-0-1024.png",
+          "problems": []
+        },
+        {
+          "view": "hotel-holiday-dashboard.html",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "hotel-holiday-dashboard-0-768.png",
+          "problems": []
+        },
+        {
+          "view": "hotel-holiday-dashboard.html",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "hotel-holiday-dashboard-0-390.png",
+          "problems": []
+        },
+        {
+          "view": "hotel-holiday-dashboard.html",
+          "width": 390,
+          "state": "details:每日数据明细",
+          "result": "通过",
+          "problems": []
+        },
+        {
+          "view": "hotel-holiday-dashboard.html",
+          "width": 390,
+          "state": "details:全部假期概览",
+          "result": "通过",
+          "problems": []
+        }
+      ]
+    },
+    {
+      "file": "hotel-weekly-product.html",
+      "title": "酒店周度产品",
+      "section": "tools",
+      "kind": "page",
+      "embed": false,
+      "views": [
+        "hotel-weekly-product.html"
+      ],
+      "components": [
+        "select",
+        "details"
+      ],
+      "controls": [],
+      "queryParameters": [
+        "embed"
+      ],
+      "styles": [
+        "scripts/site.css",
+        "scripts/hotel-weekly-product.css",
+        "scripts/site-install.css",
+        "scripts/site-polish.css"
+      ],
+      "issues": [],
+      "migration": "已接入共享外壳、组件和设计层",
+      "verification": "通过",
+      "checkedStates": [
+        {
+          "view": "hotel-weekly-product.html",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "hotel-weekly-product-0-1440.png",
+          "problems": []
+        },
+        {
+          "view": "hotel-weekly-product.html",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "hotel-weekly-product-0-1024.png",
+          "problems": []
+        },
+        {
+          "view": "hotel-weekly-product.html",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "hotel-weekly-product-0-768.png",
+          "problems": []
+        },
+        {
+          "view": "hotel-weekly-product.html",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "hotel-weekly-product-0-390.png",
+          "problems": []
+        },
+        {
+          "view": "hotel-weekly-product.html",
+          "width": 390,
+          "state": "details:编辑点评",
+          "result": "通过",
+          "problems": []
+        },
+        {
+          "view": "hotel-weekly-product.html",
+          "width": 390,
+          "state": "details:导入周度数据 CSV",
+          "result": "通过",
+          "problems": []
+        }
+      ]
+    },
+    {
+      "file": "index.html",
+      "title": "index.html",
+      "section": "compatibility",
+      "kind": "redirect",
+      "embed": false,
+      "views": [
+        "index.html"
+      ],
+      "components": [],
+      "controls": [],
+      "queryParameters": [],
+      "styles": [],
+      "issues": [],
+      "migration": "保留兼容路由，未恢复已退役入口",
+      "verification": "通过",
+      "checkedStates": [
+        {
+          "view": "index.html",
+          "width": 1440,
+          "state": "compatibility redirect",
+          "result": "通过",
+          "screenshot": "index-0-1440.png",
+          "problems": []
+        },
+        {
+          "view": "index.html",
+          "width": 1024,
+          "state": "compatibility redirect",
+          "result": "通过",
+          "screenshot": "index-0-1024.png",
+          "problems": []
+        },
+        {
+          "view": "index.html",
+          "width": 768,
+          "state": "compatibility redirect",
+          "result": "通过",
+          "screenshot": "index-0-768.png",
+          "problems": []
+        },
+        {
+          "view": "index.html",
+          "width": 390,
+          "state": "compatibility redirect",
+          "result": "通过",
+          "screenshot": "index-0-390.png",
+          "problems": []
+        }
+      ]
+    },
+    {
+      "file": "industry.html",
+      "title": "行业数据",
+      "section": "industry",
+      "kind": "page",
+      "embed": false,
+      "views": [
+        "industry.html#hotel",
+        "industry.html?panelSector=hotel&panelView=view%3Dcities#hotel",
+        "industry.html?panelSector=hotel&panelView=view%3Dstructure#hotel",
+        "industry.html?panelSector=hotel&panelView=view%3Dgroups#hotel",
+        "industry.html?panelSector=hotel&panelView=view%3Dholiday#hotel",
+        "industry.html#dutyfree",
+        "industry.html#dining",
+        "industry.html#tourism",
+        "industry.html#travel"
+      ],
+      "components": [
+        "select",
+        "details",
+        "table"
+      ],
+      "controls": [
+        "data-key=\"hotel",
+        "data-key=\"dutyfree",
+        "data-key=\"travel",
+        "data-key=\"tourism",
+        "data-key=\"dining",
+        "data-view=\"overview",
+        "data-view=\"demand",
+        "data-view=\"companies",
+        "data-view=\"prices",
+        "data-view=\"sources"
+      ],
+      "queryParameters": [
+        "embed",
+        "real10",
+        "dxy",
+        "etf-flows",
+        "etf-holdings",
+        "central-banks",
+        "managed-money",
+        "goldView",
+        "panelSector",
+        "panelView",
+        "view",
+        "hotel",
+        "site-chart-interaction"
+      ],
+      "styles": [
+        "scripts/site.css",
+        "scripts/industry.css",
+        "scripts/dutyfree-holidays.css",
+        "scripts/gold-live.css",
+        "scripts/resource-search.css",
+        "scripts/site-charts.css",
+        "scripts/gold-jewelry.css",
+        "scripts/industry-embed.css",
+        "scripts/site-install.css",
+        "scripts/site-polish.css"
+      ],
+      "issues": [],
+      "migration": "已接入共享外壳、组件和设计层",
+      "verification": "通过",
+      "checkedStates": [
+        {
+          "view": "industry.html#hotel",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "industry-0-1440.png",
+          "problems": []
+        },
+        {
+          "view": "industry.html#hotel",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "industry-0-1024.png",
+          "problems": []
+        },
+        {
+          "view": "industry.html#hotel",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "industry-0-768.png",
+          "problems": []
+        },
+        {
+          "view": "industry.html#hotel",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "industry-0-390.png",
+          "problems": []
+        },
+        {
+          "view": "industry.html?panelSector=hotel&panelView=view%3Dcities#hotel",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "industry-1-1440.png",
+          "problems": []
+        },
+        {
+          "view": "industry.html?panelSector=hotel&panelView=view%3Dcities#hotel",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "industry-1-1024.png",
+          "problems": []
+        },
+        {
+          "view": "industry.html?panelSector=hotel&panelView=view%3Dcities#hotel",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "industry-1-768.png",
+          "problems": []
+        },
+        {
+          "view": "industry.html?panelSector=hotel&panelView=view%3Dcities#hotel",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "industry-1-390.png",
+          "problems": []
+        },
+        {
+          "view": "industry.html?panelSector=hotel&panelView=view%3Dstructure#hotel",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "industry-2-1440.png",
+          "problems": []
+        },
+        {
+          "view": "industry.html?panelSector=hotel&panelView=view%3Dstructure#hotel",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "industry-2-1024.png",
+          "problems": []
+        },
+        {
+          "view": "industry.html?panelSector=hotel&panelView=view%3Dstructure#hotel",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "industry-2-768.png",
+          "problems": []
+        },
+        {
+          "view": "industry.html?panelSector=hotel&panelView=view%3Dstructure#hotel",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "industry-2-390.png",
+          "problems": []
+        },
+        {
+          "view": "industry.html?panelSector=hotel&panelView=view%3Dgroups#hotel",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "industry-3-1440.png",
+          "problems": []
+        },
+        {
+          "view": "industry.html?panelSector=hotel&panelView=view%3Dgroups#hotel",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "industry-3-1024.png",
+          "problems": []
+        },
+        {
+          "view": "industry.html?panelSector=hotel&panelView=view%3Dgroups#hotel",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "industry-3-768.png",
+          "problems": []
+        },
+        {
+          "view": "industry.html?panelSector=hotel&panelView=view%3Dgroups#hotel",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "industry-3-390.png",
+          "problems": []
+        },
+        {
+          "view": "industry.html?panelSector=hotel&panelView=view%3Dholiday#hotel",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "industry-4-1440.png",
+          "problems": []
+        },
+        {
+          "view": "industry.html?panelSector=hotel&panelView=view%3Dholiday#hotel",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "industry-4-1024.png",
+          "problems": []
+        },
+        {
+          "view": "industry.html?panelSector=hotel&panelView=view%3Dholiday#hotel",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "industry-4-768.png",
+          "problems": []
+        },
+        {
+          "view": "industry.html?panelSector=hotel&panelView=view%3Dholiday#hotel",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "industry-4-390.png",
+          "problems": []
+        },
+        {
+          "view": "industry.html#dutyfree",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "industry-5-1440.png",
+          "problems": []
+        },
+        {
+          "view": "industry.html#dutyfree",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "industry-5-1024.png",
+          "problems": []
+        },
+        {
+          "view": "industry.html#dutyfree",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "industry-5-768.png",
+          "problems": []
+        },
+        {
+          "view": "industry.html#dutyfree",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "industry-5-390.png",
+          "problems": []
+        },
+        {
+          "view": "industry.html#dining",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "industry-6-1440.png",
+          "problems": []
+        },
+        {
+          "view": "industry.html#dining",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "industry-6-1024.png",
+          "problems": []
+        },
+        {
+          "view": "industry.html#dining",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "industry-6-768.png",
+          "problems": []
+        },
+        {
+          "view": "industry.html#dining",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "industry-6-390.png",
+          "problems": []
+        },
+        {
+          "view": "industry.html#tourism",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "industry-7-1440.png",
+          "problems": []
+        },
+        {
+          "view": "industry.html#tourism",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "industry-7-1024.png",
+          "problems": []
+        },
+        {
+          "view": "industry.html#tourism",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "industry-7-768.png",
+          "problems": []
+        },
+        {
+          "view": "industry.html#tourism",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "industry-7-390.png",
+          "problems": []
+        },
+        {
+          "view": "industry.html#travel",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "industry-8-1440.png",
+          "problems": []
+        },
+        {
+          "view": "industry.html#travel",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "industry-8-1024.png",
+          "problems": []
+        },
+        {
+          "view": "industry.html#travel",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "industry-8-768.png",
+          "problems": []
+        },
+        {
+          "view": "industry.html#travel",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "industry-8-390.png",
+          "problems": []
+        }
+      ]
+    },
+    {
+      "file": "macro.html",
+      "title": "核心指标",
+      "section": "macro",
+      "kind": "page",
+      "embed": false,
+      "views": [
+        "macro.html?view=indicators&country=CN",
+        "macro.html?view=indicators&country=US",
+        "macro.html?view=fedwatch",
+        "macro.html?view=predictions"
+      ],
+      "components": [
+        "details",
+        "select",
+        "dialog"
+      ],
+      "controls": [
+        "data-study=\"overview",
+        "data-study=\"workspace"
+      ],
+      "queryParameters": [
+        "view",
+        "embed",
+        "predictionQuery",
+        "predictionTopic",
+        "predictionSort",
+        "meeting",
+        "study",
+        "country",
+        "group",
+        "q",
+        "indicator",
+        "years",
+        "frequency",
+        "health",
+        "category",
+        "site-chart-interaction"
+      ],
+      "styles": [
+        "scripts/site.css",
+        "scripts/macro.css",
+        "scripts/research-chart.css",
+        "scripts/forecast-desk.css",
+        "scripts/resource-search.css",
+        "scripts/site-charts.css",
+        "scripts/site-install.css",
+        "scripts/site-polish.css"
+      ],
+      "issues": [],
+      "migration": "已接入共享外壳、组件和设计层",
+      "verification": "通过",
+      "checkedStates": [
+        {
+          "view": "macro.html?view=indicators&country=CN",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "macro-0-1440.png",
+          "problems": []
+        },
+        {
+          "view": "macro.html?view=indicators&country=CN",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "macro-0-1024.png",
+          "problems": []
+        },
+        {
+          "view": "macro.html?view=indicators&country=CN",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "macro-0-768.png",
+          "problems": []
+        },
+        {
+          "view": "macro.html?view=indicators&country=CN",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "macro-0-390.png",
+          "problems": []
+        },
+        {
+          "view": "macro.html?view=indicators&country=US",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "macro-1-1440.png",
+          "problems": []
+        },
+        {
+          "view": "macro.html?view=indicators&country=US",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "macro-1-1024.png",
+          "problems": []
+        },
+        {
+          "view": "macro.html?view=indicators&country=US",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "macro-1-768.png",
+          "problems": []
+        },
+        {
+          "view": "macro.html?view=indicators&country=US",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "macro-1-390.png",
+          "problems": []
+        },
+        {
+          "view": "macro.html?view=fedwatch",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "macro-2-1440.png",
+          "problems": []
+        },
+        {
+          "view": "macro.html?view=fedwatch",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "macro-2-1024.png",
+          "problems": []
+        },
+        {
+          "view": "macro.html?view=fedwatch",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "macro-2-768.png",
+          "problems": []
+        },
+        {
+          "view": "macro.html?view=fedwatch",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "macro-2-390.png",
+          "problems": []
+        },
+        {
+          "view": "macro.html?view=predictions",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "macro-3-1440.png",
+          "problems": []
+        },
+        {
+          "view": "macro.html?view=predictions",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "macro-3-1024.png",
+          "problems": []
+        },
+        {
+          "view": "macro.html?view=predictions",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "macro-3-768.png",
+          "problems": []
+        },
+        {
+          "view": "macro.html?view=predictions",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "macro-3-390.png",
+          "problems": []
+        }
+      ]
+    },
+    {
+      "file": "overseas-hotel-comparison.html",
+      "title": "海外酒店公司对比",
+      "section": "companies",
+      "kind": "page",
+      "embed": false,
+      "views": [
+        "overseas-hotel-comparison.html"
+      ],
+      "components": [
+        "dialog"
+      ],
+      "controls": [
+        "data-view=\"comparison"
+      ],
+      "queryParameters": [
+        "embed",
+        "site-chart-interaction",
+        "tab",
+        "company",
+        "backCompany",
+        "mode",
+        "quarter",
+        "region",
+        "financeRegion",
+        "kind",
+        "sheet",
+        "q",
+        "brand",
+        "from",
+        "peers",
+        "peerRegion",
+        "peerMetric",
+        "peerDisplay",
+        "financePeriod"
+      ],
+      "styles": [
+        "scripts/site.css",
+        "scripts/hotel-workspace.css",
+        "scripts/overseas-hotels.css",
+        "scripts/site-charts.css",
+        "scripts/site-polish.css"
+      ],
+      "issues": [],
+      "migration": "已接入共享外壳、组件和设计层",
+      "verification": "通过",
+      "checkedStates": [
+        {
+          "view": "overseas-hotel-comparison.html",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "overseas-hotel-comparison-0-1440.png",
+          "problems": []
+        },
+        {
+          "view": "overseas-hotel-comparison.html",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "overseas-hotel-comparison-0-1024.png",
+          "problems": []
+        },
+        {
+          "view": "overseas-hotel-comparison.html",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "overseas-hotel-comparison-0-768.png",
+          "problems": []
+        },
+        {
+          "view": "overseas-hotel-comparison.html",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "overseas-hotel-comparison-0-390.png",
+          "problems": []
+        },
+        {
+          "view": "overseas-hotel-comparison.html",
+          "width": 390,
+          "state": "details:季度数据",
+          "result": "通过",
+          "problems": []
+        },
+        {
+          "view": "overseas-hotel-comparison.html",
+          "width": 390,
+          "state": "details:季度数据",
+          "result": "通过",
+          "problems": []
+        },
+        {
+          "view": "overseas-hotel-comparison.html",
+          "width": 390,
+          "state": "details:季度数据",
+          "result": "通过",
+          "problems": []
+        }
+      ]
+    },
+    {
+      "file": "overseas-hotels.html",
+      "title": "海外酒店",
+      "section": "companies",
+      "kind": "page",
+      "embed": false,
+      "views": [
+        "overseas-hotels.html?company=marriott",
+        "overseas-hotels.html?company=hilton",
+        "overseas-hotels.html?company=hyatt",
+        "overseas-hotels.html?company=ihg"
+      ],
+      "components": [
+        "dialog"
+      ],
+      "controls": [
+        "data-tab=\"operating",
+        "data-tab=\"financial",
+        "data-tab=\"brands",
+        "data-tab=\"profile",
+        "data-tab=\"details"
+      ],
+      "queryParameters": [
+        "embed",
+        "site-chart-interaction",
+        "tab",
+        "company",
+        "backCompany",
+        "mode",
+        "quarter",
+        "region",
+        "financeRegion",
+        "kind",
+        "sheet",
+        "q",
+        "brand",
+        "from",
+        "peers",
+        "peerRegion",
+        "peerMetric",
+        "peerDisplay",
+        "financePeriod"
+      ],
+      "styles": [
+        "scripts/site.css",
+        "scripts/overseas-hotels.css",
+        "scripts/site-charts.css",
+        "scripts/hotel-workspace.css",
+        "scripts/site-polish.css"
+      ],
+      "issues": [],
+      "migration": "已接入共享外壳、组件和设计层",
+      "verification": "通过",
+      "checkedStates": [
+        {
+          "view": "overseas-hotels.html?company=marriott",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "overseas-hotels-0-1440.png",
+          "problems": []
+        },
+        {
+          "view": "overseas-hotels.html?company=marriott",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "overseas-hotels-0-1024.png",
+          "problems": []
+        },
+        {
+          "view": "overseas-hotels.html?company=marriott",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "overseas-hotels-0-768.png",
+          "problems": []
+        },
+        {
+          "view": "overseas-hotels.html?company=marriott",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "overseas-hotels-0-390.png",
+          "problems": []
+        },
+        {
+          "view": "overseas-hotels.html?company=marriott",
+          "width": 390,
+          "state": "details:季度数据",
+          "result": "通过",
+          "problems": []
+        },
+        {
+          "view": "overseas-hotels.html?company=marriott",
+          "width": 390,
+          "state": "details:季度数据",
+          "result": "通过",
+          "problems": []
+        },
+        {
+          "view": "overseas-hotels.html?company=marriott",
+          "width": 390,
+          "state": "details:季度数据",
+          "result": "通过",
+          "problems": []
+        },
+        {
+          "view": "overseas-hotels.html?company=hilton",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "overseas-hotels-1-1440.png",
+          "problems": []
+        },
+        {
+          "view": "overseas-hotels.html?company=hilton",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "overseas-hotels-1-1024.png",
+          "problems": []
+        },
+        {
+          "view": "overseas-hotels.html?company=hilton",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "overseas-hotels-1-768.png",
+          "problems": []
+        },
+        {
+          "view": "overseas-hotels.html?company=hilton",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "overseas-hotels-1-390.png",
+          "problems": []
+        },
+        {
+          "view": "overseas-hotels.html?company=hyatt",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "overseas-hotels-2-1440.png",
+          "problems": []
+        },
+        {
+          "view": "overseas-hotels.html?company=hyatt",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "overseas-hotels-2-1024.png",
+          "problems": []
+        },
+        {
+          "view": "overseas-hotels.html?company=hyatt",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "overseas-hotels-2-768.png",
+          "problems": []
+        },
+        {
+          "view": "overseas-hotels.html?company=hyatt",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "overseas-hotels-2-390.png",
+          "problems": []
+        },
+        {
+          "view": "overseas-hotels.html?company=ihg",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "overseas-hotels-3-1440.png",
+          "problems": []
+        },
+        {
+          "view": "overseas-hotels.html?company=ihg",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "overseas-hotels-3-1024.png",
+          "problems": []
+        },
+        {
+          "view": "overseas-hotels.html?company=ihg",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "overseas-hotels-3-768.png",
+          "problems": []
+        },
+        {
+          "view": "overseas-hotels.html?company=ihg",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "overseas-hotels-3-390.png",
+          "problems": []
+        }
+      ]
+    },
+    {
+      "file": "overseas.html",
+      "title": "overseas.html",
+      "section": "compatibility",
+      "kind": "redirect",
+      "embed": false,
+      "views": [
+        "overseas.html"
+      ],
+      "components": [],
+      "controls": [],
+      "queryParameters": [
+        "embed"
+      ],
+      "styles": [
+        "scripts/site.css",
+        "scripts/site-install.css",
+        "scripts/site-polish.css"
+      ],
+      "issues": [],
+      "migration": "保留兼容路由，未恢复已退役入口",
+      "verification": "通过",
+      "checkedStates": [
+        {
+          "view": "overseas.html",
+          "width": 1440,
+          "state": "compatibility redirect",
+          "result": "通过",
+          "screenshot": "overseas-0-1440.png",
+          "problems": []
+        },
+        {
+          "view": "overseas.html",
+          "width": 1024,
+          "state": "compatibility redirect",
+          "result": "通过",
+          "screenshot": "overseas-0-1024.png",
+          "problems": []
+        },
+        {
+          "view": "overseas.html",
+          "width": 768,
+          "state": "compatibility redirect",
+          "result": "通过",
+          "screenshot": "overseas-0-768.png",
+          "problems": []
+        },
+        {
+          "view": "overseas.html",
+          "width": 390,
+          "state": "compatibility redirect",
+          "result": "通过",
+          "screenshot": "overseas-0-390.png",
+          "problems": []
+        }
+      ]
+    },
+    {
+      "file": "quotes.html",
+      "title": "实时行情",
+      "section": "quotes",
+      "kind": "page",
+      "embed": false,
+      "views": [
+        "quotes.html"
+      ],
+      "components": [
+        "select",
+        "details",
+        "table"
+      ],
+      "controls": [
+        "data-view=\"heat",
+        "data-view=\"sector",
+        "data-view=\"list"
+      ],
+      "queryParameters": [
+        "site-chart-interaction",
+        "embed",
+        "view",
+        "period",
+        "symbol"
+      ],
+      "styles": [
+        "scripts/site.css",
+        "scripts/quotes.css",
+        "scripts/resource-search.css",
+        "scripts/site-charts.css",
+        "scripts/site-install.css",
+        "scripts/site-polish.css"
+      ],
+      "issues": [],
+      "migration": "已接入共享外壳、组件和设计层",
+      "verification": "通过",
+      "checkedStates": [
+        {
+          "view": "quotes.html",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "quotes-0-1440.png",
+          "problems": []
+        },
+        {
+          "view": "quotes.html",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "quotes-0-1024.png",
+          "problems": []
+        },
+        {
+          "view": "quotes.html",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "quotes-0-768.png",
+          "problems": []
+        },
+        {
+          "view": "quotes.html",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "quotes-0-390.png",
+          "problems": []
+        },
+        {
+          "view": "quotes.html",
+          "width": 390,
+          "state": "details:更多设置",
+          "result": "通过",
+          "problems": []
+        },
+        {
+          "view": "quotes.html",
+          "width": 390,
+          "state": "details:数据来源",
+          "result": "通过",
+          "problems": []
+        }
+      ]
+    },
+    {
+      "file": "regional-retail.html",
+      "title": "地方社零",
+      "section": "macro",
+      "kind": "page",
+      "embed": false,
+      "views": [
+        "regional-retail.html?view=tiers",
+        "regional-retail.html?view=breakdown",
+        "regional-retail.html?view=provinces",
+        "regional-retail.html?view=comparison",
+        "regional-retail.html?view=structure"
+      ],
+      "components": [
+        "select",
+        "details",
+        "table"
+      ],
+      "controls": [
+        "data-retail-view=\"tiers",
+        "data-retail-view=\"breakdown",
+        "data-retail-view=\"provinces",
+        "data-retail-view=\"comparison"
+      ],
+      "queryParameters": [
+        "view",
+        "province",
+        "provinceBasis",
+        "provinceYears",
+        "provincePeriod",
+        "tierBasis",
+        "tierMetric",
+        "tierCohort",
+        "tierFrequency",
+        "tierYears",
+        "tierGroup",
+        "tierSearch",
+        "tierMissing",
+        "tierPeriod",
+        "level",
+        "basis",
+        "measure",
+        "query",
+        "missing",
+        "years",
+        "period",
+        "region",
+        "breakdownCity",
+        "breakdownBasis",
+        "breakdownYears",
+        "breakdownPeriod",
+        "dimension",
+        "breakdownCategory",
+        "embed"
+      ],
+      "styles": [
+        "scripts/site.css",
+        "scripts/macro.css",
+        "scripts/regional-retail.css",
+        "scripts/site-install.css",
+        "scripts/site-polish.css",
+        "scripts/site-charts.css"
+      ],
+      "issues": [],
+      "migration": "已接入共享外壳、组件和设计层",
+      "verification": "通过",
+      "checkedStates": [
+        {
+          "view": "regional-retail.html?view=tiers",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "regional-retail-0-1440.png",
+          "problems": []
+        },
+        {
+          "view": "regional-retail.html?view=tiers",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "regional-retail-0-1024.png",
+          "problems": []
+        },
+        {
+          "view": "regional-retail.html?view=tiers",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "regional-retail-0-768.png",
+          "problems": []
+        },
+        {
+          "view": "regional-retail.html?view=tiers",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "regional-retail-0-390.png",
+          "problems": []
+        },
+        {
+          "view": "regional-retail.html?view=tiers",
+          "width": 390,
+          "state": "details:更多设置",
+          "result": "通过",
+          "problems": []
+        },
+        {
+          "view": "regional-retail.html?view=tiers",
+          "width": 390,
+          "state": "details:详细统计与城市明细",
+          "result": "通过",
+          "problems": []
+        },
+        {
+          "view": "regional-retail.html?view=breakdown",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "regional-retail-1-1440.png",
+          "problems": []
+        },
+        {
+          "view": "regional-retail.html?view=breakdown",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "regional-retail-1-1024.png",
+          "problems": []
+        },
+        {
+          "view": "regional-retail.html?view=breakdown",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "regional-retail-1-768.png",
+          "problems": []
+        },
+        {
+          "view": "regional-retail.html?view=breakdown",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "regional-retail-1-390.png",
+          "problems": []
+        },
+        {
+          "view": "regional-retail.html?view=provinces",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "regional-retail-2-1440.png",
+          "problems": []
+        },
+        {
+          "view": "regional-retail.html?view=provinces",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "regional-retail-2-1024.png",
+          "problems": []
+        },
+        {
+          "view": "regional-retail.html?view=provinces",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "regional-retail-2-768.png",
+          "problems": []
+        },
+        {
+          "view": "regional-retail.html?view=provinces",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "regional-retail-2-390.png",
+          "problems": []
+        },
+        {
+          "view": "regional-retail.html?view=comparison",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "regional-retail-3-1440.png",
+          "problems": []
+        },
+        {
+          "view": "regional-retail.html?view=comparison",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "regional-retail-3-1024.png",
+          "problems": []
+        },
+        {
+          "view": "regional-retail.html?view=comparison",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "regional-retail-3-768.png",
+          "problems": []
+        },
+        {
+          "view": "regional-retail.html?view=comparison",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "regional-retail-3-390.png",
+          "problems": []
+        },
+        {
+          "view": "regional-retail.html?view=structure",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "regional-retail-4-1440.png",
+          "problems": []
+        },
+        {
+          "view": "regional-retail.html?view=structure",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "regional-retail-4-1024.png",
+          "problems": []
+        },
+        {
+          "view": "regional-retail.html?view=structure",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "regional-retail-4-768.png",
+          "problems": []
+        },
+        {
+          "view": "regional-retail.html?view=structure",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "regional-retail-4-390.png",
+          "problems": []
+        }
+      ]
+    },
+    {
+      "file": "research.html",
+      "title": "观点纪要",
+      "section": "research",
+      "kind": "page",
+      "embed": false,
+      "views": [
+        "research.html"
+      ],
+      "components": [
+        "select",
+        "details",
+        "dialog"
+      ],
+      "controls": [],
+      "queryParameters": [
+        "embed",
+        "kind",
+        "asset",
+        "topic",
+        "record",
+        "scope",
+        "state",
+        "sort",
+        "range",
+        "from",
+        "to",
+        "format",
+        "file",
+        "site-chart-interaction"
+      ],
+      "styles": [
+        "scripts/site.css",
+        "scripts/research-library.css",
+        "scripts/resource-search.css",
+        "scripts/site-charts.css",
+        "scripts/site-install.css",
+        "scripts/site-polish.css"
+      ],
+      "issues": [],
+      "migration": "已接入共享外壳、组件和设计层",
+      "verification": "通过",
+      "checkedStates": [
+        {
+          "view": "research.html",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "research-0-1440.png",
+          "problems": []
+        },
+        {
+          "view": "research.html",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "research-0-1024.png",
+          "problems": []
+        },
+        {
+          "view": "research.html",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "research-0-768.png",
+          "problems": []
+        },
+        {
+          "view": "research.html",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "research-0-390.png",
+          "problems": []
+        },
+        {
+          "view": "research.html",
+          "width": 390,
+          "state": "details:日期与其他筛选",
+          "result": "通过",
+          "problems": []
+        }
+      ]
+    },
+    {
+      "file": "retail-monthly-product.html",
+      "title": "社零月度产品",
+      "section": "tools",
+      "kind": "page",
+      "embed": false,
+      "views": [
+        "retail-monthly-product.html"
+      ],
+      "components": [
+        "select",
+        "details"
+      ],
+      "controls": [],
+      "queryParameters": [
+        "embed",
+        "month",
+        "window"
+      ],
+      "styles": [
+        "scripts/site.css",
+        "scripts/hotel-weekly-product.css",
+        "scripts/consumption-monthly-product.css",
+        "scripts/site-install.css",
+        "scripts/site-polish.css"
+      ],
+      "issues": [],
+      "migration": "已接入共享外壳、组件和设计层",
+      "verification": "通过",
+      "checkedStates": [
+        {
+          "view": "retail-monthly-product.html",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "retail-monthly-product-0-1440.png",
+          "problems": []
+        },
+        {
+          "view": "retail-monthly-product.html",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "retail-monthly-product-0-1024.png",
+          "problems": []
+        },
+        {
+          "view": "retail-monthly-product.html",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "retail-monthly-product-0-768.png",
+          "problems": []
+        },
+        {
+          "view": "retail-monthly-product.html",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "retail-monthly-product-0-390.png",
+          "problems": []
+        },
+        {
+          "view": "retail-monthly-product.html",
+          "width": 390,
+          "state": "details:编辑点评",
+          "result": "通过",
+          "problems": []
+        },
+        {
+          "view": "retail-monthly-product.html",
+          "width": 390,
+          "state": "details:数据来源与说明",
+          "result": "通过",
+          "problems": []
+        }
+      ]
+    },
+    {
+      "file": "search.html",
+      "title": "站内搜索",
+      "section": "research",
+      "kind": "page",
+      "embed": false,
+      "views": [
+        "search.html"
+      ],
+      "components": [],
+      "controls": [],
+      "queryParameters": [
+        "embed",
+        "type",
+        "q",
+        "site-chart-interaction"
+      ],
+      "styles": [
+        "scripts/site.css",
+        "scripts/resource-search.css",
+        "scripts/site-charts.css",
+        "scripts/site-install.css",
+        "scripts/site-polish.css"
+      ],
+      "issues": [],
+      "migration": "已接入共享外壳、组件和设计层",
+      "verification": "通过",
+      "checkedStates": [
+        {
+          "view": "search.html",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "search-0-1440.png",
+          "problems": []
+        },
+        {
+          "view": "search.html",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "search-0-1024.png",
+          "problems": []
+        },
+        {
+          "view": "search.html",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "search-0-768.png",
+          "problems": []
+        },
+        {
+          "view": "search.html",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "search-0-390.png",
+          "problems": []
+        }
+      ]
+    },
+    {
+      "file": "travel-dashboard.html",
+      "title": "旅游",
+      "section": "industry",
+      "kind": "page",
+      "embed": true,
+      "views": [
+        "travel-dashboard.html#view=domestic",
+        "travel-dashboard.html#view=inbound",
+        "travel-dashboard.html#view=outbound"
+      ],
+      "components": [
+        "select",
+        "table"
+      ],
+      "controls": [
+        "data-view=\"domestic",
+        "data-view=\"inbound",
+        "data-view=\"outbound"
+      ],
+      "queryParameters": [
+        "embed",
+        "site-chart-interaction",
+        "view"
+      ],
+      "styles": [
+        "scripts/site.css",
+        "scripts/site-charts.css",
+        "scripts/industry-embed.css",
+        "scripts/travel-dashboard.css",
+        "scripts/site-polish.css"
+      ],
+      "issues": [],
+      "migration": "已接入共享外壳、组件和设计层",
+      "verification": "通过",
+      "checkedStates": [
+        {
+          "view": "travel-dashboard.html#view=domestic",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "travel-dashboard-0-1440.png",
+          "problems": []
+        },
+        {
+          "view": "travel-dashboard.html#view=domestic",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "travel-dashboard-0-1024.png",
+          "problems": []
+        },
+        {
+          "view": "travel-dashboard.html#view=domestic",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "travel-dashboard-0-768.png",
+          "problems": []
+        },
+        {
+          "view": "travel-dashboard.html#view=domestic",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "travel-dashboard-0-390.png",
+          "problems": []
+        },
+        {
+          "view": "travel-dashboard.html#view=inbound",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "travel-dashboard-1-1440.png",
+          "problems": []
+        },
+        {
+          "view": "travel-dashboard.html#view=inbound",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "travel-dashboard-1-1024.png",
+          "problems": []
+        },
+        {
+          "view": "travel-dashboard.html#view=inbound",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "travel-dashboard-1-768.png",
+          "problems": []
+        },
+        {
+          "view": "travel-dashboard.html#view=inbound",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "travel-dashboard-1-390.png",
+          "problems": []
+        },
+        {
+          "view": "travel-dashboard.html#view=outbound",
+          "width": 1440,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "travel-dashboard-2-1440.png",
+          "problems": []
+        },
+        {
+          "view": "travel-dashboard.html#view=outbound",
+          "width": 1024,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "travel-dashboard-2-1024.png",
+          "problems": []
+        },
+        {
+          "view": "travel-dashboard.html#view=outbound",
+          "width": 768,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "travel-dashboard-2-768.png",
+          "problems": []
+        },
+        {
+          "view": "travel-dashboard.html#view=outbound",
+          "width": 390,
+          "state": "default",
+          "result": "通过",
+          "screenshot": "travel-dashboard-2-390.png",
+          "problems": []
+        }
+      ]
+    }
+  ],
+  "scope": "Local browser validation; publication is not implied",
+  "registry": "scripts/site-ui.js:registry",
+  "widths": [
+    1440,
+    1024,
+    768,
+    390
+  ],
+  "macroAdditionalWidths": [
+    1920
+  ]
+}

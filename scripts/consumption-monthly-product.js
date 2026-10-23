@@ -1,13 +1,13 @@
 (function(){
 'use strict';
-const M=MonthlyProduct,CM=ConsumptionMacro,$=id=>document.getElementById(id),canvas=$('product'),ink='#173f60',blue='#104f87',muted='#667582',colors=['#165b9c','#66a9dc','#a64d19'],TYPE={section:24,chart:22,body:22,table:20,meta:18},SPACE={bodyLine:35,sectionGap:56,headingToBody:50,headingToRows:42,metaGap:36,chartStep:378};
+const M=MonthlyProduct,CM=ConsumptionMacro,$=id=>document.getElementById(id),canvas=$('product'),ink='#173f60',blue='#104f87',muted='#667582',colors=SiteUI.colors,TYPE={section:24,chart:22,body:22,table:20,meta:18},SPACE={bodyLine:35,sectionGap:56,headingToBody:50,headingToRows:42,metaGap:36,chartStep:378};
 let insights={},data=null,legal=[],report=null,busy=false,warning='',hits=[],activeMonth='',comments=new Map(),previewFrame;
 const banner=new Image();banner.onload=()=>{if(report)render();};banner.src='scripts/assets/hotel-weekly/title.png';
 const logo=new Image();logo.onload=()=>{if(report)render();};logo.src='scripts/assets/hotel-weekly/logo.png';
 const tip=document.createElement('div');tip.className='monthly-tooltip';tip.hidden=true;document.body.append(tip);
 function status(message,error=false){$('status').textContent=message;$('status').classList.toggle('error',error);}
 async function json(path){const c=new AbortController(),timer=setTimeout(()=>c.abort(),20000);try{const r=await fetch(path,{cache:'no-store',signal:c.signal});if(!r.ok)throw Error(path+'：HTTP '+r.status);return await r.json();}finally{clearTimeout(timer);}}
-function publishURL(){const u=new URL(location.href);u.searchParams.set('month',$('month').value);u.searchParams.set('window',$('window').value);history.replaceState(null,'',u.pathname+u.search);}
+function publishURL(){const u=new URL(location.href);u.searchParams.set('month',$('month').value);u.searchParams.set('window',$('window').value);history.replaceState(null,'',SiteUI.contextURL(u.pathname+u.search));}
 function number(v,d=1){return M.finite(v)?M.display(v,d):'—';}
 function rate(v){return M.rate(v);}
 function textLines(ctx,text,width,size){ctx.font=size+'px "Microsoft YaHei",sans-serif';const out=[];for(const part of String(text).split('\n')){let line='';for(const ch of part){if(ctx.measureText(line+ch).width>width&&line){out.push(line);line=ch;}else line+=ch;}out.push(line);}return out;}

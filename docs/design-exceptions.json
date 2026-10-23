@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "retained": [],
+  "business": [
+    {
+      "scope": "SVG/canvas geometry and export resolution",
+      "reason": "Data-driven coordinates, sizes and dense label layout remain computed."
+    },
+    {
+      "scope": "product canvas text and legal statements",
+      "reason": "Preserve published research hierarchy and original content."
+    },
+    {
+      "scope": "site-polish.css page layer",
+      "reason": "Existing evidence tables, calendar, reading and embedded layout only. No shared component paint."
+    },
+    {
+      "scope": "macro.css page layer",
+      "reason": "Topic grouping and workspace; fixed KPI slots now belong to site.css."
+    },
+    {
+      "scope": "six compatibility entries",
+      "reason": "Retain old URLs, parameters and redirects without restoring retired navigation."
+    }
+  ]
+}

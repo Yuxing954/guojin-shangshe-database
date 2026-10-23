@@ -1,2 +1,6 @@
+@layer page {
 .monthly-product .monthly-sources{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:13px;margin:12px 0;max-height:110px;overflow:auto}.monthly-product #status.error{color:#b13131}.monthly-product #export:disabled{opacity:.5;cursor:default}.monthly-product textarea{min-height:100px}.monthly-product .stage{min-height:120px}.monthly-product canvas{width:100%;height:auto}.monthly-product select{min-width:120px}@media(max-width:760px){.monthly-product .row{gap:10px}.monthly-product canvas{min-width:760px}}
-.monthly-tooltip{position:fixed;z-index:1000;pointer-events:none;background:#18334d;color:white;border-radius:8px;padding:10px 14px;font:13px/1.7 "Microsoft YaHei",sans-serif;white-space:pre-line;max-width:220px}.monthly-tooltip[hidden]{display:none!important}body.capture .monthly-tooltip{display:none!important}
+.monthly-tooltip{position:fixed;z-index:1000;pointer-events:none;background:#18334d;color:white;border-radius:8px;padding:10px 14px;font:13px/1.7 "Microsoft YaHei",sans-serif;white-space:pre-line;max-width:220px}.monthly-tooltip[hidden]{display:none!important}body.capture .monthly-tooltip{display:none}
+
+
+}

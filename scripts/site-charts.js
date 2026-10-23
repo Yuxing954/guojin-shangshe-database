@@ -5,40 +5,10 @@ if(typeof module==='object'&&module.exports){module.exports={niceScale,axisForma
 const states=new Map(),NS='http://www.w3.org/2000/svg';let pinned=null,queued=false;
 function groups(points){
   const map=new Map();
-  points.forEach((p,index)=>{if(!Number.isFinite(p.x)||!p.text)return;const key=p.x.toFixed(3);if(!map.has(key))map.set(key,{x:p.x,y:p.y,indices:[],texts:[]});const g=map.get(key);g.indices.push(index);if(!g.texts.includes(p.text))g.texts.push(p.text);});
+  points.forEach((p,index)=>{if(!Number.isFinite(p.x)||!p.text)return;const key=p.x.toFixed(3);if(!map.has(key))map.set(key,{x:p.x,y:p.y,indices:[],texts:[]});const g=map.get(key);if(p.period)g.period=p.period;g.indices.push(index);if(!g.texts.includes(p.text))g.texts.push(p.text);});
   return [...map.values()].sort((a,b)=>a.x-b.x);
 }
-// Apply the shared design to the legacy SVG renderers as well as paired charts.
-function themeChart(svg){
-  if(svg.classList.contains('quotes-chart'))return; // Market candle colors encode price direction.
-  svg.dataset.siteChartTheme='blue-gold';
-  if(svg.classList.contains('site-paired-chart'))return;
-  const ink=['#2167a0','#ac863d','#668397','#538db5','#8d7852','#476777'];
-  const pale=['#abcfe8','#e6d4ab','#c3d0d9','#bfdcec','#d8ccb5','#acc2ce'];
-  const colorMap=new Map(),key=(node,prop)=>getComputedStyle(node)[prop];
-  const colorIndex=color=>{if(!colorMap.has(color))colorMap.set(color,colorMap.size%ink.length);return colorMap.get(color);};
-  const lines=[...svg.querySelectorAll('polyline,path')].filter(n=>!n.closest('defs')&&!n.classList.contains('site-axis-rule')&&key(n,'fill')==='none'&&key(n,'stroke')!=='none');
-  const dots=[...svg.querySelectorAll('circle')].filter(n=>!n.closest('defs'));
-  const bars=[...svg.querySelectorAll('rect')].filter(n=>!n.closest('defs')&&!n.classList.contains('combo-hit')&&key(n,'fill')!=='none'&&key(n,'fill')!=='transparent');
-  const originalLines=lines.map(n=>[n,colorIndex(key(n,'stroke'))]);
-  const originalDots=dots.map(n=>[n,colorIndex(key(n,'stroke')==='none'?key(n,'fill'):key(n,'stroke'))]);
-  const originalBars=bars.map(n=>[n,colorIndex(key(n,'fill'))]);
-  originalLines.forEach(([n,i])=>{n.style.setProperty('stroke',ink[i],'important');n.style.strokeWidth='2.6';n.style.strokeLinejoin='round';n.style.strokeLinecap='round';});
-  originalDots.forEach(([n,i])=>{n.style.setProperty('fill','white','important');n.style.setProperty('stroke',ink[i],'important');n.style.strokeWidth='1.8';});
-  originalBars.forEach(([n,i])=>{n.style.setProperty('fill',pale[i],'important');n.style.opacity='1';});
-  // Some legacy renderers draw only paths. Add hollow markers on their real vertices.
-  if(!dots.length){
-    const group=document.createElementNS(NS,'g');group.classList.add('site-legacy-markers');group.setAttribute('aria-hidden','true');
-    originalLines.forEach(([n,i])=>{
-      const values=n.tagName==='polyline'?(n.getAttribute('points')||'').match(/-?\d*\.?\d+(?:e[-+]?\d+)?/gi):null;
-      const pairs=values?Array.from({length:Math.floor(values.length/2)},(_,j)=>[+values[2*j],+values[2*j+1]]):[...(n.getAttribute('d')||'').matchAll(/[ML]\s*(-?\d*\.?\d+(?:e[-+]?\d+)?)[,\s]+(-?\d*\.?\d+(?:e[-+]?\d+)?)/gi)].map(m=>[+m[1],+m[2]]);
-      const stride=Math.max(1,Math.ceil(pairs.length/60));pairs.forEach(([x,y],j)=>{if(j%stride&&j!==pairs.length-1)return;const dot=document.createElementNS(NS,'circle');for(const [k,v]of Object.entries({cx:x,cy:y,r:3,fill:'white',stroke:ink[i],'stroke-width':1.8}))dot.setAttribute(k,v);group.append(dot);});
-    });if(group.childNodes.length)svg.append(group);
-  }
-  const host=svg.parentElement;
-  host.querySelectorAll('.hd-legend i,.gj-legend i,.legend i').forEach(n=>{const color=key(n,'backgroundColor');if(colorMap.has(color))n.style.backgroundColor=ink[colorMap.get(color)];});
-}
-
+// Renderers own series identity; this layer never recolors SVG nodes by DOM order.
 // Keep dense legacy plots readable on touch screens without widening the page.
 function mobileChart(svg){
   if(svg.classList.contains('site-paired-chart')||!svg.querySelector('text'))return;
@@ -140,9 +110,9 @@ function attach(container,points,options={}){
   if(svg.isConnected===false){states.get(svg)?.destroy();return;}
   states.get(svg)?.destroy();
   svg.querySelector('.site-legacy-markers')?.remove();
-  const originalPoints=points,config=valuesControl(svg);points=prepareValues(svg,points,config);
-  themeChart(svg);
-  mobileChart(svg);
+  const originalPoints=points,config=options.valuesControl===false?null:valuesControl(svg);points=prepareValues(svg,points,config);
+  svg.dataset.siteChartTheme='blue-gold';
+  if(options.scroll!==false)mobileChart(svg);
   const data=groups(points);if(!data.length)return;
   const host=svg.parentElement,abort=new AbortController(),listen=(node,event,fn)=>node.addEventListener(event,fn,{signal:abort.signal});
   svg.classList.add('site-interactive-chart');svg.setAttribute('tabindex','0');svg.setAttribute('data-chart-ready','true');
@@ -156,12 +126,13 @@ function attach(container,points,options={}){
     tip.style.left=Math.max(8,Math.min(tx+16,innerWidth-tip.offsetWidth-8))+'px';
     tip.style.top=Math.max(8,Math.min(ty+16,innerHeight-tip.offsetHeight-8))+'px';
   }
-  function show(i,event){
+  function show(i,event,linked=false){
     index=Math.max(0,Math.min(data.length-1,i));const g=data[index];
     tip.textContent=g.texts.join('\n');
     tip.hidden=false;tip.dataset.pinned=String(isPinned);
     line.setAttribute('x1',g.x);line.setAttribute('x2',g.x);line.style.display=options.crosshair===false?'none':'block';
     options.onSelect?.(g.indices[0]);place(g,event);
+    if(!linked&&window.ResearchWorkspace?.sync&&g.period&&points.paired?.options.syncGroup){for(const other of states.values())if(other!==state&&other.syncGroup===points.paired.options.syncGroup)other.syncPeriod(g.period);}
   }
   function hide(force=false){if(isPinned&&!force)return;isPinned=false;if(pinned===state)pinned=null;tip.hidden=true;line.style.display='none';options.onClear?.();}
   function nearest(event){
@@ -169,7 +140,7 @@ function attach(container,points,options={}){
     const x=p.matrixTransform(matrix.inverse()).x;
     return data.reduce((a,g,i)=>Math.abs(g.x-x)<Math.abs(data[a].x-x)?i:a,0);
   }
-  const state={svg,hide,valueScope:config?.scope,refreshValues(){attach(svg,originalPoints,options);},refresh(){if(tip.hidden)return;const b=svg.getBoundingClientRect();if(b.bottom<0||b.top>innerHeight)hide(true);else place(data[index]);},destroy(){hide(true);abort.abort();tip.remove();line.remove();states.delete(svg);}};states.set(svg,state);
+  const state={svg,hide,syncGroup:points.paired?.options.syncGroup,syncPeriod(period){const i=data.findIndex(g=>window.ResearchWorkspaceModel?.samePeriod(g.period,period));if(i<0){hide(true);return;}show(i,null,true);},valueScope:config?.scope,refreshValues(){attach(svg,originalPoints,options);},refresh(){if(tip.hidden)return;const b=svg.getBoundingClientRect();if(b.bottom<0||b.top>innerHeight)hide(true);else place(data[index]);},destroy(){hide(true);abort.abort();tip.remove();line.remove();states.delete(svg);}};states.set(svg,state);
   listen(svg,'pointermove',e=>{if(e.pointerType==='touch')return;if(!isPinned)show(nearest(e),e);});
   listen(svg,'pointerleave',()=>hide());
   listen(svg,'click',e=>{const next=nearest(e);if(isPinned&&next===index){hide(true);return;}pinned?.hide(true);isPinned=true;pinned=state;show(next,e);});
@@ -206,12 +177,12 @@ function scan(){
     if(!node.dataset.chartTooltip)node.dataset.chartTooltip=node.getAttribute('aria-label')||node.getAttribute('title')||node.textContent.trim();
     if(!node.closest('button,a'))node.tabIndex=0;
   });
-  document.querySelectorAll('svg').forEach(svg=>{if(states.has(svg))return;const points=nativePoints(svg);if(points.length)attach(svg,points);});
+  document.querySelectorAll('svg:not([aria-hidden=true]):not([data-chart-static])').forEach(svg=>{if(states.has(svg))return;const points=nativePoints(svg);if(points.length)attach(svg,points);});
 }
 function schedule(){if(!queued){queued=true;requestAnimationFrame(scan);}}
 function canvas(Chart){
   if(!Chart||Chart.registry.plugins.get('site-chart-interaction'))return;
-  Chart.defaults.font.family='Inter, "Microsoft YaHei", sans-serif';Chart.defaults.font.size=12;
+  Chart.defaults.font.family=getComputedStyle(document.body).fontFamily;Chart.defaults.font.size=12;
   Chart.register({id:'site-chart-interaction',beforeInit(chart){
     chart.options.interaction={...chart.options.interaction,mode:'index',intersect:false};
     chart.options.events=['mousemove','mouseout','click','touchstart','touchmove'];
@@ -255,11 +226,11 @@ function axisFormat(value,step=1,extent=Math.abs(value)){
 }
 
 function paired(rows,opt={}){
-  const periodText=value=>opt.periodFormat==='week-short'?String(value??'').replace(/\b\d{2}(\d{2}W\d{2})\b/g,'$1'):value;
+  const periodText=value=>value; // Tooltip and exports preserve the original period.
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const fmt=v=>Number.isFinite(v)?new Intl.NumberFormat('zh-CN',{minimumFractionDigits:opt.minimumFractionDigits??0,maximumFractionDigits:opt.precision??2}).format(v):'—';
   const mode=opt.mode||'combo',showValue=mode!=='change',showChange=mode!=='value',unit=opt.unit||'',changeUnit=opt.changeUnit||'%';
-  let normalized=rows.map((r,i)=>({...r,x:Number.isFinite(r.x)?r.x:i,values:r.values||[{name:opt.name||'数值',value:r.value,change:r.change,color:'#2167a0'}]}));
+  let normalized=rows.map((r,i)=>({...r,x:Number.isFinite(r.x)?r.x:i,values:r.values||[{name:opt.name||'数值',value:r.value,change:r.change}]}));
   if(opt.trimEmpty){
     const active=r=>r.values.some(s=>showValue&&Number.isFinite(s.value)||showChange&&Number.isFinite(s.change));
     const first=normalized.findIndex(active);let last=normalized.length-1;
@@ -278,9 +249,9 @@ function paired(rows,opt={}){
   const margin=width/(unique.length+1)/2,px=x=>L+margin+(x-xmin)/(xmax-xmin||1)*(width-margin*2);
   function domain(key){return niceScale(normalized.flatMap(r=>r.values.map(s=>s[key])),{zero:true,intervals:spacious?4:5});}
   const valueScale=domain('value'),changeScale=domain('change'),vd=[valueScale.min,valueScale.max],cd=[changeScale.min,changeScale.max],py=(v,d)=>bottom-(v-d[0])/(d[1]-d[0])*(bottom-T);
-  const palette=['#2167a0','#ac863d','#668397','#538db5','#8d7852','#476777'],barPalette=['#abcfe8','#e6d4ab','#c3d0d9','#bfdcec','#d8ccb5','#acc2ce'],colors=Array.from({length:Math.max(...normalized.map(r=>r.values.length))},(_,i)=>(opt.colors||palette)[i%(opt.colors||palette).length]);
+  const palette=SiteUI.colors,series=normalized.find(r=>r.values.length===Math.max(...normalized.map(x=>x.values.length))).values,colors=series.map((s,i)=>opt.seriesColors?.[s.id||s.name]||SiteUI.seriesColor(s.id||s.name||opt.name||'value')),barPalette=colors;
   const periodCount=Math.min(normalized.length,Math.max(2,Math.min(6,Math.floor((width-margin*2)/150)+1))),periodTicks=new Set(Array.from({length:periodCount},(_,i)=>Math.round(i*(normalized.length-1)/Math.max(1,periodCount-1))));
-  let svg='<svg class="site-paired-chart"'+(spacious?' data-chart-layout="spacious"':'')+' style="height:auto!important;min-height:0" viewBox="0 0 '+w+' '+h+'" role="img" aria-label="'+esc(opt.name||'历史趋势')+'"><title>'+esc(opt.name||'历史趋势')+'</title>';
+  let svg='<svg class="site-paired-chart"'+(spacious?' data-chart-layout="spacious"':'')+' style="height:auto;min-height:0" viewBox="0 0 '+w+' '+h+'" role="img" aria-label="'+esc(opt.name||'历史趋势')+'"><title>'+esc(opt.name||'历史趋势')+'</title>';
   const primary=showValue?vd:cd,primaryScale=showValue?valueScale:changeScale;
   svg+='<text class="site-axis-label" x="'+L+'" y="'+(spacious?24:20)+'">'+esc(showValue?'数值（'+unit+'）':(opt.changeLabel||'同比')+'（'+changeUnit+'）')+'</text>';
   if(showValue&&showChange)svg+='<text class="site-axis-label site-change-axis" x="'+(w-R)+'" y="'+(spacious?(compact?48:24):20)+'" text-anchor="end">'+esc((opt.changeLabel||'同比')+'（'+changeUnit+'）')+'</text>';
@@ -291,7 +262,7 @@ function paired(rows,opt={}){
   const points=[];
   normalized.forEach((r,ri)=>{
     const text=periodText(r.period)+'\n'+r.values.map(s=>(seriesCount>1?s.name+'：':'')+(showValue?fmt(s.value)+(Number.isFinite(s.value)?' '+unit:''):'')+(showValue&&showChange?'  |  ':'')+(showChange?(opt.changeLabel||'同比')+' '+(Number.isFinite(s.change)?new Intl.NumberFormat('zh-CN',{minimumFractionDigits:opt.changePrecision??0,maximumFractionDigits:opt.changePrecision??opt.precision??2}).format(s.change):'—')+(Number.isFinite(s.change)?' '+changeUnit:''):'')).join('\n');
-    points.push({x:px(r.x),text,labels:r.values.flatMap((s,si)=>[
+    points.push({period:r.period,x:px(r.x),text,labels:r.values.flatMap((s,si)=>[
       ...(showValue&&Number.isFinite(s.value)?[{x:px(r.x)+(opt.valueStyle==='line'?0:(si-(seriesCount-1)/2)*barWidth),y:py(s.value,vd),text:fmt(s.value),kind:'value',color:colors[si%colors.length]}]:[]),
       ...(showChange&&Number.isFinite(s.change)?[{x:px(r.x),y:py(s.change,cd),text:(s.change>0?'+':'')+new Intl.NumberFormat('zh-CN',{minimumFractionDigits:opt.changePrecision??1,maximumFractionDigits:opt.changePrecision??1}).format(s.change)+(changeUnit==='%'?'%':changeUnit==='百分点'?'pct':changeUnit),kind:'change',color:colors[si%colors.length]}]:[])
     ])});
@@ -309,7 +280,7 @@ function paired(rows,opt={}){
   svg+='</svg>';
   const legend=seriesCount>1?normalized.find(r=>r.values.length===seriesCount).values.map((s,i)=>'<span><i style="background:'+colors[i%colors.length]+'"></i>'+esc(s.name)+'</span>').join(''):'';
   points.paired={rows,options:opt,showValue:!!opt.valueLabels,showChange:!!opt.yoyLabels,plot:spacious?{left:L,right:R,top:T,bottom}:null};
-  return {html:svg+'<div class="site-chart-legend">'+(showValue&&(opt.legend!=='series'||showChange)?'<span><i class="'+(opt.valueStyle==='line'?'site-line-key':'site-bar-key')+'"></i>数值 · '+esc(unit)+'</span>':'')+(showChange&&(opt.legend!=='series'||showValue)?'<span><i class="site-line-key"'+(opt.valueStyle==='line'&&showValue?' style="background:repeating-linear-gradient(to right,#2167a0 0 5px,transparent 5px 9px)"':'')+'></i>'+esc(opt.changeLabel||'同比')+' · '+esc(changeUnit)+'</span>':'')+legend+'</div>',points};
+  return {html:svg+'<div class="site-chart-legend" style="--series-color:'+colors[0]+'">'+(showValue&&(opt.legend!=='series'||showChange)?'<span><i class="'+(opt.valueStyle==='line'?'site-line-key':'site-bar-key')+'"></i>数值 · '+esc(unit)+'</span>':'')+(showChange&&(opt.legend!=='series'||showValue)?'<span><i class="site-line-key"'+(opt.valueStyle==='line'&&showValue?' style="background:repeating-linear-gradient(to right,var(--series-color) 0 5px,transparent 5px 9px)"':'')+'></i>'+esc(opt.changeLabel||'同比')+' · '+esc(changeUnit)+'</span>':'')+legend+'</div>',points};
 }
 const pairedObservers=new WeakMap();
 function drawPaired(host,rows,opt={}){
@@ -318,6 +289,7 @@ function drawPaired(host,rows,opt={}){
   const result=paired(rows,{...opt,width});
   host.querySelectorAll('svg').forEach(svg=>states.get(svg)?.destroy());
   host.innerHTML=result.html;attach(host,result.points);
+  host.dataset.researchChart="true";host._researchChart={rows,options:opt};document.dispatchEvent(new CustomEvent("research:chart",{detail:{host,rows,options:opt}}));
   pairedObservers.get(host)?.disconnect();
   if(typeof ResizeObserver!=='undefined'){let last=host.clientWidth;const observer=new ResizeObserver(()=>{if(host.clientWidth>0&&Math.abs(host.clientWidth-last)>2){observer.disconnect();drawPaired(host,rows,opt);}});observer.observe(host);pairedObservers.set(host,observer);}
   return result;
@@ -331,6 +303,7 @@ addEventListener('resize',()=>{for(const state of states.values())state.hide(tru
 function start(){scan();new MutationObserver(schedule).observe(document.body,{childList:true,subtree:true});}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
 })(typeof window==='object'?window:{});
+
 
 
 
