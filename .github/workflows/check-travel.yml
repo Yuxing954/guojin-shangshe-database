@@ -1,9 +1,9 @@
 name: Check tourism dashboard
 on:
   push:
-    paths: ['travel-dashboard.html', 'scripts/travel-*', 'data/tourism/dashboard.json', 'data/tourism/inbound-official.json', 'data/tourism/domestic-official.json', 'scripts/update_domestic_tourism.py', 'scripts/update_tourism_history.py', 'scripts/import_tourism_workbooks.py', 'tests/travel*', '.github/workflows/check-travel.yml']
+    paths: ['travel-dashboard.html', 'scripts/travel-*', 'data/tourism/dashboard.json', 'data/tourism/inbound-official.json', 'data/tourism/domestic-official.json', 'data/tourism/scenic-official.json', 'scripts/update_scenic_tourism.py', 'scripts/update_domestic_tourism.py', 'scripts/update_tourism_history.py', 'scripts/import_tourism_workbooks.py', 'tests/travel*', '.github/workflows/check-travel.yml']
   pull_request:
-    paths: ['travel-dashboard.html', 'scripts/travel-*', 'data/tourism/dashboard.json', 'data/tourism/inbound-official.json', 'data/tourism/domestic-official.json', 'scripts/update_domestic_tourism.py', 'scripts/update_tourism_history.py', 'scripts/import_tourism_workbooks.py', 'tests/travel*', '.github/workflows/check-travel.yml']
+    paths: ['travel-dashboard.html', 'scripts/travel-*', 'data/tourism/dashboard.json', 'data/tourism/inbound-official.json', 'data/tourism/domestic-official.json', 'data/tourism/scenic-official.json', 'scripts/update_scenic_tourism.py', 'scripts/update_domestic_tourism.py', 'scripts/update_tourism_history.py', 'scripts/import_tourism_workbooks.py', 'tests/travel*', '.github/workflows/check-travel.yml']
 jobs:
   tourism:
     runs-on: ubuntu-latest

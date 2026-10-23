@@ -1,0 +1,1992 @@
+{
+  "checkedAt": "2026-10-23",
+  "sources": [
+    {
+      "id": "changbai-2026-08",
+      "name": "2026年8月长白山主景区旅游情况",
+      "publisher": "长白山管委会经发局统计中心",
+      "quality": "官方原始披露",
+      "publishedAt": "2026-09-02",
+      "url": "https://www.changbaishan.gov.cn/shjj/tjxx/202609/t20260902_271680.html",
+      "checkedAt": "2026-10-23",
+      "sha256": "976d00efcb93afad6bea7ae3a90833229d0fe1552940a159f23a2e98196f05f9"
+    },
+    {
+      "id": "changbai-2026-09",
+      "name": "2026年9月长白山主景区旅游情况",
+      "publisher": "长白山管委会经发局统计中心",
+      "quality": "官方原始披露",
+      "publishedAt": "2026-10-08",
+      "url": "https://www.changbaishan.gov.cn/shjj/tjxx/202610/t20261008_271986.html",
+      "checkedAt": "2026-10-23",
+      "sha256": "dd9282aaa698c2698f380faf081f16979cebc4fbe021c4f26ed757d26e4177dd"
+    },
+    {
+      "id": "jiuzhai-official",
+      "name": "九寨沟管理局 · 每日进沟人数",
+      "publisher": "九寨沟风景名胜区管理局",
+      "quality": "官方连续披露",
+      "url": "https://www.jiuzhai.com/news/number-of-tourists?start=0",
+      "checkedAt": "2026-10-23",
+      "frequency": "day"
+    },
+    {
+      "id": "oct-2023-01",
+      "name": "2023年1月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2023-02-15",
+      "url": "https://static.cninfo.com.cn/finalpage/2023-02-15/1215869096.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "94d459a3ad43b339ea86c4c3afa0ed03a2c852336a6350d4661e0ff3d998ae3e"
+    },
+    {
+      "id": "oct-2023-02",
+      "name": "2023年2月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2023-03-17",
+      "url": "https://static.cninfo.com.cn/finalpage/2023-03-17/1216136641.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "9260df2ee9c234ee2568431c8df2bbf59f0bcf1facc352077c87b305b3de843e"
+    },
+    {
+      "id": "oct-2023-03",
+      "name": "2023年3月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2023-04-20",
+      "url": "https://static.cninfo.com.cn/finalpage/2023-04-20/1216469619.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "9d39ddf3e8cf01272ce4c629a7640e43c412f06b1afceedd1f437a9547eddd75"
+    },
+    {
+      "id": "oct-2023-04",
+      "name": "2023年4月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2023-05-17",
+      "url": "https://static.cninfo.com.cn/finalpage/2023-05-17/1216830920.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "3484deb4afe6cdc753f83663c22683fbbad9806bbfdf3bb0e36a91095d4c5d1c"
+    },
+    {
+      "id": "oct-2023-05",
+      "name": "2023年5月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2023-06-19",
+      "url": "https://static.cninfo.com.cn/finalpage/2023-06-19/1217095421.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "03591d20a2f3534077507d0e98b3bb22485b13ab16a3456afe09d3c77a91edfb"
+    },
+    {
+      "id": "oct-2023-06",
+      "name": "2023年6月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2023-07-19",
+      "url": "https://static.cninfo.com.cn/finalpage/2023-07-19/1217321671.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "5572a30c2fc0aa38f165fa65339b22a38ef63432746691ce37a0c63038e79891"
+    },
+    {
+      "id": "oct-2023-07",
+      "name": "2023年7月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2023-08-19",
+      "url": "https://static.cninfo.com.cn/finalpage/2023-08-19/1217575585.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "978130054f3447d10ce25ffa23784bddf67023a23c3864d650987ee3912eaa37"
+    },
+    {
+      "id": "oct-2023-08",
+      "name": "2023年8月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2023-09-19",
+      "url": "https://static.cninfo.com.cn/finalpage/2023-09-19/1217884909.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "38c1eed4a63814e6688f15855c15f727382e215241bc5ff6cb4ec88afdd8ffb3"
+    },
+    {
+      "id": "oct-2023-09",
+      "name": "2023年9月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2023-10-16",
+      "url": "https://static.cninfo.com.cn/finalpage/2023-10-16/1218046261.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "059bb7646e8eda44a1cf1c58cc24e310bf6d6dd93efec3d128aec8b3ae10efc6"
+    },
+    {
+      "id": "oct-2023-10",
+      "name": "2023年10月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2023-11-16",
+      "url": "https://static.cninfo.com.cn/finalpage/2023-11-16/1218359591.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "2af6c0c9506497d7ca2e2dc796b7c794fcf51b5a6d29db6ba5f99d0b5e6c7f69"
+    },
+    {
+      "id": "oct-2023-11",
+      "name": "2023年11月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2023-12-15",
+      "url": "https://static.cninfo.com.cn/finalpage/2023-12-15/1218630251.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "be195d85a51559eaf06ee306664b0ce9709a2321770c3f904a5b87e922f6c8c2"
+    },
+    {
+      "id": "oct-2023-12",
+      "name": "2023年12月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2024-01-18",
+      "url": "https://static.cninfo.com.cn/finalpage/2024-01-18/1218940646.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "4a9e42acbecee1f15df0094c3751db73f8c0d2be489ba0f750b3bcfcc1dc3934"
+    },
+    {
+      "id": "oct-2024-01",
+      "name": "2024年1月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2024-02-27",
+      "url": "https://static.cninfo.com.cn/finalpage/2024-02-27/1219186427.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "768bd6289be6d7b02a982f19372691ecfd7b7621ad8125719cb879669debad10"
+    },
+    {
+      "id": "oct-2024-02",
+      "name": "2024年2月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2024-03-21",
+      "url": "https://static.cninfo.com.cn/finalpage/2024-03-21/1219357409.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "cf1539e0589cd293da838ce8b8c6f0214b4c808b2b0f5a1bf3390e5e0e89d1db"
+    },
+    {
+      "id": "oct-2024-03",
+      "name": "2024年3月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2024-04-17",
+      "url": "https://static.cninfo.com.cn/finalpage/2024-04-17/1219637546.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "e6dca140dd0bed8af7eecb1ba288b2e93d4fd8eeef26de16e87a4eecf422f6c5"
+    },
+    {
+      "id": "oct-2024-04",
+      "name": "2024年4月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2024-05-17",
+      "url": "https://static.cninfo.com.cn/finalpage/2024-05-17/1220083488.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "90283e04f9801067fbfed51bb870ea0c0ba037d1ea7feaf26a430b1e4bff4bc2"
+    },
+    {
+      "id": "oct-2024-05",
+      "name": "2024年5月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2024-06-19",
+      "url": "https://static.cninfo.com.cn/finalpage/2024-06-19/1220389276.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "db1e7835363b39ed405d8d417101642ad441e2176d937c858efcd95334a333e7"
+    },
+    {
+      "id": "oct-2024-06",
+      "name": "2024年6月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2024-07-17",
+      "url": "https://static.cninfo.com.cn/finalpage/2024-07-17/1220652508.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "a7386ef98f0136c6c3d136c7a597ea2d4dc3d9ab573950b8f61c0192a04852b9"
+    },
+    {
+      "id": "oct-2024-07",
+      "name": "2024年7月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2024-08-17",
+      "url": "https://static.cninfo.com.cn/finalpage/2024-08-17/1220891091.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "5cb23f6688ff99c6a217c1ce502527caf4051d727233c9f038ff1810e72c57c1"
+    },
+    {
+      "id": "oct-2024-08",
+      "name": "2024年8月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2024-09-14",
+      "url": "https://static.cninfo.com.cn/finalpage/2024-09-14/1221220243.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "777efe8003341cd67703d9bf5026197523c539c1698778f4da8b92de50055f8b"
+    },
+    {
+      "id": "oct-2024-09",
+      "name": "2024年9月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2024-10-15",
+      "url": "https://static.cninfo.com.cn/finalpage/2024-10-15/1221392906.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "3620a3a72a3e4754733ef070e5d698ec227f52c2c0d08f5e2ea4e11384f773fe"
+    },
+    {
+      "id": "oct-2024-10",
+      "name": "2024年10月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2024-11-15",
+      "url": "https://static.cninfo.com.cn/finalpage/2024-11-15/1221726514.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "b3e01b5764c6c2fb3936c8144d0ca17b520ef85ab493f5c8ee3491d027a71e27"
+    },
+    {
+      "id": "oct-2024-11",
+      "name": "2024年11月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2024-12-14",
+      "url": "https://static.cninfo.com.cn/finalpage/2024-12-14/1222018344.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "cba3c61173c16ae8fce908d4c092dbba0ecb3286fc0dfb246ee91948865c6e97"
+    },
+    {
+      "id": "oct-2024-12",
+      "name": "2024年12月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2025-01-16",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-01-16/1222343824.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "8526fcab619f70f59a8084ec760eb30b6bf05cf68338a99eeb281d095c9db102"
+    },
+    {
+      "id": "oct-2025-01",
+      "name": "2025年1月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2025-02-17",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-02-17/1222556869.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "15f7055ea54bce8c0e0896508a076d9a7c599fb2d233b2d7cbbaf3afe7ffecb3"
+    },
+    {
+      "id": "oct-2025-02",
+      "name": "2025年2月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2025-03-19",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-03-19/1222833470.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "80be5c321993260738bdc3af7cc1ee7bed32e444c2d28d30560cb8bd98ad1558"
+    },
+    {
+      "id": "oct-2025-03",
+      "name": "2025年3月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2025-04-16",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-04-16/1223099783.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "af19a58c5957a176d6cdf86a83f51cd916ad58ddfdf1e1300ff8aebcdac07455"
+    },
+    {
+      "id": "oct-2025-04",
+      "name": "2025年4月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2025-05-15",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-05-15/1223543163.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "dd80f3f8ca1e2e7ac6a3880af8d41610111788dc2277a26d23f876195a85a917"
+    },
+    {
+      "id": "oct-2025-05",
+      "name": "2025年5月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2025-06-14",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-06-14/1223877120.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "bc974e58944b6acab239b453389a4e0baea2dacadd1a2710bc350ad3967e922d"
+    },
+    {
+      "id": "oct-2025-06",
+      "name": "2025年6月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2025-07-16",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-07-16/1224177058.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "45ec512776f08a4dfe82b400c4e031b73e07b72218bd660e890feca682a9e8a7"
+    },
+    {
+      "id": "oct-2025-07",
+      "name": "2025年7月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2025-08-16",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-08-16/1224499337.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "89bf2263314a0e207fb336322dd95b2e264c9eb90c416030b905ba7f00924c51"
+    },
+    {
+      "id": "oct-2025-08",
+      "name": "2025年8月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2025-09-16",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-09-16/1224660992.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "3d8d1f3c561d2c3b424f7e96ae0c860a98c0c26676a58f8f40cde6c7deb9b60b"
+    },
+    {
+      "id": "oct-2025-09",
+      "name": "2025年9月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2025-10-15",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-10-15/1224712125.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "f4466b28ed89fd4ccf4172ec9a563e0883785a7056063502b0aed2b02dcfe3a7"
+    },
+    {
+      "id": "oct-2025-10",
+      "name": "2025年10月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2025-11-14",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-11-14/1224804246.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "e2b6b55fba681ff76cc9b5623b28384909bcbd4fea8f8983ff57ac5d05afc4fc"
+    },
+    {
+      "id": "oct-2025-11",
+      "name": "2025年11月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2025-12-15",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-12-15/1224876710.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "4d3131148189c46fc617b6ecedefb812132a6959127b683a1e9b589733af7ddf"
+    },
+    {
+      "id": "oct-2025-12",
+      "name": "2025年12月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2026-01-15",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-01-15/1224933604.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "07231bd0f301bb24ab6885363860de2fa8405b789ac31588d977c2b8a319cd29"
+    },
+    {
+      "id": "oct-2026-01",
+      "name": "2026年1月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2026-02-14",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-02-14/1224981968.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "a4725098a4914ea166875a943c5616f59e4efe883452913c3304d06fb7dc678a"
+    },
+    {
+      "id": "oct-2026-02",
+      "name": "2026年2月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2026-03-14",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-03-14/1225008799.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "83da61c7e919b0bac74cd438708d1538401925e049e2be3e8ca1195e84b46b65"
+    },
+    {
+      "id": "oct-2026-03",
+      "name": "2026年3月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2026-04-15",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-04-15/1225105024.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "bfccd305441345cbba118e26cf159376642ea650f6c56223e04e22ab6f7b51b9"
+    },
+    {
+      "id": "oct-2026-04",
+      "name": "2026年4月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2026-05-15",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-05-15/1225306089.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "aae073b17bf0920d786c72bf1c91eea1756544ab777f823769586e129706ca9f"
+    },
+    {
+      "id": "oct-2026-05",
+      "name": "2026年5月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2026-06-15",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-06-15/1225370275.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "969faf7abb8cdcc23b746f616dfa61ad1aa61dfae35ca9dc8e4c2f846ac89f5e"
+    },
+    {
+      "id": "oct-2026-06",
+      "name": "2026年6月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2026-07-15",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-07-15/1225424386.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "d14d3eb6dec3bc50222d91ba5d2fdd202a91b4e8338b98bb3147b883d10e3cf9"
+    },
+    {
+      "id": "oct-2026-07",
+      "name": "2026年7月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2026-08-15",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-08-15/1225473331.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "4aeb4b1f0780eb4c639b84248ea2aab3a06337aca73d7a3077cd2e1b95b31174"
+    },
+    {
+      "id": "oct-2026-08",
+      "name": "2026年8月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2026-09-15",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-09-15/1225563403.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "46040062ba279a6002ab3360ac309fe730b393938482ad108c0c3c04ef2cd06f"
+    },
+    {
+      "id": "oct-2026-09",
+      "name": "2026年9月主要业务经营情况公告",
+      "publisher": "深圳华侨城股份有限公司",
+      "quality": "公司原始公告",
+      "publishedAt": "2026-10-15",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-10-15/1225605252.PDF",
+      "checkedAt": "2026-10-23",
+      "locator": "旅游综合业务情况",
+      "sha256": "56d664c1f5601f6c1b65832bbbbee8088c9c01bae9a3b0a9bd5aa0989cb94671"
+    }
+  ],
+  "changbai": [
+    {
+      "period": "2026-08",
+      "value": 99.34,
+      "sourceYoY": 20.4,
+      "sourceId": "changbai-2026-08",
+      "url": "https://www.changbaishan.gov.cn/shjj/tjxx/202609/t20260902_271680.html",
+      "locator": "正文：2026年8月当月接待游客，非年初累计"
+    },
+    {
+      "period": "2026-09",
+      "value": 50.12,
+      "sourceYoY": 28.7,
+      "sourceId": "changbai-2026-09",
+      "url": "https://www.changbaishan.gov.cn/shjj/tjxx/202610/t20261008_271986.html",
+      "locator": "正文：2026年9月当月接待游客，非年初累计"
+    }
+  ],
+  "jiuzhai": [
+    {
+      "period": "2026-10-23",
+      "value": 41000,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11473-2026-10-23-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=0",
+      "publishedAt": "2026-10-23",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-10-23"
+    },
+    {
+      "period": "2026-10-22",
+      "value": 39233,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11470-2026-10-22-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=0",
+      "publishedAt": "2026-10-22",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-10-22"
+    },
+    {
+      "period": "2026-10-21",
+      "value": 37427,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11469-2026-10-21-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=0",
+      "publishedAt": "2026-10-21",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-10-21"
+    },
+    {
+      "period": "2026-10-20",
+      "value": 36605,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11467-2026-10-20-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=0",
+      "publishedAt": "2026-10-20",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-10-20"
+    },
+    {
+      "period": "2026-10-19",
+      "value": 34683,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11463-2026-10-19-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=0",
+      "publishedAt": "2026-10-19",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-10-19"
+    },
+    {
+      "period": "2026-10-18",
+      "value": 30175,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11462-2026-10-18-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=0",
+      "publishedAt": "2026-10-18",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-10-18"
+    },
+    {
+      "period": "2026-10-17",
+      "value": 36184,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11461-2026-10-17-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=0",
+      "publishedAt": "2026-10-17",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-10-17"
+    },
+    {
+      "period": "2026-10-16",
+      "value": 28784,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11460-2026-10-16-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=0",
+      "publishedAt": "2026-10-16",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-10-16"
+    },
+    {
+      "period": "2026-10-15",
+      "value": 30098,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11457-2026-10-15-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=0",
+      "publishedAt": "2026-10-15",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-10-15"
+    },
+    {
+      "period": "2026-10-14",
+      "value": 33668,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11455-2026-10-14-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=0",
+      "publishedAt": "2026-10-14",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-10-14"
+    },
+    {
+      "period": "2026-10-13",
+      "value": 30486,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11454-2026-10-13-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=0",
+      "publishedAt": "2026-10-13",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-10-13"
+    },
+    {
+      "period": "2026-10-12",
+      "value": 27202,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11453-2026-10-12-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=0",
+      "publishedAt": "2026-10-12",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-10-12"
+    },
+    {
+      "period": "2026-10-11",
+      "value": 23517,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11452-2026-10-11-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=0",
+      "publishedAt": "2026-10-11",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-10-11"
+    },
+    {
+      "period": "2026-10-10",
+      "value": 20342,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11450-2026-10-10-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=0",
+      "publishedAt": "2026-10-10",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-10-10"
+    },
+    {
+      "period": "2026-10-09",
+      "value": 15005,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11449-2026-10-09-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=0",
+      "publishedAt": "2026-10-09",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-10-09"
+    },
+    {
+      "period": "2026-10-08",
+      "value": 16871,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11446-2026-10-08-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=0",
+      "publishedAt": "2026-10-08",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-10-08"
+    },
+    {
+      "period": "2026-10-07",
+      "value": 17910,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11445-2026-10-07-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=0",
+      "publishedAt": "2026-10-07",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-10-07"
+    },
+    {
+      "period": "2026-10-06",
+      "value": 41000,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11443-2026-10-06-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=0",
+      "publishedAt": "2026-10-06",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-10-06"
+    },
+    {
+      "period": "2026-10-05",
+      "value": 41000,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11442-2026-10-02-16-00-3",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=0",
+      "publishedAt": "2026-10-05",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-10-05"
+    },
+    {
+      "period": "2026-10-04",
+      "value": 41000,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11440-2026-10-02-16-00-2",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=0",
+      "publishedAt": "2026-10-04",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-10-04"
+    },
+    {
+      "period": "2026-10-03",
+      "value": 41000,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11439-2026-10-02-16-00-1",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=20",
+      "publishedAt": "2026-10-03",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-10-03"
+    },
+    {
+      "period": "2026-10-02",
+      "value": 41000,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11436-2026-10-02-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=20",
+      "publishedAt": "2026-10-02",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-10-02"
+    },
+    {
+      "period": "2026-10-01",
+      "value": 41000,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11435-2026-10-01-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=20",
+      "publishedAt": "2026-10-01",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-10-01"
+    },
+    {
+      "period": "2026-09-30",
+      "value": 26368,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11434-2026-09-30-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=20",
+      "publishedAt": "2026-09-30",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-09-30"
+    },
+    {
+      "period": "2026-09-29",
+      "value": 32641,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11428-2026-09-29-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=20",
+      "publishedAt": "2026-09-29",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-09-29"
+    },
+    {
+      "period": "2026-09-28",
+      "value": 30372,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11427-2026-09-28-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=20",
+      "publishedAt": "2026-09-28",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-09-28"
+    },
+    {
+      "period": "2026-09-27",
+      "value": 22695,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11426-2026-09-27-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=20",
+      "publishedAt": "2026-09-27",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-09-27"
+    },
+    {
+      "period": "2026-09-26",
+      "value": 34305,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11425-2026-09-26-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=20",
+      "publishedAt": "2026-09-26",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-09-26"
+    },
+    {
+      "period": "2026-09-25",
+      "value": 19079,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11424-2026-09-25-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=20",
+      "publishedAt": "2026-09-25",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-09-25"
+    },
+    {
+      "period": "2026-09-24",
+      "value": 13840,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11419-2026-09-24-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=20",
+      "publishedAt": "2026-09-24",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-09-24"
+    },
+    {
+      "period": "2026-09-23",
+      "value": 13448,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11417-2026-09-23-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=20",
+      "publishedAt": "2026-09-23",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-09-23"
+    },
+    {
+      "period": "2026-09-22",
+      "value": 14483,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11416-2026-09-22-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=20",
+      "publishedAt": "2026-09-22",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-09-22"
+    },
+    {
+      "period": "2026-09-21",
+      "value": 17422,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11415-2026-09-21-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=20",
+      "publishedAt": "2026-09-21",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-09-21"
+    },
+    {
+      "period": "2026-09-20",
+      "value": 16905,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11413-2026-09-20-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=20",
+      "publishedAt": "2026-09-20",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-09-20"
+    },
+    {
+      "period": "2026-09-19",
+      "value": 19887,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11412-2026-09-19-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=20",
+      "publishedAt": "2026-09-19",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-09-19"
+    },
+    {
+      "period": "2026-09-18",
+      "value": 20893,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11411-2026-09-18-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=20",
+      "publishedAt": "2026-09-18",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-09-18"
+    },
+    {
+      "period": "2026-09-17",
+      "value": 22365,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11408-2026-09-17-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=20",
+      "publishedAt": "2026-09-17",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-09-17"
+    },
+    {
+      "period": "2026-09-16",
+      "value": 19992,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11407-2026-09-16-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=20",
+      "publishedAt": "2026-09-16",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-09-16"
+    },
+    {
+      "period": "2026-09-15",
+      "value": 20274,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11404-2026-09-15-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=20",
+      "publishedAt": "2026-09-15",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-09-15"
+    },
+    {
+      "period": "2026-09-14",
+      "value": 19742,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11403-2026-09-14-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=20",
+      "publishedAt": "2026-09-14",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-09-14"
+    },
+    {
+      "period": "2026-09-13",
+      "value": 18599,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11402-2026-09-13-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=40",
+      "publishedAt": "2026-09-13",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-09-13"
+    },
+    {
+      "period": "2026-09-12",
+      "value": 19082,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11401-2026-09-12-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=40",
+      "publishedAt": "2026-09-12",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-09-12"
+    },
+    {
+      "period": "2026-09-11",
+      "value": 17375,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11398-2026-09-11-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=40",
+      "publishedAt": "2026-09-11",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-09-11"
+    },
+    {
+      "period": "2026-09-10",
+      "value": 17887,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11397-2026-09-10-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=40",
+      "publishedAt": "2026-09-10",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-09-10"
+    },
+    {
+      "period": "2026-09-09",
+      "value": 17021,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11393-2026-09-09-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=40",
+      "publishedAt": "2026-09-09",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-09-09"
+    },
+    {
+      "period": "2026-09-08",
+      "value": 17444,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11392-2026-09-08-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=40",
+      "publishedAt": "2026-09-08",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-09-08"
+    },
+    {
+      "period": "2026-09-07",
+      "value": 17340,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11389-2026-09-07-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=40",
+      "publishedAt": "2026-09-07",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-09-07"
+    },
+    {
+      "period": "2026-09-06",
+      "value": 18456,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11388-2026-09-06-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=40",
+      "publishedAt": "2026-09-06",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-09-06"
+    },
+    {
+      "period": "2026-09-05",
+      "value": 19816,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11387-2026-09-05-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=40",
+      "publishedAt": "2026-09-05",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-09-05"
+    },
+    {
+      "period": "2026-09-04",
+      "value": 17836,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11382-2026-09-04-16-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=40",
+      "publishedAt": "2026-09-04",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-09-04"
+    },
+    {
+      "period": "2026-09-03",
+      "value": 15976,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11380-2026-09-03-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=40",
+      "publishedAt": "2026-09-03",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-09-03"
+    },
+    {
+      "period": "2026-09-02",
+      "value": 14057,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11379-2026-09-02-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=40",
+      "publishedAt": "2026-09-02",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-09-02"
+    },
+    {
+      "period": "2026-09-01",
+      "value": 12840,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11377-2026-09-01-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=40",
+      "publishedAt": "2026-09-01",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-09-01"
+    },
+    {
+      "period": "2026-08-31",
+      "value": 12798,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11375-2026-08-31-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=40",
+      "publishedAt": "2026-08-31",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-08-31"
+    },
+    {
+      "period": "2026-08-30",
+      "value": 13818,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11374-2026-08-30-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=40",
+      "publishedAt": "2026-08-30",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-08-30"
+    },
+    {
+      "period": "2026-08-29",
+      "value": 14451,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11373-2026-08-29-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=40",
+      "publishedAt": "2026-08-29",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-08-29"
+    },
+    {
+      "period": "2026-08-28",
+      "value": 15667,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11371-2026-08-28-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=40",
+      "publishedAt": "2026-08-28",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-08-28"
+    },
+    {
+      "period": "2026-08-27",
+      "value": 19906,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11369-2026-08-27-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=40",
+      "publishedAt": "2026-08-27",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-08-27"
+    },
+    {
+      "period": "2026-08-26",
+      "value": 22033,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11368-2026-08-26-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=40",
+      "publishedAt": "2026-08-26",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-08-26"
+    },
+    {
+      "period": "2026-08-25",
+      "value": 25710,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11363-2026-08-25-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=40",
+      "publishedAt": "2026-08-25",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-08-25"
+    },
+    {
+      "period": "2026-08-24",
+      "value": 24763,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11360-2026-08-24-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=60",
+      "publishedAt": "2026-08-24",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-08-24"
+    },
+    {
+      "period": "2026-08-23",
+      "value": 25770,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11359-2026-08-23-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=60",
+      "publishedAt": "2026-08-23",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-08-23"
+    },
+    {
+      "period": "2026-08-22",
+      "value": 30049,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11358-2026-08-22-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=60",
+      "publishedAt": "2026-08-22",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-08-22"
+    },
+    {
+      "period": "2026-08-21",
+      "value": 32613,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11356-2026-08-21-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=60",
+      "publishedAt": "2026-08-21",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-08-21"
+    },
+    {
+      "period": "2026-08-20",
+      "value": 30673,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11355-2026-08-20-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=60",
+      "publishedAt": "2026-08-20",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-08-20"
+    },
+    {
+      "period": "2026-08-19",
+      "value": 31878,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11350-2026-08-19-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=60",
+      "publishedAt": "2026-08-19",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-08-19"
+    },
+    {
+      "period": "2026-08-18",
+      "value": 26449,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11348-2026-08-18-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=60",
+      "publishedAt": "2026-08-18",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-08-18"
+    },
+    {
+      "period": "2026-08-17",
+      "value": 31653,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11342-2026-08-17-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=60",
+      "publishedAt": "2026-08-17",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-08-17"
+    },
+    {
+      "period": "2026-08-16",
+      "value": 31336,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11341-2026-08-16-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=60",
+      "publishedAt": "2026-08-16",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-08-16"
+    },
+    {
+      "period": "2026-08-15",
+      "value": 39084,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11340-2026-08-15-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=60",
+      "publishedAt": "2026-08-15",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-08-15"
+    },
+    {
+      "period": "2026-08-14",
+      "value": 41000,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11339-2026-08-14-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=60",
+      "publishedAt": "2026-08-14",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-08-14"
+    },
+    {
+      "period": "2026-08-13",
+      "value": 41000,
+      "url": "https://www.jiuzhai.com/news/number-of-tourists/11334-2026-08-13-16-00-00",
+      "listUrl": "https://www.jiuzhai.com/news/number-of-tourists?start=60",
+      "publishedAt": "2026-08-13",
+      "sourceId": "jiuzhai-official",
+      "locator": "每日进沟人数列表：2026-08-13"
+    }
+  ],
+  "octDisclosures": [
+    {
+      "period": "2023-01",
+      "monthly": {
+        "value": 758.9,
+        "qualifier": "",
+        "sourceYoY": 59.0,
+        "growthQualifier": ""
+      },
+      "ytd": {
+        "value": 758.9,
+        "qualifier": "",
+        "sourceYoY": 59.0,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2023-01",
+      "url": "https://static.cninfo.com.cn/finalpage/2023-02-15/1215869096.PDF",
+      "publishedAt": "2023-02-15",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2023-02",
+      "monthly": null,
+      "ytd": {
+        "value": 1600.0,
+        "qualifier": "近",
+        "sourceYoY": 60.0,
+        "growthQualifier": "约"
+      },
+      "sourceId": "oct-2023-02",
+      "url": "https://static.cninfo.com.cn/finalpage/2023-03-17/1216136641.PDF",
+      "publishedAt": "2023-03-17",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2023-03",
+      "monthly": null,
+      "ytd": {
+        "value": 2300.0,
+        "qualifier": "超",
+        "sourceYoY": 80.0,
+        "growthQualifier": "约"
+      },
+      "sourceId": "oct-2023-03",
+      "url": "https://static.cninfo.com.cn/finalpage/2023-04-20/1216469619.PDF",
+      "publishedAt": "2023-04-20",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2023-04",
+      "monthly": null,
+      "ytd": {
+        "value": 3200.0,
+        "qualifier": "近",
+        "sourceYoY": 97.0,
+        "growthQualifier": "约"
+      },
+      "sourceId": "oct-2023-04",
+      "url": "https://static.cninfo.com.cn/finalpage/2023-05-17/1216830920.PDF",
+      "publishedAt": "2023-05-17",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2023-05",
+      "monthly": null,
+      "ytd": {
+        "value": 4010.0,
+        "qualifier": "",
+        "sourceYoY": null,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2023-05",
+      "url": "https://static.cninfo.com.cn/finalpage/2023-06-19/1217095421.PDF",
+      "publishedAt": "2023-06-19",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2023-06",
+      "monthly": null,
+      "ytd": {
+        "value": 4400.0,
+        "qualifier": "超",
+        "sourceYoY": 74.0,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2023-06",
+      "url": "https://static.cninfo.com.cn/finalpage/2023-07-19/1217321671.PDF",
+      "publishedAt": "2023-07-19",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2023-07",
+      "monthly": null,
+      "ytd": {
+        "value": 5480.0,
+        "qualifier": "超",
+        "sourceYoY": 65.0,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2023-07",
+      "url": "https://static.cninfo.com.cn/finalpage/2023-08-19/1217575585.PDF",
+      "publishedAt": "2023-08-19",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2023-08",
+      "monthly": null,
+      "ytd": {
+        "value": 6690.0,
+        "qualifier": "",
+        "sourceYoY": 58.0,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2023-08",
+      "url": "https://static.cninfo.com.cn/finalpage/2023-09-19/1217884909.PDF",
+      "publishedAt": "2023-09-19",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2023-09",
+      "monthly": null,
+      "ytd": {
+        "value": 7248.0,
+        "qualifier": "",
+        "sourceYoY": 55.0,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2023-09",
+      "url": "https://static.cninfo.com.cn/finalpage/2023-10-16/1218046261.PDF",
+      "publishedAt": "2023-10-16",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2023-10",
+      "monthly": null,
+      "ytd": {
+        "value": 8109.0,
+        "qualifier": "",
+        "sourceYoY": 54.0,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2023-10",
+      "url": "https://static.cninfo.com.cn/finalpage/2023-11-16/1218359591.PDF",
+      "publishedAt": "2023-11-16",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2023-11",
+      "monthly": null,
+      "ytd": {
+        "value": 8727.0,
+        "qualifier": "",
+        "sourceYoY": 47.0,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2023-11",
+      "url": "https://static.cninfo.com.cn/finalpage/2023-12-15/1218630251.PDF",
+      "publishedAt": "2023-12-15",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2023-12",
+      "monthly": null,
+      "ytd": {
+        "value": 9365.0,
+        "qualifier": "",
+        "sourceYoY": 51.0,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2023-12",
+      "url": "https://static.cninfo.com.cn/finalpage/2024-01-18/1218940646.PDF",
+      "publishedAt": "2024-01-18",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2024-01",
+      "monthly": {
+        "value": 498.0,
+        "qualifier": "",
+        "sourceYoY": null,
+        "growthQualifier": ""
+      },
+      "ytd": {
+        "value": 498.0,
+        "qualifier": "",
+        "sourceYoY": null,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2024-01",
+      "url": "https://static.cninfo.com.cn/finalpage/2024-02-27/1219186427.PDF",
+      "publishedAt": "2024-02-27",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2024-02",
+      "monthly": null,
+      "ytd": {
+        "value": 1305.0,
+        "qualifier": "",
+        "sourceYoY": null,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2024-02",
+      "url": "https://static.cninfo.com.cn/finalpage/2024-03-21/1219357409.PDF",
+      "publishedAt": "2024-03-21",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2024-03",
+      "monthly": null,
+      "ytd": {
+        "value": 1830.0,
+        "qualifier": "",
+        "sourceYoY": null,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2024-03",
+      "url": "https://static.cninfo.com.cn/finalpage/2024-04-17/1219637546.PDF",
+      "publishedAt": "2024-04-17",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2024-04",
+      "monthly": null,
+      "ytd": {
+        "value": 2372.0,
+        "qualifier": "",
+        "sourceYoY": null,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2024-04",
+      "url": "https://static.cninfo.com.cn/finalpage/2024-05-17/1220083488.PDF",
+      "publishedAt": "2024-05-17",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2024-05",
+      "monthly": null,
+      "ytd": {
+        "value": 3030.0,
+        "qualifier": "",
+        "sourceYoY": null,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2024-05",
+      "url": "https://static.cninfo.com.cn/finalpage/2024-06-19/1220389276.PDF",
+      "publishedAt": "2024-06-19",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2024-06",
+      "monthly": null,
+      "ytd": {
+        "value": 3634.0,
+        "qualifier": "",
+        "sourceYoY": null,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2024-06",
+      "url": "https://static.cninfo.com.cn/finalpage/2024-07-17/1220652508.PDF",
+      "publishedAt": "2024-07-17",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2024-07",
+      "monthly": null,
+      "ytd": {
+        "value": 4505.0,
+        "qualifier": "",
+        "sourceYoY": null,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2024-07",
+      "url": "https://static.cninfo.com.cn/finalpage/2024-08-17/1220891091.PDF",
+      "publishedAt": "2024-08-17",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2024-08",
+      "monthly": null,
+      "ytd": {
+        "value": 5510.0,
+        "qualifier": "",
+        "sourceYoY": null,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2024-08",
+      "url": "https://static.cninfo.com.cn/finalpage/2024-09-14/1221220243.PDF",
+      "publishedAt": "2024-09-14",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2024-09",
+      "monthly": null,
+      "ytd": {
+        "value": 6025.0,
+        "qualifier": "",
+        "sourceYoY": null,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2024-09",
+      "url": "https://static.cninfo.com.cn/finalpage/2024-10-15/1221392906.PDF",
+      "publishedAt": "2024-10-15",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2024-10",
+      "monthly": {
+        "value": 803.0,
+        "qualifier": "",
+        "sourceYoY": null,
+        "growthQualifier": ""
+      },
+      "ytd": {
+        "value": 6828.0,
+        "qualifier": "",
+        "sourceYoY": null,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2024-10",
+      "url": "https://static.cninfo.com.cn/finalpage/2024-11-15/1221726514.PDF",
+      "publishedAt": "2024-11-15",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2024-11",
+      "monthly": {
+        "value": 647.0,
+        "qualifier": "",
+        "sourceYoY": 5.0,
+        "growthQualifier": ""
+      },
+      "ytd": {
+        "value": 7475.0,
+        "qualifier": "",
+        "sourceYoY": null,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2024-11",
+      "url": "https://static.cninfo.com.cn/finalpage/2024-12-14/1222018344.PDF",
+      "publishedAt": "2024-12-14",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2024-12",
+      "monthly": {
+        "value": 606.0,
+        "qualifier": "",
+        "sourceYoY": -5.0,
+        "growthQualifier": ""
+      },
+      "ytd": {
+        "value": 8081.0,
+        "qualifier": "",
+        "sourceYoY": -14.0,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2024-12",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-01-16/1222343824.PDF",
+      "publishedAt": "2025-01-16",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2025-01",
+      "monthly": {
+        "value": 653.0,
+        "qualifier": "",
+        "sourceYoY": 31.0,
+        "growthQualifier": ""
+      },
+      "ytd": {
+        "value": 653.0,
+        "qualifier": "",
+        "sourceYoY": 31.0,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2025-01",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-02-17/1222556869.PDF",
+      "publishedAt": "2025-02-17",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2025-02",
+      "monthly": null,
+      "ytd": {
+        "value": 1354.0,
+        "qualifier": "",
+        "sourceYoY": 4.0,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2025-02",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-03-19/1222833470.PDF",
+      "publishedAt": "2025-03-19",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2025-03",
+      "monthly": {
+        "value": 548.0,
+        "qualifier": "",
+        "sourceYoY": 4.0,
+        "growthQualifier": ""
+      },
+      "ytd": {
+        "value": 1902.0,
+        "qualifier": "",
+        "sourceYoY": 4.0,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2025-03",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-04-16/1223099783.PDF",
+      "publishedAt": "2025-04-16",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2025-04",
+      "monthly": {
+        "value": 580.0,
+        "qualifier": "",
+        "sourceYoY": 7.0,
+        "growthQualifier": ""
+      },
+      "ytd": {
+        "value": 2482.0,
+        "qualifier": "",
+        "sourceYoY": 5.0,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2025-04",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-05-15/1223543163.PDF",
+      "publishedAt": "2025-05-15",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2025-05",
+      "monthly": null,
+      "ytd": {
+        "value": 3219.0,
+        "qualifier": "",
+        "sourceYoY": 6.0,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2025-05",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-06-14/1223877120.PDF",
+      "publishedAt": "2025-06-14",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2025-06",
+      "monthly": {
+        "value": 552.0,
+        "qualifier": "",
+        "sourceYoY": -9.0,
+        "growthQualifier": ""
+      },
+      "ytd": {
+        "value": 3771.0,
+        "qualifier": "",
+        "sourceYoY": 4.0,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2025-06",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-07-16/1224177058.PDF",
+      "publishedAt": "2025-07-16",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2025-07",
+      "monthly": null,
+      "ytd": {
+        "value": 4559.0,
+        "qualifier": "",
+        "sourceYoY": 1.0,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2025-07",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-08-16/1224499337.PDF",
+      "publishedAt": "2025-08-16",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2025-08",
+      "monthly": {
+        "value": 946.0,
+        "qualifier": "",
+        "sourceYoY": -6.0,
+        "growthQualifier": ""
+      },
+      "ytd": {
+        "value": 5505.0,
+        "qualifier": "",
+        "sourceYoY": 0,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2025-08",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-09-16/1224660992.PDF",
+      "publishedAt": "2025-09-16",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2025-09",
+      "monthly": {
+        "value": 451.0,
+        "qualifier": "",
+        "sourceYoY": -12.0,
+        "growthQualifier": ""
+      },
+      "ytd": {
+        "value": 5956.0,
+        "qualifier": "",
+        "sourceYoY": -1.0,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2025-09",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-10-15/1224712125.PDF",
+      "publishedAt": "2025-10-15",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2025-10",
+      "monthly": {
+        "value": 746.0,
+        "qualifier": "",
+        "sourceYoY": -7.0,
+        "growthQualifier": ""
+      },
+      "ytd": {
+        "value": 6701.0,
+        "qualifier": "",
+        "sourceYoY": -2.0,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2025-10",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-11-14/1224804246.PDF",
+      "publishedAt": "2025-11-14",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2025-11",
+      "monthly": {
+        "value": 697.0,
+        "qualifier": "",
+        "sourceYoY": 8.0,
+        "growthQualifier": ""
+      },
+      "ytd": {
+        "value": 7398.0,
+        "qualifier": "",
+        "sourceYoY": -1.0,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2025-11",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-12-15/1224876710.PDF",
+      "publishedAt": "2025-12-15",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2025-12",
+      "monthly": {
+        "value": 571.0,
+        "qualifier": "",
+        "sourceYoY": -6.0,
+        "growthQualifier": ""
+      },
+      "ytd": {
+        "value": 7970.0,
+        "qualifier": "",
+        "sourceYoY": -1.0,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2025-12",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-01-15/1224933604.PDF",
+      "publishedAt": "2026-01-15",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2026-01",
+      "monthly": {
+        "value": 554.0,
+        "qualifier": "",
+        "sourceYoY": -15.0,
+        "growthQualifier": ""
+      },
+      "ytd": {
+        "value": 554.0,
+        "qualifier": "",
+        "sourceYoY": -15.0,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2026-01",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-02-14/1224981968.PDF",
+      "publishedAt": "2026-02-14",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2026-02",
+      "monthly": {
+        "value": 766.0,
+        "qualifier": "",
+        "sourceYoY": null,
+        "growthQualifier": ""
+      },
+      "ytd": {
+        "value": 1320.0,
+        "qualifier": "",
+        "sourceYoY": null,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2026-02",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-03-14/1225008799.PDF",
+      "publishedAt": "2026-03-14",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2026-03",
+      "monthly": {
+        "value": 517.0,
+        "qualifier": "",
+        "sourceYoY": null,
+        "growthQualifier": ""
+      },
+      "ytd": {
+        "value": 1837.0,
+        "qualifier": "",
+        "sourceYoY": null,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2026-03",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-04-15/1225105024.PDF",
+      "publishedAt": "2026-04-15",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2026-04",
+      "monthly": {
+        "value": 571.0,
+        "qualifier": "",
+        "sourceYoY": null,
+        "growthQualifier": ""
+      },
+      "ytd": {
+        "value": 2408.0,
+        "qualifier": "",
+        "sourceYoY": null,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2026-04",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-05-15/1225306089.PDF",
+      "publishedAt": "2026-05-15",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2026-05",
+      "monthly": {
+        "value": 675.0,
+        "qualifier": "",
+        "sourceYoY": null,
+        "growthQualifier": ""
+      },
+      "ytd": {
+        "value": 3083.0,
+        "qualifier": "",
+        "sourceYoY": null,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2026-05",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-06-15/1225370275.PDF",
+      "publishedAt": "2026-06-15",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2026-06",
+      "monthly": {
+        "value": 532.0,
+        "qualifier": "",
+        "sourceYoY": null,
+        "growthQualifier": ""
+      },
+      "ytd": {
+        "value": 3616.0,
+        "qualifier": "",
+        "sourceYoY": null,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2026-06",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-07-15/1225424386.PDF",
+      "publishedAt": "2026-07-15",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2026-07",
+      "monthly": {
+        "value": 707.0,
+        "qualifier": "",
+        "sourceYoY": null,
+        "growthQualifier": ""
+      },
+      "ytd": {
+        "value": 4322.0,
+        "qualifier": "",
+        "sourceYoY": null,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2026-07",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-08-15/1225473331.PDF",
+      "publishedAt": "2026-08-15",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2026-08",
+      "monthly": {
+        "value": 897.0,
+        "qualifier": "",
+        "sourceYoY": null,
+        "growthQualifier": ""
+      },
+      "ytd": {
+        "value": 5220.0,
+        "qualifier": "",
+        "sourceYoY": null,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2026-08",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-09-15/1225563403.PDF",
+      "publishedAt": "2026-09-15",
+      "locator": "PDF：旅游综合业务情况"
+    },
+    {
+      "period": "2026-09",
+      "monthly": {
+        "value": 494.0,
+        "qualifier": "",
+        "sourceYoY": null,
+        "growthQualifier": ""
+      },
+      "ytd": {
+        "value": 5714.0,
+        "qualifier": "",
+        "sourceYoY": null,
+        "growthQualifier": ""
+      },
+      "sourceId": "oct-2026-09",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-10-15/1225605252.PDF",
+      "publishedAt": "2026-10-15",
+      "locator": "PDF：旅游综合业务情况"
+    }
+  ],
+  "availability": [
+    {
+      "name": "长白山主景区",
+      "frequency": "月度",
+      "status": "已更新",
+      "latest": "2026-09",
+      "url": "https://www.changbaishan.gov.cn/shjj/tjxx/wap.html"
+    },
+    {
+      "name": "九寨沟",
+      "frequency": "日度",
+      "status": "已更新",
+      "latest": "2026-10-23",
+      "url": "https://www.jiuzhai.com/news/number-of-tourists?start=0"
+    },
+    {
+      "name": "华侨城旗下文旅企业",
+      "frequency": "月度",
+      "status": "已接入2024年以来连续月度",
+      "latest": "2026-09",
+      "url": "https://www.cninfo.com.cn/new/disclosure/stock?orgId=gssz0000069&stockCode=000069",
+      "note": "公司项目组合；含主题公园、酒店、商业等，项目范围可能变化，不是同店或单景区。2023近/超累计量仅作原始披露保留，不用于精确差分。"
+    },
+    {
+      "name": "黄山",
+      "status": "候选：尚未核验到可持续获取的完整月度序列",
+      "url": "https://hsgwh.huangshan.gov.cn/",
+      "note": "存在单月新闻、年度和半年报，但暂不将零散新闻拼为连续序列。"
+    },
+    {
+      "name": "泰山",
+      "status": "候选：已找到季度运行披露，待核验历史口径",
+      "url": "https://whlyj.taian.gov.cn/art/2026/4/20/art_166725_10312690.html",
+      "note": "进泰山游客与泰安市全域接待、重点景区样本接待须区分。"
+    },
+    {
+      "name": "四姑娘山／黄龙／达古冰川／峨眉山／九华山",
+      "status": "候选：本轮未取得经逐期核验的完整连续高频序列",
+      "note": "已检索官网及政府统计；假期、门票预售、承载量及年度里程碑不当作日/月实际接待。"
+    }
+  ],
+  "notes": [
+    "景区更新核对截至2026-10-23：长白山在原月度历史后补2026年8—9月，口径为长白山主景区当月实际接待游客，非保护区全域或年初累计。新披露的官方同比优先保留；历史原表基期有舍入差异，不覆盖官方同比。",
+    "九寨沟补2026-08-13—2026-10-23共72个日度实际接待数，逐条保留官方列表页和文章链接；本期与上年相同月日比较，不作星期、假期错位调整。未披露的日子保留空点，不用景区限流上限或门票预售替代实际接待。",
+    "华侨城月度数据来自000069公司原始月度经营公告：2024年1月—2026年9月连续收录33个月。每期同时保留直接披露当月与年初累计。无当月披露时，仅在相邻累计均为明确数值时差分，标注测算并保留两个来源；累计为“近/超/约”的2023披露只存原文数及限定词，不作精确差分或精确同比基期。",
+    "华侨城旗下文旅企业包含主题公园、酒店、商业综合体等项目，并非单一景区，也不是固定同店样本；项目组合可能变化。同比优先公告原文，无官方当月同比时才按相同月份数值计算；直接披露的累计与单月合计存在万人次级舍入差时不强行调平。",
+    "其他候选景区连续数据检索结果保留在scenic-official.json availability。候选未接入不等于不存在；本轮未取得可核验完整序列，未拿假期新闻拼接或虚构中间月份。"
+  ]
+}
