@@ -76,7 +76,7 @@ body.site-page.company-hub #oh-companies{gap:12px;margin-bottom:18px}
 body.site-page.company-hub .oh-company{min-height:68px;padding:10px 12px;gap:10px}
 body.site-page.company-hub .oh-company .oh-logo{flex:0 0 48px;width:48px;height:34px}
 body.site-page.company-hub .oh-company .oh-logo img{max-width:48px;max-height:32px}
-body.site-page.company-hub .oh-company[data-company=atour] .oh-logo img{width:64px;height:64px;max-width:none;max-height:none}
+body.site-page.company-hub .oh-company[data-company=atour] .oh-logo img{width:100%;height:100%;max-width:100%;max-height:100%}
 body.site-page.company-hub .oh-company strong{font-size:14px;line-height:22px}
 body.site-page.company-hub .oh-company small{font-size:11px;line-height:18px;margin-top:0}
 body.company-hub .cw-actions{display:flex;align-items:center;gap:12px;margin:0}
@@ -111,7 +111,7 @@ body.company-hub #oh-toolbar:empty{display:none}
  body.site-page.company-hub .oh-company{min-height:64px;padding:8px;gap:8px}
  body.site-page.company-hub .oh-company .oh-logo{flex-basis:38px;width:38px;height:30px}
  body.site-page.company-hub .oh-company .oh-logo img{max-width:38px;max-height:30px}
- body.site-page.company-hub .oh-company[data-company=atour] .oh-logo img{max-width:none;max-height:none}
+ body.site-page.company-hub .oh-company[data-company=atour] .oh-logo img{max-width:100%;max-height:100%}
  body.company-hub #oh-profile .cw-actions{margin-left:0;gap:8px}
  body.company-hub #cw-peer-reading .oh-block-head{align-items:flex-start;flex-direction:column}
  body.company-hub .oh-peer-filters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
