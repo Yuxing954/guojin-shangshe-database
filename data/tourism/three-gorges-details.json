@@ -1,0 +1,1606 @@
+{
+  "schemaVersion": 1,
+  "title": "三峡游轮游客结构与湖北籍船公司月度客运量",
+  "updatedAt": "2026-10-23",
+  "coverageStart": "2024-01",
+  "coverageEnd": "2026-09",
+  "ageLabels": [
+    "12岁以下",
+    "12—18岁",
+    "18—30岁",
+    "30—45岁",
+    "45—60岁",
+    "60岁以上"
+  ],
+  "companyLabels": [
+    "武汉扬子江游船",
+    "湖北皇家长江旅游船",
+    "巴东县楚天轮船",
+    "宜昌隆基旅运",
+    "宜昌江腾游轮",
+    "宜昌新高湖滚装客船",
+    "宜昌交运长江游轮"
+  ],
+  "units": {
+    "ages": "%（国内游客）",
+    "origins.domestic": "万人",
+    "origins.foreign": "万人",
+    "origins.foreignShare": "%（全部游客）",
+    "companies": "万人（湖北籍省际游轮，不含省际非跨夜）",
+    "jiaoyunShare": "%（全部三峡游轮客运量）",
+    "jiaoyunYoY": "%（根据披露月度值测算）"
+  },
+  "notes": [
+    "覆盖2024-01至2026-09共33个月；30期船公司表、28期单月六档年龄结构。2024-01、2025-01只有快讯；2026-01未取得结构明细，缺项留空。",
+    "年龄分布分母为国内游客，保留原图年龄档位；原始月报对年龄边界以图例为准。百分比存在舍入误差，不调整至100%。",
+    "2024与2025年报的年龄和客源结构是全年口径，单列annualRecords，不混入12月单月；船公司表同时披露12月与全年，仅提取12月列。",
+    "游客来源地采用官网原文；原始人数与百分比各自保留，不用舍入人数重算占比。2024-01与2025-01国内人数采用总人数减境外人数测算，逐字段保留公式。",
+    "船公司表对应湖北籍省际游轮；省际非跨夜为另列统计，不与宜昌交运省际游轮相加。宜昌交运占比采用官网披露；同比以两年同月已舍入客运量测算，基期缺失或非正时留空。",
+    "原表未列示的冬季船公司值为缺失，不自动补零；明确披露0.00时保留0。宜昌隆基2026年部分月份未列示，未采用券商图中停运推断。",
+    "来源为重庆航运交易所官网月报，提供原文及具体配图链接。2024-01原始配图失效，其快讯文字可读；2026-01结构明细仍缺。"
+  ],
+  "sources": [
+    {
+      "id": "official-2024-01",
+      "title": "2024年1月长江游轮旅游市场快讯",
+      "url": "https://www.cse.net.cn/#/infodetail/238852608230424576",
+      "publisher": "重庆航运交易所 / 重庆邮轮中心",
+      "publishedAt": "2024-03-31",
+      "checkedAt": "2026-10-23",
+      "quality": "官方原始月报",
+      "locator": "游客来源地、国内游客年龄结构、游轮运量情况；月份与累计列分开"
+    },
+    {
+      "id": "official-2024-02",
+      "title": "2024年2月长江三峡游轮旅游大数据",
+      "url": "https://www.cse.net.cn/#/infodetail/238854066431590400",
+      "publisher": "重庆航运交易所 / 重庆邮轮中心",
+      "publishedAt": "2024-03-31",
+      "checkedAt": "2026-10-23",
+      "quality": "官方原始月报",
+      "locator": "游客来源地、国内游客年龄结构、游轮运量情况；月份与累计列分开"
+    },
+    {
+      "id": "official-2024-03",
+      "title": "重庆航运交易所 | 2024年3月长江三峡游轮旅游大数据",
+      "url": "https://www.cse.net.cn/#/infodetail/250928759033561088",
+      "publisher": "重庆航运交易所 / 重庆邮轮中心",
+      "publishedAt": "2024-08-11",
+      "checkedAt": "2026-10-23",
+      "quality": "官方原始月报",
+      "locator": "游客来源地、国内游客年龄结构、游轮运量情况；月份与累计列分开"
+    },
+    {
+      "id": "official-2024-04",
+      "title": "重庆航运交易所 | 2024年4月长江三峡游轮旅游大数据",
+      "url": "https://www.cse.net.cn/#/infodetail/250928848211804160",
+      "publisher": "重庆航运交易所 / 重庆邮轮中心",
+      "publishedAt": "2024-08-11",
+      "checkedAt": "2026-10-23",
+      "quality": "官方原始月报",
+      "locator": "游客来源地、国内游客年龄结构、游轮运量情况；月份与累计列分开"
+    },
+    {
+      "id": "official-2024-05",
+      "title": "重庆航运交易所 | 2024年5月长江三峡游轮旅游大数据",
+      "url": "https://www.cse.net.cn/#/infodetail/250928928413188096",
+      "publisher": "重庆航运交易所 / 重庆邮轮中心",
+      "publishedAt": "2024-08-11",
+      "checkedAt": "2026-10-23",
+      "quality": "官方原始月报",
+      "locator": "游客来源地、国内游客年龄结构、游轮运量情况；月份与累计列分开"
+    },
+    {
+      "id": "official-2024-06",
+      "title": "重庆航运交易所 | 2024年6月及上半年长江三峡游轮旅游大数据",
+      "url": "https://www.cse.net.cn/#/infodetail/250929003036147712",
+      "publisher": "重庆航运交易所 / 重庆邮轮中心",
+      "publishedAt": "2024-08-11",
+      "checkedAt": "2026-10-23",
+      "quality": "官方原始月报",
+      "locator": "游客来源地、国内游客年龄结构、游轮运量情况；月份与累计列分开"
+    },
+    {
+      "id": "official-2024-07",
+      "title": "重庆航运交易所  | 2024年7月长江三峡游轮旅游大数据",
+      "url": "https://www.cse.net.cn/#/infodetail/250929122819178496",
+      "publisher": "重庆航运交易所 / 重庆邮轮中心",
+      "publishedAt": "2024-08-11",
+      "checkedAt": "2026-10-23",
+      "quality": "官方原始月报",
+      "locator": "游客来源地、国内游客年龄结构、游轮运量情况；月份与累计列分开"
+    },
+    {
+      "id": "official-2024-08",
+      "title": "重庆航运交易所 | 2024年8月长江三峡游轮旅游大数据",
+      "url": "https://www.cse.net.cn/#/infodetail/255343144523005952",
+      "publisher": "重庆航运交易所 / 重庆邮轮中心",
+      "publishedAt": "2024-09-29",
+      "checkedAt": "2026-10-23",
+      "quality": "官方原始月报",
+      "locator": "游客来源地、国内游客年龄结构、游轮运量情况；月份与累计列分开"
+    },
+    {
+      "id": "official-2024-09",
+      "title": "重庆航运交易所 | 2024年9月长江三峡游轮旅游大数据",
+      "url": "https://www.cse.net.cn/#/infodetail/256542279730200576",
+      "publisher": "重庆航运交易所 / 重庆邮轮中心",
+      "publishedAt": "2024-10-12",
+      "checkedAt": "2026-10-23",
+      "quality": "官方原始月报",
+      "locator": "游客来源地、国内游客年龄结构、游轮运量情况；月份与累计列分开"
+    },
+    {
+      "id": "official-2024-10",
+      "title": "重庆航运交易所 | 2024年10月长江三峡游轮旅游大数据",
+      "url": "https://www.cse.net.cn/#/infodetail/260328424986378240",
+      "publisher": "重庆航运交易所 / 重庆邮轮中心",
+      "publishedAt": "2024-11-23",
+      "checkedAt": "2026-10-23",
+      "quality": "官方原始月报",
+      "locator": "游客来源地、国内游客年龄结构、游轮运量情况；月份与累计列分开"
+    },
+    {
+      "id": "official-2024-11",
+      "title": "重庆航运交易所 | 2024年11月长江三峡游轮旅游大数据",
+      "url": "https://www.cse.net.cn/#/infodetail/262336931587686400",
+      "publisher": "重庆航运交易所 / 重庆邮轮中心",
+      "publishedAt": "2024-12-15",
+      "checkedAt": "2026-10-23",
+      "quality": "官方原始月报",
+      "locator": "游客来源地、国内游客年龄结构、游轮运量情况；月份与累计列分开"
+    },
+    {
+      "id": "official-2024-12",
+      "title": "重庆航运交易所 | 2024年长江三峡游轮旅游大数据",
+      "url": "https://www.cse.net.cn/#/infodetail/264309702402244608",
+      "publisher": "重庆航运交易所 / 重庆邮轮中心",
+      "publishedAt": "2025-01-06",
+      "checkedAt": "2026-10-23",
+      "quality": "官方原始月报",
+      "locator": "游客来源地、国内游客年龄结构、游轮运量情况；月份与累计列分开"
+    },
+    {
+      "id": "official-2025-01",
+      "title": "重庆航运交易所 | 2025年1月长江三峡游轮旅游大数据",
+      "url": "https://www.cse.net.cn/#/infodetail/270034892434178048",
+      "publisher": "重庆航运交易所 / 重庆邮轮中心",
+      "publishedAt": "2025-03-10",
+      "checkedAt": "2026-10-23",
+      "quality": "官方原始月报",
+      "locator": "游客来源地、国内游客年龄结构、游轮运量情况；月份与累计列分开"
+    },
+    {
+      "id": "official-2025-02",
+      "title": "重庆航运交易所 | 2025年2月长江三峡游轮旅游大数据",
+      "url": "https://www.cse.net.cn/#/infodetail/270035536893181952",
+      "publisher": "重庆航运交易所 / 重庆邮轮中心",
+      "publishedAt": "2025-03-10",
+      "checkedAt": "2026-10-23",
+      "quality": "官方原始月报",
+      "locator": "游客来源地、国内游客年龄结构、游轮运量情况；月份与累计列分开"
+    },
+    {
+      "id": "official-2025-03",
+      "title": "重庆航运交易所 | 2025年3月长江三峡游轮旅游大数据",
+      "url": "https://www.cse.net.cn/#/infodetail/273124459934646272",
+      "publisher": "重庆航运交易所 / 重庆邮轮中心",
+      "publishedAt": "2025-04-13",
+      "checkedAt": "2026-10-23",
+      "quality": "官方原始月报",
+      "locator": "游客来源地、国内游客年龄结构、游轮运量情况；月份与累计列分开"
+    },
+    {
+      "id": "official-2025-04",
+      "title": "重庆航运交易所 | 2025年4月长江三峡游轮旅游大数据",
+      "url": "https://www.cse.net.cn/#/infodetail/275450586115080192",
+      "publisher": "重庆航运交易所 / 重庆邮轮中心",
+      "publishedAt": "2025-05-09",
+      "checkedAt": "2026-10-23",
+      "quality": "官方原始月报",
+      "locator": "游客来源地、国内游客年龄结构、游轮运量情况；月份与累计列分开"
+    },
+    {
+      "id": "official-2025-05",
+      "title": "重庆航运交易所 | 2025年5月长江三峡游轮旅游大数据",
+      "url": "https://www.cse.net.cn/#/infodetail/278355779468132352",
+      "publisher": "重庆航运交易所 / 重庆邮轮中心",
+      "publishedAt": "2025-06-10",
+      "checkedAt": "2026-10-23",
+      "quality": "官方原始月报",
+      "locator": "游客来源地、国内游客年龄结构、游轮运量情况；月份与累计列分开"
+    },
+    {
+      "id": "official-2025-06",
+      "title": "重庆航运交易所 | 2025年6月及上半年长江三峡游轮旅游大数据",
+      "url": "https://www.cse.net.cn/#/infodetail/281070483000000512",
+      "publisher": "重庆航运交易所 / 重庆邮轮中心",
+      "publishedAt": "2025-07-10",
+      "checkedAt": "2026-10-23",
+      "quality": "官方原始月报",
+      "locator": "游客来源地、国内游客年龄结构、游轮运量情况；月份与累计列分开"
+    },
+    {
+      "id": "official-2025-07",
+      "title": "重庆航运交易所 | 2025年7月长江三峡游轮旅游大数据",
+      "url": "https://www.cse.net.cn/#/infodetail/284630991443591168",
+      "publisher": "重庆航运交易所 / 重庆邮轮中心",
+      "publishedAt": "2025-08-18",
+      "checkedAt": "2026-10-23",
+      "quality": "官方原始月报",
+      "locator": "游客来源地、国内游客年龄结构、游轮运量情况；月份与累计列分开"
+    },
+    {
+      "id": "official-2025-08",
+      "title": "重庆航运交易所 | 2025年8月长江三峡游轮旅游大数据",
+      "url": "https://www.cse.net.cn/#/infodetail/286894896853286912",
+      "publisher": "重庆航运交易所 / 重庆邮轮中心",
+      "publishedAt": "2025-09-12",
+      "checkedAt": "2026-10-23",
+      "quality": "官方原始月报",
+      "locator": "游客来源地、国内游客年龄结构、游轮运量情况；月份与累计列分开"
+    },
+    {
+      "id": "official-2025-09",
+      "title": "重庆航运交易所 | 2025年9月长江三峡游轮旅游大数据",
+      "url": "https://www.cse.net.cn/#/infodetail/289876091076608000",
+      "publisher": "重庆航运交易所 / 重庆邮轮中心",
+      "publishedAt": "2025-10-15",
+      "checkedAt": "2026-10-23",
+      "quality": "官方原始月报",
+      "locator": "游客来源地、国内游客年龄结构、游轮运量情况；月份与累计列分开"
+    },
+    {
+      "id": "official-2025-10",
+      "title": "重庆航运交易所 | 2025年10月长江三峡游轮旅游大数据",
+      "url": "https://www.cse.net.cn/#/infodetail/292210339457531904",
+      "publisher": "重庆航运交易所 / 重庆邮轮中心",
+      "publishedAt": "2025-11-10",
+      "checkedAt": "2026-10-23",
+      "quality": "官方原始月报",
+      "locator": "游客来源地、国内游客年龄结构、游轮运量情况；月份与累计列分开"
+    },
+    {
+      "id": "official-2025-11",
+      "title": "重庆航运交易所 | 2025年11月长江三峡游轮旅游大数据",
+      "url": "https://www.cse.net.cn/#/infodetail/295049366710779904",
+      "publisher": "重庆航运交易所 / 重庆邮轮中心",
+      "publishedAt": "2025-12-11",
+      "checkedAt": "2026-10-23",
+      "quality": "官方原始月报",
+      "locator": "游客来源地、国内游客年龄结构、游轮运量情况；月份与累计列分开"
+    },
+    {
+      "id": "official-2025-12",
+      "title": "重庆航运交易所 | 2025年长江三峡游轮旅游大数据",
+      "url": "https://www.cse.net.cn/#/infodetail/298311457653653504",
+      "publisher": "重庆航运交易所 / 重庆邮轮中心",
+      "publishedAt": "2026-01-16",
+      "checkedAt": "2026-10-23",
+      "quality": "官方原始月报",
+      "locator": "游客来源地、国内游客年龄结构、游轮运量情况；月份与累计列分开"
+    },
+    {
+      "id": "official-2026-02",
+      "title": "重庆航运交易所 | 2026年2月长江三峡游轮旅游大数据",
+      "url": "https://www.cse.net.cn/#/infodetail/303904969133654016",
+      "publisher": "重庆航运交易所 / 重庆邮轮中心",
+      "publishedAt": "2026-03-19",
+      "checkedAt": "2026-10-23",
+      "quality": "官方原始月报",
+      "locator": "游客来源地、国内游客年龄结构、游轮运量情况；月份与累计列分开"
+    },
+    {
+      "id": "official-2026-03",
+      "title": "重庆航运交易所 | 2026年3月长江三峡游轮旅游大数据",
+      "url": "https://www.cse.net.cn/#/infodetail/307091982015004672",
+      "publisher": "重庆航运交易所 / 重庆邮轮中心",
+      "publishedAt": "2026-04-23",
+      "checkedAt": "2026-10-23",
+      "quality": "官方原始月报",
+      "locator": "游客来源地、国内游客年龄结构、游轮运量情况；月份与累计列分开"
+    },
+    {
+      "id": "official-2026-04",
+      "title": "重庆航运交易所 | 2026年4月长江三峡游轮旅游大数据",
+      "url": "https://www.cse.net.cn/#/infodetail/312166022214844416",
+      "publisher": "重庆航运交易所 / 重庆邮轮中心",
+      "publishedAt": "2026-06-18",
+      "checkedAt": "2026-10-23",
+      "quality": "官方原始月报",
+      "locator": "游客来源地、国内游客年龄结构、游轮运量情况；月份与累计列分开"
+    },
+    {
+      "id": "official-2026-05",
+      "title": "重庆航运交易所 | 2026年5月长江三峡游轮旅游大数据",
+      "url": "https://www.cse.net.cn/#/infodetail/312166529376452608",
+      "publisher": "重庆航运交易所 / 重庆邮轮中心",
+      "publishedAt": "2026-06-18",
+      "checkedAt": "2026-10-23",
+      "quality": "官方原始月报",
+      "locator": "游客来源地、国内游客年龄结构、游轮运量情况；月份与累计列分开"
+    },
+    {
+      "id": "official-2026-06",
+      "title": "重庆航运交易所 | 2026年6月及上半年长江三峡游轮旅游大数据",
+      "url": "https://www.cse.net.cn/#/infodetail/314698195642875904",
+      "publisher": "重庆航运交易所 / 重庆邮轮中心",
+      "publishedAt": "2026-07-16",
+      "checkedAt": "2026-10-23",
+      "quality": "官方原始月报",
+      "locator": "游客来源地、国内游客年龄结构、游轮运量情况；月份与累计列分开"
+    },
+    {
+      "id": "official-2026-07",
+      "title": "重庆航运交易所 | 2026年7月长江三峡游轮旅游大数据",
+      "url": "https://www.cse.net.cn/#/infodetail/318213775326969856",
+      "publisher": "重庆航运交易所 / 重庆邮轮中心",
+      "publishedAt": "2026-08-24",
+      "checkedAt": "2026-10-23",
+      "quality": "官方原始月报",
+      "locator": "游客来源地、国内游客年龄结构、游轮运量情况；月份与累计列分开"
+    },
+    {
+      "id": "official-2026-08",
+      "title": "重庆航运交易所|2026年8月长江三峡游轮旅游大数据",
+      "url": "https://www.cse.net.cn/#/infodetail/319660487285407744",
+      "publisher": "重庆航运交易所 / 重庆邮轮中心",
+      "publishedAt": "2026-09-09",
+      "checkedAt": "2026-10-23",
+      "quality": "官方原始月报",
+      "locator": "游客来源地、国内游客年龄结构、游轮运量情况；月份与累计列分开"
+    },
+    {
+      "id": "official-2026-09",
+      "title": "重庆航运交易所 | 2026年9月长江三峡游轮旅游大数据",
+      "url": "https://www.cse.net.cn/#/infodetail/322319232080543744",
+      "publisher": "重庆航运交易所 / 重庆邮轮中心",
+      "publishedAt": "2026-10-08",
+      "checkedAt": "2026-10-23",
+      "quality": "官方原始月报",
+      "locator": "游客来源地、国内游客年龄结构、游轮运量情况；月份与累计列分开"
+    },
+    {
+      "id": "official-2026-01",
+      "title": "2026年1月长江三峡游轮旅游完成客运量8971人",
+      "url": "https://www.cse.net.cn/#/infodetail/299932851258785792",
+      "publisher": "重庆航运交易所 / 重庆邮轮中心",
+      "publishedAt": "2026-02-03",
+      "checkedAt": "2026-10-23",
+      "quality": "官方原始快讯",
+      "locator": "国/境外游客占4.48%；未披露分公司与六档年龄结构"
+    }
+  ],
+  "records": [
+    {
+      "period": "2024-01",
+      "ages": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "origins": {
+        "domestic": 0.9786,
+        "foreign": 0.0239,
+        "foreignShare": 2.384
+      },
+      "companies": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "jiaoyunShare": null,
+      "jiaoyunYoY": null,
+      "sourceId": "official-2024-01",
+      "evidence": {},
+      "fieldStatus": {
+        "origins.domestic": "derived: (10025-239)/10000",
+        "origins.foreignShare": "derived:239/10025*100"
+      },
+      "notes": [
+        "原表未列示的企业当月值留空，不据此补零或认定停运。"
+      ]
+    },
+    {
+      "period": "2024-02",
+      "ages": [
+        10.99,
+        7.39,
+        6.65,
+        21.16,
+        26.46,
+        27.36
+      ],
+      "origins": {
+        "domestic": 2.85,
+        "foreign": 0.0141,
+        "foreignShare": 0.5
+      },
+      "companies": [
+        0.0463,
+        null,
+        0.2123,
+        0.4859,
+        0.1995,
+        0.2088,
+        null
+      ],
+      "jiaoyunShare": null,
+      "jiaoyunYoY": null,
+      "sourceId": "official-2024-02",
+      "evidence": {
+        "companies": "https://www.cse.net.cn/api/file/loadFile.do?id=238853463421747200",
+        "ages": "https://www.cse.net.cn/api/file/loadFile.do?id=238853761519321088"
+      },
+      "fieldStatus": {},
+      "notes": [
+        "船公司原表单位为人，除以10000转为万人；斜杠保留缺失。",
+        "原表未列示的企业当月值留空，不据此补零或认定停运。"
+      ]
+    },
+    {
+      "period": "2024-03",
+      "ages": [
+        2.1,
+        0.18,
+        1.5,
+        5.95,
+        25.66,
+        64.61
+      ],
+      "origins": {
+        "domestic": 9.37,
+        "foreign": 0.53,
+        "foreignShare": 5.35
+      },
+      "companies": [
+        1.04,
+        0.05,
+        1.03,
+        0.36,
+        0.4,
+        0.99,
+        0.21
+      ],
+      "jiaoyunShare": 2.12,
+      "jiaoyunYoY": null,
+      "sourceId": "official-2024-03",
+      "evidence": {
+        "companies": "https://www.cse.net.cn/api/file/loadFile.do?id=251463481765658624",
+        "ages": "https://www.cse.net.cn/api/file/loadFile.do?id=251463659576885248"
+      },
+      "fieldStatus": {},
+      "notes": []
+    },
+    {
+      "period": "2024-04",
+      "ages": [
+        2.77,
+        0.33,
+        1.47,
+        5.72,
+        24.58,
+        65.13
+      ],
+      "origins": {
+        "domestic": 15.08,
+        "foreign": 0.62,
+        "foreignShare": 3.95
+      },
+      "companies": [
+        1.12,
+        0.1,
+        1.36,
+        0.92,
+        0.76,
+        1.27,
+        0.57
+      ],
+      "jiaoyunShare": 3.63,
+      "jiaoyunYoY": null,
+      "sourceId": "official-2024-04",
+      "evidence": {
+        "companies": "https://www.cse.net.cn/api/file/loadFile.do?id=251463882207395840",
+        "ages": "https://www.cse.net.cn/api/file/loadFile.do?id=251464023470505984"
+      },
+      "fieldStatus": {},
+      "notes": []
+    },
+    {
+      "period": "2024-05",
+      "ages": [
+        2.92,
+        0.54,
+        1.83,
+        6.59,
+        25.47,
+        62.66
+      ],
+      "origins": {
+        "domestic": 14.51,
+        "foreign": 0.74,
+        "foreignShare": 4.85
+      },
+      "companies": [
+        1.34,
+        0.11,
+        1.38,
+        0.62,
+        0.72,
+        1.1,
+        0.38
+      ],
+      "jiaoyunShare": 2.46,
+      "jiaoyunYoY": null,
+      "sourceId": "official-2024-05",
+      "evidence": {
+        "companies": "https://www.cse.net.cn/api/file/loadFile.do?id=251464238880522240",
+        "ages": "https://www.cse.net.cn/api/file/loadFile.do?id=251464384701792256"
+      },
+      "fieldStatus": {},
+      "notes": []
+    },
+    {
+      "period": "2024-06",
+      "ages": [
+        4.86,
+        2.67,
+        3.51,
+        9.55,
+        25.72,
+        53.7
+      ],
+      "origins": {
+        "domestic": 12.39,
+        "foreign": 0.48,
+        "foreignShare": 3.73
+      },
+      "companies": [
+        1,
+        0.11,
+        1.02,
+        0.37,
+        0.43,
+        0.7,
+        0.19
+      ],
+      "jiaoyunShare": 1.51,
+      "jiaoyunYoY": null,
+      "sourceId": "official-2024-06",
+      "evidence": {
+        "companies": "https://www.cse.net.cn/api/file/loadFile.do?id=251465063794212864",
+        "ages": "https://www.cse.net.cn/api/file/loadFile.do?id=251465223108558848"
+      },
+      "fieldStatus": {},
+      "notes": []
+    },
+    {
+      "period": "2024-07",
+      "ages": [
+        15.52,
+        10.67,
+        5.03,
+        18.46,
+        22.21,
+        28.11
+      ],
+      "origins": {
+        "domestic": 13.44,
+        "foreign": 0.22,
+        "foreignShare": 1.61
+      },
+      "companies": [
+        1.07,
+        0.1,
+        1.12,
+        0.4,
+        0.49,
+        0.78,
+        0.24
+      ],
+      "jiaoyunShare": 1.72,
+      "jiaoyunYoY": null,
+      "sourceId": "official-2024-07",
+      "evidence": {
+        "companies": "https://www.cse.net.cn/api/file/loadFile.do?id=251465392134815744",
+        "ages": "https://www.cse.net.cn/api/file/loadFile.do?id=251465557701820416"
+      },
+      "fieldStatus": {},
+      "notes": []
+    },
+    {
+      "period": "2024-08",
+      "ages": [
+        17.25,
+        9.64,
+        5.07,
+        21.96,
+        22.07,
+        24.01
+      ],
+      "origins": {
+        "domestic": 12.71,
+        "foreign": 0.26,
+        "foreignShare": 2.01
+      },
+      "companies": [
+        0.99,
+        0.11,
+        1.02,
+        0.41,
+        0.47,
+        0.48,
+        0.22
+      ],
+      "jiaoyunShare": 1.7,
+      "jiaoyunYoY": null,
+      "sourceId": "official-2024-08",
+      "evidence": {
+        "companies": "https://www.cse.net.cn/api/file/loadFile.do?id=255343957450424320",
+        "ages": "https://www.cse.net.cn/api/file/loadFile.do?id=255344405690449920"
+      },
+      "fieldStatus": {},
+      "notes": []
+    },
+    {
+      "period": "2024-09",
+      "ages": [
+        2.74,
+        0.32,
+        2.86,
+        9.86,
+        28.83,
+        55.39
+      ],
+      "origins": {
+        "domestic": 8.61,
+        "foreign": 0.76,
+        "foreignShare": 8.11
+      },
+      "companies": [
+        0.74,
+        0.1,
+        0.81,
+        0.27,
+        0.27,
+        0.49,
+        0.18
+      ],
+      "jiaoyunShare": 1.9,
+      "jiaoyunYoY": null,
+      "sourceId": "official-2024-09",
+      "evidence": {
+        "companies": "https://www.cse.net.cn/api/file/loadFile.do?id=256541909741207552",
+        "ages": "https://www.cse.net.cn/api/file/loadFile.do?id=256542172889743360"
+      },
+      "fieldStatus": {},
+      "notes": []
+    },
+    {
+      "period": "2024-10",
+      "ages": [
+        3.63,
+        0.91,
+        2.29,
+        8.63,
+        27.56,
+        56.98
+      ],
+      "origins": {
+        "domestic": 14.17,
+        "foreign": 1.12,
+        "foreignShare": 7.33
+      },
+      "companies": [
+        1.02,
+        0.11,
+        1.39,
+        0.75,
+        0.72,
+        1.07,
+        0.29
+      ],
+      "jiaoyunShare": 1.92,
+      "jiaoyunYoY": null,
+      "sourceId": "official-2024-10",
+      "evidence": {
+        "companies": "https://www.cse.net.cn/api/file/loadFile.do?id=260328044736020480",
+        "ages": "https://www.cse.net.cn/api/file/loadFile.do?id=260328242840338432"
+      },
+      "fieldStatus": {},
+      "notes": []
+    },
+    {
+      "period": "2024-11",
+      "ages": [
+        1.56,
+        0.25,
+        1.67,
+        7.15,
+        30.65,
+        58.72
+      ],
+      "origins": {
+        "domestic": 11.29,
+        "foreign": 0.99,
+        "foreignShare": 8.06
+      },
+      "companies": [
+        0.91,
+        0.1,
+        1.04,
+        0.3,
+        0.6,
+        1.02,
+        0.23
+      ],
+      "jiaoyunShare": 1.87,
+      "jiaoyunYoY": null,
+      "sourceId": "official-2024-11",
+      "evidence": {
+        "companies": "https://www.cse.net.cn/api/file/loadFile.do?id=262336652744065024",
+        "ages": "https://www.cse.net.cn/api/file/loadFile.do?id=262336844002230272"
+      },
+      "fieldStatus": {},
+      "notes": []
+    },
+    {
+      "period": "2024-12",
+      "ages": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "origins": {
+        "domestic": null,
+        "foreign": null,
+        "foreignShare": null
+      },
+      "companies": [
+        0.14,
+        0,
+        0.06,
+        0.16,
+        0.19,
+        0,
+        0.19
+      ],
+      "jiaoyunShare": 7.64,
+      "jiaoyunYoY": null,
+      "sourceId": "official-2024-12",
+      "evidence": {
+        "companies": "https://www.cse.net.cn/api/file/loadFile.do?id=264309434952450048"
+      },
+      "fieldStatus": {},
+      "notes": [
+        "年报年龄与游客来源地为全年口径，单月留空；船公司表采用12月列。"
+      ]
+    },
+    {
+      "period": "2025-01",
+      "ages": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "origins": {
+        "domestic": 1.4665,
+        "foreign": 0.0226,
+        "foreignShare": 1.52
+      },
+      "companies": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "jiaoyunShare": null,
+      "jiaoyunYoY": null,
+      "sourceId": "official-2025-01",
+      "evidence": {},
+      "fieldStatus": {
+        "origins.domestic": "derived:(14891-226)/10000",
+        "origins.foreignShare": "derived:100-98.48"
+      },
+      "notes": [
+        "原表未列示的企业当月值留空，不据此补零或认定停运。"
+      ]
+    },
+    {
+      "period": "2025-02",
+      "ages": [
+        7.27,
+        3.98,
+        4.96,
+        15.55,
+        26.34,
+        41.9
+      ],
+      "origins": {
+        "domestic": 2.71,
+        "foreign": 0.07,
+        "foreignShare": 2.52
+      },
+      "companies": [
+        0.28,
+        null,
+        0.38,
+        0.24,
+        0.2,
+        null,
+        null
+      ],
+      "jiaoyunShare": null,
+      "jiaoyunYoY": null,
+      "sourceId": "official-2025-02",
+      "evidence": {
+        "companies": "https://www.cse.net.cn/api/file/loadFile.do?id=270035264622034944",
+        "ages": "https://www.cse.net.cn/api/file/loadFile.do?id=270035454612471808"
+      },
+      "fieldStatus": {},
+      "notes": [
+        "原表未列示的企业当月值留空，不据此补零或认定停运。"
+      ]
+    },
+    {
+      "period": "2025-03",
+      "ages": [
+        1.64,
+        0.2,
+        1.4,
+        5.82,
+        24.14,
+        66.79
+      ],
+      "origins": {
+        "domestic": 10.19,
+        "foreign": 0.89,
+        "foreignShare": 8.03
+      },
+      "companies": [
+        1.12,
+        null,
+        1.02,
+        0.33,
+        0.77,
+        0.99,
+        0.32
+      ],
+      "jiaoyunShare": 2.85,
+      "jiaoyunYoY": 52.381,
+      "sourceId": "official-2025-03",
+      "evidence": {
+        "companies": "https://www.cse.net.cn/api/file/loadFile.do?id=273123274193371136",
+        "ages": "https://www.cse.net.cn/api/file/loadFile.do?id=273123682139766784"
+      },
+      "fieldStatus": {
+        "jiaoyunYoY": "derived:当月披露客运量/上年同月披露客运量-1；含原值舍入误差"
+      },
+      "notes": [
+        "原表未列示的企业当月值留空，不据此补零或认定停运。"
+      ]
+    },
+    {
+      "period": "2025-04",
+      "ages": [
+        2.6,
+        0.42,
+        1.55,
+        6.16,
+        24.17,
+        65.1
+      ],
+      "origins": {
+        "domestic": 13.45,
+        "foreign": 1.22,
+        "foreignShare": 8.32
+      },
+      "companies": [
+        1.04,
+        null,
+        1.14,
+        0.49,
+        0.95,
+        1.23,
+        0.49
+      ],
+      "jiaoyunShare": 3.35,
+      "jiaoyunYoY": -14.0351,
+      "sourceId": "official-2025-04",
+      "evidence": {
+        "companies": "https://www.cse.net.cn/api/file/loadFile.do?id=275450317878853632",
+        "ages": "https://www.cse.net.cn/api/file/loadFile.do?id=275450484522745856"
+      },
+      "fieldStatus": {
+        "jiaoyunYoY": "derived:当月披露客运量/上年同月披露客运量-1；含原值舍入误差"
+      },
+      "notes": [
+        "原表未列示的企业当月值留空，不据此补零或认定停运。"
+      ]
+    },
+    {
+      "period": "2025-05",
+      "ages": [
+        3.37,
+        0.9,
+        2.14,
+        7.97,
+        25.16,
+        60.45
+      ],
+      "origins": {
+        "domestic": 12.04,
+        "foreign": 1.15,
+        "foreignShare": 8.72
+      },
+      "companies": [
+        1.02,
+        0.01,
+        1.04,
+        0.34,
+        0.83,
+        0.97,
+        0.33
+      ],
+      "jiaoyunShare": 2.52,
+      "jiaoyunYoY": -13.1579,
+      "sourceId": "official-2025-05",
+      "evidence": {
+        "companies": "https://www.cse.net.cn/api/file/loadFile.do?id=278355109819187200",
+        "ages": "https://www.cse.net.cn/api/file/loadFile.do?id=278355446994042880"
+      },
+      "fieldStatus": {
+        "jiaoyunYoY": "derived:当月披露客运量/上年同月披露客运量-1；含原值舍入误差"
+      },
+      "notes": []
+    },
+    {
+      "period": "2025-06",
+      "ages": [
+        5.15,
+        3.2,
+        3.88,
+        10.03,
+        25.74,
+        52.0
+      ],
+      "origins": {
+        "domestic": 10.08,
+        "foreign": 0.94,
+        "foreignShare": 8.53
+      },
+      "companies": [
+        0.94,
+        0.14,
+        0.8,
+        0.16,
+        0.53,
+        0.57,
+        0.14
+      ],
+      "jiaoyunShare": 1.29,
+      "jiaoyunYoY": -26.3158,
+      "sourceId": "official-2025-06",
+      "evidence": {
+        "companies": "https://www.cse.net.cn/api/file/loadFile.do?id=281070051481616384",
+        "ages": "https://www.cse.net.cn/api/file/loadFile.do?id=281070374783811584"
+      },
+      "fieldStatus": {
+        "jiaoyunYoY": "derived:当月披露客运量/上年同月披露客运量-1；含原值舍入误差"
+      },
+      "notes": []
+    },
+    {
+      "period": "2025-07",
+      "ages": [
+        16.15,
+        10.64,
+        5.33,
+        18.77,
+        22.49,
+        26.61
+      ],
+      "origins": {
+        "domestic": 12.39,
+        "foreign": 0.33,
+        "foreignShare": 2.59
+      },
+      "companies": [
+        0.95,
+        0.15,
+        0.79,
+        0.21,
+        0.52,
+        0.62,
+        0.24
+      ],
+      "jiaoyunShare": 1.86,
+      "jiaoyunYoY": 0.0,
+      "sourceId": "official-2025-07",
+      "evidence": {
+        "companies": "https://www.cse.net.cn/api/file/loadFile.do?id=284630665469624320",
+        "ages": "https://www.cse.net.cn/api/file/loadFile.do?id=284630877274636288"
+      },
+      "fieldStatus": {
+        "jiaoyunYoY": "derived:当月披露客运量/上年同月披露客运量-1；含原值舍入误差"
+      },
+      "notes": []
+    },
+    {
+      "period": "2025-08",
+      "ages": [
+        18.07,
+        9.64,
+        5.51,
+        21.64,
+        21.77,
+        23.37
+      ],
+      "origins": {
+        "domestic": 12.2,
+        "foreign": 0.44,
+        "foreignShare": 3.48
+      },
+      "companies": [
+        0.94,
+        0.14,
+        0.62,
+        0.22,
+        0.42,
+        0.51,
+        0.24
+      ],
+      "jiaoyunShare": 1.89,
+      "jiaoyunYoY": 9.0909,
+      "sourceId": "official-2025-08",
+      "evidence": {
+        "companies": "https://www.cse.net.cn/api/file/loadFile.do?id=286894530164162560",
+        "ages": "https://www.cse.net.cn/api/file/loadFile.do?id=286894736733634560"
+      },
+      "fieldStatus": {
+        "jiaoyunYoY": "derived:当月披露客运量/上年同月披露客运量-1；含原值舍入误差"
+      },
+      "notes": []
+    },
+    {
+      "period": "2025-09",
+      "ages": [
+        2.21,
+        0.32,
+        2.97,
+        9.3,
+        29.32,
+        55.89
+      ],
+      "origins": {
+        "domestic": 9.24,
+        "foreign": 1.29,
+        "foreignShare": 12.25
+      },
+      "companies": [
+        0.8,
+        0.12,
+        0.6,
+        0.21,
+        0.35,
+        0.83,
+        0.26
+      ],
+      "jiaoyunShare": 2.43,
+      "jiaoyunYoY": 44.4444,
+      "sourceId": "official-2025-09",
+      "evidence": {
+        "companies": "https://www.cse.net.cn/api/file/loadFile.do?id=289875774363664384",
+        "ages": "https://www.cse.net.cn/api/file/loadFile.do?id=289875993151143936"
+      },
+      "fieldStatus": {
+        "jiaoyunYoY": "derived:当月披露客运量/上年同月披露客运量-1；含原值舍入误差"
+      },
+      "notes": []
+    },
+    {
+      "period": "2025-10",
+      "ages": [
+        4.49,
+        1.35,
+        2.84,
+        10.3,
+        26.7,
+        54.31
+      ],
+      "origins": {
+        "domestic": 12.89,
+        "foreign": 1.96,
+        "foreignShare": 13.2
+      },
+      "companies": [
+        1.07,
+        0.13,
+        0.96,
+        0.37,
+        0.48,
+        1.15,
+        0.4
+      ],
+      "jiaoyunShare": 2.7,
+      "jiaoyunYoY": 37.931,
+      "sourceId": "official-2025-10",
+      "evidence": {
+        "companies": "https://www.cse.net.cn/api/file/loadFile.do?id=292209895568048128",
+        "ages": "https://www.cse.net.cn/api/file/loadFile.do?id=292210210428157952"
+      },
+      "fieldStatus": {
+        "jiaoyunYoY": "derived:当月披露客运量/上年同月披露客运量-1；含原值舍入误差"
+      },
+      "notes": []
+    },
+    {
+      "period": "2025-11",
+      "ages": [
+        2.19,
+        0.36,
+        1.83,
+        7.56,
+        29.09,
+        58.96
+      ],
+      "origins": {
+        "domestic": 10.16,
+        "foreign": 1.77,
+        "foreignShare": 14.84
+      },
+      "companies": [
+        0.86,
+        0.1,
+        1.08,
+        0.18,
+        0.47,
+        0.74,
+        0.18
+      ],
+      "jiaoyunShare": 1.54,
+      "jiaoyunYoY": -21.7391,
+      "sourceId": "official-2025-11",
+      "evidence": {
+        "companies": "https://www.cse.net.cn/api/file/loadFile.do?id=295048931353559040",
+        "ages": "https://www.cse.net.cn/api/file/loadFile.do?id=295049170211831808"
+      },
+      "fieldStatus": {
+        "jiaoyunYoY": "derived:当月披露客运量/上年同月披露客运量-1；含原值舍入误差"
+      },
+      "notes": []
+    },
+    {
+      "period": "2025-12",
+      "ages": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "origins": {
+        "domestic": null,
+        "foreign": null,
+        "foreignShare": null
+      },
+      "companies": [
+        0.11,
+        0.1,
+        0.26,
+        0,
+        0.18,
+        0,
+        0
+      ],
+      "jiaoyunShare": 0,
+      "jiaoyunYoY": -100.0,
+      "sourceId": "official-2025-12",
+      "evidence": {
+        "companies": "https://www.cse.net.cn/api/file/loadFile.do?id=298310949245288448"
+      },
+      "fieldStatus": {
+        "jiaoyunYoY": "derived:当月披露客运量/上年同月披露客运量-1；含原值舍入误差"
+      },
+      "notes": [
+        "年报年龄与游客来源地为全年口径，单月留空；船公司表采用12月列。"
+      ]
+    },
+    {
+      "period": "2026-01",
+      "ages": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "origins": {
+        "domestic": null,
+        "foreign": null,
+        "foreignShare": 4.48
+      },
+      "companies": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "jiaoyunShare": null,
+      "jiaoyunYoY": null,
+      "sourceId": "official-2026-01",
+      "evidence": {},
+      "fieldStatus": {},
+      "notes": [
+        "原表未列示的企业当月值留空，不据此补零或认定停运。"
+      ]
+    },
+    {
+      "period": "2026-02",
+      "ages": [
+        46.67,
+        5.32,
+        4.01,
+        13.48,
+        15.12,
+        15.41
+      ],
+      "origins": {
+        "domestic": 3.17,
+        "foreign": 0.05,
+        "foreignShare": 1.55
+      },
+      "companies": [
+        null,
+        null,
+        0.29,
+        null,
+        0.07,
+        null,
+        null
+      ],
+      "jiaoyunShare": null,
+      "jiaoyunYoY": null,
+      "sourceId": "official-2026-02",
+      "evidence": {
+        "companies": "https://www.cse.net.cn/api/file/loadFile.do?id=303904107411800064",
+        "ages": "https://www.cse.net.cn/api/file/loadFile.do?id=303904878492647424"
+      },
+      "fieldStatus": {},
+      "notes": [
+        "原表未列示的企业当月值留空，不据此补零或认定停运。"
+      ]
+    },
+    {
+      "period": "2026-03",
+      "ages": [
+        44.22,
+        0.14,
+        0.83,
+        3.55,
+        14.64,
+        36.62
+      ],
+      "origins": {
+        "domestic": 9.32,
+        "foreign": 1.21,
+        "foreignShare": 11.49
+      },
+      "companies": [
+        1.19,
+        0.1,
+        1.23,
+        null,
+        0.42,
+        0.97,
+        0.19
+      ],
+      "jiaoyunShare": 1.85,
+      "jiaoyunYoY": -40.625,
+      "sourceId": "official-2026-03",
+      "evidence": {
+        "companies": "https://www.cse.net.cn/api/file/loadFile.do?id=307091713786118144",
+        "ages": "https://www.cse.net.cn/api/file/loadFile.do?id=307091886137409536"
+      },
+      "fieldStatus": {
+        "jiaoyunYoY": "derived:当月披露客运量/上年同月披露客运量-1；含原值舍入误差"
+      },
+      "notes": [
+        "原表未列示的企业当月值留空，不据此补零或认定停运。"
+      ]
+    },
+    {
+      "period": "2026-04",
+      "ages": [
+        4.23,
+        1.23,
+        1.44,
+        7.26,
+        23.79,
+        62.06
+      ],
+      "origins": {
+        "domestic": 13.46,
+        "foreign": 2.5,
+        "foreignShare": 15.66
+      },
+      "companies": [
+        1.05,
+        0.14,
+        1.56,
+        null,
+        0.56,
+        1.33,
+        0.22
+      ],
+      "jiaoyunShare": 1.4,
+      "jiaoyunYoY": -55.102,
+      "sourceId": "official-2026-04",
+      "evidence": {
+        "companies": "https://www.cse.net.cn/api/file/loadFile.do?id=312165530110787584",
+        "ages": "https://www.cse.net.cn/api/file/loadFile.do?id=312165723797454848"
+      },
+      "fieldStatus": {
+        "jiaoyunYoY": "derived:当月披露客运量/上年同月披露客运量-1；含原值舍入误差"
+      },
+      "notes": [
+        "原表未列示的企业当月值留空，不据此补零或认定停运。"
+      ]
+    },
+    {
+      "period": "2026-05",
+      "ages": [
+        3.11,
+        0.8,
+        2.01,
+        7.24,
+        24.65,
+        62.2
+      ],
+      "origins": {
+        "domestic": 12.94,
+        "foreign": 2.2,
+        "foreignShare": 14.53
+      },
+      "companies": [
+        1.05,
+        0.13,
+        1.48,
+        null,
+        0.53,
+        1.26,
+        0.44
+      ],
+      "jiaoyunShare": 3.03,
+      "jiaoyunYoY": 33.3333,
+      "sourceId": "official-2026-05",
+      "evidence": {
+        "companies": "https://www.cse.net.cn/api/file/loadFile.do?id=312166285819510784",
+        "ages": "https://www.cse.net.cn/api/file/loadFile.do?id=312166421674065920"
+      },
+      "fieldStatus": {
+        "jiaoyunYoY": "derived:当月披露客运量/上年同月披露客运量-1；含原值舍入误差"
+      },
+      "notes": [
+        "原表未列示的企业当月值留空，不据此补零或认定停运。"
+      ]
+    },
+    {
+      "period": "2026-06",
+      "ages": [
+        3.65,
+        2.6,
+        3.64,
+        9.17,
+        24.63,
+        56.31
+      ],
+      "origins": {
+        "domestic": 9.72,
+        "foreign": 1.36,
+        "foreignShare": 12.27
+      },
+      "companies": [
+        0.78,
+        0.12,
+        1.27,
+        null,
+        0.32,
+        0.69,
+        0.46
+      ],
+      "jiaoyunShare": 4.13,
+      "jiaoyunYoY": 228.5714,
+      "sourceId": "official-2026-06",
+      "evidence": {
+        "companies": "https://www.cse.net.cn/api/file/loadFile.do?id=314697925610438656",
+        "ages": "https://www.cse.net.cn/api/file/loadFile.do?id=314698094610481152"
+      },
+      "fieldStatus": {
+        "jiaoyunYoY": "derived:当月披露客运量/上年同月披露客运量-1；含原值舍入误差"
+      },
+      "notes": [
+        "原表未列示的企业当月值留空，不据此补零或认定停运。"
+      ]
+    },
+    {
+      "period": "2026-07",
+      "ages": [
+        15.79,
+        10.42,
+        5.04,
+        17.95,
+        21.94,
+        28.86
+      ],
+      "origins": {
+        "domestic": 12.5,
+        "foreign": 0.42,
+        "foreignShare": 3.25
+      },
+      "companies": [
+        0.91,
+        0.14,
+        1.41,
+        null,
+        0.46,
+        0.59,
+        0.44
+      ],
+      "jiaoyunShare": 3.42,
+      "jiaoyunYoY": 83.3333,
+      "sourceId": "official-2026-07",
+      "evidence": {
+        "companies": "https://www.cse.net.cn/api/file/loadFile.do?id=318213436384215040",
+        "ages": "https://www.cse.net.cn/api/file/loadFile.do?id=318213673336176640"
+      },
+      "fieldStatus": {
+        "jiaoyunYoY": "derived:当月披露客运量/上年同月披露客运量-1；含原值舍入误差"
+      },
+      "notes": [
+        "原表未列示的企业当月值留空，不据此补零或认定停运。"
+      ]
+    },
+    {
+      "period": "2026-08",
+      "ages": [
+        17.83,
+        9.62,
+        5.02,
+        21.01,
+        21.54,
+        24.98
+      ],
+      "origins": {
+        "domestic": 13.92,
+        "foreign": 0.51,
+        "foreignShare": 3.53
+      },
+      "companies": [
+        1.03,
+        0.14,
+        1.21,
+        null,
+        0.43,
+        0.85,
+        0.78
+      ],
+      "jiaoyunShare": 5.42,
+      "jiaoyunYoY": 225.0,
+      "sourceId": "official-2026-08",
+      "evidence": {
+        "companies": "https://www.cse.net.cn/api/file/loadFile.do?id=319659993021284352",
+        "ages": "https://www.cse.net.cn/api/file/loadFile.do?id=319660239855026176"
+      },
+      "fieldStatus": {
+        "jiaoyunYoY": "derived:当月披露客运量/上年同月披露客运量-1；含原值舍入误差"
+      },
+      "notes": [
+        "原表未列示的企业当月值留空，不据此补零或认定停运。"
+      ]
+    },
+    {
+      "period": "2026-09",
+      "ages": [
+        2.83,
+        0.5,
+        3.77,
+        10.29,
+        27.46,
+        55.16
+      ],
+      "origins": {
+        "domestic": 9.75,
+        "foreign": 2.2,
+        "foreignShare": 18.41
+      },
+      "companies": [
+        0.83,
+        0.11,
+        1.09,
+        null,
+        0.84,
+        0.62,
+        0.38
+      ],
+      "jiaoyunShare": 3.2,
+      "jiaoyunYoY": 46.1538,
+      "sourceId": "official-2026-09",
+      "evidence": {
+        "companies": "https://www.cse.net.cn/api/file/loadFile.do?id=322318864639590400",
+        "ages": "https://www.cse.net.cn/api/file/loadFile.do?id=322319090262736896"
+      },
+      "fieldStatus": {
+        "jiaoyunYoY": "derived:当月披露客运量/上年同月披露客运量-1；含原值舍入误差"
+      },
+      "notes": [
+        "原表未列示的企业当月值留空，不据此补零或认定停运。"
+      ]
+    }
+  ],
+  "annualRecords": [
+    {
+      "period": "2024",
+      "scope": "annual",
+      "ages": [
+        6.3,
+        3.11,
+        2.98,
+        10.95,
+        25.78,
+        50.88
+      ],
+      "origins": {
+        "domestic": 117.67,
+        "foreign": 5.92,
+        "foreignShare": 4.79
+      },
+      "sourceId": "official-2024-12",
+      "evidence": {
+        "ages": "https://www.cse.net.cn/api/file/loadFile.do?id=264309617736024064"
+      }
+    },
+    {
+      "period": "2025",
+      "scope": "annual",
+      "ages": [
+        6.59,
+        3.25,
+        3.23,
+        11.44,
+        25.41,
+        50.08
+      ],
+      "origins": {
+        "domestic": 108.34,
+        "foreign": 11.76,
+        "foreignShare": 9.79
+      },
+      "sourceId": "official-2025-12",
+      "evidence": {
+        "ages": "https://www.cse.net.cn/api/file/loadFile.do?id=298311369408643072"
+      }
+    }
+  ]
+}

@@ -38,7 +38,12 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
       assert.ok(measured.plotWidth/measured.width>.65,'plot is squeezed: '+JSON.stringify(measured));
       assert.ok(measured.height>=250&&measured.height<=330,'plot height: '+JSON.stringify(measured));
     }
-    assert.equal(await page.locator('#detail .site-value-option').count(),0);
+    assert.equal(await page.locator('#detail .site-value-option').count(),1);
+    const valuesToggle=page.locator('#detail input[data-value-kind="value"]');
+    assert(await valuesToggle.isChecked());assert(await page.locator('#detail .site-value-label').count()>0);
+    await valuesToggle.uncheck();assert.equal(await page.locator('#detail .site-value-label').count(),0);
+    await page.selectOption('#years','3');assert.equal(await valuesToggle.isChecked(),false);
+    await valuesToggle.check();assert(await page.locator('#detail .site-value-label').count()>0);
     assert.equal(await page.locator('#detail .macro-trend-change b').evaluate(el=>getComputedStyle(el).fontSize),'16px');
     await checkPlotWidth();
     if(out){fs.mkdirSync(out,{recursive:true});await page.evaluate(()=>scrollTo(0,0));await page.screenshot({path:path.join(out,'宏观晨报-首屏.png'),fullPage:false});}
@@ -97,6 +102,7 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
     assert.deepEqual(errors,[]);console.log('PASS: no-jump KPI selection, single measured plot, compact detail without repeated sections, frequency/health/search filters, URL restore, CSV, chart keyboard access, daily performance, five viewport widths, lazy prediction loading, partial failure, full failure and retry.');
   }finally{await browser.close();await new Promise(r=>server.close(r));}
 })().catch(e=>{console.error(e);server.close();process.exitCode=1;});
+
 
 
 
