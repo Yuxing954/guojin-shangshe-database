@@ -7,12 +7,15 @@
 <link rel="stylesheet" href="scripts/site-charts.css?v=20261019controls">
 <link rel="stylesheet" href="scripts/industry-embed.css?v=20261014viewfit">
 <link rel="stylesheet" href="scripts/cruise-dashboard.css?v=20261023details">
+<link rel="stylesheet" href="scripts/cruise-analysis.css?v=20261023analysis">
 <script defer src="scripts/site-ui.js?v=20261021cruise"></script>
 <script defer src="scripts/site-data.js?v=20261022dates"></script>
 <script defer src="scripts/site-shell.js?v=20261014monthly"></script>
 <script defer src="scripts/site-charts.js?v=20261022defaults"></script>
-<script defer src="scripts/cruise-dashboard.js?v=20261023officialjan"></script>
+<script defer src="scripts/cruise-dashboard.js?v=20261023analysis"></script>
 <script defer src="scripts/cruise-details.js?v=20261023details"></script>
+<script defer src="scripts/cruise-analysis-model.js?v=20261023analysis"></script>
+<script defer src="scripts/cruise-analysis.js?v=20261023analysis"></script>
 <script defer src="scripts/industry-embed.js?v=20261014viewfit"></script>
 <link rel="manifest" href="site.webmanifest">
 <meta name="theme-color" content="#4d58a4"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="国金商社"><meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -23,14 +26,18 @@
 </head>
 <body class="site-page cruise-page" data-site-section="industry">
 <main class="site-main">
-<header class="cruise-head"><div><h1>长江三峡游轮</h1><p id="asof">正在读取月度运行数据…</p></div><div class="cruise-links"><a href="data-notes.html#tourism">数据说明</a><a href="data/tourism/three-gorges-cruises.csv" download>下载全量 CSV</a><button id="export" disabled>导出当前</button></div></header>
+<header class="cruise-head"><div><h1>长江三峡游轮</h1><p id="asof">正在读取月度运行数据…</p></div><div class="cruise-links"><a href="data-notes.html#tourism">数据说明</a><a id="runtime-csv" href="data/tourism/three-gorges-cruises.csv" download>下载全量 CSV</a><button id="export" disabled>导出当前</button></div></header>
 <div id="load-error" role="alert" hidden></div>
 <section id="dashboard" hidden>
+<nav class="cruise-tabs" aria-label="三峡游轮子看板"><button data-cruise-view="overview" aria-pressed="true">运行总览</button><button data-cruise-view="audience" aria-pressed="false">客群与季节</button><button data-cruise-view="operators" aria-pressed="false">公司竞争</button></nav>
+<div id="cruise-overview">
 <div class="cruise-controls"><label>期间 <select id="year"><option value="all">全部年份</option><option>2026</option><option>2025</option><option>2024</option></select></label><label>口径 <select id="scope"><option value="monthly">当月</option><option value="ytd">年初累计</option></select></label></div>
 <div id="kpis" class="cruise-kpis"></div>
 <div id="charts" class="cruise-charts"></div>
 <section class="cruise-panel"><h2>月度明细</h2><div class="cruise-table-wrap" tabindex="0"><table id="monthly-table"></table></div></section>
 <div id="cruise-details" aria-live="polite"></div>
+</div>
+<section id="cruise-analysis" hidden></section>
 </section>
 </main>
 </body>
