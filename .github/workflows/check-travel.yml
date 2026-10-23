@@ -1,0 +1,19 @@
+name: Check tourism dashboard
+on:
+  push:
+    paths: ['travel-dashboard.html', 'scripts/travel-*', 'data/tourism/dashboard.json', 'data/tourism/inbound-official.json', 'tests/travel*', '.github/workflows/check-travel.yml']
+  pull_request:
+    paths: ['travel-dashboard.html', 'scripts/travel-*', 'data/tourism/dashboard.json', 'data/tourism/inbound-official.json', 'tests/travel*', '.github/workflows/check-travel.yml']
+jobs:
+  tourism:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node tests/travel-data.test.cjs
+      - run: npm install --no-save playwright
+      - run: npx playwright install --with-deps chromium
+      - run: node tests/travel.browser.cjs
+

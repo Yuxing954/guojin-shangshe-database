@@ -1,0 +1,40 @@
+{
+  "checkedAt": "2026-10-23",
+  "unit": "万人次",
+  "sources": [
+    {"id":"nia2022","name":"2022年移民管理主要数据","publisher":"国家移民管理局","quality":"官方原始披露","publishedAt":"2023-01-17","url":"https://www.nia.gov.cn/n741440/n741567/c1562025/content.html"},
+    {"id":"nia2023","name":"2023年全国出入境人员","publisher":"国家移民管理局","quality":"官方原始披露","publishedAt":"2024-01-18","url":"https://www.nia.gov.cn/n741440/n741567/c1632812/content.html"},
+    {"id":"nia2024","name":"2024年移民管理工作新闻发布会","publisher":"国家移民管理局","quality":"官方原始披露","publishedAt":"2025-01-14","url":"https://www.nia.gov.cn/n741435/n1194535/n1693381/index.html"},
+    {"id":"nia2025","name":"2025年近7亿人次出入境","publisher":"国家移民管理局","quality":"官方原始披露","publishedAt":"2026-01-28","url":"https://www.nia.gov.cn/n741440/n741567/c1762355/content.html"},
+    {"id":"nia2023h1","name":"2023年上半年1.68亿人次出入境","publisher":"国家移民管理局","quality":"官方原始披露","publishedAt":"2023-07-19","url":"https://www.nia.gov.cn/n741440/n741567/c1589194/content.html"},
+    {"id":"nia2024h1","name":"2024年上半年移民管理工作新闻发布会","publisher":"国家移民管理局","quality":"官方原始披露","publishedAt":"2024-07-05","url":"https://www.nia.gov.cn/n741435/n1194535/n1660321/index.html"},
+    {"id":"nia2024in","name":"2024年1—6月入境外国人","publisher":"国家移民管理局","quality":"官方原始披露","publishedAt":"2024-07-05","url":"https://www.nia.gov.cn/n794014/n1050181/n1050498/c1660229/content.html"},
+    {"id":"nia2025h1","name":"2025年上半年移民管理工作新闻发布会","publisher":"国家移民管理局","quality":"官方原始披露","publishedAt":"2025-07-16","url":"https://www.nia.gov.cn/n741435/n1194535/n1735231/index.html"},
+    {"id":"nia2026h1","name":"2026年上半年移民管理工作新闻发布会","publisher":"国家移民管理局","quality":"官方原始披露","publishedAt":"2026-07-10","url":"https://www.nia.gov.cn/n741435/n1194535/n1789284/index.html"},
+    {"id":"nia2024q3","name":"2024年三季度移民管理工作新闻发布会","publisher":"国家移民管理局","quality":"官方原始披露","publishedAt":"2024-10-18","url":"https://www.nia.gov.cn/n741435/n1194535/n1679265/index.html"},
+    {"id":"nia2025q3","name":"2025年三季度移民管理工作新闻发布会","publisher":"国家移民管理局","quality":"官方原始披露","publishedAt":"2025-10-16","url":"https://www.nia.gov.cn/n741435/n1194535/n1747234/index.html"},
+    {"id":"nia2026q3","name":"2026年三季度出入境及免签入境数据","publisher":"国家移民管理局","quality":"官方原始披露","publishedAt":"2026-10-20","url":"https://www.nia.gov.cn/n794014/n794021/c1820896/content.html"},
+    {"id":"mct2023","name":"2023年国民经济和社会发展统计公报","publisher":"国家统计局／文旅部","quality":"官方原始披露","publishedAt":"2024-02-29","url":"https://www.stats.gov.cn/sj/zxfb/202402/t20240228_1947915.html"},
+    {"id":"mct2024","name":"2024年文化和旅游发展统计公报","publisher":"文化和旅游部","quality":"官方原始披露","publishedAt":"2025-05-30","url":"https://zwgk.mct.gov.cn/zfxxgkml/tjxx/202505/t20250530_960335.html"},
+    {"id":"mct2025","name":"2025年文化和旅游发展统计公报","publisher":"文化和旅游部","quality":"官方原始披露","publishedAt":"2026-06-02","url":"https://zwgk.mct.gov.cn/zfxxgkml/tjxx/202606/t20260602_966073.html"}
+  ],
+  "border": [
+    {"period":"2022","scope":"annual","total":11570,"mainland":6463.5,"hmt":4659.1,"foreign":447.3,"sourceId":"nia2022"},
+    {"period":"2023","scope":"annual","total":42400,"mainland":20600,"hmt":18300,"foreign":3547.8,"foreignYoY":693.1,"sourceId":"nia2023"},
+    {"period":"2024","scope":"annual","total":61000,"mainland":29100,"hmt":25400,"foreign":6488.2,"foreignYoY":82.9,"visaFree":2011.5,"visaYoY":112.3,"sourceId":"nia2024"},
+    {"period":"2025","scope":"annual","total":69700,"mainland":33500,"hmt":27900,"foreign":8203.5,"foreignYoY":26.4,"visaFree":3008,"visaYoY":49.5,"visaShare":73.1,"sourceId":"nia2025"},
+    {"period":"2023H1","scope":"h1","total":16800,"mainland":8027.6,"hmt":7490.3,"foreign":843.8,"note":"外国人不含边民；不与含边民口径直接计算同比。","sourceId":"nia2023h1"},
+    {"period":"2024H1","scope":"h1","total":28700,"mainland":13700,"hmt":12100,"foreign":2922,"foreignIn":1463.5,"foreignInYoY":152.7,"foreignInSourceId":"nia2024in","visaFree":854.2,"visaYoY":190.1,"visaShare":58,"sourceId":"nia2024h1"},
+    {"period":"2025H1","scope":"h1","total":33300,"mainland":15900,"hmt":13600,"foreign":3805.3,"foreignYoY":30.2,"visaFree":1364,"visaYoY":53.9,"visaShare":71.2,"sourceId":"nia2025h1"},
+    {"period":"2026H1","scope":"h1","total":36900,"mainland":17600,"hmt":14700,"foreign":4590.6,"foreignYoY":20.6,"foreignIn":2291.4,"foreignInYoY":20.4,"visaFree":1781.5,"visaYoY":30.6,"visaShare":77.7,"mainlandOut":8802.3,"mainlandOutYoY":10.5,"topOrigins":["韩国","俄罗斯","马来西亚","越南","泰国","新加坡","美国","日本","蒙古","澳大利亚"],"topOriginsShare":62,"sourceId":"nia2026h1"},
+    {"period":"2024Q3","scope":"q3","total":16000,"mainland":7854.5,"hmt":6469.4,"foreign":1646.1,"foreignYoY":50.5,"foreignIn":818.6,"foreignInYoY":48.8,"visaFree":488.5,"visaYoY":78.6,"sourceId":"nia2024q3"},
+    {"period":"2025Q3","scope":"q3","total":17800,"mainland":8937.2,"hmt":6873.1,"foreign":2013.4,"foreignYoY":22.3,"visaFree":724.6,"visaYoY":48.3,"visaShare":72.2,"sourceId":"nia2025q3"},
+    {"period":"2026Q3","scope":"q3","total":19200,"mainland":9596,"hmt":7314,"foreign":2327.2,"foreignYoY":15.6,"foreignIn":1160.1,"foreignInYoY":15.6,"visaFree":899.2,"visaYoY":24.1,"visaShare":77.5,"mainlandOut":4850.8,"mainlandOutYoY":7.5,"topOrigins":["俄罗斯","韩国","越南","马来西亚","美国","蒙古国","日本","新加坡","泰国","澳大利亚"],"topOriginsShare":63.9,"sourceId":"nia2026q3"}
+  ],
+  "tourists":[
+    {"period":"2023","total":8203,"foreign":1378,"hmt":6824,"sourceId":"mct2023"},
+    {"period":"2024","total":13190.2,"totalYoY":60.8,"foreign":2694,"foreignYoY":95.5,"hmt":10496.2,"sourceId":"mct2024"},
+    {"period":"2025","total":15450,"totalYoY":17.1,"foreign":3517,"foreignYoY":30.6,"hmt":11932,"sourceId":"mct2025"}
+  ]
+}
+
