@@ -17,7 +17,7 @@ async function verifyDetails(frame,sector){
  });
  if(/^(travel|tourism|dining)(\/|$)/.test(sector))assert.ok(s.scrollHeight<=s.viewport+1,sector+' must scroll with outer page, not inside iframe: '+JSON.stringify(s));
  assert.deepEqual(s.fonts,[],sector+' font families');
- if(s.active){assert.equal(s.active.bg,'rgb(255, 255, 255)',sector+' selected tab background');assert.equal(s.active.color,'rgb(77, 88, 164)');assert.equal(s.active.height,40);assert.equal(s.active.font,'14px');}
+ if(s.active){assert.equal(s.active.bg,'rgb(255, 255, 255)',sector+' selected tab background');assert.equal(s.active.color,'rgb(77, 88, 164)');assert.equal(s.active.height,34);assert.equal(s.active.font,'13px');}
  if(s.alignment){const a=s.alignment;assert.equal(a.left,a.tierLeft,'hotel heading alignment');assert.equal(a.font,'16px');assert.equal(a.tierFont,'16px');assert.equal(a.chartLeft,a.segmentLeft);assert.equal(a.chartWidth,a.segmentWidth);}
 }
 

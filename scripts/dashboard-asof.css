@@ -17,9 +17,9 @@ body.site-page.industry-hub #gold-content .gj-header{margin:0 0 16px!important;p
 @media(max-width:480px){body.site-page #asof.dashboard-asof{gap:4px 8px!important}body.site-page #asof.dashboard-asof :is(.dashboard-asof-primary,.dashboard-asof-item){gap:8px}}
 
 /* Compact metadata rhythm shared by every industry view. */
-body.site-page #asof.dashboard-asof{min-height:28px!important;margin:0 0 14px!important}
-body.site-page.industry-embedded .industry-meta{min-height:28px!important;margin:0 0 14px!important}
+body.site-page #asof.dashboard-asof{min-height:28px!important;margin:0 0 16px!important}
+body.site-page.industry-embedded .industry-meta{min-height:28px!important;margin:0 0 16px!important}
 body.site-page.industry-embedded .industry-meta #asof.dashboard-asof{margin:0!important}
-body.site-page.industry-embedded .embedded-asof{min-height:28px!important;margin:0 0 14px!important}
+body.site-page.industry-embedded .embedded-asof{min-height:28px!important;margin:0 0 16px!important}
 body.site-page.industry-hub #gold-content .gj-header{margin:0 0 14px!important}
 @media(max-width:640px){body.site-page #asof.dashboard-asof{font-size:12px!important;line-height:20px!important}}
