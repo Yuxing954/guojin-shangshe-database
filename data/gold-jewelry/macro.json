@@ -6310,27 +6310,29 @@
     }
   ],
   "fedwatchUpdate": {
-    "status": "ready",
-    "attemptedAt": "2026-10-22T03:39:05.500Z",
+    "status": "error",
+    "attemptedAt": "2026-10-23T00:27:36+00:00",
     "sourceUrl": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html",
     "observedAt": null,
     "retrievedAt": "2026-10-22T03:39:05.500Z",
     "meetingProbabilities": {
-      "status": "ready",
+      "status": "error",
       "meetings": 10,
       "rateRanges": 8,
-      "changed": true
+      "changed": false
     },
     "fundFutures": {
-      "status": "ready",
+      "status": "error",
       "contracts": 13,
-      "changed": true
+      "changed": false
     },
     "evidence": {
       "path": "data/macro/fedwatch-receipt-20261022T033905500Z.json",
       "sha256": "7bf35c655e610d9b8919c85d3944de3631f753111d8b826152ca0ae8db07fd8a"
     },
-    "note": "整表源时点未披露；获取时间与源观察时间分开保存。"
+    "note": "整表源时点未披露；获取时间与源观察时间分开保存。",
+    "errorCode": "BROWSER_TABLE_SWITCH_TIMEOUT",
+    "error": "浏览器切换完整表超时，未取得两张完整表；保留上次有效概率和期货快照。"
   },
   "seriesUpdate": {
     "attemptedAt": "2026-10-14T00:33:58Z",
