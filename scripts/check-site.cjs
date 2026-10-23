@@ -9,6 +9,7 @@ for(const file of pages){
   if(file==='consumption-macro.html'){assert.match(html,/location\.replace\("macro\.html\?view=indicators"\)/);continue;}
   if(file==='companies.html'||file==='index.html')continue; // Retired entry is an immediate compatibility redirect.
   const head=html.slice(0,html.indexOf('</head>')),styles=[...head.matchAll(/<link\b[^>]*href="(scripts\/[^"?]+\.css)[^"\s]*"/g)].map(m=>m[1]);
+  if(['macro.html','regional-retail.html','industry.html'].includes(file))assert.equal(styles.pop(),'scripts/hub-navigation.css',file+' shared top navigation ordering');
   const industryPages=['industry.html','hotel-dashboard.html','hotel-holiday-dashboard.html','hotel-groups.html','dutyfree-dashboard.html','cruise-dashboard.html','dining.html','travel-dashboard.html'];
   if(industryPages.includes(file)){
     assert.equal(styles.at(-1),'scripts/industry-design.css',file+' industry adapter ordering');

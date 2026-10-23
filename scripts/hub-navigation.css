@@ -1,0 +1,37 @@
+/* Shared top-level tabs: macro, regional retail and industry. */
+body.industry-hub{--hub-columns:5}
+
+body.site-page:is(.macro-hub,.industry-hub) :is(#macro-navigation,#sector-tabs).hub-navigation{
+ display:grid!important;grid-template-columns:repeat(var(--hub-columns,4),minmax(0,1fr))!important;
+ width:100%!important;max-width:100%;height:60px;min-height:60px;
+ gap:12px!important;margin:0 0 20px!important;padding:0!important;
+ overflow:visible!important;border:0!important;border-bottom:1px solid var(--site-line)!important;
+ border-radius:0!important;background:transparent!important;
+}
+body.site-page:is(.macro-hub,.industry-hub) :is(#macro-navigation,#sector-tabs).hub-navigation>:is(a,button){
+ display:flex!important;align-items:center;justify-content:center;flex-direction:row;
+ width:100%!important;min-width:0!important;height:60px!important;min-height:60px!important;
+ gap:7px;padding:10px 4px!important;margin:0!important;box-sizing:border-box;
+ border:0!important;border-bottom:3px solid transparent!important;border-radius:0!important;
+ background:transparent!important;box-shadow:none!important;color:var(--site-muted)!important;
+ font-weight:500;font-family:inherit;font-size:15px!important;line-height:22px!important;
+ text-decoration:none;white-space:nowrap;transition:none!important;
+}
+body.site-page:is(.macro-hub,.industry-hub) :is(#macro-navigation,#sector-tabs).hub-navigation>:is([aria-current=page],[aria-pressed=true]){
+ color:var(--site-accent)!important;border-bottom-color:var(--site-accent)!important;font-weight:600;
+}
+body.site-page:is(.macro-hub,.industry-hub) .hub-navigation .industry-sector-icon{
+ display:flex;width:20px;height:20px;align-items:center;justify-content:center;
+ background:transparent!important;border-radius:0;flex:none;
+}
+body.site-page:is(.macro-hub,.industry-hub) .hub-navigation .industry-sector-icon svg{width:18px;height:18px}
+@media(max-width:760px){
+ body.site-page:is(.macro-hub,.industry-hub) :is(#macro-navigation,#sector-tabs).hub-navigation{height:68px;min-height:68px;gap:6px!important}
+ body.site-page:is(.macro-hub,.industry-hub) :is(#macro-navigation,#sector-tabs).hub-navigation>:is(a,button){
+  height:68px!important;min-height:68px!important;flex-direction:column;gap:4px;
+  padding:8px 0!important;font-size:12px!important;line-height:20px!important;
+ }
+}
+html{scrollbar-gutter:stable}
+
+body.site-page:is(.macro-hub,.industry-hub) .hub-navigation>:is(a,button):focus-visible{outline:2px solid var(--site-accent);outline-offset:-2px}
