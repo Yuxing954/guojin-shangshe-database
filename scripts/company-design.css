@@ -135,3 +135,9 @@ body.company-hub .cw-company-icon svg[data-brand=hworld],body.company-hub .cw-co
 body.site-page.company-hub #oh-workspace[hidden]{display:none!important}
 body.company-hub[data-view=empty] #oh-status{padding:36px 16px;text-align:center;color:var(--site-muted)}
 @media(max-width:760px){body.company-hub .cw-company-icon{flex-basis:40px;width:40px}body.company-hub .cw-company-icon svg{width:38px;height:28px}body.company-hub .cw-company-icon svg[data-brand=hworld],body.company-hub .cw-company-icon svg[data-brand=jinjiang]{width:28px}}
+
+body.site-page.company-hub #oh-profile[hidden]{display:none!important}
+body.company-hub #oh-toolbar .cw-actions{margin:0;gap:12px;flex-wrap:wrap;align-self:center}
+body.company-hub #oh-toolbar .oh-peer-filters>.cw-actions{margin-left:auto}
+body.company-hub #cw-peer-reading{margin:16px 0}
+@media(max-width:760px){body.company-hub #oh-toolbar .oh-peer-filters>.cw-actions{grid-column:1/-1;width:100%;justify-content:flex-end}}

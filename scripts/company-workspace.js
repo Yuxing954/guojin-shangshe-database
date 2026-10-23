@@ -11,7 +11,7 @@
   const current=$('oh-toolbar')?.querySelector('#oh-export-view');
   menu.querySelector('#oh-export-view')?.remove();if(current){current.textContent='导出当前筛选';menu.lastChild.prepend(current);}
   menu.hidden=!menu.lastChild.children.length;menu.open=false;
-  $('oh-profile')?.append(actions);
+  mountActions();
  }
  document.addEventListener('click',e=>{if(menu&&!menu.contains(e.target))menu.open=false;});
  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menu?.open){menu.open=false;menu.querySelector('summary').focus();}});
@@ -31,7 +31,7 @@
   const cfg=plots.get(host),box=$('cw-peer-reading');if(!cfg||!box)return;
   const row=cfg.rows[index]||cfg.rows.at(-1);if(!row)return;
   const f=(v,p)=>Number.isFinite(v)?new Intl.NumberFormat('zh-CN',{maximumFractionDigits:p}).format(v):'—';
-  box.innerHTML='<div class="oh-block-head"><h3>'+esc(row.period)+' · '+names[metric]+'</h3><small>'+esc([...($('oh-profile')?.querySelectorAll('p,.oh-tag')||[])].map(e=>e.textContent).join(' · ')+' · '+cfg.opt.unit)+'</small></div><div class="oh-scroll"><table class="oh-table"><thead><tr><th>公司 / 口径</th><th>'+names[metric]+' · '+esc(cfg.opt.unit)+'</th><th>同比 · '+esc(cfg.opt.changeUnit)+'</th></tr></thead><tbody>'+row.values.map((v,i)=>'<tr><td>'+esc(v.name)+(index===cfg.rows.length-1&&document.querySelectorAll('.cw-full-summary tbody tr')[i]?.querySelector('td:first-child small')?'<small>'+esc(document.querySelectorAll('.cw-full-summary tbody tr')[i].querySelector('td:first-child small').textContent)+'</small>':'')+'</td><td>'+f(v.value,cfg.opt.precision)+'</td><td>'+f(v.change,1)+'</td></tr>').join('')+'</tbody></table></div>';
+  box.innerHTML='<div class="oh-block-head"><h3>'+esc(row.period)+' · '+names[metric]+'</h3><small>'+esc(($('oh-profile')?.dataset.cwContext||'')+' · '+cfg.opt.unit)+'</small></div><div class="oh-scroll"><table class="oh-table"><thead><tr><th>公司 / 口径</th><th>'+names[metric]+' · '+esc(cfg.opt.unit)+'</th><th>同比 · '+esc(cfg.opt.changeUnit)+'</th></tr></thead><tbody>'+row.values.map((v,i)=>'<tr><td>'+esc(v.name)+(index===cfg.rows.length-1&&document.querySelectorAll('.cw-full-summary tbody tr')[i]?.querySelector('td:first-child small')?'<small>'+esc(document.querySelectorAll('.cw-full-summary tbody tr')[i].querySelector('td:first-child small').textContent)+'</small>':'')+'</td><td>'+f(v.value,cfg.opt.precision)+'</td><td>'+f(v.change,1)+'</td></tr>').join('')+'</tbody></table></div>';
  }
  function connect(host,result){
   if(!comparison())return;
@@ -61,14 +61,21 @@
    tabs.innerHTML=available.map(i=>'<button type="button" data-cw-metric="'+i+'">'+names[i]+'</button>').join('');content.prepend(tabs);
    const original=content.querySelector('article:not([data-cw-plot])');
    if(original){const details=document.createElement('details');details.className='oh-history cw-full-summary';details.innerHTML='<summary>完整指标与来源</summary>';original.before(details);details.append(original);}
-   const reading=document.createElement('article');reading.id='cw-peer-reading';reading.className='oh-block';tabs.after(reading);
+   const reading=document.createElement('article');reading.id='cw-peer-reading';reading.className='oh-block';content.append(reading);const full=content.querySelector('.cw-full-summary');if(full)content.append(full);
   }else{
    content.querySelectorAll('.oh-kpi').forEach((card,i)=>{const label=card.querySelector(':scope>span');if(!label||!names.includes(label.textContent))return;const button=document.createElement('button');button.type='button';button.className='cw-metric-select';button.dataset.cwMetric=i;button.textContent=label.textContent;button.setAttribute('aria-label',label.textContent+'趋势');label.replaceWith(button);card.classList.add('cw-metric-card');});
   }
   content.querySelectorAll('[data-cw-metric]').forEach(b=>b.onclick=()=>selectMetric(Number(b.dataset.cwMetric)));
   selectMetric(metric);
  }
- function mountActions(){if(actions)$('oh-profile')?.append(actions);}
+ function mountActions(){
+  const profile=$('oh-profile');if(!profile)return;
+  if(comparison()){
+   const context=[...profile.querySelectorAll('p,.oh-tag')].map(e=>e.textContent).join(' · ');if(context)profile.dataset.cwContext=context;
+   profile.replaceChildren();profile.hidden=true;
+   const toolbar=$('oh-toolbar'),target=toolbar?.querySelector('.dh-tools,.oh-peer-filters')||toolbar;if(actions&&target)target.append(actions);
+  }else{profile.hidden=false;if(actions)profile.append(actions);}
+ }
  function enhance(){const content=$('oh-content');if(!content||content.firstElementChild===lastContent)return;exportMenu();filters();metrics();lastContent=content.firstElementChild;}
  function begin(){menu?.querySelector('#oh-export-view')?.remove();}
  function companyButton(c){return '<button type="button" class="oh-company" data-company="'+esc(c.id)+'" aria-pressed="false"><span class="cw-company-icon">'+CompanyLogos[c.id]+'</span><span><strong>'+esc(c.name)+'</strong><small>'+esc(c.ticker)+'</small></span><span class="cw-check" aria-hidden="true">✓</span></button>';}
