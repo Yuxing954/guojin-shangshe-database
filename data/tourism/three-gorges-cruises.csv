@@ -1,6 +1,6 @@
-﻿period,scope,sailings,passengers,load,sailingsYoY,passengersYoY,loadYoYPp,nonOvernightSailings,nonOvernightPassengers,status,source_urls,field_sources,notes
-2024-01,monthly,,,,,,,,,待核验,https://m.bjnews.com.cn/detail/1709685733168326.html,{},未找到2024年1月原始月报，数值留空。2024年2月初披累计减当月可得80艘次、1.02万人，但与后续月报衔接和同比基数存在差异，不入主序列。
-2024-01,ytd,,,,,,,,,待核验,https://m.bjnews.com.cn/detail/1709685733168326.html,{},未找到2024年1月原始月报，数值留空。2024年2月初披累计减当月可得80艘次、1.02万人，但与后续月报衔接和同比基数存在差异，不入主序列。
+period,scope,sailings,passengers,load,sailingsYoY,passengersYoY,loadYoYPp,nonOvernightSailings,nonOvernightPassengers,status,source_urls,field_sources,notes
+2024-01,monthly,79.0,1.0025,52.45,243.48,209.32,-13.64,,,官方披露,https://www.cse.net.cn/#/infodetail/238852608230424576 | https://m.bjnews.com.cn/detail/1709685733168326.html,"{""monthly.*"": ""cq-2024-01-official"", ""ytd.*"": ""cq-2024-01-official""}",2026-10-23找到官网2024年1月原始快讯，采用79艘次、10025人、床位载客率52.45%；1月累计与当月相同。原2月累计减当月线索为80艘次、1.02万人，未据此覆盖1月原披露。
+2024-01,ytd,79.0,1.0025,52.45,243.48,209.32,-13.64,,,官方披露,https://www.cse.net.cn/#/infodetail/238852608230424576 | https://m.bjnews.com.cn/detail/1709685733168326.html,"{""monthly.*"": ""cq-2024-01-official"", ""ytd.*"": ""cq-2024-01-official""}",2026-10-23找到官网2024年1月原始快讯，采用79艘次、10025人、床位载客率52.45%；1月累计与当月相同。原2月累计减当月线索为80艘次、1.02万人，未据此覆盖1月原披露。
 2024-02,monthly,164.0,2.87,58.15,62.38,86.75,-2.62,,,转引披露,https://m.bjnews.com.cn/detail/1709685733168326.html,{},
 2024-02,ytd,244.0,3.89,56.56,96.77,109.15,-5.08,,,转引披露,https://m.bjnews.com.cn/detail/1709685733168326.html,{},
 2024-03,monthly,496.0,9.9,63.07,9.26,-21.18,-28.11,,,转引披露,https://m.bjnews.com.cn/detail/1712195196169814.html,{},
@@ -8,7 +8,7 @@
 2024-04,monthly,569.0,15.7,86.02,-0.35,-5.14,-6.75,,,转引披露,https://travel.tom.com/202405/1181202271.html,{},
 2024-04,ytd,1308.0,29.46,72.1,14.14,-4.91,-17.26,,,转引披露,https://travel.tom.com/202405/1181202271.html,{},
 2024-05,monthly,611.0,15.25,79.49,2.17,-7.01,-9.62,,,转引披露,https://info.chineseshipping.com.cn/cninfo/News/202406/t20240606_1391031.shtml | https://www.sohu.com/a/788109230_121284943,"{""ytd.*"": ""cq-2024-05-ytd""}",2024年5月累计载客率及其同比未完成原文核验，留空。
-2024-05,ytd,1919,44.7,,10.03,-5.66,,,,转引披露,https://info.chineseshipping.com.cn/cninfo/News/202406/t20240606_1391031.shtml | https://www.sohu.com/a/788109230_121284943,"{""ytd.*"": ""cq-2024-05-ytd""}",2024年5月累计载客率及其同比未完成原文核验，留空。
+2024-05,ytd,1919.0,44.7,,10.03,-5.66,,,,转引披露,https://info.chineseshipping.com.cn/cninfo/News/202406/t20240606_1391031.shtml | https://www.sohu.com/a/788109230_121284943,"{""ytd.*"": ""cq-2024-05-ytd""}",2024年5月累计载客率及其同比未完成原文核验，留空。
 2024-06,monthly,558.0,12.87,72.88,-2.11,-5.3,-3.63,,,转引披露,https://www.pinchain.com/article/314941,{},
 2024-06,ytd,2477.0,57.59,74.09,7.04,-5.54,-11.81,,,转引披露,https://www.pinchain.com/article/314941,{},
 2024-07,monthly,560.0,13.66,78.02,-6.51,-16.86,-13.94,,,转引披露,https://www.sse.net.cn/cninfo/HotInfo/202408/t20240806_1393001.jsp,{},

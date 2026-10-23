@@ -4,7 +4,7 @@ async function main(){
  await new Promise(r=>server.listen(0,'127.0.0.1',r));const browser=await chromium.launch({headless:true,...(process.env.EDGE_PATH?{executablePath:process.env.EDGE_PATH}:{})});
  try{const page=await browser.newPage({viewport:{width:1440,height:1000}}),origin=process.argv[2]||'http://127.0.0.1:'+server.address().port,errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto(origin+'/cruise-dashboard.html');await page.locator('#dashboard:not([hidden])').waitFor();assert.equal(await page.locator('#monthly-table tbody tr').count(),33);assert.equal(await page.locator('#charts svg').count(),3);assert((await page.locator('#kpis').innerText()).includes('11.95'));
- assert.equal(await page.locator('tr[data-period="2024-01"] td').nth(1).innerText(),'—');
+ assert.equal(await page.locator('tr[data-period="2024-01"] td').nth(1).innerText(),'1.0025');
  await page.selectOption('#year','2026');assert.equal(await page.locator('#monthly-table tbody tr').count(),9);await page.selectOption('#scope','ytd');assert((await page.locator('#kpis').innerText()).includes('96.21'));
  assert.equal(await page.locator('#view').count(),0);assert.equal(await page.locator('#charts input[type=checkbox]').count(),6);
  const passengers=page.locator('#chart-passengers'),values=passengers.locator('[data-value-kind=value]'),yoy=passengers.locator('[data-value-kind=change]');
@@ -22,3 +22,4 @@ async function main(){
  }finally{await browser.close();}
 }
 main().catch(e=>{console.error(e);process.exitCode=1;}).finally(()=>server.close());
+
