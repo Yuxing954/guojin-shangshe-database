@@ -14,9 +14,10 @@ const files=['macro.html','regional-retail.html','industry.html','scripts/macro-
  for(const width of [1920,1440,1024,768,390]){
   await page.setViewportSize({width,height:1000});let baseline;
   for(const file of ['macro.html','regional-retail.html','industry.html']){
-   // The static shell must have exactly the same geometry before deferred scripts execute.
-   await page.route('**/scripts/site-shell.js*',async r=>{await new Promise(resolve=>setTimeout(resolve,600));await r.fallback();});
-   await page.goto(base+'/'+file,{waitUntil:'commit'});await page.locator('.hub-navigation').waitFor();const early=await read();await page.waitForLoadState('load');const ready=await read();await page.unroute('**/scripts/site-shell.js*');
+   // Measure renderable HTML after blocking stylesheets load, while holding the shell script.
+   let releaseShell;const shellGate=new Promise(resolve=>{releaseShell=resolve;});
+   await page.route('**/scripts/site-shell.js*',async r=>{await shellGate;await r.fallback();});
+   await page.goto(base+'/'+file,{waitUntil:'commit'});await page.locator('.hub-navigation').waitFor();await page.waitForFunction(()=>[...document.querySelectorAll('link[rel=stylesheet]')].every(link=>link.sheet),null,{timeout:30000});const early=await read();releaseShell();await page.waitForLoadState('load');const ready=await read();await page.unroute('**/scripts/site-shell.js*');
    assert.deepEqual(ready,early,file+' initial layout shift');assert.equal(ready.aside,1);assert.equal(ready.color,'rgb(77, 88, 164)');assert.equal(ready.line,ready.color);assert.equal(ready.bg,'rgb(245, 247, 251)');
    const geometry=({x,y,w,h,color,line,bg})=>({x,y,w,h,color,line,bg});if(!baseline)baseline=geometry(ready);else assert.deepEqual(geometry(ready),baseline,file+' position/color');
    assert.ok(ready.items.every(b=>Math.abs(b.h-ready.h)<1&&b.x>=ready.x-1&&b.x+b.w<=ready.x+ready.w+1));assert.ok(Math.max(...ready.items.map(b=>b.w))-Math.min(...ready.items.map(b=>b.w))<1);
@@ -28,3 +29,4 @@ const files=['macro.html','regional-retail.html','industry.html','scripts/macro-
  }
  }finally{await browser.close();server.close();}
 })().catch(e=>{console.error(e);server.close();process.exitCode=1;});
+
