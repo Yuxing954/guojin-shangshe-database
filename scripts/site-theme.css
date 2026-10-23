@@ -66,5 +66,8 @@ html[data-site-theme=sage] body.site-page .data-board #indicators #primary-chart
 html[data-site-theme=sage] body.site-page .data-board #indicators #primary-chart svg circle[data-chart-point]{fill:var(--site-surface)!important}
 html[data-site-theme=sage] body.site-page .data-board #indicators #primary-chart svg text{fill:var(--site-muted)!important}html[data-site-theme=sage] body.site-page :is(.oh-toolbar button,.db-toolbar button,.portal-filter button,.oh-actions button){background:var(--site-surface)!important;color:var(--site-accent)!important;border-color:var(--site-line)!important}
 html[data-site-theme=sage] body.site-page .oh-actions .oh-primary-link{color:#f7f8f2!important}
-html[data-site-theme=sage] body.site-page .oh-company[aria-pressed=true]{background:var(--site-soft)!important;border-color:var(--site-accent)!important;box-shadow:inset 0 0 0 1px var(--site-accent)!important}}
-
+html[data-site-theme=sage] body.site-page .oh-company[aria-pressed=true]{background:var(--site-soft)!important;border-color:var(--site-accent)!important;box-shadow:inset 0 0 0 1px var(--site-accent)!important}
+html[data-site-theme=sage] body.site-page .data-board #indicators #kpi-grid .macro-kpi[aria-pressed=true]::before{background:var(--site-accent)}
+html[data-site-theme=sage] body.site-page input:is([type=checkbox],[type=radio]){accent-color:var(--site-accent)!important}
+html[data-site-theme=sage] body.site-page :is(.prediction-tools-panel,.forecast-event,.forecast-detail){background:var(--site-surface);border-color:var(--site-line);color:var(--site-ink)}
+}
