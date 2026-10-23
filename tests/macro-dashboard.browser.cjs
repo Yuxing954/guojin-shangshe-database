@@ -38,6 +38,17 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
       assert.ok(measured.plotWidth/measured.width>.65,'plot is squeezed: '+JSON.stringify(measured));
       assert.ok(measured.height>=250&&measured.height<=330,'plot height: '+JSON.stringify(measured));
     }
+    async function checkAnnotationLayout(){
+      const layout=await page.locator('#primary-chart svg').evaluate(svg=>{
+        const labels=[...svg.querySelectorAll('.site-value-label')].map(n=>({x:+n.getAttribute('x'),box:n.getBoundingClientRect()}));
+        const gaps=labels.slice(1).map((p,i)=>p.x-labels[i].x);
+        const overlap=labels.some((p,i)=>labels.some((q,j)=>i<j&&p.box.left<q.box.right&&q.box.left<p.box.right&&p.box.top<q.box.bottom&&q.box.top<p.box.bottom));
+        return {width:svg.viewBox.baseVal.width,count:labels.length,gaps,overlap};
+      });
+      assert.ok(layout.count>0&&layout.count<=Math.ceil(layout.width/72)+1,JSON.stringify(layout));
+      assert.equal(layout.overlap,false,JSON.stringify(layout));
+      if(layout.count>1){assert.ok(Math.min(...layout.gaps)>=60,JSON.stringify(layout));assert.ok(Math.max(...layout.gaps)<=170,JSON.stringify(layout));assert.ok(Math.max(...layout.gaps)-Math.min(...layout.gaps)<=30,JSON.stringify(layout));}
+    }
     assert.equal(await page.locator('#detail .site-value-option').count(),1);
     const valuesToggle=page.locator('#detail input[data-value-kind="value"]');
     assert(await valuesToggle.isChecked());assert(await page.locator('#detail .site-value-label').count()>0);
@@ -62,9 +73,12 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
     await page.locator('[data-study=overview]').click();await page.locator('[data-kpi="us-cpi"]').click();assert.equal(await page.locator('.macro-coverage').count(),0);
     assert.match(await page.locator('[data-kpi="us-cpi"] .macro-kpi-context').innerText(),/2025-10官方未发布/);assert.doesNotMatch(await page.locator('[data-kpi="us-fed-rate"]').innerText(),/数据滞后/);
     assert.equal(await page.locator('#comparison').count(),0);
-    assert.match(await page.locator('#primary-chart #chart-title').textContent(),/同比/);assert.equal(await page.locator('#primary-chart .macro-chart-unit').textContent(),'同比（%）');assert(await page.locator('#primary-chart .site-value-label').count()<=12);
+    assert.match(await page.locator('#primary-chart #chart-title').textContent(),/同比/);assert.equal(await page.locator('#primary-chart .macro-chart-unit').textContent(),'同比（%）');await checkAnnotationLayout();
+    for(const width of [1440,390])for(const years of ['1','5','0']){
+      await page.setViewportSize({width,height:1000});await page.locator('#years').selectOption(years);await page.waitForTimeout(250);await checkAnnotationLayout();
+    }
     await page.locator('[data-kpi="us-treasury10"]').click();await page.locator('#years').selectOption('0');assert.ok(await page.locator('#primary-chart [data-chart-point]').count()<=122);
-    for(const width of [1920,1440,1024,768,390]){await page.setViewportSize({width,height:1000});await page.waitForTimeout(250);await checkPlotWidth();await checkCardGeometry();assert.ok(await page.locator('#primary-chart .site-value-label').count()<=12);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'overflow at '+width);}
+    for(const width of [1920,1440,1024,768,390]){await page.setViewportSize({width,height:1000});await page.waitForTimeout(250);await checkPlotWidth();await checkCardGeometry();await checkAnnotationLayout();assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'overflow at '+width);}
     await page.locator('[data-country="CN"]').click();
     for(const width of [1920,1440,1024,768,390]){await page.setViewportSize({width,height:1000});await page.waitForTimeout(250);await checkCardGeometry();}
     await page.goto(base+'/macro.html?country=CN&indicator=cn-cpi&comparison=cn-ppi&years=1');await ready();assert.equal(new URL(page.url()).searchParams.has('comparison'),false);
