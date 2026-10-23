@@ -62,3 +62,26 @@ test('morning charts retain original frequency, gaps and headline transformation
 });
 
 
+
+test('US CPI detail plots use calendar-matched YoY while raw data and other indicators retain their units',()=>{
+  const raw={observations:[{period:'2025-01',value:100},{period:'2025-03',value:200},{period:'2026-01',value:103},{period:'2026-02',value:104},{period:'2026-03',value:206}]},before=JSON.stringify(raw);
+  for(const id of ['us-cpi','us-core-cpi']){
+    const spec={id,frequency:'monthly',kind:'index',unit:'指数'};
+    assert.deepEqual(D.detailDefinition(spec),{mode:'yoy',unit:'%',label:'同比'});
+    assert.deepEqual(D.detailRows(spec,raw,1,new Date('2026-12-31')).map(r=>r.chartValue),[3,null,3]);
+  }
+  const rate={id:'us-cpi',frequency:'monthly',kind:'rate',unit:'%'};
+  assert.equal(D.detailRows(rate,raw,0).at(-1).chartValue,206);
+  const pmi={id:'cn-pmi',frequency:'monthly',kind:'rate',unit:'点'};
+  assert.deepEqual(D.detailDefinition(pmi),{mode:'value',unit:'点',label:''});
+  assert.equal(D.detailRows(pmi,raw,0).at(-1).chartValue,206);
+  assert.equal(JSON.stringify(raw),before);
+});
+test('macro annotations adapt to available width, retain the latest finite point and preserve all observations',()=>{
+  const points=Array.from({length:300},(_,i)=>({x:60+i*3,y:i%45,label:'1.23万亿'})),before=JSON.stringify(points);
+  const narrow=D.annotationIndices(points,{width:300,left:48,right:20}),wide=D.annotationIndices(points,{width:1000,left:58,right:20});
+  assert(narrow.includes(299));assert(wide.includes(299));assert(wide.includes(0));assert(wide.length<=12);assert(wide.length>narrow.length);
+  for(let i=1;i<wide.length;i++)assert(points[wide[i]].x-points[wide[i-1]].x>=84);
+  assert.equal(JSON.stringify(points),before);assert.deepEqual(D.annotationIndices([],{}),[]);
+  assert.deepEqual(D.annotationIndices([{x:1,y:0,label:'0'},{x:2,y:NaN,label:'—'}],{width:240}),[0]);
+});

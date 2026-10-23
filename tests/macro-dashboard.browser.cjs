@@ -62,8 +62,9 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
     await page.locator('[data-study=overview]').click();await page.locator('[data-kpi="us-cpi"]').click();assert.equal(await page.locator('.macro-coverage').count(),0);
     assert.match(await page.locator('[data-kpi="us-cpi"] .macro-kpi-context').innerText(),/2025-10官方未发布/);assert.doesNotMatch(await page.locator('[data-kpi="us-fed-rate"]').innerText(),/数据滞后/);
     assert.equal(await page.locator('#comparison').count(),0);
+    assert.match(await page.locator('#primary-chart #chart-title').textContent(),/同比/);assert.equal(await page.locator('#primary-chart .macro-chart-unit').textContent(),'同比（%）');assert(await page.locator('#primary-chart .site-value-label').count()<=12);
     await page.locator('[data-kpi="us-treasury10"]').click();await page.locator('#years').selectOption('0');assert.ok(await page.locator('#primary-chart [data-chart-point]').count()<=122);
-    for(const width of [1920,1440,1024,768,390]){await page.setViewportSize({width,height:1000});await page.waitForTimeout(250);await checkPlotWidth();await checkCardGeometry();assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'overflow at '+width);}
+    for(const width of [1920,1440,1024,768,390]){await page.setViewportSize({width,height:1000});await page.waitForTimeout(250);await checkPlotWidth();await checkCardGeometry();assert.ok(await page.locator('#primary-chart .site-value-label').count()<=12);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'overflow at '+width);}
     await page.locator('[data-country="CN"]').click();
     for(const width of [1920,1440,1024,768,390]){await page.setViewportSize({width,height:1000});await page.waitForTimeout(250);await checkCardGeometry();}
     await page.goto(base+'/macro.html?country=CN&indicator=cn-cpi&comparison=cn-ppi&years=1');await ready();assert.equal(new URL(page.url()).searchParams.has('comparison'),false);

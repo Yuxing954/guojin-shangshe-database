@@ -16,11 +16,11 @@
   function save(){const p=new URLSearchParams();p.set('study',state.study);for(const key of ['predictionTopic','predictionQuery','predictionSort','meeting']){const value=new URLSearchParams(location.search).get(key);if(value)p.set(key,value);}for(const key of ['country','group','q','id','mode','years','view','frequency','health'])if(state[key]!==''&&state[key]!==null)p.set(key==='id'?'indicator':key,state[key]);history.replaceState(null,'',location.pathname+'?'+p);}
   function download(text,filename){const url=URL.createObjectURL(new Blob([text],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
   function showView(){document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===state.view)));$('countries').hidden=state.view!=='indicators';$('indicators').hidden=state.view!=='indicators'||!catalog;$('predictions').hidden=state.view!=='predictions';$('fedwatch').hidden=state.view!=='fedwatch';if(state.view!=='indicators'){$('load-state').textContent='';$('skeleton').hidden=true;$('data-warning').hidden=true;}save();if(state.view==='indicators'&&catalog)requestAnimationFrame(drawDetailChart);if(state.view==='fedwatch')ForecastDesk.loadFedwatch();if(state.view==='predictions'){renderPredictions();loadPredictions();}}
-  function graph(spec,data,mode=state.mode){
-    chartPoints=[];const points=M.chartRows(spec,data,mode,state.years,new Date(snapshot.cutoff+'T23:59:59Z'));
+  function graph(spec,data){
+    chartPoints=[];const definition=D.detailDefinition(spec),points=D.detailRows(spec,data,state.years,new Date(snapshot.cutoff+'T23:59:59Z'));
     const values=points.filter(r=>M.finite(r.chartValue));
-    if(!values.length)return '<p class="portal-empty">所选区间或口径没有可用数据。可切换“原始值”或“全部”。</p>';
-    const w=Math.max(240,$('primary-chart').clientWidth),h=innerWidth<=600?260:320,left=w<500?48:58,right=20,top=24,bottom=38;
+    if(!values.length)return '<p class="portal-empty">所选区间暂无可绘制数据。</p>';
+    const w=Math.max(240,$('primary-chart').clientWidth),h=innerWidth<=600?260:320,left=w<500?48:58,right=20,top=34,bottom=38;
     const scale=SiteCharts.niceScale(values.map(r=>r.chartValue)),lo=scale.min,hi=scale.max;
     const first=M.dateOf(points[0].period).getTime(),last=M.dateOf(points.at(-1).period).getTime();
     const x=r=>left+(M.dateOf(r.period).getTime()-first)/(last-first||1)*(w-left-right);
@@ -34,12 +34,14 @@
       if(gap>maximum)flush();
       if(!M.finite(row.chartValue)){flush();previous=row;continue;}
       segment.push(x(row).toFixed(2)+','+y(row).toFixed(2));
-      if(chartPoints.length%Math.max(1,Math.ceil(values.length/120))===0||row===values.at(-1))dots+='<circle tabindex="0" data-chart-point="'+chartPoints.length+'" cx="'+x(row).toFixed(2)+'" cy="'+y(row).toFixed(2)+'" r="3"><title>'+esc(row.period+'：'+number(row.chartValue)+' '+(mode==='value'?spec.unit:M.changeUnit(spec)))+'</title></circle>';
-      chartPoints.push({x:x(row),y:y(row),text:row.period+'：'+number(row.chartValue)+' '+(mode==='value'?spec.unit:M.changeUnit(spec))});
+      if(chartPoints.length%Math.max(1,Math.ceil(values.length/120))===0||row===values.at(-1))dots+='<circle tabindex="0" data-chart-point="'+chartPoints.length+'" cx="'+x(row).toFixed(2)+'" cy="'+y(row).toFixed(2)+'" r="3"><title>'+esc(row.period+'：'+number(row.chartValue)+' '+definition.unit)+'</title></circle>';
+      chartPoints.push({x:x(row),y:y(row),label:compact(row.chartValue),text:row.period+'：'+number(row.chartValue)+' '+definition.unit});
       previous=row;
     }flush();
-    let grid='';for(const tick of scale.ticks){const gy=top+(hi-tick)/(hi-lo)*(h-top-bottom);grid+='<line x1="'+left+'" x2="'+(w-right)+'" y1="'+gy+'" y2="'+gy+'" stroke="#eceef5"/><text x="'+(left-8)+'" y="'+(gy+4)+'" text-anchor="end">'+esc(scale.format(tick))+'</text>';}
-    return '<svg width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'" role="img" aria-labelledby="chart-title chart-desc"><title id="chart-title">'+esc(spec.name)+'历史走势</title><desc id="chart-desc">'+esc(values.length+'个观测值；详细数值可下载CSV。缺失区间不连线。')+'</desc>'+grid+lines+dots+'<text class="site-period-tick" x="'+left+'" y="'+(h-12)+'">'+esc(ChartPeriod.format(points[0].period))+'</text><text class="site-period-tick" x="'+(w-right)+'" y="'+(h-12)+'" text-anchor="end">'+esc(ChartPeriod.format(points.at(-1).period))+'</text></svg>';
+    const labels=new Set(D.annotationIndices(chartPoints,{width:w,left,right}));
+    chartPoints.forEach((p,i)=>p.labels=labels.has(i)?[{x:p.x,y:p.y,text:p.label,kind:'value'}]:[]);
+    let grid='<text x="'+left+'" y="16" class="macro-chart-unit">'+esc((definition.label||'数值')+'（'+definition.unit+'）')+'</text>';for(const tick of scale.ticks){const gy=top+(hi-tick)/(hi-lo)*(h-top-bottom);grid+='<line x1="'+left+'" x2="'+(w-right)+'" y1="'+gy+'" y2="'+gy+'" stroke="#eceef5"/><text x="'+(left-8)+'" y="'+(gy+4)+'" text-anchor="end">'+esc(scale.format(tick))+'</text>';}
+    return '<svg width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'" role="img" aria-labelledby="chart-title chart-desc"><title id="chart-title">'+esc(spec.name+(definition.label?' · '+definition.label:''))+'历史走势</title><desc id="chart-desc">'+esc(values.length+'个观测值；详细数值可下载CSV。缺失区间不连线。')+'</desc>'+grid+lines+dots+'<text class="site-period-tick" x="'+left+'" y="'+(h-12)+'">'+esc(ChartPeriod.format(points[0].period))+'</text><text class="site-period-tick" x="'+(w-right)+'" y="'+(h-12)+'" text-anchor="end">'+esc(ChartPeriod.format(points.at(-1).period))+'</text></svg>';
   }
   function renderStudy(){
     const query=state.study==='workspace';$('indicators').classList.toggle('macro-overview-mode',!query);
@@ -50,14 +52,14 @@
   function drawDetailChart(){
     const host=$('primary-chart'),spec=catalog?.series.find(s=>s.id===state.id);
     if(!host||!spec||host.clientWidth<=0)return;
-    host.innerHTML=graph(spec,snapshot.series[spec.id]||{},'value');
+    host.innerHTML=graph(spec,snapshot.series[spec.id]||{});
     ResearchChart.attach(host,chartPoints);
   }
   function renderDetail(){
     const spec=catalog.series.find(s=>s.id===state.id);
     if(!spec){$('detail').innerHTML='<p class="portal-empty">没有匹配指标。</p>';return;}
     const data=snapshot.series[spec.id]||{},source=catalog.sources[spec.source],r=D.readout(spec,data),latest=r.latest;
-    state.mode='value';
+    state.mode=D.detailDefinition(spec).mode;
     if(!latest){$('detail').innerHTML='<h2 id="metric-title">'+esc(spec.name)+'</h2><p class="portal-note">待补齐 · '+esc(M.frequency[spec.frequency])+'</p><p>'+link(source.url,'官方来源 ↗')+'</p>';return;}
     const sourceUrl=latest.originalSourceUrl||latest.sourceUrl||data.sourceUrl||source.url;
     $('detail').innerHTML='<div class="macro-trend-head"><div><p class="eyebrow">'+esc(M.frequency[spec.frequency]+' · '+latest.period)+'</p><h2 id="metric-title">'+esc(spec.name)+'</h2></div><label class="macro-range">时间<select id="years" aria-label="趋势时间范围"><option value="1">近1年</option><option value="3">近3年</option><option value="5">近5年</option><option value="10">近10年</option><option value="0">全部</option></select></label></div>'+
