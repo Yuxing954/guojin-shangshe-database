@@ -1,10 +1,10 @@
 {
-  "syncedAt": "2026-10-24T14:05:57.131Z",
+  "syncedAt": "2026-10-24T16:03:00.017Z",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
-  "coverageFrom": "2026-10-24T18:45:54.867+0800",
-  "coverageTo": "2026-10-24T21:09:45.986+0800",
-  "oldestFetched": "2026-10-24T14:53:12.412+0800",
+  "coverageFrom": "2026-10-24T21:09:45.986+0800",
+  "coverageTo": "2026-10-24T22:10:23.399+0800",
+  "oldestFetched": "2026-10-24T17:37:22.310+0800",
   "fetchedTopics": 30,
   "files": {
     "views": [
@@ -7040,52 +7040,26 @@
     ]
   },
   "lastRun": {
-    "runId": "2026-10-24-220333",
+    "runId": "2026-10-25-000246",
     "sourceGroup": "88888142214212",
     "sourceName": "水木调研纪要-2.0",
-    "previousCoverageTo": "2026-10-24T18:45:54.867+0800",
-    "coverageTo": "2026-10-24T21:09:45.986+0800",
+    "previousCoverageTo": "2026-10-24T21:09:45.986+0800",
+    "coverageTo": "2026-10-24T22:10:23.399+0800",
     "added": {
-      "views": 2,
-      "all_views": 18
+      "views": 0,
+      "all_views": 0
     },
     "updated": 0,
-    "expiredRemoved": 0,
-    "sourceTopicIds": [
-      "82258215254141222",
-      "45548514542122548",
-      "82258215254142182",
-      "14425482421814182",
-      "82258215254142222",
-      "55521582524841514",
-      "82258215254148822",
-      "45548514542128418",
-      "82258215254148582",
-      "14425482421812812",
-      "14425482421812852",
-      "45548514542124258",
-      "82258215254145482",
-      "45548514542124528",
-      "14425482421812452",
-      "14425482421848452",
-      "14425482421848252",
-      "45548514542151448",
-      "55521582524854414",
-      "22258215254124811"
-    ],
+    "expiredRemoved": 20,
+    "sourceTopicIds": [],
     "duplicateTopicIds": [],
     "briefChanges": {
-      "added": 1,
-      "updated": 1,
-      "expiredRemoved": 0
+      "added": 0,
+      "updated": 0,
+      "expiredRemoved": 20
     },
     "duplicates": 0,
-    "excludedTopics": [
-      {
-        "topicId": "22258215254124181",
-        "reason": "仅缩写无正文观点"
-      }
-    ],
+    "excludedTopics": [],
     "pagination": {
       "pages": 1,
       "pageRowsFetched": 30,
@@ -7093,48 +7067,48 @@
       "stoppedWhenPageReachedCoverage": true
     },
     "dedupCheck": {
-      "candidateKeys": 84,
-      "candidateBuckets": 70,
+      "candidateKeys": 0,
+      "candidateBuckets": 0,
       "algorithm": "sha256-utf8-v1"
     },
-    "expiredBriefIds": []
+    "expiredBriefIds": [
+      "light-consumption-channel-divergence-20261018",
+      "appliance-retail-export-q3-20261019",
+      "us-lsv-golf-cart-channel-20261019",
+      "hotel-week42-demand-supply-20261019",
+      "hotel-plc-connectivity-20261020",
+      "biemlfn-premium-retail-q3-20261020",
+      "meta-shopping-agent-q3-20261022",
+      "china-tobacco-hk-channel-20261022",
+      "pmi-smokefree-q3-20261022",
+      "lepumed-aesthetic-registration-20261022",
+      "game-market-q3-growth-20261022",
+      "niulanshan-channel-reset-20261022",
+      "ccc-export-payment-q3-20261022",
+      "robot-mower-eu-channel-20261022",
+      "staples-dining-value-channels-20261022",
+      "jd-industrial-mro-ai-procurement-20261022",
+      "atrenew-q3-retail-preview-20261022",
+      "ue-office-furniture-export-q3-20261022",
+      "ctf-brand-channel-fy27q2-20261022",
+      "supor-domestic-export-q3-20261022"
+    ]
   },
   "lastUpdateRecord": {
-    "runId": "2026-10-24-220333",
+    "runId": "2026-10-25-000246",
     "sourceGroup": "88888142214212",
     "sourceName": "水木调研纪要-2.0",
-    "previousCoverageTo": "2026-10-24T18:45:54.867+0800",
-    "coverageTo": "2026-10-24T21:09:45.986+0800",
-    "added": 20,
+    "previousCoverageTo": "2026-10-24T21:09:45.986+0800",
+    "coverageTo": "2026-10-24T22:10:23.399+0800",
+    "added": 0,
     "updated": 0,
-    "expiredRemoved": 0,
-    "sourceTopicIds": [
-      "82258215254141222",
-      "45548514542122548",
-      "82258215254142182",
-      "14425482421814182",
-      "82258215254142222",
-      "55521582524841514",
-      "82258215254148822",
-      "45548514542128418",
-      "82258215254148582",
-      "14425482421812812",
-      "14425482421812852",
-      "45548514542124258",
-      "82258215254145482",
-      "45548514542124528",
-      "14425482421812452",
-      "14425482421848452",
-      "14425482421848252",
-      "45548514542151448",
-      "55521582524854414",
-      "22258215254124811"
-    ],
+    "expiredRemoved": 20,
+    "sourceTopicIds": [],
     "duplicateTopicIds": [],
     "briefChanges": {
-      "added": 1,
-      "updated": 1,
-      "expiredRemoved": 0
+      "added": 0,
+      "updated": 0,
+      "expiredRemoved": 20
     }
   }
 }
