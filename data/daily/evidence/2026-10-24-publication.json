@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-24",
+  "cutoff": "2026-10-24T18:00:00+08:00",
+  "attachmentScanObservedAt": "2026-10-24T08:30:50.308Z",
+  "deploymentPolicy": "scan-observed-after-16",
+  "attachmentContentRead": false,
+  "counts": {"cards": 4, "originals": 4, "reports": 1, "audio": 0, "minutes": 0, "announcements": 1, "industryUpdates": 1},
+  "validation": {
+    "dailyUnitTestsPassed": 56,
+    "originalHashAndFullCorpus": "passed",
+    "resourcesCheck": "passed",
+    "backfilledDates": ["2026-10-23", "2026-10-22"],
+    "localFrontend": "three summary points, four visible summaries, four single collapsed originals, one attachment, copy order passed",
+    "localSiteCheck": "pre-existing hotel-groups.html stylesheet ordering assertion; unrelated pages not changed"
+  },
+  "announcementEvidence": "data/daily/evidence/2026-10-24.json",
+  "sourceStatus": "actual scan coverage and partial announcement monitoring retained in evidence"
+}

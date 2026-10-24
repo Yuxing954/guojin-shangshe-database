@@ -44,8 +44,10 @@ def sector_for(title,body=''):
  if re.match(r'双11大促跟踪',subject) and sum(x in body for x in ('珀莱雅','毛戈平','上海家化','润本','玉泽','佰草集'))>=3:return '零售与消费出海'
  if re.search(r'航司.*(?:供需|经营数据|客座率|客运|运力)',subject):return '酒店旅游'
  if re.search(r'航空.*(?:经营数据|客座率|客运|运力)',subject):return '酒店旅游'
- if re.search(r'IQOS|ZYN|菲利普莫里斯|安踏体育',subject,re.I):return '零售与消费出海'
+ if '六福集团' in subject:return '黄金珠宝'
+ if re.search(r'IQOS|ZYN|菲利普莫里斯|安踏体育|特步|欧莱雅',subject,re.I):return '零售与消费出海'
  for sector,terms in SECTORS.items():
   if any(t in subject for t in terms):return sector
  return None
+
 

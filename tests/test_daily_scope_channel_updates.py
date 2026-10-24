@@ -4,6 +4,10 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 from daily_scope import sector_for,is_ecommerce_topic
 
 class ChannelUpdates(unittest.TestCase):
+ def test_named_consumer_brands(self):
+  self.assertEqual(sector_for('欧莱雅26Q3业绩'),'零售与消费出海')
+  self.assertEqual(sector_for('特步26Q3运营数据电话会'),'零售与消费出海')
+  self.assertEqual(sector_for('六福集团20261023.pdf'),'黄金珠宝')
  def test_social_retail(self):
   self.assertEqual(sector_for('【国金商社】9月社零：总量边际回暖，结构分化'),'零售与消费出海')
  def test_beauty_channel_not_platform(self):
@@ -25,4 +29,5 @@ class SnackRetailScopeTests(unittest.TestCase):
         self.assertIsNone(sector_for('保龄宝代糖需求更新', '餐饮客户订单增长'))
 
 if __name__=='__main__':unittest.main()
+
 

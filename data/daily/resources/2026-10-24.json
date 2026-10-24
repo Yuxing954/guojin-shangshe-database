@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 2,
+  "date": "2026-10-24",
+  "windowStart": "2026-10-23T18:00:00+08:00",
+  "cutoff": "2026-10-24T18:00:00+08:00",
+  "sourceThrough": "2026-10-24T14:53:12.412+0800",
+  "attachmentCatalog": {
+    "generatedAt": "2026-10-24T08:30:50.308Z",
+    "sourceThrough": "2026-10-24T14:53:12.412+0800",
+    "scan": {
+      "observedAt": "2026-10-24T08:30:50.308Z",
+      "sourceGroup": "88888142214212",
+      "sourceName": "水木调研纪要-2.0",
+      "topicsScanned": 600,
+      "topicsInWindow": 573,
+      "topicPages": 20,
+      "topicWindowFrom": "2026-10-22T00:00:00+08:00",
+      "topicWindowTo": "2026-10-24T14:53:12.412+0800",
+      "boundaryReachedBeforeWindow": true,
+      "attachmentsObserved": 367,
+      "uniqueFileIds": 367,
+      "duplicateFileIds": 0,
+      "newRecords": 55,
+      "existingRecordsRefreshed": 227,
+      "attachmentContentRead": false,
+      "sourceMetadataFields": [
+        "fileId",
+        "topicId",
+        "filename",
+        "extension",
+        "bytes",
+        "fileCreatedAt",
+        "topicCreatedAt",
+        "durationSeconds",
+        "downloadCount",
+        "sourceHash",
+        "source"
+      ],
+      "windowStart": "2026-10-22T00:00:00+08:00",
+      "windowEnd": "2026-10-24T08:30:50.308Z",
+      "windowEndDate": "2026-10-24",
+      "windowComplete": true,
+      "archiveHasMore": true
+    },
+    "coverageStatus": "pending",
+    "requestedWindowStart": "2026-10-23T18:00:00+08:00",
+    "requestedCutoff": "2026-10-24T18:00:00+08:00",
+    "missingIntervals": [
+      {
+        "start": "2026-10-24T16:30:50.308000+08:00",
+        "end": "2026-10-24T18:00:00+08:00"
+      }
+    ],
+    "publicationEligibility": {
+      "policy": "scan-observed-after-16",
+      "eligible": true,
+      "scanObservedAt": "2026-10-24T08:30:50.308Z",
+      "coverageComplete": false
+    }
+  },
+  "groups": {
+    "segments": [
+      {
+        "title": "欧莱雅26Q3业绩：高端护肤美发助力Q3营收双位数增长，中国市场表现成为重要引擎🔥",
+        "publishedAt": "2026-10-24T13:52:12.160000+08:00",
+        "sector": "零售与消费出海",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/55521582184442224"
+      },
+      {
+        "title": "9月餐饮&酒店&免税月报",
+        "publishedAt": "2026-10-23T21:58:29.966000+08:00",
+        "sector": "酒店旅游",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/55521582255124114"
+      },
+      {
+        "title": "【国海商社】毛戈平：近期高频及大促数据亮眼，底部有望迎来估值修复",
+        "publishedAt": "2026-10-23T21:58:08.742000+08:00",
+        "sector": "零售与消费出海",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/14425482244524212"
+      },
+      {
+        "title": "特步26Q3 运营数据电话会交流要点 20261023[礼物]",
+        "publishedAt": "2026-10-23T21:51:17.049000+08:00",
+        "sector": "零售与消费出海",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/45548514455441248"
+      }
+    ],
+    "minutes": [],
+    "audio": [],
+    "reports": [
+      {
+        "id": "zsxq-file-181585551418152",
+        "title": "六福集团20261023.pdf",
+        "publishedAt": "2026-10-23T22:08:45.140000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/22258215522282251",
+        "status": "仅标题登记",
+        "sector": "other"
+      }
+    ]
+  },
+  "policy": "仅依据已入库元数据列出标题、发布时间和来源主题；未下载、读取或转写附件，不把研究报告标为纪要。"
+}
