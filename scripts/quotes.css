@@ -233,3 +233,5 @@ body.site-page .quotes-periods button{min-height:30px;height:30px;padding:4px 10
 @media(max-width:760px){.quotes-benchmarks{gap:10px;margin-bottom:16px}.quotes-benchmark{height:178px;padding:12px;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:20px 30px minmax(0,1fr);gap:4px 6px}.quotes-benchmark>span:first-child{font-size:13px}.quotes-benchmark small{font-size:9px}.quotes-benchmark strong{font-size:23px;line-height:30px}.quotes-benchmark .quotes-percent{font-size:12px;line-height:20px}.quotes-index-caption{font-size:9px;gap:3px}.quotes-index-caption>span:last-child{display:none}}
 
 @media(max-width:760px){.quotes-benchmark{height:200px;grid-template-rows:20px 30px 18px minmax(0,1fr)}.quotes-benchmark strong{grid-column:1/-1;font-size:24px}.quotes-benchmark .quotes-percent{grid-column:1/-1;grid-row:3;justify-self:start}.quotes-index-chart{grid-row:4}.quotes-index-chart svg{height:68px}}
+
+.quotes-index-baseline{stroke:#aeb7c6;stroke-width:1;stroke-dasharray:4 4;fill:none}.quotes-index-baseline-label{fill:#8a94a6;font-size:10px;font-weight:400;font-variant-numeric:tabular-nums}
