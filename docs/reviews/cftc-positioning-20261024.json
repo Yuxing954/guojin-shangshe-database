@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "status": "pending_review",
+  "productionApplied": false,
+  "scope": "cftc-positioning",
+  "source": {
+    "provider": "CFTC",
+    "url": "https://www.cftc.gov/dea/futures/other_lf.htm",
+    "reportTitle": "Disaggregated Commitments of Traders - Futures Only",
+    "asOf": "2026-10-20",
+    "publishedAt": null,
+    "retrievedAt": "2026-10-24T00:41:53.775Z",
+    "retrieval": "web_rendered_extract",
+    "directHttpStatus": 403
+  },
+  "candidate": {
+    "market": "GOLD - COMMODITY EXCHANGE INC.",
+    "marketCode": "088691",
+    "scope": "futures_only",
+    "contractSizeTroyOunces": 100,
+    "unit": "contracts",
+    "openInterest": 402279,
+    "managedMoneyLong": 120970,
+    "managedMoneyShort": 16764,
+    "managedMoneySpreading": 38634,
+    "managedMoneyNetLong": 104206,
+    "calculation": "120970 - 16764"
+  },
+  "currentProduction": {
+    "flowId": "managed-money",
+    "value": 387,
+    "unit": "吨",
+    "asOf": "2026-09-29",
+    "sourceId": "wgc-position-20260929",
+    "quality": "compiled",
+    "scopeConfirmed": false
+  },
+  "reviewRequired": [
+    "Existing monthly WGC compilation does not establish the futures-only scope of this weekly primary report.",
+    "Confirm report scope and source mapping before changing the registered series.",
+    "No tonne conversion or overwrite of existing observations is proposed in this evidence-only PR.",
+    "Publication time is unconfirmed and remains null.",
+    "Page title says Other (Combined), while the GOLD block explicitly says Futures Only; use the block definition and require source mapping review."
+  ],
+  "evidence": {
+    "path": "docs/reviews/evidence/cftc-gold-20261020.txt",
+    "kind": "web_tool_rendered_lines_141_175",
+    "sha256": "2f779cb05ed10de19a38db18366c3eb7b6f6f9af9a563651b2029345fe099082",
+    "hashCovers": "Saved rendered excerpt bytes, not original HTML response"
+  },
+  "ledgerCompleted": false
+}
