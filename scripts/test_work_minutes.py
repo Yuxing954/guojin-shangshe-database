@@ -103,12 +103,16 @@ class SyncTests(unittest.TestCase):
             source, private, root = self.fixture(directory)
             data=document('真实原文' * 30)
             (source/'20261007 中国中免.docx').write_bytes(data)
-            with zipfile.ZipFile(source/'batch.zip','w') as archive: archive.writestr('会议/20261007 中国中免.docx',data)
+            with zipfile.ZipFile(source/'batch.zip','w') as archive:
+                archive.writestr('会议/20261007 中国中免.docx',data)
+                archive.writestr('会议/补充.pdf',b'not processed')
             (source/'数据库').mkdir()
             (source/'数据库/表格.pdf').write_bytes(b'excluded')
+            (source/'说明.txt').write_text('not processed',encoding='utf-8')
             batch=prepare(source,private,root)
             self.assertEqual(batch['counts']['added'],1)
             self.assertEqual(batch['counts']['duplicates'],1)
+            self.assertEqual(batch['counts']['failed'],0)
             self.assertTrue(any(e['status']=='excluded' for e in batch['events']))
 
 if __name__=='__main__': unittest.main()

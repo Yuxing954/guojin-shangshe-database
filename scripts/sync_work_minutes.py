@@ -49,6 +49,7 @@ def docx_text(data):
         return '\n'.join(lines)
 
 def extract(data, extension):
+    if extension != '.docx': raise ValueError('Only Word .docx documents are accepted')
     if extension == '.docx': return docx_text(data), 'OOXML document paragraphs and tables'
     if extension in ('.txt', '.md'): return data.decode('utf-8-sig'), 'UTF-8 source text'
     if extension == '.pdf':
@@ -81,6 +82,9 @@ def sources(folder, events):
         if any(part in ('数据库', '.git', '.workbuddy') for part in path.relative_to(folder).parts):
             events.append({'source': relative, 'status': 'excluded', 'reason': 'Outside minutes scope'})
             continue
+        # Only Word documents are accepted; ZIP files are containers for DOCX members.
+        if path.suffix.lower() not in ('.docx', '.zip'):
+            continue
         try:
             before = path.stat()
             data = path.read_bytes()
@@ -96,7 +100,7 @@ def sources(folder, events):
                         if not member.flag_bits & 0x800:
                             try: entry = entry.encode('cp437').decode('gb18030')
                             except (UnicodeError, LookupError): pass
-                        if Path(entry).suffix.lower() not in ('.docx', '.pdf', '.md', '.txt'): continue
+                        if Path(entry).suffix.lower() != '.docx': continue
                         if member.file_size > 64 * 1024 * 1024: raise ValueError('Archive member exceeds size limit')
                         yield relative + '::' + entry, Path(entry).name, archive.read(member), info
             else:
@@ -125,8 +129,8 @@ def prepare(source_dir, private_dir, root=ROOT):
         try:
             digest = sha(data)
             extension = Path(name).suffix.lower()
-            if extension not in ('.docx', '.pdf', '.md', '.txt'):
-                raise ValueError('Unsupported format; no text invented')
+            if extension != '.docx':
+                raise ValueError('Only Word .docx documents are accepted')
             previous = state['files'].get(relative, {})
             old = (records.get(previous.get('assetId')) if not previous.get('duplicate') else None) or next((r for r in records.values() if r.get('sourceRelativePath') == relative), None) or hashes.get(digest)
             if old and old.get('sha256') == digest and old.get('processing', {}).get('bodySha256'):
