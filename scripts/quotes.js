@@ -69,7 +69,7 @@
     const values=rows.map(r=>r[2]),hasBase=Number.isFinite(baseline)&&baseline>0,low=Math.min(...values),high=Math.max(...values),spread=hasBase?Math.max(Math.abs(high-baseline),Math.abs(low-baseline),baseline*.0005)*1.12:(high-low||Math.max(1,high*.001))*.6,center=hasBase?baseline:(high+low)/2,y=v=>pad+h/2-(v-center)/(2*spread)*h;
     const axis=r=>K.sessionAxis(c.code,r),x=r=>pad+axis(r).minute/axis(r).total*w;
     const marks='<path class="quotes-index-line '+tone(hasBase?rows.at(-1)[2]-baseline:q?.percent)+'" d="'+rows.map((r,i)=>(i?'L':'M')+x(r).toFixed(2)+' '+y(r[2]).toFixed(2)).join(' ')+'"/>';
-    const reference=hasBase?'<line class="quotes-index-baseline" data-value="'+baseline+'" x1="0" x2="'+W+'" y1="'+y(baseline)+'" y2="'+y(baseline)+'"><title>昨日收盘 '+fmt(baseline)+'</title></line><text class="quotes-index-baseline-label" x="'+(W-2)+'" y="'+(y(baseline)-4)+'" text-anchor="end">昨收 '+fmt(baseline)+'</text>':'';
+    const reference=hasBase?'<line class="quotes-index-baseline" data-value="'+baseline+'" x1="0" x2="'+W+'" y1="'+y(baseline)+'" y2="'+y(baseline)+'"><title>昨日收盘 '+fmt(baseline)+'</title></line>':'';
     const label=item.session.slice(5)+' · 分时';
     host.innerHTML='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+esc(c.name+' '+item.session+' 日内分时走势'+(hasBase?'，昨日收盘 '+fmt(baseline):'，昨收暂不可用'))+'">'+reference+marks+'</svg><span class="quotes-index-caption"><span>'+label+'</span><span>'+String(rows[0][0]).slice(8,10)+':'+String(rows[0][0]).slice(10,12)+'—'+String(rows.at(-1)[0]).slice(8,10)+':'+String(rows.at(-1)[0]).slice(10,12)+'</span></span>';
     host.dataset.state=item.failed?'stale':'ready';if(item.failed)host.querySelector('.quotes-index-caption').title='走势更新失败，保留上次数据';
