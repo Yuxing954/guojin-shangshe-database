@@ -64,11 +64,14 @@
   function paintMini(c){
     const host=$('benchmarks').querySelector('[data-code="'+c.code+'"] .quotes-index-chart');if(!host)return;
     const item=miniCharts.get(c.code);if(!item){host.innerHTML='<span class="quotes-mini-empty">读取日内走势…</span>';return;}
-    const rows=item.rows,W=320,H=74,pad=4,w=W-2*pad,h=H-2*pad,values=rows.flatMap(r=>[r[3],r[4]]),lo=Math.min(...values),hi=Math.max(...values),range=hi-lo||Math.max(1,hi*.001),y=v=>pad+h-(v-lo)/range*h;
+    const rows=item.rows,W=320,H=74,pad=7,w=W-2*pad,h=H-2*pad,q=quotes[c.code],baseline=q?.asOf.slice(0,10)===item.session&&Number.isFinite(q.previousClose)&&q.previousClose>0?q.previousClose:item.previousClose;
+    const signature=[item.session,rows.length,rows.at(-1)[0],rows.at(-1)[2],baseline,item.failed].join('|');if(host.dataset.signature===signature)return;host.dataset.signature=signature;
+    const values=rows.map(r=>r[2]),hasBase=Number.isFinite(baseline)&&baseline>0,low=Math.min(...values),high=Math.max(...values),spread=hasBase?Math.max(Math.abs(high-baseline),Math.abs(low-baseline),baseline*.0005)*1.12:(high-low||Math.max(1,high*.001))*.6,center=hasBase?baseline:(high+low)/2,y=v=>pad+h/2-(v-center)/(2*spread)*h;
     const axis=r=>K.sessionAxis(c.code,r),x=r=>pad+axis(r).minute/axis(r).total*w;
-    const marks=item.line?'<path class="quotes-index-line '+tone(quotes[c.code]?.percent)+'" d="'+rows.map((r,i)=>(i?'L':'M')+x(r).toFixed(2)+' '+y(r[2]).toFixed(2)).join(' ')+'"/>':rows.map(r=>{const cx=x(r),open=y(r[1]),close=y(r[2]),body=Math.max(1,Math.abs(open-close));return '<g class="'+tone(r[2]-r[1])+'"><line x1="'+cx+'" x2="'+cx+'" y1="'+y(r[3])+'" y2="'+y(r[4])+'"/><rect x="'+(cx-1.8)+'" y="'+Math.min(open,close)+'" width="3.6" height="'+body+'"/></g>';}).join('');
-    const label=item.session.slice(5)+' · '+(item.line?'分时':'5分钟K线');
-    host.innerHTML='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+esc(c.name+' '+item.session+' '+(item.line?'日内分时走势':'日内5分钟K线'))+'"><path class="quotes-index-grid" d="M0 '+H/2+'H'+W+'"/>'+marks+'</svg><span class="quotes-index-caption"><span>'+label+'</span><span>'+String(rows[0][0]).slice(8,10)+':'+String(rows[0][0]).slice(10,12)+'—'+String(rows.at(-1)[0]).slice(8,10)+':'+String(rows.at(-1)[0]).slice(10,12)+'</span></span>';
+    const marks='<path class="quotes-index-line '+tone(hasBase?rows.at(-1)[2]-baseline:q?.percent)+'" d="'+rows.map((r,i)=>(i?'L':'M')+x(r).toFixed(2)+' '+y(r[2]).toFixed(2)).join(' ')+'"/>';
+    const reference=hasBase?'<line class="quotes-index-baseline" data-value="'+baseline+'" x1="0" x2="'+W+'" y1="'+y(baseline)+'" y2="'+y(baseline)+'"><title>昨日收盘 '+fmt(baseline)+'</title></line><text class="quotes-index-baseline-label" x="'+(W-2)+'" y="'+(y(baseline)-4)+'" text-anchor="end">昨收 '+fmt(baseline)+'</text>':'';
+    const label=item.session.slice(5)+' · 分时';
+    host.innerHTML='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+esc(c.name+' '+item.session+' 日内分时走势'+(hasBase?'，昨日收盘 '+fmt(baseline):'，昨收暂不可用'))+'">'+reference+marks+'</svg><span class="quotes-index-caption"><span>'+label+'</span><span>'+String(rows[0][0]).slice(8,10)+':'+String(rows[0][0]).slice(10,12)+'—'+String(rows.at(-1)[0]).slice(8,10)+':'+String(rows.at(-1)[0]).slice(10,12)+'</span></span>';
     host.dataset.state=item.failed?'stale':'ready';if(item.failed)host.querySelector('.quotes-index-caption').title='走势更新失败，保留上次数据';
   }
   async function refreshMiniCharts(){
@@ -76,12 +79,12 @@
     for(const c of benchmarks){
       if(miniFlights.has(c.code)||Date.now()<(miniNextAt.get(c.code)||0))continue;
       miniFlights.add(c.code);miniNextAt.set(c.code,Date.now()+60000);
-      const line=c.code==='HSI.HI',qc=K.quoteCode(c.code),url=line?K.chartUrl(c.code,'minute'):('https://proxy.finance.qq.com/ifzqgtimg/appstock/app/kline/mkline?param='+qc+',m5,,80');
+      const qc=K.quoteCode(c.code),url=K.chartUrl(c.code,'minute');
       jsonp(url).then(data=>{
-        const raw=K.normalize(data,line?'m1':'m5',qc),valid=M.intraday(raw,c.code).map(r=>[r[0],...r.slice(1,5).map(Number)]).filter(r=>r.slice(1).every(v=>Number.isFinite(v)&&v>0)&&r[3]>=Math.max(r[1],r[2],r[4])&&r[4]<=Math.min(r[1],r[2],r[3])),session=K.latestSession(valid),rows=valid.filter(r=>K.rowDate(r)===session);
+        const raw=K.normalize(data,'m1',qc),valid=M.intraday(raw,c.code).map(r=>[r[0],...r.slice(1,5).map(Number)]).filter(r=>r.slice(1).every(v=>Number.isFinite(v)&&v>0)&&r[3]>=Math.max(r[1],r[2],r[4])&&r[4]<=Math.min(r[1],r[2],r[3])),session=K.latestSession(valid),rows=valid.filter(r=>K.rowDate(r)===session);
         if(rows.length<2)throw Error('暂无日内走势');
         const quoteDate=quotes[c.code]?.asOf.slice(0,10);if(quoteDate&&session!==quoteDate)throw Error('来源未返回报价日走势');
-        miniCharts.set(c.code,{rows,session,line});if(moduleActive())paintMini(c);
+        const source=K.series(data,qc),previousClose=Number(source?.qt?.[qc]?.[4]||source?.prec);miniCharts.set(c.code,{rows,session,previousClose});if(moduleActive())paintMini(c);
       }).catch(e=>{if(e.name==='AbortError')return;const item=miniCharts.get(c.code);if(item){item.failed=true;if(moduleActive())paintMini(c);}else{const host=$('benchmarks').querySelector('[data-code="'+c.code+'"] .quotes-index-chart');if(host){host.dataset.state='error';host.innerHTML='<span class="quotes-mini-empty">日内走势暂不可用</span>';}}}).finally(()=>miniFlights.delete(c.code));
     }
   }
@@ -119,7 +122,7 @@
     renderHeat();renderSectorHeat();
     const host=$('rows'),nodes=[...host.querySelectorAll('tr[data-company]')],byCode=new Map(nodes.map(n=>[n.dataset.company,n]));if(nodes.some((n,i)=>n.dataset.company!==ranked[i]?.code))for(const c of ranked){const n=byCode.get(c.code);if(n)host.appendChild(n);}
     detailNavigation();
-    const b=M.breadth(filtered,quotes);text($('range-summary'),filtered.length+' 家 · '+b.valid+' 家有报价 · '+b.up+'涨 / '+b.down+'跌 / '+b.flat+'平'+(b.missing?' · '+b.missing+'家待取得':'')+(b.percentMissing?' · '+b.percentMissing+'只涨跌幅缺失':''));updateBenchmarks();if(selected)renderOverview();
+    const b=M.breadth(filtered,quotes);text($('range-summary'),filtered.length+' 家 · '+b.valid+' 家有报价 · '+b.up+'涨 / '+b.down+'跌 / '+b.flat+'平'+(b.missing?' · '+b.missing+'家待取得':'')+(b.percentMissing?' · '+b.percentMissing+'只涨跌幅缺失':''));updateBenchmarks();for(const c of benchmarks)if(miniCharts.has(c.code))paintMini(c);if(selected)renderOverview();
   }
   function infoLabel(c){return c.index?meta(c).label+'指数':meta(c).label+' / '+meta(c).currency;}
   function ensureSelection(){
