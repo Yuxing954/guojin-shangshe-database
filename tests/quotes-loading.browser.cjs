@@ -34,7 +34,7 @@ const server=http.createServer((req,res)=>{const p=path.resolve(root,'.'+new URL
    await page.setViewportSize({width,height:1000});await page.waitForTimeout(200);
    const company=await page.locator('.quotes-heat-tile').first().boundingBox();assert.ok(company.width/company.height>=1.15&&company.width/company.height<=1.55,JSON.stringify({width,company}));
    await page.locator('[data-view=sector]').click();const sector=await page.locator('.quotes-sector-tile').first().boundingBox();assert.ok(sector.width/sector.height>=1.15&&sector.width/sector.height<=1.6,JSON.stringify({width,sector}));
-   await page.locator('.quotes-sector-tile').first().click();await page.locator('[data-view=sector]').click();assert.equal(await page.locator('#sector').inputValue(),'');assert.equal(await page.locator('.quotes-sector-tile').count(),7);
+   await page.locator('.quotes-sector-tile').first().click();await page.locator('[data-view=sector]').click();assert.equal(await page.locator('#board-title').innerText(),'全部公司');assert.equal(await page.locator('.quotes-sector-tile').count(),7);
    if(width>1100){const board=await page.locator('.quotes-board').boundingBox(),detail=await page.locator('#quote-detail').boundingBox();assert.ok(Math.abs(board.height-detail.height)<3,JSON.stringify({board,detail}));assert.ok(board.width/detail.width<1.35);}assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));await page.locator('[data-view=heat]').click();
   }
   // Corrupt cached identity must fall back to the real directory, never break initialization.
