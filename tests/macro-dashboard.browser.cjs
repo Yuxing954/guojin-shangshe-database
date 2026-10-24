@@ -83,14 +83,14 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
     for(const width of [1920,1440,1024,768,390]){await page.setViewportSize({width,height:1000});await page.waitForTimeout(250);await checkCardGeometry();}
     await page.goto(base+'/macro.html?country=CN&indicator=cn-cpi&comparison=cn-ppi&years=1');await ready();assert.equal(new URL(page.url()).searchParams.has('comparison'),false);
     if(out)await page.screenshot({path:path.join(out,'宏观核心指标-手机.png'),fullPage:true});
-    await page.locator('[data-view="predictions"]').click();await page.waitForFunction(()=>document.querySelector('#prediction-list .forecast-event'));assert.ok(requests.some(url=>url.includes('predictions.json')));
-    assert.match(await page.locator('#prediction-overview').innerText(),/活跃合约/);
+    await page.locator('[data-view="predictions"]').click();await page.waitForFunction(()=>document.querySelector('#prediction-list .pm-event'));assert.ok(requests.some(url=>url.includes('predictions.json')));
+    assert.ok(await page.locator('#prediction-focus .pm-result').count()>0);
     await page.locator('#prediction-search').fill('降息25');
     const pm=JSON.parse(fs.readFileSync(path.join(root,'data/macro/predictions.json'),'utf8')),P=require('../scripts/prediction-model.js');
     const expected=P.groups(pm.markets,{query:'降息25',category:await page.locator('#prediction-category').inputValue(),wholeEvents:true}).length;
-    assert.ok(expected>0);assert.equal(await page.locator('#prediction-list .forecast-event').count(),expected);
-    assert.match(await page.locator('#prediction-list').innerText(),/维持不变/);
-    const predictionDownload=page.waitForEvent('download');await page.locator('#prediction-download').click();assert.match(fs.readFileSync(await (await predictionDownload).path(),'utf8'),/英文原文/);
+    assert.ok(expected>0);assert.equal(await page.locator('#prediction-list .pm-event').count(),expected);
+    assert.match(await page.locator('#prediction-focus').innerText(),/维持不变/);
+    await page.locator('.prediction-more-tools > summary').click();const predictionDownload=page.waitForEvent('download');await page.locator('#prediction-download').click();assert.match(fs.readFileSync(await (await predictionDownload).path(),'utf8'),/英文原文/);
     await page.locator('[data-view="fedwatch"]').click();await page.waitForSelector('.fedwatch-kpi');
     assert.equal(await page.locator('.fedwatch-kpi').count(),3);assert.match(await page.locator('#fedwatch-status').innerText(),/获取/);
     const full=JSON.parse(fs.readFileSync(path.join(root,'data/gold-jewelry/macro.json'),'utf8')).fedwatchTables.at(-1);
