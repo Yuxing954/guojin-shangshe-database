@@ -23,7 +23,7 @@ const server=http.createServer((req,res)=>{const p=path.resolve(root,'.'+new URL
   await route.abort();
  });
  try{
-  await page.goto(base+'/quotes.html?symbol=600754.SH');await page.waitForSelector('#chart svg');await page.waitForFunction(()=>document.getElementById('status').textContent.includes('最近读取'));
+  await page.goto(base+'/quotes.html?symbol=600754.SH');await page.waitForSelector('#chart svg');await page.waitForFunction(()=>document.getElementById('status').textContent.includes('自动更新'));
   assert.equal(charts.length,1,'hidden benchmark charts must not request data');
   await page.waitForFunction(()=>localStorage.getItem('sinolink.quotes.snapshot.v1'));
   slow=true;price=102;const start=Date.now();await page.reload({waitUntil:'domcontentloaded'});await page.waitForSelector('.quotes-heat-tile');
