@@ -1,13 +1,14 @@
 {
-  "syncedAt": "2026-10-23T16:00:22.872Z",
+  "syncedAt": "2026-10-24T04:07:19.518Z",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
   "coverageFrom": "2026-10-23T22:09:52.634+0800",
-  "coverageTo": "2026-10-23T22:09:52.634+0800",
-  "oldestFetched": "2026-10-23T21:49:42.808+0800",
+  "coverageTo": "2026-10-24T11:52:32.988+0800",
+  "oldestFetched": "2026-10-23T21:59:09.617+0800",
   "fetchedTopics": 30,
   "files": {
     "views": [
+      "data/research/updates/2026-10-24-120502-views-000.csv",
       "data/research/updates/2026-10-23-215925-views-000.csv",
       "data/research/updates/2026-10-23-145939-views-000.csv",
       "data/research/updates/2026-10-23-130126-views-000.csv",
@@ -92,6 +93,7 @@
       "data/research/updates/2026-10-14-1258-views.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-10-24-120502-all_views-000.csv",
       "data/research/updates/2026-10-23-225901-all_views-000.csv",
       "data/research/updates/2026-10-23-215925-all_views-000.csv",
       "data/research/updates/2026-10-23-215925-all_views-001.csv",
@@ -275,13 +277,13 @@
     ]
   },
   "counts": {
-    "views": 440,
-    "all_views": 6277,
+    "views": 441,
+    "all_views": 6286,
     "minutes": 101
   },
   "latest": {
-    "views": "2026-10-23 21:58",
-    "all_views": "2026-10-23 21:59",
+    "views": "2026-10-24 11:26",
+    "all_views": "2026-10-24 11:50",
     "minutes": "2026-10-12T01:07:33"
   },
   "excluded": {
@@ -764,7 +766,8 @@
       "45548514455442188",
       "45548514458115128",
       "45548514458114158",
-      "22258215528148821"
+      "22258215528148821",
+      "45548514818445488"
     ],
     "all_views": [
       "82258224252524812",
@@ -6943,30 +6946,83 @@
       "55521582251481824",
       "82258215528415122",
       "14425482244552442",
-      "82258215522885252"
+      "82258215522885252",
+      "22258215818885581",
+      "22258215818524411",
+      "82258215818522522",
+      "82258215818551842",
+      "55521582181224844",
+      "22258215818554121",
+      "82258215818554482",
+      "55521582181224584",
+      "55521582181224524"
     ]
   },
   "lastRun": {
-    "runId": "2026-10-23-235959",
+    "runId": "2026-10-24-120502",
     "sourceGroup": "88888142214212",
     "sourceName": "水木调研纪要-2.0",
     "previousCoverageTo": "2026-10-23T22:09:52.634+0800",
-    "coverageTo": "2026-10-23T22:09:52.634+0800",
+    "coverageTo": "2026-10-24T11:52:32.988+0800",
     "added": {
-      "views": 0,
-      "all_views": 0
+      "views": 1,
+      "all_views": 9
     },
     "updated": 0,
-    "expiredRemoved": 17,
-    "sourceTopicIds": [],
-    "duplicateTopicIds": [],
+    "expiredRemoved": 0,
+    "sourceTopicIds": [
+      "22258215818885581",
+      "22258215818524411",
+      "82258215818522522",
+      "82258215818551842",
+      "55521582181224844",
+      "22258215818554121",
+      "82258215818554482",
+      "55521582181224584",
+      "55521582181224524",
+      "45548514818445488"
+    ],
+    "duplicateTopicIds": [
+      "45548514818442548",
+      "22258215818554511",
+      "55521582181225114"
+    ],
     "briefChanges": {
-      "added": 0,
+      "added": 1,
       "updated": 0,
-      "expiredRemoved": 17
+      "expiredRemoved": 0
     },
-    "duplicates": 0,
-    "excludedTopics": [],
+    "duplicates": 3,
+    "excludedTopics": [
+      {
+        "topicId": "55521582181112854",
+        "reason": "仅标题、图片说明或链接，无可独立归档正文观点"
+      },
+      {
+        "topicId": "22258215818852151",
+        "reason": "仅标题、图片说明或链接，无可独立归档正文观点"
+      },
+      {
+        "topicId": "82258215818524242",
+        "reason": "仅标题、图片说明或链接，无可独立归档正文观点"
+      },
+      {
+        "topicId": "14425482585245442",
+        "reason": "仅标题、图片说明或链接，无可独立归档正文观点"
+      },
+      {
+        "topicId": "45548514818454818",
+        "reason": "仅标题、图片说明或链接，无可独立归档正文观点"
+      },
+      {
+        "topicId": "82258215818585282",
+        "reason": "仅标题、图片说明或链接，无可独立归档正文观点"
+      },
+      {
+        "topicId": "22258215818554541",
+        "reason": "与已归档14425482245848552正文相同，仅标点格式不同"
+      }
+    ],
     "pagination": {
       "pages": 1,
       "pageRowsFetched": 30,
@@ -6974,45 +7030,42 @@
       "stoppedWhenPageReachedCoverage": true
     },
     "dedupCheck": {
-      "candidateKeys": 0,
-      "candidateBuckets": 0,
+      "candidateKeys": 80,
+      "candidateBuckets": 68,
       "algorithm": "sha256-utf8-v1"
     },
-    "expiredBriefIds": [
-      "oriental-selection-double11-gmv-20261017",
-      "dining-supply-discount-channel-q3-20261018",
-      "yuewen-ai-content-ip-20261019",
-      "motorcycle-atv-export-brands-20261020",
-      "alibaba-ecommerce-monetization-q3-20261021",
-      "jd-retail-delivery-q3-preview-20261021",
-      "vape-export-channel-september-20261021",
-      "only-education-q3-efficiency-20261021",
-      "crystal-apparel-export-orders-20261021",
-      "pet-food-export-september-20261021",
-      "anta-brand-channel-q3-20261022",
-      "greatstar-tools-export-20261022",
-      "xgimi-overseas-crowdfunding-20261022",
-      "jihong-crossborder-ai-20261022",
-      "jinbo-strategic-investment-20261022",
-      "huiquan-beer-brand-channel-20261022",
-      "orbbec-consumer-3d-products-20261022"
-    ]
+    "expiredBriefIds": []
   },
   "lastUpdateRecord": {
-    "runId": "2026-10-23-235959",
+    "runId": "2026-10-24-120502",
     "sourceGroup": "88888142214212",
     "sourceName": "水木调研纪要-2.0",
     "previousCoverageTo": "2026-10-23T22:09:52.634+0800",
-    "coverageTo": "2026-10-23T22:09:52.634+0800",
-    "added": 0,
+    "coverageTo": "2026-10-24T11:52:32.988+0800",
+    "added": 10,
     "updated": 0,
-    "expiredRemoved": 17,
-    "sourceTopicIds": [],
-    "duplicateTopicIds": [],
+    "expiredRemoved": 0,
+    "sourceTopicIds": [
+      "22258215818885581",
+      "22258215818524411",
+      "82258215818522522",
+      "82258215818551842",
+      "55521582181224844",
+      "22258215818554121",
+      "82258215818554482",
+      "55521582181224584",
+      "55521582181224524",
+      "45548514818445488"
+    ],
+    "duplicateTopicIds": [
+      "45548514818442548",
+      "22258215818554511",
+      "55521582181225114"
+    ],
     "briefChanges": {
-      "added": 0,
+      "added": 1,
       "updated": 0,
-      "expiredRemoved": 17
+      "expiredRemoved": 0
     }
   }
 }
