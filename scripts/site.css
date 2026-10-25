@@ -78,3 +78,30 @@ body.site-page{margin:0!important;padding-left:220px!important;min-height:100vh;
  .site-nav .site-products-panel a{justify-content:center;text-align:center}
  .site-nav .site-products-panel a>span:last-child{display:none}
 }
+
+/* Compact brand lockup and two-row mobile header. */
+body.site-page>.site-nav{padding:20px 16px!important}
+body.site-page>.site-nav .site-brand{display:flex;flex-direction:row;align-items:center;gap:8px;min-height:36px;text-decoration:none}
+body.site-page>.site-nav .site-brand img{display:block;width:32px;height:32px;flex:none}
+body.site-page>.site-nav .site-brand .site-brand-name{display:inline-flex;align-items:baseline;gap:4px;min-width:0;white-space:nowrap;line-height:22px}
+body.site-page>.site-nav .site-brand .site-brand-name b{font-size:16px;font-weight:700;line-height:22px;letter-spacing:0;color:#203f66}
+body.site-page>.site-nav .site-brand .site-brand-name>span{font-size:12px;line-height:20px;color:var(--site-muted)}
+body.site-page>.site-nav>nav{margin-top:20px}
+@media(max-width:760px){
+ body.site-page>.site-nav{display:grid!important;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:6px 10px;padding:8px 12px!important;overflow:visible}
+ body.site-page>.site-nav .site-brand{grid-column:1;grid-row:1;min-height:32px;gap:7px}
+ body.site-page>.site-nav .site-brand img{width:28px;height:28px}
+ body.site-page>.site-nav .site-brand .site-brand-name b{font-size:14px;line-height:22px}
+ body.site-page>.site-nav .site-brand .site-brand-name>span{font-size:12px}
+ body.site-page>.site-nav>nav{grid-column:1/-1;grid-row:2;display:flex;align-items:center;gap:4px;margin:0;padding:0;min-height:36px;height:36px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none}
+ body.site-page>.site-nav>nav::-webkit-scrollbar{display:none}
+ body.site-page>.site-nav>nav>a{height:36px;min-height:36px;padding:6px 9px;border-radius:6px;font-size:12px;line-height:22px}
+ body.site-page>.site-nav .site-nav-bottom{display:contents;margin:0;padding:0}
+ body.site-page>.site-nav .site-nav-bottom>a{display:none}
+ body.site-page>.site-nav .site-resource-actions{grid-column:2;grid-row:1;display:flex;align-items:center;gap:6px;padding:0;border:0}
+ body.site-page>.site-nav .site-resource-entry{height:32px;min-height:32px;padding:4px 8px;gap:4px;border-radius:6px;font-size:12px;line-height:20px;background:transparent}
+ body.site-page>.site-nav .site-resource-entry svg{display:none}
+ body.site-page>.site-nav .site-products-panel{position:absolute;z-index:110;top:44px;right:12px;width:240px;max-width:calc(100% - 24px);display:grid;grid-template-columns:1fr;gap:4px;padding:6px;border-radius:8px;background:var(--site-surface);box-shadow:0 8px 24px #203f661a}
+ body.site-page>.site-nav .site-products-panel a{justify-content:space-between;min-height:40px;text-align:left}
+ body.site-page>.site-nav .site-products-panel a>span:last-child{display:inline}
+}
