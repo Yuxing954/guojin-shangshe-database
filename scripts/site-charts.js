@@ -101,6 +101,7 @@ function valuesControl(svg){
       const menu=document.createElement('details'),summary=document.createElement('summary');
       menu.className='site-value-menu';summary.textContent='图表标注';
       menu.append(summary,node);control=menu;
+      summary.addEventListener('click',event=>{event.preventDefault();menu.open=!menu.open;positionValueMenu(menu);});
       menu.addEventListener('toggle',()=>positionValueMenu(menu));
       menu.addEventListener('keydown',event=>{if(event.key==='Escape'&&menu.open){event.preventDefault();menu.open=false;summary.focus();}});
     }
