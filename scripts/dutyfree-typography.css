@@ -141,3 +141,8 @@ body.site-page.dutyfree-page #dh-chart svg{display:block;width:100%;max-width:10
 body.site-page.dutyfree-page #dutyfree-holidays{margin:0!important}
 body.site-page.dutyfree-page .board-section-head h2{margin:0!important}
 @media(max-width:760px){body.site-page.dutyfree-page :is(.kpis,.dh-cards)>.board-stat:last-child{grid-column:1/-1!important}}
+
+
+/* Match the hotel overview order: controls, period, section heading, then KPI cards. */
+body.site-page.dutyfree-page #view-monthly>.board-section-head{display:flex;align-items:center;min-height:40px;margin:0 0 12px}
+body.site-page.dutyfree-page #view-monthly>.board-section-head h2{margin:0}

@@ -52,6 +52,7 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
     assert.equal(await page.locator('#detail .site-value-option').count(),1);
     const valuesToggle=page.locator('#detail input[data-value-kind="value"]');
     assert(await valuesToggle.isChecked());assert(await page.locator('#detail .site-value-label').count()>0);
+    await page.locator('#detail .site-value-menu > summary').click();
     await valuesToggle.uncheck();assert.equal(await page.locator('#detail .site-value-label').count(),0);
     await page.selectOption('#years','3');assert.equal(await valuesToggle.isChecked(),false);
     await valuesToggle.check();assert(await page.locator('#detail .site-value-label').count()>0);
@@ -117,6 +118,7 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
     assert.deepEqual(errors,[]);console.log('PASS: no-jump KPI selection, single measured plot, compact detail without repeated sections, frequency/health/search filters, URL restore, CSV, chart keyboard access, daily performance, five viewport widths, lazy prediction loading, partial failure, full failure and retry.');
   }finally{await browser.close();await new Promise(r=>server.close(r));}
 })().catch(e=>{console.error(e);server.close();process.exitCode=1;});
+
 
 
 
