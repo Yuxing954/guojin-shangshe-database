@@ -1,0 +1,35 @@
+name: Check national retail and compact macro
+on:
+  pull_request:
+    paths: ['national-retail.html', 'macro.html', 'regional-retail.html', 'scripts/national-retail*', 'scripts/macro-compact.css', 'scripts/macro-controls.js', 'scripts/macro-navigation.js', 'scripts/forecast-desk.js', 'scripts/retail-monthly-model.js', 'scripts/consumption-monthly-model.js', 'scripts/consumption-macro-model.js', 'data/consumption-macro/**', 'data/products/retail-monthly-insights.json', 'data/macro/automatic-series.json', 'data/national-retail-notes.json', 'tests/national-retail.test.cjs', 'tests/macro-compact.browser.cjs', '.github/workflows/check-national-retail.yml']
+  push:
+    branches: [main]
+    paths: ['national-retail.html', 'macro.html', 'regional-retail.html', 'scripts/national-retail*', 'scripts/macro-compact.css', 'scripts/macro-controls.js', 'scripts/macro-navigation.js', 'scripts/forecast-desk.js', 'data/national-retail-notes.json', 'tests/national-retail.test.cjs', 'tests/macro-compact.browser.cjs', '.github/workflows/check-national-retail.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: |
+          node --check scripts/national-retail.js
+          node --check scripts/macro-controls.js
+          node --test tests/national-retail.test.cjs
+          npm install --no-save --package-lock=false playwright@1.62.1
+          if command -v google-chrome >/dev/null 2>&1; then
+            echo 'PLAYWRIGHT_CHANNEL=chrome' >> "$GITHUB_ENV"
+          else
+            npx playwright install --with-deps chromium
+          fi
+      - run: node tests/macro-compact.browser.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: national-retail-previews
+          path: artifacts/macro-compact
+          if-no-files-found: ignore
