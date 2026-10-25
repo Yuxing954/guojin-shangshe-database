@@ -80,7 +80,10 @@ function positionValueMenu(menu){
   if(!menu.open)return;
   const options=menu.querySelector('.site-value-options');options.style.transform='';
   const box=options.getBoundingClientRect(),shift=Math.max(8-box.left,Math.min(0,innerWidth-8-box.right));
-  if(shift)options.style.transform='translateX('+shift+'px)';
+  const above=menu.getBoundingClientRect().top-box.height-6;
+  const top=box.bottom>innerHeight-8&&above>=8?above:Math.max(8,Math.min(box.top,innerHeight-8-box.height));
+  const shiftY=top-box.top;
+  if(shift||shiftY)options.style.transform='translate('+shift+'px,'+shiftY+'px)';
 }
 function valuesControl(svg){
   if(svg.matches('[aria-hidden=true],.macro-spark')||svg.closest('button,a,[data-chart-controls="minimal"]'))return null;
