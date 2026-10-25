@@ -26,3 +26,14 @@ test('paired multi-series keep period alignment and escape labels',()=>{
  assert.match(result.html,/&lt;月&gt;/);assert.match(result.points[0].text,/甲：5 吨.*同比 —\n乙：—.*同比 10 %/);
  assert.match(paired([]).html,/暂无数据/);
 });
+
+test('plot height depends on available width, not the number of observations',()=>{
+ const height=context.window.SiteCharts.chartHeight;
+ assert.equal(height(340),260);assert.equal(height(680),280);assert.equal(height(1130),320);
+ for(const width of [260,390,680,1130,1520])for(const layout of ['standard','spacious']){
+  const rows=n=>Array.from({length:n},(_,i)=>({period:'期间'+i,x:i,value:i,change:i%9-4}));
+  const small=paired(rows(12),{width,layout}),large=paired(rows(2000),{width,layout});
+  assert.equal(small.html.match(/viewBox="([^"]+)"/)[1],large.html.match(/viewBox="([^"]+)"/)[1]);
+  assert.equal(large.points.length,2000);assert.equal((large.html.match(/class="site-value-bar"/g)||[]).length,2000);
+ }
+});

@@ -1,7 +1,7 @@
 (function(root){
 'use strict';
 // Numeric scale helpers also serve the Node data-rendering checks.
-if(typeof module==='object'&&module.exports){module.exports={niceScale,axisFormat};return;}
+if(typeof module==='object'&&module.exports){module.exports={niceScale,axisFormat,chartHeight};return;}
 const states=new Map(),NS='http://www.w3.org/2000/svg';let pinned=null,queued=false;
 function groups(points){
   const map=new Map();
@@ -273,6 +273,10 @@ function axisFormat(value,step=1,extent=Math.abs(value)){
   return new Intl.NumberFormat('zh-CN',{maximumFractionDigits:digits}).format(Math.abs(value)<Math.abs(step)*1e-9?0:value/divisor)+suffix;
 }
 
+function chartHeight(width,layout='standard'){
+  const compact=width<520;
+  return layout==='dual'?(compact?320:360):compact?260:width<900?280:320;
+}
 function paired(rows,opt={}){
   const periodText=value=>opt.periodFormat==='week-short'?String(value??'').replace(/\b\d{2}(\d{2}W\d{2})\b/g,'$1'):value;
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -288,10 +292,9 @@ function paired(rows,opt={}){
   const valid=normalized.filter(r=>r.values.some(s=>showValue&&Number.isFinite(s.value)||showChange&&Number.isFinite(s.change)));
   if(!valid.length)return {html:'<p class="portal-empty">暂无数据</p>',points:[]};
   const spacious=opt.layout==='spacious';
-  const w=Math.max(240,opt.width||Math.min(900,typeof innerWidth==='number'?innerWidth-64:900)),compact=w<520,L=spacious?(compact?64:80):(compact?58:76),R=showChange&&showValue?(spacious?(compact?64:84):(compact?52:76)):(spacious?36:24),T=spacious?(compact?92:76):42,B=spacious?72:48;
-  // Give dual-axis dutyfree plots real vertical room; dense ranges grow without horizontal scrolling.
-  const density=normalized.length*40/Math.max(80,w-L-R),extra=spacious&&showValue&&showChange?Math.min(120,Math.max(0,Math.round((density-1)*60))):0;
-  const h=spacious?(compact?500:560)+extra:(compact?300:340),bottom=h-B;
+  const w=Math.max(240,opt.width||Math.min(900,typeof innerWidth==='number'?innerWidth-64:900)),compact=w<520,L=spacious?(compact?64:80):(compact?58:76),R=showChange&&showValue?(spacious?(compact?64:84):(compact?52:76)):(spacious?36:24),T=spacious?(compact?72:56):42,B=spacious?56:48;
+  // Geometry follows the container width; observations never make the plot taller.
+  const h=chartHeight(w,spacious?'dual':'standard'),bottom=h-B;
   const xs=normalized.map(r=>r.x),xmin=Math.min(...xs),xmax=Math.max(...xs),width=w-L-R;
   const unique=[...new Set(xs)].sort((a,b)=>a-b),delta=unique.length>1?Math.min(...unique.slice(1).map((x,i)=>x-unique[i])):1;
   const margin=width/(unique.length+1)/2,px=x=>L+margin+(x-xmin)/(xmax-xmin||1)*(width-margin*2);
@@ -342,7 +345,7 @@ function drawPaired(host,rows,opt={}){
   return result;
 }
 
-root.SiteCharts={attach,scan,canvas,groups,paired,drawPaired,niceScale,axisFormat};
+root.SiteCharts={attach,scan,canvas,groups,paired,drawPaired,niceScale,axisFormat,chartHeight};
 document.addEventListener('pointerdown',e=>{if(pinned&&!pinned.svg.contains(e.target))pinned.hide(true);});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')pinned?.hide(true);});
 addEventListener('scroll',()=>{for(const state of states.values())state.refresh();},{passive:true});
