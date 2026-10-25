@@ -2,6 +2,7 @@
 async function selectOnly(page,id){const selected=await page.locator('[data-company][aria-pressed=true]').evaluateAll(es=>es.map(e=>e.dataset.company));if(!selected.includes(id))await page.click('[data-company='+id+']');for(const other of selected)if(other!==id)await page.click('[data-company='+other+']');await page.waitForFunction(id=>document.body.dataset.view==='company'&&document.querySelectorAll('[data-company][aria-pressed=true]').length===1&&document.querySelector('[data-company][aria-pressed=true]').dataset.company===id,id);}
 async function openAll(page){const u=new URL(page.url()),domestic=u.pathname.includes('company-database');u.searchParams.set('peers',domestic?'jinjiang,btg,hworld,atour':'marriott,hyatt,ihg,hilton');await page.goto(u.href);}
 'use strict';
+const {openAnnotation,setChartLabel}=require('./chart-menu-helpers.cjs');
 const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),http=require('node:http'),M=require('../scripts/domestic-hotels-model.js'),D=require('../scripts/site-data.js');
 const ROOT=path.resolve(__dirname,'..'),manifest=JSON.parse(fs.readFileSync(path.join(ROOT,'data/companies/domestic-hotels.json'),'utf8')),datasets=manifest.companies.map(c=>JSON.parse(fs.readFileSync(path.join(ROOT,c.file),'utf8')));
 const server=http.createServer((req,res)=>{const file=path.resolve(ROOT,'.'+new URL(req.url,'http://local').pathname);if(!file.startsWith(ROOT+path.sep))return res.writeHead(403).end();try{res.setHeader('Content-Type',({'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg'})[path.extname(file)]||'text/plain');res.end(fs.readFileSync(file));}catch{res.writeHead(404).end();}});
@@ -24,7 +25,7 @@ async function csv(page,selector){const event=page.waitForEvent('download');if(!
   }
   await verifyPlot('jinjiang','全部','单季度');
   await p.locator('#dh-chart-0 svg').focus();await p.keyboard.press('End');assert((await p.locator('.site-chart-tooltip:not([hidden])').innerText()).includes('26Q2'));await p.keyboard.press('Escape');
-  await p.locator('#dh-chart-0').locator('..').locator('[data-chart-labels]').check();assert(await p.locator('#dh-chart-0 .site-value-label').count()>0);
+  await setChartLabel(p.locator('#dh-chart-0').locator('..').locator('[data-chart-labels]'),true);assert(await p.locator('#dh-chart-0 .site-value-label').count()>0);
   await p.locator('.oh-kpi [data-source]').first().click();await p.locator('#oh-evidence[open]').waitFor();assert((await p.locator('#oh-evidence-body').innerText()).includes('PDF物理页码'));assert((await p.locator('#oh-evidence-body a').getAttribute('href')).startsWith('http'));await p.click('#oh-close');
   const exported=await csv(p,'#oh-export-view');assert.equal(exported.length,24);assert(exported.every(r=>r['样本']==='全部酒店'&&/Q[1-4]$/.test(r['原报告期'])&&r['原始网址'].startsWith('http')));
   await p.selectOption('#oh-range','8');assert.equal((await p.evaluate(()=>domPlotData['dh-chart-0'])).rows.length,8);await more();await p.selectOption('#oh-period','2025Q4');assert.equal((await p.evaluate(()=>domPlotData['dh-chart-0'])).rows.at(-1).period,'25Q4');await p.selectOption('#oh-from','2020Q1');assert.equal(await p.locator('#oh-range').inputValue(),'custom');assert.equal((await p.evaluate(()=>domPlotData['dh-chart-0'])).rows.length,24);
@@ -50,7 +51,7 @@ async function csv(page,selector){const event=page.waitForEvent('download');if(!
   await p.click('[data-tab=operating]');await p.click('#dh-reset');await openAll(p);await ready();assert(p.url().includes('company-database.html'));assert.equal(await p.locator('#oh-kind').inputValue(),'全部');await p.selectOption('#oh-kind','同店');assert((await p.locator('#oh-content').innerText()).includes('仅累计披露'));assert.equal((await p.evaluate(()=>domPlotData['dh-chart-0'])).rows.at(-1).values[0].value,null);
   await p.locator('#dh-chart-0 svg').focus();await p.keyboard.press('End');const peers=await p.locator('.site-chart-tooltip:not([hidden])').innerText();for(const c of manifest.companies)assert(peers.includes(c.name));await p.keyboard.press('Escape');
   for(const width of [1440,1024,768,390,320]){
-   await p.setViewportSize({width,height:900});await p.goto(base+'/company-database.html?company=atour');await ready();await p.locator('#dh-chart-0').locator('..').locator('[data-chart-labels]').check();
+   await p.setViewportSize({width,height:900});await p.goto(base+'/company-database.html?company=atour');await ready();await setChartLabel(p.locator('#dh-chart-0').locator('..').locator('[data-chart-labels]'),true);
    assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'page overflow '+width);
    assert(await p.locator('.oh-plot:visible').evaluateAll(hs=>hs.every(h=>h.scrollWidth<=h.clientWidth+1&&h.querySelector('svg').getBoundingClientRect().width<=h.clientWidth+1)),'chart overflow '+width);
    assert.equal(await p.locator('.oh-plot .site-chart-scroll').count(),0);
