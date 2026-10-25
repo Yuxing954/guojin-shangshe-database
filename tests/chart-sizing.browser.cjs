@@ -7,9 +7,9 @@ for(const width of [1920,1440,1024,768,390,320]){
  await p.setViewportSize({width,height:1000});
  for(const [file,ready]of [['hotel-dashboard.html','#main-chart svg'],['hotel-groups.html','#group-trend svg'],['travel-dashboard.html','#domestic-quarter-trips svg'],['cruise-dashboard.html','#chart-passengers svg'],['dutyfree-dashboard.html','#hn-growth.site-paired-chart']]){
   await p.goto(base+'/'+file);await p.locator(ready).first().waitFor();
-  for(const svg of await p.locator('svg.site-paired-chart:visible').all()){
-   const geometry=await svg.evaluate(e=>({w:e.getBoundingClientRect().width,h:e.getBoundingClientRect().height,vw:e.viewBox.baseVal.width,vh:e.viewBox.baseVal.height}));assert.ok(geometry.h>=240&&geometry.h<=380,file+' balanced height '+JSON.stringify(geometry));assert.ok(Math.abs(geometry.w-geometry.vw)<2&&Math.abs(geometry.h-geometry.vh)<2,file+' must redraw at native size');assert.ok(await svg.locator('path,rect').count()>0);
-  }
+  const handle=await p.waitForFunction(()=>{const es=[...document.querySelectorAll('svg.site-paired-chart')].filter(e=>{const r=e.getBoundingClientRect();return r.width>0&&r.height>0;});return es.length?es.map(e=>({w:e.getBoundingClientRect().width,h:e.getBoundingClientRect().height,vw:e.viewBox.baseVal.width,vh:e.viewBox.baseVal.height,marks:e.querySelectorAll('path,rect').length})):false;});
+  const geometries=await handle.jsonValue();await handle.dispose();
+  for(const geometry of geometries){assert.ok(geometry.h>=240&&geometry.h<=380,file+' balanced height '+JSON.stringify(geometry));assert.ok(Math.abs(geometry.w-geometry.vw)<2&&Math.abs(geometry.h-geometry.vh)<2,file+' must redraw at native size');assert.ok(geometry.marks>0);}
   assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
   if([1440,390].includes(width)&&['dutyfree-dashboard.html','hotel-groups.html'].includes(file))await p.screenshot({path:path.join(out,file.replace('.html','')+'-'+width+'.png')});
  }

@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 2,
+  "date": "2026-10-25",
+  "windowStart": "2026-10-24T18:00:00+08:00",
+  "cutoff": "2026-10-25T18:00:00+08:00",
+  "sourceThrough": "2026-10-25T17:53:20.068+0800",
+  "attachmentCatalog": {
+    "generatedAt": "2026-10-25T08:31:30.492Z",
+    "sourceThrough": "2026-10-25T14:36:53.876+0800",
+    "scan": {
+      "observedAt": "2026-10-25T08:31:30.492Z",
+      "sourceGroup": "88888142214212",
+      "sourceName": "水木调研纪要-2.0",
+      "topicsScanned": 420,
+      "topicsInWindow": 395,
+      "topicPages": 14,
+      "topicWindowFrom": "2026-10-23T00:00:00+08:00",
+      "topicWindowTo": "2026-10-25T14:36:53.876+0800",
+      "boundaryReachedBeforeWindow": true,
+      "attachmentsObserved": 216,
+      "uniqueFileIds": 216,
+      "duplicateFileIds": 0,
+      "newRecords": 33,
+      "existingRecordsRefreshed": 183,
+      "attachmentContentRead": false,
+      "sourceMetadataFields": [
+        "fileId",
+        "topicId",
+        "filename",
+        "extension",
+        "bytes",
+        "fileCreatedAt",
+        "topicCreatedAt",
+        "durationSeconds",
+        "downloadCount",
+        "sourceHash",
+        "source"
+      ],
+      "windowStart": "2026-10-23T00:00:00+08:00",
+      "windowEnd": "2026-10-25T08:31:30.492Z",
+      "windowEndDate": "2026-10-25",
+      "windowComplete": true,
+      "archiveHasMore": true
+    },
+    "coverageStatus": "pending",
+    "requestedWindowStart": "2026-10-24T18:00:00+08:00",
+    "requestedCutoff": "2026-10-25T18:00:00+08:00",
+    "missingIntervals": [
+      {
+        "start": "2026-10-25T16:31:30.492000+08:00",
+        "end": "2026-10-25T18:00:00+08:00"
+      }
+    ],
+    "publicationEligibility": {
+      "policy": "scan-observed-after-16",
+      "eligible": true,
+      "scanObservedAt": "2026-10-25T08:31:30.492Z",
+      "coverageComplete": false
+    }
+  },
+  "groups": {
+    "segments": [
+      {
+        "title": "周末好～更新一下我们的推荐标的：",
+        "publishedAt": "2026-10-25T12:35:04.020000+08:00",
+        "sector": "商社综合",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/82258215222212512"
+      },
+      {
+        "title": "周观点：26Q3比音勒芬业绩超预期，新澳受益澳毛涨价，利润高增2026/10/24☕☕",
+        "publishedAt": "2026-10-25T12:34:44.275000+08:00",
+        "sector": "零售与消费出海",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/14425482444484252"
+      }
+    ],
+    "minutes": [],
+    "audio": [],
+    "reports": [
+      {
+        "id": "zsxq-file-412818814248828",
+        "title": "中国折扣零售：渠道变革中的长期赢家，单店盈利稳健、门店加密空间充足China Consumer Staples_ Value Retailers_ Expert Call Takeaways — A continued durable winner amid structural channel shifts backed by resilient UE  ample infill potential.pdf",
+        "publishedAt": "2026-10-25T11:43:00.373000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/55521582555121844",
+        "status": "仅标题登记",
+        "sector": "other"
+      }
+    ]
+  },
+  "policy": "仅依据已入库元数据列出标题、发布时间和来源主题；未下载、读取或转写附件，不把研究报告标为纪要。"
+}

@@ -27,7 +27,7 @@ try{
  for(const width of [1440,1024,768,724,600,390,320]){await p.setViewportSize({width,height:900});await p.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'overflow '+width);assert(await p.locator('.kr-plot').evaluateAll(es=>es.every(e=>e.scrollWidth<=e.clientWidth+1)),'chart '+width);assert(await p.locator('.kr-plot svg').evaluateAll(svgs=>svgs.every(svg=>{
  const boxes=selector=>[...svg.querySelectorAll(selector)].map(e=>{const b=e.getBBox();return {x:b.x,y:b.y,w:b.width,h:b.height};});
  const dates=boxes('.site-period-tick').sort((a,b)=>a.x-b.x),titles=boxes('.site-axis-label'),ticks=boxes('.site-tick');
- if(svg.dataset.chartLayout!=='spacious'||svg.viewBox.baseVal.height<500||dates.length<2||dates.length>6)return false;
+ if(svg.dataset.chartLayout!=='spacious'||svg.viewBox.baseVal.height<300||svg.viewBox.baseVal.height>360||dates.length<2||dates.length>6)return false;
  if(dates.some((b,i)=>b.x<0||b.x+b.w>svg.viewBox.baseVal.width||i&&b.x-(dates[i-1].x+dates[i-1].w)<18))return false;
  if(Math.min(...dates.map(b=>b.y))-Math.max(...ticks.map(b=>b.y+b.h))<12)return false;
  if(Math.min(...ticks.map(b=>b.y))-Math.max(...titles.map(b=>b.y+b.h))<12)return false;
