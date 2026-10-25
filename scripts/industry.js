@@ -4,7 +4,7 @@
   function select(){
     let key=location.hash.slice(1);
     if(!labels[key] || key==='gold'){key='hotel';}
-    document.title=labels[key]+'行业数据 · 社会服务';
+    document.title=labels[key]+'行业数据 · 零售&社服数据库';
     document.getElementById('sector-tabs').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.key===key)));
     document.getElementById('gold-content').hidden=key!=='gold';
     IndustryPanels.show(key);

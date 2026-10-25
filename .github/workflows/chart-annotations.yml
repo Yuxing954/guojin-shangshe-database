@@ -1,0 +1,32 @@
+name: Check chart annotations
+on:
+  pull_request:
+    paths: ['*.html', 'scripts/chart-annotations.js', 'scripts/site-charts.js', 'scripts/site-charts.css', 'scripts/regional-retail-charts.js', 'tests/chart-annotations.browser.cjs', 'tests/chart-menu-helpers.cjs', '.github/workflows/chart-annotations.yml']
+  push:
+    branches: [main]
+    paths: ['*.html', 'scripts/chart-annotations.js', 'scripts/site-charts.js', 'scripts/site-charts.css', 'scripts/regional-retail-charts.js', 'tests/chart-annotations.browser.cjs', 'tests/chart-menu-helpers.cjs', '.github/workflows/chart-annotations.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  chart-annotations:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: |
+          npm install --no-save --package-lock=false playwright@1.62.1
+          if command -v google-chrome >/dev/null 2>&1; then
+            echo 'PLAYWRIGHT_CHANNEL=chrome' >> "$GITHUB_ENV"
+          else
+            npx playwright install --with-deps chromium
+          fi
+      - run: node tests/chart-annotations.browser.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: chart-annotation-previews
+          path: artifacts/chart-annotations
+          if-no-files-found: ignore

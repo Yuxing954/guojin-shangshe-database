@@ -109,7 +109,7 @@ body.site-page .site-chart-tools select{box-sizing:border-box;max-width:100%;min
 body.site-page .site-chart-tools [data-chart-value-controls]{display:inline-flex;align-items:center;min-width:0;max-width:100%}
 @media(max-width:760px){body.site-page .site-chart-tools{gap:10px 12px}body.site-page .site-chart-tools select{font-size:16px!important}body.site-page .site-chart-tools .site-value-options{justify-content:flex-start}}
 
-/* Annotation options are folded only on explicitly opted-in pilot charts. */
+/* Shared annotation menu for analytical charts. */
 .site-value-menu{position:relative;flex:none;color:var(--site-muted);font:inherit}
 .site-value-menu>summary{box-sizing:border-box;min-height:36px;padding:6px 10px;border:1px solid var(--site-line);border-radius:8px;background:var(--site-surface);font-size:13px;line-height:22px;white-space:nowrap;cursor:pointer}
 .site-value-menu[open]>.site-value-options{position:absolute;right:0;top:calc(100% + 6px);z-index:30;display:flex;align-items:flex-start;flex-direction:column;flex-wrap:nowrap;gap:10px;min-width:160px;max-width:calc(100vw - 40px);padding:12px;border:1px solid var(--site-line);border-radius:8px;background:var(--site-surface);box-shadow:0 8px 24px #24334c14}
@@ -117,3 +117,11 @@ body.site-page [data-chart-label-menu]:has(.site-value-menu[open]),body.site-pag
 .site-value-menu>summary:focus-visible{outline:2px solid var(--site-accent);outline-offset:2px}
 @media(max-width:760px){.site-value-menu>summary{min-height:40px;padding:8px 10px}}
 
+
+/* Open menus must remain visible inside chart cards and regional toolbars. */
+.site-chart-label-scope:has(.site-value-menu[open]){overflow:visible!important;position:relative;z-index:4}
+.site-value-menu[open]{z-index:35}
+.site-value-menu .site-value-options>label{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;font-size:13px}
+.site-value-menu .site-value-options select{min-height:32px;padding:4px 8px;font-size:13px;max-width:100%}
+
+.site-annotation-menu-host:has(.site-value-menu[open]){overflow:visible!important}

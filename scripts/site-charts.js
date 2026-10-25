@@ -76,21 +76,13 @@ function shortValue(text){
   return matches.at(-1)?.[0]||'';
 }
 function chartScope(svg){return svg.closest('.hd-tier-trend,.hd-card,.gj-card,.morning-trend,.morning-trend-card,#quote-detail,.board-panel,.portal-panel')||svg.closest('article,section')||svg.parentElement.parentElement;}
-function positionValueMenu(menu){
-  if(!menu.open)return;
-  const options=menu.querySelector('.site-value-options');options.style.transform='';
-  const box=options.getBoundingClientRect(),shift=Math.max(8-box.left,Math.min(0,innerWidth-8-box.right));
-  const above=menu.getBoundingClientRect().top-box.height-6;
-  const top=box.bottom>innerHeight-8&&above>=8?above:Math.max(8,Math.min(box.top,innerHeight-8-box.height));
-  const shiftY=top-box.top;
-  if(shift||shiftY)options.style.transform='translate('+shift+'px,'+shiftY+'px)';
-}
+function positionValueMenu(menu){ChartAnnotations.position(menu);}
 function valuesControl(svg){
   if(svg.matches('[aria-hidden=true],.macro-spark')||svg.closest('button,a,[data-chart-controls="minimal"]'))return null;
   const scope=chartScope(svg);if(!scope)return null;
   let config=valueScopes.get(scope);
   const legacy=scope.querySelector('input[data-chart-labels]');
-  if(legacy){if(!config){config={scope,hotel:false,node:legacy.closest('label')};valueScopes.set(scope,config);}config.value=legacy.checked;config.change=legacy.checked;return config;}
+  if(legacy){ChartAnnotations.wrap(legacy.closest('label'));scope.classList.add('site-chart-label-scope');if(!config){config={scope,hotel:false,node:legacy.closest('label')};valueScopes.set(scope,config);}config.value=legacy.checked;config.change=legacy.checked;return config;}
   const hotel=document.body.classList.contains('hotel-page')||scope.hasAttribute('data-chart-dual-labels'),selectedMetric=scope.querySelector('#holiday-metric-select,#hn-metric,#dh-metric'),metric=selectedMetric?.selectedOptions[0]?.textContent.trim().replace(/[（(].*$/,'')||scope.querySelector('#metric-switch')?.querySelector('[aria-pressed=true]')?.textContent.trim()||scope.querySelector('[data-metric][aria-pressed=true]')?.textContent.trim()||(scope.matches('.hd-tier-trend')?document.querySelector('#metric-switch [aria-pressed=true]')?.textContent.trim():'')||'数值';
   if(!config){config={scope,hotel,value:scope.hasAttribute('data-chart-values-default')||document.body.hasAttribute('data-chart-values-default'),change:scope.hasAttribute('data-chart-change-default')||document.body.hasAttribute('data-chart-change-default')||document.body.classList.contains('dutyfree-page')&&(scope.hasAttribute('data-chart-values-default')||document.body.hasAttribute('data-chart-values-default'))};valueScopes.set(scope,config);}
   if(!config.node?.isConnected){
@@ -98,16 +90,8 @@ function valuesControl(svg){
     for(const key of scope.getAttribute('data-chart-label-kinds')==='change'?['change']:hotel?['value','change']:['value']){
       const label=document.createElement('label'),input=document.createElement('input'),caption=document.createElement('span');label.className='site-value-option';input.type='checkbox';input.dataset.valueKind=key;input.checked=config[key];input.addEventListener('change',()=>{config[key]=input.checked;if(!hotel)config.change=input.checked;for(const state of [...states.values()])if(state.valueScope===scope)state.refreshValues();});label.append(input,caption);node.append(label);config[key+'Caption']=caption;config[key+'Input']=input;
     }
-    // Only selected pilot charts fold annotation controls; values and chart modes stay unchanged.
-    let control=node;
-    if(scope.hasAttribute('data-chart-label-menu')){
-      const menu=document.createElement('details'),summary=document.createElement('summary');
-      menu.className='site-value-menu';summary.textContent='图表标注';
-      menu.append(summary,node);control=menu;
-      summary.addEventListener('click',event=>{event.preventDefault();menu.open=!menu.open;positionValueMenu(menu);});
-      menu.addEventListener('toggle',()=>positionValueMenu(menu));
-      menu.addEventListener('keydown',event=>{if(event.key==='Escape'&&menu.open){event.preventDefault();menu.open=false;summary.focus();}});
-    }
+    scope.classList.add('site-chart-label-scope');
+    const control=ChartAnnotations.wrap(node);
     const fields=[...scope.querySelectorAll('select,input[type=date]')].filter(n=>chartScope(n)===scope&&!n.closest('.site-value-options')&&(/window|range|history-start|from|\bto\b|years|price-end/.test(n.id)||/范围|区间/.test(n.getAttribute('aria-label')||'')||/范围|期间|开始|结束/.test(n.closest('label')?.textContent||'')));
     const field=fields.at(-1),anchor=field?.closest('label')||field;
     if(anchor){let row=anchor.parentElement;if(!row.classList.contains('site-chart-options')){row=document.createElement('span');row.className='site-chart-options';anchor.before(row);row.append(anchor);}row.append(control);}
