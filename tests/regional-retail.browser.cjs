@@ -1,3 +1,4 @@
+const {openAnnotation,setChartLabel}=require('./chart-menu-helpers.cjs');
 const {chromium}=require('playwright'),http=require('node:http'),fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const M=require('../scripts/regional-retail-model.js'),T=require('../scripts/regional-retail-tier-model.js'),R=require('../data/regional-retail/city-tiers.json'),H=require('../data/regional-retail/history.json'),data=T.merge(T.merge(require('../data/regional-retail/observations.json'),require('../data/regional-retail/tier-supplement.json')),M.expandHistory(H));
 const root=path.resolve(__dirname,'..'),out=path.join(root,'.cache/regional-retail');fs.mkdirSync(out,{recursive:true});

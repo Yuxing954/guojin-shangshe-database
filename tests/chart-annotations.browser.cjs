@@ -11,7 +11,7 @@ const cases=[
  ['national-retail.html','#national-trend svg'],['regional-retail.html','#tier-trend svg.regional-chart'],
  ['company-database.html?company=atour','#dh-chart-0 svg'],['overseas-hotels.html?company=marriott','#oh-op-plot-0 svg'],['quotes.html','#chart svg.quotes-chart']];
 for(const [file,ready]of cases){
- await p.setViewportSize({width:1440,height:1000});await p.goto(base+'/'+file);await p.locator(ready).first().waitFor({timeout:45000});await p.waitForFunction(()=>document.querySelector('.site-value-menu'));
+ await p.setViewportSize({width:1440,height:1000});await p.goto(base+'/'+file);await p.locator(ready).first().waitFor({timeout:45000});await p.waitForFunction(()=>document.querySelector('.site-value-menu'));await p.waitForTimeout(300);
  const scope=p.locator('.site-chart-label-scope').filter({visible:true}).first();
  const menu=p.locator('.site-value-menu:visible').first();await menu.locator('summary').waitFor();
  assert.equal(await menu.getAttribute('open'),null,file+' folded by default');
@@ -19,10 +19,10 @@ for(const [file,ready]of cases){
  const plot=()=>p.locator('svg.site-interactive-chart,svg.regional-chart').evaluateAll(es=>es.map(e=>({v:e.getAttribute('viewBox'),marks:[...e.querySelectorAll('path:not(.site-chart-guide),polyline,rect,circle')].map(n=>['d','points','x','y','cx','cy','width','height'].map(a=>n.getAttribute(a)))})));
  const before=await plot();await menu.locator('summary').click();
  if(await input.count()){const active=input.filter({visible:true}).first(),checked=await active.isChecked();if(!await active.isDisabled()){await active.setChecked(!checked);assert.deepEqual(await plot(),before,file+' annotations must not change plot geometry or observations');await active.setChecked(checked);}}
- else if(await select.count()){const host=p.locator('#tier-trend'),count=await host.locator('circle').count(),height=(await host.locator('svg').boundingBox()).height;await select.selectOption('off');assert.equal(await host.locator('.regional-value-label').count(),0);assert.equal(await host.locator('circle').count(),count);assert.equal((await host.locator('svg').boundingBox()).height,height);await p.locator('#tier-trend .site-value-menu select').selectOption('all');}
+ else if(await select.count()){const host=p.locator('#tier-trend'),count=await host.locator('circle').count(),height=(await host.locator('svg.regional-chart').boundingBox()).height;await select.selectOption('off');assert.equal(await host.locator('.regional-value-label').count(),0);assert.equal(await host.locator('circle').count(),count);assert.equal((await host.locator('svg.regional-chart').boundingBox()).height,height);await p.locator('#tier-trend .site-value-menu select').selectOption('all');}
  await p.keyboard.press('Escape');
  for(const width of [1440,768,390,320]){
-  await p.setViewportSize({width,height:1000});await p.waitForTimeout(120);
+  await p.setViewportSize({width,height:1000});await p.waitForTimeout(300);
   const current=p.locator('.site-value-menu:visible').first(),summary=current.locator('summary');await summary.click();
   const options=current.locator('.site-value-options');await options.waitFor();
   const box=await options.boundingBox();assert.ok(box.x>=7&&box.x+box.width<=width-7&&box.y>=7&&box.y+box.height<=1000-7,file+' menu fits '+width+' '+JSON.stringify(box));

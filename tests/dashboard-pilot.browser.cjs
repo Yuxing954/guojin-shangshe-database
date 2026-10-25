@@ -15,7 +15,7 @@ const server=http.createServer((req,res)=>{const file=path.resolve(root,'.'+new 
   ];
   for(const board of boards){
    await page.setViewportSize({width:1440,height:1000});await page.goto(base+'/'+board.file);await page.locator(board.chart+' .site-value-label').first().waitFor();
-   const menu=page.locator(board.scope+' .site-value-menu'),summary=menu.locator('summary'),toggle=menu.locator('[data-value-kind=value]');
+   const menu=page.locator(board.scope+' .site-value-menu').first(),summary=menu.locator('summary'),toggle=menu.locator('[data-value-kind=value]');
    assert.equal(await menu.count(),1);assert.equal(await menu.getAttribute('open'),null);assert.equal(await toggle.isVisible(),false);assert(await toggle.isChecked());
    const plot=()=>page.locator(board.chart).evaluate(svg=>[...svg.querySelectorAll('polyline,rect,circle[data-chart-point],.site-value-bar,.site-change-line')].map(n=>({tag:n.tagName,points:n.getAttribute('points'),x:n.getAttribute('x'),y:n.getAttribute('y'),cx:n.getAttribute('cx'),cy:n.getAttribute('cy'),height:n.getAttribute('height'),width:n.getAttribute('width')})));
    const before=await plot();await summary.click();await setChartLabel(toggle,false);assert.equal(await page.locator(board.chart+' .site-value-label[data-kind=value]').count(),0);assert.deepEqual(await plot(),before,'annotation choice must preserve plotted observations');
