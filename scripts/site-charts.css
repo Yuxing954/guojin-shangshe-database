@@ -108,3 +108,12 @@ body.site-page .site-chart-tools{display:flex!important;align-items:center!impor
 body.site-page .site-chart-tools select{box-sizing:border-box;max-width:100%;min-height:36px;padding:6px 10px;border:1px solid #dce0e8;border-radius:8px;background:#fff;color:#254866;font:400 13px/22px -apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif}
 body.site-page .site-chart-tools [data-chart-value-controls]{display:inline-flex;align-items:center;min-width:0;max-width:100%}
 @media(max-width:760px){body.site-page .site-chart-tools{gap:10px 12px}body.site-page .site-chart-tools select{font-size:16px!important}body.site-page .site-chart-tools .site-value-options{justify-content:flex-start}}
+
+/* Annotation options are folded only on explicitly opted-in pilot charts. */
+.site-value-menu{position:relative;flex:none;color:var(--site-muted);font:inherit}
+.site-value-menu>summary{box-sizing:border-box;min-height:36px;padding:6px 10px;border:1px solid var(--site-line);border-radius:8px;background:var(--site-surface);font-size:13px;line-height:22px;white-space:nowrap;cursor:pointer}
+.site-value-menu[open]>.site-value-options{position:absolute;right:0;top:calc(100% + 6px);z-index:30;display:flex;align-items:flex-start;flex-direction:column;flex-wrap:nowrap;gap:10px;min-width:160px;max-width:calc(100vw - 40px);padding:12px;border:1px solid var(--site-line);border-radius:8px;background:var(--site-surface);box-shadow:0 8px 24px #24334c14}
+body.site-page [data-chart-label-menu]:has(.site-value-menu[open]),body.site-page .data-board #indicators #detail[data-chart-label-menu]:has(.site-value-menu[open]){overflow:visible}
+.site-value-menu>summary:focus-visible{outline:2px solid var(--site-accent);outline-offset:2px}
+@media(max-width:760px){.site-value-menu>summary{min-height:40px;padding:8px 10px}}
+

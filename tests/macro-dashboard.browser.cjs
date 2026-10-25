@@ -29,6 +29,7 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
     assert.equal(await page.locator('.macro-topic').count(),3);for(const group of await page.locator('.macro-topic').all())assert.equal(await group.locator('.macro-kpi').count(),2);
     assert.equal(await page.locator('#recent-releases,#trend-presets,#mode,.macro-history,.macro-method,.macro-forecast-detail,#forecast-overview').count(),0);
     async function checkPlotWidth(){
+      await page.waitForFunction(()=>{const svg=document.querySelector('#primary-chart svg');return svg&&Math.abs(svg.viewBox.baseVal.width-svg.closest('#primary-chart').clientWidth)<3;});
       const measured=await page.locator('#primary-chart svg').evaluate(svg=>{
         const b=svg.getBoundingClientRect(),matrix=svg.getScreenCTM();
         const xs=[...svg.querySelectorAll('polyline')].flatMap(line=>[...line.points].map(p=>new DOMPoint(p.x,p.y).matrixTransform(matrix).x));
@@ -39,6 +40,7 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
       assert.ok(measured.height>=250&&measured.height<=330,'plot height: '+JSON.stringify(measured));
     }
     async function checkAnnotationLayout(){
+      await page.waitForFunction(()=>{const svg=document.querySelector('#primary-chart svg');return svg&&Math.abs(svg.viewBox.baseVal.width-svg.closest('#primary-chart').clientWidth)<3;});
       const layout=await page.locator('#primary-chart svg').evaluate(svg=>{
         const labels=[...svg.querySelectorAll('.site-value-label')].map(n=>({x:+n.getAttribute('x'),box:n.getBoundingClientRect()}));
         const gaps=labels.slice(1).map((p,i)=>p.x-labels[i].x);
@@ -52,6 +54,7 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
     assert.equal(await page.locator('#detail .site-value-option').count(),1);
     const valuesToggle=page.locator('#detail input[data-value-kind="value"]');
     assert(await valuesToggle.isChecked());assert(await page.locator('#detail .site-value-label').count()>0);
+    await page.locator('#detail .site-value-menu > summary').click();
     await valuesToggle.uncheck();assert.equal(await page.locator('#detail .site-value-label').count(),0);
     await page.selectOption('#years','3');assert.equal(await valuesToggle.isChecked(),false);
     await valuesToggle.check();assert(await page.locator('#detail .site-value-label').count()>0);
@@ -64,8 +67,8 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
     await page.locator('#primary-chart [data-chart-point]').first().focus();assert.ok(await page.locator('#primary-chart .research-tooltip').isVisible());assert.match(await page.locator('#primary-chart .research-tooltip').innerText(),/20\d{2}-\d{2}/);assert.doesNotMatch(await page.locator('#primary-chart .research-tooltip').innerText(),/发布|来源|计算/);
     if(out){fs.mkdirSync(out,{recursive:true});await page.locator('#primary-chart [data-chart-point]').first().evaluate(el=>el.blur());await page.evaluate(()=>scrollTo(0,0));await page.screenshot({path:path.join(out,'宏观核心指标-桌面.png'),fullPage:true});}
     await page.locator('[data-study=workspace]').click();await page.locator('#more-filters > summary').click();await page.locator('#frequency').selectOption('quarterly');assert.equal(await page.locator('#metric-list .macro-item').count(),2);
-    await page.locator('#search').fill('不存在');await page.waitForTimeout(250);assert.match(await page.locator('#detail').innerText(),/没有匹配/);assert.equal(await page.locator('#download-latest').isDisabled(),true);
-    await page.locator('#reset-filters').click();await page.locator('#search').fill('社零');await page.waitForTimeout(250);assert.equal(await page.locator('#metric-list .macro-item').count(),1);
+    await page.locator('#search').fill('不存在');await page.waitForFunction(()=>document.querySelector('#detail').textContent.includes('没有匹配'));assert.match(await page.locator('#detail').innerText(),/没有匹配/);assert.equal(await page.locator('#download-latest').isDisabled(),true);
+    await page.locator('#reset-filters').click();await page.locator('#search').fill('社零');await page.waitForFunction(()=>document.querySelectorAll('#metric-list .macro-item').length===1);assert.equal(await page.locator('#metric-list .macro-item').count(),1);
     const download=page.waitForEvent('download');await page.locator('#download-latest').click();const csv=fs.readFileSync(await (await download).path(),'utf8');assert.equal(csv.split('\r\n').length,2);assert.match(csv,/社零/);assert.ok(csv.includes(JSON.parse(fs.readFileSync(path.join(root,'data/macro/automatic-series.json'),'utf8')).series['cn-retail'].observations.at(-1).period));
     await page.locator('[data-study=overview]').click();await page.locator('[data-kpi="cn-pmi"]').click();assert.equal(await page.locator('#search').inputValue(),'');assert.match(await page.locator('.macro-latest').innerText(),/点/);
     await page.locator('[data-study=workspace]').click();await page.locator('#reset-filters').click();await page.locator('[data-country="US"]').click();assert.equal(await page.locator('#metric-list .macro-item').count(),14);assert.equal(await page.locator('#comparison').count(),0);
@@ -117,6 +120,7 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
     assert.deepEqual(errors,[]);console.log('PASS: no-jump KPI selection, single measured plot, compact detail without repeated sections, frequency/health/search filters, URL restore, CSV, chart keyboard access, daily performance, five viewport widths, lazy prediction loading, partial failure, full failure and retry.');
   }finally{await browser.close();await new Promise(r=>server.close(r));}
 })().catch(e=>{console.error(e);server.close();process.exitCode=1;});
+
 
 
 

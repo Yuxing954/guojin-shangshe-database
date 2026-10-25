@@ -76,6 +76,12 @@ function shortValue(text){
   return matches.at(-1)?.[0]||'';
 }
 function chartScope(svg){return svg.closest('.hd-tier-trend,.hd-card,.gj-card,.morning-trend,.morning-trend-card,#quote-detail,.board-panel,.portal-panel')||svg.closest('article,section')||svg.parentElement.parentElement;}
+function positionValueMenu(menu){
+  if(!menu.open)return;
+  const options=menu.querySelector('.site-value-options');options.style.transform='';
+  const box=options.getBoundingClientRect(),shift=Math.max(8-box.left,Math.min(0,innerWidth-8-box.right));
+  if(shift)options.style.transform='translateX('+shift+'px)';
+}
 function valuesControl(svg){
   if(svg.matches('[aria-hidden=true],.macro-spark')||svg.closest('button,a,[data-chart-controls="minimal"]'))return null;
   const scope=chartScope(svg);if(!scope)return null;
@@ -89,10 +95,20 @@ function valuesControl(svg){
     for(const key of scope.getAttribute('data-chart-label-kinds')==='change'?['change']:hotel?['value','change']:['value']){
       const label=document.createElement('label'),input=document.createElement('input'),caption=document.createElement('span');label.className='site-value-option';input.type='checkbox';input.dataset.valueKind=key;input.checked=config[key];input.addEventListener('change',()=>{config[key]=input.checked;if(!hotel)config.change=input.checked;for(const state of [...states.values()])if(state.valueScope===scope)state.refreshValues();});label.append(input,caption);node.append(label);config[key+'Caption']=caption;config[key+'Input']=input;
     }
+    // Only selected pilot charts fold annotation controls; values and chart modes stay unchanged.
+    let control=node;
+    if(scope.hasAttribute('data-chart-label-menu')){
+      const menu=document.createElement('details'),summary=document.createElement('summary');
+      menu.className='site-value-menu';summary.textContent='图表标注';
+      menu.append(summary,node);control=menu;
+      summary.addEventListener('click',event=>{event.preventDefault();menu.open=!menu.open;positionValueMenu(menu);});
+      menu.addEventListener('toggle',()=>positionValueMenu(menu));
+      menu.addEventListener('keydown',event=>{if(event.key==='Escape'&&menu.open){event.preventDefault();menu.open=false;summary.focus();}});
+    }
     const fields=[...scope.querySelectorAll('select,input[type=date]')].filter(n=>chartScope(n)===scope&&!n.closest('.site-value-options')&&(/window|range|history-start|from|\bto\b|years|price-end/.test(n.id)||/范围|区间/.test(n.getAttribute('aria-label')||'')||/范围|期间|开始|结束/.test(n.closest('label')?.textContent||'')));
     const field=fields.at(-1),anchor=field?.closest('label')||field;
-    if(anchor){let row=anchor.parentElement;if(!row.classList.contains('site-chart-options')){row=document.createElement('span');row.className='site-chart-options';anchor.before(row);row.append(anchor);}row.append(node);}
-    else{const head=scope.querySelector('[data-chart-value-controls]')||scope.querySelector('.hd-card-head,.gj-card-head,.board-panel-head,.portal-panel-head,.quotes-chart-options,.sector-controls,.macro-detail-controls');if(head)head.append(node);else{node.classList.add('site-value-options-standalone');const host=svg.closest('.site-chart-scroll')||svg;host.before(node);}}
+    if(anchor){let row=anchor.parentElement;if(!row.classList.contains('site-chart-options')){row=document.createElement('span');row.className='site-chart-options';anchor.before(row);row.append(anchor);}row.append(control);}
+    else{const head=scope.querySelector('[data-chart-value-controls]')||scope.querySelector('.hd-card-head,.gj-card-head,.board-panel-head,.portal-panel-head,.quotes-chart-options,.sector-controls,.macro-detail-controls');if(head)head.append(control);else{control.classList.add('site-value-options-standalone');const host=svg.closest('.site-chart-scroll')||svg;host.before(control);}}
   }
   if(config.valueCaption)config.valueCaption.textContent=hotel&&metric!=='数值'?'显示 '+metric:'显示数值';if(hotel)config.changeCaption.textContent='显示同比';
   return config;
@@ -327,7 +343,7 @@ root.SiteCharts={attach,scan,canvas,groups,paired,drawPaired,niceScale,axisForma
 document.addEventListener('pointerdown',e=>{if(pinned&&!pinned.svg.contains(e.target))pinned.hide(true);});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')pinned?.hide(true);});
 addEventListener('scroll',()=>{for(const state of states.values())state.refresh();},{passive:true});
-addEventListener('resize',()=>{for(const state of states.values())state.hide(true);});
+addEventListener('resize',()=>{for(const state of states.values())state.hide(true);requestAnimationFrame(()=>document.querySelectorAll('.site-value-menu[open]').forEach(positionValueMenu));});
 function start(){scan();new MutationObserver(schedule).observe(document.body,{childList:true,subtree:true});}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
 })(typeof window==='object'?window:{});
