@@ -6,7 +6,7 @@
   if(typeof window!=='undefined'&&window.parent!==window&&new URLSearchParams(location.search).get('embed')==='1'){const main=document.querySelector('body > main,body > .wrap');if(main)main.classList.add('site-main');return;}
   const paths={chart:'M4 3v17h17M8 16v-5m5 5V6m5 10V9',globe:'M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0M3 12h18M12 3c-5 5-5 13 0 18 5-5 5-13 0-18',building:'M4 21V3h12v18M16 9h4v12M8 7h4M8 11h4M8 15h4M3 21h18',calendar:'M5 5h14v16H5zM8 3v4m8-4v4M5 10h14M9 14h1m4 0h1m-6 3h1',document:'M6 3h8l4 4v14H6zM14 3v5h4M9 12h6m-6 4h6',trend:'M3 20h18M4 15l6-6 4 3 6-8M15 4h5v5'};
   const icon=key=>'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="'+paths[key]+'"/></svg>';
-  const products=Object.entries(U.pages).filter(([href])=>href.endsWith('-product.html'));
+  const products=[['earnings.html',U.pages['earnings.html']],...Object.entries(U.pages).filter(([href])=>href.endsWith('-product.html'))];
   const isProduct=products.some(([href])=>href===page);
   const productOpen=isProduct&&matchMedia('(min-width:761px)').matches;
   const productLinks=products.map(([href,[,label]])=>'<a href="'+href+'"'+(page===href?' aria-current="page"':'')+'><span>'+label+'</span><span aria-hidden="true">↗</span></a>').join('');
