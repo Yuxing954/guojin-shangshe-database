@@ -1,0 +1,62 @@
+/* One control contract across macro boards. */
+body.site-page.macro-hub{--hub-columns:5;--macro-control-height:36px}
+body.site-page.macro-hub .data-board :is(.forecast-controls,.regional-controls,.national-controls){display:flex;align-items:flex-end;gap:10px;margin:12px 0 16px;flex-wrap:wrap}
+body.site-page.macro-hub .data-board :is(.forecast-controls,.regional-controls,.national-controls) label{display:grid;gap:4px;font-size:12px!important;line-height:18px!important;min-width:0}
+body.site-page.macro-hub .data-board :is(select,input[type=search],.portal-button,.regional-shortcut,.regional-options>summary,.morning-filters>summary,.prediction-more-tools>summary){box-sizing:border-box;height:var(--macro-control-height);min-height:var(--macro-control-height)!important;padding:7px 10px!important;border:1px solid var(--site-line);border-radius:6px!important;background:var(--site-surface);font-family:inherit;font-size:13px!important;font-weight:400;line-height:20px!important;color:var(--site-ink);white-space:nowrap;text-decoration:none}
+body.site-page.macro-hub .data-board :is(.portal-button,.regional-shortcut){display:inline-flex;align-items:center;justify-content:center;gap:6px;cursor:pointer;margin:0}
+body.site-page.macro-hub .data-board .portal-button:disabled{cursor:default;opacity:.5}
+body.site-page.macro-hub .data-board :is(.regional-options,.morning-filters){position:relative;align-self:flex-end}
+body.site-page.macro-hub .data-board .regional-options[open]{flex-basis:auto}
+body.site-page.macro-hub .data-board :is(.regional-options,.morning-filters)>summary{display:flex;align-items:center;gap:10px;list-style:none;cursor:pointer;width:max-content}
+body.site-page.macro-hub .data-board :is(.regional-options,.morning-filters)>summary::-webkit-details-marker{display:none}
+body.site-page.macro-hub .data-board :is(.regional-options,.morning-filters)>summary:after{content:'⌄';font-size:12px;color:var(--site-muted)}
+body.site-page.macro-hub .data-board .regional-options>.regional-controls{position:absolute;z-index:15;top:calc(100% + 6px);left:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:360px;max-width:calc(100vw - 40px);box-sizing:border-box;margin:0;padding:14px;border:1px solid var(--site-line);border-radius:8px;background:white;box-shadow:0 8px 24px #163a631a}
+body.site-page.macro-hub .data-board .regional-options>.regional-controls select{width:100%;min-width:0}
+body.site-page.macro-hub .data-board .macro-page-meta{min-height:22px;margin-bottom:10px;font-size:12px;line-height:20px}
+body.site-page.macro-hub .regional-state-head{min-height:22px;margin-bottom:10px}
+body.site-page.macro-hub .regional-state-head #regional-status{font-size:12px;line-height:20px}
+body.site-page.macro-hub .regional-view-head{margin:10px 0 14px}
+body.site-page.macro-hub .site-subnav:not(.section-category-nav){min-height:36px!important;padding:2px!important}
+body.site-page.macro-hub .site-subnav:not(.section-category-nav)>:is(button,a){min-height:32px!important;padding:5px 10px!important;font-size:13px!important;line-height:20px!important}
+body.site-page.macro-hub .data-board :is(.forecast-head,.regional-section-head){margin-top:10px;margin-bottom:12px;gap:10px}
+body.site-page.macro-hub .data-board .forecast-head>div{gap:2px}
+body.site-page.macro-hub .data-board .forecast-head .forecast-label{font-size:12px}
+body.site-page.macro-hub .forecast-policy{margin:12px 0;font-size:12px;gap:10px}
+body.site-page.macro-hub .forecast-policy b{font-size:18px}
+body.site-page.macro-hub .fedwatch-kpi{min-height:112px;gap:4px;grid-template-rows:20px 38px auto}
+body.site-page.macro-hub .fedwatch-kpi>span{font-size:13px}
+body.site-page.macro-hub .fedwatch-kpi strong{font-size:28px;line-height:38px}
+body.site-page.macro-hub .fedwatch-kpi small{font-size:11px;line-height:18px}
+body.site-page.macro-hub .fedwatch-distribution{gap:10px;margin:16px}
+body.site-page.macro-hub .fedwatch-range{gap:12px;font-size:13px;min-height:24px}
+body.site-page.macro-hub .fedwatch-range>div{height:10px}
+body.site-page.macro-hub .fedwatch-range strong{font-size:15px}
+body.site-page.macro-hub .macro-data-details{margin:14px 0}
+body.site-page.macro-hub .macro-data-details>summary{display:flex;align-items:center;justify-content:space-between;padding:10px 0;cursor:pointer;color:var(--site-accent);font-size:13px;border-bottom:1px solid var(--site-line);list-style:none}
+body.site-page.macro-hub .macro-data-details>summary:after{content:'+'}
+body.site-page.macro-hub .macro-data-details[open]>summary:after{content:'−'}
+body.site-page.macro-hub .regional-panel:has(.regional-chart-toolbar){padding:16px!important}
+body.site-page.macro-hub .regional-chart-toolbar{padding:0;border:0;background:transparent;gap:10px;margin-bottom:12px}
+body.site-page.macro-hub .regional-interactive-legend{display:flex;flex-wrap:wrap;gap:6px 12px}
+body.site-page.macro-hub .regional-legend-item{min-height:32px;padding:2px 6px;gap:4px;border:0;border-radius:4px;background:transparent}
+body.site-page.macro-hub .regional-legend-item .regional-legend-line{width:18px}
+body.site-page.macro-hub .regional-legend-name small{font-size:10px}
+body.site-page.macro-hub .regional-trend-actions{gap:8px}
+body.site-page.macro-hub .regional-options{width:auto}
+@media(max-width:760px){
+ body.site-page.macro-hub{--macro-control-height:40px}
+ body.site-page.macro-hub .data-board :is(select,input[type=search]){font-size:16px!important}
+ body.site-page.macro-hub .fedwatch-kpis{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:8px!important}
+ body.site-page.macro-hub .fedwatch-kpi{display:grid;grid-template-columns:1fr;grid-template-rows:20px 34px auto;padding:10px!important;min-height:126px;gap:4px}
+ body.site-page.macro-hub .fedwatch-kpi strong{grid-column:auto;grid-row:auto;font-size:23px;line-height:34px}
+ body.site-page.macro-hub .fedwatch-kpi small{grid-column:auto;overflow-wrap:anywhere}
+ body.site-page.macro-hub .regional-trend-actions{justify-content:flex-start}
+ body.site-page.macro-hub .regional-options>.regional-controls{width:320px}
+ body.site-page.macro-hub #macro-navigation.hub-navigation>a{font-size:11px!important}
+}
+
+body.site-page.macro-hub .data-board :is(.forecast-controls,.regional-controls,.national-controls)>:is(label,button,details){align-self:flex-end!important}
+
+@media(max-width:760px){body.site-page.macro-hub .regional-view-head .regional-tabs.site-subnav{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;width:100%!important}}
+
+body.site-page.macro-hub .data-board :is(.regional-controls,.forecast-controls) input[type=checkbox]{width:14px!important;height:14px!important;min-height:0!important;padding:0!important}

@@ -18,10 +18,10 @@ test('same event groups without normalizing probabilities; expired events exclud
  assert.equal(P.groups(markets,{query:'加息',now})[0].markets.length,1);assert.equal(P.groups(markets,{category:'金融市场',now}).length,0);
 });
 test('core navigation is first, regional retail shares it and consumption entry redirects',()=>{
- for(const name of ['macro.html','regional-retail.html']){
+ for(const name of ['macro.html','national-retail.html','regional-retail.html']){
   const html=fs.readFileSync(path.join(__dirname,'..',name),'utf8');
   const nav=html.match(/<nav[^>]*data-macro-navigation[^>]*>([\s\S]*?)<\/nav>/)[1];
-  assert.deepEqual([...nav.matchAll(/<a\b[^>]*href="([^"]+)"/g)].map(m=>m[1]),['macro.html?view=indicators','regional-retail.html','macro.html?view=fedwatch','macro.html?view=predictions']);
+  assert.deepEqual([...nav.matchAll(/<a\b[^>]*href="([^"]+)"/g)].map(m=>m[1]),['macro.html?view=indicators','national-retail.html','regional-retail.html','macro.html?view=fedwatch','macro.html?view=predictions']);
   assert.doesNotMatch(nav,/消费全景/);
  }
  assert.match(fs.readFileSync(path.join(__dirname,'../consumption-macro.html'),'utf8'),/location\.replace\("macro\.html\?view=indicators"\)/);
