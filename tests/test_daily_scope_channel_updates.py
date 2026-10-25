@@ -4,6 +4,10 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 from daily_scope import sector_for,is_ecommerce_topic
 
 class ChannelUpdates(unittest.TestCase):
+ def test_generic_consumer_weekly(self):
+  self.assertEqual(sector_for('周末好～更新一下我们的推荐标的：','行动教育 百胜中国 周大福 名创优品'), '商社综合')
+  self.assertIsNone(sector_for('周末好～更新一下我们的推荐标的：','半导体 人工智能'))
+  self.assertEqual(sector_for('周观点：26Q3比音勒芬业绩超预期，新澳利润高增','安踏 特步经营'), '零售与消费出海')
  def test_named_consumer_brands(self):
   self.assertEqual(sector_for('欧莱雅26Q3业绩'),'零售与消费出海')
   self.assertEqual(sector_for('特步26Q3运营数据电话会'),'零售与消费出海')

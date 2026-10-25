@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-25",
+  "baseMain": "4c7203d6d55b149a0ac0a003dfb612a8b47c3723",
+  "validation": {
+    "dailyTests": {
+      "passed": 57
+    },
+    "editorialResources": {
+      "2026-10-25": "passed",
+      "2026-10-24": "passed",
+      "2026-10-23": "passed"
+    },
+    "render": {
+      "threePoints": true,
+      "visibleSummaries": 2,
+      "fullOriginals": 2,
+      "singleCollapsedDetails": true,
+      "resourceItems": 1,
+      "copyConsistent": true
+    },
+    "checkSite": {
+      "status": "failed_local_sparse_checkout_preexisting",
+      "error": "hotel-groups.html adapter ordering: scripts/hotel-groups.css vs scripts/site-polish.css",
+      "unrelatedFilesChanged": false
+    }
+  },
+  "prepublishRefresh": {
+    "latestRun": "2026-10-25-180102",
+    "newTopicsRead": 4,
+    "scope": "四篇均为纯科技、机械、有色等范围外，候选及全文哈希未变"
+  },
+  "sourcePolicy": "当日16点后真实observedAt满足部署；真实缺口保留",
+  "onlineReadback": {
+    "status": "network_restricted",
+    "attemptedUrl": "https://yuxing954.github.io/guojin-shangshe-database/daily.html?date=2026-10-24"
+  }
+}

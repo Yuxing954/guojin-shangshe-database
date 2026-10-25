@@ -41,6 +41,8 @@ def sector_for(title,body=''):
  # business in the body rather than matching incidental sector mentions broadly.
  if re.search(r'海南.*(?:调研|渠道|反馈)',subject) and re.search(r'离岛免税|免税|中免',body):return '免税'
  if '商社板块' in subject and re.search(r'教育|酒店|免税|餐饮|零售',body):return '商社综合'
+ if re.match(r'周末好.*推荐标的',subject) and sum(x in body for x in ('行动教育','百胜中国','周大福','名创优品','东百集团'))>=3:return '商社综合'
+ if re.match(r'周观点[:：].*比音勒芬',subject) and re.search(r'安踏.*特步',body):return '零售与消费出海'
  if re.match(r'双11大促跟踪',subject) and sum(x in body for x in ('珀莱雅','毛戈平','上海家化','润本','玉泽','佰草集'))>=3:return '零售与消费出海'
  if re.search(r'航司.*(?:供需|经营数据|客座率|客运|运力)',subject):return '酒店旅游'
  if re.search(r'航空.*(?:经营数据|客座率|客运|运力)',subject):return '酒店旅游'
@@ -49,5 +51,6 @@ def sector_for(title,body=''):
  for sector,terms in SECTORS.items():
   if any(t in subject for t in terms):return sector
  return None
+
 
 
