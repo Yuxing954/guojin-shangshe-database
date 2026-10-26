@@ -57,6 +57,11 @@
   }
   function saveState() { var saved = Object.assign({}, state, { week: followLatest ? 'latest' : state.week, rangeVersion: '12w' }); history.replaceState(null, '', '#' + new URLSearchParams(saved).toString()); }
   function switchView(view) {
+    document.querySelector('.hd-toolbar').hidden=view==='annual';
+    $('period-note').hidden=view==='annual';
+    $('selection-note').hidden=true;
+    $('asof').hidden=view==='annual';
+    document.querySelector('.hd-footer').hidden=view==='annual';
     state.view = view;
     $('weekly-export').hidden = view !== 'overview';
     document.querySelectorAll('.hd-tab').forEach(function (b) { var active = b.dataset.view === view; b.classList.toggle('active', active); b.setAttribute('aria-pressed', active); });
@@ -119,7 +124,8 @@
       return { x: r.period_id, y: display(row(state.region, '全部', M.priorPeriod(r)), field) };
     }) });
     var unit = isChange ? (field === 'occupancy_rate' ? '百分点' : '%') : meta.unit;
-    $('trend-caption').textContent = meta.label + ' · ' + unit ;    lineChart('main-chart', lines, { unit: unit, occupancy: !isChange && field === 'occupancy_rate', zero: isChange });
+    $('trend-caption').textContent = meta.label + ' · ' + unit ;
+    lineChart('main-chart', lines, { unit: unit, occupancy: !isChange && field === 'occupancy_rate', zero: isChange });
     var plotted = M.chartSeries(lines), plottedRows = plotted.length ? plotted[0].pts : [];
     $('history-note').textContent = plottedRows.length ? '有效区间 ' + plottedRows[0].x + ' — ' + plottedRows[plottedRows.length - 1].x : '所选范围暂无数据。';
   }
@@ -356,7 +362,7 @@
       var r = data.share.find(function (r) { return r.group === g && Number(r.year) === y; }); return { x: String(y), y: r && validYears.has(y) ? M.num(r.market_share_pct) : null };
     }) }; }), { unit: '%' });
   }
-  function refresh() { selectionOptions(); renderPeriod(); if(state.view==='overview') renderOverview(); else if(state.view==='cities') renderCities(); else { renderGroups(); renderSupply(); renderInvestment(); } saveState(); }
+  function refresh() { if(state.view==='annual'){window.HotelAnnual.render(); saveState(); return;} selectionOptions(); renderPeriod(); if(state.view==='overview') renderOverview(); else if(state.view==='cities') renderCities(); else { renderGroups(); renderSupply(); renderInvestment(); } saveState(); }
   async function exportWeekly() {
     var start = $('export-start').value, end = $('export-end').value;
     var tiered = $('export-scope').value === 'segments', error = $('export-error');
@@ -409,7 +415,7 @@
     var saved = new URLSearchParams(location.hash.slice(1));
     if (regions.includes(saved.get('region'))) state.region = saved.get('region');
     if (periods.has(saved.get('week'))) { state.week = saved.get('week'); followLatest = false; }
-    if (['overview', 'cities', 'structure'].includes(saved.get('view'))) state.view = saved.get('view');
+    if (['overview', 'cities', 'structure', 'annual'].includes(saved.get('view'))) state.view = saved.get('view');
     if (['12', '13', '26', '52', '156', 'all'].includes(saved.get('window')) && (saved.get('window') !== '52' || saved.get('rangeVersion') === '12w')) state.window = saved.get('window');
     if (['12','13','26','52','156','all'].includes(saved.get('supplyWindow'))) state.supplyWindow=saved.get('supplyWindow');
     if (['12','13','26','52','156','all'].includes(saved.get('investmentWindow'))) state.investmentWindow=saved.get('investmentWindow');
@@ -454,7 +460,7 @@
     $('city-search').oninput = renderCities; $('city-order').onchange = function () { cityOrder = $('city-order').value; renderCities(); };
     document.querySelectorAll('[data-city-metric]').forEach(function (button) { button.onclick = function () { cityMetric = button.dataset.cityMetric; renderCities(); }; });
     $('city-table').onclick = function (event) { var b = event.target.closest('[data-region]'); if (!b) return; state.region = b.dataset.region; switchView('overview'); $('region-select').focus(); };
-    window.addEventListener('hotel:switch-view', function(event) { if(['overview','cities','structure'].includes(event.detail))switchView(event.detail); });
+    window.addEventListener('hotel:switch-view', function(event) { if(['overview','cities','structure','annual'].includes(event.detail))switchView(event.detail); });
     switchView(state.view);
   }
   function error(id, message, cols) { blankTable(id, message, cols); }
@@ -543,6 +549,7 @@
 
   }
 })();
+
 
 
 
