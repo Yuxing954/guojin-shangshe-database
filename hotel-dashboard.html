@@ -10,7 +10,7 @@
   <script defer src="scripts/hotel-metrics.js?v=20261017groupcompare"></script>
   <script defer src="scripts/hotel-excel-export.js?v=20261017"></script>
   <script defer src="scripts/hotel-dashboard.js?v=20261024compact"></script>
-<link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-charts.css?v=20261025annotations1"><link rel="stylesheet" href="scripts/industry-embed.css?v=20261014viewfit"><link rel="stylesheet" href="scripts/site-install.css?v=20261014home"><link rel="stylesheet" href="scripts/site-polish.css?v=20261013clean"><script src="scripts/site-charts.js?v=20261025annotations1"></script><script defer src="scripts/industry-embed.js?v=20261024asof"></script><link rel="manifest" href="site.webmanifest?v=20261025retailservice2"><meta name="theme-color" content="#4d58a4"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="零售&amp;社服数据库"><meta name="apple-mobile-web-app-status-bar-style" content="default"><link rel="apple-touch-icon" href="scripts/assets/app/apple-touch-icon.png?v=20261025retailservice2"><script defer src="scripts/site-install.js?v=20261014home"></script><script defer src="scripts/hotel-group-entry.js?v=20261017groups"></script><link rel="stylesheet" href="scripts/industry-design.css?v=20261024compact"><link rel="stylesheet" href="scripts/dashboard-asof.css?v=20261024compact"><link rel="icon" type="image/svg+xml" href="scripts/assets/brand/sinolink-mark.svg"></head>
+<link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-charts.css?v=20261025annotations1"><link rel="stylesheet" href="scripts/industry-embed.css?v=20261014viewfit"><link rel="stylesheet" href="scripts/site-install.css?v=20261014home"><link rel="stylesheet" href="scripts/site-polish.css?v=20261013clean"><script src="scripts/site-charts.js?v=20261025annotations1"></script><script defer src="scripts/industry-embed.js?v=20261024asof"></script><link rel="manifest" href="site.webmanifest?v=20261025retailservice2"><meta name="theme-color" content="#4d58a4"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="零售&amp;社服数据库"><meta name="apple-mobile-web-app-status-bar-style" content="default"><link rel="apple-touch-icon" href="scripts/assets/app/apple-touch-icon.png?v=20261025retailservice2"><script defer src="scripts/site-install.js?v=20261014home"></script><script defer src="scripts/hotel-group-entry.js?v=20261017groups"></script><link rel="stylesheet" href="scripts/industry-design.css?v=20261024compact"><link rel="stylesheet" href="scripts/dashboard-asof.css?v=20261024compact"><link rel="icon" type="image/svg+xml" href="scripts/assets/brand/sinolink-mark.svg"><link rel="stylesheet" href="scripts/hotel-hci.css?v=20261026"><script defer src="scripts/hotel-hci.js?v=20261026"></script></head>
 <body class="hotel-page">
 <main class="hd-wrap industry-board">
   <header class="hd-header">
@@ -58,6 +58,17 @@
 
       </div>
       <details class="hd-detail hd-plain board-detail"><summary>酒店与房间规模 · 15间及以上</summary><div id="region-supply"></div><div class="hd-table-scroll" tabindex="0" aria-label="分档次规模表，可左右滚动"><table class="hd-table board-table" id="segment-scale-table"></table></div></details>
+
+      <article id="hotel-hci" class="hd-card board-panel" data-chart-values-default data-chart-change-default data-chart-label-menu>
+        <div class="hd-card-head board-panel-head"><h2>中国住宿业消费指数 · 月度</h2><span>全国 · 中国饭店协会 · 2025年5月=100</span></div>
+        <p id="hci-status" role="status">正在读取月度指数…</p><button type="button" id="hci-retry" hidden>重试</button>
+        <div id="hci-content" hidden>
+          <div class="hci-controls"><label>指标 <select id="hci-metric"></select></label><label>年份 <select id="hci-year"></select></label><label>显示 <select id="hci-mode"><option value="combo">指数＋同比</option><option value="value">指数</option><option value="change">同比</option></select></label></div>
+          <p id="hci-summary" aria-live="polite"></p><div id="hci-chart" class="hd-chart board-chart"></div>
+          <details class="hd-detail board-detail"><summary>月度明细与来源</summary><div class="hd-table-scroll" tabindex="0"><table id="hci-table" class="hd-table board-table"></table></div></details>
+        </div>
+        <div class="hci-links"><a href="data/hotel-hci/observations.csv" download>下载全部月度数据</a><a href="data-notes.html#hotel-hci" target="_top">来源与口径</a><a href="https://www.chinahotel.org.cn/articles/18010" target="_blank" rel="noopener">最新原文 ↗</a></div>
+      </article>
     </section>
 
     <section id="view-cities" class="hd-view" hidden>
@@ -115,6 +126,8 @@
 </form></dialog>
 </body>
 </html>
+
+
 
 
 
