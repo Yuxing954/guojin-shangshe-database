@@ -1,0 +1,22 @@
+.quotes-market-tabs{display:flex;gap:6px;margin:0 0 18px;padding-bottom:10px;border-bottom:1px solid #e0e6ef}
+.quotes-market-tabs button{border:0;border-radius:7px;padding:9px 18px;background:transparent;color:#63748a;font-family:inherit;font-size:15px;font-weight:600;line-height:1.4;cursor:pointer}
+.quotes-market-tabs button[aria-pressed=true]{background:#eaf0f7;color:#254866}
+#stock-market[hidden],#gold-market[hidden]{display:none!important}
+.quotes-gold-panel{border:1px solid #e0e6ef;border-radius:12px;background:#fff;padding:20px;min-width:0}
+.quotes-gold-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.quotes-gold-head h2{margin:0 0 7px;font-size:20px;color:#24384b}
+.quotes-gold-head p{margin:0;color:#687b8e;font-size:13px;line-height:1.6}
+.quotes-gold-actions{display:flex;align-items:center;gap:14px;font-size:13px}
+.quotes-gold-actions a{color:#42628b}
+#gold-periods{margin:0 0 12px;display:flex;gap:6px}
+#gold-periods button{padding:8px 16px;border:1px solid #dfe6ef;background:#fff;border-radius:6px;color:#62748a;font:inherit;cursor:pointer}
+#gold-periods button[aria-pressed=true]{color:#234e78;background:#edf3fa;border-color:#b9cce0}
+#gold-widget{height:620px;min-width:0;width:100%;overflow:hidden}
+#gold-widget .tradingview-widget-container{height:100%;width:100%}
+#gold-widget .tradingview-widget-container__widget{height:calc(100% - 30px);width:100%}
+#gold-widget iframe{display:block;width:100%;max-width:100%;border:0}
+#gold-widget .tradingview-widget-copyright{height:30px;line-height:30px;text-align:center;font-size:12px}
+#gold-widget .tradingview-widget-copyright a{color:#75869a;text-decoration:none}
+.quotes-gold-state{font-size:13px;color:#687b8e;margin:0 0 10px;line-height:1.6}
+#gold-retry{margin-bottom:10px}
+@media(max-width:600px){.quotes-gold-panel{padding:14px 10px}.quotes-gold-head{align-items:flex-start}.quotes-gold-head h2{font-size:18px}.quotes-gold-head p{font-size:12px}.quotes-gold-actions{width:100%;justify-content:space-between}#gold-widget{height:540px}.quotes-market-tabs button{padding:9px 16px}}

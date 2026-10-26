@@ -23,7 +23,7 @@
     'overseas-hotels':{name:'海外酒店',files:['data/companies/overseas-hotels.json'],docs:['docs/overseas-hotels.md']},
     earnings:{name:'财报日历',files:['data/earnings-calendar.json'],docs:['docs/earnings-workbench.md']},
     research:{name:'观点纪要',files:['data/research/updates/manifest.json'],docs:['docs/research-library.md']},
-    quotes:{name:'实时行情',files:['data/coverage-companies.json'],docs:['docs/realtime-quotes.md','docs/coverage-pool.md']}
+    quotes:{name:'实时行情',files:['data/coverage-companies.json'],docs:['docs/realtime-quotes.md','docs/coverage-pool.md','docs/gold-quotes.md']}
   };
   function list(title,items){return '<article class="notes-panel"><h2>'+esc(title)+'</h2>'+(items.length?'<ul>'+[...new Set(items)].map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>':'<p class="notes-empty">当前来源记录未列出专项缺口</p>')+'</article>';}
   function sources(values){const rows=values.flatMap(x=>Array.isArray(x.sources)?x.sources:Object.values(x.sources||{}));return rows.length?'<article class="notes-panel"><h2>来源记录</h2><details><summary>'+rows.length+'条来源</summary>'+rows.map(s=>'<div class="notes-source-item">'+(D.link(s.url)?'<a target="_blank" rel="noopener" href="'+esc(D.link(s.url))+'">'+esc(s.name||s.title||s.sourceName||s.label||s.file||s.id||'来源')+' ↗</a>':esc(s.name||s.title||s.sourceName||s.label||s.file||s.id||'来源'))+'<p>'+esc([s.publisher||s.provider,s.quality,s.publishedAt?'发布 '+s.publishedAt:'',s.checkedAt?'核对 '+s.checkedAt:'',s.locator,s.note||s.notes||s.verification].filter(Boolean).join(' · '))+'</p></div>').join('')+'</details></article>':'';}
@@ -55,7 +55,7 @@
     if(id==='daily')out.push(...(a.notes||[]),'观点源最新时间：'+(a.coverage?.researchSourceTo||'未提供'),'新闻核验：'+(a.coverage?.newsStatus||'未提供'));
     if(id==='research')out.push('来源发布时间、导入时间与会议日期分别保留。原文、纪要摘要、文档附件及未转写音频分别记录；正文未提取不代表已完成整理。');
     if(id==='earnings')out.push('预计披露日期与实际公告日期分开记录；原始来源和核对时间见来源记录。');
-    if(id==='quotes')out.push('行情与财报日历共用公司库；当前'+(a.companies?.length||0)+'家公司，SHEIN归消费出海。','板块热力图按当前筛选内各公司有效报价涨跌幅等权计算，不是交易所指数或市值加权。缺失与读取失败的报价不参与计算，真实零涨跌参与；各市场报价时间可能不同。','腾讯行情；页面前台每秒请求，后台暂停；报价可能延迟。更新按来源报价时间判断；读取失败保留上次报价。','涨跌幅以来源前收盘为基准；A股、港股和美股使用各自本币，不混比绝对价格。');
+    if(id==='quotes')out.push('金价K线：OANDA:XAUUSD（伦敦金现），单位美元/金衡盎司；图表与行情由TradingView/OANDA提供，日K、周K、月K及技术指标由来源组件呈现。价格、交易时点和交易状态以图内为准，可能延迟；与股票行情分开加载，切回股票或转入后台时释放金价图表连接。','行情与财报日历共用公司库；当前'+(a.companies?.length||0)+'家公司，SHEIN归消费出海。','板块热力图按当前筛选内各公司有效报价涨跌幅等权计算，不是交易所指数或市值加权。缺失与读取失败的报价不参与计算，真实零涨跌参与；各市场报价时间可能不同。','腾讯行情；页面前台每秒请求，后台暂停；报价可能延迟。更新按来源报价时间判断；读取失败保留上次报价。','涨跌幅以来源前收盘为基准；A股、港股和美股使用各自本币，不混比绝对价格。');
     return out.filter(Boolean).map(v=>typeof v==='string'?v:JSON.stringify(v));
   }
   async function render(){const id=modules[location.hash.slice(1)]?location.hash.slice(1):'dutyfree',config=modules[id],token=++request;$('notes-tabs').innerHTML=Object.entries(modules).map(([key,m])=>'<a href="#'+key+'"'+(key===id?' aria-current="page"':'')+'>'+esc(m.name)+'</a>').join('');$('notes-status').textContent='正在读取'+config.name+'说明…';$('notes-content').innerHTML='';

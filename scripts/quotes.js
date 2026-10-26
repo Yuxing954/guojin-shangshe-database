@@ -33,7 +33,7 @@
   function saveUrl(){
     const f=filters(),p=new URLSearchParams();for(const key of ['q','market','sector'])if(f[key])p.set(key,f[key]);if(f.sort!=='change-desc')p.set('sort',f.sort);
     if(view!=='heat')p.set('view',view);if(selected)p.set('symbol',selected.code);else if(!initialized&&params.get('symbol'))p.set('symbol',params.get('symbol'));
-    if(period!=='day')p.set('period',period);history.replaceState(null,'',location.pathname+(p.size?'?'+p:''));
+    if(period!=='day')p.set('period',period);history.replaceState(null,'',location.pathname+(p.size?'?'+p:'')+location.hash);
   }
   function timeText(q){return q?'<span title="'+esc(q.asOf)+'">'+esc(q.asOf.slice(11,19))+'</span>'+(q.failed?'<small>读取失败</small>':q.cached?'<small>上次报价</small>':''):'—<small>暂无报价</small>';}
   function heatStyle(pct){const valid=Number.isFinite(pct),strength=valid?Math.min(Math.abs(pct),5):0;return {background:!valid?'#eef0f4':pct===0?'#f2f3f6':'hsl('+(pct>0?'354 58%':'164 47%')+' '+(96-strength*(pct>0?10:12))+'%)',color:strength>=4?'#fff':pct>0?'#8d2332':pct<0?'#145d49':'#627084'};}
@@ -143,7 +143,7 @@
     tag.onerror=()=>{if(done)return;done=true;cleanup();reject(Error('network'));};if(signal?.aborted){abort();return;}signal?.addEventListener('abort',abort,{once:true});document.head.appendChild(tag);
   });}
   
-  const moduleActive=()=>pageActive&&!document.hidden&&document.body.dataset.siteSection==='quotes'&&!$('content').hidden&&companies.length>0;
+  const moduleActive=()=>pageActive&&location.hash!=='#gold'&&!document.hidden&&document.body.dataset.siteSection==='quotes'&&!$('content').hidden&&companies.length>0;
   function connection(){
     const active=moduleActive();
     $('status').dataset.error=String(failed);
@@ -243,6 +243,7 @@
   $('heat-previous').onclick=()=>{heatPage--;renderHeat();syncSelection();};$('heat-next').onclick=()=>{heatPage++;renderHeat();syncSelection();};
   $('previous-company').onclick=()=>moveCompany(-1);$('next-company').onclick=()=>moveCompany(1);$('back-list').onclick=()=>{$('board-title').scrollIntoView({behavior:'smooth',block:'start'});[...$(view==='heat'?'heatmap':'rows').querySelectorAll('[data-code]')].find(b=>b.dataset.code===selected?.code)?.focus({preventScroll:true});};
   $('periods').onclick=e=>{const b=e.target.closest('[data-period]');if(b&&b.dataset.period!==period){clearTimeout(selectionTimer);selectionTimer=null;period=b.dataset.period;saveUrl();loadChart();}};$('chart-retry').onclick=()=>loadChart(true);$('chart-window').onchange=$('show-ma').onchange=()=>{paintChart();preferences();};
+  addEventListener('hashchange',()=>{if(location.hash==='#gold')pauseRequests();else automatic();});
   let resizeTimer;addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{renderHeat();syncSelection();paintChart();},150);});
   document.addEventListener('visibilitychange',()=>{if(document.hidden)pauseRequests();else{automatic();if(selected&&!chartData)loadChart();}});addEventListener('pagehide',()=>{pageActive=false;pauseRequests();poller.stop();clearTimeout(resizeTimer);clearTimeout(selectionTimer);selectionTimer=null;});addEventListener('pageshow',()=>{pageActive=true;poller.resume();if(selected&&!chartData)loadChart();});
   try{

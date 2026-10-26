@@ -6,7 +6,7 @@ function rig(extra=false,query=''){
   const rowNodes=new Map();node('rows').appendChild=n=>{rowNodes.delete(n.dataset.company);rowNodes.set(n.dataset.company,n);};let lastRows='';node('rows').querySelectorAll=selector=>{if(selector!=='tr[data-company]')return [];const html=node('rows').innerHTML;if(html!==lastRows){lastRows=html;rowNodes.clear();for(const m of html.matchAll(/tr data-company="([^"]+)"/g))rowNodes.set(m[1],{dataset:{company:m[1]},children:Array.from({length:9},()=>({innerHTML:'',textContent:'',dataset:{},className:''}))});}return [...rowNodes.values()];};
   const document={hidden:false,body:{dataset:{siteSection:'quotes'}},activeElement:null,getElementById:node,addEventListener:(k,fn)=>events[k]=fn,createElement:()=>{const s={remove(){s.removed=true;}};return s;},head:{appendChild:s=>scripts.push(s)}};
   class Clock extends Date{constructor(...args){super(...(args.length?args:[1791511200000+time]));}static now(){return time;}}
-  const ctx={document,console,AbortController,DOMException,URLSearchParams,Date:Clock,Intl,location:{search:query,pathname:'/quotes.html'},history:{replaceState(){}},localStorage:{getItem:()=>null,setItem(){}},matchMedia:()=>({matches:false}),addEventListener:(k,fn)=>events[k]=fn,setTimeout:(fn,ms)=>{timeouts.set(++id,{fn,ms});return id;},clearTimeout:id=>timeouts.delete(id),setInterval:(fn,ms)=>{intervals.set(++id,{fn,ms});return id;},clearInterval:id=>intervals.delete(id),QuotesModel:require('./quotes-model.js'),SinolinkKline:require('./market-kline.js'),SiteData:{esc:String,json:async url=>url==='data/coverage-companies.json'?{companies:[{code:'600519.SH',name:'测试公司',sector:'餐饮'},...(extra?[{code:'600754.SH',name:'第二公司',sector:'酒店'}]:[])]}:{dbs:[]},table:async()=>[{'证券代码':'600519.SH','公司名称':'测试公司','子行业':'餐饮'},...(extra?[{'证券代码':'600754.SH','公司名称':'第二公司','子行业':'酒店'}]:[])]}};
+  const ctx={document,console,AbortController,DOMException,URLSearchParams,Date:Clock,Intl,location:{search:query,pathname:'/quotes.html',hash:query.includes('gold')?'#gold':''},history:{replaceState(a,b,url){ctx.savedUrl=url;}},localStorage:{getItem:()=>null,setItem(){}},matchMedia:()=>({matches:false}),addEventListener:(k,fn)=>events[k]=fn,setTimeout:(fn,ms)=>{timeouts.set(++id,{fn,ms});return id;},clearTimeout:id=>timeouts.delete(id),setInterval:(fn,ms)=>{intervals.set(++id,{fn,ms});return id;},clearInterval:id=>intervals.delete(id),QuotesModel:require('./quotes-model.js'),SinolinkKline:require('./market-kline.js'),SiteData:{esc:String,json:async url=>url==='data/coverage-companies.json'?{companies:[{code:'600519.SH',name:'测试公司',sector:'餐饮'},...(extra?[{code:'600754.SH',name:'第二公司',sector:'酒店'}]:[])]}:{dbs:[]},table:async()=>[{'证券代码':'600519.SH','公司名称':'测试公司','子行业':'餐饮'},...(extra?[{'证券代码':'600754.SH','公司名称':'第二公司','子行业':'酒店'}]:[])]}};
   // Build the poller in the same fake clock/timer realm as the browser.
   ctx.window=ctx;vm.createContext(ctx);vm.runInContext(fs.readFileSync(__dirname+'/quotes-poller.js','utf8'),ctx);vm.runInContext(source,ctx);
   const settle=async()=>{for(let i=0;i<15;i++)await Promise.resolve();};
@@ -30,3 +30,15 @@ test('selecting another company preserves list, header and heat markup and sched
 
 
 test('company heatmap is default and explicit company, sector and list links remain usable',async()=>{for(const [query,view] of [['','heat'],['?view=list','list'],['?view=heat','heat'],['?view=sector','sector']]){const r=rig(false,query);await r.settle();assert.equal(r.node('workspace').dataset.view,view);assert.equal(r.node('list-view').hidden,view!=='list');assert.equal(r.node('heat-view').hidden,view==='list');r.events.pagehide();await r.settle();}});
+
+test('gold panel preserves deep link, pauses stock requests, and resumes stock polling on return',async()=>{
+ const r=rig(false,'?gold');await r.settle();
+ assert.equal(r.scripts.length,0);assert.equal(r.intervals.size,0);
+ assert.ok(r.ctx.savedUrl.endsWith('#gold'));
+ r.ctx.location.hash='';r.events.hashchange();await r.settle();
+ assert.equal(r.intervals.size,1);r.respond();await r.settle();
+ r.ctx.location.hash='#gold';r.events.hashchange();await r.settle();
+ assert.equal(r.intervals.size,0);assert.ok(r.scripts.every(s=>s.removed));
+ r.ctx.location.hash='';r.setTime(2000);r.events.hashchange();await r.settle();
+ assert.equal(r.intervals.size,1);r.respond();await r.settle();r.events.pagehide();
+});
