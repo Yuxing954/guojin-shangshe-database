@@ -3,7 +3,7 @@
   let pending,loaded=false;
   const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const num=(x,n=2)=>Number(x).toLocaleString('zh-CN',{maximumFractionDigits:n,minimumFractionDigits:n});
-  const colors=['#2167a0','#368575','#b9854c','#b85460'];
+  const colors=['#2167a0','#ac863d','#668397','#538db5'];
   function table(headers,rows){return '<div class="hd-table-scroll" tabindex="0"><table class="hd-table board-table"><thead><tr>'+headers.map(x=>'<th>'+esc(x)+'</th>').join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+r.map(x=>'<td>'+esc(x)+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>';}
   function stack(d,values,title){
     let svg='<svg viewBox="0 0 640 350" role="img" aria-label="'+esc(title)+'">';
@@ -16,7 +16,7 @@
     root.innerHTML='<div class="hd-section-head board-section-head"><h2>酒店年度结构</h2><span>2019—2025 · 截至2025年末</span></div><div class="hd-toolbar board-filters annual-links"><a href="data/hotel-association-annual.csv" download>下载历年CSV</a><a href="data/hotel-association-annual.json" download>下载完整数据</a><a href="data-notes.html#hotel-annual" target="_blank" rel="noopener">数据口径</a><a target="_blank" rel="noopener" href="'+src('industry')+'">酒店业报告 ↗</a><a target="_blank" rel="noopener" href="'+src('brand')+'">集团及品牌报告 ↗</a></div>'+
       '<div class="hd-kpis board-kpis annual-kpis">'+[['酒店数量','37.47','万家'],['客房数量','1,874','万间'],['客房连锁化率','41.80','%'],['门店连锁化率','28.37','%']].map(x=>'<article class="board-stat hd-stat"><div class="hd-stat-label">'+x[0]+'</div><div class="hd-stat-value">'+x[1]+'<small>'+x[2]+'</small></div><div class="hd-stat-change">2025年 · 披露值</div></article>').join('')+'</div>'+
       '<div class="annual-legend">'+d.grades.map((x,i)=>'<span><i style="background:'+colors[i]+'"></i>'+x+'</span>').join('')+'<span>客房占比（%）</span></div><div class="annual-charts">'+stack(d,d.all_share,'全部酒店 · 档次占比（披露）')+stack(d,d.chain_share,'连锁酒店 · 档次占比（测算）')+'</div>'+
-      '<article class="hd-card board-panel"><div class="hd-card-head board-panel-head"><h2>历年核心数据</h2><select id="annual-series" aria-label="选择年度指标组"><option value="core">全国规模与连锁化</option><option value="grades">档次结构与连锁规模</option><option value="sizes">客房规模分组</option><option value="cities">城市等级</option></select></div><div id="annual-history"></div></article>'+
+      '<div id="annual-trends" class="annual-charts"></div><article class="hd-card board-panel"><div class="hd-card-head board-panel-head"><h2>历年核心数据</h2><select id="annual-series" aria-label="选择年度指标组"><option value="core">全国规模与连锁化</option><option value="grades">档次结构与连锁规模</option><option value="sizes">客房规模分组</option><option value="cities">城市等级</option></select></div><div id="annual-history"></div></article>'+
       '<article class="hd-card board-panel"><div class="hd-card-head board-panel-head"><h2>2025年结构与排名</h2><select id="annual-detail" aria-label="选择2025年明细"><option value="grade_latest">酒店档次</option><option value="size_latest">客房规模</option><option value="city_latest">城市等级</option><option value="provinces">31省区市</option><option value="topcities">城市10强</option><option value="groups">集团50强</option><option value="brand_rankings">品牌分类排名</option></select></div><div id="annual-snapshot"></div></article><p class="hd-footer annual-source">来源：中国饭店协会 · 2026版报告（数据年度2025）</p>';
     function history(){let rows=[],kind=document.getElementById('annual-series').value;
       const add=(name,a,unit,derived=false)=>rows.push([name+'（'+unit+'）'+(derived?' · 测算':''),...a.map(x=>num(x,unit==='间'||unit==='家'?0:2))]);
@@ -36,6 +36,22 @@
       else{headers=['分类','酒店（家）','客房（间）','酒店占比（%）·测算','客房占比（%）·测算'];const labels=k==='grade_latest'?d.grades:k==='size_latest'?d.size_labels:d.city_labels;rows=d[k].map((r,i)=>{let a=k==='provinces'||k==='topcities'?r:[labels[i],...r];return [a[0],num(a[1],0),num(a[2],0),num(a[1]/374694*100),num(a[2]/18736357*100)];});}
       document.getElementById('annual-snapshot').innerHTML=table(headers,rows);
     }
+    const chainHotels=d.years.map((_,i)=>d.chain_hotels.reduce((sum,a)=>sum+a[i],0)/10000);
+    const configurations=[
+      ['酒店数量','万家',['全部酒店（披露）','连锁酒店（测算）'],[d.hotels_wan,chainHotels],'industry',10],
+      ['客房数量','万间',['全部客房（披露）','连锁客房（测算）'],[d.rooms_wan,d.chain_total.map(x=>x/10000)],'industry',10],
+      ['客房数量同比 · 披露','%',['客房同比'],[d.rooms_growth],'industry',10],
+      ['全国连锁化率 · 披露','%',['客房口径','门店口径'],[d.chain_rate,d.chain_store_rate],'industry',19],
+      ['分档次连锁客房数量','万间',d.grades,d.chain_rooms.map(a=>a.map(x=>x/10000)),'brand',20],
+      ['分档次连锁酒店数量','万家',d.grades,d.chain_hotels.map(a=>a.map(x=>x/10000)),'brand',20],
+      ['分档次客房连锁化率','%',d.grades,d.grade_chain_rate,'industry',21],
+      ['酒店规模结构 · 客房占比','%',d.size_labels,d.size_share,'industry',12],
+      ['分规模客房连锁化率','%',d.size_labels,d.size_chain_rate,'industry',23],
+      ['城市等级结构 · 客房占比','%',d.city_labels,d.city_share,'industry',13],
+      ['分城市等级客房连锁化率','%',d.city_labels,d.city_chain_rate,'industry',25]
+    ];
+    document.getElementById('annual-trends').innerHTML=configurations.map((c,i)=>'<article class="hd-card board-panel" data-chart-values-default data-chart-label-menu><div class="hd-card-head board-panel-head"><h2>'+esc(c[0])+'</h2><a target="_blank" rel="noopener" href="'+src(c[4],c[5])+'">来源 ↗</a></div><div class="hd-chart board-chart" id="annual-trend-'+i+'"></div></article>').join('');
+    configurations.forEach((c,i)=>SiteCharts.drawPaired(document.getElementById('annual-trend-'+i),d.years.map((y,k)=>({period:String(y),values:c[2].map((label,j)=>({name:label,value:c[3][j][k]}))})),{name:c[0],unit:c[1],mode:'value',valueStyle:'line',precision:2,legend:'series',valueLabels:false}));
     document.getElementById('annual-series').onchange=history;document.getElementById('annual-detail').onchange=snapshot;history();snapshot();
   }
   window.HotelAnnual={render:async function(){if(loaded)return;if(!pending)pending=fetch('data/hotel-association-annual.json?v=20261026annual1').then(r=>{if(!r.ok)throw Error(r.status);return r.json();});try{draw(await pending);loaded=true;}catch(e){pending=null;const root=document.getElementById('hotel-annual-content');root.innerHTML='<p role="alert">年度数据读取失败。</p><button id="annual-retry">重试</button>';document.getElementById('annual-retry').onclick=window.HotelAnnual.render;}}};
