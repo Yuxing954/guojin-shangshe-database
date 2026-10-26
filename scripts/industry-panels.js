@@ -17,7 +17,7 @@
     wrap.className='industry-panel';frame.id='panel-'+id;frame.className='industry-panel-frame';frame.dataset.state='loading';frame.title=labels[id];frame.setAttribute('aria-label',labels[id]+'数据');
     const url=new URL(pages[id],location.href);url.searchParams.set('embed','1');url.searchParams.set('v','20261024compact');
     const saved=new URLSearchParams(location.search),owner=saved.get('panelSector');let view=owner===id?saved.get('panelView'):null;
-    if(view){const key=new URLSearchParams(view).get('view')||view;const allowed=id==='hotel'?['overview','cities','structure','holiday','groups']:id==='dutyfree'?['monthly','korea','holidays']:id==='travel'?['domestic','inbound','outbound']:id==='tourism'?['overview','audience','operators']:[];if(id!=='dining'&&!allowed.includes(key))view=null;}
+    if(view){const key=new URLSearchParams(view).get('view')||view;const allowed=id==='hotel'?['overview','cities','structure','annual','holiday','groups']:id==='dutyfree'?['monthly','korea','holidays']:id==='travel'?['domestic','inbound','outbound']:id==='tourism'?['overview','audience','operators']:[];if(id!=='dining'&&!allowed.includes(key))view=null;}
     if(id==='hotel'&&view&&new URLSearchParams(view).get('view')==='holiday')url.pathname=url.pathname.replace('hotel-dashboard.html','hotel-holiday-dashboard.html');
     if(id==='hotel'&&view&&new URLSearchParams(view).get('view')==='groups')url.pathname=url.pathname.replace('hotel-dashboard.html','hotel-groups.html');
     if(view)url.hash=view;
@@ -59,7 +59,7 @@
   addEventListener('message',event=>{
     if(event.origin!==location.origin||!event.data)return;
     const entry=[...panels.entries(),...[...hotelViews.values()].map(p=>['hotel',p])].find(([,p])=>p.frame.contentWindow===event.source);if(!entry)return;
-    if(event.data.type==='hotel-view'){if(entry[0]==='hotel'&&['overview','cities','structure','groups','holiday'].includes(event.data.view))selectHotel(event.data.view);return;}
+    if(event.data.type==='hotel-view'){if(entry[0]==='hotel'&&['overview','cities','structure','annual','groups','holiday'].includes(event.data.view))selectHotel(event.data.view);return;}
     if(event.data.type!=='industry-panel')return;
     const [id,panel]=entry,data=event.data;
     if(data.state==='loading'&&data.navigation){panel.begin();return;}
@@ -77,5 +77,6 @@
   new MutationObserver(()=>{if(!goldPending){goldPending=true;requestAnimationFrame(checkGold);}}).observe(gold,{subtree:true,childList:true,attributes:true,characterData:true});
   window.IndustryPanels={show};
 })();
+
 
 

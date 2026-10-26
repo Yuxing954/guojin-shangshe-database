@@ -60,8 +60,10 @@
     document.querySelector('.hd-toolbar').hidden=view==='annual';
     $('period-note').hidden=view==='annual';
     $('selection-note').hidden=true;
-    $('asof').hidden=view==='annual';
-    document.querySelector('.hd-footer').hidden=view==='annual';
+    $('asof').hidden=false;
+    if(view==='annual'){if(!$('asof').dataset.weeklyMarkup)$('asof').dataset.weeklyMarkup=$('asof').innerHTML;SiteUI.asOf($('asof'),'2025-12-31',[]);}
+    else if($('asof').dataset.weeklyMarkup){$('asof').innerHTML=$('asof').dataset.weeklyMarkup;delete $('asof').dataset.weeklyMarkup;}
+    document.querySelector('#dashboard > .hd-footer').hidden=view==='annual';
     state.view = view;
     $('weekly-export').hidden = view !== 'overview';
     document.querySelectorAll('.hd-tab').forEach(function (b) { var active = b.dataset.view === view; b.classList.toggle('active', active); b.setAttribute('aria-pressed', active); });
@@ -549,6 +551,8 @@
 
   }
 })();
+
+
 
 
 
