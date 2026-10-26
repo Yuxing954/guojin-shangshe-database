@@ -15,7 +15,7 @@ def allowed_attachment(r):
  if re.search(r'中国汽车|China Automobiles|汽车行业|汽车零部件|消费电子|房地产',name,re.I):return False
  if re.search(r'LendAPI|嵌入式金融|金融科技',name,re.I):return False
  if is_ecommerce_topic(name) or EXCLUDE.search(name):return False
- consumer_overview = re.search(r'商社|中国消费[:：]|消费(?:价值|行业)|消费业绩前瞻',name)
+ consumer_overview = re.search(r'商社|中国消费[:：]|消费(?:价值|行业)|消费业绩前瞻|四季度消费的估值切换|性价比消费时代',name)
  if consumer_overview and not re.search(r'消费电子|房地产|地产建筑',name):return True
  return bool(sector_for(name) or set(r.get('sectors',[])) & {'hotel','tourism','dutyfree','gold','retail','dining','education','hr'})
 
@@ -84,5 +84,6 @@ if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--date',required=True);p.add_argument('--cutoff');a=p.parse_args();d=build(a.date,a.cutoff)
  out=ROOT/'data/daily/resources';out.mkdir(exist_ok=True);(out/f'{a.date}.json').write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
  print({k:len(v) for k,v in d['groups'].items()})
+
 
 

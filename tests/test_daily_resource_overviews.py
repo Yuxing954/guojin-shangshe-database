@@ -7,7 +7,7 @@ from build_daily_report import stamp
 
 class OverviewResourcesTests(unittest.TestCase):
  def test_overview_titles_do_not_require_sector_tags(self):
-  for name in ['资金再均衡下商社投资机会20261016.pdf','消费行业底部推荐20261015.mp3','中国消费：黄金周现实检验-专家电话会要点.pdf']:
+  for name in ['资金再均衡下商社投资机会20261016.pdf','消费行业底部推荐20261015.mp3','中国消费：黄金周现实检验-专家电话会要点.pdf','四季度消费的估值切换与布局窗口20261025.pdf','性价比消费时代-关注-纯过日子-组合20261025.pdf']:
    self.assertTrue(resources.allowed_attachment({'name':name,'sectors':['other']}))
   for name in ['AI消费电子深度.pdf','食品饮料26Q3业绩前瞻.pdf','中国房地产：黄金周表现.pdf','餐饮换挡-速冻提速-速冻行业结构性增长新机遇20261021.pdf']:
    self.assertFalse(resources.allowed_attachment({'name':name,'sectors':['other']}))

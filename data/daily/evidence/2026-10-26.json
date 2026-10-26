@@ -1990,45 +1990,66 @@
     ]
   },
   "sourceCoverage": {
-    "researchSourceThrough": "2026-10-26T14:35:46.072+0800",
+    "researchSourceThrough": "2026-10-26T20:02:57.261+0800",
     "lastRun": {
-      "runId": "2026-10-26-145730",
+      "runId": "2026-10-26-200441",
       "sourceGroup": "88888142214212",
       "sourceName": "水木调研纪要-2.0",
-      "previousCoverageTo": "2026-10-26T13:59:44.521+0800",
-      "coverageTo": "2026-10-26T14:35:46.072+0800",
+      "previousCoverageTo": "2026-10-26T18:16:38.454+0800",
+      "coverageTo": "2026-10-26T20:02:57.261+0800",
       "added": {
-        "views": 4,
-        "all_views": 12
+        "views": 8,
+        "all_views": 16
       },
       "updated": 0,
       "expiredRemoved": 0,
       "sourceTopicIds": [
-        "45548518441414888",
-        "55521581228248884",
-        "14425485228211122",
-        "45548518441422848",
-        "55521581228244214",
-        "55521581228241444",
-        "55521581228241544",
-        "82258218551548552",
-        "55521581228258514",
-        "55521581228254844",
-        "45548518441452228",
-        "14425485228244452",
-        "82258218551522822",
-        "82258218554255242",
-        "82258218554814222",
-        "82258218554812552"
+        "45548518455228458",
+        "55521581255458414",
+        "14425485244418522",
+        "45548518455522858",
+        "22258218522248111",
+        "55521581255541114",
+        "45548518455825528",
+        "55521581255145144",
+        "14425485244514242",
+        "14425485244515152",
+        "22258218522845841",
+        "55521581255142244",
+        "14425485244548112",
+        "22258218528484251",
+        "45548518458282828",
+        "22258218528484581",
+        "22258218528825151",
+        "14425485245558112",
+        "55521581251118414",
+        "82258218528881852",
+        "14425485245558282",
+        "82258218528884152",
+        "82258218528884422",
+        "45548518458425528"
       ],
       "duplicateTopicIds": [],
       "briefChanges": {
-        "added": 2,
-        "updated": 2,
+        "added": 5,
+        "updated": 3,
         "expiredRemoved": 0
       },
       "duplicates": 0,
-      "excludedTopics": [],
+      "excludedTopics": [
+        {
+          "topicId": "55521581251881424",
+          "reason": "无可读观点正文"
+        },
+        {
+          "topicId": "22258218528115841",
+          "reason": "无可读观点正文"
+        },
+        {
+          "topicId": "14425485245818882",
+          "reason": "无可读观点正文"
+        }
+      ],
       "pagination": {
         "pages": 1,
         "pageRowsFetched": 30,
@@ -2036,27 +2057,27 @@
         "stoppedWhenPageReachedCoverage": true
       },
       "dedupCheck": {
-        "candidateKeys": 64,
-        "candidateBuckets": 57,
+        "candidateKeys": 96,
+        "candidateBuckets": 82,
         "algorithm": "sha256-utf8-v1"
       },
       "expiredBriefIds": []
     },
     "attachmentScan": {
-      "observedAt": "2026-10-25T08:31:30.492Z",
+      "observedAt": "2026-10-26T08:41:08.207Z",
       "sourceGroup": "88888142214212",
       "sourceName": "水木调研纪要-2.0",
-      "topicsScanned": 420,
-      "topicsInWindow": 395,
-      "topicPages": 14,
-      "topicWindowFrom": "2026-10-23T00:00:00+08:00",
-      "topicWindowTo": "2026-10-25T14:36:53.876+0800",
+      "topicsScanned": 540,
+      "topicsInWindow": 503,
+      "topicPages": 18,
+      "topicWindowFrom": "2026-10-24T00:00:00+08:00",
+      "topicWindowTo": "2026-10-26T14:35:46.072+0800",
       "boundaryReachedBeforeWindow": true,
-      "attachmentsObserved": 216,
-      "uniqueFileIds": 216,
+      "attachmentsObserved": 268,
+      "uniqueFileIds": 268,
       "duplicateFileIds": 0,
-      "newRecords": 33,
-      "existingRecordsRefreshed": 183,
+      "newRecords": 216,
+      "existingRecordsRefreshed": 52,
       "attachmentContentRead": false,
       "sourceMetadataFields": [
         "fileId",
@@ -2071,18 +2092,16 @@
         "sourceHash",
         "source"
       ],
-      "windowStart": "2026-10-23T00:00:00+08:00",
-      "windowEnd": "2026-10-25T08:31:30.492Z",
-      "windowEndDate": "2026-10-25",
+      "windowStart": "2026-10-24T00:00:00+08:00",
+      "windowEnd": "2026-10-26T08:41:08.207Z",
+      "windowEndDate": "2026-10-26",
       "windowComplete": true,
       "archiveHasMore": true
     },
     "resourcesFile": "data/daily/resources/2026-10-26.json"
   },
-  "publicationStatus": "blocked",
-  "publicationBlockers": [
-    "缺少2026-10-26当日16:00或之后真实附件扫描observedAt；最新为2026-10-25 16:31:30+08:00"
-  ],
+  "publicationStatus": "published",
+  "publicationBlockers": [],
   "editorialReview": {
     "allOriginalsRead": true,
     "sources": 16,
@@ -2098,17 +2117,49 @@
     "dailyTests": 58,
     "editorial": "passed_in_review_mode",
     "completeOriginalsAndHashes": 16,
-    "resourceVersionAndItems": "built_from_latest_main",
-    "deploymentGate": "failed: observedAt is October25; requires October26 after16 or full coverage",
-    "render": "passed after adding exact windowLabel; 13cards,16originals,allCollapsed,visibleSummaries,consistentCopy",
+    "resourceVersionAndItems": "passed for October26,25,24",
+    "deploymentGate": "passed same-day observedAt after16; actual incomplete coverage retained",
+    "render": "13cards,16originals,7resources,visible summaries,collapsed originals,copy consistent",
     "siteCheck": "local sparse checkout preexisting hotel-groups.html stylesheet order failure"
   },
   "scanRefreshAttempts": {
-    "latestReceiptSha": "d6630da67e11dc44459f18cc474f17b4c37a9a77",
-    "latestObservedAt": "2026-10-25T08:31:30.492Z",
+    "latestReceiptSha": "c8c46aed1d91f6ff100b597e60633b1ff2257843",
+    "latestObservedAt": "2026-10-26T08:41:08.207Z",
     "refreshes": 4,
     "metadataScannerAvailable": false,
-    "status": "recoverable_waiting",
+    "status": "recovered",
     "sourcePermission": "only topic and attachment metadata; no download/content calls"
-  }
+  },
+  "deploymentPolicy": {
+    "id": "scan-observed-after-16",
+    "scanObservedAt": "2026-10-26T08:41:08.207Z",
+    "eligible": true,
+    "requestedBy": "user",
+    "authorization": "用户2026-10-23：当日16点后真实扫描即可部署；2026-10-26再次要求更新"
+  },
+  "recovery": {
+    "at": "2026-10-26T20:22:25+08:00",
+    "previousBlocker": "当日16点后的附件扫描回执未到",
+    "latestMainReceiptObservedAt": "2026-10-26T08:41:08.207Z",
+    "candidateSources": 16,
+    "allOriginalsUnchanged": true,
+    "focusCards": 13,
+    "resourcesRebuilt": true,
+    "attachmentCount": 7,
+    "originalCutoffPreserved": "2026-10-26T18:00:00+08:00",
+    "priorEditorialRetainedAfterFullHashComparison": true
+  },
+  "announcementCandidatesReviewed": [
+    {
+      "company": "王府井",
+      "url": "https://paper.cnstock.com/html/2026-10/24/content_2280824.htm",
+      "decision": "routine_pay_procedure_downgraded",
+      "reason": "董事会仅批准高管2025薪酬发放及2026薪酬方案，无新业绩、资本或控制权事项。"
+    },
+    {
+      "company": "香港中旅",
+      "decision": "pending_original_verification",
+      "reason": "10月13日预告26日审议附条件特别股息；未取得18点前新决议原文，不能用预约替代已宣派。"
+    }
+  ]
 }
