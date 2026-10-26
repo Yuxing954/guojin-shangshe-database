@@ -4,6 +4,11 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 from daily_scope import sector_for,is_ecommerce_topic
 
 class ChannelUpdates(unittest.TestCase):
+ def test_tourism_toy_fair_and_passenger_airlines(self):
+  for title in ['天目湖&三特索道：暑期经营承压','航空：航司控班保价，票价上升']:
+   self.assertEqual(sector_for(title),'酒店旅游')
+  for title in ['从CTE玩具展看趋势','报喜鸟26Q3业绩']:
+   self.assertEqual(sector_for(title),'零售与消费出海')
  def test_generic_consumer_weekly(self):
   self.assertEqual(sector_for('周末好～更新一下我们的推荐标的：','行动教育 百胜中国 周大福 名创优品'), '商社综合')
   self.assertIsNone(sector_for('周末好～更新一下我们的推荐标的：','半导体 人工智能'))

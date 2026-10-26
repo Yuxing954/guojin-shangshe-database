@@ -37,6 +37,8 @@ def sector_for(title,body=''):
  # Research team names do not determine sector; remove bracketed broker headings.
  subject=re.sub(r'【[^】]*(?:食饮|传媒|轻工|商社|消费|纺织服装珠宝|纺服)[^】]*】','',title_for(title,body))
  if EXCLUDE.search(subject) or is_ecommerce_topic(subject) or re.search(r'航空照明|航空航天|航空发动机|航材制造',subject):return None
+ if re.search(r'天目湖|三特索道|报喜鸟|CTE(?:潮玩|玩具)展',subject):return '酒店旅游' if re.search(r'天目湖|三特索道',subject) else '零售与消费出海'
+ if re.search(r'航空[:：].*航司控班保价',subject):return '酒店旅游'
  # Geographic fieldwork can have a generic title; require explicit duty-free
  # business in the body rather than matching incidental sector mentions broadly.
  if re.search(r'海南.*(?:调研|渠道|反馈)',subject) and re.search(r'离岛免税|免税|中免',body):return '免税'
@@ -51,6 +53,7 @@ def sector_for(title,body=''):
  for sector,terms in SECTORS.items():
   if any(t in subject for t in terms):return sector
  return None
+
 
 
 
