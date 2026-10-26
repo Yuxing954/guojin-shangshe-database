@@ -20,3 +20,12 @@
 .quotes-gold-state{font-size:13px;color:#687b8e;margin:0 0 10px;line-height:1.6}
 #gold-retry{margin-bottom:10px}
 @media(max-width:600px){.quotes-gold-panel{padding:14px 10px}.quotes-gold-head{align-items:flex-start}.quotes-gold-head h2{font-size:18px}.quotes-gold-head p{font-size:12px}.quotes-gold-actions{width:100%;justify-content:space-between}#gold-widget{height:540px}.quotes-market-tabs button{padding:9px 16px}}
+
+.quotes-gold-instruments{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 20px}
+.quotes-gold-instruments button{border:1px solid #dfe6ef;border-radius:7px;padding:8px 16px;background:#fff;color:#63748a;font:inherit;cursor:pointer}
+.quotes-gold-instruments button[aria-pressed=true]{border-color:#b9cce0;background:#edf3fa;color:#234e78}
+#gold-periods[hidden],#gold-refresh[hidden],#gold-widget[hidden],#gold-external[hidden]{display:none!important}
+.quotes-gold-external{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:22px;background:#f4f7fb;border:1px solid #e0e6ef;border-radius:8px}
+.quotes-gold-external p{margin:0;font:inherit;color:#63748a}
+.quotes-gold-external a{white-space:normal;text-align:center}
+@media(max-width:600px){.quotes-gold-external{padding:18px 14px}.quotes-gold-external a{width:100%}}
