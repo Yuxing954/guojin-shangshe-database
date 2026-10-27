@@ -5,11 +5,12 @@ if(!root||!stock)return;
 let selectedInstrument='london',interval='D',observer,timer,sequence=0,mounted=false;
 const instruments={
  london:{name:'伦敦金现',symbol:'OANDA:XAUUSD',meta:'XAU/USD · OANDA 报价 · 美元/金衡盎司',source:'https://www.tradingview.com/symbols/XAUUSD/?exchange=OANDA',embedded:true},
- shanghai:{name:'沪金期货 · 连续合约',symbol:'SHFE:AU1!',meta:'SHFE:AU1! · 上期所 · 人民币/克',source:'https://www.tradingview.com/symbols/SHFE-AU1%21/',embedded:false}
+ shanghai:{name:'沪金主连',symbol:'113.aum',meta:'黄金期货主连 · 东方财富 · 人民币/克',source:'https://quote.eastmoney.com/qihuo/aum.html',embedded:false}
 };
 function updateInstrument(){
  const item=instruments[selectedInstrument];root.dataset.instrument=selectedInstrument;
  $('gold-title').textContent=item.name;$('gold-meta').textContent=item.meta;$('gold-source').href=item.source;$('gold-external-link').href=item.source;
+ if(!item.embedded){$('gold-external').querySelector('p').textContent='东方财富 · 日K / 周K / 月K';$('gold-external-link').textContent='查看沪金主连 ↗';}
  document.querySelectorAll('[data-gold-instrument]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.goldInstrument===selectedInstrument)));
  $('gold-periods').hidden=$('gold-refresh').hidden=$('gold-widget').hidden=!item.embedded;$('gold-external').hidden=item.embedded;
 }
