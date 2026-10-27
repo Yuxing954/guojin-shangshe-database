@@ -1,15 +1,25 @@
-/* Annual view reuses the hotel dashboard typography, cards and controls. */
-.hd-toolbar[hidden]{display:none!important}
+/* Association view follows the hotel dashboard cards, typography and colours. */
 #view-annual{min-width:0}
-#view-annual .annual-links{display:flex;flex-wrap:wrap;gap:8px 14px;margin:0 0 14px;font-size:13px}
-#view-annual .annual-kpis{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:24px}
-#view-annual .annual-charts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-#view-annual .annual-legend{display:flex;flex-wrap:wrap;gap:16px;margin:0 0 16px;font-size:13px;color:var(--hd-muted)}
+#view-annual .annual-top{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+#view-annual .annual-top h2{margin:0;font-size:20px;line-height:1.4;color:var(--hd-ink)}
+#view-annual .annual-top p{margin:5px 0 0;font-size:13px;color:var(--hd-muted)}
+#view-annual .annual-links{display:flex;gap:10px 16px;align-items:center;flex-wrap:wrap;font-size:13px}
+#view-annual .annual-links a{color:var(--hd-accent);text-decoration:none}
+#view-annual .annual-kpis{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:28px}
+#view-annual .annual-kpis .hd-stat{min-width:0}
+#view-annual .annual-section{margin:0 0 30px}
+#view-annual .annual-section-heading{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:0 0 14px}
+#view-annual .annual-section-heading h2{font-size:18px;margin:0;color:var(--hd-ink)}
+#view-annual .annual-section-heading span{font-size:13px;color:var(--hd-muted)}
+#view-annual .annual-charts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-bottom:16px}
+#view-annual .annual-charts>.hd-card{margin:0;min-width:0}
+#view-annual .annual-legend{display:flex;flex-wrap:wrap;gap:10px 18px;margin:0 0 14px;color:var(--hd-muted);font-size:13px}
 #view-annual .annual-legend span{display:inline-flex;align-items:center;gap:6px}
 #view-annual .annual-legend i{width:10px;height:10px;border-radius:2px}
-#view-annual .annual-chart svg{width:100%;height:auto;display:block;font-size:14px;font-family:inherit;fill:var(--hd-muted)}
-#view-annual .annual-value{fill:#fff;font-size:12px;font-variant-numeric:tabular-nums}
+#view-annual .annual-chart svg{display:block;width:100%;height:auto;font:14px "PingFang SC","Microsoft YaHei",sans-serif;fill:var(--hd-muted)}
+#view-annual .annual-chart svg text.annual-value{fill:#fff;font-size:12px;font-weight:600;font-variant-numeric:tabular-nums}
 #view-annual .hd-card-head select{max-width:230px}
+#view-annual .annual-source{margin:0}
 #annual-snapshot .hd-table-scroll{max-height:550px}
 @media(max-width:850px){#view-annual .annual-charts{grid-template-columns:1fr}#view-annual .annual-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
-
+@media(max-width:480px){#view-annual .annual-top{align-items:flex-start}#view-annual .annual-links{gap:8px 12px}#view-annual .annual-kpis .hd-stat-value{font-size:24px}#view-annual .annual-section-heading h2{font-size:16px}}
