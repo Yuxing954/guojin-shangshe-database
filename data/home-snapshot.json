@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-27T14:17:59.000+08:00",
+  "generatedAt": "2026-10-27T14:30:26+08:00",
   "industries": [
     {
       "id": "hotel",
@@ -13,7 +13,7 @@
       "changeLabel": "同比",
       "period": "2026W43 · 2026-10-25",
       "asOf": "2026-10-25",
-      "freshnessDays": 2,
+      "freshnessDays": 14,
       "source": "酒店之家 / 仓库周度样本",
       "sourceFile": "data/hotel_industry_weekly.csv",
       "href": "industry.html#hotel"
@@ -54,7 +54,7 @@
       "id": "dining",
       "name": "餐饮",
       "metric": "全国餐饮收入",
-      "value": 4544,
+      "value": 4544.0,
       "unit": "亿元",
       "precision": 0,
       "change": 1.1,
