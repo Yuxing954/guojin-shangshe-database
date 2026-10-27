@@ -29,21 +29,7 @@ let server,browser;
  assert.equal((await config()).symbol,'OANDA:XAUUSD');assert.equal((await config()).interval,'D');
  assert.match(await page.locator('#gold-widget .tradingview-widget-copyright a').getAttribute('href'),/XAUUSD/);
  for(const period of ['W','M']){await page.locator('[data-gold-period="'+period+'"]').click();await page.waitForFunction(p=>{const s=document.querySelector('#gold-widget script');return s&&JSON.parse(s.textContent).interval===p&&document.querySelector('#gold-widget iframe');},period);assert.equal(await page.locator('#gold-widget iframe').count(),1);assert.equal(await page.locator('[data-gold-period="'+period+'"]').getAttribute('aria-pressed'),'true');}
- const beforeDomestic=embedCalls;
- await page.locator('[data-gold-instrument="shanghai"]').click();
- assert.equal(await page.locator('#gold-widget iframe').count(),0);
- assert.equal(await page.locator('#gold-market').getAttribute('data-state'),'external');
- assert.match(await page.locator('#gold-title').innerText(),/沪金期货.*连续合约/);
- assert.match(await page.locator('#gold-meta').innerText(),/SHFE:AU1!.*人民币\/克/);
- assert.match(await page.locator('#gold-external-link').getAttribute('href'),/SHFE-AU1%21/);
- assert.match(await page.locator('#gold-external').innerText(),/登录/);
- assert.equal(await page.locator('#gold-periods').isVisible(),false);
- assert.equal(await page.locator('#gold-refresh').isVisible(),false);
- for(const width of [1440,768,390,320]){await page.setViewportSize({width,height:950});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false,'domestic overflow '+width);}
- await page.waitForTimeout(300);assert.equal(embedCalls,beforeDomestic,'restricted SHFE must not request an unsupported embed');
- await page.locator('[data-gold-instrument="london"]').click();await page.locator('#gold-widget iframe').waitFor();
- assert.equal((await config()).symbol,'OANDA:XAUUSD');assert.equal((await config()).interval,'M');
- assert.match(await page.locator('#gold-meta').innerText(),/美元\/金衡盎司/);
+ assert.equal(await page.locator('[data-gold-instrument],#gold-external').count(),0);
  const paused=quoteCalls;await page.waitForTimeout(1250);assert.equal(quoteCalls,paused,'stock polling must pause in gold');
  for(const width of [1440,768,390,320]){await page.setViewportSize({width,height:950});await page.waitForTimeout(200);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false,'overflow '+width);assert.ok((await page.locator('#gold-widget iframe').boundingBox()).width>200);}
  await page.locator('[data-quote-market="stock"]').click();await page.waitForFunction(()=>!document.getElementById('stock-market').hidden);
@@ -53,5 +39,5 @@ let server,browser;
  await page.waitForLoadState('load');await page.waitForFunction(()=>document.getElementById('gold-market').dataset.state==='embedded');failNext=true;await page.locator('#gold-refresh').click();await page.locator('#gold-retry').waitFor();assert.match(await page.locator('#gold-state').innerText(),/暂时无法连接/);
  await page.locator('#gold-retry').click();await page.locator('#gold-widget iframe').waitFor();await page.waitForFunction(()=>document.getElementById('gold-state').hidden);
  assert.equal(await page.locator('#gold-widget iframe').count(),1);assert.deepEqual(errors,[]);
- console.log('gold-quotes: stock default, London/SHFE instrument units and restricted entry, OANDA source, D/W/M, pause/resume, deep link, retry and 1440/768/390/320 layouts passed');
+ console.log('gold-quotes: stock default, London only, OANDA source, D/W/M, pause/resume, deep link, retry and 1440/768/390/320 layouts passed');
 })().catch(e=>{console.error(e);process.exitCode=1;}).finally(async()=>{await browser?.close();if(server)await new Promise(r=>server.close(r));});
