@@ -108,11 +108,12 @@ const large = M.supply15Plus(data.supply.filter(r=>r.region==='全国'&&r.period
 const largePrior = M.supply15Plus(data.supply.filter(r=>r.region==='全国'&&r.period_id===prior));
 assert.equal(large.hotel_count,M.num(latest.hotel_count_15plus));
 assert.equal(large.room_count,M.num(latest.room_count_15plus));
-assert.equal(large.hotel_count,428582);
-assert.equal(large.room_count,20961366);
-assert.equal(large.chain_room_count,6372680);
+const fixedSupply = M.supply15Plus(data.supply.filter(r=>r.region==='全国'&&r.period_id==='2026W40'));
+assert.equal(fixedSupply.hotel_count,428582);
+assert.equal(fixedSupply.room_count,20961366);
+assert.equal(fixedSupply.chain_room_count,6372680);
 close(M.change(large,largePrior,'hotel_count'),(M.num(latest.hotel_count_15plus)/M.num(base.hotel_count_15plus)-1)*100);
-close(M.metric(large,'chain_rate'),6372680/20961366);
+close(M.metric(large,'chain_rate'),large.chain_room_count/large.room_count);
 const bands=data.supply.filter(r=>r.region==='全国'&&r.period_id===latest.period_id&&r.room_band!=='15间以下'&&r.room_band!=='全部');
 assert.equal(M.supply15Plus(bands.slice(1)).room_count,null);
 assert.equal(M.supply15Plus([],latest).room_count,M.num(latest.room_count_15plus));
