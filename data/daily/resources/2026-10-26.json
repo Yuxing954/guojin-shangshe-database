@@ -5,23 +5,23 @@
   "cutoff": "2026-10-26T18:00:00+08:00",
   "sourceThrough": "2026-10-26T20:02:57.261+0800",
   "attachmentCatalog": {
-    "generatedAt": "2026-10-26T08:41:08.207Z",
-    "sourceThrough": "2026-10-26T14:35:46.072+0800",
+    "generatedAt": "2026-10-27T17:10:03+08:00",
+    "sourceThrough": "2026-10-27T15:03:54.642+0800",
     "scan": {
-      "observedAt": "2026-10-26T08:41:08.207Z",
+      "observedAt": "2026-10-27T08:34:12.026Z",
       "sourceGroup": "88888142214212",
       "sourceName": "水木调研纪要-2.0",
-      "topicsScanned": 540,
-      "topicsInWindow": 503,
-      "topicPages": 18,
-      "topicWindowFrom": "2026-10-24T00:00:00+08:00",
-      "topicWindowTo": "2026-10-26T14:35:46.072+0800",
+      "topicsScanned": 750,
+      "topicsInWindow": 698,
+      "topicPages": 25,
+      "topicWindowFrom": "2026-10-25T00:00:00+08:00",
+      "topicWindowTo": "2026-10-27T15:03:54.642+0800",
       "boundaryReachedBeforeWindow": true,
-      "attachmentsObserved": 268,
-      "uniqueFileIds": 268,
+      "attachmentsObserved": 467,
+      "uniqueFileIds": 467,
       "duplicateFileIds": 0,
-      "newRecords": 216,
-      "existingRecordsRefreshed": 52,
+      "newRecords": 226,
+      "existingRecordsRefreshed": 241,
       "attachmentContentRead": false,
       "sourceMetadataFields": [
         "fileId",
@@ -36,31 +36,95 @@
         "sourceHash",
         "source"
       ],
-      "windowStart": "2026-10-24T00:00:00+08:00",
-      "windowEnd": "2026-10-26T08:41:08.207Z",
-      "windowEndDate": "2026-10-26",
+      "windowStart": "2026-10-25T00:00:00+08:00",
+      "windowEnd": "2026-10-27T08:34:12.026Z",
+      "windowEndDate": "2026-10-27",
       "windowComplete": true,
       "archiveHasMore": true
     },
-    "coverageStatus": "pending",
+    "coverageStatus": "complete",
     "requestedWindowStart": "2026-10-23T18:00:00+08:00",
     "requestedCutoff": "2026-10-26T18:00:00+08:00",
-    "missingIntervals": [
+    "coverageScans": [
       {
-        "start": "2026-10-23T18:00:00+08:00",
-        "end": "2026-10-24T00:00:00+08:00"
+        "observedAt": "2026-10-25T08:31:30.492Z",
+        "sourceGroup": "88888142214212",
+        "sourceName": "水木调研纪要-2.0",
+        "topicsScanned": 420,
+        "topicsInWindow": 395,
+        "topicPages": 14,
+        "topicWindowFrom": "2026-10-23T00:00:00+08:00",
+        "topicWindowTo": "2026-10-25T14:36:53.876+0800",
+        "boundaryReachedBeforeWindow": true,
+        "attachmentsObserved": 216,
+        "uniqueFileIds": 216,
+        "duplicateFileIds": 0,
+        "newRecords": 33,
+        "existingRecordsRefreshed": 183,
+        "attachmentContentRead": false,
+        "sourceMetadataFields": [
+          "fileId",
+          "topicId",
+          "filename",
+          "extension",
+          "bytes",
+          "fileCreatedAt",
+          "topicCreatedAt",
+          "durationSeconds",
+          "downloadCount",
+          "sourceHash",
+          "source"
+        ],
+        "windowStart": "2026-10-23T00:00:00+08:00",
+        "windowEnd": "2026-10-25T08:31:30.492Z",
+        "windowEndDate": "2026-10-25",
+        "windowComplete": true,
+        "archiveHasMore": true,
+        "receiptFile": "data/daily/resources/2026-10-24.json"
       },
       {
-        "start": "2026-10-26T16:41:08.207000+08:00",
-        "end": "2026-10-26T18:00:00+08:00"
+        "observedAt": "2026-10-27T08:34:12.026Z",
+        "sourceGroup": "88888142214212",
+        "sourceName": "水木调研纪要-2.0",
+        "topicsScanned": 750,
+        "topicsInWindow": 698,
+        "topicPages": 25,
+        "topicWindowFrom": "2026-10-25T00:00:00+08:00",
+        "topicWindowTo": "2026-10-27T15:03:54.642+0800",
+        "boundaryReachedBeforeWindow": true,
+        "attachmentsObserved": 467,
+        "uniqueFileIds": 467,
+        "duplicateFileIds": 0,
+        "newRecords": 226,
+        "existingRecordsRefreshed": 241,
+        "attachmentContentRead": false,
+        "sourceMetadataFields": [
+          "fileId",
+          "topicId",
+          "filename",
+          "extension",
+          "bytes",
+          "fileCreatedAt",
+          "topicCreatedAt",
+          "durationSeconds",
+          "downloadCount",
+          "sourceHash",
+          "source"
+        ],
+        "windowStart": "2026-10-25T00:00:00+08:00",
+        "windowEnd": "2026-10-27T08:34:12.026Z",
+        "windowEndDate": "2026-10-27",
+        "windowComplete": true,
+        "archiveHasMore": true
       }
     ],
     "publicationEligibility": {
       "policy": "scan-observed-after-16",
       "eligible": true,
-      "scanObservedAt": "2026-10-26T08:41:08.207Z",
-      "coverageComplete": false
-    }
+      "scanObservedAt": "2026-10-27T08:34:12.026Z",
+      "coverageComplete": true
+    },
+    "usedHistoricalScan": true
   },
   "groups": {
     "segments": [
@@ -161,7 +225,16 @@
         "url": "https://wx.zsxq.com/group/88888142214212/topic/45548514455441248"
       }
     ],
-    "minutes": [],
+    "minutes": [
+      {
+        "id": "work-minutes-f519d5a2aba75230565e",
+        "title": "20261026 三峡旅游26Q3业绩交流会.docx",
+        "publishedAt": "2026-10-26T00:00:00+08:00",
+        "url": "",
+        "status": "有正文索引",
+        "sector": "travel"
+      }
+    ],
     "audio": [],
     "reports": [
       {
@@ -173,16 +246,16 @@
         "sector": "other"
       },
       {
-        "id": "zsxq-file-814818425121482",
-        "title": "泡泡玛特：企稳之路比预期更长.pdf",
+        "id": "zsxq-file-584181452858414",
+        "title": "携程集团：第三季度预计符合预期，第四季度重点关注酒店业务与利润率.pdf",
         "publishedAt": "2026-10-26T10:26:18.724000+08:00",
         "url": "https://wx.zsxq.com/group/88888142214212/topic/55521582848884584",
         "status": "仅标题登记",
         "sector": "other"
       },
       {
-        "id": "zsxq-file-584181452858414",
-        "title": "携程集团：第三季度预计符合预期，第四季度重点关注酒店业务与利润率.pdf",
+        "id": "zsxq-file-814818425121482",
+        "title": "泡泡玛特：企稳之路比预期更长.pdf",
         "publishedAt": "2026-10-26T10:26:18.724000+08:00",
         "url": "https://wx.zsxq.com/group/88888142214212/topic/55521582848884584",
         "status": "仅标题登记",
@@ -222,5 +295,11 @@
       }
     ]
   },
-  "policy": "仅依据已入库元数据列出标题、发布时间和来源主题；未下载、读取或转写附件，不把研究报告标为纪要。"
+  "policy": "仅依据已入库元数据列出标题、发布时间和来源主题；未下载、读取或转写附件，不把研究报告标为纪要。",
+  "attachmentBackfill": {
+    "at": "2026-10-27T18:04:28+08:00",
+    "originalCutoff": "2026-10-26T18:00:00+08:00",
+    "indexGeneratedAt": "2026-10-27T17:10:03+08:00",
+    "previousIndexGeneratedAt": "2026-10-26T08:41:08.207Z"
+  }
 }

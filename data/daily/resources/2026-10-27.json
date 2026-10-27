@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 2,
+  "date": "2026-10-27",
+  "windowStart": "2026-10-26T18:00:00+08:00",
+  "cutoff": "2026-10-27T18:00:00+08:00",
+  "sourceThrough": "2026-10-27T11:56:25.643+0800",
+  "attachmentCatalog": {
+    "generatedAt": "2026-10-27T17:10:03+08:00",
+    "sourceThrough": "2026-10-27T15:03:54.642+0800",
+    "scan": {
+      "observedAt": "2026-10-27T08:34:12.026Z",
+      "sourceGroup": "88888142214212",
+      "sourceName": "水木调研纪要-2.0",
+      "topicsScanned": 750,
+      "topicsInWindow": 698,
+      "topicPages": 25,
+      "topicWindowFrom": "2026-10-25T00:00:00+08:00",
+      "topicWindowTo": "2026-10-27T15:03:54.642+0800",
+      "boundaryReachedBeforeWindow": true,
+      "attachmentsObserved": 467,
+      "uniqueFileIds": 467,
+      "duplicateFileIds": 0,
+      "newRecords": 226,
+      "existingRecordsRefreshed": 241,
+      "attachmentContentRead": false,
+      "sourceMetadataFields": [
+        "fileId",
+        "topicId",
+        "filename",
+        "extension",
+        "bytes",
+        "fileCreatedAt",
+        "topicCreatedAt",
+        "durationSeconds",
+        "downloadCount",
+        "sourceHash",
+        "source"
+      ],
+      "windowStart": "2026-10-25T00:00:00+08:00",
+      "windowEnd": "2026-10-27T08:34:12.026Z",
+      "windowEndDate": "2026-10-27",
+      "windowComplete": true,
+      "archiveHasMore": true
+    },
+    "coverageStatus": "pending",
+    "requestedWindowStart": "2026-10-26T18:00:00+08:00",
+    "requestedCutoff": "2026-10-27T18:00:00+08:00",
+    "missingIntervals": [
+      {
+        "start": "2026-10-27T16:34:12.026000+08:00",
+        "end": "2026-10-27T18:00:00+08:00"
+      }
+    ],
+    "publicationEligibility": {
+      "policy": "scan-observed-after-16",
+      "eligible": true,
+      "scanObservedAt": "2026-10-27T08:34:12.026Z",
+      "coverageComplete": false
+    }
+  },
+  "groups": {
+    "segments": [
+      {
+        "title": "飞亚达深度：收购长空齿轮，精密制造业务开启重估！",
+        "publishedAt": "2026-10-27T11:20:10.103000+08:00",
+        "sector": "零售与消费出海",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/82258218224424822"
+      },
+      {
+        "title": "【华福计算机】国脉科技：教育资源赋能物理AI，数采业务低成本优势巨大！",
+        "publishedAt": "2026-10-27T11:19:55.946000+08:00",
+        "sector": "教育人服",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/82258218224422142"
+      },
+      {
+        "title": "酒店周度跟踪（10.19-10.25）：入住率边际改善，量价齐升带动RevPAR增速回升",
+        "publishedAt": "2026-10-27T11:19:39.839000+08:00",
+        "sector": "酒店旅游",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/22258218224422241"
+      },
+      {
+        "title": "宋城演艺2026年三季报简评",
+        "publishedAt": "2026-10-27T11:19:10.326000+08:00",
+        "sector": "酒店旅游",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/82258218224428552"
+      },
+      {
+        "title": "学大教育三季度：利润略超预期",
+        "publishedAt": "2026-10-27T09:01:29.321000+08:00",
+        "sector": "教育人服",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/82258218285512282"
+      },
+      {
+        "title": "李宁Q3交流更新【国金纺服】",
+        "publishedAt": "2026-10-26T19:10:49.537000+08:00",
+        "sector": "零售与消费出海",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/22258218528484251"
+      },
+      {
+        "title": "【天风商社】三峡旅游交流要点- 1026",
+        "publishedAt": "2026-10-26T18:52:27.899000+08:00",
+        "sector": "酒店旅游",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/14425485245558282"
+      }
+    ],
+    "minutes": [],
+    "audio": [],
+    "reports": [
+      {
+        "id": "zsxq-file-181585855125582",
+        "title": "消费周周谈20261026.pdf",
+        "publishedAt": "2026-10-27T12:41:30.741000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/14425485414221422",
+        "status": "仅标题登记",
+        "sector": "other"
+      },
+      {
+        "id": "zsxq-file-181585118845852",
+        "title": "李宁20261026.pdf",
+        "publishedAt": "2026-10-26T21:23:42.945000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/45548518428555158",
+        "status": "仅标题登记",
+        "sector": "other"
+      }
+    ]
+  },
+  "policy": "仅依据已入库元数据列出标题、发布时间和来源主题；未下载、读取或转写附件，不把研究报告标为纪要。"
+}
