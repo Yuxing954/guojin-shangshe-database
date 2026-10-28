@@ -7974,27 +7974,30 @@
     }
   ],
   "fedwatchUpdate": {
-    "status": "ready",
-    "attemptedAt": "2026-10-27T00:38:27.021Z",
+    "status": "error",
+    "attemptedAt": "2026-10-28T00:22:19Z",
     "sourceUrl": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html",
     "observedAt": null,
     "retrievedAt": "2026-10-27T00:38:27.021Z",
     "meetingProbabilities": {
-      "status": "ready",
+      "status": "error",
       "meetings": 10,
       "rateRanges": 9,
-      "changed": true
+      "changed": true,
+      "error": "tool_embed_not_loaded"
     },
     "fundFutures": {
-      "status": "ready",
+      "status": "error",
       "contracts": 13,
-      "changed": true
+      "changed": true,
+      "error": "tool_embed_not_loaded"
     },
     "evidence": {
       "path": "data/macro/fedwatch-receipt-20261027T003827021Z.json",
       "sha256": "8eceefeb129c8f9478982221e9c8f2eb1292be3e5e55d244f8409a7d61d5b52b"
     },
-    "note": "整表源时点未披露；获取时间与源观察时间分开保存。"
+    "note": "整表源时点未披露；获取时间与源观察时间分开保存。",
+    "error": "CME QuikStrike iframe remained about:blank in the connected Edge page; complete tables were unavailable. Previous valid probability and futures snapshots were retained."
   },
   "seriesUpdate": {
     "attemptedAt": "2026-10-14T00:33:58Z",
