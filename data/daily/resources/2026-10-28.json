@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 2,
+  "date": "2026-10-28",
+  "windowStart": "2026-10-27T18:00:00+08:00",
+  "cutoff": "2026-10-28T18:00:00+08:00",
+  "sourceThrough": "2026-10-27T13:57:57.449+0800",
+  "attachmentCatalog": {
+    "generatedAt": "2026-10-27T17:10:03+08:00",
+    "sourceThrough": "2026-10-27T15:03:54.642+0800",
+    "scan": {
+      "observedAt": "2026-10-27T08:34:12.026Z",
+      "sourceGroup": "88888142214212",
+      "sourceName": "水木调研纪要-2.0",
+      "topicsScanned": 750,
+      "topicsInWindow": 698,
+      "topicPages": 25,
+      "topicWindowFrom": "2026-10-25T00:00:00+08:00",
+      "topicWindowTo": "2026-10-27T15:03:54.642+0800",
+      "boundaryReachedBeforeWindow": true,
+      "attachmentsObserved": 467,
+      "uniqueFileIds": 467,
+      "duplicateFileIds": 0,
+      "newRecords": 226,
+      "existingRecordsRefreshed": 241,
+      "attachmentContentRead": false,
+      "sourceMetadataFields": [
+        "fileId",
+        "topicId",
+        "filename",
+        "extension",
+        "bytes",
+        "fileCreatedAt",
+        "topicCreatedAt",
+        "durationSeconds",
+        "downloadCount",
+        "sourceHash",
+        "source"
+      ],
+      "windowStart": "2026-10-25T00:00:00+08:00",
+      "windowEnd": "2026-10-27T08:34:12.026Z",
+      "windowEndDate": "2026-10-27",
+      "windowComplete": true,
+      "archiveHasMore": true
+    },
+    "coverageStatus": "pending",
+    "requestedWindowStart": "2026-10-27T18:00:00+08:00",
+    "requestedCutoff": "2026-10-28T18:00:00+08:00",
+    "missingIntervals": [
+      {
+        "start": "2026-10-27T18:00:00+08:00",
+        "end": "2026-10-28T18:00:00+08:00"
+      }
+    ],
+    "publicationEligibility": {
+      "policy": "scan-observed-after-16",
+      "eligible": false,
+      "scanObservedAt": "2026-10-27T08:34:12.026Z",
+      "coverageComplete": false
+    }
+  },
+  "groups": {
+    "segments": [],
+    "minutes": [],
+    "audio": [],
+    "reports": []
+  },
+  "policy": "仅依据已入库元数据列出标题、发布时间和来源主题；未下载、读取或转写附件，不把研究报告标为纪要。"
+}
