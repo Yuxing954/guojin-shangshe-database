@@ -14,6 +14,9 @@ class ChannelUpdates(unittest.TestCase):
   self.assertIsNone(sector_for('周末好～更新一下我们的推荐标的：','半导体 人工智能'))
   self.assertEqual(sector_for('周观点：26Q3比音勒芬业绩超预期，新澳利润高增','安踏 特步经营'), '零售与消费出海')
  def test_named_consumer_brands(self):
+  self.assertEqual(sector_for('运动服饰行业-Neutral'),'零售与消费出海')
+  self.assertEqual(sector_for('【天风商社】力盛体育：赛事收入增长'),'酒店旅游')
+  self.assertIsNone(sector_for('盈趣科技：电子烟模组及智能控制部件增长'))
   self.assertEqual(sector_for('欧莱雅26Q3业绩'),'零售与消费出海')
   self.assertEqual(sector_for('特步26Q3运营数据电话会'),'零售与消费出海')
   self.assertEqual(sector_for('六福集团20261023.pdf'),'黄金珠宝')
