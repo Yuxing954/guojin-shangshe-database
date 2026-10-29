@@ -5,23 +5,23 @@
   "cutoff": "2026-10-27T18:00:00+08:00",
   "sourceThrough": "2026-10-27T11:56:25.643+0800",
   "attachmentCatalog": {
-    "generatedAt": "2026-10-29T09:30:39.155Z",
-    "sourceThrough": "2026-10-29T17:30:13.448+0800",
+    "generatedAt": "2026-10-29T12:46:14.051Z",
+    "sourceThrough": "2026-10-29T20:04:21.464+0800",
     "scan": {
-      "observedAt": "2026-10-29T09:30:39.155Z",
+      "observedAt": "2026-10-29T12:46:14.051Z",
       "sourceGroup": "88888142214212",
       "sourceName": "水木调研纪要-2.0",
-      "topicsScanned": 930,
-      "topicsInWindow": 877,
-      "topicPages": 31,
+      "topicsScanned": 960,
+      "topicsInWindow": 910,
+      "topicPages": 32,
       "topicWindowFrom": "2026-10-27T00:00:00+08:00",
-      "topicWindowTo": "2026-10-29T17:30:13.448+0800",
+      "topicWindowTo": "2026-10-29T20:04:21.464+0800",
       "boundaryReachedBeforeWindow": true,
-      "attachmentsObserved": 664,
-      "uniqueFileIds": 664,
+      "attachmentsObserved": 677,
+      "uniqueFileIds": 677,
       "duplicateFileIds": 0,
-      "newRecords": 503,
-      "existingRecordsRefreshed": 161,
+      "newRecords": 13,
+      "existingRecordsRefreshed": 323,
       "attachmentContentRead": false,
       "sourceMetadataFields": [
         "fileId",
@@ -37,7 +37,7 @@
         "source"
       ],
       "windowStart": "2026-10-27T00:00:00+08:00",
-      "windowEnd": "2026-10-29T09:30:39.155Z",
+      "windowEnd": "2026-10-29T12:46:14.051Z",
       "windowEndDate": "2026-10-29",
       "windowComplete": true,
       "archiveHasMore": true
@@ -82,20 +82,20 @@
         "archiveHasMore": true
       },
       {
-        "observedAt": "2026-10-29T09:30:39.155Z",
+        "observedAt": "2026-10-29T12:46:14.051Z",
         "sourceGroup": "88888142214212",
         "sourceName": "水木调研纪要-2.0",
-        "topicsScanned": 930,
-        "topicsInWindow": 877,
-        "topicPages": 31,
+        "topicsScanned": 960,
+        "topicsInWindow": 910,
+        "topicPages": 32,
         "topicWindowFrom": "2026-10-27T00:00:00+08:00",
-        "topicWindowTo": "2026-10-29T17:30:13.448+0800",
+        "topicWindowTo": "2026-10-29T20:04:21.464+0800",
         "boundaryReachedBeforeWindow": true,
-        "attachmentsObserved": 664,
-        "uniqueFileIds": 664,
+        "attachmentsObserved": 677,
+        "uniqueFileIds": 677,
         "duplicateFileIds": 0,
-        "newRecords": 503,
-        "existingRecordsRefreshed": 161,
+        "newRecords": 13,
+        "existingRecordsRefreshed": 323,
         "attachmentContentRead": false,
         "sourceMetadataFields": [
           "fileId",
@@ -111,7 +111,7 @@
           "source"
         ],
         "windowStart": "2026-10-27T00:00:00+08:00",
-        "windowEnd": "2026-10-29T09:30:39.155Z",
+        "windowEnd": "2026-10-29T12:46:14.051Z",
         "windowEndDate": "2026-10-29",
         "windowComplete": true,
         "archiveHasMore": true
@@ -120,7 +120,7 @@
     "publicationEligibility": {
       "policy": "scan-observed-after-16",
       "eligible": true,
-      "scanObservedAt": "2026-10-29T09:30:39.155Z",
+      "scanObservedAt": "2026-10-29T12:46:14.051Z",
       "coverageComplete": true
     },
     "usedHistoricalScan": true
@@ -193,9 +193,9 @@
   },
   "policy": "仅依据已入库元数据列出标题、发布时间和来源主题；未下载、读取或转写附件，不把研究报告标为纪要。",
   "attachmentBackfill": {
-    "at": "2026-10-29T18:03:29+08:00",
+    "at": "2026-10-30T01:38:29+08:00",
     "originalCutoff": "2026-10-27T18:00:00+08:00",
-    "indexGeneratedAt": "2026-10-29T09:30:39.155Z",
-    "previousIndexGeneratedAt": "2026-10-27T17:10:03+08:00"
+    "indexGeneratedAt": "2026-10-29T12:46:14.051Z",
+    "previousIndexGeneratedAt": "2026-10-29T09:30:39.155Z"
   }
 }

@@ -2235,27 +2235,27 @@
     ]
   },
   "sourceCoverage": {
-    "researchSourceThrough": "2026-10-29T14:53:30.963+0800",
-    "researchRunId": "2026-10-29-093956-rc6eaa",
-    "researchManifestSha": "0327be7ec0ad724565930f11fc44ae2f231c402d",
+    "researchSourceThrough": "2026-10-30T00:53:28.611+0800",
+    "researchRunId": "2026-10-30-005954",
+    "researchManifestSha": "9961e26840ffb2305ed4453d797bdcebd19acad4",
     "attachmentCatalog": {
-      "generatedAt": "2026-10-29T09:30:39.155Z",
-      "sourceThrough": "2026-10-29T17:30:13.448+0800",
+      "generatedAt": "2026-10-29T12:46:14.051Z",
+      "sourceThrough": "2026-10-29T20:04:21.464+0800",
       "scan": {
-        "observedAt": "2026-10-29T09:30:39.155Z",
+        "observedAt": "2026-10-29T12:46:14.051Z",
         "sourceGroup": "88888142214212",
         "sourceName": "水木调研纪要-2.0",
-        "topicsScanned": 930,
-        "topicsInWindow": 877,
-        "topicPages": 31,
+        "topicsScanned": 960,
+        "topicsInWindow": 910,
+        "topicPages": 32,
         "topicWindowFrom": "2026-10-27T00:00:00+08:00",
-        "topicWindowTo": "2026-10-29T17:30:13.448+0800",
+        "topicWindowTo": "2026-10-29T20:04:21.464+0800",
         "boundaryReachedBeforeWindow": true,
-        "attachmentsObserved": 664,
-        "uniqueFileIds": 664,
+        "attachmentsObserved": 677,
+        "uniqueFileIds": 677,
         "duplicateFileIds": 0,
-        "newRecords": 503,
-        "existingRecordsRefreshed": 161,
+        "newRecords": 13,
+        "existingRecordsRefreshed": 323,
         "attachmentContentRead": false,
         "sourceMetadataFields": [
           "fileId",
@@ -2271,58 +2271,48 @@
           "source"
         ],
         "windowStart": "2026-10-27T00:00:00+08:00",
-        "windowEnd": "2026-10-29T09:30:39.155Z",
+        "windowEnd": "2026-10-29T12:46:14.051Z",
         "windowEndDate": "2026-10-29",
         "windowComplete": true,
         "archiveHasMore": true
       },
-      "coverageStatus": "pending",
+      "coverageStatus": "complete",
       "requestedWindowStart": "2026-10-28T18:00:00+08:00",
       "requestedCutoff": "2026-10-29T18:00:00+08:00",
-      "missingIntervals": [
-        {
-          "start": "2026-10-29T17:30:39.155000+08:00",
-          "end": "2026-10-29T18:00:00+08:00"
-        }
-      ],
       "publicationEligibility": {
         "policy": "scan-observed-after-16",
         "eligible": true,
-        "scanObservedAt": "2026-10-29T09:30:39.155Z",
-        "coverageComplete": false
+        "scanObservedAt": "2026-10-29T12:46:14.051Z",
+        "coverageComplete": true
       }
     },
-    "researchGap": {
-      "start": "2026-10-29T14:53:30.963+0800",
-      "end": "2026-10-29T18:00:00+08:00"
-    },
+    "researchGap": null,
     "attachmentContentRead": false,
-    "latestMain": "08a4517914eb3c1f5b4e11774a7790de27749193"
+    "latestMain": "9b2b7e33c8017194938ae0cde1ab202ec49ff8e8",
+    "researchWindowStatus": "stored_batches_cover_original_cutoff"
   },
-  "publicationStatus": "blocked",
-  "publicationBlockers": [
-    {
-      "type": "original_text_incomplete",
-      "url": "https://wx.zsxq.com/group/88888142214212/topic/22258212284224541",
-      "reason": "已入库中青旅原文仅1008字符，在“古北水镇减亏和整合营”处句中截断；完整原文未能从已入库源库或源站核实。源扫描条件已满足，不以覆盖时间阻塞。"
-    }
-  ],
+  "publicationStatus": "published",
+  "publicationBlockers": [],
   "deploymentPolicy": {
     "id": "scan-observed-after-16",
     "requestedBy": "user",
     "authorizationDate": "2026-10-23",
     "eligible": true,
-    "scanObservedAt": "2026-10-29T09:30:39.155Z",
-    "reason": "29日17:30真实扫描回执满足用户源扫描放行条件；源覆盖不足18:00不阻塞。"
+    "scanObservedAt": "2026-10-29T12:46:14.051Z",
+    "reason": "最新真实扫描完整覆盖原29日18点窗口；用户明确接受中青旅已入库原文截断。",
+    "coverageComplete": true
   },
   "originalCompleteness": {
-    "status": "incomplete",
-    "reviewedSourceCount": 20,
+    "status": "user_accepted_stored_truncation",
+    "reviewedSourceCount": 21,
     "suspectedTruncatedSources": [
       "https://wx.zsxq.com/group/88888142214212/topic/22258212284224541"
     ],
     "allStoredTextRead": true,
-    "fullTextVerified": false
+    "fullTextVerified": false,
+    "storedCorpusEqualityVerified": true,
+    "exceptionAcceptedBy": "user",
+    "evidenceFile": "data/daily/evidence/2026-10-29.json"
   },
   "originalHashes": {
     "https://wx.zsxq.com/group/88888142214212/topic/82258212212455442": "27f170d4d93165ed0816d6efc238a3a081758d2885c33391d78c243068bea432",
@@ -2344,7 +2334,8 @@
     "https://wx.zsxq.com/group/88888142214212/topic/22258212284224541": "8946218ebec66f25db6e7294c19cbb8156fc6f42ccf58851b82f3789f5cb99ab",
     "https://wx.zsxq.com/group/88888142214212/topic/45548515284445848": "e2c683dc2e5c6a8b83c45657c705954748b5091a227b89612f280d3e21ae2203",
     "https://wx.zsxq.com/group/88888142214212/topic/82258212515452542": "c121214afccabc3141e6d1d830ae4a424edc55cb9b5151161ce91af551adaba8",
-    "https://wx.zsxq.com/group/88888142214212/topic/14425484528545522": "ee5e6efcbfb8f8bb41cf067850206339373b9ee22332bab361a3f3772eb0ae1e"
+    "https://wx.zsxq.com/group/88888142214212/topic/14425484528545522": "ee5e6efcbfb8f8bb41cf067850206339373b9ee22332bab361a3f3772eb0ae1e",
+    "https://wx.zsxq.com/group/88888142214212/topic/22258212421458451": "9fa90b906288110ac0bffd10bd03526aec0a8e7423a4372b87c7b546e714bf39"
   },
   "sourceRecoveryAttempts": [
     {
@@ -2352,12 +2343,63 @@
       "result": "web tool inaccessible; connected-browser originating context unavailable; all local CSV versions checked, maximum 1008 characters."
     }
   ],
-  "candidateCount": 20,
-  "focusCount": 15,
+  "candidateCount": 21,
+  "focusCount": 16,
   "scopeReview": "零售品牌渠道、教育出版及美护供应链归入覆盖；食品饮料、平台电商、电子制造等排除。",
   "checks": {
     "dailyTests": "59 passed",
-    "sourceScanDeploymentCondition": "passed",
-    "originalCompleteness": "failed: one source ends mid-sentence; formal publication withheld"
+    "sourceScanDeploymentCondition": "passed; original window now completely covered",
+    "originalCompleteness": "user accepted one known truncated stored source; 21/21 source bodies and hashes match stored corpus",
+    "editorialWithResources": "passed: 21/21 stored originals match corpus and SHA256; one known stored truncation accepted by user",
+    "siteCheck": "passed for locally materialized 2 entrypoints, 13 scripts, 1 inline script, current-main assets; no unrelated site file changed",
+    "renderAndCopy": "passed: 3 summary points, 16 cards, 21 embedded stored texts, all originals default collapsed, 6 metadata-only attachments, 18:00 label and copy/export order"
+  },
+  "recoverable": false,
+  "publicationExceptions": [
+    {
+      "type": "stored_original_truncated",
+      "requestedBy": "user",
+      "authorizedAt": "2026-10-30T01:39:36+08:00",
+      "authorizationText": "重新更新日报 没事截断不用管了",
+      "scope": {
+        "date": "2026-10-29",
+        "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/22258212284224541",
+        "storedSha256": "8946218ebec66f25db6e7294c19cbb8156fc6f42ccf58851b82f3789f5cb99ab"
+      },
+      "resolution": "保留1008字符已入库正文及其真实哈希；不补写、不伪造剩余原文；本次截断不阻塞发布。"
+    }
+  ],
+  "recovery": {
+    "checkedAt": "2026-10-30T01:39:36+08:00",
+    "originalCutoffPreserved": true,
+    "previousCandidateCount": 20,
+    "currentCandidateCount": 21,
+    "unchangedSourceHashes": 20,
+    "newSourcesRead": [
+      "https://wx.zsxq.com/group/88888142214212/topic/22258212421458451"
+    ],
+    "summaryRewritten": true,
+    "publicationExceptions": [
+      {
+        "type": "stored_original_truncated",
+        "requestedBy": "user",
+        "authorizedAt": "2026-10-30T01:39:36+08:00",
+        "authorizationText": "重新更新日报 没事截断不用管了",
+        "scope": {
+          "date": "2026-10-29",
+          "sourceUrl": "https://wx.zsxq.com/group/88888142214212/topic/22258212284224541",
+          "storedSha256": "8946218ebec66f25db6e7294c19cbb8156fc6f42ccf58851b82f3789f5cb99ab"
+        },
+        "resolution": "保留1008字符已入库正文及其真实哈希；不补写、不伪造剩余原文；本次截断不阻塞发布。"
+      }
+    ],
+    "previousBlockers": [
+      {
+        "type": "original_text_incomplete",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/22258212284224541",
+        "reason": "已入库中青旅原文仅1008字符，在“古北水镇减亏和整合营”处句中截断；完整原文未能从已入库源库或源站核实。源扫描条件已满足，不以覆盖时间阻塞。"
+      }
+    ],
+    "latestMain": "9b2b7e33c8017194938ae0cde1ab202ec49ff8e8"
   }
 }
