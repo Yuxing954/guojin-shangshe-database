@@ -43,3 +43,11 @@ class SnackRetailScopeTests(unittest.TestCase):
 if __name__=='__main__':unittest.main()
 
 
+
+class RetailCoverageRegressionTests(unittest.TestCase):
+ def test_retail_operators_and_own_brand_channel_updates(self):
+  for title in ('滔搏发布FY27财年中报','孩子王2026Q3经营更新','博士眼镜26Q3业绩点评','比音勒芬天猫双十一首阶段销售','SNOWPEAK前滩门店调研'):
+   self.assertEqual(sector_for(title),'零售与消费出海')
+  self.assertEqual(sector_for('中青旅2026年三季报点评'),'酒店旅游')
+  self.assertIsNone(sector_for('天猫双十一平台竞争格局'))
+  self.assertIsNone(sector_for('电子制造行业：零售客户拓展'))

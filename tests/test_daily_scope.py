@@ -30,7 +30,7 @@ class ScopeTests(unittest.TestCase):
  def test_keeps_relevant_despite_broker_label(self):
   self.assertEqual(sector_for('【浙商食饮】餐饮与茶饮更新'),'餐饮茶饮')
   self.assertEqual(sector_for('【国海传媒】泡泡玛特周度跟踪'),'零售与消费出海')
-  self.assertIsNone(sector_for('【中金纺织服装珠宝】比音勒芬：业绩持续增长'))
+  self.assertEqual(sector_for('【中金纺织服装珠宝】比音勒芬：业绩持续增长'),'零售与消费出海')
   self.assertEqual(sector_for('【中金纺织服装珠宝】周大福：门店调整'),'黄金珠宝')
  def test_excludes_ecommerce_but_keeps_retail_channels(self):
   for title in ['阿里巴巴业绩更新','京东零售利润修复','跨境电商周观点','安克创新经营更新','零售电商行业观点','【银河社服】东方甄选今日上涨情况更新']:

@@ -3,25 +3,25 @@
   "date": "2026-10-28",
   "windowStart": "2026-10-27T18:00:00+08:00",
   "cutoff": "2026-10-28T18:00:00+08:00",
-  "sourceThrough": "2026-10-28T21:17:04.521+0800",
+  "sourceThrough": "2026-10-29T14:53:30.963+0800",
   "attachmentCatalog": {
-    "generatedAt": "2026-10-27T17:10:03+08:00",
-    "sourceThrough": "2026-10-27T15:03:54.642+0800",
+    "generatedAt": "2026-10-29T09:30:39.155Z",
+    "sourceThrough": "2026-10-29T17:30:13.448+0800",
     "scan": {
-      "observedAt": "2026-10-27T08:34:12.026Z",
+      "observedAt": "2026-10-29T09:30:39.155Z",
       "sourceGroup": "88888142214212",
       "sourceName": "水木调研纪要-2.0",
-      "topicsScanned": 750,
-      "topicsInWindow": 698,
-      "topicPages": 25,
-      "topicWindowFrom": "2026-10-25T00:00:00+08:00",
-      "topicWindowTo": "2026-10-27T15:03:54.642+0800",
+      "topicsScanned": 930,
+      "topicsInWindow": 877,
+      "topicPages": 31,
+      "topicWindowFrom": "2026-10-27T00:00:00+08:00",
+      "topicWindowTo": "2026-10-29T17:30:13.448+0800",
       "boundaryReachedBeforeWindow": true,
-      "attachmentsObserved": 467,
-      "uniqueFileIds": 467,
+      "attachmentsObserved": 664,
+      "uniqueFileIds": 664,
       "duplicateFileIds": 0,
-      "newRecords": 226,
-      "existingRecordsRefreshed": 241,
+      "newRecords": 503,
+      "existingRecordsRefreshed": 161,
       "attachmentContentRead": false,
       "sourceMetadataFields": [
         "fileId",
@@ -36,26 +36,20 @@
         "sourceHash",
         "source"
       ],
-      "windowStart": "2026-10-25T00:00:00+08:00",
-      "windowEnd": "2026-10-27T08:34:12.026Z",
-      "windowEndDate": "2026-10-27",
+      "windowStart": "2026-10-27T00:00:00+08:00",
+      "windowEnd": "2026-10-29T09:30:39.155Z",
+      "windowEndDate": "2026-10-29",
       "windowComplete": true,
       "archiveHasMore": true
     },
-    "coverageStatus": "pending",
+    "coverageStatus": "complete",
     "requestedWindowStart": "2026-10-27T18:00:00+08:00",
     "requestedCutoff": "2026-10-28T18:00:00+08:00",
-    "missingIntervals": [
-      {
-        "start": "2026-10-27T18:00:00+08:00",
-        "end": "2026-10-28T18:00:00+08:00"
-      }
-    ],
     "publicationEligibility": {
       "policy": "scan-observed-after-16",
-      "eligible": false,
-      "scanObservedAt": "2026-10-27T08:34:12.026Z",
-      "coverageComplete": false
+      "eligible": true,
+      "scanObservedAt": "2026-10-29T09:30:39.155Z",
+      "coverageComplete": true
     }
   },
   "groups": {
@@ -128,8 +122,82 @@
       }
     ],
     "minutes": [],
-    "audio": [],
-    "reports": []
+    "audio": [
+      {
+        "id": "zsxq-file-412815411554218",
+        "title": "从沃尔玛和Costco，看北美零售市场20261026.mp3",
+        "publishedAt": "2026-10-28T13:16:37.494000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/82258212584142212",
+        "status": "未转写",
+        "sector": "other"
+      },
+      {
+        "id": "zsxq-file-584181841241184",
+        "title": "李宁20261026.mp3",
+        "publishedAt": "2026-10-28T00:50:40.210000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/14425485141558552",
+        "status": "未转写",
+        "sector": "other"
+      }
+    ],
+    "reports": [
+      {
+        "id": "zsxq-file-584181881154454",
+        "title": "泡泡玛特：第三季度销售额不及预期，第四季度有望环比改善，但下半年利润率趋弱；评级“中性”.pdf",
+        "publishedAt": "2026-10-28T10:27:51.461000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/22258212558584111",
+        "status": "仅标题登记",
+        "sector": "other"
+      },
+      {
+        "id": "zsxq-file-584181881154444",
+        "title": "万辰集团：量贩零售销售额小幅超预期，短期投入令核心净利率承压.pdf",
+        "publishedAt": "2026-10-28T10:27:51.461000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/22258212558584111",
+        "status": "仅标题登记",
+        "sector": "other"
+      },
+      {
+        "id": "zsxq-file-584181882582484",
+        "title": "李宁：第三季度符合预期，重申全年指引；拟派特别股息带来惊喜，评级“买入”.pdf",
+        "publishedAt": "2026-10-28T09:28:29.962000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/14425485884584252",
+        "status": "仅标题登记",
+        "sector": "other"
+      },
+      {
+        "id": "zsxq-file-181585844522252",
+        "title": "行动教育20261027.pdf",
+        "publishedAt": "2026-10-27T21:40:19.739000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/22258218482211481",
+        "status": "仅标题登记",
+        "sector": "other"
+      },
+      {
+        "id": "zsxq-file-181585844288542",
+        "title": "比音勒芬20261027.pdf",
+        "publishedAt": "2026-10-27T21:39:40.105000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/55521581415584444",
+        "status": "仅标题登记",
+        "sector": "other"
+      },
+      {
+        "id": "zsxq-file-814818122512212",
+        "title": "上海家化20261027.pdf",
+        "publishedAt": "2026-10-27T21:38:35.406000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/45548518285514548",
+        "status": "仅标题登记",
+        "sector": "other"
+      },
+      {
+        "id": "zsxq-file-214818122544421",
+        "title": "泡泡玛特20261027.pdf",
+        "publishedAt": "2026-10-27T21:36:33.408000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/45548518285524258",
+        "status": "仅标题登记",
+        "sector": "other"
+      }
+    ]
   },
   "policy": "仅依据已入库元数据列出标题、发布时间和来源主题；未下载、读取或转写附件，不把研究报告标为纪要。"
 }
