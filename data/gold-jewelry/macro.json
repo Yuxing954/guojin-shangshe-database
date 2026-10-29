@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-10-27",
+  "checkedAt": "2026-10-29",
   "policy": {
     "range": [
       3.75,
@@ -5489,8 +5489,9 @@
       "name": "FOMC利率决议",
       "period": "2026-10-27 / 28",
       "scheduledAt": "2026-10-28T14:00:00-04:00",
-      "sourceId": "fed-calendar",
-      "watch": "实际决议与会前期货定价的差异；14:00为常规发布时刻。"
+      "sourceId": "fed-policy-20261028",
+      "watch": "实际决议与会前期货定价的差异；14:00为常规发布时刻。",
+      "result": "Target range maintained at 3-3/4 to 4 percent."
     },
     {
       "name": "美国9月PCE",
@@ -5808,6 +5809,16 @@
       "sha256": "8eceefeb129c8f9478982221e9c8f2eb1292be3e5e55d244f8409a7d61d5b52b",
       "retrieval": "browser_dom_excerpt",
       "checkedAt": "2026-10-27"
+    },
+    {
+      "id": "fed-policy-20261028",
+      "name": "美联储10月FOMC政策声明",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm",
+      "publishedAt": "2026-10-28",
+      "retrievedAt": "2026-10-29T00:27:53Z",
+      "sha256": "9bb067a9488844633c20f84b8de8de1cb564b6d92af45fddb86673dabb9abb3f",
+      "quality": "primary",
+      "retrieval": "curl_original"
     }
   ],
   "fedwatchTables": [
@@ -7975,7 +7986,7 @@
   ],
   "fedwatchUpdate": {
     "status": "error",
-    "attemptedAt": "2026-10-28T00:22:19Z",
+    "attemptedAt": "2026-10-29T00:27:06Z",
     "sourceUrl": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html",
     "observedAt": null,
     "retrievedAt": "2026-10-27T00:38:27.021Z",
@@ -7983,21 +7994,19 @@
       "status": "error",
       "meetings": 10,
       "rateRanges": 9,
-      "changed": true,
       "error": "tool_embed_not_loaded"
     },
     "fundFutures": {
       "status": "error",
       "contracts": 13,
-      "changed": true,
       "error": "tool_embed_not_loaded"
     },
     "evidence": {
       "path": "data/macro/fedwatch-receipt-20261027T003827021Z.json",
       "sha256": "8eceefeb129c8f9478982221e9c8f2eb1292be3e5e55d244f8409a7d61d5b52b"
     },
-    "note": "整表源时点未披露；获取时间与源观察时间分开保存。",
-    "error": "CME QuikStrike iframe remained about:blank in the connected Edge page; complete tables were unavailable. Previous valid probability and futures snapshots were retained."
+    "note": "本次父页已加载，但未挂载 QuikStrike iframe；没有完整表。概率及期货保留上次有效快照，源时点未提供。",
+    "error": "Connected Edge loaded the official CME parent page, but no QuikStrike iframe was present; complete probability and futures tables were unavailable. Previous valid snapshots were retained."
   },
   "seriesUpdate": {
     "attemptedAt": "2026-10-14T00:33:58Z",
