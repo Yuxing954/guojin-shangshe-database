@@ -1,13 +1,14 @@
 {
-  "syncedAt": "2026-10-30T09:02:46.631Z",
+  "syncedAt": "2026-10-30T11:00:40.143Z",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
-  "coverageFrom": "2026-10-30T14:29:32.330+0800",
-  "coverageTo": "2026-10-30T16:36:08.609+0800",
-  "oldestFetched": "2026-10-30T13:13:51.212+0800",
+  "coverageFrom": "2026-10-30T16:36:08.609+0800",
+  "coverageTo": "2026-10-30T18:47:16.444+0800",
+  "oldestFetched": "2026-10-30T14:01:40.801+0800",
   "fetchedTopics": 30,
   "files": {
     "views": [
+      "data/research/updates/2026-10-30-185807-views-000.csv",
       "data/research/updates/2026-10-30-150114-views-000.csv",
       "data/research/updates/2026-10-30-150114-views-001.csv",
       "data/research/updates/2026-10-30-085906-views-000.csv",
@@ -126,6 +127,7 @@
       "data/research/updates/2026-10-14-1258-views.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-10-30-185807-all_views-000.csv",
       "data/research/updates/2026-10-30-170045-all_views-000.csv",
       "data/research/updates/2026-10-30-150114-all_views-000.csv",
       "data/research/updates/2026-10-30-150114-all_views-001.csv",
@@ -379,13 +381,13 @@
     ]
   },
   "counts": {
-    "views": 729,
-    "all_views": 7365,
+    "views": 732,
+    "all_views": 7371,
     "minutes": 101
   },
   "latest": {
-    "views": "2026-10-30 14:29",
-    "all_views": "2026-10-30 16:35",
+    "views": "2026-10-30 18:46",
+    "all_views": "2026-10-30 18:47",
     "minutes": "2026-10-12T01:07:33"
   },
   "excluded": {
@@ -1157,7 +1159,10 @@
       "82258458815115812",
       "14425125582821582",
       "55521421182488554",
-      "82258458815414412"
+      "82258458815414412",
+      "82258458248115482",
+      "55521421541882424",
+      "45548248528121158"
     ],
     "all_views": [
       "82258224252524812",
@@ -8424,38 +8429,49 @@
       "55521421182455424",
       "82258458815422522",
       "45548248552211528",
-      "22258458224414451"
+      "22258458224414451",
+      "82258458248115142",
+      "22258458248115251",
+      "82258458248115512",
+      "14425125415882212",
+      "45548248528122158",
+      "82258458245144142"
     ]
   },
   "lastRun": {
-    "runId": "2026-10-30-170045",
+    "runId": "2026-10-30-185807",
     "sourceGroup": "88888142214212",
     "sourceName": "水木调研纪要-2.0",
-    "previousCoverageTo": "2026-10-30T14:29:32.330+0800",
-    "coverageTo": "2026-10-30T16:36:08.609+0800",
+    "previousCoverageTo": "2026-10-30T16:36:08.609+0800",
+    "coverageTo": "2026-10-30T18:47:16.444+0800",
     "added": {
-      "views": 0,
-      "all_views": 2
+      "views": 3,
+      "all_views": 6
     },
     "updated": 0,
     "expiredRemoved": 0,
     "sourceTopicIds": [
-      "45548248552211528",
-      "22258458224414451"
+      "82258458248115142",
+      "82258458248115482",
+      "55521421541882424",
+      "22258458248115251",
+      "82258458248115512",
+      "14425125415882212",
+      "45548248528121158",
+      "45548248528122158",
+      "82258458245144142"
     ],
-    "duplicateTopicIds": [],
+    "duplicateTopicIds": [
+      "45548248524151558",
+      "55521421542854484"
+    ],
     "briefChanges": {
-      "added": 0,
-      "updated": 0,
+      "added": 2,
+      "updated": 1,
       "expiredRemoved": 0
     },
-    "duplicates": 0,
-    "excludedTopics": [
-      {
-        "topicId": "45548248552144418",
-        "reason": "仅纪要标题及外链，无可读取正文观点，不推断链接内内容。"
-      }
-    ],
+    "duplicates": 2,
+    "excludedTopics": [],
     "pagination": {
       "pages": 1,
       "pageRowsFetched": 30,
@@ -8463,29 +8479,39 @@
       "stoppedWhenPageReachedCoverage": true
     },
     "dedupCheck": {
-      "candidateKeys": 12,
-      "candidateBuckets": 12,
+      "candidateKeys": 44,
+      "candidateBuckets": 42,
       "algorithm": "sha256-utf8-v1"
     },
     "expiredBriefIds": []
   },
   "lastUpdateRecord": {
-    "runId": "2026-10-30-170045",
+    "runId": "2026-10-30-185807",
     "sourceGroup": "88888142214212",
     "sourceName": "水木调研纪要-2.0",
-    "previousCoverageTo": "2026-10-30T14:29:32.330+0800",
-    "coverageTo": "2026-10-30T16:36:08.609+0800",
-    "added": 2,
+    "previousCoverageTo": "2026-10-30T16:36:08.609+0800",
+    "coverageTo": "2026-10-30T18:47:16.444+0800",
+    "added": 9,
     "updated": 0,
     "expiredRemoved": 0,
     "sourceTopicIds": [
-      "45548248552211528",
-      "22258458224414451"
+      "82258458248115142",
+      "82258458248115482",
+      "55521421541882424",
+      "22258458248115251",
+      "82258458248115512",
+      "14425125415882212",
+      "45548248528121158",
+      "45548248528122158",
+      "82258458245144142"
     ],
-    "duplicateTopicIds": [],
+    "duplicateTopicIds": [
+      "45548248524151558",
+      "55521421542854484"
+    ],
     "briefChanges": {
-      "added": 0,
-      "updated": 0,
+      "added": 2,
+      "updated": 1,
       "expiredRemoved": 0
     }
   }
