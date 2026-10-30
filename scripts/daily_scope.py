@@ -39,7 +39,7 @@ def sector_for(title,body=''):
  subject=re.sub(r'【[^】]*(?:食饮|传媒|轻工|商社|消费|纺织服装珠宝|纺服)[^】]*】','',title_for(title,body))
  if EXCLUDE.search(subject) or is_ecommerce_topic(subject) or re.search(r'航空照明|航空航天|航空发动机|航材制造',subject):return None
  # Component/contract electronics manufacturing is outside consumer operations.
- if '盈趣科技' in subject or '电子制造行业' in subject:return None
+ if any(x in subject for x in ('盈趣科技','电子制造行业','祥源新材','海天味业','晨光股份')):return None
  if re.search(r'力盛体育|中青旅',subject):return '酒店旅游'
  if re.search(r'滔搏|比音勒芬|孩子王|朗姿股份|博士眼镜|SNOWPEAK|诺斯贝尔',subject,re.I):return '零售与消费出海'
  if '长江传媒' in subject and '教材教辅' in body:return '教育人服'
@@ -61,9 +61,3 @@ def sector_for(title,body=''):
  for sector,terms in SECTORS.items():
   if any(t in subject for t in terms):return sector
  return None
-
-
-
-
-
-

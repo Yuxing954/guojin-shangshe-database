@@ -67,7 +67,7 @@ def build(date,cutoff=None):
  for r in library.get('records',[]):
   if not within(r.get('published'),start,end) or not allowed_attachment(r):continue
   key=r.get('fileId') or r.get('sha256') or filename_key(r['name'])
-  if key in seen_files:continue
+  if key in seen_files or filename_key(r['name']) in seen_files:continue
   seen_files.update([key,filename_key(r['name'])]);kind=attachment_kind(r)
   groups[kind].append({'id':r['id'],'title':r['name'],'publishedAt':stamp(r['published']).isoformat(),'url':r.get('sourceUrl',''),'status':('已转写' if r.get('processing',{}).get('textAvailable') else '未转写') if kind=='audio' else ('有正文索引' if r.get('processing',{}).get('textAvailable') else '仅标题登记'),'sector':' / '.join(r.get('sectors',[]))})
  # Preserve minute indexes absent from attachment catalogue, without downloading.
@@ -84,7 +84,3 @@ if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--date',required=True);p.add_argument('--cutoff');a=p.parse_args();d=build(a.date,a.cutoff)
  out=ROOT/'data/daily/resources';out.mkdir(exist_ok=True);(out/f'{a.date}.json').write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
  print({k:len(v) for k,v in d['groups'].items()})
-
-
-
-

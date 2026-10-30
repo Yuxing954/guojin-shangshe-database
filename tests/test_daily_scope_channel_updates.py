@@ -51,3 +51,8 @@ class RetailCoverageRegressionTests(unittest.TestCase):
   self.assertEqual(sector_for('中青旅2026年三季报点评'),'酒店旅游')
   self.assertIsNone(sector_for('天猫双十一平台竞争格局'))
   self.assertIsNone(sector_for('电子制造行业：零售客户拓展'))
+
+class ManufacturingScopeRegressionTests(unittest.TestCase):
+ def test_incidental_consumer_words_do_not_include_manufacturers(self):
+  for title in ('【祥源新材】机器人材料与旅游客户','【国金食饮】海天味业：餐饮需求走弱','【方正轻工】晨光股份：零售大店延续增长'):
+   self.assertIsNone(sector_for(title))
