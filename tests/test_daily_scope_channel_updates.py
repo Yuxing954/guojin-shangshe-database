@@ -56,3 +56,8 @@ class ManufacturingScopeRegressionTests(unittest.TestCase):
  def test_incidental_consumer_words_do_not_include_manufacturers(self):
   for title in ('【祥源新材】机器人材料与旅游客户','【国金食饮】海天味业：餐饮需求走弱','【方正轻工】晨光股份：零售大店延续增长'):
    self.assertIsNone(sector_for(title))
+
+class SportsBrandScopeRegressionTests(unittest.TestCase):
+ def test_adidas_brand_operations_are_consumer_retail(self):
+  self.assertEqual(sector_for('阿迪达斯26Q3业绩：收入利润增长'),'零售与消费出海')
+  self.assertIsNone(sector_for('机器人代工业务更新','阿迪达斯为其客户'))
