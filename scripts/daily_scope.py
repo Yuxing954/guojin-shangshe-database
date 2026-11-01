@@ -32,6 +32,8 @@ def published_for(row):return row.get('原始发布时间') or row.get('时间')
 def substantive_segment(title,body):
  # A concise company event can carry more information than a long invitation.
  text=body.strip()
+ # A short earnings-revision note can add a driver without repeating numbers.
+ if len(text)>=40 and sector_for(title,body) and re.search(r'(?:暂不|维持|上调|下调|修改).{0,8}(?:盈利|利润|业绩).{0,4}(?:预期|预测)',text) and re.search(r'折扣|毛利|返利|同店|成本|收入|订单',text):return True
  return len(text)>=80 or (len(text)>=40 and bool(sector_for(title,body)) and bool(re.search(r'\d+(?:\.\d+)?\s*(?:%|亿|万|家|港元|美元|元)',text)) and bool(re.search(r'减持|增持|回购|经营|收入|利润|门店|GMV',text,re.I)))
 
 def sector_for(title,body=''):
@@ -40,7 +42,7 @@ def sector_for(title,body=''):
  if EXCLUDE.search(subject) or is_ecommerce_topic(subject) or re.search(r'航空照明|航空航天|航空发动机|航材制造',subject):return None
  # Component/contract electronics manufacturing is outside consumer operations.
  if any(x in subject for x in ('盈趣科技','电子制造行业','祥源新材','海天味业','晨光股份')):return None
- if re.search(r'力盛体育|中青旅',subject):return '酒店旅游'
+ if re.search(r'力盛体育|中青旅|京沪高铁',subject):return '酒店旅游'
  if re.search(r'滔搏|比音勒芬|孩子王|朗姿股份|博士眼镜|SNOWPEAK|诺斯贝尔',subject,re.I):return '零售与消费出海'
  if '长江传媒' in subject and '教材教辅' in body:return '教育人服'
  if '消费板块基金重仓梳理' in subject:return '商社综合'

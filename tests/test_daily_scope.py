@@ -3,6 +3,11 @@ from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 from daily_scope import sector_for,title_for,published_for,substantive_segment
 class ScopeTests(unittest.TestCase):
+ def test_short_earnings_revision_and_passenger_rail(self):
+  text='中国中免补充：\n\n1、业绩超预期源于折扣收窄与品牌返利。\n\n2、出于谨慎选择，暂不修改全年盈利预期。\n\n3、未来催化：市内店政策、海棠湾3期、苹果折叠屏等'
+  self.assertTrue(substantive_segment('中国中免补充：',text))
+  self.assertFalse(substantive_segment('中国中免交流预告','中国中免将在今晚举办业绩交流电话会，欢迎各位领导报名参加，请联系团队获得会议链接。'))
+  self.assertEqual(sector_for('京沪高铁：第三季度符合预期，具防御性配置价值.pdf'),'酒店旅游')
  def test_tobacco_brands_and_short_company_events(self):
   self.assertEqual(sector_for('PMI发布26Q3财报，IQOS动销重回高个位数，ZYN美国量价齐升'),'零售与消费出海')
   self.assertEqual(sector_for('安踏体育26Q3交流更新【国金纺服】'),'零售与消费出海')
