@@ -1,18 +1,18 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-02T17:07:30+08:00",
+  "generatedAt": "2026-11-02T17:12:15.265+08:00",
   "industries": [
     {
       "id": "hotel",
       "name": "酒店",
       "metric": "每间可售客房收入",
-      "value": 115.06705,
+      "value": 109.898147,
       "unit": "元",
       "precision": 2,
-      "change": 2.979241584039083,
+      "change": 2.808406307094291,
       "changeLabel": "同比",
-      "period": "2026W43 · 2026-10-25",
-      "asOf": "2026-10-25",
+      "period": "2026W44 · 2026-11-01",
+      "asOf": "2026-11-01",
       "freshnessDays": 14,
       "source": "酒店之家 / 仓库周度样本",
       "sourceFile": "data/hotel_industry_weekly.csv",
@@ -54,7 +54,7 @@
       "id": "dining",
       "name": "餐饮",
       "metric": "全国餐饮收入",
-      "value": 4544.0,
+      "value": 4544,
       "unit": "亿元",
       "precision": 0,
       "change": 1.1,
@@ -71,8 +71,8 @@
     {
       "sector": "酒店经营",
       "title": "酒店量价",
-      "summary": "全国 RevPAR 为 115.1 元，同比 +3.0%。",
-      "asOf": "2026-10-25",
+      "summary": "全国 RevPAR 为 109.9 元，同比 +2.8%。",
+      "asOf": "2026-11-01",
       "href": "industry.html#hotel"
     },
     {
