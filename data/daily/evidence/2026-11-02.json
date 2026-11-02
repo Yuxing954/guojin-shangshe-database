@@ -1,0 +1,2349 @@
+{
+  "date": "2026-11-02",
+  "checkedAt": "2026-11-02T18:10:21+08:00",
+  "windowStart": "2026-10-30T18:00:00+08:00",
+  "cutoff": "2026-11-02T18:00:00+08:00",
+  "announcementMonitoring": {
+    "checkedAt": "2026-11-02T10:08:32.136Z",
+    "windowStart": "2026-10-30T18:00:00+08:00",
+    "cutoff": "2026-11-02T18:00:00+08:00",
+    "coverageFile": "data/coverage-companies.json",
+    "evidenceFile": "data/daily/evidence/2026-11-02-announcement-searches.json",
+    "status": "partial",
+    "excludedCompanies": [
+      {
+        "company": "若羽臣",
+        "code": "003010.SZ",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily",
+        "checkedAt": "2026-11-02T10:08:32.136Z"
+      },
+      {
+        "company": "乖宝宠物",
+        "code": "301498.SZ",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily",
+        "checkedAt": "2026-11-02T10:08:32.136Z"
+      },
+      {
+        "company": "中宠股份",
+        "code": "002891.SZ",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily",
+        "checkedAt": "2026-11-02T10:08:32.136Z"
+      },
+      {
+        "company": "依依股份",
+        "code": "001206.SZ",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily",
+        "checkedAt": "2026-11-02T10:08:32.136Z"
+      },
+      {
+        "company": "佩蒂股份",
+        "code": "300673.SZ",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily",
+        "checkedAt": "2026-11-02T10:08:32.136Z"
+      },
+      {
+        "company": "源飞宠物",
+        "code": "001222.SZ",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily",
+        "checkedAt": "2026-11-02T10:08:32.136Z"
+      },
+      {
+        "company": "影石创新",
+        "code": "688775.SH",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily",
+        "checkedAt": "2026-11-02T10:08:32.136Z"
+      },
+      {
+        "company": "安克创新",
+        "code": "300866.SZ",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily",
+        "checkedAt": "2026-11-02T10:08:32.136Z"
+      },
+      {
+        "company": "乐舒适",
+        "code": "2698.HK",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily",
+        "checkedAt": "2026-11-02T10:08:32.136Z"
+      },
+      {
+        "company": "石头科技",
+        "code": "688169.SH",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily",
+        "checkedAt": "2026-11-02T10:08:32.136Z"
+      },
+      {
+        "company": "绿联科技",
+        "code": "301606.SZ",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily",
+        "checkedAt": "2026-11-02T10:08:32.136Z"
+      },
+      {
+        "company": "赛维时代",
+        "code": "301381.SZ",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily",
+        "checkedAt": "2026-11-02T10:08:32.136Z"
+      },
+      {
+        "company": "致欧科技",
+        "code": "301376.SZ",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily",
+        "checkedAt": "2026-11-02T10:08:32.136Z"
+      },
+      {
+        "company": "SHEIN",
+        "code": "0625.HK",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily",
+        "checkedAt": "2026-11-02T10:08:32.136Z"
+      }
+    ],
+    "checkedCompanies": [
+      {
+        "company": "泡泡玛特",
+        "code": "9992.HK",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "泡泡玛特 9992.HK 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "泡泡玛特 9992.HK 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "名创优品",
+        "code": "9896.HK",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "名创优品 9896.HK 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "名创优品 9896.HK 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "思摩尔国际",
+        "code": "6969.HK",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "思摩尔国际 6969.HK 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "思摩尔国际 6969.HK 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "中烟香港",
+        "code": "6055.HK",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "中烟香港 6055.HK 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "中烟香港 6055.HK 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "小商品城",
+        "code": "600415.SH",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "小商品城 600415.SH 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "小商品城 600415.SH 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "特海国际",
+        "code": "9658.HK",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "特海国际 9658.HK 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "特海国际 9658.HK 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "周大福",
+        "code": "1929.HK",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "周大福 1929.HK 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "周大福 1929.HK 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "老铺黄金",
+        "code": "6181.HK",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "老铺黄金 6181.HK 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "老铺黄金 6181.HK 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "老凤祥",
+        "code": "600612.SH",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "老凤祥 600612.SH 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "老凤祥 600612.SH 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "六福集团",
+        "code": "0590.HK",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "六福集团 0590.HK 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "六福集团 0590.HK 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "菜百股份",
+        "code": "605599.SH",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "菜百股份 605599.SH 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "菜百股份 605599.SH 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "周大生",
+        "code": "002867.SZ",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "周大生 002867.SZ 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "周大生 002867.SZ 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "潮宏基",
+        "code": "002345.SZ",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "潮宏基 002345.SZ 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "潮宏基 002345.SZ 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "周六福",
+        "code": "6168.HK",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "周六福 6168.HK 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "周六福 6168.HK 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "爱美客",
+        "code": "300896.SZ",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "爱美客 300896.SZ 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "爱美客 300896.SZ 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "巨子生物",
+        "code": "2367.HK",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "巨子生物 2367.HK 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "巨子生物 2367.HK 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "毛戈平",
+        "code": "1318.HK",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "毛戈平 1318.HK 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "毛戈平 1318.HK 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "珀莱雅",
+        "code": "603605.SH",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "珀莱雅 603605.SH 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "珀莱雅 603605.SH 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "上美股份",
+        "code": "2145.HK",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "上美股份 2145.HK 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "上美股份 2145.HK 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "华熙生物",
+        "code": "688363.SH",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "华熙生物 688363.SH 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "华熙生物 688363.SH 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "贝泰妮",
+        "code": "300957.SZ",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "贝泰妮 300957.SZ 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "贝泰妮 300957.SZ 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "上海家化",
+        "code": "600315.SH",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "上海家化 600315.SH 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "上海家化 600315.SH 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "丸美生物",
+        "code": "603983.SH",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "丸美生物 603983.SH 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "丸美生物 603983.SH 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "林清轩",
+        "code": "2657.HK",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "林清轩 2657.HK 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "林清轩 2657.HK 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "水羊股份",
+        "code": "300740.SZ",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "水羊股份 300740.SZ 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "水羊股份 300740.SZ 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "福瑞达",
+        "code": "600223.SH",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "福瑞达 600223.SH 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "福瑞达 600223.SH 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "锦波生物",
+        "code": "920982.BJ",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "锦波生物 920982.BJ 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "bse.cn",
+              "cninfo.com.cn"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "锦波生物 920982.BJ 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "中国中免",
+        "code": "601888.SH",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "中国中免 601888.SH 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "中国中免 601888.SH 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "url": "https://paper.cnstock.com/html/2026-10/31/content_2285676.htm",
+            "method": "company-signed-statutory-original-readback",
+            "status": "relevant_text_verified",
+            "checkedAt": "2026-11-02T18:10:21+08:00",
+            "evidenceFile": "data/daily/evidence/2026-11-02.json"
+          }
+        ]
+      },
+      {
+        "company": "王府井",
+        "code": "600859.SH",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "王府井 600859.SH 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "王府井 600859.SH 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "上海机场",
+        "code": "600009.SH",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "上海机场 600009.SH 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "上海机场 600009.SH 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "携程集团-S",
+        "code": "9961.HK",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "携程集团-S 9961.HK 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "携程集团-S 9961.HK 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "同程旅行",
+        "code": "0780.HK",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "同程旅行 0780.HK 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "同程旅行 0780.HK 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "华住集团-S",
+        "code": "1179.HK",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "华住集团-S 1179.HK 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "华住集团-S 1179.HK 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "亚朵",
+        "code": "ATAT.O",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "亚朵 ATAT.O 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "sec.gov"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "亚朵 ATAT.O 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "锦江酒店",
+        "code": "600754.SH",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "锦江酒店 600754.SH 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "锦江酒店 600754.SH 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "url": "https://paper.cnstock.com/html/2026-10/31/content_2285374.htm",
+            "method": "company-signed-statutory-original-readback",
+            "status": "relevant_text_verified",
+            "checkedAt": "2026-11-02T18:10:21+08:00",
+            "evidenceFile": "data/daily/evidence/2026-11-02.json"
+          }
+        ]
+      },
+      {
+        "company": "首旅酒店",
+        "code": "600258.SH",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "首旅酒店 600258.SH 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "首旅酒店 600258.SH 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "宋城演艺",
+        "code": "300144.SZ",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "宋城演艺 300144.SZ 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "宋城演艺 300144.SZ 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "长白山",
+        "code": "603099.SH",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "长白山 603099.SH 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "长白山 603099.SH 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "陕西旅游",
+        "code": "603402.SH",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "陕西旅游 603402.SH 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "陕西旅游 603402.SH 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "黄山旅游",
+        "code": "600054.SH",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "黄山旅游 600054.SH 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "黄山旅游 600054.SH 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "众信旅游",
+        "code": "002707.SZ",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "众信旅游 002707.SZ 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "众信旅游 002707.SZ 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "峨眉山A",
+        "code": "000888.SZ",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "峨眉山A 000888.SZ 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "峨眉山A 000888.SZ 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "香港中旅",
+        "code": "0308.HK",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "香港中旅 0308.HK 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "香港中旅 0308.HK 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "君亭酒店",
+        "code": "301073.SZ",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "君亭酒店 301073.SZ 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "君亭酒店 301073.SZ 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "九华旅游",
+        "code": "603199.SH",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "九华旅游 603199.SH 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "九华旅游 603199.SH 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "天目湖",
+        "code": "603136.SH",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "天目湖 603136.SH 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "天目湖 603136.SH 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "蜜雪集团",
+        "code": "2097.HK",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "蜜雪集团 2097.HK 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "蜜雪集团 2097.HK 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "百胜中国",
+        "code": "9987.HK",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "百胜中国 9987.HK 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "百胜中国 9987.HK 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "海底捞",
+        "code": "6862.HK",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "海底捞 6862.HK 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "海底捞 6862.HK 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "古茗",
+        "code": "1364.HK",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "古茗 1364.HK 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "古茗 1364.HK 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "瑞幸咖啡",
+        "code": "LKNCY.OO",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "瑞幸咖啡 LKNCY.OO 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "sec.gov"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "瑞幸咖啡 LKNCY.OO 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "小菜园",
+        "code": "0999.HK",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "小菜园 0999.HK 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "小菜园 0999.HK 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "茶百道",
+        "code": "2555.HK",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "茶百道 2555.HK 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "茶百道 2555.HK 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "沪上阿姨",
+        "code": "2589.HK",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "沪上阿姨 2589.HK 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "沪上阿姨 2589.HK 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "达势股份",
+        "code": "1405.HK",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "达势股份 1405.HK 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "hkexnews.hk"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "达势股份 1405.HK 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "重庆百货",
+        "code": "600729.SH",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "重庆百货 600729.SH 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "重庆百货 600729.SH 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "永辉超市",
+        "code": "601933.SH",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "永辉超市 601933.SH 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "永辉超市 601933.SH 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "红旗连锁",
+        "code": "002697.SZ",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "红旗连锁 002697.SZ 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "红旗连锁 002697.SZ 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "家家悦",
+        "code": "603708.SH",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "家家悦 603708.SH 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "家家悦 603708.SH 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      },
+      {
+        "company": "孩子王",
+        "code": "301078.SZ",
+        "status": "partial_original_lists_not_fully_verified",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "sources": [
+          {
+            "q": "孩子王 301078.SZ 公告 2026-11-02 2026-10-31 2026-10-30",
+            "domains": [
+              "cninfo.com.cn",
+              "sse.com.cn",
+              "szse.cn"
+            ],
+            "recency": 4,
+            "method": "official-domain-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          },
+          {
+            "q": "孩子王 301078.SZ 公司官网 投资者关系 最新公告 2026年11月2日",
+            "recency": 4,
+            "method": "company-IR-discovery-search",
+            "receipt": "data/daily/evidence/2026-11-02-announcement-searches.json"
+          }
+        ]
+      }
+    ],
+    "failedCompanies": [
+      {
+        "company": "泡泡玛特",
+        "code": "9992.HK",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "名创优品",
+        "code": "9896.HK",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "思摩尔国际",
+        "code": "6969.HK",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "中烟香港",
+        "code": "6055.HK",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "小商品城",
+        "code": "600415.SH",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "特海国际",
+        "code": "9658.HK",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "周大福",
+        "code": "1929.HK",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "老铺黄金",
+        "code": "6181.HK",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "老凤祥",
+        "code": "600612.SH",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "六福集团",
+        "code": "0590.HK",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "菜百股份",
+        "code": "605599.SH",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "周大生",
+        "code": "002867.SZ",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "潮宏基",
+        "code": "002345.SZ",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "周六福",
+        "code": "6168.HK",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "爱美客",
+        "code": "300896.SZ",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "巨子生物",
+        "code": "2367.HK",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "毛戈平",
+        "code": "1318.HK",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "珀莱雅",
+        "code": "603605.SH",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "上美股份",
+        "code": "2145.HK",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "华熙生物",
+        "code": "688363.SH",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "贝泰妮",
+        "code": "300957.SZ",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "上海家化",
+        "code": "600315.SH",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "丸美生物",
+        "code": "603983.SH",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "林清轩",
+        "code": "2657.HK",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "水羊股份",
+        "code": "300740.SZ",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "福瑞达",
+        "code": "600223.SH",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "锦波生物",
+        "code": "920982.BJ",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "中国中免",
+        "code": "601888.SH",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "王府井",
+        "code": "600859.SH",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "上海机场",
+        "code": "600009.SH",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "携程集团-S",
+        "code": "9961.HK",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "同程旅行",
+        "code": "0780.HK",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "华住集团-S",
+        "code": "1179.HK",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "亚朵",
+        "code": "ATAT.O",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "锦江酒店",
+        "code": "600754.SH",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "首旅酒店",
+        "code": "600258.SH",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "宋城演艺",
+        "code": "300144.SZ",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "长白山",
+        "code": "603099.SH",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "陕西旅游",
+        "code": "603402.SH",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "黄山旅游",
+        "code": "600054.SH",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "众信旅游",
+        "code": "002707.SZ",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "峨眉山A",
+        "code": "000888.SZ",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "香港中旅",
+        "code": "0308.HK",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "君亭酒店",
+        "code": "301073.SZ",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "九华旅游",
+        "code": "603199.SH",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "天目湖",
+        "code": "603136.SH",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "蜜雪集团",
+        "code": "2097.HK",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "百胜中国",
+        "code": "9987.HK",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "海底捞",
+        "code": "6862.HK",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "古茗",
+        "code": "1364.HK",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "瑞幸咖啡",
+        "code": "LKNCY.OO",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "小菜园",
+        "code": "0999.HK",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "茶百道",
+        "code": "2555.HK",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "沪上阿姨",
+        "code": "2589.HK",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "达势股份",
+        "code": "1405.HK",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "重庆百货",
+        "code": "600729.SH",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "永辉超市",
+        "code": "601933.SH",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "红旗连锁",
+        "code": "002697.SZ",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "家家悦",
+        "code": "603708.SH",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      },
+      {
+        "company": "孩子王",
+        "code": "301078.SZ",
+        "checkedAt": "2026-11-02T10:08:32.136Z",
+        "reason": "已检索法定披露与IR；原始列表完整性或部分候选正文尚未全部核实，不代表无公告。"
+      }
+    ]
+  },
+  "companyAnnouncements": [
+    {
+      "company": "锦江酒店",
+      "code": "600754.SH",
+      "title": "2026年第三季度报告",
+      "category": "定期报告",
+      "publishedAt": "2026-10-31",
+      "timePrecision": "date",
+      "summary": "2026Q3收入38.7765亿元、同比增长4.39%，归母净利润5.1007亿元、增长35.88%，扣非净利润4.8875亿元、增长13.43%；前三季度经营现金净流入33.6020亿元、增长20.45%。",
+      "impact": "直营与渠道提效增强经营韧性；归母与扣非增幅差异需要结合非经常性损益判断。",
+      "source": "公司董事会·上海证券报法定披露",
+      "sourceType": "company",
+      "url": "https://paper.cnstock.com/html/2026-10/31/content_2285374.htm",
+      "checkedAt": "2026-11-02T18:10:21+08:00",
+      "evidenceFile": "data/daily/evidence/2026-11-02.json",
+      "verified": true
+    },
+    {
+      "company": "中国中免",
+      "code": "601888.SH",
+      "title": "2026年第三季度报告及前三季度利润分配方案",
+      "category": "定期报告及股东回报",
+      "publishedAt": "2026-10-31",
+      "timePrecision": "date",
+      "summary": "2026Q3归母净利润5.636212亿元、同比增长24.64%，主营业务毛利率提升1.30个百分点；董事会10月30日通过每股0.40元含税分红方案，按披露总股本测算8.311187亿元，占前三季度归母利润22.65%，尚待实施。",
+      "impact": "盈利改善与现金回报并行；分红为董事会已通过方案，不属于已支付金额。",
+      "source": "公司董事会·上海证券报法定披露",
+      "sourceType": "company",
+      "url": "https://paper.cnstock.com/html/2026-10/31/content_2285676.htm",
+      "checkedAt": "2026-11-02T18:10:21+08:00",
+      "evidenceFile": "data/daily/evidence/2026-11-02.json",
+      "verified": true
+    }
+  ],
+  "announcementOriginalChecks": [
+    {
+      "url": "https://paper.cnstock.com/html/2026-10/31/content_2285374.htm",
+      "location": "公司董事会署名正文670—715行",
+      "facts": "2026Q3收入38.7765亿元、同比增长4.39%，归母净利润5.1007亿元、增长35.88%，扣非净利润4.8875亿元、增长13.43%；前三季度经营现金净流入33.6020亿元、增长20.45%。",
+      "judgment": "直营与渠道提效增强经营韧性；归母与扣非增幅差异需要结合非经常性损益判断。",
+      "precision": "保留10月31日法定刊登日期；董事会签署10月30日不冒充精确披露时间。"
+    },
+    {
+      "url": "https://paper.cnstock.com/html/2026-10/31/content_2285676.htm",
+      "location": "公司署名报告672—675行",
+      "facts": "2026Q3归母净利润5.636212亿元、同比增长24.64%，主营业务毛利率提升1.30个百分点；董事会10月30日通过每股0.40元含税分红方案，按披露总股本测算8.311187亿元，占前三季度归母利润22.65%，尚待实施。",
+      "judgment": "盈利改善与现金回报并行；分红为董事会已通过方案，不属于已支付金额。"
+    },
+    {
+      "company": "王府井",
+      "code": "600859.SH",
+      "url": "https://paper.cnstock.com/html/2026-11/02/content_2286056.htm",
+      "announcementId": "临2026-079",
+      "publishedAt": "2026-11-02",
+      "facts": "截至10月31日累计回购92.79万股，占0.08%，金额890.25万元；原计划5000万—1亿元，上限15.60元/股，注销用途。",
+      "judgment": "月度例行进展，未取得新增与上期对比的重大变化，不优先列入。"
+    }
+  ],
+  "pendingAnnouncementCandidates": [
+    {
+      "company": "王府井",
+      "code": "600859.SH",
+      "publishedAt": "2026-10-31",
+      "timePrecision": "date",
+      "title": "三季报及第三季度经营数据",
+      "url": "https://www.sse.com.cn/assortment/stock/list/info/announcement/index.shtml?productId=600859",
+      "result": "原始正文部分表格为图像，或原始列表未完整回读；相关关键数据未完成原文逐项核验，不列为已核实公告。"
+    },
+    {
+      "company": "上海机场",
+      "code": "600009.SH",
+      "publishedAt": "2026-10-31",
+      "timePrecision": "date",
+      "title": "第三季度报告",
+      "url": "https://www.sse.com.cn/assortment/stock/list/info/announcement/index.shtml?productId=600009",
+      "result": "原始正文部分表格为图像，或原始列表未完整回读；相关关键数据未完成原文逐项核验，不列为已核实公告。"
+    },
+    {
+      "company": "老凤祥",
+      "code": "600612.SH",
+      "publishedAt": "2026-10-31",
+      "timePrecision": "date",
+      "title": "第三季度报告、经营数据及B股回购预案",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-10-31/600612_20261031_IRDG.pdf",
+      "result": "原始正文部分表格为图像，或原始列表未完整回读；相关关键数据未完成原文逐项核验，不列为已核实公告。"
+    },
+    {
+      "company": "丸美生物",
+      "code": "603983.SH",
+      "publishedAt": "2026-10-31",
+      "timePrecision": "date",
+      "title": "第三季度报告及经营数据",
+      "url": "https://www.cninfo.com.cn/new/disclosure/stock?orgId=9900029039&stockCode=603983",
+      "result": "原始正文部分表格为图像，或原始列表未完整回读；相关关键数据未完成原文逐项核验，不列为已核实公告。"
+    },
+    {
+      "company": "永辉超市",
+      "code": "601933.SH",
+      "publishedAt": "2026-10-31",
+      "timePrecision": "date",
+      "title": "第三季度报告",
+      "url": "https://www.yonghui.com.cn/html/web/touzizheguanxi/dingqibaogao/index.html",
+      "result": "原始正文部分表格为图像，或原始列表未完整回读；相关关键数据未完成原文逐项核验，不列为已核实公告。"
+    }
+  ],
+  "industryChecks": {
+    "status": "partial",
+    "windowStart": "2026-11-01T18:00:00+08:00",
+    "cutoff": "2026-11-02T18:00:00+08:00",
+    "sectorsChecked": [
+      "酒店",
+      "旅游出行",
+      "免税",
+      "餐饮",
+      "零售",
+      "黄金珠宝",
+      "教育人服",
+      "消费宏观"
+    ],
+    "checks": [
+      {
+        "url": "https://www.stats.gov.cn/sj/zxfb/",
+        "result": "最新PMI真实首发10月31日，早于本期24小时。"
+      },
+      {
+        "url": "https://swt.fujian.gov.cn/xxgk/jgzn/jgcs/scyxdjc/scyx/202610/t20261019_7237977.htm",
+        "result": "11月2日转载9月社零，原始首发为10月19日，不按转载时间入栏。"
+      },
+      {
+        "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-pmi-reports/pmi/september/",
+        "result": "10月ISM制造业预约11月2日美国东部10点，晚于北京时间18点截止。"
+      }
+    ],
+    "limitation": "搜索及部分原始来源访问/首次发布时间未核实，不宣称全行业无更新；酒店CSV新入库时间不替代首次发布时间。"
+  },
+  "earningsChecks": {
+    "sourceFile": "data/earnings-calendar.json",
+    "calendarUpdatedAt": "2026-10-12T03:23:54.024Z",
+    "range": "2026-11-02至2026-11-05",
+    "storedReservationsInWindow": [],
+    "verifiedUpcoming": [
+      {
+        "company": "百胜中国",
+        "code": "9987.HK",
+        "period": "2026Q3",
+        "date": "2026-11-03",
+        "status": "预约披露（美股盘前）",
+        "source": "百胜中国IR",
+        "url": "https://ir.yumchina.com/news-releases/news-release-details/yum-china-report-third-quarter-2026-financial-results",
+        "checkedAt": "2026-11-02T18:10:21+08:00",
+        "evidenceFile": "data/daily/evidence/2026-11-02.json"
+      },
+      {
+        "company": "瑞幸咖啡",
+        "code": "LKNCY.OO",
+        "period": "2026Q3",
+        "date": "2026-11-03",
+        "status": "预约披露（美股盘前）",
+        "source": "瑞幸咖啡IR",
+        "url": "https://investor.luckincoffee.com/news-releases/news-release-details/luckin-coffee-announce-third-quarter-2026-financial-results",
+        "checkedAt": "2026-11-02T18:10:21+08:00",
+        "evidenceFile": "data/daily/evidence/2026-11-02.json"
+      }
+    ],
+    "status": "stored_calendar_plus_company_IR_readback",
+    "readbacks": [
+      {
+        "url": "https://ir.yumchina.com/news-releases/news-release-details/yum-china-report-third-quarter-2026-financial-results",
+        "result": "公司原始公告正文已回读，11月3日美股盘前预约未见实际发布/取消。"
+      },
+      {
+        "url": "https://investor.luckincoffee.com/news-releases/news-release-details/luckin-coffee-announce-third-quarter-2026-financial-results",
+        "result": "公司原始公告正文已回读，11月3日美股盘前预约未见实际发布/取消。"
+      }
+    ]
+  },
+  "sourceCoverage": {
+    "latestMain": "e803bae303e5eb22e55ec3766b95d0808e4b37f0",
+    "researchSourceThrough": "2026-11-02T15:37:40.154+0800",
+    "researchLastRun": {
+      "runId": "2026-11-02-170322",
+      "sourceGroup": "88888142214212",
+      "sourceName": "水木调研纪要-2.0",
+      "previousCoverageTo": "2026-11-02T14:42:57.675+0800",
+      "coverageTo": "2026-11-02T15:37:40.154+0800",
+      "added": {
+        "views": 3,
+        "all_views": 3
+      },
+      "updated": 0,
+      "expiredRemoved": 0,
+      "sourceTopicIds": [
+        "14425124458155452",
+        "14425124458412282",
+        "14425124458448822",
+        "14425124458448152",
+        "22258452281514841",
+        "82258452281512512"
+      ],
+      "duplicateTopicIds": [],
+      "briefChanges": {
+        "added": 0,
+        "updated": 3,
+        "expiredRemoved": 0
+      },
+      "duplicates": 0,
+      "excludedTopics": [
+        {
+          "topicId": "45548245581111228",
+          "reason": "无可读观点正文"
+        },
+        {
+          "topicId": "55521425518848814",
+          "reason": "无可读观点正文"
+        },
+        {
+          "topicId": "82258452281145182",
+          "reason": "无可读观点正文"
+        },
+        {
+          "topicId": "82258452281145282",
+          "reason": "无可读观点正文"
+        },
+        {
+          "topicId": "45548245581158548",
+          "reason": "无可读观点正文"
+        },
+        {
+          "topicId": "14425124458181252",
+          "reason": "无可读观点正文"
+        }
+      ],
+      "pagination": {
+        "pages": 1,
+        "pageRowsFetched": 30,
+        "limit": 30,
+        "stoppedWhenPageReachedCoverage": true
+      },
+      "dedupCheck": {
+        "candidateKeys": 24,
+        "candidateBuckets": 24,
+        "algorithm": "sha256-utf8-v1"
+      },
+      "expiredBriefIds": []
+    },
+    "attachmentCatalog": {
+      "generatedAt": "2026-11-02T08:35:21.156Z",
+      "sourceThrough": "2026-11-02T15:37:40.154+0800",
+      "scan": {
+        "observedAt": "2026-11-02T08:35:21.156Z",
+        "sourceGroup": "88888142214212",
+        "sourceName": "水木调研纪要-2.0",
+        "topicsScanned": 510,
+        "topicsInWindow": 481,
+        "topicPages": 17,
+        "topicWindowFrom": "2026-10-31T00:00:00+08:00",
+        "topicWindowTo": "2026-11-02T15:37:40.154+0800",
+        "boundaryReachedBeforeWindow": true,
+        "attachmentsObserved": 448,
+        "uniqueFileIds": 448,
+        "duplicateFileIds": 0,
+        "newRecords": 254,
+        "existingRecordsRefreshed": 194,
+        "attachmentContentRead": false,
+        "sourceMetadataFields": [
+          "fileId",
+          "topicId",
+          "filename",
+          "extension",
+          "bytes",
+          "fileCreatedAt",
+          "topicCreatedAt",
+          "durationSeconds",
+          "downloadCount",
+          "sourceHash",
+          "source"
+        ],
+        "windowStart": "2026-10-31T00:00:00+08:00",
+        "windowEnd": "2026-11-02T08:35:21.156Z",
+        "windowEndDate": "2026-11-02",
+        "windowComplete": true,
+        "archiveHasMore": true
+      },
+      "coverageStatus": "pending",
+      "requestedWindowStart": "2026-10-30T18:00:00+08:00",
+      "requestedCutoff": "2026-11-02T18:00:00+08:00",
+      "missingIntervals": [
+        {
+          "start": "2026-10-30T18:00:00+08:00",
+          "end": "2026-10-31T00:00:00+08:00"
+        },
+        {
+          "start": "2026-11-02T16:35:21.156000+08:00",
+          "end": "2026-11-02T18:00:00+08:00"
+        }
+      ],
+      "publicationEligibility": {
+        "policy": "scan-observed-after-16",
+        "eligible": true,
+        "scanObservedAt": "2026-11-02T08:35:21.156Z",
+        "coverageComplete": false
+      }
+    },
+    "indexSha256": "706fa5db1dc803b7034486f069cff19ad9099e4586e41a7ad9548d99f9583833",
+    "librarySyncReceipt": {
+      "batchId": "metadata-706fa5db1dc803b7",
+      "sha256": "706fa5db1dc803b7034486f069cff19ad9099e4586e41a7ad9548d99f9583833",
+      "bytes": 9354845,
+      "recordCount": 3865,
+      "blobSha": "0b958efe49e38d23162024dd6c3dc6d5fa69e279",
+      "attachmentScan": {
+        "observedAt": "2026-11-02T08:35:21.156Z",
+        "sourceGroup": "88888142214212",
+        "sourceName": "水木调研纪要-2.0",
+        "topicsScanned": 510,
+        "topicsInWindow": 481,
+        "topicPages": 17,
+        "topicWindowFrom": "2026-10-31T00:00:00+08:00",
+        "topicWindowTo": "2026-11-02T15:37:40.154+0800",
+        "boundaryReachedBeforeWindow": true,
+        "attachmentsObserved": 448,
+        "uniqueFileIds": 448,
+        "duplicateFileIds": 0,
+        "newRecords": 254,
+        "existingRecordsRefreshed": 194,
+        "attachmentContentRead": false,
+        "sourceMetadataFields": [
+          "fileId",
+          "topicId",
+          "filename",
+          "extension",
+          "bytes",
+          "fileCreatedAt",
+          "topicCreatedAt",
+          "durationSeconds",
+          "downloadCount",
+          "sourceHash",
+          "source"
+        ],
+        "windowStart": "2026-10-31T00:00:00+08:00",
+        "windowEnd": "2026-11-02T08:35:21.156Z",
+        "windowEndDate": "2026-11-02",
+        "windowComplete": true,
+        "archiveHasMore": true
+      }
+    },
+    "attachmentContentRead": false,
+    "researchGap": {
+      "start": "2026-11-02T15:37:40.154+0800",
+      "end": "2026-11-02T18:00:00+08:00"
+    }
+  },
+  "scopeReview": {
+    "storedTextCandidatesInWindow": 377,
+    "includedSources": 19,
+    "attachmentMetadataReviewed": 448,
+    "additions": "6篇泛标题及团队标签漏筛，保留实质酒店/服务业/服饰品牌/航空客运；混合来源仅编辑范围内内容，原始全文保留。综合消费附件补3项，电话会议PDF没有纪要标签按研究资料登记。",
+    "excluded": "平台与跨境电商、食饮、医药、纯科技、造纸轻工及泛市场配置不入编辑正文。"
+  },
+  "originalHashes": {
+    "https://wx.zsxq.com/group/88888142214212/topic/22258452258182441": "d18157ffc46ff346570c887d6241f5c04e328b04dfa6dc1a506083791a187b21",
+    "https://wx.zsxq.com/group/88888142214212/topic/14425124514881842": "34c434d13b55e0f940c7e4324acacaff7d4ab2e57eee33eaa5720eafb7be87de",
+    "https://wx.zsxq.com/group/88888142214212/topic/82258458185584152": "a92459ce41de4f7e409e33cfaf5d1a5cc8d0f3299611b0e3fb2c21f1b5854c0e",
+    "https://wx.zsxq.com/group/88888142214212/topic/82258458415881182": "285b3ec1bad708dfe69bce3884b82b27bf938d52c7025eba58d13101c0fd3623",
+    "https://wx.zsxq.com/group/88888142214212/topic/22258452251512821": "46119df2f97cd2abac5532d5a5b024cdc1d3a3b9de1e486459407cf4f571eec5",
+    "https://wx.zsxq.com/group/88888142214212/topic/82258452818155412": "53337bf6eba173aefcea1edd8759b7f50903e2497fbe6d84cb3eecaddc673312",
+    "https://wx.zsxq.com/group/88888142214212/topic/22258452818821811": "d08719a06f9682f0585c7a060d39ebfe75c02f07781447585921f460a6061854",
+    "https://wx.zsxq.com/group/88888142214212/topic/22258452844555141": "8918bf24c2f8ce83808db46d523b3faaf1ba7290b28cefc876f7277653faff1e",
+    "https://wx.zsxq.com/group/88888142214212/topic/82258452822815452": "47172e7f6f8be4644b6b598442dcc1596710858f301eaf157a566b1516470812",
+    "https://wx.zsxq.com/group/88888142214212/topic/45548245825224488": "4576baafbd93b1298e844507eb8adbe60edbeb2a02317a96d16897a25e47d3bd",
+    "https://wx.zsxq.com/group/88888142214212/topic/14425124514282112": "a75745f4bc94452054620ac1d81afdb7d6fbebaa0086f1641d611295769aedf0",
+    "https://wx.zsxq.com/group/88888142214212/topic/82258452585422452": "7840a48cc2b2a99dce47829e1c693794296f287ca1228eab51a0b45335a3c9b7",
+    "https://wx.zsxq.com/group/88888142214212/topic/45548245481441158": "480dbaa000844e88bc7486c32353738d42f5066d9b910c9653168ec13d1af2e4",
+    "https://wx.zsxq.com/group/88888142214212/topic/22258458185582551": "ff4a16a96f01ed1e8dd3181f1a5453469307b630616c23dbb8f27848dab384fc",
+    "https://wx.zsxq.com/group/88888142214212/topic/22258452585124111": "8f2ed9dbbb5b5dab9a1f71458cc28018f69f6b5a3b56444f5fe6bde72b6f363e",
+    "https://wx.zsxq.com/group/88888142214212/topic/82258458118111522": "d42628caa34a982e722cd9675779251ed8f06aea2be8dfa29b7bf1aa48c8397e",
+    "https://wx.zsxq.com/group/88888142214212/topic/22258458118248111": "1c023dd48004fa4074db15f72d4865969e6da23bf728ea912a251a532e20fd2b",
+    "https://wx.zsxq.com/group/88888142214212/topic/45548248525852518": "5f8491715f44b95704f86e78e5c3ec0bc54d0ec5fd382dd06948fb1c0a19a3b1",
+    "https://wx.zsxq.com/group/88888142214212/topic/55521421541882424": "c7520281e51359a4b360bafea04674202e1f285552b815966dfcda6d9940ae9c"
+  },
+  "candidateCount": 19,
+  "focusCount": 13,
+  "publicationAuthorization": {
+    "requestedBy": "user",
+    "policy": "2026-10-23 当日16点后真实扫描即可部署",
+    "eligible": true,
+    "coverageComplete": false
+  },
+  "publicationStatus": "published",
+  "validation": {
+    "unitTestsPassed": 64,
+    "editorialAndResources": [
+      "2026-11-02",
+      "2026-11-01",
+      "2026-10-31"
+    ],
+    "render": {
+      "summaryPoints": 3,
+      "cards": 13,
+      "originals": 19,
+      "summaryVisible": true,
+      "originalsCollapsed": true,
+      "singleDetailsLayer": true,
+      "copyConsistent": true,
+      "earningsLast": true
+    },
+    "siteCheck": {
+      "dailyEntrypoint": "passed",
+      "javascriptSyntax": 108,
+      "fullSite": "existing_company_database_stylesheet_adapter_ordering_failure"
+    }
+  }
+}

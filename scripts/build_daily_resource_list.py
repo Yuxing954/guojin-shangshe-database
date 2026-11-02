@@ -15,13 +15,14 @@ def allowed_attachment(r):
  if re.search(r'中国汽车|China Automobiles|汽车行业|汽车零部件|消费电子|房地产',name,re.I):return False
  if re.search(r'LendAPI|嵌入式金融|金融科技',name,re.I):return False
  if is_ecommerce_topic(name) or EXCLUDE.search(name):return False
- consumer_overview = re.search(r'商社|中国消费[:：]|消费(?:价值|行业|周周谈)|消费业绩前瞻|四季度消费的估值切换|性价比消费时代',name)
+ consumer_overview = re.search(r'商社|中国消费[:：]|消费(?:价值|行业|周周谈)|消费业绩前瞻|四季度消费的估值切换|性价比消费时代|大消费联合电话会议|11月消费投资展望|消费超额收益如何选',name)
  if consumer_overview and not re.search(r'消费电子|房地产|地产建筑',name):return True
  return bool(sector_for(name) or set(r.get('sectors',[])) & {'hotel','tourism','dutyfree','gold','retail','dining','education','hr'})
 
 def attachment_kind(r):
  if r['format']=='audio':return 'audio'
  name=r['name']
+ if '大消费联合电话会议' in name and '纪要' not in name:return 'reports'
  # Bilingual broker research recaps remain research material, not meeting minutes.
  if re.search(r'China Consumer|Expert Call Takeaways',name,re.I):return 'reports'
  return 'minutes' if re.search(r'交流|纪要|电话会|调研|闭门',name) else 'reports'

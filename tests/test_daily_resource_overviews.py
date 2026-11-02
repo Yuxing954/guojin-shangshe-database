@@ -6,6 +6,10 @@ import build_daily_resource_list as resources
 from build_daily_report import stamp
 
 class OverviewResourcesTests(unittest.TestCase):
+ def test_generic_consumer_call_remains_title_only_research(self):
+  for name in ['大消费联合电话会议20261101.pdf','11月消费投资展望20261101.pdf','2027与2016的同与不同-消费超额收益如何选20261101.pdf']:
+   self.assertTrue(resources.allowed_attachment({'name':name,'sectors':['other']}))
+  self.assertEqual(resources.attachment_kind({'name':'大消费联合电话会议20261101.pdf','format':'document'}),'reports')
  def test_overview_titles_do_not_require_sector_tags(self):
   for name in ['资金再均衡下商社投资机会20261016.pdf','消费行业底部推荐20261015.mp3','中国消费：黄金周现实检验-专家电话会要点.pdf','四季度消费的估值切换与布局窗口20261025.pdf','性价比消费时代-关注-纯过日子-组合20261025.pdf','消费周周谈20261026.pdf']:
    self.assertTrue(resources.allowed_attachment({'name':name,'sectors':['other']}))

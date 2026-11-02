@@ -3,6 +3,12 @@ from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 from daily_scope import sector_for,title_for,published_for,substantive_segment
 class ScopeTests(unittest.TestCase):
+ def test_mixed_service_and_brand_overviews(self):
+  self.assertEqual(sector_for('【国金商社｜Q3业绩验证逻辑，重点推荐酒店板块】'),'酒店旅游')
+  self.assertEqual(sector_for('【东方社服】从社服板块26Q3业绩表现看接下来板块配置思路','酒店免税教育餐饮'),'商社综合')
+  self.assertEqual(sector_for('航空及跨境物流三季报总结：潜龙在渊','春秋航空经营与航油成本'),'酒店旅游')
+  self.assertEqual(sector_for('周观点：三季报高端服饰表现亮眼，上游制造领先中游'),'零售与消费出海')
+  self.assertIsNone(sector_for('26Q3商社重点细分业绩综述—跨境电商','跨境品牌卖家增长'))
  def test_short_earnings_revision_and_passenger_rail(self):
   text='中国中免补充：\n\n1、业绩超预期源于折扣收窄与品牌返利。\n\n2、出于谨慎选择，暂不修改全年盈利预期。\n\n3、未来催化：市内店政策、海棠湾3期、苹果折叠屏等'
   self.assertTrue(substantive_segment('中国中免补充：',text))

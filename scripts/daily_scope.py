@@ -37,6 +37,10 @@ def substantive_segment(title,body):
  return len(text)>=80 or (len(text)>=40 and bool(sector_for(title,body)) and bool(re.search(r'\d+(?:\.\d+)?\s*(?:%|亿|万|家|港元|美元|元)',text)) and bool(re.search(r'减持|增持|回购|经营|收入|利润|门店|GMV',text,re.I)))
 
 def sector_for(title,body=''):
+ if re.search(r'国金商社.*Q3业绩验证逻辑.*酒店',title):return '酒店旅游'
+ if re.search(r'社服板块26Q3业绩表现|社服零售行业三季报综述',title) and sum(x in body for x in ('酒店','免税','教育','餐饮'))>=3:return '商社综合'
+ if re.search(r'纺织服装行业2027年投资策略|三季报高端服饰表现亮眼',title):return '零售与消费出海'
+ if title.startswith('航空及跨境物流三季报总结') and '春秋航空' in body:return '酒店旅游'
  # Research team names do not determine sector; remove bracketed broker headings.
  subject=re.sub(r'【[^】]*(?:食饮|传媒|轻工|商社|消费|纺织服装珠宝|纺服)[^】]*】','',title_for(title,body))
  if EXCLUDE.search(subject) or is_ecommerce_topic(subject) or re.search(r'航空照明|航空航天|航空发动机|航材制造',subject):return None
