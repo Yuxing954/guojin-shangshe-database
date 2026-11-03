@@ -7,7 +7,7 @@ from build_daily_report import stamp
 
 class OverviewResourcesTests(unittest.TestCase):
  def test_generic_consumer_call_remains_title_only_research(self):
-  for name in ['大消费联合电话会议20261101.pdf','11月消费投资展望20261101.pdf','2027与2016的同与不同-消费超额收益如何选20261101.pdf']:
+  for name in ['布局消费-选哪些赛道-20261102.pdf','消费-掘金3季报业绩总结-国金证券20261102.mp3','掘金3季报业绩总结电话会议（消费）20261102.mp3','大消费联合电话会议20261101.pdf','11月消费投资展望20261101.pdf','2027与2016的同与不同-消费超额收益如何选20261101.pdf']:
    self.assertTrue(resources.allowed_attachment({'name':name,'sectors':['other']}))
   self.assertEqual(resources.attachment_kind({'name':'大消费联合电话会议20261101.pdf','format':'document'}),'reports')
  def test_overview_titles_do_not_require_sector_tags(self):

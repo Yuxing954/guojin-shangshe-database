@@ -40,14 +40,16 @@ def sector_for(title,body=''):
  if re.search(r'国金商社.*Q3业绩验证逻辑.*酒店',title):return '酒店旅游'
  if re.search(r'社服板块26Q3业绩表现|社服零售行业三季报综述',title) and sum(x in body for x in ('酒店','免税','教育','餐饮'))>=3:return '商社综合'
  if re.search(r'纺织服装行业2027年投资策略|三季报高端服饰表现亮眼',title):return '零售与消费出海'
+ if '10月经济前瞻' in title and '预计10月社零' in body:return '商社综合'
+ if '关注航空左侧机会' in title and '客座率' in body and '票价' in body:return '酒店旅游'
  if title.startswith('航空及跨境物流三季报总结') and '春秋航空' in body:return '酒店旅游'
  # Research team names do not determine sector; remove bracketed broker headings.
  subject=re.sub(r'【[^】]*(?:食饮|传媒|轻工|商社|消费|纺织服装珠宝|纺服)[^】]*】','',title_for(title,body))
  if EXCLUDE.search(subject) or is_ecommerce_topic(subject) or re.search(r'航空照明|航空航天|航空发动机|航材制造',subject):return None
  # Component/contract electronics manufacturing is outside consumer operations.
  if any(x in subject for x in ('盈趣科技','电子制造行业','祥源新材','海天味业','晨光股份')):return None
- if re.search(r'力盛体育|中青旅|京沪高铁',subject):return '酒店旅游'
- if re.search(r'滔搏|比音勒芬|孩子王|朗姿股份|博士眼镜|SNOWPEAK|诺斯贝尔',subject,re.I):return '零售与消费出海'
+ if re.search(r'力盛体育|中青旅|京沪高铁|长白山',subject):return '酒店旅游'
+ if re.search(r'滔搏|比音勒芬|地素时尚|歌力思|孩子王|朗姿股份|博士眼镜|SNOWPEAK|诺斯贝尔',subject,re.I):return '零售与消费出海'
  if '长江传媒' in subject and '教材教辅' in body:return '教育人服'
  if '消费板块基金重仓梳理' in subject:return '商社综合'
  if '运动服饰行业' in subject:return '零售与消费出海'

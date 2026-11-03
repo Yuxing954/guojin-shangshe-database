@@ -3,6 +3,14 @@ from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 from daily_scope import sector_for,title_for,published_for,substantive_segment
 class ScopeTests(unittest.TestCase):
+ def test_airline_cost_and_brand_retail_candidates(self):
+  self.assertEqual(sector_for('【华创交运】美伊缓和预期，油价大幅回落，关注航空左侧机会','近7日客座率85%，票价同比增长7%'),'酒店旅游')
+  self.assertIsNone(sector_for('关注航空左侧机会','航空发动机订单增长'))
+  for title in ['地素时尚2026年三季报业绩会核心要点','歌力思20261102.mp3']:
+   self.assertEqual(sector_for(title),'零售与消费出海')
+  self.assertEqual(sector_for('长白山20261029.mp3'),'酒店旅游')
+  self.assertEqual(sector_for('10月经济前瞻','预计10月社零增速同比0.8%'),'商社综合')
+
  def test_mixed_service_and_brand_overviews(self):
   self.assertEqual(sector_for('【国金商社｜Q3业绩验证逻辑，重点推荐酒店板块】'),'酒店旅游')
   self.assertEqual(sector_for('【东方社服】从社服板块26Q3业绩表现看接下来板块配置思路','酒店免税教育餐饮'),'商社综合')
