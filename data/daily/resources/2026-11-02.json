@@ -5,23 +5,23 @@
   "cutoff": "2026-11-02T18:00:00+08:00",
   "sourceThrough": "2026-11-02T15:37:40.154+0800",
   "attachmentCatalog": {
-    "generatedAt": "2026-11-03T08:31:58.140Z",
-    "sourceThrough": "2026-11-03T15:00:50.336+0800",
+    "generatedAt": "2026-11-04T08:32:00.491Z",
+    "sourceThrough": "2026-11-04T16:29:35.473+0800",
     "scan": {
-      "observedAt": "2026-11-03T08:31:58.140Z",
+      "observedAt": "2026-11-04T08:32:00.491Z",
       "sourceGroup": "88888142214212",
       "sourceName": "水木调研纪要-2.0",
-      "topicsScanned": 690,
-      "topicsInWindow": 647,
-      "topicPages": 23,
-      "topicWindowFrom": "2026-11-01T00:00:00+08:00",
-      "topicWindowTo": "2026-11-03T15:00:50.336+0800",
+      "topicsScanned": 780,
+      "topicsInWindow": 741,
+      "topicPages": 26,
+      "topicWindowFrom": "2026-11-02T00:00:00+08:00",
+      "topicWindowTo": "2026-11-04T16:29:35.473+0800",
       "boundaryReachedBeforeWindow": true,
-      "attachmentsObserved": 541,
-      "uniqueFileIds": 541,
+      "attachmentsObserved": 664,
+      "uniqueFileIds": 664,
       "duplicateFileIds": 0,
-      "newRecords": 270,
-      "existingRecordsRefreshed": 270,
+      "newRecords": 210,
+      "existingRecordsRefreshed": 337,
       "attachmentContentRead": false,
       "sourceMetadataFields": [
         "fileId",
@@ -36,9 +36,9 @@
         "sourceHash",
         "source"
       ],
-      "windowStart": "2026-11-01T00:00:00+08:00",
-      "windowEnd": "2026-11-03T08:31:58.140Z",
-      "windowEndDate": "2026-11-03",
+      "windowStart": "2026-11-02T00:00:00+08:00",
+      "windowEnd": "2026-11-04T08:32:00.491Z",
+      "windowEndDate": "2026-11-04",
       "windowComplete": true,
       "archiveHasMore": true
     },
@@ -121,7 +121,7 @@
     "publicationEligibility": {
       "policy": "scan-observed-after-16",
       "eligible": true,
-      "scanObservedAt": "2026-11-03T08:31:58.140Z",
+      "scanObservedAt": "2026-11-04T08:32:00.491Z",
       "coverageComplete": true
     },
     "usedHistoricalScan": true
@@ -331,9 +331,9 @@
   },
   "policy": "仅依据已入库元数据列出标题、发布时间和来源主题；未下载、读取或转写附件，不把研究报告标为纪要。",
   "attachmentBackfill": {
-    "at": "2026-11-03T17:58:23+08:00",
+    "at": "2026-11-04T18:03:31+08:00",
     "originalCutoff": "2026-11-02T18:00:00+08:00",
-    "indexGeneratedAt": "2026-11-03T08:31:58.140Z",
-    "previousIndexGeneratedAt": "2026-11-02T08:35:21.156Z"
+    "indexGeneratedAt": "2026-11-04T08:32:00.491Z",
+    "previousIndexGeneratedAt": "2026-11-03T08:31:58.140Z"
   }
 }
