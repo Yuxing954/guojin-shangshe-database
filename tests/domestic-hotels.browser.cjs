@@ -24,7 +24,7 @@ async function csv(page,selector){const event=page.waitForEvent('download');if(!
    for(let i=0;i<3;i++){const plot=await p.evaluate(id=>domPlotData[id],'dh-chart-'+i);assert.equal(plot.opt.mode,await p.locator('#oh-display').inputValue());assert.equal(plot.opt.valueStyle,'line');assert.equal(plot.rows.length,qs.length);for(let qi=0;qi<plot.rows.length;qi++){assert.equal(plot.rows[qi].values[0].value,source[qi].records[i]?.value??null);assert.equal(plot.rows[qi].values[0].change,source[qi].records[i]?.change??null);}}
   }
   await verifyPlot('jinjiang','全部','单季度');
-  await p.locator('#dh-chart-0 svg').focus();await p.keyboard.press('End');assert((await p.locator('.site-chart-tooltip:not([hidden])').innerText()).includes('26Q2'));await p.keyboard.press('Escape');
+  await p.locator('#dh-chart-0 svg').focus();await p.keyboard.press('End');assert((await p.locator('.site-chart-tooltip:not([hidden])').innerText()).includes('26Q3'));await p.keyboard.press('Escape');
   await setChartLabel(p.locator('#dh-chart-0').locator('..').locator('[data-chart-labels]'),true);assert(await p.locator('#dh-chart-0 .site-value-label').count()>0);
   await p.locator('.oh-kpi [data-source]').first().click();await p.locator('#oh-evidence[open]').waitFor();assert((await p.locator('#oh-evidence-body').innerText()).includes('PDF物理页码'));assert((await p.locator('#oh-evidence-body a').getAttribute('href')).startsWith('http'));await p.click('#oh-close');
   const exported=await csv(p,'#oh-export-view');assert.equal(exported.length,24);assert(exported.every(r=>r['样本']==='全部酒店'&&/Q[1-4]$/.test(r['原报告期'])&&r['原始网址'].startsWith('http')));
@@ -47,7 +47,7 @@ async function csv(page,selector){const event=page.waitForEvent('download');if(!
   const fx=await p.evaluate(()=>domPlotData['dh-chart-0']);assert(fx.rows.filter(r=>r.period.startsWith('25Q')).every(r=>r.values[0].value===null));assert(fx.rows.filter(r=>r.period.startsWith('26Q')).some(r=>r.values[0].value!==null));
   await p.click('[data-tab=details]');await p.fill('#oh-search','2026Q2 RevPAR');await p.locator('#oh-search').press('Tab');await p.locator('.dh-details').waitFor();assert((await csv(p,'#oh-export-view')).every(r=>r['币种/单位']==='USD'&&r['原报告期']==='2026Q2'&&r['指标']==='RevPAR'));
   await selectOnly(p,'btg');await p.locator('#oh-profile h2').filter({hasText:'首旅酒店'}).waitFor();await p.click('[data-tab=details]');await p.click('#oh-clear');await more();await p.selectOption('#oh-category','经济型');await p.selectOption('#oh-operation','直营');await p.selectOption('#oh-period','2025Q4');assert.equal(await p.locator('#oh-category').inputValue(),'经济型');assert.equal(await p.locator('#oh-operation').inputValue(),'直营');const detailCsv=await csv(p,'#oh-export-view');assert(detailCsv.length>0);assert(detailCsv.every(r=>r['档次/范围']==='经济型'&&r['经营模式']==='直营'));
-  assert.equal((await csv(p,'#oh-export-all')).length,7427);
+  assert.equal((await csv(p,'#oh-export-all')).length,manifest.count);
   await p.click('[data-tab=operating]');await p.click('#dh-reset');await openAll(p);await ready();assert(p.url().includes('company-database.html'));assert.equal(await p.locator('#oh-kind').inputValue(),'全部');await p.selectOption('#oh-kind','同店');assert((await p.locator('#oh-content').innerText()).includes('仅累计披露'));assert.equal((await p.evaluate(()=>domPlotData['dh-chart-0'])).rows.at(-1).values[0].value,null);
   await p.locator('#dh-chart-0 svg').focus();await p.keyboard.press('End');const peers=await p.locator('.site-chart-tooltip:not([hidden])').innerText();for(const c of manifest.companies)assert(peers.includes(c.name));await p.keyboard.press('Escape');
   for(const width of [1440,1024,768,390,320]){
@@ -57,7 +57,7 @@ async function csv(page,selector){const event=page.waitForEvent('download');if(!
    assert.equal(await p.locator('.oh-plot .site-chart-scroll').count(),0);
    await more();assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'filter overflow '+width);
   }
-  const failed=await context.newPage();await failed.route('**/data/companies/domestic-hotels/jinjiang.json',r=>r.fulfill({status:503,body:'unavailable'}));await failed.goto(base+'/company-database.html?company=jinjiang');await failed.locator('#oh-retry:not([hidden])').waitFor();await failed.unroute('**/data/companies/domestic-hotels/jinjiang.json');await failed.click('#oh-retry');await failed.locator('#dh-chart-2 svg').waitFor({state:'attached'});
+  const failed=await context.newPage();await failed.route('**/data/companies/domestic-hotels/jinjiang.json*',r=>r.fulfill({status:503,body:'unavailable'}));await failed.goto(base+'/company-database.html?company=jinjiang');await failed.locator('#oh-retry:not([hidden])').waitFor();await failed.unroute('**/data/companies/domestic-hotels/jinjiang.json*');await failed.click('#oh-retry');await failed.locator('#dh-chart-2 svg').waitFor({state:'attached'});
   assert.deepEqual(errors,[]);console.log('PASS: all hotels / single-quarter / YoY default, four primary controls, versioned links, deterministic company and cohort transitions, true missing periods and FX gaps, source/CSV7427, persistent detail filters, charts and labels, mobile widths, retry.');
  }finally{await browser.close();server.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;server.close();});
