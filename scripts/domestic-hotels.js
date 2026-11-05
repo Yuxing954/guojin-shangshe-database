@@ -86,7 +86,7 @@
   history.replaceState(null,'',u);window.HotelWorkspace?.remember();
  }
  async function loadCompany(c){
-  if(!cache.has(c.id)){const promise=D.json(c.file).then(d=>{if(d.rows.length!==c.count)throw Error(c.name+'数据条数不匹配');d.rows=d.rows.map((r,i)=>({...r,id:c.id+'-'+i,company:c.name,companyId:c.id,evidence:d.sources[r.source]}));return d;}).catch(e=>{cache.delete(c.id);throw e;});cache.set(c.id,promise);}
+  if(!cache.has(c.id)){const promise=D.json(c.file+'?v=20261105q3').then(d=>{if(d.rows.length!==c.count)throw Error(c.name+'数据条数不匹配');d.rows=d.rows.map((r,i)=>({...r,id:c.id+'-'+i,company:c.name,companyId:c.id,evidence:d.sources[r.source]}));return d;}).catch(e=>{cache.delete(c.id);throw e;});cache.set(c.id,promise);}
   return cache.get(c.id);
  }
  function chart(series,qs,idx,title){
@@ -172,7 +172,7 @@
  }
  async function init(){
   try{
-   manifest=await D.json('data/companies/domestic-hotels.json');normalize();
+   manifest=await D.json('data/companies/domestic-hotels.json?v=20261105q3');normalize();
    {
     $('oh-companies').innerHTML=manifest.companies.map(c=>CompanyWorkspace.companyButton(c)).join('');
     document.querySelectorAll('[data-company]').forEach(b=>b.onclick=()=>{const id=b.dataset.company;if(state.peers.includes(id)){state.peers=state.peers.filter(x=>x!==id);}else state.peers.push(id);resetDimensions();choose(state.peers[0]);});
