@@ -49,7 +49,7 @@
   const repair=typeof load==='function'?load('market_sync_repair_files'):null;
   if(repair){
     const repo='Yuxing954/guojin-shangshe-database';
-    const paths=new Set(['scripts/market_sync_bridge.js','scripts/test_market_sync_bridge.mjs','docs/market-sync-v2.md']);
+    const paths=new Set(['scripts/market_sync_bridge.js','scripts/test_market_sync_bridge.mjs','docs/market-sync-v2.md','.github/workflows/build-research-recent.yml']);
     const decode=v=>{if(v.isError)throw new Error(JSON.stringify(v).slice(0,500));const s=v.structuredContent;if(s)return typeof s.content==='string'?s.content:s;const t=v.content?.find(x=>x.type==='text')?.text;if(!t||t==='Action completed.')throw new Error('Connector payload missing');return t;};
     const call=async(name,args)=>{if(!allowed.has(name))throw new Error('Unexpected connector tool');return decode(await tools[name](args));};
     const obj=v=>typeof v==='string'?JSON.parse(v):v;

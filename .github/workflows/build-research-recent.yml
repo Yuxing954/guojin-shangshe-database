@@ -14,6 +14,7 @@ on:
       - "scripts/research_sources.py"
       - "scripts/build_research_shards.py"
       - "scripts/*market_sync*.mjs"
+      - "scripts/market_sync_bridge.js"
       - "scripts/sync_market_views.mjs"
       - "scripts/test_market_sync_receipt.py"
       - "data/research/updates/manifest.json"
@@ -93,7 +94,7 @@ jobs:
 
       - name: Test resumable market-view updater
         if: steps.dutyfree.outputs.only != 'true'
-        run: node --test scripts/test_market_sync.mjs
+        run: node --test --test-concurrency=1 scripts/test_market_sync.mjs scripts/test_market_sync_bridge.mjs
 
       - name: Test export validation receipt
         if: steps.dutyfree.outputs.only != 'true'
