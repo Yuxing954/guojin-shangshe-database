@@ -43,6 +43,8 @@ def sector_for(title,body=''):
  if '10月经济前瞻' in title and '预计10月社零' in body:return '商社综合'
  if '关注航空左侧机会' in title and '客座率' in body and '票价' in body:return '酒店旅游'
  if title.startswith('航空及跨境物流三季报总结') and '春秋航空' in body:return '酒店旅游'
+ if '恒科大涨' in title and '阿里巴巴' in body and '美团' in body:return None
+ if '关注航空左侧机会' in title and '春秋' in body and '航油成本' in body:return '酒店旅游'
  # Research team names do not determine sector; remove bracketed broker headings.
  subject=re.sub(r'【[^】]*(?:食饮|传媒|轻工|商社|消费|纺织服装珠宝|纺服)[^】]*】','',title_for(title,body))
  if EXCLUDE.search(subject) or is_ecommerce_topic(subject) or re.search(r'航空照明|航空航天|航空发动机|航材制造',subject):return None

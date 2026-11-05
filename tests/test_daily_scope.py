@@ -3,6 +3,10 @@ from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 from daily_scope import sector_for,title_for,published_for,substantive_segment
 class ScopeTests(unittest.TestCase):
+ def test_platform_rally_and_airline_cost_note(self):
+  self.assertIsNone(sector_for('恒科大涨超5%【申万零售社服】','推荐阿里巴巴、美团，平台电商修复'))
+  self.assertEqual(sector_for('【华创交运】油价大幅下挫，关注航空左侧机会！','春秋Q3实现利润，缓解航油成本压力'),'酒店旅游')
+
  def test_airline_cost_and_brand_retail_candidates(self):
   self.assertEqual(sector_for('【华创交运】美伊缓和预期，油价大幅回落，关注航空左侧机会','近7日客座率85%，票价同比增长7%'),'酒店旅游')
   self.assertIsNone(sector_for('关注航空左侧机会','航空发动机订单增长'))

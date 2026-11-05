@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 2,
+  "date": "2026-11-05",
+  "windowStart": "2026-11-04T18:00:00+08:00",
+  "cutoff": "2026-11-05T18:00:00+08:00",
+  "sourceThrough": "2026-11-05T13:21:13.832+0800",
+  "attachmentCatalog": {
+    "generatedAt": "2026-11-04T08:32:00.491Z",
+    "sourceThrough": "2026-11-04T16:29:35.473+0800",
+    "scan": {
+      "observedAt": "2026-11-04T08:32:00.491Z",
+      "sourceGroup": "88888142214212",
+      "sourceName": "水木调研纪要-2.0",
+      "topicsScanned": 780,
+      "topicsInWindow": 741,
+      "topicPages": 26,
+      "topicWindowFrom": "2026-11-02T00:00:00+08:00",
+      "topicWindowTo": "2026-11-04T16:29:35.473+0800",
+      "boundaryReachedBeforeWindow": true,
+      "attachmentsObserved": 664,
+      "uniqueFileIds": 664,
+      "duplicateFileIds": 0,
+      "newRecords": 210,
+      "existingRecordsRefreshed": 337,
+      "attachmentContentRead": false,
+      "sourceMetadataFields": [
+        "fileId",
+        "topicId",
+        "filename",
+        "extension",
+        "bytes",
+        "fileCreatedAt",
+        "topicCreatedAt",
+        "durationSeconds",
+        "downloadCount",
+        "sourceHash",
+        "source"
+      ],
+      "windowStart": "2026-11-02T00:00:00+08:00",
+      "windowEnd": "2026-11-04T08:32:00.491Z",
+      "windowEndDate": "2026-11-04",
+      "windowComplete": true,
+      "archiveHasMore": true
+    },
+    "coverageStatus": "pending",
+    "requestedWindowStart": "2026-11-04T18:00:00+08:00",
+    "requestedCutoff": "2026-11-05T18:00:00+08:00",
+    "missingIntervals": [
+      {
+        "start": "2026-11-04T18:00:00+08:00",
+        "end": "2026-11-05T18:00:00+08:00"
+      }
+    ],
+    "publicationEligibility": {
+      "policy": "scan-observed-after-16",
+      "eligible": false,
+      "scanObservedAt": "2026-11-04T08:32:00.491Z",
+      "coverageComplete": false
+    }
+  },
+  "groups": {
+    "segments": [
+      {
+        "title": "【长江社服】酒店行业周度数据更新",
+        "publishedAt": "2026-11-05T12:51:12.272000+08:00",
+        "sector": "酒店旅游",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/14425121812215882"
+      },
+      {
+        "title": "[红包]【申万轻工】飞亚达：人形机器人减速器超预期，重视液冷期权，报表质地优异",
+        "publishedAt": "2026-11-05T11:46:41.648000+08:00",
+        "sector": "零售与消费出海",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/82258454124251852"
+      },
+      {
+        "title": "【华创交运】油价大幅下挫，关注航空左侧机会！",
+        "publishedAt": "2026-11-05T08:59:21.685000+08:00",
+        "sector": "酒店旅游",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/55521424425558114"
+      },
+      {
+        "title": "【国海商社】名创优品重点推荐",
+        "publishedAt": "2026-11-05T08:32:24.136000+08:00",
+        "sector": "零售与消费出海",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/55521424421544414"
+      }
+    ],
+    "minutes": [],
+    "audio": [],
+    "reports": []
+  },
+  "policy": "仅依据已入库元数据列出标题、发布时间和来源主题；未下载、读取或转写附件，不把研究报告标为纪要。"
+}
