@@ -2,7 +2,9 @@
 
 入口为 `scripts/sync_market_views.mjs`，核心为 `scripts/market_sync_core.mjs`。使用 Node.js 内置模块，不安装依赖；原始数据来自已登录的 `zsxq-cli`，GitHub 读写只通过当前会话的 GitHub 连接器。不能用个人令牌、git push 或未连接的 HTTP API 替代连接器。
 
-## 每小时执行
+## 每两小时执行
+
+当前宿主为完整权限、禁止审批模式。桥接器沿用宿主现有权限启动，不附加权限提升参数；旧的本机权限提升启动与共享冲突回退说明不再适用于该模式。凭据仍由已登录 CLI 自行读取，GitHub 仍只由桥接器调用连接器。
 
 本机工作副本位于：
 `C:/Users/daiyu/Documents/Codex/2026-10-08/referenced-chatgpt-conversation-this-is-an-2/work/market-sync-rewrite`
@@ -28,7 +30,13 @@ node scripts/sync_market_views.mjs --bridge --state <本机工作副本>/state
 
 单次执行约8分钟切片；桥接等待90秒超时；构建/部署20分钟仍未验证就明确报告。相同失败只通知一次，权限、源数据或索引不完整时保留原覆盖点。进程锁避免两个更新同时写入。
 
+同步工作进程通过工具审批在本机执行，以读取已登录知识星球 CLI 的系统凭据库；受限进程可能错误报告 token missing，不应据此清除凭据或要求重新登录。GitHub 仓库读写仍仅通过桥接连接器。用户已明确授权只读 HTTPS 访问 `https://yuxing954.github.io/guojin-shangshe-database/data/research/archive/manifest.json`，仅用于正式站回执核验；GitHub 连接器不能读取该 github.io 地址。
+
+桥接响应由本机 Node 进程写入，不依赖 Node REPL 的 kernel assets 路径。启动前实际检查响应目录创建、写入和原子重命名，并检查六种连接器工具存在；失败即返回 bridge-preflight，不启动等待进程。每次发送的 Base64 代码不超过24000字符，普通正文按 UTF-8 字节数限长，保留临时文件加原子重命名。连接器响应若晚于90秒到达，后续运行可按完整请求签名复用已完成的固定提交文件读取和 Git 对象创建响应；main 分支状态和 update_ref 仍重新核对，不能复用迟到的旧分支状态。
+
 ## 语义复核格式
+
+大响应优先无损LZW压缩，压缩后更短时通过Base64传输并在本机还原、校验JSON，以减少跨工具写入次数；压缩传输每块14000字符，不适合压缩时按16000字节代码上限分块。
 
 `review.json`：
 
@@ -47,7 +55,7 @@ briefUpserts 是完整摘要对象，沿用现有字段 id、sector、date、sta
 
 ## 验证与成本
 
-运行 `node --test scripts/test_market_sync.mjs`；构建兼容测试为 `python scripts/test_research_market_views.py` 和 `python scripts/test_market_sync_receipt.py`。
+运行 `node --test scripts/test_market_sync.mjs scripts/test_market_sync_bridge.mjs`；桥接回归测试实际执行本机 Node，验证含空格及中文路径、Unicode 大响应、写入失败和工具缺失时不启动工作进程。构建兼容测试为 `python scripts/test_research_market_views.py` 和 `python scripts/test_market_sync_receipt.py`。
 
 构建器在 archive/manifest.json 写 marketViewsExport（路径、字节数、SHA256、Git blob SHA、coverageTo、totalRows）以及 indexedUpdateFiles。每次本地构建仍完整验证导出；连接器只比对这份小回执与父目录条目中的文件元数据，不请求大文件自身的contents接口（部分连接器会因此读取完整正文）。已校验分片按SHA256复用，不因无关main提交重读。不会生成或维护 market-views-recent-300.json。
 
