@@ -63,6 +63,15 @@ class ScopeTests(unittest.TestCase):
  def test_incidental_mention_is_not_sector(self):
   self.assertIsNone(sector_for('科技周报','酒店客户使用新款GPU'))
 
+ def test_november_six_consumer_operations_and_mixed_brands(self):
+  for title in ['Expedia 3Q26财报速评','Ralph Lauren FY27Q2业绩速览','健身房模式解构：供给端K型出清','【华泰消费|零食量贩】鸣鸣很忙策略会小范围交流要点']:
+   self.assertIsNotNone(sector_for(title))
+  self.assertIsNotNone(sector_for('[拳头]重点推荐【毛戈平】【安克创新】【菜百股份】-中信证券美妆商业','毛戈平线上双十一增长，菜百投资金需求释放。'))
+  self.assertIsNotNone(sector_for('出口中宏观数据跟踪261105','Costco零售额10月美国同店同比+8.1%。'))
+  self.assertIsNotNone(sector_for('自美伊冲突以来，鲜少汇报航空观点','航空淡季成本压力变化，观察春运。'))
+  self.assertIsNone(sector_for('安克创新经营更新','收入增长'))
+  self.assertIsNone(sector_for('关注高铁产业链的重大变化','铁科轨道、扣件、中国中车等设备更新。'))
+
  def test_hainan_fieldwork_and_airline_operations(self):
   self.assertEqual(sector_for('海南调研反馈10.15：','离岛免税客单价承压，即购即提影响转化。'),'免税')
   self.assertIsNone(sector_for('海南调研反馈','旅游地产与住宅建设'))

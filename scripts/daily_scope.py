@@ -37,6 +37,10 @@ def substantive_segment(title,body):
  return len(text)>=80 or (len(text)>=40 and bool(sector_for(title,body)) and bool(re.search(r'\d+(?:\.\d+)?\s*(?:%|亿|万|家|港元|美元|元)',text)) and bool(re.search(r'减持|增持|回购|经营|收入|利润|门店|GMV',text,re.I)))
 
 def sector_for(title,body=''):
+ if re.search(r'重点推荐【毛戈平】【安克创新】【菜百股份】',title) and '线上双十一' in body:return '零售与消费出海'
+ if '出口中宏观数据跟踪' in title and 'Costco零售额' in body:return '零售与消费出海'
+ if title.startswith('自美伊冲突以来') and '航空淡季' in body and '春运' in body:return '酒店旅游'
+ if re.search(r'Expedia|Ralph\s+Lauren|健身房模式解构|鸣鸣很忙',title,re.I):return '酒店旅游' if 'Expedia' in title else '零售与消费出海'
  if re.search(r'国金商社.*Q3业绩验证逻辑.*酒店',title):return '酒店旅游'
  if re.search(r'社服板块26Q3业绩表现|社服零售行业三季报综述',title) and sum(x in body for x in ('酒店','免税','教育','餐饮'))>=3:return '商社综合'
  if re.search(r'纺织服装行业2027年投资策略|三季报高端服饰表现亮眼',title):return '零售与消费出海'
