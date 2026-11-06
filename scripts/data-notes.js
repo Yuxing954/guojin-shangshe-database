@@ -2,6 +2,7 @@
   'use strict';
   const D=SiteData,esc=D.esc,$=id=>document.getElementById(id),cache=new Map();let request=0;
   const modules={
+    tools:{name:'投研工具',files:['data/research-tools.json'],docs:['docs/research-tools.md']},
     'hotel-annual':{name:'酒店年度结构',files:['data/hotel-association-annual.json'],docs:['docs/hotel-association-annual.md']},
     'hotel-hci':{name:'住宿业消费指数',files:['data/hotel-hci/observations.json'],docs:['docs/hotel-hci.md']},
     'national-retail':{name:'全国社零',files:['data/national-retail-notes.json','data/consumption-macro/observations.json','data/products/retail-monthly-insights.json'],docs:['docs/national-retail.md']},
@@ -29,6 +30,7 @@
   function sources(values){const rows=values.flatMap(x=>Array.isArray(x.sources)?x.sources:Object.values(x.sources||{}));return rows.length?'<article class="notes-panel"><h2>来源记录</h2><details><summary>'+rows.length+'条来源</summary>'+rows.map(s=>'<div class="notes-source-item">'+(D.link(s.url)?'<a target="_blank" rel="noopener" href="'+esc(D.link(s.url))+'">'+esc(s.name||s.title||s.sourceName||s.label||s.file||s.id||'来源')+' ↗</a>':esc(s.name||s.title||s.sourceName||s.label||s.file||s.id||'来源'))+'<p>'+esc([s.publisher||s.provider,s.quality,s.publishedAt?'发布 '+s.publishedAt:'',s.checkedAt?'核对 '+s.checkedAt:'',s.locator,s.note||s.notes||s.verification].filter(Boolean).join(' · '))+'</p></div>').join('')+'</details></article>':'';}
   function notes(id,values){
     const a=values[0]||{},out=[];
+    if(id==='tools')out.push(...(a.notes||[]));
     if(id==='hotel-annual')out.push(...(a.notes||[]));
     if(id==='national-retail')out.push(...(a.notes||[]));
     if(id==='regional-retail'){const history=values[3];out.push('分省分析：省级金额与同比来自省级记录；省内城市等权、中位数及分线仅使用同期间已取得城市样本，不能代替全省增速。省内趋势固定当前期城市，缺任一城市则断线。','统计口径仅累计与当月；1—2月合并作为当月视图中的独立期间，不与2月单月混算。趋势图数值默认全部显示，可关闭并保留选择；旧版最新值选择自动转为全部显示；多线支持选中突出、勾选显隐及合并/分开，分开视图统一纵轴。末端缺期时标注最后有效期间；缺期不连线。柱状图数值默认开启。','当月补算：同年相邻累计金额相减，只补缺失字段；官方当月值和已核验争议字段优先保留。只有累计同比而无金额、缺上月累计、季度/年度频率、统计范围变化或累计倒挂时不补算。','当月同比推算：分别用本期累计金额÷(1+累计同比/100)反推两期可比累计基数，再作差作为当月分母；仅在两期金额和同比完整、分母为正且与原有当月金额一致时采用。推算值含累计舍入误差，不能称为官方单月同比。','1—2月累计只转合并口径；没有独立1月金额时不拆1月或2月。测算标签、两期输入、公式和全部原始来源随CSV导出；原始文件不改。',...(history?.notes||a.notes||[]),...(values[1]?.notes||[]),...(values[2]?.notes||[]));for(const c of history?.coverage||a.coverage||[])out.push(c.name+'：历史起点 '+(c.start||'未取得')+'；金额至 '+(c.latestAmount||'未取得')+'；同比至 '+(c.latestYoy||'未取得')+'；'+c.reason);for(const c of a.conflicts||[])out.push('待核验 '+c.key+' '+c.field+'：'+c.retained+' / '+c.other+'。冲突字段留空，保留原始来源。');if(history?.importAudit)out.push('本轮实际回执 '+history.importAudit.receiptCount+'份；官方发布页及附件 '+history.importAudit.officialSources+'份；年度、限上、子口径或语义不明排除 '+history.importAudit.ignored.length+'条；争议核验记录 '+history.importAudit.conflicts.length+'条，详见完整记录。');}

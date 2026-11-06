@@ -2,6 +2,7 @@
   'use strict';
   const navigation=[['industry','industry.html','行业数据','chart'],['macro','macro.html?view=indicators','宏观数据','globe'],['companies','company-database.html','重点公司','building'],['research','research.html','观点纪要','document'],['quotes','quotes.html','实时行情','trend']];
   const pages={
+    'tools.html':['tools','投研工具'],
     'retail-monthly-product.html':['tools','社零月度产品'],
     'cpi-monthly-product.html':['tools','CPI月度产品'],
     'daily.html':['daily','国金商社日报'],
