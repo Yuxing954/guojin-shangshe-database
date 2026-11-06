@@ -12,7 +12,7 @@
       "usage": "ETF持有人 · 十大流通股东",
       "date": "行情 2026-11-04 · 持有人报告期 2025-12-31",
       "provider": "交易所 / 新浪 / 东方财富（项目聚合）",
-      "note": "原入口保留。持仓为定期披露；ETF间接持股与个股直接持股分开。meta.json报告期2025-12-31、对比期2025-06-30，不能把行情日期视为持仓报告期。",
+      "note": "持仓为定期披露；ETF间接持股与个股直接持股分开。meta.json报告期2025-12-31、对比期2025-06-30，不能把行情日期视为持仓报告期。",
       "evidence": [
         "https://h-jett.github.io/etf-radar/stock.html",
         "https://github.com/H-Jett/etf-radar/blob/main/docs/data/meta.json"
@@ -31,53 +31,6 @@
       "note": "观察池29只ETF；净申赎估算=份额日变动×当日单位净值。反映这些ETF的全市场申赎，无法识别汇金实际买卖或持仓；README仍写23只，以本次源站29只为准。",
       "evidence": [
         "https://github.com/wwww1998/national-team-etf-flow/blob/main/README.md"
-      ]
-    },
-    {
-      "id": "crowding",
-      "name": "市场与行业拥挤度",
-      "category": "拥挤度与风格",
-      "url": "https://qrq3838.github.io/a-share-market-sentiment-dashboard/",
-      "github": "https://github.com/qrq3838/a-share-market-sentiment-dashboard",
-      "codeStatus": "GitHub 页面与数据公开",
-      "usage": "成交集中度 · 行业成交占比 · 风格",
-      "date": "成交 2026-11-05 · 融资模块另列日期",
-      "provider": "Wind / 米筐 RQData（项目聚合）",
-      "note": "市场拥挤度=成交额前5%的沪深股票成交额/全部样本成交额；行业拥挤度为行业内前5%活跃沪深股票成交额/该行业正成交额，数量向上取整且至少1只。行业归属为申万2021一级历史回溯，剔除北交所。全历史分位随完整历史扩展重算，不适合直接当作当时可得回测信号。核验时主数据2026-11-05、总量融资2026-11-04、行业融资2026-10-29。",
-      "evidence": [
-        "https://qrq3838.github.io/a-share-market-sentiment-dashboard/#section-methodology",
-        "https://github.com/qrq3838/a-share-market-sentiment-dashboard/blob/main/README.md"
-      ]
-    },
-    {
-      "id": "etf-flow",
-      "name": "ETF申赎与资金流",
-      "category": "ETF资金",
-      "url": "https://owen434.github.io/broad-index-dashboard/etf_flow_dashboard.html",
-      "github": "https://github.com/Owen434/broad-index-dashboard",
-      "codeStatus": "GitHub 源码公开",
-      "usage": "宽基与行业ETF · 同类合并 · CSV",
-      "date": "数据 2026-11-05",
-      "provider": "沪深交易所份额；新浪行情；东方财富净值（项目转引）",
-      "note": "净申赎金额=份额变动×单位净值，不是二级市场成交净流入。页面历史分位是当日净申赎金额绝对值在此前120个交易日中的位置，最少40个样本；单日份额变动超50%视为折算置空，断档超5个交易日后的首点置空。申赎方向须结合正负号，不能只凭分位判断资金方向。",
-      "evidence": [
-        "https://owen434.github.io/broad-index-dashboard/etf_net_flow_calendar.html",
-        "https://github.com/Owen434/broad-index-dashboard/blob/main/README.md"
-      ]
-    },
-    {
-      "id": "futures",
-      "name": "股指期货会员持仓",
-      "category": "期指持仓",
-      "url": "https://owen434.github.io/broad-index-dashboard/cffex_net_position.html",
-      "github": "https://github.com/Owen434/broad-index-dashboard",
-      "codeStatus": "GitHub 源码公开",
-      "usage": "中信期货 · 前20会员 · 四品种",
-      "date": "数据 2026-11-05",
-      "provider": "中金所成交持仓排名（项目转引）",
-      "note": "展示IH/IF/IC/IM全部已披露合约合计的会员多空持仓及净变化；净持仓=多仓−空仓。多空排名分别披露，前20汇总不是全市场总持仓。经纪会员持仓含客户头寸，中信席位不能直接识别为国家队，也不能解释为单一机构方向。",
-      "evidence": [
-        "https://github.com/Owen434/broad-index-dashboard/blob/main/futures/cffex_net_position.py"
       ]
     },
     {
@@ -116,11 +69,8 @@
   "notes": [
     "核验日期为入口检查日期，不代表持续监控；数据日期是本次打开源站时所见的快照，后续以各模块原站日期为准。",
     "本站只提供外部工具入口，不同步、拼接或改写这些站点的数值。",
-    "国家队持仓：原入口保留。持仓为定期披露；ETF间接持股与个股直接持股分开。meta.json报告期2025-12-31、对比期2025-06-30，不能把行情日期视为持仓报告期。",
+    "国家队持仓：持仓为定期披露；ETF间接持股与个股直接持股分开。meta.json报告期2025-12-31、对比期2025-06-30，不能把行情日期视为持仓报告期。",
     "国家队ETF资金流：观察池29只ETF；净申赎估算=份额日变动×当日单位净值。反映这些ETF的全市场申赎，无法识别汇金实际买卖或持仓；README仍写23只，以本次源站29只为准。",
-    "市场与行业拥挤度：市场拥挤度=成交额前5%的沪深股票成交额/全部样本成交额；行业拥挤度为行业内前5%活跃沪深股票成交额/该行业正成交额，数量向上取整且至少1只。行业归属为申万2021一级历史回溯，剔除北交所。全历史分位随完整历史扩展重算，不适合直接当作当时可得回测信号。核验时主数据2026-11-05、总量融资2026-11-04、行业融资2026-10-29。",
-    "ETF申赎与资金流：净申赎金额=份额变动×单位净值，不是二级市场成交净流入。页面历史分位是当日净申赎金额绝对值在此前120个交易日中的位置，最少40个样本；单日份额变动超50%视为折算置空，断档超5个交易日后的首点置空。申赎方向须结合正负号，不能只凭分位判断资金方向。",
-    "股指期货会员持仓：展示IH/IF/IC/IM全部已披露合约合计的会员多空持仓及净变化；净持仓=多仓−空仓。多空排名分别披露，前20汇总不是全市场总持仓。经纪会员持仓含客户头寸，中信席位不能直接识别为国家队，也不能解释为单一机构方向。",
     "A股行业热力图：默认面积表示流通市值，颜色表示涨跌幅；可切市场、行业和收益区间，观察行业相对表现。热力图不等同于真实资金净流入，也不是单独计算的行业轮动因子。盘中刷新时间不是收盘数据日期。",
     "两融与波动率观测：未登录实测首页两融与波动率可用；融资免费窗口最近30个自然日，部分深度功能需Pro。杠杆渗透率=(融资余额+融券余额)/沪深流通市值；融资买入占比=融资买入额/全市场成交额。1/5/20日余额差不是融资买入额。VIX为源站根据股指期权链估算，部分日期为单期限近似，并非交易所官方VIX。未找到可核实的GitHub源码链接，不标注开源。"
   ],
@@ -136,27 +86,6 @@
       "name": "国家队ETF资金流",
       "url": "https://wwww1998.github.io/national-team-etf-flow/",
       "provider": "沪深交易所ETF份额与基金净值（项目转引）",
-      "checkedAt": "2026-11-06",
-      "note": "数据 2026-11-05；GitHub 源码公开"
-    },
-    {
-      "name": "市场与行业拥挤度",
-      "url": "https://qrq3838.github.io/a-share-market-sentiment-dashboard/",
-      "provider": "Wind / 米筐 RQData（项目聚合）",
-      "checkedAt": "2026-11-06",
-      "note": "成交 2026-11-05 · 融资模块另列日期；GitHub 页面与数据公开"
-    },
-    {
-      "name": "ETF申赎与资金流",
-      "url": "https://owen434.github.io/broad-index-dashboard/etf_flow_dashboard.html",
-      "provider": "沪深交易所份额；新浪行情；东方财富净值（项目转引）",
-      "checkedAt": "2026-11-06",
-      "note": "数据 2026-11-05；GitHub 源码公开"
-    },
-    {
-      "name": "股指期货会员持仓",
-      "url": "https://owen434.github.io/broad-index-dashboard/cffex_net_position.html",
-      "provider": "中金所成交持仓排名（项目转引）",
       "checkedAt": "2026-11-06",
       "note": "数据 2026-11-05；GitHub 源码公开"
     },
