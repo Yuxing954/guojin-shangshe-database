@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "checkedAt": "2026-11-07T10:29:42+00:00",
+  "checkedAt": "2026-11-07T11:22:58+00:00",
   "series": {
     "cn-ppi": {
       "start": "2016-01",
@@ -1251,18 +1251,5 @@
       "calendar": "原始发布频率"
     }
   },
-  "errors": [
-    {
-      "id": "cn-exports-monthly",
-      "errorType": "ValueError",
-      "errorCode": "indicator_not_found",
-      "reason": "来源未返回完全匹配的指标"
-    },
-    {
-      "id": "cn-imports-monthly",
-      "errorType": "ValueError",
-      "errorCode": "indicator_not_found",
-      "reason": "来源未返回完全匹配的指标"
-    }
-  ]
+  "errors": []
 }

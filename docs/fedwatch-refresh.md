@@ -32,3 +32,9 @@ const tables = await frame.locator('table').evaluateAll(nodes => nodes
 运行 `node --test tests/fedwatch-import.test.cjs tests/gold-macro.test.js tests/forecast-macro.test.cjs` 及相关宏观/黄金检查。历史导入测试的固定时点夹具只保留该时点之前的快照，不能把生产新快照视为测试时点的未来数据并误报；不放宽生产校验。检查所有会议、完整区间、零值/空白、CSV及窄屏。
 
 相关GitHub检查通过才合并，等待Pages并回读线上JSON、完整表和CSV。成功或确认无变化后才执行 `python update/macro_due.py --complete fedwatch federal-funds-futures`；失败不登记。清理任务临时标签，不改政策利率、指标定义、数据来源或其他模块。
+
+## 2026-11-07 父页懒加载修复
+
+父页的 iframe 使用 loading="lazy"，AEM 组件完成后才挂载。不能在父页 load 后立即因没有 iframe 宣告失败。先等待可见的 iframe[title="CME FedWatch Tool"]，以标准 scroll-to 滚动至工具，随后同步当前页面和子框架状态；已验证此操作能显示 Current、Probabilities 等菜单。初始页面的工具地址链接可能在组件挂载时被移除，不应反复点击旧引用。
+
+子框架加载后重新同步，再以最新 Probabilities 引用点击。若浏览器协作返回 frame not responding / unavailable，按工具要求 wait 后同步；仍不可用就保留历史并记录 browser_frame_unresponsive，不得改报 CME 服务故障、跳过协作权限或改用后端绕行。只读提取能看到 Current 表，不代表已取得完整概率与期货表。

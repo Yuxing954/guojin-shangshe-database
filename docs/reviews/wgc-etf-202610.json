@@ -1,0 +1,28 @@
+{
+  "status": "verified",
+  "verifiedAt": "2026-11-07",
+  "reason": "Public WGC report and existing WGC dataset use the same global physically backed ETF definitions, monthly USD net flows and month-end tonnes. Original HTML verified; prior period preserved.",
+  "source": {
+    "url": "https://www.gold.org/goldhub/research/gold-etfs-holdings-and-flows/2026/11",
+    "publishedAt": "2026-11-05",
+    "dataAsOf": "2026-10-31",
+    "originalReceiptSha256": "5150f33d9647e4b7eb146b77bb60e99e54189148042d07bcd2f96d3ae6f577db",
+    "retrieval": "http_original",
+    "evidencePath": "docs/reviews/evidence/wgc-etf-202610-web.txt",
+    "evidenceSha256": "67fada08c8d0dd0cfbccd2705749e220691bef8c3cc7d97221bd2470eb1e8e4d"
+  },
+  "candidates": [
+    {
+      "id": "etf-flows",
+      "value": 27,
+      "unit": "亿美元",
+      "periodEnd": "2026-10-31"
+    },
+    {
+      "id": "etf-holdings",
+      "value": 4275,
+      "unit": "吨",
+      "periodEnd": "2026-10-31"
+    }
+  ]
+}
