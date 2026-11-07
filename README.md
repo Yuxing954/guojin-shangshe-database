@@ -1,85 +1,57 @@
-# 国金商社·线上可视化数据库
+# 国金商社数据库
 
-消费零售、社会服务与电商行业的研究数据看板，覆盖酒店、免税、OTA、旅游、餐饮、教育、黄金珠宝、跨境电商、零售及人力资源等板块。
+消费零售与社会服务研究工作台。
 
-- 行业数据：[industry.html](./industry.html)；网站根地址默认进入此页，酒店、免税、黄金、餐饮四个板块直接展示完整数据并保留历史记录
-- 宏观数据：[macro.html](./macro.html)；中国17项、美国14项核心指标，以及消费专题和Polymarket重要预测，共用历史、来源、覆盖和CSV下载；[数据说明](./docs/macro-data.md) · [AI更新指引](./docs/macro-update-guide.md)
-- 消费专题：[consumption-macro.html](./consumption-macro.html)；归入宏观数据一级类目，精选8项消费指标，与核心页共用补充历史
-- 财报日历：[earnings.html](./earnings.html)；Choice MCP 财报日期；默认最近披露与未来安排，支持月 / 周、搜索行业、原文与历史；[数据口径与更新](./docs/earnings-workbench.md)
-- 公司数据：[companies.html](./companies.html)；公司搜索、估值与财务详情
-- 观点纪要：[research.html](./research.html)；公司与板块检索、近7天/30天筛选、站内观点阅读及纪要附件入口；区分纪要摘要、文档附件和未转写音频
-- 酒店周度产品：[hotel-weekly-product.html](./hotel-weekly-product.html)；选周、编辑点评、截图及导出PNG长图
-- 通用数据浏览器：[dashboard.html](./dashboard.html)
-- 各项指标旁标注源数据日期，摘要生成时间不代表上游数据已更新
-- 视觉规范：浅色 paper 主题；A 股惯例为涨红跌绿
-- AI 编辑规范：[AGENTS.md](./AGENTS.md)；界面默认少字，保留必要数据标识，避免说明段落和重复脚注
+**[打开正式站](https://yuxing954.github.io/guojin-shangshe-database/industry.html)** · [维护文档](docs/README.md) · [数据目录](data/README.md) · [脚本目录](scripts/README.md) · [编辑规范](AGENTS.md)
 
-## 数据范围
+## 网站入口
 
-| 类别 | 数据集 | 内容 |
-|---|---|---|
-| 行业高频 | 酒店、免税、黄金、餐饮 | OCC、ADR、RevPAR、离岛免税销售额、黄金价格、餐饮收入等经营指标，含同比及年初至今口径 |
-| 市场 | 覆盖标的本周行情、Wind 市场快照 | A 股、港股及美股覆盖标的行情与指数表现 |
-| 研究 | 市场观点、纪要文库 | 券商观点、调研纪要 |
-| 行业与公司 | 行业景气、业绩与财务、标的池与估值 | 月度景气指标、定期报告表现及估值跟踪 |
+| 板块 | 内容 | 页面 |
+| :--- | :--- | :--- |
+| 行业数据 | 酒店、免税、旅游、三峡游轮、餐饮 | [行业看板](https://yuxing954.github.io/guojin-shangshe-database/industry.html) |
+| 宏观数据 | 中美指标、消费专题、重要预测 | [宏观看板](https://yuxing954.github.io/guojin-shangshe-database/macro.html) |
+| 重点公司 | 国内与海外酒店上市公司 | [国内酒店](https://yuxing954.github.io/guojin-shangshe-database/company-database.html) · [海外酒店](https://yuxing954.github.io/guojin-shangshe-database/overseas-hotels.html) |
+| 观点纪要 | 商社观点、市场观点与纪要原件 | [研究资料库](https://yuxing954.github.io/guojin-shangshe-database/research.html) |
+| 实时行情 | 覆盖公司行情、伦敦金现 | [行情工作台](https://yuxing954.github.io/guojin-shangshe-database/quotes.html) |
+| 日历 | 财报披露与重要数据日程 | [日历](https://yuxing954.github.io/guojin-shangshe-database/earnings.html) |
 
-数据清单见 [data-manifest.json](./data-manifest.json)。根地址会自动跳转到行业数据；全站交互与数据口径见 [网站设计说明](./docs/website-design.md)。
+## 研究产品
 
-## 项目结构
+[酒店周度跟踪](https://yuxing954.github.io/guojin-shangshe-database/hotel-weekly-product.html) · [CPI 跟踪](https://yuxing954.github.io/guojin-shangshe-database/cpi-monthly-product.html) · [社零月度产品](https://yuxing954.github.io/guojin-shangshe-database/retail-monthly-product.html)
+
+## 仓库怎么找
 
 ```text
 .
-├── index.html          # 根地址兼容跳转至行业数据
-├── industry.html       # 行业选择、指标趋势与历史记录
-├── companies.html      # 公司目录、估值与财务详情
-├── hotel-weekly-product.html # 酒店周度产品与PNG长图导出
-├── research.html       # 观点与纪要中心
-├── earnings.html       # 财报日历
-├── dashboard.html      # 通用数据浏览器
-├── data-manifest.json  # 数据集目录
-├── data/               # CSV 数据表及市场快照
-├── update/             # 知识星球增量同步工具
-└── .workbuddy/skills/  # WorkBuddy 项目技能与自动化操作规程
+├── *.html               网页入口与旧链接兼容页面
+├── data/                业务数据、来源记录与研究分片
+├── scripts/             页面脚本、样式、数据构建与导入工具
+├── docs/                模块说明、口径与维护指引
+├── tests/               数据和浏览器回归检查
+├── update/              观点增量同步工具
+├── .github/workflows/   自动检查与构建任务
+├── data-manifest.json   通用数据浏览器的数据清单
+├── site.webmanifest     手机添加到主屏幕配置
+└── AGENTS.md            网站编辑约定
 ```
 
-## 数据来源与更新
+网页入口保留在根目录，避免改变已发布的网址。进入各目录后，先看该目录的 README。
 
-- 行情与财务：Wind 万得金融数据接口
-- 宏观与行业：国家统计局、行业协会、酒店之家（STR）等
-- 观点与纪要：券商研报、知识星球「水木调研纪要-2.0」
+## 常用维护
 
-更新节奏：
+| 工作 | 指引 |
+| :--- | :--- |
+| 酒店周度数据 | [酒店数据更新](docs/hotel-data-update.md) |
+| 国内 / 海外酒店季度数据 | [国内酒店](docs/domestic-hotels.md) · [海外酒店](docs/overseas-hotels.md) |
+| 离岛免税月度数据 | [月度更新](docs/dutyfree-monthly-refresh.md) |
+| 宏观数据 | [统一更新入口](docs/macro-update-guide.md) · [快速刷新](docs/macro-refresh-fast-path.md) |
+| 观点与纪要 | [纪要维护](docs/research-library.md) · [增量读取](docs/research-incremental-read.md) |
+| 页面和图表 | [网站说明](docs/site-presentation.md) · [图表交互](docs/chart-interactions.md) |
 
-- 行情数据按周刷新
-- 市场观点计划于每周一 08:00 更新
-- 行业经营数据依各数据源披露节奏更新
+## 数据与发布
 
-## 更新工具
+指标的统计期间、发布日期、来源和可比口径以对应记录为准。更新按各来源披露节奏进行，页面摘要生成时间不等于上游数据更新时间。
 
-`update/` 用于将知识星球的商社相关内容增量抓取、筛选、写入资料库并导出至本仓库。使用方式及依赖见 [update/README.md](./update/README.md)。
+修改后运行受影响模块的现有检查，再核对 GitHub Pages 部署结果。检查通过、合并完成和正式站发布分别确认。
 
-## WorkBuddy 项目技能
-
-项目内置 WorkBuddy Skill：[`guojin-shangshe-zsxq-sync`](./.workbuddy/skills/guojin-shangshe-zsxq-sync/SKILL.md)。
-
-该 skill 固化知识星球「水木调研纪要-2.0」双线同步流程：
-
-- **商社观点 / 精选线**：按商社关键词池筛选，写入资料库「商社·市场观点」表，并导出 `data/商社-市场观点.csv`。
-- **市场观点 / 段子线**：先剔除与商社观点重复的内容，再保留真正有信息量的调研纪要、行业观点和数据点评短文，导出 `data/全部-市场观点.csv`。
-- 两条线统一执行清洗、去重、按发布时间降序、GitHub 推送与回读验收。
-
-使用 WorkBuddy 时可直接说「更新商社观点和市场观点」或「按规则同步知识星球数据」。
-
-## 安全说明
-
-本仓库当前为**公开仓库**。请勿提交访问令牌、Cookie、私钥或任何可恢复的登录凭据。用于本地自动化的认证备份应仅保留在受控设备中，并加入 `.gitignore`。
-
-> 仅供研究与内部交流使用；使用者应自行核验数据的准确性和时效性。
-
-
-## 行业板块
-
-- [酒店](./industry.html#hotel)、[免税](./industry.html#dutyfree)、[黄金](./industry.html#gold)、[餐饮](./industry.html#dining)在行业页直接展示完整数据，历史指标折叠保留。
-- 餐饮包括餐饮收入、成本环境、门店、同店、客单与经营利润。出海已从网站板块和数据目录移除，旧数据仅留作存档，不参与行业构建。
-- [数据范围、口径与增量更新](./docs/sector-construction.md)。离线更新默认只整理已核验数据；Choice MCP 查询和公开来源刷新分别显式导入。
-
+本仓库公开；登录凭据、Cookie、令牌和私有同步回执保存在仓库外。

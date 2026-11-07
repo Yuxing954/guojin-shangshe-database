@@ -5,3 +5,15 @@ __pycache__/
 .env.*
 .codex/
 private-raw/
+
+# Local dependencies and generated verification output
+node_modules/
+.venv/
+venv/
+.pytest_cache/
+playwright-report/
+test-results/
+coverage/
+*.log
+.DS_Store
+Thumbs.db
