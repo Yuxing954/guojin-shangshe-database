@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "checkedAt": "2026-11-05T03:04:03+00:00",
+  "checkedAt": "2026-11-07T10:29:42+00:00",
   "series": {
     "cn-ppi": {
       "start": "2016-01",
@@ -218,8 +218,8 @@
     },
     "us-payroll": {
       "start": "2016-01",
-      "end": "2026-09",
-      "count": 129,
+      "end": "2026-10",
+      "count": 130,
       "requestedStart": "2016-01-01",
       "historyShort": false,
       "missingPeriods": [],
@@ -229,8 +229,8 @@
     },
     "us-earnings": {
       "start": "2016-01",
-      "end": "2026-09",
-      "count": 129,
+      "end": "2026-10",
+      "count": 130,
       "requestedStart": "2016-01-01",
       "historyShort": false,
       "missingPeriods": [],
@@ -273,8 +273,8 @@
     },
     "us-treasury10": {
       "start": "2016-01-04",
-      "end": "2026-11-04",
-      "count": 2711,
+      "end": "2026-11-06",
+      "count": 2713,
       "requestedStart": "2016-01-01",
       "historyShort": false,
       "missingPeriods": [],
@@ -455,8 +455,8 @@
     },
     "us-unemployment": {
       "start": "2016-01",
-      "end": "2026-09",
-      "count": 128,
+      "end": "2026-10",
+      "count": 129,
       "requestedStart": "2016-01-01",
       "historyShort": false,
       "missingPeriods": [],
@@ -1251,5 +1251,18 @@
       "calendar": "原始发布频率"
     }
   },
-  "errors": []
+  "errors": [
+    {
+      "id": "cn-exports-monthly",
+      "errorType": "ValueError",
+      "errorCode": "indicator_not_found",
+      "reason": "来源未返回完全匹配的指标"
+    },
+    {
+      "id": "cn-imports-monthly",
+      "errorType": "ValueError",
+      "errorCode": "indicator_not_found",
+      "reason": "来源未返回完全匹配的指标"
+    }
+  ]
 }
