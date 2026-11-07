@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-10-29",
+  "checkedAt": "2026-11-07",
   "policy": {
     "range": [
       3.75,
@@ -5407,11 +5407,11 @@
     {
       "id": "etf-flows",
       "name": "全球黄金ETF净流入",
-      "value": 100,
+      "value": 27,
       "unit": "亿美元",
-      "periodEnd": "2026-09-30",
-      "publishedAt": "2026-10-07",
-      "sourceId": "wgc-etf-202609",
+      "periodEnd": "2026-10-31",
+      "publishedAt": "2026-11-05",
+      "sourceId": "wgc-etf-202610",
       "basis": "monthly_net_flow",
       "note": "全球实物支持黄金ETF；金额是美元资金流。",
       "quality": "primary"
@@ -5419,13 +5419,13 @@
     {
       "id": "etf-holdings",
       "name": "全球黄金ETF持仓",
-      "value": 4256,
+      "value": 4275,
       "unit": "吨",
-      "periodEnd": "2026-09-30",
-      "publishedAt": "2026-10-07",
-      "sourceId": "wgc-etf-202609",
+      "periodEnd": "2026-10-31",
+      "publishedAt": "2026-11-05",
+      "sourceId": "wgc-etf-202610",
       "basis": "month_end_holdings",
-      "note": "9月持仓增加67吨；持仓量与资金流金额分开。",
+      "note": "10月持仓增加19吨；持仓量与资金流金额分开。",
       "quality": "primary"
     },
     {
@@ -5819,6 +5819,16 @@
       "sha256": "9bb067a9488844633c20f84b8de8de1cb564b6d92af45fddb86673dabb9abb3f",
       "quality": "primary",
       "retrieval": "curl_original"
+    },
+    {
+      "id": "wgc-etf-202610",
+      "name": "世界黄金协会 · 10月ETF统计",
+      "quality": "primary",
+      "url": "https://www.gold.org/goldhub/research/gold-etfs-holdings-and-flows/2026/11",
+      "sha256": "5150f33d9647e4b7eb146b77bb60e99e54189148042d07bcd2f96d3ae6f577db",
+      "retrieval": "web_primary_checked",
+      "checkedAt": "2026-11-07",
+      "publishedAt": "2026-11-05"
     }
   ],
   "fedwatchTables": [
@@ -7986,7 +7996,7 @@
   ],
   "fedwatchUpdate": {
     "status": "error",
-    "attemptedAt": "2026-10-29T00:27:06Z",
+    "attemptedAt": "2026-11-07T11:24:00Z",
     "sourceUrl": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html",
     "observedAt": null,
     "retrievedAt": "2026-10-27T00:38:27.021Z",
@@ -7994,19 +8004,19 @@
       "status": "error",
       "meetings": 10,
       "rateRanges": 9,
-      "error": "tool_embed_not_loaded"
+      "error": "browser_frame_unresponsive"
     },
     "fundFutures": {
       "status": "error",
       "contracts": 13,
-      "error": "tool_embed_not_loaded"
+      "error": "browser_frame_unresponsive"
     },
     "evidence": {
       "path": "data/macro/fedwatch-receipt-20261027T003827021Z.json",
       "sha256": "8eceefeb129c8f9478982221e9c8f2eb1292be3e5e55d244f8409a7d61d5b52b"
     },
-    "note": "本次父页已加载，但未挂载 QuikStrike iframe；没有完整表。概率及期货保留上次有效快照，源时点未提供。",
-    "error": "Connected Edge loaded the official CME parent page, but no QuikStrike iframe was present; complete probability and futures tables were unavailable. Previous valid snapshots were retained."
+    "note": "父页工具为懒加载；滚动至工具后已显示菜单，但浏览器协作返回子框架无响应，未能切换并读取完整两表；保留上次有效快照。",
+    "error": "QuikStrike lazy iframe loaded after scrolling; browser cooperation reported an unresponsive frame before Probabilities could be operated. Complete probability and futures tables were not acquired."
   },
   "seriesUpdate": {
     "attemptedAt": "2026-10-14T00:33:58Z",
@@ -8044,5 +8054,31 @@
         "receiptSha256": "fc73737b2f30fe8cb9ca8000507830d0ffeb1207f287e5a31ed98bc9b519f3b0"
       }
     ]
-  }
+  },
+  "flowHistory": [
+    {
+      "id": "etf-flows",
+      "name": "全球黄金ETF净流入",
+      "value": 100,
+      "unit": "亿美元",
+      "periodEnd": "2026-09-30",
+      "publishedAt": "2026-10-07",
+      "sourceId": "wgc-etf-202609",
+      "basis": "monthly_net_flow",
+      "note": "全球实物支持黄金ETF；金额是美元资金流。",
+      "quality": "primary"
+    },
+    {
+      "id": "etf-holdings",
+      "name": "全球黄金ETF持仓",
+      "value": 4256,
+      "unit": "吨",
+      "periodEnd": "2026-09-30",
+      "publishedAt": "2026-10-07",
+      "sourceId": "wgc-etf-202609",
+      "basis": "month_end_holdings",
+      "note": "9月持仓增加67吨；持仓量与资金流金额分开。",
+      "quality": "primary"
+    }
+  ]
 }

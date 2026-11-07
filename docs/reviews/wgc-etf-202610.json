@@ -1,31 +1,28 @@
 {
-  "status": "pending_review",
-  "reason": "WGC monthly report page replaces prior dataset source URL; verify mapping and publication evidence before production update.",
+  "status": "verified",
+  "verifiedAt": "2026-11-07",
+  "reason": "Public WGC report and existing WGC dataset use the same global physically backed ETF definitions, monthly USD net flows and month-end tonnes. Original HTML verified; prior period preserved.",
   "source": {
-    "name": "World Gold Council",
     "url": "https://www.gold.org/goldhub/research/gold-etfs-holdings-and-flows/2026/11",
     "publishedAt": "2026-11-05",
     "dataAsOf": "2026-10-31",
-    "retrievedAt": "2026-11-07T10:58:02Z",
-    "retrieval": "web_rendered_extract",
+    "originalReceiptSha256": "5150f33d9647e4b7eb146b77bb60e99e54189148042d07bcd2f96d3ae6f577db",
+    "retrieval": "http_original",
     "evidencePath": "docs/reviews/evidence/wgc-etf-202610-web.txt",
-    "evidenceSha256": "44e968f1caa5b92344ada45ba985b0794cb9cc5b1fb157fdedceffce3a5b1460"
+    "evidenceSha256": "67fada08c8d0dd0cfbccd2705749e220691bef8c3cc7d97221bd2470eb1e8e4d"
   },
   "candidates": [
     {
       "id": "etf-flows",
-      "periodEnd": "2026-10-31",
       "value": 27,
       "unit": "亿美元",
-      "basis": "monthly_net_flow"
+      "periodEnd": "2026-10-31"
     },
     {
       "id": "etf-holdings",
-      "periodEnd": "2026-10-31",
       "value": 4275,
       "unit": "吨",
-      "basis": "month_end_holdings"
+      "periodEnd": "2026-10-31"
     }
-  ],
-  "note": "Evidence hash covers the rendered tool extract, not original server HTML. Prior published values remain unchanged until source mapping review."
+  ]
 }

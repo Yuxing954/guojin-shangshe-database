@@ -313,6 +313,7 @@ def main():
         if spec.get('lookbackYears') and (full_history or not values.get(spec['id'],{}).get('observations')):start=str(int(args.cutoff[:4])-spec['lookbackYears'])+'-01-01'
         frequency={'monthly':'月度','quarterly':'季度','daily':'日度'}[spec['frequency']]
         query=f"{spec['originalName']}，来源{spec['publisher']}，{frequency}，{start}至{args.cutoff}区间，保留原始名称、精度和来源链接。"
+        if spec.get('queryHint'):query+=' '+spec['queryHint']
         if query in remote['receipts']:return normalize(remote['receipts'][query],spec,args.cutoff)
         for attempt in range(4):
             if attempt:time.sleep(20*attempt)
