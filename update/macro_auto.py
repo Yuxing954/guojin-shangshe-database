@@ -43,6 +43,16 @@ def choice_key(config_path=None):
         if candidate.is_file():config_path=candidate
     return configured_key(config_path)
 
+def choice_query(spec, start, cutoff):
+    if spec['id'] in ('cn-exports-monthly', 'cn-imports-monthly'):
+        names='中国:出口金额(按美元):当月同比(%)、中国:进口金额(按美元):当月同比(%)'
+        return f'仅查询海关总署两个原始月度指标：{names}。{start}至{cutoff}。不要返回金额当月值或累计值，不要返回人民币口径；如指标不存在明确说明。保留准确指标名、来源、单位、原始代码与链接。'
+    frequency={'monthly':'月度','quarterly':'季度','daily':'日度'}[spec['frequency']]
+    query=f"{spec['originalName']}，来源{spec['publisher']}，{frequency}，{start}至{cutoff}区间，保留原始名称、精度和来源链接。"
+    if spec.get('queryHint'):query+=' '+spec['queryHint']
+    return query
+
+
 def failure_info(exc):
     """Only reviewed error labels may enter published data; never exception prose."""
     messages={
@@ -311,9 +321,7 @@ def main():
         full_history=args.full_history or (args.due_only and args.cutoff[5:7]=='10' and spec['frequency']!='daily')
         start=due.incremental_start(spec,values.get(spec['id'],{}).get('observations',[]),full_history)
         if spec.get('lookbackYears') and (full_history or not values.get(spec['id'],{}).get('observations')):start=str(int(args.cutoff[:4])-spec['lookbackYears'])+'-01-01'
-        frequency={'monthly':'月度','quarterly':'季度','daily':'日度'}[spec['frequency']]
-        query=f"{spec['originalName']}，来源{spec['publisher']}，{frequency}，{start}至{args.cutoff}区间，保留原始名称、精度和来源链接。"
-        if spec.get('queryHint'):query+=' '+spec['queryHint']
+        query=choice_query(spec,start,args.cutoff)
         if query in remote['receipts']:return normalize(remote['receipts'][query],spec,args.cutoff)
         for attempt in range(4):
             if attempt:time.sleep(20*attempt)

@@ -99,4 +99,15 @@ class AutomaticMacroTests(unittest.TestCase):
         self.assertGreaterEqual(d['series']['us-housing-starts']['coverage']['count'],120)
         self.assertEqual(d['series']['cn-gdp-quarter']['spec']['kind'],'rate')
 
+class TradeQueryTests(unittest.TestCase):
+    def test_trade_pair_reuses_one_exact_query_without_amount_or_currency_substitution(self):
+        registry=json.loads((M.DATA/'choice-registry.json').read_text(encoding='utf-8'))
+        pair=[x for x in registry['series'] if x['id'] in ('cn-exports-monthly','cn-imports-monthly')]
+        queries=[M.choice_query(x,'2024-09-01','2026-11-07') for x in pair]
+        self.assertEqual(len(set(queries)),1)
+        for spec in pair:self.assertIn(spec['originalName'],queries[0])
+        self.assertIn('不要返回金额当月值或累计值',queries[0])
+        self.assertIn('不要返回人民币口径',queries[0])
+        self.assertIn('2024-09-01至2026-11-07',queries[0])
+
 if __name__=='__main__':unittest.main()
