@@ -1,0 +1,32 @@
+name: Workspace design
+on:
+  pull_request:
+    paths: ['*.html', 'scripts/**/*.css', 'scripts/check-site.cjs', 'tests/workspace-design.browser.cjs', '.github/workflows/workspace-design.yml']
+  push:
+    branches: [main]
+    paths: ['scripts/workspace-design.css', '.github/workflows/workspace-design.yml']
+jobs:
+  workspaces:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/check-site.cjs
+      - run: npm install --prefix /tmp/workspace-design playwright@1.62.1
+      - run: /tmp/workspace-design/node_modules/.bin/playwright install --with-deps chromium
+      - name: Verify all workspaces at four viewport widths
+        run: node tests/workspace-design.browser.cjs
+        env:
+          NODE_PATH: /tmp/workspace-design/node_modules
+      - name: Verify macro KPI slots for China and US
+        run: node tests/macro-dashboard.browser.cjs
+        env:
+          NODE_PATH: /tmp/workspace-design/node_modules
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: workspace-design-previews
+          path: .cache/workspace-design
