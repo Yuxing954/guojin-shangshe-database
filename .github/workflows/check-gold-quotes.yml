@@ -25,11 +25,7 @@ jobs:
         run: |
           npm install --prefix "$RUNNER_TEMP/gold-browser" playwright@1.62.1
           echo "NODE_PATH=$RUNNER_TEMP/gold-browser/node_modules" >> "$GITHUB_ENV"
-          if [ -x /usr/bin/google-chrome ]; then
-            echo "EDGE_PATH=/usr/bin/google-chrome" >> "$GITHUB_ENV"
-          else
-            "$RUNNER_TEMP/gold-browser/node_modules/.bin/playwright" install --with-deps chromium
-          fi
+          "$RUNNER_TEMP/gold-browser/node_modules/.bin/playwright" install --with-deps chromium
       - name: Gold widget lifecycle and responsive layout
         run: |
           node tests/gold-quotes.browser.cjs
