@@ -1,5 +1,5 @@
 const assert=require('node:assert/strict'),fs=require('node:fs');
-const M=require('./earnings-calendar-model.js'),D=require('./site-data.js'),U=require('./update-earnings-calendar.cjs');
+const M=require('./calendar/earnings-calendar-model.js'),D=require('./site-data.js'),U=require('./update-earnings-calendar.cjs');
 const snapshot=M.validateSnapshot(JSON.parse(fs.readFileSync(__dirname+'/../data/earnings-calendar-archive.json','utf8'))),pool=D.csv(fs.readFileSync(__dirname+'/../data/商社-标的池与估值跟踪.csv','utf8')).map(r=>({code:r['证券代码'],name:r['公司名称'],sector:r['子行业'],market:r['市场']}));
 assert.equal(pool.length,32);assert.equal(M.code('1179.HK'),'01179.HK');assert.equal(M.code('0780.HK'),'00780.HK');
 assert.equal(M.validDate('2026-02-29'),false);assert.equal(M.validDate('2024-02-29'),true);

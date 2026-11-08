@@ -21,6 +21,7 @@ on:
       - "company-database.html"
       - "quotes.html"
       - "scripts/quotes*"
+      - "scripts/quotes/**"
       - "tests/quotes-workbench.browser.cjs"
       - "tests/quotes-loading.browser.cjs"
       - "tests/fixtures/tencent-charts*"
@@ -34,6 +35,7 @@ on:
       - "dutyfree-dashboard.html"
       - "earnings.html"
       - "scripts/earnings*"
+      - "scripts/calendar/**"
       - "scripts/update-earnings-calendar.cjs"
       - "scripts/import-earnings-choice.cjs"
       - "tests/earnings-calendar.browser.cjs"
@@ -113,10 +115,10 @@ jobs:
           node --check scripts/research-library-model.js
           node scripts/research-library-model.test.cjs
           node scripts/coverage-model.test.cjs
-          node --check scripts/quotes.js
-          node --check scripts/quotes-model.js
+          node --check scripts/quotes/quotes.js
+          node --check scripts/quotes/quotes-model.js
           node scripts/quotes-model.test.cjs
-          node --check scripts/quotes-poller.js
+          node --check scripts/quotes/quotes-poller.js
           node --test scripts/quotes*.test.cjs
           node --check scripts/index-redirect.js
           node --check scripts/site-shell.js

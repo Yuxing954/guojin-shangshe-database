@@ -1,7 +1,7 @@
 'use strict';
 const fs = require('node:fs');
 const path = require('node:path');
-const M = require('./earnings-calendar-model.js');
+const M = require('./calendar/earnings-calendar-model.js');
 const D = require('./site-data.js');
 const ROOT = path.resolve(__dirname, '..');
 const FIELDS = {'定期报告实际披露日期':'actual', '定期报告预计披露日期':'expected'};

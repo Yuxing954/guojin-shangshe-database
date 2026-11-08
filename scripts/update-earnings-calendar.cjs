@@ -1,5 +1,5 @@
 'use strict';
-const fs=require('node:fs'),path=require('node:path'),M=require('./earnings-calendar-model.js'),D=require('./site-data.js');
+const fs=require('node:fs'),path=require('node:path'),M=require('./calendar/earnings-calendar-model.js'),D=require('./site-data.js');
 const ROOT=path.resolve(__dirname,'..'),FILE=path.join(ROOT,'data/earnings-calendar.json');
 const allowed=['sse.com.cn','hkexnews.hk','szse.cn','cninfo.com.cn','sec.gov','eastmoney.com','wind.com.cn'];
 function authoritative(source){const host=new URL(source.url).hostname;return allowed.some(x=>host===x||host.endsWith('.'+x))||(source.id==='eastmoney-archive'&&host==='github.com'&&source.url.startsWith('https://github.com/Yuxing954/guojin-shangshe-database/blob/'));}

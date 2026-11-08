@@ -8,6 +8,7 @@ on:
       - "tests/important-calendar*"
       - "docs/important-calendar.md"
       - "scripts/earnings*"
+      - "scripts/calendar/**"
       - "scripts/update-earnings-calendar.cjs"
       - "scripts/import-earnings-choice.cjs"
       - "scripts/site-shell.js"
@@ -28,9 +29,9 @@ jobs:
           node-version: "22"
       - name: Check earnings logic
         run: |
-          node --check scripts/important-calendar.js
+          node --check scripts/calendar/important-calendar.js
           node --test tests/important-calendar.test.cjs
-          node --check scripts/earnings-calendar.js
+          node --check scripts/calendar/earnings-calendar.js
           node --check scripts/site-shell.js
           node --check scripts/import-earnings-choice.cjs
           node scripts/earnings-calendar.test.cjs

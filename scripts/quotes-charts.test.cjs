@@ -1,5 +1,5 @@
 const {test}=require('node:test'),assert=require('node:assert/strict');
-const K=require('./market-kline.js'),M=require('./quotes-model.js'),receipts=require('../tests/fixtures/tencent-charts-20261009.json');
+const K=require('./market-kline.js'),M=require('./quotes/quotes-model.js'),receipts=require('../tests/fixtures/tencent-charts-20261009.json');
 test('historical and intraday URLs select the correct market controller and source US suffix',()=>{
   assert.match(K.chartUrl('600754.SH','day',null,150),/\/fqkline\/get/);
   assert.match(K.chartUrl('6181.HK','day',null,150),/\/hkfqkline\/get/);

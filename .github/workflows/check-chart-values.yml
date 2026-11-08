@@ -5,7 +5,7 @@ on:
       - 'hotel-dashboard.html'
       - 'scripts/hotel-dashboard.*'
       - 'scripts/site-charts.*'
-      - 'scripts/quotes.js'
+      - 'scripts/quotes/quotes.js'
       - 'dutyfree-dashboard.html'
       - 'tests/chart-values.browser.cjs'
       - '.github/workflows/check-chart-values.yml'
@@ -23,7 +23,7 @@ jobs:
         run: |
           node --check scripts/site-charts.js
           node --check scripts/hotel-dashboard.js
-          node --check scripts/quotes.js
+          node --check scripts/quotes/quotes.js
       - name: Check scales and numeric integrity
         run: node --test tests/site-paired.test.cjs tests/chart-axis.test.cjs
       - name: Install isolated browser runtime
