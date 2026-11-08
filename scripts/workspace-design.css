@@ -1,0 +1,105 @@
+/* Canonical workspace presentation. Load after domain layout adapters.
+   Domain CSS owns grids/data semantics; this file owns shared visual components. */
+:root{
+ --ui-font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ --ui-text:14px;--ui-small:13px;--ui-caption:12px;--ui-title:16px;--ui-reading:28px;
+ --ui-gap:16px;--ui-section:24px;--ui-radius:12px;--ui-control:40px;--ui-control-radius:8px;
+}
+body.site-page[data-design=workspace][data-design]{
+ font-family:var(--ui-font)!important;
+ --industry-font:var(--ui-font);--industry-gap:var(--ui-gap);--macro-gap:var(--ui-gap);
+ --industry-radius:var(--ui-radius);--macro-radius:var(--ui-radius);
+ --ic-border:var(--site-line);--ic-muted:var(--site-muted);
+}
+body.site-page[data-design=workspace][data-design] :is(main,.wrap,.site-main) *{
+ font-family:var(--ui-font)!important;
+}
+body.site-page[data-design=workspace][data-design]:not(.industry-embedded)>main.site-main{
+ max-width:1600px!important;width:auto!important;margin:0 auto!important;padding:20px 24px 32px!important;
+}
+body.site-page[data-design=workspace][data-design] h1{font-size:26px!important;line-height:36px!important;font-weight:700;letter-spacing:0}
+body.site-page[data-design=workspace][data-design] :is(.hd-card-head,.hd-tier-head,.gj-card-head,.board-panel-head,.board-section-head,.travel-panel-head,.cruise-detail-head,.dining-section,.oh-block,.quotes-board-head,.quotes-detail,.ec-section-head,.ec-nav,.ic-list-head,.ic-month-nav,.portal-panel-head,.research-tool) :is(h2,h3){
+ font-size:var(--ui-title)!important;line-height:24px!important;font-weight:600!important;letter-spacing:0;
+}
+body.site-page[data-design=workspace][data-design] :is(.travel-panel,.cruise-panel,.dining-panel)>h2{
+ font-size:var(--ui-title)!important;line-height:24px!important;font-weight:600!important;
+}
+/* Shared surfaces, without changing domain grids or hiding overflow. */
+body.site-page[data-design=workspace][data-design] :is(.board-panel,.board-stat,.hd-card,.gj-card,.travel-panel,.cruise-panel,.dining-panel,.travel-kpi,.cruise-kpi,.dining-kpi,.oh-block,.oh-kpi,.portal-panel,.portal-stat,.quotes-board,.quotes-detail,.quotes-detail-empty,.quotes-benchmark,.ec-board,.ec-recent,.ic-list-panel,.ic-month-board,.research-controls,.portal-research-list,.research-tool){
+ border:1px solid var(--site-line)!important;border-radius:var(--ui-radius)!important;
+ background:var(--site-surface)!important;box-shadow:none!important;min-width:0;box-sizing:border-box;
+}
+body.site-page[data-design=workspace][data-design] :is(.travel-panel,.cruise-panel,.dining-panel,.oh-block,.quotes-board,.quotes-detail,.quotes-detail-empty,.ec-recent,.ic-month-board,.research-controls,.portal-panel,.research-tool){padding:var(--ui-gap)!important}
+body.site-page[data-design=workspace][data-design] :is(.board-panel-head,.hd-card-head,.gj-card-head,.ic-list-head,.ec-nav){padding:var(--ui-gap)!important;gap:12px;flex-wrap:wrap}
+body.site-page[data-design=workspace][data-design] :is(.board-stat,.travel-kpi,.cruise-kpi,.dining-kpi,.oh-kpi,.portal-stat,.quotes-benchmark){padding:var(--ui-gap)!important}
+body.site-page[data-design=workspace][data-design] :is(.travel-kpi>strong,.cruise-kpi>strong,.dining-kpi-value,.oh-kpi>strong,.portal-stat>strong,.quotes-benchmark>strong){
+ font-size:var(--ui-reading)!important;line-height:38px!important;font-weight:700;font-variant-numeric:tabular-nums;
+}
+body.site-page[data-design=workspace][data-design] .dining-kpi:is(.qualitative,.estimate) .dining-kpi-value{font-size:17px!important;line-height:26px!important}
+body.site-page[data-design=workspace][data-design] :is(.travel-kpis,.cruise-kpis,.dining-kpis,.oh-kpis,.quotes-benchmarks,.research-tools){gap:var(--ui-gap)!important}
+body.site-page[data-design=workspace][data-design] :is(.hd-stat-label,.travel-kpi h2,.cruise-kpi h2,.oh-kpi>span,.quotes-benchmark>span:first-child,.ec-source,.ec-count,.ic-meta,.quotes-status,.tool-category,.tool-date){
+ font-size:var(--ui-small)!important;line-height:22px!important;color:var(--site-muted);
+}
+/* A single neutral segmented control across domain navigation and chart views.
+   Top category navigation retains its underline; selected series keep their colors. */
+body.site-page[data-design=workspace][data-design] :is(#oh-tabs,.hd-tabs,.travel-tabs,.cruise-tabs,.calendar-tabs,.ec-views,.ic-toggle,.quotes-view,.quotes-periods,.quotes-groups,.cw-metric-tabs,.research-ranges,.site-subnav:not(.section-category-nav):not(.industry-sector-nav):not(.oh-categories)){
+ display:flex!important;align-items:center!important;flex-wrap:wrap!important;
+ width:fit-content!important;max-width:100%!important;gap:2px!important;padding:3px!important;
+ margin-top:0!important;border:0!important;border-radius:8px!important;background:var(--site-soft)!important;box-shadow:none!important;
+}
+body.site-page[data-design=workspace][data-design] :is(#oh-tabs,.hd-tabs,.travel-tabs,.cruise-tabs,.calendar-tabs,.ec-views,.ic-toggle,.quotes-view,.quotes-periods,.quotes-groups,.cw-metric-tabs,.research-ranges,.site-subnav:not(.section-category-nav):not(.industry-sector-nav):not(.oh-categories))>:is(button,a){
+ display:inline-flex!important;align-items:center;justify-content:center;flex:0 1 auto!important;
+ height:auto!important;min-height:34px!important;min-width:0;max-width:100%;margin:0!important;padding:6px 12px!important;
+ border:0!important;border-radius:6px!important;background:transparent!important;color:var(--site-muted)!important;
+ font-family:var(--ui-font)!important;font-size:14px!important;line-height:22px!important;font-weight:500!important;
+ text-decoration:none!important;box-shadow:none!important;white-space:normal!important;
+}
+body.site-page[data-design=workspace][data-design] :is(#oh-tabs,.hd-tabs,.travel-tabs,.cruise-tabs,.calendar-tabs,.ec-views,.ic-toggle,.quotes-view,.quotes-periods,.quotes-groups,.cw-metric-tabs,.research-ranges,.site-subnav:not(.section-category-nav):not(.industry-sector-nav):not(.oh-categories))>:is(.active,.on,.current,[aria-selected=true],[aria-pressed=true],[aria-current=page]){
+ background:var(--site-surface)!important;color:var(--site-accent)!important;font-weight:600!important;box-shadow:0 1px 3px #202c400c!important;
+}
+/* Filters align on a common 40px baseline; checkboxes stay native. */
+body.site-page[data-design=workspace][data-design] :is(.hd-toolbar,.hg-toolbar,.dutyfree-filters,.kr-controls,.travel-controls,.cruise-controls,.dining-toolbar,.oh-toolbar,.ec-controls,.ic-toolbar,.quotes-filters,.portal-filter,.macro-study-controls,.forecast-controls,.regional-controls){
+ gap:12px!important;align-items:center;flex-wrap:wrap;min-width:0;
+}
+body.site-page[data-design=workspace][data-design] :is(.site-main,.industry-board,.data-board) :is(select,input[type=search],input[type=date],input[type=number],input[type=text]){
+ box-sizing:border-box;max-width:100%;min-height:var(--ui-control)!important;height:auto;
+ border:1px solid var(--site-line)!important;border-radius:var(--ui-control-radius)!important;
+ background:var(--site-surface)!important;color:var(--site-ink)!important;
+ padding:8px 12px!important;font-family:var(--ui-font)!important;font-size:14px!important;line-height:22px!important;
+}
+body.site-page[data-design=workspace][data-design] :is(.hd-toolbar,.hg-toolbar,.dutyfree-filters,.kr-controls,.travel-controls,.cruise-controls,.dining-toolbar,.oh-toolbar,.ec-controls,.ic-toolbar,.quotes-filters,.portal-filter,.macro-study-controls,.forecast-controls,.regional-controls) label{
+ font-size:var(--ui-small)!important;line-height:22px!important;color:var(--site-muted);
+}
+body.site-page[data-design=workspace][data-design] :is(.portal-button,#national-download,#tier-options>summary,.hd-export,.ic-export,.ec-nav button,.ec-export button,.ec-options>summary,.tool-actions a,.quotes-filters>button,.oh-actions>button,.oh-actions>a,.industry-meta-actions button){
+ display:inline-flex;align-items:center;justify-content:center;min-height:var(--ui-control)!important;
+ padding:8px 12px!important;border:1px solid var(--site-line);border-radius:8px!important;
+ font-size:14px!important;line-height:22px!important;
+}
+/* Tables retain numeric meaning, sort controls and horizontal scrolling. */
+body.site-page[data-design=workspace][data-design] :is(.board-table,.dh-table,.oh-table,.portal-table,.travel-panel table,.cruise-panel table,.dining-panel table) :is(th,td){
+ padding:10px 12px!important;font-size:13px!important;line-height:22px!important;border-color:var(--site-line)!important;font-variant-numeric:tabular-nums;
+}
+body.site-page[data-design=workspace][data-design] :is(.board-table,.dh-table,.oh-table,.portal-table,.travel-panel table,.cruise-panel table,.dining-panel table) th{
+ background:var(--site-soft)!important;color:var(--site-muted)!important;font-weight:600!important;
+}
+body.site-page[data-design=workspace][data-design] :is(.quotes-table th,.quotes-sort,.quotes-symbol,.quotes-time,.quotes-benchmark small,.ec-event span){font-size:12px!important;line-height:20px!important}
+body.site-page[data-design=workspace][data-design] :is(.quotes-name,.quotes-price,.quotes-percent,.ec-event b){font-size:14px!important;line-height:22px!important}
+body.site-page[data-design=workspace][data-design] :is(.ic-title h3,.portal-research-title,.resource-result h2){font-size:16px!important;line-height:26px!important;font-weight:600}
+body.site-page[data-design=workspace][data-design] :is(.ic-event,.portal-research-item){padding:16px!important}
+body.site-page[data-design=workspace][data-design] :is(.ec-upcoming,.ic-notice){border-radius:12px}
+body.site-page[data-design=workspace][data-design] :is(.quotes-up,.up){color:var(--site-up)!important}
+body.site-page[data-design=workspace][data-design] :is(.quotes-down,.down){color:var(--site-down)!important}
+body.site-page[data-design=workspace][data-design] :is(button,a,select,input,summary):focus-visible{outline:2px solid var(--site-accent)!important;outline-offset:3px}
+body.site-page[data-design=workspace][data-design] :is([hidden],#oh-tabs[hidden]){display:none!important}
+@media(max-width:760px){
+ body.site-page[data-design=workspace][data-design]{--ui-reading:24px}
+ body.site-page[data-design=workspace][data-design]:not(.industry-embedded)>main.site-main{width:100%!important;padding:14px 12px 24px!important}
+ body.site-page[data-design=workspace][data-design] h1{font-size:22px!important;line-height:32px!important}
+ body.site-page[data-design=workspace][data-design] :is(.site-main,.industry-board,.data-board) :is(select,input[type=search],input[type=date],input[type=number],input[type=text]){font-size:16px!important}
+ body.site-page[data-design=workspace][data-design] :is(.travel-kpi>strong,.cruise-kpi>strong,.dining-kpi-value,.oh-kpi>strong,.portal-stat>strong,.quotes-benchmark>strong){line-height:34px!important}
+ body.site-page[data-design=workspace][data-design] :is(.ec-controls,.calendar-heading,.ic-toolbar,.quotes-board-head){flex-wrap:wrap}
+ body.site-page[data-design=workspace][data-design] .quotes-filters input{min-width:0!important;flex-basis:100%}
+ body.site-page[data-design=workspace][data-design] :is(.calendar-tabs,.ec-views){max-width:100%}
+ body.site-page[data-design=workspace][data-design] :is(.quotes-benchmarks,.travel-kpis,.cruise-kpis,.dining-kpis,.oh-kpis){gap:12px!important}
+}
+@media(prefers-reduced-motion:reduce){body.site-page[data-design=workspace][data-design] *{scroll-behavior:auto!important;transition:none!important}}
