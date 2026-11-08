@@ -14,6 +14,7 @@ try{
   assert.equal(await page.locator('body').getAttribute('data-design'),'workspace',file+' design scope');
   for(const width of [1440,1024,768,390]){
    await page.setViewportSize({width,height:1000});await page.waitForTimeout(250);
+   assert.equal(await page.locator('[hidden]:visible').count(),0,file+' hidden state');
    const facts=await page.evaluate(()=>{
     const visible=e=>e.getBoundingClientRect().width>0&&e.getBoundingClientRect().height>0;
     const controls=[...document.querySelectorAll('.site-main select,.site-main input[type=search],.site-main input[type=date]')].filter(visible);

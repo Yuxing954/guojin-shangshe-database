@@ -42,19 +42,19 @@ body.site-page[data-design=workspace][data-design] :is(.hd-stat-label,.travel-kp
 }
 /* A single neutral segmented control across domain navigation and chart views.
    Top category navigation retains its underline; selected series keep their colors. */
-body.site-page[data-design=workspace][data-design] :is(#oh-tabs,.hd-tabs,.travel-tabs,.cruise-tabs,.calendar-tabs,.ec-views,.ic-toggle,.quotes-view,.quotes-periods,.quotes-groups,.cw-metric-tabs,.research-ranges,.site-subnav:not(.section-category-nav):not(.oh-categories)){
+body.site-page[data-design=workspace][data-design] :is(#oh-tabs,.hd-tabs,.travel-tabs,.cruise-tabs,.calendar-tabs,.ec-views,.ic-toggle,.quotes-view,.quotes-periods,.quotes-groups,.cw-metric-tabs,.research-ranges,.site-subnav:not(.section-category-nav):not(.industry-sector-nav):not(.oh-categories)){
  display:flex!important;align-items:center!important;flex-wrap:wrap!important;
  width:fit-content!important;max-width:100%!important;gap:2px!important;padding:3px!important;
  margin-top:0!important;border:0!important;border-radius:8px!important;background:var(--site-soft)!important;box-shadow:none!important;
 }
-body.site-page[data-design=workspace][data-design] :is(#oh-tabs,.hd-tabs,.travel-tabs,.cruise-tabs,.calendar-tabs,.ec-views,.ic-toggle,.quotes-view,.quotes-periods,.quotes-groups,.cw-metric-tabs,.research-ranges,.site-subnav:not(.section-category-nav):not(.oh-categories))>:is(button,a){
+body.site-page[data-design=workspace][data-design] :is(#oh-tabs,.hd-tabs,.travel-tabs,.cruise-tabs,.calendar-tabs,.ec-views,.ic-toggle,.quotes-view,.quotes-periods,.quotes-groups,.cw-metric-tabs,.research-ranges,.site-subnav:not(.section-category-nav):not(.industry-sector-nav):not(.oh-categories))>:is(button,a){
  display:inline-flex!important;align-items:center;justify-content:center;flex:0 1 auto!important;
  height:auto!important;min-height:34px!important;min-width:0;max-width:100%;margin:0!important;padding:6px 12px!important;
  border:0!important;border-radius:6px!important;background:transparent!important;color:var(--site-muted)!important;
  font-family:var(--ui-font)!important;font-size:14px!important;line-height:22px!important;font-weight:500!important;
  text-decoration:none!important;box-shadow:none!important;white-space:normal!important;
 }
-body.site-page[data-design=workspace][data-design] :is(#oh-tabs,.hd-tabs,.travel-tabs,.cruise-tabs,.calendar-tabs,.ec-views,.ic-toggle,.quotes-view,.quotes-periods,.quotes-groups,.cw-metric-tabs,.research-ranges,.site-subnav:not(.section-category-nav):not(.oh-categories))>:is(.active,.on,.current,[aria-selected=true],[aria-pressed=true],[aria-current=page]){
+body.site-page[data-design=workspace][data-design] :is(#oh-tabs,.hd-tabs,.travel-tabs,.cruise-tabs,.calendar-tabs,.ec-views,.ic-toggle,.quotes-view,.quotes-periods,.quotes-groups,.cw-metric-tabs,.research-ranges,.site-subnav:not(.section-category-nav):not(.industry-sector-nav):not(.oh-categories))>:is(.active,.on,.current,[aria-selected=true],[aria-pressed=true],[aria-current=page]){
  background:var(--site-surface)!important;color:var(--site-accent)!important;font-weight:600!important;box-shadow:0 1px 3px #202c400c!important;
 }
 /* Filters align on a common 40px baseline; checkboxes stay native. */
@@ -90,7 +90,7 @@ body.site-page[data-design=workspace][data-design] :is(.ec-upcoming,.ic-notice){
 body.site-page[data-design=workspace][data-design] :is(.quotes-up,.up){color:var(--site-up)!important}
 body.site-page[data-design=workspace][data-design] :is(.quotes-down,.down){color:var(--site-down)!important}
 body.site-page[data-design=workspace][data-design] :is(button,a,select,input,summary):focus-visible{outline:2px solid var(--site-accent)!important;outline-offset:3px}
-body.site-page[data-design=workspace][data-design] [hidden]{display:none!important}
+body.site-page[data-design=workspace][data-design] :is([hidden],#oh-tabs[hidden]){display:none!important}
 @media(max-width:760px){
  body.site-page[data-design=workspace][data-design]{--ui-reading:24px}
  body.site-page[data-design=workspace][data-design]:not(.industry-embedded)>main.site-main{width:100%!important;padding:14px 12px 24px!important}
