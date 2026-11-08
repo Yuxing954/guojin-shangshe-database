@@ -1,6 +1,6 @@
 const {test}=require('node:test');
 const assert=require('node:assert/strict');
-const P=require('./quotes-poller.js'),M=require('./quotes-model.js');
+const P=require('./quotes/quotes-poller.js'),M=require('./quotes/quotes-model.js');
 function harness(request){let time=0,active=true,ticks=0,scheduled=new Map(),id=0;const poller=P.create({request,isActive:()=>active,now:()=>time,onTick:()=>ticks++,setTimer:(fn,ms)=>{assert.equal(ms,1000);scheduled.set(++id,fn);return id;},clearTimer:id=>scheduled.delete(id)});return {poller,scheduled,setTime:v=>time=v,setActive:v=>active=v,get ticks(){return ticks;}};}
 test('successful requests start every 1000ms; manual clicks cannot exceed the cadence',async()=>{let calls=0;const h=harness(async()=>{calls++;return true;});h.poller.sync();await Promise.resolve();await Promise.resolve();h.setTime(999);await h.poller.check();assert.equal(calls,1);for(let t=1000;t<=5000;t+=1000){h.setTime(t);await h.poller.check();await h.poller.check();assert.equal(calls,t/1000+1);}h.poller.stop();assert.equal(h.scheduled.size,0);});
 test('slow requests never overlap even after request interval elapses',async()=>{let calls=0,finish;const h=harness(()=>{calls++;return new Promise(r=>finish=r);});const first=h.poller.check();h.setTime(60000);await h.poller.check();assert.equal(calls,1);finish(true);await first;const second=h.poller.check();assert.equal(calls,2);finish(true);await second;});

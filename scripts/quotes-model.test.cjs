@@ -1,4 +1,4 @@
-const assert=require('node:assert/strict'),M=require('./quotes-model.js');
+const assert=require('node:assert/strict'),M=require('./quotes/quotes-model.js');
 function raw(time,price='18.05',pct='1.12'){const f=Array(50).fill('');Object.assign(f,{1:'测试证券',3:price,4:'17.85',5:'17.89',30:time,31:'0.20',32:pct,33:'18.09',34:'17.73'});return f.join('~');}
 const received='2026-10-08T01:00:00Z',cn=M.parse(raw('20260930161446'),'600754.SH',received),hk=M.parse(raw('2026/10/07 16:08:59','9.210','-0.16'),'6862.HK',received),us=M.parse(raw('2026-10-07 16:00:01','31.92','-0.90'),'ATAT.O',received);
 assert.equal(cn.asOf,'2026-09-30 16:14:46');assert.equal(hk.asOf,'2026-10-07 16:08:59');assert.equal(us.market,'US');assert.equal(cn.retrievedAt,received);

@@ -1,10 +1,10 @@
 name: Gold quotes
 on:
   pull_request:
-    paths: ['quotes.html', 'scripts/quotes*.js', 'scripts/gold-quotes.*', 'tests/gold-quotes.browser.cjs', '.github/workflows/check-gold-quotes.yml']
+    paths: ['quotes.html', 'scripts/quotes*.js', 'scripts/quotes/**', 'scripts/gold-quotes.*', 'tests/gold-quotes.browser.cjs', '.github/workflows/check-gold-quotes.yml']
   push:
     branches: [main]
-    paths: ['quotes.html', 'scripts/quotes*.js', 'scripts/gold-quotes.*', 'tests/gold-quotes.browser.cjs', '.github/workflows/check-gold-quotes.yml']
+    paths: ['quotes.html', 'scripts/quotes*.js', 'scripts/quotes/**', 'scripts/gold-quotes.*', 'tests/gold-quotes.browser.cjs', '.github/workflows/check-gold-quotes.yml']
   workflow_dispatch:
 jobs:
   gold-quotes:
@@ -16,8 +16,10 @@ jobs:
           node-version: '22'
       - name: Quotes model and lifecycle
         run: |
-          node --check scripts/gold-quotes.js
-          node --check scripts/quotes.js
+          node --check scripts/quotes/gold-quotes.js
+          node --check scripts/quotes/quotes.js
+          node scripts/coverage-model.test.cjs
+          node scripts/gold-live-model.test.cjs
           node --test scripts/quotes-model.test.cjs scripts/quotes-layout.test.cjs scripts/quotes-lifecycle.test.cjs scripts/quotes-charts.test.cjs scripts/quotes-poller.test.cjs
       - name: Browser dependencies
         run: |
@@ -29,4 +31,7 @@ jobs:
             "$RUNNER_TEMP/gold-browser/node_modules/.bin/playwright" install --with-deps chromium
           fi
       - name: Gold widget lifecycle and responsive layout
-        run: node tests/gold-quotes.browser.cjs
+        run: |
+          node tests/gold-quotes.browser.cjs
+          node tests/quotes-workbench.browser.cjs
+          node tests/quotes-loading.browser.cjs
