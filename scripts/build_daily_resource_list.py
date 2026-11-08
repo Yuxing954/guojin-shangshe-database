@@ -39,7 +39,7 @@ def catalog_for_window(library,start,end):
   if not scan:continue
   scans.extend(saved.get('coverageScans') or [{**scan,'receiptFile':saved.get('scanReceiptFile') or str(path.relative_to(ROOT))}])
   candidate=attachment_catalog({**library,'attachmentScan':scan},start,end)
-  if candidate['coverageStatus']=='complete':
+  if candidate['coverageStatus']=='complete' or scan_updated_after_four(scan,end):
    candidate['scanReceiptFile']=str(path.relative_to(ROOT))
    candidate['usedHistoricalScan']=True
    return candidate

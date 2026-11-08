@@ -2072,25 +2072,84 @@
     "originalReceipt": "turn896view0"
   },
   "sourceCoverage": {
-    "mainCommit": "29175424582dd058685b58bc25dbb19c491a6f5f",
-    "attachmentCatalog": {
-      "generatedAt": "2026-11-04T08:32:00.491Z",
-      "sourceThrough": "2026-11-04T16:29:35.473+0800",
-      "scan": {
-        "observedAt": "2026-11-04T08:32:00.491Z",
+    "latestMain": "9efdc16706704cdd578015a63bc937e8163c76a8",
+    "researchManifestFile": "data/research/updates/manifest.json",
+    "researchManifestSha256": "c91019b3d947f1d3408e20bbfdee90cbc1349db1fd6a07521fa8220f9d6534a4",
+    "researchReceipt": {
+      "syncedAt": "2026-11-08T09:08:34.669Z",
+      "coverageFrom": "2026-11-08T14:34:20.011+0800",
+      "coverageTo": "2026-11-08T17:00:31.299+0800",
+      "oldestFetched": "2026-11-08T13:57:56.050+0800",
+      "fetchedTopics": 30,
+      "lastRun": {
+        "runId": "2026-11-08-170146",
         "sourceGroup": "88888142214212",
         "sourceName": "水木调研纪要-2.0",
-        "topicsScanned": 780,
-        "topicsInWindow": 741,
-        "topicPages": 26,
-        "topicWindowFrom": "2026-11-02T00:00:00+08:00",
-        "topicWindowTo": "2026-11-04T16:29:35.473+0800",
+        "previousCoverageTo": "2026-11-08T14:34:20.011+0800",
+        "coverageTo": "2026-11-08T17:00:31.299+0800",
+        "added": {
+          "views": 5,
+          "all_views": 10
+        },
+        "updated": 0,
+        "expiredRemoved": 0,
+        "sourceTopicIds": [
+          "22258451445514411",
+          "22258451445512811",
+          "14425128112284542",
+          "55521428442281844",
+          "55521428442281444",
+          "55521428442281554",
+          "14425128112285582",
+          "14425128112282582",
+          "55521428442282244",
+          "45548241224421118",
+          "82258451445541122",
+          "55521428442248514",
+          "45548241224422588",
+          "45548241224422828",
+          "82258451445544522"
+        ],
+        "duplicateTopicIds": [],
+        "briefChanges": {
+          "added": 1,
+          "updated": 2,
+          "expiredRemoved": 0
+        },
+        "duplicates": 0,
+        "excludedTopics": [],
+        "pagination": {
+          "pages": 1,
+          "pageRowsFetched": 30,
+          "limit": 30,
+          "stoppedWhenPageReachedCoverage": true
+        },
+        "dedupCheck": {
+          "candidateKeys": 60,
+          "candidateBuckets": 54,
+          "algorithm": "sha256-utf8-v1"
+        },
+        "expiredBriefIds": []
+      }
+    },
+    "attachmentCatalog": {
+      "generatedAt": "2026-11-08T08:29:50.476Z",
+      "sourceThrough": "2026-11-08T14:34:20.011+0800",
+      "scan": {
+        "observedAt": "2026-11-08T08:29:50.476Z",
+        "sourceGroup": "88888142214212",
+        "sourceName": "水木调研纪要-2.0",
+        "topicsScanned": 360,
+        "topicsInWindow": 323,
+        "topicPages": 12,
+        "topicWindowFrom": "2026-11-06T00:00:00+08:00",
+        "topicWindowTo": "2026-11-08T14:34:20.011+0800",
         "boundaryReachedBeforeWindow": true,
-        "attachmentsObserved": 664,
-        "uniqueFileIds": 664,
+        "attachmentsObserved": 292,
+        "uniqueFileIds": 292,
         "duplicateFileIds": 0,
-        "newRecords": 210,
-        "existingRecordsRefreshed": 337,
+        "newRecords": 292,
+        "existingRecordsRefreshed": 0,
         "attachmentContentRead": false,
         "sourceMetadataFields": [
           "fileId",
@@ -2105,489 +2164,27 @@
           "sourceHash",
           "source"
         ],
-        "windowStart": "2026-11-02T00:00:00+08:00",
-        "windowEnd": "2026-11-04T08:32:00.491Z",
-        "windowEndDate": "2026-11-04",
+        "windowStart": "2026-11-06T00:00:00+08:00",
+        "windowEnd": "2026-11-08T08:29:50.476Z",
+        "windowEndDate": "2026-11-08",
         "windowComplete": true,
         "archiveHasMore": true
       },
-      "coverageStatus": "pending",
+      "coverageStatus": "complete",
       "requestedWindowStart": "2026-11-06T18:00:00+08:00",
       "requestedCutoff": "2026-11-07T18:00:00+08:00",
-      "missingIntervals": [
-        {
-          "start": "2026-11-06T18:00:00+08:00",
-          "end": "2026-11-07T18:00:00+08:00"
-        }
-      ],
       "publicationEligibility": {
         "policy": "scan-observed-after-16",
-        "eligible": false,
-        "scanObservedAt": "2026-11-04T08:32:00.491Z",
-        "coverageComplete": false
+        "eligible": true,
+        "scanObservedAt": "2026-11-08T08:29:50.476Z",
+        "coverageComplete": true
       }
     },
-    "librarySha256": "3738d934ee956c17581e797e55c46c22c6fea0db6d35613d063f43ae70d54bc4",
-    "researchManifestFile": "data/research/updates/manifest.json",
-    "researchManifestSha256": "53a345ca8a9d5dbafc973c41cab1020ddde0872d5222d6143c4768e1648ce1e6",
-    "researchManifest": {
-      "syncedAt": "2026-11-06T05:14:57.782Z",
-      "coverageFrom": "2026-11-05T13:21:13.832+0800",
-      "coverageTo": "2026-11-06T13:00:36.976+0800",
-      "oldestFetched": "2026-11-05T13:06:08.920+0800",
-      "lastRun": {
-        "runId": "2026-11-06-130714",
-        "sourceGroup": "88888142214212",
-        "sourceName": "水木调研纪要-2.0",
-        "previousCoverageTo": "2026-11-05T13:21:13.832+0800",
-        "coverageTo": "2026-11-06T13:00:36.976+0800",
-        "added": {
-          "views": 14,
-          "all_views": 204
-        },
-        "updated": 0,
-        "expiredRemoved": 17,
-        "sourceTopicIds": [
-          "82258451285488482",
-          "55521428512428884",
-          "22258451285451851",
-          "14425128521155412",
-          "45548241842288858",
-          "82258451854214522",
-          "22258451854218141",
-          "22258451854218151",
-          "14425128521448822",
-          "55521428124521514",
-          "14425128521425552",
-          "22258451854255421",
-          "55521428124188224",
-          "45548241842812158",
-          "55521428124184554",
-          "55521428124244214",
-          "45548241845188458",
-          "14425128524124422",
-          "82258451852455182",
-          "45548241845244458",
-          "22258451852214811",
-          "82258451852214552",
-          "45548241845518288",
-          "55521428125581124",
-          "45548241845842848",
-          "55521428121544884",
-          "14425128525414152",
-          "14425128525414522",
-          "82258451858248142",
-          "22258451858254521",
-          "22258451858882441",
-          "14425128525552582",
-          "82258451858851582",
-          "14425128525525422",
-          "14425128525525222",
-          "14425128288421422",
-          "14425128288584582",
-          "82258451511848522",
-          "55521428288142854",
-          "45548241411845858",
-          "22258451511858411",
-          "22258451511855851",
-          "14425128288288442",
-          "82258451512155252",
-          "14425128284822212",
-          "82258451512552542",
-          "82258451518112412",
-          "45548241418118248",
-          "55521428282152554",
-          "82258451515884222",
-          "82258451515888822",
-          "14425128282552412",
-          "22258451515851541",
-          "45548241414842588",
-          "14425128218811152",
-          "82258451541142522",
-          "55521428248482124",
-          "55521428248555514",
-          "14425128218455522",
-          "82258451541815582",
-          "45548241421845428",
-          "82258451541858222",
-          "82258451541511212",
-          "22258451541514511",
-          "14425128218284482",
-          "14425128218282412",
-          "82258451541544152",
-          "55521428248244144",
-          "55521428248241184",
-          "82258451541521442",
-          "82258451541522242",
-          "14425128218242812",
-          "22258451544118421",
-          "82258451544118552",
-          "82258451544141452",
-          "82258451544144442",
-          "14425128211815882",
-          "14425128211584512",
-          "45548241422412888",
-          "45548241422452448",
-          "22258451544522851",
-          "14425128211228112",
-          "45548241425124288",
-          "22258451542158521",
-          "45548241425211558",
-          "14425128214188522",
-          "14425128214181582",
-          "14425128215258452",
-          "82258451548584412",
-          "45548241424111488",
-          "82258451545114512",
-          "45548241424115428",
-          "82258451545118552",
-          "55521428242848814",
-          "82258451545141842",
-          "22258451545144551",
-          "82258451545142542",
-          "45548241424144288",
-          "22258451545411281",
-          "55521428242488114",
-          "22258451545414181",
-          "55521428242484444",
-          "82258451545412252",
-          "14425128212184522",
-          "14425128212185112",
-          "82258451545418212",
-          "22258451545415881",
-          "14425128212182252",
-          "55521428242448544",
-          "22258451545444811",
-          "55521428242444124",
-          "82258451545442152",
-          "82258451545442452",
-          "82258451545448512",
-          "45548241424224158",
-          "55521428242458184",
-          "45548241424251428",
-          "45548241424252558",
-          "45548241424252828",
-          "45548241424255488",
-          "82258451545428182",
-          "55521428242451124",
-          "45548241424281128",
-          "55521428242418484",
-          "45548241454512448",
-          "45548241454585188",
-          "22258451525288421",
-          "22258451525288281",
-          "82258451525285142",
-          "45548241454584148",
-          "22258451525251141",
-          "82258451525251152",
-          "45548241454541518",
-          "14425128242428412",
-          "82258451525251882",
-          "45548241454824828",
-          "14425128242512522",
-          "55521428218515884",
-          "14425128258454812",
-          "45548241481588518",
-          "22258451581288251",
-          "82258451582814542",
-          "55521428215181814",
-          "82258451582818252",
-          "45548241485455448",
-          "22258451582528451",
-          "45548241485481258",
-          "45548241485481248",
-          "55521428215218154",
-          "22258451588841151",
-          "55521428211148124",
-          "45548241488822148",
-          "55521428211112254",
-          "22258451588552181",
-          "55521428211221514",
-          "55521428212514114",
-          "55521428212515144",
-          "14425128252455812",
-          "22258451585288211",
-          "45548241484825158",
-          "55521428212145254",
-          "45548241484828158",
-          "45548241484824858",
-          "55521428212158844",
-          "45548241445122228",
-          "82258451552251812",
-          "82258451552254282",
-          "14425128224421512",
-          "14425128224424882",
-          "22258451552252281",
-          "45548241445545858",
-          "82258451552258512",
-          "55521428225248554",
-          "14425128224251422",
-          "45548241445482448",
-          "82258451552582882",
-          "45548241445488848",
-          "45548241448525228",
-          "14425128225585442",
-          "22258451558818881",
-          "14425128225245882",
-          "82258454111554242",
-          "82258454114115842",
-          "14425121881818512",
-          "82258454114141512",
-          "14425121881818222",
-          "55521424884844484",
-          "22258454114144221",
-          "55521424884844114",
-          "55521424885841184",
-          "22258454112128541",
-          "22258454112184851",
-          "14425121884112282",
-          "82258454112421152",
-          "45548242115258558",
-          "14425121882254812",
-          "45548242114485188",
-          "14425121882255852",
-          "82258454141155842",
-          "22258454141155521",
-          "22258454141241121",
-          "82258454141241242",
-          "55521424848548154",
-          "55521424848544114",
-          "14425121818445112",
-          "14425121818515222",
-          "22258454141845151",
-          "82258454144148182",
-          "82258454144412112",
-          "55521424844481814",
-          "22258454144418281",
-          "82258454144418812",
-          "55521424844521284",
-          "45548242122411218",
-          "14425121814111242",
-          "14425121814114452",
-          "45548242125224888",
-          "82258454142424122"
-        ],
-        "duplicateTopicIds": [
-          "22258451285214551",
-          "82258451852241182",
-          "14425128524445212",
-          "82258451852815242",
-          "14425128524558152",
-          "22258451511521541",
-          "22258451511584281",
-          "82258451514428252",
-          "45548241412282118",
-          "14425128218528512",
-          "82258451544551252",
-          "22258451528851481",
-          "45548241458841288",
-          "55521428251125514",
-          "14425128245241282",
-          "82258451528528452",
-          "82258451528525112",
-          "45548241458481448",
-          "22258451528585821",
-          "45548242125221818",
-          "22258454142442211",
-          "82258451544845552",
-          "45548241422482218",
-          "82258451542152242",
-          "82258451525415852",
-          "82258451582525522",
-          "14425128255514142",
-          "55521428211221454",
-          "14425128252451182"
-        ],
-        "briefChanges": {
-          "added": 11,
-          "updated": 3,
-          "expiredRemoved": 17
-        },
-        "duplicates": 29,
-        "excludedTopics": [
-          {
-            "topicId": "82258451515888422",
-            "reason": "无可读观点正文"
-          },
-          {
-            "topicId": "14425128211514252",
-            "reason": "无可读观点正文"
-          },
-          {
-            "topicId": "22258451544542521",
-            "reason": "无可读观点正文"
-          },
-          {
-            "topicId": "82258451544545522",
-            "reason": "无可读观点正文"
-          },
-          {
-            "topicId": "45548241422482158",
-            "reason": "无可读观点正文"
-          },
-          {
-            "topicId": "55521428244211884",
-            "reason": "无可读观点正文"
-          },
-          {
-            "topicId": "55521428244211424",
-            "reason": "无可读观点正文"
-          },
-          {
-            "topicId": "22258451544551241",
-            "reason": "无可读观点正文"
-          },
-          {
-            "topicId": "22258451544551511",
-            "reason": "无可读观点正文"
-          },
-          {
-            "topicId": "55521428245858814",
-            "reason": "无可读观点正文"
-          },
-          {
-            "topicId": "14425128214841482",
-            "reason": "无可读观点正文"
-          },
-          {
-            "topicId": "82258451528851452",
-            "reason": "无可读观点正文"
-          },
-          {
-            "topicId": "22258451525845451",
-            "reason": "无可读观点正文"
-          },
-          {
-            "topicId": "45548241488521848",
-            "reason": "无可读观点正文"
-          },
-          {
-            "topicId": "82258451588244812",
-            "reason": "无可读观点正文"
-          },
-          {
-            "topicId": "82258451588245522",
-            "reason": "无可读观点正文"
-          },
-          {
-            "topicId": "14425128255448512",
-            "reason": "无可读观点正文"
-          },
-          {
-            "topicId": "55521428211184224",
-            "reason": "无可读观点正文"
-          },
-          {
-            "topicId": "14425128221424412",
-            "reason": "无可读观点正文"
-          },
-          {
-            "topicId": "55521428224184844",
-            "reason": "无可读观点正文"
-          },
-          {
-            "topicId": "14425128224581852",
-            "reason": "无可读观点正文"
-          },
-          {
-            "topicId": "55521424884882524",
-            "reason": "无可读观点正文"
-          },
-          {
-            "topicId": "45548242115154288",
-            "reason": "无可读观点正文"
-          },
-          {
-            "topicId": "55521424885441814",
-            "reason": "无可读观点正文"
-          },
-          {
-            "topicId": "14425121814112842",
-            "reason": "无可读观点正文"
-          },
-          {
-            "topicId": "82258451285454582",
-            "reason": "仅标题、图片或附件提示，无可独立阅读的实质正文"
-          },
-          {
-            "topicId": "45548241842544528",
-            "reason": "仅标题、图片或附件提示，无可独立阅读的实质正文"
-          },
-          {
-            "topicId": "82258451541225842",
-            "reason": "仅标题、图片或附件提示，无可独立阅读的实质正文"
-          },
-          {
-            "topicId": "22258451542181841",
-            "reason": "仅标题、图片或附件提示，无可独立阅读的实质正文"
-          },
-          {
-            "topicId": "14425128215224282",
-            "reason": "仅标题、图片或附件提示，无可独立阅读的实质正文"
-          },
-          {
-            "topicId": "45548241424211888",
-            "reason": "仅标题、图片或附件提示，无可独立阅读的实质正文"
-          },
-          {
-            "topicId": "55521428252528224",
-            "reason": "仅标题、图片或附件提示，无可独立阅读的实质正文"
-          },
-          {
-            "topicId": "55521428211118124",
-            "reason": "仅标题、图片或附件提示，无可独立阅读的实质正文"
-          },
-          {
-            "topicId": "82258451554812542",
-            "reason": "仅标题、图片或附件提示，无可独立阅读的实质正文"
-          },
-          {
-            "topicId": "22258451552521821",
-            "reason": "仅标题、图片或附件提示，无可独立阅读的实质正文"
-          },
-          {
-            "topicId": "55521428225252254",
-            "reason": "仅标题、图片或附件提示，无可独立阅读的实质正文"
-          }
-        ],
-        "pagination": {
-          "pages": 10,
-          "pageRowsFetched": 300,
-          "limit": 30,
-          "stoppedWhenPageReachedCoverage": true
-        },
-        "dedupCheck": {
-          "candidateKeys": 1032,
-          "candidateBuckets": 252,
-          "algorithm": "sha256-utf8-v1"
-        },
-        "expiredBriefIds": [
-          "anker-product-channel-q3-20261030",
-          "dairy-supply-demand-cycle-20261030",
-          "meta-home-robot-prototype-20261102",
-          "apparel-brand-divergence-q3-20261102",
-          "swancor-home-robot-execution-20261102",
-          "apple-terminal-memory-cost-20261103",
-          "token-livestream-commerce-20261103",
-          "guide-dog-robot-commercialization-20261103",
-          "smoore-product-retail-channel-20261103",
-          "textile-polyester-supply-demand-20261103",
-          "nongfu-product-channel-growth-20261103",
-          "yuandong-retail-online-channel-20261103",
-          "passenger-car-dealer-product-upgrade-20261103",
-          "three-gorges-cruise-demand-20261103",
-          "tencent-consumer-ai-search-20261103",
-          "estee-lauder-travel-retail-20261104",
-          "zhengzhong-design-renovation-20261104"
-        ]
-      }
-    },
-    "researchWindowHasStoredRows": false,
-    "researchWindowCoverageVerified": false,
-    "metadataRefresh": {
-      "status": "unavailable",
-      "reason": "可调用工具未提供知识星球主题/附件元数据扫描能力；最新main仍为11月4日回执",
-      "attachmentContentRead": false
+    "attachmentIndexSha256": "8485632a924b74d0008754c6eed73423060ad48f2ca4f7f48e7a29102ed0308a",
+    "attachmentContentRead": false,
+    "researchGap": {
+      "status": "full_source_coverage_not_independently_asserted",
+      "note": "按当前完整源库逐URL列出本期6篇，晚到批次已复核；最新main当前研究批次回执单列保存，不将最新主题视为历史扫描截止。"
     }
   },
   "draftRecoveryChecks": [
@@ -2609,37 +2206,81 @@
   "publicationAuthorization": {
     "requestedBy": "user",
     "policyDate": "2026-10-23",
-    "rule": "当日16点后真实observedAt即可放行；不要求研究或附件覆盖18点",
-    "evaluatedAt": "2026-11-07T18:03:37+08:00",
-    "eligible": false,
-    "actualObservedAt": "2026-11-04T08:32:00.491Z"
+    "evaluatedAt": "2026-11-08T18:05:07+08:00",
+    "eligible": true,
+    "actualObservedAt": "2026-11-08T08:29:50.476Z",
+    "basis": "最新真实完整扫描覆盖11月6日18点至7日18点；按原截止重建候选并逐篇重新AI编辑，本次用户授权恢复。"
   },
   "validation": {
-    "editorial": "passed: 372 characters; staging validation before source-gate blocking",
-    "sourcesAndOriginals": "passed: zero stored research rows in this window; no claim of source completeness",
-    "resourceCheck": "failed: no complete scan covering this window and no Nov7 observedAt after16",
-    "dailyTests": {
-      "passed": 67
+    "checkedAt": "2026-11-08T18:07:43+08:00",
+    "editorial": true,
+    "resources": true,
+    "fullCorpusAndSha256": true,
+    "dailyUnitTests": {
+      "passed": 69,
+      "failed": 0
     },
-    "siteCheck": {
-      "status": "failed",
-      "reason": "既有company-database.html adapter ordering"
+    "dailyPageAssets": "PASS: 1 entrypoint, 102 scripts",
+    "uiAndExports": "three points; summaries visible in summary; each card one details, no open; full bodies equal source; no segment resources; copy and download equal; earnings last",
+    "fullSiteCheck": {
+      "passed": false,
+      "existingUnrelatedFailure": "company-database.html adapter ordering: company-design.css vs site-polish.css"
     },
-    "dailySiteCheck": "passed: asset order and files",
-    "renderCheck": "passed: three points; no open/nested originals; attachments pending; copy and earnings order consistent",
-    "backfill": {
+    "prepublicationBackfill": {
       "updated": [],
-      "skipped": [],
-      "validated": [
+      "skipped": []
+    },
+    "previousPublishedBackfill": {
+      "dates": [
         "2026-11-04",
         "2026-11-03"
-      ]
-    },
-    "publicReport": "unchanged; latest formal Nov4"
+      ],
+      "resourcesValidated": true,
+      "historicalEditorialChanged": false
+    }
   },
-  "publicationStatus": "blocked",
-  "publicationBlockers": [
-    "缺少2026-11-07当日16点后真实附件扫描回执；最新observedAt仍为2026-11-04T08:32:00.491Z（北京时间11月4日16:32）"
-  ],
-  "recoverable": true
+  "publicationStatus": "published",
+  "publicationBlockers": [],
+  "recoverable": false,
+  "recoveryAt": "2026-11-08T18:05:07+08:00",
+  "scopeReview": {
+    "previousOriginals": 0,
+    "newOriginals": 6,
+    "focusCards": 5,
+    "candidateSetChanged": true,
+    "allOriginalsReadAndSummariesRewritten": true,
+    "newScope": [
+      "Tapestry/Coach消费品牌",
+      "明月镜片主业消费光学",
+      "银河娱乐/永利澳门度假酒店经营"
+    ],
+    "excluded": [
+      "创想三维为3D打印设备",
+      "伟星股份为服装辅料制造",
+      "爱玛为汽车出行设备制造",
+      "Align/时代天使为医疗",
+      "泛交易复盘、策略与AI科技主体"
+    ]
+  },
+  "originalHashes": {
+    "https://wx.zsxq.com/group/88888142214212/topic/45548241524188888": "8e190b20708feaaddba0191c0cf159cad34f6272637e70e04a34b6568d46ea70",
+    "https://wx.zsxq.com/group/88888142214212/topic/45548241558284118": "7c7601be88ab2a345a932f2274016d2c435f9c250eaf4f7425dd4de54418339c",
+    "https://wx.zsxq.com/group/88888142214212/topic/14425128484452112": "f426b19be706c320c0948ece1bf186a6eb94c9b4644c6b00107353af421c13fd",
+    "https://wx.zsxq.com/group/88888142214212/topic/45548241515548158": "908aef70c0b378e0217c90f0d6386ac2b91a2b4b82a890575271af9ee20d900b",
+    "https://wx.zsxq.com/group/88888142214212/topic/14425128484425412": "cb0269fa4aa168bcff222858de6f85608cfeb4ee1a435317ab532dc2975cb67f",
+    "https://wx.zsxq.com/group/88888142214212/topic/82258451212255512": "8c1258d9d7ec4193d1b31021e6f0ad050aa400a5b8ce07c6f75db11362f6567e"
+  },
+  "originalsRecheck": {
+    "checkedAt": "2026-11-08T18:05:07+08:00",
+    "bodiesEqualCorpus": true,
+    "fullHashesVerified": true
+  },
+  "announcementRecheck": {
+    "checkedAt": "2026-11-08T18:05:07+08:00",
+    "urls": [
+      "turn933view0",
+      "turn933view1"
+    ],
+    "facts": "原始公司署名公告相关正文回读；2026-036仍需股东会、场地14降8；2026-035预存370万元、未耗不退不延。PDF直开失败后经公告页原始链接取得，非知识星球附件。"
+  }
 }

@@ -3098,7 +3098,7 @@
   },
   "publicationStatus": "blocked",
   "publicationBlockers": [
-    "缺少2026-11-06当日16点后真实附件扫描回执；最新observedAt为2026-11-04T08:32:00.491Z（北京时间11月4日16:32）"
+    "最新扫描从11月6日00:00开始，仍缺本期11月5日18:00至6日00:00；未取得11月6日16点后当日扫描回执。"
   ],
   "recoverable": true,
   "originalHashes": {
@@ -3115,5 +3115,67 @@
     "https://wx.zsxq.com/group/88888142214212/topic/55521428212145254": "a9cb3a2c82ef16a6de567c0a633514c7a166e0864749b741c148557aa8757421",
     "https://wx.zsxq.com/group/88888142214212/topic/55521428212158844": "ec0ee25caffe144cdb89d938a8630257a0c6e2bc1b654fb8e13fd15674967d46",
     "https://wx.zsxq.com/group/88888142214212/topic/82258451552251812": "2c8c50463f0c91d2c147ab7a2e2a559bf3b3ceefe17fa6ad806469c6b5c54d01"
+  },
+  "recoveryCheckedAt": "2026-11-08T18:05:07+08:00",
+  "latestRecoveryCheck": {
+    "candidateSetUnchanged": true,
+    "sources": 13,
+    "originalBodiesAndHashesVerified": true,
+    "scan": {
+      "generatedAt": "2026-11-08T08:29:50.476Z",
+      "sourceThrough": "2026-11-08T14:34:20.011+0800",
+      "scan": {
+        "observedAt": "2026-11-08T08:29:50.476Z",
+        "sourceGroup": "88888142214212",
+        "sourceName": "水木调研纪要-2.0",
+        "topicsScanned": 360,
+        "topicsInWindow": 323,
+        "topicPages": 12,
+        "topicWindowFrom": "2026-11-06T00:00:00+08:00",
+        "topicWindowTo": "2026-11-08T14:34:20.011+0800",
+        "boundaryReachedBeforeWindow": true,
+        "attachmentsObserved": 292,
+        "uniqueFileIds": 292,
+        "duplicateFileIds": 0,
+        "newRecords": 292,
+        "existingRecordsRefreshed": 0,
+        "attachmentContentRead": false,
+        "sourceMetadataFields": [
+          "fileId",
+          "topicId",
+          "filename",
+          "extension",
+          "bytes",
+          "fileCreatedAt",
+          "topicCreatedAt",
+          "durationSeconds",
+          "downloadCount",
+          "sourceHash",
+          "source"
+        ],
+        "windowStart": "2026-11-06T00:00:00+08:00",
+        "windowEnd": "2026-11-08T08:29:50.476Z",
+        "windowEndDate": "2026-11-08",
+        "windowComplete": true,
+        "archiveHasMore": true
+      },
+      "coverageStatus": "pending",
+      "requestedWindowStart": "2026-11-05T18:00:00+08:00",
+      "requestedCutoff": "2026-11-06T18:00:00+08:00",
+      "missingIntervals": [
+        {
+          "start": "2026-11-05T18:00:00+08:00",
+          "end": "2026-11-06T00:00:00+08:00"
+        }
+      ],
+      "publicationEligibility": {
+        "policy": "scan-observed-after-16",
+        "eligible": false,
+        "scanObservedAt": "2026-11-08T08:29:50.476Z",
+        "coverageComplete": false
+      }
+    },
+    "eligible": false,
+    "note": "零售AI供应商汉朔科技排除，未改变此前13篇消费经营原文；新增1项录音、1份研究资料仅元数据。"
   }
 }

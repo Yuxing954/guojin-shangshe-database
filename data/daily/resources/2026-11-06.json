@@ -3,25 +3,25 @@
   "date": "2026-11-06",
   "windowStart": "2026-11-05T18:00:00+08:00",
   "cutoff": "2026-11-06T18:00:00+08:00",
-  "sourceThrough": "2026-11-06T13:00:36.976+0800",
+  "sourceThrough": "2026-11-08T17:00:31.299+0800",
   "attachmentCatalog": {
-    "generatedAt": "2026-11-04T08:32:00.491Z",
-    "sourceThrough": "2026-11-04T16:29:35.473+0800",
+    "generatedAt": "2026-11-08T08:29:50.476Z",
+    "sourceThrough": "2026-11-08T14:34:20.011+0800",
     "scan": {
-      "observedAt": "2026-11-04T08:32:00.491Z",
+      "observedAt": "2026-11-08T08:29:50.476Z",
       "sourceGroup": "88888142214212",
       "sourceName": "水木调研纪要-2.0",
-      "topicsScanned": 780,
-      "topicsInWindow": 741,
-      "topicPages": 26,
-      "topicWindowFrom": "2026-11-02T00:00:00+08:00",
-      "topicWindowTo": "2026-11-04T16:29:35.473+0800",
+      "topicsScanned": 360,
+      "topicsInWindow": 323,
+      "topicPages": 12,
+      "topicWindowFrom": "2026-11-06T00:00:00+08:00",
+      "topicWindowTo": "2026-11-08T14:34:20.011+0800",
       "boundaryReachedBeforeWindow": true,
-      "attachmentsObserved": 664,
-      "uniqueFileIds": 664,
+      "attachmentsObserved": 292,
+      "uniqueFileIds": 292,
       "duplicateFileIds": 0,
-      "newRecords": 210,
-      "existingRecordsRefreshed": 337,
+      "newRecords": 292,
+      "existingRecordsRefreshed": 0,
       "attachmentContentRead": false,
       "sourceMetadataFields": [
         "fileId",
@@ -36,9 +36,9 @@
         "sourceHash",
         "source"
       ],
-      "windowStart": "2026-11-02T00:00:00+08:00",
-      "windowEnd": "2026-11-04T08:32:00.491Z",
-      "windowEndDate": "2026-11-04",
+      "windowStart": "2026-11-06T00:00:00+08:00",
+      "windowEnd": "2026-11-08T08:29:50.476Z",
+      "windowEndDate": "2026-11-08",
       "windowComplete": true,
       "archiveHasMore": true
     },
@@ -48,13 +48,13 @@
     "missingIntervals": [
       {
         "start": "2026-11-05T18:00:00+08:00",
-        "end": "2026-11-06T18:00:00+08:00"
+        "end": "2026-11-06T00:00:00+08:00"
       }
     ],
     "publicationEligibility": {
       "policy": "scan-observed-after-16",
       "eligible": false,
-      "scanObservedAt": "2026-11-04T08:32:00.491Z",
+      "scanObservedAt": "2026-11-08T08:29:50.476Z",
       "coverageComplete": false
     }
   },
@@ -140,8 +140,26 @@
       }
     ],
     "minutes": [],
-    "audio": [],
-    "reports": []
+    "audio": [
+      {
+        "id": "zsxq-file-214814144451241",
+        "title": "比音勒芬26Q3.mp3",
+        "publishedAt": "2026-11-06T11:47:45.894000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/82258451852815242",
+        "status": "未转写",
+        "sector": "other"
+      }
+    ],
+    "reports": [
+      {
+        "id": "zsxq-file-181581848844852",
+        "title": "中国消费：解答近期热点-熊市反弹、盈利预测下调与社保缴费-China Consumer_ Addressing recent FAQs_ Bear rally, earnings cuts, social-insurance payments.pdf",
+        "publishedAt": "2026-11-06T08:48:25.584000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/22258451544551241",
+        "status": "仅标题登记",
+        "sector": "other"
+      }
+    ]
   },
   "policy": "仅依据已入库元数据列出标题、发布时间和来源主题；未下载、读取或转写附件，不把研究报告标为纪要。"
 }

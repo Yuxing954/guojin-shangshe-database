@@ -11,6 +11,19 @@ def scan(start,end):
  return {'windowStart':start,'windowEnd':end,'observedAt':end,'windowComplete':True,'boundaryReachedBeforeWindow':True,'topicPages':2}
 
 class ScanUnionTest(unittest.TestCase):
+ def test_later_index_preserves_real_after_four_receipt_for_historical_backfill(self):
+  old=scan('2026-11-02T00:00:00+08:00','2026-11-04T16:32:00+08:00')
+  latest=scan('2026-11-06T00:00:00+08:00','2026-11-08T16:29:00+08:00')
+  with tempfile.TemporaryDirectory() as folder:
+   root=Path(folder);out=root/'data/daily/resources';out.mkdir(parents=True)
+   (out/'2026-11-04.json').write_text(json.dumps({'attachmentCatalog':{'scan':old}}))
+   with patch('build_daily_resource_list.ROOT',root):
+    c=catalog_for_window({'attachmentScan':latest},stamp('2026-11-03T18:00:00+08:00'),stamp('2026-11-04T18:00:00+08:00'))
+   self.assertTrue(c['publicationEligibility']['eligible'])
+   self.assertEqual(c['coverageStatus'],'pending')
+   self.assertEqual(c['scan']['observedAt'],old['observedAt'])
+   self.assertTrue(c['usedHistoricalScan'])
+   validate_attachment_coverage({'attachmentCatalog':c,'windowStart':c['requestedWindowStart'],'cutoff':c['requestedCutoff']})
  def catalog(self,scans):
   return attachment_catalog({'attachmentScan':scans[-1],'attachmentScans':scans},stamp('2026-10-16T18:00:00+08:00'),stamp('2026-10-19T18:00:00+08:00'))
  def test_overlapping_completed_receipts_cover_monday(self):

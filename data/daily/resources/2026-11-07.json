@@ -3,25 +3,25 @@
   "date": "2026-11-07",
   "windowStart": "2026-11-06T18:00:00+08:00",
   "cutoff": "2026-11-07T18:00:00+08:00",
-  "sourceThrough": "2026-11-06T13:00:36.976+0800",
+  "sourceThrough": "2026-11-08T17:00:31.299+0800",
   "attachmentCatalog": {
-    "generatedAt": "2026-11-04T08:32:00.491Z",
-    "sourceThrough": "2026-11-04T16:29:35.473+0800",
+    "generatedAt": "2026-11-08T08:29:50.476Z",
+    "sourceThrough": "2026-11-08T14:34:20.011+0800",
     "scan": {
-      "observedAt": "2026-11-04T08:32:00.491Z",
+      "observedAt": "2026-11-08T08:29:50.476Z",
       "sourceGroup": "88888142214212",
       "sourceName": "水木调研纪要-2.0",
-      "topicsScanned": 780,
-      "topicsInWindow": 741,
-      "topicPages": 26,
-      "topicWindowFrom": "2026-11-02T00:00:00+08:00",
-      "topicWindowTo": "2026-11-04T16:29:35.473+0800",
+      "topicsScanned": 360,
+      "topicsInWindow": 323,
+      "topicPages": 12,
+      "topicWindowFrom": "2026-11-06T00:00:00+08:00",
+      "topicWindowTo": "2026-11-08T14:34:20.011+0800",
       "boundaryReachedBeforeWindow": true,
-      "attachmentsObserved": 664,
-      "uniqueFileIds": 664,
+      "attachmentsObserved": 292,
+      "uniqueFileIds": 292,
       "duplicateFileIds": 0,
-      "newRecords": 210,
-      "existingRecordsRefreshed": 337,
+      "newRecords": 292,
+      "existingRecordsRefreshed": 0,
       "attachmentContentRead": false,
       "sourceMetadataFields": [
         "fileId",
@@ -36,30 +36,61 @@
         "sourceHash",
         "source"
       ],
-      "windowStart": "2026-11-02T00:00:00+08:00",
-      "windowEnd": "2026-11-04T08:32:00.491Z",
-      "windowEndDate": "2026-11-04",
+      "windowStart": "2026-11-06T00:00:00+08:00",
+      "windowEnd": "2026-11-08T08:29:50.476Z",
+      "windowEndDate": "2026-11-08",
       "windowComplete": true,
       "archiveHasMore": true
     },
-    "coverageStatus": "pending",
+    "coverageStatus": "complete",
     "requestedWindowStart": "2026-11-06T18:00:00+08:00",
     "requestedCutoff": "2026-11-07T18:00:00+08:00",
-    "missingIntervals": [
-      {
-        "start": "2026-11-06T18:00:00+08:00",
-        "end": "2026-11-07T18:00:00+08:00"
-      }
-    ],
     "publicationEligibility": {
       "policy": "scan-observed-after-16",
-      "eligible": false,
-      "scanObservedAt": "2026-11-04T08:32:00.491Z",
-      "coverageComplete": false
+      "eligible": true,
+      "scanObservedAt": "2026-11-08T08:29:50.476Z",
+      "coverageComplete": true
     }
   },
   "groups": {
-    "segments": [],
+    "segments": [
+      {
+        "title": "Tapestry集团2026年三季报解读：营收利润全面超预期，全年指引再度上调",
+        "publishedAt": "2026-11-07T10:51:12.176000+08:00",
+        "sector": "零售与消费出海",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/14425128484452112"
+      },
+      {
+        "title": "银河娱乐26Q3业绩速览：业绩略优于预期，VIP赢率偏高带来约5.8亿正向EBITDA影响",
+        "publishedAt": "2026-11-07T10:46:51.721000+08:00",
+        "sector": "酒店旅游",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/45548241515548158"
+      },
+      {
+        "title": "永利澳门3Q26业绩速览：EBITDAR同比下滑17%，低于市场预期",
+        "publishedAt": "2026-11-07T10:46:18.358000+08:00",
+        "sector": "酒店旅游",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/14425128484425412"
+      },
+      {
+        "title": "明月镜片：主业拐点确立，持续重点推荐❗️",
+        "publishedAt": "2026-11-07T10:45:28.897000+08:00",
+        "sector": "零售与消费出海",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/82258451212255512"
+      },
+      {
+        "title": "[太阳]【万辰集团：拟收购南京万昌49%少数股权】",
+        "publishedAt": "2026-11-06T22:30:32.200000+08:00",
+        "sector": "零售与消费出海",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/45548241524188888"
+      },
+      {
+        "title": "【国海食饮】万辰集团：拟现金收购南京万昌49%少数股权，归母利润持续增厚",
+        "publishedAt": "2026-11-06T18:06:19.555000+08:00",
+        "sector": "零售与消费出海",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/45548241558284118"
+      }
+    ],
     "minutes": [],
     "audio": [],
     "reports": []

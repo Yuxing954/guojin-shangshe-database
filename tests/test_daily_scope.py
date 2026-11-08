@@ -3,6 +3,12 @@ from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 from daily_scope import sector_for,title_for,published_for,substantive_segment
 class ScopeTests(unittest.TestCase):
+ def test_consumer_brands_resorts_and_retail_technology_boundary(self):
+  for title in ['Tapestry集团2026年三季报解读','明月镜片：主业拐点确立']:
+   self.assertEqual(sector_for(title),'零售与消费出海')
+  for title in ['银河娱乐26Q3业绩速览','永利澳门3Q26业绩速览']:
+   self.assertEqual(sector_for(title),'酒店旅游')
+  self.assertIsNone(sector_for('【国泰海通计算机】汉朔科技：高速增长的全球零售AI龙头'))
  def test_platform_rally_and_airline_cost_note(self):
   self.assertIsNone(sector_for('恒科大涨超5%【申万零售社服】','推荐阿里巴巴、美团，平台电商修复'))
   self.assertEqual(sector_for('【华创交运】油价大幅下挫，关注航空左侧机会！','春秋Q3实现利润，缓解航油成本压力'),'酒店旅游')
@@ -45,8 +51,9 @@ class ScopeTests(unittest.TestCase):
  def test_original_publication_precision_takes_precedence(self):
   self.assertEqual(published_for({'时间':'2026-10-15 12:22','原始发布时间':'2026-10-15T12:22:04.136+0800'}),'2026-10-15T12:22:04.136+0800')
  def test_brand_retail_and_beauty_not_pure_technology(self):
-  for title in ['【国泰海通美护】双十一前瞻','361度26Q3运营数据交流会','【中泰商社】汉朔科技：智慧零售方案']:
+  for title in ['【国泰海通美护】双十一前瞻','361度26Q3运营数据交流会']:
    self.assertEqual(sector_for(title),'零售与消费出海')
+  self.assertIsNone(sector_for('【中泰商社】汉朔科技：智慧零售方案'))
  def test_excludes_unrelated(self):
   for title in ['食饮周观点：白酒动销改善','惠泰医疗业绩预期','GPU电源研究','国海轻工周观点','白酒渠道反馈：商超动销']:
    self.assertIsNone(sector_for(title,'酒店消费门店'))

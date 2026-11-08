@@ -37,6 +37,9 @@ def substantive_segment(title,body):
  return len(text)>=80 or (len(text)>=40 and bool(sector_for(title,body)) and bool(re.search(r'\d+(?:\.\d+)?\s*(?:%|亿|万|家|港元|美元|元)',text)) and bool(re.search(r'减持|增持|回购|经营|收入|利润|门店|GMV',text,re.I)))
 
 def sector_for(title,body=''):
+ if '汉朔科技' in title:return None  # Retail technology supplier, not retail operations.
+ if re.search(r'Tapestry|Coach|明月镜片',title,re.I):return '零售与消费出海'
+ if re.search(r'银河娱乐|永利澳门',title):return '酒店旅游'
  if re.search(r'重点推荐【毛戈平】【安克创新】【菜百股份】',title) and '线上双十一' in body:return '零售与消费出海'
  if '出口中宏观数据跟踪' in title and 'Costco零售额' in body:return '零售与消费出海'
  if title.startswith('自美伊冲突以来') and '航空淡季' in body and '春运' in body:return '酒店旅游'
