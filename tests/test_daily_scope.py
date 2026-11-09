@@ -3,6 +3,9 @@ from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 from daily_scope import sector_for,title_for,published_for,substantive_segment
 class ScopeTests(unittest.TestCase):
+ def test_generic_transport_view_requires_passenger_operating_evidence(self):
+  self.assertEqual(sector_for('观点更新','航空票价回升，燃油附加费调整'),'酒店旅游')
+  self.assertIsNone(sector_for('观点更新','机器人与半导体行业更新'))
  def test_consumer_brands_resorts_and_retail_technology_boundary(self):
   for title in ['Tapestry集团2026年三季报解读','明月镜片：主业拐点确立']:
    self.assertEqual(sector_for(title),'零售与消费出海')

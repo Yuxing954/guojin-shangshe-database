@@ -37,6 +37,7 @@ def substantive_segment(title,body):
  return len(text)>=80 or (len(text)>=40 and bool(sector_for(title,body)) and bool(re.search(r'\d+(?:\.\d+)?\s*(?:%|亿|万|家|港元|美元|元)',text)) and bool(re.search(r'减持|增持|回购|经营|收入|利润|门店|GMV',text,re.I)))
 
 def sector_for(title,body=''):
+ if title=='观点更新' and all(x in body for x in ('航空','票价','燃油附加费')):return '酒店旅游'
  if '汉朔科技' in title:return None  # Retail technology supplier, not retail operations.
  if re.search(r'Tapestry|Coach|明月镜片',title,re.I):return '零售与消费出海'
  if re.search(r'银河娱乐|永利澳门',title):return '酒店旅游'
