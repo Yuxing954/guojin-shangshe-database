@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-09T16:18:46+08:00",
+  "generatedAt": "2026-11-09T16:33:51+08:00",
   "industries": [
     {
       "id": "hotel",
@@ -10,7 +10,7 @@
       "unit": "元",
       "precision": 2,
       "change": 1.4218162009077329,
-      "changeLabel": "同周号同比，未作节假日错期调整",
+      "changeLabel": "同比",
       "period": "2026W45 · 2026-11-08",
       "asOf": "2026-11-08",
       "freshnessDays": 14,
@@ -54,7 +54,7 @@
       "id": "dining",
       "name": "餐饮",
       "metric": "全国餐饮收入",
-      "value": 4544,
+      "value": 4544.0,
       "unit": "亿元",
       "precision": 0,
       "change": 1.1,
@@ -71,7 +71,7 @@
     {
       "sector": "酒店经营",
       "title": "酒店量价",
-      "summary": "全国 RevPAR 为 105.9 元，同周号同比 +1.4%（未作节假日错期调整）。结合入住率与房价查看变化来源。",
+      "summary": "全国 RevPAR 为 105.9 元，同比 +1.4%。",
       "asOf": "2026-11-08",
       "href": "industry.html#hotel"
     },
