@@ -2261,11 +2261,21 @@
       {
         "title": "10月服务价格同比温和上涨，出行月环比受国庆拉动",
         "period": "2026年10月；全国城乡CPI，2025年基期",
-        "summary": "服务价格同比上涨0.7%、出行服务上涨1.5%，涨幅分别较9月收窄0.1、0.6个百分点；核心CPI同比上涨0.8%，整体CPI上涨0.7%。宾馆住宿、飞机票、旅行社收费月环比分别上涨6.5%、3.3%、2.4%，假期需求形成季节性支撑，价格回升与持续经营景气需分别判断；黄金饰品价格同比上涨4.5%、月环比下降5.9%，金价对珠宝消费客单的影响边际减弱。",
+        "summary": "服务价格同比上涨0.7%、出行服务上涨1.5%，涨幅分别较9月收窄0.1、0.6个百分点；核心CPI同比上涨0.8%，整体CPI上涨0.7%。宾馆住宿、飞机票、旅行社收费月环比分别上涨6.5%、3.3%、2.4%，假期需求形成季节性支撑，服务价格同比涨幅收窄反映持续提价偏温和；黄金饰品价格同比上涨4.5%、月环比下降5.9%，金价对珠宝消费客单的影响边际减弱。",
         "source": "国家统计局",
         "url": "https://www.stats.gov.cn/sj/sjjd/202611/t20261109_1965796.html",
         "publishedAt": "2026-11-09T09:30:00+08:00",
         "availableAt": "2026-11-09T18:08:13+08:00",
+        "evidenceFile": "data/daily/evidence/2026-11-09.json"
+      },
+      {
+        "title": "海南离岛免税1—10月金额同比增长12.5%，客流与客单共同贡献",
+        "period": "2026年1—10月；海南离岛免税",
+        "summary": "购物金额276.6亿元、购物人数410.1万人次、购物件数2311.3万件，同比分别增长12.5%、8.9%、4.4%；按金额与人数计算，客单同比约增长3.3%。客流增长之外，客单提升带动销售增速高于人数及件数增速，品类扩充与门店供给优化有利于承接购物需求。",
+        "source": "中国新闻网（海口海关当日披露）",
+        "url": "https://www.chinanews.com/cj/2026/11-09/10728789.shtml",
+        "publishedAt": "2026-11-09T14:51:48+08:00",
+        "availableAt": "2026-11-10T18:08:26+08:00",
         "evidenceFile": "data/daily/evidence/2026-11-09.json"
       }
     ],
@@ -2296,7 +2306,14 @@
       "6日美国就业与消费者信心已超本期行业24小时，不滚动列示。",
       "周度住宿及其他行业未取得完整发布列表，空项不表示确认无新增。",
       "美国消费信贷日历只有候选时间，未读官方数据，不列入。"
-    ]
+    ],
+    "lateVerification": {
+      "at": "2026-11-10T18:08:26+08:00",
+      "originalPublicationAt": "2026-11-09T14:51:48+08:00",
+      "url": "https://www.chinanews.com/cj/2026/11-09/10728789.shtml",
+      "reason": "尚未正式发布草稿恢复前，补核原窗口内海口海关新数据；不移动截点。",
+      "computedCustomerSpendYoy": 3.3057851239669533
+    }
   },
   "earningsChecks": {
     "calendarFile": "data/earnings-calendar.json",
@@ -2320,7 +2337,7 @@
     "receipt": "turn965view0/turn965search17；亚朵公司IR10月27日预约11月10日美股盘前2026Q3；电话会时间不当作报告精确发布时间。华住16日、名创17日、周大福24日均超范围。未穷尽动态IR列表，不声明覆盖公司没有其他财报。"
   },
   "sourceCoverage": {
-    "latestMain": "90dcc37f3988a77ff5f2f010a5b7af3644b119fc",
+    "latestMain": "3429eb0d5ca840d62905e59e0de1a1e94d2220fd",
     "manifestFile": "data/research/updates/manifest.json",
     "manifestSha256": "05e36ec8e284f0b154edc7be5c28ebb5e4c66545067b42763234fa29355e5f5c",
     "researchReceipt": {
@@ -2473,23 +2490,23 @@
       }
     },
     "attachmentCatalog": {
-      "generatedAt": "2026-11-08T08:29:50.476Z",
-      "sourceThrough": "2026-11-08T14:34:20.011+0800",
+      "generatedAt": "2026-11-10T08:32:00.167Z",
+      "sourceThrough": "2026-11-10T14:58:04.744+0800",
       "scan": {
-        "observedAt": "2026-11-08T08:29:50.476Z",
+        "observedAt": "2026-11-10T08:32:00.167Z",
         "sourceGroup": "88888142214212",
         "sourceName": "水木调研纪要-2.0",
-        "topicsScanned": 360,
-        "topicsInWindow": 323,
-        "topicPages": 12,
-        "topicWindowFrom": "2026-11-06T00:00:00+08:00",
-        "topicWindowTo": "2026-11-08T14:34:20.011+0800",
+        "topicsScanned": 720,
+        "topicsInWindow": 685,
+        "topicPages": 24,
+        "topicWindowFrom": "2026-11-08T00:00:00+08:00",
+        "topicWindowTo": "2026-11-10T14:58:04.744+0800",
         "boundaryReachedBeforeWindow": true,
-        "attachmentsObserved": 292,
-        "uniqueFileIds": 292,
+        "attachmentsObserved": 450,
+        "uniqueFileIds": 450,
         "duplicateFileIds": 0,
-        "newRecords": 292,
-        "existingRecordsRefreshed": 0,
+        "newRecords": 439,
+        "existingRecordsRefreshed": 11,
         "attachmentContentRead": false,
         "sourceMetadataFields": [
           "fileId",
@@ -2504,29 +2521,97 @@
           "sourceHash",
           "source"
         ],
-        "windowStart": "2026-11-06T00:00:00+08:00",
-        "windowEnd": "2026-11-08T08:29:50.476Z",
-        "windowEndDate": "2026-11-08",
+        "windowStart": "2026-11-08T00:00:00+08:00",
+        "windowEnd": "2026-11-10T08:32:00.167Z",
+        "windowEndDate": "2026-11-10",
         "windowComplete": true,
         "archiveHasMore": true
       },
-      "coverageStatus": "pending",
+      "coverageStatus": "complete",
       "requestedWindowStart": "2026-11-06T18:00:00+08:00",
       "requestedCutoff": "2026-11-09T18:00:00+08:00",
-      "missingIntervals": [
+      "coverageScans": [
         {
-          "start": "2026-11-08T16:29:50.476000+08:00",
-          "end": "2026-11-09T18:00:00+08:00"
+          "observedAt": "2026-11-08T08:29:50.476Z",
+          "sourceGroup": "88888142214212",
+          "sourceName": "水木调研纪要-2.0",
+          "topicsScanned": 360,
+          "topicsInWindow": 323,
+          "topicPages": 12,
+          "topicWindowFrom": "2026-11-06T00:00:00+08:00",
+          "topicWindowTo": "2026-11-08T14:34:20.011+0800",
+          "boundaryReachedBeforeWindow": true,
+          "attachmentsObserved": 292,
+          "uniqueFileIds": 292,
+          "duplicateFileIds": 0,
+          "newRecords": 292,
+          "existingRecordsRefreshed": 0,
+          "attachmentContentRead": false,
+          "sourceMetadataFields": [
+            "fileId",
+            "topicId",
+            "filename",
+            "extension",
+            "bytes",
+            "fileCreatedAt",
+            "topicCreatedAt",
+            "durationSeconds",
+            "downloadCount",
+            "sourceHash",
+            "source"
+          ],
+          "windowStart": "2026-11-06T00:00:00+08:00",
+          "windowEnd": "2026-11-08T08:29:50.476Z",
+          "windowEndDate": "2026-11-08",
+          "windowComplete": true,
+          "archiveHasMore": true,
+          "receiptFile": "data/daily/resources/2026-11-09.json"
+        },
+        {
+          "observedAt": "2026-11-10T08:32:00.167Z",
+          "sourceGroup": "88888142214212",
+          "sourceName": "水木调研纪要-2.0",
+          "topicsScanned": 720,
+          "topicsInWindow": 685,
+          "topicPages": 24,
+          "topicWindowFrom": "2026-11-08T00:00:00+08:00",
+          "topicWindowTo": "2026-11-10T14:58:04.744+0800",
+          "boundaryReachedBeforeWindow": true,
+          "attachmentsObserved": 450,
+          "uniqueFileIds": 450,
+          "duplicateFileIds": 0,
+          "newRecords": 439,
+          "existingRecordsRefreshed": 11,
+          "attachmentContentRead": false,
+          "sourceMetadataFields": [
+            "fileId",
+            "topicId",
+            "filename",
+            "extension",
+            "bytes",
+            "fileCreatedAt",
+            "topicCreatedAt",
+            "durationSeconds",
+            "downloadCount",
+            "sourceHash",
+            "source"
+          ],
+          "windowStart": "2026-11-08T00:00:00+08:00",
+          "windowEnd": "2026-11-10T08:32:00.167Z",
+          "windowEndDate": "2026-11-10",
+          "windowComplete": true,
+          "archiveHasMore": true
         }
       ],
       "publicationEligibility": {
         "policy": "scan-observed-after-16",
-        "eligible": false,
-        "scanObservedAt": "2026-11-08T08:29:50.476Z",
-        "coverageComplete": false
-      }
+        "eligible": true,
+        "scanObservedAt": "2026-11-10T08:32:00.167Z",
+        "coverageComplete": true
+      },
+      "usedHistoricalScan": true
     },
-    "librarySha256": "8485632a924b74d0008754c6eed73423060ad48f2ca4f7f48e7a29102ed0308a",
+    "librarySha256": "eac70b99d649567e51944ed2875bc2f9b870e573d32e50a4ca279e0c5686cb30",
     "attachmentContentRead": false,
     "researchCoverage": "完整存量与不可变增量候选已逐篇通读；最新主题为9日00:53，研究批次覆盖18点未获独立证明。"
   },
@@ -2542,22 +2627,206 @@
     ],
     "added": "泛标题观点更新有航空客运票价、燃油附加费实质内容，窄规则补入。混合运输稿仅编辑航空客运；不编辑航空货运、快递或跨境电商。",
     "originalsRead": 10,
-    "focusCards": 9
+    "focusCards": 9,
+    "originalsRereadAt": "2026-11-10T18:08:26+08:00",
+    "candidateSetUnchanged": true,
+    "bodiesAndHashesVerified": true,
+    "summaryRewritten": true
   },
   "draftRecoveryChecks": [
     {
-      "date": "2026-11-05",
+      "date": "2026-11-09",
+      "checkedAt": "2026-11-10T18:08:26+08:00",
+      "cutoff": "2026-11-09T18:00:00+08:00",
       "candidateSetUnchanged": true,
       "bodiesAndHashesVerified": true,
-      "eligible": false,
-      "reason": "现有扫描从11月6日00点起，未覆盖其原始完整窗口，且无当日16点后回执。"
+      "eligible": true,
+      "attachmentCatalog": {
+        "generatedAt": "2026-11-10T08:32:00.167Z",
+        "sourceThrough": "2026-11-10T14:58:04.744+0800",
+        "scan": {
+          "observedAt": "2026-11-10T08:32:00.167Z",
+          "sourceGroup": "88888142214212",
+          "sourceName": "水木调研纪要-2.0",
+          "topicsScanned": 720,
+          "topicsInWindow": 685,
+          "topicPages": 24,
+          "topicWindowFrom": "2026-11-08T00:00:00+08:00",
+          "topicWindowTo": "2026-11-10T14:58:04.744+0800",
+          "boundaryReachedBeforeWindow": true,
+          "attachmentsObserved": 450,
+          "uniqueFileIds": 450,
+          "duplicateFileIds": 0,
+          "newRecords": 439,
+          "existingRecordsRefreshed": 11,
+          "attachmentContentRead": false,
+          "sourceMetadataFields": [
+            "fileId",
+            "topicId",
+            "filename",
+            "extension",
+            "bytes",
+            "fileCreatedAt",
+            "topicCreatedAt",
+            "durationSeconds",
+            "downloadCount",
+            "sourceHash",
+            "source"
+          ],
+          "windowStart": "2026-11-08T00:00:00+08:00",
+          "windowEnd": "2026-11-10T08:32:00.167Z",
+          "windowEndDate": "2026-11-10",
+          "windowComplete": true,
+          "archiveHasMore": true
+        },
+        "coverageStatus": "complete",
+        "requestedWindowStart": "2026-11-06T18:00:00+08:00",
+        "requestedCutoff": "2026-11-09T18:00:00+08:00",
+        "coverageScans": [
+          {
+            "observedAt": "2026-11-08T08:29:50.476Z",
+            "sourceGroup": "88888142214212",
+            "sourceName": "水木调研纪要-2.0",
+            "topicsScanned": 360,
+            "topicsInWindow": 323,
+            "topicPages": 12,
+            "topicWindowFrom": "2026-11-06T00:00:00+08:00",
+            "topicWindowTo": "2026-11-08T14:34:20.011+0800",
+            "boundaryReachedBeforeWindow": true,
+            "attachmentsObserved": 292,
+            "uniqueFileIds": 292,
+            "duplicateFileIds": 0,
+            "newRecords": 292,
+            "existingRecordsRefreshed": 0,
+            "attachmentContentRead": false,
+            "sourceMetadataFields": [
+              "fileId",
+              "topicId",
+              "filename",
+              "extension",
+              "bytes",
+              "fileCreatedAt",
+              "topicCreatedAt",
+              "durationSeconds",
+              "downloadCount",
+              "sourceHash",
+              "source"
+            ],
+            "windowStart": "2026-11-06T00:00:00+08:00",
+            "windowEnd": "2026-11-08T08:29:50.476Z",
+            "windowEndDate": "2026-11-08",
+            "windowComplete": true,
+            "archiveHasMore": true,
+            "receiptFile": "data/daily/resources/2026-11-09.json"
+          },
+          {
+            "observedAt": "2026-11-10T08:32:00.167Z",
+            "sourceGroup": "88888142214212",
+            "sourceName": "水木调研纪要-2.0",
+            "topicsScanned": 720,
+            "topicsInWindow": 685,
+            "topicPages": 24,
+            "topicWindowFrom": "2026-11-08T00:00:00+08:00",
+            "topicWindowTo": "2026-11-10T14:58:04.744+0800",
+            "boundaryReachedBeforeWindow": true,
+            "attachmentsObserved": 450,
+            "uniqueFileIds": 450,
+            "duplicateFileIds": 0,
+            "newRecords": 439,
+            "existingRecordsRefreshed": 11,
+            "attachmentContentRead": false,
+            "sourceMetadataFields": [
+              "fileId",
+              "topicId",
+              "filename",
+              "extension",
+              "bytes",
+              "fileCreatedAt",
+              "topicCreatedAt",
+              "durationSeconds",
+              "downloadCount",
+              "sourceHash",
+              "source"
+            ],
+            "windowStart": "2026-11-08T00:00:00+08:00",
+            "windowEnd": "2026-11-10T08:32:00.167Z",
+            "windowEndDate": "2026-11-10",
+            "windowComplete": true,
+            "archiveHasMore": true
+          }
+        ],
+        "publicationEligibility": {
+          "policy": "scan-observed-after-16",
+          "eligible": true,
+          "scanObservedAt": "2026-11-10T08:32:00.167Z",
+          "coverageComplete": true
+        },
+        "usedHistoricalScan": true
+      },
+      "result": "重读10篇原文并修订三点总结后恢复发布。"
     },
     {
       "date": "2026-11-06",
+      "checkedAt": "2026-11-10T18:08:26+08:00",
+      "cutoff": "2026-11-06T18:00:00+08:00",
       "candidateSetUnchanged": true,
       "bodiesAndHashesVerified": true,
       "eligible": false,
-      "reason": "现有扫描从11月6日00点起，未覆盖其原始完整窗口，且无当日16点后回执。"
+      "attachmentCatalog": {
+        "generatedAt": "2026-11-10T08:32:00.167Z",
+        "sourceThrough": "2026-11-10T14:58:04.744+0800",
+        "scan": {
+          "observedAt": "2026-11-10T08:32:00.167Z",
+          "sourceGroup": "88888142214212",
+          "sourceName": "水木调研纪要-2.0",
+          "topicsScanned": 720,
+          "topicsInWindow": 685,
+          "topicPages": 24,
+          "topicWindowFrom": "2026-11-08T00:00:00+08:00",
+          "topicWindowTo": "2026-11-10T14:58:04.744+0800",
+          "boundaryReachedBeforeWindow": true,
+          "attachmentsObserved": 450,
+          "uniqueFileIds": 450,
+          "duplicateFileIds": 0,
+          "newRecords": 439,
+          "existingRecordsRefreshed": 11,
+          "attachmentContentRead": false,
+          "sourceMetadataFields": [
+            "fileId",
+            "topicId",
+            "filename",
+            "extension",
+            "bytes",
+            "fileCreatedAt",
+            "topicCreatedAt",
+            "durationSeconds",
+            "downloadCount",
+            "sourceHash",
+            "source"
+          ],
+          "windowStart": "2026-11-08T00:00:00+08:00",
+          "windowEnd": "2026-11-10T08:32:00.167Z",
+          "windowEndDate": "2026-11-10",
+          "windowComplete": true,
+          "archiveHasMore": true
+        },
+        "coverageStatus": "pending",
+        "requestedWindowStart": "2026-11-05T18:00:00+08:00",
+        "requestedCutoff": "2026-11-06T18:00:00+08:00",
+        "missingIntervals": [
+          {
+            "start": "2026-11-05T18:00:00+08:00",
+            "end": "2026-11-06T18:00:00+08:00"
+          }
+        ],
+        "publicationEligibility": {
+          "policy": "scan-observed-after-16",
+          "eligible": false,
+          "scanObservedAt": "2026-11-10T08:32:00.167Z",
+          "coverageComplete": false
+        }
+      },
+      "result": "原窗口起段仍缺真实扫描覆盖；保留可恢复草稿，日常任务继续。"
     }
   ],
   "originalHashes": {
@@ -2575,30 +2844,27 @@
   "publicationAuthorization": {
     "requestedBy": "user",
     "policyDate": "2026-10-23",
-    "evaluatedAt": "2026-11-09T18:08:13+08:00",
-    "eligible": false,
-    "actualObservedAt": "2026-11-08T08:29:50.476Z",
-    "rule": "仅当报告日期当日16点后真实observedAt或原窗口完整历史扫描满足时发布；不以最新主题替代观察时间。"
+    "evaluatedAt": "2026-11-10T18:08:26+08:00",
+    "eligible": true,
+    "actualObservedAt": "2026-11-10T08:32:00.167Z",
+    "basis": "新旧真实扫描区间并集完整覆盖11月6日18点至9日18点；本次用户授权恢复发布，重读原文并改写总结。"
   },
-  "publicationStatus": "blocked",
-  "publicationBlockers": [
-    "缺少2026-11-09当日16:00或之后真实附件扫描回执；最新observedAt为2026-11-08T08:29:50.476Z（北京时间11月8日16:29），本期原窗口也未扫描完整。"
-  ],
-  "recoverable": true,
+  "publicationStatus": "published",
   "validation": {
-    "checkedAt": "2026-11-09T18:09:13+08:00",
+    "checkedAt": "2026-11-10T18:12:24+08:00",
     "editorialValid": true,
     "completeSourceList": true,
     "originalBodiesAndHashes": true,
-    "resourceGatePassed": false,
-    "resourceGateError": "Attachment scan must cover the daily window or be updated after 16:00 on the report date",
+    "resourceGatePassed": true,
     "dailyTestsPassed": 70,
-    "fullSiteCheck": "PASS: 32 entrypoints, 102 scripts, 10 inline scripts",
-    "ui": "9 single collapsed details;10 exact full bodies;3 summary points;summaries visible;no 查看来源;resources exclude segments;earnings last",
-    "previousTwoPublishedResources": [
+    "fullSiteCheck": "PASS:32 entrypoints,102 scripts,10 inline scripts",
+    "renderer": "实际daily.js+daily-announcements.js在VM执行；三点、摘要默认可见、无open/嵌套、无查看来源、附件无段子、复制下载一致、财报最后。",
+    "browserReadback": "未完成：浏览器扩展缺发起上下文；云浏览器需求服务403；本地浏览器socket受限。部署产物待回读。",
+    "previousTwoPublishedResourcesValidated": [
       "2026-11-08",
       "2026-11-07"
-    ],
-    "previousTwoPublishedValidated": true
-  }
+    ]
+  },
+  "previousPublicationStatus": "blocked",
+  "recoveredAt": "2026-11-10T18:08:26+08:00"
 }

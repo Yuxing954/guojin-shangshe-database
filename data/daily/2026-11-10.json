@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-10",
+  "cutoff": "2026-11-10T18:00:00+08:00",
+  "windowStart": "2026-11-09T18:00:00+08:00",
+  "windowHours": 24,
+  "industryWindowHours": 24,
+  "industryWindowStart": "2026-11-09T18:00:00+08:00",
+  "industryWindowEnd": "2026-11-10T18:00:00+08:00",
+  "generatedAt": "2026-11-10T18:08:40+08:00",
+  "sections": {
+    "briefs": [],
+    "views": [],
+    "data": [
+      {
+        "title": "10月人民币计价出口同比增长28.7%，消费相关出口结构仍分化",
+        "period": "2026年10月及1—10月；中国货物贸易，人民币计价",
+        "summary": "10月出口2.79万亿元、同比增长28.7%，进口2.08万亿元、增长34.7%；1—10月出口25.99万亿元、增长17.6%，其中劳密产品出口3.45万亿元、增长2.4%。整体外贸扩张较强，传统劳动密集型出口增长偏慢，消费品牌出海的订单与品类结构仍是经营分化的关键。",
+        "source": "中国新闻网（海关总署当日数据）",
+        "url": "https://www.chinanews.com/cj/2026/11-10/10729298.shtml",
+        "publishedAt": "2026-11-10T11:18:15+08:00",
+        "availableAt": "2026-11-10T18:08:26+08:00",
+        "evidenceFile": "data/daily/evidence/2026-11-10.json"
+      }
+    ],
+    "news": []
+  },
+  "coverage": {
+    "researchSourceTo": "2026-11-09T00:53:54.133+0800",
+    "newsCheckedAt": "2026-10-12T17:20:52+08:00",
+    "newsStatus": "本次检索未取得截点前24小时内可核验发布时间的商社新闻",
+    "excludedResearchRows": 0,
+    "attachmentCatalog": {
+      "generatedAt": "2026-11-10T08:32:00.167Z",
+      "sourceThrough": "2026-11-10T14:58:04.744+0800",
+      "scan": {
+        "observedAt": "2026-11-10T08:32:00.167Z",
+        "sourceGroup": "88888142214212",
+        "sourceName": "水木调研纪要-2.0",
+        "topicsScanned": 720,
+        "topicsInWindow": 685,
+        "topicPages": 24,
+        "topicWindowFrom": "2026-11-08T00:00:00+08:00",
+        "topicWindowTo": "2026-11-10T14:58:04.744+0800",
+        "boundaryReachedBeforeWindow": true,
+        "attachmentsObserved": 450,
+        "uniqueFileIds": 450,
+        "duplicateFileIds": 0,
+        "newRecords": 439,
+        "existingRecordsRefreshed": 11,
+        "attachmentContentRead": false,
+        "sourceMetadataFields": [
+          "fileId",
+          "topicId",
+          "filename",
+          "extension",
+          "bytes",
+          "fileCreatedAt",
+          "topicCreatedAt",
+          "durationSeconds",
+          "downloadCount",
+          "sourceHash",
+          "source"
+        ],
+        "windowStart": "2026-11-08T00:00:00+08:00",
+        "windowEnd": "2026-11-10T08:32:00.167Z",
+        "windowEndDate": "2026-11-10",
+        "windowComplete": true,
+        "archiveHasMore": true
+      },
+      "coverageStatus": "pending",
+      "requestedWindowStart": "2026-11-09T18:00:00+08:00",
+      "requestedCutoff": "2026-11-10T18:00:00+08:00",
+      "missingIntervals": [
+        {
+          "start": "2026-11-10T16:32:00.167000+08:00",
+          "end": "2026-11-10T18:00:00+08:00"
+        }
+      ],
+      "publicationEligibility": {
+        "policy": "scan-observed-after-16",
+        "eligible": true,
+        "scanObservedAt": "2026-11-10T08:32:00.167Z",
+        "coverageComplete": false
+      }
+    },
+    "researchCompleteThroughCutoff": false,
+    "announcementMonitoringStatus": "partial"
+  },
+  "notes": [
+    "重要数据仅按截点前24小时真实发布时间筛选；入库时间不替代发布时间。",
+    "段子、市场观点按原始发布时间筛选新增窗口（周一72小时、其他日24小时）；全部符合范围的内容供AI逐篇编辑。",
+    "新闻仅收录已核验原文、分钟级发布时间及来源链接的记录；空栏不代表市场没有新闻。",
+    "北京时间18:00截点；自动任务启动、检索和发布可能延迟。"
+  ]
+}
