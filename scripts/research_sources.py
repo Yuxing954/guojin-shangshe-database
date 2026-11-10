@@ -13,7 +13,7 @@ def row_keys(row):
     suffix = str(row.get('文件名', ''))
     content = str(row.get('内容') or row.get('摘要') or '').strip()
     return ((match.group(1), suffix) if match else None,
-            (str(row.get('时间') or row.get('日期') or ''), str(row.get('标题') or '')),
+            (str(row.get('原始发布时间') or row.get('时间') or row.get('日期') or '').replace('T', ' ')[:19], str(row.get('标题') or '')),
             hashlib.sha256(content.encode('utf-8')).hexdigest() if content else None)
 
 
