@@ -1,0 +1,571 @@
+{
+  "provider": "CME FedWatch",
+  "url": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html",
+  "retrievedAt": "2026-11-10T00:29:16.002Z",
+  "observedAt": null,
+  "tables": [
+    {
+      "title": "FED FUND FUTURES",
+      "rows": [
+        [
+          "FED FUND FUTURES"
+        ],
+        [
+          "ZQX6",
+          "ZQZ6",
+          "ZQF7",
+          "ZQG7",
+          "ZQH7",
+          "ZQJ7",
+          "ZQK7",
+          "ZQM7",
+          "ZQN7",
+          "ZQQ7",
+          "ZQU7",
+          "ZQV7",
+          "ZQX7"
+        ],
+        [
+          "96.1225",
+          "95.9725",
+          "95.9050",
+          "95.8550",
+          "95.8050",
+          "95.7275",
+          "95.7000",
+          "95.6550",
+          "95.6350",
+          "95.6250",
+          "95.6200",
+          "95.5975",
+          "95.6150"
+        ]
+      ]
+    },
+    {
+      "title": "CME FEDWATCH TOOL - CONDITIONAL MEETING PROBABILITIES",
+      "rows": [
+        [
+          "CME FEDWATCH TOOL - CONDITIONAL MEETING PROBABILITIES"
+        ],
+        [
+          "MEETING DATE",
+          "350-375",
+          "375-400",
+          "400-425",
+          "425-450",
+          "450-475",
+          "475-500",
+          "500-525"
+        ],
+        [
+          "2026/12/9",
+          "0.0%",
+          "16.0%",
+          "84.0%",
+          "0.0%",
+          "0.0%",
+          "0.0%",
+          "0.0%"
+        ],
+        [
+          "2027/1/27",
+          "0.0%",
+          "12.3%",
+          "68.4%",
+          "19.3%",
+          "0.0%",
+          "0.0%",
+          "0.0%"
+        ],
+        [
+          "2027/3/17",
+          "0.0%",
+          "6.1%",
+          "40.2%",
+          "44.0%",
+          "9.7%",
+          "0.0%",
+          "0.0%"
+        ],
+        [
+          "2027/4/28",
+          "0.0%",
+          "5.4%",
+          "36.2%",
+          "43.5%",
+          "13.7%",
+          "1.1%",
+          "0.0%"
+        ],
+        [
+          "2027/6/9",
+          "0.0%",
+          "4.0%",
+          "28.3%",
+          "41.6%",
+          "21.3%",
+          "4.4%",
+          "0.3%"
+        ],
+        [
+          "2027/7/28",
+          "0.0%",
+          "3.8%",
+          "27.3%",
+          "41.1%",
+          "22.2%",
+          "5.1%",
+          "0.5%"
+        ],
+        [
+          "2027/9/15",
+          "0.0%",
+          "3.4%",
+          "24.4%",
+          "39.4%",
+          "24.5%",
+          "7.2%",
+          "1.0%"
+        ],
+        [
+          "2027/10/27",
+          "0.3%",
+          "5.1%",
+          "25.6%",
+          "38.2%",
+          "23.1%",
+          "6.7%",
+          "1.0%"
+        ],
+        [
+          "2027/12/8",
+          "0.8%",
+          "7.3%",
+          "27.0%",
+          "36.6%",
+          "21.3%",
+          "6.1%",
+          "0.9%"
+        ]
+      ]
+    }
+  ],
+  "extractionEvidence": [
+    {
+      "file": "fedwatch-futures-20261110.json",
+      "sha256": "e95b41b79b09a125fe4f9bb9d93e7900d6f6a6bb248972ee07687cce368afc19",
+      "capture": {
+        "schema_version": 1,
+        "kind": "table",
+        "tab_id": 1544559361,
+        "source": {
+          "page_url": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool",
+          "frame_url": "https://cmegroup-tools.quikstrike.net/User/QuikStrikeView.aspx?viewitemid=IntegratedFedWatchTool&userId=lwolf&jobRole=&company=&companyType=&userId=&jobRole=&company=&companyType=&insid=256581433&qsid=1e348401-46ca-4237-8ed7-76e2348b85b4",
+          "frame_id": "9802316733406A60B2EE47F031439547",
+          "title": "QuikStrike",
+          "captured_at": "2026-11-10T00:29:03.172Z",
+          "target_id": "xt_463c2f2c-6dad-4b42-928c-40b0c394e863"
+        },
+        "columns": [
+          {
+            "key": "c1",
+            "name": "Fed Fund Futures / ZQX6",
+            "header_path": [
+              "Fed Fund Futures",
+              "ZQX6"
+            ],
+            "name_source": "header"
+          },
+          {
+            "key": "c2",
+            "name": "Fed Fund Futures / ZQZ6",
+            "header_path": [
+              "Fed Fund Futures",
+              "ZQZ6"
+            ],
+            "name_source": "header"
+          },
+          {
+            "key": "c3",
+            "name": "Fed Fund Futures / ZQF7",
+            "header_path": [
+              "Fed Fund Futures",
+              "ZQF7"
+            ],
+            "name_source": "header"
+          },
+          {
+            "key": "c4",
+            "name": "Fed Fund Futures / ZQG7",
+            "header_path": [
+              "Fed Fund Futures",
+              "ZQG7"
+            ],
+            "name_source": "header"
+          },
+          {
+            "key": "c5",
+            "name": "Fed Fund Futures / ZQH7",
+            "header_path": [
+              "Fed Fund Futures",
+              "ZQH7"
+            ],
+            "name_source": "header"
+          },
+          {
+            "key": "c6",
+            "name": "Fed Fund Futures / ZQJ7",
+            "header_path": [
+              "Fed Fund Futures",
+              "ZQJ7"
+            ],
+            "name_source": "header"
+          },
+          {
+            "key": "c7",
+            "name": "Fed Fund Futures / ZQK7",
+            "header_path": [
+              "Fed Fund Futures",
+              "ZQK7"
+            ],
+            "name_source": "header"
+          },
+          {
+            "key": "c8",
+            "name": "Fed Fund Futures / ZQM7",
+            "header_path": [
+              "Fed Fund Futures",
+              "ZQM7"
+            ],
+            "name_source": "header"
+          },
+          {
+            "key": "c9",
+            "name": "Fed Fund Futures / ZQN7",
+            "header_path": [
+              "Fed Fund Futures",
+              "ZQN7"
+            ],
+            "name_source": "header"
+          },
+          {
+            "key": "c10",
+            "name": "Fed Fund Futures / ZQQ7",
+            "header_path": [
+              "Fed Fund Futures",
+              "ZQQ7"
+            ],
+            "name_source": "header"
+          },
+          {
+            "key": "c11",
+            "name": "Fed Fund Futures / ZQU7",
+            "header_path": [
+              "Fed Fund Futures",
+              "ZQU7"
+            ],
+            "name_source": "header"
+          },
+          {
+            "key": "c12",
+            "name": "Fed Fund Futures / ZQV7",
+            "header_path": [
+              "Fed Fund Futures",
+              "ZQV7"
+            ],
+            "name_source": "header"
+          },
+          {
+            "key": "c13",
+            "name": "Fed Fund Futures / ZQX7",
+            "header_path": [
+              "Fed Fund Futures",
+              "ZQX7"
+            ],
+            "name_source": "header"
+          }
+        ],
+        "rows": [
+          {
+            "c1": "96.1225",
+            "c2": "95.9725",
+            "c3": "95.9050",
+            "c4": "95.8550",
+            "c5": "95.8050",
+            "c6": "95.7275",
+            "c7": "95.7000",
+            "c8": "95.6550",
+            "c9": "95.6350",
+            "c10": "95.6250",
+            "c11": "95.6200",
+            "c12": "95.5975",
+            "c13": "95.6150"
+          }
+        ],
+        "row_sources": [
+          {
+            "row": 0,
+            "source_row": 3,
+            "row_kind": "data",
+            "locator": "#MainContent_pnlContainer > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(3)"
+          }
+        ],
+        "spans": [],
+        "coverage": {
+          "scope": "loaded_dom",
+          "rows_returned": 1,
+          "truncated": false,
+          "dataset_complete": "unknown"
+        },
+        "warnings": []
+      }
+    },
+    {
+      "file": "fedwatch-probabilities-20261110.json",
+      "sha256": "4ad33733adad2127909c73ae1bea850bda77ae5ef22124d66c315eab3277dd8e",
+      "capture": {
+        "schema_version": 1,
+        "kind": "table",
+        "tab_id": 1544559361,
+        "source": {
+          "page_url": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool",
+          "frame_url": "https://cmegroup-tools.quikstrike.net/User/QuikStrikeView.aspx?viewitemid=IntegratedFedWatchTool&userId=lwolf&jobRole=&company=&companyType=&userId=&jobRole=&company=&companyType=&insid=256581433&qsid=1e348401-46ca-4237-8ed7-76e2348b85b4",
+          "frame_id": "9802316733406A60B2EE47F031439547",
+          "title": "QuikStrike",
+          "captured_at": "2026-11-10T00:29:16.002Z",
+          "target_id": "xt_04bfa062-ace2-4842-825f-5afbfb7910c8"
+        },
+        "columns": [
+          {
+            "key": "c1",
+            "name": "Meeting Date",
+            "header_path": [
+              "Meeting Date"
+            ],
+            "name_source": "header"
+          },
+          {
+            "key": "c2",
+            "name": "CME FedWatch Tool - Conditional Meeting Probabilities / 350-375",
+            "header_path": [
+              "CME FedWatch Tool - Conditional Meeting Probabilities",
+              "350-375"
+            ],
+            "name_source": "header"
+          },
+          {
+            "key": "c3",
+            "name": "CME FedWatch Tool - Conditional Meeting Probabilities / 375-400",
+            "header_path": [
+              "CME FedWatch Tool - Conditional Meeting Probabilities",
+              "375-400"
+            ],
+            "name_source": "header"
+          },
+          {
+            "key": "c4",
+            "name": "CME FedWatch Tool - Conditional Meeting Probabilities / 400-425",
+            "header_path": [
+              "CME FedWatch Tool - Conditional Meeting Probabilities",
+              "400-425"
+            ],
+            "name_source": "header"
+          },
+          {
+            "key": "c5",
+            "name": "CME FedWatch Tool - Conditional Meeting Probabilities / 425-450",
+            "header_path": [
+              "CME FedWatch Tool - Conditional Meeting Probabilities",
+              "425-450"
+            ],
+            "name_source": "header"
+          },
+          {
+            "key": "c6",
+            "name": "CME FedWatch Tool - Conditional Meeting Probabilities / 450-475",
+            "header_path": [
+              "CME FedWatch Tool - Conditional Meeting Probabilities",
+              "450-475"
+            ],
+            "name_source": "header"
+          },
+          {
+            "key": "c7",
+            "name": "CME FedWatch Tool - Conditional Meeting Probabilities / 475-500",
+            "header_path": [
+              "CME FedWatch Tool - Conditional Meeting Probabilities",
+              "475-500"
+            ],
+            "name_source": "header"
+          },
+          {
+            "key": "c8",
+            "name": "CME FedWatch Tool - Conditional Meeting Probabilities / 500-525",
+            "header_path": [
+              "CME FedWatch Tool - Conditional Meeting Probabilities",
+              "500-525"
+            ],
+            "name_source": "header"
+          }
+        ],
+        "rows": [
+          {
+            "c1": "2026/12/9",
+            "c2": "0.0%",
+            "c3": "16.0%",
+            "c4": "84.0%",
+            "c5": "0.0%",
+            "c6": "0.0%",
+            "c7": "0.0%",
+            "c8": "0.0%"
+          },
+          {
+            "c1": "2027/1/27",
+            "c2": "0.0%",
+            "c3": "12.3%",
+            "c4": "68.4%",
+            "c5": "19.3%",
+            "c6": "0.0%",
+            "c7": "0.0%",
+            "c8": "0.0%"
+          },
+          {
+            "c1": "2027/3/17",
+            "c2": "0.0%",
+            "c3": "6.1%",
+            "c4": "40.2%",
+            "c5": "44.0%",
+            "c6": "9.7%",
+            "c7": "0.0%",
+            "c8": "0.0%"
+          },
+          {
+            "c1": "2027/4/28",
+            "c2": "0.0%",
+            "c3": "5.4%",
+            "c4": "36.2%",
+            "c5": "43.5%",
+            "c6": "13.7%",
+            "c7": "1.1%",
+            "c8": "0.0%"
+          },
+          {
+            "c1": "2027/6/9",
+            "c2": "0.0%",
+            "c3": "4.0%",
+            "c4": "28.3%",
+            "c5": "41.6%",
+            "c6": "21.3%",
+            "c7": "4.4%",
+            "c8": "0.3%"
+          },
+          {
+            "c1": "2027/7/28",
+            "c2": "0.0%",
+            "c3": "3.8%",
+            "c4": "27.3%",
+            "c5": "41.1%",
+            "c6": "22.2%",
+            "c7": "5.1%",
+            "c8": "0.5%"
+          },
+          {
+            "c1": "2027/9/15",
+            "c2": "0.0%",
+            "c3": "3.4%",
+            "c4": "24.4%",
+            "c5": "39.4%",
+            "c6": "24.5%",
+            "c7": "7.2%",
+            "c8": "1.0%"
+          },
+          {
+            "c1": "2027/10/27",
+            "c2": "0.3%",
+            "c3": "5.1%",
+            "c4": "25.6%",
+            "c5": "38.2%",
+            "c6": "23.1%",
+            "c7": "6.7%",
+            "c8": "1.0%"
+          },
+          {
+            "c1": "2027/12/8",
+            "c2": "0.8%",
+            "c3": "7.3%",
+            "c4": "27.0%",
+            "c5": "36.6%",
+            "c6": "21.3%",
+            "c7": "6.1%",
+            "c8": "0.9%"
+          }
+        ],
+        "row_sources": [
+          {
+            "row": 0,
+            "source_row": 3,
+            "row_kind": "data",
+            "locator": "#MainContent_pnlContainer > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(3)"
+          },
+          {
+            "row": 1,
+            "source_row": 4,
+            "row_kind": "data",
+            "locator": "#MainContent_pnlContainer > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(4)"
+          },
+          {
+            "row": 2,
+            "source_row": 5,
+            "row_kind": "data",
+            "locator": "#MainContent_pnlContainer > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(5)"
+          },
+          {
+            "row": 3,
+            "source_row": 6,
+            "row_kind": "data",
+            "locator": "#MainContent_pnlContainer > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(6)"
+          },
+          {
+            "row": 4,
+            "source_row": 7,
+            "row_kind": "data",
+            "locator": "#MainContent_pnlContainer > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(7)"
+          },
+          {
+            "row": 5,
+            "source_row": 8,
+            "row_kind": "data",
+            "locator": "#MainContent_pnlContainer > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(8)"
+          },
+          {
+            "row": 6,
+            "source_row": 9,
+            "row_kind": "data",
+            "locator": "#MainContent_pnlContainer > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(9)"
+          },
+          {
+            "row": 7,
+            "source_row": 10,
+            "row_kind": "data",
+            "locator": "#MainContent_pnlContainer > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(10)"
+          },
+          {
+            "row": 8,
+            "source_row": 11,
+            "row_kind": "data",
+            "locator": "#MainContent_pnlContainer > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(11)"
+          }
+        ],
+        "spans": [],
+        "coverage": {
+          "scope": "loaded_dom",
+          "rows_returned": 9,
+          "truncated": false,
+          "dataset_complete": "unknown"
+        },
+        "warnings": []
+      }
+    }
+  ]
+}
