@@ -60,3 +60,6 @@ briefUpserts 是完整摘要对象，沿用现有字段 id、sector、date、sta
 构建器在 archive/manifest.json 写 marketViewsExport（路径、字节数、SHA256、Git blob SHA、coverageTo、totalRows）以及 indexedUpdateFiles。每次本地构建仍完整验证导出；连接器只比对这份小回执与父目录条目中的文件元数据，不请求大文件自身的contents接口（部分连接器会因此读取完整正文）。已校验分片按SHA256复用，不因无关main提交重读。不会生成或维护 market-views-recent-300.json。
 
 只在真实新增、摘要更新/过期清理、失败或需人工处理时通知；无变化保持安静。已提交、已构建和已上线必须分别报告。
+
+## 行业范围（用户2026-11-11更新）
+建材及消费建材不再纳入商社行业观点，包括水泥、玻璃、玻纤、防水涂料、板材、门窗卫浴及相关建材公司。已有建材观点移至 all_views，删除相关行业摘要；后续候选仅归 all_views，不生成建材摘要。不能因带有“消费”字样而纳入。运行 py -3 scripts/test_market_view_scope.py 验证时间去重及行业范围。

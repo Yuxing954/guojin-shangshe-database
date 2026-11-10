@@ -149,6 +149,7 @@ export class MarketSync{
     if(decisions.size!==this.s.fresh.length||review.decisions.length!==decisions.size)throw new Error('Every candidate needs exactly one decision');
     const rows={views:[],all_views:[]},sources=[],excluded=structuredClone(this.s.excludedBase),duplicates=structuredClone(this.s.duplicateBase);const ids=new Set(this.s.fresh.map(c=>c.topic.topic_id));
     for(const c of this.s.fresh){const d=decisions.get(c.topic.topic_id);if(!d||!['views','all_views','exclude','duplicate'].includes(d.kind))throw new Error('Invalid classification');
+      if(d.kind==='views' && /建材|水泥|玻纤|电子布|光伏玻璃|浮法玻璃|东方雨虹|三棵树|北新建材|兔宝宝|伟星新材|科顺|公元股份|苏博特|中国巨石|中材科技|防水|涂料|石膏板|瓷砖|卫浴|门窗|悍高/.test(c.topic.title)){d.kind='all_views';}
       if(d.kind==='exclude'){if(!d.reason)throw new Error('Exclusion needs reason');excluded.push({topicId:c.topic.topic_id,reason:d.reason});}
       else if(d.kind==='duplicate'){if(!d.duplicateOf||!ids.has(d.duplicateOf)||d.duplicateOf===c.topic.topic_id||!['views','all_views'].includes(decisions.get(d.duplicateOf)?.kind))throw new Error('Duplicate target must be an accepted source');duplicates.push({topicId:c.topic.topic_id,duplicateOf:d.duplicateOf,reason:d.reason});}
       else{rows[d.kind].push(c.row);sources.push({...c.topic,kind:d.kind});}

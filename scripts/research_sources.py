@@ -62,3 +62,27 @@ def archive_rows(root, dbid, rows):
     other = 'all_views' if dbid == 'views' else 'views'
     reassigned = set(data.get('assignedTopics', {}).get(other, []))
     return [r for r in rows if not (row_keys(r)[0] and row_keys(r)[0][0] in reassigned)]
+
+# Exclude building-materials research from commercial industry views.
+BUILDING_MATERIALS = re.compile(r'建材|水泥|玻纤|电子布|光伏玻璃|浮法玻璃|东方雨虹|三棵树|北新建材|兔宝宝|伟星新材|科顺|公元股份|苏博特|中国巨石|中材科技|防水|涂料|石膏板|瓷砖|卫浴|门窗|悍高')
+def building_material_view(row):
+    topic = row_keys(row)[0]
+    return bool((topic and topic[0] in ["55521421881885824","14425124252184852","55521425145451884","14425124458448152","45548245152451848","45548245151842488","82258454555228182","22258454555282111","82258454145522182","82258451228451512","82258451488554212","82258485552481412"]) or BUILDING_MATERIALS.search(str(row.get('标题') or '')))
+
+_original_update_rows = update_rows
+_original_archive_rows = archive_rows
+def update_rows(root, dbid):
+    rows = _original_update_rows(root, dbid)
+    if dbid == 'views':
+        return [r for r in rows if not building_material_view(r)]
+    if dbid == 'all_views':
+        source = Path(root) / 'data' / '商社-市场观点.csv'
+        with source.open(encoding='utf-8-sig', newline='') as stream:
+            moved = [r for r in csv.DictReader(stream) if building_material_view(r)]
+        moved += [r for r in _original_update_rows(root, 'views') if building_material_view(r)]
+        rows = merge_rows(rows, moved)
+    return rows
+
+def archive_rows(root, dbid, rows):
+    rows = _original_archive_rows(root, dbid, rows)
+    return [r for r in rows if not building_material_view(r)] if dbid == 'views' else rows
