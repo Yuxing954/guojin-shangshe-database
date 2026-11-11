@@ -2,11 +2,12 @@
    Domain CSS owns grids/data semantics; this file owns shared visual components. */
 :root{
  --ui-font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
- --ui-text:14px;--ui-small:13px;--ui-caption:12px;--ui-title:16px;--ui-reading:28px;
- --ui-gap:16px;--ui-section:24px;--ui-radius:12px;--ui-control:40px;--ui-control-radius:8px;
+ --ui-text:14px;--ui-small:13px;--ui-caption:12px;--ui-title:17px;--ui-reading:28px;
+ --ui-gap:20px;--ui-section:24px;--ui-radius:12px;--ui-control:40px;--ui-control-radius:8px;
 }
 body.site-page[data-design=workspace][data-design]{
  font-family:var(--ui-font)!important;
+ --site-accent:#215d91;--site-soft:#edf3f8;--hd-accent:var(--site-accent);--gj-accent:var(--site-accent);
  --industry-font:var(--ui-font);--industry-gap:var(--ui-gap);--macro-gap:var(--ui-gap);
  --industry-radius:var(--ui-radius);--macro-radius:var(--ui-radius);
  --ic-border:var(--site-line);--ic-muted:var(--site-muted);
@@ -17,7 +18,7 @@ body.site-page[data-design=workspace][data-design] :is(main,.wrap,.site-main) *{
 body.site-page[data-design=workspace][data-design]:not(.industry-embedded)>main.site-main{
  max-width:1600px!important;width:auto!important;margin:0 auto!important;padding:20px 24px 32px!important;
 }
-body.site-page[data-design=workspace][data-design] h1{font-size:26px!important;line-height:36px!important;font-weight:700;letter-spacing:0}
+body.site-page[data-design=workspace][data-design] h1{font-size:22px!important;line-height:32px!important;font-weight:700;letter-spacing:0}
 body.site-page[data-design=workspace][data-design] :is(.hd-card-head,.hd-tier-head,.gj-card-head,.board-panel-head,.board-section-head,.travel-panel-head,.cruise-detail-head,.dining-section,.oh-block,.quotes-board-head,.quotes-detail,.ec-section-head,.ec-nav,.ic-list-head,.ic-month-nav,.portal-panel-head,.research-tool) :is(h2,h3){
  font-size:var(--ui-title)!important;line-height:24px!important;font-weight:600!important;letter-spacing:0;
 }
@@ -92,7 +93,7 @@ body.site-page[data-design=workspace][data-design] :is(.quotes-down,.down){color
 body.site-page[data-design=workspace][data-design] :is(button,a,select,input,summary):focus-visible{outline:2px solid var(--site-accent)!important;outline-offset:3px}
 body.site-page[data-design=workspace][data-design] :is([hidden],#oh-tabs[hidden]){display:none!important}
 @media(max-width:760px){
- body.site-page[data-design=workspace][data-design]{--ui-reading:24px}
+ body.site-page[data-design=workspace][data-design]{--ui-reading:24px;--ui-gap:16px}
  body.site-page[data-design=workspace][data-design]:not(.industry-embedded)>main.site-main{width:100%!important;padding:14px 12px 24px!important}
  body.site-page[data-design=workspace][data-design] h1{font-size:22px!important;line-height:32px!important}
  body.site-page[data-design=workspace][data-design] :is(.site-main,.industry-board,.data-board) :is(select,input[type=search],input[type=date],input[type=number],input[type=text]){font-size:16px!important}
@@ -102,4 +103,40 @@ body.site-page[data-design=workspace][data-design] :is([hidden],#oh-tabs[hidden]
  body.site-page[data-design=workspace][data-design] :is(.calendar-tabs,.ec-views){max-width:100%}
  body.site-page[data-design=workspace][data-design] :is(.quotes-benchmarks,.travel-kpis,.cruise-kpis,.dining-kpis,.oh-kpis){gap:12px!important}
 }
+
+/* Analytical panel rhythm. Preserve SVG viewBox sizing and data series colors. */
+body.site-page[data-design=workspace][data-design] :is(.hd-card,.gj-card,.board-panel){margin-bottom:var(--ui-section)}
+body.site-page[data-design=workspace][data-design] :is(.hd-chart-controls,.hd-tier-head,.hd-detail,.hd-source-links){padding-left:var(--ui-gap)!important;padding-right:var(--ui-gap)!important}
+body.site-page[data-design=workspace][data-design] :is(.hd-chart-caption,.hd-detail-caption){margin:12px var(--ui-gap) 0!important;font-size:13px!important;line-height:22px!important}
+body.site-page[data-design=workspace][data-design] .hd-card-head .hd-chart-caption{margin:0!important}
+body.site-page[data-design=workspace][data-design] :is(.hd-chart-controls,.hd-range-controls,.hd-tier-head){display:flex;align-items:center;flex-wrap:wrap;gap:12px!important;min-width:0}
+body.site-page[data-design=workspace][data-design] :is(.hd-chart-controls,.hd-range-controls,.hd-card-head) label{font-size:14px!important;line-height:22px!important;max-width:100%;flex-wrap:wrap}
+body.site-page[data-design=workspace][data-design] :is(.hd-switch button,.site-value-menu>summary){font-size:14px!important;line-height:22px!important}
+body.site-page[data-design=workspace][data-design] .site-value-menu>summary{min-height:40px;padding:8px 12px}
+body.site-page[data-design=workspace][data-design] .hd-switch{gap:2px!important;padding:3px!important;border:0!important;background:var(--site-soft)!important}
+body.site-page[data-design=workspace][data-design] .hd-switch button{min-height:34px!important;padding:6px 12px!important;box-shadow:none!important}
+body.site-page[data-design=workspace][data-design] .hd-stat{padding:var(--ui-gap)!important;background:var(--site-surface)!important;border:1px solid var(--site-line)!important;box-shadow:none!important}
+body.site-page[data-design=workspace][data-design] .hd-stat-value{font-size:var(--ui-reading)!important;line-height:38px!important;letter-spacing:0}
+body.site-page[data-design=workspace][data-design] .hd-supply-stats{padding:0 var(--ui-gap) var(--ui-gap)!important;gap:var(--ui-gap)}
+body.site-page[data-design=workspace][data-design] .hd-supply-stats b{font-size:var(--ui-reading)!important;line-height:38px!important;font-variant-numeric:tabular-nums}
+body.site-page[data-design=workspace][data-design] :is(.hd-supply-stats span,.hd-supply-stats small,.hd-stat-change,.hd-footnote,.hd-card-head>span){font-size:13px!important;line-height:22px!important}
+body.site-page[data-design=workspace][data-design] .hd-supply-stats b span{font-size:inherit!important}
+body.site-page[data-design=workspace][data-design] .hd-chart{padding:16px var(--ui-gap) 12px!important}
+body.site-page[data-design=workspace][data-design] .site-chart-legend{font-size:13px;line-height:22px;gap:8px 20px;padding:12px 0}
+body.site-page[data-design=workspace][data-design] svg.site-interactive-chart text.site-tick{font-size:13px!important}
+body.site-page[data-design=workspace][data-design] :is(.hd-period,.hd-footnote){font-size:13px!important;line-height:22px!important}
+body.site-page[data-design=workspace][data-design] .hd-tier-head h3{margin:0;font-size:var(--ui-title)!important;line-height:24px!important}
+body.site-page[data-design=workspace][data-design] #view-structure{container-type:inline-size}
+body.site-page[data-design=workspace][data-design] .hd-supply-breakdowns{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;margin-bottom:24px}
+body.site-page[data-design=workspace][data-design] .hd-supply-breakdowns>.hd-card{margin:0!important;min-width:0}
+body.site-page[data-design=workspace][data-design] .hd-supply-breakdowns .hd-card-head{min-height:80px}
+@container(min-width:1200px){
+ body.site-page[data-design=workspace][data-design] .hd-supply-breakdowns{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
+}
+@media(max-width:760px){
+ body.site-page[data-design=workspace][data-design] .hd-supply-stats b{font-size:22px!important;line-height:32px!important}
+ body.site-page[data-design=workspace][data-design] .hd-chart{padding:12px 8px!important}
+ body.site-page[data-design=workspace][data-design] .hd-supply-breakdowns{gap:16px}
+}
+
 @media(prefers-reduced-motion:reduce){body.site-page[data-design=workspace][data-design] *{scroll-behavior:auto!important;transition:none!important}}
