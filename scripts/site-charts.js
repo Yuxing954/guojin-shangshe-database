@@ -105,7 +105,7 @@ function valueLabels(svg,points,config){
   const hasExplicit=points.some(p=>Array.isArray(p.labels));
   const active=p=>(p.kind==='change'?config.change:config.value);
   const candidates=points.filter(p=>(p.labels||[]).some(active)),count=Math.max(1,...candidates.map(p=>p.labels.filter(active).length));
-  const bounds=points.paired?.plot,plotWidth=Math.max(80,svg.viewBox.baseVal.width-(bounds?bounds.left+bounds.right:svg.viewBox.baseVal.width<520?110:152)),budget=Math.max(2,Math.floor(plotWidth/Math.max(28,count*8)));
+  const bounds=points.paired?.plot,plotWidth=Math.max(80,svg.viewBox.baseVal.width-(bounds?bounds.left+bounds.right:svg.viewBox.baseVal.width<520?110:152)),budget=Math.max(2,Math.min(points.paired?.options.maxLabelPeriods??Infinity,Math.floor(plotWidth/Math.max(28,count*8))));
   const visible=new Set(Array.from({length:Math.min(budget,candidates.length)},(_,i)=>Math.round(i*(candidates.length-1)/Math.max(1,Math.min(budget,candidates.length)-1))));
   // Thin annotations, never observations; include the latest finite point in every selected series.
   const recent=new Map();for(const p of candidates)for(const label of p.labels||[])if(active(label))recent.set((label.kind||'value')+'|'+(label.color||''),label);

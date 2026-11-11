@@ -30,6 +30,7 @@ try{
  if(file==='hotel-dashboard.html'){
   await page.goto(base+'/hotel-dashboard.html#view=structure');
   await page.waitForSelector('#supply-band-chart svg');
+  assert.ok(await page.locator('#supply-tier-chart .site-value-label').count()<=28,'supply labels stay sparse');
   for(const width of [1920,1440,768,390]){
    await page.setViewportSize({width,height:1000});await page.waitForTimeout(350);
    const boxes=await page.locator('.hd-supply-breakdowns>.hd-card').evaluateAll(es=>es.map(e=>{const r=e.getBoundingClientRect();return{x:r.x,y:r.y,width:r.width};}));

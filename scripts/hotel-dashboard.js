@@ -317,7 +317,7 @@
         var current=getter(name,p.period_id), prior=getter(name,M.priorPeriod(p));
         return {name:name,color:COLORS[i],value:M.metric(current,field),change:M.change(current,prior,field)};
       })}; });
-      SiteCharts.drawPaired($(id),points,{mode:state.mode,unit:valueUnit(field),changeUnit:'%',changeLabel:'同比',name:id==='supply-tier-chart'?'分档次供给':'分房间规模供给',trimEmpty:true,precision:0,changePrecision:1,periodFormat:'week-short',gap:15*86400000});
+      SiteCharts.drawPaired($(id),points,{mode:state.mode,unit:valueUnit(field),changeUnit:'%',changeLabel:'同比',name:id==='supply-tier-chart'?'分档次供给':'分房间规模供给',trimEmpty:true,maxLabelPeriods:6,precision:0,changePrecision:1,periodFormat:'week-short',gap:15*86400000});
     }
     var range = weeks.length ? M.weekLabel(weeks[0].period_id)+' — '+M.weekLabel(weeks[weeks.length-1].period_id) : '暂无数据';
     $('supply-tier-caption').textContent='全国 · '+range+' · '+(tierField==='room_count_15plus'?'房间数量（间）':'酒店数量（家）');
