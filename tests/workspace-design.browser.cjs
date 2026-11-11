@@ -12,7 +12,7 @@ try{
   await page.setViewportSize({width:1440,height:1000});await page.goto(base+'/'+file+(query[file]||''));await page.locator('.site-nav').waitFor();await page.waitForTimeout(1800);
   assert.equal(await page.locator('.site-nav').count(),1,file+' navigation');
   assert.equal(await page.locator('body').getAttribute('data-design'),'workspace',file+' design scope');
-  for(const width of [1440,1024,768,390]){
+  for(const width of [1920,1440,1024,768,390]){
    await page.setViewportSize({width,height:1000});await page.waitForTimeout(250);
    assert.equal(await page.locator('[hidden]:visible').count(),0,file+' hidden state');
    const facts=await page.evaluate(()=>{
@@ -26,7 +26,21 @@ try{
    for(const c of facts.controls){assert.ok(c.height>=40,file+' control '+JSON.stringify(c));assert.equal(c.font,width<=760?'16px':'14px',file+' field type '+JSON.stringify(c));assert.equal(c.radius,'8px',file+' field radius');}
    if(width===1440||width===390)await page.screenshot({path:path.join(out,file.replace('.html','')+'-'+width+'.png')});
    results.push({file,width,controls:facts.controls.length});
-  }console.log('PASS',file);
+  }
+ if(file==='hotel-dashboard.html'){
+  await page.locator('[data-view="structure"]').click();
+  await page.waitForSelector('#supply-band-chart svg');
+  assert.ok(await page.locator('#supply-tier-chart .site-value-label').count()<=28,'supply labels stay sparse');
+  for(const width of [1920,1440,768,390]){
+   await page.setViewportSize({width,height:1000});await page.waitForTimeout(350);
+   const boxes=await page.locator('.hd-supply-breakdowns>.hd-card').evaluateAll(es=>es.map(e=>{const r=e.getBoundingClientRect();return{x:r.x,y:r.y,width:r.width};}));
+   if(width===1920){assert.ok(Math.abs(boxes[0].y-boxes[1].y)<1,'wide supply cards align');assert.ok(boxes[1].x>boxes[0].x,'wide supply cards side by side');}
+   if(width<=768){assert.ok(boxes[1].y>boxes[0].y,'narrow supply cards stack');assert.ok(Math.abs(boxes[0].x-boxes[1].x)<1);}
+   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'supply page overflow');
+   await page.locator('#supply-tier-card').screenshot({path:path.join(out,'supply-tier-'+width+'.png')});
+  }
+ }
+ console.log('PASS',file);
  }
  assert.deepEqual(missing,[],'missing styles/scripts');
  fs.writeFileSync(path.join(out,'checks.json'),JSON.stringify(results,null,2));
