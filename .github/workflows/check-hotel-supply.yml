@@ -1,0 +1,22 @@
+name: Hotel supply breakdown
+on:
+  pull_request:
+    paths: ['hotel-dashboard.html', 'hotel-groups.html', 'hotel-holiday-dashboard.html', 'scripts/hotel-dashboard.js', 'scripts/hotel-metrics.js', 'tests/hotel-supply-breakdown.browser.cjs', '.github/workflows/check-hotel-supply.yml']
+  push:
+    branches: [main]
+    paths: ['scripts/hotel-dashboard.js', 'tests/hotel-supply-breakdown.browser.cjs', '.github/workflows/check-hotel-supply.yml']
+jobs:
+  supply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node --check scripts/hotel-dashboard.js
+      - run: npm install --prefix /tmp/hotel-supply playwright@1.62.1
+      - run: /tmp/hotel-supply/node_modules/.bin/playwright install --with-deps chromium
+      - run: node tests/hotel-supply-breakdown.browser.cjs
+        env:
+          NODE_PATH: /tmp/hotel-supply/node_modules

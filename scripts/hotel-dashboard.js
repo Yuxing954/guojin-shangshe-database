@@ -294,7 +294,7 @@
     }), { unit: unit, zero: isChange, forceLine: true });
   }
   function renderSupply() {
-    if (!data.supply) return;
+    if (!data.supply) { drawSupplyBreakdowns(); return; }
     var r = ix.supply15.get('全国|' + state.week), base = ix.supply15.get('全国|' + baseWeek()), rooms = M.metric(r, 'room_count');
     $('supply-period').textContent = M.weekLabel(state.week) + ' · 周度 · 15间及以上 · 酒店之家';
     cardAvailable('supply-card',hasValues(r,['hotel_count','room_count','chain_room_count']),'所选周暂无15间及以上供给数据');
@@ -309,6 +309,27 @@
     if (!$('supply-table').querySelector('tbody tr')) blankTable('supply-table','所选周未提供分规模明细',5);
     drawSupply();
   }
+  function drawSupplyBreakdowns() {
+    if (!data.industry) return;
+    var weeks = calendar(state.supplyWindow), tierField = $('supply-tier-metric').value;
+    function draw(id, labels, field, getter) {
+      var points = weeks.map(function(p){ return {period:p.period_id,x:Date.parse(p.start_date),values:labels.map(function(name,i){
+        var current=getter(name,p.period_id), prior=getter(name,M.priorPeriod(p));
+        return {name:name,color:COLORS[i],value:M.metric(current,field),change:M.change(current,prior,field)};
+      })}; });
+      SiteCharts.drawPaired($(id),points,{mode:state.mode,unit:valueUnit(field),changeUnit:'%',changeLabel:'同比',name:id==='supply-tier-chart'?'分档次供给':'分房间规模供给',trimEmpty:true,precision:0,changePrecision:1,periodFormat:'week-short',gap:15*86400000});
+    }
+    var range = weeks.length ? M.weekLabel(weeks[0].period_id)+' — '+M.weekLabel(weeks[weeks.length-1].period_id) : '暂无数据';
+    $('supply-tier-caption').textContent='全国 · '+range+' · '+(tierField==='room_count_15plus'?'房间数量（间）':'酒店数量（家）');
+    draw('supply-tier-chart',SEGS,tierField,function(name,week){return row('全国',name,week);});
+    $('supply-tier-table').innerHTML='<thead><tr><th>档次</th>'+metricHead('hotel_count_15plus','酒店数')+metricHead('room_count_15plus','房间数')+'</tr></thead><tbody>'+SEGS.map(function(seg){
+      return '<tr><td>'+esc(seg)+'</td>'+metricCell(row('全国',seg,state.week),row('全国',seg,baseWeek()),'hotel_count_15plus')+metricCell(row('全国',seg,state.week),row('全国',seg,baseWeek()),'room_count_15plus')+'</tr>';
+    }).join('')+'</tbody>';
+    if (!data.supply) { $('supply-band-chart').textContent='正在读取供给数据…'; return; }
+    var field=$('supply-metric').value;
+    $('supply-band-caption').textContent='全国 · '+range+' · '+(field==='hotel_count'?'酒店数量（家）':field==='chain_room_count'?'连锁房量（间）':'房间数量（间）');
+    draw('supply-band-chart',BANDS,field,function(name,week){return ix.supply.get('全国|'+name+'|'+week);});
+  }
   function supplyStat(r, base, field, title) {
     var v = M.metric(r, field), change = M.change(r, base, field), isRate = field === 'chain_rate';
     if (isRate && v != null) v *= 100;
@@ -317,6 +338,7 @@
     return '<div><span>' + title + (isChange ? ' · ' + labelChange() : ' · 本周') + '</span><b>' + (isChange ? delta(change, field) : current) + '</b><small>' + (isChange ? '本周 ' + current : change == null ? '基期缺失 · 暂无同比' : labelChange() + ' ' + delta(change, field)) + '</small></div>';
   }
   function drawSupply() {
+    drawSupplyBreakdowns();
     if (!data.supply) return;
     var enabled = Array.from($('supply-metric').options).filter(function(o){ var valid=calendar(state.supplyWindow).some(function(p){return M.metric(ix.supply15.get('全国|'+p.period_id),o.value)!=null;});o.disabled=!valid;return valid; });
     if(enabled.length && $('supply-metric').selectedOptions[0].disabled) $('supply-metric').value=enabled[0].value;
@@ -421,6 +443,7 @@
     if (['12', '13', '26', '52', '156', 'all'].includes(saved.get('window')) && (saved.get('window') !== '52' || saved.get('rangeVersion') === '12w')) state.window = saved.get('window');
     if (['12','13','26','52','156','all'].includes(saved.get('supplyWindow'))) state.supplyWindow=saved.get('supplyWindow');
     if (['12','13','26','52','156','all'].includes(saved.get('investmentWindow'))) state.investmentWindow=saved.get('investmentWindow');
+    if (['room_count_15plus','hotel_count_15plus'].includes(saved.get('supplyTierMetric'))) { state.supplyTierMetric=saved.get('supplyTierMetric'); $('supply-tier-metric').value=state.supplyTierMetric; }
     if (META[saved.get('metric')]) state.metric = saved.get('metric');
     if (['combo', 'value', 'change'].includes(saved.get('mode'))) state.mode = saved.get('mode');
     if (periods.has(saved.get('base'))) state.base = saved.get('base');
@@ -458,6 +481,7 @@
       }; }); active();
     }
     bindSwitch('metric-switch', 'metric'); bindSwitch('mode-switch', 'mode');
+    $('supply-tier-metric').onchange = function(){state.supplyTierMetric=this.value;drawSupplyBreakdowns();saveState();};
     $('group-metric').onchange = drawGroups; $('supply-metric').onchange = function () { drawSupply(); renderInvestment(); };
     $('city-search').oninput = renderCities; $('city-order').onchange = function () { cityOrder = $('city-order').value; renderCities(); };
     document.querySelectorAll('[data-city-metric]').forEach(function (button) { button.onclick = function () { cityMetric = button.dataset.cityMetric; renderCities(); }; });
@@ -484,7 +508,7 @@
       ix[source.name] = M.index(result[0], source.keys); data[source.name] = result[0];
       if(source.name==='supply') { var buckets=new Map(); result[0].forEach(function (r) {var k=r.region+'|'+r.period_id;if(!buckets.has(k))buckets.set(k,[]);buckets.get(k).push(r);}); ix.supply15=new Map(); data.industry.filter(function(r){return r.segment==='全部';}).forEach(function(r){var k=r.region+'|'+r.period_id;ix.supply15.set(k,M.supply15Plus(buckets.get(k)||[],r));}); }
       if(source.name==='share') source.render(); else if(state.view==='structure') refresh();
-    }).catch(function () { error(source.table, source.label + '数据暂时无法读取，可重新加载后重试。', source.cols); if(source.name==='supply'||source.name==='group') cardAvailable(source.name+'-card',false,source.label+'数据读取失败，请重新加载'); });
+    }).catch(function () { error(source.table, source.label + '数据暂时无法读取，可重新加载后重试。', source.cols); if(source.name==='supply') $('supply-band-chart').textContent='供给数据读取失败，请重新加载'; if(source.name==='supply'||source.name==='group') cardAvailable(source.name+'-card',false,source.label+'数据读取失败，请重新加载'); });
   });
   fetch('data/hotel-investment-monthly.json', {cache:'no-cache'}).then(function (r) {if (!r.ok) throw new Error('HTTP '+r.status); return r.json();}).then(function (json) {
     if (!json.observations || !json.observations.length) throw new Error('没有有效记录');
