@@ -28,7 +28,7 @@ try{
    results.push({file,width,controls:facts.controls.length});
   }
  if(file==='hotel-dashboard.html'){
-  await page.goto(base+'/hotel-dashboard.html#view=structure');
+  await page.locator('[data-view="structure"]').click();
   await page.waitForSelector('#supply-band-chart svg');
   assert.ok(await page.locator('#supply-tier-chart .site-value-label').count()<=28,'supply labels stay sparse');
   for(const width of [1920,1440,768,390]){

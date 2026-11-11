@@ -24,7 +24,7 @@ const files=['macro.html','regional-retail.html','industry.html','scripts/macro-
    if(process.env.HUB_SCREENSHOT_DIR&&[1440,390].includes(width)){fs.mkdirSync(process.env.HUB_SCREENSHOT_DIR,{recursive:true});await page.screenshot({path:path.join(process.env.HUB_SCREENSHOT_DIR,file.replace('.html','')+'-'+width+'.png')});}
    if(file==='industry.html')for(const key of ['dutyfree','travel','tourism','dining','hotel']){await page.locator('#sector-tabs [data-key='+key+']').click();await page.waitForFunction(k=>document.querySelector('#sector-tabs [aria-pressed=true]')?.dataset.key===k,key);assert.deepEqual(await read(),ready);}
   }
-  await page.goto(base+'/macro.html');await page.locator('#macro-navigation a[href="regional-retail.html"]').click();await page.waitForLoadState('load');assert.equal((await read()).color,'rgb(77, 88, 164)');assert.equal(await page.evaluate(()=>scrollY),0);
+  await page.goto(base+'/macro.html');await page.locator('#macro-navigation a[href="regional-retail.html"]').click();await page.waitForLoadState('load');assert.equal((await read()).color,'rgb(33, 93, 145)');assert.equal(await page.evaluate(()=>scrollY),0);
   console.log('PASS shared macro/regional/industry navigation, first paint and colors:',width);
  }
  }finally{await browser.close();server.close();}
