@@ -18,7 +18,7 @@ const files=['macro.html','regional-retail.html','industry.html','scripts/macro-
    let releaseShell;const shellGate=new Promise(resolve=>{releaseShell=resolve;});
    await page.route('**/scripts/site-shell.js*',async r=>{await shellGate;await r.fallback();});
    await page.goto(base+'/'+file,{waitUntil:'commit'});await page.locator('.hub-navigation').waitFor();await page.waitForFunction(()=>[...document.querySelectorAll('link[rel=stylesheet]')].every(link=>link.sheet),null,{timeout:30000});const early=await read();releaseShell();await page.waitForLoadState('load');const ready=await read();await page.unroute('**/scripts/site-shell.js*');
-   assert.deepEqual(ready,early,file+' initial layout shift');assert.equal(ready.aside,1);assert.equal(ready.color,'rgb(77, 88, 164)');assert.equal(ready.line,ready.color);assert.equal(ready.bg,'rgb(245, 247, 251)');
+   assert.deepEqual(ready,early,file+' initial layout shift');assert.equal(ready.aside,1);assert.equal(ready.color,'rgb(33, 93, 145)');assert.equal(ready.line,ready.color);assert.equal(ready.bg,'rgb(245, 247, 251)');
    const geometry=({x,y,w,h,color,line,bg})=>({x,y,w,h,color,line,bg});if(!baseline)baseline=geometry(ready);else assert.deepEqual(geometry(ready),baseline,file+' position/color');
    assert.ok(ready.items.every(b=>Math.abs(b.h-ready.h)<1&&b.x>=ready.x-1&&b.x+b.w<=ready.x+ready.w+1));assert.ok(Math.max(...ready.items.map(b=>b.w))-Math.min(...ready.items.map(b=>b.w))<1);
    if(process.env.HUB_SCREENSHOT_DIR&&[1440,390].includes(width)){fs.mkdirSync(process.env.HUB_SCREENSHOT_DIR,{recursive:true});await page.screenshot({path:path.join(process.env.HUB_SCREENSHOT_DIR,file.replace('.html','')+'-'+width+'.png')});}
