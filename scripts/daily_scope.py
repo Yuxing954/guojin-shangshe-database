@@ -51,6 +51,9 @@ def sector_for(title,body=''):
  if '10月经济前瞻' in title and '预计10月社零' in body:return '商社综合'
  if '关注航空左侧机会' in title and '客座率' in body and '票价' in body:return '酒店旅游'
  if title.startswith('航空及跨境物流三季报总结') and '春秋航空' in body:return '酒店旅游'
+ if re.match(r'航空三季报总结[:：]',title) and all(x in body for x in ('春秋航空','国内线票价','航油成本')):return '酒店旅游'
+ if '兰生股份调研要点' in title and all(x in body for x in ('会展','马拉松')):return '酒店旅游'
+ if re.match(r'\d{1,2}月美国CPI[:：]',title) and all(x in body for x in ('核心CPI','租金','居住服务')):return '消费宏观'
  if '恒科大涨' in title and '阿里巴巴' in body and '美团' in body:return None
  if '关注航空左侧机会' in title and '春秋' in body and '航油成本' in body:return '酒店旅游'
  # Research team names do not determine sector; remove bracketed broker headings.

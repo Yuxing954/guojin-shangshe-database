@@ -3,6 +3,13 @@ from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 from daily_scope import sector_for,title_for,published_for,substantive_segment
 class ScopeTests(unittest.TestCase):
+ def test_passenger_airline_results_and_exhibition_fieldwork(self):
+  self.assertEqual(sector_for('航空三季报总结：潜龙在渊，静待风起','春秋航空经营、国内线票价及航油成本'),'酒店旅游')
+  self.assertIsNone(sector_for('航空三季报总结：航空制造','航空发动机、航材制造订单'))
+  self.assertEqual(sector_for('【国信社服】兰生股份调研要点','会展运营与上海马拉松'),'酒店旅游')
+  self.assertIsNone(sector_for('兰生股份调研要点','参会通知'))
+  self.assertEqual(sector_for('10月美国CPI：租金趋势','核心CPI、租金及居住服务'),'消费宏观')
+  self.assertIsNone(sector_for('10月美国CPI：市场复盘','芯片股回落'))
  def test_generic_transport_view_requires_passenger_operating_evidence(self):
   self.assertEqual(sector_for('观点更新','航空票价回升，燃油附加费调整'),'酒店旅游')
   self.assertIsNone(sector_for('观点更新','机器人与半导体行业更新'))
