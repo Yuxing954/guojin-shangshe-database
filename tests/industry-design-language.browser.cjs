@@ -3,6 +3,11 @@ const fs=require('fs'),path=require('path'),assert=require('assert/strict');
 const root=path.resolve(__dirname,'..'),base=process.env.SECTOR_BASE_URL||'http://127.0.0.1:18765';
 
 async function verifyDetails(frame,sector){
+ const bars=await frame.locator('.hd-toolbar,.hg-toolbar,.dutyfree-filters,.kr-controls,.travel-controls,.cruise-controls,.ca-controls,.dining-toolbar,.annual-top').evaluateAll(nodes=>nodes.filter(e=>e.getBoundingClientRect().height).map(e=>({
+  name:e.className,display:getComputedStyle(e).display,border:getComputedStyle(e).borderRadius,bg:getComputedStyle(e).backgroundColor,
+  controls:[...e.querySelectorAll('select,button')].filter(c=>c.getBoundingClientRect().height&&!c.closest('.hd-switch')).map(c=>({id:c.id,height:c.getBoundingClientRect().height}))
+ })));
+ for(const bar of bars){assert.equal(bar.display,'flex',sector+' toolbar '+bar.name);assert.equal(bar.border,'10px',sector+' toolbar border');assert.equal(bar.bg,'rgb(255, 255, 255)',sector+' toolbar surface');for(const c of bar.controls)assert.ok(c.height>=40,sector+' control '+c.id+' height '+c.height);}
  const s=await frame.locator('body').evaluate(()=>{
   const visible=e=>!!e.getBoundingClientRect().width&&!!e.getBoundingClientRect().height;
   const font=getComputedStyle(document.body).fontFamily;
@@ -37,7 +42,7 @@ console.log(width,sector,JSON.stringify(result));assert.equal(result.overflow,fa
 assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);
 if(process.env.SITE_SCREENSHOT_DIR){fs.mkdirSync(process.env.SITE_SCREENSHOT_DIR,{recursive:true});await page.screenshot({path:path.join(process.env.SITE_SCREENSHOT_DIR,sector+'-'+width+'.png')});} for(const nav of result.nav)assert.equal(nav.y,result.metadataBottom+16,'consistent gap after metadata, including wrapped mobile text');
 if(width===1440||width===390){
- const views={hotel:['cities','structure','groups','holiday','overview'],dutyfree:['korea','holidays','monthly'],travel:['inbound','outbound','domestic'],tourism:['audience','operators','overview']}[sector]||[];
+ const views={hotel:['cities','structure','annual','groups','holiday','overview'],dutyfree:['korea','holidays','monthly'],travel:['inbound','outbound','domestic'],tourism:['audience','operators','overview']}[sector]||[];
  for(const view of views){
   let scope=page.frameLocator('#panel-'+sector);
   const selector=sector==='hotel'&&view==='groups'?'a[href*="hotel-groups"]':sector==='hotel'&&view==='holiday'?'a[href*="hotel-holiday"]':sector==='hotel'&&view==='overview'?'a[data-weekly-view=overview]':'['+(sector==='tourism'?'data-cruise-view':'data-view')+'='+view+']';

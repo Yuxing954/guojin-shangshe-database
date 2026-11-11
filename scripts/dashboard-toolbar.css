@@ -1,0 +1,51 @@
+/* Shared controls for every industry subview, embedded or opened directly.
+   Keep these selectors limited to filter bars; chart tools retain their layout. */
+body.site-page[data-design=workspace][data-design] :is(main,.wrap) :is(.hd-toolbar,.hg-toolbar,.dutyfree-filters,.kr-controls,.travel-controls,.cruise-controls,.ca-controls,.dining-toolbar,.annual-top){
+ display:flex!important;align-items:center!important;justify-content:flex-start!important;
+ flex-wrap:wrap!important;gap:12px 16px!important;min-width:0;max-width:100%;
+ margin:0 0 12px!important;padding:12px 16px!important;box-sizing:border-box;
+ border:1px solid var(--site-line)!important;border-radius:10px!important;
+ background:var(--site-surface)!important;box-shadow:none!important;
+}
+body.site-page[data-design=workspace][data-design] :is(main,.wrap) :is(.hd-toolbar,.hg-toolbar,.dutyfree-filters,.kr-controls,.travel-controls,.cruise-controls,.ca-controls,.dining-toolbar,.annual-top) :is(label,.hd-display-control){
+ display:inline-flex!important;flex-direction:row!important;align-items:center!important;
+ flex-wrap:wrap;gap:8px!important;min-width:0;max-width:100%;margin:0;
+ color:var(--site-muted)!important;font-size:13px!important;line-height:22px!important;
+}
+body.site-page[data-design=workspace][data-design] :is(main,.wrap) :is(.hd-toolbar,.hg-toolbar,.dutyfree-filters,.kr-controls,.travel-controls,.cruise-controls,.ca-controls,.dining-toolbar,.annual-top) :is(select,button,.hg-text-button,.hd-source-link,.annual-links a,summary){
+ box-sizing:border-box;min-height:40px!important;max-width:100%;margin:0!important;
+ padding:8px 12px!important;border:1px solid var(--site-line)!important;border-radius:8px!important;
+ background:var(--site-surface)!important;color:var(--site-ink)!important;
+ font-family:inherit;font-size:14px!important;font-weight:400;line-height:22px!important;
+ text-decoration:none;white-space:normal;cursor:pointer;
+}
+body.site-page[data-design=workspace][data-design] :is(main,.wrap) :is(.hd-toolbar,.hg-toolbar,.dutyfree-filters,.kr-controls,.travel-controls,.cruise-controls,.ca-controls,.dining-toolbar,.annual-top) :is(.kr-actions,.industry-meta-actions,.dining-actions,.annual-links){
+ display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:0!important;
+}
+body.site-page[data-design=workspace][data-design] :is(main,.wrap) .hd-toolbar .hd-switch{
+ display:inline-flex;flex-wrap:wrap;gap:2px;padding:3px!important;border:0!important;
+ border-radius:8px;background:var(--site-soft);max-width:100%;
+}
+body.site-page[data-design=workspace][data-design] :is(main,.wrap) .hd-toolbar .hd-switch button{
+ min-height:34px!important;padding:6px 10px!important;line-height:22px!important;
+ border:0!important;background:transparent!important;color:var(--site-muted)!important;
+}
+body.site-page[data-design=workspace][data-design] :is(main,.wrap) .hd-toolbar .hd-switch button[aria-pressed=true]{
+ background:var(--site-surface)!important;color:var(--site-accent)!important;font-weight:600;
+}
+body.site-page[data-design=workspace][data-design] :is(main,.wrap) :is(.hd-period,#hn-period,#kr-period,#dh-summary-period){
+ margin:0 0 16px!important;font-size:12px!important;line-height:20px!important;color:var(--site-muted)!important;
+}
+body.site-page[data-design=workspace][data-design] :is(main,.wrap) :is(.hd-section-head,.board-section-head,.travel-section-head){
+ display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 16px;margin:0 0 12px;
+}
+body.site-page[data-design=workspace][data-design] :is(main,.wrap) :is(.hd-section-head,.board-section-head,.travel-section-head) h2{
+ margin:0!important;font-size:16px!important;line-height:24px!important;font-weight:600!important;
+}
+@media(max-width:640px){
+ body.site-page[data-design=workspace][data-design] :is(main,.wrap) .hd-toolbar .hd-display-control{width:100%}
+ body.site-page[data-design=workspace][data-design] :is(main,.wrap) .hd-toolbar .hd-display-control .hd-switch{width:100%;flex-basis:100%}
+ body.site-page[data-design=workspace][data-design] :is(main,.wrap) .hd-toolbar .hd-switch button{flex:1;white-space:nowrap;padding:6px 8px!important}
+ body.site-page[data-design=workspace][data-design] :is(main,.wrap) :is(.hd-toolbar,.hg-toolbar,.dutyfree-filters,.kr-controls,.travel-controls,.cruise-controls,.ca-controls,.dining-toolbar,.annual-top){padding:12px!important;gap:10px 12px!important}
+ body.site-page[data-design=workspace][data-design] :is(main,.wrap) :is(.hd-toolbar,.hg-toolbar,.dutyfree-filters,.kr-controls,.travel-controls,.cruise-controls,.ca-controls,.dining-toolbar,.annual-top) select{font-size:16px!important;width:auto!important;min-width:0}
+}
