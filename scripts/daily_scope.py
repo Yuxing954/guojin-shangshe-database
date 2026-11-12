@@ -38,6 +38,9 @@ def substantive_segment(title,body):
 
 def sector_for(title,body=''):
  if title=='观点更新' and all(x in body for x in ('航空','票价','燃油附加费')):return '酒店旅游'
+ if '出行链' in title and '秋假' in title and all(x in body for x in ('出游','景区')):return '酒店旅游'
+ if '珠免集团' in title and not EXCLUDE.search(title):return '免税'
+ if re.search(r'高端商场|德基广场',title) and not EXCLUDE.search(title):return '零售与消费出海'
  if '汉朔科技' in title:return None  # Retail technology supplier, not retail operations.
  if re.search(r'Tapestry|Coach|明月镜片',title,re.I):return '零售与消费出海'
  if re.search(r'银河娱乐|永利澳门',title):return '酒店旅游'

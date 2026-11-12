@@ -113,3 +113,10 @@ class ScopeTests(unittest.TestCase):
   self.assertEqual(sector_for('邮轮出行旅客经营数据'),'酒店旅游')
   self.assertIsNone(sector_for('GPU电源研究：邮轮客户案例'))
 
+
+ def test_travel_duty_free_and_mall_operating_notes(self):
+  self.assertEqual(sector_for('出行链见底，秋假催化修复','出游人数同比增长，景区淡季需求改善。'),'酒店旅游')
+  self.assertEqual(sector_for('珠免集团：格力系整合落地，剩余股权注入启动'),'免税')
+  self.assertEqual(sector_for('野村｜中国消费：南京高端商场10月销售走弱'),'零售与消费出海')
+  self.assertIsNone(sector_for('出行链见底，秋假催化修复','机场电子元器件供应商。'))
+  self.assertIsNone(sector_for('高端商场旁的消费建材市场'))
