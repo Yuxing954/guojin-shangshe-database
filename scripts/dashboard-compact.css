@@ -52,6 +52,7 @@ body.site-page[data-design=workspace][data-dashboard-density=compact] :is(.trave
 body.site-page[data-design=workspace][data-dashboard-density=compact] .dashboard-context{font-size:13px;line-height:22px;color:var(--site-muted)}
 body.site-page[data-design=workspace][data-dashboard-density=compact] .dashboard-context:empty{display:none}
 body.site-page[data-design=workspace][data-dashboard-density=compact] #view-overview .hd-tier-head{padding-left:var(--overview-edge)!important;padding-right:var(--overview-edge)!important}
+body.site-page[data-design=workspace][data-dashboard-density=compact] #view-overview .hd-kpis .hd-stat{grid-column:auto!important}
 body.site-page[data-design=workspace][data-dashboard-density=compact] .hd-supply-stats b small{display:inline}
 body.site-page.industry-embedded[data-dashboard-density=compact] .industry-board :is(#view-overview,#view-cities,#view-structure,#holiday-dashboard,#dashboard,.hd-view) .board-stat{padding:16px 20px!important}
 body.site-page.industry-embedded[data-dashboard-density=compact] .industry-board :is(#view-overview,#view-cities,#view-structure,#holiday-dashboard,#dashboard,.hd-view) .board-stat>:is(strong,.board-stat-value,.hd-stat-value,.gj-stat-value){font-size:var(--dashboard-reading)!important;line-height:var(--dashboard-reading-line)!important;font-weight:600!important}
