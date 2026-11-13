@@ -162,11 +162,37 @@
     var hasValue = points.some(function (p) { return p.values.some(function (s) { return s.value != null; }); });
     var hasChange = points.some(function (p) { return p.values.some(function (s) { return s.change != null; }); });
     var fallback = state.mode === 'change' && !hasChange && hasValue, mode = fallback ? 'value' : state.mode;
-    var changeUnit = field === 'occupancy_rate' ? '百分点' : '%';
-    $('segment-chart-caption').textContent = state.region + ' · ' + meta.label + ' · ' + (mode === 'combo' ? meta.unit + ' / 同周同比（' + changeUnit + '）' : mode === 'change' ? '同周同比（' + changeUnit + '）' : '数值（' + meta.unit + '）') + (fallback ? ' · 基期缺失' : '');
-    if (!hasValue && !hasChange) { $('segment-chart').innerHTML = '<div class="hd-empty">所选范围暂无分档次数据</div>'; return; }
-    SiteCharts.drawPaired($('segment-chart'), points, { mode: mode, unit: meta.unit, changeUnit: changeUnit, changeLabel: '同周同比', name: state.region + '分档次' + meta.label, trimEmpty:true,precision:0,changePrecision:1,periodFormat:'week-short', gap: 15 * 86400000 });
+    var changeUnit = field === 'occupancy_rate' ? 'pct' : '%';
+    $('tier-period').textContent = state.region + ' · ' + M.weekLabel(state.week);
+    $('tier-metric-switch').querySelectorAll('button').forEach(function (button) {
+      var metric = button.dataset.tierMetric, active = metric === field;
+      button.classList.toggle('active', active); button.setAttribute('aria-pressed', active);
+      button.disabled = $('metric-switch').querySelector('[data-metric="' + metric + '"]').disabled;
+    });
+    $('tier-snapshot').innerHTML = SEGS.map(function (seg, i) {
+      var current = row(state.region, seg, state.week), base = row(state.region, seg, M.priorPeriod(periods.get(state.week)));
+      var value = display(current, field), change = M.change(current, base, field);
+      return '<div class="tier-reading" style="--tier-color:' + COLORS[i] + '"><div class="tier-name"><i></i>' + esc(seg) + '</div><div class="tier-value">' + fmt(value, 0) + '<small>' + (value == null ? '' : meta.unit) + '</small></div><div class="tier-change">同周同比 <strong class="' + (change > 0 ? 'hd-positive' : change < 0 ? 'hd-negative' : 'hd-neutral') + '">' + (change > 0 ? '+' : '') + fmt(change, 1) + (change == null ? '' : changeUnit) + '</strong></div></div>';
+    }).join('');
+    $('segment-chart-caption').textContent = fallback ? '同比基期缺失，显示数值走势' : '';
+    $('segment-chart-caption').hidden = !fallback;
+    $('tier-value-title').textContent = meta.label + ' · ' + meta.unit;
+    $('tier-change-title').textContent = '同周同比 · ' + changeUnit;
+    $('tier-value-panel').hidden = mode === 'change';
+    $('tier-change-panel').hidden = mode === 'value';
+    $('tier-chart-grid').classList.toggle('tier-single-chart', mode !== 'combo');
+    var common = {maxLabelPeriods:2,unit:meta.unit,changeUnit:changeUnit,changeLabel:'同周同比',colors:COLORS.slice(0,4),legend:'series',valueStyle:'line',trimEmpty:true,precision:0,changePrecision:1,periodFormat:'week-short',gap:15*86400000};
+    if (!hasValue && !hasChange) {
+      $('segment-chart').innerHTML = '<div class="hd-empty">所选范围暂无分档次数据</div>';
+      $('segment-change-chart').innerHTML = '<div class="hd-empty">所选范围暂无同比数据</div>';
+      return;
+    }
+    if (mode !== 'change') SiteCharts.drawPaired($('segment-chart'), points, Object.assign({},common,{mode:'value',name:state.region+'分档次'+meta.label}));
+    else $('segment-chart').innerHTML = '';
+    if (mode !== 'value') SiteCharts.drawPaired($('segment-change-chart'), points, Object.assign({},common,{mode:'change',name:state.region+'分档次'+meta.label+'同比'}));
+    else $('segment-change-chart').innerHTML = '';
   }
+
   var cityMetric = 'revpar';
   var cityOrder = 'desc';
   function cityMetricName(field) { return field === 'revpar' ? 'RevPAR' : field === 'occupancy_rate' ? '入住率 OCC' : '平均房价 ADR'; }
@@ -429,6 +455,7 @@
         } else { renderTrend(); drawSegments(); saveState(); }
       }; }); active();
     }
+    $('tier-metric-switch').querySelectorAll('button').forEach(function (button) { button.onclick = function () { $('metric-switch').querySelector('[data-metric="' + button.dataset.tierMetric + '"]').click(); }; });
     bindSwitch('metric-switch', 'metric'); bindSwitch('mode-switch', 'mode');
     $('supply-tier-metric').onchange = function(){state.supplyTierMetric=this.value;drawSupplyBreakdowns();saveState();};
     $('group-metric').onchange = drawGroups; $('supply-metric').onchange = function () { drawSupply(); renderInvestment(); };

@@ -205,3 +205,39 @@ body.hotel-page.site-page #view-overview .hd-table th{font-size:13px!important;l
 #view-cities .hd-city-controls .hd-city-metrics button{box-shadow:none!important;outline-offset:2px;white-space:nowrap}
 @media(max-width:600px){#view-cities .hd-city-metrics{width:100%!important;display:flex!important}#view-cities .hd-city-metrics button{flex:1;padding:6px!important;font-size:13px!important}#view-cities .hd-city-controls label{width:100%;flex-direction:row!important}#view-cities .hd-city-controls input,#view-cities .hd-city-controls select{flex:1;width:0;min-width:0}}
 
+
+/* Tier comparison: one colour per tier, separate value and change scales. */
+body.hotel-page.site-page #view-overview #tier-panel{margin:0 0 20px;padding-top:0;border:1px solid var(--border,#dce5ef)}
+body.hotel-page.site-page #tier-panel #tier-metric-switch{display:inline-grid!important;grid-template-columns:repeat(3,76px);margin:0!important;padding:4px!important}
+body.hotel-page.site-page #tier-panel #tier-metric-switch button{font-size:14px!important;line-height:22px!important;min-height:32px;padding:5px 12px!important}
+body.hotel-page.site-page #tier-panel .tier-snapshot{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin:0 20px 20px;background:#f5f8fc;border:1px solid #e4ebf2;border-radius:8px}
+body.hotel-page.site-page #tier-panel .tier-reading{padding:14px 18px;min-width:0;font-variant-numeric:tabular-nums}
+body.hotel-page.site-page #tier-panel .tier-reading+.tier-reading{border-left:1px solid #e0e7ef}
+body.hotel-page.site-page #tier-panel .tier-name{display:flex;align-items:center;gap:8px;font-size:14px;line-height:22px;color:#344b62}
+body.hotel-page.site-page #tier-panel .tier-name i{width:9px;height:9px;border-radius:50%;background:var(--tier-color)}
+body.hotel-page.site-page #tier-panel .tier-value{font-size:28px;font-weight:600;line-height:36px;margin:5px 0;color:#20344c}
+body.hotel-page.site-page #tier-panel .tier-value small{font-size:13px;font-weight:400;margin-left:5px;color:#667b90}
+body.hotel-page.site-page #tier-panel .tier-change{display:flex;flex-wrap:wrap;gap:4px 8px;font-size:13px;line-height:22px;color:#667b90}
+body.hotel-page.site-page #tier-panel .tier-change strong{font-weight:600}
+body.hotel-page.site-page #tier-panel .tier-chart-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;padding:0 20px 16px}
+body.hotel-page.site-page #tier-panel .tier-chart-grid>div{min-width:0}
+body.hotel-page.site-page #tier-panel .tier-chart-grid>div[hidden]{display:none!important}
+body.hotel-page.site-page #tier-panel .tier-chart-grid.tier-single-chart{grid-template-columns:minmax(0,1fr)}
+body.hotel-page.site-page #tier-panel .tier-chart-grid h3{margin:0 0 8px!important;font-size:14px!important;line-height:22px!important;font-weight:600;color:#344b62}
+body.hotel-page.site-page #tier-panel .hd-chart{padding:0!important;min-width:0;min-height:0}
+body.hotel-page.site-page #tier-panel .hd-chart svg{width:100%;max-width:100%}
+body.hotel-page.site-page #tier-panel .site-chart-legend{font-size:12px;gap:8px 12px;margin:8px 0 0;flex-wrap:wrap}
+body.hotel-page.site-page #tier-panel .hd-detail{margin:0;border-top:1px solid #e4ebf2}
+@media(max-width:1000px){
+ body.hotel-page.site-page #tier-panel .tier-chart-grid{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:600px){
+ body.hotel-page.site-page #tier-panel .tier-snapshot{grid-template-columns:repeat(2,minmax(0,1fr));margin:0 16px 16px}
+ body.hotel-page.site-page #tier-panel .tier-reading{padding:12px}
+ body.hotel-page.site-page #tier-panel .tier-reading:nth-child(3){border-left:0}
+ body.hotel-page.site-page #tier-panel .tier-reading:nth-child(n+3){border-top:1px solid #e0e7ef}
+ body.hotel-page.site-page #tier-panel .tier-value{font-size:24px;line-height:32px}
+ body.hotel-page.site-page #tier-panel .tier-chart-grid{padding:0 8px 16px;gap:20px}
+ body.hotel-page.site-page #tier-panel .tier-chart-grid h3{padding-left:8px}
+ body.hotel-page.site-page #tier-panel .hd-chart-controls{flex-wrap:wrap}
+}
