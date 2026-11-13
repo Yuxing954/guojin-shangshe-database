@@ -1,0 +1,29 @@
+name: Check hotel association
+on:
+  pull_request:
+    paths: ['hotel-dashboard.html', 'scripts/hotel-annual.*', 'scripts/site-charts.*', 'scripts/workspace-design.css', 'scripts/dashboard-compact.css', 'scripts/dashboard-toolbar.css', 'data/hotel-association-annual.*', 'tests/hotel-association.browser.cjs', '.github/workflows/check-hotel-association.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  association:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node --check scripts/hotel-annual.js
+      - run: npm install --prefix /tmp/association playwright@1.62.1
+      - run: /tmp/association/node_modules/.bin/playwright install chromium
+      - run: node tests/hotel-association.browser.cjs
+        env:
+          NODE_PATH: /tmp/association/node_modules
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: association-previews
+          path: artifacts/association
+
+
