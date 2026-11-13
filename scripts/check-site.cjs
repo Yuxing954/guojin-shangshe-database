@@ -13,7 +13,9 @@ for(const file of pages){
  assert.equal(styles.filter(s=>s==='scripts/site.css').length,1,file+' shared base');
  assert.ok(head.indexOf('scripts/site-ui.js')>=0&&head.indexOf('scripts/site-ui.js')<head.indexOf('scripts/site-shell.js'),file+' dependency ordering');
  if(html.includes('data-design="workspace"')){
-  assert.equal(styles.at(-1),'scripts/workspace-design.css',file+' canonical design must load last');
+  const tail=styles.slice(styles.indexOf('scripts/workspace-design.css')+1);
+  assert.ok(tail.every(s=>['scripts/dashboard-compact.css','scripts/dashboard-toolbar.css'].includes(s)),file+' only shared dashboard refinements may follow canonical design');
+  assert.equal(new Set(tail).size,tail.length,file+' duplicate dashboard refinements');
   assert.equal(styles.filter(s=>s==='scripts/workspace-design.css').length,1,file+' duplicate design');
  }
  for(const adapter of ['scripts/industry-design.css','scripts/macro-design.css','scripts/company-design.css']){
