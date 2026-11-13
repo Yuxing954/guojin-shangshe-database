@@ -120,3 +120,9 @@ class ScopeTests(unittest.TestCase):
   self.assertEqual(sector_for('野村｜中国消费：南京高端商场10月销售走弱'),'零售与消费出海')
   self.assertIsNone(sector_for('出行链见底，秋假催化修复','机场电子元器件供应商。'))
   self.assertIsNone(sector_for('高端商场旁的消费建材市场'))
+
+ def test_recruitment_and_brand_channel_scope(self):
+  self.assertEqual(sector_for('BOSD 直聘大跌点评'),'教育人服')
+  self.assertEqual(sector_for('【华福商社】2026年美妆双11 淘天数据复盘'),'零售与消费出海')
+  self.assertIsNone(sector_for('淘天双11平台业绩展望'))
+  self.assertIsNone(sector_for('BOSS 直聘与半导体产业研究'))

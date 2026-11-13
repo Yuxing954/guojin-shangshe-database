@@ -14,6 +14,7 @@ def is_ecommerce_topic(title):
  # A beauty-brand/channel tracker is not a platform-industry investment view.
  subject=re.sub(r'【[^】]*】','',title).strip()
  if re.match(r'(?:美护|美妆|化妆品).*双11.*(?:抖音|天猫).*数据跟踪',subject):return False
+ if re.search(r'美妆双(?:11|十一)\s*(?:淘天|天猫)数据复盘',subject):return False
  if '比音勒芬' in subject and '双十一' in subject:return False
  if ECOMMERCE.search(title):return True
  return '电商' in title and not any(x in title for x in RETAIL_CHANNEL_EXCEPTIONS)
@@ -41,6 +42,7 @@ def sector_for(title,body=''):
  if '出行链' in title and '秋假' in title and all(x in body for x in ('出游','景区')):return '酒店旅游'
  if '珠免集团' in title and not EXCLUDE.search(title):return '免税'
  if re.search(r'高端商场|德基广场',title) and not EXCLUDE.search(title):return '零售与消费出海'
+ if re.search(r'\bBOS{1,2}D?\s*直聘',title,re.I) and not EXCLUDE.search(title):return '教育人服'
  if '汉朔科技' in title:return None  # Retail technology supplier, not retail operations.
  if re.search(r'Tapestry|Coach|明月镜片',title,re.I):return '零售与消费出海'
  if re.search(r'银河娱乐|永利澳门',title):return '酒店旅游'
