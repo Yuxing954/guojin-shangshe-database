@@ -31,7 +31,7 @@ const server=http.createServer((req,res)=>{const file=path.resolve(root,'.'+new 
     await page.locator('[data-view=structure]').click();await page.locator('#supply-chart svg').waitFor();assert.equal(await page.locator('#supply-card .site-value-menu').count(),1);await openAnnotation(page.locator('#supply-card [data-value-kind=change]'));assert(await page.locator('#supply-card [data-value-kind=change]').isVisible());
    }
    if(board.file==='dutyfree-dashboard.html'){
-    const order=await page.locator('#view-monthly').evaluate(n=>{const y=s=>n.querySelector(s).getBoundingClientRect().top;return[y('.controls'),y('#hn-period'),y('.board-section-head'),y('.kpis')];});assert.deepEqual([...order].sort((a,b)=>a-b),order);
+    const order=await page.locator('#view-monthly').evaluate(n=>{const y=s=>n.querySelector(s).getBoundingClientRect().top;return[y('.controls'),y('#hn-period'),y('.kpis')];});assert.deepEqual([...order].sort((a,b)=>a-b),order);assert.equal(await page.locator('#view-monthly .board-section-head').count(),0,'monthly tab must not repeat its title above the KPI cards');
     await page.locator('[data-view=korea]').click();await page.locator('#view-korea[data-status=ready]').waitFor();assert(await page.locator('#view-korea .site-value-menu').count()>0);
    }
   }

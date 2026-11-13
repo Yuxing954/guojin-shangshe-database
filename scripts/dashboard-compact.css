@@ -51,6 +51,10 @@ body.site-page[data-design=workspace][data-dashboard-density=compact] :is(.hd-ta
 body.site-page[data-design=workspace][data-dashboard-density=compact] :is(.travel-section-head,.hd-section-head,.gj-section-head){margin-top:16px;margin-bottom:12px}
 body.site-page[data-design=workspace][data-dashboard-density=compact] .dashboard-context{font-size:13px;line-height:22px;color:var(--site-muted)}
 body.site-page[data-design=workspace][data-dashboard-density=compact] .dashboard-context:empty{display:none}
+body.site-page[data-design=workspace][data-dashboard-density=compact] #view-overview .hd-tier-head{padding-left:var(--overview-edge)!important;padding-right:var(--overview-edge)!important}
+body.site-page[data-design=workspace][data-dashboard-density=compact] .hd-supply-stats b small{display:inline}
+body.site-page.industry-embedded[data-dashboard-density=compact] .industry-board :is(#view-overview,#view-cities,#view-structure,#holiday-dashboard,#dashboard,.hd-view) .board-stat{padding:16px 20px!important}
+body.site-page.industry-embedded[data-dashboard-density=compact] .industry-board :is(#view-overview,#view-cities,#view-structure,#holiday-dashboard,#dashboard,.hd-view) .board-stat>:is(strong,.board-stat-value,.hd-stat-value,.gj-stat-value){font-size:var(--dashboard-reading)!important;line-height:var(--dashboard-reading-line)!important;font-weight:600!important}
 body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] .data-board :is(select,input[type=search],.portal-button,.regional-shortcut,.regional-options>summary,.morning-filters>summary,.prediction-more-tools>summary){box-sizing:border-box;height:40px!important;min-height:40px!important}
 body.site-page[data-design=workspace][data-dashboard-density=compact] .macro-section-link{margin-left:auto;font-size:13px}
 /* Preserve the six fixed macro slots and equal card heights across CN and US. */
@@ -67,6 +71,7 @@ body.site-page[data-design=workspace][data-dashboard-density=compact] #predictio
 body.site-page[data-design=workspace][data-dashboard-density=compact] #predictions .pm-answer h3{font-size:16px!important;line-height:24px!important;font-weight:600!important}
 body.site-page[data-design=workspace][data-dashboard-density=compact] #predictions .pm-result strong{font-size:16px;font-weight:600}
 @media(max-width:760px){
+ body.site-page.industry-embedded[data-dashboard-density=compact] .industry-board :is(#view-overview,#view-cities,#view-structure,#holiday-dashboard,#dashboard,.hd-view) .board-stat{padding:14px!important}
  body.site-page[data-dashboard-density=compact]{--dashboard-reading:24px;--dashboard-reading-line:32px}
  body.site-page[data-design=workspace][data-dashboard-density=compact] :is(.hd-stat,.kpi.board-stat,.travel-kpi,.cruise-kpi,.dining-kpi,.national-kpi,.regional-kpi,.tier-card,.fedwatch-kpi,.gj-kpi){padding:14px!important}
  body.site-page[data-design=workspace][data-dashboard-density=compact] :is(.hd-kpis,.travel-kpis,.cruise-kpis,.dining-kpis,.national-kpis,.regional-kpis,.tier-cards,.fedwatch-kpis,.gj-kpis){gap:12px!important}

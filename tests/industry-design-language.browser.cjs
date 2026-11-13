@@ -22,7 +22,7 @@ async function verifyDetails(frame,sector){
  });
  if(/^(travel|tourism|dining)(\/|$)/.test(sector))assert.ok(s.scrollHeight<=s.viewport+1,sector+' must scroll with outer page, not inside iframe: '+JSON.stringify(s));
  assert.deepEqual(s.fonts,[],sector+' font families');
- if(s.active){assert.equal(s.active.bg,'rgb(255, 255, 255)',sector+' selected tab background');assert.equal(s.active.color,'rgb(77, 88, 164)');assert.equal(s.active.height,34);assert.equal(s.active.font,'14px');}
+ if(s.active){assert.equal(s.active.bg,'rgb(255, 255, 255)',sector+' selected tab background');assert.equal(s.active.color,'rgb(33, 93, 145)');assert.equal(s.active.height,34);assert.equal(s.active.font,'14px');}
  if(s.alignment){const a=s.alignment;assert.equal(a.left,a.tierLeft,'hotel heading alignment');assert.equal(a.font,'16px');assert.equal(a.tierFont,'16px');assert.equal(a.chartLeft,a.segmentLeft);assert.equal(a.chartWidth,a.segmentWidth);}
 }
 
@@ -38,7 +38,7 @@ if(['travel','tourism','dining'].includes(sector)){
  assert.ok(await page.evaluate(()=>scrollY>0),'wheel must scroll outer page');
  assert.equal(await frame.locator('body').evaluate(()=>scrollY),0,'iframe must not capture vertical scrolling');await page.evaluate(()=>scrollTo(0,0));
 }
-console.log(width,sector,JSON.stringify(result));assert.equal(result.overflow,false,sector+' overflow');for(const c of result.cards){assert.equal(c.radius,'12px');assert.equal(c.padding,'16px');assert.equal(c.bg,'none');}
+console.log(width,sector,JSON.stringify(result));assert.equal(result.overflow,false,sector+' overflow');for(const c of result.cards){assert.equal(c.radius,'12px');assert.equal(c.padding,result.width<=760?'14px':'16px 20px');assert.equal(c.bg,'none');}
 assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);
 if(process.env.SITE_SCREENSHOT_DIR){fs.mkdirSync(process.env.SITE_SCREENSHOT_DIR,{recursive:true});await page.screenshot({path:path.join(process.env.SITE_SCREENSHOT_DIR,sector+'-'+width+'.png')});} for(const nav of result.nav)assert.equal(nav.y,result.metadataBottom+16,'consistent gap after metadata, including wrapped mobile text');
 if(width===1440||width===390){
