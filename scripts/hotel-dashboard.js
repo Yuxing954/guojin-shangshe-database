@@ -58,7 +58,7 @@
   function saveState() { var saved = Object.assign({}, state, { week: followLatest ? 'latest' : state.week, rangeVersion: '12w' }); history.replaceState(null, '', '#' + new URLSearchParams(saved).toString()); }
   function switchView(view) {
     document.querySelector('.hd-toolbar').hidden=view==='annual';
-    $('period-note').hidden=view==='annual';
+    $('region-filter').hidden=view!=='overview';
     $('selection-note').hidden=true;
     $('asof').hidden=false;
     if(view==='annual'){if(!$('asof').dataset.weeklyMarkup)$('asof').dataset.weeklyMarkup=$('asof').innerHTML;SiteUI.asOf($('asof'),'2025-12-31',[]);}
@@ -82,13 +82,13 @@
   }
   function renderPeriod() {
     var base = periods.get(baseWeek());
-    var selected = periods.get(state.week); $('period-note').textContent = (selected ? selected.start_date + '—' + selected.end_date : '暂无数据') + (state.base === 'auto' ? ' · 同周同比' : ' · 手动对比');
-    $('period-note').title = '比较基周：' + (base ? periodLabel(base) : M.weekLabel(baseWeek()) + '（无基周记录）');
+    var selected = periods.get(state.week);
+    $('week-select').title = selected ? selected.start_date + ' — ' + selected.end_date : '暂无数据';
+    $('compare-select').title = '比较基周：' + (base ? periodLabel(base) : M.weekLabel(baseWeek()) + '（无基周记录）');
     $('mode-switch').querySelector('[data-mode="change"]').textContent = state.base === 'auto' ? '仅同比' : '仅对比变化';
   }
   function renderOverview() {
     var r = row(state.region, '全部', state.week), base = row(state.region, '全部', baseWeek());
-    $('overview-title').textContent = state.region + '经营';
     $('region-select').value = state.region;
     $('core-kpis').innerHTML = ['revpar', 'occupancy_rate', 'adr'].map(function (field, i) {
       var meta = META[field], v = display(r, field), change = M.change(r, base, field);
@@ -575,11 +575,3 @@
 
   }
 })();
-
-
-
-
-
-
-
-

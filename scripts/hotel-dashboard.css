@@ -78,9 +78,10 @@ body.hotel-page.site-page .industry-board .hd-card-head>.site-chart-options{marg
 /* Overview layout: title row, one control row, then chart; all panels share one grid. */
 body.hotel-page.site-page #view-overview{--overview-edge:20px}
 body.hotel-page.site-page #view-overview .hd-kpis{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:20px}
-body.hotel-page.site-page #view-overview .hd-stat{padding:20px!important;min-height:132px;border-radius:12px}
+body.hotel-page.site-page #view-overview .hd-stat{padding:16px 20px!important;min-height:120px;border-radius:12px}
 body.hotel-page.site-page #view-overview .hd-stat-label{font-size:14px!important;line-height:22px!important}
-body.hotel-page.site-page #view-overview .hd-stat-value{font-size:32px!important;line-height:40px!important;margin:8px 0!important;letter-spacing:0}
+body.hotel-page.site-page #view-overview .hd-stat-value{font-size:28px!important;line-height:36px!important;font-weight:600!important;margin:6px 0!important;letter-spacing:0;font-variant-numeric:tabular-nums lining-nums}
+body.hotel-page.site-page #view-overview .hd-stat-value small{font-size:14px!important;line-height:22px;font-weight:400;margin-left:6px}
 body.hotel-page.site-page #view-overview .hd-stat-change{font-size:13px!important;line-height:22px!important}
 body.hotel-page.site-page #view-overview .hd-card-head{padding:18px var(--overview-edge) 12px!important;min-height:58px}
 body.hotel-page.site-page #view-overview .hd-card-head h2,
@@ -101,12 +102,14 @@ body.hotel-page.site-page #view-overview .hd-table th{font-size:13px!important;l
 @media(max-width:760px){
  body.hotel-page.site-page #view-overview{--overview-edge:16px}
  body.hotel-page.site-page #view-overview .hd-kpis{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:8px}
- body.hotel-page.site-page #view-overview .hd-stat{padding:14px 10px!important;min-height:122px}
+ body.hotel-page.site-page #view-overview .hd-stat{padding:14px 10px!important;min-height:112px}
  body.hotel-page.site-page #view-overview .hd-stat.primary{grid-column:auto}
  body.hotel-page.site-page #view-overview .hd-stat-label{font-size:12px!important;line-height:20px!important}
- body.hotel-page.site-page #view-overview .hd-stat-value{font-size:27px!important;line-height:36px!important}
+ body.hotel-page.site-page #view-overview .hd-stat-value{font-size:24px!important;line-height:32px!important}
  body.hotel-page.site-page #view-overview .hd-stat-value small{font-size:12px!important;margin-left:3px}
  body.hotel-page.site-page #view-overview .hd-stat-change{font-size:12px!important;line-height:20px!important}
+ body.hotel-page.site-page #view-overview .hd-stat-change{display:flex;flex-direction:column;align-items:flex-start}
+ body.hotel-page.site-page #view-overview .hd-stat-change>span{white-space:nowrap;margin-right:0}
  body.hotel-page.site-page #view-overview .hd-chart-controls{gap:10px!important}
  body.hotel-page.site-page #view-overview #metric-switch{grid-template-columns:repeat(3,1fr);width:100%;max-width:none;flex:1 0 100%}
  body.hotel-page.site-page #view-overview #metric-switch button{min-height:36px!important}
