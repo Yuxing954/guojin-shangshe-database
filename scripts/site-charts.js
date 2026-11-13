@@ -135,7 +135,7 @@ function prepareValues(svg,points,config){
       result.points.forEach((point,index)=>{if(points[index])point.text=points[index].text;});
       points=result.points;
     }
-  }if(config&&points.some(p=>Array.isArray(p.labels))){const kinds=new Set(points.flatMap(p=>p.labels||[]).map(p=>p.kind||'value'));for(const kind of ['value','change'])if(config[kind+'Input'])config[kind+'Input'].disabled=!kinds.has(kind);}
+  }if(config&&points.some(p=>Array.isArray(p.labels))){const kinds=new Set(points.flatMap(p=>p.labels||[]).map(p=>p.kind||'value'));if(config.scope.querySelectorAll('.site-paired-chart').length>1){if(config.scope.querySelector('.site-value-line,.site-value-bar'))kinds.add('value');if(config.scope.querySelector('.site-change-line'))kinds.add('change');}for(const kind of ['value','change'])if(config[kind+'Input'])config[kind+'Input'].disabled=!kinds.has(kind);}
   valueLabels(svg,points,config);return points;
 }
 function attach(container,points,options={}){
