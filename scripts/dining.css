@@ -2,3 +2,5 @@
 
 .dining-citation{display:block;margin-top:6px;font-size:10px;font-weight:400;color:var(--dining-blue);text-decoration:none;line-height:1.5}.dining-citation:hover{text-decoration:underline}.dining-kpi .dining-citation{margin-top:4px}.dining-kpi{grid-template-rows:22px minmax(56px,auto) minmax(20px,auto) auto}
 
+
+.dining-kpi .dining-update{margin:12px 0 0;padding-top:12px;border-top:1px solid var(--site-line);font-size:13px;line-height:1.8;color:var(--site-ink);overflow-wrap:anywhere}
