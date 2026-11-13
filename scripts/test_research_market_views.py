@@ -2,13 +2,14 @@
 """Contract and generated-output tests for the complete mini-program market-view export."""
 import argparse
 import datetime as dt
+import hashlib
 import json
 import re
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from build_research_shards import _publication_utc, market_view_export
+from build_research_shards import EXPORT_INDEX, EXPORT_PART_LIMIT, _publication_utc, market_view_export
 
 
 def make_row(kind, number, days_ago):
@@ -48,17 +49,44 @@ def verify_generated(root):
     root = Path(root).resolve()
     archive = read_json(root, 'data/research/archive/manifest.json')
     updates = read_json(root, 'data/research/updates/manifest.json')
-    complete = read_json(root, 'data/research/market-views-all.json')
+    def checked_json(meta):
+        raw = (root / meta['path']).read_bytes()
+        assert len(raw) == meta['bytes']
+        assert hashlib.sha256(raw).hexdigest() == meta['sha256']
+        header = b'blob ' + str(len(raw)).encode('ascii') + b'\0'
+        assert hashlib.sha1(header + raw).hexdigest() == meta['gitBlobSha1']
+        return json.loads(raw)
+
+    receipt = archive['marketViewsExport']
+    assert receipt['path'] == EXPORT_INDEX
+    complete = checked_json(receipt)
+    assert complete['schemaVersion'] == receipt['schemaVersion'] == 2
+    assert complete['sort'] == 'publishedAt_desc'
 
     assert archive.get('coverageTo') == updates.get('coverageTo'), (
         f"archive coverage {archive.get('coverageTo')} != updates coverage {updates.get('coverageTo')}"
     )
     coverage = archive.get('coverageTo')
     assert complete.get('coverageTo') == coverage
-    full_items = complete.get('items')
-    assert isinstance(full_items, list)
+    full_items = []
+    paths = set()
+    for part in complete['parts']:
+        assert part['path'] not in paths
+        paths.add(part['path'])
+        assert 0 < part['bytes'] <= EXPORT_PART_LIMIT
+        payload = checked_json(part)
+        assert payload['schemaVersion'] == 2
+        assert len(payload['items']) == part['rows'] > 0
+        full_items.extend(payload['items'])
     expected_total = sum(archive['databases'][kind]['rows'] for kind in ('views', 'all_views'))
     assert complete.get('totalRows') == expected_total == len(full_items)
+
+    archive_rows = {
+        kind: [row for shard in archive['databases'][kind]['shards']
+               for row in read_json(root, shard['path'])['rows']]
+        for kind in ('views', 'all_views')
+    }
+    assert full_items == market_view_export(archive_rows, coverage)['items']
 
     previous = None
     for index, item in enumerate(full_items):

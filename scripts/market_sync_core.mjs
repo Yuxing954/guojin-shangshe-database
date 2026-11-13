@@ -260,13 +260,45 @@ export class MarketSync{
     const b=JSON.parse(await freshFile(BRIEFS));if(b.briefs.some(x=>x.date<this.s.briefCutoff))throw new Error('Expired brief remains');
     const resource=await freshFile(ROOT+'resource-index.json');JSON.parse(resource);
     const ex=a.marketViewsExport;if(!ex)throw new Error('Full export validation receipt missing; deploy rewritten builder first');
-    // Fetching a single large file makes some connectors download its body.
-    // Directory entries carry the same blob SHA and byte count without the body.
-    const directory=ex.path.slice(0,ex.path.lastIndexOf('/'));
-    const listing=await this.get(`https://api.github.com/repos/${REPO}/contents/${directory}?ref=${ref}`);
-    const meta=listing.find(item=>item.path===ex.path);if(!meta)throw new Error('Full export missing from resource directory');
-    if(meta.sha!==ex.gitBlobSha1||meta.size!==ex.bytes||ex.totalRows!==a.databases.views.rows+a.databases.all_views.rows||ex.coverageTo!==a.coverageTo)throw new Error('Full export checksum/count/coverage mismatch');
-    this.s.dataVerifiedForHead=ref;this.s.verification={head:ref,coverageTo:a.coverageTo,rows:ex.totalRows,exportSha:meta.sha};await this.save();
+    const expectedRows=a.databases.views.rows+a.databases.all_views.rows;
+    if(ex.totalRows!==expectedRows||ex.coverageTo!==a.coverageTo)throw new Error('Full export count/coverage mismatch');
+    const verifyExportFiles=async files=>{
+      const directories=new Map();
+      for(const item of files){
+        const directory=item.path.slice(0,item.path.lastIndexOf('/'));
+        if(!directories.has(directory))directories.set(directory,[]);
+        directories.get(directory).push(item);
+      }
+      for(const [directory,expected] of directories){
+        const listing=await this.get(`https://api.github.com/repos/${REPO}/contents/${directory}?ref=${ref}`);
+        const metadata=new Map(listing.map(item=>[item.path,item]));
+        for(const item of expected){
+          const meta=metadata.get(item.path);
+          if(meta?.sha!==item.gitBlobSha1||meta?.size!==item.bytes)throw new Error('Full export file metadata mismatch: '+item.path);
+        }
+      }
+    };
+    if(ex.schemaVersion===2){
+      const raw=await freshFile(ex.path);
+      if(hash(raw)!==ex.sha256||gitHash(raw)!==ex.gitBlobSha1||Buffer.byteLength(raw)!==ex.bytes)throw new Error('Full export index checksum mismatch');
+      const index=JSON.parse(raw);
+      if(index.schemaVersion!==2||index.sort!=='publishedAt_desc'||index.totalRows!==expectedRows||index.coverageTo!==a.coverageTo||!Array.isArray(index.parts))throw new Error('Invalid full export index');
+      const seen=new Set();
+      let rows=0;
+      for(const part of index.parts){
+        if(!/^[a-f0-9]{64}$/.test(part.sha256)||part.path!==ROOT+'archive/market-views-export/'+part.sha256+'.json'||seen.has(part.path)||
+           !/^[a-f0-9]{40}$/.test(part.gitBlobSha1)||!Number.isSafeInteger(part.bytes)||part.bytes<1||part.bytes>8*1024*1024||
+           !Number.isSafeInteger(part.rows)||part.rows<1)throw new Error('Invalid full export part');
+        seen.add(part.path);
+        rows+=part.rows;
+      }
+      if(rows!==expectedRows)throw new Error('Full export parts count mismatch');
+      await verifyExportFiles([ex,...index.parts]);
+    }else{
+      // Legacy receipts remain verifiable without downloading the full body.
+      await verifyExportFiles([ex]);
+    }
+    this.s.dataVerifiedForHead=ref;this.s.verification={head:ref,coverageTo:a.coverageTo,rows:ex.totalRows,exportSha:ex.gitBlobSha1};await this.save();
     }
     const deployments=await this.get(`https://api.github.com/repos/${REPO}/actions/runs?head_sha=${ref}&per_page=30`);
     const pages=deployments.workflow_runs.filter(r=>r.head_sha===ref&&r.path==='dynamic/pages/pages-build-deployment');
@@ -298,7 +330,7 @@ export class MarketSync{
       if(this.s.stage==='publish')await this.publish();
       if(this.s.stage==='verify'){
         const result=await this.verify();
-        if(result.status==='pending'&&this.now().getTime()-time(this.s.publishedAt)>20*60000)throw new Error('Build/deployment not verified after 20 minutes; checkpoint retained');
+        if(result.status==='pending'&&this.now().getTime()-time(this.s.recoveryBuildStartedAt||this.s.publishedAt)>20*60000)throw new Error('Build/deployment not verified after 20 minutes; checkpoint retained');
         return result;
       }
       return {status:'done',noChange:true};

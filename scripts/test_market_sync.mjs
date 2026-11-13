@@ -25,7 +25,17 @@ class FakeRepo{
   const buckets={};for(const row of Object.values(grouped).flat())for(const k of keys(row)){const b=hash(k).slice(0,2);(buckets[b]||=new Set()).add(k);}
   for(const [b,ks] of Object.entries(buckets)){const raw=json({keys:[...ks]}),p=this.archive.dedupBuckets[b].path;this.files.set(p,raw);this.archive.dedupBuckets[b].sha256=hash(raw);}
   for(const kind of ['views','all_views']){const rows=grouped[kind],p='data/research/archive/'+kind+'/0001.json';const raw=json({rows});this.files.set(p,raw);this.archive.databases[kind]={rows:rows.length,shards:rows.length?[{path:p,sha256:hash(raw),newest:rows[0]['原始发布时间'],oldest:rows.at(-1)['原始发布时间']}]:[]};}
-  const full=json({items:Object.values(grouped).flat()});this.files.set('data/research/market-views-all.json',full);this.archive.coverageTo=update.coverageTo;this.archive.marketViewsExport={path:'data/research/market-views-all.json',bytes:Buffer.byteLength(full),gitBlobSha1:gitHash(full),totalRows:Object.values(grouped).flat().length,coverageTo:update.coverageTo};this.files.set(A,json(this.archive));
+  const rows=Object.values(grouped).flat();
+  const part=json({schemaVersion:2,items:rows});
+  const partPath='data/research/archive/market-views-export/'+hash(part)+'.json';
+  const meta=(path,raw)=>({path,bytes:Buffer.byteLength(raw),sha256:hash(raw),gitBlobSha1:gitHash(raw)});
+  if(rows.length)this.files.set(partPath,part);
+  const indexPath='data/research/market-views-all.json';
+  const index={schemaVersion:2,sort:'publishedAt_desc',totalRows:rows.length,coverageTo:update.coverageTo,parts:rows.length?[{...meta(partPath,part),rows:rows.length}]:[]};
+  this.files.set(indexPath,json(index));
+  this.archive.coverageTo=update.coverageTo;
+  this.archive.marketViewsExport={...meta(indexPath,json(index)),schemaVersion:2,totalRows:index.totalRows,coverageTo:index.coverageTo};
+  this.files.set(A,json(this.archive));
  }
  async transport(jobs){return Promise.all(jobs.map(async j=>{
   this.calls.push(j);const a=j.args;
@@ -36,7 +46,9 @@ class FakeRepo{
   if(j.tool.endsWith('github_update_ref')){assert.equal(a.expected_sha,this.head);for(const e of this.tree)this.files.set(e.path,this.blobs.get(e.sha));this.head='new-commit';this.build();if(this.lostRef){this.lostRef=false;throw new Error('Simulated disconnect after successful ref update');}return obj({ref:'main'});}
   if(j.tool.endsWith('github_fetch')){
    if(a.url.includes('/branches/'))return ok(JSON.stringify({commit:{sha:this.head,commit:{tree:{sha:'base-tree'}}}}));
-   if(a.url.includes('/contents/')){assert(!a.url.includes('market-views-all.json'));if(this.failExport)return {isError:true,content:[{type:'text',text:'temporary metadata failure'}]};const raw=this.files.get('data/research/market-views-all.json');return ok(JSON.stringify([{path:'data/research/market-views-all.json',sha:gitHash(raw),size:Buffer.byteLength(raw)}]));}
+   if(a.url.includes('/contents/')){assert(!a.url.includes('market-views-all.json'));if(this.failExport)return {isError:true,content:[{type:'text',text:'temporary metadata failure'}]};const directory=a.url.split('/contents/')[1].split('?')[0];
+    const listing=[...this.files].filter(([p])=>p.slice(0,p.lastIndexOf('/'))===directory).map(([path,raw])=>({path,sha:gitHash(raw),size:Buffer.byteLength(raw)}));
+    return ok(JSON.stringify(listing));}
    assert(!a.url.includes('/actions/workflows/'),'Use the connector-supported actions/runs endpoint');
    if(a.url.includes('/actions/runs'))return ok(JSON.stringify({workflow_runs:[{head_sha:'new-commit',path:'.github/workflows/build-research-recent.yml',status:'completed',conclusion:'success'},{head_sha:this.head,path:'dynamic/pages/pages-build-deployment',status:'completed',conclusion:'success'}]}));
   }

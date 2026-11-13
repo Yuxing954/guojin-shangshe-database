@@ -12,6 +12,6 @@
 
 CSV引用清单、条数、来源ID、分类、摘要与覆盖点在同一次提交中更新；先创建blob/tree/commit，最后以expected_sha非强制更新main。每一步进度落盘，并发时重新按最新main去重。无新增且摘要无变化不提交，仅摘要过期也提交。
 
-Actions由完整归档生成market-views-all.json。archive/manifest.json的marketViewsExport记录导出的字节数、SHA256、Git blob SHA、coverageTo、totalRows；indexedUpdateFiles记录已覆盖批次。连接器回读小回执与全量文件元数据进行一致性验证，完整内容校验由构建测试执行，避免反复读取约88MB导出正文。不生成、读取或维护market-views-recent-300.json。
+全量导出入口 `data/research/market-views-all.json` 为 schemaVersion 2 索引。读取方按 `parts` 顺序加载各片的 `items`，即可得到原有字段和全局倒序的完整数据。每片最多 8 MiB，按内容哈希命名，索引保存每片的条数、字节数及校验和。Actions 校验完整正文，连接器回读索引及文件元数据。
 
 提交后分别核验归档覆盖点/条数、新topic桶、对应分片、摘要、资源索引、全量导出回执、构建、Pages部署及正式站manifest。等待部署保存verify阶段，下次继续核验；不要重新采集和重复提交。失败最多重试一次，明确报告失败阶段，不能把创建blob或commit当作已发布。

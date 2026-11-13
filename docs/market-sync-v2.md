@@ -57,7 +57,7 @@ briefUpserts 是完整摘要对象，沿用现有字段 id、sector、date、sta
 
 运行 `node --test scripts/test_market_sync.mjs scripts/test_market_sync_bridge.mjs`；桥接回归测试实际执行本机 Node，验证含空格及中文路径、Unicode 大响应、写入失败和工具缺失时不启动工作进程。构建兼容测试为 `python scripts/test_research_market_views.py` 和 `python scripts/test_market_sync_receipt.py`。
 
-构建器在 archive/manifest.json 写 marketViewsExport（路径、字节数、SHA256、Git blob SHA、coverageTo、totalRows）以及 indexedUpdateFiles。每次本地构建仍完整验证导出；连接器只比对这份小回执与父目录条目中的文件元数据，不请求大文件自身的contents接口（部分连接器会因此读取完整正文）。已校验分片按SHA256复用，不因无关main提交重读。不会生成或维护 market-views-recent-300.json。
+构建器生成 `market-views-all.json`（schemaVersion 2），其中列出按发布时间倒序排列的全量正文分片。分片位于 `data/research/archive/market-views-export/`，每片最多 8 MiB，包含原有完整 `items` 记录。`archive/manifest.json` 的 `marketViewsExport` 记录索引的字节数、SHA256、Git blob SHA、覆盖点与条数。连接器只读取索引并核对分片文件元数据。Actions 校验分片校验和、条数、全局排序及正文与归档一致。
 
 只在真实新增、摘要更新/过期清理、失败或需人工处理时通知；无变化保持安静。已提交、已构建和已上线必须分别报告。
 

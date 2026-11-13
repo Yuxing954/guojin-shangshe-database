@@ -11,6 +11,9 @@ from pathlib import Path
 from research_sources import archive_rows, merge_rows, update_rows
 
 LIMIT = 256 * 1024
+EXPORT_PART_LIMIT = 8 * 1024 * 1024
+EXPORT_INDEX = 'data/research/market-views-all.json'
+EXPORT_PARTS = 'data/research/archive/market-views-export'
 BASES = {'views': '商社-市场观点.csv', 'all_views': '全部-市场观点.csv'}
 
 def encoded(value):
@@ -70,25 +73,47 @@ def build(root):
     buckets = {}
     generated = set()
     market_rows = {}
-    def write(path, value):
-        raw = encoded(value)
-        if len(raw) > LIMIT: raise ValueError(f'{path}: {len(raw)} exceeds shard limit')
+    def write_bytes(path, raw, limit):
+        if len(raw) > limit:
+            raise ValueError(f'{path}: {len(raw)} exceeds {limit}-byte limit')
         target = root / path
         target.parent.mkdir(parents=True, exist_ok=True)
         if not target.exists() or target.read_bytes() != raw: target.write_bytes(raw)
         generated.add(target.resolve())
         return {'path': path, 'bytes': len(raw), 'sha256': hashlib.sha256(raw).hexdigest()}
-    def write_export(path, value):
-        raw = encoded(value)
-        # GitHub rejects a single file at 100 MB; fail before attempting a bad push.
-        if len(raw) > 95 * 1024 * 1024:
-            raise ValueError(f'{path}: {len(raw)} bytes exceeds the safe single-file limit')
-        target = root / path
-        target.parent.mkdir(parents=True, exist_ok=True)
-        if not target.exists() or target.read_bytes() != raw: target.write_bytes(raw)
-        generated.add(target.resolve())
-        return {'path': path, 'bytes': len(raw), 'sha256': hashlib.sha256(raw).hexdigest(),
-                'gitBlobSha1': hashlib.sha1(b'blob ' + str(len(raw)).encode('ascii') + b'\0' + raw).hexdigest()}
+    def write(path, value):
+        return write_bytes(path, encoded(value), LIMIT)
+
+    def write_export(path, raw, limit):
+        meta = write_bytes(path, raw, limit)
+        header = b'blob ' + str(len(raw)).encode('ascii') + b'\0'
+        return {**meta, 'gitBlobSha1': hashlib.sha1(header + raw).hexdigest()}
+
+    def export_parts(items):
+        prefix, suffix = b'{"schemaVersion":2,"items":[', b']}\n'
+        overhead = len(prefix) + len(suffix)
+        parts, records = [], []
+        size = overhead
+
+        def flush():
+            raw = prefix + b','.join(reversed(records)) + suffix
+            name = hashlib.sha256(raw).hexdigest()
+            part = write_export(f'{EXPORT_PARTS}/{name}.json', raw, EXPORT_PART_LIMIT)
+            parts.append({**part, 'rows': len(records)})
+            records.clear()
+
+        # Start at the oldest end so adding newer rows leaves sealed parts intact.
+        for item in reversed(items):
+            raw = encoded(item).rstrip(b'\n')
+            if records and size + len(raw) + 1 > EXPORT_PART_LIMIT:
+                flush()
+                size = overhead
+            size += len(raw) + bool(records)
+            records.append(raw)
+        if records:
+            flush()
+        return list(reversed(parts))
+
     for kind, filename in BASES.items():
         with (root / 'data' / filename).open(encoding='utf-8-sig', newline='') as handle:
             base = list(csv.DictReader(handle))
@@ -116,9 +141,11 @@ def build(root):
         if kind in ('views', 'all_views'):
             market_rows[kind] = rows
     complete_export = market_view_export(market_rows, updates.get('coverageTo'))
-    export_meta = write_export('data/research/market-views-all.json', complete_export)
-    manifest['marketViewsExport'] = {**export_meta, 'coverageTo': updates.get('coverageTo'),
-                                   'totalRows': complete_export['totalRows']}
+    parts = export_parts(complete_export.pop('items'))
+    index = {**complete_export, 'schemaVersion': 2, 'parts': parts}
+    export_meta = write_export(EXPORT_INDEX, encoded(index), LIMIT)
+    manifest['marketViewsExport'] = {**export_meta, 'schemaVersion': 2,
+                                   'coverageTo': index['coverageTo'], 'totalRows': index['totalRows']}
     manifest['indexedUpdateFiles'] = sorted({p for kind in ('views', 'all_views')
                                             for p in updates.get('files', {}).get(kind, [])})
     for bucket, values in sorted(buckets.items()):
