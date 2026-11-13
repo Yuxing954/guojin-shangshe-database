@@ -1,0 +1,21 @@
+name: Dining update
+on:
+  pull_request:
+    paths: ['dining.html', 'data/dining/observations.json', 'scripts/dining*', 'tests/dining*', '.github/workflows/check-dining.yml']
+  push:
+    branches: [main]
+    paths: ['data/dining/observations.json', 'scripts/dining*']
+jobs:
+  dining:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node tests/dining-data.test.cjs
+      - run: npm install --prefix /tmp/dining playwright@1.62.1
+      - run: /tmp/dining/node_modules/.bin/playwright install chromium
+      - run: node tests/dining.browser.cjs
+        env:
+          NODE_PATH: /tmp/dining/node_modules
