@@ -19,8 +19,9 @@
   <script defer src="scripts/industry-embed.js?v=20261024asof"></script>
 <link rel="manifest" href="site.webmanifest?v=20261025retailservice2"><meta name="theme-color" content="#4d58a4"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="零售&amp;社服数据库"><meta name="apple-mobile-web-app-status-bar-style" content="default"><link rel="apple-touch-icon" href="scripts/assets/app/apple-touch-icon.png?v=20261025retailservice2"><script defer src="scripts/site-install.js?v=20261014home"></script><script defer src="scripts/hotel-group-entry.js?v=20261017groups"></script><link rel="stylesheet" href="scripts/industry-design.css?v=20261024compact"><link rel="stylesheet" href="scripts/dashboard-asof.css?v=20261024compact"><link rel="icon" type="image/svg+xml" href="scripts/assets/brand/sinolink-mark.svg"><link rel="stylesheet" href="scripts/dashboard-toolbar.css?v=20261111"><link rel="stylesheet" href="scripts/workspace-design.css?v=20261111visual">
 
+<link rel="stylesheet" href="scripts/dashboard-compact.css?v=20261113compact1">
 </head>
-<body data-design="workspace" class="hotel-page holiday-page site-page">
+<body data-dashboard-density="compact" data-design="workspace" class="hotel-page holiday-page site-page">
 <main class="hd-wrap industry-board">
   <header class="hd-header">
     <div><a class="hd-back" href="hotel-dashboard.html#view=overview" data-weekly-view="overview">酒店</a><h1>假期数据</h1></div>
@@ -40,9 +41,8 @@
     <div class="hd-toolbar board-filters holiday-toolbar">
       <label>假期 <select id="holiday-select"></select></label>
       <label>对比维度 <select id="dimension-select"><option value="hotel_tier">酒店档位</option><option value="city_tier">城市线级</option></select></label>
-      <button type="button" class="hd-tab" id="holiday-export">下载假期数据</button><span id="holiday-export-error" role="alert"></span>
+      <button type="button" class="hd-tab" id="holiday-export">下载假期数据</button><span id="holiday-export-error" role="alert"></span><details class="hd-compare"><summary>期间与对标</summary><div class="hd-compare-body"><p id="period-note"></p></div></details>
     </div>
-    <p class="hd-period" id="period-note"></p>
     <section class="hd-kpis board-kpis holiday-kpis" id="holiday-kpis" aria-label="假期日均经营指标"></section>
     <div class="hd-card board-panel">
       <div class="hd-card-head board-panel-head"><h2 id="trend-title">假期每日经营</h2><span id="trend-note"></span></div>

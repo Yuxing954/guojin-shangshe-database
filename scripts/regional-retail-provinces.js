@@ -15,7 +15,7 @@
  C.draw($('province-trend'),[{label:s.name+'省级披露',shortLabel:'省级披露',points:M.seriesHistory(data,s.id,basis,'社零总额','全口径',years,period)},{label:'省内城市等权（固定'+anchor.size+'城）',shortLabel:'省内城市等权',points}]);
  $('province-legend').innerHTML='';SiteUI.save({provinceYears:years});}
  function render(){if(!data)return;const period=$('province-period').value,basis=$('province-basis').value;rows=T.provinces(data,registry,period,basis);const s=rows.find(r=>r.id===$('province-region').value);if(!s)return;
- $('province-title').textContent=s.name+' · '+M.periodLabel(period)+' · '+(basis==='ytd'?'年初累计':'当月');
+ $('provinces').setAttribute('aria-label',s.name+' · '+M.periodLabel(period)+' · '+(basis==='ytd'?'年初累计':'当月'));
  const k=(label,value,sub)=>'<article class="regional-kpi"><span>'+E(label)+'</span><strong>'+E(value)+'</strong><small>'+E(sub)+'</small></article>';
  $('province-kpis').innerHTML=k('省级社零总额',num(s.amount,2),'亿元 · 省级披露')+k('省级同比',pct(s.yoy),'全省口径')+k('省内城市等权同比',pct(s.sample.average),s.sample.n+' / '+s.cities.length+'个已收录城市有同比')+k('城市正增长占比',pct(s.sample.positiveShare),s.sample.positive+' / '+s.sample.n+'城');
  const valid=rows.filter(r=>F(r.yoy)),rank=valid.findIndex(r=>r.id===s.id);const cs=s.cities.filter(r=>F(r.yoy)).sort((a,b)=>b.yoy-a.yoy);

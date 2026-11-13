@@ -1,0 +1,75 @@
+/* Shared density for industry and macro dashboards. Loaded after module styles.
+   Data periods, status messages and source controls remain in their owning modules. */
+body.site-page[data-dashboard-density=compact]{
+ --dashboard-reading:28px;--dashboard-reading-line:36px;
+ --ui-gap:16px;--ui-section:20px;
+}
+body.site-page[data-design=workspace][data-dashboard-density=compact] :is(
+ .hd-stat,.kpi.board-stat,.travel-kpi,.cruise-kpi,.dining-kpi,
+ .national-kpi,.regional-kpi,.tier-card,.fedwatch-kpi,.gj-kpi){
+ padding:16px 20px!important;border:1px solid var(--site-line)!important;
+ border-radius:12px!important;background:var(--site-surface)!important;box-shadow:none!important;min-width:0;
+}
+body.site-page[data-design=workspace][data-dashboard-density=compact] :is(
+ .hd-kpis,.travel-kpis,.cruise-kpis,.dining-kpis,.national-kpis,.regional-kpis,.tier-cards,.fedwatch-kpis,.gj-kpis){gap:16px!important;margin-bottom:20px}
+body.site-page[data-design=workspace][data-dashboard-density=compact] :is(
+ .hd-stat-value,.kpi>strong,.travel-kpi>strong,.cruise-kpi>strong,.dining-kpi-value,
+ .national-kpi>strong,.regional-kpi>strong,.tier-card>strong,.fedwatch-kpi>strong,.gj-kpi>strong,.hd-supply-stats b),
+body.site-page[data-design=workspace][data-dashboard-density=compact] #view-overview .hd-stat-value,
+body.site-page[data-design=workspace][data-dashboard-density=compact] #indicators #kpi-grid .macro-kpi-reading .board-stat-value,
+body.site-page[data-design=workspace][data-dashboard-density=compact] #indicators #detail .macro-latest>b,
+body.site-page[data-design=workspace][data-dashboard-density=compact] #predictions .pm-big-number strong{
+ font-family:var(--ui-font)!important;font-size:var(--dashboard-reading)!important;
+ line-height:var(--dashboard-reading-line)!important;font-weight:600!important;
+ letter-spacing:0!important;font-variant-numeric:tabular-nums lining-nums;
+}
+body.site-page[data-design=workspace][data-dashboard-density=compact] :is(.hd-stat-value,.kpi>strong,.travel-kpi>strong,.cruise-kpi>strong,.national-kpi>strong,.regional-kpi>strong,.tier-card>strong,.gj-kpi>strong){margin:6px 0!important}
+body.site-page[data-design=workspace][data-dashboard-density=compact] .kpi>strong>span{display:inline;font-size:inherit!important;line-height:inherit!important;font-weight:inherit!important;color:inherit}
+body.site-page[data-design=workspace][data-dashboard-density=compact] :is(.hd-supply-stats b small,.hd-stat-value small,.kpi>strong em,.travel-kpi>strong small,.cruise-kpi>strong small,.national-kpi>strong small,.gj-kpi>strong small),
+body.site-page[data-design=workspace][data-dashboard-density=compact] #indicators #kpi-grid .macro-kpi-reading small{
+ font-size:14px!important;line-height:22px!important;font-weight:400!important;letter-spacing:0;margin-left:6px;color:var(--site-muted);white-space:nowrap;
+}
+body.site-page[data-design=workspace][data-dashboard-density=compact] :is(
+ .hd-stat-label,.kpi>span,.travel-kpi>h2,.cruise-kpi>h2,.national-kpi>span,.regional-kpi>span,.tier-card>h3,.fedwatch-kpi>span,.gj-kpi>span){
+ font-size:13px!important;line-height:22px!important;font-weight:400!important;margin:0;color:var(--site-muted);
+}
+body.site-page[data-design=workspace][data-dashboard-density=compact] :is(
+ .hd-stat-change,.hd-stat-change strong,.kpi>small,.travel-kpi>p,.cruise-kpi>p,
+ .national-kpi>div,.national-kpi>small,.regional-kpi>small,.tier-card>p,.tier-card>small,.fedwatch-kpi>small,.dining-kpi-metric){
+ font-size:13px!important;line-height:22px!important;font-weight:400!important;margin-top:0;margin-bottom:0;
+}
+/* Qualitative restaurant observations retain their readable text treatment. */
+body.site-page[data-design=workspace][data-dashboard-density=compact] .dining-kpi:is(.qualitative,.estimate) .dining-kpi-value{font-size:17px!important;line-height:26px!important}
+body.site-page[data-design=workspace][data-dashboard-density=compact] .dining-kpi-head h2{font-size:14px!important;line-height:22px!important;font-weight:600!important}
+body.site-page[data-design=workspace][data-dashboard-density=compact] :is(
+ .hd-card-head,.gj-card-head,.board-panel-head,.travel-panel-head,.cruise-detail-head,.dining-section,.national-panel-head,.regional-section-head) :is(h2,h3),
+body.site-page[data-design=workspace][data-dashboard-density=compact] :is(.travel-panel,.cruise-panel,.regional-panel)>:is(h2,h3){
+ font-size:16px!important;line-height:24px!important;font-weight:600!important;
+}
+body.site-page[data-design=workspace][data-dashboard-density=compact] :is(.hd-toolbar,.hg-toolbar,.dutyfree-filters,.kr-controls,.travel-controls,.cruise-controls,.dining-toolbar,.national-controls,.regional-controls,.forecast-controls){margin-top:0;margin-bottom:12px!important;gap:12px!important}
+body.site-page[data-design=workspace][data-dashboard-density=compact] :is(.hd-tabs,.travel-tabs,.cruise-tabs,.regional-view-head,.macro-study-controls){margin-bottom:16px!important}
+body.site-page[data-design=workspace][data-dashboard-density=compact] :is(.travel-section-head,.hd-section-head,.gj-section-head){margin-top:16px;margin-bottom:12px}
+body.site-page[data-design=workspace][data-dashboard-density=compact] .dashboard-context{font-size:13px;line-height:22px;color:var(--site-muted)}
+body.site-page[data-design=workspace][data-dashboard-density=compact] .dashboard-context:empty{display:none}
+body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] .data-board :is(select,input[type=search],.portal-button,.regional-shortcut,.regional-options>summary,.morning-filters>summary,.prediction-more-tools>summary){box-sizing:border-box;height:40px!important;min-height:40px!important}
+body.site-page[data-design=workspace][data-dashboard-density=compact] .macro-section-link{margin-left:auto;font-size:13px}
+/* Preserve the six fixed macro slots and equal card heights across CN and US. */
+body.site-page[data-design=workspace][data-dashboard-density=compact] #indicators .macro-overview{margin-top:0!important;margin-bottom:20px!important}
+body.site-page[data-design=workspace][data-dashboard-density=compact] #indicators .macro-topic>h3{font-size:14px!important;line-height:22px!important;font-weight:600;margin-top:0;margin-bottom:10px}
+body.site-page[data-design=workspace][data-dashboard-density=compact] #indicators #kpi-grid .macro-kpi{box-shadow:none!important}
+body.site-page[data-design=workspace][data-dashboard-density=compact] #indicators #kpi-grid .macro-kpi[aria-pressed=true]{border-color:var(--site-accent)!important}
+body.site-page[data-design=workspace][data-dashboard-density=compact] #indicators #kpi-grid .macro-kpi[aria-pressed=true]::before{background:var(--site-accent)!important}
+body.site-page[data-design=workspace][data-dashboard-density=compact] #indicators #kpi-grid .macro-kpi-change{font-weight:400!important}
+body.site-page[data-design=workspace][data-dashboard-density=compact] #predictions .pm-workspace{gap:16px;margin-top:16px}
+body.site-page[data-design=workspace][data-dashboard-density=compact] #predictions .pm-focus{border-radius:12px;padding:20px}
+body.site-page[data-design=workspace][data-dashboard-density=compact] #predictions .pm-focus-heading h2{font-size:18px!important;line-height:28px!important;font-weight:600!important;margin:6px 0 16px!important}
+body.site-page[data-design=workspace][data-dashboard-density=compact] #predictions .pm-answer{padding:16px 20px;gap:16px;margin-bottom:20px;background:var(--site-soft)}
+body.site-page[data-design=workspace][data-dashboard-density=compact] #predictions .pm-answer h3{font-size:16px!important;line-height:24px!important;font-weight:600!important}
+body.site-page[data-design=workspace][data-dashboard-density=compact] #predictions .pm-result strong{font-size:16px;font-weight:600}
+@media(max-width:760px){
+ body.site-page[data-dashboard-density=compact]{--dashboard-reading:24px;--dashboard-reading-line:32px}
+ body.site-page[data-design=workspace][data-dashboard-density=compact] :is(.hd-stat,.kpi.board-stat,.travel-kpi,.cruise-kpi,.dining-kpi,.national-kpi,.regional-kpi,.tier-card,.fedwatch-kpi,.gj-kpi){padding:14px!important}
+ body.site-page[data-design=workspace][data-dashboard-density=compact] :is(.hd-kpis,.travel-kpis,.cruise-kpis,.dining-kpis,.national-kpis,.regional-kpis,.tier-cards,.fedwatch-kpis,.gj-kpis){gap:12px!important}
+ body.site-page[data-design=workspace][data-dashboard-density=compact] :is(.hd-supply-stats b small,.hd-stat-value small,.kpi>strong em,.travel-kpi>strong small,.cruise-kpi>strong small,.national-kpi>strong small){font-size:12px!important;line-height:20px!important;margin-left:4px}
+ body.site-page[data-design=workspace][data-dashboard-density=compact] #predictions .pm-focus{padding:16px}
+}

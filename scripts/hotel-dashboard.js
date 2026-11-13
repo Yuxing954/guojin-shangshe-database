@@ -335,7 +335,8 @@
     if (isRate && v != null) v *= 100;
     if (v == null) return '';
     var isChange = state.mode === 'change' && change != null, current = fmt(v, isRate ? 1 : 0) + ' ' + valueUnit(field);
-    return '<div><span>' + title + (isChange ? ' · ' + labelChange() : ' · 本周') + '</span><b>' + (isChange ? delta(change, field) : current) + '</b><small>' + (isChange ? '本周 ' + current : change == null ? '基期缺失 · 暂无同比' : labelChange() + ' ' + delta(change, field)) + '</small></div>';
+    var reading = fmt(v, isRate ? 1 : 0) + '<small>' + valueUnit(field) + '</small>';
+    return '<div><span>' + title + (isChange ? ' · ' + labelChange() : ' · 本周') + '</span><b>' + (isChange ? delta(change, field) : reading) + '</b><small>' + (isChange ? '本周 ' + current : change == null ? '基期缺失 · 暂无同比' : labelChange() + ' ' + delta(change, field)) + '</small></div>';
   }
   function drawSupply() {
     drawSupplyBreakdowns();

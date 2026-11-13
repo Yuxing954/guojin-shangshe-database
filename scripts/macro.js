@@ -81,7 +81,7 @@
   function renderOverview(){
     const all=D.core(catalog,state.country,snapshot),available=all.filter(s=>M.rows(snapshot.series[s.id]).length);
     const releases=D.releases(catalog,snapshot,state.country);
-    $('overview-title').textContent=(state.country==='CN'?'中国':'美国')+' · 核心读数';
+    document.querySelector('.macro-overview').setAttribute('aria-label',(state.country==='CN'?'中国':'美国')+'核心指标');
     $('overview-meta').textContent=available.length+'/'+all.length+' 项已收录 · 快照截止 '+snapshot.cutoff+(releases.items.length?' · 最近发布 '+releases.items[0].releaseDate:'');
     const topics=state.country==='CN'?
       [{title:'增长与需求',ids:['cn-gdp-quarter','cn-retail']},{title:'景气与就业',ids:['cn-pmi','cn-unemployment']},{title:'价格与货币',ids:['cn-cpi','cn-m2']}]:
