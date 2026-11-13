@@ -141,3 +141,67 @@ body.hotel-page.site-page #view-overview .hd-table th{font-size:13px!important;l
 .hd-city-table .hd-benchmark td{border-bottom:2px solid #e2e4f1}
 @media(max-width:760px){.hd-city-controls{grid-template-columns:1fr 1fr;gap:14px;padding:16px}.hd-city-metrics{grid-column:1/-1}.hd-city-guide{padding:0 16px 14px}.hd-city-summary>span{flex:1 1 40%}}
 @media(max-width:460px){.hd-city-controls{grid-template-columns:1fr}.hd-city-metrics{grid-column:auto}.hd-city-metrics button{flex:1}.hd-city-summary>span{flex:1 1 100%}}
+
+/* City comparison: ranked bars with explicit national reference. */
+#view-cities #city-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;padding:0;border:0;background:transparent;margin:0 0 16px}
+#view-cities #city-summary>div{padding:16px 20px;border:1px solid var(--site-line);border-radius:12px;background:white;display:grid;gap:6px}
+#view-cities #city-summary span{font-size:13px;color:var(--site-muted)}
+#view-cities #city-summary strong{font-size:26px;line-height:36px;font-weight:600;font-variant-numeric:tabular-nums}
+#view-cities #city-summary small{font-size:13px;font-weight:400;color:var(--site-muted)}
+#view-cities .hd-city-controls{padding:16px!important;gap:12px!important;align-items:center}
+#view-cities .hd-city-metrics{border:0;padding:3px;background:var(--site-soft);border-radius:8px;gap:2px}
+#view-cities .hd-city-metrics legend{display:none}
+#view-cities .hd-city-metrics button{padding:6px 12px;min-height:34px;border:0;border-radius:6px;background:transparent;color:var(--site-muted);font:500 14px/22px var(--ui-font)}
+#view-cities .hd-city-metrics button[aria-pressed=true]{background:white;color:var(--site-accent);font-weight:600}
+#view-cities .city-ranking-head{display:flex;align-items:center;flex-wrap:wrap;gap:12px;padding:16px;border-top:1px solid var(--site-line)}
+#view-cities .city-ranking-head h2{margin:0;font-size:16px;line-height:24px}
+#view-cities .city-ranking-head>span{font-size:13px;color:var(--site-muted);margin-left:auto}
+#view-cities .city-ranking-head label{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--site-muted)}
+#view-cities #city-ranking{padding:0 16px 16px}
+#view-cities :is(.city-rank-columns,.city-rank-row){display:grid;grid-template-columns:100px minmax(60px,1fr) 110px 110px 100px;gap:12px;align-items:center;padding:10px 12px;font-size:13px;line-height:22px}
+#view-cities .city-rank-columns{background:var(--site-soft);color:var(--site-muted)}
+#view-cities .city-rank-row{min-height:48px;border-bottom:1px solid var(--site-line);font-variant-numeric:tabular-nums}
+#view-cities .city-rank-row:hover{background:#f6f9fc}
+#view-cities .city-rank-name{display:flex;align-items:center;gap:10px}
+#view-cities .city-rank-name>span{width:20px;flex:none;color:var(--site-muted)}
+#view-cities .city-primary{font-size:15px;font-weight:600;text-align:right;white-space:nowrap}
+#view-cities :is(.city-secondary,.city-gap){text-align:right;white-space:nowrap}
+#view-cities .city-rank-columns>span:nth-child(n+3){text-align:right}
+#view-cities .city-bar{height:18px;position:relative}
+#view-cities .city-bar-fill{position:absolute;top:3px;height:12px;border-radius:2px}
+#view-cities .city-zero{position:absolute;height:22px;top:-2px;border-left:1px solid var(--site-line)}
+#view-cities .city-national-line{position:absolute;height:26px;top:-4px;border-left:1px dashed #215d91;z-index:1}
+#view-cities .city-rank-legend{display:flex;gap:8px;align-items:center;justify-content:center;font-size:12px;color:var(--site-muted);padding-top:16px}
+#view-cities .city-rank-legend i{height:14px;border-left:1px dashed #215d91}
+#view-cities .city-all-metrics{border-top:1px solid var(--site-line)}
+#view-cities .city-all-metrics>summary{padding:16px;font-size:14px;cursor:pointer}
+#view-cities #city-detail-count{font-size:13px;color:var(--site-muted);margin-left:8px}
+#view-cities #city-table{min-width:780px}
+@media(max-width:1000px){#view-cities :is(.city-rank-columns,.city-rank-row){grid-template-columns:90px minmax(40px,1fr) 90px 90px 85px;gap:8px}}
+@media(max-width:600px){
+ #view-cities #city-summary{gap:8px}
+ #view-cities #city-summary>div{padding:12px 10px}
+ #view-cities #city-summary strong{font-size:19px;line-height:28px}
+ #view-cities #city-summary small{display:block;font-size:12px}
+ #view-cities .hd-city-controls{padding:12px!important}
+ #view-cities .hd-city-controls label{flex:1;min-width:0}
+ #view-cities #city-search{width:100%;min-width:0}
+ #view-cities .city-ranking-head{padding:12px}
+ #view-cities #city-ranking{padding:0 12px 12px}
+ #view-cities :is(.city-rank-columns,.city-rank-row){grid-template-columns:75px minmax(35px,1fr) 85px;gap:6px;padding:10px 0}
+ #view-cities .city-rank-columns>span:nth-child(n+4){display:none}
+ #view-cities .city-secondary{grid-column:1/3;text-align:left;color:var(--site-muted);font-size:12px}
+ #view-cities .city-secondary:before{content:attr(data-label) ' '}
+ #view-cities .city-gap{grid-column:3;font-size:12px;color:var(--site-muted)}
+ #view-cities .city-gap:before{content:'较全国 '}
+ #view-cities .city-primary{font-size:14px}
+ #view-cities .city-rank-name{gap:4px}
+}
+
+
+#view-cities .hd-city-controls{display:flex!important;flex-wrap:wrap;justify-content:flex-start}
+#view-cities .hd-city-controls label{display:inline-flex!important;align-items:center;text-align:left;gap:8px;flex:0 1 auto}
+#view-cities .hd-city-metrics{flex:0 1 auto;width:auto!important}
+#view-cities .hd-city-controls .hd-city-metrics button{box-shadow:none!important;outline-offset:2px;white-space:nowrap}
+@media(max-width:600px){#view-cities .hd-city-metrics{width:100%!important;display:flex!important}#view-cities .hd-city-metrics button{flex:1;padding:6px!important;font-size:13px!important}#view-cities .hd-city-controls label{width:100%;flex-direction:row!important}#view-cities .hd-city-controls input,#view-cities .hd-city-controls select{flex:1;width:0;min-width:0}}
+

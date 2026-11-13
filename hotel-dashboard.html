@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>酒店 · 零售&amp;社服数据库</title><script defer src="scripts/site-ui.js?v=20261106researchtools1"></script>
   <link rel="stylesheet" href="scripts/site.css?v=20261025retailservice2">
-  <link rel="stylesheet" href="scripts/hotel-dashboard.css?v=20261113compact">
+  <link rel="stylesheet" href="scripts/hotel-dashboard.css?v=20261113cities">
   <script defer src="scripts/site-shell.js?v=20261106researchtools2"></script>
   <script defer src="scripts/hotel-metrics.js?v=20261017groupcompare"></script>
   <script defer src="scripts/hotel-excel-export.js?v=20261017"></script>
   <script defer src="scripts/hotel-annual.js?v=20261113redesign"></script>
   <link rel="stylesheet" href="scripts/hotel-annual.css?v=20261113redesign">
-  <script defer src="scripts/hotel-dashboard.js?v=20261113compact2"></script>
+  <script defer src="scripts/hotel-dashboard.js?v=20261113cities"></script>
 <link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-charts.css?v=20261025annotations1"><link rel="stylesheet" href="scripts/industry-embed.css?v=20261014viewfit"><link rel="stylesheet" href="scripts/site-install.css?v=20261014home"><link rel="stylesheet" href="scripts/site-polish.css?v=20261013clean"><script src="scripts/site-charts.js?v=20261111density"></script><script defer src="scripts/industry-embed.js?v=20261024asof"></script><link rel="manifest" href="site.webmanifest?v=20261025retailservice2"><meta name="theme-color" content="#4d58a4"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="零售&amp;社服数据库"><meta name="apple-mobile-web-app-status-bar-style" content="default"><link rel="apple-touch-icon" href="scripts/assets/app/apple-touch-icon.png?v=20261025retailservice2"><script defer src="scripts/site-install.js?v=20261014home"></script><script defer src="scripts/hotel-group-entry.js?v=20261017groups"></script><link rel="stylesheet" href="scripts/industry-design.css?v=20261024compact"><link rel="stylesheet" href="scripts/dashboard-asof.css?v=20261024compact"><link rel="icon" type="image/svg+xml" href="scripts/assets/brand/sinolink-mark.svg"><link rel="stylesheet" href="scripts/hotel-hci.css?v=20261026"><script defer src="scripts/hotel-hci.js?v=20261026"></script><link rel="stylesheet" href="scripts/dashboard-toolbar.css?v=20261111"><link rel="stylesheet" href="scripts/workspace-design.css?v=20261111visual">
 
 <link rel="stylesheet" href="scripts/dashboard-compact.css?v=20261113compact3">
@@ -90,8 +90,8 @@
           <label>搜索城市 <input id="city-search" type="search" placeholder="输入城市名，如杭州" autocomplete="off"></label>
           <label>排序 <select id="city-order"><option value="desc">由高到低</option><option value="asc">由低到高</option></select></label>
         </div>
-        <p class="hd-city-guide" id="city-guide"></p>
-        <div class="hd-table-scroll" tabindex="0" aria-label="城市对比结果"><table class="hd-table hd-city-table board-table" id="city-table"></table></div>
+        <div class="city-ranking-head"><h2 id="city-heading">城市排名</h2><span id="city-guide"></span><label>显示<select id="city-limit"><option value="10">前10城</option><option value="20">前20城</option><option value="all">全部城市</option></select></label></div>
+        <div id="city-ranking" aria-live="polite"></div><details class="city-all-metrics"><summary>全部指标明细 <span id="city-detail-count"></span></summary><div class="hd-table-scroll" tabindex="0" aria-label="城市全部经营指标"><table class="hd-table board-table" id="city-table"></table></div></details>
       </div>
     </section>
 
@@ -140,5 +140,7 @@
 </form></dialog>
 </body>
 </html>
+
+
 
 
