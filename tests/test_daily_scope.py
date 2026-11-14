@@ -126,3 +126,7 @@ class ScopeTests(unittest.TestCase):
   self.assertEqual(sector_for('【华福商社】2026年美妆双11 淘天数据复盘'),'零售与消费出海')
   self.assertIsNone(sector_for('淘天双11平台业绩展望'))
   self.assertIsNone(sector_for('BOSS 直聘与半导体产业研究'))
+
+ def test_aircraft_manufacturer_is_not_luxury_retail(self):
+  self.assertIsNone(sector_for('【国金轻工】西锐深度：空中奢侈品龙头','私人飞机制造、航校机型交付。'))
+  self.assertEqual(sector_for('10月潮玩动漫线上跟踪【国金轻工】'),'零售与消费出海')
