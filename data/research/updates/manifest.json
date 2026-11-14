@@ -1,13 +1,14 @@
 {
-  "syncedAt": "2026-11-14T07:12:33.666Z",
+  "syncedAt": "2026-11-14T09:09:49.863Z",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
-  "coverageFrom": "2026-11-13T20:35:18.040+0800",
-  "coverageTo": "2026-11-14T13:59:02.412+0800",
-  "oldestFetched": "2026-11-13T17:48:12.025+0800",
+  "coverageFrom": "2026-11-14T13:59:02.412+0800",
+  "coverageTo": "2026-11-14T16:30:59.062+0800",
+  "oldestFetched": "2026-11-13T19:44:53.203+0800",
   "fetchedTopics": 30,
   "files": {
     "views": [
+      "data/research/updates/2026-11-14-170533-views-000.csv",
       "data/research/updates/2026-11-13-210100-views-000.csv",
       "data/research/updates/2026-11-13-071449-r4d2fb-views-000.csv",
       "data/research/updates/2026-11-13-125748-views-000.csv",
@@ -199,6 +200,7 @@
       "data/research/updates/2026-10-14-1258-views.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-11-14-170533-all_views-000.csv",
       "data/research/updates/2026-11-14-150754-all_views-000.csv",
       "data/research/updates/2026-11-13-210100-all_views-000.csv",
       "data/research/updates/2026-11-13-071449-r4d2fb-all_views-000.csv",
@@ -558,13 +560,13 @@
     ]
   },
   "counts": {
-    "views": 1299,
-    "all_views": 9234,
+    "views": 1300,
+    "all_views": 9244,
     "minutes": 101
   },
   "latest": {
-    "views": "2026-11-13 19:43",
-    "all_views": "2026-11-14 11:18",
+    "views": "2026-11-14 15:51",
+    "all_views": "2026-11-14 16:30",
     "minutes": "2026-10-12T01:07:33"
   },
   "excluded": {
@@ -1933,7 +1935,8 @@
       "22258425251284821",
       "55521452555251544",
       "82258425222528222",
-      "82258425222525182"
+      "82258425222525182",
+      "22258425211552511"
     ],
     "all_views": [
       "82258224252524812",
@@ -10999,56 +11002,59 @@
       "82258425222528552",
       "22258425215415121",
       "14425142412111552",
-      "55521452542445454"
+      "55521452542445454",
+      "55521452588118584",
+      "14425142488224552",
+      "22258425211552581",
+      "45548254511448118",
+      "45548254511448128",
+      "14425142488225822",
+      "14425142488225112",
+      "22258425211558241",
+      "22258425211558281",
+      "82258425211558252"
     ]
   },
   "lastRun": {
-    "runId": "2026-11-14-150754",
+    "runId": "2026-11-14-170533",
     "sourceGroup": "88888142214212",
     "sourceName": "水木调研纪要-2.0",
-    "previousCoverageTo": "2026-11-13T20:35:18.040+0800",
-    "coverageTo": "2026-11-14T13:59:02.412+0800",
+    "previousCoverageTo": "2026-11-14T13:59:02.412+0800",
+    "coverageTo": "2026-11-14T16:30:59.062+0800",
     "added": {
-      "views": 0,
-      "all_views": 3
+      "views": 1,
+      "all_views": 10
     },
     "updated": 0,
-    "expiredRemoved": 7,
+    "expiredRemoved": 0,
     "sourceTopicIds": [
-      "22258425215415121",
-      "14425142412111552",
-      "55521452542445454"
+      "55521452588118584",
+      "14425142488224552",
+      "22258425211552511",
+      "22258425211552581",
+      "45548254511448118",
+      "45548254511448128",
+      "14425142488225822",
+      "14425142488225112",
+      "22258425211558241",
+      "22258425211558281",
+      "82258425211558252"
     ],
-    "duplicateTopicIds": [
-      "22258425215418841",
-      "55521452582481254"
-    ],
+    "duplicateTopicIds": [],
     "briefChanges": {
-      "added": 0,
+      "added": 1,
       "updated": 0,
-      "expiredRemoved": 7
+      "expiredRemoved": 0
     },
-    "duplicates": 2,
+    "duplicates": 0,
     "excludedTopics": [
       {
-        "topicId": "14425142481581412",
+        "topicId": "22258425211881851",
         "reason": "无可读观点正文"
       },
       {
-        "topicId": "14425142481581182",
-        "reason": "仅标题及安全中心占位，没有可读正文"
-      },
-      {
-        "topicId": "45548254512812528",
-        "reason": "仅标题，不推断未读附件"
-      },
-      {
-        "topicId": "82258425215418582",
-        "reason": "综合新闻与行情摘录，无独立展开的市场观点"
-      },
-      {
-        "topicId": "82258425245442152",
-        "reason": "资讯标题汇编，没有展开的投资观点正文"
+        "topicId": "22258425211882121",
+        "reason": "无可读观点正文"
       }
     ],
     "pagination": {
@@ -11058,42 +11064,39 @@
       "stoppedWhenPageReachedCoverage": true
     },
     "dedupCheck": {
-      "candidateKeys": 36,
-      "candidateBuckets": 34,
+      "candidateKeys": 44,
+      "candidateBuckets": 38,
       "algorithm": "sha256-utf8-v1"
     },
-    "expiredBriefIds": [
-      "mingyue-premium-medical-channel-20261107",
-      "housing-service-transactions-20261108",
-      "hisense-tv-product-mix-20261110",
-      "consumer-electronics-battery-20261110",
-      "anta-brand-channel-efficiency-20261110",
-      "retail-spatial-digitization-20261111",
-      "chuanzhi-ai-training-20261112"
-    ]
+    "expiredBriefIds": []
   },
   "lastUpdateRecord": {
-    "runId": "2026-11-14-150754",
+    "runId": "2026-11-14-170533",
     "sourceGroup": "88888142214212",
     "sourceName": "水木调研纪要-2.0",
-    "previousCoverageTo": "2026-11-13T20:35:18.040+0800",
-    "coverageTo": "2026-11-14T13:59:02.412+0800",
-    "added": 3,
+    "previousCoverageTo": "2026-11-14T13:59:02.412+0800",
+    "coverageTo": "2026-11-14T16:30:59.062+0800",
+    "added": 11,
     "updated": 0,
-    "expiredRemoved": 7,
+    "expiredRemoved": 0,
     "sourceTopicIds": [
-      "22258425215415121",
-      "14425142412111552",
-      "55521452542445454"
+      "55521452588118584",
+      "14425142488224552",
+      "22258425211552511",
+      "22258425211552581",
+      "45548254511448118",
+      "45548254511448128",
+      "14425142488225822",
+      "14425142488225112",
+      "22258425211558241",
+      "22258425211558281",
+      "82258425211558252"
     ],
-    "duplicateTopicIds": [
-      "22258425215418841",
-      "55521452582481254"
-    ],
+    "duplicateTopicIds": [],
     "briefChanges": {
-      "added": 0,
+      "added": 1,
       "updated": 0,
-      "expiredRemoved": 7
+      "expiredRemoved": 0
     }
   }
 }
