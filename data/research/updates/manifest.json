@@ -1,10 +1,10 @@
 {
-  "syncedAt": "2026-11-13T13:05:33.932Z",
+  "syncedAt": "2026-11-14T07:12:33.666Z",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
-  "coverageFrom": "2026-11-13T14:57:39.805+0800",
-  "coverageTo": "2026-11-13T20:35:18.040+0800",
-  "oldestFetched": "2026-11-13T14:55:18.576+0800",
+  "coverageFrom": "2026-11-13T20:35:18.040+0800",
+  "coverageTo": "2026-11-14T13:59:02.412+0800",
+  "oldestFetched": "2026-11-13T17:48:12.025+0800",
   "fetchedTopics": 30,
   "files": {
     "views": [
@@ -199,6 +199,7 @@
       "data/research/updates/2026-10-14-1258-views.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-11-14-150754-all_views-000.csv",
       "data/research/updates/2026-11-13-210100-all_views-000.csv",
       "data/research/updates/2026-11-13-071449-r4d2fb-all_views-000.csv",
       "data/research/updates/2026-11-13-125748-all_views-000.csv",
@@ -558,12 +559,12 @@
   },
   "counts": {
     "views": 1299,
-    "all_views": 9231,
+    "all_views": 9234,
     "minutes": 101
   },
   "latest": {
     "views": "2026-11-13 19:43",
-    "all_views": "2026-11-13 19:44",
+    "all_views": "2026-11-14 11:18",
     "minutes": "2026-10-12T01:07:33"
   },
   "excluded": {
@@ -10995,69 +10996,59 @@
       "55521452555254224",
       "22258425222522151",
       "14425142444244152",
-      "82258425222528552"
+      "82258425222528552",
+      "22258425215415121",
+      "14425142412111552",
+      "55521452542445454"
     ]
   },
   "lastRun": {
-    "runId": "2026-11-13-210100",
+    "runId": "2026-11-14-150754",
     "sourceGroup": "88888142214212",
     "sourceName": "水木调研纪要-2.0",
-    "previousCoverageTo": "2026-11-13T14:57:39.805+0800",
-    "coverageTo": "2026-11-13T20:35:18.040+0800",
+    "previousCoverageTo": "2026-11-13T20:35:18.040+0800",
+    "coverageTo": "2026-11-14T13:59:02.412+0800",
     "added": {
-      "views": 3,
-      "all_views": 4
+      "views": 0,
+      "all_views": 3
     },
     "updated": 0,
-    "expiredRemoved": 0,
+    "expiredRemoved": 7,
     "sourceTopicIds": [
-      "55521452555254224",
-      "22258425222522151",
-      "14425142444244152",
-      "55521452555251544",
-      "82258425222528222",
-      "82258425222528552",
-      "82258425222525182"
+      "22258425215415121",
+      "14425142412111552",
+      "55521452542445454"
     ],
-    "duplicateTopicIds": [],
+    "duplicateTopicIds": [
+      "22258425215418841",
+      "55521452582481254"
+    ],
     "briefChanges": {
-      "added": 2,
-      "updated": 1,
-      "expiredRemoved": 0
+      "added": 0,
+      "updated": 0,
+      "expiredRemoved": 7
     },
-    "duplicates": 0,
+    "duplicates": 2,
     "excludedTopics": [
       {
-        "topicId": "14425142444124882",
+        "topicId": "14425142481581412",
         "reason": "无可读观点正文"
       },
       {
-        "topicId": "82258425222458142",
-        "reason": "无可读观点正文"
+        "topicId": "14425142481581182",
+        "reason": "仅标题及安全中心占位，没有可读正文"
       },
       {
-        "topicId": "45548254555554528",
-        "reason": "无可读观点正文"
+        "topicId": "45548254512812528",
+        "reason": "仅标题，不推断未读附件"
       },
       {
-        "topicId": "22258425222281411",
-        "reason": "无可读观点正文"
+        "topicId": "82258425215418582",
+        "reason": "综合新闻与行情摘录，无独立展开的市场观点"
       },
       {
-        "topicId": "14425142444452112",
-        "reason": "无可读观点正文"
-      },
-      {
-        "topicId": "82258425222285212",
-        "reason": "无可读观点正文"
-      },
-      {
-        "topicId": "55521452555254124",
-        "reason": "无可读观点正文"
-      },
-      {
-        "topicId": "45548254555452848",
-        "reason": "新闻转述议员股票交易，无具体投资观点分析"
+        "topicId": "82258425245442152",
+        "reason": "资讯标题汇编，没有展开的投资观点正文"
       }
     ],
     "pagination": {
@@ -11067,35 +11058,42 @@
       "stoppedWhenPageReachedCoverage": true
     },
     "dedupCheck": {
-      "candidateKeys": 32,
-      "candidateBuckets": 31,
+      "candidateKeys": 36,
+      "candidateBuckets": 34,
       "algorithm": "sha256-utf8-v1"
     },
-    "expiredBriefIds": []
+    "expiredBriefIds": [
+      "mingyue-premium-medical-channel-20261107",
+      "housing-service-transactions-20261108",
+      "hisense-tv-product-mix-20261110",
+      "consumer-electronics-battery-20261110",
+      "anta-brand-channel-efficiency-20261110",
+      "retail-spatial-digitization-20261111",
+      "chuanzhi-ai-training-20261112"
+    ]
   },
   "lastUpdateRecord": {
-    "runId": "2026-11-13-210100",
+    "runId": "2026-11-14-150754",
     "sourceGroup": "88888142214212",
     "sourceName": "水木调研纪要-2.0",
-    "previousCoverageTo": "2026-11-13T14:57:39.805+0800",
-    "coverageTo": "2026-11-13T20:35:18.040+0800",
-    "added": 7,
+    "previousCoverageTo": "2026-11-13T20:35:18.040+0800",
+    "coverageTo": "2026-11-14T13:59:02.412+0800",
+    "added": 3,
     "updated": 0,
-    "expiredRemoved": 0,
+    "expiredRemoved": 7,
     "sourceTopicIds": [
-      "55521452555254224",
-      "22258425222522151",
-      "14425142444244152",
-      "55521452555251544",
-      "82258425222528222",
-      "82258425222528552",
-      "82258425222525182"
+      "22258425215415121",
+      "14425142412111552",
+      "55521452542445454"
     ],
-    "duplicateTopicIds": [],
+    "duplicateTopicIds": [
+      "22258425215418841",
+      "55521452582481254"
+    ],
     "briefChanges": {
-      "added": 2,
-      "updated": 1,
-      "expiredRemoved": 0
+      "added": 0,
+      "updated": 0,
+      "expiredRemoved": 7
     }
   }
 }
