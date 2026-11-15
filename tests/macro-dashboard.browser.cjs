@@ -14,7 +14,7 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
     assert.ok(!requests.some(url=>url.includes('predictions.json')));assert.match(await page.locator('#kpi-grid').innerText(),/50.1/);
     console.log('Initial local load including history:',Date.now()-start,'ms');
     async function checkCardGeometry(){
-      const boxes=await page.locator('#kpi-grid .macro-kpi').evaluateAll(nodes=>nodes.map(node=>{
+      const boxes=await page.locator('#indicators .macro-kpi').evaluateAll(nodes=>nodes.map(node=>{
         const b=node.getBoundingClientRect();
         const reading=node.querySelector('.macro-reading-row').getBoundingClientRect(),unit=node.querySelector('.macro-kpi-reading small').getBoundingClientRect(),style=getComputedStyle(node),innerWidth=node.clientWidth-parseFloat(style.paddingLeft)-parseFloat(style.paddingRight);
         return {width:b.width,height:b.height,readingTop:reading.top-b.top,unitFits:unit.bottom<=reading.bottom+1,slotFillsWidth:Math.abs(reading.width-innerWidth)<=1,overflow:node.scrollHeight>node.clientHeight+1};
@@ -26,7 +26,8 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
       assert.ok(Math.max(...boxes.map(b=>b.readingTop))-Math.min(...boxes.map(b=>b.readingTop))<=1,'readings are misaligned: '+JSON.stringify(boxes));
     }
     await checkCardGeometry();
-    assert.equal(await page.locator('.macro-topic').count(),3);for(const group of await page.locator('.macro-topic').all())assert.equal(await group.locator('.macro-kpi').count(),2);
+    assert.deepEqual(await page.locator('#kpi-grid [data-kpi]').evaluateAll(nodes=>nodes.map(node=>node.dataset.kpi)), ['cn-cpi','cn-retail','cn-pmi']);
+    assert.equal(await page.locator('#context-grid .macro-kpi').count(),3);
     assert.equal(await page.locator('#recent-releases,#trend-presets,#mode,.macro-history,.macro-method,.macro-forecast-detail,#forecast-overview').count(),0);
     async function checkPlotWidth(){
       await page.waitForFunction(()=>{const svg=document.querySelector('#primary-chart svg');return svg&&Math.abs(svg.viewBox.baseVal.width-svg.closest('#primary-chart').clientWidth)<3;});
@@ -71,8 +72,8 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
     await page.locator('#reset-filters').click();await page.locator('#search').fill('社零');await page.waitForFunction(()=>document.querySelectorAll('#metric-list .macro-item').length===1);assert.equal(await page.locator('#metric-list .macro-item').count(),1);
     const download=page.waitForEvent('download');await page.locator('#download-latest').click();const csv=fs.readFileSync(await (await download).path(),'utf8');assert.equal(csv.split('\r\n').length,2);assert.match(csv,/社零/);assert.ok(csv.includes(JSON.parse(fs.readFileSync(path.join(root,'data/macro/automatic-series.json'),'utf8')).series['cn-retail'].observations.at(-1).period));
     await page.locator('[data-study=overview]').click();await page.locator('[data-kpi="cn-pmi"]').click();assert.equal(await page.locator('#search').inputValue(),'');assert.match(await page.locator('.macro-latest').innerText(),/点/);
-    await page.locator('[data-study=workspace]').click();await page.locator('#reset-filters').click();await page.locator('[data-country="US"]').click();assert.equal(await page.locator('#metric-list .macro-item').count(),14);assert.equal(await page.locator('#comparison').count(),0);
-    await page.locator('#health').selectOption('attention');assert.equal(await page.locator('#metric-list [data-id="us-cpi"]').count(),0);
+    await page.locator('[data-study=workspace]').click();await page.locator('#reset-filters').click();await page.locator('[data-country="US"]').click();await ready();await page.locator('[data-study=workspace]').click();assert.equal(await page.locator('#metric-list .macro-item').count(),14);assert.equal(await page.locator('#comparison').count(),0);
+    await page.locator('#more-filters > summary').click();await page.locator('#health').selectOption('attention');assert.equal(await page.locator('#metric-list [data-id="us-cpi"]').count(),0);
     await page.locator('[data-study=overview]').click();await page.locator('[data-kpi="us-cpi"]').click();assert.equal(await page.locator('.macro-coverage').count(),0);
     assert.match(await page.locator('[data-kpi="us-cpi"] .macro-kpi-context').innerText(),/2025-10官方未发布/);assert.doesNotMatch(await page.locator('[data-kpi="us-fed-rate"]').innerText(),/数据滞后/);
     assert.equal(await page.locator('#comparison').count(),0);
@@ -82,7 +83,7 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
     }
     await page.locator('[data-kpi="us-treasury10"]').click();await page.locator('#years').selectOption('0');assert.ok(await page.locator('#primary-chart [data-chart-point]').count()<=122);
     for(const width of [1920,1440,1024,768,390]){await page.setViewportSize({width,height:1000});await page.waitForTimeout(250);await checkPlotWidth();await checkCardGeometry();await checkAnnotationLayout();assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'overflow at '+width);}
-    await page.locator('[data-country="CN"]').click();
+    await page.locator('[data-country="CN"]').click();await ready();
     for(const width of [1920,1440,1024,768,390]){await page.setViewportSize({width,height:1000});await page.waitForTimeout(250);await checkCardGeometry();}
     await page.goto(base+'/macro.html?country=CN&indicator=cn-cpi&comparison=cn-ppi&years=1');await ready();assert.equal(new URL(page.url()).searchParams.has('comparison'),false);
     if(out)await page.screenshot({path:path.join(out,'宏观核心指标-手机.png'),fullPage:true});
@@ -117,7 +118,7 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
     for(const width of [1512,768,390]){await page.setViewportSize({width,height:1000});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));}
     await page.setViewportSize({width:1512,height:1100});
     await page.locator('#fedwatch-meeting').selectOption('2026-12-09');assert.match(await page.locator('#fedwatch-content').innerText(),/2026-12-09/);
-    await page.locator('[data-macro-section=indicators]').click();await ready();assert.ok(await page.locator('#kpi-grid').isVisible());
+    await page.locator('[data-macro-section=china]').click();await ready();assert.ok(await page.locator('#kpi-grid').isVisible());
     await page.route('**/data/macro/automatic-series.json',r=>r.fulfill({status:503,body:'unavailable'}));await page.goto(base+'/macro.html');await ready();assert.match(await page.locator('#data-warning').innerText(),/补充历史读取失败/);assert.ok(await page.locator('#retry').isVisible());await page.unroute('**/data/macro/automatic-series.json');await page.locator('#retry').click();await page.waitForFunction(()=>document.querySelectorAll('#metric-list .macro-item').length===17);await page.locator('#data-warning').waitFor({state:'hidden'});
     await page.route('**/data/macro/catalog.json',r=>r.fulfill({status:503,body:'unavailable'}));await page.goto(base+'/macro.html');await page.waitForFunction(()=>document.querySelector('#load-state').textContent.includes('读取失败'));assert.ok(await page.locator('#indicators').isHidden());assert.ok(await page.locator('#skeleton').isHidden());
     await page.unroute('**/data/macro/catalog.json');await page.locator('#retry').click();await ready();

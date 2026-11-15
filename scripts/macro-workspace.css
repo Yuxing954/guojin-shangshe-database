@@ -1,41 +1,40 @@
 /* Macro dashboards use the industry navigation, filter bar and card rhythm.
    Optional release/status fields keep fixed slots so all KPI cards align. */
-body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact]{--hub-columns:3}
+body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact]{--hub-columns:4}
 body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main .macro-toolbar{display:block;border:0!important;padding:0!important;margin:0 0 16px!important}
-body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #macro-navigation{grid-template-columns:repeat(3,minmax(0,1fr))!important}
 body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main .macro-subnavigation{margin:0!important}
 body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main .macro-subnavigation[hidden]{display:none!important}
 body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main :is(.macro-study-controls,.national-controls,.regional-controls,.forecast-controls){gap:12px 16px}
 body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main .macro-study-controls .site-subnav{margin:0!important;flex-shrink:0}
-body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main .macro-study-controls .macro-section-link{margin-left:auto;font-size:13px;white-space:nowrap}
+body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main .macro-country-links{display:flex;gap:12px 16px;flex-wrap:wrap;margin-left:auto}
+body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main .macro-study-controls .macro-section-link{font-size:13px;white-space:nowrap}
 body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main :is(.macro-page-meta,.national-state,.regional-state-head){margin:0 0 12px!important;font-size:13px;line-height:22px}
-body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators #kpi-grid{--macro-card-height:166px;display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:16px!important}
-body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators #kpi-grid :is(.macro-topic,.macro-topic-cards){display:contents!important}
-body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators #kpi-grid .macro-kpi{
+body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators :is(#kpi-grid,#context-grid){--macro-card-height:166px;display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:16px!important}
+body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators :is(#kpi-grid,#context-grid) .macro-kpi{
  height:var(--macro-card-height)!important;min-height:var(--macro-card-height)!important;max-height:var(--macro-card-height)!important;
- padding:16px 20px!important;display:grid!important;grid-template-rows:22px 20px 40px 24px 26px 0!important;gap:0!important;
+ padding:16px!important;display:grid!important;grid-template-columns:minmax(0,1fr)!important;justify-items:stretch!important;grid-template-rows:22px 20px 40px 24px 26px 0!important;gap:0!important;
  border:1px solid var(--site-line)!important;border-radius:12px!important;background:#fff!important;box-shadow:none!important;
 }
-body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators #kpi-grid .macro-kpi::before{content:none!important}
-body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators #kpi-grid .macro-kpi:is(:hover,[aria-pressed=true]){border-color:var(--site-accent)!important}
-body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators #kpi-grid .macro-kpi:focus-visible{outline:2px solid var(--site-accent);outline-offset:2px}
-body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators #kpi-grid .macro-kpi-top{font-size:14px!important;font-weight:400!important;line-height:22px!important;color:var(--site-muted);margin:0;align-items:start}
-body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators #kpi-grid .macro-kpi-period{font-size:12px!important;line-height:18px!important;color:var(--site-muted);margin:0}
-body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators #kpi-grid .macro-reading-row{margin:0!important;padding:0!important}
-body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators #kpi-grid .macro-kpi-reading{display:inline-flex!important;align-items:center!important;height:40px!important;gap:0}
-body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators #kpi-grid .macro-kpi-reading small{margin:0 0 0 6px!important;align-self:center!important}
-body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators #kpi-grid .macro-kpi-bottom{display:flex!important;padding:0!important;border:0!important;gap:4px 8px;align-items:center;justify-content:space-between}
-body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators #kpi-grid :is(.macro-kpi-change,.macro-kpi-previous){font-size:12px!important;line-height:20px!important}
-body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators #kpi-grid .macro-kpi-meta{font-size:12px!important;line-height:13px!important;align-self:start;flex-wrap:wrap;min-height:0;gap:0 4px}
-body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators #kpi-grid .macro-kpi-meta>*{font-size:11px!important;line-height:13px!important}
-body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators #kpi-grid .macro-kpi-forecast:empty{padding:0;margin:0}
+body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators :is(#kpi-grid,#context-grid) .macro-kpi::before{content:none!important}
+body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators :is(#kpi-grid,#context-grid) .macro-kpi:is(:hover,[aria-pressed=true]){border-color:var(--site-accent)!important}
+body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators :is(#kpi-grid,#context-grid) .macro-kpi:focus-visible{outline:2px solid var(--site-accent);outline-offset:2px}
+body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators :is(#kpi-grid,#context-grid) .macro-kpi-top{font-size:14px!important;font-weight:400!important;line-height:22px!important;color:var(--site-muted);margin:0;align-items:start}
+body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators :is(#kpi-grid,#context-grid) .macro-kpi-period{font-size:12px!important;line-height:18px!important;color:var(--site-muted);margin:0}
+body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators :is(#kpi-grid,#context-grid) .macro-reading-row{margin:0!important;padding:0!important}
+body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators :is(#kpi-grid,#context-grid) .macro-kpi-reading{display:inline-flex!important;align-items:center!important;height:40px!important;gap:0}
+body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators :is(#kpi-grid,#context-grid) .macro-kpi-reading small{margin:0 0 0 6px!important;align-self:center!important}
+body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators :is(#kpi-grid,#context-grid) .macro-kpi-bottom{display:flex!important;padding:0!important;border:0!important;gap:4px 8px;align-items:center;justify-content:space-between}
+body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators :is(#kpi-grid,#context-grid) :is(.macro-kpi-change,.macro-kpi-previous){font-size:12px!important;line-height:20px!important}
+body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators :is(#kpi-grid,#context-grid) .macro-kpi-meta{font-size:12px!important;line-height:13px!important;align-self:start;flex-wrap:wrap;min-height:0;gap:0 4px}
+body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators :is(#kpi-grid,#context-grid) .macro-kpi-meta>*{font-size:11px!important;line-height:13px!important}
+body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators :is(#kpi-grid,#context-grid) .macro-kpi-forecast:empty{padding:0;margin:0}
 body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators .macro-overview{margin:0 0 20px!important}
 body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators .macro-workspace-head{margin:0 0 12px!important}
 body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators.macro-overview-mode .macro-workspace-head{display:none!important}
 body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators .macro-search{border:1px solid var(--site-line);border-radius:10px;background:white;padding:12px 16px!important;margin-bottom:16px!important}
 body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators .macro-layout{gap:16px}
 body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators .macro-list-panel{border-radius:12px}
-body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators #detail{padding:20px!important;border-radius:12px!important;background:#fff!important}
+body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators #detail{padding:16px!important;border-radius:12px!important;background:#fff!important}
 body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators #detail .macro-trend-head{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;margin:0 0 16px!important}
 body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators #detail .macro-trend-head>div{margin-right:auto;min-width:0}
 body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators #detail #metric-title{font-size:16px!important;line-height:24px!important;font-weight:600!important;margin:0!important}
@@ -73,28 +72,23 @@ body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] 
 body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #predictions .pm-focus{padding:20px!important}
 body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #predictions .pm-answer{padding:12px 0 16px!important;background:transparent!important;border-bottom:1px solid var(--site-line);border-radius:0}
 body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #predictions .pm-result-name{font-size:14px}
-@media(min-width:1700px){
- body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators #kpi-grid{--macro-card-height:206px;grid-template-columns:repeat(6,minmax(0,1fr))!important}
- body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators #kpi-grid .macro-kpi{grid-template-rows:38px 32px 40px 36px 26px 0!important}
- body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators #kpi-grid .macro-kpi-bottom{flex-wrap:wrap}
-}
 @media(max-width:1100px){
- body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators #kpi-grid{--macro-card-height:206px;grid-template-columns:repeat(2,minmax(0,1fr))!important}
- body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators #kpi-grid .macro-kpi{grid-template-rows:38px 32px 40px 36px 26px 0!important}
- body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators #kpi-grid .macro-kpi-bottom{flex-wrap:wrap}
+ body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators :is(#kpi-grid,#context-grid){--macro-card-height:206px}
+ body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators :is(#kpi-grid,#context-grid) .macro-kpi{grid-template-rows:38px 32px 40px 36px 26px 0!important}
+ body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators :is(#kpi-grid,#context-grid) .macro-kpi-bottom{flex-wrap:wrap}
  body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main .macro-retail-breakdown{grid-template-columns:1fr}
  body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #predictions .pm-workspace{grid-template-columns:240px minmax(0,1fr)}
 }
 @media(max-width:760px){
- body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators #kpi-grid{--macro-card-height:212px;gap:12px!important}
- body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators #kpi-grid .macro-kpi{padding:12px!important;grid-template-rows:42px 32px 40px 40px 32px 0!important}
- body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators #kpi-grid .macro-kpi-bottom{display:grid!important;grid-template-columns:1fr}
+ body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators :is(#kpi-grid,#context-grid){--macro-card-height:158px;grid-template-columns:1fr!important;gap:8px!important}
+ body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators :is(#kpi-grid,#context-grid) .macro-kpi{grid-template-rows:22px 18px 36px 20px 24px 0!important}
+ body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators :is(#kpi-grid,#context-grid) .macro-kpi-reading{height:36px!important}
  body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators #detail,body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main :is(.national-panel,.regional-panel){padding:16px!important}
  body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators #detail .macro-trend-head>div{flex-basis:100%}
- body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators #detail .macro-indicator-picker{flex:1 1 100%}
- body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators #detail .macro-indicator-picker select{flex:1;width:0;max-width:none}
+ body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators #detail .macro-indicator-picker{flex:1 1 100%!important;width:100%}
+ body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators #detail .macro-indicator-picker select{flex:1 1 auto!important;width:auto;min-width:0;max-width:none}
  body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators .macro-study-controls{gap:8px!important}
- body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators .macro-study-controls .macro-section-link{margin-left:0}
+ body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators .macro-country-links{margin-left:0}
  body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main .national-bar-row{grid-template-columns:minmax(90px,1.2fr) minmax(55px,1fr) 54px;gap:6px;font-size:13px}
  body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main .national-bar-row>b{font-size:13px}
  body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #predictions .pm-workspace{grid-template-columns:minmax(0,1fr)}
@@ -103,3 +97,18 @@ body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] 
  body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #predictions .pm-focus{padding:16px!important}
 }
 
+
+body.macro-hub[data-design=workspace] #indicators .macro-country-context{margin:20px 0 0}
+body.macro-hub[data-design=workspace] #indicators .macro-country-context[hidden]{display:none!important}
+body.macro-hub[data-design=workspace] #indicators .macro-country-context h2{margin:0 0 12px;font-size:16px;font-weight:600;line-height:24px}
+body.macro-hub[data-design=workspace] #indicators #detail{scroll-margin-top:16px}
+
+body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators :is(#kpi-grid,#context-grid) .macro-reading-row{display:flex;align-items:center;width:100%}
+body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators :is(#kpi-grid,#context-grid) .macro-kpi-reading .board-stat-value{font-size:28px!important;font-weight:700!important;line-height:38px!important}
+body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators :is(#kpi-grid,#context-grid) .macro-kpi-reading small{font-size:12px!important;font-weight:400}
+body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators :is(#kpi-grid,#context-grid) .macro-kpi-bottom>*{font-weight:400!important}
+body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators :is(#kpi-grid,#context-grid) .macro-kpi-meta{display:flex}
+body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators :is(#kpi-grid,#context-grid) .macro-kpi-release{border:0;margin:0!important;padding:0}
+@media(max-width:760px){
+ body.site-page.macro-hub[data-design=workspace][data-dashboard-density=compact] #main #indicators :is(#kpi-grid,#context-grid) .macro-kpi-reading .board-stat-value{font-size:24px!important;line-height:34px!important}
+}

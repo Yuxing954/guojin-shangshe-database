@@ -9,10 +9,20 @@ let base;
  page.on('pageerror',e=>errors.push(e.message));
  try{
  await page.goto(base+'/macro.html');await page.locator('.macro-kpi').first().waitFor();
- assert.equal(await page.locator('#macro-navigation>a').count(),3);
+ assert.equal(await page.locator('#macro-navigation>a').count(),4);
  assert.equal(await page.locator('#quick-indicator').inputValue(),'cn-cpi');
  for(const country of ['CN','US']){
   await page.locator('[data-country="'+country+'"]').click();
+  await page.locator('#primary-chart svg').waitFor();
+  assert.equal(await page.locator('#macro-navigation [aria-current=page]').getAttribute('data-country'),country);
+  assert.equal(await page.locator('#countries').count(),0);
+  if(country==='US'){
+   assert.equal(await page.locator('#primary-chart .macro-chart-unit').textContent(),'较上月增减（千人）');
+   const chartValue=(await page.locator('#primary-chart [data-chart-point]').last().locator('title').textContent()).split('：')[1];
+   const headline=(await page.locator('#detail .macro-latest b').first().textContent()).trim();
+   assert.equal(chartValue,headline+' 千人');
+  }
+  assert.deepEqual(await page.locator('#kpi-grid [data-kpi]').evaluateAll(nodes=>nodes.map(node=>node.dataset.kpi)),country==='CN'?['cn-cpi','cn-retail','cn-pmi']:['us-payroll','us-cpi','us-fed-rate']);
   for(const width of [1920,1440,1024,768,390]){
    await page.setViewportSize({width,height:1000});await page.waitForTimeout(250);
    const geometry=await page.locator('.macro-kpi').evaluateAll(es=>es.map(e=>{const r=e.getBoundingClientRect(),v=e.querySelector('.macro-reading-row').getBoundingClientRect();return {w:r.width,h:r.height,top:v.top-r.top,overflow:e.scrollHeight>e.clientHeight+1,wide:e.scrollWidth>e.clientWidth+1};}));
@@ -20,10 +30,11 @@ let base;
    assert(geometry.every(r=>!r.overflow&&!r.wide),country+width+JSON.stringify(geometry));
    assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'page overflow '+country+width);
    const svg=page.locator('#primary-chart svg');assert(await svg.count());assert(await svg.locator('.site-period-tick').count()>=2);
+   if(width===390)assert((await page.locator('#quick-indicator').boundingBox()).width>=150,'mobile trend picker is clipped');
    if(process.env.MACRO_SCREENSHOT_DIR&&(width===1440||width===390)){fs.mkdirSync(process.env.MACRO_SCREENSHOT_DIR,{recursive:true});await page.screenshot({path:path.join(process.env.MACRO_SCREENSHOT_DIR,'core-'+country+'-'+width+'.png')});}
   }
  }
- await page.setViewportSize({width:1440,height:1000});await page.locator('[data-country=CN]').click();
+ await page.setViewportSize({width:1440,height:1000});await page.locator('[data-country=CN]').click();await page.locator('#primary-chart svg').waitFor();
  await page.selectOption('#quick-indicator','cn-ppi');assert.match(await page.locator('#metric-title').innerText(),/PPI/);
  await page.selectOption('#years','1');await page.reload();await page.locator('#quick-indicator').waitFor();assert.equal(await page.locator('#quick-indicator').inputValue(),'cn-ppi');assert.equal(await page.locator('#years').inputValue(),'1');
  await page.locator('#primary-chart [data-chart-point]').first().focus();assert(await page.locator('#primary-chart .research-tooltip').isVisible());

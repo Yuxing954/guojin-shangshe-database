@@ -8,6 +8,22 @@
   const stamp=v=>{if(!v)return '未提供';const d=new Date(v);return Number.isNaN(d.getTime())?String(v):new Intl.DateTimeFormat('zh-CN',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).format(d)+' 北京时间';};
   const link=(url,label)=>'<a href="'+esc(M.safeUrl(url))+'" target="_blank" rel="noopener">'+esc(label)+'</a>';
   let catalog,snapshot,predictions,predictionError=false,predictionLoading=false,page=0,chartPoints=[],predictionExpanded=false,searchTimer,resizeTimer;
+  const countryDashboards = {
+    CN: {
+      label: '中国',
+      primary: ['cn-cpi', 'cn-retail', 'cn-pmi'],
+      context: ['cn-gdp-quarter', 'cn-unemployment', 'cn-m2'],
+      contextTitle: '增长、就业与货币',
+      related: {href: 'national-retail.html', label: '全国社零 ↗'}
+    },
+    US: {
+      label: '美国',
+      primary: ['us-payroll', 'us-cpi', 'us-fed-rate'],
+      context: ['us-gdp-quarter', 'us-unemployment', 'us-treasury10'],
+      contextTitle: '增长、失业率与美债',
+      related: {href: 'macro.html?view=fedwatch', label: 'FedWatch ↗'}
+    }
+  };
   const params=new URLSearchParams(location.search);
   const state={study:params.get('study')==='workspace'?'workspace':'overview',country:params.get('country')==='US'?'US':'CN',group:params.get('group')||'',q:params.get('q')||'',
     id:params.get('indicator')||'',mode:'value',
@@ -15,9 +31,9 @@
     view:['predictions','fedwatch'].includes(params.get('view'))?params.get('view'):'indicators',frequency:['monthly','quarterly','daily'].includes(params.get('frequency'))?params.get('frequency'):'',health:['attention','pending'].includes(params.get('health'))?params.get('health'):''};
   function save(){const p=new URLSearchParams();p.set('study',state.study);for(const key of ['predictionTopic','predictionQuery','predictionSort','meeting']){const value=new URLSearchParams(location.search).get(key);if(value)p.set(key,value);}for(const key of ['country','group','q','id','mode','years','view','frequency','health'])if(state[key]!==''&&state[key]!==null)p.set(key==='id'?'indicator':key,state[key]);history.replaceState(null,'',location.pathname+'?'+p);}
   function download(text,filename){const url=URL.createObjectURL(new Blob([text],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
-  function showView(){window.MacroNavigation?.sync(state.view);document.querySelectorAll('.macro-toolbar [data-view]').forEach(b=>{const active=b.dataset.view===state.view;b.setAttribute('aria-pressed',String(active));if(active)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});$('countries').hidden=state.view!=='indicators';$('indicators').hidden=state.view!=='indicators'||!catalog;$('predictions').hidden=state.view!=='predictions';$('fedwatch').hidden=state.view!=='fedwatch';if(state.view!=='indicators'){$('load-state').textContent='';$('skeleton').hidden=true;$('data-warning').hidden=true;}save();if(state.view==='indicators'&&catalog)requestAnimationFrame(drawDetailChart);if(state.view==='fedwatch')ForecastDesk.loadFedwatch();if(state.view==='predictions'){renderPredictions();loadPredictions();}}
+  function showView(){window.MacroNavigation?.sync(state.view, state.country);document.querySelectorAll('.macro-toolbar [data-view]').forEach(b=>{const active=b.dataset.view===state.view;b.setAttribute('aria-pressed',String(active));if(active)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});$('indicators').hidden=state.view!=='indicators'||!catalog;$('predictions').hidden=state.view!=='predictions';$('fedwatch').hidden=state.view!=='fedwatch';if(state.view!=='indicators'){$('load-state').textContent='';$('skeleton').hidden=true;$('data-warning').hidden=true;}save();if(state.view==='indicators'&&catalog)requestAnimationFrame(drawDetailChart);if(state.view==='fedwatch')ForecastDesk.loadFedwatch();if(state.view==='predictions'){renderPredictions();loadPredictions();}}
   function graph(spec,data){
-    chartPoints=[];const definition=D.detailDefinition(spec),points=D.detailRows(spec,data,state.years,new Date(snapshot.cutoff+'T23:59:59Z'));
+    chartPoints=[];const definition=D.detailDefinition(spec,data),points=D.detailRows(spec,data,state.years,new Date(snapshot.cutoff+'T23:59:59Z'));
     const values=points.filter(r=>M.finite(r.chartValue));
     if(!values.length)return '<p class="portal-empty">所选区间暂无可绘制数据。</p>';
     const w=Math.max(240,$('primary-chart').clientWidth),h=innerWidth<=600?260:320,left=w<500?48:58,right=20,top=34,bottom=38;
@@ -46,7 +62,7 @@
   function renderStudy(){
     const query=state.study==='workspace';$('indicators').classList.toggle('macro-overview-mode',!query);
     document.querySelectorAll('[data-study]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.study===state.study)));
-    document.querySelector('.macro-overview').hidden=query;$('groups').hidden=!query;document.querySelector('.macro-search').hidden=!query;document.querySelector('.macro-list-panel').hidden=!query;
+    document.querySelector('.macro-overview').hidden=query;$('country-context').hidden=query;$('groups').hidden=!query;document.querySelector('.macro-search').hidden=!query;document.querySelector('.macro-list-panel').hidden=!query;
     $('workspace-heading').textContent=query?'指标查询':'趋势分析';$('download-latest').hidden=!query;
   }
   function drawDetailChart(){
@@ -59,7 +75,8 @@
     const spec=catalog.series.find(s=>s.id===state.id);
     if(!spec){$('detail').innerHTML='<p class="portal-empty">没有匹配指标。</p>';return;}
     const data=snapshot.series[spec.id]||{},source=catalog.sources[spec.source],r=D.readout(spec,data),latest=r.latest;
-    state.mode=D.detailDefinition(spec).mode;
+    const definition = D.detailDefinition(spec,data);
+    state.mode = definition.mode === 'headline' ? (spec.id === 'us-payroll' ? 'value' : 'yoy') : definition.mode;
     if(!latest){$('detail').innerHTML='<h2 id="metric-title">'+esc(spec.name)+'</h2><p class="portal-note">待补齐 · '+esc(M.frequency[spec.frequency])+'</p><p>'+link(source.url,'官方来源 ↗')+'</p>';return;}
     const options=D.directory(catalog,snapshot,{country:state.country,group:'',q:'',frequency:'',health:''}).map(s=>'<option value="'+esc(s.id)+'"'+(s.id===state.id?' selected':'')+'>'+esc(s.name)+'</option>').join('');
     const sourceUrl=latest.originalSourceUrl||latest.sourceUrl||data.sourceUrl||source.url;
@@ -79,22 +96,24 @@
   function renderOverview(){
     const all=D.core(catalog,state.country,snapshot),available=all.filter(s=>M.rows(snapshot.series[s.id]).length);
     const releases=D.releases(catalog,snapshot,state.country);
-    document.querySelector('.macro-overview').setAttribute('aria-label',(state.country==='CN'?'中国':'美国')+'核心指标');
+    const dashboard = countryDashboards[state.country];
+    document.querySelector('.macro-overview').setAttribute('aria-label', dashboard.label + '核心指标');
+    $('country-context-title').textContent = dashboard.contextTitle;
+    $('country-related').href = dashboard.related.href;
+    $('country-related').textContent = dashboard.related.label;
     $('overview-meta').textContent=available.length+'/'+all.length+' 项已收录 · 快照截止 '+snapshot.cutoff+(releases.items.length?' · 最近发布 '+releases.items[0].releaseDate:'');
-    const topics=state.country==='CN'?
-      [{title:'增长与需求',ids:['cn-gdp-quarter','cn-retail']},{title:'景气与就业',ids:['cn-pmi','cn-unemployment']},{title:'价格与货币',ids:['cn-cpi','cn-m2']}]:
-      [{title:'增长与就业',ids:['us-gdp-quarter','us-payroll']},{title:'通胀与失业',ids:['us-cpi','us-unemployment']},{title:'政策与利率',ids:['us-fed-rate','us-treasury10']}];
     const card=id=>{
       const spec=catalog.series.find(s=>s.id===id);if(!spec)return '';const data=snapshot.series[id]||{},head=D.readout(spec,data),latest=head.latest,delta=head.delta,status=M.status(spec,data);
       return '<button class="board-stat macro-kpi" data-kpi="'+esc(id)+'" aria-pressed="'+(id===state.id)+'" aria-label="'+esc(spec.name+'，'+compact(head.value)+' '+head.unit+'，'+(latest?.period||'暂无数据')+'，查看历史')+'"><span class="macro-kpi-top"><span>'+esc(spec.name)+'</span></span><span class="macro-kpi-period">'+esc((latest?.period||'暂无数据')+' · '+M.frequency[spec.frequency]+(head.label?' · '+head.label:''))+'</span><span class="macro-reading-row"><span class="macro-kpi-reading"><strong class="board-stat-value">'+compact(head.value)+'</strong><small>'+esc(head.unit)+'</small></span>'+'</span><span class="macro-kpi-bottom"><span class="macro-kpi-change '+(delta?.value>0?'macro-up':delta?.value<0?'macro-down':'')+'">'+(delta?esc(delta.label)+' '+(delta.value>0?'+':'')+number(delta.value)+' '+esc(delta.unit):'上期差值 —')+'</span><span class="macro-kpi-previous">上期 '+number(head.previous?.chartValue)+' '+esc(head.unit)+'</span></span>'+'<span class="macro-kpi-meta">'+(latest?.releaseDate?'<span class="macro-kpi-release">发布 '+esc(latest.releaseDate)+'</span>':'')+(status!=='已收录'||data.coverage?.missingPeriods?.length?'<span class="macro-kpi-note" title="'+esc(data.error||status)+'">'+esc(status!=='已收录'?status:'历史存在缺期')+'</span>':'')+(data.coverage?.unpublishedPeriods?.length?'<span class="macro-kpi-context" title="'+esc(data.coverage.unpublishedPeriods[0].reason)+'">'+esc(data.coverage.unpublishedPeriods[0].period)+'官方未发布</span>':'')+'</span><span class="macro-kpi-forecast"></span></button>';
     };
-    $('kpi-grid').innerHTML=topics.map(topic=>'<section class="macro-topic" aria-label="'+esc(topic.title)+'"><div class="macro-topic-cards">'+topic.ids.map(card).join('')+'</div></section>').join('');
+    $('kpi-grid').innerHTML = dashboard.primary.map(card).join('');
+    $('context-grid').innerHTML = dashboard.context.map(card).join('');
 
   }
   function render(){
     if(!catalog)return;$('indicators').hidden=state.view!=='indicators';renderStudy();
     const filtered=D.directory(catalog,snapshot,state),selected={available:filtered.filter(s=>M.rows(snapshot.series[s.id]).length),pending:filtered.filter(s=>!M.rows(snapshot.series[s.id]).length),references:[]},all=filtered;
-    if(!all.some(s=>s.id===state.id)){state.id=all.find(s=>s.id===(state.country==='CN'?'cn-cpi':'us-cpi'))?.id||all[0]?.id||'';page=0;}renderOverview();
+    if(!all.some(s=>s.id===state.id)){state.id=all.find(s=>s.id===countryDashboards[state.country].primary[0])?.id||all[0]?.id||'';page=0;}renderOverview();
     $('summary').textContent='筛选结果 '+filtered.length+' / '+D.core(catalog,state.country,snapshot).length+' 项';$('count').textContent=filtered.length+' 项';
     $('frequency').value=state.frequency;$('health').value=state.health;
     if(state.frequency||state.health)$('more-filters').open=true;
@@ -107,7 +126,6 @@
     $('pending-list').innerHTML=grouped(selected.pending,spec=>'<button class="macro-pending-item" data-id="'+esc(spec.id)+'" aria-pressed="'+(state.id===spec.id)+'">'+esc(spec.name)+'</button>');$('pending-count').textContent=selected.pending.length+' 项';$('pending-details').hidden=!selected.pending.length;
     $('pending-details').open=selected.pending.some(s=>s.id===state.id);
     document.querySelectorAll('[data-group]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.group===state.group)));
-    document.querySelectorAll('[data-country]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.country===state.country)));
     $('search').value=state.q;
     renderDetail();save();
   }
@@ -158,11 +176,18 @@
     state.view=b.dataset.view;showView();if(state.view==='indicators'&&!catalog)load();
   });
   addEventListener('popstate',()=>location.reload());
-  document.querySelectorAll('[data-country]').forEach(b=>b.onclick=()=>{state.country=b.dataset.country;state.id='';page=0;render();});
   $('search').oninput=e=>{state.q=e.target.value;clearTimeout(searchTimer);searchTimer=setTimeout(()=>{page=0;render();},180);};
   $('frequency').onchange=e=>{state.frequency=e.target.value;page=0;render();};$('health').onchange=e=>{state.health=e.target.value;page=0;render();};
   $('reset-filters').onclick=()=>{clearTimeout(searchTimer);state.q='';state.group='';state.frequency='';state.health='';page=0;render();};
-  $('kpi-grid').onclick=e=>{const b=e.target.closest('[data-kpi]');if(b){clearTimeout(searchTimer);selectMetric(b.dataset.kpi);}};
+  for (const id of ['kpi-grid', 'context-grid']) {
+    $(id).onclick = event => {
+      const button = event.target.closest('[data-kpi]');
+      if (!button) return;
+      clearTimeout(searchTimer);
+      selectMetric(button.dataset.kpi);
+      if (id === 'context-grid') $('detail').scrollIntoView({block: 'start'});
+    };
+  }
   addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{if(catalog&&state.view==='indicators')renderDetail();},150);});
   $('groups').onclick=e=>{const b=e.target.closest('[data-group]');if(b){state.group=b.dataset.group;state.id='';page=0;render();}};
   for(const id of ['metric-list','reference-list','pending-list'])$(id).onclick=e=>{const b=e.target.closest('[data-id]');if(b)selectMetric(b.dataset.id);};

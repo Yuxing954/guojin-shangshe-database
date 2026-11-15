@@ -1,8 +1,8 @@
 (function(){
  'use strict';
- function sync(view){
+ function sync(view, country = new URLSearchParams(location.search).get('country')){
   const core=location.pathname.endsWith('/macro.html');
-  const selected=core?(['fedwatch','predictions'].includes(view)?'forecasts':'indicators'):'consumption';
+  const selected=core?(['fedwatch','predictions'].includes(view)?'forecasts':country==='US'?'us':'china'):'consumption';
   document.querySelectorAll('[data-macro-section]').forEach(link=>{
    if(link.dataset.macroSection===selected)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');
   });
