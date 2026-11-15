@@ -17,7 +17,7 @@ try{
    for(let i=0;i<rows.length;i++){assert.equal(plot.rows[i].value,rows[i][field]/scale);assert.equal(plot.rows[i].change,rows[i][field+'Yoy']);}
   }
  }
- await p.locator('#kr-sales-chart svg').focus();await p.keyboard.press('End');assert((await p.locator('.site-chart-tooltip:not([hidden])').innerText()).includes('26-08'));await p.keyboard.press('Escape');
+ await p.locator('#kr-sales-chart svg').focus();await p.keyboard.press('End');assert((await p.locator('.site-chart-tooltip:not([hidden])').innerText()).includes('2026-08'));await p.keyboard.press('Escape');
  await setChartLabel(p.locator('#view-korea [data-chart-labels]').first(),true);assert(await p.locator('#kr-sales-chart .site-value-label').count()>0);await setChartLabel(p.locator('#view-korea [data-chart-labels]').first(),false);assert.equal(await p.locator('#kr-sales-chart .site-value-label').count(),0);await p.selectOption('#kr-scope','foreign');assert.equal(await p.locator('#kr-sales-chart .site-value-label').count(),0);await p.selectOption('#kr-scope','domestic');
  for(const mode of ['value','change','combo']){await p.selectOption('#kr-mode',mode);assert.equal((await p.evaluate(()=>kPlots['kr-sales-chart'])).opt.mode,mode);}
  await p.selectOption('#kr-range','24');assert.equal((await p.evaluate(()=>kPlots['kr-sales-chart'])).rows.length,24);const out=await csv(p,'#kr-export');assert.equal(out.length,24);assert(out.every(r=>r['顾客分类']==='韩国本国人'));assert.equal(out.at(-1)['销售额原始回执'],'1.919亿');

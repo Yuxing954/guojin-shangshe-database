@@ -10,13 +10,13 @@
  function stamp(){if(root.classList.contains('on')){if(data)SiteUI.asOf($('asof'),data.dataAsOf,['韩国 · 月度']);else $('asof').textContent='韩国月度数据读取中…';}}
  function render(){
   if(!data)return;const view=selected(),latest=view.at(-1);
-  $('kr-period').textContent=(latest?.period||'暂无数据')+' · '+M.scopes[state.scope]+' · 核对 '+data.updatedAt;
+  $('kr-period').textContent=(latest?.period||'暂无数据')+' · '+M.scopes[state.scope];
   for(const m of metrics){
    const val=latest?.[m.field];
    $('kr-'+m.id).textContent=fmt(M.finite(val)?val/m.scale:null,m.precision);
    const change=latest?.[m.field+'Yoy'];$('kr-'+m.id+'-yoy').textContent='同比 '+pct(change);$('kr-'+m.id+'-yoy').className=change>0?'up':change<0?'down':'';
    const title=m.label+(state.mode==='combo'?'与同比':state.mode==='change'?'同比':'走势');$('kr-'+m.id+'-title').textContent=title;
-   SiteCharts.drawPaired($('kr-'+m.id+'-chart'),view.map((r,x)=>({period:r.period.slice(2),x,value:M.finite(r[m.field])?r[m.field]/m.scale:null,change:r[m.field+'Yoy']??null})),{name:m.label,layout:'spacious',mode:state.mode,unit:m.unit,precision:m.precision,minimumFractionDigits:m.id==='sales'?2:0,changeUnit:'%',changePrecision:1,gap:1.5,trimEmpty:false,changeLabel:'同比'});
+   SiteCharts.drawPaired($('kr-'+m.id+'-chart'),view.map((r,x)=>({period:r.period,x,value:M.finite(r[m.field])?r[m.field]/m.scale:null,change:r[m.field+'Yoy']??null})),{name:m.label,layout:'spacious',mode:state.mode,unit:m.unit,precision:m.precision,minimumFractionDigits:m.id==='sales'?2:0,changeUnit:'%',changePrecision:1,gap:1.5,trimEmpty:false,changeLabel:'同比'});
   }
   $('kr-table').innerHTML='<thead><tr>'+['月份','销售额（亿美元）','金额同比','购物人次（万）','人次同比','客单价（美元/人次）','客单价同比'].map(x=>'<th>'+x+'</th>').join('')+'</tr></thead><tbody>'+view.slice().reverse().map(r=>'<tr><td>'+esc(r.period)+'</td>'+metrics.map(m=>'<td class="num">'+fmt(M.finite(r[m.field])?r[m.field]/m.scale:null,m.precision)+'</td><td class="num">'+pct(r[m.field+'Yoy'])+'</td>').join('')+'</tr>').join('')+'</tbody>';
   root.dataset.status='ready';$('kr-status').textContent='';$('kr-retry').hidden=true;if(root.classList.contains('on'))$('rows-note').textContent='韩国月度 '+data.periodCount+' 期 · 三类顾客 '+data.count+' 条';stamp();
