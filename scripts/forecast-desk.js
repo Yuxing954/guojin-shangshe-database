@@ -23,11 +23,11 @@
   if(g.markets.length===1&&P.affirmative(g.markets[0])){const no=g.markets[0].outcomes.find(o=>o.name==='No'||o.nameZh==='否');if(no)rows.push({market:g.markets[0],outcome:no,label:'否'});}
   return rows;
  }
- function chooseEvent(id){const restore=document.activeElement?.hasAttribute('data-pm-event');pmSelected=id;pmOutcome=0;drawPm();if(restore)Array.from(document.querySelectorAll('[data-pm-event]')).find(el=>el.dataset.pmEvent===id)?.focus({preventScroll:true});}
+ function chooseEvent(id){const restore=document.activeElement?.hasAttribute('data-pm-event');pmSelected=id;pmOutcome=-1;drawPm();if(restore)Array.from(document.querySelectorAll('[data-pm-event]')).find(el=>el.dataset.pmEvent===id)?.focus({preventScroll:true});}
  function drawEvent(){
   const g=pmGroups.find(g=>g.id===pmSelected),host=$('prediction-focus');
   if(!g){host.innerHTML='<p class="portal-empty">暂无符合条件的事件</p>';$('prediction-event-select').innerHTML='';return;}
-  const rows=eventRows(g);if(pmOutcome>=rows.length)pmOutcome=0;
+  const rows=eventRows(g);if(pmOutcome<0||pmOutcome>=rows.length)pmOutcome=rows.reduce((best,row,i)=>Number(row.outcome.probability)>Number(rows[best]?.outcome.probability)?i:best,0);
   const row=rows[pmOutcome],prob=row&&Number.isFinite(row.outcome.probability)?row.outcome.probability*100:null;
   const independent=/触及|指定时点|持续至日期/.test(P.measurement(g));
   host.innerHTML='<div class="pm-focus-heading"><span>'+esc(g.dataType.label)+' · '+esc(P.measurement(g))+'</span><h2>'+esc(g.title)+'</h2></div>'+
@@ -72,7 +72,7 @@
   const groups=P.groups(pm.markets,{category:topic,query,sort,wholeEvents:true}),visible=groups.slice(0,pmLimit),stale=Date.now()-Date.parse(pm.fetchedAt)>24*3600000;pmGroups=groups;
   $('prediction-status').textContent=(pm.status==='error'?'更新失败 · 保留快照 · ':stale?'历史快照 · ':'快照 · ')+pmDay(pm.fetchedAt)+' '+when(pm.fetchedAt)+' 北京时间';
 
-  if(!visible.some(g=>g.id===pmSelected)){pmSelected=visible[0]?.id||'';pmOutcome=0;}
+  if(!visible.some(g=>g.id===pmSelected)){pmSelected=visible[0]?.id||'';pmOutcome=-1;}
   $('prediction-list').innerHTML=visible.map(g=>'<button class="pm-event" type="button" data-pm-event="'+esc(g.id)+'" aria-pressed="'+(g.id===pmSelected)+'"><span>'+esc(g.title)+'</span><small>'+esc(g.dataType.label)+(g.endDate?' · '+esc(pmDay(g.endDate))+' 截止':'')+'</small></button>').join('')||'<p class="portal-empty">暂无匹配事件</p>';
   $('prediction-event-select').innerHTML=visible.map(g=>'<option value="'+esc(g.id)+'">'+esc(g.title)+'</option>').join('');
   drawEvent();
@@ -84,7 +84,7 @@
  function setCompare(){const {history}=selectedCme();$('fedwatch-compare').innerHTML='<option value="">不比较</option>'+history.slice(0,-1).reverse().map(s=>'<option value="'+esc(F.key(s))+'">'+esc(F.label(s))+'</option>').join('');$('fedwatch-compare').value=history.at(-2)?F.key(history.at(-2)):'';}
  function drawCme(){if(!cme)return;const {meeting,history}=selectedCme(),s=history.at(-1);$('fedwatch-download').disabled=!s;if(!s){$('fedwatch-status').textContent='暂无未来会议的有效概率快照';$('fedwatch-content').innerHTML='';return;}const previous=history.find(x=>F.key(x)===$('fedwatch-compare').value),buckets=F.aggregate(s,cme.policy),older=previous?F.aggregate(previous,cme.policy):null,rows=F.comparison(s,previous),source=cme.sources?.find(x=>x.id===s.sourceId);
   keep({meeting:meeting.meetingDate});$('fedwatch-status').textContent=(cmeError?'读取失败 · ':F.refreshWarning(cme.fedwatchUpdate,s))+(s.observedDate?((Date.now()-Date.parse(F.time(s))>24*3600000?'历史快照 · ':'快照 · ')+s.observedDate+(s.observedAt?' '+when(s.observedAt)+' 北京时间':'')):('整表获取 '+day(s.retrievedAt)+' '+when(s.retrievedAt)+' 北京时间'));
-  $('fedwatch-content').innerHTML='<div class="forecast-policy">当前目标区间 <b>'+cme.policy.range.map(n).join('–')+'%</b><span>生效 '+esc(cme.policy.decisionDate)+'</span></div><div class="fedwatch-kpis board-kpis">'+[['cut','降息'],['hold','维持'],['hike','加息']].map(([key,label])=>{const value=buckets?.[key],change=older&&buckets?value-older[key]:null;return '<div class="fedwatch-kpi '+(key==='hold'?'primary':'')+' board-stat"><span>'+label+'</span><strong>'+pct(value)+'</strong><small>'+(change===null?'相对当前目标区间':(change>0?'+':'')+n(change)+' 个百分点 · 对照 '+F.label(previous))+'</small></div>';}).join('')+'</div><section class="portal-panel board-panel"><div class="forecast-head board-panel-head"><h3>'+meeting.meetingDate+' · 目标利率分布</h3><span>概率 %'+(previous?' · 对照 '+F.label(previous):'')+'</span></div><div class="fedwatch-distribution">'+rows.map(r=>'<div class="fedwatch-range" data-chart-tooltip="'+esc(F.label(s)+'\n'+n(r.lower)+'–'+n(r.upper)+'% · 概率：'+pct(r.probability)+(r.change===null?'':'\n较 '+F.label(previous)+'：'+n(r.change)+' 个百分点'))+'"><span>'+n(r.lower)+'–'+n(r.upper)+'%</span><div><i style="width:'+r.probability+'%"></i></div><strong>'+pct(r.probability)+'</strong><small>'+(r.change===null?'—':(r.change>0?'+':'')+n(r.change)+' pp')+'</small></div>').join('')+'</div><details class="forecast-method board-detail"><summary>历史明细与来源</summary><div class="portal-table-scroll"><table class="portal-table board-table"><thead><tr><th>快照日期</th><th>目标区间 %</th><th>概率 %</th><th>源时点</th></tr></thead><tbody>'+history.slice().reverse().flatMap(h=>h.ranges.map(r=>'<tr><td>'+esc(F.label(h))+'</td><td>'+n(r.lower)+'–'+n(r.upper)+'</td><td>'+n(r.probability)+'</td><td>'+esc(h.observedAt||'')+'</td></tr>')).join('')+'</tbody></table></div>'+anchor(source?.url||'https://www.cmegroup.com/fedwatch','CME FedWatch ↗')+' · 官方工具快照</details></section>';
+  $('fedwatch-content').innerHTML='<div class="forecast-policy">当前目标区间 <b>'+cme.policy.range.map(n).join('–')+'%</b><span>生效 '+esc(cme.policy.decisionDate)+'</span></div><div class="fedwatch-kpis board-kpis">'+[['cut','降息'],['hold','维持'],['hike','加息']].map(([key,label])=>{const value=buckets?.[key],change=older&&buckets?value-older[key]:null;return '<div class="fedwatch-kpi '+(value===Math.max(...Object.values(buckets||{}))?'primary':'')+' board-stat"><span>'+label+'</span><strong>'+pct(value)+'</strong><small>'+(change===null?'相对当前目标区间':(change>0?'+':'')+n(change)+' pct · 较对照')+'</small></div>';}).join('')+'</div><section class="portal-panel board-panel"><div class="forecast-head board-panel-head"><h3>'+meeting.meetingDate+' · 目标利率分布</h3><span>概率 %'+(previous?' · 对照 '+F.label(previous):'')+'</span></div><div class="fedwatch-distribution">'+rows.map(r=>'<div class="fedwatch-range" tabindex="0" data-chart-tooltip="'+esc(F.label(s)+'\n'+n(r.lower)+'–'+n(r.upper)+'% · 概率：'+pct(r.probability)+(r.change===null?'':'\n较 '+F.label(previous)+'：'+n(r.change)+' 个百分点'))+'"><span>'+n(r.lower)+'–'+n(r.upper)+'%</span><div><i style="width:'+r.probability+'%"></i></div><strong>'+pct(r.probability)+'</strong><small>'+(r.change===null?'—':(r.change>0?'+':'')+n(r.change)+' pp')+'</small></div>').join('')+'</div><details class="forecast-method board-detail"><summary>历史明细与来源</summary><div class="portal-table-scroll"><table class="portal-table board-table"><thead><tr><th>快照日期</th><th>目标区间 %</th><th>概率 %</th><th>源时点</th></tr></thead><tbody>'+history.slice().reverse().flatMap(h=>h.ranges.map(r=>'<tr><td>'+esc(F.label(h))+'</td><td>'+n(r.lower)+'–'+n(r.upper)+'</td><td>'+n(r.probability)+'</td><td>'+esc(h.observedAt||'')+'</td></tr>')).join('')+'</tbody></table></div>'+anchor(source?.url||'https://www.cmegroup.com/fedwatch','CME FedWatch ↗')+' · 官方工具快照</details></section>';
   $('fedwatch-download').onclick=()=>exportCsv([['会议日期','快照日期','源时点','获取时间','时区','目标下限%','目标上限%','概率%','提供者','来源'],...history.flatMap(h=>h.ranges.map(r=>[meeting.meetingDate,h.observedDate,h.observedAt||'',h.retrievedAt||'',h.timezone,r.lower,r.upper,r.probability,'CME FedWatch',cme.sources?.find(x=>x.id===h.sourceId)?.url||'']))],'cme-fedwatch-'+meeting.meetingDate+'.csv');
   drawFullTable();
  }
@@ -96,6 +96,7 @@
  }
  window.ForecastDesk={renderPolymarket,loadFedwatch};
 })();
+
 
 
 

@@ -86,7 +86,7 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
     for(const width of [1920,1440,1024,768,390]){await page.setViewportSize({width,height:1000});await page.waitForTimeout(250);await checkCardGeometry();}
     await page.goto(base+'/macro.html?country=CN&indicator=cn-cpi&comparison=cn-ppi&years=1');await ready();assert.equal(new URL(page.url()).searchParams.has('comparison'),false);
     if(out)await page.screenshot({path:path.join(out,'宏观核心指标-手机.png'),fullPage:true});
-    await page.locator('[data-view="predictions"]').click();await page.waitForFunction(()=>document.querySelector('#prediction-list .pm-event'));assert.ok(requests.some(url=>url.includes('predictions.json')));
+    await page.locator('[data-macro-section=forecasts]').click();await page.locator('[data-view="predictions"]').click();await page.waitForFunction(()=>document.querySelector('#prediction-list .pm-event'));assert.ok(requests.some(url=>url.includes('predictions.json')));
     assert.ok(await page.locator('#prediction-focus .pm-result').count()>0);
     await page.locator('#prediction-search').fill('降息25');
     const pm=JSON.parse(fs.readFileSync(path.join(root,'data/macro/predictions.json'),'utf8')),P=require('../scripts/prediction-model.js');
@@ -117,13 +117,14 @@ const server=http.createServer((req,res)=>{let file;try{file=path.resolve(root,'
     for(const width of [1512,768,390]){await page.setViewportSize({width,height:1000});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));}
     await page.setViewportSize({width:1512,height:1100});
     await page.locator('#fedwatch-meeting').selectOption('2026-12-09');assert.match(await page.locator('#fedwatch-content').innerText(),/2026-12-09/);
-    await page.locator('[data-view="indicators"]').click();assert.ok(await page.locator('#kpi-grid').isVisible());
+    await page.locator('[data-macro-section=indicators]').click();await ready();assert.ok(await page.locator('#kpi-grid').isVisible());
     await page.route('**/data/macro/automatic-series.json',r=>r.fulfill({status:503,body:'unavailable'}));await page.goto(base+'/macro.html');await ready();assert.match(await page.locator('#data-warning').innerText(),/补充历史读取失败/);assert.ok(await page.locator('#retry').isVisible());await page.unroute('**/data/macro/automatic-series.json');await page.locator('#retry').click();await page.waitForFunction(()=>document.querySelectorAll('#metric-list .macro-item').length===17);await page.locator('#data-warning').waitFor({state:'hidden'});
     await page.route('**/data/macro/catalog.json',r=>r.fulfill({status:503,body:'unavailable'}));await page.goto(base+'/macro.html');await page.waitForFunction(()=>document.querySelector('#load-state').textContent.includes('读取失败'));assert.ok(await page.locator('#indicators').isHidden());assert.ok(await page.locator('#skeleton').isHidden());
     await page.unroute('**/data/macro/catalog.json');await page.locator('#retry').click();await ready();
     assert.deepEqual(errors,[]);console.log('PASS: no-jump KPI selection, single measured plot, compact detail without repeated sections, frequency/health/search filters, URL restore, CSV, chart keyboard access, daily performance, five viewport widths, lazy prediction loading, partial failure, full failure and retry.');
   }finally{await browser.close();await new Promise(r=>server.close(r));}
 })().catch(e=>{console.error(e);server.close();process.exitCode=1;});
+
 
 
 
