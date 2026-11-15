@@ -17,12 +17,15 @@ test('same event groups without normalizing probabilities; expired events exclud
  const copy=JSON.stringify(markets),now=Date.parse('2026-10-09');const groups=P.groups(markets,{now});assert.equal(groups.length,1);assert.equal(groups[0].markets.length,2);assert.equal(P.affirmative(groups[0].markets[0]).probability,.845);assert.equal(JSON.stringify(markets),copy);
  assert.equal(P.groups(markets,{query:'加息',now})[0].markets.length,1);assert.equal(P.groups(markets,{category:'金融市场',now}).length,0);
 });
-test('core navigation is first, regional retail shares it and consumption entry redirects',()=>{
+test('three macro sections share navigation and legacy consumption entry redirects',()=>{
  for(const name of ['macro.html','national-retail.html','regional-retail.html']){
   const html=fs.readFileSync(path.join(__dirname,'..',name),'utf8');
   const nav=html.match(/<nav[^>]*data-macro-navigation[^>]*>([\s\S]*?)<\/nav>/)[1];
-  assert.deepEqual([...nav.matchAll(/<a\b[^>]*href="([^"]+)"/g)].map(m=>m[1]),['macro.html?view=indicators','national-retail.html','regional-retail.html','macro.html?view=fedwatch','macro.html?view=predictions']);
+  assert.deepEqual([...nav.matchAll(/<a\b[^>]*href="([^"]+)"/g)].map(m=>m[1]),['national-retail.html','macro.html?view=indicators','macro.html?view=fedwatch']);
+  assert.match(html,/data-macro-subnav="consumption"/);
+  assert.match(html,/data-macro-subnav="forecasts"/);
   assert.doesNotMatch(nav,/消费全景/);
  }
  assert.match(fs.readFileSync(path.join(__dirname,'../consumption-macro.html'),'utf8'),/location\.replace\("macro\.html\?view=indicators"\)/);
 });
+

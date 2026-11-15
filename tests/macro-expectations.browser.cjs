@@ -11,11 +11,11 @@ const server=http.createServer((req,res)=>{const file=path.resolve(root,'.'+deco
   const ready=()=>page.waitForSelector('#indicators:not([hidden]) .macro-kpi');
   try{
     await page.goto(url);await ready();
-    assert.equal(await page.locator('.macro-expectation-reading').count(),3);
+    assert.equal(await page.locator('.macro-expectation-reading').count(),1);
     assert.equal(await page.locator('#forecast-overview').count(),0);
     for(const id of ['cn-cpi','cn-gdp-quarter','cn-retail']){
       await page.locator('[data-kpi="'+id+'"]').click();
-      assert.match(await page.locator('[data-kpi="'+id+'"] .macro-expectation-reading').innerText(),/Choice 预测/);
+      assert.match(await page.locator('#detail .macro-expectation-reading').innerText(),/Choice 预测/);
       assert.equal(await page.locator('.macro-forecast-latest,.macro-forecast-history').count(),0);
       assert.ok(await page.locator('#primary-chart svg').isVisible());
       const download=page.waitForEvent('download');await page.locator('#download').click();
@@ -26,7 +26,8 @@ const server=http.createServer((req,res)=>{const file=path.resolve(root,'.'+deco
     if(process.env.MACRO_SCREENSHOT_DIR){fs.mkdirSync(process.env.MACRO_SCREENSHOT_DIR,{recursive:true});await page.screenshot({path:path.join(process.env.MACRO_SCREENSHOT_DIR,'macro-expectations-mobile.png'),fullPage:true});await page.setViewportSize({width:1440,height:1100});await page.screenshot({path:path.join(process.env.MACRO_SCREENSHOT_DIR,'macro-expectations-desktop.png'),fullPage:true});}
     await page.locator('[data-country="US"]').click();assert.equal(await page.locator('.macro-expectation-reading').count(),0);assert.equal(await page.locator('#forecast-overview tbody tr').count(),0);
     await page.route('**/data/macro/expectations.json',r=>r.fulfill({status:503,body:'unavailable'}));await page.goto(url);await ready();assert.match(await page.locator('#data-warning').innerText(),/预测数据读取失败/);assert.equal(await page.locator('.macro-kpi').count(),6);
-    await page.unroute('**/data/macro/expectations.json');await page.locator('#retry').click();await page.waitForFunction(()=>document.querySelectorAll('.macro-expectation-reading').length===3);assert.ok(await page.locator('#data-warning').isHidden());
-    assert.deepEqual(errors,[]);console.log('PASS: three forecast readouts without repeated detail panels, historical CSV, country switch, narrow screens, failure and retry');
+    await page.unroute('**/data/macro/expectations.json');await page.locator('#retry').click();await page.waitForFunction(()=>document.querySelectorAll('#detail .macro-expectation-reading').length===1);assert.ok(await page.locator('#data-warning').isHidden());
+    assert.deepEqual(errors,[]);console.log('PASS: selected metric forecast without duplicate card readouts, historical CSV, country switch, narrow screens, failure and retry');
   }finally{await browser.close();server.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;server.close();});
+

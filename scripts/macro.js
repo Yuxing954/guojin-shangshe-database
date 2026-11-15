@@ -15,7 +15,7 @@
     view:['predictions','fedwatch'].includes(params.get('view'))?params.get('view'):'indicators',frequency:['monthly','quarterly','daily'].includes(params.get('frequency'))?params.get('frequency'):'',health:['attention','pending'].includes(params.get('health'))?params.get('health'):''};
   function save(){const p=new URLSearchParams();p.set('study',state.study);for(const key of ['predictionTopic','predictionQuery','predictionSort','meeting']){const value=new URLSearchParams(location.search).get(key);if(value)p.set(key,value);}for(const key of ['country','group','q','id','mode','years','view','frequency','health'])if(state[key]!==''&&state[key]!==null)p.set(key==='id'?'indicator':key,state[key]);history.replaceState(null,'',location.pathname+'?'+p);}
   function download(text,filename){const url=URL.createObjectURL(new Blob([text],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
-  function showView(){document.querySelectorAll('[data-macro-navigation] [data-view]').forEach(b=>{const active=b.dataset.view===state.view;b.setAttribute('aria-pressed',String(active));if(active)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});$('countries').hidden=state.view!=='indicators';$('indicators').hidden=state.view!=='indicators'||!catalog;$('predictions').hidden=state.view!=='predictions';$('fedwatch').hidden=state.view!=='fedwatch';if(state.view!=='indicators'){$('load-state').textContent='';$('skeleton').hidden=true;$('data-warning').hidden=true;}save();if(state.view==='indicators'&&catalog)requestAnimationFrame(drawDetailChart);if(state.view==='fedwatch')ForecastDesk.loadFedwatch();if(state.view==='predictions'){renderPredictions();loadPredictions();}}
+  function showView(){window.MacroNavigation?.sync(state.view);document.querySelectorAll('.macro-toolbar [data-view]').forEach(b=>{const active=b.dataset.view===state.view;b.setAttribute('aria-pressed',String(active));if(active)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});$('countries').hidden=state.view!=='indicators';$('indicators').hidden=state.view!=='indicators'||!catalog;$('predictions').hidden=state.view!=='predictions';$('fedwatch').hidden=state.view!=='fedwatch';if(state.view!=='indicators'){$('load-state').textContent='';$('skeleton').hidden=true;$('data-warning').hidden=true;}save();if(state.view==='indicators'&&catalog)requestAnimationFrame(drawDetailChart);if(state.view==='fedwatch')ForecastDesk.loadFedwatch();if(state.view==='predictions'){renderPredictions();loadPredictions();}}
   function graph(spec,data){
     chartPoints=[];const definition=D.detailDefinition(spec),points=D.detailRows(spec,data,state.years,new Date(snapshot.cutoff+'T23:59:59Z'));
     const values=points.filter(r=>M.finite(r.chartValue));
@@ -41,7 +41,7 @@
     const labels=new Set(D.annotationIndices(chartPoints,{width:w,left,right}));
     chartPoints.forEach((p,i)=>p.labels=labels.has(i)?[{x:p.x,y:p.y,text:p.label,kind:'value'}]:[]);
     let grid='<text x="'+left+'" y="16" class="macro-chart-unit">'+esc((definition.label||'数值')+'（'+definition.unit+'）')+'</text>';for(const tick of scale.ticks){const gy=top+(hi-tick)/(hi-lo)*(h-top-bottom);grid+='<line x1="'+left+'" x2="'+(w-right)+'" y1="'+gy+'" y2="'+gy+'" stroke="#eceef5"/><text x="'+(left-8)+'" y="'+(gy+4)+'" text-anchor="end">'+esc(scale.format(tick))+'</text>';}
-    return '<svg width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'" role="img" aria-labelledby="chart-title chart-desc"><title id="chart-title">'+esc(spec.name+(definition.label?' · '+definition.label:''))+'历史走势</title><desc id="chart-desc">'+esc(values.length+'个观测值；详细数值可下载CSV。缺失区间不连线。')+'</desc>'+grid+lines+dots+'<text class="site-period-tick" x="'+left+'" y="'+(h-12)+'">'+esc(ChartPeriod.format(points[0].period))+'</text><text class="site-period-tick" x="'+(w-right)+'" y="'+(h-12)+'" text-anchor="end">'+esc(ChartPeriod.format(points.at(-1).period))+'</text></svg>';
+    return '<svg width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'" role="img" aria-labelledby="chart-title chart-desc"><title id="chart-title">'+esc(spec.name+(definition.label?' · '+definition.label:''))+'历史走势</title><desc id="chart-desc">'+esc(values.length+'个观测值；详细数值可下载CSV。缺失区间不连线。')+'</desc>'+grid+lines+dots+Array.from(new Set(Array.from({length:Math.min(points.length,Math.max(2,Math.floor((w-left-right)/130)))},(_,i)=>Math.round(i*(points.length-1)/(Math.min(points.length,Math.max(2,Math.floor((w-left-right)/130)))-1||1))))).map((index,i,a)=>'<text class="site-period-tick" x="'+x(points[index])+'" y="'+(h-12)+'" text-anchor="'+(i===0?'start':i===a.length-1?'end':'middle')+'">'+esc(ChartPeriod.format(points[index].period))+'</text>').join('')+'</svg>';
   }
   function renderStudy(){
     const query=state.study==='workspace';$('indicators').classList.toggle('macro-overview-mode',!query);
@@ -61,12 +61,15 @@
     const data=snapshot.series[spec.id]||{},source=catalog.sources[spec.source],r=D.readout(spec,data),latest=r.latest;
     state.mode=D.detailDefinition(spec).mode;
     if(!latest){$('detail').innerHTML='<h2 id="metric-title">'+esc(spec.name)+'</h2><p class="portal-note">待补齐 · '+esc(M.frequency[spec.frequency])+'</p><p>'+link(source.url,'官方来源 ↗')+'</p>';return;}
+    const options=D.directory(catalog,snapshot,{country:state.country,group:'',q:'',frequency:'',health:''}).map(s=>'<option value="'+esc(s.id)+'"'+(s.id===state.id?' selected':'')+'>'+esc(s.name)+'</option>').join('');
     const sourceUrl=latest.originalSourceUrl||latest.sourceUrl||data.sourceUrl||source.url;
-    $('detail').innerHTML='<div class="macro-trend-head"><div><p class="eyebrow">'+esc(M.frequency[spec.frequency]+' · '+latest.period)+'</p><h2 id="metric-title">'+esc(spec.name)+'</h2></div><label class="macro-range">时间<select id="years" aria-label="趋势时间范围"><option value="1">近1年</option><option value="3">近3年</option><option value="5">近5年</option><option value="10">近10年</option><option value="0">全部</option></select></label></div>'+
+    $('detail').innerHTML='<div class="macro-trend-head"><div><p class="eyebrow">'+esc(M.frequency[spec.frequency]+' · '+latest.period)+'</p><h2 id="metric-title">'+esc(spec.name)+'</h2></div><label class="macro-indicator-picker">指标<select id="quick-indicator" aria-label="选择趋势指标">'+options+'</select></label><label class="macro-range">范围<select id="years" aria-label="趋势时间范围"><option value="1">近1年</option><option value="3">近3年</option><option value="5">近5年</option><option value="10">近10年</option><option value="0">全部</option></select></label></div>'+
       '<div class="macro-latest"><div><b>'+compact(r.value)+'</b><small>'+esc(r.unit+(r.label?' · '+r.label:''))+'</small></div>'+(r.delta?'<div class="macro-trend-change"><span>'+esc(r.delta.label)+'</span><b>'+(r.delta.value>0?'+':'')+number(r.delta.value)+'</b><small>'+esc(r.delta.unit)+'</small></div>':'')+'</div>'+
+      '<div class="macro-detail-forecast">'+E.card(expectations,spec,latest)+'</div>'+
       (data.error?'<p class="macro-state">'+esc(data.error)+'</p>':'')+
       '<div id="primary-chart" class="macro-chart board-chart"></div>'+
       '<div class="macro-trend-footer"><p class="macro-source-line">'+link(sourceUrl,data.provider?.includes('Choice')?data.sourceOrganization+' · Choice':source.name)+'<span>'+esc(spec.adjustment)+'</span>'+(latest.releaseDate?'<time>发布 '+esc(latest.releaseDate)+'</time>':'')+'</p><div><a href="data-notes.html#macro">数据说明</a><button id="download" class="macro-download">下载 CSV</button></div></div>';
+    $('quick-indicator').onchange=e=>selectMetric(e.target.value);
     $('years').value=String(state.years);
     $('years').onchange=e=>{state.years=+e.target.value;drawDetailChart();save();};
     $('download').onclick=()=>download(M.csv(spec,data,source),spec.id+'.csv');
@@ -88,16 +91,15 @@
       [{title:'增长与就业',ids:['us-gdp-quarter','us-payroll']},{title:'通胀与失业',ids:['us-cpi','us-unemployment']},{title:'政策与利率',ids:['us-fed-rate','us-treasury10']}];
     const card=id=>{
       const spec=catalog.series.find(s=>s.id===id);if(!spec)return '';const data=snapshot.series[id]||{},head=D.readout(spec,data),latest=head.latest,delta=head.delta,status=M.status(spec,data);
-      return '<button class="board-stat macro-kpi" data-kpi="'+esc(id)+'" aria-pressed="'+(id===state.id)+'" aria-label="'+esc(spec.name+'，'+compact(head.value)+' '+head.unit+'，'+(latest?.period||'暂无数据')+'，查看历史')+'"><span class="macro-kpi-top"><span>'+esc(spec.name)+'</span><span class="readout-selected">'+(id===state.id?'已选':'趋势 ↗')+'</span></span><span class="macro-kpi-period">'+esc((latest?.period||'暂无数据')+' · '+M.frequency[spec.frequency]+(head.label?' · '+head.label:''))+'</span><span class="macro-reading-row"><span class="macro-kpi-reading"><strong class="board-stat-value">'+compact(head.value)+'</strong><small>'+esc(head.unit)+'</small></span>'+spark(spec,data)+'</span><span class="macro-kpi-bottom"><span class="macro-kpi-change '+(delta?.value>0?'macro-up':delta?.value<0?'macro-down':'')+'">'+(delta?esc(delta.label)+' '+(delta.value>0?'+':'')+number(delta.value)+' '+esc(delta.unit):'上期差值 —')+'</span><span class="macro-kpi-previous">上期 '+number(head.previous?.chartValue)+' '+esc(head.unit)+'</span></span>'+'<span class="macro-kpi-meta">'+(latest?.releaseDate?'<span class="macro-kpi-release">发布 '+esc(latest.releaseDate)+'</span>':'')+(status!=='已收录'||data.coverage?.missingPeriods?.length?'<span class="macro-kpi-note" title="'+esc(data.error||status)+'">'+esc(status!=='已收录'?status:'历史存在缺期')+'</span>':'')+(data.coverage?.unpublishedPeriods?.length?'<span class="macro-kpi-context" title="'+esc(data.coverage.unpublishedPeriods[0].reason)+'">'+esc(data.coverage.unpublishedPeriods[0].period)+'官方未发布</span>':'')+'</span><span class="macro-kpi-forecast"></span></button>';
+      return '<button class="board-stat macro-kpi" data-kpi="'+esc(id)+'" aria-pressed="'+(id===state.id)+'" aria-label="'+esc(spec.name+'，'+compact(head.value)+' '+head.unit+'，'+(latest?.period||'暂无数据')+'，查看历史')+'"><span class="macro-kpi-top"><span>'+esc(spec.name)+'</span><span class="readout-selected">'+(id===state.id?'已选':'查看')+'</span></span><span class="macro-kpi-period">'+esc((latest?.period||'暂无数据')+' · '+M.frequency[spec.frequency]+(head.label?' · '+head.label:''))+'</span><span class="macro-reading-row"><span class="macro-kpi-reading"><strong class="board-stat-value">'+compact(head.value)+'</strong><small>'+esc(head.unit)+'</small></span>'+spark(spec,data)+'</span><span class="macro-kpi-bottom"><span class="macro-kpi-change '+(delta?.value>0?'macro-up':delta?.value<0?'macro-down':'')+'">'+(delta?esc(delta.label)+' '+(delta.value>0?'+':'')+number(delta.value)+' '+esc(delta.unit):'上期差值 —')+'</span><span class="macro-kpi-previous">上期 '+number(head.previous?.chartValue)+' '+esc(head.unit)+'</span></span>'+'<span class="macro-kpi-meta">'+(latest?.releaseDate?'<span class="macro-kpi-release">发布 '+esc(latest.releaseDate)+'</span>':'')+(status!=='已收录'||data.coverage?.missingPeriods?.length?'<span class="macro-kpi-note" title="'+esc(data.error||status)+'">'+esc(status!=='已收录'?status:'历史存在缺期')+'</span>':'')+(data.coverage?.unpublishedPeriods?.length?'<span class="macro-kpi-context" title="'+esc(data.coverage.unpublishedPeriods[0].reason)+'">'+esc(data.coverage.unpublishedPeriods[0].period)+'官方未发布</span>':'')+'</span><span class="macro-kpi-forecast"></span></button>';
     };
-    $('kpi-grid').innerHTML=topics.map((topic,index)=>'<section class="macro-topic"><h3><span>'+String(index+1).padStart(2,'0')+'</span>'+esc(topic.title)+'</h3><div class="macro-topic-cards">'+topic.ids.map(card).join('')+'</div></section>').join('');
-    for(const button of $('kpi-grid').querySelectorAll('[data-kpi]')){const spec=catalog.series.find(s=>s.id===button.dataset.kpi);button.querySelector('.macro-kpi-forecast').innerHTML=E.card(expectations,spec,M.rows(snapshot.series[spec.id]).at(-1));}
+    $('kpi-grid').innerHTML=topics.map((topic,index)=>'<section class="macro-topic"><h3><span>'+''+'</span>'+esc(topic.title)+'</h3><div class="macro-topic-cards">'+topic.ids.map(card).join('')+'</div></section>').join('');
 
   }
   function render(){
     if(!catalog)return;$('indicators').hidden=state.view!=='indicators';renderStudy();
     const filtered=D.directory(catalog,snapshot,state),selected={available:filtered.filter(s=>M.rows(snapshot.series[s.id]).length),pending:filtered.filter(s=>!M.rows(snapshot.series[s.id]).length),references:[]},all=filtered;
-    if(!all.some(s=>s.id===state.id)){state.id=all[0]?.id||'';page=0;}renderOverview();
+    if(!all.some(s=>s.id===state.id)){state.id=all.find(s=>s.id===(state.country==='CN'?'cn-cpi':'us-cpi'))?.id||all[0]?.id||'';page=0;}renderOverview();
     $('summary').textContent='筛选结果 '+filtered.length+' / '+D.core(catalog,state.country,snapshot).length+' 项';$('count').textContent=filtered.length+' 项';
     $('frequency').value=state.frequency;$('health').value=state.health;
     if(state.frequency||state.health)$('more-filters').open=true;
@@ -154,7 +156,7 @@
     }else{$('load-state').textContent='宏观数据读取失败；请检查网络后重试。';$('retry').hidden=false;}
     showView();
   }
-  document.querySelectorAll('[data-macro-navigation] [data-view]').forEach(b=>b.onclick=e=>{
+  document.querySelectorAll('.macro-toolbar [data-view]').forEach(b=>b.onclick=e=>{
     if(e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
     e.preventDefault();if(state.view===b.dataset.view)return;
     const u=new URL(location.href);u.searchParams.set('view',b.dataset.view);history.pushState(null,'',u);
@@ -173,6 +175,7 @@
   $('prediction-search').oninput=()=>{predictionExpanded=false;renderPredictions();};$('prediction-category').onchange=()=>{predictionExpanded=false;renderPredictions();};$('retry').onclick=load;
   load();
 })();
+
 
 
 
