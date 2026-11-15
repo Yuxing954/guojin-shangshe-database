@@ -11,3 +11,47 @@
 
 .minute-preview-dialog{max-width:720px}.minute-preview-dialog .portal-prose{font-size:14px;line-height:1.95;white-space:pre-wrap;word-break:break-word}.minute-preview-dialog .research-reading-note{font-size:11px;margin:0 0 15px;color:var(--site-muted)}.minute-preview-dialog .research-source{margin-top:22px}.minute-preview-dialog .portal-dialog-head h2{font-size:19px}
 
+
+/* Titles can span multiple lines, including long filenames and English names. */
+.site-page .minute-name,
+.site-page .research-item-main,
+.site-page #article-dialog .portal-dialog-head > div {
+  min-width:0;
+  max-width:100%;
+}
+.site-page .minute-name .minute-title,
+.site-page .research-item-main .portal-research-title,
+.site-page #article-title {
+  display:block;
+  max-width:100%;
+  min-width:0;
+  height:auto;
+  max-height:none;
+  white-space:normal;
+  overflow:visible;
+  overflow-wrap:anywhere;
+  text-overflow:clip;
+}
+.site-page .minute-name .minute-title {
+  flex:0 1 100%;
+}
+
+.site-page .minute-table {
+  table-layout:fixed;
+}
+.site-page .minute-table td {
+  min-width:0;
+  overflow-wrap:anywhere;
+}
+@media(max-width:760px) {
+  body.site-page #results table.minute-table.site-data-table {
+    width:100%;
+    min-width:0;
+  }
+  body.site-page #results table.minute-table.site-data-table td {
+    white-space:normal;
+  }
+  .site-page .minute-table tr {
+    grid-template-columns:minmax(0,1fr) auto;
+  }
+}

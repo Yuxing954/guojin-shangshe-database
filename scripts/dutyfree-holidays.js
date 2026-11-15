@@ -21,7 +21,7 @@
       (r.workbook_baseline?'<p>纠错或补录前的原表数值、单元格和公式已保留在完整来源 JSON 中。</p>':'');
   }
   const metrics={daily_sales:['日均销售额','亿元',2],sales:['假期销售额','亿元',2],shoppers:['购物人次','万人次',2],daily_shoppers:['日均购物人次','万人次',2],spend:['每购物人次金额','元',0],items:['购物件数','万件',2]};
-  let data,holiday='国庆',year='全部',metric='daily_sales';
+  let data,loadFailed=false,holiday='国庆',year='全部',metric='daily_sales';
   function visibility(){el.hidden=location.pathname.endsWith('industry.html')&&location.hash!=='#dutyfree';}
   addEventListener('hashchange',visibility);visibility();let chartResize;addEventListener('resize',()=>{clearTimeout(chartResize);chartResize=setTimeout(()=>{if(data)render();},150);});
   el.innerHTML='<p class="dh-message" role="status">正在读取节假日数据…</p>';
@@ -32,7 +32,7 @@
     const chartWidth=document.getElementById('dh-chart').clientWidth;if(chartWidth<100)return '';
     const available=rows.filter(r=>r.status==='available'&&num(r[metric])).slice().reverse(),[label,unit,digits]=metrics[metric];
     if(!available.length)return '<p class="dh-message">该筛选暂无已收录数值。</p>';
-    if(holiday!=='全部'){const field={daily_sales:'daily_yoy',spend:'spend_yoy',sales:'reported_sales_yoy',shoppers:'reported_shoppers_yoy',items:'reported_items_yoy'}[metric];const paired=SiteCharts.paired(available.map(r=>({period:r.year+' '+r.holiday,x:r.year,value:r[metric],change:r[field]})),{name:label,layout:'spacious',unit,precision:digits,minimumFractionDigits:['daily_sales','sales'].includes(metric)?2:0,mode:'combo',width:Math.max(280,chartWidth-32),gap:1});chartPoints=paired.points;return paired.html;}
+    if(holiday!=='全部'){const field={daily_sales:'daily_yoy',spend:'spend_yoy',sales:'reported_sales_yoy',shoppers:'reported_shoppers_yoy',items:'reported_items_yoy'}[metric];const paired=SiteCharts.paired(available.map(r=>({period:r.year+' '+r.holiday,x:r.year,value:r[metric],change:r[field]})),{name:label,layout:'spacious',unit,precision:digits,minimumFractionDigits:['daily_sales','sales'].includes(metric)?2:0,mode:'combo',width:Math.max(240,chartWidth),gap:1});chartPoints=paired.points;return paired.html;}
     const max=Math.max(...available.map(r=>r[metric]))||1;
     return '<div class="dh-bars" role="img" aria-label="'+esc(label+'历年对比，单位'+unit)+'">'+available.map(r=>'<div class="dh-bar-row"><span>'+r.year+' '+esc(r.holiday)+'</span><div class="dh-bar-track"><div class="dh-bar" style="width:'+Math.max(1,r[metric]/max*100)+'%"></div></div><strong>'+fmt(r[metric],digits)+' <small>'+unit+'</small></strong></div>').join('')+'</div>';
   }
@@ -43,9 +43,12 @@
     const rows=filter(data.records,holiday,year),complete=rows.filter(r=>r.status==='available'),latest=complete.slice().sort((a,b)=>b.year-a.year||holidays.indexOf(group(b))-holidays.indexOf(group(a)))[0];
 
     document.getElementById('dh-summary-period').textContent=latest?latest.year+' '+latest.holiday+' · '+latest.period+' · '+(latest.days||'未记录')+'天':'该筛选暂无完整假期数据';
+    if(document.getElementById('view-holidays').classList.contains('on')){
+      SiteUI.asOf(document.getElementById('asof'),latest?latest.year+'年'+latest.holiday:'暂无数据',['海南 · 节假日'],'统计期');
+    }
     const previous=latest&&data.records.find(r=>r.kind==='holiday'&&r.status==='available'&&r.year===latest.year-1&&group(r)===group(latest));
     const shoppersYoy=num(latest?.reported_shoppers_yoy)?latest.reported_shoppers_yoy:change(latest?.shoppers,previous?.shoppers);
-    document.getElementById('dh-cards').innerHTML=[['购物人次',latest?.shoppers,'万人次',2,shoppersYoy,num(latest?.reported_shoppers_yoy)?'海关披露同比（原文口径）':'与上一年同组假期购物总人次比较'],['每购物人次金额',latest?.spend,'元',0,latest?.spend_yoy,latest?.yoy_basis],['日均销售额',latest?.daily_sales,'亿元',2,latest?.daily_yoy,latest?.yoy_basis]].map(([label,v,unit,d,yoy,basis])=>'<div class="board-stat"><span>'+label+'</span><div class="dh-value"><strong>'+fmt(v,d)+' <small>'+unit+'</small></strong><span class="dh-yoy '+(num(yoy)?yoy>0?'is-up':yoy<0?'is-down':'is-flat':'is-missing')+'" title="'+esc(basis||'缺少可比同比')+'">同比 '+pct(yoy)+'</span></div></div>').join('');
+    document.getElementById('dh-cards').innerHTML=[['日均销售额',latest?.daily_sales,'亿元',2,latest?.daily_yoy,latest?.yoy_basis],['购物人次',latest?.shoppers,'万人次',2,shoppersYoy,num(latest?.reported_shoppers_yoy)?'海关披露同比（原文口径）':'与上一年同组假期购物总人次比较'],['每购物人次金额',latest?.spend,'元',0,latest?.spend_yoy,latest?.yoy_basis]].map(([label,v,unit,d,yoy,basis])=>'<div class="board-stat"><span>'+label+'</span><strong>'+fmt(v,d)+' <em>'+unit+'</em></strong><small class="dh-yoy '+(num(yoy)?yoy>0?'is-up':yoy<0?'is-down':'is-flat':'is-missing')+'" title="'+esc(basis||'缺少可比同比')+'">同比 '+pct(yoy)+'</small></div>').join('');
     document.getElementById('dh-chart-title').textContent=metrics[metric][0]+'历年对比（'+metrics[metric][1]+'）';
     document.getElementById('dh-chart').innerHTML=chart(rows);if(chartPoints.length)SiteCharts.attach(document.getElementById('dh-chart'),chartPoints);
     document.getElementById('dh-count').textContent=complete.length+' 条已收录 · '+(rows.length-complete.length)+' 条待补充';
@@ -54,7 +57,7 @@
     document.getElementById('dh-details').hidden=!details.length;document.getElementById('dh-details-table').innerHTML=table(details,true);
     document.getElementById('dh-download').disabled=!rows.length;
   }
-  addEventListener('dutyfree:viewchange',()=>{if(data&&el.getBoundingClientRect().width>0)render();});
+  addEventListener('dutyfree:viewchange',()=>{if(!document.getElementById('view-holidays').classList.contains('on'))return;if(data)render();else document.getElementById('asof').textContent=loadFailed?'节假日数据读取失败':'节假日数据读取中…';});
   if(window.ResizeObserver){let lastWidth=0;new ResizeObserver(entries=>{const width=Math.round(entries[0].contentRect.width);if(width<100){lastWidth=0;return;}if(width!==lastWidth){lastWidth=width;if(data)render();}}).observe(el);}
   function download(){
     const rows=filter(data.records,holiday,year),keys=['year','holiday','period','days','sales','shoppers','spend','daily_sales','daily_shoppers','daily_yoy','status','quality','sheet'];
@@ -66,9 +69,13 @@
   fetch('data/dutyfree/holidays.json?v=20261009-supplements',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error(r.status);return r.json();}).then(d=>{
     data=d;
     const years=[...new Set(d.records.filter(r=>r.kind==='holiday').map(r=>r.year))].sort((a,b)=>b-a);
-    el.innerHTML='<div class="dh-controls board-filters dutyfree-filters"><label>假期 <select id="dh-holiday">'+['全部',...holidays].map(h=>'<option'+(h===holiday?' selected':'')+'>'+h+'</option>').join('')+'</select></label><label>年份 <select id="dh-year">'+['全部',...years].map(y=>'<option>'+y+'</option>').join('')+'</select></label><button id="dh-download">导出当前范围 CSV</button></div><p id="dh-summary-period" class="dh-note"></p><div id="dh-cards" class="dh-cards board-kpis"></div><section class="board-panel" data-chart-dual-labels><div class="board-panel-head"><h3 id="dh-chart-title"></h3><div class="trend-controls site-chart-tools"><label class="dh-chart-metric"><span class="visually-hidden">趋势指标</span><select id="dh-metric" aria-label="趋势指标">'+Object.entries(metrics).map(([key,m])=>'<option value="'+key+'">'+m[0]+'</option>').join('')+'</select></label><span data-chart-value-controls></span></div></div><div id="dh-chart" class="board-chart"></div></section><details class="board-detail dh-details dh-history"><summary>假期历史明细 <span id="dh-count"></span></summary><div id="dh-table"></div></details><details id="dh-details" class="board-detail dh-details"><summary>逐日与阶段数据</summary><p class="dh-note">阶段数据重叠，不加总 · 2020、2025元旦第二、三日为同日历工作日</p><div id="dh-details-table"></div></details>';
+    el.innerHTML='<div class="dh-controls board-filters dutyfree-filters"><label>假期 <select id="dh-holiday">'+['全部',...holidays].map(h=>'<option'+(h===holiday?' selected':'')+'>'+h+'</option>').join('')+'</select></label><label>年份 <select id="dh-year">'+['全部',...years].map(y=>'<option>'+y+'</option>').join('')+'</select></label><div class="dutyfree-actions"><a class="srcbtn" href="data-notes.html#dutyfree" target="_blank" rel="noopener">来源</a><button class="srcbtn" id="dh-download">导出当前范围 CSV</button></div></div><p id="dh-summary-period" class="dutyfree-period"></p><div id="dh-cards" class="dh-cards board-kpis"></div><section class="board-panel dutyfree-chart" data-chart-dual-labels data-chart-label-menu><div class="board-panel-head"><h3 id="dh-chart-title"></h3><div class="trend-controls site-chart-tools"><label class="dh-chart-metric"><span class="visually-hidden">趋势指标</span><select id="dh-metric" aria-label="趋势指标">'+Object.entries(metrics).map(([key,m])=>'<option value="'+key+'">'+m[0]+'</option>').join('')+'</select></label><span data-chart-value-controls></span></div></div><div id="dh-chart" class="board-chart dutyfree-plot"></div></section><details class="board-detail dh-details dh-history"><summary>历史数据与口径 <span id="dh-count"></span></summary><div id="dh-table"></div></details><details id="dh-details" class="board-detail dh-details"><summary>逐日与阶段数据</summary><p class="dh-note">阶段数据重叠，不加总 · 2020、2025元旦第二、三日为同日历工作日</p><div id="dh-details-table"></div></details>';
     document.getElementById('dh-holiday').onchange=e=>{holiday=e.target.value;render();};document.getElementById('dh-year').onchange=e=>{year=e.target.value;render();};document.getElementById('dh-metric').onchange=e=>{metric=e.target.value;render();};document.getElementById('dh-download').onclick=download;render();
-  }).catch(()=>{el.innerHTML='<p role="alert">节假日数据暂时无法读取，请刷新重试。</p>';});
+  }).catch(()=>{
+    loadFailed=true;
+    el.innerHTML='<p role="alert">节假日数据暂时无法读取，请刷新重试。</p>';
+    if(document.getElementById('view-holidays').classList.contains('on'))document.getElementById('asof').textContent='节假日数据读取失败';
+  });
 })(typeof window==='object'?window:globalThis);
 
 
