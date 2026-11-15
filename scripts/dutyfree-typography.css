@@ -189,20 +189,59 @@ body.site-page.dutyfree-page .industry-board .dutyfree-period {
   line-height:22px;
   color:var(--site-muted);
 }
-body.site-page.dutyfree-page .industry-board .board-stat {
+/* Match like-for-like text roles in all three KPI grids. */
+body.site-page.dutyfree-page[data-design] .industry-board .dutyfree-kpi {
   display:grid;
-  grid-template-rows:minmax(22px,auto) minmax(38px,auto) minmax(22px,auto);
+  grid-template-rows:minmax(22px,auto) minmax(var(--dashboard-reading-line,36px),auto) minmax(22px,auto);
+  align-content:start;
   gap:4px;
   min-height:132px;
-  align-content:start;
+  padding:16px 20px!important;
 }
-body.site-page.dutyfree-page .industry-board .board-stat>small {
+body.site-page.dutyfree-page[data-design] .dutyfree-kpi :is(.dutyfree-kpi-label,.dutyfree-kpi-unit,.dutyfree-kpi-yoy,.dutyfree-kpi-yoy span) {
+  font-family:var(--ui-font)!important;
+  font-size:14px!important;
+  line-height:22px!important;
+  font-weight:400!important;
+  letter-spacing:0;
+  color:var(--site-muted);
+}
+body.site-page.dutyfree-page[data-design] .dutyfree-kpi .dutyfree-kpi-reading {
+  display:flex;
+  align-items:baseline;
+  flex-wrap:wrap;
+  gap:0 8px;
+  margin:0!important;
+  color:var(--site-ink);
+}
+body.site-page.dutyfree-page[data-design] .dutyfree-kpi .dutyfree-kpi-number {
+  font-family:var(--ui-font)!important;
+  font-size:var(--dashboard-reading,28px)!important;
+  line-height:var(--dashboard-reading-line,36px)!important;
+  font-weight:600!important;
+  font-variant-numeric:tabular-nums lining-nums;
+  letter-spacing:0;
+  color:inherit;
+  overflow-wrap:anywhere;
+}
+body.site-page.dutyfree-page[data-design] .dutyfree-kpi .dutyfree-kpi-unit {
+  white-space:nowrap;
+}
+body.site-page.dutyfree-page[data-design] .dutyfree-kpi .dutyfree-kpi-yoy {
   display:block;
   margin:0;
+  font-variant-numeric:tabular-nums;
 }
-body.site-page.dutyfree-page .industry-board .board-stat>strong {
-  min-width:0;
-  overflow-wrap:anywhere;
+body.site-page.dutyfree-page[data-design] .dutyfree-kpi .dutyfree-kpi-yoy span {
+  display:inline;
+  font-variant-numeric:inherit;
+}
+@media(max-width:900px) {
+  body.site-page.dutyfree-page[data-design] .industry-board .dutyfree-kpi {
+    --dashboard-reading:24px;
+    --dashboard-reading-line:32px;
+    padding:14px!important;
+  }
 }
 body.site-page.dutyfree-page .industry-board .dutyfree-chart {
   padding:0!important;

@@ -14,7 +14,11 @@
   for(const m of metrics){
    const val=latest?.[m.field];
    $('kr-'+m.id).textContent=fmt(M.finite(val)?val/m.scale:null,m.precision);
-   const change=latest?.[m.field+'Yoy'];$('kr-'+m.id+'-yoy').textContent='同比 '+pct(change);$('kr-'+m.id+'-yoy').className=change>0?'up':change<0?'down':'';
+   const change=latest?.[m.field+'Yoy'];
+   const yoyNumber=document.createElement('span');
+   yoyNumber.className=change>0?'up':change<0?'down':'';
+   yoyNumber.textContent=pct(change);
+   $('kr-'+m.id+'-yoy').replaceChildren('同比 ',yoyNumber);
    const title=m.label+(state.mode==='combo'?'与同比':state.mode==='change'?'同比':'走势');$('kr-'+m.id+'-title').textContent=title;
    SiteCharts.drawPaired($('kr-'+m.id+'-chart'),view.map((r,x)=>({period:r.period,x,value:M.finite(r[m.field])?r[m.field]/m.scale:null,change:r[m.field+'Yoy']??null})),{name:m.label,layout:'spacious',mode:state.mode,unit:m.unit,precision:m.precision,minimumFractionDigits:m.id==='sales'?2:0,changeUnit:'%',changePrecision:1,gap:1.5,trimEmpty:false,changeLabel:'同比'});
   }
