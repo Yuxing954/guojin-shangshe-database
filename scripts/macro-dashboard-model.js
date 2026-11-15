@@ -64,12 +64,21 @@
     const list=specs.map(s=>{const data=snapshot.series[s.id]||{},latest=M.rows(data).at(-1),head=M.headline(s,data);return [s.name,s.country,latest?.period,head.value,head.unit,head.label,latest?.value,s.unit,s.adjustment,latest?.releaseDate,data.fetchedAt,M.status(s,data),latest?.sourceUrl||data.sourceUrl||sources[s.source]?.url];});
     return '\uFEFF'+[header,...list].map(r=>r.map(M.csvCell).join(',')).join('\r\n');
   }
-  function detailDefinition(spec){
+  function detailDefinition(spec, data){
     const cpi=['us-cpi','us-core-cpi'].includes(spec.id);
+    if (spec.id === 'us-payroll') return {mode:'headline',unit:spec.unit,label:'较上月增减'};
+    if (data && ['cn-retail','cn-disposable-income'].includes(spec.id)) {
+      const head = M.headline(spec,data);
+      if (head.label) return {mode:'headline',unit:head.unit,label:head.label};
+    }
     return {mode:cpi&&spec.kind!=='rate'?'yoy':'value',unit:cpi?'%':spec.unit,label:cpi?'同比':''};
   }
-  function detailRows(spec,data,years,now){
-    return M.chartRows(spec,data,detailDefinition(spec).mode,years,now);
+  function detailRows(spec,data,years,now=new Date()){
+    const {mode}=detailDefinition(spec,data);
+    if (mode !== 'headline') return M.chartRows(spec,data,mode,years,now);
+    const boundary = new Date(now);
+    boundary.setUTCFullYear(boundary.getUTCFullYear() - years);
+    return headlineRows(spec,data).filter(row=>!years||M.dateOf(row.period)>=boundary);
   }
   function annotationIndices(points,{width=900,left=0,right=0,maxLabels=Infinity}={}){
     const valid=points.map((p,index)=>({...p,index})).filter(p=>Number.isFinite(p.x)&&Number.isFinite(p.y)&&String(p.label??'')!=='').sort((a,b)=>a.x-b.x);
