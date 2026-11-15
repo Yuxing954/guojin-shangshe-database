@@ -31,3 +31,11 @@ assert.equal(M.publicationTime('2026-10-08'),'2026-10-08（发布时间待补充
 assert.equal(M.publicationTime(''),'发布时间暂无');
 assert.equal(M.publicationTime('invalid-date'),'发布时间暂无');
 console.log('Research filters, date boundaries, publication minutes/timezones, attachment types and deep links passed.');
+
+const shortTitle='极狐换电生态与贝塔新品发布会更...';
+const fullTitle='极狐换电生态与贝塔新品发布会更新1113';
+assert.equal(M.recoverTitle(shortTitle,fullTitle+'\n\n1、正文'),fullTitle);
+assert.equal(M.recoverTitle(shortTitle,fullTitle),shortTitle);
+assert.equal(M.recoverTitle(shortTitle,'另一个新标题\n\n正文'),shortTitle);
+assert.equal(M.recoverTitle(shortTitle,'极狐换电生态与贝塔新品发布会更新…\n\n正文'),shortTitle);
+assert.equal(M.recoverTitle('原始纪要标题',fullTitle+'\n\n正文'),'原始纪要标题');

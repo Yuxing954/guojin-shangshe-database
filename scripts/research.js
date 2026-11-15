@@ -6,7 +6,13 @@
   const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
   let libraryScope=params.get('scope')==='all'||params.get('state')==='awaiting_file'?'all':'archived',libraryFailed=false;
   function displaySource(value){return String(value||'').replace(/水[木母]调研纪要(?:\s*[-－·]?\s*2\.0)?/g,'').replace(/^[\s·|｜,，;；-]+|[\s·|｜,，;；-]+$/g,'').trim();}
-  function entry(r,k,sourceKind=k){const published=r['原始发布时间']||r['时间']||r['日期']||'';return {kind:k,sourceKind,title:M.plainContent(r['标题']||''),published,date:published.slice(0,10),content:M.plainContent(r['内容']||r['摘要']||''),author:r['作者']||'',sector:r['覆盖板块']||'',company:r['相关标的']||'',url:D.link(r['原文链接']||r['下载链接']),file:r['文件名']||'',batch:r['更新批次']||'',truncated:!!r['正文已截断'],state:r['内容状态']||''};}
+  function entry(r,k,sourceKind=k){
+    const published=r['原始发布时间']||r['时间']||r['日期']||'';
+    const originalTitle=M.plainContent(r['标题']||'');
+    const content=M.plainContent(r['内容']||r['摘要']||'');
+    const title=k!=='minutes'&&r['内容']?M.recoverTitle(originalTitle,content):originalTitle;
+    return {kind:k,sourceKind,title,legacyTitles:title===originalTitle?[]:[originalTitle],published,date:published.slice(0,10),content,author:r['作者']||'',sector:r['覆盖板块']||'',company:r['相关标的']||'',url:D.link(r['原文链接']||r['下载链接']),file:r['文件名']||'',batch:r['更新批次']||'',truncated:!!r['正文已截断'],state:r['内容状态']||''};
+  }
   function recentEntries(snapshot,requested){return (snapshot.dbs||[]).filter(db=>db.id!=='minutes'||requested==='minutes').flatMap(db=>db.rows.flatMap(r=>db.id==='views'?[entry(r,'views'),entry(r,'all_views','views')]:[entry(r,db.id)])).filter(r=>r.kind===requested);}
   function unique(records){
     const seen=new Set(),seenStampTitle=new Set(),seenBody=new Set();
@@ -33,8 +39,9 @@
   function saveUrl(record){const f=filters(),p=new URLSearchParams();if(kind!=='digest')p.set('kind',kind);for(const key of ['q','sector','format','state','scope','from','to'])if(f[key])p.set(key,f[key]);if(range)p.set('range',range);if($('sort').value==='asc')p.set('sort','asc');if(record){const id=M.topic(record);if(id)p.set('topic',id);else p.set('record',record.title);if(record.file)p.set('file',record.file);if(record.id)p.set('asset',record.id);}history.replaceState(null,'',location.pathname+(p.size?'?'+p:'')+location.hash);}
   function renderBriefs(f,invalid){
     const briefs=invalid?[]:briefData.briefs.filter(r=>L.briefMatches(r,f)).sort((a,b)=>$('sort').value==='asc'?M.publicationTime(briefPublished(a)).localeCompare(M.publicationTime(briefPublished(b))):M.publicationTime(briefPublished(b)).localeCompare(M.publicationTime(briefPublished(a))));
+    const sourceBodies=new Map(entries.filter(r=>r.kind==='all_views'&&M.topic(r)).map(r=>[M.topic(r),r.content]));
     $('count').textContent=briefs.length+' 条观点';
-    $('briefs').innerHTML=briefs.map(r=>'<article class="research-brief"><div class="portal-research-meta"><span class="portal-tag">'+D.esc(M.sectors.find(s=>s[0]===r.sector)?.[1]||r.sector)+'</span><time datetime="'+D.esc(briefPublished(r))+'">'+D.esc('原文发布：'+M.publicationTime(briefPublished(r)))+'</time></div><h2>'+D.esc(r.title)+'</h2><p>'+D.esc(r.conclusion)+'</p><ul class="brief-evidence">'+r.evidence.map(e=>'<li>'+D.esc(e.text)+'</li>').join('')+'</ul>'+(r.boundary?'<p class="brief-boundary"><strong>分歧 / 边界</strong> '+D.esc(r.boundary)+'</p>':'')+'<div class="brief-watch" aria-label="后续验证指标">'+r.watch.map(w=>'<span>'+D.esc(w)+'</span>').join('')+'</div><div class="brief-sources">'+r.sources.map(s=>'<a href="'+D.esc(L.topicHref(s))+'">阅读原文：'+D.esc(s.title)+' · '+D.esc('发布 '+M.publicationTime(s.publishedAt||s.date))+' →</a>').join('')+'</div></article>').join('')||'<div class="portal-empty"><p>'+(invalid?'开始日期不能晚于结束日期':'这个范围暂无已整理摘要')+'</p><button class="portal-button" data-go-kind="views">查看观点原文</button></div>';
+    $('briefs').innerHTML=briefs.map(r=>'<article class="research-brief"><div class="portal-research-meta"><span class="portal-tag">'+D.esc(M.sectors.find(s=>s[0]===r.sector)?.[1]||r.sector)+'</span><time datetime="'+D.esc(briefPublished(r))+'">'+D.esc('原文发布：'+M.publicationTime(briefPublished(r)))+'</time></div><h2>'+D.esc(r.title)+'</h2><p>'+D.esc(r.conclusion)+'</p><ul class="brief-evidence">'+r.evidence.map(e=>'<li>'+D.esc(e.text)+'</li>').join('')+'</ul>'+(r.boundary?'<p class="brief-boundary"><strong>分歧 / 边界</strong> '+D.esc(r.boundary)+'</p>':'')+'<div class="brief-watch" aria-label="后续验证指标">'+r.watch.map(w=>'<span>'+D.esc(w)+'</span>').join('')+'</div><div class="brief-sources">'+r.sources.map(s=>'<a href="'+D.esc(L.topicHref(s))+'">阅读原文：'+D.esc(M.recoverTitle(s.title,sourceBodies.get(M.topic(s))))+' · '+D.esc('发布 '+M.publicationTime(s.publishedAt||s.date))+' →</a>').join('')+'</div></article>').join('')||'<div class="portal-empty"><p>'+(invalid?'开始日期不能晚于结束日期':'这个范围暂无已整理摘要')+'</p><button class="portal-button" data-go-kind="views">查看观点原文</button></div>';
     $('freshness').textContent='最近整理 '+(briefData.updatedAt||'暂无');
   }
   function render(){
@@ -135,7 +142,7 @@
     $('article-source').textContent=r.kind==='minutes'?(M.format(r)==='text'?'下载完整纪要 ↗':'进入来源查看附件 ↗'):'查看原始来源 ↗';
     $('article-dialog').showModal();$('article-dialog').scrollTop=0;saveUrl(r);
     if(r.batch&&Object.values(sync.files||{}).flat().includes(r.batch)&&M.format(r)==='view'){
-      try{const rows=await batchRows(r.batch);const full=rows.map(row=>entry(row,r.sourceKind||r.kind,r.sourceKind||r.kind)).find(row=>row.url===r.url&&row.file===r.file);if(request!==articleRequest)return;if(!full)throw Error('record missing');showBody(full,true);}
+      try{const rows=await batchRows(r.batch);const full=rows.map(row=>entry(row,r.sourceKind||r.kind,r.sourceKind||r.kind)).find(row=>row.url===r.url&&row.file===r.file);if(request!==articleRequest)return;if(!full)throw Error('record missing');$('article-title').textContent=full.title;showBody(full,true);}
       catch(e){if(request===articleRequest)$('article-note').textContent='完整正文暂时无法读取，当前显示内容预览，可查看原始来源。';}
     }
   }
