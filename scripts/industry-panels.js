@@ -77,3 +77,6 @@
   new MutationObserver(()=>{if(!goldPending){goldPending=true;requestAnimationFrame(checkGold);}}).observe(gold,{subtree:true,childList:true,attributes:true,characterData:true});
   window.IndustryPanels={show};
 })();
+
+
+
