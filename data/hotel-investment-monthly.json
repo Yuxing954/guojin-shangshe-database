@@ -11,7 +11,7 @@
   "publisher": "国家统计局",
   "provider": "东方财富Choice",
   "source_url": "https://choicew2z.eastmoney.com/dataDisplay/macroEDB/#/index?macroids=EMM01013000",
-  "retrieved_date": "2026-10-10",
+  "retrieved_date": "2026-11-17",
   "release_date_status": "原始回执未提供，不以获取时间替代",
   "amount_status": "最新累计金额未取得；2017年全年6107亿元为国家统计局公报直接披露值，其余期空值，不由增速倒推",
   "scope": "住宿与餐饮合计；不含农户；不能等同酒店新增房量",
@@ -74,7 +74,7 @@
       "period_id": "2017-08",
       "start_date": "2017-01-01",
       "end_date": "2017-08-31",
-      "yoy_pct": 3,
+      "yoy_pct": 3.0,
       "amount_cny_100m": null,
       "amount_source_url": null,
       "release_date": null
@@ -236,7 +236,7 @@
       "period_id": "2019-04",
       "start_date": "2019-01-01",
       "end_date": "2019-04-30",
-      "yoy_pct": -9,
+      "yoy_pct": -9.0,
       "amount_cny_100m": null,
       "amount_source_url": null,
       "release_date": null
@@ -290,7 +290,7 @@
       "period_id": "2019-10",
       "start_date": "2019-01-01",
       "end_date": "2019-10-31",
-      "yoy_pct": -5,
+      "yoy_pct": -5.0,
       "amount_cny_100m": null,
       "amount_source_url": null,
       "release_date": null
@@ -299,7 +299,7 @@
       "period_id": "2019-11",
       "start_date": "2019-01-01",
       "end_date": "2019-11-30",
-      "yoy_pct": -2,
+      "yoy_pct": -2.0,
       "amount_cny_100m": null,
       "amount_source_url": null,
       "release_date": null
@@ -317,7 +317,7 @@
       "period_id": "2020-02",
       "start_date": "2020-01-01",
       "end_date": "2020-02-29",
-      "yoy_pct": -32,
+      "yoy_pct": -32.0,
       "amount_cny_100m": null,
       "amount_source_url": null,
       "release_date": null
@@ -452,7 +452,7 @@
       "period_id": "2021-06",
       "start_date": "2021-01-01",
       "end_date": "2021-06-30",
-      "yoy_pct": 11,
+      "yoy_pct": 11.0,
       "amount_cny_100m": null,
       "amount_source_url": null,
       "release_date": null
@@ -551,7 +551,7 @@
       "period_id": "2022-06",
       "start_date": "2022-01-01",
       "end_date": "2022-06-30",
-      "yoy_pct": 14,
+      "yoy_pct": 14.0,
       "amount_cny_100m": null,
       "amount_source_url": null,
       "release_date": null
@@ -560,7 +560,7 @@
       "period_id": "2022-07",
       "start_date": "2022-01-01",
       "end_date": "2022-07-31",
-      "yoy_pct": 14,
+      "yoy_pct": 14.0,
       "amount_cny_100m": null,
       "amount_source_url": null,
       "release_date": null
@@ -614,7 +614,7 @@
       "period_id": "2023-02",
       "start_date": "2023-01-01",
       "end_date": "2023-02-28",
-      "yoy_pct": 7,
+      "yoy_pct": 7.0,
       "amount_cny_100m": null,
       "amount_source_url": null,
       "release_date": null
@@ -713,7 +713,7 @@
       "period_id": "2024-02",
       "start_date": "2024-01-01",
       "end_date": "2024-02-29",
-      "yoy_pct": 19,
+      "yoy_pct": 19.0,
       "amount_cny_100m": null,
       "amount_source_url": null,
       "release_date": null
@@ -830,7 +830,7 @@
       "period_id": "2025-04",
       "start_date": "2025-01-01",
       "end_date": "2025-04-30",
-      "yoy_pct": 22,
+      "yoy_pct": 22.0,
       "amount_cny_100m": null,
       "amount_source_url": null,
       "release_date": null
@@ -875,7 +875,7 @@
       "period_id": "2025-09",
       "start_date": "2025-01-01",
       "end_date": "2025-09-30",
-      "yoy_pct": 13,
+      "yoy_pct": 13.0,
       "amount_cny_100m": null,
       "amount_source_url": null,
       "release_date": null
@@ -947,7 +947,7 @@
       "period_id": "2026-06",
       "start_date": "2026-01-01",
       "end_date": "2026-06-30",
-      "yoy_pct": -13,
+      "yoy_pct": -13.0,
       "amount_cny_100m": null,
       "amount_source_url": null,
       "release_date": null
@@ -966,6 +966,15 @@
       "start_date": "2026-01-01",
       "end_date": "2026-08-31",
       "yoy_pct": -15.1,
+      "amount_cny_100m": null,
+      "amount_source_url": null,
+      "release_date": null
+    },
+    {
+      "period_id": "2026-09",
+      "start_date": "2026-01-01",
+      "end_date": "2026-09-30",
+      "yoy_pct": -16.6,
       "amount_cny_100m": null,
       "amount_source_url": null,
       "release_date": null

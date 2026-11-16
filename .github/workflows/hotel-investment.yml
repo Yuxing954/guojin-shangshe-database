@@ -1,0 +1,22 @@
+name: Check hotel investment data
+on:
+  pull_request:
+    paths: ['data/hotel-investment-*', 'scripts/import_hotel_investment.py', 'tests/test_hotel_investment.py', '.github/workflows/hotel-investment.yml']
+  push:
+    branches: [main]
+    paths: ['data/hotel-investment-*', 'scripts/import_hotel_investment.py', '.github/workflows/hotel-investment.yml']
+permissions:
+  contents: read
+jobs:
+  investment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s tests -p test_hotel_investment.py
+      - run: node tests/hotel-metrics.test.cjs
