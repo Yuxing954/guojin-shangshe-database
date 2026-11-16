@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  const pages={hotel:'hotel-dashboard.html',dutyfree:'dutyfree-dashboard.html',tourism:'cruise-dashboard.html',dining:'dining.html',travel:'travel-dashboard.html'},labels={hotel:'酒店',dutyfree:'免税',gold:'黄金',tourism:'三峡游轮',dining:'餐饮',travel:'旅游'},panels=new Map();
+  const pages={hotel:'hotel-dashboard.html',dutyfree:'dutyfree-dashboard.html',tourism:'cruise-dashboard.html',dining:'dining.html',travel:'travel-dashboard.html',recruitment:'recruitment.html'},labels={hotel:'酒店',dutyfree:'免税',gold:'黄金',tourism:'三峡游轮',dining:'餐饮',travel:'旅游',recruitment:'企业招聘'},panels=new Map();
   const host=document.getElementById('industry-panels'),stage=document.getElementById('industry-stage'),status=document.getElementById('status'),text=document.getElementById('industry-load-text'),retry=document.getElementById('industry-load-retry'),gold=document.getElementById('gold-content');
   let active='hotel',goldState='loading',goldPending=false;const hotelViews=new Map();let hotelWarmed=false;
   function paint(){
@@ -23,7 +23,7 @@
     if(view)url.hash=view;
     const panel={wrap,frame,state:'loading',timer:null};
     panel.begin=()=>{clearTimeout(panel.timer);panel.state='loading';frame.dataset.state='loading';if(active===id)paint();panel.timer=setTimeout(()=>{panel.state='error';frame.dataset.state='error';if(active===id)paint();},30000);};
-    panel.load=(reload=false)=>{let target=url.href;if(reload){try{const current=new URL(frame.contentWindow.location.href);if(current.origin===location.origin&&/\/(hotel-dashboard|hotel-holiday-dashboard|hotel-groups|dutyfree-dashboard|cruise-dashboard|dining|travel-dashboard)\.html$/.test(current.pathname))target=current.href;}catch{}}panel.begin();frame.src=target;};
+    panel.load=(reload=false)=>{let target=url.href;if(reload){try{const current=new URL(frame.contentWindow.location.href);if(current.origin===location.origin&&/\/(hotel-dashboard|hotel-holiday-dashboard|hotel-groups|dutyfree-dashboard|cruise-dashboard|dining|travel-dashboard|recruitment)\.html$/.test(current.pathname))target=current.href;}catch{}}panel.begin();frame.src=target;};
     wrap.append(frame);host.append(wrap);panels.set(id,panel);if(id==='hotel'){panel.viewKey=hotelKey(url.pathname);hotelViews.set(panel.viewKey,panel);}panel.load();
   }
 
@@ -77,6 +77,3 @@
   new MutationObserver(()=>{if(!goldPending){goldPending=true;requestAnimationFrame(checkGold);}}).observe(gold,{subtree:true,childList:true,attributes:true,characterData:true});
   window.IndustryPanels={show};
 })();
-
-
-
