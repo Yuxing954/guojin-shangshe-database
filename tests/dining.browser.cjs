@@ -3,8 +3,15 @@ const {chromium}=require('playwright'),fs=require('node:fs'),http=require('node:
 const root=path.resolve(__dirname,'..'),server=http.createServer((req,res)=>{const f=path.resolve(root,'.'+decodeURIComponent(req.url.split('?')[0]));if(!f.startsWith(root+path.sep))return res.writeHead(403).end();fs.readFile(f,(e,b)=>e?res.writeHead(404).end():res.writeHead(200,{'Content-Type':({'.html':'text/html; charset=utf-8','.js':'text/javascript','.css':'text/css','.json':'application/json'})[path.extname(f)]||'text/plain'}).end(b));});
 (async()=>{await new Promise(r=>server.listen(0,'127.0.0.1',r));const browser=await chromium.launch({headless:true}),page=await browser.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));try{
 await page.goto('http://127.0.0.1:'+server.address().port+'/dining.html');await page.locator('#matrix tbody tr').first().waitFor();assert.equal(await page.locator('#kpis,.dining-kpi,#period').count(),0);assert.match(await page.locator('#matrix tbody tr').first().innerText(),/2026年10月/);assert.match(await page.locator('#matrix tbody tr').first().innerText(),/1—10月累计/);
+assert.match(await page.locator('#monthly-summary').innerText(),/小菜园、九毛九/);
+const xcy=page.locator('#matrix tbody tr').first().locator('summary',{hasText:'累计同店降幅高单位数'});
+await xcy.click();
+const note=xcy.locator('..').locator('.dining-cell-note');
+assert(await note.isVisible());
+assert.match(await note.innerText(),/3\.0升至4\.0.*约50元.*约34%/);
+await xcy.click();
 for(const width of [1440,768,390]){await page.setViewportSize({width,height:1000});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));}
 await page.selectOption('#category','咖啡');assert.equal(await page.locator('#matrix thead th').count(),2);assert.match(await page.locator('#matrix thead').innerText(),/瑞幸/);await page.selectOption('#category','茶饮');assert.equal(await page.locator('#matrix thead th').count(),6);
 await page.selectOption('#category','all');const download=page.waitForEvent('download');await page.click('#export');const file=await download;assert.match(fs.readFileSync(await file.path(),'utf8'),/关闭4家/);
-await page.selectOption('#year','2025');assert.ok((await page.locator('#matrix tbody th').allTextContents()).every(t=>t.includes('2025')));assert.deepEqual(errors,[]);console.log('PASS dining table-only layout, historical filters, category filters, CSV and responsive layout');
+await page.selectOption('#year','2025');assert.ok((await page.locator('#matrix tbody th').allTextContents()).every(t=>t.includes('2025')));assert(await page.locator('#monthly-summary').isHidden());assert.deepEqual(errors,[]);console.log('PASS dining table-only layout, historical filters, category filters, CSV and responsive layout');
 }finally{await browser.close();server.close();}})().catch(e=>{console.error(e);process.exitCode=1;server.close();});
