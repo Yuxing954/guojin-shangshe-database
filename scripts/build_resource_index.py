@@ -15,17 +15,17 @@ def read(path, default):
     return json.loads(path.read_text(encoding='utf-8-sig')) if path.exists() else default
 
 
-def build(root=ROOT):
-    root = Path(root)
-    companies = read(root / 'data/coverage-companies.json', {'companies': []})['companies']
+def library_records(root):
+    legacy = read(root / 'data/research/library.json', {'records': []})
+    work = read(root / 'data/research/work-minutes.json', {'records': []})
+    records = {r['id']: r for r in legacy['records']}
+    records.update((r['id'], r) for r in work['records'])
+    return records.values()
+
+
+def minute_items(records):
     items = []
-    for c in companies:
-        code, name = c['code'], c['name']
-        items.append({'id': code, 'kind': 'company', 'title': name, 'company': name,
-                      'code': code, 'aliases': c.get('aliases', []), 'sector': c.get('sector', ''), 'date': c.get('addedAt', '')[:10],
-                      'href': 'quotes.html?' + urlencode({'symbol': code})})
-    library = read(root / 'data/research/library.json', {'records': []})
-    for r in library['records']:
+    for r in records:
         s = r.get('storage', {})
         stored = s.get('provider') == 'onedrive' and s.get('status') == 'uploaded'
         verified = (bool(re.fullmatch('[a-fA-F0-9]{64}', r.get('sha256') or ''))
@@ -44,6 +44,19 @@ def build(root=ROOT):
                       'sortDate': r.get('sortDate') or r.get('published', ''),
                       'company': r.get('company', ''), 'sector': ' '.join(r.get('sectors', [])),
                       'href': 'research.html?' + urlencode({'kind': 'minutes', 'scope': 'archived', 'asset': r['id']})})
+    return items
+
+
+def build(root=ROOT):
+    root = Path(root)
+    companies = read(root / 'data/coverage-companies.json', {'companies': []})['companies']
+    items = []
+    for c in companies:
+        code, name = c['code'], c['name']
+        items.append({'id': code, 'kind': 'company', 'title': name, 'company': name,
+                      'code': code, 'aliases': c.get('aliases', []), 'sector': c.get('sector', ''), 'date': c.get('addedAt', '')[:10],
+                      'href': 'quotes.html?' + urlencode({'symbol': code})})
+    items.extend(minute_items(library_records(root)))
     recent = read(root / 'data/research/recent.json', {'dbs': []})
     seen = set()
     for db in recent['dbs']:

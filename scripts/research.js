@@ -4,6 +4,16 @@
   const archive=new Set(),batches=new Map(),loadedRecent=new Set(),params=new URLSearchParams(location.search);
   let entries=[],filtered=[],kind=['digest','views','minutes','all_views'].includes(params.get('kind'))?params.get('kind'):params.get('asset')?'minutes':params.get('topic')||params.get('record')?'views':'digest',page=1,manifest,sync={},range='',articleRequest=0,library={},briefData={briefs:[]},recentMeta={dbs:[]},recentFull=null;
   const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+  async function loadLibrary(){
+    const [base,work]=await Promise.all([
+      D.json('data/research/library.json').catch(()=>null),
+      D.json('data/research/work-minutes.json').catch(()=>null)
+    ]);
+    if(!Array.isArray(base?.records)&&!Array.isArray(work?.records))return null;
+    const records=new Map((base?.records||[]).map(r=>[r.id,r]));
+    for(const record of work?.records||[])records.set(record.id,record);
+    return {...base,records:[...records.values()],incomplete:!Array.isArray(base?.records)||!Array.isArray(work?.records)};
+  }
   let libraryScope=params.get('scope')==='all'||params.get('state')==='awaiting_file'?'all':'archived',libraryFailed=false;
   function displaySource(value){return String(value||'').replace(/水[木母]调研纪要(?:\s*[-－·]?\s*2\.0)?/g,'').replace(/^[\s·|｜,，;；-]+|[\s·|｜,，;；-]+$/g,'').trim();}
   function entry(r,k,sourceKind=k){
@@ -167,7 +177,7 @@
   $('article-dialog').addEventListener('close',()=>{articleRequest++;saveUrl();});
   function move(delta){page+=delta;render();$('results').scrollIntoView({block:'start',behavior:'smooth'});}
   $('prev').onclick=()=>move(-1);$('next').onclick=()=>move(1);
-  $('recent-more').onclick=async()=>{const requested=kind,button=$('recent-more');button.disabled=true;button.textContent='正在查看更多观点…';$('status').textContent='';try{if(!recentFull)recentFull=await D.json('data/research/recent.json');entries=entries.filter(r=>r.kind!==requested).concat(unique(recentEntries(recentFull,requested)));if(requested==='minutes'){library=await D.json('data/research/library.json').catch(()=>library);if(library.records)entries=L.mergeEntries(entries,library.records.flatMap(L.entries),M.topic);}loadedRecent.add(requested);render();}catch(e){$('status').textContent='更多近期内容暂时无法读取，可重试；当前列表仍可浏览。';}finally{button.disabled=false;button.textContent=kind==='minutes'?'查看更多资料':'查看更多观点';}};
+  $('recent-more').onclick=async()=>{const requested=kind,button=$('recent-more');button.disabled=true;button.textContent='正在查看更多观点…';$('status').textContent='';try{if(!recentFull)recentFull=await D.json('data/research/recent.json');entries=entries.filter(r=>r.kind!==requested).concat(unique(recentEntries(recentFull,requested)));if(requested==='minutes'){library=(await loadLibrary())||library;if(library.records)entries=L.mergeEntries(entries,library.records.flatMap(L.entries),M.topic);}loadedRecent.add(requested);render();}catch(e){$('status').textContent='更多近期内容暂时无法读取，可重试；当前列表仍可浏览。';}finally{button.disabled=false;button.textContent=kind==='minutes'?'查看更多资料':'查看更多观点';}};
   async function loadArchive(requested){
     const sourceIds=requested==='all_views'?['views','all_views']:[requested];
     const loaded=await Promise.all(sourceIds.map(async id=>{
@@ -181,17 +191,17 @@
   $('archive').onclick=async()=>{const requested=kind,button=$('archive');button.disabled=true;button.textContent='正在加载历史观点…';$('status').textContent='';try{await loadArchive(requested);render();}catch(e){$('status').textContent='历史观点暂时无法加载，可重试；近期内容仍可浏览。';}finally{button.disabled=false;button.textContent='查看历史观点';}};
   try{
     manifest=await D.json('data-manifest.json');
-    const [recent,updates,briefResult,libraryResult]=await Promise.all([D.json('data/research/recent-preview.json'),D.json('data/research/updates/manifest.json'),D.json('data/research/market-briefs.json').catch(()=>null),D.json('data/research/library.json').catch(()=>null)]);
+    const [recent,updates,briefResult,libraryResult]=await Promise.all([D.json('data/research/recent-preview.json'),D.json('data/research/updates/manifest.json'),D.json('data/research/market-briefs.json').catch(()=>null),loadLibrary()]);
     recentMeta=recent;sync=updates;if(briefResult)briefData=briefResult;
     entries=recent.dbs.flatMap(db=>db.rows.flatMap(r=>db.id==='views'?[entry(r,'views'),entry(r,'all_views','views')]:[entry(r,db.id)]));
     entries=entries.filter(r=>r.kind!=='all_views').concat(unique(entries.filter(r=>r.kind==='all_views')));
-    if(libraryResult&&Array.isArray(libraryResult.records)){library=libraryResult;entries=L.mergeEntries(entries,library.records.flatMap(L.entries),M.topic);}else libraryFailed=true;
+    if(libraryResult&&Array.isArray(libraryResult.records)){library=libraryResult;libraryFailed=library.incomplete;entries=L.mergeEntries(entries,library.records.flatMap(L.entries),M.topic);}else libraryFailed=true;
     if(!briefResult)$('status').textContent='观点摘要暂时无法读取，近期观点原文仍可浏览。';
     if(briefResult)$('status').textContent='';$('content').hidden=false;select(kind);
     if(params.get('topic')||params.get('record')||params.get('asset')){
       const find=()=>entries.find(r=>r.kind===kind&&(params.get('topic')?(r.library?.sourceTopics||[M.topic(r)]).includes(params.get('topic')):!params.get('record')||[r.title,...(r.legacyTitles||[])].includes(params.get('record')))&&(!params.get('file')||r.file===params.get('file')||params.get('file').split('；').includes(r.file))&&(!params.get('asset')||(r.library?.aliases||[r.id]).includes(params.get('asset'))));
       let record=find();
-      if(!record){try{$('status').textContent='正在查找历史观点…';await loadArchive(kind);if(kind==='minutes'){library=await D.json('data/research/library.json').catch(()=>library);if(library.records)entries=L.mergeEntries(entries,library.records.flatMap(L.entries),M.topic);}record=find();render();$('status').textContent='';}catch(e){$('status').textContent='历史观点暂时无法加载，请稍后重试。';}}
+      if(!record){try{$('status').textContent='正在查找历史观点…';await loadArchive(kind);if(kind==='minutes'){library=(await loadLibrary())||library;if(library.records)entries=L.mergeEntries(entries,library.records.flatMap(L.entries),M.topic);}record=find();render();$('status').textContent='';}catch(e){$('status').textContent='历史观点暂时无法加载，请稍后重试。';}}
       if(record)await openRecord(record);else $('status').textContent='未找到这条内容，可通过公司或关键词查找。';
     }
   }catch(e){$('status').innerHTML='研究文库暂时无法读取。<button class="portal-button" onclick="location.reload()">重试</button>';}

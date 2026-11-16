@@ -4,9 +4,11 @@
 
 每天下午5点（北京时间）由本聊天的定时任务执行，GitHub 读写均使用已连接的 GitHub 连接器。电脑须在线、应用须运行。现有 GitHub Actions 只构建仓库摘要与资源索引，不扫描本地文件；它不能代替这个任务。
 
+WORK 纪要目录独立保存在 `data/research/work-minutes.json`。网站和资源索引按记录 ID 合并两份目录，同 ID 使用 WORK 版本。旧的 `data/research/library.json` 继续由原流程维护。每日同步可直接通过连接器完整读取 WORK 目录并回读提交，无需下载大型旧目录。回读以本次提交中的文件路径、完整内容及字节校验值为准。
+
 ## 准备和验证
 
-1. 读取 main 的最新提交、目录、`data/research/library.json` 与已存在的 processed 文档。保留原有记录、人工摘要、审阅状态、日期疑点和有效下载入口。
+1. 读取 main 的最新提交、目录、`data/research/work-minutes.json` 与已存在的 processed 文档。保留原有记录、人工摘要、审阅状态、日期疑点和有效下载入口。
 2. 将当前仓库基线放入隔离的本地工作目录。私有状态和日志留在仓库外，不提交认证信息、绝对本地路径或云端权限回执。
 3. 运行 `python scripts/sync_work_minutes.py --source-dir "D:\WORK\纪要" --private-dir <私有状态目录> --root <仓库基线目录>`。该步骤仅准备本地文件，输出 `pending.json` 与追加的 `runs.jsonl`，不表示发布成功。
 4. 按文件 SHA-256、正文规范化指纹去重。已有同一文件补充正文；内容更新沿用记录身份，清除失效的旧版本摘要和下载绑定。改名、复制与压缩包重复不新增记录。原件删除不自动删除历史记录。

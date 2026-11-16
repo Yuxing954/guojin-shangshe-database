@@ -24,7 +24,7 @@ NS = '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}'
 COMPANIES = ('中国东方教育', '中国中免', '首旅酒店', '锦江酒店', '华住集团', '亚朵集团',
              '华图山鼎', '小商品城', '焦点科技', '青木科技', '行动教育', '金陵体育',
              '力盛体育', '岭南控股', '蜜雪冰城', '老铺黄金', '小菜园', '海底捞',
-             '海峡股份', '海南机场', '恒隆广场', '携程')
+             '海峡股份', '海南机场', '恒隆广场', '携程', '传智教育', '科锐国际')
 
 def now(): return datetime.now(TZ).isoformat(timespec='seconds')
 def sha(data): return hashlib.sha256(data).hexdigest()
@@ -115,10 +115,11 @@ def prepare(source_dir, private_dir, root=ROOT):
         raise ValueError('Sources and private state must stay outside public repository')
     private_dir.mkdir(parents=True, exist_ok=True)
     state = read(private_dir / 'state.json', {'schemaVersion': 1, 'files': {}})
-    library_path = root / 'data/research/library.json'
+    library_relative = 'data/research/work-minutes.json'
+    library_path = root / library_relative
     library = read(library_path)
     if not isinstance(library, dict) or not isinstance(library.get('records'), list):
-        raise ValueError('Read the current GitHub library first; refusing an empty baseline')
+        raise ValueError('Read the current GitHub WORK catalog first; refusing an empty baseline')
     original = copy.deepcopy(library)
     records = {r['id']: r for r in library['records']}
     hashes = {r['sha256']: r for r in records.values() if r.get('sha256')}
@@ -204,7 +205,7 @@ def prepare(source_dir, private_dir, root=ROOT):
     if library != original:
         library['generatedAt'] = now()
         library['workSync'] = {'preparedAt': now(), 'source': 'WORK/纪要', **dict(counts)}
-        if write_json_if_changed(library_path, library): changed_paths.add('data/research/library.json')
+        if write_json_if_changed(library_path, library): changed_paths.add(library_relative)
     # Discovery failures do not advance an individual checkpoint.
     counts['failed'] = sum(e['status'] == 'failed' for e in events)
     report = {'schemaVersion': 1, 'runAt': now(), 'sourceDir': str(source_dir), 'phase': 'prepared',
