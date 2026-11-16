@@ -19,7 +19,8 @@ function mergeReleases(data,insights){
   const source=release.source;
   if(!source||source.quality!=='official'||!/^https:\/\/([a-z0-9-]+\.)*stats\.gov\.cn\//.test(source.url)||!/^\d{4}-\d{2}-\d{2}$/.test(source.publishedAt)||source.publishedAt>insights.checkedAt)throw Error('CPI月度来源无效');
   for(const row of release.observations){if(!['cpi','core_cpi'].includes(row.indicatorId)||row.period!==period||row.sourceId!==source.id||row.frequency!=='monthly'||!['month','ytd'].includes(row.basis)||!finite(row.value))throw Error('CPI月度记录无效');
-   if(!output.observations.some(r=>r.indicatorId===row.indicatorId&&r.period===period&&r.frequency===row.frequency&&r.basis===row.basis))output.observations.push({...row});
+   const at=output.observations.findIndex(r=>r.indicatorId===row.indicatorId&&r.period===period&&r.frequency===row.frequency&&r.basis===row.basis);
+   if(at<0)output.observations.push({...row});else{const old=output.observations[at];if(['value','mom','yoy'].some(k=>finite(old[k])&&finite(row[k])&&old[k]!==row[k]))throw Error('CPI披露与历史冲突');output.observations[at]={...old,...row};}
   }
   if(!output.sources.some(s=>s.id===source.id))output.sources.push({...source});
  }
