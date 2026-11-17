@@ -43,9 +43,10 @@
   const categories=fit('category',M.mainFilters(data.company,state.kind,state.frequency).category),modes=fit('mode','合计');
   return {regions,currencies,categories,modes};
  }
- function periodTools(){
+ function periodTools(opts,detail=false){
   return '<div class="dh-primary">'+select('oh-kind','样本',[['全部','全部酒店'],['同店','同店酒店']],state.kind)+
    select('oh-frequency','期间',['单季度','累计'],state.frequency)+select('oh-display','图表',[['change','同比'],['value','数值']],state.display)+
+   (!detail&&opts?.modes.length>1?select('oh-operation','经营模式',opts.modes,state.mode):'')+
    select('oh-range','范围',[['8','近2年'],['12','近3年'],['20','近5年'],['all','全部历史'],['custom','自定义']],state.range)+'</div>';
  }
  function advancedTools(opts,detail=false){
@@ -56,14 +57,13 @@
     fields+=select('oh-category','档次/范围',[['*','全部档次'],...opts.categories],state.detailCategory)+select('oh-operation','经营模式',[['*','全部模式'],...opts.modes],state.detailMode);
    }else{
     if(opts.categories.length>1)fields+=select('oh-category','档次/范围',opts.categories,state.category);
-    if(opts.modes.length>1)fields+=select('oh-operation','经营模式',opts.modes,state.mode);
    }
    if(opts.currencies.length>1)fields+=select('oh-currency','币种',opts.currencies,state.currency);
   }
   return '<details id="dh-advanced" class="dh-advanced"'+(state.advanced?' open':'')+'><summary>更多筛选</summary><div class="dh-filter-grid">'+fields+'</div></details>';
  }
  function toolbar(opts,detail=false){CompanyWorkspace.begin();
-  $('oh-toolbar').innerHTML=periodTools()+'<div class="dh-tools"><button id="dh-reset" type="button">重置</button><button id="oh-export-view" type="button">'+(detail?'导出明细':comparison?'导出对比':'导出当前数据')+'</button></div>'+advancedTools(opts,detail)+
+  $('oh-toolbar').innerHTML=periodTools(opts,detail)+'<div class="dh-tools"><button id="dh-reset" type="button">重置</button><button id="oh-export-view" type="button">'+(detail?'导出明细':comparison?'导出对比':'导出当前数据')+'</button></div>'+advancedTools(opts,detail)+
    (detail?'<div class="dh-search"><label>搜索<input id="oh-search" type="search" placeholder="报告期、指标、口径" value="'+esc(state.query)+'"></label><button id="oh-clear" type="button">清空</button></div>':'');
  }
  function bind(id,fn){const e=$(id);if(e)e.onchange=()=>{fn(e.value);state.page=1;render();};}
@@ -184,4 +184,3 @@
  }
  $('oh-retry').onclick=()=>{cache.clear();init();};$('oh-close').onclick=()=>$('oh-evidence').close();document.addEventListener('click',e=>{const b=e.target.closest('[data-source]');if(b)showSource(b.dataset.source);});init();
 })();
-

@@ -12,7 +12,7 @@ async function csv(page,selector){const event=page.waitForEvent('download');if(!
  try{
   const context=await browser.newContext({viewport:{width:1440,height:1000}}),errors=[];context.on('page',p=>p.on('pageerror',e=>errors.push(e.message)));
   await context.addInitScript(()=>{let charts;Object.defineProperty(window,'SiteCharts',{configurable:true,get:()=>charts,set(value){const draw=value.drawPaired;value.drawPaired=function(host,rows,opt){(window.domPlotData||=Object.create(null))[host.id]={rows:structuredClone(rows),opt:structuredClone(opt)};return draw.call(this,host,rows,opt);};charts=value;}});});
-  const p=await context.newPage(),ready=()=>p.locator('#dh-chart-2 svg').waitFor({state:'attached'}),more=async()=>{if(!await p.locator('#dh-advanced').getAttribute('open').then(v=>v!==null))await p.locator('#dh-advanced summary').click();};
+  const p=await context.newPage(),ready=()=>p.locator('#dh-chart-0 svg').waitFor({state:'attached'}),more=async()=>{if(!await p.locator('#dh-advanced').getAttribute('open').then(v=>v!==null))await p.locator('#dh-advanced summary').click();};
   // Hold the first data response to verify actions never flash above company cards.
   let releaseData;const dataGate=new Promise(resolve=>releaseData=resolve);
   await p.route('**/data/companies/domestic-hotels.json*',async route=>{await dataGate;await route.continue();});
@@ -28,15 +28,24 @@ async function csv(page,selector){const event=page.waitForEvent('download');if(!
   assert.equal(await p.locator('.oh-company img').count(),0);assert.equal(await p.locator('.oh-company svg.cw-brand-mark').count(),4);
   async function verifyPlot(company,kind,frequency){
    const qs=manifest.quarters.filter(q=>q>=new URL(p.url()).searchParams.get('from')&&q<=new URL(p.url()).searchParams.get('to')),source=M.mainSeries(datasets.find(d=>d.company.id===company),kind,qs,frequency);
-   for(let i=0;i<3;i++){const plot=await p.evaluate(id=>domPlotData[id],'dh-chart-'+i);assert.equal(plot.opt.mode,await p.locator('#oh-display').inputValue());assert.equal(plot.opt.valueStyle,'line');assert.equal(plot.rows.length,qs.length);for(let qi=0;qi<plot.rows.length;qi++){assert.equal(plot.rows[qi].values[0].value,source[qi].records[i]?.value??null);assert.equal(plot.rows[qi].values[0].change,source[qi].records[i]?.change??null);}}
+   for(let i=0;i<3;i++){await p.locator('[data-cw-metric="'+i+'"]').click();await p.locator('#dh-chart-'+i+' svg').waitFor({state:'attached'});const plot=await p.evaluate(id=>domPlotData[id],'dh-chart-'+i);assert.equal(plot.opt.mode,await p.locator('#oh-display').inputValue());assert.equal(plot.opt.valueStyle,'line');assert.equal(plot.rows.length,qs.length);for(let qi=0;qi<plot.rows.length;qi++){assert.equal(plot.rows[qi].values[0].value,source[qi].records[i]?.value??null);assert.equal(plot.rows[qi].values[0].change,source[qi].records[i]?.change??null);}}await p.locator('[data-cw-metric="0"]').click();
   }
+  assert(await p.locator('.dh-primary #oh-operation').isVisible());
+  await p.selectOption('#oh-operation','直营');await ready();
+  const directExport=await csv(p,'#oh-export-view');
+  assert(directExport.every(r=>r['经营模式']==='直营'));
+  const latestDirect=directExport.find(r=>r['原报告期']==='2026Q3'&&r['指标']==='RevPAR');
+  assert.equal(Number(latestDirect['数值']),164.9);
+  assert.equal(Number(latestDirect['同期值']),151.18);
+  await p.reload();await ready();assert.equal(await p.locator('#oh-operation').inputValue(),'直营');
+  await p.selectOption('#oh-operation','合计');await ready();
   await verifyPlot('jinjiang','全部','单季度');
   await p.locator('#dh-chart-0 svg').focus();await p.keyboard.press('End');assert((await p.locator('.site-chart-tooltip:not([hidden])').innerText()).includes('26Q3'));await p.keyboard.press('Escape');
   await setChartLabel(p.locator('#dh-chart-0').locator('..').locator('[data-chart-labels]'),true);assert(await p.locator('#dh-chart-0 .site-value-label').count()>0);
   await p.locator('.oh-kpi [data-source]').first().click();await p.locator('#oh-evidence[open]').waitFor();assert((await p.locator('#oh-evidence-body').innerText()).includes('PDF物理页码'));assert((await p.locator('#oh-evidence-body a').getAttribute('href')).startsWith('http'));await p.click('#oh-close');
   const exported=await csv(p,'#oh-export-view');assert.equal(exported.length,36);assert(exported.every(r=>r['样本']==='全部酒店'&&/Q[1-4]$/.test(r['原报告期'])&&r['原始网址'].startsWith('http')));
   await p.selectOption('#oh-range','8');assert.equal((await p.evaluate(()=>domPlotData['dh-chart-0'])).rows.length,8);await more();await p.selectOption('#oh-period','2025Q4');assert.equal((await p.evaluate(()=>domPlotData['dh-chart-0'])).rows.at(-1).period,'25Q4');await p.selectOption('#oh-from','2020Q1');assert.equal(await p.locator('#oh-range').inputValue(),'custom');assert.equal((await p.evaluate(()=>domPlotData['dh-chart-0'])).rows.length,24);
-  await p.click('#dh-reset');assert.equal(await p.locator('#oh-range').inputValue(),'12');assert.equal(await p.locator('#oh-kind').inputValue(),'全部');assert.equal(await p.locator('#oh-toolbar select:visible').count(),4);
+  await p.click('#dh-reset');assert.equal(await p.locator('#oh-range').inputValue(),'12');assert.equal(await p.locator('#oh-kind').inputValue(),'全部');assert.equal(await p.locator('#oh-toolbar select:visible').count(),5);
   // Old URLs and workspace bookmarks migrate once; new explicit selections persist.
   await p.goto(base+'/company-database.html?company=atour&kind='+encodeURIComponent('同店')+'&frequency='+encodeURIComponent('累计')+'&display=value&sampleView=2');await ready();
   assert.equal(await p.locator('#oh-kind').inputValue(),'全部');assert.equal(await p.locator('#oh-frequency').inputValue(),'单季度');assert.equal(await p.locator('#oh-display').inputValue(),'change');assert.equal(new URL(p.url()).searchParams.get('sampleView'),'3');
@@ -64,8 +73,7 @@ async function csv(page,selector){const event=page.waitForEvent('download');if(!
    assert.equal(await p.locator('.oh-plot .site-chart-scroll').count(),0);
    await more();assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'filter overflow '+width);
   }
-  const failed=await context.newPage();await failed.route('**/data/companies/domestic-hotels/jinjiang.json*',r=>r.fulfill({status:503,body:'unavailable'}));await failed.goto(base+'/company-database.html?company=jinjiang');await failed.locator('#oh-retry:not([hidden])').waitFor();await failed.unroute('**/data/companies/domestic-hotels/jinjiang.json*');await failed.click('#oh-retry');await failed.locator('#dh-chart-2 svg').waitFor({state:'attached'});
-  assert.deepEqual(errors,[]);console.log('PASS: all hotels / single-quarter / YoY default, four primary controls, versioned links, deterministic company and cohort transitions, true missing periods and FX gaps, source/CSV7427, persistent detail filters, charts and labels, mobile widths, retry.');
+  const failed=await context.newPage();await failed.route('**/data/companies/domestic-hotels/jinjiang.json*',r=>r.fulfill({status:503,body:'unavailable'}));await failed.goto(base+'/company-database.html?company=jinjiang');await failed.locator('#oh-retry:not([hidden])').waitFor();await failed.unroute('**/data/companies/domestic-hotels/jinjiang.json*');await failed.click('#oh-retry');await failed.locator('#dh-chart-0 svg').waitFor({state:'attached'});
+  assert.deepEqual(errors,[]);console.log('PASS: all hotels / single-quarter / YoY default, visible direct-operated control, versioned links, deterministic company and cohort transitions, true missing periods and FX gaps, source/CSV7427, persistent detail filters, charts and labels, mobile widths, retry.');
  }finally{await browser.close();server.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;server.close();});
-
