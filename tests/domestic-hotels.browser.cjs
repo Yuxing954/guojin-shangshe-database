@@ -13,7 +13,14 @@ async function csv(page,selector){const event=page.waitForEvent('download');if(!
   const context=await browser.newContext({viewport:{width:1440,height:1000}}),errors=[];context.on('page',p=>p.on('pageerror',e=>errors.push(e.message)));
   await context.addInitScript(()=>{let charts;Object.defineProperty(window,'SiteCharts',{configurable:true,get:()=>charts,set(value){const draw=value.drawPaired;value.drawPaired=function(host,rows,opt){(window.domPlotData||=Object.create(null))[host.id]={rows:structuredClone(rows),opt:structuredClone(opt)};return draw.call(this,host,rows,opt);};charts=value;}});});
   const p=await context.newPage(),ready=()=>p.locator('#dh-chart-2 svg').waitFor({state:'attached'}),more=async()=>{if(!await p.locator('#dh-advanced').getAttribute('open').then(v=>v!==null))await p.locator('#dh-advanced summary').click();};
-  await p.goto(base+'/company-database.html');await ready();
+  // Hold the first data response to verify actions never flash above company cards.
+  let releaseData;const dataGate=new Promise(resolve=>releaseData=resolve);
+  await p.route('**/data/companies/domestic-hotels.json*',async route=>{await dataGate;await route.continue();});
+  await p.goto(base+'/company-database.html',{waitUntil:'domcontentloaded'});
+  assert.equal(await p.locator('.oh-section-actions:visible').count(),0);
+  assert.equal(await p.locator('#main > .oh-section-actions').count(),0);
+  releaseData();await ready();await p.unroute('**/data/companies/domestic-hotels.json*');
+  assert.equal(await p.locator('#oh-toolbar .cw-actions:visible').count(),1);
   assert.equal(await p.locator('#oh-kind').inputValue(),'全部');assert.equal(await p.locator('#oh-frequency').inputValue(),'单季度');assert.equal(await p.locator('#oh-display').inputValue(),'change');
   assert.equal(await p.locator('#oh-toolbar select:visible').count(),4);assert.equal(await p.locator('#oh-kind option').count(),2);
   assert.equal(await p.locator('.oh-company svg').count(),4);
