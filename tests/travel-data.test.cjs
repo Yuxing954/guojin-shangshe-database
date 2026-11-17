@@ -2,10 +2,13 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'..'),M=require('../scripts/travel-model.js'),d=JSON.parse(fs.readFileSync(path.join(root,'data/tourism/dashboard.json'),'utf8'));
 const close=(a,b)=>assert(Math.abs(a-b)<1e-8,`${a} != ${b}`);
-assert.equal(d.domestic.quarters.length,18);assert.equal(d.domestic.quarterYtd.length,18);
-assert.equal(M.domesticQuarterRows(d).length,14);assert.equal(M.domesticQuarterRows(d,'recent','quarter','2').length,4);
-assert.equal(M.domesticQuarterRows(d,'2026','quarter','3').length,0);
+assert.equal(d.domestic.quarters.length,19);assert.equal(d.domestic.quarterYtd.length,19);
+assert.equal(M.domesticQuarterRows(d).length,15);assert.equal(M.domesticQuarterRows(d,'recent','quarter','2').length,4);
+assert.equal(M.domesticQuarterRows(d,'2026','quarter','3').length,1);
 const dq=(p,scope='quarter')=>(scope==='quarter'?d.domestic.quarters:d.domestic.quarterYtd).find(r=>r.period===p);
+assert.equal(dq('2026Q3','ytd').trips,53.07);assert.equal(dq('2026Q3','ytd').spend,49500);assert.equal(dq('2026Q3','ytd').spendYoY,2.2);
+assert.equal(dq('2026Q3').trips,18.44);assert.equal(dq('2026Q3').spend,17400);assert.equal(dq('2026Q3').tripsBasis,'累计差额测算');close(dq('2026Q3').tripsYoY,(18.44/17.13-1)*100);close(dq('2026Q3').spendYoY,(17400/17000-1)*100);close(dq('2026Q3').perTrip,17400/18.44);
+assert(!d.notes.some(n=>n.includes('未取得2026Q3')));assert(dq('2026Q3').tripsSourceIds.includes('mct-domestic-2026q2'));assert(dq('2026Q3').tripsSourceIds.includes('mct-domestic-2026q3'));
 assert.equal(dq('2026Q2').trips,15.62);assert.equal(dq('2026Q2').tripsYoY,4.8);assert.equal(dq('2026Q2').spend,13500);assert.equal(dq('2026Q2').spendBasis,'累计差额测算');
 assert.equal(dq('2026Q2','ytd').trips,34.63);assert.equal(dq('2026Q2','ytd').spend,32100);assert.equal(dq('2026Q2','ytd').spendYoY,2);
 assert.equal(dq('2026Q1').spendYoY,2.9);assert.notEqual(dq('2026Q1').spendYoY,(18600/18000-1)*100);

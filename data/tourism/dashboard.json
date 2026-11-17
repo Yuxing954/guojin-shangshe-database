@@ -918,6 +918,16 @@
       "checkedAt": "2026-10-23",
       "locator": "旅游综合业务情况",
       "sha256": "56d664c1f5601f6c1b65832bbbbee8088c9c01bae9a3b0a9bd5aa0989cb94671"
+    },
+    {
+      "id": "mct-domestic-2026q3",
+      "name": "2026年前三季度国内居民出游数据情况",
+      "publisher": "文化和旅游部",
+      "quality": "官方原始披露",
+      "publishedAt": "2026-10-26",
+      "url": "https://zwgk.mct.gov.cn/zfxxgkml/tjxx/202610/t20261026_967476.html",
+      "checkedAt": "2026-11-17",
+      "sha256": "2a9f5c97f642092cba257e9f70230fcfeb660649d4fc675bb047d6e80dd35981"
     }
   ],
   "domestic": {
@@ -12734,8 +12744,8 @@
         "tripsSourceIds": [
           "mct-domestic-2022q4"
         ],
-        "spend": 7700.0,
-        "spendYoY": 4.0,
+        "spend": 7700,
+        "spendYoY": 4,
         "spendBasis": "官方披露",
         "spendYoYBasis": "官方披露同比",
         "spendSourceIds": [
@@ -12768,7 +12778,7 @@
         "tripsSourceIds": [
           "mct-domestic-2022q4"
         ],
-        "spend": 4000.0,
+        "spend": 4000,
         "spendYoY": null,
         "spendBasis": "累计差额测算",
         "spendSourceIds": [
@@ -12804,7 +12814,7 @@
         "tripsSourceIds": [
           "mct-domestic-2022q4"
         ],
-        "spend": 5500.0,
+        "spend": 5500,
         "spendYoY": null,
         "spendBasis": "累计差额测算",
         "spendSourceIds": [
@@ -12840,7 +12850,7 @@
         "tripsSourceIds": [
           "mct-domestic-2022q4"
         ],
-        "spend": 3200.0,
+        "spend": 3200,
         "spendYoY": null,
         "spendBasis": "累计差额测算",
         "spendSourceIds": [
@@ -12875,7 +12885,7 @@
         "tripsSourceIds": [
           "mct-domestic-2023q4"
         ],
-        "spend": 13000.0,
+        "spend": 13000,
         "spendYoY": 69.5,
         "spendBasis": "官方披露",
         "spendYoYBasis": "官方披露同比",
@@ -12916,7 +12926,7 @@
         "tripsSourceIds": [
           "mct-domestic-2023q4"
         ],
-        "spend": 10000.0,
+        "spend": 10000,
         "spendYoY": 150.0,
         "spendBasis": "累计差额测算",
         "spendSourceIds": [
@@ -12961,7 +12971,7 @@
         "tripsSourceIds": [
           "mct-domestic-2023q4"
         ],
-        "spend": 13900.0,
+        "spend": 13900,
         "spendYoY": 152.72727272727275,
         "spendBasis": "累计差额测算",
         "spendSourceIds": [
@@ -13006,7 +13016,7 @@
         "tripsSourceIds": [
           "mct-domestic-2023q4"
         ],
-        "spend": 12200.0,
+        "spend": 12200,
         "spendYoY": 281.25,
         "spendBasis": "累计差额测算",
         "spendSourceIds": [
@@ -13049,8 +13059,8 @@
         "tripsSourceIds": [
           "mct-domestic-2024q4"
         ],
-        "spend": 15200.0,
-        "spendYoY": 17.0,
+        "spend": 15200,
+        "spendYoY": 17,
         "spendBasis": "官方披露",
         "spendYoYBasis": "官方披露同比",
         "spendSourceIds": [
@@ -13090,7 +13100,7 @@
         "tripsSourceIds": [
           "mct-domestic-2024q4"
         ],
-        "spend": 12100.0,
+        "spend": 12100,
         "spendYoY": 20.999999999999996,
         "spendBasis": "累计差额测算",
         "spendSourceIds": [
@@ -13135,7 +13145,7 @@
         "tripsSourceIds": [
           "mct-domestic-2024q4"
         ],
-        "spend": 16200.0,
+        "spend": 16200,
         "spendYoY": 16.546762589928065,
         "spendBasis": "累计差额测算",
         "spendSourceIds": [
@@ -13180,7 +13190,7 @@
         "tripsSourceIds": [
           "mct-domestic-2024q4"
         ],
-        "spend": 14000.0,
+        "spend": 14000,
         "spendYoY": 14.754098360655732,
         "spendBasis": "累计差额测算",
         "spendSourceIds": [
@@ -13223,7 +13233,7 @@
         "tripsSourceIds": [
           "mct-domestic-2025q1"
         ],
-        "spend": 18000.0,
+        "spend": 18000,
         "spendYoY": 18.6,
         "spendBasis": "官方披露",
         "spendYoYBasis": "官方披露同比",
@@ -13263,7 +13273,7 @@
           "mct-domestic-2025q2",
           "mct-domestic-2025q1"
         ],
-        "spend": 13500.0,
+        "spend": 13500,
         "spendYoY": 11.570247933884303,
         "spendBasis": "累计差额测算",
         "spendSourceIds": [
@@ -13308,7 +13318,7 @@
           "mct-domestic-2025q3",
           "mct-domestic-2025q2"
         ],
-        "spend": 17000.0,
+        "spend": 17000,
         "spendYoY": 4.938271604938271,
         "spendBasis": "累计差额测算",
         "spendSourceIds": [
@@ -13353,7 +13363,7 @@
           "mct-domestic-2025q4",
           "mct-domestic-2025q3"
         ],
-        "spend": 14500.0,
+        "spend": 14500,
         "spendYoY": 3.571428571428581,
         "spendBasis": "累计差额测算",
         "spendSourceIds": [
@@ -13391,13 +13401,13 @@
         "locator": "正文：国内出游人次及出游总花费",
         "scope": "quarter",
         "trips": 19.01,
-        "tripsYoY": 6.0,
+        "tripsYoY": 6,
         "tripsBasis": "官方披露",
         "tripsYoYBasis": "官方披露同比",
         "tripsSourceIds": [
           "mct-domestic-2026q2"
         ],
-        "spend": 18600.0,
+        "spend": 18600,
         "spendYoY": 2.9,
         "spendBasis": "官方披露",
         "spendYoYBasis": "官方披露同比",
@@ -13437,7 +13447,7 @@
         "tripsSourceIds": [
           "mct-domestic-2026q2"
         ],
-        "spend": 13500.0,
+        "spend": 13500,
         "spendYoY": 0.0,
         "spendBasis": "累计差额测算",
         "spendSourceIds": [
@@ -13466,6 +13476,51 @@
           "mct-domestic-2025q2",
           "mct-domestic-2025q1"
         ]
+      },
+      {
+        "period": "2026Q3",
+        "year": 2026,
+        "quarter": 3,
+        "sourceId": "mct-domestic-2026q3",
+        "locator": "正文：前三季度国内居民出游人次及总花费",
+        "scope": "quarter",
+        "trips": 18.44,
+        "tripsYoY": 7.6474022183304236,
+        "tripsBasis": "累计差额测算",
+        "tripsSourceIds": [
+          "mct-domestic-2026q3",
+          "mct-domestic-2026q2"
+        ],
+        "spend": 17400,
+        "spendYoY": 2.35294117647058,
+        "spendBasis": "累计差额测算",
+        "spendSourceIds": [
+          "mct-domestic-2026q3",
+          "mct-domestic-2026q2"
+        ],
+        "comparisonPeriod": "2025Q3",
+        "comparisonTripsSourceIds": [
+          "mct-domestic-2025q3",
+          "mct-domestic-2025q2"
+        ],
+        "tripsYoYBasis": "同季披露值差额计算",
+        "comparisonSpendSourceIds": [
+          "mct-domestic-2025q3",
+          "mct-domestic-2025q2"
+        ],
+        "spendYoYBasis": "同季披露值差额计算",
+        "perTrip": 943.6008676789587,
+        "perTripBasis": "花费÷出游人次测算",
+        "perTripSourceIds": [
+          "mct-domestic-2026q3",
+          "mct-domestic-2026q2"
+        ],
+        "perTripYoY": -4.918336097996701,
+        "perTripYoYBasis": "同口径人均花费计算",
+        "comparisonPertripSourceIds": [
+          "mct-domestic-2025q3",
+          "mct-domestic-2025q2"
+        ]
       }
     ],
     "quarterYtd": [
@@ -13474,9 +13529,9 @@
         "year": 2022,
         "quarter": 1,
         "trips": 8.3,
-        "tripsYoY": -19.0,
-        "spend": 7700.0,
-        "spendYoY": 4.0,
+        "tripsYoY": -19,
+        "spend": 7700,
+        "spendYoY": 4,
         "sourceId": "mct-domestic-2022q1",
         "locator": "正文：国内出游人次及出游总花费",
         "scope": "ytd",
@@ -13508,7 +13563,7 @@
         "quarter": 2,
         "trips": 14.55,
         "tripsYoY": -22.2,
-        "spend": 11700.0,
+        "spend": 11700,
         "spendYoY": -28.2,
         "sourceId": "mct-domestic-2022q2",
         "locator": "正文：国内出游人次及出游总花费",
@@ -13541,7 +13596,7 @@
         "quarter": 3,
         "trips": 20.94,
         "tripsYoY": -22.1,
-        "spend": 17200.0,
+        "spend": 17200,
         "spendYoY": -27.2,
         "sourceId": "mct-domestic-2022q3",
         "locator": "正文：国内出游人次及出游总花费",
@@ -13574,8 +13629,8 @@
         "quarter": 4,
         "trips": 25.3,
         "tripsYoY": -22.1,
-        "spend": 20400.0,
-        "spendYoY": -30.0,
+        "spend": 20400,
+        "spendYoY": -30,
         "sourceId": "mct-domestic-2022q4",
         "locator": "正文：国内出游人次及出游总花费",
         "scope": "ytd",
@@ -13607,7 +13662,7 @@
         "quarter": 1,
         "trips": 12.16,
         "tripsYoY": 46.5,
-        "spend": 13000.0,
+        "spend": 13000,
         "spendYoY": 69.5,
         "sourceId": "mct-domestic-2023q1",
         "locator": "正文：国内出游人次及出游总花费",
@@ -13646,7 +13701,7 @@
         "quarter": 2,
         "trips": 23.84,
         "tripsYoY": 63.9,
-        "spend": 23000.0,
+        "spend": 23000,
         "spendYoY": 95.9,
         "sourceId": "mct-domestic-2023q2",
         "locator": "正文：国内出游人次及出游总花费",
@@ -13685,7 +13740,7 @@
         "quarter": 3,
         "trips": 36.74,
         "tripsYoY": 75.5,
-        "spend": 36900.0,
+        "spend": 36900,
         "spendYoY": 114.4,
         "sourceId": "mct-domestic-2023q3",
         "locator": "正文：国内出游人次及出游总花费",
@@ -13724,7 +13779,7 @@
         "quarter": 4,
         "trips": 48.91,
         "tripsYoY": 93.3,
-        "spend": 49100.0,
+        "spend": 49100,
         "spendYoY": 140.3,
         "sourceId": "mct-domestic-2023q4",
         "locator": "正文：国内出游人次及出游总花费",
@@ -13763,8 +13818,8 @@
         "quarter": 1,
         "trips": 14.19,
         "tripsYoY": 16.7,
-        "spend": 15200.0,
-        "spendYoY": 17.0,
+        "spend": 15200,
+        "spendYoY": 17,
         "sourceId": "mct-domestic-2024q1",
         "locator": "正文：国内出游人次及出游总花费",
         "scope": "ytd",
@@ -13802,8 +13857,8 @@
         "quarter": 2,
         "trips": 27.25,
         "tripsYoY": 14.3,
-        "spend": 27300.0,
-        "spendYoY": 19.0,
+        "spend": 27300,
+        "spendYoY": 19,
         "sourceId": "mct-domestic-2024q2",
         "locator": "正文：国内出游人次及出游总花费",
         "scope": "ytd",
@@ -13841,7 +13896,7 @@
         "quarter": 3,
         "trips": 42.37,
         "tripsYoY": 15.3,
-        "spend": 43500.0,
+        "spend": 43500,
         "spendYoY": 17.9,
         "sourceId": "mct-domestic-2024q3",
         "locator": "正文：国内出游人次及出游总花费",
@@ -13880,7 +13935,7 @@
         "quarter": 4,
         "trips": 56.15,
         "tripsYoY": 14.8,
-        "spend": 57500.0,
+        "spend": 57500,
         "spendYoY": 17.1,
         "sourceId": "mct-domestic-2024q4",
         "locator": "正文：国内出游人次及出游总花费",
@@ -13919,7 +13974,7 @@
         "quarter": 1,
         "trips": 17.94,
         "tripsYoY": 26.4,
-        "spend": 18000.0,
+        "spend": 18000,
         "spendYoY": 18.6,
         "sourceId": "mct-domestic-2025q1",
         "locator": "正文：国内出游人次及出游总花费",
@@ -13958,7 +14013,7 @@
         "quarter": 2,
         "trips": 32.85,
         "tripsYoY": 20.6,
-        "spend": 31500.0,
+        "spend": 31500,
         "spendYoY": 15.2,
         "sourceId": "mct-domestic-2025q2",
         "locator": "正文：国内出游人次及出游总花费",
@@ -13996,8 +14051,8 @@
         "year": 2025,
         "quarter": 3,
         "trips": 49.98,
-        "tripsYoY": 18.0,
-        "spend": 48500.0,
+        "tripsYoY": 18,
+        "spend": 48500,
         "spendYoY": 11.5,
         "sourceId": "mct-domestic-2025q3",
         "locator": "正文：国内出游人次及出游总花费",
@@ -14036,7 +14091,7 @@
         "quarter": 4,
         "trips": 65.22,
         "tripsYoY": 16.2,
-        "spend": 63000.0,
+        "spend": 63000,
         "spendYoY": 9.5,
         "sourceId": "mct-domestic-2025q4",
         "locator": "正文：国内出游人次及出游总花费",
@@ -14074,8 +14129,8 @@
         "year": 2026,
         "quarter": 1,
         "trips": 19.01,
-        "tripsYoY": 6.0,
-        "spend": 18600.0,
+        "tripsYoY": 6,
+        "spend": 18600,
         "spendYoY": 2.9,
         "sourceId": "mct-domestic-2026q1",
         "locator": "正文：国内出游人次及出游总花费",
@@ -14114,8 +14169,8 @@
         "quarter": 2,
         "trips": 34.63,
         "tripsYoY": 5.4,
-        "spend": 32100.0,
-        "spendYoY": 2.0,
+        "spend": 32100,
+        "spendYoY": 2,
         "sourceId": "mct-domestic-2026q2",
         "locator": "正文：国内出游人次及出游总花费",
         "scope": "ytd",
@@ -14145,6 +14200,45 @@
         "perTripYoYBasis": "同口径人均花费计算",
         "comparisonPertripSourceIds": [
           "mct-domestic-2025q2"
+        ]
+      },
+      {
+        "period": "2026Q3",
+        "year": 2026,
+        "quarter": 3,
+        "trips": 53.07,
+        "tripsYoY": 6.2,
+        "spend": 49500,
+        "spendYoY": 2.2,
+        "sourceId": "mct-domestic-2026q3",
+        "locator": "正文：前三季度国内居民出游人次及总花费",
+        "scope": "ytd",
+        "tripsBasis": "官方累计披露",
+        "tripsYoYBasis": "官方披露同比",
+        "tripsSourceIds": [
+          "mct-domestic-2026q3"
+        ],
+        "spendBasis": "官方累计披露",
+        "spendYoYBasis": "官方披露同比",
+        "spendSourceIds": [
+          "mct-domestic-2026q3"
+        ],
+        "comparisonPeriod": "2025Q3",
+        "comparisonTripsSourceIds": [
+          "mct-domestic-2025q3"
+        ],
+        "comparisonSpendSourceIds": [
+          "mct-domestic-2025q3"
+        ],
+        "perTrip": 932.7303561334087,
+        "perTripBasis": "花费÷出游人次测算",
+        "perTripSourceIds": [
+          "mct-domestic-2026q3"
+        ],
+        "perTripYoY": -3.8806944339221383,
+        "perTripYoYBasis": "同口径人均花费计算",
+        "comparisonPertripSourceIds": [
+          "mct-domestic-2025q3"
         ]
       }
     ],
@@ -23710,7 +23804,6 @@
     "泰国2022年中国籍游客官方年度基期27.3567万人次用于2023年度同比；未核验2022年逐月基期，因此2023年月度同比留空。越南2023年1月缺同月基期及原表同比，保留空值。文旅部2023年出入境旅游同比未取得可比披露，保留空值。",
     "入境查验覆盖2023—2026年第一季度、上半年、第三季度及2023—2025完整年度；同比优先官方披露。2024Q1总查验为“超1.41亿”，图中以1.41亿作披露下限展示；2023H1外国人不含边民，不跨口径反推增速。2026Q1免签同比29.3%沿用官方披露，与2025Q1问答中657万人次不直接勾稽，保留披露差异。",
     "文旅部出境旅游2024年同比41.0%、2025年20.8%沿用公报的可比口径；不使用本库已四舍五入的历史总量覆盖官方增速。所有“—”表示未披露或缺少已核验基期，不按零处理。",
-    "国内季度数据来自文化和旅游部国内居民出游抽样调查；覆盖2023—2025完整年度及2026Q1—Q2，2022年仅作同比基期，可切换更早历史。核对截至2026-10-23，文旅部统计目录最新披露为2026年上半年；未取得2026Q3全国数据，未填数。",
     "单季与年初累计分别展示。出游人次优先采用官方分季度披露；无单季披露时，以本年相邻累计值相减。Q2花费=上半年-Q1，Q3花费=前三季度-上半年，Q4花费=全年-前三季度；均标注“累计差额测算”。Q1原始值及累计值保留官方披露。",
     "同比：官方已披露的单季/累计同比原样保留，缺官方同比的单季量按同季度披露值差额计算。原始累计值有舍入及可比口径修订，差分同比是披露值测算，不能冒称官方可比同比，也不通过官方同比反推修改历史总量。",
     "2026Q1花费官方同比2.9%，但1.86万亿与本库2025Q1的1.80万亿直接计算不一致；2026H1的2.0%与3.21/3.15近似不完全相等。保留各期官方值与同比，差分及人均测算使用已披露总量，并保留来源、前一累计来源与上年同季来源。",
@@ -23722,6 +23815,8 @@
     "其他候选景区连续数据检索结果保留在scenic-official.json availability。候选未接入不等于不存在；本轮未取得可核验完整序列，未拿假期新闻拼接或虚构中间月份。",
     "连续景区数据检索：黄山；候选：尚未核验到可持续获取的完整月度序列。存在单月新闻、年度和半年报，但暂不将零散新闻拼为连续序列。",
     "连续景区数据检索：泰山；候选：已找到季度运行披露，待核验历史口径。进泰山游客与泰安市全域接待、重点景区样本接待须区分。",
-    "连续景区数据检索：四姑娘山／黄龙／达古冰川／峨眉山／九华山；候选：本轮未取得经逐期核验的完整连续高频序列。已检索官网及政府统计；假期、门票预售、承载量及年度里程碑不当作日/月实际接待。"
+    "连续景区数据检索：四姑娘山／黄龙／达古冰川／峨眉山／九华山；候选：本轮未取得经逐期核验的完整连续高频序列。已检索官网及政府统计；假期、门票预售、承载量及年度里程碑不当作日/月实际接待。",
+    "国内季度数据来自文化和旅游部国内居民出游抽样调查；覆盖2023—2025完整年度及2026Q1—Q3，2022年仅作同比基期。2026Q3累计数据于2026-10-26披露，本期于2026-11-17核对。",
+    "2026年前三季度官方花费4.95万亿元、同比2.2%、增加0.11万亿元，与2025年前三季度已披露4.85万亿元存在舍入或可比口径差异；保留原始总量和官方累计同比，不反推修改历史。2026Q3人次、花费及同比均由已披露累计值差分测算，人均按同口径计算。"
   ]
 }
