@@ -3,25 +3,25 @@
   "date": "2026-11-16",
   "windowStart": "2026-11-13T18:00:00+08:00",
   "cutoff": "2026-11-16T18:00:00+08:00",
-  "sourceThrough": "2026-11-14T16:30:59.062+0800",
+  "sourceThrough": "2026-11-17T12:41:55.865+0800",
   "attachmentCatalog": {
-    "generatedAt": "2026-11-10T08:32:00.167Z",
-    "sourceThrough": "2026-11-10T14:58:04.744+0800",
+    "generatedAt": "2026-11-16T15:54:37.487Z",
+    "sourceThrough": "2026-11-16T23:45:38.826+0800",
     "scan": {
-      "observedAt": "2026-11-10T08:32:00.167Z",
+      "observedAt": "2026-11-16T15:54:37.487Z",
       "sourceGroup": "88888142214212",
       "sourceName": "水木调研纪要-2.0",
-      "topicsScanned": 720,
-      "topicsInWindow": 685,
-      "topicPages": 24,
-      "topicWindowFrom": "2026-11-08T00:00:00+08:00",
-      "topicWindowTo": "2026-11-10T14:58:04.744+0800",
+      "topicsScanned": 480,
+      "topicsInWindow": 462,
+      "topicPages": 16,
+      "topicWindowFrom": "2026-11-14T00:00:00+08:00",
+      "topicWindowTo": "2026-11-16T23:45:38.826+0800",
       "boundaryReachedBeforeWindow": true,
-      "attachmentsObserved": 450,
-      "uniqueFileIds": 450,
+      "attachmentsObserved": 315,
+      "uniqueFileIds": 315,
       "duplicateFileIds": 0,
-      "newRecords": 439,
-      "existingRecordsRefreshed": 11,
+      "newRecords": 315,
+      "existingRecordsRefreshed": 0,
       "attachmentContentRead": false,
       "sourceMetadataFields": [
         "fileId",
@@ -36,9 +36,9 @@
         "sourceHash",
         "source"
       ],
-      "windowStart": "2026-11-08T00:00:00+08:00",
-      "windowEnd": "2026-11-10T08:32:00.167Z",
-      "windowEndDate": "2026-11-10",
+      "windowStart": "2026-11-14T00:00:00+08:00",
+      "windowEnd": "2026-11-16T15:54:37.487Z",
+      "windowEndDate": "2026-11-16",
       "windowComplete": true,
       "archiveHasMore": true
     },
@@ -48,18 +48,78 @@
     "missingIntervals": [
       {
         "start": "2026-11-13T18:00:00+08:00",
-        "end": "2026-11-16T18:00:00+08:00"
+        "end": "2026-11-14T00:00:00+08:00"
       }
     ],
     "publicationEligibility": {
       "policy": "scan-observed-after-16",
-      "eligible": false,
-      "scanObservedAt": "2026-11-10T08:32:00.167Z",
+      "eligible": true,
+      "scanObservedAt": "2026-11-16T15:54:37.487Z",
       "coverageComplete": false
     }
   },
   "groups": {
     "segments": [
+      {
+        "title": "10月社零：去年同期基数放缓背景下走弱，乡村消费好于城镇",
+        "publishedAt": "2026-11-16T13:56:42.200000+08:00",
+        "sector": "零售与消费出海",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/14425145285858252"
+      },
+      {
+        "title": "# 双11总结 纺织服装行业2026年双11总结核心观点：大盘放缓至温和增长，天猫格局稳定、高端阵营扩容，抖音变化较大——广发纺服感谢支持！",
+        "publishedAt": "2026-11-16T12:39:11.108000+08:00",
+        "sector": "零售与消费出海",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/22258428515514251"
+      },
+      {
+        "title": "【中信纺服】 On Running 3Q26 业绩后Callback要点",
+        "publishedAt": "2026-11-16T12:33:15.901000+08:00",
+        "sector": "零售与消费出海",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/14425145282224852"
+      },
+      {
+        "title": "【国金研究】产业景气高频跟踪—11/15期",
+        "publishedAt": "2026-11-16T09:35:03.430000+08:00",
+        "sector": "酒店旅游",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/22258428528454181"
+      },
+      {
+        "title": "周度更新：外销成本压力有望缓解，内销观察PB−ROE趋势",
+        "publishedAt": "2026-11-16T09:10:41.528000+08:00",
+        "sector": "零售与消费出海",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/22258428584442511"
+      },
+      {
+        "title": "[抱拳]【中信证券交运物流】周观点：红利继续推荐皖通高速和唐山港，左侧布局航空",
+        "publishedAt": "2026-11-15T22:03:23.643000+08:00",
+        "sector": "酒店旅游",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/45548254112542228"
+      },
+      {
+        "title": "周观点：双11顺利收官，珀莱雅卫冕天猫GMV排名第一20261115",
+        "publishedAt": "2026-11-15T22:01:40.983000+08:00",
+        "sector": "零售与消费出海",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/14425142885148242"
+      },
+      {
+        "title": "周末好，本周时事多，市场波动，再次推荐关注商社高增长与高分红标的。",
+        "publishedAt": "2026-11-15T13:22:01.135000+08:00",
+        "sector": "商社综合",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/55521452851442854"
+      },
+      {
+        "title": "[礼物]【浙商轻工】潮玩观察员：海外潮玩龙头最新业绩一览",
+        "publishedAt": "2026-11-15T11:11:54.459000+08:00",
+        "sector": "零售与消费出海",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/82258425125154412"
+      },
+      {
+        "title": "10月数据更新",
+        "publishedAt": "2026-11-14T20:46:30.179000+08:00",
+        "sector": "零售与消费出海",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/82258425452184442"
+      },
       {
         "title": "10月潮玩动漫线上跟踪【国金轻工】",
         "publishedAt": "2026-11-13T19:42:57.419000+08:00",
@@ -68,8 +128,104 @@
       }
     ],
     "minutes": [],
-    "audio": [],
-    "reports": []
+    "audio": [
+      {
+        "id": "zsxq-file-214255454214841",
+        "title": "中国东方教育20261113.mp3",
+        "publishedAt": "2026-11-16T11:52:48.943000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/14425145214121582",
+        "status": "未转写",
+        "sector": "other"
+      },
+      {
+        "id": "zsxq-file-412544242515888",
+        "title": "港股零售美护标的梳理20261113.mp3",
+        "publishedAt": "2026-11-16T11:51:06.189000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/14425145214488842",
+        "status": "未转写",
+        "sector": "other"
+      },
+      {
+        "id": "zsxq-file-814255454212222",
+        "title": "2026年双11淘天美妆复盘20261113.mp3",
+        "publishedAt": "2026-11-16T11:51:06.189000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/14425145214488842",
+        "status": "未转写",
+        "sector": "other"
+      },
+      {
+        "id": "zsxq-file-412544242515558",
+        "title": "2026年双11抖音美妆复盘20261113.mp3",
+        "publishedAt": "2026-11-16T11:51:06.189000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/14425145214488842",
+        "status": "未转写",
+        "sector": "other"
+      },
+      {
+        "id": "zsxq-file-181422121415112",
+        "title": "消费商社投资策略分享20261113.mp3",
+        "publishedAt": "2026-11-16T11:45:31.583000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/14425145214422822",
+        "status": "未转写",
+        "sector": "other"
+      },
+      {
+        "id": "zsxq-file-181422121415582",
+        "title": "旅游景区关注秋假和冰雪主题机会20261113.mp3",
+        "publishedAt": "2026-11-16T11:45:31.583000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/14425145214422822",
+        "status": "未转写",
+        "sector": "other"
+      },
+      {
+        "id": "zsxq-file-214255454281551",
+        "title": "运动鞋服终端交流20261114.mp3",
+        "publishedAt": "2026-11-16T11:35:45.548000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/14425145214248852",
+        "status": "未转写",
+        "sector": "other"
+      },
+      {
+        "id": "zsxq-file-214255212221141",
+        "title": "消费商社投资策略分享：低位是第一生产力，重视消费筑底！261113.mp3",
+        "publishedAt": "2026-11-16T00:22:53.897000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/14425145224818522",
+        "status": "未转写",
+        "sector": "other"
+      }
+    ],
+    "reports": [
+      {
+        "id": "zsxq-file-181422124545212",
+        "title": "大消费联合电话会议20261115.pdf",
+        "publishedAt": "2026-11-16T09:54:58.372000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/14425145244581182",
+        "status": "仅标题登记",
+        "sector": "other"
+      },
+      {
+        "id": "zsxq-file-584522425151154",
+        "title": "化妆品行业双十一跟踪20261115.pdf",
+        "publishedAt": "2026-11-16T09:54:58.372000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/14425145244581182",
+        "status": "仅标题登记",
+        "sector": "other"
+      },
+      {
+        "id": "zsxq-file-814255221584452",
+        "title": "美国经济：能源价格冲击还有多少会传导至消费价格？US Daily_ Passthrough from the Energy Shock to Consumer Prices_ How Much Is Left_.pdf",
+        "publishedAt": "2026-11-15T10:50:56.618000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/55521452414851524",
+        "status": "仅标题登记",
+        "sector": "other"
+      }
+    ]
   },
-  "policy": "仅依据已入库元数据列出标题、发布时间和来源主题；未下载、读取或转写附件，不把研究报告标为纪要。"
+  "policy": "仅依据已入库元数据列出标题、发布时间和来源主题；未下载、读取或转写附件，不把研究报告标为纪要。",
+  "attachmentBackfill": {
+    "at": "2026-11-17T16:19:25+08:00",
+    "originalCutoff": "2026-11-16T18:00:00+08:00",
+    "indexGeneratedAt": "2026-11-16T15:54:37.487Z",
+    "sourceReceipt": "data/research/library-sync-receipt.json"
+  }
 }

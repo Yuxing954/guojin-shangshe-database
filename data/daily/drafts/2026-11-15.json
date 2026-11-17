@@ -2116,9 +2116,10 @@
   },
   "deploymentPolicy": "scan-observed-after-16",
   "originals": {},
-  "publicationStatus": "blocked",
-  "recoverable": true,
-  "publicationBlockers": [
+  "publicationStatus": "superseded",
+  "supersededAt": "2026-11-17T16:19:25+08:00",
+  "replacementFile": "data/daily/onepage/2026-11-15.json",
+  "resolvedPublicationBlockers": [
     "最新main真实附件扫描observedAt为北京时间11月10日16:32，未获得11月15日当天16:00或之后的扫描回执，本期附件窗口未获覆盖。"
   ]
 }

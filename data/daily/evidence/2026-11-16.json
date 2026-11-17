@@ -124,6 +124,13 @@
             "receiptFile": "data/daily/evidence/2026-11-16-searches.json",
             "batchOffset": 1,
             "result": "候选检索已执行；结果按批次保存，不能代替原始清单回读。"
+          },
+          {
+            "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/1109/2026110901246_c.pdf",
+            "listing": null,
+            "publishedAt": "2026-11-09",
+            "result": "续签原始披露在周一72小时窗口之外；新段子为后续研究跟踪。",
+            "checkedAt": "2026-11-17T16:19:25+08:00"
           }
         ],
         "status": "partial",
@@ -877,6 +884,13 @@
           {
             "url": "https://ir.hworld.com/zh-hans/news-and-events/press-releases",
             "result": "截至本次核验可读取最新IR列表未证实实际三季度公告在18:00之前发布。"
+          },
+          {
+            "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1116/2026111600943_c.pdf",
+            "listing": "https://www1.hkexnews.hk/search/predefineddoc.xhtml?lang=zh&predefineddocuments=7",
+            "publishedAt": "2026-11-16T18:00:00+08:00",
+            "result": "披露易18:00发放，按原截点纳入，电话会19:00不作为披露时间。",
+            "checkedAt": "2026-11-17T16:19:25+08:00"
           }
         ],
         "status": "partial",
@@ -1483,6 +1497,13 @@
           {
             "url": "https://cfi.net.cn/p20261116000329.html",
             "result": "董事会署名文本已通读；披露易原始文件直链待补。"
+          },
+          {
+            "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1116/2026111600091.pdf",
+            "listing": "https://www1.hkexnews.hk/search/titlesearch.xhtml?category=0&lang=EN&market=SEHK&stockId=1000176932",
+            "publishedAt": "2026-11-16T08:06:00+08:00",
+            "result": "披露易08:06原件，10月14日至11月10日受托人购入94.46万股，均价约31.82港元，员工激励用股。",
+            "checkedAt": "2026-11-17T16:19:25+08:00"
           }
         ],
         "status": "partial",
@@ -2036,18 +2057,34 @@
   "announcementSearchReceiptFile": "data/daily/evidence/2026-11-16-searches.json",
   "companyAnnouncements": [
     {
+      "company": "华住集团",
+      "code": "1179.HK",
+      "title": "发布三季报并上调全年收入指引",
+      "category": "定期报告",
+      "publishedAt": "2026-11-16T18:00:00+08:00",
+      "timePrecision": "timestamp",
+      "summary": "三季度营收77.50亿元，同比增11.3%，归母净利润18.01亿元，增22.6%；管理加盟及特许经营收入增25.7%。华住中国净增489家酒店，全网RevPAR为256元，增0.1%；开业至少18个月的成熟同店RevPAR为248元，降4.4%。",
+      "impact": "加盟扩张拉动集团业绩，同比承压的成熟同店仍有量价修复空间。公司预计2026年集团收入增长9%—10%，此前预计4%—8%。",
+      "source": "港交所披露易",
+      "sourceType": "exchange",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1116/2026111600943_c.pdf",
+      "checkedAt": "2026-11-17T16:19:25+08:00",
+      "evidenceFile": "data/daily/evidence/2026-11-16.json",
+      "verified": true
+    },
+    {
       "company": "达势股份",
       "code": "1405.HK",
       "title": "激励信托受托人已购入94.46万股",
       "category": "股权激励",
-      "publishedAt": "2026-11-16",
-      "timePrecision": "date",
+      "publishedAt": "2026-11-16T08:06:00+08:00",
+      "timePrecision": "timestamp",
       "summary": "2026年10月14日至11月10日，受托人在公开市场买入94.46万股，每股均价约31.82港元，用于履行2022年第二次股份激励计划授出的奖励。",
       "impact": "此次购股用于员工奖励交付，股份由激励信托持有，属于激励执行进展。",
-      "source": "达势股份董事会署名公告（中财网刊登原文）",
-      "sourceType": "company",
-      "url": "https://cfi.net.cn/p20261116000329.html",
-      "checkedAt": "2026-11-16T18:19:59+08:00",
+      "source": "港交所披露易",
+      "sourceType": "exchange",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1116/2026111600091.pdf",
+      "checkedAt": "2026-11-17T16:19:25+08:00",
       "evidenceFile": "data/daily/evidence/2026-11-16.json",
       "verified": true
     }
@@ -2056,15 +2093,15 @@
     {
       "code": "1405.HK",
       "company": "达势股份",
-      "url": "https://cfi.net.cn/p20261116000329.html",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1116/2026111600091.pdf",
       "disclosureSource": "达势股份董事会署名原文之原样刊登",
-      "publishedAt": "2026-11-16",
-      "timePrecision": "date",
+      "publishedAt": "2026-11-16T08:06:00+08:00",
+      "timePrecision": "timestamp",
       "beforeCutoffEvidence": "同日08:36已见全文要点；不使用任何转载的小时作为原始发布时间。",
       "corroboration": "https://cn.investing.com/news/stock-market-news/article-3668641",
       "listing": "https://www1.hkexnews.hk/search/titlesearch.xhtml?category=0&lang=EN&market=SEHK&stockId=1000176932",
       "facts": "2026年10月14日至11月10日，激励信托受托人购入94.46万股，均价约31.82港元；股份归入信托以履行已授员工奖励。",
-      "result": "董事会署名文本已通读；披露易原始文件直链待补。"
+      "result": "披露易原件及发放时刻已核验。"
     },
     {
       "code": "9987.HK",
@@ -2192,17 +2229,6 @@
     ],
     "appointments": [
       {
-        "company": "华住集团",
-        "code": "1179.HK",
-        "period": "2026年第三季度",
-        "date": "2026-11-16",
-        "status": "预约披露",
-        "source": "公司IR；香港交易所披露易复核",
-        "url": "https://ir.hworld.com/zh-hans/node/13751",
-        "checkedAt": "2026-11-16T18:19:59+08:00",
-        "evidenceFile": "data/daily/evidence/2026-11-16.json"
-      },
-      {
         "company": "名创优品",
         "code": "9896.HK",
         "period": "2026年第三季度",
@@ -2227,31 +2253,37 @@
       {
         "code": "1929.HK",
         "result": "披露易预约11月24日，超出窗口。"
+      },
+      {
+        "code": "1179.HK",
+        "result": "已于原截点披露，移入公司重要公告",
+        "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1116/2026111600943_c.pdf"
       }
-    ]
+    ],
+    "officialReleaseTimeRecheck": "2026-11-16T18:00:00+08:00"
   },
   "sourceCoverage": {
-    "latestMain": "029312b39b12bea6800c547446fe0091fa1f0930",
-    "librarySha256": "eac70b99d649567e51944ed2875bc2f9b870e573d32e50a4ca279e0c5686cb30",
-    "manifestSha256": "a0d3eb045ee4c36413fb090cdcf24a00fc5a21f28042d74aa70e758874e46126",
+    "latestMain": "5bd017f4199a53b1c0b5109bb578578b1cb3e539",
+    "librarySha256": "9f879a11067da36c5d01c472427d336b876092f7432f2bf96e8af56fb2ab1872",
+    "manifestSha256": "1ea787b7487b78f2039266ba92707efd5714f8bbf2522c82264d43d3787d1846",
     "attachmentCatalog": {
-      "generatedAt": "2026-11-10T08:32:00.167Z",
-      "sourceThrough": "2026-11-10T14:58:04.744+0800",
+      "generatedAt": "2026-11-16T15:54:37.487Z",
+      "sourceThrough": "2026-11-16T23:45:38.826+0800",
       "scan": {
-        "observedAt": "2026-11-10T08:32:00.167Z",
+        "observedAt": "2026-11-16T15:54:37.487Z",
         "sourceGroup": "88888142214212",
         "sourceName": "水木调研纪要-2.0",
-        "topicsScanned": 720,
-        "topicsInWindow": 685,
-        "topicPages": 24,
-        "topicWindowFrom": "2026-11-08T00:00:00+08:00",
-        "topicWindowTo": "2026-11-10T14:58:04.744+0800",
+        "topicsScanned": 480,
+        "topicsInWindow": 462,
+        "topicPages": 16,
+        "topicWindowFrom": "2026-11-14T00:00:00+08:00",
+        "topicWindowTo": "2026-11-16T23:45:38.826+0800",
         "boundaryReachedBeforeWindow": true,
-        "attachmentsObserved": 450,
-        "uniqueFileIds": 450,
+        "attachmentsObserved": 315,
+        "uniqueFileIds": 315,
         "duplicateFileIds": 0,
-        "newRecords": 439,
-        "existingRecordsRefreshed": 11,
+        "newRecords": 315,
+        "existingRecordsRefreshed": 0,
         "attachmentContentRead": false,
         "sourceMetadataFields": [
           "fileId",
@@ -2266,9 +2298,9 @@
           "sourceHash",
           "source"
         ],
-        "windowStart": "2026-11-08T00:00:00+08:00",
-        "windowEnd": "2026-11-10T08:32:00.167Z",
-        "windowEndDate": "2026-11-10",
+        "windowStart": "2026-11-14T00:00:00+08:00",
+        "windowEnd": "2026-11-16T15:54:37.487Z",
+        "windowEndDate": "2026-11-16",
         "windowComplete": true,
         "archiveHasMore": true
       },
@@ -2278,84 +2310,34 @@
       "missingIntervals": [
         {
           "start": "2026-11-13T18:00:00+08:00",
-          "end": "2026-11-16T18:00:00+08:00"
+          "end": "2026-11-14T00:00:00+08:00"
         }
       ],
       "publicationEligibility": {
         "policy": "scan-observed-after-16",
-        "eligible": false,
-        "scanObservedAt": "2026-11-10T08:32:00.167Z",
+        "eligible": true,
+        "scanObservedAt": "2026-11-16T15:54:37.487Z",
         "coverageComplete": false
       }
     },
     "attachmentRefresh": {
-      "status": "pending",
-      "reason": "未发现可用的已授权元数据扫描会话，主分支维持原始扫描回执，未下载、读取或转写附件。"
+      "status": "accepted",
+      "receiptFile": "data/research/library-sync-receipt.json",
+      "batchId": "metadata-9f879a11067da36c",
+      "observedAt": "2026-11-16T15:54:37.487Z",
+      "attachmentContentRead": false
     },
     "researchReceipt": {
-      "syncedAt": "2026-11-14T09:09:49.863Z",
-      "coverageFrom": "2026-11-14T13:59:02.412+0800",
-      "coverageTo": "2026-11-14T16:30:59.062+0800",
-      "oldestFetched": "2026-11-13T19:44:53.203+0800",
-      "lastRun": {
-        "runId": "2026-11-14-170533",
-        "sourceGroup": "88888142214212",
-        "sourceName": "水木调研纪要-2.0",
-        "previousCoverageTo": "2026-11-14T13:59:02.412+0800",
-        "coverageTo": "2026-11-14T16:30:59.062+0800",
-        "added": {
-          "views": 1,
-          "all_views": 10
-        },
-        "updated": 0,
-        "expiredRemoved": 0,
-        "sourceTopicIds": [
-          "55521452588118584",
-          "14425142488224552",
-          "22258425211552511",
-          "22258425211552581",
-          "45548254511448118",
-          "45548254511448128",
-          "14425142488225822",
-          "14425142488225112",
-          "22258425211558241",
-          "22258425211558281",
-          "82258425211558252"
-        ],
-        "duplicateTopicIds": [],
-        "briefChanges": {
-          "added": 1,
-          "updated": 0,
-          "expiredRemoved": 0
-        },
-        "duplicates": 0,
-        "excludedTopics": [
-          {
-            "topicId": "22258425211881851",
-            "reason": "无可读观点正文"
-          },
-          {
-            "topicId": "22258425211882121",
-            "reason": "无可读观点正文"
-          }
-        ],
-        "pagination": {
-          "pages": 1,
-          "pageRowsFetched": 30,
-          "limit": 30,
-          "stoppedWhenPageReachedCoverage": true
-        },
-        "dedupCheck": {
-          "candidateKeys": 44,
-          "candidateBuckets": 38,
-          "algorithm": "sha256-utf8-v1"
-        },
-        "expiredBriefIds": []
-      },
-      "unconfirmedTail": {
-        "start": "2026-11-14T16:30:59.062+0800",
-        "end": "2026-11-16T18:00:00+08:00"
-      }
+      "latestManifestCheckedAt": "2026-11-17T05:07:24.036Z",
+      "latestTopicInManifest": "2026-11-17T12:41:55.865+0800",
+      "latestBatch": "2026-11-17-130116",
+      "lateBatchFiles": [
+        "data/research/updates/2026-11-17-010648-r656ab-views-000.csv",
+        "data/research/updates/2026-11-17-233607-r78d8d-views-000.csv",
+        "data/research/updates/2026-11-17-233607-r78d8d-views-001.csv",
+        "data/research/updates/2026-11-17-233607-r78d8d-views-002.csv"
+      ],
+      "status": "已复核当前完整CSV和不可变增量；全局最新主题时间并非该期历史分页完整凭证，历史连续覆盖未独立确认。"
     },
     "researchCompleteThroughCutoff": false,
     "preCommitMainRecheck": {
@@ -2366,10 +2348,23 @@
     }
   },
   "scopeReview": {
-    "windowRows": 21,
-    "includedOriginals": 1,
-    "focusCards": 1,
-    "notes": "保留消费品牌动销内容；纯科技、私人飞机制造、影视制作、泛市场及仅夹带航空观点的科技综合讨论排除。"
+    "windowRows": 279,
+    "includedOriginals": 11,
+    "focusCards": 11,
+    "addedSources": [
+      "https://wx.zsxq.com/group/88888142214212/topic/14425142885148242",
+      "https://wx.zsxq.com/group/88888142214212/topic/14425145282224852",
+      "https://wx.zsxq.com/group/88888142214212/topic/14425145285858252",
+      "https://wx.zsxq.com/group/88888142214212/topic/22258428515514251",
+      "https://wx.zsxq.com/group/88888142214212/topic/22258428528454181",
+      "https://wx.zsxq.com/group/88888142214212/topic/22258428584442511",
+      "https://wx.zsxq.com/group/88888142214212/topic/45548254112542228",
+      "https://wx.zsxq.com/group/88888142214212/topic/55521452851442854",
+      "https://wx.zsxq.com/group/88888142214212/topic/82258425125154412",
+      "https://wx.zsxq.com/group/88888142214212/topic/82258425452184442"
+    ],
+    "removedSources": [],
+    "notes": "按全文语义补回海外潮玩、品牌经营、零售或周末配置；混合原文保留全文，仅就覆盖范围内事实摘要。机器人精密制造、含平台投资主线的综述不入选。附件仅以真实主题时点和文件元数据登记。"
   },
   "draftRecoveryChecks": [
     {
@@ -2499,40 +2494,71 @@
   ],
   "publicationAuthorization": {
     "requestedBy": "user",
+    "request": "2026-11-17：日报把之前的补一下",
     "policyDate": "2026-10-23",
     "cutoff": "2026-11-16T18:00:00+08:00",
-    "evaluatedAt": "2026-11-16T18:19:59+08:00",
-    "eligible": false,
-    "rule": "日报日期当天真实附件扫描observedAt在北京时间16:00或之后即可部署；18:00筛选窗口及真实覆盖记录不变。"
+    "evaluatedAt": "2026-11-17T16:19:25+08:00",
+    "eligible": true,
+    "basis": "same_day_observed_at_after_16",
+    "scanObservedAt": "2026-11-16T15:54:37.487Z",
+    "coverageStatus": "pending"
   },
-  "publicationStatus": "blocked",
-  "recoverable": true,
-  "publicationBlockers": [
-    "最新main真实附件扫描回执为北京时间11月10日16:32，未获得11月16日当天16:00及以后回执，且没有完整覆盖本期窗口的历史回执。"
-  ],
+  "publicationStatus": "recovered",
   "originalHashes": {
+    "https://wx.zsxq.com/group/88888142214212/topic/14425145285858252": "1578d421bb3171f6ffd88a534fd240e2c553bc050081fbca21ad93f3c3442c79",
+    "https://wx.zsxq.com/group/88888142214212/topic/22258428515514251": "e1d026e362b8220b9157cd78a04ebe03019fa40910b5199d9def1902cf1968f9",
+    "https://wx.zsxq.com/group/88888142214212/topic/14425145282224852": "e12342d9b5d7a5dd5c165cdfc681a833bed65db34ad1d0ca28fe47fe7172fb4a",
+    "https://wx.zsxq.com/group/88888142214212/topic/22258428528454181": "038ed9fbc76d64c9fdcf0855ba361b5ba1913d3ccc66bdbb359c19e55a8adf8d",
+    "https://wx.zsxq.com/group/88888142214212/topic/22258428584442511": "8e6461c7ca90196ebebbf69feb4e40a50819adaa58bd21f9cc028eee382c043e",
+    "https://wx.zsxq.com/group/88888142214212/topic/45548254112542228": "78609d5605e9066a39e1c23570d8425c4090437d0146d1cbfaad8bc4b9a6c3da",
+    "https://wx.zsxq.com/group/88888142214212/topic/14425142885148242": "907a9864f63bb57c9d60b0a1040faaac7a124e85e68e6ca46c3b73868f6e8b91",
+    "https://wx.zsxq.com/group/88888142214212/topic/55521452851442854": "5790084791227da6c629be8cdeb24b9bbbcba9f0a43a47ef4227422210a4a647",
+    "https://wx.zsxq.com/group/88888142214212/topic/82258425125154412": "904a18b20f81be979555089d94464c9397af0b1d34b972a825a9920883a40129",
+    "https://wx.zsxq.com/group/88888142214212/topic/82258425452184442": "f808ec8bf659513e64584769524444c994f0a583dd1e66f2d4d95928dc7c0aa7",
     "https://wx.zsxq.com/group/88888142214212/topic/82258425222528222": "4f40da63780ae1e7f2df2c2567c079c88e7605d35c196db13ec4289f39c1195c"
   },
   "validation": {
     "editorial": "passed",
-    "completeOriginals": 1,
+    "completeOriginals": 11,
     "resourcesMatchCurrentIndex": true,
     "attachmentGate": {
-      "passed": false,
-      "error": "Attachment scan must cover the daily window or be updated after 16:00 on the report date"
+      "passed": true,
+      "coverageStatus": "pending"
     },
+    "historicalAttachmentsChecked": [
+      "2026-11-09",
+      "2026-11-10"
+    ],
     "announcementEvidenceMatches": true,
-    "recentPublishedCheckResources": {
-      "passed": true,
-      "dates": [
-        "2026-11-10",
-        "2026-11-09"
-      ]
+    "dailyUnitTests": 76,
+    "siteCheck": "passed",
+    "renderAndExportChecks": "passed"
+  },
+  "announcementRechecks": [
+    {
+      "code": "1179.HK",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1116/2026111600943_c.pdf",
+      "listing": "https://www1.hkexnews.hk/search/predefineddoc.xhtml?lang=zh&predefineddocuments=7",
+      "publishedAt": "2026-11-16T18:00:00+08:00",
+      "checkedAt": "2026-11-17T16:19:25+08:00",
+      "result": "披露易18:00发放，按原截点纳入，电话会19:00不作为披露时间。"
     },
-    "dailyUnitTests": {
-      "passed": true,
-      "count": 74
+    {
+      "code": "1405.HK",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1116/2026111600091.pdf",
+      "listing": "https://www1.hkexnews.hk/search/titlesearch.xhtml?category=0&lang=EN&market=SEHK&stockId=1000176932",
+      "publishedAt": "2026-11-16T08:06:00+08:00",
+      "checkedAt": "2026-11-17T16:19:25+08:00",
+      "result": "披露易08:06原件，10月14日至11月10日受托人购入94.46万股，均价约31.82港元，员工激励用股。"
     },
-    "siteCheck": "passed"
-  }
+    {
+      "code": "6055.HK",
+      "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/1109/2026110901246_c.pdf",
+      "listing": null,
+      "publishedAt": "2026-11-09",
+      "checkedAt": "2026-11-17T16:19:25+08:00",
+      "result": "续签原始披露在周一72小时窗口之外；新段子为后续研究跟踪。"
+    }
+  ],
+  "recoveredAt": "2026-11-17T16:19:25+08:00"
 }

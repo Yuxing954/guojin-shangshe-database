@@ -2340,7 +2340,7 @@
   "publicationStatus": "blocked",
   "recoverable": true,
   "publicationBlockers": [
-    "最新main真实附件扫描observedAt为北京时间11月10日16:32；11月14日缺少当天16:00或之后的扫描回执，本期附件窗口未获覆盖。"
+    "仍缺北京时间11月13日18:00至11月14日00:00的附件扫描覆盖，且没有11月14日当天16:00或之后的真实扫描回执。"
   ],
   "validation": {
     "editorial": true,
@@ -2351,5 +2351,66 @@
   },
   "originalHashes": {
     "https://wx.zsxq.com/group/88888142214212/topic/82258425222528222": "4f40da63780ae1e7f2df2c2567c079c88e7605d35c196db13ec4289f39c1195c"
+  },
+  "recoveryReview": {
+    "at": "2026-11-17T16:19:25+08:00",
+    "sourceCommit": "5bd017f4199a53b1c0b5109bb578578b1cb3e539",
+    "eligible": false,
+    "sameFullOriginalsAndHashes": true,
+    "attachmentCatalog": {
+      "generatedAt": "2026-11-16T15:54:37.487Z",
+      "sourceThrough": "2026-11-16T23:45:38.826+0800",
+      "scan": {
+        "observedAt": "2026-11-16T15:54:37.487Z",
+        "sourceGroup": "88888142214212",
+        "sourceName": "水木调研纪要-2.0",
+        "topicsScanned": 480,
+        "topicsInWindow": 462,
+        "topicPages": 16,
+        "topicWindowFrom": "2026-11-14T00:00:00+08:00",
+        "topicWindowTo": "2026-11-16T23:45:38.826+0800",
+        "boundaryReachedBeforeWindow": true,
+        "attachmentsObserved": 315,
+        "uniqueFileIds": 315,
+        "duplicateFileIds": 0,
+        "newRecords": 315,
+        "existingRecordsRefreshed": 0,
+        "attachmentContentRead": false,
+        "sourceMetadataFields": [
+          "fileId",
+          "topicId",
+          "filename",
+          "extension",
+          "bytes",
+          "fileCreatedAt",
+          "topicCreatedAt",
+          "durationSeconds",
+          "downloadCount",
+          "sourceHash",
+          "source"
+        ],
+        "windowStart": "2026-11-14T00:00:00+08:00",
+        "windowEnd": "2026-11-16T15:54:37.487Z",
+        "windowEndDate": "2026-11-16",
+        "windowComplete": true,
+        "archiveHasMore": true
+      },
+      "coverageStatus": "pending",
+      "requestedWindowStart": "2026-11-13T18:00:00+08:00",
+      "requestedCutoff": "2026-11-14T18:00:00+08:00",
+      "missingIntervals": [
+        {
+          "start": "2026-11-13T18:00:00+08:00",
+          "end": "2026-11-14T00:00:00+08:00"
+        }
+      ],
+      "publicationEligibility": {
+        "policy": "scan-observed-after-16",
+        "eligible": false,
+        "scanObservedAt": "2026-11-16T15:54:37.487Z",
+        "coverageComplete": false
+      }
+    },
+    "matchesRebuiltGroups": true
   }
 }

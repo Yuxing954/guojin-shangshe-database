@@ -61,3 +61,18 @@ class SportsBrandScopeRegressionTests(unittest.TestCase):
  def test_adidas_brand_operations_are_consumer_retail(self):
   self.assertEqual(sector_for('阿迪达斯26Q3业绩：收入利润增长'),'零售与消费出海')
   self.assertIsNone(sector_for('机器人代工业务更新','阿迪达斯为其客户'))
+
+class HistoricalBackfillScopeTests(unittest.TestCase):
+ def test_brand_and_consumer_recovery(self):
+  self.assertEqual(sector_for('【浙商轻工】潮玩观察员：海外潮玩龙头最新业绩一览'),'零售与消费出海')
+  self.assertEqual(sector_for('On Running 3Q26 业绩后Callback要点'),'零售与消费出海')
+  self.assertEqual(sector_for('周末好，本周时事多，再次推荐关注商社高增长与高分红标的。','行动教育 百胜中国 首旅酒店'),'商社综合')
+  self.assertEqual(sector_for('周观点：双11顺利收官，珀莱雅卫冕天猫GMV排名第一20261115'),'零售与消费出海')
+  self.assertIsNone(sector_for('10月数据更新','仓储自动化 海外家居代工'))
+  self.assertIsNone(sector_for('【华鑫汽车&机器人】再call飞亚达：对标本体减速器龙头'))
+
+ def test_attachment_scope_without_payload_inspection(self):
+  from build_daily_resource_list import allowed_attachment
+  for name in ('运动鞋服终端交流20261114.mp3','2026年双11淘天美妆复盘20261113.mp3','美国经济：能源价格冲击还有多少会传导至消费价格？.pdf'):
+   self.assertTrue(allowed_attachment({'name':name,'sectors':[]}))
+  self.assertFalse(allowed_attachment({'name':'爱美客：收入与利润承压.pdf','sectors':['retail']}))

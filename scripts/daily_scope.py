@@ -16,6 +16,8 @@ def is_ecommerce_topic(title):
  if re.match(r'(?:美护|美妆|化妆品).*双11.*(?:抖音|天猫).*数据跟踪',subject):return False
  if re.search(r'美妆双(?:11|十一)\s*(?:淘天|天猫)数据复盘',subject):return False
  if '比音勒芬' in subject and '双十一' in subject:return False
+ if re.match(r'周观点[:：]双11顺利收官，珀莱雅卫冕天猫GMV排名第一',subject):return False
+ if re.match(r'2026年双11淘天美妆复盘',subject):return False
  if ECOMMERCE.search(title):return True
  return '电商' in title and not any(x in title for x in RETAIL_CHANNEL_EXCEPTIONS)
 
@@ -64,8 +66,9 @@ def sector_for(title,body=''):
  if '关注航空左侧机会' in title and '春秋' in body and '航油成本' in body:return '酒店旅游'
  # Research team names do not determine sector; remove bracketed broker headings.
  subject=re.sub(r'【[^】]*(?:食饮|传媒|轻工|商社|消费|纺织服装珠宝|纺服)[^】]*】','',title_for(title,body))
+ if re.match(r'#?\s*双11总结\s*纺织服装行业',subject) and all(x in body for x in ('高端阵营','安踏','李宁','波司登')):return '零售与消费出海'
  if EXCLUDE.search(subject) or is_ecommerce_topic(subject) or re.search(r'航空照明|航空航天|航空发动机|航材制造',subject):return None
- if '飞亚达' in subject and re.search(r'灵巧手|机器人精密结构件',subject):return None
+ if '飞亚达' in subject and re.search(r'灵巧手|机器人精密结构件|对标本体减速器',subject):return None
  if re.search(r'雅诗兰黛|登康口腔|新鲜零食（散装山姆）',subject):return '零售与消费出海'
  # Component/contract electronics manufacturing is outside consumer operations.
  if any(x in subject for x in ('盈趣科技','电子制造行业','祥源新材','海天味业','晨光股份')):return None
@@ -73,7 +76,7 @@ def sector_for(title,body=''):
  if re.search(r'滔搏|比音勒芬|地素时尚|歌力思|孩子王|朗姿股份|博士眼镜|SNOWPEAK|诺斯贝尔',subject,re.I):return '零售与消费出海'
  if '长江传媒' in subject and '教材教辅' in body:return '教育人服'
  if '消费板块基金重仓梳理' in subject:return '商社综合'
- if '运动服饰行业' in subject:return '零售与消费出海'
+ if re.search(r'运动服饰行业|运动鞋服终端交流|\bOn\s+Running\b|潮玩观察员[:：].*海外潮玩',subject,re.I):return '零售与消费出海'
  if re.search(r'天目湖|三特索道|宋城演艺|李宁|报喜鸟|CTE(?:潮玩|玩具)展',subject):return '酒店旅游' if re.search(r'天目湖|三特索道|宋城演艺',subject) else '零售与消费出海'
  if re.search(r'航空[:：].*航司控班保价',subject):return '酒店旅游'
  # Geographic fieldwork can have a generic title; require explicit duty-free
@@ -81,6 +84,12 @@ def sector_for(title,body=''):
  if re.search(r'海南.*(?:调研|渠道|反馈)',subject) and re.search(r'离岛免税|免税|中免',body):return '免税'
  if '商社板块' in subject and re.search(r'教育|酒店|免税|餐饮|零售',body):return '商社综合'
  if re.match(r'周末好.*推荐标的',subject) and sum(x in body for x in ('行动教育','百胜中国','周大福','名创优品','东百集团'))>=3:return '商社综合'
+ if re.match(r'周末好.*关注商社高增长与高分红标的',subject) and sum(x in body for x in ('行动教育','百胜中国','周大福','名创优品','首旅酒店'))>=3:return '商社综合'
+ if re.match(r'产业景气高频跟踪',re.sub(r'^【国金研究】','',subject)) and all(x in body for x in ('酒店：','RevPAR','酒店预订')):return '酒店旅游'
+ if '左侧布局航空' in subject and all(x in body for x in ('国内线航班量','裸票价','春秋航空')):return '酒店旅游'
+ if subject.strip()=='10月数据更新' and sum(x in body for x in ('【海澜之家】','【森马服饰】','【地素时尚】','【歌力思】'))>=3:return '零售与消费出海'
+ if subject.startswith('周度更新：外销成本压力') and all(x in body for x in ('中烟香港公告重续','烟叶进口','卷烟出口')):return '零售与消费出海'
+
  if re.match(r'周观点[:：].*比音勒芬',subject) and re.search(r'安踏.*特步',body):return '零售与消费出海'
  if re.match(r'双11大促跟踪',subject) and sum(x in body for x in ('珀莱雅','毛戈平','上海家化','润本','玉泽','佰草集'))>=3:return '零售与消费出海'
  if re.search(r'航司.*(?:供需|经营数据|客座率|客运|运力)',subject):return '酒店旅游'

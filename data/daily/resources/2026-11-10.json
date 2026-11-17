@@ -5,8 +5,8 @@
   "cutoff": "2026-11-10T18:00:00+08:00",
   "sourceThrough": "2026-11-09T00:53:54.133+0800",
   "attachmentCatalog": {
-    "generatedAt": "2026-11-10T08:32:00.167Z",
-    "sourceThrough": "2026-11-10T14:58:04.744+0800",
+    "generatedAt": "2026-11-16T15:54:37.487Z",
+    "sourceThrough": "2026-11-16T23:45:38.826+0800",
     "scan": {
       "observedAt": "2026-11-10T08:32:00.167Z",
       "sourceGroup": "88888142214212",
@@ -56,7 +56,9 @@
       "eligible": true,
       "scanObservedAt": "2026-11-10T08:32:00.167Z",
       "coverageComplete": false
-    }
+    },
+    "scanReceiptFile": "data/daily/resources/2026-11-13.json",
+    "usedHistoricalScan": true
   },
   "groups": {
     "segments": [],
@@ -81,5 +83,11 @@
     ],
     "reports": []
   },
-  "policy": "仅依据已入库元数据列出标题、发布时间和来源主题；未下载、读取或转写附件，不把研究报告标为纪要。"
+  "policy": "仅依据已入库元数据列出标题、发布时间和来源主题；未下载、读取或转写附件，不把研究报告标为纪要。",
+  "attachmentBackfill": {
+    "at": "2026-11-17T16:21:07+08:00",
+    "originalCutoff": "2026-11-10T18:00:00+08:00",
+    "indexGeneratedAt": "2026-11-16T15:54:37.487Z",
+    "previousIndexGeneratedAt": "2026-11-16T15:54:37.487Z"
+  }
 }

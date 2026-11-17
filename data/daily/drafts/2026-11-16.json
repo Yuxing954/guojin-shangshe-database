@@ -2146,9 +2146,10 @@
       "sha256": "4f40da63780ae1e7f2df2c2567c079c88e7605d35c196db13ec4289f39c1195c"
     }
   },
-  "publicationStatus": "blocked",
-  "publicationBlockers": [
+  "publicationStatus": "superseded",
+  "supersededAt": "2026-11-17T16:19:25+08:00",
+  "replacementFile": "data/daily/onepage/2026-11-16.json",
+  "resolvedPublicationBlockers": [
     "最新main真实附件扫描回执为北京时间11月10日16:32，未获得11月16日当天16:00及以后回执，且没有完整覆盖本期窗口的历史回执。"
-  ],
-  "recoverable": true
+  ]
 }
