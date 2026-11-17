@@ -10,11 +10,11 @@
   kind:saved?(params.get('kind')||'全部'):'全部',
   frequency:saved?(params.get('frequency')||'单季度'):'单季度',
   from:saved?params.get('from'):'',to:saved?params.get('to'):'',
-  range:saved?(params.get('range')||(params.has('from')?'custom':'8')):'8',
+  range:saved?(params.get('range')||(params.has('from')?'custom':'12')):'12',
   region:saved?(params.get('region')||''):'',category:saved?(params.get('category')||''):'',
   mode:saved?(params.get('operation')||'合计'):'合计',currency:saved?(params.get('currency')||'CNY'):'CNY',
   display:saved?(params.get('display')||'change'):'change',query:saved?(params.get('q')||''):'',
-  detailCategory:'*',detailMode:'*',page:1,advanced:false,peers:params.has('peers')?params.get('peers').split(','):[params.get('company')||params.get('db')||'jinjiang']
+  detailCategory:'*',detailMode:'*',page:1,advanced:false,peers:params.has('peers')?params.get('peers').split(','):(params.has('company')||params.has('db')?[params.get('company')||params.get('db')]:['jinjiang','btg','hworld','atour'])
  };
  let manifest,data,renderToken=0;
  const uniq=values=>[...new Set(values)],unit=(i,c='CNY')=>i===2?'%':({CNY:'元',EUR:'欧元',USD:'美元'}[c]||c);
@@ -31,7 +31,7 @@
   if(!['单季度','累计'].includes(state.frequency))state.frequency='单季度';
   if(!['change','value'].includes(state.display))state.display='change';
   if(!['operating','details'].includes(state.tab))state.tab='operating';
-  if(!['8','12','20','all','custom'].includes(state.range))state.range='8';
+  if(!['8','12','20','all','custom'].includes(state.range))state.range='12';
   if(!manifest.quarters.includes(state.to))state.to=manifest.quarters.at(-1);
   if(state.range!=='custom'){const qs=manifest.quarters.filter(q=>q<=state.to);state.from=state.range==='all'?qs[0]:qs.slice(-Number(state.range))[0];}
   const qs=M.range(manifest.quarters,state.from,state.to);state.from=qs[0];state.to=qs.at(-1);
@@ -75,7 +75,7 @@
   bind('oh-kind',v=>{state.kind=v;resetDimensions();});
   bind('oh-display',v=>state.display=v);
   $('dh-advanced').querySelector('summary').onclick=()=>{state.advanced=!$('dh-advanced').open;};
-  $('dh-reset').onclick=()=>{Object.assign(state,{kind:'全部',frequency:'单季度',display:'change',range:'8',to:manifest.quarters.at(-1),query:'',advanced:false});resetDimensions();render();};
+  $('dh-reset').onclick=()=>{Object.assign(state,{kind:'全部',frequency:'单季度',display:'change',range:'12',to:manifest.quarters.at(-1),query:'',advanced:false});resetDimensions();render();};
  }
  function updateURL(){
   CompanyWorkspace.mountActions();
@@ -116,8 +116,8 @@
   $('oh-export-view').onclick=()=>exportRows(series.flatMap(s=>s.points.flatMap(p=>p.records.filter(Boolean))),data.company.name+'_当前筛选.csv');
  }
  async function compare(token){
-  toolbar(null);bindPeriods();$('oh-content').innerHTML='';$('oh-status').textContent='正在读取所选公司…';
-  const datasets=await Promise.all(manifest.companies.filter(c=>state.peers.includes(c.id)).map(loadCompany));if(token!==renderToken)return;$('oh-status').textContent='';
+  $('oh-workspace').setAttribute('aria-busy','true');
+  const datasets=await Promise.all(manifest.companies.filter(c=>state.peers.includes(c.id)).map(loadCompany));if(token!==renderToken)return;toolbar(null);bindPeriods();$('oh-status').textContent='';
   const qs=M.range(manifest.quarters,state.from,state.to),series=datasets.map(d=>({id:d.company.id,name:d.company.name,currency:'CNY',points:M.mainSeries(d,state.kind,qs,state.frequency)}));
   $('oh-profile').innerHTML='<div><h2>'+esc(datasets.map(d=>d.company.name).join(' · '))+'</h2><p>境内主口径 · 人民币</p></div><span class="oh-tag">'+(state.kind==='同店'?'同店酒店':'全部酒店')+'</span>';
   $('oh-content').innerHTML='<article class="oh-block"><div class="oh-block-head"><h3>'+esc(periodName(M.period(state.to,state.frequency)))+'</h3><small>'+esc(state.frequency)+' · 元 / %</small></div>'+table(['集团','RevPAR','ADR','OCC'],series.map(s=>'<tr><td>'+esc(s.name)+(s.name==='锦江酒店'&&state.kind==='同店'&&state.frequency==='单季度'&&!/Q1$/.test(state.to)?'<small>仅累计披露</small>':'')+'</td>'+s.points.at(-1).records.map((r,i)=>cell(r,i)).join('')+'</tr>'))+'</article>'+blocks(series,qs);
@@ -159,15 +159,15 @@
     $('oh-profile').innerHTML='<div><h2>'+esc(data.company.name)+'</h2><p>'+esc(data.company.english+' · '+data.company.ticker)+'</p></div>';
     if(state.tab==='details')details();else operating();
    }
-   if(token!==renderToken)return;bindCharts();updateURL();CompanyWorkspace.enhance();
+   if(token!==renderToken)return;$('oh-workspace').hidden=false;bindCharts();updateURL();CompanyWorkspace.enhance();$('oh-workspace').hidden=false;$('oh-workspace').removeAttribute('aria-busy');
   }catch(e){if(token!==renderToken)return;$('oh-status').textContent='数据读取失败：'+e.message;$('oh-retry').hidden=false;$('oh-content').innerHTML='';}
  }
  async function choose(id){
   if(!state.peers.length){++renderToken;data=null;state.company='';comparison=false;evidence.clear();charts.clear();document.body.dataset.view='empty';document.querySelectorAll('[data-company]').forEach(b=>b.setAttribute('aria-pressed','false'));updateURL();CompanyWorkspace.clearSelection();$('oh-retry').hidden=true;$('oh-status').textContent='请选择公司';return;}
   state.company=manifest.companies.some(c=>c.id===id)?id:manifest.companies[0].id;const token=++renderToken;
-  $('oh-workspace').hidden=true;$('oh-retry').hidden=true;$('oh-status').textContent='正在读取数据…';
+  $('oh-workspace').setAttribute('aria-busy','true');$('oh-retry').hidden=true;if($('oh-workspace').hidden)$('oh-status').textContent='正在读取数据…';
   document.querySelectorAll('[data-company]').forEach(b=>b.setAttribute('aria-pressed',state.peers.includes(b.dataset.company)));
-  try{const next=await loadCompany(manifest.companies.find(c=>c.id===state.company));if(token!==renderToken)return;data=next;$('oh-workspace').hidden=false;await render();}
+  try{const next=await loadCompany(manifest.companies.find(c=>c.id===state.company));if(token!==renderToken)return;data=next;await render();}
   catch(e){if(token!==renderToken)return;$('oh-status').textContent='数据读取失败：'+e.message;$('oh-retry').hidden=false;}
  }
  async function init(){

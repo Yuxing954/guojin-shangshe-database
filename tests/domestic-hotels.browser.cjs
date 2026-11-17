@@ -17,7 +17,7 @@ async function csv(page,selector){const event=page.waitForEvent('download');if(!
   assert.equal(await p.locator('#oh-kind').inputValue(),'全部');assert.equal(await p.locator('#oh-frequency').inputValue(),'单季度');assert.equal(await p.locator('#oh-display').inputValue(),'change');
   assert.equal(await p.locator('#oh-toolbar select:visible').count(),4);assert.equal(await p.locator('#oh-kind option').count(),2);
   assert.equal(await p.locator('.oh-company svg').count(),4);
-  assert.equal(await p.locator('.dh-monogram').count(),0);assert.equal(await p.locator('.site-paired-chart').count(),3);assert.equal(await p.locator('.oh-kpi').count(),3);
+  assert.equal(await p.locator('.dh-monogram').count(),0);assert.equal(await p.locator('.site-paired-chart').count(),3);assert.equal(await p.locator('[data-company][aria-pressed=true]').count(),4);assert.equal(await p.locator('#oh-range').inputValue(),'12');await selectOnly(p,'jinjiang');await ready();assert.equal(await p.locator('.oh-kpi').count(),3);
   assert.equal(await p.locator('.oh-company img').count(),0);assert.equal(await p.locator('.oh-company svg.cw-brand-mark').count(),4);
   async function verifyPlot(company,kind,frequency){
    const qs=manifest.quarters.filter(q=>q>=new URL(p.url()).searchParams.get('from')&&q<=new URL(p.url()).searchParams.get('to')),source=M.mainSeries(datasets.find(d=>d.company.id===company),kind,qs,frequency);
@@ -27,9 +27,9 @@ async function csv(page,selector){const event=page.waitForEvent('download');if(!
   await p.locator('#dh-chart-0 svg').focus();await p.keyboard.press('End');assert((await p.locator('.site-chart-tooltip:not([hidden])').innerText()).includes('26Q3'));await p.keyboard.press('Escape');
   await setChartLabel(p.locator('#dh-chart-0').locator('..').locator('[data-chart-labels]'),true);assert(await p.locator('#dh-chart-0 .site-value-label').count()>0);
   await p.locator('.oh-kpi [data-source]').first().click();await p.locator('#oh-evidence[open]').waitFor();assert((await p.locator('#oh-evidence-body').innerText()).includes('PDF物理页码'));assert((await p.locator('#oh-evidence-body a').getAttribute('href')).startsWith('http'));await p.click('#oh-close');
-  const exported=await csv(p,'#oh-export-view');assert.equal(exported.length,24);assert(exported.every(r=>r['样本']==='全部酒店'&&/Q[1-4]$/.test(r['原报告期'])&&r['原始网址'].startsWith('http')));
+  const exported=await csv(p,'#oh-export-view');assert.equal(exported.length,36);assert(exported.every(r=>r['样本']==='全部酒店'&&/Q[1-4]$/.test(r['原报告期'])&&r['原始网址'].startsWith('http')));
   await p.selectOption('#oh-range','8');assert.equal((await p.evaluate(()=>domPlotData['dh-chart-0'])).rows.length,8);await more();await p.selectOption('#oh-period','2025Q4');assert.equal((await p.evaluate(()=>domPlotData['dh-chart-0'])).rows.at(-1).period,'25Q4');await p.selectOption('#oh-from','2020Q1');assert.equal(await p.locator('#oh-range').inputValue(),'custom');assert.equal((await p.evaluate(()=>domPlotData['dh-chart-0'])).rows.length,24);
-  await p.click('#dh-reset');assert.equal(await p.locator('#oh-range').inputValue(),'8');assert.equal(await p.locator('#oh-kind').inputValue(),'全部');assert.equal(await p.locator('#oh-toolbar select:visible').count(),4);
+  await p.click('#dh-reset');assert.equal(await p.locator('#oh-range').inputValue(),'12');assert.equal(await p.locator('#oh-kind').inputValue(),'全部');assert.equal(await p.locator('#oh-toolbar select:visible').count(),4);
   // Old URLs and workspace bookmarks migrate once; new explicit selections persist.
   await p.goto(base+'/company-database.html?company=atour&kind='+encodeURIComponent('同店')+'&frequency='+encodeURIComponent('累计')+'&display=value&sampleView=2');await ready();
   assert.equal(await p.locator('#oh-kind').inputValue(),'全部');assert.equal(await p.locator('#oh-frequency').inputValue(),'单季度');assert.equal(await p.locator('#oh-display').inputValue(),'change');assert.equal(new URL(p.url()).searchParams.get('sampleView'),'3');
