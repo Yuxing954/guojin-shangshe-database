@@ -1,0 +1,51 @@
+{
+  "date": "2026-11-17",
+  "windowStart": "2026-11-16T18:00:00+08:00",
+  "cutoff": "2026-11-17T18:00:00+08:00",
+  "checkedAt": "2026-11-17T18:10:00+08:00",
+  "batches": [
+    {
+      "checks": [
+        {
+          "q": "site:hkexnews.hk 9896 2026 11 17 quarterly results MINISO",
+          "kind": "statutory"
+        },
+        {
+          "q": "site:ir.miniso.com 2026 November 17 MINISO third quarter results",
+          "kind": "IR"
+        },
+        {
+          "q": "site:cninfo.com.cn 覆盖公司 公告 2026-11-17",
+          "kind": "statutory"
+        },
+        {
+          "q": "site:stats.gov.cn 2026年11月17日 消费 旅游 零售 数据",
+          "kind": "industry"
+        }
+      ],
+      "error": false,
+      "hits": [
+        {
+          "title": "MINISO Group Announces 2026 September Quarter and Nine-Month Unaudited Financial Results",
+          "url": "https://www.prnewswire.com/news-releases/miniso-group-announces-2026-september-quarter-and-nine-month-unaudited-financial-results-302941766.html",
+          "publishedAt": "2026-11-17T16:32:00+08:00",
+          "result": "公司发布；正文已回读。"
+        },
+        {
+          "title": "港交所董事会会议日程：MNSO 9896 RESULTS",
+          "url": "https://www3.hkexnews.hk/reports/bmn/ebmn.htm",
+          "result": "日程交叉核对。"
+        },
+        {
+          "title": "国家统计局数据发布页",
+          "url": "https://www.stats.gov.cn/sj/",
+          "result": "18:00前最近24小时未取得可核实的新消费数据；不据此宣称全行业无更新。"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "检索只形成候选；法定披露与IR原始清单未完整回读的公司继续记录为失败/部分。",
+    "名创优品业绩由公司发布正文核实。"
+  ]
+}

@@ -45,6 +45,8 @@ def sector_for(title,body=''):
  if '珠免集团' in title and not EXCLUDE.search(title):return '免税'
  if re.search(r'高端商场|德基广场',title) and not EXCLUDE.search(title):return '零售与消费出海'
  if re.search(r'\bBOS{1,2}D?\s*直聘',title,re.I) and not EXCLUDE.search(title):return '教育人服'
+ if '锦江航运' in title or re.search(r'集装箱|航线运价',title):return None  # Container shipping, not hotel/travel operations.
+ if re.match(r'\d{1,2}月\d{1,2}日复盘笔记',title) and sum(x in body for x in ('AI','家电','电力设备','传媒','算力'))>=2:return None  # Broad market recap dominated by excluded sectors.
  if '西锐' in title and ('飞机' in body or '空中奢侈品' in title):return None  # Aircraft manufacturing, not passenger travel.
  if '汉朔科技' in title:return None  # Retail technology supplier, not retail operations.
  if re.search(r'Tapestry|Coach|明月镜片',title,re.I):return '零售与消费出海'

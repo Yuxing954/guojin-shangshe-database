@@ -1,8 +1,8 @@
 import datetime as dt
-import sys,unittest
+import sys,unittest,tempfile
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
-from build_daily_report import inside,stamp,numeric_candidates,TZ,window_hours
+from build_daily_report import inside,stamp,numeric_candidates,TZ,window_hours,publication_dates
 class DailyTests(unittest.TestCase):
  def test_window(self):
   end=stamp('2026-10-12T16:00:00+08:00')
@@ -18,6 +18,10 @@ class DailyTests(unittest.TestCase):
   self.assertFalse(inside('2026-10-09T16:00:00+08:00',end,window_hours(end)))
   self.assertEqual(window_hours(stamp('2026-10-13T16:00:00+08:00')),24)
   self.assertEqual(window_hours(stamp('2026-10-12T08:00:00Z')),72)
+ def test_publication_index_includes_editorial_only_dates(self):
+  with tempfile.TemporaryDirectory() as d:
+   root=Path(d);(root/'onepage').mkdir();(root/'2026-11-17.json').write_text('{}');(root/'onepage'/'2026-11-16.json').write_text('{}')
+   self.assertEqual(publication_dates(root),['2026-11-17','2026-11-16'])
  def test_metadata_zero_and_missing(self):
   d={'series':{'consumer-cpi':{'spec':{'name':'消费价格','unit':'%'},'observations':[{'period':'2026-08','value':0},{'period':'2026-09','value':None}]}}}
   r=numeric_candidates(d,'automatic-series.json')['consumer-cpi']

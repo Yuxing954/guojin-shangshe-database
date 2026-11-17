@@ -64,6 +64,10 @@ class ScopeTests(unittest.TestCase):
   for title in ['【国泰海通美护】双十一前瞻','361度26Q3运营数据交流会']:
    self.assertEqual(sector_for(title),'零售与消费出海')
   self.assertIsNone(sector_for('【中泰商社】汉朔科技：智慧零售方案'))
+ def test_excludes_shipping_and_broad_market_recaps(self):
+  self.assertIsNone(sector_for('锦江航运：东南亚航线运价大涨','集装箱航线运价上涨，运力紧张。'))
+  self.assertIsNone(sector_for('11月16日复盘笔记：AI漫剧/家电/零售/电力设备','AI、家电、电力设备、传媒及算力板块复盘，零售仅为一项。'))
+
  def test_excludes_unrelated(self):
   for title in ['食饮周观点：白酒动销改善','惠泰医疗业绩预期','GPU电源研究','国海轻工周观点','白酒渠道反馈：商超动销']:
    self.assertIsNone(sector_for(title,'酒店消费门店'))

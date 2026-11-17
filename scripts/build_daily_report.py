@@ -104,6 +104,11 @@ def build(end):
     sections['news']=sorted(news,key=lambda r:(r.get('importance',0),r['publishedAt']),reverse=True)[:12]
     return {'schemaVersion':1,'date':end.date().isoformat(),'cutoff':end.isoformat(),'windowStart':(end-dt.timedelta(hours=window_hours(end))).isoformat(),'windowHours':window_hours(end),'industryWindowHours':24,'industryWindowStart':(end-dt.timedelta(hours=24)).isoformat(),'industryWindowEnd':end.isoformat(),'generatedAt':dt.datetime.now(TZ).isoformat(timespec='seconds'),'sections':sections,'coverage':{'researchSourceTo':read('data/research/updates/manifest.json',{}).get('coverageTo'),'newsCheckedAt':feed.get('checkedAt'),'newsStatus':feed.get('status','未核验'),'excludedResearchRows':excluded},'notes':['重要数据仅按截点前24小时真实发布时间筛选；入库时间不替代发布时间。','段子、市场观点按原始发布时间筛选新增窗口（周一72小时、其他日24小时）；全部符合范围的内容供AI逐篇编辑。','新闻仅收录已核验原文、分钟级发布时间及来源链接的记录；空栏不代表市场没有新闻。','每日16:00北京时间截点；自动任务启动、检索和发布可能延迟。']}
 
+def publication_dates(folder):
+    raw={p.stem for p in folder.glob('????-??-??.json')}
+    editorial={p.stem for p in (folder/'onepage').glob('????-??-??.json')}
+    return sorted(raw|editorial,reverse=True)
+
 def main():
     p=argparse.ArgumentParser();p.add_argument('--date');p.add_argument('--cutoff'); a=p.parse_args(); now=dt.datetime.now(TZ)
     date=dt.date.fromisoformat(a.date) if a.date else now.date()
@@ -113,7 +118,7 @@ def main():
     report=build(end); folder=ROOT/'data/daily';folder.mkdir(exist_ok=True)
     report['notes'][-1]=f'北京时间{end:%H:%M}截点；自动任务启动、检索和发布可能延迟。'
     for name in [report['date']+'.json','latest.json']:(folder/name).write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
-    dates=sorted([p.stem for p in folder.glob('????-??-??.json')],reverse=True)
+    dates=publication_dates(folder)
     (folder/'index.json').write_text(json.dumps({'dates':dates},ensure_ascii=False,indent=2)+'\n')
     print({k:len(v) for k,v in report['sections'].items()})
 if __name__=='__main__': main()
