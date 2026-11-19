@@ -1,0 +1,70 @@
+{
+  "date": "2026-11-19",
+  "windowStart": "2026-11-18T18:00:00+08:00",
+  "cutoff": "2026-11-19T18:00:00+08:00",
+  "checkedAt": "2026-11-19T18:06:00+08:00",
+  "batches": [
+    {
+      "checks": [
+        {
+          "q": "SEC H World Group Jin Hui Form 144 2026-11-18",
+          "kind": "regulator"
+        },
+        {
+          "q": "HKEX coverage companies announcements 2026-11-18 18:00 to 2026-11-19 18:00",
+          "kind": "statutory"
+        },
+        {
+          "q": "SSE/SZSE/CNINFO coverage companies announcements 2026-11-18 to 2026-11-19",
+          "kind": "statutory"
+        }
+      ],
+      "error": false,
+      "hits": [
+        {
+          "title": "H World Group Ltd Form 144/A",
+          "url": "https://www.sec.gov/Archives/edgar/data/1483994/000110465926129535/primary_doc.xml",
+          "publishedAt": "2026-11-18",
+          "result": "修订文件取代同日错误Form 144；拟售50万股普通股，估值268.25万美元。"
+        },
+        {
+          "title": "HKEX预定义公告清单",
+          "url": "https://www1.hkexnews.hk/search/predefineddoc.xhtml?predefineddocuments=7",
+          "result": "窗口内候选已筛查；未将未完整分页回读解释为无公告。"
+        }
+      ]
+    },
+    {
+      "checks": [
+        {
+          "q": "2026年10月 海南离岛免税 22亿元 海口海关",
+          "kind": "industry"
+        },
+        {
+          "q": "2026年第46周 酒店 RevPAR STR",
+          "kind": "industry"
+        }
+      ],
+      "error": false,
+      "hits": [
+        {
+          "title": "今年1-10月海南离岛免税购物金额276.6亿元",
+          "url": "https://hi.people.com.cn/n2/2026/1109/c231190-41745545.html",
+          "publishedAt": "2026-11-09T10:58:00+08:00",
+          "result": "累计数据真实发布早于24小时窗口；10月单月为研究倒算，不列行业重要数据。"
+        },
+        {
+          "title": "酒店行业周度数据更新",
+          "url": "https://wx.zsxq.com/group/88888142214212/topic/22258422488522281",
+          "publishedAt": "2026-11-19T13:18:21.623000+08:00",
+          "result": "转引STR口径，纳入行业数据并保留OCC单位缺口。"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "检索仅形成候选；部分法定披露与IR原始清单/分页未完整回读，逐公司状态记为partial。",
+    "SEC修订文件已回读并覆盖原始Form 144。",
+    "财报日历最近更新于2026-10-12，本期未取得11月19日至22日可核验预约，earningsUpcoming保持空数组且不宣称没有财报。"
+  ]
+}
