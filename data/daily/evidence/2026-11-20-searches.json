@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-20",
+  "checkedAt": "2026-11-20T18:04:18+08:00",
+  "windowStart": "2026-11-19T18:00:00+08:00",
+  "cutoff": "2026-11-20T18:00:00+08:00",
+  "status": "partial",
+  "scope": "统一覆盖公司法定披露、公司IR、行业重要数据及未来三日财报候选",
+  "queries": [
+    {
+      "source": "HKEX",
+      "url": "https://www1.hkexnews.hk/search/titlesearch.xhtml",
+      "result": "按覆盖公司代码复核标题候选；携程公告恰在左边界，按窗口规则排除。"
+    },
+    {
+      "source": "CNINFO",
+      "url": "https://www.cninfo.com.cn/new/disclosure/stock?stockCode=300896",
+      "result": "爱美客员工持股计划修订列表发布时间为2026-11-19 16:00，早于本期窗口；研究段子仍按真实主题时间纳入。"
+    },
+    {
+      "source": "SEC EDGAR",
+      "url": "https://www.sec.gov/Archives/edgar/data/1269238/000119312526467690/d77175dex991.htm",
+      "result": "携程第三季度业绩将于2026-12-01美股盘后发布，不在日报日期及未来三天范围。"
+    },
+    {
+      "source": "商务部",
+      "url": "https://www.mofcom.gov.cn/",
+      "result": "消费市场数据原始发布时间为2026-11-19 16:18，早于行业窗口；11月20日转载不改变真实发布时间。"
+    },
+    {
+      "source": "BLS",
+      "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "result": "计划发布时间折算为北京时间2026-11-20 23:00，晚于18:00截点。"
+    }
+  ],
+  "limits": "部分交易所和公司IR原始清单/分页未完整回读；检索未发现候选不等同于确认无公告或无数据。"
+}
