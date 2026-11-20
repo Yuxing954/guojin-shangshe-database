@@ -1,0 +1,114 @@
+"时间","原始发布时间","月份","标题","内容","作者","原文链接","命中关键词","更新批次"
+"2026-11-20 14:14","2026-11-20T14:14:04.546+0800","2026-11","服务器 CPU 前景要点
+
+•...","服务器 CPU 前景要点
+
+•近期有关 Meta/Microsoft 削减订单的传闻被夸大了
+→ Meta 将部分 x86（主要是 Emerald Rapids）转向 Grace 和 Vera CPU（超过 50 万颗），这表明其正在加快面向智能体 AI 的通用服务器部署。
+→ Venice CPU 出货量预估：最高达 ~600 万颗（2027 年）
+→ Microsoft 总订单量不变，仅调整 ODM 产能分配
+•智能体 AI 正在加速发展：OpenRouter 上 ~80% 的 tokens 属于智能体工作负载
+→ OpenAI GPT-6.2 Astra/Sol 和 Anthropic Claude Duet 正在推动智能体在商业领域的普及
+•AMD 持续提升市场份额
+→ 3Q26 x86 服务器 CPU 出货量达 813 万颗（同比增长逾 20%），创 5 年来最快增速
+→ AMD 市占率创纪录，达到 35.5%（环比提升 1 个百分点，较 3Q25 的 27.8% 上升）
+→ Venice CPU 出货量预测：2026 年 40 万颗 / 2027 年 540 万颗
+•维持 TAM 预测：到 2030 年，全球服务器 CPU TAM 将达到 2,110 亿美元（复合年增长率 +47%）
+→ 预计 2027 年服务器 CPU 出货量将增长 29%，受 AI 推理 CPU 需求增长 79% 带动","水木调研纪要","https://wx.zsxq.com/group/88888142214212/topic/82258424548122452","","2026-11-20-141452"
+"2026-11-20 14:13","2026-11-20T14:13:19.909+0800","2026-11","市场似乎误将中国企业级 SSD...","市场似乎误将中国企业级 SSD 减产解读为需求走弱和 NAND 供应过剩。
+
+Phison CEO commentary today + more context behind 
+$SNDK
+ / Kioxia selloff regarding Trendforce revisions: 
+Phison 首席执行官今日的评论，以及有关 Trendforce 修订导致 $SNDK / Kioxia 股价下跌的更多背景：
+
+- ""Pua attributed China's recent enterprise SSD demand slowdown to GPU shortages since November 2026""
+- “Pua 将中国近期企业级 SSD 需求放缓归因于自 2026 年 11 月以来的 GPU 短缺。”
+
+- ""Without GPUs, additional purchases offer little value, prompting some companies to sell server components on the spot market to recover cash"" 
+- “没有 GPU，额外采购的价值微乎其微，因此一些公司选择在现货市场出售服务器组件以回笼资金。”
+
+(for context enterprise SSDs are growth driver for NAND)
+（作为背景，企业级 SSD 是 NAND 的增长驱动力）
+
+- ""Chinese cloud giants nevertheless plan substantial GPU prepayments, temporarily tying up capital and delaying procurement of other components.""
+- “尽管如此，中国云计算巨头仍计划大规模预付 GPU 款项，这会暂时占用资金，并推迟其他组件的采购。”
+
+- ""the principal challenge in 2027 would be insufficient supply rather than weakening demand, with persistent AI shortages potentially prompting further procurement and inventory accumulation.""
+- “2027 年的主要挑战将是供应不足，而非需求走弱；AI 领域持续的短缺可能促使企业进一步采购并囤积库存。”
+
+Markets seemed to have wrongly interpreted this as demand destruction + pricing collapse. 
+市场似乎误将此解读为需求崩塌和价格暴跌。
+
+When Phison CEO attributed it to 
+-> GPU shortages 
+-> causing procurement timing mismatch 
+-> Chinese CSPs needed capital for GPU prepayments, so liquidation in inventory (causing spot price volatility)
+-> timeline shift in order procurement 
+当群联电子 CEO 将其归因于
+-> GPU 短缺
+-> 导致采购时机错配
+-> 中国 CSP 需要资金预付 GPU 货款，因此清理库存（导致现货价格波动）
+-> 采购订单时间表发生变化
+
+TLDR: delayed procurement from GPU shortages. there were actual order cuts, but this is deferred procurement not structural demand weakening. 
+简而言之：GPU 短缺导致采购延迟。订单确实有所削减，但这是采购延期，而非结构性需求减弱。
+
+Chinese CSPs needed capital for GPU prepayments so they liquidated other inventories in the meantime. 
+中国 CSP 需要资金预付 GPU 货款，因此暂时清理了其他库存。
+
+Phison says its inventories are insufficient for anticipated 2027 demand and it's sees this as an opportunity for NAND accumulation. 
+群联电子表示，其库存不足以满足对 2027 年需求的预期，并将此视为积累 NAND 的机会。
+
+It's interesting the bottleneck in China migrated back to GPUs though.
+有意思的是，中国的瓶颈又转回到 GPU 上了。","水木调研纪要","https://wx.zsxq.com/group/88888142214212/topic/45548252428158158","","2026-11-20-141452"
+"2026-11-20 14:07","2026-11-20T14:07:06.744+0800","2026-11","KB 证券预计，按合约价格计算...","KB 证券预计，按合约价格计算，三星和 SK 海力士明年的 DRAM 平均售价（ASP）将较今年上涨 40%，NAND 闪存平均售价将上涨 30%。
+
+KB 证券在 20 日发布的一份报告中表示，过去一个月，DRAM 现货价格下跌 5%，NAND 现货价格下跌 20%。该机构估计，同期合约价格持续上涨，截至 11 月，现货价格与合约价格之间的差距扩大至 20%以上。
+
+该机构预计，明年 DRAM 供应短缺将进一步加剧。KB 证券估计，2027 年全球 DRAM 需求将同比增长 25%，超过其预测的 18%的供应增幅。尤其是服务器 DRAM 需求预计将较今年增长 56%，是整体 DRAM 需求增速的两倍多。
+
+预计主要客户只能获得所需 DRAM 供应量的约 70%。","水木调研纪要","https://wx.zsxq.com/group/88888142214212/topic/22258424545544211","","2026-11-20-141452"
+"2026-11-20 13:53","2026-11-20T13:53:59.979+0800","2026-11","📉 半导体周期结束了吗？
+（尹...","📉 半导体周期结束了吗？
+（尹智浩、Seonjinjjang）
+
+😮‍💨 即便没有发生重大负面冲击，市场上投资者的疲惫感已经不断累积，弥漫着一种放弃的情绪，让人联想到 2022 年英伟达那段市场极度悲观的时期。
+📉 和以往行情走弱时资金短暂休整不同，近期资金出逃力度极强，股票研究社群纷纷解散，甚至有人把办公家具挂出来变卖。
+💸 指数较高点回落接近 45%，在 7000 至 8000 点位入场的投资者亏损惨重。
+😰 指数跌破 7 月低点、向 4000 区间靠近的时候，即便是坚持扛到最后的投资者，信心也彻底崩塌。
+🔁 历史行情规律再度上演：股价率先下行，随后分析师开始下调盈利预测。
+📊 铠侠财报以及集邦科技下调 NAND 市场展望，恐慌情绪向外传导，市场开始担忧 DRAM 供需格局恶化。
+🧮 测算显示，AI 生态很难消化三星电子和 SK 海力士合计 800 万亿至 900 万亿韩元的营业利润，市场开始担忧 2028 年盈利下行。
+⚠️ 驱动市场焦虑的并不是需求过剩，而是宏观不确定性、流动性问题，叠加英伟达订单保障延期、美联储报告债务评估争议等多重因素。
+⏸️ 此前由涨价驱动的 P 周期，并没有直接切换到出货量驱动的 Q 周期，而是在去年 7 月阶段性停滞。
+📌 只有当 2027 年盈利预测下调、2028 年盈利下滑的预期正式被市场定价之后，股价才有望真正探明底部。
+🔄 行情不再是涨两年、跌一年的老剧本，市场预期经过时间与价格层面的调整之后，Q 周期有望在明年 3、4 月重启。
+💥 如果 AI 投资停滞、Q 周期无法到来，数据中心资产将会大幅贬值，全球经济陷入衰退，几乎没有板块能够独善其身。
+✅ AI 投资即便延期，也具备持续推进的必要性；如果你手握现金、准备新开仓位，存储芯片和 IT 赛道依旧是首选方向。
+📦 2027 年大部分半导体出货量订单已经锁定，盈利出现断崖式暴跌的概率偏低。
+💰 三星电子股价 17 万至 18 万韩元区间（对应约 1 倍前瞻市净率）、SK 海力士 0.8–0.9 倍前瞻市净率区间，风险收益比极具吸引力。
+🤍 三星电子与 SK 海力士内部员工层面，完全看不到市场景气崩塌的信号；近期流传的设备交付延期传闻，大概率只是市场情绪冰点下滋生的猜测。
+📈 如果从 2028 年开始，两家公司能够连续三年维持每年约 300 万亿韩元营业利润，市盈率具备充足的抬升空间，可以从 7–8 倍重估至 10 倍甚至更高。
+🏭 和存储芯片股价走势相反，电话会里后端封测、插座、基板相关公司反馈，营业利润率创出历史新高，景气度维持强势。
+📈 新科微电子（Simmtech）SoCAM、GDDR7 等高价值产品放量，叠加产能扩张红利，预计四季度利润率抬升至 20% 出头区间，部分观点甚至看好明年单季度利润率达到 30%。
+🏗️ 海外头部设备厂商交付周期拉长至接近三年，三星电子、SK 海力士向后端工序投入超 10 万亿韩元资本开支，带动本土半导体材料、零部件与设备生态扩张。
+⚖️ 半导体材料、零部件、设备板块想要走出独立上行行情，三星电子股价至少守住 20 万韩元上方区间；如果回落至 15 万–18 万韩元区间，材料零部件设备的周期行情也会同步终结。
+🤷 很难精准预判是否会继续下跌，普通投资者更适合动态调整现金仓位来应对行情。
+🎯 在股价大幅回调的环境里，投资者不必提前布局明年才会改善的优质标的，优先关注即将披露三季报、四季报，估值处于低估区间的标的。
+🧩 如果逐一研究半导体材料、零部件、设备标的难度较高，买入三星电子和 SK 海力士是更稳妥的选择。
+✨ 放眼变压器、网文、美妆板块，全市场估值都已经明显回落，资金重心重新回到存储芯片、半导体材料零部件设备赛道，这类方向成长逻辑清晰、估值性价比突出。
+⏳ 当前阶段和 2022 年所有人都选择放弃的底部氛围相似，市场预期经过一轮调整之后，指数明年某个时间点至少可以回升至 7000 点。","水木调研纪要","https://wx.zsxq.com/group/88888142214212/topic/55521454258855414","","2026-11-20-141452"
+"2026-11-20 13:53","2026-11-20T13:53:35.984+0800","2026-11","亟需重估我国AI核心资产-大模...","亟需重估我国AI核心资产-大模型 
+
+1. ANT 上市，首日不涨 17.07%；完全稀释1.5万亿，当前 P/ARR 18.5x，与此同时，OAI ARR 10.09 是 70B，对应 P/ARR 17.9x
+
+2. 相比之下，Z. 对应年底 ARR 30亿，P/ARR 7x，Minimax 年底 ARR 15亿，P/ARR 3x；即使按年底测算，海外  ANT/OAI 也是Z./M. 2 倍
+
+3. 短期市场交易的是非永久性逻辑损害——美BIS监管趋严是暂时性因素，对中期模型训练微乎其微，股价多已 Price-in，甚至 Minimax（现金+卡）已经破净，价值开始被低估
+
+📈 此外，一二级市场也出现严重倒挂，建议以中期维度严谨评估我国AI核心价值，买入核心资产
+
+关注：Minimax、智谱、九安医疗（高股息、同样破净、模型组合）
+
+风险：美股继续调整、模型解禁","水木调研纪要","https://wx.zsxq.com/group/88888142214212/topic/45548252451155858","","2026-11-20-141452"
