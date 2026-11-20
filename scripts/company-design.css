@@ -6,9 +6,9 @@ body.company-hub .oh-eyebrow{color:var(--site-muted);letter-spacing:.08em}
 body.company-hub .oh-actions{flex-wrap:wrap;gap:8px;max-width:none}
 body.company-hub .oh-actions :is(a,button){display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:8px 14px;border:1px solid var(--site-line);border-radius:8px;background:var(--site-surface);color:var(--site-accent);font-size:13px;line-height:22px;text-decoration:none}
 body.company-hub .oh-actions .oh-primary-link{background:var(--site-accent);border-color:var(--site-accent);color:white}
-body.site-page.company-hub .oh-categories.site-subnav{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px!important;margin:0 0 20px!important;border-bottom:1px solid var(--site-line)!important}
-body.site-page.company-hub .oh-categories.site-subnav>a{height:60px!important;padding:10px 4px!important;border:0!important;border-bottom:3px solid transparent!important;border-radius:0!important;background:transparent!important;font-size:15px!important}
-body.site-page.company-hub .oh-categories.site-subnav>a[aria-current=page]{border-bottom-color:var(--site-accent)!important;color:var(--site-accent)!important}
+body.site-page[data-site-section=companies] .oh-categories.site-subnav{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;box-sizing:border-box;gap:4px!important;margin:0 0 16px!important;border-bottom:1px solid var(--site-line)!important}
+body.site-page[data-site-section=companies] .oh-categories.site-subnav>a{display:flex;align-items:center;justify-content:center;box-sizing:border-box;height:44px!important;padding:8px 4px!important;text-decoration:none;color:var(--site-muted);border:0!important;border-bottom:3px solid transparent!important;border-radius:0!important;background:transparent!important;font-size:15px!important}
+body.site-page[data-site-section=companies] .oh-categories.site-subnav>a[aria-current=page]{border-bottom-color:var(--site-accent)!important;color:var(--site-accent)!important}
 body.site-page.company-hub #oh-companies{gap:16px;margin:0 0 24px}
 body.site-page.company-hub .oh-company{min-height:96px;padding:16px;gap:12px;border:1px solid var(--site-line);border-radius:12px;color:var(--site-ink);background:var(--site-surface);box-shadow:none}
 body.site-page.company-hub .oh-company:hover{border-color:var(--site-accent);background:var(--site-soft)}

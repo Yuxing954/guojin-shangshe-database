@@ -8,6 +8,7 @@
   <link rel="icon" type="image/svg+xml" href="scripts/assets/brand/sinolink-mark.svg">
   <link rel="stylesheet" href="scripts/site.css?v=20261025retailservice2">
   <link rel="stylesheet" href="scripts/site-polish.css?v=20261019simple">
+  <link rel="stylesheet" href="scripts/company-design.css?v=20261120companytabs">
   <link rel="stylesheet" href="scripts/workspace-design.css?v=20261111visual">
   <script defer src="scripts/site-ui.js?v=20261120hotelcalls"></script>
   <script defer src="scripts/site-data.js?v=20261022dates"></script>
@@ -30,7 +31,10 @@
     .calls-pending { color:#86401d; white-space:nowrap; }
     @media (max-width:640px) {
       .calls-table th, .calls-table td { padding:8px; }
-      .calls-table .calls-date, .calls-table .calls-event { white-space:normal; }
+      .calls-table { min-width:36rem; }
+      .calls-table .calls-date { white-space:nowrap; font-variant-numeric:tabular-nums; }
+      .calls-filters { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); align-items:end; }
+      .calls-filters select, .calls-filters button { width:100%; min-width:0; }
       .calls-code { display:block; }
       .calls-links { min-width:6em; }
     }
@@ -38,7 +42,7 @@
 </head>
 <body class="site-page" data-design="workspace" data-site-section="companies">
 <main id="main" class="site-main">
-  <nav class="site-subnav" aria-label="重点公司栏目">
+  <nav class="oh-categories site-subnav" aria-label="重点公司栏目">
     <a href="company-database.html">国内酒店</a>
     <a href="overseas-hotels.html">海外酒店</a>
     <a href="hotel-earnings-calls.html" aria-current="page">业绩电话会</a>
