@@ -8,6 +8,7 @@
     'cpi-monthly-product.html':['tools','CPI月度产品'],
     'daily.html':['daily','国金商社日报'],
     'overseas-hotels.html':['companies','海外酒店'],
+    'hotel-earnings-calls.html':['companies','业绩电话会'],
     'overseas-hotel-comparison.html':['companies','海外酒店公司对比'],
     'domestic-hotel-comparison.html':['companies','国内酒店公司对比'],
     'data-notes.html':['tools','数据来源与说明'],
