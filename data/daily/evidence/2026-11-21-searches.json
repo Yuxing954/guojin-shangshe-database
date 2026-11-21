@@ -1,0 +1,76 @@
+{
+  "date": "2026-11-21",
+  "checkedAt": "2026-11-21T18:11:37+08:00",
+  "windowStart": "2026-11-20T18:00:00+08:00",
+  "cutoff": "2026-11-21T18:00:00+08:00",
+  "status": "partial",
+  "scope": "统一覆盖公司法定披露、公司IR、行业重要数据及日报日期当天与未来三日财报候选",
+  "queries": [
+    {
+      "source": "HKEX",
+      "url": "https://www3.hkexnews.hk/reports/bmn/ebmn_c.htm",
+      "result": "披露易董事会会议日程已回读；11月21日至24日列表未见日报覆盖公司预约披露，原始公告清单仍按部分覆盖记录。"
+    },
+    {
+      "source": "HKEX",
+      "url": "https://www.hkexnews.hk/index_c.htm",
+      "result": "按覆盖公司代码及名称复核11月20日18:00至11月21日18:00候选；部分列表分页未完整回读。"
+    },
+    {
+      "source": "CNINFO",
+      "url": "https://www.cninfo.com.cn/new/disclosure/stock?stockCode=600859",
+      "result": "王府井三项公告列表时间为11月20日16:00，早于本期左边界；未纳入正文。"
+    },
+    {
+      "source": "CNINFO",
+      "url": "https://www.cninfo.com.cn/new/disclosure/stock?stockCode=603605",
+      "result": "珀莱雅临时股东会法律意见书列表时间为11月20日16:00，早于本期左边界且属例行程序；未纳入正文。"
+    },
+    {
+      "source": "国家统计局",
+      "url": "https://www.stats.gov.cn/xxgk/sjfb/zxfb2020/202611/t20261116_1965839.html",
+      "result": "10月社零数据成文日期为11月16日，早于行业数据24小时窗口。"
+    },
+    {
+      "source": "商务部",
+      "url": "https://www.mofcom.gov.cn/syxwfb/art/2026/art_81c156a3b4564aacba2f23eacdc88637.html",
+      "result": "1—10月消费市场数据发布时间为11月19日16:18，早于行业数据窗口。"
+    },
+    {
+      "source": "BLS",
+      "url": "https://www.bls.gov/schedule/2026/",
+      "result": "11月20日发布项目为州就业与失业、全要素生产率，不属于本期商社消费行业重要数据。"
+    },
+    {
+      "source": "SEC EDGAR",
+      "url": "https://www.sec.gov/Archives/edgar/data/1269238/000119312526467690/d77175dex992.htm",
+      "result": "携程第三季度业绩预约为12月1日美股盘后，不在日报日期及未来三日范围。"
+    },
+    {
+      "source": "华住IR",
+      "url": "https://ir.hworld.com/news-and-events/events-calendar",
+      "result": "华住第三季度业绩已于11月16日披露，不在近期财报范围。"
+    },
+    {
+      "source": "百胜中国IR",
+      "url": "https://ir.yumchina.com/events-presentations/",
+      "result": "第三季度业绩已于11月3日披露，未来活动为12月1日投资者论坛。"
+    },
+    {
+      "source": "亚朵IR",
+      "url": "https://atour.gcs-web.com/",
+      "result": "第三季度业绩已于11月10日披露。"
+    },
+    {
+      "source": "名创优品IR",
+      "url": "https://ir.miniso.com/",
+      "result": "9月季度业绩已于11月17日披露。"
+    },
+    {
+      "source": "瑞幸IR",
+      "url": "https://investor.lkcoffee.com/",
+      "result": "第三季度业绩已于11月3日披露。"
+    }
+  ],
+  "limits": "部分交易所和公司IR原始清单/分页未完整回读；检索未发现候选不等同于确认无公告、无行业数据或无财报。"
+}
