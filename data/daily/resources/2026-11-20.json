@@ -5,8 +5,8 @@
   "cutoff": "2026-11-20T18:00:00+08:00",
   "sourceThrough": "2026-11-20T15:26:34.841+0800",
   "attachmentCatalog": {
-    "generatedAt": "2026-11-21T08:51:17.938Z",
-    "sourceThrough": "2026-11-21T15:34:08.407+0800",
+    "generatedAt": "2026-11-22T08:33:03.516Z",
+    "sourceThrough": "2026-11-22T15:42:09.467+0800",
     "scan": {
       "observedAt": "2026-11-21T08:51:17.938Z",
       "sourceGroup": "88888142214212",
@@ -50,7 +50,9 @@
       "eligible": true,
       "scanObservedAt": "2026-11-21T08:51:17.938Z",
       "coverageComplete": true
-    }
+    },
+    "scanReceiptFile": "data/daily/resources/2026-11-20.json",
+    "usedHistoricalScan": true
   },
   "groups": {
     "segments": [
@@ -144,9 +146,9 @@
   },
   "policy": "仅依据已入库元数据列出标题、发布时间和来源主题；未下载、读取或转写附件，不把研究报告标为纪要。",
   "attachmentBackfill": {
-    "at": "2026-11-21T18:06:00+08:00",
+    "at": "2026-11-22T17:57:38+08:00",
     "originalCutoff": "2026-11-20T18:00:00+08:00",
-    "indexGeneratedAt": "2026-11-21T08:51:17.938Z",
-    "previousIndexGeneratedAt": "2026-11-20T08:30:56.712Z"
+    "indexGeneratedAt": "2026-11-22T08:33:03.516Z",
+    "previousIndexGeneratedAt": "2026-11-21T08:51:17.938Z"
   }
 }

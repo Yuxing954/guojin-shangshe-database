@@ -1,0 +1,66 @@
+{
+  "date": "2026-11-22",
+  "checkedAt": "2026-11-22T18:02:01+08:00",
+  "windowStart": "2026-11-21T18:00:00+08:00",
+  "cutoff": "2026-11-22T18:00:00+08:00",
+  "status": "partial",
+  "scope": "统一覆盖公司法定披露、公司IR、行业重要数据及日报日期当天与未来三日财报候选",
+  "queries": [
+    {
+      "source": "HKEX",
+      "url": "https://www3.hkexnews.hk/reports/bmn/ebmn_c.htm",
+      "result": "披露易董事会会议日程已回读；确认特海国际11月25日审议并发布2026年第三季度业绩。"
+    },
+    {
+      "source": "HKEX",
+      "url": "https://www.hkexnews.hk/index_c.htm",
+      "result": "按覆盖公司代码及名称复核11月21日18:00至11月22日18:00候选；部分列表分页未完整回读。"
+    },
+    {
+      "source": "巨潮资讯",
+      "url": "https://www.cninfo.com.cn/new/index",
+      "result": "复核A股覆盖公司候选；已见候选均未形成窗口内可核实的重要公告，部分列表分页仍未完整回读。"
+    },
+    {
+      "source": "SEC EDGAR",
+      "url": "https://www.sec.gov/edgar/search/",
+      "result": "复核美股覆盖公司候选；未将搜索空项解释为无公告。"
+    },
+    {
+      "source": "特海国际IR",
+      "url": "https://ir.superhiinternational.com/news-releases/news-release-details/super-hi-report-third-quarter-2026-financial-results-wednesday",
+      "result": "确认11月25日披露2026年第三季度未经审计业绩，电话会为当日20:00香港时间。"
+    },
+    {
+      "source": "SEC EDGAR/特海国际",
+      "url": "https://www.sec.gov/Archives/edgar/data/1995306/000110465926126558/tm2629712d1_ex99-1.htm",
+      "result": "原始附件确认董事会11月25日审议第三季度业绩及发布安排。"
+    },
+    {
+      "source": "国家统计局",
+      "url": "https://www.stats.gov.cn/sj/zxfb/",
+      "result": "最新消费相关发布早于本期24小时行业窗口；下一场相关发布安排在11月24日。"
+    },
+    {
+      "source": "商务部",
+      "url": "https://www.mofcom.gov.cn/xwfb/",
+      "result": "消费市场候选发布早于11月21日18:00行业窗口左边界。"
+    },
+    {
+      "source": "交通运输部",
+      "url": "https://www.mot.gov.cn/shuju/",
+      "result": "未取得窗口内可核实发布时间且属于商社覆盖的重要行业更新；原始列表覆盖按部分记录。"
+    },
+    {
+      "source": "中国民航局",
+      "url": "https://www.caac.gov.cn/XXGK/XXGK/TJSJ/",
+      "result": "未取得窗口内可核实发布时间且属于商社覆盖的重要行业更新；原始列表覆盖按部分记录。"
+    },
+    {
+      "source": "美国劳工统计局",
+      "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "result": "CPI最近发布早于本期24小时窗口，下一次发布为12月10日。"
+    }
+  ],
+  "limits": "部分交易所、公司IR及行业原始清单/分页未完整回读；检索未发现候选不等同于确认无公告或无行业数据。"
+}

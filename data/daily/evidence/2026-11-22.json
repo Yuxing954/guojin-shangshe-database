@@ -1,0 +1,2050 @@
+{
+  "date": "2026-11-22",
+  "checkedAt": "2026-11-22T18:02:01+08:00",
+  "windowStart": "2026-11-21T18:00:00+08:00",
+  "cutoff": "2026-11-22T18:00:00+08:00",
+  "publicationEligibility": {
+    "policy": "scan-observed-after-16",
+    "eligible": true,
+    "scanObservedAt": "2026-11-22T08:33:03.516Z",
+    "coverageComplete": false,
+    "authorizedBy": "user-2026-10-23",
+    "recordedAt": "2026-11-22T18:02:01+08:00"
+  },
+  "sourceCoverage": {
+    "researchSourceTo": "2026-11-22T15:42:09.467+0800",
+    "attachmentScanObservedAt": "2026-11-22T08:33:03.516Z",
+    "attachmentTopicWindowFrom": "2026-11-20T00:00:00+08:00",
+    "attachmentTopicWindowTo": "2026-11-22T15:42:09.467+0800",
+    "attachmentPages": 11,
+    "attachmentBoundaryReachedBeforeWindow": true,
+    "attachmentWindowComplete": true,
+    "attachmentArchiveHasMore": true,
+    "attachmentCoverageStatus": "pending",
+    "attachmentMissingIntervals": [
+      {
+        "start": "2026-11-22T16:33:03.516000+08:00",
+        "end": "2026-11-22T18:00:00+08:00"
+      }
+    ]
+  },
+  "companyAnnouncements": [],
+  "announcementMonitoring": {
+    "checkedAt": "2026-11-22T18:02:01+08:00",
+    "windowStart": "2026-11-21T18:00:00+08:00",
+    "cutoff": "2026-11-22T18:00:00+08:00",
+    "coverageFile": "data/coverage-companies.json",
+    "checkedCompanies": [
+      {
+        "company": "泡泡玛特",
+        "code": "9992.HK",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "9992.HK",
+            "kind": "statutory",
+            "q": "(site:hkexnews.hk) \"9992\" 泡泡玛特 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "9992.HK",
+            "kind": "IR",
+            "q": "\"泡泡玛特\" 9992 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "名创优品",
+        "code": "9896.HK",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "9896.HK",
+            "kind": "statutory",
+            "q": "(site:hkexnews.hk) \"9896\" 名创优品 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "9896.HK",
+            "kind": "IR",
+            "q": "\"名创优品\" 9896 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "思摩尔国际",
+        "code": "6969.HK",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "6969.HK",
+            "kind": "statutory",
+            "q": "(site:hkexnews.hk) \"6969\" 思摩尔国际 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "6969.HK",
+            "kind": "IR",
+            "q": "\"思摩尔国际\" 6969 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "中烟香港",
+        "code": "6055.HK",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "6055.HK",
+            "kind": "statutory",
+            "q": "(site:hkexnews.hk) \"6055\" 中烟香港 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "6055.HK",
+            "kind": "IR",
+            "q": "\"中烟香港\" 6055 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "小商品城",
+        "code": "600415.SH",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "600415.SH",
+            "kind": "statutory",
+            "q": "(site:cninfo.com.cn) \"600415\" 小商品城 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "600415.SH",
+            "kind": "IR",
+            "q": "\"小商品城\" 600415 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "特海国际",
+        "code": "9658.HK",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "9658.HK",
+            "kind": "statutory",
+            "q": "(site:hkexnews.hk) \"9658\" 特海国际 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "9658.HK",
+            "kind": "IR",
+            "q": "\"特海国际\" 9658 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "周大福",
+        "code": "1929.HK",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "1929.HK",
+            "kind": "statutory",
+            "q": "(site:hkexnews.hk) \"1929\" 周大福 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "1929.HK",
+            "kind": "IR",
+            "q": "\"周大福\" 1929 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "老铺黄金",
+        "code": "6181.HK",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "6181.HK",
+            "kind": "statutory",
+            "q": "(site:hkexnews.hk) \"6181\" 老铺黄金 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "6181.HK",
+            "kind": "IR",
+            "q": "\"老铺黄金\" 6181 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "老凤祥",
+        "code": "600612.SH",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "600612.SH",
+            "kind": "statutory",
+            "q": "(site:cninfo.com.cn) \"600612\" 老凤祥 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "600612.SH",
+            "kind": "IR",
+            "q": "\"老凤祥\" 600612 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "六福集团",
+        "code": "0590.HK",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "0590.HK",
+            "kind": "statutory",
+            "q": "(site:hkexnews.hk) \"0590\" 六福集团 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "0590.HK",
+            "kind": "IR",
+            "q": "\"六福集团\" 0590 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "菜百股份",
+        "code": "605599.SH",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "605599.SH",
+            "kind": "statutory",
+            "q": "(site:cninfo.com.cn) \"605599\" 菜百股份 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "605599.SH",
+            "kind": "IR",
+            "q": "\"菜百股份\" 605599 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "周大生",
+        "code": "002867.SZ",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "002867.SZ",
+            "kind": "statutory",
+            "q": "(site:cninfo.com.cn) \"002867\" 周大生 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "002867.SZ",
+            "kind": "IR",
+            "q": "\"周大生\" 002867 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "潮宏基",
+        "code": "002345.SZ",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "002345.SZ",
+            "kind": "statutory",
+            "q": "(site:cninfo.com.cn) \"002345\" 潮宏基 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "002345.SZ",
+            "kind": "IR",
+            "q": "\"潮宏基\" 002345 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "周六福",
+        "code": "6168.HK",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "6168.HK",
+            "kind": "statutory",
+            "q": "(site:hkexnews.hk) \"6168\" 周六福 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "6168.HK",
+            "kind": "IR",
+            "q": "\"周六福\" 6168 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "巨子生物",
+        "code": "2367.HK",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "2367.HK",
+            "kind": "statutory",
+            "q": "(site:hkexnews.hk) \"2367\" 巨子生物 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "2367.HK",
+            "kind": "IR",
+            "q": "\"巨子生物\" 2367 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "毛戈平",
+        "code": "1318.HK",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "1318.HK",
+            "kind": "statutory",
+            "q": "(site:hkexnews.hk) \"1318\" 毛戈平 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "1318.HK",
+            "kind": "IR",
+            "q": "\"毛戈平\" 1318 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "珀莱雅",
+        "code": "603605.SH",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "603605.SH",
+            "kind": "statutory",
+            "q": "(site:cninfo.com.cn) \"603605\" 珀莱雅 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "603605.SH",
+            "kind": "IR",
+            "q": "\"珀莱雅\" 603605 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "上美股份",
+        "code": "2145.HK",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "2145.HK",
+            "kind": "statutory",
+            "q": "(site:hkexnews.hk) \"2145\" 上美股份 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "2145.HK",
+            "kind": "IR",
+            "q": "\"上美股份\" 2145 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "华熙生物",
+        "code": "688363.SH",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "688363.SH",
+            "kind": "statutory",
+            "q": "(site:cninfo.com.cn) \"688363\" 华熙生物 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "688363.SH",
+            "kind": "IR",
+            "q": "\"华熙生物\" 688363 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "贝泰妮",
+        "code": "300957.SZ",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "300957.SZ",
+            "kind": "statutory",
+            "q": "(site:cninfo.com.cn) \"300957\" 贝泰妮 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "300957.SZ",
+            "kind": "IR",
+            "q": "\"贝泰妮\" 300957 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "上海家化",
+        "code": "600315.SH",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "600315.SH",
+            "kind": "statutory",
+            "q": "(site:cninfo.com.cn) \"600315\" 上海家化 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "600315.SH",
+            "kind": "IR",
+            "q": "\"上海家化\" 600315 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "丸美生物",
+        "code": "603983.SH",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "603983.SH",
+            "kind": "statutory",
+            "q": "(site:cninfo.com.cn) \"603983\" 丸美生物 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "603983.SH",
+            "kind": "IR",
+            "q": "\"丸美生物\" 603983 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "林清轩",
+        "code": "2657.HK",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "2657.HK",
+            "kind": "statutory",
+            "q": "(site:hkexnews.hk) \"2657\" 林清轩 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "2657.HK",
+            "kind": "IR",
+            "q": "\"林清轩\" 2657 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "水羊股份",
+        "code": "300740.SZ",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "300740.SZ",
+            "kind": "statutory",
+            "q": "(site:cninfo.com.cn) \"300740\" 水羊股份 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "300740.SZ",
+            "kind": "IR",
+            "q": "\"水羊股份\" 300740 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "福瑞达",
+        "code": "600223.SH",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "600223.SH",
+            "kind": "statutory",
+            "q": "(site:cninfo.com.cn) \"600223\" 福瑞达 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "600223.SH",
+            "kind": "IR",
+            "q": "\"福瑞达\" 600223 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "中国中免",
+        "code": "601888.SH",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "601888.SH",
+            "kind": "statutory",
+            "q": "(site:cninfo.com.cn) \"601888\" 中国中免 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "601888.SH",
+            "kind": "IR",
+            "q": "\"中国中免\" 601888 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "王府井",
+        "code": "600859.SH",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "600859.SH",
+            "kind": "statutory",
+            "q": "(site:cninfo.com.cn) \"600859\" 王府井 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "600859.SH",
+            "kind": "IR",
+            "q": "\"王府井\" 600859 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "上海机场",
+        "code": "600009.SH",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "600009.SH",
+            "kind": "statutory",
+            "q": "(site:cninfo.com.cn) \"600009\" 上海机场 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "600009.SH",
+            "kind": "IR",
+            "q": "\"上海机场\" 600009 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "携程集团-S",
+        "code": "9961.HK",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "9961.HK",
+            "kind": "statutory",
+            "q": "(site:hkexnews.hk) \"9961\" 携程集团-S 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "9961.HK",
+            "kind": "IR",
+            "q": "\"携程集团-S\" 9961 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "同程旅行",
+        "code": "0780.HK",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "0780.HK",
+            "kind": "statutory",
+            "q": "(site:hkexnews.hk) \"0780\" 同程旅行 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "0780.HK",
+            "kind": "IR",
+            "q": "\"同程旅行\" 0780 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "华住集团-S",
+        "code": "1179.HK",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "1179.HK",
+            "kind": "statutory",
+            "q": "(site:hkexnews.hk) \"1179\" 华住集团-S 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "1179.HK",
+            "kind": "IR",
+            "q": "\"华住集团-S\" 1179 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "亚朵",
+        "code": "ATAT.O",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "ATAT.O",
+            "kind": "statutory",
+            "q": "(site:cninfo.com.cn) \"ATAT\" 亚朵 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "ATAT.O",
+            "kind": "IR",
+            "q": "\"亚朵\" ATAT 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "锦江酒店",
+        "code": "600754.SH",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "600754.SH",
+            "kind": "statutory",
+            "q": "(site:cninfo.com.cn) \"600754\" 锦江酒店 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "600754.SH",
+            "kind": "IR",
+            "q": "\"锦江酒店\" 600754 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "首旅酒店",
+        "code": "600258.SH",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "600258.SH",
+            "kind": "statutory",
+            "q": "(site:cninfo.com.cn) \"600258\" 首旅酒店 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "600258.SH",
+            "kind": "IR",
+            "q": "\"首旅酒店\" 600258 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "宋城演艺",
+        "code": "300144.SZ",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "300144.SZ",
+            "kind": "statutory",
+            "q": "(site:cninfo.com.cn) \"300144\" 宋城演艺 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "300144.SZ",
+            "kind": "IR",
+            "q": "\"宋城演艺\" 300144 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "长白山",
+        "code": "603099.SH",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "603099.SH",
+            "kind": "statutory",
+            "q": "(site:cninfo.com.cn) \"603099\" 长白山 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "603099.SH",
+            "kind": "IR",
+            "q": "\"长白山\" 603099 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "陕西旅游",
+        "code": "603402.SH",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "603402.SH",
+            "kind": "statutory",
+            "q": "(site:cninfo.com.cn) \"603402\" 陕西旅游 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "603402.SH",
+            "kind": "IR",
+            "q": "\"陕西旅游\" 603402 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "黄山旅游",
+        "code": "600054.SH",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "600054.SH",
+            "kind": "statutory",
+            "q": "(site:cninfo.com.cn) \"600054\" 黄山旅游 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "600054.SH",
+            "kind": "IR",
+            "q": "\"黄山旅游\" 600054 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "众信旅游",
+        "code": "002707.SZ",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "002707.SZ",
+            "kind": "statutory",
+            "q": "(site:cninfo.com.cn) \"002707\" 众信旅游 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "002707.SZ",
+            "kind": "IR",
+            "q": "\"众信旅游\" 002707 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "峨眉山A",
+        "code": "000888.SZ",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "000888.SZ",
+            "kind": "statutory",
+            "q": "(site:cninfo.com.cn) \"000888\" 峨眉山A 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "000888.SZ",
+            "kind": "IR",
+            "q": "\"峨眉山A\" 000888 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "香港中旅",
+        "code": "0308.HK",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "0308.HK",
+            "kind": "statutory",
+            "q": "(site:hkexnews.hk) \"0308\" 香港中旅 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "0308.HK",
+            "kind": "IR",
+            "q": "\"香港中旅\" 0308 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "君亭酒店",
+        "code": "301073.SZ",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "301073.SZ",
+            "kind": "statutory",
+            "q": "(site:cninfo.com.cn) \"301073\" 君亭酒店 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "301073.SZ",
+            "kind": "IR",
+            "q": "\"君亭酒店\" 301073 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "九华旅游",
+        "code": "603199.SH",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "603199.SH",
+            "kind": "statutory",
+            "q": "(site:cninfo.com.cn) \"603199\" 九华旅游 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "603199.SH",
+            "kind": "IR",
+            "q": "\"九华旅游\" 603199 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "天目湖",
+        "code": "603136.SH",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "603136.SH",
+            "kind": "statutory",
+            "q": "(site:cninfo.com.cn) \"603136\" 天目湖 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "603136.SH",
+            "kind": "IR",
+            "q": "\"天目湖\" 603136 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "蜜雪集团",
+        "code": "2097.HK",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "2097.HK",
+            "kind": "statutory",
+            "q": "(site:hkexnews.hk) \"2097\" 蜜雪集团 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "2097.HK",
+            "kind": "IR",
+            "q": "\"蜜雪集团\" 2097 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "百胜中国",
+        "code": "9987.HK",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "9987.HK",
+            "kind": "statutory",
+            "q": "(site:hkexnews.hk) \"9987\" 百胜中国 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "9987.HK",
+            "kind": "IR",
+            "q": "\"百胜中国\" 9987 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "海底捞",
+        "code": "6862.HK",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "6862.HK",
+            "kind": "statutory",
+            "q": "(site:hkexnews.hk) \"6862\" 海底捞 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "6862.HK",
+            "kind": "IR",
+            "q": "\"海底捞\" 6862 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "古茗",
+        "code": "1364.HK",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "1364.HK",
+            "kind": "statutory",
+            "q": "(site:hkexnews.hk) \"1364\" 古茗 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "1364.HK",
+            "kind": "IR",
+            "q": "\"古茗\" 1364 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "瑞幸咖啡",
+        "code": "LKNCY.OO",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "LKNCY.OO",
+            "kind": "statutory",
+            "q": "(site:cninfo.com.cn) \"LKNCY\" 瑞幸咖啡 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "LKNCY.OO",
+            "kind": "IR",
+            "q": "\"瑞幸咖啡\" LKNCY 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "小菜园",
+        "code": "0999.HK",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "0999.HK",
+            "kind": "statutory",
+            "q": "(site:hkexnews.hk) \"0999\" 小菜园 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "0999.HK",
+            "kind": "IR",
+            "q": "\"小菜园\" 0999 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "茶百道",
+        "code": "2555.HK",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "2555.HK",
+            "kind": "statutory",
+            "q": "(site:hkexnews.hk) \"2555\" 茶百道 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "2555.HK",
+            "kind": "IR",
+            "q": "\"茶百道\" 2555 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "沪上阿姨",
+        "code": "2589.HK",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "2589.HK",
+            "kind": "statutory",
+            "q": "(site:hkexnews.hk) \"2589\" 沪上阿姨 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "2589.HK",
+            "kind": "IR",
+            "q": "\"沪上阿姨\" 2589 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "达势股份",
+        "code": "1405.HK",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "1405.HK",
+            "kind": "statutory",
+            "q": "(site:hkexnews.hk) \"1405\" 达势股份 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "1405.HK",
+            "kind": "IR",
+            "q": "\"达势股份\" 1405 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "重庆百货",
+        "code": "600729.SH",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "600729.SH",
+            "kind": "statutory",
+            "q": "(site:cninfo.com.cn) \"600729\" 重庆百货 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "600729.SH",
+            "kind": "IR",
+            "q": "\"重庆百货\" 600729 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "永辉超市",
+        "code": "601933.SH",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "601933.SH",
+            "kind": "statutory",
+            "q": "(site:cninfo.com.cn) \"601933\" 永辉超市 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "601933.SH",
+            "kind": "IR",
+            "q": "\"永辉超市\" 601933 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "红旗连锁",
+        "code": "002697.SZ",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "002697.SZ",
+            "kind": "statutory",
+            "q": "(site:cninfo.com.cn) \"002697\" 红旗连锁 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "002697.SZ",
+            "kind": "IR",
+            "q": "\"红旗连锁\" 002697 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "家家悦",
+        "code": "603708.SH",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "603708.SH",
+            "kind": "statutory",
+            "q": "(site:cninfo.com.cn) \"603708\" 家家悦 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "603708.SH",
+            "kind": "IR",
+            "q": "\"家家悦\" 603708 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      },
+      {
+        "company": "孩子王",
+        "code": "301078.SZ",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "sources": [
+          {
+            "code": "301078.SZ",
+            "kind": "statutory",
+            "q": "(site:cninfo.com.cn) \"301078\" 孩子王 公告 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "法定披露候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          },
+          {
+            "code": "301078.SZ",
+            "kind": "IR",
+            "q": "\"孩子王\" 301078 投资者关系 公告 investor relations news 2026年11月21日 11月22日 after:2026-11-21 before:2026-11-23",
+            "checkedAt": "2026-11-22T18:02:01+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-22-searches.json",
+            "batchOffset": 0,
+            "result": "公司IR候选检索已执行；结果按来源批次保存，不能代替原始清单完整回读。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选检索已执行；部分原始清单或分页仍未完整回读，未将检索空项解释为无公告。"
+      }
+    ],
+    "excludedCompanies": [
+      {
+        "company": "若羽臣",
+        "code": "003010.SZ",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily"
+      },
+      {
+        "company": "乖宝宠物",
+        "code": "301498.SZ",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily"
+      },
+      {
+        "company": "中宠股份",
+        "code": "002891.SZ",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily"
+      },
+      {
+        "company": "依依股份",
+        "code": "001206.SZ",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily"
+      },
+      {
+        "company": "佩蒂股份",
+        "code": "300673.SZ",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily"
+      },
+      {
+        "company": "源飞宠物",
+        "code": "001222.SZ",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily"
+      },
+      {
+        "company": "影石创新",
+        "code": "688775.SH",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily"
+      },
+      {
+        "company": "安克创新",
+        "code": "300866.SZ",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily"
+      },
+      {
+        "company": "乐舒适",
+        "code": "2698.HK",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily"
+      },
+      {
+        "company": "石头科技",
+        "code": "688169.SH",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily"
+      },
+      {
+        "company": "绿联科技",
+        "code": "301606.SZ",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily"
+      },
+      {
+        "company": "赛维时代",
+        "code": "301381.SZ",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily"
+      },
+      {
+        "company": "致欧科技",
+        "code": "301376.SZ",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily"
+      },
+      {
+        "company": "爱美客",
+        "code": "300896.SZ",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "reason": "注射类医疗美容产品，按日报医疗范围排除。",
+        "status": "excluded_from_daily"
+      },
+      {
+        "company": "锦波生物",
+        "code": "920982.BJ",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "reason": "以医疗器械及医用胶原为核心，按日报医疗范围排除。",
+        "status": "excluded_from_daily"
+      },
+      {
+        "company": "SHEIN",
+        "code": "0625.HK",
+        "checkedAt": "2026-11-22T18:02:01+08:00",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily"
+      }
+    ],
+    "failedCompanies": [
+      {
+        "company": "泡泡玛特",
+        "code": "9992.HK",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "名创优品",
+        "code": "9896.HK",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "思摩尔国际",
+        "code": "6969.HK",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "中烟香港",
+        "code": "6055.HK",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "小商品城",
+        "code": "600415.SH",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "特海国际",
+        "code": "9658.HK",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "周大福",
+        "code": "1929.HK",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "老铺黄金",
+        "code": "6181.HK",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "老凤祥",
+        "code": "600612.SH",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "六福集团",
+        "code": "0590.HK",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "菜百股份",
+        "code": "605599.SH",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "周大生",
+        "code": "002867.SZ",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "潮宏基",
+        "code": "002345.SZ",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "周六福",
+        "code": "6168.HK",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "巨子生物",
+        "code": "2367.HK",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "毛戈平",
+        "code": "1318.HK",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "珀莱雅",
+        "code": "603605.SH",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "上美股份",
+        "code": "2145.HK",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "华熙生物",
+        "code": "688363.SH",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "贝泰妮",
+        "code": "300957.SZ",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "上海家化",
+        "code": "600315.SH",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "丸美生物",
+        "code": "603983.SH",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "林清轩",
+        "code": "2657.HK",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "水羊股份",
+        "code": "300740.SZ",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "福瑞达",
+        "code": "600223.SH",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "中国中免",
+        "code": "601888.SH",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "王府井",
+        "code": "600859.SH",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "上海机场",
+        "code": "600009.SH",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "携程集团-S",
+        "code": "9961.HK",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "同程旅行",
+        "code": "0780.HK",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "华住集团-S",
+        "code": "1179.HK",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "亚朵",
+        "code": "ATAT.O",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "锦江酒店",
+        "code": "600754.SH",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "首旅酒店",
+        "code": "600258.SH",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "宋城演艺",
+        "code": "300144.SZ",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "长白山",
+        "code": "603099.SH",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "陕西旅游",
+        "code": "603402.SH",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "黄山旅游",
+        "code": "600054.SH",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "众信旅游",
+        "code": "002707.SZ",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "峨眉山A",
+        "code": "000888.SZ",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "香港中旅",
+        "code": "0308.HK",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "君亭酒店",
+        "code": "301073.SZ",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "九华旅游",
+        "code": "603199.SH",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "天目湖",
+        "code": "603136.SH",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "蜜雪集团",
+        "code": "2097.HK",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "百胜中国",
+        "code": "9987.HK",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "海底捞",
+        "code": "6862.HK",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "古茗",
+        "code": "1364.HK",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "瑞幸咖啡",
+        "code": "LKNCY.OO",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "小菜园",
+        "code": "0999.HK",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "茶百道",
+        "code": "2555.HK",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "沪上阿姨",
+        "code": "2589.HK",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "达势股份",
+        "code": "1405.HK",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "重庆百货",
+        "code": "600729.SH",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "永辉超市",
+        "code": "601933.SH",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "红旗连锁",
+        "code": "002697.SZ",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "家家悦",
+        "code": "603708.SH",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      },
+      {
+        "company": "孩子王",
+        "code": "301078.SZ",
+        "reason": "部分法定披露或IR原始清单/分页未完整回读；不将候选检索无结果解释为无公告。"
+      }
+    ],
+    "status": "partial",
+    "evidenceFile": "data/daily/evidence/2026-11-22.json"
+  },
+  "industryUpdates": [],
+  "earningsUpcoming": [
+    {
+      "company": "特海国际",
+      "code": "9658.HK",
+      "period": "2026年第三季度（截至2026-09-30止三个月）",
+      "date": "2026-11-25",
+      "status": "预约披露",
+      "source": "特海国际投资者关系；香港交易所披露易复核",
+      "url": "https://ir.superhiinternational.com/news-releases/news-release-details/super-hi-report-third-quarter-2026-financial-results-wednesday",
+      "checkedAt": "2026-11-22T18:02:01+08:00",
+      "evidenceFile": "data/daily/evidence/2026-11-22.json"
+    }
+  ],
+  "industryMonitoring": {
+    "checkedAt": "2026-11-22T18:02:01+08:00",
+    "windowStart": "2026-11-21T18:00:00+08:00",
+    "cutoff": "2026-11-22T18:00:00+08:00",
+    "status": "partial",
+    "result": "已核对国家统计局、商务部、交通运输部、民航局与BLS候选；未取得窗口内可纳入的商社消费重要数据，部分来源列表仍按未完整覆盖记录。",
+    "evidenceFile": "data/daily/evidence/2026-11-22-searches.json"
+  },
+  "earningsMonitoring": {
+    "checkedAt": "2026-11-22T18:02:01+08:00",
+    "calendarFile": "data/earnings-calendar.json",
+    "calendarUpdatedAt": "2026-10-12T03:23:54.024Z",
+    "status": "partial",
+    "result": "本地日历较旧；结合披露易董事会日程、特海国际IR及SEC原始附件，确认11月25日特海国际2026年第三季度业绩披露；其他来源空项不视为完整覆盖。",
+    "evidenceFile": "data/daily/evidence/2026-11-22-searches.json"
+  },
+  "researchNotes": [
+    "本期资源基准segments为0；没有将空段子扩写为研究结论。",
+    "附件仅保留中国中免两项元数据：1份交流反馈、1份研究资料；未下载、读取或转写附件正文。",
+    "扫描observedAt为2026-11-22T08:33:03.516Z（北京时间16:33:03），满足2026-10-23用户授权的发布条件；16:33:03至18:00缺口按原值保存。",
+    "公告和行业核验为partial；空数组仅表示未形成可核实入选项，不代表确认无新增。"
+  ]
+}

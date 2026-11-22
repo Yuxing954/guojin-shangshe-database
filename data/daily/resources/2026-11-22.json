@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 2,
+  "date": "2026-11-22",
+  "windowStart": "2026-11-21T18:00:00+08:00",
+  "cutoff": "2026-11-22T18:00:00+08:00",
+  "sourceThrough": "2026-11-22T15:42:09.467+0800",
+  "attachmentCatalog": {
+    "generatedAt": "2026-11-22T08:33:03.516Z",
+    "sourceThrough": "2026-11-22T15:42:09.467+0800",
+    "scan": {
+      "observedAt": "2026-11-22T08:33:03.516Z",
+      "sourceGroup": "88888142214212",
+      "sourceName": "水木调研纪要-2.0",
+      "topicsScanned": 330,
+      "topicsInWindow": 294,
+      "topicPages": 11,
+      "topicWindowFrom": "2026-11-20T00:00:00+08:00",
+      "topicWindowTo": "2026-11-22T15:42:09.467+0800",
+      "boundaryReachedBeforeWindow": true,
+      "attachmentsObserved": 184,
+      "uniqueFileIds": 184,
+      "duplicateFileIds": 0,
+      "newRecords": 54,
+      "existingRecordsRefreshed": 130,
+      "attachmentContentRead": false,
+      "sourceMetadataFields": [
+        "fileId",
+        "topicId",
+        "filename",
+        "extension",
+        "bytes",
+        "fileCreatedAt",
+        "topicCreatedAt",
+        "durationSeconds",
+        "downloadCount",
+        "sourceHash",
+        "source"
+      ],
+      "windowStart": "2026-11-20T00:00:00+08:00",
+      "windowEnd": "2026-11-22T08:33:03.516Z",
+      "windowEndDate": "2026-11-22",
+      "windowComplete": true,
+      "archiveHasMore": true
+    },
+    "coverageStatus": "pending",
+    "requestedWindowStart": "2026-11-21T18:00:00+08:00",
+    "requestedCutoff": "2026-11-22T18:00:00+08:00",
+    "missingIntervals": [
+      {
+        "start": "2026-11-22T16:33:03.516000+08:00",
+        "end": "2026-11-22T18:00:00+08:00"
+      }
+    ],
+    "publicationEligibility": {
+      "policy": "scan-observed-after-16",
+      "eligible": true,
+      "scanObservedAt": "2026-11-22T08:33:03.516Z",
+      "coverageComplete": false
+    }
+  },
+  "groups": {
+    "segments": [],
+    "minutes": [
+      {
+        "id": "zsxq-file-181428858151882",
+        "title": "中国中免：2026 亚太峰会交流反馈.pdf",
+        "publishedAt": "2026-11-21T20:06:04.935000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/14425141545212242",
+        "status": "仅标题登记",
+        "sector": "other"
+      }
+    ],
+    "audio": [],
+    "reports": [
+      {
+        "id": "zsxq-file-412541181155588",
+        "title": "中国中免：4季度海南市场前景积极；继续坚持审慎的毛利率管理；“增持”评级.pdf",
+        "publishedAt": "2026-11-21T20:42:44.200000+08:00",
+        "url": "https://wx.zsxq.com/group/88888142214212/topic/82258424824521422",
+        "status": "仅标题登记",
+        "sector": "other"
+      }
+    ]
+  },
+  "policy": "仅依据已入库元数据列出标题、发布时间和来源主题；未下载、读取或转写附件，不把研究报告标为纪要。"
+}
