@@ -1,10 +1,10 @@
 {
-  "syncedAt": "2026-11-21T11:03:34.104Z",
+  "syncedAt": "2026-11-22T01:57:34.141Z",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
-  "coverageFrom": "2026-11-21T15:34:08.407+0800",
-  "coverageTo": "2026-11-21T18:17:33.926+0800",
-  "oldestFetched": "2026-11-21T10:27:54.275+0800",
+  "coverageFrom": "2026-11-21T18:17:33.926+0800",
+  "coverageTo": "2026-11-21T22:26:56.303+0800",
+  "oldestFetched": "2026-11-21T10:32:05.820+0800",
   "fetchedTopics": 30,
   "files": {
     "views": [
@@ -222,6 +222,7 @@
       "data/research/updates/2026-10-14-1258-views.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-11-22-095537-all_views-000.csv",
       "data/research/updates/2026-11-21-190106-all_views-000.csv",
       "data/research/updates/2026-11-21-160122-all_views-000.csv",
       "data/research/updates/2026-11-21-151724-all_views-000.csv",
@@ -629,12 +630,12 @@
   },
   "counts": {
     "views": 1486,
-    "all_views": 10064,
+    "all_views": 10065,
     "minutes": 101
   },
   "latest": {
     "views": "2026-11-21 18:17",
-    "all_views": "2026-11-21 18:17",
+    "all_views": "2026-11-21 22:26",
     "minutes": "2026-10-12T01:07:33"
   },
   "excluded": {
@@ -12086,36 +12087,96 @@
       "82258424512284182",
       "55521454118112814",
       "14425141558528412",
-      "14425141542458422"
+      "14425141542458422",
+      "82258424821885282"
     ]
   },
   "lastRun": {
-    "runId": "2026-11-21-190106",
+    "runId": "2026-11-22-095537",
     "sourceGroup": "88888142214212",
     "sourceName": "水木调研纪要-2.0",
-    "previousCoverageTo": "2026-11-21T15:34:08.407+0800",
-    "coverageTo": "2026-11-21T18:17:33.926+0800",
+    "previousCoverageTo": "2026-11-21T18:17:33.926+0800",
+    "coverageTo": "2026-11-21T22:26:56.303+0800",
     "added": {
-      "views": 1,
+      "views": 0,
       "all_views": 1
     },
     "updated": 0,
-    "expiredRemoved": 0,
+    "expiredRemoved": 12,
     "sourceTopicIds": [
-      "14425141542458422",
-      "55521454152518114"
+      "82258424821885282"
     ],
     "duplicateTopicIds": [],
     "briefChanges": {
-      "added": 1,
+      "added": 0,
       "updated": 0,
-      "expiredRemoved": 0
+      "expiredRemoved": 12
     },
     "duplicates": 0,
     "excludedTopics": [
       {
-        "topicId": "14425141542458282",
-        "reason": "仅周报标题及附件链接，不推断未读附件"
+        "topicId": "82258424824544542",
+        "reason": "无可读观点正文"
+      },
+      {
+        "topicId": "14425141541214222",
+        "reason": "无可读观点正文"
+      },
+      {
+        "topicId": "55521454154241844",
+        "reason": "无可读观点正文"
+      },
+      {
+        "topicId": "14425141541215442",
+        "reason": "无可读观点正文"
+      },
+      {
+        "topicId": "14425141541212882",
+        "reason": "无可读观点正文"
+      },
+      {
+        "topicId": "82258424824521422",
+        "reason": "无可读观点正文"
+      },
+      {
+        "topicId": "55521454151241454",
+        "reason": "无可读观点正文"
+      },
+      {
+        "topicId": "45548252858428818",
+        "reason": "无可读观点正文"
+      },
+      {
+        "topicId": "14425141545212242",
+        "reason": "无可读观点正文"
+      },
+      {
+        "topicId": "22258424825112241",
+        "reason": "无可读观点正文"
+      },
+      {
+        "topicId": "55521454152818124",
+        "reason": "无可读观点正文"
+      },
+      {
+        "topicId": "55521454152818284",
+        "reason": "无可读观点正文"
+      },
+      {
+        "topicId": "22258424825151111",
+        "reason": "无可读观点正文"
+      },
+      {
+        "topicId": "22258424825151211",
+        "reason": "无可读观点正文"
+      },
+      {
+        "topicId": "55521454158248824",
+        "reason": "仅标题，无可归档的具体论点或证据，不推断未读内容。"
+      },
+      {
+        "topicId": "45548252851422458",
+        "reason": "仅标题，无可归档的具体论点或证据，不推断未读内容。"
       }
     ],
     "pagination": {
@@ -12129,26 +12190,38 @@
       "candidateBuckets": 12,
       "algorithm": "sha256-utf8-v1"
     },
-    "expiredBriefIds": []
+    "expiredBriefIds": [
+      "terminal-soc-memory-cycle-20261105",
+      "hotel-weekly-supply-demand-20261110",
+      "appliance-global-channel-20261116",
+      "hotel-franchise-store-quality-20261117",
+      "huazhu-management-disposal-20261119",
+      "joyy-live-entertainment-20261119",
+      "hk-travel-demerger-20261119",
+      "tv-lcd-panel-pricing-20261119",
+      "damai-live-ip-20261119",
+      "cti-hk-duty-free-distribution-20261119",
+      "douyin-double11-category-20261120",
+      "korea-game-ip-policy-20261120"
+    ]
   },
   "lastUpdateRecord": {
-    "runId": "2026-11-21-190106",
+    "runId": "2026-11-22-095537",
     "sourceGroup": "88888142214212",
     "sourceName": "水木调研纪要-2.0",
-    "previousCoverageTo": "2026-11-21T15:34:08.407+0800",
-    "coverageTo": "2026-11-21T18:17:33.926+0800",
-    "added": 2,
+    "previousCoverageTo": "2026-11-21T18:17:33.926+0800",
+    "coverageTo": "2026-11-21T22:26:56.303+0800",
+    "added": 1,
     "updated": 0,
-    "expiredRemoved": 0,
+    "expiredRemoved": 12,
     "sourceTopicIds": [
-      "14425141542458422",
-      "55521454152518114"
+      "82258424821885282"
     ],
     "duplicateTopicIds": [],
     "briefChanges": {
-      "added": 1,
+      "added": 0,
       "updated": 0,
-      "expiredRemoved": 0
+      "expiredRemoved": 12
     }
   }
 }
