@@ -47,3 +47,9 @@ SELECT period, metric, value
 FROM "companies_domestic_hotels_hworld__rows"
 WHERE metric = 'RevPAR' ORDER BY period DESC LIMIT 10;
 ```
+
+### 观点和纪要统一入口
+
+查询 `research_records`，按 `kind` 选「观点」「纪要」或「附件」。`published` 为来源时间，`title` 为标题，`body` 为已有正文，`summary` 为已有摘要。商社观点可筛选 `kind='观点' AND in_sector_views=1`。未确认属于纪要的资料单列为附件。
+
+原批次表统一收录于 `research_sources`。通过 `record_id = research_records.id` 回查源文件 `path` 和第几条记录 `position`（从 1 起），CSV 全部原字段在 `csv_fields`。同一观点按来源话题 ID 合并，无 ID 时仅合并来源、时间、标题和正文一致的记录；附件按资产 ID 区分。研究归档、更新索引与加工原文保存在 `json_documents`，可按原路径查询。其余业务入口沿用原表名。

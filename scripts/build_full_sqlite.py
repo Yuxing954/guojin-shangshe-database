@@ -11,6 +11,7 @@ import sys
 import tempfile
 from pathlib import Path
 
+import build_research_sqlite as research
 from build_hotel_sqlite import TABLES as HOTEL_TABLES, import_table
 
 def ident(name):
@@ -124,6 +125,8 @@ def build(root, output):
                 CREATE TABLE dataset_sources(table_name TEXT PRIMARY KEY, source_file TEXT,
                                              row_count INTEGER, sha256 TEXT);
             """)
+            research.schema(db)
+            research.collect(db, root, [p.relative_to(root).as_posix() for p in paths])
             used = {r[0].lower() for r in db.execute("SELECT name FROM sqlite_master")} | set(HOTEL_TABLES)
             for path in paths:
                 rel = path.relative_to(root).as_posix()
@@ -133,6 +136,9 @@ def build(root, output):
                     if path.parent == data and path.stem in HOTEL_TABLES and ext == "csv":
                         name = path.stem
                         count = import_table(db, data, name, HOTEL_TABLES[name])
+                    elif ext == "csv" and research.csv_kind(rel):
+                        name = "research_sources"
+                        count = db.execute("SELECT count(*) FROM research_sources WHERE path=?", (rel,)).fetchone()[0]
                     elif ext == "csv":
                         name = available_name(sql_name(rel), used)
                         count = csv_table(db,path,name)
@@ -140,7 +146,9 @@ def build(root, output):
                         body = raw.decode("utf-8-sig")
                         doc = json.loads(body)
                         row = db.execute("INSERT INTO json_documents(path,body) VALUES (?,?)",(rel,body))
-                        make_json_views(db,rel,row.lastrowid,doc,used)
+                        if not rel.startswith(("data/research/archive/", "data/research/updates/",
+                                               "data/research/processed/")):
+                            make_json_views(db,rel,row.lastrowid,doc,used)
                         name, count = "json_documents", 1
                     db.execute("INSERT INTO datasets VALUES (?,?,?,?,?,?)",
                                (rel,ext,name,count,len(raw),hashlib.sha256(raw).hexdigest()))
@@ -150,7 +158,7 @@ def build(root, output):
             db.commit()
             if db.execute("PRAGMA integrity_check").fetchall() != [("ok",)]:
                 raise ValueError("Integrity check failed")
-            for name, expected in db.execute("SELECT sql_name,row_count FROM datasets WHERE format='csv'"):
+            for name, expected in db.execute("SELECT sql_name,row_count FROM datasets WHERE format='csv' AND sql_name <> 'research_sources'"):
                 if db.execute(f"SELECT count(*) FROM {ident(name)}").fetchone()[0] != expected:
                     raise ValueError(name)
             for name, expected in db.execute("SELECT view_name,row_count FROM json_collections"):
