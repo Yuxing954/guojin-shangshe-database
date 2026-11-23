@@ -3,6 +3,7 @@ import argparse
 import csv
 import hashlib
 import json
+import math
 import os
 import re
 import sqlite3
@@ -37,10 +38,32 @@ def csv_table(db, path, name):
         header = next(reader)
         used = set()
         cols = [available_name(c or f"column_{i}", used) for i,c in enumerate(header,1)]
-        # Source text preserves ticker codes, decimals, leading zeroes and units.
-        # Use CAST for numeric calculations on the heterogeneous source exports.
+        # Infer complete columns, keeping identifiers and formatted numbers as text.
+        # Leading zeroes on ticker codes and mixed units must survive the import.
+        types = ["TEXT" if re.search(r"(^|_)(id|code|ticker|period)(_|$)|代码|编号", c, re.I)
+                 else None for c in cols]
+        number = re.compile(r"-?(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?\Z", re.ASCII)
+        for row in reader:
+            if not row:
+                continue
+            if len(row) != len(cols):
+                raise ValueError(f"{path}:{reader.line_num}: wrong field count")
+            for i,value in enumerate(row):
+                if types[i] == "TEXT" or value == "":
+                    continue
+                if len(value) > 64 or not number.fullmatch(value):
+                    types[i] = "TEXT"
+                elif "." in value or "e" in value.lower():
+                    types[i] = "REAL" if math.isfinite(float(value)) else "TEXT"
+                elif abs(int(value)) > 2**53 - 1:
+                    types[i] = "TEXT"
+                elif types[i] is None:
+                    types[i] = "INTEGER"
         db.execute(f"CREATE TABLE {ident(name)} (" +
-                   ", ".join(ident(c) + " TEXT" for c in cols) + ")")
+                   ", ".join(ident(c) + " " + (t or "TEXT") for c,t in zip(cols,types)) + ") STRICT")
+        stream.seek(0)
+        reader = csv.reader(stream)
+        next(reader)
         slots = ", ".join("?" for c in cols)
         def rows():
             for row in reader:
@@ -130,6 +153,9 @@ def build(root, output):
             for name, expected in db.execute("SELECT sql_name,row_count FROM datasets WHERE format='csv'"):
                 if db.execute(f"SELECT count(*) FROM {ident(name)}").fetchone()[0] != expected:
                     raise ValueError(name)
+            for name, expected in db.execute("SELECT view_name,row_count FROM json_collections"):
+                if db.execute(f"SELECT count(*) FROM {ident(name)}").fetchone()[0] != expected:
+                    raise ValueError(f"JSON view count mismatch: {name}")
             print("Source files and rows/documents by format:", db.execute(
                 "SELECT format,count(*),sum(row_count) FROM datasets GROUP BY format").fetchall())
             print("Queryable JSON collections and entries:", db.execute(
