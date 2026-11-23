@@ -26,12 +26,16 @@ def schema(db):
           summary TEXT, author TEXT, source_url TEXT, attachment_url TEXT,
           filename TEXT, company TEXT, in_sector_views INTEGER NOT NULL DEFAULT 0
         ) WITHOUT ROWID;
-        CREATE TABLE research_sources (
+        CREATE TABLE research_source_rows (
           path TEXT, position INTEGER, record_id TEXT NOT NULL REFERENCES research_records(id),
-          source_group TEXT NOT NULL, csv_fields TEXT,
+          source_group TEXT NOT NULL, fields TEXT, shares_body INTEGER NOT NULL DEFAULT 0,
           PRIMARY KEY(path,position)
         ) WITHOUT ROWID;
-        CREATE INDEX research_sources_record ON research_sources(record_id);
+        CREATE INDEX research_sources_record ON research_source_rows(record_id);
+        CREATE VIEW research_sources AS
+          SELECT s.path,s.position,s.record_id,s.source_group,
+            CASE WHEN s.shares_body THEN json_set(s.fields,'$.内容',r.body) ELSE s.fields END AS csv_fields
+          FROM research_source_rows s JOIN research_records r ON r.id=s.record_id;
         CREATE INDEX research_kind_date ON research_records(kind,published);
     """)
 
@@ -65,7 +69,7 @@ def save(db, path, position, group, key, values, raw=None):
                f"ON CONFLICT(id) DO UPDATE SET {update}, "
                "in_sector_views=max(in_sector_views,excluded.in_sector_views)",
                (key,*fields,int(group=="views")))
-    db.execute("INSERT INTO research_sources VALUES (?,?,?,?,?)",
+    db.execute("INSERT INTO research_source_rows(path,position,record_id,source_group,fields) VALUES (?,?,?,?,?)",
                (path,position,key,group,dump(raw) if raw is not None else None))
 
 def collect(db, root, paths):
@@ -135,5 +139,11 @@ def collect(db, root, paths):
             values=dict(kind="纪要",title=r.get("title"),body=r.get("body"),summary=r.get("summary"),
                         company=r.get("company"))
             save(db,path,1,"processed","asset:"+r["assetId"],values)
-    if db.execute("PRAGMA foreign_key_check(research_sources)").fetchone():
+    # Identical full text can be referenced from the canonical record. Reconstruct
+    # original CSV fields in the public view; distinct historical versions stay intact.
+    db.execute("""UPDATE research_source_rows AS s
+        SET fields=json_remove(fields,'$.内容'), shares_body=1
+        WHERE json_type(fields,'$.内容')='text' AND length(json_extract(fields,'$.内容'))>0
+          AND json_extract(fields,'$.内容')=(SELECT body FROM research_records WHERE id=s.record_id)""")
+    if db.execute("PRAGMA foreign_key_check(research_source_rows)").fetchone():
         raise ValueError("Unlinked research source")

@@ -156,6 +156,7 @@ def build(root, output):
                     raise ValueError(f"{rel}: {error}") from error
             db.execute("CREATE INDEX industry_region_segment ON hotel_industry_weekly(region,segment,period_id)")
             db.commit()
+            db.execute("VACUUM")
             if db.execute("PRAGMA integrity_check").fetchall() != [("ok",)]:
                 raise ValueError("Integrity check failed")
             for name, expected in db.execute("SELECT sql_name,row_count FROM datasets WHERE format='csv' AND sql_name <> 'research_sources'"):
