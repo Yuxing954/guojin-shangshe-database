@@ -1,6 +1,6 @@
 const assert=require('node:assert/strict'),fs=require('fs'),path=require('path'),M=require('../scripts/cruise-analysis-model.js');
 const read=p=>JSON.parse(fs.readFileSync(path.join(__dirname,'../data/tourism',p),'utf8')),core=read('three-gorges-cruises.json'),details=read('three-gorges-details.json'),m=M.create(core,details);
-assert.equal(m.periods.length,33);const a=m.audience('2026-09');assert(Math.abs(a.minor-3.33)<1e-8);assert(Math.abs(a.seniorDelta+.73)<1e-8);assert(Math.abs(a.foreignShareDelta-6.16)<1e-8);assert(Math.abs(a.foreignYoY-70.5426356589)<1e-8);
+assert.equal(m.periods.length,34);const a=m.audience('2026-09');assert(Math.abs(a.minor-3.33)<1e-8);assert(Math.abs(a.seniorDelta+.73)<1e-8);assert(Math.abs(a.foreignShareDelta-6.16)<1e-8);assert(Math.abs(a.foreignYoY-70.5426356589)<1e-8);
 const c=m.company('2026-09',6);assert.equal(c.value,.38);assert.equal(c.share,3.2);assert.equal(c.shareStatus,'官方披露');assert.equal(c.rank,5);assert.equal(c.sampleCount,6);assert(Math.abs(c.yoy-46.1538461538)<1e-8);assert(Math.abs(c.excess-32.6638461538)<1e-8);
 const w=m.company('2026-09',0);assert.equal(w.shareStatus,'测算');assert(Math.abs(w.share-.83/11.95*100)<1e-8);
 assert.equal(m.company('2026-03',3).value,null);assert.equal(m.company('2026-02',6).rank,null);assert.equal(m.company('2026-01',6).share,null);assert.equal(m.company('2025-12',6).value,0);assert.equal(m.company('2025-12',6).yoy,-100);
