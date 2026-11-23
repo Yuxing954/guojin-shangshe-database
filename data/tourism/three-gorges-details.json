@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "title": "三峡游轮游客结构与湖北籍船公司月度客运量",
-  "updatedAt": "2026-10-23",
+  "updatedAt": "2026-11-23",
   "coverageStart": "2024-01",
-  "coverageEnd": "2026-09",
+  "coverageEnd": "2026-10",
   "ageLabels": [
     "12岁以下",
     "12—18岁",
@@ -369,6 +369,16 @@
       "checkedAt": "2026-10-23",
       "quality": "官方原始快讯",
       "locator": "国/境外游客占4.48%；未披露分公司与六档年龄结构"
+    },
+    {
+      "id": "official-2026-10",
+      "title": "2026年10月长江三峡游轮旅游大数据",
+      "url": "https://www.cse.net.cn/#/infodetail/324653093125881856",
+      "publisher": "重庆航运交易所 / 重庆邮轮中心",
+      "publishedAt": "2026-11-03",
+      "checkedAt": "2026-11-23",
+      "quality": "官方原始月报",
+      "locator": "月度及累计运行情况、游客结构与游轮运量表"
     }
   ],
   "records": [
@@ -978,7 +988,7 @@
         3.88,
         10.03,
         25.74,
-        52.0
+        52
       ],
       "origins": {
         "domestic": 10.08,
@@ -1031,7 +1041,7 @@
         0.24
       ],
       "jiaoyunShare": 1.86,
-      "jiaoyunYoY": 0.0,
+      "jiaoyunYoY": 0,
       "sourceId": "official-2025-07",
       "evidence": {
         "companies": "https://www.cse.net.cn/api/file/loadFile.do?id=284630665469624320",
@@ -1211,7 +1221,7 @@
         0
       ],
       "jiaoyunShare": 0,
-      "jiaoyunYoY": -100.0,
+      "jiaoyunYoY": -100,
       "sourceId": "official-2025-12",
       "evidence": {
         "companies": "https://www.cse.net.cn/api/file/loadFile.do?id=298310949245288448"
@@ -1507,7 +1517,7 @@
         0.78
       ],
       "jiaoyunShare": 5.42,
-      "jiaoyunYoY": 225.0,
+      "jiaoyunYoY": 225,
       "sourceId": "official-2026-08",
       "evidence": {
         "companies": "https://www.cse.net.cn/api/file/loadFile.do?id=319659993021284352",
@@ -1556,6 +1566,45 @@
       },
       "notes": [
         "原表未列示的企业当月值留空，不据此补零或认定停运。"
+      ]
+    },
+    {
+      "period": "2026-10",
+      "ages": [
+        3.65,
+        1.12,
+        3.22,
+        9.24,
+        26.52,
+        56.24
+      ],
+      "origins": {
+        "domestic": 12.31,
+        "foreign": 3.26,
+        "foreignShare": 20.94
+      },
+      "companies": [
+        0.93,
+        0.13,
+        1.33,
+        null,
+        0.51,
+        1.04,
+        0.88
+      ],
+      "jiaoyunShare": 5.67,
+      "jiaoyunYoY": 119.99999999999997,
+      "sourceId": "official-2026-10",
+      "evidence": {
+        "companies": "https://www.cse.net.cn/api/file/loadFile.do?id=324652794556448768",
+        "ages": "https://www.cse.net.cn/api/file/loadFile.do?id=324653001138503680"
+      },
+      "fieldStatus": {
+        "jiaoyunYoY": "derived:当月披露客运量/上年同月披露客运量-1；含原值舍入误差"
+      },
+      "notes": [
+        "年龄采用原图：45—60岁26.52%，正文26.25%与图有差异，保留原图；各档合计99.99%为舍入差异。",
+        "原表未列宜昌隆基，留空。"
       ]
     }
   ],
