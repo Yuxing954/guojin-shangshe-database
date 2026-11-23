@@ -1,0 +1,66 @@
+{
+  "date": "2026-11-23",
+  "checkedAt": "2026-11-23T18:02:59+08:00",
+  "windowStart": "2026-11-20T18:00:00+08:00",
+  "cutoff": "2026-11-23T18:00:00+08:00",
+  "status": "partial",
+  "scope": "统一覆盖公司法定披露、公司IR、行业重要数据及日报日期当天与未来三日财报候选",
+  "queries": [
+    {
+      "source": "香港交易所披露易",
+      "url": "https://www3.hkexnews.hk/reports/bmn/ebmn_c.htm",
+      "result": "董事会会议日程已回读；确认特海国际11月25日审议并发布2026年第三季度业绩。"
+    },
+    {
+      "source": "香港交易所披露易",
+      "url": "https://www.hkexnews.hk/index_c.htm",
+      "result": "按覆盖公司代码及名称复核11月20日18:00至11月23日18:00候选；部分列表分页未完整回读。"
+    },
+    {
+      "source": "巨潮资讯",
+      "url": "https://www.cninfo.com.cn/new/commonUrl/pageOfSearch?code=600415&endDate=2026-11-24&name=小商品城&orgId=gssh0600415&startDate=2026-11-24&url=disclosure/list/search",
+      "result": "检索见小商品城11月23日董事会决议及临时股东会通知；董事会决议原文未能取得并通读，程序性通知不列正文。其他A股覆盖公司原始列表仅部分回读。"
+    },
+    {
+      "source": "上海证券交易所",
+      "url": "https://www.sse.com.cn/assortment/stock/list/info/announcement/index.shtml?productId=600415",
+      "result": "复核小商品城交易所公告页；当前页面索引未提供可完整读取的11月23日董事会决议正文。"
+    },
+    {
+      "source": "SEC EDGAR",
+      "url": "https://www.sec.gov/edgar/search/",
+      "result": "复核美股覆盖公司候选；未将搜索空项解释为无公告。"
+    },
+    {
+      "source": "特海国际投资者关系",
+      "url": "https://ir.superhiinternational.com/news-releases/news-release-details/super-hi-report-third-quarter-2026-financial-results-wednesday",
+      "result": "确认11月25日披露2026年第三季度未经审计业绩，并于当日20:00香港时间举行电话会。"
+    },
+    {
+      "source": "国家统计局",
+      "url": "https://www.stats.gov.cn/sj/zxfb/",
+      "result": "消费相关最新发布早于本期24小时行业窗口；未用抓取时间将历史数据转为新增。"
+    },
+    {
+      "source": "商务部",
+      "url": "https://www.mofcom.gov.cn/xwfb/",
+      "result": "消费市场候选发布早于11月22日18:00行业窗口左边界；电商口径同时按日报范围排除。"
+    },
+    {
+      "source": "交通运输部",
+      "url": "https://www.mot.gov.cn/shuju/",
+      "result": "未取得窗口内可核实发布时间且属于商社覆盖的重要行业更新；原始列表仅部分回读。"
+    },
+    {
+      "source": "中国民航局",
+      "url": "https://www.caac.gov.cn/XXGK/XXGK/TJSJ/",
+      "result": "未取得窗口内可核实发布时间且属于商社覆盖的重要行业更新；原始列表仅部分回读。"
+    },
+    {
+      "source": "美国劳工统计局",
+      "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "result": "CPI最近发布早于本期24小时窗口，下一次发布为12月10日。"
+    }
+  ],
+  "limits": "部分交易所、公司IR及行业原始清单/分页未完整回读；检索未发现候选不等同于确认无公告或无行业数据。"
+}
