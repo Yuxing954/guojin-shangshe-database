@@ -1,0 +1,30 @@
+name: Full SQLite database
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'data/**'
+      - 'data-manifest.json'
+      - 'docs/reviews/*.json'
+      - 'scripts/build*sqlite.py'
+      - '.github/workflows/full-sqlite.yml'
+  pull_request:
+    paths:
+      - 'scripts/build*sqlite.py'
+      - '.github/workflows/full-sqlite.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  database:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 scripts/build_full_sqlite.py guojin-shangshe.sqlite
+      - uses: actions/upload-artifact@v4
+        with:
+          name: guojin-shangshe-sqlite
+          path: guojin-shangshe.sqlite
+          if-no-files-found: error
