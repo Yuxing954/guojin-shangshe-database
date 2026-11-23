@@ -29,3 +29,21 @@
 CSV 不一定直接写在网页链接里，也可能由清单、构建器或更新程序读取。移动或删除前检查代码、数据清单与来源记录的依赖。
 
 本目录中的历史 CSV、来源回执及核验文件保留原文件名，便于追溯；原件下载与公开权限以[纪要维护指引](../docs/research-library.md)为准。
+
+## SQLite 全库
+
+从 [Full SQLite database](https://github.com/Yuxing954/guojin-shangshe-database/actions/workflows/full-sqlite.yml) 最近一次成功的 main 构建下载 `guojin-shangshe-sqlite` 并解压。也可运行 `python3 scripts/build_full_sqlite.py guojin-shangshe.sqlite`。
+
+`datasets` 登记源文件、对应 SQL 表、行数和 SHA256。`json_collections` 登记 JSON 数组的源路径、视图名和行数。视图将记录字段展开为列，保留完整元素 `_record`。完整 JSON 原文在 `json_documents`。市场观点更新、历史归档和网站导出存在重复覆盖，统计前请选择单一口径。各模块仍通过原有 CSV、JSON 流程更新。
+
+```sql
+SELECT period_id, shopping_sales_cny_100m
+FROM dutyfree_monthly ORDER BY period_id DESC LIMIT 12;
+
+SELECT path, key_path, view_name, row_count
+FROM json_collections WHERE path LIKE 'data/macro/%';
+
+SELECT period, metric, value
+FROM "companies_domestic_hotels_hworld__rows"
+WHERE metric = 'RevPAR' ORDER BY period DESC LIMIT 10;
+```
