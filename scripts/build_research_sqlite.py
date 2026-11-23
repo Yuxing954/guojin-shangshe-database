@@ -3,7 +3,6 @@ import csv
 import hashlib
 import json
 import re
-from pathlib import Path
 
 BASE = {"data/全部-市场观点.csv": "all_views", "data/商社-市场观点.csv": "views",
         "data/商社-纪要文库.csv": "minutes"}
@@ -126,7 +125,7 @@ def collect(db, root, paths):
             values=dict(kind="纪要" if asset in minutes else "附件",
                         title=r.get("name"),filename=r.get("name"),published=r.get("published") or r.get("date"),
                         summary=processed.get("summary"),source_url=r.get("sourceUrl"),
-                        attachment_url=storage.get("webUrl") or storage.get("url"),company=r.get("company"))
+                        attachment_url=storage.get("openUrl") or storage.get("webUrl") or storage.get("url"),company=r.get("company"))
             save(db,path,pos,"library" if path==LIBRARY else "work_minutes","asset:"+asset,values)
     for path in paths:
         if path.startswith("data/research/processed/") and path.endswith(".json"):
