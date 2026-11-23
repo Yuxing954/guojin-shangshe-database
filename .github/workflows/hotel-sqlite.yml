@@ -1,0 +1,31 @@
+name: Hotel SQLite snapshot
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - data/hotel_industry_weekly.csv
+      - data/hotel_group_weekly.csv
+      - data/hotel_supply_weekly.csv
+      - data/hotel_market_share_annual.csv
+      - scripts/build_hotel_sqlite.py
+      - .github/workflows/hotel-sqlite.yml
+  pull_request:
+    paths:
+      - scripts/build_hotel_sqlite.py
+      - .github/workflows/hotel-sqlite.yml
+
+permissions:
+  contents: read
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 scripts/build_hotel_sqlite.py data guojin-hotels.sqlite
+      - uses: actions/upload-artifact@v4
+        with:
+          name: guojin-hotels-sqlite
+          path: guojin-hotels.sqlite
+          if-no-files-found: error
