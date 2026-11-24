@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-24T11:22:26+08:00",
+  "generatedAt": "2026-11-24T11:40:26+08:00",
   "industries": [
     {
       "id": "hotel",
@@ -38,16 +38,16 @@
       "id": "gold",
       "name": "黄金",
       "metric": "Au99.99收盘价",
-      "value": 907.32,
+      "value": 781.4,
       "unit": "元/克",
       "precision": 2,
-      "change": 1.09,
+      "change": 2.2,
       "changeLabel": "当日涨跌",
-      "period": "2026-09-30",
-      "asOf": "2026-09-30",
+      "period": "2026-11-23",
+      "asOf": "2026-11-23",
       "freshnessDays": 10,
       "source": "上海黄金交易所",
-      "sourceFile": "https://www.sge.com.cn/h5_sjzx/quotationdailynew?end_date=2026-09-30&start_date=2026-09-30",
+      "sourceFile": "https://www.sge.com.cn/sjzx/quotation_daily_new?end_date=2026-11-23&start_date=2026-11-23",
       "href": "industry.html#gold"
     },
     {
