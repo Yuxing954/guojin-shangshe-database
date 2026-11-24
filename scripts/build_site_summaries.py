@@ -7,6 +7,7 @@ import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from time import perf_counter
+from research_publication import clean_library
 from summary_io import write_json_if_changed
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -39,6 +40,7 @@ def inputs(root):
 
 def run(root=ROOT, force=False, use_existing_index=False, as_of=None):
     root = Path(root).resolve()
+    clean_library(root)
     day = as_of or datetime.now(timezone(timedelta(hours=8))).date()
     cache = root / '.cache/research-build.json'
     try:
