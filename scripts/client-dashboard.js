@@ -54,7 +54,7 @@
     $('client-trend-period').textContent=points[0].periodLabel+' — '+points.at(-1).periodLabel;
     $('client-trend-count').textContent=points.length+'期 · '+metric.frequency;
     SiteCharts.drawPaired(host,points.map(p=>({period:p.periodLabel,value:p.value,change:p.change})),{
-      name:metric.label,unit:metric.unit,mode:'value',valueStyle:metric.frequency==='周度'?'line':'bar',precision:metric.precision,colors:['#206bc4']
+      name:metric.label,unit:metric.unit,mode:'value',valueStyle:metric.frequency==='周度'?'line':'bar',precision:metric.precision,colors:['#206bc4'],periodTickFormat:value=>model.axisLabel(ChartPeriod.format(value))
     });
   }
   function renderResearch(){
@@ -161,6 +161,7 @@
   const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const sourceMap=payload=>Object.fromEntries((payload.sources||[]).map(source=>[source.id,source]));
   const latest=metric=>metric.points.filter(point=>Number.isFinite(point.value)).at(-1)||null;
+  const axisLabel=value=>String(value??'').replace(/^(\d{4}|\d{2})W(\d{1,2})(?:\s*[·|].*)?$/i,(_,year,week)=>year.slice(-2)+'W'+week.padStart(2,'0'));
   const pointSources=(metric,point)=>(point?.sourceIds||[point?.sourceId]).map(id=>metric.sources[id]).filter(Boolean);
   function fromIndustry(payload){
     const sources=sourceMap(payload),metrics=(payload.sectors||[]).flatMap(sector=>sector.metrics||[]);
@@ -197,5 +198,5 @@
     });
     return SiteData.encodeCsv(rows.map(row=>Object.fromEntries(headers.map((header,index)=>[header,row[index]]))),headers);
   }
-  return {specs,escape,latest,pointSources,fromIndustry,fromTravel,researchEntries,csv};
+  return {specs,escape,latest,axisLabel,pointSources,fromIndustry,fromTravel,researchEntries,csv};
 });
