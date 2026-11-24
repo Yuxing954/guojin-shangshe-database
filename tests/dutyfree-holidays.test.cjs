@@ -71,34 +71,43 @@ for(const r of full){
  if(r.web_source?.checkedAt){assert.ok(r.web_source.locator);assert.ok(r.web_source.publishedAt<=r.web_source.checkedAt);}
 }
 console.log('Holiday data, missing-value handling, period separation and filters passed.');
-// Exercise the actual browser download handler with a minimal DOM and Blob capture.
-(async()=>{
-  const vm=require('node:vm'),elements=new Map();let downloaded,downloadName;
-  const element=id=>{if(!elements.has(id))elements.set(id,{parentElement:{},value:'combo'});return elements.get(id);};
-  const context={SiteCharts:{paired:()=>({html:''})},window:{},document:{getElementById:element,createElement:()=>({click(){downloadName=this.download;}})},location:{pathname:'/industry.html',hash:'#dutyfree'},addEventListener(){},fetch:async()=>({ok:true,json:async()=>d}),Blob,URL:{createObjectURL(blob){downloaded=blob;return 'blob:test';},revokeObjectURL(){}},setTimeout(){},console};
-  vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../scripts/dutyfree-holidays.js'),'utf8'),context);
-  await new Promise(resolve=>setImmediate(resolve));
-  element('dh-holiday').onchange({target:{value:'春节'}});element('dh-year').onchange({target:{value:'2026'}});element('dh-download').onclick();
-  const text=await downloaded.text(),D=require('../scripts/site-data.js'),rows=D.csv(text);
-  assert.equal(downloadName,'离岛免税-春节-2026.csv');assert.equal(rows.length,1);
-  assert.equal(Number(rows[0]['销售额（亿元）']),27.2);assert.equal(Number(rows[0]['日均销售额（亿元）']),27.2/9);
-  assert.ok(rows[0]['来源单元格'].includes('春节假期!C17'));assert.ok(rows[0]['原始文件或网页'].endsWith('.xlsx'));
-  element('dh-holiday').onchange({target:{value:'中秋'}});element('dh-download').onclick();
-  const midExport=D.csv(await downloaded.text())[0];assert.equal(Number(midExport['销售额（亿元）']),2.31);assert.equal(midExport['状态'],'available');assert.equal(midExport['原始文件或网页'],mid.web_source.url);
-  element('dh-holiday').onchange({target:{value:'国庆'}});element('dh-download').onclick();
-  const nationalExport=D.csv(await downloaded.text())[0];assert.equal(Number(nationalExport['销售额（亿元）']),8.55);assert.equal(Number(nationalExport['统计天数']),7);
-  element('dh-holiday').onchange({target:{value:'清明'}});element('dh-download').onclick();
-  const qingmingExport=D.csv(await downloaded.text())[0];
-  assert.equal(Number(qingmingExport['购物件数（万件）']),22.42);
-  assert.equal(Number(qingmingExport['原文购物人次同比（%）']),19.6);
-  assert.equal(qingmingExport['来源发布日期'],'2026-04-07');
-  element('dh-holiday').onchange({target:{value:'端午'}});element('dh-year').onchange({target:{value:'2024'}});
-  assert.ok(element('dh-table').innerHTML.includes('-21.2%'));
-  element('dh-metric').onchange({target:{value:'items'}});
-  assert.ok(element('dh-chart-title').textContent.includes('购物件数'));
-  element('dh-holiday').onchange({target:{value:'清明'}});element('dh-year').onchange({target:{value:'2025'}});
-  assert.equal(element('dh-download').disabled,true);
-  assert.ok(d.coverageNotes.some(n=>n.includes('2025年清明')));
-  assert.ok(!element('dutyfree-holidays').innerHTML.includes('数据覆盖与待核验缺口'));
-  console.log('Browser CSV download handler exports exact values and per-record workbook or web sources.');
-})().catch(error=>{console.error(error);process.exitCode=1;});
+// Verify the exact mapper and CSV serializer used by the native industry's export action.
+require('node:test').test('native holiday exports preserve exact values, field provenance and empty filters',async()=>{
+  const {dutyfreeHolidayExportRows}=await import('../scripts/tabler-app/industry.js');
+  const {csv,parseCSV}=await import('../scripts/tabler-app/common.js');
+  const original=JSON.stringify(d);
+  const exportRows=(holiday,year)=>{
+    const source=M.filter(d.records,holiday,year);
+    const rows=dutyfreeHolidayExportRows(d,source);
+    const headers=[...new Set(rows.flatMap(Object.keys))];
+    return {rows,parsed:parseCSV(csv(rows,headers)),text:csv(rows,headers)};
+  };
+  const spring=exportRows('春节','2026');
+  assert.equal(spring.parsed.length,1);
+  assert.equal(Number(spring.parsed[0].sales),27.2);
+  assert.equal(Number(spring.parsed[0].daily_sales),27.2/9);
+  const cells=JSON.parse(spring.parsed[0].source_cells);
+  assert.ok(Object.values(cells).some(cell=>(cell.sheet||spring.parsed[0].sheet)+'!'+cell.cell==='春节假期!C17'));
+  assert.ok(spring.parsed[0].sourceFile.endsWith('.xlsx'));
+  assert.match(spring.parsed[0].units,/items:万件/);
+  const midExport=exportRows('中秋','2026').parsed[0];
+  assert.equal(Number(midExport.sales),2.31);assert.equal(midExport.status,'available');
+  assert.equal(JSON.parse(midExport.web_source).url,mid.web_source.url);
+  const national=exportRows('国庆','2026').parsed[0];
+  assert.equal(Number(national.sales),8.55);assert.equal(Number(national.days),7);
+  const qingming=exportRows('清明','2026').parsed[0];
+  assert.equal(Number(qingming.items),22.42);
+  assert.equal(Number(qingming.reported_shoppers_yoy),19.6);
+  assert.equal(JSON.parse(qingming.web_source).publishedAt,'2026-04-07');
+  const dragon=exportRows('端午','2024').parsed[0];
+  assert.equal(Number(Number(dragon.daily_yoy).toFixed(1)),-21.2);
+  assert.equal(Number(dragon.daily_yoy),M.filter(d.records,'端午','2024')[0].daily_yoy);
+  const absent=exportRows('清明','2025');
+  assert.deepEqual(absent.rows,[]);assert.deepEqual(absent.parsed,[]);
+  assert.ok(d.coverageNotes.some(note=>note.includes('2025年清明')));
+  // A web-only field on a later record must survive an export beginning with a workbook row.
+  const mixed=dutyfreeHolidayExportRows(d,[M.filter(d.records,'春节','2026')[0],mid]);
+  const mixedCsv=parseCSV(csv(mixed,[...new Set(mixed.flatMap(Object.keys))]));
+  assert.equal(JSON.parse(mixedCsv[1].web_source).url,mid.web_source.url);
+  assert.equal(JSON.stringify(d),original,'export does not mutate source data');
+});

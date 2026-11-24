@@ -1,237 +1,40 @@
-<!doctype html><html lang="zh-CN"><head><script src="scripts/chart-annotations.js?v=20261025annotations1"></script><script src="scripts/chart-period.js?v=20261022dates"></script><script>if(window.parent!==window&&new URLSearchParams(location.search).get("embed")==="1")document.documentElement.classList.add("industry-embedding");</script><style>html.industry-embedding body{visibility:hidden!important}</style><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>免税 · 零售&amp;社服数据库</title><script src="scripts/site-ui.js?v=20261125client2"></script><style>
-:root{--bg:#f4f6f8;--card:#fff;--ink:#172536;--mut:#748194;--line:#e1e6eb;--navy:#18374f;--blue:#3d708e;--teal:#2d7b70;--amber:#b47a3d;--red:#bd4a4c;--green:#278069;--font:"PingFang SC","Noto Sans SC","Microsoft YaHei UI",sans-serif}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px var(--font);font-feature-settings:"tnum" 1}
-.wrap{max-width:1240px;margin:auto;padding:22px 20px 50px}
-.hero{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:14px}
-.eyebrow{font-size:9px;color:var(--blue);font-weight:700;letter-spacing:.16em}
-.hero h1{margin:5px 0 3px;font-size:24px;letter-spacing:-.03em}
-.hero p,.asof{margin:0;color:var(--mut);font-size:11px}
-.crumbs{font-size:10px;color:var(--mut);margin-bottom:10px}.crumbs a{color:var(--blue);text-decoration:none}
-.tabs{display:flex;gap:3px;padding:4px;background:#e8edf1;border-radius:8px;margin-bottom:14px;overflow:auto}
-.tab{border:0;background:transparent;padding:8px 13px;border-radius:6px;color:#596a7c;font:11px var(--font);cursor:pointer;white-space:nowrap}
-.tab.on{background:#fff;color:var(--navy);font-weight:600;box-shadow:0 1px 4px #16304714}
-.view{display:none}.view.on{display:block}
-.panel{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:12px;box-shadow:0 8px 24px -25px #17344b}
-.panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid #e9edf1;flex-wrap:wrap}
-.panel-head h2{font-size:14px;margin:0}.panel-head p{font-size:10px;color:var(--mut);margin:3px 0 0}
-.controls select{border:1px solid #d5dde5;background:#fff;border-radius:6px;padding:6px 9px;color:#46576a;font:11px var(--font)}
-.kpis{display:grid;grid-template-columns:repeat(5,1fr)}
-.kpi{padding:13px 15px;border-right:1px solid #eef1f4;border-bottom:1px solid #eef1f4;cursor:help}
-.kpi:nth-child(5n){border-right:0}
-.kpi span{font-size:10px;color:var(--mut);display:block}
-.kpi strong{display:block;font-size:20px;margin:3px 0 4px;font-weight:600}
-.kpi strong em{font-style:normal;font-size:11px;color:var(--mut);font-weight:400}
-.kpi small{font-size:9px}
-.kpi .src{color:var(--blue)}
-.up{color:var(--red)!important}.down{color:var(--green)!important}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.chart{padding:6px 8px 10px}
-.chart-head{display:flex;justify-content:space-between;align-items:center;padding:8px 12px 2px}
-.chart-head h3{font-size:12px;margin:0;font-weight:600}
-.legend{display:flex;gap:11px;font-size:10px;color:var(--mut)}
-.legend i.dot{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:4px}
-svg{width:100%;height:auto;display:block}
-.line{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
-.bar{fill:#3d708e}
-.gridline{stroke:#edf1f4;stroke-width:1}
-.axis{font-size:8px;fill:#8b98a5}
-.tooltip{position:absolute;display:none;background:#fff;border:1px solid var(--line);border-radius:7px;padding:8px 10px;font-size:10px;box-shadow:0 8px 22px -14px rgba(23,52,75,.4);pointer-events:none;z-index:9;line-height:1.7}
-.panel.chart{position:relative}
-.table{width:100%;border-collapse:collapse;font-size:11px}
-.table th{background:var(--navy);color:#fff;text-align:left;padding:8px 11px;font-weight:600;font-size:10px;position:sticky;top:0;cursor:pointer;white-space:nowrap}
-.table th .arr{color:#9db6c6;font-size:8px}
-.table td{padding:7px 11px;border-bottom:1px solid #eef1f4;color:#33424f;white-space:nowrap}
-.table tr:hover td{background:#f7fafc}
-.num{text-align:right;font-variant-numeric:tabular-nums}
-.tablewrap{overflow:auto;max-height:440px}
-.tag{display:inline-block;font-size:8px;padding:1px 6px;border-radius:4px;background:#eef3f6;color:var(--blue);margin-left:4px}
-.tag.est{background:#fbF3ea;color:var(--amber)}
-.pill{font-style:normal;font-size:9px;background:#eaf6f2;color:var(--teal);padding:3px 9px;border-radius:20px;font-weight:600}
-.fresh{display:flex;justify-content:space-between;gap:12px;font-size:9px;color:var(--mut);padding:11px 5px;flex-wrap:wrap}
-.srcbtn{border:1px solid var(--line);background:#f6f9fb;color:var(--blue);border-radius:5px;font-size:9px;padding:2px 8px;cursor:pointer}
-.srcbtn:hover{background:#eaf1f6}
-.tl{position:relative;padding:6px 0 6px 18px;border-left:2px solid #dbe6ee}
-.tl-item{position:relative;padding:10px 0 14px}
-.tl-item::before{content:'';position:absolute;left:-22px;top:15px;width:8px;height:8px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 3px #eaf1f6}
-.tl-date{font-size:9px;color:var(--blue);font-weight:700;letter-spacing:.05em}
-.tl-title{font-size:13px;font-weight:600;margin:3px 0}
-.tl-body{font-size:11px;color:#46576a;line-height:1.7}
-.tl-impact{font-size:10px;color:var(--teal);margin-top:4px}
-.tl .srcbtn{margin-top:4px}
-.card{background:#f8fafb;border:1px solid #edf1f4;border-radius:8px;padding:12px 14px}
-.card h4{font-size:12px;margin:0 0 8px}
-.donut-wrap{display:flex;gap:18px;align-items:center;flex-wrap:wrap;padding:10px 16px}
-.donut-legend{font-size:11px;line-height:2}
-.donut-legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px}
-.signal{display:grid;grid-template-columns:96px 1fr auto;gap:12px;padding:11px 16px;background:#f8fafb;border-top:1px solid #edf0f3;font-size:11px;align-items:center}
-.signal b{font-size:10px;color:var(--mut)}
-.srchost{position:relative}
-.srcmodal{border:0;padding:0;width:min(680px,calc(100% - 32px));max-height:85dvh;background:white;border-radius:12px}.srcmodal::backdrop{background:#17223855}.srcmodal:not([open]){display:none}
-.srcmodal[open]{display:block}
-.srcbox{background:#fff;border-radius:10px;padding:20px 22px;max-width:420px;width:90%;font-size:11px;line-height:1.8}
-.srcbox h3{margin:0 0 10px;font-size:14px}
-.srcbox .row{display:grid;grid-template-columns:80px 1fr;gap:8px;padding:3px 0;border-bottom:1px dashed #edf1f4}
-.srcbox .closebtn{margin-top:12px;text-align:right}
-.empty{padding:40px;text-align:center;color:var(--mut);font-size:12px}
-.muted{color:var(--mut);font-size:10px}
-@media(max-width:960px){.kpis{grid-template-columns:repeat(3,1fr)}.kpi:nth-child(5n){border-right:1px solid #eef1f4}.grid2,.grid3{grid-template-columns:1fr}}
-#view-monthly .controls{flex-wrap:wrap;gap:8px}#view-monthly .controls .srcbtn{font-size:12px;padding:6px 9px}
-@media(max-width:640px){.wrap{padding:14px 10px}.hero{flex-direction:column;align-items:flex-start}.kpis{grid-template-columns:repeat(2,1fr)}.kpi{border-right:0}.signal{grid-template-columns:1fr}.hero h1{font-size:20px}}
-</style><link rel="stylesheet" href="scripts/vendor/tabler/tabler.min.css?v=1.6.1"><link rel="stylesheet" href="scripts/site.css?v=20261125client2"><script defer src="scripts/site-shell.js?v=20261125client2"></script><link rel="stylesheet" href="scripts/dutyfree-holidays.css?v=20261012coverage"><script defer src="scripts/dutyfree-holidays.js?v=20261115kpitype"></script><link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-charts.css?v=20261025annotations1"><link rel="stylesheet" href="scripts/industry-embed.css?v=20261014viewfit"><link rel="stylesheet" href="scripts/site-install.css?v=20261014home"><link rel="stylesheet" href="scripts/dutyfree-korea.css?v=20261022tall"><link rel="stylesheet" href="scripts/site-polish.css?v=20261013clean"><script src="scripts/dutyfree-monthly-model.js?v=20261010charts"></script><script src="scripts/site-charts.js?v=20261025annotations1"></script><script defer src="scripts/site-data.js?v=20261022dates"></script><script defer src="scripts/dutyfree-korea-model.js?v=20261022yoy"></script><script defer src="scripts/dutyfree-korea.js?v=20261115kpitype"></script><script defer src="scripts/industry-embed.js?v=20261024asof"></script><style>#hn-growth:not([data-chart-ready]){visibility:hidden}</style><link rel="manifest" href="site.webmanifest?v=20261025retailservice2"><meta name="theme-color" content="#4d58a4"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="零售&amp;社服数据库"><meta name="apple-mobile-web-app-status-bar-style" content="default"><link rel="apple-touch-icon" href="scripts/assets/app/apple-touch-icon.png?v=20261025retailservice2"><script defer src="scripts/site-install.js?v=20261014home"></script><link rel="stylesheet" href="scripts/industry-design.css?v=20261024compact"><link rel="stylesheet" href="scripts/dashboard-asof.css?v=20261024compact"><link rel="icon" type="image/svg+xml" href="scripts/assets/brand/sinolink-mark.svg"><link rel="stylesheet" href="scripts/dashboard-toolbar.css?v=20261111"><link rel="stylesheet" href="scripts/dutyfree-typography.css?v=20261115kpitype"><link rel="stylesheet" href="scripts/data-table.css?v=20261124tabler1"><link rel="stylesheet" href="scripts/workspace-design.css?v=20261124tabler1">
-
-<link rel="stylesheet" href="scripts/dashboard-compact.css?v=20261113compact2">
-
-<script defer src="scripts/data-table.js?v=20261124tabler1"></script>
-</head><body data-ui="tabler" data-dashboard-density="compact" data-design="workspace" class="dutyfree-page site-page" data-chart-values-default><header class="site-workspace-bar"><div class="site-workspace-path"><a href="industry.html">国金商社</a><span aria-hidden="true">/</span><span>免税</span></div><a class="site-source-link" href="data-notes.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l4 4v14H6zM14 3v5h4M9 12h6m-6 4h6"/></svg><span>数据来源</span></a></header><div class="wrap industry-board">
-<div class="crumbs"><a href="industry.html#dutyfree">行业数据</a> / 免税</div>
-<header class="hero"><div><div class="eyebrow">行业数据</div><h1>免税</h1><p>月度趋势 · 节假日表现</p></div><div class="asof board-asof" id="asof">读取数据中…</div></header>
-<nav class="tabs site-subnav" id="tabs"><button class="tab on" data-view="monthly">海南免税</button><button class="tab" data-view="korea">韩国免税</button><button class="tab" data-view="holidays">节假日数据</button></nav>
-
-<!-- 海南离岛免税 -->
-<section class="view on" id="view-monthly">
-<div class="controls board-filters dutyfree-filters"><label for="hn-range">范围 <select id="hn-range" aria-label="时间范围"><option value="12" selected>近12个月</option><option value="24">近24个月</option><option value="2024">2024</option><option value="2025">2025</option><option value="2026">2026</option><option value="9999">全部</option></select></label><div class="dutyfree-actions"><button class="srcbtn" type="button" onclick="showSrc('monthly_sources')">来源</button><button class="srcbtn" type="button" id="monthly-download">导出当前范围 CSV</button></div></div><p id="hn-period" class="dutyfree-period"></p>
-<div class="kpis board-kpis"><div class="kpi board-stat dutyfree-kpi"><span class="dutyfree-kpi-label">购物金额</span><strong class="dutyfree-kpi-reading"><span class="dutyfree-kpi-number" id="hn-sales">—</span><em class="dutyfree-kpi-unit"> 亿元</em></strong><small class="dutyfree-kpi-yoy" id="hn-sales-yoy"></small></div><div class="kpi board-stat dutyfree-kpi"><span class="dutyfree-kpi-label">购物人次</span><strong class="dutyfree-kpi-reading"><span class="dutyfree-kpi-number" id="hn-shoppers">—</span><em class="dutyfree-kpi-unit"> 万人次</em></strong><small class="dutyfree-kpi-yoy" id="hn-shoppers-yoy"></small></div><div class="kpi board-stat dutyfree-kpi"><span class="dutyfree-kpi-label">每购物人次金额</span><strong class="dutyfree-kpi-reading"><span class="dutyfree-kpi-number" id="hn-spend">—</span><em class="dutyfree-kpi-unit"> 元</em></strong><small class="dutyfree-kpi-yoy" id="hn-spend-yoy"></small></div></div>
-<div class="panel chart board-panel dutyfree-chart" data-chart-dual-labels data-chart-label-menu><div class="panel-head board-panel-head"><h3 id="hn-trend-title">购物金额同比增速（%）</h3><div class="trend-controls site-chart-tools"><label class="visually-hidden" for="hn-metric">趋势指标</label><select id="hn-metric" aria-label="趋势指标"><option value="sales">购物金额（亿元）</option><option value="shoppers">购物人次（万人次）</option><option value="items">购物件数（万件）</option><option value="spend">每购物人次金额（元）</option></select><span data-chart-value-controls></span></div></div><div class="dutyfree-plot"><svg id="hn-growth" role="img" aria-label="购物金额同比增速趋势"></svg></div><div class="tooltip"></div></div>
-<details class="panel monthly-details board-panel board-detail"><summary>历史数据与口径</summary><p class="trend-caption">月度历史</p><div class="tablewrap"><table class="table board-table" id="hn-table"></table></div><button class="srcbtn" onclick="showSrc('monthly_sources')">查看来源</button><p class="trend-caption"><a href="data/dutyfree_monthly.csv" download>下载完整月度 CSV</a> · <a href="data/dutyfree/monthly-provenance.json" download>下载来源与单元格记录</a></p></details>
-</section>
-
-<section class="view" id="view-korea" data-status="idle" aria-label="韩国免税月度数据">
-<div class="controls kr-controls board-filters dutyfree-filters">
-<label>顾客分类<select id="kr-scope"><option value="total">全部顾客</option><option value="foreign">外国人</option><option value="domestic">韩国本国人</option></select></label>
-<label>范围<select id="kr-range"><option value="12">近12个月</option><option value="24">近24个月</option><option value="all">全部历史</option></select></label>
-<label>图表<select id="kr-mode"><option value="combo">数值＋同比</option><option value="value">数值</option><option value="change">同比</option></select></label>
-<div class="dutyfree-actions"><button class="srcbtn" id="kr-source" type="button">来源</button><button class="srcbtn" id="kr-export" type="button">导出当前范围 CSV</button></div>
-</div>
-<p id="kr-period" class="dutyfree-period"></p><p id="kr-status" role="status">正在读取韩国免税数据…</p><button id="kr-retry" class="srcbtn" type="button" hidden>重新读取</button>
-<div class="kpis board-kpis"><div class="kpi board-stat dutyfree-kpi"><span class="dutyfree-kpi-label">销售额</span><strong class="dutyfree-kpi-reading"><span class="dutyfree-kpi-number" id="kr-sales">—</span><em class="dutyfree-kpi-unit"> 亿美元</em></strong><small class="dutyfree-kpi-yoy" id="kr-sales-yoy"></small></div><div class="kpi board-stat dutyfree-kpi"><span class="dutyfree-kpi-label">购物人次</span><strong class="dutyfree-kpi-reading"><span class="dutyfree-kpi-number" id="kr-shoppers">—</span><em class="dutyfree-kpi-unit"> 万人次</em></strong><small class="dutyfree-kpi-yoy" id="kr-shoppers-yoy"></small></div><div class="kpi board-stat dutyfree-kpi"><span class="dutyfree-kpi-label">每购物人次金额（测算）</span><strong class="dutyfree-kpi-reading"><span class="dutyfree-kpi-number" id="kr-spend">—</span><em class="dutyfree-kpi-unit"> 美元/人次</em></strong><small class="dutyfree-kpi-yoy" id="kr-spend-yoy"></small></div></div>
-<div class="kr-grid"><article class="panel chart board-panel dutyfree-chart"><div class="panel-head board-panel-head"><h3 id="kr-sales-title">销售额与同比</h3><label class="site-value-option"><input type="checkbox" data-chart-labels checked>显示数值</label></div><div id="kr-sales-chart" class="kr-plot dutyfree-plot"></div></article><article class="panel chart board-panel dutyfree-chart"><div class="panel-head board-panel-head"><h3 id="kr-shoppers-title">购物人次与同比</h3><label class="site-value-option"><input type="checkbox" data-chart-labels checked>显示数值</label></div><div id="kr-shoppers-chart" class="kr-plot dutyfree-plot"></div></article><article class="panel chart board-panel dutyfree-chart"><div class="panel-head board-panel-head"><h3 id="kr-spend-title">客单价与同比</h3><label class="site-value-option"><input type="checkbox" data-chart-labels checked>显示数值</label></div><div id="kr-spend-chart" class="kr-plot dutyfree-plot"></div></article></div>
-<p class="kr-sources">韩国免税店协会 · Wind / Choice转引</p>
-<details class="panel monthly-details board-panel board-detail"><summary>历史数据与口径</summary><div class="tablewrap"><table class="table board-table" id="kr-table"></table></div><div class="kr-downloads"><button class="srcbtn" id="kr-export-all" type="button">导出全部顾客分类 CSV</button></div></details>
-</section>
-
-<section class="view" id="view-holidays"><section id="dutyfree-holidays" class="dh-panel" aria-label="离岛免税节假日数据"></section></section>
-
-<div class="fresh"><span><a href="data-notes.html#dutyfree" target="_blank" rel="noopener">来源与说明 ↗</a></span><span id="rows-note"></span></div>
-</div>
-
-<!-- 来源弹窗 -->
-<dialog class="srcmodal" id="srcmodal" aria-label="数据来源"><div class="srcbox" id="srcbox"></div></dialog>
-
-<script>
-/* ---------- 工具 ---------- */
-function csv(t){let a=[],r=[],v='',q=false;for(let i=0;i<t.length;i++){let c=t[i],n=t[i+1];if(q){if(c==='"'&&n==='"'){v+='"';i++}else if(c==='"')q=false;else v+=c}else if(c==='"')q=true;else if(c===','){r.push(v);v=''}else if(c==='\n'){r.push(v.replace(/\r$/,''));a.push(r);r=[];v=''}else v+=c}if(v||r.length){r.push(v);a.push(r)}let h=a.shift().map(x=>x.replace(/^\ufeff/,''));return a.filter(x=>x.some(Boolean)).map(x=>Object.fromEntries(h.map((k,i)=>[k,x[i]])))}
-const N=x=>{let n=Number(x);return isFinite(n)&&x!==''&&x!=null?n:null},F=(x,d=1)=>N(x)==null?'—':N(x).toLocaleString('zh-CN',{minimumFractionDigits:d,maximumFractionDigits:d});
-const C=v=>v>0?'up':v<0?'down':'',P=(v,d=1)=>N(v)==null?'—':`${v>0?'+':''}${F(v,d)}%`,Pf=(v,d=1,ty)=>N(v)==null?'—':(ty==='pct'?`${v>0?'+':''}${F(v,d)}pct`:P(v,d));
-const W=(v,d=1,ty)=>`<span class="${C(v)}">${Pf(v,d,ty)}</span>`,Dash=v=>v==null||v===''||v==='—'?'—':v;
-let DB={},SRC={};
-const checked=u=>fetch(u,{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r;});const jf=u=>checked(u).then(r=>r.json());
-Promise.all([
- jf('data/dutyfree/sources.json').then(d=>DB.sources=d),
- checked('data/dutyfree_monthly.csv').then(r=>r.text()).then(t=>DB.m=DutyfreeMonthly.derive(csv(t))),
- checked('data/dutyfree_holiday.csv').then(r=>r.text()).then(t=>DB.h=csv(t))
-]).then(()=>{SRC=DB.sources.sources||{};init()}).catch(e=>{DB.failed=true;if(document.getElementById('view-monthly').classList.contains('on'))document.getElementById('asof').innerHTML='数据暂时无法读取。 <button class="srcbtn" onclick="location.reload()">重试</button>'});
-
-function showSrc(key){let s=SRC[key];let b=document.getElementById('srcbox');
- if(!s){b.innerHTML='<h3>数据来源</h3><div class="muted">暂无来源信息</div><div class="closebtn"><button class="srcbtn" onclick="document.getElementById(\'srcmodal\').close()">关闭</button></div>';}
- else{b.innerHTML=`<h3>数据来源</h3>
- <div class="row"><b>来源名称</b><span>${Dash(s.sourceName)}</span></div>
- <div class="row"><b>来源类型</b><span>${Dash(s.sourceType)}</span></div>
- <div class="row"><b>报告日期</b><span>${Dash(s.reportDate)}</span></div>
- <div class="row"><b>页码</b><span>${Dash(s.page)}</span></div>
- <div class="row"><b>链接</b><span>${s.url?`<a href="${s.url}" target="_blank" style="color:var(--blue)">原文链接</a>`:'—'}</span></div>
- <div class="row"><b>备注</b><span>${Dash(s.note)}</span></div>
- <div class="closebtn"><button class="srcbtn" onclick="document.getElementById('srcmodal').close()">关闭</button></div>`;}
- document.getElementById('srcmodal').showModal()}
-document.getElementById('srcmodal').addEventListener('click',e=>{if(e.target.id==='srcmodal')e.target.close()});
-
-/* ---------- SVG 绘图 ---------- */
-function draw(svg,rows,series,zero=false){if(!svg||!rows||!rows.length){if(svg){svg.setAttribute('viewBox','0 0 620 210');svg.innerHTML='<text x="310" y="110" text-anchor="middle" class="axis">暂无数据</text>'}return}
-try{let w=620,h=210,l=38,r=12,t=16,b=24,all=series.flatMap(s=>rows.map(s.get)).filter(Number.isFinite);if(!all.length){svg.innerHTML='<text x="310" y="110" text-anchor="middle" class="axis">暂无数据</text>';return}
-const scale=SiteCharts.niceScale(all,{zero});let mi=scale.min,ma=scale.max;
-let x=i=>l+i/Math.max(1,rows.length-1)*(w-l-r),y=v=>t+(ma-v)/(ma-mi)*(h-t-b),html='';
-for(const v of scale.ticks){let yy=y(v);html+=`<line class="gridline" x1="${l}" y1="${yy}" x2="${w-r}" y2="${yy}"/><text class="axis" x="${l-5}" y="${yy+3}" text-anchor="end">${scale.format(v)}</text>`}
-if(mi<0&&ma>0)html+=`<line x1="${l}" y1="${y(0)}" x2="${w-r}" y2="${y(0)}" stroke="#aeb8c2"/>`;
-let lbl=[0,Math.floor((rows.length-1)/2),rows.length-1].filter((q,i,a)=>a.indexOf(q)===i);
-lbl.forEach(i=>{if(rows[i])html+=`<text class="site-period-tick" class="axis" x="${x(i)}" y="${h-6}" text-anchor="${i===0?'start':i===rows.length-1?'end':'middle'}">${ChartPeriod.format(rows[i].period_id||rows[i].period||'')}</text>`});
-series.forEach(s=>{let path='',connected=false;rows.forEach((row,i)=>{const v=s.get(row);if(!Number.isFinite(v)){connected=false;return;}path+=(connected?'L':'M')+x(i)+' '+y(v)+' ';connected=true;});html+=`<path class="line" d="${path}" stroke="${s.color}"/>`});
-html+=`<rect class="hit" x="${l}" y="${t}" width="${w-l-r}" height="${h-t-b}" fill="transparent"/>`;
-svg.setAttribute('viewBox',`0 0 ${w} ${h}`);svg.innerHTML=html;
-SiteCharts.attach(svg,rows.map((row,i)=>({x:x(i),labels:series.flatMap(s=>Number.isFinite(s.get(row))?[{x:x(i),y:y(s.get(row)),text:F(s.get(row),2),kind:'value',color:s.color}]:[]),text:(row.period_id||row.period)+'\n'+series.map(s=>s.name+'：'+F(s.get(row),2)+(s.unit||'')).join('\n')})));} catch(e){console.log('draw err',e)}}
-function drawBar(svg,rows,series){if(!svg||!rows||!rows.length){if(svg){svg.setAttribute('viewBox','0 0 620 210');svg.innerHTML='<text x="310" y="110" text-anchor="middle" class="axis">暂无数据</text>'}return}try{let w=620,h=210,l=38,r=12,t=16,b=24,all=series.flatMap(s=>rows.map(s.get)).filter(Number.isFinite);if(!all.length){svg.innerHTML='<text x="310" y="110" text-anchor="middle" class="axis">暂无数据</text>';return}
-const scale=SiteCharts.niceScale(all,{zero:true});let mi=scale.min,ma=scale.max;let x=i=>l+i/rows.length*(w-l-r),bw=(w-l-r)/rows.length*.6/series.length,y=v=>t+(ma-v)/(ma-mi)*(h-t-b),html='';
-for(const v of scale.ticks){let yy=y(v);html+=`<line class="gridline" x1="${l}" y1="${yy}" x2="${w-r}" y2="${yy}"/><text class="axis" x="${l-5}" y="${yy+3}" text-anchor="end">${scale.format(v)}</text>`}
-rows.forEach((row,i)=>{html+=`<text class="site-period-tick" class="axis" x="${x(i)+bw*series.length/2}" y="${h-6}" text-anchor="middle">${ChartPeriod.format(row.period)}</text>`;series.forEach((s,k)=>{let v=s.get(row);if(Number.isFinite(v)){let yy=y(Math.max(0,v)),hh=Math.abs(y(v)-y(0));html+=`<rect x="${x(i)+k*bw}" y="${yy}" width="${bw-2}" height="${hh}" fill="${s.color}" rx="1"/>`}})});
-if(mi<0)html+=`<line x1="${l}" y1="${y(0)}" x2="${w-r}" y2="${y(0)}" stroke="#aeb8c2"/>`;
-svg.setAttribute('viewBox',`0 0 ${w} ${h}`);svg.innerHTML=html;SiteCharts.attach(svg,rows.map((row,i)=>({x:x(i)+bw*series.length/2,labels:series.flatMap((s,k)=>Number.isFinite(s.get(row))?[{x:x(i)+(k+.5)*bw,y:y(s.get(row)),text:F(s.get(row),2),kind:'value',color:s.color}]:[]),text:(row.period_id||row.period)+'\n'+series.map(s=>s.name+'：'+F(s.get(row),2)+(s.unit||'')).join('\n')})));}catch(e){console.log('drawBar err',e)}}
-
-/* ---------- 行业总览 ---------- */
-const trendMetrics={
-sales:{label:'购物金额',field:'shopping_sales_cny_100m',yoy:'sales_yoy_pct',unit:'亿元',color:'#3d708e'},
-shoppers:{label:'购物人次',field:'shoppers_10k',yoy:'shoppers_yoy_pct',unit:'万人次',color:'#b47a3d'},
-items:{label:'购物件数',field:'items_10k',yoy:'items_yoy_pct',unit:'万件',color:'#2d7b70'},
-spend:{label:'每人次消费',field:'spend_per_shopper_cny',yoy:'spend_per_shopper_yoy_pct',unit:'元',color:'#8a6884'}
-};
-function drawCombo(svg,rows,metric,mode='combo'){
-const width=svg.parentElement.clientWidth;if(width<100)return;
-const result=SiteCharts.paired(rows.map(row=>({period:row.period_id,x:Date.parse(row.period_id+'-01'),value:N(row[metric.field]),change:N(row[metric.yoy])})),{mode,layout:'spacious',name:metric.label,unit:metric.unit,precision:2,minimumFractionDigits:metric===trendMetrics.sales?2:0,width:Math.max(240,width),gap:45*86400000});
-const shell=document.createElement('div');shell.innerHTML=result.html;const chart=shell.querySelector('svg');
-const panel=svg.closest('.chart');panel.querySelector('.combo-legend')?.remove();panel.querySelector('.site-chart-legend')?.remove();
-if(!chart){svg.innerHTML='<text x="150" y="120">暂无数据</text>';return;}
-svg.setAttribute('viewBox',chart.getAttribute('viewBox'));svg.dataset.chartReady='true';svg.classList.add('site-paired-chart');svg.style.setProperty('height','auto','important');svg.style.minHeight='0';svg.innerHTML=chart.innerHTML;const legend=shell.querySelector('.site-chart-legend');if(legend)svg.after(legend);SiteCharts.attach(svg,result.points);
-}
-
-const trendModes={hn:'combo'};
-/* Hidden sector panels have no usable width. Redraw as soon as layout returns. */
-if(window.ResizeObserver){let lastWidth=0;new ResizeObserver(entries=>{
- const width=Math.round(entries[0].contentRect.width);
- if(width<100){lastWidth=0;document.getElementById('hn-growth').removeAttribute('data-chart-ready');return;}
- if(width!==lastWidth){lastWidth=width;if(DB.m?.length)renderHainan();}
-}).observe(document.getElementById('hn-growth').parentElement);}
-
-let trendResize;addEventListener('resize',()=>{clearTimeout(trendResize);trendResize=setTimeout(()=>{if(DB.m?.length)renderHainan();},150);});
-function renderTrend(prefix,rows){
-const metric=trendMetrics[document.getElementById(prefix+'-metric').value],combo=trendModes[prefix]==='combo',yoy=trendModes[prefix]==='yoy',title=metric.label+(combo?'与同比增速':yoy?'同比增速':'走势')+(combo?'':'（'+(yoy?'%':metric.unit)+'）');
-document.getElementById(prefix+'-trend-title').textContent=title;
-const svg=document.getElementById(prefix==='ov'?'ov-sales':'hn-growth');svg.setAttribute('aria-label',title);
-const oldLegend=svg.closest('.chart').querySelector('.combo-legend');if(!combo){oldLegend?.remove();svg.closest('.chart').querySelector('.site-chart-legend')?.remove();svg.classList.remove('site-paired-chart');}
-drawCombo(svg,rows,metric,combo?'combo':yoy?'change':'value');return;
-draw(svg,rows,[{name:metric.label+(yoy?'同比':''),get:r=>N(r[yoy?metric.yoy:metric.field]),color:metric.color,unit:yoy?'%':metric.unit}],yoy);
-}
-function go(t){document.querySelectorAll('.tab,.view').forEach(x=>x.classList.remove('on'));let b=document.querySelector(`.tab[data-view="${t}"]`);if(b)b.classList.add('on');let v=document.getElementById('view-'+t);if(v)v.classList.add('on');if(t==='monthly'&&DB.m?.length)renderHainan();if(t==='monthly'&&DB.m?.length)SiteUI.asOf(document.getElementById('asof'),DB.m.at(-1).period_id,['海南 · 月度']);window.dispatchEvent(new Event('dutyfree:viewchange'));}
-
-/* ---------- 海南 ---------- */
-let hnSort={key:'period_id',dir:-1};
-function renderHainan(){const range=document.getElementById('hn-range').value;
-const rows=['2024','2025','2026'].includes(range)?DB.m.filter(r=>String(r.year)===range):DB.m.slice(-Number(range));
-const latest=rows.at(-1)||{};document.getElementById('hn-period').textContent=latest.period_id||'暂无数据';
-for(const key of ['sales','shoppers','spend']){const m=trendMetrics[key];document.getElementById('hn-'+key).textContent=F(N(latest[m.field]),key==='spend'?0:2);document.getElementById('hn-'+key+'-yoy').innerHTML='同比 '+W(N(latest[m.yoy]));}
-renderTrend('hn',rows);renderHnTable(rows);
-}
-function renderHnTable(rows){let cols=[['period_id','月份'],['shopping_sales_cny_100m','销售额(亿)'],['sales_yoy_pct','金额同比%'],['shoppers_10k','人次(万)'],['shoppers_yoy_pct','人数同比%'],['items_10k','件数(万)'],['spend_per_shopper_cny','每人次消费(元)'],['items_yoy_pct','件数同比%'],['spend_per_shopper_yoy_pct','每人次消费同比%']];
-let s=rows.slice().sort((a,b)=>{let av=a[hnSort.key],bv=b[hnSort.key],r=(N(av)!=null&&N(bv)!=null)?N(av)-N(bv):String(av).localeCompare(String(bv));return hnSort.dir*r});
-document.getElementById('hn-table').innerHTML='<thead><tr>'+cols.map(([k,l])=>`<th data-k="${k}">${l}<span class="arr">${hnSort.key===k?(hnSort.dir>0?' ▲':' ▼'):''}</span></th>`).join('')+'</tr></thead><tbody>'+
-s.map(r=>'<tr>'+cols.map(([k,l])=>{let v=r[k];let disp=(k.includes('yoy'))?`<span class="${C(N(v))}" title="${String(r[k+'_note']||'原始来源同比').replace(/"/g,'&quot;')}">${P(N(v))}${r[k+'_method']==='calculated'?'<small> 计算</small>':''}</span>`:(N(v)!=null?F(v,2):Dash(v));return `<td class="${k==='period_id'?'':'num'}">${k==='period_id'?v:disp}</td>`}).join('')+'</tr>').join('')+'</tbody>';
-document.querySelectorAll('#hn-table th').forEach(th=>th.onclick=()=>{let k=th.dataset.k;if(hnSort.key===k)hnSort.dir*=-1;else{hnSort.key=k;hnSort.dir=1}renderHnTable(rows)})}
-
-function monthlyRows(){const range=document.getElementById('hn-range').value;return ['2024','2025','2026'].includes(range)?DB.m.filter(r=>String(r.year)===range):DB.m.slice(-Number(range));}
-function downloadMonthly(){
-const rows=monthlyRows();if(!rows.length)return;
-const keys=Object.keys(DB.m[0]),quote=v=>'"'+String(v??'').replace(/"/g,'""')+'"';
-const content='\ufeff'+[keys,...rows.map(r=>keys.map(k=>r[k]))].map(r=>r.map(quote).join(',')).join('\r\n');
-const url=URL.createObjectURL(new Blob([content],{type:'text/csv;charset=utf-8'})),a=document.createElement('a');a.href=url;a.download='离岛免税月度-'+document.getElementById('hn-range').value+'.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
-}
-function init(){
-if(!document.getElementById('view-korea').classList.contains('on'))SiteUI.asOf(document.getElementById('asof'),DB.m.at(-1).period_id,['海南 · 月度']);
-renderHainan();
-document.getElementById('rows-note').textContent=`月度 ${DB.m.length} 条 · 假期 ${DB.h.length} 条`;
-
-
-document.getElementById('hn-range').onchange=renderHainan;
-document.getElementById('monthly-download').onclick=downloadMonthly;
-document.getElementById('hn-metric').onchange=renderHainan;
-}
-document.querySelectorAll('#tabs .tab').forEach(b=>b.onclick=()=>{go(b.dataset.view);location.hash=b.dataset.view;window.scrollTo({top:0})});
-const hashView=()=>{let key=location.hash.slice(1);if(['overview','hainan','datacenter'].includes(key)){key='monthly';history.replaceState(null,'',location.pathname+location.search+'#monthly');}go(['holidays','korea'].includes(key)?key:'monthly');};hashView();addEventListener('hashchange',hashView);
-</script></body></html>
-
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#066fd1">
+  <meta name="description" content="国金商社零售与社会服务研究数据库。行业经营、宏观数据、重点公司、观点纪要与每日研究。">
+  <title>国金商社数据库</title>
+  <link rel="icon" type="image/svg+xml" href="scripts/assets/brand/sinolink-mark.svg">
+  <link rel="stylesheet" href="scripts/vendor/tabler/tabler.min.css?v=1.7.5">
+  <link rel="stylesheet" href="scripts/tabler-app/app.css?v=20261125">
+  <script>try{document.documentElement.dataset.bsTheme=localStorage.getItem('guojin-tabler-theme')==='dark'?'dark':'light';}catch(e){}</script>
+  <script defer src="scripts/vendor/tabler/tabler.min.js?v=1.7.5"></script>
+  <script defer src="scripts/zsxq-content.js"></script>
+  <script defer src="scripts/research-model.js"></script>
+  <script defer src="scripts/research-library-model.js"></script>
+  <script defer src="scripts/daily-announcements.js"></script>
+  <script defer src="scripts/domestic-hotels-model.js"></script>
+  <script defer src="scripts/overseas-hotels-model.js"></script>
+  <script defer src="scripts/company-database-model.js"></script>
+  <script defer src="scripts/company-overview-model.js"></script>
+  <script defer src="scripts/quotes/quotes-model.js"></script>
+  <script defer src="scripts/quotes/quotes-poller.js"></script>
+  <script defer src="scripts/market-kline.js"></script>
+  <script defer src="scripts/calendar/earnings-calendar-model.js"></script>
+  <script defer src="scripts/calendar/important-calendar-model.js"></script>
+  <script defer src="scripts/hotel-metrics.js"></script>
+  <script defer src="scripts/hotel-groups-model.js"></script>
+  <script defer src="scripts/travel-model.js"></script>
+  <script defer src="scripts/cruise-analysis-model.js"></script>
+  <script defer src="scripts/dining-model.js"></script>
+  <script defer src="scripts/dutyfree-korea-model.js"></script>
+  <script type="module" src="scripts/tabler-app/app.js?v=20261125"></script>
+</head>
+<body>
+  <div class="page"><div class="page-wrapper"><main class="page-body"><div class="container-xl"><div class="card"><div class="card-body text-center py-5"><div class="spinner-border text-primary mb-3" role="status"></div><h1 class="h3">国金商社数据库</h1><p class="text-secondary">正在读取数据…</p></div></div></div></main></div></div>
+  <noscript>请启用 JavaScript 查看数据。<a href="data-manifest.json">下载数据目录</a></noscript>
+</body>
+</html>

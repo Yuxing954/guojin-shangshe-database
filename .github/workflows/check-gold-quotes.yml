@@ -1,33 +1,38 @@
+# Browser interactions are checked once by tabler-integration.yml.
+# This workflow retains its original data, import, and model validation gates.
 name: Gold quotes
-on:
+'on':
   pull_request:
-    paths: ['quotes.html', 'scripts/quotes*.js', 'scripts/quotes/**', 'scripts/gold-quotes.*', 'tests/gold-quotes.browser.cjs', '.github/workflows/check-gold-quotes.yml']
+    paths:
+    - quotes.html
+    - scripts/quotes*.js
+    - scripts/quotes/**
+    - scripts/gold-quotes.*
+    - tests/gold-quotes.browser.cjs
+    - .github/workflows/check-gold-quotes.yml
   push:
-    branches: [main]
-    paths: ['quotes.html', 'scripts/quotes*.js', 'scripts/quotes/**', 'scripts/gold-quotes.*', 'tests/gold-quotes.browser.cjs', '.github/workflows/check-gold-quotes.yml']
-  workflow_dispatch:
+    branches:
+    - main
+    paths:
+    - quotes.html
+    - scripts/quotes*.js
+    - scripts/quotes/**
+    - scripts/gold-quotes.*
+    - tests/gold-quotes.browser.cjs
+    - .github/workflows/check-gold-quotes.yml
+  workflow_dispatch: null
 jobs:
   gold-quotes:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Quotes model and lifecycle
-        run: |
-          node --check scripts/quotes/gold-quotes.js
-          node --check scripts/quotes/quotes.js
-          node scripts/coverage-model.test.cjs
-          node scripts/gold-live-model.test.cjs
-          node --test scripts/quotes-model.test.cjs scripts/quotes-layout.test.cjs scripts/quotes-lifecycle.test.cjs scripts/quotes-charts.test.cjs scripts/quotes-poller.test.cjs
-      - name: Browser dependencies
-        run: |
-          npm install --prefix "$RUNNER_TEMP/gold-browser" playwright@1.62.1
-          echo "NODE_PATH=$RUNNER_TEMP/gold-browser/node_modules" >> "$GITHUB_ENV"
-          "$RUNNER_TEMP/gold-browser/node_modules/.bin/playwright" install --with-deps chromium
-      - name: Gold widget lifecycle and responsive layout
-        run: |
-          node tests/gold-quotes.browser.cjs
-          node tests/quotes-workbench.browser.cjs
-          node tests/quotes-loading.browser.cjs
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+    - name: Quotes model and lifecycle
+      run: |
+        node --check scripts/quotes/gold-quotes.js
+        node --check scripts/quotes/quotes.js
+        node scripts/coverage-model.test.cjs
+        node scripts/gold-live-model.test.cjs
+        node --test scripts/quotes-model.test.cjs scripts/quotes-layout.test.cjs scripts/quotes-lifecycle.test.cjs scripts/quotes-charts.test.cjs scripts/quotes-poller.test.cjs
