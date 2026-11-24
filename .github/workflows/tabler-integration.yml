@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        suite: [workspace-design, macro-dashboard, site-unification, company-first-paint, hub-navigation, research-minutes, site-charts]
+        suite: [workspace-design, macro-dashboard, site-unification, company-first-paint, hub-navigation, research-minutes, site-charts, client-dashboard, domestic-hotels, overseas-hotels]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

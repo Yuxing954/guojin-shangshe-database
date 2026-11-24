@@ -20,7 +20,7 @@ async function csv(page,selector){const event=page.waitForEvent('download');if(!
   assert.equal(await p.locator('.oh-section-actions:visible').count(),0);
   assert.equal(await p.locator('#main > .oh-section-actions').count(),0);
   releaseData();await ready();await p.unroute('**/data/companies/domestic-hotels.json*');
-  assert.equal(await p.locator('#oh-toolbar .cw-actions:visible').count(),1);
+  assert.equal(await p.locator('#oh-profile .cw-actions:visible').count(),1);
   assert.equal(await p.locator('#oh-kind').inputValue(),'全部');assert.equal(await p.locator('#oh-frequency').inputValue(),'单季度');assert.equal(await p.locator('#oh-display').inputValue(),'change');
   assert.equal(await p.locator('#oh-toolbar select:visible').count(),4);assert.equal(await p.locator('#oh-kind option').count(),2);
   assert.equal(await p.locator('.oh-company svg').count(),4);

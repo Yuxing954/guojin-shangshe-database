@@ -1,7 +1,8 @@
 (function(root){
   'use strict';
-  const navigation=[['industry','industry.html','行业数据','chart'],['macro','macro.html?view=indicators','宏观数据','globe'],['companies','company-database.html','重点公司','building'],['research','research.html','观点纪要','document'],['quotes','quotes.html','实时行情','trend']];
+  const navigation=[['workspace','workspace.html','工作台','workspace'],['industry','industry.html','行业数据','chart'],['macro','macro.html?view=indicators','宏观数据','globe'],['companies','company-database.html','重点公司','building'],['research','research.html','观点纪要','document'],['quotes','quotes.html','实时行情','trend']];
   const pages={
+    'workspace.html':['workspace','工作台'],
     'tools.html':['tools','投研工具'],
     'recruitment.html':['industry','企业招聘'],
     'database-qr.html':['tools','数据库二维码'],
@@ -43,6 +44,16 @@
     }
     element.replaceChildren(...nodes);
   }
-  const api={navigation,pages,route,request,date,save,debounce,periodLabel,asOf};if(typeof module==='object'&&module.exports)module.exports=api;else root.SiteUI=api;
+  const paths={workspace:'M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z',chart:'M4 3v17h17M8 16v-5m5 5V6m5 10V9',globe:'M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0M3 12h18M12 3c-5 5-5 13 0 18 5-5 5-13 0-18',building:'M4 21V3h12v18M16 9h4v12M8 7h4M8 11h4M8 15h4M3 21h18',calendar:'M5 5h14v16H5zM8 3v4m8-4v4M5 10h14M9 14h1m4 0h1m-6 3h1',document:'M6 3h8l4 4v14H6zM14 3v5h4M9 12h6m-6 4h6',trend:'M3 20h18M4 15l6-6 4 3 6-8M15 4h5v5',search:'M17 11a6 6 0 1 1-12 0 6 6 0 0 1 12 0M16 16l5 5'};
+  function icon(key){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="'+paths[key]+'"/></svg>';}
+  const products=[['earnings.html',pages['earnings.html']],...Object.entries(pages).filter(([href])=>href.endsWith('-product.html')),['tools.html',['tools','投研工具']],['database-qr.html',['tools','数据库二维码']]];
+  // Shared by the runtime and static first paint; no duplicate navigation templates.
+  function shellNavigation(page,section,productOpen=false){
+    const isProduct=products.some(([href])=>href===page);
+    const productLinks=products.map(([href,[,label]])=>'<a href="'+href+'"'+(page===href?' aria-current="page"':'')+'><span>'+label+'</span><span aria-hidden="true">↗</span></a>').join('');
+    return '<a class="site-brand navbar-brand" href="workspace.html" aria-label="国金商社 · 零售&amp;社服数据库"><img src="scripts/assets/brand/sinolink-mark.svg" width="32" height="32" alt=""><span class="site-brand-name"><b>国金商社</b><small>零售 &amp; 社服数据库</small></span></a><div class="site-nav-label">研究中心</div><nav class="nav nav-pills" aria-label="主要导航">'+navigation.map(([key,href,label,glyph])=>'<a class="nav-link'+(section===key?' current active':'')+'" href="'+href+'"'+(section===key?' aria-current="page"':'')+'>'+icon(glyph)+'<span>'+label+'</span></a>').join('')+'</nav><div class="site-nav-bottom"><div class="site-resource-actions"><a class="catalog-search-link" href="search.html" aria-label="搜索数据库">'+icon('search')+'</a><button type="button" class="site-resource-entry'+(isProduct?' current':'')+'" id="site-products-toggle" aria-expanded="'+productOpen+'" aria-controls="site-products-panel">'+icon('building')+'<span>产品</span><span class="site-product-chevron" aria-hidden="true">⌃</span></button><a class="site-resource-entry'+(page==='daily.html'?' current':'')+'" href="daily.html"'+(page==='daily.html'?' aria-current="page"':'')+'>'+icon('document')+'<span>日报</span></a></div><div class="site-products-panel" id="site-products-panel" role="region" aria-label="全部产品"'+(productOpen?'':' hidden')+'>'+productLinks+'</div></div>';
+  }
+  function workspaceBar(title){return '<div class="site-workspace-path"><a href="workspace.html">国金商社</a><span aria-hidden="true">/</span><span>'+title+'</span></div><form class="catalog-search" action="search.html" method="get" role="search" aria-label="全库检索"><button type="submit" aria-label="搜索">'+icon('search')+'</button><input class="form-control" type="search" name="q" aria-label="全库搜索" placeholder="搜索指标、公司、观点" required><kbd class="site-search-shortcut" aria-hidden="true">⌘ K</kbd></form><a class="site-source-link" href="data-notes.html">'+icon('document')+'<span>数据来源</span></a>';}
+  const api={navigation,pages,route,request,date,save,debounce,periodLabel,asOf,products,icon,shellNavigation,workspaceBar};if(typeof module==='object'&&module.exports)module.exports=api;else root.SiteUI=api;
 })(typeof window==='object'?window:globalThis);
 
