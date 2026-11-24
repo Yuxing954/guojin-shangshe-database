@@ -51,7 +51,7 @@ export async function renderIndustry(container, api) {
   const plotsHtml = plots => '<div class="row row-cards mb-3">' + plots.map(item => plots.length === 1 ? item.html.replace('col-12 col-lg-6', 'col-12') : item.html).join('') + '</div>';
   function table(title, columns, rows, actions = '') {
     const count = 40, pages = Math.max(1, Math.ceil(rows.length / count)); state.page = Math.min(state.page, pages);
-    return tableCard({ title, columns, rows: rows.slice((state.page - 1) * count, state.page * count), actions, footer: '<div class="d-flex align-items-center"><span class="text-secondary">' + rows.length + ' 条 · 第 ' + state.page + ' / ' + pages + ' 页</span><div class="btn-list ms-auto"><button class="btn btn-sm" type="button" data-industry-page="-1"' + (state.page === 1 ? ' disabled' : '') + '>上一页</button><button class="btn btn-sm" type="button" data-industry-page="1"' + (state.page >= pages ? ' disabled' : '') + '>下一页</button></div></div>' });
+    return tableCard({ title, columns, rows: rows.slice((state.page - 1) * count, state.page * count), actions, footer: api.pagination(state.page,pages,rows.length,'data-industry-page') });
   }
   const ncol = (key, label, digits = 2) => ({ key, label, numeric: true, render: value => num(value, digits) });
   const sourcecol = { key: '_source', label: '来源', render: value => value || '' };

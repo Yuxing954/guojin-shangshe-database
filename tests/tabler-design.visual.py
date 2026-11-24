@@ -28,6 +28,12 @@ with TemporaryDirectory() as tmp, sync_playwright() as runtime:
     expected = Image.open(reference).convert('RGB')
     assert image.size == expected.size
     diff = ImageChops.difference(image,expected)
-    assert max(ImageStat.Stat(diff).mean) < 0.8, "Unexpected sparkline appearance"
+    error = max(ImageStat.Stat(diff).mean)
+    if error >= 0.8:
+        evidence = root / 'test-results'
+        evidence.mkdir(exist_ok=True)
+        image.save(evidence / 'tabler-spark-actual.png')
+        diff.save(evidence / 'tabler-spark-difference.png')
+        raise AssertionError(f"Unexpected sparkline appearance: {error:.3f}")
     browser.close()
     server.shutdown()

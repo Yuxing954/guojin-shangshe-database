@@ -22,3 +22,5 @@
 ## 变更与验证
 
 组件展览使用 tools/design-system。进入该目录执行 npm ci 和 npm run storybook。故事中的固定数据只用于测试。真实业务显示和取数继续走 scripts/tabler-app。审查时打开官方参照、此前获准页面和本次运行图，分别检查功能与外观。视觉基准只能在明确批准后更新。主分支数据有变化时重新取最新代码并运行专项检查。
+
+官方参照可用 `python tools/design-system/restore-reference.py` 恢复至独立的 `.cache/tabler-official`，再执行 `python -m http.server --directory .cache/tabler-official` 查看。归档校验覆盖 Dashboard、Charts、Tables、Search results 及其加载的展示资源。若线上演示已改版，恢复脚本将报告发生变化的文件。

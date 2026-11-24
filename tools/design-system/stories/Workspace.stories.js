@@ -1,5 +1,5 @@
 import '../../../scripts/tabler-app/app.css';
-import {metricCard, tableCard, chart, tabs,empty} from '../../../scripts/tabler-app/common.js';
+import {metricCard, tableCard, chart, tabs,empty,filterBar,chartCard,pagination,loading,dialog} from '../../../scripts/tabler-app/common.js';
 export default {title:'工作台/公共组件'};
 const rows=[{period:'26Q1',value:0},{period:'26Q2',value:null},{period:'26Q3',value:12}];
 export const Metric={render:()=>metricCard({label:'演示指标',value:'12',unit:'元',period:'26Q3',href:'#',points:rows,change:0,changeLabel:'同比'})};
@@ -7,3 +7,8 @@ export const Missing={render:()=>empty('所选期间暂无披露')};
 export const Table={render:()=>tableCard({title:'期间与数值',columns:[{key:'period',label:'期间'},{key:'value',label:'数值（元）',numeric:true}],rows})};
 export const Tabs={render:()=>tabs([['a','本期','#a'],['b','历史','#b']],'a')};
 export const Trend={render:()=>{const el=document.createElement('div');requestAnimationFrame(()=>chart(el,rows,{label:'演示指标',unit:'元'}));return el;}};
+export const Filters={render:()=>filterBar('<div class="col-auto"><label for="period" class="form-label">报告期</label><select class="form-select" id="period"><option>26Q3</option><option>26Q2</option></select></div>','')};
+export const ChartPanel={render:()=>chartCard('经营趋势','同店 · 单季度','<span class="text-secondary">暂无可绘制数据</span>')};
+export const Pages={render:()=>{let index=1;const node=document.createElement('div');const update=()=>node.innerHTML=pagination(index,3,45,'data-step');update();node.onclick=e=>{if(e.target.dataset.step){index+=Number(e.target.dataset.step);update();}};return node;}};
+export const Loading={render:()=>{const node=document.createElement('div');loading(node);return node;}};
+export const Detail={render:()=>{const node=document.createElement('button');node.className='btn';node.textContent='打开详情';node.onclick=()=>dialog('研究原文','<p>全文阅读组件样例</p>');return node;}};

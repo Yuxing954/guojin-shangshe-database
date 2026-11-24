@@ -77,7 +77,7 @@ export function chart(element,points,config={}) {
  const series=config.series||[{name:config.label||'',points,color:config.color||colors[0]}];
  const all=series.flatMap(s=>s.points||[]), values=all.map(p=>numeric(p.value)).filter(v=>v!==null);
  if(!values.length){chartConfigs.delete(element);chartObserver?.unobserve(element);element.innerHTML=empty('暂无可绘制数据');return;}
- const W=Math.max(260,Math.round(element.getBoundingClientRect().width)||760),H=W<500?224:270,L=W<500?44:62,R=14,T=18,B=36,pw=W-L-R,ph=H-T-B;
+ const W=Math.max(260,Math.round(element.getBoundingClientRect?.().width)||760),H=W<500?224:270,L=W<500?44:62,R=14,T=18,B=36,pw=W-L-R,ph=H-T-B;
  let lo=Math.min(...values),hi=Math.max(...values);if(hi===lo){lo-=Math.max(1,Math.abs(lo)*.1);hi+=Math.max(1,Math.abs(hi)*.1);}const gap=(hi-lo)*.12;lo-=gap;hi+=gap;
  const periodKeys=[...new Set(series.flatMap(s=>(s.points||[]).map(p=>String(p.period||p.label||p.date||''))))].sort((a,b)=>a.localeCompare(b,'en',{numeric:true}));
  const x=key=>L+(periodKeys.indexOf(String(key)))*pw/Math.max(1,periodKeys.length-1),y=v=>T+(hi-v)*ph/(hi-lo),label=p=>String(p.label||p.period||p.date||'');
@@ -85,10 +85,13 @@ export function chart(element,points,config={}) {
  const intervals=W<500?2:4;
  const ticks=Array.from(new Set(Array.from({length:intervals+1},(_,i)=>Math.round(i*(periodKeys.length-1)/intervals))));
  grid+=ticks.map(i=>`<text x="${x(periodKeys[i])}" y="${H-12}" text-anchor="${i===0?'start':i===periodKeys.length-1?'end':'middle'}">${esc(periodKeys[i].replace(/^(?:19|20)(\d\d)([WQ])/,'$1$2').replace(/^(?:19|20)(\d\d)-(\d{2})$/,(s,y,m)=>y+'M'+Number(m)).replace(/\s*[·|].*/,''))}</text>`).join('');
- const traces=series.map((s,index)=>{let commands=[],on=false;const dots=[];for(const p of s.points||[]){const v=numeric(p.value);if(v===null){on=false;continue;}const cx=x(p.period||p.label||p.date||''),cy=y(v);commands.push(`${on?'L':'M'}${cx},${cy}`);on=true;const desc=`${s.name?s.name+' · ':''}${label(p)}：${num(v,config.precision??2)} ${config.unit||p.unit||''}`;dots.push(`<circle cx="${cx}" cy="${cy}" r="4" fill="${s.color||colors[index%4]}" tabindex="0" role="img" aria-label="${esc(desc)}"><title>${esc(desc)}</title></circle>`);}return `<path d="${commands.join(' ')}" fill="none" stroke="${s.color||colors[index%4]}" stroke-width="2" stroke-linejoin="round"/>${dots.join('')}`;}).join('');
+ const traces=series.map((s,index)=>{let commands=[],on=false;const dots=[];for(const p of s.points||[]){const v=numeric(p.value);if(v===null){on=false;continue;}const cx=x(p.period||p.label||p.date||''),cy=y(v);commands.push(`${on?'L':'M'}${cx},${cy}`);on=true;const context=[p.basisLabel,p.qualifier].filter(Boolean).join(' · ');
+ const digits=Math.max(config.precision??2,(String(v).split('.')[1]||'').length);
+ const desc=`${s.name?s.name+' · ':''}${label(p)}：${num(v,Math.min(20,digits))} ${p.unit||config.unit||''}${context?' · '+context:''}`;dots.push(`<circle cx="${cx}" cy="${cy}" r="4" fill="${s.color||colors[index%4]}" tabindex="0" role="img" aria-label="${esc(desc)}"><title>${esc(desc)}</title></circle>`);}return `<path d="${commands.join(' ')}" fill="none" stroke="${s.color||colors[index%4]}" stroke-width="2" stroke-linejoin="round"/>${dots.join('')}`;}).join('');
  element.innerHTML=`<div class="data-chart"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(config.label||'历史趋势')}，单位${esc(config.unit||'')}"><g class="chart-grid">${grid}</g>${traces}</svg><div class="chart-readout small text-secondary" aria-live="polite">${esc(config.unit?'单位：'+config.unit:'')}</div></div>${series.length>1?`<div class="d-flex justify-content-center flex-wrap gap-3 small mt-2">${series.map((s,i)=>`<span><span class="legend" style="background:${s.color||colors[i%4]}"></span>${esc(s.name)}</span>`).join('')}</div>`:''}`;
  const svg=element.querySelector('svg'), wrap=element.querySelector('.data-chart'), out=element.querySelector('.chart-readout');
- const tooltip=document.createElement('div');tooltip.className='chart-tooltip';tooltip.hidden=true;wrap.append(tooltip);
+ if(!element.ownerDocument)return {svg,points};
+ const tooltip=element.ownerDocument.createElement('div');tooltip.className='chart-tooltip';tooltip.hidden=true;wrap.append(tooltip);
  const dots=Array.from(svg.querySelectorAll('circle'));
  const byX=new Map();
  for(const dot of dots){
@@ -132,4 +135,8 @@ export function filterBar(fields,action){
 export function chartCard(title,subtitle,plot){
  return '<section class="card h-100"><header class="card-header"><div><h3 class="card-title">'+esc(title)+'</h3>'+ (subtitle?'<div class="text-secondary small">'+esc(subtitle)+'</div>':'')+'</div></header><div class="card-body">'+plot+'</div></section>';
 }
-export const api={filterBar,chartCard,metricCard,esc,num,numeric,icon,json,text,read,parseCSV,csv,download,setHeader,url,dialog,sourceDialog,loading,failure,empty,options,tabs,chart,tableCard,safeHref};
+export function pagination(page,pages,count,attribute) {
+ const button=(step,text,disabled)=>'<li class="page-item'+(disabled?' disabled':'')+'"><button class="page-link" type="button" '+attribute+'="'+step+'"'+(disabled?' disabled':'')+'>'+text+'</button></li>';
+ return '<div class="d-flex flex-wrap gap-2 align-items-center"><span class="text-secondary">'+count+' 条 · 第 '+page+' / '+pages+' 页</span><nav class="ms-auto" aria-label="数据分页"><ul class="pagination m-0">'+button(-1,'上一页',page<=1)+button(1,'下一页',page>=pages)+'</ul></nav></div>';
+}
+export const api={pagination,filterBar,chartCard,metricCard,esc,num,numeric,icon,json,text,read,parseCSV,csv,download,setHeader,url,dialog,sourceDialog,loading,failure,empty,options,tabs,chart,tableCard,safeHref};

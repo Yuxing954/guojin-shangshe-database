@@ -1,0 +1,630 @@
+[
+  {
+    "path": "charts.html",
+    "sha256": "399898d0971d01b7e2c09eb04703d62a8c447f67537de7bcde9d7f55692aa43b"
+  },
+  {
+    "path": "index.html",
+    "sha256": "efcf1ca4bc736758ff56c89ebc500c331eb37fcd3653c310ba799de73d610761"
+  },
+  {
+    "path": "search-results.html",
+    "sha256": "70d00b8e01260a34683e6616d268bc24ee2eca857c67a145c3929f222cdd2cc4"
+  },
+  {
+    "path": "tables.html",
+    "sha256": "0be0d161a1b0485e961e1997da3183c5ec70ce0b3ff2ebb41a94277cf7d8c88b"
+  },
+  {
+    "path": "dist/css/tabler-flags.min.css",
+    "sha256": "6bddf048fd79fb62459c8baac9705545ade40cf851f28b3786ed87243ce376fb"
+  },
+  {
+    "path": "dist/css/tabler-themes.min.css",
+    "sha256": "f6ba048b16e4859401b24ee764e827bbb58f5c2691aba3f92ae76d121a9da987"
+  },
+  {
+    "path": "dist/css/tabler-vendors.min.css",
+    "sha256": "38f695126c0cffdff87310db9d651df17c1d90b548c5fcead92407ee8bf6c2fc"
+  },
+  {
+    "path": "dist/css/tabler.min.css",
+    "sha256": "ac101283517582a9085642854f5fc9b1b190b09c6096aec6abcd694c4c993152"
+  },
+  {
+    "path": "dist/img/flags/br.svg",
+    "sha256": "8dfbf1c3934add030ebc8360b4eaa87387b39855656e2439555b0aa376e83c8a"
+  },
+  {
+    "path": "dist/img/flags/de.svg",
+    "sha256": "3f138cb6939140c906e344ba6ad4dc69f3a10eff1e764d1c57a1baa03374ab22"
+  },
+  {
+    "path": "dist/img/flags/gb.svg",
+    "sha256": "960a3a02673595a3850893e947d4b5f6b57a1051b156632eb1039af91508199b"
+  },
+  {
+    "path": "dist/img/flags/pl.svg",
+    "sha256": "621cf9ca2211b4f296a55b7f773d47bc219260134a2f4fd4bbb8c8e03b9abfc1"
+  },
+  {
+    "path": "dist/img/flags/us.svg",
+    "sha256": "716265ff8a1629db218a2f033036c71dd8369358fca1f6daa494b7681e793cf7"
+  },
+  {
+    "path": "dist/js/tabler-theme.min.js",
+    "sha256": "53110a730af941642e0d3525692e5f0e59d5a836fb692b32d8a6195f253b3d43"
+  },
+  {
+    "path": "dist/js/tabler-vector-map.min.js",
+    "sha256": "5d486b0d16a437f2aa73aab5a05adf657b4e12edeeff08f9d0fa6d2689c44b3d"
+  },
+  {
+    "path": "dist/js/tabler.min.js",
+    "sha256": "dcc1b956b3816ef5b902398c85ee137fe34dee5eb0f83bc645d2cdcf50160a64"
+  },
+  {
+    "path": "dist/js/maps/world.js",
+    "sha256": "3ae3fbbe3770231387188078c1eeec41f1601339e5db687d30438133e6d21258"
+  },
+  {
+    "path": "dist/libs/apexcharts/dist/apexcharts.min.js",
+    "sha256": "a2e892d841ef25f62517c1663ce6aaa759df51eff6f85a9a1105cba299075910"
+  },
+  {
+    "path": "dist/libs/list.js/dist/list.min.js",
+    "sha256": "34456f18d306a85bece9a7462d98e6e6c2e072e5fdac64e0d70946b40d5feccf"
+  },
+  {
+    "path": "preview/css/demo.min.css",
+    "sha256": "e384465d9903540db34575a74971478555582339f7cbf7c3492cb1e11aec52ad"
+  },
+  {
+    "path": "static/avatars/000f.jpg",
+    "sha256": "bcc7b6b1f21c6af464e13ff3947574f072a25b5842417dfa5e58c1f5389721c2"
+  },
+  {
+    "path": "static/avatars/000m.jpg",
+    "sha256": "0c7671313d553713675c65e3a0af9c9891a30abc9d7cae738256818df7fd3f5d"
+  },
+  {
+    "path": "static/avatars/001f.jpg",
+    "sha256": "f1a575d550fd6b9f165f2ff94e2cfb2e877601a96a154bf2ac554cde9a703804"
+  },
+  {
+    "path": "static/avatars/002f.jpg",
+    "sha256": "7030e0fd6708b925481f3d1a47bc4d90bfac2195abd69fd4fd615d2ac1c299a3"
+  },
+  {
+    "path": "static/avatars/002m.jpg",
+    "sha256": "3173b8e316d80bc7427755eab026f29c8d6b51c3bfd79c022df398ef4918fcc5"
+  },
+  {
+    "path": "static/avatars/003f.jpg",
+    "sha256": "205da9f30f78da8e63a9540601176c9d2913b4005ef707dc00940b6ce3ffccc5"
+  },
+  {
+    "path": "static/avatars/003m.jpg",
+    "sha256": "90b6158df2359ad1942b185b401ac5545dac6e02c2decd8c9c3abd910fa274e4"
+  },
+  {
+    "path": "static/avatars/004f.jpg",
+    "sha256": "39d371145e6bb56cca21e447dca321ac0ba675db233550368d8f9e4532a87210"
+  },
+  {
+    "path": "static/avatars/004m.jpg",
+    "sha256": "3546bf8f985a15fda4ea448366f07a2910a28105e048785e1ca250ad4c841ab4"
+  },
+  {
+    "path": "static/avatars/005f.jpg",
+    "sha256": "33d5ac20be21faa437c95be0b6e9253d8f6c7a02944a8848cc2ff87cc80ee83b"
+  },
+  {
+    "path": "static/avatars/006f.jpg",
+    "sha256": "a9995804e4888a4bb7b6a2a1ae13f6f523d62bbd68b0aa5e3e87202907d759d3"
+  },
+  {
+    "path": "static/avatars/006m.jpg",
+    "sha256": "932297ce2ae34d310daa8062cd8ef46f6aabb22c90afc980756fe85209a5c332"
+  },
+  {
+    "path": "static/avatars/007m.jpg",
+    "sha256": "acb7a780222f375800e7fd7b35111077e66f350575f2ef7eb83d83bc31b427ef"
+  },
+  {
+    "path": "static/avatars/008f.jpg",
+    "sha256": "f8760f63a2fb2a981c0d7c10f0bf6db38c569977af4229976e050ba823f77e36"
+  },
+  {
+    "path": "static/avatars/009f.jpg",
+    "sha256": "0d4dc9333c5c9c340ffd049f81b1c6aa6de6e5f405ef8b0f107b9e58aa3123b7"
+  },
+  {
+    "path": "static/avatars/009m.jpg",
+    "sha256": "a1b4bec2e2d3a6fc16e100faf45d11b004461ae4718298d386817891f65c62ee"
+  },
+  {
+    "path": "static/avatars/010f.jpg",
+    "sha256": "c0d3002cefb2665ecb6ec273737d8937e9f8bf3c72e7899925bd5464f3d36541"
+  },
+  {
+    "path": "static/avatars/010m.jpg",
+    "sha256": "eec12cc63bd304ca4c6b4bd752be9d295e58f084bf7f2942a4b89e9e449d6979"
+  },
+  {
+    "path": "static/avatars/011f.jpg",
+    "sha256": "794216f364db53ff8fcaf9a981171b6fb8b3e206568bfe5a4b3da31f2dc2f915"
+  },
+  {
+    "path": "static/avatars/011m.jpg",
+    "sha256": "c02564be100880af802101dfbef010a3e39702e986f05cf5d2251e81a5ab315a"
+  },
+  {
+    "path": "static/avatars/012f.jpg",
+    "sha256": "ce6929e5ca50d9d8edf1d7e27362a9d0e79f52d2a82e0b4aa1b743f0a4eb044e"
+  },
+  {
+    "path": "static/avatars/012m.jpg",
+    "sha256": "d9e11b14b68d0d47d3d0bf0dae33f0fe310288e55f0f83afa21a68670be5ac1e"
+  },
+  {
+    "path": "static/avatars/013f.jpg",
+    "sha256": "b0ef8b6966e31e39e074a7a8a1751184c56f5291d3cf5e2dfc62debafe228a01"
+  },
+  {
+    "path": "static/avatars/013m.jpg",
+    "sha256": "ccacd60d1f320aeb54b1741ce5dd3eb8a22309569b7c8990fcad2c7cc651341f"
+  },
+  {
+    "path": "static/avatars/015f.jpg",
+    "sha256": "25612c70192a4c5c7570ad470637707b9a1d082e600f0dbcc5407493e7f35525"
+  },
+  {
+    "path": "static/avatars/015m.jpg",
+    "sha256": "0ee185c86b555463467cfeb39c4bfb55231626334b73de7a7284cb001422f4da"
+  },
+  {
+    "path": "static/avatars/016f.jpg",
+    "sha256": "388305a3e582de0b605c1b8537b482199bd786233945f8c3e16b4ca2d803f13d"
+  },
+  {
+    "path": "static/avatars/016m.jpg",
+    "sha256": "a4083efae0cdb5c6a8b89ea85be35ff8b9bb981006fb81f419d2fddac18d04b4"
+  },
+  {
+    "path": "static/avatars/017f.jpg",
+    "sha256": "f069d49fe60698f770d1ea61f0b1dbdef6c0b2f7870e969b8c5a7004854c786c"
+  },
+  {
+    "path": "static/avatars/017m.jpg",
+    "sha256": "5ea1196d993e54de74593b00953a02a8aba3f9a4abc761263197019f6464784c"
+  },
+  {
+    "path": "static/avatars/018f.jpg",
+    "sha256": "91b8b44905b3e83c5e1458d7c0c19737af1bd28ac71a0d0de9c90cd718078399"
+  },
+  {
+    "path": "static/avatars/018m.jpg",
+    "sha256": "815a24a2eb72cb9f84dd5338c4e27b49a9c67495b52c068d63f5f197d38625ef"
+  },
+  {
+    "path": "static/avatars/019f.jpg",
+    "sha256": "2893711530dd88f8b9e9eafa6739b219c47d1ac3d23e94dc5dd9ab04c3f37f0f"
+  },
+  {
+    "path": "static/avatars/019m.jpg",
+    "sha256": "0f2a78c59d8da9d80272029d3c858204ca508a7f28cdee16256a2cc7452200bc"
+  },
+  {
+    "path": "static/avatars/020f.jpg",
+    "sha256": "e0ce9b6df42408bea78576ca2db9efe20e9f600f35582db0262a2df56162fc64"
+  },
+  {
+    "path": "static/avatars/020m.jpg",
+    "sha256": "6cf5ead1790a95c0615318c8be525c6de8952faa77995173f511088eb45f3b46"
+  },
+  {
+    "path": "static/avatars/021f.jpg",
+    "sha256": "c32b1af7d4d830dbea8d7c6e16a94115f95f49dde55e3a53754b1c23461c78a6"
+  },
+  {
+    "path": "static/avatars/021m.jpg",
+    "sha256": "17d169474a67b7a39f52df94712dc81cb5062d382cd5981bb230be4698fada4d"
+  },
+  {
+    "path": "static/avatars/022f.jpg",
+    "sha256": "2405bf0919fcdb6532bc4312fb99a5166dc3144f2257cbd51f42a7f0fad79bfc"
+  },
+  {
+    "path": "static/avatars/022m.jpg",
+    "sha256": "072b8eb2a68b6a5c5a52bb295bf49687ea082c38ec294397b8d81a760c8d0a7d"
+  },
+  {
+    "path": "static/avatars/023m.jpg",
+    "sha256": "e0e6492c46f744835a8d8b00ca8441c9719904bc8209947fdef8a268fa16c121"
+  },
+  {
+    "path": "static/avatars/024m.jpg",
+    "sha256": "25b12a928737585fe68c44156768a3d7a0f8cae8058a0e44daa7ca4513d2df9d"
+  },
+  {
+    "path": "static/avatars/025m.jpg",
+    "sha256": "0ab9b1f70ff4a9e4ec0030d60b63d894e99518e7b8f228d0bfd21934b3ebcbdc"
+  },
+  {
+    "path": "static/avatars/026m.jpg",
+    "sha256": "aeae3b8b6fec5ebb2151fee3e803d09b9c3bf8970ee077d753e5fcbcab2aa9e2"
+  },
+  {
+    "path": "static/avatars/052f.jpg",
+    "sha256": "4a1b71fae7f8a12a4c5be86765b55a5e90e80d19076d0066bc12523f24ea6452"
+  },
+  {
+    "path": "static/avatars/063m.jpg",
+    "sha256": "626628cbf4f95b9f9cc364c394a08c711241a740611bd0d28938ddec79871717"
+  },
+  {
+    "path": "static/brands/amazon.svg",
+    "sha256": "5882db8c8ddf19886bcd655f75485b577271c16377a375a0dafcab7c67147048"
+  },
+  {
+    "path": "static/brands/android.svg",
+    "sha256": "47421b6a72dda6356502e8252406df618cbbad46d48f2bd64940f98b83a2f395"
+  },
+  {
+    "path": "static/brands/app-store.svg",
+    "sha256": "483b7bc92ca87d09a7f270e217c803d4ed3911eaa21e5d06f603a8ee53f9be3f"
+  },
+  {
+    "path": "static/brands/apple-podcast.svg",
+    "sha256": "b899ef5a736ed3ac71ed791ab02de523e4dd434c4a286a53449ac0ec4db1502e"
+  },
+  {
+    "path": "static/brands/apple.svg",
+    "sha256": "1f2dd757276ef181f735a22043fdc2fa4e6d2432b919e4170dbb893e66eb2464"
+  },
+  {
+    "path": "static/brands/behance.svg",
+    "sha256": "301a7434b860e2daa621c044d2b7ce0340344d16e9692eb40ff695e1157c5fe2"
+  },
+  {
+    "path": "static/brands/discord.svg",
+    "sha256": "bdfd74d4c955efa8676721b700a90ab0d07545facefcb6373a51a5e6919015c3"
+  },
+  {
+    "path": "static/brands/dribbble.svg",
+    "sha256": "a682d8f6190ff8c130a57e1ba53198c1c9c5fb78c668a282eb86f2ed66209b0d"
+  },
+  {
+    "path": "static/brands/dropbox.svg",
+    "sha256": "8fce23f391198e2b33d5f38409e964fa016505ff99c7bd6dbfeee65aa722d067"
+  },
+  {
+    "path": "static/brands/ever-green.svg",
+    "sha256": "af5a213d3f9b6b44933918155a50c74e73c9f3d48c4862d7406aedd51ed03ec7"
+  },
+  {
+    "path": "static/brands/facebook.svg",
+    "sha256": "1e2b1d5fb3a7581fe5f580d670c71a39e903291c08c2bf38e17587b569949413"
+  },
+  {
+    "path": "static/brands/figma.svg",
+    "sha256": "72a4c4d9b196d8592666b6a80742a8efe93a464d99b6539a02ee6dce3b57a5db"
+  },
+  {
+    "path": "static/brands/github.svg",
+    "sha256": "12794390cce7d0682ffc783c785e4282305684431b30b29ed75c224da24035b4"
+  },
+  {
+    "path": "static/brands/gitlab.svg",
+    "sha256": "da828e64080c4bec37151389b7c8a294465a339c0c6d69621fe3b0d7b274972f"
+  },
+  {
+    "path": "static/brands/google-ads.svg",
+    "sha256": "7d20908b3e8ef0038464978fe3262606e268b5cd4decb4db2e5d991cb3c571b3"
+  },
+  {
+    "path": "static/brands/google-adsense.svg",
+    "sha256": "9f36e0d60a15251cc16a6285a056ae086189594de79c2eca8940e6e59f2f57be"
+  },
+  {
+    "path": "static/brands/google-analytics.svg",
+    "sha256": "2b9f48ce8ebfb613c9694da9f87b3aded610645f8270322cebb9d83a29ba76a1"
+  },
+  {
+    "path": "static/brands/google-cloud.svg",
+    "sha256": "6e7f4cb743bdf1c6482c9ae36d6ba12aff19548d6134501658d288cd13d97663"
+  },
+  {
+    "path": "static/brands/google-drive.svg",
+    "sha256": "8d1976da0e3072470a5008bc3a8f45bee00a2331538e96b75c446d63906d6358"
+  },
+  {
+    "path": "static/brands/google-fit.svg",
+    "sha256": "ad0e0f335c1d15016ddcc63edcb5c7291469470ae0e1910fbc92ad7eaffc4100"
+  },
+  {
+    "path": "static/brands/google-home.svg",
+    "sha256": "65f0d77fffcb7bcbe393955e7b2848e7c0d28a164073c286da3f57656c1244cd"
+  },
+  {
+    "path": "static/brands/google-maps.svg",
+    "sha256": "54b3b5e1d6e855ddf5af3f2b6e7bcae782d742859f4c25de1b1823aa831246ca"
+  },
+  {
+    "path": "static/brands/google-meet.svg",
+    "sha256": "e2801088d0b7e12de924a13ca1d6f9a633f3a3b2e613e98f9a14cb6e4a3effa4"
+  },
+  {
+    "path": "static/brands/google-photos.svg",
+    "sha256": "198f1925154ba680dae507138f88a22e591aab53f7ad29831b2a099ca00da2f3"
+  },
+  {
+    "path": "static/brands/google-play.svg",
+    "sha256": "793daa3fd75eb35a7704c6789275f6867c5b947f28784fb9ff21698b535f8e07"
+  },
+  {
+    "path": "static/brands/google-shopping.svg",
+    "sha256": "569d590aeeac4d35388a9ef7fba38574c68ae94ac944fe4553b97e4ec8adbaa1"
+  },
+  {
+    "path": "static/brands/google-teams.svg",
+    "sha256": "f0219520617b5605f6c234b28f304256346c6f9cb7d4b4a30fae5303d42501f5"
+  },
+  {
+    "path": "static/brands/google.svg",
+    "sha256": "8629f26c765cc9e17cd54333d8ed37b05d5b28fa4723cc6a27eb11e4bc88471a"
+  },
+  {
+    "path": "static/brands/instagram.svg",
+    "sha256": "c4f2da8612b097d7c927c18c12ffc9629c2c2334a0ef64670c17bc5a106665ac"
+  },
+  {
+    "path": "static/brands/klarna.svg",
+    "sha256": "2bbd2d80a719cf8b66cf245935b1250275e022b54b3fda09e06aed495300e8a6"
+  },
+  {
+    "path": "static/brands/linkedin.svg",
+    "sha256": "fc4bb657a89a2884f69cd3afb9abdd824779edeb5838137504935d4456c83303"
+  },
+  {
+    "path": "static/brands/mailchimp.svg",
+    "sha256": "2ba6f1f501e00a98a9f1ec7b86b793bb8287778a295beb0ed55c6abdbed40573"
+  },
+  {
+    "path": "static/brands/medium.svg",
+    "sha256": "2cc531adafa9d69c9565bb206ba69803e961e09e35911e9003a0e8a259134a21"
+  },
+  {
+    "path": "static/brands/messenger.svg",
+    "sha256": "5036325a3274dd1c154adf886a509840566284c2aea055eb8875805fb5a8af69"
+  },
+  {
+    "path": "static/brands/meta.svg",
+    "sha256": "bb5afb7723c03caf4fb1f1e6807c02f415a8814630e1e4192ee67bab620ae865"
+  },
+  {
+    "path": "static/brands/monday.svg",
+    "sha256": "3e2726ce10b93604f1f7b6c738cf3e9c030707191c7092bbddf6111e644ca85e"
+  },
+  {
+    "path": "static/brands/netflix.svg",
+    "sha256": "02e5226499aa4b6e64a9fd29198cb63168c4b794260a56202052f6b3ca078b30"
+  },
+  {
+    "path": "static/brands/notion.svg",
+    "sha256": "cf2b7d2b3aa8d2c15b947f156e29719fc14b8281fc1918b220e568fdb2f87a15"
+  },
+  {
+    "path": "static/brands/office-365.svg",
+    "sha256": "53d0ea60ba1d6a4afb379fd6281c8ec6217a4021358f47fb7ff70c1081332793"
+  },
+  {
+    "path": "static/brands/opera.svg",
+    "sha256": "ba94f0cd0983a493c52db0aa6fb4150e457eb8b06c5e0a7fffa1000c276a1eee"
+  },
+  {
+    "path": "static/brands/paypal.svg",
+    "sha256": "b7cabd8c03801a5e6d7bc42736df23fb79278bda6d0bc8507011c336a6cbb9ba"
+  },
+  {
+    "path": "static/brands/petreon.svg",
+    "sha256": "def39492cc8197922082af85c42b6d01e9d24cce0605dfce68d2572c90fb8676"
+  },
+  {
+    "path": "static/brands/pinterest.svg",
+    "sha256": "42e2d7133e7e72a2895bf66b27ea32e2c4f97c7f6e2a4d6fb9909828150734e9"
+  },
+  {
+    "path": "static/brands/play-store.svg",
+    "sha256": "8d0b347961775f4b2eb2497885b9b786a6b0fa02ba1d06965cb6f4998a3769b3"
+  },
+  {
+    "path": "static/brands/quora.svg",
+    "sha256": "d5b7854cec8c8611a7b54c18be0dc4dafba92d63a93c473dc39a6bb81966dd85"
+  },
+  {
+    "path": "static/brands/reddit.svg",
+    "sha256": "52c5a2350f1d57b427141c9f5a309ad938231ff97683cab26f190fc6e701a98a"
+  },
+  {
+    "path": "static/brands/shopify.svg",
+    "sha256": "970826d9b470a0244af1419f757e710110d2103025683cb68394f18a110f7537"
+  },
+  {
+    "path": "static/brands/skype.svg",
+    "sha256": "41997e1867dfb187f1abc3a5b779d1d6e5030776a2c4d73df7512872e1ac52cd"
+  },
+  {
+    "path": "static/brands/slack.svg",
+    "sha256": "3a776c0e64768dff3af130fb9a35c55aba1d843a78da304ce5eaea2a0c5c01eb"
+  },
+  {
+    "path": "static/brands/snapchat.svg",
+    "sha256": "e1c342e12d32d8d4da74040c358edc1933fe5016f266b839d73b3dd7ce4628cf"
+  },
+  {
+    "path": "static/brands/soundcloud.svg",
+    "sha256": "3dcf3ae7f1afa458473f1a93d9441d35fa8968792807a7454ca9fb1e55647cf9"
+  },
+  {
+    "path": "static/brands/spotify.svg",
+    "sha256": "703eb4d8e44fb48785ef95c9f282115cf4a40e5f7e6e5a6c3a026da76fa33e88"
+  },
+  {
+    "path": "static/brands/stripe.svg",
+    "sha256": "d2de2b900d7a6e236c8ff61a142d702b0d2cf90f31850fd8a9ce4d886ba0ff54"
+  },
+  {
+    "path": "static/brands/telegram.svg",
+    "sha256": "bc62c6c985cd6cbabd0022930d2141401dadc47064131870d4facb471c9bdcd1"
+  },
+  {
+    "path": "static/brands/tiktok.svg",
+    "sha256": "fec055a982b0406fa91f64524cc5ac7be0ded0cdd650bd0198302c175987ec92"
+  },
+  {
+    "path": "static/brands/tinder.svg",
+    "sha256": "ddb4ca162f75418ea348523327f118bf63ab5fe014b4c3f5ed597aa337f6257f"
+  },
+  {
+    "path": "static/brands/trello.svg",
+    "sha256": "ac75a5431c828b579014158568a2fd09f9ac5f391c48a1f9ef1bec80b941ecfa"
+  },
+  {
+    "path": "static/brands/truth.svg",
+    "sha256": "2ef60058fec031fe1ff93f7d08f6153f5f151868c328822d0ee467fbd451fef2"
+  },
+  {
+    "path": "static/brands/tumblr.svg",
+    "sha256": "7096b844a973ff9b116d7fd4e04ee606cb9bf9e5b0db992c88709f16d2975b6a"
+  },
+  {
+    "path": "static/brands/twitch.svg",
+    "sha256": "1367e26b2cfa98f1715435a13157de8cad468cefdaa6b6ce4b25f9aaa41aff27"
+  },
+  {
+    "path": "static/brands/twitter.svg",
+    "sha256": "562b1efe62868ef95a95b046a7317aa578cb2c06950c11b6ab250b12ce8acb74"
+  },
+  {
+    "path": "static/brands/vimeo.svg",
+    "sha256": "a8006e83a92955492cadd65a5dcc73ea1cb9a0d15e3046a5986818997b056d68"
+  },
+  {
+    "path": "static/brands/vk.svg",
+    "sha256": "4e0a78d8985910fa56336a2d6deb23b935becb88e66fce5b8e8a1dcc6812e787"
+  },
+  {
+    "path": "static/brands/watppad.svg",
+    "sha256": "1acc49962213fe2b75764ced49cf49c112d27c3fb63c403eb8d382f59f51ea7f"
+  },
+  {
+    "path": "static/brands/webflow.svg",
+    "sha256": "9317533aacd810951d1f98b051bfc3fcedf7f60de66436ead16d04bcdffc8260"
+  },
+  {
+    "path": "static/brands/whatsapp.svg",
+    "sha256": "aa5ffe1b38f9f5800b949ac817757046496ddc1f4dc4262b37c6df82e0823ff5"
+  },
+  {
+    "path": "static/brands/wordpress.svg",
+    "sha256": "4a41dcdc1be0fbf4f79ce71dcc0eed5f4e6d7a5491619cb4b22e852a1b0009f0"
+  },
+  {
+    "path": "static/brands/xing.svg",
+    "sha256": "4d961f95f9b486e16550db70272c9d67d5240b899db4529f3a45151558049d6e"
+  },
+  {
+    "path": "static/brands/yelp.svg",
+    "sha256": "8f2ed3d19c39cb03aaa1093cf76e2366e92350a9af372c2dc4d4eaed9efe508a"
+  },
+  {
+    "path": "static/brands/youtube.svg",
+    "sha256": "7366f964fbd0d6f2961a03b2a77f7aead90dd94e4ba2b2c243ff924efd455ff7"
+  },
+  {
+    "path": "static/brands/zapier.svg",
+    "sha256": "9f51ab4d3fad2b4e35a3b07d9a1a59e315f102373b2417fd096974bd26773f35"
+  },
+  {
+    "path": "static/brands/zendesk.svg",
+    "sha256": "f21ab4368dc8c78b0360c6336af1130cfa1bf02d8eaf2bbebd554367108d6152"
+  },
+  {
+    "path": "static/brands/zoom.svg",
+    "sha256": "4766ecfba96fda66e00dc4b4275dcf5c9ab2e0c727203bf6316df652a98091b4"
+  },
+  {
+    "path": "static/photos/beautiful-blonde-woman-relaxing-with-a-can-of-coke-on-a-tree-stump-by-the-beach.jpg",
+    "sha256": "5d855d84a68c3e670cfe7bbd210fccda0d09e8cc3a3153eaa4471bb9d64df6ee"
+  },
+  {
+    "path": "static/photos/blue-sofa-with-pillows-in-a-designer-living-room-interior.jpg",
+    "sha256": "3eb61435cf0ebdcf46eff37ea5d35efc6fa94e7096d96645bea67f3a9fd85325"
+  },
+  {
+    "path": "static/photos/brainstorming-session-with-creative-designers.jpg",
+    "sha256": "e14d48a7100230d3a9b67bfeb019287fa37ce006bbb514ff4a2cef4f99d8a7ca"
+  },
+  {
+    "path": "static/photos/coffee-on-a-table-with-other-items.jpg",
+    "sha256": "c696bcfbcb3c19faf1db10f0e34a12117ea76b85214564292c0745d8dfd6769c"
+  },
+  {
+    "path": "static/photos/color-palette-guide-sample-colors-catalog-.jpg",
+    "sha256": "a9ed7b64abf164f26efada7e20063ebde6cc0747be498b2cbd49488437e26e9b"
+  },
+  {
+    "path": "static/photos/everything-you-need-to-work-from-your-bed.jpg",
+    "sha256": "dd2470b3204d1eaccab5f27a1a0142eb7e96bcfc4fd234fc0a0c6f952dde1753"
+  },
+  {
+    "path": "static/photos/finances-us-dollars-and-bitcoins-currency-money-2.jpg",
+    "sha256": "1eb031d803f0f467cdd394d2234e5e2f8cd7d44b5b9672ea24b6328316a306f5"
+  },
+  {
+    "path": "static/photos/finances-us-dollars-and-bitcoins-currency-money.jpg",
+    "sha256": "ced9f161791591553bde4aff9941196c2f8f1ddf2790fd42581357bac47e51a8"
+  },
+  {
+    "path": "static/photos/group-of-people-brainstorming-and-taking-notes-2.jpg",
+    "sha256": "9c6178fc7dff94d91e63ef2ed2348cac56dc4674f8175ee74bc13da1be228c1a"
+  },
+  {
+    "path": "static/photos/group-of-people-sightseeing-in-the-city.jpg",
+    "sha256": "c9e4d5bcc6a8f36dbde26f813dc7050f6355b5ad63ed16ad9bd33b36223e9986"
+  },
+  {
+    "path": "static/photos/home-office-desk-with-macbook-iphone-calendar-watch-and-organizer.jpg",
+    "sha256": "49fa6027bf7df17717c893327a001f57283b6e38cf367ec563524161a6885e92"
+  },
+  {
+    "path": "static/photos/pink-desk-in-the-home-office.jpg",
+    "sha256": "9bcd3db1951da4016ac2029d2af01fa1d3d149f663380b180af1712ae0bdaca3"
+  },
+  {
+    "path": "static/photos/soft-photo-of-woman-on-the-bed-with-the-book-and-cup-of-coffee-in-hands.jpg",
+    "sha256": "a0b7baf9833eb9875fbcd9f26386932328b2b3c6c2a50d7e72d9984b650c2b3a"
+  },
+  {
+    "path": "static/photos/stylish-workplace-with-computer-at-home.jpg",
+    "sha256": "02d6c9e59d7c4604f4564c4c3173a12ba3f3ecc3b1a803eddff0b90d569bcee5"
+  },
+  {
+    "path": "static/photos/young-entrepreneur-working-from-a-modern-cafe-2.jpg",
+    "sha256": "4aa90adc9090081d62936b1a1d52365f0fb03ba62a3091cb458d4c1cb3632514"
+  },
+  {
+    "path": "static/photos/young-entrepreneur-working-from-a-modern-cafe.jpg",
+    "sha256": "7275d5cb2ac37b5132b8ea1de01947f36f621a4003629c101de437d5ec23c433"
+  },
+  {
+    "path": "static/photos/young-woman-sitting-on-the-sofa-and-working-on-her-laptop.jpg",
+    "sha256": "78827e112251fb8b95a07d68870a89c2c41d63ea4c012154c6c914e0a34110e2"
+  },
+  {
+    "path": "static/photos/young-woman-working-in-a-cafe.jpg",
+    "sha256": "c7e3552ee9e958a508bf70aff032618ce1f4d503b3cc1e04469efd02841122a3"
+  }
+]
