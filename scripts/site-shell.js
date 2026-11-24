@@ -12,6 +12,16 @@
   const productLinks=products.map(([href,[,label]])=>'<a href="'+href+'"'+(page===href?' aria-current="page"':'')+'><span>'+label+'</span><span aria-hidden="true">↗</span></a>').join('');
   const nav=document.querySelector('body > .site-nav')||document.createElement('aside');nav.className='site-nav';
   nav.innerHTML='<a class="site-brand" href="industry.html" aria-label="国金证券 · 零售&amp;社服数据库"><img src="scripts/assets/brand/sinolink-mark.svg" width="32" height="32" alt=""><span class="site-brand-name"><b>零售&amp;社服数据库</b></span></a><nav aria-label="主要导航">'+U.navigation.map(([key,href,label,glyph])=>'<a href="'+href+'"'+(section===key?' class="current" aria-current="page"':'')+'>'+icon(glyph)+'<span>'+label+'</span></a>').join('')+'</nav><div class="site-nav-bottom"><div class="site-resource-actions"><button type="button" class="site-resource-entry'+(isProduct?' current':'')+'" id="site-products-toggle" aria-expanded="'+productOpen+'" aria-controls="site-products-panel">'+icon('building')+'<span>产品</span><span class="site-product-chevron" aria-hidden="true">⌃</span></button><a class="site-resource-entry'+(page==='daily.html'?' current':'')+'" href="daily.html"'+(page==='daily.html'?' aria-current="page"':'')+'>'+icon('document')+'<span>日报</span></a></div><div class="site-products-panel" id="site-products-panel" role="region" aria-label="全部产品"'+(productOpen?'':' hidden')+'>'+productLinks+'</div></div>';
+  const searchIcon='<svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg>';
+  const searchForm=document.createElement('form');
+  searchForm.className='catalog-search';searchForm.action='search.html';searchForm.method='get';
+  searchForm.setAttribute('role','search');searchForm.setAttribute('aria-label','全库检索');
+  searchForm.innerHTML=searchIcon+'<input type="search" name="q" aria-label="全库搜索" placeholder="搜索数据库…" required>';
+  nav.querySelector('.site-brand').after(searchForm);
+  const compactSearch=document.createElement('a');
+  compactSearch.className='catalog-search-link';compactSearch.href='search.html';
+  compactSearch.setAttribute('aria-label','搜索数据库');compactSearch.innerHTML=searchIcon;
+  nav.querySelector('.site-resource-actions').prepend(compactSearch);
   document.body.prepend(nav);
   const productToggle=nav.querySelector('#site-products-toggle'),productPanel=nav.querySelector('#site-products-panel');
   const setProductsOpen=open=>{productToggle.setAttribute('aria-expanded',String(open));productPanel.hidden=!open;};

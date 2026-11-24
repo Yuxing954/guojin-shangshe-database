@@ -160,3 +160,18 @@ body.site-page[data-design=workspace][data-design] .hd-supply-breakdowns .hd-car
  body.site-page[data-design=workspace] .site-table-scroll > :is(.board-table,.oh-table,.dh-table) tbody tr:hover {--reading-row:#edf4fa}
  body.site-page[data-design=workspace] .site-table-scroll > :is(.board-table,.oh-table,.dh-table) tbody tr:hover > td {background-color:var(--reading-row)}
 }
+
+/* Keep board-level filters together; chart-specific controls stay inside their card. */
+@media screen{
+ body.site-page[data-design=workspace][data-design] :is(.hd-toolbar,.dutyfree-filters,.kr-controls,.travel-controls,.dining-toolbar,.macro-study-controls,.oh-toolbar,.quotes-filters){
+   background:#f2f6fa;border:1px solid #d8e3eb;border-radius:8px;padding:10px 14px;box-sizing:border-box;
+ }
+ body.site-page[data-design=workspace][data-design]{--ui-radius:9px;--ui-title:16px;--site-soft:#edf4f9}
+ body.site-page[data-design=workspace][data-design] :is(.hd-card-head,.board-panel-head,.gj-card-head){
+   border-bottom:1px solid #e6edf2;
+ }
+ body.site-page[data-design=workspace][data-design] :is(.hd-stat-label,.oh-kpi>span,.travel-kpi h2,.cruise-kpi h2){font-weight:600;color:#4d6478}
+}
+@media(max-width:760px){
+ body.site-page[data-design=workspace][data-design] :is(.hd-toolbar,.dutyfree-filters,.kr-controls,.travel-controls,.dining-toolbar,.macro-study-controls,.oh-toolbar,.quotes-filters){padding:10px;gap:8px!important}
+}
