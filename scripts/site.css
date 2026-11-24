@@ -105,3 +105,17 @@ body.site-page>.site-nav>nav{margin-top:20px}
  body.site-page>.site-nav .site-products-panel a{justify-content:space-between;min-height:40px;text-align:left}
  body.site-page>.site-nav .site-products-panel a>span:last-child{display:inline}
 }
+
+/* The catalog is searchable from every full-page workspace. */
+.site-nav .catalog-search{display:flex;align-items:center;gap:7px;margin:16px 0 0;padding:0 10px;height:38px;background:#f5f8fa;border:1px solid #d9e3eb;border-radius:7px;color:#516d84}
+.site-nav .catalog-search svg{flex:none}
+.site-nav .catalog-search input{width:100%;min-width:0;border:0;background:transparent;color:#213950;font:inherit;font-size:14px;padding:0}
+.site-nav .catalog-search:focus-within{outline:2px solid #256599;outline-offset:2px}
+.site-nav .catalog-search input:focus{outline:0}
+body.site-page>.site-nav .catalog-search+nav{margin-top:12px}
+.site-nav .catalog-search-link{display:none}
+@media(max-width:760px){
+ .site-nav .catalog-search{display:none}
+ body.site-page>.site-nav .catalog-search+nav{margin:0}
+ .site-nav .catalog-search-link{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid var(--site-line);border-radius:6px}
+}
