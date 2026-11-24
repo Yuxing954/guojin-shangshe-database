@@ -66,7 +66,8 @@ export async function renderResearch(container, api) {
     for (const key of ['format', 'scope', 'state']) $('[data-filter="' + key + '"]').value = filter[key];
     $('#research-filter').addEventListener('submit', e => e.preventDefault());
     container.addEventListener('input', e => { if (e.target.dataset.filter === 'q') { filter.q = e.target.value; page = 1; renderResults(); } }, { signal: listeners.signal });
-    container.addEventListener('change', e => { const key = e.target.dataset.filter; if (key) { filter[key] = e.target.value; if (key === 'state' && filter.state === 'awaiting_file') { filter.scope = 'all'; $('[data-filter="scope"]').value = 'all'; } page = 1; renderResults(); } }, { signal: listeners.signal });
+    // Search already updates on input. Its blur/change must not replace a result button mid-click.
+    container.addEventListener('change', e => { const key = e.target.dataset.filter; if (key && key !== 'q') { filter[key] = e.target.value; if (key === 'state' && filter.state === 'awaiting_file') { filter.scope = 'all'; $('[data-filter="scope"]').value = 'all'; } page = 1; renderResults(); } }, { signal: listeners.signal });
     container.addEventListener('click', onClick, { signal: listeners.signal });
   }
   function renderResults() {

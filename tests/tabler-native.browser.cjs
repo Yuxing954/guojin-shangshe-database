@@ -222,8 +222,14 @@ const server = http.createServer((req, res) => {
       await waitCount(minuteEntries.length);
       await page.waitForFunction(() => !document.querySelector('#research-status').textContent.trim());
       await page.locator('#research-query').fill(minute.name);
-      await page.locator('#research-results [data-record]').first().click();
-      await waitText('[data-reading-state]', '完整提取文字');
+      await waitCount(minuteEntries.filter(r => L.matches(r.library, {scope: 'archived', q: minute.name})).length);
+      // Click directly while the search input still has focus: blur must not rebuild this button.
+      await page.locator('#research-results').getByRole('button', {name: minute.name, exact: true}).click();
+      await page.locator('dialog[open]').waitFor({state: 'visible'});
+      assert.equal(await page.locator('dialog[open] .modal-title').innerText(), minute.name);
+      assert.equal(new URL(page.url()).searchParams.get('asset'), minute.id);
+      await waitText('dialog[open] [data-reading-state]', '完整提取文字');
+      assert.equal(await page.locator('dialog[open] [data-record-body]').textContent(), fullText);
       assert.equal(await page.locator('dialog[open]').count(), 1);
       await closeDialog();
 
