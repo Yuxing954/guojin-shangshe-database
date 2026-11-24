@@ -1,15 +1,15 @@
 body.site-page.gj-top-layout{padding-left:0!important;padding-inline-start:0!important;margin-left:0!important;padding-top:0!important;--site-nav-width:0px}
-.gj-header{position:sticky;top:0;z-index:1000;background:white;border-bottom:1px solid #dae3eb;display:flex;align-items:center;gap:clamp(16px,3vw,52px);padding:0 clamp(14px,4vw,72px);color:#20334a;font:500 15px/1.4 system-ui,"Microsoft YaHei",sans-serif}
-.gj-header nav,.gj-brand{display:flex;align-items:center;gap:10px}
-.gj-header nav{flex-wrap:wrap;gap:0}
-.gj-header .gj-brand{font-size:17px;font-weight:700;white-space:nowrap}
-.gj-header nav> a,.gj-header button{background:none;border:0;border-bottom:3px solid transparent;border-radius:0;color:inherit;font:inherit;padding:17px 12px;display:inline-block}
-.gj-header button.active,.gj-header button[aria-expanded=true]{color:#155d92;border-bottom-color:#155d92}
-.gj-header .gj-panel{position:absolute;inset:100% 0 auto;background:white;border-block:1px solid #dce6ed;box-shadow:0 12px 20px #17395516;padding:24px clamp(16px,8vw,160px)}
+header.gj-header{position:sticky;top:0;z-index:1000;background:white;border-bottom:1px solid #dae3eb;display:flex;align-items:center;gap:clamp(16px,3vw,52px);padding:0 clamp(14px,4vw,72px);color:#20334a;font:500 15px/1.4 system-ui,"Microsoft YaHei",sans-serif}
+header.gj-header nav,.gj-brand{display:flex;align-items:center;gap:10px}
+header.gj-header nav{flex-wrap:wrap;gap:0}
+header.gj-header .gj-brand{font-size:17px;font-weight:700;white-space:nowrap}
+header.gj-header nav> a,header.gj-header button{background:none;border:0;border-bottom:3px solid transparent;border-radius:0;color:inherit;font:inherit;padding:17px 12px;display:inline-block}
+header.gj-header button.active,header.gj-header button[aria-expanded=true]{color:#155d92;border-bottom-color:#155d92}
+header.gj-header .gj-panel{position:absolute;inset:100% 0 auto;background:white;border-block:1px solid #dce6ed;box-shadow:0 12px 20px #17395516;padding:24px clamp(16px,8vw,160px)}
 .gj-panel[hidden]{display:none!important}.gj-panel>div{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:10px;max-width:1100px;margin:auto}
-.gj-header .gj-panel a{display:block;padding:12px 16px;color:#20334a;border-radius:5px;font-weight:600}.gj-header .gj-panel a:hover,.gj-header .gj-panel a:focus-visible{background:#edf4fa;color:#155d92}
-@media(max-width:850px){.gj-header{display:block;padding:6px 10px 0}.gj-header nav>a,.gj-header button{padding:8px 6px;font-size:13px}.gj-header .gj-panel{max-height:55vh;overflow:auto;padding:12px}.gj-header .gj-brand{font-size:15px}.gj-brand img{width:24px;height:24px}}
-@media print{.gj-header{display:none}}
+header.gj-header .gj-panel a{display:block;padding:12px 16px;color:#20334a;border-radius:5px;font-weight:600}header.gj-header .gj-panel a:hover,header.gj-header .gj-panel a:focus-visible{background:#edf4fa;color:#155d92}
+@media(max-width:850px){header.gj-header{display:block;padding:6px 10px 0}header.gj-header nav>a,header.gj-header button{padding:8px 6px;font-size:13px}header.gj-header .gj-panel{max-height:55vh;overflow:auto;padding:12px}header.gj-header .gj-brand{font-size:15px}.gj-brand img{width:24px;height:24px}}
+@media print{header.gj-header{display:none}}
 
 /* Section switching lives in the shared header once it is mounted. */
-body.gj-top-layout :is(#sector-tabs,[data-macro-navigation],[data-macro-subnav],.oh-categories,#research-tabs,#quote-market-tabs){display:none!important}
+body.gj-top-layout:not(#gj-embedded):not(#gj-print) :is(#sector-tabs,[data-macro-navigation],[data-macro-subnav],.oh-categories,#research-tabs,#quote-market-tabs){display:none!important}
