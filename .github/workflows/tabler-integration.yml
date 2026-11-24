@@ -1,0 +1,33 @@
+name: Tabler integration
+on:
+  pull_request:
+    paths: ['*.html', 'scripts/**/*.css', 'scripts/site-shell.js', 'scripts/site-ui.js', 'scripts/data-table.js', 'tests/*.browser.cjs', '.github/workflows/tabler-integration.yml']
+  push:
+    branches: [main]
+    paths: ['scripts/site-shell.js', 'scripts/site.css', 'scripts/workspace-design.css', 'scripts/vendor/tabler/**', '.github/workflows/tabler-integration.yml']
+jobs:
+  browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        suite: [workspace-design, macro-dashboard, site-unification, company-first-paint, hub-navigation, research-minutes, site-charts]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/check-site.cjs
+      - run: npm install --prefix /tmp/tabler-validation playwright@1.62.1
+      - run: /tmp/tabler-validation/node_modules/.bin/playwright install --with-deps chromium
+      - name: Verify existing business and responsive contracts
+        run: node tests/${{ matrix.suite }}.browser.cjs
+        env:
+          NODE_PATH: /tmp/tabler-validation/node_modules
+          SITE_SCREENSHOT_DIR: .cache/tabler/${{ matrix.suite }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: tabler-${{ matrix.suite }}
+          path: .cache/

@@ -10,19 +10,19 @@ async function verifyDetails(frame,sector){
  for(const bar of bars){assert.equal(bar.display,'flex',sector+' toolbar '+bar.name);assert.equal(bar.border,'10px',sector+' toolbar border');assert.equal(bar.bg,'rgb(255, 255, 255)',sector+' toolbar surface');for(const c of bar.controls)assert.ok(c.height>=40,sector+' control '+c.id+' height '+c.height);}
  const s=await frame.locator('body').evaluate(()=>{
   const visible=e=>!!e.getBoundingClientRect().width&&!!e.getBoundingClientRect().height;
-  const font=getComputedStyle(document.body).fontFamily;
+  const font=getComputedStyle(document.body).fontFamily,primary=getComputedStyle(document.documentElement).getPropertyValue('--tblr-primary').trim();
   const fonts=[...document.querySelectorAll('main *, .wrap *')].filter(visible).filter(e=>getComputedStyle(e).fontFamily!==font).map(e=>e.tagName+'.'+e.className).slice(0,8);
   const nav=document.querySelector('.hd-tabs,#tabs,.travel-tabs,.cruise-tabs');
   const active=nav?.querySelector('.on,.active,[aria-pressed=true],[aria-current=page]');
   const style=active&&getComputedStyle(active);
   const title=document.querySelector('#view-overview .hd-card-head h2'),tier=document.querySelector('.hd-tier-head h3');
   const charts=['#main-chart','#segment-chart'].map(q=>document.querySelector(q)?.getBoundingClientRect());
-  return {scrollHeight:document.documentElement.scrollHeight,viewport:innerHeight,fonts,active:style&&{bg:style.backgroundColor,color:style.color,height:active.getBoundingClientRect().height,font:style.fontSize},
+  return {scrollHeight:document.documentElement.scrollHeight,viewport:innerHeight,fonts,primary:/^#[\da-f]{6}$/i.test(primary)?'rgb('+primary.slice(1).match(/../g).map(n=>parseInt(n,16)).join(', ')+')':primary,active:style&&{bg:style.backgroundColor,color:style.color,height:active.getBoundingClientRect().height,font:style.fontSize},
    alignment:title&&visible(title)&&tier?{left:title.getBoundingClientRect().left,tierLeft:tier.getBoundingClientRect().left,font:getComputedStyle(title).fontSize,tierFont:getComputedStyle(tier).fontSize,chartLeft:charts[0].left,segmentLeft:charts[1].left,chartWidth:charts[0].width,segmentWidth:charts[1].width}:null};
  });
  if(/^(travel|tourism|dining)(\/|$)/.test(sector))assert.ok(s.scrollHeight<=s.viewport+1,sector+' must scroll with outer page, not inside iframe: '+JSON.stringify(s));
  assert.deepEqual(s.fonts,[],sector+' font families');
- if(s.active){assert.equal(s.active.bg,'rgb(255, 255, 255)',sector+' selected tab background');assert.equal(s.active.color,'rgb(33, 93, 145)');assert.equal(s.active.height,34);assert.equal(s.active.font,'14px');}
+ if(s.active){assert.equal(s.active.bg,'rgb(255, 255, 255)',sector+' selected tab background');assert.equal(s.active.color,s.primary,sector+' selected color follows Tabler primary');assert.equal(s.active.height,34);assert.equal(s.active.font,'14px');}
  if(s.alignment){const a=s.alignment;assert.equal(a.left,a.tierLeft,'hotel heading alignment');assert.equal(a.font,'16px');assert.equal(a.tierFont,'16px');assert.equal(a.chartLeft,a.segmentLeft);assert.equal(a.chartWidth,a.segmentWidth);}
 }
 
