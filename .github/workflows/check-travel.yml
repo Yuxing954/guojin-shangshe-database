@@ -6,7 +6,7 @@ on:
     paths: ['travel-dashboard.html', 'scripts/travel-*', 'data/tourism/dashboard.json', 'data/tourism/inbound-official.json', 'data/tourism/domestic-official.json', 'data/tourism/scenic-official.json', 'scripts/update_scenic_tourism.py', 'scripts/update_domestic_tourism.py', 'scripts/update_tourism_history.py', 'scripts/import_tourism_workbooks.py', 'tests/travel*', '.github/workflows/check-travel.yml']
 jobs:
   tourism:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

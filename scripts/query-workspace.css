@@ -3,7 +3,8 @@
 .query-json{max-height:65vh;overflow:auto;margin:0;color:var(--tblr-body-color);background:var(--tblr-bg-surface-secondary)}
 #table{max-height:65vh;font-variant-numeric:tabular-nums}
 #table thead{position:sticky;top:0;z-index:1;background:var(--tblr-bg-surface)}
-#table td{max-width:36rem;overflow-wrap:anywhere}
+#table td{max-width:36rem;min-width:6rem;overflow-wrap:break-word}
+#table th{text-transform:none}
 #table td.text-end{white-space:nowrap}
 #status:not(:empty){margin-bottom:1rem}
 @media(max-width:991px){.catalog-scroll{max-height:36vh}}

@@ -7,7 +7,7 @@ on:
     paths: ['scripts/hotel-dashboard.js', 'tests/hotel-supply-breakdown.browser.cjs', '.github/workflows/check-hotel-supply.yml']
 jobs:
   supply:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4

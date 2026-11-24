@@ -7,7 +7,7 @@ on:
     paths: ['*.html', 'scripts/*.css', 'scripts/industry-embed.js', 'tests/industry-design-language.browser.cjs', '.github/workflows/industry-design-language.yml']
 jobs:
   industry-design-language:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
