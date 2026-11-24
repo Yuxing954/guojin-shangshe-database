@@ -117,12 +117,13 @@ export async function renderCompany(container, api) {
     const selections = data.map(item => ({ data: item, ...domesticSelection(domesticModel, item, state, state.dimensions[item.company.id]) }));
     selections.forEach(item => state.dimensions[item.data.company.id] = item.filters);
     const series = new Map(selections.map(item => [item.data.company.id, domesticModel.series(item.data.rows, item.filters, periods, state.frequency)]));
-    let scope = '<div class="card mb-3"><div class="card-header"><h3 class="card-title">经营口径</h3></div><div class="card-body">';
+    const activeScopes = selections.map(s=>[s.data.company.name,s.filters.region,s.filters.category,s.filters.mode,s.filters.currency].filter(Boolean).join(' · '));
+    let scope = '<details class="card mb-3 scope-disclosure"><summary><strong>经营口径</strong> <span class="text-secondary small ms-2">' + esc(activeScopes.join(' / ')) + '</span></summary><div class="card-body pt-0">';
     for (const selected of selections) {
       const id = selected.data.company.id;
       scope += '<div class="row g-3 align-items-end' + (selections.length > 1 ? ' mb-3' : '') + '"><div class="col-12 col-lg-2"><div class="form-label">' + esc(selected.data.company.name) + '</div><span class="badge bg-blue-lt">' + esc(state.kind === '全部' ? '全部酒店' : '同店酒店') + '</span></div>' + [['region', '地区'], ['category', '档次'], ['mode', '经营模式'], ['currency', '币种']].map(([key, label]) => selection('dim-' + id + '-' + key, label, selected.options[key].length ? selected.options[key] : [['', '暂无披露']], selected.filters[key], 'data-dimension="' + key + '" data-owner="' + id + '"' + (!selected.options[key].length ? ' disabled' : ''))).join('') + '</div>';
     }
-    scope += '</div></div>';
+    scope += '</div></details>';
     const charts = selections.map((selected, companyIndex) => {
       const metricUnit = index === 2 ? '%' : currencyLabel(selected.filters.currency);
       const unit = state.display === 'change' ? index === 2 ? '百分点' : '%' : metricUnit;

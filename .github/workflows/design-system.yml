@@ -1,0 +1,21 @@
+name: Design system
+on:
+  pull_request:
+    paths: ['scripts/tabler-app/**', 'scripts/vendor/tabler/**', 'tools/design-system/**', 'tests/visual/**', 'tests/tabler-design.visual.py', '.github/workflows/design-system.yml']
+permissions:
+  contents: read
+jobs:
+  components:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.16'
+      - run: npm ci && npm run build
+        working-directory: tools/design-system
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install playwright==1.56.0 pillow==11.3.0 && python -m playwright install --with-deps chromium
+      - run: python tests/tabler-design.visual.py

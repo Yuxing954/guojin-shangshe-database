@@ -10,7 +10,16 @@
 .table td {vertical-align:middle}
 .table .record-title {display:block;min-width:240px;max-width:640px;white-space:normal;text-align:left;line-height:1.6}
 .table-numbers {font-variant-numeric:tabular-nums}
-.data-chart {width:100%;min-width:0}
+.data-chart {position:relative;width:100%;min-width:0}
+.chart-tooltip{position:absolute;z-index:3;pointer-events:none;white-space:pre-line;max-width:100%;padding:.45rem .7rem;background:var(--tblr-bg-surface);color:var(--tblr-body-color);font-size:.8125rem;border:var(--tblr-border-width) solid var(--tblr-border-color);border-radius:var(--tblr-border-radius);box-shadow:var(--tblr-box-shadow-sm)}
+.metric-card,.summary-value,.table{font-variant-numeric:tabular-nums}
+.desk-spark{width:100%;height:36px;display:block;color:var(--tblr-primary)}
+.desk-brief{border-left:3px solid var(--tblr-primary)}
+.scope-disclosure>summary{cursor:pointer;list-style:revert;padding:var(--tblr-card-spacer-y,1rem) var(--tblr-card-spacer-x,1.25rem)}
+.scope-disclosure>summary::marker{color:var(--tblr-secondary)}
+.chart-readout{overflow-wrap:anywhere}
+.research-result{max-width:88ch}
+@media (max-width:767px){.page-header .page-title{overflow-wrap:anywhere}}
 .data-chart svg {width:100%;height:auto;display:block;overflow:visible}
 .data-chart text {font-family:inherit;font-size:12px;fill:var(--tblr-secondary)}
 .data-chart circle {opacity:0;outline:none;cursor:crosshair}

@@ -29,7 +29,7 @@ export async function renderIndustry(container, api) {
   const lifecycle = new AbortController();
   const sources = new Map(), cache = new Map(), $ = selector => container.querySelector(selector), unique = values => [...new Set(values)], finite = Number.isFinite;
   const field = (key, label, values, selected = state[key]) => '<div class="col-12 col-sm-6 col-lg-auto"><label class="form-label" for="industry-' + key + '">' + esc(label) + '</label><select class="form-select" id="industry-' + key + '" data-industry-field="' + key + '">' + options(values, selected) + '</select></div>';
-  const controls = content => '<div class="card mb-3"><div class="card-body"><div class="row g-3 align-items-end">' + content + '<div class="col-auto ms-lg-auto"><button class="btn btn-outline-primary" type="button" data-industry-export>' + api.icon('download') + '导出当前数据</button></div></div></div></div>';
+  const controls = content => api.filterBar(content,'<button class="btn btn-outline-primary" type="button" data-industry-export>'+api.icon('download')+'导出当前数据</button>');
   const windowControl = () => field('window', '趋势范围', [['12', '近12期'], ['13', '近13期'], ['24', '近24期'], ['26', '近26期'], ['52', '近52期'], ['156', '近156期'], ['all', '全部历史']]);
   const yearControl = years => field('year', '年份', [['recent', '2023年以来'], ['all', '全部年份'], ...years.slice().sort().reverse()]);
   const signed = (value, unit = '%', digits = 1) => finite(value) ? (value > 0 ? '+' : '') + num(value, digits) + unit : '—';
@@ -42,10 +42,11 @@ export async function renderIndustry(container, api) {
   const metricValue = (row, key) => key === 'occupancy_rate' || key === 'chain_rate' ? H.metric(row, key) == null ? null : H.metric(row, key) * 100 : H.metric(row, key);
   const rowSource = (file, row, extra = {}) => ({ name: row.source || '原始记录', file, ...row, ...extra });
   function kpis(items) {
-    return '<div class="row row-cards mb-3">' + items.map(item => '<div class="col-sm-6 col-xl-' + (items.length === 1 ? '12' : items.length === 4 ? '3' : items.length === 2 ? '6' : '4') + '"><div class="card h-100"><div class="card-body"><div class="subheader">' + esc(item.label) + '</div><div class="h1 mb-2 mt-2">' + num(item.value, item.precision ?? 2) + '<span class="text-secondary fs-4 ms-2">' + esc(item.unit || '') + '</span></div><div class="text-secondary small">' + esc(item.changeText || (item.change !== undefined ? '同比 ' + signed(item.change, item.changeUnit || '%') : '')) + '</div><div class="text-secondary small mt-2">' + esc(item.period || '') + '</div>' + (item.basis ? '<span class="badge bg-secondary-lt mt-2">' + esc(item.basis) + '</span>' : '') + '</div></div></div>').join('') + '</div>';
+    const width = ({1:12,2:6,4:3})[items.length] || 4;
+    return '<div class="row row-deck row-cards mb-3">'+items.map(item=>'<div class="col-sm-6 col-xl-'+width+'">'+api.metricCard({...item,value:num(item.value,item.precision??2),changeLabel:item.change!==undefined?'同比':''})+'</div>').join('')+'</div>';
   }
   function plot(id, title, points, unit, subtitle = '', config = {}) {
-    return { id, points, config: { label: title, unit, precision: 2, ...config }, html: '<div class="col-12 col-lg-6"><div class="card h-100"><div class="card-header"><div><h3 class="card-title">' + esc(title) + '</h3><div class="text-secondary small mt-1">' + esc(subtitle) + '</div></div></div><div class="card-body"><div class="chart-lg" data-industry-chart="' + id + '"></div></div></div></div>' };
+    return { id, points, config: { label: title, unit, precision: 2, ...config }, html: '<div class="col-12 col-lg-6">'+api.chartCard(title,subtitle,'<div class="chart-lg" data-industry-chart="'+esc(id)+'"></div>')+'</div>' };
   }
   const plotsHtml = plots => '<div class="row row-cards mb-3">' + plots.map(item => plots.length === 1 ? item.html.replace('col-12 col-lg-6', 'col-12') : item.html).join('') + '</div>';
   function table(title, columns, rows, actions = '') {

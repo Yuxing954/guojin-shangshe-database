@@ -1,0 +1,14 @@
+{
+  "name": "guojin-design-system",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "storybook": "storybook dev -p 6006 --no-open",
+    "build": "storybook build --quiet"
+  },
+  "devDependencies": {
+    "@storybook/html-vite": "10.6.8",
+    "storybook": "10.6.8",
+    "vite": "7.2.2"
+  }
+}
