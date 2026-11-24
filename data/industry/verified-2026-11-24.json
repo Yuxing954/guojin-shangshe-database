@@ -1,0 +1,221 @@
+{
+  "version": 1,
+  "checkedAt": "2026-11-24",
+  "sources": [
+    {
+      "id": "nbs-retail-2026-09",
+      "name": "国家统计局",
+      "provider": "原始披露",
+      "url": "https://www.stats.gov.cn/xxgk/sjfb/zxfb2020/202610/t20261019_1965614.html",
+      "retrievedAt": "2026-11-24",
+      "publishedAt": "2026-10-19",
+      "quality": "primary",
+      "locator": "社会消费品零售总额主要数据，单月列"
+    },
+    {
+      "id": "nbs-retail-2026-10",
+      "name": "国家统计局",
+      "provider": "原始披露",
+      "url": "https://www.stats.gov.cn/sj/zxfb/202611/t20261116_1965839.html",
+      "retrievedAt": "2026-11-24",
+      "publishedAt": "2026-11-16",
+      "quality": "primary",
+      "locator": "社会消费品零售总额主要数据，单月列"
+    },
+    {
+      "id": "sge-20261123",
+      "name": "上海黄金交易所",
+      "provider": "原始披露",
+      "url": "https://www.sge.com.cn/sjzx/quotation_daily_new?end_date=2026-11-23&start_date=2026-11-23",
+      "publishedAt": "2026-11-23",
+      "retrievedAt": "2026-11-24",
+      "quality": "primary",
+      "locator": "每日行情 Au99.99 收盘价、涨跌幅"
+    },
+    {
+      "id": "cga-2026q3",
+      "name": "中国黄金协会",
+      "provider": "原始披露",
+      "url": "https://cngold.org.cn/news/show-9624.html",
+      "publishedAt": "2026-11-04",
+      "retrievedAt": "2026-11-24",
+      "quality": "primary",
+      "locator": "前三季度黄金消费量分项，黄金首饰"
+    }
+  ],
+  "records": [
+    {
+      "startDate": "2026-11-23",
+      "endDate": "2026-11-23",
+      "periodLabel": "2026-11-23",
+      "metricId": "gold_price",
+      "period": "2026-11-23",
+      "value": 781.4,
+      "change": 2.2,
+      "changeLabel": "当日涨跌",
+      "sourceId": "sge-20261123",
+      "basis": "point",
+      "quality": "primary"
+    },
+    {
+      "startDate": "2026-09-01",
+      "endDate": "2026-09-30",
+      "periodLabel": "2026年9月",
+      "metricId": "gold_retail_yoy",
+      "period": "2026-09",
+      "value": -9.6,
+      "sourceId": "nbs-retail-2026-09",
+      "basis": "monthly",
+      "quality": "primary"
+    },
+    {
+      "startDate": "2026-10-01",
+      "endDate": "2026-10-31",
+      "periodLabel": "2026年10月",
+      "metricId": "gold_retail_yoy",
+      "period": "2026-10",
+      "value": -28.7,
+      "sourceId": "nbs-retail-2026-10",
+      "basis": "monthly",
+      "quality": "primary"
+    },
+    {
+      "startDate": "2026-09-01",
+      "endDate": "2026-09-30",
+      "periodLabel": "2026年9月",
+      "metricId": "gold_retail",
+      "period": "2026-09",
+      "value": 258,
+      "sourceId": "nbs-retail-2026-09",
+      "basis": "monthly",
+      "quality": "primary",
+      "change": -9.6,
+      "changeLabel": "同比",
+      "changeSourceId": "nbs-retail-2026-09"
+    },
+    {
+      "startDate": "2026-10-01",
+      "endDate": "2026-10-31",
+      "periodLabel": "2026年10月",
+      "metricId": "gold_retail",
+      "period": "2026-10",
+      "value": 255,
+      "sourceId": "nbs-retail-2026-10",
+      "basis": "monthly",
+      "quality": "primary",
+      "change": -28.7,
+      "changeLabel": "同比",
+      "changeSourceId": "nbs-retail-2026-10"
+    },
+    {
+      "startDate": "2026-09-01",
+      "endDate": "2026-09-30",
+      "periodLabel": "2026年9月",
+      "metricId": "dining_revenue",
+      "period": "2026-09",
+      "value": 4603,
+      "sourceId": "nbs-retail-2026-09",
+      "basis": "monthly",
+      "quality": "primary",
+      "change": 2.1,
+      "changeLabel": "同比",
+      "changeSourceId": "nbs-retail-2026-09"
+    },
+    {
+      "startDate": "2026-10-01",
+      "endDate": "2026-10-31",
+      "periodLabel": "2026年10月",
+      "metricId": "dining_revenue",
+      "period": "2026-10",
+      "value": 5235,
+      "sourceId": "nbs-retail-2026-10",
+      "basis": "monthly",
+      "quality": "primary",
+      "change": 0.7,
+      "changeLabel": "同比",
+      "changeSourceId": "nbs-retail-2026-10"
+    },
+    {
+      "startDate": "2026-09-01",
+      "endDate": "2026-09-30",
+      "periodLabel": "2026年9月",
+      "metricId": "dining_revenue_yoy",
+      "period": "2026-09",
+      "value": 2.1,
+      "sourceId": "nbs-retail-2026-09",
+      "basis": "monthly",
+      "quality": "primary"
+    },
+    {
+      "startDate": "2026-10-01",
+      "endDate": "2026-10-31",
+      "periodLabel": "2026年10月",
+      "metricId": "dining_revenue_yoy",
+      "period": "2026-10",
+      "value": 0.7,
+      "sourceId": "nbs-retail-2026-10",
+      "basis": "monthly",
+      "quality": "primary"
+    },
+    {
+      "startDate": "2026-09-01",
+      "endDate": "2026-09-30",
+      "periodLabel": "2026年9月",
+      "metricId": "dining_above_yoy",
+      "period": "2026-09",
+      "value": 2,
+      "sourceId": "nbs-retail-2026-09",
+      "basis": "monthly",
+      "quality": "primary"
+    },
+    {
+      "startDate": "2026-10-01",
+      "endDate": "2026-10-31",
+      "periodLabel": "2026年10月",
+      "metricId": "dining_above_yoy",
+      "period": "2026-10",
+      "value": -2.9,
+      "sourceId": "nbs-retail-2026-10",
+      "basis": "monthly",
+      "quality": "primary"
+    },
+    {
+      "startDate": "2026-09-01",
+      "endDate": "2026-09-30",
+      "periodLabel": "2026年9月",
+      "metricId": "dining_above_revenue",
+      "period": "2026-09",
+      "value": 1413,
+      "sourceId": "nbs-retail-2026-09",
+      "basis": "monthly",
+      "quality": "primary",
+      "change": 2,
+      "changeLabel": "同比",
+      "changeSourceId": "nbs-retail-2026-09"
+    },
+    {
+      "startDate": "2026-10-01",
+      "endDate": "2026-10-31",
+      "periodLabel": "2026年10月",
+      "metricId": "dining_above_revenue",
+      "period": "2026-10",
+      "value": 1459,
+      "sourceId": "nbs-retail-2026-10",
+      "basis": "monthly",
+      "quality": "primary",
+      "change": -2.9,
+      "changeLabel": "同比",
+      "changeSourceId": "nbs-retail-2026-10"
+    },
+    {
+      "metricId": "gold_jewelry_volume",
+      "period": "2026-Q3",
+      "value": 178.612,
+      "change": -33.86,
+      "changeLabel": "累计同比",
+      "sourceId": "cga-2026q3",
+      "basis": "cumulative",
+      "quality": "primary"
+    }
+  ]
+}

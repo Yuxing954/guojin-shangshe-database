@@ -4,6 +4,7 @@ import hashlib
 import json
 import re
 from pathlib import Path
+from research_publication import call_material
 
 
 def row_keys(row):
@@ -72,7 +73,7 @@ def building_material_view(row):
 _original_update_rows = update_rows
 _original_archive_rows = archive_rows
 def update_rows(root, dbid):
-    rows = _original_update_rows(root, dbid)
+    rows = [r for r in _original_update_rows(root, dbid) if not call_material(r)]
     if dbid == 'views':
         return [r for r in rows if not building_material_view(r)]
     if dbid == 'all_views':
@@ -80,9 +81,9 @@ def update_rows(root, dbid):
         with source.open(encoding='utf-8-sig', newline='') as stream:
             moved = [r for r in csv.DictReader(stream) if building_material_view(r)]
         moved += [r for r in _original_update_rows(root, 'views') if building_material_view(r)]
-        rows = merge_rows(rows, moved)
+        rows = merge_rows(rows, [r for r in moved if not call_material(r)])
     return rows
 
 def archive_rows(root, dbid, rows):
-    rows = _original_archive_rows(root, dbid, rows)
+    rows = [r for r in _original_archive_rows(root, dbid, rows) if not call_material(r)]
     return [r for r in rows if not building_material_view(r)] if dbid == 'views' else rows
