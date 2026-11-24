@@ -16,13 +16,28 @@
     tools:products.map(([url,[,name]])=>[name,url])
   };
   const style=document.createElement('link');
-  style.rel='stylesheet';style.href='scripts/top-navigation.css?v=single-nav';
+  style.rel='stylesheet';style.href='scripts/top-navigation.css?v=grouped-nav';
   document.head.append(style);
   const header=document.createElement('header');
   header.className='gj-header';
   const groups=[...U.navigation,['tools','tools.html','产品','building']];
+  const columns={
+    industry:[['住宿与旅行',0,3,2],['消费',1,4],['人力资源',5]],
+    macro:[['经济指标',0,1],['消费数据',2,3],['重要预测',4,5]],
+    companies:[['国内酒店',0,2],['海外酒店',1,3]],
+    research:[['研究观点',0,1,2],['研究资料',3]],
+    quotes:[['市场行情',0,1]]
+  };
+  function panel(key){
+    const items=boards[key];
+    const sections=columns[key]||[['研究产品',...items.map((_,i)=>i)]];
+    return sections.map(([title,...indices])=>'<section><strong>'+title+'</strong>'+indices.map(i=>{
+      const [name,url]=items[i];
+      return '<a href="'+url+'">'+name+'</a>';
+    }).join('')+'</section>').join('');
+  }
   header.innerHTML='<a class="gj-brand" href="industry.html"><img src="scripts/assets/brand/sinolink-mark.svg" alt="" width="30" height="30">零售&amp;社服数据库</a><nav aria-label="主要导航">'+groups.map(([key,,label])=>
-    '<div class="gj-group"><button type="button" aria-expanded="false" aria-controls="gj-'+key+'" class="'+(key===section?'active':'')+'">'+label+' <small aria-hidden="true">⌄</small></button><div hidden class="gj-panel" id="gj-'+key+'"><div>'+boards[key].map(([name,url])=>'<a href="'+url+'">'+name+'</a>').join('')+'</div></div></div>').join('')+'<a href="daily.html">日报</a><a href="data-notes.html">数据来源与说明</a></nav>';
+    '<div class="gj-group"><button type="button" aria-expanded="false" aria-controls="gj-'+key+'" class="'+(key===section?'active':'')+'">'+label+' <small aria-hidden="true">⌄</small></button><div hidden class="gj-panel" id="gj-'+key+'"><div>'+panel(key)+'</div></div></div>').join('')+'<a href="daily.html">日报</a><a href="data-notes.html">数据来源与说明</a></nav>';
   document.querySelector('body > .site-nav')?.remove();
   document.body.classList.add('gj-top-layout');
   document.body.prepend(header);
