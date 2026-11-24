@@ -8,15 +8,15 @@
   const icon=key=>'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="'+paths[key]+'"/></svg>';
   const products=[['earnings.html',U.pages['earnings.html']],...Object.entries(U.pages).filter(([href])=>href.endsWith('-product.html')),['tools.html',['tools','投研工具']],['database-qr.html',['tools','数据库二维码']]];
   const boards={
-    industry:[['酒店','industry.html#hotel'],['免税','industry.html#dutyfree'],['旅游','industry.html#tourism'],['三峡游轮','cruise-dashboard.html'],['餐饮','industry.html#dining']],
-    macro:[['中国指标','macro.html?view=indicators&country=CN'],['美国指标','macro.html?view=indicators&country=US'],['全国社零','national-retail.html'],['地方社零','regional-retail.html'],['预测市场','macro.html?view=predictions']],
+    industry:[['酒店','hotel'],['免税','dutyfree'],['旅游','travel'],['三峡游轮','tourism'],['餐饮','dining'],['企业招聘','recruitment']].map(([name,key])=>[name,'industry.html?panelSector='+key+'#'+key]),
+    macro:[['中国指标','macro.html?view=indicators&country=CN'],['美国指标','macro.html?view=indicators&country=US'],['全国社零','national-retail.html'],['地方社零','regional-retail.html'],['CME FedWatch','macro.html?view=fedwatch'],['Polymarket','macro.html?view=predictions']],
     companies:[['国内酒店','company-database.html'],['海外酒店','overseas-hotels.html'],['国内同业对比','domestic-hotel-comparison.html'],['海外同业对比','overseas-hotel-comparison.html']],
     research:[['观点摘要','research.html?kind=digest'],['板块观点','research.html?kind=views'],['全部观点','research.html?kind=all_views'],['纪要文库','research.html?kind=minutes&scope=archived']],
-    quotes:[['实时行情','quotes.html'],['黄金价格','quotes.html#gold']],
+    quotes:[['股票行情','quotes.html'],['黄金价格','quotes.html#gold']],
     tools:products.map(([url,[,name]])=>[name,url])
   };
   const style=document.createElement('link');
-  style.rel='stylesheet';style.href='scripts/top-navigation.css';
+  style.rel='stylesheet';style.href='scripts/top-navigation.css?v=single-nav';
   document.head.append(style);
   const header=document.createElement('header');
   header.className='gj-header';
