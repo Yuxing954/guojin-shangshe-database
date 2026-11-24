@@ -1,41 +1,48 @@
-# Tabler Core 1.6.1 vendored CSS
+# Tabler 1.7.5 vendored assets and official template references
 
-This folder contains genuine compiled Tabler CSS, not a reimplementation.
+## Ready-to-copy assets
 
-- Package: `@tabler/core@1.6.1`.
-- Upstream release: 2026-09-28, https://github.com/tabler/tabler/releases/tag/%40tabler/core%401.6.1
-- Official package metadata: https://github.com/tabler/tabler/blob/%40tabler%2Fcore%401.6.1/core/package.json
-- Local filename: `tabler.min.css` (635,351 bytes).
-- Local SHA-256: `e049eec3a5830530d80ff78676412c7e68f64b02bc9859cb0ca1710d24a60c58`.
-- Latest stable audited on 2026-11-24: `@tabler/core@1.7.5`; this local asset is deliberately labelled 1.6.1.
-- Upstream source: https://github.com/tabler/tabler/tree/%40tabler%2Fcore%401.6.1
-- Upstream license: https://github.com/tabler/tabler/blob/%40tabler%2Fcore%401.6.1/LICENSE
-- Retrieval source: https://github.com/PS-PhinIT/365CMS.DE/blob/12701b8dd64f84f55fb8dd1474ad169b2f621cd0/CMS/assets/tabler/css/tabler.min.css
-- Retrieval repository commit: `12701b8dd64f84f55fb8dd1474ad169b2f621cd0`.
-- Retrieved CSS Git blob SHA-1: `47d64596d2785dba5b1dbe254b9dd39597274bff`.
-- Mirror documentation: https://github.com/PS-PhinIT/365CMS.DE/blob/12701b8dd64f84f55fb8dd1474ad169b2f621cd0/DOC/assets/tabler/README.md
-- The mirror documentation states that the CSS is copied from the npm package and that only the final sourceMappingURL comment was removed. Independent byte comparison with the npm tarball was not possible because the npm registry was denied in this environment.
-- Retrieval method: GitHub connector, UTF-8, preserving the original license banner and file contents.
-- CSS inspected: no external `@import`, no external `url(...)`; the 23 url() values are inline data SVGs. This CSS can be served locally without CDN/font/network dependency.
-- The local Git blob hash equals the immutable retrieval source's blob hash. No content was rewritten during retrieval.
-- Product override audit: no `365CMS`, `PHINIT`, `admin-tabler`, `CMS/assets`, or other mirror product markers were found. The stylesheet's final compatibility rules match upstream `core/scss/_deprecated.scss` at the 1.6.1 tag. The mirror keeps its own styles separately in `CMS/assets/css/admin-tabler.css`; that file is not included here. This corroborates the mirror's documented upstream-copy provenance, but does not replace a byte comparison with the inaccessible npm tarball.
-- Mirror asset update commit: https://github.com/PS-PhinIT/365CMS.DE/commit/970cac1a766952ea4699a61dc293c822697d1245 (2026-10-04), explicitly identifies Tabler 1.6.1 and removal of sourceMappingURL only.
-- No Tabler JavaScript, ApexCharts, Bootstrap JS, fonts, icons, plugins, or demo files were copied.
-- Existing business logic and chart rendering should be kept. This is a CSS-only integration candidate.
-- Keep this LICENSE file and the original CSS copyright banner on distribution.
+- `tabler.min.css`: 683,730 bytes, Tabler v1.7.5, default official palette and layout styles.
+- `tabler.min.js`: 151,907 bytes, Tabler v1.7.5, includes Bootstrap JavaScript and Popper. Do not load a second Bootstrap bundle.
+- `LICENSE`: unmodified Tabler MIT license from the official release.
 
-## Integration
+CSS has no non-data asset URLs. The final sourceMappingURL comments refer to optional developer source maps, which are not included here.
 
-Place the CSS before the project's own adapter stylesheet. Use real Tabler classes such as `.page`, `.navbar.navbar-vertical.navbar-expand-lg`, `.page-wrapper`, `.page-header`, `.page-body`, `.card`, `.card-header`, `.card-body`, `.table.table-sm.table-vcenter`, `.table-responsive`, `.form-control`, `.form-select`, and `.btn`.
+## Official source
 
-Keep all existing data-binding IDs, CSV/JSON fetch paths, chart functions, event handlers, and daily automation. Use existing native JavaScript for interactions unless a specific Tabler JS component is intentionally added.
+- Repository: https://github.com/tabler/tabler
+- Release: https://github.com/tabler/tabler/releases/tag/%40tabler/core%401.7.5
+- Exact official release commit: `4257ebcd1cd5494f71b84c485fd15749fc6d5f92`
+- npm package: `@tabler/core@1.7.5`
+- Official npm tarball URL: https://registry.npmjs.org/@tabler/core/-/core-1.7.5.tgz
 
-Use CSS custom properties prefixed with `--tblr-`. Do not load a second Bootstrap stylesheet.
+The `official-source/` directory contains selected original Astro templates, design variables and package metadata from the previously downloaded official source. Every copied file was verified against the exact Git blob SHA returned for this release by the GitHub connector; see `official-reference-manifest.json`.
 
-For a vertical shell, set `data-bs-navbar-position="vertical"` on `<html>`. Put `aside.navbar.navbar-vertical.navbar-expand-lg` before its sibling `.page-wrapper` within `.page`; the generated sidebar margin relies on this sibling relationship. Default `--tblr-sidebar-width` is `16rem`; override it in the project adapter if needed. The desktop breakpoint for `navbar-expand-lg` is 992 px.
+## How compiled files were obtained
 
-Use `--tblr-font-sans-serif` and `--tblr-body-font-family` to supply a Chinese system font stack. Financial tables should retain horizontal scrolling, explicit number alignment, and their own sorting/filtering logic; `.table-sm` changes density but does not implement data-grid behavior.
+Direct npm, CDN and official preview downloads are denied by this environment's network policy. Installing the compiler dependencies through the Sites helper is also denied. These files were therefore retrieved through the GitHub connector from an existing, explicitly documented unchanged vendored copy of the official npm package:
 
-## Provenance limitation
+https://github.com/simtabi/dbpantry/tree/main/src/internal/dashboard/resources/assets
 
-The full v1.7.5 official GitHub source was checked, but neither committed `dist/` files nor compiled release assets are provided. The environment cannot obtain the official npm tarball, and no compatible Dart Sass compiler is installed. Therefore no claim is made that this is the latest release, or that it was rebuilt locally. It is the pinned v1.6.1 upstream build supplied by the documented open-source mirror above.
+That repository's README names Tabler 1.7.5, states both files were copied unchanged from the official npm tarball, and records these exact SHA256 values. Both local files match those hashes and their Git blob SHA1 identifiers:
+
+| File | SHA256 | Git blob SHA1 |
+| --- | --- | --- |
+| tabler.min.css | d1708c69e6b07a5a3138b8549bf64e00cd9d18c130b9b2ba2d9e294956f7c564 | 2962c77a34f77a16d0d3311b2497d432f7754f3d |
+| tabler.min.js | f63744ad8e12180089844d0e550c5b3abd66eda0e52dead2eb31eef017148e93 | a0d05b4d33d58ce3210329c210681ae226767c96 |
+
+An independent second vendored copy was retrieved from `lutece-platform/lutece-core`, paths `webapp/themes/admin/tabler/css/vendor/tabler.min.css` and `webapp/themes/admin/tabler/js/vendor/tabler.min.js`. Both files are byte-for-byte equivalent after removing the optional sourceMappingURL comments. This verifies agreement between two independent mirrors; it is not a fresh direct npm-registry hash verification.
+
+JavaScript syntax was validated using `node --check tabler.min.js`. Required navbar, container, page, card, table, form, dropdown and pagination classes were confirmed in the CSS. No modifications to the compiled CSS or JavaScript were made.
+
+## Primary template references
+
+- `official-source/shared/layouts/DefaultLayout.astro`: page, page-wrapper, page-header, page-body and container-xl structure.
+- `official-source/shared/components/navbar/Navbar.astro`: original default two-row horizontal navbar.
+- `official-source/shared/components/layout/PageHeader.astro`: title, pretitle and right-aligned actions.
+- `official-source/shared/components/HomepageContent.astro`: original dashboard card grid.
+- `official-source/shared/components/cards/Invoices.astro`: searchable table and pagination.
+- `official-source/shared/components/cards/MostVisitedPages.astro`: compact card table.
+- `official-source/shared/components/cards/charts/Revenue.astro`: compact metric card.
+
+Use these native classes without loading previous application-wide CSS overrides. Replace demo labels and data with the retained database taxonomy and records.

@@ -1,10 +1,16 @@
 'use strict';
 const {test}=require('node:test'),assert=require('node:assert/strict');
 const M=require('../scripts/macro-model.js'),D=require('../scripts/macro-dashboard-model.js');
-test('static page assets exist and the dashboard loads without the former redirect',()=>{
+test('native macro assets exist and the pure models load in dependency order',()=>{
   const fs=require('node:fs'),path=require('node:path'),html=fs.readFileSync(path.join(__dirname,'../macro.html'),'utf8');
   for(const match of html.matchAll(/(?:src|href)="(scripts\/[^"?]+)(?:\?[^" ]*)?"/g))assert.ok(fs.existsSync(path.join(__dirname,'..',match[1])),match[1]);
-  assert.doesNotMatch(html,/location\.replace/);assert.ok(html.indexOf('macro-model.js')<html.indexOf('macro-dashboard-model.js'));assert.ok(html.indexOf('macro-dashboard-model.js')<html.indexOf('macro.js'));
+  assert.doesNotMatch(html,/location\.replace/);
+  assert.match(html,/<script type="module" src="scripts\/tabler-app\/app\.js(?:\?[^"]*)?"><\/script>/);
+  assert.match(html,/scripts\/vendor\/tabler\/tabler\.min\.css/);
+  const moduleSource=fs.readFileSync(path.join(__dirname,'../scripts/tabler-app/macro.js'),'utf8');
+  const base=moduleSource.indexOf("await import('../macro-model.js')");
+  assert.ok(base>=0&&base<moduleSource.indexOf("'macro-dashboard-model'"),'base model resolves before dashboard model');
+  for(const name of ['macro-dashboard-model','macro-expectations','prediction-model','fedwatch-model','consumption-macro-model'])assert.ok(moduleSource.includes("'"+name+"'"),name+' remains available');
 });
 const catalog=structuredClone(require('../data/macro/catalog.json')),snapshot=structuredClone(require('../data/macro/snapshot.json'));
 M.mergeAutomatic(catalog,snapshot,require('../data/macro/automatic-series.json'));

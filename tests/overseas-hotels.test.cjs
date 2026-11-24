@@ -28,7 +28,12 @@ const revenue=hyatt.finance.find(r=>r.period==='2026Q2'&&r.region==='集团'&&r.
 assert.ok(M.search(ops,'2026Q2 全球').every(r=>r.quarter==='2026Q2'&&r.region==='全球'));
 assert.equal(M.financialGrowth([{period:'2025Q2',region:'集团',metric:'归母净利润',unit:'百万美元',basis:'GAAP',value:-5}],{period:'2026Q2',region:'集团',metric:'归母净利润',unit:'百万美元',basis:'GAAP',value:3}),null);
 for(const s of manifest.sheets){const grid=read(s.file);assert.equal(grid.name,s.name);assert.equal(grid.rows.length,s.rows);for(const r of grid.rows)assert.ok(r.cells.every(c=>c.v!==null&&c.c>0));}
-const html=fs.readFileSync(path.join(root,'company-database.html'),'utf8');assert.ok(html.includes('overseas-hotels.html'));assert.ok(fs.readFileSync(path.join(root,'scripts/data-notes.js'),'utf8').includes("'overseas-hotels'"));
+const html=fs.readFileSync(path.join(root,'company-database.html'),'utf8');
+assert.match(html,/<script type="module" src="scripts\/tabler-app\/app\.js(?:\?[^"]*)?"><\/script>/);
+const nativeCompany=fs.readFileSync(path.join(root,'scripts/tabler-app/company.js'),'utf8');
+assert.ok(nativeCompany.includes('overseas-hotels.html?company=marriott'),'native company navigation retains overseas destination');
+assert.ok(nativeCompany.includes('data/companies/overseas-hotels.json'),'native company renderer retains original overseas data');
+assert.ok(nativeCompany.includes('data-notes.html#companies'),'company sources remain available');
 console.log('Overseas hotels: 662 operating, 384 finance, 146 brand scale, 31 brand metrics, 13 sheets; scopes, units, gaps and sources passed.');
 
 for(const mode of ['单季度','年初累计'])for(let metric=0;metric<3;metric++){

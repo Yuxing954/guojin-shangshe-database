@@ -8,8 +8,25 @@ test('trend axes shorten dates while title retains original observation date',()
  const html=D.trend([{date:'2026-09',value:10},{date:'2026-10',value:12}],'指标');
  assert.match(html,/class="site-period-tick"[^>]*>26M9<\/text>/);assert.match(html,/>26M10<\/text>/);assert.match(html,/<title>指标\n2026-09：/);
 });
-test('chart entrypoints load formatter before renderers',()=>{
+test('native chart entrypoints share one module and retain exact observation periods',async()=>{
  const root=path.resolve(__dirname,'..');
  const pages=['industry','hotel-dashboard','hotel-groups','hotel-holiday-dashboard','dutyfree-dashboard','cruise-dashboard','company-database','domestic-hotel-comparison','overseas-hotels','overseas-hotel-comparison','macro','regional-retail','quotes','cpi-monthly-product','consumption-monthly-product','retail-monthly-product','hotel-weekly-product'];
- for(const p of pages){const s=fs.readFileSync(path.join(root,p+'.html'),'utf8'),helper=s.indexOf('scripts/chart-period.js');assert(helper>=0,p);const render=s.indexOf('scripts/site-charts.js');if(render>=0)assert(helper<render,p+' load order');}
+ const redirects={'domestic-hotel-comparison':['company-database.html','jinjiang,btg,hworld,atour'],'overseas-hotel-comparison':['overseas-hotels.html','marriott,hyatt,ihg,hilton']};
+ for(const p of pages){
+  let s=fs.readFileSync(path.join(root,p+'.html'),'utf8');
+  if(redirects[p]){
+   let redirected;const location={href:'https://example.test/'+p+'.html?metric=revpar#comparison',search:'?metric=revpar',hash:'#comparison',replace:value=>{redirected=new URL(value);}};
+   require('node:vm').runInNewContext(s.match(/<script>([\s\S]*?)<\/script>/)[1],{URL,URLSearchParams,location});
+   assert.equal(redirected.pathname,'/'+redirects[p][0]);assert.equal(redirected.searchParams.get('peers'),redirects[p][1]);assert.equal(redirected.searchParams.get('metric'),'revpar');assert.equal(redirected.hash,'#comparison');
+   s=fs.readFileSync(path.join(root,redirects[p][0]),'utf8');
+  }
+  assert.equal((s.match(/<script type="module" src="scripts\/tabler-app\/app\.js(?:\?[^"]*)?"/g)||[]).length,1,p);
+  assert.doesNotMatch(s,/<script[^>]+src="scripts\/site-charts\.js/,p+' uses the shared native chart');
+ }
+ const {chart}=await import('../scripts/tabler-app/common.js');
+ const host={innerHTML:'',querySelector:()=>({textContent:''}),querySelectorAll:()=>[]};
+ chart(host,[{period:'2026-09',value:0},{period:'2026-Q3',value:2},{period:'2026-10-22',value:null}],{label:'原始期间',unit:'亿元'});
+ assert.match(host.innerHTML,/<title>原始期间 · 2026-09：0 亿元<\/title>/);
+ assert.match(host.innerHTML,/<title>原始期间 · 2026-Q3：2 亿元<\/title>/);
+ assert.doesNotMatch(host.innerHTML,/<title>[^<]*2026-10-22/,'missing observations do not become chart values');
 });

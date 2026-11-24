@@ -1,49 +1,40 @@
+# Browser interactions are checked once by tabler-integration.yml.
+# This workflow retains its original data, import, and model validation gates.
 name: Check earnings calendar
-on:
+'on':
   pull_request:
     paths:
-      - "earnings.html"
-      - "scripts/important-calendar*"
-      - "data/important-calendar.json"
-      - "tests/important-calendar*"
-      - "docs/important-calendar.md"
-      - "scripts/earnings*"
-      - "scripts/calendar/**"
-      - "scripts/update-earnings-calendar.cjs"
-      - "scripts/import-earnings-choice.cjs"
-      - "scripts/site-shell.js"
-      - "data/earnings*.json"
-      - "data/coverage-companies.json"
-      - "data-manifest.json"
-      - "tests/earnings-calendar.browser.cjs"
-      - ".github/workflows/check-earnings-calendar.yml"
+    - earnings.html
+    - scripts/important-calendar*
+    - data/important-calendar.json
+    - tests/important-calendar*
+    - docs/important-calendar.md
+    - scripts/earnings*
+    - scripts/calendar/**
+    - scripts/update-earnings-calendar.cjs
+    - scripts/import-earnings-choice.cjs
+    - scripts/site-shell.js
+    - data/earnings*.json
+    - data/coverage-companies.json
+    - data-manifest.json
+    - tests/earnings-calendar.browser.cjs
+    - .github/workflows/check-earnings-calendar.yml
 permissions:
   contents: read
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-      - name: Check earnings logic
-        run: |
-          node --check scripts/calendar/important-calendar.js
-          node --test tests/important-calendar.test.cjs
-          node --check scripts/calendar/earnings-calendar.js
-          node --check scripts/site-shell.js
-          node --check scripts/import-earnings-choice.cjs
-          node scripts/earnings-calendar.test.cjs
-          node scripts/earnings.test.cjs
-      - name: Install isolated browser test dependency
-        run: |
-          npm install --prefix /tmp/earnings-test playwright@1.58.2
-          /tmp/earnings-test/node_modules/.bin/playwright install --with-deps chromium
-      - name: Check desktop and mobile interactions
-        env:
-          NODE_PATH: /tmp/earnings-test/node_modules
-        run: |
-          node tests/earnings-calendar.browser.cjs
-          node tests/important-calendar.browser.cjs
-
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+    - name: Check earnings logic
+      run: |
+        node --check scripts/calendar/important-calendar.js
+        node --test tests/important-calendar.test.cjs
+        node --check scripts/calendar/earnings-calendar.js
+        node --check scripts/site-shell.js
+        node --check scripts/import-earnings-choice.cjs
+        node scripts/earnings-calendar.test.cjs
+        node scripts/earnings.test.cjs

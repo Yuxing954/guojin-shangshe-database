@@ -1,163 +1,141 @@
+# Browser interactions are checked once by tabler-integration.yml.
+# This workflow retains its original data, import, and model validation gates.
 name: Check research website
-
-on:
+'on':
   pull_request:
     paths:
-      - "search.html"
-      - "scripts/resource*"
-      - "scripts/build_resource_index.py"
-      - "scripts/build_site_summaries.py"
-      - "scripts/summary_io.py"
-      - "scripts/test_summary_updates.py"
-      - "index.html"
-      - "industry.html"
-      - "overseas.html"
-      - "dining.html"
-      - "scripts/sector*"
-      - "scripts/update_sector_data.py"
-      - "scripts/test_sector_data.py"
-      - "data/sectors/**"
-      - "tests/sectors.browser.cjs"
-      - "company-database.html"
-      - "quotes.html"
-      - "scripts/quotes*"
-      - "scripts/quotes/**"
-      - "tests/quotes-workbench.browser.cjs"
-      - "tests/quotes-loading.browser.cjs"
-      - "tests/fixtures/tencent-charts*"
-      - "scripts/market-kline*"
-      - "companies.html"
-      - "data/coverage-companies.json"
-      - "scripts/coverage*"
-      - "research.html"
-      - "tests/research-minutes.browser.cjs"
-      - "hotel-dashboard.html"
-      - "dutyfree-dashboard.html"
-      - "earnings.html"
-      - "scripts/earnings*"
-      - "scripts/calendar/**"
-      - "scripts/update-earnings-calendar.cjs"
-      - "scripts/import-earnings-choice.cjs"
-      - "tests/earnings-calendar.browser.cjs"
-      - "data/earnings*.json"
-      - "data-manifest.json"
-      - "dashboard.html"
-      - "database.html"
-      - "scripts/site*"
-      - "scripts/industry*"
-      - "scripts/dutyfree-holidays.*"
-      - "tests/dutyfree-holidays.test.cjs"
-      - "tests/test_dutyfree_supplements.py"
-      - "scripts/supplement_dutyfree_holidays.py"
-      - "scripts/import_dutyfree_holidays.py"
-      - "data/dutyfree/**"
-      - "data/dutyfree_holiday.csv"
-      - "scripts/build_industry_snapshot.py"
-      - "scripts/import_miaoxiang_industry.py"
-      - "scripts/test_industry_snapshot.py"
-      - "data/industry/**"
-      - "scripts/companies.js"
-      - "scripts/research*"
-      - "scripts/research_sources*"
-      - "scripts/test_research_updates.py"
-      - "scripts/import_research_topics.py"
-      - "scripts/build_research_recent.py"
-      - "scripts/build_research_library.py"
-      - "scripts/import_research_attachment.py"
-      - "scripts/import_onedrive_minutes.py"
-      - "scripts/test_onedrive_minutes.py"
-      - "scripts/import_onedrive_index.py"
-      - "scripts/test_onedrive_index.py"
-      - "scripts/sync_research_library.py"
-      - "scripts/test_sync_research_library.py"
-      - "scripts/test_research_library.py"
-      - "requirements-research-media.txt"
-      - "data/research/**"
-      - "scripts/home.*"
-      - "scripts/build_home_snapshot.py"
-      - "scripts/test_home_snapshot.py"
-      - "data/home-snapshot.json"
-      - ".github/workflows/check-home.yml"
-
+    - search.html
+    - scripts/resource*
+    - scripts/build_resource_index.py
+    - scripts/build_site_summaries.py
+    - scripts/summary_io.py
+    - scripts/test_summary_updates.py
+    - index.html
+    - industry.html
+    - overseas.html
+    - dining.html
+    - scripts/sector*
+    - scripts/update_sector_data.py
+    - scripts/test_sector_data.py
+    - data/sectors/**
+    - tests/sectors.browser.cjs
+    - company-database.html
+    - quotes.html
+    - scripts/quotes*
+    - scripts/quotes/**
+    - tests/quotes-workbench.browser.cjs
+    - tests/quotes-loading.browser.cjs
+    - tests/fixtures/tencent-charts*
+    - scripts/market-kline*
+    - companies.html
+    - data/coverage-companies.json
+    - scripts/coverage*
+    - research.html
+    - tests/research-minutes.browser.cjs
+    - hotel-dashboard.html
+    - dutyfree-dashboard.html
+    - earnings.html
+    - scripts/earnings*
+    - scripts/calendar/**
+    - scripts/update-earnings-calendar.cjs
+    - scripts/import-earnings-choice.cjs
+    - tests/earnings-calendar.browser.cjs
+    - data/earnings*.json
+    - data-manifest.json
+    - dashboard.html
+    - database.html
+    - scripts/site*
+    - scripts/industry*
+    - scripts/dutyfree-holidays.*
+    - tests/dutyfree-holidays.test.cjs
+    - tests/test_dutyfree_supplements.py
+    - scripts/supplement_dutyfree_holidays.py
+    - scripts/import_dutyfree_holidays.py
+    - data/dutyfree/**
+    - data/dutyfree_holiday.csv
+    - scripts/build_industry_snapshot.py
+    - scripts/import_miaoxiang_industry.py
+    - scripts/test_industry_snapshot.py
+    - data/industry/**
+    - scripts/companies.js
+    - scripts/research*
+    - scripts/research_sources*
+    - scripts/test_research_updates.py
+    - scripts/import_research_topics.py
+    - scripts/build_research_recent.py
+    - scripts/build_research_library.py
+    - scripts/import_research_attachment.py
+    - scripts/import_onedrive_minutes.py
+    - scripts/test_onedrive_minutes.py
+    - scripts/import_onedrive_index.py
+    - scripts/test_onedrive_index.py
+    - scripts/sync_research_library.py
+    - scripts/test_sync_research_library.py
+    - scripts/test_research_library.py
+    - requirements-research-media.txt
+    - data/research/**
+    - scripts/home.*
+    - scripts/build_home_snapshot.py
+    - scripts/test_home_snapshot.py
+    - data/home-snapshot.json
+    - .github/workflows/check-home.yml
 permissions:
   contents: read
-
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - name: Install PDF reader and extraction test dependency
-        run: python -m pip install -r requirements-research-media.txt
-      - name: Check research data and site JavaScript
-        run: |
-          python scripts/test_industry_snapshot.py
-          python scripts/test_sector_data.py
-          python scripts/update_sector_data.py
-          node scripts/sector-model.test.cjs
-          node --check scripts/sector.js
-          python scripts/build_industry_snapshot.py
-          python scripts/test_home_snapshot.py
-          python scripts/test_summary_updates.py
-          python scripts/research_sources_test.py
-          python -m py_compile scripts/import_research_topics.py
-          python scripts/build_research_recent.py
-          python scripts/build_home_snapshot.py
-          python scripts/test_research_updates.py
-          python scripts/test_research_statistics.py
-          python scripts/test_research_library.py
-          python scripts/test_onedrive_minutes.py
-          python scripts/test_sync_research_library.py
-          python scripts/test_onedrive_index.py
-          node --check scripts/research-library-model.js
-          node scripts/research-library-model.test.cjs
-          node scripts/coverage-model.test.cjs
-          node --check scripts/quotes/quotes.js
-          node --check scripts/quotes/quotes-model.js
-          node scripts/quotes-model.test.cjs
-          node --check scripts/quotes/quotes-poller.js
-          node --test scripts/quotes*.test.cjs
-          node --check scripts/index-redirect.js
-          node --check scripts/site-shell.js
-          node --check scripts/industry.js
-          node --check scripts/industry-model.js
-          node scripts/industry-model.test.cjs
-          node --check scripts/dutyfree-holidays.js
-          node tests/dutyfree-holidays.test.cjs
-          python tests/test_dutyfree_supplements.py
-          node --check scripts/resource-search.js
-          node --check scripts/resource-model.js
-          node scripts/resource-model.test.cjs
-          node --check scripts/research.js
-          node --check scripts/research-model.js
-          node scripts/research-model.test.cjs
-          node scripts/site-data.test.cjs
-      - name: Check existing market and earnings logic
-        run: |
-          node scripts/market-kline.test.js
-          node scripts/earnings-calendar.test.cjs
-          node scripts/earnings.test.cjs
-
-      - name: Install browser test dependency
-        run: |
-          npm install --no-save --package-lock=false playwright@1.62.1
-          npx playwright install --with-deps chromium
-      - name: Verify expanded coverage pool in browser
-        run: |
-          node tests/quotes-workbench.browser.cjs
-          node tests/quotes-loading.browser.cjs
-
-      - name: Verify minutes initial load, previews and download links
-        run: node tests/research-minutes.browser.cjs
-
-      - name: Verify sector pages in browser
-        run: |
-          python -m http.server 18765 --bind 127.0.0.1 > /tmp/sector-http.log 2>&1 &
-          sector_server_pid=$!
-          trap 'kill "$sector_server_pid"' EXIT
-          SECTOR_BASE_URL=http://127.0.0.1:18765 node tests/sectors.browser.cjs
-          SECTOR_BASE_URL=http://127.0.0.1:18765 node tests/gold-integration.browser.cjs
-          SECTOR_BASE_URL=http://127.0.0.1:18765 node tests/industry-panels.browser.cjs
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+    - name: Install PDF reader and extraction test dependency
+      run: python -m pip install -r requirements-research-media.txt
+    - name: Check research data and site JavaScript
+      run: |
+        python scripts/test_industry_snapshot.py
+        python scripts/test_sector_data.py
+        python scripts/update_sector_data.py
+        node scripts/sector-model.test.cjs
+        node --check scripts/sector.js
+        python scripts/build_industry_snapshot.py
+        python scripts/test_home_snapshot.py
+        python scripts/test_summary_updates.py
+        python scripts/research_sources_test.py
+        python -m py_compile scripts/import_research_topics.py
+        python scripts/build_research_recent.py
+        python scripts/build_home_snapshot.py
+        python scripts/test_research_updates.py
+        python scripts/test_research_statistics.py
+        python scripts/test_research_library.py
+        python scripts/test_onedrive_minutes.py
+        python scripts/test_sync_research_library.py
+        python scripts/test_onedrive_index.py
+        node --check scripts/research-library-model.js
+        node scripts/research-library-model.test.cjs
+        node scripts/coverage-model.test.cjs
+        node --check scripts/quotes/quotes.js
+        node --check scripts/quotes/quotes-model.js
+        node scripts/quotes-model.test.cjs
+        node --check scripts/quotes/quotes-poller.js
+        node --test scripts/quotes*.test.cjs
+        node --check scripts/index-redirect.js
+        node --check scripts/site-shell.js
+        node --check scripts/industry.js
+        node --check scripts/industry-model.js
+        node scripts/industry-model.test.cjs
+        node --check scripts/dutyfree-holidays.js
+        node tests/dutyfree-holidays.test.cjs
+        python tests/test_dutyfree_supplements.py
+        node --check scripts/resource-search.js
+        node --check scripts/resource-model.js
+        node scripts/resource-model.test.cjs
+        node --check scripts/research.js
+        node --check scripts/research-model.js
+        node scripts/research-model.test.cjs
+        node scripts/site-data.test.cjs
+    - name: Check existing market and earnings logic
+      run: |
+        node scripts/market-kline.test.js
+        node scripts/earnings-calendar.test.cjs
+        node scripts/earnings.test.cjs
