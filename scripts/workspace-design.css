@@ -76,13 +76,7 @@ body.site-page[data-design=workspace][data-design] :is(.portal-button,#national-
  padding:8px 12px!important;border:1px solid var(--site-line);border-radius:8px!important;
  font-size:14px!important;line-height:22px!important;
 }
-/* Tables retain numeric meaning, sort controls and horizontal scrolling. */
-body.site-page[data-design=workspace][data-design] :is(.board-table,.dh-table,.oh-table,.portal-table,.travel-panel table,.cruise-panel table,.dining-panel table) :is(th,td){
- padding:10px 12px!important;font-size:13px!important;line-height:22px!important;border-color:var(--site-line)!important;font-variant-numeric:tabular-nums;
-}
-body.site-page[data-design=workspace][data-design] :is(.board-table,.dh-table,.oh-table,.portal-table,.travel-panel table,.cruise-panel table,.dining-panel table) th{
- background:var(--site-soft)!important;color:var(--site-muted)!important;font-weight:600!important;
-}
+
 body.site-page[data-design=workspace][data-design] :is(.quotes-table th,.quotes-sort,.quotes-symbol,.quotes-time,.quotes-benchmark small,.ec-event span){font-size:12px!important;line-height:20px!important}
 body.site-page[data-design=workspace][data-design] :is(.quotes-name,.quotes-price,.quotes-percent,.ec-event b){font-size:14px!important;line-height:22px!important}
 body.site-page[data-design=workspace][data-design] :is(.ic-title h3,.portal-research-title,.resource-result h2){font-size:16px!important;line-height:26px!important;font-weight:600}
