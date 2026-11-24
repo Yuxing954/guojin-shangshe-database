@@ -6,6 +6,7 @@
  function format(table){
    if(!table.isConnected||!table.matches(selector))return;
    table.classList.add('site-data-table');
+   if(document.body.dataset.ui==='tabler')table.classList.add('table','table-sm','table-vcenter');
    let frame=table.parentElement;
    if(!frame.classList.contains('site-table-scroll')){
      if(!['auto','scroll'].includes(getComputedStyle(frame).overflowX)){

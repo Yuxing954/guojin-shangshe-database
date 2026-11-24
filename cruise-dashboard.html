@@ -3,14 +3,14 @@
 <head><script src="scripts/chart-annotations.js?v=20261025annotations1"></script><script src="scripts/chart-period.js?v=20261022dates"></script>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>三峡游轮 · 零售&amp;社服数据库</title>
-<link rel="stylesheet" href="scripts/site.css?v=20261025retailservice2">
+<link rel="stylesheet" href="scripts/vendor/tabler/tabler.min.css?v=1.6.1"><link rel="stylesheet" href="scripts/site.css?v=20261124tabler1">
 <link rel="stylesheet" href="scripts/site-charts.css?v=20261025annotations1">
 <link rel="stylesheet" href="scripts/industry-embed.css?v=20261023scroll">
 <link rel="stylesheet" href="scripts/cruise-dashboard.css?v=20261023details">
 <link rel="stylesheet" href="scripts/cruise-analysis.css?v=20261023analysis">
-<script defer src="scripts/site-ui.js?v=20261106researchtools1"></script>
+<script defer src="scripts/site-ui.js?v=20261124tabler1"></script>
 <script defer src="scripts/site-data.js?v=20261022dates"></script>
-<script defer src="scripts/site-shell.js?v=20261106researchtools2"></script>
+<script defer src="scripts/site-shell.js?v=20261124tabler1"></script>
 <script defer src="scripts/site-charts.js?v=20261025annotations1"></script>
 <script defer src="scripts/cruise-dashboard.js?v=20261024asof"></script>
 <script defer src="scripts/cruise-details.js?v=20261023details"></script>
@@ -23,14 +23,14 @@
 <link rel="stylesheet" href="scripts/site-install.css?v=20261014home">
 <script defer src="scripts/site-install.js?v=20261017disabled"></script>
 <link rel="stylesheet" href="scripts/site-polish.css?v=20261013clean">
-<link rel="stylesheet" href="scripts/industry-design.css?v=20261024compact"><link rel="stylesheet" href="scripts/dashboard-asof.css?v=20261024compact"><link rel="icon" type="image/svg+xml" href="scripts/assets/brand/sinolink-mark.svg"><link rel="stylesheet" href="scripts/dashboard-toolbar.css?v=20261111"><link rel="stylesheet" href="scripts/data-table.css?v=1"><link rel="stylesheet" href="scripts/workspace-design.css?v=20261111visual">
+<link rel="stylesheet" href="scripts/industry-design.css?v=20261024compact"><link rel="stylesheet" href="scripts/dashboard-asof.css?v=20261024compact"><link rel="icon" type="image/svg+xml" href="scripts/assets/brand/sinolink-mark.svg"><link rel="stylesheet" href="scripts/dashboard-toolbar.css?v=20261111"><link rel="stylesheet" href="scripts/data-table.css?v=20261124tabler1"><link rel="stylesheet" href="scripts/workspace-design.css?v=20261124tabler1">
 
 <link rel="stylesheet" href="scripts/dashboard-compact.css?v=20261113compact2">
 
-<script defer src="scripts/data-table.js?v=1"></script>
+<script defer src="scripts/data-table.js?v=20261124tabler1"></script>
 </head>
-<body data-dashboard-density="compact" data-design="workspace" class="site-page cruise-page" data-site-section="industry">
-<main class="site-main">
+<body data-ui="tabler" data-dashboard-density="compact" data-design="workspace" class="site-page cruise-page" data-site-section="industry">
+<header class="site-workspace-bar"><div class="site-workspace-path"><a href="industry.html">国金商社</a><span aria-hidden="true">/</span><span>三峡游轮</span></div><a class="site-source-link" href="data-notes.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l4 4v14H6zM14 3v5h4M9 12h6m-6 4h6"/></svg><span>数据来源</span></a></header><main class="site-main">
 <header class="cruise-head"><div><h1>长江三峡游轮</h1><p id="asof">正在读取月度运行数据…</p></div><div class="cruise-links"><a href="data-notes.html#tourism">数据说明</a><a id="runtime-csv" href="data/tourism/three-gorges-cruises.csv" download>下载全量 CSV</a><button id="export" disabled>导出当前</button></div></header>
 <div id="load-error" role="alert" hidden></div>
 <section id="dashboard" hidden>

@@ -8,7 +8,7 @@
    --table-cell-x:12px;--table-cell-y:9px;--table-text:14px;--table-label:13px;--table-line:22px;
   }
   .site-table-scroll:focus-visible {outline:2px solid #2167a0;outline-offset:2px}
-  table.site-data-table {border-collapse:collapse;font-variant-numeric:tabular-nums lining-nums}
+  table.site-data-table {margin-bottom:0!important;border-collapse:collapse;font-variant-numeric:tabular-nums lining-nums}
   .site-data-table :is(td,th) {
    box-sizing:border-box;font-family:var(--table-font)!important;line-height:var(--table-line)!important;
    padding:var(--table-cell-y) var(--table-cell-x)!important;vertical-align:middle;
@@ -16,7 +16,7 @@
   }
   .site-data-table td {font-size:var(--table-text)!important}
   .site-data-table th {font-size:var(--table-label)!important;font-weight:600!important}
-  .site-data-table thead th {background:#edf3f8!important;color:#354b60!important}
+  .site-data-table thead th {background:var(--site-soft,#edf4fc)!important;color:#354b60!important}
   .site-data-table th button {font:inherit!important}
   .site-data-table [data-table-number] {text-align:end!important}
   .site-data-table td small {font-size:12px!important;line-height:18px!important}
