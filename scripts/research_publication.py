@@ -16,7 +16,7 @@ def clean_library(root):
     if not path.exists():
         return
     data = json.loads(path.read_text(encoding='utf-8-sig'))
-    records = data['records']
+    records = data.get('records', [])
     kept = [row for row in records if not call_material(row)]
     if len(kept) == len(records):
         return
