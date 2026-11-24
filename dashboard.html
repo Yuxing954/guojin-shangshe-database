@@ -1,17 +1,28 @@
 <!doctype html>
-<html lang="zh-CN"><head><script src="scripts/chart-annotations.js?v=20261025annotations1"></script><script src="scripts/chart-period.js?v=20261022dates"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>数据浏览器 · 零售&amp;社服数据库</title>
-<link rel="stylesheet" href="scripts/site.css?v=20261025retailservice2"><link rel="stylesheet" href="scripts/data-browser.css?v=20261010-unified">
-<script defer src="scripts/site-ui.js?v=20261106researchtools1"></script><script defer src="scripts/site-data.js?v=20261022dates"></script><script defer src="scripts/site-shell.js?v=20261106researchtools2"></script><script defer src="scripts/data-browser.js?v=20261010-unified"></script>
-<link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-charts.css?v=20261025annotations1"><link rel="stylesheet" href="scripts/site-install.css?v=20261014home"><link rel="stylesheet" href="scripts/site-polish.css?v=20261011subnav"><script src="scripts/site-charts.js?v=20261025annotations1"></script><link rel="manifest" href="site.webmanifest?v=20261025retailservice2"><meta name="theme-color" content="#4d58a4"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="零售&amp;社服数据库"><meta name="apple-mobile-web-app-status-bar-style" content="default"><link rel="apple-touch-icon" href="scripts/assets/app/apple-touch-icon.png?v=20261025retailservice2"><script defer src="scripts/site-install.js?v=20261014home"></script><link rel="icon" type="image/svg+xml" href="scripts/assets/brand/sinolink-mark.svg"><link rel="stylesheet" href="scripts/workspace-design.css?v=20261111visual">
+<html lang="zh-CN" data-bs-theme="light">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>数据浏览器 · 国金商社数据库</title>
+  <link rel="icon" href="scripts/assets/brand/sinolink-mark.svg" type="image/svg+xml">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="scripts/vendor/tabler/tabler.min.css">
+  <link rel="stylesheet" href="scripts/query-workspace.css">
+  <script defer src="scripts/site-ui.js"></script>
+  <script defer src="scripts/vendor/tabler/tabler.min.js"></script>
+  <script defer src="scripts/site-shell.js?v=noon-query"></script>
+  <script defer src="scripts/site-data.js"></script>
+  <script defer src="scripts/data-browser.js?v=noon-query"></script>
 </head>
-<body class="site-page" data-design="workspace"><main id="main"><header class="portal-header"><div><p class="eyebrow">研究工具</p><h1>数据浏览器</h1></div><a class="portal-top-link" href="data-manifest.json" download>数据清单 ↗</a></header>
-<div class="portal-status" id="status" role="status">正在读取数据清单…</div>
-<div class="data-workspace"><aside class="portal-panel data-catalog" aria-label="数据集"><label for="dataset-search">查找数据集</label><input id="dataset-search" type="search" placeholder="名称、分类"><nav id="datasets" aria-label="数据集目录"></nav></aside>
-<section class="portal-panel data-view" aria-labelledby="dataset-title"><div class="portal-panel-head"><h2 id="dataset-title">数据集</h2><span id="format" class="portal-tag"></span></div><p id="metadata" class="portal-note"></p>
-<div class="portal-filter"><input id="query" type="search" aria-label="搜索数据" placeholder="搜索当前数据"><select id="field" aria-label="搜索字段"><option value="">全部字段</option></select><button id="reset" class="portal-button">重置筛选</button><button id="reload" class="portal-button">重试</button></div>
-<div class="data-actions"><a id="source" class="portal-button" download>下载原始文件</a><button id="export" class="portal-button" disabled>导出当前范围 CSV</button><span id="count" class="portal-note" role="status"></span></div>
-<div class="portal-table-scroll" id="table"></div><pre id="json" class="data-json" hidden></pre>
-<div class="portal-pager" id="pager" hidden><span id="page-label"></span><div><button id="prev">上一页</button> <button id="next">下一页</button></div></div>
-</section></div></main></body></html>
-
-
+<body data-layout="tabler-query"><div class="page"><header class="navbar navbar-expand-lg" id="query-navigation"></header>
+<main id="main" class="page-wrapper"><div class="page-header container-xl"><div class="row align-items-center w-100 g-2">
+<div class="col"><h1 class="page-title">数据浏览器</h1></div><div class="col-auto"><a class="btn" href="data-manifest.json" download>下载数据清单</a></div></div></div>
+<div class="page-body"><div class="container-xl"><div role="status" id="status" class="text-secondary"></div><div class="row g-3 align-items-start">
+<aside class="col-lg-3"><div class="card"><div class="card-body"><label class="form-label" for="dataset-search">查找数据集</label><input class="form-control" id="dataset-search" type="search" placeholder="名称或分类"></div>
+<button type="button" class="btn d-lg-none mx-3 mb-3" data-bs-toggle="collapse" data-bs-target="#dataset-nav" aria-controls="dataset-nav" aria-expanded="false">选择数据集</button>
+<div id="dataset-nav" class="collapse d-lg-block"><nav id="datasets" class="list-group list-group-flush catalog-scroll" aria-label="数据集目录"></nav></div></div></aside>
+<section class="col-lg-9" aria-labelledby="dataset-title"><div class="card"><header class="card-header"><div class="min-w-0"><h2 class="card-title" id="dataset-title">数据集</h2><div class="text-secondary small text-break" id="metadata"></div></div><span class="badge bg-blue-lt ms-auto" id="format"></span></header>
+<div class="card-body py-3"><div class="row g-2 align-items-end"><div class="col-sm"><label class="form-label" for="query">搜索当前数据</label><input class="form-control" id="query" type="search"></div><div class="col-sm-4"><label class="form-label" for="field">搜索字段</label><select class="form-select" id="field"><option value="">全部字段</option></select></div><div class="col-auto"><button id="reset" class="btn">重置筛选</button><button id="reload" class="btn" hidden>重试</button></div></div></div>
+<div class="card-body py-2 border-top d-flex flex-wrap gap-2 align-items-center"><span id="count" class="text-secondary small me-auto" role="status"></span><a id="source" class="btn btn-sm" download>下载原始文件</a><button id="export" class="btn btn-sm btn-primary" disabled>导出当前范围 CSV</button></div>
+<div class="table-responsive" id="table"></div><pre id="json" class="query-json" hidden></pre>
+<div class="card-footer" id="pager" hidden><nav class="d-flex align-items-center gap-2" aria-label="数据分页"><span id="page-label" class="me-auto"></span><button class="btn btn-sm" id="prev">上一页</button><button class="btn btn-sm" id="next">下一页</button></nav></div></div></section>
+</div></div></div></main></div></body></html>

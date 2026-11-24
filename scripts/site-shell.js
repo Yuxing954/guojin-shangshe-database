@@ -1,6 +1,12 @@
 (function(){
   'use strict';
   const U=SiteUI,page=location.pathname.split('/').pop()||'industry.html';
+  if(document.body.dataset.layout==='tabler-query'){
+    const bar=document.getElementById('query-navigation');
+    const links=U.navigation.map(([,href,label])=>'<li class="nav-item"><a class="nav-link" href="'+href+'">'+label+'</a></li>').join('');
+    bar.innerHTML='<div class="container-xl"><a href="index.html" class="navbar-brand"><img src="scripts/assets/brand/sinolink-mark.svg" width="28" height="28" alt=""> 国金商社</a><button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#query-menu" aria-expanded="false" aria-controls="query-menu" aria-label="展开导航"><span class="navbar-toggler-icon"></span></button><nav class="collapse navbar-collapse" id="query-menu"><ul class="navbar-nav">'+links+'<li class="nav-item active"><a class="nav-link" aria-current="page" href="dashboard.html">数据浏览器</a></li><li class="nav-item"><a class="nav-link" href="daily.html">日报</a></li></ul></nav></div>';
+    return;
+  }
   const [section,title]=U.pages[page]||['tools','研究工具'];
   document.body.classList.add('site-page');document.body.dataset.siteSection=section;
   if(typeof window!=='undefined'&&window.parent!==window&&new URLSearchParams(location.search).get('embed')==='1'){const main=document.querySelector('body > main,body > .wrap');if(main)main.classList.add('site-main');return;}
