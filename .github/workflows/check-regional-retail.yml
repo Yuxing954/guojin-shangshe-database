@@ -1,43 +1,52 @@
-# Browser interactions are checked once by tabler-integration.yml.
-# This workflow retains its original data, import, and model validation gates.
 name: Check regional retail
-'on':
+on:
   pull_request:
     paths:
-    - regional-retail.html
-    - scripts/regional-retail*
-    - scripts/import-regional-retail.cjs
-    - data/regional-retail/**
-    - tests/regional-retail*
-    - .github/workflows/check-regional-retail.yml
+      - 'regional-retail.html'
+      - 'scripts/regional-retail*'
+      - 'scripts/import-regional-retail.cjs'
+      - 'data/regional-retail/**'
+      - 'tests/regional-retail*'
+      - '.github/workflows/check-regional-retail.yml'
   push:
-    branches:
-    - main
+    branches: [main]
     paths:
-    - regional-retail.html
-    - scripts/regional-retail*
-    - data/regional-retail/**
-  workflow_dispatch: null
+      - 'regional-retail.html'
+      - 'scripts/regional-retail*'
+      - 'data/regional-retail/**'
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
   regional-retail:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: '22'
-    - run: |
-        node --check scripts/regional-retail.js
-        node --check scripts/regional-retail-model.js
-        node --check scripts/regional-retail-tiers.js
-        node --check scripts/regional-retail-tier-model.js
-        node --check scripts/regional-retail-charts.js
-        node --check scripts/regional-retail-provinces.js
-        node --check scripts/macro-navigation.js
-        node --test tests/regional-retail.test.cjs
-        node --test tests/regional-retail-tiers.test.cjs
-        node --test tests/regional-retail-history.test.cjs
-        node --test tests/regional-retail-monthly.test.cjs
-        node --test tests/regional-retail-display.test.cjs
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: |
+          node --check scripts/regional-retail.js
+          node --check scripts/regional-retail-model.js
+          node --check scripts/regional-retail-tiers.js
+          node --check scripts/regional-retail-tier-model.js
+          node --check scripts/regional-retail-charts.js
+          node --check scripts/regional-retail-provinces.js
+          node --check scripts/macro-navigation.js
+          node --test tests/regional-retail.test.cjs
+          node --test tests/regional-retail-tiers.test.cjs
+          node --test tests/regional-retail-history.test.cjs
+          node --test tests/regional-retail-monthly.test.cjs
+          node --test tests/regional-retail-display.test.cjs
+      - name: Browser checks
+        run: |
+          npm install --no-save --package-lock=false playwright@1.62.1
+          npx playwright install --with-deps chromium
+          node tests/regional-retail.browser.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: regional-retail-previews
+          path: .cache/regional-retail
+
+

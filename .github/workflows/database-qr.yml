@@ -1,0 +1,32 @@
+name: Check database QR
+on:
+  pull_request:
+    paths: ['database-qr.html', 'scripts/database-qr.*', 'scripts/assets/brand/database-qr.svg', 'scripts/site-shell.js', 'scripts/site-ui.js', 'tests/database-qr.browser.cjs', '.github/workflows/database-qr.yml']
+  push:
+    branches: [main]
+    paths: ['database-qr.html', 'scripts/database-qr.*', 'scripts/assets/brand/database-qr.svg', 'scripts/site-shell.js', 'scripts/site-ui.js', 'tests/database-qr.browser.cjs', '.github/workflows/database-qr.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  database-qr:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: |
+          npm install --no-save --package-lock=false playwright@1.62.1
+          if command -v google-chrome >/dev/null 2>&1; then
+            echo 'PLAYWRIGHT_CHANNEL=chrome' >> "$GITHUB_ENV"
+          else
+            npx playwright install --with-deps chromium
+          fi
+      - run: node tests/database-qr.browser.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: database-qr-previews
+          path: artifacts/qr
+          if-no-files-found: ignore

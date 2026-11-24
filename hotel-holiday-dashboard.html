@@ -1,40 +1,76 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-bs-theme="light">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#066fd1">
-  <meta name="description" content="国金商社零售与社会服务研究数据库。行业经营、宏观数据、重点公司、观点纪要与每日研究。">
-  <title>国金商社数据库</title>
-  <link rel="icon" type="image/svg+xml" href="scripts/assets/brand/sinolink-mark.svg">
-  <link rel="stylesheet" href="scripts/vendor/tabler/tabler.min.css?v=1.7.5">
-  <link rel="stylesheet" href="scripts/tabler-app/app.css?v=20261125">
-  <script>try{document.documentElement.dataset.bsTheme=localStorage.getItem('guojin-tabler-theme')==='dark'?'dark':'light';}catch(e){}</script>
-  <script defer src="scripts/vendor/tabler/tabler.min.js?v=1.7.5"></script>
-  <script defer src="scripts/zsxq-content.js"></script>
-  <script defer src="scripts/research-model.js"></script>
-  <script defer src="scripts/research-library-model.js"></script>
-  <script defer src="scripts/daily-announcements.js"></script>
-  <script defer src="scripts/domestic-hotels-model.js"></script>
-  <script defer src="scripts/overseas-hotels-model.js"></script>
-  <script defer src="scripts/company-database-model.js"></script>
-  <script defer src="scripts/company-overview-model.js"></script>
-  <script defer src="scripts/quotes/quotes-model.js"></script>
-  <script defer src="scripts/quotes/quotes-poller.js"></script>
-  <script defer src="scripts/market-kline.js"></script>
-  <script defer src="scripts/calendar/earnings-calendar-model.js"></script>
-  <script defer src="scripts/calendar/important-calendar-model.js"></script>
-  <script defer src="scripts/hotel-metrics.js"></script>
-  <script defer src="scripts/hotel-groups-model.js"></script>
-  <script defer src="scripts/travel-model.js"></script>
-  <script defer src="scripts/cruise-analysis-model.js"></script>
-  <script defer src="scripts/dining-model.js"></script>
-  <script defer src="scripts/dutyfree-korea-model.js"></script>
-  <script type="module" src="scripts/tabler-app/app.js?v=20261125"></script>
+<html lang="zh-CN">
+<head><script src="scripts/chart-annotations.js?v=20261025annotations1"></script><script src="scripts/chart-period.js?v=20261022dates"></script><script>if(window.parent!==window&&new URLSearchParams(location.search).get("embed")==="1")document.documentElement.classList.add("industry-embedding");</script><style>html.industry-embedding body{visibility:hidden!important}</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>酒店假期数据 · 零售&amp;社服数据库</title>
+  <script defer src="scripts/site-ui.js?v=20261106researchtools1"></script>
+  <link rel="stylesheet" href="scripts/site.css?v=20261025retailservice2">
+  <link rel="stylesheet" href="scripts/hotel-dashboard.css?v=20261023alignment">
+  <link rel="stylesheet" href="scripts/hotel-holiday-dashboard.css?v=20261019fasttabs">
+  <script defer src="scripts/site-shell.js?v=20261106researchtools2"></script>
+  <script defer src="scripts/hotel-metrics.js?v=20261017groupcompare"></script>
+  <script src="scripts/site-charts.js?v=20261025annotations1"></script>
+  <script defer src="scripts/hotel-excel-export.js?v=20261017"></script><script defer src="scripts/hotel-holiday-dashboard.js?v=20261024asof"></script>
+  <link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified">
+  <link rel="stylesheet" href="scripts/site-charts.css?v=20261025annotations1">
+  <link rel="stylesheet" href="scripts/industry-embed.css?v=20261014viewfit">
+  <link rel="stylesheet" href="scripts/site-install.css?v=20261014home"><link rel="stylesheet" href="scripts/site-polish.css?v=20261013clean">
+  <script defer src="scripts/industry-embed.js?v=20261024asof"></script>
+<link rel="manifest" href="site.webmanifest?v=20261025retailservice2"><meta name="theme-color" content="#4d58a4"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="零售&amp;社服数据库"><meta name="apple-mobile-web-app-status-bar-style" content="default"><link rel="apple-touch-icon" href="scripts/assets/app/apple-touch-icon.png?v=20261025retailservice2"><script defer src="scripts/site-install.js?v=20261014home"></script><script defer src="scripts/hotel-group-entry.js?v=20261017groups"></script><link rel="stylesheet" href="scripts/industry-design.css?v=20261024compact"><link rel="stylesheet" href="scripts/dashboard-asof.css?v=20261024compact"><link rel="icon" type="image/svg+xml" href="scripts/assets/brand/sinolink-mark.svg"><link rel="stylesheet" href="scripts/dashboard-toolbar.css?v=20261111"><link rel="stylesheet" href="scripts/workspace-design.css?v=20261111visual">
+
+<link rel="stylesheet" href="scripts/dashboard-compact.css?v=20261113compact2">
 </head>
-<body>
-  <div class="page"><div class="page-wrapper"><main class="page-body"><div class="container-xl"><div class="card"><div class="card-body text-center py-5"><div class="spinner-border text-primary mb-3" role="status"></div><h1 class="h3">国金商社数据库</h1><p class="text-secondary">正在读取数据…</p></div></div></div></main></div></div>
-  <noscript>请启用 JavaScript 查看数据。<a href="data-manifest.json">下载数据目录</a></noscript>
+<body data-dashboard-density="compact" data-design="workspace" class="hotel-page holiday-page site-page">
+<main class="hd-wrap industry-board">
+  <header class="hd-header">
+    <div><a class="hd-back" href="hotel-dashboard.html#view=overview" data-weekly-view="overview">酒店</a><h1>假期数据</h1></div>
+    <div class="hd-updated board-asof" id="asof" aria-live="polite">正在读取数据…</div>
+  </header>
+  <div id="load-error" class="hd-error" role="alert" hidden></div>
+  <div id="holiday-dashboard" hidden>
+    <nav class="hd-tabs site-subnav" aria-label="酒店数据视图">
+      <a class="hd-tab" data-weekly-view="overview" href="hotel-dashboard.html#view=overview">经营概览</a>
+      
+      <a class="hd-tab" data-weekly-view="structure" href="hotel-dashboard.html#view=structure">酒店供给</a>
+      
+      <a class="hd-tab" href="hotel-groups.html?v=20261017groupcompare#view=groups" data-group-entry>酒店集团</a>
+      <a class="hd-tab active" href="hotel-holiday-dashboard.html" aria-current="page">假期数据</a><a class="hd-tab" data-weekly-view="annual" href="hotel-dashboard.html#view=annual">饭店协会</a>
+    <a class="hd-tab" data-weekly-view="cities" href="hotel-dashboard.html#view=cities">城市对比</a>
+</nav>
+    <div class="hd-toolbar board-filters holiday-toolbar">
+      <label>假期 <select id="holiday-select"></select></label>
+      <label>对比维度 <select id="dimension-select"><option value="hotel_tier">酒店档位</option><option value="city_tier">城市线级</option></select></label>
+      <button type="button" class="hd-tab" id="holiday-export">下载假期数据</button><span id="holiday-export-error" role="alert"></span><details class="hd-compare"><summary>期间与对标</summary><div class="hd-compare-body"><p id="period-note"></p></div></details>
+    </div>
+    <section class="hd-kpis board-kpis holiday-kpis" id="holiday-kpis" aria-label="假期日均经营指标"></section>
+    <div class="hd-card board-panel">
+      <div class="hd-card-head board-panel-head"><h2 id="trend-title">假期每日经营</h2><span id="trend-note"></span></div>
+      <div class="hd-chart-controls site-chart-tools holiday-chart-toolbar">
+        <select id="holiday-metric-select" aria-label="经营指标"><option value="revpar">RevPAR</option><option value="occupancy_rate">OCC</option><option value="adr">ADR</option></select>
+        <span data-chart-value-controls></span>
+        <div class="holiday-segments" id="holiday-segments" aria-label="对比对象"></div>
+      </div>
+      <p class="hd-chart-caption" id="trend-caption"></p>
+      <div class="hd-chart board-chart holiday-chart" id="holiday-chart" role="img" aria-label="本期与对标期每日酒店经营数据比较"></div>
+    </div>
+    <div class="hd-card board-panel">
+      <div class="hd-card-head board-panel-head"><h2>分组经营对比</h2><span>假期日均 · 按假期第几天对齐</span></div>
+      <div class="hd-table-scroll" tabindex="0" aria-label="分组经营对比表，可左右滚动"><table class="hd-table board-table" id="summary-table"></table></div>
+    </div>
+    <details class="hd-detail hd-card board-detail holiday-daily-detail">
+      <summary>每日数据明细</summary>
+      <div class="hd-table-scroll" tabindex="0" aria-label="每日酒店经营数据，可左右滚动"><table class="hd-table board-table" id="daily-table"></table></div>
+    </details>
+    <details class="hd-card board-panel holiday-overview-panel"><summary>全部假期概览</summary>
+      <div class="hd-table-scroll" tabindex="0" aria-label="五大假期经营概览，可左右滚动"><table class="hd-table board-table" id="holiday-overview-table"></table></div>
+    </details>
+    <footer class="hd-footer">来源：酒店之家 · 假期日期按源表保留，年度对照按假期日序对齐</footer>
+  </div>
+</main>
 </body>
 </html>
+
+
+
+

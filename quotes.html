@@ -1,40 +1,45 @@
-<!DOCTYPE html>
-<html lang="zh-CN" data-bs-theme="light">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#066fd1">
-  <meta name="description" content="国金商社零售与社会服务研究数据库。行业经营、宏观数据、重点公司、观点纪要与每日研究。">
-  <title>国金商社数据库</title>
-  <link rel="icon" type="image/svg+xml" href="scripts/assets/brand/sinolink-mark.svg">
-  <link rel="stylesheet" href="scripts/vendor/tabler/tabler.min.css?v=1.7.5">
-  <link rel="stylesheet" href="scripts/tabler-app/app.css?v=20261125">
-  <script>try{document.documentElement.dataset.bsTheme=localStorage.getItem('guojin-tabler-theme')==='dark'?'dark':'light';}catch(e){}</script>
-  <script defer src="scripts/vendor/tabler/tabler.min.js?v=1.7.5"></script>
-  <script defer src="scripts/zsxq-content.js"></script>
-  <script defer src="scripts/research-model.js"></script>
-  <script defer src="scripts/research-library-model.js"></script>
-  <script defer src="scripts/daily-announcements.js"></script>
-  <script defer src="scripts/domestic-hotels-model.js"></script>
-  <script defer src="scripts/overseas-hotels-model.js"></script>
-  <script defer src="scripts/company-database-model.js"></script>
-  <script defer src="scripts/company-overview-model.js"></script>
-  <script defer src="scripts/quotes/quotes-model.js"></script>
-  <script defer src="scripts/quotes/quotes-poller.js"></script>
-  <script defer src="scripts/market-kline.js"></script>
-  <script defer src="scripts/calendar/earnings-calendar-model.js"></script>
-  <script defer src="scripts/calendar/important-calendar-model.js"></script>
-  <script defer src="scripts/hotel-metrics.js"></script>
-  <script defer src="scripts/hotel-groups-model.js"></script>
-  <script defer src="scripts/travel-model.js"></script>
-  <script defer src="scripts/cruise-analysis-model.js"></script>
-  <script defer src="scripts/dining-model.js"></script>
-  <script defer src="scripts/dutyfree-korea-model.js"></script>
-  <script type="module" src="scripts/tabler-app/app.js?v=20261125"></script>
-</head>
-<body>
-  <div class="page"><div class="page-wrapper"><main class="page-body"><div class="container-xl"><div class="card"><div class="card-body text-center py-5"><div class="spinner-border text-primary mb-3" role="status"></div><h1 class="h3">国金商社数据库</h1><p class="text-secondary">正在读取数据…</p></div></div></div></main></div></div>
-  <noscript>请启用 JavaScript 查看数据。<a href="data-manifest.json">下载数据目录</a></noscript>
-</body>
-</html>
+<!doctype html>
+<html lang="zh-CN"><head><script src="scripts/chart-annotations.js?v=20261025annotations1"></script><script src="scripts/chart-period.js?v=20261022dates"></script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preload" href="data/coverage-companies.json" as="fetch" crossorigin="anonymous">
+<link rel="preconnect" href="https://qt.gtimg.cn"><link rel="preconnect" href="https://web.ifzq.gtimg.cn">
+<meta name="description" content="国金商社行情工作台：腾讯报价、覆盖公司、行业分组和走势与研究联动。">
+<title>实时行情 · 零售&amp;社服数据库</title><script defer src="scripts/site-ui.js?v=20261106researchtools1"></script>
+<link rel="stylesheet" href="scripts/site.css?v=20261025retailservice2">
+<script defer src="scripts/site-data.js?v=20261022dates"></script><script defer src="scripts/market-kline.js?v=20261012focused74"></script>
+<script defer src="scripts/site-charts.js?v=20261025annotations1"></script>
+<script defer src="scripts/quotes/quotes-model.js?v=20261012balanced"></script><script defer src="scripts/site-shell.js?v=20261106researchtools2"></script><script defer src="scripts/quotes/quotes-poller.js?v=2"></script><script defer src="scripts/quotes/quotes.js?v=20261026gold"></script>
+<link rel="stylesheet" href="scripts/quotes/gold-quotes.css?v=20261027london"><script defer src="scripts/quotes/gold-quotes.js?v=20261027london"></script><link rel="stylesheet" href="scripts/quotes/quotes.css?v=20261024baseline"><link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-charts.css?v=20261025annotations1"><link rel="stylesheet" href="scripts/site-install.css?v=20261014home"><link rel="stylesheet" href="scripts/site-polish.css?v=20261012spacing"><link rel="manifest" href="site.webmanifest?v=20261025retailservice2"><meta name="theme-color" content="#4d58a4"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="零售&amp;社服数据库"><meta name="apple-mobile-web-app-status-bar-style" content="default"><link rel="apple-touch-icon" href="scripts/assets/app/apple-touch-icon.png?v=20261025retailservice2"><script defer src="scripts/site-install.js?v=20261014home"></script><link rel="icon" type="image/svg+xml" href="scripts/assets/brand/sinolink-mark.svg"><link rel="stylesheet" href="scripts/workspace-design.css?v=20261111visual">
+</head><body class="site-page" data-design="workspace"><main id="main">
+<nav id="quote-market-tabs" class="quotes-market-tabs site-subnav" aria-label="行情品种"><button type="button" data-quote-market="stock" aria-pressed="true">股票行情</button><button type="button" data-quote-market="gold" aria-pressed="false">黄金价格</button></nav>
+<section id="gold-market" class="quotes-gold-panel" aria-label="黄金价格" data-state="idle" hidden>
+<div class="quotes-gold-head"><div><h2 id="gold-title">伦敦金现</h2><p id="gold-meta">XAU/USD · OANDA 报价 · 美元/金衡盎司</p></div><div class="quotes-gold-actions"><a id="gold-source" href="https://www.tradingview.com/symbols/XAUUSD/?exchange=OANDA" target="_blank" rel="noopener noreferrer">来源 ↗</a><button id="gold-refresh" type="button" class="quotes-text-button">刷新图表</button></div></div>
+<div id="gold-periods" aria-label="金价走势周期"><button type="button" data-gold-period="D" aria-pressed="true">日K</button><button type="button" data-gold-period="W" aria-pressed="false">周K</button><button type="button" data-gold-period="M" aria-pressed="false">月K</button></div>
+<p id="gold-state" class="quotes-gold-state" role="status">正在连接金价 K 线…</p><button id="gold-retry" type="button" class="portal-button" hidden>重试</button><div id="gold-widget"></div>
+</section><div id="stock-market">
+
+
+<div id="status" class="quotes-status" role="status" aria-live="polite">正在读取覆盖公司…</div>
+<div id="content" hidden>
+<section id="benchmarks" class="quotes-benchmarks" aria-label="市场指数"></section>
+<div class="quotes-workspace" id="workspace">
+<section class="quotes-board" aria-labelledby="board-title">
+<div class="quotes-board-head"><div><h2 id="board-title">全部覆盖</h2><p id="range-summary"></p></div><div class="quotes-view site-subnav" id="views" aria-label="展示方式"><button type="button" data-view="heat" aria-pressed="true">公司热力图</button><button type="button" data-view="sector" aria-pressed="false">板块热力图</button><button type="button" data-view="list" aria-pressed="false">列表</button></div></div>
+<div id="list-view" class="quotes-table-wrap"><div class="quotes-table-scroll" id="table-scroll"><table class="quotes-table" id="quote-table"><thead id="table-head"></thead><tbody id="rows"></tbody></table></div></div>
+<div id="heat-view" hidden><div class="quotes-heat-legend" aria-label="涨跌颜色：绿跌红涨，颜色越深幅度越大"><span>−5%及以下</span><i></i><span>0</span><i></i><span>+5%及以上</span></div><p id="sector-heat-note" class="quotes-sector-note" hidden>板块等权涨跌幅</p><div id="sector-heatmap" class="quotes-sector-heatmap" aria-label="板块等权涨跌热力图" hidden></div><div id="heatmap" class="quotes-heatmap" aria-label="覆盖公司涨跌热力图"></div><div class="quotes-heat-pagination" id="heat-pagination" hidden><button type="button" id="heat-previous" aria-label="上一页公司">← 上一页</button><span id="heat-page-label"></span><button type="button" id="heat-next" aria-label="下一页公司">下一页 →</button></div></div><div id="list-note" class="quotes-list-note"></div>
+</section>
+<section id="quote-detail" class="quotes-detail" aria-labelledby="quote-title" hidden>
+<div class="quotes-detail-head"><div><p class="eyebrow">价格走势</p><h2 id="quote-title"></h2><p id="quote-subtitle"></p></div></div>
+<div class="quotes-detail-nav"><span id="detail-position"></span><div><button id="previous-company" type="button" aria-label="上一家公司">←</button><button id="next-company" type="button" aria-label="下一家公司">→</button><button id="back-list" class="quotes-back-list" type="button">返回列表 ↑</button></div></div>
+<div id="quote-overview" class="quotes-overview"></div>
+<div class="quotes-chart-head"><div class="quotes-periods" id="periods" aria-label="走势周期"><button type="button" data-period="minute" aria-pressed="false">分时</button><button type="button" data-period="day" aria-pressed="true">日K</button><button type="button" data-period="week" aria-pressed="false">周K</button></div><button class="quotes-text-button" id="chart-retry" type="button">刷新走势</button></div>
+<div class="quotes-chart-options"><label><input type="checkbox" id="show-ma" checked> MA5 / MA20</label><select id="chart-window" aria-label="日K范围"><option value="20">近1个月</option><option value="60" selected>近3个月</option><option value="120">近6个月</option></select></div>
+<p id="chart-status" class="quotes-context" role="status"></p><div id="chart-readout" class="quotes-chart-readout" aria-live="off"></div><div id="chart" aria-busy="false"></div><p id="chart-detail" class="quotes-context"></p>
+<div class="quotes-detail-links"><a id="industry-link">行业数据 →</a><a id="provider-link" target="_blank" rel="noopener">腾讯自选股 ↗</a></div>
+</section><div id="detail-empty" class="quotes-detail-empty" hidden>选择公司查看走势</div>
+</div>
+
+<p class="quotes-context quotes-footnote">本币报价 · 涨跌幅较前收盘 · 报价可能延迟</p>
+<details class="quotes-source"><summary>数据来源</summary><p>腾讯行情 · 1秒请求间隔 · 后台暂停 · 更新以来源时间为准 · 失败保留原报价</p><p>均线与复权口径见走势标注</p><a href="https://gu.qq.com/" target="_blank" rel="noopener">腾讯自选股 ↗</a></details>
+</div><p id="preference-status" class="quotes-preference-status" role="status" aria-live="polite" hidden></p>
+</div></main></body></html>
