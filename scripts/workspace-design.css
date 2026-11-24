@@ -140,3 +140,10 @@ body.site-page[data-design=workspace][data-design] .hd-supply-breakdowns .hd-car
 }
 
 @media(prefers-reduced-motion:reduce){body.site-page[data-design=workspace][data-design] *{scroll-behavior:auto!important;transition:none!important}}
+
+@media screen{
+ body.site-page[data-design=workspace][data-design]{--ui-gap:16px;--ui-section:20px;--ui-radius:8px;--ui-control-radius:6px;background-color:#f6f7f9}
+ body.site-page[data-design=workspace][data-design] :is(.board-panel,.hd-card,.travel-panel,.cruise-panel,.dining-panel,.gj-card){background-color:#fff;border-color:#e4e8ec;box-shadow:0 1px 3px #1b344208}
+ body.site-page[data-design=workspace][data-design] .site-main table thead th{background-color:#f2f5f8;color:#34495c}
+ body.site-page[data-design=workspace][data-design] .site-main tbody tr:hover td{background-color:#f3f7fa}
+}
