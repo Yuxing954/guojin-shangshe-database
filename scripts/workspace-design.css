@@ -140,3 +140,23 @@ body.site-page[data-design=workspace][data-design] .hd-supply-breakdowns .hd-car
 }
 
 @media(prefers-reduced-motion:reduce){body.site-page[data-design=workspace][data-design] *{scroll-behavior:auto!important;transition:none!important}}
+
+/* Financial tables: keep the observation name in view when comparing periods. */
+@media screen{
+ body.site-page[data-design=workspace] .site-table-scroll > :is(.board-table,.oh-table,.dh-table) {
+   font-variant-numeric:tabular-nums lining-nums;
+   --reading-row:#fff;
+ }
+ body.site-page[data-design=workspace] .site-table-scroll > :is(.board-table,.oh-table,.dh-table) tr:focus-within {--reading-row:#edf4fa}
+ body.site-page[data-design=workspace] .site-table-scroll > :is(.board-table,.oh-table,.dh-table) tr > :first-child:not([colspan]) {
+   position:sticky;inset-inline-start:0;z-index:1;background-color:var(--reading-row);
+   box-shadow:inset -1px 0 var(--site-line);
+ }
+ body.site-page[data-design=workspace] .site-table-scroll > :is(.board-table,.oh-table,.dh-table) thead tr > :first-child:not([colspan]) {
+   background-color:#edf3f8;z-index:2;
+ }
+}
+@media (hover:hover){
+ body.site-page[data-design=workspace] .site-table-scroll > :is(.board-table,.oh-table,.dh-table) tbody tr:hover {--reading-row:#edf4fa}
+ body.site-page[data-design=workspace] .site-table-scroll > :is(.board-table,.oh-table,.dh-table) tbody tr:hover > td {background-color:var(--reading-row)}
+}

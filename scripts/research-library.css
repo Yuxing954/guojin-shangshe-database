@@ -55,3 +55,22 @@
     grid-template-columns:minmax(0,1fr) auto;
   }
 }
+
+/* Minutes are read by title first, then date and download availability. */
+.site-page .minute-name .minute-title {font-size:15px;line-height:1.55;font-weight:600}
+.site-page .minute-name {gap:4px 8px}
+.site-page .minute-extension {font-size:11px;line-height:1.4}
+.site-page .minute-date {font-variant-numeric:tabular-nums;color:#40556d}
+.site-page .minute-date small {font-size:11px;color:#596c80}
+.site-page .minute-row-actions :is(.minute-download,.research-read) {
+ display:inline-flex;align-items:center;justify-content:center;font-size:13px;min-height:36px;box-sizing:border-box;
+}
+.site-page #results .minute-table tbody tr:focus-within {background:#f1f6fa}
+@media(min-width:761px){
+ .site-page .minute-table thead th {font-size:13px;font-weight:600;color:#41556a;background:#edf3f8}
+ .site-page .minute-table td {font-size:14px}
+}
+@media(max-width:760px){
+ .site-page .minute-row-actions :is(.minute-download,.research-read){min-height:44px}
+ .site-page .minute-table tr {gap:7px 12px}
+}
