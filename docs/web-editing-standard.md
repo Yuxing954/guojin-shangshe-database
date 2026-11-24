@@ -43,6 +43,14 @@
 
 ## 维护依据
 
+### 客户工作台入口（2026-11-25）
+
+- 默认入口为 `workspace.html`，以真实行业指标、趋势、研究记录和数据期间构成总览；旧行业书签继续保留筛选与锚点。
+- 行业父页使用左侧行业目录，1100px 以下转为横向目录；业务 iframe 继续维护各自的图表、来源和 URL 状态。
+- 公司页采用公司目录与研究区两栏，分别支持打开单家公司和多公司比较；观点纪要采用筛选侧栏、资料列表与右侧阅读抽屉。
+- 共用品牌、六项主导航与顶栏全库搜索。修改运行时导航后运行 `node scripts/sync-site-shell.cjs`，同步已有静态首屏，继续验收首次加载前后的布局稳定。
+- 新首页运行 `tests/client-dashboard.browser.cjs`，核对真实数据、期间/单位、导出范围、来源、缺失与局部失败重试；共享布局继续执行五宽度及原有业务检查。
+
 [仓库编辑入口](https://github.com/Yuxing954/guojin-shangshe-database/blob/main/AGENTS.md) · [全站显示规范](https://github.com/Yuxing954/guojin-shangshe-database/blob/main/docs/site-presentation.md) · [工作台公共样式](https://github.com/Yuxing954/guojin-shangshe-database/blob/main/scripts/workspace-design.css) · [紧凑看板](https://github.com/Yuxing954/guojin-shangshe-database/blob/main/scripts/dashboard-compact.css) · [筛选栏](https://github.com/Yuxing954/guojin-shangshe-database/blob/main/scripts/dashboard-toolbar.css) · [图表交互](https://github.com/Yuxing954/guojin-shangshe-database/blob/main/docs/chart-interactions.md) · [浏览器布局检查](https://github.com/Yuxing954/guojin-shangshe-database/blob/main/tests/site-unification.browser.cjs)
 
 编写依据为 2026-11-20 查阅的仓库主分支。后续有明确改版时，同步更新相应规则、母版和验收样本。
