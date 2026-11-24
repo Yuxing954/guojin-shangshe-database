@@ -21,7 +21,7 @@ const number=(value,precision)=>value.toLocaleString('zh-CN',{minimumFractionDig
  const base=process.env.CLIENT_BASE_URL||'http://127.0.0.1:'+server.address().port;
  const browser=await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_CHANNEL?{channel:process.env.PLAYWRIGHT_CHANNEL}:{})});
  const context=await browser.newContext({viewport:{width:1440,height:1000},acceptDownloads:true}),page=await context.newPage(),errors=[];
- page.on('pageerror',error=>errors.push(error.message));
+ page.on('pageerror',error=>{errors.push(error.message);console.error('BROWSER',error.message);});
  try{
   await page.goto(base+'/workspace.html');
   await page.waitForFunction(()=>document.querySelectorAll('.client-kpi [data-source]').length===4);
