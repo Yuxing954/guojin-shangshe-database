@@ -51,10 +51,15 @@ class IndustrySnapshotTests(unittest.TestCase):
         self.assertEqual(latest_sales['changeCalculation']['priorSourceId'], prior['sourceId'])
         self.assertNotIn('changeSourceId', latest_sales)
 
+    def value_at(self, metric, period):
+        return next(p['value'] for p in self.metrics[metric]['points'] if p['period'] == period)
+
     def test_monthly_and_cumulative_rates_are_not_interchanged(self):
-        self.assertEqual(self.metrics['dining_revenue_yoy']['points'][-1]['value'], 1.1)
-        self.assertEqual(self.metrics['dining_revenue']['points'][-1]['value'], 4544)
-        self.assertEqual(self.metrics['dining_above_yoy']['points'][-1]['value'], -0.7)
+        self.assertEqual(self.value_at('dining_revenue', '2026-10'), 5235)
+        self.assertEqual(self.value_at('dining_revenue_yoy', '2026-10'), 0.7)
+        self.assertEqual(self.value_at('dining_revenue_yoy', '2026-08'), 1.1)
+        self.assertEqual(self.value_at('dining_revenue', '2026-08'), 4544)
+        self.assertEqual(self.value_at('dining_above_yoy', '2026-08'), -0.7)
 
     def test_january_is_missing_and_february_is_a_combined_period(self):
         points = self.metrics['dining_revenue']['points']
@@ -65,9 +70,9 @@ class IndustrySnapshotTests(unittest.TestCase):
         self.assertEqual(february['basis'], 'combined')
 
     def test_primary_disclosures_preserve_their_precision(self):
-        self.assertEqual(self.metrics['gold_price']['points'][-1]['value'], 907.32)
-        self.assertEqual(self.metrics['gold_retail']['points'][-1]['value'], 247)
-        self.assertEqual(self.metrics['gold_jewelry_volume']['points'][-1]['value'], 132.133)
+        self.assertEqual(self.value_at('gold_price', '2026-09-30'), 907.32)
+        self.assertEqual(self.value_at('gold_retail', '2026-08'), 247)
+        self.assertEqual(self.value_at('gold_jewelry_volume', '2026-Q2'), 132.133)
         self.assertTrue(any(r['metricId'] == 'gold_price' and r['period'] == '2026-09-30' and r['previousValue'] == 907.3 for r in self.data['revisions']))
 
     def test_retired_sector_does_not_return_after_build(self):
