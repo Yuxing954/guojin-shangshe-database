@@ -257,8 +257,8 @@
       "name": "消费宏观官方披露数据",
       "file": "data/consumption-macro/observations.json",
       "category": "宏观数据",
-      "asOf": "2026-10-09",
-      "rowCount": 1366,
+      "asOf": "2026-11-16",
+      "rowCount": 1472,
       "updateRecord": "data/consumption-macro/sources.json",
       "evidence": "data/consumption-macro/evidence.json",
       "page": "macro.html?view=indicators"
@@ -294,8 +294,8 @@
       "file": "data/sectors/dining.json",
       "category": "行业数据",
       "page": "industry.html#dining",
-      "asOf": "2026-10-10",
-      "rowCount": 1165,
+      "asOf": "2026-11-24",
+      "rowCount": 1181,
       "updateScript": "scripts/update_sector_data.py",
       "evidence": "data/sectors/reviewed.json",
       "coverage": "docs/sector-construction.md"
@@ -305,9 +305,9 @@
       "name": "长江三峡游轮月度运行数据",
       "file": "data/tourism/three-gorges-cruises.csv",
       "category": "旅游",
-      "asOf": "2026-09",
-      "latestPeriod": "2026-09",
-      "rowCount": 66,
+      "asOf": "2026-10",
+      "latestPeriod": "2026-10",
+      "rowCount": 68,
       "updateRecord": "data/tourism/three-gorges-cruises.json"
     },
     {
