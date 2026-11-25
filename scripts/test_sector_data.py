@@ -12,18 +12,16 @@ from update_sector_data import ROOT, build, choice_receipt, dates, parse_us, rea
 class SectorDataTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.data = build()
+        cls.data = build(cutoff='2026-10-10')
 
     def test_retained_histories_and_units(self):
         metrics = {m['id']: m for d in self.data.values() for m in d['metrics']}
-        def august(metric):
-            return next(point for point in metrics[metric]['points'] if point['period'] == '2026-08')
         self.assertEqual(len(metrics['crossborder_scfi']['points']), 333)
-        self.assertEqual(august('dining_revenue_ytd')['value'], 37366)
-        self.assertEqual(august('dining_revenue_ytd')['quality'], 'official')
-        self.assertEqual(august('dining_revenue')['value'], 4544)
-        self.assertEqual(august('dining_revenue_yoy')['value'], 1.1)
-        self.assertEqual(august('dining_above_yoy')['value'], -.7)
+        self.assertEqual(metrics['dining_revenue_ytd']['points'][-1]['value'], 37366)
+        self.assertEqual(metrics['dining_revenue_ytd']['points'][-1]['quality'], 'official')
+        self.assertEqual(metrics['dining_revenue']['points'][-1]['value'], 4544)
+        self.assertEqual(metrics['dining_revenue_yoy']['points'][-1]['value'], 1.1)
+        self.assertEqual(metrics['dining_above_yoy']['points'][-1]['value'], -.7)
         self.assertEqual(metrics['us_ecommerce_sa']['points'][-1]['value'], 3402.44)
         self.assertEqual(metrics['crossborder_trade']['points'][-1]['value'], 27500)
         self.assertNotIn('change', metrics['crossborder_trade']['points'][-1])
@@ -108,7 +106,7 @@ class SectorDataTests(unittest.TestCase):
             seed = read(path)
             seed['companyObservations'] = []
             path.write_text(json.dumps(seed, ensure_ascii=False), encoding='utf-8')
-            result = build(root)
+            result = build(root, '2026-10-10')
             for sid in ('dining','overseas'):
                 self.assertEqual(result[sid]['companyObservations'], self.data[sid]['companyObservations'])
 

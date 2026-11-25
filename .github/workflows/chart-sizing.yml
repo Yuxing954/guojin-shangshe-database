@@ -1,35 +1,33 @@
-# Browser interactions are checked once by tabler-integration.yml.
-# This workflow retains its original data, import, and model validation gates.
 name: Check chart sizing
-'on':
+on:
   pull_request:
-    paths:
-    - scripts/site-charts.js
-    - scripts/regional-retail-charts.js
-    - dutyfree-dashboard.html
-    - tests/chart-sizing.browser.cjs
-    - tests/site-paired.test.cjs
-    - .github/workflows/chart-sizing.yml
+    paths: ['scripts/site-charts.js', 'scripts/regional-retail-charts.js', 'dutyfree-dashboard.html', 'tests/chart-sizing.browser.cjs', 'tests/site-paired.test.cjs', '.github/workflows/chart-sizing.yml']
   push:
-    branches:
-    - main
-    paths:
-    - scripts/site-charts.js
-    - scripts/regional-retail-charts.js
-    - dutyfree-dashboard.html
-    - tests/chart-sizing.browser.cjs
-    - tests/site-paired.test.cjs
-    - .github/workflows/chart-sizing.yml
-  workflow_dispatch: null
+    branches: [main]
+    paths: ['scripts/site-charts.js', 'scripts/regional-retail-charts.js', 'dutyfree-dashboard.html', 'tests/chart-sizing.browser.cjs', 'tests/site-paired.test.cjs', '.github/workflows/chart-sizing.yml']
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
   chart-sizing:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: '22'
-    - run: |
-        node --test tests/site-paired.test.cjs
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: |
+          node --test tests/site-paired.test.cjs
+          npm install --no-save --package-lock=false playwright@1.62.1
+          if command -v google-chrome >/dev/null 2>&1; then
+            echo 'PLAYWRIGHT_CHANNEL=chrome' >> "$GITHUB_ENV"
+          else
+            npx playwright install --with-deps chromium
+          fi
+      - run: node tests/chart-sizing.browser.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: chart-size-previews
+          path: artifacts/chart-sizing
+          if-no-files-found: ignore

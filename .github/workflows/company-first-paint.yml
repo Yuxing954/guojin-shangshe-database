@@ -1,0 +1,15 @@
+name: Company first paint
+on:
+  pull_request:
+    paths: ['company-database.html', 'overseas-hotels.html', 'scripts/site-shell.js', 'tests/company-first-paint.browser.cjs', '.github/workflows/company-first-paint.yml']
+jobs:
+  first-paint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-save --package-lock=false playwright
+      - run: npx playwright install --with-deps chromium
+      - run: node tests/company-first-paint.browser.cjs

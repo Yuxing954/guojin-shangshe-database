@@ -2,14 +2,14 @@
 const {chromium}=require('playwright'),fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const root=path.resolve(__dirname,'..');
 const server=require('node:http').createServer((req,res)=>{const file=path.resolve(root,'.'+decodeURIComponent(req.url.split('?')[0]));if(!file.startsWith(root+path.sep)){res.writeHead(403).end();return;}fs.readFile(file,(e,b)=>{if(e){res.writeHead(404).end();return;}res.writeHead(200,{'Content-Type':{'.html':'text/html; charset=utf-8','.js':'text/javascript','.css':'text/css','.json':'application/json'}[path.extname(file)]||'text/plain'}).end(b);});});
-const files=['macro.html','regional-retail.html','industry.html','scripts/macro-design.css','scripts/hub-navigation.css','scripts/industry-client.css','scripts/regional-retail.css','scripts/site-shell.js'];
+const files=['macro.html','regional-retail.html','industry.html','scripts/macro-design.css','scripts/hub-navigation.css','scripts/regional-retail.css','scripts/site-shell.js'];
 (async()=>{
  await new Promise(r=>server.listen(0,'127.0.0.1',r));const base=process.env.HUB_BASE_URL||'http://127.0.0.1:'+server.address().port;
  const browser=await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_CHANNEL?{channel:process.env.PLAYWRIGHT_CHANNEL}:{})});
  const context=await browser.newContext();
  if(process.env.HUB_OVERLAY==='1')for(const file of files)await context.route(base+'/'+file+'*',r=>r.fulfill({path:path.join(root,file),contentType:file.endsWith('.html')?'text/html; charset=utf-8':file.endsWith('.css')?'text/css':'text/javascript'}));
  const page=await context.newPage();
- const read=()=>page.locator('.hub-navigation').evaluate(e=>{const b=e.getBoundingClientRect(),active=e.querySelector('[aria-current=page],[aria-pressed=true]'),theme=getComputedStyle(document.documentElement),vertical=e.id==='sector-tabs'&&innerWidth>1100;const tokenColor=name=>{const value=theme.getPropertyValue(name).trim();return /^#[\da-f]{6}$/i.test(value)?'rgb('+value.slice(1).match(/../g).map(n=>parseInt(n,16)).join(', ')+')':value;};return {x:b.x,y:b.y,w:b.width,h:b.height,color:getComputedStyle(active).color,line:getComputedStyle(active)[vertical?'borderLeftColor':'borderBottomColor'],bg:getComputedStyle(document.body).backgroundColor,primary:tokenColor('--tblr-primary'),bodyBackground:tokenColor('--tblr-body-bg'),aside:document.querySelectorAll('body>.site-nav').length,items:[...e.children].map(n=>{const r=n.getBoundingClientRect();return {x:r.x,y:r.y,w:r.width,h:r.height,font:getComputedStyle(n).fontSize};})};});
+ const read=()=>page.locator('.hub-navigation').evaluate(e=>{const b=e.getBoundingClientRect(),s=getComputedStyle(e),active=e.querySelector('[aria-current=page],[aria-pressed=true]');return {x:b.x,y:b.y,w:b.width,h:b.height,color:getComputedStyle(active).color,line:getComputedStyle(active).borderBottomColor,bg:getComputedStyle(document.body).backgroundColor,aside:document.querySelectorAll('body>.site-nav').length,items:[...e.children].map(n=>{const r=n.getBoundingClientRect();return {x:r.x,y:r.y,w:r.width,h:r.height,font:getComputedStyle(n).fontSize};})};});
  try{
  for(const width of [1920,1440,1024,768,390]){
   await page.setViewportSize({width,height:1000});let baseline;
@@ -18,34 +18,14 @@ const files=['macro.html','regional-retail.html','industry.html','scripts/macro-
    let releaseShell;const shellGate=new Promise(resolve=>{releaseShell=resolve;});
    await page.route('**/scripts/site-shell.js*',async r=>{await shellGate;await r.fallback();});
    await page.goto(base+'/'+file,{waitUntil:'commit'});await page.locator('.hub-navigation').waitFor();await page.waitForFunction(()=>[...document.querySelectorAll('link[rel=stylesheet]')].every(link=>link.sheet),null,{timeout:30000});const early=await read();releaseShell();await page.waitForLoadState('load');const ready=await read();await page.unroute('**/scripts/site-shell.js*');
-   assert.deepEqual(ready,early,file+' initial layout shift');assert.equal(ready.aside,1);assert.equal(ready.color,ready.primary,file+' selected color follows Tabler primary');assert.equal(ready.line,ready.color);assert.equal(ready.bg,ready.bodyBackground,file+' background follows Tabler body');
+   assert.deepEqual(ready,early,file+' initial layout shift');assert.equal(ready.aside,1);assert.equal(ready.color,'rgb(33, 93, 145)');assert.equal(ready.line,ready.color);assert.equal(ready.bg,'rgb(245, 247, 251)');
    if(file!=='industry.html'){const icons=page.locator('#macro-navigation .industry-sector-icon svg');assert.equal(await icons.count(),4);assert.ok((await icons.evaluateAll(es=>es.map(e=>({width:e.getBoundingClientRect().width,height:e.getBoundingClientRect().height,stroke:e.getAttribute('stroke-width'),hidden:e.getAttribute('aria-hidden')})))).every(i=>i.width===18&&i.height===18&&i.stroke==='1.6'&&i.hidden==='true'));}
-   const geometry=({x,y,w,h,color,line,bg})=>({x,y,w,h,color,line,bg});
-   if(file!=='industry.html'){
-    if(!baseline)baseline=geometry(ready);else assert.deepEqual(geometry(ready),baseline,file+' position/color');
-    assert.ok(ready.items.every(b=>Math.abs(b.h-ready.h)<1&&b.x>=ready.x-1&&b.x+b.w<=ready.x+ready.w+1));
-   }else{
-    // The industry directory is deliberately a vertical rail on desktop and a
-    // responsive grid below 1100px. Its own first-paint geometry remains stable.
-    assert.equal(ready.items.length,6,'all current industry sectors');
-    assert.ok(ready.items.every(b=>b.x>=ready.x-1&&b.x+b.w<=ready.x+ready.w+1&&b.y>=ready.y-1&&b.y+b.h<=ready.y+ready.h+1),'directory items stay inside their container');
-    const stage=await page.locator('#industry-stage').boundingBox();
-    if(width>1100){
-     assert.ok(ready.items.every((b,i)=>i===0||b.y>ready.items[i-1].y),'desktop industry directory is vertical');
-     assert.ok(stage.x>=ready.x+ready.w,'analytical content is beside the directory');
-     assert.ok(stage.width>ready.w*4,'analytical content keeps the main workspace width');
-    }else{
-     assert.ok(stage.y>=ready.y+ready.h,'narrow directory precedes analytical content');
-     assert.ok(Math.abs(stage.x-ready.x)<2&&Math.abs(stage.width-ready.w)<3,'narrow directory and analytical content share their boundary');
-     assert.equal(new Set(ready.items.map(b=>Math.round(b.y))).size,width<=600?2:1,'responsive directory rows');
-    }
-    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false,'industry directory does not overflow the page');
-   }
-   assert.ok(Math.max(...ready.items.map(b=>b.w))-Math.min(...ready.items.map(b=>b.w))<1);
+   const geometry=({x,y,w,h,color,line,bg})=>({x,y,w,h,color,line,bg});if(!baseline)baseline=geometry(ready);else assert.deepEqual(geometry(ready),baseline,file+' position/color');
+   assert.ok(ready.items.every(b=>Math.abs(b.h-ready.h)<1&&b.x>=ready.x-1&&b.x+b.w<=ready.x+ready.w+1));assert.ok(Math.max(...ready.items.map(b=>b.w))-Math.min(...ready.items.map(b=>b.w))<1);
    if(process.env.HUB_SCREENSHOT_DIR&&[1440,390].includes(width)){fs.mkdirSync(process.env.HUB_SCREENSHOT_DIR,{recursive:true});await page.screenshot({path:path.join(process.env.HUB_SCREENSHOT_DIR,file.replace('.html','')+'-'+width+'.png')});}
-   if(file==='industry.html')for(const key of ['dutyfree','travel','tourism','dining','recruitment','hotel']){await page.locator('#sector-tabs [data-key='+key+']').click();await page.waitForFunction(k=>document.querySelector('#sector-tabs [aria-pressed=true]')?.dataset.key===k,key);assert.deepEqual(await read(),ready);}
+   if(file==='industry.html')for(const key of ['dutyfree','travel','tourism','dining','hotel']){await page.locator('#sector-tabs [data-key='+key+']').click();await page.waitForFunction(k=>document.querySelector('#sector-tabs [aria-pressed=true]')?.dataset.key===k,key);assert.deepEqual(await read(),ready);}
   }
-  await page.goto(base+'/macro.html');await page.locator('[data-macro-section=consumption]').click();await page.locator('[data-macro-subnav=consumption] a[href="regional-retail.html"]').click();await page.waitForLoadState('load');const selected=await read();assert.equal(selected.color,selected.primary,'retail selection follows Tabler primary');assert.equal(await page.evaluate(()=>scrollY),0);
+  await page.goto(base+'/macro.html');await page.locator('[data-macro-section=consumption]').click();await page.locator('[data-macro-subnav=consumption] a[href="regional-retail.html"]').click();await page.waitForLoadState('load');assert.equal((await read()).color,'rgb(33, 93, 145)');assert.equal(await page.evaluate(()=>scrollY),0);
   console.log('PASS shared macro/regional/industry navigation, first paint and colors:',width);
  }
  }finally{await browser.close();server.close();}

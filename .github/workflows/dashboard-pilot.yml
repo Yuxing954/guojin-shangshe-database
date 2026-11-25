@@ -1,0 +1,23 @@
+name: Dashboard pilot
+on:
+  pull_request:
+    paths: ['hotel-dashboard.html', 'dutyfree-dashboard.html', 'macro.html', 'scripts/site-charts.*', 'scripts/macro-clarity.css', 'scripts/dutyfree-typography.css', 'tests/dashboard-pilot.browser.cjs', '.github/workflows/dashboard-pilot.yml']
+  push:
+    branches: [main]
+    paths: ['hotel-dashboard.html', 'dutyfree-dashboard.html', 'macro.html', 'scripts/site-charts.*', 'scripts/macro-clarity.css', 'scripts/dutyfree-typography.css', 'tests/dashboard-pilot.browser.cjs', '.github/workflows/dashboard-pilot.yml']
+permissions:
+  contents: read
+jobs:
+  dashboard-pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --prefix /tmp/dashboard-pilot playwright@1.58.2
+      - run: /tmp/dashboard-pilot/node_modules/.bin/playwright install --with-deps chromium
+      - run: node tests/dashboard-pilot.browser.cjs
+        env:
+          NODE_PATH: /tmp/dashboard-pilot/node_modules
