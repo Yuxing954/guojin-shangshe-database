@@ -1,40 +1,64 @@
-<!DOCTYPE html>
-<html lang="zh-CN" data-bs-theme="light">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#066fd1">
-  <meta name="description" content="国金商社零售与社会服务研究数据库。行业经营、宏观数据、重点公司、观点纪要与每日研究。">
-  <title>国金商社数据库</title>
-  <link rel="icon" type="image/svg+xml" href="scripts/assets/brand/sinolink-mark.svg">
-  <link rel="stylesheet" href="scripts/vendor/tabler/tabler.min.css?v=1.7.5">
-  <link rel="stylesheet" href="scripts/tabler-app/app.css?v=20261125">
-  <script>try{document.documentElement.dataset.bsTheme=localStorage.getItem('guojin-tabler-theme')==='dark'?'dark':'light';}catch(e){}</script>
-  <script defer src="scripts/vendor/tabler/tabler.min.js?v=1.7.5"></script>
-  <script defer src="scripts/zsxq-content.js"></script>
-  <script defer src="scripts/research-model.js"></script>
-  <script defer src="scripts/research-library-model.js"></script>
-  <script defer src="scripts/daily-announcements.js"></script>
-  <script defer src="scripts/domestic-hotels-model.js"></script>
-  <script defer src="scripts/overseas-hotels-model.js"></script>
-  <script defer src="scripts/company-database-model.js"></script>
-  <script defer src="scripts/company-overview-model.js"></script>
-  <script defer src="scripts/quotes/quotes-model.js"></script>
-  <script defer src="scripts/quotes/quotes-poller.js"></script>
-  <script defer src="scripts/market-kline.js"></script>
-  <script defer src="scripts/calendar/earnings-calendar-model.js"></script>
-  <script defer src="scripts/calendar/important-calendar-model.js"></script>
-  <script defer src="scripts/hotel-metrics.js"></script>
-  <script defer src="scripts/hotel-groups-model.js"></script>
-  <script defer src="scripts/travel-model.js"></script>
-  <script defer src="scripts/cruise-analysis-model.js"></script>
-  <script defer src="scripts/dining-model.js"></script>
-  <script defer src="scripts/dutyfree-korea-model.js"></script>
-  <script type="module" src="scripts/tabler-app/app.js?v=20261125"></script>
+<!doctype html>
+<html lang="zh-CN">
+<head><script src="scripts/chart-annotations.js?v=20261025annotations1"></script><script src="scripts/chart-period.js?v=20261022dates"></script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>财报与重要数据日历 · 零售&amp;社服数据库</title><script defer src="scripts/site-ui.js?v=20261106researchtools1"></script>
+<link rel="stylesheet" href="scripts/site.css?v=20261025retailservice2">
+<link rel="stylesheet" href="scripts/calendar/earnings-calendar.css?v=20261010b">
+<script defer src="scripts/site-data.js?v=20261022dates"></script><script defer src="scripts/site-shell.js?v=20261106researchtools2"></script>
+<script defer src="scripts/calendar/earnings-calendar-model.js?v=20261010b"></script><script defer src="scripts/calendar/earnings-calendar.js?v=20261014calendar"></script>
+<link rel="stylesheet" href="scripts/resource-search.css?v=20261010-unified"><link rel="stylesheet" href="scripts/site-charts.css?v=20261025annotations1"><link rel="stylesheet" href="scripts/calendar/important-calendar.css?v=20261014"><link rel="stylesheet" href="scripts/site-install.css?v=20261014home"><link rel="stylesheet" href="scripts/site-polish.css?v=20261012spacing"><script src="scripts/site-charts.js?v=20261025annotations1"></script><script defer src="scripts/calendar/important-calendar-model.js?v=20261014"></script><script defer src="scripts/calendar/important-calendar.js?v=20261014"></script><link rel="manifest" href="site.webmanifest?v=20261025retailservice2"><meta name="theme-color" content="#4d58a4"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="零售&amp;社服数据库"><meta name="apple-mobile-web-app-status-bar-style" content="default"><link rel="apple-touch-icon" href="scripts/assets/app/apple-touch-icon.png?v=20261025retailservice2"><script defer src="scripts/site-install.js?v=20261014home"></script><link rel="icon" type="image/svg+xml" href="scripts/assets/brand/sinolink-mark.svg"><link rel="stylesheet" href="scripts/workspace-design.css?v=20261111visual">
 </head>
-<body>
-  <div class="page"><div class="page-wrapper"><main class="page-body"><div class="container-xl"><div class="card"><div class="card-body text-center py-5"><div class="spinner-border text-primary mb-3" role="status"></div><h1 class="h3">国金商社数据库</h1><p class="text-secondary">正在读取数据…</p></div></div></div></main></div></div>
-  <noscript>请启用 JavaScript 查看数据。<a href="data-manifest.json">下载数据目录</a></noscript>
-</body>
-</html>
+<body class="site-page" data-design="workspace"><main>
+<header class="calendar-heading"><h1>财报与重要数据</h1><div class="calendar-tabs" role="group" aria-label="日历类别"><button type="button" data-calendar-tab="earnings" aria-pressed="true" aria-controls="earningsPanel">财报</button><button type="button" data-calendar-tab="important" aria-pressed="false" aria-controls="importantPanel">重要数据</button></div></header>
+<section id="earningsPanel" aria-label="财报日历">
+
+<div id="sourceStatus" class="ec-source" role="status">正在读取 Choice 数据…</div><div id="error" role="alert" hidden></div>
+<div id="content" hidden>
+<section class="ec-controls" aria-label="财报筛选">
+<label class="ec-search"><span class="ec-sr-only">搜索公司</span><input id="search" type="search" placeholder="搜索公司或代码"></label>
+<label><span class="ec-sr-only">行业</span><select id="sector"><option value="">全部行业</option></select></label>
+<div class="ec-views site-subnav" role="group" aria-label="日历视图"><button data-view="list" aria-pressed="true">最近</button><button data-view="month" aria-pressed="false">月</button><button data-view="week" aria-pressed="false">周</button></div>
+<details id="moreOptions" class="ec-options"><summary>更多</summary><div>
+<label>市场<select id="market"><option value="">全部市场</option><option>A股</option><option>港股</option><option>美股</option></select></label>
+
+<label class="ec-checkbox"><input id="history" type="checkbox">完整历史</label>
+<div class="ec-export"><button id="csv">导出 CSV</button><button id="ics">导出日历</button></div>
+</div></details>
+</section>
+<div id="count" class="ec-count" aria-live="polite"></div>
+<section id="recentView">
+<section id="upcomingSection" class="ec-upcoming"><div class="ec-section-head"><h2>即将披露</h2><span>未来 30 天 · 预计</span></div><div id="reminders"></div></section>
+<section class="ec-recent"><div class="ec-section-head"><h2 id="listTitle">最近披露</h2><span id="listCount"></span></div><div class="portal-table-scroll"><table class="portal-table"><thead><tr><th>公司</th><th>最近财报</th><th>实际披露日</th><th>下次披露</th></tr></thead><tbody id="rows"></tbody></table></div><button id="historyMore" hidden>加载更多</button></section>
+</section>
+<section id="calendarView" class="ec-board" hidden>
+<div class="ec-nav"><div><button id="prev" aria-label="上一月或周">‹</button><button id="today">今天</button><button id="next" aria-label="下一月或周">›</button></div><h2 id="rangeTitle"></h2><span class="ec-legend">● 实际　<span>● 预计</span></span></div>
+<div class="ec-calendar"><div class="ec-weekdays"><span>周一</span><span>周二</span><span>周三</span><span>周四</span><span>周五</span><span>周六</span><span>周日</span></div><div id="grid" class="ec-grid"></div></div>
+<section class="ec-day-panel"><h2 id="selectedDate"></h2><div id="dayEvents"></div></section>
+</section>
+<details class="ec-sources"><summary>来源与更新</summary><div id="sources"></div></details>
+</div>
+<dialog id="detail" class="ec-dialog"><div class="ec-detail-head"><div><small id="detailSubtitle"></small><h2 id="detailTitle"></h2></div><button id="closeDetail" aria-label="关闭详情">×</button></div><div id="detailBody"></div></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+</section>
+<section id="importantPanel" aria-label="重要数据日历" hidden>
+ <div id="importantStatus" class="ic-status" role="status"></div>
+ <div id="importantBody" hidden>
+  <div class="ic-toolbar">
+   <div><div class="ic-toggle" role="group" aria-label="重要数据视图"><button data-important-view="upcoming" aria-pressed="true">近期</button><button data-important-view="month" aria-pressed="false">月历</button></div><div class="ic-toggle" role="group" aria-label="地区"><button data-important-region="" aria-pressed="true">全部</button><button data-important-region="中国" aria-pressed="false">中国</button><button data-important-region="海外" aria-pressed="false">海外</button></div></div>
+   <button id="importantExport" class="ic-export">导出日历</button>
+  </div>
+  <p class="ic-meta">中国CPI · 社零 · 美国CPI · 非农 · 美联储议息　｜　均为北京时间</p>
+  <p id="importantNotice" class="ic-notice" hidden></p>
+  <section id="importantMonthBoard" class="ic-month-board" hidden>
+   <div class="ic-month-nav"><h2 id="importantRange"></h2><div><button id="importantPrev" aria-label="上个月">‹</button><button id="importantToday">本月</button><button id="importantNext" aria-label="下个月">›</button></div></div>
+   <div class="ic-weekdays"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div><div id="importantGrid" class="ic-grid"></div>
+  </section>
+  <section class="ic-list-panel" aria-live="polite"><div class="ic-list-head"><h2 id="importantListTitle">接下来关注</h2><button id="importantClearDay" hidden>查看全月</button><span id="importantEventCount"></span></div><div id="importantList"></div></section>
+  <div class="ic-foot"><span id="importantCoverage"></span><a href="data-notes.html#calendar">数据来源与说明</a></div>
+ </div>
+</section>
+</main></body></html>
+
+
+

@@ -1,40 +1,15 @@
-<!DOCTYPE html>
-<html lang="zh-CN" data-bs-theme="light">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#066fd1">
-  <meta name="description" content="国金商社零售与社会服务研究数据库。行业经营、宏观数据、重点公司、观点纪要与每日研究。">
-  <title>国金商社数据库</title>
-  <link rel="icon" type="image/svg+xml" href="scripts/assets/brand/sinolink-mark.svg">
-  <link rel="stylesheet" href="scripts/vendor/tabler/tabler.min.css?v=1.7.5">
-  <link rel="stylesheet" href="scripts/tabler-app/app.css?v=20261125">
-  <script>try{document.documentElement.dataset.bsTheme=localStorage.getItem('guojin-tabler-theme')==='dark'?'dark':'light';}catch(e){}</script>
-  <script defer src="scripts/vendor/tabler/tabler.min.js?v=1.7.5"></script>
-  <script defer src="scripts/zsxq-content.js"></script>
-  <script defer src="scripts/research-model.js"></script>
-  <script defer src="scripts/research-library-model.js"></script>
-  <script defer src="scripts/daily-announcements.js"></script>
-  <script defer src="scripts/domestic-hotels-model.js"></script>
-  <script defer src="scripts/overseas-hotels-model.js"></script>
-  <script defer src="scripts/company-database-model.js"></script>
-  <script defer src="scripts/company-overview-model.js"></script>
-  <script defer src="scripts/quotes/quotes-model.js"></script>
-  <script defer src="scripts/quotes/quotes-poller.js"></script>
-  <script defer src="scripts/market-kline.js"></script>
-  <script defer src="scripts/calendar/earnings-calendar-model.js"></script>
-  <script defer src="scripts/calendar/important-calendar-model.js"></script>
-  <script defer src="scripts/hotel-metrics.js"></script>
-  <script defer src="scripts/hotel-groups-model.js"></script>
-  <script defer src="scripts/travel-model.js"></script>
-  <script defer src="scripts/cruise-analysis-model.js"></script>
-  <script defer src="scripts/dining-model.js"></script>
-  <script defer src="scripts/dutyfree-korea-model.js"></script>
-  <script type="module" src="scripts/tabler-app/app.js?v=20261125"></script>
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>餐饮 · 零售&amp;社服数据库</title>
+<link rel="stylesheet" href="scripts/site.css?v=20261025retailservice2"><link rel="stylesheet" href="scripts/industry-embed.css?v=20261023scroll"><link rel="stylesheet" href="scripts/dining.css?v=20261116oct"><link rel="stylesheet" href="scripts/site-polish.css?v=20261013clean">
+<script defer src="scripts/site-ui.js?v=20261106researchtools1"></script><script defer src="scripts/site-data.js?v=20261022dates"></script><script defer src="scripts/site-shell.js?v=20261106researchtools2"></script><script defer src="scripts/dining-model.js?v=20261023zsxq"></script><script defer src="scripts/dining.js?v=20261116oct"></script><script defer src="scripts/industry-embed.js?v=20261024asof"></script><link rel="stylesheet" href="scripts/industry-design.css?v=20261024compact"><link rel="stylesheet" href="scripts/dashboard-asof.css?v=20261024compact"><link rel="icon" type="image/svg+xml" href="scripts/assets/brand/sinolink-mark.svg"><link rel="stylesheet" href="scripts/dashboard-toolbar.css?v=20261111"><link rel="stylesheet" href="scripts/workspace-design.css?v=20261111visual">
+
+  <link rel="stylesheet" href="scripts/dashboard-compact.css?v=20261113compact2">
 </head>
-<body>
-  <div class="page"><div class="page-wrapper"><main class="page-body"><div class="container-xl"><div class="card"><div class="card-body text-center py-5"><div class="spinner-border text-primary mb-3" role="status"></div><h1 class="h3">国金商社数据库</h1><p class="text-secondary">正在读取数据…</p></div></div></div></main></div></div>
-  <noscript>请启用 JavaScript 查看数据。<a href="data-manifest.json">下载数据目录</a></noscript>
-</body>
-</html>
+<body data-design="workspace" class="site-page dining-page" data-site-section="industry" data-dashboard-density="compact"><main class="site-main">
+<header class="dining-head"><div><p class="dining-eyebrow">连锁餐饮 / 茶饮</p><h1>餐饮经营跟踪</h1><p id="asof" role="status">正在读取餐饮数据…</p></div><div class="dining-actions"><a href="data/dining/source-20261023.png" target="_blank" rel="noopener">历史原图 ↗</a><a href="data-notes.html#dining">来源与口径</a><button id="export" type="button" disabled>导出当前 CSV</button></div></header>
+<div id="load-error" role="alert" hidden></div><button id="retry" type="button" hidden>重新读取</button>
+<section id="dashboard" hidden><div class="dining-toolbar"><label>业态 <select id="category"><option value="all">全部业态</option><option>正餐</option><option>火锅</option><option>快餐</option><option>茶饮</option><option>咖啡</option></select></label><span class="dining-meta">精确恢复率：上年同期=100%</span></div>
+<p id="monthly-summary" class="dining-monthly-summary" hidden></p>
+<section class="dining-panel"><div class="dining-section"><h2>月度经营全表</h2><div class="dining-actions"><label>年份 <select id="year"><option value="all">全部年份</option><option>2026</option><option>2025</option></select></label><label class="dining-check"><input id="holidays" type="checkbox" checked>含假期</label></div></div><div class="dining-table-wrap" tabindex="0" aria-label="餐饮月度经营数据"><table id="matrix"></table></div></section>
+</section></main></body></html>
+

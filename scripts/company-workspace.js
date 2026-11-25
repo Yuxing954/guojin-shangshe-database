@@ -5,7 +5,7 @@
  const params=new URLSearchParams(location.search),plots=new WeakMap();let metric=Math.max(0,['revpar','adr','occ'].indexOf(params.get('cwMetric')||params.get('peerMetric'))),advanced=false,menu,lastContent;
  function exportMenu(){
   if(!actions)return;
-  actions.classList.add('cw-actions','client-page-actions');
+  actions.classList.add('cw-actions');
   const source=actions.querySelector('a[href*="data-notes"]');if(source)source.classList.add('cw-source-link');
   if(!menu){menu=document.createElement('details');menu.className='cw-export';menu.innerHTML='<summary>导出数据</summary><div class="cw-export-items"></div>';actions.append(menu);const all=actions.querySelector('#oh-export-all');if(all)menu.lastChild.append(all);}
   const current=$('oh-toolbar')?.querySelector('#oh-export-view');
@@ -13,25 +13,7 @@
   menu.hidden=!menu.lastChild.children.length;menu.open=false;
   mountActions();
  }
- document.addEventListener('click',e=>{
-  if(menu&&!menu.contains(e.target))menu.open=false;
-  const link=e.target.closest('[data-open-company]');if(!link)return;link.href=companyHref(link.dataset.openCompany);
-  if(e.button!==0||e.ctrlKey||e.metaKey||e.shiftKey||e.altKey)return;
-  const buttons=[...$('oh-companies').querySelectorAll('[data-company]')],target=buttons.find(b=>b.dataset.company===link.dataset.openCompany);
-  if(!target)return;e.preventDefault();
-  const selected=buttons.filter(b=>b.getAttribute('aria-pressed')==='true');
-  if(!selected.includes(target))target.click();
-  selected.filter(b=>b!==target).forEach(b=>b.click());
- });
- // Directory rows contain a separate single-company action; compare selection keeps
- // its existing arrow-key behavior across the whole directory, not within one row.
- document.addEventListener('keydown',e=>{
-  const button=e.target.closest('#oh-companies [data-company]');
-  if(!button||!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home','End'].includes(e.key))return;
-  const buttons=[...$('oh-companies').querySelectorAll('[data-company]')],index=buttons.indexOf(button);
-  const next=e.key==='Home'?0:e.key==='End'?buttons.length-1:(index+(['ArrowRight','ArrowDown'].includes(e.key)?1:-1)+buttons.length)%buttons.length;
-  e.preventDefault();e.stopPropagation();buttons[next].focus();buttons[next].click();
- },true);
+ document.addEventListener('click',e=>{if(menu&&!menu.contains(e.target))menu.open=false;});
  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menu?.open){menu.open=false;menu.querySelector('summary').focus();}});
  function filters(){
   const toolbar=$('oh-toolbar');if(!toolbar)return;
@@ -79,12 +61,7 @@
    tabs.innerHTML=available.map(i=>'<button type="button" data-cw-metric="'+i+'">'+names[i]+'</button>').join('');content.prepend(tabs);
    const original=content.querySelector('article:not([data-cw-plot])');
    if(original){const details=document.createElement('details');details.className='oh-history cw-full-summary';details.innerHTML='<summary>完整指标与来源</summary>';original.before(details);details.append(original);}
-   const reading=document.createElement('article');reading.id='cw-peer-reading';reading.className='oh-block';
-   const analysis=document.createElement('div');analysis.className='cw-analysis-grid';
-   const stack=content.querySelector('.dh-charts')||document.createElement('div');stack.classList.add('cw-chart-stack');
-   hosts.forEach(host=>{const article=host.closest('article');if(article.parentElement!==stack)stack.append(article);});
-   analysis.append(stack,reading);content.append(analysis);
-   const full=content.querySelector('.cw-full-summary');if(full)content.append(full);
+   const reading=document.createElement('article');reading.id='cw-peer-reading';reading.className='oh-block';content.append(reading);const full=content.querySelector('.cw-full-summary');if(full)content.append(full);
   }else{
    content.querySelectorAll('.oh-kpi').forEach((card,i)=>{const label=card.querySelector(':scope>span');if(!label||!names.includes(label.textContent))return;const button=document.createElement('button');button.type='button';button.className='cw-metric-select';button.dataset.cwMetric=i;button.textContent=label.textContent;button.setAttribute('aria-label',label.textContent+'趋势');label.replaceWith(button);card.classList.add('cw-metric-card');});
   }
@@ -94,22 +71,14 @@
  function mountActions(){
   const profile=$('oh-profile');if(!profile)return;
   if(comparison()){
-   const context=[...profile.querySelectorAll('p:not(.cw-selection-names),.oh-tag')].map(e=>e.textContent).join(' · ');if(context)profile.dataset.cwContext=context;
-   const heading=profile.querySelector('h2');
-   if(heading&&!heading.hasAttribute('data-comparison-heading')){
-    const members=document.createElement('p');members.className='cw-selection-names';members.textContent=heading.textContent;
-    heading.textContent='同业比较';heading.setAttribute('data-comparison-heading','');heading.after(members);
-   }
-  }
-  profile.hidden=false;profile.classList.add('cw-research-header');
-  if(actions)profile.append(actions);
+   const context=[...profile.querySelectorAll('p,.oh-tag')].map(e=>e.textContent).join(' · ');if(context)profile.dataset.cwContext=context;
+   profile.replaceChildren();profile.hidden=true;
+   const toolbar=$('oh-toolbar'),target=toolbar?.querySelector('.dh-tools,.oh-peer-filters')||toolbar;if(actions&&target)target.append(actions);
+  }else{profile.hidden=false;if(actions)profile.append(actions);}
  }
  function enhance(){const content=$('oh-content');if(!content||content.firstElementChild===lastContent)return;exportMenu();filters();metrics();lastContent=content.firstElementChild;}
  function begin(){menu?.querySelector('#oh-export-view')?.remove();}
- function companyHref(id){const url=new URL(location.href);url.searchParams.set('company',id);url.searchParams.set('peers',id);url.searchParams.set('tab','operating');url.searchParams.delete('db');url.searchParams.delete('db-view');return url.pathname+url.search+url.hash;}
- function companyButton(c){
-  return '<div class="cw-company-row"><button type="button" class="oh-company" data-company="'+esc(c.id)+'" aria-pressed="false" aria-label="'+esc(c.name+'，加入或移出比较')+'"><span class="cw-company-icon">'+CompanyLogos[c.id]+'</span><span><strong>'+esc(c.name)+'</strong><small>'+esc(c.ticker)+'</small></span><span class="cw-check" aria-hidden="true">✓</span></button><a class="cw-company-open" data-open-company="'+esc(c.id)+'" href="'+esc(companyHref(c.id))+'" aria-label="'+esc('查看'+c.name)+'">查看公司<span aria-hidden="true">→</span></a></div>';
- }
+ function companyButton(c){return '<button type="button" class="oh-company" data-company="'+esc(c.id)+'" aria-pressed="false"><span class="cw-company-icon">'+CompanyLogos[c.id]+'</span><span><strong>'+esc(c.name)+'</strong><small>'+esc(c.ticker)+'</small></span><span class="cw-check" aria-hidden="true">✓</span></button>';}
  function clearSelection(){begin();if(menu)menu.open=false;$('oh-evidence')?.close();$('oh-profile')?.replaceChildren();$('oh-toolbar')?.replaceChildren();$('oh-content')?.replaceChildren();$('oh-workspace').hidden=true;$('oh-tabs').hidden=true;lastContent=null;exportMenu();if(actions)$('oh-companies').after(actions);}
  window.CompanyWorkspace={clearSelection,enhance,plot,mountActions,begin,companyButton};
 })();
