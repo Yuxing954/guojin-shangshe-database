@@ -1,0 +1,1903 @@
+{
+  "schemaVersion": 2,
+  "date": "2026-11-25",
+  "cutoff": "2026-11-25T18:00:00+08:00",
+  "windowStart": "2026-11-24T18:00:00+08:00",
+  "windowHours": 24,
+  "windowLabel": "截至北京时间18:00",
+  "headline": "研究与附件索引待补，特海及六福进入财报窗口",
+  "dailySummaryPoints": [
+    "当前已入库研究批次尚未覆盖11月24日18:00至11月25日18:00窗口，不能据空候选形成商社观点主线或判断当日无新增；附件元数据也仍停留在11月23日扫描回执，本期段子与资料清单均保留待补状态。",
+    "截至18:00，国家统计局、商务部、文化和旅游部及交通运输部候选核验未取得发布时间落在最近24小时、且可按原始口径纳入的商社重要数据；公告原始清单仍有分页受限，因此不把空数组表述为全行业或覆盖公司无更新。",
+    "特海国际预约11月25日披露2026年第三季度业绩，六福集团预约11月26日披露截至9月末的中期业绩；两项均按预约状态记录，特海截至18:00尚未取得可核实的实际业绩原始公告。"
+  ],
+  "dailySummary": "① 当前已入库研究批次尚未覆盖11月24日18:00至11月25日18:00窗口，不能据空候选形成商社观点主线或判断当日无新增；附件元数据也仍停留在11月23日扫描回执，本期段子与资料清单均保留待补状态。\n② 截至18:00，国家统计局、商务部、文化和旅游部及交通运输部候选核验未取得发布时间落在最近24小时、且可按原始口径纳入的商社重要数据；公告原始清单仍有分页受限，因此不把空数组表述为全行业或覆盖公司无更新。\n③ 特海国际预约11月25日披露2026年第三季度业绩，六福集团预约11月26日披露截至9月末的中期业绩；两项均按预约状态记录，特海截至18:00尚未取得可核实的实际业绩原始公告。",
+  "focus": [],
+  "industries": [],
+  "quiet": "",
+  "allSegmentsListed": true,
+  "industryWindowHours": 24,
+  "industryWindowStart": "2026-11-24T18:00:00+08:00",
+  "industryWindowEnd": "2026-11-25T18:00:00+08:00",
+  "industryUpdates": [],
+  "companyAnnouncements": [],
+  "announcementMonitoringRequired": true,
+  "announcementMonitoring": {
+    "checkedAt": "2026-11-25T18:12:00+08:00",
+    "windowStart": "2026-11-24T18:00:00+08:00",
+    "cutoff": "2026-11-25T18:00:00+08:00",
+    "coverageFile": "data/coverage-companies.json",
+    "checkedCompanies": [
+      {
+        "company": "泡泡玛特",
+        "code": "9992.HK",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "香港交易所披露易",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "名创优品",
+        "code": "9896.HK",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "香港交易所披露易",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "思摩尔国际",
+        "code": "6969.HK",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "香港交易所披露易",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "中烟香港",
+        "code": "6055.HK",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "香港交易所披露易",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "小商品城",
+        "code": "600415.SH",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "巨潮资讯/证券交易所",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "特海国际",
+        "code": "9658.HK",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "香港交易所披露易",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "香港交易所及公司IR确认11月25日为第三季度业绩发布日；截至本期18:00未取得可核实的实际业绩原始公告，暂仅保留财报预约。"
+      },
+      {
+        "company": "周大福",
+        "code": "1929.HK",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "香港交易所披露易",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "老铺黄金",
+        "code": "6181.HK",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "香港交易所披露易",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "老凤祥",
+        "code": "600612.SH",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "巨潮资讯/证券交易所",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "六福集团",
+        "code": "0590.HK",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "香港交易所披露易",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "香港交易所董事会会议日程确认11月26日审议中期业绩及股息；本期仅保留财报预约。"
+      },
+      {
+        "company": "菜百股份",
+        "code": "605599.SH",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "巨潮资讯/证券交易所",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "周大生",
+        "code": "002867.SZ",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "巨潮资讯/证券交易所",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "潮宏基",
+        "code": "002345.SZ",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "巨潮资讯/证券交易所",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "周六福",
+        "code": "6168.HK",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "香港交易所披露易",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "巨子生物",
+        "code": "2367.HK",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "香港交易所披露易",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "毛戈平",
+        "code": "1318.HK",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "香港交易所披露易",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "珀莱雅",
+        "code": "603605.SH",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "巨潮资讯/证券交易所",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "上美股份",
+        "code": "2145.HK",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "香港交易所披露易",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "华熙生物",
+        "code": "688363.SH",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "巨潮资讯/证券交易所",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "贝泰妮",
+        "code": "300957.SZ",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "巨潮资讯/证券交易所",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "上海家化",
+        "code": "600315.SH",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "巨潮资讯/证券交易所",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "丸美生物",
+        "code": "603983.SH",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "巨潮资讯/证券交易所",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "林清轩",
+        "code": "2657.HK",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "香港交易所披露易",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "水羊股份",
+        "code": "300740.SZ",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "巨潮资讯/证券交易所",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "福瑞达",
+        "code": "600223.SH",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "巨潮资讯/证券交易所",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "中国中免",
+        "code": "601888.SH",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "巨潮资讯/证券交易所",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "王府井",
+        "code": "600859.SH",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "巨潮资讯/证券交易所",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "上海机场",
+        "code": "600009.SH",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "巨潮资讯/证券交易所",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "携程集团-S",
+        "code": "9961.HK",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "香港交易所披露易",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "同程旅行",
+        "code": "0780.HK",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "香港交易所披露易",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "华住集团-S",
+        "code": "1179.HK",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "香港交易所披露易",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "亚朵",
+        "code": "ATAT.O",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "SEC EDGAR/公司IR",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "锦江酒店",
+        "code": "600754.SH",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "巨潮资讯/证券交易所",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "首旅酒店",
+        "code": "600258.SH",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "巨潮资讯/证券交易所",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "宋城演艺",
+        "code": "300144.SZ",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "巨潮资讯/证券交易所",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "长白山",
+        "code": "603099.SH",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "巨潮资讯/证券交易所",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "陕西旅游",
+        "code": "603402.SH",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "巨潮资讯/证券交易所",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "黄山旅游",
+        "code": "600054.SH",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "巨潮资讯/证券交易所",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "众信旅游",
+        "code": "002707.SZ",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "巨潮资讯/证券交易所",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "峨眉山A",
+        "code": "000888.SZ",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "巨潮资讯/证券交易所",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "香港中旅",
+        "code": "0308.HK",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "香港交易所披露易",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "君亭酒店",
+        "code": "301073.SZ",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "巨潮资讯/证券交易所",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "九华旅游",
+        "code": "603199.SH",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "巨潮资讯/证券交易所",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "天目湖",
+        "code": "603136.SH",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "巨潮资讯/证券交易所",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "蜜雪集团",
+        "code": "2097.HK",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "香港交易所披露易",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "百胜中国",
+        "code": "9987.HK",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "香港交易所披露易",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "海底捞",
+        "code": "6862.HK",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "香港交易所披露易",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "古茗",
+        "code": "1364.HK",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "香港交易所披露易",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "瑞幸咖啡",
+        "code": "LKNCY.OO",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "SEC EDGAR/公司IR",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "小菜园",
+        "code": "0999.HK",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "香港交易所披露易",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "茶百道",
+        "code": "2555.HK",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "香港交易所披露易",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "沪上阿姨",
+        "code": "2589.HK",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "香港交易所披露易",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "达势股份",
+        "code": "1405.HK",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "香港交易所披露易",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "重庆百货",
+        "code": "600729.SH",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "巨潮资讯/证券交易所",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "永辉超市",
+        "code": "601933.SH",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "巨潮资讯/证券交易所",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "红旗连锁",
+        "code": "002697.SZ",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "巨潮资讯/证券交易所",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "家家悦",
+        "code": "603708.SH",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "巨潮资讯/证券交易所",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      },
+      {
+        "company": "孩子王",
+        "code": "301078.SZ",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "sources": [
+          {
+            "kind": "statutory",
+            "source": "巨潮资讯/证券交易所",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "法定披露候选检索已执行；结果与限制见当日搜索凭证。"
+          },
+          {
+            "kind": "IR",
+            "source": "公司投资者关系",
+            "checkedAt": "2026-11-25T18:12:00+08:00",
+            "receiptFile": "data/daily/evidence/2026-11-25-searches.json",
+            "result": "公司IR候选检索已执行；无法完整回读的来源按受限记录。"
+          }
+        ],
+        "status": "partial",
+        "result": "法定披露与公司IR候选已按统一目录核对；原始清单分页未能逐公司完整回读，检索空项不作为确认无公告。"
+      }
+    ],
+    "excludedCompanies": [
+      {
+        "company": "若羽臣",
+        "code": "003010.SZ",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily"
+      },
+      {
+        "company": "乖宝宠物",
+        "code": "301498.SZ",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily"
+      },
+      {
+        "company": "中宠股份",
+        "code": "002891.SZ",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily"
+      },
+      {
+        "company": "依依股份",
+        "code": "001206.SZ",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily"
+      },
+      {
+        "company": "佩蒂股份",
+        "code": "300673.SZ",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily"
+      },
+      {
+        "company": "源飞宠物",
+        "code": "001222.SZ",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily"
+      },
+      {
+        "company": "影石创新",
+        "code": "688775.SH",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily"
+      },
+      {
+        "company": "安克创新",
+        "code": "300866.SZ",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily"
+      },
+      {
+        "company": "乐舒适",
+        "code": "2698.HK",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily"
+      },
+      {
+        "company": "石头科技",
+        "code": "688169.SH",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily"
+      },
+      {
+        "company": "绿联科技",
+        "code": "301606.SZ",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily"
+      },
+      {
+        "company": "赛维时代",
+        "code": "301381.SZ",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily"
+      },
+      {
+        "company": "致欧科技",
+        "code": "301376.SZ",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily"
+      },
+      {
+        "company": "爱美客",
+        "code": "300896.SZ",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "reason": "注射类医疗美容产品，按日报医疗范围排除。",
+        "status": "excluded_from_daily"
+      },
+      {
+        "company": "锦波生物",
+        "code": "920982.BJ",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "reason": "以医疗器械及医用胶原为核心，按日报医疗范围排除。",
+        "status": "excluded_from_daily"
+      },
+      {
+        "company": "SHEIN",
+        "code": "0625.HK",
+        "checkedAt": "2026-11-25T18:12:00+08:00",
+        "reason": "电商、食品饮料、科技硬件或轻工制造不在本期日报范围。",
+        "status": "excluded_from_daily"
+      }
+    ],
+    "failedCompanies": [
+      {
+        "company": "泡泡玛特",
+        "code": "9992.HK",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "名创优品",
+        "code": "9896.HK",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "思摩尔国际",
+        "code": "6969.HK",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "中烟香港",
+        "code": "6055.HK",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "小商品城",
+        "code": "600415.SH",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "特海国际",
+        "code": "9658.HK",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "周大福",
+        "code": "1929.HK",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "老铺黄金",
+        "code": "6181.HK",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "老凤祥",
+        "code": "600612.SH",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "六福集团",
+        "code": "0590.HK",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "菜百股份",
+        "code": "605599.SH",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "周大生",
+        "code": "002867.SZ",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "潮宏基",
+        "code": "002345.SZ",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "周六福",
+        "code": "6168.HK",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "巨子生物",
+        "code": "2367.HK",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "毛戈平",
+        "code": "1318.HK",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "珀莱雅",
+        "code": "603605.SH",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "上美股份",
+        "code": "2145.HK",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "华熙生物",
+        "code": "688363.SH",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "贝泰妮",
+        "code": "300957.SZ",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "上海家化",
+        "code": "600315.SH",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "丸美生物",
+        "code": "603983.SH",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "林清轩",
+        "code": "2657.HK",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "水羊股份",
+        "code": "300740.SZ",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "福瑞达",
+        "code": "600223.SH",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "中国中免",
+        "code": "601888.SH",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "王府井",
+        "code": "600859.SH",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "上海机场",
+        "code": "600009.SH",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "携程集团-S",
+        "code": "9961.HK",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "同程旅行",
+        "code": "0780.HK",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "华住集团-S",
+        "code": "1179.HK",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "亚朵",
+        "code": "ATAT.O",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "锦江酒店",
+        "code": "600754.SH",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "首旅酒店",
+        "code": "600258.SH",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "宋城演艺",
+        "code": "300144.SZ",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "长白山",
+        "code": "603099.SH",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "陕西旅游",
+        "code": "603402.SH",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "黄山旅游",
+        "code": "600054.SH",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "众信旅游",
+        "code": "002707.SZ",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "峨眉山A",
+        "code": "000888.SZ",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "香港中旅",
+        "code": "0308.HK",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "君亭酒店",
+        "code": "301073.SZ",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "九华旅游",
+        "code": "603199.SH",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "天目湖",
+        "code": "603136.SH",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "蜜雪集团",
+        "code": "2097.HK",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "百胜中国",
+        "code": "9987.HK",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "海底捞",
+        "code": "6862.HK",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "古茗",
+        "code": "1364.HK",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "瑞幸咖啡",
+        "code": "LKNCY.OO",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "小菜园",
+        "code": "0999.HK",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "茶百道",
+        "code": "2555.HK",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "沪上阿姨",
+        "code": "2589.HK",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "达势股份",
+        "code": "1405.HK",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "重庆百货",
+        "code": "600729.SH",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "永辉超市",
+        "code": "601933.SH",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "红旗连锁",
+        "code": "002697.SZ",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "家家悦",
+        "code": "603708.SH",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      },
+      {
+        "company": "孩子王",
+        "code": "301078.SZ",
+        "reason": "法定披露或公司IR原始清单/分页未能完整回读；候选空项不作为确认无公告。",
+        "checkedAt": "2026-11-25T18:12:00+08:00"
+      }
+    ],
+    "status": "partial",
+    "evidenceFile": "data/daily/evidence/2026-11-25.json"
+  },
+  "earningsUpcoming": [
+    {
+      "company": "特海国际",
+      "code": "9658.HK",
+      "period": "2026年第三季度（截至2026-09-30止三个月）",
+      "date": "2026-11-25",
+      "status": "预约披露",
+      "source": "特海国际投资者关系；香港交易所披露易",
+      "url": "https://ir.superhiinternational.com/news-releases/news-release-details/super-hi-report-third-quarter-2026-financial-results-wednesday",
+      "checkedAt": "2026-11-25T18:12:00+08:00",
+      "evidenceFile": "data/daily/evidence/2026-11-25.json"
+    },
+    {
+      "company": "六福集团",
+      "code": "0590.HK",
+      "period": "截至2026-09-30止六个月中期业绩",
+      "date": "2026-11-26",
+      "status": "预约披露",
+      "source": "香港交易所董事会会议日程",
+      "url": "https://www3.hkexnews.hk/reports/bmn/ebmn_c.htm",
+      "checkedAt": "2026-11-25T18:12:00+08:00",
+      "evidenceFile": "data/daily/evidence/2026-11-25.json"
+    }
+  ],
+  "monitoringCheckedAt": "2026-11-25T18:12:00+08:00",
+  "publicationEligibility": {
+    "policy": "scan-observed-after-16",
+    "eligible": false,
+    "scanObservedAt": "2026-11-23T08:53:31.413Z",
+    "coverageComplete": false,
+    "authorizedBy": "user-2026-10-23",
+    "recordedAt": "2026-11-25T18:12:00+08:00"
+  },
+  "coverage": {
+    "researchSourceTo": "2026-11-24T10:15:28.154+0800",
+    "newsCheckedAt": "2026-11-25T18:12:00+08:00",
+    "newsStatus": "公告、行业数据及财报候选已独立核验；部分官方原始清单/分页仍按受限记录。",
+    "excludedResearchRows": 0
+  },
+  "sourceCoverage": {
+    "researchSourceTo": "2026-11-24T10:15:28.154+0800",
+    "attachmentScanObservedAt": "2026-11-23T08:53:31.413Z",
+    "attachmentTopicWindowFrom": "2026-11-21T00:00:00+08:00",
+    "attachmentTopicWindowTo": "2026-11-23T16:35:47.959+0800",
+    "attachmentPages": 14,
+    "attachmentBoundaryReachedBeforeWindow": true,
+    "attachmentWindowComplete": true,
+    "attachmentArchiveHasMore": true,
+    "attachmentCoverageStatus": "pending",
+    "attachmentMissingIntervals": [
+      {
+        "start": "2026-11-24T18:00:00+08:00",
+        "end": "2026-11-25T18:00:00+08:00"
+      }
+    ],
+    "researchMissingIntervals": [
+      {
+        "start": "2026-11-24T18:00:00+08:00",
+        "end": "2026-11-25T18:00:00+08:00"
+      }
+    ]
+  },
+  "generatedAt": "2026-11-25T18:12:00+08:00",
+  "originals": {},
+  "publicationStatus": "blocked",
+  "publicationStatusReason": null,
+  "publicationBlockers": [
+    "最新main真实附件扫描observedAt为北京时间2026-11-23 16:53，11月25日缺少当天16:00或之后的扫描回执，本期附件窗口未获覆盖。",
+    "最新已入库研究批次仅覆盖至北京时间2026-11-24 10:15，早于本期窗口起点2026-11-24 18:00，不能把空候选视为确认无新增。"
+  ]
+}
