@@ -1,13 +1,13 @@
 /* Canonical workspace presentation. Load after domain layout adapters.
    Domain CSS owns grids/data semantics; this file owns shared visual components. */
 :root{
- --ui-font:var(--tblr-font-sans-serif);
+ --ui-font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
  --ui-text:14px;--ui-small:13px;--ui-caption:12px;--ui-title:17px;--ui-reading:28px;
- --ui-gap:20px;--ui-section:24px;--ui-radius:var(--tblr-border-radius);--ui-control:40px;--ui-control-radius:8px;
+ --ui-gap:20px;--ui-section:24px;--ui-radius:12px;--ui-control:40px;--ui-control-radius:8px;
 }
 body.site-page[data-design=workspace][data-design]{
  font-family:var(--ui-font)!important;
- --site-accent:var(--tblr-primary);--site-soft:#edf4fc;--hd-accent:var(--site-accent);--gj-accent:var(--site-accent);
+ --site-accent:#215d91;--site-soft:#edf3f8;--hd-accent:var(--site-accent);--gj-accent:var(--site-accent);
  --industry-font:var(--ui-font);--industry-gap:var(--ui-gap);--macro-gap:var(--ui-gap);
  --industry-radius:var(--ui-radius);--macro-radius:var(--ui-radius);
  --ic-border:var(--site-line);--ic-muted:var(--site-muted);
@@ -59,22 +59,13 @@ body.site-page[data-design=workspace][data-design] :is(#oh-tabs,.hd-tabs,.travel
  background:var(--site-surface)!important;color:var(--site-accent)!important;font-weight:600!important;box-shadow:0 1px 3px #202c400c!important;
 }
 /* Filters align on a common 40px baseline; checkboxes stay native. */
-/* Restore Tabler's select arrow after legacy domain background shorthands.
-   The native-size exclusions leave listboxes and multi-selects unchanged. */
-body.site-page[data-design=workspace][data-design] :is(.site-main,.industry-board,.data-board) select.form-select:not([multiple]):not([size]){
- width:auto;padding-right:32px!important;
- background-image:var(--tblr-form-select-bg-img)!important;
- background-repeat:no-repeat!important;background-position:right 10px center!important;background-size:16px 12px!important;
-}
-body.site-page[data-design=workspace][data-design] .card-header{min-height:0;background:transparent}
-body.site-page[data-design=workspace][data-design] .portal-panel-head.card-header{padding:0;border:0}
 body.site-page[data-design=workspace][data-design] :is(.hd-toolbar,.hg-toolbar,.dutyfree-filters,.kr-controls,.travel-controls,.cruise-controls,.dining-toolbar,.oh-toolbar,.ec-controls,.ic-toolbar,.quotes-filters,.portal-filter,.macro-study-controls,.forecast-controls,.regional-controls){
  gap:12px!important;align-items:center;flex-wrap:wrap;min-width:0;
 }
 body.site-page[data-design=workspace][data-design] :is(.site-main,.industry-board,.data-board) :is(select,input[type=search],input[type=date],input[type=number],input[type=text]){
  box-sizing:border-box;max-width:100%;min-height:var(--ui-control)!important;height:auto;
  border:1px solid var(--site-line)!important;border-radius:var(--ui-control-radius)!important;
- background-color:var(--site-surface)!important;color:var(--site-ink)!important;
+ background:var(--site-surface)!important;color:var(--site-ink)!important;
  padding:8px 12px!important;font-family:var(--ui-font)!important;font-size:14px!important;line-height:22px!important;
 }
 body.site-page[data-design=workspace][data-design] :is(.hd-toolbar,.hg-toolbar,.dutyfree-filters,.kr-controls,.travel-controls,.cruise-controls,.dining-toolbar,.oh-toolbar,.ec-controls,.ic-toolbar,.quotes-filters,.portal-filter,.macro-study-controls,.forecast-controls,.regional-controls) label{
@@ -85,7 +76,13 @@ body.site-page[data-design=workspace][data-design] :is(.portal-button,#national-
  padding:8px 12px!important;border:1px solid var(--site-line);border-radius:8px!important;
  font-size:14px!important;line-height:22px!important;
 }
-
+/* Tables retain numeric meaning, sort controls and horizontal scrolling. */
+body.site-page[data-design=workspace][data-design] :is(.board-table,.dh-table,.oh-table,.portal-table,.travel-panel table,.cruise-panel table,.dining-panel table) :is(th,td){
+ padding:10px 12px!important;font-size:13px!important;line-height:22px!important;border-color:var(--site-line)!important;font-variant-numeric:tabular-nums;
+}
+body.site-page[data-design=workspace][data-design] :is(.board-table,.dh-table,.oh-table,.portal-table,.travel-panel table,.cruise-panel table,.dining-panel table) th{
+ background:var(--site-soft)!important;color:var(--site-muted)!important;font-weight:600!important;
+}
 body.site-page[data-design=workspace][data-design] :is(.quotes-table th,.quotes-sort,.quotes-symbol,.quotes-time,.quotes-benchmark small,.ec-event span){font-size:12px!important;line-height:20px!important}
 body.site-page[data-design=workspace][data-design] :is(.quotes-name,.quotes-price,.quotes-percent,.ec-event b){font-size:14px!important;line-height:22px!important}
 body.site-page[data-design=workspace][data-design] :is(.ic-title h3,.portal-research-title,.resource-result h2){font-size:16px!important;line-height:26px!important;font-weight:600}
@@ -143,38 +140,3 @@ body.site-page[data-design=workspace][data-design] .hd-supply-breakdowns .hd-car
 }
 
 @media(prefers-reduced-motion:reduce){body.site-page[data-design=workspace][data-design] *{scroll-behavior:auto!important;transition:none!important}}
-
-/* Financial tables: keep the observation name in view when comparing periods. */
-@media screen{
- body.site-page[data-design=workspace] .site-table-scroll > :is(.board-table,.oh-table,.dh-table) {
-   font-variant-numeric:tabular-nums lining-nums;
-   --reading-row:#fff;
- }
- body.site-page[data-design=workspace] .site-table-scroll > :is(.board-table,.oh-table,.dh-table) tr:focus-within {--reading-row:#edf4fa}
- body.site-page[data-design=workspace] .site-table-scroll > :is(.board-table,.oh-table,.dh-table) tr > :first-child:not([colspan]) {
-   position:sticky;inset-inline-start:0;z-index:1;background-color:var(--reading-row);
-   box-shadow:inset -1px 0 var(--site-line);
- }
- body.site-page[data-design=workspace] .site-table-scroll > :is(.board-table,.oh-table,.dh-table) thead tr > :first-child:not([colspan]) {
-   background-color:#edf3f8;z-index:2;
- }
-}
-@media (hover:hover){
- body.site-page[data-design=workspace] .site-table-scroll > :is(.board-table,.oh-table,.dh-table) tbody tr:hover {--reading-row:#edf4fa}
- body.site-page[data-design=workspace] .site-table-scroll > :is(.board-table,.oh-table,.dh-table) tbody tr:hover > td {background-color:var(--reading-row)}
-}
-
-/* Keep board-level filters together; chart-specific controls stay inside their card. */
-@media screen{
- body.site-page[data-design=workspace][data-design] :is(.hd-toolbar,.dutyfree-filters,.kr-controls,.travel-controls,.dining-toolbar,.macro-study-controls,.oh-toolbar,.quotes-filters){
-   background:#f2f6fa;border:1px solid #d8e3eb;border-radius:8px;padding:10px 14px;box-sizing:border-box;
- }
- body.site-page[data-design=workspace][data-design]{--ui-radius:9px;--ui-title:16px;--site-soft:#edf4f9}
- body.site-page[data-design=workspace][data-design] :is(.hd-card-head,.board-panel-head,.gj-card-head){
-   border-bottom:1px solid #e6edf2;
- }
- body.site-page[data-design=workspace][data-design] :is(.hd-stat-label,.oh-kpi>span,.travel-kpi h2,.cruise-kpi h2){font-weight:600;color:#4d6478}
-}
-@media(max-width:760px){
- body.site-page[data-design=workspace][data-design] :is(.hd-toolbar,.dutyfree-filters,.kr-controls,.travel-controls,.dining-toolbar,.macro-study-controls,.oh-toolbar,.quotes-filters){padding:10px;gap:8px!important}
-}

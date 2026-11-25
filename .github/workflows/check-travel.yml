@@ -1,41 +1,22 @@
-# Browser interactions are checked once by tabler-integration.yml.
-# This workflow retains its original data, import, and model validation gates.
 name: Check tourism dashboard
-'on':
+on:
   push:
-    paths:
-    - travel-dashboard.html
-    - scripts/travel-*
-    - data/tourism/dashboard.json
-    - data/tourism/inbound-official.json
-    - data/tourism/domestic-official.json
-    - data/tourism/scenic-official.json
-    - scripts/update_scenic_tourism.py
-    - scripts/update_domestic_tourism.py
-    - scripts/update_tourism_history.py
-    - scripts/import_tourism_workbooks.py
-    - tests/travel*
-    - .github/workflows/check-travel.yml
+    paths: ['travel-dashboard.html', 'scripts/travel-*', 'data/tourism/dashboard.json', 'data/tourism/inbound-official.json', 'data/tourism/domestic-official.json', 'data/tourism/scenic-official.json', 'scripts/update_scenic_tourism.py', 'scripts/update_domestic_tourism.py', 'scripts/update_tourism_history.py', 'scripts/import_tourism_workbooks.py', 'tests/travel*', '.github/workflows/check-travel.yml']
   pull_request:
-    paths:
-    - travel-dashboard.html
-    - scripts/travel-*
-    - data/tourism/dashboard.json
-    - data/tourism/inbound-official.json
-    - data/tourism/domestic-official.json
-    - data/tourism/scenic-official.json
-    - scripts/update_scenic_tourism.py
-    - scripts/update_domestic_tourism.py
-    - scripts/update_tourism_history.py
-    - scripts/import_tourism_workbooks.py
-    - tests/travel*
-    - .github/workflows/check-travel.yml
+    paths: ['travel-dashboard.html', 'scripts/travel-*', 'data/tourism/dashboard.json', 'data/tourism/inbound-official.json', 'data/tourism/domestic-official.json', 'data/tourism/scenic-official.json', 'scripts/update_scenic_tourism.py', 'scripts/update_domestic_tourism.py', 'scripts/update_tourism_history.py', 'scripts/import_tourism_workbooks.py', 'tests/travel*', '.github/workflows/check-travel.yml']
 jobs:
   tourism:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: '22'
-    - run: node tests/travel-data.test.cjs
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node tests/travel-data.test.cjs
+      - name: Install isolated browser runtime
+        run: |
+          npm install --prefix /tmp/tourism-check --no-save --package-lock=false playwright@1.62.1
+          if [ -x /usr/bin/google-chrome ]; then echo "PLAYWRIGHT_CHANNEL=chrome" >> "$GITHUB_ENV"; else /tmp/tourism-check/node_modules/.bin/playwright install --with-deps chromium; fi
+      - run: node tests/travel.browser.cjs
+        env:
+          NODE_PATH: /tmp/tourism-check/node_modules

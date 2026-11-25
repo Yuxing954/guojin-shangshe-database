@@ -56,6 +56,18 @@ function mobileChart(svg){
     svg.style.setProperty('--site-readable-width',Math.ceil(width*Math.min(1,12/size))+'px');
   }
 }
+function mobileTable(table){
+  table.classList.add('site-data-table');
+  const parent=table.parentElement;
+  if(parent.classList.contains('site-table-scroll'))return;
+  if(['auto','scroll'].includes(getComputedStyle(parent).overflowX)){
+    parent.classList.add('site-table-scroll');
+    parent.tabIndex=0;parent.setAttribute('role','region');parent.setAttribute('aria-label','数据表，可横向滑动查看');return;
+  }
+  const frame=document.createElement('div');frame.className='site-table-scroll';frame.tabIndex=0;
+  frame.setAttribute('role','region');frame.setAttribute('aria-label','数据表，可横向滑动查看');
+  table.before(frame);frame.append(table);
+}
 // One opt-in value label control per chart panel; display state never changes source data.
 const valueScopes=new WeakMap();
 function shortValue(text){
@@ -191,6 +203,7 @@ document.addEventListener('pointerout',e=>{if(barTarget&&!barTarget.contains(e.r
 document.addEventListener('focusout',()=>{if(barTip&&!pinned)barTip.hidden=true;});
 document.addEventListener('click',e=>{const target=e.target.closest('[data-chart-tooltip]');if(target&&!target.closest('button,a')){if(pinned?.svg===target)pinned.hide(true);else barShow(target,true);}});
 function scan(){
+  document.querySelectorAll('main table,.site-main table').forEach(mobileTable);
   queued=false;for(const [svg,state] of states)if(!svg.isConnected)state.destroy();
   document.querySelectorAll('.forecast-outcome,.fedwatch-range,.gj-probability-row,.dh-bar-row,.gj-stacked [title],.retail-row').forEach(node=>{
     if(!node.dataset.chartTooltip)node.dataset.chartTooltip=node.getAttribute('aria-label')||node.getAttribute('title')||node.textContent.trim();
@@ -290,7 +303,7 @@ function paired(rows,opt={}){
     ])});
     if(showValue&&opt.valueStyle!=='line')r.values.forEach((s,si)=>{if(!Number.isFinite(s.value))return;const y=py(s.value,vd),zero=py(0,vd);svg+='<rect class="site-value-bar" x="'+(px(r.x)+(si-seriesCount/2)*barWidth)+'" y="'+Math.min(y,zero)+'" width="'+Math.max(.8,barWidth-1)+'" height="'+Math.max(1,Math.abs(zero-y))+'" rx="2" fill="'+barPalette[si%barPalette.length]+'" opacity="1"><title>'+esc(text)+'</title></rect>';});
     const step=Math.max(1,Math.ceil(normalized.length/Math.max(2,Math.floor(width/110))));
-    if(spacious?periodTicks.has(ri):ri===0||ri===normalized.length-1||w>=520&&ri%step===0&&normalized.length-ri>step/2)svg+='<text class="site-period-tick" x="'+px(r.x)+'" y="'+(spacious?bottom+36:h-17)+'" text-anchor="'+(ri===0?'start':ri===normalized.length-1?'end':'middle')+'">'+esc((typeof opt.periodTickFormat==='function'?opt.periodTickFormat:ChartPeriod.format)(r.period))+'</text>';
+    if(spacious?periodTicks.has(ri):ri===0||ri===normalized.length-1||w>=520&&ri%step===0&&normalized.length-ri>step/2)svg+='<text class="site-period-tick" x="'+px(r.x)+'" y="'+(spacious?bottom+36:h-17)+'" text-anchor="'+(ri===0?'start':ri===normalized.length-1?'end':'middle')+'">'+esc(ChartPeriod.format(r.period))+'</text>';
   });
   if(showValue&&opt.valueStyle==='line')for(let si=0;si<seriesCount;si++){
     let path='',prior=null;

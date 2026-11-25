@@ -84,8 +84,7 @@ class SummaryUpdateTests(unittest.TestCase):
         minutes = [r for r in result['items'] if r['kind'] == 'minutes']
         self.assertTrue(any(r['title'] == '20260930 华住集团交流纪要.docx' for r in minutes))
         library = json.loads((ROOT/'data/research/library.json').read_text(encoding='utf-8'))
-        work = json.loads((ROOT/'data/research/work-minutes.json').read_text(encoding='utf-8'))
-        original = {r['id']: r for r in [*library['records'], *work['records']]}
+        original = {r['id']: r for r in library['records']}
         for row in minutes:
             self.assertEqual(row['title'], original[row['id']]['name'])
             if original[row['id']].get('dateStatus') == 'needs_review': self.assertEqual(row['date'], '')

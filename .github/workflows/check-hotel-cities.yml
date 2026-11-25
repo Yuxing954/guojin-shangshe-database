@@ -1,0 +1,29 @@
+name: Check hotel cities
+on:
+  pull_request:
+    paths: ['hotel-dashboard.html', 'scripts/hotel-dashboard.*', 'tests/hotel-cities.browser.cjs', '.github/workflows/check-hotel-cities.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  cities:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node --check scripts/hotel-dashboard.js
+      - run: npm install --prefix /tmp/cities playwright@1.62.1
+      - run: /tmp/cities/node_modules/.bin/playwright install chromium
+      - run: node tests/hotel-cities.browser.cjs
+        env:
+          NODE_PATH: /tmp/cities/node_modules
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: city-comparison-previews
+          path: artifacts/cities
+
+
