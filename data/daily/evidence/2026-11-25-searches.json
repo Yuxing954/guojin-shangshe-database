@@ -1,0 +1,56 @@
+{
+  "date": "2026-11-25",
+  "checkedAt": "2026-11-25T18:12:00+08:00",
+  "windowStart": "2026-11-24T18:00:00+08:00",
+  "cutoff": "2026-11-25T18:00:00+08:00",
+  "status": "partial",
+  "scope": "统一覆盖公司法定披露、公司IR、行业重要数据及日报日期当天与未来三日财报候选",
+  "queries": [
+    {
+      "source": "香港交易所披露易",
+      "url": "https://www3.hkexnews.hk/reports/bmn/ebmn_c.htm",
+      "result": "董事会会议日程确认特海国际11月25日第三季度业绩、六福集团11月26日中期业绩；SHEIN按电商范围排除。"
+    },
+    {
+      "source": "特海国际投资者关系",
+      "url": "https://ir.superhiinternational.com/news-releases/news-release-details/super-hi-report-third-quarter-2026-financial-results-wednesday",
+      "result": "确认11月25日披露2026年第三季度未经审计业绩并于20:00香港时间举行电话会；截至本期18:00未取得可核实的实际结果公告。"
+    },
+    {
+      "source": "香港交易所披露易",
+      "url": "https://www.hkexnews.hk/index_c.htm",
+      "result": "按覆盖公司代码及名称核对11月24日18:00至11月25日18:00候选；部分列表分页未完整回读。"
+    },
+    {
+      "source": "巨潮资讯",
+      "url": "https://www.cninfo.com.cn/new/index",
+      "result": "A股覆盖公司候选检索已执行；岭南控股11月24日16:00公告早于本期窗口起点且不在统一覆盖目录，未纳入。"
+    },
+    {
+      "source": "SEC EDGAR",
+      "url": "https://www.sec.gov/edgar/search/",
+      "result": "复核美股覆盖公司候选；未将搜索空项解释为无公告。"
+    },
+    {
+      "source": "国家统计局",
+      "url": "https://www.stats.gov.cn/sj/zxfb/",
+      "result": "11月25日未见落入最近24小时且可纳入的消费重要数据发布。"
+    },
+    {
+      "source": "商务部",
+      "url": "https://www.mofcom.gov.cn/xwfb/",
+      "result": "最新可核实消费市场候选早于本期24小时窗口。"
+    },
+    {
+      "source": "文化和旅游部",
+      "url": "https://zwgk.mct.gov.cn/zfxxgkml/",
+      "result": "窗口内候选为政策或工作信息，未取得可纳入的量化行业重要数据。"
+    },
+    {
+      "source": "交通运输部",
+      "url": "https://www.mot.gov.cn/shuju/",
+      "result": "窗口内未取得属于商社覆盖且发布时间可核实的重要行业数据。"
+    }
+  ],
+  "limits": "部分交易所、公司IR及行业原始清单/分页未完整回读；检索未发现候选不等同于确认无公告或无行业数据。"
+}
