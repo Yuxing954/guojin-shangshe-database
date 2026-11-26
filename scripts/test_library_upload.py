@@ -5,10 +5,35 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
-from apply_library_upload import apply, git_sha
+from apply_library_upload import apply, git_sha, merge_metadata
 
 
 class UploadTests(unittest.TestCase):
+    def test_delta_preserves_manual_fields(self):
+        old = {'records': [{'fileId':'1','sectors':['manual'],'contentRead':True,'format':'audio',
+                           'processing':{'status':'done'},'name':'old.mp3',
+                           'metadata':{'manual':'keep'},'sourceTopics':['100'],
+                           'occurrences':[]}, {'id':'manual-document','title':'Keep'}],
+               'coverage':{'from':'2024-01-01'},'workSync':{'manual':True}}
+        f = {'file_id':'1','topicId':'101','name':'new.mp3','size':2,'download_count':7,
+             'create_time':'2026-11-24T12:00:00+08:00','topicCreatedAt':'2026-11-24T12:00:00+08:00'}
+        g = {**f,'file_id':'2','topicId':'102','name':'doc.pdf'}
+        scan = {'windowStart':'2026-11-24T00:00:00+08:00','windowEndDate':'2026-11-26',
+                'observedAt':'2026-11-26T12:00:00+08:00','latest':f['topicCreatedAt'],
+                'boundaryReachedBeforeWindow':True,'pages':2,'topicsScanned':60,'topics':40,
+                'attachments':2,'unique':2,'files':[['1',[f]],['2',[g]]]}
+        result = merge_metadata(old,scan)
+        first = result['records'][0]
+        self.assertEqual(first['sectors'],['manual'])
+        self.assertTrue(first['contentRead'])
+        self.assertEqual(first['processing'],{'status':'done'})
+        self.assertEqual(first['metadata']['manual'],'keep')
+        self.assertEqual(first['downloadCount'],7)
+        self.assertEqual(result['records'][1],{'id':'manual-document','title':'Keep'})
+        self.assertEqual(result['attachmentScan']['newRecords'],1)
+        self.assertEqual(result['attachmentScan']['existingRecordsRefreshed'],1)
+        self.assertEqual(merge_metadata(result,scan)['attachmentScan']['existingRecordsRefreshed'],0)
+
     def fixture(self, root):
         p = Path(root) / 'data/research'
         p.mkdir(parents=True)
