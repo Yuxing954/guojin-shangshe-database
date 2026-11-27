@@ -1,13 +1,14 @@
 {
-  "syncedAt": "2026-11-27T11:05:32.828Z",
+  "syncedAt": "2026-11-27T23:07:29.958Z",
   "sourceGroup": "88888142214212",
   "sourceName": "水木调研纪要-2.0",
-  "coverageFrom": "2026-11-27T15:48:08.602+0800",
-  "coverageTo": "2026-11-27T18:10:30.492+0800",
-  "oldestFetched": "2026-11-27T14:04:39.790+0800",
+  "coverageFrom": "2026-11-27T18:10:30.492+0800",
+  "coverageTo": "2026-11-27T22:37:05.446+0800",
+  "oldestFetched": "2026-11-27T15:10:58.499+0800",
   "fetchedTopics": 30,
   "files": {
     "views": [
+      "data/research/updates/2026-11-28-070230-views-000.csv",
       "data/research/updates/2026-11-27-155740-views-000.csv",
       "data/research/updates/2026-11-27-130608-views-000.csv",
       "data/research/updates/2026-11-27-100459-views-000.csv",
@@ -244,6 +245,7 @@
       "data/research/updates/2026-10-14-1258-views.csv"
     ],
     "all_views": [
+      "data/research/updates/2026-11-28-070230-all_views-000.csv",
       "data/research/updates/2026-11-27-190243-all_views-000.csv",
       "data/research/updates/2026-11-27-155740-all_views-000.csv",
       "data/research/updates/2026-11-27-155740-all_views-001.csv",
@@ -688,13 +690,13 @@
     ]
   },
   "counts": {
-    "views": 1730,
-    "all_views": 10771,
+    "views": 1738,
+    "all_views": 10777,
     "minutes": 98
   },
   "latest": {
-    "views": "2026-11-27 14:07",
-    "all_views": "2026-11-27 18:10",
+    "views": "2026-11-27 22:25",
+    "all_views": "2026-11-27 22:25",
     "minutes": "2026-10-12T01:07:33"
   },
   "excluded": {
@@ -2494,7 +2496,15 @@
       "22258441582541821",
       "55521448211522184",
       "22258441588255851",
-      "14425118255241422"
+      "14425118255241422",
+      "14425118211824412",
+      "14425118211181822",
+      "82258441544414282",
+      "22258441544412221",
+      "22258441544412251",
+      "55521448244485114",
+      "14425118211184282",
+      "55521448242252544"
     ],
     "all_views": [
       "82258224252524812",
@@ -13101,39 +13111,74 @@
       "45548221484128218",
       "45548221451818888",
       "14425118241111422",
-      "82258441524442142"
+      "82258441524442142",
+      "14425118211824182",
+      "14425118211825152",
+      "82258441544414242",
+      "14425118211451582",
+      "82258441544282152",
+      "45548221424424248"
     ]
   },
   "lastRun": {
-    "runId": "2026-11-27-190243",
+    "runId": "2026-11-28-070230",
     "sourceGroup": "88888142214212",
     "sourceName": "水木调研纪要-2.0",
-    "previousCoverageTo": "2026-11-27T15:48:08.602+0800",
-    "coverageTo": "2026-11-27T18:10:30.492+0800",
+    "previousCoverageTo": "2026-11-27T18:10:30.492+0800",
+    "coverageTo": "2026-11-27T22:37:05.446+0800",
     "added": {
-      "views": 0,
-      "all_views": 3
+      "views": 8,
+      "all_views": 6
     },
     "updated": 0,
-    "expiredRemoved": 0,
+    "expiredRemoved": 16,
     "sourceTopicIds": [
-      "45548221451818888",
-      "14425118241111422",
-      "82258441524442142"
+      "14425118211824182",
+      "14425118211824412",
+      "14425118211825152",
+      "14425118211181822",
+      "82258441544414242",
+      "82258441544414282",
+      "22258441544412221",
+      "22258441544412251",
+      "55521448244485114",
+      "14425118211184282",
+      "14425118211451582",
+      "82258441544282152",
+      "45548221424424248",
+      "55521448242252544"
     ],
-    "duplicateTopicIds": [
-      "45548221451828548"
-    ],
+    "duplicateTopicIds": [],
     "briefChanges": {
-      "added": 0,
-      "updated": 0,
-      "expiredRemoved": 0
+      "added": 3,
+      "updated": 2,
+      "expiredRemoved": 16
     },
-    "duplicates": 1,
+    "duplicates": 0,
     "excludedTopics": [
       {
-        "topicId": "45548221451822588",
-        "reason": "仅标题标签，未读附件无实质正文"
+        "topicId": "82258441541552182",
+        "reason": "无可读观点正文"
+      },
+      {
+        "topicId": "55521448248221124",
+        "reason": "无可读观点正文"
+      },
+      {
+        "topicId": "14425118211885112",
+        "reason": "无可读观点正文"
+      },
+      {
+        "topicId": "14425118211825552",
+        "reason": "仅问句标题无具体正文"
+      },
+      {
+        "topicId": "45548221424248228",
+        "reason": "仅提问，未给出证据"
+      },
+      {
+        "topicId": "14425118212242822",
+        "reason": "仅图谱标题无正文"
       }
     ],
     "pagination": {
@@ -13143,33 +13188,59 @@
       "stoppedWhenPageReachedCoverage": true
     },
     "dedupCheck": {
-      "candidateKeys": 20,
-      "candidateBuckets": 20,
+      "candidateKeys": 68,
+      "candidateBuckets": 59,
       "algorithm": "sha256-utf8-v1"
     },
-    "expiredBriefIds": []
+    "expiredBriefIds": [
+      "bilibili-game-advertising-20261122",
+      "pharmacy-retail-recovery-20261123",
+      "ergothioneine-food-ingredient-20261124",
+      "joyy-advertising-commerce-20261125",
+      "anker-tariff-supply-chain-20261125",
+      "zhouliufu-inventory-franchise-20261125",
+      "gaole-ip-ai-toy-20261125",
+      "huaxiang-appliance-supply-margin-20261125",
+      "xinao-wool-product-capacity-20261125",
+      "bailong-functional-sugar-capacity-20261125",
+      "maogeping-product-channel-20261125",
+      "consumer-service-monthly-sample-20261125",
+      "zhongshun-product-channel-efficiency-20261125",
+      "zijiang-beverage-packaging-20261125",
+      "vipshop-q3-buyer-cash-return-20261125",
+      "aibairui-collagen-aesthetics-20261125"
+    ]
   },
   "lastUpdateRecord": {
-    "runId": "2026-11-27-190243",
+    "runId": "2026-11-28-070230",
     "sourceGroup": "88888142214212",
     "sourceName": "水木调研纪要-2.0",
-    "previousCoverageTo": "2026-11-27T15:48:08.602+0800",
-    "coverageTo": "2026-11-27T18:10:30.492+0800",
-    "added": 3,
+    "previousCoverageTo": "2026-11-27T18:10:30.492+0800",
+    "coverageTo": "2026-11-27T22:37:05.446+0800",
+    "added": 14,
     "updated": 0,
-    "expiredRemoved": 0,
+    "expiredRemoved": 16,
     "sourceTopicIds": [
-      "45548221451818888",
-      "14425118241111422",
-      "82258441524442142"
+      "14425118211824182",
+      "14425118211824412",
+      "14425118211825152",
+      "14425118211181822",
+      "82258441544414242",
+      "82258441544414282",
+      "22258441544412221",
+      "22258441544412251",
+      "55521448244485114",
+      "14425118211184282",
+      "14425118211451582",
+      "82258441544282152",
+      "45548221424424248",
+      "55521448242252544"
     ],
-    "duplicateTopicIds": [
-      "45548221451828548"
-    ],
+    "duplicateTopicIds": [],
     "briefChanges": {
-      "added": 0,
-      "updated": 0,
-      "expiredRemoved": 0
+      "added": 3,
+      "updated": 2,
+      "expiredRemoved": 16
     }
   }
 }
