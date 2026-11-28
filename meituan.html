@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>美团 · 行业数据</title>
+<link rel="stylesheet" href="scripts/site.css">
+<style>
+body{margin:0;background:#f5f7fa;color:#20334a;font-family:system-ui,"Microsoft YaHei",sans-serif}main{max-width:1440px;margin:auto;padding:16px;box-sizing:border-box}
+section{background:white;border:1px solid #dae3ed;border-radius:12px;padding:clamp(14px,2vw,26px)}h1{font-size:22px;margin:0}p,footer{font-size:14px;color:#53677c;line-height:1.65}.scroll{overflow-x:auto}table{width:100%;min-width:700px;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums;text-align:right}th,td{padding:10px;border-bottom:1px solid #e3e9ef}thead th{color:#345170;background:#f3f7fa}tbody th{text-align:left;white-space:nowrap}.volume{background:linear-gradient(90deg,#d7e8f4 var(--bar),transparent 0) left bottom/100% 3px no-repeat}footer{margin-top:16px}a{color:#23659a;margin-right:12px}
+</style></head><body><main><section><h1>美团外卖与闪购</h1>
+<p>2026年1–12月 · 专家访谈测算 · 11月6日预测更新版</p>
+<div class="scroll" tabindex="0" aria-label="月度经营数据，可横向滚动"><table><thead><tr><th rowspan="2">月份</th><th colspan="2">餐饮外卖</th><th colspan="4">闪购</th></tr><tr><th scope="col">日均单量（万单）</th><th scope="col">UE（元）</th><th scope="col">日均单量（万单）</th><th scope="col">小象超市（万单）</th><th scope="col">其他（万单）</th><th scope="col">UE（元）</th></tr></thead><tbody>
+          <tr><th scope="row">26M1</th><td style="--bar:86.25%" class="volume">6900</td><td>−1.0～−1.3</td><td style="--bar:47.608695652173914%" class="volume">1095</td><td>195</td><td>900</td><td>−0.7</td></tr>
+          <tr><th scope="row">26M2</th><td style="--bar:73.75%" class="volume">5900</td><td>−1.0～−1.3</td><td style="--bar:52.17391304347826%" class="volume">1200</td><td>200</td><td>1000</td><td>−0.7</td></tr>
+          <tr><th scope="row">26M3</th><td style="--bar:86.875%" class="volume">6950</td><td>−0.6～−0.8</td><td style="--bar:48.69565217391305%" class="volume">1120</td><td>210</td><td>910</td><td>−0.7</td></tr>
+          <tr><th scope="row">26M4</th><td style="--bar:78.75%" class="volume">6300</td><td>−0.3</td><td style="--bar:70%" class="volume">1610</td><td>210</td><td>1400</td><td>−1.1</td></tr>
+          <tr><th scope="row">26M5</th><td style="--bar:81.25%" class="volume">6500</td><td>0.1</td><td style="--bar:73.04347826086956%" class="volume">1680</td><td>220</td><td>1460</td><td>−0.6～−0.7</td></tr>
+          <tr><th scope="row">26M6</th><td style="--bar:86.875%" class="volume">6950</td><td>+0.3～0.4</td><td style="--bar:77.3913043478261%" class="volume">1780</td><td>230</td><td>1550</td><td>−0.5</td></tr>
+          <tr><th scope="row">26M7</th><td style="--bar:95%" class="volume">7600</td><td>+0.4～0.5</td><td style="--bar:82.6086956521739%" class="volume">1900</td><td>240</td><td>1660</td><td>−0.6</td></tr>
+          <tr><th scope="row">26M8</th><td style="--bar:97.5%" class="volume">7800</td><td>0.1</td><td style="--bar:85%" class="volume">1955</td><td>255</td><td>1700</td><td>−0.7～−0.8</td></tr>
+          <tr><th scope="row">26M9</th><td style="--bar:90%" class="volume">7200</td><td>0.4</td><td style="--bar:85.43478260869566%" class="volume">1965</td><td>265</td><td>1700</td><td>−0.3～−0.4</td></tr>
+          <tr><th scope="row">26M10</th><td style="--bar:90.625%" class="volume">7250</td><td>0.5～0.6</td><td style="--bar:93.47826086956522%" class="volume">2150</td><td>280</td><td>1870</td><td>−0.3</td></tr>
+          <tr><th scope="row">26M11E</th><td style="--bar:91.25%" class="volume">7300</td><td>0.6</td><td style="--bar:95.65217391304348%" class="volume">2200</td><td>300</td><td>1900</td><td>−0.2</td></tr>
+          <tr><th scope="row">26M12E</th><td style="--bar:95%" class="volume">7600</td><td>0.6</td><td style="--bar:92.17391304347827%" class="volume">2120</td><td>320</td><td>1800</td><td>−0.1</td></tr>
+</tbody></table></div>
+<footer>1–10月为专家测算，11–12月标 E 为预测。UE 按原表保留单值或区间。闪购日均单量含小象超市和其他闪购。<br>来源：商业分析家，2026年11月28日。<a href="https://mp.weixin.qq.com/s/qbNBqEsyBEwCJ1rG2j-Xkg" target="_blank" rel="noopener">微信原文</a><a href="https://docs.qq.com/doc/DQkVHUGRzWnFHVW5s" target="_blank" rel="noopener">腾讯文档</a></footer></section></main>
+<script>
+if (window.parent !== window) {
+  const main = document.querySelector('main');
+  const report = () => parent.postMessage({type:'industry-panel',state:'ready',layoutReady:true,height:Math.ceil(main.getBoundingClientRect().height)},location.origin);
+  new ResizeObserver(report).observe(main);
+  addEventListener('load', report);
+}
+</script></body></html>
